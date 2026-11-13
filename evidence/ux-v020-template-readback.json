@@ -1,0 +1,30 @@
+[
+  {
+    "notebook": "starter",
+    "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzI=/view",
+    "artifact": "wandb/forge-workshop-kit/Forge-Workshop-Kit-Starter:v3",
+    "source_sha256": "5fc64c08d1e081215ee9243ff38e20ffe7eeecca70414b7e66c9bb71ff64613a",
+    "matches_release": true
+  },
+  {
+    "notebook": "facilitator",
+    "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzM=/view",
+    "artifact": "wandb/forge-workshop-kit/Forge-Workshop-Kit-Progress-monitor:v3",
+    "source_sha256": "0fc4198a939435297a5b8cfab3bc4c16e3ad2d7285e02523d4e53bd7821e0d29",
+    "matches_release": true
+  },
+  {
+    "notebook": "pending_inc",
+    "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view",
+    "artifact": "wandb/forge-workshop-kit/Pending-Inc.-Your-project:v3",
+    "source_sha256": "8f1b54b2661673b2168eebd5d11b561b28462dacfdacd18fbde1be1cbfab69e5",
+    "matches_release": true
+  },
+  {
+    "notebook": "solar_autoresearch",
+    "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view",
+    "artifact": "wandb/forge-workshop-kit/Build-a-research-loop-then-give-it-an-agent:v3",
+    "source_sha256": "46dc1d6ff53fc8a61f985c907365e64994563c2bcf4fecf3ca1cb743244e1086",
+    "matches_release": true
+  }
+]

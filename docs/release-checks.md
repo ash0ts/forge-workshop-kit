@@ -5,6 +5,8 @@ The revised notebooks were exercised in a browser using fresh local workspaces a
 | Check | Evidence and outcome |
 | --- | --- |
 | Local validation | 57 tests passed, including candidate isolation, missing judgments, recovery, exact executed code, draft restore and trace links. All four generated notebooks passed marimo checks. |
+| Clean platform installs | Locked installation, all 57 tests and all four notebook checks passed on GitHub-hosted macOS, Windows and Linux runners. [CI run](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43472786899). This checks installation and code; it is not an attendee rehearsal. |
+| Published templates | All four current hosted templates were updated. Their artifact source files match the released notebooks byte-for-byte. [Readback](../evidence/ux-v020-template-readback.json). Existing copies were not modified. |
 | Guided exercises | Both notebooks expose participant code, free checks, explicit execution, results and Forge links. Navigation and prerequisite links were exercised in the browser. Draft edits survive navigation and restart. |
 | Solar browser rehearsal | Six native Sweep configurations, two manual image architectures, both two-candidate research rounds, tested compositions and frozen comparisons completed. [Results](../evidence/ux-v020-solar.json). |
 | Pending browser rehearsal | Both improvement rounds and all 12 final executions completed. All 12 reached the correct account state; 11 of 12 explanation judgments were available. The editor retained the manual harness; three labels represent two distinct executable versions. [Results](../evidence/ux-v020-pending.json). |

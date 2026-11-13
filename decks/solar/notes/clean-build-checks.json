@@ -1,0 +1,9 @@
+{
+  "node": "22.23.2",
+  "npm": "10.9.8",
+  "environment": "macOS, clean temporary directory; no shared node_modules",
+  "npm_ci": "passed",
+  "pages_build": "passed",
+  "fix": "Add the two omitted optional @emnapi packages already required by the pinned dependency graph.",
+  "deck_content_changed": false
+}
