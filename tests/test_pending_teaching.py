@@ -259,3 +259,27 @@ def test_judge_retry_stops_after_second_failed_attempt(tmp_path,monkeypatch):
     with pytest.raises(ValueError,match='Two explanation-judge attempts failed'):
         loop.judge_explanation(s,run,'Use evidence',retry_failed=True)
     assert len(calls)==2
+
+
+def test_raised_mcp_error_has_a_durable_event_before_propagation(tmp_path, monkeypatch):
+    s = WorkshopSession('user/project', 'teaching', state_dir=tmp_path)
+    f = learner(s)
+    action = {'action': 'onboarding_status', 'arguments': {'account_id': 'fern'}}
+    monkeypatch.setattr(loop.Provider, 'complete', lambda *args, **kwargs: action)
+    monkeypatch.setattr(loop, 'output', lambda value: value)
+    def unavailable(*args, **kwargs):
+        raise ConnectionError('MCP process stopped')
+    monkeypatch.setattr(loop, 'call_mcp', unavailable)
+    exported = []
+    monkeypatch.setattr(loop, 'export_trace', lambda session, identity, mission, events, *args, **kwargs: exported.extend(events) or {})
+    case = next(c for c in CASES if c.id == 'missing-seat')
+    with pytest.raises(ConnectionError, match='MCP process stopped'):
+        loop.run_employee(s, case, Harness(), 'starting', **teaching.hooks(f))
+    failed = next(row for row in s.read()['stages'].values() if row['status'] == 'failed')
+    event = failed['events'][0]
+    assert event['name'] == 'onboarding_status'
+    assert event['arguments'] == action['arguments']
+    assert event['result'] is None and event['error_type'] == 'ConnectionError'
+    assert event['ended_at'] >= event['started_at']
+    assert exported == [event]
+    assert any(path.endswith('/partial.json') for path in failed['files'])

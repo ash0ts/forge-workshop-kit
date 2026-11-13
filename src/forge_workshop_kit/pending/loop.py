@@ -83,10 +83,9 @@ def run_employee(session, case, harness, label, *, invoice_tool=lookup_invoice, 
     previous=[s for s in session.read()['stages'].values() if all(s.get(k)==v for k,v in spec.items())]
     completed=[s for s in previous if s['status']=='complete']
     failed=[s for s in previous if s['status']=='failed']
-    attempt=max((s['attempt'] for s in completed),default=1)
     if retry_failed and not completed and failed:
-        attempt=max(s['attempt'] for s in failed)+1
-    with session.stage(**spec,attempt=attempt) as stage:
+        session.retry_stage(max(failed,key=lambda s:s['attempt'])['id'])
+    with session.stage(**spec) as stage:
         if stage.needs_run:
             world=copy.deepcopy(case.initial)
             messages=build_messages({'mission':case.mission},harness)
@@ -106,6 +105,19 @@ def run_employee(session, case, harness, label, *, invoice_tool=lookup_invoice, 
                     return result
                 except Exception as error:
                     if name != 'lookup_invoice':
+                        receipt=dict(id=stage.id+'/tool-'+str(step),name=name,arguments=arguments,
+                            result=None,started_at=started,ended_at=time.time(),
+                            error=f'{type(error).__name__}: {error}',error_type=type(error).__name__,status='error')
+                        events.append(receipt)
+                        stage.record_event(receipt)
+                        write_json(stage.output_dir/'partial.json',{'world':world,'events':events,'messages':messages})
+                        requests=[r for key,r in session.read()['requests'].items()
+                            if key.startswith(stage.id+'/') and r.get('ended_at')]
+                        try:
+                            export_trace(session,stage.id,case.mission,events,requests,
+                                tool_writer=tool_writer,model_writer=model_writer)
+                        except Exception:
+                            pass  # The failed event is durable even when trace publication is down.
                         raise  # Preserve MCP/runtime failures as unavailable executions.
                     return {'ok':False,'error':str(error)}
             for step in range(max_steps):
@@ -129,10 +141,12 @@ def run_employee(session, case, harness, label, *, invoice_tool=lookup_invoice, 
                 if harness.read_retries and result.get('error') and name in ('lookup_invoice','get_account','list_payments','onboarding_status'):
                     events.append(dict(id=stage.id+'/tool-'+str(step)+'-first',name=name,arguments=arguments,
                         result=result,started_at=started,ended_at=time.time(),error=result.get('error')))
+                    stage.record_event(events[-1])
                     started=time.time()
                     result=invoke(name, arguments)
                 events.append(dict(id=stage.id+'/tool-'+str(step),name=name or 'invalid_action',arguments=arguments,
                     result=result,started_at=started,ended_at=time.time(),error=result.get('error')))
+                stage.record_event(events[-1])
                 write_json(stage.output_dir/'partial.json',{'world':world,'events':events,'messages':messages})
                 messages=append(messages,action,result)
                 if not isinstance(messages,list) or any(not isinstance(m,dict) for m in messages):
@@ -178,10 +192,7 @@ def editor_decision(session,number,phase,parent,evidence, *, tool_writer=None, m
     mission=('Propose two competing changes using the same starting execution evidence. Candidates do not have separate executions yet; their probes happen next. Retaining the parent remains valid when evidence does not justify an edit.' if phase=='propose' else 'Compare the candidate executions and compose a version to test next. Retain, combine, or reject changes according to the observed evidence.')
     system=mission+' Edit an office agent harness, never the case or tools. Prior experience comes from separately identified earlier tasks; it is a hypothesis to check against this task, not an observation of this execution. Return JSON '+schema+'. DECISION is {decision:CHANGE|KEEP,title,rationale,harness:{instructions,verification_skill,tool_skill,verify_before_finish,read_retries},lesson,limits}. KEEP uses the parent harness exactly. No task-specific account IDs in reusable instructions. '+RULES+TOOL_GUIDE+'\nlookup_invoice: {account_id, invoice_id} reads invoice payments and refunds.'
     name=f'pending/round-{number}/{phase}'
-    failed=[r for r in session.read()['stages'].values() if r['name']==name and r['status']=='failed']
-    if len(failed)>1:
-        raise ValueError('Two editing attempts failed. Inspect the saved responses before changing the exercise.')
-    with session.stage(name,sources={**parent.files(),'editor-system.txt':system},inputs={'prompt_version':2,'evidence':context},attempt=1+len(failed)) as stage:
+    with session.stage(name,sources={**parent.files(),'editor-system.txt':system},inputs={'prompt_version':2,'evidence':context}) as stage:
         if stage.needs_run:
             def validate(value):
                 decisions=value.get('candidates',[]) if phase=='propose' else [value]
@@ -245,17 +256,16 @@ def judge_explanation(session,run,rubric, *, validate=validate_judgment, tool_wr
     previous=[s for s in session.read()['stages'].values() if all(s.get(k)==v for k,v in spec.items())]
     completed=[s for s in previous if s['status']=='complete']
     failed=[s for s in previous if s['status']=='failed']
-    attempt=max((s['attempt'] for s in completed),default=1)
     if retry_failed and not completed and failed:
         if len(failed)>=2:
             raise ValueError('Two explanation-judge attempts failed. Keep this judgment unavailable and inspect its evidence.')
-        attempt=max(s['attempt'] for s in failed)+1
+        session.retry_stage(max(failed,key=lambda s:s['attempt'])['id'])
         # Retain the unavailable judgment's native trace before requesting another one.
         for row in failed:
             requests=[r for k,r in session.read()['requests'].items() if (k==row['id'] or k.startswith(row['id']+'/')) and r.get('ended_at')]
             try: export_trace(session,row['id'],'Judge the saved explanation; prior failed attempt',[],requests,tool_writer=tool_writer,model_writer=model_writer)
             except Exception: pass  # Raw failed requests remain saved even when export is unavailable.
-    with session.stage(**spec,attempt=attempt) as stage:
+    with session.stage(**spec) as stage:
         if stage.needs_run:
             call=Provider(session).complete(stage.id,[{'role':'system','content':'Judge explanation against actual recorded actions. Return JSON {grounded: boolean, complete: boolean, reason: string}. '+rubric},
                 {'role':'user','content':json.dumps({'mission':run['mission'],'events':run['events'],'draft':run['draft']})}],max_tokens=4096)

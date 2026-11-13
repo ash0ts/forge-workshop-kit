@@ -9,15 +9,8 @@ from copy import deepcopy
 
 import numpy as np
 
-STEPS = [
-    ("setup", "Connect"),
-    ("data", "Solar data"),
-    ("baseline", "Persistence"),
-    ("search", "Track and search"),
-    ("images", "Solar images"),
-    ("research", "Research agent"),
-    ("final", "Final evaluation"),
-]
+from forge_workshop_kit.manifest import get_workshop
+STEPS = tuple(tuple(step) for step in get_workshop("solar-autoresearch")["steps"])
 
 INSTRUMENTATION_STARTER = '''def instrument_tool(observation):
     from coreweave.forge.agentlens import tracing

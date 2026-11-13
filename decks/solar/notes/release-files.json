@@ -4,18 +4,18 @@
   "files": [
     {
       "file": "solar-autoresearch-browser.zip",
-      "bytes": 4317833,
-      "sha256": "a97a0c8028a47932caee69a150c5ff510be530c610a139139a8e89f605cb8fe2"
+      "bytes": 4317973,
+      "sha256": "1462d3f06e4011cd132d9cc7c8fe3747a08a25cd4190108581ed7cf63444cb79"
     },
     {
       "file": "solar-autoresearch-deck-source.zip",
-      "bytes": 3478819,
-      "sha256": "b6c8ee91ad16b60d85eab96ae437c502858885c0f647e0bd1beadf5c0cfdda40"
+      "bytes": 3478849,
+      "sha256": "c81148b08b0ac86d26216987e4a598a730b11e9f8fa088b286ac656dbd3f4fcd"
     },
     {
       "file": "solar-autoresearch.pdf",
-      "bytes": 2787936,
-      "sha256": "b8c495bafb8591d4c65988058395999710c9848d3696a66e1634ae9e533803a8"
+      "bytes": 2787999,
+      "sha256": "7695b6a34b132961d1e3cc72a8aa2e541d4cb4368b9b0f219c4df45a31b3dbb5"
     }
   ],
   "assets": [

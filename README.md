@@ -11,11 +11,13 @@ Each participant works in their own project. The facilitator can read the progre
 | [Solar Autoresearch · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view) | Join a research lab working with real satellite observations. Build forecasts, compare training settings, then ask an agent to propose and test code changes. Four hours. |
 | [Pending, Inc. · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) | Give an office agent tools for refunds and account access. Check its work, edit its instructions, then build an agent that makes and tests further edits. Three hours. |
 
-Use the [Solar browser deck](https://ash0ts.github.io/forge-workshop-kit/solar/) alongside the notebook, or download the [PDF](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.2.3/solar-autoresearch.pdf). The [release package](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.2.3) contains the notebook files and editable deck.
+Use the [Solar browser deck](https://ash0ts.github.io/forge-workshop-kit/solar/) alongside the notebook, or download the [PDF](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.3.0/solar-autoresearch.pdf). The [release package](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.3.0) contains the notebook files and editable deck.
 
 For a short demonstration, follow the [current demo guide](docs/current-demo-guide.md). It takes you from a notebook exercise to a trace, code change, and result in the two recorded rehearsals.
 
 These are technical previews. The [release checks](docs/release-checks.md) describe what we’ve tested and the external-attendee and human rehearsals still needed.
+
+For setup and recovery, follow [Copy the notebook and start](docs/setup.md).
 
 ## Start in Forge
 
@@ -34,12 +36,12 @@ Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and Git, t
 ```sh
 git clone https://github.com/ash0ts/forge-workshop-kit.git
 cd forge-workshop-kit
-uv sync --frozen
-uv run wandb login
-uv run marimo edit notebooks/solar_autoresearch.py
+uv sync --frozen --extra solar
+uv run --extra solar wandb login
+uv run --extra solar marimo edit notebooks/solar_autoresearch.py
 ```
 
-For Pending, replace the last path with `notebooks/pending_inc.py`. Enter your `entity/project` in the notebook and follow the same setup exercise. Tools and training run on your laptop; model requests and publication use your Forge account. You don’t need Docker or a local API service.
+For Pending, use `--extra pending` in those commands and open `notebooks/pending_inc.py`. Starter and facilitator need no extra; `uv sync --frozen` installs only their shared dependencies. Enter your `entity/project` in the notebook and follow the same setup exercise. Tools and training run on your laptop; model requests and publication use your Forge account. You don’t need Docker or a local API service.
 
 ## Work through an exercise
 
@@ -100,5 +102,6 @@ Put the experiment, scorer, tracing, and improvement code in the notebook where 
 - [Deck notes and Pending exercise references](docs/deck-guide.md)
 - [Solar data and experiment design](docs/solar-contract.md)
 - [Release checks and limitations](docs/release-checks.md)
+- [Build and publish the kit](docs/maintenance.md)
 
-Previous Pending releases remain in [their original repository](https://github.com/ash0ts/pending-inc-workshop).
+Previous releases and deployment notes are linked from the [archive](docs/archive.md).

@@ -12,16 +12,17 @@ import time
 from dataclasses import asdict
 import copy
 import marimo as mo
-from forge_workshop_kit import WorkshopSession, ui
+from forge_workshop_kit import WorkshopSession, ui, setup
 from forge_workshop_kit.pending import teaching
 from forge_workshop_kit.pending.cases import CASES
 from forge_workshop_kit.pending.harness import Harness, harness_diff
 from forge_workshop_kit.pending.loop import run_employee, editor_decision, judge_explanation, reflect_execution
-from forge_workshop_kit.traces import event, export_trace
+from forge_workshop_kit.traces import event, export_trace, saved_trace_inputs
 from forge_workshop_kit.publication import publish_comparison, publish_report
 get_pending,set_pending=mo.state({})
 get_display,set_display=mo.state({})
 get_step,set_step=mo.state("setup",allow_self_loops=True)
+get_recovery_revision,set_recovery_revision=mo.state(0)
 ''',True)
 add('''
 mo.Html(ui.heading("Pending, Inc.", "Your new AI colleague handles refunds and account access. You'll write its tools, watch it work, and test changes to its instructions. IT has supplied a notebook. The customers and accounts in this workshop are fictional."))
@@ -58,22 +59,62 @@ _s=get_pending().get("session")
 mo.vstack([ui.navigation(mo,teaching.STEPS,get_step(),move_pending,completed=_s.read()["progress"].get("completed",[]) if _s else ()),mo.Html(ui.context(_s)) if _s else mo.md("Start by connecting your own Forge project. Your code, traces and results will be saved there."),mo.Html(ui.result("Some results have not uploaded",{"Issue":get_display()["publication_error"],"Next":"Your run is saved. Use Retry publication in the final comparison to upload it again."},status="unavailable")) if get_display().get("publication_error") else mo.md("")])
 ''',True)
 add('''
+_s = get_pending().get("session")
+_revision = get_recovery_revision()
+_view = get_step()
+pending_recovery_refresh = mo.ui.button(label="Check for stopped or failed work", on_click=lambda _: set_recovery_revision(get_recovery_revision() + 1), disabled=not bool(_s))
+_options = _s.recovery_options() if _s else []
+_choices = {setup.recovery_label(_s.workshop, row) + " · " + row["id"][:6]: row["id"] for row in _options}
+pending_recovery_choice = mo.ui.dropdown(_choices, value=next(iter(_choices), None), label="Execution to review", full_width=True) if _choices else mo.ui.dropdown({"No failed executions": ""}, value="No failed executions", disabled=True)
+mo.vstack([mo.md("**A run stopped?** Check its saved status here. Reviewing it never starts work."), pending_recovery_refresh, pending_recovery_choice]) if _options else mo.accordion({"A run stopped? Review recovery": mo.vstack([mo.md("Click below to read saved execution status. Completed results stay saved. An upload failure uses Retry publication in the final comparison instead."), pending_recovery_refresh])})
+''', True)
+add('''
+_s = get_pending().get("session")
+_row = next((row for row in _s.recovery_options() if row["id"] == pending_recovery_choice.value), None) if _s else None
+_needs_confirmation = bool(_row and (_row["has_uncertain_requests"] or _row["status"] == "running"))
+pending_recovery_confirm = mo.ui.checkbox(label="I checked that the previous execution has stopped. Keep unresolved requests charged at their reserved maximum.")
+pending_recovery_allow = mo.ui.run_button(label="Allow retry of this failed execution", disabled=not bool(_row), full_width=True)
+mo.vstack([mo.Html(ui.result("Review the saved execution", {"Execution": _row["name"], "Status": _row["status"], "Issue": _row.get("error") or "The execution has not finished.", "Next": "Allow another attempt, then click the normal run button for this step. This control does not run the experiment."}, status="failed")), pending_recovery_confirm if _needs_confirmation else mo.md("The previous attempt has ended. Its result and costs remain in the record."), pending_recovery_allow]) if _row else mo.md("")
+''', True)
+add('''
+mo.stop(not pending_recovery_allow.value)
+_s = get_pending()["session"]
+try:
+    _route = _s.retry_stage(pending_recovery_choice.value, confirm_stopped=pending_recovery_confirm.value)
+    _message = "Retry allowed. Return to this step’s run button to start attempt " + str(_route["attempt"]) + ". Completed work will be reused."
+except Exception as _error:
+    _message = str(_error)
+set_display({**get_display(), "recovery": _message})
+pending_refresh(_s)
+set_recovery_revision(get_recovery_revision() + 1)
+''', True)
+add('''
+_message = get_display().get("recovery")
+mo.callout(mo.md(_message), kind="info") if _message else mo.md("")
+''', True)
+add('''
 mo.stop(get_step()!="setup")
-pending_project=mo.ui.text(value=os.getenv("WORKSHOP_PROJECT") or "/".join(filter(None,[os.getenv("WANDB_ENTITY"),os.getenv("WANDB_PROJECT")])),label="Your Forge entity/project",full_width=True)
+_context=setup.project_context()
+pending_project=mo.ui.text(value=_context["project"],label="Your Forge entity/project",disabled=_context["hosted"] and _context["detected"],full_width=True)
 pending_allowance=mo.ui.number(value=8,start=.01,stop=1000,label="Inference limit in USD; notebook compute is separate")
 pending_connect=mo.ui.run_button(label="Check my project and restore saved work",full_width=True)
-mo.vstack([mo.Html(ui.step("1. Connect your project and send a trace", "Copy this notebook into your own Forge project and enter its entity/project below. Forge Notebooks uses your existing login. On your laptop, run uv run wandb login first.","Click Check my project and restore saved work. You should see your project name and a successful connection. This check makes no model calls.")),pending_project,pending_allowance,pending_connect])
+mo.vstack([mo.Html(ui.step("1. Connect your project and send a trace", "Copy this notebook into your own Forge project. We use that project and your existing Forge login. On a laptop, enter entity/project and run uv run wandb login first.","Click Check my project and restore saved work. You should see your project name and a successful connection. This check makes no model calls.")),mo.Html(ui.result("Copied notebook project",{"Project":_context["project"],"Access":"Uses your Forge login"})) if _context["hosted"] and _context["detected"] else pending_project,pending_allowance,pending_connect])
 ''',True)
 add('''
 mo.stop(not pending_connect.value)
+_s = None
+_access = None
 try:
     _s=WorkshopSession.from_environment("pending-direct-teaching",project=pending_project.value,budget_usd=pending_allowance.value)
     _access=_s.check_access()
     _restore=_s.restore()
+    setup.save_access(_s,_access)
     pending_refresh(_s)
     set_step(_s.get_view("setup"))
     set_display({**get_display(),"setup":{**_access,"restore":_restore["status"]}})
 except Exception as _error:
+    if _s is not None and _access is None:
+        setup.save_access(_s, {"write_access": False, "error": str(_error)})
     set_display({**get_display(),"setup":{"error":str(_error)}})
 ''')
 add('''
@@ -91,7 +132,7 @@ mo.stop(get_step()!="setup")
 _s=get_pending().get("session")
 instrumentation_editor=mo.ui.code_editor(value=_s.get_draft("pending/instrumentation",teaching.STARTERS["instrumentation"]) if _s else teaching.STARTERS["instrumentation"],language="python",min_height=260,max_height=500,label="Your Forge tool and model scopes",on_change=lambda value:_s.save_draft("pending/instrumentation",value) if _s else None)
 pending_trace=mo.ui.run_button(label="Run this check and verify my Agent Lens trace",disabled=not bool(_s),full_width=True)
-mo.vstack([mo.Html(ui.result("Project connection",get_display().get("setup",{"Next":"Connect above."}))),mo.md("**Send your first trace.** In the code cell below this button, find inspect_notebook and add an environment field to the returned dictionary, such as the operating system name. Run the check, open Agent Lens, and find that field. The functions here record tool activity and model calls; you'll use them again when the employee starts work."),instrumentation_editor,pending_trace,ui.prerequisite(mo,"Connect to a writable project first.","setup",move_pending) if not _s else mo.md("")])
+mo.vstack([mo.Html(ui.result("Project connection",get_display().get("setup",{"Project":_s.project} if _s else {"Next":"Connect above."}))),mo.ui.table(setup.capabilities(_s),selection=None,pagination=False) if _s else mo.md(""),mo.md("**Send your first trace.** In the code cell below this button, find inspect_notebook and add an environment field to the returned dictionary, such as the operating system name. Run the check, open Agent Lens, and find that field. The functions here record tool activity and model calls; you'll use them again when the employee starts work."),instrumentation_editor,pending_trace,ui.prerequisite(mo,"Connect to a writable project first.","setup",move_pending) if not _s else mo.md("")])
 ''',True)
 add('''
 mo.stop(not pending_trace.value)
@@ -101,7 +142,7 @@ _writers=teaching.compile_code(instrumentation_editor.value)
 with _s.stage("pending/setup-trace",sources={"instrumentation.py":instrumentation_editor.value}) as _stage:
     if _stage.needs_run:
         # Add another measured field here. This is a real operation, without a model call.
-        _result,_receipt=event("inspect_notebook",{},lambda:{"python":__import__("platform").python_version(),"tools":"local Python and MCP"})
+        _result,_receipt=event("inspect_notebook",{},lambda:{"python":__import__("platform").python_version(),"tools":"local Python and MCP"},on_error=_stage.record_event)
         _stage.record({"events":[_receipt]})
 _trace=export_trace(_s,_stage.id,"Check my notebook before running an agent",_stage.result["events"],tool_writer=_writers["my_tool_span"],model_writer=_writers["my_model_span"])
 pending_checkpoint(_s,"setup",evidence={"My first Agent Lens conversation":_trace["url"]})
@@ -133,7 +174,7 @@ try:
         if _stage.needs_run:
             _events=[]
             def _checked_tool(state,account_id,invoice_id):
-                _result,_event=event("lookup_invoice",{"account_id":account_id,"invoice_id":invoice_id},lambda:_fn(state,account_id,invoice_id))
+                _result,_event=event("lookup_invoice",{"account_id":account_id,"invoice_id":invoice_id},lambda:_fn(state,account_id,invoice_id),on_error=_stage.record_event)
                 _events.append(_event)
                 return _result
             _rows=teaching.check_tool(_checked_tool)
@@ -166,8 +207,8 @@ _s=get_pending().get("session")
 _checked=teaching.check_status(_s,"loop",{"lookup_invoice.py":_s.get_draft("pending/tool",teaching.STARTERS["tool"]) if _s else "","loop.py":loop_editor.value})
 check_pending_loop=mo.ui.run_button(label="Test my tool-to-model handoff",disabled=not bool(_s),full_width=True)
 _failures=[row for row in _s.read()["stages"].values() if row["name"].startswith("pending/original/") and row["status"]=="failed"] if _s else []
-run_pending=mo.ui.run_button(label="Starting tickets complete" if get_pending().get("starting") else "Retry the failed starting ticket; reuse saved work" if _failures else "Freeze this executor and run the two starting tickets",disabled=not bool(_s) or not _checked["passed"] or not teaching.setup_verified(_s) or bool(get_pending().get("starting")),full_width=True)
-mo.vstack([mo.Html(ui.result("Saved execution failed",{"Issue":_failures[-1]["error"],"Retry":"The button reruns only the failed ticket. Completed tickets remain saved."},status="failed")) if _failures and not get_pending().get("starting") else mo.md(""),mo.Html(ui.result("Executor check",{"Status":_checked["state"]},status="complete" if _checked["passed"] else "not started")),check_pending_loop,run_pending,ui.prerequisite(mo,"Verify your setup trace before starting model calls.","setup",move_pending) if _s and not teaching.setup_verified(_s) else mo.md("Pass the handoff check above. If you edit the code afterward, run the check again.")])
+run_pending=mo.ui.run_button(label="Starting tickets complete" if get_pending().get("starting") else "Resume the starting tickets" if _failures else "Freeze this executor and run the two starting tickets",disabled=not bool(_s) or not _checked["passed"] or not teaching.setup_verified(_s) or bool(get_pending().get("starting")),full_width=True)
+mo.vstack([mo.Html(ui.result("Saved execution failed",{"Issue":_failures[-1]["error"],"Retry":"Review the failed execution in the recovery controls above, then use the run button. Completed tickets remain saved."},status="failed")) if _failures and not get_pending().get("starting") else mo.md(""),mo.Html(ui.result("Executor check",{"Status":_checked["state"]},status="complete" if _checked["passed"] else "not started")),check_pending_loop,run_pending,ui.prerequisite(mo,"Verify your setup trace before starting model calls.","setup",move_pending) if _s and not teaching.setup_verified(_s) else mo.md("Pass the handoff check above. If you edit the code afterward, run the check again.")])
 ''',True)
 add('''
 mo.stop(not check_pending_loop.value)
@@ -194,7 +235,7 @@ _f=teaching.functions(_s)
 _runtime=teaching.freeze_runtime(_s,_f)
 _harness=Harness(instructions=starting_instructions.value)
 try:
-    _runs=[run_employee(_s,c,_harness,"pending/original",retry_failed=True,**teaching.hooks(_f)) for c in CASES if c.split=="development"]
+    _runs=[run_employee(_s,c,_harness,"pending/original",**teaching.hooks(_f)) for c in CASES if c.split=="development"]
 finally:
     pending_refresh(_s)
 pending_checkpoint(_s,"loop")
@@ -385,7 +426,7 @@ _missing=sum(r.get("explanation_judgment",{}).get("status")=="unavailable" for r
 _judge_failures=[r["name"] for r in _s.read()["stages"].values() if r["status"]=="failed"] if _s else []
 _retryable=sum(r.get("explanation_judgment",{}).get("status")=="unavailable" and _judge_failures.count("pending/judge/"+r["stage_id"])<2 for runs in get_pending().get("final",{}).get("runs",{}).values() for r in runs)
 pending_retry_judges=mo.ui.run_button(label=f"Retry {_retryable} unavailable explanation judgment(s) only" if _retryable else "No further explanation-judge retries needed or available",disabled=not bool(_retryable),full_width=True)
-mo.vstack([mo.Html(ui.step("7. Test the three instruction sets on new tickets", "Run three versions on four new tickets: the starting instructions, your edit, and the instructions kept after two editor rounds. The editor has not seen these tickets or their scores.","Compare the same ticket across all three versions. Check what happened to the account and what the employee said happened. Keep errors and missing judge answers visible.")),mo.md("These tickets are new to the employee. This is where we find out whether the revised handbook helps beyond the cases we used to write it."),pending_final,pending_retry,mo.md("**Some explanation scores are missing.** Retry the judge using the button below; the employee's work will not run again. If the judge fails twice, inspect its saved responses and leave the score unavailable.") if _missing else mo.md(""),pending_retry_judges,ui.prerequisite(mo,"Finish both improvement rounds before freezing versions.","improve",move_pending) if not _ready else mo.md("")])
+mo.vstack([mo.Html(ui.step("7. Test the three instruction sets on new tickets", "Run three versions on four new tickets: the starting instructions, your edit, and the instructions kept after two editor rounds. The editor has not seen these tickets or their scores.","Compare the same ticket across all three versions. Check what happened to the account and what the employee said happened. Keep errors and missing judge answers visible.")),mo.md("These tickets are new to the employee. This is where we find out whether the revised handbook helps beyond the cases we used to write it."),pending_final,pending_retry,mo.md("**Some explanation scores are missing.** Review each failed judge execution in the recovery controls above and allow a retry, then use the button below. The employee’s work will not run again. If the judge fails twice, leave its score unavailable.") if _missing else mo.md(""),pending_retry_judges,ui.prerequisite(mo,"Finish both improvement rounds before freezing versions.","improve",move_pending) if not _ready else mo.md("")])
 ''',True)
 add('''
 mo.stop(not pending_final.value)
@@ -419,7 +460,7 @@ with mo.status.spinner(title="Retrying unavailable explanation judgments only; e
         for _run in _runs:
             if _run.get("explanation_judgment",{}).get("status")!="unavailable": continue
             try:
-                _run["explanation_judgment"]=judge_explanation(_s,_run,_s.get_draft("pending/rubric","Check claims against recorded work."),validate=_f["my_judge_validation"],tool_writer=_f["my_tool_span"],model_writer=_f["my_model_span"],retry_failed=True)
+                _run["explanation_judgment"]=judge_explanation(_s,_run,_s.get_draft("pending/rubric","Check claims against recorded work."),validate=_f["my_judge_validation"],tool_writer=_f["my_tool_span"],model_writer=_f["my_model_span"])
             except Exception as _error:
                 _run["explanation_judgment"]={"status":"unavailable","error":str(_error)}
 _retry_records=[r["id"] for r in _s.read()["stages"].values() if r["name"].startswith("pending/judge/")]
@@ -435,10 +476,12 @@ _s=get_pending()["session"]
 _s.retry_publication()
 _f=teaching.functions(_s)
 for _row in _s.read()["stages"].values():
-    _requests=[r for k,r in _s.read()["requests"].items() if (k==_row["id"] or k.startswith(_row["id"]+"/")) and r.get("ended_at")]
-    if (_row.get("result") or {}).get("events") is not None or _requests:
-        try: export_trace(_s,_row["id"],(_row.get("result") or {}).get("mission",_row["name"]),(_row.get("result") or {}).get("events",[]),_requests,tool_writer=_f["my_tool_span"],model_writer=_f["my_model_span"])
-        except Exception as _error: set_display({**get_display(),"export_error":str(_error)})
+    try:
+        _trace_inputs=saved_trace_inputs(_s,_row)
+        if _trace_inputs["events"] or _trace_inputs["requests"]:
+            export_trace(_s,**_trace_inputs,tool_writer=_f["my_tool_span"],model_writer=_f["my_model_span"])
+    except Exception as _error:
+        set_display({**get_display(),"export_error":str(_error)})
 for _name,_label in (("pending/development-evaluation","pending-development"),("pending/final-comparison","pending-final")):
     _row=teaching.latest(_s,_name)
     if _row: pending_publish(_s,_label,_row["result"].get("comparison",_row["result"].get("rows")))
@@ -502,8 +545,8 @@ def _bind_navigation_controls():
             for call in calls:
                 count += 1
                 name = f'pending_navigation_{index}_{count}'
-                start = offsets[call.lineno-1] + call.col_offset
-                end = offsets[call.end_lineno-1] + call.end_col_offset
+                start = offsets[call.lineno-1] + len(source[call.lineno-1].encode()[:call.col_offset].decode())
+                end = offsets[call.end_lineno-1] + len(source[call.end_lineno-1].encode()[:call.end_col_offset].decode())
                 assignments.append(name + ' = ' + cell.code[start:end] + '\n')
                 changes.append((start, end, name))
             if assignments:

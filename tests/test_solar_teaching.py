@@ -134,6 +134,7 @@ def test_authored_training_uses_learner_metric_without_replacing_native_score(tm
         'time': time, 'np': np, 'teaching': teaching, 'training': SimpleNamespace(train=train),
         'plots': SimpleNamespace(forecast=lambda *a, **kw: SimpleNamespace(savefig=lambda path, **kw: path.write_bytes(b'figure'))),
         'export_trace': lambda *a, **kw: {}, 'instrument_tool': lambda observation: 'span',
+        'event': __import__('forge_workshop_kit.traces', fromlist=['event']).event,
     }
     exec(code, scope)
     s = session(tmp_path)

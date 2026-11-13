@@ -1,0 +1,149 @@
+{
+  "audit": "Independent final source review; no execution, training, inference or publication performed",
+  "checked_at": 1794601369.421633,
+  "notebooks": [
+    {
+      "notebook": "notebooks/pending_inc.py",
+      "sha256": "0788f6d9b7bfb5ec9ffea9d511a0e195716b78433da39afa51762704a8f5f3ec",
+      "no_gateway_or_remote_sandbox_imports": true,
+      "explicitly_guarded_execution_cells": [
+        {
+          "line": 396,
+          "operations": [
+            "run_employee"
+          ],
+          "guards": [
+            "not run_pending.value"
+          ]
+        },
+        {
+          "line": 474,
+          "operations": [
+            "judge_explanation"
+          ],
+          "guards": [
+            "not pending_judge.value"
+          ]
+        },
+        {
+          "line": 524,
+          "operations": [
+            "run_employee"
+          ],
+          "guards": [
+            "not manual_pending.value",
+            "not manual_instructions.value.strip()"
+          ]
+        },
+        {
+          "line": 580,
+          "operations": [
+            "editor_decision",
+            "reflect_execution",
+            "run_employee"
+          ],
+          "guards": [
+            "not improve_pending.value",
+            "not review_pending.value"
+          ]
+        },
+        {
+          "line": 648,
+          "operations": [
+            "judge_explanation",
+            "run_employee"
+          ],
+          "guards": [
+            "not pending_final.value"
+          ]
+        },
+        {
+          "line": 673,
+          "operations": [
+            "judge_explanation"
+          ],
+          "guards": [
+            "not pending_retry_judges.value"
+          ]
+        }
+      ]
+    },
+    {
+      "notebook": "notebooks/solar_autoresearch.py",
+      "sha256": "e5aa5b3386d0b8baa4c89678965107da71270f130d6088c63036ac53b44f23a6",
+      "no_gateway_or_remote_sandbox_imports": true,
+      "explicitly_guarded_execution_cells": [
+        {
+          "line": 624,
+          "operations": [
+            "run_training"
+          ],
+          "guards": [
+            "not run_images.value"
+          ]
+        },
+        {
+          "line": 746,
+          "operations": [
+            "research.compose",
+            "research.propose",
+            "run_training"
+          ],
+          "guards": [
+            "not research_button.value",
+            "not research_note.value.strip()",
+            "not research_note.value.strip()"
+          ]
+        },
+        {
+          "line": 825,
+          "operations": [
+            "training.train"
+          ],
+          "guards": [
+            "not final_button.value"
+          ]
+        }
+      ]
+    },
+    {
+      "notebook": "notebooks/starter.py",
+      "sha256": "4c91e3007304ddf1bcdef97a42d56807c968c707deb7d730e170361506da1af1",
+      "no_gateway_or_remote_sandbox_imports": true,
+      "explicitly_guarded_execution_cells": []
+    },
+    {
+      "notebook": "notebooks/facilitator.py",
+      "sha256": "147a9cc096de47127f4f580d08789d20405afca029b82f794a1f26706ce32976",
+      "no_gateway_or_remote_sandbox_imports": true,
+      "explicitly_guarded_execution_cells": []
+    }
+  ],
+  "recovery": {
+    "focused_tests": "45 passed across test_publication, test_traces, test_session, test_recovery, test_copy_recovery",
+    "completed_siblings": "WorkshopSession.stage selects a completed sibling ahead of stale retry routes",
+    "request_identity": "Provider compares complete request envelope before cached transport reuse",
+    "ambiguous_transport": "No automatic retry after unknown response; full reservation retained",
+    "missing_credentials": "Resolved before reservation/send intent after cached-result lookup",
+    "progress": "Coalesced background stage updates; independent nonblocking progress lock; no wait behind artifact publication",
+    "restore": "Checks all embedded and explicitly referenced bytes before local file installation; journal written last"
+  },
+  "heldout_separation": {
+    "pending": "Improvement cells select development cases; editor_context and reflect_execution reject other splits and omit grades",
+    "solar": "Improvement uses validation training records; propose/compose reject other splits; final reserved split enters only frozen evaluation cells",
+    "boundary": "This is reviewed teaching code, not a hostile-code security sandbox; fixtures are public"
+  },
+  "publication": {
+    "stage_artifact": "Receipt saved immediately after acknowledged artifact.wait, before SDK context finish",
+    "native_evaltables": "Acknowledged table/row/version receipt saved before run.log; service HTTP500 remains unavailable",
+    "weave": "Dataset, evaluation completion, object and flush have durable channel receipts",
+    "wandb_table": "run.log is asynchronous; channel marked published only after finish. A failed finish can relog saved rows on retry but cannot rerun inference.",
+    "report": "Receipt saved directly after successful Report.save",
+    "live_reference_restore": "evidence/v030-seven-artifact-restore.json"
+  },
+  "limitations": [
+    "No new human rehearsal or external-account validation in this source audit",
+    "Native EvalTables HTTP500 remains explicit",
+    "Scientific model/settings/result changes were outside this audit"
+  ]
+}

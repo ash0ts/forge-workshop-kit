@@ -6,9 +6,11 @@ import json
 import os
 import re
 import shutil
+import threading
 import time
 import uuid
 from contextlib import contextmanager
+from importlib.metadata import PackageNotFoundError, version as package_version
 from pathlib import Path
 
 from filelock import FileLock
@@ -43,8 +45,12 @@ class WorkshopSession:
             raise ValueError('The inference allowance must be a positive finite amount.')
         self.project, self.workshop, self.version = project, workshop, version
         self.budget_usd = float(budget_usd)
-        # Collection identifies a copied hosted notebook, not its short-lived session.
-        identity = notebook_identity or os.getenv('WANDB_NOTEBOOK_COLLECTION')
+        # The anchor belongs to the notebook; its collection name changes on rename.
+        identity = notebook_identity or os.getenv('WANDB_NOTEBOOK_ANCHOR_RUN') or os.getenv('WANDB_NOTEBOOK_COLLECTION')
+        try:
+            self.kit_version = package_version('forge-workshop-kit')
+        except PackageNotFoundError:
+            self.kit_version = 'source'
         self.root = Path(state_dir or Path('.workshop') / safe_name(workshop) /
                          (digest([project, identity])[:20] if identity else 'local')).resolve()
         self.root.mkdir(parents=True, exist_ok=True)
@@ -67,15 +73,21 @@ class WorkshopSession:
         self.identity = saved
         self.workspace_id = saved['workspace_id']
         self.publisher = publisher
+        self._progress_guard = threading.Lock()
+        self._progress_thread = None
+        self._progress_pending = False
         self.state_path = self.root / 'journal.json'
         if not self.state_path.exists():
             write_json(self.state_path, dict(stages={}, progress={}, publications={}, requests={}))
 
     @classmethod
     def from_environment(cls, workshop, *, project=None, **kwargs):
-        project = project or os.getenv('WORKSHOP_PROJECT')
-        if not project and os.getenv('WANDB_ENTITY') and os.getenv('WANDB_PROJECT'):
-            project = os.environ['WANDB_ENTITY'] + '/' + os.environ['WANDB_PROJECT']
+        hosted = os.getenv('WANDB_NOTEBOOK_ANCHOR_RUN') or os.getenv('WANDB_NOTEBOOK_COLLECTION')
+        environment_project = '/'.join((os.getenv('WANDB_ENTITY', ''), os.getenv('WANDB_PROJECT', '')))
+        if not project:
+            project = environment_project if hosted and all(environment_project.split('/')) else os.getenv('WORKSHOP_PROJECT')
+        if not project and all(environment_project.split('/')):
+            project = environment_project
         if not project:
             raise ValueError('Choose a writable entity/project. Locally, set WORKSHOP_PROJECT before opening the notebook.')
         if os.getenv('WORKSHOP_STATE_DIR'):
@@ -100,8 +112,74 @@ class WorkshopSession:
     def check_access(self):
         return self.connect().check_access()
 
-    def stage(self, name, *, config=None, sources=None, inputs=None, attempt=1):
-        return Stage(self, name, config or {}, sources or {}, inputs or {}, attempt)
+    def stage(self, name, *, config=None, sources=None, inputs=None, attempt=None):
+        spec = dict(name=name, config=config or {}, sources=sources or {}, inputs=inputs or {})
+        if attempt is None:
+            base = digest([self.workspace_id, {**spec, 'attempt': 1}])[:32]
+            state = self.read()
+            previous = [row for row in state['stages'].values() if all(row.get(k) == v for k, v in spec.items())]
+            completed = [row for row in previous if row['status'] == 'complete']
+            attempt = max((row['attempt'] for row in completed or previous), default=1)
+            if not completed:
+                attempt = state.get('retries', {}).get(base, {}).get('attempt', attempt)
+        return Stage(self, **spec, attempt=attempt)
+
+    def recovery_options(self):
+        """Read-only recovery choices. An execution never restarts from rendering this list."""
+        state = self.read()
+        options = []
+        for row in state['stages'].values():
+            if row['status'] not in ('failed', 'interrupted', 'running'):
+                continue
+            spec = {k: row[k] for k in ('name', 'config', 'sources', 'inputs')}
+            base = digest([self.workspace_id, {**spec, 'attempt': 1}])[:32]
+            route = state.get('retries', {}).get(base, {})
+            if route.get('attempt', row['attempt']) > row['attempt']:
+                continue
+            requests = [r for key, r in state['requests'].items()
+                        if key == row['id'] or key.startswith(row['id'] + '/')]
+            uncertain = any(r['status'] in ('pending', 'interrupted') for r in requests)
+            options.append(dict(id=row['id'], name=row['name'], status=row['status'],
+                error=row.get('error', ''), has_uncertain_requests=uncertain,
+                next_attempt=row['attempt'] + 1))
+        return options
+
+    def retry_stage(self, stage_id, *, reason='Retry requested from notebook', confirm_stopped=False):
+        """Authorize one new attempt. The normal Run control starts it, never this method."""
+        if not reason.strip():
+            raise ValueError('Describe why another execution is needed.')
+        with self.transaction() as state:
+            row = state['stages'][stage_id]
+            if row['status'] == 'complete':
+                raise StageNeedsReview('This execution is complete. Retry its publication instead.')
+            requests = [r for key, r in state['requests'].items()
+                        if key == stage_id or key.startswith(stage_id + '/')]
+            uncertain = [r for r in requests if r['status'] in ('pending', 'interrupted')]
+            if (uncertain or row['status'] == 'running') and not confirm_stopped:
+                raise StageNeedsReview('Confirm the previous execution has stopped before authorizing another attempt. Its unresolved requests remain charged at their full reservation.')
+            spec = {k: row[k] for k in ('name', 'config', 'sources', 'inputs')}
+            siblings = [s for s in state['stages'].values() if all(s[k] == v for k, v in spec.items())]
+            if any(s['status'] == 'complete' for s in siblings):
+                raise StageNeedsReview('A matching execution already completed. Reopen its saved result.')
+            base = digest([self.workspace_id, {**spec, 'attempt': 1}])[:32]
+            attempt = max(s['attempt'] for s in siblings) + 1
+            route = state.setdefault('retries', {}).get(base)
+            if route and route['attempt'] >= attempt:
+                return route
+            for request in uncertain:
+                request.update(status='interrupted', unknown_usd=request['reserved_usd'],
+                               observed_usd=None, ended_at=time.time(), updated_at=time.time(),
+                               error='Previous execution confirmed stopped: ' + reason)
+            for request in requests:
+                if request['status'] == 'reserved':
+                    request.update(status='cancelled', observed_usd=0, unknown_usd=0,
+                                   ended_at=time.time(), updated_at=time.time(),
+                                   error='Unsent reservation replaced by an explicit retry.')
+            if row['status'] == 'running':
+                row.update(status='interrupted', ended_at=time.time(), error=reason)
+            route = dict(attempt=attempt, previous=stage_id, reason=reason, authorized_at=time.time())
+            state['retries'][base] = route
+            return route
 
     def checkpoint(self, step, *, evidence=None, publish=True):
         with self.transaction() as state:
@@ -116,13 +194,42 @@ class WorkshopSession:
     def request_help(self, message):
         with self.transaction() as state:
             state['progress'].update(help_request=message, updated_at=time.time())
-        return self.retry_publication() if self.publisher else self.read()['progress']
+        if self.publisher:
+            try:
+                return {'status': 'published', 'url': self.publisher.publish_progress()}
+            except Exception as error:
+                return {'status': 'local', 'error': str(error)[:500]}
+        return self.read()['progress']
+
+    def queue_progress(self):
+        """Publish the latest progress in the background; execution never waits for it."""
+        if not self.publisher:
+            return
+        with self._progress_guard:
+            self._progress_pending = True
+            if self._progress_thread is not None:
+                return
+
+            def publish_latest():
+                while True:
+                    with self._progress_guard:
+                        if not self._progress_pending:
+                            self._progress_thread = None
+                            return
+                        self._progress_pending = False
+                    try:
+                        self.publisher.publish_progress()
+                    except Exception:
+                        pass  # Local progress is saved; the monitor can remain unknown.
+
+            self._progress_thread = threading.Thread(target=publish_latest, daemon=True)
+            self._progress_thread.start()
 
     def retry_publication(self):
         if not self.publisher:
             return {'status': 'local', 'message': 'Connect to publish saved work.'}
         outcomes = {}
-        for operation in ('publish_stages', 'publish_progress', 'publish_checkpoint'):
+        for operation in ('publish_progress', 'publish_stages', 'publish_checkpoint'):
             try:
                 outcomes[operation] = {'status': 'published', 'result': getattr(self.publisher, operation)()}
             except Exception as error:
@@ -217,14 +324,11 @@ class Stage:
                     'choose an explicit new attempt only if another execution is intended.')
             self.output_dir.mkdir(parents=True, exist_ok=True)
             state['stages'][self.id] = dict(id=self.id, **self.spec, status='running',
-                started_at=time.time(), source_fingerprint=self.source_fingerprint, files=[])
+                started_at=time.time(), source_fingerprint=self.source_fingerprint, files=[],
+                kit_version=self.session.kit_version)
             state['progress'].update(step=self.name, status='running', updated_at=time.time())
         self.needs_run = True
-        if self.session.publisher:
-            try:
-                self.session.publisher.publish_progress()
-            except Exception:
-                pass  # Monitoring never blocks participant work.
+        self.session.queue_progress()
         return self
 
     def record(self, result, *, files=()):
@@ -249,22 +353,30 @@ class Stage:
             state['stages'][self.id].update(result=result, files=copies, status='complete',
                                            ended_at=time.time())
 
+    def record_event(self, receipt):
+        """Keep tool evidence even when the operation raises before a final result exists."""
+        json.dumps(receipt, allow_nan=False)
+        with self.session.transaction() as state:
+            events = state['stages'][self.id].setdefault('events', [])
+            if any(row['id'] == receipt['id'] for row in events):
+                raise ValueError('An event with this identity is already recorded.')
+            events.append(receipt)
+
     def __exit__(self, kind, error, traceback):
         if not self.needs_run:
             return False
         with self.session.transaction() as state:
             row = state['stages'][self.id]
-            if error is not None:
+            if error is not None and row['status'] == 'complete':
+                row.setdefault('post_execution_errors', []).append(
+                    dict(error=f'{kind.__name__}: {error}'[:1000], at=time.time()))
+            elif error is not None:
                 row.update(status='failed', error=f'{kind.__name__}: {error}'[:1000], ended_at=time.time())
                 # Preserve known local logs without uploading arbitrary participant files.
-                row['files'] = sorted(set(row.get('files', []) + [str(p.relative_to(self.session.root)) for p in self.output_dir.iterdir() if p.is_file() and p.name in ('candidate.py','stderr.txt','stdout.txt','partial.json','losses.json')]))
+                row['files'] = sorted(set(row.get('files', []) + [str(p.relative_to(self.session.root)) for p in self.output_dir.iterdir() if p.is_file() and p.name in ('candidate.py','stderr.txt','stdout.txt','partial.json','losses.json','office.json')]))
                 state['progress'].update(status='failed', step=self.name, updated_at=time.time())
             elif row['status'] != 'complete':
                 row.update(status='interrupted', error='Stage exited without recording a result.',
                            ended_at=time.time())
-        if self.session.publisher:
-            try:
-                self.session.publisher.publish_progress()
-            except Exception:
-                pass
+        self.session.queue_progress()
         return False

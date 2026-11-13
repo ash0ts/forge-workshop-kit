@@ -4,6 +4,7 @@ import json
 import time
 import httpx
 from .publication import credentials
+from .session import digest
 
 MODEL = 'zai-org/GLM-5.3-Flash'
 # Published W&B prices previously qualified for Pending; live qualification rechecks them.
@@ -26,44 +27,83 @@ class Provider:
         requests = self.session.read()['requests'].values()
         return {'observed_usd': sum(r.get('observed_usd') or 0 for r in requests),
                 'bounded_unknown_usd': sum(r.get('unknown_usd', 0) for r in requests),
-                'inflight_usd': sum(r['reserved_usd'] for r in requests if r['status'] == 'pending')}
+                'inflight_usd': sum(r['reserved_usd'] for r in requests if r['status'] in ('pending', 'reserved'))}
+
+    def _publish_ledger(self, *, before_send=False):
+        if not self.session.publisher or not self.session.identity.get('notebook_identity'):
+            return
+        try:
+            result = self.session.publisher.publish_request_ledger()
+            with self.session.transaction() as state:
+                state['publications']['request-ledger'] = {'status': 'published', 'result': result}
+        except Exception as error:
+            with self.session.transaction() as state:
+                state['publications']['request-ledger'] = {'status': 'unavailable', 'error': str(error)[:500]}
+            if before_send:
+                raise ProviderStop('No request was sent. Saving its reservation failed; retry this execution after publication access recovers.') from error
 
     def complete(self, request_id, messages, *, max_tokens=8192):
         if not 1 <= max_tokens <= 16384:
             raise ValueError('Output limit must be 1–16384 tokens.')
-        request = dict(model=MODEL, messages=messages, max_tokens=max_tokens,
+        request = dict(model=MODEL, messages=json.loads(json.dumps(messages)), max_tokens=max_tokens,
                        temperature=0.2, response_format={'type': 'json_object'})
         # Conservative bytes-plus-overhead bound. This is separate from context capacity.
         input_bound = len(json.dumps(messages, ensure_ascii=False).encode()) + 4096
         if input_bound > 32768:
             raise ProviderStop('Evidence exceeds the 32K input bound. Select a smaller evidence set.')
         reserved = (input_bound * PRICES['input'] + max_tokens * PRICES['output']) / 1e6
+        # Validate the whole envelope before reusing any saved transport attempt.
+        saved = self.session.read()['requests']
+        previous = [saved[request_id + '/' + str(i)] for i in range(3)
+                    if request_id + '/' + str(i) in saved]
+        if any(row['request'] != request for row in previous):
+            raise ProviderStop('This request identity was already used with different inputs or settings. Start a new execution for the changed code.')
+        completed = [row for row in previous if row['status'] == 'complete']
+        if completed:
+            return completed[-1]
+        if any(row['status'] in ('pending', 'interrupted') for row in previous):
+            raise ProviderStop('A previous request has an uncertain outcome. Inspect it and confirm the old execution stopped before explicitly authorizing another attempt.')
+        # Resolve local authentication before recording any possible provider send.
+        api_key = credentials()
         for attempt in range(3):
             key = request_id + '/' + str(attempt)
             with self.session.transaction() as state:
                 existing = state['requests'].get(key)
                 if existing:
+                    if existing['request'] != request:
+                        raise ProviderStop('Request identity does not match its saved inputs.')
                     if existing['status'] == 'complete':
                         return existing
-                    raise ProviderStop('This request has a saved uncertain/failed attempt. Inspect it before explicitly starting another request.')
+                    if existing['status'] == 'failed':
+                        continue
+                    if existing['status'] != 'reserved':
+                        raise ProviderStop('This request has an uncertain outcome. Review it before another attempt.')
                 if state.get('accounting_stop'):
                     raise ProviderStop(state['accounting_stop'])
                 if state.get('provider_cooldown', 0) > time.time():
                     raise ProviderStop('Provider cooling down after repeated failures. No request sent.')
-                used = sum(r['reserved_usd'] if r['status'] == 'pending' else
+                used = sum(r['reserved_usd'] if r['status'] in ('pending', 'reserved') else
                            (r.get('observed_usd') or 0) + r.get('unknown_usd', 0)
-                           for r in state['requests'].values())
+                           for k, r in state['requests'].items() if k != key)
                 if used + reserved > self.session.budget_usd:
                     raise ProviderStop('Inference allowance exhausted. Saved work remains available.')
                 state['requests'][key] = dict(id=key, request=request, status='pending',
-                                              reserved_usd=reserved, prices=PRICES, price_date=PRICE_DATE, started_at=time.time())
-            # In a hosted runtime, preserve the reservation before sending money-bearing work.
-            if self.session.publisher and self.session.identity.get('notebook_identity'):
-                self.session.publisher.publish_checkpoint()
+                    request_fingerprint=digest(request), transport_state='send_intent',
+                    reserved_usd=reserved, prices=PRICES, price_date=PRICE_DATE,
+                    started_at=time.time(), updated_at=time.time())
+            # Persist conservative send intent without rescanning previous training outputs.
+            try:
+                self._publish_ledger(before_send=True)
+            except ProviderStop:
+                with self.session.transaction() as state:
+                    state['requests'][key].update(status='reserved', transport_state='unsent',
+                        updated_at=time.time(), observed_usd=0, unknown_usd=0)
+                raise
             response, status, headers, error = {}, None, {}, None
+            ambiguous = False
             try:
                 answer = self.http.post('https://api.inference.wandb.ai/v1/chat/completions',
-                    headers={'Authorization': 'Bearer ' + credentials(), 'OpenAI-Project': self.session.project},
+                    headers={'Authorization': 'Bearer ' + api_key, 'OpenAI-Project': self.session.project},
                     json=request)
                 status = answer.status_code
                 headers = {k:v for k,v in answer.headers.items() if k in ('x-request-id', 'request-id', 'retry-after')}
@@ -74,6 +114,7 @@ class Provider:
                     error = str(response.get('error', f'HTTP {status}'))[:500]
             except Exception as exc:
                 error = f'{type(exc).__name__}: {exc}'[:500]
+                ambiguous = status is None or status < 400
             usage = response.get('usage') or {}
             measured = all(type(usage.get(k)) is int and usage[k] >= 0 for k in ('prompt_tokens', 'completion_tokens'))
             cached=(usage.get('prompt_tokens_details') or {}).get('cached_tokens',0)
@@ -90,8 +131,9 @@ class Provider:
             with self.session.transaction() as state:
                 row = state['requests'][key]
                 row.update(response=response, http_status=status, headers=headers, error=error,
-                    ended_at=time.time(), observed_usd=observed, unknown_usd=0 if measured else reserved,
-                    status='complete' if not error and response.get('choices') and not stop else 'failed')
+                    ended_at=time.time(), updated_at=time.time(), transport_state='outcome_unknown' if ambiguous else 'response_saved',
+                    observed_usd=observed, unknown_usd=0 if measured else reserved,
+                    status='interrupted' if ambiguous else ('complete' if not error and response.get('choices') and not stop else 'failed'))
                 state['provider_failures'] = state.get('provider_failures', 0) + 1 if row['status'] == 'failed' else 0
                 if state['provider_failures'] >= 3:
                     state['provider_cooldown'] = time.time() + 30
@@ -99,10 +141,11 @@ class Provider:
                 if stop:
                     state['accounting_stop'] = stop
                 record = dict(row)
+            self._publish_ledger()
+            if ambiguous:
+                raise ProviderStop('The provider request may have completed, but its response was lost. No automatic retry was sent; its full reservation remains charged. Review this attempt before explicitly starting another.')
             if stop:
                 raise ProviderStop(stop)
-            if self.session.publisher and self.session.identity.get('notebook_identity'):
-                self.session.publisher.publish_checkpoint()
             if record['status'] == 'complete':
                 return record
             if status in (401, 403):

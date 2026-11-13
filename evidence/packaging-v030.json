@@ -1,0 +1,229 @@
+{
+  "checked_at": "2026-11-13T20:03:29.648151+00:00",
+  "platform": "macOS arm64 / CPython 3.13.14",
+  "cached_installs": true,
+  "sizes_are_installed_not_download_bytes": true,
+  "profiles": [
+    {
+      "profile": "base",
+      "installed_kib": 344908,
+      "packages": 87,
+      "torch": false,
+      "sunpy": false,
+      "mcp": false
+    },
+    {
+      "profile": "pending",
+      "installed_kib": 335980,
+      "packages": 93,
+      "torch": false,
+      "sunpy": false,
+      "mcp": true
+    },
+    {
+      "profile": "solar",
+      "installed_kib": 1266932,
+      "packages": 133,
+      "torch": true,
+      "sunpy": true,
+      "mcp": false
+    }
+  ],
+  "base_build": {
+    "templates": [
+      "starter",
+      "facilitator"
+    ],
+    "wheel": true,
+    "static_previews": true,
+    "manifest_in_wheel": true
+  },
+  "provider_calls": 0,
+  "training_runs": 0,
+  "remote_publications": 0,
+  "timed_dependency_installs": {
+    "warm_cache": true,
+    "repetitions": 1,
+    "excludes_project_wheel": true,
+    "python": "3.13",
+    "before_revision": "db0342abe0541cb363b668531c0b9bda4f7f2862",
+    "results": [
+      {
+        "profile": "previous-v023",
+        "elapsed_seconds": 1.654,
+        "installed_kib": 1272048,
+        "packages": 152,
+        "command": [
+          "uv",
+          "sync",
+          "--frozen",
+          "--offline",
+          "--no-dev",
+          "--no-install-project",
+          "--python",
+          "3.13"
+        ]
+      },
+      {
+        "profile": "base",
+        "elapsed_seconds": 0.328,
+        "installed_kib": 328448,
+        "packages": 86,
+        "command": [
+          "uv",
+          "sync",
+          "--frozen",
+          "--offline",
+          "--no-dev",
+          "--no-install-project",
+          "--python",
+          "3.13",
+          "--no-group",
+          "data-prep"
+        ]
+      },
+      {
+        "profile": "pending",
+        "elapsed_seconds": 0.331,
+        "installed_kib": 330320,
+        "packages": 92,
+        "command": [
+          "uv",
+          "sync",
+          "--frozen",
+          "--offline",
+          "--no-dev",
+          "--no-install-project",
+          "--python",
+          "3.13",
+          "--no-group",
+          "data-prep",
+          "--extra",
+          "pending"
+        ]
+      },
+      {
+        "profile": "solar",
+        "elapsed_seconds": 0.654,
+        "installed_kib": 1204152,
+        "packages": 132,
+        "command": [
+          "uv",
+          "sync",
+          "--frozen",
+          "--offline",
+          "--no-dev",
+          "--no-install-project",
+          "--python",
+          "3.13",
+          "--no-group",
+          "data-prep",
+          "--extra",
+          "solar"
+        ]
+      }
+    ]
+  },
+  "copied_notebook_metadata": {
+    "resolved_with_uv_lock_script": [
+      "facilitator",
+      "pending_inc",
+      "solar_autoresearch"
+    ],
+    "offline": true,
+    "public_wheel_url_replaced_only_for_local_validation": true,
+    "scripts_executed": false
+  },
+  "full_build": {
+    "templates": [
+      "starter",
+      "facilitator",
+      "pending_inc",
+      "solar_autoresearch"
+    ],
+    "static_previews": true,
+    "marimo_checks": true,
+    "source_distribution_excludes_runtime_and_presentation": true,
+    "build_manifest": "dist/v0.3.0/release-manifest.json"
+  },
+  "generated_source_reproducibility": {
+    "matched": true,
+    "sha256": {
+      "pending_inc.py": "0788f6d9b7bfb5ec9ffea9d511a0e195716b78433da39afa51762704a8f5f3ec",
+      "solar_autoresearch.py": "e5aa5b3386d0b8baa4c89678965107da71270f130d6088c63036ac53b44f23a6",
+      "starter.py": "4c91e3007304ddf1bcdef97a42d56807c968c707deb7d730e170361506da1af1",
+      "facilitator.py": "147a9cc096de47127f4f580d08789d20405afca029b82f794a1f26706ce32976"
+    }
+  },
+  "final_distribution": {
+    "schema_version": 1,
+    "release": "0.3.0",
+    "wheel": {
+      "file": "forge_workshop_kit-0.3.0-py3-none-any.whl",
+      "sha256": "dabde65d3197d9e3679aadb892a11fac925e294293332708511f4fab7adf72c1",
+      "bytes": 138770,
+      "files": 36
+    },
+    "source_distribution": {
+      "file": "forge_workshop_kit-0.3.0.tar.gz",
+      "sha256": "12a00889b812d249e150f3ac15c5d1c232c3d0473d0fd26c83863cff1566148f",
+      "bytes": 614873,
+      "files": 95
+    },
+    "templates": {
+      "starter": {
+        "title": "Forge Workshop Kit \u00b7 Starter",
+        "workshop_id": "starter",
+        "workflow_version": "1",
+        "source": {
+          "file": "starter.py",
+          "sha256": "4c91e3007304ddf1bcdef97a42d56807c968c707deb7d730e170361506da1af1"
+        },
+        "html": {
+          "file": "starter.html",
+          "sha256": "a13dffd40a8ad38932122f18eaff48ae1b0a35069b029963a877a020d53c00c3"
+        }
+      },
+      "facilitator": {
+        "title": "Forge Workshop Kit \u00b7 Progress monitor",
+        "workshop_id": "facilitator",
+        "workflow_version": "1",
+        "source": {
+          "file": "facilitator.py",
+          "sha256": "147a9cc096de47127f4f580d08789d20405afca029b82f794a1f26706ce32976"
+        },
+        "html": {
+          "file": "facilitator.html",
+          "sha256": "3291e7f2cc7501cdcd0b665bd647a14ccca29d9c154ffef2f48b591a0a5c9b1e"
+        }
+      },
+      "pending_inc": {
+        "title": "Pending, Inc. \u00b7 Your project",
+        "workshop_id": "pending-direct-teaching",
+        "workflow_version": "1",
+        "source": {
+          "file": "pending_inc.py",
+          "sha256": "0788f6d9b7bfb5ec9ffea9d511a0e195716b78433da39afa51762704a8f5f3ec"
+        },
+        "html": {
+          "file": "pending_inc.html",
+          "sha256": "d9643d4bfefbebfd8db87990ada2db563543a7c024dba0dbe4bc4f02ef7710e4"
+        }
+      },
+      "solar_autoresearch": {
+        "title": "Build a research loop, then give it an agent",
+        "workshop_id": "solar-autoresearch",
+        "workflow_version": "1",
+        "source": {
+          "file": "solar_autoresearch.py",
+          "sha256": "e5aa5b3386d0b8baa4c89678965107da71270f130d6088c63036ac53b44f23a6"
+        },
+        "html": {
+          "file": "solar_autoresearch.html",
+          "sha256": "5c46c9aa191e8c088b93cc0950a3962b874eae3ea9fc2654f858c2b6b891870b"
+        }
+      }
+    },
+    "lock_sha256": "0821f6ba1003bc2857f6562e5624120efe467204f53f36831334df89d1126f77"
+  }
+}

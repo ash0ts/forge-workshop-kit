@@ -1,6 +1,154 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
-# dependencies = ["forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.2.3/forge_workshop_kit-0.2.3-py3-none-any.whl", "torch==2.15.0"]
+# dependencies = [
+#   "forge-workshop-kit[solar] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.3.0/forge_workshop_kit-0.3.0-py3-none-any.whl",
+#   "abnf==2.2.0",
+#   "aioftp==0.28.3",
+#   "aiohappyeyeballs==2.7.1",
+#   "aiohttp==3.14.5",
+#   "aiosignal==1.4.0",
+#   "annotated-types==0.8.0",
+#   "anyio==4.16.0",
+#   "astropy==8.0.2",
+#   "astropy-healpix==2.0.1",
+#   "astropy-iers-data==0.2026.11.9.0.35.9",
+#   "attrs==26.1.0",
+#   "cachetools==8.0.0",
+#   "certifi==2026.10.23",
+#   "cffi==2.1.1 ; (implementation_name == 'pypy' and sys_platform != 'emscripten') or platform_python_implementation != 'PyPy'",
+#   "chardet==7.7.0",
+#   "charset-normalizer==3.5.2",
+#   "cint==1.0.0",
+#   "click==8.5.1",
+#   "cloudpickle==3.1.2",
+#   "colorama==0.4.6 ; sys_platform == 'win32'",
+#   "contourpy==1.3.3 ; python_full_version < '3.12'",
+#   "contourpy==1.4.0 ; python_full_version >= '3.12'",
+#   "coreweave==0.1.0b0",
+#   "cryptography==50.0.2",
+#   "cwevals==0.0.1b1",
+#   "cycler==0.12.1",
+#   "dask==2026.8.0",
+#   "dask-image==2026.5.0",
+#   "diskcache-weave==5.6.3.post1",
+#   "distro==1.9.0",
+#   "docutils==0.23",
+#   "donfig==0.8.1.post1",
+#   "fickling==0.1.13",
+#   "filelock==3.32.7",
+#   "fonttools==4.68.0",
+#   "frozenlist==1.8.0",
+#   "fsspec==2026.9.0",
+#   "google-crc32c==1.9.0",
+#   "googleapis-common-protos==1.76.0",
+#   "gql==4.4.0",
+#   "graphql-core==3.3.2",
+#   "graphviz==0.21",
+#   "h11==0.16.0",
+#   "httpcore==1.0.9",
+#   "httpx==0.28.1",
+#   "idna==3.20",
+#   "imageio==2.38.1",
+#   "importlib-metadata==10.2.0 ; python_full_version < '3.12'",
+#   "intervaltree==3.2.1",
+#   "itsdangerous==2.2.0",
+#   "jedi==0.20.1",
+#   "jinja2==3.1.6",
+#   "jsonschema==4.26.0",
+#   "jsonschema-specifications==2025.9.1",
+#   "kaitaistruct==0.11",
+#   "kiwisolver==1.5.1",
+#   "lazy-importer==0.1.0 ; python_full_version < '3.12'",
+#   "locket==1.0.0",
+#   "loro==1.17.1 ; sys_platform != 'android' and sys_platform != 'emscripten'",
+#   "marimo==0.25.2",
+#   "markdown==3.11.3",
+#   "markupsafe==3.0.4",
+#   "matplotlib==3.11.2",
+#   "mpl-animators==1.2.4",
+#   "mpmath==1.3.0",
+#   "msgspec==0.22.0",
+#   "multidict==7.2.1",
+#   "narwhals==2.28.0",
+#   "networkx==3.6.1 ; python_full_version < '3.12'",
+#   "networkx==3.7 ; python_full_version >= '3.12'",
+#   "numcodecs==0.16.6 ; python_full_version < '3.12'",
+#   "numcodecs==0.17.1 ; python_full_version >= '3.12'",
+#   "numpy==2.4.6 ; python_full_version < '3.12'",
+#   "numpy==2.5.4 ; python_full_version >= '3.12'",
+#   "opentelemetry-api==1.45.2",
+#   "opentelemetry-exporter-http-transport==0.66b2",
+#   "opentelemetry-exporter-otlp-common==0.66b2",
+#   "opentelemetry-exporter-otlp-proto-common==1.45.2",
+#   "opentelemetry-exporter-otlp-proto-http==1.45.2",
+#   "opentelemetry-proto==1.45.2",
+#   "opentelemetry-sdk==1.45.2",
+#   "opentelemetry-semantic-conventions==0.66b2",
+#   "packaging==26.3",
+#   "pandas==2.3.3",
+#   "parfive==2.3.1",
+#   "parso==0.8.7",
+#   "partd==1.4.2",
+#   "pdfminer-six==20260107",
+#   "pillow==13.0.0",
+#   "pims==0.7",
+#   "platformdirs==4.14.5",
+#   "polyfile-weave==0.5.9",
+#   "propcache==0.5.4",
+#   "protobuf==7.36.2",
+#   "psutil==7.2.2 ; sys_platform != 'android' and sys_platform != 'emscripten'",
+#   "pyavm==0.9.9",
+#   "pycparser==3.12 ; (implementation_name != 'PyPy' and platform_python_implementation != 'PyPy') or (implementation_name == 'pypy' and platform_python_implementation == 'PyPy' and sys_platform != 'emscripten')",
+#   "pydantic==2.14.3",
+#   "pydantic-core==2.50.4",
+#   "pyerfa==2.0.1.5",
+#   "pygments==2.21.0",
+#   "pymdown-extensions==11.0.2",
+#   "pyparsing==3.3.3",
+#   "pyreadline3==3.5.6 ; sys_platform == 'win32'",
+#   "python-dateutil==4.0.0",
+#   "python-multipart==0.0.33",
+#   "pytz==2026.6",
+#   "pyyaml==6.0.3",
+#   "pyzmq==27.3.0 ; sys_platform != 'emscripten'",
+#   "referencing==0.37.0",
+#   "reproject==0.21.0",
+#   "requests==2.34.2",
+#   "rpds-py==2026.9.1",
+#   "scipy==1.17.1 ; python_full_version < '3.12'",
+#   "scipy==1.18.1 ; python_full_version >= '3.12'",
+#   "sentry-sdk==2.75.0",
+#   "setuptools==84.2.1",
+#   "slicerator==1.1.0",
+#   "sniffio==1.3.1",
+#   "sortedcontainers==2.4.0",
+#   "starlette==1.10.0 ; sys_platform != 'emscripten'",
+#   "sunpy==7.0.5 ; python_full_version < '3.12'",
+#   "sunpy==8.0.1 ; python_full_version >= '3.12'",
+#   "sympy==1.14.0",
+#   "tenacity==9.2.1",
+#   "tifffile==2026.3.3 ; python_full_version < '3.12'",
+#   "tifffile==2026.11.12 ; python_full_version >= '3.12'",
+#   "tomlkit==0.15.2",
+#   "toolz==1.2.0",
+#   "torch==2.15.0 ; sys_platform == 'darwin'",
+#   "torch==2.15.0+cpu ; sys_platform != 'darwin'",
+#   "tqdm==4.70.1",
+#   "typing-extensions==4.16.0",
+#   "typing-inspection==0.4.5",
+#   "tzdata==2026.6",
+#   "urllib3==2.8.0",
+#   "uvicorn==0.54.0 ; sys_platform != 'emscripten'",
+#   "wandb==0.31.0",
+#   "wandb-workspaces==0.4.13",
+#   "weave==0.54.0",
+#   "websockets==17.4 ; sys_platform != 'emscripten'",
+#   "xxhash==4.1.0",
+#   "yarl==1.25.1",
+#   "zarr==3.1.6 ; python_full_version < '3.12'",
+#   "zarr==3.4.2 ; python_full_version >= '3.12'",
+#   "zipp==4.1.2 ; python_full_version < '3.12'",
+# ]
 # [tool.uv.sources]
 # torch = [{ index = "pytorch-cpu", marker = "sys_platform != 'darwin'" }]
 # [[tool.uv.index]]
@@ -21,17 +169,18 @@ def _():
     from pathlib import Path
     import numpy as np
     import marimo as mo
-    from forge_workshop_kit import WorkshopSession
+    from forge_workshop_kit import WorkshopSession, setup
     from forge_workshop_kit import solar, training, research, ui, plots, solar_teaching as teaching
     from forge_workshop_kit.session import digest
     from forge_workshop_kit.download import dataset
     from forge_workshop_kit.publication import publish_comparison, publish_report
-    from forge_workshop_kit.traces import export_trace, event, stamp
+    from forge_workshop_kit.traces import export_trace, event, stamp, saved_trace_inputs
     get_lab, set_lab = mo.state({})
     get_feedback, set_feedback = mo.state({})
     get_tracing_check, set_tracing_check = mo.state({})
     get_step, set_step = mo.state("setup", allow_self_loops=True)
-    return (Path, WorkshopSession, dataset, digest, event, export_trace, get_feedback, get_lab, get_step, get_tracing_check, json, mo, np, os, plots, publish_comparison, publish_report, research, set_feedback, set_lab, set_step, set_tracing_check, solar, stamp, teaching, time, training, ui,)
+    get_recovery_revision, set_recovery_revision = mo.state(0)
+    return (Path, WorkshopSession, dataset, digest, event, export_trace, get_feedback, get_lab, get_recovery_revision, get_step, get_tracing_check, json, mo, np, os, plots, publish_comparison, publish_report, research, saved_trace_inputs, set_feedback, set_lab, set_recovery_revision, set_step, set_tracing_check, setup, solar, stamp, teaching, time, training, ui,)
 
 
 @app.cell(hide_code=True)
@@ -70,6 +219,52 @@ def _(get_lab, get_step, go_to, mo, teaching, ui):
 
 
 @app.cell(hide_code=True)
+def _(get_lab, get_recovery_revision, get_step, mo, set_recovery_revision, setup):
+    _s = get_lab().get("session")
+    _revision = get_recovery_revision()
+    _view = get_step()
+    solar_recovery_refresh = mo.ui.button(label="Check for stopped or failed work", on_click=lambda _: set_recovery_revision(get_recovery_revision() + 1), disabled=not bool(_s))
+    _options = _s.recovery_options() if _s else []
+    _choices = {setup.recovery_label(_s.workshop, row) + " · " + row["id"][:6]: row["id"] for row in _options}
+    solar_recovery_choice = mo.ui.dropdown(_choices, value=next(iter(_choices), None), label="Execution to review", full_width=True) if _choices else mo.ui.dropdown({"No failed executions": ""}, value="No failed executions", disabled=True)
+    mo.vstack([mo.md("**A run stopped?** Check its saved status here. Reviewing it never starts work."), solar_recovery_refresh, solar_recovery_choice]) if _options else mo.accordion({"A run stopped? Review recovery": mo.vstack([mo.md("Click below to read saved execution status. Completed results stay saved. An upload failure uses Retry publication in the final comparison instead."), solar_recovery_refresh])})
+    return (solar_recovery_choice, solar_recovery_refresh,)
+
+
+@app.cell(hide_code=True)
+def _(get_lab, mo, solar_recovery_choice, ui):
+    _s = get_lab().get("session")
+    _row = next((row for row in _s.recovery_options() if row["id"] == solar_recovery_choice.value), None) if _s else None
+    _needs_confirmation = bool(_row and (_row["has_uncertain_requests"] or _row["status"] == "running"))
+    solar_recovery_confirm = mo.ui.checkbox(label="I checked that the previous execution has stopped. Keep unresolved requests charged at their reserved maximum.")
+    solar_recovery_allow = mo.ui.run_button(label="Allow retry of this failed execution", disabled=not bool(_row), full_width=True)
+    mo.vstack([mo.Html(ui.result("Review the saved execution", {"Execution": _row["name"], "Status": _row["status"], "Issue": _row.get("error") or "The execution has not finished.", "Next": "Allow another attempt, then click the normal run button for this step. This control does not run the experiment."}, status="failed")), solar_recovery_confirm if _needs_confirmation else mo.md("The previous attempt has ended. Its result and costs remain in the record."), solar_recovery_allow]) if _row else mo.md("")
+    return (solar_recovery_allow, solar_recovery_confirm,)
+
+
+@app.cell(hide_code=True)
+def _(get_feedback, get_lab, get_recovery_revision, mo, refresh_saved, set_feedback, set_recovery_revision, solar_recovery_allow, solar_recovery_choice, solar_recovery_confirm):
+    mo.stop(not solar_recovery_allow.value)
+    _s = get_lab()["session"]
+    try:
+        _route = _s.retry_stage(solar_recovery_choice.value, confirm_stopped=solar_recovery_confirm.value)
+        _message = "Retry allowed. Return to this step’s run button to start attempt " + str(_route["attempt"]) + ". Completed work will be reused."
+    except Exception as _error:
+        _message = str(_error)
+    set_feedback({**get_feedback(), "recovery": _message})
+    refresh_saved()
+    set_recovery_revision(get_recovery_revision() + 1)
+    return
+
+
+@app.cell(hide_code=True)
+def _(get_feedback, mo):
+    _message = get_feedback().get("recovery")
+    mo.callout(mo.md(_message), kind="info") if _message else mo.md("")
+    return
+
+
+@app.cell(hide_code=True)
 def _(get_lab, mo):
     help_message = mo.ui.text_area(label="What do you need help with?", full_width=True)
     help_button = mo.ui.run_button(label="Send a help request", disabled=not bool(get_lab().get("session")))
@@ -86,27 +281,32 @@ def _(get_lab, help_button, help_message, mo):
 
 
 @app.cell(hide_code=True)
-def _(get_step, mo, os, ui):
+def _(get_step, mo, setup, ui):
     mo.stop(get_step() != "setup")
-    _default = os.getenv("WORKSHOP_PROJECT") or "/".join(filter(None, [os.getenv("WANDB_ENTITY"), os.getenv("WANDB_PROJECT")]))
-    project_input = mo.ui.text(value=_default, placeholder="your-name/solar-research", label="Your Forge project", full_width=True)
+    _context = setup.project_context()
+    project_input = mo.ui.text(value=_context["project"], placeholder="your-name/solar-research", label="Your Forge project", disabled=_context["hosted"] and _context["detected"], full_width=True)
     allowance = mo.ui.number(value=8, start=.01, stop=1000, label="Inference allowance in USD; notebook compute is separate")
     connect_button = mo.ui.run_button(label="Connect and restore my work")
-    mo.vstack([mo.Html(ui.step("1. Connect to your own project", "Enter the Forge project where you want your runs and traces saved, then click Connect and restore my work. In Forge, use your signed-in account. On a laptop, run uv run wandb login first.", "Once the connection succeeds, add your first trace in the code below.")), project_input, allowance, connect_button])
+    mo.vstack([mo.Html(ui.step("1. Connect to your own project", "This copy uses its own Forge project and your signed-in account. Confirm the project below, then click Connect and restore my work. On a laptop, enter entity/project and run uv run wandb login first.", "Once the connection succeeds, add your first trace in the code below.")), mo.Html(ui.result("Copied notebook project", {"Project": _context["project"], "Access": "Uses your Forge login"})) if _context["hosted"] and _context["detected"] else project_input, allowance, connect_button])
     return (allowance, connect_button, project_input,)
 
 
 @app.cell(hide_code=True)
-def _(WorkshopSession, allowance, connect_button, get_feedback, mo, project_input, set_feedback, set_lab, set_step, teaching):
+def _(WorkshopSession, allowance, connect_button, get_feedback, mo, project_input, set_feedback, set_lab, set_step, setup, teaching):
     mo.stop(not connect_button.value)
+    _s = None
+    _access = None
     try:
         _s = WorkshopSession.from_environment("solar-autoresearch", project=project_input.value, budget_usd=allowance.value)
         _access = _s.check_access()
         _restored = _s.restore()
+        setup.save_access(_s, _access)
         set_lab(teaching.restore_state(_s))
         set_step(_s.get_view("setup"))
         set_feedback({**get_feedback(), "setup": {"status": "complete", **_access, "restore": _restored}})
     except Exception as _error:
+        if _s is not None and _access is None:
+            setup.save_access(_s, {"write_access": False, "error": str(_error)})
         set_feedback({**get_feedback(), "setup": {"status": "unavailable", "message": str(_error), "next": "Check that you’re signed in and can write to this project, then try Connect again."}})
     return
 
@@ -140,14 +340,14 @@ def _(check_instrumentation, digest, instrumentation_editor, mo, set_tracing_che
 
 
 @app.cell(hide_code=True)
-def _(digest, get_feedback, get_lab, get_step, get_tracing_check, go_to, instrumentation_editor, mo, teaching, ui):
+def _(digest, get_feedback, get_lab, get_step, get_tracing_check, go_to, instrumentation_editor, mo, setup, teaching, ui):
     mo.stop(get_step() != "setup")
     _s = get_lab().get("session")
     _checked = get_tracing_check()
     first_trace = mo.ui.run_button(label="Send my first Agent Lens trace", disabled=not bool(_s) or _checked.get("source") != digest(instrumentation_editor.value))
-    _setup = get_feedback().get("setup", {})
+    _setup = get_feedback().get("setup", {"Project": _s.project} if _s else {})
     solar_next_step_2 = ui.next_step(mo, "Next: inspect the solar data", "data", go_to)
-    mo.vstack([mo.Html(ui.result("Connection", _setup, status=_setup.get("status", "not checked"))) if _setup else mo.md("Enter your project above, then click **Connect and restore my work**."), mo.Html(ui.result("Local tracing check", _checked, status=_checked.get("status", "not checked"))) if _checked else mo.md("Add the attribute in the code above, then click **Check my tracing code**."), mo.md("The Send button runs a small environment check and saves its trace. Open the link below when it finishes."), first_trace, ui.evidence(mo, _s, stage_ids=[teaching.saved(_s, "setup/trace")["id"]] if _s and teaching.saved(_s, "setup/trace") else (), question="Open inspect_training_environment in Agent Lens. Find workshop.exercise=solar-research and the NumPy version returned by the tool.") if _s else mo.md("Connect above first."), solar_next_step_2])
+    mo.vstack([mo.Html(ui.result("Connection", _setup, status=_setup.get("status", "not checked"))) if _setup else mo.md("Enter your project above, then click **Connect and restore my work**."), mo.ui.table(setup.capabilities(_s), selection=None, pagination=False) if _s else mo.md(""), mo.Html(ui.result("Local tracing check", _checked, status=_checked.get("status", "not checked"))) if _checked else mo.md("Add the attribute in the code above, then click **Check my tracing code**."), mo.md("The Send button runs a small environment check and saves its trace. Open the link below when it finishes."), first_trace, ui.evidence(mo, _s, stage_ids=[teaching.saved(_s, "setup/trace")["id"]] if _s and teaching.saved(_s, "setup/trace") else (), question="Open inspect_training_environment in Agent Lens. Find workshop.exercise=solar-research and the NumPy version returned by the tool.") if _s else mo.md("Connect above first."), solar_next_step_2])
     return (first_trace, solar_next_step_2,)
 
 
@@ -158,7 +358,7 @@ def _(event, export_trace, first_trace, get_feedback, get_lab, instrument_tool, 
     teaching.check_instrumentation(instrumentation_editor.value)
     with _s.stage("setup/trace", config={"device": "cpu"}, sources={"instrumentation.py": instrumentation_editor.value}) as _stage:
         if _stage.needs_run:
-            _result, _event = event("inspect_training_environment", {}, lambda: {"numpy": np.__version__, "device": "cpu"})
+            _result, _event = event("inspect_training_environment", {}, lambda: {"numpy": np.__version__, "device": "cpu"}, on_error=_stage.record_event)
             _stage.record({"events": [_event]})
     try:
         _trace = export_trace(_s, _stage.id, "Inspect my CPU research environment", _stage.result["events"], tool_writer=instrument_tool)
@@ -305,22 +505,25 @@ def _(check_measurement, checked, flux_metric_editor, measurement_editor, mo, te
 
 
 @app.cell
-def _(export_trace, instrument_tool, np, plots, teaching, time, training):
+def _(event, export_trace, instrument_tool, np, plots, teaching, training):
     def run_training(session, name, source, splits, config, data_fingerprint, metric_source):
         # The learner's source and metric both belong to this execution's identity.
         with session.stage(name, config=config,
             sources={"candidate.py": source, "development_metric.py": metric_source},
             inputs={"dataset": data_fingerprint, "split": "validation"}) as stage:
             if stage.needs_run:
-                started = time.time()
-                result, prediction = training.train(source, splits["train"], splits["validation"], config, stage.output_dir)
+                (result, prediction), training_event = event("train_and_validate",
+                    {"config": config, "source_fingerprint": stage.source_fingerprint, "split": "validation"},
+                    lambda: training.train(source, splits["train"], splits["validation"], config, stage.output_dir),
+                    on_error=stage.record_event)
                 figure = plots.forecast(prediction, splits["validation"], title=name)
                 figure.savefig(stage.output_dir / "predictions.png", dpi=130)
                 functions = teaching.functions(metric_source)
                 learner_error = functions["my_flux_mae"](prediction, splits["validation"]["y"]) if prediction.ndim == 2 else functions["my_image_mae"](prediction, splits["validation"]["y"], splits["validation"]["mask"])
                 result["metrics"]["learner_metric"] = learner_error
                 result["metrics"]["learner_metric_matches"] = bool(np.isclose(learner_error, result["metrics"]["error"]))
-                result["events"] = [{"id": stage.id + "/train", "name": "train_and_validate", "arguments": {"config": config, "source_fingerprint": stage.source_fingerprint, "split": "validation"}, "result": result["metrics"], "started_at": started, "ended_at": time.time()}]
+                training_event.update(id=stage.id + "/train", result=result["metrics"])
+                result["events"] = [training_event]
                 # These files, not just the score, make the result reproducible.
                 stage.record(result, files=[stage.output_dir / file for file in ("candidate.py", "weights.pt", "predictions.npy", "predictions.png", "losses.json", "stderr.txt")])
         try:
@@ -619,7 +822,7 @@ def _(get_lab, get_step, go_to, mo, next_research_action, ui):
 
 
 @app.cell
-def _(export_trace, final_button, get_feedback, get_lab, instrument_tool, mo, np, plots, publish_comparison, refresh_saved, research, set_feedback, solar, teaching, time, training):
+def _(event, export_trace, final_button, get_feedback, get_lab, instrument_tool, mo, np, plots, publish_comparison, refresh_saved, research, set_feedback, solar, teaching, training):
     mo.stop(not final_button.value)
     mo.output.replace(mo.md("**Evaluating your selected models.** Loading the saved weights and predicting the reserved dates."))
     _s = get_lab()["session"]
@@ -633,9 +836,12 @@ def _(export_trace, final_button, get_feedback, get_lab, instrument_tool, mo, np
         _weights = _s.file("outputs/" + _version["stage_id"] + "/weights.pt")
         with _s.stage("images/final-" + _label, config=_version["config"], sources={"candidate.py": _version["source"]}, inputs={"freeze": _freeze_id, "split": "test"}) as _stage:
             if _stage.needs_run:
-                _started = time.time()
-                _result, _prediction = training.train(_version["source"], None, _test, _version["config"], _stage.output_dir, weights=_weights)
-                _result["events"] = [{"id": _stage.id + "/evaluate", "name": "evaluate_frozen_weights", "arguments": {"freeze": _freeze_id, "source_fingerprint": _stage.source_fingerprint, "trained_stage": _version["stage_id"], "split": "test"}, "result": _result["metrics"], "started_at": _started, "ended_at": time.time()}]
+                (_result, _prediction), _event = event("evaluate_frozen_weights",
+                    {"freeze": _freeze_id, "source_fingerprint": _stage.source_fingerprint, "trained_stage": _version["stage_id"], "split": "test"},
+                    lambda: training.train(_version["source"], None, _test, _version["config"], _stage.output_dir, weights=_weights),
+                    on_error=_stage.record_event)
+                _event.update(id=_stage.id + "/evaluate", result=_result["metrics"])
+                _result["events"] = [_event]
                 _figure = plots.forecast(_prediction, _test, title="Frozen " + _label + " on reserved dates")
                 _figure.savefig(_stage.output_dir / "predictions.png", dpi=130)
                 _stage.record(_result, files=[_stage.output_dir / "predictions.npy", _stage.output_dir / "predictions.png"])
@@ -656,9 +862,12 @@ def _(export_trace, final_button, get_feedback, get_lab, instrument_tool, mo, np
         _test = get_lab()["goes"]["test"]
         with _s.stage("goes/final", config=_best["config"], sources=_best["sources"], inputs={"selected_stage": _best["id"], "split": "test"}) as _g:
             if _g.needs_run:
-                _started = time.time()
-                _result, _prediction = training.train(_best["sources"]["candidate.py"], None, _test, _best["config"], _g.output_dir, weights=_s.file("outputs/" + _best["id"] + "/weights.pt"))
-                _result["events"] = [{"id": _g.id + "/evaluate", "name": "evaluate_frozen_weights", "arguments": {"trained_stage": _best["id"], "source_fingerprint": _g.source_fingerprint, "split": "test"}, "result": _result["metrics"], "started_at": _started, "ended_at": time.time()}]
+                (_result, _prediction), _event = event("evaluate_frozen_weights",
+                    {"trained_stage": _best["id"], "source_fingerprint": _g.source_fingerprint, "split": "test"},
+                    lambda: training.train(_best["sources"]["candidate.py"], None, _test, _best["config"], _g.output_dir, weights=_s.file("outputs/" + _best["id"] + "/weights.pt")),
+                    on_error=_g.record_event)
+                _event.update(id=_g.id + "/evaluate", result=_result["metrics"])
+                _result["events"] = [_event]
                 _g.record(_result, files=[_g.output_dir / "predictions.npy"])
             _prediction = np.load(_g.output_dir / "predictions.npy")
             try:
@@ -692,7 +901,7 @@ def _(conclusion, get_lab, mo, publish_report, refresh_saved, report_button, ui)
     _links = {**_s.read()["progress"].get("evidence", {}), **ui.stage_links(_s, [row["id"] for row in _s.completed() if row["name"].startswith(("images/final-", "goes/final", "images/round-"))])}
     for _key, _receipt in _s.read()["publications"].items():
         if _key.startswith("comparison/"):
-            _links.update({"Comparison " + label: value["run"] for label, value in _receipt.items() if value.get("run")})
+            _links.update(ui.comparison_links(_receipt, suffix=_key.rsplit("/", 1)[-1][:6]))
     _url = publish_report(_s, conclusion.value, _links)
     _s.checkpoint("report", evidence={"Report": _url})
     refresh_saved()
@@ -700,19 +909,17 @@ def _(conclusion, get_lab, mo, publish_report, refresh_saved, report_button, ui)
 
 
 @app.cell(hide_code=True)
-def _(export_trace, get_feedback, get_lab, instrument_tool, mo, publish_comparison, refresh_saved, research, retry_publication, set_feedback, teaching):
+def _(export_trace, get_feedback, get_lab, instrument_tool, mo, publish_comparison, refresh_saved, retry_publication, saved_trace_inputs, set_feedback, teaching):
     mo.stop(not retry_publication.value)
     _s = get_lab()["session"]
     _status = _s.retry_publication()
-    for _row in _s.completed():
-        if _row["result"].get("events") and _row["name"] != "images/final-comparison":
-            try:
-                if _row["result"].get("request_id"):
-                    research.trace_decision(_s, _row["id"])
-                else:
-                    export_trace(_s, _row["id"], "Inspect saved " + _row["name"], _row["result"]["events"], tool_writer=instrument_tool)
-            except Exception as _error:
-                _status[_row["name"]] = str(_error)
+    for _row in _s.read()["stages"].values():
+        try:
+            _trace_inputs = saved_trace_inputs(_s, _row)
+            if _trace_inputs["events"] or _trace_inputs["requests"]:
+                export_trace(_s, **_trace_inputs, tool_writer=instrument_tool)
+        except Exception as _error:
+            _status[_row["name"]] = str(_error)
     for _name, _label in (("images/final-comparison", "solar-images-final"), ("goes/final-comparison", "solar-measurements-final")):
         _saved = teaching.saved(_s, _name)
         if _saved:

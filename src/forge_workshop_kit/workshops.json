@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "templates": [
+    {
+      "slug": "starter",
+      "id": "starter",
+      "kind": "starter",
+      "title": "Forge Workshop Kit · Starter",
+      "workflow_version": "1",
+      "extras": [],
+      "steps": [["exercise", "My exercise"]],
+      "checkpoint_prefixes": [],
+      "comparison_labels": {}
+    },
+    {
+      "slug": "facilitator",
+      "id": "facilitator",
+      "kind": "monitor",
+      "title": "Forge Workshop Kit · Progress monitor",
+      "workflow_version": "1",
+      "extras": [],
+      "steps": [],
+      "checkpoint_prefixes": [],
+      "comparison_labels": {}
+    },
+    {
+      "slug": "pending_inc",
+      "id": "pending-direct-teaching",
+      "kind": "workshop",
+      "title": "Pending, Inc. · Your project",
+      "workflow_version": "1",
+      "extras": ["pending"],
+      "steps": [["setup", "Connect and trace"], ["tools", "Build an invoice tool"], ["loop", "Pass observations to the agent"], ["evals", "Check the work"], ["manual", "Edit one procedure"], ["improve", "Improve twice"], ["final", "Compare fresh tickets"], ["report", "Explain the result"]],
+      "checkpoint_prefixes": [["pending/round-", "improve"], ["pending/original", "loop"], ["pending/check-tool", "tools"], ["pending/check-loop", "loop"], ["pending/setup-trace", "setup"], ["pending/manual", "manual"], ["pending/judge", "evals"], ["pending/final", "final"], ["pending/freeze", "final"], ["pending/report", "report"], ["round-", "improve"], ["loop-check", "loop"], ["scorer-check", "evals"], ["setup", "setup"], ["tools", "tools"], ["loop", "loop"], ["evals", "evals"], ["manual", "manual"], ["improve", "improve"], ["final", "final"], ["report", "report"]],
+      "comparison_labels": {"starting": "Starting instructions", "manual": "Manual revision", "agent": "Agent-selected version"}
+    },
+    {
+      "slug": "solar_autoresearch",
+      "id": "solar-autoresearch",
+      "kind": "workshop",
+      "title": "Build a research loop, then give it an agent",
+      "workflow_version": "1",
+      "extras": ["solar"],
+      "steps": [["setup", "Connect"], ["data", "Solar data"], ["baseline", "Persistence"], ["search", "Track and search"], ["images", "Solar images"], ["research", "Research agent"], ["final", "Final evaluation"]],
+      "checkpoint_prefixes": [["images/round-", "research"], ["goes/search-", "search"], ["images/manual-", "images"], ["images/final", "final"], ["goes/final", "final"], ["report", "final"], ["setup", "setup"], ["data", "data"], ["baseline", "baseline"], ["search", "search"], ["images", "images"], ["research", "research"], ["final", "final"]],
+      "comparison_labels": {"persistence": "Persistence", "manual": "Manual image model", "agent": "Agent-selected image model", "goes-persistence": "GOES persistence", "image-persistence": "Image persistence"}
+    }
+  ]
+}

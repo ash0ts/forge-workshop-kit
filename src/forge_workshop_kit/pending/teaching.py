@@ -14,10 +14,8 @@ from .harness import Harness
 from .loop import runtime_sources
 
 
-STEPS = [('setup','Connect and trace'),('tools','Build an invoice tool'),
-         ('loop','Pass observations to the agent'),('evals','Check the work'),
-         ('manual','Edit one procedure'),('improve','Improve twice'),
-         ('final','Compare fresh tickets'),('report','Explain the result')]
+from forge_workshop_kit.manifest import get_workshop
+STEPS = tuple(tuple(step) for step in get_workshop("pending-direct-teaching")["steps"])
 
 STARTERS = {
     'tool': '''def my_invoice_tool(state, account_id, invoice_id):

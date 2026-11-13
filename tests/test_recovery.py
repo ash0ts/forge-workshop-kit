@@ -12,7 +12,11 @@ class Artifact:
             p=Path(root)/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(content)
 class Api:
     def __init__(self,files):self.files=files
-    def artifact(self,*args,**kwargs):return Artifact(self.files)
+    def artifact(self,*args,**kwargs):
+        if kwargs.get('type') == 'workshop-request-ledger':
+            import wandb
+            raise wandb.errors.CommError('not found')
+        return Artifact(self.files)
 
 def test_destroyed_hosted_runtime_restores_exact_source_results_and_uncertain_requests(tmp_path):
     s=WorkshopSession('test/project','lab',state_dir=tmp_path/'before',notebook_identity='copy-a')

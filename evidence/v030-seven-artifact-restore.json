@@ -1,0 +1,14 @@
+{
+  "test": "seven independent output artifacts, explicit reference manifest",
+  "checkpoint": "wandb/forge-workshop-kit/workspace-c82483fa4de418266e47bffc:v0",
+  "restore": {
+    "status": "restored",
+    "completed": 7
+  },
+  "outputs_verified": 7,
+  "new_model_requests": 0,
+  "new_training_executions": 0,
+  "checkpoint_upload_seconds": 3.9963960419991054,
+  "progress_updates": 2,
+  "progress_run": "wandb/forge-workshop-kit/c82483fa4de418266e47bffc"
+}

@@ -1,0 +1,27 @@
+{
+  "purpose": "Local snapshot preparation only; no upload, authentication, inference, or training.",
+  "source": "Existing ux-v020-solar saved workspace; source files unchanged.",
+  "reference_setup": "Mocked explicit immutable artifact-entry manifest; not a new publication or remote integration check.",
+  "baseline": {
+    "kind": "workshop-checkpoint",
+    "local_files": 101,
+    "local_bytes": 32109560,
+    "referenced_files": 0,
+    "snapshot_seconds": 0.2574838339933194
+  },
+  "referenced_checkpoint": {
+    "kind": "workshop-checkpoint",
+    "local_files": 5,
+    "local_bytes": 5434207,
+    "referenced_files": 96,
+    "snapshot_seconds": 0.05569133398239501
+  },
+  "request_ledger": {
+    "kind": "workshop-request-ledger",
+    "local_files": 3,
+    "local_bytes": 248325,
+    "referenced_files": 0,
+    "snapshot_seconds": 0.025369250011863187
+  },
+  "reduction_percent": 83.0760465107588
+}

@@ -1,14 +1,14 @@
 # Framework contract
 
-A `WorkshopSession` binds one workshop release and workspace to one project. Hosted workspace identity comes from the notebook artifact collection, which survives runtime replacement and changes when the notebook is copied. Local workspaces create an identity once in their state directory. Never bake an attendee workspace into a template.
+A `WorkshopSession` binds one workflow version and workspace to one project. New hosted workspace identities use `WANDB_NOTEBOOK_ANCHOR_RUN`, which survives renaming and runtime replacement and changes when the notebook is copied. The collection name is only a fallback for older hosts. Package version and workflow compatibility are separate: copy changes do not invalidate completed experiments. Local workspaces create an identity once in their state directory. Never bake an attendee workspace into a template.
 
-A stage identity includes its name, configuration, explicit source, input references, and attempt. Include every dependency that could change the result. The context manager does not skip Python automatically: execute only inside `if stage.needs_run`. Completed stages expose `stage.result`. Failed, interrupted, or uncertain attempts require review; an explicit new attempt preserves the original.
+A stage identity includes its name, configuration, explicit source, input references, and attempt. Include every dependency that could change the result. The context manager does not skip Python automatically: execute only inside `if stage.needs_run`. Completed stages expose `stage.result`. Failed, interrupted, or uncertain attempts require review. Use `session.recovery_options()` and `session.retry_stage(stage_id)` to authorize a new attempt, then press the exercise Run control. Uncertain requests also require confirmation that the old execution stopped. Successful sibling cases reuse their saved results. Request reuse requires the complete original request, including settings and messages, to match.
 
 Stage records and provider receipts are independent of trace export. Publication failures cannot turn an executed attempt into an unexecuted one. W&B artifacts include an explicit file allowlist and checksums. No runtime home, environment file, credential, or arbitrary directory is uploaded.
 
-The facilitator notebook reads `workshop-progress` runs through the public W&B API. It cannot run cells, alter experiments, or issue requests for participants. An absent update means unknown. Participants can continue when monitoring is unavailable.
+The facilitator notebook reads `workshop-progress` runs through the public W&B API. `monitoring.py` imports the workshop manifest without loading either lesson runtime. It saves the roster and filters on the facilitator’s runtime, queries independent projects concurrently, and keeps notebook workspaces separate. Date filters use the last published update; workspace and notebook-copy filters use exact IDs. An absent update means unknown. A read failure means unavailable. Monitoring cannot run participant cells or block their work.
 
-The direct inference client reserves a conservative maximum before each transport attempt. Unknown usage retains the reservation. Model mismatches and usage exceeding reservations stop further calls. At most two transport retries occur; three consecutive failures trigger a cooldown. This is a local participant allowance, not a central security boundary or provider billing guarantee.
+The direct inference client reserves a conservative maximum before each transport attempt. Unknown usage retains the reservation. Model mismatches and usage exceeding reservations stop further calls. Explicit provider errors permit at most two transport retries; three consecutive failures trigger a cooldown. A lost response stops without an automatic resend. Its reservation stays charged until usage can be reconciled. This is a local participant allowance, not a central security boundary or provider billing guarantee.
 
 Research candidates execute in a separate Python process with an allowlisted environment and a wall-clock limit. The required exercise uses reviewed code. This is not an adversarial sandbox: do not execute unreviewed code you do not trust.
 
@@ -21,3 +21,21 @@ Use `save_draft(name, source)` for learner edits and `get_draft(name, starter)` 
 Bind every interactive element to a notebook global. This includes navigation and prerequisite buttons returned by a helper. The shared views return composite UI elements for this purpose; placing an anonymous button in a layout can render a button whose callback never runs. [Marimo's interaction rule](https://docs.marimo.io/guides/interactivity/) explains the requirement.
 
 Render completed work from stage records, not temporary display state. Publication receipts are separate: an experiment can be complete while its trace or native comparison is unavailable. Retry publication using the saved result. Never put training or inference inside a render, navigation callback, or restore path.
+
+## Saving and publication
+
+Execution records are written locally before publication. A completed response stays completed if an upload fails. Progress and help requests publish a small run update without waiting for model artifacts. Hosted inference first publishes a small request ledger; failure to save the reservation prevents the request from being sent.
+
+Completed stage outputs are published once. Later checkpoints reference those immutable artifact entries, while including the current journal and drafts. Restore downloads into a temporary directory, verifies file hashes and identity, installs outputs, and replaces the journal last. A partial download cannot claim that missing outputs are complete.
+
+Each comparison tracks W&B, Weave and native EvalTables publication separately. A publication-only retry skips channels that already succeeded. Reports and trace exports have their own saved receipts. Unavailable judgments remain missing.
+
+The small `workshops.json` manifest owns template titles, step names, dependency extras and comparison labels. It does not execute stages. Workshop code stays in the authored notebook cells and domain modules.
+
+## Project setup
+
+`setup.project_context()` reads the hosted notebook’s `WANDB_ENTITY` and `WANDB_PROJECT`. Those values take precedence over a local `WORKSHOP_PROJECT` default when a notebook identity is present. The hosted setup shows the detected project without an editable destination field. Local notebooks accept an explicit project. See the [participant setup guide](setup.md).
+
+The explicit connection check verifies project writes and stores an access receipt. The setup table reads saved receipts to distinguish project access, trace readback, inference, Weave, and native EvalTables. Rendering it sends no request. Inference remains unverified until a participant explicitly runs a model call.
+
+`Stage.record_event()` saves a tool or training failure before its exception propagates. The notebook’s export retry includes these events from failed stages as well as completed results. Publication remains separate from execution; neither a failed upload nor browsing recovery options creates a new paid request.

@@ -666,7 +666,7 @@
   "branchKeyboard": "Read Candidate B’s alternative change to that same starting code. Test it separately so you can compare the outcomes.",
   "runInspector": "Recorded GOES rehearsal. Both models remained worse than persistence.\n\nEXPERIMENT\tVALIDATION ERROR ↓\tSETTINGS USED\ngoes/search-0 ↗\t2.877737\tmlp, width 16, learning rate 0.001\ngoes/search-2 ↗\t2.712147\tmlp, width 16, learning rate 0.003\nHide settings\nSame source, dates, seed, batch size, and 60 training steps. The learning rate changed. Open the loss curves before deciding whether either model trained enough.",
   "inspectorKeyboard": "false",
-  "answerNavigation": "http://127.0.0.1:3058/75",
-  "answerReturn": "http://127.0.0.1:3058/10",
+  "answerNavigation": "http://127.0.0.1:8048/75",
+  "answerReturn": "http://127.0.0.1:8048/10",
   "presenterNotes": true
 }

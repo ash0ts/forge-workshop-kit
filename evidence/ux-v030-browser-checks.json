@@ -1,0 +1,29 @@
+{
+  "mode": "offline browser fixtures; no model requests or external writes",
+  "evidence": [
+    {
+      "name": "pending",
+      "steps": 8,
+      "retries": 2,
+      "requests": 1,
+      "unknown": 0.01,
+      "errors": []
+    },
+    {
+      "name": "solar",
+      "steps": 7,
+      "retries": 2,
+      "requests": 1,
+      "unknown": 0.01,
+      "errors": []
+    }
+  ],
+  "facilitator": {
+    "saved_roster": true,
+    "restored_after_reload": true,
+    "projects": 2,
+    "fixture_rows_only": true,
+    "automatic_refresh_default": false,
+    "no_external_writes": true
+  }
+}

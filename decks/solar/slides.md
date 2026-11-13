@@ -113,9 +113,9 @@ Source notes and recorded evidence: notes/sources.md.
 ```sh
 git clone https://github.com/ash0ts/forge-workshop-kit.git
 cd forge-workshop-kit
-uv sync --frozen
-uv run wandb login --verify
-uv run marimo edit notebooks/solar_autoresearch.py
+uv sync --frozen --extra solar
+uv run --extra solar wandb login --verify
+uv run --extra solar marimo edit notebooks/solar_autoresearch.py
 ```
 
 <p class="aside">In Connect, enter <code>your-entity/your-project</code>. Keep the terminal open.</p><div class="bottom-note">Install Git and uv first. Hosted participants skip these commands.</div>

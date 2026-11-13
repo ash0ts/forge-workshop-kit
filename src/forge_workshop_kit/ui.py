@@ -215,6 +215,11 @@ def _weave_url(reference):
 def _comparison_label(record, ordinal):
     """Name a saved comparison from its published object, including legacy receipts."""
     for label, version in record.items():
+        if version.get('comparison_name'):
+            name = version['comparison_name']
+            return {'solar-images-final': 'Solar images · final',
+                    'solar-measurements-final': 'GOES measurements · final',
+                    'pending-final': 'Office cases · final'}.get(name, name.replace('-', ' ').capitalize())
         for field, suffix in (('evaluation', 'evaluation'), ('dataset', 'cases')):
             reference = version.get(field, '')
             if not isinstance(reference, str) or not reference.startswith('weave:///'):
@@ -231,6 +236,24 @@ def _comparison_label(record, ordinal):
                         'pending-final': 'Office cases · final'}.get(
                             name, name.replace('-', ' ').capitalize())
     return f'Saved comparison {ordinal}'
+
+
+def comparison_links(receipt, *, suffix=''):
+    """Name image and measurement comparisons separately, including persistence."""
+    found = {}
+    for label, row in receipt.items():
+        if not isinstance(row, dict):
+            continue
+        prefix = _comparison_label(receipt, suffix or 1) + " / " + label
+        if suffix:
+            prefix += ' · ' + suffix
+        if row.get('run'):
+            found[prefix + ' · run'] = row['run']
+        for key, title in (('dataset', 'cases'), ('evaluation', 'Weave evaluation')):
+            url = _weave_url(row.get(key, ''))
+            if url:
+                found[prefix + ' · ' + title] = url
+    return found
 
 
 def publication(mo, session):

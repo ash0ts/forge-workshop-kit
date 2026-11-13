@@ -1,0 +1,122 @@
+{
+  "purpose": "v0.3.0 live publication qualification; synthetic outputs only",
+  "provider_requests": 0,
+  "training_executions": 0,
+  "project": "wandb/forge-workshop-kit",
+  "workspace_id": "b7c24543ef6a93d114782207",
+  "started_at": 1794600373.75555,
+  "checks": {
+    "stages": {
+      "e1f9752947ac1648c2e85bb09b2aeb1c": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/e1f9752947ac1648c2e85bb09b2aeb1c"
+    },
+    "immutable_file_references": {
+      "outputs/e1f9752947ac1648c2e85bb09b2aeb1c/result.txt": {
+        "artifact_path": "files/0/result.txt",
+        "sha256": "c8b9d7fef4fa63ba8f407a13c985f9fcba10f7d73395e2489e0d3f6111756cb9",
+        "reference": "wandb-artifact://41727469666163743a34353932323237373438/files/0/result.txt"
+      }
+    },
+    "checkpoint_ref": "wandb/forge-workshop-kit/workspace-b7c24543ef6a93d114782207:v0",
+    "ledger_ref": "wandb/forge-workshop-kit/requests-b7c24543ef6a93d114782207:v0",
+    "restore": {
+      "status": "restored",
+      "completed": 1
+    },
+    "restored_files_match": true,
+    "restored_stage_matches": true,
+    "comparison_first": {
+      "saved-fixture": {
+        "comparison_name": "kit-v030-publication-qualification",
+        "condition": "saved-fixture",
+        "run_id": "cdf64b7ceb218d6e43431b90cd0b16f3",
+        "wandb_status": "published",
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/cdf64b7ceb218d6e43431b90cd0b16f3",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/kit-v030-publication-qualification-saved-fixture-cases:vZkUDzGX9iZ6Zpks4hAeXK5UVmYjmRlZbI0QJhHMNEY",
+        "weave_evaluated": true,
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/kit-v030-publication-qualification-saved-fixture-evaluation:OjWJ8FYFQ6AYKOod3UvgVU5fekgjCicyb4GNX8GLD70",
+        "weave_status": "published",
+        "native_status": "unavailable",
+        "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+      }
+    },
+    "comparison_retry": {
+      "saved-fixture": {
+        "comparison_name": "kit-v030-publication-qualification",
+        "condition": "saved-fixture",
+        "run_id": "cdf64b7ceb218d6e43431b90cd0b16f3",
+        "wandb_status": "published",
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/cdf64b7ceb218d6e43431b90cd0b16f3",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/kit-v030-publication-qualification-saved-fixture-cases:vZkUDzGX9iZ6Zpks4hAeXK5UVmYjmRlZbI0QJhHMNEY",
+        "weave_evaluated": true,
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/kit-v030-publication-qualification-saved-fixture-evaluation:OjWJ8FYFQ6AYKOod3UvgVU5fekgjCicyb4GNX8GLD70",
+        "weave_status": "published",
+        "native_status": "unavailable",
+        "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+      }
+    },
+    "first_opened_runs": [
+      {
+        "run_id": "cdf64b7ceb218d6e43431b90cd0b16f3",
+        "name": "kit-v030-publication-qualification / saved-fixture",
+        "job_type": "workshop-evaluation"
+      },
+      {
+        "run_id": "cdf64b7ceb218d6e43431b90cd0b16f3",
+        "name": "kit-v030-publication-qualification / saved-fixture",
+        "job_type": "workshop-evaluation"
+      }
+    ],
+    "retry_opened_runs": [
+      {
+        "run_id": "cdf64b7ceb218d6e43431b90cd0b16f3",
+        "name": "kit-v030-publication-qualification / saved-fixture",
+        "job_type": "workshop-evaluation"
+      }
+    ],
+    "successful_weave_refs_unchanged": true,
+    "native_outage_preserves_wandb_run_state": "finished",
+    "comparison_after_outage_fix": {
+      "saved-fixture": {
+        "comparison_name": "kit-v030-publication-qualification",
+        "condition": "saved-fixture",
+        "run_id": "cdf64b7ceb218d6e43431b90cd0b16f3",
+        "wandb_status": "published",
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/cdf64b7ceb218d6e43431b90cd0b16f3",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/kit-v030-publication-qualification-saved-fixture-cases:vZkUDzGX9iZ6Zpks4hAeXK5UVmYjmRlZbI0QJhHMNEY",
+        "weave_evaluated": true,
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/kit-v030-publication-qualification-saved-fixture-evaluation:OjWJ8FYFQ6AYKOod3UvgVU5fekgjCicyb4GNX8GLD70",
+        "weave_status": "published",
+        "native_status": "unavailable",
+        "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+      }
+    },
+    "raised_tool_error_trace": {
+      "trace_id": "c80308383ad2833d8ae10512b88fec4c",
+      "conversation_id": "7b73d0253b20c8b852f77f223108187b",
+      "verified": true,
+      "expected": 2,
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/7b73d0253b20c8b852f77f223108187b",
+      "span_ids": {
+        "7b73d0253b20c8b852f77f223108187b/tool-0": "68a831525f8ebd86"
+      },
+      "stored_spans": 2
+    },
+    "raised_tool_error_saved": [
+      {
+        "id": "7b73d0253b20c8b852f77f223108187b/tool-0",
+        "name": "qualification_tool",
+        "arguments": {
+          "fixture": true
+        },
+        "started_at": 1794600500.194519,
+        "result": null,
+        "ended_at": 1794600500.1945238,
+        "status": "error",
+        "error": "TimeoutError: Synthetic committed-before-timeout teaching error",
+        "error_type": "TimeoutError"
+      }
+    ]
+  },
+  "status": "complete",
+  "ended_at": 1794600643.3863811
+}

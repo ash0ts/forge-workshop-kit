@@ -93,6 +93,8 @@ def export_trace(session, identity, mission, events, requests=(), *, tool_writer
                     receipt['span_ids'][event['id']] = format(trace.get_current_span().get_span_context().span_id, '016x')
                     if event.get('error'):
                         tool.record_error(RuntimeError(event['error']))
+                        if event.get('error_type'):
+                            tool.set_attributes({'error.type': event['error_type']})
             with session.transaction() as state:
                 state['publications'][key] = receipt
     if not sdk.force_flush():
@@ -112,19 +114,21 @@ def verify_trace(session, key, receipt, events, requests):
             raise RuntimeError('Missing or duplicate tool span')
         for field, value in [('tool_call_arguments', event['arguments']), ('tool_call_result', event['result'])]:
             actual = matching[0].get(field)
-            actual = json.loads(actual or '{}') if isinstance(actual, str) else actual
+            if isinstance(actual, str):
+                # Forge omits the serialized result when a raised tool call returned nothing.
+                actual = json.loads(actual) if actual else (None if field == 'tool_call_result' and value is None else {})
             if actual != value:
                 raise RuntimeError('Stored tool arguments/result differ from the actual operation.')
     for request in requests:
-        matching = [r for r in calls if r.get('response_id') == request.get('response',{}).get('id')]
-        if request.get('response',{}).get('id') and len(matching) != 1:
+        matching = [r for r in calls if r.get('response_id') == (request.get('response') or {}).get('id')]
+        if (request.get('response') or {}).get('id') and len(matching) != 1:
             raise RuntimeError('Missing provider response span')
         if matching:
             row = matching[0]
             if row.get('request_model') != request['request']['model']:
                 raise RuntimeError('Stored model differs')
             for source, dest in [('prompt_tokens','input_tokens'), ('completion_tokens','output_tokens')]:
-                usage = request.get('response',{}).get('usage') or {}
+                usage = (request.get('response') or {}).get('usage') or {}
                 if source in usage and row.get(dest) != usage[source]:
                     raise RuntimeError('Stored usage differs')
     receipt.update(verified=True, stored_spans=len(rows))
@@ -133,9 +137,48 @@ def verify_trace(session, key, receipt, events, requests):
     return receipt
 
 
-def event(name, arguments, action, *, event_id=None):
-    """Use in visible learner instrumentation; returns both result and independent receipt."""
+def saved_trace_inputs(session, stage_or_id):
+    """Collect one copy of each saved event and every ended provider attempt."""
+    state = session.read()
+    row = state['stages'][stage_or_id] if isinstance(stage_or_id, str) else stage_or_id
+    result = row.get('result') or {}
+    events = {}
+    for receipt in [*result.get('events', []), *row.get('events', [])]:
+        identity = receipt['id']
+        if identity in events and events[identity] != receipt:
+            raise ValueError('Conflicting saved tool events share one identity; review the receipts before export.')
+        events[identity] = receipt
+    requests = [request for key, request in state['requests'].items()
+                if (key == row['id'] or key.startswith(row['id'] + '/')
+                    or key == result.get('request_id')) and request.get('ended_at') is not None]
+    requests.sort(key=lambda request: (request.get('started_at', 0), request.get('id', '')))
+    mission = result.get('mission')
+    if not mission:
+        mission = next((message['content'] for request in requests
+                        for message in request['request'].get('messages', [])
+                        if message.get('role') == 'user'), row['name'])
+    return {'identity': row['id'], 'mission': mission,
+            'events': sorted(events.values(), key=lambda event: (event['started_at'], event['id'])),
+            'requests': requests}
+
+
+def event(name, arguments, action, *, event_id=None, on_error=None):
+    """Return an independent receipt, or persist a raised error before reraising it."""
     started = time.time()
-    result = action()
-    return result, dict(id=event_id or digest([name, arguments, started])[:24], name=name,
-        arguments=arguments, result=result, started_at=started, ended_at=time.time())
+    receipt = dict(id=event_id or digest([name, arguments, started])[:24], name=name,
+                   arguments=arguments, started_at=started)
+    try:
+        result = action()
+    except BaseException as error:
+        receipt.update(result=None, ended_at=time.time(), status='error',
+                       error=f'{type(error).__name__}: {error}', error_type=type(error).__name__)
+        error.workshop_event = receipt
+        if on_error is not None:
+            try:
+                on_error(receipt)
+            except Exception as save_error:
+                # A storage error must not turn a tool failure into a different exception.
+                error.add_note(f'Error receipt could not be saved: {save_error}')
+        raise
+    receipt.update(result=result, ended_at=time.time(), status='complete')
+    return result, receipt

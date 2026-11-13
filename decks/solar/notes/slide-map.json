@@ -66,7 +66,7 @@
       "number": 7,
       "key": "local",
       "title": "Run the same notebook on your laptop",
-      "body": "```sh\ngit clone https://github.com/ash0ts/forge-workshop-kit.git\ncd forge-workshop-kit\nuv sync --frozen\nuv run wandb login --verify\nuv run marimo edit notebooks/solar_autoresearch.py\n```\n\n<p class=\"aside\">In Connect, enter <code>your-entity/your-project</code>. Keep the terminal open.</p><div class=\"bottom-note\">Install Git and uv first. Hosted participants skip these commands.</div>",
+      "body": "```sh\ngit clone https://github.com/ash0ts/forge-workshop-kit.git\ncd forge-workshop-kit\nuv sync --frozen --extra solar\nuv run --extra solar wandb login --verify\nuv run --extra solar marimo edit notebooks/solar_autoresearch.py\n```\n\n<p class=\"aside\">In Connect, enter <code>your-entity/your-project</code>. Keep the terminal open.</p><div class=\"bottom-note\">Install Git and uv first. Hosted participants skip these commands.</div>",
       "notes": "Hosted participants can skip this slide. On a laptop, install Git and uv, clone the repository, and run these commands. Authenticate in the terminal and keep that terminal open while marimo runs. There is no extra workshop service to start.",
       "kind": "",
       "time": "0:06",
