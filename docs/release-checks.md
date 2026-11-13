@@ -18,6 +18,7 @@ The revised notebooks were exercised in a browser using fresh local workspaces a
 | Earlier hosted check | A maintainer used native Copy to project, checked its distinct identity, and exported stored spans with hosted authentication. [Receipt](../evidence/hosted-copy.json). This does not establish external-account access to the revised release. |
 | Fresh artifact restore | Restored 44 completed Solar stages and 16 drafts into a fresh local runtime. All 96 output files matched byte-for-byte. Loading the saved weights reproduced final error 0.11001095193834161 exactly, with no training updates or new inference. [Receipt](../evidence/ux-v020-restored.json). |
 | Public Reports | Both new rehearsal Reports rendered in a signed-out browser. [Readback](../evidence/ux-v020-reports-public.json). Templates still require sign-in to copy. |
+| Public deck and downloads | The deployed deck passed signed-out direct-link, reload, image and worked-answer return checks with HTTP 200 and no browser errors. PDF, browser ZIP, editable source ZIP and wheel downloads match local hashes. [Readback](../evidence/ux-v020-public-release.json), [deployment](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43473977791). |
 | Monitoring | Public progress runs are read-only. Missing updates remain unknown. No classroom-scale load test or human rehearsal has been performed. |
 
 ## What the recorded results show

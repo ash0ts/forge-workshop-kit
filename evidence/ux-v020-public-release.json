@@ -1,0 +1,54 @@
+{
+  "signed_out": true,
+  "pages": [
+    {
+      "key": "cover",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/1/"
+    },
+    {
+      "key": "native-lens",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/52/"
+    },
+    {
+      "key": "persistence-image",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/40/"
+    }
+  ],
+  "answer_return": true,
+  "deep_link_reload": true,
+  "errors": [],
+  "failed_responses": [],
+  "downloads": [
+    {
+      "name": "solar-autoresearch.pdf",
+      "status": 200,
+      "method": "anonymous curl with system certificate trust",
+      "bytes": 1858791,
+      "sha256": "ae202f88140f266ab02f4c5216290258bdffa1e6e4463dae81df185494f921c5"
+    },
+    {
+      "name": "solar-autoresearch-browser.zip",
+      "status": 200,
+      "method": "anonymous curl with system certificate trust",
+      "bytes": 2786394,
+      "sha256": "45b873178320e93a3fb442f04faec0841eea400959c899836f4c7e51d99b0a8d"
+    },
+    {
+      "name": "solar-autoresearch-deck-source.zip",
+      "status": 200,
+      "method": "anonymous curl with system certificate trust",
+      "bytes": 1934035,
+      "sha256": "2264e9067d5a0da8bca6408f95bd6f85bc891dc19186be13a602d165fd8950af"
+    },
+    {
+      "name": "forge_workshop_kit-0.2.0-py3-none-any.whl",
+      "status": 200,
+      "method": "anonymous curl with system certificate trust",
+      "bytes": 124796,
+      "sha256": "42700527fb3aee3c7f1949b02e0a5bbfb270f30bde8e9ee687314c6febffdfb6"
+    }
+  ]
+}
