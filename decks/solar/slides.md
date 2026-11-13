@@ -9,6 +9,7 @@ aspectRatio: 16/9
 canvasWidth: 1280
 colorSchema: light
 transition: fade
+wakeLock: false
 fonts:
   sans: IBM Plex Sans
   mono: IBM Plex Mono

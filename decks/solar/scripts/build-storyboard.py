@@ -114,7 +114,7 @@ for slide in slides:
     slide['body']=slide['body'].replace('href="/images/', 'href="'+BASE+'images/')
     slide['body']=re.sub(r'(<table[^>]*>)', r'\1<tbody>', slide['body']).replace('</table>', '</tbody></table>')
 indices={s['key']:i+1 for i,s in enumerate(slides)}
-front='''---\ntheme: default\ntitle: Build a research loop, then give it an agent\nauthor: Anish Shah\ninfo: Solar Autoresearch at Pending, Inc.\nclass: cover\nlayout: default\naspectRatio: 16/9\ncanvasWidth: 1280\ncolorSchema: light\ntransition: fade\nfonts:\n  sans: IBM Plex Sans\n  mono: IBM Plex Mono\n  provider: none\nmdc: true\nhighlighter: shiki\ndrawings:\n  enabled: false\ndownload: false\nexportFilename: solar-autoresearch\n---\n\n'''
+front='''---\ntheme: default\ntitle: Build a research loop, then give it an agent\nauthor: Anish Shah\ninfo: Solar Autoresearch at Pending, Inc.\nclass: cover\nlayout: default\naspectRatio: 16/9\ncanvasWidth: 1280\ncolorSchema: light\ntransition: fade\nwakeLock: false\nfonts:\n  sans: IBM Plex Sans\n  mono: IBM Plex Mono\n  provider: none\nmdc: true\nhighlighter: shiki\ndrawings:\n  enabled: false\ndownload: false\nexportFilename: solar-autoresearch\n---\n\n'''
 parts=[]
 for i,s in enumerate(slides):
     fm='' if i==0 else ('\n---\nclass: '+s['kind']+'\n---\n\n' if s['kind'] else '\n---\n\n')

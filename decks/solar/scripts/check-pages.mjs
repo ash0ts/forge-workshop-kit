@@ -14,7 +14,7 @@ const server=createServer(async(req,res)=>{
   if(!url.pathname.startsWith(prefix)){res.writeHead(404);res.end();return}
   let file=path.resolve(root,url.pathname.slice(prefix.length));
   if(!file.startsWith(root+'/')&&file!==root){res.writeHead(403);res.end();return}
-  if(!path.extname(file))file=path.join(root,'index.html');
+  if((await fs.stat(file)).isDirectory())file=path.join(file,'index.html');
   const data=await fs.readFile(file);res.setHeader('Content-Type',types[path.extname(file)]||'application/octet-stream');res.end(data);
  }catch{res.writeHead(404);res.end()}
 });
@@ -24,6 +24,19 @@ const map=JSON.parse(await fs.readFile('notes/slide-map.json','utf8'));
 const browser=await chromium.launch({headless:true,executablePath});
 try{
  const page=await browser.newPage();
+ await page.addInitScript(()=>{
+  window.__wakeLockRequests=0;
+  Object.defineProperty(navigator,'wakeLock',{value:{request(){
+   window.__wakeLockRequests++;
+   return Promise.reject(new Error('Wake Lock denied in deployment check'));
+  }}});
+ });
+ const {routes}=JSON.parse(await fs.readFile(path.join(root,'static-routes.json'),'utf8'));
+ for(const route of routes){
+  const response=await fetch(base+route);
+  if(response.status!==200)throw new Error(`Known route ${route}: HTTP ${response.status}`);
+ }
+ if((await fetch(base+'unknown-slide')).status!==404)throw new Error('Unknown route must return 404');
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  const network=[];page.on('response',r=>{if(r.status()>=400)network.push([r.status(),r.url()])});
  for(const key of ['cover','native-lens','persistence-image']){
@@ -37,7 +50,9 @@ try{
  await page.reload({waitUntil:'networkidle'});
  await page.locator('.source-link a:visible').click();await page.waitForTimeout(150);
  if(page.url()!==base+exercise.number)throw new Error('Return link mismatch: '+page.url());
+ await page.goto(base+'presenter/1',{waitUntil:'networkidle'});
+ if(await page.evaluate(()=>window.__wakeLockRequests)!==0)throw new Error('Wake Lock was requested');
  if(errors.length||network.length)throw new Error(JSON.stringify({errors,network}));
- const result={base_path:prefix,images:'passed',answer_navigation:'passed',deep_link_reload:'passed',page_errors:errors,failed_responses:network};
+ const result={base_path:prefix,images:'passed',answer_navigation:'passed',deep_link_reload:'passed',known_routes_http_200:routes.length,unknown_route_http_404:true,wake_lock_requests:0,page_errors:errors,failed_responses:network};
  await fs.writeFile('notes/pages-checks.json',JSON.stringify(result,null,2)+'\n');console.log(result);
 }finally{await browser.close();server.close()}
