@@ -5,6 +5,7 @@ import json
 import sys
 import tomllib
 from pathlib import Path
+from types import SimpleNamespace
 
 import pytest
 
@@ -14,6 +15,21 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import publish_templates
 import release_support
+
+
+def test_notebook_build_rejects_uv_exporter_drift(monkeypatch):
+    expected = release_support.notebook_build_uv_version()
+    monkeypatch.setattr(
+        release_support.subprocess, "run",
+        lambda *args, **kwargs: SimpleNamespace(stdout=f"uv {expected} (test build)"),
+    )
+    release_support.check_notebook_build_uv()
+    monkeypatch.setattr(
+        release_support.subprocess, "run",
+        lambda *args, **kwargs: SimpleNamespace(stdout="uv 0.0.0 (different exporter)"),
+    )
+    with pytest.raises(RuntimeError, match="Notebook generation requires uv"):
+        release_support.check_notebook_build_uv()
 
 
 def test_manifest_is_independent_and_preserves_workflow_identity():

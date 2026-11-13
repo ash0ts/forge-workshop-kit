@@ -220,3 +220,58 @@ def test_stage_does_not_wait_for_monitor_and_updates_are_coalesced(tmp_path):
     worker.join(3)
     assert not worker.is_alive()
     assert publisher.calls == 2  # First write plus the newest state; no update backlog.
+
+
+def test_background_progress_clears_busy_foreground_receipt(tmp_path):
+    import threading
+    from filelock import Timeout
+    entered, release = threading.Event(), threading.Event()
+    class Publisher:
+        def publish_progress(self):
+            if entered.is_set():
+                raise Timeout('progress is already uploading')
+            entered.set()
+            assert release.wait(3)
+            return 'https://example.test/progress'
+        def publish_stages(self):
+            return {}
+        def publish_checkpoint(self):
+            return 'checkpoint:v0'
+    session = WorkshopSession('person/lab', 'test', state_dir=tmp_path, publisher=Publisher())
+    session.queue_progress()
+    worker = session._progress_thread
+    assert entered.wait(3)
+    assert session.retry_publication()['publish_progress']['status'] == 'queued'
+    release.set()
+    worker.join(timeout=3)
+    assert not worker.is_alive()
+    receipt = session.read()['publications']['publish_progress']
+    assert receipt['status'] == 'published'
+    assert receipt['result'] == 'https://example.test/progress'
+    assert 'error' not in receipt
+
+
+def test_late_checkpoint_does_not_overwrite_newer_background_progress(tmp_path):
+    import threading
+    from filelock import Timeout
+    entered, release = threading.Event(), threading.Event()
+    class Publisher:
+        def publish_progress(self):
+            if entered.is_set():
+                raise Timeout('progress is already uploading')
+            entered.set()
+            assert release.wait(3)
+            return 'https://example.test/progress'
+        def publish_stages(self):
+            release.set()
+            worker.join(timeout=3)
+            return {}
+        def publish_checkpoint(self):
+            return 'checkpoint:v0'
+    session = WorkshopSession('person/lab', 'test', state_dir=tmp_path, publisher=Publisher())
+    session.queue_progress()
+    worker = session._progress_thread
+    assert entered.wait(3)
+    outcomes = session.retry_publication()
+    assert outcomes['publish_progress']['status'] == 'published'
+    assert session.read()['publications']['publish_progress']['status'] == 'published'

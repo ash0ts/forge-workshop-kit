@@ -14,12 +14,29 @@ def project_metadata():
     return tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]
 
 
+def notebook_build_uv_version():
+    return tomllib.loads((ROOT / "pyproject.toml").read_text())["tool"]["workshop-build"]["uv-version"]
+
+
+def check_notebook_build_uv():
+    expected = notebook_build_uv_version()
+    result = subprocess.run(["uv", "--version"], check=True, capture_output=True, text=True, timeout=10)
+    found = result.stdout.strip().split()
+    if len(found) < 2 or found[1] != expected:
+        raise RuntimeError(
+            f"Notebook generation requires uv {expected}; found {result.stdout.strip()!r}. "
+            "Install the build version from pyproject.toml before generating notebooks. "
+            "This restriction does not apply to running participant notebooks."
+        )
+
+
 def templates():
     return json.loads((ROOT / "src/forge_workshop_kit/workshops.json").read_text())["templates"]
 
 
 @cache
 def locked_requirements(extras=()):
+    check_notebook_build_uv()
     args = [
         "uv",
         "export",
@@ -87,3 +104,13 @@ def notebook_header(slug, title):
         ]
     )
     return "\n".join(lines)
+
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--uv-version", action="store_true")
+    args = parser.parse_args()
+    if args.uv_version:
+        print(notebook_build_uv_version())

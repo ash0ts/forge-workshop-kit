@@ -1,6 +1,6 @@
 {
   "audit": "Independent final source review; no execution, training, inference or publication performed",
-  "checked_at": 1794601369.421633,
+  "checked_at": 1794601919.248595,
   "notebooks": [
     {
       "notebook": "notebooks/pending_inc.py",
@@ -120,13 +120,14 @@
     }
   ],
   "recovery": {
-    "focused_tests": "45 passed across test_publication, test_traces, test_session, test_recovery, test_copy_recovery",
+    "focused_tests": "47 passed across test_publication, test_traces, test_session, test_recovery, test_copy_recovery",
     "completed_siblings": "WorkshopSession.stage selects a completed sibling ahead of stale retry routes",
     "request_identity": "Provider compares complete request envelope before cached transport reuse",
     "ambiguous_transport": "No automatic retry after unknown response; full reservation retained",
     "missing_credentials": "Resolved before reservation/send intent after cached-result lookup",
     "progress": "Coalesced background stage updates; independent nonblocking progress lock; no wait behind artifact publication",
-    "restore": "Checks all embedded and explicitly referenced bytes before local file installation; journal written last"
+    "restore": "Checks all embedded and explicitly referenced bytes before local file installation; journal written last",
+    "progress_receipt": "Busy updates are queued; background success clears older errors; timestamp ordering and immediate receipt writes prevent a later checkpoint from restoring a stale failure."
   },
   "heldout_separation": {
     "pending": "Improvement cells select development cases; editor_context and reflect_execution reject other splits and omit grades",

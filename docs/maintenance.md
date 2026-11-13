@@ -13,6 +13,8 @@ This generates the notebooks, checks them, exports previews without participant 
 
 The notebook generator exports dependency pins from `uv.lock`. Do not hand-edit generated notebook headers. Acquisition tools use the separate `data-prep` group; participants receive prepared datasets.
 
+Notebook generation also checks the uv version in `tool.workshop-build.uv-version` in `pyproject.toml`; CI reads that same value. Different uv releases can format equivalent dependency markers differently. Install the declared build version before generating notebooks. When upgrading it, regenerate the headers in the same change. Participants can use other uv versions to run the notebooks.
+
 ## Publish explicitly
 
 First upload the matching wheel to the repository's versioned GitHub release. Then run:

@@ -13,7 +13,7 @@ from contextlib import contextmanager
 from importlib.metadata import PackageNotFoundError, version as package_version
 from pathlib import Path
 
-from filelock import FileLock
+from filelock import FileLock, Timeout as FileLockTimeout
 
 
 def digest(value):
@@ -195,11 +195,28 @@ class WorkshopSession:
         with self.transaction() as state:
             state['progress'].update(help_request=message, updated_at=time.time())
         if self.publisher:
-            try:
-                return {'status': 'published', 'url': self.publisher.publish_progress()}
-            except Exception as error:
-                return {'status': 'local', 'error': str(error)[:500]}
+            receipt = self._publish_progress_receipt()
+            return {**receipt, 'url': receipt.get('result')}
         return self.read()['progress']
+
+    def _publish_progress_receipt(self):
+        started = time.time()
+        try:
+            result = self.publisher.publish_progress()
+            receipt = {'status': 'published', 'result': result, 'updated_at': time.time()}
+        except FileLockTimeout:
+            receipt = {'status': 'queued', 'message': 'A progress update is already in flight.',
+                       'updated_at': started}
+        except Exception as error:
+            receipt = {'status': 'unavailable', 'error': str(error)[:500],
+                       'updated_at': time.time()}
+        with self.transaction() as state:
+            current = state['publications'].get('publish_progress', {})
+            if receipt['updated_at'] >= current.get('updated_at', 0):
+                state['publications']['publish_progress'] = receipt
+            else:
+                receipt = dict(current)
+        return receipt
 
     def queue_progress(self):
         """Publish the latest progress in the background; execution never waits for it."""
@@ -218,9 +235,9 @@ class WorkshopSession:
                             return
                         self._progress_pending = False
                     try:
-                        self.publisher.publish_progress()
+                        self._publish_progress_receipt()
                     except Exception:
-                        pass  # Local progress is saved; the monitor can remain unknown.
+                        pass  # A failed local receipt write cannot block execution.
 
             self._progress_thread = threading.Thread(target=publish_latest, daemon=True)
             self._progress_thread.start()
@@ -230,12 +247,17 @@ class WorkshopSession:
             return {'status': 'local', 'message': 'Connect to publish saved work.'}
         outcomes = {}
         for operation in ('publish_progress', 'publish_stages', 'publish_checkpoint'):
+            if operation == 'publish_progress':
+                outcomes[operation] = self._publish_progress_receipt()
+                continue
             try:
                 outcomes[operation] = {'status': 'published', 'result': getattr(self.publisher, operation)()}
             except Exception as error:
                 outcomes[operation] = {'status': 'unavailable', 'error': str(error)[:500]}
         with self.transaction() as state:
-            state['publications'].update(outcomes)
+            state['publications'].update({key: value for key, value in outcomes.items()
+                                          if key != 'publish_progress'})
+            outcomes['publish_progress'] = dict(state['publications']['publish_progress'])
         return outcomes
 
     def restore(self, *, artifact=None):

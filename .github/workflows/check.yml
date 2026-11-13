@@ -8,7 +8,15 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - id: build-uv
+        shell: bash
+        run: echo "version=$(python scripts/release_support.py --uv-version)" >> "$GITHUB_OUTPUT"
       - uses: astral-sh/setup-uv@v6
+        with:
+          version: ${{ steps.build-uv.outputs.version }}
       - run: uv sync --frozen --all-extras
       - run: uv run --all-extras pytest -q
       - run: uv run --all-extras python scripts/build_notebooks.py
@@ -22,7 +30,15 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - id: build-uv
+        shell: bash
+        run: echo "version=$(python scripts/release_support.py --uv-version)" >> "$GITHUB_OUTPUT"
       - uses: astral-sh/setup-uv@v6
+        with:
+          version: ${{ steps.build-uv.outputs.version }}
       - if: matrix.extra == 'base'
         run: uv sync --frozen --no-dev
       - if: matrix.extra == 'pending'
