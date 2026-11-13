@@ -9,7 +9,7 @@ import time
 from dataclasses import asdict
 from pathlib import Path
 
-from ..provider import Provider, output
+from ..provider import Provider, output, validated_json
 from ..session import digest, write_json
 from ..traces import export_trace
 from .harness import Harness, RULES, TOOL_GUIDE, build_messages, harness_diff
@@ -89,7 +89,8 @@ def run_employee(session, case, harness, label, *, invoice_tool=lookup_invoice, 
         trace=export_trace(session,stage.id,case.mission,stage.result['events'],requests)
     except Exception as error:
         trace={'status':'unavailable','error':str(error)}
-    session.checkpoint(label+'/'+case.id,evidence={'Conversation':trace.get('url','')})
+    if stage.needs_run:
+        session.checkpoint(label+'/'+case.id,evidence={'Conversation':trace.get('url','')})
     return {**stage.result,'trace':trace,'stage_id':stage.id}
 
 
@@ -99,11 +100,22 @@ def editor_decision(session,number,phase,parent,evidence):
     allowed=[{k:r[k] for k in ('case_id','events','draft','status','harness','lesson','limits') if k in r} for r in evidence]
     schema='{"candidates":[DECISION,DECISION]}' if phase=='propose' else 'DECISION'
     system='Edit an office agent harness, never the case or tools. Return JSON '+schema+'. DECISION is {decision:CHANGE|KEEP,title,rationale,harness:{instructions,verification_skill,tool_skill,verify_before_finish,read_retries},lesson,limits}. KEEP uses the parent harness exactly. No task-specific account IDs in reusable instructions. '+RULES+TOOL_GUIDE+'\nlookup_invoice: {account_id, invoice_id} reads invoice payments and refunds.'
-    with session.stage(f'pending/round-{number}/{phase}',sources=parent.files(),inputs={'evidence':allowed}) as stage:
+    name=f'pending/round-{number}/{phase}'
+    failed=[r for r in session.read()['stages'].values() if r['name']==name and r['status']=='failed']
+    if len(failed)>1:
+        raise ValueError('Two editing attempts failed. Inspect the saved responses before changing the exercise.')
+    with session.stage(name,sources=parent.files(),inputs={'evidence':allowed},attempt=1+len(failed)) as stage:
         if stage.needs_run:
-            call=Provider(session).complete(stage.id,[{'role':'system','content':system},
-                {'role':'user','content':json.dumps({'parent':asdict(parent),'evidence':allowed})}],max_tokens=8192)
-            value=output(call)
+            def validate(value):
+                decisions=value.get('candidates',[]) if phase=='propose' else [value]
+                if len(decisions)!=(2 if phase=='propose' else 1): raise ValueError('Incomplete editing decision')
+                for d in decisions:
+                    if d.get('decision') not in ('CHANGE','KEEP') or not d.get('rationale'): raise ValueError('Need CHANGE/KEEP and rationale')
+                    proposed=Harness(**d['harness'])
+                    if d['decision']=='KEEP' and proposed!=parent: raise ValueError('KEEP changed the harness')
+                    if d['decision']=='CHANGE' and proposed==parent: raise ValueError('No executable change; use KEEP')
+            value,call=validated_json(session,stage.id,[{'role':'system','content':system},
+                {'role':'user','content':json.dumps({'parent':asdict(parent),'evidence':allowed})}],validate,max_tokens=16384)
             decisions=value.get('candidates',[]) if phase=='propose' else [value]
             if len(decisions)!=(2 if phase=='propose' else 1): raise ValueError('Incomplete editing decision')
             for d in decisions:

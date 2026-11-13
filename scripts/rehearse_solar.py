@@ -20,12 +20,22 @@ def train(name,code,splits,config):
    stage.record(result,files=[stage.output_dir/f for f in ('candidate.py','weights.pt','predictions.npy','predictions.png','losses.json','stderr.txt')])
  try:trace=export_trace(s,stage.id,'Train exact reviewed code and score validation predictions',stage.result['events'])
  except Exception as error:trace={'status':'unavailable','error':str(error)}
- s.checkpoint(name,evidence={name:trace.get('url','')})
+ if stage.needs_run:s.checkpoint(name,evidence={name:trace.get('url','')})
  record=dict(stage_id=stage.id,source=code,config=config,metrics=stage.result['metrics'],losses=stage.result['losses'],split='validation',trace=trace)
  print(name,record['metrics'],flush=True);return record
 
 # This is the same six-trial grid as the notebook. Actual Sweeps integration is checked separately.
 grid=[dict(architecture=a,width=w,learning_rate=lr,steps=60,seed=17,batch_size=32) for a in ('mlp','cnn') for w,lr in ((16,.001),(32,.001),(16,.003))]
+import wandb
+with s.stage('goes/create-sweep',inputs={'source':source,'configurations':grid}) as sweep_stage:
+ if sweep_stage.needs_run:
+  sweep_id=wandb.sweep({'method':'grid','metric':{'name':'validation_error','goal':'minimize'},'parameters':{'trial':{'values':list(range(6))}}},entity=s.project.split('/')[0],project=s.project.split('/')[1])
+  sweep_stage.record({'sweep_id':sweep_id})
+def trial():
+ with wandb.init(entity=s.project.split('/')[0],project=s.project.split('/')[1],job_type='workshop-sweep') as run:
+  i=int(run.config.trial);record=train('goes/search-'+str(i),source,goes,grid[i]);run.log(record['metrics'])
+if len([r for r in s.completed() if r['name'].startswith('goes/search-')])<6:
+ wandb.agent(sweep_stage.result['sweep_id'],function=trial,count=6,entity=s.project.split('/')[0],project=s.project.split('/')[1])
 goes_runs=[train('goes/search-'+str(i),source,goes,c) for i,c in enumerate(grid)]
 manual_runs=[train('images/manual-'+a,source,images,dict(architecture=a,width=8,learning_rate=.001,steps=40,seed=17,batch_size=8)) for a in ('conv','residual')]
 manual=min(manual_runs,key=lambda r:r['metrics']['validation_error']);parent=manual

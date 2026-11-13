@@ -223,7 +223,20 @@ def _(get_lab, mo, save_source, source_editor):
 
 
 @app.cell
-def _(export_trace, instrument_tool, plots, time, training):
+def _(np):
+    # Implement these development metrics. Test them on the persistence forecast first.
+    # A constant +1 error should return 1.0; changing an off-disk pixel should not affect image error.
+    def my_flux_mae(prediction, target):
+        return float(np.abs(prediction-target).mean())
+
+    def my_image_mae(prediction, target, disk_mask):
+        errors=np.abs(prediction-target)*disk_mask
+        return float((errors.sum(axis=(1,2,3))/disk_mask.sum(axis=(1,2,3))).mean())
+    return (my_flux_mae, my_image_mae,)
+
+
+@app.cell
+def _(export_trace, instrument_tool, my_flux_mae, my_image_mae, np, plots, time, training):
     def run_training(session, name, source, splits, config, data_fingerprint):
         # This is the tracking contract. Source, split, data and settings identify a run.
         with session.stage(name, config=config, sources={"candidate.py":source},
@@ -233,6 +246,9 @@ def _(export_trace, instrument_tool, plots, time, training):
                 result,prediction=training.train(source,splits["train"],splits["validation"],config,stage.output_dir)
                 figure=plots.forecast(prediction,splits["validation"],title=name)
                 figure.savefig(stage.output_dir/"predictions.png",dpi=130)
+                lesson_error=my_flux_mae(prediction,splits["validation"]["y"]) if prediction.ndim==2 else my_image_mae(prediction,splits["validation"]["y"],splits["validation"]["mask"])
+                result["metrics"]["learner_metric"]=lesson_error
+                result["metrics"]["learner_metric_matches"]=bool(np.isclose(lesson_error,result["metrics"]["error"]))
                 result["events"]=[{"id":stage.id+"/train","name":"train_and_validate","arguments":{"config":config,"source_fingerprint":stage.source_fingerprint,"split":"validation"},"result":result["metrics"],"started_at":started,"ended_at":time.time()}]
                 stage.record(result,files=[stage.output_dir/file for file in ("candidate.py","weights.pt","predictions.npy","predictions.png","losses.json","stderr.txt")])
         session.checkpoint(name)
@@ -278,7 +294,7 @@ def _(get_feedback, get_lab, mo, run_search, run_training, set_feedback, source_
 def _(chapter, get_lab, mo, ui):
     mo.stop(chapter.value != "4 · Solar images")
     run_images=mo.ui.run_button(label="Compare my convolutional and residual predictors",disabled=not bool(get_lab().get("data_path")))
-    mo.vstack([mo.Html(ui.step("4. Same stack, image predictions", "Inspect build_model and training_loss. Compare predicting the whole future image with predicting a correction to the current image.","Examine the prediction and error image, not only the average. Persistence can be difficult to beat.")),run_images])
+    mo.vstack([mo.Html(ui.step("4. Same stack, image predictions", "Edit build_model, training_loss and my_image_mae. First verify that a +1 error scores 1 and an off-disk error scores 0. Then compare predicting the whole image with predicting a correction to the current image.","Examine the prediction and error image, not only the average. Persistence can be difficult to beat.")),run_images])
     return (run_images,)
 
 
@@ -426,6 +442,19 @@ def _(final_button, get_feedback, get_lab, mo, np, publish_comparison, research,
     with _session.stage("images/final-comparison",inputs={"freeze":_freeze_id}) as _stage:
         if _stage.needs_run:
             _stage.record({"metrics_by_version":_results,"rows":_comparisons})
+    # Freeze the selected measurement model too; keep its metric separate from image error.
+    _goes_runs=[s for s in _session.completed() if s["name"].startswith("goes/search-") and s["inputs"].get("dataset")==get_lab()["dataset"]]
+    _goes_publication={}
+    if _goes_runs:
+        _goes_best=min(_goes_runs,key=lambda s:s["result"]["metrics"]["validation_error"])
+        _goes_test=get_lab()["goes"]["test"]
+        with _session.stage("goes/final",config=_goes_best["config"],sources=_goes_best["sources"],inputs={"selected_stage":_goes_best["id"],"split":"test"}) as _g:
+            if _g.needs_run:
+                _gr,_gp=training.train(_goes_best["sources"]["candidate.py"],None,_goes_test,_goes_best["config"],_g.output_dir,weights=_session.file("outputs/"+_goes_best["id"]+"/weights.pt"))
+                _g.record(_gr,files=[_g.output_dir/"predictions.npy"])
+            _gp=np.load(_g.output_dir/"predictions.npy")
+        _goes_publication=publish_comparison(_session,"solar-measurements-final",{"persistence":solar.evaluation_rows(_goes_test["persistence"],_goes_test),"selected-model":solar.evaluation_rows(_gp,_goes_test,evidence={"stage":_g.id})})
+        set_feedback({**get_feedback(),"goes_final":_g.result["metrics"]})
     _receipts=publish_comparison(_session,"solar-images-final",_comparisons)
     _session.checkpoint("final-evaluation",evidence={label:r["run"] for label,r in _receipts.items()})
     set_feedback({**get_feedback(),"final":{"results":_results,"publication":_receipts}})
@@ -466,7 +495,7 @@ def _(chapter, get_feedback, get_lab, mo, np, plots, ui):
             if _stage["name"].startswith("images/final-") and _stage["name"]!="images/final-comparison":
                 _prediction=np.load(_s.file("outputs/"+_stage["id"]+"/predictions.npy"))
                 _final_preview.append(plots.forecast(_prediction,get_lab()["images"]["test"],title=_stage["name"]))
-    mo.vstack([mo.ui.table([{"version":k,**v} for k,v in _metrics.items()],selection=None),*_final_preview,mo.md(str(get_feedback().get("final",{}).get("publication","Finish both research rounds first."))),mo.Html(ui.links({"My Report":get_feedback().get("report","")})),mo.md("Optional ARIA prompt: Review my Report and linked research-agent traces. Identify one supported reason a change helped or hurt, cite the exact evidence, and propose one next experiment. Do not launch new runs.")])
+    mo.vstack([mo.md("**Measurements:** "+str(get_feedback().get("goes_final","Not evaluated yet"))),mo.md("**Images**"),mo.ui.table([{"version":k,**v} for k,v in _metrics.items()],selection=None),*_final_preview,mo.md(str(get_feedback().get("final",{}).get("publication","Finish both research rounds first."))),mo.Html(ui.links({"My Report":get_feedback().get("report","")})),mo.md("Optional ARIA prompt: Review my Report and linked research-agent traces. Identify one supported reason a change helped or hurt, cite the exact evidence, and propose one next experiment. Do not launch new runs.")])
     return
 
 if __name__ == "__main__":

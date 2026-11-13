@@ -6,7 +6,7 @@ from pathlib import Path
 
 from .provider import validated_json
 from .session import digest
-from .traces import export_trace
+from .traces import export_trace, event
 
 SYSTEM = '''You edit a small PyTorch forecasting experiment. Return JSON only.
 You receive current source and training/validation evidence. Final test data and scores are unavailable.
@@ -43,6 +43,15 @@ def propose(session, number, source, evidence):
     if evidence.get('split') != 'validation':
         raise ValueError('Improvement requires validation evidence, not final-test records.')
     allowed={k:evidence[k] for k in ('split','metrics','losses','errors','trace','lessons') if k in evidence}
+    events=[]
+    if evidence.get('stage_id'):
+        def read_validation():
+            row=session.read()['stages'][evidence['stage_id']]
+            if row['inputs'].get('split')!='validation':
+                raise ValueError('The selected execution is not a validation run.')
+            return {'metrics':row['result']['metrics'],'source_fingerprint':row['source_fingerprint']}
+        _,observed=event('read_validation_evidence',{'execution':evidence['stage_id']},read_validation)
+        events.append(observed)
     with session.stage(f'images/round-{number}/propose',sources={'candidate.py':source},inputs=allowed) as stage:
         if stage.needs_run:
             prompt={'mission':'Propose two competing code changes. Return candidates: [{title,rationale,decision,source}, ...] with exactly two entries. decision is CHANGE or KEEP; source is complete Python.',
@@ -61,7 +70,15 @@ def propose(session, number, source, evidence):
                 validate_decision(candidate,source)
                 candidate['fingerprint']=digest({'candidate.py':candidate['source']})
                 candidate['diff']=diff(source,candidate['source'])
-            stage.record({'candidates':candidates,'request_id':call['id'],'mission':prompt['mission']})
+            files=[]
+            for index,candidate in enumerate(candidates):
+                path=stage.output_dir/f'candidate-{index}.py'
+                def save_candidate():
+                    path.write_text(candidate['source'])
+                    return {'file':path.name,'source_fingerprint':candidate['fingerprint']}
+                _,observed=event('save_candidate_code',{'candidate':index,'decision':candidate['decision']},save_candidate)
+                events.append(observed);files.append(path)
+            stage.record({'candidates':candidates,'request_id':call['id'],'mission':prompt['mission'],'events':events},files=files)
     return stage.result,stage.id
 
 
@@ -91,7 +108,12 @@ def compose(session, number, source, previous, candidates):
             validate_decision(decision,source)
             decision['diff']=diff(source,decision['source'])
             decision['fingerprint']=digest({'candidate.py':decision['source']})
-            stage.record({'decision':decision,'request_id':call['id'],'mission':mission})
+            path=stage.output_dir/'composition.py'
+            def save_composition():
+                path.write_text(decision['source'])
+                return {'file':path.name,'source_fingerprint':decision['fingerprint']}
+            _,observed=event('save_composed_code',{'decision':decision['decision']},save_composition)
+            stage.record({'decision':decision,'request_id':call['id'],'mission':mission,'events':[observed]},files=[path])
     return stage.result,stage.id
 
 
@@ -100,7 +122,7 @@ def trace_decision(session,stage_id):
     request_id=stage['result']['request_id']
     # Include every transport attempt for this operation, not just the successful response.
     requests=[r for key,r in session.read()['requests'].items() if key.startswith(stage_id+'/') and r.get('ended_at')]
-    return export_trace(session,stage_id,stage['result']['mission'],[],requests)
+    return export_trace(session,stage_id,stage['result']['mission'],stage['result'].get('events',[]),requests)
 
 
 def freeze(session, versions, dataset_fingerprint):

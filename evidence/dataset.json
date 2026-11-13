@@ -1,0 +1,46 @@
+{
+  "manifest_sha256": "302e7f2a2aaddf5d448ed5de317b5df3c23f0379557eba28b1e3d73466725b03",
+  "archive_sha256": "5fc2a5e2e36be73947dab3728796fd95c9fdef062c82e8d541c85429a38fb3de",
+  "bytes": 26136236,
+  "artifact": "wandb/forge-workshop-kit/solar-v1:v0",
+  "goes_windows": {
+    "train": 11122,
+    "validation": 2779,
+    "test": 2694
+  },
+  "aia_windows": {
+    "train": 1036,
+    "validation": 142,
+    "test": 199
+  },
+  "goes_normalization": {
+    "mean": [
+      [
+        [
+          -7.016343593597412
+        ],
+        [
+          -5.469872951507568
+        ]
+      ]
+    ],
+    "std": [
+      [
+        [
+          0.5229496359825134
+        ],
+        [
+          0.27552157640457153
+        ]
+      ]
+    ],
+    "target": "log10 XRS-B W/m\u00b2",
+    "horizon_minutes": 30
+  },
+  "aia_normalization": {
+    "center": 4.9362406730651855,
+    "scale": 0.6204253435134888,
+    "target": "normalized log1p AIA 171 rate",
+    "horizon_minutes": 60
+  }
+}

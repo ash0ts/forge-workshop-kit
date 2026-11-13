@@ -196,7 +196,7 @@ def publish_comparison(session, name, versions):
                         row = next(row for row in rows if row['case_id'] == case_id)
                         if output != row['prediction']:
                             raise ValueError('Saved prediction differs from execution')
-                        return {'error': row.get('error')}
+                        return {'error': row.get('error'), **row.get('scores',{})}
                     import asyncio
                     evaluation = weave.Evaluation(name=safe_name(name + '-' + label + '-evaluation'), dataset=dataset, scorers=[saved_score])
                     # Publication replays saved outputs, never inference or training.
@@ -228,19 +228,20 @@ def native_table(run, rows, name):
         {'e': run.entity, 'p': run.project})['project']['internalId']
     def key(operation):
         return digest([run.id, name, operation])
+    score_names=sorted({'error'} | {key for row in rows for key in row.get('scores',{})})
     with Client(base_url='https://evaluations.wandb.ai', api_key=credentials(), scope_id=scope) as client:
         table = client.eval_tables.create(name=safe_name(name), idempotency_key=key('create'))
         client.eval_tables.columns.create(table.evaluation_id,
             dataset_fields=[{'source': source, 'name': field, 'value_type': 'string'}
                 for source, fields in [('input', ['case_id', 'input']),
                                        ('output', ['prediction', 'target', 'evidence'])] for field in fields],
-            scorers=[{'name': 'error', 'value_type': 'number'}], idempotency_key=key('columns'))
+            scorers=[{'name': key, 'value_type': 'number'} for key in score_names], idempotency_key=key('columns'))
         for i in range(0, len(rows), 100):
             client.eval_tables.rows.add(table.evaluation_id, rows=[{
                 'input': {'case_id': r['case_id'], 'input': json.dumps(r['input'])},
                 'output': {'prediction': json.dumps(r['prediction']), 'target': json.dumps(r['target']),
                            'evidence': json.dumps(r.get('evidence', {}))},
-                'scores': {'error': r['error']} if r.get('error') is not None else {}}
+                'scores': {k:v for k,v in {'error':r.get('error'),**r.get('scores',{})}.items() if v is not None}}
                 for r in rows[i:i+100]], idempotency_key=key('rows-' + str(i)))
         version = client.eval_tables.versions.create(table.evaluation_id, idempotency_key=key('version'))
     return dict(_type='eval-table-ces', schema_version=1, ncols=6, nrows=len(rows),

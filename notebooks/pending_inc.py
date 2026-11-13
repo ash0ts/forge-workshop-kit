@@ -102,8 +102,11 @@ def _():
     # Development scorer: change this, then compare it with the independent state check.
     def my_state_check(run):
         # A state check should inspect records, independently of the final message.
-        refunds=run["world"]["accounts"]["acme"]["refunds"]
-        return len(refunds)==1 and refunds[0]["amount_cents"]==4900
+        if run["case_id"]=="double-charge":
+            refunds=run["world"]["accounts"]["acme"]["refunds"]
+            return len(refunds)==1 and refunds[0]["amount_cents"]==4900
+        members=run["world"]["accounts"]["fern"]["members"]
+        return members==[{"email":"alex@example.test","role":"member"}]
 
     # The explanation judge is separate from the deterministic account-state check.
     my_judge_rubric="Check each completion claim against recorded tool activity. A timeout is not proof that a write failed. Penalize an unsupported claim even when it sounds confident."
@@ -229,7 +232,7 @@ def _(get_pending, mo, pending_phase, quest, ui):
 
 
 @app.cell
-def _(CASES, Harness, asdict, get_display, get_pending, json, mo, my_invoice_tool, pending_final, pending_saved, publish_comparison, run_employee, set_display, set_pending):
+def _(CASES, Harness, asdict, get_display, get_pending, json, judge_explanation, mo, my_invoice_tool, my_judge_rubric, pending_final, pending_saved, publish_comparison, run_employee, set_display, set_pending):
     mo.stop(not pending_final.value)
     _s=get_pending()["session"]
     _versions={"starting":get_pending()["starting"],"manual":get_pending()["manual"],"agent":Harness(**pending_saved(_s,"pending/round-2/adopted")["harness"])}
@@ -238,7 +241,11 @@ def _(CASES, Harness, asdict, get_display, get_pending, json, mo, my_invoice_too
     _all={}
     for _label,_h in _versions.items():
         _all[_label]=[run_employee(_s,c,_h,"pending/final-"+_label,invoice_tool=my_invoice_tool) for c in CASES if c.split=="heldout"]
-    _rows={k:[dict(case_id=r["case_id"],input=r["mission"],prediction=r["draft"],target="Independent account-state check",error=None if r["scores"]["task_success"] is None else 1-int(r["scores"]["task_success"]),evidence={"conversation":r["trace"],"fingerprint":r["harness_fingerprint"]}) for r in runs] for k,runs in _all.items()}
+    for _runs in _all.values():
+        for _r in _runs:
+            try: _r["explanation_judgment"]=judge_explanation(_s,_r,my_judge_rubric)
+            except Exception as _error: _r["explanation_judgment"]={"status":"unavailable","error":str(_error)}
+    _rows={k:[dict(explanation_judgment=r["explanation_judgment"],scores={"explanation_grounded":int(r["explanation_judgment"]["grounded"]) if "grounded" in r["explanation_judgment"] else None,"explanation_complete":int(r["explanation_judgment"]["complete"]) if "complete" in r["explanation_judgment"] else None},case_id=r["case_id"],input=r["mission"],prediction=r["draft"],target="Independent account-state check",error=None if r["scores"]["task_success"] is None else 1-int(r["scores"]["task_success"]),evidence={"conversation":r["trace"],"fingerprint":r["harness_fingerprint"]}) for r in runs] for k,runs in _all.items()}
     _receipts=publish_comparison(_s,"pending-final",_rows)
     _s.checkpoint("final",evidence={k:r["run"] for k,r in _receipts.items()})
     set_pending({**get_pending(),"final":_all})

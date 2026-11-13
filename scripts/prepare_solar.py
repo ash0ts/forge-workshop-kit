@@ -48,7 +48,7 @@ def goes():
             if field in frame:
                 valid &= frame[field] == 0
         frames.append(frame.loc[valid, ['xrsa','xrsb']])
-        sources.append({'file': path.name, 'sha256': sha(path), 'rows': len(frame),
+        sources.append({'file': path.name, 'url': next(str(row['url']) for row in result[0] if str(row['url']).endswith(path.name)), 'sha256': sha(path), 'rows': len(frame),
                         'retained': int(valid.sum()), 'units': {k:str(v) for k,v in ts.units.items()}})
     data = pd.concat(frames).sort_index()
     data = data[~data.index.duplicated()]
@@ -75,7 +75,9 @@ def one_aia(timestamp):
                 temporary.replace(path)
             with fits.open(path) as hdus:
                 hdu = next(h for h in hdus if h.data is not None and h.data.ndim == 2)
-                header = dict(hdu.header)
+                # Read the required physical metadata only. This archive has an unrelated malformed OSCNMEAN card.
+                keys=('DATE-OBS','EXPTIME','BUNIT','CDELT1','CDELT2','CRPIX1','CRPIX2','RSUN_OBS','QUALITY','WAVELNTH','CRVAL1','CRVAL2','CTYPE1','CTYPE2','CUNIT1','CUNIT2')
+                header = {k:hdu.header.get(k) for k in keys}
                 array = np.asarray(hdu.data,dtype='float32')
             if int(header.get('QUALITY',0)) != 0:
                 return {'timestamp':str(timestamp),'url':url,'sha256':sha(path),'excluded':'QUALITY != 0'}, None, None

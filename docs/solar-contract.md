@@ -27,3 +27,7 @@ Each claim follows source → executed fingerprint → training receipt → vali
 ## Limits
 
 This is a small teaching excerpt, not an operational flare forecast, a reproduction of Surya, or evidence of general recursive improvement. Adjacent frames are correlated. Report task means and examples; do not count pixels or neighboring timestamps as independent research trials. We use deterministic metrics rather than an LLM judge for numeric prediction quality.
+
+The six initial measurement runs deliberately use a short, visible 60-step training budget. Inspect the training curve before interpreting an architecture comparison: a model still learning its output scale is undertrained. Participants can change that budget uniformly and record another search. This is not a claim that these settings tune either architecture well.
+
+Optional GPU extension: start a separate workspace, change the worker device explicitly, and record device, precision, batch size, training budget and compute cost. Keep partitions and the independent scorer unchanged. Do not compare a longer GPU search with the CPU exercise as though only the architecture changed.
