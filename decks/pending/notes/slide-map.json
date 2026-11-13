@@ -1,0 +1,622 @@
+{
+  "total_slides": 77,
+  "main_slides": 72,
+  "slides": [
+    {
+      "number": 1,
+      "key": "cover",
+      "title": "Please improve<br>yourself.",
+      "kind": "cover",
+      "notes": "Welcome. We will write the pieces of an agent and then give another agent permission to edit some of them. The office is fictional. Model and tool executions later in the workshop are real.",
+      "answer": null
+    },
+    {
+      "number": 2,
+      "key": "arrival",
+      "title": "Your first morning at Pending, Inc.",
+      "kind": "opening-story",
+      "notes": "Read the manager line dryly. The participant is the person arriving; the employee is the agent. This illustrative handbook is not the actual baseline prompt.",
+      "answer": null
+    },
+    {
+      "number": 3,
+      "key": "ticket",
+      "title": "The customer was charged twice.",
+      "kind": "opening-story",
+      "notes": "Fictional dialogue illustrating the real public double-charge fixture. There are two captured 4900-cent payments on inv-1. It must refund pay-2 while preserving pay-1 and the other account. Do not describe this scene as a measured model failure.",
+      "answer": null
+    },
+    {
+      "number": 4,
+      "key": "success",
+      "title": "What would count as doing the job?",
+      "kind": "explanation",
+      "notes": "Invite the room to name a failure: partial refund, wrong invoice, duplicate retry, false success. These become concrete examples when writing the scorer.",
+      "answer": null
+    },
+    {
+      "number": 5,
+      "key": "request",
+      "title": "Your manager has one more request.",
+      "kind": "opening-bridge",
+      "notes": "Use the manager question to motivate the second half. Fixed model, editable harness. The learner first freezes tested tool-loop code. The editor cannot change the trusted final scorer.",
+      "answer": null
+    },
+    {
+      "number": 6,
+      "key": "schedule",
+      "title": "Here is our workday.",
+      "kind": "explanation",
+      "notes": "This is the three-hour Pending schedule. Allow 15 minutes at the end for final comparison and discussion. Keep extra implementation detail in worked answers.",
+      "answer": null
+    },
+    {
+      "number": 7,
+      "key": "harness-0",
+      "title": "The model chooses the next action.",
+      "kind": "explanation",
+      "notes": "Harness means the surrounding instructions and software that decide what the model sees, what it can do, and how work is checked. A saved skill file must be read into context.",
+      "answer": null
+    },
+    {
+      "number": 8,
+      "key": "harness-1",
+      "title": "Instructions define the job and its limits.",
+      "kind": "explanation",
+      "notes": "Harness means the surrounding instructions and software that decide what the model sees, what it can do, and how work is checked. A saved skill file must be read into context.",
+      "answer": null
+    },
+    {
+      "number": 9,
+      "key": "harness-2",
+      "title": "A skill is useful only when it is loaded.",
+      "kind": "explanation",
+      "notes": "Harness means the surrounding instructions and software that decide what the model sees, what it can do, and how work is checked. A saved skill file must be read into context.",
+      "answer": null
+    },
+    {
+      "number": 10,
+      "key": "copy",
+      "title": "Copy the notebook into your own project.",
+      "kind": "explanation",
+      "notes": "Use the current v0.3.0 template, never the historical November 12 gateway notebook. An external account requires its own project, notebook compute access and inference access. Setup does not issue a model request.",
+      "answer": null
+    },
+    {
+      "number": 11,
+      "key": "local",
+      "title": "The same notebook runs on a laptop.",
+      "kind": "explanation",
+      "notes": "These commands correspond to the kit README and locked pending extra. Do not send participants to old start.py or office_notebook.py. Inference uses their own access and billing. Windows supports the same uv commands.",
+      "answer": null
+    },
+    {
+      "number": 12,
+      "key": "access",
+      "title": "Check where your work will be saved.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Check my project and restore saved work.",
+      "answer": null
+    },
+    {
+      "number": 13,
+      "key": "record",
+      "title": "A trace records the operation you actually ran.",
+      "kind": "explanation",
+      "notes": "This excerpt shows the independent event receipt. The visible notebook cell uses imported platform through __import__; the semantics are the same. The receipt survives separately from tracing and can be exported again without executing the operation.",
+      "answer": null
+    },
+    {
+      "number": 14,
+      "key": "tool-scope",
+      "title": "Send that operation to Agent Lens.",
+      "kind": "explanation",
+      "notes": "Code excerpt from teaching.STARTERS instrumentation. Explain fields rather than reading code aloud. The full function returns its native span identity. Missing usage in model receipts remains missing.",
+      "answer": null
+    },
+    {
+      "number": 15,
+      "key": "trace",
+      "title": "Add a field, then find it in Agent Lens.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Run this check and verify my Agent Lens trace.",
+      "answer": null
+    },
+    {
+      "number": 16,
+      "key": "trace-screen",
+      "title": "Find the arguments and the returned value.",
+      "kind": "explanation",
+      "notes": "Verified v0.3.0 baseline billing tool span get_account. The model chose get_account in this run; do not claim it chose the learner-authored lookup_invoice. Local checks exercise that authored tool separately. This early screenshot teaches the native inspection surface; participants should open their own setup trace. This is saved execution evidence, not an expected result of a participant\u2019s unexecuted edit.",
+      "answer": null
+    },
+    {
+      "number": 17,
+      "key": "trace-detail",
+      "title": "Read one argument and follow its returned data.",
+      "kind": "explanation",
+      "notes": "Enlarged native crop x580,y245,w690,h445. Saved get_account, not lookup_invoice. Do not infer that the model called the authored lookup tool; this example teaches the same span fields participants instrumented.",
+      "answer": null
+    },
+    {
+      "number": 18,
+      "key": "invoice",
+      "title": "The tool reads one invoice from one account.",
+      "kind": "explanation",
+      "notes": "The case is simulated but the logic is ordinary application code. Another account also has inv-1, so filtering payments without selecting the account is a real mistake the checks can catch.",
+      "answer": null
+    },
+    {
+      "number": 19,
+      "key": "tool",
+      "title": "Write the invoice lookup.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my invoice lookup.",
+      "answer": 73
+    },
+    {
+      "number": 20,
+      "key": "tool-schema",
+      "title": "A tool name has to reach executable code.",
+      "kind": "explanation",
+      "notes": "The current executor makes structured JSON action requests. Its existing schema declares lookup_invoice account_id and invoice_id; participants implement its behavior and dispatch. Do not imply they are registering remote Sandboxes.",
+      "answer": null
+    },
+    {
+      "number": 21,
+      "key": "loop-1",
+      "title": "Start with the customer\u2019s request.",
+      "kind": "explanation",
+      "notes": "Same objects and positions across these five frames. Show the actual action/result connection. This is an explanatory diagram based on the public fixture, not a claimed replay of every recorded run.",
+      "answer": null
+    },
+    {
+      "number": 22,
+      "key": "loop-2",
+      "title": "The model chooses an action and its arguments.",
+      "kind": "explanation",
+      "notes": "Same objects and positions across these five frames. Show the actual action/result connection. This is an explanatory diagram based on the public fixture, not a claimed replay of every recorded run.",
+      "answer": null
+    },
+    {
+      "number": 23,
+      "key": "loop-3",
+      "title": "Your dispatcher calls the Python function.",
+      "kind": "explanation",
+      "notes": "Same objects and positions across these five frames. Show the actual action/result connection. This is an explanatory diagram based on the public fixture, not a claimed replay of every recorded run.",
+      "answer": null
+    },
+    {
+      "number": 24,
+      "key": "loop-4",
+      "title": "The function returns the account records.",
+      "kind": "explanation",
+      "notes": "Same objects and positions across these five frames. Show the actual action/result connection. This is an explanatory diagram based on the public fixture, not a claimed replay of every recorded run.",
+      "answer": null
+    },
+    {
+      "number": 25,
+      "key": "loop-5",
+      "title": "Put those records into the next request.",
+      "kind": "explanation",
+      "notes": "Same objects and positions across these five frames. Show the actual action/result connection. This is an explanatory diagram based on the public fixture, not a claimed replay of every recorded run.",
+      "answer": null
+    },
+    {
+      "number": 26,
+      "key": "dispatch",
+      "title": "Route one tool yourself; delegate the others.",
+      "kind": "explanation",
+      "notes": "Walk through name lookup_invoice with acme/inv-1, then get_account. Explain why both paths have the same return contract.",
+      "answer": null
+    },
+    {
+      "number": 27,
+      "key": "handoff",
+      "title": "Finish the tool-to-model handoff.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my tool-to-model handoff.",
+      "answer": 74
+    },
+    {
+      "number": 28,
+      "key": "messages",
+      "title": "The next request contains the observation.",
+      "kind": "explanation",
+      "notes": "Clarify this is the actual workshop protocol rather than OpenAI tool-call message syntax. The complete next-request preview is available in the notebook. Do not mutate the previous messages list.",
+      "answer": null
+    },
+    {
+      "number": 29,
+      "key": "starting",
+      "title": "Run the two starting tickets.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Freeze this executor and run the two starting tickets.",
+      "answer": null
+    },
+    {
+      "number": 30,
+      "key": "model-span",
+      "title": "Record what the model saw and returned.",
+      "kind": "explanation",
+      "notes": "Excerpt deliberately abbreviates message comprehensions. The full visible instrumentation editor has input, output, system instructions, settings and available usage. Ask learners to identify the request that received the lookup result, not just count spans.",
+      "answer": null
+    },
+    {
+      "number": 31,
+      "key": "onboarding",
+      "title": "The second ticket grants Alex account access.",
+      "kind": "explanation",
+      "notes": "Use the local MCP implementation in pending/mcp_server.py. Distinguish actual protocol discovery and invocation from a function merely named MCP. The simulated service deliberately commits a write before returning a timeout in the development incident.",
+      "answer": null
+    },
+    {
+      "number": 32,
+      "key": "timeout-1",
+      "title": "An access request is sent.",
+      "kind": "explanation",
+      "notes": "Explanatory sequence for the committed-write timeout fixture. Use the recorded native trace next to verify the actual recovery. The actual onboarding_status tool reads account_id. A repeated mutation must reuse its operation_id.",
+      "answer": null
+    },
+    {
+      "number": 33,
+      "key": "timeout-2",
+      "title": "The write succeeds. Its reply times out.",
+      "kind": "explanation",
+      "notes": "Explanatory sequence for the committed-write timeout fixture. Use the recorded native trace next to verify the actual recovery. The actual onboarding_status tool reads account_id. A repeated mutation must reuse its operation_id.",
+      "answer": null
+    },
+    {
+      "number": 34,
+      "key": "timeout-3",
+      "title": "Check the operation before trying the write again.",
+      "kind": "explanation",
+      "notes": "Explanatory sequence for the committed-write timeout fixture. Use the recorded native trace next to verify the actual recovery. The actual onboarding_status tool reads account_id. A repeated mutation must reuse its operation_id.",
+      "answer": null
+    },
+    {
+      "number": 35,
+      "key": "timeout-screen",
+      "title": "Did the timeout stop the work?",
+      "kind": "explanation",
+      "notes": "v0.3.0 skill-loaded onboarding: timeout span 5ddd78b1e9faa2d3; recovery status span e62596437e485145. Ask a learner to find evidence that access exists. Do not infer failure from a red span alone. This is saved execution evidence, not an expected result of a participant\u2019s unexecuted edit.",
+      "answer": null
+    },
+    {
+      "number": 36,
+      "key": "timeout-detail",
+      "title": "The tool says the write may have committed.",
+      "kind": "explanation",
+      "notes": "Crop x580,y423,w690,h280 from the unchanged1280x720 native capture. Follow its conversation link on the preceding slide. The next operation in the saved trace is onboarding_status.",
+      "answer": null
+    },
+    {
+      "number": 37,
+      "key": "checks",
+      "title": "Check the account and the explanation separately.",
+      "kind": "explanation",
+      "notes": "Two measurements answer different questions. Participant-authored development checks teach scoring. Trusted final scoring covers account isolation, idempotency and task-specific constraints. Missing judge responses remain unavailable, never zero.",
+      "answer": null
+    },
+    {
+      "number": 38,
+      "key": "scorer",
+      "title": "Make false completion fail your check.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my scorer against four known examples.",
+      "answer": 75
+    },
+    {
+      "number": 39,
+      "key": "judge",
+      "title": "The judge needs a question it can answer.",
+      "kind": "explanation",
+      "notes": "Rubric from current pending_cells.py. Explain why the judge receives task, recorded actions and explanation. Have participants inspect one reason against a real span. Separate grammatical JSON validation from judging quality.",
+      "answer": null
+    },
+    {
+      "number": 40,
+      "key": "publish-dev",
+      "title": "Publish the first comparison now.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Judge and publish the starting development comparison.",
+      "answer": null
+    },
+    {
+      "number": 41,
+      "key": "compare-fields",
+      "title": "Compare the same case across versions.",
+      "kind": "explanation",
+      "notes": "Weave preserves the evaluation data. W&B stores run artifacts and result tables. Native EvalTables publication is attempted, but the latest rehearsal returned HTTP 500. Use saved Weave/notebook comparisons rather than presenting a fabricated native screen.",
+      "answer": null
+    },
+    {
+      "number": 42,
+      "key": "manual",
+      "title": "Change one procedure and rerun it.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Save this procedure and rerun both development tickets.",
+      "answer": null
+    },
+    {
+      "number": 43,
+      "key": "manual-interpret",
+      "title": "A procedure can change behavior without changing quality.",
+      "kind": "explanation",
+      "notes": "Participants do not need to manufacture a failure. A live success remains a success. The recorded rehearsal later supplies a useful no-gain example.",
+      "answer": null
+    },
+    {
+      "number": 44,
+      "key": "break",
+      "title": "Save your work. Leave the employee at its desk.",
+      "kind": "explanation",
+      "notes": "Stop at 105 minutes. Use saved checkpoints; opening does not trigger paid work. Have attendees note the next step before the break.",
+      "answer": null
+    },
+    {
+      "number": 45,
+      "key": "editor",
+      "title": "Management would like to automate management.",
+      "kind": "explanation",
+      "notes": "This is the same fixed model with a different task and context. The editor can produce code/configuration artifacts but cannot improve scores by rewriting the definition of correct work.",
+      "answer": null
+    },
+    {
+      "number": 46,
+      "key": "branch-1",
+      "title": "Propose two changes from the same parent.",
+      "kind": "explanation",
+      "notes": "Harness\u00b2-inspired teaching cycle. Each proposal starts from the parent. Compose reviews both probe records and can select, combine or retain; reviewing a candidate does not mean adopting it. The workshop carries its selected harness to onboarding, unlike the upstream cross-task protocol.",
+      "answer": null
+    },
+    {
+      "number": 47,
+      "key": "branch-2",
+      "title": "Test both on fresh copies of the case.",
+      "kind": "explanation",
+      "notes": "Harness\u00b2-inspired teaching cycle. Each proposal starts from the parent. Compose reviews both probe records and can select, combine or retain; reviewing a candidate does not mean adopting it. The workshop carries its selected harness to onboarding, unlike the upstream cross-task protocol.",
+      "answer": null
+    },
+    {
+      "number": 48,
+      "key": "branch-3",
+      "title": "Ask which changes to keep.",
+      "kind": "explanation",
+      "notes": "Harness\u00b2-inspired teaching cycle. Each proposal starts from the parent. Compose reviews both probe records and can select, combine or retain; reviewing a candidate does not mean adopting it. The workshop carries its selected harness to onboarding, unlike the upstream cross-task protocol.",
+      "answer": null
+    },
+    {
+      "number": 49,
+      "key": "branch-4",
+      "title": "Run the files the decision selected.",
+      "kind": "explanation",
+      "notes": "Harness\u00b2-inspired teaching cycle. Each proposal starts from the parent. Compose reviews both probe records and can select, combine or retain; reviewing a candidate does not mean adopting it. The workshop carries its selected harness to onboarding, unlike the upstream cross-task protocol.",
+      "answer": null
+    },
+    {
+      "number": 50,
+      "key": "branch-5",
+      "title": "Carry the chosen version and a lesson forward.",
+      "kind": "explanation",
+      "notes": "Harness\u00b2-inspired teaching cycle. Each proposal starts from the parent. Compose reviews both probe records and can select, combine or retain; reviewing a candidate does not mean adopting it. The workshop carries its selected harness to onboarding, unlike the upstream cross-task protocol.",
+      "answer": null
+    },
+    {
+      "number": 51,
+      "key": "propose-code",
+      "title": "Select evidence from the current development run.",
+      "kind": "explanation",
+      "notes": "Conceptual variable names match the visible controller; actual notebook uses _s,_case,_parent,_prefix,_f. It passes prior_experience from round1 into round2. Ask which input would be inappropriate: final-test scores.",
+      "answer": null
+    },
+    {
+      "number": 52,
+      "key": "propose",
+      "title": "Read the two proposals before testing them.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Round 1 \u00b7 Ask for two competing changes.",
+      "answer": null
+    },
+    {
+      "number": 53,
+      "key": "probe-code",
+      "title": "Run the proposed files, not just the description.",
+      "kind": "explanation",
+      "notes": "Explain fingerprint as a content identity, not a metric. Do not overwhelm the audience with hash strings. The full assertion and save stage are visible in the current notebook.",
+      "answer": null
+    },
+    {
+      "number": 54,
+      "key": "probes",
+      "title": "Test both and compare their behavior.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Round 1 \u00b7 Review and test candidate A; then candidate B.",
+      "answer": null
+    },
+    {
+      "number": 55,
+      "key": "gate-screen",
+      "title": "This candidate required a check before completion.",
+      "kind": "explanation",
+      "notes": "Recorded candidate B changed verify_before_finish from false to true. It produced the explicit check sequence. Spans: rejected finish 9ed1e7824138ec0e, check_work 2d49d1d8d3ddeb5d, accepted finish 3e19e007d013d4d2. This is a behavior change, not yet evidence of better quality. This is saved execution evidence, not an expected result of a participant\u2019s unexecuted edit.",
+      "answer": null
+    },
+    {
+      "number": 56,
+      "key": "gate-detail",
+      "title": "The rejected completion caused another check.",
+      "kind": "explanation",
+      "notes": "Crop x580,y251,w690,h185 from the unchanged1280x720 native capture. Gate behavior is confirmed by the subsequent check_work and accepted finish spans, not inferred from the proposal title.",
+      "answer": null
+    },
+    {
+      "number": 57,
+      "key": "keep",
+      "title": "Retain this version is a valid decision.",
+      "kind": "explanation",
+      "notes": "Paraphrase the actual saved v030 composition rationale, attributing it to the editor. An unchanged version still gets tested because the controller verifies every composition decision. It does not create a new executable version.",
+      "answer": null
+    },
+    {
+      "number": 58,
+      "key": "compose",
+      "title": "Test the composition, then save its lesson.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Compare probes and request a composition \u2192 Review and test the composition \u2192 Save the tested version and its lesson.",
+      "answer": null
+    },
+    {
+      "number": 59,
+      "key": "reflection",
+      "title": "A lesson needs an observation and a limit.",
+      "kind": "explanation",
+      "notes": "Explanatory excerpt, not a drop-in full function. The actual controller falls back to the parent if the chosen execution does not complete. The lesson is agent-authored interpretation backed by a saved run.",
+      "answer": null
+    },
+    {
+      "number": 60,
+      "key": "round-two",
+      "title": "Repeat the cycle on onboarding.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Round 2 \u00b7 Ask for two competing changes; follow the current action.",
+      "answer": null
+    },
+    {
+      "number": 61,
+      "key": "round-two-result",
+      "title": "The second round changed the verification skill.",
+      "kind": "explanation",
+      "notes": "v030 snapshot. This is deliberately separate from older v023 captures in which both rounds retained the parent. Attribute intent to the editor. The exact files are in the executed artifact; final results show whether quality changed.",
+      "answer": null
+    },
+    {
+      "number": 62,
+      "key": "skill-diff",
+      "title": "The skill makes the final check more specific.",
+      "kind": "explanation",
+      "notes": "Source .workshop/v030-pending/journal.json, pending/round-1/compose and pending/round-2/compose verification_skill. Display is an exact excerpt of the changed sentence. Round2 selected that skill with verify_before_finish=false. Link to preceding decision and execution; no attribution of final-quality gain.",
+      "answer": null
+    },
+    {
+      "number": 63,
+      "key": "rsi",
+      "title": "What made that recursive improvement?",
+      "kind": "explanation",
+      "notes": "Explain this as a bounded Harness\u00b2-inspired workshop. It is not autonomous model-weight improvement. Upstream parallel and sequential recursion and experience reuse are richer than this teaching controller; the workshop carries a chosen harness across two problems.",
+      "answer": null
+    },
+    {
+      "number": 64,
+      "key": "freeze",
+      "title": "Stop editing before opening the fresh cases.",
+      "kind": "explanation",
+      "notes": "Final cases: already-refunded, two-invoices, onboarding-recovery, clarify-access. Their files are public for teaching but are excluded from improvement context. The starting version is the configured tested employee, not the deliberately blank opening illustration.",
+      "answer": null
+    },
+    {
+      "number": 65,
+      "key": "final",
+      "title": "Compare all three versions on fresh tickets.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Freeze versions and run 12 evaluations.",
+      "answer": null
+    },
+    {
+      "number": 66,
+      "key": "native-results",
+      "title": "Open a saved case and follow its trace.",
+      "kind": "explanation",
+      "notes": "Actual native W&B Table, not EvalTables and not a three-version aligned comparison. error=0 means the independent account-state check passed. judge_grounded and judge_complete are separate scores. The evaluation row also links execution evidence. All three versions are compared on the next result table. Native EvalTables remains unavailable with HTTP500. This is saved execution evidence, not an expected result of a participant\u2019s unexecuted edit.",
+      "answer": null
+    },
+    {
+      "number": 67,
+      "key": "final-screen",
+      "title": "Read the conclusion beside its evidence.",
+      "kind": "explanation",
+      "notes": "Use fresh v030 final table: all12 account checks and explanation judgments are available and pass. Native EvalTables unavailable; screenshot is the actual W&B/Weave/Report surface and must be captioned accordingly. This is saved execution evidence, not an expected result of a participant\u2019s unexecuted edit.",
+      "answer": null
+    },
+    {
+      "number": 68,
+      "key": "final-result",
+      "title": "The loop worked. Quality did not improve here.",
+      "kind": "explanation",
+      "notes": "Source evidence/v030-pending-rehearsal.json. Tool counts sum2+4+4+2 starting and2+4+5+2 revised. Total observed rehearsal inference cost $0.03093452; exclude notebook compute and do not promise attendee cost. This measures four simulated cases, not repeatability or general enterprise-agent quality.",
+      "answer": null
+    },
+    {
+      "number": 69,
+      "key": "files",
+      "title": "Keep the files that explain the result.",
+      "kind": "explanation",
+      "notes": "Artifacts are versioned file bundles. Trace export, result publication and execution have separate statuses. A publication retry uses saved work and must not make another model request.",
+      "answer": null
+    },
+    {
+      "number": 70,
+      "key": "report",
+      "title": "Write down what changed and whether it helped.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Publish my conclusion with the comparison and evidence.",
+      "answer": null
+    },
+    {
+      "number": 71,
+      "key": "aria",
+      "title": "Ask ARIA to investigate the evidence.",
+      "kind": "explanation",
+      "notes": "Do not imply ARIA authored these prior results. The prompt asks for evidence analysis, not permission to run new experiments or change budgets.",
+      "answer": null
+    },
+    {
+      "number": 72,
+      "key": "end",
+      "title": "Take the loop back to your own product.",
+      "kind": "explanation",
+      "notes": "Close by asking participants to name their own analogous workflow and one failure they could test. Leave them the current notebook, source, records and deck. Preserve honest no-gain outcomes.",
+      "answer": null
+    },
+    {
+      "number": 73,
+      "key": "answer-tool",
+      "title": "Worked answer \u00b7 invoice lookup",
+      "kind": "answer",
+      "notes": "Exact semantics of teaching.ANSWERS tool. Keep optional so participants attempt the gap first.",
+      "answer": null
+    },
+    {
+      "number": 74,
+      "key": "answer-loop",
+      "title": "Worked answer \u00b7 observation handoff",
+      "kind": "answer",
+      "notes": "Exact answer contract from teaching.py. Both dispatch paths return state/result. Handoff creates a new list.",
+      "answer": null
+    },
+    {
+      "number": 75,
+      "key": "answer-scorer",
+      "title": "Worked answer \u00b7 inspect the refund",
+      "kind": "answer",
+      "notes": "The learner check is deliberately limited. Do not describe it as the full final scorer.",
+      "answer": null
+    },
+    {
+      "number": 76,
+      "key": "answer-judge",
+      "title": "Worked answer \u00b7 validate the judge response",
+      "kind": "answer",
+      "notes": "Exact semantics of teaching.ANSWERS scorer validation. Boolean strings are invalid. Empty reasons are invalid. Missing judgments stay unavailable.",
+      "answer": null
+    },
+    {
+      "number": 77,
+      "key": "sources",
+      "title": "Source, notebook, and recorded example",
+      "kind": "explanation",
+      "notes": "The product evidence in this deck uses the v030 rehearsal. Native EvalTables returned HTTP500; W&B and Weave records are saved. Current authored notebook source scripts/pending_cells.py. Historical deck preserved outside current attendee path.",
+      "answer": null
+    }
+  ]
+}

@@ -1,78 +1,72 @@
 # Sources and visual contract
 
-## Design reference
+## Current walkthrough
 
-The November 12 Pending, Inc. Slidev deck supplies the visual direction and teaching pattern: cream and deep teal, IBM Plex Sans/Mono, progressive diagrams, direct exercise instructions, optional worked answers, and brief contextual narration. The historical deck and releases remain unchanged.
+The deck uses the November 13, 2026 v0.3.0 Solar technical rehearsal in project `wandb/forge-workshop-kit`, workspace `6e768bbe071648e094cb296a0a57c21e`. The rehearsal ran authored notebook cells. It is not a human usability test.
 
-The opening is an original computational research-lab scene. The canonical pixel artwork is `src/forge_workshop_kit/assets/solar-lab.svg`; the deck bundles an identical copy. Its solar monitor, curves, notebook and compute rack are illustrations, not native product screens or measured results. Dialogue is not a model transcript or a reported incident. Research diagrams explain implemented operations; they do not claim every candidate improves quality.
+The same workspace supplies proposals, executed source, validation scores, final predictions, artifacts, and product links. Older rehearsal captures remain available in prior releases; the current slides do not mix their branch order into this result.
 
-## Technical sources
+- `public/recorded-study.json`: selected saved stages, source, decisions, scores, and verified trace identities.
+- `data/recorded-runs.json` and `public/recorded-runs.json`: the same two GOES records used by the interactive configuration inspector.
+- `scripts/snapshot-rehearsal.py`: reads a completed journal to produce the public snapshot. It makes no requests and repeats no execution.
+- `notes/recorded-evidence-checks.json`: source-to-probe and composition-to-execution checks, including the valid unchanged candidate.
 
-- `scripts/solar_cells.py` and `notebooks/solar_autoresearch.py`: exercise names, visible code, controls, execution and publication.
-- `src/forge_workshop_kit/solar_teaching.py`: practice checks, worked answers, and guided research steps.
-- `docs/solar-contract.md`: dates, targets, transformations, metrics, and editable boundaries.
-- `evidence/hosted-templates.json`: published template identities.
-- `decks/solar/public/recorded-study.json`: a narrow, public snapshot of the revised notebook's November 13 browser rehearsal. It preserves executed source, configuration, metrics, candidate decisions, artifact links, and verified trace identities. It excludes credentials, request-account records, local paths, and notebook drafts.
-- `decks/solar/public/recorded-runs.json`: two GOES executions from that same rehearsal, used by the configuration inspector.
+The first round selected absolute training loss over the unchanged squared-loss version. The second selected a zero-initialized residual head and rejected permutation batching. The final source includes the two selected changes in that order.
 
-Paths above are relative to the repository root. `scripts/snapshot-rehearsal.py` reads the saved journal to create the public evidence snapshot. It does not repeat execution. Human pacing is not inferred from training or provider durations.
+## Teaching sources
 
-The [pinned Harness² README](https://github.com/google-research/harness2/tree/1cfe254e8d25b15f37048c3730134686abe60335) describes grade-free task-level Propose–Probe–Compose and retained experience. This workshop adapts that structure to ML code edits with validation metrics. It does not reproduce the paper's evaluation protocol.
+The editable source and exercise controls come from `scripts/solar_cells.py` and `src/forge_workshop_kit/solar_teaching.py`. `notes/exercise-contract-checks.json` reconciles the deck's named functions and buttons against those files. Both paths are relative to the repository root.
 
-## Data and forecast images
+- [SunPy time-series tutorial](https://docs.sunpy.org/en/stable/tutorial/timeseries.html): inspect actual observations and units before modeling them.
+- [SunPy map tutorial](https://docs.sunpy.org/en/stable/tutorial/maps.html): inspect dates, wavelength, and FITS metadata.
+- [SunPy AIA synopsis client](https://docs.sunpy.org/en/stable/generated/api/sunpy.net.dataretriever.AIASynopsisClient.html) and [JSOC calibrated archive](https://jsoc1.stanford.edu/data/aia/synoptic/README.html): AIA acquisition and provenance.
+- [PyTorch Quickstart](https://docs.pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html): explain a concept beside a short code example and its output. Our wording, diagrams, and exercises are original.
+- [Pinned Harness² workflow](https://github.com/google-research/harness2/tree/1cfe254e8d25b15f37048c3730134686abe60335): Propose–Probe–Compose. This workshop adapts that structure to ML code edits with validation scores; it does not reproduce the paper's task protocol.
+- [Agent Lens](https://docs.coreweave.com/products/agent-lens): native request and tool inspection.
+- [EvalTables comparisons](https://docs.coreweave.com/products/wandb/evaltables/compare-runs): the intended aligned comparison surface. Publication remained unavailable in this rehearsal.
 
-The data comes from NOAA GOES-15 measurements and NASA/SDO AIA 171 Å observations. Credit the AIA science team, JSOC, and SunPy. The dataset manifest preserves acquisition URLs, FITS metadata, source checksums, quality exclusions, and preprocessing.
+## Scientific figures
 
-- [SunPy GOES workflow](https://docs.sunpy.org/en/stable/generated/gallery/time_series/goes_xrs_example.html)
-- [SunPy AIA synopsis client](https://docs.sunpy.org/en/stable/generated/api/sunpy.net.dataretriever.AIASynopsisClient.html)
-- [JSOC calibrated archive](https://jsoc1.stanford.edu/data/aia/synoptic/README.html)
+Data is NOAA GOES-15 and NASA/SDO AIA 171 Å observations from February 1–14, 2014, prepared with SunPy. Credit NOAA, the AIA science team, JSOC, and SunPy. The immutable dataset manifest preserves acquisition URLs, checksums, quality exclusions, and preprocessing. The prepared image arrays are 64 × 64.
 
-`solar-validation.png`, `solar-final.png`, and `goes-final.png` come from saved model predictions in the revised-notebook rehearsal. The final image is the saved frozen-agent prediction; the GOES plot was rendered from the saved final predictions and immutable test split without retraining. They are actual plot exports, not generated examples. The older rehearsal evidence remains in the repository but is not pooled into these displayed results.
+`scripts/build-evidence-figures.py` plots actual observations and saved predictions without training or inference. `notes/visual-v030-figures.json` records each output, stage identity, and checksum.
 
-GOES error is MAE in log10 XRS-B W/m². Inputs are normalized; targets retain log-flux units. Image error uses the fixed disk mask on training-normalized log1p intensity. These scores answer different questions and are not averaged together.
+| Figure | Selection and meaning |
+| --- | --- |
+| `v030-observations.png` | First accepted training measurements and first accepted current AIA image. Establishes the two real instruments and targets. |
+| `v030-image-window.png` | First accepted training window: earlier image, current image, future target. Common intensity scale. |
+| `v030-goes-loss.png` | Saved losses for the selected width-16 MLP, learning rate .003, 60 steps. No extended training was run. |
+| `v030-validation-predictions.png` | Convolutional and residual predictions for the first accepted validation case. Same image and error scales. |
+| `v030-final-predictions.png` | Manual and agent-selected predictions for the first accepted final case, origin 2014-02-13T02:48 UTC. This is not the largest-improvement example. |
+| `v030-goes-final.png` | All 2,694 accepted final GOES windows and saved selected-model predictions. |
 
-The measured image improvement, matching forecasts and contrasting GOES failure appear in the main teaching sequence. The 10.15% decrease is calculated from the saved manual and agent masked errors, not a new model execution.
+Image intensity is training-normalized log1p AIA rate. Matched figures use intensity limits −2 to 3 and error limits 0 to 1 in both rows. The fixed disk mask defines which pixels contribute to error. GOES targets retain log10 XRS-B flux units; its score is never averaged with the image score.
 
-## Native and notebook captures
+The final image score is 0.11001095193834161, versus 0.1224417336622075 for the manual model and 0.12576198700564592 for persistence. The relative reduction against manual is 10.15%. These are 199 overlapping windows across two reserved days, one seed. The selected GOES model scored 2.468974582071028 versus persistence 0.19270602844340234. Its failure stays in the main sequence.
 
-All product screens are real browser captures. Slide crops change presentation only; linked full-size captures retain their context.
+## Native product captures
 
-- `ux-v022-solar-setup.png`: the current Solar Forecasting Lab Connect screen before connection, with the participant project field and allowance visible. Other v020 screens below preserve the measured execution evidence.
-- `ux-v020-solar-instrumentation.png`: the edited `instrument_tool` function and passing free check. The check itself exports nothing. The subsequent trace has verified stored span `3836f2a676d91bdf` in conversation `19f7b8c14211a63aa6a7e22bd14375bf`.
-- `ux-v020-solar-models.png`: the settled validation model comparison: matching convolutional and residual forecasts, metrics, and actual Agent Lens/run/artifact links.
-- `ux-v020-solar-diff.png`: first-round Candidate A changes squared training error to absolute error. The actual diff and review control are visible. The rationale is attributed to the agent; the measured outcome comes from the later probe.
-- `ux-v020-solar-lens-current.png`: native Agent Lens `read_validation_evidence` span `37fa531bfbbebdfb` in [conversation ef590522f1af377a0bc04bd63eea23e4](https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ef590522f1af377a0bc04bd63eea23e4/spans).
-- `ux-v020-solar-final.png`: the settled final notebook comparison: matched manual/agent forecasts, 199 image windows, and the separately scored GOES failure. This is not native EvalTables.
-- `ux-v020-solar-sweep.png`: native [Sweep pr1xsoaw](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/sweeps/pr1xsoaw), showing all six configurations, validation error, negative persistence skill, and runtime. Display names identify actual architecture, width, and learning rate. The full capture retains the ingestion-delay notice.
-- `solar-template-qr.svg`: the published template URL `https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view`, encoded locally with the installed `uqr` library.
+Every `visual-v030-solar-*.png` is an actual product capture. Cropping enlarges the relevant screen region; full captures are linked from slides. A product screen is never generated artwork.
 
-## Product and claim boundaries
+| Capture | Recorded identity and inspection task |
+| --- | --- |
+| `setup` | Native Copy to project dialog for Solar template `Tm90ZWJvb2s6MTU3NzU=`. The preview was unavailable in this browser. This is a dialog capture, not proof of a successful external copy. |
+| `trace` | Setup conversation `4ca0a7e5c9d1fe30d24079ea5b98b750`; find the learner's attribute and returned environment. |
+| `sweep` | Sweep `pzigourv`; inspect the six configurations, metrics, and runtime. |
+| `evidence` | Round-one proposal conversation `23f4a8510534f241b9c6ccacb0ef3cb7`; inspect the validation evidence supplied to the agent. |
+| `training` | Selected round-two training conversation `f7550caa1639e8366efbf9d84a782289`; inspect the actual configuration and result. |
+| `artifact` | `execution-f7550caa1639e8366efbf9d84a782289:v0`, native `candidate.py` view; locate absolute loss and zero initialization. |
+| `comparison` | Native Weave expanded first final agent-selected case: prediction mean −1.760701, target mean −1.759181, file_index 0, and masked error 0.109328. This is not a multi-version comparison or native EvalTables. |
+| `report` | The current rehearsal Report, ID `VmlldzoxODMwMzU3Nw==`. |
 
-Forge hosts the participant's notebook and project. The notebook uses that participant's authentication and inference allowance directly. Training runs reviewed Python in a bounded local subprocess. This is not a security sandbox and does not require a separate remote Sandbox entitlement. Forecasting weights train normally; the research agent's weights stay fixed.
+Native EvalTables returned HTTP 500. The notebook comparison, Weave rows, and W&B Report remain available and retain their actual product names. Publication retries must reuse saved executions.
 
-Agent Lens stores actual request and tool evidence. Weave and W&B publication are separate from native EvalTables. Native EvalTables returned HTTP 500 during rehearsal and remains explicitly unavailable unless a publication retry succeeds.
+## Diagrams and setting
 
-The recorded result belongs to one seed and two reserved dates. Adjacent forecast windows overlap. It is not evidence of general solar forecasting improvement, a Surya reproduction, or a controlled diagnostics-treatment effect. The two research rounds demonstrate a working code-editing loop; quality is measured separately.
+The original research-lab illustration supplies atmosphere. Its monitor and props are illustrative, and the opening dialogue is explicitly fictional. No generated scientific result is used.
 
-## v0.2.2 setup capture
+`SolarMechanism.vue`, `ForecastWindow.vue`, `ResearchMap.vue`, and `ResearchBranches.vue` are editable SVG diagrams. They explain input shapes, residual addition, masked error, fixed versus trained weights, experiment records, and branching decisions. They do not claim a proposed edit improves quality. The mask picture is labeled an illustration of the calculation.
 
-`public/images/ux-v022-solar-setup.png` shows the current notebook before connection. It is an authentic local preview with the project field, allowance, and tracing exercise visible. It does not demonstrate authenticated project access. The recorded forecasting and product captures remain from the completed November 13 rehearsal.
+Solid branch lines carry code forward; dashed lines carry reviewed results. Selecting or retaining a version is a decision. Training it is an execution. Candidate colors identify alternatives and do not represent quality.
 
-## v0.2.3 native product walkthrough
-
-The added screenshots show the existing November 13 rehearsal records in Forge. Creating the saved workspaces and revising the Reports changed their presentation, not model outputs, scores, or experiment settings. The full, unedited captures remain linked from each slide; CSS viewports enlarge the part being discussed.
-
-| Slide | Native screen | What the viewer should inspect |
-| --- | --- | --- |
-| 52 | Solar Agent Lens conversation `ef590522f1af377a0bc04bd63eea23e4` | The `read_validation_evidence` output, including the parent configuration and validation error |
-| 70 | Solar saved workspace `ogpa6vhy8db` | The three final image scores, with GOES shown separately in the workspace |
-| 71 | Artifact `execution-f5e5d198bc9479f78d9a4b1c8c8979e3:v0` | The tested round-two source, losses, weights, predictions, and execution record |
-| 73 | Solar rehearsal Report | Its native three-run image-error panel and links to the underlying runs |
-| 91 | Current Pending notebook setup | The separate office workshop, using the same per-participant project pattern |
-| 92 | Pending Agent Lens conversation `370ae4263372ca1de91d7308e66d0d3d` | The learner-written invoice function’s arguments and returned payment |
-| 93 | Pending saved workspace `nkyxiy1o6wn` | Twelve state checks and the separate availability of explanation judgments |
-| 94 | Pending rehearsal Report | The comparison and the evidence supporting the retained harness |
-
-The Pending notebook setup image is a local notebook view, not proof of hosted copy permissions. The hosted preview was investigated separately. The older November 12 deck remains unchanged; the optional appendix uses the current gateway-free workshop.
-
-The native workspace and Report panels are ordinary W&B panels. The saved case table is an ordinary W&B Table. Neither is labeled native EvalTables. Native EvalTables publication remains unavailable in the recorded rehearsal; the conceptual aligned-case slide and actual notebook comparisons remain in the teaching sequence.
+The participant uses their own project, credentials, and adjustable inference allowance. Training runs reviewed Python in the notebook environment. It does not require a remote Sandbox entitlement and is not a security sandbox. The research agent's model weights stay fixed while forecasting weights train normally.

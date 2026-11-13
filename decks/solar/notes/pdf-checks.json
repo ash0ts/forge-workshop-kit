@@ -1,7 +1,8 @@
 {
-  "pages": 94,
-  "converted_internal_links": 21,
-  "full_size_image_links": 20,
+  "pages": 93,
+  "empty_pages": 0,
   "all_pages_rendered": true,
-  "empty_pages": 0
+  "converted_links": 24,
+  "source_sha256": "e69012f5df8ade04d3f77744460e10e1851d4f2f2de5b64073a4aa9c1e70758d",
+  "pdf_sha256": "5a315749572fe6e6f1353e51dcfb082e94e5692da2601e73e36f46ab4ec992ae"
 }

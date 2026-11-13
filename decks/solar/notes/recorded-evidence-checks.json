@@ -4,30 +4,32 @@
     {
       "round": 1,
       "candidate": 0,
-      "probe": "d2f1c0b14a70a85d6572160ec11a146e",
+      "probe": "8211d6079769fab40d06c7459fe5007e",
       "source_matches": true
     },
     {
       "round": 1,
       "candidate": 1,
-      "probe": "c07c5d78722ad00dd3c397a69a497d3e",
+      "probe": "364272b50820a338514a23b0416af58b",
       "source_matches": true
     },
     {
       "round": 2,
       "candidate": 0,
-      "probe": "accb1bc51c77a92731d3f442fc71e4c0",
+      "probe": "60c7dd8806f46beb34186ca635a69e85",
       "source_matches": true
     },
     {
       "round": 2,
       "candidate": 1,
-      "probe": "ac31adeaabe049cf192b59ca9b2858c9",
+      "probe": "94a92a332f8803e5481b3fd1ea075ffa",
       "source_matches": true
     }
   ],
-  "round_1_composition_selected_tested_b": true,
-  "round_2_keep_source_unchanged": true,
+  "round_1_composition_selected_tested_a": true,
+  "round_1_keep_source_unchanged": true,
+  "round_2_composition_selected_tested_a": true,
+  "workspace": "6e768bbe071648e094cb296a0a57c21e",
   "image_errors": {
     "persistence": 0.12576198700564592,
     "manual": 0.1224417336622075,

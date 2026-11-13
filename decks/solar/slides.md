@@ -52,13 +52,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">0:02</div>
 
-# Forecast the next solar observation
+# Two forecasts from real solar observations
 
-<p class="big">Use the observations we have now to predict what the instruments will measure later.</p><div class="step-path"><div><h2>Measurements</h2><p>Use one hour of X-ray readings to predict flux 30 minutes ahead.</p></div><div><h2>Images</h2><p>Use two solar images to predict the image one hour ahead.</p></div></div><div class="bottom-note">These small experiments use real observations. They are not operational forecasts.</div>
+<div class="scientific-figure"><img class="solar-photo" src="/images/v030-observations.png" alt="GOES X-ray readings and an AIA solar image from February 1, 2014"><div class="image-caption">Real training observations. NOAA GOES-15 and NASA/SDO AIA 171 Å; prepared with SunPy.</div></div><div class="observation-tasks"><p><strong>Measurements:</strong> use the previous hour to predict flux 30 minutes ahead.</p><p><strong>Images:</strong> use two observations to predict an image one hour ahead.</p></div>
 
 
 <!--
-Our first task uses the last hour of GOES X-ray measurements to predict flux thirty minutes later. The second uses two AIA images to predict another image one hour ahead. SunPy helps us inspect the observation times, wavelength, and units.
+Read the instruments before discussing models. The left plot measures solar X-ray flux; the right image records extreme-ultraviolet light at 171 Å. These are real February 2014 observations, prepared at a small scale for CPU teaching. The image uses false color. We are testing forecasts, not predicting a reliable flare warning.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -66,13 +66,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">0:03</div>
 
-# Can an agent improve the research code?
+# First reproduce a result. Then try to improve it.
 
-<div class="quote">“Once the experiment works, could an agent improve it?”<small>THE NEXT LAB QUESTION</small></div><ResearchMap :level="4" />
+<div class="quote">“Could an agent try the next experiment?”<small>THE LAB’S NEXT REQUEST</small></div><div class="step-path"><div><h2>First, you build the experiment.</h2><p>Define the target, train a model, and save what ran.</p></div><div><h2>Then the agent changes its code.</h2><p>Review the change, run it, and compare the prediction.</p></div></div>
 
 
 <!--
-Once we can run and compare an experiment, we can give an agent the code and ask it to propose a change. We’ll train the small forecasting models as usual. The language model writing those proposals stays fixed.
+The reason for building the experiment stack comes first: we need to know whether a change helped and be able to repeat it. Once that works, the same loop can test code proposed by an agent. The language model stays fixed. The small forecasting model trains normally.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -101,6 +101,20 @@ Source notes and recorded evidence: notes/sources.md.
 
 <!--
 Allow participants to get their own copy open before continuing. Run all stale cells creates the controls; it does not press the exercise run buttons. Hosted Forge supplies authentication, but attendees still need their own project and account access. Use fictional or public teaching data in a public project.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">0:05</div>
+
+# Copy the notebook into the project you will use
+
+<div class="copy-native"><a class="copy-dialog" href="/images/visual-v030-solar-setup.png" target="_blank"><img src="/images/visual-v030-solar-setup.png" alt="Native Forge Copy to project dialog"></a><div><h2>Choose your destination.</h2><p>Select a project you can write to. Open the copy in Edit.</p><h2>Check it in the notebook.</h2><p>Hosted Forge detects the copied notebook’s project. Laptop users enter it in Connect.</p><p class="aside">After copying, check the project name in Connect. Your runs and traces should land there.</p></div></div>
+
+
+<!--
+Show the native copy dialog. The copied notebook uses its destination project. A laptop uses manual entry. Confirm the project before executing. The browser preview limitation remains separate from notebook execution.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -144,23 +158,23 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">0:07</div>
 
-# Record a tool call in Agent Lens
+# Wrap one operation, then inspect what you recorded
 
 ```python
 with tracing.Conversation(conversation_id=execution_id):
     with tracing.Turn(agent_name="researcher", messages=mission):
         with tracing.Tool(
             name="inspect_training_environment",
-            arguments={}, result=observed_environment,
-        ):
-            ...
+            arguments={}, result={"numpy": np.__version__},
+        ) as tool:
+            tool.set_attributes({"workshop.exercise": "solar-research"})
 ```
 
-<div class="bottom-note">Record the tool’s inputs, result, timing, and any error.</div>
+<div class="code-contract"><span><strong>Input:</strong> one operation and its observed result</span><span><strong>Output:</strong> a tool span inside a conversation</span></div>
 
 
 <!--
-A conversation groups the work. A turn records a request, and a tool span records one operation and its result. The notebook supplies the outer scopes. You’ll edit the tool scope and add an attribute you can then find in Agent Lens.
+Conversation identifies the execution. Turn holds the mission. Tool records one operation. The attribute line is the learner edit, not a second call. Actual instrumentation also supplies start and end timestamps and records exceptions. Run the free check, send the setup trace, then find the same field in Agent Lens.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -170,7 +184,7 @@ class: exercise
 
 <div class="kicker">0:08–0:15 · YOUR TURN</div>
 
-<a class="answer-link" href="/75">Worked answer → 75</a>
+<a class="answer-link" href="/78">Worked answer → 78</a>
 
 # Connect and inspect your first tool call
 
@@ -186,27 +200,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">0:15</div>
 
-# Check the project before you run an exercise
+# Find the field your code added to the span
 
-<div class="native-columns"><a href="/images/ux-v022-solar-setup.png" target="_blank"><img src="/images/ux-v022-solar-setup.png" alt="Revised notebook showing the participant project, allowance and guided exercise navigation"></a><div><h2>Check your project.</h2><p>Enter the Forge project where you want to save this workshop.</p><h2>Check your allowance.</h2><p>Inference and notebook compute are separate.</p><p class="aside"><a href="/images/ux-v022-solar-setup.png" target="_blank">Open full capture ↗</a></p></div></div><div class="bottom-note">The setup screen before connecting to a project.</div>
-
-
-<!--
-This screenshot shows the Connect step before access is checked. Enter your own project, choose an inference allowance, then click Connect and restore my work. This image does not show a completed connection.
-Source notes and recorded evidence: notes/sources.md.
--->
-
----
-
-<div class="kicker">0:15</div>
-
-# Add an attribute to the tool span
-
-<div><a class="instrumentation-crop" href="/images/ux-v020-solar-instrumentation.png" target="_blank" aria-label="Open the full tracing exercise"><img src="/images/ux-v020-solar-instrumentation.png" alt="Actual editable instrument_tool function with the attribute exercise and free tracing check"></a><p class="aside">Add the attribute inside the tool scope. This writer also instruments your later training calls.</p><div class="image-caption">Recorded rehearsal: the attribute is added and the local check passes. <a href="/images/ux-v020-solar-instrumentation.png" target="_blank">Open full capture ↗</a></div></div>
+<div class="native-product-evidence"><a class="product-screen visual-v030-solar-trace" href="/images/visual-v030-solar-trace.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-trace.png" alt="Native Agent Lens setup tool span from the current Solar rehearsal"></a><div class="product-caption"><span>Read the returned NumPy version. Open Raw to find workshop.exercise.</span><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/4ca0a7e5c9d1fe30d24079ea5b98b750">Open the setup trace ↗</a></div><div class="image-caption">Recorded v0.3.0 environment check. No language-model call was needed.</div></div>
 
 
 <!--
-Point to the attribute inside the tool scope. The free code check tests the function locally. The separate trace button publishes the environment check. This same function will record later training calls.
+The exercise is complete when the participant can find their own attribute in their own tool span. Here is the recorded reference. The tool arguments, result, and duration describe one actual operation. The same instrumentation function records later training calls.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -267,7 +267,7 @@ print(observation.wavelength)
 print(observation.unit)
 ```
 
-<div class="bottom-note">Inspect the FITS metadata here; use the prepared arrays for training.</div>
+<div class="bottom-note">Inspect the FITS metadata here; use the prepared arrays for training.</div><div class="code-contract compact-contract"><span><strong>Input:</strong> A representative FITS file</span><span><strong>Output:</strong> Observation time, wavelength, and units</span></div>
 
 
 <!--
@@ -303,7 +303,7 @@ def persistence_forecast(split):
     ...
 ```
 
-<p class="big">Predict flux 30 minutes ahead by copying the latest reading.</p><div class="bottom-note">This uses only a reading we already have. It does not look at the future target.</div>
+<p class="big">Predict flux 30 minutes ahead by copying the latest reading.</p><div class="bottom-note">This uses only a reading we already have. It does not look at the future target.</div><div class="code-contract compact-contract"><span><strong>Input:</strong> The latest observed reading in each window</span><span><strong>Output:</strong> One 30-minute-ahead prediction per window</span></div>
 
 
 <!--
@@ -321,7 +321,7 @@ Source notes and recorded evidence: notes/sources.md.
 error = mean(abs(predicted_log_flux - observed_log_flux))
 ```
 
-<div class="two-col" style="margin-top:35px"><div><h2>Lower is better</h2><p>The same target, transform, and units apply to every run.</p></div><div><h2>Look at individual misses</h2><p>Inspect the times where the forecast misses.</p></div></div><div class="bottom-note">Compare each prediction with the observed future, then average the errors.</div>
+<div class="two-col" style="margin-top:35px"><div><h2>Lower is better</h2><p>The same target, transform, and units apply to every run.</p></div><div><h2>Look at individual misses</h2><p>Inspect the times where the forecast misses.</p></div></div><div class="bottom-note">Compare each prediction with the observed future, then average the errors.</div><div class="code-contract compact-contract"><span><strong>Input:</strong> Predictions and matching future observations</span><span><strong>Output:</strong> One mean absolute error in log-flux units</span></div>
 
 
 <!--
@@ -335,7 +335,7 @@ class: exercise
 
 <div class="kicker">0:30–0:40 · YOUR TURN</div>
 
-<a class="answer-link" href="/76">Worked answer → 76</a>
+<a class="answer-link" href="/79">Worked answer → 79</a>
 
 # Write and test persistence
 
@@ -462,7 +462,7 @@ with session.stage(
         stage.record(result)
 ```
 
-<div class="bottom-note">You write the training function. The session records its code and outputs.</div>
+<div class="bottom-note">You write the training function. The session records its code and outputs.</div><div class="code-contract compact-contract"><span><strong>Input:</strong> Your source, configuration, and dataset version</span><span><strong>Output:</strong> A saved result that can be restored after restart</span></div>
 
 
 <!--
@@ -490,7 +490,7 @@ class: exercise
 
 <div class="kicker">0:50–1:05 · YOUR TURN</div>
 
-<a class="answer-link" href="/77">Worked answer → 77</a>
+<a class="answer-link" href="/80">Worked answer → 80</a>
 
 # Write the loss and metric
 
@@ -506,13 +506,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">1:05</div>
 
-# Choose settings, choose a model, or write new code
+# Three ways to change an experiment
 
-<table class="clean-table"><tbody><tr><th>Operation</th><th>What changes</th></tr><tr><td>Hyperparameter search</td><td>Values used by an existing program</td></tr><tr><td>Architecture comparison</td><td>Which implemented model runs</td></tr><tr><td>Agent-directed research</td><td>The model, loss, or training program itself</td></tr></tbody></table><div class="bottom-note">We will do all three. The first two do not require a research agent.</div>
+<SolarMechanism mode="search" />
 
 
 <!--
-Changing learning rate is a hyperparameter search. Choosing MLP or CNN compares existing architectures. Later, the research agent will write different model or training code. These are different kinds of changes, and we’ll record which one we made.
+Point to the exact change in each row. A Sweep changes values within the current program. Comparing an MLP with a CNN selects an implementation we wrote. The research agent will edit the program itself. Every version still needs the same data partitions and score.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -547,7 +547,7 @@ def trial():
 wandb.agent(sweep_id, function=trial, count=6)
 ```
 
-<div class="bottom-note">The notebook contains the full implementation and reuses already-completed runs.</div>
+<div class="bottom-note">The notebook contains the full implementation and reuses already-completed runs.</div><div class="code-contract compact-contract"><span><strong>Input:</strong> Six predefined configurations</span><span><strong>Output:</strong> Six tracked training runs with matching metrics</span></div>
 
 
 <!--
@@ -559,13 +559,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">1:10</div>
 
-# Compare forecast error and training time
+# Compare the six configurations in Forge
 
-<a class="sweep-crop" href="/images/ux-v020-solar-sweep.png" target="_blank" aria-label="Open the full native W&B Sweep capture"><img src="/images/ux-v020-solar-sweep.png" alt="Actual W&B Sweep charts showing six validation errors, negative skill relative to persistence, and runtime"></a><p class="aside">All six recorded forecasts are worse than persistence. A lower error among them does not change that.</p><div class="image-caption"><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/sweeps/pr1xsoaw">Open the actual Sweep ↗</a> · <a href="/images/ux-v020-solar-sweep.png" target="_blank">Full capture ↗</a></div>
+<div class="native-product-evidence"><a class="product-screen visual-v030-solar-sweep" href="/images/visual-v030-solar-sweep.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-sweep.png" alt="Native six-run W&amp;B Sweep from the v0.3.0 Solar rehearsal"></a><div class="product-caption"><span>Find two MLP runs with the same width and different learning rates.</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/sweeps/pzigourv">Open the Sweep ↗</a></div><div class="image-caption">All six validation forecasts were worse than persistence. A smaller error among them is still a failed baseline comparison.</div></div>
 
 
 <!--
-This is the recorded six-run Sweep. Find validation error, performance relative to persistence, and training time. All six models performed worse than persistence here. The lowest error among them does not make it a successful forecast.
+Use the latest rehearsal Sweep pzigourv. Start with two width-16 MLP runs, then compare their learning rates, error, and runtime. All six models lost to persistence. Do not infer an architecture conclusion from this short training exercise.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -573,13 +573,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">1:11</div>
 
-# Check whether the models learned enough
+# Read the loss curve before choosing another model
 
-<p class="big">Open the loss curve and prediction plot before choosing a model.</p><div class="warning">In our recorded GOES runs, 60 training steps left the models undertrained. Copying the latest reading gave lower error.</div><div class="bottom-note">Testing a longer training budget would be a separate comparison.</div>
+<div class="scientific-figure"><img class="solar-photo" src="/images/v030-goes-loss.png" alt="Saved GOES model loss curve over 60 training steps"><div class="image-caption">Selected MLP: width 16, learning rate .003, seed 17. Saved v0.3.0 training losses.</div></div><div class="bottom-note">The loss was still falling at the limit. Longer training is a next experiment, not a measured result here.</div>
 
 
 <!--
-In the recorded runs, the loss curves and forecasts showed the models were still undertrained after sixty steps. Compare that with the forecasts you just produced. A longer, equal training budget for all models would be a separate experiment.
+This is the actual selected GOES run, not an invented trend. Its loss is still falling at sixty steps. Inspect its predictions and fixed validation metric too. A falling training loss alone does not tell us the future forecast is good. Longer training is a concrete follow-up, but this workshop did not run it.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -589,7 +589,7 @@ class: exercise
 
 <div class="kicker">1:15–1:30 · YOUR TURN</div>
 
-<a class="answer-link" href="/78">Worked answer → 78</a>
+<a class="answer-link" href="/81">Worked answer → 81</a>
 
 # Run six configurations and inspect one forecast
 
@@ -647,13 +647,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">1:44</div>
 
-# Look at the forecast beside the observed future
+# See exactly which images become input and target
 
-<img class="solar-photo" src="/images/solar-validation.png" alt="Recorded image input, prediction, future observation, and error"><div class="image-caption">Recorded rehearsal image forecast. The notebook shows your own prediction after training.</div>
+<div class="scientific-figure"><img class="solar-photo" src="/images/v030-image-window.png" alt="Earlier and current AIA observations beside the future target"><div class="image-caption">First accepted training window. All three images share the same intensity scale.</div></div><div class="bottom-note">The target is hidden from the model during prediction. It is used afterward to measure the miss.</div>
 
 
 <!--
-Read this recorded example from input to prediction, observed future, and error map. Ask someone to point to a region that changed. After training, the notebook will show the same view for their own result.
+Read the observation times. Channel zero is the earlier image; channel one is the current image. The third image is the future target. These are three real observations from a training window, not three outputs of an AI image generator.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -661,19 +661,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">1:46</div>
 
-# Have the network predict the whole image
+# Two image channels enter. One forecast comes out.
 
-```python
-class ImagePredictor(nn.Module):
-    def forward(self, x):
-        return self.net(x)
-```
-
-<p class="big">The convolutional model must produce the whole image.</p><div class="bottom-note">Two input channels: the earlier and current images. One output channel: the forecast.</div>
+<SolarMechanism mode="residual" :reveal="1" />
 
 
 <!--
-The first model takes two image channels and predicts a whole future image. Its output has one channel. We keep the network small enough to compare on CPU during the workshop.
+Here the network predicts the entire future image. A batch has two input channels, each 64 by 64. The output has one channel. The forward function returns self.net(x). Keep this geometry in view for the residual reveal.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -681,20 +675,34 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">1:48</div>
 
-# Add a learned correction to the current image
+# Let the current image carry what has not changed
 
-```python
-class ImagePredictor(nn.Module):
-    def forward(self, x):
-        correction = self.net(x)
-        return x[:, 1:2] + correction
-```
-
-<p class="big">The current image supplies a starting point. The network learns the change.</p>
+<SolarMechanism mode="residual" :reveal="2" />
 
 
 <!--
-The residual model adds its learned correction to the current image. If the correction is zero, its forecast is exactly persistence. Participants implement this branch in the same forward method.
+The network now predicts a correction. The arrow around the network copies the current input image and adds the correction to it. In x[:, 1:2], the slice keeps the channel dimension, giving batch by one by 64 by 64. Zero correction returns persistence exactly. That is the behavior participants add to forward.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">1:49</div>
+
+# Write the addition you just traced
+
+```python
+def forward(self, x):
+    correction = self.net(x)       # [batch, 1, 64, 64]
+    current_image = x[:, 1:2]      # keep the channel axis
+    return current_image + correction
+```
+
+<div class="code-contract"><span><strong>Input:</strong> earlier image + current image</span><span><strong>Output:</strong> one future image per example</span></div><p class="aside">Check: if <code>correction</code> is zero, the forecast equals the current image.</p>
+
+
+<!--
+The diagram and code describe the same addition. Ask participants why x[:, 1] would remove a dimension and why x[:, 1:2] preserves it. The notebook implementation also branches on architecture so the convolutional comparison still returns only the network output.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -702,19 +710,34 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">1:50</div>
 
-# Measure error inside the solar disk
+# Count errors on the solar disk
 
-```python
-error = abs(prediction - target)
-masked_error = error * disk_mask
-score = mean(masked_error.sum_per_image() / disk_mask.sum_per_image())
-```
-
-<div class="bottom-note">A change outside the mask must not affect the score. Test that explicitly.</div>
+<SolarMechanism mode="mask" />
 
 
 <!--
-Compute absolute error only inside the fixed solar-disk mask. Sum and divide within each image, then average the image errors. An edit outside the mask should not change this score.
+This is a diagram of the scoring calculation, not a forecast. The fixed mask assigns one to disk pixels and zero outside. Multiply absolute errors by the mask, average over the selected pixels per image, then average images. A changed off-disk pixel must not affect the score.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">1:51</div>
+
+# Write the scorer, then test a deliberate miss
+
+```python
+absolute_error = np.abs(prediction - target)
+per_image = (absolute_error * disk_mask).sum(axis=(1, 2, 3))
+per_image /= disk_mask.sum(axis=(1, 2, 3))
+return float(per_image.mean())
+```
+
+<div class="code-contract"><span><strong>Identical arrays:</strong> score 0</span><span><strong>Every disk pixel +1:</strong> score 1</span><span><strong>Only off-disk pixels +1:</strong> score 0</span></div>
+
+
+<!--
+Run the three local examples before training. They explain what the scorer measures. The participant writes this development scorer, and the protected primary scorer checks the comparison with the same published rule. Missing or invalid predictions are not zero error.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -736,13 +759,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">1:54</div>
 
-# Compare the two forecasts on the same case
+# Compare forecasts for the same validation case
 
-<a class="model-crop" href="/images/ux-v020-solar-models.png" target="_blank" aria-label="Open the complete validation model comparison"><img src="/images/ux-v020-solar-models.png" alt="Actual convolutional and residual forecasts on the same validation case, with observed future and error images"></a><div class="image-caption">Recorded validation case: convolution above, residual below. <a href="/images/ux-v020-solar-models.png" target="_blank">Open full comparison and evidence links ↗</a></div>
+<div class="scientific-figure"><img class="solar-photo" src="/images/v030-validation-predictions.png" alt="Matched convolutional and residual predictions beside the same observed future"><div class="image-caption">Recorded v0.3.0 forecasts. First accepted validation case; common intensity and error scales.</div></div><div class="bottom-note">Compare the error maps, then check the score across all 142 validation windows.</div>
 
 
 <!--
-These two recorded rows use the same input and target times. The convolutional forecast is above; the residual forecast is below. Compare the images and error maps, then look at the validation scores. The final dates have not been used to select either model.
+The same current image and observed future appear in both rows. The convolutional forecast is above, residual below. The figure uses the first accepted case, not a selected success. Colors use the same scale across both rows. A single image is an example; the validation score includes all 142 windows.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -752,7 +775,7 @@ class: exercise
 
 <div class="kicker">1:55–2:15 · YOUR TURN</div>
 
-<a class="answer-link" href="/79">Worked answer → 79</a>
+<a class="answer-link" href="/82">Worked answer → 82</a>
 
 # Implement and compare the image predictors
 
@@ -782,13 +805,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">2:17</div>
 
-# The research agent writes code; the forecast model trains
+# The agent edits code. The forecast model learns weights.
 
-<table class="clean-table"><tbody><tr><th></th><th>Research agent</th><th>Forecasting model</th></tr><tr><td>Job</td><td>Propose code edits</td><td>Predict solar observations</td></tr><tr><td>Weights</td><td>Fixed throughout</td><td>Trained on training dates</td></tr><tr><td>Changed by this loop</td><td>Its evidence and task context</td><td>Source, loss, training code, trained weights</td></tr></tbody></table><div class="bottom-note">No post-training of the research agent occurs in this workshop.</div>
+<SolarMechanism mode="weights" />
 
 
 <!--
-There are two different models here. GLM writes research proposals and its weights stay fixed. The small forecasting networks train their weights for each candidate. The research agent changes the program that performs that training.
+There are two models with different jobs. The language model writes Python and keeps the same weights. The small forecasting network trains weights using that Python and the earlier solar observations. Validation evidence returns to the research agent for another proposed edit. This is code-directed research, not post-training the language model.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -838,13 +861,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">2:24</div>
 
-# Find the validation evidence the agent read
+# Read the evidence that went into the proposal
 
-<a class="product-screen ux-v023-solar-lens" href="/images/ux-v023-solar-lens.png" target="_blank" aria-label="Open full-size capture"><img src="/images/ux-v023-solar-lens.png" alt="Native Agent Lens showing the research agent evidence-reading tool and its recorded output"></a><div class="product-caption"><span>Select read_validation_evidence. Find the settings and validation error.</span><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ef590522f1af377a0bc04bd63eea23e4/spans">Open the conversation ↗</a></div><div class="image-caption">Recorded research-agent request. The tool output is the evidence supplied to the proposed edit.</div>
+<div class="native-product-evidence"><a class="product-screen visual-v030-solar-evidence" href="/images/visual-v030-solar-evidence.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-evidence.png" alt="Native read_validation_evidence span from the current Solar proposal"></a><div class="product-caption"><span>Find the parent configuration and validation error before reading its proposal.</span><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/23f4a8510534f241b9c6ccacb0ef3cb7/spans">Open the proposal ↗</a></div><div class="image-caption">Recorded v0.3.0 round 1. The agent receives validation evidence, never the reserved-date score.</div></div>
 
 
 <!--
-Open the evidence-reading tool and find the current source settings and validation result. Then inspect the returned proposal and follow its training result. This capture comes from the recorded rehearsal, not a new request. The full-size image remains available when sign-in is required.
+Open read_validation_evidence. Find the residual architecture, forty training steps, seed seventeen, and parent validation error. Then inspect the returned proposal. This request initially exhausted its output budget and used a saved retry; that is an execution event, not a change in forecasting quality.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -854,7 +877,7 @@ class: exercise
 
 <div class="kicker">2:25–2:40 · YOUR TURN</div>
 
-<a class="answer-link" href="/81">Worked answer → 81</a>
+<a class="answer-link" href="/84">Worked answer → 84</a>
 
 # Choose the evidence for the research agent
 
@@ -884,13 +907,20 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">2:41</div>
 
-# Read the proposed change before running it
+# The first proposal changes one loss operation
 
-<a class="diff-crop" href="/images/ux-v020-solar-diff.png" target="_blank" aria-label="Open the full proposed-change capture"><img src="/images/ux-v020-solar-diff.png" alt="Actual candidate diff changes squared training error to absolute error and requires review before the probe"></a><div class="image-caption">Recorded proposal: <code>.square()</code> became <code>.abs()</code>. The training result will show whether it helped. <a href="/images/ux-v020-solar-diff.png" target="_blank">Full capture ↗</a></div>
+```python
+def training_loss(prediction, target, mask):
+    # Before: square each miss.
+    # After: take its absolute size.
+    return ((prediction - target).abs() * mask).sum() / mask.sum()
+```
+
+<div class="diff"><div class="del">− (prediction - target).square()</div><div class="add">+ (prediction - target).abs()</div></div><p class="aside">Agent’s hypothesis: training on absolute error may help the fixed absolute-error score. The probe tests that claim.</p>
 
 
 <!--
-This recorded candidate changes squared training loss to absolute loss. Ask what that might change during training, then inspect the test result. Reading the diff tells us what was proposed; it does not tell us whether the forecast improved.
+This is the actual first-round Candidate A edit in v0.3.0. It changes the training objective, while the evaluation scorer remains fixed. The alternative candidate retains the original squared loss. The diff establishes the proposed change; it does not establish an improvement until both run.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -938,6 +968,20 @@ Source notes and recorded evidence: notes/sources.md.
 
 ---
 
+<div class="kicker">2:47</div>
+
+# Open the training call behind the chosen version
+
+<div class="native-product-evidence"><a class="product-screen visual-v030-solar-training" href="/images/visual-v030-solar-training.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-training.png" alt="Native train_and_validate tool span with actual source settings and returned metrics"></a><div class="product-caption"><span>Check the configuration, then find validation_error in the returned result.</span><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f7550caa1639e8366efbf9d84a782289">Open the selected training call ↗</a></div><div class="image-caption">Recorded v0.3.0 round 2 composition test. “error” is forecast error here, not an exception.</div></div>
+
+
+<!--
+The operation trained and validated the selected source. Find the returned score and compare the run to the saved source artifact. An error metric of 0.110916 is the forecasting metric, not a tool failure. If a span actually failed, inspect its exception separately.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
 <div class="kicker">2:48</div>
 
 # Start round two from the selected version
@@ -972,7 +1016,7 @@ class: exercise
 
 <div class="kicker">3:00–3:15 · YOUR TURN</div>
 
-<a class="answer-link" href="/82">Worked answer → 82</a>
+<a class="answer-link" href="/85">Worked answer → 85</a>
 
 # Test the selected code, then begin round two
 
@@ -1002,13 +1046,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">3:17</div>
 
-# Stop editing before the final comparison
+# Freeze both the code and the trained weights
 
-<div class="step-path"><div><h2>Persistence</h2><p>Copy the latest observed image.</p></div><div><h2>Manual selection</h2><p>The model selected using validation error.</p></div><div><h2>Agent selection</h2><p>The code and weights selected after round two.</p></div></div><div class="bottom-note">Keep these versions fixed while testing the reserved dates.</div>
+<SolarMechanism mode="freeze" />
 
 
 <!--
-Select the versions before looking at the final dates. The image comparison includes persistence, the manually selected model, and the agent-selected model. Keep the saved code and weights fixed while evaluating them.
+Select using validation, then freeze the code and its trained weights together. The final step loads those weights and predicts later dates; it does not keep fitting or ask the agent which final score it likes. Once you inspect final results, further editing needs a new reserved test for a new comparison.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1054,7 +1098,7 @@ class: exercise
 
 <div class="kicker">3:25–3:45 · YOUR TURN</div>
 
-<a class="answer-link" href="/83">Worked answer → 83</a>
+<a class="answer-link" href="/86">Worked answer → 86</a>
 
 # Test the selected models on reserved dates
 
@@ -1072,11 +1116,11 @@ Source notes and recorded evidence: notes/sources.md.
 
 # In this rehearsal, image error fell 10.15%
 
-<div class="measured-grid"><div><div class="measured-gain">10.15%</div><p>less error than the manually selected model</p><p class="aside">Agent edits: zero-initialize the residual head, then use absolute training loss.</p></div><table class="clean-table"><tbody><tr><th>Frozen version</th><th>Masked MAE ↓</th></tr><tr><td>Persistence</td><td>0.125762</td></tr><tr><td>Manual residual model</td><td>0.122442</td></tr><tr><td>Agent-selected code</td><td>0.110011</td></tr></tbody></table></div><p class="aside">Actual AIA 171 Å observations. 199 overlapping windows; February 13–14, 2014; one seed. <a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==">Open the recorded comparison ↗</a></p><div class="bottom-note">A measured result from this rehearsal, not a promised outcome for your edits.</div>
+<div class="measured-grid"><div><div class="measured-gain">10.15%</div><p>less error than the manually selected model</p><p class="aside">Agent edits: use absolute training loss, then zero-initialize the residual head.</p></div><table class="clean-table"><tbody><tr><th>Frozen version</th><th>Masked MAE ↓</th></tr><tr><td>Persistence</td><td>0.125762</td></tr><tr><td>Manual residual model</td><td>0.122442</td></tr><tr><td>Agent-selected code</td><td>0.110011</td></tr></tbody></table></div><p class="aside">Actual AIA 171 Å observations. 199 overlapping windows; February 13–14, 2014; one seed. <a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==">Open the recorded comparison ↗</a></p><div class="bottom-note">A measured result from this rehearsal, not a promised outcome for your edits.</div>
 
 
 <!--
-The selected agent code combined the zero-initialized residual head from round one with absolute training loss from round two. Its final masked MAE was 0.11001095193834161, versus 0.1224417336622075 for the manual model and 0.12576198700564592 for persistence. The 10.15% is a relative reduction in error versus manual. This is one seed and 199 overlapping windows across two reserved days, not evidence of reliable solar forecasting across other periods.
+The selected agent code combined the absolute training loss from round one with a zero-initialized residual head from round two. Its final masked MAE was 0.11001095193834161, versus 0.1224417336622075 for the manual model and 0.12576198700564592 for persistence. The 10.15% is a relative reduction in error versus manual. This is one seed and 199 overlapping windows across two reserved days, not evidence of reliable solar forecasting across other periods.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1084,13 +1128,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">3:46 · RECORDED REHEARSAL</div>
 
-# Compare the saved forecasts at the same time
+# Compare one saved forecast at the same time
 
-<a class="final-crop" href="/images/ux-v020-solar-final.png" target="_blank" aria-label="Open the complete final notebook comparison"><img src="/images/ux-v020-solar-final.png" alt="Actual notebook comparing manual and agent forecasts at the same reserved timestamp, with observed future and error images"></a><div class="image-caption">Same input and future timestamp. Manual above, agent-selected below. <a href="/images/ux-v020-solar-final.png" target="_blank">Full notebook comparison ↗</a></div>
+<div class="scientific-figure"><img class="solar-photo" src="/images/v030-final-predictions.png" alt="Manual and agent-selected forecasts for the same first accepted final case"><div class="image-caption">Forecast origin 2014-02-13T02:48 UTC. Same inputs, target, intensity scale, and error scale.</div></div><div class="bottom-note">The first accepted case is shown, not the case with the largest improvement.</div>
 
 
 <!--
-These are saved forecasts for the same final timestamp. Compare the manual row with the agent-selected row, including the error images. The full screenshot also contains the score tables. It is the notebook comparison from the rehearsal.
+This figure is regenerated from the fresh v0.3.0 saved predictions. Compare manual and agent-selected forecasts on exactly the same case. The fixed error scale helps show differences without changing the colors between rows. The aggregate score includes all 199 accepted final windows.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1098,13 +1142,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">3:47 · RECORDED REHEARSAL</div>
 
-# The recorded GOES model lost to persistence
+# The selected GOES forecast lost to persistence
 
-<img class="solar-photo" src="/images/goes-final.png" alt="Recorded observed flux and undertrained forecast"><div class="image-caption">Final log-flux MAE: selected model 2.469; persistence 0.193. The training budget was 60 steps.</div>
+<div class="scientific-figure"><img class="solar-photo" src="/images/v030-goes-final.png" alt="Observed GOES flux, persistence forecast, and selected model prediction on reserved dates"><div class="image-caption">Final log-flux MAE: selected model 2.469; persistence 0.193. 2,694 accepted windows.</div></div><div class="bottom-note">Keep this failure in the comparison. The image result does not erase it.</div>
 
 
 <!--
-The GOES model’s final log-flux MAE was 2.469; persistence scored 0.193. Its learning curve showed it was still undertrained after sixty steps. Keep this failure beside the image result. It does not establish that MLPs or CNNs cannot forecast solar measurements.
+These are the fresh saved final GOES predictions. The selected sixty-step neural model misses badly, while persistence follows the observed flux much more closely. The training curve suggests a longer equal budget as a follow-up. That follow-up has not been run, and the failure does not establish that neural forecasting cannot work.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1112,13 +1156,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">3:48</div>
 
-# Open the comparison in your project
+# Read the saved score for one image in Weave
 
-<a class="product-screen ux-v023-solar-dashboard" href="/images/ux-v023-solar-dashboard.png" target="_blank" aria-label="Open full-size capture"><img src="/images/ux-v023-solar-dashboard.png" alt="Native Solar workspace showing the three frozen image-model results"></a><div class="product-caption"><span>Compare the three image forecasts, then open a run for its time and cost.</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=ogpa6vhy8db">Open the Solar workspace ↗</a></div><div class="image-caption">Recorded rehearsal: image error fell; the GOES model lost to persistence. The metrics use different units.</div>
+<div class="native-product-evidence"><a class="product-screen visual-v030-solar-comparison" href="/images/visual-v030-solar-comparison.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-comparison.png" alt="Native Weave expanded row showing prediction mean, target mean, file index, and error"></a><div class="product-caption"><span>Find file_index 0 and its error. Why is the score not the difference between the two means?</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==">Open the linked results ↗</a></div><div class="image-caption">One saved agent-selected case. Image means summarize the arrays; the score averages pixel errors inside the disk mask.</div></div>
 
 
 <!--
-This saved workspace contains only the runs from one rehearsal. Compare final image scores, then inspect GOES separately. Open a run to see its settings, runtime, and evidence. Do not combine these two tasks into one average. The selected runs and source metrics are unchanged.
+This expanded native Weave row is the first final agent-selected image, file_index zero. Prediction mean is −1.760701 and target mean is −1.759181, but masked MAE is 0.109328. Differences between bright and dark pixels can cancel in a mean. The scorer instead takes each pixel’s absolute error before averaging. Open the saved array to see the forecast. The notebook supplies the aligned comparison; this is not native EvalTables.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1126,13 +1170,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">3:49</div>
 
-# Open the files behind one result
+# Check that the saved source contains both selected edits
 
-<a class="product-screen ux-v023-solar-artifact" href="/images/ux-v023-solar-artifact.png" target="_blank" aria-label="Open full-size capture"><img src="/images/ux-v023-solar-artifact.png" alt="Native W&amp;B Artifact file list for the selected round-two training execution"></a><div class="product-caption"><span>Open candidate.py, losses.json, predictions.npy, and weights.pt.</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f5e5d198bc9479f78d9a4b1c8c8979e3/v0">Open the Artifact ↗</a></div><div class="image-caption">The selected round-two training run saved its code, losses, weights, and predictions together.</div>
+<div class="native-product-evidence"><a class="product-screen visual-v030-solar-artifact" href="/images/visual-v030-solar-artifact.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-artifact.png" alt="Native W&amp;B Artifact code view showing the selected candidate.py"></a><div class="product-caption"><span>Find the zero-initialized output layer and the absolute training loss.</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f7550caa1639e8366efbf9d84a782289/v0">Open the Artifact ↗</a></div><div class="image-caption">The same Artifact also holds <code>losses.json</code>, <code>weights.pt</code>, and <code>predictions.npy</code> from this training run.</div></div>
 
 
 <!--
-Open the Artifact file list for round two’s tested composition. candidate.py is the executed code, losses.json records training, weights.pt holds trained parameters, and predictions.npy and predictions.png contain the output. execution.json links the settings and result. This is the saved training run whose weights were subsequently frozen, not a new execution.
+This is execution-f7550caa1639e8366efbf9d84a782289, the exact selected round-two composition. Open the source and weights together. The final evaluation loaded these weights. A different source file with the same model label would not reproduce this experiment.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1156,13 +1200,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">3:58–4:00</div>
 
-# Explain the result, then choose the next experiment
+# Write what changed, what helped, and what still missed
 
-<a class="product-screen ux-v023-solar-report-results" href="/images/ux-v023-solar-report-results.png" target="_blank" aria-label="Open full-size capture"><img src="/images/ux-v023-solar-report-results.png" alt="Native Solar Report bar chart comparing the three frozen image forecasts"></a><div class="product-caption"><span>Name one code change, its measured result, and a remaining forecasting error.</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==">Open the recorded Report ↗</a></div><div class="image-caption">For another study, choose new final-test dates before editing again.</div>
+<div class="native-product-evidence"><a class="product-screen visual-v030-solar-report" href="/images/visual-v030-solar-report.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-report.png" alt="Native Report excerpt summarizing the latest Solar technical rehearsal"></a><div class="product-caption"><span>Follow one result to its source and forecast, then propose the next test.</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==">Open the Report ↗</a></div><div class="image-caption">A recorded technical rehearsal. Your Report should describe your own completed experiments.</div></div>
 
 
 <!--
-A teammate should be able to follow this explanation back to the run, source, and prediction. Ask for one next experiment based on an error someone inspected: what would change, what would stay fixed, and what would make them keep the previous version? This Report describes the recorded rehearsal; participants publish their own conclusions.
+Close with the measured result and a concrete next test, such as a longer equal GOES training budget or new reserved dates for the image change. The recorded result is one seed across two reserved days. Participants should explain their own result, including failures and remaining misses.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1203,7 +1247,7 @@ def instrument_tool(observation):
 ```
 
 
-<div class="source-link"><a href="/10">Return to Connect and inspect your first tool call →</a></div>
+<div class="source-link"><a href="/11">Return to Connect and inspect your first tool call →</a></div>
 
 <!--
 The attribute is attached inside the Tool scope. The complete notebook function also supplies its call identity and outer conversation. Use the operation’s timestamps so Agent Lens shows when the work happened, not when it was uploaded.
@@ -1289,7 +1333,7 @@ def my_image_mae(prediction, target, disk_mask):
 ```
 
 <p>Test zero error, constant +1 error, and an error only outside the mask.</p>
-<div class="source-link"><a href="/46">Return to Implement and compare the image predictors →</a></div>
+<div class="source-link"><a href="/48">Return to Implement and compare the image predictors →</a></div>
 
 <!--
 The mask selects the solar disk. Compute the sum and count per image, then average across images. Check identical arrays, a constant one-unit difference, and a difference only outside the mask.
@@ -1336,7 +1380,7 @@ def select_validation_evidence(record):
 ```
 
 <div class="bottom-note">The agent also receives the current source. Keep final predictions and scores out of this request.</div>
-<div class="source-link"><a href="/53">Return to Choose the evidence for the research agent →</a></div>
+<div class="source-link"><a href="/55">Return to Choose the evidence for the research agent →</a></div>
 
 <!--
 First check that the record belongs to validation. Then return only the listed evidence fields. The current source is supplied separately. The final-test example should raise an error before the agent sees it.
@@ -1360,7 +1404,7 @@ probe = run_training(
 ```
 
 <div class="bottom-note">Use the candidate’s source here. Passing the parent would train the old program again.</div>
-<div class="source-link"><a href="/61">Return to Test the selected code, then begin round two →</a></div>
+<div class="source-link"><a href="/64">Return to Test the selected code, then begin round two →</a></div>
 
 <!--
 Pass candidate['source'] to training, along with the shared configuration. Passing the parent source here would train the old program while the interface appeared to test a new proposal. Open the saved candidate.py if the result looks suspicious.
@@ -1374,7 +1418,7 @@ Source notes and recorded evidence: notes/sources.md.
 # Use the saved model without training it again
 
 <p class="big">Load each selected model’s saved weights and predict the reserved dates.</p><p>Compare the three image forecasts at one timestamp. The input images and observed future should match across all three rows.</p><div class="bottom-note">Persistence copies the current image and needs no trained weights.</div>
-<div class="source-link"><a href="/66">Return to Test the selected models on reserved dates →</a></div>
+<div class="source-link"><a href="/69">Return to Test the selected models on reserved dates →</a></div>
 
 <!--
 The selected weights are already trained. Load them and predict the final inputs. Compare the same target timestamps across all versions; persistence uses the current image directly.
@@ -1385,13 +1429,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">RECORDED REHEARSAL</div>
 
-# Round 1: two changes, two measured outcomes
+# Round 1: absolute loss versus the unchanged model
 
-<table class="clean-table"><tbody><tr><th>Source</th><th>Validation error ↓</th></tr><tr><td>Manual residual model</td><td>0.122116</td></tr><tr><td>A · replace squared loss with absolute loss</td><td>0.120553</td></tr><tr><td>B · initialize the residual head at zero</td><td>0.111434</td></tr></tbody></table><p>The composition selected B. Its separate test reproduced 0.111434.</p><p class="aside"><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ef590522f1af377a0bc04bd63eea23e4">Open the actual proposals and evidence ↗</a></p>
+<table class="clean-table"><tbody><tr><th>Tested source</th><th>Validation error ↓</th></tr><tr><td>Starting residual model</td><td>0.122116</td></tr><tr><td>A · use absolute training loss</td><td>0.120553</td></tr><tr><td>B · retain squared training loss</td><td>0.122116</td></tr></tbody></table><p>The composition selected A. Its separate test reproduced 0.120553.</p><div class="bottom-note">Recorded v0.3.0: one seed, 142 validation windows, the same forty-step budget.</div>
 
 
 <!--
-In our November 13 rehearsal, Candidate A changed the loss to absolute error. Candidate B initialized the residual head at zero and had lower validation error. The composition kept B and its separate test reproduced the same score. These models shared the image data, seed, and forty-step training configuration.
+The alternative is a real KEEP decision and it is still tested. Candidate A changes only the loss and lowers validation error in this run. The composition keeps A. This is one seed, not evidence of a repeatable effect.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1401,22 +1445,22 @@ class: answer-code
 
 <div class="kicker">RECORDED REHEARSAL</div>
 
-# Initialize the correction at zero
+# Round 2: start the correction at zero
 
 ```python
 if architecture == 'residual':
-    nn.init.zeros_(self.net[4].weight)
-    nn.init.zeros_(self.net[4].bias)
+    nn.init.zeros_(self.net[-1].weight)
+    nn.init.zeros_(self.net[-1].bias)
 
 # The residual forward pass remains:
 return prediction + x[:, 1:2]
 ```
 
-<div class="bottom-note">Zero initial correction → the initial forecast is the current image.</div>
+<div class="bottom-note">The round-one absolute loss stays. Zero initial correction makes the initial forecast persistence.</div>
 
 
 <!--
-Zero weights and bias in the last convolution make the initial correction zero. The residual model therefore starts by copying the present image, then learns a correction during training. This is the actual first-round edit that was selected in the recorded run.
+This is the second-round selected edit in v0.3.0. The last convolution starts at zero; before training, the residual correction is zero. The model begins at persistence and learns a correction. Its probe and separate composition test produce the measured validation score.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1424,13 +1468,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">RECORDED REHEARSAL</div>
 
-# Round 2 also tested the unchanged version
+# Round 2: a plausible sampling change did not help
 
-<table class="clean-table"><tbody><tr><th>Source</th><th>Validation error ↓</th></tr><tr><td>Adopted zero-init model</td><td>0.111434</td></tr><tr><td>A · add absolute loss to that source</td><td>0.110916</td></tr><tr><td>B · KEEP the zero-init source unchanged</td><td>0.111434</td></tr></tbody></table><p>The unchanged version reproduced its earlier error. The tested composition selected A.</p><div class="bottom-note">KEEP ran the same code again so we could compare it with Candidate A.</div>
+<table class="clean-table"><tbody><tr><th>Tested source</th><th>Validation error ↓</th></tr><tr><td>Starting absolute-loss model</td><td>0.120553</td></tr><tr><td>A · zero-initialize the residual head</td><td>0.110916</td></tr><tr><td>B · sample without replacement</td><td>0.120557</td></tr></tbody></table><p>The composition selected A. It did not combine the unhelpful sampling change.</p><div class="bottom-note">The sampling idea was plausible. Its measured result supplied the reason to leave it out.</div>
 
 
 <!--
-Round two started from the zero-initialized model. Candidate A added absolute training loss. Candidate B kept the source unchanged and reproduced its error. The tested composition selected A. This small validation difference comes from one seed, so it does not establish repeatability.
+Candidate B changes the batch sampling to seeded permutations. Its validation error is essentially the same as the parent and slightly higher. The composition keeps zero initialization and rejects the sampling change. Do not attribute a benefit to an untested combination.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1440,7 +1484,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Open the recorded research conversation
 
-<p class="big"><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ef590522f1af377a0bc04bd63eea23e4">Open the proposal and its recorded tool activity ↗</a></p><p>Find the active configuration, the requested edit, and the returned candidate code. Compare the proposal with the tested source.</p><p class="aside"><a href="https://ash0ts.github.io/forge-workshop-kit/solar/recorded-study.json">Download the recorded source, decisions, scores, and evidence links ↗</a></p><div class="bottom-note">Agent Lens may require sign-in. The source and saved decisions are also in the downloadable evidence.</div>
+<p class="big"><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/23f4a8510534f241b9c6ccacb0ef3cb7">Open the proposal and its recorded tool activity ↗</a></p><p>Find the active configuration, the requested edit, and the returned candidate code. Compare the proposal with the tested source.</p><p class="aside"><a href="https://ash0ts.github.io/forge-workshop-kit/solar/recorded-study.json">Download the recorded source, decisions, scores, and evidence links ↗</a></p><div class="bottom-note">Agent Lens may require sign-in. The source and saved decisions are also in the downloadable evidence.</div>
 
 
 <!--
@@ -1482,66 +1526,10 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Keep working in your own project
 
-<p class="big"><a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view">Copy the Solar notebook ↗</a></p><p><a href="https://github.com/ash0ts/forge-workshop-kit">Source, setup, dataset, and facilitator guide ↗</a></p><p><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==">Recorded rehearsal Report ↗</a></p><div class="bottom-note">Keep your notebook, code edits, and checkpoints. The facilitator needs no control over your runtime.</div><p class="aside"><a href="/91">Explore the separate Pending workshop →</a></p>
+<p class="big"><a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view">Copy the Solar notebook ↗</a></p><p><a href="https://github.com/ash0ts/forge-workshop-kit">Source, setup, dataset, and facilitator guide ↗</a></p><p><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==">Recorded rehearsal Report ↗</a></p><p class="aside"><a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view">For an office-agent example, open Pending, Inc. ↗</a></p><div class="bottom-note">Keep your notebook, code edits, and checkpoints. The facilitator needs no control over your runtime.</div>
 
 
 <!--
 Participants keep their notebook and project. Use these links to continue the exercises, inspect the source, or revisit the recorded example. There is no facilitator gateway to renew.
-Source notes and recorded evidence: notes/sources.md.
--->
-
----
-
-<div class="kicker">OPTIONAL · PENDING, INC.</div>
-
-# The same kit also runs an office-agent workshop
-
-<a class="product-screen ux-v022-pending-setup" href="/images/ux-v022-pending-setup.png" target="_blank" aria-label="Open full-size capture"><img src="/images/ux-v022-pending-setup.png" alt="Current Pending Inc notebook Connect step in the separate office workshop"></a><div class="product-caption"><span>Copy Pending, Inc. into your own project. Build the tool, its trace, and its checks.</span><a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view">Open the Pending template ↗</a></div><div class="image-caption">Separate office workshop. Tools run in the notebook runtime; onboarding uses local MCP.</div><div class="appendix-return"><a href="/6">Return to Solar setup →</a></div>
-
-
-<!--
-This optional sequence shows the current Pending workshop, not the older gateway-based release. Copy it into your own project. The notebook screenshot shows the current setup controls; it does not prove hosted access or completed training.
-Source notes and recorded evidence: notes/sources.md.
--->
-
----
-
-<div class="kicker">OPTIONAL · PENDING, INC.</div>
-
-# Check what the invoice tool returned
-
-<a class="product-screen ux-v023-pending-lens" href="/images/ux-v023-pending-lens.png" target="_blank" aria-label="Open full-size capture"><img src="/images/ux-v023-pending-lens.png" alt="Native Agent Lens showing a learner-written invoice lookup in the Pending workshop"></a><div class="product-caption"><span>Open the invoice lookup arguments, then compare the returned invoice and account.</span><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/370ae4263372ca1de91d7308e66d0d3d/spans/turns/fbb084c1ce00e6ade53a3d56ed7760fe/spans/2af0208bf11b7217">Open the tool conversation ↗</a></div><div class="image-caption">Recorded manual-harness run on the two-invoices case. The learner’s Python function inspected both invoices.</div><div class="appendix-return"><a href="/6">Return to Solar setup →</a></div>
-
-
-<!--
-Follow the lookup arguments and returned observation. This is the function the participant wrote, used by the real agent loop. Find where the next action used its result. It is a separate office rehearsal, not evidence from the solar experiment.
-Source notes and recorded evidence: notes/sources.md.
--->
-
----
-
-<div class="kicker">OPTIONAL · PENDING, INC.</div>
-
-# Compare the office state and explanation separately
-
-<a class="product-screen ux-v023-pending-dashboard" href="/images/ux-v023-pending-dashboard.png" target="_blank" aria-label="Open full-size capture"><img src="/images/ux-v023-pending-dashboard.png" alt="Native Pending workspace showing state checks across the starting manual and agent-selected harnesses"></a><div class="product-caption"><span>All twelve state checks passed. One explanation judgment remains unavailable.</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=nkyxiy1o6wn">Open the Pending workspace ↗</a></div><div class="image-caption">Four fresh tickets per harness. Manual and agent-selected versions have the same executable instructions.</div><div class="appendix-return"><a href="/6">Return to Solar setup →</a></div>
-
-
-<!--
-There was no observed task-quality gain on these four tickets: all twelve state checks passed. Eleven explanation judgments were available; the missing one is not a failed state check. Manual and agent-selected harnesses were the same executable version. Use the saved case table to inspect a recovery.
-Source notes and recorded evidence: notes/sources.md.
--->
-
----
-
-<div class="kicker">OPTIONAL · PENDING, INC.</div>
-
-# Write what the office comparison showed
-
-<a class="product-screen ux-v023-pending-report-results" href="/images/ux-v023-pending-report-results.png" target="_blank" aria-label="Open full-size capture"><img src="/images/ux-v023-pending-report-results.png" alt="Native Pending Report showing completed state checks for all three harness labels"></a><div class="product-caption"><span>Explain the change and link one ticket’s trace, checked state, and instructions.</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-51a0006f--VmlldzoxODMwMjcxMA==">Open the Pending Report ↗</a></div><div class="image-caption">All twelve state checks passed; 11 of 12 explanation judgments were available. No observed task-quality gain.</div><div class="appendix-return"><a href="/6">Return to Solar setup →</a></div>
-
-
-<!--
-Open the Report for the separate office workshop. Follow a ticket to its checked state and trace, and explain why the selected instructions were retained. Use the return link to resume the Solar setup sequence.
 Source notes and recorded evidence: notes/sources.md.
 -->

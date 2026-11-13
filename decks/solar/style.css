@@ -175,3 +175,20 @@
 .product-screen.ux-v023-solar-report-results img{position:absolute;max-width:none;width:1600px;height:auto;left:-300px;top:-75px}
 .product-screen.ux-v023-pending-report-results{width:1000px;height:402px;position:relative}
 .product-screen.ux-v023-pending-report-results img{position:absolute;max-width:none;width:1600px;height:auto;left:-300px;top:-175px}
+/* Concrete input/output explanations and the current native captures. */
+.code-contract{display:flex;gap:24px;margin:24px 0;font-size:22px;line-height:1.4}.code-contract>span{flex:1;border-top:3px solid #b4c9bb;padding-top:13px}.code-contract strong{display:block;color:var(--teal);margin-bottom:4px}
+.observation-tasks{display:grid;grid-template-columns:1fr 1fr;gap:42px;margin-top:14px}.observation-tasks p{font-size:24px;line-height:1.4}.observation-tasks strong{color:var(--teal)}
+.product-screen.visual-v030-solar-setup{width:490px;position:relative;height:402px;margin-left:0}.product-screen.visual-v030-solar-setup img{position:absolute;width:1280px;max-width:none;height:auto;left:-790px;top:0}
+.copy-native{display:grid;grid-template-columns:470px 1fr;gap:46px}.copy-native .copy-dialog{display:block;width:470px;height:420px;overflow:hidden;position:relative;background:white;border:1px solid #acb9ad}.copy-dialog img{position:absolute;width:1280px;max-width:none;height:auto;left:-805px;top:-20px}.copy-native h2{font-size:26px;margin-top:17px}.copy-native p{font-size:24px}.copy-native .aside{font-size:18px;margin-top:22px}
+.copy-native{grid-template-columns:470px minmax(0,1fr)}.copy-native>div{min-width:0}.copy-native p{overflow-wrap:break-word}
+/* Enlarge the actual code and span payloads while preserving a full-capture link. */
+.product-screen.visual-v030-solar-artifact{position:relative;height:392px}
+.product-screen.visual-v030-solar-artifact img{position:absolute;width:1410px;max-width:none;height:auto;left:-388px;top:-204px}
+.product-screen.visual-v030-solar-trace{position:relative;height:402px}
+.product-screen.visual-v030-solar-trace img{position:absolute;width:1280px;max-width:none;height:auto;left:-150px;top:-285px}
+.compact-contract{font-size:20px;margin-top:20px;gap:32px}.compact-contract strong{display:inline;margin-right:5px}.compact-contract>span{padding-top:9px}
+.product-screen.visual-v030-solar-artifact{height:392px}.product-screen.visual-v030-solar-artifact img{top:-257px}
+.product-screen.visual-v030-solar-evidence{position:relative;height:402px}.product-screen.visual-v030-solar-evidence img{position:absolute;width:1792px;max-width:none;height:auto;left:-800px;top:-480px}
+.product-screen.visual-v030-solar-training{position:relative;height:402px}.product-screen.visual-v030-solar-training img{position:absolute;width:1640px;max-width:none;height:auto;left:-730px;top:-510px}
+.product-screen.visual-v030-solar-comparison{position:relative;height:402px}.product-screen.visual-v030-solar-comparison img{position:absolute;width:1408px;max-width:none;height:auto;left:-354px;top:-385px}
+.product-screen.visual-v030-solar-report{position:relative;width:1040px;height:340px;margin-top:30px}.product-screen.visual-v030-solar-report img{position:absolute;width:1408px;max-width:none;height:auto;left:-285px;top:-460px}

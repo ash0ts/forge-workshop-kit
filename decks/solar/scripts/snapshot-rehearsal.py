@@ -11,6 +11,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("journal", type=Path)
 args = parser.parse_args()
 journal = json.loads(args.journal.read_text())
+identity = json.loads(args.journal.with_name("identity.json").read_text())
 rows = []
 for saved in journal["stages"].values():
     if not saved["name"].startswith(("goes/", "images/")):
@@ -33,8 +34,10 @@ for saved in journal["stages"].values():
         ) if key in trace}
     rows.append(row)
 output = {
-    "label": "Recorded revised-notebook browser rehearsal, November 13, 2026",
-    "project": "wandb/forge-workshop-kit",
+    "label": "Recorded v0.3.0 authored-cell rehearsal, November 13, 2026",
+    "project": identity["project"],
+    "workspace": identity["workspace_id"],
+    "rehearsal_kind": "Authored-cell technical rehearsal, not a human usability test",
     "scope": "One seed, two reserved dates. Overlapping windows are not independent trials.",
     "stages": rows,
 }

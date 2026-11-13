@@ -1,8 +1,8 @@
-name: Solar workshop deck
+name: Workshop decks
 on:
   push:
     branches: [main]
-    paths: ['decks/solar/**', '.github/workflows/deck.yml']
+    paths: ['decks/**', 'scripts/build_decks.py', 'scripts/validate_deck.mjs', 'scripts/check_deck_pdf.py', 'scripts/serve_deck.py', '.github/workflows/deck.yml']
   workflow_dispatch:
 
 permissions:
@@ -26,21 +26,21 @@ jobs:
         with:
           node-version: '22.23.2'
           cache: npm
-          cache-dependency-path: decks/solar/package-lock.json
-      - run: npm ci
-        working-directory: decks/solar
-        env:
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
-      - run: npm run build:pages
-        working-directory: decks/solar
+          cache-dependency-path: |
+            decks/solar/package-lock.json
+            decks/pending/package-lock.json
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.11.27'
       - run: |
-          mkdir -p site/solar
-          cp -R decks/solar/dist-pages/. site/solar/
-          cp decks/solar/dist-pages/404.html site/404.html
-          printf '<!doctype html><meta http-equiv="refresh" content="0;url=solar/">' > site/index.html
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm ci --prefix decks/solar
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm ci --prefix decks/pending
+          cd decks/solar
+          npx playwright install --with-deps chromium
+      - run: python3 scripts/build_decks.py --pdf --validate
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: dist/decks/site
       - uses: actions/deploy-pages@v4
         id: deployment

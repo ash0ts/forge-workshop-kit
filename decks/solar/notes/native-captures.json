@@ -1,0 +1,67 @@
+{
+  "description": "Native Forge UI captured for the workshop deck revision. All records belong to the v0.3.0 rehearsal. Full screenshots are retained; presentation crops are documented in deck sources.",
+  "captures": [
+    {
+      "file": "../public/images/visual-v030-solar-setup.png",
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view",
+      "captured_at": "2026-11-13T21:03:04.882Z",
+      "description": "Native Copy to project drawer; preview blocked in this browser; no copy created. Use drawer crop only with limitation in notes.",
+      "sha256": "bd931ae7634e37e3ff3a339545185e0ab39f2920dd681945a6be991ac0183ecf"
+    },
+    {
+      "file": "../public/images/visual-v030-solar-training.png",
+      "conversation": "f7550caa1639e8366efbf9d84a782289",
+      "span": "c8464f5fe62f32ba",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f7550caa1639e8366efbf9d84a782289/spans",
+      "captured_at": "2026-11-13T21:03:41.734Z",
+      "description": "Adopted L1 + zero-initialized residual training, validation metrics, 142 examples. Error field is prediction error, not an exception.",
+      "sha256": "83d96bbcabcbc3ba5fb14a6ea5c14cef93d69c5394c622b673affbe21719e262"
+    },
+    {
+      "file": "../public/images/visual-v030-solar-trace.png",
+      "conversation": "4ca0a7e5c9d1fe30d24079ea5b98b750",
+      "span": "6b9fc420681f7704",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/4ca0a7e5c9d1fe30d24079ea5b98b750/spans",
+      "captured_at": "2026-11-13T21:04:12.621Z",
+      "description": "First v030 setup trace: inspect_training_environment output NumPy and CPU, no inference.",
+      "sha256": "25a4868963dc16048fb0f77c5c4f7a9aba4fde80c714fc8802a055c69ba2406f"
+    },
+    {
+      "file": "../public/images/visual-v030-solar-artifact.png",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f7550caa1639e8366efbf9d84a782289/v0/files/files/0/candidate.py",
+      "captured_at": "2026-11-13T21:05:46.881Z",
+      "description": "Native artifact source preview; exact zero-init + L1 code used by adopted training.",
+      "sha256": "5c1944ebf55ec04c034ebf0afd92b96bc983089900ebfa74282806955e686667"
+    },
+    {
+      "file": "../public/images/visual-v030-solar-report.png",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==",
+      "captured_at": "2026-11-13T21:06:00.446Z",
+      "description": "Fresh rehearsal Report; real image gain and GOES failure, one seed.",
+      "sha256": "f7bbfff64449aa49e2b002571eff47182347d725db5499ddfc68dd0f3247aa35"
+    },
+    {
+      "file": "../public/images/visual-v030-solar-comparison.png",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/weave/objects/solar-images-final-agent-cases/versions/NROPw7fvqHY3tO1GDRi0QIvZFyEiCOtGdovFg9uQoCA?path=obj&extra=attr%2Frows%2Fid%2FFzoI61MfU6X7ql5KUkOKYiRkB9ci1YRojhaYjb50XEo",
+      "captured_at": "2026-11-13T21:12:23.993Z",
+      "description": "Expanded Weave case with prediction and target means, file index, and separately computed image error. One version of one case, not EvalTables or a multiversion comparison.",
+      "sha256": "1e82619c3228eca621d430242e4833f1cf95e6310f34dfeea7ae895acee7f333"
+    },
+    {
+      "file": "../public/images/visual-v030-solar-sweep.png",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/sweeps/pzigourv",
+      "captured_at": "2026-11-13T21:07:16.085Z",
+      "description": "Native enlarged validation_error chart for all six completed GOES sweep runs; UI ingestion delayed badge retained.",
+      "sha256": "accf2972572611453cd51c5f30b5f254137ef1e1c4a5fdebb7c2c48270f0edad"
+    },
+    {
+      "file": "../public/images/visual-v030-solar-evidence.png",
+      "conversation": "23f4a8510534f241b9c6ccacb0ef3cb7",
+      "span": "7e437b4d0d480dcc",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/23f4a8510534f241b9c6ccacb0ef3cb7/spans/turns/1c416deee1f088f1737808738a31a7c4/spans/7e437b4d0d480dcc",
+      "captured_at": "2026-11-13T21:08:09.951Z",
+      "description": "Expanded raw validation-evidence read: config, metrics, source fingerprint; two model attempts and two candidate saves visible.",
+      "sha256": "8d774099a52672f1dd542279d72c424577d47dad44613a2da76cff2bc1ee1d31"
+    }
+  ]
+}

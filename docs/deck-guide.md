@@ -19,15 +19,17 @@ Use the [README setup instructions](../README.md#start-in-forge) to copy the not
 
 ## Pending, Inc.
 
-The [November 12 deck](https://github.com/ash0ts/pending-inc-workshop/releases/tag/workshop-2026-11-12) remains a historical workshop release. Its explanatory diagrams and exercise progression are the design reference. Its gateway, two-token setup, and expired access window do not apply to the Workshop Kit notebook.
+Use the [current Pending browser deck](https://ash0ts.github.io/forge-workshop-kit/pending/) with the [current notebook template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view). The deck follows the same eight steps and uses the participant’s own project. Its tools run in local Python; onboarding calls a local MCP server. Follow the [presenter notes](../decks/pending/notes/facilitator-notes.md) for the three-hour session.
 
-For the current Pending notebook, begin at [the new template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view), copy it into the attendee’s project, and use the notebook’s own guided steps. Its tools run in the notebook’s Python runtime; onboarding calls a local MCP server. The current workshop does not use remote Sandboxes.
+The opening office scene is fictional. Recorded product screens come from the v0.3.0 rehearsal: round one retained the parent, round two changed the verification skill, and all three versions passed all four final cases. Use this to explain an executed change without claiming a measured quality gain.
+
+The [November 12 deck](https://github.com/ash0ts/pending-inc-workshop/releases/tag/workshop-2026-11-12) is preserved as a historical release. Its gateway setup and remote Sandbox registration do not apply to this notebook.
 
 ### Current Pending exercise references
 
-Keep the office scenes and technical diagrams from the earlier deck. Use the following controls when presenting the current notebook; its steps replace the old connection forms, phase dropdowns, and step/finish buttons.
+The current deck explains each change with a concrete input and output before the exercise. Leave the exercise slide visible while participants write their code. Use these current controls:
 
-| Earlier deck topic | Current notebook step and editable code | Current action |
+| Topic | Current notebook step and editable code | Current action |
 | --- | --- | --- |
 | Clock in and connect | **1 · Connect and trace**; `my_tool_span`, `my_model_span` | **Check my project and restore saved work**, then **Run this check and verify my Agent Lens trace** |
 | Equipment and invoice access | **2 · Build an invoice tool**; `my_invoice_tool` | **Test my invoice lookup** |

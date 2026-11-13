@@ -11,7 +11,14 @@ Each participant works in their own project. The facilitator can read the progre
 | [Solar Autoresearch · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view) | Join a research lab working with real satellite observations. Build forecasts, compare training settings, then ask an agent to propose and test code changes. Four hours. |
 | [Pending, Inc. · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) | Give an office agent tools for refunds and account access. Check its work, edit its instructions, then build an agent that makes and tests further edits. Three hours. |
 
-Use the [Solar browser deck](https://ash0ts.github.io/forge-workshop-kit/solar/) alongside the notebook, or download the [PDF](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.3.0/solar-autoresearch.pdf). The [release package](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.3.0) contains the notebook files and editable deck.
+Use the companion deck alongside your notebook:
+
+| Workshop | Present | Download |
+| --- | --- | --- |
+| Pending, Inc. | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/pending/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/pending/pending-inc.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/pending/pending-inc-source.zip) |
+| Solar Autoresearch | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/solar/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/solar/solar-autoresearch.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/solar/solar-autoresearch-source.zip) |
+
+These decks follow the current gateway-free notebooks. The [v0.3.0 release package](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.3.0) preserves its original notebook files and deck revision.
 
 For a short demonstration, follow the [current demo guide](docs/current-demo-guide.md). It takes you from a notebook exercise to a trace, code change, and result in the two recorded rehearsals.
 
@@ -63,16 +70,15 @@ Native EvalTables returned HTTP 500 in our rehearsal. The notebook comparison an
 
 ## What happened in the recorded rehearsal
 
-Solar uses GOES-15 X-ray measurements and NASA SDO/AIA images, prepared for small CPU experiments. On the reserved image dates, average error was 0.125762 for persistence, 0.122442 for the manually written model, and 0.110011 for the agent-selected model. The agent proposed a zero-initialized residual head and then a masked absolute-error training loss. Its final version had 10.2% lower error than the manual version under the same training budget.
+Solar uses GOES-15 X-ray measurements and NASA SDO/AIA images, prepared for small CPU experiments. In the November 13 rehearsal, average error on the reserved image dates was 0.125762 for persistence, 0.122442 for the manually written model, and 0.110011 for the agent-selected model. The agent first changed the training loss to masked absolute error, then zero-initialized the residual head. Its final version had 10.2% lower error than the manual version under the same training budget.
 
 That comparison covers 199 overlapping windows from two days, with one seed. It shows one completed research loop, not a reliable solar-forecasting result. The short GOES training run did worse than persistence. Both results stay in the workshop so you can inspect what the code produced. [Data and calculation details](docs/solar-evidence.md).
 
-Pending uses fictional accounts and payments, including a tool that changes account state before its response times out. All 12 final runs reached the correct account state; the editor chose to retain the manual harness. An unchanged version is a valid outcome. Recorded examples are labeled separately from your own results.
+Pending uses fictional accounts and payments, including a tool that changes account state before its response times out. All 12 final runs passed the state checks and explanation judgments in the November 13 rehearsal. The editor retained the earlier harness in round one, then revised its verification skill in round two. Those edits did not improve the already-passing final scores. Recorded examples are labeled separately from your own results.
 
-- [Solar recorded dashboard](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=ogpa6vhy8db)
-- [Pending recorded dashboard](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=nkyxiy1o6wn)
-- [Solar rehearsal Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==)
-- [Pending rehearsal Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-51a0006f--VmlldzoxODMwMjcxMA==)
+- [Solar November 13 rehearsal Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==)
+- [Pending November 13 rehearsal Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-bc0ee4ab--VmlldzoxODMwMzUyNg==)
+- Earlier rehearsal dashboards: [Solar](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=ogpa6vhy8db) · [Pending](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=nkyxiy1o6wn). Their branch decisions differ from the November 13 walkthrough.
 
 ## Run a workshop or build your own
 

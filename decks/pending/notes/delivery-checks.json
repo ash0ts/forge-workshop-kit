@@ -1,0 +1,414 @@
+{
+  "source_sha256": "1d3ef2291c3024f5c3f8eb7005b3d3a479d8bcbb24ac81efd5fcaff51b216720",
+  "slides_checked": 77,
+  "expected_slides": 77,
+  "titles": [
+    {
+      "number": 1,
+      "key": "cover",
+      "title": "Please improve yourself."
+    },
+    {
+      "number": 2,
+      "key": "arrival",
+      "title": "Your first morning at Pending, Inc."
+    },
+    {
+      "number": 3,
+      "key": "ticket",
+      "title": "The customer was charged twice."
+    },
+    {
+      "number": 4,
+      "key": "success",
+      "title": "What would count as doing the job?"
+    },
+    {
+      "number": 5,
+      "key": "request",
+      "title": "Your manager has one more request."
+    },
+    {
+      "number": 6,
+      "key": "schedule",
+      "title": "Here is our workday."
+    },
+    {
+      "number": 7,
+      "key": "harness-0",
+      "title": "The model chooses the next action."
+    },
+    {
+      "number": 8,
+      "key": "harness-1",
+      "title": "Instructions define the job and its limits."
+    },
+    {
+      "number": 9,
+      "key": "harness-2",
+      "title": "A skill is useful only when it is loaded."
+    },
+    {
+      "number": 10,
+      "key": "copy",
+      "title": "Copy the notebook into your own project."
+    },
+    {
+      "number": 11,
+      "key": "local",
+      "title": "The same notebook runs on a laptop."
+    },
+    {
+      "number": 12,
+      "key": "access",
+      "title": "Check where your work will be saved."
+    },
+    {
+      "number": 13,
+      "key": "record",
+      "title": "A trace records the operation you actually ran."
+    },
+    {
+      "number": 14,
+      "key": "tool-scope",
+      "title": "Send that operation to Agent Lens."
+    },
+    {
+      "number": 15,
+      "key": "trace",
+      "title": "Add a field, then find it in Agent Lens."
+    },
+    {
+      "number": 16,
+      "key": "trace-screen",
+      "title": "Find the arguments and the returned value."
+    },
+    {
+      "number": 17,
+      "key": "trace-detail",
+      "title": "Read one argument and follow its returned data."
+    },
+    {
+      "number": 18,
+      "key": "invoice",
+      "title": "The tool reads one invoice from one account."
+    },
+    {
+      "number": 19,
+      "key": "tool",
+      "title": "Write the invoice lookup."
+    },
+    {
+      "number": 20,
+      "key": "tool-schema",
+      "title": "A tool name has to reach executable code."
+    },
+    {
+      "number": 21,
+      "key": "loop-1",
+      "title": "Start with the customer’s request."
+    },
+    {
+      "number": 22,
+      "key": "loop-2",
+      "title": "The model chooses an action and its arguments."
+    },
+    {
+      "number": 23,
+      "key": "loop-3",
+      "title": "Your dispatcher calls the Python function."
+    },
+    {
+      "number": 24,
+      "key": "loop-4",
+      "title": "The function returns the account records."
+    },
+    {
+      "number": 25,
+      "key": "loop-5",
+      "title": "Put those records into the next request."
+    },
+    {
+      "number": 26,
+      "key": "dispatch",
+      "title": "Route one tool yourself; delegate the others."
+    },
+    {
+      "number": 27,
+      "key": "handoff",
+      "title": "Finish the tool-to-model handoff."
+    },
+    {
+      "number": 28,
+      "key": "messages",
+      "title": "The next request contains the observation."
+    },
+    {
+      "number": 29,
+      "key": "starting",
+      "title": "Run the two starting tickets."
+    },
+    {
+      "number": 30,
+      "key": "model-span",
+      "title": "Record what the model saw and returned."
+    },
+    {
+      "number": 31,
+      "key": "onboarding",
+      "title": "The second ticket grants Alex account access."
+    },
+    {
+      "number": 32,
+      "key": "timeout-1",
+      "title": "An access request is sent."
+    },
+    {
+      "number": 33,
+      "key": "timeout-2",
+      "title": "The write succeeds. Its reply times out."
+    },
+    {
+      "number": 34,
+      "key": "timeout-3",
+      "title": "Check the operation before trying the write again."
+    },
+    {
+      "number": 35,
+      "key": "timeout-screen",
+      "title": "Did the timeout stop the work?"
+    },
+    {
+      "number": 36,
+      "key": "timeout-detail",
+      "title": "The tool says the write may have committed."
+    },
+    {
+      "number": 37,
+      "key": "checks",
+      "title": "Check the account and the explanation separately."
+    },
+    {
+      "number": 38,
+      "key": "scorer",
+      "title": "Make false completion fail your check."
+    },
+    {
+      "number": 39,
+      "key": "judge",
+      "title": "The judge needs a question it can answer."
+    },
+    {
+      "number": 40,
+      "key": "publish-dev",
+      "title": "Publish the first comparison now."
+    },
+    {
+      "number": 41,
+      "key": "compare-fields",
+      "title": "Compare the same case across versions."
+    },
+    {
+      "number": 42,
+      "key": "manual",
+      "title": "Change one procedure and rerun it."
+    },
+    {
+      "number": 43,
+      "key": "manual-interpret",
+      "title": "A procedure can change behavior without changing quality."
+    },
+    {
+      "number": 44,
+      "key": "break",
+      "title": "Save your work. Leave the employee at its desk."
+    },
+    {
+      "number": 45,
+      "key": "editor",
+      "title": "Management would like to automate management."
+    },
+    {
+      "number": 46,
+      "key": "branch-1",
+      "title": "Propose two changes from the same parent."
+    },
+    {
+      "number": 47,
+      "key": "branch-2",
+      "title": "Test both on fresh copies of the case."
+    },
+    {
+      "number": 48,
+      "key": "branch-3",
+      "title": "Ask which changes to keep."
+    },
+    {
+      "number": 49,
+      "key": "branch-4",
+      "title": "Run the files the decision selected."
+    },
+    {
+      "number": 50,
+      "key": "branch-5",
+      "title": "Carry the chosen version and a lesson forward."
+    },
+    {
+      "number": 51,
+      "key": "propose-code",
+      "title": "Select evidence from the current development run."
+    },
+    {
+      "number": 52,
+      "key": "propose",
+      "title": "Read the two proposals before testing them."
+    },
+    {
+      "number": 53,
+      "key": "probe-code",
+      "title": "Run the proposed files, not just the description."
+    },
+    {
+      "number": 54,
+      "key": "probes",
+      "title": "Test both and compare their behavior."
+    },
+    {
+      "number": 55,
+      "key": "gate-screen",
+      "title": "This candidate required a check before completion."
+    },
+    {
+      "number": 56,
+      "key": "gate-detail",
+      "title": "The rejected completion caused another check."
+    },
+    {
+      "number": 57,
+      "key": "keep",
+      "title": "Retain this version is a valid decision."
+    },
+    {
+      "number": 58,
+      "key": "compose",
+      "title": "Test the composition, then save its lesson."
+    },
+    {
+      "number": 59,
+      "key": "reflection",
+      "title": "A lesson needs an observation and a limit."
+    },
+    {
+      "number": 60,
+      "key": "round-two",
+      "title": "Repeat the cycle on onboarding."
+    },
+    {
+      "number": 61,
+      "key": "round-two-result",
+      "title": "The second round changed the verification skill."
+    },
+    {
+      "number": 62,
+      "key": "skill-diff",
+      "title": "The skill makes the final check more specific."
+    },
+    {
+      "number": 63,
+      "key": "rsi",
+      "title": "What made that recursive improvement?"
+    },
+    {
+      "number": 64,
+      "key": "freeze",
+      "title": "Stop editing before opening the fresh cases."
+    },
+    {
+      "number": 65,
+      "key": "final",
+      "title": "Compare all three versions on fresh tickets."
+    },
+    {
+      "number": 66,
+      "key": "native-results",
+      "title": "Open a saved case and follow its trace."
+    },
+    {
+      "number": 67,
+      "key": "final-screen",
+      "title": "Read the conclusion beside its evidence."
+    },
+    {
+      "number": 68,
+      "key": "final-result",
+      "title": "The loop worked. Quality did not improve here."
+    },
+    {
+      "number": 69,
+      "key": "files",
+      "title": "Keep the files that explain the result."
+    },
+    {
+      "number": 70,
+      "key": "report",
+      "title": "Write down what changed and whether it helped."
+    },
+    {
+      "number": 71,
+      "key": "aria",
+      "title": "Ask ARIA to investigate the evidence."
+    },
+    {
+      "number": 72,
+      "key": "end",
+      "title": "Take the loop back to your own product."
+    },
+    {
+      "number": 73,
+      "key": "answer-tool",
+      "title": "Worked answer · invoice lookup"
+    },
+    {
+      "number": 74,
+      "key": "answer-loop",
+      "title": "Worked answer · observation handoff"
+    },
+    {
+      "number": 75,
+      "key": "answer-scorer",
+      "title": "Worked answer · inspect the refund"
+    },
+    {
+      "number": 76,
+      "key": "answer-judge",
+      "title": "Worked answer · validate the judge response"
+    },
+    {
+      "number": 77,
+      "key": "sources",
+      "title": "Source, notebook, and recorded example"
+    }
+  ],
+  "issues": [],
+  "console_errors": [],
+  "failed_responses": [],
+  "answers": [
+    {
+      "slide": 19,
+      "destination": "/forge-workshop-kit/pending/73",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 27,
+      "destination": "/forge-workshop-kit/pending/74",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 38,
+      "destination": "/forge-workshop-kit/pending/75",
+      "keyboardReturn": true
+    }
+  ],
+  "routes_checked": 157,
+  "presenter_notes": true
+}

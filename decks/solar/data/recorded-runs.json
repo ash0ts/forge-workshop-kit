@@ -1,7 +1,7 @@
 [
   {
     "name": "goes/search-0",
-    "id": "2f853ad3f536ddd31eec493d9faac6af",
+    "id": "33d89605f1cc4b8f4d13da23e376c184",
     "source_fingerprint": "8cedc910efae9babb2c4183d1997e5a568b94a5ef7c534945c0f539821904f99",
     "config": {
       "architecture": "mlp",
@@ -14,11 +14,11 @@
     "validation_error": 2.8777366925075185,
     "dataset": "302e7f2a2aaddf5d448ed5de317b5df3c23f0379557eba28b1e3d73466725b03",
     "split": "validation",
-    "run_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/2f853ad3f536ddd31eec493d9faac6af"
+    "run_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/33d89605f1cc4b8f4d13da23e376c184"
   },
   {
     "name": "goes/search-2",
-    "id": "5ed37e35d45d987113124c5ce064570f",
+    "id": "ff57eba2f9e3704d9bee074e4b4c9bea",
     "source_fingerprint": "8cedc910efae9babb2c4183d1997e5a568b94a5ef7c534945c0f539821904f99",
     "config": {
       "architecture": "mlp",
@@ -31,6 +31,6 @@
     "validation_error": 2.7121469205813082,
     "dataset": "302e7f2a2aaddf5d448ed5de317b5df3c23f0379557eba28b1e3d73466725b03",
     "split": "validation",
-    "run_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/5ed37e35d45d987113124c5ce064570f"
+    "run_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/ff57eba2f9e3704d9bee074e4b4c9bea"
   }
 ]

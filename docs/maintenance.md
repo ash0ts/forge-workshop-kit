@@ -31,6 +31,20 @@ If notebook creation was interrupted before its ID was saved, the publisher stop
 
 Existing attendee copies are separate notebooks. Updating the templates does not replace them. Keep previous release assets and the recorded teaching evidence; do not rewrite Git history or delete participant state.
 
+## Build the companion decks
+
+The current decks live in `decks/pending` and `decks/solar`. Their storyboards generate the slides and presenter notes. From the repository root, run:
+
+```sh
+python3 scripts/build_decks.py --install --pdf --validate
+```
+
+Use Node.js 22.23.2 or later and `uv`. PDF export needs Chrome; set `CHROME_PATH` to your installed browser executable, or install the deck's Playwright Chromium with `npx playwright install chromium` from `decks/solar`. The PDF checker installs its own pinned maintenance dependencies through `uv`; it does not add them to participants' notebooks.
+
+The build writes both browser decks to `dist/decks/site/` and PDFs, offline browser bundles, and editable source archives to `dist/decks/downloads/`. It renders every slide and PDF page, checks image loading, and follows worked-answer links back to their exercises. Use `--only pending` or `--only solar` while editing one deck. Without `--pdf` and `--validate`, the command only builds browser copies and source archives.
+
+Opening or building a deck sends no training or inference requests. The command does not publish. The `Workshop decks` GitHub Actions workflow publishes the validated site when a deck change reaches `main`, preserving the existing `/solar/` address and adding `/pending/`. Previous GitHub release attachments remain unchanged.
+
 ## Saved work
 
 The shared library has no runtime dependency on `common_tools`, an operator checkout or any gateway. Authentication comes from the participant's Forge runtime or local W&B login. `.workshop/` contains their drafts and execution receipts. Do not treat it as disposable build output.

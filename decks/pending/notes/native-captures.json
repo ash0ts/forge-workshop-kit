@@ -1,0 +1,55 @@
+{
+  "description": "Native Forge UI captured for the workshop deck revision. All records belong to the v0.3.0 rehearsal. Full screenshots are retained; presentation crops are documented in deck sources.",
+  "captures": [
+    {
+      "file": "../public/images/visual-v030-pending-timeout.png",
+      "conversation": "481ae944f1062c5381870a00319f65a3",
+      "span": "5ddd78b1e9faa2d3",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/481ae944f1062c5381870a00319f65a3/spans",
+      "captured_at": "2026-11-13T21:01:41.523Z",
+      "description": "Manual onboarding: committed-write timeout; native tool input/error/output.",
+      "sha256": "aff1ef27e38b7ee88c6d215905ca99a98f29ff739bcc92076a3898cf8a5987c0"
+    },
+    {
+      "file": "../public/images/visual-v030-pending-recovery.png",
+      "conversation": "481ae944f1062c5381870a00319f65a3",
+      "span": "e62596437e485145",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/481ae944f1062c5381870a00319f65a3/spans/turns/796dff8c92e7bf0c7fff2e8941a340df/spans/e62596437e485145",
+      "captured_at": "2026-11-13T21:02:03.246Z",
+      "description": "Status read after timeout: one provisioned member; actual native response.",
+      "sha256": "5aa72f125ea4bc2888bece4cd5e0c951bc0ed86bc6231de12f8ef1ff9364a48d"
+    },
+    {
+      "file": "../public/images/visual-v030-pending-verification.png",
+      "conversation": "9633d416f5fce6aaa0124ab6ddc38c46",
+      "span": "9ed1e7824138ec0e",
+      "captured_at": "2026-11-13T21:02:29.779Z",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/9633d416f5fce6aaa0124ab6ddc38c46/spans",
+      "description": "Candidate B rejected finish; check_work and later finish visible in tree.",
+      "sha256": "56b53798006a40ac63488ed97bd682e13c0e287251f192d581039330fc09ea05"
+    },
+    {
+      "file": "../public/images/visual-v030-pending-lookup.png",
+      "conversation": "c2458ce8b6bb52274d29b5c5a691424b",
+      "span": "08a14375ef00f379",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c2458ce8b6bb52274d29b5c5a691424b/spans",
+      "captured_at": "2026-11-13T21:08:44.070Z",
+      "description": "Starting execution get_account tool, expanded response. Not lookup_invoice; original model chose get_account.",
+      "sha256": "37cb52fdd66ef0014989f479df2fbab89716f58633b43776813fd3b5dfbadf05"
+    },
+    {
+      "file": "../public/images/visual-v030-pending-report.png",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-bc0ee4ab--VmlldzoxODMwMzUyNg==",
+      "captured_at": "2026-11-13T21:09:01.713Z",
+      "description": "Current Pending rehearsal Report, all 12 final state checks and judgments passed.",
+      "sha256": "78cbaa6698e06a644224e2ec025a52a0a05fc00db924d1ddc0e0f4779ad7e817"
+    },
+    {
+      "file": "../public/images/visual-v030-pending-comparison.png",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/5a3721335363bceb77f0c88c87e761f8",
+      "captured_at": "2026-11-13T21:12:59.109Z",
+      "description": "Native W&B Table, all four agent-harness final cases, with separate account-state error and explanation-judge scores. Not native EvalTables; not all three harnesses.",
+      "sha256": "48d6702fde837aeb1e90a2e49772467df113ef17416fd944852edb02b165f760"
+    }
+  ]
+}

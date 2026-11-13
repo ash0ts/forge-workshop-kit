@@ -1,0 +1,54 @@
+{
+  "source_workspace": "6e768bbe071648e094cb296a0a57c21e",
+  "dataset": "302e7f2a2aaddf5d448ed5de317b5df3c23f0379557eba28b1e3d73466725b03",
+  "training_calls": 0,
+  "provider_calls": 0,
+  "figures": [
+    {
+      "file": "v030-observations.png",
+      "description": "Training observations from immutable solar-v1 data. AIA shows normalized log1p intensity at 64 \u00d7 64.",
+      "stage_ids": [],
+      "sha256": "c7449f4e5471c01717515d8e3c44c66839869cf8fd694d3521248004bb684761"
+    },
+    {
+      "file": "v030-image-window.png",
+      "description": "First accepted training image window; common intensity scale; observations, not model output.",
+      "stage_ids": [],
+      "sha256": "6aa8378945451794506fa0ecb908317600e81307476e622d9b5775306b1e52c2"
+    },
+    {
+      "file": "v030-goes-loss.png",
+      "description": "Saved training losses; no new training. A falling training loss does not establish final quality.",
+      "stage_ids": [
+        "ff57eba2f9e3704d9bee074e4b4c9bea"
+      ],
+      "sha256": "2747ff87cd5813d6691a50a8468ceed7609f2856a277a0149d708e7e2a2466b1"
+    },
+    {
+      "file": "v030-validation-predictions.png",
+      "description": "First accepted validation case, not the largest improvement. Intensity scale \u22122 to 3; absolute error scale 0 to 1; training-normalized log1p intensity.",
+      "stage_ids": [
+        "55ab1cd5f8c7dfe566c118255015d18a",
+        "324f93e1eb2f2f1a89bf28abeee776b6"
+      ],
+      "sha256": "94391bad52c0043af85682e7500361cbbb385ce55748cbe13eec6883a8a97d3e"
+    },
+    {
+      "file": "v030-final-predictions.png",
+      "description": "First accepted test case, not the largest improvement. Intensity scale \u22122 to 3; absolute error scale 0 to 1; training-normalized log1p intensity.",
+      "stage_ids": [
+        "b25f760e77a01d233f5a6e95831f7cc2",
+        "cde647b9ccfe91c444610f1bf80a07ac"
+      ],
+      "sha256": "acb45e5555bc43b23c974745b167bf86c32dce69d579e6a13ea3d2381c6f26cd"
+    },
+    {
+      "file": "v030-goes-final.png",
+      "description": "All 2,694 accepted final GOES windows, saved selected-model predictions.",
+      "stage_ids": [
+        "b66aef8c512ed64f0b1c344a83245a03"
+      ],
+      "sha256": "79d1e3f5c719bd9945f0118d11485b2ee67261238a254ffa14480e77d7094e8f"
+    }
+  ]
+}

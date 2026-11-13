@@ -18,10 +18,11 @@ for number in (1, 2):
         source_matches.append({'round': number, 'candidate': index, 'probe': probe['id'], 'source_matches': True})
     composition = by[base + '/compose']['result']['decision']
     assert composition['source'] == by[base + '/composition-test']['sources']['candidate.py']
-assert by['images/round-1/propose']['result']['candidates'][1]['source'] == by['images/round-1/compose']['result']['decision']['source']
-keep = by['images/round-2/propose']['result']['candidates'][1]
+assert by['images/round-1/propose']['result']['candidates'][0]['source'] == by['images/round-1/compose']['result']['decision']['source']
+keep = by['images/round-1/propose']['result']['candidates'][1]
 assert keep['decision'] == 'KEEP'
-assert keep['source'] == by['images/round-1/composition-test']['sources']['candidate.py']
+assert keep['source'] == by['images/manual-residual']['sources']['candidate.py']
+assert by['images/round-2/propose']['result']['candidates'][0]['source'] == by['images/round-2/compose']['result']['decision']['source']
 
 images = by['images/final-comparison']['result']['metrics_by_version']
 measurement = by['goes/final-comparison']['result']['metrics_by_version']
@@ -34,8 +35,10 @@ for version in ('persistence', 'selected-model'):
 assert '0.120769' not in slides
 result = {
     'status': 'passed', 'source_matches': source_matches,
-    'round_1_composition_selected_tested_b': True,
-    'round_2_keep_source_unchanged': True,
+    'round_1_composition_selected_tested_a': True,
+    'round_1_keep_source_unchanged': True,
+    'round_2_composition_selected_tested_a': True,
+    'workspace': study['workspace'],
     'image_errors': {name: row['error'] for name, row in images.items()},
     'image_skill_vs_persistence': {name: row['skill_vs_persistence'] for name, row in images.items()},
     'agent_relative_error_reduction_vs_manual': 1 - images['agent']['error'] / images['manual']['error'],

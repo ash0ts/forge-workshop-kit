@@ -1,0 +1,519 @@
+{
+  "source_sha256": "e69012f5df8ade04d3f77744460e10e1851d4f2f2de5b64073a4aa9c1e70758d",
+  "slides_checked": 93,
+  "expected_slides": 93,
+  "titles": [
+    {
+      "number": 1,
+      "key": "cover",
+      "title": "Build a research loop. Then give it an agent."
+    },
+    {
+      "number": 2,
+      "key": "arrival",
+      "title": "Your team has a promising result."
+    },
+    {
+      "number": 3,
+      "key": "assignment",
+      "title": "Two forecasts from real solar observations"
+    },
+    {
+      "number": 4,
+      "key": "research-question",
+      "title": "First reproduce a result. Then try to improve it."
+    },
+    {
+      "number": 5,
+      "key": "path",
+      "title": "Build a forecast, then test changes to its code"
+    },
+    {
+      "number": 6,
+      "key": "copy",
+      "title": "Copy the notebook into your Forge project"
+    },
+    {
+      "number": 7,
+      "key": "setup-screen",
+      "title": "Copy the notebook into the project you will use"
+    },
+    {
+      "number": 8,
+      "key": "local",
+      "title": "Run the same notebook on your laptop"
+    },
+    {
+      "number": 9,
+      "key": "settings",
+      "title": "Check the compute and inference settings"
+    },
+    {
+      "number": 10,
+      "key": "trace-scopes",
+      "title": "Wrap one operation, then inspect what you recorded"
+    },
+    {
+      "number": 11,
+      "key": "setup-turn",
+      "title": "Connect and inspect your first tool call"
+    },
+    {
+      "number": 12,
+      "key": "instrumentation-screen",
+      "title": "Find the field your code added to the span"
+    },
+    {
+      "number": 13,
+      "key": "goes-window",
+      "title": "Predict X-ray flux 30 minutes ahead"
+    },
+    {
+      "number": 14,
+      "key": "chronology",
+      "title": "Use earlier dates to train, later dates to test"
+    },
+    {
+      "number": 15,
+      "key": "gaps",
+      "title": "Leave out windows with missing observations"
+    },
+    {
+      "number": 16,
+      "key": "sunpy",
+      "title": "Inspect a solar observation with SunPy"
+    },
+    {
+      "number": 17,
+      "key": "data-turn",
+      "title": "Inspect the observations before training"
+    },
+    {
+      "number": 18,
+      "key": "persistence",
+      "title": "Start by copying the latest reading"
+    },
+    {
+      "number": 19,
+      "key": "metric",
+      "title": "Measure how far the prediction missed"
+    },
+    {
+      "number": 20,
+      "key": "persistence-turn",
+      "title": "Write and test persistence"
+    },
+    {
+      "number": 21,
+      "key": "number",
+      "title": "Save what changed between runs"
+    },
+    {
+      "number": 22,
+      "key": "run-inspector",
+      "title": "Which setting changed between these runs?"
+    },
+    {
+      "number": 23,
+      "key": "run-inspector-reveal",
+      "title": "These runs used different learning rates"
+    },
+    {
+      "number": 24,
+      "key": "program",
+      "title": "Turn observations into a forecast"
+    },
+    {
+      "number": 25,
+      "key": "source",
+      "title": "Save the model and training code with the run"
+    },
+    {
+      "number": 26,
+      "key": "independent",
+      "title": "Use the same scoring rule for every model"
+    },
+    {
+      "number": 27,
+      "key": "record",
+      "title": "Save the files needed to repeat the run"
+    },
+    {
+      "number": 28,
+      "key": "stage",
+      "title": "Save code and outputs with each training run"
+    },
+    {
+      "number": 29,
+      "key": "artifacts",
+      "title": "Restore a completed run after a restart"
+    },
+    {
+      "number": 30,
+      "key": "tracking-turn",
+      "title": "Write the loss and metric"
+    },
+    {
+      "number": 31,
+      "key": "search-levels",
+      "title": "Three ways to change an experiment"
+    },
+    {
+      "number": 32,
+      "key": "configs",
+      "title": "Compare six model configurations"
+    },
+    {
+      "number": 33,
+      "key": "sweep",
+      "title": "Run the configurations through W&B Sweeps"
+    },
+    {
+      "number": 34,
+      "key": "native-sweep",
+      "title": "Compare the six configurations in Forge"
+    },
+    {
+      "number": 35,
+      "key": "learning-curve",
+      "title": "Read the loss curve before choosing another model"
+    },
+    {
+      "number": 36,
+      "key": "search-turn",
+      "title": "Run six configurations and inspect one forecast"
+    },
+    {
+      "number": 37,
+      "key": "break",
+      "title": "The experiments can wait ten minutes."
+    },
+    {
+      "number": 38,
+      "key": "images-window",
+      "title": "Predict the solar image one hour ahead"
+    },
+    {
+      "number": 39,
+      "key": "image-stack",
+      "title": "Save image experiments the same way"
+    },
+    {
+      "number": 40,
+      "key": "persistence-image",
+      "title": "See exactly which images become input and target"
+    },
+    {
+      "number": 41,
+      "key": "conv",
+      "title": "Two image channels enter. One forecast comes out."
+    },
+    {
+      "number": 42,
+      "key": "residual",
+      "title": "Let the current image carry what has not changed"
+    },
+    {
+      "number": 43,
+      "key": "residual-code",
+      "title": "Write the addition you just traced"
+    },
+    {
+      "number": 44,
+      "key": "image-score",
+      "title": "Count errors on the solar disk"
+    },
+    {
+      "number": 45,
+      "key": "image-score-code",
+      "title": "Write the scorer, then test a deliberate miss"
+    },
+    {
+      "number": 46,
+      "key": "loss",
+      "title": "Train with one loss; compare with a fixed metric"
+    },
+    {
+      "number": 47,
+      "key": "image-code-screen",
+      "title": "Compare forecasts for the same validation case"
+    },
+    {
+      "number": 48,
+      "key": "image-turn",
+      "title": "Implement and compare the image predictors"
+    },
+    {
+      "number": 49,
+      "key": "agent-need",
+      "title": "Give the research agent your code and results"
+    },
+    {
+      "number": 50,
+      "key": "weights",
+      "title": "The agent edits code. The forecast model learns weights."
+    },
+    {
+      "number": 51,
+      "key": "boundaries",
+      "title": "Decide which files the agent may change"
+    },
+    {
+      "number": 52,
+      "key": "evidence",
+      "title": "Send the code, settings, and validation results"
+    },
+    {
+      "number": 53,
+      "key": "agent-span",
+      "title": "Follow the agent’s work in Agent Lens"
+    },
+    {
+      "number": 54,
+      "key": "native-lens",
+      "title": "Read the evidence that went into the proposal"
+    },
+    {
+      "number": 55,
+      "key": "evidence-turn",
+      "title": "Choose the evidence for the research agent"
+    },
+    {
+      "number": 56,
+      "key": "propose",
+      "title": "Ask for two changes to the same starting code"
+    },
+    {
+      "number": 57,
+      "key": "native-diff",
+      "title": "The first proposal changes one loss operation"
+    },
+    {
+      "number": 58,
+      "key": "probe",
+      "title": "Train and score each candidate"
+    },
+    {
+      "number": 59,
+      "key": "compose",
+      "title": "Ask the agent which changes to keep"
+    },
+    {
+      "number": 60,
+      "key": "test-composed",
+      "title": "Test the version the agent chose"
+    },
+    {
+      "number": 61,
+      "key": "native-training",
+      "title": "Open the training call behind the chosen version"
+    },
+    {
+      "number": 62,
+      "key": "repeat",
+      "title": "Start round two from the selected version"
+    },
+    {
+      "number": 63,
+      "key": "round1-turn",
+      "title": "Propose and test two changes"
+    },
+    {
+      "number": 64,
+      "key": "round2-turn",
+      "title": "Test the selected code, then begin round two"
+    },
+    {
+      "number": 65,
+      "key": "branch-inspect",
+      "title": "Follow one proposal through the branch diagram"
+    },
+    {
+      "number": 66,
+      "key": "freeze",
+      "title": "Freeze both the code and the trained weights"
+    },
+    {
+      "number": 67,
+      "key": "frozen-code",
+      "title": "Load the saved weights to make final predictions"
+    },
+    {
+      "number": 68,
+      "key": "aligned",
+      "title": "Compare predictions for the same times"
+    },
+    {
+      "number": 69,
+      "key": "final-turn",
+      "title": "Test the selected models on reserved dates"
+    },
+    {
+      "number": 70,
+      "key": "recorded-final",
+      "title": "In this rehearsal, image error fell 10.15%"
+    },
+    {
+      "number": 71,
+      "key": "recorded-image",
+      "title": "Compare one saved forecast at the same time"
+    },
+    {
+      "number": 72,
+      "key": "recorded-goes",
+      "title": "The selected GOES forecast lost to persistence"
+    },
+    {
+      "number": 73,
+      "key": "result-meaning",
+      "title": "Read the saved score for one image in Weave"
+    },
+    {
+      "number": 74,
+      "key": "reproduce",
+      "title": "Check that the saved source contains both selected edits"
+    },
+    {
+      "number": 75,
+      "key": "conclusion-turn",
+      "title": "Write down what changed and whether it helped"
+    },
+    {
+      "number": 76,
+      "key": "close",
+      "title": "Write what changed, what helped, and what still missed"
+    },
+    {
+      "number": 77,
+      "key": "reference",
+      "title": "Reference and worked answers"
+    },
+    {
+      "number": 78,
+      "key": "answer-trace",
+      "title": "Put the attribute inside the tool scope"
+    },
+    {
+      "number": 79,
+      "key": "answer-persistence",
+      "title": "Return a copy of the latest observation"
+    },
+    {
+      "number": 80,
+      "key": "answer-flux",
+      "title": "Take the mean of the absolute errors"
+    },
+    {
+      "number": 81,
+      "key": "answer-search",
+      "title": "Compare the settings and loss curves"
+    },
+    {
+      "number": 82,
+      "key": "answer-images",
+      "title": "Average the error inside the disk mask"
+    },
+    {
+      "number": 83,
+      "key": "answer-residual",
+      "title": "Add the correction to input channel 1"
+    },
+    {
+      "number": 84,
+      "key": "answer-evidence",
+      "title": "Return validation evidence only"
+    },
+    {
+      "number": 85,
+      "key": "answer-controller",
+      "title": "Pass the candidate’s code to training"
+    },
+    {
+      "number": 86,
+      "key": "answer-final",
+      "title": "Use the saved model without training it again"
+    },
+    {
+      "number": 87,
+      "key": "recorded-edit",
+      "title": "Round 1: absolute loss versus the unchanged model"
+    },
+    {
+      "number": 88,
+      "key": "recorded-code",
+      "title": "Round 2: start the correction at zero"
+    },
+    {
+      "number": 89,
+      "key": "recorded-keep",
+      "title": "Round 2: a plausible sampling change did not help"
+    },
+    {
+      "number": 90,
+      "key": "recorded-lens",
+      "title": "Open the recorded research conversation"
+    },
+    {
+      "number": 91,
+      "key": "recovery",
+      "title": "When a service is unavailable"
+    },
+    {
+      "number": 92,
+      "key": "schedule",
+      "title": "Four-hour session"
+    },
+    {
+      "number": 93,
+      "key": "links",
+      "title": "Keep working in your own project"
+    }
+  ],
+  "issues": [],
+  "console_errors": [],
+  "failed_responses": [],
+  "answers": [
+    {
+      "slide": 11,
+      "destination": "/forge-workshop-kit/solar/78",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 20,
+      "destination": "/forge-workshop-kit/solar/79",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 30,
+      "destination": "/forge-workshop-kit/solar/80",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 36,
+      "destination": "/forge-workshop-kit/solar/81",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 48,
+      "destination": "/forge-workshop-kit/solar/82",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 55,
+      "destination": "/forge-workshop-kit/solar/84",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 64,
+      "destination": "/forge-workshop-kit/solar/85",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 69,
+      "destination": "/forge-workshop-kit/solar/86",
+      "keyboardReturn": true
+    }
+  ],
+  "routes_checked": 189,
+  "presenter_notes": true
+}
