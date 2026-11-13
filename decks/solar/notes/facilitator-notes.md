@@ -4,7 +4,7 @@
 
 0:00
 
-Opening, 30 seconds. This is the research team at the fictional Pending, Inc. The notebook contains real public solar observations and actual training code. We will first build the experiment, then give a fixed-model agent a limited role in changing it.
+Opening, 30 seconds. This is a computational research lab studying solar observations. The pixel room is an illustration, not a live instrument feed. The notebook contains real public solar observations and actual training code. We will first build the experiment, then give a fixed-model agent a limited role in changing it.
 
 ## 2. Your team has a promising result.
 
@@ -18,11 +18,11 @@ Tell the fictional scene briefly. It establishes the familiar problem of a score
 
 Define forecasting before introducing the agent. SunPy gives astronomy-aware tools for acquiring and inspecting observations. This is not flare classification or a reproduction of a foundation-model benchmark.
 
-## 4. Management has another request.
+## 4. Can an agent improve the research code?
 
 0:03
 
-The joke is the escalation from doing research to automating pieces of research. The answer is a tested workflow, not a promise of better performance. Research-agent weights stay fixed; the small forecasting models are trained.
+Move from running a fixed experiment to testing an agent-written change. The answer is a tested workflow, not a promise of better performance. Research-agent weights stay fixed; the small forecasting models are trained.
 
 ## 5. What you will build
 
@@ -396,125 +396,125 @@ Native EvalTables has returned HTTP500 in the recorded rehearsal. Show the noteb
 
 20 minutes. Score differences are evidence from these dates and this run. Do not count pixels or neighboring timestamps as independent studies.
 
-## 67. Quality, effort, and execution are separate
+## 67. In this rehearsal, image error fell 10.15%
 
-3:45
+3:45 · RECORDED REHEARSAL
+
+Recorded November 13 rehearsal: public/recorded-study.json, images/final-comparison. Manual masked MAE 0.1224417336622075; agent 0.11001095193834161; persistence 0.12576198700564592. The 10.15% is relative error reduction versus manual, not percentage points of accuracy. Agent source contains the zero-init head from round one and absolute loss from round two. One seed, overlapping windows and two reserved dates sharply limit generalization.
+
+## 68. Recorded: inspect the matching forecasts
+
+3:46 · RECORDED REHEARSAL
+
+Actual revised-notebook final comparison. The crop shows matching manual and agent forecast rows. The linked full screen includes the image score table and the separate GOES failure table. This is the notebook comparison, not native EvalTables. Source: evidence/ux-v020-solar-final.png; the underlying saved agent plot is public/images/solar-final.png.
+
+## 69. Recorded: the short measurement models lost
+
+3:47 · RECORDED REHEARSAL
+
+Fresh revised-notebook rehearsal: public/recorded-study.json, goes/final-comparison and saved predictions. Undertraining is supported by the saved learning curves; do not turn this into a claim that MLP or CNN cannot forecast these observations.
+
+## 70. Quality, effort, and execution are separate
+
+3:48
 
 A smoother execution may not produce a better forecast. A tiny score change may not justify a large search. Inference and notebook compute billing are separate.
 
-## 68. Your teammate should be able to reopen the result
+## 71. Your teammate should be able to reopen the result
 
-3:47
+3:49
 
 Explain the evidence chain in ordinary language. Do not make facilitator monitoring a substitute for storing scientific outputs.
 
-## 69. Publish the result you can defend
+## 72. Publish the result you can defend
 
 3:50–3:58
 
 Eight minutes. Permit a negative finding. If publication fails, save the conclusion and use publication-only retry.
 
-## 70. The agent can propose the next experiment.
+## 73. The agent can propose the next experiment.
 
 3:58–4:00
 
 End on an actionable distinction. The research agent increases how many hypotheses can be proposed. The measurement stack determines whether we learn from them. Don’t promise unlimited autonomous research.
 
-## 71. Reference and worked answers
+## 74. Reference and worked answers
 
 REFERENCE
 
 All following pages are optional and add no lecture time.
 
-## 72. A tool span records the actual operation
+## 75. A tool span records the actual operation
 
 WORKED ANSWER
 
 Excerpt of the actual instrument_tool function. Parent scopes and tool_call_id are shown in the notebook. Compare stored spans with independent events; timestamps must describe the event, not a later export.
 
-## 73. Persistence returns the latest observation
+## 76. Persistence returns the latest observation
 
 WORKED ANSWER
 
 Worked answer uses public split persistence field. Tests must also reject using the target and preserve input data.
 
-## 74. A constant one-unit error scores one
+## 77. A constant one-unit error scores one
 
 WORKED ANSWER
 
 Code validated by scripts/check-answers.py. Units are the transformed flux units, not raw W/m².
 
-## 75. A completed search keeps every attempt
+## 78. A completed search keeps every attempt
 
 WORKED ANSWER
 
 This is an inspection answer, not a promised outcome. W&B sweep assignment and journal execution reuse are separate responsibilities.
 
-## 76. The image scorer ignores off-disk pixels
+## 79. The image scorer ignores off-disk pixels
 
 WORKED ANSWER
 
 Code validated against small deterministic fixtures. Production scorer remains independent.
 
-## 77. A zero correction reproduces persistence
+## 80. A zero correction reproduces persistence
 
 WORKED ANSWER
 
 Excerpt of ImagePredictor in candidate.py. A constant zero correction produces the current image exactly. This tests wiring, not learned forecasting quality.
 
-## 78. Evidence selection excludes final results
+## 81. Evidence selection excludes final results
 
 WORKED ANSWER
 
 The notebook provides the exact schema and checked implementation. The exercise should show a validation fixture accepted and a test fixture rejected.
 
-## 79. The probe must run the proposed source
+## 82. The probe must run the proposed source
 
 WORKED ANSWER
 
 Code excerpt mirrors the visible controller. Compare candidate.py in the saved proposal with candidate.py in the execution receipt. A complete source-bundle fingerprint also includes the metric file. The caller provides validation evidence, not final results.
 
-## 80. The final comparison does not refit
+## 83. The final comparison does not refit
 
 WORKED ANSWER
 
 The frozen inference path calls training.train with supplied weights and no training split. Tests verify the fit function is not invoked.
 
-## 81. Round 1: two changes, two measured outcomes
+## 84. Round 1: two changes, two measured outcomes
 
 RECORDED REHEARSAL
 
 Fresh revised-notebook rehearsal. Same date partitions, independent metric, seed and 40-step image training configuration. The composition selected the tested zero-init source without adding an untested loss change. This is one validation experiment, not a treatment estimate. Source: public/recorded-study.json.
 
-## 82. The selected edit starts at persistence
+## 85. The selected edit starts at persistence
 
 RECORDED REHEARSAL
 
 This is the actual first-round Candidate B edit. The final convolution is zero-initialized only for the residual architecture. Training can then learn a correction. The existing residual forward pass is unchanged. Its observed validation error belongs on the preceding slide; the code alone does not establish a general gain.
 
-## 83. Round 2: KEEP was a real comparison
+## 86. Round 2: KEEP was a real comparison
 
 RECORDED REHEARSAL
 
 Fresh revised-notebook rehearsal. Candidate B explicitly returned KEEP and its source fingerprint matched the parent. Candidate A proposed the loss change on the previously adopted source. The final composition test returned 0.11091556898305115. This small single-seed validation change should not be presented as repeatable evidence.
-
-## 84. Recorded image comparison
-
-RECORDED REHEARSAL
-
-Fresh revised-notebook rehearsal: public/recorded-study.json, images/final-comparison. Agent versus manual is approximately 10.15% relative error reduction, not percentage points of accuracy. The final source contains the zero-init head from round one and absolute loss from round two. Temporal correlation and one seed sharply limit inference.
-
-## 85. Recorded: inspect the matching forecasts
-
-RECORDED REHEARSAL
-
-Actual revised-notebook final comparison. The crop shows matching manual and agent forecast rows. The linked full screen includes the image score table and the separate GOES failure table. This is the notebook comparison, not native EvalTables. Source: evidence/ux-v020-solar-final.png; the underlying saved agent plot is public/images/solar-final.png.
-
-## 86. Recorded: the short measurement models lost
-
-RECORDED REHEARSAL
-
-Fresh revised-notebook rehearsal: public/recorded-study.json, goes/final-comparison and saved predictions. Undertraining is supported by the saved learning curves; do not turn this into a claim that MLP or CNN cannot forecast these observations.
 
 ## 87. Open the recorded research conversation
 

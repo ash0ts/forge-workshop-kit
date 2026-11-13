@@ -1,0 +1,278 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-11-13T17:40:22.665082+00:00",
+  "method": "Read-only provenance and score audit of saved ux-v020-solar rehearsal. No training or provider requests were run.",
+  "workspace": "2d92533d2cff4e249b56748dec707b6e",
+  "recorded_rehearsal": "evidence/ux-v020-solar.json",
+  "manifest_sha256": "302e7f2a2aaddf5d448ed5de317b5df3c23f0379557eba28b1e3d73466725b03",
+  "archive_sha256": "5fc2a5e2e36be73947dab3728796fd95c9fdef062c82e8d541c85429a38fb3de",
+  "archive_bytes": 26136236,
+  "acquisition_source_matches_manifest": true,
+  "sources": {
+    "goes": {
+      "inventory_entries": 13,
+      "raw_checksums_verified": 13,
+      "raw_missing": [],
+      "raw_mismatches": [],
+      "representative_url": "https://www.ncei.noaa.gov/data/goes-space-environment-monitor/access/science/xrs/goes15/xrsf-l2-avg1m_science/2014/02/sci_xrsf-l2-avg1m_g15_d20140201_v2-2-1.nc",
+      "exclusions": {},
+      "source_rows": 18720,
+      "retained_rows": 18499,
+      "missing_inventory_dates": [
+        "2014-02-08"
+      ]
+    },
+    "aia": {
+      "inventory_entries": 1680,
+      "raw_checksums_verified": 1671,
+      "raw_missing": [],
+      "raw_mismatches": [],
+      "representative_url": "https://jsoc1.stanford.edu/data/aia/synoptic/2014/02/01/H0000/AIA20140201_0000_0171.fits",
+      "exclusions": {
+        "QUALITY != 0": 44,
+        "missing archive image": 9
+      },
+      "retained_frames": 1627
+    }
+  },
+  "image_comparison": {
+    "metric": "mean per-window solar-disk-masked absolute error in train-standardized log1p AIA 171 DN/pixel/second",
+    "examples": 199,
+    "forecast_origin_first": "2014-02-13T02:48",
+    "forecast_origin_last": "2014-02-14T22:48",
+    "means": {
+      "manual": 0.1224417336622075,
+      "agent": 0.11001095193834161,
+      "persistence": 0.12576198700564592
+    },
+    "published_means_match": true,
+    "missing_predictions": 0,
+    "agent_vs_manual": {
+      "error_reduction": 0.012430781723865912,
+      "relative_error_reduction_percent": 10.152405844040054,
+      "lower_error_windows": 199,
+      "tied_windows": 0,
+      "higher_error_windows": 0,
+      "paired_reduction_quantiles": {
+        "min": 0.007584594726562505,
+        "p10": 0.010630172729492182,
+        "p25": 0.011677558898925779,
+        "median": 0.01254814147949218,
+        "p75": 0.013236579895019536,
+        "p90": 0.014129217529296882,
+        "max": 0.015371292114257806
+      },
+      "by_day": {
+        "2014-02-13": {
+          "windows": 95,
+          "reference_error": 0.12139360616583572,
+          "agent_error": 0.1083423922890111,
+          "relative_error_reduction_percent": 10.751154273311037
+        },
+        "2014-02-14": {
+          "windows": 104,
+          "reference_error": 0.12339915781754714,
+          "agent_error": 0.11153511700263391,
+          "relative_error_reduction_percent": 9.614361252331157
+        }
+      }
+    },
+    "agent_vs_persistence": {
+      "error_reduction": 0.015751035067304294,
+      "relative_error_reduction_percent": 12.52448012498178,
+      "lower_error_windows": 199,
+      "tied_windows": 0,
+      "higher_error_windows": 0,
+      "paired_reduction_quantiles": {
+        "min": 0.012153778076171864,
+        "p10": 0.013626269531250002,
+        "p25": 0.015033275604248046,
+        "median": 0.01591913604736328,
+        "p75": 0.016605686187744134,
+        "p90": 0.017176429748535144,
+        "max": 0.019817550659179686
+      },
+      "by_day": {
+        "2014-02-13": {
+          "windows": 95,
+          "reference_error": 0.12458544560482629,
+          "agent_error": 0.1083423922890111,
+          "relative_error_reduction_percent": 13.037681277263058
+        },
+        "2014-02-14": {
+          "windows": 104,
+          "reference_error": 0.1268367123237023,
+          "agent_error": 0.11153511700263391,
+          "relative_error_reduction_percent": 12.06401131087103
+        }
+      }
+    },
+    "interpretation": "A measured gain in one frozen teaching rehearsal, not repeatability or operational solar-forecasting evidence. The 199 windows overlap across two dates; they are not independent trials."
+  },
+  "frozen_checks": [
+    {
+      "trained_stage": "5e2ee7e46e9a3ab976807a2c8b6d8a10",
+      "final_stage": "3ad0abefe2f1eb521fbb8eca0330174b",
+      "parameters_equal": true,
+      "source_equal": true,
+      "final_input_fields": [
+        "predict_x"
+      ],
+      "final_losses": [],
+      "predictions_sha256": "a7453e1a9fe72464ee57d5a833baa3ae30a06f4e41eebcf0bf53e636e76dc8da",
+      "source_sha256": "7d68978690bb4927772c4a7092def6c67754d38a82cbed5ef53bc372cb8e725b"
+    },
+    {
+      "trained_stage": "f5e5d198bc9479f78d9a4b1c8c8979e3",
+      "final_stage": "f2175d5e34e78b67005f5a219c127949",
+      "parameters_equal": true,
+      "source_equal": true,
+      "final_input_fields": [
+        "predict_x"
+      ],
+      "final_losses": [],
+      "predictions_sha256": "bbda85fa288e66284165086296bd75cfc82d58999d21f0caef83291f5b76f7e8",
+      "source_sha256": "fb131e2defeec628941e47fd917daeb1e53ebf3a29cd978f3909f1b204681eab"
+    }
+  ],
+  "partitions": {
+    "goes": {
+      "train": 11122,
+      "validation": 2779,
+      "test": 2694
+    },
+    "aia": {
+      "train": 1036,
+      "validation": 142,
+      "test": 199
+    }
+  },
+  "normalization": {
+    "aia": {
+      "center": 4.9362406730651855,
+      "scale": 0.6204253435134888,
+      "target": "normalized log1p AIA 171 rate",
+      "horizon_minutes": 60
+    },
+    "goes": {
+      "mean": [
+        [
+          [
+            -7.016343593597412
+          ],
+          [
+            -5.469872951507568
+          ]
+        ]
+      ],
+      "std": [
+        [
+          [
+            0.5229496359825134
+          ],
+          [
+            0.27552157640457153
+          ]
+        ]
+      ],
+      "target": "log10 XRS-B W/m\u00b2",
+      "horizon_minutes": 30
+    },
+    "fitted_on": "training partition only"
+  },
+  "representative_preprocessing": [
+    {
+      "slot": "2014-02-01 00:00:00",
+      "observed_at": "2014-02-01 00:00:11.340000",
+      "wavelength_angstrom": 171,
+      "prepared_array_exact": true
+    },
+    {
+      "slot": "2014-02-07 20:36:00",
+      "observed_at": "2014-02-07 20:36:11.340000",
+      "wavelength_angstrom": 171,
+      "prepared_array_exact": true
+    },
+    {
+      "slot": "2014-02-14 23:48:00",
+      "observed_at": "2014-02-14 23:48:11.340000",
+      "wavelength_angstrom": 171,
+      "prepared_array_exact": true
+    }
+  ],
+  "changes": [
+    {
+      "round": 1,
+      "change": "Zero-initialize final residual-convolution weights and bias; the untrained residual model then copies the current image.",
+      "validation_error": 0.11143358542213977,
+      "interpretation": "This initialization removes random residual noise before the short training run. Its contribution outside this seed and training budget remains untested."
+    },
+    {
+      "round": 2,
+      "change": "Change masked squared-error loss to masked absolute-error loss.",
+      "validation_error": 0.11091556898305115,
+      "interpretation": "The training loss now matches the absolute-error criterion in form. The held-out gain belongs to the adopted combination; no held-out ablation isolates each edit."
+    }
+  ],
+  "goes_failure": {
+    "selected_model": {
+      "error": 2.468974582071028,
+      "persistence_error": 0.19270602844340234,
+      "skill_vs_persistence": -11.812129449267148,
+      "examples": 2694
+    },
+    "metric": "MAE in log10 W/m^2",
+    "training_steps": 60,
+    "interpretation": "Selected neural model is worse than persistence. Preserve this failure; a model winning a small search can still lose to a simple baseline."
+  },
+  "pending": {
+    "data_origin": "Hand-authored fictional customer, billing and access fixtures; not real customer records.",
+    "realistic_behaviors": [
+      "wrong-account writes",
+      "duplicate refunds",
+      "existing refund detection",
+      "two distinct invoices",
+      "idempotency-key reuse",
+      "operation committed before timeout acknowledgement",
+      "readback after ambiguous write",
+      "clarification for missing identity or role"
+    ],
+    "scope_limit": "Simplified teaching simulator, not a faithful Stripe implementation. It deliberately permits invalid repeated refunds so independent checks can detect them.",
+    "recorded_state_results": "12 of 12 final executions correct across original, manual and agent-selected versions; no observed quality gain.",
+    "missing_judgments": 1,
+    "evidence": "evidence/ux-v020-pending.json"
+  },
+  "sources_verified_online": [
+    {
+      "url": "https://www.ncei.noaa.gov/products/goes-1-15/space-weather-instruments",
+      "supports": "GOES archive and XRS instrument provenance"
+    },
+    {
+      "url": "https://docs.sunpy.org/en/stable/generated/gallery/time_series/goes_xrs_example.html",
+      "supports": "Fido GOES-15 retrieval, avg1m data and zero-quality-flag filtering"
+    },
+    {
+      "url": "https://jsoc1.stanford.edu/data/aia/synoptic/README.html",
+      "supports": "Level-1.5 processed, 1024-square AIA synoptic FITS and DN per original pixel units"
+    },
+    {
+      "url": "https://docs.sunpy.org/en/stable/generated/api/sunpy.net.dataretriever.AIASynopsisClient.html",
+      "supports": "SunPy AIA synopsis discovery interface"
+    },
+    {
+      "url": "https://docs.stripe.com/api/idempotent_requests",
+      "supports": "Real service practice of stable idempotency keys; conceptual context only"
+    },
+    {
+      "url": "https://docs.stripe.com/error-low-level#network-errors",
+      "supports": "A timeout does not establish whether a remote write happened; conceptual context only"
+    }
+  ],
+  "claims_not_established": [
+    "Agent Lens causes a quality improvement relative to an unobserved or raw-feedback control.",
+    "Autoresearch outperforms a matched expert or a longer manual search.",
+    "The two edits are independently beneficial on held-out data.",
+    "The image-error gain improves flare detection, localized event prediction, or operational forecasts.",
+    "The same gain repeats across random seeds, dates, or participant edits."
+  ]
+}

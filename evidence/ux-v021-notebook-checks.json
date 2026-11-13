@@ -1,0 +1,50 @@
+{
+  "checked_at": "2026-11-13T17:45:49.710987+00:00",
+  "scope": "Presentation and navigation only; no new experimental execution",
+  "solar": {
+    "workspace": "ux-v020-solar",
+    "mode": "Restored prior completed rehearsal through Connect; did not load arrays, train, invoke inference, or publish",
+    "theme": "Solar Forecasting Lab",
+    "navigation_current_step": "Verified green indicator moved from Connect to Solar data; correct chapter rendered",
+    "recorded_example": "Three-score table and calculated 10.15% reduction from existing evidence; separate from learner results",
+    "provenance": "GOES-15 and AIA 171 archival sources and preprocessing visible",
+    "retained_stages": 45,
+    "retained_requests": 4
+  },
+  "pending": {
+    "mode": "Empty in-memory notebook session; no project connection",
+    "theme": "Pending, Inc. office unchanged",
+    "navigation_current_step": "Verified green indicator moved from Connect and trace to Build an invoice tool",
+    "source_change": "Only allow_self_loops=True for step state"
+  },
+  "paid_requests_started": 0,
+  "training_executions_started": 0,
+  "publication_actions_started": 0,
+  "viewport_checks": {
+    "desktop": [
+      1440,
+      1050
+    ],
+    "narrow": [
+      430,
+      900
+    ],
+    "solar_narrow_scroll_width": 430,
+    "pending_narrow_scroll_width": 430
+  },
+  "automated_checks": {
+    "focused_tests": 20,
+    "marimo_check": [
+      "pending_inc.py",
+      "solar_autoresearch.py"
+    ]
+  },
+  "screenshots": [
+    "ux-v021-solar-lab.png",
+    "ux-v021-solar-provenance.png",
+    "ux-v021-solar-image-exercise.png",
+    "ux-v021-solar-recorded-example.png",
+    "ux-v021-solar-narrow.png",
+    "ux-v021-pending-navigation.png"
+  ]
+}

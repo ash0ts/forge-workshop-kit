@@ -1,6 +1,38 @@
 from forge_workshop_kit import WorkshopSession, ui
 
 
+def test_notebook_themes_do_not_leak_office_identity_into_solar():
+    office = ui.heading('A title', 'A description')
+    neutral = ui.heading('A title', 'A description', theme='neutral')
+    lab = ui.heading('A title', 'A description', theme='lab')
+    assert 'Pending, Inc. · Forge workshop' in office
+    assert 'Solar Forecasting Lab · Forge workshop' in lab
+    assert 'Pending, Inc.' not in lab
+    assert 'Pending, Inc.' not in neutral
+    assert 'data:image/svg+xml;base64,' in lab
+    assert 'data:image/svg+xml;base64,' not in office
+    assert 'data:image/svg+xml;base64,' not in neutral
+
+
+def test_navigation_label_is_independent_of_the_last_step():
+    from types import SimpleNamespace
+
+    class Html:
+        def __init__(self, value):
+            self.value = value
+
+        def batch(self, **buttons):
+            return {'html': self.value, 'buttons': buttons}
+
+    mo = SimpleNamespace(Html=Html, ui=SimpleNamespace(button=lambda **kw: kw))
+    steps = [('setup', 'Connect'), ('final', 'Final evaluation')]
+    office = ui.navigation(mo, steps, 'setup', lambda _: None)
+    lab = ui.navigation(mo, steps, 'setup', lambda _: None, label='Your research loop')
+    assert '<strong>Your workday</strong>' in office['html']
+    assert '<strong>Your research loop</strong>' in lab['html']
+    assert lab['buttons']['step2']['label'] == '2 · Final evaluation'
+
+
 def test_drafts_and_navigation_survive_without_executing(tmp_path):
     class NoRemote:
         def __getattr__(self, name):

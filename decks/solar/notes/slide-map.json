@@ -1,13 +1,13 @@
 {
-  "main_slides": 70,
+  "main_slides": 73,
   "total_slides": 90,
   "slides": [
     {
       "number": 1,
       "key": "cover",
       "title": "Build a research loop.<br>Then give it an agent.",
-      "body": "<div class=\"sub\">A four-hour research shift at Pending, Inc.</div><OfficeScene mode=\"employee\" /><div class=\"bottom-note\">Solar forecasting, experiment tracking, and agents that edit research code.</div>",
-      "notes": "Opening, 30 seconds. This is the research team at the fictional Pending, Inc. The notebook contains real public solar observations and actual training code. We will first build the experiment, then give a fixed-model agent a limited role in changing it.",
+      "body": "<div class=\"sub\">A four-hour experiment in the Solar Forecasting Lab.</div><LabScene /><div class=\"bottom-note\">Solar forecasting, experiment tracking, and agents that edit research code.</div>",
+      "notes": "Opening, 30 seconds. This is a computational research lab studying solar observations. The pixel room is an illustration, not a live instrument feed. The notebook contains real public solar observations and actual training code. We will first build the experiment, then give a fixed-model agent a limited role in changing it.",
       "kind": "cover",
       "time": "0:00",
       "answer": null
@@ -34,10 +34,10 @@
     },
     {
       "number": 4,
-      "key": "manager",
-      "title": "Management has another request.",
-      "body": "<div class=\"quote\">\u201cOnce the experiment works, could an agent improve it?\u201d<small>THE SAME FICTIONAL MANAGER</small></div><ResearchMap :level=\"4\" />",
-      "notes": "The joke is the escalation from doing research to automating pieces of research. The answer is a tested workflow, not a promise of better performance. Research-agent weights stay fixed; the small forecasting models are trained.",
+      "key": "research-question",
+      "title": "Can an agent improve the research code?",
+      "body": "<div class=\"quote\">\u201cOnce the experiment works, could an agent improve it?\u201d<small>THE NEXT LAB QUESTION</small></div><ResearchMap :level=\"4\" />",
+      "notes": "Move from running a fixed experiment to testing an agent-written change. The answer is a tested workflow, not a promise of better performance. Research-agent weights stay fixed; the small forecasting models are trained.",
       "kind": "",
       "time": "0:03",
       "answer": null
@@ -106,7 +106,7 @@
       "number": 11,
       "key": "setup-screen",
       "title": "Your work stays in your project",
-      "body": "<div class=\"native-columns\"><a href=\"/images/ux-v020-solar-setup.png\" target=\"_blank\"><img src=\"/images/ux-v020-solar-setup.png\" alt=\"Revised notebook showing the participant project, allowance and guided exercise navigation\"></a><div><h2>Check your project.</h2><p>The example uses the rehearsal project. Your copy must name your own.</p><h2>Check your allowance.</h2><p>Inference and notebook compute are separate.</p><p class=\"aside\"><a href=\"/images/ux-v020-solar-setup.png\" target=\"_blank\">Open full capture \u2197</a></p></div></div><div class=\"bottom-note\">Actual revised notebook after restoring saved work.</div>",
+      "body": "<div class=\"native-columns\"><a href=\"/images/ux-v021-solar-setup.png\" target=\"_blank\"><img src=\"/images/ux-v021-solar-setup.png\" alt=\"Revised notebook showing the participant project, allowance and guided exercise navigation\"></a><div><h2>Check your project.</h2><p>The example uses the rehearsal project. Your copy must name your own.</p><h2>Check your allowance.</h2><p>Inference and notebook compute are separate.</p><p class=\"aside\"><a href=\"/images/ux-v021-solar-setup.png\" target=\"_blank\">Open full capture \u2197</a></p></div></div><div class=\"bottom-note\">Actual revised notebook after restoring saved work.</div>",
       "notes": "Captured from the revised notebook. Project, tool location, allowance and current progress stay together. The screenshot is a restored rehearsal, not an empty new workspace. Do not ask attendees to enter the facilitator project shown here.",
       "kind": "",
       "time": "0:15",
@@ -466,7 +466,7 @@
       "number": 47,
       "key": "agent-need",
       "title": "Now the agent can edit the program",
-      "body": "<ResearchMap :level=\"4\" /><div class=\"bottom-note\">Management has automated the proposal. You still review the diff.</div>",
+      "body": "<ResearchMap :level=\"4\" /><div class=\"bottom-note\">The agent can draft the hypothesis and code. You still review the diff.</div>",
       "notes": "Introduce the meta layer only after students have built a working experiment. The agent gets evidence and a constrained edit request. It can be mistaken.",
       "kind": "",
       "time": "2:15",
@@ -664,26 +664,56 @@
     },
     {
       "number": 67,
+      "key": "recorded-final",
+      "title": "In this rehearsal, image error fell 10.15%",
+      "body": "<div class=\"measured-grid\"><div><div class=\"measured-gain\">10.15%</div><p>less error than the manually selected model</p><p class=\"aside\">Agent edits: zero-initialize the residual head, then use absolute training loss.</p></div><table class=\"clean-table\"><tbody><tr><th>Frozen version</th><th>Masked MAE \u2193</th></tr><tr><td>Persistence</td><td>0.125762</td></tr><tr><td>Manual residual model</td><td>0.122442</td></tr><tr><td>Agent-selected code</td><td>0.110011</td></tr></tbody></table></div><p class=\"aside\">Actual AIA 171 \u00c5 observations. 199 overlapping windows; February 13\u201314, 2014; one seed. <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==\">Open the recorded comparison \u2197</a></p><div class=\"bottom-note\">A measured result from this rehearsal, not a promised outcome for your edits.</div>",
+      "notes": "Recorded November 13 rehearsal: public/recorded-study.json, images/final-comparison. Manual masked MAE 0.1224417336622075; agent 0.11001095193834161; persistence 0.12576198700564592. The 10.15% is relative error reduction versus manual, not percentage points of accuracy. Agent source contains the zero-init head from round one and absolute loss from round two. One seed, overlapping windows and two reserved dates sharply limit generalization.",
+      "kind": "",
+      "time": "3:45 \u00b7 RECORDED REHEARSAL",
+      "answer": null
+    },
+    {
+      "number": 68,
+      "key": "recorded-image",
+      "title": "Recorded: inspect the matching forecasts",
+      "body": "<a class=\"final-crop\" href=\"/images/ux-v020-solar-final.png\" target=\"_blank\" aria-label=\"Open the complete final notebook comparison\"><img src=\"/images/ux-v020-solar-final.png\" alt=\"Actual notebook comparing manual and agent forecasts at the same reserved timestamp, with observed future and error images\"></a><div class=\"image-caption\">Same input and future timestamp. Manual above, agent-selected below. <a href=\"/images/ux-v020-solar-final.png\" target=\"_blank\">Full notebook comparison \u2197</a></div>",
+      "notes": "Actual revised-notebook final comparison. The crop shows matching manual and agent forecast rows. The linked full screen includes the image score table and the separate GOES failure table. This is the notebook comparison, not native EvalTables. Source: evidence/ux-v020-solar-final.png; the underlying saved agent plot is public/images/solar-final.png.",
+      "kind": "",
+      "time": "3:46 \u00b7 RECORDED REHEARSAL",
+      "answer": null
+    },
+    {
+      "number": 69,
+      "key": "recorded-goes",
+      "title": "Recorded: the short measurement models lost",
+      "body": "<img class=\"solar-photo\" src=\"/images/goes-final.png\" alt=\"Recorded observed flux and undertrained forecast\"><div class=\"image-caption\">Final log-flux MAE: selected model 2.469; persistence 0.193. The training budget was 60 steps.</div>",
+      "notes": "Fresh revised-notebook rehearsal: public/recorded-study.json, goes/final-comparison and saved predictions. Undertraining is supported by the saved learning curves; do not turn this into a claim that MLP or CNN cannot forecast these observations.",
+      "kind": "",
+      "time": "3:47 \u00b7 RECORDED REHEARSAL",
+      "answer": null
+    },
+    {
+      "number": 70,
       "key": "result-meaning",
       "title": "Quality, effort, and execution are separate",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Question</th><th>Evidence</th></tr><tr><td>Did forecasts improve?</td><td>Matched final predictions and fixed metrics</td></tr><tr><td>What did improvement cost?</td><td>All proposals, probes, retries, and compute</td></tr><tr><td>Did execution get more reliable?</td><td>Errors, missing outputs, and recovery traces</td></tr></tbody></table>",
       "notes": "A smoother execution may not produce a better forecast. A tiny score change may not justify a large search. Inference and notebook compute billing are separate.",
       "kind": "",
-      "time": "3:45",
+      "time": "3:48",
       "answer": null
     },
     {
-      "number": 68,
+      "number": 71,
       "key": "reproduce",
       "title": "Your teammate should be able to reopen the result",
       "body": "<div class=\"step-path\"><div><h2>Run</h2><p>Settings, metric, loss history.</p></div><div><h2>Artifact</h2><p>Source, data, weights, predictions.</p></div><div><h2>Trace</h2><p>Agent requests, edits, tests, decisions.</p></div></div><div class=\"bottom-note\">The Report explains what changed and links to those records.</div>",
       "notes": "Explain the evidence chain in ordinary language. Do not make facilitator monitoring a substitute for storing scientific outputs.",
       "kind": "",
-      "time": "3:47",
+      "time": "3:49",
       "answer": null
     },
     {
-      "number": 69,
+      "number": 72,
       "key": "conclusion-turn",
       "title": "Publish the result you can defend",
       "body": "<div class=\"task\">Use your own comparison.</div><ol class=\"exercise-controls\"><li>State one code change and the result it produced on reserved dates.</li><li>Include an example where the forecast failed or changed little.</li><li>Click <strong>Publish my conclusion</strong>. Reopen one result from its saved artifact.</li></ol><div class=\"done\">Done when: another person can trace your claim to its code, run, prediction, and score.</div>",
@@ -693,17 +723,17 @@
       "answer": null
     },
     {
-      "number": 70,
+      "number": 73,
       "key": "close",
       "title": "The agent can propose the next experiment.",
-      "body": "<p class=\"big\">You now have the part that makes the proposal testable.</p><p>Keep the data version. Save the executed source. Inspect the prediction. Measure on dates the search did not use.</p><div class=\"bottom-note\">Management may still ask for a better number. You can now explain the one you have.</div>",
+      "body": "<p class=\"big\">You now have the part that makes the proposal testable.</p><p>Keep the data version. Save the executed source. Inspect the prediction. Measure on dates the search did not use.</p><div class=\"bottom-note\">The next result still needs a source file, a dataset version, and a test.</div>",
       "notes": "End on an actionable distinction. The research agent increases how many hypotheses can be proposed. The measurement stack determines whether we learn from them. Don\u2019t promise unlimited autonomous research.",
       "kind": "",
       "time": "3:58\u20134:00",
       "answer": null
     },
     {
-      "number": 71,
+      "number": 74,
       "key": "reference",
       "title": "Reference and worked answers",
       "body": "<p class=\"big\">Use these after an attempt, or when live access is unavailable.</p><p>Recorded examples belong to the November 13 technical rehearsal. They are not results from your unexecuted changes.</p><div class=\"bottom-note\">Use the return links to continue the workshop.</div>",
@@ -713,7 +743,7 @@
       "answer": null
     },
     {
-      "number": 72,
+      "number": 75,
       "key": "answer-trace",
       "title": "A tool span records the actual operation",
       "body": "```python\ndef instrument_tool(observation):\n    with tracing.Tool(\n        name=observation[\"name\"],\n        arguments=observation[\"arguments\"],\n        result=observation[\"result\"],\n        started_at=stamp(observation[\"started_at\"]),\n        ended_at=stamp(observation[\"ended_at\"]),\n    ) as tool:\n        tool.set_attributes({\"workshop.exercise\": \"solar-research\"})\n        if observation.get(\"error\"):\n            tool.record_error(RuntimeError(observation[\"error\"]))\n```\n\n",
@@ -723,7 +753,7 @@
       "answer": null
     },
     {
-      "number": 73,
+      "number": 76,
       "key": "answer-persistence",
       "title": "Persistence returns the latest observation",
       "body": "```python\ndef persistence_forecast(split):\n    return split[\"persistence\"].copy()\n```\n\n<p>Changing the returned array must not mutate the original data.</p>",
@@ -733,7 +763,7 @@
       "answer": null
     },
     {
-      "number": 74,
+      "number": 77,
       "key": "answer-flux",
       "title": "A constant one-unit error scores one",
       "body": "```python\ndef training_loss(prediction, target, mask):\n    return ((prediction - target).square() * mask).sum() / mask.sum()\n\ndef my_flux_mae(prediction, target):\n    return float(np.abs(prediction - target).mean())\n\nassert my_flux_mae(np.ones(3), np.zeros(3)) == 1.0\nassert my_flux_mae(np.zeros(3), np.zeros(3)) == 0.0\n```\n\n",
@@ -743,7 +773,7 @@
       "answer": null
     },
     {
-      "number": 75,
+      "number": 78,
       "key": "answer-search",
       "title": "A completed search keeps every attempt",
       "body": "<p class=\"big\">Six configurations share data, source, split, seed, and a training budget.</p><p>Compare the actual configuration fields in the Sweep. A failed execution stays in the table with its error; an unavailable metric stays missing.</p><div class=\"bottom-note\">Changing source creates a different set of stage identities.</div>",
@@ -753,7 +783,7 @@
       "answer": null
     },
     {
-      "number": 76,
+      "number": 79,
       "key": "answer-images",
       "title": "The image scorer ignores off-disk pixels",
       "body": "```python\ndef my_image_mae(prediction, target, disk_mask):\n    errors = np.abs(prediction - target) * disk_mask\n    per_image = errors.sum(axis=(1, 2, 3))\n    per_image /= disk_mask.sum(axis=(1, 2, 3))\n    return float(per_image.mean())\n```\n\n<p>Test zero error, constant +1 error, and an error only outside the mask.</p>",
@@ -763,7 +793,7 @@
       "answer": null
     },
     {
-      "number": 77,
+      "number": 80,
       "key": "answer-residual",
       "title": "A zero correction reproduces persistence",
       "body": "```python\ndef forward(self, x):\n    correction = self.net(x)\n    if architecture == \"residual\":\n        return x[:, 1:2] + correction\n    return correction\n```\n\n<div class=\"bottom-note\">The current image is input channel 1. The return has one channel.</div>",
@@ -773,7 +803,7 @@
       "answer": null
     },
     {
-      "number": 78,
+      "number": 81,
       "key": "answer-evidence",
       "title": "Evidence selection excludes final results",
       "body": "```python\ndef select_validation_evidence(record):\n    if record.get(\"split\") != \"validation\":\n        raise ValueError(\"Only validation evidence is allowed.\")\n    fields = (\"split\", \"config\", \"metrics\", \"losses\",\n              \"errors\", \"trace\", \"stage_id\", \"lessons\")\n    return {name: record[name] for name in fields if name in record}\n```\n\n<div class=\"bottom-note\">The parent source is supplied separately. Final predictions and scores are excluded.</div>",
@@ -783,7 +813,7 @@
       "answer": null
     },
     {
-      "number": 79,
+      "number": 82,
       "key": "answer-controller",
       "title": "The probe must run the proposed source",
       "body": "```python\ncandidate = proposal[\"candidates\"][candidate_index]\nprobe = run_training(\n    session, stage_name, candidate[\"source\"],\n    image_splits, parent[\"config\"], dataset_version, metric_source,\n)\n```\n\n<div class=\"bottom-note\">Passing the parent source here would test the wrong program while producing a plausible result.</div>",
@@ -793,7 +823,7 @@
       "answer": null
     },
     {
-      "number": 80,
+      "number": 83,
       "key": "answer-final",
       "title": "The final comparison does not refit",
       "body": "<p class=\"big\">Each selected version uses its saved weights.</p><p>Check the freeze receipt, source fingerprint, weight artifact, target timestamps, and all three prediction rows.</p><div class=\"bottom-note\">Persistence needs no training weights. Missing outputs remain visible.</div>",
@@ -803,7 +833,7 @@
       "answer": null
     },
     {
-      "number": 81,
+      "number": 84,
       "key": "recorded-edit",
       "title": "Round 1: two changes, two measured outcomes",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Source</th><th>Validation error \u2193</th></tr><tr><td>Manual residual model</td><td>0.122116</td></tr><tr><td>A \u00b7 replace squared loss with absolute loss</td><td>0.120553</td></tr><tr><td>B \u00b7 initialize the residual head at zero</td><td>0.111434</td></tr></tbody></table><p>The composition selected B. Its separate test reproduced 0.111434.</p><p class=\"aside\"><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ef590522f1af377a0bc04bd63eea23e4\">Open the actual proposals and evidence \u2197</a></p>",
@@ -813,7 +843,7 @@
       "answer": null
     },
     {
-      "number": 82,
+      "number": 85,
       "key": "recorded-code",
       "title": "The selected edit starts at persistence",
       "body": "```python\nif architecture == 'residual':\n    nn.init.zeros_(self.net[4].weight)\n    nn.init.zeros_(self.net[4].bias)\n\n# The residual forward pass remains:\nreturn prediction + x[:, 1:2]\n```\n\n<div class=\"bottom-note\">Zero initial correction \u2192 the initial forecast is the current image.</div>",
@@ -823,41 +853,11 @@
       "answer": null
     },
     {
-      "number": 83,
+      "number": 86,
       "key": "recorded-keep",
       "title": "Round 2: KEEP was a real comparison",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Source</th><th>Validation error \u2193</th></tr><tr><td>Adopted zero-init model</td><td>0.111434</td></tr><tr><td>A \u00b7 add absolute loss to that source</td><td>0.110916</td></tr><tr><td>B \u00b7 KEEP the zero-init source unchanged</td><td>0.111434</td></tr></tbody></table><p>KEEP reproduced the parent. The tested composition selected A.</p><div class=\"bottom-note\">An unchanged source can have a new execution. It does not become a new executable version.</div>",
       "notes": "Fresh revised-notebook rehearsal. Candidate B explicitly returned KEEP and its source fingerprint matched the parent. Candidate A proposed the loss change on the previously adopted source. The final composition test returned 0.11091556898305115. This small single-seed validation change should not be presented as repeatable evidence.",
-      "kind": "",
-      "time": "RECORDED REHEARSAL",
-      "answer": null
-    },
-    {
-      "number": 84,
-      "key": "recorded-final",
-      "title": "Recorded image comparison",
-      "body": "<table class=\"clean-table\"><tbody><tr><th>Frozen version</th><th>Final masked error \u2193</th><th>Skill vs persistence \u2191</th></tr><tr><td>Persistence</td><td>0.125762</td><td>0.0%</td></tr><tr><td>Manual residual model</td><td>0.122442</td><td>2.6%</td></tr><tr><td>Zero-init residual + absolute loss</td><td>0.110011</td><td>12.5%</td></tr></tbody></table><p class=\"aside\">199 overlapping windows from two days. One teaching rehearsal. <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==\">Open the saved Report \u2197</a></p>",
-      "notes": "Fresh revised-notebook rehearsal: public/recorded-study.json, images/final-comparison. Agent versus manual is approximately 10.15% relative error reduction, not percentage points of accuracy. The final source contains the zero-init head from round one and absolute loss from round two. Temporal correlation and one seed sharply limit inference.",
-      "kind": "",
-      "time": "RECORDED REHEARSAL",
-      "answer": null
-    },
-    {
-      "number": 85,
-      "key": "recorded-image",
-      "title": "Recorded: inspect the matching forecasts",
-      "body": "<a class=\"final-crop\" href=\"/images/ux-v020-solar-final.png\" target=\"_blank\" aria-label=\"Open the complete final notebook comparison\"><img src=\"/images/ux-v020-solar-final.png\" alt=\"Actual notebook comparing manual and agent forecasts at the same reserved timestamp, with observed future and error images\"></a><div class=\"image-caption\">Same input and future timestamp. Manual above, agent-selected below. <a href=\"/images/ux-v020-solar-final.png\" target=\"_blank\">Full notebook comparison \u2197</a></div>",
-      "notes": "Actual revised-notebook final comparison. The crop shows matching manual and agent forecast rows. The linked full screen includes the image score table and the separate GOES failure table. This is the notebook comparison, not native EvalTables. Source: evidence/ux-v020-solar-final.png; the underlying saved agent plot is public/images/solar-final.png.",
-      "kind": "",
-      "time": "RECORDED REHEARSAL",
-      "answer": null
-    },
-    {
-      "number": 86,
-      "key": "recorded-goes",
-      "title": "Recorded: the short measurement models lost",
-      "body": "<img class=\"solar-photo\" src=\"/images/goes-final.png\" alt=\"Recorded observed flux and undertrained forecast\"><div class=\"image-caption\">Final log-flux MAE: selected model 2.469; persistence 0.193. The training budget was 60 steps.</div>",
-      "notes": "Fresh revised-notebook rehearsal: public/recorded-study.json, goes/final-comparison and saved predictions. Undertraining is supported by the saved learning curves; do not turn this into a claim that MLP or CNN cannot forecast these observations.",
       "kind": "",
       "time": "RECORDED REHEARSAL",
       "answer": null

@@ -1,21 +1,21 @@
 {
-  "main_frames": 70,
+  "main_frames": 73,
   "total_frames": 90,
   "files": [
     {
       "file": "solar-autoresearch-browser.zip",
-      "bytes": 2786394,
-      "sha256": "45b873178320e93a3fb442f04faec0841eea400959c899836f4c7e51d99b0a8d"
+      "bytes": 2951381,
+      "sha256": "9cc99b11715c3eb1080f082e70ec39154ae8d06f4c24037a0818e33b15dae07b"
     },
     {
       "file": "solar-autoresearch-deck-source.zip",
-      "bytes": 1934035,
-      "sha256": "2264e9067d5a0da8bca6408f95bd6f85bc891dc19186be13a602d165fd8950af"
+      "bytes": 2101247,
+      "sha256": "275b534bd31ff2ef703f7d6a34cf36e3deca36b4e5f744b400664d255efa827e"
     },
     {
       "file": "solar-autoresearch.pdf",
-      "bytes": 1858791,
-      "sha256": "ae202f88140f266ab02f4c5216290258bdffa1e6e4463dae81df185494f921c5"
+      "bytes": 1887561,
+      "sha256": "7f1093d10b7cd5e7ce01429a70bbec0e32c34eca93d75f611eb32951d4cbf9b7"
     }
   ],
   "assets": [
@@ -26,6 +26,10 @@
     {
       "file": "public/images/solar-final.png",
       "sha256": "f8efd4a474bf3f81bb91d7ac36741eb2158d59e167e0217df82c9f1c2de12c21"
+    },
+    {
+      "file": "public/images/solar-lab.svg",
+      "sha256": "447e2e3b628fcd780abd6f4786232f8cd7af63f3a1052e38670bd3c05506ab5a"
     },
     {
       "file": "public/images/solar-template-qr.svg",
@@ -62,6 +66,10 @@
     {
       "file": "public/images/ux-v020-solar-sweep.png",
       "sha256": "50c9748b36422dc154ebe93d9515895b2d7ad6a5a03c35d2c4a48f8add17e3d5"
+    },
+    {
+      "file": "public/images/ux-v021-solar-setup.png",
+      "sha256": "3d13766f0b9c254c58499478380f7397a6114fbc8e90cfb598bc5b13d566df94"
     },
     {
       "file": "public/recorded-runs.json",

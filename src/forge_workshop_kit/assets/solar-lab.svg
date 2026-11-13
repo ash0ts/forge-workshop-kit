@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 450" role="img" aria-labelledby="lab-title lab-desc">
+<title id="lab-title">Solar Forecasting Lab</title>
+<desc id="lab-desc">Original pixel illustration of a computational research lab. Archival solar images, a forecast plot, a research notebook and a compute rack surround a researcher. The screens are illustrative, not experiment results.</desc>
+<defs><pattern id="tiles" width="30" height="30" patternUnits="userSpaceOnUse"><rect width="30" height="30" fill="#e7e2d2"/><path d="M30 0H0V30" fill="none" stroke="#d3ccba"/></pattern></defs>
+<g shape-rendering="crispEdges" stroke-linejoin="miter">
+<path d="M22 116H658V425H22Z" fill="url(#tiles)" stroke="#10343b" stroke-width="8"/>
+<path d="M22 116V25H658V116Z" fill="#becdbf" stroke="#10343b" stroke-width="8"/>
+<rect x="49" y="47" width="360" height="44" fill="#10343b"/>
+<text x="229" y="75" text-anchor="middle" fill="#fff4d2" font-family="monospace" font-size="20" letter-spacing="1">SOLAR FORECASTING LAB</text>
+<!-- Observatory window: the instrument view is context, not live data. -->
+<rect x="470" y="46" width="156" height="66" fill="#193d4d" stroke="#10343b" stroke-width="6"/>
+<path d="M479 102H616V109H479Z" fill="#507769"/>
+<rect x="486" y="61" width="4" height="4" fill="#fff4d2"/><rect x="611" y="56" width="4" height="4" fill="#fff4d2"/><rect x="580" y="78" width="4" height="4" fill="#fff4d2"/>
+<path d="M522 89H529V80H537V73H561V80H569V89H577V102H522Z" fill="#d6ded2"/><path d="M547 73V101" stroke="#6b8d84" stroke-width="5"/>
+<!-- Solar archive display. -->
+<rect x="55" y="138" width="226" height="159" fill="#10343b"/>
+<rect x="65" y="148" width="206" height="139" fill="#1d303b"/>
+<rect x="73" y="155" width="67" height="16" fill="#3c625e"/><text x="106" y="167" text-anchor="middle" fill="#dfead7" font-family="monospace" font-size="10">ARCHIVE</text>
+<path d="M138 178H190V185H207V199H217V244H207V258H190V267H138V258H121V244H112V199H121V185H138Z" fill="#cc7041"/>
+<path d="M143 184H185V191H200V204H208V238H200V251H185V258H143V251H128V238H121V204H128V191H143Z" fill="#edb44f"/>
+<path d="M150 190H169V199H151V214H137V230H129V208H142V199H150ZM177 201H196V214H188V227H175V243H160V251H145V241H157V229H171V215H177Z" fill="#ffdf81"/>
+<path d="M151 214H162V224H151ZM183 242H192V250H183Z" fill="#c76a3e"/>
+<rect x="143" y="297" width="49" height="10" fill="#10343b"/><rect x="127" y="307" width="81" height="8" fill="#10343b"/>
+<!-- Forecast workstation. -->
+<rect x="310" y="153" width="192" height="123" fill="#10343b"/>
+<rect x="320" y="163" width="172" height="103" fill="#eef1df"/>
+<path d="M334 181V248H478M334 214H478" fill="none" stroke="#b1c3b2" stroke-width="2"/>
+<path d="M337 231H354V221H369V227H384V192H399V208H414V215H429V201H446V220H475" fill="none" stroke="#16786b" stroke-width="5"/>
+<path d="M337 238H354V229H369V233H384V208H399V218H414V223H429V214H446V227H475" fill="none" stroke="#c77a37" stroke-width="4"/>
+<text x="405" y="178" text-anchor="middle" fill="#10343b" font-family="monospace" font-size="10">OBSERVED / FORECAST</text>
+<rect x="391" y="276" width="28" height="15" fill="#10343b"/><rect x="371" y="291" width="68" height="8" fill="#10343b"/>
+<!-- Bench, keyboard and the research notebook. -->
+<rect x="48" y="315" width="472" height="25" fill="#a98961"/><rect x="58" y="340" width="15" height="72" fill="#756247"/><rect x="496" y="340" width="15" height="72" fill="#756247"/>
+<rect x="339" y="302" width="124" height="10" fill="#668b7f"/><path d="M348 306H455" stroke="#d8e2cc" stroke-width="2" stroke-dasharray="5 4"/>
+<path d="M226 280H269V312H222V284H226ZM271 280H314V284H318V312H271Z" fill="#fff7db" stroke="#9e9b7c" stroke-width="3"/>
+<path d="M236 289H259M236 298H253M281 289H306M281 298H302" stroke="#668b7f" stroke-width="3"/>
+<!-- Researcher at the workstation. -->
+<rect x="306" y="340" width="49" height="48" fill="#dca67d"/><rect x="301" y="332" width="57" height="18" fill="#273e42"/><rect x="301" y="349" width="12" height="23" fill="#273e42"/><rect x="341" y="358" width="6" height="6" fill="#273e42"/>
+<rect x="295" y="388" width="70" height="30" fill="#478b83"/><rect x="307" y="397" width="10" height="13" fill="#fff1c8"/>
+<!-- Local compute rack, not a remote-service promise. -->
+<rect x="552" y="203" width="74" height="184" fill="#10343b"/>
+<g fill="#587c76"><rect x="559" y="213" width="60" height="35"/><rect x="559" y="258" width="60" height="35"/><rect x="559" y="303" width="60" height="35"/><rect x="559" y="348" width="60" height="28"/></g>
+<g fill="#efc568"><rect x="566" y="222" width="7" height="7"/><rect x="566" y="267" width="7" height="7"/><rect x="566" y="312" width="7" height="7"/></g>
+<path d="M582 224H609M582 233H609M582 269H609M582 278H609M582 314H609M582 323H609M566 359H609" stroke="#193d40" stroke-width="3"/>
+</g></svg>

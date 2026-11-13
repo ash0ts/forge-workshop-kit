@@ -1,6 +1,6 @@
 # Workshop decks
 
-The Solar companion is in `decks/solar/`. It follows the Pending, Inc. deck’s typography, colors, short fictional opening, progressive technical diagrams, and exercise pages with exact notebook actions.
+The Solar companion is in `decks/solar/`. It keeps the original deck’s typography, colors, progressive diagrams and exact exercise instructions, with a computational research lab as its setting. Pending, Inc. keeps its office setting.
 
 The notebook is the work surface. Keep the current exercise slide on screen while participants edit code and inspect their own evidence. Worked answers follow the main deck and link back to the exercise. Recorded results are labeled separately from participant work.
 

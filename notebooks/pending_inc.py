@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
-# dependencies = ["forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.2.0/forge_workshop_kit-0.2.0-py3-none-any.whl", "torch==2.15.0"]
+# dependencies = ["forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.2.1/forge_workshop_kit-0.2.1-py3-none-any.whl", "torch==2.15.0"]
 # [tool.uv.sources]
 # torch = [{ index = "pytorch-cpu", marker = "sys_platform != 'darwin'" }]
 # [[tool.uv.index]]
@@ -30,7 +30,7 @@ def _():
     from forge_workshop_kit.publication import publish_comparison, publish_report
     get_pending,set_pending=mo.state({})
     get_display,set_display=mo.state({})
-    get_step,set_step=mo.state("setup")
+    get_step,set_step=mo.state("setup",allow_self_loops=True)
     return (CASES, Harness, WorkshopSession, asdict, copy, editor_decision, event, export_trace, get_display, get_pending, get_step, harness_diff, json, judge_explanation, mo, os, publish_comparison, publish_report, reflect_execution, run_employee, set_display, set_pending, set_step, teaching, time, ui,)
 
 

@@ -10,7 +10,7 @@
 .slidev-layout code,.slidev-layout pre{font-family:'IBM Plex Mono','SFMono-Regular',monospace}.slidev-layout :not(pre)>code{font-size:.86em;background:#e5e8dd;padding:2px 6px;border-radius:3px}
 .slidev-layout pre{font-size:19px!important;line-height:1.6!important;padding:19px!important;border-radius:8px!important;background:#eaece3!important;box-shadow:none!important}.slidev-layout .shiki code{font-size:19px!important;line-height:1.6!important}
 .slidev-layout ul{padding-left:25px}.slidev-layout li{padding:6px 0}
-.slidev-layout.cover{background:#10343b;color:#f7f0dc}.cover h1{color:#f7f0dc;font-size:72px!important;line-height:1.02!important;letter-spacing:-2px;max-width:560px}.cover .sub{font-size:27px;color:#bbd4cb;max-width:480px}.cover .office-scene{width:600px;position:absolute;right:35px;top:167px;transform:rotate(-2deg)}
+.slidev-layout.cover{background:#10343b;color:#f7f0dc}.cover h1{color:#f7f0dc;font-size:72px!important;line-height:1.02!important;letter-spacing:-2px;max-width:560px}.cover .sub{font-size:27px;color:#bbd4cb;max-width:480px}.cover .lab-scene{width:600px;position:absolute;right:35px;top:167px;transform:rotate(-2deg)}
 .kicker,.smallcaps{font:500 14px 'IBM Plex Mono',monospace;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}.cover .kicker{color:#f1ca70}.big{font-size:37px;line-height:1.3;max-width:900px}.aside{font-size:20px;color:var(--muted)}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:start}.two-col.wide-left{grid-template-columns:1.25fr .75fr}.hero-number{font-size:112px;line-height:1;color:var(--teal);font-weight:500;letter-spacing:-5px}.bottom-note{position:absolute;bottom:61px;left:66px;right:66px;font-size:19px;color:var(--muted)}
 .forge-callout{position:absolute;bottom:53px;left:66px;right:66px;display:flex;gap:14px;align-items:center;background:#e4eadd;border-left:4px solid var(--teal);padding:13px 18px;font-size:19px}.forge-mark{font-size:28px}.forge-callout div{display:flex;flex-direction:column;gap:3px}.forge-callout strong{font-size:19px}.forge-callout span{font-size:17px;color:#415b53}.forge-callout a{margin-left:auto;white-space:nowrap;font-size:17px}
@@ -69,11 +69,11 @@
 .comparison-capture svg{max-height:330px}
 @media print{.answer-nav button{display:none}}
 
-/* Opening: one office scene, its first request, then the workshop. */
+/* Opening: the computational lab, its research question, then the workshop. */
 .arrival-scene{display:grid;grid-template-columns:1.15fr 1fr;gap:44px;align-items:start}
 .scene-prose p{font-size:27px;line-height:1.45;margin:14px 0 22px}
 .scene-prose .spoken{font-size:33px;line-height:1.3;color:var(--teal);font-weight:500;margin:22px 0}
-.scene-props .office-scene{width:100%;height:280px}
+.scene-props .lab-scene{width:100%;height:280px}
 .handbook-page{background:#fff9e8;border-left:5px solid var(--gold);padding:20px 26px;margin:2px 15px 0;box-shadow:5px 5px 0 #dbd6c5}
 .prop-label,.speaker-label{font:14px 'IBM Plex Mono',monospace;letter-spacing:1px;color:var(--muted)}
 .handbook-page p{font-size:27px;line-height:1.3;margin:12px 0 0}
@@ -145,3 +145,5 @@
 .model-crop{width:960px;height:455px}
 .model-crop img{width:1280px;transform:translate(-181px,-182px)}
 .model-crop img{position:static;left:auto;top:auto}
+
+.measured-grid{display:grid;grid-template-columns:400px 1fr;gap:50px;align-items:start;margin:35px 0 25px}.measured-gain{font-size:90px;line-height:1;color:var(--teal);letter-spacing:-3px}.measured-grid p{font-size:28px;line-height:1.3}.measured-grid .aside{font-size:22px;margin-top:28px}.measured-grid td{padding:22px 16px}.cover .lab-scene{transform:none;top:176px;width:595px}

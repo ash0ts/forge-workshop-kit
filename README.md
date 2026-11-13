@@ -4,6 +4,8 @@ Copy a notebook into your own Forge project. Write code, run experiments, inspec
 
 There is no workshop gateway, attendee token, or service to deploy. The same notebook runs on a laptop. Hosted notebooks use Forge's existing authentication and compute; inference and compute are billed to the participant's account.
 
+Pending stays in the office: billing, account access, and an agent that revises its procedures. Solar takes place in a computational research lab: real satellite observations, trained forecasting models, and an agent that writes and tests research code.
+
 ## Choose a notebook
 
 | Notebook | What you build |
@@ -13,9 +15,9 @@ There is no workshop gateway, attendee token, or service to deploy. The same not
 | [Starter · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzI=/view) | A small starting point for another workshop. |
 | [Facilitator · open monitor](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzM=/view) | Read checkpoint progress, help requests, failed runs, and evidence links from public projects. |
 
-Sign in to Forge to copy a template. [Source notebooks](notebooks) and the [downloadable kit](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.2.0) are public. This is a technical preview; [remaining release checks](docs/release-checks.md) include an external-attendee and human rehearsal.
+Sign in to Forge to copy a template. [Source notebooks](notebooks) and the [downloadable kit](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.2.1) are public. This is a technical preview; [remaining release checks](docs/release-checks.md) include an external-attendee and human rehearsal.
 
-The **Solar companion deck** follows the notebook exercises: [browser deck](https://ash0ts.github.io/forge-workshop-kit/solar/), [PDF](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.2.0/solar-autoresearch.pdf), and [editable Slidev source](decks/solar). [Presenter notes and the current Pending deck guide](docs/deck-guide.md) explain where to pause for code and investigation.
+The **Solar companion deck** follows the notebook exercises: [browser deck](https://ash0ts.github.io/forge-workshop-kit/solar/), [PDF](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.2.1/solar-autoresearch.pdf), and [editable Slidev source](decks/solar). [Presenter notes and the current Pending deck guide](docs/deck-guide.md) explain where to pause for code and investigation.
 
 ## Hosted setup
 
@@ -71,7 +73,9 @@ Identity, receipts, publication and progress belong in the package. The experime
 
 ## Recorded teaching example
 
-The revised notebooks were run in a browser against real data and services. On the two held-out image days, error was 0.125762 for persistence, 0.122442 for the manual residual model, and 0.110011 for the agent-selected model. The researcher proposed a zero-initialized residual head, then added a masked absolute-error training loss. Each adopted version had its own test. These are one-seed teaching results, not a solar forecasting benchmark.
+Solar uses archived GOES-15 X-ray measurements and NASA SDO/AIA images, prepared as small CPU exercises. Pending uses fictional accounts and payments in a simulator with realistic failure cases, including a write that succeeds before its response times out. [Data and evidence review](docs/solar-evidence.md).
+
+The revised notebooks were run in a browser against real services. On the two held-out image days, error was 0.125762 for persistence, 0.122442 for the manual residual model, and 0.110011 for the agent-selected model. The researcher proposed a zero-initialized residual head, then added a masked absolute-error training loss. The final agent-selected version reduced image error by 10.2% relative to the manual model under the same training budget. Each adopted version had its own test. The comparison covers 199 overlapping windows on two reserved days with one seed. New learner runs measure their own outcome.
 
 The short GOES training budget produced a poor forecast, and persistence won. Pending reached the correct account state in all 12 final executions; the editor retained the manual harness. Both outcomes remain visible. Recorded results are labeled and cannot be attributed to a learner's unexecuted edit.
 

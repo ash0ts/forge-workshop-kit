@@ -1,6 +1,6 @@
 # Build a research loop, then give it an agent
 
-A four-hour Slidev companion to the Solar Autoresearch notebook. The visual style and incremental teaching sequence follow the Pending, Inc. Harness² workshop. This deck teaches the participant-owned Forge Workshop Kit setup.
+A four-hour Slidev companion to the Solar Autoresearch notebook, set in the Solar Forecasting Lab. The visual style and incremental teaching sequence follow the Pending, Inc. Harness² workshop. This deck teaches the participant-owned Forge Workshop Kit setup.
 
 Open the [Solar notebook template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view), choose **Copy to project**, and work in your own project. No workshop gateway or host token is involved.
 
@@ -13,7 +13,7 @@ npm run dev
 
 Open the URL printed in the terminal. The presenter view is `/presenter/1`. Node.js 22.22 or newer is required. Fonts and images are bundled. Slides make no training or model requests.
 
-The deck has 70 main frames and 20 optional worked-answer, recorded-evidence, and reference frames. Many main frames reveal one part of the same diagram. Exercises occupy most of the four-hour schedule.
+The deck has 73 main frames and 17 optional worked-answer, recorded-evidence, and reference frames. Many main frames reveal one part of the same diagram. Exercises occupy most of the four-hour schedule.
 
 ## Portable deck and PDF
 
@@ -28,9 +28,9 @@ The browser package is `dist/`. Run `python3 dist/serve.py` on macOS/Linux or `p
 
 The storyboard is `scripts/build-storyboard.py`. Run `python3 scripts/build-storyboard.py` to regenerate `slides.md`, the slide map, and presenter notes. Edit diagram components in `components/` and the shared visual rules in `style.css`.
 
-Speaker notes distinguish actual observations, explanatory diagrams, and fictional dialogue. The opening is an original fictional scene at Pending, Inc. Recorded results come from one complete November 13 rehearsal of the revised notebook. Learner changes must produce their own results.
+Speaker notes distinguish actual observations, explanatory diagrams, and fictional dialogue. The opening is an original scene in a computational research lab. The pixel observatory artwork is illustrative; product screenshots and forecasts are recorded evidence. Recorded results come from one complete November 13 rehearsal of the revised notebook. Learner changes must produce their own results.
 
-The old Harness² deck remains unchanged. Its expired two-token setup is historical and must not be used for this workshop.
+Pending, Inc. keeps its office setting. This deck uses the same visual and teaching conventions for a separate research-lab workshop.
 
 ## Evidence
 

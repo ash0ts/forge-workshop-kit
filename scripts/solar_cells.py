@@ -24,10 +24,10 @@ from forge_workshop_kit.traces import export_trace, event, stamp
 get_lab, set_lab = mo.state({})
 get_feedback, set_feedback = mo.state({})
 get_tracing_check, set_tracing_check = mo.state({})
-get_step, set_step = mo.state("setup")
+get_step, set_step = mo.state("setup", allow_self_loops=True)
 ''', True)
 add('''
-mo.Html(ui.heading("Build a research loop, then give it an agent", "Pending, Inc. has requested a solar forecast. Management would also like to know which experiment produced it. Build the forecast, preserve the evidence, then let an agent propose changes to your research code."))
+mo.Html(ui.heading("Build a research loop, then give it an agent", "Build forecasts from real solar observations. Record the data, code, settings, and predictions so someone else can reproduce the result. Then let a research agent propose code changes and test them against the same validation data.", theme="lab"))
 ''', True)
 add('''
 def go_to(step):
@@ -49,7 +49,7 @@ def checked(name, action):
 ''', True)
 add('''
 _s = get_lab().get("session")
-solar_navigation = ui.navigation(mo, teaching.STEPS, get_step(), go_to, completed=teaching.completed_steps(_s) if _s else ())
+solar_navigation = ui.navigation(mo, teaching.STEPS, get_step(), go_to, completed=teaching.completed_steps(_s) if _s else (), label="Your research loop")
 mo.vstack([solar_navigation, mo.Html(ui.context(_s)) if _s else mo.md("**Your notebook, your project.** Start with the access check. Opening this notebook does not train models or call inference.")])
 ''', True)
 add('''
@@ -141,7 +141,7 @@ mo.stop(get_step() != "data")
 _s = get_lab().get("session")
 load_data = mo.ui.run_button(label="Load the solar dataset", disabled=not bool(_s))
 solar_prerequisite_3 = ui.prerequisite(mo, "Connect to your project first.", "setup", go_to)
-mo.vstack([mo.Html(ui.step("2. Inspect the observations", "Load the pinned GOES-15 measurements and AIA 171 Å images. Read one SunPy FITS record and the date partitions before building a model.", "Train: February 1–10, 2014. Validation: 11–12. Final evaluation: 13–14. Gaps remain gaps; the future is not a feature.")), load_data, solar_prerequisite_3 if not _s else mo.md("The combined teaching data is about 26 MB. Loading it trains nothing."), mo.accordion({"What is reserved?": mo.md("We construct windows inside date partitions, reject gaps, and fit normalization only on training dates. February 8 is absent from the GOES source archive. The researcher sees training and validation evidence. Final dates are used only after versions are frozen."), "Inspect the acquisition code": mo.md("[Source, quality checks and preprocessing](https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_solar.py)")})])
+mo.vstack([mo.Html(ui.step("2. Inspect the observations", "Load the pinned GOES-15 measurements and AIA 171 Å images. Read one SunPy FITS record and the date partitions before building a model.", "Train: February 1–10, 2014. Validation: 11–12. Final evaluation: 13–14. Gaps remain gaps; the future is not a feature.")), mo.md("**Real observations, two prediction tasks.** GOES-15 measures solar X-ray flux in W/m². Use its previous 60 one-minute observations to predict log10 XRS-B flux 30 minutes ahead. AIA 171 Å images provide the separate image task: predict the solar disk one hour ahead. These are archived observations from February 2014, not simulated data."), mo.md("[SunPy GOES retrieval](https://docs.sunpy.org/en/stable/generated/gallery/time_series/goes_xrs_example.html) · [AIA archive and calibration](https://jsoc1.stanford.edu/data/aia/synoptic/README.html) · [Our acquisition code](https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_solar.py)"), load_data, solar_prerequisite_3 if not _s else mo.md("The combined teaching data is about 26 MB. Loading it trains nothing."), mo.accordion({"What is reserved?": mo.md("We construct windows inside date partitions, reject gaps, and fit normalization only on training dates. February 8 is absent from the GOES source archive. The researcher sees training and validation evidence. Final dates are used only after versions are frozen."), "Inspect the acquisition code": mo.md("[Source, quality checks and preprocessing](https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_solar.py)")})])
 ''', True)
 add('''
 mo.stop(not load_data.value)
@@ -317,7 +317,7 @@ check_images = mo.ui.run_button(label="Check my image code")
 _locked = teaching.saved(_s, "images/round-1/propose") is not None
 run_images = mo.ui.run_button(label="Compare convolutional and residual predictors", disabled=not bool(get_lab().get("images")) or _locked)
 solar_prerequisite_12 = ui.prerequisite(mo, "Load the image arrays before training.", "data", go_to)
-mo.vstack([mo.Html(ui.step("5. Predict the image, or predict its correction", "Complete ImagePredictor.forward and the disk-masked image metric. The two input channels are the image from an hour ago and the current image.", "A constant +1 valid-pixel error scores 1; an off-disk error scores 0. Both architectures return one future image.")), image_editor, image_metric_editor, check_images, mo.accordion({"Hint": mo.md("For the residual architecture, add x[:, 1:2], the current image, to the network output. Average the metric over valid pixels per image, then over images."), "Worked answers": mo.md("```python\\ndef forward(self, x):\\n    prediction = self.net(x)\\n    return prediction + x[:, 1:2] if architecture == 'residual' else prediction\\n\\n" + teaching.IMAGE_METRIC_SOLUTION + "\\n```")}), run_images, mo.md("The manual parent is fixed once the first research proposal exists. Your draft remains editable; it will not replace that parent.") if _locked else solar_prerequisite_12 if not get_lab().get("images") else mo.md("Image and measurement drafts are independent. Changes here do not overwrite the earlier model.")])
+mo.vstack([mo.Html(ui.step("5. Predict the image, or predict its correction", "Complete ImagePredictor.forward and the disk-masked image metric. The two input channels are the image from an hour ago and the current image.", "A constant +1 valid-pixel error scores 1; an off-disk error scores 0. Both architectures return one future image.")), mo.md("**What these images represent.** AIA observes the Sun in extreme ultraviolet; this dataset uses its 171 Å channel. We sample the public calibrated FITS archive every 12 minutes, divide by exposure time, and reduce images to 64×64. The model sees the images at −60 minutes and now, and predicts +60 minutes. Error is measured on the solar disk in normalized log1p intensity, with normalization fitted on training dates only."), mo.md("[Inspect the source archive](https://jsoc1.stanford.edu/data/aia/synoptic/README.html) · [Inspect the preprocessing](https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_solar.py)"), image_editor, image_metric_editor, check_images, mo.accordion({"Hint": mo.md("For the residual architecture, add x[:, 1:2], the current image, to the network output. Average the metric over valid pixels per image, then over images."), "Worked answers": mo.md("```python\\ndef forward(self, x):\\n    prediction = self.net(x)\\n    return prediction + x[:, 1:2] if architecture == 'residual' else prediction\\n\\n" + teaching.IMAGE_METRIC_SOLUTION + "\\n```")}), run_images, mo.md("The manual parent is fixed once the first research proposal exists. Your draft remains editable; it will not replace that parent.") if _locked else solar_prerequisite_12 if not get_lab().get("images") else mo.md("Image and measurement drafts are independent. Changes here do not overwrite the earlier model.")])
 ''', True)
 add('''
 mo.stop(not check_images.value)
@@ -344,6 +344,22 @@ _check = get_feedback().get("image-check", {})
 _previews = [mo.image(str(_s.file("outputs/" + row["id"] + "/predictions.png"))) for row in _rows if _s.file("outputs/" + row["id"] + "/predictions.png").exists()]
 solar_next_step_13 = ui.next_step(mo, "Next: let the researcher propose code changes", "research", go_to)
 mo.vstack([mo.md(teaching.draft_status(_s, "solar/image", image_editor.value, stage_prefix="images/manual-")) if _s else mo.md(""), mo.Html(ui.result("Local image checks", _check, status=_check.get("status", "not checked"))) if _check else mo.md("**Image validation results.** Saved runs are restored below. Check your code again before running an edited version."), mo.ui.table(teaching.metric_rows({row["config"]["architecture"]: row["result"]["metrics"] for row in _rows}), selection=None), *_previews, ui.evidence(mo, _s, stage_ids=[row["id"] for row in _rows], question="Open the weights artifact and its training trace. Inspect a prediction's error image before calling either model better.") if _s else mo.md(""), solar_next_step_13])
+''', True)
+add('''
+mo.stop(get_step() not in ("images", "research"))
+mo.vstack([
+    mo.callout(mo.vstack([
+        mo.md("**Recorded example · a completed rehearsal, separate from your results.**"),
+        mo.md("| Frozen image model | Mean error |\\n|---|---:|\\n| Persistence | 0.12576 |\\n| Manual model | 0.12244 |\\n| Agent-edited model | 0.11001 |"),
+        mo.md("**10.15% lower error than the manual model.** The selected edits zero-initialized the residual output layer and changed training loss to masked L1."),
+        mo.md("One seed; 199 overlapping windows on February 13–14, 2014. The GOES measurement model performed worse than persistence. Your results appear in your own comparison.")
+    ]), kind="info"),
+    mo.accordion({"Open the recorded evidence": mo.Html(ui.links({
+        "Recorded result and limitations": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==",
+        "Actual diffs and execution records": "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/ux-v020-solar.json",
+        "Selected code and weights": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f5e5d198bc9479f78d9a4b1c8c8979e3/v0",
+    }))})
+])
 ''', True)
 add('''
 def next_research_action(session):

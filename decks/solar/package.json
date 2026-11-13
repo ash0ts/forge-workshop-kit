@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "slidev --port 3058",
     "build": "slidev build",
-    "export": "slidev export --output solar-autoresearch.pdf --with-clicks",
+    "export": "slidev export --output solar-autoresearch.pdf --with-clicks --wait 2000",
     "postbuild": "node scripts/package-browser.mjs",
     "build:pages": "node scripts/build-pages.mjs"
   },

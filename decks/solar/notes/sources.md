@@ -2,9 +2,9 @@
 
 ## Design reference
 
-The November 12 Pending, Inc. Slidev deck supplies the visual direction and teaching pattern: cream and deep teal, IBM Plex Sans/Mono, progressive diagrams, direct exercise instructions, optional worked answers, and brief fictional office narration. The historical deck and releases remain unchanged.
+The November 12 Pending, Inc. Slidev deck supplies the visual direction and teaching pattern: cream and deep teal, IBM Plex Sans/Mono, progressive diagrams, direct exercise instructions, optional worked answers, and brief contextual narration. The historical deck and releases remain unchanged.
 
-The new opening is original fiction about Pending's research team. Dialogue is not a model transcript or a reported incident. Research diagrams explain implemented operations; they do not claim every candidate improves quality.
+The opening is an original computational research-lab scene. The canonical pixel artwork is `src/forge_workshop_kit/assets/solar-lab.svg`; the deck bundles an identical copy. Its solar monitor, curves, notebook and compute rack are illustrations, not native product screens or measured results. Dialogue is not a model transcript or a reported incident. Research diagrams explain implemented operations; they do not claim every candidate improves quality.
 
 ## Technical sources
 
@@ -31,11 +31,13 @@ The data comes from NOAA GOES-15 measurements and NASA/SDO AIA 171 Å observatio
 
 GOES error is MAE in log10 XRS-B W/m². Inputs are normalized; targets retain log-flux units. Image error uses the fixed disk mask on training-normalized log1p intensity. These scores answer different questions and are not averaged together.
 
+The measured image improvement, matching forecasts and contrasting GOES failure appear in the main teaching sequence. The 10.15% decrease is calculated from the saved manual and agent masked errors, not a new model execution.
+
 ## Native and notebook captures
 
 All product screens are real browser captures. Slide crops change presentation only; linked full-size captures retain their context.
 
-- `ux-v020-solar-setup.png`: the revised notebook's connection and instrumentation exercise. The rehearsal project is visible; attendees use their own project.
+- `ux-v021-solar-setup.png`: the current Solar Forecasting Lab notebook's Connect screen with the saved rehearsal workspace. The actual rehearsal project and allowance are visible; attendees use their own project. Other v020 screens below preserve the original measured execution evidence.
 - `ux-v020-solar-instrumentation.png`: the edited `instrument_tool` function and passing free check. The check itself exports nothing. The subsequent trace has verified stored span `3836f2a676d91bdf` in conversation `19f7b8c14211a63aa6a7e22bd14375bf`.
 - `ux-v020-solar-models.png`: the settled validation model comparison: matching convolutional and residual forecasts, metrics, and actual Agent Lens/run/artifact links.
 - `ux-v020-solar-diff.png`: first-round Candidate A changes squared training error to absolute error. The actual diff and review control are visible. The rationale is attributed to the agent; the measured outcome comes from the later probe.

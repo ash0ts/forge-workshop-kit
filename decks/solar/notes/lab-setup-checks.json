@@ -1,0 +1,19 @@
+{
+  "slide": 11,
+  "screenshot": "ux-v021-solar-setup.png",
+  "source": "../../evidence/ux-v021-solar-lab.png",
+  "recorded_results": "restored previous rehearsal; no training or model requests",
+  "images": [
+    {
+      "src": "http://127.0.0.1:3058/images/ux-v021-solar-setup.png",
+      "loaded": true
+    },
+    {
+      "src": "http://127.0.0.1:3058/images/ux-v020-solar-instrumentation.png",
+      "loaded": true
+    }
+  ],
+  "errors": [],
+  "pdf_render_settle_ms": 2000,
+  "pdf_all_90_pages_rendered": true
+}

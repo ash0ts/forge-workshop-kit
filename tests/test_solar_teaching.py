@@ -173,3 +173,30 @@ def test_navigation_widgets_are_registered_as_global_ui_elements():
             assert not assignment.targets[0].id.startswith('_')
             count += 1
     assert count >= 15
+
+
+def test_recorded_example_matches_evidence_and_cannot_execute_work():
+    import ast
+    import json
+    import sys
+    root = Path(__file__).parents[1]
+    sys.path.insert(0, str(root / 'scripts'))
+    from solar_cells import cells
+    code = next(cell.code for cell in cells if '**Recorded example' in cell.code)
+    evidence = json.loads((root / 'evidence/ux-v020-solar.json').read_text())
+    scores = evidence['final_images']
+    for label in ('manual', 'agent', 'persistence'):
+        assert f"{scores[label]['error']:.5f}" in code
+    relative = 100 * (1 - scores['agent']['error'] / scores['manual']['error'])
+    assert f'{relative:.2f}% lower' in code
+    assert '199 overlapping windows' in code and 'One seed' in code
+    assert 'separate from your results' in code
+    assert 'GOES measurement model performed worse' in code
+    assert evidence['report'] in code
+    calls = [node.func for node in ast.walk(ast.parse(code)) if isinstance(node, ast.Call)]
+    assert all(isinstance(fn, ast.Attribute) and isinstance(fn.value, ast.Name)
+               and fn.value.id in ('mo', 'ui') or isinstance(fn, ast.Name)
+               and fn.id == 'get_step' for fn in calls)
+    authored = '\n'.join(cell.code for cell in cells)
+    assert 'theme="lab"' in authored
+    assert 'Pending, Inc.' not in authored and 'Management' not in authored

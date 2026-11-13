@@ -2,7 +2,7 @@
 theme: default
 title: Build a research loop, then give it an agent
 author: Anish Shah
-info: Solar Autoresearch at Pending, Inc.
+info: Solar Forecasting Lab
 class: cover
 layout: default
 aspectRatio: 16/9
@@ -26,11 +26,11 @@ exportFilename: solar-autoresearch
 
 # Build a research loop.<br>Then give it an agent.
 
-<div class="sub">A four-hour research shift at Pending, Inc.</div><OfficeScene mode="employee" /><div class="bottom-note">Solar forecasting, experiment tracking, and agents that edit research code.</div>
+<div class="sub">A four-hour experiment in the Solar Forecasting Lab.</div><LabScene /><div class="bottom-note">Solar forecasting, experiment tracking, and agents that edit research code.</div>
 
 
 <!--
-Opening, 30 seconds. This is the research team at the fictional Pending, Inc. The notebook contains real public solar observations and actual training code. We will first build the experiment, then give a fixed-model agent a limited role in changing it.
+Opening, 30 seconds. This is a computational research lab studying solar observations. The pixel room is an illustration, not a live instrument feed. The notebook contains real public solar observations and actual training code. We will first build the experiment, then give a fixed-model agent a limited role in changing it.
 Source: forge-workshop-kit notebook and recorded evidence; template copy/auth details must be checked before class.
 -->
 
@@ -66,13 +66,13 @@ Source: forge-workshop-kit notebook and recorded evidence; template copy/auth de
 
 <div class="kicker">0:03</div>
 
-# Management has another request.
+# Can an agent improve the research code?
 
-<div class="quote">“Once the experiment works, could an agent improve it?”<small>THE SAME FICTIONAL MANAGER</small></div><ResearchMap :level="4" />
+<div class="quote">“Once the experiment works, could an agent improve it?”<small>THE NEXT LAB QUESTION</small></div><ResearchMap :level="4" />
 
 
 <!--
-The joke is the escalation from doing research to automating pieces of research. The answer is a tested workflow, not a promise of better performance. Research-agent weights stay fixed; the small forecasting models are trained.
+Move from running a fixed experiment to testing an agent-written change. The answer is a tested workflow, not a promise of better performance. Research-agent weights stay fixed; the small forecasting models are trained.
 Source: forge-workshop-kit notebook and recorded evidence; template copy/auth details must be checked before class.
 -->
 
@@ -170,7 +170,7 @@ class: exercise
 
 <div class="kicker">0:08–0:15 · YOUR TURN</div>
 
-<a class="answer-link" href="/72">Worked answer → 72</a>
+<a class="answer-link" href="/75">Worked answer → 75</a>
 
 # Connect and find your first span
 
@@ -188,7 +188,7 @@ Source: forge-workshop-kit notebook and recorded evidence; template copy/auth de
 
 # Your work stays in your project
 
-<div class="native-columns"><a href="/images/ux-v020-solar-setup.png" target="_blank"><img src="/images/ux-v020-solar-setup.png" alt="Revised notebook showing the participant project, allowance and guided exercise navigation"></a><div><h2>Check your project.</h2><p>The example uses the rehearsal project. Your copy must name your own.</p><h2>Check your allowance.</h2><p>Inference and notebook compute are separate.</p><p class="aside"><a href="/images/ux-v020-solar-setup.png" target="_blank">Open full capture ↗</a></p></div></div><div class="bottom-note">Actual revised notebook after restoring saved work.</div>
+<div class="native-columns"><a href="/images/ux-v021-solar-setup.png" target="_blank"><img src="/images/ux-v021-solar-setup.png" alt="Revised notebook showing the participant project, allowance and guided exercise navigation"></a><div><h2>Check your project.</h2><p>The example uses the rehearsal project. Your copy must name your own.</p><h2>Check your allowance.</h2><p>Inference and notebook compute are separate.</p><p class="aside"><a href="/images/ux-v021-solar-setup.png" target="_blank">Open full capture ↗</a></p></div></div><div class="bottom-note">Actual revised notebook after restoring saved work.</div>
 
 
 <!--
@@ -335,7 +335,7 @@ class: exercise
 
 <div class="kicker">0:30–0:40 · YOUR TURN</div>
 
-<a class="answer-link" href="/73">Worked answer → 73</a>
+<a class="answer-link" href="/76">Worked answer → 76</a>
 
 # Write and test persistence
 
@@ -490,7 +490,7 @@ class: exercise
 
 <div class="kicker">0:50–1:05 · YOUR TURN</div>
 
-<a class="answer-link" href="/74">Worked answer → 74</a>
+<a class="answer-link" href="/77">Worked answer → 77</a>
 
 # Make the result reproducible
 
@@ -589,7 +589,7 @@ class: exercise
 
 <div class="kicker">1:15–1:30 · YOUR TURN</div>
 
-<a class="answer-link" href="/75">Worked answer → 75</a>
+<a class="answer-link" href="/78">Worked answer → 78</a>
 
 # Run the same search and inspect a loss curve
 
@@ -752,7 +752,7 @@ class: exercise
 
 <div class="kicker">1:55–2:15 · YOUR TURN</div>
 
-<a class="answer-link" href="/76">Worked answer → 76</a>
+<a class="answer-link" href="/79">Worked answer → 79</a>
 
 # Implement and compare the image predictors
 
@@ -770,7 +770,7 @@ Source: forge-workshop-kit notebook and recorded evidence; template copy/auth de
 
 # Now the agent can edit the program
 
-<ResearchMap :level="4" /><div class="bottom-note">Management has automated the proposal. You still review the diff.</div>
+<ResearchMap :level="4" /><div class="bottom-note">The agent can draft the hypothesis and code. You still review the diff.</div>
 
 
 <!--
@@ -854,7 +854,7 @@ class: exercise
 
 <div class="kicker">2:25–2:40 · YOUR TURN</div>
 
-<a class="answer-link" href="/78">Worked answer → 78</a>
+<a class="answer-link" href="/81">Worked answer → 81</a>
 
 # Choose what the research agent may inspect
 
@@ -972,7 +972,7 @@ class: exercise
 
 <div class="kicker">3:00–3:15 · YOUR TURN</div>
 
-<a class="answer-link" href="/79">Worked answer → 79</a>
+<a class="answer-link" href="/82">Worked answer → 82</a>
 
 # Test the composition, then repeat
 
@@ -1054,7 +1054,7 @@ class: exercise
 
 <div class="kicker">3:25–3:45 · YOUR TURN</div>
 
-<a class="answer-link" href="/80">Worked answer → 80</a>
+<a class="answer-link" href="/83">Worked answer → 83</a>
 
 # Evaluate the frozen versions
 
@@ -1068,7 +1068,49 @@ Source: forge-workshop-kit notebook and recorded evidence; template copy/auth de
 
 ---
 
-<div class="kicker">3:45</div>
+<div class="kicker">3:45 · RECORDED REHEARSAL</div>
+
+# In this rehearsal, image error fell 10.15%
+
+<div class="measured-grid"><div><div class="measured-gain">10.15%</div><p>less error than the manually selected model</p><p class="aside">Agent edits: zero-initialize the residual head, then use absolute training loss.</p></div><table class="clean-table"><tbody><tr><th>Frozen version</th><th>Masked MAE ↓</th></tr><tr><td>Persistence</td><td>0.125762</td></tr><tr><td>Manual residual model</td><td>0.122442</td></tr><tr><td>Agent-selected code</td><td>0.110011</td></tr></tbody></table></div><p class="aside">Actual AIA 171 Å observations. 199 overlapping windows; February 13–14, 2014; one seed. <a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==">Open the recorded comparison ↗</a></p><div class="bottom-note">A measured result from this rehearsal, not a promised outcome for your edits.</div>
+
+
+<!--
+Recorded November 13 rehearsal: public/recorded-study.json, images/final-comparison. Manual masked MAE 0.1224417336622075; agent 0.11001095193834161; persistence 0.12576198700564592. The 10.15% is relative error reduction versus manual, not percentage points of accuracy. Agent source contains the zero-init head from round one and absolute loss from round two. One seed, overlapping windows and two reserved dates sharply limit generalization.
+Source: forge-workshop-kit notebook and recorded evidence; template copy/auth details must be checked before class.
+-->
+
+---
+
+<div class="kicker">3:46 · RECORDED REHEARSAL</div>
+
+# Recorded: inspect the matching forecasts
+
+<a class="final-crop" href="/images/ux-v020-solar-final.png" target="_blank" aria-label="Open the complete final notebook comparison"><img src="/images/ux-v020-solar-final.png" alt="Actual notebook comparing manual and agent forecasts at the same reserved timestamp, with observed future and error images"></a><div class="image-caption">Same input and future timestamp. Manual above, agent-selected below. <a href="/images/ux-v020-solar-final.png" target="_blank">Full notebook comparison ↗</a></div>
+
+
+<!--
+Actual revised-notebook final comparison. The crop shows matching manual and agent forecast rows. The linked full screen includes the image score table and the separate GOES failure table. This is the notebook comparison, not native EvalTables. Source: evidence/ux-v020-solar-final.png; the underlying saved agent plot is public/images/solar-final.png.
+Source: forge-workshop-kit notebook and recorded evidence; template copy/auth details must be checked before class.
+-->
+
+---
+
+<div class="kicker">3:47 · RECORDED REHEARSAL</div>
+
+# Recorded: the short measurement models lost
+
+<img class="solar-photo" src="/images/goes-final.png" alt="Recorded observed flux and undertrained forecast"><div class="image-caption">Final log-flux MAE: selected model 2.469; persistence 0.193. The training budget was 60 steps.</div>
+
+
+<!--
+Fresh revised-notebook rehearsal: public/recorded-study.json, goes/final-comparison and saved predictions. Undertraining is supported by the saved learning curves; do not turn this into a claim that MLP or CNN cannot forecast these observations.
+Source: forge-workshop-kit notebook and recorded evidence; template copy/auth details must be checked before class.
+-->
+
+---
+
+<div class="kicker">3:48</div>
 
 # Quality, effort, and execution are separate
 
@@ -1082,7 +1124,7 @@ Source: forge-workshop-kit notebook and recorded evidence; template copy/auth de
 
 ---
 
-<div class="kicker">3:47</div>
+<div class="kicker">3:49</div>
 
 # Your teammate should be able to reopen the result
 
@@ -1116,7 +1158,7 @@ Source: forge-workshop-kit notebook and recorded evidence; template copy/auth de
 
 # The agent can propose the next experiment.
 
-<p class="big">You now have the part that makes the proposal testable.</p><p>Keep the data version. Save the executed source. Inspect the prediction. Measure on dates the search did not use.</p><div class="bottom-note">Management may still ask for a better number. You can now explain the one you have.</div>
+<p class="big">You now have the part that makes the proposal testable.</p><p>Keep the data version. Save the executed source. Inspect the prediction. Measure on dates the search did not use.</p><div class="bottom-note">The next result still needs a source file, a dataset version, and a test.</div>
 
 
 <!--
@@ -1389,48 +1431,6 @@ Source: forge-workshop-kit notebook and recorded evidence; template copy/auth de
 
 <!--
 Fresh revised-notebook rehearsal. Candidate B explicitly returned KEEP and its source fingerprint matched the parent. Candidate A proposed the loss change on the previously adopted source. The final composition test returned 0.11091556898305115. This small single-seed validation change should not be presented as repeatable evidence.
-Source: forge-workshop-kit notebook and recorded evidence; template copy/auth details must be checked before class.
--->
-
----
-
-<div class="kicker">RECORDED REHEARSAL</div>
-
-# Recorded image comparison
-
-<table class="clean-table"><tbody><tr><th>Frozen version</th><th>Final masked error ↓</th><th>Skill vs persistence ↑</th></tr><tr><td>Persistence</td><td>0.125762</td><td>0.0%</td></tr><tr><td>Manual residual model</td><td>0.122442</td><td>2.6%</td></tr><tr><td>Zero-init residual + absolute loss</td><td>0.110011</td><td>12.5%</td></tr></tbody></table><p class="aside">199 overlapping windows from two days. One teaching rehearsal. <a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==">Open the saved Report ↗</a></p>
-
-
-<!--
-Fresh revised-notebook rehearsal: public/recorded-study.json, images/final-comparison. Agent versus manual is approximately 10.15% relative error reduction, not percentage points of accuracy. The final source contains the zero-init head from round one and absolute loss from round two. Temporal correlation and one seed sharply limit inference.
-Source: forge-workshop-kit notebook and recorded evidence; template copy/auth details must be checked before class.
--->
-
----
-
-<div class="kicker">RECORDED REHEARSAL</div>
-
-# Recorded: inspect the matching forecasts
-
-<a class="final-crop" href="/images/ux-v020-solar-final.png" target="_blank" aria-label="Open the complete final notebook comparison"><img src="/images/ux-v020-solar-final.png" alt="Actual notebook comparing manual and agent forecasts at the same reserved timestamp, with observed future and error images"></a><div class="image-caption">Same input and future timestamp. Manual above, agent-selected below. <a href="/images/ux-v020-solar-final.png" target="_blank">Full notebook comparison ↗</a></div>
-
-
-<!--
-Actual revised-notebook final comparison. The crop shows matching manual and agent forecast rows. The linked full screen includes the image score table and the separate GOES failure table. This is the notebook comparison, not native EvalTables. Source: evidence/ux-v020-solar-final.png; the underlying saved agent plot is public/images/solar-final.png.
-Source: forge-workshop-kit notebook and recorded evidence; template copy/auth details must be checked before class.
--->
-
----
-
-<div class="kicker">RECORDED REHEARSAL</div>
-
-# Recorded: the short measurement models lost
-
-<img class="solar-photo" src="/images/goes-final.png" alt="Recorded observed flux and undertrained forecast"><div class="image-caption">Final log-flux MAE: selected model 2.469; persistence 0.193. The training budget was 60 steps.</div>
-
-
-<!--
-Fresh revised-notebook rehearsal: public/recorded-study.json, goes/final-comparison and saved predictions. Undertraining is supported by the saved learning curves; do not turn this into a claim that MLP or CNN cannot forecast these observations.
 Source: forge-workshop-kit notebook and recorded evidence; template copy/auth details must be checked before class.
 -->
 

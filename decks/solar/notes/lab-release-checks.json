@@ -1,0 +1,13 @@
+{
+  "standalone_storyboard_without_parent_checkout": "passed",
+  "canonical_svg_matches_bundle": true,
+  "main_frames": 73,
+  "total_frames": 90,
+  "main_evidence_frames": [
+    67,
+    68,
+    69
+  ],
+  "training_runs": 0,
+  "provider_calls": 0
+}

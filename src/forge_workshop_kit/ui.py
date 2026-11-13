@@ -16,6 +16,7 @@ STYLE = '''<style>
 .workshop-head,.workshop-step,.workshop-result,.workshop-context,.workshop-branch{color:var(--wk-ink);font-family:'IBM Plex Sans',system-ui,sans-serif;box-sizing:border-box}
 .workshop-head{padding:28px 30px;background:#163c43;color:#f6f2e7;border-radius:10px;margin:12px 0 22px;border-top:5px solid #f1ca70}
 .workshop-head h1{font-size:clamp(26px,3vw,38px);line-height:1.16;letter-spacing:-.7px;margin:10px 0}.workshop-head p{max-width:78ch;line-height:1.6;color:#d6e5da;margin-bottom:4px}
+.workshop-head[data-theme="lab"]{display:flex;align-items:center;gap:24px}.workshop-head-copy{flex:1;min-width:0}.workshop-lab-art{width:210px;height:auto;flex:none;border-radius:6px}
 .workshop-label{font:12px/1.4 'IBM Plex Mono',monospace;letter-spacing:.11em;text-transform:uppercase;color:#f1ca70}
 .workshop-step{padding:20px 0 14px;border-bottom:1px solid var(--wk-line);margin:8px 0 16px}.workshop-step h2{font-size:25px;line-height:1.25;margin:0 0 12px}.workshop-step p{max-width:85ch;line-height:1.6;margin:8px 0}
 .workshop-context{font-size:13px;display:flex;gap:12px 24px;flex-wrap:wrap;padding:12px 0;margin:0 0 12px;border-bottom:1px solid var(--wk-line);color:var(--wk-muted)}
@@ -24,7 +25,7 @@ STYLE = '''<style>
 .workshop-evidence a:focus-visible,.workshop-branch a:focus-visible,.workshop-branch summary:focus-visible{outline:3px solid #b88a28;outline-offset:3px}
 .workshop-diff{white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.65 'IBM Plex Mono',monospace;border:1px solid var(--wk-line);border-radius:6px;padding:12px;max-height:420px;overflow:auto;color:var(--wk-ink)}.workshop-diff .add{background:#237a6c20;display:block}.workshop-diff .del{background:#c17b4025;display:block}
 .workshop-branch{margin:16px 0;border:1px solid var(--wk-line);border-radius:8px;padding:18px;scroll-margin-top:20px}.workshop-branch:target{outline:3px solid #c99e39}.workshop-branch h3{font-size:19px;margin:0 0 8px}.workshop-branch p{line-height:1.55}.workshop-branch summary{cursor:pointer;font-size:15px}.workshop-branch svg{width:100%;display:block}.workshop-branch code{overflow-wrap:anywhere}.workshop-branch dl{margin:12px 0}.workshop-branch dt{font-size:12px;color:var(--wk-muted)}.workshop-branch dd{margin:0 0 10px;overflow-wrap:anywhere}
-@media(max-width:650px){.workshop-head{padding:20px}.workshop-result dl{grid-template-columns:1fr}.workshop-result dd{margin-bottom:8px}.workshop-evidence a{width:100%}}
+@media(max-width:650px){.workshop-head{padding:20px}.workshop-head[data-theme="lab"]{flex-direction:column;align-items:flex-start;gap:12px}.workshop-lab-art{width:150px}.workshop-result dl{grid-template-columns:1fr}.workshop-result dd{margin-bottom:8px}.workshop-evidence a{width:100%}}
 @media(prefers-reduced-motion:reduce){.workshop-branch{scroll-behavior:auto}}
 </style>'''
 
@@ -41,8 +42,21 @@ def _fonts():
     return '<style>' + ''.join(rules) + '</style>'
 
 
-def heading(title, description):
-    return _fonts() + STYLE + f'<header class="workshop-head"><div class="workshop-label">Pending, Inc. · Forge workshop</div><h1>{escape(title)}</h1><p>{escape(description)}</p></header>'
+def heading(title, description, *, theme='office'):
+    labels = {'neutral': 'Forge workshop', 'office': 'Pending, Inc. · Forge workshop',
+              'lab': 'Solar Forecasting Lab · Forge workshop'}
+    if theme not in labels:
+        raise ValueError('Workshop theme must be neutral, office, or lab.')
+    content = (f'<div class="workshop-label">{labels[theme]}</div>'
+               f'<h1>{escape(title)}</h1><p>{escape(description)}</p>')
+    if theme == 'lab':
+        asset = files('forge_workshop_kit').joinpath('assets', 'solar-lab.svg')
+        encoded = base64.b64encode(asset.read_bytes()).decode('ascii')
+        content = (f'<div class="workshop-head-copy">{content}</div>'
+                   f'<img class="workshop-lab-art" src="data:image/svg+xml;base64,{encoded}"'
+                   ' alt="Pixel research workstation with solar imagery, experiment plots, and a notebook"'
+                   ' width="680" height="450">')
+    return _fonts() + STYLE + f'<header class="workshop-head" data-theme="{theme}">{content}</header>'
 
 
 def step(title, task, expected):
@@ -57,19 +71,19 @@ def links(values):
     ) + '</nav>'
 
 
-def navigation(mo, steps, current, on_select, completed=()):
+def navigation(mo, steps, current, on_select, completed=(), *, label='Your workday'):
     completed = set(completed)
     buttons = {}
-    for index, (key, label) in enumerate(steps, 1):
+    for index, (key, step_label) in enumerate(steps, 1):
         marker = '✓ ' if key in completed else ''
         buttons[f'step{index}'] = mo.ui.button(
-            label=f'{marker}{index} · {label}',
+            label=f'{marker}{index} · {step_label}',
             on_click=lambda _, target=key: on_select(target),
             kind='success' if key == current else 'neutral',
             tooltip='Current step' if key == current else 'Open this step; no work will run',
         )
     # The caller binds this composite to a notebook global so callbacks stay active.
-    template = '<p><strong>Your workday</strong> · Browse any step. Run buttons execute work.</p>'
+    template = f'<p><strong>{escape(label)}</strong> · Browse any step. Run buttons execute work.</p>'
     template += '<div style="display:flex;flex-wrap:wrap;gap:8px">' + ''.join(
         '{' + name + '}' for name in buttons) + '</div>'
     return mo.Html(template).batch(**buttons)

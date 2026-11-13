@@ -21,7 +21,7 @@ from forge_workshop_kit.traces import event, export_trace
 from forge_workshop_kit.publication import publish_comparison, publish_report
 get_pending,set_pending=mo.state({})
 get_display,set_display=mo.state({})
-get_step,set_step=mo.state("setup")
+get_step,set_step=mo.state("setup",allow_self_loops=True)
 ''',True)
 add('''
 mo.Html(ui.heading("Pending, Inc.", "Build the employee's tools, trace its decisions, and test the work before you promote the procedure. Management has approved the word autonomous. Equipment is your department."))
