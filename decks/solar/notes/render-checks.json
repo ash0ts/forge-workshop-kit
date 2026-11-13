@@ -1,0 +1,13 @@
+{
+  "slides_checked": 90,
+  "issues": [],
+  "console_errors": [],
+  "branchClick": "A proposed edit to model, loss, or training code. A rationale is a hypothesis, not a measured improvement.",
+  "branchKeyboard": "A competing edit from the same parent. It receives its own source fingerprint and training execution.",
+  "runInspector": "Recorded GOES rehearsal. Both models remained worse than persistence.\n\nEXPERIMENT\tVALIDATION ERROR ↓\tACTIVE SETTINGS\ngoes/search-0 ↗\t2.877737\tmlp, width 16, learning rate 0.001\ngoes/search-2 ↗\t2.712147\tmlp, width 16, learning rate 0.003\nHide settings\nSame source, dates, seed, 60-step budget, and batch size. The active learning rate differs. Neither score tells you whether training had converged.",
+  "inspectorKeyboard": "false",
+  "answerNavigation": "http://127.0.0.1:3058/72",
+  "answerReturn": "http://127.0.0.1:3058/10",
+  "presenterNotes": true,
+  "final_asset_recheck": "notes/final-asset-checks.json"
+}

@@ -1,40 +1,39 @@
 {
   "trace": {
-    "trace_id": "ee7abdc26dd04436d6db6c3abf60518b",
-    "conversation_id": "cbbcbc9376190a65eeaafe75875e4802",
+    "trace_id": "297651fc99b5de9ab9bf981d1d5304d2",
+    "conversation_id": "9d499ef20fe751d9cce4662644018ea5",
     "verified": true,
     "expected": 2,
-    "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/cbbcbc9376190a65eeaafe75875e4802",
+    "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/9d499ef20fe751d9cce4662644018ea5",
     "span_ids": {
-      "41d0482b68eba4e4df0b0082": "9bbbeec7221c0dc7"
+      "17bed03c005165154a6a0863": "d46bcd5208dddca3"
     },
     "stored_spans": 2
   },
   "evaluation": {
     "reference": {
-      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/e2fced10a0c1cd4da6cf51e2f73e58f1",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/5763013abcf0db2c8377ef855c295570",
       "weave_status": "published",
-      "weave_error": "Error code: 400 - {'reason': \"Cannot publish 'kit-qualification-reference' as a Evaluation: that name is already used by a Dataset in this project. Object versions cannot share types, publish this object under a different name.\"}",
-      "native_status": "unavailable",
-      "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}",
       "dataset": "weave:///wandb/forge-workshop-kit/object/kit-qualification-reference-cases:Af0SBCWHn4NHbdZ0Hsjke2BrVv4XXhQrFMeSUXG0gqk",
-      "evaluation": "weave:///wandb/forge-workshop-kit/object/kit-qualification-reference-evaluation:0covo9Kvz8Wtwe9XdIDM9xwGr05ka0tgepATO2csGoE"
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/kit-qualification-reference-evaluation:3FMSK6kxsTSrWoWwQTcuBxQoF64bjY6EdcOjXecvaDM",
+      "native_status": "unavailable",
+      "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
     }
   },
   "checkpoint": {
     "publish_stages": {
       "status": "published",
       "result": {
-        "cbbcbc9376190a65eeaafe75875e4802": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/cbbcbc9376190a65eeaafe75875e4802"
+        "9d499ef20fe751d9cce4662644018ea5": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/9d499ef20fe751d9cce4662644018ea5"
       }
     },
     "publish_progress": {
       "status": "published",
-      "result": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/497974be59c2488ba17ea3ff"
+      "result": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/37e6518de4dc435bbd69ebe0"
     },
     "publish_checkpoint": {
       "status": "published",
-      "result": "wandb/forge-workshop-kit/workspace-497974be59c2488ba17ea3ff2b774d31:v1"
+      "result": "wandb/forge-workshop-kit/workspace-37e6518de4dc435bbd69ebe02fdad16d:v0"
     }
   }
 }

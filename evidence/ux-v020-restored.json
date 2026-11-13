@@ -1,0 +1,17 @@
+{
+  "restore": {
+    "status": "restored",
+    "completed": 44
+  },
+  "files_verified": 96,
+  "drafts": 16,
+  "completed_stages": 44,
+  "requests_restored": 4,
+  "new_inference_requests": 0,
+  "training_updates": 0,
+  "source_matches": true,
+  "expected_image_error": 0.11001095193834161,
+  "reproduced_image_error": 0.11001095193834161,
+  "prediction_examples": 199,
+  "scope": "Restored from a W&B checkpoint into a fresh local runtime; evaluated frozen weights without training."
+}

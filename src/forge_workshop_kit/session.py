@@ -142,6 +142,26 @@ class WorkshopSession:
     def completed(self):
         return [s for s in self.read()['stages'].values() if s['status'] == 'complete']
 
+    def save_draft(self, name, value):
+        """Save an edit locally. A later checkpoint includes it; no provider call occurs."""
+        json.dumps(value, allow_nan=False)
+        with self.transaction() as state:
+            state.setdefault('drafts', {})[name] = {
+                'value': value, 'fingerprint': digest(value), 'updated_at': time.time()}
+        return value
+
+    def get_draft(self, name, default=None):
+        return self.read().get('drafts', {}).get(name, {}).get('value', default)
+
+    def set_view(self, step):
+        """Browsing is separate from completing an exercise."""
+        with self.transaction() as state:
+            state.setdefault('view', {})['step'] = str(step)
+        return step
+
+    def get_view(self, default='setup'):
+        return self.read().get('view', {}).get('step', default)
+
     def mark_interrupted(self, stage_id, reason):
         """Explicit recovery after the operator confirms the old process has stopped."""
         if not reason.strip():

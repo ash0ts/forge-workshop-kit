@@ -1,0 +1,18 @@
+[
+  {
+    "name": "solar",
+    "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==",
+    "status": 200,
+    "title": "solar-autoresearch: 2d92533d | forge-workshop-kit – Weights & Biases",
+    "excerpt": "Forge\nWeights & Biases\n/\nwandb\n/\nProjects\n/\nforge-workshop-kit\n/\nReports\n/\nsolar-autoresearch: 2d92533d\nLog in\nSign up\nSkip to main content\nShare\nComment\nStar\nsolar-autoresearch: 2d92533d\nA participant experiment with saved code, predictions, and research-agent traces.\nAnish Shah\nLast updated: November 13, 2026\nWhat I tested\nIn this CPU rehearsal, we built and tracked two forecasting experiments, then let a fixed research agent edit the image model code. The strongest first-round change zero-initialized the residual output head: validation error fell from 0.122116 to 0.111434. Round two tested masked L1 loss on that parent against an unchanged KEEP candidate; the selected L1 composition reached 0.110916. Each selected source was reviewed and tested before adoption.\n\nOn the reserved February 13–14 image dates, disk-masked absolute error was 0.125762 for persistence, 0.122442 for the manually implemented model, and 0.110011 for the adopted agent model (199 forecast windows). Inspect the saved first prediction at 2014-02-13 02:48 UTC and its disk-error image alongside the exact zero-init/L1 source. This is one teaching rehearsal on two test days, not evidence of reliable solar forecas",
+    "signed_out": true
+  },
+  {
+    "name": "pending",
+    "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-51a0006f--VmlldzoxODMwMjcxMA==",
+    "status": 200,
+    "title": "pending-direct-teaching: 51a0006f | forge-workshop-kit – Weights & Biases",
+    "excerpt": "Forge\nWeights & Biases\n/\nwandb\n/\nProjects\n/\nforge-workshop-kit\n/\nReports\n/\npending-direct-teaching: 51a0006f\nLog in\nSign up\nSkip to main content\nShare\nComment\nStar\npending-direct-teaching: 51a0006f\nA participant experiment with saved code, predictions, and research-agent traces.\nAnish Shah\nLast updated: November 13, 2026\nWhat I tested\nAll three labels produced correct account state on all four fresh tickets: 12 of 12 executions passed. The two improvement rounds retained my manual harness, so there were two unique executable harnesses, not three. This run shows a working propose–probe–compose loop; it does not show a quality gain. The learner-written invoice tool ran in the manual two-invoices case with inv-1 and inv-2 and avoided a false duplicate refund. Onboarding traces show a committed write timing out, followed by a state read instead of another write. Eleven of twelve final explanation judgments are available and pass. One hit its output limit on both the original attempt and one explicit judge-only retry; its score remains missing, not zero, and the retry did not rerun the employee. Native EvalTables returned HTTP 500; the saved Weave evaluations and notebook comparison are",
+    "signed_out": true
+  }
+]

@@ -78,10 +78,11 @@ class Publisher:
                     json.dump(stage, stream, indent=2, allow_nan=False)
                 for file in stage['files']:
                     artifact.add_file(str(self.session.file(file)), name=Path(file).name)
-                run.log_artifact(artifact).wait()
+                logged_artifact = run.log_artifact(artifact).wait()
                 result[stage['id']] = run.url
             with self.session.transaction() as state:
                 state['stages'][stage['id']]['published'] = result[stage['id']]
+                state['stages'][stage['id']]['artifact_url'] = logged_artifact.url
         return result
 
     def publish_checkpoint(self):
@@ -138,6 +139,28 @@ class Publisher:
 def monitor(projects, workshop_id, *, api=None):
     """Only reads project runs. No writes, agents, tokens, or participant remote control."""
     import wandb
+    if workshop_id == 'solar-autoresearch':
+        from .solar_teaching import STEPS
+    elif workshop_id == 'pending-direct-teaching':
+        from .pending.teaching import STEPS
+    else:
+        STEPS = ()
+    labels = dict(STEPS)
+    def step_label(checkpoint):
+        key = checkpoint or ''
+        if workshop_id == 'solar-autoresearch':
+            if key.startswith('images/round-'):
+                key = 'research'
+            elif key.startswith('goes/search-'):
+                key = 'search'
+            elif key.startswith('images/manual-'):
+                key = 'images'
+            elif key == 'report':
+                key = 'final'
+        elif workshop_id == 'pending-direct-teaching':
+            key = key.split('/')[0]
+            key = {'loop-check': 'loop', 'scorer-check': 'evals'}.get(key, key)
+        return labels.get(key, checkpoint or 'Not started')
     api = api or wandb.Api(timeout=20)
     rows = []
     for project in projects:
@@ -155,7 +178,8 @@ def monitor(projects, workshop_id, *, api=None):
             for run in runs:
                 summary = dict(run.summary._json_dict)
                 rows.append(dict(project=project, workspace=run.config.get('workspace_id'),
-                    step=summary.get('step', 'Not started'), status=summary.get('status', 'unknown'),
+                    step=step_label(summary.get('step')),
+                    checkpoint=summary.get('step'), status=summary.get('status', 'unknown'),
                     completed=len(summary.get('completed', [])), failed=summary.get('failed_executions',[]), help=summary.get('help_request', ''),
                     updated_at=summary.get('updated_at'), evidence=summary.get('evidence', {}), url=run.url))
             if not runs:
@@ -203,10 +227,10 @@ def publish_comparison(session, name, versions):
                         if output != row['prediction']:
                             raise ValueError('Saved prediction differs from execution')
                         return {'error': row.get('error'), **row.get('scores',{})}
-                    import asyncio
+                    from .execution import run_async
                     evaluation = weave.Evaluation(name=safe_name(name + '-' + label + '-evaluation'), dataset=dataset, scorers=[saved_score])
                     # Publication replays saved outputs, never inference or training.
-                    asyncio.run(evaluation.evaluate(saved_prediction))
+                    run_async(lambda: evaluation.evaluate(saved_prediction))
                     evaluation_ref=weave.publish(evaluation, name=safe_name(name+'-'+label+'-evaluation'))
                     weave.get_client().flush()
                     record.pop('weave_error',None)

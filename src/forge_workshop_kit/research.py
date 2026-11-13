@@ -95,17 +95,44 @@ def validate_decision(decision,source):
             raise ValueError('CHANGE has no code change. Use KEEP.')
 
 
+def normalize_composition(decision):
+    """Keep the recorded wording when a model returns a lessons array."""
+    normalized = dict(decision)
+    if all(isinstance(decision.get(key), str) and decision[key].strip()
+           for key in ('lesson', 'limits')):
+        return normalized
+    lessons = decision.get('lessons')
+    if not isinstance(lessons, list) or not lessons or not all(
+        isinstance(item, dict) and all(isinstance(item.get(key), str) and item[key].strip()
+                                      for key in ('lesson', 'limits')) for item in lessons):
+        raise ValueError('Composition requires an evidence-backed lesson and its limits.')
+    for key in ('lesson', 'limits'):
+        normalized[key] = '\n'.join(item[key] for item in lessons)
+    normalized['lesson_normalization'] = 'Copied from the saved lessons array; no new inference.'
+    return normalized
+
+
+def validate_composition(decision, source):
+    validate_decision(decision, source)
+    normalize_composition(decision)
+
+
 def compose(session, number, source, previous, candidates):
-    if any(c.get('split')!='validation' for c in candidates):
+    if previous.get('split') != 'validation' or any(c.get('split')!='validation' for c in candidates):
         raise ValueError('Only validation probes can enter composition.')
-    context=dict(previous=previous,candidates=candidates,source=source)
+    fields = ('stage_id', 'source', 'split', 'config', 'metrics', 'losses', 'errors',
+              'trace', 'lessons', 'title', 'rationale', 'fingerprint')
+    def evidence(record):
+        return {key: record[key] for key in fields if key in record}
+    context=dict(previous=evidence(previous),candidates=[evidence(c) for c in candidates],source=source)
     with session.stage(f'images/round-{number}/compose',sources={'candidate.py':source},inputs=context) as stage:
         if stage.needs_run:
             mission='Retain, select, or combine the tested changes. Return title, decision (CHANGE or KEEP), rationale, source (complete code), lesson and limits. Do not describe an untested composition as an improvement.'
             decision,call=validated_json(session,stage.id,[{'role':'system','content':SYSTEM},
                 {'role':'user','content':json.dumps({'mission':mission,**context})}],
-                lambda value: validate_decision(value,source),max_tokens=16384)
-            validate_decision(decision,source)
+                lambda value: validate_composition(value,source),max_tokens=16384)
+            validate_composition(decision,source)
+            decision = normalize_composition(decision)
             decision['diff']=diff(source,decision['source'])
             decision['fingerprint']=digest({'candidate.py':decision['source']})
             path=stage.output_dir/'composition.py'
@@ -114,7 +141,7 @@ def compose(session, number, source, previous, candidates):
                 return {'file':path.name,'source_fingerprint':decision['fingerprint']}
             _,observed=event('save_composed_code',{'decision':decision['decision']},save_composition)
             stage.record({'decision':decision,'request_id':call['id'],'mission':mission,'events':[observed]},files=[path])
-    return stage.result,stage.id
+    return {**stage.result, 'decision': normalize_composition(stage.result['decision'])},stage.id
 
 
 def trace_decision(session,stage_id):

@@ -1,0 +1,75 @@
+{
+  "main_frames": 70,
+  "total_frames": 90,
+  "files": [
+    {
+      "file": "solar-autoresearch-browser.zip",
+      "bytes": 2786698,
+      "sha256": "b1a1ab73807f8ca9a146fb8a2eb8ceaa92f529ef08e7b779fe024c09a71864f4"
+    },
+    {
+      "file": "solar-autoresearch-deck-source.zip",
+      "bytes": 1932750,
+      "sha256": "b9a3887b692ec9957cc92967a54e76bbac9c64f1b906327f5a0a5d4aa0850d82"
+    },
+    {
+      "file": "solar-autoresearch.pdf",
+      "bytes": 1858791,
+      "sha256": "ae202f88140f266ab02f4c5216290258bdffa1e6e4463dae81df185494f921c5"
+    }
+  ],
+  "assets": [
+    {
+      "file": "public/images/goes-final.png",
+      "sha256": "a3ec20aa2ff9112cc0098b438eb8d035566e87a41abaf37430edf79e1295d8e5"
+    },
+    {
+      "file": "public/images/solar-final.png",
+      "sha256": "f8efd4a474bf3f81bb91d7ac36741eb2158d59e167e0217df82c9f1c2de12c21"
+    },
+    {
+      "file": "public/images/solar-template-qr.svg",
+      "sha256": "800afd9bcfc4ae7737f4d13982d6d12543107fb95391842cb0de96fd38ed7fe6"
+    },
+    {
+      "file": "public/images/solar-validation.png",
+      "sha256": "fa45cb87431211f18c6c52fcd59c9cbc8da6a8ddfab6360f7927fc9524e85520"
+    },
+    {
+      "file": "public/images/ux-v020-solar-diff.png",
+      "sha256": "74a049ac2d9e2849e3a092a8ec2cc7d81072d54f67e6109cb0e9aa5337c49d12"
+    },
+    {
+      "file": "public/images/ux-v020-solar-final.png",
+      "sha256": "4aa481bfb2d007addfacbf21f0fb43bdaebd5c384b9487202436db0fd1ec78e3"
+    },
+    {
+      "file": "public/images/ux-v020-solar-instrumentation.png",
+      "sha256": "05046942e69d77e635b8b93851283af9594f7209cc5bc14f737d0946cd7d4805"
+    },
+    {
+      "file": "public/images/ux-v020-solar-lens-current.png",
+      "sha256": "3af80174f9626fe02ed73801183641a173f3b54f820be7a2b8da538bf22b7063"
+    },
+    {
+      "file": "public/images/ux-v020-solar-models.png",
+      "sha256": "8762eda03780e40a9c85f8ff64d3b9a991c08c61803674c69efb7a14722535cb"
+    },
+    {
+      "file": "public/images/ux-v020-solar-setup.png",
+      "sha256": "feb64a0107c286b8191ae8f072ce15adba57c73635a7f69f66cf6fd18d1f19f5"
+    },
+    {
+      "file": "public/images/ux-v020-solar-sweep.png",
+      "sha256": "50c9748b36422dc154ebe93d9515895b2d7ad6a5a03c35d2c4a48f8add17e3d5"
+    },
+    {
+      "file": "public/recorded-runs.json",
+      "sha256": "416f8c0583bcf1306a182c4689e8781752c8bbffb184e60362ca4147a9ce1eb9"
+    },
+    {
+      "file": "public/recorded-study.json",
+      "sha256": "81ff53cba85a6db94d02f5188a3b240d4840f0ead2138a4095b432f57bac1d04"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "note": "Display names and configuration copied from matching completed execution receipts; metrics unchanged.",
+  "runs": [
+    {
+      "run_id": "g71f9f1x",
+      "old_name": "fallen-sweep-1",
+      "name": "GOES / MLP / width 16 / lr 0.001",
+      "execution_stage_id": "2f853ad3f536ddd31eec493d9faac6af",
+      "validation_error": 2.8777366925075185
+    },
+    {
+      "run_id": "x0l6w7s8",
+      "old_name": "vibrant-sweep-2",
+      "name": "GOES / MLP / width 32 / lr 0.001",
+      "execution_stage_id": "8fafdd1b91710e937bd6cd64e80b3dfb",
+      "validation_error": 2.8699000239500942
+    },
+    {
+      "run_id": "mx1hwxis",
+      "old_name": "serene-sweep-3",
+      "name": "GOES / MLP / width 16 / lr 0.003",
+      "execution_stage_id": "5ed37e35d45d987113124c5ce064570f",
+      "validation_error": 2.7121469205813082
+    },
+    {
+      "run_id": "75at7t0l",
+      "old_name": "royal-sweep-4",
+      "name": "GOES / CNN / width 16 / lr 0.001",
+      "execution_stage_id": "34052b0682662640d61255ae5e3fcabe",
+      "validation_error": 4.930853442006422
+    },
+    {
+      "run_id": "oyzet954",
+      "old_name": "whole-sweep-5",
+      "name": "GOES / CNN / width 32 / lr 0.001",
+      "execution_stage_id": "5bce324a4142dc75991caef9e379fa09",
+      "validation_error": 4.34714019414374
+    },
+    {
+      "run_id": "bivwxm0r",
+      "old_name": "frosty-sweep-6",
+      "name": "GOES / CNN / width 16 / lr 0.003",
+      "execution_stage_id": "43506f193b07c018896d6ff16c906cc3",
+      "validation_error": 2.8063811857780134
+    }
+  ]
+}

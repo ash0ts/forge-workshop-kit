@@ -1,0 +1,515 @@
+"""Authored Pending cells. Training, inference and tools require explicit run controls."""
+from notebook_builder import Cell
+
+cells=[]
+def add(code,hide=False):
+    cells.append(Cell(code,hide=hide))
+
+add('''
+import os
+import json
+import time
+from dataclasses import asdict
+import copy
+import marimo as mo
+from forge_workshop_kit import WorkshopSession, ui
+from forge_workshop_kit.pending import teaching
+from forge_workshop_kit.pending.cases import CASES
+from forge_workshop_kit.pending.harness import Harness, harness_diff
+from forge_workshop_kit.pending.loop import run_employee, editor_decision, judge_explanation, reflect_execution
+from forge_workshop_kit.traces import event, export_trace
+from forge_workshop_kit.publication import publish_comparison, publish_report
+get_pending,set_pending=mo.state({})
+get_display,set_display=mo.state({})
+get_step,set_step=mo.state("setup")
+''',True)
+add('''
+mo.Html(ui.heading("Pending, Inc.", "Build the employee's tools, trace its decisions, and test the work before you promote the procedure. Management has approved the word autonomous. Equipment is your department."))
+''',True)
+add('''
+def move_pending(step):
+    if get_pending().get("session"):
+        get_pending()["session"].set_view(step)
+    set_step(step)
+
+def pending_refresh(session):
+    set_pending(teaching.restore(session))
+
+def pending_checkpoint(session,step,**kwargs):
+    with mo.status.spinner(title="Saving completed work and Forge evidence; no agent rerun"):
+        return session.checkpoint(step,**kwargs)
+
+def pending_execution_table(rows):
+    return mo.ui.table(rows,selection=None,pagination=False,hidden_columns=["Harness"],
+        format_mapping={"Conversation":lambda url:mo.md("[Open trace]("+url+")") if url.startswith("https://") else url},
+        column_widths={"Conversation":110},label="Execution comparison")
+
+def pending_publish(session,name,rows):
+    try:
+        with mo.status.spinner(title="Publishing saved evaluations; no agent rerun"):
+            result=publish_comparison(session,name,rows)
+        set_display({key:value for key,value in get_display().items() if key!="publication_error"})
+        return result
+    except Exception as error:
+        set_display({**get_display(),"publication_error":str(error)})
+        return {}
+
+_s=get_pending().get("session")
+mo.vstack([ui.navigation(mo,teaching.STEPS,get_step(),move_pending,completed=_s.read()["progress"].get("completed",[]) if _s else ()),mo.Html(ui.context(_s)) if _s else mo.md("Your notebook, your project, your account. No workshop gateway."),mo.Html(ui.result("Publication needs attention",{"Issue":get_display()["publication_error"],"Next":"Execution is saved. Use Retry publication in the final comparison; do not rerun the agent."},status="unavailable")) if get_display().get("publication_error") else mo.md("")])
+''',True)
+add('''
+mo.stop(get_step()!="setup")
+pending_project=mo.ui.text(value=os.getenv("WORKSHOP_PROJECT") or "/".join(filter(None,[os.getenv("WANDB_ENTITY"),os.getenv("WANDB_PROJECT")])),label="Your Forge entity/project",full_width=True)
+pending_allowance=mo.ui.number(value=8,start=.01,stop=1000,label="Inference limit in USD; notebook compute is separate")
+pending_connect=mo.ui.run_button(label="Check my project and restore saved work",full_width=True)
+mo.vstack([mo.Html(ui.step("1. Connect your project and send a trace", "Copy this notebook into your own public teaching project. Hosted Forge supplies login. Locally, use uv run wandb login.","Project write access is verified before any model calls. A saved workspace resumes here.")),pending_project,pending_allowance,pending_connect])
+''',True)
+add('''
+mo.stop(not pending_connect.value)
+try:
+    _s=WorkshopSession.from_environment("pending-direct-teaching",project=pending_project.value,budget_usd=pending_allowance.value)
+    _access=_s.check_access()
+    _restore=_s.restore()
+    pending_refresh(_s)
+    set_step(_s.get_view("setup"))
+    set_display({**get_display(),"setup":{**_access,"restore":_restore["status"]}})
+except Exception as _error:
+    set_display({**get_display(),"setup":{"error":str(_error)}})
+''')
+add('''
+pending_help=mo.ui.text_area(label="What do you need help with?",full_width=True)
+pending_help_button=mo.ui.run_button(label="Send this help request",disabled=not bool(get_pending().get("session")))
+mo.accordion({"Ask the facilitator":mo.vstack([pending_help,pending_help_button,mo.md("This publishes your request to the read-only progress monitor. It does not run an agent.")])})
+''',True)
+add('''
+mo.stop(not pending_help_button.value)
+get_pending()["session"].request_help(pending_help.value)
+mo.md("Help request saved. Send an empty request when resolved.")
+''')
+add('''
+mo.stop(get_step()!="setup")
+_s=get_pending().get("session")
+instrumentation_editor=mo.ui.code_editor(value=_s.get_draft("pending/instrumentation",teaching.STARTERS["instrumentation"]) if _s else teaching.STARTERS["instrumentation"],language="python",min_height=260,max_height=500,label="Your Forge tool and model scopes",on_change=lambda value:_s.save_draft("pending/instrumentation",value) if _s else None)
+pending_trace=mo.ui.run_button(label="Run this check and verify my Agent Lens trace",disabled=not bool(_s),full_width=True)
+mo.vstack([mo.Html(ui.result("Project connection",get_display().get("setup",{"Next":"Connect above."}))),mo.md("**Your code:** read the tool scope. It records the exact arguments, result, timing and any error. The model scope below it will instrument your employee, editor and judge. Add a harmless environment field in the operation cell, then trace it."),instrumentation_editor,pending_trace,ui.prerequisite(mo,"Connect to a writable project first.","setup",move_pending) if not _s else mo.md("")])
+''',True)
+add('''
+mo.stop(not pending_trace.value)
+_s=get_pending()["session"]
+_s.save_draft("pending/instrumentation",instrumentation_editor.value)
+_writers=teaching.compile_code(instrumentation_editor.value)
+with _s.stage("pending/setup-trace",sources={"instrumentation.py":instrumentation_editor.value}) as _stage:
+    if _stage.needs_run:
+        # Add another measured field here. This is a real operation, without a model call.
+        _result,_receipt=event("inspect_notebook",{},lambda:{"python":__import__("platform").python_version(),"tools":"local Python and MCP"})
+        _stage.record({"events":[_receipt]})
+_trace=export_trace(_s,_stage.id,"Check my notebook before running an agent",_stage.result["events"],tool_writer=_writers["my_tool_span"],model_writer=_writers["my_model_span"])
+pending_checkpoint(_s,"setup",evidence={"My first Agent Lens conversation":_trace["url"]})
+set_display({**get_display(),"trace":_trace})
+pending_refresh(_s)
+''')
+add('''
+mo.stop(get_step()!="setup")
+_s=get_pending().get("session")
+_row=teaching.latest(_s,"pending/setup-trace") if _s else None
+mo.stop(not _row)
+mo.vstack([ui.evidence(mo,_s,[_row["id"]],question="Open the tool span. Do its arguments, result and timing match your operation?"),ui.next_step(mo,"Build the invoice lookup","tools",move_pending)])
+''',True)
+add('''
+mo.stop(get_step()!="tools")
+_s=get_pending().get("session")
+tool_editor=mo.ui.code_editor(value=_s.get_draft("pending/tool",teaching.STARTERS["tool"]) if _s else teaching.STARTERS["tool"],language="python",min_height=170,max_height=350,label="Write my_invoice_tool",on_change=lambda value:_s.save_draft("pending/tool",value) if _s else None)
+check_pending_tool=mo.ui.run_button(label="Test my invoice lookup",disabled=not bool(_s),full_width=True)
+mo.vstack([mo.Html(ui.step("2. Build the invoice lookup tool", "Return payments for the requested invoice and the selected account's refunds. Changing account or invoice must change the result. Leave office state untouched.","The checks try the right invoice, a missing invoice and another customer's account. These checks make no model calls.")),mo.md("Equipment was not included in the offer letter. This function is the equipment."),tool_editor,check_pending_tool,mo.accordion({"Hint":"Filter account['payments'] by invoice_id. Return the selected account's refunds.","Worked answer":mo.md("```python\\n"+teaching.ANSWERS["tool"]+"\\n```")}),ui.prerequisite(mo,"Connect first so your code and checks can be saved.","setup",move_pending) if not _s else mo.md("")])
+''',True)
+add('''
+mo.stop(not check_pending_tool.value)
+_s=get_pending()["session"]
+_s.save_draft("pending/tool",tool_editor.value)
+try:
+    _fn=teaching.compile_code(tool_editor.value)["my_invoice_tool"]
+    _writers=teaching.functions(_s)
+    with _s.stage("pending/check-tool",sources={"lookup_invoice.py":tool_editor.value},config={"trace_version":1}) as _stage:
+        if _stage.needs_run:
+            _events=[]
+            def _checked_tool(state,account_id,invoice_id):
+                _result,_event=event("lookup_invoice",{"account_id":account_id,"invoice_id":invoice_id},lambda:_fn(state,account_id,invoice_id))
+                _events.append(_event)
+                return _result
+            _rows=teaching.check_tool(_checked_tool)
+            _stage.record({"rows":_rows,"events":_events})
+    _rows=_stage.result["rows"]
+    _trace=export_trace(_s,_stage.id,"Check my invoice tool on three public examples",_stage.result["events"],tool_writer=_writers["my_tool_span"],model_writer=_writers["my_model_span"])
+    pending_checkpoint(_s,"tools",evidence={"My invoice-tool checks":_trace["url"]})
+    set_display({**get_display(),"tool":{"rows":_rows,"passed":True}})
+except Exception as _error:
+    set_display({**get_display(),"tool":{"error":str(_error)}})
+pending_refresh(_s)
+''')
+add('''
+mo.stop(get_step()!="tools")
+_s=get_pending().get("session")
+_result=teaching.check_status(_s,"tool",{"lookup_invoice.py":tool_editor.value})
+_error=get_display().get("tool",{}).get("error")
+mo.vstack([mo.ui.table(_result.get("rows",[]),selection=None),mo.Html(ui.result("Invoice checks",{"Status":_result["state"],"Issue":_error or ""},status="failed" if _error else "complete" if _result["passed"] else "not started")),ui.evidence(mo,_s,[teaching.latest(_s,"pending/check-tool")["id"]],question="Inspect your own lookup function's arguments and returned records. These are the free checks; the employee may choose another registered read tool.") if _s and teaching.latest(_s,"pending/check-tool") else mo.md(""),ui.next_step(mo,"Wire the tool into an agent request","loop",move_pending)])
+''',True)
+add('''
+mo.stop(get_step()!="loop")
+_s=get_pending().get("session")
+loop_editor=mo.ui.code_editor(value=_s.get_draft("pending/loop",teaching.STARTERS["loop"]) if _s else teaching.STARTERS["loop"],language="python",min_height=230,max_height=450,label="Dispatch an action and append its observation",on_change=lambda value:_s.save_draft("pending/loop",value) if _s else None)
+starting_instructions=mo.ui.text_area(value=_s.get_draft("pending/instructions",Harness().instructions) if _s else Harness().instructions,label="Employee instructions",full_width=True,on_change=lambda value:_s.save_draft("pending/instructions",value) if _s else None)
+mo.vstack([mo.Html(ui.step("3. Put the observation into the next request", "Complete my_dispatch and my_observation. The first routes the chosen tool; the second gives its real result to the next model request. Test them before freezing the executor.","Inspect request → chosen action → returned observation → next request. These exact functions run for every harness in the comparison.")),mo.md("The employee has requested access to reality. Please append it to the context."),loop_editor,starting_instructions,mo.accordion({"Hint":"lookup_invoice calls your function. Other names call call_tool. Append the action as assistant content and the returned observation as user content.","Worked answer":mo.md("```python\\n"+teaching.ANSWERS["loop"]+"\\n```")})])
+''',True)
+add('''
+mo.stop(get_step()!="loop")
+_s=get_pending().get("session")
+_checked=teaching.check_status(_s,"loop",{"lookup_invoice.py":_s.get_draft("pending/tool",teaching.STARTERS["tool"]) if _s else "","loop.py":loop_editor.value})
+check_pending_loop=mo.ui.run_button(label="Test my tool-to-model handoff",disabled=not bool(_s),full_width=True)
+_failures=[row for row in _s.read()["stages"].values() if row["name"].startswith("pending/original/") and row["status"]=="failed"] if _s else []
+run_pending=mo.ui.run_button(label="Starting tickets complete" if get_pending().get("starting") else "Retry the failed starting ticket; reuse saved work" if _failures else "Freeze this executor and run the two starting tickets",disabled=not bool(_s) or not _checked["passed"] or not teaching.setup_verified(_s) or bool(get_pending().get("starting")),full_width=True)
+mo.vstack([mo.Html(ui.result("Saved execution failed",{"Issue":_failures[-1]["error"],"Retry":"The button reruns only the failed ticket. Completed tickets remain saved."},status="failed")) if _failures and not get_pending().get("starting") else mo.md(""),mo.Html(ui.result("Executor check",{"Status":_checked["state"]},status="complete" if _checked["passed"] else "not started")),check_pending_loop,run_pending,ui.prerequisite(mo,"Verify your setup trace before starting model calls.","setup",move_pending) if _s and not teaching.setup_verified(_s) else mo.md("Pass the free handoff check above. Editing the code invalidates that check.")])
+''',True)
+add('''
+mo.stop(not check_pending_loop.value)
+_s=get_pending()["session"]
+_s.save_draft("pending/loop",loop_editor.value)
+try:
+    _f=teaching.functions(_s)
+    teaching.check_tool(_f["my_invoice_tool"])
+    _result=teaching.check_loop(_f["my_dispatch"],_f["my_observation"],_f["my_invoice_tool"])
+    with _s.stage("pending/check-loop",sources={"lookup_invoice.py":_s.get_draft("pending/tool",teaching.STARTERS["tool"]),"loop.py":loop_editor.value}) as _stage:
+        if _stage.needs_run: _stage.record(_result)
+    pending_checkpoint(_s,"loop-check")
+    set_display({**get_display(),"loop":{"passed":True,**_result}})
+    pending_refresh(_s)
+except Exception as _error:
+    set_display({**get_display(),"loop":{"error":str(_error)}})
+''')
+add('''
+mo.stop(not run_pending.value)
+_s=get_pending()["session"]
+_s.save_draft("pending/loop",loop_editor.value)
+_s.save_draft("pending/instructions",starting_instructions.value)
+_f=teaching.functions(_s)
+_runtime=teaching.freeze_runtime(_s,_f)
+_harness=Harness(instructions=starting_instructions.value)
+try:
+    _runs=[run_employee(_s,c,_harness,"pending/original",retry_failed=True,**teaching.hooks(_f)) for c in CASES if c.split=="development"]
+finally:
+    pending_refresh(_s)
+pending_checkpoint(_s,"loop")
+pending_refresh(_s)
+''')
+add('''
+mo.stop(get_step()!="loop")
+_s=get_pending().get("session")
+_runs=get_pending().get("original",[])
+_preview=teaching.check_status(_s,"loop",{"lookup_invoice.py":_s.get_draft("pending/tool",teaching.STARTERS["tool"]) if _s else "","loop.py":loop_editor.value})
+_preview["error"]=get_display().get("loop",{}).get("error","")
+_views=[mo.Html(ui.result("Local handoff check",{"Status":_preview["state"],"Issue":_preview.get("error","")},status="failed" if _preview.get("error") else "complete" if _preview["passed"] else "not started"))]
+if _preview.get("next_request"):
+    _views.append(mo.accordion({"Exact messages passed to the next request":mo.md("```json\\n"+json.dumps(_preview["next_request"],indent=2)+"\\n```")}))
+if _runs:
+    _views.append(pending_execution_table(teaching.summary_rows(_runs)))
+    for _run in _runs:
+        _views.extend([mo.md("**"+_run["case_id"]+": actual tool sequence**"),mo.ui.table(teaching.tool_rows(_run),selection=None),mo.accordion({"Exact arguments and returned observations":mo.ui.table([{"Step":i+1,"Arguments":e["arguments"],"Result":e["result"]} for i,e in enumerate(_run["events"])],selection=None)})])
+    _views.extend([ui.evidence(mo,_s,[r["stage_id"] for r in _runs],question="Find the lookup and the following model call. For onboarding, inspect the timed-out write and the state read that followed it."),ui.next_step(mo,"Check the account and judge the explanation","evals",move_pending)])
+mo.vstack(_views)
+''',True)
+add('''
+mo.stop(get_step()!="evals")
+_s=get_pending().get("session")
+scorer_editor=mo.ui.code_editor(value=_s.get_draft("pending/scorer",teaching.STARTERS["scorer"]) if _s else teaching.STARTERS["scorer"],language="python",min_height=250,max_height=480,label="Write a state check and validate the judge response",on_change=lambda value:_s.save_draft("pending/scorer",value) if _s else None)
+judge_rubric=mo.ui.text_area(value=_s.get_draft("pending/rubric","Check each completion claim against recorded tool activity. A timeout is not proof that a write failed. Separate an accurate explanation from a correct account.") if _s else "Check completion claims against recorded work.",label="Explanation judge rubric",full_width=True,on_change=lambda value:_s.save_draft("pending/rubric",value) if _s else None)
+mo.vstack([mo.Html(ui.step("4. Check the work, then judge the explanation", "Implement the state check and structured-answer validation. Test a full refund, partial refund, duplicate refund and false claim. Then run the same judge on your employee's saved work.","Your development score, independent account-state score and LLM explanation judgment are separate columns. Missing judgments stay missing.")),mo.md("Please stop marking your own homework. Accounting has supplied four examples."),scorer_editor,judge_rubric,mo.accordion({"Worked answer":mo.md("```python\\n"+teaching.ANSWERS["scorer"]+"\\n```")}),ui.prerequisite(mo,"Finish the two starting tickets, then pass the scorer checks above.","loop",move_pending) if not get_pending().get("starting") else mo.md("")])
+''',True)
+add('''
+mo.stop(get_step()!="evals")
+_s=get_pending().get("session")
+_checked=teaching.check_status(_s,"scorer",{"scorer.py":scorer_editor.value})
+check_pending_scorer=mo.ui.run_button(label="Test my scorer against four known examples",disabled=not bool(_s),full_width=True)
+pending_judge=mo.ui.run_button(label="Judge and publish the starting development comparison",disabled=not bool(get_pending().get("starting")) or not _checked["passed"],full_width=True)
+mo.vstack([mo.Html(ui.result("Scorer check",{"Status":_checked["state"]},status="complete" if _checked["passed"] else "not started")),check_pending_scorer,pending_judge])
+''',True)
+add('''
+mo.stop(not check_pending_scorer.value)
+_s=get_pending()["session"]
+_s.save_draft("pending/scorer",scorer_editor.value)
+try:
+    _f=teaching.functions(_s)
+    _rows=teaching.check_scorer(_f["my_state_check"],_f["my_judge_validation"])
+    with _s.stage("pending/check-scorer",sources={"scorer.py":scorer_editor.value}) as _stage:
+        if _stage.needs_run: _stage.record({"rows":_rows})
+    pending_checkpoint(_s,"scorer-check")
+    set_display({**get_display(),"scorer":{"passed":True,"rows":_rows}})
+    pending_refresh(_s)
+except Exception as _error:
+    set_display({**get_display(),"scorer":{"error":str(_error)}})
+''')
+add('''
+mo.stop(not pending_judge.value)
+_s=get_pending()["session"]
+_s.save_draft("pending/scorer",scorer_editor.value)
+_s.save_draft("pending/rubric",judge_rubric.value)
+_f=teaching.functions(_s)
+teaching.check_scorer(_f["my_state_check"],_f["my_judge_validation"])
+_rows=[]
+_runs=[]
+for _run in get_pending()["original"]:
+    try:
+        _judgment=judge_explanation(_s,_run,judge_rubric.value,validate=_f["my_judge_validation"],tool_writer=_f["my_tool_span"],model_writer=_f["my_model_span"])
+    except Exception as _error:
+        _judgment={"status":"unavailable","error":str(_error)}
+    _runs.append({**_run,"explanation_judgment":_judgment})
+    _rows.append({"Case":_run["case_id"],"My state check":_f["my_state_check"](_run),"Independent state check":_run["scores"]["task_success"],"Grounded explanation":_judgment.get("grounded"),"Judge reason":_judgment.get("reason",_judgment.get("error"))})
+with _s.stage("pending/development-evaluation",sources={"scorer.py":scorer_editor.value},inputs={"executions":[r["stage_id"] for r in _runs],"rubric":judge_rubric.value}) as _stage:
+    if _stage.needs_run: _stage.record({"rows":_rows,"runs":_runs,"comparison":teaching.comparison_rows({"starting":_runs})})
+_published=pending_publish(_s,"pending-development",_stage.result["comparison"])
+pending_checkpoint(_s,"evals",evidence={"Development "+k:r["run"] for k,r in _published.items()})
+pending_refresh(_s)
+''')
+add('''
+mo.stop(get_step()!="evals")
+_s=get_pending().get("session")
+_check=teaching.check_status(_s,"scorer",{"scorer.py":scorer_editor.value})
+_check["error"]=get_display().get("scorer",{}).get("error","")
+_evaluation=get_pending().get("evaluation",{})
+mo.vstack([mo.ui.table(_check.get("rows",[]),selection=None),mo.md(_check.get("error","")),mo.ui.table(_evaluation.get("rows",[]),selection=None),ui.publication(mo,_s) if _s else mo.md(""),ui.evidence(mo,_s,[r["stage_id"] for r in _evaluation.get("runs",[])],question="Does an honest explanation imply a correct refund? Follow one score back to its recorded actions.") if _s else mo.md(""),ui.next_step(mo,"Change one procedure using that evidence","manual",move_pending)])
+''',True)
+add('''
+mo.stop(get_step()!="manual")
+_s=get_pending().get("session")
+_events={f"{r['case_id']} · {i+1}. {e['name']} · {'error' if e.get('error') else 'returned'}":e["id"] for r in get_pending().get("original",[]) for i,e in enumerate(r["events"])}
+manual_event=mo.ui.dropdown(_events,label="Which recorded action prompted your edit?",value=next(iter(_events),None))
+manual_instructions=mo.ui.text_area(value=_s.get_draft("pending/manual","") if _s else "",label="Write the procedure the employee should follow",full_width=True,on_change=lambda value:_s.save_draft("pending/manual",value) if _s else None)
+manual_pending=mo.ui.run_button(label="Save this procedure and rerun both development tickets",disabled=not bool(get_pending().get("evaluation")),full_width=True)
+mo.vstack([mo.Html(ui.step("5. Edit one procedure using an observed event", "Choose a real event and write the verification skill it motivates. The reruns start from the same original office state. Explain the expected behavior before comparing the result.","The saved diff, executed harness and trace refer to the same version. Your tool and agent loop stay frozen.")),mo.md("The handbook has a new paragraph. We will check whether anyone read it."),manual_event,manual_instructions,manual_pending,ui.prerequisite(mo,"Check and publish the starting development result first.","evals",move_pending) if not get_pending().get("evaluation") else mo.md("")])
+''',True)
+add('''
+mo.stop(not manual_pending.value)
+_s=get_pending()["session"]
+mo.stop(not manual_instructions.value.strip(),mo.md("Write a specific procedure before running it."))
+_s.save_draft("pending/manual",manual_instructions.value)
+_f=teaching.functions(_s)
+_harness=Harness(**{**asdict(get_pending()["starting"]),"verification_skill":manual_instructions.value})
+with _s.stage("pending/manual-decision",sources=_harness.files(),inputs={"event":manual_event.value}) as _decision:
+    if _decision.needs_run: _decision.record({"diff":harness_diff(get_pending()["starting"],_harness),"harness":asdict(_harness),"fingerprint":_harness.fingerprint,"authorship":"participant"})
+_runs=[run_employee(_s,c,_harness,"pending/manual",**teaching.hooks(_f)) for c in CASES if c.split=="development"]
+pending_publish(_s,"pending-development",teaching.comparison_rows({"starting":get_pending()["original"],"manual":_runs}))
+pending_checkpoint(_s,"manual")
+pending_refresh(_s)
+''')
+add('''
+mo.stop(get_step()!="manual")
+_s=get_pending().get("session")
+_runs=get_pending().get("manual_runs",[])
+mo.stop(not _runs)
+_before=json.dumps(asdict(get_pending()["starting"]),indent=2)
+_after=json.dumps(asdict(get_pending()["manual"]),indent=2)
+mo.vstack([mo.Html(ui.diff(_before,_after)),pending_execution_table(teaching.summary_rows(get_pending()["original"])+teaching.summary_rows(_runs,"My procedure")),ui.evidence(mo,_s,[r["stage_id"] for r in _runs],question="Did the employee load the verification skill? Was the next action different? A score alone cannot answer that."),ui.next_step(mo,"Give the editor two competing hypotheses","improve",move_pending)])
+''',True)
+add('''
+mo.stop(get_step()!="improve")
+_s=get_pending().get("session")
+_number,_phase,_label=teaching.next_phase(_s) if _s else (1,"propose","Connect first")
+_decision=teaching.active_decision(_s,_number,_phase) if _s else None
+review_pending=mo.ui.checkbox(label="I reviewed this version's files and rationale")
+improve_pending=mo.ui.run_button(label=f"Round {_number} · {_label}",disabled=not bool(get_pending().get("manual")) or _phase=="done",full_width=True)
+_views=[mo.Html(ui.step("6. Let an agent propose, test and revise the procedure", "Round one starts from billing evidence. Round two carries the tested version and its lesson into onboarding. Each candidate gets a fresh office with the same case.","A proposal is not an adoption. Review each diff, test it, compare the probes, then test the composition. Retain this harness is valid.")),mo.md("Management would like to automate management. Please review its changes.")]
+if _s:
+    _views.append(mo.ui.table([{"Phase":label,"State":"Done" if teaching.latest(_s,f'pending/round-{_number}/'+phase) else "Now" if phase==_phase else "Later"} for phase,label in teaching.PHASES],selection=None))
+if _decision:
+    _parent=get_pending()["manual"] if _number==1 else Harness(**teaching.saved(_s,"pending/round-1/adopted")["harness"])
+    _views.extend([mo.md("**"+_decision["title"]+"**\\n\\n**Editor rationale:** "+_decision["rationale"]),mo.Html(ui.diff(json.dumps(asdict(_parent),indent=2),json.dumps(_decision["harness"],indent=2))),mo.md("Retain this harness: the executable files are unchanged. This is still a new test." if _decision["decision"]=="KEEP" else ""),review_pending])
+if _s and _phase in ("compose","composition-test","adopted","done"):
+    _probes=[teaching.latest(_s,f"pending/round-{_number}/probe-"+letter) for letter in ("a","b")]
+    _views.append(pending_execution_table([row for letter,saved in zip(("A","B"),_probes) if saved for row in teaching.summary_rows([saved["result"]["run"]],"Candidate "+letter)]))
+_views.extend([improve_pending,ui.prerequisite(mo,"Run your manual procedure first.","manual",move_pending) if not get_pending().get("manual") else mo.md("")])
+if _s: _views.append(mo.Html(ui.branch_graph(_s)))
+if _phase=="done": _views.append(ui.next_step(mo,"Freeze and compare on fresh tickets","final",move_pending))
+mo.vstack(_views)
+''',True)
+add('''
+mo.stop(not improve_pending.value)
+_s=get_pending()["session"]
+_f=teaching.functions(_s)
+_number,_phase,_label=teaching.next_phase(_s)
+_prefix=f"pending/round-{_number}/"
+_parent=get_pending()["manual"] if _number==1 else Harness(**teaching.saved(_s,"pending/round-1/adopted")["harness"])
+_case=[c for c in CASES if c.split=="development"][_number-1]
+if _phase=="propose":
+    # Evidence comes from this parent's actual execution, never the fresh-case grades.
+    _experience=[run_employee(_s,_case,_parent,_prefix+"starting",**teaching.hooks(_f))]
+    if _number==2:
+        _previous=teaching.saved(_s,"pending/round-1/adopted")
+        _experience[0]["prior_experience"]={"source_execution":_previous["execution"],"case_id":"double-charge","lesson":_previous["lesson"],"limits":_previous["limits"]}
+    editor_decision(_s,_number,"propose",_parent,_experience,tool_writer=_f["my_tool_span"],model_writer=_f["my_model_span"])
+elif _phase in ("probe-a","probe-b","composition-test"):
+    _decision=teaching.active_decision(_s,_number,_phase)
+    mo.stop(not review_pending.value,mo.md("Read this version's diff and rationale, then check the review box."))
+    _review=teaching.review_decision(_s,_decision)
+    _harness=Harness(**_decision["harness"])
+    _run=run_employee(_s,_case,_harness,_prefix+_phase+"-execution",**teaching.hooks(_f))
+    assert _run["harness_fingerprint"]==_decision["fingerprint"]
+    with _s.stage(_prefix+_phase,inputs={"execution":_run["stage_id"],"review":_review}) as _stage:
+        if _stage.needs_run: _stage.record({"run":_run,"decision_fingerprint":_decision["fingerprint"]})
+elif _phase=="compose":
+    _probes=[teaching.saved(_s,_prefix+"probe-"+letter)["run"] for letter in ("a","b")]
+    editor_decision(_s,_number,"compose",_parent,_probes,tool_writer=_f["my_tool_span"],model_writer=_f["my_model_span"])
+elif _phase=="adopted":
+    _decision=teaching.saved(_s,_prefix+"compose")
+    _run=teaching.saved(_s,_prefix+"composition-test")["run"]
+    assert _run["harness_fingerprint"]==_decision["fingerprint"]
+    _reflection=reflect_execution(_s,_number,_run,tool_writer=_f["my_tool_span"],model_writer=_f["my_model_span"])
+    _selected=Harness(**_decision["harness"]) if _run["status"]=="complete" else _parent
+    with _s.stage(_prefix+"adopted",inputs={"execution":_run["stage_id"]}) as _stage:
+        if _stage.needs_run: _stage.record({"harness":asdict(_selected),"fingerprint":_selected.fingerprint,"lesson":_reflection["lesson"],"limits":_reflection["limits"],"execution":_run["stage_id"],"retained_parent":_selected.fingerprint==_parent.fingerprint,"failure_fallback":_run["status"]!="complete"})
+pending_checkpoint(_s,"improve/"+str(_number)+"/"+_phase)
+if _number==2 and _phase=="adopted": pending_checkpoint(_s,"improve")
+pending_refresh(_s)
+''')
+add('''
+mo.stop(get_step()!="improve")
+_s=get_pending().get("session")
+mo.stop(not _s)
+_stages=[s["id"] for s in _s.completed() if s["name"].startswith("pending/round-") and (s["result"].get("events") is not None or s["name"].endswith(("/propose","/compose")))]
+mo.vstack([ui.evidence(mo,_s,_stages,question="Follow one proposal through its diff, probe and selected version. Which claimed benefit does the execution actually support?"),ui.publication(mo,_s)])
+''',True)
+add('''
+mo.stop(get_step()!="final")
+_s=get_pending().get("session")
+_ready=bool(_s) and teaching.next_phase(_s)[1]=="done"
+pending_final=mo.ui.run_button(label="All 12 executions are saved" if get_pending().get("final") else "Freeze versions and run 12 evaluations",disabled=not _ready or bool(get_pending().get("final")),full_width=True)
+pending_retry=mo.ui.run_button(label="Retry publication only; reuse all saved executions",disabled=not bool(_s),full_width=True)
+_missing=sum(r.get("explanation_judgment",{}).get("status")=="unavailable" for runs in get_pending().get("final",{}).get("runs",{}).values() for r in runs)
+_judge_failures=[r["name"] for r in _s.read()["stages"].values() if r["status"]=="failed"] if _s else []
+_retryable=sum(r.get("explanation_judgment",{}).get("status")=="unavailable" and _judge_failures.count("pending/judge/"+r["stage_id"])<2 for runs in get_pending().get("final",{}).get("runs",{}).values() for r in runs)
+pending_retry_judges=mo.ui.run_button(label=f"Retry {_retryable} unavailable explanation judgment(s) only" if _retryable else "No further explanation-judge retries needed or available",disabled=not bool(_retryable),full_width=True)
+mo.vstack([mo.Html(ui.step("7. Compare the frozen harnesses on fresh tickets", "The starting harness, your edit and the selected agent revision each receive the same four fresh cases. No editor sees these grades during improvement.","Inspect all 12 rows. Correct state, grounded explanation, tool errors and missing judgments remain separate.")),mo.md("Monday, again. This time the acceptance criteria arrived before the work."),pending_final,pending_retry,mo.md("**A missing judgment is not a failed employee.** A separate retry reuses the saved employee execution. After two failed judge attempts, the score stays unavailable; inspect the saved responses.") if _missing else mo.md(""),pending_retry_judges,ui.prerequisite(mo,"Finish both improvement rounds before freezing versions.","improve",move_pending) if not _ready else mo.md("")])
+''',True)
+add('''
+mo.stop(not pending_final.value)
+_s=get_pending()["session"]
+_f=teaching.functions(_s)
+_versions={"starting":get_pending()["starting"],"manual":get_pending()["manual"],"agent":Harness(**teaching.saved(_s,"pending/round-2/adopted")["harness"])}
+with _s.stage("pending/freeze",sources={k:json.dumps(asdict(v),sort_keys=True) for k,v in _versions.items()}) as _freeze:
+    if _freeze.needs_run: _freeze.record({"harnesses":{k:asdict(v) for k,v in _versions.items()}})
+_all={}
+for _label,_harness in _versions.items():
+    _all[_label]=[run_employee(_s,c,_harness,"pending/final-"+_label,**teaching.hooks(_f)) for c in CASES if c.split=="heldout"]
+for _runs in _all.values():
+    for _run in _runs:
+        try:
+            _run["explanation_judgment"]=judge_explanation(_s,_run,_s.get_draft("pending/rubric","Check claims against recorded work."),validate=_f["my_judge_validation"],tool_writer=_f["my_tool_span"],model_writer=_f["my_model_span"])
+        except Exception as _error:
+            _run["explanation_judgment"]={"status":"unavailable","error":str(_error)}
+with _s.stage("pending/final-comparison",inputs={"freeze":_freeze.id}) as _comparison:
+    if _comparison.needs_run: _comparison.record({"runs":_all,"rows":teaching.comparison_rows(_all)})
+_published=pending_publish(_s,"pending-final",_comparison.result["rows"])
+pending_checkpoint(_s,"final",evidence={"Final "+k:r["run"] for k,r in _published.items()})
+pending_refresh(_s)
+''')
+add('''
+mo.stop(not pending_retry_judges.value)
+_s=get_pending()["session"]
+_f=teaching.functions(_s)
+_all=copy.deepcopy(get_pending()["final"]["runs"])
+with mo.status.spinner(title="Retrying unavailable explanation judgments only; employee executions stay saved"):
+    for _runs in _all.values():
+        for _run in _runs:
+            if _run.get("explanation_judgment",{}).get("status")!="unavailable": continue
+            try:
+                _run["explanation_judgment"]=judge_explanation(_s,_run,_s.get_draft("pending/rubric","Check claims against recorded work."),validate=_f["my_judge_validation"],tool_writer=_f["my_tool_span"],model_writer=_f["my_model_span"],retry_failed=True)
+            except Exception as _error:
+                _run["explanation_judgment"]={"status":"unavailable","error":str(_error)}
+_retry_records=[r["id"] for r in _s.read()["stages"].values() if r["name"].startswith("pending/judge/")]
+with _s.stage("pending/final-comparison",inputs={"freeze":teaching.latest(_s,"pending/freeze")["id"],"judge_attempts":_retry_records}) as _comparison:
+    if _comparison.needs_run: _comparison.record({"runs":_all,"rows":teaching.comparison_rows(_all)})
+pending_publish(_s,"pending-final",_comparison.result["rows"])
+pending_checkpoint(_s,"final")
+pending_refresh(_s)
+''')
+add('''
+mo.stop(not pending_retry.value)
+_s=get_pending()["session"]
+_s.retry_publication()
+_f=teaching.functions(_s)
+for _row in _s.read()["stages"].values():
+    _requests=[r for k,r in _s.read()["requests"].items() if (k==_row["id"] or k.startswith(_row["id"]+"/")) and r.get("ended_at")]
+    if (_row.get("result") or {}).get("events") is not None or _requests:
+        try: export_trace(_s,_row["id"],(_row.get("result") or {}).get("mission",_row["name"]),(_row.get("result") or {}).get("events",[]),_requests,tool_writer=_f["my_tool_span"],model_writer=_f["my_model_span"])
+        except Exception as _error: set_display({**get_display(),"export_error":str(_error)})
+for _name,_label in (("pending/development-evaluation","pending-development"),("pending/final-comparison","pending-final")):
+    _row=teaching.latest(_s,_name)
+    if _row: pending_publish(_s,_label,_row["result"].get("comparison",_row["result"].get("rows")))
+pending_refresh(_s)
+''')
+add('''
+mo.stop(get_step()!="final")
+_s=get_pending().get("session")
+_final=get_pending().get("final",{})
+mo.stop(not _final)
+_rows=[row for label,runs in _final["runs"].items() for row in teaching.summary_rows(runs,label)]
+_stages=[r["stage_id"] for runs in _final["runs"].values() for r in runs]
+mo.vstack([pending_execution_table(_rows),ui.evidence(mo,_s,_stages,question="Select one matching case across versions. Open its trace and final account state before attributing a score difference to a procedure."),ui.publication(mo,_s),ui.next_step(mo,"Write what the comparison actually showed","report",move_pending)])
+''',True)
+add('''
+mo.stop(get_step()!="report")
+_s=get_pending().get("session")
+pending_conclusion=mo.ui.text_area(value=_s.get_draft("pending/conclusion","") if _s else "",label="What changed, what happened, and what would you test next?",full_width=True,on_change=lambda value:_s.save_draft("pending/conclusion",value) if _s else None)
+pending_report=mo.ui.run_button(label="Publish my conclusion with the comparison and evidence",disabled=not bool(get_pending().get("final")),full_width=True)
+mo.vstack([mo.Html(ui.step("8. Explain a result someone else can inspect", "Cite one case, one trace event and the procedure that executed. Separate a correct account from a persuasive explanation. Include one failure, tie or remaining uncertainty.","Your Report links to the saved comparison, code versions and conversations. A better score is not required.")),pending_conclusion,pending_report,ui.prerequisite(mo,"Complete the fresh-ticket comparison first.","final",move_pending) if not get_pending().get("final") else mo.md(""),mo.md("**Optional ARIA prompt:** Review my Report and linked conversations. Find one supported explanation for a difference, cite the event and harness version, and suggest one next test. Do not run new experiments.")])
+''',True)
+add('''
+mo.stop(not pending_report.value)
+_s=get_pending()["session"]
+mo.stop(not pending_conclusion.value.strip(),mo.md("Write a conclusion before publishing."))
+_s.save_draft("pending/conclusion",pending_conclusion.value)
+_links=_s.read()["progress"].get("evidence",{})
+with _s.stage("pending/report",inputs={"conclusion":pending_conclusion.value}) as _stage:
+    if _stage.needs_run:
+        _url=publish_report(_s,pending_conclusion.value,_links)
+        _stage.record({"url":_url,"conclusion":pending_conclusion.value})
+pending_checkpoint(_s,"report",evidence={"Report":_stage.result["url"]})
+pending_refresh(_s)
+''')
+add('''
+mo.stop(get_step()!="report")
+_report=get_pending().get("report",{})
+mo.stop(not _report)
+mo.Html(ui.links({"Open my Report":_report["url"]}))
+''',True)
+
+# Marimo only registers UI callbacks held in cell globals. Give navigation
+# widgets explicit names in the generated notebook, including buttons embedded
+# in stacks or conditional displays. This transformation never executes a cell.
+def _bind_navigation_controls():
+    import ast
+    for index, cell in enumerate(cells):
+        tree = ast.parse(cell.code)
+        source = cell.code.splitlines(True)
+        offsets = [0]
+        for line in source:
+            offsets.append(offsets[-1] + len(line))
+        changes = []
+        count = 0
+        for statement in tree.body:
+            calls = [node for node in ast.walk(statement)
+                     if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute)
+                     and isinstance(node.func.value, ast.Name) and node.func.value.id == 'ui'
+                     and node.func.attr in {'navigation', 'next_step', 'prerequisite'}]
+            assignments = []
+            for call in calls:
+                count += 1
+                name = f'pending_navigation_{index}_{count}'
+                start = offsets[call.lineno-1] + call.col_offset
+                end = offsets[call.end_lineno-1] + call.end_col_offset
+                assignments.append(name + ' = ' + cell.code[start:end] + '\n')
+                changes.append((start, end, name))
+            if assignments:
+                position = offsets[statement.lineno-1]
+                changes.append((position, position, ''.join(assignments)))
+        for start, end, replacement in sorted(changes, reverse=True):
+            cell.code = cell.code[:start] + replacement + cell.code[end:]
+
+_bind_navigation_controls()

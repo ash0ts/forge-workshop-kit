@@ -1,0 +1,361 @@
+{
+  "recorded_at": "2026-11-13T17:19:33.958944+00:00",
+  "kind": "fresh live browser rehearsal of revised Solar notebook",
+  "workspace": "2d92533d2cff4e249b56748dec707b6e",
+  "project": "wandb/forge-workshop-kit",
+  "browser_url": "http://127.0.0.1:2775",
+  "report": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==",
+  "stage_counts": {
+    "complete": 45
+  },
+  "training_executions": 14,
+  "rounds": [
+    {
+      "round": 1,
+      "candidates": [
+        {
+          "title": "Masked L1 training loss to match the absolute-error metric",
+          "decision": "CHANGE",
+          "fingerprint": "f222ad8137439344476042859f6436e6bdd3df715cb417b43929f2558e5cf1eb",
+          "diff": "--- previous/candidate.py\n+++ proposed/candidate.py\n@@ -25,7 +25,7 @@\n \n \n def training_loss(prediction,target,mask):\n-    return ((prediction-target).square()*mask).sum()/mask.sum()\n+    return ((prediction-target).abs()*mask).sum()/mask.sum()\n \n \n def fit(model,x,y,mask,config):\n",
+          "execution": {
+            "id": "d2f1c0b14a70a85d6572160ec11a146e",
+            "status": "complete",
+            "source_fingerprint": "776804a2a4ccb0087cf6d0af782681e12d50d2381d8debc14ee7f0693c989e17",
+            "metrics": {
+              "error": 0.1205529392403616,
+              "persistence_error": 0.12645146598278637,
+              "skill_vs_persistence": 0.04664656670115408,
+              "examples": 142,
+              "validation_error": 0.1205529392403616,
+              "seconds": 2.167466163635254,
+              "learner_metric": 0.1205529392403616,
+              "learner_metric_matches": true
+            },
+            "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/d2f1c0b14a70a85d6572160ec11a146e",
+            "artifact": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-d2f1c0b14a70a85d6572160ec11a146e/v0",
+            "trace": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/d2f1c0b14a70a85d6572160ec11a146e",
+            "trace_verified": true
+          }
+        },
+        {
+          "title": "Zero-init the residual head so training starts at persistence",
+          "decision": "CHANGE",
+          "fingerprint": "4ce8f883dc82b8f25f1f8fa12f66dd0cec858888ec0469e9d688dff352fb782e",
+          "diff": "--- previous/candidate.py\n+++ proposed/candidate.py\n@@ -18,6 +18,9 @@\n             self.net=nn.Sequential(nn.Conv2d(2,width,3,padding=1),nn.ReLU(),\n                                    nn.Conv2d(width,width,3,padding=1),nn.ReLU(),\n                                    nn.Conv2d(width,1,3,padding=1))\n+            if architecture=='residual':\n+                nn.init.zeros_(self.net[4].weight)\n+                nn.init.zeros_(self.net[4].bias)\n         def forward(self,x):\n             prediction=self.net(x)\n             return prediction+x[:,1:2] if architecture=='residual' else prediction\n",
+          "execution": {
+            "id": "c07c5d78722ad00dd3c397a69a497d3e",
+            "status": "complete",
+            "source_fingerprint": "0d955b288071933bb95a7590dd66583739a4b2998b83ac663ea4c635e6d969dc",
+            "metrics": {
+              "error": 0.11143358542213977,
+              "persistence_error": 0.12645146598278637,
+              "skill_vs_persistence": 0.11876398936087429,
+              "examples": 142,
+              "validation_error": 0.11143358542213977,
+              "seconds": 2.018649101257324,
+              "learner_metric": 0.11143358542213977,
+              "learner_metric_matches": true
+            },
+            "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/c07c5d78722ad00dd3c397a69a497d3e",
+            "artifact": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-c07c5d78722ad00dd3c397a69a497d3e/v0",
+            "trace": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c07c5d78722ad00dd3c397a69a497d3e",
+            "trace_verified": true
+          }
+        }
+      ],
+      "composition": {
+        "title": "Select the tested zero-init residual head (validation error 0.1221\u21920.1114); defer L1 composition as untested",
+        "decision": "CHANGE",
+        "fingerprint": "4ce8f883dc82b8f25f1f8fa12f66dd0cec858888ec0469e9d688dff352fb782e",
+        "execution": {
+          "id": "48984045d222b74c7636d08398fa8031",
+          "status": "complete",
+          "source_fingerprint": "0d955b288071933bb95a7590dd66583739a4b2998b83ac663ea4c635e6d969dc",
+          "metrics": {
+            "error": 0.11143358542213977,
+            "persistence_error": 0.12645146598278637,
+            "skill_vs_persistence": 0.11876398936087429,
+            "examples": 142,
+            "validation_error": 0.11143358542213977,
+            "seconds": 2.136439085006714,
+            "learner_metric": 0.11143358542213977,
+            "learner_metric_matches": true
+          },
+          "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/48984045d222b74c7636d08398fa8031",
+          "artifact": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-48984045d222b74c7636d08398fa8031/v0",
+          "trace": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/48984045d222b74c7636d08398fa8031",
+          "trace_verified": true
+        }
+      },
+      "adopted_stage": "48984045d222b74c7636d08398fa8031",
+      "retained_parent": false,
+      "lesson_saved": true,
+      "limits_saved": true
+    },
+    {
+      "round": 2,
+      "candidates": [
+        {
+          "title": "Masked-L1 training loss aligned with the scored metric",
+          "decision": "CHANGE",
+          "fingerprint": "a9b5a0cd184af61fd5217f30ad43b85fd6c2627047d08514585d12a821d4a356",
+          "diff": "--- previous/candidate.py\n+++ proposed/candidate.py\n@@ -28,7 +28,8 @@\n \n \n def training_loss(prediction,target,mask):\n-    return ((prediction-target).square()*mask).sum()/mask.sum()\n+    # masked mean absolute error, matching the fixed disk-masked absolute error metric\n+    return ((prediction-target).abs()*mask).sum()/mask.sum()\n \n \n def fit(model,x,y,mask,config):\n",
+          "execution": {
+            "id": "accb1bc51c77a92731d3f442fc71e4c0",
+            "status": "complete",
+            "source_fingerprint": "d9bccf079901394883e0e866e327d8f700ebe5e1e2f963dd4cacdcf5743e893d",
+            "metrics": {
+              "error": 0.11091556898305115,
+              "persistence_error": 0.12645146598278637,
+              "skill_vs_persistence": 0.12286055269497698,
+              "examples": 142,
+              "validation_error": 0.11091556898305115,
+              "seconds": 2.0871689319610596,
+              "learner_metric": 0.11091556898305115,
+              "learner_metric_matches": true
+            },
+            "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/accb1bc51c77a92731d3f442fc71e4c0",
+            "artifact": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-accb1bc51c77a92731d3f442fc71e4c0/v0",
+            "trace": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/accb1bc51c77a92731d3f442fc71e4c0",
+            "trace_verified": true
+          }
+        },
+        {
+          "title": "Keep zero-init residual head with masked MSE",
+          "decision": "KEEP",
+          "fingerprint": "4ce8f883dc82b8f25f1f8fa12f66dd0cec858888ec0469e9d688dff352fb782e",
+          "diff": "",
+          "execution": {
+            "id": "ac31adeaabe049cf192b59ca9b2858c9",
+            "status": "complete",
+            "source_fingerprint": "0d955b288071933bb95a7590dd66583739a4b2998b83ac663ea4c635e6d969dc",
+            "metrics": {
+              "error": 0.11143358542213977,
+              "persistence_error": 0.12645146598278637,
+              "skill_vs_persistence": 0.11876398936087429,
+              "examples": 142,
+              "validation_error": 0.11143358542213977,
+              "seconds": 2.031480073928833,
+              "learner_metric": 0.11143358542213977,
+              "learner_metric_matches": true
+            },
+            "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/ac31adeaabe049cf192b59ca9b2858c9",
+            "artifact": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-ac31adeaabe049cf192b59ca9b2858c9/v0",
+            "trace": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ac31adeaabe049cf192b59ca9b2858c9",
+            "trace_verified": true
+          }
+        }
+      ],
+      "composition": {
+        "title": "Adopt the tested metric-aligned masked-L1 loss on the zero-init head (validation 0.1114\u21920.1109)",
+        "decision": "CHANGE",
+        "fingerprint": "a9b5a0cd184af61fd5217f30ad43b85fd6c2627047d08514585d12a821d4a356",
+        "execution": {
+          "id": "f5e5d198bc9479f78d9a4b1c8c8979e3",
+          "status": "complete",
+          "source_fingerprint": "d9bccf079901394883e0e866e327d8f700ebe5e1e2f963dd4cacdcf5743e893d",
+          "metrics": {
+            "error": 0.11091556898305115,
+            "persistence_error": 0.12645146598278637,
+            "skill_vs_persistence": 0.12286055269497698,
+            "examples": 142,
+            "validation_error": 0.11091556898305115,
+            "seconds": 1.8935818672180176,
+            "learner_metric": 0.11091556898305115,
+            "learner_metric_matches": true
+          },
+          "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/f5e5d198bc9479f78d9a4b1c8c8979e3",
+          "artifact": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f5e5d198bc9479f78d9a4b1c8c8979e3/v0",
+          "trace": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f5e5d198bc9479f78d9a4b1c8c8979e3",
+          "trace_verified": true
+        }
+      },
+      "adopted_stage": "f5e5d198bc9479f78d9a4b1c8c8979e3",
+      "retained_parent": false,
+      "lesson_saved": true,
+      "limits_saved": true
+    }
+  ],
+  "final_images": {
+    "persistence": {
+      "error": 0.12576198700564592,
+      "persistence_error": 0.12576198700564592,
+      "skill_vs_persistence": 0.0,
+      "examples": 199
+    },
+    "manual": {
+      "error": 0.1224417336622075,
+      "persistence_error": 0.12576198700564592,
+      "skill_vs_persistence": 0.026401088456795563,
+      "examples": 199,
+      "final_error": 0.1224417336622075,
+      "seconds": 1.4042019844055176
+    },
+    "agent": {
+      "error": 0.11001095193834161,
+      "persistence_error": 0.12576198700564592,
+      "skill_vs_persistence": 0.12524480124981796,
+      "examples": 199,
+      "final_error": 0.11001095193834161,
+      "seconds": 1.0543780326843262
+    }
+  },
+  "final_measurements": {
+    "persistence": {
+      "error": 0.19270602844340234,
+      "persistence_error": 0.19270602844340234,
+      "skill_vs_persistence": 0.0,
+      "examples": 2694
+    },
+    "selected-model": {
+      "error": 2.468974582071028,
+      "persistence_error": 0.19270602844340234,
+      "skill_vs_persistence": -11.812129449267148,
+      "examples": 2694,
+      "final_error": 2.468974582071028,
+      "seconds": 1.3808228969573975
+    }
+  },
+  "final_executions": [
+    {
+      "id": "3ad0abefe2f1eb521fbb8eca0330174b",
+      "status": "complete",
+      "source_fingerprint": "528a22180e0fdc7fdc31183a2f911e498b75f0033bae257e9cff29cdad7373b8",
+      "metrics": {
+        "error": 0.1224417336622075,
+        "persistence_error": 0.12576198700564592,
+        "skill_vs_persistence": 0.026401088456795563,
+        "examples": 199,
+        "final_error": 0.1224417336622075,
+        "seconds": 1.4042019844055176
+      },
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/3ad0abefe2f1eb521fbb8eca0330174b",
+      "artifact": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-3ad0abefe2f1eb521fbb8eca0330174b/v0",
+      "trace": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3ad0abefe2f1eb521fbb8eca0330174b",
+      "trace_verified": true
+    },
+    {
+      "id": "f2175d5e34e78b67005f5a219c127949",
+      "status": "complete",
+      "source_fingerprint": "a9b5a0cd184af61fd5217f30ad43b85fd6c2627047d08514585d12a821d4a356",
+      "metrics": {
+        "error": 0.11001095193834161,
+        "persistence_error": 0.12576198700564592,
+        "skill_vs_persistence": 0.12524480124981796,
+        "examples": 199,
+        "final_error": 0.11001095193834161,
+        "seconds": 1.0543780326843262
+      },
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/f2175d5e34e78b67005f5a219c127949",
+      "artifact": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f2175d5e34e78b67005f5a219c127949/v0",
+      "trace": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f2175d5e34e78b67005f5a219c127949",
+      "trace_verified": true
+    },
+    {
+      "id": "ec725581ccce58fd968a64b40c935223",
+      "status": "complete",
+      "source_fingerprint": "8cedc910efae9babb2c4183d1997e5a568b94a5ef7c534945c0f539821904f99",
+      "metrics": {
+        "error": 2.468974582071028,
+        "persistence_error": 0.19270602844340234,
+        "skill_vs_persistence": -11.812129449267148,
+        "examples": 2694,
+        "final_error": 2.468974582071028,
+        "seconds": 1.3808228969573975
+      },
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/ec725581ccce58fd968a64b40c935223",
+      "artifact": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-ec725581ccce58fd968a64b40c935223/v0",
+      "trace": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ec725581ccce58fd968a64b40c935223",
+      "trace_verified": true
+    }
+  ],
+  "accounting": {
+    "provider_requests": 4,
+    "observed_usd": 0.0183305,
+    "bounded_unknown_usd": 0,
+    "provider_seconds": 265.0705404281616,
+    "allowance_usd": 8,
+    "compute": "local CPU; no new billed hosting introduced"
+  },
+  "trace_readback": {
+    "conversations": 24,
+    "verified": 24,
+    "stored_spans": 56
+  },
+  "publications": {
+    "comparison/cdf978c810fa7f280b3ccba0": {
+      "persistence": {
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/8c856d156876537764dcfcdb011296d7",
+        "weave_status": "published",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/solar-images-final-persistence-cases:LdOFtimUg2BUthGHk8z0EHfK3OXIWFvM7ClbEPzMYug",
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/solar-images-final-persistence-evaluation:94PB3Let78YbSa7QKbSxpbzKAR6KgXkYppc5giX6Pgk",
+        "native_status": "unavailable",
+        "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+      },
+      "manual": {
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/d1191aacb659276c00de67cd4653bb43",
+        "weave_status": "published",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/solar-images-final-manual-cases:EoNckuhz79yiYnVg9X17VBcJvOFKPYFwf8aPYFXsTvE",
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/solar-images-final-manual-evaluation:WMD6sZWjdCyDFDnj2l27kEqaUArRcHQ7ifDCWR13OnY",
+        "native_status": "unavailable",
+        "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+      },
+      "agent": {
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/03ab9f82b09eb4106199216e99df1fce",
+        "weave_status": "published",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/solar-images-final-agent-cases:QACqGVYKcWZJoOb5iupU9pdVx7fAJMpoPwKVXhE98NM",
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/solar-images-final-agent-evaluation:Mx5bZq64fT4dO3SRspS98xJZyWBsN7c4ZCLyIFbAjeM",
+        "native_status": "unavailable",
+        "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+      }
+    },
+    "comparison/86d219cf24c06e6d88c9e8ec": {
+      "persistence": {
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/6a22bd3384f475b87781c40f49ad62cc",
+        "weave_status": "published",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/solar-measurements-final-persistence-cases:LwKCIabkiY3BoPwuymEWEG9eDFEWzvrfJwSq3INspUQ",
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/solar-measurements-final-persistence-evaluation:HSHYOhTv5kfR7lGTP7PajiUJ5whG962XtfwNkohVCzE",
+        "native_status": "unavailable",
+        "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+      },
+      "selected-model": {
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/3cc3758de39ae8a8e3afdaba625b8252",
+        "weave_status": "published",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/solar-measurements-final-selected-model-cases:gscBhMe6JxxKtoK9r5tKqFYmWXDy69bHFXP4KQwe2y8",
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/solar-measurements-final-selected-model-evaluation:8DvZ66nCyzK8WseYWBtzFjyWUzr6kgbeX6bhSiHm4TY",
+        "native_status": "unavailable",
+        "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+      }
+    }
+  },
+  "checks": {
+    "reviewed_source_equals_executed": true,
+    "all_provider_calls_precede_final_evaluation": true,
+    "requests_after_restore": 0,
+    "focused_tests": 11,
+    "marimo_check": "passed",
+    "browser_tracing_check_export_navigation": "passed after independent check-state repair",
+    "stored_learner_attribute": {
+      "conversation_id": "19f7b8c14211a63aa6a7e22bd14375bf",
+      "span_id": "3836f2a676d91bdf",
+      "field": "raw_span_dump.attributes.workshop.exercise",
+      "value": "solar-research"
+    }
+  },
+  "known_limitations": [
+    "Native EvalTables returned HTTP 500 for all five comparison versions. W&B runs, Weave evaluations and local comparisons are preserved.",
+    "The GOES neural model underperformed persistence substantially. This failure is included.",
+    "One rehearsal, one seed and two final dates are teaching evidence, not reliable forecasting or repeatability evidence.",
+    "Full browser rehearsal included debugging/restarts; external-account and human usability rehearsals remain separate readiness gates.",
+    "Initial Sweep publication encountered active-run ID conflicts; all saved executions were later published with unique stage run IDs. The callback now defers checkpoint publication outside the active Sweep.",
+    "The initial setup-check UI invalidated shared callback state. It was repaired with independent check feedback and verified through check, real export, stored-attribute readback and navigation; no paid execution was repeated."
+  ],
+  "screenshots": [
+    "ux-v020-solar-setup.png",
+    "ux-v020-solar-instrumentation.png",
+    "ux-v020-solar-models.png",
+    "ux-v020-solar-diff.png",
+    "ux-v020-solar-final.png"
+  ]
+}

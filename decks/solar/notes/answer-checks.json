@@ -1,0 +1,10 @@
+{
+  "training_loss": "masked squared error and gradient",
+  "residual": "zero correction reproduces latest image",
+  "evidence": "allowlist and test-split rejection",
+  "persistence": "latest observation, detached result, no target use",
+  "flux": "sign, zero, constant error",
+  "image": "mask exclusion, constant error, equal example weighting",
+  "provider_calls": 0,
+  "training_runs": 0
+}

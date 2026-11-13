@@ -1,39 +1,45 @@
-# Release checks · November 13, 2026
+# Release checks · 0.2.0 technical preview
 
-This is a technical preview. The implementation and live rehearsals are complete; a fresh external-attendee check and a human usability rehearsal remain before advertising a classroom-ready release.
+The revised notebooks were exercised in a browser using fresh local workspaces and real Forge services. They still need an external-attendee check and a human usability rehearsal before classroom-ready status.
 
 | Check | Evidence and outcome |
 | --- | --- |
-| Local tests | 21 passed, including real CPU training/frozen-weight replay, true MCP timeout recovery, KEEP, budget reservations, interrupted requests, isolation, artifact restore and missing publication. |
-| Clean installs | macOS, Windows and Linux clean installs, all 21 tests and marimo checks passed for this release. [CI run](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43377483699). |
-| Hosted copy | Native **Copy to project** created a distinct notebook, autofilled its project, verified writes and exported two stored spans using hosted authentication. No host token. [Receipt](../evidence/hosted-copy.json). This used the maintainer account, not a new external account. |
-| Recovery | An empty runtime restored all 33 completed Solar stages and verified 51 source, weight and prediction files byte-for-byte, without new training or inference. [Trained restore](../evidence/trained-restore.json). A separate hosted-identity fixture also passed [restore and monitoring checks](../evidence/restore.json). |
-| Monitoring | Real public progress runs read through the API. The monitor only reads; missing updates are unknown. No classroom-scale load test or human rehearsal has been performed. |
-| Agent Lens | Stored-span readback checked real requests/tools against independent receipts. The copied hosted notebook’s conversation was also inspected in the native UI. [Capture](../evidence/hosted-agent-lens.png). |
-| Solar | Six GOES configurations, two manual image architectures, two research rounds, tested composition/KEEP, frozen image and measurement comparisons completed. [Results](../evidence/solar-rehearsal.json). |
-| Pending | Two improvement rounds, real local MCP, all 12 final executions and 12 available explanation judgments completed. All versions passed; no quality advantage was demonstrated. [Results](../evidence/pending-rehearsal.json). |
-| Evaluations | W&B tables and Weave evaluations published. Native EvalTables returned HTTP 500, including the final comparison; its status is explicitly unavailable. Retry publication alone after the service recovers. |
-| Public access | Solar Report rendered signed out. Forge notebook templates require sign-in before copying. The 26.1 MB dataset downloaded anonymously and matched its SHA-256. [Checks](../evidence/public-access.json). |
-| Browser | All six chapters inspected on desktop; narrow layout captured. A fresh hosted copy passed setup and trace export. The complete paid path ran through the same runtime via rehearsal scripts; it has not been driven entirely through a fresh external attendee’s browser. |
+| Local validation | 57 tests passed, including candidate isolation, missing judgments, recovery, exact executed code, draft restore and trace links. All four generated notebooks passed marimo checks. |
+| Guided exercises | Both notebooks expose participant code, free checks, explicit execution, results and Forge links. Navigation and prerequisite links were exercised in the browser. Draft edits survive navigation and restart. |
+| Solar browser rehearsal | Six native Sweep configurations, two manual image architectures, both two-candidate research rounds, tested compositions and frozen comparisons completed. [Results](../evidence/ux-v020-solar.json). |
+| Pending browser rehearsal | Both improvement rounds and all 12 final executions completed. All 12 reached the correct account state; 11 of 12 explanation judgments were available. The editor retained the manual harness; three labels represent two distinct executable versions. [Results](../evidence/ux-v020-pending.json). |
+| Agent Lens | Stored spans were checked against independent execution records. Native screens show [research evidence selection](../evidence/ux-v020-solar-lens-current.png) and the [learner-authored invoice tool](../evidence/ux-v020-pending-lens.png). |
+| Recovery | Completed work and evidence links restore from durable records. A failed Pending MCP attempt was retained; recovery reused the saved billing execution. Publication retries do not repeat training or inference. |
+| Deck | All 90 frames and PDF pages were rendered and inspected. Exercise function/button contracts, interactive inspectors, worked-answer returns and keyboard navigation passed. [Deck checks](../decks/solar/notes/render-checks.json). |
+| Layout | Desktop and narrow layouts were inspected in light and dark themes. IBM Plex is bundled locally. [Desktop](../evidence/ux-v020-solar-desktop.png), [narrow dark](../evidence/ux-v020-solar-dark-narrow.png). |
+| Native products | Sweep runs, artifacts, Weave evaluations and Reports publish. Native EvalTables still returns HTTP 500; its status remains unavailable. [Service checks](../evidence/services.json). |
+| Earlier hosted check | A maintainer used native Copy to project, checked its distinct identity, and exported stored spans with hosted authentication. [Receipt](../evidence/hosted-copy.json). This does not establish external-account access to the revised release. |
+| Fresh artifact restore | Restored 44 completed Solar stages and 16 drafts into a fresh local runtime. All 96 output files matched byte-for-byte. Loading the saved weights reproduced final error 0.11001095193834161 exactly, with no training updates or new inference. [Receipt](../evidence/ux-v020-restored.json). |
+| Public Reports | Both new rehearsal Reports rendered in a signed-out browser. [Readback](../evidence/ux-v020-reports-public.json). Templates still require sign-in to copy. |
+| Monitoring | Public progress runs are read-only. Missing updates remain unknown. No classroom-scale load test or human rehearsal has been performed. |
+
+## What the recorded results show
+
+In the revised Solar browser rehearsal, final image error was **0.125762 for persistence, 0.122442 for the manual residual model, and 0.110011 for the agent-selected model**. The agent first proposed a zero-initialized residual head, then combined it with a disk-masked L1 training loss. Each adopted version was tested before selection. Inspect the exact diffs and validation records in the deck's branch explorer.
+
+These 199 overlapping windows come from two reserved days and one seed. The result shows that the workshop can execute and inspect a useful code change; it does not establish a general forecasting gain.
+
+The GOES models remain a useful counterexample: final log-flux error was **2.468975**, versus **0.192706** for persistence. The short 60-step training budget produced a poor forecast. We keep its learning curve and actual predictions in the workshop instead of quietly changing the training budget after seeing the score.
+
+Pending completed the account work in all 12 final executions. The editor's decision to retain the manual harness is valid, and does not demonstrate an additional improvement from automated editing. State correctness and explanation judgments remain separate. One explanation judge exhausted its output limit on both the initial request and one explicit judge-only retry. Its result remains unavailable, never zero. Those attempts are charged and preserved; the employee execution was not repeated.
+
+The Pending rehearsal also exposed an editor-context defect: the prompt did not clearly separate the current mission from prior experience. The revised prompt now does; focused checks verify that separation. Existing decisions and scores were preserved rather than relabeled as runs of that repair.
+
+The recorded results belong to the rehearsal. A learner's unexecuted code edit has no result attached to it.
 
 ## Timing and cost
 
-On the rehearsal Mac, solar training took 30.1 seconds summed over all executed training attempts, with a maximum of 2.26 seconds per training subprocess. Research-agent provider requests took 489 seconds summed across seven calls. Pending used 130 requests totaling 650 seconds of provider time. These totals exclude human review, downloads and publication time; they are not end-to-end classroom timings. [Machine-readable measurements](../evidence/timing.json).
-
-Measured inference was **$0.027084 for Solar** and **$0.039720 for Pending**. Unknown usage and in-flight reservations were zero at completion. Costs include the recorded retries and qualification attempts. Notebook compute is separate; local CPU rehearsal incurred no new hosted training charge. A hosted CPU rehearsal and participant pacing check remain necessary before claiming the four-hour schedule is proven.
-
-## What the results mean
-
-The final image error fell from 0.122442 (manual residual model) to 0.120769 (agent-selected masked-L1 model), about 1.37% relative. The agent’s second-round cosine schedule regressed on validation and was rejected. These 199 overlapping windows come from two days and one seed; they do not establish a general forecasting improvement.
-
-The GOES models were undertrained at the 60-step teaching budget: final error 2.469 versus persistence 0.193 in log10 flux units. Keep this failure visible and inspect the learning curve. A longer, equally applied training budget is a possible next exercise, not an unreported repair to these results.
-
-Qualification retained an initial proposal without the complete active config, its ineffective default-value change, a refreshed proposal with config, and all associated costs. The final demonstration uses the later reviewed two-round sequence. This is a runtime rehearsal, not a preregistered treatment comparison.
+Measured inference was **$0.018331 for Solar** and **$0.036720 for Pending**, including the failed judge requests. Unknown usage and in-flight reservations were zero at completion. The machine-readable rehearsal receipts report actual training time and provider time. These exclude time spent reading code, reviewing diffs and discussing results. They are not classroom timing measurements. Local CPU execution incurred no hosted compute charge; hosted notebook compute is separate from the participant's inference allowance.
 
 ## Remaining release gates
 
 - An external attendee must copy the final template into a different account, check its own inference entitlement, train, and restore a destroyed runtime.
 - A developer and a less technical participant must complete the code exercises and explain their results without facilitator takeover.
-- Recheck native EvalTables when its HTTP 500 is repaired. Until then, teach the clearly labeled Weave/notebook comparison path.
+- Recheck native EvalTables when its HTTP 500 is repaired. Until then, teach the labeled Weave/notebook comparison path.
 
-Older Pending releases and attendee copies are untouched. No core product code changed.
+Prior workshop releases and attendee copies are untouched. No core product code changed.

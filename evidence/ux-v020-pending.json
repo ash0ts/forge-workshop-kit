@@ -1,0 +1,448 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-11-13T17:19:13.134148+00:00",
+  "workshop": "pending-direct-teaching",
+  "rehearsal": "ux-v020-pending",
+  "project": "wandb/forge-workshop-kit",
+  "method": "Actual marimo browser controls in a local notebook; editable worked answers, both improvement rounds, all12 final executions, independent native trace readback. No gateway.",
+  "browser_activities": [
+    "Project access and free setup trace",
+    "Authored invoice function and three free checks",
+    "Authored dispatch and observation functions, then froze executor",
+    "Ran the visible tool/model Forge scopes",
+    "Scorer and judge-validation checks",
+    "Original and manual development executions, aligned Weave comparison",
+    "Reviewed exact candidate diffs and separately probed A/B in each round",
+    "Tested composition, saved attributed lesson, adopted version",
+    "Froze versions and ran all12 final executions",
+    "One explicit judge-only retry; no employee rerun",
+    "Published conclusion, restarted notebook and restored drafts/results"
+  ],
+  "final_comparison": {
+    "planned": 12,
+    "executed": 12,
+    "state_correct": 12,
+    "judgments_available": 11,
+    "unique_executable_harnesses": 2,
+    "by_condition": {
+      "starting": {
+        "executions": 4,
+        "state_success_rate": 1.0,
+        "available_judgments": 3,
+        "grounded_available": 3
+      },
+      "manual": {
+        "executions": 4,
+        "state_success_rate": 1.0,
+        "available_judgments": 4,
+        "grounded_available": 4
+      },
+      "agent": {
+        "executions": 4,
+        "state_success_rate": 1.0,
+        "available_judgments": 4,
+        "grounded_available": 4
+      }
+    },
+    "interpretation": "All versions passed these four cases. No observed task-quality gain. Manual and agent-selected harnesses are the same executable version. One explanation score remains missing after two output-limit failures.",
+    "rows": [
+      {
+        "condition": "starting",
+        "case_id": "already-refunded",
+        "execution_id": "8e0d86a0aeaac8eedb768ff986795b5f",
+        "harness_fingerprint": "b2d1df44c6e1d70d9a04acde80918deda5083d7496ebeb86827b2b8634327b66",
+        "runtime_fingerprint": "fdd945f107ea969401e2ade08e04435f1d6db086a06f4026909195894f5a4837",
+        "state_correct": true,
+        "task_success": true,
+        "grounded": true,
+        "explanation_complete": true,
+        "judge_status": "available",
+        "tool_errors": 0,
+        "conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/8e0d86a0aeaac8eedb768ff986795b5f",
+        "verified_stored_spans": 7
+      },
+      {
+        "condition": "starting",
+        "case_id": "two-invoices",
+        "execution_id": "61b58dc4c65c20bd54f83ae44ab3aeab",
+        "harness_fingerprint": "b2d1df44c6e1d70d9a04acde80918deda5083d7496ebeb86827b2b8634327b66",
+        "runtime_fingerprint": "fdd945f107ea969401e2ade08e04435f1d6db086a06f4026909195894f5a4837",
+        "state_correct": true,
+        "task_success": true,
+        "grounded": null,
+        "explanation_complete": null,
+        "judge_status": "unavailable",
+        "tool_errors": 0,
+        "conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/61b58dc4c65c20bd54f83ae44ab3aeab",
+        "verified_stored_spans": 9
+      },
+      {
+        "condition": "starting",
+        "case_id": "onboarding-recovery",
+        "execution_id": "944809b335826d65fcb3bcf0ce62e07d",
+        "harness_fingerprint": "b2d1df44c6e1d70d9a04acde80918deda5083d7496ebeb86827b2b8634327b66",
+        "runtime_fingerprint": "fdd945f107ea969401e2ade08e04435f1d6db086a06f4026909195894f5a4837",
+        "state_correct": true,
+        "task_success": true,
+        "grounded": true,
+        "explanation_complete": true,
+        "judge_status": "available",
+        "tool_errors": 1,
+        "conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/944809b335826d65fcb3bcf0ce62e07d",
+        "verified_stored_spans": 11
+      },
+      {
+        "condition": "starting",
+        "case_id": "clarify-access",
+        "execution_id": "6c27c281b8ceae37b7435f08d21aca17",
+        "harness_fingerprint": "b2d1df44c6e1d70d9a04acde80918deda5083d7496ebeb86827b2b8634327b66",
+        "runtime_fingerprint": "fdd945f107ea969401e2ade08e04435f1d6db086a06f4026909195894f5a4837",
+        "state_correct": true,
+        "task_success": true,
+        "grounded": true,
+        "explanation_complete": true,
+        "judge_status": "available",
+        "tool_errors": 0,
+        "conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/6c27c281b8ceae37b7435f08d21aca17",
+        "verified_stored_spans": 5
+      },
+      {
+        "condition": "manual",
+        "case_id": "already-refunded",
+        "execution_id": "41586723cc679767b2f867477c78c628",
+        "harness_fingerprint": "351e0de9ac217e9d0218eb967a22f400192d30331bdaa0ff3516bd916a27029a",
+        "runtime_fingerprint": "fdd945f107ea969401e2ade08e04435f1d6db086a06f4026909195894f5a4837",
+        "state_correct": true,
+        "task_success": true,
+        "grounded": true,
+        "explanation_complete": true,
+        "judge_status": "available",
+        "tool_errors": 0,
+        "conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/41586723cc679767b2f867477c78c628",
+        "verified_stored_spans": 5
+      },
+      {
+        "condition": "manual",
+        "case_id": "two-invoices",
+        "execution_id": "370ae4263372ca1de91d7308e66d0d3d",
+        "harness_fingerprint": "351e0de9ac217e9d0218eb967a22f400192d30331bdaa0ff3516bd916a27029a",
+        "runtime_fingerprint": "fdd945f107ea969401e2ade08e04435f1d6db086a06f4026909195894f5a4837",
+        "state_correct": true,
+        "task_success": true,
+        "grounded": true,
+        "explanation_complete": true,
+        "judge_status": "available",
+        "tool_errors": 0,
+        "conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/370ae4263372ca1de91d7308e66d0d3d",
+        "verified_stored_spans": 9
+      },
+      {
+        "condition": "manual",
+        "case_id": "onboarding-recovery",
+        "execution_id": "0395fcdb696c14c30c54ab47e34ba96c",
+        "harness_fingerprint": "351e0de9ac217e9d0218eb967a22f400192d30331bdaa0ff3516bd916a27029a",
+        "runtime_fingerprint": "fdd945f107ea969401e2ade08e04435f1d6db086a06f4026909195894f5a4837",
+        "state_correct": true,
+        "task_success": true,
+        "grounded": true,
+        "explanation_complete": true,
+        "judge_status": "available",
+        "tool_errors": 1,
+        "conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/0395fcdb696c14c30c54ab47e34ba96c",
+        "verified_stored_spans": 9
+      },
+      {
+        "condition": "manual",
+        "case_id": "clarify-access",
+        "execution_id": "d1477129ebc5957e2a07a28c9d949dda",
+        "harness_fingerprint": "351e0de9ac217e9d0218eb967a22f400192d30331bdaa0ff3516bd916a27029a",
+        "runtime_fingerprint": "fdd945f107ea969401e2ade08e04435f1d6db086a06f4026909195894f5a4837",
+        "state_correct": true,
+        "task_success": true,
+        "grounded": true,
+        "explanation_complete": true,
+        "judge_status": "available",
+        "tool_errors": 0,
+        "conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/d1477129ebc5957e2a07a28c9d949dda",
+        "verified_stored_spans": 5
+      },
+      {
+        "condition": "agent",
+        "case_id": "already-refunded",
+        "execution_id": "e16e2f454b4001ff002ed550311dfdbf",
+        "harness_fingerprint": "351e0de9ac217e9d0218eb967a22f400192d30331bdaa0ff3516bd916a27029a",
+        "runtime_fingerprint": "fdd945f107ea969401e2ade08e04435f1d6db086a06f4026909195894f5a4837",
+        "state_correct": true,
+        "task_success": true,
+        "grounded": true,
+        "explanation_complete": true,
+        "judge_status": "available",
+        "tool_errors": 0,
+        "conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/e16e2f454b4001ff002ed550311dfdbf",
+        "verified_stored_spans": 7
+      },
+      {
+        "condition": "agent",
+        "case_id": "two-invoices",
+        "execution_id": "ac90c5424dc641d5b2cbd7d240e2e67d",
+        "harness_fingerprint": "351e0de9ac217e9d0218eb967a22f400192d30331bdaa0ff3516bd916a27029a",
+        "runtime_fingerprint": "fdd945f107ea969401e2ade08e04435f1d6db086a06f4026909195894f5a4837",
+        "state_correct": true,
+        "task_success": true,
+        "grounded": true,
+        "explanation_complete": true,
+        "judge_status": "available",
+        "tool_errors": 0,
+        "conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ac90c5424dc641d5b2cbd7d240e2e67d",
+        "verified_stored_spans": 9
+      },
+      {
+        "condition": "agent",
+        "case_id": "onboarding-recovery",
+        "execution_id": "181a58f75d1086171919f7867dec547c",
+        "harness_fingerprint": "351e0de9ac217e9d0218eb967a22f400192d30331bdaa0ff3516bd916a27029a",
+        "runtime_fingerprint": "fdd945f107ea969401e2ade08e04435f1d6db086a06f4026909195894f5a4837",
+        "state_correct": true,
+        "task_success": true,
+        "grounded": true,
+        "explanation_complete": true,
+        "judge_status": "available",
+        "tool_errors": 1,
+        "conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/181a58f75d1086171919f7867dec547c",
+        "verified_stored_spans": 9
+      },
+      {
+        "condition": "agent",
+        "case_id": "clarify-access",
+        "execution_id": "c9aa6ae3ff9deee87943eaf61c195e8f",
+        "harness_fingerprint": "351e0de9ac217e9d0218eb967a22f400192d30331bdaa0ff3516bd916a27029a",
+        "runtime_fingerprint": "fdd945f107ea969401e2ade08e04435f1d6db086a06f4026909195894f5a4837",
+        "state_correct": true,
+        "task_success": true,
+        "grounded": true,
+        "explanation_complete": true,
+        "judge_status": "available",
+        "tool_errors": 0,
+        "conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c9aa6ae3ff9deee87943eaf61c195e8f",
+        "verified_stored_spans": 5
+      }
+    ]
+  },
+  "improvement_rounds": [
+    {
+      "round": 1,
+      "proposal_stage": "e59f98a0cc5d76c8e5939212b2ec009b",
+      "proposals": [
+        {
+          "decision": "CHANGE",
+          "title": "Require duplicate-charge evidence, not a specific lookup tool",
+          "fingerprint": "5b506b1aaf0e15f938c18ef9da1838e3a0616b4c3b9365de19d001b8abd8abf9"
+        },
+        {
+          "decision": "KEEP",
+          "title": "Clean, verified resolution \u2014 keep the proven harness",
+          "fingerprint": "351e0de9ac217e9d0218eb967a22f400192d30331bdaa0ff3516bd916a27029a"
+        }
+      ],
+      "composition": {
+        "decision": "KEEP",
+        "title": "Parent harness already produces correct, rule-compliant duplicate refunds",
+        "fingerprint": "351e0de9ac217e9d0218eb967a22f400192d30331bdaa0ff3516bd916a27029a"
+      },
+      "adopted_fingerprint": "351e0de9ac217e9d0218eb967a22f400192d30331bdaa0ff3516bd916a27029a",
+      "executed_stage": "811b3f06f5c75f4425d10f8033275974",
+      "executed_fingerprint": "351e0de9ac217e9d0218eb967a22f400192d30331bdaa0ff3516bd916a27029a",
+      "fingerprint_matches": true,
+      "interpretation": "Retained the manual harness. KEEP is an actual decision and probe; it does not create a new executable version."
+    },
+    {
+      "round": 2,
+      "proposal_stage": "81cea3f8910420b38d32989b3d9fb5ca",
+      "proposals": [
+        {
+          "decision": "KEEP",
+          "title": "Parent harness already produced a rule-compliant onboarding; no failure to fix",
+          "fingerprint": "351e0de9ac217e9d0218eb967a22f400192d30331bdaa0ff3516bd916a27029a"
+        },
+        {
+          "decision": "KEEP",
+          "title": "No evidence supplied for this candidate; default to the parent harness",
+          "fingerprint": "351e0de9ac217e9d0218eb967a22f400192d30331bdaa0ff3516bd916a27029a"
+        }
+      ],
+      "composition": {
+        "decision": "KEEP",
+        "title": "Timeout-safe provisioning harness succeeded identically on both runs",
+        "fingerprint": "351e0de9ac217e9d0218eb967a22f400192d30331bdaa0ff3516bd916a27029a"
+      },
+      "adopted_fingerprint": "351e0de9ac217e9d0218eb967a22f400192d30331bdaa0ff3516bd916a27029a",
+      "executed_stage": "675f183b7b0d1ce869ab764de3c59720",
+      "executed_fingerprint": "351e0de9ac217e9d0218eb967a22f400192d30331bdaa0ff3516bd916a27029a",
+      "fingerprint_matches": true,
+      "interpretation": "Retained the manual harness. KEEP is an actual decision and probe; it does not create a new executable version."
+    }
+  ],
+  "failure_records": [
+    {
+      "stage_id": "1a0c29e68cfb50da4ece251d95717e60",
+      "name": "pending/original/missing-seat",
+      "attempt": 1,
+      "error": "RuntimeError: asyncio.run() cannot be called from a running event loop",
+      "trace": null
+    },
+    {
+      "stage_id": "4036366eff12a32ddafa1ed549885b7b",
+      "name": "pending/judge/61b58dc4c65c20bd54f83ae44ab3aeab",
+      "attempt": 1,
+      "error": "ValueError: Incomplete response: output limit reached.",
+      "trace": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/4036366eff12a32ddafa1ed549885b7b"
+    },
+    {
+      "stage_id": "ac4bddb44fa483c0c72d2e7eff798fbe",
+      "name": "pending/judge/61b58dc4c65c20bd54f83ae44ab3aeab",
+      "attempt": 2,
+      "error": "ValueError: Incomplete response: output limit reached.",
+      "trace": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ac4bddb44fa483c0c72d2e7eff798fbe"
+    }
+  ],
+  "judge_retry": {
+    "execution_id": "61b58dc4c65c20bd54f83ae44ab3aeab",
+    "attempts": 2,
+    "explicit_retries": 1,
+    "result": "unavailable: output limit reached on both attempts",
+    "employee_executions_before": 12,
+    "employee_executions_after": 12,
+    "further_retry_disabled": true
+  },
+  "accounting": {
+    "provider_requests": 118,
+    "observed_usd": 0.03671966,
+    "bounded_unknown_usd": 0,
+    "in_flight_reservations_usd": 0,
+    "summed_provider_seconds": 556.13,
+    "allowance_usd": 8,
+    "notebook_compute": "Not included in inference accounting; local CPU rehearsal."
+  },
+  "trace_coverage": {
+    "verified_conversations": 47,
+    "stored_spans": 262,
+    "expected_spans": 262,
+    "final_executions_verified": 12,
+    "free_invoice_check": {
+      "trace_id": "5df140e3b56659268d2bdadbca99ba64",
+      "conversation_id": "77703caf6a698db3a219c0981ea295f4",
+      "verified": true,
+      "expected": 4,
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/77703caf6a698db3a219c0981ea295f4",
+      "span_ids": {
+        "f1b49fabef8d70cda0ddddce": "45bec4fef5f3e0a4",
+        "3f60f157115fa74b89d3506d": "499c7f5b290532a6",
+        "2428381e9c1377ed78d3cf5e": "d872bef8904292a7"
+      },
+      "stored_spans": 4
+    },
+    "failed_judge_traces_exported": true
+  },
+  "learner_tool_example": {
+    "case": "manual / two-invoices",
+    "conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/370ae4263372ca1de91d7308e66d0d3d",
+    "event_ids": [
+      "370ae4263372ca1de91d7308e66d0d3d/tool-1",
+      "370ae4263372ca1de91d7308e66d0d3d/tool-2"
+    ],
+    "observation": "The learner-written lookup_invoice function inspected inv-1 and inv-2. Distinct invoices were not incorrectly refunded."
+  },
+  "publication": {
+    "comparisons": {
+      "starting": {
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/8fd15200fa51635dd30e76869dfd2a30",
+        "weave_status": "published",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/pending-final-starting-cases:YuSMvbnIk0daSBPUQKY2w2lhu3zr3vqPnVhbYd4QAoE",
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/pending-final-starting-evaluation:o4YpXKz70Bip1Fc4jXRq0IbN7tNd9YtDzDo7rNzv6U8",
+        "native_status": "unavailable",
+        "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+      },
+      "manual": {
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/f3cd39e83f9d9bf727142045e1057d90",
+        "weave_status": "published",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/pending-final-manual-cases:ymlQwtAVne7t19QjuU1iFVnXvYiYvcED8UVl60XMC88",
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/pending-final-manual-evaluation:OGVvCv8Sdrn95QmRmC1LwoXJ8uYtsuHOLLcGa1DSs3A",
+        "native_status": "unavailable",
+        "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+      },
+      "agent": {
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/2cbedcd43422774411bfb08d91c82fcf",
+        "weave_status": "published",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/pending-final-agent-cases:sBVJ11aTfKQocZY9TRui57MJaMzYDTtbIjvMP3Wbofs",
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/pending-final-agent-evaluation:9dhzsXPwS8WpXq6c6qD0f3o6d8I7Kh18LxnCoP2QOEo",
+        "native_status": "unavailable",
+        "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+      }
+    },
+    "report": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-51a0006f--VmlldzoxODMwMjcxMA==",
+    "native_evaltables": "HTTP500 remains unavailable; notebook comparison and Weave records remain usable. Publication-only retry never repeats inference."
+  },
+  "release_repairs_after_live_adaptation": {
+    "editor_context_version": 2,
+    "validation": "Deterministic tests only; no adaptation rerun",
+    "changes": [
+      "Include actual task mission and public rules",
+      "Attach previous lesson to its original execution, separate from current observations",
+      "Keep grades and final cases outside editor context",
+      "Version prompt contents in stage inputs",
+      "Display reflections as agent-proposed lessons with stated limits"
+    ],
+    "recorded_prompt_issue": "Round2 CandidateB claimed no evidence was supplied despite shared execution evidence. Candidate titles and proposed lessons are model statements; promptv2 explicitly explains the shared starting record and the forthcoming probes."
+  },
+  "focused_tests": {
+    "passed": 17,
+    "command": "pytest tests/test_pending.py tests/test_pending_teaching.py -q",
+    "marimo_check": "passed"
+  },
+  "screenshots": [
+    "ux-v020-pending-tools.png",
+    "ux-v020-pending-loop.png",
+    "ux-v020-pending-scorer.png",
+    "ux-v020-pending-manual.png",
+    "ux-v020-pending-proposal.png",
+    "ux-v020-pending-final.png",
+    "ux-v020-pending-lens.png",
+    "ux-v020-pending-branches.png",
+    "ux-v020-pending-narrow.png",
+    "ux-v020-pending-dark-narrow.png",
+    "ux-v020-pending-dark.png"
+  ],
+  "restore_verification": {
+    "saved_drafts_and_complete_results_restored": true,
+    "requests_before_restart": 118,
+    "requests_after_restart": 118,
+    "judge_retry_disabled_after_two_failed_attempts": true,
+    "final_table_trace_links_rendered": true,
+    "full_evidence_links_collapsed": true
+  },
+  "layout_verification": {
+    "narrow_viewport": [
+      390,
+      844
+    ],
+    "narrow_document_width": 390,
+    "narrow_body_width": 390,
+    "themes_checked": [
+      "light",
+      "dark"
+    ],
+    "desktop_dark_viewport": [
+      1440,
+      1050
+    ],
+    "document_horizontal_overflow": false,
+    "keyboard_focus": {
+      "control": "Hint",
+      "focus_visible": true,
+      "outline": "3px auto"
+    },
+    "local_scroll": "Long code lines and result tables scroll inside their controls. The long invoice-check button label is partly clipped at390px by marimo chrome; desktop teaching layout remains readable.",
+    "restored_theme": "light",
+    "paid_calls_during_layout_checks": 0
+  }
+}

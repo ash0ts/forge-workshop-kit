@@ -39,6 +39,17 @@ def test_monitor_reads_only_and_missing_is_unknown():
             return []
     assert monitor(['https://forge.coreweave.com/wandb/person/project'],'lab',api=ReadOnly())[0]['status']=='unknown'
 
+def test_monitor_uses_notebook_step_names_for_intermediate_checkpoints():
+    from types import SimpleNamespace
+    class ReadOnly:
+        def runs(self, project, filters):
+            return [SimpleNamespace(config={'workspace_id': 'copy-a'}, url='https://example.test/run',
+                summary=SimpleNamespace(_json_dict={'step': 'images/round-2/review-0',
+                    'completed': ['setup'], 'status': 'complete'}))]
+    row = monitor(['person/project'], 'solar-autoresearch', api=ReadOnly())[0]
+    assert row['step'] == 'Research agent'
+    assert row['checkpoint'] == 'images/round-2/review-0'
+
 def test_training_inputs_exclude_validation_labels_and_child_has_no_credentials(tmp_path,monkeypatch):
     import numpy as np
     from forge_workshop_kit import training

@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "source_matches": [
+    {
+      "round": 1,
+      "candidate": 0,
+      "probe": "d2f1c0b14a70a85d6572160ec11a146e",
+      "source_matches": true
+    },
+    {
+      "round": 1,
+      "candidate": 1,
+      "probe": "c07c5d78722ad00dd3c397a69a497d3e",
+      "source_matches": true
+    },
+    {
+      "round": 2,
+      "candidate": 0,
+      "probe": "accb1bc51c77a92731d3f442fc71e4c0",
+      "source_matches": true
+    },
+    {
+      "round": 2,
+      "candidate": 1,
+      "probe": "ac31adeaabe049cf192b59ca9b2858c9",
+      "source_matches": true
+    }
+  ],
+  "round_1_composition_selected_tested_b": true,
+  "round_2_keep_source_unchanged": true,
+  "image_errors": {
+    "persistence": 0.12576198700564592,
+    "manual": 0.1224417336622075,
+    "agent": 0.11001095193834161
+  },
+  "image_skill_vs_persistence": {
+    "persistence": 0.0,
+    "manual": 0.026401088456795563,
+    "agent": 0.12524480124981796
+  },
+  "agent_relative_error_reduction_vs_manual": 0.10152405844040036,
+  "measurement_errors": {
+    "persistence": 0.19270602844340234,
+    "selected-model": 2.468974582071028
+  },
+  "image_windows": 199,
+  "measurement_windows": 2694,
+  "independent_trials": 1,
+  "provider_calls": 0,
+  "training_runs": 0
+}

@@ -27,7 +27,8 @@ def stored_spans(project, trace_id, *, expected, timeout=25):
     raise RuntimeError('Stored trace is incomplete. Retry readback/export; do not repeat the execution.')
 
 
-def export_trace(session, identity, mission, events, requests=(), *, tool_writer=None):
+def export_trace(session, identity, mission, events, requests=(), *, tool_writer=None,
+                 model_writer=None):
     from coreweave.forge.agentlens import tracing as tracing
     from opentelemetry import trace
     key = 'trace/' + identity
@@ -44,10 +45,13 @@ def export_trace(session, identity, mission, events, requests=(), *, tool_writer
     conversation_id = identity
     times = [r['started_at'] for r in requests] + [e['started_at'] for e in events]
     ends = [r['ended_at'] for r in requests] + [e['ended_at'] for e in events]
+    stage = session.read()['stages'].get(identity, {})
+    stage_name = stage.get('name', mission)
     with tracing.Conversation(conversation_id=conversation_id,
-        conversation_name=f'{session.workshop} / {identity}', attributes={
+        conversation_name=f'{session.workshop} / {stage_name}', attributes={
             'workshop.id': session.workshop, 'workshop.workspace': session.workspace_id,
-            'workshop.release': session.version}):
+            'workshop.release': session.version, 'workshop.stage': stage_name,
+            'workshop.source_fingerprint': stage.get('source_fingerprint', '')}):
         with tracing.Turn(agent_name='researcher' if requests else 'participant',
             messages=[tracing.Message(role='user', content=mission)],
             started_at=stamp(min(times) if times else time.time()),
@@ -60,6 +64,9 @@ def export_trace(session, identity, mission, events, requests=(), *, tool_writer
             with session.transaction() as state:
                 state['publications'][key] = receipt
             for record in requests:
+                if model_writer is not None:
+                    model_writer(record)
+                    continue
                 req, res = record['request'], record.get('response') or {}
                 choice = (res.get('choices') or [{}])[0]
                 llm = tracing.LLM(model=req['model'], provider_name='wandb', response_id=res.get('id',''),

@@ -1,0 +1,128 @@
+{
+  "notebook_source": "scripts/solar_cells.py",
+  "guided_action_source": "src/forge_workshop_kit/solar_teaching.py",
+  "status": "passed",
+  "exercise_checks": [
+    {
+      "slide": 10,
+      "key": "setup-turn",
+      "notebook_step": "Connect",
+      "functions": [
+        "instrument_tool"
+      ],
+      "controls": [
+        "Connect and restore my work",
+        "Check my tracing code",
+        "Send my first Agent Lens trace"
+      ]
+    },
+    {
+      "slide": 17,
+      "key": "data-turn",
+      "notebook_step": "Solar data",
+      "functions": [],
+      "controls": [
+        "Load the solar dataset"
+      ]
+    },
+    {
+      "slide": 20,
+      "key": "persistence-turn",
+      "notebook_step": "Persistence",
+      "functions": [
+        "persistence_forecast"
+      ],
+      "controls": [
+        "Check my persistence function",
+        "Run my persistence baseline"
+      ]
+    },
+    {
+      "slide": 30,
+      "key": "tracking-turn",
+      "notebook_step": "Track and search",
+      "functions": [
+        "training_loss",
+        "my_flux_mae",
+        "run_training"
+      ],
+      "controls": [
+        "Check my measurement code"
+      ]
+    },
+    {
+      "slide": 36,
+      "key": "search-turn",
+      "notebook_step": "Track and search",
+      "functions": [],
+      "controls": [
+        "Run six tracked configurations"
+      ]
+    },
+    {
+      "slide": 46,
+      "key": "image-turn",
+      "notebook_step": "Solar images",
+      "functions": [
+        "ImagePredictor.forward",
+        "my_image_mae"
+      ],
+      "controls": [
+        "Check my image code",
+        "Compare convolutional and residual predictors"
+      ]
+    },
+    {
+      "slide": 53,
+      "key": "evidence-turn",
+      "notebook_step": "Research agent",
+      "functions": [
+        "select_validation_evidence"
+      ],
+      "controls": [
+        "Check my evidence selection"
+      ]
+    },
+    {
+      "slide": 60,
+      "key": "round1-turn",
+      "notebook_step": "Research agent",
+      "functions": [
+        "next_research_action"
+      ],
+      "controls": []
+    },
+    {
+      "slide": 66,
+      "key": "final-turn",
+      "notebook_step": "Final evaluation",
+      "functions": [],
+      "controls": [
+        "Freeze versions and evaluate reserved dates"
+      ]
+    },
+    {
+      "slide": 69,
+      "key": "conclusion-turn",
+      "notebook_step": "Final evaluation",
+      "functions": [],
+      "controls": [
+        "Publish my conclusion"
+      ]
+    }
+  ],
+  "guided_actions": [
+    "Propose two code changes",
+    "Confirm review of Candidate A",
+    "Test Candidate A",
+    "Confirm review of Candidate B",
+    "Test Candidate B",
+    "Record my comparison",
+    "Request a composition",
+    "Confirm review of composition",
+    "Test the composition",
+    "Save the adopted version and lesson"
+  ],
+  "scope": "Exact teaching function and control names. Live execution is checked separately in the browser rehearsal.",
+  "paid_requests": 0
+}

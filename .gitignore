@@ -11,3 +11,5 @@ data/*
 evidence/private/
 dist/
 *.egg-info/
+
+node_modules/
