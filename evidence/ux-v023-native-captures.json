@@ -1,0 +1,89 @@
+{
+  "captured_at": "2026-11-13T19:34:22.317164+00:00",
+  "captures": [
+    {
+      "name": "solar-validation",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=ogpa6vhy8db",
+      "title": "Solar Forecasting Lab - recorded research loop | forge-workshop-kit \u2013 Weights & Biases",
+      "file": "ux-v023-solar-validation.png",
+      "sha256": "9847202c54bc229ba2a89a75523abfb4144a0993eeb6c451b45af5eab358d178",
+      "authenticated": false
+    },
+    {
+      "name": "solar-dashboard",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=ogpa6vhy8db",
+      "title": "Solar Forecasting Lab - recorded research loop | forge-workshop-kit \u2013 Weights & Biases",
+      "file": "ux-v023-solar-dashboard.png",
+      "sha256": "087c815b21479b86556ce6c07a73196c814c3ae482b0a50c5db2f9c44814c321",
+      "authenticated": false
+    },
+    {
+      "name": "pending-dashboard",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=nkyxiy1o6wn",
+      "title": "Pending, Inc. - recorded agent comparison | forge-workshop-kit \u2013 Weights & Biases",
+      "file": "ux-v023-pending-dashboard.png",
+      "sha256": "e6a0981adc9e62eb6497c65d9bb770d765e3b53d8524be434f74409f419161aa",
+      "authenticated": false
+    },
+    {
+      "name": "solar-artifact",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f5e5d198bc9479f78d9a4b1c8c8979e3/v0/files",
+      "title": "forge-workshop-kit Artifacts \u2013 Weights & Biases",
+      "file": "ux-v023-solar-artifact.png",
+      "sha256": "3afa47eedd0196b0b26a3bfe790eca7440a10c1bdc9633650054c36626144758",
+      "authenticated": false
+    },
+    {
+      "name": "solar-report",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==",
+      "title": "Solar Autoresearch | Build a research loop, then give it an agent | forge-workshop-kit \u2013 Weights & Biases",
+      "file": "ux-v023-solar-report.png",
+      "sha256": "8a60d129a57df11f0f6a7a0ca72a4bd3e7f7570879cfe1047a3c51bb4303c022",
+      "authenticated": false
+    },
+    {
+      "name": "solar-report-results",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==",
+      "title": "Solar Autoresearch | Build a research loop, then give it an agent | forge-workshop-kit \u2013 Weights & Biases",
+      "file": "ux-v023-solar-report-results.png",
+      "sha256": "cd7ed60ed3d8717e8e248006e44e45da38f5a602ba04e9515afdbf2c7a321bd0",
+      "authenticated": false
+    },
+    {
+      "name": "pending-report",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-51a0006f--VmlldzoxODMwMjcxMA==",
+      "title": "Pending, Inc. | Build and test an agent harness | forge-workshop-kit \u2013 Weights & Biases",
+      "file": "ux-v023-pending-report.png",
+      "sha256": "f95c9b868223e59c961410cbb36a76fcf8646b0db153da1c4469bd0bf8f4848d",
+      "authenticated": false
+    },
+    {
+      "name": "pending-report-results",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-51a0006f--VmlldzoxODMwMjcxMA==",
+      "title": "Pending, Inc. | Build and test an agent harness | forge-workshop-kit \u2013 Weights & Biases",
+      "file": "ux-v023-pending-report-results.png",
+      "sha256": "ebfcd186465f162b23d50304f2af30e9559890a110907997cf684ca6d315a647",
+      "authenticated": false
+    },
+    {
+      "name": "pending-lens",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/370ae4263372ca1de91d7308e66d0d3d/spans/turns/fbb084c1ce00e6ade53a3d56ed7760fe/spans/2af0208bf11b7217",
+      "file": "ux-v023-pending-lens.png",
+      "sha256": "e5f8102bd2fc5d0ab29c73fed78684a23f67f9d55609e82bc605734e8ebd416e",
+      "authenticated": true,
+      "method": "native browser screenshot; span expanded through visible controls"
+    },
+    {
+      "name": "solar-lens",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ef590522f1af377a0bc04bd63eea23e4/spans/turns/f1dc87c86a84d50603f4d3334b21783b/spans/37fa531bfbbebdfb",
+      "file": "ux-v023-solar-lens.png",
+      "sha256": "09654c4a6a2358fc7c4c4938587661bfc9fcb613e32bb1f577cd01a955743b5f",
+      "authenticated": true,
+      "method": "native browser screenshot; span expanded through visible controls"
+    }
+  ],
+  "results_changed": false,
+  "inference_requests": 0,
+  "training_executions": 0,
+  "hosted_template_preview": "Browser blocked embedded preview as a public-to-local-network request. Copy dialog opened; direct static exports render. No security controls bypassed."
+}

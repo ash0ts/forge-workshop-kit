@@ -57,3 +57,22 @@ The recorded result belongs to one seed and two reserved dates. Adjacent forecas
 ## v0.2.2 setup capture
 
 `public/images/ux-v022-solar-setup.png` shows the current notebook before connection. It is an authentic local preview with the project field, allowance, and tracing exercise visible. It does not demonstrate authenticated project access. The recorded forecasting and product captures remain from the completed November 13 rehearsal.
+
+## v0.2.3 native product walkthrough
+
+The added screenshots show the existing November 13 rehearsal records in Forge. Creating the saved workspaces and revising the Reports changed their presentation, not model outputs, scores, or experiment settings. The full, unedited captures remain linked from each slide; CSS viewports enlarge the part being discussed.
+
+| Slide | Native screen | What the viewer should inspect |
+| --- | --- | --- |
+| 52 | Solar Agent Lens conversation `ef590522f1af377a0bc04bd63eea23e4` | The `read_validation_evidence` output, including the parent configuration and validation error |
+| 70 | Solar saved workspace `ogpa6vhy8db` | The three final image scores, with GOES shown separately in the workspace |
+| 71 | Artifact `execution-f5e5d198bc9479f78d9a4b1c8c8979e3:v0` | The tested round-two source, losses, weights, predictions, and execution record |
+| 73 | Solar rehearsal Report | Its native three-run image-error panel and links to the underlying runs |
+| 91 | Current Pending notebook setup | The separate office workshop, using the same per-participant project pattern |
+| 92 | Pending Agent Lens conversation `370ae4263372ca1de91d7308e66d0d3d` | The learner-written invoice function’s arguments and returned payment |
+| 93 | Pending saved workspace `nkyxiy1o6wn` | Twelve state checks and the separate availability of explanation judgments |
+| 94 | Pending rehearsal Report | The comparison and the evidence supporting the retained harness |
+
+The Pending notebook setup image is a local notebook view, not proof of hosted copy permissions. The hosted preview was investigated separately. The older November 12 deck remains unchanged; the optional appendix uses the current gateway-free workshop.
+
+The native workspace and Report panels are ordinary W&B panels. The saved case table is an ordinary W&B Table. Neither is labeled native EvalTables. Native EvalTables publication remains unavailable in the recorded rehearsal; the conceptual aligned-case slide and actual notebook comparisons remain in the teaching sequence.

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "solar-validation",
+    "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=ogpa6vhy8db",
+    "title": "Solar Forecasting Lab - recorded research loop | forge-workshop-kit – Weights & Biases"
+  },
+  {
+    "name": "solar-dashboard",
+    "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=ogpa6vhy8db",
+    "title": "Solar Forecasting Lab - recorded research loop | forge-workshop-kit – Weights & Biases"
+  },
+  {
+    "name": "pending-dashboard",
+    "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=nkyxiy1o6wn",
+    "title": "Pending, Inc. - recorded agent comparison | forge-workshop-kit – Weights & Biases"
+  },
+  {
+    "name": "solar-artifact",
+    "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f5e5d198bc9479f78d9a4b1c8c8979e3/v0/files",
+    "title": "forge-workshop-kit Artifacts – Weights & Biases"
+  },
+  {
+    "name": "solar-report",
+    "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==",
+    "title": "Solar Autoresearch | Build a research loop, then give it an agent | forge-workshop-kit – Weights & Biases"
+  },
+  {
+    "name": "solar-report-results",
+    "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==",
+    "title": "Solar Autoresearch | Build a research loop, then give it an agent | forge-workshop-kit – Weights & Biases"
+  },
+  {
+    "name": "pending-report",
+    "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-51a0006f--VmlldzoxODMwMjcxMA==",
+    "title": "Pending, Inc. | Build and test an agent harness | forge-workshop-kit – Weights & Biases"
+  },
+  {
+    "name": "pending-report-results",
+    "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-51a0006f--VmlldzoxODMwMjcxMA==",
+    "title": "Pending, Inc. | Build and test an agent harness | forge-workshop-kit – Weights & Biases"
+  }
+]

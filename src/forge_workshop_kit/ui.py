@@ -212,27 +212,56 @@ def _weave_url(reference):
     return 'https://wandb.ai/' + '/'.join(quote(p, safe='') for p in parts[:2]) + '/weave/objects/' + quote(name, safe='') + '/versions/' + quote(version, safe='')
 
 
+def _comparison_label(record, ordinal):
+    """Name a saved comparison from its published object, including legacy receipts."""
+    for label, version in record.items():
+        for field, suffix in (('evaluation', 'evaluation'), ('dataset', 'cases')):
+            reference = version.get(field, '')
+            if not isinstance(reference, str) or not reference.startswith('weave:///'):
+                continue
+            parts = reference.removeprefix('weave:///').split('/')
+            if len(parts) != 4 or parts[2] != 'object':
+                continue
+            name = parts[3].rsplit(':', 1)[0]
+            ending = f'-{label}-{suffix}'
+            if name.endswith(ending):
+                name = name[:-len(ending)]
+                return {'solar-images-final': 'Solar images · final',
+                        'solar-measurements-final': 'GOES measurements · final',
+                        'pending-final': 'Office cases · final'}.get(
+                            name, name.replace('-', ' ').capitalize())
+    return f'Saved comparison {ordinal}'
+
+
 def publication(mo, session):
     rows = []
     destinations = {}
     errors = []
+    comparison_names = {}
+    comparison_number = 0
     if session is None:
         return mo.md('Connect to your project to publish evidence.')
     for key, record in session.read()['publications'].items():
         if key.startswith('comparison/'):
+            comparison_number += 1
+            comparison = _comparison_label(record, comparison_number)
+            comparison_names[comparison] = comparison_names.get(comparison, 0) + 1
+            if comparison_names[comparison] > 1:
+                comparison += f' · saved set {comparison_names[comparison]}'
             for label, version in record.items():
-                rows.append({'Version': label, 'Weave': version.get('weave_status', 'not published'),
+                destination_label = comparison + ' / ' + label
+                rows.append({'Comparison': comparison, 'Version': label, 'Weave': version.get('weave_status', 'not published'),
                              'Native EvalTables': version.get('native_status', 'not published'),
                              'Result run': version.get('run', '')})
                 if version.get('run'):
-                    destinations[label + ' · comparison run'] = version['run']
+                    destinations[destination_label + ' · comparison run'] = version['run']
                 for field in ('evaluation', 'dataset'):
                     url = _weave_url(version.get(field))
                     if url:
-                        destinations[label + ' · Weave ' + field] = url
+                        destinations[destination_label + ' · Weave ' + field] = url
                 for field in ('weave_error', 'native_error'):
                     if version.get(field):
-                        errors.append(label + ': ' + version[field])
+                        errors.append(destination_label + ': ' + version[field])
     if not rows:
         return mo.md('Comparisons have not been published yet. Saved executions remain available locally.')
     partial = any(r['Native EvalTables'] != 'published' or r['Weave'] != 'published' for r in rows)

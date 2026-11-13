@@ -1,0 +1,36 @@
+{
+  "release": "0.2.3",
+  "checked_at": "2026-11-13T19:28:17.493140+00:00",
+  "scope": "local package and code validation; no remote release publication",
+  "tests": {
+    "passed": 62,
+    "marimo_notebooks_checked": [
+      "starter",
+      "facilitator",
+      "pending_inc",
+      "solar_autoresearch"
+    ]
+  },
+  "build": "wheel built from sdist offline",
+  "lockfile_change": "root package version only; dependencies unchanged",
+  "wheel_ui_matches_source": true,
+  "assets_present": [
+    "solar-lab.svg",
+    "IBM Plex fonts"
+  ],
+  "excluded_private_paths": true,
+  "training_executions": 0,
+  "inference_requests": 0,
+  "artifacts": [
+    {
+      "path": "dist/forge_workshop_kit-0.2.3-py3-none-any.whl",
+      "bytes": 127535,
+      "sha256": "c2419f8f456ca400200945ec7b34cf8b3ac5e911170384e17a06d8231432f664"
+    },
+    {
+      "path": "dist/forge_workshop_kit-0.2.3.tar.gz",
+      "bytes": 38568788,
+      "sha256": "ed5cb3606ce249b56d49dd3a77d6313b8a13aeaf2dbba4bd7bf185f7f18ca00c"
+    }
+  ]
+}

@@ -149,3 +149,29 @@
 .measured-grid{display:grid;grid-template-columns:400px 1fr;gap:50px;align-items:start;margin:35px 0 25px}.measured-gain{font-size:90px;line-height:1;color:var(--teal);letter-spacing:-3px}.measured-grid p{font-size:28px;line-height:1.3}.measured-grid .aside{font-size:22px;margin-top:28px}.measured-grid td{padding:22px 16px}.cover .lab-scene{transform:none;top:176px;width:595px}
 
 .slidev-layout .agent-explanation{font-size:36px;line-height:1.5!important;max-width:1080px;margin-top:50px}
+/* Native product evidence stays clickable at its original resolution. */
+.product-screen{display:block;width:1120px;height:402px;margin:4px auto 0;border:1px solid #a8b9ad!important;border-radius:4px;background:#fff;overflow:hidden}
+.product-screen img{display:block;width:100%;height:100%;object-fit:contain;object-position:center top}
+.product-screen:focus-visible{outline:4px solid var(--gold)}
+.product-caption{display:flex;align-items:start;justify-content:space-between;gap:24px;margin-top:12px;font-size:21px;line-height:1.3}
+.product-caption span{max-width:790px}.product-caption a{font-size:18px;white-space:nowrap}
+.product-caption+.image-caption{font-size:17px;line-height:1.3;max-width:1060px}
+.appendix-return{position:absolute;right:66px;bottom:24px;font-size:16px;z-index:3}
+/* Crops retain actual pixels; the link opens the unaltered native capture. */
+.product-screen.ux-v023-solar-lens{position:relative}
+.product-screen.ux-v023-solar-lens img{position:absolute;max-width:none;width:1120px;height:auto;top:-124px;left:0}
+.product-screen.ux-v023-solar-artifact{height:420px;position:relative}
+.product-screen.ux-v023-solar-artifact img{position:absolute;max-width:none;width:1120px;height:auto;top:-50px;left:0}
+.product-screen.ux-v023-solar-dashboard{height:265px;position:relative;margin-top:24px}
+.product-screen.ux-v023-solar-dashboard img{position:absolute;max-width:none;width:1120px;height:auto;top:-308px;left:0}
+.product-screen.ux-v022-pending-setup{width:1080px;height:420px;position:relative}
+.product-screen.ux-v022-pending-setup img{position:absolute;max-width:none;width:1440px;height:auto;top:-82px;left:-203px}
+.product-screen.ux-v023-pending-lens{position:relative}
+.product-screen.ux-v023-pending-lens img{position:absolute;max-width:none;width:1120px;height:auto;top:-131px;left:0}
+.appendix-return{bottom:48px}
+.product-screen.ux-v023-pending-dashboard{height:440px;position:relative}
+.product-screen.ux-v023-pending-dashboard img{position:absolute;max-width:none;width:1120px;height:auto;top:-245px;left:0}
+.product-screen.ux-v023-solar-report-results{width:1000px;height:402px;position:relative}
+.product-screen.ux-v023-solar-report-results img{position:absolute;max-width:none;width:1600px;height:auto;left:-300px;top:-75px}
+.product-screen.ux-v023-pending-report-results{width:1000px;height:402px;position:relative}
+.product-screen.ux-v023-pending-report-results img{position:absolute;max-width:none;width:1600px;height:auto;left:-300px;top:-175px}

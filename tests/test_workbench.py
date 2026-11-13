@@ -123,3 +123,41 @@ def test_legacy_keep_selection_requires_matching_adopted_fingerprint():
     assert ui._retained_selection(adopted, [composition])
     adopted['result']['fingerprint'] = 'other'
     assert not ui._retained_selection(adopted, [composition])
+
+
+def test_publication_keeps_both_persistence_comparisons_and_labels(tmp_path):
+    from copy import deepcopy
+    from types import SimpleNamespace
+
+    session = WorkshopSession('learner/research', 'solar-autoresearch', state_dir=tmp_path)
+    def receipt(task):
+        prefix = 'weave:///learner/research/object/solar-' + task + '-final-persistence-'
+        return {'persistence': {'run': 'https://wandb.ai/learner/research/runs/' + task,
+            'evaluation': prefix + 'evaluation:version', 'dataset': prefix + 'cases:version',
+            'weave_status': 'published', 'native_status': 'unavailable',
+            'native_error': 'Recorded publication failure'}}
+    with session.transaction() as state:
+        state['publications']['comparison/images'] = receipt('images')
+        state['publications']['comparison/measurements'] = receipt('measurements')
+    before = deepcopy(session.read())
+    mo = SimpleNamespace(md=lambda value: value, Html=lambda value: value,
+        ui=SimpleNamespace(table=lambda rows, **kw: {'rows': rows}),
+        vstack=lambda values: values, callout=lambda value, **kw: value,
+        accordion=lambda value: value)
+    rendered = ui.publication(mo, session)
+    links = rendered[1]
+    assert links.count('href=') == 6
+    for name in ('Solar images · final', 'GOES measurements · final'):
+        assert name + ' / persistence · comparison run' in links
+        assert name + ' / persistence · Weave evaluation' in links
+        assert name + ' / persistence · Weave dataset' in links
+    rows = rendered[2]['rows']
+    assert [row['Comparison'] for row in rows] == ['Solar images · final', 'GOES measurements · final']
+    assert [row['Version'] for row in rows] == ['persistence', 'persistence']
+    assert all(row['Native EvalTables'] == 'unavailable' for row in rows)
+    assert session.read() == before
+
+
+def test_unpublished_comparison_labels_remain_distinct():
+    assert ui._comparison_label({'persistence': {'native_status': 'unavailable'}}, 1) == 'Saved comparison 1'
+    assert ui._comparison_label({'persistence': {'native_status': 'unavailable'}}, 2) == 'Saved comparison 2'

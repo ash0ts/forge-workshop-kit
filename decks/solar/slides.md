@@ -840,11 +840,11 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Find the validation evidence the agent read
 
-<div class="native-columns"><a href="/images/ux-v020-solar-lens-current.png" target="_blank" aria-label="Open full-size Agent Lens capture"><img src="/images/ux-v020-solar-lens-current.png" alt="Recorded Agent Lens read_validation_evidence span with inputs and outputs"></a><div><h2>Find <code>read_validation_evidence</code>.</h2><p>Open the tool output and find the settings and validation results.</p><h2>Then inspect the proposal.</h2><p>Read the returned code, then open the training result for that candidate.</p><p class="aside"><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ef590522f1af377a0bc04bd63eea23e4/spans">Open the recorded conversation ↗</a><br><a href="/images/ux-v020-solar-lens-current.png" target="_blank">Open full-size capture ↗</a></p></div></div><div class="bottom-note">Recorded on November 13. Open your own conversation after sending the request.</div>
+<a class="product-screen ux-v023-solar-lens" href="/images/ux-v023-solar-lens.png" target="_blank" aria-label="Open full-size capture"><img src="/images/ux-v023-solar-lens.png" alt="Native Agent Lens showing the research agent evidence-reading tool and its recorded output"></a><div class="product-caption"><span>Select read_validation_evidence. Find the settings and validation error.</span><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ef590522f1af377a0bc04bd63eea23e4/spans">Open the conversation ↗</a></div><div class="image-caption">Recorded research-agent request. The tool output is the evidence supplied to the proposed edit.</div>
 
 
 <!--
-In this recorded conversation, select read_validation_evidence. Its output includes the active configuration and validation evidence. Then inspect the proposed code and follow its training result. The full-size capture link helps when the native view requires sign-in.
+Open the evidence-reading tool and find the current source settings and validation result. Then inspect the returned proposal and follow its training result. This capture comes from the recorded rehearsal, not a new request. The full-size image remains available when sign-in is required.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1112,13 +1112,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">3:48</div>
 
-# Compare forecast quality, time, and cost
+# Open the comparison in your project
 
-<table class="clean-table"><tbody><tr><th>What to ask</th><th>What to inspect</th></tr><tr><td>Did the forecast error fall?</td><td>The same final dates and scoring rule for every model</td></tr><tr><td>How much work did that take?</td><td>Training time and inference cost, including failed attempts</td></tr><tr><td>Did a run fail before producing a forecast?</td><td>The error in its training call or agent trace</td></tr></tbody></table>
+<a class="product-screen ux-v023-solar-dashboard" href="/images/ux-v023-solar-dashboard.png" target="_blank" aria-label="Open full-size capture"><img src="/images/ux-v023-solar-dashboard.png" alt="Native Solar workspace showing the three frozen image-model results"></a><div class="product-caption"><span>Compare the three image forecasts, then open a run for its time and cost.</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=ogpa6vhy8db">Open the Solar workspace ↗</a></div><div class="image-caption">Recorded rehearsal: image error fell; the GOES model lost to persistence. The metrics use different units.</div>
 
 
 <!--
-Ask whether forecast error fell, how much training and inference it took, and whether any executions failed. These answer different questions. A run can finish cleanly and still make poor predictions.
+This saved workspace contains only the runs from one rehearsal. Compare final image scores, then inspect GOES separately. Open a run to see its settings, runtime, and evidence. Do not combine these two tasks into one average. The selected runs and source metrics are unchanged.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1128,11 +1128,11 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Open the files behind one result
 
-<div class="step-path"><div><h2>Run</h2><p>Settings, metric, loss history.</p></div><div><h2>Artifact</h2><p>Source, data, weights, predictions.</p></div><div><h2>Trace</h2><p>Agent requests, edits, tests, decisions.</p></div></div><div class="bottom-note">The Report explains what changed and links to those records.</div>
+<a class="product-screen ux-v023-solar-artifact" href="/images/ux-v023-solar-artifact.png" target="_blank" aria-label="Open full-size capture"><img src="/images/ux-v023-solar-artifact.png" alt="Native W&amp;B Artifact file list for the selected round-two training execution"></a><div class="product-caption"><span>Open candidate.py, losses.json, predictions.npy, and weights.pt.</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f5e5d198bc9479f78d9a4b1c8c8979e3/v0">Open the Artifact ↗</a></div><div class="image-caption">The selected round-two training run saved its code, losses, weights, and predictions together.</div>
 
 
 <!--
-Open a result’s run for settings and loss history, its Artifact for files, and its Agent Lens conversation for the agent’s actions. These links let a teammate inspect the result instead of relying on our summary.
+Open the Artifact file list for round two’s tested composition. candidate.py is the executed code, losses.json records training, weights.pt holds trained parameters, and predictions.npy and predictions.png contain the output. execution.json links the settings and result. This is the saved training run whose weights were subsequently frozen, not a new execution.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1156,13 +1156,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">3:58–4:00</div>
 
-# Choose the next experiment from what you observed
+# Explain the result, then choose the next experiment
 
-<p class="big">Pick one error you saw and propose a change that might reduce it.</p><p>Say which code you’d change, which comparison you’d run, and what result would make you keep the previous version.</p><div class="bottom-note">For the next study, choose new final-test dates before making more changes.</div>
+<a class="product-screen ux-v023-solar-report-results" href="/images/ux-v023-solar-report-results.png" target="_blank" aria-label="Open full-size capture"><img src="/images/ux-v023-solar-report-results.png" alt="Native Solar Report bar chart comparing the three frozen image forecasts"></a><div class="product-caption"><span>Name one code change, its measured result, and a remaining forecasting error.</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==">Open the recorded Report ↗</a></div><div class="image-caption">For another study, choose new final-test dates before editing again.</div>
 
 
 <!--
-Ask for one next experiment based on an error someone inspected. What code would change, what would stay fixed, and what would make them keep the old version? Use new final-test dates for another round of model development.
+A teammate should be able to follow this explanation back to the run, source, and prediction. Ask for one next experiment based on an error someone inspected: what would change, what would stay fixed, and what would make them keep the previous version? This Report describes the recorded rehearsal; participants publish their own conclusions.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1482,10 +1482,66 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Keep working in your own project
 
-<p class="big"><a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view">Copy the Solar notebook ↗</a></p><p><a href="https://github.com/ash0ts/forge-workshop-kit">Source, setup, dataset, and facilitator guide ↗</a></p><p><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==">Recorded rehearsal Report ↗</a></p><div class="bottom-note">Keep your notebook, code edits, and checkpoints. The facilitator needs no control over your runtime.</div>
+<p class="big"><a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view">Copy the Solar notebook ↗</a></p><p><a href="https://github.com/ash0ts/forge-workshop-kit">Source, setup, dataset, and facilitator guide ↗</a></p><p><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==">Recorded rehearsal Report ↗</a></p><div class="bottom-note">Keep your notebook, code edits, and checkpoints. The facilitator needs no control over your runtime.</div><p class="aside"><a href="/91">Explore the separate Pending workshop →</a></p>
 
 
 <!--
 Participants keep their notebook and project. Use these links to continue the exercises, inspect the source, or revisit the recorded example. There is no facilitator gateway to renew.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">OPTIONAL · PENDING, INC.</div>
+
+# The same kit also runs an office-agent workshop
+
+<a class="product-screen ux-v022-pending-setup" href="/images/ux-v022-pending-setup.png" target="_blank" aria-label="Open full-size capture"><img src="/images/ux-v022-pending-setup.png" alt="Current Pending Inc notebook Connect step in the separate office workshop"></a><div class="product-caption"><span>Copy Pending, Inc. into your own project. Build the tool, its trace, and its checks.</span><a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view">Open the Pending template ↗</a></div><div class="image-caption">Separate office workshop. Tools run in the notebook runtime; onboarding uses local MCP.</div><div class="appendix-return"><a href="/6">Return to Solar setup →</a></div>
+
+
+<!--
+This optional sequence shows the current Pending workshop, not the older gateway-based release. Copy it into your own project. The notebook screenshot shows the current setup controls; it does not prove hosted access or completed training.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">OPTIONAL · PENDING, INC.</div>
+
+# Check what the invoice tool returned
+
+<a class="product-screen ux-v023-pending-lens" href="/images/ux-v023-pending-lens.png" target="_blank" aria-label="Open full-size capture"><img src="/images/ux-v023-pending-lens.png" alt="Native Agent Lens showing a learner-written invoice lookup in the Pending workshop"></a><div class="product-caption"><span>Open the invoice lookup arguments, then compare the returned invoice and account.</span><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/370ae4263372ca1de91d7308e66d0d3d/spans/turns/fbb084c1ce00e6ade53a3d56ed7760fe/spans/2af0208bf11b7217">Open the tool conversation ↗</a></div><div class="image-caption">Recorded manual-harness run on the two-invoices case. The learner’s Python function inspected both invoices.</div><div class="appendix-return"><a href="/6">Return to Solar setup →</a></div>
+
+
+<!--
+Follow the lookup arguments and returned observation. This is the function the participant wrote, used by the real agent loop. Find where the next action used its result. It is a separate office rehearsal, not evidence from the solar experiment.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">OPTIONAL · PENDING, INC.</div>
+
+# Compare the office state and explanation separately
+
+<a class="product-screen ux-v023-pending-dashboard" href="/images/ux-v023-pending-dashboard.png" target="_blank" aria-label="Open full-size capture"><img src="/images/ux-v023-pending-dashboard.png" alt="Native Pending workspace showing state checks across the starting manual and agent-selected harnesses"></a><div class="product-caption"><span>All twelve state checks passed. One explanation judgment remains unavailable.</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=nkyxiy1o6wn">Open the Pending workspace ↗</a></div><div class="image-caption">Four fresh tickets per harness. Manual and agent-selected versions have the same executable instructions.</div><div class="appendix-return"><a href="/6">Return to Solar setup →</a></div>
+
+
+<!--
+There was no observed task-quality gain on these four tickets: all twelve state checks passed. Eleven explanation judgments were available; the missing one is not a failed state check. Manual and agent-selected harnesses were the same executable version. Use the saved case table to inspect a recovery.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">OPTIONAL · PENDING, INC.</div>
+
+# Write what the office comparison showed
+
+<a class="product-screen ux-v023-pending-report-results" href="/images/ux-v023-pending-report-results.png" target="_blank" aria-label="Open full-size capture"><img src="/images/ux-v023-pending-report-results.png" alt="Native Pending Report showing completed state checks for all three harness labels"></a><div class="product-caption"><span>Explain the change and link one ticket’s trace, checked state, and instructions.</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-51a0006f--VmlldzoxODMwMjcxMA==">Open the Pending Report ↗</a></div><div class="image-caption">All twelve state checks passed; 11 of 12 explanation judgments were available. No observed task-quality gain.</div><div class="appendix-return"><a href="/6">Return to Solar setup →</a></div>
+
+
+<!--
+Open the Report for the separate office workshop. Follow a ticket to its checked state and trace, and explain why the selected instructions were retained. Use the return link to resume the Solar setup sequence.
 Source notes and recorded evidence: notes/sources.md.
 -->

@@ -1,5 +1,665 @@
 {
-  "slides_checked": 90,
+  "slides_checked": 94,
+  "titles": [
+    {
+      "slide": 1,
+      "key": "cover",
+      "title": "Build a research loop. Then give it an agent.",
+      "expected": "Build a research loop. Then give it an agent.",
+      "title_matches": true
+    },
+    {
+      "slide": 2,
+      "key": "arrival",
+      "title": "Your team has a promising result.",
+      "expected": "Your team has a promising result.",
+      "title_matches": true
+    },
+    {
+      "slide": 3,
+      "key": "assignment",
+      "title": "Forecast the next solar observation",
+      "expected": "Forecast the next solar observation",
+      "title_matches": true
+    },
+    {
+      "slide": 4,
+      "key": "research-question",
+      "title": "Can an agent improve the research code?",
+      "expected": "Can an agent improve the research code?",
+      "title_matches": true
+    },
+    {
+      "slide": 5,
+      "key": "path",
+      "title": "Build a forecast, then test changes to its code",
+      "expected": "Build a forecast, then test changes to its code",
+      "title_matches": true
+    },
+    {
+      "slide": 6,
+      "key": "copy",
+      "title": "Copy the notebook into your Forge project",
+      "expected": "Copy the notebook into your Forge project",
+      "title_matches": true
+    },
+    {
+      "slide": 7,
+      "key": "local",
+      "title": "Run the same notebook on your laptop",
+      "expected": "Run the same notebook on your laptop",
+      "title_matches": true
+    },
+    {
+      "slide": 8,
+      "key": "settings",
+      "title": "Check the compute and inference settings",
+      "expected": "Check the compute and inference settings",
+      "title_matches": true
+    },
+    {
+      "slide": 9,
+      "key": "trace-scopes",
+      "title": "Record a tool call in Agent Lens",
+      "expected": "Record a tool call in Agent Lens",
+      "title_matches": true
+    },
+    {
+      "slide": 10,
+      "key": "setup-turn",
+      "title": "Connect and inspect your first tool call",
+      "expected": "Connect and inspect your first tool call",
+      "title_matches": true
+    },
+    {
+      "slide": 11,
+      "key": "setup-screen",
+      "title": "Check the project before you run an exercise",
+      "expected": "Check the project before you run an exercise",
+      "title_matches": true
+    },
+    {
+      "slide": 12,
+      "key": "instrumentation-screen",
+      "title": "Add an attribute to the tool span",
+      "expected": "Add an attribute to the tool span",
+      "title_matches": true
+    },
+    {
+      "slide": 13,
+      "key": "goes-window",
+      "title": "Predict X-ray flux 30 minutes ahead",
+      "expected": "Predict X-ray flux 30 minutes ahead",
+      "title_matches": true
+    },
+    {
+      "slide": 14,
+      "key": "chronology",
+      "title": "Use earlier dates to train, later dates to test",
+      "expected": "Use earlier dates to train, later dates to test",
+      "title_matches": true
+    },
+    {
+      "slide": 15,
+      "key": "gaps",
+      "title": "Leave out windows with missing observations",
+      "expected": "Leave out windows with missing observations",
+      "title_matches": true
+    },
+    {
+      "slide": 16,
+      "key": "sunpy",
+      "title": "Inspect a solar observation with SunPy",
+      "expected": "Inspect a solar observation with SunPy",
+      "title_matches": true
+    },
+    {
+      "slide": 17,
+      "key": "data-turn",
+      "title": "Inspect the observations before training",
+      "expected": "Inspect the observations before training",
+      "title_matches": true
+    },
+    {
+      "slide": 18,
+      "key": "persistence",
+      "title": "Start by copying the latest reading",
+      "expected": "Start by copying the latest reading",
+      "title_matches": true
+    },
+    {
+      "slide": 19,
+      "key": "metric",
+      "title": "Measure how far the prediction missed",
+      "expected": "Measure how far the prediction missed",
+      "title_matches": true
+    },
+    {
+      "slide": 20,
+      "key": "persistence-turn",
+      "title": "Write and test persistence",
+      "expected": "Write and test persistence",
+      "title_matches": true
+    },
+    {
+      "slide": 21,
+      "key": "number",
+      "title": "Save what changed between runs",
+      "expected": "Save what changed between runs",
+      "title_matches": true
+    },
+    {
+      "slide": 22,
+      "key": "run-inspector",
+      "title": "Which setting changed between these runs?",
+      "expected": "Which setting changed between these runs?",
+      "title_matches": true
+    },
+    {
+      "slide": 23,
+      "key": "run-inspector-reveal",
+      "title": "These runs used different learning rates",
+      "expected": "These runs used different learning rates",
+      "title_matches": true
+    },
+    {
+      "slide": 24,
+      "key": "program",
+      "title": "Turn observations into a forecast",
+      "expected": "Turn observations into a forecast",
+      "title_matches": true
+    },
+    {
+      "slide": 25,
+      "key": "source",
+      "title": "Save the model and training code with the run",
+      "expected": "Save the model and training code with the run",
+      "title_matches": true
+    },
+    {
+      "slide": 26,
+      "key": "independent",
+      "title": "Use the same scoring rule for every model",
+      "expected": "Use the same scoring rule for every model",
+      "title_matches": true
+    },
+    {
+      "slide": 27,
+      "key": "record",
+      "title": "Save the files needed to repeat the run",
+      "expected": "Save the files needed to repeat the run",
+      "title_matches": true
+    },
+    {
+      "slide": 28,
+      "key": "stage",
+      "title": "Save code and outputs with each training run",
+      "expected": "Save code and outputs with each training run",
+      "title_matches": true
+    },
+    {
+      "slide": 29,
+      "key": "artifacts",
+      "title": "Restore a completed run after a restart",
+      "expected": "Restore a completed run after a restart",
+      "title_matches": true
+    },
+    {
+      "slide": 30,
+      "key": "tracking-turn",
+      "title": "Write the loss and metric",
+      "expected": "Write the loss and metric",
+      "title_matches": true
+    },
+    {
+      "slide": 31,
+      "key": "search-levels",
+      "title": "Choose settings, choose a model, or write new code",
+      "expected": "Choose settings, choose a model, or write new code",
+      "title_matches": true
+    },
+    {
+      "slide": 32,
+      "key": "configs",
+      "title": "Compare six model configurations",
+      "expected": "Compare six model configurations",
+      "title_matches": true
+    },
+    {
+      "slide": 33,
+      "key": "sweep",
+      "title": "Run the configurations through W&B Sweeps",
+      "expected": "Run the configurations through W&B Sweeps",
+      "title_matches": true
+    },
+    {
+      "slide": 34,
+      "key": "native-sweep",
+      "title": "Compare forecast error and training time",
+      "expected": "Compare forecast error and training time",
+      "title_matches": true
+    },
+    {
+      "slide": 35,
+      "key": "learning-curve",
+      "title": "Check whether the models learned enough",
+      "expected": "Check whether the models learned enough",
+      "title_matches": true
+    },
+    {
+      "slide": 36,
+      "key": "search-turn",
+      "title": "Run six configurations and inspect one forecast",
+      "expected": "Run six configurations and inspect one forecast",
+      "title_matches": true
+    },
+    {
+      "slide": 37,
+      "key": "break",
+      "title": "The experiments can wait ten minutes.",
+      "expected": "The experiments can wait ten minutes.",
+      "title_matches": true
+    },
+    {
+      "slide": 38,
+      "key": "images-window",
+      "title": "Predict the solar image one hour ahead",
+      "expected": "Predict the solar image one hour ahead",
+      "title_matches": true
+    },
+    {
+      "slide": 39,
+      "key": "image-stack",
+      "title": "Save image experiments the same way",
+      "expected": "Save image experiments the same way",
+      "title_matches": true
+    },
+    {
+      "slide": 40,
+      "key": "persistence-image",
+      "title": "Look at the forecast beside the observed future",
+      "expected": "Look at the forecast beside the observed future",
+      "title_matches": true
+    },
+    {
+      "slide": 41,
+      "key": "conv",
+      "title": "Have the network predict the whole image",
+      "expected": "Have the network predict the whole image",
+      "title_matches": true
+    },
+    {
+      "slide": 42,
+      "key": "residual",
+      "title": "Add a learned correction to the current image",
+      "expected": "Add a learned correction to the current image",
+      "title_matches": true
+    },
+    {
+      "slide": 43,
+      "key": "image-score",
+      "title": "Measure error inside the solar disk",
+      "expected": "Measure error inside the solar disk",
+      "title_matches": true
+    },
+    {
+      "slide": 44,
+      "key": "loss",
+      "title": "Train with one loss; compare with a fixed metric",
+      "expected": "Train with one loss; compare with a fixed metric",
+      "title_matches": true
+    },
+    {
+      "slide": 45,
+      "key": "image-code-screen",
+      "title": "Compare the two forecasts on the same case",
+      "expected": "Compare the two forecasts on the same case",
+      "title_matches": true
+    },
+    {
+      "slide": 46,
+      "key": "image-turn",
+      "title": "Implement and compare the image predictors",
+      "expected": "Implement and compare the image predictors",
+      "title_matches": true
+    },
+    {
+      "slide": 47,
+      "key": "agent-need",
+      "title": "Give the research agent your code and results",
+      "expected": "Give the research agent your code and results",
+      "title_matches": true
+    },
+    {
+      "slide": 48,
+      "key": "weights",
+      "title": "The research agent writes code; the forecast model trains",
+      "expected": "The research agent writes code; the forecast model trains",
+      "title_matches": true
+    },
+    {
+      "slide": 49,
+      "key": "boundaries",
+      "title": "Decide which files the agent may change",
+      "expected": "Decide which files the agent may change",
+      "title_matches": true
+    },
+    {
+      "slide": 50,
+      "key": "evidence",
+      "title": "Send the code, settings, and validation results",
+      "expected": "Send the code, settings, and validation results",
+      "title_matches": true
+    },
+    {
+      "slide": 51,
+      "key": "agent-span",
+      "title": "Follow the agent’s work in Agent Lens",
+      "expected": "Follow the agent’s work in Agent Lens",
+      "title_matches": true
+    },
+    {
+      "slide": 52,
+      "key": "native-lens",
+      "title": "Find the validation evidence the agent read",
+      "expected": "Find the validation evidence the agent read",
+      "title_matches": true
+    },
+    {
+      "slide": 53,
+      "key": "evidence-turn",
+      "title": "Choose the evidence for the research agent",
+      "expected": "Choose the evidence for the research agent",
+      "title_matches": true
+    },
+    {
+      "slide": 54,
+      "key": "propose",
+      "title": "Ask for two changes to the same starting code",
+      "expected": "Ask for two changes to the same starting code",
+      "title_matches": true
+    },
+    {
+      "slide": 55,
+      "key": "native-diff",
+      "title": "Read the proposed change before running it",
+      "expected": "Read the proposed change before running it",
+      "title_matches": true
+    },
+    {
+      "slide": 56,
+      "key": "probe",
+      "title": "Train and score each candidate",
+      "expected": "Train and score each candidate",
+      "title_matches": true
+    },
+    {
+      "slide": 57,
+      "key": "compose",
+      "title": "Ask the agent which changes to keep",
+      "expected": "Ask the agent which changes to keep",
+      "title_matches": true
+    },
+    {
+      "slide": 58,
+      "key": "test-composed",
+      "title": "Test the version the agent chose",
+      "expected": "Test the version the agent chose",
+      "title_matches": true
+    },
+    {
+      "slide": 59,
+      "key": "repeat",
+      "title": "Start round two from the selected version",
+      "expected": "Start round two from the selected version",
+      "title_matches": true
+    },
+    {
+      "slide": 60,
+      "key": "round1-turn",
+      "title": "Propose and test two changes",
+      "expected": "Propose and test two changes",
+      "title_matches": true
+    },
+    {
+      "slide": 61,
+      "key": "round2-turn",
+      "title": "Test the selected code, then begin round two",
+      "expected": "Test the selected code, then begin round two",
+      "title_matches": true
+    },
+    {
+      "slide": 62,
+      "key": "branch-inspect",
+      "title": "Follow one proposal through the branch diagram",
+      "expected": "Follow one proposal through the branch diagram",
+      "title_matches": true
+    },
+    {
+      "slide": 63,
+      "key": "freeze",
+      "title": "Stop editing before the final comparison",
+      "expected": "Stop editing before the final comparison",
+      "title_matches": true
+    },
+    {
+      "slide": 64,
+      "key": "frozen-code",
+      "title": "Load the saved weights to make final predictions",
+      "expected": "Load the saved weights to make final predictions",
+      "title_matches": true
+    },
+    {
+      "slide": 65,
+      "key": "aligned",
+      "title": "Compare predictions for the same times",
+      "expected": "Compare predictions for the same times",
+      "title_matches": true
+    },
+    {
+      "slide": 66,
+      "key": "final-turn",
+      "title": "Test the selected models on reserved dates",
+      "expected": "Test the selected models on reserved dates",
+      "title_matches": true
+    },
+    {
+      "slide": 67,
+      "key": "recorded-final",
+      "title": "In this rehearsal, image error fell 10.15%",
+      "expected": "In this rehearsal, image error fell 10.15%",
+      "title_matches": true
+    },
+    {
+      "slide": 68,
+      "key": "recorded-image",
+      "title": "Compare the saved forecasts at the same time",
+      "expected": "Compare the saved forecasts at the same time",
+      "title_matches": true
+    },
+    {
+      "slide": 69,
+      "key": "recorded-goes",
+      "title": "The recorded GOES model lost to persistence",
+      "expected": "The recorded GOES model lost to persistence",
+      "title_matches": true
+    },
+    {
+      "slide": 70,
+      "key": "result-meaning",
+      "title": "Open the comparison in your project",
+      "expected": "Open the comparison in your project",
+      "title_matches": true
+    },
+    {
+      "slide": 71,
+      "key": "reproduce",
+      "title": "Open the files behind one result",
+      "expected": "Open the files behind one result",
+      "title_matches": true
+    },
+    {
+      "slide": 72,
+      "key": "conclusion-turn",
+      "title": "Write down what changed and whether it helped",
+      "expected": "Write down what changed and whether it helped",
+      "title_matches": true
+    },
+    {
+      "slide": 73,
+      "key": "close",
+      "title": "Explain the result, then choose the next experiment",
+      "expected": "Explain the result, then choose the next experiment",
+      "title_matches": true
+    },
+    {
+      "slide": 74,
+      "key": "reference",
+      "title": "Reference and worked answers",
+      "expected": "Reference and worked answers",
+      "title_matches": true
+    },
+    {
+      "slide": 75,
+      "key": "answer-trace",
+      "title": "Put the attribute inside the tool scope",
+      "expected": "Put the attribute inside the tool scope",
+      "title_matches": true
+    },
+    {
+      "slide": 76,
+      "key": "answer-persistence",
+      "title": "Return a copy of the latest observation",
+      "expected": "Return a copy of the latest observation",
+      "title_matches": true
+    },
+    {
+      "slide": 77,
+      "key": "answer-flux",
+      "title": "Take the mean of the absolute errors",
+      "expected": "Take the mean of the absolute errors",
+      "title_matches": true
+    },
+    {
+      "slide": 78,
+      "key": "answer-search",
+      "title": "Compare the settings and loss curves",
+      "expected": "Compare the settings and loss curves",
+      "title_matches": true
+    },
+    {
+      "slide": 79,
+      "key": "answer-images",
+      "title": "Average the error inside the disk mask",
+      "expected": "Average the error inside the disk mask",
+      "title_matches": true
+    },
+    {
+      "slide": 80,
+      "key": "answer-residual",
+      "title": "Add the correction to input channel 1",
+      "expected": "Add the correction to input channel 1",
+      "title_matches": true
+    },
+    {
+      "slide": 81,
+      "key": "answer-evidence",
+      "title": "Return validation evidence only",
+      "expected": "Return validation evidence only",
+      "title_matches": true
+    },
+    {
+      "slide": 82,
+      "key": "answer-controller",
+      "title": "Pass the candidate’s code to training",
+      "expected": "Pass the candidate’s code to training",
+      "title_matches": true
+    },
+    {
+      "slide": 83,
+      "key": "answer-final",
+      "title": "Use the saved model without training it again",
+      "expected": "Use the saved model without training it again",
+      "title_matches": true
+    },
+    {
+      "slide": 84,
+      "key": "recorded-edit",
+      "title": "Round 1: two changes, two measured outcomes",
+      "expected": "Round 1: two changes, two measured outcomes",
+      "title_matches": true
+    },
+    {
+      "slide": 85,
+      "key": "recorded-code",
+      "title": "Initialize the correction at zero",
+      "expected": "Initialize the correction at zero",
+      "title_matches": true
+    },
+    {
+      "slide": 86,
+      "key": "recorded-keep",
+      "title": "Round 2 also tested the unchanged version",
+      "expected": "Round 2 also tested the unchanged version",
+      "title_matches": true
+    },
+    {
+      "slide": 87,
+      "key": "recorded-lens",
+      "title": "Open the recorded research conversation",
+      "expected": "Open the recorded research conversation",
+      "title_matches": true
+    },
+    {
+      "slide": 88,
+      "key": "recovery",
+      "title": "When a service is unavailable",
+      "expected": "When a service is unavailable",
+      "title_matches": true
+    },
+    {
+      "slide": 89,
+      "key": "schedule",
+      "title": "Four-hour session",
+      "expected": "Four-hour session",
+      "title_matches": true
+    },
+    {
+      "slide": 90,
+      "key": "links",
+      "title": "Keep working in your own project",
+      "expected": "Keep working in your own project",
+      "title_matches": true
+    },
+    {
+      "slide": 91,
+      "key": "pending-template",
+      "title": "The same kit also runs an office-agent workshop",
+      "expected": "The same kit also runs an office-agent workshop",
+      "title_matches": true
+    },
+    {
+      "slide": 92,
+      "key": "pending-lens",
+      "title": "Check what the invoice tool returned",
+      "expected": "Check what the invoice tool returned",
+      "title_matches": true
+    },
+    {
+      "slide": 93,
+      "key": "pending-dashboard",
+      "title": "Compare the office state and explanation separately",
+      "expected": "Compare the office state and explanation separately",
+      "title_matches": true
+    },
+    {
+      "slide": 94,
+      "key": "pending-report",
+      "title": "Write what the office comparison showed",
+      "expected": "Write what the office comparison showed",
+      "title_matches": true
+    }
+  ],
   "issues": [],
   "console_errors": [],
   "branchClick": "Read Candidate A’s proposed edit to the model, loss, or training code. Its explanation tells you what the agent expects the change to do.",

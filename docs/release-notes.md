@@ -1,4 +1,12 @@
-# Forge Workshop Kit 0.2.2 technical preview
+# Forge Workshop Kit 0.2.3 technical preview
+
+The recorded workshops now have focused Forge dashboards and shorter Reports. Each dashboard selects its own rehearsal runs, names the scores and units, and links the result to the trace and saved code. The [demo guide](current-demo-guide.md) gives an eight-minute office walkthrough and a ten-minute research walkthrough. New native product captures in the Solar deck show those same pages.
+
+Solar’s final comparison now gives image and GOES persistence separate labels and links. Previously, one persistence link could replace the other in the notebook’s upload status. A regression check covers both saved comparisons and keeps unavailable uploads distinct.
+
+No experiments were rerun. Data, scores, model settings, inference allowances, prior releases, and existing attendee copies are unchanged. Native EvalTables remains unavailable in the saved rehearsal; the notebook, Weave records, and ordinary W&B Tables provide the comparison. External-attendee and human usability rehearsals remain open requirements.
+
+## 0.2.2
 
 The Solar deck, both notebooks, setup instructions, and presenter notes now explain each exercise in the order you do it: change the code, run it, and examine the result. Instructions name the function and control to use. Forge callouts point to a particular request, prediction, or account change to investigate.
 

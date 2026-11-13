@@ -1,0 +1,150 @@
+{
+  "pending": {
+    "title": "Pending, Inc. | Build and test an agent harness",
+    "id": "VmlldzoxODMwMjcxMA==",
+    "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-51a0006f--VmlldzoxODMwMjcxMA==",
+    "workspace_id": "51a0006f750c4083b2506a997097db83",
+    "panels": [
+      {
+        "name": "Four fresh tickets \u00b7 final comparison",
+        "ids": [
+          "8fd15200fa51635dd30e76869dfd2a30",
+          "f3cd39e83f9d9bf727142045e1057d90",
+          "2cbedcd43422774411bfb08d91c82fcf"
+        ],
+        "metric": "available_scores",
+        "filters": "Config(\"workspace_id\") == \"51a0006f750c4083b2506a997097db83\" and ID in [\"8fd15200fa51635dd30e76869dfd2a30\", \"f3cd39e83f9d9bf727142045e1057d90\", \"2cbedcd43422774411bfb08d91c82fcf\"]",
+        "chart": "BarPlot",
+        "run_labels": {
+          "8fd15200fa51635dd30e76869dfd2a30:available_scores": "Starting instructions",
+          "f3cd39e83f9d9bf727142045e1057d90:available_scores": "Manual revision",
+          "2cbedcd43422774411bfb08d91c82fcf:available_scores": "Agent-selected version"
+        },
+        "verified_runs": [
+          {
+            "id": "8fd15200fa51635dd30e76869dfd2a30",
+            "score": 4,
+            "planned": 4,
+            "available": 4
+          },
+          {
+            "id": "f3cd39e83f9d9bf727142045e1057d90",
+            "score": 4,
+            "planned": 4,
+            "available": 4
+          },
+          {
+            "id": "2cbedcd43422774411bfb08d91c82fcf",
+            "score": 4,
+            "planned": 4,
+            "available": 4
+          }
+        ],
+        "state_error_readback": [
+          {
+            "id": "8fd15200fa51635dd30e76869dfd2a30",
+            "score": 0,
+            "planned": 4,
+            "available": 4
+          },
+          {
+            "id": "f3cd39e83f9d9bf727142045e1057d90",
+            "score": 0,
+            "planned": 4,
+            "available": 4
+          },
+          {
+            "id": "2cbedcd43422774411bfb08d91c82fcf",
+            "score": 0,
+            "planned": 4,
+            "available": 4
+          }
+        ]
+      }
+    ],
+    "blocks": 28,
+    "outcomes_changed": false,
+    "original_conclusion_sha256": "7f100b3ba8127295c5ce2cf09261b6e00c0eac5baa97935ab2cbc6a361df0a37",
+    "presentation_sha256": "ed4ac58b51476487f1fc1e9c7627e9530e3874848bf06ad177f8d96a122f1eaf",
+    "mode": "updated",
+    "readback": true
+  },
+  "solar": {
+    "title": "Solar Autoresearch | Build a research loop, then give it an agent",
+    "id": "VmlldzoxODMwMjY4OQ==",
+    "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==",
+    "workspace_id": "2d92533d2cff4e249b56748dec707b6e",
+    "panels": [
+      {
+        "name": "AIA images \u00b7 reserved dates",
+        "ids": [
+          "8c856d156876537764dcfcdb011296d7",
+          "d1191aacb659276c00de67cd4653bb43",
+          "03ab9f82b09eb4106199216e99df1fce"
+        ],
+        "metric": "solar-images-final/error_mean",
+        "filters": "Config(\"workspace_id\") == \"2d92533d2cff4e249b56748dec707b6e\" and ID in [\"8c856d156876537764dcfcdb011296d7\", \"d1191aacb659276c00de67cd4653bb43\", \"03ab9f82b09eb4106199216e99df1fce\"]",
+        "chart": "BarPlot",
+        "run_labels": {
+          "8c856d156876537764dcfcdb011296d7:solar-images-final/error_mean": "Copy the latest image",
+          "d1191aacb659276c00de67cd4653bb43:solar-images-final/error_mean": "Manual image model",
+          "03ab9f82b09eb4106199216e99df1fce:solar-images-final/error_mean": "Agent-selected image model"
+        },
+        "verified_runs": [
+          {
+            "id": "8c856d156876537764dcfcdb011296d7",
+            "score": 0.12576198700564592,
+            "planned": 199,
+            "available": 199
+          },
+          {
+            "id": "d1191aacb659276c00de67cd4653bb43",
+            "score": 0.12244173366220752,
+            "planned": 199,
+            "available": 199
+          },
+          {
+            "id": "03ab9f82b09eb4106199216e99df1fce",
+            "score": 0.11001095193834161,
+            "planned": 199,
+            "available": 199
+          }
+        ]
+      },
+      {
+        "name": "GOES measurements \u00b7 reserved dates",
+        "ids": [
+          "6a22bd3384f475b87781c40f49ad62cc",
+          "3cc3758de39ae8a8e3afdaba625b8252"
+        ],
+        "metric": "solar-measurements-final/error_mean",
+        "filters": "Config(\"workspace_id\") == \"2d92533d2cff4e249b56748dec707b6e\" and ID in [\"6a22bd3384f475b87781c40f49ad62cc\", \"3cc3758de39ae8a8e3afdaba625b8252\"]",
+        "chart": "BarPlot",
+        "run_labels": {
+          "6a22bd3384f475b87781c40f49ad62cc:solar-measurements-final/error_mean": "Copy the latest GOES reading",
+          "3cc3758de39ae8a8e3afdaba625b8252:solar-measurements-final/error_mean": "Selected GOES model"
+        },
+        "verified_runs": [
+          {
+            "id": "6a22bd3384f475b87781c40f49ad62cc",
+            "score": 0.19270602844340234,
+            "planned": 2694,
+            "available": 2694
+          },
+          {
+            "id": "3cc3758de39ae8a8e3afdaba625b8252",
+            "score": 2.468974582071028,
+            "planned": 2694,
+            "available": 2694
+          }
+        ]
+      }
+    ],
+    "blocks": 32,
+    "outcomes_changed": false,
+    "original_conclusion_sha256": "202492d575b442161eee55e9f4721b5a49b8479fe14011eb2b29a1bd1e2915eb",
+    "presentation_sha256": "e866b83cc4c7fee90f35906ba94145fdf3aa70b688adc4f5b507fc42e6dfb187",
+    "mode": "updated",
+    "readback": true
+  }
+}

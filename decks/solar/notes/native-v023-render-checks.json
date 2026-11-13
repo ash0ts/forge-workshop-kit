@@ -1,0 +1,208 @@
+{
+  "slides": [
+    {
+      "slide": 52,
+      "key": "native-lens",
+      "title": "Find the validation evidence the agent read",
+      "expected": "Find the validation evidence the agent read",
+      "title_matches": true,
+      "clipped": [],
+      "missing": [],
+      "links": [
+        {
+          "text": "Open full-size capture",
+          "href": "http://127.0.0.1:3058/images/ux-v023-solar-lens.png"
+        },
+        {
+          "text": "Open the conversation ↗",
+          "href": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ef590522f1af377a0bc04bd63eea23e4/spans"
+        }
+      ]
+    },
+    {
+      "slide": 70,
+      "key": "result-meaning",
+      "title": "Open the comparison in your project",
+      "expected": "Open the comparison in your project",
+      "title_matches": true,
+      "clipped": [],
+      "missing": [],
+      "links": [
+        {
+          "text": "Open full-size capture",
+          "href": "http://127.0.0.1:3058/images/ux-v023-solar-dashboard.png"
+        },
+        {
+          "text": "Open the Solar workspace ↗",
+          "href": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=ogpa6vhy8db"
+        }
+      ]
+    },
+    {
+      "slide": 71,
+      "key": "reproduce",
+      "title": "Open the files behind one result",
+      "expected": "Open the files behind one result",
+      "title_matches": true,
+      "clipped": [],
+      "missing": [],
+      "links": [
+        {
+          "text": "Open full-size capture",
+          "href": "http://127.0.0.1:3058/images/ux-v023-solar-artifact.png"
+        },
+        {
+          "text": "candidate.py",
+          "href": "http://candidate.py/"
+        },
+        {
+          "text": "weights.pt",
+          "href": "http://weights.pt/"
+        },
+        {
+          "text": "Open the Artifact ↗",
+          "href": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f5e5d198bc9479f78d9a4b1c8c8979e3/v0"
+        }
+      ]
+    },
+    {
+      "slide": 73,
+      "key": "close",
+      "title": "Explain the result, then choose the next experiment",
+      "expected": "Explain the result, then choose the next experiment",
+      "title_matches": true,
+      "clipped": [],
+      "missing": [],
+      "links": [
+        {
+          "text": "Open full-size capture",
+          "href": "http://127.0.0.1:3058/images/ux-v023-solar-report-results.png"
+        },
+        {
+          "text": "Open the recorded Report ↗",
+          "href": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ=="
+        }
+      ]
+    },
+    {
+      "slide": 90,
+      "key": "links",
+      "title": "Keep working in your own project",
+      "expected": "Keep working in your own project",
+      "title_matches": true,
+      "clipped": [],
+      "missing": [],
+      "links": [
+        {
+          "text": "Copy the Solar notebook ↗",
+          "href": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view"
+        },
+        {
+          "text": "Source, setup, dataset, and facilitator guide ↗",
+          "href": "https://github.com/ash0ts/forge-workshop-kit"
+        },
+        {
+          "text": "Recorded rehearsal Report ↗",
+          "href": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ=="
+        },
+        {
+          "text": "Explore the separate Pending workshop →",
+          "href": "http://127.0.0.1:3058/91"
+        }
+      ]
+    },
+    {
+      "slide": 91,
+      "key": "pending-template",
+      "title": "The same kit also runs an office-agent workshop",
+      "expected": "The same kit also runs an office-agent workshop",
+      "title_matches": true,
+      "clipped": [],
+      "missing": [],
+      "links": [
+        {
+          "text": "Open full-size capture",
+          "href": "http://127.0.0.1:3058/images/ux-v022-pending-setup.png"
+        },
+        {
+          "text": "Open the Pending template ↗",
+          "href": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view"
+        },
+        {
+          "text": "Return to Solar setup →",
+          "href": "http://127.0.0.1:3058/6"
+        }
+      ]
+    },
+    {
+      "slide": 92,
+      "key": "pending-lens",
+      "title": "Check what the invoice tool returned",
+      "expected": "Check what the invoice tool returned",
+      "title_matches": true,
+      "clipped": [],
+      "missing": [],
+      "links": [
+        {
+          "text": "Open full-size capture",
+          "href": "http://127.0.0.1:3058/images/ux-v023-pending-lens.png"
+        },
+        {
+          "text": "Open the tool conversation ↗",
+          "href": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/370ae4263372ca1de91d7308e66d0d3d/spans/turns/fbb084c1ce00e6ade53a3d56ed7760fe/spans/2af0208bf11b7217"
+        },
+        {
+          "text": "Return to Solar setup →",
+          "href": "http://127.0.0.1:3058/6"
+        }
+      ]
+    },
+    {
+      "slide": 93,
+      "key": "pending-dashboard",
+      "title": "Compare the office state and explanation separately",
+      "expected": "Compare the office state and explanation separately",
+      "title_matches": true,
+      "clipped": [],
+      "missing": [],
+      "links": [
+        {
+          "text": "Open full-size capture",
+          "href": "http://127.0.0.1:3058/images/ux-v023-pending-dashboard.png"
+        },
+        {
+          "text": "Open the Pending workspace ↗",
+          "href": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=nkyxiy1o6wn"
+        },
+        {
+          "text": "Return to Solar setup →",
+          "href": "http://127.0.0.1:3058/6"
+        }
+      ]
+    },
+    {
+      "slide": 94,
+      "key": "pending-report",
+      "title": "Write what the office comparison showed",
+      "expected": "Write what the office comparison showed",
+      "title_matches": true,
+      "clipped": [],
+      "missing": [],
+      "links": [
+        {
+          "text": "Open full-size capture",
+          "href": "http://127.0.0.1:3058/images/ux-v023-pending-report-results.png"
+        },
+        {
+          "text": "Open the Pending Report ↗",
+          "href": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-51a0006f--VmlldzoxODMwMjcxMA=="
+        },
+        {
+          "text": "Return to Solar setup →",
+          "href": "http://127.0.0.1:3058/6"
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

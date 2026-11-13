@@ -1,0 +1,240 @@
+{
+  "solar": {
+    "study": "solar",
+    "name": "Solar Forecasting Lab - recorded research loop",
+    "workspace": "2d92533d2cff4e249b56748dec707b6e",
+    "filters": "Config(\"workspace_id\") == \"2d92533d2cff4e249b56748dec707b6e\" and ID in [\"5e2ee7e46e9a3ab976807a2c8b6d8a10\", \"48984045d222b74c7636d08398fa8031\", \"f5e5d198bc9479f78d9a4b1c8c8979e3\", \"8c856d156876537764dcfcdb011296d7\", \"d1191aacb659276c00de67cd4653bb43\", \"03ab9f82b09eb4106199216e99df1fce\", \"6a22bd3384f475b87781c40f49ad62cc\", \"3cc3758de39ae8a8e3afdaba625b8252\"]",
+    "runs": [
+      {
+        "id": "5e2ee7e46e9a3ab976807a2c8b6d8a10",
+        "label": "Manual residual model",
+        "metric": "validation_error",
+        "expected": 0.12211618815677268
+      },
+      {
+        "id": "48984045d222b74c7636d08398fa8031",
+        "label": "Round 1: zero-init head",
+        "metric": "validation_error",
+        "expected": 0.11143358542213977
+      },
+      {
+        "id": "f5e5d198bc9479f78d9a4b1c8c8979e3",
+        "label": "Round 2: zero-init + L1",
+        "metric": "validation_error",
+        "expected": 0.11091556898305115
+      },
+      {
+        "id": "8c856d156876537764dcfcdb011296d7",
+        "label": "Copy latest image",
+        "metric": "solar-images-final/error_mean",
+        "expected": 0.12576198700564592
+      },
+      {
+        "id": "d1191aacb659276c00de67cd4653bb43",
+        "label": "Manual image model",
+        "metric": "solar-images-final/error_mean",
+        "expected": 0.1224417336622075
+      },
+      {
+        "id": "03ab9f82b09eb4106199216e99df1fce",
+        "label": "Agent-selected image model",
+        "metric": "solar-images-final/error_mean",
+        "expected": 0.11001095193834161
+      },
+      {
+        "id": "6a22bd3384f475b87781c40f49ad62cc",
+        "label": "Copy latest GOES reading",
+        "metric": "solar-measurements-final/error_mean",
+        "expected": 0.19270602844340234
+      },
+      {
+        "id": "3cc3758de39ae8a8e3afdaba625b8252",
+        "label": "Selected GOES model",
+        "metric": "solar-measurements-final/error_mean",
+        "expected": 2.468974582071028
+      }
+    ],
+    "sections": [
+      {
+        "title": "Start here: one recorded research loop",
+        "panels": [
+          "Explanation and evidence links"
+        ]
+      },
+      {
+        "title": "1. Validation: test the code edits before selecting a version",
+        "panels": [
+          "Image validation error - lower is better",
+          "Explanation and evidence links"
+        ]
+      },
+      {
+        "title": "2. Reserved image dates: did the selected model transfer?",
+        "panels": [
+          "Final image error - lower is better",
+          "Explanation and evidence links"
+        ]
+      },
+      {
+        "title": "3. Reserved GOES dates: the best search run still lost",
+        "panels": [
+          "Final GOES log-flux MAE - lower is better",
+          "Explanation and evidence links"
+        ]
+      }
+    ],
+    "auto_generate_panels": false,
+    "changes_runs": false,
+    "changes_default_workspace": false,
+    "source_readback": [
+      {
+        "id": "5e2ee7e46e9a3ab976807a2c8b6d8a10",
+        "name": "images/manual-residual",
+        "metric": "validation_error",
+        "actual": 0.12211618815677268,
+        "state": "finished"
+      },
+      {
+        "id": "48984045d222b74c7636d08398fa8031",
+        "name": "images/round-1/composition-test",
+        "metric": "validation_error",
+        "actual": 0.11143358542213977,
+        "state": "finished"
+      },
+      {
+        "id": "f5e5d198bc9479f78d9a4b1c8c8979e3",
+        "name": "images/round-2/composition-test",
+        "metric": "validation_error",
+        "actual": 0.11091556898305115,
+        "state": "finished"
+      },
+      {
+        "id": "8c856d156876537764dcfcdb011296d7",
+        "name": "solar-images-final / persistence",
+        "metric": "solar-images-final/error_mean",
+        "actual": 0.12576198700564592,
+        "state": "finished"
+      },
+      {
+        "id": "d1191aacb659276c00de67cd4653bb43",
+        "name": "solar-images-final / manual",
+        "metric": "solar-images-final/error_mean",
+        "actual": 0.12244173366220752,
+        "state": "finished"
+      },
+      {
+        "id": "03ab9f82b09eb4106199216e99df1fce",
+        "name": "solar-images-final / agent",
+        "metric": "solar-images-final/error_mean",
+        "actual": 0.11001095193834161,
+        "state": "finished"
+      },
+      {
+        "id": "6a22bd3384f475b87781c40f49ad62cc",
+        "name": "solar-measurements-final / persistence",
+        "metric": "solar-measurements-final/error_mean",
+        "actual": 0.19270602844340234,
+        "state": "finished"
+      },
+      {
+        "id": "3cc3758de39ae8a8e3afdaba625b8252",
+        "name": "solar-measurements-final / selected-model",
+        "metric": "solar-measurements-final/error_mean",
+        "actual": 2.468974582071028,
+        "state": "finished"
+      }
+    ],
+    "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=ogpa6vhy8db",
+    "readback": "verified",
+    "internal_name": "nw-ogpa6vhy8db-v"
+  },
+  "pending": {
+    "study": "pending",
+    "name": "Pending, Inc. - recorded agent comparison",
+    "workspace": "51a0006f750c4083b2506a997097db83",
+    "filters": "Config(\"workspace_id\") == \"51a0006f750c4083b2506a997097db83\" and ID in [\"8fd15200fa51635dd30e76869dfd2a30\", \"f3cd39e83f9d9bf727142045e1057d90\", \"2cbedcd43422774411bfb08d91c82fcf\"]",
+    "runs": [
+      {
+        "id": "8fd15200fa51635dd30e76869dfd2a30",
+        "label": "Starting harness",
+        "metric": "pending-final/error_mean",
+        "expected": 0.0
+      },
+      {
+        "id": "f3cd39e83f9d9bf727142045e1057d90",
+        "label": "Manual edit",
+        "metric": "pending-final/error_mean",
+        "expected": 0.0
+      },
+      {
+        "id": "2cbedcd43422774411bfb08d91c82fcf",
+        "label": "Agent-selected harness",
+        "metric": "pending-final/error_mean",
+        "expected": 0.0
+      }
+    ],
+    "sections": [
+      {
+        "title": "Start here: check the work, then inspect the explanation",
+        "panels": [
+          "Explanation and evidence links"
+        ]
+      },
+      {
+        "title": "1. State checks: did the office actually change correctly?",
+        "panels": [
+          "Final state error - 0 is correct, 1 is incorrect",
+          "State-check coverage - four tickets per version"
+        ]
+      },
+      {
+        "title": "2. Explanation judgments: keep unavailable separate from failure",
+        "panels": [
+          "Explanation and evidence links"
+        ]
+      },
+      {
+        "title": "3. Inspect a recovery and the decision to retain a version",
+        "panels": [
+          "Explanation and evidence links"
+        ]
+      },
+      {
+        "title": "4. All twelve cases - ordinary W&B Table fallback",
+        "panels": [
+          "Explanation and evidence links",
+          "Saved case comparisons"
+        ]
+      }
+    ],
+    "auto_generate_panels": false,
+    "changes_runs": false,
+    "changes_default_workspace": false,
+    "source_readback": [
+      {
+        "id": "8fd15200fa51635dd30e76869dfd2a30",
+        "name": "pending-final / starting",
+        "metric": "pending-final/error_mean",
+        "actual": 0,
+        "state": "finished"
+      },
+      {
+        "id": "f3cd39e83f9d9bf727142045e1057d90",
+        "name": "pending-final / manual",
+        "metric": "pending-final/error_mean",
+        "actual": 0,
+        "state": "finished"
+      },
+      {
+        "id": "2cbedcd43422774411bfb08d91c82fcf",
+        "name": "pending-final / agent",
+        "metric": "pending-final/error_mean",
+        "actual": 0,
+        "state": "finished"
+      }
+    ],
+    "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=nkyxiy1o6wn",
+    "readback": "verified",
+    "internal_name": "nw-nkyxiy1o6wn-v"
+  }
+}

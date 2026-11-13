@@ -1,0 +1,378 @@
+{
+  "release": "0.2.3",
+  "scope": "static HTML export and layout only",
+  "source_code_folded": true,
+  "provider_credentials_removed_from_export_environment": true,
+  "isolated_state_root": "/var/folders/3t/n27925h94sv19f5jhnz6qzgr0000gp/T/forge-v023-static-m07gawbp",
+  "exports": [
+    {
+      "notebook": "notebooks/starter.py",
+      "output": "dist/starter.html",
+      "exit_code": 0,
+      "seconds": 1.38,
+      "source_sha256": "d57390168c6c25dc7258d59e73113ff17246a06db25546de878db45f88a77496",
+      "bytes": 36231,
+      "html_sha256": "7ab725b339e3e982209b3fe76dd01234151009f5aec9be4579fa8ce0f4de9eb3",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "notebook": "notebooks/facilitator.py",
+      "output": "dist/facilitator.html",
+      "exit_code": 0,
+      "seconds": 0.999,
+      "source_sha256": "0f828963c0168e76ccc8c80dc8c10ba84d9e77df52451aa050ecd5dde212cf66",
+      "bytes": 36612,
+      "html_sha256": "c8f82c81cb252319bb090bf5acd1319461429c6ca07ea75ff576d5797fd4ad74",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "notebook": "notebooks/pending_inc.py",
+      "output": "dist/pending_inc.html",
+      "exit_code": 0,
+      "seconds": 1.109,
+      "source_sha256": "00953d214f9c215990f15ddc3ac5abcd0983b74733fd98d6cd45fd70c7883abb",
+      "bytes": 152518,
+      "html_sha256": "af66989787e02ecf8af50c623585eff86c9f92564e6d7e5379187007dbffc6fd",
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "notebook": "notebooks/solar_autoresearch.py",
+      "output": "dist/solar_autoresearch.html",
+      "exit_code": 0,
+      "seconds": 1.866,
+      "source_sha256": "eb8fc0f9ac60e3b190c49ad4f1fe5f954674d7c0c5e5fec467d2f51b0ff053f4",
+      "bytes": 165190,
+      "html_sha256": "9c237bd269ef0ef66a7c2226cc801e0a2481a6368cbab154ebcab32aa497f195",
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "browser_checks": [
+    {
+      "notebook": "solar_autoresearch",
+      "layout": "desktop",
+      "viewport": 1440,
+      "seconds": 2.76,
+      "screenshot": "evidence/ux-v023-solar_autoresearch-static-desktop.png",
+      "title": "Solar Autoresearch",
+      "scrollWidth": 1440,
+      "bodyWidth": 1440,
+      "headings": [
+        "Build a research loop, then give it an agent",
+        "1. Connect to your own project"
+      ],
+      "visibleCodeBlocks": 1,
+      "buttons": [
+        {
+          "label": "1 · Connect",
+          "disabled": false
+        },
+        {
+          "label": "2 · Solar data",
+          "disabled": false
+        },
+        {
+          "label": "3 · Persistence",
+          "disabled": false
+        },
+        {
+          "label": "4 · Track and search",
+          "disabled": false
+        },
+        {
+          "label": "5 · Solar images",
+          "disabled": false
+        },
+        {
+          "label": "6 · Research agent",
+          "disabled": false
+        },
+        {
+          "label": "7 · Final evaluation",
+          "disabled": false
+        },
+        {
+          "label": "Ask the facilitator",
+          "disabled": false
+        },
+        {
+          "label": "",
+          "disabled": false
+        },
+        {
+          "label": "",
+          "disabled": false
+        },
+        {
+          "label": "Connect and restore my work",
+          "disabled": false
+        },
+        {
+          "label": "Check my tracing code",
+          "disabled": false
+        },
+        {
+          "label": "Hint",
+          "disabled": false
+        },
+        {
+          "label": "Worked answer",
+          "disabled": false
+        },
+        {
+          "label": "Send my first Agent Lens trace",
+          "disabled": true
+        },
+        {
+          "label": "Continue: inspect the solar data →",
+          "disabled": false
+        }
+      ],
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "notebook": "solar_autoresearch",
+      "layout": "narrow",
+      "viewport": 430,
+      "seconds": 2.546,
+      "screenshot": "evidence/ux-v023-solar_autoresearch-static-narrow.png",
+      "title": "Solar Autoresearch",
+      "scrollWidth": 430,
+      "bodyWidth": 430,
+      "headings": [
+        "Build a research loop, then give it an agent",
+        "1. Connect to your own project"
+      ],
+      "visibleCodeBlocks": 1,
+      "buttons": [
+        {
+          "label": "1 · Connect",
+          "disabled": false
+        },
+        {
+          "label": "2 · Solar data",
+          "disabled": false
+        },
+        {
+          "label": "3 · Persistence",
+          "disabled": false
+        },
+        {
+          "label": "4 · Track and search",
+          "disabled": false
+        },
+        {
+          "label": "5 · Solar images",
+          "disabled": false
+        },
+        {
+          "label": "6 · Research agent",
+          "disabled": false
+        },
+        {
+          "label": "7 · Final evaluation",
+          "disabled": false
+        },
+        {
+          "label": "Ask the facilitator",
+          "disabled": false
+        },
+        {
+          "label": "",
+          "disabled": false
+        },
+        {
+          "label": "",
+          "disabled": false
+        },
+        {
+          "label": "Connect and restore my work",
+          "disabled": false
+        },
+        {
+          "label": "Check my tracing code",
+          "disabled": false
+        },
+        {
+          "label": "Hint",
+          "disabled": false
+        },
+        {
+          "label": "Worked answer",
+          "disabled": false
+        },
+        {
+          "label": "Send my first Agent Lens trace",
+          "disabled": true
+        },
+        {
+          "label": "Continue: inspect the solar data →",
+          "disabled": false
+        }
+      ],
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "notebook": "pending_inc",
+      "layout": "desktop",
+      "viewport": 1440,
+      "seconds": 2.611,
+      "screenshot": "evidence/ux-v023-pending_inc-static-desktop.png",
+      "title": "Pending, Inc.",
+      "scrollWidth": 1440,
+      "bodyWidth": 1440,
+      "headings": [
+        "Pending, Inc.",
+        "1. Connect your project and send a trace",
+        "Project connection"
+      ],
+      "visibleCodeBlocks": 1,
+      "buttons": [
+        {
+          "label": "1 · Connect and trace",
+          "disabled": false
+        },
+        {
+          "label": "2 · Build an invoice tool",
+          "disabled": false
+        },
+        {
+          "label": "3 · Pass observations to the agent",
+          "disabled": false
+        },
+        {
+          "label": "4 · Check the work",
+          "disabled": false
+        },
+        {
+          "label": "5 · Edit one procedure",
+          "disabled": false
+        },
+        {
+          "label": "6 · Improve twice",
+          "disabled": false
+        },
+        {
+          "label": "7 · Compare fresh tickets",
+          "disabled": false
+        },
+        {
+          "label": "8 · Explain the result",
+          "disabled": false
+        },
+        {
+          "label": "",
+          "disabled": false
+        },
+        {
+          "label": "",
+          "disabled": false
+        },
+        {
+          "label": "Check my project and restore saved work",
+          "disabled": false
+        },
+        {
+          "label": "Ask the facilitator",
+          "disabled": false
+        },
+        {
+          "label": "Run this check and verify my Agent Lens trace",
+          "disabled": true
+        },
+        {
+          "label": "Go to the required step →",
+          "disabled": false
+        }
+      ],
+      "errors": [],
+      "failedRequests": []
+    },
+    {
+      "notebook": "pending_inc",
+      "layout": "narrow",
+      "viewport": 430,
+      "seconds": 2.533,
+      "screenshot": "evidence/ux-v023-pending_inc-static-narrow.png",
+      "title": "Pending, Inc.",
+      "scrollWidth": 430,
+      "bodyWidth": 430,
+      "headings": [
+        "Pending, Inc.",
+        "1. Connect your project and send a trace",
+        "Project connection"
+      ],
+      "visibleCodeBlocks": 1,
+      "buttons": [
+        {
+          "label": "1 · Connect and trace",
+          "disabled": false
+        },
+        {
+          "label": "2 · Build an invoice tool",
+          "disabled": false
+        },
+        {
+          "label": "3 · Pass observations to the agent",
+          "disabled": false
+        },
+        {
+          "label": "4 · Check the work",
+          "disabled": false
+        },
+        {
+          "label": "5 · Edit one procedure",
+          "disabled": false
+        },
+        {
+          "label": "6 · Improve twice",
+          "disabled": false
+        },
+        {
+          "label": "7 · Compare fresh tickets",
+          "disabled": false
+        },
+        {
+          "label": "8 · Explain the result",
+          "disabled": false
+        },
+        {
+          "label": "",
+          "disabled": false
+        },
+        {
+          "label": "",
+          "disabled": false
+        },
+        {
+          "label": "Check my project and restore saved work",
+          "disabled": false
+        },
+        {
+          "label": "Ask the facilitator",
+          "disabled": false
+        },
+        {
+          "label": "Run this check and verify my Agent Lens trace",
+          "disabled": true
+        },
+        {
+          "label": "Go to the required step →",
+          "disabled": false
+        }
+      ],
+      "errors": [],
+      "failedRequests": []
+    }
+  ],
+  "training_runs": 0,
+  "model_requests": 0,
+  "actions": "Open generated static HTML and capture initial state; no notebook control clicks.",
+  "hosted_status": "Not validated by these checks. Parent observed blank hosted /view preview with a public-page-to-local-network browser error; native Copy dialog opened.",
+  "isolated_state_files": []
+}

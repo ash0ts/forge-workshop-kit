@@ -1,0 +1,664 @@
+{
+  "pages": 94,
+  "all_titles_match": true,
+  "checks": [
+    {
+      "slide": 1,
+      "key": "cover",
+      "title_matches": true,
+      "text_characters": 274,
+      "images": 0
+    },
+    {
+      "slide": 2,
+      "key": "arrival",
+      "title_matches": true,
+      "text_characters": 298,
+      "images": 0
+    },
+    {
+      "slide": 3,
+      "key": "assignment",
+      "title_matches": true,
+      "text_characters": 396,
+      "images": 0
+    },
+    {
+      "slide": 4,
+      "key": "research-question",
+      "title_matches": true,
+      "text_characters": 411,
+      "images": 0
+    },
+    {
+      "slide": 5,
+      "key": "path",
+      "title_matches": true,
+      "text_characters": 383,
+      "images": 0
+    },
+    {
+      "slide": 6,
+      "key": "copy",
+      "title_matches": true,
+      "text_characters": 429,
+      "images": 0
+    },
+    {
+      "slide": 7,
+      "key": "local",
+      "title_matches": true,
+      "text_characters": 399,
+      "images": 0
+    },
+    {
+      "slide": 8,
+      "key": "settings",
+      "title_matches": true,
+      "text_characters": 476,
+      "images": 0
+    },
+    {
+      "slide": 9,
+      "key": "trace-scopes",
+      "title_matches": true,
+      "text_characters": 420,
+      "images": 0
+    },
+    {
+      "slide": 10,
+      "key": "setup-turn",
+      "title_matches": true,
+      "text_characters": 518,
+      "images": 0
+    },
+    {
+      "slide": 11,
+      "key": "setup-screen",
+      "title_matches": true,
+      "text_characters": 313,
+      "images": 1
+    },
+    {
+      "slide": 12,
+      "key": "instrumentation-screen",
+      "title_matches": true,
+      "text_characters": 272,
+      "images": 1
+    },
+    {
+      "slide": 13,
+      "key": "goes-window",
+      "title_matches": true,
+      "text_characters": 269,
+      "images": 0
+    },
+    {
+      "slide": 14,
+      "key": "chronology",
+      "title_matches": true,
+      "text_characters": 278,
+      "images": 0
+    },
+    {
+      "slide": 15,
+      "key": "gaps",
+      "title_matches": true,
+      "text_characters": 437,
+      "images": 0
+    },
+    {
+      "slide": 16,
+      "key": "sunpy",
+      "title_matches": true,
+      "text_characters": 315,
+      "images": 0
+    },
+    {
+      "slide": 17,
+      "key": "data-turn",
+      "title_matches": true,
+      "text_characters": 492,
+      "images": 0
+    },
+    {
+      "slide": 18,
+      "key": "persistence",
+      "title_matches": true,
+      "text_characters": 328,
+      "images": 0
+    },
+    {
+      "slide": 19,
+      "key": "metric",
+      "title_matches": true,
+      "text_characters": 366,
+      "images": 0
+    },
+    {
+      "slide": 20,
+      "key": "persistence-turn",
+      "title_matches": true,
+      "text_characters": 468,
+      "images": 0
+    },
+    {
+      "slide": 21,
+      "key": "number",
+      "title_matches": true,
+      "text_characters": 325,
+      "images": 0
+    },
+    {
+      "slide": 22,
+      "key": "run-inspector",
+      "title_matches": true,
+      "text_characters": 413,
+      "images": 0
+    },
+    {
+      "slide": 23,
+      "key": "run-inspector-reveal",
+      "title_matches": true,
+      "text_characters": 501,
+      "images": 0
+    },
+    {
+      "slide": 24,
+      "key": "program",
+      "title_matches": true,
+      "text_characters": 199,
+      "images": 0
+    },
+    {
+      "slide": 25,
+      "key": "source",
+      "title_matches": true,
+      "text_characters": 310,
+      "images": 0
+    },
+    {
+      "slide": 26,
+      "key": "independent",
+      "title_matches": true,
+      "text_characters": 346,
+      "images": 0
+    },
+    {
+      "slide": 27,
+      "key": "record",
+      "title_matches": true,
+      "text_characters": 387,
+      "images": 0
+    },
+    {
+      "slide": 28,
+      "key": "stage",
+      "title_matches": true,
+      "text_characters": 438,
+      "images": 0
+    },
+    {
+      "slide": 29,
+      "key": "artifacts",
+      "title_matches": true,
+      "text_characters": 385,
+      "images": 0
+    },
+    {
+      "slide": 30,
+      "key": "tracking-turn",
+      "title_matches": true,
+      "text_characters": 494,
+      "images": 0
+    },
+    {
+      "slide": 31,
+      "key": "search-levels",
+      "title_matches": true,
+      "text_characters": 371,
+      "images": 0
+    },
+    {
+      "slide": 32,
+      "key": "configs",
+      "title_matches": true,
+      "text_characters": 305,
+      "images": 0
+    },
+    {
+      "slide": 33,
+      "key": "sweep",
+      "title_matches": true,
+      "text_characters": 427,
+      "images": 0
+    },
+    {
+      "slide": 34,
+      "key": "native-sweep",
+      "title_matches": true,
+      "text_characters": 234,
+      "images": 1
+    },
+    {
+      "slide": 35,
+      "key": "learning-curve",
+      "title_matches": true,
+      "text_characters": 340,
+      "images": 0
+    },
+    {
+      "slide": 36,
+      "key": "search-turn",
+      "title_matches": true,
+      "text_characters": 490,
+      "images": 0
+    },
+    {
+      "slide": 37,
+      "key": "break",
+      "title_matches": true,
+      "text_characters": 252,
+      "images": 0
+    },
+    {
+      "slide": 38,
+      "key": "images-window",
+      "title_matches": true,
+      "text_characters": 238,
+      "images": 0
+    },
+    {
+      "slide": 39,
+      "key": "image-stack",
+      "title_matches": true,
+      "text_characters": 436,
+      "images": 0
+    },
+    {
+      "slide": 40,
+      "key": "persistence-image",
+      "title_matches": true,
+      "text_characters": 188,
+      "images": 1
+    },
+    {
+      "slide": 41,
+      "key": "conv",
+      "title_matches": true,
+      "text_characters": 317,
+      "images": 0
+    },
+    {
+      "slide": 42,
+      "key": "residual",
+      "title_matches": true,
+      "text_characters": 302,
+      "images": 0
+    },
+    {
+      "slide": 43,
+      "key": "image-score",
+      "title_matches": true,
+      "text_characters": 298,
+      "images": 0
+    },
+    {
+      "slide": 44,
+      "key": "loss",
+      "title_matches": true,
+      "text_characters": 369,
+      "images": 0
+    },
+    {
+      "slide": 45,
+      "key": "image-code-screen",
+      "title_matches": true,
+      "text_characters": 196,
+      "images": 1
+    },
+    {
+      "slide": 46,
+      "key": "image-turn",
+      "title_matches": true,
+      "text_characters": 497,
+      "images": 0
+    },
+    {
+      "slide": 47,
+      "key": "agent-need",
+      "title_matches": true,
+      "text_characters": 476,
+      "images": 0
+    },
+    {
+      "slide": 48,
+      "key": "weights",
+      "title_matches": true,
+      "text_characters": 402,
+      "images": 0
+    },
+    {
+      "slide": 49,
+      "key": "boundaries",
+      "title_matches": true,
+      "text_characters": 375,
+      "images": 0
+    },
+    {
+      "slide": 50,
+      "key": "evidence",
+      "title_matches": true,
+      "text_characters": 341,
+      "images": 0
+    },
+    {
+      "slide": 51,
+      "key": "agent-span",
+      "title_matches": true,
+      "text_characters": 364,
+      "images": 0
+    },
+    {
+      "slide": 52,
+      "key": "native-lens",
+      "title_matches": true,
+      "text_characters": 287,
+      "images": 1
+    },
+    {
+      "slide": 53,
+      "key": "evidence-turn",
+      "title_matches": true,
+      "text_characters": 539,
+      "images": 0
+    },
+    {
+      "slide": 54,
+      "key": "propose",
+      "title_matches": true,
+      "text_characters": 334,
+      "images": 0
+    },
+    {
+      "slide": 55,
+      "key": "native-diff",
+      "title_matches": true,
+      "text_characters": 202,
+      "images": 1
+    },
+    {
+      "slide": 56,
+      "key": "probe",
+      "title_matches": true,
+      "text_characters": 339,
+      "images": 0
+    },
+    {
+      "slide": 57,
+      "key": "compose",
+      "title_matches": true,
+      "text_characters": 391,
+      "images": 0
+    },
+    {
+      "slide": 58,
+      "key": "test-composed",
+      "title_matches": true,
+      "text_characters": 394,
+      "images": 0
+    },
+    {
+      "slide": 59,
+      "key": "repeat",
+      "title_matches": true,
+      "text_characters": 426,
+      "images": 0
+    },
+    {
+      "slide": 60,
+      "key": "round1-turn",
+      "title_matches": true,
+      "text_characters": 444,
+      "images": 0
+    },
+    {
+      "slide": 61,
+      "key": "round2-turn",
+      "title_matches": true,
+      "text_characters": 457,
+      "images": 0
+    },
+    {
+      "slide": 62,
+      "key": "branch-inspect",
+      "title_matches": true,
+      "text_characters": 416,
+      "images": 0
+    },
+    {
+      "slide": 63,
+      "key": "freeze",
+      "title_matches": true,
+      "text_characters": 318,
+      "images": 0
+    },
+    {
+      "slide": 64,
+      "key": "frozen-code",
+      "title_matches": true,
+      "text_characters": 298,
+      "images": 0
+    },
+    {
+      "slide": 65,
+      "key": "aligned",
+      "title_matches": true,
+      "text_characters": 364,
+      "images": 0
+    },
+    {
+      "slide": 66,
+      "key": "final-turn",
+      "title_matches": true,
+      "text_characters": 501,
+      "images": 0
+    },
+    {
+      "slide": 67,
+      "key": "recorded-final",
+      "title_matches": true,
+      "text_characters": 552,
+      "images": 0
+    },
+    {
+      "slide": 68,
+      "key": "recorded-image",
+      "title_matches": true,
+      "text_characters": 212,
+      "images": 1
+    },
+    {
+      "slide": 69,
+      "key": "recorded-goes",
+      "title_matches": true,
+      "text_characters": 210,
+      "images": 1
+    },
+    {
+      "slide": 70,
+      "key": "result-meaning",
+      "title_matches": true,
+      "text_characters": 294,
+      "images": 1
+    },
+    {
+      "slide": 71,
+      "key": "reproduce",
+      "title_matches": true,
+      "text_characters": 263,
+      "images": 1
+    },
+    {
+      "slide": 72,
+      "key": "conclusion-turn",
+      "title_matches": true,
+      "text_characters": 472,
+      "images": 0
+    },
+    {
+      "slide": 73,
+      "key": "close",
+      "title_matches": true,
+      "text_characters": 281,
+      "images": 1
+    },
+    {
+      "slide": 74,
+      "key": "reference",
+      "title_matches": true,
+      "text_characters": 311,
+      "images": 0
+    },
+    {
+      "slide": 75,
+      "key": "answer-trace",
+      "title_matches": true,
+      "text_characters": 614,
+      "images": 0
+    },
+    {
+      "slide": 76,
+      "key": "answer-persistence",
+      "title_matches": true,
+      "text_characters": 284,
+      "images": 0
+    },
+    {
+      "slide": 77,
+      "key": "answer-flux",
+      "title_matches": true,
+      "text_characters": 442,
+      "images": 0
+    },
+    {
+      "slide": 78,
+      "key": "answer-search",
+      "title_matches": true,
+      "text_characters": 441,
+      "images": 0
+    },
+    {
+      "slide": 79,
+      "key": "answer-images",
+      "title_matches": true,
+      "text_characters": 452,
+      "images": 0
+    },
+    {
+      "slide": 80,
+      "key": "answer-residual",
+      "title_matches": true,
+      "text_characters": 309,
+      "images": 0
+    },
+    {
+      "slide": 81,
+      "key": "answer-evidence",
+      "title_matches": true,
+      "text_characters": 573,
+      "images": 0
+    },
+    {
+      "slide": 82,
+      "key": "answer-controller",
+      "title_matches": true,
+      "text_characters": 431,
+      "images": 0
+    },
+    {
+      "slide": 83,
+      "key": "answer-final",
+      "title_matches": true,
+      "text_characters": 425,
+      "images": 0
+    },
+    {
+      "slide": 84,
+      "key": "recorded-edit",
+      "title_matches": true,
+      "text_characters": 376,
+      "images": 0
+    },
+    {
+      "slide": 85,
+      "key": "recorded-code",
+      "title_matches": true,
+      "text_characters": 341,
+      "images": 0
+    },
+    {
+      "slide": 86,
+      "key": "recorded-keep",
+      "title_matches": true,
+      "text_characters": 417,
+      "images": 0
+    },
+    {
+      "slide": 87,
+      "key": "recorded-lens",
+      "title_matches": true,
+      "text_characters": 456,
+      "images": 0
+    },
+    {
+      "slide": 88,
+      "key": "recovery",
+      "title_matches": true,
+      "text_characters": 398,
+      "images": 0
+    },
+    {
+      "slide": 89,
+      "key": "schedule",
+      "title_matches": true,
+      "text_characters": 305,
+      "images": 0
+    },
+    {
+      "slide": 90,
+      "key": "links",
+      "title_matches": true,
+      "text_characters": 331,
+      "images": 0
+    },
+    {
+      "slide": 91,
+      "key": "pending-template",
+      "title_matches": true,
+      "text_characters": 343,
+      "images": 1
+    },
+    {
+      "slide": 92,
+      "key": "pending-lens",
+      "title_matches": true,
+      "text_characters": 351,
+      "images": 1
+    },
+    {
+      "slide": 93,
+      "key": "pending-dashboard",
+      "title_matches": true,
+      "text_characters": 359,
+      "images": 1
+    },
+    {
+      "slide": 94,
+      "key": "pending-report",
+      "title_matches": true,
+      "text_characters": 351,
+      "images": 1
+    }
+  ]
+}

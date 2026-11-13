@@ -1,11 +1,19 @@
-# Release checks · 0.2.2 technical preview
+# Release checks · 0.2.3 technical preview
 
-The 0.2.2 update rewrites the exercise instructions, deck, setup guide, and presenter notes. The data, training code, model settings, and saved results are unchanged. Full live rehearsals below were completed for 0.2.0; copy and rendering checks for this release are separate.
+The 0.2.3 update adds curated Forge views, clearer Reports, a demo guide, native product captures, and distinct publication links for image and measurement comparisons. It changes no data, training code, model settings, or recorded results. Full live rehearsals below were completed for 0.2.0; presentation and packaging checks are separate.
 
 The revised notebooks were exercised in a browser using fresh local workspaces and real Forge services. They still need an external-attendee check and a human usability rehearsal before classroom-ready status.
 
 | Check | Evidence and outcome |
 | --- | --- |
+| 0.2.3 named dashboards | The Solar view selects eight current rehearsal runs; Pending selects three final comparison runs. Every displayed metric matches server readback. The default workspace and run records are unchanged. [Configuration and readback](../evidence/demo-workspaces.json). |
+| 0.2.3 Reports | Both existing Report IDs now show native comparison charts, complete result tables, and a short trace-to-code path. Conclusions and scores are preserved. [Readback](../evidence/demo-reports.json). |
+| 0.2.3 public views | Signed-out browser checks passed for both named dashboards and the selected Solar artifact. Agent Lens captures remain labeled authenticated views. [Checks](../evidence/ux-v023-public-dashboards.json). |
+| 0.2.3 deck | All 94 browser frames and PDF pages match their expected headings; no missing images or overflow. All 191 Pages routes, worked-answer returns and native product links passed. [Native frames](../decks/solar/notes/native-v023-render-checks.json), [PDF checks](../decks/solar/notes/pdf-checks.json), [capture provenance](../evidence/ux-v023-native-captures.json). |
+| 0.2.3 code and package checks | All 62 tests and four marimo notebook checks pass. Wheel and source archive build offline; packaged UI matches source, fonts and lab artwork are present, and private runtime paths are absent. The lockfile changes only the package version. [Checks](../evidence/ux-v023-package-checks.json). |
+| 0.2.3 comparison links | The notebook labels image and GOES persistence separately and preserves all six run/Weave links. Unavailable comparisons remain unavailable. No training or inference was added. |
+| 0.2.3 static notebook previews | All four notebooks export with kernel source hidden. Solar and Pending initial screens render directly at 1440px and 430px, with no horizontal page overflow or browser errors. The export environment has no provider credentials or saved workshop state; no model requests or training ran. These are saved previews, not live notebook checks. [Evidence](../evidence/ux-v023-static-exports.json). |
+| Current hosted preview limitation | The embedded notebook preview is blank in the tested browser, which reports a public-page-to-local-network error. The native Copy dialog opens; a running copied notebook has not been verified for this revision. Use the [documented fallback](current-demo-guide.md#when-a-product-view-is-unavailable) and retain the external-attendee release gate. |
 | 0.2.2 hosted templates | All four originals now use v0.2.2. Downloaded notebook sources match the release byte-for-byte; existing attendee copies were not modified. [Readback](../evidence/ux-v022-template-readback.json). |
 | 0.2.2 public deck and downloads | Signed-out checks passed for the final revised instructions, direct links, answer returns, and images. The PDF, source/browser ZIPs, and wheel match the built files. [Readback](../evidence/ux-v022-public-release.json), [deployment](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43487185727). |
 | 0.2.2 platform checks | Locked installs, all 60 tests, and all four notebook checks passed on macOS, Windows, and Linux for the release commit. [CI](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43487275912). |

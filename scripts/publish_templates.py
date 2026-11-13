@@ -12,7 +12,7 @@ for slug,title in [('starter','Forge Workshop Kit · Starter'),('facilitator','F
   saved[slug]={'id':created['id']};receipt.write_text(json.dumps(saved,indent=2))
  nb=query('mutation($id:ID!,$n:String!){renameNotebook(input:{id:$id,name:$n}){notebook{id name currentVersion{artifactCollectionName versionIndex} viewerPermissions}}}',{'id':saved[slug]['id'],'n':title})['renameNotebook']['notebook']
  with wandb.init(entity=entity,project=project,job_type='workshop-template',name=title,settings=wandb.Settings(disable_git=True)) as run:
-  artifact=wandb.Artifact(nb['currentVersion']['artifactCollectionName'],type='notebook',metadata={'release':'0.2.2','public_teaching_material':True,'gateway':False})
+  artifact=wandb.Artifact(nb['currentVersion']['artifactCollectionName'],type='notebook',metadata={'release':'0.2.3','public_teaching_material':True,'gateway':False})
   artifact.add_file(str(source),name='notebook.py');artifact.add_file(str(html),name='__marimo__/notebook.html');run.log_artifact(artifact).wait()
  read=query('query($id:ID!){notebook(id:$id){id name currentVersion{artifactCollectionName versionIndex sourceFileName} viewerPermissions}}',{'id':nb['id']})['notebook']
  assert read['currentVersion']['versionIndex']==int(artifact.version[1:])

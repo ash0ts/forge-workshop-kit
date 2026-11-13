@@ -310,7 +310,7 @@ Open the research conversation in Agent Lens. Start with the mission, then find 
 
 2:24
 
-In this recorded conversation, select read_validation_evidence. Its output includes the active configuration and validation evidence. Then inspect the proposed code and follow its training result. The full-size capture link helps when the native view requires sign-in.
+Open the evidence-reading tool and find the current source settings and validation result. Then inspect the returned proposal and follow its training result. This capture comes from the recorded rehearsal, not a new request. The full-size image remains available when sign-in is required.
 
 ## 53. Choose the evidence for the research agent
 
@@ -414,17 +414,17 @@ These are saved forecasts for the same final timestamp. Compare the manual row w
 
 The GOES model’s final log-flux MAE was 2.469; persistence scored 0.193. Its learning curve showed it was still undertrained after sixty steps. Keep this failure beside the image result. It does not establish that MLPs or CNNs cannot forecast solar measurements.
 
-## 70. Compare forecast quality, time, and cost
+## 70. Open the comparison in your project
 
 3:48
 
-Ask whether forecast error fell, how much training and inference it took, and whether any executions failed. These answer different questions. A run can finish cleanly and still make poor predictions.
+This saved workspace contains only the runs from one rehearsal. Compare final image scores, then inspect GOES separately. Open a run to see its settings, runtime, and evidence. Do not combine these two tasks into one average. The selected runs and source metrics are unchanged.
 
 ## 71. Open the files behind one result
 
 3:49
 
-Open a result’s run for settings and loss history, its Artifact for files, and its Agent Lens conversation for the agent’s actions. These links let a teammate inspect the result instead of relying on our summary.
+Open the Artifact file list for round two’s tested composition. candidate.py is the executed code, losses.json records training, weights.pt holds trained parameters, and predictions.npy and predictions.png contain the output. execution.json links the settings and result. This is the saved training run whose weights were subsequently frozen, not a new execution.
 
 ## 72. Write down what changed and whether it helped
 
@@ -432,11 +432,11 @@ Open a result’s run for settings and loss history, its Artifact for files, and
 
 Allow eight minutes. Ask participants to name a change, report what happened, and include a remaining miss. A negative result is fine. If publication fails, save the conclusion and retry the upload without rerunning the experiment.
 
-## 73. Choose the next experiment from what you observed
+## 73. Explain the result, then choose the next experiment
 
 3:58–4:00
 
-Ask for one next experiment based on an error someone inspected. What code would change, what would stay fixed, and what would make them keep the old version? Use new final-test dates for another round of model development.
+A teammate should be able to follow this explanation back to the run, source, and prediction. Ask for one next experiment based on an error someone inspected: what would change, what would stay fixed, and what would make them keep the previous version? This Report describes the recorded rehearsal; participants publish their own conclusions.
 
 ## 74. Reference and worked answers
 
@@ -539,3 +539,27 @@ Use these times to pace the room. They include coding and discussion, not just e
 REFERENCE
 
 Participants keep their notebook and project. Use these links to continue the exercises, inspect the source, or revisit the recorded example. There is no facilitator gateway to renew.
+
+## 91. The same kit also runs an office-agent workshop
+
+OPTIONAL · PENDING, INC.
+
+This optional sequence shows the current Pending workshop, not the older gateway-based release. Copy it into your own project. The notebook screenshot shows the current setup controls; it does not prove hosted access or completed training.
+
+## 92. Check what the invoice tool returned
+
+OPTIONAL · PENDING, INC.
+
+Follow the lookup arguments and returned observation. This is the function the participant wrote, used by the real agent loop. Find where the next action used its result. It is a separate office rehearsal, not evidence from the solar experiment.
+
+## 93. Compare the office state and explanation separately
+
+OPTIONAL · PENDING, INC.
+
+There was no observed task-quality gain on these four tickets: all twelve state checks passed. Eleven explanation judgments were available; the missing one is not a failed state check. Manual and agent-selected harnesses were the same executable version. Use the saved case table to inspect a recovery.
+
+## 94. Write what the office comparison showed
+
+OPTIONAL · PENDING, INC.
+
+Open the Report for the separate office workshop. Follow a ticket to its checked state and trace, and explain why the selected instructions were retained. Use the return link to resume the Solar setup sequence.

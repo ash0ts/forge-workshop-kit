@@ -11,7 +11,9 @@ Each participant works in their own project. The facilitator can read the progre
 | [Solar Autoresearch · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view) | Join a research lab working with real satellite observations. Build forecasts, compare training settings, then ask an agent to propose and test code changes. Four hours. |
 | [Pending, Inc. · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) | Give an office agent tools for refunds and account access. Check its work, edit its instructions, then build an agent that makes and tests further edits. Three hours. |
 
-Use the [Solar browser deck](https://ash0ts.github.io/forge-workshop-kit/solar/) alongside the notebook, or download the [PDF](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.2.2/solar-autoresearch.pdf). The [release package](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.2.2) contains the notebook files and editable deck.
+Use the [Solar browser deck](https://ash0ts.github.io/forge-workshop-kit/solar/) alongside the notebook, or download the [PDF](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.2.3/solar-autoresearch.pdf). The [release package](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.2.3) contains the notebook files and editable deck.
+
+For a short demonstration, follow the [current demo guide](docs/current-demo-guide.md). It takes you from a notebook exercise to a trace, code change, and result in the two recorded rehearsals.
 
 These are technical previews. The [release checks](docs/release-checks.md) describe what we’ve tested and the external-attendee and human rehearsals still needed.
 
@@ -65,6 +67,8 @@ That comparison covers 199 overlapping windows from two days, with one seed. It 
 
 Pending uses fictional accounts and payments, including a tool that changes account state before its response times out. All 12 final runs reached the correct account state; the editor chose to retain the manual harness. An unchanged version is a valid outcome. Recorded examples are labeled separately from your own results.
 
+- [Solar recorded dashboard](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=ogpa6vhy8db)
+- [Pending recorded dashboard](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=nkyxiy1o6wn)
 - [Solar rehearsal Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==)
 - [Pending rehearsal Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-51a0006f--VmlldzoxODMwMjcxMA==)
 
@@ -91,6 +95,7 @@ session.checkpoint("baseline", evidence={"Run": run_url})
 
 Put the experiment, scorer, tracing, and improvement code in the notebook where participants can edit it. The package handles project identity, saving, publication, and progress. See the [framework guide](docs/framework.md) and [source map](docs/source-map.md).
 
+- [Current demo guide: both recorded flows](docs/current-demo-guide.md)
 - [Four-hour facilitator guide](docs/facilitator.md)
 - [Deck notes and Pending exercise references](docs/deck-guide.md)
 - [Solar data and experiment design](docs/solar-contract.md)
