@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.workshop/
+.env
+wandb/
+__marimo__/
+data/*
+!data/README.md
+evidence/private/
+dist/
+*.egg-info/

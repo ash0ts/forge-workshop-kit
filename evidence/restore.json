@@ -1,0 +1,36 @@
+{
+  "restore": {
+    "status": "local",
+    "completed": 1
+  },
+  "publication": {
+    "publish_stages": {
+      "status": "published",
+      "result": {
+        "3495dc90d38eb5eb210ffbf00c2d6016": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/3495dc90d38eb5eb210ffbf00c2d6016"
+      }
+    },
+    "publish_progress": {
+      "status": "published",
+      "result": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/eb8b14de057566695252ec3f"
+    },
+    "publish_checkpoint": {
+      "status": "published",
+      "result": "wandb/forge-workshop-kit/workspace-eb8b14de057566695252ec3f:v1"
+    }
+  },
+  "monitor": [
+    {
+      "project": "wandb/forge-workshop-kit",
+      "workspace": "eb8b14de057566695252ec3f",
+      "step": "restore-fixture",
+      "status": "complete",
+      "completed": 1,
+      "help": "",
+      "updated_at": 1794548486.7789938,
+      "evidence": {},
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/eb8b14de057566695252ec3f"
+    }
+  ],
+  "paid_requests": 0
+}
