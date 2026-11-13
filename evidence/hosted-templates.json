@@ -1,0 +1,74 @@
+{
+  "starter": {
+    "id": "Tm90ZWJvb2s6MTU3NzI=",
+    "name": "Forge Workshop Kit \u00b7 Starter",
+    "currentVersion": {
+      "artifactCollectionName": "Forge-Workshop-Kit-Starter",
+      "versionIndex": 1,
+      "sourceFileName": "notebook.py"
+    },
+    "viewerPermissions": [
+      "RUN",
+      "EDIT",
+      "DUPLICATE",
+      "VIEW_STATIC",
+      "DELETE"
+    ],
+    "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzI=/view",
+    "edit_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzI="
+  },
+  "facilitator": {
+    "id": "Tm90ZWJvb2s6MTU3NzM=",
+    "name": "Forge Workshop Kit \u00b7 Progress monitor",
+    "currentVersion": {
+      "artifactCollectionName": "Forge-Workshop-Kit-Progress-monitor",
+      "versionIndex": 1,
+      "sourceFileName": "notebook.py"
+    },
+    "viewerPermissions": [
+      "RUN",
+      "EDIT",
+      "DUPLICATE",
+      "VIEW_STATIC",
+      "DELETE"
+    ],
+    "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzM=/view",
+    "edit_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzM="
+  },
+  "pending_inc": {
+    "id": "Tm90ZWJvb2s6MTU3NzQ=",
+    "name": "Pending, Inc. \u00b7 Your project",
+    "currentVersion": {
+      "artifactCollectionName": "Pending-Inc.-Your-project",
+      "versionIndex": 1,
+      "sourceFileName": "notebook.py"
+    },
+    "viewerPermissions": [
+      "RUN",
+      "EDIT",
+      "DUPLICATE",
+      "VIEW_STATIC",
+      "DELETE"
+    ],
+    "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view",
+    "edit_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ="
+  },
+  "solar_autoresearch": {
+    "id": "Tm90ZWJvb2s6MTU3NzU=",
+    "name": "Build a research loop, then give it an agent",
+    "currentVersion": {
+      "artifactCollectionName": "Build-a-research-loop-then-give-it-an-agent",
+      "versionIndex": 1,
+      "sourceFileName": "notebook.py"
+    },
+    "viewerPermissions": [
+      "RUN",
+      "EDIT",
+      "DUPLICATE",
+      "VIEW_STATIC",
+      "DELETE"
+    ],
+    "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view",
+    "edit_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU="
+  }
+}

@@ -7,6 +7,7 @@ from forge_workshop_kit.pending.cases import CASES
 from forge_workshop_kit.pending.harness import Harness
 from forge_workshop_kit.pending.loop import run_employee,editor_decision,judge_explanation
 from forge_workshop_kit.provider import Provider
+from forge_workshop_kit.session import digest
 from forge_workshop_kit.publication import publish_comparison,publish_report
 p=argparse.ArgumentParser();p.add_argument('--project',required=True);p.add_argument('--state',default='.workshop/pending-rehearsal');a=p.parse_args()
 s=WorkshopSession(a.project,'pending-direct',state_dir=a.state,budget_usd=4)
@@ -24,12 +25,12 @@ for n,c in enumerate(dev,1):
  proposals=editor_decision(s,n,'propose',parent,[experience]);print('PROPOSALS',json.dumps(proposals),flush=True)
  # This script is a maintainer rehearsal. Review is performed via --reviewed file on resume.
  approval=s.file(f'review-round-{n}-proposals.json')
- if not approval.exists():
+ if not approval.exists() or json.loads(approval.read_text()).get('decision_fingerprint')!=digest(proposals['candidates']):
   print('REVIEW REQUIRED:',approval,flush=True);break
  probes=[run_employee(s,c,Harness(**d['harness']),prefix+'candidate-'+str(i)) for i,d in enumerate(proposals['candidates'])]
  decision=editor_decision(s,n,'compose',parent,probes);print('COMPOSITION',json.dumps(decision),flush=True)
  approval=s.file(f'review-round-{n}-composition.json')
- if not approval.exists(): print('REVIEW REQUIRED:',approval,flush=True);break
+ if not approval.exists() or json.loads(approval.read_text()).get('decision_fingerprint')!=digest({k:v for k,v in decision.items() if k!='trace'}): print('REVIEW REQUIRED:',approval,flush=True);break
  parent=Harness(**decision['harness']);run_employee(s,c,parent,prefix+'composition');lesson=decision.get('lesson')
  with s.stage(prefix+'adopted',sources=parent.files()) as stage:
   if stage.needs_run:stage.record({'harness':asdict(parent),'lesson':lesson,'limits':decision.get('limits')})

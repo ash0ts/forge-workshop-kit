@@ -42,14 +42,14 @@ def propose(session, number, source, evidence):
     # Structured evidence allowlist, not a directory dump that might contain final results.
     if evidence.get('split') != 'validation':
         raise ValueError('Improvement requires validation evidence, not final-test records.')
-    allowed={k:evidence[k] for k in ('split','metrics','losses','errors','trace','lessons') if k in evidence}
+    allowed={k:evidence[k] for k in ('split','config','metrics','losses','errors','trace','lessons') if k in evidence}
     events=[]
     if evidence.get('stage_id'):
         def read_validation():
             row=session.read()['stages'][evidence['stage_id']]
             if row['inputs'].get('split')!='validation':
                 raise ValueError('The selected execution is not a validation run.')
-            return {'metrics':row['result']['metrics'],'source_fingerprint':row['source_fingerprint']}
+            return {'config':row['config'],'metrics':row['result']['metrics'],'source_fingerprint':row['source_fingerprint']}
         _,observed=event('read_validation_evidence',{'execution':evidence['stage_id']},read_validation)
         events.append(observed)
     with session.stage(f'images/round-{number}/propose',sources={'candidate.py':source},inputs=allowed) as stage:

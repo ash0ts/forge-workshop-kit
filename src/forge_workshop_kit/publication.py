@@ -69,6 +69,8 @@ class Publisher:
                 value = stage.get('result', {})
                 if isinstance(value, dict):
                     run.summary.update(value.get('metrics', {}))
+                    for step, loss in enumerate(value.get('losses', [])):
+                        run.log({'training_step': step, 'training_loss': loss})
                     if value.get('trace'):
                         run.summary['agent_lens'] = value['trace'].get('url')
                 artifact = wandb.Artifact('execution-' + stage['id'], type='workshop-execution')
@@ -177,10 +179,14 @@ def publish_comparison(session, name, versions):
     for label, rows in versions.items():
         run_id = digest([session.workspace_id, name, label, rows])[:32]
         with publisher.run(run_id, name + ' / ' + label, 'workshop-evaluation', {'condition': label}) as run:
-            table = wandb.Table(columns=['case_id', 'input', 'prediction', 'target', 'error'],
+            table = wandb.Table(columns=['case_id', 'input', 'prediction', 'target', 'error', 'scores', 'evidence'],
                 data=[[r['case_id'], json.dumps(r['input']), json.dumps(r['prediction']),
-                       json.dumps(r['target']), r.get('error')] for r in rows])
+                       json.dumps(r['target']), r.get('error'), json.dumps(r.get('scores', {})), json.dumps(r.get('evidence', {}))] for r in rows])
             run.log({'comparison': table})
+            available=[r['error'] for r in rows if r.get('error') is not None]
+            run.summary[name+'/error_mean']=sum(available)/len(available) if available else None
+            run.summary['available_scores']=len(available)
+            run.summary['planned_scores']=len(rows)
             record = receipts.setdefault(label, {'run': run.url})
             # Separate publication failures. A native outage cannot erase Weave or local results.
             if record.get('weave_status') != 'published':
@@ -253,6 +259,14 @@ def publish_report(session, conclusion, links):
     import wandb_workspaces.reports.v2 as wr
     if not conclusion.strip():
         raise ValueError('Write your conclusion before publishing.')
+    receipt_key = 'report-' + digest([conclusion, links])
+    saved = session.read()['publications'].get(receipt_key)
+    if saved:
+        url=saved['url']
+        entity=session.project.split('/')[0]
+        if url.startswith('https://forge.coreweave.com/') and not url.startswith('https://forge.coreweave.com/wandb/'+entity+'/'):
+            url=url.replace('https://forge.coreweave.com/','https://forge.coreweave.com/wandb/',1)
+        return url
     entity, project = session.project.split('/')
     report = wr.Report(entity=entity, project=project, title=session.workshop + ': ' + session.workspace_id[:8],
         description='A participant experiment with saved code, predictions, and research-agent traces.')
@@ -260,6 +274,13 @@ def publish_report(session, conclusion, links):
         wr.H2(text='Evidence'), *[wr.P(text=f'{label}: {url}') for label, url in links.items()],
         wr.PanelGrid(runsets=[wr.Runset(entity=entity, project=project,
             filters=f'Config("workspace_id") == "{session.workspace_id}"')],
-            panels=[wr.ScalarChart(title='Validation error', metric='validation_error')])]
+            panels=[wr.ScalarChart(title='Image final error',metric='solar-images-final/error_mean'),
+                    wr.ScalarChart(title='Measurement final error',metric='solar-measurements-final/error_mean')]
+                    if session.workshop=='solar-autoresearch' else [wr.ScalarChart(title='Final case error',metric='pending-final/error_mean')])]
     report.save()
-    return report.url
+    url=report.url
+    if url.startswith('https://forge.coreweave.com/') and not url.startswith('https://forge.coreweave.com/wandb/'+entity+'/'):
+        url=url.replace('https://forge.coreweave.com/','https://forge.coreweave.com/wandb/',1)
+    with session.transaction() as state:
+        state['publications'][receipt_key] = {'url': url}
+    return url

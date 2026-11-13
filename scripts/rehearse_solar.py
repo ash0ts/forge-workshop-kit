@@ -34,16 +34,22 @@ with s.stage('goes/create-sweep',inputs={'source':source,'configurations':grid})
 def trial():
  with wandb.init(entity=s.project.split('/')[0],project=s.project.split('/')[1],job_type='workshop-sweep') as run:
   i=int(run.config.trial);record=train('goes/search-'+str(i),source,goes,grid[i]);run.log(record['metrics'])
-if len([r for r in s.completed() if r['name'].startswith('goes/search-')])<6:
+if not any(r['name']=='goes/sweep-finished' for r in s.completed()):
  wandb.agent(sweep_stage.result['sweep_id'],function=trial,count=6,entity=s.project.split('/')[0],project=s.project.split('/')[1])
+ with s.stage('goes/sweep-finished',inputs={'sweep':sweep_stage.result['sweep_id']}) as done:
+  if done.needs_run:done.record({'trials':6})
 goes_runs=[train('goes/search-'+str(i),source,goes,c) for i,c in enumerate(grid)]
 manual_runs=[train('images/manual-'+a,source,images,dict(architecture=a,width=8,learning_rate=.001,steps=40,seed=17,batch_size=8)) for a in ('conv','residual')]
 manual=min(manual_runs,key=lambda r:r['metrics']['validation_error']);parent=manual
 for number in (1,2):
  prefix=f'images/round-{number}/'
- proposal,proposal_id=research.propose(s,number,parent['source'],parent);research.trace_decision(s,proposal_id)
+ saved=[r for r in s.completed() if r['name']==prefix+'propose']
+ if saved:proposal,proposal_id=saved[-1]['result'],saved[-1]['id']
+ else:proposal,proposal_id=research.propose(s,number,parent['source'],parent)
+ research.trace_decision(s,proposal_id)
  print('PROPOSALS',number,json.dumps(proposal),flush=True)
- if not s.file(f'review-round-{number}-proposals.json').exists():print('REVIEW REQUIRED proposals',number,flush=True);break
+ review=s.file(f'review-round-{number}-proposals.json')
+ if not review.exists() or json.loads(review.read_text()).get('reviewed_stage')!=proposal_id:print('REVIEW REQUIRED proposals',number,flush=True);break
  probes=[]
  for i,candidate in enumerate(proposal['candidates']):
   try:r=train(prefix+'probe-'+str(i),candidate['source'],images,parent['config'])
@@ -51,9 +57,13 @@ for number in (1,2):
   probes.append({**r,'title':candidate['title'],'rationale':candidate['rationale']})
  with s.stage(prefix+'probe-done',inputs={'probes':probes}) as stage:
   if stage.needs_run:stage.record({'probes':probes})
- composition,compose_id=research.compose(s,number,parent['source'],parent,probes);research.trace_decision(s,compose_id)
+ saved=[r for r in s.completed() if r['name']==prefix+'compose']
+ if saved:composition,compose_id=saved[-1]['result'],saved[-1]['id']
+ else:composition,compose_id=research.compose(s,number,parent['source'],parent,probes)
+ research.trace_decision(s,compose_id)
  print('COMPOSITION',number,json.dumps(composition),flush=True)
- if not s.file(f'review-round-{number}-composition.json').exists():print('REVIEW REQUIRED composition',number,flush=True);break
+ review=s.file(f'review-round-{number}-composition.json')
+ if not review.exists() or json.loads(review.read_text()).get('reviewed_stage')!=compose_id:print('REVIEW REQUIRED composition',number,flush=True);break
  decision=composition['decision'];tested=train(prefix+'composition-test',decision['source'],images,parent['config'])
  selected=tested if tested['metrics']['validation_error']<parent['metrics']['validation_error'] else parent
  with s.stage(prefix+'adopt',inputs={'tested':tested['stage_id']}) as stage:
@@ -69,8 +79,16 @@ else:
     plots.forecast(prediction,images['test'],title=label).savefig(stage.output_dir/'predictions.png',dpi=130)
     stage.record(result,files=[stage.output_dir/'predictions.npy',stage.output_dir/'predictions.png'])
    prediction=np.load(stage.output_dir/'predictions.npy');results[label]=stage.result['metrics'];rows[label]=solar.evaluation_rows(prediction,images['test'],evidence={'stage_id':stage.id,'trace':version['trace']})
+ best=min(goes_runs,key=lambda r:r['metrics']['validation_error'])
+ with s.stage('goes/final',config=best['config'],sources={'candidate.py':best['source']},inputs={'selected_stage':best['stage_id'],'split':'test'}) as final_goes:
+  if final_goes.needs_run:
+   gr,gp=training.train(best['source'],None,goes['test'],best['config'],final_goes.output_dir,weights=s.file('outputs/'+best['stage_id']+'/weights.pt'))
+   plots.forecast(gp,goes['test'],title='GOES final').savefig(final_goes.output_dir/'predictions.png',dpi=130)
+   final_goes.record(gr,files=[final_goes.output_dir/'predictions.npy',final_goes.output_dir/'predictions.png'])
+  gp=np.load(final_goes.output_dir/'predictions.npy')
+ goes_publication=publish_comparison(s,'solar-measurements-final',{'persistence':solar.evaluation_rows(goes['test']['persistence'],goes['test']),'selected-model':solar.evaluation_rows(gp,goes['test'],evidence={'stage_id':final_goes.id})})
  receipts=publish_comparison(s,'solar-images-final',rows)
- result=dict(dataset=fp,counts={k:len(v['ids']) for k,v in images.items()},results=results,publication=receipts,cost=Provider(s).summary())
+ result=dict(measurements={'metrics':final_goes.result['metrics'],'publication':goes_publication},dataset=fp,counts={k:len(v['ids']) for k,v in images.items()},results=results,publication=receipts,cost=Provider(s).summary())
  Path('evidence/solar-rehearsal.json').write_text(json.dumps(result,indent=2));s.checkpoint('rehearsal-complete')
  print(json.dumps(result),flush=True)
 print('ACCOUNTING',Provider(s).summary(),flush=True)

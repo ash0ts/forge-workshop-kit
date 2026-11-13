@@ -1,0 +1,17 @@
+Your project. Your experiment.
+Start by copying the notebook into your project. The first exercise instruments a small operation. No host token is involved.
+
+First, predict nothing changes.
+The data and timestamps matter before the model does. This measurement model is undertrained at the short teaching budget. Persistence wins. That result is retained.
+
+Change settings, then change architectures.
+A configuration search changes settings in existing programs. Architecture comparison chooses an implemented model. Neither is an agent writing new research code.
+
+Now let an agent edit the program.
+Review the exact diff before execution. The agent’s rationale is a hypothesis. Probe it, compare the result, and keep the rejected branch. KEEP preserves the code fingerprint.
+
+Freeze. Then open the reserved dates.
+The final comparison loads saved weights and predicts. It does not train again. Look at the delivered prediction, not only the average score.
+
+A result you can reopen.
+The point is to build a research loop you can inspect and reproduce. Small validation gains may not transfer. The saved evidence lets you explain either outcome.

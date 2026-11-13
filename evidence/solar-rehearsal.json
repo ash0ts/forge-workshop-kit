@@ -1,0 +1,91 @@
+{
+  "measurements": {
+    "metrics": {
+      "error": 2.468974582071028,
+      "persistence_error": 0.19270602844340234,
+      "skill_vs_persistence": -11.812129449267148,
+      "examples": 2694,
+      "final_error": 2.468974582071028,
+      "seconds": 0.6854488849639893
+    },
+    "publication": {
+      "persistence": {
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/3a1c67c1e51343e8c89625d89cb7c4c3",
+        "weave_status": "published",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/solar-measurements-final-persistence-cases:LwKCIabkiY3BoPwuymEWEG9eDFEWzvrfJwSq3INspUQ",
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/solar-measurements-final-persistence-evaluation:HSHYOhTv5kfR7lGTP7PajiUJ5whG962XtfwNkohVCzE",
+        "native_status": "unavailable",
+        "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+      },
+      "selected-model": {
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/23fb16612f3ee966f8d4ac00a004286c",
+        "weave_status": "published",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/solar-measurements-final-selected-model-cases:M5syzra5qsLOnR0X3txw4yEJbvoT1eFlmgCNgYu9T6Q",
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/solar-measurements-final-selected-model-evaluation:dBNRT6IxVqL0uYb9Zz8ehJfhFbj707Zae0ebvTN93So",
+        "native_status": "unavailable",
+        "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+      }
+    }
+  },
+  "dataset": "302e7f2a2aaddf5d448ed5de317b5df3c23f0379557eba28b1e3d73466725b03",
+  "counts": {
+    "train": 1036,
+    "validation": 142,
+    "test": 199
+  },
+  "results": {
+    "persistence": {
+      "error": 0.12576198700564592,
+      "persistence_error": 0.12576198700564592,
+      "skill_vs_persistence": 0.0,
+      "examples": 199
+    },
+    "manual": {
+      "error": 0.1224417336622075,
+      "persistence_error": 0.12576198700564592,
+      "skill_vs_persistence": 0.026401088456795563,
+      "examples": 199,
+      "final_error": 0.1224417336622075,
+      "seconds": 1.3079497814178467
+    },
+    "agent": {
+      "error": 0.12076926123077544,
+      "persistence_error": 0.12576198700564592,
+      "skill_vs_persistence": 0.039699800343058644,
+      "examples": 199,
+      "final_error": 0.12076926123077544,
+      "seconds": 1.125993013381958
+    }
+  },
+  "publication": {
+    "persistence": {
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/acbc0ebc2a409fb692325f7e3a36eded",
+      "weave_status": "published",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/solar-images-final-persistence-cases:LdOFtimUg2BUthGHk8z0EHfK3OXIWFvM7ClbEPzMYug",
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/solar-images-final-persistence-evaluation:94PB3Let78YbSa7QKbSxpbzKAR6KgXkYppc5giX6Pgk",
+      "native_status": "unavailable",
+      "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+    },
+    "manual": {
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/163c2a23ac48c70eb7d8ca4fc83a76b9",
+      "weave_status": "published",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/solar-images-final-manual-cases:itiLI79HYZEMr73fMnYw3pOtyNTWELWqzeujyXS6iIk",
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/solar-images-final-manual-evaluation:CJXYn6cvqMPVYRCqIQvgeeqY3zbUQ59ZMWBYeR2lbxM",
+      "native_status": "unavailable",
+      "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+    },
+    "agent": {
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/f2c4a7a4a906c34837165034ffdfbd56",
+      "weave_status": "published",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/solar-images-final-agent-cases:20iNTSNwoqxOvXHYMkQT9AqdroswJXY7ihUF2dwqLRM",
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/solar-images-final-agent-evaluation:rO53iLaiR07pSD8x4R0cSKH56JhjvQPYpeWMCloivw0",
+      "native_status": "unavailable",
+      "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+    }
+  },
+  "cost": {
+    "observed_usd": 0.02708366,
+    "bounded_unknown_usd": 0,
+    "inflight_usd": 0
+  }
+}

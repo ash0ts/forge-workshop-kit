@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Solar Autoresearch · recorded walkthrough</title><style>
+body{margin:0;background:#f3f1e9;color:#182930;font:18px/1.5 system-ui}main{max-width:1100px;margin:auto;padding:32px}h1{font-size:38px;line-height:1.15}small{color:#77501d;letter-spacing:.08em}section[hidden]{display:none}img{width:100%;max-height:420px;object-fit:contain}pre{padding:16px;background:#172b35;color:#f5f0df;overflow:auto;font-size:16px}aside{background:#dfe9e7;padding:18px;border-left:4px solid #477e77;margin-top:20px}nav{position:sticky;top:0;background:#172b35;padding:16px;display:flex;gap:10px;z-index:1}button{padding:10px 15px;cursor:pointer;font-size:16px;border:1px solid #b0c5c7;background:transparent;color:white;border-radius:5px}button[aria-current=true]{background:#d99542;color:#172b35}table{width:100%;border-collapse:collapse}th,td{padding:12px;border-bottom:1px solid #bbc4c2;text-align:left}a{color:#216a76}@media(max-width:600px){main{padding:16px}h1{font-size:29px}nav{flex-wrap:wrap}button{padding:8px}pre{font-size:12px}}</style><nav aria-label="Walkthrough chapters"><button data-select="0">1. Copy</button><button data-select="1">2. Baseline</button><button data-select="2">3. Compare</button><button data-select="3">4. Improve</button><button data-select="4">5. Evaluate</button><button data-select="5">6. Resume</button></nav><main><section data-step="0" hidden><small>RECORDED EXAMPLE · 1 / 6</small><h1>Your project. Your experiment.</h1><p>Recorded rehearsal · November 13, 2026. These are saved executions, not results from an edit you make while watching.</p><p>Copy a notebook → authenticate in Forge → write code → publish evidence. The facilitator reads progress runs. There is no workshop gateway.</p><img src="chapter-1.png" alt="The notebook connection exercise"><aside>Start by copying the notebook into your project. The first exercise instruments a small operation. No host token is involved.</aside></section><section data-step="1" hidden><small>RECORDED EXAMPLE · 2 / 6</small><h1>First, predict nothing changes.</h1><p>GOES-15 measurements and AIA 171 Å images from February 1–14, 2014. Training: days 1–10. Validation: 11–12. Final evaluation: 13–14.</p><p>Persistence predicts the latest observation. Data windows never cross a gap or a partition. The download includes checksums and quality exclusions.</p><img src="goes-final.png" alt="Observed and predicted GOES flux"><aside>The data and timestamps matter before the model does. This measurement model is undertrained at the short teaching budget. Persistence wins. That result is retained.</aside></section><section data-step="2" hidden><small>RECORDED EXAMPLE · 3 / 6</small><h1>Change settings, then change architectures.</h1><p>Six configurations compare an MLP and temporal CNN. Images introduce a plain convolutional predictor and a residual predictor. Training code remains editable; W&B records settings, source, losses and predictions.</p><img src="solar-validation.png" alt="Five panels comparing image inputs, prediction, observation and error"><aside>A configuration search changes settings in existing programs. Architecture comparison chooses an implemented model. Neither is an agent writing new research code.</aside></section><section data-step="3" hidden><small>RECORDED EXAMPLE · 4 / 6</small><h1>Now let an agent edit the program.</h1><p>Round one proposed competing changes. The selected change replaced squared loss with absolute loss. Its validation error fell from 0.122116 to 0.120553. A dilated-convolution candidate regressed.</p><pre>--- previous/candidate.py
++++ proposed/candidate.py
+@@ -1,32 +1,25 @@
+ &quot;&quot;&quot;Editable research code. The data split and final scorer live elsewhere.&quot;&quot;&quot;
+ import torch
+ from torch import nn
+-
+ 
+ def build_model(input_shape, config):
+     width=config.get(&#x27;width&#x27;,16)
+     architecture=config.get(&#x27;architecture&#x27;,&#x27;mlp&#x27;)
+     if len(input_shape)==2:
+         if architecture==&#x27;mlp&#x27;:
+-            return nn.Sequential(nn.Flatten(),nn.Linear(input_shape[0]*input_shape[1],width),
+-                                 nn.ReLU(),nn.Linear(width,1))
+-        return nn.Sequential(nn.Conv1d(input_shape[0],width,5,padding=2),nn.ReLU(),
+-                             nn.AdaptiveAvgPool1d(1),nn.Flatten(),nn.Linear(width,1))
++            return nn.Sequential(nn.Flatten(),nn.Linear(input_shape[0]*input_shape[1],width),nn.ReLU(),nn.Linear(width,1))
++        return nn.Sequential(nn.Conv1d(input_shape[0],width,5,padding=2),nn.ReLU(),nn.AdaptiveAvgPool1d(1),nn.Flatten(),nn.Linear(width,1))
+     class ImagePredictor(nn.Module):
+         def __init__(self):
+             super().__init__()
+-            self.net=nn.Sequential(nn.Conv2d(2,width,3,padding=1),nn.ReLU(),
+-                                   nn.Conv2d(width,width,3,padding=1),nn.ReLU(),
+-                                   nn.Conv2d(width,1,3,padding=1))
++            self.net=nn.Sequential(nn.Conv2d(2,width,3,padding=1),nn.ReLU(),nn.Conv2d(width,width,3,padding=1),nn.ReLU(),nn.Conv2d(width,1,3,padding=1))
+         def forward(self,x):
+             prediction=self.net(x)
+             return prediction+x[:,1:2] if architecture==&#x27;residual&#x27; else prediction
+     return ImagePredictor()
+ 
+-
+ def training_loss(prediction,target,mask):
+-    return ((prediction-target).square()*mask).sum()/mask.sum()
+-
++    return ((prediction-target).abs()*mask).sum()/mask.sum()
+ 
+ def fit(model,x,y,mask,config):
+     optimizer=torch.optim.Adam(model.parameters(),lr=config.get(&#x27;learning_rate&#x27;,.001))
+</pre><p>Round two tried learning-rate decay. Validation worsened, so composition retained the previous code.</p><p><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/68d1b3f1e8b8c2fa2f1b0fbb3bdfc851">Open the actual research-agent conversation ↗</a></p><img src="hosted-agent-lens.png" alt="Native Agent Lens inspection from the copied notebook"><aside>Review the exact diff before execution. The agent’s rationale is a hypothesis. Probe it, compare the result, and keep the rejected branch. KEEP preserves the code fingerprint.</aside></section><section data-step="4" hidden><small>RECORDED EXAMPLE · 5 / 6</small><h1>Freeze. Then open the reserved dates.</h1><table><tr><th>Frozen image version</th><th>Final error ↓</th><th>Skill vs persistence ↑</th></tr><tr><td>persistence</td><td>0.125762</td><td>0.0%</td></tr><tr><td>manual</td><td>0.122442</td><td>2.6%</td></tr><tr><td>agent</td><td>0.120769</td><td>4.0%</td></tr></table><p>Disk-masked image error is separate from log-flux error. These 199 image windows overlap and come from two test days; they are not 199 independent solar events.</p><img src="solar-final.png" alt="Final image prediction and error"><aside>The final comparison loads saved weights and predicts. It does not train again. Look at the delivered prediction, not only the average score.</aside></section><section data-step="5" hidden><small>RECORDED EXAMPLE · 6 / 6</small><h1>A result you can reopen.</h1><p>Code, model weights, predictions, stage receipts, traces and conclusions belong to the participant’s project. A new runtime restores completed work from an artifact.</p><p>Native EvalTables returned HTTP 500 in this rehearsal. Weave evaluations and notebook comparisons are saved; publication can be retried without another training or model request.</p><p><a href="solar-rehearsal.json">Results and costs</a> · <a href="solar-executions.json">Full executed code and decisions</a> · <a href="https://github.com/ash0ts/forge-workshop-kit">Source and setup</a></p><aside>The point is to build a research loop you can inspect and reproduce. Small validation gains may not transfer. The saved evidence lets you explain either outcome.</aside></section></main><script>
+function show(i){document.querySelectorAll('section').forEach((e,n)=>e.hidden=n!==i);document.querySelectorAll('button').forEach((e,n)=>e.setAttribute('aria-current',n===i));history.replaceState(null,'','#'+(i+1));window.scrollTo(0,0)}document.querySelectorAll('button').forEach(b=>b.onclick=()=>show(+b.dataset.select));show(Math.max(0,Math.min(5,Number(location.hash.slice(1)||1)-1)));
+</script></html>

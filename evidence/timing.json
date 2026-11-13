@@ -1,0 +1,22 @@
+{
+  "pending": {
+    "requests": 130,
+    "observed_inference_usd": 0.03971964,
+    "unknown_usd": 0,
+    "provider_seconds_sum": 650.0868246555328,
+    "training_seconds_sum": 0,
+    "training_seconds_max": 0,
+    "completed_stages": 42,
+    "failed_stages": 1
+  },
+  "solar": {
+    "requests": 7,
+    "observed_inference_usd": 0.02708366,
+    "unknown_usd": 0,
+    "provider_seconds_sum": 488.9884617328644,
+    "training_seconds_sum": 30.12543249130249,
+    "training_seconds_max": 2.254140853881836,
+    "completed_stages": 33,
+    "failed_stages": 0
+  }
+}

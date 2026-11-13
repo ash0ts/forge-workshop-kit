@@ -9,7 +9,7 @@ DEFAULT=(ROOT/'examples/solar/candidate.py').read_text()
 def save(name,title,cells):
     header=f'''# /// script
 # requires-python = ">=3.11,<3.14"
-# dependencies = ["forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.1.0/forge_workshop_kit-0.1.0-py3-none-any.whl", "torch==2.15.0"]
+# dependencies = ["forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.1.1/forge_workshop_kit-0.1.1-py3-none-any.whl", "torch==2.15.0"]
 # [tool.uv.sources]
 # torch = [{{ index = "pytorch-cpu", marker = "sys_platform != 'darwin'" }}]
 # [[tool.uv.index]]
@@ -427,6 +427,7 @@ mo.vstack([roster,workshop,auto_refresh,refresh])
 ''',True)
 add('''
 timer=mo.ui.refresh(default_interval=30) if auto_refresh.value else None
+timer
 ''',True)
 add('''
 mo.stop(not roster.value.strip())

@@ -8,18 +8,18 @@ There is no workshop gateway, attendee token, or service to deploy. The same not
 
 | Notebook | What you build |
 | --- | --- |
-| [Solar Autoresearch](notebooks/solar_autoresearch.py) | Forecast solar measurements, move to solar images, then let a research agent edit and test model/training code. |
-| [Pending, Inc.](notebooks/pending_inc.py) | Give an office agent tools, evaluate its work, and improve its instructions across two rounds. |
-| [Starter](notebooks/starter.py) | A small starting point for another workshop. |
-| [Facilitator](notebooks/facilitator.py) | Read checkpoint progress, help requests, failed runs, and evidence links from public projects. |
+| [Solar Autoresearch · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view) | Forecast solar measurements, move to images, then let a research agent edit and test model/training code. |
+| [Pending, Inc. · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) | Give an office agent tools, evaluate its work, and improve its instructions across two rounds. |
+| [Starter · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzI=/view) | A small starting point for another workshop. |
+| [Facilitator · open monitor](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzM=/view) | Read checkpoint progress, help requests, failed runs, and evidence links from public projects. |
 
-Hosted template links and qualification results are recorded in [the release checks](docs/release-checks.md). Do not confuse a source template with a qualified hosted release.
+Sign in to Forge to copy a template. [Source notebooks](notebooks), [recorded walkthrough](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.1.1/walkthrough.mp4), and [downloadable kit](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.1.1) are public. This is a qualified technical preview; [remaining release checks](docs/release-checks.md) include an external-attendee and human rehearsal.
 
 ## Hosted setup
 
 1. Sign in to [Forge](https://forge.coreweave.com). Create a public teaching project in your own entity or a team where you can write.
 2. Open the workshop template and choose **Copy to project**. Select your project and open its editable copy. If the copy picker does not offer your project, download the notebook's `.py` file and import it into your project.
-3. Run the notebook's dependency setup. Click **Connect and restore my saved work**, then send the first trace. Check that the project shown is yours.
+3. Initialize the notebook cells once with marimo’s Run all control. The exercise run buttons remain unpressed, so this does not train or call inference. Click **Connect and restore my saved work**, then send the first trace. Check that the project shown is yours.
 4. Give the facilitator your `entity/project` link. They need no credential or token from you.
 
 A writable project alone does not supply inference credits or notebook compute access. Check those before the session. Public teaching projects expose their published code and results; use only the supplied public or fictional data.
@@ -64,6 +64,16 @@ session.checkpoint("baseline", evidence={"Run": run_url})
 ```
 
 Identity, receipts, publication and progress belong in the package. The experiment, scorer, instrumentation and improvement controller remain visible in the notebook. [Framework contract](docs/framework.md).
+
+## Rehearsal results
+
+The complete CPU example ran against real data and services. On the two held-out image days, error was 0.125762 for persistence, 0.122442 for the manual residual model, and 0.120769 for the agent-selected model. The second research round rejected its proposed learning-rate schedule. These are one-seed teaching results, not a solar forecasting benchmark.
+
+The short GOES training budget underfit badly, and persistence won. Pending passed all 12 final cases across its three versions. Both outcomes remain in the evidence.
+
+- [Solar Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-3cc7b64b--VmlldzoxODI5OTg3OQ==)
+- [Pending Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct:-52578808--VmlldzoxODI5OTg3OA==)
+- [Measured timing, costs and qualification limits](docs/release-checks.md)
 
 ## Materials
 

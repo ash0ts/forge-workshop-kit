@@ -56,3 +56,27 @@ def test_training_inputs_exclude_validation_labels_and_child_has_no_credentials(
     training.train('example',train,val,{},tmp_path)
     assert set(observed['keys'])=={'predict_x','train_x','train_y','train_mask'}
     assert 'WANDB_API_KEY' not in observed['env']
+
+def test_confirmed_interruption_counts_the_full_unknown_reservation(tmp_path):
+    from forge_workshop_kit.provider import Provider
+    s=WorkshopSession('test/project','lab',state_dir=tmp_path)
+    with pytest.raises(RuntimeError):
+        with s.stage('request') as stage:
+            with s.transaction() as state:
+                state['requests'][stage.id+'/0']={'status':'pending','reserved_usd':.02}
+            raise RuntimeError('process stopped')
+    s.mark_interrupted(stage.id,'Confirmed old process stopped')
+    assert Provider(s).summary()=={'observed_usd':0,'bounded_unknown_usd':.02,'inflight_usd':0}
+
+
+def test_cpu_training_produces_loadable_frozen_weights(tmp_path):
+    import numpy as np
+    from forge_workshop_kit.training import train
+    source=(Path(__file__).resolve().parents[1]/'examples/solar/candidate.py').read_text()
+    split=dict(x=np.ones((4,2,8,8),dtype='float32'),y=np.ones((4,1,8,8),dtype='float32'),
+               mask=np.ones((4,1,8,8),dtype=bool),persistence=np.ones((4,1,8,8),dtype='float32'))
+    config=dict(architecture='residual',width=2,steps=2,batch_size=2,seed=17)
+    result,prediction=train(source,split,split,config,tmp_path/'train')
+    frozen,again=train(source,None,split,config,tmp_path/'frozen',weights=tmp_path/'train/weights.pt')
+    assert np.array_equal(prediction,again)
+    assert frozen['losses']==[] and len(result['losses'])==2

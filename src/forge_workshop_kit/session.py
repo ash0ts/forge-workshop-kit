@@ -142,6 +142,21 @@ class WorkshopSession:
     def completed(self):
         return [s for s in self.read()['stages'].values() if s['status'] == 'complete']
 
+    def mark_interrupted(self, stage_id, reason):
+        """Explicit recovery after the operator confirms the old process has stopped."""
+        if not reason.strip():
+            raise ValueError('Record why this execution is known to have stopped.')
+        with self.transaction() as state:
+            row=state['stages'][stage_id]
+            if row['status']=='complete':
+                raise ValueError('Do not interrupt a completed execution.')
+            row.update(status='interrupted',error=reason,ended_at=time.time())
+            for key,request in state['requests'].items():
+                if key.startswith(stage_id+'/') and request['status']=='pending':
+                    request.update(status='interrupted',unknown_usd=request['reserved_usd'],
+                                   observed_usd=None,error=reason,ended_at=time.time())
+            state['progress'].update(status='interrupted',step=row['name'],updated_at=time.time())
+
     def file(self, relative):
         path = (self.root / relative).resolve()
         if not path.is_relative_to(self.root):

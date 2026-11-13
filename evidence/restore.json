@@ -1,6 +1,6 @@
 {
   "restore": {
-    "status": "local",
+    "status": "restored",
     "completed": 1
   },
   "publication": {
@@ -16,7 +16,7 @@
     },
     "publish_checkpoint": {
       "status": "published",
-      "result": "wandb/forge-workshop-kit/workspace-eb8b14de057566695252ec3f:v1"
+      "result": "wandb/forge-workshop-kit/workspace-eb8b14de057566695252ec3f:v2"
     }
   },
   "monitor": [
@@ -26,8 +26,9 @@
       "step": "restore-fixture",
       "status": "complete",
       "completed": 1,
+      "failed": [],
       "help": "",
-      "updated_at": 1794548486.7789938,
+      "updated_at": 1794549823.8192692,
       "evidence": {},
       "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/eb8b14de057566695252ec3f"
     }

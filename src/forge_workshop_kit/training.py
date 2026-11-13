@@ -40,6 +40,7 @@ def train(source, train_split, validation, config, output_dir, *, timeout=180, w
         raise RuntimeError('Candidate failed: '+result.stderr[-1500:])
     prediction=np.load(output_dir/'predictions.npy',allow_pickle=False)
     metrics=score(prediction,validation)
-    metrics.update(validation_error=metrics['error'],seconds=time.time()-started)
+    metrics['final_error' if weights is not None else 'validation_error']=metrics['error']
+    metrics['seconds']=time.time()-started
     return dict(metrics=metrics,losses=json.loads((output_dir/'losses.json').read_text()),
                 exit_code=result.returncode),prediction

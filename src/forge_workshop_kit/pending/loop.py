@@ -74,6 +74,18 @@ def run_employee(session, case, harness, label, *, invoice_tool=lookup_invoice, 
                     world,result=asyncio.run(mcp_action(world,case.fault,name,arguments,stage.output_dir/'office.json'))
                 else:
                     world,result=execute(world,name,arguments,case.fault)
+                # Retry only reads. A timed-out write can already have committed.
+                if harness.read_retries and result.get('error') and name in ('lookup_invoice','get_account','list_payments','onboarding_status'):
+                    events.append(dict(id=stage.id+'/tool-'+str(step)+'-first',name=name,arguments=arguments,
+                        result=result,started_at=started,ended_at=time.time(),error=result.get('error')))
+                    started=time.time()
+                    if name=='lookup_invoice':
+                        try: result=invoice_tool(world,**arguments)
+                        except Exception as error: result={'ok':False,'error':str(error)}
+                    elif name=='onboarding_status':
+                        world,result=asyncio.run(mcp_action(world,case.fault,name,arguments,stage.output_dir/'office.json'))
+                    else:
+                        world,result=execute(world,name,arguments,case.fault)
                 events.append(dict(id=stage.id+'/tool-'+str(step),name=name or 'invalid_action',arguments=arguments,
                     result=result,started_at=started,ended_at=time.time(),error=result.get('error')))
                 messages.extend([{'role':'assistant','content':json.dumps(action)},

@@ -30,8 +30,10 @@ def branches(session):
     for row in rows:
         result=row.get('result',{})
         titles=[c.get('title','Proposed code change') for c in result.get('candidates',[])]
-        if result.get('decision'):
+        if isinstance(result.get('decision'),dict):
             titles=[result['decision'].get('title','Composition decision')]
+        elif result.get('decision'):
+            titles=[result.get('title','Retain this harness' if result['decision']=='KEEP' else 'Revise the harness')]
         label='; '.join(titles) or row['name'].split('/')[-1].replace('-',' ')
         items.append(f'<details class="workshop-step"><summary>{escape(row["name"])} · {escape(row["status"])} · {escape(label)}</summary><pre>{escape(json.dumps(result,indent=2)[:20000])}</pre></details>')
     return ''.join(items) or '<p>Branches appear after proposals and their executions are saved.</p>'
@@ -42,7 +44,7 @@ def branch_graph(session):
     rows=session.read()['stages'].values()
     pieces=['<svg viewBox="0 0 760 420" role="img" aria-label="Two research rounds: proposals, probes, composition and adoption" style="width:100%;max-width:900px;background:#14252e;border-radius:8px">']
     for number in (1,2):
-        group=[r for r in rows if f'/round-{number}/' in r['name']]
+        group=list(reversed([r for r in rows if f'/round-{number}/' in r['name']]))
         y=30+(number-1)*205
         pieces.append(f'<text x="20" y="{y}" fill="#f5b869" font-size="15">Round {number}</text>')
         if not group:
