@@ -1,0 +1,91 @@
+{
+  "signed_out": true,
+  "pages": [
+    {
+      "key": "cover",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/1/"
+    },
+    {
+      "key": "native-lens",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/52/"
+    },
+    {
+      "key": "persistence-image",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/40/"
+    },
+    {
+      "key": "recorded-final",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/67/"
+    },
+    {
+      "key": "recorded-image",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/68/"
+    },
+    {
+      "key": "recorded-goes",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/69/"
+    }
+  ],
+  "answer_return": true,
+  "deep_link_reload": true,
+  "errors": [],
+  "failed_responses": [],
+  "downloads": [
+    {
+      "name": "solar-autoresearch.pdf",
+      "status": 200,
+      "method": "anonymous curl with system certificate trust",
+      "bytes": 1906568,
+      "sha256": "e663a6c691110f7c2caa78b08feecd70e471909128f4065ac4a3e8f12a105d29"
+    },
+    {
+      "name": "solar-autoresearch-browser.zip",
+      "status": 200,
+      "method": "anonymous curl with system certificate trust",
+      "bytes": 3139929,
+      "sha256": "f9a4d9ae66e02c13436105b15002735bcadd10bb4f43a966bb52124538d51d84"
+    },
+    {
+      "name": "solar-autoresearch-deck-source.zip",
+      "status": 200,
+      "method": "anonymous curl with system certificate trust",
+      "bytes": 2292539,
+      "sha256": "fc002f97659033e79a243a4578076efde73787d631679ae2ecb5e26a8474ea9b"
+    },
+    {
+      "name": "forge_workshop_kit-0.2.2-py3-none-any.whl",
+      "status": 200,
+      "method": "anonymous curl with system certificate trust",
+      "bytes": 127170,
+      "sha256": "d3bb079d173145584899c5274f5be5d5e5f039f56094ff924ff2bc2989749cb4"
+    }
+  ],
+  "revised_copy_checks": [
+    {
+      "slide": 17,
+      "phrase": "Use the date diagram",
+      "present": true
+    },
+    {
+      "slide": 30,
+      "phrase": "The next exercise will produce those files.",
+      "present": true
+    },
+    {
+      "slide": 47,
+      "phrase": "The version selected by validation error",
+      "present": true
+    },
+    {
+      "slide": 53,
+      "phrase": "Name the validation fields your function will send",
+      "present": true
+    }
+  ]
+}

@@ -6,6 +6,9 @@ The revised notebooks were exercised in a browser using fresh local workspaces a
 
 | Check | Evidence and outcome |
 | --- | --- |
+| 0.2.2 hosted templates | All four originals now use v0.2.2. Downloaded notebook sources match the release byte-for-byte; existing attendee copies were not modified. [Readback](../evidence/ux-v022-template-readback.json). |
+| 0.2.2 public deck and downloads | Signed-out checks passed for the final revised instructions, direct links, answer returns, and images. The PDF, source/browser ZIPs, and wheel match the built files. [Readback](../evidence/ux-v022-public-release.json), [deployment](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43487185727). |
+| 0.2.2 platform checks | Locked installs, all 60 tests, and all four notebook checks passed on macOS, Windows, and Linux for the release commit. [CI](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43487275912). |
 | 0.2.2 deck | All 90 browser frames and PDF pages render. Eight worked-answer links and returns, 183 static routes, and exact notebook-control checks pass. [Copy checks](../decks/solar/notes/copy-v022-checks.json), [final render checks](../decks/solar/notes/render-v022-checks.json). |
 | 0.2.2 copy and code checks | All 60 existing tests pass, all four generated notebooks pass marimo checks, and all four static HTML exports render. Model requests and training executions for this revision: zero. [Review](../evidence/ux-v022-copy-review.json). |
 | 0.2.2 notebook screens | Pending’s eight steps were checked over a copy of saved rehearsal data; Solar’s setup, data and recorded example were checked without connecting. Both passed 430px layout checks. [Pending](../evidence/ux-v022-pending-browser.json), [Solar](../evidence/ux-v022-solar-copy-checks.json). These are presentation checks, not new live rehearsals. |
