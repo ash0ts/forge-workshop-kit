@@ -6,6 +6,9 @@ The revised notebooks were exercised in a browser using fresh local workspaces a
 
 | Check | Evidence and outcome |
 | --- | --- |
+| 0.2.3 hosted templates | All four original templates use the released wheel and source; downloaded notebook files match byte-for-byte. Existing attendee copies were not changed. [Readback](../evidence/ux-v023-template-readback.json). The embedded read-only preview remains blocked in the test browser; see the preview note below. |
+| 0.2.3 public release | Nine representative deck routes, screenshots, answer returns, and reloads passed signed out. PDF, browser/source ZIPs and wheel downloads match local hashes. [Readback](../evidence/ux-v023-public-release.json), [Pages deployment](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43493970122). |
+| 0.2.3 platform checks | Locked installs, all 62 tests and four notebook checks passed on macOS, Windows and Linux for the release commit. [CI](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43493970361). |
 | 0.2.3 named dashboards | The Solar view selects eight current rehearsal runs; Pending selects three final comparison runs. Every displayed metric matches server readback. The default workspace and run records are unchanged. [Configuration and readback](../evidence/demo-workspaces.json). |
 | 0.2.3 Reports | Both existing Report IDs now show native comparison charts, complete result tables, and a short trace-to-code path. Conclusions and scores are preserved. [Readback](../evidence/demo-reports.json). |
 | 0.2.3 public views | Signed-out browser checks passed for both named dashboards and the selected Solar artifact. Agent Lens captures remain labeled authenticated views. [Checks](../evidence/ux-v023-public-dashboards.json). |

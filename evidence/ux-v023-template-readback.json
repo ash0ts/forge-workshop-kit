@@ -1,0 +1,34 @@
+[
+  {
+    "notebook": "starter",
+    "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzI=/view",
+    "artifact": "wandb/forge-workshop-kit/Forge-Workshop-Kit-Starter:v6",
+    "release": "0.2.3",
+    "source_sha256": "d57390168c6c25dc7258d59e73113ff17246a06db25546de878db45f88a77496",
+    "matches_release": true
+  },
+  {
+    "notebook": "facilitator",
+    "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzM=/view",
+    "artifact": "wandb/forge-workshop-kit/Forge-Workshop-Kit-Progress-monitor:v6",
+    "release": "0.2.3",
+    "source_sha256": "0f828963c0168e76ccc8c80dc8c10ba84d9e77df52451aa050ecd5dde212cf66",
+    "matches_release": true
+  },
+  {
+    "notebook": "pending_inc",
+    "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view",
+    "artifact": "wandb/forge-workshop-kit/Pending-Inc.-Your-project:v6",
+    "release": "0.2.3",
+    "source_sha256": "00953d214f9c215990f15ddc3ac5abcd0983b74733fd98d6cd45fd70c7883abb",
+    "matches_release": true
+  },
+  {
+    "notebook": "solar_autoresearch",
+    "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view",
+    "artifact": "wandb/forge-workshop-kit/Build-a-research-loop-then-give-it-an-agent:v6",
+    "release": "0.2.3",
+    "source_sha256": "eb8fc0f9ac60e3b190c49ad4f1fe5f954674d7c0c5e5fec467d2f51b0ff053f4",
+    "matches_release": true
+  }
+]

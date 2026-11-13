@@ -1,0 +1,84 @@
+{
+  "signed_out": true,
+  "pages": [
+    {
+      "key": "cover",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/1/"
+    },
+    {
+      "key": "native-lens",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/52/"
+    },
+    {
+      "key": "result-meaning",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/70/"
+    },
+    {
+      "key": "reproduce",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/71/"
+    },
+    {
+      "key": "close",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/73/"
+    },
+    {
+      "key": "pending-template",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/91/"
+    },
+    {
+      "key": "pending-lens",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/92/"
+    },
+    {
+      "key": "pending-dashboard",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/93/"
+    },
+    {
+      "key": "pending-report",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/94/"
+    }
+  ],
+  "answer_return": true,
+  "deep_link_reload": true,
+  "errors": [],
+  "failed_responses": [],
+  "downloads": [
+    {
+      "name": "solar-autoresearch.pdf",
+      "status": 200,
+      "method": "anonymous curl with system certificate trust",
+      "bytes": 2787936,
+      "sha256": "b8c495bafb8591d4c65988058395999710c9848d3696a66e1634ae9e533803a8"
+    },
+    {
+      "name": "solar-autoresearch-browser.zip",
+      "status": 200,
+      "method": "anonymous curl with system certificate trust",
+      "bytes": 4317833,
+      "sha256": "a97a0c8028a47932caee69a150c5ff510be530c610a139139a8e89f605cb8fe2"
+    },
+    {
+      "name": "solar-autoresearch-deck-source.zip",
+      "status": 200,
+      "method": "anonymous curl with system certificate trust",
+      "bytes": 3478819,
+      "sha256": "b6c8ee91ad16b60d85eab96ae437c502858885c0f647e0bd1beadf5c0cfdda40"
+    },
+    {
+      "name": "forge_workshop_kit-0.2.3-py3-none-any.whl",
+      "status": 200,
+      "method": "anonymous curl with system certificate trust",
+      "bytes": 127535,
+      "sha256": "c2419f8f456ca400200945ec7b34cf8b3ac5e911170384e17a06d8231432f664"
+    }
+  ]
+}
