@@ -13,7 +13,10 @@ def save(name,title,cells):
     if selected and name != selected + '.py':
         return
     header = notebook_header(Path(name).stem, title)
-    (ROOT/'notebooks'/name).write_text(header+render(cells)+'\nif __name__ == "__main__":\n    app.run()\n')
+    (ROOT/'notebooks'/name).write_text(
+        header+render(cells)+'\nif __name__ == "__main__":\n    app.run()\n',
+        encoding='utf-8', newline='\n',
+    )
 
 from solar_cells import cells as solar_cells
 save("solar_autoresearch.py","Solar Autoresearch",solar_cells)

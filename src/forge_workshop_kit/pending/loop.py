@@ -29,7 +29,7 @@ async def mcp_action(world, fault, name, arguments, path):
     from mcp.client.stdio import stdio_client
     write_json(path,{'world':world,'fault':fault})
     env={k:os.environ[k] for k in ('PATH','SYSTEMROOT','WINDIR','TMPDIR','TEMP') if k in os.environ}
-    env['OFFICE_STATE']=str(path)
+    env.update(OFFICE_STATE=str(path),PYTHONUTF8='1',PYTHONIOENCODING='utf-8')
     parameters=StdioServerParameters(command=sys.executable,
         args=['-m','forge_workshop_kit.pending.mcp_server'],env=env)
     async with stdio_client(parameters) as (read,write):
@@ -41,7 +41,7 @@ async def mcp_action(world, fault, name, arguments, path):
             else:
                 response=await client.call_tool(name,arguments)
                 result=json.loads(next(c.text for c in response.content if hasattr(c,'text')))
-    return json.loads(path.read_text())['world'],result
+    return json.loads(path.read_text(encoding="utf-8"))['world'],result
 
 
 def call_mcp(world, fault, name, arguments, path):

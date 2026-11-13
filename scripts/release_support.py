@@ -11,11 +11,11 @@ REPOSITORY = "https://github.com/ash0ts/forge-workshop-kit"
 
 
 def project_metadata():
-    return tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]
+    return tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))["project"]
 
 
 def notebook_build_uv_version():
-    return tomllib.loads((ROOT / "pyproject.toml").read_text())["tool"]["workshop-build"]["uv-version"]
+    return tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))["tool"]["workshop-build"]["uv-version"]
 
 
 def check_notebook_build_uv():
@@ -31,7 +31,7 @@ def check_notebook_build_uv():
 
 
 def templates():
-    return json.loads((ROOT / "src/forge_workshop_kit/workshops.json").read_text())["templates"]
+    return json.loads((ROOT / "src/forge_workshop_kit/workshops.json").read_text(encoding="utf-8"))["templates"]
 
 
 @cache

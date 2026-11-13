@@ -13,11 +13,11 @@ server = FastMCP("Pending onboarding")
 
 def action(name, arguments):
     path = Path(os.environ["OFFICE_STATE"])
-    bundle = json.loads(path.read_text())
+    bundle = json.loads(path.read_text(encoding="utf-8"))
     world, output = execute(bundle["world"], name, arguments, bundle.get("fault", ""))
     bundle["world"] = world
     temporary = path.with_suffix(".tmp")
-    temporary.write_text(json.dumps(bundle))
+    temporary.write_text(json.dumps(bundle), encoding="utf-8", newline="\n")
     temporary.replace(path)
     return output
 

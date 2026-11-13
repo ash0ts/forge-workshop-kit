@@ -2,7 +2,7 @@
 from pathlib import Path
 from notebook_builder import Cell
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT = (ROOT / "examples/solar/candidate.py").read_text()
+DEFAULT = (ROOT / "examples/solar/candidate.py").read_text(encoding="utf-8")
 cells = []
 
 def add(code, hide=False):

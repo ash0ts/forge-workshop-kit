@@ -224,7 +224,7 @@ class Publisher:
         """Resolve explicit immutable entries without W&B's dependency-count limit."""
         if 'output-references.json' not in checksums:
             return {}  # Older checkpoints embedded files or native artifact references.
-        references = _path_map(json.loads((root / 'output-references.json').read_text()))
+        references = _path_map(json.loads((root / 'output-references.json').read_text(encoding="utf-8")))
         allowed = {relative_path(path) for stage in state['stages'].values() for path in stage.get('files', [])}
         artifacts, verified = {}, {}
         for relative, reference in references.items():
@@ -269,20 +269,20 @@ class Publisher:
                 checksums = _verify_snapshot(checkpoint_root, self.session.identity)
                 if 'journal.json' not in checksums:
                     raise ValueError('Checkpoint has no verified journal.')
-                checkpoint_state = json.loads((checkpoint_root / 'journal.json').read_text())
+                checkpoint_state = json.loads((checkpoint_root / 'journal.json').read_text(encoding="utf-8"))
                 _normalize_stage_paths(checkpoint_state)
                 checksums.update(self._restore_outputs(checkpoint_root, checksums, checkpoint_state))
                 for stage in checkpoint_state['stages'].values():
                     if any(relative not in checksums for relative in stage.get('files', [])):
                         raise ValueError('Checkpoint omits an execution output.')
                 if 'checkpoint.json' in checksums:
-                    checkpoint_time = json.loads((checkpoint_root / 'checkpoint.json').read_text())['captured_at']
+                    checkpoint_time = json.loads((checkpoint_root / 'checkpoint.json').read_text(encoding="utf-8"))['captured_at']
             if ledger is not None:
                 ledger.download(root=str(ledger_root))
                 ledger_checksums = _verify_snapshot(ledger_root, self.session.identity)
                 if 'ledger.json' not in ledger_checksums:
                     raise ValueError('Request artifact has no verified ledger.')
-                request_state = json.loads((ledger_root / 'ledger.json').read_text())
+                request_state = json.loads((ledger_root / 'ledger.json').read_text(encoding="utf-8"))
             # A failed download or checksum has made no changes to the workspace.
             with self.session.lock:
                 local = self.session.read()
@@ -370,7 +370,7 @@ def _seal_snapshot(root, referenced_checksums=None):
 
 def _verify_snapshot(root, identity):
     root = Path(root)
-    raw_checksums = json.loads((root / 'checksums.json').read_text())
+    raw_checksums = json.loads((root / 'checksums.json').read_text(encoding="utf-8"))
     checksums = _path_map(raw_checksums)
     if 'identity.json' not in checksums:
         raise ValueError('Checkpoint has no verified identity.')
@@ -385,7 +385,7 @@ def _verify_snapshot(root, identity):
             source.write_bytes(legacy.read_bytes())
         if hashlib.sha256(source.read_bytes()).hexdigest() != checksum:
             raise ValueError('Checkpoint checksum mismatch')
-    saved_identity = json.loads((root / 'identity.json').read_text())
+    saved_identity = json.loads((root / 'identity.json').read_text(encoding="utf-8"))
     stable = ('project', 'workshop', 'version', 'workspace_id', 'notebook_identity')
     if any(saved_identity.get(key) != identity.get(key) for key in stable):
         raise ValueError('Checkpoint belongs to another notebook, project, or release.')
@@ -594,7 +594,7 @@ def publish_report(session, conclusion, links):
     report = wr.Report(entity=entity, project=project, title=_workshop_labels(session)['title'] + ': ' + session.workspace_id[:8],
         description='A participant experiment with saved code, predictions, and research-agent traces.')
     report.blocks = [wr.H1(text='What I tested'), wr.P(text=conclusion),
-        wr.H2(text='Evidence'), *[wr.P(text=f'{label}: {url}') for label, url in links.items()],
+        wr.H2(text='Evidence'), *[wr.P(text=wr.Link(text=label, url=url)) for label, url in links.items()],
         wr.PanelGrid(runsets=[wr.Runset(entity=entity, project=project,
             filters=f'Config("workspace_id") == "{session.workspace_id}"')],
             panels=[wr.ScalarChart(title='Image final error',metric='solar-images-final/error_mean'),

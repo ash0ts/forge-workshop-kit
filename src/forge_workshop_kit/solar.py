@@ -12,7 +12,7 @@ SPLITS = {'train': ('2014-02-01','2014-02-11'),
 
 def verify_data(root):
     root=Path(root)
-    manifest=json.loads((root/'manifest.json').read_text())
+    manifest=json.loads((root/'manifest.json').read_text(encoding="utf-8"))
     if not manifest['complete']:
         raise ValueError('Data preparation is incomplete.')
     for name,checksum in manifest['files'].items():

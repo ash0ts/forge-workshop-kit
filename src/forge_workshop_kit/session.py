@@ -24,7 +24,7 @@ def write_json(path, value):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_name(path.name + '.tmp-' + uuid.uuid4().hex)
-    temporary.write_text(json.dumps(value, indent=2, allow_nan=False) + '\n')
+    temporary.write_text(json.dumps(value, indent=2, allow_nan=False) + '\n', encoding="utf-8", newline="\n")
     temporary.replace(path)
 
 
@@ -67,7 +67,7 @@ class WorkshopSession:
         with self.lock:
             path = self.root / 'identity.json'
             if path.exists():
-                saved = json.loads(path.read_text())
+                saved = json.loads(path.read_text(encoding="utf-8"))
                 if (saved['project'], saved['workshop'], saved['version']) != (
                         project, workshop, version):
                     raise ValueError('This workspace belongs to another project or release. Use a new state_dir.')
@@ -111,7 +111,7 @@ class WorkshopSession:
             write_json(self.state_path, state)
 
     def read(self):
-        return json.loads(self.state_path.read_text())
+        return json.loads(self.state_path.read_text(encoding="utf-8"))
 
     def connect(self):
         from .publication import Publisher

@@ -74,7 +74,7 @@ def propose(session, number, source, evidence):
             for index,candidate in enumerate(candidates):
                 path=stage.output_dir/f'candidate-{index}.py'
                 def save_candidate():
-                    path.write_text(candidate['source'])
+                    path.write_text(candidate['source'], encoding="utf-8", newline="\n")
                     return {'file':path.name,'source_fingerprint':candidate['fingerprint']}
                 _,observed=event('save_candidate_code',{'candidate':index,'decision':candidate['decision']},save_candidate)
                 events.append(observed);files.append(path)
@@ -137,7 +137,7 @@ def compose(session, number, source, previous, candidates):
             decision['fingerprint']=digest({'candidate.py':decision['source']})
             path=stage.output_dir/'composition.py'
             def save_composition():
-                path.write_text(decision['source'])
+                path.write_text(decision['source'], encoding="utf-8", newline="\n")
                 return {'file':path.name,'source_fingerprint':decision['fingerprint']}
             _,observed=event('save_composed_code',{'decision':decision['decision']},save_composition)
             stage.record({'decision':decision,'request_id':call['id'],'mission':mission,'events':[observed]},files=[path])

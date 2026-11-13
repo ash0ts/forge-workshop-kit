@@ -22,14 +22,14 @@ def sha256(path):
 def write_receipt(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
     temp = path.with_suffix(".tmp")
-    temp.write_text(json.dumps(value, indent=2) + "\n")
+    temp.write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8", newline="\n")
     temp.replace(path)
 
 
 def load_receipt(path, project):
     if not path.exists():
         return {"schema_version": 1, "project": project, "templates": {}}
-    saved = json.loads(path.read_text())
+    saved = json.loads(path.read_text(encoding="utf-8"))
     if saved.get("project") != project or saved.get("schema_version") != 1:
         raise ValueError(
             "Deployment receipt belongs to another project or has the old unscoped format. Use --adopt-ids to verify and import old IDs."
@@ -47,7 +47,7 @@ def verify_destination(notebook, project):
 
 
 def load_build(folder, only=None):
-    manifest = json.loads((folder / "release-manifest.json").read_text())
+    manifest = json.loads((folder / "release-manifest.json").read_text(encoding="utf-8"))
     if manifest["release"] != project_metadata()["version"]:
         raise ValueError("Build release does not match pyproject.toml. Rebuild before publishing.")
     rows = {slug: row for slug, row in manifest["templates"].items() if not only or slug in only}
@@ -213,7 +213,7 @@ def main():
     saved = load_receipt(receipt, args.project)
     adopt = {}
     if args.adopt_ids:
-        old = json.loads(args.adopt_ids.read_text())
+        old = json.loads(args.adopt_ids.read_text(encoding="utf-8"))
         adopt.update(old.get("templates", old))
     for value in args.notebook_id:
         slug, notebook_id = value.split("=", 1)

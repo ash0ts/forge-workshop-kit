@@ -8,7 +8,7 @@ from importlib.resources import files
 
 @cache
 def _manifest():
-    return json.loads(files("forge_workshop_kit").joinpath("workshops.json").read_text())
+    return json.loads(files("forge_workshop_kit").joinpath("workshops.json").read_text(encoding="utf-8"))
 
 
 def list_templates():

@@ -8,7 +8,7 @@ import torch
 
 
 def main():
-    request=json.loads(Path(sys.argv[1]).read_text())
+    request=json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
     torch.set_num_threads(2)
     torch.manual_seed(request['config'].get('seed',17))
     spec=importlib.util.spec_from_file_location('learner_candidate',request['source'])
@@ -28,7 +28,7 @@ def main():
                                     for i in range(0,len(data['predict_x']),16)])
     np.save(request['prediction'],predictions)
     torch.save(model.state_dict(),request['output_weights'])
-    Path(request['losses']).write_text(json.dumps(losses,allow_nan=False))
+    Path(request['losses']).write_text(json.dumps(losses,allow_nan=False), encoding="utf-8", newline="\n")
 
 if __name__=='__main__':
     main()

@@ -2,6 +2,9 @@
 
 import hashlib
 import json
+import os
+import shutil
+import subprocess
 import sys
 import tomllib
 from pathlib import Path
@@ -15,6 +18,29 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import publish_templates
 import release_support
+
+
+def test_notebook_generation_writes_utf8_with_lf_without_utf8_locale(tmp_path):
+    for name in (
+        "scripts/build_notebooks.py", "scripts/notebook_builder.py",
+        "scripts/pending_cells.py", "scripts/solar_cells.py", "scripts/release_support.py",
+        "examples/solar/candidate.py", "src/forge_workshop_kit/workshops.json",
+        "pyproject.toml", "uv.lock",
+    ):
+        destination = tmp_path / name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / name, destination)
+    (tmp_path / "notebooks").mkdir()
+    environment = {
+        **os.environ, "PYTHONUTF8": "0", "PYTHONCOERCECLOCALE": "0", "LC_ALL": "C",
+    }
+    subprocess.run(
+        [sys.executable, "scripts/build_notebooks.py", "--only", "facilitator"],
+        cwd=tmp_path, env=environment, check=True, capture_output=True, timeout=120,
+    )
+    output = (tmp_path / "notebooks/facilitator.py").read_bytes()
+    assert "participants’ public project links" in output.decode("utf-8")
+    assert b"\r\n" not in output
 
 
 def test_notebook_build_rejects_uv_exporter_drift(monkeypatch):
