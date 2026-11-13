@@ -1,0 +1,20 @@
+[
+  {
+    "file": "forge_workshop_kit-0.3.0-py3-none-any.whl",
+    "status": 200,
+    "sha256_matches": true,
+    "anonymous": true
+  },
+  {
+    "file": "forge_workshop_kit-0.3.0.tar.gz",
+    "status": 200,
+    "sha256_matches": true,
+    "anonymous": true
+  },
+  {
+    "file": "existing QR setup destination",
+    "status": 200,
+    "current_kit_link": true,
+    "anonymous": true
+  }
+]

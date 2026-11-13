@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "project": "wandb/forge-workshop-kit",
+  "templates": {
+    "starter": {
+      "id": "Tm90ZWJvb2s6MTU3NzI=",
+      "status": "verified",
+      "release": "0.3.0",
+      "source_sha256": "4c91e3007304ddf1bcdef97a42d56807c968c707deb7d730e170361506da1af1",
+      "html_sha256": "26ea671fa50a83e8ea79ad50b1e8f65ede304a48de4387e1e3ad5cee5fedbdd1",
+      "currentVersion": {
+        "artifactCollectionName": "Forge-Workshop-Kit-Starter",
+        "versionIndex": 7,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzI=/view"
+    },
+    "facilitator": {
+      "id": "Tm90ZWJvb2s6MTU3NzM=",
+      "status": "verified",
+      "release": "0.3.0",
+      "source_sha256": "147a9cc096de47127f4f580d08789d20405afca029b82f794a1f26706ce32976",
+      "html_sha256": "aee147bc3147856ebac411f27a871344c020ae1b3f260dc28ac11711106e10ea",
+      "currentVersion": {
+        "artifactCollectionName": "Forge-Workshop-Kit-Progress-monitor",
+        "versionIndex": 7,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzM=/view"
+    },
+    "pending_inc": {
+      "id": "Tm90ZWJvb2s6MTU3NzQ=",
+      "status": "verified",
+      "release": "0.3.0",
+      "source_sha256": "0788f6d9b7bfb5ec9ffea9d511a0e195716b78433da39afa51762704a8f5f3ec",
+      "html_sha256": "c882d7525042b132329bfc451e3a8216a40dc98d4e02c3b328c2ad6f85451fff",
+      "currentVersion": {
+        "artifactCollectionName": "Pending-Inc.-Your-project",
+        "versionIndex": 7,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view"
+    },
+    "solar_autoresearch": {
+      "id": "Tm90ZWJvb2s6MTU3NzU=",
+      "status": "verified",
+      "release": "0.3.0",
+      "source_sha256": "e5aa5b3386d0b8baa4c89678965107da71270f130d6088c63036ac53b44f23a6",
+      "html_sha256": "9b4debb7099e72772aa476eeccf9d66282d107084b1a63cce631e22aa010f91d",
+      "currentVersion": {
+        "artifactCollectionName": "Build-a-research-loop-then-give-it-an-agent",
+        "versionIndex": 7,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view"
+    }
+  },
+  "verification": {
+    "source_and_html_readback": "matching release-manifest hashes for all four templates",
+    "publication_repeated": true,
+    "new_versions_on_repeat": false,
+    "existing_attendee_copies_modified": false,
+    "browser_copy_controls": "present",
+    "browser_preview": "blocked by public-to-local-network policy; not bypassed",
+    "external_attendee_copy_restore": "not verified",
+    "human_usability_rehearsal": "not performed"
+  }
+}
