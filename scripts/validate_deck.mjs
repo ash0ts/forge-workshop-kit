@@ -35,6 +35,9 @@ const browser = await chromium.launch({headless:true, executablePath});
 const issues = [], pageErrors = [], networkErrors = [], answers = [], titles = [];
 try {
   const page = await browser.newPage({viewport:{width:1280,height:720}, reducedMotion:'reduce'});
+  // Slidev's display wake lock is optional and unavailable in headless CI.
+  // Use its normal preference instead of ignoring permission errors globally.
+  await page.addInitScript(() => localStorage.setItem('slidev-wake-lock', 'false'));
   page.on('pageerror', error => pageErrors.push(error.message));
   page.on('response', response => {if(response.status() >= 400) networkErrors.push({status:response.status(), url:response.url()});});
   const {routes} = JSON.parse(await fs.readFile(path.join(site, 'static-routes.json'), 'utf8'));
