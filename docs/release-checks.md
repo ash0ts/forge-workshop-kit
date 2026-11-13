@@ -5,9 +5,9 @@ This is a technical preview. The implementation and live rehearsals are complete
 | Check | Evidence and outcome |
 | --- | --- |
 | Local tests | 21 passed, including real CPU training/frozen-weight replay, true MCP timeout recovery, KEEP, budget reservations, interrupted requests, isolation, artifact restore and missing publication. |
-| Clean installs | macOS, Windows and Linux CI passed for the initial release. The current release runs the same matrix; see [Actions](https://github.com/ash0ts/forge-workshop-kit/actions). |
+| Clean installs | macOS, Windows and Linux clean installs, all 21 tests and marimo checks passed for this release. [CI run](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43377483699). |
 | Hosted copy | Native **Copy to project** created a distinct notebook, autofilled its project, verified writes and exported two stored spans using hosted authentication. No host token. [Receipt](../evidence/hosted-copy.json). This used the maintainer account, not a new external account. |
-| Recovery | A new empty runtime restored one completed fixture from its checkpoint artifact and reused it without execution. [Receipt](../evidence/restore.json). Frozen model replay also matches predictions in the tests. |
+| Recovery | An empty runtime restored all 33 completed Solar stages and verified 51 source, weight and prediction files byte-for-byte, without new training or inference. [Trained restore](../evidence/trained-restore.json). A separate hosted-identity fixture also passed [restore and monitoring checks](../evidence/restore.json). |
 | Monitoring | Real public progress runs read through the API. The monitor only reads; missing updates are unknown. No classroom-scale load test or human rehearsal has been performed. |
 | Agent Lens | Stored-span readback checked real requests/tools against independent receipts. The copied hosted notebook’s conversation was also inspected in the native UI. [Capture](../evidence/hosted-agent-lens.png). |
 | Solar | Six GOES configurations, two manual image architectures, two research rounds, tested composition/KEEP, frozen image and measurement comparisons completed. [Results](../evidence/solar-rehearsal.json). |
