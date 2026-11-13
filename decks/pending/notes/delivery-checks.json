@@ -1,7 +1,7 @@
 {
-  "source_sha256": "f5e270536b8267362f05dd5c023f646f674bee799bb8ca8a0a720409562734e5",
-  "slides_checked": 77,
-  "expected_slides": 77,
+  "source_sha256": "5cfcf1d33e59954adc19bce81f715e8e6ab5db6eaac6ceda0aa632f490ba32dd",
+  "slides_checked": 81,
+  "expected_slides": 81,
   "titles": [
     {
       "number": 1,
@@ -175,216 +175,236 @@
     },
     {
       "number": 35,
+      "key": "retry-identity",
+      "title": "A stable operation_id prevents a repeated write."
+    },
+    {
+      "number": 36,
       "key": "timeout-screen",
       "title": "Inspect the timeout and the following status check."
     },
     {
-      "number": 36,
+      "number": 37,
       "key": "timeout-detail",
       "title": "The tool says the write may have committed."
     },
     {
-      "number": 37,
+      "number": 38,
       "key": "checks",
       "title": "Check the account and the explanation separately."
     },
     {
-      "number": 38,
+      "number": 39,
+      "key": "scorer-cases",
+      "title": "The same confident reply can accompany four account states."
+    },
+    {
+      "number": 40,
       "key": "scorer",
       "title": "Write checks for full, partial, missing, and duplicate refunds."
     },
     {
-      "number": 39,
+      "number": 41,
       "key": "judge",
       "title": "Ask the judge to compare the reply with recorded actions."
     },
     {
-      "number": 40,
+      "number": 42,
       "key": "publish-dev",
       "title": "Publish development results with both kinds of score."
     },
     {
-      "number": 41,
+      "number": 43,
       "key": "compare-fields",
       "title": "Compare the same case across versions."
     },
     {
-      "number": 42,
+      "number": 44,
       "key": "manual",
       "title": "Revise the verification skill and rerun both tickets."
     },
     {
-      "number": 43,
+      "number": 45,
       "key": "manual-interpret",
       "title": "Compare account correctness with the added tool calls."
     },
     {
-      "number": 44,
+      "number": 46,
       "key": "break",
       "title": "Take a ten-minute break after saving your progress."
     },
     {
-      "number": 45,
+      "number": 47,
       "key": "editor",
       "title": "Management would like to automate management."
     },
     {
-      "number": 46,
+      "number": 48,
       "key": "branch-1",
       "title": "Propose two edits to the same starting harness."
     },
     {
-      "number": 47,
+      "number": 49,
       "key": "branch-2",
       "title": "Run each candidate from the original account state."
     },
     {
-      "number": 48,
+      "number": 50,
       "key": "branch-3",
       "title": "Compare the probe results before selecting a harness."
     },
     {
-      "number": 49,
+      "number": 51,
       "key": "branch-4",
       "title": "Execute the harness returned by the composition decision."
     },
     {
-      "number": 50,
+      "number": 52,
       "key": "branch-5",
       "title": "Save the selected harness and a lesson for onboarding."
     },
     {
-      "number": 51,
+      "number": 53,
       "key": "propose-code",
       "title": "Give the editor the starting execution and harness."
     },
     {
-      "number": 52,
+      "number": 54,
       "key": "propose",
       "title": "Review the proposed instruction and workflow changes."
     },
     {
-      "number": 53,
+      "number": 55,
       "key": "probe-code",
       "title": "Construct and execute the proposed harness."
     },
     {
-      "number": 54,
+      "number": 56,
       "key": "probes",
       "title": "Run both candidates and inspect their tool sequences."
     },
     {
-      "number": 55,
+      "number": 57,
+      "key": "completion-guard",
+      "title": "Require a passing check of the current state before finish."
+    },
+    {
+      "number": 58,
       "key": "gate-screen",
       "title": "This candidate required a check before completion."
     },
     {
-      "number": 56,
+      "number": 59,
       "key": "gate-detail",
       "title": "The completion gate required a check_work call."
     },
     {
-      "number": 57,
+      "number": 60,
+      "key": "probe-comparison",
+      "title": "Compare the added checks with the resulting account state."
+    },
+    {
+      "number": 61,
       "key": "keep",
       "title": "The editor retained the parent after comparing the probes."
     },
     {
-      "number": 58,
+      "number": 62,
       "key": "compose",
       "title": "Test the selected harness before carrying it forward."
     },
     {
-      "number": 59,
+      "number": 63,
       "key": "reflection",
       "title": "Save the lesson with the run that supports it."
     },
     {
-      "number": 60,
+      "number": 64,
       "key": "round-two",
       "title": "Use the selected harness to start the onboarding round."
     },
     {
-      "number": 61,
+      "number": 65,
       "key": "round-two-result",
       "title": "The second round changed the verification skill."
     },
     {
-      "number": 62,
+      "number": 66,
       "key": "skill-diff",
       "title": "The skill makes the final check more specific."
     },
     {
-      "number": 63,
+      "number": 67,
       "key": "rsi",
       "title": "The next round tests changes to the previous selection."
     },
     {
-      "number": 64,
+      "number": 68,
       "key": "freeze",
       "title": "Freeze three harnesses for the fresh-case comparison."
     },
     {
-      "number": 65,
+      "number": 69,
       "key": "final",
       "title": "Compare all three versions on fresh tickets."
     },
     {
-      "number": 66,
+      "number": 70,
       "key": "native-results",
       "title": "Open the execution behind a saved evaluation row."
     },
     {
-      "number": 67,
+      "number": 71,
       "key": "final-screen",
       "title": "Link the Report’s conclusion to its runs and traces."
     },
     {
-      "number": 68,
+      "number": 72,
       "key": "final-result",
       "title": "All three harnesses passed the four final cases."
     },
     {
-      "number": 69,
+      "number": 73,
       "key": "files",
       "title": "Save the case, harness, execution, and scoring records."
     },
     {
-      "number": 70,
+      "number": 74,
       "key": "report",
       "title": "Write down what changed and whether it helped."
     },
     {
-      "number": 71,
+      "number": 75,
       "key": "aria",
       "title": "Ask ARIA to compare one case across harness versions."
     },
     {
-      "number": 72,
+      "number": 76,
       "key": "end",
       "title": "Choose a workflow with an observable result to test."
     },
     {
-      "number": 73,
+      "number": 77,
       "key": "answer-tool",
       "title": "Worked answer · invoice lookup"
     },
     {
-      "number": 74,
+      "number": 78,
       "key": "answer-loop",
       "title": "Worked answer · observation handoff"
     },
     {
-      "number": 75,
+      "number": 79,
       "key": "answer-scorer",
       "title": "Worked answer · inspect the refund"
     },
     {
-      "number": 76,
+      "number": 80,
       "key": "answer-judge",
       "title": "Worked answer · validate the judge response"
     },
     {
-      "number": 77,
+      "number": 81,
       "key": "sources",
       "title": "Source, notebook, and recorded example"
     }
@@ -395,20 +415,20 @@
   "answers": [
     {
       "slide": 19,
-      "destination": "/forge-workshop-kit/pending/73",
+      "destination": "/forge-workshop-kit/pending/77",
       "keyboardReturn": true
     },
     {
       "slide": 27,
-      "destination": "/forge-workshop-kit/pending/74",
+      "destination": "/forge-workshop-kit/pending/78",
       "keyboardReturn": true
     },
     {
-      "slide": 38,
-      "destination": "/forge-workshop-kit/pending/75",
+      "slide": 40,
+      "destination": "/forge-workshop-kit/pending/79",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 157,
+  "routes_checked": 165,
   "presenter_notes": true
 }

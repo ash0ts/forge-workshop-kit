@@ -1,0 +1,126 @@
+{
+  "source": "evidence/v030-pending-rehearsal.json",
+  "mode": "scripted rehearsal using current notebook functions and worked learner code, not human usability rehearsal",
+  "executions": [
+    {
+      "Version": "Starting instructions",
+      "Case": "already-refunded",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 2,
+      "Grounded explanation": true,
+      "Harness": "b2d1df44c6e1",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/25cf9e219e38e8f6c445e3e38b16749b"
+    },
+    {
+      "Version": "Starting instructions",
+      "Case": "two-invoices",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 4,
+      "Grounded explanation": true,
+      "Harness": "b2d1df44c6e1",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/bfff30186dcc5891fcec27a3cc65d77e"
+    },
+    {
+      "Version": "Starting instructions",
+      "Case": "onboarding-recovery",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 4,
+      "Grounded explanation": true,
+      "Harness": "b2d1df44c6e1",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f3237cd6a96e98141e11867fea84cb85"
+    },
+    {
+      "Version": "Starting instructions",
+      "Case": "clarify-access",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 2,
+      "Grounded explanation": true,
+      "Harness": "b2d1df44c6e1",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/b4bb9d4a5cc24ff54d38da93e95af899"
+    },
+    {
+      "Version": "Manual revision",
+      "Case": "already-refunded",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 2,
+      "Grounded explanation": true,
+      "Harness": "5cfd358201e0",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/20db682821e9f8633eb809db08ad981a"
+    },
+    {
+      "Version": "Manual revision",
+      "Case": "two-invoices",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 4,
+      "Grounded explanation": true,
+      "Harness": "5cfd358201e0",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/1631f17249bd985bdcc878d13a192e36"
+    },
+    {
+      "Version": "Manual revision",
+      "Case": "onboarding-recovery",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 5,
+      "Grounded explanation": true,
+      "Harness": "5cfd358201e0",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/91d0e38d4101d2f676a0219e7a95b52b"
+    },
+    {
+      "Version": "Manual revision",
+      "Case": "clarify-access",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 2,
+      "Grounded explanation": true,
+      "Harness": "5cfd358201e0",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/449526ac748bbd72837e2bae9b60cd64"
+    },
+    {
+      "Version": "Agent-selected version",
+      "Case": "already-refunded",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 2,
+      "Grounded explanation": true,
+      "Harness": "2cf7a0743cf9",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/8d05c61780b324b33edc1c1d8a47db9a"
+    },
+    {
+      "Version": "Agent-selected version",
+      "Case": "two-invoices",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 4,
+      "Grounded explanation": true,
+      "Harness": "2cf7a0743cf9",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3335418620bcb57eb49c71240bb79e6b"
+    },
+    {
+      "Version": "Agent-selected version",
+      "Case": "onboarding-recovery",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 5,
+      "Grounded explanation": true,
+      "Harness": "2cf7a0743cf9",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/1b6501f9be4c3bfcb528f3dc4d6b2866"
+    },
+    {
+      "Version": "Agent-selected version",
+      "Case": "clarify-access",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 2,
+      "Grounded explanation": true,
+      "Harness": "2cf7a0743cf9",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/a6de65e6ff04c2bf3d3fddd4d49ac2d6"
+    }
+  ]
+}

@@ -184,7 +184,7 @@ class: exercise
 
 <div class="kicker">0:08–0:15 · YOUR TURN</div>
 
-<a class="answer-link" href="/78">Worked answer → 78</a>
+<a class="answer-link" href="/85">Worked answer → 85</a>
 
 # Connect and inspect your first tool call
 
@@ -226,6 +226,20 @@ Source notes and recorded evidence: notes/sources.md.
 
 ---
 
+<div class="kicker">0:16</div>
+
+# Locate the observed history and future target
+
+<div class="scientific-figure"><img class="solar-photo" src="/images/v031-goes-window.png" alt="Actual first GOES training window with sixty samples of XRSA and XRSB, followed by the XRSB target thirty minutes later"><div class="image-caption">The two lines are observations. The orange point is the future target; no model forecast is plotted.</div></div>
+
+
+<!--
+Each input contains two channels and sixty one-minute samples, from minute minus fifty-nine through zero. Only XRS-B is predicted thirty minutes later. This plot reverses input standardization to show both channels in log-flux units. The target point is kept out of the input tensor.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
 <div class="kicker">0:17</div>
 
 # Use earlier dates to train, later dates to test
@@ -240,11 +254,25 @@ Source notes and recorded evidence: notes/sources.md.
 
 ---
 
+<div class="kicker">0:18</div>
+
+# Normalize the inputs without changing the target units
+
+<SolarComputation mode="normalization" />
+
+
+<!--
+load_goes first takes log10 of both flux channels. It fits one mean and standard deviation per channel using training inputs only, then reuses those values for validation and final inputs. The target remains unstandardized log10 XRS-B. That is why persistence returns split["persistence"] rather than copying a standardized tensor entry.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
 <div class="kicker">0:19</div>
 
 # Leave out windows with missing observations
 
-<div class="two-col"><div><h2>Check the timestamps</h2><p>The prepared GOES archive has no data for February 8.</p><p>A window needs its full input history and its future target.</p></div><div><h2>Skip an incomplete window</h2><p>Keep the missing date in the coverage record.</p><p>A zero would invent a measurement that the instrument never supplied.</p></div></div><div class="bottom-note">Use the same accepted windows for every model in the comparison.</div>
+<SolarDataRules mode="gaps" />
 
 
 <!--
@@ -317,11 +345,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Measure how far the prediction missed
 
-```python
-error = mean(abs(predicted_log_flux - observed_log_flux))
-```
-
-<div class="two-col" style="margin-top:35px"><div><h2>Lower is better</h2><p>The same target, transform, and units apply to every run.</p></div><div><h2>Look at individual misses</h2><p>Inspect the times where the forecast misses.</p></div></div><div class="bottom-note">Compare each prediction with the observed future, then average the errors.</div><div class="code-contract compact-contract"><span><strong>Input:</strong> Predictions and matching future observations</span><span><strong>Output:</strong> One mean absolute error in log-flux units</span></div>
+<SolarComputation mode="error" />
 
 
 <!--
@@ -335,7 +359,7 @@ class: exercise
 
 <div class="kicker">0:30–0:40 · YOUR TURN</div>
 
-<a class="answer-link" href="/79">Worked answer → 79</a>
+<a class="answer-link" href="/86">Worked answer → 86</a>
 
 # Write and test persistence
 
@@ -437,7 +461,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Save the files needed to repeat the run
 
-<ResearchMap :level="3" /><div class="bottom-note">A W&B Artifact is a versioned bundle of files: here, data, code, trained weights, and predictions.</div>
+<SolarComputation mode="records" />
 
 
 <!--
@@ -472,11 +496,25 @@ Source notes and recorded evidence: notes/sources.md.
 
 ---
 
+<div class="kicker">0:48</div>
+
+# What changes during one training step
+
+<SolarComputation mode="training" />
+
+
+<!--
+In fit, the GOES model predicts a batch and computes squared error against training targets. The shared loss function has an all-ones mask for GOES; the image exercise later uses the mask to select disk pixels. loss.backward computes gradients. Adam updates the forecasting model weights. The training targets participate in these updates. Validation inputs are predicted without gradients, and validation targets are scored by the parent process outside candidate code.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
 <div class="kicker">0:49</div>
 
 # Restore a completed run after a restart
 
-<div class="step-path"><div><h2>Finish a run</h2><p>Save its code, outputs, and completion record locally.</p></div><div><h2>Upload a checkpoint</h2><p>Store a versioned copy as a W&B Artifact in your project.</p></div><div><h2>Reopen the notebook</h2><p>Restore that checkpoint and inspect the completed results.</p></div></div><div class="bottom-note">You can continue from the saved run without training the model again.</div>
+<SolarComputation mode="checkpoint" />
 
 
 <!--
@@ -490,7 +528,7 @@ class: exercise
 
 <div class="kicker">0:50–1:05 · YOUR TURN</div>
 
-<a class="answer-link" href="/80">Worked answer → 80</a>
+<a class="answer-link" href="/87">Worked answer → 87</a>
 
 # Write the loss and metric
 
@@ -513,6 +551,34 @@ Source notes and recorded evidence: notes/sources.md.
 
 <!--
 There are three different operations here. Hyperparameter search supplies different values to the same implementation, such as learning rate or width. Architecture comparison chooses between implementations we already wrote, such as an MLP and a temporal CNN. Later, the research agent will write a code change that our current configuration options cannot express, such as replacing squared training loss with absolute loss. We’ll test that changed program with the same dates and scoring rule.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">1:06</div>
+
+# How the MLP uses an hour of measurements
+
+<SolarComputation mode="mlp" />
+
+
+<!--
+The actual candidate code flattens a two-by-sixty input into one hundred twenty values. A linear layer learns weights for every input position, followed by ReLU and a linear scalar output. Width is sixteen or thirty-two in the search. The diagram omits the batch dimension and draws a few hidden units to represent the layer.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">1:06</div>
+
+# How the temporal CNN uses the same measurements
+
+<SolarComputation mode="cnn" />
+
+
+<!--
+The same two-by-sixty input now passes through a five-sample convolution with padding two. Filter weights are reused along time. The output has width channels and sixty positions; AdaptiveAvgPool1d(1) averages over time, then the linear layer predicts one value. This compares two implemented computations, not just two model names.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -589,7 +655,7 @@ class: exercise
 
 <div class="kicker">1:15–1:30 · YOUR TURN</div>
 
-<a class="answer-link" href="/81">Worked answer → 81</a>
+<a class="answer-link" href="/88">Worked answer → 88</a>
 
 # Run six configurations and inspect one forecast
 
@@ -708,6 +774,20 @@ Source notes and recorded evidence: notes/sources.md.
 
 ---
 
+<div class="kicker">1:49</div>
+
+# Inspect the correction produced by the saved model
+
+<div class="scientific-figure"><img class="solar-photo" src="/images/v031-residual-correction.png" alt="Current AIA image plus the saved residual model correction equals its forecast"><div class="image-caption">First validation case. Current image and forecast use the same intensity scale; the middle panel shows a signed correction.</div></div>
+
+
+<!--
+The center image is calculated from the saved manual residual forecast minus the current input. It shows what this trained network added. It is not the physical change observed on the Sun. Zero is white in the correction view, with negative and positive values on opposite sides of the colorbar. The panels show the equation implemented by forward.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
 <div class="kicker">1:50</div>
 
 # Measure prediction error inside the solar disk
@@ -747,7 +827,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Training loss and evaluation error have different jobs
 
-<table class="clean-table"><tbody><tr><th>Training loss</th><th>Primary evaluation metric</th></tr><tr><td>Supplies gradients while fitting weights</td><td>Measures predictions for comparison</td></tr><tr><td>Candidate code can change it</td><td>Fixed outside candidate code</td></tr><tr><td>The starting implementation uses squared error</td><td>The image comparison uses masked absolute error</td></tr></tbody></table>
+<SolarComputation mode="loss" />
 
 
 <!--
@@ -775,7 +855,7 @@ class: exercise
 
 <div class="kicker">1:55–2:15 · YOUR TURN</div>
 
-<a class="answer-link" href="/82">Worked answer → 82</a>
+<a class="answer-link" href="/89">Worked answer → 89</a>
 
 # Implement and compare the image predictors
 
@@ -793,7 +873,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Use the experiment to test agent-written changes
 
-<p class="agent-explanation">We now have code that trains an image predictor and records its validation error. Give that code, its settings, and its results to a research agent. Ask it for two changes, read the diffs, and train each version. The same comparison will tell us which code to carry into another round.</p><div class="bottom-note">You review each proposed edit before the notebook executes it.</div>
+<SolarComputation mode="evidence" />
 
 
 <!--
@@ -877,7 +957,7 @@ class: exercise
 
 <div class="kicker">2:25–2:40 · YOUR TURN</div>
 
-<a class="answer-link" href="/84">Worked answer → 84</a>
+<a class="answer-link" href="/91">Worked answer → 91</a>
 
 # Choose the evidence for the research agent
 
@@ -968,6 +1048,20 @@ Source notes and recorded evidence: notes/sources.md.
 
 ---
 
+<div class="kicker">2:48</div>
+
+# Adopt the tested code only if validation error is lower
+
+<SolarDataRules mode="adoption" />
+
+
+<!--
+The composition is a proposed source version. After it trains, choose_adoption compares its fixed validation_error with the parent. A strictly lower score adopts the tested version. Equal error, a higher error, or failed execution retains the parent. The decision and the execution are separate records. This rule uses no final-test score.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
 <div class="kicker">2:47</div>
 
 # Open the training call behind the chosen version
@@ -1016,7 +1110,7 @@ class: exercise
 
 <div class="kicker">3:00–3:15 · YOUR TURN</div>
 
-<a class="answer-link" href="/85">Worked answer → 85</a>
+<a class="answer-link" href="/92">Worked answer → 92</a>
 
 # Test the selected code, then begin round two
 
@@ -1048,7 +1142,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Keep the selected code and weights fixed for final evaluation
 
-<SolarMechanism mode="freeze" />
+<SolarComputation mode="inference" />
 
 
 <!--
@@ -1098,7 +1192,7 @@ class: exercise
 
 <div class="kicker">3:25–3:45 · YOUR TURN</div>
 
-<a class="answer-link" href="/86">Worked answer → 86</a>
+<a class="answer-link" href="/93">Worked answer → 93</a>
 
 # Test the selected models on reserved dates
 
@@ -1268,7 +1362,7 @@ def persistence_forecast(split):
 ```
 
 <p>The copy lets you work with the predictions without changing the dataset.</p>
-<div class="source-link"><a href="/20">Return to Write and test persistence →</a></div>
+<div class="source-link"><a href="/22">Return to Write and test persistence →</a></div>
 
 <!--
 The prepared split includes the last observed reading for each forecast window. Return a copy so later changes to the prediction array cannot alter the dataset.
@@ -1295,7 +1389,7 @@ assert my_flux_mae(np.zeros(3), np.zeros(3)) == 0.0
 ```
 
 
-<div class="source-link"><a href="/30">Return to Write the loss and metric →</a></div>
+<div class="source-link"><a href="/33">Return to Write the loss and metric →</a></div>
 
 <!--
 Subtract prediction and target, take absolute values, and average. A prediction of one against a target of zero gives one. These are log10 flux units. The training loss above it is separate and uses squared error.
@@ -1309,7 +1403,7 @@ Source notes and recorded evidence: notes/sources.md.
 # Compare the settings and loss curves
 
 <p class="big">Open two runs from the Sweep. Compare their model, width, learning rate, and training steps.</p><p>Then open the loss curves. A lower validation error is easier to interpret when you can see how each model trained.</p><div class="bottom-note">If a run failed, inspect its error. A missing score cannot rank that model.</div>
-<div class="source-link"><a href="/36">Return to Run six configurations and inspect one forecast →</a></div>
+<div class="source-link"><a href="/41">Return to Run six configurations and inspect one forecast →</a></div>
 
 <!--
 Open the configuration and curve for two runs. Find the settings they share and the value that differs. If training failed, inspect the error rather than assigning a score to a forecast that does not exist.
@@ -1333,7 +1427,7 @@ def my_image_mae(prediction, target, disk_mask):
 ```
 
 <p>Test zero error, constant +1 error, and an error only outside the mask.</p>
-<div class="source-link"><a href="/48">Return to Implement and compare the image predictors →</a></div>
+<div class="source-link"><a href="/54">Return to Implement and compare the image predictors →</a></div>
 
 <!--
 The mask selects the solar disk. Compute the sum and count per image, then average across images. Check identical arrays, a constant one-unit difference, and a difference only outside the mask.
@@ -1380,7 +1474,7 @@ def select_validation_evidence(record):
 ```
 
 <div class="bottom-note">The agent also receives the current source. Keep final predictions and scores out of this request.</div>
-<div class="source-link"><a href="/55">Return to Choose the evidence for the research agent →</a></div>
+<div class="source-link"><a href="/61">Return to Choose the evidence for the research agent →</a></div>
 
 <!--
 First check that the record belongs to validation. Then return only the listed evidence fields. The current source is supplied separately. The final-test example should raise an error before the agent sees it.
@@ -1404,7 +1498,7 @@ probe = run_training(
 ```
 
 <div class="bottom-note">Use the candidate’s source here. Passing the parent would train the old program again.</div>
-<div class="source-link"><a href="/64">Return to Test the selected code, then begin round two →</a></div>
+<div class="source-link"><a href="/71">Return to Test the selected code, then begin round two →</a></div>
 
 <!--
 Pass candidate['source'] to training, along with the shared configuration. Passing the parent source here would train the old program while the interface appeared to test a new proposal. Open the saved candidate.py if the result looks suspicious.
@@ -1418,7 +1512,7 @@ Source notes and recorded evidence: notes/sources.md.
 # Use the saved model without training it again
 
 <p class="big">Load each selected model’s saved weights and predict the reserved dates.</p><p>Compare the three image forecasts at one timestamp. The input images and observed future should match across all three rows.</p><div class="bottom-note">Persistence copies the current image and needs no trained weights.</div>
-<div class="source-link"><a href="/69">Return to Test the selected models on reserved dates →</a></div>
+<div class="source-link"><a href="/76">Return to Test the selected models on reserved dates →</a></div>
 
 <!--
 The selected weights are already trained. Load them and predict the final inputs. Compare the same target timestamps across all versions; persistence uses the current image directly.
@@ -1461,6 +1555,20 @@ return prediction + x[:, 1:2]
 
 <!--
 This is the second-round selected edit in v0.3.0. The last convolution starts at zero; before training, the residual correction is zero. The model begins at persistence and learns a correction. Its probe and separate composition test produce the measured validation score.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">RECORDED REHEARSAL</div>
+
+# Zero initialization applies only to the output layer
+
+<SolarDataRules mode="zero-head" />
+
+
+<!--
+The recorded second-round edit zeros the weights and bias of self.net[-1], the last Conv2d. Earlier convolution layers retain their normal initialization. The last layer initially returns zero, so adding its output to the current image reproduces persistence before training. Adam can then learn a correction. This explains the edit; its measured effect is still limited to the recorded comparison.
 Source notes and recorded evidence: notes/sources.md.
 -->
 

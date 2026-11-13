@@ -1,0 +1,107 @@
+{
+  "source_sha256": "5cfcf1d33e59954adc19bce81f715e8e6ab5db6eaac6ceda0aa632f490ba32dd",
+  "external_access_checked": false,
+  "matrix_links": [
+    {
+      "label": "Already refunded, Starting: open recorded execution",
+      "href": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/25cf9e219e38e8f6c445e3e38b16749b"
+    },
+    {
+      "label": "Already refunded, Manual: open recorded execution",
+      "href": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/20db682821e9f8633eb809db08ad981a"
+    },
+    {
+      "label": "Already refunded, Agent-selected: open recorded execution",
+      "href": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/8d05c61780b324b33edc1c1d8a47db9a"
+    },
+    {
+      "label": "Two different invoices, Starting: open recorded execution",
+      "href": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/bfff30186dcc5891fcec27a3cc65d77e"
+    },
+    {
+      "label": "Two different invoices, Manual: open recorded execution",
+      "href": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/1631f17249bd985bdcc878d13a192e36"
+    },
+    {
+      "label": "Two different invoices, Agent-selected: open recorded execution",
+      "href": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3335418620bcb57eb49c71240bb79e6b"
+    },
+    {
+      "label": "Onboarding recovery, Starting: open recorded execution",
+      "href": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f3237cd6a96e98141e11867fea84cb85"
+    },
+    {
+      "label": "Onboarding recovery, Manual: open recorded execution",
+      "href": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/91d0e38d4101d2f676a0219e7a95b52b"
+    },
+    {
+      "label": "Onboarding recovery, Agent-selected: open recorded execution",
+      "href": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/1b6501f9be4c3bfcb528f3dc4d6b2866"
+    },
+    {
+      "label": "Missing access details, Starting: open recorded execution",
+      "href": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/b4bb9d4a5cc24ff54d38da93e95af899"
+    },
+    {
+      "label": "Missing access details, Manual: open recorded execution",
+      "href": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/449526ac748bbd72837e2bae9b60cd64"
+    },
+    {
+      "label": "Missing access details, Agent-selected: open recorded execution",
+      "href": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/a6de65e6ff04c2bf3d3fddd4d49ac2d6"
+    }
+  ],
+  "keyboard_destination": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/25cf9e219e38e8f6c445e3e38b16749b",
+  "keyboard_opened_recorded_destination": true,
+  "navigation_method": "Focused the first SVG result link and pressed Enter. Intercepted the outgoing request to verify its destination without authenticating or loading Forge.",
+  "branches": "Progressive SVG explanation, not a selectable-node widget; the notebook contains the saved-record explorer.",
+  "new_diagram_frames": [
+    4,
+    7,
+    8,
+    9,
+    13,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    31,
+    35,
+    38,
+    39,
+    48,
+    49,
+    50,
+    51,
+    52,
+    57,
+    60,
+    61,
+    67,
+    68,
+    72
+  ],
+  "manual_review": "Read new diagram source against runtime, then inspected full-size screenshots for arrows, text placement and account/trace/version distinctions.",
+  "component_sha256": {
+    "components/AccountLedger.vue": "e6e030cf5f48f97800f6c8afa55d426efb0659686a31266fc08d0706af9172b0",
+    "components/ActionContract.vue": "0f6f1fba7161c1253678b86e0af369c4e41b0e8a547140ffd608804295847265",
+    "components/CaptureDetail.vue": "400eb07ae38c08aa9aa8d1f933b63479f85743221cc1f7016595d158110ccbdd",
+    "components/CompletionGuard.vue": "b6393a9693c405872d7a111533a79fe96c1da41eb5fdd7a7fcf091ebae516e1f",
+    "components/EvaluationMatrix.vue": "eeea9e5e8e5db889072a1cfdb647e040006ccb0ec2478c59db98cf9e4eb04f1f",
+    "components/HarnessMap.vue": "996219bb806052b008c36b837a5799c410a52294968e1a21cc6b4b759ad42281",
+    "components/ImprovementBranches.vue": "91f64e64c3e4bc506ba360487e14e8650e440ad0f685f4c33f43fd08981694f4",
+    "components/McpSequence.vue": "50484b1dbddf17010b753a9a7c53096f5fd0c7a16026bac1abe506b4f4d00067",
+    "components/OfficeScene.vue": "0c5b18dd42f77ccc852bbaf9046affc3851653da0187443515a2d31487fef3ab",
+    "components/ProbeComparison.vue": "80b1638157bd4af310e723c6121748cedf1bd56663818b927f336bda8f738378",
+    "components/ReceiptFlow.vue": "bdecc481b793b0d34bb728e68470726851ce42a016337216ad627fc11916595e",
+    "components/RefundChecks.vue": "bcac381496075866e80f14147f96a0d89a1d76437648ba7d574e91beb729d1e5",
+    "components/RetainExecution.vue": "6023d0ce021f4e21d38e38ee2ade087307a3d02572974915efc32aa6b8b7c9df",
+    "components/RetryIdentity.vue": "a4bae62e6bfb6e2c5b1a0deaed9e94f4e4c26f3d4eafca1b8948942fd4e69e62",
+    "components/RoundTransfer.vue": "23dcb185dd5a6ddb2a17aa189655248fa82d4a4200b00650d26c6d5ee20993fd",
+    "components/ScoringPaths.vue": "a80049a6b9c0d5249ecd9279869bcf0b48c597fb5a7a0efa204964c15136a4e6",
+    "components/TimeoutSequence.vue": "76164ee0d4bcd6355ba189ea14a22daec1919abccf7d5dd4e546a84510bfa5e8",
+    "components/ToolLoop.vue": "b60d8062af8fa9c760c0e3e9d4d18da99f7ba378a82713579565e2d5c8c96b84"
+  }
+}

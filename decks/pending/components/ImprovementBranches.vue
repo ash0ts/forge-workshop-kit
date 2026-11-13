@@ -3,16 +3,22 @@ import {useId} from 'vue'
 const arrow=useId().replace(/:/g,'')
 defineProps({level:{default:1}})
 </script>
-<template><svg style="width:100%;height:auto;max-height:400px" viewBox="0 0 1120 390" role="img" aria-label="A tested parent branches into two proposed edits. Test both, review their evidence, decide which files to keep, test the chosen version and carry its lesson into another round.">
+<template>
+<svg class="mechanism" viewBox="0 0 1120 425" role="img" aria-label="Two proposals start from the participant's manual harness and its starting run. Candidate A retains it; candidate B requires check_work. Each probe resets the account to case.initial. Compose reads both executions and returns a harness to test. The depicted candidate changes come from the recorded first-round proposals; participant proposals may differ.">
 <defs><marker :id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#527b72"/></marker></defs>
-<g font-family="IBM Plex Sans" fill="#163c43" style="font-size:22px">
-<rect x="15" y="160" width="140" height="62" rx="8" fill="#dbe1d9"/><text x="85" y="185" text-anchor="middle">Parent files</text><text x="85" y="210" text-anchor="middle" style="font-size:17px">already tested</text>
-<g v-if="level>=1"><path d="M155 191C185 191 185 70 235 70M155 191C185 191 185 300 235 300" fill="none" stroke="#527b72" stroke-width="3"/>
-<rect x="235" y="38" width="175" height="66" rx="8" fill="#c7dde9"/><text x="322" y="66" text-anchor="middle">Candidate A</text><text x="322" y="92" text-anchor="middle" style="font-size:17px">review its diff</text>
-<rect x="235" y="268" width="175" height="66" rx="8" fill="#edcdaa"/><text x="322" y="295" text-anchor="middle">Candidate B</text><text x="322" y="321" text-anchor="middle" style="font-size:17px">review its diff</text></g>
-<g v-if="level>=2"><path d="M410 70H450M410 300H450" stroke="#527b72" stroke-width="3"/><circle cx="475" cy="70" r="18" fill="#4382a6"/><circle cx="475" cy="300" r="18" fill="#c17b40"/><text x="475" y="122" text-anchor="middle">Test A</text><text x="475" y="350" text-anchor="middle">Test B</text></g>
-<g v-if="level>=3"><path d="M495 70C545 70 530 172 590 172M495 300C545 300 530 210 590 210" fill="none" stroke="#7d968b" stroke-width="3" stroke-dasharray="7 5"/>
-<text x="540" y="30" style="font-size:17px">read test runs</text><rect x="590" y="143" width="190" height="98" rx="8" fill="#f1ca70"/><text x="685" y="172" text-anchor="middle">Compose decision</text><text x="685" y="200" text-anchor="middle" style="font-size:18px">select · combine</text><text x="685" y="225" text-anchor="middle" style="font-size:18px">or retain the parent</text></g>
-<g v-if="level>=4"><path d="M780 192H832" stroke="#527b72" stroke-width="3" :marker-end="`url(#${arrow})`"/><circle cx="858" cy="192" r="18" fill="#163c43"/><text x="860" y="137" text-anchor="middle">Test chosen files</text><text x="860" y="243" text-anchor="middle" style="font-size:18px">verify selected files</text></g>
-<g v-if="level>=5"><path d="M878 192C930 192 920 70 985 70M878 192C930 192 920 300 985 300" fill="none" stroke="#527b72" stroke-width="3"/><rect x="985" y="38" width="115" height="64" rx="8" fill="#d7e5db"/><text x="1042" y="65" text-anchor="middle">Next case</text><text x="1042" y="90" text-anchor="middle" style="font-size:17px">repeat</text><rect x="985" y="268" width="115" height="64" rx="8" fill="#ede3c7"/><text x="1042" y="295" text-anchor="middle">Save lesson</text><text x="1042" y="321" text-anchor="middle" style="font-size:17px">+ limits</text></g>
-</g></svg></template>
+<g font-family="IBM Plex Sans" fill="#163c43">
+<rect x="12" y="146" width="196" height="124" rx="9" fill="#dce8df"/><text x="30" y="177" style="font-size:23px">Manual harness</text><text x="30" y="210" style="font-size:19px">+ its starting run</text><text x="30" y="244" style="font-size:18px">shared by A and B</text>
+<path d="M210 184C235 184 225 90 274 90" fill="none" stroke="#527b72" stroke-width="3" :marker-end="`url(#${arrow})`"/><path d="M210 231C235 231 225 317 274 317" fill="none" stroke="#527b72" stroke-width="3" :marker-end="`url(#${arrow})`"/>
+<rect x="282" y="47" width="250" height="86" rx="9" fill="#d9e6ef"/><text x="300" y="80" style="font-size:20px">A · Retain the procedure</text><text x="300" y="112" style="font-size:20px">same harness content</text>
+<rect x="282" y="274" width="250" height="86" rx="9" fill="#edcdaa"/><text x="300" y="307" style="font-size:20px">B · Require check_work</text><text x="300" y="339" style="font-size:20px">completion guard → true</text>
+<g v-if="level>=2"><path d="M537 90H565" stroke="#527b72" stroke-width="3" :marker-end="`url(#${arrow})`"/><path d="M537 317H565" stroke="#527b72" stroke-width="3" :marker-end="`url(#${arrow})`"/>
+<rect x="574" y="47" width="200" height="86" rx="9" fill="#d9e6ef"/><text x="591" y="79" style="font-size:23px">Probe A</text><text x="591" y="111" style="font-size:19px">start: refunds []</text>
+<rect x="574" y="274" width="200" height="86" rx="9" fill="#edcdaa"/><text x="591" y="307" style="font-size:23px">Probe B</text><text x="591" y="339" style="font-size:19px">start: refunds []</text>
+<text x="295" y="189" font-family="IBM Plex Mono" style="font-size:20px">deepcopy(case.initial)</text><text x="295" y="220" style="font-size:19px">No refund or message history passes A → B.</text></g>
+<g v-if="level>=3"><path d="M780 89C820 89 802 165 829 165" fill="none" stroke="#7d968b" stroke-width="3" stroke-dasharray="6 4" :marker-end="`url(#${arrow})`"/><path d="M780 317C818 317 802 235 829 235" fill="none" stroke="#7d968b" stroke-width="3" stroke-dasharray="6 4" :marker-end="`url(#${arrow})`"/>
+<rect x="837" y="140" width="270" height="123" rx="9" fill="#f1ca70"/><text x="855" y="173" style="font-size:24px">Compose</text><text x="855" y="206" style="font-size:18px">read both execution records</text><text x="855" y="239" style="font-size:20px">select / combine / retain</text></g>
+<g v-if="level>=4"><path d="M971 269V297" stroke="#527b72" stroke-width="3" :marker-end="`url(#${arrow})`"/>
+<rect x="837" y="305" width="270" height="62" rx="9" fill="#dce8df"/><text x="855" y="331" style="font-size:21px">Test selected harness</text><text x="855" y="356" style="font-size:18px">reset this case once more</text></g>
+<text x="12" y="410" style="font-size:17px">Example candidates from the recorded billing round. Solid arrows pass configurations; dashed arrows pass execution records.</text>
+</g></svg>
+</template>

@@ -62,10 +62,19 @@ try {
         const rect = element.getBoundingClientRect();
         if (rect.width && rect.height && (rect.bottom > box.bottom - 20 || rect.right > box.right + 1 || rect.left < box.left - 1)) overflow.push({tag:element.tagName, text:element.textContent.slice(0,100), x:rect.x, y:rect.y, width:rect.width, height:rect.height});
       }
-      return {title:expected, overflow, missingImages:[...root.querySelectorAll('img')].filter(image => !image.complete || !image.naturalWidth).map(image => image.src)};
+      const diagrams = [...root.querySelectorAll('svg[role="img"]')].map(svg => {
+        const bounds = svg.getBoundingClientRect();
+        const clippedLabels = [...svg.querySelectorAll('text')].filter(text => {
+          const label = text.getBoundingClientRect();
+          return label.width && label.height && (label.left < bounds.left - 2 || label.right > bounds.right + 2 || label.top < bounds.top - 2 || label.bottom > bounds.bottom + 2);
+        }).map(text => text.textContent);
+        const description = svg.getAttribute('aria-label') || svg.querySelector('title,desc')?.textContent || '';
+        return {description, clippedLabels};
+      });
+      return {title:expected, overflow, diagrams, missingImages:[...root.querySelectorAll('img')].filter(image => !image.complete || !image.naturalWidth).map(image => image.src)};
     }, slide.title);
     titles.push({number:slide.number, key:slide.key, title:result.title});
-    if (result.overflow.length || result.missingImages.length) issues.push({slide:slide.number, ...result});
+    if (result.overflow.length || result.missingImages.length || result.diagrams.some(diagram => !diagram.description || diagram.clippedLabels.length)) issues.push({slide:slide.number, ...result});
     await page.screenshot({path:path.join(output, `${String(slide.number).padStart(3,'0')}.png`)});
     if (slide.answer) {
       const answer = page.locator('a.answer-link:visible');

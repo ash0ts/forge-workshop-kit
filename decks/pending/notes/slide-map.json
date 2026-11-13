@@ -1,6 +1,6 @@
 {
-  "total_slides": 77,
-  "main_slides": 72,
+  "total_slides": 81,
+  "main_slides": 76,
   "slides": [
     {
       "number": 1,
@@ -152,7 +152,7 @@
       "title": "Write the invoice lookup.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my invoice lookup.",
-      "answer": 73
+      "answer": 77
     },
     {
       "number": 20,
@@ -216,7 +216,7 @@
       "title": "Append the action and its result to the next request.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my tool-to-model handoff.",
-      "answer": 74
+      "answer": 78
     },
     {
       "number": 28,
@@ -276,6 +276,14 @@
     },
     {
       "number": 35,
+      "key": "retry-identity",
+      "title": "A stable operation_id prevents a repeated write.",
+      "kind": "explanation",
+      "notes": "Illustration of simulator.execute after a committed provisioning request. The same operation_id and identical arguments return the stored receipt with replayed=true. A new operation_id is a new mutation and can add a duplicate membership. Reusing an ID with different arguments is rejected. The recorded onboarding recovery read status instead of retrying, so this diagram explains tool behavior rather than claiming this branch occurred in that run.",
+      "answer": null
+    },
+    {
+      "number": 36,
       "key": "timeout-screen",
       "title": "Inspect the timeout and the following status check.",
       "kind": "explanation",
@@ -283,7 +291,7 @@
       "answer": null
     },
     {
-      "number": 36,
+      "number": 37,
       "key": "timeout-detail",
       "title": "The tool says the write may have committed.",
       "kind": "explanation",
@@ -291,7 +299,7 @@
       "answer": null
     },
     {
-      "number": 37,
+      "number": 38,
       "key": "checks",
       "title": "Check the account and the explanation separately.",
       "kind": "explanation",
@@ -299,15 +307,23 @@
       "answer": null
     },
     {
-      "number": 38,
+      "number": 39,
+      "key": "scorer-cases",
+      "title": "The same confident reply can accompany four account states.",
+      "kind": "explanation",
+      "notes": "These are the four free development fixtures from teaching.check_scorer: one 4900-cent refund, a 100-cent refund, no refund, and two 4900-cent refunds. They share the reply Everything is resolved. The displayed PASS/FAIL values are the required deterministic checks, not inferred LLM judgments. Ask which fields my_state_check must read before participants implement it.",
+      "answer": null
+    },
+    {
+      "number": 40,
       "key": "scorer",
       "title": "Write checks for full, partial, missing, and duplicate refunds.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my scorer against four known examples.",
-      "answer": 75
+      "answer": 79
     },
     {
-      "number": 39,
+      "number": 41,
       "key": "judge",
       "title": "Ask the judge to compare the reply with recorded actions.",
       "kind": "explanation",
@@ -315,7 +331,7 @@
       "answer": null
     },
     {
-      "number": 40,
+      "number": 42,
       "key": "publish-dev",
       "title": "Publish development results with both kinds of score.",
       "kind": "exercise",
@@ -323,7 +339,7 @@
       "answer": null
     },
     {
-      "number": 41,
+      "number": 43,
       "key": "compare-fields",
       "title": "Compare the same case across versions.",
       "kind": "explanation",
@@ -331,7 +347,7 @@
       "answer": null
     },
     {
-      "number": 42,
+      "number": 44,
       "key": "manual",
       "title": "Revise the verification skill and rerun both tickets.",
       "kind": "exercise",
@@ -339,7 +355,7 @@
       "answer": null
     },
     {
-      "number": 43,
+      "number": 45,
       "key": "manual-interpret",
       "title": "Compare account correctness with the added tool calls.",
       "kind": "explanation",
@@ -347,7 +363,7 @@
       "answer": null
     },
     {
-      "number": 44,
+      "number": 46,
       "key": "break",
       "title": "Take a ten-minute break after saving your progress.",
       "kind": "explanation",
@@ -355,7 +371,7 @@
       "answer": null
     },
     {
-      "number": 45,
+      "number": 47,
       "key": "editor",
       "title": "Management would like to automate management.",
       "kind": "explanation",
@@ -363,7 +379,7 @@
       "answer": null
     },
     {
-      "number": 46,
+      "number": 48,
       "key": "branch-1",
       "title": "Propose two edits to the same starting harness.",
       "kind": "explanation",
@@ -371,7 +387,7 @@
       "answer": null
     },
     {
-      "number": 47,
+      "number": 49,
       "key": "branch-2",
       "title": "Run each candidate from the original account state.",
       "kind": "explanation",
@@ -379,7 +395,7 @@
       "answer": null
     },
     {
-      "number": 48,
+      "number": 50,
       "key": "branch-3",
       "title": "Compare the probe results before selecting a harness.",
       "kind": "explanation",
@@ -387,7 +403,7 @@
       "answer": null
     },
     {
-      "number": 49,
+      "number": 51,
       "key": "branch-4",
       "title": "Execute the harness returned by the composition decision.",
       "kind": "explanation",
@@ -395,7 +411,7 @@
       "answer": null
     },
     {
-      "number": 50,
+      "number": 52,
       "key": "branch-5",
       "title": "Save the selected harness and a lesson for onboarding.",
       "kind": "explanation",
@@ -403,7 +419,7 @@
       "answer": null
     },
     {
-      "number": 51,
+      "number": 53,
       "key": "propose-code",
       "title": "Give the editor the starting execution and harness.",
       "kind": "explanation",
@@ -411,7 +427,7 @@
       "answer": null
     },
     {
-      "number": 52,
+      "number": 54,
       "key": "propose",
       "title": "Review the proposed instruction and workflow changes.",
       "kind": "exercise",
@@ -419,7 +435,7 @@
       "answer": null
     },
     {
-      "number": 53,
+      "number": 55,
       "key": "probe-code",
       "title": "Construct and execute the proposed harness.",
       "kind": "explanation",
@@ -427,7 +443,7 @@
       "answer": null
     },
     {
-      "number": 54,
+      "number": 56,
       "key": "probes",
       "title": "Run both candidates and inspect their tool sequences.",
       "kind": "exercise",
@@ -435,7 +451,15 @@
       "answer": null
     },
     {
-      "number": 55,
+      "number": 57,
+      "key": "completion-guard",
+      "title": "Require a passing check of the current state before finish.",
+      "kind": "explanation",
+      "notes": "The loop stores last_check with passed and the digest of world. With verify_before_finish true, finish is rejected if that check is absent, failed, or no longer matches the current state. This is a runtime completion rule. check_work gives public development feedback; the independent final scorer separately checks entire expected accounts and the required resolution.",
+      "answer": null
+    },
+    {
+      "number": 58,
       "key": "gate-screen",
       "title": "This candidate required a check before completion.",
       "kind": "explanation",
@@ -443,7 +467,7 @@
       "answer": null
     },
     {
-      "number": 56,
+      "number": 59,
       "key": "gate-detail",
       "title": "The completion gate required a check_work call.",
       "kind": "explanation",
@@ -451,7 +475,15 @@
       "answer": null
     },
     {
-      "number": 57,
+      "number": 60,
+      "key": "probe-comparison",
+      "title": "Compare the added checks with the resulting account state.",
+      "kind": "explanation",
+      "notes": "Recorded first-round probe A used the parent harness: get_account, refund_payment, get_account, finish. Probe B used verify_before_finish=true: the same first three calls, a rejected finish, check_work, and an accepted finish. Both independent account checks passed. Tool-call counts are four and six for these development probes, distinct from the later final-evaluation totals. Source: the v0.3.0 rehearsal journal pending/round-1/probe-a and probe-b, linked through the native conversations on the preceding slides.",
+      "answer": null
+    },
+    {
+      "number": 61,
       "key": "keep",
       "title": "The editor retained the parent after comparing the probes.",
       "kind": "explanation",
@@ -459,7 +491,7 @@
       "answer": null
     },
     {
-      "number": 58,
+      "number": 62,
       "key": "compose",
       "title": "Test the selected harness before carrying it forward.",
       "kind": "exercise",
@@ -467,7 +499,7 @@
       "answer": null
     },
     {
-      "number": 59,
+      "number": 63,
       "key": "reflection",
       "title": "Save the lesson with the run that supports it.",
       "kind": "explanation",
@@ -475,7 +507,7 @@
       "answer": null
     },
     {
-      "number": 60,
+      "number": 64,
       "key": "round-two",
       "title": "Use the selected harness to start the onboarding round.",
       "kind": "exercise",
@@ -483,7 +515,7 @@
       "answer": null
     },
     {
-      "number": 61,
+      "number": 65,
       "key": "round-two-result",
       "title": "The second round changed the verification skill.",
       "kind": "explanation",
@@ -491,7 +523,7 @@
       "answer": null
     },
     {
-      "number": 62,
+      "number": 66,
       "key": "skill-diff",
       "title": "The skill makes the final check more specific.",
       "kind": "explanation",
@@ -499,7 +531,7 @@
       "answer": null
     },
     {
-      "number": 63,
+      "number": 67,
       "key": "rsi",
       "title": "The next round tests changes to the previous selection.",
       "kind": "explanation",
@@ -507,7 +539,7 @@
       "answer": null
     },
     {
-      "number": 64,
+      "number": 68,
       "key": "freeze",
       "title": "Freeze three harnesses for the fresh-case comparison.",
       "kind": "explanation",
@@ -515,7 +547,7 @@
       "answer": null
     },
     {
-      "number": 65,
+      "number": 69,
       "key": "final",
       "title": "Compare all three versions on fresh tickets.",
       "kind": "exercise",
@@ -523,7 +555,7 @@
       "answer": null
     },
     {
-      "number": 66,
+      "number": 70,
       "key": "native-results",
       "title": "Open the execution behind a saved evaluation row.",
       "kind": "explanation",
@@ -531,7 +563,7 @@
       "answer": null
     },
     {
-      "number": 67,
+      "number": 71,
       "key": "final-screen",
       "title": "Link the Report\u2019s conclusion to its runs and traces.",
       "kind": "explanation",
@@ -539,7 +571,7 @@
       "answer": null
     },
     {
-      "number": 68,
+      "number": 72,
       "key": "final-result",
       "title": "All three harnesses passed the four final cases.",
       "kind": "explanation",
@@ -547,7 +579,7 @@
       "answer": null
     },
     {
-      "number": 69,
+      "number": 73,
       "key": "files",
       "title": "Save the case, harness, execution, and scoring records.",
       "kind": "explanation",
@@ -555,7 +587,7 @@
       "answer": null
     },
     {
-      "number": 70,
+      "number": 74,
       "key": "report",
       "title": "Write down what changed and whether it helped.",
       "kind": "exercise",
@@ -563,7 +595,7 @@
       "answer": null
     },
     {
-      "number": 71,
+      "number": 75,
       "key": "aria",
       "title": "Ask ARIA to compare one case across harness versions.",
       "kind": "explanation",
@@ -571,7 +603,7 @@
       "answer": null
     },
     {
-      "number": 72,
+      "number": 76,
       "key": "end",
       "title": "Choose a workflow with an observable result to test.",
       "kind": "explanation",
@@ -579,7 +611,7 @@
       "answer": null
     },
     {
-      "number": 73,
+      "number": 77,
       "key": "answer-tool",
       "title": "Worked answer \u00b7 invoice lookup",
       "kind": "answer",
@@ -587,7 +619,7 @@
       "answer": null
     },
     {
-      "number": 74,
+      "number": 78,
       "key": "answer-loop",
       "title": "Worked answer \u00b7 observation handoff",
       "kind": "answer",
@@ -595,7 +627,7 @@
       "answer": null
     },
     {
-      "number": 75,
+      "number": 79,
       "key": "answer-scorer",
       "title": "Worked answer \u00b7 inspect the refund",
       "kind": "answer",
@@ -603,7 +635,7 @@
       "answer": null
     },
     {
-      "number": 76,
+      "number": 80,
       "key": "answer-judge",
       "title": "Worked answer \u00b7 validate the judge response",
       "kind": "answer",
@@ -611,7 +643,7 @@
       "answer": null
     },
     {
-      "number": 77,
+      "number": 81,
       "key": "sources",
       "title": "Source, notebook, and recorded example",
       "kind": "explanation",

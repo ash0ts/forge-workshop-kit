@@ -58,8 +58,7 @@ Read the customer request and ask what the agent must know before issuing a refu
 
 # Define the account state a correct refund should leave.
 
-<div class="result-grid"><div class="claim">“All sorted. Thanks for your patience.”<p class="quiet">We need to check this claim against the account.</p></div><div class="state"><strong>The duplicate charge must be refunded exactly once.</strong><p>Refund pay-2 on Acme.<br>Preserve pay-1 and the other account.<br>Report any unresolved issue.</p></div></div>
-<div class="bottom-note">The final response and the account state will receive separate evaluations.</div>
+<AccountLedger />
 
 <!--
 Ask someone to name the account fields they would check after this request. We need to identify the correct payment, refund the full amount once, and preserve unrelated state. We will later use partial refunds, duplicate refunds, and false completion claims to test the scorer. A fluent final reply cannot establish these account facts.
@@ -189,7 +188,7 @@ result, record = event(
 )
 ```
 
-<div class="two-col"><p><strong>result</strong> is the Python value returned by the operation.</p><p><strong>record</strong> stores its arguments, output, timing, and any error for tracing.</p></div>
+<ReceiptFlow />
 
 <!--
 The event helper runs the supplied function and returns two objects. result is what the caller needs; record describes the operation with its arguments, output, timing, and any error. We save that record before exporting a trace. If export fails, we can send the saved record again without repeating a refund or another model request.
@@ -283,7 +282,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my invoice lookup<br><strong>Check:</strong> The requested invoice, missing invoice, and other-account checks pass. Account state stays unchanged.</div>
 
-<a class="answer-link" href="/73">Worked answer →</a>
+<a class="answer-link" href="/77">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my invoice lookup.
@@ -294,8 +293,7 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 
 # Connect the action schema to your Python function.
 
-<HarnessMap :level="3" />
-<div class="bottom-note">The action schema says what can be requested. Your dispatch function decides which Python function runs.</div>
+<ActionContract />
 
 <!--
 The model sees an action schema that names lookup_invoice and its account_id and invoice_id arguments. That schema alone cannot read an account. Your dispatch function connects the selected name to the Python implementation. This workshop uses local Python for the tool and real local MCP for onboarding.
@@ -387,7 +385,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my tool-to-model handoff<br><strong>Check:</strong> Expand the next request. It contains the two returned payments and the action that produced them.</div>
 
-<a class="answer-link" href="/74">Worked answer →</a>
+<a class="answer-link" href="/78">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my tool-to-model handoff.
@@ -459,9 +457,7 @@ The LLM span records the requested and returned model identities, input and outp
 
 # Provision Alex’s membership through the MCP tools.
 
-<div class="ticket"><div class="account">FERN → ONBOARDING</div><p>Add alex@example.test as a member.</p></div>
-<p>The executor discovers onboarding tools through a local MCP server. Your dispatcher invokes them, and my_observation adds their results to the next model request.</p>
-<div class="bottom-note">In this simulated incident, provisioning commits the membership before the tool returns a timeout.</div>
+<McpSequence />
 
 <!--
 Use the local MCP implementation in pending/mcp_server.py. Distinguish actual protocol discovery and invocation from a function merely named MCP. The simulated service deliberately commits a write before returning a timeout in the development incident.
@@ -506,6 +502,17 @@ Explanatory sequence for the committed-write timeout fixture. Use the recorded n
 ---
 ---
 
+# A stable operation_id prevents a repeated write.
+
+<RetryIdentity />
+
+<!--
+Illustration of simulator.execute after a committed provisioning request. The same operation_id and identical arguments return the stored receipt with replayed=true. A new operation_id is a new mutation and can add a duplicate membership. Reusing an ID with different arguments is rejected. The recorded onboarding recovery read status instead of retrying, so this diagram explains tool behavior rather than claiming this branch occurred in that run.
+-->
+
+---
+---
+
 # Inspect the timeout and the following status check.
 
 <div class="native-capture"><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/481ae944f1062c5381870a00319f65a3" class="capture-frame" style="display:block"><img src="/images/visual-v030-pending-timeout.png" alt="Find provision_member, then inspect onboarding_status."></a>
@@ -531,11 +538,21 @@ Crop x580,y423,w690,h280 from the unchanged1280x720 native capture. Follow its c
 
 # Check the account and the explanation separately.
 
-<div class="result-grid"><div class="state"><strong>State check</strong><p>Was the right payment refunded once?<br>Was access granted correctly?<br>Did unrelated state stay unchanged?</p></div><div class="claim"><strong>Explanation judge</strong><p>Do the completion claims match recorded work?<br>Does the reply explain unresolved issues?</p></div></div>
-<div class="bottom-note">Score the account state directly, then use the judge to check whether the reply accurately describes that work.</div>
+<ScoringPaths />
 
 <!--
 The state scorer reads the account after execution and checks facts such as payment identity, refund amount, and duplicate effects. The LLM judge reads the request, actions, and final reply to assess whether the explanation is supported. These can disagree: an agent may do the right work and describe it incorrectly. An unavailable judge response stays missing.
+-->
+
+---
+---
+
+# The same confident reply can accompany four account states.
+
+<RefundChecks />
+
+<!--
+These are the four free development fixtures from teaching.check_scorer: one 4900-cent refund, a 100-cent refund, no refund, and two 4900-cent refunds. They share the reply Everything is resolved. The displayed PASS/FAIL values are the required deterministic checks, not inferred LLM judgments. Ask which fields my_state_check must read before participants implement it.
 -->
 
 ---
@@ -550,7 +567,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my scorer against four known examples<br><strong>Check:</strong> Full refund passes. Partial refund, no refund, and duplicate refund fail, despite the same confident reply.</div>
 
-<a class="answer-link" href="/75">Worked answer →</a>
+<a class="answer-link" href="/79">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my scorer against four known examples.
@@ -703,7 +720,7 @@ A combination may differ from both tested candidates, so we run the returned con
 
 # Save the selected harness and a lesson for onboarding.
 
-<ImprovementBranches :level="5" />
+<RoundTransfer />
 <div class="bottom-note">The next round receives the selected version, its execution record, and the lesson’s stated limits.</div>
 
 <!--
@@ -784,6 +801,17 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 ---
 ---
 
+# Require a passing check of the current state before finish.
+
+<CompletionGuard />
+
+<!--
+The loop stores last_check with passed and the digest of world. With verify_before_finish true, finish is rejected if that check is absent, failed, or no longer matches the current state. This is a runtime completion rule. check_work gives public development feedback; the independent final scorer separately checks entire expected accounts and the required resolution.
+-->
+
+---
+---
+
 # This candidate required a check before completion.
 
 <div class="native-capture"><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/9633d416f5fce6aaa0124ab6ddc38c46" class="capture-frame" style="display:block"><img src="/images/visual-v030-pending-verification.png" alt="Find the rejected finish, check_work, and accepted finish."></a>
@@ -807,11 +835,21 @@ Crop x580,y251,w690,h185 from the unchanged1280x720 native capture. Gate behavio
 ---
 ---
 
+# Compare the added checks with the resulting account state.
+
+<ProbeComparison />
+
+<!--
+Recorded first-round probe A used the parent harness: get_account, refund_payment, get_account, finish. Probe B used verify_before_finish=true: the same first three calls, a rejected finish, check_work, and an accepted finish. Both independent account checks passed. Tool-call counts are four and six for these development probes, distinct from the later final-evaluation totals. Source: the v0.3.0 rehearsal journal pending/round-1/probe-a and probe-b, linked through the native conversations on the preceding slides.
+-->
+
+---
+---
+
 # The editor retained the parent after comparing the probes.
 
-<div class="diff"><div class="del">Candidate B: require check_work before finish</div><div class="add">Composition: retain the parent harness</div></div>
-<p>In the recorded first round, the editor retained the existing procedure. Its rationale was that the gate added a check while the parent already produced a correct account.</p>
-<div class="bottom-note"><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c04f575608c6f43d99e1b7b428a23791">Open the recorded composition decision ↗</a></div>
+<RetainExecution />
+<div class="bottom-note"><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c04f575608c6f43d99e1b7b428a23791">Read the recorded composition rationale ↗</a></div>
 
 <!--
 Open this saved composition if time allows. The editor’s rationale was that the mandatory gate added work while the parent already produced a correct billing outcome. It retained the parent. The controller still runs the selected configuration because every composition receives a confirming execution, including KEEP. The executable content remains unchanged.
@@ -899,8 +937,7 @@ Source .workshop/v030-pending/journal.json, pending/round-1/compose and pending/
 
 # The next round tests changes to the previous selection.
 
-<p class="big">Round two runs the harness selected after billing on the onboarding task. The editor reads that new execution and the earlier lesson before proposing another pair of changes.</p>
-<div class="two-col"><div><h2>Changed</h2><p>Instructions, verification skill, selected workflow rules.</p></div><div><h2>Stayed fixed</h2><p>Model weights, tool implementations, final scoring.</p></div></div><div class="bottom-note">This is a Harness²-inspired teaching flow. The editor model stays fixed while its proposed harnesses change.</div>
+<RoundTransfer :recorded="true" />
 
 <!--
 Recursive self-improvement here means that an agent evaluates executions of a harness, proposes revisions, and later examines work done under the selected revision. The retained lesson supplies context for the next attempt. The language model’s weights never change. Our workshop carries a selected harness between two tasks; the upstream Harness² procedure has a broader recursion and experience-library design.
@@ -911,8 +948,7 @@ Recursive self-improvement here means that an agent evaluates executions of a ha
 
 # Freeze three harnesses for the fresh-case comparison.
 
-<table class="clean-table readable-table"><tbody><tr><th>Frozen version</th><th>Fresh cases</th><th>Executions</th></tr><tr><td>Starting instructions</td><td>Same four cases</td><td>4</td></tr><tr><td>Your manual revision</td><td>Same four cases</td><td>4</td></tr><tr><td>Agent-selected version</td><td>Same four cases</td><td>4</td></tr></tbody></table>
-<div class="bottom-note">Each harness runs once on each of four cases: 12 executions, four distinct tasks.</div>
+<EvaluationMatrix />
 
 <!--
 Final cases: already-refunded, two-invoices, onboarding-recovery, clarify-access. Their files are public for teaching but are excluded from improvement context. The starting version is the configured tested employee, not the deliberately blank opening illustration.
@@ -963,8 +999,7 @@ Use fresh v030 final table: all12 account checks and explanation judgments are a
 
 # All three harnesses passed the four final cases.
 
-<table class="clean-table readable-table"><tbody><tr><th>Recorded version</th><th>Correct accounts</th><th>Grounded explanations</th><th>Tool calls across four cases</th></tr><tr><td>Starting</td><td>4 / 4</td><td>4 / 4</td><td>12</td></tr><tr><td>Manual</td><td>4 / 4</td><td>4 / 4</td><td>13</td></tr><tr><td>Agent-selected</td><td>4 / 4</td><td>4 / 4</td><td>13</td></tr></tbody></table>
-<div class="bottom-note">In this rehearsal, both revisions added one tool call across the four cases. Neither improved the account or explanation pass count.</div>
+<EvaluationMatrix :recorded="true" />
 
 <!--
 Read the account and explanation columns before the tool-call totals. All versions passed all four cases in this scripted rehearsal, so neither revision increased the measured pass rate. Each revised version made one additional tool call overall. These four cases do not establish repeatability or performance on other workflows. The source is evidence/v030-pending-rehearsal.json.
@@ -1089,7 +1124,7 @@ if run["case_id"] == "double-charge":
 
 This development check distinguishes the four public examples. The trusted final scorer also checks the target payment and unrelated account state.
 
-<span class="source-link"><a href="/76">Continue to judge validation →</a></span> · <span class="source-link"><a href="/38">Return to exercise →</a></span>
+<span class="source-link"><a href="/80">Continue to judge validation →</a></span> · <span class="source-link"><a href="/40">Return to exercise →</a></span>
 
 <!--
 The learner check is deliberately limited. Do not describe it as the full final scorer.
@@ -1114,7 +1149,7 @@ def my_judge_validation(answer):
 
 Valid JSON can still contain an incorrect judgment. Compare the reason with the recorded work.
 
-<span class="source-link"><a href="/38">Return to the exercise →</a></span>
+<span class="source-link"><a href="/40">Return to the exercise →</a></span>
 
 <!--
 Exact semantics of teaching.ANSWERS scorer validation. Boolean strings are invalid. Empty reasons are invalid. Missing judgments stay unavailable.

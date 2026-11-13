@@ -40,6 +40,8 @@ Data is NOAA GOES-15 and NASA/SDO AIA 171 Å observations from February 1–14, 
 | `v030-validation-predictions.png` | Convolutional and residual predictions for the first accepted validation case. Same image and error scales. |
 | `v030-final-predictions.png` | Manual and agent-selected predictions for the first accepted final case, origin 2014-02-13T02:48 UTC. This is not the largest-improvement example. |
 | `v030-goes-final.png` | All 2,694 accepted final GOES windows and saved selected-model predictions. |
+| `v031-goes-window.png` | Actual first accepted GOES training window, both channels in log-flux units and the separate +30 minute XRS-B target. |
+| `v031-residual-correction.png` | Saved manual residual forecast minus the current image for the first validation case. A model correction, not observed physical change. |
 
 Image intensity is training-normalized log1p AIA rate. Matched figures use intensity limits −2 to 3 and error limits 0 to 1 in both rows. The fixed disk mask defines which pixels contribute to error. GOES targets retain log10 XRS-B flux units; its score is never averaged with the image score.
 
@@ -66,8 +68,10 @@ Native EvalTables returned HTTP 500. The notebook comparison, Weave rows, and W&
 
 The original research-lab illustration supplies atmosphere. Its monitor and props are illustrative, and the lab setting and four notebooks named final are explicitly fictional. No generated scientific result is used.
 
-`SolarMechanism.vue`, `ForecastWindow.vue`, `ResearchMap.vue`, and `ResearchBranches.vue` are editable SVG diagrams. They explain input shapes, residual addition, masked error, fixed versus trained weights, experiment records, and branching decisions. They do not claim a proposed edit improves quality. The mask picture is labeled an illustration of the calculation.
+`SolarMechanism.vue`, `SolarComputation.vue`, `SolarDataRules.vue`, `ForecastWindow.vue`, `ResearchMap.vue`, and `ResearchBranches.vue` are editable SVG diagrams. They explain input shapes, residual addition, masked error, fixed versus trained weights, experiment records, and branching decisions. They do not claim a proposed edit improves quality. The mask picture is labeled an illustration of the calculation.
 
 Solid branch lines carry code forward; dashed lines carry reviewed results. Selecting or retaining a version is a decision. Training it is an execution. Candidate colors identify alternatives and do not represent quality.
 
 The participant uses their own project, credentials, and adjustable inference allowance. Training runs reviewed Python in the notebook environment. It does not require a remote Sandbox entitlement and is not a security sandbox. The research agent's model weights stay fixed while forecasting weights train normally.
+
+The [visual-upgrade map](visual-upgrade.md) connects each teaching concept to its slide numbers, runtime functions, and text alternative. Arithmetic examples are labeled separately from recorded results.

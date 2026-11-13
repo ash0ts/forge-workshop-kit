@@ -1,4 +1,6 @@
 <script setup>
+import {useId} from 'vue'
+const marker=useId().replace(/:/g,'')
 const props = defineProps({mode: {default: 'residual'}, reveal: {default: 2}})
 const descriptions = {
   residual: 'Two observed image channels enter the CNN. It predicts one correction channel. Add the current image to produce a future forecast; a zero correction is persistence.',
@@ -8,8 +10,8 @@ const descriptions = {
   weights: 'The language model research agent has fixed weights and writes code. The forecasting model trains new weights from that code and training observations. Validation results return to the agent.'
 }
 </script>
-<template><svg viewBox="0 0 1120 360" role="img" :aria-label="descriptions[mode]">
-<defs><marker id="solar-arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0 0L7 3L0 6" fill="none" stroke="#52776d" stroke-width="1.5"/></marker></defs>
+<template><svg viewBox="0 0 1120 360" role="img" :aria-label="descriptions[mode]" :style="{'--arrow':`url(#${marker})`}">
+<defs><marker :id="marker" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0 0L7 3L0 6" fill="none" stroke="#52776d" stroke-width="1.5"/></marker></defs>
 <g v-if="mode==='residual'">
  <rect x="35" y="65" width="200" height="175" rx="5" fill="#dbe6e1"/><text x="135" y="105" text-anchor="middle">Two observations</text><text x="135" y="146" text-anchor="middle" class="mono">x[:, 0:1] · −60 min</text><text x="135" y="184" text-anchor="middle" class="mono">x[:, 1:2] · now</text><text x="135" y="218" text-anchor="middle" class="small" style="font-size:17px">batch × 2 × 64 × 64</text>
  <path d="M235 150H300" class="arrow"/><rect x="310" y="104" width="180" height="92" rx="5" fill="#163c43"/><text x="400" y="145" text-anchor="middle" class="white">Small CNN</text><text x="400" y="176" text-anchor="middle" class="small white">self.net(x)</text>
@@ -43,5 +45,5 @@ const descriptions = {
 </g>
 </svg></template>
 <style scoped>
-svg{display:block;width:100%;height:355px;margin-top:20px}text{font:23px 'IBM Plex Sans',Arial;fill:#163c43}.small{font-size:19px}.mono{font:17px 'IBM Plex Mono',monospace}.white{fill:#f6f2e7}.arrow{fill:none;stroke:#52776d;stroke-width:2.5;marker-end:url(#solar-arrow)}
+svg{display:block;width:100%;height:355px;margin-top:20px}text{font:23px 'IBM Plex Sans',Arial;fill:#163c43}.small{font-size:19px}.mono{font:17px 'IBM Plex Mono',monospace}.white{fill:#f6f2e7}.arrow{fill:none;stroke:#52776d;stroke-width:2.5;marker-end:var(--arrow)}
 </style>

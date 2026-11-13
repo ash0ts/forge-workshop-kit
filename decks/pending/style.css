@@ -112,3 +112,6 @@
 .copy-layout{display:grid;grid-template-columns:230px 1fr;gap:35px;align-items:start}.copy-layout ol{margin:0}.copy-layout li{font-size:25px;margin-bottom:18px}.copy-layout a{border-bottom:0}.answer .source-link{font-size:20px}.answer-link{font-size:17px}
 .slidev-layout a.capture-frame{opacity:1!important;filter:none!important;background:#17191c;border-style:solid!important}.slidev-layout a.capture-frame img{opacity:1!important;filter:none!important}
 .slidev-layout a.capture-link{opacity:1!important;filter:none!important;border:0;display:block}
+/* Mechanism diagrams keep the same geometry in the browser and PDF. */
+.slidev-layout .mechanism{display:block;width:100%;height:auto;max-height:445px;margin:5px auto 0}
+.slidev-layout .mechanism.compact{max-height:210px}

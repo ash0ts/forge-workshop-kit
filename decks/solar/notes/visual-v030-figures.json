@@ -49,6 +49,20 @@
         "b66aef8c512ed64f0b1c344a83245a03"
       ],
       "sha256": "79d1e3f5c719bd9945f0118d11485b2ee67261238a254ffa14480e77d7094e8f"
+    },
+    {
+      "file": "v031-goes-window.png",
+      "description": "Actual first accepted training window. Two log10 input channels with training standardization undone for this units plot; XRS-B target +30 minutes. No predicted model output.",
+      "stage_ids": [],
+      "sha256": "4924b4e158edd6d382115694aa6b352b004485efeede4741eb26da296b9629be"
+    },
+    {
+      "file": "v031-residual-correction.png",
+      "description": "Saved manual residual forecast minus its current input image. Left and right share intensity limits \u22122 to 3; correction uses signed limits \u22120.5 to 0.5. This is the model correction, not observed physical change.",
+      "stage_ids": [
+        "324f93e1eb2f2f1a89bf28abeee776b6"
+      ],
+      "sha256": "b0f84cc8bf703b1ba4dbdd0687e1b4fe41340c6f29e30a4fda8d1143412f71bb"
     }
   ]
 }

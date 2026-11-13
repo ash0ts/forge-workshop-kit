@@ -46,5 +46,22 @@ for split,names,filename in [('validation',['images/manual-conv','images/manual-
 # Final GOES comparison from saved predictions and the fixed test split.
 d=goes['test'];forecast=pred('goes/final')[:,0];fig,ax=plt.subplots(figsize=(11.5,3.7));times=d['ids'].astype('datetime64[m]')+np.timedelta64(30,'m')
 ax.plot(times,d['y'][:,0],label='Observed future',color='#163c43',lw=1.6);ax.plot(times,d['persistence'][:,0],label='Persistence',color='#b76738',lw=1,alpha=.8);ax.plot(times,forecast,label='Selected model',color='#4382a6',lw=1.5);ax.legend(loc='upper right',ncol=3,frameon=False);ax.set_xlabel('Target time (UTC)');ax.set_ylabel('log₁₀ XRS-B flux (W/m²)');ax.xaxis.set_major_formatter(matplotlib.dates.DateFormatter('%b %d\n%H:%M'));fig.tight_layout();save(fig,'v030-goes-final.png','All 2,694 accepted final GOES windows, saved selected-model predictions.',['goes/final'])
+# New teaching views compute only from the same archived observations and saved outputs.
+d=goes['train']; norm=solar.load_goes(a.data)[1]; mean=np.asarray(norm['mean'])[0]; std=np.asarray(norm['std'])[0]
+history=d['x'][0]*std+mean; origin=np.datetime64(d['ids'][0]); relative=np.arange(-59,1)
+fig,ax=plt.subplots(figsize=(11.5,3.7))
+for channel,label,color in [(0,'XRSA input','#4382a6'),(1,'XRSB input','#2b7a78')]:
+ ax.plot(relative,history[channel],color=color,lw=2,label=label)
+ax.scatter([30],[d['y'][0,0]],marker='D',s=75,color='#b76738',label='XRSB target at +30 min')
+ax.axvline(0,color='#899e97',linestyle='--');ax.axvspan(-59,0,color='#bad8cd',alpha=.2)
+ax.set_xlim(-61,34);ax.set_xlabel('60 samples per channel · minutes relative to forecast origin');ax.set_ylabel('log₁₀ flux (W/m²)');ax.legend(frameon=False,ncol=3,loc='upper center',bbox_to_anchor=(.5,1.14));ax.set_title('First accepted training window · '+str(origin)+' UTC',fontsize=12,pad=40)
+fig.tight_layout();save(fig,'v031-goes-window.png','Actual first accepted training window. Two log10 input channels with training standardization undone for this units plot; XRS-B target +30 minutes. No predicted model output.')
+d=images['validation'];current=d['x'][0,1];prediction=pred('images/manual-residual')[0,0];correction=prediction-current
+fig,axes=plt.subplots(1,3,figsize=(11.5,3.5),gridspec_kw={'wspace':.35})
+for ax,z,title,cmap,lo,hi in zip(axes,[current,correction,prediction],['Current image','Predicted correction','Residual forecast'],['inferno','RdBu_r','inferno'],[-2,-.5,-2],[3,.5,3]):
+ im=ax.imshow(z,cmap=cmap,vmin=lo,vmax=hi);ax.set_title(title,fontsize=14);ax.set_xticks([]);ax.set_yticks([])
+ if title=='Predicted correction': fig.colorbar(im,ax=ax,fraction=.046,pad=.03,label='Signed correction')
+fig.suptitle('Saved manual residual model · first validation case · '+d['ids'][0]+' UTC',fontsize=12,y=1.01)
+fig.tight_layout(rect=(0,.08,1,.98));fig.text(.5,.015,'current image + predicted correction = residual forecast',ha='center',fontsize=13);save(fig,'v031-residual-correction.png','Saved manual residual forecast minus its current input image. Left and right share intensity limits −2 to 3; correction uses signed limits −0.5 to 0.5. This is the model correction, not observed physical change.',['images/manual-residual'])
 (root/'notes/visual-v030-figures.json').write_text(json.dumps({'source_workspace':'6e768bbe071648e094cb296a0a57c21e','dataset':solar.verify_data(a.data),'training_calls':0,'provider_calls':0,'figures':records},indent=2)+'\n')
 print(json.dumps({'plots':len(records),'training_calls':0,'provider_calls':0}))

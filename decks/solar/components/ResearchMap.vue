@@ -1,22 +1,15 @@
 <script setup>
 import {useId} from 'vue'
 const markerId=useId().replace(/:/g,'')
-const props=defineProps({level:{default:0},mode:{default:'research'}})
+defineProps({level:{default:0},mode:{default:'research'}})
 </script>
-<template>
-<div class="research-map">
-<svg :style="{'--arrow':`url(#${markerId})`}" viewBox="0 0 1120 380" role="img" aria-label="Research program with fixed data and scoring, editable model and training code, versioned experiment records, and a fixed-model research agent">
-<defs><marker :id="markerId" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0L7 3.5L0 7" fill="#638382"/></marker></defs>
-<rect x="255" y="40" width="610" height="290" rx="12" fill="#f0ecdf" stroke="#899e97" stroke-dasharray="7 6"/>
-<text x="280" y="71" class="label">RESEARCH PROGRAM</text>
-<g><rect x="30" y="142" width="180" height="80" rx="8" fill="#dbe6e1"/><text x="120" y="175" text-anchor="middle">Observations</text><text x="120" y="201" text-anchor="middle" class="small">fixed dates + targets</text><path d="M210 182H300" class="flow"/></g>
-<g><rect x="310" y="140" width="220" height="84" rx="8" fill="#163c43"/><text x="420" y="174" text-anchor="middle" fill="#fff">Forecast model</text><text x="420" y="202" text-anchor="middle" fill="#bbd4cb" class="small">trained weights</text><path d="M530 182H600" class="flow"/></g>
-<g><rect x="610" y="140" width="210" height="84" rx="8" fill="#bad8cd"/><text x="715" y="174" text-anchor="middle">Prediction</text><text x="715" y="202" text-anchor="middle" class="small">a number or an image</text></g>
-<g v-if="level>=1"><rect x="310" y="255" width="220" height="52" rx="6" fill="#f1ca70"/><text x="420" y="288" text-anchor="middle">Model + training code</text><path d="M420 255V232" class="flow"/></g>
-<g v-if="level>=2"><path d="M820 182H884" class="flow"/><rect x="895" y="140" width="200" height="84" rx="8" fill="#dbe6e1"/><text x="995" y="172" text-anchor="middle">Forecast error</text><text x="995" y="202" text-anchor="middle" class="small">same metric + dates</text></g>
-<g v-if="level>=3"><path d="M715 224V260" class="flow"/><rect x="610" y="268" width="210" height="40" rx="4" fill="#c6d9e7"/><text x="715" y="295" text-anchor="middle" class="small">Source, settings, outputs</text></g>
-<g v-if="level>=4"><rect x="30" y="270" width="180" height="70" rx="8" fill="#f1ca70"/><text x="120" y="299" text-anchor="middle">Research agent</text><text x="120" y="325" text-anchor="middle" class="small">fixed model weights</text><path d="M210 290H300" class="flow"/><text x="258" y="322" text-anchor="middle" class="small">edits code</text></g>
-</svg>
-</div>
-</template>
-<style scoped>.research-map svg{width:100%;height:370px}.research-map text{font:22px 'IBM Plex Sans';fill:#163c43}.research-map text[fill]{fill:attr(fill)}.research-map text[fill="#fff"]{fill:#fff}.research-map text[fill="#bbd4cb"]{fill:#bbd4cb}.research-map .small{font-size:16px}.research-map .label{font:14px 'IBM Plex Mono';letter-spacing:1px}.flow{fill:none;stroke:#638382;stroke-width:2.5;marker-end:var(--arrow)}</style>
+<template><div class="research-map"><svg :style="{'--arrow':`url(#${markerId})`}" viewBox="0 0 1120 390" role="img" aria-label="Observed inputs enter the forecast model. Its prediction and the separately held future target enter the fixed scorer. The complete execution records source, settings, model weights, predictions and metrics.">
+<defs><marker :id="markerId" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0 0L7 3L0 6" fill="none" stroke="#52776d" stroke-width="1.7"/></marker></defs>
+<g><text x="25" y="62">Input window</text><text x="25" y="96" class="small">Observed history only</text><path d="M25 178L43 166L62 171L80 150L100 160L120 140L140 151L158 146L180 158" stroke="#2b7a78" stroke-width="3" fill="none"/><text x="25" y="220" class="small">Schematic measurements</text><path d="M195 160H278" class="flow"/></g>
+<g><rect x="295" y="80" width="240" height="164" rx="6" fill="#163c43"/><text x="415" y="119" text-anchor="middle" class="white">Forecast model</text><text x="415" y="158" text-anchor="middle" class="mono white">prediction = model(x)</text><text x="415" y="204" text-anchor="middle" class="small white">Uses learned weights</text><path d="M548 160H608" class="flow"/></g>
+<g><text x="630" y="151">Prediction</text><text x="630" y="188" class="small">Future value or image</text></g>
+<g v-if="level>=1"><path d="M295 286H535V356H295Z" fill="#f1ca70"/><text x="313" y="315" class="mono">build_model + fit</text><text x="313" y="342" class="small">Save the executed Python</text><path d="M415 282V254" class="flow"/></g>
+<g v-if="level>=2"><path d="M810 160H882" class="flow"/><rect x="897" y="106" width="200" height="138" rx="5" fill="#dbe6e1"/><text x="997" y="149" text-anchor="middle">Fixed scorer</text><text x="997" y="187" text-anchor="middle" class="mono">abs(pred − target)</text><text x="997" y="217" text-anchor="middle" class="small">Same dates + metric</text><text x="997" y="33" text-anchor="middle">Observed future</text><path d="M997 47V93" class="flow"/></g>
+<g v-if="level>=3"><path d="M560 284H1098V357H560Z" fill="#c6d9e7"/><text x="581" y="314">Record this execution</text><text x="581" y="343" class="small">Code · config · data identity · weights · outputs</text><path d="M760 213V270M997 250V270" class="flow"/></g>
+</svg></div></template>
+<style scoped>.research-map svg{width:100%;height:390px}.research-map text{font:25px 'IBM Plex Sans';fill:#163c43}.research-map .small{font-size:19px}.research-map .mono{font:18px 'IBM Plex Mono'}.research-map .white{fill:#f6f2e7}.flow{fill:none;stroke:#52776d;stroke-width:2;marker-end:var(--arrow)}</style>

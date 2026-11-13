@@ -136,174 +136,190 @@ Explanatory sequence for the committed-write timeout fixture. Use the recorded n
 
 Explanatory sequence for the committed-write timeout fixture. Use the recorded native trace next to verify the actual recovery. The actual onboarding_status tool reads account_id. A repeated mutation must reuse its operation_id.
 
-## 35. Inspect the timeout and the following status check.
+## 35. A stable operation_id prevents a repeated write.
+
+Illustration of simulator.execute after a committed provisioning request. The same operation_id and identical arguments return the stored receipt with replayed=true. A new operation_id is a new mutation and can add a duplicate membership. Reusing an ID with different arguments is rejected. The recorded onboarding recovery read status instead of retrying, so this diagram explains tool behavior rather than claiming this branch occurred in that run.
+
+## 36. Inspect the timeout and the following status check.
 
 v0.3.0 skill-loaded onboarding: timeout span 5ddd78b1e9faa2d3; recovery status span e62596437e485145. Ask a learner to find evidence that access exists. Do not infer failure from a red span alone.
 
-## 36. The tool says the write may have committed.
+## 37. The tool says the write may have committed.
 
 Crop x580,y423,w690,h280 from the unchanged1280x720 native capture. Follow its conversation link on the preceding slide. The next operation in the saved trace is onboarding_status.
 
-## 37. Check the account and the explanation separately.
+## 38. Check the account and the explanation separately.
 
 The state scorer reads the account after execution and checks facts such as payment identity, refund amount, and duplicate effects. The LLM judge reads the request, actions, and final reply to assess whether the explanation is supported. These can disagree: an agent may do the right work and describe it incorrectly. An unavailable judge response stays missing.
 
-## 38. Write checks for full, partial, missing, and duplicate refunds.
+## 39. The same confident reply can accompany four account states.
+
+These are the four free development fixtures from teaching.check_scorer: one 4900-cent refund, a 100-cent refund, no refund, and two 4900-cent refunds. They share the reply Everything is resolved. The displayed PASS/FAIL values are the required deterministic checks, not inferred LLM judgments. Ask which fields my_state_check must read before participants implement it.
+
+## 40. Write checks for full, partial, missing, and duplicate refunds.
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my scorer against four known examples.
 
-## 39. Ask the judge to compare the reply with recorded actions.
+## 41. Ask the judge to compare the reply with recorded actions.
 
 Rubric from current pending_cells.py. Explain why the judge receives task, recorded actions and explanation. Have participants inspect one reason against a real span. Separate grammatical JSON validation from judging quality.
 
-## 40. Publish development results with both kinds of score.
+## 42. Publish development results with both kinds of score.
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Judge and publish the starting development comparison.
 
-## 41. Compare the same case across versions.
+## 43. Compare the same case across versions.
 
 Weave preserves the evaluation data. W&B stores run artifacts and result tables. Native EvalTables publication is attempted, but the latest rehearsal returned HTTP 500. Use saved Weave/notebook comparisons rather than presenting a fabricated native screen.
 
-## 42. Revise the verification skill and rerun both tickets.
+## 44. Revise the verification skill and rerun both tickets.
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Save this procedure and rerun both development tickets.
 
-## 43. Compare account correctness with the added tool calls.
+## 45. Compare account correctness with the added tool calls.
 
 Ask participants to identify the changed instruction and the corresponding tool calls. If both versions leave the account correct, report that result. An extra check may change cost or latency without improving the outcome on this case.
 
-## 44. Take a ten-minute break after saving your progress.
+## 46. Take a ten-minute break after saving your progress.
 
 Stop at 105 minutes. Use saved checkpoints; opening does not trigger paid work. Have attendees note the next step before the break.
 
-## 45. Management would like to automate management.
+## 47. Management would like to automate management.
 
 The editor uses the same fixed model, but its request is to revise the harness rather than resolve a customer ticket. We supply the current configuration and a saved execution. The permitted edits are instructions, the verification skill, and bounded workflow rules. Tools and scoring stay fixed so any measured difference concerns the harness we changed.
 
-## 46. Propose two edits to the same starting harness.
+## 48. Propose two edits to the same starting harness.
 
 Propose asks the editor for two competing changes, such as clearer verification instructions or a mandatory completion check. A and B start from the same parent. Neither receives the other candidate’s test result at this point. We review their saved configurations before allowing the probes.
 
-## 47. Run each candidate from the original account state.
+## 49. Run each candidate from the original account state.
 
 If candidate A has already issued a refund, B must not inherit that refunded account. The controller resets the case before each probe. Compare the actions and returned state of both runs; a successful tool response alone does not tell us the ticket was handled correctly.
 
-## 48. Compare the probe results before selecting a harness.
+## 50. Compare the probe results before selecting a harness.
 
 Compose receives the proposed configurations and both execution records. It can choose A or B, combine parts of them, or retain the parent. Its rationale explains that choice, but the choice still needs an execution. The solid paths show versions; colors identify alternatives rather than scores.
 
-## 49. Execute the harness returned by the composition decision.
+## 51. Execute the harness returned by the composition decision.
 
 A combination may differ from both tested candidates, so we run the returned configuration as its own probe. A Retain decision also runs through this step without inventing a new executable version. We can then inspect the specific execution associated with the decision.
 
-## 50. Save the selected harness and a lesson for onboarding.
+## 52. Save the selected harness and a lesson for onboarding.
 
 Reflect asks the editor what it learned from the selected run and where that conclusion may not apply. We keep the lesson with that run, then execute the selected harness on onboarding before proposing more changes. This carried-harness teaching protocol differs from the full upstream Harness² cross-task procedure.
 
-## 51. Give the editor the starting execution and harness.
+## 53. Give the editor the starting execution and harness.
 
 Conceptual variable names match the visible controller; actual notebook uses _s,_case,_parent,_prefix,_f. It passes prior_experience from round1 into round2. Ask which input would be inappropriate: final-test scores.
 
-## 52. Review the proposed instruction and workflow changes.
+## 54. Review the proposed instruction and workflow changes.
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Round 1 · Ask for two competing changes.
 
-## 53. Construct and execute the proposed harness.
+## 55. Construct and execute the proposed harness.
 
 The editor returns a structured harness in its decision. The controller constructs that harness, executes it on a reset case, and checks the recorded content fingerprint against the decision. That comparison catches running the wrong version. It says nothing about whether the selected instructions are good; the account scorer answers that separately.
 
-## 54. Run both candidates and inspect their tool sequences.
+## 56. Run both candidates and inspect their tool sequences.
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Round 1 · Review and test candidate A; then candidate B.
 
-## 55. This candidate required a check before completion.
+## 57. Require a passing check of the current state before finish.
+
+The loop stores last_check with passed and the digest of world. With verify_before_finish true, finish is rejected if that check is absent, failed, or no longer matches the current state. This is a runtime completion rule. check_work gives public development feedback; the independent final scorer separately checks entire expected accounts and the required resolution.
+
+## 58. This candidate required a check before completion.
 
 Recorded candidate B changed verify_before_finish from false to true. It produced the explicit check sequence. Spans: rejected finish 9ed1e7824138ec0e, check_work 2d49d1d8d3ddeb5d, accepted finish 3e19e007d013d4d2. This is a behavior change, not yet evidence of better quality.
 
-## 56. The completion gate required a check_work call.
+## 59. The completion gate required a check_work call.
 
 Crop x580,y251,w690,h185 from the unchanged1280x720 native capture. Gate behavior is confirmed by the subsequent check_work and accepted finish spans, not inferred from the proposal title.
 
-## 57. The editor retained the parent after comparing the probes.
+## 60. Compare the added checks with the resulting account state.
+
+Recorded first-round probe A used the parent harness: get_account, refund_payment, get_account, finish. Probe B used verify_before_finish=true: the same first three calls, a rejected finish, check_work, and an accepted finish. Both independent account checks passed. Tool-call counts are four and six for these development probes, distinct from the later final-evaluation totals. Source: the v0.3.0 rehearsal journal pending/round-1/probe-a and probe-b, linked through the native conversations on the preceding slides.
+
+## 61. The editor retained the parent after comparing the probes.
 
 Open this saved composition if time allows. The editor’s rationale was that the mandatory gate added work while the parent already produced a correct billing outcome. It retained the parent. The controller still runs the selected configuration because every composition receives a confirming execution, including KEEP. The executable content remains unchanged.
 
-## 58. Test the selected harness before carrying it forward.
+## 62. Test the selected harness before carrying it forward.
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Compare probes and request a composition → Review and test the composition → Save the tested version and its lesson.
 
-## 59. Save the lesson with the run that supports it.
+## 63. Save the lesson with the run that supports it.
 
 Explanatory excerpt, not a drop-in full function. The actual controller falls back to the parent if the chosen execution does not complete. The lesson is agent-authored interpretation backed by a saved run.
 
-## 60. Use the selected harness to start the onboarding round.
+## 64. Use the selected harness to start the onboarding round.
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Round 2 · Ask for two competing changes; follow the current action.
 
-## 61. The second round changed the verification skill.
+## 65. The second round changed the verification skill.
 
 In the recorded onboarding round, the editor selected a more specific verification skill while leaving verify_before_finish off. Open the decision to read its rationale, then the chosen execution to inspect how the agent used those files. The next slide shows the exact changed sentence.
 
-## 62. The skill makes the final check more specific.
+## 66. The skill makes the final check more specific.
 
 Source .workshop/v030-pending/journal.json, pending/round-1/compose and pending/round-2/compose verification_skill. Display is an exact excerpt of the changed sentence. Round2 selected that skill with verify_before_finish=false. Link to preceding decision and execution; no attribution of final-quality gain.
 
-## 63. The next round tests changes to the previous selection.
+## 67. The next round tests changes to the previous selection.
 
 Recursive self-improvement here means that an agent evaluates executions of a harness, proposes revisions, and later examines work done under the selected revision. The retained lesson supplies context for the next attempt. The language model’s weights never change. Our workshop carries a selected harness between two tasks; the upstream Harness² procedure has a broader recursion and experience-library design.
 
-## 64. Freeze three harnesses for the fresh-case comparison.
+## 68. Freeze three harnesses for the fresh-case comparison.
 
 Final cases: already-refunded, two-invoices, onboarding-recovery, clarify-access. Their files are public for teaching but are excluded from improvement context. The starting version is the configured tested employee, not the deliberately blank opening illustration.
 
-## 65. Compare all three versions on fresh tickets.
+## 69. Compare all three versions on fresh tickets.
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Freeze versions and run 12 evaluations.
 
-## 66. Open the execution behind a saved evaluation row.
+## 70. Open the execution behind a saved evaluation row.
 
 Actual native W&B Table, not EvalTables and not a three-version aligned comparison. error=0 means the independent account-state check passed. judge_grounded and judge_complete are separate scores. The evaluation row also links execution evidence. All three versions are compared on the next result table. Native EvalTables remains unavailable with HTTP500.
 
-## 67. Link the Report’s conclusion to its runs and traces.
+## 71. Link the Report’s conclusion to its runs and traces.
 
 Use fresh v030 final table: all12 account checks and explanation judgments are available and pass. Native EvalTables unavailable; screenshot is the actual W&B/Weave/Report surface and must be captioned accordingly.
 
-## 68. All three harnesses passed the four final cases.
+## 72. All three harnesses passed the four final cases.
 
 Read the account and explanation columns before the tool-call totals. All versions passed all four cases in this scripted rehearsal, so neither revision increased the measured pass rate. Each revised version made one additional tool call overall. These four cases do not establish repeatability or performance on other workflows. The source is evidence/v030-pending-rehearsal.json.
 
-## 69. Save the case, harness, execution, and scoring records.
+## 73. Save the case, harness, execution, and scoring records.
 
 Artifacts are versioned file bundles. Trace export, result publication and execution have separate statuses. A publication retry uses saved work and must not make another model request.
 
-## 70. Write down what changed and whether it helped.
+## 74. Write down what changed and whether it helped.
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Publish my conclusion with the comparison and evidence.
 
-## 71. Ask ARIA to compare one case across harness versions.
+## 75. Ask ARIA to compare one case across harness versions.
 
 Do not imply ARIA authored these prior results. The prompt asks for evidence analysis, not permission to run new experiments or change budgets.
 
-## 72. Choose a workflow with an observable result to test.
+## 76. Choose a workflow with an observable result to test.
 
 Ask participants to name one workflow in their product with observable output and a check they can run independently of the agent. Have them specify a development case, a likely failure, and a fresh case for testing transfer. They can reuse the instrumentation and improvement controller, but must define what correct work means for that workflow.
 
-## 73. Worked answer · invoice lookup
+## 77. Worked answer · invoice lookup
 
 Exact semantics of teaching.ANSWERS tool. Keep optional so participants attempt the gap first.
 
-## 74. Worked answer · observation handoff
+## 78. Worked answer · observation handoff
 
 Exact answer contract from teaching.py. Both dispatch paths return state/result. Handoff creates a new list.
 
-## 75. Worked answer · inspect the refund
+## 79. Worked answer · inspect the refund
 
 The learner check is deliberately limited. Do not describe it as the full final scorer.
 
-## 76. Worked answer · validate the judge response
+## 80. Worked answer · validate the judge response
 
 Exact semantics of teaching.ANSWERS scorer validation. Boolean strings are invalid. Empty reasons are invalid. Missing judgments stay unavailable.
 
-## 77. Source, notebook, and recorded example
+## 81. Source, notebook, and recorded example
 
 The product evidence in this deck uses the v030 rehearsal. Native EvalTables returned HTTP500; W&B and Weave records are saved. Current authored notebook source scripts/pending_cells.py. Historical deck preserved outside current attendee path.
