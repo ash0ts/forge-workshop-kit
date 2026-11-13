@@ -312,6 +312,13 @@ def main():
         if not teaching.saved(session, "images/final-comparison") or not args.note.strip():
             raise SystemExit("Save the final comparison and supply an evidence-based --note first.")
         run_cell("mo.stop(not report_button.value)")
+    # A notebook kernel stays alive between cells; this short-lived CLI must let
+    # its final progress write finish before W&B tears down the service process.
+    progress_thread = session._progress_thread
+    if progress_thread is not None:
+        progress_thread.join(timeout=60)
+        if progress_thread.is_alive():
+            print("Progress publication is still pending; local work is saved.", flush=True)
     status()
 
 

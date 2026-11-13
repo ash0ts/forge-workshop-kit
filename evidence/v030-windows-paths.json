@@ -1,0 +1,23 @@
+{
+  "checked_at": 1794602215.9400792,
+  "purpose": "Windows/Unix saved-output separator compatibility",
+  "local_validation": {
+    "focused_tests": 55,
+    "full_tests": 125,
+    "diff_check": "passed"
+  },
+  "fixtures": [
+    "Legacy Windows embedded checkpoint restores on Unix with canonical output paths",
+    "Legacy Windows stage/reference keys publish without embedding previously published outputs",
+    "Legacy explicit-reference manifest restores with canonical keys",
+    "Windows drive/UNC and mixed-separator traversal are rejected on Unix"
+  ],
+  "new_model_calls": 0,
+  "new_training_runs": 0,
+  "remote_validation": "Not rerun by this check; CI rerun is separate",
+  "files": {
+    "src/forge_workshop_kit/session.py": "fdefaf5e1972bf80295ad0295675444051009745b4d539ec324b1d1bd80fa148",
+    "src/forge_workshop_kit/publication.py": "417e35cdc033e9fcbfcb55c738f5b814e2409657e3032fd95e7d18a4b9eeac1e",
+    "tests/test_publication.py": "f50466c2af713697ac7d24ddae86a375e583f93509c9bbb077e690a39ffe70a5"
+  }
+}

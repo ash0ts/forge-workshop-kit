@@ -1,0 +1,189 @@
+{
+  "workspace_id": "bc0ee4ab00c54596aab3452fa634a69c",
+  "mode": "scripted rehearsal using current notebook functions and worked learner code, not human usability rehearsal",
+  "cost": {
+    "observed_usd": 0.03093452,
+    "bounded_unknown_usd": 0,
+    "inflight_usd": 0
+  },
+  "executions": [
+    {
+      "Version": "Starting instructions",
+      "Case": "already-refunded",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 2,
+      "Grounded explanation": true,
+      "Harness": "b2d1df44c6e1",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/25cf9e219e38e8f6c445e3e38b16749b"
+    },
+    {
+      "Version": "Starting instructions",
+      "Case": "two-invoices",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 4,
+      "Grounded explanation": true,
+      "Harness": "b2d1df44c6e1",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/bfff30186dcc5891fcec27a3cc65d77e"
+    },
+    {
+      "Version": "Starting instructions",
+      "Case": "onboarding-recovery",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 4,
+      "Grounded explanation": true,
+      "Harness": "b2d1df44c6e1",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f3237cd6a96e98141e11867fea84cb85"
+    },
+    {
+      "Version": "Starting instructions",
+      "Case": "clarify-access",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 2,
+      "Grounded explanation": true,
+      "Harness": "b2d1df44c6e1",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/b4bb9d4a5cc24ff54d38da93e95af899"
+    },
+    {
+      "Version": "Manual revision",
+      "Case": "already-refunded",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 2,
+      "Grounded explanation": true,
+      "Harness": "5cfd358201e0",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/20db682821e9f8633eb809db08ad981a"
+    },
+    {
+      "Version": "Manual revision",
+      "Case": "two-invoices",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 4,
+      "Grounded explanation": true,
+      "Harness": "5cfd358201e0",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/1631f17249bd985bdcc878d13a192e36"
+    },
+    {
+      "Version": "Manual revision",
+      "Case": "onboarding-recovery",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 5,
+      "Grounded explanation": true,
+      "Harness": "5cfd358201e0",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/91d0e38d4101d2f676a0219e7a95b52b"
+    },
+    {
+      "Version": "Manual revision",
+      "Case": "clarify-access",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 2,
+      "Grounded explanation": true,
+      "Harness": "5cfd358201e0",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/449526ac748bbd72837e2bae9b60cd64"
+    },
+    {
+      "Version": "Agent-selected version",
+      "Case": "already-refunded",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 2,
+      "Grounded explanation": true,
+      "Harness": "2cf7a0743cf9",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/8d05c61780b324b33edc1c1d8a47db9a"
+    },
+    {
+      "Version": "Agent-selected version",
+      "Case": "two-invoices",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 4,
+      "Grounded explanation": true,
+      "Harness": "2cf7a0743cf9",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3335418620bcb57eb49c71240bb79e6b"
+    },
+    {
+      "Version": "Agent-selected version",
+      "Case": "onboarding-recovery",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 5,
+      "Grounded explanation": true,
+      "Harness": "2cf7a0743cf9",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/1b6501f9be4c3bfcb528f3dc4d6b2866"
+    },
+    {
+      "Version": "Agent-selected version",
+      "Case": "clarify-access",
+      "Execution": "complete",
+      "Correct account": true,
+      "Tool calls": 2,
+      "Grounded explanation": true,
+      "Harness": "2cf7a0743cf9",
+      "Conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/a6de65e6ff04c2bf3d3fddd4d49ac2d6"
+    }
+  ],
+  "publication": {
+    "starting": {
+      "comparison_name": "pending-final",
+      "condition": "starting",
+      "run_id": "0927295803323a69460f5beb36d136ed",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/0927295803323a69460f5beb36d136ed",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/pending-final-starting-cases:af4bVyKc6aicIL5LVtJbXpHzb6S5zXIUR8EDV7KsWOk",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/pending-final-starting-evaluation:mB2ZSfywXJyGmMNG3SOCvmI4J87XAiee34rSVaRumyE",
+      "weave_status": "published",
+      "native_status": "unavailable",
+      "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+    },
+    "manual": {
+      "comparison_name": "pending-final",
+      "condition": "manual",
+      "run_id": "7bcbc64da07d43e4a323b85accd0b80d",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/7bcbc64da07d43e4a323b85accd0b80d",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/pending-final-manual-cases:sAoQdJtciwf1KiQjZkqKFDvpCYNJgTbgfgzHeVm2tp0",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/pending-final-manual-evaluation:9h0AuRJdfK7PkJ0kyCmX4lx82LRt8GhJkd9nG0oeh3Q",
+      "weave_status": "published",
+      "native_status": "unavailable",
+      "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+    },
+    "agent": {
+      "comparison_name": "pending-final",
+      "condition": "agent",
+      "run_id": "5a3721335363bceb77f0c88c87e761f8",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/5a3721335363bceb77f0c88c87e761f8",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/pending-final-agent-cases:1EJatnojYCqK4tzIYqRqmiTaYY9hhGezrRm6pwBqvoI",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/pending-final-agent-evaluation:l50FrvKSQBX9ZZzTlVanHtM3tX8CWSD6qjy8lg1FMWA",
+      "weave_status": "published",
+      "native_status": "unavailable",
+      "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+    }
+  },
+  "stage_count": 59,
+  "validation": {
+    "refinement_rounds": 2,
+    "final_executions": 12,
+    "available_explanation_judgments": 12,
+    "verified_final_conversations": 12,
+    "verified_judge_conversations": 12,
+    "correct_account_by_version": {
+      "starting": 4,
+      "manual": 4,
+      "agent": 4
+    },
+    "executed_harnesses_match": true
+  },
+  "qualification_note": "Early stage receipts retain installed package metadata 0.1.0 from the existing editable environment; the actual working-tree code was the v0.3.0 candidate. After refreshing editable installation metadata, subsequent stages record 0.3.0. Historical receipts were not rewritten. Canonical executed sources and harness fingerprints remain saved.",
+  "result_interpretation": "All three versions passed all four final cases in this single execution rehearsal. It verifies the loop and publication; it does not show a quality gain.",
+  "report": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-bc0ee4ab--VmlldzoxODMwMzUyNg=="
+}

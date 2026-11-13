@@ -13,7 +13,15 @@ from functools import wraps
 
 from filelock import FileLock
 
-from .session import digest, safe_name, write_json
+from .session import digest, safe_name, write_json, relative_path
+from .manifest import get_workshop
+
+
+def _workshop_labels(session):
+    try:
+        return get_workshop(session.workshop)
+    except ValueError:
+        return {'title': session.workshop, 'comparison_labels': {}}
 
 
 def credentials():
@@ -110,6 +118,7 @@ class Publisher:
                 files = {}
                 with self.session.lock:
                     for index, relative in enumerate(stage['files']):
+                        relative = relative_path(relative)
                         source = _safe_file(self.session.root, relative)
                         content = source.read_bytes()
                         name = f'files/{index}/' + source.name
@@ -166,12 +175,14 @@ class Publisher:
                 paths = {'identity.json': self.session.root / 'identity.json',
                          'journal.json': self.session.state_path}
                 for stage in state['stages'].values():
+                    published_files = _path_map(stage.get('artifact_files', {}))
                     for relative in stage.get('files', []):
-                        published = stage.get('artifact_files', {}).get(relative)
+                        relative = relative_path(relative)
+                        published = published_files.get(relative)
                         if published and stage.get('artifact_ref') and published.get('sha256'):
                             references[relative] = {
                                 'artifact': stage['artifact_ref'],
-                                'artifact_path': published['artifact_path'],
+                                'artifact_path': relative_path(published['artifact_path']),
                                 'sha256': published['sha256']}
                         else:
                             paths[relative] = self.session.file(relative)
@@ -213,8 +224,8 @@ class Publisher:
         """Resolve explicit immutable entries without W&B's dependency-count limit."""
         if 'output-references.json' not in checksums:
             return {}  # Older checkpoints embedded files or native artifact references.
-        references = json.loads((root / 'output-references.json').read_text())
-        allowed = {path for stage in state['stages'].values() for path in stage.get('files', [])}
+        references = _path_map(json.loads((root / 'output-references.json').read_text()))
+        allowed = {relative_path(path) for stage in state['stages'].values() for path in stage.get('files', [])}
         artifacts, verified = {}, {}
         for relative, reference in references.items():
             destination = _safe_file(root, relative)
@@ -223,7 +234,7 @@ class Publisher:
             name = reference['artifact']
             if not re.fullmatch(re.escape(self.session.project) + r'/[^/:]+:v[0-9]+', name):
                 raise ValueError('Checkpoint output must use an immutable artifact in this project.')
-            entry = reference['artifact_path']
+            entry = relative_path(reference['artifact_path'])
             _safe_file(root, entry)
             if name not in artifacts:
                 artifacts[name] = self.api.artifact(name, type='workshop-execution')
@@ -259,6 +270,7 @@ class Publisher:
                 if 'journal.json' not in checksums:
                     raise ValueError('Checkpoint has no verified journal.')
                 checkpoint_state = json.loads((checkpoint_root / 'journal.json').read_text())
+                _normalize_stage_paths(checkpoint_state)
                 checksums.update(self._restore_outputs(checkpoint_root, checksums, checkpoint_state))
                 for stage in checkpoint_state['stages'].values():
                     if any(relative not in checksums for relative in stage.get('files', [])):
@@ -295,6 +307,7 @@ class Publisher:
                             continue
                         _atomic_bytes(_safe_file(self.session.root, relative),
                                       (checkpoint_root / relative).read_bytes())
+                _normalize_stage_paths(restored)
                 write_json(self.session.state_path, restored)
         return {'status': 'restored', 'completed': len(self.session.completed())}
 
@@ -302,11 +315,28 @@ class Publisher:
 _ACCOUNTING_KEYS = ('requests', 'accounting_stop', 'provider_failures', 'provider_cooldown')
 
 
+def _path_map(rows):
+    normalized = {}
+    for path, value in rows.items():
+        key = relative_path(path)
+        if key in normalized and normalized[key] != value:
+            raise ValueError('Conflicting checkpoint paths after separator normalization.')
+        normalized[key] = value
+    return normalized
+
+
+def _normalize_stage_paths(state):
+    for stage in state.get('stages', {}).values():
+        stage['files'] = list(dict.fromkeys(relative_path(path) for path in stage.get('files', [])))
+        if 'artifact_files' in stage:
+            stage['artifact_files'] = _path_map(stage['artifact_files'])
+            for item in stage['artifact_files'].values():
+                item['artifact_path'] = relative_path(item['artifact_path'])
+
+
 def _safe_file(root, relative):
     root = Path(root).resolve()
-    path = Path(relative)
-    if path.is_absolute() or '..' in path.parts or not path.parts:
-        raise ValueError('Unsafe checkpoint path')
+    path = Path(relative_path(relative))
     destination = root / path
     if any(parent.is_symlink() for parent in (destination, *destination.parents) if parent != root):
         raise ValueError('Unsafe checkpoint path')
@@ -340,11 +370,19 @@ def _seal_snapshot(root, referenced_checksums=None):
 
 def _verify_snapshot(root, identity):
     root = Path(root)
-    checksums = json.loads((root / 'checksums.json').read_text())
+    raw_checksums = json.loads((root / 'checksums.json').read_text())
+    checksums = _path_map(raw_checksums)
     if 'identity.json' not in checksums:
         raise ValueError('Checkpoint has no verified identity.')
-    for relative, checksum in checksums.items():
+    for raw_relative, checksum in raw_checksums.items():
+        relative = relative_path(raw_relative)
         source = _safe_file(root, relative)
+        legacy = root / raw_relative
+        if not source.exists() and legacy.is_file() and not legacy.is_symlink():
+            if not legacy.resolve().is_relative_to(root.resolve()):
+                raise ValueError('Unsafe checkpoint path')
+            source.parent.mkdir(parents=True, exist_ok=True)
+            source.write_bytes(legacy.read_bytes())
         if hashlib.sha256(source.read_bytes()).hexdigest() != checksum:
             raise ValueError('Checkpoint checksum mismatch')
     saved_identity = json.loads((root / 'identity.json').read_text())
@@ -427,6 +465,7 @@ def publish_comparison(session, name, versions):
     """Publish saved rows once per destination; retries do not execute predictions."""
     from filelock import FileLock
     publisher = session.connect()
+    labels = _workshop_labels(session)['comparison_labels']
     receipt_key = 'comparison/' + digest([name, versions])[:24]
     # Two notebook cells may retry publication, but must not publish the same rows together.
     with FileLock(str(session.root / ('.' + receipt_key.replace('/', '-') + '.lock'))):
@@ -442,7 +481,7 @@ def publish_comparison(session, name, versions):
             if record.get('wandb_status') != 'published':
                 try:
                     import wandb
-                    with publisher.run(run_id, name + ' / ' + label, 'workshop-evaluation', {'condition': label}) as run:
+                    with publisher.run(run_id, name + ' / ' + labels.get(label, label), 'workshop-evaluation', {'condition': label}) as run:
                         table = wandb.Table(columns=['case_id', 'input', 'prediction', 'target', 'error', 'scores', 'evidence'],
                             data=[[r['case_id'], json.dumps(r['input']), json.dumps(r['prediction']),
                                    json.dumps(r['target']), r.get('error'), json.dumps(r.get('scores', {})),
@@ -552,7 +591,7 @@ def publish_report(session, conclusion, links):
             url=url.replace('https://forge.coreweave.com/','https://forge.coreweave.com/wandb/',1)
         return url
     entity, project = session.project.split('/')
-    report = wr.Report(entity=entity, project=project, title=session.workshop + ': ' + session.workspace_id[:8],
+    report = wr.Report(entity=entity, project=project, title=_workshop_labels(session)['title'] + ': ' + session.workspace_id[:8],
         description='A participant experiment with saved code, predictions, and research-agent traces.')
     report.blocks = [wr.H1(text='What I tested'), wr.P(text=conclusion),
         wr.H2(text='Evidence'), *[wr.P(text=f'{label}: {url}') for label, url in links.items()],

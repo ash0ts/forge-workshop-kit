@@ -11,7 +11,7 @@ import time
 import uuid
 from contextlib import contextmanager
 from importlib.metadata import PackageNotFoundError, version as package_version
-from pathlib import Path
+from pathlib import Path, PurePosixPath, PureWindowsPath
 
 from filelock import FileLock, Timeout as FileLockTimeout
 
@@ -30,6 +30,15 @@ def write_json(path, value):
 
 def safe_name(value):
     return re.sub(r'[^a-zA-Z0-9_.-]', '-', value)[:80]
+
+
+def relative_path(value):
+    """Use the same saved output paths when moving between Windows and Unix."""
+    raw = str(value)
+    path = PurePosixPath(raw.replace('\\', '/'))
+    if PureWindowsPath(raw).drive or path.is_absolute() or '..' in path.parts or not path.parts:
+        raise ValueError('Output paths must stay inside this workshop workspace.')
+    return path.as_posix()
 
 
 class StageNeedsReview(RuntimeError):
@@ -307,7 +316,7 @@ class WorkshopSession:
             state['progress'].update(status='interrupted',step=row['name'],updated_at=time.time())
 
     def file(self, relative):
-        path = (self.root / relative).resolve()
+        path = (self.root / relative_path(relative)).resolve()
         if not path.is_relative_to(self.root):
             raise ValueError('File must belong to this workspace.')
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -367,7 +376,7 @@ class Stage:
                 if destination.exists() and destination.read_bytes() != path.read_bytes():
                     raise ValueError('Two outputs have the same filename.')
                 shutil.copy2(path, destination)
-            copies.append(str(destination.relative_to(self.session.root)))
+            copies.append(destination.relative_to(self.session.root).as_posix())
         # Serialize before changing completion state. NaN is not a missing score.
         json.dumps(result, allow_nan=False)
         self.result = result
@@ -395,7 +404,7 @@ class Stage:
             elif error is not None:
                 row.update(status='failed', error=f'{kind.__name__}: {error}'[:1000], ended_at=time.time())
                 # Preserve known local logs without uploading arbitrary participant files.
-                row['files'] = sorted(set(row.get('files', []) + [str(p.relative_to(self.session.root)) for p in self.output_dir.iterdir() if p.is_file() and p.name in ('candidate.py','stderr.txt','stdout.txt','partial.json','losses.json','office.json')]))
+                row['files'] = sorted(set(row.get('files', []) + [p.relative_to(self.session.root).as_posix() for p in self.output_dir.iterdir() if p.is_file() and p.name in ('candidate.py','stderr.txt','stdout.txt','partial.json','losses.json','office.json')]))
                 state['progress'].update(status='failed', step=self.name, updated_at=time.time())
             elif row['status'] != 'complete':
                 row.update(status='interrupted', error='Stage exited without recording a result.',

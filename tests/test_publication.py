@@ -25,7 +25,7 @@ def seal(files):
 
 
 def snapshot(workspace):
-    return seal({str(path.relative_to(workspace.root)): path.read_bytes()
+    return seal({path.relative_to(workspace.root).as_posix(): path.read_bytes()
                  for path in workspace.export_files()})
 
 
@@ -296,7 +296,7 @@ def test_published_outputs_are_referenced_without_reading_them_again(tmp_path, m
     pub.publish_stages()
     row = workspace.read()['stages'][stage.id]
     output = stage.output_dir / 'weights.txt'
-    reference = row['artifact_files'][str(output.relative_to(workspace.root))]
+    reference = row['artifact_files'][output.relative_to(workspace.root).as_posix()]
     assert reference['sha256'] == hashlib.sha256(b'trained-once').hexdigest()
     read_bytes = Path.read_bytes
     def no_output_reread(path):
@@ -489,3 +489,97 @@ def test_stage_artifact_receipt_survives_run_finish_failure(tmp_path, monkeypatc
     assert workspace.read()['stages'][stage.id]['artifact_ref'].endswith(':v0')
     assert pub.publish_stages() == {stage.id: Run.url}
     assert len(uploads) == 1
+
+
+def test_legacy_windows_embedded_checkpoint_restores_canonical_paths(tmp_path):
+    old = session(tmp_path, 'before')
+    stage = completed(old)
+    canonical = old.read()['stages'][stage.id]['files'][0]
+    assert '\\' not in canonical
+    windows = canonical.replace('/', '\\')
+    with old.transaction() as state:
+        state['stages'][stage.id]['files'] = [windows]
+    # Reproduce an older snapshot whose journal and checksums use Windows separators.
+    files = {'identity.json': (old.root / 'identity.json').read_bytes(),
+             'journal.json': old.state_path.read_bytes(),
+             windows: old.file(windows).read_bytes()}
+    fresh = session(tmp_path, 'after')
+    assert publisher(fresh, seal(files)).restore()['completed'] == 1
+    assert fresh.read()['stages'][stage.id]['files'] == [canonical]
+    assert fresh.file(windows).read_bytes() == b'trained-once'
+    assert fresh.file(canonical).read_bytes() == b'trained-once'
+
+
+def test_legacy_windows_reference_keys_publish_and_restore_without_embedding(tmp_path, monkeypatch):
+    old = session(tmp_path, 'before')
+    stage = completed(old)
+    canonical = old.read()['stages'][stage.id]['files'][0]
+    windows = canonical.replace('/', '\\')
+    entry = {'artifact_path': 'files\\0\\weights.txt',
+             'sha256': hashlib.sha256(b'trained-once').hexdigest()}
+    with old.transaction() as state:
+        state['stages'][stage.id].update(files=[windows], artifact_ref='test/project/execution:v0',
+                                       artifact_files={windows: entry})
+    pub = publisher(old)
+    monkeypatch.setattr(publication, 'credentials', lambda: 'fake-test-credential')
+    saved = {}
+    def upload(directory, name, kind, metadata):
+        saved.update({p.relative_to(directory).as_posix(): p.read_bytes()
+                      for p in Path(directory).rglob('*') if p.is_file()})
+        assert not any(path.startswith('outputs/') for path in saved)
+        references = json.loads(saved['output-references.json'])
+        assert list(references) == [canonical]
+        assert references[canonical]['artifact_path'] == 'files/0/weights.txt'
+        # An older manifest also used backslashes; restore accepts it without
+        # weakening the checksum verification for the manifest itself.
+        saved['output-references.json'] = json.dumps({windows: references[canonical]}).encode()
+        saved.update(seal({key: value for key, value in saved.items() if key != 'checksums.json'}))
+        return 'test/project/checkpoint:v0'
+    monkeypatch.setattr(pub, '_publish_snapshot', upload)
+    pub.publish_checkpoint()
+    fresh = session(tmp_path, 'after')
+    restored = publisher(fresh, saved)
+    lookup = restored.api.artifact
+    def artifact(name, *, type):
+        if type != 'workshop-execution':
+            return lookup(name, type=type)
+        def get_entry(path):
+            assert path == 'files/0/weights.txt'
+            def download(root):
+                target = Path(root) / 'weights.txt'
+                target.write_bytes(b'trained-once')
+                return str(target)
+            return SimpleNamespace(download=download)
+        return SimpleNamespace(get_entry=get_entry)
+    restored.api.artifact = artifact
+    assert restored.restore()['completed'] == 1
+    row = fresh.read()['stages'][stage.id]
+    assert row['files'] == [canonical]
+    assert list(row['artifact_files']) == [canonical]
+    assert row['artifact_files'][canonical]['artifact_path'] == 'files/0/weights.txt'
+
+
+@pytest.mark.parametrize('path', ['../secret', '..\\secret', 'C:\\secret', 'C:secret', '/secret', '\\\\server\\share\\secret'])
+def test_checkpoint_paths_reject_unix_and_windows_escapes(tmp_path, path):
+    with pytest.raises(ValueError):
+        publication._safe_file(tmp_path, path)
+
+
+def test_legacy_windows_literal_parent_symlink_cannot_escape_snapshot(tmp_path):
+    import os
+    if os.name == 'nt':
+        pytest.skip('This fixture needs Unix literal backslashes; Windows uses the canonical symlink check.')
+    workspace = session(tmp_path)
+    root = tmp_path / 'snapshot'
+    outside = tmp_path / 'outside'
+    root.mkdir()
+    outside.mkdir()
+    (outside / 'weights.txt').write_bytes(b'outside bytes')
+    (root / 'outputs\\stage').symlink_to(outside, target_is_directory=True)
+    files = seal({'identity.json': json.dumps(workspace.identity).encode(),
+                  'outputs\\stage/weights.txt': b'outside bytes'})
+    (root / 'identity.json').write_bytes(files['identity.json'])
+    (root / 'checksums.json').write_bytes(files['checksums.json'])
+    with pytest.raises(ValueError, match='Unsafe checkpoint path'):
+        publication._verify_snapshot(root, workspace.identity)
+    assert not (root / 'outputs/stage/weights.txt').exists()
