@@ -169,7 +169,7 @@
       "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
     }
   },
-  "stage_count": 59,
+  "stage_count": 60,
   "validation": {
     "refinement_rounds": 2,
     "final_executions": 12,
@@ -185,5 +185,19 @@
   },
   "qualification_note": "Early stage receipts retain installed package metadata 0.1.0 from the existing editable environment; the actual working-tree code was the v0.3.0 candidate. After refreshing editable installation metadata, subsequent stages record 0.3.0. Historical receipts were not rewritten. Canonical executed sources and harness fingerprints remain saved.",
   "result_interpretation": "All three versions passed all four final cases in this single execution rehearsal. It verifies the loop and publication; it does not show a quality gain.",
-  "report": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-bc0ee4ab--VmlldzoxODMwMzUyNg=="
+  "report": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-bc0ee4ab--VmlldzoxODMwMzUyNg==",
+  "final_checkpoint": {
+    "status": "published",
+    "result": "wandb/forge-workshop-kit/workspace-bc0ee4ab00c54596aab3452fa634a69c:v23"
+  },
+  "progress": {
+    "status": "published",
+    "result": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/bc0ee4ab00c54596aab3452f",
+    "updated_at": 1794602551.6030452
+  },
+  "report_readback": {
+    "browser_verified": true,
+    "clickable_evidence_links": 4,
+    "title": "Pending, Inc. / v0.3.0 execution rehearsal"
+  }
 }

@@ -156,74 +156,53 @@
     }
   },
   "final_distribution": {
-    "schema_version": 1,
-    "release": "0.3.0",
     "wheel": {
       "file": "forge_workshop_kit-0.3.0-py3-none-any.whl",
-      "sha256": "dabde65d3197d9e3679aadb892a11fac925e294293332708511f4fab7adf72c1",
-      "bytes": 138770,
+      "sha256": "522169be52a416d24e8a3f15443b31b5bb7170b8d1c3eb03ea3735f602334c02",
+      "bytes": 139849,
       "files": 36
     },
     "source_distribution": {
       "file": "forge_workshop_kit-0.3.0.tar.gz",
-      "sha256": "12a00889b812d249e150f3ac15c5d1c232c3d0473d0fd26c83863cff1566148f",
-      "bytes": 614873,
-      "files": 95
-    },
-    "templates": {
-      "starter": {
-        "title": "Forge Workshop Kit \u00b7 Starter",
-        "workshop_id": "starter",
-        "workflow_version": "1",
-        "source": {
-          "file": "starter.py",
-          "sha256": "4c91e3007304ddf1bcdef97a42d56807c968c707deb7d730e170361506da1af1"
-        },
-        "html": {
-          "file": "starter.html",
-          "sha256": "a13dffd40a8ad38932122f18eaff48ae1b0a35069b029963a877a020d53c00c3"
-        }
-      },
-      "facilitator": {
-        "title": "Forge Workshop Kit \u00b7 Progress monitor",
-        "workshop_id": "facilitator",
-        "workflow_version": "1",
-        "source": {
-          "file": "facilitator.py",
-          "sha256": "147a9cc096de47127f4f580d08789d20405afca029b82f794a1f26706ce32976"
-        },
-        "html": {
-          "file": "facilitator.html",
-          "sha256": "3291e7f2cc7501cdcd0b665bd647a14ccca29d9c154ffef2f48b591a0a5c9b1e"
-        }
-      },
-      "pending_inc": {
-        "title": "Pending, Inc. \u00b7 Your project",
-        "workshop_id": "pending-direct-teaching",
-        "workflow_version": "1",
-        "source": {
-          "file": "pending_inc.py",
-          "sha256": "0788f6d9b7bfb5ec9ffea9d511a0e195716b78433da39afa51762704a8f5f3ec"
-        },
-        "html": {
-          "file": "pending_inc.html",
-          "sha256": "d9643d4bfefbebfd8db87990ada2db563543a7c024dba0dbe4bc4f02ef7710e4"
-        }
-      },
-      "solar_autoresearch": {
-        "title": "Build a research loop, then give it an agent",
-        "workshop_id": "solar-autoresearch",
-        "workflow_version": "1",
-        "source": {
-          "file": "solar_autoresearch.py",
-          "sha256": "e5aa5b3386d0b8baa4c89678965107da71270f130d6088c63036ac53b44f23a6"
-        },
-        "html": {
-          "file": "solar_autoresearch.html",
-          "sha256": "5c46c9aa191e8c088b93cc0950a3962b874eae3ea9fc2654f858c2b6b891870b"
-        }
-      }
+      "sha256": "f1d270ef8ed58a3a0b8f3fbbdaf452530317ec92f8c78c09555e6a5ed8892062",
+      "bytes": 619380,
+      "files": 96
     },
     "lock_sha256": "0821f6ba1003bc2857f6562e5624120efe467204f53f36831334df89d1126f77"
+  },
+  "built_wheel_import": {
+    "installed_kit_version": "0.3.0",
+    "isolated_base_environment": true,
+    "workshop_manifest_templates": [
+      "starter",
+      "facilitator",
+      "pending_inc",
+      "solar_autoresearch"
+    ],
+    "torch": false,
+    "sunpy": false,
+    "mcp": false
+  },
+  "focused_packaging_tests": {
+    "passed": 12,
+    "ruff": "clean"
+  },
+  "final_checks": {
+    "focused_packaging_tests": 12,
+    "notebook_count": 4,
+    "all_marimo_checks_passed": true,
+    "all_static_html_exports_completed": true,
+    "second_generation_byte_identical": true,
+    "clean_base_wheel_version": "0.3.0",
+    "clean_base_optional_modules_absent": [
+      "torch",
+      "sunpy",
+      "mcp"
+    ],
+    "source_distribution_latest_release_checks_verified": true,
+    "source_distribution_forbidden_paths_absent": true,
+    "build_inference_calls": 0,
+    "build_training_executions": 0,
+    "build_external_publications": 0
   }
 }

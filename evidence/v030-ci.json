@@ -1,0 +1,65 @@
+{
+  "checked_at": "2026-11-13T20:45:17.603585+00:00",
+  "commit": "38cabd33cb1a6cd1048fc2ad71ba8f0e55a7246e",
+  "run_id": 43504142842,
+  "run_url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43504142842",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "check (ubuntu-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "check (windows-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "check (macos-latest)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "base (ubuntu-latest, base)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "base (ubuntu-latest, pending)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "base (windows-latest, base)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "base (windows-latest, pending)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "base (macos-latest, base)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "base (macos-latest, pending)",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "scope": [
+    "Full test suite on Ubuntu, macOS, and Windows",
+    "Regenerated notebook source matches committed source",
+    "All four notebooks pass marimo checks",
+    "Base and Pending dependency installs on each operating system"
+  ],
+  "limits": [
+    "CI uses test fixtures; it does not establish attendee permissions or workshop usability.",
+    "No new paid model calls or external publication were performed for this check."
+  ]
+}

@@ -221,6 +221,7 @@ def main():
         return
     if args.action == "audit":
         value = status()
+        value["state"] = ".workshop/" + session.root.name
         value["kind"] = "Fresh v0.3.0 authored-cell rehearsal; not a browser usability test"
         value["authored_cells_sha256"] = hashlib.sha256(
             (ROOT / "scripts/solar_cells.py").read_bytes()
@@ -243,7 +244,7 @@ def main():
         ]
         value["publication"] = session.read()["publications"]
         value["invocations"] = [
-            json.loads(path.read_text())
+            json.loads(path.read_text(encoding="utf-8"))
             for path in sorted(session.file("rehearsal-invocations").glob("*.json"))
         ]
         for name in ("images/final-comparison", "goes/final-comparison"):
