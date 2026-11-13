@@ -1,45 +1,57 @@
 # Build a research loop, then give it an agent
 
-A four-hour Slidev companion to the Solar Autoresearch notebook, set in the Solar Forecasting Lab. The visual style and incremental teaching sequence follow the Pending, Inc. Harness² workshop. This deck teaches the participant-owned Forge Workshop Kit setup.
+This four-hour deck accompanies the Solar Autoresearch notebook. Participants write a solar forecast, save and compare its experiments in Forge, then ask a research agent to propose changes to the code. The setting is the Solar Forecasting Lab; Pending, Inc. remains the separate office workshop.
 
-Open the [Solar notebook template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view), choose **Copy to project**, and work in your own project. No workshop gateway or host token is involved.
+Start with the [Solar notebook template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view). Choose **Copy to project**, open your copy in **Edit**, and follow the **Connect** step. Each participant uses their own project and account. There is no workshop gateway or host token.
 
-## Present
+## Present the workshop
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Open the URL printed in the terminal. The presenter view is `/presenter/1`. Node.js 22.22 or newer is required. Fonts and images are bundled. Slides make no training or model requests.
+Open the URL printed in the terminal. Use `/presenter/1` for the speaker notes. Node.js 22.22 or newer is required. Fonts and images are included, and opening the deck does not train models or send model requests.
 
-The deck has 73 main frames and 17 optional worked-answer, recorded-evidence, and reference frames. Many main frames reveal one part of the same diagram. Exercises occupy most of the four-hour schedule.
+The deck has 73 main frames and 17 optional worked-answer, recorded-evidence, and reference frames. The main sequence builds diagrams a step at a time, then pauses for participants to work in the notebook. Keep each exercise slide visible while they code. Its button names match the notebook, and its worked-answer link returns to the exercise.
 
-## Portable deck and PDF
+The speaker notes explain what to demonstrate, where to pause, and what participants should inspect. Most of the four hours is for coding and discussion. The opening scene with four notebooks called final is fictional. Product captures and forecasting results are from the recorded rehearsal.
+
+## Use the browser copy or PDF
 
 ```sh
 npm run build
 npm run export -- --executable-path '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 ```
 
-The browser package is `dist/`. Run `python3 dist/serve.py` on macOS/Linux or `py dist/serve.py` on Windows, then open the printed local address. The PDF includes every incremental frame. The branch inspector is interactive in the browser and a labeled diagram in the PDF. The run-configuration inspector also has a separate static reveal frame, so the PDF preserves its explanation.
+Use your installed Chrome path for the PDF export. The browser output is in `dist/`. Run `python3 dist/serve.py` on macOS/Linux or `py dist/serve.py` on Windows, then open the printed address.
 
-## Edit
+The PDF includes all incremental frames and linked worked answers. In the browser, you can also select branches and reveal the settings behind two recorded runs. Separate static frames keep those explanations readable in the PDF.
 
-The storyboard is `scripts/build-storyboard.py`. Run `python3 scripts/build-storyboard.py` to regenerate `slides.md`, the slide map, and presenter notes. Edit diagram components in `components/` and the shared visual rules in `style.css`.
+## Edit the deck
 
-Speaker notes distinguish actual observations, explanatory diagrams, and fictional dialogue. The opening is an original scene in a computational research lab. The pixel observatory artwork is illustrative; product screenshots and forecasts are recorded evidence. Recorded results come from one complete November 13 rehearsal of the revised notebook. Learner changes must produce their own results.
+Edit `scripts/build-storyboard.py`, then run:
 
-Pending, Inc. keeps its office setting. This deck uses the same visual and teaching conventions for a separate research-lab workshop.
+```sh
+python3 scripts/build-storyboard.py
+```
 
-## Evidence
+This regenerates `slides.md`, the slide map, and presenter notes. Diagram components live in `components/`; colors, typography, and spacing live in `style.css`. The laboratory artwork is an illustration. Keep it distinct from the saved product captures and forecast images.
 
-The recorded forecast images and scores come from the saved browser rehearsal. `public/recorded-study.json` preserves the source, configurations, metrics, decisions, and verified trace links used by these examples. The recorded research-agent conversation is linked directly. Native EvalTables returned HTTP 500 in the rehearsal; the deck teaches the saved notebook and Weave comparisons and publication-only recovery. It does not relabel a W&B Table as native EvalTables.
+## Use the recorded example
 
-The forecasting models train weights. The research agent’s weights remain fixed. Two rounds edit the image experiment, using validation evidence only. Final evaluation loads frozen weights on reserved dates.
+One complete November 13 rehearsal supplies the recorded scores, forecasts, code changes, and Agent Lens links. The image model’s error fell 10.15% relative to the manually selected model on 199 overlapping windows across two reserved days, using one seed. The GOES model performed worse than persistence. Both results remain in the main teaching sequence.
 
-Full source and setup: https://github.com/ash0ts/forge-workshop-kit
+`public/recorded-study.json` contains the saved source, settings, decisions, scores, and links behind those examples. Attendees’ edits need their own executions and results.
 
-After PDF export, `uv run --no-project --with pymupdf python scripts/finalize-pdf.py` checks every page and converts worked-answer links into internal PDF destinations. `scripts/check-render.mjs` checks the browser deck, branch interaction, and answer navigation against its generated slide map. `scripts/check-answers.py` validates the code examples without training or provider calls. `scripts/check-exercise-contract.py` reconciles the slide instructions with the authored notebook controls and functions.
+The small forecasting models train their weights. The research agent’s weights stay fixed while it proposes changes to model and training code. Both improvement rounds use validation results; the final comparison loads the selected weights and predicts the reserved dates.
 
-For GitHub Pages, run `npm run build:pages`. It builds `dist-pages/` with `/forge-workshop-kit/solar/` paths and restores the portable source afterward. Copy that folder into `solar/` under the Pages site. Use its `404.html` as the site root fallback so direct slide links reload.
+Native EvalTables returned HTTP 500 during the rehearsal. Use the saved notebook and Weave comparisons if that view is unavailable. Retrying publication can use the completed results without rerunning training.
+
+[Workshop source and setup](https://github.com/ash0ts/forge-workshop-kit) · [Source notes](notes/sources.md)
+
+## Check and package changes
+
+After PDF export, run `uv run --no-project --with pymupdf python scripts/finalize-pdf.py` to check every page and convert worked-answer links to internal PDF destinations. `scripts/check-render.mjs` checks the browser layouts and navigation. The answer, exercise-contract, and recorded-evidence checks cover code examples, notebook controls, and the saved results without training or model calls.
+
+For GitHub Pages, run `npm run build:pages`. It writes `dist-pages/` with the `/forge-workshop-kit/solar/` prefix and a page for every slide route. Publish that directory at `solar/`. Run `node scripts/check-pages.mjs` to check direct links, worked answers, images, and presenter navigation.

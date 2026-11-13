@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
-# dependencies = ["forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.2.1/forge_workshop_kit-0.2.1-py3-none-any.whl", "torch==2.15.0"]
+# dependencies = ["forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.2.2/forge_workshop_kit-0.2.2-py3-none-any.whl", "torch==2.15.0"]
 # [tool.uv.sources]
 # torch = [{ index = "pytorch-cpu", marker = "sys_platform != 'darwin'" }]
 # [[tool.uv.index]]
@@ -22,7 +22,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md("# Workshop progress\nThis notebook only reads participant projects. Missing updates mean unknown, not failure. It never starts participant work.")
+    mo.md("# Workshop progress\nPaste the participant project links below to see their completed steps and help requests. If someone has not published an update, ask how they are doing before assuming they are stuck. This monitor cannot run their notebook.")
     roster=mo.ui.text_area(label="Public project links: entity/project, one per line",full_width=True)
     workshop=mo.ui.dropdown({"Solar Autoresearch · four hours":"solar-autoresearch","Pending, Inc. · three hours":"pending-direct-teaching"},value="Solar Autoresearch · four hours",label="Workshop")
     auto_refresh=mo.ui.checkbox(label="Refresh every 30 seconds while this notebook is open")

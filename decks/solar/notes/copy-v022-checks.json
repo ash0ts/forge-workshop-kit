@@ -1,0 +1,35 @@
+{
+  "release": "0.2.2",
+  "slides": 90,
+  "main_frames": 73,
+  "exercise_order_unchanged": true,
+  "timing_labels_unchanged": true,
+  "worked_answer_targets_unchanged": true,
+  "code_excerpts_unchanged": true,
+  "historical_data_files": {
+    "public/recorded-study.json": "81ff53cba85a6db94d02f5188a3b240d4840f0ead2138a4095b432f57bac1d04",
+    "public/recorded-runs.json": "416f8c0583bcf1306a182c4689e8781752c8bbffb184e60362ca4147a9ce1eb9"
+  },
+  "setup_capture": {
+    "path": "public/images/ux-v022-solar-setup.png",
+    "state": "unconnected preview, not proof of access"
+  },
+  "provider_calls": 0,
+  "training_runs": 0,
+  "sequencing_review": {
+    "tracking_opens_artifacts_only_after_search": true,
+    "date_boundary_uses_explicit_hypothetical": true,
+    "evidence_exercise_uses_visible_check_results": true,
+    "candidate_execution_traces_not_claimed_as_separate_proposal_conversations": true
+  },
+  "copy_files_sha256": {
+    "scripts/build-storyboard.py": "99dfa01c4c86709c4a050e5244101c9a527bf7530fbd437320d0848ed9ec83b1",
+    "slides.md": "aaa115c36c752c5be22b4e6630e380d18ba1e769cd370b69adbaecbe2c73b614",
+    "README.md": "848100953efc0abb4632e6e9260e3dd0fbee01dfa68de61d91f9582a7630155d",
+    "components/ForecastWindow.vue": "cd1b11f9463fb92ebea2a1177f846b970044d97cb6e61a91ca08c9ac135741ad",
+    "components/LabScene.vue": "ffee720a2147dc086cad533c89279508d067137d2560a2f2cdb885975a9dce50",
+    "components/ResearchBranches.vue": "f9aeeac1418aa94fa0204af7fdccfb71a48eb1eca467b35bf3bab2e3a0b4e5be",
+    "components/ResearchMap.vue": "1ba1f7c783a3f7f023d52ed5873be3eb4dcb8fe967e705bf2e9f28347406f527",
+    "components/RunInspector.vue": "0c299869b7861861ec921010e7cd6fb6ce35397faa2fd24685cefb751f893583"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "screens": "Revised copy over saved rehearsal data",
+  "steps": 8,
+  "paid_requests": 0,
+  "errors": [],
+  "dimensions": {
+    "width": 430,
+    "scroll": 430
+  },
+  "prior_request_records_unchanged": 118,
+  "local_tests_passed": 21,
+  "marimo_check": "passed",
+  "string_only_ast": "passed",
+  "screenshots": [
+    "ux-v022-pending-setup.png",
+    "ux-v022-pending-tools.png",
+    "ux-v022-pending-manual.png",
+    "ux-v022-pending-improve.png",
+    "ux-v022-pending-narrow.png"
+  ]
+}

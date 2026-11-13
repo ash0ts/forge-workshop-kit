@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
-# dependencies = ["forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.2.1/forge_workshop_kit-0.2.1-py3-none-any.whl", "torch==2.15.0"]
+# dependencies = ["forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.2.2/forge_workshop_kit-0.2.2-py3-none-any.whl", "torch==2.15.0"]
 # [tool.uv.sources]
 # torch = [{ index = "pytorch-cpu", marker = "sys_platform != 'darwin'" }]
 # [[tool.uv.index]]
@@ -25,7 +25,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo, os):
-    mo.md("# My workshop\nCopy this notebook to your project. Add your exercise code below; keep the SDK calls visible.")
+    mo.md("# My workshop\nCopy this notebook to your project, then replace the square calculation below with your own exercise. The tracing scopes show how to send its arguments and result to Agent Lens.")
     project=mo.ui.text(value=os.getenv("WORKSHOP_PROJECT") or "/".join(filter(None,[os.getenv("WANDB_ENTITY"),os.getenv("WANDB_PROJECT")])),label="entity/project")
     connect=mo.ui.run_button(label="Check project access")
     mo.vstack([project,connect])

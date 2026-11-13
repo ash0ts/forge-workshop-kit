@@ -1,36 +1,33 @@
 # Forge Workshop Kit
 
-Copy a notebook into your own Forge project. Write code, run experiments, inspect traces, and save the evidence. The facilitator watches progress through normal W&B project access.
+Build an agent or a forecasting experiment in a notebook, then ask an agent to improve the code around it. You’ll write the functions, run them, and use Forge to find out what happened.
 
-There is no workshop gateway, attendee token, or service to deploy. The same notebook runs on a laptop. Hosted notebooks use Forge's existing authentication and compute; inference and compute are billed to the participant's account.
+Each participant works in their own project. The facilitator can read the progress you publish, but cannot run your notebook. You use your own Forge authentication, inference access, and notebook compute.
 
-Pending stays in the office: billing, account access, and an agent that revises its procedures. Solar takes place in a computational research lab: real satellite observations, trained forecasting models, and an agent that writes and tests research code.
+## Choose your workshop
 
-## Choose a notebook
-
-| Notebook | What you build |
+| Workshop | What you’ll do |
 | --- | --- |
-| [Solar Autoresearch · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view) | Forecast solar measurements, move to images, then let a research agent edit and test model/training code. |
-| [Pending, Inc. · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) | Give an office agent tools, evaluate its work, and improve its instructions across two rounds. |
-| [Starter · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzI=/view) | A small starting point for another workshop. |
-| [Facilitator · open monitor](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzM=/view) | Read checkpoint progress, help requests, failed runs, and evidence links from public projects. |
+| [Solar Autoresearch · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view) | Join a research lab working with real satellite observations. Build forecasts, compare training settings, then ask an agent to propose and test code changes. Four hours. |
+| [Pending, Inc. · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) | Give an office agent tools for refunds and account access. Check its work, edit its instructions, then build an agent that makes and tests further edits. Three hours. |
 
-Sign in to Forge to copy a template. [Source notebooks](notebooks) and the [downloadable kit](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.2.1) are public. This is a technical preview; [remaining release checks](docs/release-checks.md) include an external-attendee and human rehearsal.
+Use the [Solar browser deck](https://ash0ts.github.io/forge-workshop-kit/solar/) alongside the notebook, or download the [PDF](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.2.2/solar-autoresearch.pdf). The [release package](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.2.2) contains the notebook files and editable deck.
 
-The **Solar companion deck** follows the notebook exercises: [browser deck](https://ash0ts.github.io/forge-workshop-kit/solar/), [PDF](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.2.1/solar-autoresearch.pdf), and [editable Slidev source](decks/solar). [Presenter notes and the current Pending deck guide](docs/deck-guide.md) explain where to pause for code and investigation.
+These are technical previews. The [release checks](docs/release-checks.md) describe what we’ve tested and the external-attendee and human rehearsals still needed.
 
-## Hosted setup
+## Start in Forge
 
-1. Sign in to [Forge](https://forge.coreweave.com). Create a public teaching project in your own entity or a team where you can write.
-2. Open the workshop template and choose **Copy to project**. Select your project and open its editable copy. If the copy picker does not offer your project, download the notebook's `.py` file and import it into your project.
-3. Initialize the notebook cells once with marimo’s **Run all stale cells** control. Exercise run buttons remain unpressed, so initialization does not train or call inference. In Solar, click **Connect and restore my work**. In Pending, click **Check my project and restore saved work**. Check that the project shown is yours, then send the first trace.
-4. Give the facilitator your `entity/project` link. They need no credential or token from you.
+1. Sign in to [Forge](https://forge.coreweave.com). Create a public teaching project under your account or a team where you have write access. Its name has two parts, such as `your-name/solar-workshop`.
+2. Open a template above and choose **Copy to project**. Select your project and open the editable copy. If the project isn’t offered in the copy dialog, download the notebook’s `.py` file from [notebooks](notebooks) and import it into your project.
+3. Use marimo’s **Run all stale cells** control once to initialize the notebook. This creates the controls; it does not press the exercise run buttons or start training or inference.
+4. In Solar, click **Connect and restore my work**. In Pending, click **Check my project and restore saved work**. Confirm that the project shown is yours. Follow the first exercise to publish a trace and open it in Agent Lens.
+5. Give the facilitator your project link if you want them to see progress and help requests. They don’t need your API key.
 
-A writable project alone does not supply inference credits or notebook compute access. Check those before the session. Public teaching projects expose their published code and results; use only the supplied public or fictional data.
+Your account needs notebook compute and inference access as well as permission to write to the project. The setup check verifies project access; the first model request checks whether inference is available. Use the supplied public or fictional data: other people can read files and results you publish to a public teaching project.
 
-## Laptop setup
+## Start on your laptop
 
-Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and Git, then:
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and Git, then run:
 
 ```sh
 git clone https://github.com/ash0ts/forge-workshop-kit.git
@@ -40,19 +37,42 @@ uv run wandb login
 uv run marimo edit notebooks/solar_autoresearch.py
 ```
 
-Enter your `entity/project` in the notebook. Use `notebooks/pending_inc.py` for Pending. No Docker, Node, Electron, or local API service is needed.
+For Pending, replace the last path with `notebooks/pending_inc.py`. Enter your `entity/project` in the notebook and follow the same setup exercise. Tools and training run on your laptop; model requests and publication use your Forge account. You don’t need Docker or a local API service.
 
-## Saving and spending
+## Work through an exercise
 
-Each notebook presents one current step: a task, editable code, a free local check, an explicit run, its result, and an **Inspect in Forge** question. Use the numbered navigator to browse. A disabled run names its prerequisite; browsing and editing do not execute the task. Marimo's app view hides support cells while retaining the exercise editors. Switch to code view to inspect the authored notebook itself.
+Each step explains the task, shows the code to edit, and provides a local check before you run it. Afterward, look at the result and follow the **Inspect in Forge** instruction. It might ask you to find a tool’s arguments in Agent Lens or compare two forecasts in a W&B run.
 
-Opening a notebook does not train a model or send inference. Run controls do. Completed stages are reused. An interrupted stage stays interrupted until you inspect it and explicitly choose another attempt.
+The numbered buttons let you browse without starting work. If a run button is disabled, the message beside it names the step to complete first. App view keeps the exercise editors visible and hides support cells. Switch to code view when you want to follow those calls too.
 
-The default inference allowance is $8 per workspace, including retries and bounded unknown usage. Set another allowance in the connection step. This is a participant-controlled stop, not an account billing limit. Notebook compute charges are separate.
+Drafts save as you edit. Completed runs save the code they used, so changing a draft doesn’t rewrite an earlier result. The notebook also uploads checkpoints as W&B Artifacts: versioned collections of your code, predictions, model weights, and progress. Check that an upload succeeded before discarding the notebook runtime. On your laptop, keep the `.workshop/` directory to resume later.
 
-Local receipts live under `.workshop/`. Drafts save as you edit; completed runs retain the exact executed source. Checkpoints in your project preserve drafts, selected source, model weights, predictions, and progress across fresh hosted runtimes. Publishing or retrying a trace never reruns the experiment. Keep a local copy until the checkpoint reports a successful upload.
+The default inference allowance is $8 per workspace. You can change it during setup. It includes retries and reserves a maximum cost when a request’s usage is unavailable; it is a notebook stop, not an account-wide billing limit. Notebook compute is billed separately.
 
-## What belongs in the framework
+<details>
+<summary>If a run or upload is interrupted</summary>
+
+Completed work is reused when you reopen the notebook. An interrupted run waits for you to inspect it and choose another attempt. A failed trace or comparison upload can be retried from the saved result without training or calling the model again.
+
+Native EvalTables returned HTTP 500 in our rehearsal. The notebook comparison and Weave records remain available while that publication is unavailable. The notebook shows the upload status separately from the experiment’s result.
+</details>
+
+## What happened in the recorded rehearsal
+
+Solar uses GOES-15 X-ray measurements and NASA SDO/AIA images, prepared for small CPU experiments. On the reserved image dates, average error was 0.125762 for persistence, 0.122442 for the manually written model, and 0.110011 for the agent-selected model. The agent proposed a zero-initialized residual head and then a masked absolute-error training loss. Its final version had 10.2% lower error than the manual version under the same training budget.
+
+That comparison covers 199 overlapping windows from two days, with one seed. It shows one completed research loop, not a reliable solar-forecasting result. The short GOES training run did worse than persistence. Both results stay in the workshop so you can inspect what the code produced. [Data and calculation details](docs/solar-evidence.md).
+
+Pending uses fictional accounts and payments, including a tool that changes account state before its response times out. All 12 final runs reached the correct account state; the editor chose to retain the manual harness. An unchanged version is a valid outcome. Recorded examples are labeled separately from your own results.
+
+- [Solar rehearsal Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==)
+- [Pending rehearsal Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-51a0006f--VmlldzoxODMwMjcxMA==)
+
+## Run a workshop or build your own
+
+The [facilitator notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzM=/view) reads progress and help requests from the project links you supply. A missing update means the participant’s status is unknown. Ask them before assuming a run failed.
+
+The [starter notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzI=/view) shows the saving and tracing pattern for another workshop:
 
 ```python
 from forge_workshop_kit import WorkshopSession
@@ -69,26 +89,11 @@ with session.stage("baseline", config=config, sources={"model.py": source}) as s
 session.checkpoint("baseline", evidence={"Run": run_url})
 ```
 
-Identity, receipts, publication and progress belong in the package. The experiment, scorer, instrumentation and improvement controller remain visible in the notebook. [Framework contract](docs/framework.md).
+Put the experiment, scorer, tracing, and improvement code in the notebook where participants can edit it. The package handles project identity, saving, publication, and progress. See the [framework guide](docs/framework.md) and [source map](docs/source-map.md).
 
-## Recorded teaching example
+- [Four-hour facilitator guide](docs/facilitator.md)
+- [Deck notes and Pending exercise references](docs/deck-guide.md)
+- [Solar data and experiment design](docs/solar-contract.md)
+- [Release checks and limitations](docs/release-checks.md)
 
-Solar uses archived GOES-15 X-ray measurements and NASA SDO/AIA images, prepared as small CPU exercises. Pending uses fictional accounts and payments in a simulator with realistic failure cases, including a write that succeeds before its response times out. [Data and evidence review](docs/solar-evidence.md).
-
-The revised notebooks were run in a browser against real services. On the two held-out image days, error was 0.125762 for persistence, 0.122442 for the manual residual model, and 0.110011 for the agent-selected model. The researcher proposed a zero-initialized residual head, then added a masked absolute-error training loss. The final agent-selected version reduced image error by 10.2% relative to the manual model under the same training budget. Each adopted version had its own test. The comparison covers 199 overlapping windows on two reserved days with one seed. New learner runs measure their own outcome.
-
-The short GOES training budget produced a poor forecast, and persistence won. Pending reached the correct account state in all 12 final executions; the editor retained the manual harness. Both outcomes remain visible. Recorded results are labeled and cannot be attributed to a learner's unexecuted edit.
-
-- [Solar Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==)
-- [Pending Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-51a0006f--VmlldzoxODMwMjcxMA==)
-- [Measured costs, browser checks and remaining limits](docs/release-checks.md)
-
-## Materials
-
-- [Solar experiment and data contract](docs/solar-contract.md)
-- [Four-hour facilitator runbook](docs/facilitator.md)
-- [Source map](docs/source-map.md)
-- [Decks, worked answers and exercise references](docs/deck-guide.md)
-- [Release checks and known limitations](docs/release-checks.md)
-
-The prior Pending workshop is preserved in [its original repository](https://github.com/ash0ts/pending-inc-workshop).
+Previous Pending releases remain in [their original repository](https://github.com/ash0ts/pending-inc-workshop).

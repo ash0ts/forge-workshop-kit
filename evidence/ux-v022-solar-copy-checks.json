@@ -1,0 +1,45 @@
+{
+  "release": "0.2.2",
+  "check": "copy-only browser preview",
+  "connected": false,
+  "paid_requests": 0,
+  "training_executions": 0,
+  "publications": 0,
+  "dimensions": {
+    "desktop": [
+      1440,
+      1050
+    ],
+    "narrow": [
+      430,
+      900
+    ]
+  },
+  "checks": {
+    "setup_heading": true,
+    "data_context": true,
+    "recorded_example": true,
+    "narrow_no_overflow": true
+  },
+  "narrow": {
+    "viewport": 430,
+    "document": 430
+  },
+  "scope": "Fresh unconnected notebook; authenticated run/result screens checked in source, not re-executed.",
+  "screenshots": [
+    "ux-v022-solar-setup.png",
+    "ux-v022-solar-instrumentation.png",
+    "ux-v022-solar-data.png",
+    "ux-v022-solar-recorded-example.png",
+    "ux-v022-solar-narrow.png"
+  ],
+  "static_checks": {
+    "focused_tests": 12,
+    "marimo_check": "passed",
+    "unchanged_function_bodies": 10,
+    "unchanged_execution_publication_calls": 53,
+    "unchanged_run_controls": 16,
+    "historical_scores_preserved": true,
+    "model_prompts_settings_unchanged": true
+  }
+}

@@ -7,7 +7,7 @@
       "key": "cover",
       "title": "Build a research loop.<br>Then give it an agent.",
       "body": "<div class=\"sub\">A four-hour experiment in the Solar Forecasting Lab.</div><LabScene /><div class=\"bottom-note\">Solar forecasting, experiment tracking, and agents that edit research code.</div>",
-      "notes": "Opening, 30 seconds. This is a computational research lab studying solar observations. The pixel room is an illustration, not a live instrument feed. The notebook contains real public solar observations and actual training code. We will first build the experiment, then give a fixed-model agent a limited role in changing it.",
+      "notes": "We\u2019ll build two small forecasts from real solar observations. First we\u2019ll write and track the experiments ourselves. Then we\u2019ll let a research agent propose changes to the image model\u2019s code. The pixel lab is an illustration; the observations and recorded results come from the workshop dataset.",
       "kind": "cover",
       "time": "0:00",
       "answer": null
@@ -17,7 +17,7 @@
       "key": "arrival",
       "title": "Your team has a promising result.",
       "body": "<div class=\"quote\">\u201cThe new model looks better.\u201d<small>THE RESEARCH UPDATE \u00b7 FICTIONAL SCENE</small></div><div class=\"two-col\" style=\"margin-top:40px\"><div><h2>You ask which run.</h2><p>Someone shares a screenshot.</p></div><div><h2>You ask which code.</h2><p>Someone shares a notebook called final.</p></div></div><div class=\"bottom-note\">There are four notebooks called final.</div>",
-      "notes": "Tell the fictional scene briefly. It establishes the familiar problem of a score without the program, data, and settings that produced it. Do not imply this anecdote happened in the rehearsal.",
+      "notes": "Imagine a teammate says the new model is better, but can only find a screenshot and several notebooks called final. That\u2019s our fictional opening. Ask the room what they would need before trusting or repeating the comparison.",
       "kind": "",
       "time": "0:01",
       "answer": null
@@ -25,9 +25,9 @@
     {
       "number": 3,
       "key": "assignment",
-      "title": "The Sun has supplied the data.",
-      "body": "<p class=\"big\">Predict what we will observe next from what we have observed so far.</p><div class=\"step-path\"><div><h2>First: measurements</h2><p>Predict X-ray flux 30 minutes ahead.</p></div><div><h2>Then: images</h2><p>Predict a solar image one hour ahead.</p></div></div><div class=\"bottom-note\">A small teaching experiment. No operational space-weather claims.</div>",
-      "notes": "Define forecasting before introducing the agent. SunPy gives astronomy-aware tools for acquiring and inspecting observations. This is not flare classification or a reproduction of a foundation-model benchmark.",
+      "title": "Forecast the next solar observation",
+      "body": "<p class=\"big\">Use the observations we have now to predict what the instruments will measure later.</p><div class=\"step-path\"><div><h2>Measurements</h2><p>Use one hour of X-ray readings to predict flux 30 minutes ahead.</p></div><div><h2>Images</h2><p>Use two solar images to predict the image one hour ahead.</p></div></div><div class=\"bottom-note\">These small experiments use real observations. They are not operational forecasts.</div>",
+      "notes": "Our first task uses the last hour of GOES X-ray measurements to predict flux thirty minutes later. The second uses two AIA images to predict another image one hour ahead. SunPy helps us inspect the observation times, wavelength, and units.",
       "kind": "",
       "time": "0:02",
       "answer": null
@@ -37,7 +37,7 @@
       "key": "research-question",
       "title": "Can an agent improve the research code?",
       "body": "<div class=\"quote\">\u201cOnce the experiment works, could an agent improve it?\u201d<small>THE NEXT LAB QUESTION</small></div><ResearchMap :level=\"4\" />",
-      "notes": "Move from running a fixed experiment to testing an agent-written change. The answer is a tested workflow, not a promise of better performance. Research-agent weights stay fixed; the small forecasting models are trained.",
+      "notes": "Once we can run and compare an experiment, we can give an agent the code and ask it to propose a change. We\u2019ll train the small forecasting models as usual. The language model writing those proposals stays fixed.",
       "kind": "",
       "time": "0:03",
       "answer": null
@@ -45,9 +45,9 @@
     {
       "number": 5,
       "key": "path",
-      "title": "What you will build",
-      "body": "<div class=\"step-path\"><div><h2>Forecast</h2><p>Data, persistence, metrics.</p></div><div><h2>Track</h2><p>Code, settings, trained weights.</p></div><div><h2>Improve</h2><p>Review and test agent-written edits.</p></div><div><h2>Evaluate</h2><p>Freeze, compare, reproduce.</p></div></div><div class=\"bottom-note\">Your own notebook and project. The facilitator can read the progress you publish.</div>",
-      "notes": "Show the work in order. Participants edit visible Python. Every execution is explicit. A higher score is optional; an explainable experiment is the goal.",
+      "title": "Build a forecast, then test changes to its code",
+      "body": "<div class=\"step-path\"><div><h2>Forecast</h2><p>Load observations and write a baseline.</p></div><div><h2>Track</h2><p>Save code, settings, weights, and predictions.</p></div><div><h2>Improve</h2><p>Review and test the agent\u2019s code changes.</p></div><div><h2>Evaluate</h2><p>Compare the selected models on later dates.</p></div></div><div class=\"bottom-note\">You\u2019ll edit Python in your own notebook and publish the results to your project.</div>",
+      "notes": "Follow this sequence in the notebook. You\u2019ll change Python, run a check, execute the experiment, and open the resulting evidence in Forge. A change that fails to improve the forecast is still something we can investigate.",
       "kind": "",
       "time": "0:04",
       "answer": null
@@ -55,9 +55,9 @@
     {
       "number": 6,
       "key": "copy",
-      "title": "Your notebook, in your project",
+      "title": "Copy the notebook into your Forge project",
       "body": "<div class=\"copy-layout\"><div class=\"template-qr\"><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view\"><img src=\"/images/solar-template-qr.svg\" alt=\"QR code opening the Solar workshop template\"></a><p><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view\">Open the Solar template \u2197</a></p></div><ol><li>Open the template.</li><li>Choose <strong>Copy to project</strong> and select your writable project.</li><li>Open the copy in <strong>Edit</strong>. Choose <strong>Run all stale cells</strong> once.</li><li>In <strong>Connect</strong>, check your project. Exercise run buttons stay unpressed.</li></ol></div><div class=\"bottom-note\">Hosted Forge supplies authentication. Your account supplies notebook compute and inference access.</div>",
-      "notes": "Use the template, not a facilitator rehearsal notebook. A public project is a teaching default, not an entitlement grant. Do not put private data in it. No host-issued token or gateway URL is required. Run all stale cells initializes the controls. It does not press exercise buttons or start training or paid inference. The first access check is also free.",
+      "notes": "Allow participants to get their own copy open before continuing. Run all stale cells creates the controls; it does not press the exercise run buttons. Hosted Forge supplies authentication, but attendees still need their own project and account access. Use fictional or public teaching data in a public project.",
       "kind": "",
       "time": "0:05",
       "answer": null
@@ -65,9 +65,9 @@
     {
       "number": 7,
       "key": "local",
-      "title": "The same notebook on your laptop",
+      "title": "Run the same notebook on your laptop",
       "body": "```sh\ngit clone https://github.com/ash0ts/forge-workshop-kit.git\ncd forge-workshop-kit\nuv sync --frozen\nuv run wandb login --verify\nuv run marimo edit notebooks/solar_autoresearch.py\n```\n\n<p class=\"aside\">In Connect, enter <code>your-entity/your-project</code>. Keep the terminal open.</p><div class=\"bottom-note\">Install Git and uv first. Hosted participants skip these commands.</div>",
-      "notes": "Local alternative. Dependencies are locked. Authenticate at the terminal, never in a shared code cell. There is no local workshop service to launch. Notebook CPU compute and direct provider billing belong to the participant. The configured inference allowance defaults to $8 and is adjustable.",
+      "notes": "Hosted participants can skip this slide. On a laptop, install Git and uv, clone the repository, and run these commands. Authenticate in the terminal and keep that terminal open while marimo runs. There is no extra workshop service to start.",
       "kind": "",
       "time": "0:06",
       "answer": null
@@ -75,9 +75,9 @@
     {
       "number": 8,
       "key": "settings",
-      "title": "Know what this notebook will run",
+      "title": "Check the compute and inference settings",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Setting</th><th>This workshop</th></tr><tr><td>Project and credentials</td><td>Your own Forge project and account</td></tr><tr><td>Training compute</td><td>Notebook CPU; billed separately if hosted</td></tr><tr><td>Research agent</td><td><code>zai-org/GLM-5.3-Flash</code>, fixed</td></tr><tr><td>Inference allowance</td><td>$8 by default; adjustable in Connect</td></tr><tr><td>Execution</td><td>Explicit run buttons; saved work restores</td></tr></tbody></table><div class=\"bottom-note\">A higher allowance permits more calls. It does not grant account access or include compute.</div>",
-      "notes": "The provider records requested and returned model IDs. Research calls use temperature 0.2, JSON output, and a maximum 16,384 output tokens. The model does not silently change when unavailable. Opening, restoring, or editing does not run training or inference.",
+      "notes": "Check these settings before running anything. The eight-dollar allowance applies to inference, while hosted notebook compute is separate. The research agent uses GLM-5.3-Flash with temperature 0.2, JSON output, and up to 16,384 output tokens. If that model is unavailable, stop and inspect the error rather than changing models mid-comparison.",
       "kind": "",
       "time": "0:06",
       "answer": null
@@ -85,9 +85,9 @@
     {
       "number": 9,
       "key": "trace-scopes",
-      "title": "The first thing you publish is a trace",
-      "body": "```python\nwith tracing.Conversation(conversation_id=execution_id):\n    with tracing.Turn(agent_name=\"researcher\", messages=mission):\n        with tracing.Tool(\n            name=\"inspect_training_environment\",\n            arguments={}, result=observed_environment,\n        ):\n            ...\n```\n\n<div class=\"bottom-note\">The actual tool result, timestamps, and error belong in the span.</div>",
-      "notes": "Illustrative excerpt of the pinned Forge SDK scope hierarchy; exact instrument_tool code is in the notebook. Parent conversation and turn scopes are supplied by export_trace, while learners write the tool scope. A successful export call is not the same as verified stored-span readback.",
+      "title": "Record a tool call in Agent Lens",
+      "body": "```python\nwith tracing.Conversation(conversation_id=execution_id):\n    with tracing.Turn(agent_name=\"researcher\", messages=mission):\n        with tracing.Tool(\n            name=\"inspect_training_environment\",\n            arguments={}, result=observed_environment,\n        ):\n            ...\n```\n\n<div class=\"bottom-note\">Record the tool\u2019s inputs, result, timing, and any error.</div>",
+      "notes": "A conversation groups the work. A turn records a request, and a tool span records one operation and its result. The notebook supplies the outer scopes. You\u2019ll edit the tool scope and add an attribute you can then find in Agent Lens.",
       "kind": "",
       "time": "0:07",
       "answer": null
@@ -95,9 +95,9 @@
     {
       "number": 10,
       "key": "setup-turn",
-      "title": "Connect and find your first span",
-      "body": "<div class=\"task\">Open <strong>1 \u00b7 Connect</strong>.</div><ol class=\"exercise-controls\"><li>Click <strong>Connect and restore my work</strong>. Check the project and inference allowance.</li><li>In the visible <code>instrument_tool</code> editor, add <code>workshop.exercise</code>. Click <strong>Check my tracing code</strong>.</li><li>Click <strong>Send my first Agent Lens trace</strong>. Open the conversation and find your attribute, arguments, and result.</li></ol><div class=\"done\">Done when: you can point to your own stored tool span in Agent Lens.</div>",
-      "notes": "Allow 7 minutes. Help users distinguish project permission errors from inference access. The setup trace is tool-only and makes no provider call.",
+      "title": "Connect and inspect your first tool call",
+      "body": "<div class=\"task\">Open <strong>1 \u00b7 Connect</strong>.</div><ol class=\"exercise-controls\"><li>Click <strong>Connect and restore my work</strong>. Check that the project is yours.</li><li>In <code>instrument_tool</code>, add the <code>workshop.exercise</code> attribute with value <code>solar-research</code>. Click <strong>Check my tracing code</strong>.</li><li>Click <strong>Send my first Agent Lens trace</strong>. Open the tool call in Agent Lens and find the attribute you added.</li></ol><div class=\"done\">Check your work: Find your attribute beside the tool\u2019s arguments and result.</div>",
+      "notes": "Allow 7 minutes. Ask participants to show the attribute they added in their own Agent Lens tool call. The setup operation inspects the notebook environment and makes no language-model request. If someone cannot publish it, check project access before proceeding.",
       "kind": "exercise",
       "time": "0:08\u20130:15",
       "answer": "answer-trace"
@@ -105,9 +105,9 @@
     {
       "number": 11,
       "key": "setup-screen",
-      "title": "Your work stays in your project",
-      "body": "<div class=\"native-columns\"><a href=\"/images/ux-v021-solar-setup.png\" target=\"_blank\"><img src=\"/images/ux-v021-solar-setup.png\" alt=\"Revised notebook showing the participant project, allowance and guided exercise navigation\"></a><div><h2>Check your project.</h2><p>The example uses the rehearsal project. Your copy must name your own.</p><h2>Check your allowance.</h2><p>Inference and notebook compute are separate.</p><p class=\"aside\"><a href=\"/images/ux-v021-solar-setup.png\" target=\"_blank\">Open full capture \u2197</a></p></div></div><div class=\"bottom-note\">Actual revised notebook after restoring saved work.</div>",
-      "notes": "Captured from the revised notebook. Project, tool location, allowance and current progress stay together. The screenshot is a restored rehearsal, not an empty new workspace. Do not ask attendees to enter the facilitator project shown here.",
+      "title": "Check the project before you run an exercise",
+      "body": "<div class=\"native-columns\"><a href=\"/images/ux-v022-solar-setup.png\" target=\"_blank\"><img src=\"/images/ux-v022-solar-setup.png\" alt=\"Revised notebook showing the participant project, allowance and guided exercise navigation\"></a><div><h2>Check your project.</h2><p>Enter the Forge project where you want to save this workshop.</p><h2>Check your allowance.</h2><p>Inference and notebook compute are separate.</p><p class=\"aside\"><a href=\"/images/ux-v022-solar-setup.png\" target=\"_blank\">Open full capture \u2197</a></p></div></div><div class=\"bottom-note\">The setup screen before connecting to a project.</div>",
+      "notes": "This screenshot shows the Connect step before access is checked. Enter your own project, choose an inference allowance, then click Connect and restore my work. This image does not show a completed connection.",
       "kind": "",
       "time": "0:15",
       "answer": null
@@ -115,9 +115,9 @@
     {
       "number": 12,
       "key": "instrumentation-screen",
-      "title": "The trace comes from the code you write",
-      "body": "<a class=\"instrumentation-crop\" href=\"/images/ux-v020-solar-instrumentation.png\" target=\"_blank\" aria-label=\"Open the full tracing exercise\"><img src=\"/images/ux-v020-solar-instrumentation.png\" alt=\"Actual editable instrument_tool function with the attribute exercise and free tracing check\"></a><p class=\"aside\">Add the attribute inside the tool scope. This writer also instruments your later training calls.</p><div class=\"image-caption\">Recorded rehearsal: the attribute is added and the local check passes. <a href=\"/images/ux-v020-solar-instrumentation.png\" target=\"_blank\">Open full capture \u2197</a></div>",
-      "notes": "Actual completed setup editor from the revised-notebook rehearsal. The local check is free and exports nothing. The separate trace button exports an actual operation; stored span 3836f2a676d91bdf contains the attribute. Later training uses the same writer.",
+      "title": "Add an attribute to the tool span",
+      "body": "<div><a class=\"instrumentation-crop\" href=\"/images/ux-v020-solar-instrumentation.png\" target=\"_blank\" aria-label=\"Open the full tracing exercise\"><img src=\"/images/ux-v020-solar-instrumentation.png\" alt=\"Actual editable instrument_tool function with the attribute exercise and free tracing check\"></a><p class=\"aside\">Add the attribute inside the tool scope. This writer also instruments your later training calls.</p><div class=\"image-caption\">Recorded rehearsal: the attribute is added and the local check passes. <a href=\"/images/ux-v020-solar-instrumentation.png\" target=\"_blank\">Open full capture \u2197</a></div></div>",
+      "notes": "Point to the attribute inside the tool scope. The free code check tests the function locally. The separate trace button publishes the environment check. This same function will record later training calls.",
       "kind": "",
       "time": "0:15",
       "answer": null
@@ -125,9 +125,9 @@
     {
       "number": 13,
       "key": "goes-window",
-      "title": "The measurement forecast",
+      "title": "Predict X-ray flux 30 minutes ahead",
       "body": "<ForecastWindow mode=\"goes\" /><div class=\"bottom-note\">Predict log10 XRS-B flux. A forecast window includes observations, timestamps, and a future target.</div>",
-      "notes": "GOES-15 one-minute X-ray measurements. The task is a 60-minute history predicting flux 30 minutes ahead. Explain log scaling without suggesting these models are calibrated operational forecasts.",
+      "notes": "Read the timeline from left to right. The model gets sixty minutes of observed flux, then predicts the reading thirty minutes after now. We work in log10 flux, so the error is in transformed units rather than raw watts per square metre.",
       "kind": "",
       "time": "0:15",
       "answer": null
@@ -135,9 +135,9 @@
     {
       "number": 14,
       "key": "chronology",
-      "title": "Dates are part of the experiment",
+      "title": "Use earlier dates to train, later dates to test",
       "body": "<ForecastWindow :split=\"true\" /><div class=\"bottom-note\">February 2014, UTC. Fit normalization on training data only.</div>",
-      "notes": "The splits are dates, not random neighboring rows. All source observations and the target must fit inside one partition. Otherwise near-duplicate solar states can leak from training into evaluation.",
+      "notes": "Train on February 1\u201310, choose models using February 11\u201312, and leave February 13\u201314 for the final comparison. Every input and the target of a window must belong to one partition. Fit normalization using training data only.",
       "kind": "",
       "time": "0:17",
       "answer": null
@@ -145,9 +145,9 @@
     {
       "number": 15,
       "key": "gaps",
-      "title": "A missing observation is a gap",
-      "body": "<div class=\"two-col\"><div><h2>What the archive returned</h2><p>GOES February 8 is absent.</p><p>Incomplete forecast windows are excluded.</p></div><div><h2>What the loader must preserve</h2><p>Observation time and quality flags.</p><p>The split and the reason for each exclusion.</p></div></div><div class=\"bottom-note\">Do not replace an absent flux measurement with zero.</div>",
-      "notes": "Actual source coverage from dataset manifest. The image archive and GOES have different exclusions. Do not treat a missing measurement as evidence that solar flux reached zero.",
+      "title": "Leave out windows with missing observations",
+      "body": "<div class=\"two-col\"><div><h2>Check the timestamps</h2><p>The prepared GOES archive has no data for February 8.</p><p>A window needs its full input history and its future target.</p></div><div><h2>Skip an incomplete window</h2><p>Keep the missing date in the coverage record.</p><p>A zero would invent a measurement that the instrument never supplied.</p></div></div><div class=\"bottom-note\">Use the same accepted windows for every model in the comparison.</div>",
+      "notes": "February 8 is absent from the prepared GOES source archive. A window that needs those readings cannot be used. Filling the absence with zero would tell the model that the instrument measured zero flux, which it did not.",
       "kind": "",
       "time": "0:19",
       "answer": null
@@ -155,9 +155,9 @@
     {
       "number": 16,
       "key": "sunpy",
-      "title": "SunPy gives the observations context",
-      "body": "```python\nfrom sunpy.map import Map\n\nobservation = Map(dataset_path / \"sample-aia.fits\")\nprint(observation.date)\nprint(observation.wavelength)\nprint(observation.unit)\n```\n\n<div class=\"bottom-note\">Inspect a real FITS file. Train from the prepared, checksum-verified arrays.</div>",
-      "notes": "The package is approximately 26.1 MB. Prepared arrays keep downloads small; a representative FITS file retains astronomy metadata. Acquisition code and manifest preserve source URLs, checksums, preprocessing, and exclusions. Credit NOAA, NASA/SDO, AIA, JSOC, and SunPy.",
+      "title": "Inspect a solar observation with SunPy",
+      "body": "```python\nfrom sunpy.map import Map\n\nobservation = Map(dataset_path / \"sample-aia.fits\")\nprint(observation.date)\nprint(observation.wavelength)\nprint(observation.unit)\n```\n\n<div class=\"bottom-note\">Inspect the FITS metadata here; use the prepared arrays for training.</div>",
+      "notes": "Open the representative FITS file and inspect its date, wavelength, and unit. Training uses prepared arrays so the class does not wait for archive downloads. The dataset includes the acquisition and preprocessing records, so we can trace those arrays back to the public observations.",
       "kind": "",
       "time": "0:20",
       "answer": null
@@ -166,8 +166,8 @@
       "number": 17,
       "key": "data-turn",
       "title": "Inspect the observations before training",
-      "body": "<div class=\"task\">Open <strong>2 \u00b7 Solar data</strong>.</div><ol class=\"exercise-controls\"><li>Click <strong>Load the solar dataset</strong>.</li><li>Find an observation time, the image wavelength, and the dataset version.</li><li>Explain why a forecast window that crosses February 10\u201311 must be excluded.</li></ol><div class=\"done\">Done when: you can identify the inputs, target, units, and partition of a forecast.</div>",
-      "notes": "Use 6 minutes. No model fit belongs in this exercise. The archive was prepared before class, so students inspect versioned data rather than waiting for thousands of downloads.",
+      "body": "<div class=\"task\">Open <strong>2 \u00b7 Solar data</strong>.</div><ol class=\"exercise-controls\"><li>Click <strong>Load the solar dataset</strong>.</li><li>In the data preview, find an observation time, the image wavelength, and the train/validation/test dates.</li><li>Use the date diagram to explain why a window with inputs on February 10 and a target on February 11 would be excluded.</li></ol><div class=\"done\">Check your work: You can say what the model receives and which future observation it must predict.</div>",
+      "notes": "Give participants six minutes. Have them explain one forecast window to a neighbor: which observations go in, which observation is the target, and which dates it belongs to. No training is needed yet.",
       "kind": "exercise",
       "time": "0:21\u20130:27",
       "answer": null
@@ -175,9 +175,9 @@
     {
       "number": 18,
       "key": "persistence",
-      "title": "The first model predicts no change",
-      "body": "```python\ndef persistence_forecast(split):\n    # Latest observed value becomes the future prediction.\n    ...\n```\n\n<p class=\"big\">A difficult baseline to beat can still be a one-line function.</p><div class=\"bottom-note\">The baseline uses the current observation, never the future target.</div>",
-      "notes": "Persistence is meaningful for correlated solar observations. A model must beat this simple prediction before complexity has demonstrated value. Do not claim persistence will win every task.",
+      "title": "Start by copying the latest reading",
+      "body": "```python\ndef persistence_forecast(split):\n    # Latest observed value becomes the future prediction.\n    ...\n```\n\n<p class=\"big\">Predict flux 30 minutes ahead by copying the latest reading.</p><div class=\"bottom-note\">This uses only a reading we already have. It does not look at the future target.</div>",
+      "notes": "Persistence means predicting that the latest value will stay the same. Solar observations are correlated over time, so this simple baseline can be hard to beat. It gives us a comparison before we spend time training a network.",
       "kind": "",
       "time": "0:27",
       "answer": null
@@ -185,9 +185,9 @@
     {
       "number": 19,
       "key": "metric",
-      "title": "A forecast needs a defined error",
-      "body": "```python\nerror = mean(abs(predicted_log_flux - observed_log_flux))\n```\n\n<div class=\"two-col\" style=\"margin-top:35px\"><div><h2>Lower is better</h2><p>The same target, transform, and units apply to every run.</p></div><div><h2>The average is not the plot</h2><p>Inspect the times where the forecast misses.</p></div></div><div class=\"bottom-note\">The observed future supplies the target. Numeric forecast quality uses a fixed metric, not an LLM judge.</div>",
-      "notes": "Primary measurement metric is log-flux MAE in log10 W/m\u00b2 units. Don\u2019t average this number with image error. A trend chart and individual errors provide information the mean omits.",
+      "title": "Measure how far the prediction missed",
+      "body": "```python\nerror = mean(abs(predicted_log_flux - observed_log_flux))\n```\n\n<div class=\"two-col\" style=\"margin-top:35px\"><div><h2>Lower is better</h2><p>The same target, transform, and units apply to every run.</p></div><div><h2>Look at individual misses</h2><p>Inspect the times where the forecast misses.</p></div></div><div class=\"bottom-note\">Compare each prediction with the observed future, then average the errors.</div>",
+      "notes": "For each forecast, subtract the observed log-flux target, take the absolute error, then average across windows. Lower is better. The average can hide a bad interval, so we also inspect the curves. Keep flux error separate from the later image score.",
       "kind": "",
       "time": "0:29",
       "answer": null
@@ -196,8 +196,8 @@
       "number": 20,
       "key": "persistence-turn",
       "title": "Write and test persistence",
-      "body": "<div class=\"task\">Open <strong>3 \u00b7 Persistence</strong>.</div><ol class=\"exercise-controls\"><li>Implement <code>persistence_forecast(split)</code>.</li><li>Click <strong>Check my persistence function</strong>, then <strong>Run my persistence baseline</strong>.</li><li>Inspect the observed and predicted curves. Identify one interval where copying the present misses the future.</li></ol><div class=\"done\">Done when: your function returns the current observation and your saved baseline has a metric and a plot.</div>",
-      "notes": "Allow 10 minutes. Local checks are free. Do not reveal the answer until students have attempted it.",
+      "body": "<div class=\"task\">Open <strong>3 \u00b7 Persistence</strong>.</div><ol class=\"exercise-controls\"><li>Implement <code>persistence_forecast(split)</code>.</li><li>Click <strong>Check my persistence function</strong>, then <strong>Run my persistence baseline</strong>.</li><li>Inspect the observed and predicted curves. Identify one interval where copying the present misses the future.</li></ol><div class=\"done\">Check your work: The plot shows your persistence forecast beside the observed flux. Point to one miss.</div>",
+      "notes": "Allow ten minutes. Let participants attempt the function before opening the answer. Ask them to find an interval where the real flux changed while persistence kept the previous value. That is a concrete error another model could try to reduce.",
       "kind": "exercise",
       "time": "0:30\u20130:40",
       "answer": "answer-persistence"
@@ -205,9 +205,9 @@
     {
       "number": 21,
       "key": "number",
-      "title": "A score alone cannot reproduce a run",
-      "body": "<p class=\"big\">The validation error is lower.</p><div class=\"step-path\"><div><h2>Which source?</h2><p>A loss changed yesterday.</p></div><div><h2>Which data?</h2><p>A gap changed the windows.</p></div><div><h2>Which settings?</h2><p>One run trained longer.</p></div></div><div class=\"bottom-note\">Each is a different experiment, even when the notebook has the same filename.</div>",
-      "notes": "These are possible causes, not claims about a hidden failure in the rehearsal. Ask what information a teammate needs to rerun a result.",
+      "title": "Save what changed between runs",
+      "body": "<p class=\"big\">Suppose a second run has a lower validation error. What changed?</p><div class=\"step-path\"><div><h2>Code</h2><p>You changed the loss function.</p></div><div><h2>Data</h2><p>You excluded an incomplete window.</p></div><div><h2>Settings</h2><p>You trained for more steps.</p></div></div><div class=\"bottom-note\">Save these differences so someone else can repeat the comparison.</div>",
+      "notes": "Use these as possible explanations for a changed score, not claims about this rehearsal. If code, data, or training time differs, we need to know that before deciding why the score moved.",
       "kind": "",
       "time": "0:40",
       "answer": null
@@ -215,9 +215,9 @@
     {
       "number": 22,
       "key": "run-inspector",
-      "title": "These scores need their configurations",
+      "title": "Which setting changed between these runs?",
       "body": "<RunInspector />",
-      "notes": "Interactive illustration using two actual recorded rehearsal rows. Ask what changed before revealing the active configuration. Both runs use the same source and training budget; learning rate differs. Reproduction also requires data and executed source. No training or inference occurs in this widget.",
+      "notes": "These are two recorded GOES runs. Before revealing the settings, ask what the scores let us conclude. Then click Show active settings. Both runs used the same source and budget, but their learning rates differed.",
       "kind": "",
       "time": "0:41",
       "answer": null
@@ -225,9 +225,9 @@
     {
       "number": 23,
       "key": "run-inspector-reveal",
-      "title": "The learning rate changed. The budget did not.",
+      "title": "These runs used different learning rates",
       "body": "<RunInspector :revealed=\"true\" />",
-      "notes": "Static reveal for the PDF and the live teaching sequence. The two actual runs share data, source, seed, steps and batch size. At this short budget, the lower error alone does not establish a better converged architecture.",
+      "notes": "The learning rate changed from .001 to .003. Data, source, seed, steps, and batch size stayed the same. Both errors were worse than persistence, so choosing the smaller of these two errors still leaves a poor forecast.",
       "kind": "",
       "time": "0:42",
       "answer": null
@@ -235,9 +235,9 @@
     {
       "number": 24,
       "key": "program",
-      "title": "The program produces the forecast",
+      "title": "Turn observations into a forecast",
       "body": "<ResearchMap :level=\"0\" />",
-      "notes": "First build of the shared research diagram. Forecast model, observation and prediction stay in place throughout the progression.",
+      "notes": "Start with the forecast itself: observations enter the model and it produces a number or an image. We\u2019ll add the records around this process one piece at a time.",
       "kind": "",
       "time": "0:42",
       "answer": null
@@ -245,9 +245,9 @@
     {
       "number": 25,
       "key": "source",
-      "title": "The executed code belongs to the record",
-      "body": "<ResearchMap :level=\"1\" /><div class=\"bottom-note\">Saving a notebook and saving the code that executed are different operations.</div>",
-      "notes": "Attach exact source. The model and training functions are editable. The stage receipt fingerprints source and settings.",
+      "title": "Save the model and training code with the run",
+      "body": "<ResearchMap :level=\"1\" /><div class=\"bottom-note\">Save the source used for this run before editing it for the next experiment.</div>",
+      "notes": "The model and training functions are code we can change. Save the particular source used by this run, because the notebook may be edited again tomorrow.",
       "kind": "",
       "time": "0:43",
       "answer": null
@@ -255,9 +255,9 @@
     {
       "number": 26,
       "key": "independent",
-      "title": "Keep the measurement fixed",
+      "title": "Use the same scoring rule for every model",
       "body": "<ResearchMap :level=\"2\" /><div class=\"bottom-note\">The model can change. The target, partition, and primary scoring rule stay fixed.</div>",
-      "notes": "The primary scorer is supplied by the experiment. Learner metrics are checked against it. A revised metric creates a different question and must not retroactively improve old scores.",
+      "notes": "Keep the target, dates, and primary metric unchanged while comparing models. Otherwise a lower score might come from an easier test rather than a better forecast.",
       "kind": "",
       "time": "0:44",
       "answer": null
@@ -265,9 +265,9 @@
     {
       "number": 27,
       "key": "record",
-      "title": "Save the work needed to explain the score",
-      "body": "<ResearchMap :level=\"3\" /><div class=\"bottom-note\">W&B runs show metrics. Artifacts preserve data, source, weights, and predictions.</div>",
-      "notes": "No generic product pitch. Runs make settings and loss history comparable; artifacts preserve files for restoration and reproduction.",
+      "title": "Save the files needed to repeat the run",
+      "body": "<ResearchMap :level=\"3\" /><div class=\"bottom-note\">A W&B Artifact is a versioned bundle of files: here, data, code, trained weights, and predictions.</div>",
+      "notes": "A W&B run stores settings and metric history. A W&B Artifact stores a versioned bundle of files. Here that means the data, source, weights, and predictions needed to repeat or inspect a result.",
       "kind": "",
       "time": "0:45",
       "answer": null
@@ -275,9 +275,9 @@
     {
       "number": 28,
       "key": "stage",
-      "title": "Visible training, durable saving",
-      "body": "```python\nwith session.stage(\n    \"measurement/run\", config=config,\n    sources={\"candidate.py\": source},\n    inputs={\"dataset\": dataset_version, \"split\": \"validation\"},\n) as stage:\n    if stage.needs_run:\n        result = train_model(data, config)\n        stage.record(result)\n```\n\n<div class=\"bottom-note\">The notebook owns the training code. The session saves completed work.</div>",
-      "notes": "Conceptual public API example. In the actual notebook run_training invokes training.train and saves weights/predictions. A completed receipt must be restored rather than repeating work on refresh.",
+      "title": "Save code and outputs with each training run",
+      "body": "```python\nwith session.stage(\n    \"measurement/run\", config=config,\n    sources={\"candidate.py\": source},\n    inputs={\"dataset\": dataset_version, \"split\": \"validation\"},\n) as stage:\n    if stage.needs_run:\n        result = train_model(data, config)\n        stage.record(result)\n```\n\n<div class=\"bottom-note\">You write the training function. The session records its code and outputs.</div>",
+      "notes": "This shortened example shows where saving sits around training. The notebook\u2019s run_training function runs your source, then saves the result. If that same stage has already completed, the saved result can be restored instead of training again.",
       "kind": "",
       "time": "0:47",
       "answer": null
@@ -285,9 +285,9 @@
     {
       "number": 29,
       "key": "artifacts",
-      "title": "A restart should restore, not rerun",
-      "body": "<div class=\"step-path\"><div><h2>Local receipt</h2><p>Which stage finished and which files it produced.</p></div><div><h2>Checkpoint artifact</h2><p>A versioned copy in the participant\u2019s project.</p></div><div><h2>New runtime</h2><p>Restore saved results before offering the next action.</p></div></div><div class=\"bottom-note\">Publication retry uploads saved work. It does not launch training again.</div>",
-      "notes": "Use the actual restoration behavior. An upload failure should preserve local results and clearly identify what is unpublished. Monitoring is read-only and cannot gate participant progress.",
+      "title": "Restore a completed run after a restart",
+      "body": "<div class=\"step-path\"><div><h2>Finish a run</h2><p>Save its code, outputs, and completion record locally.</p></div><div><h2>Upload a checkpoint</h2><p>Store a versioned copy as a W&B Artifact in your project.</p></div><div><h2>Reopen the notebook</h2><p>Restore that checkpoint and inspect the completed results.</p></div></div><div class=\"bottom-note\">You can continue from the saved run without training the model again.</div>",
+      "notes": "The local completion record tells the notebook which work finished. The checkpoint Artifact stores a copy in your project. If the runtime is replaced, restore the checkpoint before continuing. An upload failure can be retried using the local files.",
       "kind": "",
       "time": "0:49",
       "answer": null
@@ -295,9 +295,9 @@
     {
       "number": 30,
       "key": "tracking-turn",
-      "title": "Make the result reproducible",
-      "body": "<div class=\"task\">Open <strong>4 \u00b7 Track and search</strong>.</div><ol class=\"exercise-controls\"><li>Implement <code>training_loss</code> and <code>my_flux_mae</code>, then run <strong>Check my measurement code</strong>.</li><li>Inspect <code>run_training</code>. Find where it records source, data, settings, and outputs.</li><li>Open a saved run and its artifact. Identify the fields you would need after deleting the runtime.</li></ol><div class=\"done\">Done when: you can match a metric to its source fingerprint and dataset version.</div>",
-      "notes": "15 minutes. Students should change the metric, then see a local wrong-value check fail and fix it. Do not make this a form-only reflection.",
+      "title": "Write the loss and metric",
+      "body": "<div class=\"task\">Open <strong>4 \u00b7 Track and search</strong>.</div><ol class=\"exercise-controls\"><li>Implement <code>training_loss</code> and <code>my_flux_mae</code>.</li><li>Click <strong>Check my measurement code</strong>. Test identical arrays and a constant one-unit error.</li><li>In <code>run_training</code>, find where it saves source, settings, weights, and predictions. The next exercise will produce those files.</li></ol><div class=\"done\">Check your work: Your checks pass, and you can point to where run_training saves its files.</div>",
+      "notes": "Allow fifteen minutes. Have participants implement the loss and metric, run the small checks, then find the file-saving calls in run_training. The next exercise produces those files. If they struggle with the metric, use a prediction of one against a target of zero as the first example.",
       "kind": "exercise",
       "time": "0:50\u20131:05",
       "answer": "answer-flux"
@@ -305,9 +305,9 @@
     {
       "number": 31,
       "key": "search-levels",
-      "title": "Settings, architectures, and new code",
+      "title": "Choose settings, choose a model, or write new code",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Operation</th><th>What changes</th></tr><tr><td>Hyperparameter search</td><td>Values used by an existing program</td></tr><tr><td>Architecture comparison</td><td>Which implemented model runs</td></tr><tr><td>Agent-directed research</td><td>The model, loss, or training program itself</td></tr></tbody></table><div class=\"bottom-note\">We will do all three. The first two do not require a research agent.</div>",
-      "notes": "This distinction is the spine of the workshop. Searching learning rates is useful, but it is not an agent inventing new code.",
+      "notes": "Changing learning rate is a hyperparameter search. Choosing MLP or CNN compares existing architectures. Later, the research agent will write different model or training code. These are different kinds of changes, and we\u2019ll record which one we made.",
       "kind": "",
       "time": "1:05",
       "answer": null
@@ -315,9 +315,9 @@
     {
       "number": 32,
       "key": "configs",
-      "title": "Six controlled starting configurations",
+      "title": "Compare six model configurations",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Architecture</th><th>Widths</th><th>Learning rates</th><th>Training budget</th></tr><tr><td>Small MLP</td><td>16, 32, 16</td><td>.001, .001, .003</td><td>60 steps each</td></tr><tr><td>Temporal CNN</td><td>16, 32, 16</td><td>.001, .001, .003</td><td>60 steps each</td></tr></tbody></table><div class=\"bottom-note\">Seed 17. Batch size 32. The notebook records the active values.</div>",
-      "notes": "These are the fixed rehearsal settings from the notebook. Short budget is deliberate for class, not a claim of tuning quality. Settings remain editable and must be recorded if changed.",
+      "notes": "These six configurations are the workshop defaults: two model families, three settings per family, seed 17, batch size 32, and sixty training steps. It\u2019s a short CPU exercise, so inspect whether the models have trained enough before drawing an architecture conclusion.",
       "kind": "",
       "time": "1:07",
       "answer": null
@@ -325,9 +325,9 @@
     {
       "number": 33,
       "key": "sweep",
-      "title": "W&B Sweeps supplies the configurations",
-      "body": "```python\nsweep_id = wandb.sweep(sweep_config, entity=entity, project=project)\n\ndef trial():\n    with wandb.init() as run:\n        result = run_training(config_for(run.config.trial))\n        run.log(result[\"metrics\"])\n\nwandb.agent(sweep_id, function=trial, count=6)\n```\n\n<div class=\"bottom-note\">The notebook shows the full implementation. Completed stage receipts prevent duplicate training.</div>",
-      "notes": "Teaching excerpt, not a standalone complete cell. The actual notebook specifies entity and project on both calls. The sweep and stage journal have different jobs: assignment versus durable execution reuse.",
+      "title": "Run the configurations through W&B Sweeps",
+      "body": "```python\nsweep_id = wandb.sweep(sweep_config, entity=entity, project=project)\n\ndef trial():\n    with wandb.init() as run:\n        result = run_training(config_for(run.config.trial))\n        run.log(result[\"metrics\"])\n\nwandb.agent(sweep_id, function=trial, count=6)\n```\n\n<div class=\"bottom-note\">The notebook contains the full implementation and reuses already-completed runs.</div>",
+      "notes": "W&B Sweeps assigns each configuration to a run. Our training function does the fitting and saves its outputs. This is a shortened excerpt; the notebook contains the entity, project, and complete configuration setup.",
       "kind": "",
       "time": "1:09",
       "answer": null
@@ -335,9 +335,9 @@
     {
       "number": 34,
       "key": "native-sweep",
-      "title": "Compare error, baseline skill, and runtime",
+      "title": "Compare forecast error and training time",
       "body": "<a class=\"sweep-crop\" href=\"/images/ux-v020-solar-sweep.png\" target=\"_blank\" aria-label=\"Open the full native W&B Sweep capture\"><img src=\"/images/ux-v020-solar-sweep.png\" alt=\"Actual W&B Sweep charts showing six validation errors, negative skill relative to persistence, and runtime\"></a><p class=\"aside\">All six recorded forecasts are worse than persistence. A lower error among them does not change that.</p><div class=\"image-caption\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/sweeps/pr1xsoaw\">Open the actual Sweep \u2197</a> \u00b7 <a href=\"/images/ux-v020-solar-sweep.png\" target=\"_blank\">Full capture \u2197</a></div>",
-      "notes": "Fresh revised-notebook rehearsal: native Sweep pr1xsoaw. This is a crop of the actual first chart row; the full image preserves the Forge workspace context and ingestion-delay notice. The short training budget produced negative skill versus persistence. The charts retain all six runs; they do not demonstrate an architecture winner.",
+      "notes": "This is the recorded six-run Sweep. Find validation error, performance relative to persistence, and training time. All six models performed worse than persistence here. The lowest error among them does not make it a successful forecast.",
       "kind": "",
       "time": "1:10",
       "answer": null
@@ -345,9 +345,9 @@
     {
       "number": 35,
       "key": "learning-curve",
-      "title": "A smaller error can still be a poor forecast",
-      "body": "<p class=\"big\">Before ranking architectures, inspect whether training had time to learn the target scale.</p><div class=\"warning\">In the recorded rehearsal, the short GOES models remained undertrained. Persistence won.</div><div class=\"bottom-note\">Keep the failed comparison. A longer uniform training budget is a new experiment.</div>",
-      "notes": "Do not preannounce learners\u2019 results. This is a recorded example and remains labeled. The six short rehearsal models did not justify an architecture claim.",
+      "title": "Check whether the models learned enough",
+      "body": "<p class=\"big\">Open the loss curve and prediction plot before choosing a model.</p><div class=\"warning\">In our recorded GOES runs, 60 training steps left the models undertrained. Copying the latest reading gave lower error.</div><div class=\"bottom-note\">Testing a longer training budget would be a separate comparison.</div>",
+      "notes": "In the recorded runs, the loss curves and forecasts showed the models were still undertrained after sixty steps. Compare that with the forecasts you just produced. A longer, equal training budget for all models would be a separate experiment.",
       "kind": "",
       "time": "1:11",
       "answer": null
@@ -355,9 +355,9 @@
     {
       "number": 36,
       "key": "search-turn",
-      "title": "Run the same search and inspect a loss curve",
-      "body": "<div class=\"task\">Stay in <strong>4 \u00b7 Track and search</strong>.</div><ol class=\"exercise-controls\"><li>Click <strong>Run six tracked configurations</strong>.</li><li>Open the Sweep and compare validation error with runtime.</li><li>Open one poor result. Inspect its training curve and prediction rather than deleting it.</li></ol><div class=\"done\">Done when: all six attempts are accounted for and you can explain one comparison.</div>",
-      "notes": "15 minutes. Request a prediction before students click. If provider or publication is unavailable, training can still have saved local results. Do not rerun inference to repair a link.",
+      "title": "Run six configurations and inspect one forecast",
+      "body": "<div class=\"task\">Stay in <strong>4 \u00b7 Track and search</strong>.</div><ol class=\"exercise-controls\"><li>Click <strong>Run six tracked configurations</strong>.</li><li>Open the Sweep. Compare validation error and training time for two configurations.</li><li>Open one run\u2019s Artifact. Find its source and predictions, then compare the forecast with its loss curve and score.</li></ol><div class=\"done\">Check your work: Explain one comparison using the settings, curve, and forecast.</div>",
+      "notes": "Allow fifteen minutes. Ask participants to predict which configuration will win before running the search. After it finishes, have them explain one result from the loss curve and forecast. Keep failed runs visible so the comparison accounts for what happened.",
       "kind": "exercise",
       "time": "1:15\u20131:30",
       "answer": "answer-search"
@@ -366,8 +366,8 @@
       "number": 37,
       "key": "break",
       "title": "The experiments can wait ten minutes.",
-      "body": "<p class=\"big\">Save the checkpoint.<br>Leave the notebook open.<br>Give your own optimizer a break.</p><div class=\"bottom-note\">We resume at 1:40 with image predictions.</div>",
-      "notes": "Ten-minute break. No new background experiments are required. Confirm checkpoint status before leaving.",
+      "body": "<p class=\"big\">Save your work and take ten minutes.<br>We\u2019ll start the image experiment when we return.</p><div class=\"bottom-note\">The notebook can stay open. There\u2019s no exercise to run during the break.</div>",
+      "notes": "Take ten minutes. Confirm saved work is visible before leaving. No background experiment is required during the break.",
       "kind": "",
       "time": "1:30\u20131:40",
       "answer": null
@@ -375,9 +375,9 @@
     {
       "number": 38,
       "key": "images-window",
-      "title": "The target is now a future image",
+      "title": "Predict the solar image one hour ahead",
       "body": "<ForecastWindow mode=\"images\" /><div class=\"bottom-note\">AIA 171 \u00c5. Prepared 64 \u00d7 64 arrays. One-hour forecasting.</div>",
-      "notes": "The image task receives frames at t\u221260 and t and predicts t+60. The same chronological split rules apply. Larger images are an optional separate compute experiment.",
+      "notes": "Now we give the model images from sixty minutes ago and now, and ask for the image sixty minutes ahead. The AIA 171 \u00c5 arrays are 64 by 64 pixels so the exercise can run on CPU.",
       "kind": "",
       "time": "1:40",
       "answer": null
@@ -385,9 +385,9 @@
     {
       "number": 39,
       "key": "image-stack",
-      "title": "Reuse the experiment record",
+      "title": "Save image experiments the same way",
       "body": "<ResearchMap :level=\"3\" /><div class=\"bottom-note\">The input and prediction changed shape. Source, settings, weights, and evidence still belong together. The image score uses normalized log1p intensity.</div>",
-      "notes": "Do not reintroduce every product. Reuse the same record structure to make the new task less cognitively expensive.",
+      "notes": "The inputs are now images, but we still save the same kinds of records: data, code, settings, weights, and predictions. Image values use normalized log1p intensity, so their errors have a different scale from the GOES errors.",
       "kind": "",
       "time": "1:42",
       "answer": null
@@ -395,9 +395,9 @@
     {
       "number": 40,
       "key": "persistence-image",
-      "title": "A forecast produces an image you can inspect",
+      "title": "Look at the forecast beside the observed future",
       "body": "<img class=\"solar-photo\" src=\"/images/solar-validation.png\" alt=\"Recorded image input, prediction, future observation, and error\"><div class=\"image-caption\">Recorded rehearsal image forecast. The notebook shows your own prediction after training.</div>",
-      "notes": "Source evidence/solar-validation.png. Use it to identify which panel is input, prediction, target, error. It is not the participant\u2019s current result.",
+      "notes": "Read this recorded example from input to prediction, observed future, and error map. Ask someone to point to a region that changed. After training, the notebook will show the same view for their own result.",
       "kind": "",
       "time": "1:44",
       "answer": null
@@ -405,9 +405,9 @@
     {
       "number": 41,
       "key": "conv",
-      "title": "Predict the full future image",
+      "title": "Have the network predict the whole image",
       "body": "```python\nclass ImagePredictor(nn.Module):\n    def forward(self, x):\n        return self.net(x)\n```\n\n<p class=\"big\">The convolutional model must produce the whole image.</p><div class=\"bottom-note\">Two input channels: the earlier and current images. One output channel: the forecast.</div>",
-      "notes": "Keep technical detail concrete. This is a tiny model for CPU class time, not a solar foundation model.",
+      "notes": "The first model takes two image channels and predicts a whole future image. Its output has one channel. We keep the network small enough to compare on CPU during the workshop.",
       "kind": "",
       "time": "1:46",
       "answer": null
@@ -415,9 +415,9 @@
     {
       "number": 42,
       "key": "residual",
-      "title": "Or predict a correction to the present",
+      "title": "Add a learned correction to the current image",
       "body": "```python\nclass ImagePredictor(nn.Module):\n    def forward(self, x):\n        correction = self.net(x)\n        return x[:, 1:2] + correction\n```\n\n<p class=\"big\">The current image supplies a starting point. The network learns the change.</p>",
-      "notes": "The residual path makes persistence accessible when correction is zero. It does not guarantee better forecasting. Participants implement the branch in the actual code editor.",
+      "notes": "The residual model adds its learned correction to the current image. If the correction is zero, its forecast is exactly persistence. Participants implement this branch in the same forward method.",
       "kind": "",
       "time": "1:48",
       "answer": null
@@ -425,9 +425,9 @@
     {
       "number": 43,
       "key": "image-score",
-      "title": "Score the solar disk",
+      "title": "Measure error inside the solar disk",
       "body": "```python\nerror = abs(prediction - target)\nmasked_error = error * disk_mask\nscore = mean(masked_error.sum_per_image() / disk_mask.sum_per_image())\n```\n\n<div class=\"bottom-note\">A change outside the mask must not affect the score. Test that explicitly.</div>",
-      "notes": "Pseudocode for disk-masked MAE. The real answer sums axes 1,2,3 per example before averaging. A whole-image average can hide a scientifically important small region.",
+      "notes": "Compute absolute error only inside the fixed solar-disk mask. Sum and divide within each image, then average the image errors. An edit outside the mask should not change this score.",
       "kind": "",
       "time": "1:50",
       "answer": null
@@ -435,9 +435,9 @@
     {
       "number": 44,
       "key": "loss",
-      "title": "Training loss and final metric have different jobs",
+      "title": "Train with one loss; compare with a fixed metric",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Training loss</th><th>Primary evaluation metric</th></tr><tr><td>Supplies gradients while fitting weights</td><td>Measures predictions for comparison</td></tr><tr><td>Candidate code can change it</td><td>Fixed outside candidate code</td></tr><tr><td>The starting implementation uses squared error</td><td>The image comparison uses masked absolute error</td></tr></tbody></table>",
-      "notes": "Explain why an agent might test L1 without moving the goalposts. Changing training loss is an allowed edit; changing the independent scoring metric is not.",
+      "notes": "The training loss supplies gradients that update weights. The evaluation metric tells us how the forecast compares with another model. We can try a different training loss while keeping the scoring rule fixed. That will be one of the agent\u2019s recorded proposals.",
       "kind": "",
       "time": "1:52",
       "answer": null
@@ -445,9 +445,9 @@
     {
       "number": 45,
       "key": "image-code-screen",
-      "title": "Compare what each model actually predicts",
+      "title": "Compare the two forecasts on the same case",
       "body": "<a class=\"model-crop\" href=\"/images/ux-v020-solar-models.png\" target=\"_blank\" aria-label=\"Open the complete validation model comparison\"><img src=\"/images/ux-v020-solar-models.png\" alt=\"Actual convolutional and residual forecasts on the same validation case, with observed future and error images\"></a><div class=\"image-caption\">Recorded validation case: convolution above, residual below. <a href=\"/images/ux-v020-solar-models.png\" target=\"_blank\">Open full comparison and evidence links \u2197</a></div>",
-      "notes": "Fresh revised-notebook rehearsal. Both rows share the same input and target timestamps. The full capture contains the native notebook score table, saved model predictions, and direct Agent Lens, run and artifact links. This is a validation example; final dates are still reserved.",
+      "notes": "These two recorded rows use the same input and target times. The convolutional forecast is above; the residual forecast is below. Compare the images and error maps, then look at the validation scores. The final dates have not been used to select either model.",
       "kind": "",
       "time": "1:54",
       "answer": null
@@ -456,8 +456,8 @@
       "number": 46,
       "key": "image-turn",
       "title": "Implement and compare the image predictors",
-      "body": "<div class=\"task\">Open <strong>5 \u00b7 Solar images</strong>.</div><ol class=\"exercise-controls\"><li>Edit <code>ImagePredictor.forward</code>, <code>training_loss</code>, and <code>my_image_mae</code>.</li><li>Click <strong>Check my image code</strong>. A +1 error should score 1; an off-disk change should score 0.</li><li>Click <strong>Compare convolutional and residual predictors</strong>. Inspect both forecasts.</li></ol><div class=\"done\">Done when: you can identify the selected manual model and show a case where its forecast is wrong.</div>",
-      "notes": "20 minutes. Learners need an attempt before worked answers. Same data and training budgets apply to both models. Results are selected using validation only.",
+      "body": "<div class=\"task\">Open <strong>5 \u00b7 Solar images</strong>.</div><ol class=\"exercise-controls\"><li>Edit <code>ImagePredictor.forward</code>, <code>training_loss</code>, and <code>my_image_mae</code>.</li><li>Click <strong>Check my image code</strong>. A +1 error should score 1; an off-disk change should score 0.</li><li>Click <strong>Compare convolutional and residual predictors</strong>. Inspect both forecasts.</li></ol><div class=\"done\">Check your work: Show which model validation selected, then point to a region where its forecast missed.</div>",
+      "notes": "Give participants twenty minutes. Start with the local scorer examples, then train both model versions. Ask each participant to explain why validation selected one and show a region it still missed.",
       "kind": "exercise",
       "time": "1:55\u20132:15",
       "answer": "answer-images"
@@ -465,9 +465,9 @@
     {
       "number": 47,
       "key": "agent-need",
-      "title": "Now the agent can edit the program",
-      "body": "<ResearchMap :level=\"4\" /><div class=\"bottom-note\">The agent can draft the hypothesis and code. You still review the diff.</div>",
-      "notes": "Introduce the meta layer only after students have built a working experiment. The agent gets evidence and a constrained edit request. It can be mistaken.",
+      "title": "Give the research agent your code and results",
+      "body": "<p class=\"agent-explanation\">So far, you\u2019ve written the models and chosen their settings. Now give a research agent that code and its validation results, and ask for two changes. Read the diffs, train both candidates, and compare their errors. The version selected by validation error becomes the starting point for the next round.</p><div class=\"bottom-note\">The agent writes proposals. You review the code before the notebook runs it.</div>",
+      "notes": "Read this transition as one explanation. Until now, we wrote the models and chose the settings ourselves. We\u2019ll now ask an agent for two code changes, inspect them, and use the experiment we built to test them. The selected code becomes the next round\u2019s starting point.",
       "kind": "",
       "time": "2:15",
       "answer": null
@@ -475,9 +475,9 @@
     {
       "number": 48,
       "key": "weights",
-      "title": "Two kinds of model, two kinds of change",
+      "title": "The research agent writes code; the forecast model trains",
       "body": "<table class=\"clean-table\"><tbody><tr><th></th><th>Research agent</th><th>Forecasting model</th></tr><tr><td>Job</td><td>Propose code edits</td><td>Predict solar observations</td></tr><tr><td>Weights</td><td>Fixed throughout</td><td>Trained on training dates</td></tr><tr><td>Changed by this loop</td><td>Its evidence and task context</td><td>Source, loss, training code, trained weights</td></tr></tbody></table><div class=\"bottom-note\">No post-training of the research agent occurs in this workshop.</div>",
-      "notes": "Explicitly correct possible carryover from the Harness\u00b2 agent workshop. There all runtime model weights stayed fixed. Here small forecasting models train normally.",
+      "notes": "There are two different models here. GLM writes research proposals and its weights stay fixed. The small forecasting networks train their weights for each candidate. The research agent changes the program that performs that training.",
       "kind": "",
       "time": "2:17",
       "answer": null
@@ -485,9 +485,9 @@
     {
       "number": 49,
       "key": "boundaries",
-      "title": "What the editor can change",
-      "body": "<div class=\"two-col\"><div><h2>Editable</h2><p>Model layers<br>Feature computation<br>Training loss<br>Training procedure</p></div><div><h2>Held fixed</h2><p>Data partitions<br>Target definition<br>Independent metric<br>Final-test access</p></div></div><div class=\"bottom-note\">Reviewed subprocess execution is not a security sandbox. Training workers receive no Forge credentials.</div>",
-      "notes": "Use accurate isolation language. This workshop runs reviewed Python in a bounded subprocess, not remote Sandbox entitlement. Time limits and no inherited secrets reduce risk but do not turn arbitrary code into secure execution.",
+      "title": "Decide which files the agent may change",
+      "body": "<div class=\"two-col\"><div><h2>The agent may edit</h2><p>Model layers<br>Feature computation<br>Training loss<br>Training procedure</p></div><div><h2>The experiment keeps fixed</h2><p>Training and validation dates<br>What we predict<br>How we score predictions<br>The reserved final-test dates</p></div></div><div class=\"bottom-note\">Candidate Python runs in this notebook\u2019s environment after your review.</div>",
+      "notes": "The agent can edit feature, model, loss, and training code. It cannot change the date partitions, forecast target, or comparison metric. Review every proposed diff before execution. These training subprocesses are time-limited and do not inherit Forge credentials, but they are not a security sandbox.",
       "kind": "",
       "time": "2:19",
       "answer": null
@@ -495,9 +495,9 @@
     {
       "number": 50,
       "key": "evidence",
-      "title": "Give the agent the active experiment",
+      "title": "Send the code, settings, and validation results",
       "body": "<div class=\"step-path\"><div><h2>Exact source</h2><p>The files that produced the parent result.</p></div><div><h2>Active settings</h2><p>Architecture, steps, width, optimizer values.</p></div><div><h2>Validation evidence</h2><p>Curves, errors, predictions, and failed attempts.</p></div></div><div class=\"bottom-note\">A default in source may not be the value the run used.</div>",
-      "notes": "The rehearsal retained an ineffective default-value edit when active configuration was missing. Teach the general mechanism without hiding the qualification history. No final-test scores enter this context.",
+      "notes": "Send the files and settings that produced the current result, plus its validation outputs. A default learning rate in source may differ from the value used in the run. The agent needs the active values to propose a relevant change.",
       "kind": "",
       "time": "2:21",
       "answer": null
@@ -505,9 +505,9 @@
     {
       "number": 51,
       "key": "agent-span",
-      "title": "Agent Lens records how the edit happened",
-      "body": "<div class=\"step-path\"><div><h2>Request</h2><p>Mission, evidence, model settings.</p></div><div><h2>Tools</h2><p>Read evidence, produce code, run a test.</p></div><div><h2>Decision</h2><p>Proposed files, rationale, retained lesson.</p></div></div><div class=\"bottom-note\">A persuasive rationale is a hypothesis. The probe determines what the code did.</div>",
-      "notes": "Model/tool spans, timestamps, arguments, results and errors must correspond to actual events. Automatic Insights clustering is not required for this small workshop. Deterministic records are not renamed Insights.",
+      "title": "Follow the agent\u2019s work in Agent Lens",
+      "body": "<div class=\"step-path\"><div><h2>Open the request</h2><p>Read what we asked the agent to change.</p></div><div><h2>Inspect the tool calls</h2><p>Find the evidence it read and the code it returned.</p></div><div><h2>Follow the test</h2><p>Open the training call and look at its result or error.</p></div></div><div class=\"bottom-note\">Compare the agent\u2019s stated reason with what happened when its code ran.</div>",
+      "notes": "Open the research conversation in Agent Lens. Start with the mission, then find the evidence-reading tool and the returned code. Follow a training call to its result or error. Compare that sequence with the agent\u2019s explanation of its change.",
       "kind": "",
       "time": "2:23",
       "answer": null
@@ -515,9 +515,9 @@
     {
       "number": 52,
       "key": "native-lens",
-      "title": "Inspect the evidence the researcher read",
-      "body": "<div class=\"native-columns\"><a href=\"/images/ux-v020-solar-lens-current.png\" target=\"_blank\" aria-label=\"Open full-size Agent Lens capture\"><img src=\"/images/ux-v020-solar-lens-current.png\" alt=\"Recorded Agent Lens read_validation_evidence span with inputs and outputs\"></a><div><h2>Find <code>read_validation_evidence</code>.</h2><p>The span preserves the active configuration and validation evidence.</p><h2>Then inspect the proposal.</h2><p>Compare its returned source with the program that the probe ran.</p><p class=\"aside\"><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ef590522f1af377a0bc04bd63eea23e4/spans\">Open the recorded conversation \u2197</a><br><a href=\"/images/ux-v020-solar-lens-current.png\" target=\"_blank\">Open full-size capture \u2197</a></p></div></div><div class=\"bottom-note\">Actual revised-notebook rehearsal, November 13. Your conversation contains your own execution.</div>",
-      "notes": "Native Agent Lens capture of the selected read_validation_evidence span 37fa531bfbbebdfb in the revised-notebook rehearsal. Authentication may be required for the conversation link.",
+      "title": "Find the validation evidence the agent read",
+      "body": "<div class=\"native-columns\"><a href=\"/images/ux-v020-solar-lens-current.png\" target=\"_blank\" aria-label=\"Open full-size Agent Lens capture\"><img src=\"/images/ux-v020-solar-lens-current.png\" alt=\"Recorded Agent Lens read_validation_evidence span with inputs and outputs\"></a><div><h2>Find <code>read_validation_evidence</code>.</h2><p>Open the tool output and find the settings and validation results.</p><h2>Then inspect the proposal.</h2><p>Read the returned code, then open the training result for that candidate.</p><p class=\"aside\"><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ef590522f1af377a0bc04bd63eea23e4/spans\">Open the recorded conversation \u2197</a><br><a href=\"/images/ux-v020-solar-lens-current.png\" target=\"_blank\">Open full-size capture \u2197</a></p></div></div><div class=\"bottom-note\">Recorded on November 13. Open your own conversation after sending the request.</div>",
+      "notes": "In this recorded conversation, select read_validation_evidence. Its output includes the active configuration and validation evidence. Then inspect the proposed code and follow its training result. The full-size capture link helps when the native view requires sign-in.",
       "kind": "",
       "time": "2:24",
       "answer": null
@@ -525,9 +525,9 @@
     {
       "number": 53,
       "key": "evidence-turn",
-      "title": "Choose what the research agent may inspect",
-      "body": "<div class=\"task\">Open <strong>6 \u00b7 Research agent</strong>.</div><ol class=\"exercise-controls\"><li>Inspect <code>select_validation_evidence(record)</code>. Keep active settings and validation results, then click <strong>Check my evidence selection</strong>.</li><li>Check that reserved-date predictions and scores are excluded.</li><li>Read the mission. Name one proposed test that could show an edit did not help.</li></ol><div class=\"done\">Done when: you can explain what the agent sees and what remains withheld.</div>",
-      "notes": "12 minutes. Code selection is the lesson, not copying an event identifier by hand. Use small visible checks for allowed split and supported source.",
+      "title": "Choose the evidence for the research agent",
+      "body": "<div class=\"task\">Open <strong>6 \u00b7 Research agent</strong>.</div><ol class=\"exercise-controls\"><li>In <code>select_validation_evidence(record)</code>, keep the active settings and validation results. Click <strong>Check my evidence selection</strong>.</li><li>Read the check result. Confirm that the final-test example is rejected.</li><li>Name the validation fields your function will send to the agent. What can it learn from them?</li></ol><div class=\"done\">Check your work: You can name the code and validation results the agent will receive.</div>",
+      "notes": "Allow twelve minutes. Participants should edit the evidence selector, then run the check that accepts validation evidence and rejects the final-test example. Ask them to name what the agent will receive before sending a request.",
       "kind": "exercise",
       "time": "2:25\u20132:40",
       "answer": "answer-evidence"
@@ -535,9 +535,9 @@
     {
       "number": 54,
       "key": "propose",
-      "title": "Two candidates start from the same parent",
+      "title": "Ask for two changes to the same starting code",
       "body": "<ResearchBranches :level=\"1\" /><div class=\"bottom-note\"><a href=\"https://github.com/google-research/harness2/tree/1cfe254e8d25b15f37048c3730134686abe60335\">Harness\u00b2-inspired</a>: our probes train forecasting weights and include validation scores.</div>",
-      "notes": "Introduce competing hypotheses. This is a teaching adaptation of Harness\u00b2 Propose\u2013Probe\u2013Compose (https://github.com/google-research/harness2/tree/1cfe254e8d25b15f37048c3730134686abe60335). Upstream task refinement uses execution evidence without ground-truth feedback. Here the agent explicitly receives validation metrics and edits an ML training program. A larger network is not automatically better.",
+      "notes": "Both candidates start from the same code and settings. This borrows Propose\u2013Probe\u2013Compose from Harness\u00b2. Here the probes train forecasting models and give validation scores to the editor, so it is a teaching adaptation rather than the paper\u2019s exact task protocol.",
       "kind": "",
       "time": "2:40",
       "answer": null
@@ -545,9 +545,9 @@
     {
       "number": 55,
       "key": "native-diff",
-      "title": "Review the actual change, then test it",
-      "body": "<a class=\"diff-crop\" href=\"/images/ux-v020-solar-diff.png\" target=\"_blank\" aria-label=\"Open the full proposed-change capture\"><img src=\"/images/ux-v020-solar-diff.png\" alt=\"Actual candidate diff changes squared training error to absolute error and requires review before the probe\"></a><div class=\"image-caption\">Fresh rehearsal proposal: <code>.square()</code> became <code>.abs()</code>. Review is not evidence of a gain. <a href=\"/images/ux-v020-solar-diff.png\" target=\"_blank\">Full capture \u2197</a></div>",
-      "notes": "Actual round-one proposal in the revised browser rehearsal. This frame is cropped to the source diff and explicit review control. The full capture includes the agent-attributed rationale. We have not inferred a performance benefit from that rationale. Only the subsequent probe can measure it.",
+      "title": "Read the proposed change before running it",
+      "body": "<a class=\"diff-crop\" href=\"/images/ux-v020-solar-diff.png\" target=\"_blank\" aria-label=\"Open the full proposed-change capture\"><img src=\"/images/ux-v020-solar-diff.png\" alt=\"Actual candidate diff changes squared training error to absolute error and requires review before the probe\"></a><div class=\"image-caption\">Recorded proposal: <code>.square()</code> became <code>.abs()</code>. The training result will show whether it helped. <a href=\"/images/ux-v020-solar-diff.png\" target=\"_blank\">Full capture \u2197</a></div>",
+      "notes": "This recorded candidate changes squared training loss to absolute loss. Ask what that might change during training, then inspect the test result. Reading the diff tells us what was proposed; it does not tell us whether the forecast improved.",
       "kind": "",
       "time": "2:41",
       "answer": null
@@ -555,9 +555,9 @@
     {
       "number": 56,
       "key": "probe",
-      "title": "Each proposed program must run",
+      "title": "Train and score each candidate",
       "body": "<ResearchBranches :level=\"2\" /><div class=\"bottom-note\">Use the same training and validation data. Keep failed runs visible.</div>",
-      "notes": "Show exact source fingerprints and receipts. If an attempt fails to train, preserve its failure; don\u2019t coerce a missing score to zero.",
+      "notes": "Train each candidate on the same training dates and compare its validation error. If one fails before producing a forecast, inspect the error and leave its score missing.",
       "kind": "",
       "time": "2:42",
       "answer": null
@@ -565,9 +565,9 @@
     {
       "number": 57,
       "key": "compose",
-      "title": "Composition reviews the probes",
-      "body": "<ResearchBranches :level=\"3\" /><div class=\"bottom-note\">KEEP retains the source. Its next probe is a new execution, not a new executable version.</div>",
-      "notes": "Dashed lines mean reviewed evidence. They do not mean both candidates were adopted. This was a major ambiguity in older branch drawings.",
+      "title": "Ask the agent which changes to keep",
+      "body": "<ResearchBranches :level=\"3\" /><div class=\"bottom-note\">The agent can keep A, keep B, combine changes, or retain the starting code.</div>",
+      "notes": "The agent reads both test results and can keep one candidate, combine changes, or retain the starting code. The dashed lines mean that it reviewed the results. They do not mean both sets of changes were merged.",
       "kind": "",
       "time": "2:44",
       "answer": null
@@ -575,9 +575,9 @@
     {
       "number": 58,
       "key": "test-composed",
-      "title": "A composition is another proposal until tested",
-      "body": "<ResearchBranches :level=\"4\" /><div class=\"bottom-note\">The proposed file must match the source the probe executes.</div>",
-      "notes": "A combined version can introduce new behavior. Even if both component candidates passed, the composition needs an execution. Retaining the parent preserves the source fingerprint.",
+      "title": "Test the version the agent chose",
+      "body": "<ResearchBranches :level=\"4\" /><div class=\"bottom-note\">Run the selected code on the same training and validation dates.</div>",
+      "notes": "Run the chosen code before accepting it. Combining two changes can behave differently from either one alone. If the unchanged version is retained, testing it creates another execution of the same code.",
       "kind": "",
       "time": "2:46",
       "answer": null
@@ -585,9 +585,9 @@
     {
       "number": 59,
       "key": "repeat",
-      "title": "The next round uses the previous result",
-      "body": "<ResearchBranches :level=\"5\" /><div class=\"bottom-note\">Carry the adopted source and an evidence-backed lesson into round two.</div>",
-      "notes": "Both rounds remain on the solar image task. The selection policy uses validation error. Repeated editing is not proof of recursive performance gains.",
+      "title": "Start round two from the selected version",
+      "body": "<ResearchBranches :level=\"5\" /><div class=\"bottom-note\">Use the selected code and what the first tests showed to plan the next changes.</div>",
+      "notes": "The selected code and a short lesson enter round two. The agent now proposes changes on top of that version. We are still forecasting the same image task and selecting with the same validation metric.",
       "kind": "",
       "time": "2:48",
       "answer": null
@@ -595,9 +595,9 @@
     {
       "number": 60,
       "key": "round1-turn",
-      "title": "Run round one, one decision at a time",
-      "body": "<div class=\"task\">Inspect <code>next_research_action</code> in <strong>6 \u00b7 Research agent</strong>.</div><ol class=\"exercise-controls\"><li><strong>Propose two code changes</strong>. Read both diffs.</li><li>Confirm review of Candidate A \u2192 <strong>Test Candidate A</strong>. Confirm review of Candidate B \u2192 <strong>Test Candidate B</strong>.</li><li><strong>Record my comparison</strong>, then <strong>Request a composition</strong>.</li></ol><div class=\"done\">Done when: you can point to each candidate\u2019s files, training result, and Agent Lens conversation.</div>",
-      "notes": "Work alongside learners. Review actions are free; testing is explicit. Keep this slide visible during the first half of round one.",
+      "title": "Propose and test two changes",
+      "body": "<div class=\"task\">Inspect <code>next_research_action</code> in <strong>6 \u00b7 Research agent</strong>.</div><ol class=\"exercise-controls\"><li><strong>Propose two code changes</strong>. Read both diffs.</li><li>Confirm review of Candidate A \u2192 <strong>Test Candidate A</strong>. Confirm review of Candidate B \u2192 <strong>Test Candidate B</strong>.</li><li><strong>Record my comparison</strong>, then <strong>Request a composition</strong>.</li></ol><div class=\"done\">Check your work: Each candidate\u2019s proposal diff and training result are linked in Agent Lens.</div>",
+      "notes": "Keep this slide visible while participants propose and test the first two candidates. Ask them to explain each diff before confirming review. After both tests, record a comparison and request the agent\u2019s choice.",
       "kind": "exercise",
       "time": "2:50\u20133:00",
       "answer": null
@@ -605,9 +605,9 @@
     {
       "number": 61,
       "key": "round2-turn",
-      "title": "Test the composition, then repeat",
-      "body": "<div class=\"task\">Continue the same workbench.</div><ol class=\"exercise-controls\"><li>Confirm review of composition, then <strong>Test the composition</strong>.</li><li>Click <strong>Save the adopted version and lesson</strong>. Check whether the parent was retained.</li><li>Repeat the process in round two using the previous outcome.</li></ol><div class=\"done\">Done when: both rounds have a tested selection and rejected alternatives remain inspectable.</div>",
-      "notes": "15 minutes. A valid KEEP outcome completes the exercise. If calls are slow, inspect saved evidence and label replay rather than pretending an edit ran.",
+      "title": "Test the selected code, then begin round two",
+      "body": "<div class=\"task\">Continue the same workbench.</div><ol class=\"exercise-controls\"><li>Confirm review of composition, then <strong>Test the composition</strong>.</li><li>Click <strong>Save the adopted version and lesson</strong>. Check whether the parent was retained.</li><li>Repeat the process in round two using the previous outcome.</li></ol><div class=\"done\">Check your work: Open the selected version from each round and explain why it was kept.</div>",
+      "notes": "Give participants fifteen minutes for the tested selection and the second round. Retaining the previous code is a valid outcome. Ask why it was retained, then show its saved execution rather than treating KEEP as skipped work.",
       "kind": "exercise",
       "time": "3:00\u20133:15",
       "answer": "answer-controller"
@@ -615,9 +615,9 @@
     {
       "number": 62,
       "key": "branch-inspect",
-      "title": "Every branch should explain a decision",
+      "title": "Follow one proposal through the branch diagram",
       "body": "<ResearchBranches :level=\"5\" :interactive=\"true\" />",
-      "notes": "Optional two-minute interactive recap. Keyboard-accessible nodes explain the process. This diagram is an illustration; the notebook branch view opens actual records.",
+      "notes": "Click a candidate, its test, and the selection step. Ask someone to explain what happened along that path. This diagram explains the process; the notebook\u2019s branch view opens their actual files and results.",
       "kind": "",
       "time": "3:15",
       "answer": null
@@ -625,9 +625,9 @@
     {
       "number": 63,
       "key": "freeze",
-      "title": "The search ends before final evaluation",
-      "body": "<div class=\"step-path\"><div><h2>Persistence</h2><p>Copy the latest observed image.</p></div><div><h2>Manual selection</h2><p>Best implemented model on validation.</p></div><div><h2>Agent selection</h2><p>The last valid adopted code and weights.</p></div></div><div class=\"bottom-note\">Freeze source and weights. No more selection using the reserved dates.</div>",
-      "notes": "The final image comparison has three versions on the same later windows. The measurement comparison is separate. The final stage loads weights rather than fitting again.",
+      "title": "Stop editing before the final comparison",
+      "body": "<div class=\"step-path\"><div><h2>Persistence</h2><p>Copy the latest observed image.</p></div><div><h2>Manual selection</h2><p>The model selected using validation error.</p></div><div><h2>Agent selection</h2><p>The code and weights selected after round two.</p></div></div><div class=\"bottom-note\">Keep these versions fixed while testing the reserved dates.</div>",
+      "notes": "Select the versions before looking at the final dates. The image comparison includes persistence, the manually selected model, and the agent-selected model. Keep the saved code and weights fixed while evaluating them.",
       "kind": "",
       "time": "3:17",
       "answer": null
@@ -635,9 +635,9 @@
     {
       "number": 64,
       "key": "frozen-code",
-      "title": "Final inference loads the saved weights",
+      "title": "Load the saved weights to make final predictions",
       "body": "```python\nmodel = build_model(input_shape, frozen_config)\nmodel.load_state_dict(saved_weights)\nmodel.eval()\nwith torch.no_grad():\n    prediction = model(final_inputs)\n```\n\n<div class=\"bottom-note\">There is no optimizer step in this stage.</div>",
-      "notes": "Illustrative inference excerpt. Validate the actual execution uses the frozen model rather than silently retraining. The fixed scorer sees future targets; the candidate program does not during improvement.",
+      "notes": "Load the saved weights, switch to evaluation mode, and predict without an optimizer step. Final evaluation measures the selected trained model; it does not train another one.",
       "kind": "",
       "time": "3:19",
       "answer": null
@@ -645,9 +645,9 @@
     {
       "number": 65,
       "key": "aligned",
-      "title": "Compare the same forecast windows",
-      "body": "<table class=\"clean-table\"><tbody><tr><th>Case identity</th><th>Persistence</th><th>Manual</th><th>Agent-selected</th></tr><tr><td>Same input timestamps</td><td>Prediction + error</td><td>Prediction + error</td><td>Prediction + error</td></tr><tr><td>Same target timestamp</td><td>Trace or receipt</td><td>Executed source</td><td>Executed source</td></tr></tbody></table><div class=\"bottom-note\">Weave and EvalTables use stable case IDs to align predictions across versions.</div>",
-      "notes": "Native EvalTables has returned HTTP500 in the recorded rehearsal. Show the notebook and Weave comparison when unavailable. Never label a fallback W&B Table as native EvalTables.",
+      "title": "Compare predictions for the same times",
+      "body": "<table class=\"clean-table\"><tbody><tr><th>Case identity</th><th>Persistence</th><th>Manual</th><th>Agent-selected</th></tr><tr><td>Same input timestamps</td><td>Prediction + error</td><td>Prediction + error</td><td>Prediction + error</td></tr><tr><td>Same target timestamp</td><td>Saved output</td><td>Executed source</td><td>Executed source</td></tr></tbody></table><div class=\"bottom-note\">Use each case ID to find the same input and target times in Weave or EvalTables.</div>",
+      "notes": "Choose one case identity and compare the predictions for its shared input and target times. Weave stores these evaluation records. Native EvalTables was unavailable during the rehearsal, so the notebook and Weave comparison remain available; publication can be retried separately.",
       "kind": "",
       "time": "3:21",
       "answer": null
@@ -655,9 +655,9 @@
     {
       "number": 66,
       "key": "final-turn",
-      "title": "Evaluate the frozen versions",
-      "body": "<div class=\"task\">Open <strong>7 \u00b7 Final evaluation</strong>.</div><ol class=\"exercise-controls\"><li>Click <strong>Freeze versions and evaluate reserved dates</strong>.</li><li>Select one shared case. Inspect its prediction, observed future, and error for every version.</li><li>Open its training record, source, and Agent Lens evidence. Keep image and measurement scores separate.</li></ol><div class=\"done\">Done when: all versions are represented, including missing results and failed publication.</div>",
-      "notes": "20 minutes. Score differences are evidence from these dates and this run. Do not count pixels or neighboring timestamps as independent studies.",
+      "title": "Test the selected models on reserved dates",
+      "body": "<div class=\"task\">Open <strong>7 \u00b7 Final evaluation</strong>.</div><ol class=\"exercise-controls\"><li>Click <strong>Freeze versions and evaluate reserved dates</strong>.</li><li>Choose one timestamp. Compare each image forecast with the same observed future.</li><li>Open one result\u2019s training record and Agent Lens call. Compare the image scores separately from the GOES scores.</li></ol><div class=\"done\">Check your work: Explain a difference between two forecasts using their images and scores.</div>",
+      "notes": "Allow twenty minutes. Have participants choose one timestamp and explain a difference in the forecasts using the error images. Keep the GOES and image tables separate. Nearby windows overlap, so they are not independent studies.",
       "kind": "exercise",
       "time": "3:25\u20133:45",
       "answer": "answer-final"
@@ -667,7 +667,7 @@
       "key": "recorded-final",
       "title": "In this rehearsal, image error fell 10.15%",
       "body": "<div class=\"measured-grid\"><div><div class=\"measured-gain\">10.15%</div><p>less error than the manually selected model</p><p class=\"aside\">Agent edits: zero-initialize the residual head, then use absolute training loss.</p></div><table class=\"clean-table\"><tbody><tr><th>Frozen version</th><th>Masked MAE \u2193</th></tr><tr><td>Persistence</td><td>0.125762</td></tr><tr><td>Manual residual model</td><td>0.122442</td></tr><tr><td>Agent-selected code</td><td>0.110011</td></tr></tbody></table></div><p class=\"aside\">Actual AIA 171 \u00c5 observations. 199 overlapping windows; February 13\u201314, 2014; one seed. <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==\">Open the recorded comparison \u2197</a></p><div class=\"bottom-note\">A measured result from this rehearsal, not a promised outcome for your edits.</div>",
-      "notes": "Recorded November 13 rehearsal: public/recorded-study.json, images/final-comparison. Manual masked MAE 0.1224417336622075; agent 0.11001095193834161; persistence 0.12576198700564592. The 10.15% is relative error reduction versus manual, not percentage points of accuracy. Agent source contains the zero-init head from round one and absolute loss from round two. One seed, overlapping windows and two reserved dates sharply limit generalization.",
+      "notes": "The selected agent code combined the zero-initialized residual head from round one with absolute training loss from round two. Its final masked MAE was 0.11001095193834161, versus 0.1224417336622075 for the manual model and 0.12576198700564592 for persistence. The 10.15% is a relative reduction in error versus manual. This is one seed and 199 overlapping windows across two reserved days, not evidence of reliable solar forecasting across other periods.",
       "kind": "",
       "time": "3:45 \u00b7 RECORDED REHEARSAL",
       "answer": null
@@ -675,9 +675,9 @@
     {
       "number": 68,
       "key": "recorded-image",
-      "title": "Recorded: inspect the matching forecasts",
+      "title": "Compare the saved forecasts at the same time",
       "body": "<a class=\"final-crop\" href=\"/images/ux-v020-solar-final.png\" target=\"_blank\" aria-label=\"Open the complete final notebook comparison\"><img src=\"/images/ux-v020-solar-final.png\" alt=\"Actual notebook comparing manual and agent forecasts at the same reserved timestamp, with observed future and error images\"></a><div class=\"image-caption\">Same input and future timestamp. Manual above, agent-selected below. <a href=\"/images/ux-v020-solar-final.png\" target=\"_blank\">Full notebook comparison \u2197</a></div>",
-      "notes": "Actual revised-notebook final comparison. The crop shows matching manual and agent forecast rows. The linked full screen includes the image score table and the separate GOES failure table. This is the notebook comparison, not native EvalTables. Source: evidence/ux-v020-solar-final.png; the underlying saved agent plot is public/images/solar-final.png.",
+      "notes": "These are saved forecasts for the same final timestamp. Compare the manual row with the agent-selected row, including the error images. The full screenshot also contains the score tables. It is the notebook comparison from the rehearsal.",
       "kind": "",
       "time": "3:46 \u00b7 RECORDED REHEARSAL",
       "answer": null
@@ -685,9 +685,9 @@
     {
       "number": 69,
       "key": "recorded-goes",
-      "title": "Recorded: the short measurement models lost",
+      "title": "The recorded GOES model lost to persistence",
       "body": "<img class=\"solar-photo\" src=\"/images/goes-final.png\" alt=\"Recorded observed flux and undertrained forecast\"><div class=\"image-caption\">Final log-flux MAE: selected model 2.469; persistence 0.193. The training budget was 60 steps.</div>",
-      "notes": "Fresh revised-notebook rehearsal: public/recorded-study.json, goes/final-comparison and saved predictions. Undertraining is supported by the saved learning curves; do not turn this into a claim that MLP or CNN cannot forecast these observations.",
+      "notes": "The GOES model\u2019s final log-flux MAE was 2.469; persistence scored 0.193. Its learning curve showed it was still undertrained after sixty steps. Keep this failure beside the image result. It does not establish that MLPs or CNNs cannot forecast solar measurements.",
       "kind": "",
       "time": "3:47 \u00b7 RECORDED REHEARSAL",
       "answer": null
@@ -695,9 +695,9 @@
     {
       "number": 70,
       "key": "result-meaning",
-      "title": "Quality, effort, and execution are separate",
-      "body": "<table class=\"clean-table\"><tbody><tr><th>Question</th><th>Evidence</th></tr><tr><td>Did forecasts improve?</td><td>Matched final predictions and fixed metrics</td></tr><tr><td>What did improvement cost?</td><td>All proposals, probes, retries, and compute</td></tr><tr><td>Did execution get more reliable?</td><td>Errors, missing outputs, and recovery traces</td></tr></tbody></table>",
-      "notes": "A smoother execution may not produce a better forecast. A tiny score change may not justify a large search. Inference and notebook compute billing are separate.",
+      "title": "Compare forecast quality, time, and cost",
+      "body": "<table class=\"clean-table\"><tbody><tr><th>What to ask</th><th>What to inspect</th></tr><tr><td>Did the forecast error fall?</td><td>The same final dates and scoring rule for every model</td></tr><tr><td>How much work did that take?</td><td>Training time and inference cost, including failed attempts</td></tr><tr><td>Did a run fail before producing a forecast?</td><td>The error in its training call or agent trace</td></tr></tbody></table>",
+      "notes": "Ask whether forecast error fell, how much training and inference it took, and whether any executions failed. These answer different questions. A run can finish cleanly and still make poor predictions.",
       "kind": "",
       "time": "3:48",
       "answer": null
@@ -705,9 +705,9 @@
     {
       "number": 71,
       "key": "reproduce",
-      "title": "Your teammate should be able to reopen the result",
+      "title": "Open the files behind one result",
       "body": "<div class=\"step-path\"><div><h2>Run</h2><p>Settings, metric, loss history.</p></div><div><h2>Artifact</h2><p>Source, data, weights, predictions.</p></div><div><h2>Trace</h2><p>Agent requests, edits, tests, decisions.</p></div></div><div class=\"bottom-note\">The Report explains what changed and links to those records.</div>",
-      "notes": "Explain the evidence chain in ordinary language. Do not make facilitator monitoring a substitute for storing scientific outputs.",
+      "notes": "Open a result\u2019s run for settings and loss history, its Artifact for files, and its Agent Lens conversation for the agent\u2019s actions. These links let a teammate inspect the result instead of relying on our summary.",
       "kind": "",
       "time": "3:49",
       "answer": null
@@ -715,9 +715,9 @@
     {
       "number": 72,
       "key": "conclusion-turn",
-      "title": "Publish the result you can defend",
-      "body": "<div class=\"task\">Use your own comparison.</div><ol class=\"exercise-controls\"><li>State one code change and the result it produced on reserved dates.</li><li>Include an example where the forecast failed or changed little.</li><li>Click <strong>Publish my conclusion</strong>. Reopen one result from its saved artifact.</li></ol><div class=\"done\">Done when: another person can trace your claim to its code, run, prediction, and score.</div>",
-      "notes": "Eight minutes. Permit a negative finding. If publication fails, save the conclusion and use publication-only retry.",
+      "title": "Write down what changed and whether it helped",
+      "body": "<div class=\"task\">Use your own comparison.</div><ol class=\"exercise-controls\"><li>Name one code change and report its error on the reserved dates.</li><li>Include a forecast that still missed. Say what you would try next.</li><li>Click <strong>Publish my conclusion</strong>. Follow a link in your Report back to the saved code or prediction.</li></ol><div class=\"done\">Check your work: Your conclusion names the change, the measured result, and a remaining problem.</div>",
+      "notes": "Allow eight minutes. Ask participants to name a change, report what happened, and include a remaining miss. A negative result is fine. If publication fails, save the conclusion and retry the upload without rerunning the experiment.",
       "kind": "exercise",
       "time": "3:50\u20133:58",
       "answer": null
@@ -725,9 +725,9 @@
     {
       "number": 73,
       "key": "close",
-      "title": "The agent can propose the next experiment.",
-      "body": "<p class=\"big\">You now have the part that makes the proposal testable.</p><p>Keep the data version. Save the executed source. Inspect the prediction. Measure on dates the search did not use.</p><div class=\"bottom-note\">The next result still needs a source file, a dataset version, and a test.</div>",
-      "notes": "End on an actionable distinction. The research agent increases how many hypotheses can be proposed. The measurement stack determines whether we learn from them. Don\u2019t promise unlimited autonomous research.",
+      "title": "Choose the next experiment from what you observed",
+      "body": "<p class=\"big\">Pick one error you saw and propose a change that might reduce it.</p><p>Say which code you\u2019d change, which comparison you\u2019d run, and what result would make you keep the previous version.</p><div class=\"bottom-note\">For the next study, choose new final-test dates before making more changes.</div>",
+      "notes": "Ask for one next experiment based on an error someone inspected. What code would change, what would stay fixed, and what would make them keep the old version? Use new final-test dates for another round of model development.",
       "kind": "",
       "time": "3:58\u20134:00",
       "answer": null
@@ -737,7 +737,7 @@
       "key": "reference",
       "title": "Reference and worked answers",
       "body": "<p class=\"big\">Use these after an attempt, or when live access is unavailable.</p><p>Recorded examples belong to the November 13 technical rehearsal. They are not results from your unexecuted changes.</p><div class=\"bottom-note\">Use the return links to continue the workshop.</div>",
-      "notes": "All following pages are optional and add no lecture time.",
+      "notes": "These pages are optional answers and recorded examples. Open an answer after participants have tried the exercise. Use the return link to get back to the teaching sequence.",
       "kind": "",
       "time": "REFERENCE",
       "answer": null
@@ -745,9 +745,9 @@
     {
       "number": 75,
       "key": "answer-trace",
-      "title": "A tool span records the actual operation",
+      "title": "Put the attribute inside the tool scope",
       "body": "```python\ndef instrument_tool(observation):\n    with tracing.Tool(\n        name=observation[\"name\"],\n        arguments=observation[\"arguments\"],\n        result=observation[\"result\"],\n        started_at=stamp(observation[\"started_at\"]),\n        ended_at=stamp(observation[\"ended_at\"]),\n    ) as tool:\n        tool.set_attributes({\"workshop.exercise\": \"solar-research\"})\n        if observation.get(\"error\"):\n            tool.record_error(RuntimeError(observation[\"error\"]))\n```\n\n",
-      "notes": "Excerpt of the actual instrument_tool function. Parent scopes and tool_call_id are shown in the notebook. Compare stored spans with independent events; timestamps must describe the event, not a later export.",
+      "notes": "The attribute is attached inside the Tool scope. The complete notebook function also supplies its call identity and outer conversation. Use the operation\u2019s timestamps so Agent Lens shows when the work happened, not when it was uploaded.",
       "kind": "answer-code",
       "time": "WORKED ANSWER",
       "answer": null
@@ -755,9 +755,9 @@
     {
       "number": 76,
       "key": "answer-persistence",
-      "title": "Persistence returns the latest observation",
-      "body": "```python\ndef persistence_forecast(split):\n    return split[\"persistence\"].copy()\n```\n\n<p>Changing the returned array must not mutate the original data.</p>",
-      "notes": "Worked answer uses public split persistence field. Tests must also reject using the target and preserve input data.",
+      "title": "Return a copy of the latest observation",
+      "body": "```python\ndef persistence_forecast(split):\n    return split[\"persistence\"].copy()\n```\n\n<p>The copy lets you work with the predictions without changing the dataset.</p>",
+      "notes": "The prepared split includes the last observed reading for each forecast window. Return a copy so later changes to the prediction array cannot alter the dataset.",
       "kind": "answer-code",
       "time": "WORKED ANSWER",
       "answer": null
@@ -765,9 +765,9 @@
     {
       "number": 77,
       "key": "answer-flux",
-      "title": "A constant one-unit error scores one",
+      "title": "Take the mean of the absolute errors",
       "body": "```python\ndef training_loss(prediction, target, mask):\n    return ((prediction - target).square() * mask).sum() / mask.sum()\n\ndef my_flux_mae(prediction, target):\n    return float(np.abs(prediction - target).mean())\n\nassert my_flux_mae(np.ones(3), np.zeros(3)) == 1.0\nassert my_flux_mae(np.zeros(3), np.zeros(3)) == 0.0\n```\n\n",
-      "notes": "Code validated by scripts/check-answers.py. Units are the transformed flux units, not raw W/m\u00b2.",
+      "notes": "Subtract prediction and target, take absolute values, and average. A prediction of one against a target of zero gives one. These are log10 flux units. The training loss above it is separate and uses squared error.",
       "kind": "answer-code",
       "time": "WORKED ANSWER",
       "answer": null
@@ -775,9 +775,9 @@
     {
       "number": 78,
       "key": "answer-search",
-      "title": "A completed search keeps every attempt",
-      "body": "<p class=\"big\">Six configurations share data, source, split, seed, and a training budget.</p><p>Compare the actual configuration fields in the Sweep. A failed execution stays in the table with its error; an unavailable metric stays missing.</p><div class=\"bottom-note\">Changing source creates a different set of stage identities.</div>",
-      "notes": "This is an inspection answer, not a promised outcome. W&B sweep assignment and journal execution reuse are separate responsibilities.",
+      "title": "Compare the settings and loss curves",
+      "body": "<p class=\"big\">Open two runs from the Sweep. Compare their model, width, learning rate, and training steps.</p><p>Then open the loss curves. A lower validation error is easier to interpret when you can see how each model trained.</p><div class=\"bottom-note\">If a run failed, inspect its error. A missing score cannot rank that model.</div>",
+      "notes": "Open the configuration and curve for two runs. Find the settings they share and the value that differs. If training failed, inspect the error rather than assigning a score to a forecast that does not exist.",
       "kind": "",
       "time": "WORKED ANSWER",
       "answer": null
@@ -785,9 +785,9 @@
     {
       "number": 79,
       "key": "answer-images",
-      "title": "The image scorer ignores off-disk pixels",
+      "title": "Average the error inside the disk mask",
       "body": "```python\ndef my_image_mae(prediction, target, disk_mask):\n    errors = np.abs(prediction - target) * disk_mask\n    per_image = errors.sum(axis=(1, 2, 3))\n    per_image /= disk_mask.sum(axis=(1, 2, 3))\n    return float(per_image.mean())\n```\n\n<p>Test zero error, constant +1 error, and an error only outside the mask.</p>",
-      "notes": "Code validated against small deterministic fixtures. Production scorer remains independent.",
+      "notes": "The mask selects the solar disk. Compute the sum and count per image, then average across images. Check identical arrays, a constant one-unit difference, and a difference only outside the mask.",
       "kind": "answer-code",
       "time": "WORKED ANSWER",
       "answer": null
@@ -795,9 +795,9 @@
     {
       "number": 80,
       "key": "answer-residual",
-      "title": "A zero correction reproduces persistence",
+      "title": "Add the correction to input channel 1",
       "body": "```python\ndef forward(self, x):\n    correction = self.net(x)\n    if architecture == \"residual\":\n        return x[:, 1:2] + correction\n    return correction\n```\n\n<div class=\"bottom-note\">The current image is input channel 1. The return has one channel.</div>",
-      "notes": "Excerpt of ImagePredictor in candidate.py. A constant zero correction produces the current image exactly. This tests wiring, not learned forecasting quality.",
+      "notes": "Channel zero is the earlier image and channel one is the current image. Add the correction to channel one. With a zero correction, this function returns the current image exactly.",
       "kind": "answer-code",
       "time": "WORKED ANSWER",
       "answer": null
@@ -805,9 +805,9 @@
     {
       "number": 81,
       "key": "answer-evidence",
-      "title": "Evidence selection excludes final results",
-      "body": "```python\ndef select_validation_evidence(record):\n    if record.get(\"split\") != \"validation\":\n        raise ValueError(\"Only validation evidence is allowed.\")\n    fields = (\"split\", \"config\", \"metrics\", \"losses\",\n              \"errors\", \"trace\", \"stage_id\", \"lessons\")\n    return {name: record[name] for name in fields if name in record}\n```\n\n<div class=\"bottom-note\">The parent source is supplied separately. Final predictions and scores are excluded.</div>",
-      "notes": "The notebook provides the exact schema and checked implementation. The exercise should show a validation fixture accepted and a test fixture rejected.",
+      "title": "Return validation evidence only",
+      "body": "```python\ndef select_validation_evidence(record):\n    if record.get(\"split\") != \"validation\":\n        raise ValueError(\"Only validation evidence is allowed.\")\n    fields = (\"split\", \"config\", \"metrics\", \"losses\",\n              \"errors\", \"trace\", \"stage_id\", \"lessons\")\n    return {name: record[name] for name in fields if name in record}\n```\n\n<div class=\"bottom-note\">The agent also receives the current source. Keep final predictions and scores out of this request.</div>",
+      "notes": "First check that the record belongs to validation. Then return only the listed evidence fields. The current source is supplied separately. The final-test example should raise an error before the agent sees it.",
       "kind": "",
       "time": "WORKED ANSWER",
       "answer": null
@@ -815,9 +815,9 @@
     {
       "number": 82,
       "key": "answer-controller",
-      "title": "The probe must run the proposed source",
-      "body": "```python\ncandidate = proposal[\"candidates\"][candidate_index]\nprobe = run_training(\n    session, stage_name, candidate[\"source\"],\n    image_splits, parent[\"config\"], dataset_version, metric_source,\n)\n```\n\n<div class=\"bottom-note\">Passing the parent source here would test the wrong program while producing a plausible result.</div>",
-      "notes": "Code excerpt mirrors the visible controller. Compare candidate.py in the saved proposal with candidate.py in the execution receipt. A complete source-bundle fingerprint also includes the metric file. The caller provides validation evidence, not final results.",
+      "title": "Pass the candidate\u2019s code to training",
+      "body": "```python\ncandidate = proposal[\"candidates\"][candidate_index]\nprobe = run_training(\n    session, stage_name, candidate[\"source\"],\n    image_splits, parent[\"config\"], dataset_version, metric_source,\n)\n```\n\n<div class=\"bottom-note\">Use the candidate\u2019s source here. Passing the parent would train the old program again.</div>",
+      "notes": "Pass candidate['source'] to training, along with the shared configuration. Passing the parent source here would train the old program while the interface appeared to test a new proposal. Open the saved candidate.py if the result looks suspicious.",
       "kind": "answer-code",
       "time": "WORKED ANSWER",
       "answer": null
@@ -825,9 +825,9 @@
     {
       "number": 83,
       "key": "answer-final",
-      "title": "The final comparison does not refit",
-      "body": "<p class=\"big\">Each selected version uses its saved weights.</p><p>Check the freeze receipt, source fingerprint, weight artifact, target timestamps, and all three prediction rows.</p><div class=\"bottom-note\">Persistence needs no training weights. Missing outputs remain visible.</div>",
-      "notes": "The frozen inference path calls training.train with supplied weights and no training split. Tests verify the fit function is not invoked.",
+      "title": "Use the saved model without training it again",
+      "body": "<p class=\"big\">Load each selected model\u2019s saved weights and predict the reserved dates.</p><p>Compare the three image forecasts at one timestamp. The input images and observed future should match across all three rows.</p><div class=\"bottom-note\">Persistence copies the current image and needs no trained weights.</div>",
+      "notes": "The selected weights are already trained. Load them and predict the final inputs. Compare the same target timestamps across all versions; persistence uses the current image directly.",
       "kind": "",
       "time": "WORKED ANSWER",
       "answer": null
@@ -837,7 +837,7 @@
       "key": "recorded-edit",
       "title": "Round 1: two changes, two measured outcomes",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Source</th><th>Validation error \u2193</th></tr><tr><td>Manual residual model</td><td>0.122116</td></tr><tr><td>A \u00b7 replace squared loss with absolute loss</td><td>0.120553</td></tr><tr><td>B \u00b7 initialize the residual head at zero</td><td>0.111434</td></tr></tbody></table><p>The composition selected B. Its separate test reproduced 0.111434.</p><p class=\"aside\"><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ef590522f1af377a0bc04bd63eea23e4\">Open the actual proposals and evidence \u2197</a></p>",
-      "notes": "Fresh revised-notebook rehearsal. Same date partitions, independent metric, seed and 40-step image training configuration. The composition selected the tested zero-init source without adding an untested loss change. This is one validation experiment, not a treatment estimate. Source: public/recorded-study.json.",
+      "notes": "In our November 13 rehearsal, Candidate A changed the loss to absolute error. Candidate B initialized the residual head at zero and had lower validation error. The composition kept B and its separate test reproduced the same score. These models shared the image data, seed, and forty-step training configuration.",
       "kind": "",
       "time": "RECORDED REHEARSAL",
       "answer": null
@@ -845,9 +845,9 @@
     {
       "number": 85,
       "key": "recorded-code",
-      "title": "The selected edit starts at persistence",
+      "title": "Initialize the correction at zero",
       "body": "```python\nif architecture == 'residual':\n    nn.init.zeros_(self.net[4].weight)\n    nn.init.zeros_(self.net[4].bias)\n\n# The residual forward pass remains:\nreturn prediction + x[:, 1:2]\n```\n\n<div class=\"bottom-note\">Zero initial correction \u2192 the initial forecast is the current image.</div>",
-      "notes": "This is the actual first-round Candidate B edit. The final convolution is zero-initialized only for the residual architecture. Training can then learn a correction. The existing residual forward pass is unchanged. Its observed validation error belongs on the preceding slide; the code alone does not establish a general gain.",
+      "notes": "Zero weights and bias in the last convolution make the initial correction zero. The residual model therefore starts by copying the present image, then learns a correction during training. This is the actual first-round edit that was selected in the recorded run.",
       "kind": "answer-code",
       "time": "RECORDED REHEARSAL",
       "answer": null
@@ -855,9 +855,9 @@
     {
       "number": 86,
       "key": "recorded-keep",
-      "title": "Round 2: KEEP was a real comparison",
-      "body": "<table class=\"clean-table\"><tbody><tr><th>Source</th><th>Validation error \u2193</th></tr><tr><td>Adopted zero-init model</td><td>0.111434</td></tr><tr><td>A \u00b7 add absolute loss to that source</td><td>0.110916</td></tr><tr><td>B \u00b7 KEEP the zero-init source unchanged</td><td>0.111434</td></tr></tbody></table><p>KEEP reproduced the parent. The tested composition selected A.</p><div class=\"bottom-note\">An unchanged source can have a new execution. It does not become a new executable version.</div>",
-      "notes": "Fresh revised-notebook rehearsal. Candidate B explicitly returned KEEP and its source fingerprint matched the parent. Candidate A proposed the loss change on the previously adopted source. The final composition test returned 0.11091556898305115. This small single-seed validation change should not be presented as repeatable evidence.",
+      "title": "Round 2 also tested the unchanged version",
+      "body": "<table class=\"clean-table\"><tbody><tr><th>Source</th><th>Validation error \u2193</th></tr><tr><td>Adopted zero-init model</td><td>0.111434</td></tr><tr><td>A \u00b7 add absolute loss to that source</td><td>0.110916</td></tr><tr><td>B \u00b7 KEEP the zero-init source unchanged</td><td>0.111434</td></tr></tbody></table><p>The unchanged version reproduced its earlier error. The tested composition selected A.</p><div class=\"bottom-note\">KEEP ran the same code again so we could compare it with Candidate A.</div>",
+      "notes": "Round two started from the zero-initialized model. Candidate A added absolute training loss. Candidate B kept the source unchanged and reproduced its error. The tested composition selected A. This small validation difference comes from one seed, so it does not establish repeatability.",
       "kind": "",
       "time": "RECORDED REHEARSAL",
       "answer": null
@@ -867,7 +867,7 @@
       "key": "recorded-lens",
       "title": "Open the recorded research conversation",
       "body": "<p class=\"big\"><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ef590522f1af377a0bc04bd63eea23e4\">Open the proposal and its recorded tool activity \u2197</a></p><p>Find the active configuration, the requested edit, and the returned candidate code. Compare the proposal with the tested source.</p><p class=\"aside\"><a href=\"https://ash0ts.github.io/forge-workshop-kit/solar/recorded-study.json\">Download the recorded source, decisions, scores, and evidence links \u2197</a></p><div class=\"bottom-note\">Agent Lens may require sign-in. The source and saved decisions are also in the downloadable evidence.</div>",
-      "notes": "The direct native conversation is linked from the recorded walkthrough and executed evidence. This slide does not use a loading-placeholder screenshot as proof of a completed trace.",
+      "notes": "Open the proposal conversation and follow the evidence-reading tool to the candidate source. The downloadable records contain the same decisions and scores if the native view requires sign-in.",
       "kind": "",
       "time": "RECORDED REHEARSAL",
       "answer": null
@@ -877,7 +877,7 @@
       "key": "recovery",
       "title": "When a service is unavailable",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Failure</th><th>Next action</th></tr><tr><td>Project authentication or permission</td><td>Fix access, then retry the check</td></tr><tr><td>Training or inference failed</td><td>Inspect the saved error before retrying work</td></tr><tr><td>Trace or artifact upload failed</td><td>Retry export of the saved execution</td></tr><tr><td>Native EvalTables HTTP 500</td><td>Use notebook and Weave comparisons; retry publication</td></tr></tbody></table>",
-      "notes": "The current technical preview has verified W&B and Weave publication but native EvalTables returned HTTP500. Do not imply a retry always succeeds. Never substitute provider models silently.",
+      "notes": "Start with the failed operation. An authentication problem needs corrected access. A failed training run needs its saved error inspected. An upload failure needs a publication retry. Native EvalTables returned HTTP 500 during this rehearsal; the notebook and Weave comparisons are still available.",
       "kind": "",
       "time": "REFERENCE",
       "answer": null
@@ -887,7 +887,7 @@
       "key": "schedule",
       "title": "Four-hour session",
       "body": "<table class=\"clean-table schedule\"><tbody><tr><th>Minutes</th><th>Work</th></tr><tr><td>0\u201315</td><td>Copy, connect, instrument</td></tr><tr><td>15\u201340</td><td>Data and persistence</td></tr><tr><td>40\u201390</td><td>Tracking and six configurations</td></tr><tr><td>90\u2013100</td><td>Break</td></tr><tr><td>100\u2013135</td><td>Image predictors</td></tr><tr><td>135\u2013195</td><td>Evidence and two research rounds</td></tr><tr><td>195\u2013240</td><td>Freeze, compare, reproduce, explain</td></tr></tbody></table>",
-      "notes": "Facilitator pacing target, not a measured participant completion time. Technical rehearsal training and provider time are separate from human learning and review.",
+      "notes": "Use these times to pace the room. They include coding and discussion, not just execution. If a section takes longer, use its recorded example for discussion rather than claiming a learner\u2019s unexecuted code produced that result.",
       "kind": "",
       "time": "REFERENCE",
       "answer": null
@@ -895,9 +895,9 @@
     {
       "number": 90,
       "key": "links",
-      "title": "The workshop lives in your project",
+      "title": "Keep working in your own project",
       "body": "<p class=\"big\"><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view\">Copy the Solar notebook \u2197</a></p><p><a href=\"https://github.com/ash0ts/forge-workshop-kit\">Source, setup, dataset, and facilitator guide \u2197</a></p><p><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==\">Recorded rehearsal Report \u2197</a></p><div class=\"bottom-note\">Keep your notebook, code edits, and checkpoints. The facilitator needs no control over your runtime.</div>",
-      "notes": "Primary public links. Older Pending releases remain historical; this deck teaches the direct participant-owned Workshop Kit runtime.",
+      "notes": "Participants keep their notebook and project. Use these links to continue the exercises, inspect the source, or revisit the recorded example. There is no facilitator gateway to renew.",
       "kind": "",
       "time": "REFERENCE",
       "answer": null

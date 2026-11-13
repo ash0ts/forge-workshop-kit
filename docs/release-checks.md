@@ -1,11 +1,14 @@
-# Release checks · 0.2.1 technical preview
+# Release checks · 0.2.2 technical preview
 
-The 0.2.1 update gives Solar its research-lab setting and explains the existing measured improvement. It changes presentation, not the data, training code, model settings or saved results. The full browser rehearsals below were completed for 0.2.0; the new presentation is checked separately.
+The 0.2.2 update rewrites the exercise instructions, deck, setup guide, and presenter notes. The data, training code, model settings, and saved results are unchanged. Full live rehearsals below were completed for 0.2.0; copy and rendering checks for this release are separate.
 
 The revised notebooks were exercised in a browser using fresh local workspaces and real Forge services. They still need an external-attendee check and a human usability rehearsal before classroom-ready status.
 
 | Check | Evidence and outcome |
 | --- | --- |
+| 0.2.2 deck | All 90 browser frames and PDF pages render. Eight worked-answer links and returns, 183 static routes, and exact notebook-control checks pass. [Copy checks](../decks/solar/notes/copy-v022-checks.json), [final render checks](../decks/solar/notes/render-v022-checks.json). |
+| 0.2.2 copy and code checks | All 60 existing tests pass, all four generated notebooks pass marimo checks, and all four static HTML exports render. Model requests and training executions for this revision: zero. [Review](../evidence/ux-v022-copy-review.json). |
+| 0.2.2 notebook screens | Pending’s eight steps were checked over a copy of saved rehearsal data; Solar’s setup, data and recorded example were checked without connecting. Both passed 430px layout checks. [Pending](../evidence/ux-v022-pending-browser.json), [Solar](../evidence/ux-v022-solar-copy-checks.json). These are presentation checks, not new live rehearsals. |
 | 0.2.1 local validation | 60 tests passed, including candidate isolation, missing judgments, recovery, exact executed code, draft restore and trace links. All four generated notebooks passed marimo checks. |
 | Clean platform installs | Locked installation, all 60 tests and all four notebook checks passed on GitHub-hosted macOS, Windows and Linux runners. [CI run](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43476598776). This checks installation and code; it is not an attendee rehearsal. |
 | 0.2.1 hosted templates | All four templates now use the released 0.2.1 wheel and notebook source; downloaded artifact sources match byte-for-byte. Existing copies remain unchanged. [Readback](../evidence/ux-v021-template-readback.json). |

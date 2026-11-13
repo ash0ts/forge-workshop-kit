@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
-# dependencies = ["forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.2.1/forge_workshop_kit-0.2.1-py3-none-any.whl", "torch==2.15.0"]
+# dependencies = ["forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.2.2/forge_workshop_kit-0.2.2-py3-none-any.whl", "torch==2.15.0"]
 # [tool.uv.sources]
 # torch = [{ index = "pytorch-cpu", marker = "sys_platform != 'darwin'" }]
 # [[tool.uv.index]]
@@ -36,7 +36,7 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo, ui):
-    mo.Html(ui.heading("Build a research loop, then give it an agent", "Build forecasts from real solar observations. Record the data, code, settings, and predictions so someone else can reproduce the result. Then let a research agent propose code changes and test them against the same validation data.", theme="lab"))
+    mo.Html(ui.heading("Build a research loop, then give it an agent", "We’ll start with a simple solar forecast, train a few models, and keep enough detail to explain each result. Then you’ll give a research agent the code and ask it to try two changes. You’ll test each suggestion before keeping a change.", theme="lab"))
     return
 
 
@@ -65,7 +65,7 @@ def _(get_feedback, get_lab, set_feedback, set_lab, set_step, teaching):
 def _(get_lab, get_step, go_to, mo, teaching, ui):
     _s = get_lab().get("session")
     solar_navigation = ui.navigation(mo, teaching.STEPS, get_step(), go_to, completed=teaching.completed_steps(_s) if _s else (), label="Your research loop")
-    mo.vstack([solar_navigation, mo.Html(ui.context(_s)) if _s else mo.md("**Your notebook, your project.** Start with the access check. Opening this notebook does not train models or call inference.")])
+    mo.vstack([solar_navigation, mo.Html(ui.context(_s)) if _s else mo.md("**Start at Connect.** Your code and results stay in your project. Training and model calls run only when you click their Run buttons.")])
     return (solar_navigation,)
 
 
@@ -73,7 +73,7 @@ def _(get_lab, get_step, go_to, mo, teaching, ui):
 def _(get_lab, mo):
     help_message = mo.ui.text_area(label="What do you need help with?", full_width=True)
     help_button = mo.ui.run_button(label="Send a help request", disabled=not bool(get_lab().get("session")))
-    mo.accordion({"Ask the facilitator": mo.vstack([help_message, help_button, mo.md("This saves a request to your project. It does not give anyone control of your notebook.")])})
+    mo.accordion({"Ask the facilitator": mo.vstack([help_message, help_button, mo.md("Tell the facilitator which step you’re on and what happened. They can read this request in the workshop monitor.")])})
     return (help_button, help_message,)
 
 
@@ -92,7 +92,7 @@ def _(get_step, mo, os, ui):
     project_input = mo.ui.text(value=_default, placeholder="your-name/solar-research", label="Your Forge project", full_width=True)
     allowance = mo.ui.number(value=8, start=.01, stop=1000, label="Inference allowance in USD; notebook compute is separate")
     connect_button = mo.ui.run_button(label="Connect and restore my work")
-    mo.vstack([mo.Html(ui.step("1. Connect to your own project", "Copy this notebook into your writable Forge project. Hosted Forge supplies authentication. On a laptop, run uv run wandb login first.", "Your project passes a write check. No training or model request runs during setup.")), project_input, allowance, connect_button])
+    mo.vstack([mo.Html(ui.step("1. Connect to your own project", "Enter the Forge project where you want your runs and traces saved, then click Connect and restore my work. In Forge, use your signed-in account. On a laptop, run uv run wandb login first.", "Once the connection succeeds, add your first trace in the code below.")), project_input, allowance, connect_button])
     return (allowance, connect_button, project_input,)
 
 
@@ -107,7 +107,7 @@ def _(WorkshopSession, allowance, connect_button, get_feedback, mo, project_inpu
         set_step(_s.get_view("setup"))
         set_feedback({**get_feedback(), "setup": {"status": "complete", **_access, "restore": _restored}})
     except Exception as _error:
-        set_feedback({**get_feedback(), "setup": {"status": "unavailable", "message": str(_error), "next": "Check project write access and account login. No training has run."}})
+        set_feedback({**get_feedback(), "setup": {"status": "unavailable", "message": str(_error), "next": "Check that you’re signed in and can write to this project, then try Connect again."}})
     return
 
 
@@ -116,7 +116,7 @@ def _(get_lab, get_step, mo, teaching):
     _s = get_lab().get("session")
     instrumentation_editor = mo.ui.code_editor(value=_s.get_draft("solar/instrumentation", teaching.INSTRUMENTATION_STARTER) if _s else teaching.INSTRUMENTATION_STARTER, language="python", on_change=lambda value: _s.save_draft("solar/instrumentation", value) if _s else None, debounce=False)
     check_instrumentation = mo.ui.run_button(label="Check my tracing code")
-    mo.vstack([mo.md("**Instrument the operation.** Add a `workshop.exercise` attribute with value `solar-research` inside the Tool scope. This writer will also instrument your training calls. The local check exports nothing."), instrumentation_editor, check_instrumentation, mo.accordion({"Hint": mo.md("Call `tool.set_attributes` inside the `with tracing.Tool(...)` block. Keep the arguments, result, timestamps, and error handling."), "Worked answer": mo.md("```python\n" + teaching.INSTRUMENTATION_SOLUTION + "\n```")})]) if get_step() == "setup" else mo.md("")
+    mo.vstack([mo.md("**Give your first trace a label.** In `instrument_tool`, add `workshop.exercise` with the value `solar-research` inside the Tool scope. Click **Check my tracing code**, then **Send my first Agent Lens trace**. We’ll reuse this function when you train a model."), instrumentation_editor, check_instrumentation, mo.accordion({"Hint": mo.md("Add `tool.set_attributes({'workshop.exercise': 'solar-research'})` inside the `with tracing.Tool(...)` block. Leave the other fields in place so the trace still shows what ran."), "Worked answer": mo.md("```python\n" + teaching.INSTRUMENTATION_SOLUTION + "\n```")})]) if get_step() == "setup" else mo.md("")
     return (check_instrumentation, instrumentation_editor,)
 
 
@@ -147,7 +147,7 @@ def _(digest, get_feedback, get_lab, get_step, get_tracing_check, go_to, instrum
     first_trace = mo.ui.run_button(label="Send my first Agent Lens trace", disabled=not bool(_s) or _checked.get("source") != digest(instrumentation_editor.value))
     _setup = get_feedback().get("setup", {})
     solar_next_step_2 = ui.next_step(mo, "Next: inspect the solar data", "data", go_to)
-    mo.vstack([mo.Html(ui.result("Connection", _setup, status=_setup.get("status", "not checked"))) if _setup else mo.md("**Connection: not checked yet.** Enter your project and click Connect above."), mo.Html(ui.result("Local tracing check", _checked, status=_checked.get("status", "not checked"))) if _checked else mo.md("**Next:** edit the tracing function, then click **Check my tracing code**."), mo.md("Send the checked operation, then open Agent Lens and inspect the actual arguments, result, timing, and your attribute."), first_trace, ui.evidence(mo, _s, stage_ids=[teaching.saved(_s, "setup/trace")["id"]] if _s and teaching.saved(_s, "setup/trace") else (), question="Does the environment tool's result match the receipt? Find your workshop.exercise attribute.") if _s else mo.md("Connect above first."), solar_next_step_2])
+    mo.vstack([mo.Html(ui.result("Connection", _setup, status=_setup.get("status", "not checked"))) if _setup else mo.md("Enter your project above, then click **Connect and restore my work**."), mo.Html(ui.result("Local tracing check", _checked, status=_checked.get("status", "not checked"))) if _checked else mo.md("Add the attribute in the code above, then click **Check my tracing code**."), mo.md("The Send button runs a small environment check and saves its trace. Open the link below when it finishes."), first_trace, ui.evidence(mo, _s, stage_ids=[teaching.saved(_s, "setup/trace")["id"]] if _s and teaching.saved(_s, "setup/trace") else (), question="Open inspect_training_environment in Agent Lens. Find workshop.exercise=solar-research and the NumPy version returned by the tool.") if _s else mo.md("Connect above first."), solar_next_step_2])
     return (first_trace, solar_next_step_2,)
 
 
@@ -165,7 +165,7 @@ def _(event, export_trace, first_trace, get_feedback, get_lab, instrument_tool, 
         _s.checkpoint("setup", evidence={"Setup conversation": _trace["url"]})
         set_feedback({**get_feedback(), "setup_trace": {"status": "complete", "stored spans": _trace["stored_spans"]}})
     except Exception as _error:
-        set_feedback({**get_feedback(), "setup_trace": {"status": "publication pending", "message": str(_error), "next": "Click the trace button again to retry export of the saved operation. It sends no model request."}})
+        set_feedback({**get_feedback(), "setup_trace": {"status": "publication pending", "message": str(_error), "next": "The check is saved. Click Send my first Agent Lens trace again to retry its upload."}})
     refresh_saved()
     return
 
@@ -178,8 +178,8 @@ def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     _saved = teaching.saved(_s, "setup/trace") if _s else None
     _receipt = _s.read()["publications"].get("trace/" + _saved["id"], {}) if _saved else {}
     if not _status and _receipt.get("verified"):
-        _status = {"status": "complete", "stored spans": _receipt["stored_spans"], "result": "Restored verified trace; no operation repeated."}
-    mo.Html(ui.result("Trace readback", _status, status=_status.get("status", "not sent"))) if _status else mo.md("**Trace: not sent yet.** Check your code, then send the operation above.")
+        _status = {"status": "complete", "stored spans": _receipt["stored_spans"], "result": "Your saved trace is available in Agent Lens."}
+    mo.Html(ui.result("Your first trace", _status, status=_status.get("status", "not sent"))) if _status else mo.md("Your trace will appear here after you click **Send my first Agent Lens trace**.")
     return
 
 
@@ -189,7 +189,7 @@ def _(get_lab, get_step, go_to, mo, ui):
     _s = get_lab().get("session")
     load_data = mo.ui.run_button(label="Load the solar dataset", disabled=not bool(_s))
     solar_prerequisite_3 = ui.prerequisite(mo, "Connect to your project first.", "setup", go_to)
-    mo.vstack([mo.Html(ui.step("2. Inspect the observations", "Load the pinned GOES-15 measurements and AIA 171 Å images. Read one SunPy FITS record and the date partitions before building a model.", "Train: February 1–10, 2014. Validation: 11–12. Final evaluation: 13–14. Gaps remain gaps; the future is not a feature.")), mo.md("**Real observations, two prediction tasks.** GOES-15 measures solar X-ray flux in W/m². Use its previous 60 one-minute observations to predict log10 XRS-B flux 30 minutes ahead. AIA 171 Å images provide the separate image task: predict the solar disk one hour ahead. These are archived observations from February 2014, not simulated data."), mo.md("[SunPy GOES retrieval](https://docs.sunpy.org/en/stable/generated/gallery/time_series/goes_xrs_example.html) · [AIA archive and calibration](https://jsoc1.stanford.edu/data/aia/synoptic/README.html) · [Our acquisition code](https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_solar.py)"), load_data, solar_prerequisite_3 if not _s else mo.md("The combined teaching data is about 26 MB. Loading it trains nothing."), mo.accordion({"What is reserved?": mo.md("We construct windows inside date partitions, reject gaps, and fit normalization only on training dates. February 8 is absent from the GOES source archive. The researcher sees training and validation evidence. Final dates are used only after versions are frozen."), "Inspect the acquisition code": mo.md("[Source, quality checks and preprocessing](https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_solar.py)")})])
+    mo.vstack([mo.Html(ui.step("2. Inspect the observations", "Click Load the solar dataset. We’ll use SunPy to read an image’s FITS metadata, then look at the measurements we want to predict.", "Find the observation date and wavelength below. We train on February 1–10, compare changes on 11–12, and save 13–14 for the final test.")), mo.md("**Real observations, two prediction tasks.** First, use an hour of GOES-15 X-ray measurements to forecast flux 30 minutes ahead. The measurements are in W/m²; we predict log10 XRS-B flux. Later, use AIA 171 Å images of the Sun to predict an image one hour ahead. Both come from the February 2014 archives."), mo.md("[SunPy GOES retrieval](https://docs.sunpy.org/en/stable/generated/gallery/time_series/goes_xrs_example.html) · [AIA archive and calibration](https://jsoc1.stanford.edu/data/aia/synoptic/README.html) · [Our acquisition code](https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_solar.py)"), load_data, solar_prerequisite_3 if not _s else mo.md("The download is about 26 MB. You’ll see the date, wavelength, and number of usable windows below."), mo.accordion({"What is reserved?": mo.md("A window contains the past observations and the future value we want to predict. Windows stay within their date split and are dropped if observations are missing. February 8 is missing from the GOES archive. We fit normalization on training data and keep the final dates out of the research agent’s input."), "Inspect the acquisition code": mo.md("[Source, quality checks and preprocessing](https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_solar.py)")})])
     return (load_data, solar_prerequisite_3,)
 
 
@@ -216,7 +216,7 @@ def _(get_lab, get_step, go_to, mo, plots, teaching, ui):
     _s = get_lab().get("session")
     _record = teaching.saved(_s, "data/loaded") if _s else None
     solar_next_step_4 = ui.next_step(mo, "Next: implement persistence", "baseline", go_to)
-    mo.vstack([mo.Html(ui.result("Dataset loaded", _record["result"])) if _record else mo.md("Load the data to see its fingerprint, dates, and development-window counts."), plots.forecast(get_lab()["goes"]["validation"]["persistence"], get_lab()["goes"]["validation"], title="Validation measurements: the latest observation as a forecast") if get_lab().get("goes") else mo.md("Reopening restores receipts. Click Load the solar dataset to restore arrays; this does not repeat training."), ui.evidence(mo, _s, stage_ids=[_record["id"]], question="Find the exact dataset fingerprint recorded with this workspace.") if _record else mo.md(""), solar_next_step_4])
+    mo.vstack([mo.Html(ui.result("Dataset loaded", _record["result"])) if _record else mo.md("Click Load the solar dataset to see the observations and a first forecast plot."), plots.forecast(get_lab()["goes"]["validation"]["persistence"], get_lab()["goes"]["validation"], title="Validation measurements: the latest observation as a forecast") if get_lab().get("goes") else mo.md("Returning to the notebook? Click Load the solar dataset to put the arrays back in memory. Your completed experiments stay saved."), ui.evidence(mo, _s, stage_ids=[_record["id"]], question="Open data / loaded · files. This W&B Artifact is a versioned collection of saved files. Find the observation date and wavelength in its dataset record; later runs will save code, weights, and predictions the same way.") if _record else mo.md(""), solar_next_step_4])
     return (solar_next_step_4,)
 
 
@@ -230,7 +230,7 @@ def _(get_lab, get_step, go_to, mo, teaching, ui):
     check_persistence = mo.ui.run_button(label="Check my persistence function")
     baseline_button = mo.ui.run_button(label="Run my persistence baseline", disabled=not bool(get_lab().get("goes")))
     solar_prerequisite_6 = ui.prerequisite(mo, "Load the dataset before running the baseline.", "data", go_to)
-    mo.vstack([mo.Html(ui.step("3. Predict the current measurement again", "Replace the exception in persistence_forecast. Return the latest observation for each window without reading its future target.", "The local check passes, then the validation forecast appears below. This baseline makes no inference call.")), persistence_editor, check_persistence, mo.accordion({"Hint": mo.md("The loader supplies the latest observation in split['persistence']. Return a copy so predictions cannot overwrite the data."), "Worked answer": mo.md("```python\n" + teaching.PERSISTENCE_SOLUTION + "\n```")}), baseline_button, solar_prerequisite_6 if not get_lab().get("goes") else mo.md("Draft edits save locally. The Run button executes the code currently shown.")])
+    mo.vstack([mo.Html(ui.step("3. Predict 30 minutes ahead by copying the latest reading", "In persistence_forecast, replace the exception with a copy of the latest measurement. This is persistence: predict that the current value will stay the same. Check the function, then click Run my persistence baseline.", "Read its validation error below. This is the score your trained models will try to beat.")), persistence_editor, check_persistence, mo.accordion({"Hint": mo.md("Use `split['persistence'].copy()`. The latest value is already provided; you don’t need the future target in `split['y']`."), "Worked answer": mo.md("```python\n" + teaching.PERSISTENCE_SOLUTION + "\n```")}), baseline_button, solar_prerequisite_6 if not get_lab().get("goes") else mo.md("After the check passes, run your function and compare its error with the models in the next step.")])
     return (baseline_button, check_persistence, persistence_editor, solar_prerequisite_5, solar_prerequisite_6,)
 
 
@@ -270,7 +270,7 @@ def _(get_feedback, get_lab, get_step, go_to, mo, persistence_editor, teaching, 
     _row = teaching.saved(_s, "goes/persistence") if _s else None
     _check = get_feedback().get("persistence-check", {})
     solar_next_step_7 = ui.next_step(mo, "Next: track six model configurations", "search", go_to)
-    mo.vstack([mo.md(teaching.draft_status(_s, "solar/persistence", persistence_editor.value)) if _s else mo.md(""), mo.Html(ui.result("Local function check", _check, status=_check.get("status", "not checked"))), mo.Html(ui.result("Persistence validation result", _row["result"].get("metrics", {}))) if _row else mo.md("Run your checked function to save the baseline."), ui.evidence(mo, _s, stage_ids=[_row["id"]], question="Find the exact function source and validation score. Which dates did it use?") if _row else mo.md(""), solar_next_step_7])
+    mo.vstack([mo.md(teaching.draft_status(_s, "solar/persistence", persistence_editor.value)) if _s else mo.md(""), mo.Html(ui.result("Local function check", _check, status=_check.get("status", "not checked"))), mo.Html(ui.result("Persistence validation result", _row["result"].get("metrics", {}))) if _row else mo.md("Click Run my persistence baseline to calculate its validation error."), ui.evidence(mo, _s, stage_ids=[_row["id"]], question="Open the persistence run. Find its error and validation dates, then open its files and compare persistence.py with the function you wrote.") if _row else mo.md(""), solar_next_step_7])
     return (solar_next_step_7,)
 
 
@@ -291,7 +291,7 @@ def _(DEFAULT_SOURCE, get_lab, get_step, go_to, mo, teaching, ui):
     check_measurement = mo.ui.run_button(label="Check my measurement code")
     run_search = mo.ui.run_button(label="Run six tracked configurations", disabled=not bool(get_lab().get("goes")) or teaching.saved(_s, "images/freeze") is not None)
     solar_prerequisite_9 = ui.prerequisite(mo, "Load the dataset before training.", "data", go_to)
-    mo.vstack([mo.Html(ui.step("4. Record the experiment before comparing it", "Implement masked mean squared training loss and log-flux MAE. Read run_training below: your source, configuration, dataset and predictions identify each experiment.", "Two free local checks pass. The search produces three MLP and three temporal-CNN runs with the same date partitions.")), measurement_editor, flux_metric_editor, check_measurement, mo.accordion({"Hint": mo.md("Training loss: square the residual, multiply by the mask, sum, and divide by the mask sum. The evaluation metric uses absolute error instead."), "Worked answers": mo.md("```python\ndef training_loss(prediction, target, mask):\n    return ((prediction - target).square() * mask).sum() / mask.sum()\n\n" + teaching.FLUX_SOLUTION + "\n```"), "Why this is a search": mo.md("Six fixed configurations choose mlp/cnn, width, and learning rate. They do not write new model code. All use seed 17, 60 steps, and batch size 32.")}), run_search, solar_prerequisite_9 if not get_lab().get("goes") else mo.md("This trains on notebook CPU. Reusing an identical configuration returns its saved execution.")])
+    mo.vstack([mo.Html(ui.step("4. Record the experiment before comparing it", "Complete training_loss and my_flux_mae below. The loss trains the model; mean absolute error (MAE) measures how far its forecasts miss. Check your code, then click Run six tracked configurations.", "You’ll get six runs: three small feed-forward networks (MLPs) and three temporal convolutional networks (CNNs). Compare their validation errors in the Sweep.")), mo.md("Read `run_training` below before you run it. It saves your settings, metrics, code, trained weights, and predictions with each experiment. Open one run afterward and find those files."), measurement_editor, flux_metric_editor, check_measurement, mo.accordion({"Hint": mo.md("For training_loss, square the prediction error, multiply by the mask, sum, and divide by the mask sum. For my_flux_mae, average the absolute errors. A negative miss must not cancel a positive miss."), "Worked answers": mo.md("```python\ndef training_loss(prediction, target, mask):\n    return ((prediction - target).square() * mask).sum() / mask.sum()\n\n" + teaching.FLUX_SOLUTION + "\n```"), "Why this is a search": mo.md("A Sweep tries settings in implementations we already have. Here it tries three width/learning-rate combinations for each architecture. Every run uses seed 17, 60 training steps, and batch size 32. Later, the agent will change the code itself.")}), run_search, solar_prerequisite_9 if not get_lab().get("goes") else mo.md("The six runs train on this notebook’s CPU. If you return later with the same code and settings, the notebook uses the saved runs.")])
     return (check_measurement, flux_metric_editor, measurement_editor, run_search, solar_prerequisite_8, solar_prerequisite_9,)
 
 
@@ -388,7 +388,7 @@ def _(get_feedback, get_lab, get_step, go_to, measurement_editor, mo, teaching, 
     _rows = [] if not _s else [row for row in _s.completed() if row["name"].startswith("goes/search-")]
     _check = get_feedback().get("measurement-check", {})
     solar_next_step_10 = ui.next_step(mo, "Next: predict a solar image", "images", go_to)
-    mo.vstack([mo.md(teaching.draft_status(_s, "solar/measurement", measurement_editor.value, stage_prefix="goes/search-")) if _s else mo.md(""), mo.Html(ui.result("Local measurement checks", _check, status=_check.get("status", "not checked"))), mo.ui.table([{"Run": row["name"], "Architecture": row["config"]["architecture"], "Width": row["config"]["width"], "Learning rate": row["config"]["learning_rate"], **row["result"]["metrics"]} for row in _rows], selection=None), ui.evidence(mo, _s, stage_ids=[row["id"] for row in _rows], question="In the Sweep, compare one MLP and one CNN. Can you recover the data version, learning curve and source behind each score?") if _s else mo.md(""), solar_next_step_10])
+    mo.vstack([mo.md(teaching.draft_status(_s, "solar/measurement", measurement_editor.value, stage_prefix="goes/search-")) if _s else mo.md(""), mo.Html(ui.result("Local measurement checks", _check, status=_check.get("status", "not checked"))), mo.ui.table([{"Run": row["name"], "Architecture": row["config"]["architecture"], "Width": row["config"]["width"], "Learning rate": row["config"]["learning_rate"], **row["result"]["metrics"]} for row in _rows], selection=None), ui.evidence(mo, _s, stage_ids=[row["id"] for row in _rows], question="Open the Measurement Sweep and choose one MLP and one CNN. Compare validation_error, width, and learning rate. In each run’s files, find candidate.py and losses.json to see which code trained and how its loss changed.") if _s else mo.md(""), solar_next_step_10])
     return (solar_next_step_10,)
 
 
@@ -404,7 +404,7 @@ def _(DEFAULT_SOURCE, get_lab, get_step, go_to, mo, teaching, ui):
     _locked = teaching.saved(_s, "images/round-1/propose") is not None
     run_images = mo.ui.run_button(label="Compare convolutional and residual predictors", disabled=not bool(get_lab().get("images")) or _locked)
     solar_prerequisite_12 = ui.prerequisite(mo, "Load the image arrays before training.", "data", go_to)
-    mo.vstack([mo.Html(ui.step("5. Predict the image, or predict its correction", "Complete ImagePredictor.forward and the disk-masked image metric. The two input channels are the image from an hour ago and the current image.", "A constant +1 valid-pixel error scores 1; an off-disk error scores 0. Both architectures return one future image.")), mo.md("**What these images represent.** AIA observes the Sun in extreme ultraviolet; this dataset uses its 171 Å channel. We sample the public calibrated FITS archive every 12 minutes, divide by exposure time, and reduce images to 64×64. The model sees the images at −60 minutes and now, and predicts +60 minutes. Error is measured on the solar disk in normalized log1p intensity, with normalization fitted on training dates only."), mo.md("[Inspect the source archive](https://jsoc1.stanford.edu/data/aia/synoptic/README.html) · [Inspect the preprocessing](https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_solar.py)"), image_editor, image_metric_editor, check_images, mo.accordion({"Hint": mo.md("For the residual architecture, add x[:, 1:2], the current image, to the network output. Average the metric over valid pixels per image, then over images."), "Worked answers": mo.md("```python\ndef forward(self, x):\n    prediction = self.net(x)\n    return prediction + x[:, 1:2] if architecture == 'residual' else prediction\n\n" + teaching.IMAGE_METRIC_SOLUTION + "\n```")}), run_images, mo.md("The manual parent is fixed once the first research proposal exists. Your draft remains editable; it will not replace that parent.") if _locked else solar_prerequisite_12 if not get_lab().get("images") else mo.md("Image and measurement drafts are independent. Changes here do not overwrite the earlier model.")])
+    mo.vstack([mo.Html(ui.step("5. Predict the image, or predict its correction", "Complete ImagePredictor.forward: the residual model should add its predicted correction to the current image. Then finish my_image_mae, run the local check, and click Compare convolutional and residual predictors.", "Compare the two error scores and forecast images below. Where did the prediction miss a change on the solar disk?")), mo.md("**What these images represent.** AIA records the Sun in extreme ultraviolet light. We use its 171 Å channel, sampled every 12 minutes and reduced to 64×64 pixels. Each model sees an image from an hour ago and one from now, then predicts an hour ahead. The score averages absolute error over the solar disk; lower is better."), mo.md("[Inspect the source archive](https://jsoc1.stanford.edu/data/aia/synoptic/README.html) · [Inspect the preprocessing](https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_solar.py)"), image_editor, image_metric_editor, check_images, mo.accordion({"How the images are prepared": mo.md("We divide each image by exposure time, then apply log1p and normalize using training dates only. The fixed score uses this normalized intensity and ignores pixels outside the solar disk. The acquisition link above contains the source checks and preprocessing."), "Hint": mo.md("In the residual model, add `x[:, 1:2]` to the network output. For the metric, average each image’s error over pixels where disk_mask is true, then average the images. An error of +1 everywhere on the disk should score 1; an error outside the disk should score 0."), "Worked answers": mo.md("```python\ndef forward(self, x):\n    prediction = self.net(x)\n    return prediction + x[:, 1:2] if architecture == 'residual' else prediction\n\n" + teaching.IMAGE_METRIC_SOLUTION + "\n```")}), run_images, mo.md("The research agent has already started from your selected manual model. That starting version is now fixed for this comparison.") if _locked else solar_prerequisite_12 if not get_lab().get("images") else mo.md("These image edits are saved separately from your measurement model.")])
     return (check_images, image_editor, image_metric_editor, run_images, solar_prerequisite_11, solar_prerequisite_12,)
 
 
@@ -439,7 +439,7 @@ def _(get_feedback, get_lab, get_step, go_to, image_editor, mo, teaching, ui):
     _check = get_feedback().get("image-check", {})
     _previews = [mo.image(str(_s.file("outputs/" + row["id"] + "/predictions.png"))) for row in _rows if _s.file("outputs/" + row["id"] + "/predictions.png").exists()]
     solar_next_step_13 = ui.next_step(mo, "Next: let the researcher propose code changes", "research", go_to)
-    mo.vstack([mo.md(teaching.draft_status(_s, "solar/image", image_editor.value, stage_prefix="images/manual-")) if _s else mo.md(""), mo.Html(ui.result("Local image checks", _check, status=_check.get("status", "not checked"))) if _check else mo.md("**Image validation results.** Saved runs are restored below. Check your code again before running an edited version."), mo.ui.table(teaching.metric_rows({row["config"]["architecture"]: row["result"]["metrics"] for row in _rows}), selection=None), *_previews, ui.evidence(mo, _s, stage_ids=[row["id"] for row in _rows], question="Open the weights artifact and its training trace. Inspect a prediction's error image before calling either model better.") if _s else mo.md(""), solar_next_step_13])
+    mo.vstack([mo.md(teaching.draft_status(_s, "solar/image", image_editor.value, stage_prefix="images/manual-")) if _s else mo.md(""), mo.Html(ui.result("Local image checks", _check, status=_check.get("status", "not checked"))) if _check else mo.md("**Your image results.** Saved runs appear below. If you change the code, check it before training again."), mo.ui.table(teaching.metric_rows({row["config"]["architecture"]: row["result"]["metrics"] for row in _rows}), selection=None), *_previews, ui.evidence(mo, _s, stage_ids=[row["id"] for row in _rows], question="Pick one forecast where the models differ. Open that model’s files to find weights.pt, then its Agent Lens training span to see the settings and elapsed time. Describe the difference you can see in the error image.") if _s else mo.md(""), solar_next_step_13])
     return (solar_next_step_13,)
 
 
@@ -484,7 +484,7 @@ def _(get_lab, get_step, go_to, mo, teaching, ui):
     mo.stop(not _s, solar_prerequisite_14)
     evidence_editor = mo.ui.code_editor(value=_s.get_draft("solar/evidence", teaching.EVIDENCE_STARTER), language="python", min_height=180, label="Implement select_validation_evidence", on_change=lambda value: _s.save_draft("solar/evidence", value))
     check_evidence = mo.ui.run_button(label="Check my evidence selection")
-    mo.vstack([mo.Html(ui.step("6. Give the researcher evidence, then inspect its edits", "Implement select_validation_evidence. The fixed research agent writes code; the forecasting models still train normally. Review and test each branch before composing.", "Two candidates per round, two rounds. The adopted source must match a completed execution. A longer procedure is allowed to lose.")), evidence_editor, check_evidence, mo.accordion({"Hint": mo.md("Use an explicit field allowlist. Keep validation metrics, settings, losses, the trace, and the supporting stage identity. Reject split='test'."), "Worked answer": mo.md("```python\n" + teaching.EVIDENCE_SOLUTION + "\n```")})])
+    mo.vstack([mo.Html(ui.step("6. Give the researcher evidence, then inspect its edits", "Now let an agent suggest changes to your image model. Complete select_validation_evidence so it receives the settings, scores, losses, and traces from validation. Check the function, then follow the next action below.", "You’ll review and test two suggestions, ask for a combined or selected version, and test that too. We repeat this for two rounds.")), mo.md("The research agent keeps the same model weights throughout. It edits Python code; your small forecasting models learn new weights when you train each candidate. The agent can change the model or loss, but the data splits and final scorer stay fixed."), evidence_editor, check_evidence, mo.accordion({"Hint": mo.md("Return the fields listed in the starter. Keep the check that rejects split='test': the agent must choose its edits before seeing final-test scores."), "Worked answer": mo.md("```python\n" + teaching.EVIDENCE_SOLUTION + "\n```")})])
     return (check_evidence, evidence_editor, solar_prerequisite_14,)
 
 
@@ -517,24 +517,24 @@ def _(digest, evidence_editor, get_feedback, get_lab, get_step, go_to, mo, next_
     _evidence_check = get_feedback().get("evidence-check", {})
     _evidence_ready = _evidence_check.get("status") == "complete" and _evidence_check.get("source_fingerprint") == digest(evidence_editor.value)
     research_button = mo.ui.run_button(label=f"Round {_number}: {_label}", disabled=not bool(_parent and get_lab().get("images")) or _phase == "done" or (_phase == "propose" and not _evidence_ready))
-    _explain = {"propose": "Ask for two competing code changes using the selected manual model and validation evidence.", "review-0": "Read Candidate A's actual diff. Record what behavior it intends to change before confirming.", "probe-result-0": "Train the reviewed Candidate A with the parent's settings. Its failure remains evidence.", "review-1": "Read Candidate B's actual diff. It is an independent alternative to A.", "probe-result-1": "Train the reviewed Candidate B on the same training and validation partitions.", "probe-done": "Compare the probes below. Record which evidence supports your recommendation.", "compose": "Ask the researcher to retain, select, or combine the tested changes.", "review-composition": "Inspect the composition's diff. A composed source has not won until it is tested.", "composition-result": "Train the reviewed composition. This does not use final-test dates.", "adopt": "Save the tested winner and the researcher's lesson. Equal or worse validation error retains the parent.", "done": "Both rounds are saved. Freeze the versions before inspecting final dates."}[_phase]
-    _parts = [mo.Html(ui.result("Evidence-selection check", _evidence_check, status=_evidence_check.get("status", "not checked"))), mo.Html(ui.step(f"Round {_number} · {_label}", _explain, "Only this button performs the named action. Navigation and code edits run nothing."))]
+    _explain = {"propose": "Ask the research agent for two code changes. It will use your selected model and validation results.", "review-0": "Read Candidate A’s diff. In your note, name the changed line and what you expect it to do.", "probe-result-0": "Run Candidate A with the same training settings as its starting model. Read its validation error or failure below.", "review-1": "Read Candidate B’s diff and write what it tries to change. B is a separate suggestion from the same starting model.", "probe-result-1": "Run Candidate B on the same data as A. Then you can compare the two suggestions.", "probe-done": "Compare A and B below. Write which result you would keep and point to a score, prediction, or failure.", "compose": "Ask the agent to choose, combine, or reject the two suggestions. You’ll review the resulting code next.", "review-composition": "Read the proposed final diff and write what changed. If it retains the previous version, say why that seems reasonable.", "composition-result": "Run the proposed final version on validation data. Even a combination of good edits needs its own test.", "adopt": "Save the tested version and lesson. The notebook keeps the earlier model if the new one fails or does not lower validation error.", "done": "Both rounds are saved. Continue to Final evaluation to test the selected versions on the reserved dates."}[_phase]
+    _parts = [mo.Html(ui.result("Evidence-selection check", _evidence_check, status=_evidence_check.get("status", "not checked"))), mo.Html(ui.step(f"Round {_number} · {_label}", _explain, "Read the result below before moving to the next action."))]
     if _phase == "propose" and not _evidence_ready:
-        _parts.append(mo.callout(mo.md("Complete select_validation_evidence above, then click Check my evidence selection. No inference can run until that check passes for this code."), kind="warn"))
+        _parts.append(mo.callout(mo.md("Finish select_validation_evidence above and click Check my evidence selection. Then you can request the first two suggestions."), kind="warn"))
     if _candidate:
-        _parts += [mo.Html(ui.result(_candidate.get("title", "Proposed change"), {"Decision": "Retain this version" if _candidate["decision"] == "KEEP" else "Change source", "Agent rationale": _candidate["rationale"], "Source fingerprint": _candidate.get("fingerprint")})), mo.Html(ui.diff(_parent["source"], _candidate["source"]))]
+        _parts += [mo.Html(ui.result(_candidate.get("title", "Proposed change"), {"Decision": "Retain this version" if _candidate["decision"] == "KEEP" else "Change source", "Agent rationale": _candidate["rationale"]}, detail={"Source fingerprint": _candidate.get("fingerprint")})), mo.Html(ui.diff(_parent["source"], _candidate["source"]))]
     _probe_rows = [teaching.saved(_s, _prefix + "probe-result-" + str(index)) for index in (0, 1)]
     if any(_probe_rows):
         _parts.append(mo.ui.table([{"Candidate": "AB"[index], "Status": "failed" if row["result"].get("errors") else "complete", "Validation error": row["result"].get("metrics", {}).get("validation_error"), "Error": "; ".join(row["result"].get("errors", []))} for index, row in enumerate(_probe_rows) if row], selection=None))
     _parts += [research_note, research_button]
     solar_prerequisite_15 = ui.prerequisite(mo, "Compare the two manual image models first.", "images", go_to)
-    solar_prerequisite_16 = ui.prerequisite(mo, "Restore the image arrays with Load the solar dataset. Saved work will be reused.", "data", go_to)
+    solar_prerequisite_16 = ui.prerequisite(mo, "Go to Solar data and click Load the solar dataset to put the images back in memory.", "data", go_to)
     if not _parent:
         _parts.append(solar_prerequisite_15)
     elif not get_lab().get("images"):
         _parts.append(solar_prerequisite_16)
     solar_next_step_17 = ui.next_step(mo, "Next: freeze and evaluate", "final", go_to)
-    _parts += [ui.evidence(mo, _s, stage_ids=[row["id"] for row in (_proposal, _composition) if row], question="What evidence did the researcher read? Does the proposed diff address that evidence?"), mo.Html(ui.branch_graph(_s)), solar_next_step_17]
+    _parts += [ui.evidence(mo, _s, stage_ids=[row["id"] for row in (_proposal, _composition) if row], question="Open the proposal in Agent Lens. Find the validation score and code sent to the agent, then compare its explanation with the changed lines below. What does the edit try to fix?"), mo.Html(ui.branch_graph(_s)), solar_next_step_17]
     mo.vstack(_parts)
     return (research_button, research_note, solar_next_step_17, solar_prerequisite_15, solar_prerequisite_16,)
 
@@ -558,7 +558,7 @@ def _(choose_adoption, evidence_editor, get_feedback, get_lab, mo, next_research
         except Exception as _error:
             set_feedback({**get_feedback(), "research-export": str(_error)})
     elif _phase.startswith("review-"):
-        mo.stop(not research_note.value.strip(), mo.md("Write one sentence about the diff before confirming this review."))
+        mo.stop(not research_note.value.strip(), mo.md("In the review note, name the line that changed and what you expect it to do."))
         _candidate = teaching.saved(_s, _prefix + "compose")["result"]["decision"] if _phase == "review-composition" else teaching.saved(_s, _prefix + "propose")["result"]["candidates"][int(_phase[-1])]
         with _s.stage(_prefix + _phase, sources={"candidate.py": _candidate["source"]}, inputs={"fingerprint": _candidate["fingerprint"]}) as _stage:
             if _stage.needs_run:
@@ -579,7 +579,7 @@ def _(choose_adoption, evidence_editor, get_feedback, get_lab, mo, next_research
             if _stage.needs_run:
                 _stage.record({**_executed, "title": _candidate["title"], "rationale": _candidate["rationale"]})
     elif _phase == "probe-done":
-        mo.stop(not research_note.value.strip(), mo.md("Record one comparison of the two probes before continuing."))
+        mo.stop(not research_note.value.strip(), mo.md("In the review note, compare A and B using their validation errors or recorded failures."))
         _probes = [teaching.saved(_s, _prefix + "probe-result-" + str(index))["result"] for index in (0, 1)]
         with _s.stage(_prefix + "probe-done", inputs={"probes": _probes}) as _stage:
             if _stage.needs_run:
@@ -609,19 +609,19 @@ def _(get_lab, get_step, go_to, mo, next_research_action, ui):
     _s = get_lab().get("session")
     _done = bool(_s) and next_research_action(_s)[1] == "done"
     final_button = mo.ui.run_button(label="Freeze versions and evaluate reserved dates", disabled=not (_done and get_lab().get("images") and get_lab().get("goes")))
-    conclusion = mo.ui.text_area(value=_s.get_draft("solar/conclusion", "") if _s else "", label="What did your changes do? Cite one prediction, run, and code change.", full_width=True, on_change=lambda value: _s.save_draft("solar/conclusion", value) if _s else None)
+    conclusion = mo.ui.text_area(value=_s.get_draft("solar/conclusion", "") if _s else "", label="What changed in your forecast? Link one prediction and the code change behind it.", full_width=True, on_change=lambda value: _s.save_draft("solar/conclusion", value) if _s else None)
     report_button = mo.ui.run_button(label="Publish my conclusion", disabled=not bool(get_lab().get("final")))
     retry_publication = mo.ui.run_button(label="Retry saved exports and comparison publication", disabled=not bool(_s))
     solar_prerequisite_18 = ui.prerequisite(mo, "Finish both research rounds before freezing versions.", "research", go_to)
-    solar_prerequisite_19 = ui.prerequisite(mo, "Load the dataset to restore arrays. Completed training will not repeat.", "data", go_to)
-    mo.vstack([mo.Html(ui.step("7. Stop choosing. Evaluate the frozen versions.", "Compare persistence, the selected manual model, and the adopted agent model on reserved dates. Source and trained weights are frozen before this comparison.", "Keep image and measurement metrics separate. Inspect an error image. A failed or worse model still belongs in the result.")), final_button, solar_prerequisite_18 if not _done else solar_prerequisite_19 if not get_lab().get("images") else mo.md("Final evaluation loads saved weights. It does not retrain them."), conclusion, report_button, retry_publication])
+    solar_prerequisite_19 = ui.prerequisite(mo, "Go to Solar data and click Load the solar dataset before evaluating.", "data", go_to)
+    mo.vstack([mo.Html(ui.step("7. Stop choosing. Evaluate the frozen versions.", "Click Freeze versions and evaluate reserved dates. We’ll use the saved weights to compare persistence, your manual image model, and the agent-edited model on February 13–14. We’ll also score your selected GOES model separately.", "Pick one forecast and explain what changed. Then write your conclusion below and click Publish my conclusion.")), final_button, solar_prerequisite_18 if not _done else solar_prerequisite_19 if not get_lab().get("images") else mo.md("These two test days were held back while you chose changes. One seed and overlapping forecast windows make this a teaching result, not evidence of reliable solar forecasting."), conclusion, report_button, mo.accordion({"A trace or comparison did not upload": mo.vstack([mo.md("Your executions and predictions are saved locally. Use the retry button to upload them again without training or calling the research agent. If native EvalTables is unavailable, use the notebook comparison and the published Weave links. Unavailable results stay marked unavailable."), retry_publication])})])
     return (conclusion, final_button, report_button, retry_publication, solar_prerequisite_18, solar_prerequisite_19,)
 
 
 @app.cell
 def _(export_trace, final_button, get_feedback, get_lab, instrument_tool, mo, np, plots, publish_comparison, refresh_saved, research, set_feedback, solar, teaching, time, training):
     mo.stop(not final_button.value)
-    mo.output.replace(mo.md("**Evaluating the frozen versions.** Loading saved weights; no model is being retrained."))
+    mo.output.replace(mo.md("**Evaluating your selected models.** Loading the saved weights and predicting the reserved dates."))
     _s = get_lab()["session"]
     _adopted = teaching.saved(_s, "images/round-2/adopt")["result"]["adopted"]
     _versions = {"manual": get_lab()["manual"], "agent": _adopted}
@@ -671,7 +671,7 @@ def _(export_trace, final_button, get_feedback, get_lab, instrument_tool, mo, np
     _s.checkpoint("final")
     refresh_saved()
     # Publication uses saved predictions. Failure does not erase the completed evaluation.
-    mo.output.replace(mo.md("**Evaluation complete and saved.** Publishing matching predictions to Weave and EvalTables. This may take a few minutes; it sends no inference requests."))
+    mo.output.replace(mo.md("**Your predictions and scores are saved.** Uploading the comparisons to Weave and EvalTables. This can take a few minutes."))
     for _name, _label in (("images/final-comparison", "solar-images-final"), ("goes/final-comparison", "solar-measurements-final")):
         _saved = teaching.saved(_s, _name)
         if _saved:
@@ -681,7 +681,7 @@ def _(export_trace, final_button, get_feedback, get_lab, instrument_tool, mo, np
             except Exception as _error:
                 set_feedback({**get_feedback(), "publication": str(_error)})
     refresh_saved()
-    mo.output.replace(mo.md("**Evaluation saved. Publication finished.** The tables below distinguish available Weave results from any unavailable native comparison. Publication retries reuse these saved predictions."))
+    mo.output.replace(mo.md("**Your comparison is ready below.** Open the published links, or use the notebook table if a service is unavailable."))
     return
 
 
@@ -741,15 +741,15 @@ def _(get_lab, get_step, mo, teaching, ui):
                 if _path.exists():
                     _parts.append(mo.image(str(_path)))
     else:
-        _parts.append(mo.md("No final image evaluation has run."))
+        _parts.append(mo.md("Run the frozen comparison above to see your final image scores."))
     _parts.append(mo.md("### Final measurement errors"))
     if _measurement:
         _parts.append(mo.ui.table(teaching.metric_rows(_measurement["result"]["metrics_by_version"]), selection=None))
     elif get_lab().get("goes_final"):
         _parts.append(mo.Html(ui.result("Restored measurement evaluation", get_lab()["goes_final"])))
     else:
-        _parts.append(mo.md("No final measurement evaluation has run. Measurement error is not averaged with image error."))
-    _parts += [ui.evidence(mo, _s, stage_ids=[row["id"] for row in _s.completed() if row["name"] in ("images/final-manual", "images/final-agent", "images/final-comparison", "goes/final", "goes/final-comparison")], extra=_s.read()["progress"].get("evidence", {}), question="Align one prediction across versions. Follow its source and trace, then state what the image actually changed."), ui.publication(mo, _s), mo.md("**Optional ARIA investigation:** Review my Report and linked research-agent traces. Identify one supported reason a change helped or hurt, cite the exact event and prediction, and propose one next experiment. Do not launch new runs.")]
+        _parts.append(mo.md("Your final GOES scores will appear here. We keep them separate because measurement and image errors use different units."))
+    _parts += [ui.evidence(mo, _s, stage_ids=[row["id"] for row in _s.completed() if row["name"] in ("images/final-manual", "images/final-agent", "images/final-comparison", "goes/final", "goes/final-comparison")], extra=_s.read()["progress"].get("evidence", {}), question="Choose the same forecast timestamp in each version. Compare its predicted image and error, then follow the code and trace links. Which visible difference supports your conclusion?"), ui.publication(mo, _s), mo.md("**Optional ARIA investigation:** Review my Report and linked research-agent traces. Identify one supported reason a change helped or hurt, cite the exact event and prediction, and propose one next experiment. Do not launch new runs.")]
     mo.vstack(_parts)
     return
 

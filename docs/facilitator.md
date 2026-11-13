@@ -1,26 +1,40 @@
 # Solar Forecasting Lab facilitator guide
 
-The lab is fictional; its solar observations are real. Open with the research team trying to reproduce a promising score from a notebook called `final`. Then show the GOES measurements and AIA images the participants will forecast. The office setting belongs to the separate Pending workshop.
+The research lab is fictional; the satellite observations are real. Start with the team’s four notebooks named `final` and a score nobody can reproduce. Then open the GOES measurements and AIA images. The workshop’s first job is to make a forecast whose code and data another person can find.
 
-Before class: verify public templates, run the access check from an attendee account, download the data once, and open the monitor with participant project links. Ask everyone to check their own notebook compute and inference access. Keep the recorded fallback available.
+Before class, open the templates from an attendee account, check compute and inference access, and download the teaching data. Add participant project links to the progress monitor. Keep the [recorded deck](https://ash0ts.github.io/forge-workshop-kit/solar/) available if someone cannot run a step.
 
-| Minutes | Say and do | Check before moving on |
+## Four-hour schedule
+
+Leave each exercise slide on screen while participants work. Give them time to try the code before opening a hint or worked answer.
+
+| Minutes | Introduce the task | Ask participants to show you |
 | --- | --- | --- |
-| 0–15 | “This is your project. I can see progress you publish; I cannot operate your notebook.” Copy, connect, instrument a small operation. | Everyone can open their own Agent Lens conversation. |
-| 15–40 | “Before predicting the future, check the timestamps.” Build persistence and inspect gaps. | Learner explains why a window crossing a gap is excluded. |
-| 40–65 | “Which code and data produced that number?” Inspect source, scaling, split and run metadata. | A partner can locate the exact source and data version. |
-| 65–90 | “These are different settings, not an agent inventing a new model.” Run six bounded configurations. | Compare validation quality and cost without opening test results. |
-| 90–100 | Break. | Checkpoint has uploaded. |
-| 100–135 | “The records stay the same shape; the prediction becomes an image.” Edit and compare the two models. | Open input, prediction, observed future and error. |
-| 135–160 | “Now the agent can change the program.” Inspect its prompt, tools and two proposed diffs. | Each participant can explain a proposed behavioral change. |
-| 160–195 | Probe, compose, test, retain a lesson, then repeat. | Adopted source matches an actual execution; rejected versions remain visible. |
-| 195–225 | “Stop choosing. Freeze the versions and open the reserved dates.” | Compare all final versions on matching cases. |
-| 225–240 | Write the conclusion and reproduce one result from its artifacts. | One claim, a code change, an execution, and a score are linked. |
+| 0–15 | “Copy the notebook into your project. We’ll send a small trace first, so you can check where your work will appear.” | Their own conversation in Agent Lens and the arguments of its tool call. |
+| 15–40 | “Predict the measurement 30 minutes from now by copying the latest reading. Before running it, check which timestamps become inputs.” | A forecast beside the observed value. Use the date diagram to explain why a window crossing a data gap or split boundary must be excluded. |
+| 40–65 | “Now save enough information for a teammate to run this again.” Explain that a W&B Artifact stores a versioned collection of files. | The run’s code, settings, data version, and predictions. |
+| 65–90 | “We’ll try six configurations using the models already written. Compare validation error before choosing one.” | Two runs in the Sweep, the setting that differs, and their learning curves. Keep test dates closed. |
+| 90–100 | Take a ten-minute break after checking that the checkpoint uploaded. | Saved drafts and completed work. |
+| 100–135 | “Now predict a future image. One model predicts the whole image; the other predicts a correction to the current image.” | The input, prediction, observed future, and error image for the same timestamp. |
+| 135–160 | “So far, we’ve chosen the models and settings. Give the agent the code and validation results and ask it for two changes.” | Each proposed diff and an explanation of the behavior it should change. Open the agent’s evidence-read call in Agent Lens. |
+| 160–195 | “Train both versions with the same settings. Compare their errors, ask the agent which changes to keep, and test that choice. Repeat once.” | Which code ran, its validation result, and the reason for choosing or rejecting it. |
+| 195–225 | “We’ve finished choosing versions. Freeze them and evaluate on the reserved dates.” | Matching forecasts from each version, including a case where the average score hides a visible error. |
+| 225–240 | “Write what changed and whether it helped. Then reopen one result using its saved files.” | A conclusion linked to the code, predictions, and metric that support it. |
 
-At each transition, ask participants to explain one result to a neighbor. Use help requests to find blocked participants, not model scores to rank them. Missing progress is unknown; ask before assuming someone is stuck.
+At transitions, ask participants to explain one result to a neighbor. Use help requests to find people who are blocked. The monitor cannot tell whether someone is thinking, editing, or disconnected just because they haven’t published an update.
 
-If time runs short, stop launching additional experiments and inspect saved evidence. Label a recorded walkthrough as recorded. Do not suggest a learner's unexecuted code produced those results.
+## Discuss the recorded result
 
-For the recorded improvement example, follow the residual-head initialization and loss edits into their validation runs, then open the frozen image predictions. Final error fell from 0.122442 to 0.110011, a 10.2% relative reduction from the manual model. Compare the largest and smallest changes on matching forecasts, then inspect where pixel errors remain. These are correlated windows from two reserved days, not independent research trials. Keep the unsuccessful GOES result in the comparison. The [evidence review](solar-evidence.md) records the source and calculation.
+Follow the residual-head initialization and training-loss changes into their validation runs, then open the final image predictions. Error fell from 0.122442 to 0.110011, a 10.2% reduction from the manual model. Ask which parts of an image improved and which still look wrong.
 
-If publication fails, continue with the local comparison. Retry saved publication later. If inference fails, show the real error and use recorded evidence; do not change models silently. If a model regresses, inspect the prediction and keep the regression in the comparison.
+Keep the scope beside that number: one rehearsal, one seed, and overlapping windows from two reserved days. We haven’t established that the same edits will help other dates or training runs. The GOES model did worse than persistence; use its learning curve and predictions to discuss why a completed training run can still produce a poor forecast. The [evidence review](solar-evidence.md) contains the calculations.
+
+## If someone gets stuck
+
+- **Code check fails:** ask them to read the expected and returned values. Offer the first hint before the solution.
+- **Access check fails:** distinguish project permissions, inference access, and notebook compute. Continue with local code checks or labeled recorded results while access is resolved.
+- **Training or inference fails:** open the error. Do not switch models or claim the recorded result came from their code.
+- **Publication fails:** use the saved notebook comparison. Retry uploading the result without rerunning the experiment. Native EvalTables was unavailable in our rehearsal; Weave and local comparisons remain available.
+- **Time runs short:** stop starting new runs and walk through the saved example. Ask participants to explain the proposed change and how they would test it.
+
+Close by asking each participant for one next experiment and the result that would convince them to keep the change.

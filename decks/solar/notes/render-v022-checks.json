@@ -1,0 +1,59 @@
+{
+  "release": "0.2.2",
+  "full_deck": "All 90 frames checked in render-checks.json",
+  "final_copy_changes_rechecked": [
+    17,
+    30,
+    36,
+    47,
+    53,
+    60,
+    65
+  ],
+  "issues": [],
+  "errors": [],
+  "all_answer_links": [
+    {
+      "exercise": 10,
+      "answer": 75,
+      "returned": true
+    },
+    {
+      "exercise": 20,
+      "answer": 76,
+      "returned": true
+    },
+    {
+      "exercise": 30,
+      "answer": 77,
+      "returned": true
+    },
+    {
+      "exercise": 36,
+      "answer": 78,
+      "returned": true
+    },
+    {
+      "exercise": 46,
+      "answer": 79,
+      "returned": true
+    },
+    {
+      "exercise": 53,
+      "answer": 81,
+      "returned": true
+    },
+    {
+      "exercise": 61,
+      "answer": 82,
+      "returned": true
+    },
+    {
+      "exercise": 66,
+      "answer": 83,
+      "returned": true
+    }
+  ],
+  "provider_calls": 0,
+  "training_runs": 0
+}

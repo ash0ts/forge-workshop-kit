@@ -1,6 +1,6 @@
 [project]
 name = "forge-workshop-kit"
-version = "0.2.1"
+version = "0.2.2"
 description = "Copy a notebook, build an experiment, save the evidence in your own Forge project."
 requires-python = ">=3.11,<3.14"
 dependencies = [

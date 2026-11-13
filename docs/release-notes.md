@@ -1,4 +1,12 @@
-# Forge Workshop Kit 0.2.1 technical preview
+# Forge Workshop Kit 0.2.2 technical preview
+
+The Solar deck, both notebooks, setup instructions, and presenter notes now explain each exercise in the order you do it: change the code, run it, and examine the result. Instructions name the function and control to use. Forge callouts point to a particular request, prediction, or account change to investigate.
+
+Pending keeps its office setting; Solar keeps its research lab. The recorded image improvement and unsuccessful GOES forecast remain visible, with their limits beside the results. Data, experiment settings, saved outcomes, and inference allowances are unchanged. This revision adds no training or model calls.
+
+The release includes updated notebook templates, the Solar browser deck and PDF, editable source, and facilitator notes. Previous releases and existing attendee copies are preserved. See [release checks](release-checks.md) for publication checks and remaining rehearsal requirements.
+
+## 0.2.1
 
 Pending, Inc. remains an office workshop. Solar now takes place in a computational research lab, with a solar observing screen, experiment records and an agent proposing code changes. The deck and notebook use the same lab setting.
 

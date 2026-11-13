@@ -147,3 +147,5 @@
 .model-crop img{position:static;left:auto;top:auto}
 
 .measured-grid{display:grid;grid-template-columns:400px 1fr;gap:50px;align-items:start;margin:35px 0 25px}.measured-gain{font-size:90px;line-height:1;color:var(--teal);letter-spacing:-3px}.measured-grid p{font-size:28px;line-height:1.3}.measured-grid .aside{font-size:22px;margin-top:28px}.measured-grid td{padding:22px 16px}.cover .lab-scene{transform:none;top:176px;width:595px}
+
+.slidev-layout .agent-explanation{font-size:36px;line-height:1.5!important;max-width:1080px;margin-top:50px}

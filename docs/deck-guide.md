@@ -1,27 +1,27 @@
 # Workshop decks
 
-The Solar companion is in `decks/solar/`. It keeps the original deck’s typography, colors, progressive diagrams and exact exercise instructions, with a computational research lab as its setting. Pending, Inc. keeps its office setting.
+Use the Solar deck to introduce an exercise, then leave its instructions on screen while participants write and run code in the notebook. Solar takes place in a research lab; Pending, Inc. stays in the office.
 
-The notebook is the work surface. Keep the current exercise slide on screen while participants edit code and inspect their own evidence. Worked answers follow the main deck and link back to the exercise. Recorded results are labeled separately from participant work.
+Each exercise links to a worked answer after the main deck. Give participants time to try before opening it, then use the return link to resume. When showing a rehearsal capture, say that it is a recorded result.
 
 ## Solar Autoresearch
 
-The four-hour schedule is in `decks/solar/notes/facilitator-notes.md`. The editable storyboard is `decks/solar/scripts/build-storyboard.py`, which generates `slides.md`. The portable browser deck and PDF preserve each incremental diagram frame.
+Follow the [four-hour runbook](facilitator.md) and [slide-by-slide presenter notes](../decks/solar/notes/facilitator-notes.md). The diagrams add one part at a time in both the browser deck and PDF.
 
 - Begin with the failed handoff of a promising score without reproducible source or settings. This opening is fictional.
 - Build persistence, record experiments, compare six configurations, then move from measurements to image forecasts.
 - Distinguish changing settings, choosing implemented architectures, and asking an agent to write new code.
 - The forecasting models train weights. The research agent remains fixed.
-- Review two candidates, test them, compose, test again, and retain evidence for another round.
+- Read the two proposed changes and train both. Ask the agent which changes to keep, test its chosen version, and carry that code and a lesson into the next round.
 - Freeze source and trained weights before opening reserved dates. Keep measurement and image metrics separate.
 
-The public source and dataset are part of the same repository. Attendees copy the template into their own project and use their own Forge access. No host token or workshop gateway is involved. Hosted notebook compute is billed separately from the notebook’s inference allowance.
+Use the [README setup instructions](../README.md#start-in-forge) to copy the notebook into each participant’s project. They use their own Forge account. Explain the inference allowance during setup and note that notebook compute is billed separately.
 
 ## Pending, Inc.
 
 The [November 12 deck](https://github.com/ash0ts/pending-inc-workshop/releases/tag/workshop-2026-11-12) remains a historical workshop release. Its explanatory diagrams and exercise progression are the design reference. Its gateway, two-token setup, and expired access window do not apply to the Workshop Kit notebook.
 
-For the current gateway-free Pending notebook, begin at [the new template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view), copy it into the attendee’s project, and use the notebook’s own guided steps. The kit uses local tools and actual local MCP. Do not describe those receipts as remote Sandbox execution.
+For the current Pending notebook, begin at [the new template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view), copy it into the attendee’s project, and use the notebook’s own guided steps. Its tools run in the notebook’s Python runtime; onboarding calls a local MCP server. The current workshop does not use remote Sandboxes.
 
 ### Current Pending exercise references
 
@@ -44,6 +44,6 @@ The current authored cells live in `scripts/pending_cells.py`; the generated att
 
 ## Product screens
 
-Use the current participant’s own runs whenever possible. Captures in the deck are recorded evidence, not promises about what a new execution will do. Agent Lens shows actual model and tool activity. W&B runs and Artifacts preserve training settings and files. Weave and native EvalTables align matching cases when publication is available.
+Ask participants to open their own runs when possible. In Agent Lens, choose a particular model request or tool call and inspect its arguments and result. In W&B, find the settings and files used for a training run. In Weave or EvalTables, compare predictions for the same input rather than starting with the averages.
 
 Native EvalTables returned HTTP 500 in the technical rehearsal. Use the notebook and Weave comparisons when that status persists, then retry publication without repeating training or model calls.

@@ -4,18 +4,18 @@
   "files": [
     {
       "file": "solar-autoresearch-browser.zip",
-      "bytes": 2951381,
-      "sha256": "9cc99b11715c3eb1080f082e70ec39154ae8d06f4c24037a0818e33b15dae07b"
+      "bytes": 3139929,
+      "sha256": "f9a4d9ae66e02c13436105b15002735bcadd10bb4f43a966bb52124538d51d84"
     },
     {
       "file": "solar-autoresearch-deck-source.zip",
-      "bytes": 2101247,
-      "sha256": "275b534bd31ff2ef703f7d6a34cf36e3deca36b4e5f744b400664d255efa827e"
+      "bytes": 2292539,
+      "sha256": "fc002f97659033e79a243a4578076efde73787d631679ae2ecb5e26a8474ea9b"
     },
     {
       "file": "solar-autoresearch.pdf",
-      "bytes": 1887561,
-      "sha256": "7f1093d10b7cd5e7ce01429a70bbec0e32c34eca93d75f611eb32951d4cbf9b7"
+      "bytes": 1906568,
+      "sha256": "e663a6c691110f7c2caa78b08feecd70e471909128f4065ac4a3e8f12a105d29"
     }
   ],
   "assets": [
@@ -70,6 +70,10 @@
     {
       "file": "public/images/ux-v021-solar-setup.png",
       "sha256": "3d13766f0b9c254c58499478380f7397a6114fbc8e90cfb598bc5b13d566df94"
+    },
+    {
+      "file": "public/images/ux-v022-solar-setup.png",
+      "sha256": "65899e97ed5962206c4b98927227dcd824cec21067e4f43ca883d6041106562e"
     },
     {
       "file": "public/recorded-runs.json",

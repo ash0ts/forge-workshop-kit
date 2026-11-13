@@ -1,0 +1,40 @@
+{
+  "release": "0.2.2",
+  "base_commit": "9b8df35",
+  "scope": [
+    "Solar deck and presenter notes",
+    "Solar authored cells and generated notebook",
+    "Pending authored cells and generated notebook",
+    "Attendee setup and facilitator instructions",
+    "Shared display copy"
+  ],
+  "writing_references": [
+    "https://docs.pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html",
+    "https://docs.sunpy.org/en/stable/tutorial/timeseries.html",
+    "https://huggingface.co/learn/agents-course/en/unit1/tutorial",
+    "https://carpentries.github.io/lesson-development-training/lesson-content.html"
+  ],
+  "voice": "Instructor beside you: explain the edit, run control, expected output, and investigation.",
+  "validation": {
+    "existing_tests_passed": 60,
+    "generated_notebooks_checked": 4,
+    "static_html_exports": 4,
+    "training_executions": 0,
+    "model_requests": 0
+  },
+  "preserved": [
+    "Model IDs and settings",
+    "Data and experiment design",
+    "Scorers",
+    "Participant inference allowance",
+    "Recorded outcomes",
+    "Run-button labels",
+    "Checkpoint identities",
+    "Previous releases and attendee copies"
+  ],
+  "known_limits": [
+    "Native EvalTables last returned HTTP 500; this copy revision did not re-run publication of evaluations.",
+    "External-account and human usability rehearsals remain outstanding."
+  ],
+  "ownership_review": "Standalone repository .github/CODEOWNERS assigns all paths to @ash0ts; unchanged and appropriate. No core product files changed."
+}

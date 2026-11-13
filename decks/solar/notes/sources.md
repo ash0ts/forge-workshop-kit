@@ -37,7 +37,7 @@ The measured image improvement, matching forecasts and contrasting GOES failure 
 
 All product screens are real browser captures. Slide crops change presentation only; linked full-size captures retain their context.
 
-- `ux-v021-solar-setup.png`: the current Solar Forecasting Lab notebook's Connect screen with the saved rehearsal workspace. The actual rehearsal project and allowance are visible; attendees use their own project. Other v020 screens below preserve the original measured execution evidence.
+- `ux-v022-solar-setup.png`: the current Solar Forecasting Lab Connect screen before connection, with the participant project field and allowance visible. Other v020 screens below preserve the measured execution evidence.
 - `ux-v020-solar-instrumentation.png`: the edited `instrument_tool` function and passing free check. The check itself exports nothing. The subsequent trace has verified stored span `3836f2a676d91bdf` in conversation `19f7b8c14211a63aa6a7e22bd14375bf`.
 - `ux-v020-solar-models.png`: the settled validation model comparison: matching convolutional and residual forecasts, metrics, and actual Agent Lens/run/artifact links.
 - `ux-v020-solar-diff.png`: first-round Candidate A changes squared training error to absolute error. The actual diff and review control are visible. The rationale is attributed to the agent; the measured outcome comes from the later probe.
@@ -53,3 +53,7 @@ Forge hosts the participant's notebook and project. The notebook uses that parti
 Agent Lens stores actual request and tool evidence. Weave and W&B publication are separate from native EvalTables. Native EvalTables returned HTTP 500 during rehearsal and remains explicitly unavailable unless a publication retry succeeds.
 
 The recorded result belongs to one seed and two reserved dates. Adjacent forecast windows overlap. It is not evidence of general solar forecasting improvement, a Surya reproduction, or a controlled diagnostics-treatment effect. The two research rounds demonstrate a working code-editing loop; quality is measured separately.
+
+## v0.2.2 setup capture
+
+`public/images/ux-v022-solar-setup.png` shows the current notebook before connection. It is an authentic local preview with the project field, allowance, and tracing exercise visible. It does not demonstrate authenticated project access. The recorded forecasting and product captures remain from the completed November 13 rehearsal.

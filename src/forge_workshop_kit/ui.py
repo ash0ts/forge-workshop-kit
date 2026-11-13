@@ -83,7 +83,7 @@ def navigation(mo, steps, current, on_select, completed=(), *, label='Your workd
             tooltip='Current step' if key == current else 'Open this step; no work will run',
         )
     # The caller binds this composite to a notebook global so callbacks stay active.
-    template = f'<p><strong>{escape(label)}</strong> · Browse any step. Run buttons execute work.</p>'
+    template = f'<p><strong>{escape(label)}</strong> · Choose a step to open it. Use its run button when you’re ready.</p>'
     template += '<div style="display:flex;flex-wrap:wrap;gap:8px">' + ''.join(
         '{' + name + '}' for name in buttons) + '</div>'
     return mo.Html(template).batch(**buttons)
@@ -154,7 +154,7 @@ def stage_links(session, stage_ids=()):
         label = record.get('name', 'Execution').replace('/', ' / ').replace('-', ' ')
         trace = state['publications'].get('trace/' + identity, record.get('result', {}).get('trace', {}))
         if trace.get('url'):
-            found[f'{label} · Agent Lens' + ('' if trace.get('verified') else ' · readback pending')] = trace['url']
+            found[f'{label} · Agent Lens' + ('' if trace.get('verified') else ' · upload not yet verified')] = trace['url']
         if record.get('published'):
             found[f'{label} · run'] = record['published']
         if record.get('artifact_url'):
@@ -184,9 +184,9 @@ def evidence(mo, session, stage_ids=(), question='', extra=None):
     if question:
         elements.append(mo.md(question))
     if len(values) > 9:
-        elements.append(mo.accordion({f'Open all {len(values)} execution and artifact links': mo.Html(links(values))}))
+        elements.append(mo.accordion({f'Open all {len(values)} runs and saved files': mo.Html(links(values))}))
     else:
-        elements.append(mo.Html(links(values)) if values else mo.md('Evidence links appear here after the run is saved and published.'))
+        elements.append(mo.Html(links(values)) if values else mo.md('Links to this run and its files will appear here after upload.'))
     if session:
         state = session.read()
         exact = {}
@@ -196,7 +196,7 @@ def evidence(mo, session, stage_ids=(), question='', extra=None):
             receipt = state['publications'].get('trace/' + identity, {})
             if receipt.get('status') == 'unavailable' or receipt.get('error'):
                 elements.append(mo.callout(mo.md('The execution is saved. Trace publication needs a retry: '
-                                               + str(receipt.get('error', 'readback is pending'))), kind='warn'))
+                                               + str(receipt.get('error', 'the uploaded trace has not yet been verified'))), kind='warn'))
         if exact:
             elements.append(mo.accordion({'Open a specific recorded tool span': mo.Html(links(exact))}))
     return mo.vstack(elements)
@@ -239,7 +239,7 @@ def publication(mo, session):
     elements = [mo.md('**Publication status**'), mo.Html(links(destinations)),
                 mo.ui.table(rows, selection=None, show_column_summaries=False)]
     if partial:
-        elements.append(mo.callout(mo.md('Some native evidence is unavailable. Use the notebook results and the published links. Retry publication from saved work; do not rerun the experiment.'), kind='warn'))
+        elements.append(mo.callout(mo.md('Some comparisons could not be uploaded. You can still use the notebook results and the links above. Retry the upload from saved work without running the experiment again.'), kind='warn'))
         if errors:
             elements.append(mo.accordion({'Publication error details': mo.md('\n\n'.join(errors))}))
     return mo.vstack(elements)
@@ -289,7 +289,7 @@ def _branch_detail(session, row):
         if change:
             content.append('<pre class="workshop-diff">' + escape(change) + '</pre>')
         elif candidate.get('decision') == 'KEEP':
-            content.append('<p>Retain this version. No executable change.</p>')
+            content.append('<p>Retain this version. The code is unchanged.</p>')
     if decision.get('diff'):
         content.append('<pre class="workshop-diff">' + escape(decision['diff']) + '</pre>')
     execution = saved.get('run', saved.get('adopted', saved))
@@ -313,7 +313,7 @@ def _branch_detail(session, row):
         value = saved.get(key) or decision.get(key)
         if value:
             content.append('<p><strong>' + label + ':</strong> ' + escape(_display(value)) + '</p>')
-    content.append('<details><summary>Saved source and identity</summary><p>Source fingerprint: <code>' + escape(row.get('source_fingerprint', 'unavailable')) + '</code></p>')
+    content.append('<details><summary>Code and version details</summary><p>Source fingerprint: <code>' + escape(row.get('source_fingerprint', 'unavailable')) + '</code></p>')
     sources = row.get('sources', {})
     for name, source in sources.items():
         content.append('<p>' + escape(name) + '</p><pre class="workshop-diff">' + escape(str(source)) + '</pre>')
@@ -334,14 +334,14 @@ def _branch_detail(session, row):
 def branches(session):
     rows = [r for r in session.read()['stages'].values() if '/round-' in r['name']]
     rows.sort(key=lambda row: row.get('started_at', 0))
-    return ''.join(_branch_detail(session, row) for row in rows) or '<p>Branches appear after proposals and executions are saved.</p>'
+    return ''.join(_branch_detail(session, row) for row in rows) or '<p>The branches will appear here after the agent proposes changes and you test them.</p>'
 
 
 def branch_graph(session):
     """Two explicit proposal branches. Edges show workflow, not code adoption."""
     rows = list(session.read()['stages'].values())
     rows.sort(key=lambda row: row.get('started_at', 0))
-    svg = ['<section class="workshop-branch"><p><strong>Research history</strong> · Select a saved event to inspect its files and evidence. Proposal titles state the agent’s intent. Lines show the workflow; the adoption receipt identifies which code was selected.</p><svg viewBox="0 0 1020 670" role="img" aria-label="Two rounds with separate candidate A and B probes, composition, test, and selection">']
+    svg = ['<section class="workshop-branch"><p><strong>Improvement history</strong> · Select a step to see the proposed edit, its test result, and the agent’s explanation. The last step in each round shows which version was kept.</p><svg viewBox="0 0 1020 670" role="img" aria-label="Two rounds with separate candidate A and B probes, composition, test, and selection">']
     for number in (1, 2):
         group = [r for r in rows if f'/round-{number}/' in r['name']]
         def find(*suffixes):

@@ -15,7 +15,7 @@ def save(name,title,cells):
         return
     header=f'''# /// script
 # requires-python = ">=3.11,<3.14"
-# dependencies = ["forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.2.1/forge_workshop_kit-0.2.1-py3-none-any.whl", "torch==2.15.0"]
+# dependencies = ["forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.2.2/forge_workshop_kit-0.2.2-py3-none-any.whl", "torch==2.15.0"]
 # [tool.uv.sources]
 # torch = [{{ index = "pytorch-cpu", marker = "sys_platform != 'darwin'" }}]
 # [[tool.uv.index]]
@@ -42,7 +42,7 @@ import marimo as mo
 from forge_workshop_kit.publication import monitor
 ''',True)
 add('''
-mo.md("# Workshop progress\\nThis notebook only reads participant projects. Missing updates mean unknown, not failure. It never starts participant work.")
+mo.md("# Workshop progress\\nPaste the participant project links below to see their completed steps and help requests. If someone has not published an update, ask how they are doing before assuming they are stuck. This monitor cannot run their notebook.")
 roster=mo.ui.text_area(label="Public project links: entity/project, one per line",full_width=True)
 workshop=mo.ui.dropdown({"Solar Autoresearch · four hours":"solar-autoresearch","Pending, Inc. · three hours":"pending-direct-teaching"},value="Solar Autoresearch · four hours",label="Workshop")
 auto_refresh=mo.ui.checkbox(label="Refresh every 30 seconds while this notebook is open")
@@ -72,7 +72,7 @@ from forge_workshop_kit import WorkshopSession
 from coreweave.forge.agentlens import tracing
 ''',True)
 add('''
-mo.md("# My workshop\\nCopy this notebook to your project. Add your exercise code below; keep the SDK calls visible.")
+mo.md("# My workshop\\nCopy this notebook to your project, then replace the square calculation below with your own exercise. The tracing scopes show how to send its arguments and result to Agent Lens.")
 project=mo.ui.text(value=os.getenv("WORKSHOP_PROJECT") or "/".join(filter(None,[os.getenv("WANDB_ENTITY"),os.getenv("WANDB_PROJECT")])),label="entity/project")
 connect=mo.ui.run_button(label="Check project access")
 mo.vstack([project,connect])
