@@ -1,0 +1,69 @@
+{
+  "signed_out": true,
+  "pages": [
+    {
+      "key": "cover",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/1/"
+    },
+    {
+      "key": "native-lens",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/52/"
+    },
+    {
+      "key": "persistence-image",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/40/"
+    },
+    {
+      "key": "recorded-final",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/67/"
+    },
+    {
+      "key": "recorded-image",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/68/"
+    },
+    {
+      "key": "recorded-goes",
+      "status": 200,
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/69/"
+    }
+  ],
+  "answer_return": true,
+  "deep_link_reload": true,
+  "errors": [],
+  "failed_responses": [],
+  "downloads": [
+    {
+      "name": "solar-autoresearch.pdf",
+      "status": 200,
+      "method": "anonymous curl with system certificate trust",
+      "bytes": 1887561,
+      "sha256": "7f1093d10b7cd5e7ce01429a70bbec0e32c34eca93d75f611eb32951d4cbf9b7"
+    },
+    {
+      "name": "solar-autoresearch-browser.zip",
+      "status": 200,
+      "method": "anonymous curl with system certificate trust",
+      "bytes": 2951381,
+      "sha256": "9cc99b11715c3eb1080f082e70ec39154ae8d06f4c24037a0818e33b15dae07b"
+    },
+    {
+      "name": "solar-autoresearch-deck-source.zip",
+      "status": 200,
+      "method": "anonymous curl with system certificate trust",
+      "bytes": 2101247,
+      "sha256": "275b534bd31ff2ef703f7d6a34cf36e3deca36b4e5f744b400664d255efa827e"
+    },
+    {
+      "name": "forge_workshop_kit-0.2.1-py3-none-any.whl",
+      "status": 200,
+      "method": "anonymous curl with system certificate trust",
+      "bytes": 127131,
+      "sha256": "3554d2fa2ae9ef5042f88ef883723192f7313783fd10151a74edb2991518c9c4"
+    }
+  ]
+}

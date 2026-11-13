@@ -4,7 +4,7 @@
     "name": "Forge Workshop Kit \u00b7 Starter",
     "currentVersion": {
       "artifactCollectionName": "Forge-Workshop-Kit-Starter",
-      "versionIndex": 3,
+      "versionIndex": 4,
       "sourceFileName": "notebook.py"
     },
     "viewerPermissions": [
@@ -22,7 +22,7 @@
     "name": "Forge Workshop Kit \u00b7 Progress monitor",
     "currentVersion": {
       "artifactCollectionName": "Forge-Workshop-Kit-Progress-monitor",
-      "versionIndex": 3,
+      "versionIndex": 4,
       "sourceFileName": "notebook.py"
     },
     "viewerPermissions": [
@@ -40,7 +40,7 @@
     "name": "Pending, Inc. \u00b7 Your project",
     "currentVersion": {
       "artifactCollectionName": "Pending-Inc.-Your-project",
-      "versionIndex": 3,
+      "versionIndex": 4,
       "sourceFileName": "notebook.py"
     },
     "viewerPermissions": [
@@ -58,7 +58,7 @@
     "name": "Build a research loop, then give it an agent",
     "currentVersion": {
       "artifactCollectionName": "Build-a-research-loop-then-give-it-an-agent",
-      "versionIndex": 3,
+      "versionIndex": 4,
       "sourceFileName": "notebook.py"
     },
     "viewerPermissions": [
