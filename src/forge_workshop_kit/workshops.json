@@ -38,7 +38,7 @@
       "slug": "solar_autoresearch",
       "id": "solar-autoresearch",
       "kind": "workshop",
-      "title": "Build a research loop, then give it an agent",
+      "title": "Solar forecasting with agent-assisted experiments",
       "workflow_version": "1",
       "extras": ["solar"],
       "steps": [["setup", "Connect"], ["data", "Solar data"], ["baseline", "Persistence"], ["search", "Track and search"], ["images", "Solar images"], ["research", "Research agent"], ["final", "Final evaluation"]],

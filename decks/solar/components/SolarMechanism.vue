@@ -3,7 +3,7 @@ const props = defineProps({mode: {default: 'residual'}, reveal: {default: 2}})
 const descriptions = {
   residual: 'Two observed image channels enter the CNN. It predicts one correction channel. Add the current image to produce a future forecast; a zero correction is persistence.',
   mask: 'Compare the predicted and observed image. Take absolute pixel errors, keep only the fixed disk mask, average within each image, then average images.',
-  search: 'Hyperparameters change values in an existing program. Architecture comparison selects an existing implementation. A research agent writes a new program and the same experiment tests it.',
+  search: 'Hyperparameters change values in an existing program. Architecture comparison selects an existing implementation. A research agent changes model or training code; the same data and scorer test the result.',
   freeze: 'Choose code and trained weights using validation dates. Freeze both. Load those weights once on reserved February 13 and 14 inputs, then compare the predictions with observed futures.',
   weights: 'The language model research agent has fixed weights and writes code. The forecasting model trains new weights from that code and training observations. Validation results return to the agent.'
 }

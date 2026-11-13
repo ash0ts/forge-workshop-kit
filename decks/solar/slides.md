@@ -1,6 +1,6 @@
 ---
 theme: default
-title: Build a research loop, then give it an agent
+title: Solar forecasting with agent-assisted experiments
 author: Anish Shah
 info: Solar Forecasting Lab
 class: cover
@@ -24,13 +24,13 @@ exportFilename: solar-autoresearch
 
 <div class="kicker">0:00</div>
 
-# Build a research loop.<br>Then give it an agent.
+# Solar forecasting<br>with agent-assisted<br>experiments
 
-<div class="sub">A four-hour experiment in the Solar Forecasting Lab.</div><LabScene /><div class="bottom-note">Solar forecasting, experiment tracking, and agents that edit research code.</div>
+<div class="sub">Track forecasting experiments and evaluate changes to the training code.</div><LabScene /><div class="bottom-note">A four-hour Python workshop using real satellite observations.</div>
 
 
 <!--
-We’ll build two small forecasts from real solar observations. First we’ll write and track the experiments ourselves. Then we’ll let a research agent propose changes to the image model’s code. The pixel lab is an illustration; the observations and recorded results come from the workshop dataset.
+We’re going to use satellite observations to forecast X-ray flux thirty minutes ahead and solar images one hour ahead. We’ll start with persistence, train a few small models, and record enough information to compare their results. Once that comparison works, we’ll let an agent modify the training code and test whether its changes reduce forecast error. The small models and short training runs fit a CPU workshop; this is not an operational solar forecast.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -38,13 +38,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">0:01</div>
 
-# Your team has a promising result.
+# We need a baseline before training a model
 
-<div class="quote">“The new model looks better.”<small>THE RESEARCH UPDATE · FICTIONAL SCENE</small></div><div class="two-col" style="margin-top:40px"><div><h2>You ask which run.</h2><p>Someone shares a screenshot.</p></div><div><h2>You ask which code.</h2><p>Someone shares a notebook called final.</p></div></div><div class="bottom-note">There are four notebooks called final.</div>
+<p class="big">Our lab has two weeks of satellite observations and wants to predict what happens next.</p><div class="two-col"><div><h2>Start with the latest observation</h2><p>Compare that forecast with the later observation.</p></div><div><h2>Try a trained model</h2><p>Use earlier observations to learn a forecast. Compare it on the same dates.</p></div></div>
 
 
 <!--
-Imagine a teammate says the new model is better, but can only find a screenshot and several notebooks called final. That’s our fictional opening. Ask the room what they would need before trusting or repeating the comparison.
+The lab is our workshop setting. The data is real: two weeks of satellite observations from February 2014. Before fitting a network, we’ll check how well the current measurement predicts a later one. This gives every trained model a concrete baseline to beat. If a network loses to persistence, we need to investigate its inputs, training, and predictions before claiming progress.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -66,13 +66,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">0:03</div>
 
-# First reproduce a result. Then try to improve it.
+# A changed score needs an explanation
 
-<div class="quote">“Could an agent try the next experiment?”<small>THE LAB’S NEXT REQUEST</small></div><div class="step-path"><div><h2>First, you build the experiment.</h2><p>Define the target, train a model, and save what ran.</p></div><div><h2>Then the agent changes its code.</h2><p>Review the change, run it, and compare the prediction.</p></div></div>
+<p class="big">Suppose the next run has lower error. Did we change the model, train it longer, or use different data?</p><div class="two-col"><div><h2>Record what ran</h2><p>Save the source, active settings, data version, and trained weights.</p></div><div><h2>Compare the predictions</h2><p>Keep the forecast target and test dates fixed so the scores mean the same thing.</p></div></div><div class="bottom-note">In our fictional lab, four notebooks are called final. We’ll save the source with each run.</div>
 
 
 <!--
-The reason for building the experiment stack comes first: we need to know whether a change helped and be able to repeat it. Once that works, the same loop can test code proposed by an agent. The language model stays fixed. The small forecasting model trains normally.
+A score alone doesn’t tell us why a run changed. A teammate needs the code, settings, data, and weights to repeat it. We’ll save those records as part of the experiment, then use matching prediction cases to inspect the difference. The four notebooks called final are a fictional lab detail, though the problem will probably sound familiar.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -80,13 +80,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">0:04</div>
 
-# Build a forecast, then test changes to its code
+# What you’ll implement in the notebook
 
-<div class="step-path"><div><h2>Forecast</h2><p>Load observations and write a baseline.</p></div><div><h2>Track</h2><p>Save code, settings, weights, and predictions.</p></div><div><h2>Improve</h2><p>Review and test the agent’s code changes.</p></div><div><h2>Evaluate</h2><p>Compare the selected models on later dates.</p></div></div><div class="bottom-note">You’ll edit Python in your own notebook and publish the results to your project.</div>
+<div class="step-path"><div><h2>Baseline forecast</h2><p>Load observations, build windows, and measure persistence.</p></div><div><h2>Tracked training</h2><p>Compare model settings and save the resulting files.</p></div><div><h2>Code changes</h2><p>Review proposed edits and train each candidate.</p></div><div><h2>Final evaluation</h2><p>Load selected weights and predict the reserved dates.</p></div></div><div class="bottom-note">You’ll edit Python in your own notebook and publish the results to your Forge project.</div>
 
 
 <!--
-Follow this sequence in the notebook. You’ll change Python, run a check, execute the experiment, and open the resulting evidence in Forge. A change that fails to improve the forecast is still something we can investigate.
+Most of the session is spent editing and running Python. Each exercise has a local check, a run button, a result to examine, and a link to the saved work in Forge. The two tasks share the same experiment tracking. Later, we’ll use the image experiment to test agent-written code changes.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -220,7 +220,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 
 <!--
-Read the timeline from left to right. The model gets sixty minutes of observed flux, then predicts the reading thirty minutes after now. We work in log10 flux, so the error is in transformed units rather than raw watts per square metre.
+Read the timeline from left to right. The model receives sixty minutes of X-ray flux measurements and predicts XRS-B thirty minutes after the last input. Flux is measured in watts per square metre. We take log10 because values span a wide range; the forecast error is therefore in log-flux units. The model never receives the future target as an input.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -371,7 +371,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 
 <!--
-These are two recorded GOES runs. Before revealing the settings, ask what the scores let us conclude. Then click Show active settings. Both runs used the same source and budget, but their learning rates differed.
+These are two recorded GOES runs. Before revealing the settings, ask what the scores let us conclude. Then click Show active settings. Both runs used the same source and training budget; their learning rates differed.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -385,7 +385,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 
 <!--
-The learning rate changed from .001 to .003. Data, source, seed, steps, and batch size stayed the same. Both errors were worse than persistence, so choosing the smaller of these two errors still leaves a poor forecast.
+The learning rate changed from .001 to .003. Data, source, seed, steps, and batch size stayed the same. Both errors were worse than persistence. Check the predictions before deciding whether the lower error is worth pursuing.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -393,13 +393,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">0:42</div>
 
-# Turn observations into a forecast
+# How an observation becomes a prediction
 
 <ResearchMap :level="0" />
 
 
 <!--
-Start with the forecast itself: observations enter the model and it produces a number or an image. We’ll add the records around this process one piece at a time.
+The forecast model receives an input window and returns a number or image. The diagram starts with this calculation. We’ll add the model source, scoring rule, and saved outputs so another run can be compared with it.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -427,7 +427,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 
 <!--
-Keep the target, dates, and primary metric unchanged while comparing models. Otherwise a lower score might come from an easier test rather than a better forecast.
+Keep the target, dates, and primary metric unchanged while comparing models. If we changed the metric after seeing a result, the lower number could describe a different task. Our candidate code can change the predictor and training procedure while this comparison rule stays fixed.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -506,13 +506,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">1:05</div>
 
-# Three ways to change an experiment
+# Changing settings, choosing models, and editing code
 
 <SolarMechanism mode="search" />
 
 
 <!--
-Point to the exact change in each row. A Sweep changes values within the current program. Comparing an MLP with a CNN selects an implementation we wrote. The research agent will edit the program itself. Every version still needs the same data partitions and score.
+There are three different operations here. Hyperparameter search supplies different values to the same implementation, such as learning rate or width. Architecture comparison chooses between implementations we already wrote, such as an MLP and a temporal CNN. Later, the research agent will write a code change that our current configuration options cannot express, such as replacing squared training loss with absolute loss. We’ll test that changed program with the same dates and scoring rule.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -526,7 +526,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 
 <!--
-These six configurations are the workshop defaults: two model families, three settings per family, seed 17, batch size 32, and sixty training steps. It’s a short CPU exercise, so inspect whether the models have trained enough before drawing an architecture conclusion.
+The MLP reads the history as a fixed set of inputs. The temporal CNN applies shared filters along time. We’ll try three settings for each: widths sixteen and thirty-two, and learning rates .001 and .003. Every run gets seed seventeen, batch size thirty-two, and sixty training steps. That small budget keeps the exercise short; it does not establish which architecture would win after longer training.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -551,7 +551,7 @@ wandb.agent(sweep_id, function=trial, count=6)
 
 
 <!--
-W&B Sweeps assigns each configuration to a run. Our training function does the fitting and saves its outputs. This is a shortened excerpt; the notebook contains the entity, project, and complete configuration setup.
+The Sweep assigns a trial configuration, and wandb.init creates its tracked run. run_training fits the model, saves its files, and returns metrics; run.log adds those metrics to the run. wandb.agent repeats this for the six configurations. The notebook includes the full entity, project, and configuration setup shown in this shortened excerpt.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -573,13 +573,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">1:11</div>
 
-# Read the loss curve before choosing another model
+# Check whether the model has finished learning
 
 <div class="scientific-figure"><img class="solar-photo" src="/images/v030-goes-loss.png" alt="Saved GOES model loss curve over 60 training steps"><div class="image-caption">Selected MLP: width 16, learning rate .003, seed 17. Saved v0.3.0 training losses.</div></div><div class="bottom-note">The loss was still falling at the limit. Longer training is a next experiment, not a measured result here.</div>
 
 
 <!--
-This is the actual selected GOES run, not an invented trend. Its loss is still falling at sixty steps. Inspect its predictions and fixed validation metric too. A falling training loss alone does not tell us the future forecast is good. Longer training is a concrete follow-up, but this workshop did not run it.
+The selected GOES model’s loss was still falling after sixty steps. That suggests testing a longer training budget, but it does not tell us that more steps would beat persistence. Look at the predictions and validation score alongside the curve. We have not run the longer-budget experiment.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -605,7 +605,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">1:30–1:40</div>
 
-# The experiments can wait ten minutes.
+# Ten-minute break
 
 <p class="big">Save your work and take ten minutes.<br>We’ll start the image experiment when we return.</p><div class="bottom-note">The notebook can stay open. There’s no exercise to run during the break.</div>
 
@@ -633,7 +633,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">1:42</div>
 
-# Save image experiments the same way
+# Track the image model with the same experiment records
 
 <ResearchMap :level="3" /><div class="bottom-note">The input and prediction changed shape. Source, settings, weights, and evidence still belong together. The image score uses normalized log1p intensity.</div>
 
@@ -661,13 +661,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">1:46</div>
 
-# Two image channels enter. One forecast comes out.
+# Predicting the future image with a small CNN
 
 <SolarMechanism mode="residual" :reveal="1" />
 
 
 <!--
-Here the network predicts the entire future image. A batch has two input channels, each 64 by 64. The output has one channel. The forward function returns self.net(x). Keep this geometry in view for the residual reveal.
+The two observations become two input channels. The CNN returns one channel containing its predicted future image. The batch dimension stays the same: input shape is batch by two by sixty-four by sixty-four, and output shape is batch by one by sixty-four by sixty-four. This direct predictor has to produce the whole image from its learned weights.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -675,13 +675,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">1:48</div>
 
-# Let the current image carry what has not changed
+# Predict a correction to the current image
 
 <SolarMechanism mode="residual" :reveal="2" />
 
 
 <!--
-The network now predicts a correction. The arrow around the network copies the current input image and adds the correction to it. In x[:, 1:2], the slice keeps the channel dimension, giving batch by one by 64 by 64. Zero correction returns persistence exactly. That is the behavior participants add to forward.
+Much of the current image may remain similar one hour later. We can copy that image and ask the network to predict the correction. Add the network output to x[:, 1:2], the current-image channel. The slice preserves the channel dimension. If the correction is zero, the model returns persistence exactly. The local check will test that behavior.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -689,7 +689,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">1:49</div>
 
-# Write the addition you just traced
+# Implement the residual predictor’s forward pass
 
 ```python
 def forward(self, x):
@@ -710,7 +710,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">1:50</div>
 
-# Count errors on the solar disk
+# Measure prediction error inside the solar disk
 
 <SolarMechanism mode="mask" />
 
@@ -724,7 +724,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">1:51</div>
 
-# Write the scorer, then test a deliberate miss
+# Check the image scorer on three known errors
 
 ```python
 absolute_error = np.abs(prediction - target)
@@ -745,13 +745,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">1:52</div>
 
-# Train with one loss; compare with a fixed metric
+# Training loss and evaluation error have different jobs
 
 <table class="clean-table"><tbody><tr><th>Training loss</th><th>Primary evaluation metric</th></tr><tr><td>Supplies gradients while fitting weights</td><td>Measures predictions for comparison</td></tr><tr><td>Candidate code can change it</td><td>Fixed outside candidate code</td></tr><tr><td>The starting implementation uses squared error</td><td>The image comparison uses masked absolute error</td></tr></tbody></table>
 
 
 <!--
-The training loss supplies gradients that update weights. The evaluation metric tells us how the forecast compares with another model. We can try a different training loss while keeping the scoring rule fixed. That will be one of the agent’s recorded proposals.
+The training loss supplies gradients for the optimizer. The evaluation metric scores the finished predictions. Our starting loss uses squared error, while the comparison uses absolute error inside the disk. A candidate can change the loss to alter how weights are learned. We keep the evaluation metric fixed so we can compare the resulting forecasts.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -791,13 +791,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">2:15</div>
 
-# Give the research agent your code and results
+# Use the experiment to test agent-written changes
 
-<p class="agent-explanation">So far, you’ve written the models and chosen their settings. Now give a research agent that code and its validation results, and ask for two changes. Read the diffs, train both candidates, and compare their errors. The version selected by validation error becomes the starting point for the next round.</p><div class="bottom-note">The agent writes proposals. You review the code before the notebook runs it.</div>
+<p class="agent-explanation">We now have code that trains an image predictor and records its validation error. Give that code, its settings, and its results to a research agent. Ask it for two changes, read the diffs, and train each version. The same comparison will tell us which code to carry into another round.</p><div class="bottom-note">You review each proposed edit before the notebook executes it.</div>
 
 
 <!--
-Read this transition as one explanation. Until now, we wrote the models and chose the settings ourselves. We’ll now ask an agent for two code changes, inspect them, and use the experiment we built to test them. The selected code becomes the next round’s starting point.
+So far, we wrote the models and chose their settings ourselves. The next exercise asks a language model to propose changes to that code. It reads the current source, active settings, validation errors, and any failures. We’ll review its proposals and run them through the training and scoring functions we already built. This keeps the agent’s explanation separate from the measured effect of its change.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -805,13 +805,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">2:17</div>
 
-# The agent edits code. The forecast model learns weights.
+# Which model is being trained?
 
 <SolarMechanism mode="weights" />
 
 
 <!--
-There are two models with different jobs. The language model writes Python and keeps the same weights. The small forecasting network trains weights using that Python and the earlier solar observations. Validation evidence returns to the research agent for another proposed edit. This is code-directed research, not post-training the language model.
+The language model and the forecasting network have different roles. GLM writes Python using its fixed pretrained weights; we are not fine-tuning it. The small forecasting network trains new weights each time we test candidate Python. We send its validation results back to the language model when requesting the next edit.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -819,7 +819,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">2:19</div>
 
-# Decide which files the agent may change
+# Limit edits to the model and training code
 
 <div class="two-col"><div><h2>The agent may edit</h2><p>Model layers<br>Feature computation<br>Training loss<br>Training procedure</p></div><div><h2>The experiment keeps fixed</h2><p>Training and validation dates<br>What we predict<br>How we score predictions<br>The reserved final-test dates</p></div></div><div class="bottom-note">Candidate Python runs in this notebook’s environment after your review.</div>
 
@@ -833,13 +833,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">2:21</div>
 
-# Send the code, settings, and validation results
+# Give the agent the inputs needed to explain a run
 
 <div class="step-path"><div><h2>Exact source</h2><p>The files that produced the parent result.</p></div><div><h2>Active settings</h2><p>Architecture, steps, width, optimizer values.</p></div><div><h2>Validation evidence</h2><p>Curves, errors, predictions, and failed attempts.</p></div></div><div class="bottom-note">A default in source may not be the value the run used.</div>
 
 
 <!--
-Send the files and settings that produced the current result, plus its validation outputs. A default learning rate in source may differ from the value used in the run. The agent needs the active values to propose a relevant change.
+The agent needs the exact source that produced the current result, the settings used in that run, and its validation outputs. For example, a default learning rate in candidate.py may be overridden by the active configuration. If we sent only the default, the agent could propose a change based on a setting we never used.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -881,7 +881,7 @@ class: exercise
 
 # Choose the evidence for the research agent
 
-<div class="task">Open <strong>6 · Research agent</strong>.</div><ol class="exercise-controls"><li>In <code>select_validation_evidence(record)</code>, keep the active settings and validation results. Click <strong>Check my evidence selection</strong>.</li><li>Read the check result. Confirm that the final-test example is rejected.</li><li>Name the validation fields your function will send to the agent. What can it learn from them?</li></ol><div class="done">Check your work: You can name the code and validation results the agent will receive.</div>
+<div class="task">Open <strong>6. Test agent-written changes to the image model</strong>.</div><ol class="exercise-controls"><li>In <code>select_validation_evidence(record)</code>, keep the active settings and validation results. Click <strong>Check my evidence selection</strong>.</li><li>Read the check result. Confirm that the final-test example is rejected.</li><li>Name the validation fields your function will send to the agent. What can it learn from them?</li></ol><div class="done">Check your work: You can name the code and validation results the agent will receive.</div>
 
 
 <!--
@@ -899,7 +899,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 
 <!--
-Both candidates start from the same code and settings. This borrows Propose–Probe–Compose from Harness². Here the probes train forecasting models and give validation scores to the editor, so it is a teaching adaptation rather than the paper’s exact task protocol.
+Both candidates start from the same source and training configuration. We ask the agent to explain each proposed change, then review its diff. This uses the Propose–Probe–Compose structure from Harness². In our teaching adaptation, a probe trains forecasting weights and gives validation results to the editor. It differs from the paper’s task protocol.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -942,13 +942,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">2:44</div>
 
-# Ask the agent which changes to keep
+# Choose or combine changes using the probe results
 
 <ResearchBranches :level="3" /><div class="bottom-note">The agent can keep A, keep B, combine changes, or retain the starting code.</div>
 
 
 <!--
-The agent reads both test results and can keep one candidate, combine changes, or retain the starting code. The dashed lines mean that it reviewed the results. They do not mean both sets of changes were merged.
+After both probes, the agent receives their code and validation results. It can keep one candidate, combine changes, or retain the starting source. Read its rationale beside the scores. The dashed lines show which results it reviewed; they do not mean that both candidates were merged into the selected code.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -956,13 +956,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">2:46</div>
 
-# Test the version the agent chose
+# Train the composed version before adopting it
 
 <ResearchBranches :level="4" /><div class="bottom-note">Run the selected code on the same training and validation dates.</div>
 
 
 <!--
-Run the chosen code before accepting it. Combining two changes can behave differently from either one alone. If the unchanged version is retained, testing it creates another execution of the same code.
+A combined edit has not yet been measured, so it needs its own training run. Even if the agent retains an existing version, the controller tests the chosen source and records the result. This separates the decision about what to keep from the execution that confirms what ran.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -984,13 +984,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">2:48</div>
 
-# Start round two from the selected version
+# Use the selected code and results in round two
 
 <ResearchBranches :level="5" /><div class="bottom-note">Use the selected code and what the first tests showed to plan the next changes.</div>
 
 
 <!--
-The selected code and a short lesson enter round two. The agent now proposes changes on top of that version. We are still forecasting the same image task and selecting with the same validation metric.
+Round two begins with the code selected in round one and a saved lesson explaining what the probes showed. The agent reads both before proposing its next edits. It may now change code introduced by its previous proposal. That repeated use of the earlier result is the recursive part of this research procedure.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1002,7 +1002,7 @@ class: exercise
 
 # Propose and test two changes
 
-<div class="task">Inspect <code>next_research_action</code> in <strong>6 · Research agent</strong>.</div><ol class="exercise-controls"><li><strong>Propose two code changes</strong>. Read both diffs.</li><li>Confirm review of Candidate A → <strong>Test Candidate A</strong>. Confirm review of Candidate B → <strong>Test Candidate B</strong>.</li><li><strong>Record my comparison</strong>, then <strong>Request a composition</strong>.</li></ol><div class="done">Check your work: Each candidate’s proposal diff and training result are linked in Agent Lens.</div>
+<div class="task">Inspect <code>next_research_action</code> in <strong>6. Test agent-written changes to the image model</strong>.</div><ol class="exercise-controls"><li><strong>Propose two code changes</strong>. Read both diffs.</li><li>Confirm review of Candidate A → <strong>Test Candidate A</strong>. Confirm review of Candidate B → <strong>Test Candidate B</strong>.</li><li><strong>Record my comparison</strong>, then <strong>Request a composition</strong>.</li></ol><div class="done">Check your work: Each candidate’s proposal diff and training result are linked in Agent Lens.</div>
 
 
 <!--
@@ -1038,7 +1038,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 
 <!--
-Click a candidate, its test, and the selection step. Ask someone to explain what happened along that path. This diagram explains the process; the notebook’s branch view opens their actual files and results.
+Click a candidate, its test, and the selection step. Follow the source change to its validation result and explain why the agent retained or rejected it. This deck diagram explains the process. The notebook’s branch view links the participant’s own files, decisions, traces, and results.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1046,13 +1046,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">3:17</div>
 
-# Freeze both the code and the trained weights
+# Keep the selected code and weights fixed for final evaluation
 
 <SolarMechanism mode="freeze" />
 
 
 <!--
-Select using validation, then freeze the code and its trained weights together. The final step loads those weights and predicts later dates; it does not keep fitting or ask the agent which final score it likes. Once you inspect final results, further editing needs a new reserved test for a new comparison.
+We used validation dates to choose the model. Save that source and its trained weights together before looking at February thirteenth and fourteenth. Final evaluation loads those weights and predicts the reserved inputs without training or selecting again. If we edit after inspecting these results, we need new reserved dates to test the next claim.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1082,7 +1082,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">3:21</div>
 
-# Compare predictions for the same times
+# Match each prediction to the same observation times
 
 <table class="clean-table"><tbody><tr><th>Case identity</th><th>Persistence</th><th>Manual</th><th>Agent-selected</th></tr><tr><td>Same input timestamps</td><td>Prediction + error</td><td>Prediction + error</td><td>Prediction + error</td></tr><tr><td>Same target timestamp</td><td>Saved output</td><td>Executed source</td><td>Executed source</td></tr></tbody></table><div class="bottom-note">Use each case ID to find the same input and target times in Weave or EvalTables.</div>
 
@@ -1102,7 +1102,7 @@ class: exercise
 
 # Test the selected models on reserved dates
 
-<div class="task">Open <strong>7 · Final evaluation</strong>.</div><ol class="exercise-controls"><li>Click <strong>Freeze versions and evaluate reserved dates</strong>.</li><li>Choose one timestamp. Compare each image forecast with the same observed future.</li><li>Open one result’s training record and Agent Lens call. Compare the image scores separately from the GOES scores.</li></ol><div class="done">Check your work: Explain a difference between two forecasts using their images and scores.</div>
+<div class="task">Open <strong>7. Evaluate the selected models on reserved dates</strong>.</div><ol class="exercise-controls"><li>Click <strong>Freeze versions and evaluate reserved dates</strong>.</li><li>Choose one timestamp. Compare each image forecast with the same observed future.</li><li>Open one result’s training record and Agent Lens call. Compare the image scores separately from the GOES scores.</li></ol><div class="done">Check your work: Explain a difference between two forecasts using their images and scores.</div>
 
 
 <!--
@@ -1128,7 +1128,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">3:46 · RECORDED REHEARSAL</div>
 
-# Compare one saved forecast at the same time
+# Compare the two models on one reserved-date image
 
 <div class="scientific-figure"><img class="solar-photo" src="/images/v030-final-predictions.png" alt="Manual and agent-selected forecasts for the same first accepted final case"><div class="image-caption">Forecast origin 2014-02-13T02:48 UTC. Same inputs, target, intensity scale, and error scale.</div></div><div class="bottom-note">The first accepted case is shown, not the case with the largest improvement.</div>
 
@@ -1142,9 +1142,9 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">3:47 · RECORDED REHEARSAL</div>
 
-# The selected GOES forecast lost to persistence
+# The GOES model performed worse than persistence
 
-<div class="scientific-figure"><img class="solar-photo" src="/images/v030-goes-final.png" alt="Observed GOES flux, persistence forecast, and selected model prediction on reserved dates"><div class="image-caption">Final log-flux MAE: selected model 2.469; persistence 0.193. 2,694 accepted windows.</div></div><div class="bottom-note">Keep this failure in the comparison. The image result does not erase it.</div>
+<div class="scientific-figure"><img class="solar-photo" src="/images/v030-goes-final.png" alt="Observed GOES flux, persistence forecast, and selected model prediction on reserved dates"><div class="image-caption">Final log-flux MAE: selected model 2.469; persistence 0.193. 2,694 accepted windows.</div></div><div class="bottom-note">Compare this forecast with its loss curve before deciding what to change next.</div>
 
 
 <!--
@@ -1200,13 +1200,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">3:58–4:00</div>
 
-# Write what changed, what helped, and what still missed
+# Use the Report to explain the result and next experiment
 
-<div class="native-product-evidence"><a class="product-screen visual-v030-solar-report" href="/images/visual-v030-solar-report.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-report.png" alt="Native Report excerpt summarizing the latest Solar technical rehearsal"></a><div class="product-caption"><span>Follow one result to its source and forecast, then propose the next test.</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==">Open the Report ↗</a></div><div class="image-caption">A recorded technical rehearsal. Your Report should describe your own completed experiments.</div></div>
+<div class="native-product-evidence"><a class="product-screen visual-v030-solar-report" href="/images/visual-v030-solar-report.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-report.png" alt="Native Report excerpt summarizing the latest Solar technical rehearsal"></a><div class="product-caption"><span>Follow one result to its source and forecast, then propose the next test.</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==">Open the Report ↗</a></div><div class="image-caption">Recorded technical rehearsal. Use your own completed runs when writing your Report.</div></div>
 
 
 <!--
-Close with the measured result and a concrete next test, such as a longer equal GOES training budget or new reserved dates for the image change. The recorded result is one seed across two reserved days. Participants should explain their own result, including failures and remaining misses.
+Ask participants to open their Report and follow one result to the source and saved prediction. Their next experiment should address something they observed: for example, longer equal training budgets for the GOES models, or new reserved dates for the selected image change. The recorded image improvement comes from one seed and two test days. It is a starting point for that next experiment.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1468,9 +1468,9 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">RECORDED REHEARSAL</div>
 
-# Round 2: a plausible sampling change did not help
+# Round 2: sampling without replacement did not reduce error
 
-<table class="clean-table"><tbody><tr><th>Tested source</th><th>Validation error ↓</th></tr><tr><td>Starting absolute-loss model</td><td>0.120553</td></tr><tr><td>A · zero-initialize the residual head</td><td>0.110916</td></tr><tr><td>B · sample without replacement</td><td>0.120557</td></tr></tbody></table><p>The composition selected A. It did not combine the unhelpful sampling change.</p><div class="bottom-note">The sampling idea was plausible. Its measured result supplied the reason to leave it out.</div>
+<table class="clean-table"><tbody><tr><th>Tested source</th><th>Validation error ↓</th></tr><tr><td>Starting absolute-loss model</td><td>0.120553</td></tr><tr><td>A · zero-initialize the residual head</td><td>0.110916</td></tr><tr><td>B · sample without replacement</td><td>0.120557</td></tr></tbody></table><p>The composition selected A. It did not combine the unhelpful sampling change.</p><div class="bottom-note">Keep the tested sampling result alongside the selected version for comparison.</div>
 
 
 <!--

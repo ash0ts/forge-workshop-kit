@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DECKS = {
     "pending": {"title": "Pending, Inc.", "filename": "pending-inc"},
     "solar": {
-        "title": "Build a research loop, then give it an agent",
+        "title": "Solar forecasting with agent-assisted experiments",
         "filename": "solar-autoresearch",
     },
 }

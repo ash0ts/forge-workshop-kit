@@ -1,6 +1,6 @@
 # Forge Workshop Kit
 
-Build an agent or a forecasting experiment in a notebook, then ask an agent to improve the code around it. You’ll write the functions, run them, and use Forge to find out what happened.
+Two coding workshops for testing changes to agents and forecasting models. In Pending, Inc., you implement an agent that handles refunds and account access, check its work, and test revisions to its instructions. In Solar Autoresearch, you train models on satellite observations, compare their forecasts, and evaluate changes to the training code proposed by a research agent.
 
 Each participant works in their own project. The facilitator can read the progress you publish, but cannot run your notebook. You use your own Forge authentication, inference access, and notebook compute.
 

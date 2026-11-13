@@ -1,6 +1,8 @@
 # Pending, Inc.
 
-A three-hour companion deck for the current gateway-free Pending notebook. It uses the original office scenes and visual language, with instructions for the Workshop Kit's eight steps.
+A three-hour Python workshop about an agent that handles duplicate charges and account access at a fictional company. Participants implement a tool and its observation handoff, trace the execution in Agent Lens, and score account state separately from the final reply. They then test manual and agent-written harness changes on the same cases.
+
+The deck follows the current notebook’s eight steps. Each code exercise explains the inputs, the change to make, and the output to inspect. Presenter notes work through the control flow and the reasons for resetting cases, testing composition decisions, and holding back final cases.
 
 Open the [current notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) and copy it into your own project. Use the [setup guide](../../README.md) and [presenter notes](notes/facilitator-notes.md).
 

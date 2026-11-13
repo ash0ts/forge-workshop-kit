@@ -1,5 +1,5 @@
 {
-  "source_sha256": "1d3ef2291c3024f5c3f8eb7005b3d3a479d8bcbb24ac81efd5fcaff51b216720",
+  "source_sha256": "f5e270536b8267362f05dd5c023f646f674bee799bb8ca8a0a720409562734e5",
   "slides_checked": 77,
   "expected_slides": 77,
   "titles": [
@@ -21,7 +21,7 @@
     {
       "number": 4,
       "key": "success",
-      "title": "What would count as doing the job?"
+      "title": "Define the account state a correct refund should leave."
     },
     {
       "number": 5,
@@ -31,22 +31,22 @@
     {
       "number": 6,
       "key": "schedule",
-      "title": "Here is our workday."
+      "title": "Implement the agent, evaluate it, then test harness changes."
     },
     {
       "number": 7,
       "key": "harness-0",
-      "title": "The model chooses the next action."
+      "title": "The executor dispatches the model’s selected action."
     },
     {
       "number": 8,
       "key": "harness-1",
-      "title": "Instructions define the job and its limits."
+      "title": "Instructions define how the agent should handle the ticket."
     },
     {
       "number": 9,
       "key": "harness-2",
-      "title": "A skill is useful only when it is loaded."
+      "title": "Reading a skill adds its procedure to the conversation."
     },
     {
       "number": 10,
@@ -66,27 +66,27 @@
     {
       "number": 13,
       "key": "record",
-      "title": "A trace records the operation you actually ran."
+      "title": "Save an operation’s inputs, output, and timing."
     },
     {
       "number": 14,
       "key": "tool-scope",
-      "title": "Send that operation to Agent Lens."
+      "title": "Export the saved operation as an Agent Lens span."
     },
     {
       "number": 15,
       "key": "trace",
-      "title": "Add a field, then find it in Agent Lens."
+      "title": "Add an environment field and inspect it in Agent Lens."
     },
     {
       "number": 16,
       "key": "trace-screen",
-      "title": "Find the arguments and the returned value."
+      "title": "Inspect the account requested by this tool call."
     },
     {
       "number": 17,
       "key": "trace-detail",
-      "title": "Read one argument and follow its returned data."
+      "title": "Check which account records the model received."
     },
     {
       "number": 18,
@@ -101,7 +101,7 @@
     {
       "number": 20,
       "key": "tool-schema",
-      "title": "A tool name has to reach executable code."
+      "title": "Connect the action schema to your Python function."
     },
     {
       "number": 21,
@@ -131,32 +131,32 @@
     {
       "number": 26,
       "key": "dispatch",
-      "title": "Route one tool yourself; delegate the others."
+      "title": "Dispatch lookup_invoice to your function."
     },
     {
       "number": 27,
       "key": "handoff",
-      "title": "Finish the tool-to-model handoff."
+      "title": "Append the action and its result to the next request."
     },
     {
       "number": 28,
       "key": "messages",
-      "title": "The next request contains the observation."
+      "title": "Include the tool observation in the conversation history."
     },
     {
       "number": 29,
       "key": "starting",
-      "title": "Run the two starting tickets."
+      "title": "Test the starting harness on billing and onboarding."
     },
     {
       "number": 30,
       "key": "model-span",
-      "title": "Record what the model saw and returned."
+      "title": "Record each model request and its response."
     },
     {
       "number": 31,
       "key": "onboarding",
-      "title": "The second ticket grants Alex account access."
+      "title": "Provision Alex’s membership through the MCP tools."
     },
     {
       "number": 32,
@@ -166,17 +166,17 @@
     {
       "number": 33,
       "key": "timeout-2",
-      "title": "The write succeeds. Its reply times out."
+      "title": "Provisioning commits before its response times out."
     },
     {
       "number": 34,
       "key": "timeout-3",
-      "title": "Check the operation before trying the write again."
+      "title": "Read account access before retrying the write."
     },
     {
       "number": 35,
       "key": "timeout-screen",
-      "title": "Did the timeout stop the work?"
+      "title": "Inspect the timeout and the following status check."
     },
     {
       "number": 36,
@@ -191,17 +191,17 @@
     {
       "number": 38,
       "key": "scorer",
-      "title": "Make false completion fail your check."
+      "title": "Write checks for full, partial, missing, and duplicate refunds."
     },
     {
       "number": 39,
       "key": "judge",
-      "title": "The judge needs a question it can answer."
+      "title": "Ask the judge to compare the reply with recorded actions."
     },
     {
       "number": 40,
       "key": "publish-dev",
-      "title": "Publish the first comparison now."
+      "title": "Publish development results with both kinds of score."
     },
     {
       "number": 41,
@@ -211,17 +211,17 @@
     {
       "number": 42,
       "key": "manual",
-      "title": "Change one procedure and rerun it."
+      "title": "Revise the verification skill and rerun both tickets."
     },
     {
       "number": 43,
       "key": "manual-interpret",
-      "title": "A procedure can change behavior without changing quality."
+      "title": "Compare account correctness with the added tool calls."
     },
     {
       "number": 44,
       "key": "break",
-      "title": "Save your work. Leave the employee at its desk."
+      "title": "Take a ten-minute break after saving your progress."
     },
     {
       "number": 45,
@@ -231,47 +231,47 @@
     {
       "number": 46,
       "key": "branch-1",
-      "title": "Propose two changes from the same parent."
+      "title": "Propose two edits to the same starting harness."
     },
     {
       "number": 47,
       "key": "branch-2",
-      "title": "Test both on fresh copies of the case."
+      "title": "Run each candidate from the original account state."
     },
     {
       "number": 48,
       "key": "branch-3",
-      "title": "Ask which changes to keep."
+      "title": "Compare the probe results before selecting a harness."
     },
     {
       "number": 49,
       "key": "branch-4",
-      "title": "Run the files the decision selected."
+      "title": "Execute the harness returned by the composition decision."
     },
     {
       "number": 50,
       "key": "branch-5",
-      "title": "Carry the chosen version and a lesson forward."
+      "title": "Save the selected harness and a lesson for onboarding."
     },
     {
       "number": 51,
       "key": "propose-code",
-      "title": "Select evidence from the current development run."
+      "title": "Give the editor the starting execution and harness."
     },
     {
       "number": 52,
       "key": "propose",
-      "title": "Read the two proposals before testing them."
+      "title": "Review the proposed instruction and workflow changes."
     },
     {
       "number": 53,
       "key": "probe-code",
-      "title": "Run the proposed files, not just the description."
+      "title": "Construct and execute the proposed harness."
     },
     {
       "number": 54,
       "key": "probes",
-      "title": "Test both and compare their behavior."
+      "title": "Run both candidates and inspect their tool sequences."
     },
     {
       "number": 55,
@@ -281,27 +281,27 @@
     {
       "number": 56,
       "key": "gate-detail",
-      "title": "The rejected completion caused another check."
+      "title": "The completion gate required a check_work call."
     },
     {
       "number": 57,
       "key": "keep",
-      "title": "Retain this version is a valid decision."
+      "title": "The editor retained the parent after comparing the probes."
     },
     {
       "number": 58,
       "key": "compose",
-      "title": "Test the composition, then save its lesson."
+      "title": "Test the selected harness before carrying it forward."
     },
     {
       "number": 59,
       "key": "reflection",
-      "title": "A lesson needs an observation and a limit."
+      "title": "Save the lesson with the run that supports it."
     },
     {
       "number": 60,
       "key": "round-two",
-      "title": "Repeat the cycle on onboarding."
+      "title": "Use the selected harness to start the onboarding round."
     },
     {
       "number": 61,
@@ -316,12 +316,12 @@
     {
       "number": 63,
       "key": "rsi",
-      "title": "What made that recursive improvement?"
+      "title": "The next round tests changes to the previous selection."
     },
     {
       "number": 64,
       "key": "freeze",
-      "title": "Stop editing before opening the fresh cases."
+      "title": "Freeze three harnesses for the fresh-case comparison."
     },
     {
       "number": 65,
@@ -331,22 +331,22 @@
     {
       "number": 66,
       "key": "native-results",
-      "title": "Open a saved case and follow its trace."
+      "title": "Open the execution behind a saved evaluation row."
     },
     {
       "number": 67,
       "key": "final-screen",
-      "title": "Read the conclusion beside its evidence."
+      "title": "Link the Report’s conclusion to its runs and traces."
     },
     {
       "number": 68,
       "key": "final-result",
-      "title": "The loop worked. Quality did not improve here."
+      "title": "All three harnesses passed the four final cases."
     },
     {
       "number": 69,
       "key": "files",
-      "title": "Keep the files that explain the result."
+      "title": "Save the case, harness, execution, and scoring records."
     },
     {
       "number": 70,
@@ -356,12 +356,12 @@
     {
       "number": 71,
       "key": "aria",
-      "title": "Ask ARIA to investigate the evidence."
+      "title": "Ask ARIA to compare one case across harness versions."
     },
     {
       "number": 72,
       "key": "end",
-      "title": "Take the loop back to your own product."
+      "title": "Choose a workflow with an observable result to test."
     },
     {
       "number": 73,

@@ -1,16 +1,16 @@
-# Solar Autoresearch presenter notes
+# Solar forecasting workshop presenter notes
 
-## 1. Build a research loop.<br>Then give it an agent.
+## 1. Solar forecasting<br>with agent-assisted<br>experiments
 
 0:00
 
-We’ll build two small forecasts from real solar observations. First we’ll write and track the experiments ourselves. Then we’ll let a research agent propose changes to the image model’s code. The pixel lab is an illustration; the observations and recorded results come from the workshop dataset.
+We’re going to use satellite observations to forecast X-ray flux thirty minutes ahead and solar images one hour ahead. We’ll start with persistence, train a few small models, and record enough information to compare their results. Once that comparison works, we’ll let an agent modify the training code and test whether its changes reduce forecast error. The small models and short training runs fit a CPU workshop; this is not an operational solar forecast.
 
-## 2. Your team has a promising result.
+## 2. We need a baseline before training a model
 
 0:01
 
-Imagine a teammate says the new model is better, but can only find a screenshot and several notebooks called final. That’s our fictional opening. Ask the room what they would need before trusting or repeating the comparison.
+The lab is our workshop setting. The data is real: two weeks of satellite observations from February 2014. Before fitting a network, we’ll check how well the current measurement predicts a later one. This gives every trained model a concrete baseline to beat. If a network loses to persistence, we need to investigate its inputs, training, and predictions before claiming progress.
 
 ## 3. Two forecasts from real solar observations
 
@@ -18,17 +18,17 @@ Imagine a teammate says the new model is better, but can only find a screenshot 
 
 Read the instruments before discussing models. The left plot measures solar X-ray flux; the right image records extreme-ultraviolet light at 171 Å. These are real February 2014 observations, prepared at a small scale for CPU teaching. The image uses false color. We are testing forecasts, not predicting a reliable flare warning.
 
-## 4. First reproduce a result. Then try to improve it.
+## 4. A changed score needs an explanation
 
 0:03
 
-The reason for building the experiment stack comes first: we need to know whether a change helped and be able to repeat it. Once that works, the same loop can test code proposed by an agent. The language model stays fixed. The small forecasting model trains normally.
+A score alone doesn’t tell us why a run changed. A teammate needs the code, settings, data, and weights to repeat it. We’ll save those records as part of the experiment, then use matching prediction cases to inspect the difference. The four notebooks called final are a fictional lab detail, though the problem will probably sound familiar.
 
-## 5. Build a forecast, then test changes to its code
+## 5. What you’ll implement in the notebook
 
 0:04
 
-Follow this sequence in the notebook. You’ll change Python, run a check, execute the experiment, and open the resulting evidence in Forge. A change that fails to improve the forecast is still something we can investigate.
+Most of the session is spent editing and running Python. Each exercise has a local check, a run button, a result to examine, and a link to the saved work in Forge. The two tasks share the same experiment tracking. Later, we’ll use the image experiment to test agent-written code changes.
 
 ## 6. Copy the notebook into your Forge project
 
@@ -76,7 +76,7 @@ The exercise is complete when the participant can find their own attribute in th
 
 0:15
 
-Read the timeline from left to right. The model gets sixty minutes of observed flux, then predicts the reading thirty minutes after now. We work in log10 flux, so the error is in transformed units rather than raw watts per square metre.
+Read the timeline from left to right. The model receives sixty minutes of X-ray flux measurements and predicts XRS-B thirty minutes after the last input. Flux is measured in watts per square metre. We take log10 because values span a wide range; the forecast error is therefore in log-flux units. The model never receives the future target as an input.
 
 ## 14. Use earlier dates to train, later dates to test
 
@@ -130,19 +130,19 @@ Use these as possible explanations for a changed score, not claims about this re
 
 0:41
 
-These are two recorded GOES runs. Before revealing the settings, ask what the scores let us conclude. Then click Show active settings. Both runs used the same source and budget, but their learning rates differed.
+These are two recorded GOES runs. Before revealing the settings, ask what the scores let us conclude. Then click Show active settings. Both runs used the same source and training budget; their learning rates differed.
 
 ## 23. These runs used different learning rates
 
 0:42
 
-The learning rate changed from .001 to .003. Data, source, seed, steps, and batch size stayed the same. Both errors were worse than persistence, so choosing the smaller of these two errors still leaves a poor forecast.
+The learning rate changed from .001 to .003. Data, source, seed, steps, and batch size stayed the same. Both errors were worse than persistence. Check the predictions before deciding whether the lower error is worth pursuing.
 
-## 24. Turn observations into a forecast
+## 24. How an observation becomes a prediction
 
 0:42
 
-Start with the forecast itself: observations enter the model and it produces a number or an image. We’ll add the records around this process one piece at a time.
+The forecast model receives an input window and returns a number or image. The diagram starts with this calculation. We’ll add the model source, scoring rule, and saved outputs so another run can be compared with it.
 
 ## 25. Save the model and training code with the run
 
@@ -154,7 +154,7 @@ The model and training functions are code we can change. Save the particular sou
 
 0:44
 
-Keep the target, dates, and primary metric unchanged while comparing models. Otherwise a lower score might come from an easier test rather than a better forecast.
+Keep the target, dates, and primary metric unchanged while comparing models. If we changed the metric after seeing a result, the lower number could describe a different task. Our candidate code can change the predictor and training procedure while this comparison rule stays fixed.
 
 ## 27. Save the files needed to repeat the run
 
@@ -180,23 +180,23 @@ The local completion record tells the notebook which work finished. The checkpoi
 
 Allow fifteen minutes. Have participants implement the loss and metric, run the small checks, then find the file-saving calls in run_training. The next exercise produces those files. If they struggle with the metric, use a prediction of one against a target of zero as the first example.
 
-## 31. Three ways to change an experiment
+## 31. Changing settings, choosing models, and editing code
 
 1:05
 
-Point to the exact change in each row. A Sweep changes values within the current program. Comparing an MLP with a CNN selects an implementation we wrote. The research agent will edit the program itself. Every version still needs the same data partitions and score.
+There are three different operations here. Hyperparameter search supplies different values to the same implementation, such as learning rate or width. Architecture comparison chooses between implementations we already wrote, such as an MLP and a temporal CNN. Later, the research agent will write a code change that our current configuration options cannot express, such as replacing squared training loss with absolute loss. We’ll test that changed program with the same dates and scoring rule.
 
 ## 32. Compare six model configurations
 
 1:07
 
-These six configurations are the workshop defaults: two model families, three settings per family, seed 17, batch size 32, and sixty training steps. It’s a short CPU exercise, so inspect whether the models have trained enough before drawing an architecture conclusion.
+The MLP reads the history as a fixed set of inputs. The temporal CNN applies shared filters along time. We’ll try three settings for each: widths sixteen and thirty-two, and learning rates .001 and .003. Every run gets seed seventeen, batch size thirty-two, and sixty training steps. That small budget keeps the exercise short; it does not establish which architecture would win after longer training.
 
 ## 33. Run the configurations through W&B Sweeps
 
 1:09
 
-W&B Sweeps assigns each configuration to a run. Our training function does the fitting and saves its outputs. This is a shortened excerpt; the notebook contains the entity, project, and complete configuration setup.
+The Sweep assigns a trial configuration, and wandb.init creates its tracked run. run_training fits the model, saves its files, and returns metrics; run.log adds those metrics to the run. wandb.agent repeats this for the six configurations. The notebook includes the full entity, project, and configuration setup shown in this shortened excerpt.
 
 ## 34. Compare the six configurations in Forge
 
@@ -204,11 +204,11 @@ W&B Sweeps assigns each configuration to a run. Our training function does the f
 
 Use the latest rehearsal Sweep pzigourv. Start with two width-16 MLP runs, then compare their learning rates, error, and runtime. All six models lost to persistence. Do not infer an architecture conclusion from this short training exercise.
 
-## 35. Read the loss curve before choosing another model
+## 35. Check whether the model has finished learning
 
 1:11
 
-This is the actual selected GOES run, not an invented trend. Its loss is still falling at sixty steps. Inspect its predictions and fixed validation metric too. A falling training loss alone does not tell us the future forecast is good. Longer training is a concrete follow-up, but this workshop did not run it.
+The selected GOES model’s loss was still falling after sixty steps. That suggests testing a longer training budget, but it does not tell us that more steps would beat persistence. Look at the predictions and validation score alongside the curve. We have not run the longer-budget experiment.
 
 ## 36. Run six configurations and inspect one forecast
 
@@ -216,7 +216,7 @@ This is the actual selected GOES run, not an invented trend. Its loss is still f
 
 Allow fifteen minutes. Ask participants to predict which configuration will win before running the search. After it finishes, have them explain one result from the loss curve and forecast. Keep failed runs visible so the comparison accounts for what happened.
 
-## 37. The experiments can wait ten minutes.
+## 37. Ten-minute break
 
 1:30–1:40
 
@@ -228,7 +228,7 @@ Take ten minutes. Confirm saved work is visible before leaving. No background ex
 
 Now we give the model images from sixty minutes ago and now, and ask for the image sixty minutes ahead. The AIA 171 Å arrays are 64 by 64 pixels so the exercise can run on CPU.
 
-## 39. Save image experiments the same way
+## 39. Track the image model with the same experiment records
 
 1:42
 
@@ -240,41 +240,41 @@ The inputs are now images, but we still save the same kinds of records: data, co
 
 Read the observation times. Channel zero is the earlier image; channel one is the current image. The third image is the future target. These are three real observations from a training window, not three outputs of an AI image generator.
 
-## 41. Two image channels enter. One forecast comes out.
+## 41. Predicting the future image with a small CNN
 
 1:46
 
-Here the network predicts the entire future image. A batch has two input channels, each 64 by 64. The output has one channel. The forward function returns self.net(x). Keep this geometry in view for the residual reveal.
+The two observations become two input channels. The CNN returns one channel containing its predicted future image. The batch dimension stays the same: input shape is batch by two by sixty-four by sixty-four, and output shape is batch by one by sixty-four by sixty-four. This direct predictor has to produce the whole image from its learned weights.
 
-## 42. Let the current image carry what has not changed
+## 42. Predict a correction to the current image
 
 1:48
 
-The network now predicts a correction. The arrow around the network copies the current input image and adds the correction to it. In x[:, 1:2], the slice keeps the channel dimension, giving batch by one by 64 by 64. Zero correction returns persistence exactly. That is the behavior participants add to forward.
+Much of the current image may remain similar one hour later. We can copy that image and ask the network to predict the correction. Add the network output to x[:, 1:2], the current-image channel. The slice preserves the channel dimension. If the correction is zero, the model returns persistence exactly. The local check will test that behavior.
 
-## 43. Write the addition you just traced
+## 43. Implement the residual predictor’s forward pass
 
 1:49
 
 The diagram and code describe the same addition. Ask participants why x[:, 1] would remove a dimension and why x[:, 1:2] preserves it. The notebook implementation also branches on architecture so the convolutional comparison still returns only the network output.
 
-## 44. Count errors on the solar disk
+## 44. Measure prediction error inside the solar disk
 
 1:50
 
 This is a diagram of the scoring calculation, not a forecast. The fixed mask assigns one to disk pixels and zero outside. Multiply absolute errors by the mask, average over the selected pixels per image, then average images. A changed off-disk pixel must not affect the score.
 
-## 45. Write the scorer, then test a deliberate miss
+## 45. Check the image scorer on three known errors
 
 1:51
 
 Run the three local examples before training. They explain what the scorer measures. The participant writes this development scorer, and the protected primary scorer checks the comparison with the same published rule. Missing or invalid predictions are not zero error.
 
-## 46. Train with one loss; compare with a fixed metric
+## 46. Training loss and evaluation error have different jobs
 
 1:52
 
-The training loss supplies gradients that update weights. The evaluation metric tells us how the forecast compares with another model. We can try a different training loss while keeping the scoring rule fixed. That will be one of the agent’s recorded proposals.
+The training loss supplies gradients for the optimizer. The evaluation metric scores the finished predictions. Our starting loss uses squared error, while the comparison uses absolute error inside the disk. A candidate can change the loss to alter how weights are learned. We keep the evaluation metric fixed so we can compare the resulting forecasts.
 
 ## 47. Compare forecasts for the same validation case
 
@@ -288,29 +288,29 @@ The same current image and observed future appear in both rows. The convolutiona
 
 Give participants twenty minutes. Start with the local scorer examples, then train both model versions. Ask each participant to explain why validation selected one and show a region it still missed.
 
-## 49. Give the research agent your code and results
+## 49. Use the experiment to test agent-written changes
 
 2:15
 
-Read this transition as one explanation. Until now, we wrote the models and chose the settings ourselves. We’ll now ask an agent for two code changes, inspect them, and use the experiment we built to test them. The selected code becomes the next round’s starting point.
+So far, we wrote the models and chose their settings ourselves. The next exercise asks a language model to propose changes to that code. It reads the current source, active settings, validation errors, and any failures. We’ll review its proposals and run them through the training and scoring functions we already built. This keeps the agent’s explanation separate from the measured effect of its change.
 
-## 50. The agent edits code. The forecast model learns weights.
+## 50. Which model is being trained?
 
 2:17
 
-There are two models with different jobs. The language model writes Python and keeps the same weights. The small forecasting network trains weights using that Python and the earlier solar observations. Validation evidence returns to the research agent for another proposed edit. This is code-directed research, not post-training the language model.
+The language model and the forecasting network have different roles. GLM writes Python using its fixed pretrained weights; we are not fine-tuning it. The small forecasting network trains new weights each time we test candidate Python. We send its validation results back to the language model when requesting the next edit.
 
-## 51. Decide which files the agent may change
+## 51. Limit edits to the model and training code
 
 2:19
 
 The agent can edit feature, model, loss, and training code. It cannot change the date partitions, forecast target, or comparison metric. Review every proposed diff before execution. These training subprocesses are time-limited and do not inherit Forge credentials, but they are not a security sandbox.
 
-## 52. Send the code, settings, and validation results
+## 52. Give the agent the inputs needed to explain a run
 
 2:21
 
-Send the files and settings that produced the current result, plus its validation outputs. A default learning rate in source may differ from the value used in the run. The agent needs the active values to propose a relevant change.
+The agent needs the exact source that produced the current result, the settings used in that run, and its validation outputs. For example, a default learning rate in candidate.py may be overridden by the active configuration. If we sent only the default, the agent could propose a change based on a setting we never used.
 
 ## 53. Follow the agent’s work in Agent Lens
 
@@ -334,7 +334,7 @@ Allow twelve minutes. Participants should edit the evidence selector, then run t
 
 2:40
 
-Both candidates start from the same code and settings. This borrows Propose–Probe–Compose from Harness². Here the probes train forecasting models and give validation scores to the editor, so it is a teaching adaptation rather than the paper’s exact task protocol.
+Both candidates start from the same source and training configuration. We ask the agent to explain each proposed change, then review its diff. This uses the Propose–Probe–Compose structure from Harness². In our teaching adaptation, a probe trains forecasting weights and gives validation results to the editor. It differs from the paper’s task protocol.
 
 ## 57. The first proposal changes one loss operation
 
@@ -348,17 +348,17 @@ This is the actual first-round Candidate A edit in v0.3.0. It changes the traini
 
 Train each candidate on the same training dates and compare its validation error. If one fails before producing a forecast, inspect the error and leave its score missing.
 
-## 59. Ask the agent which changes to keep
+## 59. Choose or combine changes using the probe results
 
 2:44
 
-The agent reads both test results and can keep one candidate, combine changes, or retain the starting code. The dashed lines mean that it reviewed the results. They do not mean both sets of changes were merged.
+After both probes, the agent receives their code and validation results. It can keep one candidate, combine changes, or retain the starting source. Read its rationale beside the scores. The dashed lines show which results it reviewed; they do not mean that both candidates were merged into the selected code.
 
-## 60. Test the version the agent chose
+## 60. Train the composed version before adopting it
 
 2:46
 
-Run the chosen code before accepting it. Combining two changes can behave differently from either one alone. If the unchanged version is retained, testing it creates another execution of the same code.
+A combined edit has not yet been measured, so it needs its own training run. Even if the agent retains an existing version, the controller tests the chosen source and records the result. This separates the decision about what to keep from the execution that confirms what ran.
 
 ## 61. Open the training call behind the chosen version
 
@@ -366,11 +366,11 @@ Run the chosen code before accepting it. Combining two changes can behave differ
 
 The operation trained and validated the selected source. Find the returned score and compare the run to the saved source artifact. An error metric of 0.110916 is the forecasting metric, not a tool failure. If a span actually failed, inspect its exception separately.
 
-## 62. Start round two from the selected version
+## 62. Use the selected code and results in round two
 
 2:48
 
-The selected code and a short lesson enter round two. The agent now proposes changes on top of that version. We are still forecasting the same image task and selecting with the same validation metric.
+Round two begins with the code selected in round one and a saved lesson explaining what the probes showed. The agent reads both before proposing its next edits. It may now change code introduced by its previous proposal. That repeated use of the earlier result is the recursive part of this research procedure.
 
 ## 63. Propose and test two changes
 
@@ -388,13 +388,13 @@ Give participants fifteen minutes for the tested selection and the second round.
 
 3:15
 
-Click a candidate, its test, and the selection step. Ask someone to explain what happened along that path. This diagram explains the process; the notebook’s branch view opens their actual files and results.
+Click a candidate, its test, and the selection step. Follow the source change to its validation result and explain why the agent retained or rejected it. This deck diagram explains the process. The notebook’s branch view links the participant’s own files, decisions, traces, and results.
 
-## 66. Freeze both the code and the trained weights
+## 66. Keep the selected code and weights fixed for final evaluation
 
 3:17
 
-Select using validation, then freeze the code and its trained weights together. The final step loads those weights and predicts later dates; it does not keep fitting or ask the agent which final score it likes. Once you inspect final results, further editing needs a new reserved test for a new comparison.
+We used validation dates to choose the model. Save that source and its trained weights together before looking at February thirteenth and fourteenth. Final evaluation loads those weights and predicts the reserved inputs without training or selecting again. If we edit after inspecting these results, we need new reserved dates to test the next claim.
 
 ## 67. Load the saved weights to make final predictions
 
@@ -402,7 +402,7 @@ Select using validation, then freeze the code and its trained weights together. 
 
 Load the saved weights, switch to evaluation mode, and predict without an optimizer step. Final evaluation measures the selected trained model; it does not train another one.
 
-## 68. Compare predictions for the same times
+## 68. Match each prediction to the same observation times
 
 3:21
 
@@ -420,13 +420,13 @@ Allow twenty minutes. Have participants choose one timestamp and explain a diffe
 
 The selected agent code combined the absolute training loss from round one with a zero-initialized residual head from round two. Its final masked MAE was 0.11001095193834161, versus 0.1224417336622075 for the manual model and 0.12576198700564592 for persistence. The 10.15% is a relative reduction in error versus manual. This is one seed and 199 overlapping windows across two reserved days, not evidence of reliable solar forecasting across other periods.
 
-## 71. Compare one saved forecast at the same time
+## 71. Compare the two models on one reserved-date image
 
 3:46 · RECORDED REHEARSAL
 
 This figure is regenerated from the fresh v0.3.0 saved predictions. Compare manual and agent-selected forecasts on exactly the same case. The fixed error scale helps show differences without changing the colors between rows. The aggregate score includes all 199 accepted final windows.
 
-## 72. The selected GOES forecast lost to persistence
+## 72. The GOES model performed worse than persistence
 
 3:47 · RECORDED REHEARSAL
 
@@ -450,11 +450,11 @@ This is execution-f7550caa1639e8366efbf9d84a782289, the exact selected round-two
 
 Allow eight minutes. Ask participants to name a change, report what happened, and include a remaining miss. A negative result is fine. If publication fails, save the conclusion and retry the upload without rerunning the experiment.
 
-## 76. Write what changed, what helped, and what still missed
+## 76. Use the Report to explain the result and next experiment
 
 3:58–4:00
 
-Close with the measured result and a concrete next test, such as a longer equal GOES training budget or new reserved dates for the image change. The recorded result is one seed across two reserved days. Participants should explain their own result, including failures and remaining misses.
+Ask participants to open their Report and follow one result to the source and saved prediction. Their next experiment should address something they observed: for example, longer equal training budgets for the GOES models, or new reserved dates for the selected image change. The recorded image improvement comes from one seed and two test days. It is a starting point for that next experiment.
 
 ## 77. Reference and worked answers
 
@@ -528,7 +528,7 @@ RECORDED REHEARSAL
 
 This is the second-round selected edit in v0.3.0. The last convolution starts at zero; before training, the residual correction is zero. The model begins at persistence and learns a correction. Its probe and separate composition test produce the measured validation score.
 
-## 89. Round 2: a plausible sampling change did not help
+## 89. Round 2: sampling without replacement did not reduce error
 
 RECORDED REHEARSAL
 

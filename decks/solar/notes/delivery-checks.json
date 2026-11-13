@@ -1,17 +1,17 @@
 {
-  "source_sha256": "e69012f5df8ade04d3f77744460e10e1851d4f2f2de5b64073a4aa9c1e70758d",
+  "source_sha256": "bfe39e4c47809ffd8178dfa12e157f33d2a15459de629726bbdc2630c800ca78",
   "slides_checked": 93,
   "expected_slides": 93,
   "titles": [
     {
       "number": 1,
       "key": "cover",
-      "title": "Build a research loop. Then give it an agent."
+      "title": "Solar forecasting with agent-assisted experiments"
     },
     {
       "number": 2,
       "key": "arrival",
-      "title": "Your team has a promising result."
+      "title": "We need a baseline before training a model"
     },
     {
       "number": 3,
@@ -21,12 +21,12 @@
     {
       "number": 4,
       "key": "research-question",
-      "title": "First reproduce a result. Then try to improve it."
+      "title": "A changed score needs an explanation"
     },
     {
       "number": 5,
       "key": "path",
-      "title": "Build a forecast, then test changes to its code"
+      "title": "What you’ll implement in the notebook"
     },
     {
       "number": 6,
@@ -121,7 +121,7 @@
     {
       "number": 24,
       "key": "program",
-      "title": "Turn observations into a forecast"
+      "title": "How an observation becomes a prediction"
     },
     {
       "number": 25,
@@ -156,7 +156,7 @@
     {
       "number": 31,
       "key": "search-levels",
-      "title": "Three ways to change an experiment"
+      "title": "Changing settings, choosing models, and editing code"
     },
     {
       "number": 32,
@@ -176,7 +176,7 @@
     {
       "number": 35,
       "key": "learning-curve",
-      "title": "Read the loss curve before choosing another model"
+      "title": "Check whether the model has finished learning"
     },
     {
       "number": 36,
@@ -186,7 +186,7 @@
     {
       "number": 37,
       "key": "break",
-      "title": "The experiments can wait ten minutes."
+      "title": "Ten-minute break"
     },
     {
       "number": 38,
@@ -196,7 +196,7 @@
     {
       "number": 39,
       "key": "image-stack",
-      "title": "Save image experiments the same way"
+      "title": "Track the image model with the same experiment records"
     },
     {
       "number": 40,
@@ -206,32 +206,32 @@
     {
       "number": 41,
       "key": "conv",
-      "title": "Two image channels enter. One forecast comes out."
+      "title": "Predicting the future image with a small CNN"
     },
     {
       "number": 42,
       "key": "residual",
-      "title": "Let the current image carry what has not changed"
+      "title": "Predict a correction to the current image"
     },
     {
       "number": 43,
       "key": "residual-code",
-      "title": "Write the addition you just traced"
+      "title": "Implement the residual predictor’s forward pass"
     },
     {
       "number": 44,
       "key": "image-score",
-      "title": "Count errors on the solar disk"
+      "title": "Measure prediction error inside the solar disk"
     },
     {
       "number": 45,
       "key": "image-score-code",
-      "title": "Write the scorer, then test a deliberate miss"
+      "title": "Check the image scorer on three known errors"
     },
     {
       "number": 46,
       "key": "loss",
-      "title": "Train with one loss; compare with a fixed metric"
+      "title": "Training loss and evaluation error have different jobs"
     },
     {
       "number": 47,
@@ -246,22 +246,22 @@
     {
       "number": 49,
       "key": "agent-need",
-      "title": "Give the research agent your code and results"
+      "title": "Use the experiment to test agent-written changes"
     },
     {
       "number": 50,
       "key": "weights",
-      "title": "The agent edits code. The forecast model learns weights."
+      "title": "Which model is being trained?"
     },
     {
       "number": 51,
       "key": "boundaries",
-      "title": "Decide which files the agent may change"
+      "title": "Limit edits to the model and training code"
     },
     {
       "number": 52,
       "key": "evidence",
-      "title": "Send the code, settings, and validation results"
+      "title": "Give the agent the inputs needed to explain a run"
     },
     {
       "number": 53,
@@ -296,12 +296,12 @@
     {
       "number": 59,
       "key": "compose",
-      "title": "Ask the agent which changes to keep"
+      "title": "Choose or combine changes using the probe results"
     },
     {
       "number": 60,
       "key": "test-composed",
-      "title": "Test the version the agent chose"
+      "title": "Train the composed version before adopting it"
     },
     {
       "number": 61,
@@ -311,7 +311,7 @@
     {
       "number": 62,
       "key": "repeat",
-      "title": "Start round two from the selected version"
+      "title": "Use the selected code and results in round two"
     },
     {
       "number": 63,
@@ -331,7 +331,7 @@
     {
       "number": 66,
       "key": "freeze",
-      "title": "Freeze both the code and the trained weights"
+      "title": "Keep the selected code and weights fixed for final evaluation"
     },
     {
       "number": 67,
@@ -341,7 +341,7 @@
     {
       "number": 68,
       "key": "aligned",
-      "title": "Compare predictions for the same times"
+      "title": "Match each prediction to the same observation times"
     },
     {
       "number": 69,
@@ -356,12 +356,12 @@
     {
       "number": 71,
       "key": "recorded-image",
-      "title": "Compare one saved forecast at the same time"
+      "title": "Compare the two models on one reserved-date image"
     },
     {
       "number": 72,
       "key": "recorded-goes",
-      "title": "The selected GOES forecast lost to persistence"
+      "title": "The GOES model performed worse than persistence"
     },
     {
       "number": 73,
@@ -381,7 +381,7 @@
     {
       "number": 76,
       "key": "close",
-      "title": "Write what changed, what helped, and what still missed"
+      "title": "Use the Report to explain the result and next experiment"
     },
     {
       "number": 77,
@@ -446,7 +446,7 @@
     {
       "number": 89,
       "key": "recorded-keep",
-      "title": "Round 2: a plausible sampling change did not help"
+      "title": "Round 2: sampling without replacement did not reduce error"
     },
     {
       "number": 90,

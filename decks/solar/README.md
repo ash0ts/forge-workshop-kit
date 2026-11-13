@@ -1,6 +1,6 @@
-# Build a research loop, then give it an agent
+# Solar forecasting with agent-assisted experiments
 
-This four-hour deck accompanies the Solar Autoresearch notebook. Participants write a solar forecast, save and compare its experiments in Forge, then ask a research agent to propose changes to the code. The setting is the Solar Forecasting Lab; Pending, Inc. remains the separate office workshop.
+This four-hour deck accompanies the Solar Autoresearch notebook. Participants use GOES X-ray measurements to forecast flux thirty minutes ahead, then use AIA images to predict an image one hour ahead. They implement persistence, train small models, and save the code, settings, and outputs needed to compare results. Once that comparison works, a research agent proposes changes to the image model’s training code. Participants review the diffs and test their effect on forecast error. The setting is a research lab; Pending, Inc. remains the separate office workshop.
 
 Start with the [Solar notebook template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view). Choose **Copy to project**, open your copy in **Edit**, and follow the **Connect** step. Each participant uses their own project and account. There is no workshop gateway or host token.
 
@@ -15,18 +15,19 @@ Open the URL printed in the terminal. Use `/presenter/1` for the speaker notes. 
 
 The deck has 76 main frames and 17 optional worked-answer, recorded-evidence, and reference frames. The main sequence builds diagrams a step at a time, then pauses for participants to work in the notebook. Keep each exercise slide visible while they code. Its button names match the notebook, and its worked-answer link returns to the exercise.
 
-The speaker notes explain what to demonstrate, where to pause, and what participants should inspect. Most of the four hours is for coding and discussion. The opening scene with four notebooks called final is fictional. Forecasting results come from the recorded rehearsal. Native Forge screens show those saved runs, Artifacts, traces, and Reports. Four optional frames at the end walk through the separate current Pending workshop; they do not change the Solar exercise sequence. Click any product capture to inspect it at full resolution.
+The speaker notes explain what to demonstrate, where to pause, and what participants should inspect. Most of the four hours is for coding and discussion. The opening scene with four notebooks called final is fictional. Forecasting results come from the recorded rehearsal. Native Forge screens show those saved runs, Artifacts, traces, and Reports. Click any product capture to inspect it at full resolution.
 
-## Use the browser copy or PDF
+## Build the browser copy and PDF
+
+From the repository root, run the shared build command:
 
 ```sh
-npm run build
-npm run export -- --executable-path '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+python3 scripts/build_decks.py --only solar --install --pdf --validate
 ```
 
-Use your installed Chrome path for the PDF export. The browser output is in `dist/`. Run `python3 dist/serve.py` on macOS/Linux or `py dist/serve.py` on Windows, then open the printed address.
+This builds the browser deck, exports the PDF, and checks every slide and PDF page. It requires Chrome. The browser copy is written to `dist/decks/site/solar/`; the PDF, offline browser bundle, and editable source archive are in `dist/decks/downloads/`.
 
-The PDF includes all incremental frames and linked worked answers. In the browser, you can also select branches and reveal the settings behind two recorded runs. Separate static frames keep those explanations readable in the PDF.
+The PDF includes all incremental diagrams and worked-answer links. In the browser, participants can also select branches and reveal the settings behind two recorded runs. Separate static frames keep those explanations readable in the PDF.
 
 ## Edit the deck
 
@@ -52,6 +53,6 @@ Native EvalTables returned HTTP 500 during the rehearsal. Use the saved notebook
 
 ## Check and package changes
 
-After PDF export, run `uv run --no-project --with pymupdf python scripts/finalize-pdf.py` to check every page and convert worked-answer links to internal PDF destinations. `scripts/check-render.mjs` checks the browser layouts and navigation. The answer, exercise-contract, and recorded-evidence checks cover code examples, notebook controls, and the saved results without training or model calls.
+Use the shared build command above for the final browser, PDF, navigation, and image checks. The answer, exercise-contract, and recorded-evidence checks verify code examples, notebook controls, and the saved results without training or model calls.
 
-For GitHub Pages, run `npm run build:pages`. It writes `dist-pages/` with the `/forge-workshop-kit/solar/` prefix and a page for every slide route. Publish that directory at `solar/`. Run `node scripts/check-pages.mjs` to check direct links, worked answers, images, and presenter navigation.
+See [deck build and publication instructions](../../docs/maintenance.md) for publishing the generated files. Publishing is a separate action from building.

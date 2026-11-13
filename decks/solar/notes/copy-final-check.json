@@ -1,0 +1,67 @@
+{
+  "scope": [
+    2,
+    55,
+    63,
+    69
+  ],
+  "source_sha256": "c78df63c0a8bbacdbb00cbfbe72487082b8723ba2a1a2927a325b74963c205e6",
+  "slides_checked": 4,
+  "expected_slides": 4,
+  "titles": [
+    {
+      "number": 2,
+      "key": "arrival",
+      "title": "We need a baseline before training a model"
+    },
+    {
+      "number": 55,
+      "key": "evidence-turn",
+      "title": "Choose the evidence for the research agent"
+    },
+    {
+      "number": 63,
+      "key": "round1-turn",
+      "title": "Propose and test two changes"
+    },
+    {
+      "number": 69,
+      "key": "final-turn",
+      "title": "Test the selected models on reserved dates"
+    }
+  ],
+  "issues": [],
+  "console_errors": [],
+  "failed_responses": [],
+  "answers": [
+    {
+      "slide": 55,
+      "destination": "/forge-workshop-kit/solar/84",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 69,
+      "destination": "/forge-workshop-kit/solar/86",
+      "keyboardReturn": true
+    }
+  ],
+  "routes_checked": 189,
+  "presenter_notes": true,
+  "method": "Shared static-deck validator restricted to slides 2, 55, 63, and 69 after the opening sentence and three notebook section references changed. All static routes and presenter notes were rechecked. The full 93-slide check is in delivery-checks.json.",
+  "prior_full_check_source_sha256": "bfe39e4c47809ffd8178dfa12e157f33d2a15459de629726bbdc2630c800ca78",
+  "only_changes": [
+    {
+      "before": "Use it as a forecast and measure how far it misses the future.",
+      "after": "Compare that forecast with the later observation."
+    },
+    {
+      "before": "6 \u00b7 Research agent",
+      "after": "6. Test agent-written changes to the image model"
+    },
+    {
+      "before": "7 \u00b7 Final evaluation",
+      "after": "7. Evaluate the selected models on reserved dates"
+    }
+  ],
+  "other_slide_content_unchanged": true
+}

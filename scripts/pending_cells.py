@@ -25,7 +25,8 @@ get_step,set_step=mo.state("setup",allow_self_loops=True)
 get_recovery_revision,set_recovery_revision=mo.state(0)
 ''',True)
 add('''
-mo.Html(ui.heading("Pending, Inc.", "Your new AI colleague handles refunds and account access. You'll write its tools, watch it work, and test changes to its instructions. IT has supplied a notebook. The customers and accounts in this workshop are fictional."))
+mo.vstack([mo.Html(ui.heading("Pending, Inc.", "A customer was charged twice for the same invoice. Your agent needs to read the payments, refund the duplicate charge, and confirm what changed. You'll write the tool it uses to look up the invoice and the code that returns tool results to the model. The company and accounts are fictional.")),
+mo.md("The next ticket involves an account-access request that times out after it has already succeeded. You'll use Agent Lens to inspect the agent's response and write checks against the account state. After testing an instruction change yourself, you'll build a controller that asks another agent to propose and test further changes. Management would appreciate fewer meetings about the handbook.")])
 ''',True)
 add('''
 def move_pending(step):

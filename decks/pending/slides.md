@@ -21,12 +21,12 @@ exportFilename: pending-inc
 ---
 # Please improve<br>yourself.
 
-<div class="sub">Build an agent for billing and onboarding.<br>Then test changes to its harness.</div>
+<div class="sub">Implement a billing agent, instrument its actions,<br>and test changes proposed by an editor agent.</div>
 <OfficeScene mode="employee" />
-<div class="bottom-note" style="color:#bbd4cb">A three-hour workday at Pending, Inc.<br>Management has supplied a motivational paragraph.</div>
+<div class="bottom-note" style="color:#bbd4cb">A three-hour Python workshop at Pending, Inc.</div>
 
 <!--
-Welcome. We will write the pieces of an agent and then give another agent permission to edit some of them. The office is fictional. Model and tool executions later in the workshop are real.
+We will implement an agent that can inspect an account, refund a duplicate charge, and provision access. Then we will instrument and evaluate its work before asking an editor agent to revise its instructions. Pending, Inc. and its accounts are fictional; the Python tools, model requests, traces, and evaluations run in your own project.
 -->
 
 ---
@@ -35,10 +35,10 @@ class: opening-story
 
 # Your first morning at Pending, Inc.
 
-<div class="arrival-scene"><div class="scene-prose"><p>Your manager introduces your new colleague.</p><p class="spoken">“Our first fully autonomous employee.”</p><p>It handles billing and account access. Its equipment is a one-page handbook.</p></div><div class="scene-props"><OfficeScene mode="employee" /><div class="handbook-page"><span class="prop-label">EMPLOYEE HANDBOOK · PAGE 1 OF 1</span><p>Be helpful.<br>Use good judgment.</p></div></div></div>
+<div class="arrival-scene"><div class="scene-prose"><p>Pending, Inc. is our fictional SaaS company. Your team is adding an agent to billing and account support.</p><p class="spoken">“Our first fully autonomous employee.”</p><p>The manager calls it autonomous. So far, the team has supplied this handbook.</p></div><div class="scene-props"><OfficeScene mode="employee" /><div class="handbook-page"><span class="prop-label">EMPLOYEE HANDBOOK · PAGE 1 OF 1</span><p>Be helpful.<br>Use good judgment.</p></div></div></div>
 
 <!--
-Read the manager line dryly. The participant is the person arriving; the employee is the agent. This illustrative handbook is not the actual baseline prompt.
+Pending, Inc. is a teaching setting for a familiar engineering problem: connecting a model to existing application operations. The handbook is an opening illustration. We will build and test a configured starting harness before comparing any revisions.
 -->
 
 ---
@@ -47,22 +47,22 @@ class: opening-story
 
 # The customer was charged twice.
 
-<div class="first-ticket-scene"><div class="customer-note"><div class="prop-label">ACME → BILLING</div><h2>Two payments. One invoice.</h2><p>Please refund the duplicate $49 charge.</p></div><div class="scene-prose"><p class="spoken">“Can I see the invoice?”</p><div class="empty-tool-menu"><span>Available tools</span><code>[]</code></div><p>You pull up a chair. First, give the employee a way to look it up.</p></div></div>
+<div class="first-ticket-scene"><div class="customer-note"><div class="prop-label">ACME → BILLING</div><h2>Two $49 payments for invoice inv-1</h2><p>Please refund the duplicate $49 charge.</p></div><div class="scene-prose"><p class="spoken">“Can I see the invoice?”</p><div class="empty-tool-menu"><span>Available tools</span><code>[]</code></div><p>To answer the request, the agent needs account records and a tool that can issue a refund.</p></div></div>
 
 <!--
-Fictional dialogue illustrating the real public double-charge fixture. There are two captured 4900-cent payments on inv-1. It must refund pay-2 while preserving pay-1 and the other account. Do not describe this scene as a measured model failure.
+Read the customer request and ask what the agent must know before issuing a refund. The development fixture contains two captured 4900-cent payments on Acme invoice inv-1. The correct outcome refunds pay-2 once while preserving pay-1 and the other account. The empty tool menu explains what we need to implement; it is an illustration rather than a recorded model failure.
 -->
 
 ---
 ---
 
-# What would count as doing the job?
+# Define the account state a correct refund should leave.
 
-<div class="result-grid"><div class="claim">“All sorted. Thanks for your patience.”<p class="quiet">A fluent reply is one observable output.</p></div><div class="state"><strong>Check the account too.</strong><p>Refund the duplicate once.<br>Use the right account.<br>Leave unrelated records alone.</p></div></div>
-<div class="bottom-note">We will compare what the employee says with what its tools changed.</div>
+<div class="result-grid"><div class="claim">“All sorted. Thanks for your patience.”<p class="quiet">We need to check this claim against the account.</p></div><div class="state"><strong>The duplicate charge must be refunded exactly once.</strong><p>Refund pay-2 on Acme.<br>Preserve pay-1 and the other account.<br>Report any unresolved issue.</p></div></div>
+<div class="bottom-note">The final response and the account state will receive separate evaluations.</div>
 
 <!--
-Invite the room to name a failure: partial refund, wrong invoice, duplicate retry, false success. These become concrete examples when writing the scorer.
+Ask someone to name the account fields they would check after this request. We need to identify the correct payment, refund the full amount once, and preserve unrelated state. We will later use partial refunds, duplicate refunds, and false completion claims to test the scorer. A fluent final reply cannot establish these account facts.
 -->
 
 ---
@@ -72,20 +72,20 @@ class: opening-bridge
 # Your manager has one more request.
 
 <p class="manager-request">“Once it works, could it improve itself?”</p>
-<p class="story-to-code">We’ll build the employee’s tools, inspect its decisions, and check the work. Then an editor agent will propose changes to its instructions and procedures.</p>
-<div class="bottom-note">Whether those changes help is something we measure.</div>
+<p class="story-to-code">We’ll first implement the tools and the code that passes their results back to the model. With traces and scoring in place, we can ask an editor agent to propose two changes and test whether they improve the same task.</p>
+<div class="bottom-note">The editor changes the harness. The model and the scoring rules remain fixed.</div>
 
 <!--
-Use the manager question to motivate the second half. Fixed model, editable harness. The learner first freezes tested tool-loop code. The editor cannot change the trusted final scorer.
+We will first make the agent executable and observable. Once we can inspect a run and score its outcome, we can give those same records to an editor agent. It changes instructions and selected workflow settings, while our tested tools and final scorer remain fixed. That lets us compare the proposed procedures under the same conditions.
 -->
 
 ---
 ---
 
-# Here is our workday.
+# Implement the agent, evaluate it, then test harness changes.
 
-<div class="current-plan"><div>0–55 min<small>Connect, trace, implement the tool and agent handoff</small></div><div>55–105 min<small>Investigate recovery, score the work, make one edit</small></div><div>105–115 min<small>Break. Saved work stays saved.</small></div><div>115–180 min<small>Two improvement rounds, fresh tickets, conclusion</small></div></div>
-<div class="bottom-note">Eight notebook steps. Each has code, a named action, a result, and a Forge link.</div>
+<div class="current-plan"><div>0–55 min<small>Connect, trace, implement the tool and agent handoff</small></div><div>55–105 min<small>Investigate recovery, score the work, make one edit</small></div><div>105–115 min<small>Break; resume from your saved checkpoint</small></div><div>115–180 min<small>Two improvement rounds, fresh tickets, conclusion</small></div></div>
+<div class="bottom-note">Each exercise names the function to edit, the control to run, and the result to inspect.</div>
 
 <!--
 This is the three-hour Pending schedule. Allow 15 minutes at the end for final comparison and discussion. Keep extra implementation detail in worked answers.
@@ -94,37 +94,37 @@ This is the three-hour Pending schedule. Allow 15 minutes at the end for final c
 ---
 ---
 
-# The model chooses the next action.
+# The executor dispatches the model’s selected action.
 
 <HarnessMap :level="0" />
-<div class="bottom-note">We change the files and procedures around a fixed model.</div>
+<div class="bottom-note">The executor sends the request and conversation history to the model, then dispatches its chosen action.</div>
 
 <!--
-Harness means the surrounding instructions and software that decide what the model sees, what it can do, and how work is checked. A saved skill file must be read into context.
+For this ticket, the model might choose lookup_invoice, then refund_payment. It returns an action name and arguments. Python decides which function handles that action, and the tool changes the simulated account. The model does not directly mutate the account dictionary.
 -->
 
 ---
 ---
 
-# Instructions define the job and its limits.
+# Instructions define how the agent should handle the ticket.
 
 <HarnessMap :level="1" />
-<div class="bottom-note">We change the files and procedures around a fixed model.</div>
+<div class="bottom-note">The harness supplies task rules, available tools, and the code that passes observations back to the model.</div>
 
 <!--
-Harness means the surrounding instructions and software that decide what the model sees, what it can do, and how work is checked. A saved skill file must be read into context.
+The harness is the code and instructions around the model. It controls the request we send, the actions we allow, and the checks we require. We can revise these pieces while using the same model. In our comparison, the dispatcher and tools stay fixed after we test them.
 -->
 
 ---
 ---
 
-# A skill is useful only when it is loaded.
+# Reading a skill adds its procedure to the conversation.
 
 <HarnessMap :level="2" />
-<div class="bottom-note">We change the files and procedures around a fixed model.</div>
+<div class="bottom-note">The verification skill tells the agent what to inspect before it reports completion.</div>
 
 <!--
-Harness means the surrounding instructions and software that decide what the model sees, what it can do, and how work is checked. A saved skill file must be read into context.
+A saved skill has no effect until the executor supplies it to the model. Here the agent can call read_skill; the returned procedure enters the same conversation as other tool results. Agent Lens lets us check whether the skill was read and what the model did afterward.
 -->
 
 ---
@@ -133,10 +133,10 @@ Harness means the surrounding instructions and software that decide what the mod
 # Copy the notebook into your own project.
 
 <div class="copy-layout"><a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view"><img style="width:210px" src="/images/pending-template-qr.svg" alt="QR code for the current Pending template"></a><ol><li>Open <a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view">Pending, Inc. in Forge</a>.</li><li>Choose <strong>Copy to project</strong> and select a project you can write to.</li><li>Open the copy in <strong>Edit</strong>. The notebook detects its destination. Run all stale cells once to initialize the controls.</li></ol></div>
-<div class="bottom-note">Your credentials, your traces, your results. No workshop access tokens.</div>
+<div class="bottom-note">Runs and traces are published to the copied notebook’s project using your Forge account.</div>
 
 <!--
-Use the current v0.3.0 template, never the historical November 12 gateway notebook. An external account requires its own project, notebook compute access and inference access. Setup does not issue a model request.
+Use the current template, never the historical November 12 gateway notebook. An external account requires its own project, notebook compute access and inference access. Setup does not issue a model request.
 -->
 
 ---
@@ -179,7 +179,7 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 ---
 ---
 
-# A trace records the operation you actually ran.
+# Save an operation’s inputs, output, and timing.
 
 
 ```python
@@ -189,16 +189,16 @@ result, record = event(
 )
 ```
 
-<div class="two-col"><p><strong>The result</strong> goes back to your code.</p><p><strong>The record</strong> keeps arguments, output, start and end times, and any error.</p></div>
+<div class="two-col"><p><strong>result</strong> is the Python value returned by the operation.</p><p><strong>record</strong> stores its arguments, output, timing, and any error for tracing.</p></div>
 
 <!--
-This excerpt shows the independent event receipt. The visible notebook cell uses imported platform through __import__; the semantics are the same. The receipt survives separately from tracing and can be exported again without executing the operation.
+The event helper runs the supplied function and returns two objects. result is what the caller needs; record describes the operation with its arguments, output, timing, and any error. We save that record before exporting a trace. If export fails, we can send the saved record again without repeating a refund or another model request.
 -->
 
 ---
 ---
 
-# Send that operation to Agent Lens.
+# Export the saved operation as an Agent Lens span.
 
 
 ```python
@@ -214,17 +214,17 @@ with tracing.Tool(
         span.record_error(RuntimeError(record["error"]))
 ```
 
-<div class="bottom-note"><code>my_tool_span</code> records the same tool result and timing. It does not run the tool again.</div>
+<div class="bottom-note"><code>my_tool_span</code> turns this saved record into a tool span. Export can be retried without repeating the operation.</div>
 
 <!--
-Code excerpt from teaching.STARTERS instrumentation. Explain fields rather than reading code aloud. The full function returns its native span identity. Missing usage in model receipts remains missing.
+Map each field to the record from the previous slide. Tool creates a span with the operation name, inputs, output, and timestamps; record_error attaches the recorded failure. This function exports an event that already happened. The full notebook function returns its span identity so the execution can link back to Agent Lens.
 -->
 
 ---
 class: exercise
 ---
 
-# Add a field, then find it in Agent Lens.
+# Add an environment field and inspect it in Agent Lens.
 
 <div class="where">Notebook · 1 · Connect and trace</div>
 
@@ -239,19 +239,19 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 ---
 ---
 
-# Find the arguments and the returned value.
+# Inspect the account requested by this tool call.
 
 <div class="native-capture"><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c2458ce8b6bb52274d29b5c5a691424b" class="capture-frame" style="display:block"><img src="/images/visual-v030-pending-lookup.png" alt="The recorded get_account call requests Acme and returns its account records."></a>
 <div class="capture-caption">Recorded v0.3.0 rehearsal · The recorded get_account call requests Acme and returns its account records. · <a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c2458ce8b6bb52274d29b5c5a691424b">Open the record ↗</a></div></div>
 
 <!--
-Verified v0.3.0 baseline billing tool span get_account. The model chose get_account in this run; do not claim it chose the learner-authored lookup_invoice. Local checks exercise that authored tool separately. This early screenshot teaches the native inspection surface; participants should open their own setup trace. This is saved execution evidence, not an expected result of a participant’s unexecuted edit.
+Verified v0.3.0 baseline billing tool span get_account. The model chose get_account in this run; do not claim it chose the learner-authored lookup_invoice. Local checks exercise that authored tool separately. This early screenshot teaches the native inspection surface; participants should open their own setup trace.
 -->
 
 ---
 ---
 
-# Read one argument and follow its returned data.
+# Check which account records the model received.
 
 <div class="annotated"><CaptureDetail src="/images/visual-v030-pending-lookup.png" :x="580" :y="245" :width="690" :height="445" label="Native get_account span: account_id acme and returned account with payment pay-1" /><div class="annotations"><p>The argument is <code>account_id: acme</code>.</p><p>The result contains that account and its payments.</p><p>Find the next model call that used this observation.</p></div></div>
 
@@ -265,7 +265,7 @@ Enlarged native crop x580,y245,w690,h445. Saved get_account, not lookup_invoice.
 # The tool reads one invoice from one account.
 
 <div class="two-col"><div class="ticket"><div class="account">INPUT</div><p>account_id: acme<br>invoice_id: inv-1</p></div><div class="ticket"><div class="account">EXPECTED RESULT</div><p>pay-1: $49<br>pay-2: $49<br>refunds: []</p></div></div>
-<div class="bottom-note">Return data. Do not change the account while looking it up.</div>
+<div class="bottom-note">This lookup returns the selected account’s payments and refunds without changing them.</div>
 
 <!--
 The case is simulated but the logic is ordinary application code. Another account also has inv-1, so filtering payments without selecting the account is a real mistake the checks can catch.
@@ -292,13 +292,13 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 ---
 ---
 
-# A tool name has to reach executable code.
+# Connect the action schema to your Python function.
 
 <HarnessMap :level="3" />
 <div class="bottom-note">The action schema says what can be requested. Your dispatch function decides which Python function runs.</div>
 
 <!--
-The current executor makes structured JSON action requests. Its existing schema declares lookup_invoice account_id and invoice_id; participants implement its behavior and dispatch. Do not imply they are registering remote Sandboxes.
+The model sees an action schema that names lookup_invoice and its account_id and invoice_id arguments. That schema alone cannot read an account. Your dispatch function connects the selected name to the Python implementation. This workshop uses local Python for the tool and real local MCP for onboarding.
 -->
 
 ---
@@ -359,7 +359,7 @@ Same objects and positions across these five frames. Show the actual action/resu
 ---
 ---
 
-# Route one tool yourself; delegate the others.
+# Dispatch lookup_invoice to your function.
 
 
 ```python
@@ -372,14 +372,14 @@ def my_dispatch(name, arguments, world, invoice_tool, call_tool):
 <div class="bottom-note">Both paths return <code>(world, result)</code>. The invoice path preserves <code>world</code>; write tools may change it.</div>
 
 <!--
-Walk through name lookup_invoice with acme/inv-1, then get_account. Explain why both paths have the same return contract.
+Trace two inputs through this function. lookup_invoice calls the participant function and returns the same world with its lookup result. get_account takes the existing call_tool path. Both return a pair of account state and observation, so the caller can append the observation consistently. A write tool may return changed state.
 -->
 
 ---
 class: exercise
 ---
 
-# Finish the tool-to-model handoff.
+# Append the action and its result to the next request.
 
 <div class="where">Notebook · 3 · Pass observations to the agent</div>
 
@@ -396,7 +396,7 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 ---
 ---
 
-# The next request contains the observation.
+# Include the tool observation in the conversation history.
 
 
 ```python
@@ -406,22 +406,22 @@ return messages + [
 ]
 ```
 
-<p>The employee can now use the payments when choosing its next action.</p>
+<p>The next model request includes both the action it selected and the returned payments. It can use those records to decide which payment to refund.</p>
 <div class="bottom-note">This executor uses structured JSON actions and observation messages. Follow its existing message contract.</div>
 
 <!--
-Clarify this is the actual workshop protocol rather than OpenAI tool-call message syntax. The complete next-request preview is available in the notebook. Do not mutate the previous messages list.
+The model cannot see a Python return value unless the executor includes it in a later request. Append the chosen action and its result to a new list so the previous request stays available for inspection. This executor uses JSON actions and a user message containing the observation; it is not using the OpenAI tool-message protocol.
 -->
 
 ---
 class: exercise
 ---
 
-# Run the two starting tickets.
+# Test the starting harness on billing and onboarding.
 
 <div class="where">Notebook · 3 · Pass observations to the agent</div>
 
-<div class="task">Read the employee instructions. The tested tool and loop code will stay fixed while we compare changes to those instructions.</div>
+<div class="task">Read the employee instructions, then run the two development cases. We will keep your tested dispatcher and tools fixed while comparing changes to the harness.</div>
 
 <div class="done"><strong>Run:</strong> Freeze this executor and run the two starting tickets<br><strong>Check:</strong> Open a billing run and onboarding run. Follow one tool result into the next model call.</div>
 
@@ -432,7 +432,7 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 ---
 ---
 
-# Record what the model saw and returned.
+# Record each model request and its response.
 
 
 ```python
@@ -451,17 +451,17 @@ span = tracing.LLM(
 <div class="bottom-note">In <code>my_model_span</code>, inspect the complete message mapping. Add usage only when the provider returned it.</div>
 
 <!--
-Excerpt deliberately abbreviates message comprehensions. The full visible instrumentation editor has input, output, system instructions, settings and available usage. Ask learners to identify the request that received the lookup result, not just count spans.
+The LLM span records the requested and returned model identities, input and output messages, timing, settings, and available usage. Open my_model_span for the full message mapping; this slide abbreviates the comprehensions. In Agent Lens, find the request after an account lookup and verify that its input contains the returned payments.
 -->
 
 ---
 ---
 
-# The second ticket grants Alex account access.
+# Provision Alex’s membership through the MCP tools.
 
 <div class="ticket"><div class="account">FERN → ONBOARDING</div><p>Add alex@example.test as a member.</p></div>
-<p>Onboarding tools are discovered and called through local MCP. The model still receives their returned observations through the same loop.</p>
-<div class="bottom-note">IT has connected another system. It still occasionally drops the reply.</div>
+<p>The executor discovers onboarding tools through a local MCP server. Your dispatcher invokes them, and my_observation adds their results to the next model request.</p>
+<div class="bottom-note">In this simulated incident, provisioning commits the membership before the tool returns a timeout.</div>
 
 <!--
 Use the local MCP implementation in pending/mcp_server.py. Distinguish actual protocol discovery and invocation from a function merely named MCP. The simulated service deliberately commits a write before returning a timeout in the development incident.
@@ -473,7 +473,7 @@ Use the local MCP implementation in pending/mcp_server.py. Distinguish actual pr
 # An access request is sent.
 
 <TimeoutSequence :level="1" />
-<div class="bottom-note">A timeout tells us the response was unavailable. Account state tells us whether access exists.</div>
+<div class="bottom-note">After a timeout, read the account to determine whether the requested membership already exists.</div>
 
 <!--
 Explanatory sequence for the committed-write timeout fixture. Use the recorded native trace next to verify the actual recovery. The actual onboarding_status tool reads account_id. A repeated mutation must reuse its operation_id.
@@ -482,10 +482,10 @@ Explanatory sequence for the committed-write timeout fixture. Use the recorded n
 ---
 ---
 
-# The write succeeds. Its reply times out.
+# Provisioning commits before its response times out.
 
 <TimeoutSequence :level="2" />
-<div class="bottom-note">A timeout tells us the response was unavailable. Account state tells us whether access exists.</div>
+<div class="bottom-note">After a timeout, read the account to determine whether the requested membership already exists.</div>
 
 <!--
 Explanatory sequence for the committed-write timeout fixture. Use the recorded native trace next to verify the actual recovery. The actual onboarding_status tool reads account_id. A repeated mutation must reuse its operation_id.
@@ -494,10 +494,10 @@ Explanatory sequence for the committed-write timeout fixture. Use the recorded n
 ---
 ---
 
-# Check the operation before trying the write again.
+# Read account access before retrying the write.
 
 <TimeoutSequence :level="3" />
-<div class="bottom-note">A timeout tells us the response was unavailable. Account state tells us whether access exists.</div>
+<div class="bottom-note">After a timeout, read the account to determine whether the requested membership already exists.</div>
 
 <!--
 Explanatory sequence for the committed-write timeout fixture. Use the recorded native trace next to verify the actual recovery. The actual onboarding_status tool reads account_id. A repeated mutation must reuse its operation_id.
@@ -506,13 +506,13 @@ Explanatory sequence for the committed-write timeout fixture. Use the recorded n
 ---
 ---
 
-# Did the timeout stop the work?
+# Inspect the timeout and the following status check.
 
 <div class="native-capture"><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/481ae944f1062c5381870a00319f65a3" class="capture-frame" style="display:block"><img src="/images/visual-v030-pending-timeout.png" alt="Find provision_member, then inspect onboarding_status."></a>
 <div class="capture-caption">Recorded v0.3.0 rehearsal · Find provision_member, then inspect onboarding_status. · <a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/481ae944f1062c5381870a00319f65a3">Open the record ↗</a></div></div>
 
 <!--
-v0.3.0 skill-loaded onboarding: timeout span 5ddd78b1e9faa2d3; recovery status span e62596437e485145. Ask a learner to find evidence that access exists. Do not infer failure from a red span alone. This is saved execution evidence, not an expected result of a participant’s unexecuted edit.
+v0.3.0 skill-loaded onboarding: timeout span 5ddd78b1e9faa2d3; recovery status span e62596437e485145. Ask a learner to find evidence that access exists. Do not infer failure from a red span alone.
 -->
 
 ---
@@ -520,7 +520,7 @@ v0.3.0 skill-loaded onboarding: timeout span 5ddd78b1e9faa2d3; recovery status s
 
 # The tool says the write may have committed.
 
-<div class="annotated"><CaptureDetail src="/images/visual-v030-pending-timeout.png" :x="580" :y="423" :width="690" :height="280" label="Native timeout output says the operation may have committed; inspect current access" /><div class="annotations"><p>The request names the account, member, role, and operation.</p><p>The returned message directs the employee to inspect access.</p></div></div><div class="bottom-note">Enlarged native span. A timeout is a reason to investigate, not proof that the account is unchanged.</div>
+<div class="annotated"><CaptureDetail src="/images/visual-v030-pending-timeout.png" :x="580" :y="423" :width="690" :height="280" label="Native timeout output says the operation may have committed; inspect current access" /><div class="annotations"><p>The request names the account, member, role, and operation.</p><p>The returned message directs the employee to inspect access.</p></div></div><div class="bottom-note">Enlarged native span. The failed response does not establish whether the membership was created.</div>
 
 <!--
 Crop x580,y423,w690,h280 from the unchanged1280x720 native capture. Follow its conversation link on the preceding slide. The next operation in the saved trace is onboarding_status.
@@ -532,17 +532,17 @@ Crop x580,y423,w690,h280 from the unchanged1280x720 native capture. Follow its c
 # Check the account and the explanation separately.
 
 <div class="result-grid"><div class="state"><strong>State check</strong><p>Was the right payment refunded once?<br>Was access granted correctly?<br>Did unrelated state stay unchanged?</p></div><div class="claim"><strong>Explanation judge</strong><p>Do the completion claims match recorded work?<br>Does the reply explain unresolved issues?</p></div></div>
-<div class="bottom-note">A correct account can have a misleading explanation. A confident explanation can describe work that never happened.</div>
+<div class="bottom-note">Score the account state directly, then use the judge to check whether the reply accurately describes that work.</div>
 
 <!--
-Two measurements answer different questions. Participant-authored development checks teach scoring. Trusted final scoring covers account isolation, idempotency and task-specific constraints. Missing judge responses remain unavailable, never zero.
+The state scorer reads the account after execution and checks facts such as payment identity, refund amount, and duplicate effects. The LLM judge reads the request, actions, and final reply to assess whether the explanation is supported. These can disagree: an agent may do the right work and describe it incorrectly. An unavailable judge response stays missing.
 -->
 
 ---
 class: exercise
 ---
 
-# Make false completion fail your check.
+# Write checks for full, partial, missing, and duplicate refunds.
 
 <div class="where">Notebook · 4 · Check the work</div>
 
@@ -559,7 +559,7 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 ---
 ---
 
-# The judge needs a question it can answer.
+# Ask the judge to compare the reply with recorded actions.
 
 <div class="quote">Check each completion claim against recorded tool activity. A timeout is not proof that a write failed. Separate an accurate explanation from a correct account.</div>
 <div class="bottom-note">Edit the rubric in the notebook. The response validator checks its shape; it cannot guarantee the judgment is right.</div>
@@ -572,7 +572,7 @@ Rubric from current pending_cells.py. Explain why the judge receives task, recor
 class: exercise
 ---
 
-# Publish the first comparison now.
+# Publish development results with both kinds of score.
 
 <div class="where">Notebook · 4 · Check the work</div>
 
@@ -601,7 +601,7 @@ Weave preserves the evaluation data. W&B stores run artifacts and result tables.
 class: exercise
 ---
 
-# Change one procedure and rerun it.
+# Revise the verification skill and rerun both tickets.
 
 <div class="where">Notebook · 5 · Edit one procedure</div>
 
@@ -616,22 +616,22 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 ---
 ---
 
-# A procedure can change behavior without changing quality.
+# Compare account correctness with the added tool calls.
 
-<p class="big">Before calling an edit better, inspect both the account and the execution.</p>
+<p class="big">If the revised agent adds a check, determine what that check changed in the final account.</p>
 <div class="two-col"><div><h2>Behavior</h2><p>Which skill was read?<br>Which checks or retries ran?<br>Did the edit add work?</p></div><div><h2>Outcome</h2><p>Was the account correct?<br>Was the explanation accurate?<br>Did the same case improve?</p></div></div>
 
 <!--
-Participants do not need to manufacture a failure. A live success remains a success. The recorded rehearsal later supplies a useful no-gain example.
+Ask participants to identify the changed instruction and the corresponding tool calls. If both versions leave the account correct, report that result. An extra check may change cost or latency without improving the outcome on this case.
 -->
 
 ---
 ---
 
-# Save your work. Leave the employee at its desk.
+# Take a ten-minute break after saving your progress.
 
 <OfficeScene mode="employee" />
-<div class="bottom-note">Ten-minute break. No training or model calls run when you navigate or reopen the notebook.</div>
+<div class="bottom-note">Resume at 6 · Improve twice. Reopening the notebook restores saved work without making model calls.</div>
 
 <!--
 Stop at 105 minutes. Use saved checkpoints; opening does not trigger paid work. Have attendees note the next step before the break.
@@ -642,78 +642,78 @@ Stop at 105 minutes. Use saved checkpoints; opening does not trigger paid work. 
 
 # Management would like to automate management.
 
-<p class="big">Give an editor agent the current harness and an execution record. Ask it for two competing changes.</p>
+<p class="big">Give the editor the current instructions, verification skill, and execution record. It will propose two alternative harnesses for us to review and test.</p>
 <div class="two-col"><div><h2>It may edit</h2><p>Instructions, skills, and bounded workflow rules.</p></div><div><h2>Keep fixed</h2><p>The model, tested tools, fixtures, grader, and budget controls.</p></div></div>
-<div class="bottom-note">Please review its changes.</div>
+<div class="bottom-note">The notebook controller runs the tests and records which harness the editor chose.</div>
 
 <!--
-This is the same fixed model with a different task and context. The editor can produce code/configuration artifacts but cannot improve scores by rewriting the definition of correct work.
+The editor uses the same fixed model, but its request is to revise the harness rather than resolve a customer ticket. We supply the current configuration and a saved execution. The permitted edits are instructions, the verification skill, and bounded workflow rules. Tools and scoring stay fixed so any measured difference concerns the harness we changed.
 -->
 
 ---
 ---
 
-# Propose two changes from the same parent.
+# Propose two edits to the same starting harness.
 
 <ImprovementBranches :level="1" />
-<div class="bottom-note">Solid paths carry versions. Dashed paths supply execution evidence. Colors distinguish alternatives, not quality.</div>
+<div class="bottom-note">Both candidates receive the parent harness and the same starting execution. Read each diff before testing it.</div>
 
 <!--
-Harness²-inspired teaching cycle. Each proposal starts from the parent. Compose reviews both probe records and can select, combine or retain; reviewing a candidate does not mean adopting it. The workshop carries its selected harness to onboarding, unlike the upstream cross-task protocol.
+Propose asks the editor for two competing changes, such as clearer verification instructions or a mandatory completion check. A and B start from the same parent. Neither receives the other candidate’s test result at this point. We review their saved configurations before allowing the probes.
 -->
 
 ---
 ---
 
-# Test both on fresh copies of the case.
+# Run each candidate from the original account state.
 
 <ImprovementBranches :level="2" />
-<div class="bottom-note">Solid paths carry versions. Dashed paths supply execution evidence. Colors distinguish alternatives, not quality.</div>
+<div class="bottom-note">Probe executes A and B separately. Each starts with the same ticket and an unchanged copy of its account.</div>
 
 <!--
-Harness²-inspired teaching cycle. Each proposal starts from the parent. Compose reviews both probe records and can select, combine or retain; reviewing a candidate does not mean adopting it. The workshop carries its selected harness to onboarding, unlike the upstream cross-task protocol.
+If candidate A has already issued a refund, B must not inherit that refunded account. The controller resets the case before each probe. Compare the actions and returned state of both runs; a successful tool response alone does not tell us the ticket was handled correctly.
 -->
 
 ---
 ---
 
-# Ask which changes to keep.
+# Compare the probe results before selecting a harness.
 
 <ImprovementBranches :level="3" />
-<div class="bottom-note">Solid paths carry versions. Dashed paths supply execution evidence. Colors distinguish alternatives, not quality.</div>
+<div class="bottom-note">The dashed paths carry test records to Compose, which can select, combine, or retain the parent.</div>
 
 <!--
-Harness²-inspired teaching cycle. Each proposal starts from the parent. Compose reviews both probe records and can select, combine or retain; reviewing a candidate does not mean adopting it. The workshop carries its selected harness to onboarding, unlike the upstream cross-task protocol.
+Compose receives the proposed configurations and both execution records. It can choose A or B, combine parts of them, or retain the parent. Its rationale explains that choice, but the choice still needs an execution. The solid paths show versions; colors identify alternatives rather than scores.
 -->
 
 ---
 ---
 
-# Run the files the decision selected.
+# Execute the harness returned by the composition decision.
 
 <ImprovementBranches :level="4" />
-<div class="bottom-note">Solid paths carry versions. Dashed paths supply execution evidence. Colors distinguish alternatives, not quality.</div>
+<div class="bottom-note">The controller constructs the selected harness and runs it before saving it for the next task.</div>
 
 <!--
-Harness²-inspired teaching cycle. Each proposal starts from the parent. Compose reviews both probe records and can select, combine or retain; reviewing a candidate does not mean adopting it. The workshop carries its selected harness to onboarding, unlike the upstream cross-task protocol.
+A combination may differ from both tested candidates, so we run the returned configuration as its own probe. A Retain decision also runs through this step without inventing a new executable version. We can then inspect the specific execution associated with the decision.
 -->
 
 ---
 ---
 
-# Carry the chosen version and a lesson forward.
+# Save the selected harness and a lesson for onboarding.
 
 <ImprovementBranches :level="5" />
-<div class="bottom-note">Solid paths carry versions. Dashed paths supply execution evidence. Colors distinguish alternatives, not quality.</div>
+<div class="bottom-note">The next round receives the selected version, its execution record, and the lesson’s stated limits.</div>
 
 <!--
-Harness²-inspired teaching cycle. Each proposal starts from the parent. Compose reviews both probe records and can select, combine or retain; reviewing a candidate does not mean adopting it. The workshop carries its selected harness to onboarding, unlike the upstream cross-task protocol.
+Reflect asks the editor what it learned from the selected run and where that conclusion may not apply. We keep the lesson with that run, then execute the selected harness on onboarding before proposing more changes. This carried-harness teaching protocol differs from the full upstream Harness² cross-task procedure.
 -->
 
 ---
 ---
 
-# Select evidence from the current development run.
+# Give the editor the starting execution and harness.
 
 
 ```python
@@ -724,7 +724,7 @@ editor_decision(
 )
 ```
 
-<div class="bottom-note">The editor receives the parent’s actual execution. Fresh-case grades are not included.</div>
+<div class="bottom-note"><code>experience</code> contains the starting run’s actions and results. Final-case grades are excluded from the editor’s request.</div>
 
 <!--
 Conceptual variable names match the visible controller; actual notebook uses _s,_case,_parent,_prefix,_f. It passes prior_experience from round1 into round2. Ask which input would be inappropriate: final-test scores.
@@ -734,7 +734,7 @@ Conceptual variable names match the visible controller; actual notebook uses _s,
 class: exercise
 ---
 
-# Read the two proposals before testing them.
+# Review the proposed instruction and workflow changes.
 
 <div class="where">Notebook · 6 · Improve twice</div>
 
@@ -749,7 +749,7 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 ---
 ---
 
-# Run the proposed files, not just the description.
+# Construct and execute the proposed harness.
 
 
 ```python
@@ -758,18 +758,18 @@ run = run_employee(session, case, harness, prefix + phase, **hooks)
 assert run["harness_fingerprint"] == decision["fingerprint"]
 ```
 
-<p>Each probe starts from the case’s original state. The saved source identifies what actually ran.</p>
-<div class="bottom-note">A proposal title is an intention. The executed files and returned state are the evidence.</div>
+<p>Each probe receives a fresh copy of the account state. The fingerprint check verifies that it used the harness returned in the saved decision.</p>
+<div class="bottom-note">This tests the proposed configuration; reading its rationale alone cannot establish its effect.</div>
 
 <!--
-Explain fingerprint as a content identity, not a metric. Do not overwhelm the audience with hash strings. The full assertion and save stage are visible in the current notebook.
+The editor returns a structured harness in its decision. The controller constructs that harness, executes it on a reset case, and checks the recorded content fingerprint against the decision. That comparison catches running the wrong version. It says nothing about whether the selected instructions are good; the account scorer answers that separately.
 -->
 
 ---
 class: exercise
 ---
 
-# Test both and compare their behavior.
+# Run both candidates and inspect their tool sequences.
 
 <div class="where">Notebook · 6 · Improve twice</div>
 
@@ -790,13 +790,13 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 <div class="capture-caption">Recorded v0.3.0 rehearsal · Find the rejected finish, check_work, and accepted finish. · <a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/9633d416f5fce6aaa0124ab6ddc38c46">Open the record ↗</a></div></div>
 
 <!--
-Recorded candidate B changed verify_before_finish from false to true. It produced the explicit check sequence. Spans: rejected finish 9ed1e7824138ec0e, check_work 2d49d1d8d3ddeb5d, accepted finish 3e19e007d013d4d2. This is a behavior change, not yet evidence of better quality. This is saved execution evidence, not an expected result of a participant’s unexecuted edit.
+Recorded candidate B changed verify_before_finish from false to true. It produced the explicit check sequence. Spans: rejected finish 9ed1e7824138ec0e, check_work 2d49d1d8d3ddeb5d, accepted finish 3e19e007d013d4d2. This is a behavior change, not yet evidence of better quality.
 -->
 
 ---
 ---
 
-# The rejected completion caused another check.
+# The completion gate required a check_work call.
 
 <div class="annotated"><CaptureDetail src="/images/visual-v030-pending-verification.png" :x="580" :y="251" :width="690" :height="185" label="Native finish error: Check the current work before submitting" /><div class="annotations"><p><code>verify_before_finish</code> blocked the first finish.</p><p>The following <code>check_work</code> call satisfied the gate.</p></div></div><div class="bottom-note">The account result still passed. The editor had to decide whether the additional gate was worth keeping.</div>
 
@@ -807,21 +807,21 @@ Crop x580,y251,w690,h185 from the unchanged1280x720 native capture. Gate behavio
 ---
 ---
 
-# Retain this version is a valid decision.
+# The editor retained the parent after comparing the probes.
 
 <div class="diff"><div class="del">Candidate B: require check_work before finish</div><div class="add">Composition: retain the parent harness</div></div>
-<p>The recorded first-round decision kept the existing procedure. The extra gate added work without improving the probe’s account result.</p>
+<p>In the recorded first round, the editor retained the existing procedure. Its rationale was that the gate added a check while the parent already produced a correct account.</p>
 <div class="bottom-note"><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c04f575608c6f43d99e1b7b428a23791">Open the recorded composition decision ↗</a></div>
 
 <!--
-Paraphrase the actual saved v030 composition rationale, attributing it to the editor. An unchanged version still gets tested because the controller verifies every composition decision. It does not create a new executable version.
+Open this saved composition if time allows. The editor’s rationale was that the mandatory gate added work while the parent already produced a correct billing outcome. It retained the parent. The controller still runs the selected configuration because every composition receives a confirming execution, including KEEP. The executable content remains unchanged.
 -->
 
 ---
 class: exercise
 ---
 
-# Test the composition, then save its lesson.
+# Test the selected harness before carrying it forward.
 
 <div class="where">Notebook · 6 · Improve twice</div>
 
@@ -836,7 +836,7 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 ---
 ---
 
-# A lesson needs an observation and a limit.
+# Save the lesson with the run that supports it.
 
 
 ```python
@@ -849,7 +849,7 @@ adopted = {
 }
 ```
 
-<p>Carry the lesson with the execution it came from. The next editor should know what was tested and what remains uncertain.</p>
+<p>The next round receives this selected harness and the saved lesson. Keeping the execution reference lets us inspect the observation behind the editor’s conclusion.</p>
 
 <!--
 Explanatory excerpt, not a drop-in full function. The actual controller falls back to the parent if the chosen execution does not complete. The lesson is agent-authored interpretation backed by a saved run.
@@ -859,7 +859,7 @@ Explanatory excerpt, not a drop-in full function. The actual controller falls ba
 class: exercise
 ---
 
-# Repeat the cycle on onboarding.
+# Use the selected harness to start the onboarding round.
 
 <div class="where">Notebook · 6 · Improve twice</div>
 
@@ -880,7 +880,7 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 <div class="bottom-note"><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/a39aede201a0fe7320092976c0501e42">Decision ↗</a> · <a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/d641da20ff5e553866a93a3c12bee913">Execution of the chosen files ↗</a></div>
 
 <!--
-v030 snapshot. This is deliberately separate from older v023 captures in which both rounds retained the parent. Attribute intent to the editor. The exact files are in the executed artifact; final results show whether quality changed.
+In the recorded onboarding round, the editor selected a more specific verification skill while leaving verify_before_finish off. Open the decision to read its rationale, then the chosen execution to inspect how the agent used those files. The next slide shows the exact changed sentence.
 -->
 
 ---
@@ -897,22 +897,22 @@ Source .workshop/v030-pending/journal.json, pending/round-1/compose and pending/
 ---
 ---
 
-# What made that recursive improvement?
+# The next round tests changes to the previous selection.
 
-<p class="big">The editor inspected the consequences of a harness, changed it, and used the resulting version and lesson in another improvement round.</p>
-<div class="two-col"><div><h2>Changed</h2><p>Instructions, verification skill, selected workflow rules.</p></div><div><h2>Stayed fixed</h2><p>Model weights, tool implementations, final scoring.</p></div></div><div class="bottom-note">Harness²-inspired teaching flow: this workshop carries the chosen harness across two tasks.</div>
+<p class="big">Round two runs the harness selected after billing on the onboarding task. The editor reads that new execution and the earlier lesson before proposing another pair of changes.</p>
+<div class="two-col"><div><h2>Changed</h2><p>Instructions, verification skill, selected workflow rules.</p></div><div><h2>Stayed fixed</h2><p>Model weights, tool implementations, final scoring.</p></div></div><div class="bottom-note">This is a Harness²-inspired teaching flow. The editor model stays fixed while its proposed harnesses change.</div>
 
 <!--
-Explain this as a bounded Harness²-inspired workshop. It is not autonomous model-weight improvement. Upstream parallel and sequential recursion and experience reuse are richer than this teaching controller; the workshop carries a chosen harness across two problems.
+Recursive self-improvement here means that an agent evaluates executions of a harness, proposes revisions, and later examines work done under the selected revision. The retained lesson supplies context for the next attempt. The language model’s weights never change. Our workshop carries a selected harness between two tasks; the upstream Harness² procedure has a broader recursion and experience-library design.
 -->
 
 ---
 ---
 
-# Stop editing before opening the fresh cases.
+# Freeze three harnesses for the fresh-case comparison.
 
 <table class="clean-table readable-table"><tbody><tr><th>Frozen version</th><th>Fresh cases</th><th>Executions</th></tr><tr><td>Starting instructions</td><td>Same four cases</td><td>4</td></tr><tr><td>Your manual revision</td><td>Same four cases</td><td>4</td></tr><tr><td>Agent-selected version</td><td>Same four cases</td><td>4</td></tr></tbody></table>
-<div class="bottom-note">Twelve executions of four cases. Repetitions are not twelve independent tasks.</div>
+<div class="bottom-note">Each harness runs once on each of four cases: 12 executions, four distinct tasks.</div>
 
 <!--
 Final cases: already-refunded, two-invoices, onboarding-recovery, clarify-access. Their files are public for teaching but are excluded from improvement context. The starting version is the configured tested employee, not the deliberately blank opening illustration.
@@ -937,43 +937,43 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 ---
 ---
 
-# Open a saved case and follow its trace.
+# Open the execution behind a saved evaluation row.
 
 <div class="native-capture"><a class="capture-link" href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/5a3721335363bceb77f0c88c87e761f8"><CaptureDetail src="/images/visual-v030-pending-comparison.png" :x="80" :y="305" :width="1180" :height="380" label="Four saved W&B Table case rows, scores and execution evidence" /></a>
 <div class="capture-caption">Recorded v0.3.0 rehearsal · W&B Table: four fresh cases for the agent-selected version. · <a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/5a3721335363bceb77f0c88c87e761f8">Open the record ↗</a></div></div>
 
 <!--
-Actual native W&B Table, not EvalTables and not a three-version aligned comparison. error=0 means the independent account-state check passed. judge_grounded and judge_complete are separate scores. The evaluation row also links execution evidence. All three versions are compared on the next result table. Native EvalTables remains unavailable with HTTP500. This is saved execution evidence, not an expected result of a participant’s unexecuted edit.
+Actual native W&B Table, not EvalTables and not a three-version aligned comparison. error=0 means the independent account-state check passed. judge_grounded and judge_complete are separate scores. The evaluation row also links execution evidence. All three versions are compared on the next result table. Native EvalTables remains unavailable with HTTP500.
 -->
 
 ---
 ---
 
-# Read the conclusion beside its evidence.
+# Link the Report’s conclusion to its runs and traces.
 
 <div class="native-capture"><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-bc0ee4ab--VmlldzoxODMwMzUyNg==" class="capture-frame" style="display:block"><img src="/images/visual-v030-pending-report.png" alt="The Report records the complete comparison and its publication status."></a>
 <div class="capture-caption">Recorded v0.3.0 rehearsal · The Report records the complete comparison and its publication status. · <a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-bc0ee4ab--VmlldzoxODMwMzUyNg==">Open the record ↗</a></div></div>
 
 <!--
-Use fresh v030 final table: all12 account checks and explanation judgments are available and pass. Native EvalTables unavailable; screenshot is the actual W&B/Weave/Report surface and must be captioned accordingly. This is saved execution evidence, not an expected result of a participant’s unexecuted edit.
+Use fresh v030 final table: all12 account checks and explanation judgments are available and pass. Native EvalTables unavailable; screenshot is the actual W&B/Weave/Report surface and must be captioned accordingly.
 -->
 
 ---
 ---
 
-# The loop worked. Quality did not improve here.
+# All three harnesses passed the four final cases.
 
 <table class="clean-table readable-table"><tbody><tr><th>Recorded version</th><th>Correct accounts</th><th>Grounded explanations</th><th>Tool calls across four cases</th></tr><tr><td>Starting</td><td>4 / 4</td><td>4 / 4</td><td>12</td></tr><tr><td>Manual</td><td>4 / 4</td><td>4 / 4</td><td>13</td></tr><tr><td>Agent-selected</td><td>4 / 4</td><td>4 / 4</td><td>13</td></tr></tbody></table>
-<div class="bottom-note">One scripted rehearsal. All versions solved these cases. More checking did not raise an already-perfect score.</div>
+<div class="bottom-note">In this rehearsal, both revisions added one tool call across the four cases. Neither improved the account or explanation pass count.</div>
 
 <!--
-Source evidence/v030-pending-rehearsal.json. Tool counts sum2+4+4+2 starting and2+4+5+2 revised. Total observed rehearsal inference cost $0.03093452; exclude notebook compute and do not promise attendee cost. This measures four simulated cases, not repeatability or general enterprise-agent quality.
+Read the account and explanation columns before the tool-call totals. All versions passed all four cases in this scripted rehearsal, so neither revision increased the measured pass rate. Each revised version made one additional tool call overall. These four cases do not establish repeatability or performance on other workflows. The source is evidence/v030-pending-rehearsal.json.
 -->
 
 ---
 ---
 
-# Keep the files that explain the result.
+# Save the case, harness, execution, and scoring records.
 
 <div class="sequence"><div class="step">Case<small>request + initial state</small></div><div class="arrow">→</div><div class="step">Harness<small>instructions + skill</small></div><div class="arrow">→</div><div class="step">Execution<small>trace + final state</small></div><div class="arrow">→</div><div class="step">Evaluation<small>checks + judge reason</small></div></div>
 <p>W&B Artifacts save the exact files as versions. The Report links the explanation to these saved records.</p>
@@ -1001,7 +1001,7 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 ---
 ---
 
-# Ask ARIA to investigate the evidence.
+# Ask ARIA to compare one case across harness versions.
 
 <div class="quote">Compare my starting and agent-selected harnesses on the same fresh ticket. Use the linked evaluation, execution trace, and harness diff. Explain what changed in behavior and whether the account result changed. Cite the relevant records before suggesting another experiment.</div>
 <div class="bottom-note">Optional. Verify one citation yourself. This investigation is outside the measured comparison.</div>
@@ -1013,14 +1013,14 @@ Do not imply ARIA authored these prior results. The prompt asks for evidence ana
 ---
 ---
 
-# Take the loop back to your own product.
+# Choose a workflow with an observable result to test.
 
-<p class="big">Choose one task, one observable state change, and one way to check the work.</p>
-<p>Build the tool. Record what happened. Compare the same cases. Give the editor evidence it can act on.</p>
-<div class="bottom-note">Management’s announcement is optional. The evaluation is not.</div>
+<p class="big">Start with a task whose result you can inspect independently: an account update, an access change, or another completed operation.</p>
+<p>Record the agent’s actions and define the success checks before asking it to revise its own procedures. Test the revised harness on the same cases, then on cases it has not seen.</p>
+<div class="bottom-note">Write down a development case and a different case to hold back for evaluation.</div>
 
 <!--
-Close by asking participants to name their own analogous workflow and one failure they could test. Leave them the current notebook, source, records and deck. Preserve honest no-gain outcomes.
+Ask participants to name one workflow in their product with observable output and a check they can run independently of the agent. Have them specify a development case, a likely failure, and a fresh case for testing transfer. They can reuse the instrumentation and improvement controller, but must define what correct work means for that workflow.
 -->
 
 ---

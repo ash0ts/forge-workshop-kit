@@ -1,4 +1,12 @@
-# Forge Workshop Kit 0.2.3 technical preview
+# Forge Workshop Kit 0.3.1 technical preview
+
+The decks now explain the forecasting and account-support tasks before introducing the experiment machinery. Solar opens with the observations, forecast horizons, and baseline comparison. Pending opens with a duplicate charge and a request that succeeds before returning a timeout. Code walkthroughs describe the inputs, changed behavior, and outputs participants should check.
+
+The Solar workshop is titled **Solar forecasting with agent-assisted experiments**. Both notebook introductions, the exercise explanations, and presenter notes use the same framing. This is a copy revision: workflow identities, model settings, data, saved results, and existing attendee copies are unchanged. No training or inference was run.
+
+The decks use the recorded November 13 rehearsals. Native EvalTables availability and external-attendee rehearsal requirements remain as described in the [release checks](release-checks.md).
+
+## 0.2.3
 
 The recorded workshops now have focused Forge dashboards and shorter Reports. Each dashboard selects its own rehearsal runs, names the scores and units, and links the result to the trace and saved code. The [demo guide](current-demo-guide.md) gives an eight-minute office walkthrough and a ten-minute research walkthrough. New native product captures in the Solar deck show those same pages.
 

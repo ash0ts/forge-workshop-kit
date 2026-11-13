@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[pending] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.3.0/forge_workshop_kit-0.3.0-py3-none-any.whl",
+#   "forge-workshop-kit[pending] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.3.1/forge_workshop_kit-0.3.1-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -129,7 +129,8 @@ def _():
 
 @app.cell(hide_code=True)
 def _(mo, ui):
-    mo.Html(ui.heading("Pending, Inc.", "Your new AI colleague handles refunds and account access. You'll write its tools, watch it work, and test changes to its instructions. IT has supplied a notebook. The customers and accounts in this workshop are fictional."))
+    mo.vstack([mo.Html(ui.heading("Pending, Inc.", "A customer was charged twice for the same invoice. Your agent needs to read the payments, refund the duplicate charge, and confirm what changed. You'll write the tool it uses to look up the invoice and the code that returns tool results to the model. The company and accounts are fictional.")),
+    mo.md("The next ticket involves an account-access request that times out after it has already succeeded. You'll use Agent Lens to inspect the agent's response and write checks against the account state. After testing an instruction change yourself, you'll build a controller that asks another agent to propose and test further changes. Management would appreciate fewer meetings about the handbook.")])
     return
 
 

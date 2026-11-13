@@ -20,6 +20,7 @@ The editable source and exercise controls come from `scripts/solar_cells.py` and
 - [SunPy time-series tutorial](https://docs.sunpy.org/en/stable/tutorial/timeseries.html): inspect actual observations and units before modeling them.
 - [SunPy map tutorial](https://docs.sunpy.org/en/stable/tutorial/maps.html): inspect dates, wavelength, and FITS metadata.
 - [SunPy AIA synopsis client](https://docs.sunpy.org/en/stable/generated/api/sunpy.net.dataretriever.AIASynopsisClient.html) and [JSOC calibrated archive](https://jsoc1.stanford.edu/data/aia/synoptic/README.html): AIA acquisition and provenance.
+- [A Recipe for Training Neural Networks](https://karpathy.github.io/2019/04/25/recipe/): inspect data, establish a baseline, and test specific training hypotheses before adding complexity. This informs the teaching sequence; the workshop wording is original.
 - [PyTorch Quickstart](https://docs.pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html): explain a concept beside a short code example and its output. Our wording, diagrams, and exercises are original.
 - [Pinned Harness² workflow](https://github.com/google-research/harness2/tree/1cfe254e8d25b15f37048c3730134686abe60335): Propose–Probe–Compose. This workshop adapts that structure to ML code edits with validation scores; it does not reproduce the paper's task protocol.
 - [Agent Lens](https://docs.coreweave.com/products/agent-lens): native request and tool inspection.
@@ -63,7 +64,7 @@ Native EvalTables returned HTTP 500. The notebook comparison, Weave rows, and W&
 
 ## Diagrams and setting
 
-The original research-lab illustration supplies atmosphere. Its monitor and props are illustrative, and the opening dialogue is explicitly fictional. No generated scientific result is used.
+The original research-lab illustration supplies atmosphere. Its monitor and props are illustrative, and the lab setting and four notebooks named final are explicitly fictional. No generated scientific result is used.
 
 `SolarMechanism.vue`, `ForecastWindow.vue`, `ResearchMap.vue`, and `ResearchBranches.vue` are editable SVG diagrams. They explain input shapes, residual addition, masked error, fixed versus trained weights, experiment records, and branching decisions. They do not claim a proposed edit improves quality. The mask picture is labeled an illustration of the calculation.
 
