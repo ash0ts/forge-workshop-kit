@@ -29,7 +29,14 @@ def stored_spans(project, trace_id, *, expected, timeout=25):
 
 def export_trace(session, identity, mission, events, requests=(), *, tool_writer=None,
                  model_writer=None, agent_name=None, worker_id=None, task_id=None,
-                 dispatch_id=None, parent_conversation_id=None, conversation_name=None):
+                 dispatch_id=None, parent_conversation_id=None, conversation_name=None,
+                 turns=None, attributes=None, conversation_id=None, messages=None,
+                 output_messages=None, agent_version=None):
+    if turns is not None:
+        return export_turns(session, identity, mission, events, requests, turns,
+            tool_writer=tool_writer, model_writer=model_writer, agent_name=agent_name,
+            conversation_name=conversation_name, attributes=attributes,
+            agent_version=agent_version)
     from coreweave.forge.agentlens import tracing as tracing
     from opentelemetry import trace
     key = 'trace/' + identity
@@ -43,10 +50,11 @@ def export_trace(session, identity, mission, events, requests=(), *, tool_writer
         except RuntimeError:
             pass
     sdk = tracing.init(session.project, service_name='forge-workshop-kit', autopatch_integrations=False)
-    conversation_id = identity
+    conversation_id = conversation_id or identity
     times = [r['started_at'] for r in requests] + [e['started_at'] for e in events]
     ends = [r['ended_at'] for r in requests] + [e['ended_at'] for e in events]
-    stage = session.read()['stages'].get(identity, {})
+    stages = session.read()['stages']
+    stage = stages.get(identity) or stages.get(conversation_id, {})
     stage_name = stage.get('name', mission)
     context = {key: value for key, value in {
         'workshop.worker_id': worker_id, 'workshop.task_id': task_id,
@@ -57,12 +65,17 @@ def export_trace(session, identity, mission, events, requests=(), *, tool_writer
     if worker_id and not conversation_name:
         label += f' / {worker_id}'
     with tracing.Conversation(conversation_id=conversation_id,
+        agent_name=agent_name or ('researcher' if requests else 'participant'),
+        agent_version=agent_version or '',
         conversation_name=label, attributes={
+            **(attributes or {}),
             'workshop.id': session.workshop, 'workshop.workspace': session.workspace_id,
             'workshop.release': session.version, 'workshop.stage': stage_name,
             'workshop.source_fingerprint': stage.get('source_fingerprint', ''), **context}):
         with tracing.Turn(agent_name=agent_name or ('researcher' if requests else 'participant'),
-            messages=[tracing.Message(role='user', content=mission)],
+            agent_version=agent_version or '',
+            messages=[tracing.Message(**message) for message in messages] if messages else [tracing.Message(role='user', content=mission)],
+            output_messages=[tracing.Message(**message) for message in (output_messages or [])],
             started_at=stamp(min(times) if times else time.time()),
             ended_at=stamp(max(ends) if ends else time.time())):
             tid = format(trace.get_current_span().get_span_context().trace_id, '032x')
@@ -113,6 +126,38 @@ def export_trace(session, identity, mission, events, requests=(), *, tool_writer
     if not sdk.force_flush():
         raise RuntimeError('Trace export did not finish. Execution is saved; retry export.')
     return verify_trace(session, key, receipt, events, requests)
+
+
+def export_turns(session, identity, mission, events, requests, turns, **options):
+    """Export real passenger turns into one conversation, retaining each trace identity."""
+    event_map = {row['id']: row for row in events}
+    request_map = {row['id']: row for row in requests}
+    event_ids = [key for turn in turns for key in turn.get('event_ids', [])]
+    request_ids = [key for turn in turns for key in turn.get('request_ids', [])]
+    if (len(event_map) != len(events) or len(request_map) != len(requests)
+            or sorted(event_ids) != sorted(event_map)
+            or sorted(request_ids) != sorted(request_map)):
+        raise ValueError('Each recorded operation must belong to exactly one actual turn.')
+    turn_ids = [turn.get('id') for turn in turns]
+    if not turns or not all(isinstance(key, str) and key for key in turn_ids) or len(set(turn_ids)) != len(turn_ids):
+        raise ValueError('Explicit turns require distinct nonempty identities.')
+    receipts = []
+    for turn in turns:
+        if not turn.get('messages'):
+            raise ValueError('Record the actual turn input before exporting it.')
+        receipts.append(export_trace(session, identity + '/turn/' + turn['id'], mission,
+            [event_map[key] for key in turn.get('event_ids', [])],
+            [request_map[key] for key in turn.get('request_ids', [])],
+            conversation_id=identity, messages=turn['messages'],
+            output_messages=turn.get('output_messages', []), **options))
+    receipt = dict(conversation_id=identity, verified=all(row['verified'] for row in receipts),
+        url=f'https://forge.coreweave.com/agent-lens/{session.project}/conversations/{identity}',
+        turns=receipts, trace_id=receipts[-1]['trace_id'],
+        stored_spans=sum(row['stored_spans'] for row in receipts),
+        span_ids={key: value for row in receipts for key, value in row['span_ids'].items()})
+    with session.transaction() as state:
+        state['publications']['trace/' + identity] = receipt
+    return receipt
 
 
 def verify_trace(session, key, receipt, events, requests):
@@ -174,7 +219,9 @@ def saved_trace_inputs(session, stage_or_id):
                         for message in request['request'].get('messages', [])
                         if message.get('role') == 'user'), row['name'])
     context = {key: value for key, value in (result.get('trace_context') or row.get('inputs', {}).get('trace_context', {})).items()
-               if key in ('agent_name', 'worker_id', 'task_id', 'dispatch_id', 'parent_conversation_id', 'conversation_name')}
+               if key in ('agent_name', 'worker_id', 'task_id', 'dispatch_id', 'parent_conversation_id', 'conversation_name', 'agent_version', 'attributes')}
+    if result.get('turns') is not None:
+        context['turns'] = result['turns']
     return {'identity': row['id'], 'mission': mission, **context,
             'events': sorted(events.values(), key=lambda event: (event['started_at'], event['id'])),
             'requests': requests}

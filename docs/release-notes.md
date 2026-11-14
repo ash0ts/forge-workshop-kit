@@ -1,4 +1,14 @@
-# Forge Workshop Kit 0.7.0
+# Forge Workshop Kit 0.8.0 technical preview
+
+The sixth workshop follows an airline service agent from observed booking changes to native Agent Lens tags, human review, regression cases, an itinerary repair, and subsequent monitoring. It uses fictional records and tool semantics adapted from Sierra tau-bench, with scripted passenger confirmations. It is not a reproduction of the benchmark.
+
+All 40 live qualification conversations passed independent booking checks. Both versions passed all six reserved and all four subsequent requests, so the comparison shows no observed quality gain. A separate, explicitly controlled adapter exercise demonstrates why forwarding only the changed flight can lose an untouched leg. Participants' curated examples now drive that free regression check; they are not just saved and ignored.
+
+Native tag configuration and manual Alignment labels were read back successfully. Six AI Alignment tests returned HTTP 500, and Insights had no completed cluster for the new session. Those judgments remain unavailable. The materials do not report monitor precision or recall from missing results, or infer a negative label from an absent tag assignment. The 40 live conversations cost $0.02330616; one explanation judge brought direct inference to $0.02401506, with zero unknown usage. Native judging and compute are separate.
+
+Airline needs no additional package dependencies, gateway, host token, or remote Sandbox entitlement. It retains the participant-owned project and adjustable $8 inference allowance. See the [airline qualification](airline-monitoring-qualification.md), [result data](../examples/airline-monitoring/qualification.json), and [current release checks](release-checks.md). External-account access and human rehearsal remain unverified. Previous releases and attendee copies are unchanged.
+
+## 0.7.0
 
 Routing now continues beyond selecting a classifier. Participants reproduce its exact artifact, investigate a deliberately faulty label mapping, add a regression check, repair the loader, and verify rollback. The additional 90 minutes include a break. The existing test-set comparison stays separate from this development regression drill.
 

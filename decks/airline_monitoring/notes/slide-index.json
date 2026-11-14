@@ -1,0 +1,440 @@
+[
+  {
+    "slide": 1,
+    "title": "Monitor an airline service agent<br>and build better evaluations",
+    "name": "introduction",
+    "time": "0:00"
+  },
+  {
+    "slide": 2,
+    "title": "The passenger wants a different outward flight",
+    "name": "passenger-request",
+    "time": "0:03"
+  },
+  {
+    "slide": 3,
+    "title": "A correct change preserves the return flight",
+    "name": "expected-booking",
+    "time": "0:06"
+  },
+  {
+    "slide": 4,
+    "title": "The API replaces the complete flight list",
+    "name": "replace-semantics",
+    "time": "0:09"
+  },
+  {
+    "slide": 5,
+    "title": "A successful write can leave the wrong booking",
+    "name": "wrong-state",
+    "time": "0:12"
+  },
+  {
+    "slide": 6,
+    "title": "The data contains bookings, policy, and passenger requests",
+    "name": "dataset",
+    "time": "0:15"
+  },
+  {
+    "slide": 7,
+    "title": "Keep related bookings in the same data group",
+    "name": "data-groups",
+    "time": "0:18"
+  },
+  {
+    "slide": 8,
+    "title": "Your copy owns the runs and saved work",
+    "name": "setup",
+    "time": "0:21"
+  },
+  {
+    "slide": 9,
+    "title": "Check access and inspect the starting itinerary",
+    "name": "booking",
+    "time": "0:25"
+  },
+  {
+    "slide": 10,
+    "title": "Record a conversation around the passenger\u2019s request",
+    "name": "trace-shape",
+    "time": "0:29"
+  },
+  {
+    "slide": 11,
+    "title": "The tracing code records the actual tool result",
+    "name": "tool-tracing",
+    "time": "0:33"
+  },
+  {
+    "slide": 12,
+    "title": "Connect each model request to its response",
+    "name": "model-tracing",
+    "time": "0:35"
+  },
+  {
+    "slide": 13,
+    "title": "Instrument the agent before sending its first batch",
+    "name": "discovery",
+    "time": "0:39"
+  },
+  {
+    "slide": 14,
+    "title": "Read the booking returned by the tool",
+    "name": "read-tool",
+    "time": "0:48"
+  },
+  {
+    "slide": 15,
+    "title": "The reservation read timed out before any change",
+    "name": "capture-conversation",
+    "time": "0:51"
+  },
+  {
+    "slide": 16,
+    "title": "Follow the agent after the error",
+    "name": "capture-recovery",
+    "time": "0:56"
+  },
+  {
+    "slide": 17,
+    "title": "Keep three questions separate",
+    "name": "three-questions",
+    "time": "0:58"
+  },
+  {
+    "slide": 18,
+    "title": "Use Overview for context, then open Conversations",
+    "name": "overview",
+    "time": "1:05"
+  },
+  {
+    "slide": 19,
+    "title": "Insights suggests a pattern worth investigating",
+    "name": "insights",
+    "time": "1:14"
+  },
+  {
+    "slide": 20,
+    "title": "An error is not always an unresolved failure",
+    "name": "outcomes",
+    "time": "1:26"
+  },
+  {
+    "slide": 21,
+    "title": "Save one claim with the turn that supports it",
+    "name": "investigate",
+    "time": "1:32"
+  },
+  {
+    "slide": 22,
+    "title": "Break until 1:50",
+    "name": "break-one",
+    "time": "1:40"
+  },
+  {
+    "slide": 23,
+    "title": "Define a behavior that a reviewer can check",
+    "name": "tag-definition",
+    "time": "1:50"
+  },
+  {
+    "slide": 24,
+    "title": "Fewer flights can be the correct result",
+    "name": "counterexample-nonstop",
+    "time": "1:55"
+  },
+  {
+    "slide": 25,
+    "title": "Add counterexamples before trusting the rule",
+    "name": "counterexamples",
+    "time": "2:00"
+  },
+  {
+    "slide": 26,
+    "title": "A native tag has criteria, labels, and a live state",
+    "name": "tag-lifecycle",
+    "time": "2:05"
+  },
+  {
+    "slide": 27,
+    "title": "Save the criteria and check the tag\u2019s scope",
+    "name": "capture-tag-configuration",
+    "time": "2:08"
+  },
+  {
+    "slide": 28,
+    "title": "Turn context limits what the judge can know",
+    "name": "judge-context",
+    "time": "2:10"
+  },
+  {
+    "slide": 29,
+    "title": "Test your tag against reviewed turns",
+    "name": "align",
+    "time": "2:15"
+  },
+  {
+    "slide": 30,
+    "title": "Test one reviewed turn in native Alignment",
+    "name": "alignment-test",
+    "time": "2:20"
+  },
+  {
+    "slide": 31,
+    "title": "A saved review is not a completed judge result",
+    "name": "capture-alignment",
+    "time": "2:22"
+  },
+  {
+    "slide": 32,
+    "title": "A valid response can contain a wrong judgment",
+    "name": "judge-validation",
+    "time": "2:29"
+  },
+  {
+    "slide": 33,
+    "title": "Measure the monitor on reviewed cases",
+    "name": "confusion",
+    "time": "2:35"
+  },
+  {
+    "slide": 34,
+    "title": "Precision asks whether an alert deserves review",
+    "name": "precision",
+    "time": "2:39"
+  },
+  {
+    "slide": 35,
+    "title": "Recall asks which failures the monitor missed",
+    "name": "recall",
+    "time": "2:42"
+  },
+  {
+    "slide": 36,
+    "title": "Coverage tells us which turns were judged",
+    "name": "coverage",
+    "time": "2:45"
+  },
+  {
+    "slide": 37,
+    "title": "Calculate monitor quality and send new traffic",
+    "name": "monitor",
+    "time": "2:50"
+  },
+  {
+    "slide": 38,
+    "title": "A missing live tag does not establish a negative judgment",
+    "name": "live-missingness",
+    "time": "3:00"
+  },
+  {
+    "slide": 39,
+    "title": "Freeze the rule before comparing agent versions",
+    "name": "freeze-monitor",
+    "time": "3:02"
+  },
+  {
+    "slide": 40,
+    "title": "A reviewed turn becomes a regression case",
+    "name": "curation",
+    "time": "3:10"
+  },
+  {
+    "slide": 41,
+    "title": "Keep enough information to replay the request",
+    "name": "case-fields",
+    "time": "3:15"
+  },
+  {
+    "slide": 42,
+    "title": "Build a regression case from the reviewed turn",
+    "name": "curate",
+    "time": "3:22"
+  },
+  {
+    "slide": 43,
+    "title": "Score the change and the preserved flights separately",
+    "name": "state-scoring",
+    "time": "3:31"
+  },
+  {
+    "slide": 44,
+    "title": "The explanation judge answers a different question",
+    "name": "separate-judge",
+    "time": "3:36"
+  },
+  {
+    "slide": 45,
+    "title": "Add the booking check the old evaluation missed",
+    "name": "state-check",
+    "time": "3:41"
+  },
+  {
+    "slide": 46,
+    "title": "Save the case and its checks with the checkpoint",
+    "name": "regression-artifact",
+    "time": "3:48"
+  },
+  {
+    "slide": 47,
+    "title": "Break until 4:00",
+    "name": "break-two",
+    "time": "3:50"
+  },
+  {
+    "slide": 48,
+    "title": "Repair the list operation, then compare the behavior",
+    "name": "repair-problem",
+    "time": "4:00"
+  },
+  {
+    "slide": 49,
+    "title": "Replace a range without dropping its neighbors",
+    "name": "range-repair",
+    "time": "4:06"
+  },
+  {
+    "slide": 50,
+    "title": "Walk through the values before running the model",
+    "name": "range-values",
+    "time": "4:10"
+  },
+  {
+    "slide": 51,
+    "title": "Test the repair on matched development bookings",
+    "name": "repair",
+    "time": "4:15"
+  },
+  {
+    "slide": 52,
+    "title": "The passenger must approve the proposed change",
+    "name": "confirmation",
+    "time": "4:24"
+  },
+  {
+    "slide": 53,
+    "title": "Explain a passing repair without overstating it",
+    "name": "repair-boundary",
+    "time": "4:32"
+  },
+  {
+    "slide": 54,
+    "title": "Judge one saved explanation against its evidence",
+    "name": "judge-execution",
+    "time": "4:33"
+  },
+  {
+    "slide": 55,
+    "title": "Freeze code before opening the reserved requests",
+    "name": "freeze",
+    "time": "4:40"
+  },
+  {
+    "slide": 56,
+    "title": "Compare six reserved bookings across both versions",
+    "name": "final",
+    "time": "4:46"
+  },
+  {
+    "slide": 57,
+    "title": "Read the same request across the two versions",
+    "name": "aligned-comparison",
+    "time": "4:54"
+  },
+  {
+    "slide": 58,
+    "title": "Set the starting agent as the comparison reference",
+    "name": "capture-evaltables",
+    "time": "4:59"
+  },
+  {
+    "slide": 59,
+    "title": "Read both outputs for the same request",
+    "name": "capture-evaltables-case",
+    "time": "5:02"
+  },
+  {
+    "slide": 60,
+    "title": "The recorded agent comparison was a tie",
+    "name": "recorded-results",
+    "time": "5:05"
+  },
+  {
+    "slide": 61,
+    "title": "Report denominators and unresolved work",
+    "name": "report-measures",
+    "time": "5:08"
+  },
+  {
+    "slide": 62,
+    "title": "Use later traffic to check the frozen monitor",
+    "name": "subsequent",
+    "time": "5:20"
+  },
+  {
+    "slide": 63,
+    "title": "Check what the monitor catches after the repair",
+    "name": "traffic",
+    "time": "5:26"
+  },
+  {
+    "slide": 64,
+    "title": "A falling alert count has several explanations",
+    "name": "alerts",
+    "time": "5:37"
+  },
+  {
+    "slide": 65,
+    "title": "Write down what changed and whether it helped",
+    "name": "conclusion",
+    "time": "5:45"
+  },
+  {
+    "slide": 66,
+    "title": "Publish the comparison and stop automatic judging",
+    "name": "report",
+    "time": "5:50"
+  },
+  {
+    "slide": 67,
+    "title": "The next release has a check the first release lacked",
+    "name": "end",
+    "time": "5:58"
+  },
+  {
+    "slide": 68,
+    "title": "Worked answer: validate a judge response",
+    "name": "answer-judge",
+    "time": "Reference"
+  },
+  {
+    "slide": 69,
+    "title": "Worked answer: keep unknown judgments out of the matrix",
+    "name": "answer-monitor",
+    "time": "Reference"
+  },
+  {
+    "slide": 70,
+    "title": "Worked answer: preserve the original case inputs",
+    "name": "answer-case",
+    "time": "Reference"
+  },
+  {
+    "slide": 71,
+    "title": "Worked answer: check both change and preservation",
+    "name": "answer-state",
+    "time": "Reference"
+  },
+  {
+    "slide": 72,
+    "title": "Worked answer: build the complete replacement list",
+    "name": "answer-builder",
+    "time": "Reference"
+  },
+  {
+    "slide": 73,
+    "title": "Sources and saved evidence",
+    "name": "sources",
+    "time": "Reference"
+  }
+]

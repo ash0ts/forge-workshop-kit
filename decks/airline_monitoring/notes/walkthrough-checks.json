@@ -1,0 +1,30 @@
+{
+  "chapters": 13,
+  "seconds": 222,
+  "dimensions": [
+    1280,
+    880
+  ],
+  "codec": "h264",
+  "pixel_format": "yuv420p",
+  "fps": 15,
+  "mp4_sha256": "02e07742ea1c3c33e392ce256d06d703dbe2a2305ecdca0b1ca03efec1a74935",
+  "mp4_bytes": 2021074,
+  "all_source_capture_hashes_verified": true,
+  "source_captures_unchanged_in_caption_canvas": true,
+  "caption_rows_max": 3,
+  "browser_checks": [
+    "Next",
+    "Back",
+    "ArrowRight",
+    "ArrowLeft",
+    "End",
+    "chapter_selector",
+    "matching_deck_link",
+    "video_loaded_duration_222s",
+    "video_playback_no_error"
+  ],
+  "limitations": "Recorded guide assembled from saved rehearsal screens; not a live interaction recording",
+  "deck_source_sha256": "c503d9a3f5642e98056a526988010ff21e7a3af62d4239769eef76fe4ff49df4",
+  "hosted_template_link": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view"
+}

@@ -1,0 +1,801 @@
+{
+  "source_sha256": "c503d9a3f5642e98056a526988010ff21e7a3af62d4239769eef76fe4ff49df4",
+  "slides_checked": 73,
+  "expected_slides": 73,
+  "titles": [
+    {
+      "number": 1,
+      "title": "Monitor an airline service agent and build better evaluations"
+    },
+    {
+      "number": 2,
+      "title": "The passenger wants a different outward flight"
+    },
+    {
+      "number": 3,
+      "title": "A correct change preserves the return flight"
+    },
+    {
+      "number": 4,
+      "title": "The API replaces the complete flight list"
+    },
+    {
+      "number": 5,
+      "title": "A successful write can leave the wrong booking"
+    },
+    {
+      "number": 6,
+      "title": "The data contains bookings, policy, and passenger requests"
+    },
+    {
+      "number": 7,
+      "title": "Keep related bookings in the same data group"
+    },
+    {
+      "number": 8,
+      "title": "Your copy owns the runs and saved work"
+    },
+    {
+      "number": 9,
+      "title": "Check access and inspect the starting itinerary"
+    },
+    {
+      "number": 10,
+      "title": "Record a conversation around the passenger’s request"
+    },
+    {
+      "number": 11,
+      "title": "The tracing code records the actual tool result"
+    },
+    {
+      "number": 12,
+      "title": "Connect each model request to its response"
+    },
+    {
+      "number": 13,
+      "title": "Instrument the agent before sending its first batch"
+    },
+    {
+      "number": 14,
+      "title": "Read the booking returned by the tool"
+    },
+    {
+      "number": 15,
+      "title": "The reservation read timed out before any change"
+    },
+    {
+      "number": 16,
+      "title": "Follow the agent after the error"
+    },
+    {
+      "number": 17,
+      "title": "Keep three questions separate"
+    },
+    {
+      "number": 18,
+      "title": "Use Overview for context, then open Conversations"
+    },
+    {
+      "number": 19,
+      "title": "Insights suggests a pattern worth investigating"
+    },
+    {
+      "number": 20,
+      "title": "An error is not always an unresolved failure"
+    },
+    {
+      "number": 21,
+      "title": "Save one claim with the turn that supports it"
+    },
+    {
+      "number": 22,
+      "title": "Break until 1:50"
+    },
+    {
+      "number": 23,
+      "title": "Define a behavior that a reviewer can check"
+    },
+    {
+      "number": 24,
+      "title": "Fewer flights can be the correct result"
+    },
+    {
+      "number": 25,
+      "title": "Add counterexamples before trusting the rule"
+    },
+    {
+      "number": 26,
+      "title": "A native tag has criteria, labels, and a live state"
+    },
+    {
+      "number": 27,
+      "title": "Save the criteria and check the tag’s scope"
+    },
+    {
+      "number": 28,
+      "title": "Turn context limits what the judge can know"
+    },
+    {
+      "number": 29,
+      "title": "Test your tag against reviewed turns"
+    },
+    {
+      "number": 30,
+      "title": "Test one reviewed turn in native Alignment"
+    },
+    {
+      "number": 31,
+      "title": "A saved review is not a completed judge result"
+    },
+    {
+      "number": 32,
+      "title": "A valid response can contain a wrong judgment"
+    },
+    {
+      "number": 33,
+      "title": "Measure the monitor on reviewed cases"
+    },
+    {
+      "number": 34,
+      "title": "Precision asks whether an alert deserves review"
+    },
+    {
+      "number": 35,
+      "title": "Recall asks which failures the monitor missed"
+    },
+    {
+      "number": 36,
+      "title": "Coverage tells us which turns were judged"
+    },
+    {
+      "number": 37,
+      "title": "Calculate monitor quality and send new traffic"
+    },
+    {
+      "number": 38,
+      "title": "A missing live tag does not establish a negative judgment"
+    },
+    {
+      "number": 39,
+      "title": "Freeze the rule before comparing agent versions"
+    },
+    {
+      "number": 40,
+      "title": "A reviewed turn becomes a regression case"
+    },
+    {
+      "number": 41,
+      "title": "Keep enough information to replay the request"
+    },
+    {
+      "number": 42,
+      "title": "Build a regression case from the reviewed turn"
+    },
+    {
+      "number": 43,
+      "title": "Score the change and the preserved flights separately"
+    },
+    {
+      "number": 44,
+      "title": "The explanation judge answers a different question"
+    },
+    {
+      "number": 45,
+      "title": "Add the booking check the old evaluation missed"
+    },
+    {
+      "number": 46,
+      "title": "Save the case and its checks with the checkpoint"
+    },
+    {
+      "number": 47,
+      "title": "Break until 4:00"
+    },
+    {
+      "number": 48,
+      "title": "Repair the list operation, then compare the behavior"
+    },
+    {
+      "number": 49,
+      "title": "Replace a range without dropping its neighbors"
+    },
+    {
+      "number": 50,
+      "title": "Walk through the values before running the model"
+    },
+    {
+      "number": 51,
+      "title": "Test the repair on matched development bookings"
+    },
+    {
+      "number": 52,
+      "title": "The passenger must approve the proposed change"
+    },
+    {
+      "number": 53,
+      "title": "Explain a passing repair without overstating it"
+    },
+    {
+      "number": 54,
+      "title": "Judge one saved explanation against its evidence"
+    },
+    {
+      "number": 55,
+      "title": "Freeze code before opening the reserved requests"
+    },
+    {
+      "number": 56,
+      "title": "Compare six reserved bookings across both versions"
+    },
+    {
+      "number": 57,
+      "title": "Read the same request across the two versions"
+    },
+    {
+      "number": 58,
+      "title": "Set the starting agent as the comparison reference"
+    },
+    {
+      "number": 59,
+      "title": "Read both outputs for the same request"
+    },
+    {
+      "number": 60,
+      "title": "The recorded agent comparison was a tie"
+    },
+    {
+      "number": 61,
+      "title": "Report denominators and unresolved work"
+    },
+    {
+      "number": 62,
+      "title": "Use later traffic to check the frozen monitor"
+    },
+    {
+      "number": 63,
+      "title": "Check what the monitor catches after the repair"
+    },
+    {
+      "number": 64,
+      "title": "A falling alert count has several explanations"
+    },
+    {
+      "number": 65,
+      "title": "Write down what changed and whether it helped"
+    },
+    {
+      "number": 66,
+      "title": "Publish the comparison and stop automatic judging"
+    },
+    {
+      "number": 67,
+      "title": "The next release has a check the first release lacked"
+    },
+    {
+      "number": 68,
+      "title": "Worked answer: validate a judge response"
+    },
+    {
+      "number": 69,
+      "title": "Worked answer: keep unknown judgments out of the matrix"
+    },
+    {
+      "number": 70,
+      "title": "Worked answer: preserve the original case inputs"
+    },
+    {
+      "number": 71,
+      "title": "Worked answer: check both change and preservation"
+    },
+    {
+      "number": 72,
+      "title": "Worked answer: build the complete replacement list"
+    },
+    {
+      "number": 73,
+      "title": "Sources and saved evidence"
+    }
+  ],
+  "click_states": [
+    {
+      "slide": 1,
+      "click": 0
+    },
+    {
+      "slide": 2,
+      "click": 0
+    },
+    {
+      "slide": 3,
+      "click": 0
+    },
+    {
+      "slide": 4,
+      "click": 0
+    },
+    {
+      "slide": 5,
+      "click": 0
+    },
+    {
+      "slide": 6,
+      "click": 0
+    },
+    {
+      "slide": 6,
+      "click": 1
+    },
+    {
+      "slide": 6,
+      "click": 2
+    },
+    {
+      "slide": 7,
+      "click": 0
+    },
+    {
+      "slide": 8,
+      "click": 0
+    },
+    {
+      "slide": 8,
+      "click": 1
+    },
+    {
+      "slide": 8,
+      "click": 2
+    },
+    {
+      "slide": 8,
+      "click": 3
+    },
+    {
+      "slide": 9,
+      "click": 0
+    },
+    {
+      "slide": 10,
+      "click": 0
+    },
+    {
+      "slide": 10,
+      "click": 1
+    },
+    {
+      "slide": 10,
+      "click": 2
+    },
+    {
+      "slide": 11,
+      "click": 0
+    },
+    {
+      "slide": 11,
+      "click": 1
+    },
+    {
+      "slide": 11,
+      "click": 2
+    },
+    {
+      "slide": 11,
+      "click": 3
+    },
+    {
+      "slide": 12,
+      "click": 0
+    },
+    {
+      "slide": 13,
+      "click": 0
+    },
+    {
+      "slide": 14,
+      "click": 0
+    },
+    {
+      "slide": 15,
+      "click": 0
+    },
+    {
+      "slide": 16,
+      "click": 0
+    },
+    {
+      "slide": 17,
+      "click": 0
+    },
+    {
+      "slide": 18,
+      "click": 0
+    },
+    {
+      "slide": 19,
+      "click": 0
+    },
+    {
+      "slide": 19,
+      "click": 1
+    },
+    {
+      "slide": 19,
+      "click": 2
+    },
+    {
+      "slide": 19,
+      "click": 3
+    },
+    {
+      "slide": 20,
+      "click": 0
+    },
+    {
+      "slide": 21,
+      "click": 0
+    },
+    {
+      "slide": 22,
+      "click": 0
+    },
+    {
+      "slide": 23,
+      "click": 0
+    },
+    {
+      "slide": 24,
+      "click": 0
+    },
+    {
+      "slide": 25,
+      "click": 0
+    },
+    {
+      "slide": 26,
+      "click": 0
+    },
+    {
+      "slide": 26,
+      "click": 1
+    },
+    {
+      "slide": 26,
+      "click": 2
+    },
+    {
+      "slide": 26,
+      "click": 3
+    },
+    {
+      "slide": 27,
+      "click": 0
+    },
+    {
+      "slide": 28,
+      "click": 0
+    },
+    {
+      "slide": 28,
+      "click": 1
+    },
+    {
+      "slide": 28,
+      "click": 2
+    },
+    {
+      "slide": 29,
+      "click": 0
+    },
+    {
+      "slide": 30,
+      "click": 0
+    },
+    {
+      "slide": 31,
+      "click": 0
+    },
+    {
+      "slide": 32,
+      "click": 0
+    },
+    {
+      "slide": 32,
+      "click": 1
+    },
+    {
+      "slide": 32,
+      "click": 2
+    },
+    {
+      "slide": 33,
+      "click": 0
+    },
+    {
+      "slide": 34,
+      "click": 0
+    },
+    {
+      "slide": 35,
+      "click": 0
+    },
+    {
+      "slide": 36,
+      "click": 0
+    },
+    {
+      "slide": 37,
+      "click": 0
+    },
+    {
+      "slide": 38,
+      "click": 0
+    },
+    {
+      "slide": 39,
+      "click": 0
+    },
+    {
+      "slide": 39,
+      "click": 1
+    },
+    {
+      "slide": 39,
+      "click": 2
+    },
+    {
+      "slide": 40,
+      "click": 0
+    },
+    {
+      "slide": 40,
+      "click": 1
+    },
+    {
+      "slide": 40,
+      "click": 2
+    },
+    {
+      "slide": 40,
+      "click": 3
+    },
+    {
+      "slide": 41,
+      "click": 0
+    },
+    {
+      "slide": 42,
+      "click": 0
+    },
+    {
+      "slide": 43,
+      "click": 0
+    },
+    {
+      "slide": 44,
+      "click": 0
+    },
+    {
+      "slide": 45,
+      "click": 0
+    },
+    {
+      "slide": 46,
+      "click": 0
+    },
+    {
+      "slide": 46,
+      "click": 1
+    },
+    {
+      "slide": 46,
+      "click": 2
+    },
+    {
+      "slide": 47,
+      "click": 0
+    },
+    {
+      "slide": 48,
+      "click": 0
+    },
+    {
+      "slide": 49,
+      "click": 0
+    },
+    {
+      "slide": 49,
+      "click": 1
+    },
+    {
+      "slide": 49,
+      "click": 2
+    },
+    {
+      "slide": 49,
+      "click": 3
+    },
+    {
+      "slide": 49,
+      "click": 4
+    },
+    {
+      "slide": 50,
+      "click": 0
+    },
+    {
+      "slide": 50,
+      "click": 1
+    },
+    {
+      "slide": 50,
+      "click": 2
+    },
+    {
+      "slide": 50,
+      "click": 3
+    },
+    {
+      "slide": 50,
+      "click": 4
+    },
+    {
+      "slide": 51,
+      "click": 0
+    },
+    {
+      "slide": 52,
+      "click": 0
+    },
+    {
+      "slide": 52,
+      "click": 1
+    },
+    {
+      "slide": 52,
+      "click": 2
+    },
+    {
+      "slide": 52,
+      "click": 3
+    },
+    {
+      "slide": 53,
+      "click": 0
+    },
+    {
+      "slide": 54,
+      "click": 0
+    },
+    {
+      "slide": 55,
+      "click": 0
+    },
+    {
+      "slide": 55,
+      "click": 1
+    },
+    {
+      "slide": 55,
+      "click": 2
+    },
+    {
+      "slide": 55,
+      "click": 3
+    },
+    {
+      "slide": 56,
+      "click": 0
+    },
+    {
+      "slide": 57,
+      "click": 0
+    },
+    {
+      "slide": 58,
+      "click": 0
+    },
+    {
+      "slide": 59,
+      "click": 0
+    },
+    {
+      "slide": 60,
+      "click": 0
+    },
+    {
+      "slide": 61,
+      "click": 0
+    },
+    {
+      "slide": 62,
+      "click": 0
+    },
+    {
+      "slide": 62,
+      "click": 1
+    },
+    {
+      "slide": 62,
+      "click": 2
+    },
+    {
+      "slide": 62,
+      "click": 3
+    },
+    {
+      "slide": 63,
+      "click": 0
+    },
+    {
+      "slide": 64,
+      "click": 0
+    },
+    {
+      "slide": 65,
+      "click": 0
+    },
+    {
+      "slide": 66,
+      "click": 0
+    },
+    {
+      "slide": 67,
+      "click": 0
+    },
+    {
+      "slide": 68,
+      "click": 0
+    },
+    {
+      "slide": 69,
+      "click": 0
+    },
+    {
+      "slide": 70,
+      "click": 0
+    },
+    {
+      "slide": 71,
+      "click": 0
+    },
+    {
+      "slide": 72,
+      "click": 0
+    },
+    {
+      "slide": 73,
+      "click": 0
+    }
+  ],
+  "issues": [],
+  "console_errors": [],
+  "failed_responses": [],
+  "answers": [
+    {
+      "slide": 37,
+      "destination": "/forge-workshop-kit/airline_monitoring/69",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 42,
+      "destination": "/forge-workshop-kit/airline_monitoring/70",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 45,
+      "destination": "/forge-workshop-kit/airline_monitoring/71",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 51,
+      "destination": "/forge-workshop-kit/airline_monitoring/72",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 54,
+      "destination": "/forge-workshop-kit/airline_monitoring/68",
+      "keyboardReturn": true
+    }
+  ],
+  "routes_checked": 295,
+  "presenter_notes": true
+}

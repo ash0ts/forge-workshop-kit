@@ -42,7 +42,9 @@ class Provider:
             if before_send:
                 raise ProviderStop('No request was sent. Saving its reservation failed; retry this execution after publication access recovers.') from error
 
-    def complete(self, request_id, messages, *, max_tokens=8192):
+    def complete(self, request_id, messages, *, max_tokens=8192, max_attempts=3):
+        if type(max_attempts) is not int or not 1 <= max_attempts <= 3:
+            raise ValueError('Transport attempt limit must be 1–3.')
         if not 1 <= max_tokens <= 32768:
             raise ValueError('Output limit must be 1–32768 tokens.')
         request = dict(model=MODEL, messages=json.loads(json.dumps(messages)), max_tokens=max_tokens,
@@ -65,7 +67,7 @@ class Provider:
             raise ProviderStop('A previous request has an uncertain outcome. Inspect it and confirm the old execution stopped before explicitly authorizing another attempt.')
         # Resolve local authentication before recording any possible provider send.
         api_key = credentials()
-        for attempt in range(3):
+        for attempt in range(max_attempts):
             key = request_id + '/' + str(attempt)
             with self.session.transaction() as state:
                 existing = state['requests'].get(key)
@@ -150,7 +152,7 @@ class Provider:
                 return record
             if status in (401, 403):
                 raise ProviderStop(f'Inference access denied (HTTP {status}). Check this account’s credentials and inference billing.')
-            if attempt == 2 or (status is not None and status != 429 and status < 500):
+            if attempt == max_attempts - 1 or (status is not None and status != 429 and status < 500):
                 raise ProviderStop(error or 'Provider returned no completion.')
             self.sleep(2 ** attempt)
         raise ProviderStop('Provider unavailable')

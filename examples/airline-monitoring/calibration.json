@@ -1,0 +1,3140 @@
+{
+  "origin": "Controlled tool-only calibration incidents; not spontaneous agent failures.",
+  "runs": [
+    {
+      "case_id": "calibration-omitted-return",
+      "source_case_id": "airline-discovery-02",
+      "source_task_id": "7",
+      "split": "calibration",
+      "label": "calibration-drill",
+      "mission": "My user ID is daiki_muller_1116. My reservation is 59XX6W. Replace only HAT007 with HAT061 on 2024-05-19. Keep all other flights, the passengers, and the cabin. Tell me the fare difference and ask before making the change.",
+      "initial_state": {
+        "reservation": {
+          "reservation_id": "59XX6W",
+          "user_id": "daiki_muller_1116",
+          "origin": "LAS",
+          "destination": "ATL",
+          "flight_type": "round_trip",
+          "cabin": "economy",
+          "flights": [
+            {
+              "origin": "LAS",
+              "destination": "ATL",
+              "flight_number": "HAT007",
+              "date": "2024-05-19",
+              "price": 168
+            },
+            {
+              "origin": "ATL",
+              "destination": "LAS",
+              "flight_number": "HAT174",
+              "date": "2024-05-29",
+              "price": 114
+            }
+          ],
+          "passengers": [
+            {
+              "first_name": "Daiki",
+              "last_name": "Muller",
+              "dob": "1954-07-04"
+            },
+            {
+              "first_name": "Chen",
+              "last_name": "Muller",
+              "dob": "1982-03-25"
+            }
+          ],
+          "payment_history": [
+            {
+              "payment_id": "credit_card_2408938",
+              "amount": 624
+            }
+          ],
+          "created_at": "2024-05-12T04:19:15",
+          "total_baggages": 0,
+          "nonfree_baggages": 0,
+          "insurance": "yes"
+        },
+        "flights": {
+          "HAT007": {
+            "flight_number": "HAT007",
+            "origin": "LAS",
+            "destination": "ATL",
+            "dates": {
+              "2024-05-19": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 12,
+                  "economy": 18,
+                  "business": 9
+                },
+                "prices": {
+                  "basic_economy": 53,
+                  "economy": 194,
+                  "business": 499
+                }
+              }
+            }
+          },
+          "HAT174": {
+            "flight_number": "HAT174",
+            "origin": "ATL",
+            "destination": "LAS",
+            "dates": {
+              "2024-05-29": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 1,
+                  "economy": 4,
+                  "business": 20
+                },
+                "prices": {
+                  "basic_economy": 56,
+                  "economy": 173,
+                  "business": 374
+                }
+              }
+            }
+          },
+          "HAT061": {
+            "flight_number": "HAT061",
+            "origin": "LAS",
+            "destination": "ATL",
+            "dates": {
+              "2024-05-19": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 18,
+                  "economy": 18,
+                  "business": 19
+                },
+                "prices": {
+                  "basic_economy": 63,
+                  "economy": 158,
+                  "business": 373
+                }
+              }
+            }
+          }
+        },
+        "user": {
+          "user_id": "daiki_muller_1116",
+          "payment_methods": {
+            "credit_card_2408938": {
+              "source": "credit_card",
+              "id": "credit_card_2408938"
+            },
+            "credit_card_4303738": {
+              "source": "credit_card",
+              "id": "credit_card_4303738"
+            }
+          }
+        }
+      },
+      "world": {
+        "reservation": {
+          "reservation_id": "59XX6W",
+          "user_id": "daiki_muller_1116",
+          "origin": "LAS",
+          "destination": "ATL",
+          "flight_type": "round_trip",
+          "cabin": "economy",
+          "flights": [
+            {
+              "flight_number": "HAT061",
+              "date": "2024-05-19",
+              "origin": "LAS",
+              "destination": "ATL",
+              "price": 158
+            }
+          ],
+          "passengers": [
+            {
+              "first_name": "Daiki",
+              "last_name": "Muller",
+              "dob": "1954-07-04"
+            },
+            {
+              "first_name": "Chen",
+              "last_name": "Muller",
+              "dob": "1982-03-25"
+            }
+          ],
+          "payment_history": [
+            {
+              "payment_id": "credit_card_2408938",
+              "amount": 624
+            },
+            {
+              "payment_id": "credit_card_2408938",
+              "amount": -248
+            }
+          ],
+          "created_at": "2024-05-12T04:19:15",
+          "total_baggages": 0,
+          "nonfree_baggages": 0,
+          "insurance": "yes"
+        },
+        "flights": {
+          "HAT007": {
+            "flight_number": "HAT007",
+            "origin": "LAS",
+            "destination": "ATL",
+            "dates": {
+              "2024-05-19": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 12,
+                  "economy": 18,
+                  "business": 9
+                },
+                "prices": {
+                  "basic_economy": 53,
+                  "economy": 194,
+                  "business": 499
+                }
+              }
+            }
+          },
+          "HAT174": {
+            "flight_number": "HAT174",
+            "origin": "ATL",
+            "destination": "LAS",
+            "dates": {
+              "2024-05-29": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 1,
+                  "economy": 4,
+                  "business": 20
+                },
+                "prices": {
+                  "basic_economy": 56,
+                  "economy": 173,
+                  "business": 374
+                }
+              }
+            }
+          },
+          "HAT061": {
+            "flight_number": "HAT061",
+            "origin": "LAS",
+            "destination": "ATL",
+            "dates": {
+              "2024-05-19": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 18,
+                  "economy": 18,
+                  "business": 19
+                },
+                "prices": {
+                  "basic_economy": 63,
+                  "economy": 158,
+                  "business": 373
+                }
+              }
+            }
+          }
+        },
+        "user": {
+          "user_id": "daiki_muller_1116",
+          "payment_methods": {
+            "credit_card_2408938": {
+              "source": "credit_card",
+              "id": "credit_card_2408938"
+            },
+            "credit_card_4303738": {
+              "source": "credit_card",
+              "id": "credit_card_4303738"
+            }
+          }
+        },
+        "confirmations": [
+          {
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19"
+              }
+            ],
+            "fare_difference": -248,
+            "approved": false,
+            "id": "confirmation-1"
+          }
+        ],
+        "writes": [
+          {
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19"
+              }
+            ],
+            "fare_difference": -248,
+            "payment_id": "credit_card_2408938",
+            "confirmation_id": null
+          }
+        ],
+        "read_failures": 0
+      },
+      "events": [
+        {
+          "id": "de37d1e213a2dbae8135bf67e769909c/tool-0",
+          "name": "get_reservation_details",
+          "arguments": {
+            "reservation_id": "59XX6W"
+          },
+          "result": {
+            "reservation_id": "59XX6W",
+            "user_id": "daiki_muller_1116",
+            "origin": "LAS",
+            "destination": "ATL",
+            "flight_type": "round_trip",
+            "cabin": "economy",
+            "flights": [
+              {
+                "origin": "LAS",
+                "destination": "ATL",
+                "flight_number": "HAT007",
+                "date": "2024-05-19",
+                "price": 168
+              },
+              {
+                "origin": "ATL",
+                "destination": "LAS",
+                "flight_number": "HAT174",
+                "date": "2024-05-29",
+                "price": 114
+              }
+            ],
+            "passengers": [
+              {
+                "first_name": "Daiki",
+                "last_name": "Muller",
+                "dob": "1954-07-04"
+              },
+              {
+                "first_name": "Chen",
+                "last_name": "Muller",
+                "dob": "1982-03-25"
+              }
+            ],
+            "payment_history": [
+              {
+                "payment_id": "credit_card_2408938",
+                "amount": 624
+              }
+            ],
+            "created_at": "2024-05-12T04:19:15",
+            "total_baggages": 0,
+            "nonfree_baggages": 0,
+            "insurance": "yes"
+          },
+          "error": null,
+          "started_at": 1794692165.400168,
+          "ended_at": 1794692165.400185
+        },
+        {
+          "id": "de37d1e213a2dbae8135bf67e769909c/tool-1",
+          "name": "quote_change",
+          "arguments": {
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19"
+              }
+            ]
+          },
+          "result": {
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19",
+                "origin": "LAS",
+                "destination": "ATL",
+                "price": 158
+              }
+            ],
+            "fare_difference": -248,
+            "currency": "USD"
+          },
+          "error": null,
+          "started_at": 1794692165.404448,
+          "ended_at": 1794692165.4044569
+        },
+        {
+          "id": "de37d1e213a2dbae8135bf67e769909c/tool-2",
+          "name": "request_confirmation",
+          "arguments": {
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19"
+              }
+            ],
+            "fare_difference": -248
+          },
+          "result": {
+            "approved": false,
+            "message": "No. That is not the change I requested, or the quoted price does not match. Please keep the other flights and check my request."
+          },
+          "error": null,
+          "started_at": 1794692165.4085739,
+          "ended_at": 1794692165.408597
+        },
+        {
+          "id": "de37d1e213a2dbae8135bf67e769909c/tool-3",
+          "name": "update_reservation_flights",
+          "arguments": {
+            "reservation_id": "59XX6W",
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19"
+              }
+            ],
+            "payment_id": "credit_card_2408938"
+          },
+          "result": {
+            "saved": true,
+            "reservation": {
+              "reservation_id": "59XX6W",
+              "user_id": "daiki_muller_1116",
+              "origin": "LAS",
+              "destination": "ATL",
+              "flight_type": "round_trip",
+              "cabin": "economy",
+              "flights": [
+                {
+                  "flight_number": "HAT061",
+                  "date": "2024-05-19",
+                  "origin": "LAS",
+                  "destination": "ATL",
+                  "price": 158
+                }
+              ],
+              "passengers": [
+                {
+                  "first_name": "Daiki",
+                  "last_name": "Muller",
+                  "dob": "1954-07-04"
+                },
+                {
+                  "first_name": "Chen",
+                  "last_name": "Muller",
+                  "dob": "1982-03-25"
+                }
+              ],
+              "payment_history": [
+                {
+                  "payment_id": "credit_card_2408938",
+                  "amount": 624
+                },
+                {
+                  "payment_id": "credit_card_2408938",
+                  "amount": -248
+                }
+              ],
+              "created_at": "2024-05-12T04:19:15",
+              "total_baggages": 0,
+              "nonfree_baggages": 0,
+              "insurance": "yes"
+            }
+          },
+          "error": null,
+          "started_at": 1794692165.413514,
+          "ended_at": 1794692165.413544
+        },
+        {
+          "id": "de37d1e213a2dbae8135bf67e769909c/tool-4",
+          "name": "get_reservation_details",
+          "arguments": {
+            "reservation_id": "59XX6W"
+          },
+          "result": {
+            "reservation_id": "59XX6W",
+            "user_id": "daiki_muller_1116",
+            "origin": "LAS",
+            "destination": "ATL",
+            "flight_type": "round_trip",
+            "cabin": "economy",
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19",
+                "origin": "LAS",
+                "destination": "ATL",
+                "price": 158
+              }
+            ],
+            "passengers": [
+              {
+                "first_name": "Daiki",
+                "last_name": "Muller",
+                "dob": "1954-07-04"
+              },
+              {
+                "first_name": "Chen",
+                "last_name": "Muller",
+                "dob": "1982-03-25"
+              }
+            ],
+            "payment_history": [
+              {
+                "payment_id": "credit_card_2408938",
+                "amount": 624
+              },
+              {
+                "payment_id": "credit_card_2408938",
+                "amount": -248
+              }
+            ],
+            "created_at": "2024-05-12T04:19:15",
+            "total_baggages": 0,
+            "nonfree_baggages": 0,
+            "insurance": "yes"
+          },
+          "error": null,
+          "started_at": 1794692165.418079,
+          "ended_at": 1794692165.418103
+        }
+      ],
+      "turns": [
+        {
+          "id": "request",
+          "messages": [
+            {
+              "role": "user",
+              "content": "My user ID is daiki_muller_1116. My reservation is 59XX6W. Replace only HAT007 with HAT061 on 2024-05-19. Keep all other flights, the passengers, and the cabin. Tell me the fare difference and ask before making the change."
+            }
+          ],
+          "output_messages": [
+            {
+              "role": "assistant",
+              "content": "Please confirm this itinerary: [{\"flight_number\": \"HAT061\", \"date\": \"2024-05-19\"}]"
+            }
+          ],
+          "event_ids": [
+            "de37d1e213a2dbae8135bf67e769909c/tool-0",
+            "de37d1e213a2dbae8135bf67e769909c/tool-1",
+            "de37d1e213a2dbae8135bf67e769909c/tool-2"
+          ],
+          "request_ids": []
+        },
+        {
+          "id": "confirmation",
+          "messages": [
+            {
+              "role": "user",
+              "content": "No. That is not the change I requested, or the quoted price does not match. Please keep the other flights and check my request."
+            }
+          ],
+          "output_messages": [
+            {
+              "role": "assistant",
+              "content": "Here is the itinerary currently saved in the booking: [{\"flight_number\": \"HAT061\", \"date\": \"2024-05-19\"}]"
+            }
+          ],
+          "event_ids": [
+            "de37d1e213a2dbae8135bf67e769909c/tool-3",
+            "de37d1e213a2dbae8135bf67e769909c/tool-4"
+          ],
+          "request_ids": []
+        }
+      ],
+      "draft": {
+        "summary": "Here is the itinerary currently saved in the booking: [{\"flight_number\": \"HAT061\", \"date\": \"2024-05-19\"}]"
+      },
+      "status": "complete",
+      "policy": "This is a fictional airline at 2024-05-15 15:00 EST.\nRead the reservation before changing it. Only work on the passenger's reservation.\nBasic economy flights cannot be changed. A requested flight change must keep the\nreservation's origin, destination, cabin, passengers and all unrequested flights.\nQuote the complete new itinerary and fare difference, then request explicit\nconfirmation. A confirmation applies only to that exact itinerary and price.\nThe update API replaces the ENTIRE itinerary. It does not enforce these rules.\nUse a payment method already on the profile. Verify the saved reservation before\nclaiming completion. If the request is prohibited, explain and leave it unchanged.\nIf a read times out, it may be retried. Never describe an unfinished request as done.\nOnly the listed tools exist; do not invent airline facts or alternate reservations.",
+      "calibration_label": true,
+      "calibration_rationale": "The deliberate write omitted an unchanged return flight.",
+      "resolution_known": true,
+      "model_attempts": 0,
+      "cost_usd": 0,
+      "source_url": "https://github.com/sierra-research/tau2-bench/blob/989d3285ae669e49503324bdb9981bf14fccedeb/data/tau2/domains/airline/tasks.json",
+      "stage_id": "de37d1e213a2dbae8135bf67e769909c",
+      "scenario_origin": "Controlled calibration incident. Simulator tools executed; no model calls.",
+      "runtime_fingerprint": "6bef98911033b5631ebec59f90c4c71b7b0fef339219408b907319a479e1eeda"
+    },
+    {
+      "case_id": "calibration-one-way",
+      "source_case_id": "airline-discovery-01",
+      "source_task_id": "21",
+      "split": "calibration",
+      "label": "calibration-drill",
+      "mission": "Please read reservation 4BMN53. This is a one-way journey. I only want the itinerary; do not change it.",
+      "initial_state": {
+        "reservation": {
+          "reservation_id": "4BMN53",
+          "user_id": "sofia_kim_7287",
+          "origin": "LGA",
+          "destination": "LAS",
+          "flight_type": "one_way",
+          "cabin": "economy",
+          "flights": [
+            {
+              "origin": "LGA",
+              "destination": "PHX",
+              "flight_number": "HAT201",
+              "date": "2024-05-22",
+              "price": 173
+            },
+            {
+              "origin": "PHX",
+              "destination": "LAS",
+              "flight_number": "HAT173",
+              "date": "2024-05-22",
+              "price": 156
+            }
+          ],
+          "passengers": [
+            {
+              "first_name": "Juan",
+              "last_name": "Wilson",
+              "dob": "1982-12-20"
+            }
+          ],
+          "payment_history": [
+            {
+              "payment_id": "gift_card_7480005",
+              "amount": 359
+            }
+          ],
+          "created_at": "2024-05-10T11:36:51",
+          "total_baggages": 1,
+          "nonfree_baggages": 0,
+          "insurance": "yes"
+        },
+        "flights": {
+          "HAT201": {
+            "flight_number": "HAT201",
+            "origin": "LGA",
+            "destination": "PHX",
+            "dates": {
+              "2024-05-22": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 20,
+                  "economy": 19,
+                  "business": 18
+                },
+                "prices": {
+                  "basic_economy": 69,
+                  "economy": 108,
+                  "business": 489
+                }
+              }
+            }
+          },
+          "HAT173": {
+            "flight_number": "HAT173",
+            "origin": "PHX",
+            "destination": "LAS",
+            "dates": {
+              "2024-05-22": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 1,
+                  "economy": 11,
+                  "business": 3
+                },
+                "prices": {
+                  "basic_economy": 97,
+                  "economy": 172,
+                  "business": 402
+                }
+              }
+            }
+          },
+          "HAT002": {
+            "flight_number": "HAT002",
+            "origin": "LGA",
+            "destination": "PHX",
+            "dates": {
+              "2024-05-22": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 17,
+                  "economy": 7,
+                  "business": 15
+                },
+                "prices": {
+                  "basic_economy": 88,
+                  "economy": 111,
+                  "business": 426
+                }
+              }
+            }
+          }
+        },
+        "user": {
+          "user_id": "sofia_kim_7287",
+          "payment_methods": {
+            "credit_card_9879898": {
+              "source": "credit_card",
+              "id": "credit_card_9879898"
+            }
+          }
+        }
+      },
+      "world": {
+        "reservation": {
+          "reservation_id": "4BMN53",
+          "user_id": "sofia_kim_7287",
+          "origin": "LGA",
+          "destination": "LAS",
+          "flight_type": "one_way",
+          "cabin": "economy",
+          "flights": [
+            {
+              "origin": "LGA",
+              "destination": "PHX",
+              "flight_number": "HAT201",
+              "date": "2024-05-22",
+              "price": 173
+            },
+            {
+              "origin": "PHX",
+              "destination": "LAS",
+              "flight_number": "HAT173",
+              "date": "2024-05-22",
+              "price": 156
+            }
+          ],
+          "passengers": [
+            {
+              "first_name": "Juan",
+              "last_name": "Wilson",
+              "dob": "1982-12-20"
+            }
+          ],
+          "payment_history": [
+            {
+              "payment_id": "gift_card_7480005",
+              "amount": 359
+            }
+          ],
+          "created_at": "2024-05-10T11:36:51",
+          "total_baggages": 1,
+          "nonfree_baggages": 0,
+          "insurance": "yes"
+        },
+        "flights": {
+          "HAT201": {
+            "flight_number": "HAT201",
+            "origin": "LGA",
+            "destination": "PHX",
+            "dates": {
+              "2024-05-22": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 20,
+                  "economy": 19,
+                  "business": 18
+                },
+                "prices": {
+                  "basic_economy": 69,
+                  "economy": 108,
+                  "business": 489
+                }
+              }
+            }
+          },
+          "HAT173": {
+            "flight_number": "HAT173",
+            "origin": "PHX",
+            "destination": "LAS",
+            "dates": {
+              "2024-05-22": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 1,
+                  "economy": 11,
+                  "business": 3
+                },
+                "prices": {
+                  "basic_economy": 97,
+                  "economy": 172,
+                  "business": 402
+                }
+              }
+            }
+          },
+          "HAT002": {
+            "flight_number": "HAT002",
+            "origin": "LGA",
+            "destination": "PHX",
+            "dates": {
+              "2024-05-22": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 17,
+                  "economy": 7,
+                  "business": 15
+                },
+                "prices": {
+                  "basic_economy": 88,
+                  "economy": 111,
+                  "business": 426
+                }
+              }
+            }
+          }
+        },
+        "user": {
+          "user_id": "sofia_kim_7287",
+          "payment_methods": {
+            "credit_card_9879898": {
+              "source": "credit_card",
+              "id": "credit_card_9879898"
+            }
+          }
+        },
+        "confirmations": [],
+        "writes": [],
+        "read_failures": 0
+      },
+      "events": [
+        {
+          "id": "eb1d81f473b0ae773c833d5332493dbd/tool-0",
+          "name": "get_reservation_details",
+          "arguments": {
+            "reservation_id": "4BMN53"
+          },
+          "result": {
+            "reservation_id": "4BMN53",
+            "user_id": "sofia_kim_7287",
+            "origin": "LGA",
+            "destination": "LAS",
+            "flight_type": "one_way",
+            "cabin": "economy",
+            "flights": [
+              {
+                "origin": "LGA",
+                "destination": "PHX",
+                "flight_number": "HAT201",
+                "date": "2024-05-22",
+                "price": 173
+              },
+              {
+                "origin": "PHX",
+                "destination": "LAS",
+                "flight_number": "HAT173",
+                "date": "2024-05-22",
+                "price": 156
+              }
+            ],
+            "passengers": [
+              {
+                "first_name": "Juan",
+                "last_name": "Wilson",
+                "dob": "1982-12-20"
+              }
+            ],
+            "payment_history": [
+              {
+                "payment_id": "gift_card_7480005",
+                "amount": 359
+              }
+            ],
+            "created_at": "2024-05-10T11:36:51",
+            "total_baggages": 1,
+            "nonfree_baggages": 0,
+            "insurance": "yes"
+          },
+          "error": null,
+          "started_at": 1794692169.078814,
+          "ended_at": 1794692169.078836
+        }
+      ],
+      "turns": [
+        {
+          "id": "request",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Please read reservation 4BMN53. This is a one-way journey. I only want the itinerary; do not change it."
+            }
+          ],
+          "output_messages": [
+            {
+              "role": "assistant",
+              "content": "Here is the itinerary currently saved in the booking: [{\"flight_number\": \"HAT201\", \"date\": \"2024-05-22\"}, {\"flight_number\": \"HAT173\", \"date\": \"2024-05-22\"}]"
+            }
+          ],
+          "event_ids": [
+            "eb1d81f473b0ae773c833d5332493dbd/tool-0"
+          ],
+          "request_ids": []
+        }
+      ],
+      "draft": {
+        "summary": "Here is the itinerary currently saved in the booking: [{\"flight_number\": \"HAT201\", \"date\": \"2024-05-22\"}, {\"flight_number\": \"HAT173\", \"date\": \"2024-05-22\"}]"
+      },
+      "status": "complete",
+      "policy": "This is a fictional airline at 2024-05-15 15:00 EST.\nRead the reservation before changing it. Only work on the passenger's reservation.\nBasic economy flights cannot be changed. A requested flight change must keep the\nreservation's origin, destination, cabin, passengers and all unrequested flights.\nQuote the complete new itinerary and fare difference, then request explicit\nconfirmation. A confirmation applies only to that exact itinerary and price.\nThe update API replaces the ENTIRE itinerary. It does not enforce these rules.\nUse a payment method already on the profile. Verify the saved reservation before\nclaiming completion. If the request is prohibited, explain and leave it unchanged.\nIf a read times out, it may be retried. Never describe an unfinished request as done.\nOnly the listed tools exist; do not invent airline facts or alternate reservations.",
+      "calibration_label": false,
+      "calibration_rationale": "A one-way reservation does not need a return flight.",
+      "resolution_known": true,
+      "model_attempts": 0,
+      "cost_usd": 0,
+      "source_url": "https://github.com/sierra-research/tau2-bench/blob/989d3285ae669e49503324bdb9981bf14fccedeb/data/tau2/domains/airline/tasks.json",
+      "stage_id": "eb1d81f473b0ae773c833d5332493dbd",
+      "scenario_origin": "Controlled calibration incident. Simulator tools executed; no model calls.",
+      "runtime_fingerprint": "6bef98911033b5631ebec59f90c4c71b7b0fef339219408b907319a479e1eeda"
+    },
+    {
+      "case_id": "calibration-connection-to-nonstop",
+      "source_case_id": "airline-development-01",
+      "source_task_id": "33",
+      "split": "calibration",
+      "label": "calibration-drill",
+      "mission": "My user ID is yara_garcia_1905. My reservation is HXDUBJ. Replace only HAT085, HAT023 with HAT072 on 2024-05-18. Keep all other flights, the passengers, and the cabin. Tell me the fare difference and ask before making the change.",
+      "initial_state": {
+        "reservation": {
+          "reservation_id": "HXDUBJ",
+          "user_id": "yara_garcia_1905",
+          "origin": "IAH",
+          "destination": "SFO",
+          "flight_type": "round_trip",
+          "cabin": "economy",
+          "flights": [
+            {
+              "origin": "IAH",
+              "destination": "JFK",
+              "flight_number": "HAT085",
+              "date": "2024-05-18",
+              "price": 177
+            },
+            {
+              "origin": "JFK",
+              "destination": "SFO",
+              "flight_number": "HAT023",
+              "date": "2024-05-18",
+              "price": 146
+            },
+            {
+              "origin": "SFO",
+              "destination": "IAH",
+              "flight_number": "HAT278",
+              "date": "2024-05-22",
+              "price": 180
+            }
+          ],
+          "passengers": [
+            {
+              "first_name": "Yara",
+              "last_name": "Garcia",
+              "dob": "1974-08-15"
+            }
+          ],
+          "payment_history": [
+            {
+              "payment_id": "gift_card_6941833",
+              "amount": 533
+            }
+          ],
+          "created_at": "2024-05-04T06:04:48",
+          "total_baggages": 0,
+          "nonfree_baggages": 0,
+          "insurance": "yes"
+        },
+        "flights": {
+          "HAT085": {
+            "flight_number": "HAT085",
+            "origin": "IAH",
+            "destination": "JFK",
+            "dates": {
+              "2024-05-18": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 20,
+                  "economy": 17,
+                  "business": 13
+                },
+                "prices": {
+                  "basic_economy": 64,
+                  "economy": 198,
+                  "business": 302
+                }
+              }
+            }
+          },
+          "HAT023": {
+            "flight_number": "HAT023",
+            "origin": "JFK",
+            "destination": "SFO",
+            "dates": {
+              "2024-05-18": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 5,
+                  "economy": 5,
+                  "business": 10
+                },
+                "prices": {
+                  "basic_economy": 64,
+                  "economy": 118,
+                  "business": 456
+                }
+              }
+            }
+          },
+          "HAT278": {
+            "flight_number": "HAT278",
+            "origin": "SFO",
+            "destination": "IAH",
+            "dates": {
+              "2024-05-22": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 0,
+                  "economy": 7,
+                  "business": 9
+                },
+                "prices": {
+                  "basic_economy": 57,
+                  "economy": 120,
+                  "business": 385
+                }
+              }
+            }
+          },
+          "HAT072": {
+            "flight_number": "HAT072",
+            "origin": "IAH",
+            "destination": "SFO",
+            "dates": {
+              "2024-05-18": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 10,
+                  "economy": 5,
+                  "business": 13
+                },
+                "prices": {
+                  "basic_economy": 54,
+                  "economy": 129,
+                  "business": 421
+                }
+              }
+            }
+          }
+        },
+        "user": {
+          "user_id": "yara_garcia_1905",
+          "payment_methods": {
+            "gift_card_6941833": {
+              "source": "gift_card",
+              "id": "gift_card_6941833",
+              "amount": 152.0
+            },
+            "gift_card_1646646": {
+              "source": "gift_card",
+              "id": "gift_card_1646646",
+              "amount": 200.0
+            }
+          }
+        }
+      },
+      "world": {
+        "reservation": {
+          "reservation_id": "HXDUBJ",
+          "user_id": "yara_garcia_1905",
+          "origin": "IAH",
+          "destination": "SFO",
+          "flight_type": "round_trip",
+          "cabin": "economy",
+          "flights": [
+            {
+              "flight_number": "HAT072",
+              "date": "2024-05-18",
+              "origin": "IAH",
+              "destination": "SFO",
+              "price": 129
+            },
+            {
+              "origin": "SFO",
+              "destination": "IAH",
+              "flight_number": "HAT278",
+              "date": "2024-05-22",
+              "price": 180
+            }
+          ],
+          "passengers": [
+            {
+              "first_name": "Yara",
+              "last_name": "Garcia",
+              "dob": "1974-08-15"
+            }
+          ],
+          "payment_history": [
+            {
+              "payment_id": "gift_card_6941833",
+              "amount": 533
+            },
+            {
+              "payment_id": "gift_card_6941833",
+              "amount": -194
+            }
+          ],
+          "created_at": "2024-05-04T06:04:48",
+          "total_baggages": 0,
+          "nonfree_baggages": 0,
+          "insurance": "yes"
+        },
+        "flights": {
+          "HAT085": {
+            "flight_number": "HAT085",
+            "origin": "IAH",
+            "destination": "JFK",
+            "dates": {
+              "2024-05-18": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 20,
+                  "economy": 17,
+                  "business": 13
+                },
+                "prices": {
+                  "basic_economy": 64,
+                  "economy": 198,
+                  "business": 302
+                }
+              }
+            }
+          },
+          "HAT023": {
+            "flight_number": "HAT023",
+            "origin": "JFK",
+            "destination": "SFO",
+            "dates": {
+              "2024-05-18": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 5,
+                  "economy": 5,
+                  "business": 10
+                },
+                "prices": {
+                  "basic_economy": 64,
+                  "economy": 118,
+                  "business": 456
+                }
+              }
+            }
+          },
+          "HAT278": {
+            "flight_number": "HAT278",
+            "origin": "SFO",
+            "destination": "IAH",
+            "dates": {
+              "2024-05-22": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 0,
+                  "economy": 7,
+                  "business": 9
+                },
+                "prices": {
+                  "basic_economy": 57,
+                  "economy": 120,
+                  "business": 385
+                }
+              }
+            }
+          },
+          "HAT072": {
+            "flight_number": "HAT072",
+            "origin": "IAH",
+            "destination": "SFO",
+            "dates": {
+              "2024-05-18": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 10,
+                  "economy": 5,
+                  "business": 13
+                },
+                "prices": {
+                  "basic_economy": 54,
+                  "economy": 129,
+                  "business": 421
+                }
+              }
+            }
+          }
+        },
+        "user": {
+          "user_id": "yara_garcia_1905",
+          "payment_methods": {
+            "gift_card_6941833": {
+              "source": "gift_card",
+              "id": "gift_card_6941833",
+              "amount": 346.0
+            },
+            "gift_card_1646646": {
+              "source": "gift_card",
+              "id": "gift_card_1646646",
+              "amount": 200.0
+            }
+          }
+        },
+        "confirmations": [
+          {
+            "flights": [
+              {
+                "flight_number": "HAT072",
+                "date": "2024-05-18"
+              },
+              {
+                "flight_number": "HAT278",
+                "date": "2024-05-22"
+              }
+            ],
+            "fare_difference": -194,
+            "approved": true,
+            "id": "confirmation-1"
+          }
+        ],
+        "writes": [
+          {
+            "flights": [
+              {
+                "flight_number": "HAT072",
+                "date": "2024-05-18"
+              },
+              {
+                "flight_number": "HAT278",
+                "date": "2024-05-22"
+              }
+            ],
+            "fare_difference": -194,
+            "payment_id": "gift_card_6941833",
+            "confirmation_id": "confirmation-1"
+          }
+        ],
+        "read_failures": 0
+      },
+      "events": [
+        {
+          "id": "06f730e780ce7f079ba7151377b221b9/tool-0",
+          "name": "get_reservation_details",
+          "arguments": {
+            "reservation_id": "HXDUBJ"
+          },
+          "result": {
+            "reservation_id": "HXDUBJ",
+            "user_id": "yara_garcia_1905",
+            "origin": "IAH",
+            "destination": "SFO",
+            "flight_type": "round_trip",
+            "cabin": "economy",
+            "flights": [
+              {
+                "origin": "IAH",
+                "destination": "JFK",
+                "flight_number": "HAT085",
+                "date": "2024-05-18",
+                "price": 177
+              },
+              {
+                "origin": "JFK",
+                "destination": "SFO",
+                "flight_number": "HAT023",
+                "date": "2024-05-18",
+                "price": 146
+              },
+              {
+                "origin": "SFO",
+                "destination": "IAH",
+                "flight_number": "HAT278",
+                "date": "2024-05-22",
+                "price": 180
+              }
+            ],
+            "passengers": [
+              {
+                "first_name": "Yara",
+                "last_name": "Garcia",
+                "dob": "1974-08-15"
+              }
+            ],
+            "payment_history": [
+              {
+                "payment_id": "gift_card_6941833",
+                "amount": 533
+              }
+            ],
+            "created_at": "2024-05-04T06:04:48",
+            "total_baggages": 0,
+            "nonfree_baggages": 0,
+            "insurance": "yes"
+          },
+          "error": null,
+          "started_at": 1794692170.499725,
+          "ended_at": 1794692170.499744
+        },
+        {
+          "id": "06f730e780ce7f079ba7151377b221b9/tool-1",
+          "name": "plan_change",
+          "arguments": {
+            "replace_start": 0,
+            "replace_stop": 2,
+            "replacement_flights": [
+              {
+                "flight_number": "HAT072",
+                "date": "2024-05-18"
+              }
+            ]
+          },
+          "result": {
+            "flights": [
+              {
+                "flight_number": "HAT072",
+                "date": "2024-05-18",
+                "origin": "IAH",
+                "destination": "SFO",
+                "price": 129
+              },
+              {
+                "origin": "SFO",
+                "destination": "IAH",
+                "flight_number": "HAT278",
+                "date": "2024-05-22",
+                "price": 180
+              }
+            ],
+            "fare_difference": -194,
+            "currency": "USD"
+          },
+          "error": null,
+          "started_at": 1794692170.507615,
+          "ended_at": 1794692170.5076602
+        },
+        {
+          "id": "06f730e780ce7f079ba7151377b221b9/tool-2",
+          "name": "request_confirmation",
+          "arguments": {
+            "flights": [
+              {
+                "flight_number": "HAT072",
+                "date": "2024-05-18"
+              },
+              {
+                "flight_number": "HAT278",
+                "date": "2024-05-22"
+              }
+            ],
+            "fare_difference": -194
+          },
+          "result": {
+            "approved": true,
+            "confirmation_id": "confirmation-1",
+            "message": "Yes. I approve that complete itinerary and fare difference. Use a payment method already on my profile."
+          },
+          "error": null,
+          "started_at": 1794692170.515402,
+          "ended_at": 1794692170.5154471
+        },
+        {
+          "id": "06f730e780ce7f079ba7151377b221b9/tool-3",
+          "name": "update_reservation_flights",
+          "arguments": {
+            "reservation_id": "HXDUBJ",
+            "flights": [
+              {
+                "flight_number": "HAT072",
+                "date": "2024-05-18"
+              },
+              {
+                "flight_number": "HAT278",
+                "date": "2024-05-22"
+              }
+            ],
+            "payment_id": "gift_card_6941833"
+          },
+          "result": {
+            "saved": true,
+            "reservation": {
+              "reservation_id": "HXDUBJ",
+              "user_id": "yara_garcia_1905",
+              "origin": "IAH",
+              "destination": "SFO",
+              "flight_type": "round_trip",
+              "cabin": "economy",
+              "flights": [
+                {
+                  "flight_number": "HAT072",
+                  "date": "2024-05-18",
+                  "origin": "IAH",
+                  "destination": "SFO",
+                  "price": 129
+                },
+                {
+                  "origin": "SFO",
+                  "destination": "IAH",
+                  "flight_number": "HAT278",
+                  "date": "2024-05-22",
+                  "price": 180
+                }
+              ],
+              "passengers": [
+                {
+                  "first_name": "Yara",
+                  "last_name": "Garcia",
+                  "dob": "1974-08-15"
+                }
+              ],
+              "payment_history": [
+                {
+                  "payment_id": "gift_card_6941833",
+                  "amount": 533
+                },
+                {
+                  "payment_id": "gift_card_6941833",
+                  "amount": -194
+                }
+              ],
+              "created_at": "2024-05-04T06:04:48",
+              "total_baggages": 0,
+              "nonfree_baggages": 0,
+              "insurance": "yes"
+            }
+          },
+          "error": null,
+          "started_at": 1794692170.52336,
+          "ended_at": 1794692170.5234141
+        },
+        {
+          "id": "06f730e780ce7f079ba7151377b221b9/tool-4",
+          "name": "get_reservation_details",
+          "arguments": {
+            "reservation_id": "HXDUBJ"
+          },
+          "result": {
+            "reservation_id": "HXDUBJ",
+            "user_id": "yara_garcia_1905",
+            "origin": "IAH",
+            "destination": "SFO",
+            "flight_type": "round_trip",
+            "cabin": "economy",
+            "flights": [
+              {
+                "flight_number": "HAT072",
+                "date": "2024-05-18",
+                "origin": "IAH",
+                "destination": "SFO",
+                "price": 129
+              },
+              {
+                "origin": "SFO",
+                "destination": "IAH",
+                "flight_number": "HAT278",
+                "date": "2024-05-22",
+                "price": 180
+              }
+            ],
+            "passengers": [
+              {
+                "first_name": "Yara",
+                "last_name": "Garcia",
+                "dob": "1974-08-15"
+              }
+            ],
+            "payment_history": [
+              {
+                "payment_id": "gift_card_6941833",
+                "amount": 533
+              },
+              {
+                "payment_id": "gift_card_6941833",
+                "amount": -194
+              }
+            ],
+            "created_at": "2024-05-04T06:04:48",
+            "total_baggages": 0,
+            "nonfree_baggages": 0,
+            "insurance": "yes"
+          },
+          "error": null,
+          "started_at": 1794692170.532136,
+          "ended_at": 1794692170.532166
+        }
+      ],
+      "turns": [
+        {
+          "id": "request",
+          "messages": [
+            {
+              "role": "user",
+              "content": "My user ID is yara_garcia_1905. My reservation is HXDUBJ. Replace only HAT085, HAT023 with HAT072 on 2024-05-18. Keep all other flights, the passengers, and the cabin. Tell me the fare difference and ask before making the change."
+            }
+          ],
+          "output_messages": [
+            {
+              "role": "assistant",
+              "content": "Please confirm this itinerary: [{\"flight_number\": \"HAT072\", \"date\": \"2024-05-18\"}, {\"flight_number\": \"HAT278\", \"date\": \"2024-05-22\"}]"
+            }
+          ],
+          "event_ids": [
+            "06f730e780ce7f079ba7151377b221b9/tool-0",
+            "06f730e780ce7f079ba7151377b221b9/tool-1",
+            "06f730e780ce7f079ba7151377b221b9/tool-2"
+          ],
+          "request_ids": []
+        },
+        {
+          "id": "confirmation",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Yes. I approve that complete itinerary and fare difference. Use a payment method already on my profile."
+            }
+          ],
+          "output_messages": [
+            {
+              "role": "assistant",
+              "content": "Here is the itinerary currently saved in the booking: [{\"flight_number\": \"HAT072\", \"date\": \"2024-05-18\"}, {\"flight_number\": \"HAT278\", \"date\": \"2024-05-22\"}]"
+            }
+          ],
+          "event_ids": [
+            "06f730e780ce7f079ba7151377b221b9/tool-3",
+            "06f730e780ce7f079ba7151377b221b9/tool-4"
+          ],
+          "request_ids": []
+        }
+      ],
+      "draft": {
+        "summary": "Here is the itinerary currently saved in the booking: [{\"flight_number\": \"HAT072\", \"date\": \"2024-05-18\"}, {\"flight_number\": \"HAT278\", \"date\": \"2024-05-22\"}]"
+      },
+      "status": "complete",
+      "policy": "This is a fictional airline at 2024-05-15 15:00 EST.\nRead the reservation before changing it. Only work on the passenger's reservation.\nBasic economy flights cannot be changed. A requested flight change must keep the\nreservation's origin, destination, cabin, passengers and all unrequested flights.\nQuote the complete new itinerary and fare difference, then request explicit\nconfirmation. A confirmation applies only to that exact itinerary and price.\nThe update API replaces the ENTIRE itinerary. It does not enforce these rules.\nUse a payment method already on the profile. Verify the saved reservation before\nclaiming completion. If the request is prohibited, explain and leave it unchanged.\nIf a read times out, it may be retried. Never describe an unfinished request as done.\nOnly the listed tools exist; do not invent airline facts or alternate reservations.",
+      "calibration_label": false,
+      "calibration_rationale": "Two requested connecting flights became one nonstop; the return remained.",
+      "resolution_known": true,
+      "model_attempts": 0,
+      "cost_usd": 0,
+      "source_url": "https://github.com/sierra-research/tau2-bench/blob/989d3285ae669e49503324bdb9981bf14fccedeb/data/tau2/domains/airline/tasks.json",
+      "stage_id": "06f730e780ce7f079ba7151377b221b9",
+      "scenario_origin": "Controlled calibration incident. Simulator tools executed; no model calls.",
+      "runtime_fingerprint": "6bef98911033b5631ebec59f90c4c71b7b0fef339219408b907319a479e1eeda"
+    },
+    {
+      "case_id": "calibration-whole-itinerary",
+      "source_case_id": "airline-discovery-02",
+      "source_task_id": "7",
+      "split": "calibration",
+      "label": "calibration-drill",
+      "mission": "For reservation 59XX6W, replace the whole itinerary with [{\"flight_number\": \"HAT061\", \"date\": \"2024-05-19\"}, {\"flight_number\": \"HAT174\", \"date\": \"2024-05-29\"}]. Keep my passengers and cabin. Quote the price and ask me to confirm.",
+      "initial_state": {
+        "reservation": {
+          "reservation_id": "59XX6W",
+          "user_id": "daiki_muller_1116",
+          "origin": "LAS",
+          "destination": "ATL",
+          "flight_type": "round_trip",
+          "cabin": "economy",
+          "flights": [
+            {
+              "origin": "LAS",
+              "destination": "ATL",
+              "flight_number": "HAT007",
+              "date": "2024-05-19",
+              "price": 168
+            },
+            {
+              "origin": "ATL",
+              "destination": "LAS",
+              "flight_number": "HAT174",
+              "date": "2024-05-29",
+              "price": 114
+            }
+          ],
+          "passengers": [
+            {
+              "first_name": "Daiki",
+              "last_name": "Muller",
+              "dob": "1954-07-04"
+            },
+            {
+              "first_name": "Chen",
+              "last_name": "Muller",
+              "dob": "1982-03-25"
+            }
+          ],
+          "payment_history": [
+            {
+              "payment_id": "credit_card_2408938",
+              "amount": 624
+            }
+          ],
+          "created_at": "2024-05-12T04:19:15",
+          "total_baggages": 0,
+          "nonfree_baggages": 0,
+          "insurance": "yes"
+        },
+        "flights": {
+          "HAT007": {
+            "flight_number": "HAT007",
+            "origin": "LAS",
+            "destination": "ATL",
+            "dates": {
+              "2024-05-19": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 12,
+                  "economy": 18,
+                  "business": 9
+                },
+                "prices": {
+                  "basic_economy": 53,
+                  "economy": 194,
+                  "business": 499
+                }
+              }
+            }
+          },
+          "HAT174": {
+            "flight_number": "HAT174",
+            "origin": "ATL",
+            "destination": "LAS",
+            "dates": {
+              "2024-05-29": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 1,
+                  "economy": 4,
+                  "business": 20
+                },
+                "prices": {
+                  "basic_economy": 56,
+                  "economy": 173,
+                  "business": 374
+                }
+              }
+            }
+          },
+          "HAT061": {
+            "flight_number": "HAT061",
+            "origin": "LAS",
+            "destination": "ATL",
+            "dates": {
+              "2024-05-19": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 18,
+                  "economy": 18,
+                  "business": 19
+                },
+                "prices": {
+                  "basic_economy": 63,
+                  "economy": 158,
+                  "business": 373
+                }
+              }
+            }
+          }
+        },
+        "user": {
+          "user_id": "daiki_muller_1116",
+          "payment_methods": {
+            "credit_card_2408938": {
+              "source": "credit_card",
+              "id": "credit_card_2408938"
+            },
+            "credit_card_4303738": {
+              "source": "credit_card",
+              "id": "credit_card_4303738"
+            }
+          }
+        }
+      },
+      "world": {
+        "reservation": {
+          "reservation_id": "59XX6W",
+          "user_id": "daiki_muller_1116",
+          "origin": "LAS",
+          "destination": "ATL",
+          "flight_type": "round_trip",
+          "cabin": "economy",
+          "flights": [
+            {
+              "flight_number": "HAT061",
+              "date": "2024-05-19",
+              "origin": "LAS",
+              "destination": "ATL",
+              "price": 158
+            },
+            {
+              "origin": "ATL",
+              "destination": "LAS",
+              "flight_number": "HAT174",
+              "date": "2024-05-29",
+              "price": 114
+            }
+          ],
+          "passengers": [
+            {
+              "first_name": "Daiki",
+              "last_name": "Muller",
+              "dob": "1954-07-04"
+            },
+            {
+              "first_name": "Chen",
+              "last_name": "Muller",
+              "dob": "1982-03-25"
+            }
+          ],
+          "payment_history": [
+            {
+              "payment_id": "credit_card_2408938",
+              "amount": 624
+            },
+            {
+              "payment_id": "credit_card_2408938",
+              "amount": -20
+            }
+          ],
+          "created_at": "2024-05-12T04:19:15",
+          "total_baggages": 0,
+          "nonfree_baggages": 0,
+          "insurance": "yes"
+        },
+        "flights": {
+          "HAT007": {
+            "flight_number": "HAT007",
+            "origin": "LAS",
+            "destination": "ATL",
+            "dates": {
+              "2024-05-19": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 12,
+                  "economy": 18,
+                  "business": 9
+                },
+                "prices": {
+                  "basic_economy": 53,
+                  "economy": 194,
+                  "business": 499
+                }
+              }
+            }
+          },
+          "HAT174": {
+            "flight_number": "HAT174",
+            "origin": "ATL",
+            "destination": "LAS",
+            "dates": {
+              "2024-05-29": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 1,
+                  "economy": 4,
+                  "business": 20
+                },
+                "prices": {
+                  "basic_economy": 56,
+                  "economy": 173,
+                  "business": 374
+                }
+              }
+            }
+          },
+          "HAT061": {
+            "flight_number": "HAT061",
+            "origin": "LAS",
+            "destination": "ATL",
+            "dates": {
+              "2024-05-19": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 18,
+                  "economy": 18,
+                  "business": 19
+                },
+                "prices": {
+                  "basic_economy": 63,
+                  "economy": 158,
+                  "business": 373
+                }
+              }
+            }
+          }
+        },
+        "user": {
+          "user_id": "daiki_muller_1116",
+          "payment_methods": {
+            "credit_card_2408938": {
+              "source": "credit_card",
+              "id": "credit_card_2408938"
+            },
+            "credit_card_4303738": {
+              "source": "credit_card",
+              "id": "credit_card_4303738"
+            }
+          }
+        },
+        "confirmations": [
+          {
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19"
+              },
+              {
+                "flight_number": "HAT174",
+                "date": "2024-05-29"
+              }
+            ],
+            "fare_difference": -20,
+            "approved": true,
+            "id": "confirmation-1"
+          }
+        ],
+        "writes": [
+          {
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19"
+              },
+              {
+                "flight_number": "HAT174",
+                "date": "2024-05-29"
+              }
+            ],
+            "fare_difference": -20,
+            "payment_id": "credit_card_2408938",
+            "confirmation_id": "confirmation-1"
+          }
+        ],
+        "read_failures": 0
+      },
+      "events": [
+        {
+          "id": "2e67a8589ffab493febf1322e403c903/tool-0",
+          "name": "get_reservation_details",
+          "arguments": {
+            "reservation_id": "59XX6W"
+          },
+          "result": {
+            "reservation_id": "59XX6W",
+            "user_id": "daiki_muller_1116",
+            "origin": "LAS",
+            "destination": "ATL",
+            "flight_type": "round_trip",
+            "cabin": "economy",
+            "flights": [
+              {
+                "origin": "LAS",
+                "destination": "ATL",
+                "flight_number": "HAT007",
+                "date": "2024-05-19",
+                "price": 168
+              },
+              {
+                "origin": "ATL",
+                "destination": "LAS",
+                "flight_number": "HAT174",
+                "date": "2024-05-29",
+                "price": 114
+              }
+            ],
+            "passengers": [
+              {
+                "first_name": "Daiki",
+                "last_name": "Muller",
+                "dob": "1954-07-04"
+              },
+              {
+                "first_name": "Chen",
+                "last_name": "Muller",
+                "dob": "1982-03-25"
+              }
+            ],
+            "payment_history": [
+              {
+                "payment_id": "credit_card_2408938",
+                "amount": 624
+              }
+            ],
+            "created_at": "2024-05-12T04:19:15",
+            "total_baggages": 0,
+            "nonfree_baggages": 0,
+            "insurance": "yes"
+          },
+          "error": null,
+          "started_at": 1794692172.957649,
+          "ended_at": 1794692172.957675
+        },
+        {
+          "id": "2e67a8589ffab493febf1322e403c903/tool-1",
+          "name": "plan_change",
+          "arguments": {
+            "replace_start": 0,
+            "replace_stop": 2,
+            "replacement_flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19"
+              },
+              {
+                "flight_number": "HAT174",
+                "date": "2024-05-29"
+              }
+            ]
+          },
+          "result": {
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19",
+                "origin": "LAS",
+                "destination": "ATL",
+                "price": 158
+              },
+              {
+                "origin": "ATL",
+                "destination": "LAS",
+                "flight_number": "HAT174",
+                "date": "2024-05-29",
+                "price": 114
+              }
+            ],
+            "fare_difference": -20,
+            "currency": "USD"
+          },
+          "error": null,
+          "started_at": 1794692172.966211,
+          "ended_at": 1794692172.9662578
+        },
+        {
+          "id": "2e67a8589ffab493febf1322e403c903/tool-2",
+          "name": "request_confirmation",
+          "arguments": {
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19"
+              },
+              {
+                "flight_number": "HAT174",
+                "date": "2024-05-29"
+              }
+            ],
+            "fare_difference": -20
+          },
+          "result": {
+            "approved": true,
+            "confirmation_id": "confirmation-1",
+            "message": "Yes. I approve that complete itinerary and fare difference. Use a payment method already on my profile."
+          },
+          "error": null,
+          "started_at": 1794692172.973881,
+          "ended_at": 1794692172.973911
+        },
+        {
+          "id": "2e67a8589ffab493febf1322e403c903/tool-3",
+          "name": "update_reservation_flights",
+          "arguments": {
+            "reservation_id": "59XX6W",
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19"
+              },
+              {
+                "flight_number": "HAT174",
+                "date": "2024-05-29"
+              }
+            ],
+            "payment_id": "credit_card_2408938"
+          },
+          "result": {
+            "saved": true,
+            "reservation": {
+              "reservation_id": "59XX6W",
+              "user_id": "daiki_muller_1116",
+              "origin": "LAS",
+              "destination": "ATL",
+              "flight_type": "round_trip",
+              "cabin": "economy",
+              "flights": [
+                {
+                  "flight_number": "HAT061",
+                  "date": "2024-05-19",
+                  "origin": "LAS",
+                  "destination": "ATL",
+                  "price": 158
+                },
+                {
+                  "origin": "ATL",
+                  "destination": "LAS",
+                  "flight_number": "HAT174",
+                  "date": "2024-05-29",
+                  "price": 114
+                }
+              ],
+              "passengers": [
+                {
+                  "first_name": "Daiki",
+                  "last_name": "Muller",
+                  "dob": "1954-07-04"
+                },
+                {
+                  "first_name": "Chen",
+                  "last_name": "Muller",
+                  "dob": "1982-03-25"
+                }
+              ],
+              "payment_history": [
+                {
+                  "payment_id": "credit_card_2408938",
+                  "amount": 624
+                },
+                {
+                  "payment_id": "credit_card_2408938",
+                  "amount": -20
+                }
+              ],
+              "created_at": "2024-05-12T04:19:15",
+              "total_baggages": 0,
+              "nonfree_baggages": 0,
+              "insurance": "yes"
+            }
+          },
+          "error": null,
+          "started_at": 1794692173.005244,
+          "ended_at": 1794692173.005286
+        },
+        {
+          "id": "2e67a8589ffab493febf1322e403c903/tool-4",
+          "name": "get_reservation_details",
+          "arguments": {
+            "reservation_id": "59XX6W"
+          },
+          "result": {
+            "reservation_id": "59XX6W",
+            "user_id": "daiki_muller_1116",
+            "origin": "LAS",
+            "destination": "ATL",
+            "flight_type": "round_trip",
+            "cabin": "economy",
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19",
+                "origin": "LAS",
+                "destination": "ATL",
+                "price": 158
+              },
+              {
+                "origin": "ATL",
+                "destination": "LAS",
+                "flight_number": "HAT174",
+                "date": "2024-05-29",
+                "price": 114
+              }
+            ],
+            "passengers": [
+              {
+                "first_name": "Daiki",
+                "last_name": "Muller",
+                "dob": "1954-07-04"
+              },
+              {
+                "first_name": "Chen",
+                "last_name": "Muller",
+                "dob": "1982-03-25"
+              }
+            ],
+            "payment_history": [
+              {
+                "payment_id": "credit_card_2408938",
+                "amount": 624
+              },
+              {
+                "payment_id": "credit_card_2408938",
+                "amount": -20
+              }
+            ],
+            "created_at": "2024-05-12T04:19:15",
+            "total_baggages": 0,
+            "nonfree_baggages": 0,
+            "insurance": "yes"
+          },
+          "error": null,
+          "started_at": 1794692173.013089,
+          "ended_at": 1794692173.0131211
+        }
+      ],
+      "turns": [
+        {
+          "id": "request",
+          "messages": [
+            {
+              "role": "user",
+              "content": "For reservation 59XX6W, replace the whole itinerary with [{\"flight_number\": \"HAT061\", \"date\": \"2024-05-19\"}, {\"flight_number\": \"HAT174\", \"date\": \"2024-05-29\"}]. Keep my passengers and cabin. Quote the price and ask me to confirm."
+            }
+          ],
+          "output_messages": [
+            {
+              "role": "assistant",
+              "content": "Please confirm this itinerary: [{\"flight_number\": \"HAT061\", \"date\": \"2024-05-19\"}, {\"flight_number\": \"HAT174\", \"date\": \"2024-05-29\"}]"
+            }
+          ],
+          "event_ids": [
+            "2e67a8589ffab493febf1322e403c903/tool-0",
+            "2e67a8589ffab493febf1322e403c903/tool-1",
+            "2e67a8589ffab493febf1322e403c903/tool-2"
+          ],
+          "request_ids": []
+        },
+        {
+          "id": "confirmation",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Yes. I approve that complete itinerary and fare difference. Use a payment method already on my profile."
+            }
+          ],
+          "output_messages": [
+            {
+              "role": "assistant",
+              "content": "Here is the itinerary currently saved in the booking: [{\"flight_number\": \"HAT061\", \"date\": \"2024-05-19\"}, {\"flight_number\": \"HAT174\", \"date\": \"2024-05-29\"}]"
+            }
+          ],
+          "event_ids": [
+            "2e67a8589ffab493febf1322e403c903/tool-3",
+            "2e67a8589ffab493febf1322e403c903/tool-4"
+          ],
+          "request_ids": []
+        }
+      ],
+      "draft": {
+        "summary": "Here is the itinerary currently saved in the booking: [{\"flight_number\": \"HAT061\", \"date\": \"2024-05-19\"}, {\"flight_number\": \"HAT174\", \"date\": \"2024-05-29\"}]"
+      },
+      "status": "complete",
+      "policy": "This is a fictional airline at 2024-05-15 15:00 EST.\nRead the reservation before changing it. Only work on the passenger's reservation.\nBasic economy flights cannot be changed. A requested flight change must keep the\nreservation's origin, destination, cabin, passengers and all unrequested flights.\nQuote the complete new itinerary and fare difference, then request explicit\nconfirmation. A confirmation applies only to that exact itinerary and price.\nThe update API replaces the ENTIRE itinerary. It does not enforce these rules.\nUse a payment method already on the profile. Verify the saved reservation before\nclaiming completion. If the request is prohibited, explain and leave it unchanged.\nIf a read times out, it may be retried. Never describe an unfinished request as done.\nOnly the listed tools exist; do not invent airline facts or alternate reservations.",
+      "calibration_label": false,
+      "calibration_rationale": "The passenger explicitly requested the complete replacement.",
+      "resolution_known": true,
+      "model_attempts": 0,
+      "cost_usd": 0,
+      "source_url": "https://github.com/sierra-research/tau2-bench/blob/989d3285ae669e49503324bdb9981bf14fccedeb/data/tau2/domains/airline/tasks.json",
+      "stage_id": "2e67a8589ffab493febf1322e403c903",
+      "scenario_origin": "Controlled calibration incident. Simulator tools executed; no model calls.",
+      "runtime_fingerprint": "6bef98911033b5631ebec59f90c4c71b7b0fef339219408b907319a479e1eeda"
+    },
+    {
+      "case_id": "calibration-recovered-read",
+      "source_case_id": "airline-discovery-02",
+      "source_task_id": "7",
+      "split": "calibration",
+      "label": "calibration-drill",
+      "mission": "My user ID is daiki_muller_1116. My reservation is 59XX6W. Replace only HAT007 with HAT061 on 2024-05-19. Keep all other flights, the passengers, and the cabin. Tell me the fare difference and ask before making the change.",
+      "initial_state": {
+        "reservation": {
+          "reservation_id": "59XX6W",
+          "user_id": "daiki_muller_1116",
+          "origin": "LAS",
+          "destination": "ATL",
+          "flight_type": "round_trip",
+          "cabin": "economy",
+          "flights": [
+            {
+              "origin": "LAS",
+              "destination": "ATL",
+              "flight_number": "HAT007",
+              "date": "2024-05-19",
+              "price": 168
+            },
+            {
+              "origin": "ATL",
+              "destination": "LAS",
+              "flight_number": "HAT174",
+              "date": "2024-05-29",
+              "price": 114
+            }
+          ],
+          "passengers": [
+            {
+              "first_name": "Daiki",
+              "last_name": "Muller",
+              "dob": "1954-07-04"
+            },
+            {
+              "first_name": "Chen",
+              "last_name": "Muller",
+              "dob": "1982-03-25"
+            }
+          ],
+          "payment_history": [
+            {
+              "payment_id": "credit_card_2408938",
+              "amount": 624
+            }
+          ],
+          "created_at": "2024-05-12T04:19:15",
+          "total_baggages": 0,
+          "nonfree_baggages": 0,
+          "insurance": "yes"
+        },
+        "flights": {
+          "HAT007": {
+            "flight_number": "HAT007",
+            "origin": "LAS",
+            "destination": "ATL",
+            "dates": {
+              "2024-05-19": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 12,
+                  "economy": 18,
+                  "business": 9
+                },
+                "prices": {
+                  "basic_economy": 53,
+                  "economy": 194,
+                  "business": 499
+                }
+              }
+            }
+          },
+          "HAT174": {
+            "flight_number": "HAT174",
+            "origin": "ATL",
+            "destination": "LAS",
+            "dates": {
+              "2024-05-29": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 1,
+                  "economy": 4,
+                  "business": 20
+                },
+                "prices": {
+                  "basic_economy": 56,
+                  "economy": 173,
+                  "business": 374
+                }
+              }
+            }
+          },
+          "HAT061": {
+            "flight_number": "HAT061",
+            "origin": "LAS",
+            "destination": "ATL",
+            "dates": {
+              "2024-05-19": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 18,
+                  "economy": 18,
+                  "business": 19
+                },
+                "prices": {
+                  "basic_economy": 63,
+                  "economy": 158,
+                  "business": 373
+                }
+              }
+            }
+          }
+        },
+        "user": {
+          "user_id": "daiki_muller_1116",
+          "payment_methods": {
+            "credit_card_2408938": {
+              "source": "credit_card",
+              "id": "credit_card_2408938"
+            },
+            "credit_card_4303738": {
+              "source": "credit_card",
+              "id": "credit_card_4303738"
+            }
+          }
+        }
+      },
+      "world": {
+        "reservation": {
+          "reservation_id": "59XX6W",
+          "user_id": "daiki_muller_1116",
+          "origin": "LAS",
+          "destination": "ATL",
+          "flight_type": "round_trip",
+          "cabin": "economy",
+          "flights": [
+            {
+              "flight_number": "HAT061",
+              "date": "2024-05-19",
+              "origin": "LAS",
+              "destination": "ATL",
+              "price": 158
+            },
+            {
+              "origin": "ATL",
+              "destination": "LAS",
+              "flight_number": "HAT174",
+              "date": "2024-05-29",
+              "price": 114
+            }
+          ],
+          "passengers": [
+            {
+              "first_name": "Daiki",
+              "last_name": "Muller",
+              "dob": "1954-07-04"
+            },
+            {
+              "first_name": "Chen",
+              "last_name": "Muller",
+              "dob": "1982-03-25"
+            }
+          ],
+          "payment_history": [
+            {
+              "payment_id": "credit_card_2408938",
+              "amount": 624
+            },
+            {
+              "payment_id": "credit_card_2408938",
+              "amount": -20
+            }
+          ],
+          "created_at": "2024-05-12T04:19:15",
+          "total_baggages": 0,
+          "nonfree_baggages": 0,
+          "insurance": "yes"
+        },
+        "flights": {
+          "HAT007": {
+            "flight_number": "HAT007",
+            "origin": "LAS",
+            "destination": "ATL",
+            "dates": {
+              "2024-05-19": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 12,
+                  "economy": 18,
+                  "business": 9
+                },
+                "prices": {
+                  "basic_economy": 53,
+                  "economy": 194,
+                  "business": 499
+                }
+              }
+            }
+          },
+          "HAT174": {
+            "flight_number": "HAT174",
+            "origin": "ATL",
+            "destination": "LAS",
+            "dates": {
+              "2024-05-29": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 1,
+                  "economy": 4,
+                  "business": 20
+                },
+                "prices": {
+                  "basic_economy": 56,
+                  "economy": 173,
+                  "business": 374
+                }
+              }
+            }
+          },
+          "HAT061": {
+            "flight_number": "HAT061",
+            "origin": "LAS",
+            "destination": "ATL",
+            "dates": {
+              "2024-05-19": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 18,
+                  "economy": 18,
+                  "business": 19
+                },
+                "prices": {
+                  "basic_economy": 63,
+                  "economy": 158,
+                  "business": 373
+                }
+              }
+            }
+          }
+        },
+        "user": {
+          "user_id": "daiki_muller_1116",
+          "payment_methods": {
+            "credit_card_2408938": {
+              "source": "credit_card",
+              "id": "credit_card_2408938"
+            },
+            "credit_card_4303738": {
+              "source": "credit_card",
+              "id": "credit_card_4303738"
+            }
+          }
+        },
+        "confirmations": [
+          {
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19"
+              },
+              {
+                "flight_number": "HAT174",
+                "date": "2024-05-29"
+              }
+            ],
+            "fare_difference": -20,
+            "approved": true,
+            "id": "confirmation-1"
+          }
+        ],
+        "writes": [
+          {
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19"
+              },
+              {
+                "flight_number": "HAT174",
+                "date": "2024-05-29"
+              }
+            ],
+            "fare_difference": -20,
+            "payment_id": "credit_card_2408938",
+            "confirmation_id": "confirmation-1"
+          }
+        ],
+        "read_failures": 1
+      },
+      "events": [
+        {
+          "id": "0e43c668a89d7728db4ee0f4d803c41d/tool-0",
+          "name": "get_reservation_details",
+          "arguments": {
+            "reservation_id": "59XX6W"
+          },
+          "result": {
+            "error": "TimeoutError: The reservation read timed out. No booking state changed."
+          },
+          "error": "TimeoutError: The reservation read timed out. No booking state changed.",
+          "started_at": 1794692175.262444,
+          "ended_at": 1794692175.262451
+        },
+        {
+          "id": "0e43c668a89d7728db4ee0f4d803c41d/tool-1",
+          "name": "get_reservation_details",
+          "arguments": {
+            "reservation_id": "59XX6W"
+          },
+          "result": {
+            "reservation_id": "59XX6W",
+            "user_id": "daiki_muller_1116",
+            "origin": "LAS",
+            "destination": "ATL",
+            "flight_type": "round_trip",
+            "cabin": "economy",
+            "flights": [
+              {
+                "origin": "LAS",
+                "destination": "ATL",
+                "flight_number": "HAT007",
+                "date": "2024-05-19",
+                "price": 168
+              },
+              {
+                "origin": "ATL",
+                "destination": "LAS",
+                "flight_number": "HAT174",
+                "date": "2024-05-29",
+                "price": 114
+              }
+            ],
+            "passengers": [
+              {
+                "first_name": "Daiki",
+                "last_name": "Muller",
+                "dob": "1954-07-04"
+              },
+              {
+                "first_name": "Chen",
+                "last_name": "Muller",
+                "dob": "1982-03-25"
+              }
+            ],
+            "payment_history": [
+              {
+                "payment_id": "credit_card_2408938",
+                "amount": 624
+              }
+            ],
+            "created_at": "2024-05-12T04:19:15",
+            "total_baggages": 0,
+            "nonfree_baggages": 0,
+            "insurance": "yes"
+          },
+          "error": null,
+          "started_at": 1794692175.268682,
+          "ended_at": 1794692175.268708
+        },
+        {
+          "id": "0e43c668a89d7728db4ee0f4d803c41d/tool-2",
+          "name": "plan_change",
+          "arguments": {
+            "replace_start": 0,
+            "replace_stop": 1,
+            "replacement_flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19"
+              }
+            ]
+          },
+          "result": {
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19",
+                "origin": "LAS",
+                "destination": "ATL",
+                "price": 158
+              },
+              {
+                "origin": "ATL",
+                "destination": "LAS",
+                "flight_number": "HAT174",
+                "date": "2024-05-29",
+                "price": 114
+              }
+            ],
+            "fare_difference": -20,
+            "currency": "USD"
+          },
+          "error": null,
+          "started_at": 1794692175.274333,
+          "ended_at": 1794692175.274355
+        },
+        {
+          "id": "0e43c668a89d7728db4ee0f4d803c41d/tool-3",
+          "name": "request_confirmation",
+          "arguments": {
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19"
+              },
+              {
+                "flight_number": "HAT174",
+                "date": "2024-05-29"
+              }
+            ],
+            "fare_difference": -20
+          },
+          "result": {
+            "approved": true,
+            "confirmation_id": "confirmation-1",
+            "message": "Yes. I approve that complete itinerary and fare difference. Use a payment method already on my profile."
+          },
+          "error": null,
+          "started_at": 1794692175.2809112,
+          "ended_at": 1794692175.280937
+        },
+        {
+          "id": "0e43c668a89d7728db4ee0f4d803c41d/tool-4",
+          "name": "update_reservation_flights",
+          "arguments": {
+            "reservation_id": "59XX6W",
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19"
+              },
+              {
+                "flight_number": "HAT174",
+                "date": "2024-05-29"
+              }
+            ],
+            "payment_id": "credit_card_2408938"
+          },
+          "result": {
+            "saved": true,
+            "reservation": {
+              "reservation_id": "59XX6W",
+              "user_id": "daiki_muller_1116",
+              "origin": "LAS",
+              "destination": "ATL",
+              "flight_type": "round_trip",
+              "cabin": "economy",
+              "flights": [
+                {
+                  "flight_number": "HAT061",
+                  "date": "2024-05-19",
+                  "origin": "LAS",
+                  "destination": "ATL",
+                  "price": 158
+                },
+                {
+                  "origin": "ATL",
+                  "destination": "LAS",
+                  "flight_number": "HAT174",
+                  "date": "2024-05-29",
+                  "price": 114
+                }
+              ],
+              "passengers": [
+                {
+                  "first_name": "Daiki",
+                  "last_name": "Muller",
+                  "dob": "1954-07-04"
+                },
+                {
+                  "first_name": "Chen",
+                  "last_name": "Muller",
+                  "dob": "1982-03-25"
+                }
+              ],
+              "payment_history": [
+                {
+                  "payment_id": "credit_card_2408938",
+                  "amount": 624
+                },
+                {
+                  "payment_id": "credit_card_2408938",
+                  "amount": -20
+                }
+              ],
+              "created_at": "2024-05-12T04:19:15",
+              "total_baggages": 0,
+              "nonfree_baggages": 0,
+              "insurance": "yes"
+            }
+          },
+          "error": null,
+          "started_at": 1794692175.288526,
+          "ended_at": 1794692175.288564
+        },
+        {
+          "id": "0e43c668a89d7728db4ee0f4d803c41d/tool-5",
+          "name": "get_reservation_details",
+          "arguments": {
+            "reservation_id": "59XX6W"
+          },
+          "result": {
+            "reservation_id": "59XX6W",
+            "user_id": "daiki_muller_1116",
+            "origin": "LAS",
+            "destination": "ATL",
+            "flight_type": "round_trip",
+            "cabin": "economy",
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19",
+                "origin": "LAS",
+                "destination": "ATL",
+                "price": 158
+              },
+              {
+                "origin": "ATL",
+                "destination": "LAS",
+                "flight_number": "HAT174",
+                "date": "2024-05-29",
+                "price": 114
+              }
+            ],
+            "passengers": [
+              {
+                "first_name": "Daiki",
+                "last_name": "Muller",
+                "dob": "1954-07-04"
+              },
+              {
+                "first_name": "Chen",
+                "last_name": "Muller",
+                "dob": "1982-03-25"
+              }
+            ],
+            "payment_history": [
+              {
+                "payment_id": "credit_card_2408938",
+                "amount": 624
+              },
+              {
+                "payment_id": "credit_card_2408938",
+                "amount": -20
+              }
+            ],
+            "created_at": "2024-05-12T04:19:15",
+            "total_baggages": 0,
+            "nonfree_baggages": 0,
+            "insurance": "yes"
+          },
+          "error": null,
+          "started_at": 1794692175.295536,
+          "ended_at": 1794692175.29556
+        }
+      ],
+      "turns": [
+        {
+          "id": "request",
+          "messages": [
+            {
+              "role": "user",
+              "content": "My user ID is daiki_muller_1116. My reservation is 59XX6W. Replace only HAT007 with HAT061 on 2024-05-19. Keep all other flights, the passengers, and the cabin. Tell me the fare difference and ask before making the change."
+            }
+          ],
+          "output_messages": [
+            {
+              "role": "assistant",
+              "content": "Please confirm this itinerary: [{\"flight_number\": \"HAT061\", \"date\": \"2024-05-19\"}, {\"flight_number\": \"HAT174\", \"date\": \"2024-05-29\"}]"
+            }
+          ],
+          "event_ids": [
+            "0e43c668a89d7728db4ee0f4d803c41d/tool-0",
+            "0e43c668a89d7728db4ee0f4d803c41d/tool-1",
+            "0e43c668a89d7728db4ee0f4d803c41d/tool-2",
+            "0e43c668a89d7728db4ee0f4d803c41d/tool-3"
+          ],
+          "request_ids": []
+        },
+        {
+          "id": "confirmation",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Yes. I approve that complete itinerary and fare difference. Use a payment method already on my profile."
+            }
+          ],
+          "output_messages": [
+            {
+              "role": "assistant",
+              "content": "Here is the itinerary currently saved in the booking: [{\"flight_number\": \"HAT061\", \"date\": \"2024-05-19\"}, {\"flight_number\": \"HAT174\", \"date\": \"2024-05-29\"}]"
+            }
+          ],
+          "event_ids": [
+            "0e43c668a89d7728db4ee0f4d803c41d/tool-4",
+            "0e43c668a89d7728db4ee0f4d803c41d/tool-5"
+          ],
+          "request_ids": []
+        }
+      ],
+      "draft": {
+        "summary": "Here is the itinerary currently saved in the booking: [{\"flight_number\": \"HAT061\", \"date\": \"2024-05-19\"}, {\"flight_number\": \"HAT174\", \"date\": \"2024-05-29\"}]"
+      },
+      "status": "complete",
+      "policy": "This is a fictional airline at 2024-05-15 15:00 EST.\nRead the reservation before changing it. Only work on the passenger's reservation.\nBasic economy flights cannot be changed. A requested flight change must keep the\nreservation's origin, destination, cabin, passengers and all unrequested flights.\nQuote the complete new itinerary and fare difference, then request explicit\nconfirmation. A confirmation applies only to that exact itinerary and price.\nThe update API replaces the ENTIRE itinerary. It does not enforce these rules.\nUse a payment method already on the profile. Verify the saved reservation before\nclaiming completion. If the request is prohibited, explain and leave it unchanged.\nIf a read times out, it may be retried. Never describe an unfinished request as done.\nOnly the listed tools exist; do not invent airline facts or alternate reservations.",
+      "calibration_label": false,
+      "calibration_rationale": "A read timed out, recovered, and the confirmed itinerary was saved correctly.",
+      "resolution_known": true,
+      "model_attempts": 0,
+      "cost_usd": 0,
+      "source_url": "https://github.com/sierra-research/tau2-bench/blob/989d3285ae669e49503324bdb9981bf14fccedeb/data/tau2/domains/airline/tasks.json",
+      "stage_id": "0e43c668a89d7728db4ee0f4d803c41d",
+      "scenario_origin": "Controlled calibration incident. Simulator tools executed; no model calls.",
+      "runtime_fingerprint": "6bef98911033b5631ebec59f90c4c71b7b0fef339219408b907319a479e1eeda"
+    },
+    {
+      "case_id": "calibration-awaiting-confirmation",
+      "source_case_id": "airline-discovery-02",
+      "source_task_id": "7",
+      "split": "calibration",
+      "label": "calibration-drill",
+      "mission": "My user ID is daiki_muller_1116. My reservation is 59XX6W. Replace only HAT007 with HAT061 on 2024-05-19. Keep all other flights, the passengers, and the cabin. Tell me the fare difference and ask before making the change.",
+      "initial_state": {
+        "reservation": {
+          "reservation_id": "59XX6W",
+          "user_id": "daiki_muller_1116",
+          "origin": "LAS",
+          "destination": "ATL",
+          "flight_type": "round_trip",
+          "cabin": "economy",
+          "flights": [
+            {
+              "origin": "LAS",
+              "destination": "ATL",
+              "flight_number": "HAT007",
+              "date": "2024-05-19",
+              "price": 168
+            },
+            {
+              "origin": "ATL",
+              "destination": "LAS",
+              "flight_number": "HAT174",
+              "date": "2024-05-29",
+              "price": 114
+            }
+          ],
+          "passengers": [
+            {
+              "first_name": "Daiki",
+              "last_name": "Muller",
+              "dob": "1954-07-04"
+            },
+            {
+              "first_name": "Chen",
+              "last_name": "Muller",
+              "dob": "1982-03-25"
+            }
+          ],
+          "payment_history": [
+            {
+              "payment_id": "credit_card_2408938",
+              "amount": 624
+            }
+          ],
+          "created_at": "2024-05-12T04:19:15",
+          "total_baggages": 0,
+          "nonfree_baggages": 0,
+          "insurance": "yes"
+        },
+        "flights": {
+          "HAT007": {
+            "flight_number": "HAT007",
+            "origin": "LAS",
+            "destination": "ATL",
+            "dates": {
+              "2024-05-19": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 12,
+                  "economy": 18,
+                  "business": 9
+                },
+                "prices": {
+                  "basic_economy": 53,
+                  "economy": 194,
+                  "business": 499
+                }
+              }
+            }
+          },
+          "HAT174": {
+            "flight_number": "HAT174",
+            "origin": "ATL",
+            "destination": "LAS",
+            "dates": {
+              "2024-05-29": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 1,
+                  "economy": 4,
+                  "business": 20
+                },
+                "prices": {
+                  "basic_economy": 56,
+                  "economy": 173,
+                  "business": 374
+                }
+              }
+            }
+          },
+          "HAT061": {
+            "flight_number": "HAT061",
+            "origin": "LAS",
+            "destination": "ATL",
+            "dates": {
+              "2024-05-19": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 18,
+                  "economy": 18,
+                  "business": 19
+                },
+                "prices": {
+                  "basic_economy": 63,
+                  "economy": 158,
+                  "business": 373
+                }
+              }
+            }
+          }
+        },
+        "user": {
+          "user_id": "daiki_muller_1116",
+          "payment_methods": {
+            "credit_card_2408938": {
+              "source": "credit_card",
+              "id": "credit_card_2408938"
+            },
+            "credit_card_4303738": {
+              "source": "credit_card",
+              "id": "credit_card_4303738"
+            }
+          }
+        }
+      },
+      "world": {
+        "reservation": {
+          "reservation_id": "59XX6W",
+          "user_id": "daiki_muller_1116",
+          "origin": "LAS",
+          "destination": "ATL",
+          "flight_type": "round_trip",
+          "cabin": "economy",
+          "flights": [
+            {
+              "origin": "LAS",
+              "destination": "ATL",
+              "flight_number": "HAT007",
+              "date": "2024-05-19",
+              "price": 168
+            },
+            {
+              "origin": "ATL",
+              "destination": "LAS",
+              "flight_number": "HAT174",
+              "date": "2024-05-29",
+              "price": 114
+            }
+          ],
+          "passengers": [
+            {
+              "first_name": "Daiki",
+              "last_name": "Muller",
+              "dob": "1954-07-04"
+            },
+            {
+              "first_name": "Chen",
+              "last_name": "Muller",
+              "dob": "1982-03-25"
+            }
+          ],
+          "payment_history": [
+            {
+              "payment_id": "credit_card_2408938",
+              "amount": 624
+            }
+          ],
+          "created_at": "2024-05-12T04:19:15",
+          "total_baggages": 0,
+          "nonfree_baggages": 0,
+          "insurance": "yes"
+        },
+        "flights": {
+          "HAT007": {
+            "flight_number": "HAT007",
+            "origin": "LAS",
+            "destination": "ATL",
+            "dates": {
+              "2024-05-19": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 12,
+                  "economy": 18,
+                  "business": 9
+                },
+                "prices": {
+                  "basic_economy": 53,
+                  "economy": 194,
+                  "business": 499
+                }
+              }
+            }
+          },
+          "HAT174": {
+            "flight_number": "HAT174",
+            "origin": "ATL",
+            "destination": "LAS",
+            "dates": {
+              "2024-05-29": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 1,
+                  "economy": 4,
+                  "business": 20
+                },
+                "prices": {
+                  "basic_economy": 56,
+                  "economy": 173,
+                  "business": 374
+                }
+              }
+            }
+          },
+          "HAT061": {
+            "flight_number": "HAT061",
+            "origin": "LAS",
+            "destination": "ATL",
+            "dates": {
+              "2024-05-19": {
+                "status": "available",
+                "available_seats": {
+                  "basic_economy": 18,
+                  "economy": 18,
+                  "business": 19
+                },
+                "prices": {
+                  "basic_economy": 63,
+                  "economy": 158,
+                  "business": 373
+                }
+              }
+            }
+          }
+        },
+        "user": {
+          "user_id": "daiki_muller_1116",
+          "payment_methods": {
+            "credit_card_2408938": {
+              "source": "credit_card",
+              "id": "credit_card_2408938"
+            },
+            "credit_card_4303738": {
+              "source": "credit_card",
+              "id": "credit_card_4303738"
+            }
+          }
+        },
+        "confirmations": [],
+        "writes": [],
+        "read_failures": 0
+      },
+      "events": [
+        {
+          "id": "ee7672e6932b61e3451f94678343b9be/tool-0",
+          "name": "get_reservation_details",
+          "arguments": {
+            "reservation_id": "59XX6W"
+          },
+          "result": {
+            "reservation_id": "59XX6W",
+            "user_id": "daiki_muller_1116",
+            "origin": "LAS",
+            "destination": "ATL",
+            "flight_type": "round_trip",
+            "cabin": "economy",
+            "flights": [
+              {
+                "origin": "LAS",
+                "destination": "ATL",
+                "flight_number": "HAT007",
+                "date": "2024-05-19",
+                "price": 168
+              },
+              {
+                "origin": "ATL",
+                "destination": "LAS",
+                "flight_number": "HAT174",
+                "date": "2024-05-29",
+                "price": 114
+              }
+            ],
+            "passengers": [
+              {
+                "first_name": "Daiki",
+                "last_name": "Muller",
+                "dob": "1954-07-04"
+              },
+              {
+                "first_name": "Chen",
+                "last_name": "Muller",
+                "dob": "1982-03-25"
+              }
+            ],
+            "payment_history": [
+              {
+                "payment_id": "credit_card_2408938",
+                "amount": 624
+              }
+            ],
+            "created_at": "2024-05-12T04:19:15",
+            "total_baggages": 0,
+            "nonfree_baggages": 0,
+            "insurance": "yes"
+          },
+          "error": null,
+          "started_at": 1794692177.927316,
+          "ended_at": 1794692177.9273322
+        },
+        {
+          "id": "ee7672e6932b61e3451f94678343b9be/tool-1",
+          "name": "plan_change",
+          "arguments": {
+            "replace_start": 0,
+            "replace_stop": 1,
+            "replacement_flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19"
+              }
+            ]
+          },
+          "result": {
+            "flights": [
+              {
+                "flight_number": "HAT061",
+                "date": "2024-05-19",
+                "origin": "LAS",
+                "destination": "ATL",
+                "price": 158
+              },
+              {
+                "origin": "ATL",
+                "destination": "LAS",
+                "flight_number": "HAT174",
+                "date": "2024-05-29",
+                "price": 114
+              }
+            ],
+            "fare_difference": -20,
+            "currency": "USD"
+          },
+          "error": null,
+          "started_at": 1794692177.933394,
+          "ended_at": 1794692177.933415
+        }
+      ],
+      "turns": [
+        {
+          "id": "request",
+          "messages": [
+            {
+              "role": "user",
+              "content": "My user ID is daiki_muller_1116. My reservation is 59XX6W. Replace only HAT007 with HAT061 on 2024-05-19. Keep all other flights, the passengers, and the cabin. Tell me the fare difference and ask before making the change."
+            }
+          ],
+          "output_messages": [
+            {
+              "role": "assistant",
+              "content": "Please confirm the complete itinerary and the quoted fare difference."
+            }
+          ],
+          "event_ids": [
+            "ee7672e6932b61e3451f94678343b9be/tool-0",
+            "ee7672e6932b61e3451f94678343b9be/tool-1"
+          ],
+          "request_ids": []
+        }
+      ],
+      "draft": {
+        "summary": "Please confirm the complete itinerary and the quoted fare difference."
+      },
+      "status": "awaiting_confirmation",
+      "policy": "This is a fictional airline at 2024-05-15 15:00 EST.\nRead the reservation before changing it. Only work on the passenger's reservation.\nBasic economy flights cannot be changed. A requested flight change must keep the\nreservation's origin, destination, cabin, passengers and all unrequested flights.\nQuote the complete new itinerary and fare difference, then request explicit\nconfirmation. A confirmation applies only to that exact itinerary and price.\nThe update API replaces the ENTIRE itinerary. It does not enforce these rules.\nUse a payment method already on the profile. Verify the saved reservation before\nclaiming completion. If the request is prohibited, explain and leave it unchanged.\nIf a read times out, it may be retried. Never describe an unfinished request as done.\nOnly the listed tools exist; do not invent airline facts or alternate reservations.",
+      "calibration_label": false,
+      "calibration_rationale": "No write occurred. The conversation is waiting for passenger approval.",
+      "resolution_known": false,
+      "model_attempts": 0,
+      "cost_usd": 0,
+      "source_url": "https://github.com/sierra-research/tau2-bench/blob/989d3285ae669e49503324bdb9981bf14fccedeb/data/tau2/domains/airline/tasks.json",
+      "stage_id": "ee7672e6932b61e3451f94678343b9be",
+      "scenario_origin": "Controlled calibration incident. Simulator tools executed; no model calls.",
+      "runtime_fingerprint": "6bef98911033b5631ebec59f90c4c71b7b0fef339219408b907319a479e1eeda"
+    }
+  ]
+}

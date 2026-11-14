@@ -1,0 +1,40 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:16.000
+This is a simulated booking from the pinned tau-bench data. Change the outward flight, keep the return, and obtain confirmation before writing.
+
+00:00:16.000 --> 00:00:30.000
+The update replaces the whole flight list. A successful call does not establish that the list still contains every flight the passenger wanted.
+
+00:00:30.000 --> 00:00:48.000
+This saved discovery run contains a reservation-read timeout. Read the arguments and error in Agent Lens. No booking change had occurred at this point.
+
+00:00:48.000 --> 00:01:04.000
+The next read succeeded. The same conversation ultimately passed its booking checks. An error span alone would mislabel this request as an unresolved failure.
+
+00:01:04.000 --> 00:01:20.000
+The prepared project had no completed native clustering run at qualification. This diagram explains the intended investigation; it is not a screenshot of a completed cluster.
+
+00:01:20.000 --> 00:01:38.000
+The recorded tag targets one workshop agent. Its criteria ask whether a change was unrequested, rather than counting flights. Participants create a separate tag in their own project.
+
+00:01:38.000 --> 00:01:58.000
+Expected result is the human review. Native Alignment tests returned HTTP 500 and supplied no judge outcome. Precision and recall cannot be claimed from these saved labels alone.
+
+00:01:58.000 --> 00:02:14.000
+A missing live tag can mean the turn is unprocessed or the judge was unavailable. Do not count it as a correct negative. Coverage and agreement use different denominators.
+
+00:02:14.000 --> 00:02:32.000
+Save the original booking, request, policy, expected behavior, and source turn. Replaying only the final booking would test the aftermath instead of reproducing the incident.
+
+00:02:32.000 --> 00:02:50.000
+The repair keeps the prefix and suffix around the replaced range. The local omission drill demonstrates this repair. It is separate from the actual model's live behavior.
+
+00:02:50.000 --> 00:03:08.000
+The native development comparison aligns four requests per version. Both versions passed all four. Open a row to inspect its booking state and trace before explaining a score.
+
+00:03:08.000 --> 00:03:26.000
+The recorded final comparison passed six of six requests for both versions. Subsequent traffic passed four of four for both. The rehearsal does not establish a live quality improvement.
+
+00:03:26.000 --> 00:03:42.000
+Publish the saved comparisons and your conclusion, then verify that automatic tagging is off. The workshop remains a technical preview until native access and participant rehearsal pass.

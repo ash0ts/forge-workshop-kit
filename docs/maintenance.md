@@ -45,7 +45,7 @@ Existing attendee copies are separate notebooks. Updating the templates does not
 
 ## Build the companion decks
 
-The current decks live in `decks/pending`, `decks/solar`, `decks/routing`, `decks/inspection`, and `decks/transit`. Their storyboards generate the slides and presenter notes. Shared branch colors, labels and recorded-example identities live in `src/forge_workshop_kit/assets/visuals.json`. The official Slidev skill is pinned under `.agents/skills/slidev`, with its upstream revision in `UPSTREAM.md`. From the repository root, run:
+The current decks live in `decks/pending`, `decks/solar`, `decks/routing`, `decks/inspection`, `decks/transit`, and `decks/airline_monitoring`. Their storyboards generate the slides and presenter notes. Shared branch colors, labels and recorded-example identities live in `src/forge_workshop_kit/assets/visuals.json`. The official Slidev skill is pinned under `.agents/skills/slidev`, with its upstream revision in `UPSTREAM.md`. From the repository root, run:
 
 ```sh
 python3 scripts/build_decks.py --install --pdf --validate
@@ -56,6 +56,8 @@ Use Node.js 22.23.2 or later and `uv`. PDF export needs Chrome; set `CHROME_PATH
 The build writes browser decks to `dist/decks/site/` and PDFs, offline browser bundles, and editable source archives to `dist/decks/downloads/`. It checks each slide and reveal, exercises Back, renders every PDF page, checks image loading, and follows worked-answer links back to their exercises. PDF links use slide identities rather than physical page numbers, because a reveal adds a page. Use `--only transit` or another workshop name while editing one deck. Without `--pdf` and `--validate`, the command only builds browser copies and source archives.
 
 Opening or building a deck sends no training or inference requests. The command does not publish. The `Workshop decks` GitHub Actions workflow publishes the validated site when a deck change reaches `main`, preserving each workshop’s address. Previous GitHub release attachments remain unchanged.
+
+The site index is generated from the deck entries in `workshops.json` and the browser decks present in the build output. Do not maintain a separate handwritten workshop list in generated HTML. A deck appearing in that list does not establish that its native services or attendee access passed qualification; link its current release checks from the setup material.
 
 ## Saved work
 

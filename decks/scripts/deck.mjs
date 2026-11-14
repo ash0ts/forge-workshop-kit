@@ -5,7 +5,7 @@ import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const [command, slug, ...args] = process.argv.slice(2);
-if (!['dev', 'build', 'export'].includes(command) || !slug || !/^[a-z][a-z0-9-]*$/.test(slug)) {
+if (!['dev', 'build', 'export'].includes(command) || !slug || !/^[a-z][a-z0-9_-]*$/.test(slug)) {
   console.error('Usage: npm run dev|build|export -- WORKSHOP [Slidev options]');
   process.exit(2);
 }

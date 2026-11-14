@@ -60,6 +60,19 @@ For Solar, open the [three-seed qualification](solar-qualification.md). The repa
 4. Open the [recorded Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-defective-parts-before-they-ship:-5ec44d92--VmlldzoxODMwNzU3Nw==). Compare AP, misses, false alarms and review volume. Both active and random selection receive 24 additional labels.
 5. Reload a frozen classifier file and reproduce its prediction. The first patch recipe failed; the revised 1.284-point AP gain is a teaching retest. [Protocol and all outcomes](inspection-workshop.md).
 
+## Airline monitoring in ten minutes
+
+Use the [airline notebook source](../notebooks/airline_monitoring.py), [deck](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/), and [qualification record](airline-monitoring-qualification.md). The airline records are fictional, adapted from a pinned Sierra tau-bench release. Scripted passengers confirm or reject exact itinerary changes; there is no live booking service.
+
+1. **Read the request and starting booking.** Identify the flights the passenger wants changed and the flights that should remain. The update tool replaces the whole itinerary. A successful API call alone does not establish that the change was correct.
+2. **Follow the actual operations in Agent Lens.** Find the reservation read, quoted itinerary, passenger confirmation, and saved update. Contrast a recovered timeout with an unresolved request. A tool error and a bad passenger outcome are different observations.
+3. **Show the controlled example separately.** Open the labeled omitted-return calibration incident and a valid connection-to-nonstop control. Both shorten an itinerary, but only one removes an unrequested flight. No model generated the calibration mistake.
+4. **Review the native tag.** Show its criteria, exact agent scope, and manually labeled Alignment examples. Be explicit: the six tested AI Alignment requests returned HTTP 500, and this new session had no Insights clusters. Do not demonstrate calculated monitor accuracy as if either feature produced results.
+5. **Turn the review into a test.** Save the original request, booking, reviewed expectation, and source event. Run the free regression comparison with the participant's itinerary builder. It uses those saved cases and shows the proposed flights, confirmation, resulting booking, and independent checks.
+6. **Finish with the live comparison.** All 40 live conversations passed. Starting and repaired agents each passed 6/6 reserved and 4/4 subsequent requests. The controlled adapter repair works; this small live comparison did not show a quality gain. Ask which additional request would test its value.
+
+This is a technical-preview walkthrough. Native service recovery, external-account access, and human rehearsal are still required before presenting the six-hour workshop as ready for attendees. Native automatic tagging is separately billed; verify **Apply with AI** is off when the demonstration ends.
+
 ## When a product view is unavailable
 
 - **The hosted notebook preview is blank:** the current browser check hit a public-page-to-local-network error in the embedded preview. The **Copy to project** dialog opened, but that does not verify a copied notebook can run. Try copying the template into your project; if the copied notebook cannot start, use the [laptop setup](../README.md#start-on-your-laptop). The downloadable HTML is a saved preview, not a running notebook. Its initial Solar and Pending screens render directly at desktop and phone widths. [Preview checks](../evidence/ux-v023-static-exports.json).

@@ -1,0 +1,18 @@
+{
+  "id": "airline-discovery-02",
+  "source_task_id": "7",
+  "source_url": "https://github.com/sierra-research/tau2-bench/blob/989d3285ae669e49503324bdb9981bf14fccedeb/data/tau2/domains/airline/tasks.json",
+  "mission": "My user ID is daiki_muller_1116. My reservation is 59XX6W. Replace only HAT007 with HAT061 on 2024-05-19. Keep all other flights, the passengers, and the cabin. Tell me the fare difference and ask before making the change.",
+  "passenger": {
+    "replace_start": 0,
+    "replace_stop": 1,
+    "replacement": [
+      {
+        "flight_number": "HAT061",
+        "date": "2024-05-19"
+      }
+    ],
+    "allows_write": true,
+    "max_extra_dollars": 10000
+  }
+}

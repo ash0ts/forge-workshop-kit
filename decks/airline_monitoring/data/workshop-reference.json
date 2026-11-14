@@ -1,0 +1,501 @@
+{
+  "slug": "airline_monitoring",
+  "id": "airline-monitoring",
+  "kind": "workshop",
+  "title": "Monitor an airline service agent and build better evaluations",
+  "workflow_version": "1",
+  "extras": [],
+  "steps": [
+    [
+      "setup",
+      "Connect and instrument"
+    ],
+    [
+      "booking",
+      "Inspect the booking"
+    ],
+    [
+      "discovery",
+      "Run discovery traffic"
+    ],
+    [
+      "investigate",
+      "Investigate in Agent Lens"
+    ],
+    [
+      "align",
+      "Review a monitoring rule"
+    ],
+    [
+      "monitor",
+      "Check new traffic"
+    ],
+    [
+      "curate",
+      "Build regression cases"
+    ],
+    [
+      "repair",
+      "Repair itinerary handling"
+    ],
+    [
+      "final",
+      "Evaluate reserved bookings"
+    ],
+    [
+      "traffic",
+      "Monitor the next batch"
+    ],
+    [
+      "report",
+      "Explain the result"
+    ]
+  ],
+  "checkpoint_prefixes": [
+    [
+      "setup",
+      "setup"
+    ],
+    [
+      "booking",
+      "booking"
+    ],
+    [
+      "discovery",
+      "discovery"
+    ],
+    [
+      "investigate",
+      "investigate"
+    ],
+    [
+      "align",
+      "align"
+    ],
+    [
+      "monitor",
+      "monitor"
+    ],
+    [
+      "curate",
+      "curate"
+    ],
+    [
+      "repair",
+      "repair"
+    ],
+    [
+      "final",
+      "final"
+    ],
+    [
+      "traffic",
+      "traffic"
+    ],
+    [
+      "report",
+      "report"
+    ]
+  ],
+  "comparison_labels": {
+    "baseline": "Starting agent",
+    "repaired": "Itinerary repair"
+  },
+  "release_status": "technical-preview",
+  "authoring": {
+    "cells_module": "airline_monitoring_cells",
+    "notebook": "notebooks/airline_monitoring.py",
+    "deck": {
+      "directory": "airline_monitoring",
+      "title": "Monitor an airline service agent and build better evaluations",
+      "file_stem": "airline-monitoring",
+      "storyboard": "decks/airline_monitoring/scripts/build-storyboard.py"
+    },
+    "runbook": "docs/airline_monitoring-runbook.md",
+    "exercises": [
+      {
+        "id": "instrument",
+        "step": "setup",
+        "cell_id": "airline_monitoring/action/first_trace",
+        "function": "my_tool_span",
+        "check_control": "check_instrumentation",
+        "run_control": "first_trace",
+        "prerequisites": [],
+        "expected_output": "A stored setup trace with the argument, result, actual timing, and your attribute.",
+        "forge_investigation": "Open the tool span and find the attribute you added.",
+        "function_source": "src/forge_workshop_kit/airline_teaching.py"
+      },
+      {
+        "id": "booking",
+        "step": "booking",
+        "cell_id": "airline_monitoring/action/save_booking",
+        "function": null,
+        "check_control": null,
+        "run_control": "save_booking",
+        "prerequisites": [
+          "setup"
+        ],
+        "expected_output": "A request-specific statement of the flights to change and the flights to preserve.",
+        "forge_investigation": "Compare this expectation with the first saved booking read after running discovery traffic."
+      },
+      {
+        "id": "discover",
+        "step": "discovery",
+        "cell_id": "airline_monitoring/action/run_discovery",
+        "function": "my_model_span",
+        "check_control": "check_instrumentation",
+        "run_control": "run_discovery",
+        "prerequisites": [
+          "setup",
+          "booking"
+        ],
+        "expected_output": "Eight saved discovery executions with starting and resulting itineraries.",
+        "forge_investigation": "Follow one booking update from the passenger request through the tool arguments to its returned booking.",
+        "function_source": "src/forge_workshop_kit/airline_teaching.py"
+      },
+      {
+        "id": "investigate",
+        "step": "investigate",
+        "cell_id": "airline_monitoring/action/save_investigation",
+        "function": null,
+        "check_control": null,
+        "run_control": "save_investigation",
+        "prerequisites": [
+          "discovery"
+        ],
+        "expected_output": "A specific claim linked to one conversation and the operation that supports it.",
+        "forge_investigation": "In Insights, check a representative turn and a counterexample before accepting the cluster explanation."
+      },
+      {
+        "id": "calibration",
+        "step": "investigate",
+        "cell_id": "airline_monitoring/action/run_calibration",
+        "function": null,
+        "check_control": null,
+        "run_control": "run_calibration",
+        "prerequisites": [
+          "setup"
+        ],
+        "expected_output": "Six actual local tool-only simulator incidents, labeled controlled calibration; zero agent model calls.",
+        "forge_investigation": "Compare the omitted-return incident with a valid one-way booking and a request awaiting confirmation. These are not spontaneous live agent failures."
+      },
+      {
+        "id": "align",
+        "step": "align",
+        "cell_id": "airline_monitoring/action/read_native_tag",
+        "function": null,
+        "check_control": null,
+        "run_control": "read_native_tag",
+        "prerequisites": [
+          "investigate"
+        ],
+        "expected_output": "Native criteria, scope, and alignment readback; unavailable features remain explicit.",
+        "forge_investigation": "Label turns, test criteria in Alignment, then save chosen criteria before enabling the tag."
+      },
+      {
+        "id": "monitor",
+        "step": "monitor",
+        "cell_id": "airline_monitoring/action/run_monitoring",
+        "function": "my_monitor",
+        "check_control": "check_monitor",
+        "run_control": "run_monitoring",
+        "prerequisites": [
+          "align"
+        ],
+        "expected_output": "Four new executions and precision, recall, coverage, and unavailable-result counts from reviewed labels.",
+        "forge_investigation": "Inspect tagged and unflagged turns; check the selected time range and pending processing.",
+        "function_source": "src/forge_workshop_kit/airline_teaching.py"
+      },
+      {
+        "id": "native-test",
+        "step": "monitor",
+        "cell_id": "airline_monitoring/action/run_alignment_test",
+        "function": null,
+        "check_control": null,
+        "run_control": "run_alignment_test",
+        "prerequisites": [
+          "align"
+        ],
+        "expected_output": "A completed native test gives an explicit match or no-match result; unavailable tests stay missing.",
+        "forge_investigation": "Compare the returned judge reason with the same turn and your human label."
+      },
+      {
+        "id": "agreement",
+        "step": "monitor",
+        "cell_id": "airline_monitoring/action/calculate_monitor",
+        "function": "my_monitor",
+        "function_source": "src/forge_workshop_kit/airline_teaching.py",
+        "check_control": "check_monitor",
+        "run_control": "calculate_monitor",
+        "prerequisites": [
+          "align"
+        ],
+        "expected_output": "Precision and recall on reviewed explicit native tests, with judging and review coverage reported separately.",
+        "forge_investigation": "Open the native Alignment example supporting one disagreement."
+      },
+      {
+        "id": "curate",
+        "step": "curate",
+        "cell_id": "airline_monitoring/action/save_regression",
+        "function": "case_from_reviewed_turn",
+        "check_control": "check_curation",
+        "run_control": "save_regression",
+        "prerequisites": [
+          "monitor"
+        ],
+        "expected_output": "Reviewed development cases containing the original booking, request, policy, expected behavior, and source links.",
+        "forge_investigation": "Open the source turn for a curated case and verify that its starting booking matches.",
+        "function_source": "src/forge_workshop_kit/airline_teaching.py"
+      },
+      {
+        "id": "score",
+        "step": "curate",
+        "cell_id": "airline_monitoring/action/save_evaluation_code",
+        "function": "my_state_scorer",
+        "check_control": "check_state_scorer",
+        "run_control": "save_evaluation_code",
+        "prerequisites": [
+          "curate"
+        ],
+        "expected_output": "Checks that reject an unrequested itinerary change and a missing requested change.",
+        "forge_investigation": "Compare booking-state checks with the agent\u2019s final completion message.",
+        "function_source": "src/forge_workshop_kit/airline_teaching.py"
+      },
+      {
+        "id": "judge",
+        "step": "curate",
+        "cell_id": "airline_monitoring/action/save_evaluation_code",
+        "function": "my_judge_validation",
+        "check_control": "check_judge_validation",
+        "run_control": "save_evaluation_code",
+        "prerequisites": [
+          "curate"
+        ],
+        "expected_output": "A validated explanation rubric; malformed and unavailable judgments are distinct.",
+        "forge_investigation": "Read the evidence available to the explanation judge before accepting its reason.",
+        "function_source": "src/forge_workshop_kit/airline_teaching.py"
+      },
+      {
+        "id": "explanation",
+        "step": "repair",
+        "cell_id": "airline_monitoring/action/run_explanation_judge",
+        "function": "my_judge_validation",
+        "function_source": "src/forge_workshop_kit/airline_teaching.py",
+        "check_control": "check_judge_validation",
+        "run_control": "run_explanation_judge",
+        "prerequisites": [
+          "repair"
+        ],
+        "expected_output": "One explicit saved explanation judgment, or an unavailable result, using the participant rubric and validator.",
+        "forge_investigation": "Open the actual judge request, cited events, and final booking before accepting the judgment."
+      },
+      {
+        "id": "regression",
+        "step": "repair",
+        "cell_id": "airline_monitoring/action/run_regression",
+        "function": "my_itinerary_builder",
+        "function_source": "src/forge_workshop_kit/airline_teaching.py",
+        "check_control": "check_repair",
+        "run_control": "run_regression",
+        "prerequisites": [
+          "curate"
+        ],
+        "expected_output": "A free paired adapter test uses the actual curated requests and starting bookings; every repaired case must pass before live development comparisons.",
+        "forge_investigation": "Open each regression case\u2019s source turn and distinguish the controlled adapter drill from live agent executions."
+      },
+      {
+        "id": "repair",
+        "step": "repair",
+        "cell_id": "airline_monitoring/action/run_development",
+        "function": "my_itinerary_builder",
+        "check_control": "check_repair",
+        "run_control": "run_development",
+        "prerequisites": [
+          "curate"
+        ],
+        "expected_output": "Eight matched executions on four development bookings, including the full resulting itinerary.",
+        "forge_investigation": "Compare the executed repair, tool arguments, booking state, and trace on the same request.",
+        "function_source": "src/forge_workshop_kit/airline_teaching.py"
+      },
+      {
+        "id": "freeze",
+        "step": "final",
+        "cell_id": "airline_monitoring/action/freeze_version",
+        "function": null,
+        "check_control": null,
+        "run_control": "freeze_version",
+        "prerequisites": [
+          "repair"
+        ],
+        "expected_output": "The tested itinerary code and monitoring criteria are fixed for comparison.",
+        "forge_investigation": "Open the exact source and criteria snapshot attached to the frozen version."
+      },
+      {
+        "id": "final",
+        "step": "final",
+        "cell_id": "airline_monitoring/action/run_final",
+        "function": null,
+        "check_control": null,
+        "run_control": "run_final",
+        "prerequisites": [
+          "final"
+        ],
+        "expected_output": "Twelve executions: starting and repaired agents on six reserved bookings.",
+        "forge_investigation": "In EvalTables, align the same case and inspect preserved flights, completion, time, cost, and missing judgments."
+      },
+      {
+        "id": "traffic",
+        "step": "traffic",
+        "cell_id": "airline_monitoring/action/run_subsequent",
+        "function": null,
+        "check_control": null,
+        "run_control": "run_subsequent",
+        "prerequisites": [
+          "final"
+        ],
+        "expected_output": "Eight executions: two versions on four subsequent requests, with the frozen monitoring criteria.",
+        "forge_investigation": "Check whether the same tag detects remaining issues on both versions."
+      },
+      {
+        "id": "conclude",
+        "step": "report",
+        "cell_id": "airline_monitoring/action/publish_report",
+        "function": null,
+        "check_control": null,
+        "run_control": "publish_report",
+        "prerequisites": [
+          "traffic"
+        ],
+        "expected_output": "A Report explaining monitor quality, agent behavior, regression coverage, and limits.",
+        "forge_investigation": "Verify one Report claim against its conversation and matching evaluation row."
+      },
+      {
+        "id": "stop-tag",
+        "step": "report",
+        "cell_id": "airline_monitoring/action/confirm_tag_off",
+        "function": null,
+        "check_control": null,
+        "run_control": "confirm_tag_off",
+        "prerequisites": [
+          "traffic"
+        ],
+        "expected_output": "Native readback confirms that automatic judging for this workshop tag is disabled.",
+        "forge_investigation": "Open the tag and confirm its disabled status; do not assume closing the notebook stops judging."
+      }
+    ]
+  },
+  "duration_minutes": 360,
+  "comparisons": {
+    "airline-development": {
+      "title": "Matched development bookings",
+      "metrics": [
+        {
+          "key": "task_success",
+          "label": "Correct booking outcome",
+          "unit": "fraction",
+          "direction": "max",
+          "aggregate": "mean",
+          "report": true
+        },
+        {
+          "key": "untouched_flights_preserved",
+          "label": "Unrequested flights preserved",
+          "unit": "fraction",
+          "direction": "max",
+          "aggregate": "mean",
+          "report": true
+        },
+        {
+          "key": "write_confirmed",
+          "label": "Writes confirmed",
+          "unit": "fraction",
+          "direction": "max",
+          "aggregate": "mean",
+          "report": true
+        },
+        {
+          "key": "execution_errors",
+          "label": "Tool errors",
+          "unit": "count",
+          "direction": "min",
+          "aggregate": "mean",
+          "report": true
+        }
+      ]
+    },
+    "airline-final": {
+      "title": "Reserved booking requests",
+      "metrics": [
+        {
+          "key": "task_success",
+          "label": "Correct booking outcome",
+          "unit": "fraction",
+          "direction": "max",
+          "aggregate": "mean",
+          "report": true
+        },
+        {
+          "key": "untouched_flights_preserved",
+          "label": "Unrequested flights preserved",
+          "unit": "fraction",
+          "direction": "max",
+          "aggregate": "mean",
+          "report": true
+        },
+        {
+          "key": "write_confirmed",
+          "label": "Writes confirmed",
+          "unit": "fraction",
+          "direction": "max",
+          "aggregate": "mean",
+          "report": true
+        },
+        {
+          "key": "execution_errors",
+          "label": "Tool errors",
+          "unit": "count",
+          "direction": "min",
+          "aggregate": "mean",
+          "report": true
+        }
+      ]
+    },
+    "airline-subsequent": {
+      "title": "Subsequent traffic batch",
+      "metrics": [
+        {
+          "key": "task_success",
+          "label": "Correct booking outcome",
+          "unit": "fraction",
+          "direction": "max",
+          "aggregate": "mean",
+          "report": true
+        },
+        {
+          "key": "untouched_flights_preserved",
+          "label": "Unrequested flights preserved",
+          "unit": "fraction",
+          "direction": "max",
+          "aggregate": "mean",
+          "report": true
+        },
+        {
+          "key": "write_confirmed",
+          "label": "Writes confirmed",
+          "unit": "fraction",
+          "direction": "max",
+          "aggregate": "mean",
+          "report": true
+        },
+        {
+          "key": "execution_errors",
+          "label": "Tool errors",
+          "unit": "count",
+          "direction": "min",
+          "aggregate": "mean",
+          "report": true
+        }
+      ]
+    }
+  }
+}

@@ -14,14 +14,19 @@ from functools import wraps
 from filelock import FileLock
 
 from .session import digest, safe_name, write_json, relative_path
-from .manifest import get_workshop
+from .manifest import get_workshop, template
 
 
 def _workshop_labels(session):
     try:
         return get_workshop(session.workshop)
     except ValueError:
-        return {'title': session.workshop, 'comparison_labels': {}}
+        # Source rehearsals may have used the notebook slug as their identity.
+        # Resolve its labels without changing saved stage or workspace identities.
+        try:
+            return template(session.workshop)
+        except ValueError:
+            return {'title': session.workshop, 'comparison_labels': {}}
 
 
 def credentials():
@@ -679,7 +684,7 @@ def publish_report(session, conclusion, links):
     receipt_key = 'report-' + digest([conclusion, links])
     saved = session.read()['publications'].get(receipt_key)
     report_manifest = digest(_workshop_labels(session))
-    if saved and saved.get('comparison_layout') == 2 and saved.get('report_manifest') == report_manifest:
+    if saved and saved.get('comparison_layout') == 3 and saved.get('report_manifest') == report_manifest:
         url=saved['url']
         entity=session.project.split('/')[0]
         if url.startswith('https://forge.coreweave.com/') and not url.startswith('https://forge.coreweave.com/wandb/'+entity+'/'):
@@ -694,7 +699,7 @@ def publish_report(session, conclusion, links):
         wr.H2(text='Evidence'), *[wr.P(text=wr.Link(text=label, url=url)) for label, url in links.items()],
         wr.PanelGrid(runsets=[wr.Runset(entity=entity, project=project,
             filters=f'Config("workspace_id") == "{session.workspace_id}"')],
-            panels=[wr.BarPlot(title=spec['label'] + (' (' + spec.get('unit', '') + ')' if spec.get('unit') else ''),
+            panels=[wr.BarPlot(title=comparison.get('title', name) + ': ' + spec['label'] + (' (' + spec.get('unit', '') + ')' if spec.get('unit') else ''),
                               metrics=[name + '/' + spec.get('summary_key', spec['key'])],
                               orientation='h', max_runs_to_show=20,
                               legend_template='${config:condition}',
@@ -706,5 +711,5 @@ def publish_report(session, conclusion, links):
     if url.startswith('https://forge.coreweave.com/') and not url.startswith('https://forge.coreweave.com/wandb/'+entity+'/'):
         url=url.replace('https://forge.coreweave.com/','https://forge.coreweave.com/wandb/',1)
     with session.transaction() as state:
-        state['publications'][receipt_key] = {'url': url, 'comparison_layout': 2, 'report_manifest': report_manifest}
+        state['publications'][receipt_key] = {'url': url, 'comparison_layout': 3, 'report_manifest': report_manifest}
     return url

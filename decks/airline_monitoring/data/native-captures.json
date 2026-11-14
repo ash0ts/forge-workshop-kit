@@ -1,0 +1,236 @@
+{
+  "captures": [
+    {
+      "key": "tag-configuration",
+      "image": "captures/native-tag-configuration.png",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/edit",
+      "alt": "Actual native Agent Lens tag configuration showing saved criteria, Apply with AI, and an exact airline workspace agent filter.",
+      "captured": "2026-11-14",
+      "scope": "Maintainer rehearsal workspace; not participant default",
+      "annotations": [
+        {
+          "x": 78,
+          "y": 33.8,
+          "label": "Automatic judging",
+          "detail": "Apply with AI is enabled for this rehearsal."
+        },
+        {
+          "x": 32.4,
+          "y": 48.5,
+          "label": "Saved criteria",
+          "detail": "Requested scope and resulting booking matter. Flight count alone is insufficient."
+        },
+        {
+          "x": 32.4,
+          "y": 80.5,
+          "label": "Workspace scope",
+          "detail": "The exact agent filter limits this tag to the rehearsal."
+        }
+      ],
+      "crop": {
+        "source_width": 1280,
+        "source_height": 720,
+        "x": 395,
+        "y": 210,
+        "width": 700,
+        "height": 430
+      }
+    },
+    {
+      "key": "alignment",
+      "image": "captures/native-alignment-unavailable.png",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test",
+      "alt": "Native Alignment showing human expected labels, unscored turns, selected turn context, and no completed test result.",
+      "captured": "2026-11-14",
+      "scope": "Maintainer rehearsal; native test unavailable",
+      "title": "A saved review is not a completed judge result",
+      "caption": "Recorded native Alignment. Six API test attempts returned HTTP 500; this screen still has no completed judgment.",
+      "crop": {
+        "source_width": 1280,
+        "source_height": 720,
+        "x": 485,
+        "y": 110,
+        "width": 795,
+        "height": 440
+      },
+      "annotations": [
+        {
+          "x": 84.8,
+          "y": 25.5,
+          "label": "Expected result",
+          "detail": "A person supplied this label. It is not a model prediction."
+        },
+        {
+          "x": 84.8,
+          "y": 58.5,
+          "label": "No completed test",
+          "detail": "Unscored stays unavailable; no tag must not be read as a negative judgment."
+        },
+        {
+          "x": 61.5,
+          "y": 28,
+          "label": "Selected turn",
+          "detail": "Inspect its context. The original booking may be outside this turn."
+        }
+      ]
+    },
+    {
+      "key": "conversation",
+      "image": "captures/native-conversation-error.png",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3673f9ec7c917166a808d6473195a2ae/spans/turns/b4ad558d6ba484805a84991dd3f9e7c1/spans/faf64a520e6af500",
+      "alt": "Agent Lens tool span for reservation 59XX6W, showing the saved TimeoutError, error status, and reservation ID input.",
+      "captured": "2026-11-14",
+      "scope": "Recorded airline-discovery-02; same reservation as the opening example",
+      "title": "The reservation read timed out before any change",
+      "caption": "Recorded discovery request for reservation 59XX6W. This error concerns a read operation; it does not establish an itinerary violation.",
+      "crop": {
+        "source_width": 1280,
+        "source_height": 720,
+        "x": 580,
+        "y": 350,
+        "width": 690,
+        "height": 370
+      },
+      "annotations": [
+        {
+          "x": 55.5,
+          "y": 63.3,
+          "label": "Tool status",
+          "detail": "This operation failed. The booking outcome needs a separate check."
+        },
+        {
+          "x": 55.5,
+          "y": 71.2,
+          "label": "Actual error",
+          "detail": "The message says the read timed out and no booking state changed."
+        },
+        {
+          "x": 48.8,
+          "y": 96.1,
+          "label": "Same reservation",
+          "detail": "59XX6W connects this span to the flight list we inspected."
+        }
+      ]
+    },
+    {
+      "key": "recovery",
+      "image": "captures/native-conversation-error.png",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3673f9ec7c917166a808d6473195a2ae/spans/turns/b4ad558d6ba484805a84991dd3f9e7c1/spans/faf64a520e6af500",
+      "alt": "Agent Lens span tree showing a failed reservation read, another model call, and a later successful reservation read before quote and confirmation.",
+      "captured": "2026-11-14",
+      "scope": "Recorded airline-discovery-02; recovery sequence",
+      "title": "Follow the agent after the error",
+      "caption": "The saved execution recovered and passed its booking checks. Preserve this success when reviewing the monitoring rule.",
+      "display_width": 420,
+      "crop": {
+        "source_width": 1280,
+        "source_height": 720,
+        "x": 240,
+        "y": 265,
+        "width": 335,
+        "height": 368
+      },
+      "annotations": [
+        {
+          "x": 23,
+          "y": 52,
+          "label": "Failed read",
+          "detail": "The red error belongs to get_reservation_details."
+        },
+        {
+          "x": 23,
+          "y": 58.3,
+          "label": "Another model request",
+          "detail": "Read what the model received after that tool error."
+        },
+        {
+          "x": 23,
+          "y": 65.2,
+          "label": "A later read succeeds",
+          "detail": "Continue to the quote, confirmation, and final booking. One failed span is not the whole result."
+        }
+      ]
+    },
+    {
+      "key": "evaltables",
+      "image": "captures/native-evaltables.png",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=4wzxelfxod1",
+      "alt": "Actual native EvalTables development comparison with the starting version marked Reference and task success of 100 percent for both versions.",
+      "captured": "2026-11-14",
+      "scope": "Recorded development evaluation, four matched requests per version",
+      "title": "Set the starting agent as the comparison reference",
+      "caption": "Native development comparison, verified by server readback: four matched requests per version. The two 100% bars are a tie.",
+      "crop": {
+        "source_width": 1280,
+        "source_height": 720,
+        "x": 100,
+        "y": 240,
+        "width": 620,
+        "height": 190
+      },
+      "annotations": [
+        {
+          "x": 22.8,
+          "y": 36.4,
+          "label": "Reference version",
+          "detail": "Keep the starting agent selected so the other version is compared with it."
+        },
+        {
+          "x": 30.6,
+          "y": 52.9,
+          "label": "Same task score",
+          "detail": "Both passed all four development cases. Read the individual requests before interpreting the average."
+        }
+      ]
+    },
+    {
+      "key": "evaltables-case",
+      "image": "captures/native-evaltables.png",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=4wzxelfxod1",
+      "alt": "Aligned native EvalTables row showing the same case identifier and request, separate starting and repaired replies, and passing task scores.",
+      "captured": "2026-11-14",
+      "scope": "Recorded airline-development-04, a separate one-way booking lookup",
+      "title": "Read both outputs for the same request",
+      "caption": "Recorded airline-development-04: a one-way booking lookup. This is a different request from the opening itinerary change.",
+      "layout": "stacked",
+      "crop": {
+        "source_width": 1280,
+        "source_height": 720,
+        "x": 100,
+        "y": 475,
+        "width": 1160,
+        "height": 200
+      },
+      "annotations": [
+        {
+          "x": 11.8,
+          "y": 88,
+          "label": "Matching input",
+          "detail": "One case ID and request align the two executions."
+        },
+        {
+          "x": 43.2,
+          "y": 85.5,
+          "label": "Separate outputs",
+          "detail": "Read each saved reply; matching scores do not mean identical behavior."
+        },
+        {
+          "x": 81.8,
+          "y": 88,
+          "label": "Independent task checks",
+          "detail": "Both passed. Follow the row to the booking and trace to explain why."
+        }
+      ]
+    },
+    {
+      "key": "saved-view",
+      "image": "captures/native-saved-view.png",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/views/01a1dc0a-3ea9-73bd-b0b8-bd7ecd7d9951",
+      "alt": "Native saved conversation view filtering the exact workshop agent and custom airline.version attribute to baseline.",
+      "captured": "2026-11-14",
+      "scope": "Maintainer qualification workspace; supplementary capture, not used in the main deck",
+      "annotations": [],
+      "note": "The Agent Version dropdown was empty; the verified filter uses custom airline.version."
+    }
+  ]
+}

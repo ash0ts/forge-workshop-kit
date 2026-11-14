@@ -1,0 +1,156 @@
+{
+  "kind": "captioned guide assembled from saved rehearsal captures",
+  "seconds": 222,
+  "limitations": [
+    "Not a recording of live user interactions",
+    "Native Alignment unavailable at qualification",
+    "No completed prepared Insights cluster",
+    "Recorded final agent comparison tied at 6/6"
+  ],
+  "deck_source_sha256": "c503d9a3f5642e98056a526988010ff21e7a3af62d4239769eef76fe4ff49df4",
+  "scenes": [
+    {
+      "title": "Read the passenger's request",
+      "caption": "This is a simulated booking from the pinned tau-bench data. Change the outward flight, keep the return, and obtain confirmation before writing.",
+      "evidence": "illustrated source booking",
+      "seconds": 16,
+      "start_seconds": 0,
+      "slide": 2,
+      "anchor": "passenger-request",
+      "image": "frames/01.png",
+      "capture_sha256": "50707ce45777e057059f8c61e8f9a9cb0a4833e6ca09c920c61eabb675946e31"
+    },
+    {
+      "title": "Understand the booking API",
+      "caption": "The update replaces the whole flight list. A successful call does not establish that the list still contains every flight the passenger wanted.",
+      "evidence": "documented API behavior",
+      "seconds": 14,
+      "start_seconds": 16,
+      "slide": 4,
+      "anchor": "replace-semantics",
+      "image": "frames/02.png",
+      "capture_sha256": "1c8bb212eb023dee37b96db731e68a168ac00a5f4b34abe51ea7dff624b9f9bb"
+    },
+    {
+      "title": "Inspect a real tool error",
+      "caption": "This saved discovery run contains a reservation-read timeout. Read the arguments and error in Agent Lens. No booking change had occurred at this point.",
+      "evidence": "native rehearsal capture",
+      "seconds": 18,
+      "start_seconds": 30,
+      "slide": 15,
+      "anchor": "capture-conversation",
+      "image": "frames/03.png",
+      "capture_sha256": "6cb9e12a17426d9a21dff251bf3c3cb08e20e444b4633994aa5f01f43a2ab978"
+    },
+    {
+      "title": "Follow the recovery",
+      "caption": "The next read succeeded. The same conversation ultimately passed its booking checks. An error span alone would mislabel this request as an unresolved failure.",
+      "evidence": "native rehearsal capture",
+      "seconds": 16,
+      "start_seconds": 48,
+      "slide": 16,
+      "anchor": "capture-recovery",
+      "image": "frames/04.png",
+      "capture_sha256": "1140419d9c15196a1e776bd0bd048e2b205f879037716d55b5271c48642317ab"
+    },
+    {
+      "title": "Check whether Insights is available",
+      "caption": "The prepared project had no completed native clustering run at qualification. This diagram explains the intended investigation; it is not a screenshot of a completed cluster.",
+      "evidence": "workflow explanation; native prerequisite unavailable",
+      "seconds": 16,
+      "start_seconds": 64,
+      "slide": 19,
+      "anchor": "insights",
+      "image": "frames/05.png",
+      "capture_sha256": "9f80175c5506c86f1cb405cd1404d4019b2591b965f2f82380392b6e721f13be"
+    },
+    {
+      "title": "Scope and save the monitoring rule",
+      "caption": "The recorded tag targets one workshop agent. Its criteria ask whether a change was unrequested, rather than counting flights. Participants create a separate tag in their own project.",
+      "evidence": "native rehearsal capture",
+      "seconds": 18,
+      "start_seconds": 80,
+      "slide": 27,
+      "anchor": "capture-tag-configuration",
+      "image": "frames/06.png",
+      "capture_sha256": "3f84cd6dd7dc9627a06e70291d69156e2befc19b16f202f02098ef3817a3dd1b"
+    },
+    {
+      "title": "Separate the review from the judge result",
+      "caption": "Expected result is the human review. Native Alignment tests returned HTTP 500 and supplied no judge outcome. Precision and recall cannot be claimed from these saved labels alone.",
+      "evidence": "native rehearsal capture; judge unavailable",
+      "seconds": 20,
+      "start_seconds": 98,
+      "slide": 31,
+      "anchor": "capture-alignment",
+      "image": "frames/07.png",
+      "capture_sha256": "837320feaeda4e9b3507006e2e0ef7b45520c5d2ae4d5d0c63d7e55fa5088ab5"
+    },
+    {
+      "title": "Keep unprocessed turns visible",
+      "caption": "A missing live tag can mean the turn is unprocessed or the judge was unavailable. Do not count it as a correct negative. Coverage and agreement use different denominators.",
+      "evidence": "monitoring logic",
+      "seconds": 16,
+      "start_seconds": 118,
+      "slide": 38,
+      "anchor": "live-missingness",
+      "image": "frames/08.png",
+      "capture_sha256": "0ed7e91e04d8273ac2986177eadc8ea35c816c92cf022a3022b9eddcaa1fa01e"
+    },
+    {
+      "title": "Turn a reviewed event into a test",
+      "caption": "Save the original booking, request, policy, expected behavior, and source turn. Replaying only the final booking would test the aftermath instead of reproducing the incident.",
+      "evidence": "regression-case construction",
+      "seconds": 18,
+      "start_seconds": 134,
+      "slide": 40,
+      "anchor": "curation",
+      "image": "frames/09.png",
+      "capture_sha256": "1baa7485b0e324ad683152b903ddc18d69001f01547f8820ac212df776ca7577"
+    },
+    {
+      "title": "Preserve flights outside the requested range",
+      "caption": "The repair keeps the prefix and suffix around the replaced range. The local omission drill demonstrates this repair. It is separate from the actual model's live behavior.",
+      "evidence": "explicitly simplified local repair example",
+      "seconds": 18,
+      "start_seconds": 152,
+      "slide": 50,
+      "anchor": "range-values",
+      "image": "frames/10.png",
+      "capture_sha256": "7d496b1a1e1bd01898e0044f5b7f68b31b44036dcd00e828c8c7a2c13bdd46c5"
+    },
+    {
+      "title": "Compare matching requests in EvalTables",
+      "caption": "The native development comparison aligns four requests per version. Both versions passed all four. Open a row to inspect its booking state and trace before explaining a score.",
+      "evidence": "native rehearsal capture; development comparison",
+      "seconds": 18,
+      "start_seconds": 170,
+      "slide": 58,
+      "anchor": "capture-evaltables",
+      "image": "frames/11.png",
+      "capture_sha256": "e2a216834c0b50bece4b01db50f34e715eb177f3547820644f19413297d19bcd"
+    },
+    {
+      "title": "Report the observed tie",
+      "caption": "The recorded final comparison passed six of six requests for both versions. Subsequent traffic passed four of four for both. The rehearsal does not establish a live quality improvement.",
+      "evidence": "recorded qualification outcomes",
+      "seconds": 18,
+      "start_seconds": 188,
+      "slide": 60,
+      "anchor": "recorded-results",
+      "image": "frames/12.png",
+      "capture_sha256": "dc24123550716a5d1578a81fbc753a305bd133b42f09620b34a57b0e540a3dda"
+    },
+    {
+      "title": "Save the conclusion and stop automatic judging",
+      "caption": "Publish the saved comparisons and your conclusion, then verify that automatic tagging is off. The workshop remains a technical preview until native access and participant rehearsal pass.",
+      "evidence": "participant completion instructions",
+      "seconds": 16,
+      "start_seconds": 206,
+      "slide": 66,
+      "anchor": "report",
+      "image": "frames/13.png",
+      "capture_sha256": "0c8e44f9d667ec181f456c6c320eb1686988419f23ffd5d45da9afcc65abd452"
+    }
+  ]
+}

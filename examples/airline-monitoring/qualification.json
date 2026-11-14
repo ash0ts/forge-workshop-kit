@@ -1,0 +1,1204 @@
+{
+  "schema_version": 1,
+  "workshop": "airline_monitoring",
+  "project": "wandb/forge-workshop-kit",
+  "workspace_id": "7cb8b0f78c0d4a42b6049f483a5eba18",
+  "status": "technical-preview",
+  "live_conversations": 40,
+  "passing_booking_checks": 40,
+  "verified_traces": 40,
+  "direct_model_cost": {
+    "observed_usd": 0.02401506,
+    "bounded_unknown_usd": 0,
+    "inflight_usd": 0
+  },
+  "comparisons": {
+    "development": {
+      "baseline": {
+        "summary_fingerprint": "26418452acfc58ce77ffdf54bf8e247eff628104dc0924a070845b15e821d2df",
+        "comparison_name": "airline-development",
+        "condition": "baseline",
+        "run_id": "153b9314dde18eeae708655e06e44a8f",
+        "wandb_status": "published",
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/153b9314dde18eeae708655e06e44a8f",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/airline-development-baseline-cases:bHcyx5vt8Kp3QGyQyq9bSu1yZhZ1x8CCyXtWJTDaQw0",
+        "weave_call_id": "01a1dc05-0968-76ab-afcf-99a9cd1bfbbe",
+        "weave_evaluated": true,
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/airline-development-baseline-evaluation:ldTpio9XL6cXQcZuFwTYqFXN6dDgPUrRYz9IoYw4rU4",
+        "weave_status": "published",
+        "weave_verified": true,
+        "native_transport": {
+          "column_roles": {
+            "input_columns": [
+              "case_id",
+              "input.initial_reservation.cabin",
+              "input.initial_reservation.created_at",
+              "input.initial_reservation.destination",
+              "input.initial_reservation.flight_type",
+              "input.initial_reservation.flights",
+              "input.initial_reservation.insurance",
+              "input.initial_reservation.nonfree_baggages",
+              "input.initial_reservation.origin",
+              "input.initial_reservation.passengers",
+              "input.initial_reservation.payment_history",
+              "input.initial_reservation.reservation_id",
+              "input.initial_reservation.total_baggages",
+              "input.initial_reservation.user_id",
+              "input.request"
+            ],
+            "output_columns": [
+              "prediction.reply.outcome",
+              "prediction.reply.summary",
+              "prediction.reservation.cabin",
+              "prediction.reservation.created_at",
+              "prediction.reservation.destination",
+              "prediction.reservation.flight_type",
+              "prediction.reservation.flights",
+              "prediction.reservation.insurance",
+              "prediction.reservation.nonfree_baggages",
+              "prediction.reservation.origin",
+              "prediction.reservation.passengers",
+              "prediction.reservation.payment_history",
+              "prediction.reservation.reservation_id",
+              "prediction.reservation.total_baggages",
+              "prediction.reservation.user_id",
+              "prediction.version",
+              "target.task",
+              "evidence.conversation",
+              "evidence.cost_usd",
+              "evidence.elapsed_seconds",
+              "evidence.execution_id"
+            ],
+            "score_columns": [
+              "error",
+              "execution_errors",
+              "outcome_matches_state",
+              "passengers_and_booking_preserved",
+              "payment_correct",
+              "policy_compliant",
+              "requested_itinerary",
+              "task_success",
+              "unrequested_itinerary_change",
+              "untouched_flights_preserved",
+              "write_confirmed"
+            ],
+            "image_columns": []
+          },
+          "request_digest": "c31c8dc5ac276a1bd21333f231e84d1c2695bbe01c72418b2b34a9f1a2311b9d",
+          "backend": "weave",
+          "status": "published",
+          "verified": true,
+          "marker": {
+            "_type": "eval-table",
+            "ncols": 47,
+            "nrows": 4,
+            "log_mode": "IMMUTABLE",
+            "evaluate_call_id": "01a1dc05-1df0-736e-8850-540572f473e0"
+          },
+          "evaluate_call_id": "01a1dc05-1df0-736e-8850-540572f473e0",
+          "row_count": 4,
+          "verification": "Completed evaluation; all row identities, non-image inputs/outputs, and scores",
+          "image_content_verified": false
+        },
+        "native": {
+          "_type": "eval-table",
+          "ncols": 47,
+          "nrows": 4,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1dc05-1df0-736e-8850-540572f473e0"
+        },
+        "native_status": "published",
+        "native_backend": "weave",
+        "native_verified": true,
+        "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/153b9314dde18eeae708655e06e44a8f",
+        "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=20bhs7t84tb"
+      },
+      "repaired": {
+        "summary_fingerprint": "26418452acfc58ce77ffdf54bf8e247eff628104dc0924a070845b15e821d2df",
+        "comparison_name": "airline-development",
+        "condition": "repaired",
+        "run_id": "78f9be3c598ba431549568bdda1edfc3",
+        "wandb_status": "published",
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/78f9be3c598ba431549568bdda1edfc3",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/airline-development-repaired-cases:H9MqnZUQuiDVQOSwUrKr1MTGsrzToxjxLFHyTzY2VTE",
+        "weave_call_id": "01a1dc05-5999-71cb-a004-105ec823e7ec",
+        "weave_evaluated": true,
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/airline-development-repaired-evaluation:JV1dmYmXczCuAtrlt88YXSkUFGmzYoDmxshgAnpku3U",
+        "weave_status": "published",
+        "weave_verified": true,
+        "native_transport": {
+          "column_roles": {
+            "input_columns": [
+              "case_id",
+              "input.initial_reservation.cabin",
+              "input.initial_reservation.created_at",
+              "input.initial_reservation.destination",
+              "input.initial_reservation.flight_type",
+              "input.initial_reservation.flights",
+              "input.initial_reservation.insurance",
+              "input.initial_reservation.nonfree_baggages",
+              "input.initial_reservation.origin",
+              "input.initial_reservation.passengers",
+              "input.initial_reservation.payment_history",
+              "input.initial_reservation.reservation_id",
+              "input.initial_reservation.total_baggages",
+              "input.initial_reservation.user_id",
+              "input.request"
+            ],
+            "output_columns": [
+              "prediction.reply.outcome",
+              "prediction.reply.summary",
+              "prediction.reservation.cabin",
+              "prediction.reservation.created_at",
+              "prediction.reservation.destination",
+              "prediction.reservation.flight_type",
+              "prediction.reservation.flights",
+              "prediction.reservation.insurance",
+              "prediction.reservation.nonfree_baggages",
+              "prediction.reservation.origin",
+              "prediction.reservation.passengers",
+              "prediction.reservation.payment_history",
+              "prediction.reservation.reservation_id",
+              "prediction.reservation.total_baggages",
+              "prediction.reservation.user_id",
+              "prediction.version",
+              "target.task",
+              "evidence.conversation",
+              "evidence.cost_usd",
+              "evidence.elapsed_seconds",
+              "evidence.execution_id"
+            ],
+            "score_columns": [
+              "error",
+              "execution_errors",
+              "outcome_matches_state",
+              "passengers_and_booking_preserved",
+              "payment_correct",
+              "policy_compliant",
+              "requested_itinerary",
+              "task_success",
+              "unrequested_itinerary_change",
+              "untouched_flights_preserved",
+              "write_confirmed"
+            ],
+            "image_columns": []
+          },
+          "request_digest": "c75ab195f0dfd273b2dad0b9bb607ddda4b82779365901af0030da9269b1b75f",
+          "backend": "weave",
+          "status": "published",
+          "verified": true,
+          "marker": {
+            "_type": "eval-table",
+            "ncols": 47,
+            "nrows": 4,
+            "log_mode": "IMMUTABLE",
+            "evaluate_call_id": "01a1dc05-6ede-703d-9097-e70e711edba9"
+          },
+          "evaluate_call_id": "01a1dc05-6ede-703d-9097-e70e711edba9",
+          "row_count": 4,
+          "verification": "Completed evaluation; all row identities, non-image inputs/outputs, and scores",
+          "image_content_verified": false
+        },
+        "native": {
+          "_type": "eval-table",
+          "ncols": 47,
+          "nrows": 4,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1dc05-6ede-703d-9097-e70e711edba9"
+        },
+        "native_status": "published",
+        "native_backend": "weave",
+        "native_verified": true,
+        "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/78f9be3c598ba431549568bdda1edfc3",
+        "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=20bhs7t84tb"
+      }
+    },
+    "final": {
+      "baseline": {
+        "summary_fingerprint": "26418452acfc58ce77ffdf54bf8e247eff628104dc0924a070845b15e821d2df",
+        "comparison_name": "airline-final",
+        "condition": "baseline",
+        "run_id": "6e61f9742d2bd73de556495259b40011",
+        "wandb_status": "published",
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/6e61f9742d2bd73de556495259b40011",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/airline-final-baseline-cases:pInHQvYL8FaPYwICIunzm4gaCfIjB8PFS7IHyjSj7wc",
+        "weave_call_id": "01a1dc05-aecd-7b59-ba80-fcbd8fe0a965",
+        "weave_evaluated": true,
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/airline-final-baseline-evaluation:Y59eQNEtdFdUSpKaCyb5kqBxgOXruMHCoRyGkaDqZf4",
+        "weave_status": "published",
+        "weave_verified": true,
+        "native_transport": {
+          "column_roles": {
+            "input_columns": [
+              "case_id",
+              "input.initial_reservation.cabin",
+              "input.initial_reservation.created_at",
+              "input.initial_reservation.destination",
+              "input.initial_reservation.flight_type",
+              "input.initial_reservation.flights",
+              "input.initial_reservation.insurance",
+              "input.initial_reservation.nonfree_baggages",
+              "input.initial_reservation.origin",
+              "input.initial_reservation.passengers",
+              "input.initial_reservation.payment_history",
+              "input.initial_reservation.reservation_id",
+              "input.initial_reservation.total_baggages",
+              "input.initial_reservation.user_id",
+              "input.request"
+            ],
+            "output_columns": [
+              "prediction.reply.outcome",
+              "prediction.reply.summary",
+              "prediction.reservation.cabin",
+              "prediction.reservation.created_at",
+              "prediction.reservation.destination",
+              "prediction.reservation.flight_type",
+              "prediction.reservation.flights",
+              "prediction.reservation.insurance",
+              "prediction.reservation.nonfree_baggages",
+              "prediction.reservation.origin",
+              "prediction.reservation.passengers",
+              "prediction.reservation.payment_history",
+              "prediction.reservation.reservation_id",
+              "prediction.reservation.total_baggages",
+              "prediction.reservation.user_id",
+              "prediction.version",
+              "target.task",
+              "evidence.conversation",
+              "evidence.cost_usd",
+              "evidence.elapsed_seconds",
+              "evidence.execution_id"
+            ],
+            "score_columns": [
+              "error",
+              "execution_errors",
+              "outcome_matches_state",
+              "passengers_and_booking_preserved",
+              "payment_correct",
+              "policy_compliant",
+              "requested_itinerary",
+              "task_success",
+              "unrequested_itinerary_change",
+              "untouched_flights_preserved",
+              "write_confirmed"
+            ],
+            "image_columns": []
+          },
+          "request_digest": "a52fb6ed5f4c516184dc9e2081e0a5c7edcc441a5a256fee402e72c9c3e94bf2",
+          "backend": "weave",
+          "status": "published",
+          "verified": true,
+          "marker": {
+            "_type": "eval-table",
+            "ncols": 47,
+            "nrows": 6,
+            "log_mode": "IMMUTABLE",
+            "evaluate_call_id": "01a1dc05-c492-708b-89b2-e15bc28d51a9"
+          },
+          "evaluate_call_id": "01a1dc05-c492-708b-89b2-e15bc28d51a9",
+          "row_count": 6,
+          "verification": "Completed evaluation; all row identities, non-image inputs/outputs, and scores",
+          "image_content_verified": false
+        },
+        "native": {
+          "_type": "eval-table",
+          "ncols": 47,
+          "nrows": 6,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1dc05-c492-708b-89b2-e15bc28d51a9"
+        },
+        "native_status": "published",
+        "native_backend": "weave",
+        "native_verified": true,
+        "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/6e61f9742d2bd73de556495259b40011",
+        "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=vbwds1mbejv"
+      },
+      "repaired": {
+        "summary_fingerprint": "26418452acfc58ce77ffdf54bf8e247eff628104dc0924a070845b15e821d2df",
+        "comparison_name": "airline-final",
+        "condition": "repaired",
+        "run_id": "b76342ec86c76151084f51ba07c330ec",
+        "wandb_status": "published",
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/b76342ec86c76151084f51ba07c330ec",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/airline-final-repaired-cases:WajkjYcA5HzJLVjC7PqBUSJFkd2fhAQCadTu4y91vfc",
+        "weave_call_id": "01a1dc05-f42d-74b6-9eca-4bd918ece693",
+        "weave_evaluated": true,
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/airline-final-repaired-evaluation:NXUj1hfBbibzc5XGjmELm87UxcWgREfR3kXyE6rXgVE",
+        "weave_status": "published",
+        "weave_verified": true,
+        "native_transport": {
+          "column_roles": {
+            "input_columns": [
+              "case_id",
+              "input.initial_reservation.cabin",
+              "input.initial_reservation.created_at",
+              "input.initial_reservation.destination",
+              "input.initial_reservation.flight_type",
+              "input.initial_reservation.flights",
+              "input.initial_reservation.insurance",
+              "input.initial_reservation.nonfree_baggages",
+              "input.initial_reservation.origin",
+              "input.initial_reservation.passengers",
+              "input.initial_reservation.payment_history",
+              "input.initial_reservation.reservation_id",
+              "input.initial_reservation.total_baggages",
+              "input.initial_reservation.user_id",
+              "input.request"
+            ],
+            "output_columns": [
+              "prediction.reply.outcome",
+              "prediction.reply.summary",
+              "prediction.reservation.cabin",
+              "prediction.reservation.created_at",
+              "prediction.reservation.destination",
+              "prediction.reservation.flight_type",
+              "prediction.reservation.flights",
+              "prediction.reservation.insurance",
+              "prediction.reservation.nonfree_baggages",
+              "prediction.reservation.origin",
+              "prediction.reservation.passengers",
+              "prediction.reservation.payment_history",
+              "prediction.reservation.reservation_id",
+              "prediction.reservation.total_baggages",
+              "prediction.reservation.user_id",
+              "prediction.version",
+              "target.task",
+              "evidence.conversation",
+              "evidence.cost_usd",
+              "evidence.elapsed_seconds",
+              "evidence.execution_id"
+            ],
+            "score_columns": [
+              "error",
+              "execution_errors",
+              "outcome_matches_state",
+              "passengers_and_booking_preserved",
+              "payment_correct",
+              "policy_compliant",
+              "requested_itinerary",
+              "task_success",
+              "unrequested_itinerary_change",
+              "untouched_flights_preserved",
+              "write_confirmed"
+            ],
+            "image_columns": []
+          },
+          "request_digest": "bf959ec8ab7835b7f23da95207b535b25ff213f53362b5cb6bead41015ff491e",
+          "backend": "weave",
+          "status": "published",
+          "verified": true,
+          "marker": {
+            "_type": "eval-table",
+            "ncols": 47,
+            "nrows": 6,
+            "log_mode": "IMMUTABLE",
+            "evaluate_call_id": "01a1dc06-0a17-7b6f-9c86-393b33a8e7a4"
+          },
+          "evaluate_call_id": "01a1dc06-0a17-7b6f-9c86-393b33a8e7a4",
+          "row_count": 6,
+          "verification": "Completed evaluation; all row identities, non-image inputs/outputs, and scores",
+          "image_content_verified": false
+        },
+        "native": {
+          "_type": "eval-table",
+          "ncols": 47,
+          "nrows": 6,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1dc06-0a17-7b6f-9c86-393b33a8e7a4"
+        },
+        "native_status": "published",
+        "native_backend": "weave",
+        "native_verified": true,
+        "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/b76342ec86c76151084f51ba07c330ec",
+        "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=vbwds1mbejv"
+      }
+    },
+    "subsequent": {
+      "baseline": {
+        "summary_fingerprint": "26418452acfc58ce77ffdf54bf8e247eff628104dc0924a070845b15e821d2df",
+        "comparison_name": "airline-subsequent",
+        "condition": "baseline",
+        "run_id": "c786194dbc62194080e2c8f713e82095",
+        "wandb_status": "published",
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/c786194dbc62194080e2c8f713e82095",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/airline-subsequent-baseline-cases:h8hk37YjF9bFwznaSugFQY6ZhB7o4sSNVKJwOLmVFLE",
+        "weave_call_id": "01a1dc06-50e1-7b1b-9c2b-5b689255cbb3",
+        "weave_evaluated": true,
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/airline-subsequent-baseline-evaluation:kJPgJCFr2yzKVVpjySBwAqvOXaPhleyduhjgBRJlaAk",
+        "weave_status": "published",
+        "weave_verified": true,
+        "native_transport": {
+          "column_roles": {
+            "input_columns": [
+              "case_id",
+              "input.initial_reservation.cabin",
+              "input.initial_reservation.created_at",
+              "input.initial_reservation.destination",
+              "input.initial_reservation.flight_type",
+              "input.initial_reservation.flights",
+              "input.initial_reservation.insurance",
+              "input.initial_reservation.nonfree_baggages",
+              "input.initial_reservation.origin",
+              "input.initial_reservation.passengers",
+              "input.initial_reservation.payment_history",
+              "input.initial_reservation.reservation_id",
+              "input.initial_reservation.total_baggages",
+              "input.initial_reservation.user_id",
+              "input.request"
+            ],
+            "output_columns": [
+              "prediction.reply.outcome",
+              "prediction.reply.summary",
+              "prediction.reservation.cabin",
+              "prediction.reservation.created_at",
+              "prediction.reservation.destination",
+              "prediction.reservation.flight_type",
+              "prediction.reservation.flights",
+              "prediction.reservation.insurance",
+              "prediction.reservation.nonfree_baggages",
+              "prediction.reservation.origin",
+              "prediction.reservation.passengers",
+              "prediction.reservation.payment_history",
+              "prediction.reservation.reservation_id",
+              "prediction.reservation.total_baggages",
+              "prediction.reservation.user_id",
+              "prediction.version",
+              "target.task",
+              "evidence.conversation",
+              "evidence.cost_usd",
+              "evidence.elapsed_seconds",
+              "evidence.execution_id"
+            ],
+            "score_columns": [
+              "error",
+              "execution_errors",
+              "outcome_matches_state",
+              "passengers_and_booking_preserved",
+              "payment_correct",
+              "policy_compliant",
+              "requested_itinerary",
+              "task_success",
+              "unrequested_itinerary_change",
+              "untouched_flights_preserved",
+              "write_confirmed"
+            ],
+            "image_columns": []
+          },
+          "request_digest": "f78616a68ddd76df3b939a211b64eddafc74c477d6b624205f174468f85439d1",
+          "backend": "weave",
+          "status": "published",
+          "verified": true,
+          "marker": {
+            "_type": "eval-table",
+            "ncols": 47,
+            "nrows": 4,
+            "log_mode": "IMMUTABLE",
+            "evaluate_call_id": "01a1dc06-67b3-758c-b15d-ae9bb7909cab"
+          },
+          "evaluate_call_id": "01a1dc06-67b3-758c-b15d-ae9bb7909cab",
+          "row_count": 4,
+          "verification": "Completed evaluation; all row identities, non-image inputs/outputs, and scores",
+          "image_content_verified": false
+        },
+        "native": {
+          "_type": "eval-table",
+          "ncols": 47,
+          "nrows": 4,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1dc06-67b3-758c-b15d-ae9bb7909cab"
+        },
+        "native_status": "published",
+        "native_backend": "weave",
+        "native_verified": true,
+        "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/c786194dbc62194080e2c8f713e82095",
+        "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=c39ly5vmnii"
+      },
+      "repaired": {
+        "summary_fingerprint": "26418452acfc58ce77ffdf54bf8e247eff628104dc0924a070845b15e821d2df",
+        "comparison_name": "airline-subsequent",
+        "condition": "repaired",
+        "run_id": "14415e9202dc1ec0c6df978b7be961c7",
+        "wandb_status": "published",
+        "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/14415e9202dc1ec0c6df978b7be961c7",
+        "dataset": "weave:///wandb/forge-workshop-kit/object/airline-subsequent-repaired-cases:Y0qXFfsEbT2iY5advYTsRrJxBOz65IDhrbQQrMaKYw8",
+        "weave_call_id": "01a1dc06-969c-70f7-bfe3-f12825b2d7d8",
+        "weave_evaluated": true,
+        "evaluation": "weave:///wandb/forge-workshop-kit/object/airline-subsequent-repaired-evaluation:uTJ36TAEIGvE1yRQlH5OaEe00pXQNrNRhiSTnOBOpQ0",
+        "weave_status": "published",
+        "weave_verified": true,
+        "native_transport": {
+          "column_roles": {
+            "input_columns": [
+              "case_id",
+              "input.initial_reservation.cabin",
+              "input.initial_reservation.created_at",
+              "input.initial_reservation.destination",
+              "input.initial_reservation.flight_type",
+              "input.initial_reservation.flights",
+              "input.initial_reservation.insurance",
+              "input.initial_reservation.nonfree_baggages",
+              "input.initial_reservation.origin",
+              "input.initial_reservation.passengers",
+              "input.initial_reservation.payment_history",
+              "input.initial_reservation.reservation_id",
+              "input.initial_reservation.total_baggages",
+              "input.initial_reservation.user_id",
+              "input.request"
+            ],
+            "output_columns": [
+              "prediction.reply.outcome",
+              "prediction.reply.summary",
+              "prediction.reservation.cabin",
+              "prediction.reservation.created_at",
+              "prediction.reservation.destination",
+              "prediction.reservation.flight_type",
+              "prediction.reservation.flights",
+              "prediction.reservation.insurance",
+              "prediction.reservation.nonfree_baggages",
+              "prediction.reservation.origin",
+              "prediction.reservation.passengers",
+              "prediction.reservation.payment_history",
+              "prediction.reservation.reservation_id",
+              "prediction.reservation.total_baggages",
+              "prediction.reservation.user_id",
+              "prediction.version",
+              "target.task",
+              "evidence.conversation",
+              "evidence.cost_usd",
+              "evidence.elapsed_seconds",
+              "evidence.execution_id"
+            ],
+            "score_columns": [
+              "error",
+              "execution_errors",
+              "outcome_matches_state",
+              "passengers_and_booking_preserved",
+              "payment_correct",
+              "policy_compliant",
+              "requested_itinerary",
+              "task_success",
+              "unrequested_itinerary_change",
+              "untouched_flights_preserved",
+              "write_confirmed"
+            ],
+            "image_columns": []
+          },
+          "request_digest": "22cd3a2617b04e61d18f9a3a6c28b27f9bbdb8568935a457d78a9586ae838812",
+          "backend": "weave",
+          "status": "published",
+          "verified": true,
+          "marker": {
+            "_type": "eval-table",
+            "ncols": 47,
+            "nrows": 4,
+            "log_mode": "IMMUTABLE",
+            "evaluate_call_id": "01a1dc06-abaa-75be-8a70-e71ab624918a"
+          },
+          "evaluate_call_id": "01a1dc06-abaa-75be-8a70-e71ab624918a",
+          "row_count": 4,
+          "verification": "Completed evaluation; all row identities, non-image inputs/outputs, and scores",
+          "image_content_verified": false
+        },
+        "native": {
+          "_type": "eval-table",
+          "ncols": 47,
+          "nrows": 4,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1dc06-abaa-75be-8a70-e71ab624918a"
+        },
+        "native_status": "published",
+        "native_backend": "weave",
+        "native_verified": true,
+        "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/14415e9202dc1ec0c6df978b7be961c7",
+        "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=c39ly5vmnii"
+      }
+    }
+  },
+  "report": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Monitor-an-airline-service-agent:-recorded-qualification--VmlldzoxODMwOTA4Ng==",
+  "links": {
+    "Example conversation": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3673f9ec7c917166a808d6473195a2ae",
+    "Monitoring rule": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/edit",
+    "Starting-agent saved view": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/views/01a1dc0a-3ea9-73bd-b0b8-bd7ecd7d9951"
+  },
+  "explanation_judge": {
+    "judgment": {
+      "supported": true,
+      "unresolved": false,
+      "reason": "Every claim in the final explanation is backed by tool results. The initial reservation read timed out (tool-0) but was immediately retried successfully (tool-1), which is a recovered error, not an unresolved issue. The quote showed HAT061 on 2024-05-19 at $158 vs. HAT007 at $168, a fare difference of -$20 (tool-2). The passenger was asked and approved before any change (tool-3), and a profile payment method was used (tool-4, tool-5). The saved reservation in tool-5 confirms HAT007 was replaced with HAT061 on 2024-05-19 ($158), the return HAT174 on 2024-05-29 ($114), both passengers (Daiki and Chen Muller), and economy cabin unchanged, with a -$20 refund posted to credit_card_2408938. The passenger request is fully resolved.",
+      "event_ids": [
+        "3673f9ec7c917166a808d6473195a2ae/tool-0",
+        "3673f9ec7c917166a808d6473195a2ae/tool-1",
+        "3673f9ec7c917166a808d6473195a2ae/tool-2",
+        "3673f9ec7c917166a808d6473195a2ae/tool-3",
+        "3673f9ec7c917166a808d6473195a2ae/tool-4",
+        "3673f9ec7c917166a808d6473195a2ae/tool-5"
+      ]
+    },
+    "source_execution": "3673f9ec7c917166a808d6473195a2ae",
+    "status": "complete",
+    "trace_context": {
+      "agent_name": "airline-judge-7cb8b0f78c0d4a42b6049f483a5eba18"
+    },
+    "stage_id": "2890729382de3af9a1a49965ff506e62",
+    "trace": {
+      "trace_id": "a69b15883c6889e9c13c97259e15710b",
+      "conversation_id": "2890729382de3af9a1a49965ff506e62",
+      "verified": true,
+      "expected": 2,
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/2890729382de3af9a1a49965ff506e62",
+      "span_ids": {},
+      "context": {},
+      "agent_name": "airline-judge-7cb8b0f78c0d4a42b6049f483a5eba18",
+      "stored_spans": 2
+    }
+  },
+  "native_monitoring": {
+    "rows": [
+      {
+        "conversation_id": "3b9e01071db66203948618ef8689c231",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3b9e01071db66203948618ef8689c231"
+      },
+      {
+        "conversation_id": "3673f9ec7c917166a808d6473195a2ae",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3673f9ec7c917166a808d6473195a2ae"
+      },
+      {
+        "conversation_id": "57494ef1f50a95e90a653097305a298b",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/57494ef1f50a95e90a653097305a298b"
+      },
+      {
+        "conversation_id": "a0e038c71b770cf939042887ae2d3d46",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/a0e038c71b770cf939042887ae2d3d46"
+      },
+      {
+        "conversation_id": "36d6a6ead217440313e791b0f29e0049",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/36d6a6ead217440313e791b0f29e0049"
+      },
+      {
+        "conversation_id": "439c1c71ab22a74db01ff6400ac73f02",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/439c1c71ab22a74db01ff6400ac73f02"
+      },
+      {
+        "conversation_id": "89934243a387fc4af3b51e8c735f6226",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/89934243a387fc4af3b51e8c735f6226"
+      },
+      {
+        "conversation_id": "0340b08684318847f005179160c389b6",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/0340b08684318847f005179160c389b6"
+      },
+      {
+        "conversation_id": "c3cbaccf979a98d6b14c86ada0e54416",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c3cbaccf979a98d6b14c86ada0e54416"
+      },
+      {
+        "conversation_id": "bfa5c788fe4fffff86802d542d3d4630",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/bfa5c788fe4fffff86802d542d3d4630"
+      },
+      {
+        "conversation_id": "b1a514d4bcdbeb08464a6ceaa9c03290",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/b1a514d4bcdbeb08464a6ceaa9c03290"
+      },
+      {
+        "conversation_id": "cafc735454107266e7ca608441a5e42f",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/cafc735454107266e7ca608441a5e42f"
+      },
+      {
+        "conversation_id": "4bfaac1c2d8de2b1f9b4d9efdb16bdb8",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/4bfaac1c2d8de2b1f9b4d9efdb16bdb8"
+      },
+      {
+        "conversation_id": "c143c9e01a0b2ad6e088c83fbf0fd555",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c143c9e01a0b2ad6e088c83fbf0fd555"
+      },
+      {
+        "conversation_id": "bdb96facf289757dc5d13497832c29dd",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/bdb96facf289757dc5d13497832c29dd"
+      },
+      {
+        "conversation_id": "59abcac801c83562f54d9a96c7795e45",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/59abcac801c83562f54d9a96c7795e45"
+      },
+      {
+        "conversation_id": "bb75a45409d9b745ba6268743067f2e1",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/bb75a45409d9b745ba6268743067f2e1"
+      },
+      {
+        "conversation_id": "6cbc9047bdbf5afaee65377799e519f7",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/6cbc9047bdbf5afaee65377799e519f7"
+      },
+      {
+        "conversation_id": "060e495956be115c04dfd02a84a204ae",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/060e495956be115c04dfd02a84a204ae"
+      },
+      {
+        "conversation_id": "fcf56dcf92f693ab1766d7c5f7573ee0",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/fcf56dcf92f693ab1766d7c5f7573ee0"
+      },
+      {
+        "conversation_id": "edff01ec824cf9473bfac3a7b10d6f6c",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/edff01ec824cf9473bfac3a7b10d6f6c"
+      },
+      {
+        "conversation_id": "42e0d00abc95a617333ca144a44976be",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/42e0d00abc95a617333ca144a44976be"
+      },
+      {
+        "conversation_id": "c54b7d9127aaa76d1d8f9981c3f01205",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c54b7d9127aaa76d1d8f9981c3f01205"
+      },
+      {
+        "conversation_id": "30a89913c60a05ba3e415eb79296c44c",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/30a89913c60a05ba3e415eb79296c44c"
+      },
+      {
+        "conversation_id": "2d232ad5f6fe5efe57a47fc460e9617b",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/2d232ad5f6fe5efe57a47fc460e9617b"
+      },
+      {
+        "conversation_id": "9fe8b30cd94e40980daa60476d6fad7f",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/9fe8b30cd94e40980daa60476d6fad7f"
+      },
+      {
+        "conversation_id": "89cb4ee269140f20e83324d34dcc836e",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/89cb4ee269140f20e83324d34dcc836e"
+      },
+      {
+        "conversation_id": "dc2d9ceecdecbd29b3b2970543469af9",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/dc2d9ceecdecbd29b3b2970543469af9"
+      },
+      {
+        "conversation_id": "1761e6dfae0ac4752c3503db006a5a35",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/1761e6dfae0ac4752c3503db006a5a35"
+      },
+      {
+        "conversation_id": "04456dae43fe01e0f2810f18afbb9db9",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/04456dae43fe01e0f2810f18afbb9db9"
+      },
+      {
+        "conversation_id": "777c1b8e91b4742b57e2bf8f2ef424b0",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/777c1b8e91b4742b57e2bf8f2ef424b0"
+      },
+      {
+        "conversation_id": "bf2bc5d919dddddfe593c87be07c8f09",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/bf2bc5d919dddddfe593c87be07c8f09"
+      },
+      {
+        "conversation_id": "46f6982eea37816324d2f1f254c925e8",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/46f6982eea37816324d2f1f254c925e8"
+      },
+      {
+        "conversation_id": "f409debfb2c2005469668ab7d9c479f2",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f409debfb2c2005469668ab7d9c479f2"
+      },
+      {
+        "conversation_id": "506b79b97d872b8dd00758548cebcaff",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/506b79b97d872b8dd00758548cebcaff"
+      },
+      {
+        "conversation_id": "e6dfb4764456d8f5189c6319c2a5fcfb",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/e6dfb4764456d8f5189c6319c2a5fcfb"
+      },
+      {
+        "conversation_id": "d59a7a78846597e5fdde2ffdfa9aca96",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/d59a7a78846597e5fdde2ffdfa9aca96"
+      },
+      {
+        "conversation_id": "5df21b5976382f7784a8a129937d2704",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/5df21b5976382f7784a8a129937d2704"
+      },
+      {
+        "conversation_id": "3c054e24cfe0a82a62e99709e1ce95c1",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3c054e24cfe0a82a62e99709e1ce95c1"
+      },
+      {
+        "conversation_id": "a1ddc899c8cdc2b73f19152464c620cb",
+        "status": "unobserved",
+        "prediction": null,
+        "explanation": "No AI assignment observed. It may be pending or a completed no-match; this API does not distinguish them.",
+        "assignments": [],
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/a1ddc899c8cdc2b73f19152464c620cb"
+      }
+    ],
+    "tag_id": "01a1dbfc-34e0-7540-a690-0fb598377ae6",
+    "read_at": 1794692799.448919,
+    "processing_coverage": null,
+    "cost_usd": null,
+    "native_billing": "Native tag judging is outside the notebook inference allowance."
+  },
+  "insights": {
+    "weeks": {
+      "first_week": "2026-11-02",
+      "latest_week": "2026-11-02"
+    },
+    "clustering": [
+      {
+        "signature_type": "intent",
+        "completed_at": "2026-11-14T03:02:48.800148Z",
+        "window_start": "2026-11-07T03:00:15.435899Z",
+        "window_end": "2026-11-14T03:00:15.435899Z"
+      }
+    ]
+  },
+  "native_alignment_tests": [
+    {
+      "id": "baa6338f12d769acf71d0e3aa87bfb71c3dd03c1711d3488f01910cd4b505c58",
+      "tag_id": "01a1dbfc-34e0-7540-a690-0fb598377ae6",
+      "example": {
+        "id": "01a1dbfe-4603-7cf7-ab2f-f03951d7041a",
+        "tag_id": "01a1dbfc-34e0-7540-a690-0fb598377ae6",
+        "conversation_id": "de37d1e213a2dbae8135bf67e769909c",
+        "trace_id": "94efb04a19afc22befa6c2f1ae5429b1",
+        "ground_truth_status": "labeled",
+        "ground_truth": "match",
+        "inserted_at": "2026-11-14T21:37:17Z",
+        "updated_at": "2026-11-14T21:37:17Z"
+      },
+      "criteria": "Tag a turn when its recorded booking write removes or changes a flight the passenger asked to keep, and the booking is not restored within the available turn. Compare the requested change, original itinerary, write arguments and returned booking. A successful API response is not enough. Do not tag legitimate one-way trips, an authorized connection-to-nonstop replacement, an explicitly requested whole-itinerary change, a failure recovered without an unwanted booking change, or a request awaiting confirmation with no write. If the turn lacks the original itinerary or passenger requirements, do not infer a violation from fewer flights alone.",
+      "criteria_fingerprint": "617c4be0f780fee1e1c0aafd0752084e10a51b8f30b50ecb75ddaa54101a4320",
+      "status": "unavailable",
+      "started_at": 1794692237.466202,
+      "cost_usd": null,
+      "billing": "native_tag_judge",
+      "prediction": null,
+      "error": "Server error '500 Internal Server Error' for url 'https://forge.coreweave.com/api/pulse/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test?example_id=01a1dbfe-4603-7cf7-ab2f-f03951d7041a'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500",
+      "ended_at": 1794692237.8442922
+    },
+    {
+      "id": "128c56ff7b4588182a27c20bf62880bbcfd0405e98ba67f6faf68df4c7c12203",
+      "tag_id": "01a1dbfc-34e0-7540-a690-0fb598377ae6",
+      "example": {
+        "id": "01a1dbfe-4ab5-7a3a-847b-4380bbfc08e2",
+        "tag_id": "01a1dbfc-34e0-7540-a690-0fb598377ae6",
+        "conversation_id": "eb1d81f473b0ae773c833d5332493dbd",
+        "trace_id": "d2f3005dd06c2767e7bab9e113527df8",
+        "ground_truth_status": "abstained",
+        "ground_truth": null,
+        "inserted_at": "2026-11-14T21:37:18Z",
+        "updated_at": "2026-11-14T21:37:18Z"
+      },
+      "criteria": "Tag a turn when its recorded booking write removes or changes a flight the passenger asked to keep, and the booking is not restored within the available turn. Compare the requested change, original itinerary, write arguments and returned booking. A successful API response is not enough. Do not tag legitimate one-way trips, an authorized connection-to-nonstop replacement, an explicitly requested whole-itinerary change, a failure recovered without an unwanted booking change, or a request awaiting confirmation with no write. If the turn lacks the original itinerary or passenger requirements, do not infer a violation from fewer flights alone.",
+      "criteria_fingerprint": "617c4be0f780fee1e1c0aafd0752084e10a51b8f30b50ecb75ddaa54101a4320",
+      "status": "unavailable",
+      "started_at": 1794692238.629462,
+      "cost_usd": null,
+      "billing": "native_tag_judge",
+      "prediction": null,
+      "error": "Server error '500 Internal Server Error' for url 'https://forge.coreweave.com/api/pulse/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test?example_id=01a1dbfe-4ab5-7a3a-847b-4380bbfc08e2'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500",
+      "ended_at": 1794692238.8818629
+    },
+    {
+      "id": "bdc94458c6dda5c9ca3a339c6313ad32f764d1fa353b607db13acc0ec1b6814c",
+      "tag_id": "01a1dbfc-34e0-7540-a690-0fb598377ae6",
+      "example": {
+        "id": "01a1dbfe-4eb9-7684-8788-75f690fef09d",
+        "tag_id": "01a1dbfc-34e0-7540-a690-0fb598377ae6",
+        "conversation_id": "06f730e780ce7f079ba7151377b221b9",
+        "trace_id": "d5b3f23a2677393b5fefabf03455e401",
+        "ground_truth_status": "abstained",
+        "ground_truth": null,
+        "inserted_at": "2026-11-14T21:37:19Z",
+        "updated_at": "2026-11-14T21:37:19Z"
+      },
+      "criteria": "Tag a turn when its recorded booking write removes or changes a flight the passenger asked to keep, and the booking is not restored within the available turn. Compare the requested change, original itinerary, write arguments and returned booking. A successful API response is not enough. Do not tag legitimate one-way trips, an authorized connection-to-nonstop replacement, an explicitly requested whole-itinerary change, a failure recovered without an unwanted booking change, or a request awaiting confirmation with no write. If the turn lacks the original itinerary or passenger requirements, do not infer a violation from fewer flights alone.",
+      "criteria_fingerprint": "617c4be0f780fee1e1c0aafd0752084e10a51b8f30b50ecb75ddaa54101a4320",
+      "status": "unavailable",
+      "started_at": 1794692239.754051,
+      "cost_usd": null,
+      "billing": "native_tag_judge",
+      "prediction": null,
+      "error": "Server error '500 Internal Server Error' for url 'https://forge.coreweave.com/api/pulse/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test?example_id=01a1dbfe-4eb9-7684-8788-75f690fef09d'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500",
+      "ended_at": 1794692240.099979
+    },
+    {
+      "id": "1cf803bdbb2d07d03f6ff70b791436751ae4e428c015a26fe5eec3d3316c4bc6",
+      "tag_id": "01a1dbfc-34e0-7540-a690-0fb598377ae6",
+      "example": {
+        "id": "01a1dbfe-53a9-7175-b8fa-248d56eed23f",
+        "tag_id": "01a1dbfc-34e0-7540-a690-0fb598377ae6",
+        "conversation_id": "2e67a8589ffab493febf1322e403c903",
+        "trace_id": "d2778789818c0af1898bd3d245921aac",
+        "ground_truth_status": "abstained",
+        "ground_truth": null,
+        "inserted_at": "2026-11-14T21:37:20Z",
+        "updated_at": "2026-11-14T21:37:20Z"
+      },
+      "criteria": "Tag a turn when its recorded booking write removes or changes a flight the passenger asked to keep, and the booking is not restored within the available turn. Compare the requested change, original itinerary, write arguments and returned booking. A successful API response is not enough. Do not tag legitimate one-way trips, an authorized connection-to-nonstop replacement, an explicitly requested whole-itinerary change, a failure recovered without an unwanted booking change, or a request awaiting confirmation with no write. If the turn lacks the original itinerary or passenger requirements, do not infer a violation from fewer flights alone.",
+      "criteria_fingerprint": "617c4be0f780fee1e1c0aafd0752084e10a51b8f30b50ecb75ddaa54101a4320",
+      "status": "unavailable",
+      "started_at": 1794692240.954083,
+      "cost_usd": null,
+      "billing": "native_tag_judge",
+      "prediction": null,
+      "error": "Server error '500 Internal Server Error' for url 'https://forge.coreweave.com/api/pulse/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test?example_id=01a1dbfe-53a9-7175-b8fa-248d56eed23f'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500",
+      "ended_at": 1794692241.222983
+    },
+    {
+      "id": "ad1cace3938de0714a2319cfc53ab0d6b5f97b2808ffe7a07b45758147a4f9b5",
+      "tag_id": "01a1dbfc-34e0-7540-a690-0fb598377ae6",
+      "example": {
+        "id": "01a1dbfe-5813-703a-b290-d7f9c08455c7",
+        "tag_id": "01a1dbfc-34e0-7540-a690-0fb598377ae6",
+        "conversation_id": "0e43c668a89d7728db4ee0f4d803c41d",
+        "trace_id": "ea9595d5c0e6ce3248fdbe58a0105442",
+        "ground_truth_status": "abstained",
+        "ground_truth": null,
+        "inserted_at": "2026-11-14T21:37:21Z",
+        "updated_at": "2026-11-14T21:37:22Z"
+      },
+      "criteria": "Tag a turn when its recorded booking write removes or changes a flight the passenger asked to keep, and the booking is not restored within the available turn. Compare the requested change, original itinerary, write arguments and returned booking. A successful API response is not enough. Do not tag legitimate one-way trips, an authorized connection-to-nonstop replacement, an explicitly requested whole-itinerary change, a failure recovered without an unwanted booking change, or a request awaiting confirmation with no write. If the turn lacks the original itinerary or passenger requirements, do not infer a violation from fewer flights alone.",
+      "criteria_fingerprint": "617c4be0f780fee1e1c0aafd0752084e10a51b8f30b50ecb75ddaa54101a4320",
+      "status": "unavailable",
+      "started_at": 1794692242.082762,
+      "cost_usd": null,
+      "billing": "native_tag_judge",
+      "prediction": null,
+      "error": "Server error '500 Internal Server Error' for url 'https://forge.coreweave.com/api/pulse/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test?example_id=01a1dbfe-5813-703a-b290-d7f9c08455c7'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500",
+      "ended_at": 1794692242.3766
+    },
+    {
+      "id": "922c15de3e04c506666694501511a2d0d04e0037e67df7cc10fcaa840e543b48",
+      "tag_id": "01a1dbfc-34e0-7540-a690-0fb598377ae6",
+      "example": {
+        "id": "01a1dbfe-5c7e-79e5-950a-247cb5304e8f",
+        "tag_id": "01a1dbfc-34e0-7540-a690-0fb598377ae6",
+        "conversation_id": "ee7672e6932b61e3451f94678343b9be",
+        "trace_id": "0a229a0767f912c4214e4177acf748e2",
+        "ground_truth_status": "abstained",
+        "ground_truth": null,
+        "inserted_at": "2026-11-14T21:37:23Z",
+        "updated_at": "2026-11-14T21:37:23Z"
+      },
+      "criteria": "Tag a turn when its recorded booking write removes or changes a flight the passenger asked to keep, and the booking is not restored within the available turn. Compare the requested change, original itinerary, write arguments and returned booking. A successful API response is not enough. Do not tag legitimate one-way trips, an authorized connection-to-nonstop replacement, an explicitly requested whole-itinerary change, a failure recovered without an unwanted booking change, or a request awaiting confirmation with no write. If the turn lacks the original itinerary or passenger requirements, do not infer a violation from fewer flights alone.",
+      "criteria_fingerprint": "617c4be0f780fee1e1c0aafd0752084e10a51b8f30b50ecb75ddaa54101a4320",
+      "status": "unavailable",
+      "started_at": 1794692243.21235,
+      "cost_usd": null,
+      "billing": "native_tag_judge",
+      "prediction": null,
+      "error": "Server error '500 Internal Server Error' for url 'https://forge.coreweave.com/api/pulse/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test?example_id=01a1dbfe-5c7e-79e5-950a-247cb5304e8f'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500",
+      "ended_at": 1794692243.523712
+    }
+  ],
+  "automatic_tagging_disabled": true,
+  "native_tag_id": "01a1dbfc-34e0-7540-a690-0fb598377ae6",
+  "validation": {
+    "domain_live": "40 completed conversations",
+    "authored_cells": {
+      "notebook_tests": 10,
+      "cells": 72,
+      "actions": 35,
+      "exercise_references": 20,
+      "worked_answers_supplied": true
+    },
+    "external_account": "not verified",
+    "human_rehearsal": "not completed",
+    "package_tests": {
+      "passed": 365,
+      "warnings": 7,
+      "seconds": 70.89
+    },
+    "browser": {
+      "saved_view_verified": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/views/01a1dc0a-3ea9-73bd-b0b8-bd7ecd7d9951",
+      "version_filter": "custom airline.version=baseline",
+      "native_agent_version_options_available": false,
+      "full_current_participant_path": "not established"
+    },
+    "native_publication": {
+      "verified_version_tables": 6,
+      "verified_prediction_rows": 28
+    },
+    "runtime_source_limit": "Saved trace_context metadata and broader learner-tool exception recording were added after live qualification. Exact prior source is preserved with execution artifacts; latest runtime is not byte-identical to the 40-run source. A mocked-provider test verifies RuntimeError receipt persistence and next-step observation. No live execution was repeated.",
+    "free_regression": "Two actual saved controlled calibration cases; learner functions executed; zero model/publication calls; repeat reused saved stage.",
+    "learner_tool_error_regression": {
+      "check": "RuntimeError from the learner itinerary builder is durably saved with arguments, result/error and timestamps; the next request receives that observation. The unchanged booking fails the requested-change check.",
+      "new_model_requests": 0,
+      "domain_tests_passed": 17
+    },
+    "final_suite": {
+      "passed": 369,
+      "warnings": 7,
+      "seconds": 57.73
+    },
+    "authored_cell_tests": 13
+  },
+  "free_regression_proof": {
+    "path": "examples/airline-monitoring/regression-proof.json",
+    "explanation": "examples/airline-monitoring/regression-proof.md",
+    "stage_id": "e07a62312db1b1d3a82d0348755b01d4",
+    "source_executions": [
+      "de37d1e213a2dbae8135bf67e769909c",
+      "eb1d81f473b0ae773c833d5332493dbd"
+    ],
+    "cases": 2,
+    "new_model_requests": 0,
+    "publication_calls": 0,
+    "repeated_stage_reused": true,
+    "repaired_passed": true,
+    "legacy_case_passes": [
+      false,
+      true
+    ],
+    "repaired_case_passes": [
+      true,
+      true
+    ],
+    "scope": "Local itinerary-adapter checks; excluded from live quality and native monitor accuracy.",
+    "review_origin": "Canonical qualification-agent worked reviews; no human rehearsal."
+  }
+}

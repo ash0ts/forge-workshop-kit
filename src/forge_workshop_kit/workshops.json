@@ -5,7 +5,7 @@
       "slug": "starter",
       "id": "starter",
       "kind": "starter",
-      "title": "Forge Workshop Kit · Starter",
+      "title": "Forge Workshop Kit \u00b7 Starter",
       "workflow_version": "1",
       "extras": [],
       "steps": [
@@ -21,7 +21,7 @@
       "slug": "facilitator",
       "id": "facilitator",
       "kind": "monitor",
-      "title": "Forge Workshop Kit · Progress monitor",
+      "title": "Forge Workshop Kit \u00b7 Progress monitor",
       "workflow_version": "1",
       "extras": [],
       "steps": [],
@@ -32,7 +32,7 @@
       "slug": "pending_inc",
       "id": "pending-direct-teaching",
       "kind": "workshop",
-      "title": "Pending, Inc. · Your project",
+      "title": "Pending, Inc. \u00b7 Your project",
       "workflow_version": "1",
       "extras": [
         "pending"
@@ -233,7 +233,7 @@
             "cell_id": "pending_inc/action/check_pending_tool",
             "function": "my_invoice_tool",
             "activity": "implement",
-            "task": "Complete my_invoice_tool: select the requested account, filter payments by invoice_id, and return that account’s refunds without changing its state.",
+            "task": "Complete my_invoice_tool: select the requested account, filter payments by invoice_id, and return that account\u2019s refunds without changing its state.",
             "check_control": "check_pending_tool",
             "run_control": "check_pending_tool",
             "prerequisites": [
@@ -295,7 +295,7 @@
               "loop",
               "observation"
             ],
-            "expected_output": "Model spans match the starting ticket’s actual requests; missing usage is not replaced with invented counts.",
+            "expected_output": "Model spans match the starting ticket\u2019s actual requests; missing usage is not replaced with invented counts.",
             "forge_investigation": "Open a starting-ticket model span. Match its input messages and response to the preceding tool result.",
             "function_source": "src/forge_workshop_kit/pending/teaching.py",
             "run_label": "Freeze this executor and run the two starting tickets"
@@ -306,7 +306,7 @@
             "cell_id": "pending_inc/action/check_recovery",
             "function": "recover_access",
             "activity": "implement",
-            "task": "Reuse the timed-out write’s original operation_id, then read onboarding_status. Compare both recovery procedures from the same starting state.",
+            "task": "Reuse the timed-out write\u2019s original operation_id, then read onboarding_status. Compare both recovery procedures from the same starting state.",
             "check_control": "check_recovery",
             "run_control": "check_recovery",
             "prerequisites": [
@@ -322,7 +322,7 @@
             "cell_id": "pending_inc/action/pending_judge",
             "function": "my_state_check",
             "activity": "implement",
-            "task": "For the billing ticket, require exactly one refund of 4,900 cents. Score the saved account state, not the employee’s summary.",
+            "task": "For the billing ticket, require exactly one refund of 4,900 cents. Score the saved account state, not the employee\u2019s summary.",
             "check_control": "check_pending_scorer",
             "run_control": "pending_judge",
             "prerequisites": [
@@ -379,7 +379,7 @@
             ],
             "expected_output": "Two rounds of proposals, probes, tested composition, and saved lessons, including unchanged versions when retained.",
             "forge_investigation": "Select a branch and match its changed files, proposal rationale, executed harness, and Agent Lens conversation.",
-            "run_label": "Round 1 · Ask for two competing changes; then follow the current phase"
+            "run_label": "Round 1 \u00b7 Ask for two competing changes; then follow the current phase"
           }
         ],
         "free_check_tests": [
@@ -506,7 +506,7 @@
             {
               "key": "error",
               "label": "GOES error",
-              "unit": "log10 W/m²",
+              "unit": "log10 W/m\u00b2",
               "direction": "min",
               "aggregate": "mean",
               "report": true,
@@ -553,7 +553,7 @@
               "data"
             ],
             "expected_output": "One prediction per window and the validation MAE for copying the latest reading.",
-            "forge_investigation": "Find the baseline’s dataset identity, date split, saved predictions, and error.",
+            "forge_investigation": "Find the baseline\u2019s dataset identity, date split, saved predictions, and error.",
             "function_source": "src/forge_workshop_kit/solar_teaching.py"
           },
           {
@@ -562,7 +562,7 @@
             "cell_id": "solar_autoresearch/action/run_search",
             "function": "training_loss",
             "activity": "implement",
-            "task": "Complete the measurement model’s training_loss by averaging squared errors over the valid mask.",
+            "task": "Complete the measurement model\u2019s training_loss by averaging squared errors over the valid mask.",
             "check_control": "check_measurement",
             "run_control": "run_search",
             "prerequisites": [
@@ -637,7 +637,7 @@
               "data",
               "flux-metric"
             ],
-            "expected_output": "The free forward-pass check passes; the explicit run compares the fixed recipe’s validation error with persistence.",
+            "expected_output": "The free forward-pass check passes; the explicit run compares the fixed recipe\u2019s validation error with persistence.",
             "forge_investigation": "Open the repair run and find its source, training-fitted scale, 1,200 updates, and saved validation forecast.",
             "function_source": "examples/solar/qualification/goes_scaled.py"
           },
@@ -655,7 +655,7 @@
               "flux-metric"
             ],
             "expected_output": "The recorded recipe and loss history explain what trained; lower training loss alone is not the completion criterion.",
-            "forge_investigation": "Compare the repair’s loss history and validation error with the earlier search and persistence runs.",
+            "forge_investigation": "Compare the repair\u2019s loss history and validation error with the earlier search and persistence runs.",
             "function_source": "examples/solar/qualification/goes_scaled.py"
           },
           {
@@ -671,7 +671,7 @@
               "data"
             ],
             "expected_output": "Both architectures return a future image of the expected shape and train on identical image windows.",
-            "forge_investigation": "Compare the direct and residual runs’ source, predictions, and validation errors.",
+            "forge_investigation": "Compare the direct and residual runs\u2019 source, predictions, and validation errors.",
             "function_source": "examples/solar/candidate.py"
           },
           {
@@ -687,7 +687,7 @@
               "data"
             ],
             "expected_output": "The local image checks pass; both manual models use the same authored training loss.",
-            "forge_investigation": "Open each manual image model’s candidate.py and loss history before comparing its validation forecast.",
+            "forge_investigation": "Open each manual image model\u2019s candidate.py and loss history before comparing its validation forecast.",
             "function_source": "examples/solar/candidate.py"
           },
           {
@@ -850,7 +850,7 @@
         ]
       ],
       "comparison_labels": {
-        "healthy": "Working release · regression cohort",
+        "healthy": "Working release \u00b7 regression cohort",
         "faulty": "Controlled label-order defect",
         "repaired": "Repaired release wrapper",
         "rollback": "Restored previous release"
@@ -909,7 +909,7 @@
           ]
         },
         "banking-routing-release-drill": {
-          "title": "Controlled release drill · review-pool regression cases",
+          "title": "Controlled release drill \u00b7 review-pool regression cases",
           "metrics": [
             {
               "key": "macro_f1",
@@ -1001,7 +1001,7 @@
             "expected_output": "Two fitted classifiers with validation predictions.",
             "forge_investigation": "Compare preprocessing, configuration, and macro F1.",
             "activity": "implement",
-            "task": "Construct and return a LogisticRegression estimator with the specified settings. The run action fits it on TF–IDF and frozen sentence features."
+            "task": "Construct and return a LogisticRegression estimator with the specified settings. The run action fits it on TF\u2013IDF and frozen sentence features."
           },
           {
             "id": "review",
@@ -1049,7 +1049,7 @@
             "expected_output": "The repaired loader maps each probability column back to its original intent and reproduces healthy predictions on the fixed review-pool cases.",
             "forge_investigation": "Compare one wrong route with the healthy and repaired rows; find the unchanged probabilities and changed intent ordering.",
             "activity": "implement",
-            "task": "Repair label_names to preserve the classifier’s class order. First prepare and reload the release, then run the deliberately faulty loader; test your repair on that same saved cohort."
+            "task": "Repair label_names to preserve the classifier\u2019s class order. First prepare and reload the release, then run the deliberately faulty loader; test your repair on that same saved cohort."
           },
           {
             "id": "release-repair",
@@ -1459,12 +1459,12 @@
             "cell_id": "transit_factory/action/setup_trace",
             "function": "instrument_tool",
             "activity": "revise",
-            "task": "Inspect instrument_tool and add a descriptive task attribute. Preserve the operation’s worker/task identities and actual timestamps.",
+            "task": "Inspect instrument_tool and add a descriptive task attribute. Preserve the operation\u2019s worker/task identities and actual timestamps.",
             "check_control": null,
             "run_control": "setup_trace",
             "prerequisites": [],
             "expected_output": "A setup Tool span appears in your project; the same writer records subsequent worker tools.",
-            "forge_investigation": "Find the added attribute and task identity on the setup span, then on a builder’s tool span."
+            "forge_investigation": "Find the added attribute and task identity on the setup span, then on a builder\u2019s tool span."
           },
           {
             "id": "acceptance",
@@ -1486,7 +1486,7 @@
             "cell_id": "transit_factory/action/run_solo",
             "function": "build_worker_request",
             "activity": "implement",
-            "task": "Build the worker’s request from its approved task, interface contract, current source, and selected lessons. Keep reserved answers out of context.",
+            "task": "Build the worker\u2019s request from its approved task, interface contract, current source, and selected lessons. Keep reserved answers out of context.",
             "check_control": "worker_check",
             "run_control": "run_solo",
             "prerequisites": [
@@ -1511,7 +1511,7 @@
               "setup",
               "acceptance"
             ],
-            "expected_output": "A selected read/edit/test operation returns the actual observation to the worker’s next request.",
+            "expected_output": "A selected read/edit/test operation returns the actual observation to the worker\u2019s next request.",
             "forge_investigation": "Follow one chosen operation through its arguments, tool result, and following model request.",
             "function_source": "src/forge_workshop_kit/factory_teaching.py",
             "check_label": "Check my build_worker_request code"
@@ -1541,7 +1541,7 @@
             "cell_id": "transit_factory/action/run_team",
             "function": "claim_task",
             "activity": "implement",
-            "task": "Call the task board’s atomic claim operation before starting a worker. Compare it with the deliberately unsafe read-then-write race.",
+            "task": "Call the task board\u2019s atomic claim operation before starting a worker. Compare it with the deliberately unsafe read-then-write race.",
             "check_control": "tasks_check",
             "run_control": "run_team",
             "prerequisites": [
@@ -1550,7 +1550,7 @@
               "acceptance"
             ],
             "expected_output": "Two simultaneous attempts produce exactly one owner for a task.",
-            "forge_investigation": "Find the accepted ownership claim before the worker’s first edit and follow that task through integration.",
+            "forge_investigation": "Find the accepted ownership claim before the worker\u2019s first edit and follow that task through integration.",
             "function_source": "src/forge_workshop_kit/factory_teaching.py",
             "check_label": "Check my ready_tasks code"
           },
@@ -1610,6 +1610,507 @@
           "tests/test_factory.py::test_dependencies_require_integration_not_worker_finish",
           "tests/test_factory.py::test_claim_is_atomic_and_does_not_reclaim_a_live_worker"
         ]
+      }
+    },
+    {
+      "slug": "airline_monitoring",
+      "id": "airline-monitoring",
+      "kind": "workshop",
+      "title": "Monitor an airline service agent and build better evaluations",
+      "workflow_version": "1",
+      "extras": [],
+      "steps": [
+        [
+          "setup",
+          "Connect and instrument"
+        ],
+        [
+          "booking",
+          "Inspect the booking"
+        ],
+        [
+          "discovery",
+          "Run discovery traffic"
+        ],
+        [
+          "investigate",
+          "Investigate in Agent Lens"
+        ],
+        [
+          "align",
+          "Review a monitoring rule"
+        ],
+        [
+          "monitor",
+          "Check new traffic"
+        ],
+        [
+          "curate",
+          "Build regression cases"
+        ],
+        [
+          "repair",
+          "Repair itinerary handling"
+        ],
+        [
+          "final",
+          "Evaluate reserved bookings"
+        ],
+        [
+          "traffic",
+          "Monitor the next batch"
+        ],
+        [
+          "report",
+          "Explain the result"
+        ]
+      ],
+      "checkpoint_prefixes": [
+        [
+          "setup",
+          "setup"
+        ],
+        [
+          "booking",
+          "booking"
+        ],
+        [
+          "discovery",
+          "discovery"
+        ],
+        [
+          "investigate",
+          "investigate"
+        ],
+        [
+          "align",
+          "align"
+        ],
+        [
+          "monitor",
+          "monitor"
+        ],
+        [
+          "curate",
+          "curate"
+        ],
+        [
+          "repair",
+          "repair"
+        ],
+        [
+          "final",
+          "final"
+        ],
+        [
+          "traffic",
+          "traffic"
+        ],
+        [
+          "report",
+          "report"
+        ]
+      ],
+      "comparison_labels": {
+        "baseline": "Starting agent",
+        "repaired": "Itinerary repair"
+      },
+      "release_status": "technical-preview",
+      "authoring": {
+        "cells_module": "airline_monitoring_cells",
+        "notebook": "notebooks/airline_monitoring.py",
+        "deck": {
+          "directory": "airline_monitoring",
+          "title": "Monitor an airline service agent and build better evaluations",
+          "file_stem": "airline-monitoring",
+          "storyboard": "decks/airline_monitoring/scripts/build-storyboard.py"
+        },
+        "runbook": "docs/airline_monitoring-runbook.md",
+        "exercises": [
+          {
+            "id": "instrument",
+            "step": "setup",
+            "cell_id": "airline_monitoring/action/first_trace",
+            "function": "my_tool_span",
+            "check_control": "check_instrumentation",
+            "run_control": "first_trace",
+            "prerequisites": [],
+            "expected_output": "A stored setup trace with the argument, result, actual timing, and your attribute.",
+            "forge_investigation": "Open the tool span and find the attribute you added.",
+            "function_source": "src/forge_workshop_kit/airline_teaching.py"
+          },
+          {
+            "id": "booking",
+            "step": "booking",
+            "cell_id": "airline_monitoring/action/save_booking",
+            "function": null,
+            "check_control": null,
+            "run_control": "save_booking",
+            "prerequisites": [
+              "setup"
+            ],
+            "expected_output": "A request-specific statement of the flights to change and the flights to preserve.",
+            "forge_investigation": "Compare this expectation with the first saved booking read after running discovery traffic."
+          },
+          {
+            "id": "discover",
+            "step": "discovery",
+            "cell_id": "airline_monitoring/action/run_discovery",
+            "function": "my_model_span",
+            "check_control": "check_instrumentation",
+            "run_control": "run_discovery",
+            "prerequisites": [
+              "setup",
+              "booking"
+            ],
+            "expected_output": "Eight saved discovery executions with starting and resulting itineraries.",
+            "forge_investigation": "Follow one booking update from the passenger request through the tool arguments to its returned booking.",
+            "function_source": "src/forge_workshop_kit/airline_teaching.py"
+          },
+          {
+            "id": "investigate",
+            "step": "investigate",
+            "cell_id": "airline_monitoring/action/save_investigation",
+            "function": null,
+            "check_control": null,
+            "run_control": "save_investigation",
+            "prerequisites": [
+              "discovery"
+            ],
+            "expected_output": "A specific claim linked to one conversation and the operation that supports it.",
+            "forge_investigation": "In Insights, check a representative turn and a counterexample before accepting the cluster explanation."
+          },
+          {
+            "id": "calibration",
+            "step": "investigate",
+            "cell_id": "airline_monitoring/action/run_calibration",
+            "function": null,
+            "check_control": null,
+            "run_control": "run_calibration",
+            "prerequisites": [
+              "setup"
+            ],
+            "expected_output": "Six actual local tool-only simulator incidents, labeled controlled calibration; zero agent model calls.",
+            "forge_investigation": "Compare the omitted-return incident with a valid one-way booking and a request awaiting confirmation. These are not spontaneous live agent failures."
+          },
+          {
+            "id": "align",
+            "step": "align",
+            "cell_id": "airline_monitoring/action/read_native_tag",
+            "function": null,
+            "check_control": null,
+            "run_control": "read_native_tag",
+            "prerequisites": [
+              "investigate"
+            ],
+            "expected_output": "Native criteria, scope, and alignment readback; unavailable features remain explicit.",
+            "forge_investigation": "Label turns, test criteria in Alignment, then save chosen criteria before enabling the tag."
+          },
+          {
+            "id": "monitor",
+            "step": "monitor",
+            "cell_id": "airline_monitoring/action/run_monitoring",
+            "function": "my_monitor",
+            "check_control": "check_monitor",
+            "run_control": "run_monitoring",
+            "prerequisites": [
+              "align"
+            ],
+            "expected_output": "Four new executions and precision, recall, coverage, and unavailable-result counts from reviewed labels.",
+            "forge_investigation": "Inspect tagged and unflagged turns; check the selected time range and pending processing.",
+            "function_source": "src/forge_workshop_kit/airline_teaching.py"
+          },
+          {
+            "id": "native-test",
+            "step": "monitor",
+            "cell_id": "airline_monitoring/action/run_alignment_test",
+            "function": null,
+            "check_control": null,
+            "run_control": "run_alignment_test",
+            "prerequisites": [
+              "align"
+            ],
+            "expected_output": "A completed native test gives an explicit match or no-match result; unavailable tests stay missing.",
+            "forge_investigation": "Compare the returned judge reason with the same turn and your human label."
+          },
+          {
+            "id": "agreement",
+            "step": "monitor",
+            "cell_id": "airline_monitoring/action/calculate_monitor",
+            "function": "my_monitor",
+            "function_source": "src/forge_workshop_kit/airline_teaching.py",
+            "check_control": "check_monitor",
+            "run_control": "calculate_monitor",
+            "prerequisites": [
+              "align"
+            ],
+            "expected_output": "Precision and recall on reviewed explicit native tests, with judging and review coverage reported separately.",
+            "forge_investigation": "Open the native Alignment example supporting one disagreement."
+          },
+          {
+            "id": "curate",
+            "step": "curate",
+            "cell_id": "airline_monitoring/action/save_regression",
+            "function": "case_from_reviewed_turn",
+            "check_control": "check_curation",
+            "run_control": "save_regression",
+            "prerequisites": [
+              "monitor"
+            ],
+            "expected_output": "Reviewed development cases containing the original booking, request, policy, expected behavior, and source links.",
+            "forge_investigation": "Open the source turn for a curated case and verify that its starting booking matches.",
+            "function_source": "src/forge_workshop_kit/airline_teaching.py"
+          },
+          {
+            "id": "score",
+            "step": "curate",
+            "cell_id": "airline_monitoring/action/save_evaluation_code",
+            "function": "my_state_scorer",
+            "check_control": "check_state_scorer",
+            "run_control": "save_evaluation_code",
+            "prerequisites": [
+              "curate"
+            ],
+            "expected_output": "Checks that reject an unrequested itinerary change and a missing requested change.",
+            "forge_investigation": "Compare booking-state checks with the agent\u2019s final completion message.",
+            "function_source": "src/forge_workshop_kit/airline_teaching.py"
+          },
+          {
+            "id": "judge",
+            "step": "curate",
+            "cell_id": "airline_monitoring/action/save_evaluation_code",
+            "function": "my_judge_validation",
+            "check_control": "check_judge_validation",
+            "run_control": "save_evaluation_code",
+            "prerequisites": [
+              "curate"
+            ],
+            "expected_output": "A validated explanation rubric; malformed and unavailable judgments are distinct.",
+            "forge_investigation": "Read the evidence available to the explanation judge before accepting its reason.",
+            "function_source": "src/forge_workshop_kit/airline_teaching.py"
+          },
+          {
+            "id": "explanation",
+            "step": "repair",
+            "cell_id": "airline_monitoring/action/run_explanation_judge",
+            "function": "my_judge_validation",
+            "function_source": "src/forge_workshop_kit/airline_teaching.py",
+            "check_control": "check_judge_validation",
+            "run_control": "run_explanation_judge",
+            "prerequisites": [
+              "repair"
+            ],
+            "expected_output": "One explicit saved explanation judgment, or an unavailable result, using the participant rubric and validator.",
+            "forge_investigation": "Open the actual judge request, cited events, and final booking before accepting the judgment."
+          },
+          {
+            "id": "regression",
+            "step": "repair",
+            "cell_id": "airline_monitoring/action/run_regression",
+            "function": "my_itinerary_builder",
+            "function_source": "src/forge_workshop_kit/airline_teaching.py",
+            "check_control": "check_repair",
+            "run_control": "run_regression",
+            "prerequisites": [
+              "curate"
+            ],
+            "expected_output": "A free paired adapter test uses the actual curated requests and starting bookings; every repaired case must pass before live development comparisons.",
+            "forge_investigation": "Open each regression case\u2019s source turn and distinguish the controlled adapter drill from live agent executions."
+          },
+          {
+            "id": "repair",
+            "step": "repair",
+            "cell_id": "airline_monitoring/action/run_development",
+            "function": "my_itinerary_builder",
+            "check_control": "check_repair",
+            "run_control": "run_development",
+            "prerequisites": [
+              "curate"
+            ],
+            "expected_output": "Eight matched executions on four development bookings, including the full resulting itinerary.",
+            "forge_investigation": "Compare the executed repair, tool arguments, booking state, and trace on the same request.",
+            "function_source": "src/forge_workshop_kit/airline_teaching.py"
+          },
+          {
+            "id": "freeze",
+            "step": "final",
+            "cell_id": "airline_monitoring/action/freeze_version",
+            "function": null,
+            "check_control": null,
+            "run_control": "freeze_version",
+            "prerequisites": [
+              "repair"
+            ],
+            "expected_output": "The tested itinerary code and monitoring criteria are fixed for comparison.",
+            "forge_investigation": "Open the exact source and criteria snapshot attached to the frozen version."
+          },
+          {
+            "id": "final",
+            "step": "final",
+            "cell_id": "airline_monitoring/action/run_final",
+            "function": null,
+            "check_control": null,
+            "run_control": "run_final",
+            "prerequisites": [
+              "final"
+            ],
+            "expected_output": "Twelve executions: starting and repaired agents on six reserved bookings.",
+            "forge_investigation": "In EvalTables, align the same case and inspect preserved flights, completion, time, cost, and missing judgments."
+          },
+          {
+            "id": "traffic",
+            "step": "traffic",
+            "cell_id": "airline_monitoring/action/run_subsequent",
+            "function": null,
+            "check_control": null,
+            "run_control": "run_subsequent",
+            "prerequisites": [
+              "final"
+            ],
+            "expected_output": "Eight executions: two versions on four subsequent requests, with the frozen monitoring criteria.",
+            "forge_investigation": "Check whether the same tag detects remaining issues on both versions."
+          },
+          {
+            "id": "conclude",
+            "step": "report",
+            "cell_id": "airline_monitoring/action/publish_report",
+            "function": null,
+            "check_control": null,
+            "run_control": "publish_report",
+            "prerequisites": [
+              "traffic"
+            ],
+            "expected_output": "A Report explaining monitor quality, agent behavior, regression coverage, and limits.",
+            "forge_investigation": "Verify one Report claim against its conversation and matching evaluation row."
+          },
+          {
+            "id": "stop-tag",
+            "step": "report",
+            "cell_id": "airline_monitoring/action/confirm_tag_off",
+            "function": null,
+            "check_control": null,
+            "run_control": "confirm_tag_off",
+            "prerequisites": [
+              "traffic"
+            ],
+            "expected_output": "Native readback confirms that automatic judging for this workshop tag is disabled.",
+            "forge_investigation": "Open the tag and confirm its disabled status; do not assume closing the notebook stops judging."
+          }
+        ]
+      },
+      "duration_minutes": 360,
+      "comparisons": {
+        "airline-development": {
+          "title": "Matched development bookings",
+          "metrics": [
+            {
+              "key": "task_success",
+              "label": "Correct booking outcome",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "mean",
+              "report": true
+            },
+            {
+              "key": "untouched_flights_preserved",
+              "label": "Unrequested flights preserved",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "mean",
+              "report": true
+            },
+            {
+              "key": "write_confirmed",
+              "label": "Writes confirmed",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "mean",
+              "report": true
+            },
+            {
+              "key": "execution_errors",
+              "label": "Tool errors",
+              "unit": "count",
+              "direction": "min",
+              "aggregate": "mean",
+              "report": true
+            }
+          ]
+        },
+        "airline-final": {
+          "title": "Reserved booking requests",
+          "metrics": [
+            {
+              "key": "task_success",
+              "label": "Correct booking outcome",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "mean",
+              "report": true
+            },
+            {
+              "key": "untouched_flights_preserved",
+              "label": "Unrequested flights preserved",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "mean",
+              "report": true
+            },
+            {
+              "key": "write_confirmed",
+              "label": "Writes confirmed",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "mean",
+              "report": true
+            },
+            {
+              "key": "execution_errors",
+              "label": "Tool errors",
+              "unit": "count",
+              "direction": "min",
+              "aggregate": "mean",
+              "report": true
+            }
+          ]
+        },
+        "airline-subsequent": {
+          "title": "Subsequent traffic batch",
+          "metrics": [
+            {
+              "key": "task_success",
+              "label": "Correct booking outcome",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "mean",
+              "report": true
+            },
+            {
+              "key": "untouched_flights_preserved",
+              "label": "Unrequested flights preserved",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "mean",
+              "report": true
+            },
+            {
+              "key": "write_confirmed",
+              "label": "Writes confirmed",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "mean",
+              "report": true
+            },
+            {
+              "key": "execution_errors",
+              "label": "Tool errors",
+              "unit": "count",
+              "direction": "min",
+              "aggregate": "mean",
+              "report": true
+            }
+          ]
+        }
       }
     }
   ]

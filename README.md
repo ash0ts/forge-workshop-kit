@@ -1,6 +1,6 @@
 # Forge Workshop Kit
 
-Five coding workshops for testing changes to agents and models. Build an office agent, train solar forecasts, route customer requests, inspect circuit boards, or coordinate coding agents building a transit app. Each workshop follows an actual result through its code, data, trace, and evaluation. Worked examples show a measured repair or gain; the live exercise can also tie or regress.
+Six coding workshops for testing changes to agents and models. Build an office agent, train solar forecasts, route customer requests, inspect circuit boards, coordinate coding agents, or investigate an airline agent's work. Each workshop follows an actual result through its code, data, trace, and evaluation. Worked examples distinguish implementation repairs from model improvements; live comparisons can also tie or regress.
 
 Each participant works in their own project. The facilitator can read the progress you publish, but cannot run your notebook. You use your own Forge authentication, inference access, and notebook compute.
 
@@ -13,6 +13,7 @@ Each participant works in their own project. The facilitator can read the progre
 | [Route customer requests · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view) | Compare classifiers on Banking77, review mistakes, check a judge against human labels, then release the router and repair a controlled loading defect. Five and a half hours. |
 | [Find defective parts · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view) | Compare whole-image and patch features on real VisA circuit-board photographs, spend a fixed review budget, and reproduce the selected detector. Four hours. |
 | [Build a transit app · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view) | Give two coding agents separate parts of a departure board, review and test their patches, then compare fresh workers with and without a checked lesson. Real historical MBTA schedules. Six hours. |
+| [Monitor an airline service agent · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view) | Inspect booking changes in Agent Lens, review a native tag against labeled turns, turn observations into regression cases, and test an itinerary repair. Six-hour technical preview; native AI tag tests currently return HTTP 500. Copy the template into your project or [run the source locally](notebooks/airline_monitoring.py). |
 
 Use the companion deck alongside your notebook:
 
@@ -23,8 +24,9 @@ Use the companion deck alongside your notebook:
 | Customer request routing | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/routing/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/routing/request-routing.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/routing/request-routing-source.zip) |
 | Circuit-board inspection | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/inspection/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/inspection/visual-inspection.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/inspection/visual-inspection-source.zip) |
 | Transit software factory | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/transit/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/transit/transit-factory.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/transit/transit-factory-source.zip) |
+| Airline monitoring and evaluations | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/airline-monitoring.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/airline-monitoring-source.zip) |
 
-These decks follow the current gateway-free notebooks. The [v0.7.0 release](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.7.0) includes notebooks, PDFs, and editable deck sources. Teaching datasets keep their existing versioned download links.
+These decks follow the current gateway-free notebooks. Version 0.8.0 adds the airline technical preview; its [qualification record](docs/airline-monitoring-qualification.md) separates completed checks from unavailable product features and remaining rehearsals. The [v0.7.0 release](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.7.0) remains available. Teaching datasets keep their existing versioned download links.
 
 For a short demonstration, follow the [current demo guide](docs/current-demo-guide.md). It takes you from a notebook exercise to a trace, code change, and recorded result.
 
@@ -60,6 +62,8 @@ For routing, use `--extra routing` and `notebooks/request_routing.py`. For inspe
 
 For transit, run `uv sync --frozen` and `uv run marimo edit notebooks/transit_factory.py`. It uses the shared dependencies, Python's standard library, and a bundled 57 KB timetable subset. There is no live transit API or separate app server. See the [transit exercises](docs/transit-workshop.md), [six-hour facilitator guide](docs/transit-facilitator.md), and [data provenance and prepared repairs](examples/transit/README.md).
 
+Airline also uses only the shared dependencies: run `uv sync --frozen`, `uv run wandb login`, then `uv run marimo edit notebooks/airline_monitoring.py`. Its bundled bookings are fictional records adapted from a pinned MIT-licensed Sierra tau-bench release. This is a teaching simulator with scripted passenger confirmations, not a benchmark reproduction or live airline integration. See the [source and partitions](src/forge_workshop_kit/assets/airline/provenance.json), [six-hour runbook](docs/airline_monitoring-runbook.md), and [qualification](docs/airline-monitoring-qualification.md).
+
 ## Work through an exercise
 
 Each step explains the task, shows the code to edit, and provides a local check before you run it. Afterward, look at the result and follow the **Inspect in Forge** instruction. It might ask you to find a tool’s arguments in Agent Lens or compare two forecasts in a W&B run.
@@ -71,6 +75,8 @@ Use the guided views to follow one ticket or forecast through its code and resul
 Drafts save as you edit. Completed runs save the code they used, so changing a draft doesn’t rewrite an earlier result. The notebook also uploads checkpoints as W&B Artifacts: versioned collections of your code, predictions, model weights, and progress. Check that an upload succeeded before discarding the notebook runtime. On your laptop, keep the `.workshop/` directory to resume later.
 
 The default inference allowance is $8 per workspace. You can change it during setup. It includes retries and reserves a maximum cost when a request’s usage is unavailable; it is a notebook stop, not an account-wide billing limit. Notebook compute is billed separately.
+
+In the airline workshop, native Agent Lens automatic tagging and Alignment tests use separate service billing. They are outside the notebook's inference allowance. Disable **Apply with AI** for your workshop tag when you finish; closing the notebook does not disable it. A missing tag assignment does not establish that the turn was judged negative.
 
 <details>
 <summary>If a run or upload is interrupted</summary>
@@ -92,8 +98,11 @@ The November 14 qualification adds these worked examples. Scores are not interch
 | GOES | Persistence MAE **0.192706**; residual MLP **0.162878, 0.163880, 0.163760** across seeds 17, 29, 43 | The validation-selected recipe beat persistence in all three teaching retests. Previously inspected final dates are not newly unseen data. |
 | AIA images | Changes of **+10.15%, +6.87%, −0.21%** against the manual model across the same seeds | Two improvements and one small regression. The fixed recipe did not pass the all-seed reliability gate. |
 | Transit app | One worker **10/10**; two workers **8/10**. Both follow-ups **12/18** | The faster team selected the wrong train for a UTC input. Follow-up query workers stopped at input/output limits; this does not establish a memory benefit or loss. |
+| Airline bookings | All **40/40** live conversations pass independent booking checks. Starting and repaired agents each pass **6/6** reserved and **4/4** subsequent requests. | No live quality gain was observed. A separately labeled local adapter drill demonstrates the itinerary repair; its controlled failures are not counted as live agent mistakes. |
 
 See [transit results and the captioned walkthrough](docs/transit-workshop.md), [routing evidence](docs/routing-workshop.md), [inspection evidence](docs/inspection-workshop.md), and [Solar qualification](docs/solar-qualification.md) for frozen protocols, all outcomes, sources, and limitations. Dataset labels supplied by the authors, participant reviews, and model suggestions remain distinct.
+
+The [airline qualification](docs/airline-monitoring-qualification.md) and [machine-readable results](examples/airline-monitoring/qualification.json) record all 40 conversations. They cost **$0.02330616**; one explanation-judge call brought direct inference to **$0.02401506**, with no unknown usage. Native tag judging and notebook compute are separate. Native tag configuration and manual labels were accessible, but six Alignment test requests returned HTTP 500, and Insights had no completed cluster for the new session. The workshop therefore does not claim demonstrated automatic monitoring accuracy or a ready-to-run classroom experience. External-account and human rehearsals remain outstanding.
 
 For the earlier November 13 results, Reports and dashboards, see the [rehearsal archive](docs/archive.md#november-13-rehearsals). The [demo guide](docs/current-demo-guide.md) identifies which saved run to open for each exercise.
 

@@ -177,10 +177,14 @@ def span_links(session, identity):
         return {}
     found = {}
     for index, event in enumerate(row.get('result', {}).get('events', []), 1):
-        span = trace.get('span_ids', {}).get(event.get('id'))
+        turn = next((turn for turn in trace.get('turns', [])
+                     if event.get('id') in turn.get('span_ids', {})), None)
+        # A grouped conversation has a different trace identity for each turn.
+        owner = turn if turn is not None else trace
+        span = owner.get('span_ids', {}).get(event.get('id'))
         if span:
             found[f"{index} · {event['name']}" + (' · error' if event.get('error') else '')] = (
-                trace['url'] + '/spans/turns/' + trace['trace_id'] + '/spans/' + span)
+                trace['url'] + '/spans/turns/' + owner['trace_id'] + '/spans/' + span)
     return found
 
 

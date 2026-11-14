@@ -59,8 +59,8 @@ def test_notebook_build_rejects_uv_exporter_drift(monkeypatch):
 
 
 def test_manifest_is_independent_and_preserves_workflow_identity():
-    assert {row['slug'] for row in list_templates()} == {'starter', 'facilitator', 'pending_inc', 'solar_autoresearch', 'request_routing', 'visual_inspection', 'transit_factory'}
-    assert len(list_workshops()) == 5
+    assert {row['slug'] for row in list_templates()} == {'starter', 'facilitator', 'pending_inc', 'solar_autoresearch', 'request_routing', 'visual_inspection', 'transit_factory', 'airline_monitoring'}
+    assert len(list_workshops()) == 6
     solar = get_workshop("solar-autoresearch")
     assert solar["workflow_version"] == "1"
     solar["steps"].clear()

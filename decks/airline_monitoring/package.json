@@ -1,0 +1,1 @@
+{"name":"airline-monitoring-workshop-deck","private":true,"type":"module","scripts":{"dev":"slidev --port 3063","build":"slidev build","export":"slidev export --output airline-monitoring.pdf --with-clicks --wait 2000"}}

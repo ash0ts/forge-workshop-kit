@@ -69,3 +69,17 @@ def test_32k_output_is_reserved_and_larger_requests_are_rejected(tmp_path,monkey
     with pytest.raises(ValueError,match='32768'):
         p.complete('too-large',[],max_tokens=32769)
     assert len(calls)==1
+
+
+def test_remaining_conversation_allowance_caps_transport_retries(tmp_path, monkeypatch):
+    calls = []
+    def failure(request):
+        calls.append(request)
+        return httpx.Response(500, json={'error': 'unavailable'})
+    p = provider(tmp_path, monkeypatch, failure)
+    with pytest.raises(ProviderStop):
+        p.complete('last-request', [], max_attempts=1)
+    assert len(calls) == 1
+    for invalid in [0, 4, True, 1.5]:
+        with pytest.raises(ValueError, match='attempt limit'):
+            p.complete('invalid', [], max_attempts=invalid)

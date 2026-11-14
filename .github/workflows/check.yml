@@ -22,7 +22,7 @@ jobs:
       - run: uv run --all-extras pytest -q
       - run: uv run --all-extras python scripts/build_notebooks.py
       - run: git diff --exit-code -- notebooks
-      - run: uv run --all-extras marimo check notebooks/starter.py notebooks/facilitator.py notebooks/solar_autoresearch.py notebooks/pending_inc.py notebooks/request_routing.py notebooks/visual_inspection.py notebooks/transit_factory.py
+      - run: uv run --all-extras marimo check notebooks/starter.py notebooks/facilitator.py notebooks/solar_autoresearch.py notebooks/pending_inc.py notebooks/request_routing.py notebooks/visual_inspection.py notebooks/transit_factory.py notebooks/airline_monitoring.py
   base:
     strategy:
       fail-fast: false
@@ -45,5 +45,5 @@ jobs:
         run: uv sync --frozen --no-dev
       - if: matrix.extra == 'pending'
         run: uv sync --frozen --no-dev --extra pending
-      - run: uv run --no-sync python -c "import importlib.util; from forge_workshop_kit.manifest import list_workshops; assert len(list_workshops()) == 5; assert importlib.util.find_spec('torch') is None; assert importlib.util.find_spec('sunpy') is None"
+      - run: uv run --no-sync python -c "import importlib.util; from forge_workshop_kit.manifest import list_workshops; assert len(list_workshops()) == 6; assert importlib.util.find_spec('torch') is None; assert importlib.util.find_spec('sunpy') is None"
       - run: uv run --no-sync marimo check notebooks/starter.py notebooks/facilitator.py

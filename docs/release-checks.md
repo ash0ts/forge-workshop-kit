@@ -1,44 +1,38 @@
-# Release checks · 0.7.0 technical preview
+# Release checks · 0.8.0 technical preview
 
-This release adds workshop authoring commands, a repository-local skill, stable exercise references, and a Routing release-and-recovery capstone. Routing is allocated five and a half hours. The other four workshop schedules and their experiments remain unchanged.
+This release adds the six-hour airline monitoring workshop. It follows an agent's booking operations into Agent Lens, reviewed tags, offline regression cases, a code repair, and subsequent traffic. Existing workshops, recorded outcomes, and attendee copies remain unchanged.
 
-## What the release drill measures
+The [airline qualification record](airline-monitoring-qualification.md) and [machine-readable results](../examples/airline-monitoring/qualification.json) own the live execution and publication details. This page separates that evidence from the checks still required before classroom use.
 
-The capstone uses the participant's selected Banking77 classifier without training it again. One review-pool request per intent forms a frozen regression batch. A deliberately faulty loader changes the mapping between probability columns and intent names. Participants reproduce that fault, fix the mapping, compare the same requests, and verify a rollback.
+## Observed results
 
-This is a labeled release drill. Its corrected outputs demonstrate a loader repair, not an improved classifier or a new independent test result. The official-test comparison remains separate. Registry and ARIA are optional and do not gate the exercise.
+All 40 live conversations passed the independent booking checks: eight discovery, four monitoring, eight paired development, twelve reserved, and eight subsequent executions. Starting and repaired versions each passed 6/6 reserved requests and 4/4 subsequent requests. No live quality gain was observed. These are simulated airline operations, not production conversations or an official tau-bench result.
 
-## Coverage
+The separate local adapter exercise intentionally returns only the replacement flights. Its reviewed incident and controls show whether the learner's repair preserves the rest of the booking. The replay consumes the saved reviewed cases, checks their original state and source identities, and makes no model calls. Controlled failures are labeled and excluded from live agent scores.
 
-| Check | Result |
-|---|---|
-| Free checks and domain tests | 330 tests passed locally. The release workflow also passed on macOS, Windows, and Linux. |
-| Authored notebook references | All 44 exercise references match their current functions and controls. All seven notebooks pass marimo checks and regenerate identically. |
-| Rehearsal adapters | Passive loading of all five workshops starts no execution. Replay preserved the saved workspace byte-for-byte. Live mode runs selected current action cells and retains review gates; it does not substitute historical runners. |
-| Routing browser path | Current editors and controls exercised setup, two classifier fits, one review and judge, freezing, the official-test comparisons, the complete release capstone, and the Report. The eight prompted routes and reviewed-label retraining were omitted from this capstone rehearsal. |
-| Release recovery | Exact artifact reload, controlled defect, learner-written check and repair, release decision, and verified rollback completed. A publication-only retry preserved all 19 execution results, the earlier model response, and native evaluation identities. |
-| Native publication | All 3,080 rows in each of three official-test comparisons and all 77 rows in each of four release variants passed native readback. Agent Lens spans were read back for all four release executions. |
-| Decks and packages | Five browser decks, PDFs, and source archives verified. Routing has 70 slides and 73 reveal/PDF states; all 18 new capstone frames were visually reviewed. A source archive built from a fresh temporary directory. |
-| External account and human rehearsal | Still required. Neither is implied by maintainer checks. |
+The 40 conversations cost **$0.02330616** in direct inference; one separate explanation-judge call brought the total to **$0.02401506**, with **zero bounded unknown usage**. Native tag judging and notebook compute are separate. The participant's default inference allowance remains $8.
 
-The [live capstone receipt](../evidence/v070-routing-live.json) records executed versions, scores, traces, artifacts, costs, and coverage. The [code audit](../evidence/v070-capstone-audit.json) and [deck checks](../decks/routing/notes/release-capstone-checks.json) cover their separate checks. Maintainer-supplied worked answers were used in the browser rehearsal; it is not a learner usability test.
+## Native monitoring status
 
-Opening, navigating, restoring, and replaying saved work must not train or call a model. Publication retries reuse saved results. Rehearsals preserve review gates and identify any worked answers supplied by the maintainer.
+| Capability | Qualification result |
+| --- | --- |
+| Conversation and tool/model trace export | Live executions were exported and checked against saved operation receipts; see the qualification record for identities. |
+| Native tag configuration and scope | Saved configuration was read back. |
+| Native Alignment manual labels | Accessible and saved. |
+| Native Alignment AI tests | Six requests returned HTTP 500. Their predictions remain unavailable. |
+| Insights | No clusters were available for this new session. No local grouping is presented as native Insights. |
+| Agent quality | All 40 live executions passed; the repair comparison tied. |
 
-## Observed release drill
+A missing live assignment is not an explicit negative judgment. The workshop calculates precision and recall only from completed predictions paired with human reviews of the same turn. It reports processing as unknown when the service provides assignments without a completion denominator.
 
-The healthy release routed 71 of the 77 regression requests correctly. Rotating the labels reduced that to zero without changing confidence or review coverage. The repaired loader and the downloaded prior artifact both reproduced every healthy prediction, including the six remaining classifier errors. The capstone made no model calls and trained no model. The earlier single-judge setup check cost $0.00017744 in inference; notebook compute is separate.
+## Validation boundaries
 
-Open the [native comparison](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=37umm80le0d) or [rehearsal Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Route-customer-requests-and-learn-from-mistakes:-c9407529--VmlldzoxODMwODkyNA==). The [capture](../evidence/captures/v070/routing-release-evaltables.png) shows the healthy, faulty, repaired, and rolled-back versions, in that order. The release defect was intentionally introduced; these results do not show improved model generalization.
+Domain tests cover source checksums, family-separated partitions, full-itinerary replacement, confirmation, recovered reads, participant hooks, attempt limits, protected evaluation inputs, saved-result reuse, and the reviewed-case regression replay. Current notebook checks cover free exercises, navigation without paid work, restoration, and publication-only recovery. The final suite passed 369 tests. Consult the qualification record for the test coverage and actual browser coverage; a direct runtime rehearsal does not establish complete notebook interaction coverage.
 
-## Prior experiments and releases
+Opening, editing, restoring, and inspecting results must not send model requests. Explicit execution controls spend the participant's own inference allowance. Native tag judging has separate billing, and participants must turn off **Apply with AI** when they finish.
 
-The [0.6.2 checks](archive/release-checks-v062.md) preserve earlier package, browser, publication, and cross-platform receipts. The [recorded outcomes](../README.md#what-happened-in-the-recorded-rehearsal) remain the source for the existing experiments. The release drill is additive and does not replace a tie, regression, or missing judgment with a more favorable result.
+Fresh external-account copying, native monitoring service recovery, and a human usability rehearsal remain outstanding. Maintainer execution and automated checks do not establish that participants can finish unaided. Keep this workshop labeled **technical preview** until those checks pass.
 
-## Remaining readiness gates
+## Prior releases
 
-Fresh external-account copying and human usability rehearsals remain outstanding. Maintainer publication and scripted browser checks do not establish that new participants can complete the workshop unaided. These remain technical-preview materials until those checks are completed.
-
-Native comparisons use the Weave-backed Evaluation Tables Preview path. Report the capstone's actual publication status; the earlier separate CES HTTP 500 does not establish a failure or success in this path. See [evaluation setup](evaluations.md).
-
-The participant-adjustable inference allowance remains $8. Notebook compute is separate. The release capstone requires no model API calls.
+The [0.7.0 release checks](archive/release-checks-v070.md) preserve the Routing capstone's browser, artifact, rollback, and native evaluation evidence. Earlier qualifications remain in the [archive](archive.md). Native EvalTables publication uses the Weave-backed Preview path; its status is independent of the Agent Lens Alignment HTTP 500 described above. See [evaluation setup and recovery](evaluations.md).

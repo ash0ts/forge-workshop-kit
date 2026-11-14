@@ -91,3 +91,43 @@ def test_failed_worker_keeps_its_actual_role_and_task_context(tmp_path):
     assert saved['mission'] == 'Render the departure board'
     assert all(saved[key] == value for key, value in context.items())
     assert 'parent_conversation_id' not in saved
+
+
+def test_explicit_turns_keep_one_conversation_and_exact_operation_membership(tmp_path, monkeypatch):
+    from forge_workshop_kit import traces
+    session = WorkshopSession('test/project', 'airline-monitoring', state_dir=tmp_path)
+    calls = []
+    def exported(session, identity, mission, events, requests, **kwargs):
+        calls.append((identity, events, requests, kwargs))
+        return dict(trace_id=identity, verified=True, stored_spans=1 + len(events) + len(requests),
+                    span_ids={e['id']: 'span-' + e['id'] for e in events})
+    monkeypatch.setattr(traces, 'export_trace', exported)
+    turns = [dict(id='request', messages=[dict(role='user', content='Change outbound only')],
+                  event_ids=['read'], request_ids=['model-1']),
+             dict(id='confirmation', messages=[dict(role='user', content='Yes, keep my return')],
+                  event_ids=['write'], request_ids=['model-2'])]
+    result = traces.export_turns(session, 'conversation', 'Change flight',
+        [dict(id='read'), dict(id='write')], [dict(id='model-1'), dict(id='model-2')], turns,
+        agent_name='airline-local')
+    assert len(calls) == 2 and result['stored_spans'] == 6
+    assert all(c[3]['conversation_id'] == 'conversation' for c in calls)
+    assert calls[1][3]['messages'][0]['content'] == 'Yes, keep my return'
+    turns[1]['event_ids'].append('read')
+    with pytest.raises(ValueError, match='exactly one actual turn'):
+        traces.export_turns(session, 'conversation', 'Change flight',
+            [dict(id='read'), dict(id='write')], [dict(id='model-1'), dict(id='model-2')], turns)
+
+
+def test_span_links_use_the_owning_turn_not_the_last_turn(tmp_path):
+    from forge_workshop_kit.ui import span_links
+    session = WorkshopSession('test/project', 'airline-monitoring', state_dir=tmp_path)
+    with session.stage('conversation') as stage:
+        stage.record({'events': [dict(id='read', name='get_booking'), dict(id='write', name='update_booking')]})
+    with session.transaction() as state:
+        state['publications']['trace/' + stage.id] = dict(verified=True, url='https://example.com/conversation',
+            trace_id='last', span_ids={'read': 'read-span', 'write': 'write-span'}, turns=[
+                dict(trace_id='first', span_ids={'read': 'read-span'}),
+                dict(trace_id='last', span_ids={'write': 'write-span'})])
+    links = span_links(session, stage.id)
+    assert '/turns/first/spans/read-span' in links['1 · get_booking']
+    assert '/turns/last/spans/write-span' in links['2 · update_booking']

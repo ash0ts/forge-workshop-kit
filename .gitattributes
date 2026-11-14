@@ -1,0 +1,2 @@
+# Preserve the exact pinned upstream policy bytes for checksum verification.
+src/forge_workshop_kit/assets/airline/upstream-policy.md -whitespace
