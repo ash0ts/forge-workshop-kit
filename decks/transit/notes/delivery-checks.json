@@ -1,5 +1,5 @@
 {
-  "source_sha256": "34fb8d3b7e82e75e48269c8c78c9cf179633bf7991765e2638ddbc46d9195dab",
+  "source_sha256": "f772d741c91408ea0a77e686d870289ffaa8bbf3151de4f680c339b3ddb2642a",
   "slides_checked": 94,
   "expected_slides": 94,
   "titles": [
@@ -492,6 +492,14 @@
       "click": 0
     },
     {
+      "slide": 4,
+      "click": 1
+    },
+    {
+      "slide": 4,
+      "click": 2
+    },
+    {
       "slide": 5,
       "click": 0
     },
@@ -562,6 +570,18 @@
     {
       "slide": 19,
       "click": 0
+    },
+    {
+      "slide": 19,
+      "click": 1
+    },
+    {
+      "slide": 19,
+      "click": 2
+    },
+    {
+      "slide": 19,
+      "click": 3
     },
     {
       "slide": 20,
@@ -636,10 +656,6 @@
       "click": 1
     },
     {
-      "slide": 32,
-      "click": 2
-    },
-    {
       "slide": 33,
       "click": 0
     },
@@ -674,6 +690,14 @@
     {
       "slide": 39,
       "click": 0
+    },
+    {
+      "slide": 39,
+      "click": 1
+    },
+    {
+      "slide": 39,
+      "click": 2
     },
     {
       "slide": 40,
@@ -840,6 +864,14 @@
       "click": 0
     },
     {
+      "slide": 76,
+      "click": 1
+    },
+    {
+      "slide": 76,
+      "click": 2
+    },
+    {
       "slide": 77,
       "click": 0
     },
@@ -947,6 +979,6 @@
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 191,
+  "routes_checked": 379,
   "presenter_notes": true
 }

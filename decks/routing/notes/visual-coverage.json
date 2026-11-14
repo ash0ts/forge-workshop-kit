@@ -1,0 +1,105 @@
+{
+  "scope": "Teaching visuals only; no runtime, experiment, budget or duration changes",
+  "slides": 70,
+  "reworked_slides": 16,
+  "mechanisms": 9,
+  "sequence": [
+    {
+      "slide": 10,
+      "id": "word-vector",
+      "mechanism": "vocabulary"
+    },
+    {
+      "slide": 12,
+      "id": "sentence-vector",
+      "mechanism": "vector"
+    },
+    {
+      "slide": 13,
+      "id": "construct-head",
+      "mechanism": "fit"
+    },
+    {
+      "slide": 14,
+      "id": "fit-head",
+      "mechanism": "fit"
+    },
+    {
+      "slide": 16,
+      "id": "predict-probabilities",
+      "mechanism": "fit"
+    },
+    {
+      "slide": 18,
+      "id": "intent-counts",
+      "mechanism": "metrics"
+    },
+    {
+      "slide": 19,
+      "id": "intent-average",
+      "mechanism": "metrics"
+    },
+    {
+      "slide": 22,
+      "id": "threshold-policy",
+      "mechanism": "policy"
+    },
+    {
+      "slide": 23,
+      "id": "review-margin",
+      "mechanism": "policy"
+    },
+    {
+      "slide": 27,
+      "id": "review-provenance",
+      "mechanism": "review"
+    },
+    {
+      "slide": 30,
+      "id": "two-model-tasks",
+      "mechanism": "judge"
+    },
+    {
+      "slide": 33,
+      "id": "judge-evidence",
+      "mechanism": "judge"
+    },
+    {
+      "slide": 37,
+      "id": "accepted-training",
+      "mechanism": "review"
+    },
+    {
+      "slide": 41,
+      "id": "freeze-files",
+      "mechanism": "freeze"
+    },
+    {
+      "slide": 43,
+      "id": "aligned-requests",
+      "mechanism": "freeze"
+    },
+    {
+      "slide": 60,
+      "id": "release-rollback",
+      "mechanism": "rollback"
+    }
+  ],
+  "preview": {
+    "slide": 19,
+    "path": "public/graphics-preview.png"
+  },
+  "evidence": "data/feature-example.json",
+  "derivation": "scripts/derive-visual-evidence.py",
+  "numerical_status": "TF\u2013IDF weights, embedding coordinates, validation confidences and F1 counts are derived from frozen data/results. Classifier cells and output bars are explicitly schematic.",
+  "changes": [
+    "Replaced sparse-vector label with actual token weight bars.",
+    "Replaced schematic dense vector with all 384 saved coordinates.",
+    "Replaced fit cards with classifier matrix, training update and probability outputs.",
+    "Replaced three count cards with individual requests, error destinations and F1 arithmetic.",
+    "Added validation confidence distribution behind a keyboard-operable cutoff.",
+    "Separated proposed, reference and accepted labels in a provenance diagram.",
+    "Separated schema validity, human agreement and unavailable judgments.",
+    "Made release contract order checking and rollback visible."
+  ]
+}

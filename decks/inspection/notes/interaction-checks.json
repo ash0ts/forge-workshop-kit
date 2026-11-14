@@ -1,10 +1,24 @@
 {
   "deck": "inspection",
+  "verified_via": "Native browser keyboard input",
   "slide": 19,
-  "initial": "0.7",
-  "maximum": "1",
-  "minimum": "0",
-  "keyboard_next": "0.05",
-  "errors": [],
-  "network_requests_during_interaction": 0
+  "initial": {
+    "threshold": 0.7,
+    "misses": 1,
+    "false_alarms": 1
+  },
+  "maximum": {
+    "threshold": 1,
+    "misses": 3,
+    "false_alarms": 0
+  },
+  "minimum": {
+    "threshold": 0,
+    "misses": 0,
+    "false_alarms": 2
+  },
+  "keyboard_increment": 0.05,
+  "display_only": true,
+  "publication_or_inference_triggered": false,
+  "screenshot": "/private/tmp/classification-visual-upgrade/inspection-slider.png"
 }

@@ -159,7 +159,7 @@ Source: notes/sources.md.
 
 # Predict a label for the whole board
 
-<InspectionWalk kind="data" :step="1" />
+<InspectionMechanism kind="data" :step="1" />
 
 
 <!--
@@ -174,7 +174,7 @@ Source: notes/sources.md.
 
 # Use the mask to investigate the decision
 
-<InspectionWalk kind="data" :step="2" />
+<InspectionMechanism kind="data" :step="2" />
 
 
 <!--
@@ -189,7 +189,7 @@ Source: notes/sources.md.
 
 # Reuse a fixed image encoder
 
-<InspectionWalk kind="encoder" :step="1" />
+<InspectionMechanism kind="encoder" :step="1" />
 
 
 <!--
@@ -204,7 +204,7 @@ Source: notes/sources.md.
 
 # Keep local information as well as the whole image
 
-<InspectionWalk kind="encoder" :step="2" />
+<InspectionMechanism kind="encoder" :step="2" />
 
 
 <!--
@@ -219,7 +219,7 @@ Source: notes/sources.md.
 
 # Compare local features at the same board position
 
-<InspectionWalk kind="patch" :step="1" />
+<InspectionMechanism kind="patch" :step="1" />
 
 
 <!--
@@ -234,7 +234,7 @@ Source: notes/sources.md.
 
 # Append 196 distances to the 512 whole-image values
 
-<InspectionWalk kind="patch" :step="2" />
+<InspectionMechanism kind="features" :step="2" />
 
 
 <!--
@@ -314,7 +314,7 @@ Source: notes/sources.md.
 
 # Fit on training boards; measure on validation boards
 
-<InspectionWalk kind="train" :step="1" />
+<InspectionMechanism kind="train" :step="1" />
 
 
 <!--
@@ -329,7 +329,7 @@ Source: notes/sources.md.
 
 # A detector score still needs an operating rule
 
-<InspectionWalk kind="threshold" :step="1" />
+<InspectionMechanism kind="threshold" :step="1" />
 
 
 <!--
@@ -344,7 +344,7 @@ Source: notes/sources.md.
 
 # Require 11 of the 12 validation defects to be caught
 
-<InspectionWalk kind="threshold" :step="2" />
+<InspectionMechanism kind="threshold" :step="2" />
 
 
 <!--
@@ -393,7 +393,7 @@ Source: notes/sources.md.
 
 # Calculate ranking quality before choosing one cutoff
 
-<InspectionWalk kind="ranking" :step="1" />
+<InspectionMechanism kind="ranking" :step="1" />
 
 
 <!--
@@ -408,7 +408,7 @@ Source: notes/sources.md.
 
 # Count operating errors at the chosen cutoff
 
-<InspectionWalk kind="ranking" :step="2" />
+<InspectionMechanism kind="ranking" :step="2" />
 
 
 <!--
@@ -453,7 +453,7 @@ Source: notes/sources.md.
 
 # Match the tool call to the saved validation result
 
-<InspectionWalk kind="train" :step="2" />
+<InspectionMechanism kind="train" :step="2" />
 
 
 <!--
@@ -483,7 +483,7 @@ Source: notes/sources.md.
 
 # Choose uncertain boards before opening their labels
 
-<InspectionWalk kind="review" :step="1" />
+<InspectionMechanism kind="review" :step="1" />
 
 
 <!--
@@ -498,7 +498,7 @@ Source: notes/sources.md.
 
 # Give random selection the same labeling budget
 
-<InspectionWalk kind="review" :step="2" />
+<InspectionMechanism kind="review" :step="2" />
 
 
 <!--
@@ -581,7 +581,7 @@ Source: notes/sources.md.
 
 # Freeze the preprocessing and reference bank too
 
-<InspectionWalk kind="freeze" :step="1" />
+<InspectionMechanism kind="freeze" :step="1" />
 
 
 <!--
@@ -688,7 +688,7 @@ Source: notes/sources.md.
 
 # Inspect a corrected miss
 
-<div class="figure"><img src="/images/pcb1-anomaly-048.png" alt="Actual PCB1 anomaly-048. The supplied mask marks the right-hand header-pin area."><div class="caption">Actual PCB1 anomaly-048. The supplied mask marks the right-hand header-pin area.</div></div><div class="bottom-note">Whole image missed this board; nearest-patch flagged it at its own frozen threshold.</div>
+<InspectionMechanism kind="outcomes" case-id="pcb1-anomaly-048" />
 
 
 <!--
@@ -703,7 +703,7 @@ Source: notes/sources.md.
 
 # Inspect a new miss too
 
-<div class="figure"><img src="/images/pcb1-anomaly-015.png" alt="Actual PCB1 anomaly-015. The small annotated region is near the solder/header area."><div class="caption">Actual PCB1 anomaly-015. The small annotated region is near the solder/header area.</div></div><div class="bottom-note">Whole image flagged this board; nearest-patch missed it. The average gain does not remove individual regressions.</div>
+<InspectionMechanism kind="outcomes" case-id="pcb1-anomaly-015" />
 
 
 <!--
@@ -735,7 +735,7 @@ Source: notes/sources.md.
 
 # Reproduce one score from the saved detector
 
-<InspectionWalk kind="freeze" :step="2" />
+<InspectionMechanism kind="freeze" :step="2" />
 
 
 <!--

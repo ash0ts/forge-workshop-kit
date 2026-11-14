@@ -140,6 +140,44 @@ def expand(slides, root):
         '<div class="teaching-equation"><p><strong>199 windows</strong> reuse observations across two dates.</p><p><strong>Three seeds</strong> repeat fixed training recipes with different initialization and sampling.</p><p><strong>One agent discovery</strong> produced the edits we repeated.</p></div>'+note('Neither count establishes performance across different solar periods or independent research-agent searches.'),
         'Overlapping windows are not independent solar events. The three-seed qualification tests fixed source, not three agents independently discovering the same edit. Seed seventeen and twenty-nine improve, while seed forty-three slightly regresses. The mean improvement and that regression both belong in the conclusion. A next study could predeclare different dates, more training seeds and independent agent adaptations, but this workshop does not run that study.',
         'Units of repetition and the limit of the measured improvement',source=['docs/solar-qualification.md','decks/solar/public/qualification-summary.json'])])
+    # Replace prose/arithmetic-only explanations with the intermediate values drawn
+    # beside the two source lines responsible. These views never execute training.
+    worked = {
+        'normalization-values': ('normalize',
+            'logged = np.log10(raw_flux)\nmodel_input = (logged - training_mean) / training_std',
+            'The target and persistence prediction stay in log-flux units.'),
+        'actual-baseline-error': ('error',
+            'prediction = split["persistence"]\nabsolute_errors = np.abs(prediction - split["y"])',
+            'This is one real window. Average all accepted windows to report MAE.'),
+        'batch-indexing': ('alignment',
+            'assert prediction.shape == target.shape == (batch_size, 1)\nabsolute_errors = np.abs(prediction - target)',
+            'Illustrative values. Preserve the last axis with x[:, 1, -1:].'),
+        'validation-code': ('validation',
+            'model.eval()\nwith torch.no_grad(): prediction = model(validation_x)',
+            'No optimizer step. Validation measures the weights produced by training.'),
+        'loss-change-effect': ('loss',
+            'squared_loss = ((prediction - target).square() * mask).sum() / mask.sum()\nabsolute_loss = ((prediction - target).abs() * mask).sum() / mask.sum()',
+            'The recorded edit changes the masked training objective; the fixed scorer does not change.'),
+        'zero-head-gradients': ('zero',
+            'nn.init.zeros_(self.net[-1].weight)\nnn.init.zeros_(self.net[-1].bias)',
+            'The earlier layers keep their normal initialization. Do not zero the entire network.'),
+        'repeatability': ('repetition', '',
+            '199 overlapping windows on the same two dates; three seeds repeat fixed recipes, not agent discovery.'),
+        'configs': ('search', '',
+            'The 60-update comparison is a short teaching run, not a claim about the best architecture.'),
+    }
+    for key, (mode, excerpt, caption) in worked.items():
+        row = find(key)
+        row['body'] = f'<SolarWorked mode="{mode}" :reveal="Math.min($clicks + 1, 3)" />\n\n'
+        if excerpt:
+            row['body'] += code(excerpt)
+        row['body'] += note(caption)
+        row['clicks'] = 2
+        row['kind'] = 'worked-visual'
+        row['notes'] += ' Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code.'
+        row.setdefault('source', []).append('decks/solar/components/SolarWorked.vue')
+    find('batch-indexing')['title'] = 'Keep each prediction paired with its own target'
+    find('repeatability')['title'] = 'The same image edit helped two seeds and hurt one'
     find('schedule').update(title='Six-hour session with three breaks',body='<table class="clean-table schedule"><tr><th>Minutes</th><th>Work</th></tr>'+''.join(f'<tr><td>{a}–{b}</td><td>{title}</td></tr>' for _,title,a,b,_ in SCHEDULE)+'</table>',notes='One six-hour session for a mixed room. The schedule includes fifty-five minutes of breaks. Keep introductory arithmetic beside implementation; experienced participants use the shape, broadcasting and metric checks to inspect assumptions. No extra training or paid research round has been added.')
     find('schedule')['kind']='schedule-reference'
 

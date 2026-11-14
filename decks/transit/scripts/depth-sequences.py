@@ -57,7 +57,7 @@ def deepen(slides):
         return dict(title=title,body=body,notes=notes,time=time,kind=kind,name=name,clicks=None,
                     concept=concept or title,exercise=exercise,source=source or SRC['ui'],evidence=evidence or [])
     def sequence(title, mode, stage, caption, notes, time, source, evidence=None):
-        return node(title,f'<LessonSequence mode="{mode}" :stage="{stage}"/><p class="caption">{caption}</p>',
+        return node(title,f'<TransitMechanism mode="{mode}" :stage="{stage}"/><p class="caption">{caption}</p>',
                     notes,time,source=source,evidence=evidence)
     def code(title, snippet, explanation, notes, time, *, source, name=''):
         return node(title,'```python\n'+snippet+'\n```\n<p class="caption">'+explanation+'</p>',notes,time,source=source,name=name)

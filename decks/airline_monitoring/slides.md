@@ -60,19 +60,19 @@ The requested change is HAT007 to HAT061. HAT174 stays. The agent must also chec
 
 ---
 name: replace-semantics
+clicks: 2
 ---
 
 <div class="kicker">0:09 · Airline service monitoring</div>
 
 # The API replaces the complete flight list
 
-```python {all}
-reservation.flights = new_flights
-```
-<div class="callout">The API receives the itinerary to keep. A flight omitted from that list disappears from the reservation.</div><p class="caption">Abbreviated from the pinned airline implementation. Availability and payment checks are omitted from this excerpt.</p>
+<AirlineMechanism mode="replacement" :reveal="$clicks + 1" />
 
 <!--
 A successful write says the replacement was accepted. It does not establish that the proposed replacement respected the passenger’s request. Read the upstream implementation and the workshop adapter together.
+
+Visual sequence: Trace HAT174 through both candidate API inputs. The assignment replaces the list, so the missing-return branch cannot preserve a flight it did not receive. This is an illustrative failure mechanism; the live qualification handled its bookings correctly.
 -->
 
 ---
@@ -105,16 +105,19 @@ Open the provenance file. Explain which records came from upstream and which scr
 
 ---
 name: data-groups
+clicks: 2
 ---
 
 <div class="kicker">0:18 · Airline service monitoring</div>
 
 # Keep related bookings in the same data group
 
-<div class="stages"><div>Discovery<strong>8</strong><small>Observe behavior</small></div><div>Monitor check<strong>4</strong><small>Test the saved tag</small></div><div>Development<strong>4 × 2</strong><small>Compare the repair</small></div><div>Final evaluation<strong>6 × 2</strong><small>Score frozen versions</small></div><div>Later traffic<strong>4 × 2</strong><small>Monitor both versions</small></div></div><p>Freeze assignments by passenger and reservation family before qualification. Related upstream training and test tasks cannot cross these groups.</p>
+<AirlineMechanism mode="families" :reveal="$clicks + 1" />
 
 <!--
 These are the approved execution counts, totalling 40 conversations. Development and final comparisons run the same requests once on each version. Upstream task identities overlap, so splitting task rows alone would leak related bookings.
+
+Visual sequence: Start with the family bracket, not the batch counts. The connected dots stand for related records, not three named passengers. Reveal the assigned groups, then show why putting a related task in final evaluation leaks the family across partitions. The counts are the actual frozen plan.
 -->
 
 ---
@@ -148,16 +151,19 @@ Give participants time to make the change themselves. Have one person point to t
 
 ---
 name: trace-shape
+clicks: 2
 ---
 
 <div class="kicker">0:29 · Airline service monitoring</div>
 
 # Record a conversation around the passenger’s request
 
-<div class="pipeline"><div class="">Conversation<small>One booking request</small></div><b v-click="1">→</b><div v-click="1" class="">Turn<small>Passenger input and agent work</small></div><b v-click="2">→</b><div v-click="2" class="">Spans<small>Model requests and tool calls</small></div></div><p>Keep the version and traffic-batch identity on the recorded work. A tag needs to know which behavior it is judging.</p>
+<AirlineMechanism mode="spans" :reveal="$clicks + 1" />
 
 <!--
 A conversation may contain several turns. Do not collapse unrelated requests into a single conversation. The passenger’s clarification and confirmation belong with the relevant turn evidence. Use native session and span identities from execution.
+
+Visual sequence: Read the parent tree alongside operation order. Both model calls and both tool attempts remain children of their turn. Bar width is schematic, not measured latency. Ask participants which event needs the error and which needs the returned reservation; then map them to my_model_span and my_tool_span.
 -->
 
 ---
@@ -215,16 +221,19 @@ Give participants time to make the change themselves. Have one person point to t
 
 ---
 name: read-tool
+clicks: 3
 ---
 
 <div class="kicker">0:48 · Airline service monitoring</div>
 
 # Read the booking returned by the tool
 
-<div class="bundle-list"><div>Arguments<small>What did the agent ask the API to replace?</small></div><div>Result<small>Which flights remain in the returned reservation?</small></div><div>Next model request<small>Did the agent receive that observation?</small></div><div>Final response<small>Did the explanation describe the recorded work?</small></div></div>
+<AirlineMechanism mode="loop" :reveal="$clicks + 1" />
 
 <!--
 Give everyone several minutes on one conversation. Ask them to point to the actual return flight rather than merely an exception field. If the agent was correct, record that success and continue with the labeled calibration drill for the diagnostic exercise.
+
+Visual sequence: Follow one chosen action through arguments, the state write, the observation, and the next request. The returned booking must be appended before the next model call. Ask participants to locate that exact observation in Agent Lens; the final reply alone cannot prove what the model received.
 -->
 
 ---
@@ -356,16 +365,19 @@ The initial proposed criterion is intentionally a starting hypothesis for alignm
 
 ---
 name: counterexample-nonstop
+clicks: 2
 ---
 
 <div class="kicker">1:55 · Airline service monitoring</div>
 
 # Fewer flights can be the correct result
 
-<div class="itinerary"><div class="itinerary-row"><div class="itinerary-label">Before</div><div class="segments"><div class="segment untouched"><strong>outbound-1</strong><small>First outward flight</small></div><div class="segment untouched"><strong>outbound-2</strong><small>Connecting flight</small></div><div class="segment untouched"><strong>return-1</strong><small>Return journey</small></div></div></div><div class="itinerary-row"><div class="itinerary-label">Approved change</div><div class="segments"><div class="segment changed"><strong>new-outbound</strong><small>Requested nonstop</small></div><div class="segment untouched"><strong>return-1</strong><small>Keep this flight</small></div><div class="segment ghost"><strong></strong><small>No extra segment</small></div></div></div></div><div class="itinerary-caption">Simplified segment IDs for the list operation. Open the notebook for the source reservation, flight numbers, and dates.</div><p>Two connecting flights became one nonstop. The return remains. This should not be tagged as an unrequested change.</p>
+<AirlineMechanism mode="nonstop" :reveal="$clicks + 1" />
 
 <!--
 This is the central counterexample to a naive flight-count rule. Ask the room whether changing three segments to two is sufficient evidence of failure. It is not.
+
+Visual sequence: The connecting point disappears while the origin, destination, and return remain. Ask whether fewer segments is a failure before revealing the approved nonstop. The answer depends on the request, not the count. These segment names and airport positions are illustrative.
 -->
 
 ---
@@ -384,16 +396,19 @@ Use actual reviewed turns when available. The calibration pack is a labeled teac
 
 ---
 name: tag-lifecycle
+clicks: 2
 ---
 
 <div class="kicker">2:05 · Airline service monitoring</div>
 
 # A native tag has criteria, labels, and a live state
 
-<div class="pipeline"><div class="">Draft criteria<small>Describe the behavior</small></div><b v-click="1">→</b><div v-click="1" class="">Alignment review<small>People label turns</small></div><b v-click="2">→</b><div v-click="2" class="">Test the judge<small>Compare with the reviews</small></div><b v-click="3">→</b><div v-click="3" class="">Save criteria<small>Update what the live tag uses</small></div></div><p>Alignment experiments do not change live criteria until you save them. Record the chosen criteria and experiment identity.</p>
+<AirlineMechanism mode="criteria" :reveal="$clicks + 1" />
 
 <!--
 Walk through native Tags and Alignment. Creating or editing a notebook rubric is not the same action as saving native tag criteria. Use the native identities in the readback record.
+
+Visual sequence: Keep the right-hand saved criterion in place while the Alignment draft is tested. Only the final explicit-save arrow changes live criteria. A failed Alignment test produces no judgment; it does not silently disable, update, or validate the saved live rule.
 -->
 
 ---
@@ -412,16 +427,19 @@ Read the saved criteria, Apply with AI setting, and exact workshop-agent scope. 
 
 ---
 name: judge-context
+clicks: 2
 ---
 
 <div class="kicker">2:10 · Airline service monitoring</div>
 
 # Turn context limits what the judge can know
 
-<div class="pipeline"><div class="">Passenger message<small>Requested scope</small></div><b v-click="1">→</b><div v-click="1" class="">Tool work<small>Arguments and returned state</small></div><b v-click="2">→</b><div v-click="2" class="">Judge context<small>Evidence available in this turn</small></div></div><p>If the original itinerary is absent, the judge may not be able to establish which flight was removed. Mark the review unresolved and inspect the context.</p>
+<AirlineMechanism mode="context" :reveal="$clicks + 1" />
 
 <!--
 Native judges see turn-level evidence. Do not assume every model span contains the entire conversation. The context inspection is part of the exercise; a fluent judge reason does not create missing evidence.
+
+Visual sequence: The selected turn has a write and a reply but lacks the earlier booking. Ask which evidence establishes a return was removed. In this illustrated context it is unavailable. A reviewer with the full conversation knows more than the turn-level judge; keep that context difference in the review record.
 -->
 
 ---
@@ -493,58 +511,70 @@ This is a local structured-response exercise for the explanation judge, separate
 
 ---
 name: confusion
+clicks: 2
 ---
 
 <div class="kicker">2:35 · Airline service monitoring</div>
 
 # Measure the monitor on reviewed cases
 
-<div class="confusion"><div class="head"></div><div class="head">Reviewer: failure</div><div class="head">Reviewer: no failure</div><div class="head">Tag: positive</div><div class="positive"><strong>3</strong>True positives</div><div class="incorrect"><strong>1</strong>False positive</div><div class="head">Tag: negative</div><div class="incorrect"><strong>1</strong>False negative</div><div><strong>3</strong>True negatives</div></div><p class="caption">Illustrative arithmetic: eight reviewed, processed turns. These are not workshop results.</p>
+<AirlineMechanism mode="confusion" :reveal="$clicks + 1" />
 
 <!--
 Walk through one cell at a time. The human review is the reference for this calculation; disagreement remains open to correction. Unavailable judgments are excluded from these eight processed rows and reported separately.
+
+Visual sequence: Reveal the true positives, false positive, and remaining cells in place. Human review supplies the reference labels. These eight rows are illustrative arithmetic and not a successful native Alignment result. No unavailable prediction enters this matrix.
 -->
 
 ---
 name: precision
+clicks: 1
 ---
 
 <div class="kicker">2:39 · Airline service monitoring</div>
 
 # Precision asks whether an alert deserves review
 
-<div class="formula"><code>3 / (3 + 1) = 0.75</code><div><b>Three of four alerts</b><small>match the reviewed failure label.</small></div></div><p>Low precision creates review work. Read the false positives before widening or narrowing the rule.</p><p class="caption">Illustrative arithmetic from the previous matrix. If there are no alerts, precision is unavailable.</p>
+<AirlineMechanism mode="precision" :reveal="$clicks + 1" />
 
 <!--
 The denominator is the tagged turns with a reviewed label, not all requests. Alert count cannot tell us how many failures were missed. Ask which example produced the false positive.
+
+Visual sequence: The outlined row is the denominator: all four reviewed alerts. Three are reviewed failures. The faded second row is irrelevant to precision but needed for recall. If there are no alerts, leave precision unavailable. This graphic does not describe native workshop outcomes.
 -->
 
 ---
 name: recall
+clicks: 1
 ---
 
 <div class="kicker">2:42 · Airline service monitoring</div>
 
 # Recall asks which failures the monitor missed
 
-<div class="formula"><code>3 / (3 + 1) = 0.75</code><div><b>Three of four failures</b><small>were found among reviewed, processed turns.</small></div></div><p>Review unflagged cases too. If we only inspect alerts, we cannot estimate missed failures.</p><p class="caption">Illustrative arithmetic. This small reviewed sample does not establish production recall.</p>
+<AirlineMechanism mode="recall" :reveal="$clicks + 1" />
 
 <!--
 Precision and recall happen to match in this arithmetic example, but they use different denominators. Show the missed failure cell. Review sampling affects whether these values estimate the wider traffic population.
+
+Visual sequence: The outlined column is the denominator: all four reviewed failures. One was not alerted. The same 75 percent hides a different question from precision. Review unflagged controls so this missed-failure cell can be populated. The arithmetic remains illustrative.
 -->
 
 ---
 name: coverage
+clicks: 2
 ---
 
 <div class="kicker">2:45 · Airline service monitoring</div>
 
 # Coverage tells us which turns were judged
 
-<div class="formula"><code>8 / 10 = 0.80</code><div><b>Eight of ten turns</b><small>have a completed judgment.</small></div></div><div class="comparison-grid"><div><h2>Tag absent</h2><p>A completed judgment may have been negative.</p></div><div><h2>Not processed</h2><p>No completed judgment exists yet. Keep it unknown.</p></div></div><p class="caption">Illustrative arithmetic: two additional turns have unavailable judgments.</p>
+<AirlineMechanism mode="coverage" :reveal="$clicks + 1" />
 
 <!--
 A missing tag is not enough to identify a completed negative judgment. Read processing status and identities. Keep pending, failed, insufficient-context, and scored states separate as supported by the recorded events.
+
+Visual sequence: Count the eight completed predictions, then divide by all ten eligible turns. Only after that do we join completed predictions to human reviews for the agreement matrix. The two question marks remain unknown. Positive live assignments by themselves cannot establish this denominator.
 -->
 
 ---
@@ -566,16 +596,19 @@ Give participants time to make the change themselves. Have one person point to t
 
 ---
 name: live-missingness
+clicks: 2
 ---
 
 <div class="kicker">3:00 · Airline service monitoring</div>
 
 # A missing live tag does not establish a negative judgment
 
-<p class="principle">Live tag assignments identify positive matches. An untagged turn may be negative, pending, or unavailable.</p><p>Use explicit native Alignment test results for known positive and negative predictions. Join those results to your reviews before calculating agreement.</p>
+<AirlineMechanism mode="missing" :reveal="$clicks + 1" />
 
 <!--
 Keep the live assignment view separate from the explicit Alignment-test result set. Do not infer processing coverage from positive assignments alone. Record the denominator and native result source beside any calculated rate.
+
+Visual sequence: All three branches can produce the same absent live tag. Ask what readback distinguishes them. Explicit native test outcomes can establish known positive and negative predictions; a blank assignment cannot. Keep pending, failed, and missing context separate where native records support them.
 -->
 
 ---
@@ -594,16 +627,19 @@ The native rule needs the same workspace scope for both versions but enough attr
 
 ---
 name: curation
+clicks: 2
 ---
 
 <div class="kicker">3:10 · Airline service monitoring</div>
 
 # A reviewed turn becomes a regression case
 
-<div class="pipeline"><div class="">Reviewed incident<small>A claim with supporting spans</small></div><b v-click="1">→</b><div v-click="1" class="">Reconstruct inputs<small>Request, initial booking, policy</small></div><b v-click="2">→</b><div v-click="2" class="">Define expected behavior<small>What must change or stay</small></div><b v-click="3">→</b><div v-click="3" class="">Save a case<small>Source links and dataset version</small></div></div><p>A saved conversation filter alone does not preserve the input state needed to rerun the incident.</p>
+<AirlineMechanism mode="curation" :reveal="$clicks + 1" />
 
 <!--
 Make curation an explicit code exercise. The case contains the original booking, not the already-mutated booking that caused the complaint. Keep the exact request and constraints with it.
+
+Visual sequence: The arrow into the regression case comes from before the write. The crossed arrow from the mutated booking explains a common reconstruction error. Keep the request, policy, approved scope, human review, and source identities with the initial state. This omission incident is a labeled illustration, not an invented live failure.
 -->
 
 ---
@@ -750,25 +786,19 @@ The example replaces original[0:2] with one flight and preserves original[2:]. D
 
 ---
 name: range-values
+clicks: 2
 ---
 
 <div class="kicker">4:10 · Airline service monitoring</div>
 
 # Walk through the values before running the model
 
-```python {1-3|5|6|7|all}
-original = ["outbound-1", "outbound-2", "return-1"]
-start, stop = 0, 2
-replacement = ["new-outbound"]
-
-original[:start]   # []
-replacement       # ["new-outbound"]
-original[stop:]    # ["return-1"]
-```
-<p>The complete API input becomes <code>["new-outbound", "return-1"]</code>.</p>
+<AirlineMechanism mode="slice" :reveal="$clicks + 1" />
 
 <!--
 This is a free, simplified arithmetic check. It establishes the list transformation, not whether the model selected the correct segment range or received passenger confirmation.
+
+Visual sequence: Point to index two: the half-open replacement stops before return-1. First expose the index range, then the empty prefix, replacement, and untouched suffix. The last line is the participant function’s list operation. Their free check also validates bounds and copies the data.
 -->
 
 ---
@@ -864,16 +894,19 @@ Give participants time to make the change themselves. Have one person point to t
 
 ---
 name: aligned-comparison
+clicks: 2
 ---
 
 <div class="kicker">4:54 · Airline service monitoring</div>
 
 # Read the same request across the two versions
 
-<table class="monitor-table "><thead><tr><th>Same case</th><th>Starting version</th><th>Repaired version</th></tr></thead><tbody><tr><td>Initial state</td><td>Same reservation snapshot</td><td>Same reservation snapshot</td></tr><tr><td>Executed code</td><td>Starting builder source</td><td>Frozen repair source</td></tr><tr><td>Booking outcome</td><td>Read actual final flights</td><td>Read actual final flights</td></tr><tr><td>Explanation</td><td>Inspect its own judge result</td><td>Inspect its own judge result</td></tr><tr><td>Operational measures</td><td>Time, errors, usage</td><td>Time, errors, usage</td></tr></tbody></table>
+<AirlineMechanism mode="matched" :reveal="$clicks + 1" />
 
 <!--
 Teach the alignment before opening EvalTables. Compare the complete booking state; do not substitute a tag result for deterministic correctness. Match source IDs and execution fingerprints.
+
+Visual sequence: The same case forks into two isolated initial bookings. Each uses its own recorded source and trace. The dashed link means aligned comparison, not shared mutable state or a handoff. Keep booking-state checks, explanation judgments, and monitor outcomes in separate fields.
 -->
 
 ---
@@ -906,16 +939,19 @@ Identify the shared input and the separate predictions. Open the underlying book
 
 ---
 name: recorded-results
+clicks: 2
 ---
 
 <div class="kicker">5:05 · Airline service monitoring</div>
 
 # The recorded agent comparison was a tie
 
-<table class="monitor-table "><thead><tr><th>Reserved requests</th><th>Starting agent</th><th>Agent with itinerary builder</th></tr></thead><tbody><tr><td>Final evaluation</td><td>6 / 6 task checks passed</td><td>6 / 6 task checks passed</td></tr><tr><td>Subsequent traffic</td><td>4 / 4 task checks passed</td><td>4 / 4 task checks passed</td></tr></tbody></table><p>All 40 qualification conversations passed their task checks. The live agent did not reproduce the missing-return defect.</p><p class="caption">The labeled local adapter drill demonstrates the repair mechanism separately. Native Alignment judging was unavailable, so this result says nothing about monitor accuracy.</p>
+<AirlineMechanism mode="results" :reveal="$clicks + 1" />
 
 <!--
 Preserve the successful baseline. Do not describe the helper as improving task quality on this rehearsal. The controlled drill is a real code repair, but it is not a spontaneous agent failure. These small simulated batches do not estimate production reliability.
+
+Visual sequence: Reveal the starting row first, then the repair row. All six case outcomes match; there is no passing case unique to the repair. Both versions also pass four subsequent requests. Native monitoring accuracy is unavailable. The local omission drill demonstrates a repair independently of this observed tie.
 -->
 
 ---

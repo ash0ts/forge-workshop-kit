@@ -1,0 +1,11 @@
+{
+  "description": "Atomic claim timeline, rendered from editable TransitMechanism.vue. This is a teaching diagram, not a native Forge capture.",
+  "slide": 36,
+  "title": "One short transaction assigns one owner",
+  "source": "components/TransitMechanism.vue",
+  "mode": "claim",
+  "stage": 2,
+  "source_sha256": "f772d741c91408ea0a77e686d870289ffaa8bbf3151de4f680c339b3ddb2642a",
+  "image_sha256": "d0abe7f94bf8681f9b2657921b35d34a0d15beb4a5b91a62416dcbc8526e9ddc",
+  "original_capture": ".screenshots/036.png"
+}

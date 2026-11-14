@@ -22,6 +22,8 @@ The requested change is HAT007 to HAT061. HAT174 stays. The agent must also chec
 
 A successful write says the replacement was accepted. It does not establish that the proposed replacement respected the passenger’s request. Read the upstream implementation and the workshop adapter together.
 
+Visual sequence: Trace HAT174 through both candidate API inputs. The assignment replaces the list, so the missing-return branch cannot preserve a flight it did not receive. This is an illustrative failure mechanism; the live qualification handled its bookings correctly.
+
 ## 5. A successful write can leave the wrong booking
 
 0:12
@@ -40,6 +42,8 @@ Open the provenance file. Explain which records came from upstream and which scr
 
 These are the approved execution counts, totalling 40 conversations. Development and final comparisons run the same requests once on each version. Upstream task identities overlap, so splitting task rows alone would leak related bookings.
 
+Visual sequence: Start with the family bracket, not the batch counts. The connected dots stand for related records, not three named passengers. Reveal the assigned groups, then show why putting a related task in final evaluation leaks the family across partitions. The counts are the actual frozen plan.
+
 ## 8. Your copy owns the runs and saved work
 
 0:21
@@ -57,6 +61,8 @@ Give participants time to make the change themselves. Have one person point to t
 0:29
 
 A conversation may contain several turns. Do not collapse unrelated requests into a single conversation. The passenger’s clarification and confirmation belong with the relevant turn evidence. Use native session and span identities from execution.
+
+Visual sequence: Read the parent tree alongside operation order. Both model calls and both tool attempts remain children of their turn. Bar width is schematic, not measured latency. Ask participants which event needs the error and which needs the returned reservation; then map them to my_model_span and my_tool_span.
 
 ## 11. The tracing code records the actual tool result
 
@@ -81,6 +87,8 @@ Give participants time to make the change themselves. Have one person point to t
 0:48
 
 Give everyone several minutes on one conversation. Ask them to point to the actual return flight rather than merely an exception field. If the agent was correct, record that success and continue with the labeled calibration drill for the diagnostic exercise.
+
+Visual sequence: Follow one chosen action through arguments, the state write, the observation, and the next request. The returned booking must be appended before the next model call. Ask participants to locate that exact observation in Agent Lens; the final reply alone cannot prove what the model received.
 
 ## 15. The reservation read timed out before any change
 
@@ -142,6 +150,8 @@ The initial proposed criterion is intentionally a starting hypothesis for alignm
 
 This is the central counterexample to a naive flight-count rule. Ask the room whether changing three segments to two is sufficient evidence of failure. It is not.
 
+Visual sequence: The connecting point disappears while the origin, destination, and return remain. Ask whether fewer segments is a failure before revealing the approved nonstop. The answer depends on the request, not the count. These segment names and airport positions are illustrative.
+
 ## 25. Add counterexamples before trusting the rule
 
 2:00
@@ -154,6 +164,8 @@ Use actual reviewed turns when available. The calibration pack is a labeled teac
 
 Walk through native Tags and Alignment. Creating or editing a notebook rubric is not the same action as saving native tag criteria. Use the native identities in the readback record.
 
+Visual sequence: Keep the right-hand saved criterion in place while the Alignment draft is tested. Only the final explicit-save arrow changes live criteria. A failed Alignment test produces no judgment; it does not silently disable, update, or validate the saved live rule.
+
 ## 27. Save the criteria and check the tag’s scope
 
 2:08
@@ -165,6 +177,8 @@ Read the saved criteria, Apply with AI setting, and exact workshop-agent scope. 
 2:10
 
 Native judges see turn-level evidence. Do not assume every model span contains the entire conversation. The context inspection is part of the exercise; a fluent judge reason does not create missing evidence.
+
+Visual sequence: The selected turn has a write and a reply but lacks the earlier booking. Ask which evidence establishes a return was removed. In this illustrated context it is unavailable. A reviewer with the full conversation knows more than the turn-level judge; keep that context difference in the review record.
 
 ## 29. Test your tag against reviewed turns
 
@@ -196,11 +210,15 @@ This is a local structured-response exercise for the explanation judge, separate
 
 Walk through one cell at a time. The human review is the reference for this calculation; disagreement remains open to correction. Unavailable judgments are excluded from these eight processed rows and reported separately.
 
+Visual sequence: Reveal the true positives, false positive, and remaining cells in place. Human review supplies the reference labels. These eight rows are illustrative arithmetic and not a successful native Alignment result. No unavailable prediction enters this matrix.
+
 ## 34. Precision asks whether an alert deserves review
 
 2:39
 
 The denominator is the tagged turns with a reviewed label, not all requests. Alert count cannot tell us how many failures were missed. Ask which example produced the false positive.
+
+Visual sequence: The outlined row is the denominator: all four reviewed alerts. Three are reviewed failures. The faded second row is irrelevant to precision but needed for recall. If there are no alerts, leave precision unavailable. This graphic does not describe native workshop outcomes.
 
 ## 35. Recall asks which failures the monitor missed
 
@@ -208,11 +226,15 @@ The denominator is the tagged turns with a reviewed label, not all requests. Ale
 
 Precision and recall happen to match in this arithmetic example, but they use different denominators. Show the missed failure cell. Review sampling affects whether these values estimate the wider traffic population.
 
+Visual sequence: The outlined column is the denominator: all four reviewed failures. One was not alerted. The same 75 percent hides a different question from precision. Review unflagged controls so this missed-failure cell can be populated. The arithmetic remains illustrative.
+
 ## 36. Coverage tells us which turns were judged
 
 2:45
 
 A missing tag is not enough to identify a completed negative judgment. Read processing status and identities. Keep pending, failed, insufficient-context, and scored states separate as supported by the recorded events.
+
+Visual sequence: Count the eight completed predictions, then divide by all ten eligible turns. Only after that do we join completed predictions to human reviews for the agreement matrix. The two question marks remain unknown. Positive live assignments by themselves cannot establish this denominator.
 
 ## 37. Calculate monitor quality and send new traffic
 
@@ -226,6 +248,8 @@ Give participants time to make the change themselves. Have one person point to t
 
 Keep the live assignment view separate from the explicit Alignment-test result set. Do not infer processing coverage from positive assignments alone. Record the denominator and native result source beside any calculated rate.
 
+Visual sequence: All three branches can produce the same absent live tag. Ask what readback distinguishes them. Explicit native test outcomes can establish known positive and negative predictions; a blank assignment cannot. Keep pending, failed, and missing context separate where native records support them.
+
 ## 39. Freeze the rule before comparing agent versions
 
 3:02
@@ -237,6 +261,8 @@ The native rule needs the same workspace scope for both versions but enough attr
 3:10
 
 Make curation an explicit code exercise. The case contains the original booking, not the already-mutated booking that caused the complaint. Keep the exact request and constraints with it.
+
+Visual sequence: The arrow into the regression case comes from before the write. The crossed arrow from the mutated booking explains a common reconstruction error. Keep the request, policy, approved scope, human review, and source identities with the initial state. This omission incident is a labeled illustration, not an invented live failure.
 
 ## 41. Keep enough information to replay the request
 
@@ -298,6 +324,8 @@ The example replaces original[0:2] with one flight and preserves original[2:]. D
 
 This is a free, simplified arithmetic check. It establishes the list transformation, not whether the model selected the correct segment range or received passenger confirmation.
 
+Visual sequence: Point to index two: the half-open replacement stops before return-1. First expose the index range, then the empty prefix, replacement, and untouched suffix. The last line is the participant function’s list operation. Their free check also validates bounds and copies the data.
+
 ## 51. Test the repair on matched development bookings
 
 4:15
@@ -340,6 +368,8 @@ Give participants time to make the change themselves. Have one person point to t
 
 Teach the alignment before opening EvalTables. Compare the complete booking state; do not substitute a tag result for deterministic correctness. Match source IDs and execution fingerprints.
 
+Visual sequence: The same case forks into two isolated initial bookings. Each uses its own recorded source and trace. The dashed link means aligned comparison, not shared mutable state or a handoff. Keep booking-state checks, explanation judgments, and monitor outcomes in separate fields.
+
 ## 58. Set the starting agent as the comparison reference
 
 4:59
@@ -357,6 +387,8 @@ Identify the shared input and the separate predictions. Open the underlying book
 5:05
 
 Preserve the successful baseline. Do not describe the helper as improving task quality on this rehearsal. The controlled drill is a real code repair, but it is not a spontaneous agent failure. These small simulated batches do not estimate production reliability.
+
+Visual sequence: Reveal the starting row first, then the repair row. All six case outcomes match; there is no passing case unique to the repair. Both versions also pass four subsequent requests. Native monitoring accuracy is unavailable. The local omission drill demonstrates a repair independently of this observed tie.
 
 ## 61. Report denominators and unresolved work
 

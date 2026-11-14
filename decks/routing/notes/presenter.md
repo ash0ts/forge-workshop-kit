@@ -61,11 +61,11 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Explain unigrams and bigrams with card and my card. Fit the vectorizer only on training messages so validation vocabulary does not alter the feature space. This is a standard, inexpensive baseline, not a deliberately broken model.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
 
-## 10. Turn one request into words and adjacent pairs
+## 10. Measure the words and phrases in one request
 
 0:39
 
-Read the real review-pool message aloud. The default tokenizer produces my, card, isn, here, yet; single-letter t is omitted. The diagram shows vocabulary positions, not invented TF–IDF weights. IDF and the vocabulary are fit on training text only.
+Read the real review-pool message aloud. The default tokenizer produces my, card, isn, here, yet; single-letter t is omitted. The nine nonzero TF–IDF weights are recalculated from the frozen 8,463 training messages and shown against the actual 21,527-column vocabulary. IDF and the vocabulary use training text only.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
 
 ## 11. Then change the representation
@@ -79,7 +79,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 
 0:49
 
-Compare the unchanged message with the different representation. Explain 384 as the encoder output size, not a count of hand-chosen keywords. The graphic is a schematic vector. Encoder weights stay frozen; no embedding geometry or semantic distances are fabricated.
+Compare the unchanged message with the different representation. Explain 384 as the encoder output size, not a count of hand-chosen keywords. The heatmap shows all 384 actual cached coordinates in index order. Color is signed magnitude, not semantic location. Encoder weights stay frozen.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
 
 ## 13. Construct the estimator before fitting it
@@ -201,7 +201,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Run only eight preselected development requests. This sample teaches model behavior and trace inspection; it is too small to rank against classifiers evaluated on 3,080 final cases. The provider is fixed and charged to the participant allowance.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
 
-## 30. There are two different model exercises
+## 30. The judge reviews a route in a separate call
 
 2:25
 
@@ -401,7 +401,7 @@ Give learners time to make the change before showing a worked answer. This relea
 
 5:08
 
-Require an explicit rollback action. Preserve the faulty release and its evidence for diagnosis rather than deleting it. The required path uses Artifacts in the participant project; Registry permissions are optional.
+Reload the exact previous artifact, then check the same fixed case IDs. No fit or model request is required. Keep the faulty version for diagnosis. Registry can organize selected artifacts but does not deploy this Python predictor.
 
 ## 61. Restore the previous version and verify it
 

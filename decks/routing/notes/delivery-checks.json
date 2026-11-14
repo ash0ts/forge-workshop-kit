@@ -1,5 +1,5 @@
 {
-  "source_sha256": "cbab6b77bd6dd97bc6ece76e0aeb26e488b5d5113a8c97f60f6855c5f0862be8",
+  "source_sha256": "6da5bf143e5b82cb551da4a4664952f80955777cf2819fd1df48ffb3355f843f",
   "slides_checked": 70,
   "expected_slides": 70,
   "titles": [
@@ -51,7 +51,7 @@
     {
       "number": 10,
       "key": "word-vector",
-      "title": "Turn one request into words and adjacent pairs"
+      "title": "Measure the words and phrases in one request"
     },
     {
       "number": 11,
@@ -151,7 +151,7 @@
     {
       "number": 30,
       "key": "two-model-tasks",
-      "title": "There are two different model exercises"
+      "title": "The judge reviews a route in a separate call"
     },
     {
       "number": 31,

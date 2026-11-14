@@ -1,0 +1,167 @@
+{
+  "scope": "airline_monitoring only; no runtime or experiment change",
+  "slide_count_before": 73,
+  "slide_count_after": 73,
+  "before_custom_svg_mechanism_slides": 0,
+  "after_custom_svg_mechanism_slides": 16,
+  "distinct_mechanisms": 14,
+  "preserved": [
+    "native screenshot originals",
+    "exercise IDs and controls",
+    "six-hour schedule",
+    "recorded tie",
+    "native feature limitations"
+  ],
+  "preview": {
+    "slide": 4,
+    "click": 2,
+    "path": "public/graphics-preview.png",
+    "kind": "Current rendered deck; not a native product capture"
+  },
+  "revisions": [
+    {
+      "slide_name": "replace-semantics",
+      "mode": "replacement",
+      "states": 3,
+      "before": "code/text/HTML layout",
+      "after": "editable SVG with stable-position click reveals",
+      "evidence": "https://github.com/sierra-research/tau2-bench/blob/989d3285ae669e49503324bdb9981bf14fccedeb/src/tau2/domains/airline/tools.py",
+      "teaching_note": "Trace HAT174 through both candidate API inputs. The assignment replaces the list, so the missing-return branch cannot preserve a flight it did not receive. This is an illustrative failure mechanism; the live qualification handled its bookings correctly."
+    },
+    {
+      "slide_name": "data-groups",
+      "mode": "families",
+      "states": 3,
+      "before": "code/text/HTML layout",
+      "after": "editable SVG with stable-position click reveals",
+      "evidence": "pinned source behavior, frozen plan, or explicitly labeled illustration",
+      "teaching_note": "Start with the family bracket, not the batch counts. The connected dots stand for related records, not three named passengers. Reveal the assigned groups, then show why putting a related task in final evaluation leaks the family across partitions. The counts are the actual frozen plan."
+    },
+    {
+      "slide_name": "trace-shape",
+      "mode": "spans",
+      "states": 3,
+      "before": "generic flow",
+      "after": "editable SVG with stable-position click reveals",
+      "evidence": "pinned source behavior, frozen plan, or explicitly labeled illustration",
+      "teaching_note": "Read the parent tree alongside operation order. Both model calls and both tool attempts remain children of their turn. Bar width is schematic, not measured latency. Ask participants which event needs the error and which needs the returned reservation; then map them to my_model_span and my_tool_span."
+    },
+    {
+      "slide_name": "read-tool",
+      "mode": "loop",
+      "states": 4,
+      "before": "code/text/HTML layout",
+      "after": "editable SVG with stable-position click reveals",
+      "evidence": "pinned source behavior, frozen plan, or explicitly labeled illustration",
+      "teaching_note": "Follow one chosen action through arguments, the state write, the observation, and the next request. The returned booking must be appended before the next model call. Ask participants to locate that exact observation in Agent Lens; the final reply alone cannot prove what the model received."
+    },
+    {
+      "slide_name": "counterexample-nonstop",
+      "mode": "nonstop",
+      "states": 3,
+      "before": "code/text/HTML layout",
+      "after": "editable SVG with stable-position click reveals",
+      "evidence": "pinned source behavior, frozen plan, or explicitly labeled illustration",
+      "teaching_note": "The connecting point disappears while the origin, destination, and return remain. Ask whether fewer segments is a failure before revealing the approved nonstop. The answer depends on the request, not the count. These segment names and airport positions are illustrative."
+    },
+    {
+      "slide_name": "tag-lifecycle",
+      "mode": "criteria",
+      "states": 3,
+      "before": "generic flow",
+      "after": "editable SVG with stable-position click reveals",
+      "evidence": "https://docs.coreweave.com/products/agent-lens/tags/create-tag",
+      "teaching_note": "Keep the right-hand saved criterion in place while the Alignment draft is tested. Only the final explicit-save arrow changes live criteria. A failed Alignment test produces no judgment; it does not silently disable, update, or validate the saved live rule."
+    },
+    {
+      "slide_name": "judge-context",
+      "mode": "context",
+      "states": 3,
+      "before": "generic flow",
+      "after": "editable SVG with stable-position click reveals",
+      "evidence": "pinned source behavior, frozen plan, or explicitly labeled illustration",
+      "teaching_note": "The selected turn has a write and a reply but lacks the earlier booking. Ask which evidence establishes a return was removed. In this illustrated context it is unavailable. A reviewer with the full conversation knows more than the turn-level judge; keep that context difference in the review record."
+    },
+    {
+      "slide_name": "confusion",
+      "mode": "confusion",
+      "states": 3,
+      "before": "code/text/HTML layout",
+      "after": "editable SVG with stable-position click reveals",
+      "evidence": "illustrative arithmetic; no native outcome claimed",
+      "teaching_note": "Reveal the true positives, false positive, and remaining cells in place. Human review supplies the reference labels. These eight rows are illustrative arithmetic and not a successful native Alignment result. No unavailable prediction enters this matrix."
+    },
+    {
+      "slide_name": "precision",
+      "mode": "precision",
+      "states": 2,
+      "before": "code/text/HTML layout",
+      "after": "editable SVG with stable-position click reveals",
+      "evidence": "illustrative arithmetic; no native outcome claimed",
+      "teaching_note": "The outlined row is the denominator: all four reviewed alerts. Three are reviewed failures. The faded second row is irrelevant to precision but needed for recall. If there are no alerts, leave precision unavailable. This graphic does not describe native workshop outcomes."
+    },
+    {
+      "slide_name": "recall",
+      "mode": "recall",
+      "states": 2,
+      "before": "code/text/HTML layout",
+      "after": "editable SVG with stable-position click reveals",
+      "evidence": "illustrative arithmetic; no native outcome claimed",
+      "teaching_note": "The outlined column is the denominator: all four reviewed failures. One was not alerted. The same 75 percent hides a different question from precision. Review unflagged controls so this missed-failure cell can be populated. The arithmetic remains illustrative."
+    },
+    {
+      "slide_name": "coverage",
+      "mode": "coverage",
+      "states": 3,
+      "before": "code/text/HTML layout",
+      "after": "editable SVG with stable-position click reveals",
+      "evidence": "illustrative arithmetic; no native outcome claimed",
+      "teaching_note": "Count the eight completed predictions, then divide by all ten eligible turns. Only after that do we join completed predictions to human reviews for the agreement matrix. The two question marks remain unknown. Positive live assignments by themselves cannot establish this denominator."
+    },
+    {
+      "slide_name": "live-missingness",
+      "mode": "missing",
+      "states": 3,
+      "before": "code/text/HTML layout",
+      "after": "editable SVG with stable-position click reveals",
+      "evidence": "pinned source behavior, frozen plan, or explicitly labeled illustration",
+      "teaching_note": "All three branches can produce the same absent live tag. Ask what readback distinguishes them. Explicit native test outcomes can establish known positive and negative predictions; a blank assignment cannot. Keep pending, failed, and missing context separate where native records support them."
+    },
+    {
+      "slide_name": "curation",
+      "mode": "curation",
+      "states": 3,
+      "before": "generic flow",
+      "after": "editable SVG with stable-position click reveals",
+      "evidence": "pinned source behavior, frozen plan, or explicitly labeled illustration",
+      "teaching_note": "The arrow into the regression case comes from before the write. The crossed arrow from the mutated booking explains a common reconstruction error. Keep the request, policy, approved scope, human review, and source identities with the initial state. This omission incident is a labeled illustration, not an invented live failure."
+    },
+    {
+      "slide_name": "range-values",
+      "mode": "slice",
+      "states": 3,
+      "before": "code/text/HTML layout",
+      "after": "editable SVG with stable-position click reveals",
+      "evidence": "pinned source behavior, frozen plan, or explicitly labeled illustration",
+      "teaching_note": "Point to index two: the half-open replacement stops before return-1. First expose the index range, then the empty prefix, replacement, and untouched suffix. The last line is the participant function\u2019s list operation. Their free check also validates bounds and copies the data."
+    },
+    {
+      "slide_name": "aligned-comparison",
+      "mode": "matched",
+      "states": 3,
+      "before": "table",
+      "after": "editable SVG with stable-position click reveals",
+      "evidence": "pinned source behavior, frozen plan, or explicitly labeled illustration",
+      "teaching_note": "The same case forks into two isolated initial bookings. Each uses its own recorded source and trace. The dashed link means aligned comparison, not shared mutable state or a handoff. Keep booking-state checks, explanation judgments, and monitor outcomes in separate fields."
+    },
+    {
+      "slide_name": "recorded-results",
+      "mode": "results",
+      "states": 3,
+      "before": "table",
+      "after": "editable SVG with stable-position click reveals",
+      "evidence": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/airline-monitoring/qualification.json",
+      "teaching_note": "Reveal the starting row first, then the repair row. All six case outcomes match; there is no passing case unique to the repair. Both versions also pass four subsequent requests. Native monitoring accuracy is unavailable. The local omission drill demonstrates a repair independently of this observed tie."
+    }
+  ]
+}

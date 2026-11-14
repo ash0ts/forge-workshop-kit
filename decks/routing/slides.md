@@ -174,12 +174,12 @@ name: word-vector
 
 <div class="kicker">0:39</div>
 
-# Turn one request into words and adjacent pairs
+# Measure the words and phrases in one request
 
-<RoutingWalk kind="representation" :step="1" />
+<RoutingMechanism kind="vocabulary" :step="1" />
 
 <!--
-Read the real review-pool message aloud. The default tokenizer produces my, card, isn, here, yet; single-letter t is omitted. The diagram shows vocabulary positions, not invented TF–IDF weights. IDF and the vocabulary are fit on training text only.
+Read the real review-pool message aloud. The default tokenizer produces my, card, isn, here, yet; single-letter t is omitted. The nine nonzero TF–IDF weights are recalculated from the frozen 8,463 training messages and shown against the actual 21,527-column vocabulary. IDF and the vocabulary use training text only.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
 -->
 
@@ -206,10 +206,10 @@ name: sentence-vector
 
 # Keep one vector for each request
 
-<RoutingWalk kind="representation" :step="2" />
+<RoutingMechanism kind="vector" :step="2" />
 
 <!--
-Compare the unchanged message with the different representation. Explain 384 as the encoder output size, not a count of hand-chosen keywords. The graphic is a schematic vector. Encoder weights stay frozen; no embedding geometry or semantic distances are fabricated.
+Compare the unchanged message with the different representation. Explain 384 as the encoder output size, not a count of hand-chosen keywords. The heatmap shows all 384 actual cached coordinates in index order. Color is signed magnitude, not semantic location. Encoder weights stay frozen.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
 -->
 
@@ -221,7 +221,7 @@ name: construct-head
 
 # Construct the estimator before fitting it
 
-<RoutingWalk kind="fit" :step="1" />
+<RoutingMechanism kind="fit" :step="1" />
 
 <!--
 Point to make_classifier: it returns an unfitted estimator. C is inverse regularization strength; changing it changes the training objective, not the number of output intents. max_iter limits optimization. Use the fixed recipe in the required path.
@@ -236,7 +236,7 @@ name: fit-head
 
 # Fit the head on the labeled training rows
 
-<RoutingWalk kind="fit" :step="2" />
+<RoutingMechanism kind="fit" :step="2" />
 
 <!--
 The learner factory supplies the estimator in both branches. TF–IDF fits a vectorizer and head; the embedding branch fits the head on cached features. Both see the same 8,463 labels. The sparse vocabulary width and 384 embedding values are different input spaces.
@@ -269,7 +269,7 @@ name: predict-probabilities
 
 # A fitted classifier returns 77 probabilities
 
-<RoutingWalk kind="fit" :step="3" />
+<RoutingMechanism kind="fit" :step="3" />
 
 <!--
 After the exercise, locate predict_proba and classes_. Array position alone is not an intent label; the class order maps columns to names. Ask which files would be needed to predict after restarting.
@@ -299,7 +299,7 @@ name: intent-counts
 
 # Count the errors for one intent
 
-<RoutingWalk kind="metrics" :step="1" />
+<RoutingMechanism kind="metrics" :step="1" />
 
 <!--
 These are the recorded embedding model’s official-test card_arrival predictions: 34 true positives, 3 false positives, 6 false negatives. Trace a misroute to the appropriate count. This example explains the metric; do not select a new model using these final examples.
@@ -314,7 +314,7 @@ name: intent-average
 
 # Calculate F1, then average across intents
 
-<RoutingWalk kind="metrics" :step="2" />
+<RoutingMechanism kind="metrics" :step="2" />
 
 <!--
 Compute precision 34/37 and recall 34/40. F1 is 68/77=0.883117 for this intent. The bars show all 77 saved intent F1s; their mean is the existing 0.920229 result. A per-case correct flag is a different measurement.
@@ -359,7 +359,7 @@ name: threshold-policy
 
 # Move the threshold without retraining
 
-<RoutingWalk kind="policy" :step="1" />
+<RoutingMechanism kind="policy" :step="1" />
 
 <!--
 Use the keyboard on the slider. The request and classifier probabilities stay unchanged. Coverage and selective accuracy recompute from the 770 saved validation predictions. At zero accepted cases, show unavailable rather than claiming perfect accuracy.
@@ -374,7 +374,7 @@ name: review-margin
 
 # Choose labeling candidates by their top-two margin
 
-<RoutingWalk kind="policy" :step="2" />
+<RoutingMechanism kind="policy" :step="2" />
 
 <!--
 The displayed review-pool request has confidence 0.508052 and margin 0.180419. Confidence controls automatic deferral; margin ranks which examples to ask someone to label. These are distinct rules in predict and select_review.
@@ -440,7 +440,7 @@ name: review-provenance
 
 # Keep the proposal and accepted label separate
 
-<RoutingWalk kind="review" :step="1" />
+<RoutingMechanism kind="review" :step="1" />
 
 <!--
 Ask the participant to find all three labels for a case: model proposal, dataset reference, personal accepted label. Do not overwrite the proposal when accepting a correction. The record must preserve who made the decision and which data it belongs to.
@@ -491,9 +491,9 @@ name: two-model-tasks
 
 <div class="kicker">2:25</div>
 
-# There are two different model exercises
+# The judge reviews a route in a separate call
 
-<RoutingWalk kind="judge" :step="1" />
+<RoutingMechanism kind="judge" :step="1" />
 
 <!--
 The first lane routes eight fixed validation requests. The second judges classifier proposals attached to human reviews. The judge does not consume the eight prompted routes. Both use actual provider calls and native spans; neither sample ranks models on the complete final dataset.
@@ -541,7 +541,7 @@ name: judge-evidence
 
 # Keep the accepted label out of the judge prompt
 
-<RoutingWalk kind="judge" :step="2" />
+<RoutingMechanism kind="judge" :step="2" />
 
 <!--
 Show the user message fields in the actual notebook. The accepted label is used afterward to calculate human failure labels, not supplied to the judge. Contrast a malformed response, a valid disagreement and an unavailable request. This exercise is not an automatic native Insights cluster or tag.
@@ -604,7 +604,7 @@ name: accepted-training
 
 # Refit the head with your accepted labels
 
-<RoutingWalk kind="review" :step="2" />
+<RoutingMechanism kind="review" :step="2" />
 
 <!--
 Only unique review-pool cases with label_source=human_review and verified=true may extend training. The fixed encoder and original training rows stay. Extra labels can be useful, redundant or wrong; compare validation before selecting a version.
@@ -667,7 +667,7 @@ name: freeze-files
 
 # Save the transformations with the weights
 
-<RoutingWalk kind="freeze" :step="1" />
+<RoutingMechanism kind="freeze" :step="1" />
 
 <!--
 Have someone name the missing component if only coefficients are saved. TF–IDF needs its fitted vectorizer; the embedding model needs the encoder identity and preprocessing. The review policy also changes what users see.
@@ -700,7 +700,7 @@ name: aligned-requests
 
 # Compare matching requests, then the operating policy
 
-<RoutingWalk kind="freeze" :step="2" />
+<RoutingMechanism kind="freeze" :step="2" />
 
 <!--
 First compare intent predictions across versions on all 3,080 requests. Then compare how many were automatically routed under the chosen policy. A selected version may be the same saved embedding model. Reusing it is a keep decision, not another improvement.
@@ -953,10 +953,10 @@ name: release-rollback
 
 # Rollback reloads a version; it does not undo training
 
-<div class="flow"><div>Previous intact artifact<small>Exact version remains available</small></div><b class="arrow">→</b><div>Fresh restore folder<small>Load saved model and metadata</small></div><b class="arrow">→</b><div>Same request batch<small>Verify the original predictions</small></div></div><p>You are switching the batch predictor’s selected files. No new fit and no model-weight reversal are needed.</p><p class="caption">Registry can organize approved versions. It does not deploy this Python predictor automatically.</p>
+<RoutingMechanism kind="rollback" :step="2" />
 
 <!--
-Require an explicit rollback action. Preserve the faulty release and its evidence for diagnosis rather than deleting it. The required path uses Artifacts in the participant project; Registry permissions are optional.
+Reload the exact previous artifact, then check the same fixed case IDs. No fit or model request is required. Keep the faulty version for diagnosis. Registry can organize selected artifacts but does not deploy this Python predictor.
 -->
 
 ---

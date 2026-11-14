@@ -1,0 +1,121 @@
+{
+  "source": "data/inspection-v1/features.npz",
+  "source_sha256": "b70ccd0cfe3755feb4dc1149986315f30308a8b7e82fbc2ab7b859be848178e3",
+  "case_id": "pcb1-anomaly-005",
+  "position": [
+    7,
+    7
+  ],
+  "normal_bank_size": 361,
+  "distances": [
+    {
+      "case_id": "pcb1-normal-0000",
+      "distance": 1.5278855562210083,
+      "closest": false
+    },
+    {
+      "case_id": "pcb1-normal-0003",
+      "distance": 1.6534578800201416,
+      "closest": false
+    },
+    {
+      "case_id": "pcb1-normal-0004",
+      "distance": 1.374748945236206,
+      "closest": false
+    },
+    {
+      "case_id": "pcb1-normal-0699",
+      "distance": 0.2613925635814667,
+      "closest": true
+    }
+  ],
+  "closest_distance": 0.2613925635814667,
+  "log1p_closest_distance": 0.23221631348133087,
+  "patch_shape": [
+    1104,
+    14,
+    14,
+    64
+  ],
+  "whole_shape": [
+    1104,
+    512
+  ],
+  "images": [
+    {
+      "case_id": "pcb1-anomaly-005",
+      "label": 1,
+      "partition": "fit",
+      "source_image": "pcb1/Data/Images/Anomaly/005.JPG",
+      "source_sha256": "ec34541be729af29a287bde12d4e3955cf3f83c734baea8a9505a7b801ce54e2",
+      "image": "images/pcb1-anomaly-005.jpg",
+      "image_sha256": "5c75dd80bcd1f9e8d12551afc94081c8dba07ed17680ee323c8122f5906e6ab8",
+      "mask": "masks/pcb1-anomaly-005.png",
+      "mask_sha256": "f0521ca9ebb2cfc3d54050255d6019da495861b7bb60372acd6d487ae8521352",
+      "license": "VisA CC BY 4.0",
+      "source_archive": "https://github.com/amazon-science/spot-diff",
+      "original_record_file": "data/inspection-v1/records.json"
+    },
+    {
+      "case_id": "pcb1-anomaly-015",
+      "label": 1,
+      "partition": "test",
+      "source_image": "pcb1/Data/Images/Anomaly/015.JPG",
+      "source_sha256": "a5c044990118bd3fae4019c6df32e4b14cb7c81bb7da2deb44ce5b5c9cd49a94",
+      "image": "images/pcb1-anomaly-015.jpg",
+      "image_sha256": "e75f7192baa166a1182761877d0c39be434649da36d0c647ed881c26fa41774b",
+      "mask": "masks/pcb1-anomaly-015.png",
+      "mask_sha256": "03b92d4a7651875c1172a0d9834285d6972f7fb9cb0b95a38a0103885f274237",
+      "license": "VisA CC BY 4.0",
+      "source_archive": "https://github.com/amazon-science/spot-diff",
+      "original_record_file": "data/inspection-v1/records.json"
+    },
+    {
+      "case_id": "pcb1-anomaly-048",
+      "label": 1,
+      "partition": "test",
+      "source_image": "pcb1/Data/Images/Anomaly/048.JPG",
+      "source_sha256": "733c324c3b5918cfeaf4e4ec280886539aed18149184a93e037e834078617508",
+      "image": "images/pcb1-anomaly-048.jpg",
+      "image_sha256": "f76a54f00cc371d7d0525078907dbd49243e979bee7898b52a65e33a7b0de20a",
+      "mask": "masks/pcb1-anomaly-048.png",
+      "mask_sha256": "4b4b8a4006b0f97de4f00c694037f1e481d12880b1fce628c36df63c059a3e32",
+      "license": "VisA CC BY 4.0",
+      "source_archive": "https://github.com/amazon-science/spot-diff",
+      "original_record_file": "data/inspection-v1/records.json"
+    }
+  ],
+  "mask_display": "Source mask pixels contain integer category IDs (0 background; positive annotation IDs). SVG display multiplies intensity by 255 so positive IDs appear white; original mask files remain unchanged.",
+  "prediction_source": "evidence/inspection-teaching-retest-v2/predictions.json",
+  "prediction_source_sha256": "ab1f95d0ac7d9360e312355f985db3685c3c4683a212d38357369e8b6d7fd83f",
+  "outcomes": [
+    {
+      "case_id": "pcb1-anomaly-015",
+      "version": "whole",
+      "label": 1,
+      "score": 0.12104082107543945,
+      "threshold": -0.49874019622802734
+    },
+    {
+      "case_id": "pcb1-anomaly-048",
+      "version": "whole",
+      "label": 1,
+      "score": -1.005932092666626,
+      "threshold": -0.49874019622802734
+    },
+    {
+      "case_id": "pcb1-anomaly-015",
+      "version": "nearest-patch",
+      "label": 1,
+      "score": -1.4386777877807617,
+      "threshold": -1.1144962310791016
+    },
+    {
+      "case_id": "pcb1-anomaly-048",
+      "version": "nearest-patch",
+      "label": 1,
+      "score": -0.8869733810424805,
+      "threshold": -1.1144962310791016
+    }
+  ]
+}

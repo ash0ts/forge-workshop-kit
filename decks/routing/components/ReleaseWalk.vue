@@ -47,9 +47,15 @@ const lines = computed(() => props.kind === 'mapping' ? [
   </template>
   <template v-else-if="kind === 'checks'">
    <span class="walk-label">CHECK THE CONTRACT, THEN THE PREDICTIONS</span>
-   <div class="release-check"><b>Same label set?</b><span>{{ step > 2 ? "Check that all 77 intents remain." : "Yes: all 77 intents remain." }}</span></div>
-   <div class="release-check" :class="step > 1 ? 'revealed-check' : 'faded'"><b>Same label order?</b><span>{{ step > 2 ? "Check that names match every original column." : "No: each probability points to another intent." }}</span></div>
-   <div class="release-check" :class="step > 2 ? 'revealed-check' : 'faded'"><b>Same predictions after reload?</b><span>Compare each saved case with the intact release.</span></div>
+   <svg viewBox="0 0 640 320" role="img" aria-label="Illustrative three-column release contract: both versions contain the same labels, but rotated column order fails. Restoring the order permits a separate prediction-parity check.">
+    <text x="20" y="32" class="small">Saved probability columns</text><text x="358" y="32" class="small">{{step>2?'Repaired label order':'Rotated label order'}}</text>
+    <g v-for="(label,i) in ['Arrival','Not working','Withdrawal']" :key="label">
+     <rect x="20" :y="55+i*61" width="225" height="44" rx="5"/><text x="35" :y="84+i*61" class="small">{{i}} · {{label}}</text>
+     <path :d="`M255 ${77+i*61}H345`" :style="{stroke:step>2?'#237a6c':'#b57139'}"/>
+     <rect x="355" :y="55+i*61" width="265" height="44" rx="5" :class="step>2?'accent':'fault'"/><text x="370" :y="84+i*61" class="small">{{i}} · {{step>2?label:['Not working','Withdrawal','Arrival'][i]}}</text>
+    </g>
+    <text x="20" y="275" class="small">Same set: yes. {{step>2?'Same order: yes.':'Same order: no.'}}</text><text x="20" y="308" class="small">{{step>2?'Now compare predictions on the fixed 77-case batch.':'Set equality cannot detect the changed destinations.'}}</text>
+   </svg>
    <p class="small">Prediction parity checks reproduction. It does not prove the classifier routes every request correctly.</p>
   </template>
   <template v-else>

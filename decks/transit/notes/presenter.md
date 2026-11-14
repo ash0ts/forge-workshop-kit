@@ -20,19 +20,19 @@ This is a real capture of the reference implementation, not a model outcome. Par
 
 0:08
 
-Open the notebook data receipt and read its archive date and checksum. Do not describe the small teaching subset as the complete MBTA system. MBTA describes its feed at https://github.com/mbta/gtfs-documentation/blob/master/reference/gtfs.md .
+Open the notebook data receipt and read its archive date and checksum. Do not describe the small teaching subset as the complete MBTA system. MBTA describes its feed at https://github.com/mbta/gtfs-documentation/blob/master/reference/gtfs.md . Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 
 ## 5. Start with the row for the platform
 
 0:10
 
-Keep the same trip visible through the next three slides. Read the actual identifiers aloud once. The product uses these joins, not an LLM guess about the next train. Ask which table must tell us whether this trip runs on Thanksgiving. Timeline spacing is illustrative; timestamps are actual.
+Keep the same trip visible through the next three slides. Read the actual identifiers aloud once. The product uses these joins, not an LLM guess about the next train. Ask which table must tell us whether this trip runs on Thanksgiving. Timeline spacing is illustrative; timestamps are actual. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 
 ## 6. Join the trip to its service calendar
 
 0:13
 
-The service ID is a join key. The active dates come from the calendar and exception records. Explain that calendar_dates overrides the weekly rule. This is a historical snapshot and fixed test date, not today’s schedule.
+The service ID is a join key. The active dates come from the calendar and exception records. Explain that calendar_dates overrides the weekly rule. This is a historical snapshot and fixed test date, not today’s schedule. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 
 ## 7. Keep the service date and boarding date
 
@@ -44,7 +44,7 @@ Ask the room to name the two different dates before revealing the timestamp. The
 
 0:17
 
-This is an actual retained row: trip 63926435, stop 70076, departure_time 24:08:00, stop_sequence 150, ThanksgivingDay service, headsign Alewife. The civil timestamp is 2024-11-29T00:08:00-05:00. Ask what a parser restricted to 0..23 hours would do. The rule must survive between components.
+This is an actual retained row: trip 63926435, stop 70076, departure_time 24:08:00, stop_sequence 150, ThanksgivingDay service, headsign Alewife. The civil timestamp is 2024-11-29T00:08:00-05:00. Ask what a parser restricted to 0..23 hours would do. The rule must survive between components. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 
 ## 9. Convert elapsed service time into a timestamp
 
@@ -110,7 +110,7 @@ The scenario is written by the participant and later runs on the integrated app.
 
 0:50
 
-Start with the familiar single-agent harness. Multiple agents do not remove the need for correct tool observation handling, explicit stopping and independent checks. Model settings stay fixed in the comparisons.
+Start with the familiar single-agent harness. Multiple agents do not remove the need for correct tool observation handling, explicit stopping and independent checks. Model settings stay fixed in the comparisons. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 
 ## 20. Give the worker the task it is allowed to solve
 
@@ -188,7 +188,7 @@ Ten-minute break, 1:35–1:45. Use the read-only monitor to find participants wh
 
 1:45
 
-The workers own query.py and presentation.py. The query returns the agreed departure records. The display consumes that interface. Use the actual notebook contract to see exactly which fields are required. Click to expose the join, then the whole-product check.
+The workers own query.py and presentation.py. The query returns the agreed departure records. The display consumes that interface. Use the actual notebook contract to see exactly which fields are required. Click to expose the join, then the whole-product check. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 
 ## 33. Ready means its prerequisites passed
 
@@ -230,7 +230,7 @@ Do not solve the race with a prompt asking agents to be careful. Claiming must b
 
 2:15
 
-This is a practical reason for independent workspaces, not a guarantee that the generated code is safe. Reviewed local code runs with bounded tools and time limits. Remote Sandboxes remain optional and require their own access.
+This is a practical reason for independent workspaces, not a guarantee that the generated code is safe. Reviewed local code runs with bounded tools and time limits. Remote Sandboxes remain optional and require their own access. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 
 ## 40. Each worker starts from the same source
 
@@ -272,7 +272,7 @@ This is a checkpoint at 2:40, not a break. Integration starts at 2:45. If one wo
 
 2:42
 
-The user explicitly approved human review of task contracts and patches. Keep the actual diff visible next to its test output. Do not represent a review decision as an executed version until integration really runs.
+The user explicitly approved human review of task contracts and patches. Keep the actual diff visible next to its test output. Do not represent a review decision as an executed version until integration really runs. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 
 ## 47. Test the combined departures board
 
@@ -302,7 +302,7 @@ Twenty-minute break, 3:00–3:20. Resume the same project. Do not change source 
 
 3:20
 
-Connect memory to a specific integration incident or verified behavior. Transcripts record what happened. A lesson is an interpretation intended to help a future task.
+Connect memory to a specific integration incident or verified behavior. Transcripts record what happened. A lesson is an interpretation intended to help a future task. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 
 ## 52. Check the lesson before another agent relies on it
 
@@ -356,7 +356,7 @@ This is the trace-to-behavior chain. A citation or read event establishes consul
 
 4:00
 
-The follow-up asks for the last direct train between two retained stations, including arrival after midnight, a no-direct-service result and an itinerary download. Each branch uses two workers. Both branches execute; no prerecorded result is substituted for one side. This small paired example teaches the method. One pair cannot establish repeatability or general superiority.
+The follow-up asks for the last direct train between two retained stations, including arrival after midnight, a no-direct-service result and an itinerary download. Each branch uses two workers. Both branches execute; no prerecorded result is substituted for one side. This small paired example teaches the method. One pair cannot establish repeatability or general superiority. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 
 ## 61. Start both follow-ups from the same release
 
@@ -386,7 +386,7 @@ Keep memory fixed during this matched comparison. Do not edit it after seeing th
 
 4:27
 
-This is the distinction between a task ledger and learning. Neither requires sharing a giant conversation among all workers. Both need durable records, clear identities and bounded retrieval.
+This is the distinction between a task ledger and learning. Neither requires sharing a giant conversation among all workers. Both need durable records, clear identities and bounded retrieval. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 
 ## 66. Find where the lesson entered the request
 
@@ -440,7 +440,7 @@ Actual native Evaluation Tables Preview, verified in a signed-out browser. The s
 
 5:13
 
-These are final native scores from R5, a separate engineering rehearsal after context compaction changed. All 56 scenario rows are represented. The first builds passed five public development checks each, but the two-worker final product passed only eight of ten reserved scenarios. Do not treat the earlier R4 native screenshot as this R5 comparison. Builder elapsed excludes human review and integration. Actual provider request counts were 8, 12, 5 and 5 respectively. The no-memory query reached its input bound after writing; the memory query exhausted its output allowance. Both stopped before query tests; presentation was retained unchanged. The lesson proposal cost an additional $0.00143474. Total observed inference was $0.06635800 across 31 provider requests, with zero unknown usage. This single pair cannot establish a general speed or memory effect.
+These are final native scores from R5, a separate engineering rehearsal after context compaction changed. All 56 scenario rows are represented. The first builds passed five public development checks each, but the two-worker final product passed only eight of ten reserved scenarios. Do not treat the earlier R4 native screenshot as this R5 comparison. Builder elapsed excludes human review and integration. Actual provider request counts were 8, 12, 5 and 5 respectively. The no-memory query reached its input bound after writing; the memory query exhausted its output allowance. Both stopped before query tests; presentation was retained unchanged. The lesson proposal cost an additional $0.00143474. Total observed inference was $0.06635800 across 31 provider requests, with zero unknown usage. This single pair cannot establish a general speed or memory effect. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 
 ## 75. Open the two failing rows in the final comparison
 
@@ -452,31 +452,31 @@ Use the actual saved native view. The bottom two rows show the query and integra
 
 5:16
 
-The failed cases were departures/utc-input and integrated/departures/utc-input. The two-worker query anchored GTFS service-day midnight to the caller’s timezone. It selected a service-clock 23:03 trip rather than the expected 18:03 Eastern departure after a 23:00 UTC request. The solo query preserved the fixed feed timezone for this historical subset. These are two checks of one defect, not two independent bugs. Both failed follow-up query edits left this earlier bug in place. Ask participants which contract or test they would add before another build.
+The failed cases were departures/utc-input and integrated/departures/utc-input. The two-worker query anchored GTFS service-day midnight to the caller’s timezone. It selected a service-clock 23:03 trip rather than the expected 18:03 Eastern departure after a 23:00 UTC request. The solo query preserved the fixed feed timezone for this historical subset. These are two checks of one defect, not two independent bugs. Both failed follow-up query edits left this earlier bug in place. Ask participants which contract or test they would add before another build. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 
 ## 77. Interpret the request as one instant
 
 5:18
 
-Recorded R5 case: departures/utc-input. This is a same-instant conversion. The feed clock defines the origin of GTFS elapsed service time; the caller is allowed to express the request using another offset.
+Recorded R5 case: departures/utc-input. This is a same-instant conversion. The feed clock defines the origin of GTFS elapsed service time; the caller is allowed to express the request using another offset. The paired clock positions show matching instants, with nonuniform spacing for legibility. The third position is five hours after the expected departure.
 
 ## 78. The team used the caller’s clock for service time
 
 5:20
 
-Recorded behavior, not a hypothesized defect. The team anchored service-day midnight to the request timezone. This changed the chosen record, not only its formatted text. Inspect the source and actual prediction beside the expected row.
+Recorded behavior, not a hypothesized defect. The team anchored service-day midnight to the request timezone. This changed the chosen record, not only its formatted text. Inspect the source and actual prediction beside the expected row. The paired clock positions show matching instants, with nonuniform spacing for legibility. The third position is five hours after the expected departure.
 
 ## 79. The renderer carried the same wrong trip into the board
 
 5:22
 
-The independent suite checks both the query and the complete application. Avoid describing these correlated cases as two independent coding errors. Learners should propose a public UTC-input regression case for a future experiment, after retaining the current outcome.
+The independent suite checks both the query and the complete application. Avoid describing these correlated cases as two independent coding errors. Learners should propose a public UTC-input regression case for a future experiment, after retaining the current outcome. The paired clock positions show matching instants, with nonuniform spacing for legibility. The third position is five hours after the expected departure.
 
 ## 80. Neither follow-up completed the query change
 
 5:24
 
-Without memory: oversized input after a saved write. With memory: output allowance exhausted before a complete first action. Both query tasks stopped before testing. The existing query remained; these outcomes do not establish that shared memory caused either failure.
+Without memory: oversized input after a saved write. With memory: output allowance exhausted before a complete first action. Both query tasks stopped before testing. The existing query remained; these outcomes do not establish that shared memory caused either failure. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 
 ## 81. More workers can still produce more waiting
 

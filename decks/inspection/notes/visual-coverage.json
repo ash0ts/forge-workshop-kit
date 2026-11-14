@@ -1,0 +1,115 @@
+{
+  "scope": "Teaching visuals only; no runtime, experiment, budget or duration changes",
+  "slides": 50,
+  "reworked_slides": 18,
+  "mechanisms": 10,
+  "sequence": [
+    {
+      "slide": 9,
+      "id": "board-target",
+      "mechanism": "data"
+    },
+    {
+      "slide": 10,
+      "id": "mask-boundary",
+      "mechanism": "data"
+    },
+    {
+      "slide": 11,
+      "id": "encoder",
+      "mechanism": "encoder"
+    },
+    {
+      "slide": 12,
+      "id": "patch-grid",
+      "mechanism": "encoder"
+    },
+    {
+      "slide": 13,
+      "id": "patches",
+      "mechanism": "patch"
+    },
+    {
+      "slide": 14,
+      "id": "append-patches",
+      "mechanism": "features"
+    },
+    {
+      "slide": 18,
+      "id": "fit-operation",
+      "mechanism": "train"
+    },
+    {
+      "slide": 19,
+      "id": "threshold",
+      "mechanism": "threshold"
+    },
+    {
+      "slide": 20,
+      "id": "validation-cutoff",
+      "mechanism": "threshold"
+    },
+    {
+      "slide": 23,
+      "id": "ranking-ap",
+      "mechanism": "ranking"
+    },
+    {
+      "slide": 24,
+      "id": "operating-errors",
+      "mechanism": "ranking"
+    },
+    {
+      "slide": 27,
+      "id": "training-evidence",
+      "mechanism": "train"
+    },
+    {
+      "slide": 29,
+      "id": "active-selection",
+      "mechanism": "review"
+    },
+    {
+      "slide": 30,
+      "id": "random-control",
+      "mechanism": "review"
+    },
+    {
+      "slide": 35,
+      "id": "detector-bundle",
+      "mechanism": "freeze"
+    },
+    {
+      "slide": 42,
+      "id": "improved-case",
+      "mechanism": "outcomes"
+    },
+    {
+      "slide": 43,
+      "id": "regression",
+      "mechanism": "outcomes"
+    },
+    {
+      "slide": 45,
+      "id": "reload-detector",
+      "mechanism": "freeze"
+    }
+  ],
+  "preview": {
+    "slide": 13,
+    "path": "public/graphics-preview.png"
+  },
+  "evidence": "data/feature-example.json",
+  "derivation": "scripts/derive-visual-evidence.py",
+  "numerical_status": "Photos/masks, nearest-bank distances and corrected/new misses use frozen evidence. Five-board threshold/AP arithmetic is the public check fixture; selector dot positions and tensor drawings are schematic.",
+  "changes": [
+    "Put actual photograph and reference mask alongside their different uses.",
+    "Showed whole-image and local tensor shapes beside the encoder.",
+    "Replaced reference-bank box with actual same-position nearest distances.",
+    "Showed log1p, flatten and concatenation into 708 features.",
+    "Separated fixed scores from movable operating threshold.",
+    "Added precision-recall rectangles for the public AP arithmetic.",
+    "Visualized equal-budget review selections and label timing.",
+    "Replaced outcome photos alone with matched saved score/cutoff decisions."
+  ]
+}

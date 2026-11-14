@@ -17,7 +17,8 @@ if QUALIFICATION.exists():
     for name in ('images-seeds-deck.png', 'goes-seeds-deck.png'):
         shutil.copy2(QUALIFICATION / name, ROOT / 'public/images' / name)
     shutil.copy2(QUALIFICATION / 'summary.json', ROOT / 'public/qualification-summary.json')
-qualification = json.loads((ROOT / 'public/qualification-summary.json').read_text())
+shutil.copy2(ROOT / 'public/qualification-summary.json', ROOT / 'data/qualification-summary.json')
+qualification = json.loads((ROOT / 'data/qualification-summary.json').read_text())
 recorded=json.loads((ROOT/'public/recorded-study.json').read_text())
 by_name={row['name']:row for row in recorded['stages']}
 proposal=by_name['images/round-1/propose']

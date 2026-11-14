@@ -64,8 +64,8 @@ def extend(slides):
          'Save the exact artifact and comparison alongside your decision.'],
         'Save my release decision', 'The decision names the tested artifact and its checks.')
     row('release-rollback','Rollback reloads a version; it does not undo training',
-        '<div class="flow"><div>Previous intact artifact<small>Exact version remains available</small></div><b class="arrow">→</b><div>Fresh restore folder<small>Load saved model and metadata</small></div><b class="arrow">→</b><div>Same request batch<small>Verify the original predictions</small></div></div><p>You are switching the batch predictor’s selected files. No new fit and no model-weight reversal are needed.</p><p class="caption">Registry can organize approved versions. It does not deploy this Python predictor automatically.</p>',308,
-        'Require an explicit rollback action. Preserve the faulty release and its evidence for diagnosis rather than deleting it. The required path uses Artifacts in the participant project; Registry permissions are optional.')
+        '<RoutingMechanism kind="rollback" :step="2" />',308,
+        'Reload the exact previous artifact, then check the same fixed case IDs. No fit or model request is required. Keep the faulty version for diagnosis. Registry can organize selected artifacts but does not deploy this Python predictor.')
     task('release-rollback-exercise','Restore the previous version and verify it',312,
         ['Click the restore control. Confirm it loads the previously recorded exact artifact.',
          'Run its fixed batch and check parity with the intact release.',

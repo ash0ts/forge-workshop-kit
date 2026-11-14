@@ -1,5 +1,5 @@
 {
-  "source_sha256": "3346fe1fb3f290c9e3171adf30503bb7287901be2a18255611f8f525b822376f",
+  "source_sha256": "b0daa9aacdd570a54e59342bb12f8dfdc9fb07eb3abcefa7e4ed24fd0d963ce7",
   "slides_checked": 123,
   "expected_slides": 123,
   "titles": [
@@ -196,7 +196,7 @@
     {
       "number": 39,
       "key": "batch-indexing",
-      "title": "Index one value, then keep the batch shape"
+      "title": "Keep each prediction paired with its own target"
     },
     {
       "number": 40,
@@ -501,7 +501,7 @@
     {
       "number": 100,
       "key": "repeatability",
-      "title": "Separate repeated forecasts from repeated experiments"
+      "title": "The same image edit helped two seeds and hurt one"
     },
     {
       "number": 101,
@@ -761,10 +761,6 @@
       "click": 2
     },
     {
-      "slide": 18,
-      "click": 3
-    },
-    {
       "slide": 19,
       "click": 0
     },
@@ -783,6 +779,14 @@
     {
       "slide": 23,
       "click": 0
+    },
+    {
+      "slide": 23,
+      "click": 1
+    },
+    {
+      "slide": 23,
+      "click": 2
     },
     {
       "slide": 24,
@@ -881,10 +885,6 @@
       "click": 2
     },
     {
-      "slide": 33,
-      "click": 3
-    },
-    {
       "slide": 34,
       "click": 0
     },
@@ -923,14 +923,6 @@
     {
       "slide": 39,
       "click": 2
-    },
-    {
-      "slide": 39,
-      "click": 3
-    },
-    {
-      "slide": 39,
-      "click": 4
     },
     {
       "slide": 40,
@@ -1007,6 +999,14 @@
     {
       "slide": 45,
       "click": 0
+    },
+    {
+      "slide": 45,
+      "click": 1
+    },
+    {
+      "slide": 45,
+      "click": 2
     },
     {
       "slide": 46,
@@ -1253,6 +1253,14 @@
       "click": 0
     },
     {
+      "slide": 78,
+      "click": 1
+    },
+    {
+      "slide": 78,
+      "click": 2
+    },
+    {
       "slide": 79,
       "click": 0
     },
@@ -1311,10 +1319,6 @@
     {
       "slide": 87,
       "click": 2
-    },
-    {
-      "slide": 87,
-      "click": 3
     },
     {
       "slide": 88,
@@ -1379,6 +1383,14 @@
     {
       "slide": 100,
       "click": 0
+    },
+    {
+      "slide": 100,
+      "click": 1
+    },
+    {
+      "slide": 100,
+      "click": 2
     },
     {
       "slide": 101,
@@ -1518,6 +1530,6 @@
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 249,
+  "routes_checked": 495,
   "presenter_notes": true
 }

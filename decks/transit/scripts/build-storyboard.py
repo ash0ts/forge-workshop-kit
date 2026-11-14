@@ -71,6 +71,7 @@ slide('Sources for the workflow', '<ul class="source-list"><li><a href="https://
 slide('Sources for the data and evaluation', '<ul class="source-list"><li><a href="https://github.com/mbta/gtfs-documentation/blob/master/reference/gtfs.md">MBTA feed documentation</a></li><li><a href="https://gtfs.org/documentation/schedule/reference/">GTFS schedule reference</a></li><li><a href="https://www.anthropic.com/research/components-of-agent-memory">Anthropic: memory notes, validation and correction</a></li><li><a href="https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/">Google Research: when coordination helps and hurts</a></li><li><a href="https://github.com/ash0ts/forge-workshop-kit">Workshop code, source receipts and current access instructions</a></li></ul>', 'The downloaded dataset manifest is authoritative for archive date, checksums, selected rows and licensing. Do not substitute current live schedule data during a comparison. The software-factory teaching experiment is not a transit reliability benchmark.')
 
 schedule = runpy.run_path(str(ROOT / 'scripts/depth-sequences.py'))['deepen'](slides)
+runpy.run_path(str(ROOT / 'scripts/visual-sequences.py'))['illustrate'](slides)
 
 # Stable aliases keep worked-answer links aligned when slides are inserted.
 for item in slides:

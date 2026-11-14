@@ -1,0 +1,156 @@
+{
+  "identity": "solar-fixed-recipes-2026-11-14",
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "rows": [
+    {
+      "task": "images",
+      "recipe": "manual",
+      "seed": 17,
+      "status": "complete",
+      "error": 0.1224417336622075,
+      "persistence_error": 0.12576198700564592,
+      "examples": 199
+    },
+    {
+      "task": "images",
+      "recipe": "mae",
+      "seed": 17,
+      "status": "complete",
+      "error": 0.12076926123077544,
+      "persistence_error": 0.12576198700564592,
+      "examples": 199
+    },
+    {
+      "task": "images",
+      "recipe": "zero_residual",
+      "seed": 17,
+      "status": "complete",
+      "error": 0.11001095193834161,
+      "persistence_error": 0.12576198700564592,
+      "examples": 199
+    },
+    {
+      "task": "goes",
+      "recipe": "historical",
+      "seed": 17,
+      "status": "complete",
+      "error": 2.468974582071028,
+      "persistence_error": 0.19270602844340234,
+      "examples": 2694
+    },
+    {
+      "task": "goes",
+      "recipe": "mlp-residual-1200",
+      "seed": 17,
+      "status": "complete",
+      "error": 0.1628779359632009,
+      "persistence_error": 0.19270602844340234,
+      "examples": 2694
+    },
+    {
+      "task": "images",
+      "recipe": "manual",
+      "seed": 29,
+      "status": "complete",
+      "error": 0.11764977141720565,
+      "persistence_error": 0.12576198700564592,
+      "examples": 199
+    },
+    {
+      "task": "images",
+      "recipe": "mae",
+      "seed": 29,
+      "status": "complete",
+      "error": 0.11801005132473893,
+      "persistence_error": 0.12576198700564592,
+      "examples": 199
+    },
+    {
+      "task": "images",
+      "recipe": "zero_residual",
+      "seed": 29,
+      "status": "complete",
+      "error": 0.10956567938723158,
+      "persistence_error": 0.12576198700564592,
+      "examples": 199
+    },
+    {
+      "task": "goes",
+      "recipe": "historical",
+      "seed": 29,
+      "status": "complete",
+      "error": 2.4407238455817004,
+      "persistence_error": 0.19270602844340234,
+      "examples": 2694
+    },
+    {
+      "task": "goes",
+      "recipe": "mlp-residual-1200",
+      "seed": 29,
+      "status": "complete",
+      "error": 0.16387954568898314,
+      "persistence_error": 0.19270602844340234,
+      "examples": 2694
+    },
+    {
+      "task": "images",
+      "recipe": "manual",
+      "seed": 43,
+      "status": "complete",
+      "error": 0.110168306897034,
+      "persistence_error": 0.12576198700564592,
+      "examples": 199
+    },
+    {
+      "task": "images",
+      "recipe": "mae",
+      "seed": 43,
+      "status": "complete",
+      "error": 0.10880147353129171,
+      "persistence_error": 0.12576198700564592,
+      "examples": 199
+    },
+    {
+      "task": "images",
+      "recipe": "zero_residual",
+      "seed": 43,
+      "status": "complete",
+      "error": 0.11039713559558044,
+      "persistence_error": 0.12576198700564592,
+      "examples": 199
+    },
+    {
+      "task": "goes",
+      "recipe": "historical",
+      "seed": 43,
+      "status": "complete",
+      "error": 2.057246762642439,
+      "persistence_error": 0.19270602844340234,
+      "examples": 2694
+    },
+    {
+      "task": "goes",
+      "recipe": "mlp-residual-1200",
+      "seed": 43,
+      "status": "complete",
+      "error": 0.16375982133034167,
+      "persistence_error": 0.19270602844340234,
+      "examples": 2694
+    }
+  ],
+  "image_qualified": false,
+  "goes_qualified": true,
+  "selected_goes_recipe": "mlp-residual-1200",
+  "completed_training_executions": 36,
+  "completed_final_executions": 15,
+  "elapsed_training_seconds": 84.95109716794104,
+  "elapsed_evaluation_seconds": 13.97016262501711,
+  "inference_calls": 0,
+  "provider_cost_usd": 0,
+  "scope": "Training and validation dates choose GOES recipe. February 13-14 were inspected in the earlier rehearsal; this is a teaching retest, not a new unseen benchmark. No agent calls or new agent adaptations.",
+  "aggregation": "Average windows within each seed, report every seed and their arithmetic mean. Windows overlap; seeds repeat the same dates and are not additional datasets."
+}

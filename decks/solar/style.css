@@ -3,6 +3,9 @@
 @import '@fontsource/ibm-plex-sans/600.css';
 @import '@fontsource/ibm-plex-mono/400.css';
 :root{--paper:#f6f2e7;--ink:#163c43;--muted:#61746e;--teal:#237a6c;--gold:#f1ca70;--blue:#4382a6;--orange:#c17b40}
+.slidev-layout.worked-visual h1{font-size:40px!important;margin-bottom:15px!important}
+.slidev-layout.worked-visual pre{margin-top:8px!important;padding:12px 18px!important;font-size:18px!important}
+.slidev-layout.worked-visual .shiki code{font-size:18px!important}
 .slidev-layout{background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans','Aptos','Arial',sans-serif;padding:52px 66px 54px!important;font-size:26px;line-height:1.4}
 .slidev-layout h1{font-size:46px!important;font-weight:600;line-height:1.12!important;letter-spacing:-1.3px;max-width:1110px;margin:0 0 28px!important;color:var(--ink)}
 .slidev-layout h2{font-size:31px!important;font-weight:500;line-height:1.2;margin-bottom:16px}

@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "scope": "Solar deck visual revision only; no paid execution",
+  "slides": 123,
+  "reveal_states": 216,
+  "pdf_pages": 216,
+  "worked_answer_returns": 8,
+  "overflow_or_svg_issues": [],
+  "console_errors": [],
+  "failed_responses": [],
+  "empty_pdf_pages": 0,
+  "checks": [
+    "All slides and reveals rendered in Chrome",
+    "Forward and Back navigation at every reveal",
+    "Text-line, SVG label, image and code bounds",
+    "Keyboard worked-answer returns",
+    "All PDF pages rasterized",
+    "All eight revised slides visually reviewed",
+    "Storyboard scripts parsed",
+    "Bundled qualification data matches the public evidence summary",
+    "Saved rehearsal source and metrics reconciled",
+    "Worked-answer free checks passed",
+    "Notebook function and control references matched"
+  ],
+  "sources": {
+    "slides.md": "b0daa9aacdd570a54e59342bb12f8dfdc9fb07eb3abcefa7e4ed24fd0d963ce7",
+    "components/SolarWorked.vue": "06a488cae7c2c5eb869bf4e12bf3523c87fa438805ccb3edd71049976bfba77d",
+    "scripts/build-storyboard.py": "cdc8efa690037fd1bff8496a7faa56679bfaa7eaeb219f56dec14cf6c9328813",
+    "scripts/teaching_sequence.py": "0372d5a8c772120be5adac2d78b37c3a0a256e5328ba93af65cef9bd6c913e23",
+    "data/teaching-window.json": "a83cdd1253905ccdb3995ff8dd7d1bfc49662e651d67b2f93b01df6db39b83da",
+    "data/qualification-summary.json": "d950c9f7326bd5159977b09c7239a02eb7b75560c55e932bf31db7010e1e9fc8",
+    "style.css": "13ada93397ea79f733fb101c11f3cab0877b0789d057cf0a40827223ac6b79ff",
+    "public/graphics-preview.png": "2643863e440f419a1d4085829f79fa29e735d8b7979129953b48daf69160f350"
+  },
+  "pdf_sha256": "33b9b7f523ff0cd1deb3e5b4fe9cce4340e4dfe7f2eb65e455be107bfba8e7aa",
+  "preview": {
+    "path": "public/graphics-preview.png",
+    "source_capture": ".screenshots/078-click-2.png",
+    "slide": 78,
+    "click": 2,
+    "slide_key": "loss-change-effect",
+    "label": "Illustrative squared and absolute training loss; fixed evaluation metric unchanged",
+    "sha256": "2643863e440f419a1d4085829f79fa29e735d8b7979129953b48daf69160f350"
+  },
+  "coverage": {
+    "session_slides_before": 123,
+    "session_slides_after": 123,
+    "existing_explanations_replaced": 8,
+    "new_worked_diagram_modes": 8,
+    "explanation": "Eight existing slides now use progressive worked diagrams; earlier graphics and captures remain."
+  },
+  "external_account_and_human_workshop_readiness": "Not requalified by this deck-only revision"
+}

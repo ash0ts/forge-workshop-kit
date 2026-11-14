@@ -45,15 +45,21 @@
     {
       "number": 4,
       "title": "The API replaces the complete flight list",
-      "body": "```python {all}\nreservation.flights = new_flights\n```\n<div class=\"callout\">The API receives the itinerary to keep. A flight omitted from that list disappears from the reservation.</div><p class=\"caption\">Abbreviated from the pinned airline implementation. Availability and payment checks are omitted from this excerpt.</p>",
-      "notes": "A successful write says the replacement was accepted. It does not establish that the proposed replacement respected the passenger\u2019s request. Read the upstream implementation and the workshop adapter together.",
+      "body": "<AirlineMechanism mode=\"replacement\" :reveal=\"$clicks + 1\" />",
+      "notes": "A successful write says the replacement was accepted. It does not establish that the proposed replacement respected the passenger\u2019s request. Read the upstream implementation and the workshop adapter together.\n\nVisual sequence: Trace HAT174 through both candidate API inputs. The assignment replaces the list, so the missing-return branch cannot preserve a flight it did not receive. This is an illustrative failure mechanism; the live qualification handled its bookings correctly.",
       "start_minute": 9,
       "time": "0:09",
       "name": "replace-semantics",
       "kind": "",
       "concept": "replace-semantics",
       "exercise_id": null,
-      "source": "https://github.com/sierra-research/tau2-bench/blob/989d3285ae669e49503324bdb9981bf14fccedeb/src/tau2/domains/airline/tools.py"
+      "source": "https://github.com/sierra-research/tau2-bench/blob/989d3285ae669e49503324bdb9981bf14fccedeb/src/tau2/domains/airline/tools.py",
+      "clicks": 2,
+      "visual": {
+        "component": "AirlineMechanism",
+        "mode": "replacement",
+        "states": 3
+      }
     },
     {
       "number": 5,
@@ -84,15 +90,21 @@
     {
       "number": 7,
       "title": "Keep related bookings in the same data group",
-      "body": "<div class=\"stages\"><div>Discovery<strong>8</strong><small>Observe behavior</small></div><div>Monitor check<strong>4</strong><small>Test the saved tag</small></div><div>Development<strong>4 \u00d7 2</strong><small>Compare the repair</small></div><div>Final evaluation<strong>6 \u00d7 2</strong><small>Score frozen versions</small></div><div>Later traffic<strong>4 \u00d7 2</strong><small>Monitor both versions</small></div></div><p>Freeze assignments by passenger and reservation family before qualification. Related upstream training and test tasks cannot cross these groups.</p>",
-      "notes": "These are the approved execution counts, totalling 40 conversations. Development and final comparisons run the same requests once on each version. Upstream task identities overlap, so splitting task rows alone would leak related bookings.",
+      "body": "<AirlineMechanism mode=\"families\" :reveal=\"$clicks + 1\" />",
+      "notes": "These are the approved execution counts, totalling 40 conversations. Development and final comparisons run the same requests once on each version. Upstream task identities overlap, so splitting task rows alone would leak related bookings.\n\nVisual sequence: Start with the family bracket, not the batch counts. The connected dots stand for related records, not three named passengers. Reveal the assigned groups, then show why putting a related task in final evaluation leaks the family across partitions. The counts are the actual frozen plan.",
       "start_minute": 18,
       "time": "0:18",
       "name": "data-groups",
       "kind": "",
       "concept": "data-groups",
       "exercise_id": null,
-      "source": null
+      "source": null,
+      "clicks": 2,
+      "visual": {
+        "component": "AirlineMechanism",
+        "mode": "families",
+        "states": 3
+      }
     },
     {
       "number": 8,
@@ -137,15 +149,21 @@
     {
       "number": 10,
       "title": "Record a conversation around the passenger\u2019s request",
-      "body": "<div class=\"pipeline\"><div class=\"\">Conversation<small>One booking request</small></div><b v-click=\"1\">\u2192</b><div v-click=\"1\" class=\"\">Turn<small>Passenger input and agent work</small></div><b v-click=\"2\">\u2192</b><div v-click=\"2\" class=\"\">Spans<small>Model requests and tool calls</small></div></div><p>Keep the version and traffic-batch identity on the recorded work. A tag needs to know which behavior it is judging.</p>",
-      "notes": "A conversation may contain several turns. Do not collapse unrelated requests into a single conversation. The passenger\u2019s clarification and confirmation belong with the relevant turn evidence. Use native session and span identities from execution.",
+      "body": "<AirlineMechanism mode=\"spans\" :reveal=\"$clicks + 1\" />",
+      "notes": "A conversation may contain several turns. Do not collapse unrelated requests into a single conversation. The passenger\u2019s clarification and confirmation belong with the relevant turn evidence. Use native session and span identities from execution.\n\nVisual sequence: Read the parent tree alongside operation order. Both model calls and both tool attempts remain children of their turn. Bar width is schematic, not measured latency. Ask participants which event needs the error and which needs the returned reservation; then map them to my_model_span and my_tool_span.",
       "start_minute": 29,
       "time": "0:29",
       "name": "trace-shape",
       "kind": "",
       "concept": "trace-shape",
       "exercise_id": null,
-      "source": null
+      "source": null,
+      "clicks": 2,
+      "visual": {
+        "component": "AirlineMechanism",
+        "mode": "spans",
+        "states": 3
+      }
     },
     {
       "number": 11,
@@ -205,15 +223,21 @@
     {
       "number": 14,
       "title": "Read the booking returned by the tool",
-      "body": "<div class=\"bundle-list\"><div>Arguments<small>What did the agent ask the API to replace?</small></div><div>Result<small>Which flights remain in the returned reservation?</small></div><div>Next model request<small>Did the agent receive that observation?</small></div><div>Final response<small>Did the explanation describe the recorded work?</small></div></div>",
-      "notes": "Give everyone several minutes on one conversation. Ask them to point to the actual return flight rather than merely an exception field. If the agent was correct, record that success and continue with the labeled calibration drill for the diagnostic exercise.",
+      "body": "<AirlineMechanism mode=\"loop\" :reveal=\"$clicks + 1\" />",
+      "notes": "Give everyone several minutes on one conversation. Ask them to point to the actual return flight rather than merely an exception field. If the agent was correct, record that success and continue with the labeled calibration drill for the diagnostic exercise.\n\nVisual sequence: Follow one chosen action through arguments, the state write, the observation, and the next request. The returned booking must be appended before the next model call. Ask participants to locate that exact observation in Agent Lens; the final reply alone cannot prove what the model received.",
       "start_minute": 48,
       "time": "0:48",
       "name": "read-tool",
       "kind": "",
       "concept": "read-tool",
       "exercise_id": null,
-      "source": null
+      "source": null,
+      "clicks": 3,
+      "visual": {
+        "component": "AirlineMechanism",
+        "mode": "loop",
+        "states": 4
+      }
     },
     {
       "number": 15,
@@ -349,15 +373,21 @@
     {
       "number": 24,
       "title": "Fewer flights can be the correct result",
-      "body": "<div class=\"itinerary\"><div class=\"itinerary-row\"><div class=\"itinerary-label\">Before</div><div class=\"segments\"><div class=\"segment untouched\"><strong>outbound-1</strong><small>First outward flight</small></div><div class=\"segment untouched\"><strong>outbound-2</strong><small>Connecting flight</small></div><div class=\"segment untouched\"><strong>return-1</strong><small>Return journey</small></div></div></div><div class=\"itinerary-row\"><div class=\"itinerary-label\">Approved change</div><div class=\"segments\"><div class=\"segment changed\"><strong>new-outbound</strong><small>Requested nonstop</small></div><div class=\"segment untouched\"><strong>return-1</strong><small>Keep this flight</small></div><div class=\"segment ghost\"><strong></strong><small>No extra segment</small></div></div></div></div><div class=\"itinerary-caption\">Simplified segment IDs for the list operation. Open the notebook for the source reservation, flight numbers, and dates.</div><p>Two connecting flights became one nonstop. The return remains. This should not be tagged as an unrequested change.</p>",
-      "notes": "This is the central counterexample to a naive flight-count rule. Ask the room whether changing three segments to two is sufficient evidence of failure. It is not.",
+      "body": "<AirlineMechanism mode=\"nonstop\" :reveal=\"$clicks + 1\" />",
+      "notes": "This is the central counterexample to a naive flight-count rule. Ask the room whether changing three segments to two is sufficient evidence of failure. It is not.\n\nVisual sequence: The connecting point disappears while the origin, destination, and return remain. Ask whether fewer segments is a failure before revealing the approved nonstop. The answer depends on the request, not the count. These segment names and airport positions are illustrative.",
       "start_minute": 115,
       "time": "1:55",
       "name": "counterexample-nonstop",
       "kind": "",
       "concept": "counterexample-nonstop",
       "exercise_id": null,
-      "source": null
+      "source": null,
+      "clicks": 2,
+      "visual": {
+        "component": "AirlineMechanism",
+        "mode": "nonstop",
+        "states": 3
+      }
     },
     {
       "number": 25,
@@ -375,15 +405,21 @@
     {
       "number": 26,
       "title": "A native tag has criteria, labels, and a live state",
-      "body": "<div class=\"pipeline\"><div class=\"\">Draft criteria<small>Describe the behavior</small></div><b v-click=\"1\">\u2192</b><div v-click=\"1\" class=\"\">Alignment review<small>People label turns</small></div><b v-click=\"2\">\u2192</b><div v-click=\"2\" class=\"\">Test the judge<small>Compare with the reviews</small></div><b v-click=\"3\">\u2192</b><div v-click=\"3\" class=\"\">Save criteria<small>Update what the live tag uses</small></div></div><p>Alignment experiments do not change live criteria until you save them. Record the chosen criteria and experiment identity.</p>",
-      "notes": "Walk through native Tags and Alignment. Creating or editing a notebook rubric is not the same action as saving native tag criteria. Use the native identities in the readback record.",
+      "body": "<AirlineMechanism mode=\"criteria\" :reveal=\"$clicks + 1\" />",
+      "notes": "Walk through native Tags and Alignment. Creating or editing a notebook rubric is not the same action as saving native tag criteria. Use the native identities in the readback record.\n\nVisual sequence: Keep the right-hand saved criterion in place while the Alignment draft is tested. Only the final explicit-save arrow changes live criteria. A failed Alignment test produces no judgment; it does not silently disable, update, or validate the saved live rule.",
       "start_minute": 125,
       "time": "2:05",
       "name": "tag-lifecycle",
       "kind": "",
       "concept": "tag-lifecycle",
       "exercise_id": null,
-      "source": "https://docs.coreweave.com/products/agent-lens/tags/create-tag"
+      "source": "https://docs.coreweave.com/products/agent-lens/tags/create-tag",
+      "clicks": 2,
+      "visual": {
+        "component": "AirlineMechanism",
+        "mode": "criteria",
+        "states": 3
+      }
     },
     {
       "number": 27,
@@ -401,15 +437,21 @@
     {
       "number": 28,
       "title": "Turn context limits what the judge can know",
-      "body": "<div class=\"pipeline\"><div class=\"\">Passenger message<small>Requested scope</small></div><b v-click=\"1\">\u2192</b><div v-click=\"1\" class=\"\">Tool work<small>Arguments and returned state</small></div><b v-click=\"2\">\u2192</b><div v-click=\"2\" class=\"\">Judge context<small>Evidence available in this turn</small></div></div><p>If the original itinerary is absent, the judge may not be able to establish which flight was removed. Mark the review unresolved and inspect the context.</p>",
-      "notes": "Native judges see turn-level evidence. Do not assume every model span contains the entire conversation. The context inspection is part of the exercise; a fluent judge reason does not create missing evidence.",
+      "body": "<AirlineMechanism mode=\"context\" :reveal=\"$clicks + 1\" />",
+      "notes": "Native judges see turn-level evidence. Do not assume every model span contains the entire conversation. The context inspection is part of the exercise; a fluent judge reason does not create missing evidence.\n\nVisual sequence: The selected turn has a write and a reply but lacks the earlier booking. Ask which evidence establishes a return was removed. In this illustrated context it is unavailable. A reviewer with the full conversation knows more than the turn-level judge; keep that context difference in the review record.",
       "start_minute": 130,
       "time": "2:10",
       "name": "judge-context",
       "kind": "",
       "concept": "judge-context",
       "exercise_id": null,
-      "source": null
+      "source": null,
+      "clicks": 2,
+      "visual": {
+        "component": "AirlineMechanism",
+        "mode": "context",
+        "states": 3
+      }
     },
     {
       "number": 29,
@@ -494,54 +536,78 @@
     {
       "number": 33,
       "title": "Measure the monitor on reviewed cases",
-      "body": "<div class=\"confusion\"><div class=\"head\"></div><div class=\"head\">Reviewer: failure</div><div class=\"head\">Reviewer: no failure</div><div class=\"head\">Tag: positive</div><div class=\"positive\"><strong>3</strong>True positives</div><div class=\"incorrect\"><strong>1</strong>False positive</div><div class=\"head\">Tag: negative</div><div class=\"incorrect\"><strong>1</strong>False negative</div><div><strong>3</strong>True negatives</div></div><p class=\"caption\">Illustrative arithmetic: eight reviewed, processed turns. These are not workshop results.</p>",
-      "notes": "Walk through one cell at a time. The human review is the reference for this calculation; disagreement remains open to correction. Unavailable judgments are excluded from these eight processed rows and reported separately.",
+      "body": "<AirlineMechanism mode=\"confusion\" :reveal=\"$clicks + 1\" />",
+      "notes": "Walk through one cell at a time. The human review is the reference for this calculation; disagreement remains open to correction. Unavailable judgments are excluded from these eight processed rows and reported separately.\n\nVisual sequence: Reveal the true positives, false positive, and remaining cells in place. Human review supplies the reference labels. These eight rows are illustrative arithmetic and not a successful native Alignment result. No unavailable prediction enters this matrix.",
       "start_minute": 155,
       "time": "2:35",
       "name": "confusion",
       "kind": "",
       "concept": "confusion",
       "exercise_id": null,
-      "source": null
+      "source": null,
+      "clicks": 2,
+      "visual": {
+        "component": "AirlineMechanism",
+        "mode": "confusion",
+        "states": 3
+      }
     },
     {
       "number": 34,
       "title": "Precision asks whether an alert deserves review",
-      "body": "<div class=\"formula\"><code>3 / (3 + 1) = 0.75</code><div><b>Three of four alerts</b><small>match the reviewed failure label.</small></div></div><p>Low precision creates review work. Read the false positives before widening or narrowing the rule.</p><p class=\"caption\">Illustrative arithmetic from the previous matrix. If there are no alerts, precision is unavailable.</p>",
-      "notes": "The denominator is the tagged turns with a reviewed label, not all requests. Alert count cannot tell us how many failures were missed. Ask which example produced the false positive.",
+      "body": "<AirlineMechanism mode=\"precision\" :reveal=\"$clicks + 1\" />",
+      "notes": "The denominator is the tagged turns with a reviewed label, not all requests. Alert count cannot tell us how many failures were missed. Ask which example produced the false positive.\n\nVisual sequence: The outlined row is the denominator: all four reviewed alerts. Three are reviewed failures. The faded second row is irrelevant to precision but needed for recall. If there are no alerts, leave precision unavailable. This graphic does not describe native workshop outcomes.",
       "start_minute": 159,
       "time": "2:39",
       "name": "precision",
       "kind": "",
       "concept": "precision",
       "exercise_id": null,
-      "source": null
+      "source": null,
+      "clicks": 1,
+      "visual": {
+        "component": "AirlineMechanism",
+        "mode": "precision",
+        "states": 2
+      }
     },
     {
       "number": 35,
       "title": "Recall asks which failures the monitor missed",
-      "body": "<div class=\"formula\"><code>3 / (3 + 1) = 0.75</code><div><b>Three of four failures</b><small>were found among reviewed, processed turns.</small></div></div><p>Review unflagged cases too. If we only inspect alerts, we cannot estimate missed failures.</p><p class=\"caption\">Illustrative arithmetic. This small reviewed sample does not establish production recall.</p>",
-      "notes": "Precision and recall happen to match in this arithmetic example, but they use different denominators. Show the missed failure cell. Review sampling affects whether these values estimate the wider traffic population.",
+      "body": "<AirlineMechanism mode=\"recall\" :reveal=\"$clicks + 1\" />",
+      "notes": "Precision and recall happen to match in this arithmetic example, but they use different denominators. Show the missed failure cell. Review sampling affects whether these values estimate the wider traffic population.\n\nVisual sequence: The outlined column is the denominator: all four reviewed failures. One was not alerted. The same 75 percent hides a different question from precision. Review unflagged controls so this missed-failure cell can be populated. The arithmetic remains illustrative.",
       "start_minute": 162,
       "time": "2:42",
       "name": "recall",
       "kind": "",
       "concept": "recall",
       "exercise_id": null,
-      "source": null
+      "source": null,
+      "clicks": 1,
+      "visual": {
+        "component": "AirlineMechanism",
+        "mode": "recall",
+        "states": 2
+      }
     },
     {
       "number": 36,
       "title": "Coverage tells us which turns were judged",
-      "body": "<div class=\"formula\"><code>8 / 10 = 0.80</code><div><b>Eight of ten turns</b><small>have a completed judgment.</small></div></div><div class=\"comparison-grid\"><div><h2>Tag absent</h2><p>A completed judgment may have been negative.</p></div><div><h2>Not processed</h2><p>No completed judgment exists yet. Keep it unknown.</p></div></div><p class=\"caption\">Illustrative arithmetic: two additional turns have unavailable judgments.</p>",
-      "notes": "A missing tag is not enough to identify a completed negative judgment. Read processing status and identities. Keep pending, failed, insufficient-context, and scored states separate as supported by the recorded events.",
+      "body": "<AirlineMechanism mode=\"coverage\" :reveal=\"$clicks + 1\" />",
+      "notes": "A missing tag is not enough to identify a completed negative judgment. Read processing status and identities. Keep pending, failed, insufficient-context, and scored states separate as supported by the recorded events.\n\nVisual sequence: Count the eight completed predictions, then divide by all ten eligible turns. Only after that do we join completed predictions to human reviews for the agreement matrix. The two question marks remain unknown. Positive live assignments by themselves cannot establish this denominator.",
       "start_minute": 165,
       "time": "2:45",
       "name": "coverage",
       "kind": "",
       "concept": "coverage",
       "exercise_id": null,
-      "source": null
+      "source": null,
+      "clicks": 2,
+      "visual": {
+        "component": "AirlineMechanism",
+        "mode": "coverage",
+        "states": 3
+      }
     },
     {
       "number": 37,
@@ -574,15 +640,21 @@
     {
       "number": 38,
       "title": "A missing live tag does not establish a negative judgment",
-      "body": "<p class=\"principle\">Live tag assignments identify positive matches. An untagged turn may be negative, pending, or unavailable.</p><p>Use explicit native Alignment test results for known positive and negative predictions. Join those results to your reviews before calculating agreement.</p>",
-      "notes": "Keep the live assignment view separate from the explicit Alignment-test result set. Do not infer processing coverage from positive assignments alone. Record the denominator and native result source beside any calculated rate.",
+      "body": "<AirlineMechanism mode=\"missing\" :reveal=\"$clicks + 1\" />",
+      "notes": "Keep the live assignment view separate from the explicit Alignment-test result set. Do not infer processing coverage from positive assignments alone. Record the denominator and native result source beside any calculated rate.\n\nVisual sequence: All three branches can produce the same absent live tag. Ask what readback distinguishes them. Explicit native test outcomes can establish known positive and negative predictions; a blank assignment cannot. Keep pending, failed, and missing context separate where native records support them.",
       "start_minute": 180,
       "time": "3:00",
       "name": "live-missingness",
       "kind": "",
       "concept": "live-missingness",
       "exercise_id": null,
-      "source": null
+      "source": null,
+      "clicks": 2,
+      "visual": {
+        "component": "AirlineMechanism",
+        "mode": "missing",
+        "states": 3
+      }
     },
     {
       "number": 39,
@@ -600,15 +672,21 @@
     {
       "number": 40,
       "title": "A reviewed turn becomes a regression case",
-      "body": "<div class=\"pipeline\"><div class=\"\">Reviewed incident<small>A claim with supporting spans</small></div><b v-click=\"1\">\u2192</b><div v-click=\"1\" class=\"\">Reconstruct inputs<small>Request, initial booking, policy</small></div><b v-click=\"2\">\u2192</b><div v-click=\"2\" class=\"\">Define expected behavior<small>What must change or stay</small></div><b v-click=\"3\">\u2192</b><div v-click=\"3\" class=\"\">Save a case<small>Source links and dataset version</small></div></div><p>A saved conversation filter alone does not preserve the input state needed to rerun the incident.</p>",
-      "notes": "Make curation an explicit code exercise. The case contains the original booking, not the already-mutated booking that caused the complaint. Keep the exact request and constraints with it.",
+      "body": "<AirlineMechanism mode=\"curation\" :reveal=\"$clicks + 1\" />",
+      "notes": "Make curation an explicit code exercise. The case contains the original booking, not the already-mutated booking that caused the complaint. Keep the exact request and constraints with it.\n\nVisual sequence: The arrow into the regression case comes from before the write. The crossed arrow from the mutated booking explains a common reconstruction error. Keep the request, policy, approved scope, human review, and source identities with the initial state. This omission incident is a labeled illustration, not an invented live failure.",
       "start_minute": 190,
       "time": "3:10",
       "name": "curation",
       "kind": "",
       "concept": "curation",
       "exercise_id": null,
-      "source": null
+      "source": null,
+      "clicks": 2,
+      "visual": {
+        "component": "AirlineMechanism",
+        "mode": "curation",
+        "states": 3
+      }
     },
     {
       "number": 41,
@@ -760,15 +838,21 @@
     {
       "number": 50,
       "title": "Walk through the values before running the model",
-      "body": "```python {1-3|5|6|7|all}\noriginal = [\"outbound-1\", \"outbound-2\", \"return-1\"]\nstart, stop = 0, 2\nreplacement = [\"new-outbound\"]\n\noriginal[:start]   # []\nreplacement       # [\"new-outbound\"]\noriginal[stop:]    # [\"return-1\"]\n```\n<p>The complete API input becomes <code>[\"new-outbound\", \"return-1\"]</code>.</p>",
-      "notes": "This is a free, simplified arithmetic check. It establishes the list transformation, not whether the model selected the correct segment range or received passenger confirmation.",
+      "body": "<AirlineMechanism mode=\"slice\" :reveal=\"$clicks + 1\" />",
+      "notes": "This is a free, simplified arithmetic check. It establishes the list transformation, not whether the model selected the correct segment range or received passenger confirmation.\n\nVisual sequence: Point to index two: the half-open replacement stops before return-1. First expose the index range, then the empty prefix, replacement, and untouched suffix. The last line is the participant function\u2019s list operation. Their free check also validates bounds and copies the data.",
       "start_minute": 250,
       "time": "4:10",
       "name": "range-values",
       "kind": "",
       "concept": "range-values",
       "exercise_id": null,
-      "source": null
+      "source": null,
+      "clicks": 2,
+      "visual": {
+        "component": "AirlineMechanism",
+        "mode": "slice",
+        "states": 3
+      }
     },
     {
       "number": 51,
@@ -895,15 +979,21 @@
     {
       "number": 57,
       "title": "Read the same request across the two versions",
-      "body": "<table class=\"monitor-table \"><thead><tr><th>Same case</th><th>Starting version</th><th>Repaired version</th></tr></thead><tbody><tr><td>Initial state</td><td>Same reservation snapshot</td><td>Same reservation snapshot</td></tr><tr><td>Executed code</td><td>Starting builder source</td><td>Frozen repair source</td></tr><tr><td>Booking outcome</td><td>Read actual final flights</td><td>Read actual final flights</td></tr><tr><td>Explanation</td><td>Inspect its own judge result</td><td>Inspect its own judge result</td></tr><tr><td>Operational measures</td><td>Time, errors, usage</td><td>Time, errors, usage</td></tr></tbody></table>",
-      "notes": "Teach the alignment before opening EvalTables. Compare the complete booking state; do not substitute a tag result for deterministic correctness. Match source IDs and execution fingerprints.",
+      "body": "<AirlineMechanism mode=\"matched\" :reveal=\"$clicks + 1\" />",
+      "notes": "Teach the alignment before opening EvalTables. Compare the complete booking state; do not substitute a tag result for deterministic correctness. Match source IDs and execution fingerprints.\n\nVisual sequence: The same case forks into two isolated initial bookings. Each uses its own recorded source and trace. The dashed link means aligned comparison, not shared mutable state or a handoff. Keep booking-state checks, explanation judgments, and monitor outcomes in separate fields.",
       "start_minute": 294,
       "time": "4:54",
       "name": "aligned-comparison",
       "kind": "",
       "concept": "aligned-comparison",
       "exercise_id": null,
-      "source": null
+      "source": null,
+      "clicks": 2,
+      "visual": {
+        "component": "AirlineMechanism",
+        "mode": "matched",
+        "states": 3
+      }
     },
     {
       "number": 58,
@@ -934,15 +1024,21 @@
     {
       "number": 60,
       "title": "The recorded agent comparison was a tie",
-      "body": "<table class=\"monitor-table \"><thead><tr><th>Reserved requests</th><th>Starting agent</th><th>Agent with itinerary builder</th></tr></thead><tbody><tr><td>Final evaluation</td><td>6 / 6 task checks passed</td><td>6 / 6 task checks passed</td></tr><tr><td>Subsequent traffic</td><td>4 / 4 task checks passed</td><td>4 / 4 task checks passed</td></tr></tbody></table><p>All 40 qualification conversations passed their task checks. The live agent did not reproduce the missing-return defect.</p><p class=\"caption\">The labeled local adapter drill demonstrates the repair mechanism separately. Native Alignment judging was unavailable, so this result says nothing about monitor accuracy.</p>",
-      "notes": "Preserve the successful baseline. Do not describe the helper as improving task quality on this rehearsal. The controlled drill is a real code repair, but it is not a spontaneous agent failure. These small simulated batches do not estimate production reliability.",
+      "body": "<AirlineMechanism mode=\"results\" :reveal=\"$clicks + 1\" />",
+      "notes": "Preserve the successful baseline. Do not describe the helper as improving task quality on this rehearsal. The controlled drill is a real code repair, but it is not a spontaneous agent failure. These small simulated batches do not estimate production reliability.\n\nVisual sequence: Reveal the starting row first, then the repair row. All six case outcomes match; there is no passing case unique to the repair. Both versions also pass four subsequent requests. Native monitoring accuracy is unavailable. The local omission drill demonstrates a repair independently of this observed tie.",
       "start_minute": 305,
       "time": "5:05",
       "name": "recorded-results",
       "kind": "",
       "concept": "recorded-results",
       "exercise_id": null,
-      "source": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/airline-monitoring/qualification.json"
+      "source": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/airline-monitoring/qualification.json",
+      "clicks": 2,
+      "visual": {
+        "component": "AirlineMechanism",
+        "mode": "results",
+        "states": 3
+      }
     },
     {
       "number": 61,

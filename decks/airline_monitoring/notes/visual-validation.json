@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "scope": "airline deck visual revision only; no paid execution",
+  "slides": 73,
+  "reveal_states": 134,
+  "pdf_pages": 134,
+  "worked_answer_returns": 5,
+  "overflow_or_svg_issues": [],
+  "console_errors": [],
+  "failed_responses": [],
+  "empty_pdf_pages": 0,
+  "checks": [
+    "All slides and reveals rendered in Chrome",
+    "Forward and Back navigation at every reveal",
+    "Text-line, SVG label, image and code bounds",
+    "Keyboard worked-answer returns",
+    "All PDF pages rasterized",
+    "All 16 revised slides visually reviewed",
+    "Storyboard and Python excerpts parsed"
+  ],
+  "sources": {
+    "slides.md": "a038d92c80ffeda5fe127efaabeb2d8c19d12bed979b8d1fad1fb121a5aa3f71",
+    "components/AirlineMechanism.vue": "ef6c1929eece12010eed2247c189956decc7e74ff8bb212d6243269d6c3b215a",
+    "data/qualification.json": "9f2293849ee0e34f9a19f3bcb8fe79a4f09e41b04cb1a40a2abab1d4716d375f",
+    "public/graphics-preview.png": "7fcfbc09d383e1f9878bb3a11476bb2b609dc41fd2a1679d69fa824412b4910d"
+  },
+  "prior_walkthrough": "v0.8.0 captures and media preserved unchanged",
+  "external_account_and_human_workshop_readiness": "Not requalified by this deck-only revision"
+}

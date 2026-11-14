@@ -55,7 +55,7 @@
   },
   {
     "slide": 10,
-    "title": "Turn one request into words and adjacent pairs",
+    "title": "Measure the words and phrases in one request",
     "time": "0:39",
     "name": "word-vector"
   },
@@ -175,7 +175,7 @@
   },
   {
     "slide": 30,
-    "title": "There are two different model exercises",
+    "title": "The judge reviews a route in a separate call",
     "time": "2:25",
     "name": "two-model-tasks"
   },

@@ -58,16 +58,18 @@ This is a real capture of the reference implementation, not a model outcome. Par
 -->
 
 ---
+clicks: 2
+---
 
 <div class="kicker">0:08</div>
 
 # The inputs are public transit records
 
-<div class="flow"><div>Stops<small>Where a rider can board</small></div><b class="arrow">+</b><div>Trips and stop times<small>Which service visits each stop</small></div><b class="arrow">+</b><div>Service calendars<small>Which trips run on this date</small></div></div><p>We use the MBTA archive dated November 28, 2024. The teaching subset contains 10 platforms at five central Red Line stations.</p><p class="caption">GTFS describes scheduled service. This subset includes 1,252 trips and 6,260 stop-time rows; the source receipt preserves its checksum.</p>
+<TransitMechanism mode="joins" :stage="$clicks"/><p class="caption">Follow trip_id to the service rule, then convert its departure time. 10 platforms, 1,252 trips and 6,260 stop times in this teaching subset.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>4 / 94</span></div>
 
 <!--
-Open the notebook data receipt and read its archive date and checksum. Do not describe the small teaching subset as the complete MBTA system. MBTA describes its feed at https://github.com/mbta/gtfs-documentation/blob/master/reference/gtfs.md .
+Open the notebook data receipt and read its archive date and checksum. Do not describe the small teaching subset as the complete MBTA system. MBTA describes its feed at https://github.com/mbta/gtfs-documentation/blob/master/reference/gtfs.md . Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 -->
 
 ---
@@ -76,11 +78,11 @@ Open the notebook data receipt and read its archive date and checksum. Do not de
 
 # Start with the row for the platform
 
-<LessonSequence mode="service-day" :stage="0"/><p class="caption">The stop-time row identifies the trip and platform. It does not contain the date on which that trip runs.</p>
+<TransitMechanism mode="joins" :stage="0"/><p class="caption">The stop-time row identifies the trip and platform. It does not contain the date on which that trip runs.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>5 / 94</span></div>
 
 <!--
-Keep the same trip visible through the next three slides. Read the actual identifiers aloud once. The product uses these joins, not an LLM guess about the next train. Ask which table must tell us whether this trip runs on Thanksgiving. Timeline spacing is illustrative; timestamps are actual.
+Keep the same trip visible through the next three slides. Read the actual identifiers aloud once. The product uses these joins, not an LLM guess about the next train. Ask which table must tell us whether this trip runs on Thanksgiving. Timeline spacing is illustrative; timestamps are actual. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 -->
 
 ---
@@ -89,11 +91,11 @@ Keep the same trip visible through the next three slides. Read the actual identi
 
 # Join the trip to its service calendar
 
-<LessonSequence mode="service-day" :stage="1"/><p class="caption">Trip 63926435 refers to ThanksgivingDay service. The date under consideration is November 28.</p>
+<TransitMechanism mode="joins" :stage="2"/><p class="caption">The shared trip_id identifies ThanksgivingDay service. Its calendar exception adds service on November 28.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>6 / 94</span></div>
 
 <!--
-The service ID is a join key. The active dates come from the calendar and exception records. Explain that calendar_dates overrides the weekly rule. This is a historical snapshot and fixed test date, not today’s schedule.
+The service ID is a join key. The active dates come from the calendar and exception records. Explain that calendar_dates overrides the weekly rule. This is a historical snapshot and fixed test date, not today’s schedule. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 -->
 
 ---
@@ -102,7 +104,7 @@ The service ID is a join key. The active dates come from the calendar and except
 
 # Keep the service date and boarding date
 
-<LessonSequence mode="service-day" :stage="2"/><p class="caption">This train belongs to November 28 service and departs on November 29. The result needs both facts.</p>
+<TransitMechanism mode="service-day" :stage="2"/><p class="caption">This train belongs to November 28 service and departs on November 29. The result needs both facts.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>7 / 94</span></div>
 
 <!--
@@ -115,11 +117,11 @@ Ask the room to name the two different dates before revealing the timestamp. The
 
 # The last train can belong to yesterday’s service
 
-<div class="two-col"><div class="ticket"><small>Actual Park Street departure</small><strong>24:08:00</strong><p>Alewife-bound service on November 28 departs at 00:08 on November 29.</p></div><div><h2>What the code needs to preserve</h2><p>The elapsed time may be greater than 24 hours. Reducing it modulo 24 loses which service day it belongs to.</p></div></div><p class="caption">Trip 63926435 · stop 70076 · ThanksgivingDay service · MBTA archive 20241128</p>
+<TransitMechanism mode="service-day" :stage="2"/><p class="caption">The rider boards on November 29. The train still belongs to November 28 service. Reducing 24 modulo 24 loses that link.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>8 / 94</span></div>
 
 <!--
-This is an actual retained row: trip 63926435, stop 70076, departure_time 24:08:00, stop_sequence 150, ThanksgivingDay service, headsign Alewife. The civil timestamp is 2024-11-29T00:08:00-05:00. Ask what a parser restricted to 0..23 hours would do. The rule must survive between components.
+This is an actual retained row: trip 63926435, stop 70076, departure_time 24:08:00, stop_sequence 150, ThanksgivingDay service, headsign Alewife. The civil timestamp is 2024-11-29T00:08:00-05:00. Ask what a parser restricted to 0..23 hours would do. The rule must survive between components. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 -->
 
 ---
@@ -285,16 +287,18 @@ The scenario is written by the participant and later runs on the integrated app.
 -->
 
 ---
+clicks: 3
+---
 
 <div class="kicker">0:50</div>
 
 # One worker still needs a complete loop
 
-<div class="flow"><div>Request<small>Task, files, allowed tools</small></div><b class="arrow">→</b><div>Tool action<small>Read, edit or run a test</small></div><b class="arrow">→</b><div>Observation<small>Actual result in the next request</small></div></div><p>A completed worker submits a patch and test evidence. It does not mark the product released.</p>
+<TransitMechanism mode="worker" :stage="$clicks"/><p class="caption">Each tool returns an observation. That returned value goes into the next request; the worker cannot learn from a result it never receives.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>19 / 94</span></div>
 
 <!--
-Start with the familiar single-agent harness. Multiple agents do not remove the need for correct tool observation handling, explicit stopping and independent checks. Model settings stay fixed in the comparisons.
+Start with the familiar single-agent harness. Multiple agents do not remove the need for correct tool observation handling, explicit stopping and independent checks. Model settings stay fixed in the comparisons. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 -->
 
 ---
@@ -326,7 +330,7 @@ Explain each input before editing: task is the approved contract, sources are th
 
 # The first action reads the assigned file
 
-<LessonSequence mode="worker" :stage="0"/><p class="caption">read_file returns the current text and its SHA256. The next edit must refer to that hash.</p>
+<TransitMechanism mode="worker" :stage="0"/><p class="caption">read_file returns the current text and its SHA256. The next edit must refer to that hash.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>21 / 94</span></div>
 
 <!--
@@ -339,7 +343,7 @@ This is an explanatory sequence using the implemented tool contract, not an addi
 
 # The edit includes the version it was based on
 
-<LessonSequence mode="worker" :stage="1"/><p class="caption">write_file rejects a path the task does not own, or a file that changed since the read.</p>
+<TransitMechanism mode="worker" :stage="1"/><p class="caption">write_file rejects a path the task does not own, or a file that changed since the read.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>22 / 94</span></div>
 
 <!--
@@ -352,7 +356,7 @@ Explain optimistic conflict detection: before_sha256 identifies the old file, wh
 
 # Run the checks against the changed files
 
-<LessonSequence mode="worker" :stage="2"/><p class="caption">A passing test for an earlier file does not authorize completion after another edit.</p>
+<TransitMechanism mode="worker" :stage="2"/><p class="caption">A passing test for an earlier file does not authorize completion after another edit.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>23 / 94</span></div>
 
 <!--
@@ -409,7 +413,7 @@ The agent action has already been appended as an assistant message. The followin
 
 # Finish submits a patch for review
 
-<LessonSequence mode="worker" :stage="3"/><p class="caption">finish requires passing development checks for the current source. It does not release the app.</p>
+<TransitMechanism mode="worker" :stage="3"/><p class="caption">finish requires passing development checks for the current source. It does not release the app.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>26 / 94</span></div>
 
 <!--
@@ -490,18 +494,18 @@ Ten-minute break, 1:35–1:45. Use the read-only monitor to find participants wh
 -->
 
 ---
-clicks: 2
+clicks: 1
 ---
 
 <div class="kicker">1:45</div>
 
 # Choose work that can happen independently
 
-<ContractBoard :stage="$clicks"/><p class="caption">The combined departures list depends on both components. Starting it early does not remove that dependency.</p>
+<TransitMechanism mode="tasks" :stage="$clicks"/><p class="caption">The query and presentation tasks can start independently. The combined check waits for both reviewed outputs.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>32 / 94</span></div>
 
 <!--
-The workers own query.py and presentation.py. The query returns the agreed departure records. The display consumes that interface. Use the actual notebook contract to see exactly which fields are required. Click to expose the join, then the whole-product check.
+The workers own query.py and presentation.py. The query returns the agreed departure records. The display consumes that interface. Use the actual notebook contract to see exactly which fields are required. Click to expose the join, then the whole-product check. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 -->
 
 ---
@@ -530,7 +534,7 @@ Completed means accepted completion with saved output, not a worker’s progress
 
 # Both workers can see a pending task
 
-<LessonSequence mode="claim" :stage="0"/><p class="caption">Two separate reads can return pending before either worker writes its name.</p>
+<TransitMechanism mode="claim" :stage="0"/><p class="caption">Two separate reads can return pending before either worker writes its name.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>34 / 94</span></div>
 
 <!--
@@ -543,7 +547,7 @@ Use the local two-thread fixture, not a theoretical timing claim. Ask learners w
 
 # A separate check and write permits two owners
 
-<LessonSequence mode="claim" :stage="1"/><p class="caption">The free exercise forces both reads before either assignment. Both callers think they claimed the task.</p>
+<TransitMechanism mode="claim" :stage="1"/><p class="caption">The free exercise forces both reads before either assignment. Both callers think they claimed the task.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>35 / 94</span></div>
 
 <!--
@@ -556,7 +560,7 @@ The controlled race uses a barrier to reproduce the condition. This two-owner ou
 
 # One short transaction assigns one owner
 
-<LessonSequence mode="claim" :stage="2"/><p class="caption">board.claim checks readiness and assigns the owner while holding the lock. Model work happens after the lock is released.</p>
+<TransitMechanism mode="claim" :stage="2"/><p class="caption">board.claim checks readiness and assigns the owner while holding the lock. Model work happens after the lock is released.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>36 / 94</span></div>
 
 <!--
@@ -605,16 +609,18 @@ Do not solve the race with a prompt asking agents to be careful. Claiming must b
 -->
 
 ---
+clicks: 2
+---
 
 <div class="kicker">2:15</div>
 
 # Separate working copies protect unfinished changes
 
-<div class="two-col"><div class="ticket"><small>Worker A</small>Starting revision + owned files<p>Writes one candidate patch.</p></div><div class="ticket"><small>Worker B</small>The same starting revision + its files<p>Writes another candidate patch.</p></div></div><p>Both patches still need to work together. Isolation prevents accidental overwrites; it does not prove compatibility.</p>
+<TransitMechanism mode="copies" :stage="$clicks"/><p class="caption">Ownership limits which file each worker can edit. The shared return schema still needs a combined application test.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>39 / 94</span></div>
 
 <!--
-This is a practical reason for independent workspaces, not a guarantee that the generated code is safe. Reviewed local code runs with bounded tools and time limits. Remote Sandboxes remain optional and require their own access.
+This is a practical reason for independent workspaces, not a guarantee that the generated code is safe. Reviewed local code runs with bounded tools and time limits. Remote Sandboxes remain optional and require their own access. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 -->
 
 ---
@@ -623,7 +629,7 @@ This is a practical reason for independent workspaces, not a guarantee that the 
 
 # Each worker starts from the same source
 
-<LessonSequence mode="copies" :stage="0"/><p class="caption">Separate directories let both workers inspect the initial interface without overwriting one another.</p>
+<TransitMechanism mode="copies" :stage="0"/><p class="caption">Separate directories let both workers inspect the initial interface without overwriting one another.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>40 / 94</span></div>
 
 <!--
@@ -636,7 +642,7 @@ Separate working files do not imply separate authority to change every file. Kee
 
 # Each task can edit only its assigned module
 
-<LessonSequence mode="copies" :stage="1"/><p class="caption">The query task owns query.py. The presentation task owns presentation.py. Neither can change the trusted grader.</p>
+<TransitMechanism mode="copies" :stage="1"/><p class="caption">The query task owns query.py. The presentation task owns presentation.py. Neither can change the trusted grader.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>41 / 94</span></div>
 
 <!--
@@ -649,7 +655,7 @@ Point out which files are readable and which are editable. Both task contracts n
 
 # Integration checks the patches against their base
 
-<LessonSequence mode="copies" :stage="2"/><p class="caption">If a file changed after a patch was prepared, integration reports a conflict instead of silently replacing it.</p>
+<TransitMechanism mode="copies" :stage="2"/><p class="caption">If a file changed after a patch was prepared, integration reports a conflict instead of silently replacing it.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>42 / 94</span></div>
 
 <!--
@@ -705,11 +711,11 @@ This is a checkpoint at 2:40, not a break. Integration starts at 2:45. If one wo
 
 # Review a patch before it enters the product
 
-<div class="flow"><div>Worker output<small>Changed source + stated reason</small></div><b class="arrow">→</b><div>Human review<small>Does it implement the contract?</small></div><b class="arrow">→</b><div>Integration check<small>Does it work with the other patch?</small></div></div><p>A passing component test does not establish that the complete departures board is correct.</p>
+<TransitMechanism mode="copies" :stage="2"/><p class="caption">Read the actual diff, check its base hash, then apply it. A hash check prevents stale replacement; it cannot prove the two modules agree.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>46 / 94</span></div>
 
 <!--
-The user explicitly approved human review of task contracts and patches. Keep the actual diff visible next to its test output. Do not represent a review decision as an executed version until integration really runs.
+The user explicitly approved human review of task contracts and patches. Keep the actual diff visible next to its test output. Do not represent a review decision as an executed version until integration really runs. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 -->
 
 ---
@@ -776,11 +782,11 @@ Twenty-minute break, 3:00–3:20. Resume the same project. Do not change source 
 
 # Shared memory needs something worth sharing
 
-<p>A later worker can reuse a verified project rule. It also should not inherit an unchecked guess as fact.</p><MemoryFlow :stage="0"/>
+<TransitMechanism mode="records" :stage="0"/><p class="caption">Store coordination, interfaces and experience separately. A task status does not establish that a general lesson is true.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>51 / 94</span></div>
 
 <!--
-Connect memory to a specific integration incident or verified behavior. Transcripts record what happened. A lesson is an interpretation intended to help a future task.
+Connect memory to a specific integration incident or verified behavior. Transcripts record what happened. A lesson is an interpretation intended to help a future task. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 -->
 
 ---
@@ -826,7 +832,7 @@ Do not present this as a measured memory success. Explain scope: a rule about sc
 
 # A saved note is not automatically accepted
 
-<LessonSequence mode="memory" :stage="0"/><p class="caption">These four illustrative notes are candidates for the next transit task. Read the status, scope, version and tags.</p>
+<TransitMechanism mode="memory" :stage="0"/><p class="caption">These four illustrative notes are candidates for the next transit task. Read the status, scope, version and tags.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>54 / 94</span></div>
 
 <!--
@@ -839,7 +845,7 @@ The examples are illustrative records matching the retrieval schema, not four ob
 
 # First exclude the unchecked interpretation
 
-<LessonSequence mode="memory" :stage="1"/><p class="caption">Only status="accepted" passes the review filter. Saving a proposal does not approve it.</p>
+<TransitMechanism mode="memory" :stage="1"/><p class="caption">Only status="accepted" passes the review filter. Saving a proposal does not approve it.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>55 / 94</span></div>
 
 <!--
@@ -852,7 +858,7 @@ The agent can propose a lesson. The participant checks its evidence and writes t
 
 # Then check the applicable contract version
 
-<LessonSequence mode="memory" :stage="2"/><p class="caption">version identifies the contract where the rule applies. source_revision identifies the source that supplied its evidence.</p>
+<TransitMechanism mode="memory" :stage="2"/><p class="caption">version identifies the contract where the rule applies. source_revision identifies the source that supplied its evidence.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>56 / 94</span></div>
 
 <!--
@@ -865,7 +871,7 @@ Do not compare source_revision to the current code fingerprint. A lesson may be 
 
 # Finally match the task’s scope and tags
 
-<LessonSequence mode="memory" :stage="3"/><p class="caption">The transit service-day task receives the reviewed transit rule. The billing rule remains stored but is not supplied.</p>
+<TransitMechanism mode="memory" :stage="3"/><p class="caption">The transit service-day task receives the reviewed transit rule. The billing rule remains stored but is not supplied.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>57 / 94</span></div>
 
 <!--
@@ -909,11 +915,11 @@ This is the trace-to-behavior chain. A citation or read event establishes consul
 
 # Find the last direct train between two stops
 
-<div class="two-col"><div class="ticket"><small>Follow-up A</small>Last direct train<p>Fresh team without project lessons.</p></div><div class="ticket"><small>Follow-up B</small>The identical request<p>Fresh team with selected lessons.</p></div></div><p>Start from the same code. Keep model settings and limits the same. Save both attempts.</p>
+<TransitMechanism mode="matched" :stage="0"/><p class="caption">Both teams receive the identical follow-up feature. Freeze the selected lesson before running either condition.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>60 / 94</span></div>
 
 <!--
-The follow-up asks for the last direct train between two retained stations, including arrival after midnight, a no-direct-service result and an itinerary download. Each branch uses two workers. Both branches execute; no prerecorded result is substituted for one side. This small paired example teaches the method. One pair cannot establish repeatability or general superiority.
+The follow-up asks for the last direct train between two retained stations, including arrival after midnight, a no-direct-service result and an itinerary download. Each branch uses two workers. Both branches execute; no prerecorded result is substituted for one side. This small paired example teaches the method. One pair cannot establish repeatability or general superiority. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 -->
 
 ---
@@ -922,7 +928,7 @@ The follow-up asks for the last direct train between two retained stations, incl
 
 # Start both follow-ups from the same release
 
-<LessonSequence mode="matched" :stage="0"/><p class="caption">Both teams add last_departure and render_journey. Only one receives the accepted project lesson.</p>
+<TransitMechanism mode="matched" :stage="0"/><p class="caption">Both teams add last_departure and render_journey. Only one receives the accepted project lesson.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>61 / 94</span></div>
 
 <!--
@@ -935,7 +941,7 @@ Each build has two workers. The coordinator invokes the two builds in order, whi
 
 # Keep both sets of patches and checks
 
-<LessonSequence mode="matched" :stage="1"/><p class="caption">Review both outcomes before running the independent comparison. An unsuccessful branch remains part of the result.</p>
+<TransitMechanism mode="matched" :stage="1"/><p class="caption">Review both outcomes before running the independent comparison. An unsuccessful branch remains part of the result.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>62 / 94</span></div>
 
 <!--
@@ -986,11 +992,11 @@ Keep memory fixed during this matched comparison. Do not edit it after seeing th
 
 # The factory has two kinds of state
 
-<table class="clean-table"><tbody><tr><th>Work state</th><th>Project knowledge</th></tr><tr><td>What is ready or blocked?</td><td>What rule has been verified?</td></tr><tr><td>Who owns the task?</td><td>Where does that rule apply?</td></tr><tr><td>Which patch and test finished?</td><td>What evidence supports it?</td></tr><tr><td>Resume the same build</td><td>Help a later task</td></tr></tbody></table>
+<TransitMechanism mode="records" :stage="0"/><p class="caption">Task records resume the current build. Contracts and checked lessons inform future work. None requires one giant shared chat.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>65 / 94</span></div>
 
 <!--
-This is the distinction between a task ledger and learning. Neither requires sharing a giant conversation among all workers. Both need durable records, clear identities and bounded retrieval.
+This is the distinction between a task ledger and learning. Neither requires sharing a giant conversation among all workers. Both need durable records, clear identities and bounded retrieval. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 -->
 
 ---
@@ -1119,11 +1125,11 @@ Actual native Evaluation Tables Preview, verified in a signed-out browser. The s
 
 # The faster build missed two final cases
 
-<table class="clean-table small-table"><tbody><tr><th>Rehearsal R5</th><th>Final scenarios</th><th>Builder elapsed</th><th>Observed model cost</th></tr><tr><td>One worker</td><td>10 / 10</td><td>124.78 s</td><td>$0.01107</td></tr><tr><td>Two workers</td><td>8 / 10</td><td>94.91 s</td><td>$0.01221</td></tr><tr><td>Follow-up without memory</td><td>12 / 18</td><td>212.88 s</td><td>$0.02565</td></tr><tr><td>Follow-up with memory</td><td>12 / 18</td><td>96.13 s</td><td>$0.01600</td></tr></tbody></table><p class="caption">Both initial builds passed their development checks. Independent final cases exposed the team build’s errors. Neither follow-up query finished; this pair does not establish a memory benefit.</p><p class="caption">One paired rehearsal. Elapsed time excludes human review and integration.</p>
+<TransitMechanism mode="outcomes" :stage="0"/><p class="caption">Both first builds passed development checks. The reserved UTC cases exposed a wrong train in the team output. Follow-up results appear separately below.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>74 / 94</span></div>
 
 <!--
-These are final native scores from R5, a separate engineering rehearsal after context compaction changed. All 56 scenario rows are represented. The first builds passed five public development checks each, but the two-worker final product passed only eight of ten reserved scenarios. Do not treat the earlier R4 native screenshot as this R5 comparison. Builder elapsed excludes human review and integration. Actual provider request counts were 8, 12, 5 and 5 respectively. The no-memory query reached its input bound after writing; the memory query exhausted its output allowance. Both stopped before query tests; presentation was retained unchanged. The lesson proposal cost an additional $0.00143474. Total observed inference was $0.06635800 across 31 provider requests, with zero unknown usage. This single pair cannot establish a general speed or memory effect.
+These are final native scores from R5, a separate engineering rehearsal after context compaction changed. All 56 scenario rows are represented. The first builds passed five public development checks each, but the two-worker final product passed only eight of ten reserved scenarios. Do not treat the earlier R4 native screenshot as this R5 comparison. Builder elapsed excludes human review and integration. Actual provider request counts were 8, 12, 5 and 5 respectively. The no-memory query reached its input bound after writing; the memory query exhausted its output allowance. Both stopped before query tests; presentation was retained unchanged. The lesson proposal cost an additional $0.00143474. Total observed inference was $0.06635800 across 31 provider requests, with zero unknown usage. This single pair cannot establish a general speed or memory effect. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 -->
 
 ---
@@ -1140,16 +1146,18 @@ Use the actual saved native view. The bottom two rows show the query and integra
 -->
 
 ---
+clicks: 2
+---
 
 <div class="kicker">5:16</div>
 
 # A timezone assumption selected the wrong train
 
-<div class="flow"><div>Rider’s request<small>23:00 UTC = 18:00 Eastern</small></div><b class="arrow">→</b><div>Expected next departure<small>18:03 Eastern<br>Trip 63919613</small></div></div><div class="two-col"><div class="ticket"><small>One-worker result</small>Uses the feed’s timezone<p>Finds the expected train.</p></div><div class="ticket"><small>Two-worker result</small>Uses the request’s timezone<p>Selects trip 63919759 from later in the service day.</p></div></div><p class="caption">R5: the query and rendered-board cases caught the same defect. It changed the selected train, not just how the time was displayed.</p>
+<TransitMechanism mode="timezone" :stage="$clicks"/><p class="caption">Follow the request, selected GTFS row and rendered board. These are two failed checks of one timezone bug, not two independent defects.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>76 / 94</span></div>
 
 <!--
-The failed cases were departures/utc-input and integrated/departures/utc-input. The two-worker query anchored GTFS service-day midnight to the caller’s timezone. It selected a service-clock 23:03 trip rather than the expected 18:03 Eastern departure after a 23:00 UTC request. The solo query preserved the fixed feed timezone for this historical subset. These are two checks of one defect, not two independent bugs. Both failed follow-up query edits left this earlier bug in place. Ask participants which contract or test they would add before another build.
+The failed cases were departures/utc-input and integrated/departures/utc-input. The two-worker query anchored GTFS service-day midnight to the caller’s timezone. It selected a service-clock 23:03 trip rather than the expected 18:03 Eastern departure after a 23:00 UTC request. The solo query preserved the fixed feed timezone for this historical subset. These are two checks of one defect, not two independent bugs. Both failed follow-up query edits left this earlier bug in place. Ask participants which contract or test they would add before another build. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 -->
 
 ---
@@ -1158,11 +1166,11 @@ The failed cases were departures/utc-input and integrated/departures/utc-input. 
 
 # Interpret the request as one instant
 
-<LessonSequence mode="timezone" :stage="0"/><p class="caption">The R5 final case sends 23:00 UTC. The next departure is 18:03 in the feed’s Eastern timezone.</p>
+<TransitMechanism mode="timezone" :stage="0"/><p class="caption">The R5 final case sends 23:00 UTC. The next departure is 18:03 in the feed’s Eastern timezone.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>77 / 94</span></div>
 
 <!--
-Recorded R5 case: departures/utc-input. This is a same-instant conversion. The feed clock defines the origin of GTFS elapsed service time; the caller is allowed to express the request using another offset.
+Recorded R5 case: departures/utc-input. This is a same-instant conversion. The feed clock defines the origin of GTFS elapsed service time; the caller is allowed to express the request using another offset. The paired clock positions show matching instants, with nonuniform spacing for legibility. The third position is five hours after the expected departure.
 -->
 
 ---
@@ -1171,11 +1179,11 @@ Recorded R5 case: departures/utc-input. This is a same-instant conversion. The f
 
 # The team used the caller’s clock for service time
 
-<LessonSequence mode="timezone" :stage="1"/><p class="caption">The code selected trip 63919759 from service-clock 23:03. It should have selected trip 63919613 at 18:03 Eastern.</p>
+<TransitMechanism mode="timezone" :stage="1"/><p class="caption">The code selected trip 63919759 from service-clock 23:03. It should have selected trip 63919613 at 18:03 Eastern.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>78 / 94</span></div>
 
 <!--
-Recorded behavior, not a hypothesized defect. The team anchored service-day midnight to the request timezone. This changed the chosen record, not only its formatted text. Inspect the source and actual prediction beside the expected row.
+Recorded behavior, not a hypothesized defect. The team anchored service-day midnight to the request timezone. This changed the chosen record, not only its formatted text. Inspect the source and actual prediction beside the expected row. The paired clock positions show matching instants, with nonuniform spacing for legibility. The third position is five hours after the expected departure.
 -->
 
 ---
@@ -1184,11 +1192,11 @@ Recorded behavior, not a hypothesized defect. The team anchored service-day midn
 
 # The renderer carried the same wrong trip into the board
 
-<LessonSequence mode="timezone" :stage="2"/><p class="caption">departures/utc-input and integrated/departures/utc-input failed for the same reason. Count two failed scenarios and one observed bug.</p>
+<TransitMechanism mode="timezone" :stage="2"/><p class="caption">departures/utc-input and integrated/departures/utc-input failed for the same reason. Count two failed scenarios and one observed bug.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>79 / 94</span></div>
 
 <!--
-The independent suite checks both the query and the complete application. Avoid describing these correlated cases as two independent coding errors. Learners should propose a public UTC-input regression case for a future experiment, after retaining the current outcome.
+The independent suite checks both the query and the complete application. Avoid describing these correlated cases as two independent coding errors. Learners should propose a public UTC-input regression case for a future experiment, after retaining the current outcome. The paired clock positions show matching instants, with nonuniform spacing for legibility. The third position is five hours after the expected departure.
 -->
 
 ---
@@ -1197,11 +1205,11 @@ The independent suite checks both the query and the complete application. Avoid 
 
 # Neither follow-up completed the query change
 
-<LessonSequence mode="matched" :stage="2"/><p class="caption">Recorded R5: both scored 12/18. Different request-limit failures prevent a conclusion about a memory benefit.</p>
+<TransitMechanism mode="matched" :stage="2"/><p class="caption">Open both failed requests in Agent Lens. Neither branch reached query testing, so this pair cannot establish a memory benefit.</p>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>80 / 94</span></div>
 
 <!--
-Without memory: oversized input after a saved write. With memory: output allowance exhausted before a complete first action. Both query tasks stopped before testing. The existing query remained; these outcomes do not establish that shared memory caused either failure.
+Without memory: oversized input after a saved write. With memory: output allowance exhausted before a complete first action. Both query tasks stopped before testing. The existing query remained; these outcomes do not establish that shared memory caused either failure. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.
 -->
 
 ---

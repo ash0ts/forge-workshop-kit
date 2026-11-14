@@ -106,7 +106,7 @@ load_goes first takes log10 of both flux channels. It fits one mean and standard
 
 0:25–1:05
 
-These numbers come from the same 01:00 window. Subtract the XRS-B training mean and divide by the training standard deviation to obtain minus 0.233211. The different number is a change of units, not a different observation. Both channels get their own training-derived statistics. Learners should reproduce the value using the notebook table and its normalization checkbox. The baseline must return minus 5.534128, not minus 0.233211. Rounded displayed values may differ in their last digit from full-precision calculations. Session block: Read observations and implement persistence (minutes 25–65).
+These numbers come from the same 01:00 window. Subtract the XRS-B training mean and divide by the training standard deviation to obtain minus 0.233211. The different number is a change of units, not a different observation. Both channels get their own training-derived statistics. Learners should reproduce the value using the notebook table and its normalization checkbox. The baseline must return minus 5.534128, not minus 0.233211. Rounded displayed values may differ in their last digit from full-precision calculations. Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code. Session block: Read observations and implement persistence (minutes 25–65).
 
 ## 19. Inspect a solar observation with SunPy
 
@@ -136,7 +136,7 @@ For each forecast, subtract the observed log-flux target, take the absolute erro
 
 0:25–1:05
 
-This particular forecast misses a rise in flux. Persistence can work well on slowly changing periods and miss rapid changes. Do not infer the mean from this one example. The existing arithmetic slide shows how individual errors are averaged. A log10 error of about 0.59 corresponds to a ratio near four, not a 59 percent error. Session block: Read observations and implement persistence (minutes 25–65).
+This particular forecast misses a rise in flux. Persistence can work well on slowly changing periods and miss rapid changes. Do not infer the mean from this one example. The existing arithmetic slide shows how individual errors are averaged. A log10 error of about 0.59 corresponds to a ratio near four, not a 59 percent error. Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code. Session block: Read observations and implement persistence (minutes 25–65).
 
 ## 24. Write and test persistence
 
@@ -196,7 +196,7 @@ zero_grad clears accumulated gradients; PyTorch adds new gradients unless we cle
 
 1:05–1:35
 
-eval disables training-specific behavior such as dropout if a candidate uses it. no_grad prevents autograd from retaining a differentiation graph. Our current small models do not need dropout to illustrate the distinction. The fixed parent scorer compares predictions to validation targets. Participants choose a configuration using validation; the optimizer itself never updates from these validation targets in this workshop. This is an explanatory excerpt of the scoring boundary, not the exact function signature. Session block: Explain loss and save a training run (minutes 65–95).
+eval disables training-specific behavior such as dropout if a candidate uses it. no_grad prevents autograd from retaining a differentiation graph. Our current small models do not need dropout to illustrate the distinction. The fixed parent scorer compares predictions to validation targets. Participants choose a configuration using validation; the optimizer itself never updates from these validation targets in this workshop. This is an explanatory excerpt of the scoring boundary, not the exact function signature. Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code. Session block: Explain loss and save a training run (minutes 65–95).
 
 ## 34. Restore a completed run after a restart
 
@@ -228,11 +228,11 @@ There are three different operations here. Hyperparameter search supplies differ
 
 B counts windows processed together. Each window has two instrument channels and sixty time positions. The target has one value per window. The training configuration uses batch size thirty-two. The notebook free shape demonstration uses batch size two and width four so learners can inspect a small forward pass; it does not train and does not change later random state. Ask learners to explain x[0,1,-1] before revealing the output shape. Session block: Inspect model shapes and compare configurations (minutes 110–155).
 
-## 39. Index one value, then keep the batch shape
+## 39. Keep each prediction paired with its own target
 
 1:50–2:35
 
-Explain colon as selecting every item and negative one as the final position. Using -1 removes the last axis; -1: preserves it as length one. Shape-compatible subtraction matters: (B,1) minus (B,) can broadcast to a B by B matrix and silently score the wrong pairs. Both predictions and targets should remain B by one. Ask experienced participants to demonstrate that broadcasting issue with a small local NumPy array; no training is needed. Session block: Inspect model shapes and compare configurations (minutes 110–155).
+Explain colon as selecting every item and negative one as the final position. Using -1 removes the last axis; -1: preserves it as length one. Shape-compatible subtraction matters: (B,1) minus (B,) can broadcast to a B by B matrix and silently score the wrong pairs. Both predictions and targets should remain B by one. Ask experienced participants to demonstrate that broadcasting issue with a small local NumPy array; no training is needed. Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code. Session block: Inspect model shapes and compare configurations (minutes 110–155).
 
 ## 40. How the MLP uses an hour of measurements
 
@@ -268,7 +268,7 @@ The six Sweep configurations are predefined; the required exercise is a bounded 
 
 1:50–2:35
 
-The MLP reads the history as a fixed set of inputs. The temporal CNN applies shared filters along time. We’ll try three settings for each: widths sixteen and thirty-two, and learning rates .001 and .003. Every run gets seed seventeen, batch size thirty-two, and sixty training steps. That small budget keeps the exercise short; it does not establish which architecture would win after longer training. Session block: Inspect model shapes and compare configurations (minutes 110–155).
+The MLP reads the history as a fixed set of inputs. The temporal CNN applies shared filters along time. We’ll try three settings for each: widths sixteen and thirty-two, and learning rates .001 and .003. Every run gets seed seventeen, batch size thirty-two, and sixty training steps. That small budget keeps the exercise short; it does not establish which architecture would win after longer training. Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code. Session block: Inspect model shapes and compare configurations (minutes 110–155).
 
 ## 46. Run the configurations through W&B Sweeps
 
@@ -466,7 +466,7 @@ This is the actual first-round Candidate A edit in v0.3.0. It changes the traini
 
 4:20–5:10
 
-Squared error grows quadratically, and its gradient magnitude grows with the error. Absolute error grows linearly and has constant magnitude away from zero. Matching the objective to the final metric is a plausible hypothesis, not a guarantee of better generalization. The model may trade large localized errors against smaller widespread errors. Inspect the actual validation forecasts after testing. These three arithmetic values are illustrations, not measured solar residuals. Session block: Review and test two rounds of changes (minutes 260–310).
+Squared error grows quadratically, and its gradient magnitude grows with the error. Absolute error grows linearly and has constant magnitude away from zero. Matching the objective to the final metric is a plausible hypothesis, not a guarantee of better generalization. The model may trade large localized errors against smaller widespread errors. Inspect the actual validation forecasts after testing. These three arithmetic values are illustrations, not measured solar residuals. Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code. Session block: Review and test two rounds of changes (minutes 260–310).
 
 ## 79. Train and score each candidate
 
@@ -520,7 +520,7 @@ The recorded second-round edit zeros the weights and bias of self.net[-1], the l
 
 4:20–5:10
 
-At initialization the final layer weights are zero, so its output correction is zero. The output weights still receive gradients because their derivative depends on the preceding features. For the first backward pass the zero output weights block gradients to preceding layers; after the output weights move, gradients can flow farther back. This explains why a zero residual head is compatible with learning. Do not teach zero initialization of every hidden layer as an equivalent change. Session block: Review and test two rounds of changes (minutes 260–310).
+At initialization the final layer weights are zero, so its output correction is zero. The output weights still receive gradients because their derivative depends on the preceding features. For the first backward pass the zero output weights block gradients to preceding layers; after the output weights move, gradients can flow farther back. This explains why a zero residual head is compatible with learning. Do not teach zero initialization of every hidden layer as an equivalent change. Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code. Session block: Review and test two rounds of changes (minutes 260–310).
 
 ## 88. Use the selected code and results in round two
 
@@ -594,11 +594,11 @@ This figure is regenerated from the fresh v0.3.0 saved predictions. Compare manu
 
 The earlier ten point one five percent result remains correct for seed seventeen. It is not a result to promise for every run. Seed forty-three already has a strong manual model, and the combined edits are slightly worse. Its loss-only edit does better than both, which is retained in the full table. Initialization and sampled batches both change with the seed, so we do not know which caused this difference. This is fixed-code repetition, not three independent agent discoveries. Session block: Freeze and compare on reserved dates (minutes 320–345).
 
-## 100. Separate repeated forecasts from repeated experiments
+## 100. The same image edit helped two seeds and hurt one
 
 5:20–5:45
 
-Overlapping windows are not independent solar events. The three-seed qualification tests fixed source, not three agents independently discovering the same edit. Seed seventeen and twenty-nine improve, while seed forty-three slightly regresses. The mean improvement and that regression both belong in the conclusion. A next study could predeclare different dates, more training seeds and independent agent adaptations, but this workshop does not run that study. Session block: Freeze and compare on reserved dates (minutes 320–345).
+Overlapping windows are not independent solar events. The three-seed qualification tests fixed source, not three agents independently discovering the same edit. Seed seventeen and twenty-nine improve, while seed forty-three slightly regresses. The mean improvement and that regression both belong in the conclusion. A next study could predeclare different dates, more training seeds and independent agent adaptations, but this workshop does not run that study. Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code. Session block: Freeze and compare on reserved dates (minutes 320–345).
 
 ## 101. The GOES model performed worse than persistence
 

@@ -40,15 +40,15 @@ def extend(original):
         slides.append(row)
     additions={}
     def walk(after,key,title,kind,step,minute,notes,evidence=(),before=False):
-        row={'name':key,'key':key,'title':title,'body':f'<RoutingWalk kind="{kind}" :step="{step}" />',
+        row={'name':key,'key':key,'title':title,'body':f'<RoutingMechanism kind="{dict(representation="vocabulary" if step==1 else "vector").get(kind,kind)}" :step="{step}" />',
              'notes':notes,'kind':'','time':time_label(minute),'start_minute':minute,'answer':None,'exercise':None,
              'concept':title,'source':[IMPLEMENTATION,NOTEBOOK,'src/forge_workshop_kit/routing_teaching.py'],
              'evidence':list(evidence)}
         additions.setdefault((after,before),[]).append(row)
-    walk('words','word-vector','Turn one request into words and adjacent pairs','representation',1,39,
-         'Read the real review-pool message aloud. The default tokenizer produces my, card, isn, here, yet; single-letter t is omitted. The diagram shows vocabulary positions, not invented TF–IDF weights. IDF and the vocabulary are fit on training text only.', ['examples/routing/recorded-review.json'])
+    walk('words','word-vector','Measure the words and phrases in one request','representation',1,39,
+         'Read the real review-pool message aloud. The default tokenizer produces my, card, isn, here, yet; single-letter t is omitted. The nine nonzero TF–IDF weights are recalculated from the frozen 8,463 training messages and shown against the actual 21,527-column vocabulary. IDF and the vocabulary use training text only.', ['examples/routing/recorded-review.json'])
     walk('embeddings','sentence-vector','Keep one vector for each request','representation',2,49,
-         'Compare the unchanged message with the different representation. Explain 384 as the encoder output size, not a count of hand-chosen keywords. The graphic is a schematic vector. Encoder weights stay frozen; no embedding geometry or semantic distances are fabricated.')
+         'Compare the unchanged message with the different representation. Explain 384 as the encoder output size, not a count of hand-chosen keywords. The heatmap shows all 384 actual cached coordinates in index order. Color is signed magnitude, not semantic location. Encoder weights stay frozen.')
     walk('embeddings','construct-head','Construct the estimator before fitting it','fit',1,52,
          'Point to make_classifier: it returns an unfitted estimator. C is inverse regularization strength; changing it changes the training objective, not the number of output intents. max_iter limits optimization. Use the fixed recipe in the required path.')
     walk('embeddings','fit-head','Fit the head on the labeled training rows','fit',2,54,
@@ -65,7 +65,7 @@ def extend(original):
          'The displayed review-pool request has confidence 0.508052 and margin 0.180419. Confidence controls automatic deferral; margin ranks which examples to ask someone to label. These are distinct rules in predict and select_review.', ['examples/routing/recorded-review.json'])
     walk('review-exercise','review-provenance','Keep the proposal and accepted label separate','review',1,126,
          'Ask the participant to find all three labels for a case: model proposal, dataset reference, personal accepted label. Do not overwrite the proposal when accepting a correction. The record must preserve who made the decision and which data it belongs to.')
-    walk('typed-route','two-model-tasks','There are two different model exercises','judge',1,145,
+    walk('typed-route','two-model-tasks','The judge reviews a route in a separate call','judge',1,145,
          'The first lane routes eight fixed validation requests. The second judges classifier proposals attached to human reviews. The judge does not consume the eight prompted routes. Both use actual provider calls and native spans; neither sample ranks models on the complete final dataset.')
     walk('judge-purpose','judge-evidence','Keep the accepted label out of the judge prompt','judge',2,164,
          'Show the user message fields in the actual notebook. The accepted label is used afterward to calculate human failure labels, not supplied to the judge. Contrast a malformed response, a valid disagreement and an unavailable request. This exercise is not an automatic native Insights cluster or tag.')

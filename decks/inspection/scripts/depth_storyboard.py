@@ -25,16 +25,18 @@ def extend(slides):
         if key=='forge-training':row['evidence']=['decks/inspection/public/images/agent-lens-training-original.png']
         if key in ['retest','improved-case','regression']:row['evidence']=['evidence/inspection-teaching-retest-v2/results.json','evidence/inspection-teaching-retest-v2/predictions.json']
         if key=='failure':row['evidence']=['evidence/inspection-qualification-v1/results.json']
-        if key=='encoder':row['body']='<InspectionWalk kind="encoder" :step="1" />'
+        if key=='encoder':row['body']='<InspectionMechanism kind="encoder" :step="1" />'
         if key=='patches':
             row['title']='Compare local features at the same board position'
-            row['body']='<InspectionWalk kind="patch" :step="1" />'
+            row['body']='<InspectionMechanism kind="patch" :step="1" />'
             row['notes']='Use only normal fitting boards as the reference bank. At each spatial position, find the closest actual reference vector after scaling. A normal fitting board cannot match itself. The older mean-patch result is preserved beside the later recorded comparison.'
         if key=='classifier':row['body']=row['body'].replace('validation_scores = inspection.score(data, validation_rows, model)', 'validation_scores = inspection.score(\n    data, validation_rows, model,\n    build_features=build_features,\n)')
-        if key=='threshold':row['body']='<InspectionWalk kind="threshold" :step="1" />'
+        if key=='threshold':row['body']='<InspectionMechanism kind="threshold" :step="1" />'
         if key=='break':
             row['title']='Take ten minutes. Return at 2:20.'
             row['notes']='Break from elapsed 2:10 to 2:20. Confirm both models are saved. After the break we choose where to spend 24 additional labels.'
+        if key in ['improved-case','regression']:
+            row['body']='<InspectionMechanism kind="outcomes" case-id="'+('pcb1-anomaly-048' if key=='improved-case' else 'pcb1-anomaly-015')+'" />'
         if key=='answer-features':
             row['body']='''```python
 whole = data["whole"][rows]
@@ -51,7 +53,7 @@ return np.concatenate([whole, local], axis=1)
             row['notes']='The complete function signature is in the notebook. This body includes the historical mean-patch branch required by the free fixture. Each row remains one board; concatenation extends its feature columns.'
     def walk(after,key,title,kind,step,minute,notes,evidence=(),before=False):
         extra.setdefault((after,before),[]).append({'key':key,'name':key,'title':title,
-            'body':f'<InspectionWalk kind="{kind}" :step="{step}" />','notes':notes,'time':label(minute),'start_minute':minute,
+            'body':f'<InspectionMechanism kind="{"features" if kind=="patch" and step==2 else kind}" :step="{step}" />','notes':notes,'time':label(minute),'start_minute':minute,
             'kind':'','answer':None,'concept':title,'exercise':None,'source':[IMPLEMENTATION,NOTEBOOK,'src/forge_workshop_kit/inspection_teaching.py'],'evidence':list(evidence)})
     walk('inspect','board-target','Predict a label for the whole board','data',1,32,
         'After participants inspect a training photo, identify the input photograph and the binary target separately. A detector flags a board. The supplied mask marks pixels, but this model does not learn pixel labels.', ['data/inspection-v1/records.json'])

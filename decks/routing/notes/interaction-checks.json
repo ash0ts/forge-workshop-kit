@@ -1,10 +1,22 @@
 {
   "deck": "routing",
+  "verified_via": "Native browser keyboard input",
   "slide": 22,
-  "initial": "0.5",
-  "maximum": "1",
-  "minimum": "0",
-  "keyboard_next": "0.05",
-  "errors": [],
-  "network_requests_during_interaction": 0
+  "initial": {
+    "threshold": 0.5,
+    "automatic_routes": 698,
+    "denominator": 770
+  },
+  "maximum": {
+    "threshold": 1,
+    "automatic_routes": 0
+  },
+  "minimum": {
+    "threshold": 0,
+    "automatic_routes": 770
+  },
+  "keyboard_increment": 0.05,
+  "display_only": true,
+  "publication_or_inference_triggered": false,
+  "screenshot": "/private/tmp/classification-visual-upgrade/routing-slider.png"
 }

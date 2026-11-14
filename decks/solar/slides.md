@@ -323,6 +323,8 @@ Source notes and recorded evidence: notes/sources.md.
 -->
 
 ---
+class: worked-visual
+clicks: 2
 name: normalization-values
 ---
 
@@ -330,17 +332,18 @@ name: normalization-values
 
 # Calculate the value the model receives
 
-```python {1|2|3|all}
-log_flux = np.log10(raw_flux)
-model_input = (log_flux - training_mean) / training_std
-# Target and persistence remain in log10 XRS-B units.
+<SolarWorked mode="normalize" :reveal="Math.min($clicks + 1, 3)" />
+
+```python {all}
+logged = np.log10(raw_flux)
+model_input = (logged - training_mean) / training_std
 ```
 
-<table class="clean-table teaching-values"><tbody><tr><th>01:00 XRS-B observation</th><th>Value</th></tr><tr><td>Raw flux</td><td>2.92329e-06 W/m²</td></tr><tr><td>log10 flux</td><td>-5.534128</td></tr><tr><td>Training mean / standard deviation</td><td>-5.469873 / 0.275522</td></tr><tr><td>Standardized input</td><td>-0.233211</td></tr></tbody></table>
+<div class="bottom-note">The target and persistence prediction stay in log-flux units.</div>
 
 
 <!--
-These numbers come from the same 01:00 window. Subtract the XRS-B training mean and divide by the training standard deviation to obtain minus 0.233211. The different number is a change of units, not a different observation. Both channels get their own training-derived statistics. Learners should reproduce the value using the notebook table and its normalization checkbox. The baseline must return minus 5.534128, not minus 0.233211. Rounded displayed values may differ in their last digit from full-precision calculations. Session block: Read observations and implement persistence (minutes 25–65).
+These numbers come from the same 01:00 window. Subtract the XRS-B training mean and divide by the training standard deviation to obtain minus 0.233211. The different number is a change of units, not a different observation. Both channels get their own training-derived statistics. Learners should reproduce the value using the notebook table and its normalization checkbox. The baseline must return minus 5.534128, not minus 0.233211. Rounded displayed values may differ in their last digit from full-precision calculations. Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code. Session block: Read observations and implement persistence (minutes 25–65).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -425,6 +428,8 @@ Source notes and recorded evidence: notes/sources.md.
 -->
 
 ---
+class: worked-visual
+clicks: 2
 name: actual-baseline-error
 ---
 
@@ -432,11 +437,18 @@ name: actual-baseline-error
 
 # Score the forecast we just made
 
-<div class="teaching-equation"><p>At 01:00, predict <strong>-5.534128</strong>.</p><p>At 01:30, the observed target is <strong>-4.940862</strong>.</p><p class="mono">|prediction − target| = 0.593266</p></div><div class="bottom-note">One window’s absolute error, in log10 flux units. The reported MAE averages all accepted windows.</div>
+<SolarWorked mode="error" :reveal="Math.min($clicks + 1, 3)" />
+
+```python {all}
+prediction = split["persistence"]
+absolute_errors = np.abs(prediction - split["y"])
+```
+
+<div class="bottom-note">This is one real window. Average all accepted windows to report MAE.</div>
 
 
 <!--
-This particular forecast misses a rise in flux. Persistence can work well on slowly changing periods and miss rapid changes. Do not infer the mean from this one example. The existing arithmetic slide shows how individual errors are averaged. A log10 error of about 0.59 corresponds to a ratio near four, not a 59 percent error. Session block: Read observations and implement persistence (minutes 25–65).
+This particular forecast misses a rise in flux. Persistence can work well on slowly changing periods and miss rapid changes. Do not infer the mean from this one example. The existing arithmetic slide shows how individual errors are averaged. A log10 error of about 0.59 corresponds to a ratio near four, not a 59 percent error. Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code. Session block: Read observations and implement persistence (minutes 25–65).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -607,6 +619,8 @@ Source notes and recorded evidence: notes/sources.md.
 -->
 
 ---
+class: worked-visual
+clicks: 2
 name: validation-code
 ---
 
@@ -614,18 +628,18 @@ name: validation-code
 
 # Validation measures the current weights without fitting them
 
-```python {1|2-3|4|all}
+<SolarWorked mode="validation" :reveal="Math.min($clicks + 1, 3)" />
+
+```python {all}
 model.eval()
-with torch.no_grad():
-    prediction = model(validation_x)
-error = fixed_score(prediction, validation_y)
+with torch.no_grad(): prediction = model(validation_x)
 ```
 
-<div class="bottom-note">eval() changes layer behavior; no_grad() stops gradient recording. Neither call selects a model.</div>
+<div class="bottom-note">No optimizer step. Validation measures the weights produced by training.</div>
 
 
 <!--
-eval disables training-specific behavior such as dropout if a candidate uses it. no_grad prevents autograd from retaining a differentiation graph. Our current small models do not need dropout to illustrate the distinction. The fixed parent scorer compares predictions to validation targets. Participants choose a configuration using validation; the optimizer itself never updates from these validation targets in this workshop. This is an explanatory excerpt of the scoring boundary, not the exact function signature. Session block: Explain loss and save a training run (minutes 65–95).
+eval disables training-specific behavior such as dropout if a candidate uses it. no_grad prevents autograd from retaining a differentiation graph. Our current small models do not need dropout to illustrate the distinction. The fixed parent scorer compares predictions to validation targets. Participants choose a configuration using validation; the optimizer itself never updates from these validation targets in this workshop. This is an explanatory excerpt of the scoring boundary, not the exact function signature. Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code. Session block: Explain loss and save a training run (minutes 65–95).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -714,25 +728,27 @@ Source notes and recorded evidence: notes/sources.md.
 -->
 
 ---
+class: worked-visual
+clicks: 2
 name: batch-indexing
 ---
 
 <div class="kicker">1:50–2:35</div>
 
-# Index one value, then keep the batch shape
+# Keep each prediction paired with its own target
 
-```python {1|2|3|4|all}
-x.shape             # (B, 2, 60)
-x[0, 1, -1]         # latest XRS-B input in window 0
-x[:, 1, -1:]        # latest XRS-B input, shape (B, 1)
-model(x).shape      # (B, 1)
+<SolarWorked mode="alignment" :reveal="Math.min($clicks + 1, 3)" />
+
+```python {all}
+assert prediction.shape == target.shape == (batch_size, 1)
+absolute_errors = np.abs(prediction - target)
 ```
 
-<div class="bottom-note">The values in x are standardized. This indexing exercise does not define a persistence forecast.</div>
+<div class="bottom-note">Illustrative values. Preserve the last axis with x[:, 1, -1:].</div>
 
 
 <!--
-Explain colon as selecting every item and negative one as the final position. Using -1 removes the last axis; -1: preserves it as length one. Shape-compatible subtraction matters: (B,1) minus (B,) can broadcast to a B by B matrix and silently score the wrong pairs. Both predictions and targets should remain B by one. Ask experienced participants to demonstrate that broadcasting issue with a small local NumPy array; no training is needed. Session block: Inspect model shapes and compare configurations (minutes 110–155).
+Explain colon as selecting every item and negative one as the final position. Using -1 removes the last axis; -1: preserves it as length one. Shape-compatible subtraction matters: (B,1) minus (B,) can broadcast to a B by B matrix and silently score the wrong pairs. Both predictions and targets should remain B by one. Ask experienced participants to demonstrate that broadcasting issue with a small local NumPy array; no training is needed. Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code. Session block: Inspect model shapes and compare configurations (minutes 110–155).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -829,6 +845,8 @@ Source notes and recorded evidence: notes/sources.md.
 -->
 
 ---
+class: worked-visual
+clicks: 2
 name: configs
 ---
 
@@ -836,11 +854,13 @@ name: configs
 
 # Compare six model configurations
 
-<table class="clean-table"><tbody><tr><th>Architecture</th><th>Widths</th><th>Learning rates</th><th>Training budget</th></tr><tr><td>Small MLP</td><td>16, 32, 16</td><td>.001, .001, .003</td><td>60 steps each</td></tr><tr><td>Temporal CNN</td><td>16, 32, 16</td><td>.001, .001, .003</td><td>60 steps each</td></tr></tbody></table><div class="bottom-note">Seed 17. Batch size 32. The notebook records the active values.</div>
+<SolarWorked mode="search" :reveal="Math.min($clicks + 1, 3)" />
+
+<div class="bottom-note">The 60-update comparison is a short teaching run, not a claim about the best architecture.</div>
 
 
 <!--
-The MLP reads the history as a fixed set of inputs. The temporal CNN applies shared filters along time. We’ll try three settings for each: widths sixteen and thirty-two, and learning rates .001 and .003. Every run gets seed seventeen, batch size thirty-two, and sixty training steps. That small budget keeps the exercise short; it does not establish which architecture would win after longer training. Session block: Inspect model shapes and compare configurations (minutes 110–155).
+The MLP reads the history as a fixed set of inputs. The temporal CNN applies shared filters along time. We’ll try three settings for each: widths sixteen and thirty-two, and learning rates .001 and .003. Every run gets seed seventeen, batch size thirty-two, and sixty training steps. That small budget keeps the exercise short; it does not establish which architecture would win after longer training. Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code. Session block: Inspect model shapes and compare configurations (minutes 110–155).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1429,6 +1449,8 @@ Source notes and recorded evidence: notes/sources.md.
 -->
 
 ---
+class: worked-visual
+clicks: 2
 name: loss-change-effect
 ---
 
@@ -1436,11 +1458,18 @@ name: loss-change-effect
 
 # The loss edit changes which errors receive larger gradients
 
-<table class="clean-table"><tbody><tr><th>Illustrative absolute error</th><th>Squared loss</th><th>Absolute loss</th></tr><tr><td>0.1</td><td>0.01</td><td>0.1</td></tr><tr><td>1.0</td><td>1.0</td><td>1.0</td></tr><tr><td>3.0</td><td>9.0</td><td>3.0</td></tr></tbody></table><div class="bottom-note">The evaluation metric stays masked absolute error. Only the training objective changes.</div>
+<SolarWorked mode="loss" :reveal="Math.min($clicks + 1, 3)" />
+
+```python {all}
+squared_loss = ((prediction - target).square() * mask).sum() / mask.sum()
+absolute_loss = ((prediction - target).abs() * mask).sum() / mask.sum()
+```
+
+<div class="bottom-note">The recorded edit changes the masked training objective; the fixed scorer does not change.</div>
 
 
 <!--
-Squared error grows quadratically, and its gradient magnitude grows with the error. Absolute error grows linearly and has constant magnitude away from zero. Matching the objective to the final metric is a plausible hypothesis, not a guarantee of better generalization. The model may trade large localized errors against smaller widespread errors. Inspect the actual validation forecasts after testing. These three arithmetic values are illustrations, not measured solar residuals. Session block: Review and test two rounds of changes (minutes 260–310).
+Squared error grows quadratically, and its gradient magnitude grows with the error. Absolute error grows linearly and has constant magnitude away from zero. Matching the objective to the final metric is a plausible hypothesis, not a guarantee of better generalization. The model may trade large localized errors against smaller widespread errors. Inspect the actual validation forecasts after testing. These three arithmetic values are illustrations, not measured solar residuals. Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code. Session block: Review and test two rounds of changes (minutes 260–310).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1584,6 +1613,8 @@ Source notes and recorded evidence: notes/sources.md.
 -->
 
 ---
+class: worked-visual
+clicks: 2
 name: zero-head-gradients
 ---
 
@@ -1591,19 +1622,18 @@ name: zero-head-gradients
 
 # Zeroing the last layer still allows learning
 
-```python {1-3|4|5|all}
-features = earlier_layers(x)
-correction = output_layer(features)  # starts at zero
-forecast = current_image + correction
-# First update: output-layer weights can change.
-# Later updates: gradients also reach earlier layers.
+<SolarWorked mode="zero" :reveal="Math.min($clicks + 1, 3)" />
+
+```python {all}
+nn.init.zeros_(self.net[-1].weight)
+nn.init.zeros_(self.net[-1].bias)
 ```
 
-<div class="bottom-note">Earlier layers retain their normal initialization. The recorded edit does not zero every parameter.</div>
+<div class="bottom-note">The earlier layers keep their normal initialization. Do not zero the entire network.</div>
 
 
 <!--
-At initialization the final layer weights are zero, so its output correction is zero. The output weights still receive gradients because their derivative depends on the preceding features. For the first backward pass the zero output weights block gradients to preceding layers; after the output weights move, gradients can flow farther back. This explains why a zero residual head is compatible with learning. Do not teach zero initialization of every hidden layer as an equivalent change. Session block: Review and test two rounds of changes (minutes 260–310).
+At initialization the final layer weights are zero, so its output correction is zero. The output weights still receive gradients because their derivative depends on the preceding features. For the first backward pass the zero output weights block gradients to preceding layers; after the output weights move, gradients can flow farther back. This explains why a zero residual head is compatible with learning. Do not teach zero initialization of every hidden layer as an equivalent change. Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code. Session block: Review and test two rounds of changes (minutes 260–310).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1816,18 +1846,22 @@ Source notes and recorded evidence: notes/sources.md.
 -->
 
 ---
+class: worked-visual
+clicks: 2
 name: repeatability
 ---
 
 <div class="kicker">5:20–5:45</div>
 
-# Separate repeated forecasts from repeated experiments
+# The same image edit helped two seeds and hurt one
 
-<div class="teaching-equation"><p><strong>199 windows</strong> reuse observations across two dates.</p><p><strong>Three seeds</strong> repeat fixed training recipes with different initialization and sampling.</p><p><strong>One agent discovery</strong> produced the edits we repeated.</p></div><div class="bottom-note">Neither count establishes performance across different solar periods or independent research-agent searches.</div>
+<SolarWorked mode="repetition" :reveal="Math.min($clicks + 1, 3)" />
+
+<div class="bottom-note">199 overlapping windows on the same two dates; three seeds repeat fixed recipes, not agent discovery.</div>
 
 
 <!--
-Overlapping windows are not independent solar events. The three-seed qualification tests fixed source, not three agents independently discovering the same edit. Seed seventeen and twenty-nine improve, while seed forty-three slightly regresses. The mean improvement and that regression both belong in the conclusion. A next study could predeclare different dates, more training seeds and independent agent adaptations, but this workshop does not run that study. Session block: Freeze and compare on reserved dates (minutes 320–345).
+Overlapping windows are not independent solar events. The three-seed qualification tests fixed source, not three agents independently discovering the same edit. Seed seventeen and twenty-nine improve, while seed forty-three slightly regresses. The mean improvement and that regression both belong in the conclusion. A next study could predeclare different dates, more training seeds and independent agent adaptations, but this workshop does not run that study. Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code. Session block: Freeze and compare on reserved dates (minutes 320–345).
 Source notes and recorded evidence: notes/sources.md.
 -->
 

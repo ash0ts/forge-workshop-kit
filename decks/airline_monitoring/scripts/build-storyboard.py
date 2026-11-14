@@ -214,9 +214,78 @@ else:
 ROOT.joinpath('notes/exercise-controls.json').write_text(json.dumps({'source':'scripts/airline_monitoring_cells.py','labels':sorted(control_labels),'references':[{'slide_name':item['name'],'exercise':item.get('exercise_reference')} for item in slides if item.get('exercise_reference')]},indent=2)+'\n')
 
 header='''---\ntheme: default\ntitle: Monitor an airline service agent and build better evaluations\nauthor: Anish Shah\nclass: cover\nlayout: default\naspectRatio: 16/9\ncanvasWidth: 1280\ncolorSchema: light\ntransition: fade\nwakeLock: false\nfonts:\n  sans: IBM Plex Sans\n  mono: IBM Plex Mono\n  provider: none\nmdc: true\nhighlighter: shiki\ndrawings:\n  enabled: false\ndownload: false\n---\n'''
+
+# Each mechanism keeps its geometry and concrete example across clicks. The
+# original exercise identities, timings, evidence, and controls stay unchanged.
+visual_revisions = {
+    'replace-semantics': ('replacement', 3,
+        'Trace HAT174 through both candidate API inputs. The assignment replaces the list, so the missing-return branch cannot preserve a flight it did not receive. This is an illustrative failure mechanism; the live qualification handled its bookings correctly.'),
+    'data-groups': ('families', 3,
+        'Start with the family bracket, not the batch counts. The connected dots stand for related records, not three named passengers. Reveal the assigned groups, then show why putting a related task in final evaluation leaks the family across partitions. The counts are the actual frozen plan.'),
+    'trace-shape': ('spans', 3,
+        'Read the parent tree alongside operation order. Both model calls and both tool attempts remain children of their turn. Bar width is schematic, not measured latency. Ask participants which event needs the error and which needs the returned reservation; then map them to my_model_span and my_tool_span.'),
+    'read-tool': ('loop', 4,
+        'Follow one chosen action through arguments, the state write, the observation, and the next request. The returned booking must be appended before the next model call. Ask participants to locate that exact observation in Agent Lens; the final reply alone cannot prove what the model received.'),
+    'counterexample-nonstop': ('nonstop', 3,
+        'The connecting point disappears while the origin, destination, and return remain. Ask whether fewer segments is a failure before revealing the approved nonstop. The answer depends on the request, not the count. These segment names and airport positions are illustrative.'),
+    'tag-lifecycle': ('criteria', 3,
+        'Keep the right-hand saved criterion in place while the Alignment draft is tested. Only the final explicit-save arrow changes live criteria. A failed Alignment test produces no judgment; it does not silently disable, update, or validate the saved live rule.'),
+    'judge-context': ('context', 3,
+        'The selected turn has a write and a reply but lacks the earlier booking. Ask which evidence establishes a return was removed. In this illustrated context it is unavailable. A reviewer with the full conversation knows more than the turn-level judge; keep that context difference in the review record.'),
+    'confusion': ('confusion', 3,
+        'Reveal the true positives, false positive, and remaining cells in place. Human review supplies the reference labels. These eight rows are illustrative arithmetic and not a successful native Alignment result. No unavailable prediction enters this matrix.'),
+    'precision': ('precision', 2,
+        'The outlined row is the denominator: all four reviewed alerts. Three are reviewed failures. The faded second row is irrelevant to precision but needed for recall. If there are no alerts, leave precision unavailable. This graphic does not describe native workshop outcomes.'),
+    'recall': ('recall', 2,
+        'The outlined column is the denominator: all four reviewed failures. One was not alerted. The same 75 percent hides a different question from precision. Review unflagged controls so this missed-failure cell can be populated. The arithmetic remains illustrative.'),
+    'coverage': ('coverage', 3,
+        'Count the eight completed predictions, then divide by all ten eligible turns. Only after that do we join completed predictions to human reviews for the agreement matrix. The two question marks remain unknown. Positive live assignments by themselves cannot establish this denominator.'),
+    'live-missingness': ('missing', 3,
+        'All three branches can produce the same absent live tag. Ask what readback distinguishes them. Explicit native test outcomes can establish known positive and negative predictions; a blank assignment cannot. Keep pending, failed, and missing context separate where native records support them.'),
+    'curation': ('curation', 3,
+        'The arrow into the regression case comes from before the write. The crossed arrow from the mutated booking explains a common reconstruction error. Keep the request, policy, approved scope, human review, and source identities with the initial state. This omission incident is a labeled illustration, not an invented live failure.'),
+    'range-values': ('slice', 3,
+        'Point to index two: the half-open replacement stops before return-1. First expose the index range, then the empty prefix, replacement, and untouched suffix. The last line is the participant function’s list operation. Their free check also validates bounds and copies the data.'),
+    'aligned-comparison': ('matched', 3,
+        'The same case forks into two isolated initial bookings. Each uses its own recorded source and trace. The dashed link means aligned comparison, not shared mutable state or a handoff. Keep booking-state checks, explanation judgments, and monitor outcomes in separate fields.'),
+    'recorded-results': ('results', 3,
+        'Reveal the starting row first, then the repair row. All six case outcomes match; there is no passing case unique to the repair. Both versions also pass four subsequent requests. Native monitoring accuracy is unavailable. The local omission drill demonstrates a repair independently of this observed tie.'),
+}
+visual_coverage = []
+for item in slides:
+    revision = visual_revisions.get(item['name'])
+    if not revision:
+        continue
+    mode, states, explanation = revision
+    before = item['body']
+    item['body'] = f'<AirlineMechanism mode="{mode}" :reveal="$clicks + 1" />'
+    item['clicks'] = states - 1
+    item['visual'] = {'component': 'AirlineMechanism', 'mode': mode, 'states': states}
+    item['notes'] += '\n\nVisual sequence: ' + explanation
+    visual_coverage.append({
+        'slide_name': item['name'], 'mode': mode, 'states': states,
+        'before': 'generic flow' if 'pipeline' in before else 'table' if '<table' in before else 'code/text/HTML layout',
+        'after': 'editable SVG with stable-position click reveals',
+        'evidence': item.get('source') or ('illustrative arithmetic; no native outcome claimed' if mode in {'confusion','precision','recall','coverage'} else 'pinned source behavior, frozen plan, or explicitly labeled illustration'),
+        'teaching_note': explanation,
+    })
+ROOT.joinpath('notes/visual-coverage.json').write_text(json.dumps({
+    'scope': 'airline_monitoring only; no runtime or experiment change',
+    'slide_count_before': len(slides), 'slide_count_after': len(slides),
+    'before_custom_svg_mechanism_slides': 0,
+    'after_custom_svg_mechanism_slides': len(visual_coverage),
+    'distinct_mechanisms': len({
+        'reviewed confusion matrix' if row['mode'] in {'confusion', 'precision', 'recall'} else row['mode']
+        for row in visual_coverage
+    }),
+    'preserved': ['native screenshot originals', 'exercise IDs and controls', 'six-hour schedule', 'recorded tie', 'native feature limitations'],
+    'preview': {'slide': 4, 'click': 2, 'path': 'public/graphics-preview.png',
+                'kind': 'Current rendered deck; not a native product capture'},
+    'revisions': visual_coverage,
+}, indent=2) + '\n')
 chunks=[]
 for i,s in enumerate(slides):
-    front='' if not i else '\n---\n'+(f'class: {s["kind"]}\n' if s['kind'] else '')+(f'name: {s["name"]}\n' if s['name'] else '')+'---\n'
+    front='' if not i else '\n---\n'+(f'class: {s["kind"]}\n' if s['kind'] else '')+(f'name: {s["name"]}\n' if s['name'] else '')+(f'clicks: {s["clicks"]}\n' if s.get('clicks') else '')+'---\n'
     chunks.append(front+f'\n<div class="kicker">{s["time"]} · Airline service monitoring</div>\n\n# {s["title"]}\n\n'+s['body']+'\n\n<!--\n'+s['notes']+'\n-->\n')
 text=header+''.join(chunks)
 base='/' + os.environ.get('DECK_BASE','').strip('/') + '/'

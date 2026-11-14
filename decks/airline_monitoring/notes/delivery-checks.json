@@ -1,5 +1,5 @@
 {
-  "source_sha256": "c503d9a3f5642e98056a526988010ff21e7a3af62d4239769eef76fe4ff49df4",
+  "source_sha256": "a038d92c80ffeda5fe127efaabeb2d8c19d12bed979b8d1fad1fb121a5aa3f71",
   "slides_checked": 73,
   "expected_slides": 73,
   "titles": [
@@ -314,6 +314,14 @@
       "click": 0
     },
     {
+      "slide": 4,
+      "click": 1
+    },
+    {
+      "slide": 4,
+      "click": 2
+    },
+    {
       "slide": 5,
       "click": 0
     },
@@ -332,6 +340,14 @@
     {
       "slide": 7,
       "click": 0
+    },
+    {
+      "slide": 7,
+      "click": 1
+    },
+    {
+      "slide": 7,
+      "click": 2
     },
     {
       "slide": 8,
@@ -394,6 +410,18 @@
       "click": 0
     },
     {
+      "slide": 14,
+      "click": 1
+    },
+    {
+      "slide": 14,
+      "click": 2
+    },
+    {
+      "slide": 14,
+      "click": 3
+    },
+    {
       "slide": 15,
       "click": 0
     },
@@ -446,6 +474,14 @@
       "click": 0
     },
     {
+      "slide": 24,
+      "click": 1
+    },
+    {
+      "slide": 24,
+      "click": 2
+    },
+    {
       "slide": 25,
       "click": 0
     },
@@ -460,10 +496,6 @@
     {
       "slide": 26,
       "click": 2
-    },
-    {
-      "slide": 26,
-      "click": 3
     },
     {
       "slide": 27,
@@ -510,16 +542,40 @@
       "click": 0
     },
     {
+      "slide": 33,
+      "click": 1
+    },
+    {
+      "slide": 33,
+      "click": 2
+    },
+    {
       "slide": 34,
       "click": 0
+    },
+    {
+      "slide": 34,
+      "click": 1
     },
     {
       "slide": 35,
       "click": 0
     },
     {
+      "slide": 35,
+      "click": 1
+    },
+    {
       "slide": 36,
       "click": 0
+    },
+    {
+      "slide": 36,
+      "click": 1
+    },
+    {
+      "slide": 36,
+      "click": 2
     },
     {
       "slide": 37,
@@ -530,6 +586,14 @@
       "click": 0
     },
     {
+      "slide": 38,
+      "click": 1
+    },
+    {
+      "slide": 38,
+      "click": 2
+    },
+    {
       "slide": 39,
       "click": 0
     },
@@ -552,10 +616,6 @@
     {
       "slide": 40,
       "click": 2
-    },
-    {
-      "slide": 40,
-      "click": 3
     },
     {
       "slide": 41,
@@ -630,14 +690,6 @@
       "click": 2
     },
     {
-      "slide": 50,
-      "click": 3
-    },
-    {
-      "slide": 50,
-      "click": 4
-    },
-    {
       "slide": 51,
       "click": 0
     },
@@ -690,6 +742,14 @@
       "click": 0
     },
     {
+      "slide": 57,
+      "click": 1
+    },
+    {
+      "slide": 57,
+      "click": 2
+    },
+    {
       "slide": 58,
       "click": 0
     },
@@ -700,6 +760,14 @@
     {
       "slide": 60,
       "click": 0
+    },
+    {
+      "slide": 60,
+      "click": 1
+    },
+    {
+      "slide": 60,
+      "click": 2
     },
     {
       "slide": 61,
