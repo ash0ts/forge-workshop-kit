@@ -1,6 +1,6 @@
 {
-  "pages": 39,
-  "slides": 36,
+  "pages": 55,
+  "slides": 52,
   "page_map": [
     {
       "page": 0,
@@ -196,11 +196,91 @@
       "page": 38,
       "slide": 36,
       "click": 0
+    },
+    {
+      "page": 39,
+      "slide": 37,
+      "click": 0
+    },
+    {
+      "page": 40,
+      "slide": 38,
+      "click": 0
+    },
+    {
+      "page": 41,
+      "slide": 39,
+      "click": 0
+    },
+    {
+      "page": 42,
+      "slide": 40,
+      "click": 0
+    },
+    {
+      "page": 43,
+      "slide": 41,
+      "click": 0
+    },
+    {
+      "page": 44,
+      "slide": 42,
+      "click": 0
+    },
+    {
+      "page": 45,
+      "slide": 43,
+      "click": 0
+    },
+    {
+      "page": 46,
+      "slide": 44,
+      "click": 0
+    },
+    {
+      "page": 47,
+      "slide": 45,
+      "click": 0
+    },
+    {
+      "page": 48,
+      "slide": 46,
+      "click": 0
+    },
+    {
+      "page": 49,
+      "slide": 47,
+      "click": 0
+    },
+    {
+      "page": 50,
+      "slide": 48,
+      "click": 0
+    },
+    {
+      "page": 51,
+      "slide": 49,
+      "click": 0
+    },
+    {
+      "page": 52,
+      "slide": 50,
+      "click": 0
+    },
+    {
+      "page": 53,
+      "slide": 51,
+      "click": 0
+    },
+    {
+      "page": 54,
+      "slide": 52,
+      "click": 0
     }
   ],
   "empty_pages": 0,
   "all_pages_rendered": true,
   "converted_links": 6,
-  "source_sha256": "0a23aae40aa366974f4ea3ca6d1485d31e42a4b28aae30e07c9d75949ec6490d",
-  "pdf_sha256": "9a8d22855be434e5919eaaeace73c335fbdab7d7b9bc7131c0d7ceac223355ac"
+  "source_sha256": "55335aa5256db3ef6d89e8b9d2b2f6dfd7200c534727fb90e361892b78087c7f",
+  "pdf_sha256": "9ce82f1ff35dc2176fb42a7ee842ab58af0c5577c1ae0edd59d6509c0b968547"
 }

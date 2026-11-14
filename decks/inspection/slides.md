@@ -25,11 +25,12 @@ exportFilename: visual-inspection
 
 # Find defective parts<br>before they ship
 
-<div class="sub">Use real circuit-board photos to compare detectors, review their mistakes, and save a version another engineer can reproduce.</div><div class="bottom-note">Three hours · CPU classifiers · your own Forge project</div>
+<div class="sub">Use real circuit-board photos to compare detectors, review their mistakes, and save a version another engineer can reproduce.</div><div class="bottom-note">Four hours · CPU classifiers · your own Forge project</div>
 
 
 <!--
 The inspection team is fictional. The VisA PCB1 images, masks and recorded comparisons are real. Do not promise that every participant run improves.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
@@ -44,6 +45,7 @@ Source: notes/sources.md.
 
 <!--
 Ask participants which cost matters in their own work. We will count both errors. The joke does not define the release threshold.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
@@ -58,12 +60,13 @@ Source: notes/sources.md.
 
 <!--
 Ask learners to identify a region they would inspect. Do not infer a defect type without checking the supplied mask. They will reveal masks in the notebook.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">0:07</div>
+<div class="kicker">0:08</div>
 
 # What is in the teaching set?
 
@@ -72,12 +75,13 @@ Source: notes/sources.md.
 
 <!--
 Explain the distinction between detecting a defective board and locating its defect. This classifier does the former. A patch-distance heatmap is not a segmentation model.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">0:09</div>
+<div class="kicker">0:11</div>
 
 # Separate the data before choosing a model
 
@@ -86,6 +90,7 @@ Source: notes/sources.md.
 
 <!--
 The 132 validation boards contain 12 defects. A threshold targeting 90 percent recall must catch at least 11. Test data is public for reproduction, so this is a teaching boundary rather than a security barrier.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
@@ -93,7 +98,7 @@ Source: notes/sources.md.
 class: exercise
 ---
 
-<div class="kicker">0:10</div>
+<div class="kicker">0:16</div>
 
 # Connect to your own experiment
 
@@ -102,12 +107,13 @@ class: exercise
 
 <!--
 Hosted authentication comes from the copied notebook. A laptop uses uv run wandb login. The core path has no inference calls; notebook compute remains separately billed.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">0:14</div>
+<div class="kicker">0:23</div>
 
 # The trace describes a call that actually ran
 
@@ -126,6 +132,7 @@ with tracing.Tool(
 
 <!--
 The training receipt is recorded before export. A publication failure does not mean the classifier failed. Retrying publication must not train it again.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
@@ -133,7 +140,7 @@ Source: notes/sources.md.
 class: exercise
 ---
 
-<div class="kicker">0:18</div>
+<div class="kicker">0:27</div>
 
 # Inspect one board before revealing its label
 
@@ -142,34 +149,97 @@ class: exercise
 
 <!--
 This is a participant decision, not a model evaluation. Give people a minute to make their own assessment before discussion.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">0:24</div>
+<div class="kicker">0:32</div>
+
+# Predict a label for the whole board
+
+<InspectionWalk kind="data" :step="1" />
+
+
+<!--
+After participants inspect a training photo, identify the input photograph and the binary target separately. A detector flags a board. The supplied mask marks pixels, but this model does not learn pixel labels.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">0:34</div>
+
+# Use the mask to investigate the decision
+
+<InspectionWalk kind="data" :step="2" />
+
+
+<!--
+Ask which input would leak the answer if passed to the classifier. The mask is reference evidence for human inspection; neither masks nor test labels enter feature assembly.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">0:37</div>
 
 # Reuse a fixed image encoder
 
-<div class="flow"><div class="box">224 × 224<br>RGB photo</div><span>→</span><div class="box">Fixed<br>ResNet-18</div><span>→</span><div class="box">512-value<br>whole image</div></div><div v-click class="box">Also keep a 14 × 14 grid of local features. A small defect occupies only part of the board.</div>
+<InspectionWalk kind="encoder" :step="1" />
 
 
 <!--
 The ImageNet encoder is fixed. Fitting our logistic classifier changes its weights but not ResNet-18. The small cache can be reused in a CPU notebook.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">0:30</div>
+<div class="kicker">0:41</div>
 
-# Compare each patch with real normal examples
+# Keep local information as well as the whole image
 
-<div class="two-col"><div class="box"><h2>First recipe</h2><p>Compare a patch with the average normal patch at that location.</p><p class="small">An average can fall between different normal appearances.</p></div><div v-click class="box"><h2>Follow-up recipe</h2><p>Find the closest actual normal training patch at that location.</p><p class="small">Training cases cannot match themselves.</p></div></div><div class="bottom-note">The same reference bank is used for validation and test. Those boards never enter the bank.</div>
+<InspectionWalk kind="encoder" :step="2" />
 
 
 <!--
-This is the concrete mechanism we changed after the first recipe failed its AP gate. It is not a universal claim about nearest neighbors.
+Read the shapes out loud: N boards, 14 rows, 14 columns, 64 feature channels. The overlay shows feature positions schematically, not exact independent image crops. The whole-image representation has 512 values; the grid retains spatial differences.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">0:47</div>
+
+# Compare local features at the same board position
+
+<InspectionWalk kind="patch" :step="1" />
+
+
+<!--
+Use only normal fitting boards as the reference bank. At each spatial position, find the closest actual reference vector after scaling. A normal fitting board cannot match itself. The older mean-patch result is preserved beside the later recorded comparison.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">0:53</div>
+
+# Append 196 distances to the 512 whole-image values
+
+<InspectionWalk kind="patch" :step="2" />
+
+
+<!--
+Walk the same board through errors, log1p, reshape and concatenate. The output has 708 columns. axis=0 would add observations rather than features and fail the shape/order fixture. log1p compresses large distances; it does not turn them into probabilities.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
@@ -177,9 +247,9 @@ Source: notes/sources.md.
 class: exercise
 ---
 
-<div class="kicker">0:35</div>
+<div class="kicker">0:59</div>
 
-<a class="answer-link" href="/34">Worked answer →</a>
+<a class="answer-link" href="/48">Worked answer →</a>
 
 # Add local information to the classifier
 
@@ -188,12 +258,13 @@ class: exercise
 
 <!--
 The learner function is passed into fitting and saved with the freeze. Final evaluation reloads that saved source, not the current draft.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">0:48</div>
+<div class="kicker">1:14</div>
 
 # Check the feature cache without rebuilding everything
 
@@ -207,12 +278,13 @@ assert result["matching_cached_features"]
 
 <!--
 The retained lossless inputs allow exact feature comparison. The prepared full cache took 39.25 seconds on the preparation Mac using two Torch CPU threads. This is not an attendee timing guarantee.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">0:55</div>
+<div class="kicker">1:19</div>
 
 # Train the same classifier on each representation
 
@@ -222,27 +294,62 @@ model = inspection.fit_classifier(
     build_features=build_features,
     C=0.03,
 )
-validation_scores = inspection.score(data, validation_rows, model)
+validation_scores = inspection.score(
+    data, validation_rows, model,
+    build_features=build_features,
+)
 ```
 <div class="bottom-note">C controls regularization. This worked recipe fixes C before your run; labels and training cases are the same.</div>
 
 
 <!--
 Do not describe this as training a vision foundation model. We fit a logistic classifier over fixed encoder outputs. Patch distances add features but do not use pixel masks.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">1:00</div>
+<div class="kicker">1:22</div>
+
+# Fit on training boards; measure on validation boards
+
+<InspectionWalk kind="train" :step="1" />
+
+
+<!--
+Point to the learner build_features argument. The same function must be supplied to fit and score. We fit a small class-balanced logistic classifier, not the ResNet encoder. Saving a completed fit and exporting its trace happen afterward.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">1:26</div>
 
 # A detector score still needs an operating rule
 
-<div class="cards"><div class="card"><strong>Lower threshold</strong><p>Flag more boards. Usually catch more defects and create more false alarms.</p></div><div class="card"><strong>Higher threshold</strong><p>Flag fewer boards. Some defects can pass unnoticed.</p></div><div class="card"><strong>Review band</strong><p>Send uncertain cases to people. Report that extra workload separately.</p></div></div>
+<InspectionWalk kind="threshold" :step="1" />
 
 
 <!--
 Scores are decision values, not calibrated defect probabilities. The optional review margin is in score units. A valid threshold function does not make the policy safe.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">1:32</div>
+
+# Require 11 of the 12 validation defects to be caught
+
+<InspectionWalk kind="threshold" :step="2" />
+
+
+<!--
+The slider uses the exact existing free fixture. With three fixture defects and recall 2/3 the cutoff is 0.7. For the real validation set, ceil(.9*12)=11. Explain that the chosen cutoff constrains this validation set only.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
@@ -250,9 +357,9 @@ Source: notes/sources.md.
 class: exercise
 ---
 
-<div class="kicker">1:05</div>
+<div class="kicker">1:38</div>
 
-<a class="answer-link" href="/35">Worked answer →</a>
+<a class="answer-link" href="/49">Worked answer →</a>
 
 # Implement the validation threshold
 
@@ -261,12 +368,13 @@ class: exercise
 
 <!--
 Allow participants to finish the local check before training. The 90 percent requirement constrains recall on validation only, not a guarantee for the final set.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">1:15</div>
+<div class="kicker">1:52</div>
 
 # Keep ranking quality and operating errors separate
 
@@ -275,12 +383,43 @@ Source: notes/sources.md.
 
 <!--
 AP summarizes precision over recall levels. Do not compare it to accuracy or confuse a change in review volume with better detection.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">1:22</div>
+<div class="kicker">1:54</div>
+
+# Calculate ranking quality before choosing one cutoff
+
+<InspectionWalk kind="ranking" :step="1" />
+
+
+<!--
+Use the five public fixture scores. Defects occur at ranks 2,3,4; precision is 1/2,2/3,3/4 at those recalls. Average precision is their mean, 0.638889. This is an illustrative calculation, not a PCB1 result.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">1:57</div>
+
+# Count operating errors at the chosen cutoff
+
+<InspectionWalk kind="ranking" :step="2" />
+
+
+<!--
+At cutoff 0.7, the fixture has one missed defect and one false alarm. Moving the cutoff leaves the score ordering and AP unchanged. A review band sends additional cases to people and should be reported as workload, not detection improvement.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">1:59</div>
 
 # Follow one trained classifier through Forge
 
@@ -289,12 +428,13 @@ Source: notes/sources.md.
 
 <!--
 These are actual inspection tasks rather than a generic dashboard tour. If export is unavailable, state that the execution is saved and show the publication retry.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">1:25 · RECORDED</div>
+<div class="kicker">2:02</div>
 
 # Read the recorded training call
 
@@ -303,20 +443,67 @@ Source: notes/sources.md.
 
 <!--
 Show the exact method, training count and C arguments. Then match the returned classifier path, saved file hash and validation metrics. The next execution uses the saved model. Native capture uses the rehearsal project; participants open their own links. This is tool-only tracing: there was no model-provider call.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">1:30</div>
+<div class="kicker">2:06</div>
 
-# Take ten minutes
+# Match the tool call to the saved validation result
+
+<InspectionWalk kind="train" :step="2" />
+
+
+<!--
+Return to the code and identify the training arguments corresponding to the capture. The trace is a CPU tool operation, with no LLM provider call. A failed trace upload must not cause another fit. Find C, method, training count and validation counts in your own run.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">2:10</div>
+
+# Take ten minutes. Return at 2:20.
 
 <div class="sub">Before you leave, check that both trained versions are saved. The notebook will wait; it has not developed an independent work ethic.</div>
 
 
 <!--
-Return at 1 hour 40. Browsing and reopening do not start training.
+Break from elapsed 2:10 to 2:20. Confirm both models are saved. After the break we choose where to spend 24 additional labels.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">2:20</div>
+
+# Choose uncertain boards before opening their labels
+
+<InspectionWalk kind="review" :step="1" />
+
+
+<!--
+Predict which scores the selector will choose. The public fixture uses row IDs 10,20,30,40 with scores .8,-.1,.01,-.9. At threshold 0, the two closest rows are 20 and 30. The function receives no labels.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">2:26</div>
+
+# Give random selection the same labeling budget
+
+<InspectionWalk kind="review" :step="2" />
+
+
+<!--
+Both branches start from the same nearest-patch parent and review pool. Each gets 24 labels; overlapping selections are allowed across methods. Random selection controls for simply receiving more data. Do not promise that uncertainty sampling wins.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
@@ -324,9 +511,9 @@ Source: notes/sources.md.
 class: exercise
 ---
 
-<div class="kicker">1:40</div>
+<div class="kicker">2:31</div>
 
-<a class="answer-link" href="/36">Worked answer →</a>
+<a class="answer-link" href="/50">Worked answer →</a>
 
 # Choose where the review time goes
 
@@ -335,12 +522,13 @@ class: exercise
 
 <!--
 The random condition matters because any additional labeled data might help. We cannot credit the selection strategy for the entire gain.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">1:49</div>
+<div class="kicker">2:42</div>
 
 # Save what the reviewer actually decided
 
@@ -349,6 +537,7 @@ Source: notes/sources.md.
 
 <!--
 Do not call all 24 labels human-verified because a participant pressed one button. Individual saved assessments and the supplied dataset labels are separate records.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
@@ -356,7 +545,7 @@ Source: notes/sources.md.
 class: exercise
 ---
 
-<div class="kicker">1:58</div>
+<div class="kicker">2:53</div>
 
 # Train with the additional labels
 
@@ -365,6 +554,7 @@ class: exercise
 
 <!--
 A tie or loss is still a usable experiment. Never select the final threshold from the official test labels.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
@@ -372,7 +562,7 @@ Source: notes/sources.md.
 class: exercise
 ---
 
-<div class="kicker">2:10</div>
+<div class="kicker">3:08</div>
 
 # Choose before opening the final results
 
@@ -381,6 +571,37 @@ class: exercise
 
 <!--
 Retaining the starting representation is valid. The final comparison includes all four versions regardless of selection.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">3:14</div>
+
+# Freeze the preprocessing and reference bank too
+
+<InspectionWalk kind="freeze" :step="1" />
+
+
+<!--
+Name the pieces needed to reproduce a score: reference bank, scaling, participant feature code, coefficients and threshold. Selecting the version uses validation. The final comparison still includes all four frozen versions.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">3:20</div>
+
+# Take ten minutes. Return at 3:30.
+
+<p class="sub">Your detector and threshold are frozen. Leave the final comparison for when everyone is back.</p>
+
+
+<!--
+Break from elapsed 3:20 to 3:30. No training runs during the break. On return, evaluate the saved versions.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/inspection_cells.py.
 Source: notes/sources.md.
 -->
 
@@ -388,7 +609,7 @@ Source: notes/sources.md.
 class: exercise
 ---
 
-<div class="kicker">2:25</div>
+<div class="kicker">3:30</div>
 
 # Evaluate the same 442 boards
 
@@ -397,12 +618,13 @@ class: exercise
 
 <!--
 This is untouched for an attendee following the path. The recorded follow-up used a previously inspected test set, so its claim is narrower. Use Compare in EvalTables after publication. The native Weave-backed Preview and the separate CES v2 service have independent publication statuses.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">2:28</div>
+<div class="kicker">3:39</div>
 
 # Compare four detectors on the same boards
 
@@ -411,12 +633,13 @@ Source: notes/sources.md.
 
 <!--
 Click Publish saved comparisons to Forge, then Compare in EvalTables. The native Weave-backed Evaluation Tables Preview sits in the W&B workspace. These panels show per-case correctness and error, not average precision. The notebook computes average precision from the complete ranking. Scores and typed images come from the saved final evaluation; this action does not fit another classifier.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">2:30</div>
+<div class="kicker">3:42</div>
 
 # Inspect the board behind a prediction
 
@@ -425,12 +648,13 @@ Source: notes/sources.md.
 
 <!--
 Click once to reveal the reference defect mask for the same board. White pixels are supplied annotations, not model localization. Do not claim a patch heatmap is a causal explanation or segmentation model. Masks are used for inspection, not classifier inputs. Average precision ranks all boards; one row explains a particular operating decision. The separate CES v2 API remains unavailable; this is the working native Preview.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">2:31 · RECORDED</div>
+<div class="kicker">3:45</div>
 
 # The first worked recipe did not pass its gate
 
@@ -439,12 +663,13 @@ Source: notes/sources.md.
 
 <!--
 Preserve the failed result and all active/random review outcomes. This is why we choose the criterion before seeing results.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">2:33 · RECORDED</div>
+<div class="kicker">3:47</div>
 
 # The bounded follow-up improved this teaching retest
 
@@ -453,12 +678,13 @@ Source: notes/sources.md.
 
 <!--
 Both methods selected C=.03 from the same grid. No further tuning followed the retest. This result does not establish repeatability on a new product.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">2:35 · RECORDED</div>
+<div class="kicker">3:49</div>
 
 # Inspect a corrected miss
 
@@ -467,12 +693,13 @@ Source: notes/sources.md.
 
 <!--
 Point to the missing or damaged header-pin area marked by the dataset. The heatmap also responds to background; do not claim it identifies the causal feature or performs accurate segmentation.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">2:37 · RECORDED</div>
+<div class="kicker">3:51</div>
 
 # Inspect a new miss too
 
@@ -481,6 +708,7 @@ Source: notes/sources.md.
 
 <!--
 Show the contrast without hiding the final summary. This is a narrower, more honest explanation than saying patch features found all small defects.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
@@ -488,7 +716,7 @@ Source: notes/sources.md.
 class: exercise
 ---
 
-<div class="kicker">2:40</div>
+<div class="kicker">3:54</div>
 
 # Reload the version you chose
 
@@ -497,12 +725,28 @@ class: exercise
 
 <!--
 Saved artifacts are useful because another person can repeat the prediction without guessing which notebook cell you last ran.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">2:48</div>
+<div class="kicker">3:56</div>
+
+# Reproduce one score from the saved detector
+
+<InspectionWalk kind="freeze" :step="2" />
+
+
+<!--
+The reload operation uses the frozen feature source rather than the current editor draft. Compare its output with the previously saved score for the same case. An artifact makes that complete version addressable; Registry is an optional release extension.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">3:57</div>
 
 # A tested artifact can become the next release
 
@@ -511,12 +755,13 @@ Source: notes/sources.md.
 
 <!--
 This extension needs Registry permissions. The Artifact-based reproduction path remains available without them.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">2:55</div>
+<div class="kicker">3:59</div>
 
 # Write down the decision you would make
 
@@ -525,12 +770,13 @@ Source: notes/sources.md.
 
 <!--
 Have participants explain the result to someone else before publishing. A reasonable decision can be to retain the previous detector.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">OPTIONAL ANSWER</div>
+<div class="kicker">Optional answer</div>
 
 # Worked answer: assemble the local features
 
@@ -538,21 +784,25 @@ Source: notes/sources.md.
 whole = data["whole"][rows]
 if method == "whole":
     return whole
-errors = inspection.nearest_patch_errors(data, rows, reference)
+if method == "nearest-patch":
+    errors = inspection.nearest_patch_errors(data, rows, reference)
+else:
+    errors = inspection.patch_errors(data["patches"][rows], reference)
 local = np.log1p(errors).reshape(len(rows), -1)
 return np.concatenate([whole, local], axis=1)
 ```
-<div class="bottom-note">The notebook answer also supports the historical mean-patch method used in the free fixture.</div>
-<div class="source-link"><a href="/11">Return to Add local information to the classifier</a></div>
+<div class="bottom-note">Both branches are exercised by the free check. The live comparison uses nearest-patch.</div>
+<div class="source-link"><a href="/15">Return to Add local information to the classifier</a></div>
 
 <!--
-Use the complete notebook answer for the local check. The input has one row per board; axis 1 appends features.
+The complete function signature is in the notebook. This body includes the historical mean-patch branch required by the free fixture. Each row remains one board; concatenation extends its feature columns.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">OPTIONAL ANSWER</div>
+<div class="kicker">Optional answer</div>
 
 # Worked answer: meet the validation recall target
 
@@ -562,16 +812,17 @@ position = int(np.ceil(recall * len(positives))) - 1
 return float(positives[position])
 ```
 <div class="bottom-note">At 12 validation defects and recall .90, keep the top 11 above the threshold.</div>
-<div class="source-link"><a href="/15">Return to Implement the validation threshold</a></div>
+<div class="source-link"><a href="/21">Return to Implement the validation threshold</a></div>
 
 <!--
 The retained cutoff depends on validation examples. It does not guarantee the same recall on final boards.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
 
 ---
 
-<div class="kicker">OPTIONAL ANSWER</div>
+<div class="kicker">Optional answer</div>
 
 # Worked answer: choose uncertain cases
 
@@ -584,9 +835,10 @@ order = order[np.argsort(
 return np.asarray(rows)[order[:budget]]
 ```
 <div class="bottom-note">The permutation only breaks equal-distance ties. Do not pass labels to this function.</div>
-<div class="source-link"><a href="/20">Return to Choose where the review time goes</a></div>
+<div class="source-link"><a href="/31">Return to Choose where the review time goes</a></div>
 
 <!--
 Active selection here is uncertainty sampling. It is one policy to test, not a proven universal choice.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->

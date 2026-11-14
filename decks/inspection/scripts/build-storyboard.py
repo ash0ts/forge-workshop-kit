@@ -80,6 +80,9 @@ main_count=len(slides)
 add('answer-features','Worked answer: assemble the local features',code('whole = data["whole"][rows]\nif method == "whole":\n    return whole\nerrors = inspection.nearest_patch_errors(data, rows, reference)\nlocal = np.log1p(errors).reshape(len(rows), -1)\nreturn np.concatenate([whole, local], axis=1)')+note('The notebook answer also supports the historical mean-patch method used in the free fixture.'), 'Use the complete notebook answer for the local check. The input has one row per board; axis 1 appends features.', 'OPTIONAL ANSWER')
 add('answer-threshold','Worked answer: meet the validation recall target',code('positives = np.sort(scores[target == 1])[::-1]\nposition = int(np.ceil(recall * len(positives))) - 1\nreturn float(positives[position])')+note('At 12 validation defects and recall .90, keep the top 11 above the threshold.'), 'The retained cutoff depends on validation examples. It does not guarantee the same recall on final boards.', 'OPTIONAL ANSWER')
 add('answer-review','Worked answer: choose uncertain cases',code('rng = np.random.default_rng(seed)\norder = rng.permutation(len(rows))\norder = order[np.argsort(\n    np.abs(scores[order] - threshold), kind="stable"\n)]\nreturn np.asarray(rows)[order[:budget]]')+note('The permutation only breaks equal-distance ties. Do not pass labels to this function.'), 'Active selection here is uncertainty sampling. It is one policy to test, not a proven universal choice.', 'OPTIONAL ANSWER')
+from depth_storyboard import extend
+slides=extend(slides)
+main_count=sum(s['start_minute'] is not None for s in slides)
 indices={s['key']:i+1 for i,s in enumerate(slides)}
 front='''---\ntheme: default\ntitle: Find defective parts before they ship\nauthor: Anish Shah\nclass: cover\nlayout: default\naspectRatio: 16/9\ncanvasWidth: 1280\ncolorSchema: light\ntransition: fade\nwakeLock: false\nfonts:\n  sans: IBM Plex Sans\n  mono: IBM Plex Mono\n  provider: none\nmdc: true\nhighlighter: shiki\ndrawings:\n  enabled: false\ndownload: false\nexportFilename: visual-inspection\n---\n\n'''
 parts=[]
@@ -89,6 +92,6 @@ for i,s in enumerate(slides):
     back=''.join(f'<div class="source-link"><a href="{BASE}{indices[x["key"]]}">Return to {x["title"]}</a></div>' for x in slides if x['answer']==s['key'])
     parts.append(fm+f'<div class="kicker">{s["time"]}</div>\n\n'+answer+'# '+s['title']+'\n\n'+s['body']+'\n'+back+'\n\n<!--\n'+s['notes']+'\nSource: notes/sources.md.\n-->\n')
 (ROOT/'slides.md').write_text(front+''.join(parts))
-(ROOT/'notes/slide-map.json').write_text(json.dumps({'main_slides':main_count,'total_slides':len(slides),'slides':[{'number':i+1,**s} for i,s in enumerate(slides)]},indent=2))
+(ROOT/'notes/slide-map.json').write_text(json.dumps({'session_minutes':240,'main_slides':main_count,'total_slides':len(slides),'slides':[{'number':i+1,**s} for i,s in enumerate(slides)]},indent=2))
 (ROOT/'notes/facilitator-notes.md').write_text('# Visual inspection presenter notes\n\n'+'\n\n'.join(f'## {i+1}. {s["title"]}\n\n{s["time"]}\n\n{s["notes"]}' for i,s in enumerate(slides)))
 print(f'{main_count} main slides, {len(slides)-main_count} optional answers')

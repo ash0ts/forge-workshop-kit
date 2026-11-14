@@ -37,7 +37,7 @@ Participants predict future solar measurements and images, then ask an agent to 
 5. **Compare the reserved dates.** In the November 13 Solar Report, show image error separately from GOES error. Image error falls from 0.122442 for the manual model to 0.110011 for the agent-selected model, a 10.15% relative reduction. These are 199 overlapping windows from two days and one seed. The GOES model loses to persistence: 2.468975 versus 0.192706 log-flux MAE.
 6. **Ask for the next experiment.** “Would this edit still help with another seed and another date range?” The observed image improvement is a reason to test that question. The GOES failure needs its own investigation; averaging the two tasks together would hide it.
 
-Explain which model is changing. We use the same language model for the research agent throughout the workshop. It edits Python code; running that code trains the small forecasting model's weights. Follow the [four-hour runbook](facilitator.md) for the hands-on session.
+Explain which model is changing. We use the same language model for the research agent throughout the workshop. It edits Python code; running that code trains the small forecasting model's weights. Follow the [six-hour runbook](facilitator.md) for the hands-on session.
 
 ## Show the qualified repairs
 
@@ -50,7 +50,7 @@ For Solar, open the [three-seed qualification](solar-qualification.md). The repa
 1. Open the [routing deck](https://ash0ts.github.io/forge-workshop-kit/routing/) and compare a missing card with a card that does not work. Ask which support workflow each needs.
 2. Show the TF–IDF and frozen-embedding classifiers. The recorded official-test macro-F1 rises from 0.879385 to 0.920229. Explain that the encoder stays fixed while the classifier is fitted.
 3. Open the [recorded judge disagreement](https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f5427dc7f06703d62c00561b6bd27a01). The request says “Can I activate a card in the app?” The judge accepts `activate_my_card`; the dataset says `card_linking`. Ask what else a reviewer would need before accepting a label.
-4. In the notebook, save a review, show its dataset version, and follow it into retraining. The participant's later improvement is measured separately from the qualified classifier comparison. [Three-hour instructions](routing-workshop.md).
+4. In the notebook, save a review, show its dataset version, and follow it into retraining. The participant's later improvement is measured separately from the qualified classifier comparison. [Four-hour instructions](routing-workshop.md).
 
 ## Circuit-board inspection in six minutes
 

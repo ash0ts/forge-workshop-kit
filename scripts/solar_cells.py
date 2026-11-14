@@ -31,7 +31,7 @@ get_recovery_revision, set_recovery_revision = mo.state(0)
 ''', True)
 add('''
 mo.stop(get_step() != "setup")
-mo.vstack([mo.Html(ui.heading("Solar forecasting with agent-assisted experiments", "You're preparing a forecast for a fictional research lab's weekly review. The team needs to decide which model to develop further. Your job is to compare its predictions with later satellite observations and bring an experiment a colleague can repeat.", theme="lab")),
+mo.vstack([mo.md("**6-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/solar/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Solar forecasting with agent-assisted experiments", "You're preparing a forecast for a fictional research lab's weekly review. The team needs to decide which model to develop further. Your job is to compare its predictions with later satellite observations and bring an experiment a colleague can repeat.", theme="lab")),
 mo.md("Last week's shared folder had four notebooks called final. One reported a lower error, but nobody could tell which preprocessing or weights produced it. You'll save those details with each run."),
 mo.md("### The observations you'll use"),
 mo.md("The lab is fictional; the data are real satellite observations from **February 1–14, 2014**. SunPy is the Python library we'll use to inspect the observations and their metadata. We'll tackle two related prediction tasks separately:"),

@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[pending] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.6.0/forge_workshop_kit-0.6.0-py3-none-any.whl",
+#   "forge-workshop-kit[pending] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.6.1/forge_workshop_kit-0.6.1-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -131,7 +131,7 @@ def _():
 @app.cell(hide_code=True)
 def _(get_step, mo, pending_visuals, ui):
     mo.stop(get_step()!="setup")
-    mo.vstack([mo.Html(ui.heading("Pending, Inc.", "You're on the operations team at a fictional software company. Customers are waiting for refunds and account access. Management has assigned those tickets to an AI employee and given you the job of making it reliable. Its onboarding so far consists of a motivational paragraph.")),
+    mo.vstack([mo.md("**4-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/pending/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Pending, Inc.", "You're on the operations team at a fictional software company. Customers are waiting for refunds and account access. Management has assigned those tickets to an AI employee and given you the job of making it reliable. Its onboarding so far consists of a motivational paragraph.")),
     mo.md("**Today's assignment:** get the employee through two customer requests. It needs to look up the right account, decide whether a change is needed, make that change once, and explain what happened. A confident reply won't help a customer who still can't sign in."),
     mo.Html(pending_visuals.office_brief()),
     mo.md("**What's in a case.** Our dataset pairs each customer request with a starting account snapshot: the subscription, payments, refunds, and members. Python tools read and change a separate copy of that snapshot. These are fictional records; no real money moves and no real access is granted."),

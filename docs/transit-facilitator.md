@@ -2,58 +2,89 @@
 
 This is a technical preview. Live worker execution and native Forge readback are recorded. Complete the external-account and human-rehearsal checks before using this schedule with attendees.
 
-Use the current Transit notebook and companion deck. The session lasts four hours, including a ten-minute break. Keep the code exercises visible. The notebook’s saved task board and timeline are the source for what actually happened.
+Use the current Transit notebook and companion deck. This is one six-hour session, including two ten-minute breaks and one twenty-minute break. The extra time is for working through the code and explaining a result. Keep the code exercises visible. Use the notebook’s saved task board and timeline to determine what happened.
 
 ## Before the room arrives
 
 - Open an attendee-style copy in a project you can write to. Check project access separately from inference access.
-- Read the data receipt: this is a November 2024 MBTA schedule, not live arrivals.
-- Confirm the fixed model, adjustable allowance and saved retry behavior. Opening the notebook must not start work.
-- Check the worked local scenarios, Agent Lens readback and native comparison publication. Keep a recorded replay ready, clearly labeled.
+- Read the data receipt: this is the November 2024 MBTA schedule, not live arrivals. Find trip 63926435 at stop 70076, with ThanksgivingDay service and departure 24:08:00.
+- Confirm the fixed model, adjustable allowance and explicit run controls. Opening the notebook must not start work.
+- Run the free local checks. Open a verified Agent Lens trace and native comparison. Have the recorded results available with their rehearsal labels.
 - Open the read-only facilitator monitor. Missing progress means unknown; it does not mean a participant failed.
-- Keep the [two-minute captioned code walkthrough](../decks/transit/public/walkthrough/index.html) available. It shows worked answers and free checks, so reveal it after participants have attempted the exercises. The reference app at its end is labeled separately from agent results. The second recording follows actual saved R4 worker patches into Agent Lens, EvalTables and the exported app; it preserves the incomplete follow-ups.
+- Use the [captioned walkthrough](../decks/transit/public/walkthrough/index.html) after an attempt or requested hint. Its first recording shows free checks and the instructor-authored reference app. The second follows saved R4 patches into Agent Lens, EvalTables and the exported app. Neither records a new attendee execution.
 
 ## Timed script
 
 | Elapsed time | Say and demonstrate | Participant task | Check before moving on |
 | --- | --- | --- | --- |
-| 0:00–0:20 | “We need a departures board. Before we hire several agents, let’s decide how we’ll know the board works.” Show the actual Park Street `24:08:00` row. | Connect, send the setup trace and implement `check_departures()` for the after-midnight scenario. | Their project receives the trace. The real row passes, and a missing train or wrong service date fails. |
-| 0:20–0:45 | “The first worker needs a clear task, source files and a way to test its change.” | Complete the worker request and `dispatch_action()`; run one worker; inspect its trace and diff. | They can open the model request, one tool result and the file it changed. |
-| 0:45–1:10 | “These components can run in parallel. The board cannot finish until both are ready.” | Complete `ready_tasks()` and `claim_task()`; run the free dependency and competing-claim checks. | Blocked work stays blocked; one task has one owner. |
-| 1:10–1:45 | “Watch the tasks, not just the agents talking.” | Review the contracts and run the two-worker build. Follow a claim, source edit and test in the timeline. | The displayed owner, source version, patch and test belong to the same task. |
-| 1:45–1:55 | “Save the checkpoint. We will test the patches together after the break.” | Break. | Completed work is saved; pending publication is labeled separately. |
-| 1:55–2:25 | “The patches each passed a check. Now let’s test the application they produce together.” | Review both diffs, integrate the accepted patches and run the combined departures board. | They can explain a pass or failure using actual departure rows and their own acceptance check. |
-| 2:25–2:50 | “What should the next worker know, and what evidence makes us trust it?” | Write and review one scoped lesson; complete `select_memories()`. | The rule links to a real test or tool event; an unverified or obsolete claim is excluded. |
-| 2:50–3:25 | “Now give two fresh teams the same follow-up. Only one gets the lesson.” | Run both versions of the last-direct-train feature; inspect requests, review diffs and integrate the accepted patches. | Same starting code and request; both actual outcomes remain saved. |
-| 3:25–3:45 | “Compare the departures first. Then compare time and cost.” | Complete the development scorer; freeze builds; run final cases; open an aligned comparison row. | They distinguish wrong output, incomplete execution and unavailable publication. |
-| 3:45–4:00 | “Which build would you release, and which check supports that decision?” | Complete `release_decision()`; reload one saved case; publish the release decision; explain one result to another participant. | Code and evaluation identify the same build. Each person opens a matching record; missing or failed checks block release. |
+| 0:00–0:30 | “Someone leaving an evening event needs the next train. A list that looks plausible is not enough.” Follow one actual stop-time row through the trip, active service date and civil timestamp. | Explain why 24:08 on Nov 28 service means 00:08 on Nov 29. Identify what a correct board must return. | They name both dates and the same trip ID. |
+| 0:30–0:50 | “Use your own project so you can reopen every result after today.” Show the setup span’s arguments, output and recorded time. | Connect, edit an attribute in `instrument_tool()`, send the setup trace and implement `check_departures()`. | Their trace is in their project. The real row passes; a missing train and wrong service day fail. |
+| 0:50–1:35 | “The model chooses an action. Python runs it. The next request needs the result.” Step through read, hash-checked edit, test and submission. | Complete `build_worker_request()` and `dispatch_action()`. Run the free check, then the single-worker build. Open one request, file edit and test in Agent Lens. | They show the actual observation supplied to the next request, not just the action the model requested. |
+| 1:35–1:45 | “Keep the saved task and source. We’ll add coordination after the break.” | Ten-minute break. | No duplicate requests start when they return. |
+| 1:45–2:25 | “Both threads can see pending. That does not give both permission to start.” Show the controlled two-owner race and atomic one-owner repair. | Complete `ready_tasks()` and `claim_task()`. Run the free dependency and claim checks. Inspect permitted files and separate working copies. | Only pending work with integrated dependencies starts. One task has one owner. The lock is released before model execution. |
+| 2:25–3:00 | “These modules share an interface. They still need to work together.” Start the two-worker build, then review the actual patches. | Run the team, inspect claims and diffs, confirm review, test integration and preview Park Street after midnight. | The reviewed files match the tested files. The displayed row retains the service date and boarding timestamp. |
+| 3:00–3:20 | “Save both builds and their checks. We’ll use them to write a project lesson.” | Twenty-minute break. | The build outcome remains saved even if publication needs a retry. |
+| 3:20–4:00 | “A note can be useful-looking and still be wrong or obsolete.” Filter illustrative notes by acceptance, contract version, scope and tags. | Implement `select_memories()`, run its free check, inspect a lesson proposal and save a rule supported by a development result. | The participant opens the cited check. They explain applicability `version` versus evidence `source_revision`. |
+| 4:00–4:45 | “Give fresh teams the same next feature. Only one receives the accepted lesson.” Read the last-direct-train contract. | Run both follow-ups, inspect memory selection and request contents, review the patches and test integration. | Starting source, model and limits match. Both outcomes remain represented. No lesson is edited midway through the pair. |
+| 4:45–4:55 | “Stop adding features. Keep the available versions for comparison.” | Ten-minute break. | Failed and incomplete work remains visible. |
+| 4:55–5:30 | “Read a prediction before its average.” Explain the participant scorer and independent final checks; follow the recorded UTC defect through query and renderer. | Check `score_scenario()`, freeze the builds, run the final scenarios and open one aligned row in Forge. | They distinguish a wrong output, an unavailable judgment and a publication failure. Two failed checks may expose one bug. |
+| 5:30–6:00 | “Which version would you let another person use?” Explain the release rule, then reproduce one saved input. | Check `release_decision()`, choose a tested version, write a conclusion and publish its evidence. Reload the app bundle and compare a row. | Failed or missing required checks block release. The released code, data and comparison agree. Each person explains one result. |
 
-## Explain the recorded result accurately
+## Exact controls to use
 
-R5’s one-worker build passed 10/10 final cases; the two-worker build passed 8/10. Both had passed their public development checks. Use this to show why a component check is not a release decision. Both follow-ups scored 12/18 after their query workers stopped before testing, so the memory comparison remains unresolved. The supported R5 release is the single-worker departures board; the follow-up feature stays blocked. The R4 recording is an earlier rehearsal with its own results.
+Tell participants which notebook step to open before naming a button. A free check saves the current exercise code; editing it afterward requires another check.
+
+| Notebook step | First | Then |
+| --- | --- | --- |
+| Understand the departures board | **Connect and restore my work**, then **Send my first Agent Lens trace** | **Check my after-midnight scenario** |
+| Run one builder | **Check my build_worker_request code** checks both request construction and dispatch | **Run one worker on the first feature** |
+| Divide and claim the work | **Check my ready_tasks code** checks readiness, claims and the local race | Explain the two-owner to one-owner result before continuing |
+| Run two builders | Confirm the worker and task checks still match the saved code | **Run the ready tasks with two workers** |
+| Test the combined app | Read both diffs; tick **I reviewed both builds' patches below and their development checks** | **Test the combined departures board**, then **Preview this saved app** |
+| Keep a checked lesson | **Check my select_memories code**; optionally **Ask the agent to propose a lesson** | Choose **Supporting development result**, write the rule, then **Save a checked lesson** |
+| Build the next feature | **Run both versions of the follow-up feature** | Review both diffs; tick **I reviewed the no-lesson and shared-lesson patches**; **Integrate the reviewed follow-up patches** |
+| Compare frozen builds | **Check my score_scenario code** | **Compare the frozen builds** |
+| Reproduce and release | **Check my release_decision code**; select the tested version and write the conclusion | **Publish this release and its evidence** |
+
+**Retry saved Forge publications** exports completed work again. **Allow another attempt** authorizes recovery of stopped execution; it does not itself start the builder. Do not confuse these controls.
+
+## Explain the recorded results accurately
+
+Keep the rehearsal identity on the screen:
+
+- **R3:** the captured presentation worker ran a passing component check. Its sibling query worker exhausted its output allowance. This capture teaches trace inspection, not a successful release.
+- **R4:** both initial builds passed 10/10 final scenarios. Both follow-ups scored 14/18 after query workers reached an input bound. The recorded walkthrough preserves that outcome.
+- **R5:** the one-worker build passed 10/10; the two-worker build passed 8/10. Both had passed five public development checks. The two failed final cases exposed the same UTC-input defect in the query and rendered board. Both follow-ups scored 12/18 after their query workers stopped before testing.
+
+For the UTC example, 23:00 UTC is 18:00 Eastern. The expected next train is trip 63919613 at 18:03 Eastern. The team query used the caller’s timezone as its service-day origin and selected trip 63919759 from service-clock 23:03. That changes the selected train, not merely its display format. The observed two failures concern one bug.
+
+R5 supports releasing the single-worker departures board. The follow-up feature remains blocked. Neither incomplete follow-up establishes a memory benefit. Builder elapsed time excludes human review and integration; keep cost and product correctness separate.
 
 ## Keep the class moving
 
-- If setup is still blocked at 0:20, have the participant inspect the labeled recorded trace while they repair access. Do not substitute the host’s credentials.
-- If a paid request has an uncertain outcome, inspect its saved receipt before retrying. Never automatically resend it.
-- If a trace or comparison failed to publish, use the saved output and publication-only retry. Do not rerun a successful build just to obtain a dashboard.
-- If the live agents succeed, keep that success. Use the labeled contract-mismatch example to teach integration failure.
-- If integration fails, let the learner identify the failing condition. Do not quietly replace its patch with a worked answer.
-- If the two follow-up versions tie, ask whether the lesson changed the work or simply added context. Do not claim that consulting memory made the output better.
-- At 3:25, stop adding features. Freeze and evaluate the available builds, keeping incomplete records explicit.
-- At 3:45, move to reproduction and the release decision. Use two minutes each for participants to explain a result; save further feature work for later.
+- At 0:50, use the labeled recorded setup trace if an attendee is still repairing access. Never lend the facilitator’s credentials.
+- At 1:35, preserve whatever the single worker produced. Use the trace to teach the loop even if the worker stopped.
+- If a request has an uncertain outcome, inspect its saved receipt before authorizing recovery. Do not automatically resend it.
+- A large generated file can exceed the input bound; a model can also exhaust its output allowance without returning an action. Name which limit stopped the task. See the [runtime recovery guidance](transit-workshop.md#when-a-builder-stops).
+- If publication fails, use the saved notebook results and publication-only retry. Do not rerun a successful build to obtain a dashboard.
+- If both initial integrations fail, the notebook offers **Continue from the prepared reference app**. Explain that it runs the instructor’s version and preserves both live failures.
+- If the live agents succeed, keep the success. Use the labeled contract-mismatch illustration or recorded UTC defect for discussion.
+- At 4:45, stop adding features. Freeze the available builds when evaluation begins. A failed branch still belongs in the comparison.
+- At 5:30, move to release and reproduction. At 5:48, give each person two minutes to explain one result while controlling their own notebook.
 
 ## Questions that reveal understanding
 
-- Which task can start now, and which prerequisite blocks the other one?
-- Where is the worker’s claim checked against an actual test?
-- What did the second worker know that the first one did not?
-- Which source event supports the shared lesson? Where would that lesson stop applying?
-- Did the team improve the departure list, reduce elapsed time, increase cost, or some combination?
-- What would make you retain the previous release?
+- Why does this departure have different service and boarding dates?
+- What result did Python return, and where was it included in the next model request?
+- Why does a submitted patch not unblock a task that depends on integrated code?
+- What happens between checking a task is free and writing its owner without a lock?
+- Which field says where a lesson applies, and which field identifies its original evidence?
+- Did this code change improve the departure list, reduce elapsed time, increase cost, or some combination?
+- Why can two failed scenarios describe one underlying defect?
+- Which exact version would you release, and which check supports that choice?
 
-## Closing explanation
+## Closing script
 
-“You wrote the machinery that turns a feature into coordinated work. You can follow a task into its worker trace, inspect the patch, test the integrated product and save a lesson for another task. The useful question is whether that process delivered a better result for its cost. Your comparison gives you a first answer for this build.”
+“You now have a departures board and the Python that assigned its work. Show which version passed your checks, what the workers changed and what you would test next. If the last feature failed, keep that result in the Report. The release decision should follow the checks.”
 
-An optional ARIA exercise comes after the measured comparison: ask it to inspect one published integration failure and propose a follow-up check. Verify its cited event. ARIA access is not required to finish.
+Optional ARIA investigation comes after the measured comparison: ask it to inspect one published failure and propose a regression check. Verify the cited event. ARIA access is not required to finish.

@@ -1,6 +1,6 @@
 # Solar forecasting with agent-assisted experiments
 
-This four-hour deck accompanies the Solar Autoresearch notebook. Participants use GOES X-ray measurements to forecast flux thirty minutes ahead, then use AIA images to predict an image one hour ahead. They implement persistence, train small models, and save the code, settings, and outputs needed to compare results. Once that comparison works, a research agent proposes changes to the image model’s training code. Participants review the diffs and test their effect on forecast error. The setting is a fictional lab’s weekly forecast review. Participants bring a result, its saved code, and a next experiment. Pending, Inc. remains the separate office workshop.
+This six-hour deck accompanies the Solar Autoresearch notebook. Participants use GOES X-ray measurements to forecast flux thirty minutes ahead, then use AIA images to predict an image one hour ahead. They implement persistence, train small models, and save the code, settings, and outputs needed to compare results. Once that comparison works, a research agent proposes changes to the image model’s training code. Participants review the diffs and test their effect on forecast error. The setting is a fictional lab’s weekly forecast review. Participants bring a result, its saved code, and a next experiment. Pending, Inc. remains the separate office workshop.
 
 Start with the [Solar notebook template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view). Choose **Copy to project**, open your copy in **Edit**, and follow the **Connect** step. Each participant uses their own project and account. There is no workshop gateway or host token.
 
@@ -13,9 +13,9 @@ npm run dev
 
 Open the URL printed in the terminal. Use `/presenter/1` for the speaker notes. Node.js 22.22 or newer is required. Fonts and images are included, and opening the deck does not train models or send model requests.
 
-The deck has 88 main frames and 18 optional worked-answer, recorded-evidence, and reference frames. The main sequence builds diagrams a step at a time, then pauses for participants to work in the notebook. Keep each exercise slide visible while they code. Its button names match the notebook, and its worked-answer link returns to the exercise.
+The deck has 107 main frames and 16 optional worked-answer, recorded-evidence, and reference frames. The main sequence builds diagrams a step at a time, then pauses for participants to work in the notebook. Keep each exercise slide visible while they code. Its button names match the notebook, and its worked-answer link returns to the exercise.
 
-The speaker notes explain what to demonstrate, where to pause, and what participants should inspect. Most of the four hours is for coding and discussion. The opening scene with four notebooks called final is fictional. Forecasting results come from the recorded rehearsal. Native Forge screens show those saved runs, Artifacts, traces, and Reports. Click any product capture to inspect it at full resolution.
+The speaker notes explain what to demonstrate, where to pause, and what participants should inspect. The six-hour session includes 55 minutes of breaks, with time for coding, discussion, and both research rounds. The opening scene with four notebooks called final is fictional. Forecasting results come from the recorded rehearsal. Native Forge screens show those saved runs, Artifacts, traces, and Reports. Click any product capture to inspect it at full resolution.
 
 ## Build the browser copy and PDF
 
@@ -31,7 +31,7 @@ The PDF includes all incremental diagrams and worked-answer links. In the browse
 
 ## Edit the deck
 
-Edit `scripts/build-storyboard.py`, then run:
+Edit `scripts/build-storyboard.py` and its `scripts/teaching_sequence.py` module, then run:
 
 ```sh
 python3 scripts/build-storyboard.py

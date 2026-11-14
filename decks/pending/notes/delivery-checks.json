@@ -1,7 +1,7 @@
 {
-  "source_sha256": "63473d55877058a5748975cf3fed2741f19d93788aa8f867666ec98378039dd3",
-  "slides_checked": 85,
-  "expected_slides": 85,
+  "source_sha256": "c078742a327e203bb55c7f28fce2012cb33ffed3a57ab5f99a93920042fd0910",
+  "slides_checked": 95,
+  "expected_slides": 95,
   "titles": [
     {
       "number": 1,
@@ -40,18 +40,18 @@
     },
     {
       "number": 8,
-      "key": "harness-0",
-      "title": "The executor dispatches the model’s selected action."
+      "key": "harness-inputs",
+      "title": "The harness builds the request the model receives."
     },
     {
       "number": 9,
-      "key": "harness-1",
-      "title": "Instructions define how the agent should handle the ticket."
+      "key": "harness-execution",
+      "title": "Python executes the action and returns its result."
     },
     {
       "number": 10,
-      "key": "harness-2",
-      "title": "Reading a skill adds its procedure to the conversation."
+      "key": "harness-edit-boundary",
+      "title": "Different edits change different parts of the agent."
     },
     {
       "number": 11,
@@ -150,281 +150,331 @@
     },
     {
       "number": 30,
+      "key": "history-not-training",
+      "title": "A tool result changes the next request, not the weights."
+    },
+    {
+      "number": 31,
       "key": "starting",
       "title": "Test the starting harness on billing and onboarding."
     },
     {
-      "number": 31,
+      "number": 32,
+      "key": "break-one",
+      "title": "Take ten minutes before investigating the timeout."
+    },
+    {
+      "number": 33,
       "key": "model-span",
       "title": "Record each model request and its response."
     },
     {
-      "number": 32,
-      "key": "onboarding",
-      "title": "Provision Alex’s membership through the MCP tools."
+      "number": 34,
+      "key": "mcp-initialize",
+      "title": "The executor starts a local MCP session."
     },
     {
-      "number": 33,
+      "number": 35,
+      "key": "mcp-discover",
+      "title": "Discovery returns tool names and input schemas."
+    },
+    {
+      "number": 36,
+      "key": "mcp-invoke",
+      "title": "Call the discovered tool with the selected arguments."
+    },
+    {
+      "number": 37,
+      "key": "mcp-return",
+      "title": "Read the returned observation before deciding what to do next."
+    },
+    {
+      "number": 38,
+      "key": "mcp-code",
+      "title": "Discovery and execution are separate client calls."
+    },
+    {
+      "number": 39,
       "key": "timeout-1",
       "title": "An access request is sent."
     },
     {
-      "number": 34,
+      "number": 40,
       "key": "timeout-2",
       "title": "Provisioning commits before its response times out."
     },
     {
-      "number": 35,
+      "number": 41,
       "key": "timeout-3",
       "title": "Read account access before retrying the write."
     },
     {
-      "number": 36,
+      "number": 42,
       "key": "retry-identity",
       "title": "A stable operation_id prevents a repeated write."
     },
     {
-      "number": 37,
+      "number": 43,
       "key": "repair-retry",
       "title": "Repair the retry in Python."
     },
     {
-      "number": 38,
+      "number": 44,
       "key": "repair-result",
       "title": "One retry policy changes the account twice."
     },
     {
-      "number": 39,
+      "number": 45,
       "key": "timeout-screen",
       "title": "Inspect the timeout and the following status check."
     },
     {
-      "number": 40,
+      "number": 46,
       "key": "timeout-detail",
       "title": "The tool says the write may have committed."
     },
     {
-      "number": 41,
+      "number": 47,
       "key": "checks",
       "title": "Check the account and the explanation separately."
     },
     {
-      "number": 42,
+      "number": 48,
       "key": "scorer-cases",
       "title": "The same confident reply can accompany four account states."
     },
     {
-      "number": 43,
+      "number": 49,
       "key": "scorer",
       "title": "Write checks for full, partial, missing, and duplicate refunds."
     },
     {
-      "number": 44,
+      "number": 50,
+      "key": "judge-state",
+      "title": "The account can contradict a confident reply."
+    },
+    {
+      "number": 51,
+      "key": "judge-validity",
+      "title": "A valid judge response can still contain a wrong judgment."
+    },
+    {
+      "number": 52,
       "key": "judge",
       "title": "Ask the judge to compare the reply with recorded actions."
     },
     {
-      "number": 45,
+      "number": 53,
       "key": "publish-dev",
       "title": "Publish development results with both kinds of score."
     },
     {
-      "number": 46,
+      "number": 54,
       "key": "compare-fields",
       "title": "Know which check produced the score."
     },
     {
-      "number": 47,
+      "number": 55,
       "key": "manual",
       "title": "Revise the verification skill and rerun both tickets."
     },
     {
-      "number": 48,
+      "number": 56,
       "key": "manual-interpret",
       "title": "An installed skill must be read before it can guide the model."
     },
     {
-      "number": 49,
+      "number": 57,
       "key": "break",
       "title": "Take a ten-minute break after saving your progress."
     },
     {
-      "number": 50,
+      "number": 58,
       "key": "editor",
       "title": "Management would like to automate management."
     },
     {
-      "number": 51,
+      "number": 59,
       "key": "branch-1",
       "title": "Propose two edits to the same starting harness."
     },
     {
-      "number": 52,
+      "number": 60,
       "key": "branch-2",
       "title": "Run each candidate from the original account state."
     },
     {
-      "number": 53,
+      "number": 61,
       "key": "branch-3",
       "title": "Compare the probe results before selecting a harness."
     },
     {
-      "number": 54,
+      "number": 62,
       "key": "branch-4",
       "title": "Execute the harness returned by the composition decision."
     },
     {
-      "number": 55,
+      "number": 63,
       "key": "branch-5",
       "title": "Save the selected harness and a lesson for onboarding."
     },
     {
-      "number": 56,
+      "number": 64,
       "key": "propose-code",
       "title": "Give the editor the starting execution and harness."
     },
     {
-      "number": 57,
+      "number": 65,
       "key": "propose",
       "title": "Review the proposed instruction and workflow changes."
     },
     {
-      "number": 58,
+      "number": 66,
       "key": "probe-code",
       "title": "Construct and execute the proposed harness."
     },
     {
-      "number": 59,
+      "number": 67,
       "key": "probes",
       "title": "Run both candidates and inspect their tool sequences."
     },
     {
-      "number": 60,
+      "number": 68,
       "key": "completion-guard",
       "title": "Require a passing check of the current state before finish."
     },
     {
-      "number": 61,
+      "number": 69,
       "key": "gate-screen",
       "title": "This candidate required a check before completion."
     },
     {
-      "number": 62,
+      "number": 70,
       "key": "gate-detail",
       "title": "The completion gate required a check_work call."
     },
     {
-      "number": 63,
+      "number": 71,
       "key": "probe-comparison",
       "title": "Compare the added checks with the resulting account state."
     },
     {
-      "number": 64,
+      "number": 72,
       "key": "keep",
       "title": "The editor retained the parent after comparing the probes."
     },
     {
-      "number": 65,
+      "number": 73,
       "key": "compose",
       "title": "Test the selected harness before carrying it forward."
     },
     {
-      "number": 66,
+      "number": 74,
       "key": "reflection",
       "title": "Save the lesson with the run that supports it."
     },
     {
-      "number": 67,
+      "number": 75,
+      "key": "between-rounds",
+      "title": "The next task gets the selected procedure and a checked lesson."
+    },
+    {
+      "number": 76,
+      "key": "compose-not-test",
+      "title": "Choosing a combination does not test it."
+    },
+    {
+      "number": 77,
       "key": "round-two",
       "title": "Use the selected harness to start the onboarding round."
     },
     {
-      "number": 68,
+      "number": 78,
       "key": "round-two-result",
       "title": "The second round changed the verification skill."
     },
     {
-      "number": 69,
+      "number": 79,
       "key": "skill-diff",
       "title": "The skill makes the final check more specific."
     },
     {
-      "number": 70,
+      "number": 80,
       "key": "rsi",
       "title": "The next round tests changes to the previous selection."
     },
     {
-      "number": 71,
+      "number": 81,
       "key": "freeze",
       "title": "Freeze three harnesses for the fresh-case comparison."
     },
     {
-      "number": 72,
+      "number": 82,
       "key": "final",
       "title": "Compare all three versions on fresh tickets."
     },
     {
-      "number": 73,
+      "number": 83,
       "key": "native-results",
       "title": "Compare the same ticket in Forge."
     },
     {
-      "number": 74,
+      "number": 84,
       "key": "native-case",
       "title": "Inspect a request that needs clarification."
     },
     {
-      "number": 75,
+      "number": 85,
       "key": "final-screen",
       "title": "Link the Report’s conclusion to its runs and traces."
     },
     {
-      "number": 76,
+      "number": 86,
       "key": "final-result",
       "title": "All three harnesses passed the four final cases."
     },
     {
-      "number": 77,
+      "number": 87,
       "key": "files",
       "title": "Save the case, harness, execution, and scoring records."
     },
     {
-      "number": 78,
+      "number": 88,
       "key": "report",
       "title": "Write down what changed and whether it helped."
     },
     {
-      "number": 79,
+      "number": 89,
       "key": "aria",
       "title": "Ask ARIA to compare one case across harness versions."
     },
     {
-      "number": 80,
+      "number": 90,
       "key": "end",
       "title": "Choose a workflow with an observable result to test."
     },
     {
-      "number": 81,
+      "number": 91,
       "key": "answer-tool",
       "title": "Worked answer · invoice lookup"
     },
     {
-      "number": 82,
+      "number": 92,
       "key": "answer-loop",
       "title": "Worked answer · observation handoff"
     },
     {
-      "number": 83,
+      "number": 93,
       "key": "answer-scorer",
       "title": "Worked answer · inspect the refund"
     },
     {
-      "number": 84,
+      "number": 94,
       "key": "answer-judge",
       "title": "Worked answer · validate the judge response"
     },
     {
-      "number": 85,
+      "number": 95,
       "key": "sources",
       "title": "Source, notebook, and recorded example"
     }
@@ -583,24 +633,24 @@
       "click": 0
     },
     {
-      "slide": 31,
-      "click": 1
-    },
-    {
-      "slide": 31,
-      "click": 2
-    },
-    {
-      "slide": 31,
-      "click": 3
-    },
-    {
       "slide": 32,
       "click": 0
     },
     {
       "slide": 33,
       "click": 0
+    },
+    {
+      "slide": 33,
+      "click": 1
+    },
+    {
+      "slide": 33,
+      "click": 2
+    },
+    {
+      "slide": 33,
+      "click": 3
     },
     {
       "slide": 34,
@@ -621,6 +671,18 @@
     {
       "slide": 38,
       "click": 0
+    },
+    {
+      "slide": 38,
+      "click": 1
+    },
+    {
+      "slide": 38,
+      "click": 2
+    },
+    {
+      "slide": 38,
+      "click": 3
     },
     {
       "slide": 39,
@@ -695,28 +757,12 @@
       "click": 0
     },
     {
-      "slide": 56,
-      "click": 1
-    },
-    {
-      "slide": 56,
-      "click": 2
-    },
-    {
       "slide": 57,
       "click": 0
     },
     {
       "slide": 58,
       "click": 0
-    },
-    {
-      "slide": 58,
-      "click": 1
-    },
-    {
-      "slide": 58,
-      "click": 2
     },
     {
       "slide": 59,
@@ -741,6 +787,14 @@
     {
       "slide": 64,
       "click": 0
+    },
+    {
+      "slide": 64,
+      "click": 1
+    },
+    {
+      "slide": 64,
+      "click": 2
     },
     {
       "slide": 65,
@@ -791,6 +845,14 @@
       "click": 0
     },
     {
+      "slide": 74,
+      "click": 1
+    },
+    {
+      "slide": 74,
+      "click": 2
+    },
+    {
       "slide": 75,
       "click": 0
     },
@@ -833,6 +895,46 @@
     {
       "slide": 85,
       "click": 0
+    },
+    {
+      "slide": 86,
+      "click": 0
+    },
+    {
+      "slide": 87,
+      "click": 0
+    },
+    {
+      "slide": 88,
+      "click": 0
+    },
+    {
+      "slide": 89,
+      "click": 0
+    },
+    {
+      "slide": 90,
+      "click": 0
+    },
+    {
+      "slide": 91,
+      "click": 0
+    },
+    {
+      "slide": 92,
+      "click": 0
+    },
+    {
+      "slide": 93,
+      "click": 0
+    },
+    {
+      "slide": 94,
+      "click": 0
+    },
+    {
+      "slide": 95,
+      "click": 0
     }
   ],
   "issues": [],
@@ -841,20 +943,20 @@
   "answers": [
     {
       "slide": 20,
-      "destination": "/forge-workshop-kit/pending/81",
+      "destination": "/forge-workshop-kit/pending/91",
       "keyboardReturn": true
     },
     {
       "slide": 28,
-      "destination": "/forge-workshop-kit/pending/82",
+      "destination": "/forge-workshop-kit/pending/92",
       "keyboardReturn": true
     },
     {
-      "slide": 43,
-      "destination": "/forge-workshop-kit/pending/83",
+      "slide": 49,
+      "destination": "/forge-workshop-kit/pending/93",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 173,
+  "routes_checked": 193,
   "presenter_notes": true
 }

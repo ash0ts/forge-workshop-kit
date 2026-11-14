@@ -1,0 +1,10 @@
+{
+  "deck": "routing",
+  "slide": 22,
+  "initial": "0.5",
+  "maximum": "1",
+  "minimum": "0",
+  "keyboard_next": "0.05",
+  "errors": [],
+  "network_requests_during_interaction": 0
+}

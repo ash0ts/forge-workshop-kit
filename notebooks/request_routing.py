@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[routing] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.6.0/forge_workshop_kit-0.6.0-py3-none-any.whl",
+#   "forge-workshop-kit[routing] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.6.1/forge_workshop_kit-0.6.1-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -268,7 +268,7 @@ def _(get_context, help_button, help_message, mo):
 @app.cell(hide_code=True)
 def _(get_step, mo, ui):
     mo.stop(get_step()!="setup")
-    mo.vstack([mo.Html(ui.heading("Route customer requests and learn from mistakes", "You're joining a fictional bank's support team. A missing card, a broken card, and an unfamiliar payment need different workflows. You'll build a router, inspect its mistakes, review labels, and test a revised classifier.", theme="routing")),mo.md("The messages come from **Banking77**, published by PolyAI's researchers. It contains 10,003 training messages and 3,080 test messages across 77 banking intents. We reserve ten training examples per intent for validation and ten for review. The official test set stays untouched until the final comparison. These are public teaching data, not your customers' records."),mo.md("We'll start with word counts weighted by how distinctive they are, then train the same classifier on frozen sentence embeddings. After that, you decide which uncertain requests need a person. The support queue is fictional. Its enthusiasm for automatically forwarding tickets is familiar."),mo.md("**Today's output:** a selected router, the reviewed examples it learned from, an evaluation on matching requests, and a trace explaining one routing or labeling decision.")])
+    mo.vstack([mo.md("**4-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/routing/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Route customer requests and learn from mistakes", "You're joining a fictional bank's support team. A missing card, a broken card, and an unfamiliar payment need different workflows. You'll build a router, inspect its mistakes, review labels, and test a revised classifier.", theme="routing")),mo.md("The messages come from **Banking77**, published by PolyAI's researchers. It contains 10,003 training messages and 3,080 test messages across 77 banking intents. We reserve ten training examples per intent for validation and ten for review. The official test set stays untouched until the final comparison. These are public teaching data, not your customers' records."),mo.md("We'll start with word counts weighted by how distinctive they are, then train the same classifier on frozen sentence embeddings. After that, you decide which uncertain requests need a person. The support queue is fictional. Its enthusiasm for automatically forwarding tickets is familiar."),mo.md("**Today's output:** a selected router, the reviewed examples it learned from, an evaluation on matching requests, and a trace explaining one routing or labeling decision.")])
     return
 
 

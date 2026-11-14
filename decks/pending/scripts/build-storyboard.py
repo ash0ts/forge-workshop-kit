@@ -28,6 +28,7 @@ def slide(key,title,body,notes='',cls=''):
 def code(text, focus=""): return '\n```python'+(' {'+focus+'}' if focus else '')+'\n'+text.strip()+'\n```\n'
 def exercise(key,title,step,change,button,check,answer=None):
     slide(key,title,f'<div class="where">Notebook · {step}</div>\n\n<div class="task">{change}</div>\n\n<div class="done"><strong>Run:</strong> {button}<br><strong>Check:</strong> {check}</div>'+ (f'\n\n<a class="answer-link" href="#answer-{answer}">Worked answer →</a>' if answer else ''),f'Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: {button}.', 'exercise')
+    S[-1]['exercise'] = dict(step=step, change=change, run=button, check=check)
 def shot(key,title,file,url,question,notes=''):
     slide(key,title,f'<div class="native-capture"><a href="{url}" class="capture-frame" style="display:block"><img src="/images/{file}" alt="{question}"></a>\n<div class="capture-caption">Recorded v0.3.0 rehearsal · {question} · <a href="{url}">Open the record ↗</a></div></div>',notes)
 LENS='https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/'
@@ -227,6 +228,9 @@ slide('answer-judge','Worked answer · validate the judge response',code('''def 
 ''')+'\nValid JSON can still contain an incorrect judgment. Compare the reason with the recorded work.\n\n[Return to the exercise →](#scorer)','Exact semantics of teaching.ANSWERS scorer validation. Boolean strings are invalid. Empty reasons are invalid. Missing judgments stay unavailable.','answer')
 slide('sources','Source, notebook, and recorded example','<div class="sources"><p><a href="https://github.com/ash0ts/forge-workshop-kit">Workshop Kit source and setup</a><br><a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view">Copy the current Pending notebook</a><br><a href="'+REPORT+'">Recorded v0.3.0 rehearsal Report</a><br><a href="https://docs.coreweave.com/products/agent-lens">Agent Lens documentation</a><br><a href="https://docs.coreweave.com/products/wandb/evaltables/compare-runs">Native EvalTables comparison guide</a><br><a href="https://github.com/google-research/harness2/tree/1cfe254e8d25b15f37048c3730134686abe60335">Pinned Harness² upstream</a></p></div>','The product evidence in this deck uses the v030 rehearsal. The current native comparison uses Weave-backed Evaluation Tables Preview. The separate CES v2 service still returns HTTP500; its unavailable status remains in publication details. Current authored notebook source scripts/pending_cells.py. Historical deck preserved outside current attendee path.')
 
+from teaching_depth import enrich
+SECTIONS = enrich(S, code)
+
 header='''---
 theme: default
 title: Please improve yourself · Pending, Inc.
@@ -265,6 +269,6 @@ for i,s in enumerate(S):
     if i: content=('---\n'+('class: '+s['cls']+'\n' if s['cls'] else '')+'---\n\n')+content
     parts.append(content)
 (ROOT/'slides.md').write_text(header+'\n'.join(parts))
-(ROOT/'notes/facilitator-notes.md').write_text('# Pending, Inc. presenter notes\n\n'+ '\n\n'.join(f'## {i+1}. {s["title"].replace("<br>"," ")}\n\n{s["notes"]}' for i,s in enumerate(S))+'\n')
-(ROOT/'notes/slide-map.json').write_text(json.dumps({'total_slides':len(S),'main_slides':ids['answer-tool']-1,'slides':[{'number':i+1,'key':s['key'],'title':s['title'],'kind':s['cls'] or 'explanation','notes':s['notes'],'answer': next((ids[key] for key in ids if key.startswith('answer-') and ('#'+key+'\"') in s['body']),None)} for i,s in enumerate(S)]},indent=2)+'\n')
+(ROOT/'notes/facilitator-notes.md').write_text('# Pending, Inc. presenter notes\n\nOne four-hour session, including breaks at 1:10–1:20 and 2:15–2:25.\n\n'+ '\n\n'.join(f'## {i+1}. {s["title"].replace("<br>"," ")}\n\n{s["timing"]["section"]} · {s["timing"]["start_minute"]}–{s["timing"]["start_minute"]+s["timing"]["duration_minutes"]} minutes\n\n{s["notes"]}' for i,s in enumerate(S))+'\n')
+(ROOT/'notes/slide-map.json').write_text(json.dumps({'duration_minutes':240,'total_slides':len(S),'main_slides':ids['answer-tool']-1,'sections':[dict(anchor=key,title=title,start_minute=start,duration_minutes=duration) for key,title,start,duration,*_ in SECTIONS],'slides':[{'number':i+1,'key':s['key'],'title':s['title'],'kind':s['cls'] or 'explanation','notes':s['notes'],**{field:s[field] for field in ('concept','exercise','source','evidence','timing')},'answer': next((ids[key] for key in ids if key.startswith('answer-') and ('#'+key+'\"') in s['body']),None)} for i,s in enumerate(S)]},indent=2)+'\n')
 print(f'Wrote {len(S)} slides')

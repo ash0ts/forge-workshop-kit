@@ -2,6 +2,8 @@
 
 Use the deck to introduce an operation, then let participants inspect the same operation in their notebook. Arrow keys advance the slide's code highlights and callouts. Next and Back in a notebook explanation change the view; they do not execute the agent or train a model.
 
+Each main concept starts with an example, reveals its intermediate values, then connects them to code and a free check. The longer sessions allow this explanation and implementation work without treating more screenshots as more understanding. Saved product captures come after the mechanism they let participants investigate.
+
 ## Pending: an office ticket
 
 Start with both requests: refund one duplicate charge and grant Alex access when a write succeeds before its response times out. Ask participants to describe the account state they expect, before showing any agent output.

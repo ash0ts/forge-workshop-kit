@@ -4,19 +4,25 @@ A fictional banking support team needs to send each request to the right workflo
 
 The data are real public support queries from [Banking77](https://github.com/PolyAI-LDN/task-specific-datasets), published by Casanueva and colleagues under CC-BY-4.0. This is an intent-routing exercise, not financial advice, fraud detection, or a system for taking action on accounts.
 
-## Three-hour session
+## Four-hour session
 
-| Time | Participants change | Check before moving on |
+The deck pauses at each transformation before the participant writes or runs it. One request stays visible while it becomes features, probabilities, a review decision, and a saved training example. The extra time is for explanation and practice; the experiment still uses the same cases, models and inference allowance.
+
+| Time | Participants change or investigate | Check before moving on |
 |---|---|---|
-| 0–15 | Copy the notebook into their project, add a tracing attribute, send a setup trace | Find the attribute in their own Agent Lens tool span |
-| 15–30 | Inspect requests and predict labels before revealing them | Explain why card arrival and card not working need different workflows |
-| 30–55 | Implement the linear classifier factory and train TF–IDF and frozen-embedding versions | Compare validation macro-F1, saved source, and runtime |
-| 55–80 | Implement the review threshold, inspect uncertain requests, save at least four human labels | Identify a correct route and a mistake; separate coverage from accuracy |
-| 80–90 | Break | Checkpoint is saved |
-| 90–115 | Run eight typed model routes; write a judge validator and examine its rubric | Read an actual model request and compare judge decisions with personal reviews |
-| 115–140 | Add reviewed examples to training and retrain | Compare validation results; improvement is not assumed |
-| 140–160 | Freeze a classifier and threshold, evaluate the official test set | Compare all 3,080 matching requests and inspect per-intent mistakes |
-| 160–180 | Publish the selected model, review dataset, comparison, and Report | Explain one result and reproduce it from saved artifacts |
+| 0–26 | Copy the notebook, add a tracing attribute, send a setup trace | Find the field in their own Agent Lens span |
+| 26–36 | Inspect Banking77 requests and the fixed partitions | Explain why similar messages can need different support workflows |
+| 36–72 | Follow text into features, implement `make_classifier`, fit both models | Distinguish constructing, fitting and predicting; inspect the saved source |
+| 72–95 | Calculate one intent’s precision, recall and F1 from recorded predictions | Explain why macro-F1 requires the complete matched prediction set |
+| 95–130 | Implement the review policy, inspect confidence and margin, save four labels | Separate automatic deferral from choosing labeling candidates |
+| 130–140 | Break | Trained versions and reviews are saved |
+| 140–190 | Run eight model routes, implement the judge validator, compare with personal reviews | Keep schema validity, judgment agreement and routing quality separate |
+| 190–210 | Refit using accepted review labels and compare validation results | Explain the data change and decide whether to retain the earlier model |
+| 210–220 | Break | Save the selected version and keep final-test results closed |
+| 220–235 | Freeze the classifier and policy, evaluate all 3,080 official test requests | Inspect matching requests in EvalTables and separate quality from coverage |
+| 235–240 | Publish the conclusion and identify the files needed to reproduce it | Name one remaining mistake and the next experiment |
+
+The deck’s threshold slider recomputes coverage from the saved 770 validation predictions. It makes no model call. The F1 walkthrough uses actual saved `card_arrival` predictions: 34 true positives, three false positives and six false negatives. The eight prompted routing calls and the judge exercise are separate paths: the judge reviews classifier proposals attached to participants’ accepted labels, not those eight prompted routes.
 
 Run labels and code checks are literal. The notebook's occasional support-desk humor does not replace an instruction or a failure message.
 

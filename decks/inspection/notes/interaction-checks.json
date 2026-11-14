@@ -1,0 +1,10 @@
+{
+  "deck": "inspection",
+  "slide": 19,
+  "initial": "0.7",
+  "maximum": "1",
+  "minimum": "0",
+  "keyboard_next": "0.05",
+  "errors": [],
+  "network_requests_during_interaction": 0
+}

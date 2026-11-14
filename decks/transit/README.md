@@ -2,9 +2,9 @@
 
 **Technical preview.** The deck builds and its interactions have been checked. Live worker execution and native Forge readback are recorded; workshop readiness still requires an external-account check and a human rehearsal.
 
-A four-hour companion to the current Transit notebook. Participants build a historical MBTA departures board, write a small task coordinator, run two coding workers, review and integrate their changes, and test whether checked project lessons help a later feature.
+A six-hour companion to the current Transit notebook. Participants build a historical MBTA departures board, write a small task coordinator, run two coding workers, review and integrate their changes, and test whether checked project lessons help a later feature.
 
-Edit `scripts/build-storyboard.py`, then regenerate `slides.md`. The editable Vue/SVG diagrams keep task, worker, integration and memory positions stable across reveals. Presenter notes and worked-answer links are generated from the same storyboard. Native product screenshots are added only after the corresponding transit publication has been read back; the reference-app screenshot is labeled separately from agent results. Source hashes and its unedited original are retained.
+Edit `scripts/build-storyboard.py` and its `scripts/depth-sequences.py` extension, then regenerate `slides.md`. The six-hour schedule includes breaks at 1:35–1:45, 3:00–3:20 and 4:45–4:55. The editable Vue/SVG diagrams keep task, worker, integration and memory positions stable across reveals. Presenter notes and worked-answer links are generated from the same storyboard. Native product screenshots are added only after the corresponding transit publication has been read back; the reference-app screenshot is labeled separately from agent results. Source hashes and its unedited original are retained.
 
 ```sh
 npm ci

@@ -1,6 +1,6 @@
 <script setup>
 import {useId} from 'vue'
-const props=defineProps({mode:{default:'normalization'}, reveal:{default:1}})
+const props=defineProps({mode:{default:'normalization'}, reveal:{type:Number,default:99}})
 const marker=useId().replace(/:/g,'')
 const descriptions={
  normalization:'Log-transform both GOES channels. Fit one mean and standard deviation per channel using training inputs only. Reuse these values for every split. The target and persistence forecast remain unstandardized log10 XRS-B flux.',
@@ -21,14 +21,14 @@ const samples=Array.from({length:60},(_,i)=>i)
 <g v-if="mode==='normalization'">
  <text x="25" y="28" class="label">INPUTS · XRSA AND XRSB</text>
  <text x="25" y="72" class="mono">flux in W/m²</text><path d="M170 64H220" class="arrow"/><text x="240" y="72" class="mono">log10(flux)</text>
- <path d="M390 64H450" class="arrow"/>
+<g v-if="reveal>=2" data-reveal-step="2"> <path d="M390 64H450" class="arrow"/>
  <rect x="470" y="38" width="620" height="71" fill="#bad8cd" rx="3"/><text x="490" y="68">Fit each channel’s mean μ and standard deviation σ</text><text x="490" y="94" class="small">Training dates only · February 1–10 · x = (log10(flux) − μ) / σ</text>
- <path d="M780 110V147" class="arrow"/>
- <g v-for="(label,i) in ['Training','Validation','Final test']" :key="label" :transform="`translate(${25+i*365} 166)`"><rect width="335" height="82" :fill="['#dbe6e1','#f5dba0','#d8e5ec'][i]"/><text x="167" y="29" text-anchor="middle">{{label}}</text><text x="167" y="61" text-anchor="middle" class="small">Apply the same saved μ and σ</text></g>
- <path d="M780 149H192V159M780 149H557V159M780 149H922V159" class="line"/>
- <line x1="25" y1="281" x2="1090" y2="281" class="divider"/>
+ <path d="M780 110V147" class="arrow"/></g>
+<g v-if="reveal>=3" data-reveal-step="3"> <g v-for="(label,i) in ['Training','Validation','Final test']" :key="label" :transform="`translate(${25+i*365} 166)`"><rect width="335" height="82" :fill="['#dbe6e1','#f5dba0','#d8e5ec'][i]"/><text x="167" y="29" text-anchor="middle">{{label}}</text><text x="167" y="61" text-anchor="middle" class="small">Apply the same saved μ and σ</text></g>
+ <path d="M780 149H192V159M780 149H557V159M780 149H922V159" class="line"/></g>
+<g v-if="reveal>=4" data-reveal-step="4"> <line x1="25" y1="281" x2="1090" y2="281" class="divider"/>
  <text x="25" y="316" class="label">TARGET + PERSISTENCE</text><text x="330" y="317" class="mono">log10(XRS-B)</text><text x="590" y="317">Keep these in log-flux units.</text>
- <text x="25" y="363" class="small">Copy split["persistence"], not the standardized input tensor, for the baseline.</text>
+ <text x="25" y="363" class="small">Copy split["persistence"], not the standardized input tensor, for the baseline.</text></g>
 </g>
 <g v-else-if="mode==='error'">
  <text x="25" y="24" class="label">ARITHMETIC EXAMPLE · VALUES ARE NOT WORKSHOP RESULTS</text>
@@ -45,44 +45,44 @@ const samples=Array.from({length:60},(_,i)=>i)
  <g v-for="i in samples" :key="i"><rect :x="112+i*4" y="58" width="3" height="27" :fill="mode==='cnn'&&i>=22&&i<27?'#b57339':'#8fb2a4'"/><rect :x="112+i*4" y="95" width="3" height="27" :fill="mode==='cnn'&&i>=22&&i<27?'#b57339':'#52776d'"/></g>
  <text x="112" y="155" class="small">60 time samples →</text><text x="112" y="182" class="mono">shape: [2, 60]</text>
  <g v-if="mode==='mlp'">
-  <path d="M365 90H435" class="arrow"/><text x="495" y="49" text-anchor="middle">Flatten</text>
-  <g v-for="i in 12" :key="i"><rect :x="447+(i-1)%4*22" :y="65+Math.floor((i-1)/4)*22" width="16" height="16" :fill="i<7?'#8fb2a4':'#52776d'"/></g><text x="490" y="161" text-anchor="middle" class="small">120 values</text>
-  <g v-for="i in 5" :key="i"><line x1="543" :y1="72+(i-1)*12" x2="650" :y2="56+(i-1)*24" stroke="#aabbb2"/><circle cx="660" :cy="56+(i-1)*24" r="8" fill="#163c43"/></g>
-  <text x="660" y="201" text-anchor="middle">Linear → ReLU</text><text x="660" y="231" text-anchor="middle" class="small">width 16 or 32</text>
-  <path d="M685 105H880" class="arrow"/><circle cx="910" cy="105" r="18" fill="#f1ca70"/><text x="910" y="158" text-anchor="middle">Linear → 1 value</text><text x="910" y="189" text-anchor="middle" class="small">Future log XRS-B</text>
+<g v-if="reveal>=2" data-reveal-step="2">  <path d="M365 90H435" class="arrow"/><text x="495" y="49" text-anchor="middle">Flatten</text>
+  <g v-for="i in 12" :key="i"><rect :x="447+(i-1)%4*22" :y="65+Math.floor((i-1)/4)*22" width="16" height="16" :fill="i<7?'#8fb2a4':'#52776d'"/></g><text x="490" y="161" text-anchor="middle" class="small">120 values</text></g>
+<g v-if="reveal>=3" data-reveal-step="3">  <g v-for="i in 5" :key="i"><line x1="543" :y1="72+(i-1)*12" x2="650" :y2="56+(i-1)*24" stroke="#aabbb2"/><circle cx="660" :cy="56+(i-1)*24" r="8" fill="#163c43"/></g>
+  <text x="660" y="201" text-anchor="middle">Linear → ReLU</text><text x="660" y="231" text-anchor="middle" class="small">width 16 or 32</text></g>
+<g v-if="reveal>=4" data-reveal-step="4">  <path d="M685 105H880" class="arrow"/><circle cx="910" cy="105" r="18" fill="#f1ca70"/><text x="910" y="158" text-anchor="middle">Linear → 1 value</text><text x="910" y="189" text-anchor="middle" class="small">Future log XRS-B</text>
   <text x="25" y="298">Each hidden unit learns a weight for every channel and time position.</text>
-  <text x="25" y="355" class="mono">Flatten → Linear(120, width) → ReLU → Linear(width, 1)</text>
+  <text x="25" y="355" class="mono">Flatten → Linear(120, width) → ReLU → Linear(width, 1)</text></g>
  </g>
  <g v-else>
-  <rect x="197" y="49" width="27" height="82" fill="none" stroke="#b57339" stroke-width="3"/><path d="M365 90H420" class="arrow"/>
+<g v-if="reveal>=2" data-reveal-step="2">  <rect x="197" y="49" width="27" height="82" fill="none" stroke="#b57339" stroke-width="3"/><path d="M365 90H420" class="arrow"/>
   <text x="127" y="232" class="small">5-sample filter</text><text x="127" y="260" class="small">slides across time</text>
   <g v-for="i in 4" :key="i"><rect x="438" :y="55+(i-1)*29" width="218" height="20" :fill="i%2?'#bad8cd':'#52776d'"/></g>
-  <text x="545" y="201" text-anchor="middle" class="small">width channels × 60</text><text x="545" y="230" text-anchor="middle" class="small">padding = 2 · ReLU</text>
-  <path d="M670 105H730" class="arrow"/><text x="800" y="82" text-anchor="middle">Average over time</text><text x="800" y="119" text-anchor="middle" class="mono">[width, 1]</text><path d="M890 105H947" class="arrow"/><circle cx="985" cy="105" r="18" fill="#f1ca70"/><text x="985" y="161" text-anchor="middle">Linear → 1</text>
+  <text x="545" y="201" text-anchor="middle" class="small">width channels × 60</text><text x="545" y="230" text-anchor="middle" class="small">padding = 2 · ReLU</text></g>
+<g v-if="reveal>=3" data-reveal-step="3">  <path d="M670 105H730" class="arrow"/><text x="800" y="82" text-anchor="middle">Average over time</text><text x="800" y="119" text-anchor="middle" class="mono">[width, 1]</text></g><g v-if="reveal>=4" data-reveal-step="4"><path d="M890 105H947" class="arrow"/><circle cx="985" cy="105" r="18" fill="#f1ca70"/><text x="985" y="161" text-anchor="middle">Linear → 1</text>
   <text x="25" y="310">The same filter weights are reused at every time position.</text>
-  <text x="25" y="359" class="mono">Conv1d(2, width, 5, padding=2) → ReLU → AvgPool → Linear</text>
+  <text x="25" y="359" class="mono">Conv1d(2, width, 5, padding=2) → ReLU → AvgPool → Linear</text></g>
  </g>
 </g>
 <g v-else-if="mode==='training'">
  <text x="25" y="27" class="label">GOES TRAINING · REPEAT FOR EACH OPTIMIZER STEP</text>
  <text x="25" y="87">Training inputs</text><path d="M190 79H260" class="arrow"/><g transform="translate(280 44)"><rect width="180" height="87" fill="#163c43" rx="4"/><text x="90" y="34" text-anchor="middle" class="white">Forecast model</text><text x="90" y="65" text-anchor="middle" class="small white">current weights</text></g>
- <path d="M475 79H540" class="arrow"/><text x="565" y="87">Predictions</text><path d="M692 79H755" class="arrow"/><text x="830" y="69" text-anchor="middle">Squared training loss</text><text x="830" y="105" text-anchor="middle" class="mono">prediction vs target</text>
- <text x="830" y="182" text-anchor="middle">Training targets</text><path d="M830 153V122" class="arrow"/>
- <path d="M1000 80H1075V258H470" class="arrow"/><text x="790" y="242" text-anchor="middle" class="mono">loss.backward() → optimizer.step()</text>
- <path d="M445 258H370V145" class="arrow"/><text x="370" y="298" text-anchor="middle">Adam updates these weights</text>
- <text x="25" y="368" class="small">Validation runs model.eval() with no_grad(); its targets are scored outside candidate code.</text>
+ <path d="M475 79H540" class="arrow"/><text x="565" y="87">Predictions</text><g v-if="reveal>=2" data-reveal-step="2"><path d="M692 79H755" class="arrow"/><text x="830" y="69" text-anchor="middle">Squared training loss</text><text x="830" y="105" text-anchor="middle" class="mono">prediction vs target</text>
+ <text x="830" y="182" text-anchor="middle">Training targets</text><path d="M830 153V122" class="arrow"/></g>
+<g v-if="reveal>=3" data-reveal-step="3"> <path d="M1000 80H1075V258H470" class="arrow"/><text x="790" y="242" text-anchor="middle" class="mono">loss.backward() → optimizer.step()</text>
+ <path d="M445 258H370V145" class="arrow"/><text x="370" y="298" text-anchor="middle">Adam updates these weights</text></g>
+<g v-if="reveal>=4" data-reveal-step="4"> <text x="25" y="368" class="small">Validation runs model.eval() with no_grad(); its targets are scored outside candidate code.</text></g>
 </g>
 <g v-else-if="mode==='inference'">
  <text x="25" y="27" class="label">FINAL EVALUATION · NO FIT CALL OR OPTIMIZER STEP</text>
  <path d="M25 58H290L315 83V158H25Z" fill="#e7e3d7" stroke="#9bad9e"/><text x="45" y="98" class="mono">candidate.py + config</text><text x="45" y="134" class="small">The selected model structure</text>
  <g v-for="i in 12" :key="i"><rect :x="40+(i-1)%4*19" :y="211+Math.floor((i-1)/4)*19" width="15" height="15" :fill="i%3?'#52776d':'#bad8cd'"/></g><text x="140" y="236" class="mono">weights.pt</text><text x="140" y="269" class="small">Learned parameters</text>
- <path d="M330 106H430M330 244H430" class="arrow"/>
+<g v-if="reveal>=2" data-reveal-step="2"> <path d="M330 106H430M330 244H430" class="arrow"/>
  <rect x="449" y="68" width="300" height="223" rx="4" fill="#dbe6e1"/><text x="470" y="106" class="mono">model = build_model(...)</text><text x="470" y="151" class="mono">load_state_dict(weights)</text><text x="470" y="195" class="mono">model.eval()</text><text x="470" y="239" class="mono">torch.no_grad()</text><text x="470" y="271" class="small">predict reserved inputs</text>
- <text x="600" y="342" text-anchor="middle">Reserved-date inputs</text><path d="M600 314V301" class="arrow"/>
- <path d="M762 167H825" class="arrow"/><text x="842" y="175">Predictions</text><path d="M920 186V246" class="arrow"/>
- <text x="1090" y="235" text-anchor="end" class="small">Future targets</text><path d="M1050 244V264" class="arrow"/>
+ <text x="600" y="342" text-anchor="middle">Reserved-date inputs</text><path d="M600 314V301" class="arrow"/></g>
+<g v-if="reveal>=3" data-reveal-step="3"> <path d="M762 167H825" class="arrow"/><text x="842" y="175">Predictions</text><path d="M920 186V246" class="arrow"/></g>
+<g v-if="reveal>=4" data-reveal-step="4"> <text x="1090" y="235" text-anchor="end" class="small">Future targets</text><path d="M1050 244V264" class="arrow"/>
  <rect x="840" y="269" width="250" height="62" fill="#f1ca70" rx="4"/><text x="965" y="306" text-anchor="middle">Fixed scorer</text>
- <text x="25" y="382" class="small">Source and weights are separate inputs. Reserved targets enter only the scorer.</text>
+ <text x="25" y="382" class="small">Source and weights are separate inputs. Reserved targets enter only the scorer.</text></g>
 </g>
 <g v-else-if="mode==='records'">
  <path d="M25 45H180L205 70V218H25Z" fill="#e7e3d7" stroke="#9bad9e"/><text x="45" y="89" class="mono">candidate.py</text><text x="45" y="129" class="small">config + seed</text><text x="45" y="164" class="small">dataset version</text><text x="45" y="199" class="small">train/validation</text>
@@ -114,10 +114,10 @@ const samples=Array.from({length:60},(_,i)=>i)
 <g v-else-if="mode==='loss'">
  <text x="25" y="26" class="label">ARITHMETIC EXAMPLE · ONE PIXEL INSIDE THE MASK</text>
  <text x="40" y="94">Prediction = 0.5</text><text x="40" y="134">Target = 1.0</text><path d="M240 110H320" class="arrow"/><text x="345" y="113" class="mono">error = −0.5</text>
- <path d="M535 110C600 110 590 68 660 68M535 110C600 110 590 232 660 232" class="arrow"/>
- <text x="690" y="75" class="mono">square(−0.5) = 0.25</text><text x="690" y="113" class="small">Starting training loss</text><text x="690" y="146" class="small">Its gradient updates weights</text>
- <text x="690" y="238" class="mono">abs(−0.5) = 0.5</text><text x="690" y="276" class="small">Fixed evaluation error</text><text x="690" y="309" class="small">Used to compare every candidate</text>
- <text x="25" y="366" class="small">The agent can change the training loss. It cannot change how evaluation error is calculated.</text>
+<g v-if="reveal>=2" data-reveal-step="2"> <path d="M535 110C600 110 590 68 660 68M535 110C600 110 590 232 660 232" class="arrow"/>
+ <text x="690" y="75" class="mono">square(−0.5) = 0.25</text><text x="690" y="113" class="small">Starting training loss</text><text x="690" y="146" class="small">Its gradient updates weights</text></g>
+<g v-if="reveal>=3" data-reveal-step="3"> <text x="690" y="238" class="mono">abs(−0.5) = 0.5</text><text x="690" y="276" class="small">Fixed evaluation error</text><text x="690" y="309" class="small">Used to compare every candidate</text>
+ <text x="25" y="366" class="small">The agent can change the training loss. It cannot change how evaluation error is calculated.</text></g>
 </g>
 </svg></template>
 <style scoped>

@@ -91,23 +91,45 @@ try {
         const description = svg.getAttribute('aria-label') || svg.querySelector('title,desc')?.textContent || '';
         return {description, clippedLabels, overlappingLabels};
       });
-      const textProblems = [], walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      const textProblems = [], textOverflow = [], walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
       while (walker.nextNode()) {
         const node = walker.currentNode, parent = node.parentElement;
         if (!parent || !visible(parent) || parent.closest('script,style,pre,code')) continue;
         const range = document.createRange(); range.selectNodeContents(node);
-        if (![...range.getClientRects()].some(rect => rect.width && rect.height)) continue;
+        const lines = [...range.getClientRects()].filter(rect => rect.width && rect.height);
+        if (!lines.length) continue;
         const text = node.textContent.trim();
+        // Element bounds can fit while an unwrapped text line extends beyond them.
+        // SVG label bounds are checked above; code has its own scroll checks.
+        if (text && !parent.closest('svg')) {
+          for (const rect of lines) {
+            if (rect.left < box.left - 2 || rect.right > box.right + 2 || rect.top < box.top - 2 || rect.bottom > box.bottom - 12) {
+              textOverflow.push({text:text.slice(0,160),x:rect.x,y:rect.y,width:rect.width,height:rect.height});
+              break;
+            }
+            // Also detect text cropped by a nearer overflow container.
+            for (let ancestor = parent; ancestor && ancestor !== root; ancestor = ancestor.parentElement) {
+              const style = getComputedStyle(ancestor), clip = ancestor.getBoundingClientRect();
+              const horizontal = /hidden|clip|auto|scroll/.test(style.overflowX);
+              const vertical = /hidden|clip|auto|scroll/.test(style.overflowY);
+              if ((horizontal && (rect.left < clip.left - 2 || rect.right > clip.right + 2)) ||
+                  (vertical && (rect.top < clip.top - 2 || rect.bottom > clip.bottom + 2))) {
+                textOverflow.push({text:text.slice(0,160),container:ancestor.className,error:'Text clipped by its container'});
+                break;
+              }
+            }
+          }
+        }
         if (/\uFFFD|\uFFFC|`|\*\*[^*]+\*\*|\[[^\]\n]+\]\(https?:|\{\{[^}]+\}\}/.test(text)) {
           textProblems.push(text.slice(0,200));
         }
       }
       const clippedCode = [...root.querySelectorAll('pre')].filter(visible).filter(element => element.scrollWidth > element.clientWidth + 2 || element.scrollHeight > element.clientHeight + 2).map(element => element.textContent.slice(0,200));
-      return {title:expected, overflow, diagrams, textProblems, clippedCode, missingImages:[...root.querySelectorAll('img')].filter(image => !image.complete || !image.naturalWidth).map(image => image.src)};
+      return {title:expected, overflow, diagrams, textProblems, textOverflow, clippedCode, missingImages:[...root.querySelectorAll('img')].filter(image => !image.complete || !image.naturalWidth).map(image => image.src)};
     }, slide.title);
     if (currentClick === 0) titles.push({number:slide.number, key:slide.key, title:result.title});
     clickStates.push({slide:slide.number, click:currentClick});
-    if (result.overflow.length || result.missingImages.length || result.textProblems.length || result.clippedCode.length || result.diagrams.some(diagram => !diagram.description || diagram.clippedLabels.length || diagram.overlappingLabels.length)) issues.push({slide:slide.number, click:currentClick, ...result});
+    if (result.overflow.length || result.missingImages.length || result.textProblems.length || result.textOverflow.length || result.clippedCode.length || result.diagrams.some(diagram => !diagram.description || diagram.clippedLabels.length || diagram.overlappingLabels.length)) issues.push({slide:slide.number, click:currentClick, ...result});
     const suffix = currentClick ? `-click-${currentClick}` : '';
     await page.screenshot({path:path.join(output, `${String(slide.number).padStart(3,'0')}${suffix}.png`)});
     await page.keyboard.press('ArrowRight');

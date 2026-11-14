@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[inspection] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.6.0/forge_workshop_kit-0.6.0-py3-none-any.whl",
+#   "forge-workshop-kit[inspection] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.6.1/forge_workshop_kit-0.6.1-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -170,7 +170,7 @@ def _(get_lab, get_step, go_to, mo, teaching, ui):
 @app.cell(hide_code=True)
 def _(get_step, mo, ui):
     mo.stop(get_step() != "setup")
-    mo.vstack([mo.Html(ui.heading("Find defective parts before they ship", "You’re joining a fictional circuit-board inspection team. A missed defect can leave the factory; a false alarm sends a usable board for another inspection. Your job is to compare both outcomes before choosing a detector.", theme="inspection")),
+    mo.vstack([mo.md("**4-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/inspection/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Find defective parts before they ship", "You’re joining a fictional circuit-board inspection team. A missed defect can leave the factory; a false alarm sends a usable board for another inspection. Your job is to compare both outcomes before choosing a detector.", theme="inspection")),
     mo.md("The photographs are real **VisA PCB1** observations, released by the SPot-the-Difference authors under CC BY 4.0. They show one circuit-board family, with normal and defective examples and pixel masks identifying annotated defects. We’ll use the authors’ supervised split. The final 442 boards stay outside training and threshold selection."),
     mo.md("We’ll first compress each photograph into one feature vector. Then we’ll keep local patch information to see whether small defects become easier to detect. You’ll choose a review batch, train again, freeze a threshold, and check missed defects, false alarms, and review workload separately. A factory pilot would need more products and operating conditions than this teaching set."),
     mo.md("The recorded follow-up improved average precision from **0.8729 to 0.8857**, with misses falling from 4 to 3 and false alarms from 23 to 18. It was a teaching retest of images already inspected during a failed first recipe. Your own run may differ; don’t select a model by looking at its final-test result.")])

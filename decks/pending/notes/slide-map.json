@@ -1,6 +1,81 @@
 {
-  "total_slides": 85,
-  "main_slides": 80,
+  "duration_minutes": 240,
+  "total_slides": 95,
+  "main_slides": 90,
+  "sections": [
+    {
+      "anchor": "cover",
+      "title": "Understand the task and harness",
+      "start_minute": 0,
+      "duration_minutes": 20
+    },
+    {
+      "anchor": "copy",
+      "title": "Connect and instrument",
+      "start_minute": 20,
+      "duration_minutes": 20
+    },
+    {
+      "anchor": "invoice",
+      "title": "Implement the tool and observation handoff",
+      "start_minute": 40,
+      "duration_minutes": 30
+    },
+    {
+      "anchor": "break-one",
+      "title": "Break",
+      "start_minute": 70,
+      "duration_minutes": 10
+    },
+    {
+      "anchor": "model-span",
+      "title": "Inspect MCP and recover from a timeout",
+      "start_minute": 80,
+      "duration_minutes": 25
+    },
+    {
+      "anchor": "checks",
+      "title": "Score the work and edit one procedure",
+      "start_minute": 105,
+      "duration_minutes": 30
+    },
+    {
+      "anchor": "break",
+      "title": "Break",
+      "start_minute": 135,
+      "duration_minutes": 10
+    },
+    {
+      "anchor": "editor",
+      "title": "Propose, probe and compose",
+      "start_minute": 145,
+      "duration_minutes": 40
+    },
+    {
+      "anchor": "between-rounds",
+      "title": "Carry a lesson into the next task",
+      "start_minute": 185,
+      "duration_minutes": 25
+    },
+    {
+      "anchor": "freeze",
+      "title": "Evaluate frozen harnesses",
+      "start_minute": 210,
+      "duration_minutes": 20
+    },
+    {
+      "anchor": "report",
+      "title": "Explain the result",
+      "start_minute": 230,
+      "duration_minutes": 10
+    },
+    {
+      "anchor": "answer-tool",
+      "title": "Worked answers",
+      "start_minute": 240,
+      "duration_minutes": 0
+    }
+  ],
   "slides": [
     {
       "number": 1,
@@ -8,6 +83,20 @@
       "title": "Please improve<br>yourself.",
       "kind": "cover",
       "notes": "We will implement an agent that can inspect an account, refund a duplicate charge, and provision access. Then we will instrument and evaluate its work before asking an editor agent to revise its instructions. Pending, Inc. and its accounts are fictional; the Python tools, model requests, traces, and evaluations run in your own project.",
+      "concept": "Please improve yourself",
+      "exercise": {
+        "step": "1 \u00b7 Connect and trace"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/harness.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Understand the task and harness",
+        "start_minute": 0,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
@@ -16,6 +105,20 @@
       "title": "You\u2019re adding an agent to the support team.",
       "kind": "opening-story",
       "notes": "Set the context before naming the harness. We are building a support agent that can change account state, so a plausible reply is not enough. The company and customer accounts are fictional. The Python operations, model requests, traces, and checks are real workshop code. The one-page handbook is an opening illustration, not the measured starting harness. Participants will build and test the starting version before comparing changes.",
+      "concept": "You\u2019re adding an agent to the support team",
+      "exercise": {
+        "step": "1 \u00b7 Connect and trace"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/harness.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Understand the task and harness",
+        "start_minute": 0,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
@@ -24,6 +127,20 @@
       "title": "Acme wants a duplicate $49 charge refunded.",
       "kind": "opening-story",
       "notes": "Source: cases.py, double-charge. Its mission explicitly says to keep pay-1 and refund the duplicate. Both pay-1 and pay-2 are captured 4900-cent payments for inv-1, and refunds starts empty. Ask what must be read before changing anything: the account identity, invoice identity, payment identity and existing refunds. Another account also has inv-1, so searching by invoice alone is insufficient. No real payment service is connected.",
+      "concept": "Acme wants a duplicate $49 charge refunded",
+      "exercise": {
+        "step": "1 \u00b7 Connect and trace"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/harness.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Understand the task and harness",
+        "start_minute": 0,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
@@ -32,6 +149,20 @@
       "title": "Check the account after the agent says it has finished.",
       "kind": "explanation",
       "notes": "Read the desired outcome from left to right. The tool appends one full 4900-cent refund for pay-2. Both captured payment records remain; there is no modeled account balance or payment deletion. The independent scorer compares the whole resulting account with the expected account and checks that the requested work was completed. A separate LLM judge compares the employee\u2019s explanation with its recorded actions. A reply saying the refund is complete cannot create a missing refund or excuse a duplicate. These are expected fixture states, not recorded performance results.",
+      "concept": "Check the account after the agent says it has finished",
+      "exercise": {
+        "step": "1 \u00b7 Connect and trace"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/harness.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Understand the task and harness",
+        "start_minute": 0,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
@@ -40,6 +171,20 @@
       "title": "Fern needs Alex added to its account.",
       "kind": "explanation",
       "notes": "Source: cases.py, missing-seat, and simulator.py, provision_timeout_after_commit. Fern starts active and paid, with members empty. The requested email is alex@example.test and the requested role is member. The first provisioning write commits before the injected timeout is returned. From the timeout alone, the agent cannot establish whether access exists; onboarding_status can read the account. The expected final state contains exactly one matching membership, with unrelated state unchanged. This is a separate development case from Acme, not the same account continued into another task. The later MCP and timeout exercises show the implementation and recovery choices.",
+      "concept": "Fern needs Alex added to its account",
+      "exercise": {
+        "step": "1 \u00b7 Connect and trace"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/harness.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Understand the task and harness",
+        "start_minute": 0,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
@@ -48,6 +193,20 @@
       "title": "Our dataset is six tickets with resettable account records.",
       "kind": "explanation",
       "notes": "The dataset is executable teaching fixtures in cases.py, not a collection of historical customer chats. The two development cases let us explain and test the mechanics. The four final cases vary the billing or access situation; their expected outcomes and grader output stay outside improvement prompts. Source files are public, so learners can inspect them, but the final comparison is only informative if we stop choosing edits before running it. Every candidate starts with the same initial account state; one candidate\u2019s refund cannot carry into another candidate\u2019s test. We will first write an instruction change ourselves, then ask an editor agent to propose and test alternatives. The research question in this small workshop is whether those changes affect correct work on fresh tickets. Six cases do not establish production reliability.",
+      "concept": "Our dataset is six tickets with resettable account records",
+      "exercise": {
+        "step": "1 \u00b7 Connect and trace"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/harness.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Understand the task and harness",
+        "start_minute": 0,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
@@ -55,31 +214,87 @@
       "key": "schedule",
       "title": "Implement the agent, evaluate it, then test harness changes.",
       "kind": "explanation",
-      "notes": "This is the three-hour Pending schedule. Allow 15 minutes at the end for final comparison and discussion. Keep extra implementation detail in worked answers.",
+      "notes": "One four-hour session. The schedule includes two ten-minute breaks and hands-on coding. Foundations precede implementation; worked answers are linked for help, not additional required work. Allow final comparisons to finish from saved stages if provider latency is high. Never call a replay the attendee's execution.",
+      "concept": "Implement the agent, evaluate it, then test harness changes",
+      "exercise": {
+        "step": "1 \u00b7 Connect and trace"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/harness.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Understand the task and harness",
+        "start_minute": 0,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
       "number": 8,
-      "key": "harness-0",
-      "title": "The executor dispatches the model\u2019s selected action.",
+      "key": "harness-inputs",
+      "title": "The harness builds the request the model receives.",
       "kind": "explanation",
-      "notes": "For this ticket, the model might choose lookup_invoice, then refund_payment. It returns an action name and arguments. Python decides which function handles that action, and the tool changes the simulated account. The model does not directly mutate the account dictionary.",
+      "notes": "Point to the system text, tool guide, installed skill names and customer ticket. Ask which item would change if the participant edited instructions. A skill name advertises a procedure; its contents have not yet entered the request.",
+      "concept": "The harness builds the request the model receives",
+      "exercise": {
+        "step": "1 \u00b7 Connect and trace"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/harness.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Understand the task and harness",
+        "start_minute": 0,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
       "number": 9,
-      "key": "harness-1",
-      "title": "Instructions define how the agent should handle the ticket.",
+      "key": "harness-execution",
+      "title": "Python executes the action and returns its result.",
       "kind": "explanation",
-      "notes": "The harness is the code and instructions around the model. It controls the request we send, the actions we allow, and the checks we require. We can revise these pieces while using the same model. In our comparison, the dispatcher and tools stay fixed after we test them.",
+      "notes": "Keep the request in place. Reveal the selected action and the Python dispatcher. The model produces JSON; the runtime decides which function to call. Follow the returning arrow to my_observation. This is the mechanism we will implement, not a provider-native function-calling example.",
+      "concept": "Python executes the action and returns its result",
+      "exercise": {
+        "step": "1 \u00b7 Connect and trace"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/harness.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Understand the task and harness",
+        "start_minute": 0,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
       "number": 10,
-      "key": "harness-2",
-      "title": "Reading a skill adds its procedure to the conversation.",
+      "key": "harness-edit-boundary",
+      "title": "Different edits change different parts of the agent.",
       "kind": "explanation",
-      "notes": "A saved skill has no effect until the executor supplies it to the model. Here the agent can call read_skill; the returned procedure enters the same conversation as other tool results. Agent Lens lets us check whether the skill was read and what the model did afterward.",
+      "notes": "Use the table to distinguish behavior changes. The model is fixed; it is not retrained when instructions change. The learner develops tools and the loop before the baseline. The later editor cannot rewrite those frozen functions. Ask whether editing an unused skill can explain a changed outcome.",
+      "concept": "Different edits change different parts of the agent",
+      "exercise": {
+        "step": "1 \u00b7 Connect and trace"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/harness.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Understand the task and harness",
+        "start_minute": 0,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
@@ -88,6 +303,22 @@
       "title": "Copy the notebook into your own project.",
       "kind": "explanation",
       "notes": "Use the current template, never the historical November 12 gateway notebook. An external account requires its own project, notebook compute access and inference access. Setup does not issue a model request.",
+      "concept": "Copy the notebook into your own project",
+      "exercise": {
+        "step": "1 \u00b7 Connect and trace"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-lookup.png"
+      ],
+      "timing": {
+        "section": "Connect and instrument",
+        "start_minute": 20,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
@@ -96,6 +327,22 @@
       "title": "The same notebook runs on a laptop.",
       "kind": "explanation",
       "notes": "These commands correspond to the kit README and locked pending extra. Do not send participants to old start.py or office_notebook.py. Inference uses their own access and billing. Windows supports the same uv commands.",
+      "concept": "The same notebook runs on a laptop",
+      "exercise": {
+        "step": "1 \u00b7 Connect and trace"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-lookup.png"
+      ],
+      "timing": {
+        "section": "Connect and instrument",
+        "start_minute": 20,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
@@ -104,6 +351,25 @@
       "title": "Check where your work will be saved.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Check my project and restore saved work.",
+      "concept": "Check where your work will be saved",
+      "exercise": {
+        "step": "1 \u00b7 Connect and trace",
+        "change": "Check the detected project. Choose your inference allowance, which defaults to $8. Notebook compute is billed separately.",
+        "run": "Check my project and restore saved work",
+        "check": "Your project is correct. Read the separate access, tracing, and publication statuses."
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-lookup.png"
+      ],
+      "timing": {
+        "section": "Connect and instrument",
+        "start_minute": 20,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
@@ -112,6 +378,22 @@
       "title": "Save an operation\u2019s inputs, output, and timing.",
       "kind": "explanation",
       "notes": "The event helper runs the supplied function and returns two objects. result is what the caller needs; record describes the operation with its arguments, output, timing, and any error. We save that record before exporting a trace. If export fails, we can send the saved record again without repeating a refund or another model request.",
+      "concept": "Save an operation\u2019s inputs, output, and timing",
+      "exercise": {
+        "step": "1 \u00b7 Connect and trace"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-lookup.png"
+      ],
+      "timing": {
+        "section": "Connect and instrument",
+        "start_minute": 20,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
@@ -120,6 +402,22 @@
       "title": "Export the saved operation as an Agent Lens span.",
       "kind": "explanation",
       "notes": "Map each field to the record from the previous slide. Tool creates a span with the operation name, inputs, output, and timestamps; record_error attaches the recorded failure. This function exports an event that already happened. The full notebook function returns its span identity so the execution can link back to Agent Lens.",
+      "concept": "Export the saved operation as an Agent Lens span",
+      "exercise": {
+        "step": "1 \u00b7 Connect and trace"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-lookup.png"
+      ],
+      "timing": {
+        "section": "Connect and instrument",
+        "start_minute": 20,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
@@ -128,6 +426,25 @@
       "title": "Add an environment field and inspect it in Agent Lens.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Run this check and verify my Agent Lens trace.",
+      "concept": "Add an environment field and inspect it in Agent Lens",
+      "exercise": {
+        "step": "1 \u00b7 Connect and trace",
+        "change": "In the inspect_notebook operation, return one more environment field. Read my_tool_span and my_model_span to see how operations become spans.",
+        "run": "Run this check and verify my Agent Lens trace",
+        "check": "Open inspect_notebook. Find your field and compare its value with the returned dictionary."
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-lookup.png"
+      ],
+      "timing": {
+        "section": "Connect and instrument",
+        "start_minute": 20,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
@@ -136,6 +453,22 @@
       "title": "Inspect the account requested by this tool call.",
       "kind": "explanation",
       "notes": "Verified v0.3.0 baseline billing tool span get_account. The model chose get_account in this run; do not claim it chose the learner-authored lookup_invoice. Local checks exercise that authored tool separately. This early screenshot teaches the native inspection surface; participants should open their own setup trace.",
+      "concept": "Inspect the account requested by this tool call",
+      "exercise": {
+        "step": "1 \u00b7 Connect and trace"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-lookup.png"
+      ],
+      "timing": {
+        "section": "Connect and instrument",
+        "start_minute": 20,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
@@ -144,6 +477,22 @@
       "title": "Check which account records the model received.",
       "kind": "explanation",
       "notes": "Enlarged native crop x580,y245,w690,h445. Saved get_account, not lookup_invoice. Do not infer that the model called the authored lookup tool; this example teaches the same span fields participants instrumented.",
+      "concept": "Check which account records the model received",
+      "exercise": {
+        "step": "1 \u00b7 Connect and trace"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-lookup.png"
+      ],
+      "timing": {
+        "section": "Connect and instrument",
+        "start_minute": 20,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
@@ -152,6 +501,20 @@
       "title": "The tool reads one invoice from one account.",
       "kind": "explanation",
       "notes": "The case is simulated but the logic is ordinary application code. Another account also has inv-1, so filtering payments without selecting the account is a real mistake the checks can catch.",
+      "concept": "The tool reads one invoice from one account",
+      "exercise": {
+        "step": "2\u20133 \u00b7 Tools and observations"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Implement the tool and observation handoff",
+        "start_minute": 40,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
@@ -160,7 +523,24 @@
       "title": "Write the invoice lookup.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my invoice lookup.",
-      "answer": 81
+      "concept": "Write the invoice lookup",
+      "exercise": {
+        "step": "2 \u00b7 Build an invoice tool",
+        "change": "Complete my_invoice_tool(state, account_id, invoice_id). Select the account, filter its payments by invoice_id, and return its refunds too.",
+        "run": "Test my invoice lookup",
+        "check": "The requested invoice, missing invoice, and other-account checks pass. Account state stays unchanged."
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Implement the tool and observation handoff",
+        "start_minute": 40,
+        "duration_minutes": 30
+      },
+      "answer": 91
     },
     {
       "number": 21,
@@ -168,6 +548,20 @@
       "title": "Connect the action schema to your Python function.",
       "kind": "explanation",
       "notes": "The model sees an action schema that names lookup_invoice and its account_id and invoice_id arguments. That schema alone cannot read an account. Your dispatch function connects the selected name to the Python implementation. This workshop uses local Python for the tool and real local MCP for onboarding.",
+      "concept": "Connect the action schema to your Python function",
+      "exercise": {
+        "step": "2\u20133 \u00b7 Tools and observations"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Implement the tool and observation handoff",
+        "start_minute": 40,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
@@ -176,6 +570,20 @@
       "title": "Start with the customer\u2019s request.",
       "kind": "explanation",
       "notes": "Same objects and positions across these five frames. Show the actual action/result connection. This is an explanatory diagram based on the public fixture, not a claimed replay of every recorded run.",
+      "concept": "Start with the customer\u2019s request",
+      "exercise": {
+        "step": "2\u20133 \u00b7 Tools and observations"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Implement the tool and observation handoff",
+        "start_minute": 40,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
@@ -184,6 +592,20 @@
       "title": "The model chooses an action and its arguments.",
       "kind": "explanation",
       "notes": "Same objects and positions across these five frames. Show the actual action/result connection. This is an explanatory diagram based on the public fixture, not a claimed replay of every recorded run.",
+      "concept": "The model chooses an action and its arguments",
+      "exercise": {
+        "step": "2\u20133 \u00b7 Tools and observations"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Implement the tool and observation handoff",
+        "start_minute": 40,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
@@ -192,6 +614,20 @@
       "title": "Your dispatcher calls the Python function.",
       "kind": "explanation",
       "notes": "Same objects and positions across these five frames. Show the actual action/result connection. This is an explanatory diagram based on the public fixture, not a claimed replay of every recorded run.",
+      "concept": "Your dispatcher calls the Python function",
+      "exercise": {
+        "step": "2\u20133 \u00b7 Tools and observations"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Implement the tool and observation handoff",
+        "start_minute": 40,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
@@ -200,6 +636,20 @@
       "title": "The function returns the account records.",
       "kind": "explanation",
       "notes": "Same objects and positions across these five frames. Show the actual action/result connection. This is an explanatory diagram based on the public fixture, not a claimed replay of every recorded run.",
+      "concept": "The function returns the account records",
+      "exercise": {
+        "step": "2\u20133 \u00b7 Tools and observations"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Implement the tool and observation handoff",
+        "start_minute": 40,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
@@ -208,6 +658,20 @@
       "title": "Put those records into the next request.",
       "kind": "explanation",
       "notes": "Same objects and positions across these five frames. Show the actual action/result connection. This is an explanatory diagram based on the public fixture, not a claimed replay of every recorded run.",
+      "concept": "Put those records into the next request",
+      "exercise": {
+        "step": "2\u20133 \u00b7 Tools and observations"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Implement the tool and observation handoff",
+        "start_minute": 40,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
@@ -216,6 +680,20 @@
       "title": "Dispatch lookup_invoice to your function.",
       "kind": "explanation",
       "notes": "Trace two inputs through this function. lookup_invoice calls the participant function and returns the same world with its lookup result. get_account takes the existing call_tool path. Both return a pair of account state and observation, so the caller can append the observation consistently. A write tool may return changed state.",
+      "concept": "Dispatch lookup_invoice to your function",
+      "exercise": {
+        "step": "2\u20133 \u00b7 Tools and observations"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Implement the tool and observation handoff",
+        "start_minute": 40,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
@@ -224,7 +702,24 @@
       "title": "Append the action and its result to the next request.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my tool-to-model handoff.",
-      "answer": 82
+      "concept": "Append the action and its result to the next request",
+      "exercise": {
+        "step": "3 \u00b7 Pass observations to the agent",
+        "change": "Complete my_dispatch and my_observation. Append the action and actual result to a new message list, keeping the previous request unchanged.",
+        "run": "Test my tool-to-model handoff",
+        "check": "Open the four handoff tabs. Match the action, Python arguments, returned payments, and two appended messages."
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Implement the tool and observation handoff",
+        "start_minute": 40,
+        "duration_minutes": 30
+      },
+      "answer": 92
     },
     {
       "number": 29,
@@ -232,454 +727,1617 @@
       "title": "Include the tool observation in the conversation history.",
       "kind": "explanation",
       "notes": "The model cannot see a Python return value unless the executor includes it in a later request. Append the chosen action and its result to a new list so the previous request stays available for inspection. This executor uses JSON actions and a user message containing the observation; it is not using the OpenAI tool-message protocol.",
+      "concept": "Include the tool observation in the conversation history",
+      "exercise": {
+        "step": "2\u20133 \u00b7 Tools and observations"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Implement the tool and observation handoff",
+        "start_minute": 40,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
       "number": 30,
-      "key": "starting",
-      "title": "Test the starting harness on billing and onboarding.",
-      "kind": "exercise",
-      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Freeze this executor and run the two starting tickets.",
+      "key": "history-not-training",
+      "title": "A tool result changes the next request, not the weights.",
+      "kind": "explanation",
+      "notes": "Ask a participant to locate the returned payments in the saved next request. This is in-context information available to the next model call. No optimizer or weight update occurs. Reuse this distinction when we introduce the editor.",
+      "concept": "A tool result changes the next request, not the weights",
+      "exercise": {
+        "step": "2\u20133 \u00b7 Tools and observations"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Implement the tool and observation handoff",
+        "start_minute": 40,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
       "number": 31,
-      "key": "model-span",
-      "title": "Record each model request and its response.",
-      "kind": "explanation",
-      "notes": "The LLM span records the requested and returned model identities, input and output messages, timing, settings, and available usage. Entering the span context creates and closes the recorded span; constructing the object alone is insufficient. Open my_model_span for the full message mapping and usage handling; this slide abbreviates the comprehensions. Add usage only when the provider returned it. In Agent Lens, find the request after an account lookup and verify that its input contains the returned payments.",
+      "key": "starting",
+      "title": "Test the starting harness on billing and onboarding.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Freeze this executor and run the two starting tickets.",
+      "concept": "Test the starting harness on billing and onboarding",
+      "exercise": {
+        "step": "3 \u00b7 Pass observations to the agent",
+        "change": "Read the employee instructions, then run the two development cases. We will keep your tested dispatcher and tools fixed while comparing changes to the harness.",
+        "run": "Freeze this executor and run the two starting tickets",
+        "check": "Open a billing run and onboarding run. Follow one tool result into the next model call."
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Implement the tool and observation handoff",
+        "start_minute": 40,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
       "number": 32,
-      "key": "onboarding",
-      "title": "Provision Alex\u2019s membership through the MCP tools.",
+      "key": "break-one",
+      "title": "Take ten minutes before investigating the timeout.",
       "kind": "explanation",
-      "notes": "Use the local MCP implementation in pending/mcp_server.py. Distinguish actual protocol discovery and invocation from a function merely named MCP. The simulated service deliberately commits a write before returning a timeout in the development incident.",
+      "notes": "Save at 70 minutes. The first break occurs after the two starting cases. Leave the project and next step visible. Reopening the notebook does not execute either case again.",
+      "concept": "Take ten minutes before investigating the timeout",
+      "exercise": {
+        "step": ""
+      },
+      "source": [
+        "scripts/pending_cells.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Break",
+        "start_minute": 70,
+        "duration_minutes": 10
+      },
       "answer": null
     },
     {
       "number": 33,
-      "key": "timeout-1",
-      "title": "An access request is sent.",
+      "key": "model-span",
+      "title": "Record each model request and its response.",
       "kind": "explanation",
-      "notes": "Explanatory sequence for the committed-write timeout fixture. Use the recorded native trace next to verify the actual recovery. The actual onboarding_status tool reads account_id. A repeated mutation must reuse its operation_id.",
+      "notes": "The LLM span records the requested and returned model identities, input and output messages, timing, settings, and available usage. Entering the span context creates and closes the recorded span; constructing the object alone is insufficient. Open my_model_span for the full message mapping and usage handling; this slide abbreviates the comprehensions. Add usage only when the provider returned it. In Agent Lens, find the request after an account lookup and verify that its input contains the returned payments.",
+      "concept": "Record each model request and its response",
+      "exercise": {
+        "step": "3 \u00b7 Pass observations to the agent"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-timeout.png"
+      ],
+      "timing": {
+        "section": "Inspect MCP and recover from a timeout",
+        "start_minute": 80,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 34,
-      "key": "timeout-2",
-      "title": "Provisioning commits before its response times out.",
+      "key": "mcp-initialize",
+      "title": "The executor starts a local MCP session.",
       "kind": "explanation",
-      "notes": "Explanatory sequence for the committed-write timeout fixture. Use the recorded native trace next to verify the actual recovery. The actual onboarding_status tool reads account_id. A repeated mutation must reuse its operation_id.",
+      "notes": "MCP is the interface between this Python client and the onboarding service. Here the service is a local subprocess communicating over stdio. There is no gateway or remote Sandbox requirement. A new action starts a session against the saved office state.",
+      "concept": "The executor starts a local MCP session",
+      "exercise": {
+        "step": "3 \u00b7 Pass observations to the agent"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-timeout.png"
+      ],
+      "timing": {
+        "section": "Inspect MCP and recover from a timeout",
+        "start_minute": 80,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 35,
-      "key": "timeout-3",
-      "title": "Read account access before retrying the write.",
+      "key": "mcp-discover",
+      "title": "Discovery returns tool names and input schemas.",
       "kind": "explanation",
-      "notes": "Explanatory sequence for the committed-write timeout fixture. Use the recorded native trace next to verify the actual recovery. The actual onboarding_status tool reads account_id. A repeated mutation must reuse its operation_id.",
+      "notes": "list_tools returns the actual schema for onboarding_status and provision_member. The discover_onboarding action exposes those records to the model. A schema describes accepted arguments; it does not grant access or execute a write.",
+      "concept": "Discovery returns tool names and input schemas",
+      "exercise": {
+        "step": "3 \u00b7 Pass observations to the agent"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-timeout.png"
+      ],
+      "timing": {
+        "section": "Inspect MCP and recover from a timeout",
+        "start_minute": 80,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 36,
-      "key": "retry-identity",
-      "title": "A stable operation_id prevents a repeated write.",
+      "key": "mcp-invoke",
+      "title": "Call the discovered tool with the selected arguments.",
       "kind": "explanation",
-      "notes": "In notebook step 3, use the free local timeout practice. Predict the member count, trigger the timeout, and compare reading status with same-ID and new-ID retries. Reset between alternatives. This uses Python only, changes no saved employee run, and makes no model request. Illustration of simulator.execute after a committed provisioning request. The same operation_id and identical arguments return the stored receipt with replayed=true. A new operation_id is a new mutation and can add a duplicate membership. Reusing an ID with different arguments is rejected. The recorded onboarding recovery read status instead of retrying, so this diagram explains tool behavior rather than claiming this branch occurred in that run.",
+      "notes": "The call supplies account_id, email, role and operation_id. The MCP server calls the same office simulator used in our checks. The simulated write can commit before a timeout result comes back.",
+      "concept": "Call the discovered tool with the selected arguments",
+      "exercise": {
+        "step": "3 \u00b7 Pass observations to the agent"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-timeout.png"
+      ],
+      "timing": {
+        "section": "Inspect MCP and recover from a timeout",
+        "start_minute": 80,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 37,
-      "key": "repair-retry",
-      "title": "Repair the retry in Python.",
-      "kind": "exercise",
-      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Compare the two retry procedures.",
+      "key": "mcp-return",
+      "title": "Read the returned observation before deciding what to do next.",
+      "kind": "explanation",
+      "notes": "The server returns JSON and saves office.json. The executor reloads that state and my_observation adds the result to the conversation. A timed-out result and unchanged client expectations cannot establish that the server did nothing.",
+      "concept": "Read the returned observation before deciding what to do next",
+      "exercise": {
+        "step": "3 \u00b7 Pass observations to the agent"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-timeout.png"
+      ],
+      "timing": {
+        "section": "Inspect MCP and recover from a timeout",
+        "start_minute": 80,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 38,
-      "key": "repair-result",
-      "title": "One retry policy changes the account twice.",
+      "key": "mcp-code",
+      "title": "Discovery and execution are separate client calls.",
       "kind": "explanation",
-      "notes": "Source evidence/pending-retry-repair.json. Both execute the same committed-write timeout from fresh state. Distinguish this participant-written Python repair from the later instructions-only comparison. Ask participants to open their recovery trace and find the repeated operation ID.",
+      "notes": "This is the exact client control flow inside mcp_action, with the surrounding context managers omitted. Ask which branch can discover tools without invoking a mutation, and which branch parses a tool response. This is explanatory code, not an additional exercise or model call.",
+      "concept": "Discovery and execution are separate client calls",
+      "exercise": {
+        "step": "3 \u00b7 Pass observations to the agent"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-timeout.png"
+      ],
+      "timing": {
+        "section": "Inspect MCP and recover from a timeout",
+        "start_minute": 80,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 39,
-      "key": "timeout-screen",
-      "title": "Inspect the timeout and the following status check.",
+      "key": "timeout-1",
+      "title": "An access request is sent.",
       "kind": "explanation",
-      "notes": "v0.3.0 skill-loaded onboarding: timeout span 5ddd78b1e9faa2d3; recovery status span e62596437e485145. Ask a learner to find evidence that access exists. Do not infer failure from a red span alone.",
+      "notes": "Explanatory sequence for the committed-write timeout fixture. Use the recorded native trace next to verify the actual recovery. The actual onboarding_status tool reads account_id. A repeated mutation must reuse its operation_id.",
+      "concept": "An access request is sent",
+      "exercise": {
+        "step": "3 \u00b7 Pass observations to the agent"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-timeout.png"
+      ],
+      "timing": {
+        "section": "Inspect MCP and recover from a timeout",
+        "start_minute": 80,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 40,
-      "key": "timeout-detail",
-      "title": "The tool says the write may have committed.",
+      "key": "timeout-2",
+      "title": "Provisioning commits before its response times out.",
       "kind": "explanation",
-      "notes": "Crop x580,y423,w690,h280 from the unchanged1280x720 native capture. Follow its conversation link on the preceding slide. The next operation in the saved trace is onboarding_status.",
+      "notes": "Explanatory sequence for the committed-write timeout fixture. Use the recorded native trace next to verify the actual recovery. The actual onboarding_status tool reads account_id. A repeated mutation must reuse its operation_id.",
+      "concept": "Provisioning commits before its response times out",
+      "exercise": {
+        "step": "3 \u00b7 Pass observations to the agent"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-timeout.png"
+      ],
+      "timing": {
+        "section": "Inspect MCP and recover from a timeout",
+        "start_minute": 80,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 41,
-      "key": "checks",
-      "title": "Check the account and the explanation separately.",
+      "key": "timeout-3",
+      "title": "Read account access before retrying the write.",
       "kind": "explanation",
-      "notes": "The state scorer reads the account after execution and checks facts such as payment identity, refund amount, and duplicate effects. The LLM judge reads the request, actions, and final reply to assess whether the explanation is supported. These can disagree: an agent may do the right work and describe it incorrectly. An unavailable judge response stays missing.",
+      "notes": "Explanatory sequence for the committed-write timeout fixture. Use the recorded native trace next to verify the actual recovery. The actual onboarding_status tool reads account_id. A repeated mutation must reuse its operation_id.",
+      "concept": "Read account access before retrying the write",
+      "exercise": {
+        "step": "3 \u00b7 Pass observations to the agent"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-timeout.png"
+      ],
+      "timing": {
+        "section": "Inspect MCP and recover from a timeout",
+        "start_minute": 80,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 42,
-      "key": "scorer-cases",
-      "title": "The same confident reply can accompany four account states.",
+      "key": "retry-identity",
+      "title": "A stable operation_id prevents a repeated write.",
       "kind": "explanation",
-      "notes": "These are the four free development fixtures from teaching.check_scorer: one 4900-cent refund, a 100-cent refund, no refund, and two 4900-cent refunds. They share the reply Everything is resolved. The displayed PASS/FAIL values are the required deterministic checks, not inferred LLM judgments. Ask which fields my_state_check must read before participants implement it.",
+      "notes": "In notebook step 3, use the free local timeout practice. Predict the member count, trigger the timeout, and compare reading status with same-ID and new-ID retries. Reset between alternatives. This uses Python only, changes no saved employee run, and makes no model request. Illustration of simulator.execute after a committed provisioning request. The same operation_id and identical arguments return the stored receipt with replayed=true. A new operation_id is a new mutation and can add a duplicate membership. Reusing an ID with different arguments is rejected. The recorded onboarding recovery read status instead of retrying, so this diagram explains tool behavior rather than claiming this branch occurred in that run.",
+      "concept": "A stable operation_id prevents a repeated write",
+      "exercise": {
+        "step": "3 \u00b7 Pass observations to the agent"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-timeout.png"
+      ],
+      "timing": {
+        "section": "Inspect MCP and recover from a timeout",
+        "start_minute": 80,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 43,
-      "key": "scorer",
-      "title": "Write checks for full, partial, missing, and duplicate refunds.",
+      "key": "repair-retry",
+      "title": "Repair the retry in Python.",
       "kind": "exercise",
-      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my scorer against four known examples.",
-      "answer": 83
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Compare the two retry procedures.",
+      "concept": "Repair the retry in Python",
+      "exercise": {
+        "step": "3 \u00b7 Pass observations to the agent",
+        "change": "Edit recover_access: reuse the original operation_id, then read onboarding_status. Run both procedures from the same starting state.",
+        "run": "Compare the two retry procedures",
+        "check": "The new-ID retry produces two memberships. Your repair should produce one membership and an account read."
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-timeout.png"
+      ],
+      "timing": {
+        "section": "Inspect MCP and recover from a timeout",
+        "start_minute": 80,
+        "duration_minutes": 25
+      },
+      "answer": null
     },
     {
       "number": 44,
-      "key": "judge",
-      "title": "Ask the judge to compare the reply with recorded actions.",
+      "key": "repair-result",
+      "title": "One retry policy changes the account twice.",
       "kind": "explanation",
-      "notes": "Rubric from current pending_cells.py. Explain why the judge receives task, recorded actions and explanation. Have participants inspect one reason against a real span. Separate grammatical JSON validation from judging quality.",
+      "notes": "Source evidence/pending-retry-repair.json. Both execute the same committed-write timeout from fresh state. Distinguish this participant-written Python repair from the later instructions-only comparison. Ask participants to open their recovery trace and find the repeated operation ID.",
+      "concept": "One retry policy changes the account twice",
+      "exercise": {
+        "step": "3 \u00b7 Pass observations to the agent"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-timeout.png"
+      ],
+      "timing": {
+        "section": "Inspect MCP and recover from a timeout",
+        "start_minute": 80,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 45,
-      "key": "publish-dev",
-      "title": "Publish development results with both kinds of score.",
-      "kind": "exercise",
-      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Judge and publish the starting development comparison.",
+      "key": "timeout-screen",
+      "title": "Inspect the timeout and the following status check.",
+      "kind": "explanation",
+      "notes": "v0.3.0 skill-loaded onboarding: timeout span 5ddd78b1e9faa2d3; recovery status span e62596437e485145. Ask a learner to find evidence that access exists. Do not infer failure from a red span alone.",
+      "concept": "Inspect the timeout and the following status check",
+      "exercise": {
+        "step": "3 \u00b7 Pass observations to the agent"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-timeout.png"
+      ],
+      "timing": {
+        "section": "Inspect MCP and recover from a timeout",
+        "start_minute": 80,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 46,
-      "key": "compare-fields",
-      "title": "Know which check produced the score.",
+      "key": "timeout-detail",
+      "title": "The tool says the write may have committed.",
       "kind": "explanation",
-      "notes": "The public check_work result can influence the employee. The participant-written scorer teaches a bounded account check. The independent final grader checks complete expected state and the resolution. The explanation judge compares the reply with recorded actions. Its validator checks structure, not correctness. Ask a participant which check an improver is allowed to see.",
+      "notes": "Crop x580,y423,w690,h280 from the unchanged1280x720 native capture. Follow its conversation link on the preceding slide. The next operation in the saved trace is onboarding_status.",
+      "concept": "The tool says the write may have committed",
+      "exercise": {
+        "step": "3 \u00b7 Pass observations to the agent"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "visual-v030-pending-timeout.png"
+      ],
+      "timing": {
+        "section": "Inspect MCP and recover from a timeout",
+        "start_minute": 80,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 47,
-      "key": "manual",
-      "title": "Revise the verification skill and rerun both tickets.",
-      "kind": "exercise",
-      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Save this procedure and rerun both development tickets.",
+      "key": "checks",
+      "title": "Check the account and the explanation separately.",
+      "kind": "explanation",
+      "notes": "The state scorer reads the account after execution and checks facts such as payment identity, refund amount, and duplicate effects. The LLM judge reads the request, actions, and final reply to assess whether the explanation is supported. These can disagree: an agent may do the right work and describe it incorrectly. An unavailable judge response stays missing.",
+      "concept": "Check the account and the explanation separately",
+      "exercise": {
+        "step": "4\u20135 \u00b7 Check and edit"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [
+        "evidence/pending-retry-repair.json"
+      ],
+      "timing": {
+        "section": "Score the work and edit one procedure",
+        "start_minute": 105,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
       "number": 48,
-      "key": "manual-interpret",
-      "title": "An installed skill must be read before it can guide the model.",
+      "key": "scorer-cases",
+      "title": "The same confident reply can accompany four account states.",
       "kind": "explanation",
-      "notes": "build_messages lists installed skill names. read_skill returns the file contents, and my_observation appends that result to the next request. The notebook checks the actual read event and later saved request. No read means we cannot claim the skill influenced this execution. Loading it still does not prove the agent followed it; inspect the subsequent tools.",
+      "notes": "These are the four free development fixtures from teaching.check_scorer: one 4900-cent refund, a 100-cent refund, no refund, and two 4900-cent refunds. They share the reply Everything is resolved. The displayed PASS/FAIL values are the required deterministic checks, not inferred LLM judgments. Ask which fields my_state_check must read before participants implement it.",
+      "concept": "The same confident reply can accompany four account states",
+      "exercise": {
+        "step": "4\u20135 \u00b7 Check and edit"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [
+        "evidence/pending-retry-repair.json"
+      ],
+      "timing": {
+        "section": "Score the work and edit one procedure",
+        "start_minute": 105,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
       "number": 49,
-      "key": "break",
-      "title": "Take a ten-minute break after saving your progress.",
-      "kind": "explanation",
-      "notes": "Stop at 105 minutes. Use saved checkpoints; opening does not trigger paid work. Have attendees note the next step before the break.",
-      "answer": null
+      "key": "scorer",
+      "title": "Write checks for full, partial, missing, and duplicate refunds.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my scorer against four known examples.",
+      "concept": "Write checks for full, partial, missing, and duplicate refunds",
+      "exercise": {
+        "step": "4 \u00b7 Check the work",
+        "change": "Complete my_state_check and my_judge_validation. Require one full 4900-cent refund. Require boolean grounded/complete fields and a nonempty reason from the judge.",
+        "run": "Test my scorer against four known examples",
+        "check": "Full refund passes. Partial refund, no refund, and duplicate refund fail, despite the same confident reply."
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [
+        "evidence/pending-retry-repair.json"
+      ],
+      "timing": {
+        "section": "Score the work and edit one procedure",
+        "start_minute": 105,
+        "duration_minutes": 30
+      },
+      "answer": 93
     },
     {
       "number": 50,
-      "key": "editor",
-      "title": "Management would like to automate management.",
+      "key": "judge-state",
+      "title": "The account can contradict a confident reply.",
       "kind": "explanation",
-      "notes": "The editor uses the same fixed model, but its request is to revise the harness rather than resolve a customer ticket. We supply the current configuration and a saved execution. The permitted edits are instructions, the verification skill, and bounded workflow rules. Tools and scoring stay fixed so any measured difference concerns the harness we changed.",
+      "notes": "The public partial-refund fixture contains one 100-cent refund, compared with the required 4900 cents. The model's explanation cannot change that state. Read the actual integer comparison before introducing the judge.",
+      "concept": "The account can contradict a confident reply",
+      "exercise": {
+        "step": "4\u20135 \u00b7 Check and edit"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [
+        "evidence/pending-retry-repair.json"
+      ],
+      "timing": {
+        "section": "Score the work and edit one procedure",
+        "start_minute": 105,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
       "number": 51,
-      "key": "branch-1",
-      "title": "Propose two edits to the same starting harness.",
+      "key": "judge-validity",
+      "title": "A valid judge response can still contain a wrong judgment.",
       "kind": "explanation",
-      "notes": "Propose asks the editor for two competing changes, such as clearer verification instructions or a mandatory completion check. A and B start from the same parent. Neither receives the other candidate\u2019s test result at this point. We review their saved configurations before allowing the probes.",
+      "notes": "Work through availability, schema and correctness separately. The validator can reject strings in boolean fields. It cannot prove complete:true is right. For this illustrative partial-refund example it would be wrong. The live judge's actual reason remains the evidence to inspect.",
+      "concept": "A valid judge response can still contain a wrong judgment",
+      "exercise": {
+        "step": "4\u20135 \u00b7 Check and edit"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [
+        "evidence/pending-retry-repair.json"
+      ],
+      "timing": {
+        "section": "Score the work and edit one procedure",
+        "start_minute": 105,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
       "number": 52,
-      "key": "branch-2",
-      "title": "Run each candidate from the original account state.",
+      "key": "judge",
+      "title": "Ask the judge to compare the reply with recorded actions.",
       "kind": "explanation",
-      "notes": "If candidate A has already issued a refund, B must not inherit that refunded account. The controller resets the case before each probe. Compare the actions and returned state of both runs; a successful tool response alone does not tell us the ticket was handled correctly.",
+      "notes": "Rubric from current pending_cells.py. Explain why the judge receives task, recorded actions and explanation. Have participants inspect one reason against a real span. Separate grammatical JSON validation from judging quality.",
+      "concept": "Ask the judge to compare the reply with recorded actions",
+      "exercise": {
+        "step": "4\u20135 \u00b7 Check and edit"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [
+        "evidence/pending-retry-repair.json"
+      ],
+      "timing": {
+        "section": "Score the work and edit one procedure",
+        "start_minute": 105,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
       "number": 53,
-      "key": "branch-3",
-      "title": "Compare the probe results before selecting a harness.",
-      "kind": "explanation",
-      "notes": "Compose receives the proposed configurations and both execution records. It can choose A or B, combine parts of them, or retain the parent. Its rationale explains that choice, but the choice still needs an execution. The solid paths show versions; colors identify alternatives rather than scores.",
+      "key": "publish-dev",
+      "title": "Publish development results with both kinds of score.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Judge and publish the starting development comparison.",
+      "concept": "Publish development results with both kinds of score",
+      "exercise": {
+        "step": "4 \u00b7 Check the work",
+        "change": "Run the explanation judge on the two saved starting tickets. Find your state check, the independent check, and the judge reason in the saved table.",
+        "run": "Judge and publish the starting development comparison",
+        "check": "Click Compare in EvalTables beside the result. Open a ticket, compare the state score with the explanation score, and follow its conversation link."
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [
+        "evidence/pending-retry-repair.json"
+      ],
+      "timing": {
+        "section": "Score the work and edit one procedure",
+        "start_minute": 105,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
       "number": 54,
-      "key": "branch-4",
-      "title": "Execute the harness returned by the composition decision.",
+      "key": "compare-fields",
+      "title": "Know which check produced the score.",
       "kind": "explanation",
-      "notes": "A combination may differ from both tested candidates, so we run the returned configuration as its own probe. A Retain decision also runs through this step without inventing a new executable version. We can then inspect the specific execution associated with the decision.",
+      "notes": "The public check_work result can influence the employee. The participant-written scorer teaches a bounded account check. The independent final grader checks complete expected state and the resolution. The explanation judge compares the reply with recorded actions. Its validator checks structure, not correctness. Ask a participant which check an improver is allowed to see.",
+      "concept": "Know which check produced the score",
+      "exercise": {
+        "step": "4\u20135 \u00b7 Check and edit"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [
+        "evidence/pending-retry-repair.json"
+      ],
+      "timing": {
+        "section": "Score the work and edit one procedure",
+        "start_minute": 105,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
       "number": 55,
-      "key": "branch-5",
-      "title": "Save the selected harness and a lesson for onboarding.",
-      "kind": "explanation",
-      "notes": "Reflect asks the editor what it learned from the selected run and where that conclusion may not apply. We keep the lesson with that run, then execute the selected harness on onboarding before proposing more changes. This carried-harness teaching protocol differs from the full upstream Harness\u00b2 cross-task procedure.",
+      "key": "manual",
+      "title": "Revise the verification skill and rerun both tickets.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Save this procedure and rerun both development tickets.",
+      "concept": "Revise the verification skill and rerun both tickets",
+      "exercise": {
+        "step": "5 \u00b7 Edit one procedure",
+        "change": "Choose the recorded action that prompted your edit. Write a verification procedure explaining what the employee should check or do differently.",
+        "run": "Save this procedure and rerun both development tickets",
+        "check": "Read the diff. Find whether the employee loaded your skill and whether its next tool sequence changed."
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [
+        "evidence/pending-retry-repair.json"
+      ],
+      "timing": {
+        "section": "Score the work and edit one procedure",
+        "start_minute": 105,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
       "number": 56,
-      "key": "propose-code",
-      "title": "Give the editor the starting execution and harness.",
+      "key": "manual-interpret",
+      "title": "An installed skill must be read before it can guide the model.",
       "kind": "explanation",
-      "notes": "Conceptual variable names match the visible controller; actual notebook uses _s,_case,_parent,_prefix,_f. It passes prior_experience from round1 into round2. Ask which input would be inappropriate: final-test scores.",
+      "notes": "build_messages lists installed skill names. read_skill returns the file contents, and my_observation appends that result to the next request. The notebook checks the actual read event and later saved request. No read means we cannot claim the skill influenced this execution. Loading it still does not prove the agent followed it; inspect the subsequent tools.",
+      "concept": "An installed skill must be read before it can guide the model",
+      "exercise": {
+        "step": "4\u20135 \u00b7 Check and edit"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [
+        "evidence/pending-retry-repair.json"
+      ],
+      "timing": {
+        "section": "Score the work and edit one procedure",
+        "start_minute": 105,
+        "duration_minutes": 30
+      },
       "answer": null
     },
     {
       "number": 57,
-      "key": "propose",
-      "title": "Review the proposed instruction and workflow changes.",
-      "kind": "exercise",
-      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Round 1 \u00b7 Ask for two competing changes.",
+      "key": "break",
+      "title": "Take a ten-minute break after saving your progress.",
+      "kind": "explanation",
+      "notes": "Second break: 135\u2013145 minutes. Save the manual comparison and return to step 6. Do not start automatic work during the break.",
+      "concept": "Take a ten-minute break after saving your progress",
+      "exercise": {
+        "step": ""
+      },
+      "source": [
+        "scripts/pending_cells.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Break",
+        "start_minute": 135,
+        "duration_minutes": 10
+      },
       "answer": null
     },
     {
       "number": 58,
-      "key": "probe-code",
-      "title": "Construct and execute the proposed harness.",
+      "key": "editor",
+      "title": "Management would like to automate management.",
       "kind": "explanation",
-      "notes": "The editor returns a structured harness in its decision. The controller constructs that harness, executes it on a reset case, and checks the recorded content fingerprint against the decision. That comparison catches running the wrong version. It says nothing about whether the selected instructions are good; the account scorer answers that separately.",
+      "notes": "The editor uses the same fixed model, but its request is to revise the harness rather than resolve a customer ticket. We supply the current configuration and a saved execution. The permitted edits are instructions, the verification skill, and bounded workflow rules. Tools and scoring stay fixed so any measured difference concerns the harness we changed.",
+      "concept": "Management would like to automate management",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Propose, probe and compose",
+        "start_minute": 145,
+        "duration_minutes": 40
+      },
       "answer": null
     },
     {
       "number": 59,
-      "key": "probes",
-      "title": "Run both candidates and inspect their tool sequences.",
-      "kind": "exercise",
-      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Round 1 \u00b7 Review and test candidate A; then candidate B.",
+      "key": "branch-1",
+      "title": "Propose two edits to the same starting harness.",
+      "kind": "explanation",
+      "notes": "Propose asks the editor for two competing changes, such as clearer verification instructions or a mandatory completion check. A and B start from the same parent. Neither receives the other candidate\u2019s test result at this point. We review their saved configurations before allowing the probes.",
+      "concept": "Propose two edits to the same starting harness",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Propose, probe and compose",
+        "start_minute": 145,
+        "duration_minutes": 40
+      },
       "answer": null
     },
     {
       "number": 60,
-      "key": "completion-guard",
-      "title": "Require a passing check of the current state before finish.",
+      "key": "branch-2",
+      "title": "Run each candidate from the original account state.",
       "kind": "explanation",
-      "notes": "The loop stores last_check with passed and the digest of world. With verify_before_finish true, finish is rejected if that check is absent, failed, or no longer matches the current state. This is a runtime completion rule. check_work gives public development feedback; the independent final scorer separately checks entire expected accounts and the required resolution.",
+      "notes": "If candidate A has already issued a refund, B must not inherit that refunded account. The controller resets the case before each probe. Compare the actions and returned state of both runs; a successful tool response alone does not tell us the ticket was handled correctly.",
+      "concept": "Run each candidate from the original account state",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Propose, probe and compose",
+        "start_minute": 145,
+        "duration_minutes": 40
+      },
       "answer": null
     },
     {
       "number": 61,
-      "key": "gate-screen",
-      "title": "This candidate required a check before completion.",
+      "key": "branch-3",
+      "title": "Compare the probe results before selecting a harness.",
       "kind": "explanation",
-      "notes": "Recorded candidate B changed verify_before_finish from false to true. It produced the explicit check sequence. Spans: rejected finish 9ed1e7824138ec0e, check_work 2d49d1d8d3ddeb5d, accepted finish 3e19e007d013d4d2. This is a behavior change, not yet evidence of better quality.",
+      "notes": "Compose receives the proposed configurations and both execution records. It can choose A or B, combine parts of them, or retain the parent. Its rationale explains that choice, but the choice still needs an execution. The solid paths show versions; colors identify alternatives rather than scores.",
+      "concept": "Compare the probe results before selecting a harness",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Propose, probe and compose",
+        "start_minute": 145,
+        "duration_minutes": 40
+      },
       "answer": null
     },
     {
       "number": 62,
-      "key": "gate-detail",
-      "title": "The completion gate required a check_work call.",
+      "key": "branch-4",
+      "title": "Execute the harness returned by the composition decision.",
       "kind": "explanation",
-      "notes": "Crop x580,y251,w690,h185 from the unchanged1280x720 native capture. Gate behavior is confirmed by the subsequent check_work and accepted finish spans, not inferred from the proposal title.",
+      "notes": "A combination may differ from both tested candidates, so we run the returned configuration as its own probe. A Retain decision also runs through this step without inventing a new executable version. We can then inspect the specific execution associated with the decision.",
+      "concept": "Execute the harness returned by the composition decision",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Propose, probe and compose",
+        "start_minute": 145,
+        "duration_minutes": 40
+      },
       "answer": null
     },
     {
       "number": 63,
-      "key": "probe-comparison",
-      "title": "Compare the added checks with the resulting account state.",
+      "key": "branch-5",
+      "title": "Save the selected harness and a lesson for onboarding.",
       "kind": "explanation",
-      "notes": "Recorded first-round probe A used the parent harness: get_account, refund_payment, get_account, finish. Probe B used verify_before_finish=true: the same first three calls, a rejected finish, check_work, and an accepted finish. Both independent account checks passed. Tool-call counts are four and six for these development probes, distinct from the later final-evaluation totals. Source: the v0.3.0 rehearsal journal pending/round-1/probe-a and probe-b, linked through the native conversations on the preceding slides.",
+      "notes": "Reflect asks the editor what it learned from the selected run and where that conclusion may not apply. We keep the lesson with that run, then execute the selected harness on onboarding before proposing more changes. This carried-harness teaching protocol differs from the full upstream Harness\u00b2 cross-task procedure.",
+      "concept": "Save the selected harness and a lesson for onboarding",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Propose, probe and compose",
+        "start_minute": 145,
+        "duration_minutes": 40
+      },
       "answer": null
     },
     {
       "number": 64,
-      "key": "keep",
-      "title": "The editor retained the parent after comparing the probes.",
+      "key": "propose-code",
+      "title": "Give the editor the starting execution and harness.",
       "kind": "explanation",
-      "notes": "Open this saved composition if time allows. The editor\u2019s rationale was that the mandatory gate added work while the parent already produced a correct billing outcome. It retained the parent. The controller still runs the selected configuration because every composition receives a confirming execution, including KEEP. The executable content remains unchanged.",
+      "notes": "Conceptual variable names match the visible controller; actual notebook uses _s,_case,_parent,_prefix,_f. It passes prior_experience from round1 into round2. Ask which input would be inappropriate: final-test scores.",
+      "concept": "Give the editor the starting execution and harness",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Propose, probe and compose",
+        "start_minute": 145,
+        "duration_minutes": 40
+      },
       "answer": null
     },
     {
       "number": 65,
-      "key": "compose",
-      "title": "Test the selected harness before carrying it forward.",
+      "key": "propose",
+      "title": "Review the proposed instruction and workflow changes.",
       "kind": "exercise",
-      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Compare probes and request a composition \u2192 Review and test the composition \u2192 Save the tested version and its lesson.",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Round 1 \u00b7 Ask for two competing changes.",
+      "concept": "Review the proposed instruction and workflow changes",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice",
+        "change": "Read the visible controller. Ask for two changes, then inspect Candidate A\u2019s diff and rationale. Mark the review checkbox only after reading the files.",
+        "run": "Round 1 \u00b7 Ask for two competing changes",
+        "check": "The next action is Review and test candidate A. Explain what behavior A is intended to change."
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Propose, probe and compose",
+        "start_minute": 145,
+        "duration_minutes": 40
+      },
       "answer": null
     },
     {
       "number": 66,
-      "key": "reflection",
-      "title": "Save the lesson with the run that supports it.",
+      "key": "probe-code",
+      "title": "Construct and execute the proposed harness.",
       "kind": "explanation",
-      "notes": "Explanatory excerpt, not a drop-in full function. The actual controller falls back to the parent if the chosen execution does not complete. The lesson is agent-authored interpretation backed by a saved run.",
+      "notes": "The editor returns a structured harness in its decision. The controller constructs that harness, executes it on a reset case, and checks the recorded content fingerprint against the decision. That comparison catches running the wrong version. It says nothing about whether the selected instructions are good; the account scorer answers that separately.",
+      "concept": "Construct and execute the proposed harness",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Propose, probe and compose",
+        "start_minute": 145,
+        "duration_minutes": 40
+      },
       "answer": null
     },
     {
       "number": 67,
-      "key": "round-two",
-      "title": "Use the selected harness to start the onboarding round.",
+      "key": "probes",
+      "title": "Run both candidates and inspect their tool sequences.",
       "kind": "exercise",
-      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Round 2 \u00b7 Ask for two competing changes; follow the current action.",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Round 1 \u00b7 Review and test candidate A; then candidate B.",
+      "concept": "Run both candidates and inspect their tool sequences",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice",
+        "change": "Review and test A, then review and test B. Follow each result into Agent Lens and look for the behavior its proposal promised.",
+        "run": "Round 1 \u00b7 Review and test candidate A; then candidate B",
+        "check": "Both started from the same billing state. You can identify which changed files were used in each run."
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Propose, probe and compose",
+        "start_minute": 145,
+        "duration_minutes": 40
+      },
       "answer": null
     },
     {
       "number": 68,
-      "key": "round-two-result",
-      "title": "The second round changed the verification skill.",
+      "key": "completion-guard",
+      "title": "Require a passing check of the current state before finish.",
       "kind": "explanation",
-      "notes": "In the recorded onboarding round, the editor selected a more specific verification skill while leaving verify_before_finish off. Open the decision to read its rationale, then the chosen execution to inspect how the agent used those files. The next slide shows the exact changed sentence.",
+      "notes": "The loop stores last_check with passed and the digest of world. With verify_before_finish true, finish is rejected if that check is absent, failed, or no longer matches the current state. This is a runtime completion rule. check_work gives public development feedback; the independent final scorer separately checks entire expected accounts and the required resolution.",
+      "concept": "Require a passing check of the current state before finish",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Propose, probe and compose",
+        "start_minute": 145,
+        "duration_minutes": 40
+      },
       "answer": null
     },
     {
       "number": 69,
-      "key": "skill-diff",
-      "title": "The skill makes the final check more specific.",
+      "key": "gate-screen",
+      "title": "This candidate required a check before completion.",
       "kind": "explanation",
-      "notes": "Source .workshop/v030-pending/journal.json, pending/round-1/compose and pending/round-2/compose verification_skill. Display is an exact excerpt of the changed sentence. Round2 selected that skill with verify_before_finish=false. Link to preceding decision and execution; no attribution of final-quality gain.",
+      "notes": "Recorded candidate B changed verify_before_finish from false to true. It produced the explicit check sequence. Spans: rejected finish 9ed1e7824138ec0e, check_work 2d49d1d8d3ddeb5d, accepted finish 3e19e007d013d4d2. This is a behavior change, not yet evidence of better quality.",
+      "concept": "This candidate required a check before completion",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Propose, probe and compose",
+        "start_minute": 145,
+        "duration_minutes": 40
+      },
       "answer": null
     },
     {
       "number": 70,
-      "key": "rsi",
-      "title": "The next round tests changes to the previous selection.",
+      "key": "gate-detail",
+      "title": "The completion gate required a check_work call.",
       "kind": "explanation",
-      "notes": "Recursive self-improvement here means that an agent evaluates executions of a harness, proposes revisions, and later examines work done under the selected revision. The retained lesson supplies context for the next attempt. The language model\u2019s weights never change. Our workshop carries a selected harness between two tasks; the upstream Harness\u00b2 procedure has a broader recursion and experience-library design.",
+      "notes": "Crop x580,y251,w690,h185 from the unchanged1280x720 native capture. Gate behavior is confirmed by the subsequent check_work and accepted finish spans, not inferred from the proposal title.",
+      "concept": "The completion gate required a check_work call",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Propose, probe and compose",
+        "start_minute": 145,
+        "duration_minutes": 40
+      },
       "answer": null
     },
     {
       "number": 71,
-      "key": "freeze",
-      "title": "Freeze three harnesses for the fresh-case comparison.",
+      "key": "probe-comparison",
+      "title": "Compare the added checks with the resulting account state.",
       "kind": "explanation",
-      "notes": "Final cases: already-refunded, two-invoices, onboarding-recovery, clarify-access. Their files are public for teaching but are excluded from improvement context. The starting version is the configured tested employee, not the deliberately blank opening illustration.",
+      "notes": "Recorded first-round probe A used the parent harness: get_account, refund_payment, get_account, finish. Probe B used verify_before_finish=true: the same first three calls, a rejected finish, check_work, and an accepted finish. Both independent account checks passed. Tool-call counts are four and six for these development probes, distinct from the later final-evaluation totals. Source: the v0.3.0 rehearsal journal pending/round-1/probe-a and probe-b, linked through the native conversations on the preceding slides.",
+      "concept": "Compare the added checks with the resulting account state",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Propose, probe and compose",
+        "start_minute": 145,
+        "duration_minutes": 40
+      },
       "answer": null
     },
     {
       "number": 72,
-      "key": "final",
-      "title": "Compare all three versions on fresh tickets.",
-      "kind": "exercise",
-      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Freeze versions and run 12 evaluations.",
+      "key": "keep",
+      "title": "The editor retained the parent after comparing the probes.",
+      "kind": "explanation",
+      "notes": "Open this saved composition if time allows. The editor\u2019s rationale was that the mandatory gate added work while the parent already produced a correct billing outcome. It retained the parent. The controller still runs the selected configuration because every composition receives a confirming execution, including KEEP. The executable content remains unchanged.",
+      "concept": "The editor retained the parent after comparing the probes",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Propose, probe and compose",
+        "start_minute": 145,
+        "duration_minutes": 40
+      },
       "answer": null
     },
     {
       "number": 73,
-      "key": "native-results",
-      "title": "Compare the same ticket in Forge.",
-      "kind": "explanation",
-      "notes": "Click Compare in EvalTables beside the notebook result. This opens the native Weave-backed Evaluation Tables Preview in the W&B workspace. The separate CES EvalTables v2 service can still be unavailable; its status does not erase this working comparison. These are saved rehearsal executions, not new model calls.",
+      "key": "compose",
+      "title": "Test the selected harness before carrying it forward.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Compare probes and request a composition \u2192 Review and test the composition \u2192 Save the tested version and its lesson.",
+      "concept": "Test the selected harness before carrying it forward",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice",
+        "change": "Request a composition. Read what it kept or changed, test those files, and save the tested version with its lesson and limits.",
+        "run": "Compare probes and request a composition \u2192 Review and test the composition \u2192 Save the tested version and its lesson",
+        "check": "The chosen execution matches the decision. If it retained the parent, explain why the files are unchanged."
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Propose, probe and compose",
+        "start_minute": 145,
+        "duration_minutes": 40
+      },
       "answer": null
     },
     {
       "number": 74,
-      "key": "native-case",
-      "title": "Inspect a request that needs clarification.",
+      "key": "reflection",
+      "title": "Save the lesson with the run that supports it.",
       "kind": "explanation",
-      "notes": "Select the same case across versions. A tie is a result: more verification calls can leave account quality unchanged. Blank judgment cells remain missing. Use the Agent Lens URL saved in that row, rather than an unrelated trace.",
+      "notes": "Explanatory excerpt, not a drop-in full function. The actual controller falls back to the parent if the chosen execution does not complete. The lesson is agent-authored interpretation backed by a saved run.",
+      "concept": "Save the lesson with the run that supports it",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Propose, probe and compose",
+        "start_minute": 145,
+        "duration_minutes": 40
+      },
       "answer": null
     },
     {
       "number": 75,
-      "key": "final-screen",
-      "title": "Link the Report\u2019s conclusion to its runs and traces.",
+      "key": "between-rounds",
+      "title": "The next task gets the selected procedure and a checked lesson.",
       "kind": "explanation",
-      "notes": "Use fresh v030 final table: all12 account checks and explanation judgments are available and pass. The Report screenshot is the actual W&B/Weave/Report surface. The preceding slides show the repaired native Evaluation Tables Preview comparison.",
+      "notes": "A lesson is an agent-written interpretation with a supporting run and limits. It is not a model weight update. We carry the selected harness and lesson into onboarding, while constructing a fresh account state and conversation for that case. The next execution tests whether the lesson transfers.",
+      "concept": "The next task gets the selected procedure and a checked lesson",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Carry a lesson into the next task",
+        "start_minute": 185,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 76,
-      "key": "final-result",
-      "title": "All three harnesses passed the four final cases.",
+      "key": "compose-not-test",
+      "title": "Choosing a combination does not test it.",
       "kind": "explanation",
-      "notes": "Read the account and explanation columns before the tool-call totals. All versions passed all four cases in this scripted rehearsal, so neither revision increased the measured pass rate. Each revised version made one additional tool call overall. These four cases do not establish repeatability or performance on other workflows. The source is evidence/v030-pending-rehearsal.json.",
+      "notes": "Do not infer that a composition inherits the scores of its ingredients. The combined behavior can differ, so the controller runs it before adoption. The recorded round-one decision retained the parent instead; the previous slides show its reason and execution.",
+      "concept": "Choosing a combination does not test it",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Carry a lesson into the next task",
+        "start_minute": 185,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 77,
-      "key": "files",
-      "title": "Save the case, harness, execution, and scoring records.",
-      "kind": "explanation",
-      "notes": "Artifacts are versioned file bundles. Trace export, result publication and execution have separate statuses. A publication retry uses saved work and must not make another model request.",
+      "key": "round-two",
+      "title": "Use the selected harness to start the onboarding round.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Round 2 \u00b7 Ask for two competing changes; follow the current action.",
+      "concept": "Use the selected harness to start the onboarding round",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice",
+        "change": "Round 2 starts with the version and lesson kept after billing. Propose, review, test, compose, test again, and save the result.",
+        "run": "Round 2 \u00b7 Ask for two competing changes; follow the current action",
+        "check": "Explain what the previous lesson influenced and what the new execution showed. Do not assume a billing lesson transfers."
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Carry a lesson into the next task",
+        "start_minute": 185,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 78,
-      "key": "report",
-      "title": "Write down what changed and whether it helped.",
-      "kind": "exercise",
-      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Publish my conclusion with the comparison and evidence.",
+      "key": "round-two-result",
+      "title": "The second round changed the verification skill.",
+      "kind": "explanation",
+      "notes": "In the recorded onboarding round, the editor selected a more specific verification skill while leaving verify_before_finish off. Open the decision to read its rationale, then the chosen execution to inspect how the agent used those files. The next slide shows the exact changed sentence.",
+      "concept": "The second round changed the verification skill",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Carry a lesson into the next task",
+        "start_minute": 185,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 79,
-      "key": "aria",
-      "title": "Ask ARIA to compare one case across harness versions.",
+      "key": "skill-diff",
+      "title": "The skill makes the final check more specific.",
       "kind": "explanation",
-      "notes": "Do not imply ARIA authored these prior results. The prompt asks for evidence analysis, not permission to run new experiments or change budgets.",
+      "notes": "Source .workshop/v030-pending/journal.json, pending/round-1/compose and pending/round-2/compose verification_skill. Display is an exact excerpt of the changed sentence. Round2 selected that skill with verify_before_finish=false. Link to preceding decision and execution; no attribution of final-quality gain.",
+      "concept": "The skill makes the final check more specific",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Carry a lesson into the next task",
+        "start_minute": 185,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 80,
-      "key": "end",
-      "title": "Choose a workflow with an observable result to test.",
+      "key": "rsi",
+      "title": "The next round tests changes to the previous selection.",
       "kind": "explanation",
-      "notes": "Ask participants to name one workflow in their product with observable output and a check they can run independently of the agent. Have them specify a development case, a likely failure, and a fresh case for testing transfer. They can reuse the instrumentation and improvement controller, but must define what correct work means for that workflow.",
+      "notes": "Recursive self-improvement here means that an agent evaluates executions of a harness, proposes revisions, and later examines work done under the selected revision. The retained lesson supplies context for the next attempt. The language model\u2019s weights never change. Our workshop carries a selected harness between two tasks; the upstream Harness\u00b2 procedure has a broader recursion and experience-library design.",
+      "concept": "The next round tests changes to the previous selection",
+      "exercise": {
+        "step": "6 \u00b7 Improve twice"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Carry a lesson into the next task",
+        "start_minute": 185,
+        "duration_minutes": 25
+      },
       "answer": null
     },
     {
       "number": 81,
-      "key": "answer-tool",
-      "title": "Worked answer \u00b7 invoice lookup",
-      "kind": "answer",
-      "notes": "Exact semantics of teaching.ANSWERS tool. Keep optional so participants attempt the gap first.",
+      "key": "freeze",
+      "title": "Freeze three harnesses for the fresh-case comparison.",
+      "kind": "explanation",
+      "notes": "Final cases: already-refunded, two-invoices, onboarding-recovery, clarify-access. Their files are public for teaching but are excluded from improvement context. The starting version is the configured tested employee, not the deliberately blank opening illustration.",
+      "concept": "Freeze three harnesses for the fresh-case comparison",
+      "exercise": {
+        "step": "7 \u00b7 Compare fresh tickets"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/grading.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Evaluate frozen harnesses",
+        "start_minute": 210,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
       "number": 82,
-      "key": "answer-loop",
-      "title": "Worked answer \u00b7 observation handoff",
-      "kind": "answer",
-      "notes": "Exact answer contract from teaching.py. Both dispatch paths return state/result. Handoff creates a new list.",
+      "key": "final",
+      "title": "Compare all three versions on fresh tickets.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Freeze versions and run 12 evaluations.",
+      "concept": "Compare all three versions on fresh tickets",
+      "exercise": {
+        "step": "7 \u00b7 Compare fresh tickets",
+        "change": "Freeze the versions and run the final comparison. Use the saved-ticket selector to align the starting, manual, and agent-selected outputs.",
+        "run": "Freeze versions and run 12 evaluations",
+        "check": "Follow a score to its account state, judge reason, trace, and harness. Keep unavailable judgments separate from wrong answers."
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/grading.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Evaluate frozen harnesses",
+        "start_minute": 210,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
       "number": 83,
-      "key": "answer-scorer",
-      "title": "Worked answer \u00b7 inspect the refund",
-      "kind": "answer",
-      "notes": "The learner check is deliberately limited. Do not describe it as the full final scorer.",
+      "key": "native-results",
+      "title": "Compare the same ticket in Forge.",
+      "kind": "explanation",
+      "notes": "Click Compare in EvalTables beside the notebook result. This opens the native Weave-backed Evaluation Tables Preview in the W&B workspace. The separate CES EvalTables v2 service can still be unavailable; its status does not erase this working comparison. These are saved rehearsal executions, not new model calls.",
+      "concept": "Compare the same ticket in Forge",
+      "exercise": {
+        "step": "7 \u00b7 Compare fresh tickets"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/grading.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Evaluate frozen harnesses",
+        "start_minute": 210,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
       "number": 84,
-      "key": "answer-judge",
-      "title": "Worked answer \u00b7 validate the judge response",
-      "kind": "answer",
-      "notes": "Exact semantics of teaching.ANSWERS scorer validation. Boolean strings are invalid. Empty reasons are invalid. Missing judgments stay unavailable.",
+      "key": "native-case",
+      "title": "Inspect a request that needs clarification.",
+      "kind": "explanation",
+      "notes": "Select the same case across versions. A tie is a result: more verification calls can leave account quality unchanged. Blank judgment cells remain missing. Use the Agent Lens URL saved in that row, rather than an unrelated trace.",
+      "concept": "Inspect a request that needs clarification",
+      "exercise": {
+        "step": "7 \u00b7 Compare fresh tickets"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/grading.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Evaluate frozen harnesses",
+        "start_minute": 210,
+        "duration_minutes": 20
+      },
       "answer": null
     },
     {
       "number": 85,
+      "key": "final-screen",
+      "title": "Link the Report\u2019s conclusion to its runs and traces.",
+      "kind": "explanation",
+      "notes": "Use fresh v030 final table: all12 account checks and explanation judgments are available and pass. The Report screenshot is the actual W&B/Weave/Report surface. The preceding slides show the repaired native Evaluation Tables Preview comparison.",
+      "concept": "Link the Report\u2019s conclusion to its runs and traces",
+      "exercise": {
+        "step": "7 \u00b7 Compare fresh tickets"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/grading.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Evaluate frozen harnesses",
+        "start_minute": 210,
+        "duration_minutes": 20
+      },
+      "answer": null
+    },
+    {
+      "number": 86,
+      "key": "final-result",
+      "title": "All three harnesses passed the four final cases.",
+      "kind": "explanation",
+      "notes": "Read the account and explanation columns before the tool-call totals. All versions passed all four cases in this scripted rehearsal, so neither revision increased the measured pass rate. Each revised version made one additional tool call overall. These four cases do not establish repeatability or performance on other workflows. The source is evidence/v030-pending-rehearsal.json.",
+      "concept": "All three harnesses passed the four final cases",
+      "exercise": {
+        "step": "7 \u00b7 Compare fresh tickets"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/grading.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Evaluate frozen harnesses",
+        "start_minute": 210,
+        "duration_minutes": 20
+      },
+      "answer": null
+    },
+    {
+      "number": 87,
+      "key": "files",
+      "title": "Save the case, harness, execution, and scoring records.",
+      "kind": "explanation",
+      "notes": "Artifacts are versioned file bundles. Trace export, result publication and execution have separate statuses. A publication retry uses saved work and must not make another model request.",
+      "concept": "Save the case, harness, execution, and scoring records",
+      "exercise": {
+        "step": "7 \u00b7 Compare fresh tickets"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/grading.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Evaluate frozen harnesses",
+        "start_minute": 210,
+        "duration_minutes": 20
+      },
+      "answer": null
+    },
+    {
+      "number": 88,
+      "key": "report",
+      "title": "Write down what changed and whether it helped.",
+      "kind": "exercise",
+      "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Publish my conclusion with the comparison and evidence.",
+      "concept": "Write down what changed and whether it helped",
+      "exercise": {
+        "step": "8 \u00b7 Explain the result",
+        "change": "Name the edit, the behavior you observed, and the final comparison. Link one trace and one matching case. Suggest the next test.",
+        "run": "Publish my conclusion with the comparison and evidence",
+        "check": "Someone else can open the records behind your conclusion. No higher score is required."
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Explain the result",
+        "start_minute": 230,
+        "duration_minutes": 10
+      },
+      "answer": null
+    },
+    {
+      "number": 89,
+      "key": "aria",
+      "title": "Ask ARIA to compare one case across harness versions.",
+      "kind": "explanation",
+      "notes": "Do not imply ARIA authored these prior results. The prompt asks for evidence analysis, not permission to run new experiments or change budgets.",
+      "concept": "Ask ARIA to compare one case across harness versions",
+      "exercise": {
+        "step": "8 \u00b7 Explain the result"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Explain the result",
+        "start_minute": 230,
+        "duration_minutes": 10
+      },
+      "answer": null
+    },
+    {
+      "number": 90,
+      "key": "end",
+      "title": "Choose a workflow with an observable result to test.",
+      "kind": "explanation",
+      "notes": "Ask participants to name one workflow in their product with observable output and a check they can run independently of the agent. Have them specify a development case, a likely failure, and a fresh case for testing transfer. They can reuse the instrumentation and improvement controller, but must define what correct work means for that workflow.",
+      "concept": "Choose a workflow with an observable result to test",
+      "exercise": {
+        "step": "8 \u00b7 Explain the result"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/loop.py"
+      ],
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Explain the result",
+        "start_minute": 230,
+        "duration_minutes": 10
+      },
+      "answer": null
+    },
+    {
+      "number": 91,
+      "key": "answer-tool",
+      "title": "Worked answer \u00b7 invoice lookup",
+      "kind": "answer",
+      "notes": "Exact semantics of teaching.ANSWERS tool. Keep optional so participants attempt the gap first.",
+      "concept": "Worked answer \u00b7 invoice lookup",
+      "exercise": {
+        "step": "Reference"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Worked answers",
+        "start_minute": 240,
+        "duration_minutes": 0
+      },
+      "answer": null
+    },
+    {
+      "number": 92,
+      "key": "answer-loop",
+      "title": "Worked answer \u00b7 observation handoff",
+      "kind": "answer",
+      "notes": "Exact answer contract from teaching.py. Both dispatch paths return state/result. Handoff creates a new list.",
+      "concept": "Worked answer \u00b7 observation handoff",
+      "exercise": {
+        "step": "Reference"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Worked answers",
+        "start_minute": 240,
+        "duration_minutes": 0
+      },
+      "answer": null
+    },
+    {
+      "number": 93,
+      "key": "answer-scorer",
+      "title": "Worked answer \u00b7 inspect the refund",
+      "kind": "answer",
+      "notes": "The learner check is deliberately limited. Do not describe it as the full final scorer.",
+      "concept": "Worked answer \u00b7 inspect the refund",
+      "exercise": {
+        "step": "Reference"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Worked answers",
+        "start_minute": 240,
+        "duration_minutes": 0
+      },
+      "answer": null
+    },
+    {
+      "number": 94,
+      "key": "answer-judge",
+      "title": "Worked answer \u00b7 validate the judge response",
+      "kind": "answer",
+      "notes": "Exact semantics of teaching.ANSWERS scorer validation. Boolean strings are invalid. Empty reasons are invalid. Missing judgments stay unavailable.",
+      "concept": "Worked answer \u00b7 validate the judge response",
+      "exercise": {
+        "step": "Reference"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Worked answers",
+        "start_minute": 240,
+        "duration_minutes": 0
+      },
+      "answer": null
+    },
+    {
+      "number": 95,
       "key": "sources",
       "title": "Source, notebook, and recorded example",
       "kind": "explanation",
       "notes": "The product evidence in this deck uses the v030 rehearsal. The current native comparison uses Weave-backed Evaluation Tables Preview. The separate CES v2 service still returns HTTP500; its unavailable status remains in publication details. Current authored notebook source scripts/pending_cells.py. Historical deck preserved outside current attendee path.",
+      "concept": "Source, notebook, and recorded example",
+      "exercise": {
+        "step": "Reference"
+      },
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/teaching.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Worked answers",
+        "start_minute": 240,
+        "duration_minutes": 0
+      },
       "answer": null
     }
   ]

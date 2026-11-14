@@ -1,280 +1,544 @@
 {
-  "duration_minutes": 240,
-  "setup": [
-    0,
-    20
-  ],
-  "single_worker": [
-    20,
-    45
-  ],
-  "task_claims": [
-    45,
-    70
-  ],
-  "two_workers": [
-    70,
-    105
-  ],
-  "break": [
-    105,
-    115
-  ],
-  "integration": [
-    115,
-    145
-  ],
-  "memory": [
-    145,
-    170
-  ],
-  "followup": [
-    170,
-    205
-  ],
-  "evaluation": [
-    205,
-    225
-  ],
-  "release_and_conclusion": [
-    225,
-    240
+  "source_sha256": "34fb8d3b7e82e75e48269c8c78c9cf179633bf7991765e2638ddbc46d9195dab",
+  "duration_minutes": 360,
+  "slides": 94,
+  "schedule": [
+    {
+      "start": "00:00",
+      "end": "00:30",
+      "activity": "Understand the rider, source data and service day"
+    },
+    {
+      "start": "00:30",
+      "end": "00:50",
+      "activity": "Connect to Forge and write an acceptance scenario"
+    },
+    {
+      "start": "00:50",
+      "end": "01:35",
+      "activity": "Build and inspect the single-worker loop"
+    },
+    {
+      "start": "01:35",
+      "end": "01:45",
+      "activity": "Break"
+    },
+    {
+      "start": "01:45",
+      "end": "02:25",
+      "activity": "Implement task readiness, claims and isolated copies"
+    },
+    {
+      "start": "02:25",
+      "end": "03:00",
+      "activity": "Run two workers and test their patches together"
+    },
+    {
+      "start": "03:00",
+      "end": "03:20",
+      "activity": "Break"
+    },
+    {
+      "start": "03:20",
+      "end": "04:00",
+      "activity": "Review a project lesson and implement retrieval"
+    },
+    {
+      "start": "04:00",
+      "end": "04:45",
+      "activity": "Run and inspect the matched follow-up builds"
+    },
+    {
+      "start": "04:45",
+      "end": "04:55",
+      "activity": "Break"
+    },
+    {
+      "start": "04:55",
+      "end": "05:30",
+      "activity": "Evaluate frozen builds and diagnose the UTC defect"
+    },
+    {
+      "start": "05:30",
+      "end": "06:00",
+      "activity": "Reproduce a result and publish the release decision"
+    }
   ],
   "ordered_slides": [
     {
-      "title": "Build a transit app<br>with a team of coding agents",
-      "time": "0:00",
+      "key": "build-a-transit-app-with-a-team-of-coding-agents",
       "minutes": 0
     },
     {
-      "title": "Your team needs a departures board",
-      "time": "0:01",
-      "minutes": 1
-    },
-    {
-      "title": "Here is the application we want to deliver",
-      "time": "0:02",
+      "key": "your-team-needs-a-departures-board",
       "minutes": 2
     },
     {
-      "title": "The inputs are public transit records",
-      "time": "0:03",
-      "minutes": 3
-    },
-    {
-      "title": "The last train can belong to yesterday\u2019s service",
-      "time": "0:05",
+      "key": "here-is-the-application-we-want-to-deliver",
       "minutes": 5
     },
     {
-      "title": "Turn the brief into checks",
-      "time": "0:07",
-      "minutes": 7
-    },
-    {
-      "title": "A software factory needs a way to finish work",
-      "time": "0:08",
+      "key": "the-inputs-are-public-transit-records",
       "minutes": 8
     },
     {
-      "title": "Add the task board and two workers",
-      "time": "0:09",
-      "minutes": 9
-    },
-    {
-      "title": "Your project contains the experiment",
-      "time": "0:10",
+      "key": "start-with-the-row-for-the-platform",
       "minutes": 10
     },
     {
-      "title": "Connect and inspect the source data",
-      "time": "0:11",
-      "minutes": 11
+      "key": "join-the-trip-to-its-service-calendar",
+      "minutes": 13
     },
     {
-      "title": "Write the after-midnight acceptance check",
-      "time": "0:15",
+      "key": "keep-the-service-date-and-boarding-date",
       "minutes": 15
     },
     {
-      "title": "One worker still needs a complete loop",
-      "time": "0:20",
+      "key": "the-last-train-can-belong-to-yesterday-s-service",
+      "minutes": 17
+    },
+    {
+      "key": "convert-elapsed-service-time-into-a-timestamp",
       "minutes": 20
     },
     {
-      "title": "Give the worker the task it is allowed to solve",
-      "time": "0:23",
+      "key": "check-the-joined-behavior-not-just-the-parser",
       "minutes": 23
     },
     {
-      "title": "Return the tool result to the worker",
-      "time": "0:26",
+      "key": "turn-the-brief-into-checks",
+      "minutes": 24
+    },
+    {
+      "key": "a-software-factory-needs-a-way-to-finish-work",
       "minutes": 26
     },
     {
-      "title": "Run one worker before adding a team",
-      "time": "0:30",
+      "key": "add-the-task-board-and-two-workers",
+      "minutes": 28
+    },
+    {
+      "key": "two-workers-means-two-contexts-around-the-same-model",
+      "minutes": 29
+    },
+    {
+      "key": "your-project-contains-the-experiment",
       "minutes": 30
     },
     {
-      "title": "A trace should answer what changed and why",
-      "time": "0:40",
-      "minutes": 40
+      "key": "connect-and-inspect-the-source-data",
+      "minutes": 33
     },
     {
-      "title": "Inspect the worker\u2019s test in Agent Lens",
-      "time": "0:43",
-      "minutes": 43
+      "key": "record-the-operation-that-you-just-ran",
+      "minutes": 38
     },
     {
-      "title": "Choose work that can happen independently",
-      "time": "0:45",
-      "minutes": 45
+      "key": "acceptance-exercise",
+      "minutes": 42
     },
     {
-      "title": "Ready means its prerequisites passed",
-      "time": "0:50",
+      "key": "one-worker-still-needs-a-complete-loop",
       "minutes": 50
     },
     {
-      "title": "Make dependencies control the workers",
-      "time": "0:55",
-      "minutes": 55
+      "key": "give-the-worker-the-task-it-is-allowed-to-solve",
+      "minutes": 53
     },
     {
-      "title": "Separate working copies protect unfinished changes",
-      "time": "1:08",
-      "minutes": 68
+      "key": "the-first-action-reads-the-assigned-file",
+      "minutes": 56
     },
     {
-      "title": "Run the ready tasks with two workers",
-      "time": "1:10",
-      "minutes": 70
+      "key": "the-edit-includes-the-version-it-was-based-on",
+      "minutes": 59
     },
     {
-      "title": "Read the timeline as work and waiting",
-      "time": "1:25",
-      "minutes": 85
+      "key": "run-the-checks-against-the-changed-files",
+      "minutes": 62
     },
     {
-      "title": "Save the checkpoint before the break",
-      "time": "1:45",
+      "key": "return-the-tool-result-to-the-worker",
+      "minutes": 65
+    },
+    {
+      "key": "append-the-actual-observation-to-the-next-request",
+      "minutes": 67
+    },
+    {
+      "key": "finish-submits-a-patch-for-review",
+      "minutes": 69
+    },
+    {
+      "key": "worker-exercise",
+      "minutes": 73
+    },
+    {
+      "key": "a-trace-should-answer-what-changed-and-why",
+      "minutes": 83
+    },
+    {
+      "key": "inspect-the-worker-s-test-in-agent-lens",
+      "minutes": 87
+    },
+    {
+      "key": "the-request-has-a-size-limit-even-when-files-are-saved",
+      "minutes": 91
+    },
+    {
+      "key": "break-until-1-45",
+      "minutes": 95
+    },
+    {
+      "key": "choose-work-that-can-happen-independently",
       "minutes": 105
     },
     {
-      "title": "Review a patch before it enters the product",
-      "time": "1:55",
-      "minutes": 115
+      "key": "ready-means-its-prerequisites-passed",
+      "minutes": 110
     },
     {
-      "title": "Test the combined departures board",
-      "time": "2:00",
+      "key": "both-workers-can-see-a-pending-task",
+      "minutes": 113
+    },
+    {
+      "key": "a-separate-check-and-write-permits-two-owners",
+      "minutes": 116
+    },
+    {
+      "key": "one-short-transaction-assigns-one-owner",
       "minutes": 120
     },
     {
-      "title": "An integration error can cross a correct boundary",
-      "time": "2:12",
-      "minutes": 132
+      "key": "keep-the-model-call-outside-the-claim-transaction",
+      "minutes": 123
     },
     {
-      "title": "Shared memory needs something worth sharing",
-      "time": "2:25",
+      "key": "tasks-exercise",
+      "minutes": 125
+    },
+    {
+      "key": "separate-working-copies-protect-unfinished-changes",
+      "minutes": 135
+    },
+    {
+      "key": "each-worker-starts-from-the-same-source",
+      "minutes": 136
+    },
+    {
+      "key": "each-task-can-edit-only-its-assigned-module",
+      "minutes": 139
+    },
+    {
+      "key": "integration-checks-the-patches-against-their-base",
+      "minutes": 142
+    },
+    {
+      "key": "run-the-ready-tasks-with-two-workers",
       "minutes": 145
     },
     {
-      "title": "Check the lesson before another agent relies on it",
-      "time": "2:28",
-      "minutes": 148
+      "key": "read-the-timeline-as-work-and-waiting",
+      "minutes": 155
     },
     {
-      "title": "Write a rule with a test attached",
-      "time": "2:32",
-      "minutes": 152
+      "key": "find-both-submitted-patches-before-integration",
+      "minutes": 160
     },
     {
-      "title": "Save a lesson supported by an execution",
-      "time": "2:36",
-      "minutes": 156
+      "key": "review-a-patch-before-it-enters-the-product",
+      "minutes": 162
     },
     {
-      "title": "Inspect the memory read, then its effect",
-      "time": "2:44",
-      "minutes": 164
+      "key": "test-the-combined-departures-board",
+      "minutes": 165
     },
     {
-      "title": "Find the last direct train between two stops",
-      "time": "2:50",
-      "minutes": 170
+      "key": "an-integration-error-can-cross-a-correct-boundary",
+      "minutes": 173
     },
     {
-      "title": "Run both versions of the follow-up feature",
-      "time": "2:55",
-      "minutes": 175
+      "key": "use-the-local-preview-to-follow-a-returned-row",
+      "minutes": 176
     },
     {
-      "title": "The factory has two kinds of state",
-      "time": "3:15",
-      "minutes": 195
+      "key": "break-until-3-20",
+      "minutes": 180
     },
     {
-      "title": "Evaluate the product and the process separately",
-      "time": "3:25",
-      "minutes": 205
+      "key": "shared-memory-needs-something-worth-sharing",
+      "minutes": 200
     },
     {
-      "title": "A scenario is an input and an expected behavior",
-      "time": "3:27",
-      "minutes": 207
+      "key": "check-the-lesson-before-another-agent-relies-on-it",
+      "minutes": 203
     },
     {
-      "title": "Compare the frozen builds on matching cases",
-      "time": "3:30",
-      "minutes": 210
+      "key": "write-a-rule-with-a-test-attached",
+      "minutes": 206
     },
     {
-      "title": "Read one comparison row before the average",
-      "time": "3:34",
-      "minutes": 214
+      "key": "a-saved-note-is-not-automatically-accepted",
+      "minutes": 209
     },
     {
-      "title": "Compare the same departures in Forge",
-      "time": "3:35",
+      "key": "first-exclude-the-unchecked-interpretation",
+      "minutes": 211
+    },
+    {
+      "key": "then-check-the-applicable-contract-version",
+      "minutes": 213
+    },
+    {
+      "key": "finally-match-the-task-s-scope-and-tags",
       "minutes": 215
     },
     {
-      "title": "The faster build missed two final cases",
-      "time": "3:37",
-      "minutes": 217
-    },
-    {
-      "title": "A timezone assumption selected the wrong train",
-      "time": "3:38",
-      "minutes": 218
-    },
-    {
-      "title": "More workers can still produce more waiting",
-      "time": "3:40",
+      "key": "memory-exercise",
       "minutes": 220
     },
     {
-      "title": "Choose a release using the saved checks",
-      "time": "3:45",
-      "minutes": 225
+      "key": "inspect-the-memory-read-then-its-effect",
+      "minutes": 230
     },
     {
-      "title": "Publish the version you can reproduce",
-      "time": "3:47",
-      "minutes": 227
+      "key": "find-the-last-direct-train-between-two-stops",
+      "minutes": 240
     },
     {
-      "title": "Explain one result to another participant",
-      "time": "3:53",
-      "minutes": 233
+      "key": "start-both-follow-ups-from-the-same-release",
+      "minutes": 242
     },
     {
-      "title": "Take the coordination code to your own project",
-      "time": "3:58",
-      "minutes": 238
+      "key": "keep-both-sets-of-patches-and-checks",
+      "minutes": 245
+    },
+    {
+      "key": "the-follow-up-returns-a-journey-not-a-list-of-guesses",
+      "minutes": 247
+    },
+    {
+      "key": "run-both-versions-of-the-follow-up-feature",
+      "minutes": 250
+    },
+    {
+      "key": "the-factory-has-two-kinds-of-state",
+      "minutes": 267
+    },
+    {
+      "key": "find-where-the-lesson-entered-the-request",
+      "minutes": 272
+    },
+    {
+      "key": "keep-a-stopped-worker-s-files-and-error",
+      "minutes": 278
+    },
+    {
+      "key": "break-until-4-55",
+      "minutes": 285
+    },
+    {
+      "key": "evaluate-the-product-and-the-process-separately",
+      "minutes": 295
+    },
+    {
+      "key": "a-scenario-is-an-input-and-an-expected-behavior",
+      "minutes": 298
+    },
+    {
+      "key": "evaluate-exercise",
+      "minutes": 303
+    },
+    {
+      "key": "read-one-comparison-row-before-the-average",
+      "minutes": 308
+    },
+    {
+      "key": "compare-the-same-departures-in-forge",
+      "minutes": 310
+    },
+    {
+      "key": "the-faster-build-missed-two-final-cases",
+      "minutes": 313
+    },
+    {
+      "key": "open-the-two-failing-rows-in-the-final-comparison",
+      "minutes": 315
+    },
+    {
+      "key": "a-timezone-assumption-selected-the-wrong-train",
+      "minutes": 316
+    },
+    {
+      "key": "interpret-the-request-as-one-instant",
+      "minutes": 318
+    },
+    {
+      "key": "the-team-used-the-caller-s-clock-for-service-time",
+      "minutes": 320
+    },
+    {
+      "key": "the-renderer-carried-the-same-wrong-trip-into-the-board",
+      "minutes": 322
+    },
+    {
+      "key": "neither-follow-up-completed-the-query-change",
+      "minutes": 324
+    },
+    {
+      "key": "more-workers-can-still-produce-more-waiting",
+      "minutes": 325
+    },
+    {
+      "key": "choose-a-release-using-the-saved-checks",
+      "minutes": 330
+    },
+    {
+      "key": "release-exercise",
+      "minutes": 335
+    },
+    {
+      "key": "reload-the-selected-app-and-repeat-one-case",
+      "minutes": 344
+    },
+    {
+      "key": "explain-one-result-to-another-participant",
+      "minutes": 348
+    },
+    {
+      "key": "take-the-coordination-code-to-your-own-project",
+      "minutes": 358
+    },
+    {
+      "key": "tasks-answer",
+      "minutes": null
+    },
+    {
+      "key": "memory-answer",
+      "minutes": null
+    },
+    {
+      "key": "release-answer",
+      "minutes": null
+    },
+    {
+      "key": "workflow-sources",
+      "minutes": null
+    },
+    {
+      "key": "sources-for-the-data-and-evaluation",
+      "minutes": null
+    },
+    {
+      "key": "acceptance-answer",
+      "minutes": null
+    },
+    {
+      "key": "worker-answer",
+      "minutes": null
+    },
+    {
+      "key": "evaluate-answer",
+      "minutes": null
     }
-  ]
+  ],
+  "controls": [
+    {
+      "slide": 16,
+      "field": "run",
+      "label": "Connect and restore my work",
+      "found": true
+    },
+    {
+      "slide": 16,
+      "field": "inspect",
+      "label": "Send my first Agent Lens trace",
+      "found": true
+    },
+    {
+      "slide": 18,
+      "field": "run",
+      "label": "Check my after-midnight scenario",
+      "found": true
+    },
+    {
+      "slide": 27,
+      "field": "run",
+      "label": "Run one worker on the first feature",
+      "found": true
+    },
+    {
+      "slide": 38,
+      "field": "run",
+      "label": "Check my ready_tasks code",
+      "found": true
+    },
+    {
+      "slide": 43,
+      "field": "run",
+      "label": "Run the ready tasks with two workers",
+      "found": true
+    },
+    {
+      "slide": 47,
+      "field": "run",
+      "label": "Test the combined departures board",
+      "found": true
+    },
+    {
+      "slide": 47,
+      "field": "inspect",
+      "label": "Preview this saved app",
+      "found": true
+    },
+    {
+      "slide": 58,
+      "field": "run",
+      "label": "Save a checked lesson",
+      "found": true
+    },
+    {
+      "slide": 58,
+      "field": "optional",
+      "label": "Ask the agent to propose a lesson",
+      "found": true
+    },
+    {
+      "slide": 64,
+      "field": "run",
+      "label": "Run both versions of the follow-up feature",
+      "found": true
+    },
+    {
+      "slide": 64,
+      "field": "review",
+      "label": "I reviewed the no-lesson and shared-lesson patches",
+      "found": true
+    },
+    {
+      "slide": 64,
+      "field": "integrate",
+      "label": "Integrate the reviewed follow-up patches",
+      "found": true
+    },
+    {
+      "slide": 71,
+      "field": "run",
+      "label": "Compare the frozen builds",
+      "found": true
+    },
+    {
+      "slide": 71,
+      "field": "recovery",
+      "label": "Retry saved Forge publications",
+      "found": true
+    },
+    {
+      "slide": 83,
+      "field": "run",
+      "label": "Publish this release and its evidence",
+      "found": true
+    }
+  ],
+  "errors": []
 }

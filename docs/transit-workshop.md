@@ -2,9 +2,11 @@
 
 **Technical preview.** The local checks, live worker executions and native Forge readback have been exercised. External-account access and a participant rehearsal are still required before advertising a ready-to-run class.
 
-This four-hour workshop gives each participant a small product to deliver: a departures board using real MBTA schedule records. They write the coordination code around coding agents, inspect the resulting work in Agent Lens, and test the combined application. Then they use an incident from that build to create a checked project lesson and run a matched follow-up with and without it.
+This six-hour workshop gives each participant a small product to deliver: a departures board using real MBTA schedule records. They write the coordination code around coding agents, inspect the resulting work in Agent Lens, and test the combined application. Then they use an incident from that build to create a checked project lesson and run a matched follow-up with and without it.
 
 The product team and deadline are fictional. The transit records are real. The app uses a historical timetable; it does not show current service, vehicle positions or predicted arrivals.
+
+The session includes ten-minute breaks at 1:35 and 4:45, plus a twenty-minute break at 3:00. The [facilitator guide](transit-facilitator.md) has the complete schedule and exact notebook controls. The deck follows one departure through its records, then one code change through a worker, integration and release.
 
 ## What participants build
 

@@ -1,0 +1,17 @@
+{
+  "source": "src/forge_workshop_kit/solar.py:load_goes",
+  "dataset_sha256": "302e7f2a2aaddf5d448ed5de317b5df3c23f0379557eba28b1e3d73466725b03",
+  "origin": "2014-02-01T01:00",
+  "target_time": "2014-02-01T01:30",
+  "latest_log10": -5.534127712249756,
+  "target_log10": -4.940861701965332,
+  "standardized_latest": -0.23321135342121124,
+  "mean_xrsb": -5.469872951507568,
+  "std_xrsb": 0.27552157640457153,
+  "counts": {
+    "train": 11122,
+    "validation": 2779,
+    "test": 2694
+  },
+  "raw_flux": 2.9232926408440107e-06
+}

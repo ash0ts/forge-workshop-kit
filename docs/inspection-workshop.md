@@ -1,6 +1,6 @@
 # Find defective parts before they ship
 
-This three-hour workshop puts participants on a fictional circuit-board inspection team. The photos are real VisA PCB1 observations. Participants write feature assembly, threshold selection and review-selection code, then compare the same boards across the resulting classifiers.
+This four-hour workshop puts participants on a fictional circuit-board inspection team. The photos are real VisA PCB1 observations. Participants write feature assembly, threshold selection and review-selection code, then compare the same boards across the resulting classifiers.
 
 Copy the Visual Inspection notebook into a writable Forge project. The core path runs on notebook CPU and makes no inference API calls. Locally, install the `inspection` extra and open `notebooks/visual_inspection.py` with marimo. The project login is yours; no gateway or facilitator credential is involved.
 
@@ -16,17 +16,23 @@ Participants fit a class-balanced logistic classifier. The worked follow-up fixe
 
 ## Timed facilitation
 
-| Time | Participant changes | Check before moving on |
+The deck follows a real board through its feature arrays, a classifier score, an operating decision, and a saved detector. Participants see the array shape and relevant code before each exercise. The longer session adds explanation and practice, with the same dataset and training runs.
+
+| Time | Participants change or investigate | Check before moving on |
 |---|---|---|
-| 0–15 | Project setup and a real Forge Tool attribute | Find the attribute and returned environment in Agent Lens. |
-| 15–35 | Choose a board and make an assessment before revealing its mask | Explain which visible region prompted the assessment. |
-| 35–65 | Complete `build_features`; optionally recompute four feature rows | Whole-image and patch arrays have the expected shapes and preserve board order. |
-| 65–90 | Complete `choose_threshold`; train both representations | Compare validation misses and false alarms, then inspect saved classifier files. |
-| 90–100 | Break | Confirm the run and its files are saved. |
-| 100–125 | Complete `choose_review`; inspect selected boards | Select 24 different review-pool cases using scores, then compare with 24 random cases. |
-| 125–145 | Train from newly revealed labels and choose a version | Keep human assessments separate from supplied dataset annotations. Freeze before testing. |
-| 145–165 | Evaluate all four frozen versions and inspect photos | Compare average precision, misses, false alarms and review volume separately. |
-| 165–180 | Reload a saved classifier and write the conclusion | Reproduce a score from its exact file. Link the comparison and chosen version in a Report. |
+| 0–27 | Copy the notebook, configure their project and add a Forge Tool attribute | Find the actual operation and attribute in Agent Lens |
+| 27–37 | Inspect a board before revealing the label and mask | Distinguish board classification from defect localization |
+| 37–79 | Follow the frozen encoder, implement `build_features`, optionally verify four cached rows | Explain 512 whole-image values plus 196 patch distances, and preserve board order |
+| 79–98 | Follow a fit into validation predictions and explore the free threshold fixture | Supply the same learner feature function to fitting and scoring |
+| 98–130 | Complete `choose_threshold`, train both representations, inspect ranking and operating errors | Explain AP, missed defects, false alarms and the saved model file |
+| 130–140 | Break | Both trained versions are saved |
+| 140–173 | Implement `choose_review`, compare active and random selections, save an assessment | Both branches select 24 boards before opening labels |
+| 173–200 | Train both reviewed classifiers, select a version and freeze the comparison | Keep feature changes, extra labels and review policy distinct |
+| 200–210 | Break | Selected source, models and thresholds are saved |
+| 210–234 | Evaluate the same 442 boards and inspect improvements and regressions | Read scores against each model’s threshold; use AP for the complete ranking |
+| 234–240 | Reload a classifier and publish the conclusion | Reproduce one saved score and name the next validation question |
+
+The interactive threshold and AP illustrations use the notebook’s existing public five-board fixture. They are labeled as practice values, not PCB1 results. The actual recorded comparison and native captures remain separate. No extra training or inference is needed to use the deck controls.
 
 The review batch uses the dataset's supplied labels to simulate acquiring annotations. Participants' individual assessments are saved separately. We do not label the whole batch human-reviewed or claim active selection wins because it obtained additional labels. Both selection methods receive exactly 24 labels.
 

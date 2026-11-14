@@ -1,7 +1,7 @@
 <script setup>
 import {useId} from 'vue'
 const marker=useId().replace(/:/g,'')
-const props = defineProps({mode: {default: 'residual'}, reveal: {default: 2}})
+const props = defineProps({mode: {default: 'residual'}, reveal: {type: Number, default: 99}})
 const descriptions = {
   residual: 'Two observed image channels enter the CNN. It predicts one correction channel. Add the current image to produce a future forecast; a zero correction is persistence.',
   mask: 'Compare the predicted and observed image. Take absolute pixel errors, keep only the fixed disk mask, average within each image, then average images.',
@@ -21,11 +21,11 @@ const descriptions = {
 </g>
 <g v-else-if="mode==='mask'">
  <g transform="translate(35 65)"><rect width="180" height="180" fill="#ecdfd3"/><circle cx="90" cy="90" r="68" fill="#cb8549"/><path d="M68 55L105 92L130 80" stroke="#f8dd97" stroke-width="17" fill="none"/><text x="90" y="220" text-anchor="middle">Pixel errors</text></g>
- <text x="250" y="170" font-size="40">×</text>
+<g v-if="reveal>=2" data-reveal-step="2"> <text x="250" y="170" font-size="40">×</text>
  <g transform="translate(295 65)"><rect width="180" height="180" fill="#294b50"/><circle cx="90" cy="90" r="68" fill="#fffaf0"/><text x="90" y="89" text-anchor="middle">1</text><text x="17" y="29" class="white small">0</text><text x="90" y="220" text-anchor="middle">Fixed disk mask</text></g>
- <path d="M495 150H565" class="arrow"/>
- <g transform="translate(585 65)"><rect width="180" height="180" fill="#294b50"/><circle cx="90" cy="90" r="68" fill="#cb8549"/><path d="M68 55L105 92L130 80" stroke="#f8dd97" stroke-width="17" fill="none"/><text x="90" y="220" text-anchor="middle">On-disk errors</text></g>
- <path d="M785 150H845" class="arrow"/><text x="960" y="127" text-anchor="middle">Sum ÷ disk pixels</text><text x="960" y="168" text-anchor="middle" class="small">One score per image</text><text x="960" y="211" text-anchor="middle" class="small">Then average images</text>
+ <path d="M495 150H565" class="arrow"/></g>
+<g v-if="reveal>=3" data-reveal-step="3"> <g transform="translate(585 65)"><rect width="180" height="180" fill="#294b50"/><circle cx="90" cy="90" r="68" fill="#cb8549"/><path d="M68 55L105 92L130 80" stroke="#f8dd97" stroke-width="17" fill="none"/><text x="90" y="220" text-anchor="middle">On-disk errors</text></g>
+ <path d="M785 150H845" class="arrow"/></g><g v-if="reveal>=4" data-reveal-step="4"><text x="960" y="127" text-anchor="middle">Sum ÷ disk pixels</text><text x="960" y="168" text-anchor="middle" class="small">One score per image</text><text x="960" y="211" text-anchor="middle" class="small">Then average images</text></g>
  <text x="560" y="337" text-anchor="middle" class="small">Illustration of the calculation. Off-disk changes contribute zero.</text>
 </g>
 <g v-else-if="mode==='search'">

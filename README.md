@@ -8,11 +8,11 @@ Each participant works in their own project. The facilitator can read the progre
 
 | Workshop | What you’ll do |
 | --- | --- |
-| [Solar Autoresearch · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view) | Join a research lab working with real satellite observations. Build forecasts, compare training settings, then ask an agent to propose and test code changes. Four hours. |
-| [Pending, Inc. · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) | Give an office agent tools for refunds and account access. Check its work, edit its instructions, then build an agent that makes and tests further edits. Three hours. |
-| [Route customer requests · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view) | Compare two classifiers on Banking77, review mistakes, check a judge against human labels, and freeze a revised router. Three hours. |
-| [Find defective parts · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view) | Compare whole-image and patch features on real VisA circuit-board photographs, spend a fixed review budget, and reproduce the selected detector. Three hours. |
-| [Build a transit app · notebook source](notebooks/transit_factory.py) | Give two coding agents separate parts of a departure board, review and test their patches, then compare fresh workers with and without a checked lesson. Real historical MBTA schedules. Four hours. |
+| [Solar Autoresearch · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view) | Join a research lab working with real satellite observations. Build forecasts, compare training settings, then ask an agent to propose and test code changes. Six hours. |
+| [Pending, Inc. · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) | Give an office agent tools for refunds and account access. Check its work, edit its instructions, then build an agent that makes and tests further edits. Four hours. |
+| [Route customer requests · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view) | Compare two classifiers on Banking77, review mistakes, check a judge against human labels, and freeze a revised router. Four hours. |
+| [Find defective parts · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view) | Compare whole-image and patch features on real VisA circuit-board photographs, spend a fixed review budget, and reproduce the selected detector. Four hours. |
+| [Build a transit app · notebook source](notebooks/transit_factory.py) | Give two coding agents separate parts of a departure board, review and test their patches, then compare fresh workers with and without a checked lesson. Real historical MBTA schedules. Six hours. |
 
 Use the companion deck alongside your notebook:
 
@@ -24,7 +24,7 @@ Use the companion deck alongside your notebook:
 | Circuit-board inspection | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/inspection/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/inspection/visual-inspection.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/inspection/visual-inspection-source.zip) |
 | Transit software factory | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/transit/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/transit/transit-factory.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/transit/transit-factory-source.zip) |
 
-These decks follow the current gateway-free notebooks. The [v0.6.0 release package](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.6.0) includes notebooks, PDFs, and editable deck sources. Teaching datasets keep their existing versioned download links.
+These decks follow the current gateway-free notebooks. The [v0.6.1 teaching release](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.6.1) includes notebooks, PDFs, and editable deck sources. Teaching datasets keep their existing versioned download links.
 
 For a short demonstration, follow the [current demo guide](docs/current-demo-guide.md). It takes you from a notebook exercise to a trace, code change, and recorded result.
 
@@ -58,7 +58,7 @@ For Pending, use `--extra pending` in those commands and open `notebooks/pending
 
 For routing, use `--extra routing` and `notebooks/request_routing.py`. For inspection, use `--extra inspection` and `notebooks/visual_inspection.py`. Download controls verify the pinned teaching data before loading it. Cached features make the required classifier exercises practical on CPU; inspection also lets you recompute four images.
 
-For transit, run `uv sync --frozen` and `uv run marimo edit notebooks/transit_factory.py`. It uses the shared dependencies, Python's standard library, and a bundled 57 KB timetable subset. There is no live transit API or separate app server. See the [transit exercises](docs/transit-workshop.md), [four-hour facilitator guide](docs/transit-facilitator.md), and [data provenance and prepared repairs](examples/transit/README.md).
+For transit, run `uv sync --frozen` and `uv run marimo edit notebooks/transit_factory.py`. It uses the shared dependencies, Python's standard library, and a bundled 57 KB timetable subset. There is no live transit API or separate app server. See the [transit exercises](docs/transit-workshop.md), [six-hour facilitator guide](docs/transit-facilitator.md), and [data provenance and prepared repairs](examples/transit/README.md).
 
 ## Work through an exercise
 
@@ -133,7 +133,7 @@ session.checkpoint("baseline", evidence={"Run": run_url})
 Put the experiment, scorer, tracing, and improvement code in the notebook where participants can edit it. The package handles project identity, saving, publication, and progress. See the [framework guide](docs/framework.md) and [source map](docs/source-map.md).
 
 - [Current demo guide: exercises and recorded results](docs/current-demo-guide.md)
-- [Four-hour facilitator guide](docs/facilitator.md)
+- [Six-hour facilitator guide](docs/facilitator.md)
 - [Deck notes and Pending exercise references](docs/deck-guide.md)
 - [Solar data and experiment design](docs/solar-contract.md)
 - [Release checks and limitations](docs/release-checks.md)

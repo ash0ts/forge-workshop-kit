@@ -1,421 +1,1897 @@
 {
-  "total_slides": 52,
+  "total_slides": 94,
+  "duration_minutes": 360,
+  "schedule": [
+    {
+      "start": "00:00",
+      "end": "00:30",
+      "activity": "Understand the rider, source data and service day"
+    },
+    {
+      "start": "00:30",
+      "end": "00:50",
+      "activity": "Connect to Forge and write an acceptance scenario"
+    },
+    {
+      "start": "00:50",
+      "end": "01:35",
+      "activity": "Build and inspect the single-worker loop"
+    },
+    {
+      "start": "01:35",
+      "end": "01:45",
+      "activity": "Break"
+    },
+    {
+      "start": "01:45",
+      "end": "02:25",
+      "activity": "Implement task readiness, claims and isolated copies"
+    },
+    {
+      "start": "02:25",
+      "end": "03:00",
+      "activity": "Run two workers and test their patches together"
+    },
+    {
+      "start": "03:00",
+      "end": "03:20",
+      "activity": "Break"
+    },
+    {
+      "start": "03:20",
+      "end": "04:00",
+      "activity": "Review a project lesson and implement retrieval"
+    },
+    {
+      "start": "04:00",
+      "end": "04:45",
+      "activity": "Run and inspect the matched follow-up builds"
+    },
+    {
+      "start": "04:45",
+      "end": "04:55",
+      "activity": "Break"
+    },
+    {
+      "start": "04:55",
+      "end": "05:30",
+      "activity": "Evaluate frozen builds and diagnose the UTC defect"
+    },
+    {
+      "start": "05:30",
+      "end": "06:00",
+      "activity": "Reproduce a result and publish the release decision"
+    }
+  ],
   "slides": [
     {
       "number": 1,
+      "key": "build-a-transit-app-with-a-team-of-coding-agents",
       "title": "Build a transit app<br>with a team of coding agents",
       "kind": "cover",
       "name": "",
-      "notes": "The department and deadline are fictional. The schedule records are real public MBTA data. Participants build a bounded software factory; we do not claim to reproduce an unattended production engineering organization.",
-      "answer": null
+      "notes": "The department and deadline are fictional. The schedule records are real public MBTA data. Participants build a bounded software factory; we do not claim to reproduce an unattended production engineering organization. The single session includes three breaks. The extra time is for tracing one concrete input through the implementation, writing the coordinator and explaining the recorded failures.",
+      "answer": null,
+      "concept": "Build a transit app with a team of coding agents",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:00",
+        "minutes": 0
+      },
+      "clicks": null
     },
     {
       "number": 2,
+      "key": "your-team-needs-a-departures-board",
       "title": "Your team needs a departures board",
       "kind": "",
       "name": "",
       "notes": "Start with the person using the software. Ask what could make a plausible-looking board wrong. Listen for wrong date, wrong stop, missing departures and misleading times. No model or agent count appears before the product is clear.",
-      "answer": null
+      "answer": null,
+      "concept": "Your team needs a departures board",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:02",
+        "minutes": 2
+      },
+      "clicks": null
     },
     {
       "number": 3,
+      "key": "here-is-the-application-we-want-to-deliver",
       "title": "Here is the application we want to deliver",
       "kind": "",
       "name": "",
       "notes": "This is a real capture of the reference implementation, not a model outcome. Participants will inspect the app their workers actually produce. Call out the selected Park Street platform, midnight on November 29, and first scheduled departure at 00:08. The next slides explain why that train belongs to November 28 service.",
-      "answer": null
+      "answer": null,
+      "concept": "Here is the application we want to deliver",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:05",
+        "minutes": 5
+      },
+      "clicks": null
     },
     {
       "number": 4,
+      "key": "the-inputs-are-public-transit-records",
       "title": "The inputs are public transit records",
       "kind": "",
       "name": "",
       "notes": "Open the notebook data receipt and read its archive date and checksum. Do not describe the small teaching subset as the complete MBTA system. MBTA describes its feed at https://github.com/mbta/gtfs-documentation/blob/master/reference/gtfs.md .",
-      "answer": null
+      "answer": null,
+      "concept": "The inputs are public transit records",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:08",
+        "minutes": 8
+      },
+      "clicks": null
     },
     {
       "number": 5,
+      "key": "start-with-the-row-for-the-platform",
+      "title": "Start with the row for the platform",
+      "kind": "",
+      "name": "",
+      "notes": "Keep the same trip visible through the next three slides. Read the actual identifiers aloud once. The product uses these joins, not an LLM guess about the next train. Ask which table must tell us whether this trip runs on Thanksgiving. Timeline spacing is illustrative; timestamps are actual.",
+      "answer": null,
+      "concept": "Start with the row for the platform",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/assets/transit/manifest.json; src/forge_workshop_kit/transit.py",
+      "evidence": [
+        "MBTA archive 20241128: trip 63926435, stop 70076"
+      ],
+      "timing": {
+        "elapsed": "0:10",
+        "minutes": 10
+      },
+      "clicks": null
+    },
+    {
+      "number": 6,
+      "key": "join-the-trip-to-its-service-calendar",
+      "title": "Join the trip to its service calendar",
+      "kind": "",
+      "name": "",
+      "notes": "The service ID is a join key. The active dates come from the calendar and exception records. Explain that calendar_dates overrides the weekly rule. This is a historical snapshot and fixed test date, not today\u2019s schedule.",
+      "answer": null,
+      "concept": "Join the trip to its service calendar",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/assets/transit/manifest.json; src/forge_workshop_kit/transit.py",
+      "evidence": [
+        "GTFS service_id and calendar_dates"
+      ],
+      "timing": {
+        "elapsed": "0:13",
+        "minutes": 13
+      },
+      "clicks": null
+    },
+    {
+      "number": 7,
+      "key": "keep-the-service-date-and-boarding-date",
+      "title": "Keep the service date and boarding date",
+      "kind": "",
+      "name": "",
+      "notes": "Ask the room to name the two different dates before revealing the timestamp. The train is eight minutes after the next midnight. Explain why hour modulo 24 without carrying the day loses information.",
+      "answer": null,
+      "concept": "Keep the service date and boarding date",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/assets/transit/manifest.json; src/forge_workshop_kit/transit.py",
+      "evidence": [
+        "2024-11-29T00:08:00-05:00"
+      ],
+      "timing": {
+        "elapsed": "0:15",
+        "minutes": 15
+      },
+      "clicks": null
+    },
+    {
+      "number": 8,
+      "key": "the-last-train-can-belong-to-yesterday-s-service",
       "title": "The last train can belong to yesterday\u2019s service",
       "kind": "",
       "name": "",
       "notes": "This is an actual retained row: trip 63926435, stop 70076, departure_time 24:08:00, stop_sequence 150, ThanksgivingDay service, headsign Alewife. The civil timestamp is 2024-11-29T00:08:00-05:00. Ask what a parser restricted to 0..23 hours would do. The rule must survive between components.",
-      "answer": null
+      "answer": null,
+      "concept": "The last train can belong to yesterday\u2019s service",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:17",
+        "minutes": 17
+      },
+      "clicks": null
     },
     {
-      "number": 6,
+      "number": 9,
+      "key": "convert-elapsed-service-time-into-a-timestamp",
+      "title": "Convert elapsed service time into a timestamp",
+      "kind": "",
+      "name": "",
+      "notes": "Explain the datetime origin, timezone and timedelta separately. This example has no daylight-saving transition; it does not replace the full GTFS time specification. The learners write the acceptance check, while the coding worker implements the general query.",
+      "answer": null,
+      "concept": "Convert elapsed service time into a timestamp",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/assets/transit/manifest.json; src/forge_workshop_kit/transit.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:20",
+        "minutes": 20
+      },
+      "clicks": null
+    },
+    {
+      "number": 10,
+      "key": "check-the-joined-behavior-not-just-the-parser",
+      "title": "Check the joined behavior, not just the parser",
+      "kind": "",
+      "name": "",
+      "notes": "These deliberate mutations test the participant\u2019s assertion. They are local examples, not recorded agent mistakes. Explain why a checker that always returns True would pass the first example and fail to teach anything.",
+      "answer": null,
+      "concept": "Check the joined behavior, not just the parser",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/assets/transit/manifest.json; src/forge_workshop_kit/transit.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:23",
+        "minutes": 23
+      },
+      "clicks": null
+    },
+    {
+      "number": 11,
+      "key": "turn-the-brief-into-checks",
       "title": "Turn the brief into checks",
       "kind": "",
       "name": "",
       "notes": "These are requirements for our product, not a claim that the initial code fails them. Show the concrete acceptance inputs and expected outputs in the notebook. Final cases stay outside the coding-worker context until the versions are frozen.",
-      "answer": null
+      "answer": null,
+      "concept": "Turn the brief into checks",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:24",
+        "minutes": 24
+      },
+      "clicks": null
     },
     {
-      "number": 7,
+      "number": 12,
+      "key": "a-software-factory-needs-a-way-to-finish-work",
       "title": "A software factory needs a way to finish work",
       "kind": "",
       "name": "",
       "notes": "Software factory is a broad term. This slide states the operational meaning we implement. It includes specification, coordination, verification and release. It is not simply a chat room with several role prompts.",
-      "answer": null
+      "answer": null,
+      "concept": "A software factory needs a way to finish work",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:26",
+        "minutes": 26
+      },
+      "clicks": null
     },
     {
-      "number": 8,
+      "number": 13,
+      "key": "add-the-task-board-and-two-workers",
       "title": "Add the task board and two workers",
       "kind": "",
       "name": "",
       "notes": "Click once to reveal workers, once to reveal integration, once to reveal the checked lesson. Solid arrows show code or execution flow. The dashed arrow identifies reviewed evidence. The diagram is explanatory, not a recorded run.",
-      "answer": null
+      "answer": null,
+      "concept": "Add the task board and two workers",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:28",
+        "minutes": 28
+      },
+      "clicks": 3
     },
     {
-      "number": 9,
+      "number": 14,
+      "key": "two-workers-means-two-contexts-around-the-same-model",
+      "title": "Two workers means two contexts around the same model",
+      "kind": "",
+      "name": "",
+      "notes": "The worker is a Python loop plus model requests and allowed tools. Two workers do not mean training two new models. Model settings match across the sequential and parallel builds. The comparison asks what the coordination design changes for this task.",
+      "answer": null,
+      "concept": "Two workers means two contexts around the same model",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/factory.py:run_worker; src/forge_workshop_kit/factory_teaching.py:EXERCISES.worker",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:29",
+        "minutes": 29
+      },
+      "clicks": null
+    },
+    {
+      "number": 15,
+      "key": "your-project-contains-the-experiment",
       "title": "Your project contains the experiment",
       "kind": "",
       "name": "",
       "notes": "Keep the distinction between agents sharing project records and attendees sharing credentials. The latter does not happen. The notebook has an adjustable inference allowance; notebook compute is billed separately. Opening the notebook does not start agents.",
-      "answer": null
+      "answer": null,
+      "concept": "Your project contains the experiment",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:30",
+        "minutes": 30
+      },
+      "clicks": null
     },
     {
-      "number": 10,
+      "number": 16,
+      "key": "connect-and-inspect-the-source-data",
       "title": "Connect and inspect the source data",
       "kind": "exercise",
       "name": "",
-      "notes": "Do not ask participants to paste a key into a code cell. Hosted authentication comes from their own account. Locally use wandb login. Access checks should distinguish a writable project from inference entitlement.",
-      "answer": null
+      "notes": "Do not ask participants to paste a key into a code cell. Hosted authentication comes from their own account. Locally use wandb login. Access checks should distinguish a writable project from inference entitlement. The workshop list in the README links to the current native Transit template. If copying is unavailable, use its notebook source/import fallback; do not send attendees to the reference app.",
+      "answer": null,
+      "concept": "Connect and inspect the source data",
+      "exercise": {
+        "step": "setup",
+        "functions": [
+          "instrument_tool"
+        ],
+        "prerequisites": [
+          "Own writable Forge project"
+        ],
+        "run": "Connect and restore my work",
+        "inspect": "Send my first Agent Lens trace"
+      },
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:33",
+        "minutes": 33
+      },
+      "clicks": null
     },
     {
-      "number": 11,
+      "number": 17,
+      "key": "record-the-operation-that-you-just-ran",
+      "title": "Record the operation that you just ran",
+      "kind": "",
+      "name": "",
+      "notes": "Identify the name, inputs, actual result and time boundaries. Participants add or edit the attribute in the full notebook function and find it in their own setup span. This operation reads the teaching dataset, so it does not spend inference allowance.",
+      "answer": null,
+      "concept": "Record the operation that you just ran",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:38",
+        "minutes": 38
+      },
+      "clicks": null
+    },
+    {
+      "number": 18,
+      "key": "acceptance-exercise",
       "title": "Write the after-midnight acceptance check",
       "kind": "exercise",
-      "name": "",
+      "name": "acceptance-exercise",
       "notes": "The scenario is written by the participant and later runs on the integrated app. It is public development evidence, not a hidden final answer. Show how a plausible train list can still use the wrong service day.",
-      "answer": null
+      "answer": "acceptance-answer",
+      "concept": "Write the after-midnight acceptance check",
+      "exercise": {
+        "step": "setup",
+        "functions": [
+          "check_departures"
+        ],
+        "prerequisites": [
+          "Connect and restore my work"
+        ],
+        "run": "Check my after-midnight scenario"
+      },
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:42",
+        "minutes": 42
+      },
+      "clicks": null
     },
     {
-      "number": 12,
+      "number": 19,
+      "key": "one-worker-still-needs-a-complete-loop",
       "title": "One worker still needs a complete loop",
       "kind": "",
       "name": "",
       "notes": "Start with the familiar single-agent harness. Multiple agents do not remove the need for correct tool observation handling, explicit stopping and independent checks. Model settings stay fixed in the comparisons.",
-      "answer": null
+      "answer": null,
+      "concept": "One worker still needs a complete loop",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:50",
+        "minutes": 50
+      },
+      "clicks": null
     },
     {
-      "number": 13,
+      "number": 20,
+      "key": "give-the-worker-the-task-it-is-allowed-to-solve",
       "title": "Give the worker the task it is allowed to solve",
       "kind": "",
       "name": "",
       "notes": "Explain each input before editing: task is the approved contract, sources are the current worker copy, lessons are explicitly retrieved project memory. This excerpt shows the fields that matter; follow the notebook function signature for the executable implementation.",
-      "answer": null
+      "answer": null,
+      "concept": "Give the worker the task it is allowed to solve",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:53",
+        "minutes": 53
+      },
+      "clicks": null
     },
     {
-      "number": 14,
+      "number": 21,
+      "key": "the-first-action-reads-the-assigned-file",
+      "title": "The first action reads the assigned file",
+      "kind": "",
+      "name": "",
+      "notes": "This is an explanatory sequence using the implemented tool contract, not an additional live execution. Keep model, Python tool and observation separate. A model choosing read_file is not the same thing as Python executing it.",
+      "answer": null,
+      "concept": "The first action reads the assigned file",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/factory.py:run_worker; src/forge_workshop_kit/factory_teaching.py:EXERCISES.worker",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:56",
+        "minutes": 56
+      },
+      "clicks": null
+    },
+    {
+      "number": 22,
+      "key": "the-edit-includes-the-version-it-was-based-on",
+      "title": "The edit includes the version it was based on",
+      "kind": "",
+      "name": "",
+      "notes": "Explain optimistic conflict detection: before_sha256 identifies the old file, while the returned hash identifies the new one. A rejected write should produce an observation that the next request can inspect.",
+      "answer": null,
+      "concept": "The edit includes the version it was based on",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/factory.py:run_worker; src/forge_workshop_kit/factory_teaching.py:EXERCISES.worker",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:59",
+        "minutes": 59
+      },
+      "clicks": null
+    },
+    {
+      "number": 23,
+      "key": "run-the-checks-against-the-changed-files",
+      "title": "Run the checks against the changed files",
+      "kind": "",
+      "name": "",
+      "notes": "The board clears the old test receipt when a file changes. The current files are what run in a child Python process. That process has restricted imports, a timeout and no inherited Forge credentials; it is reviewed code execution, not a security sandbox.",
+      "answer": null,
+      "concept": "Run the checks against the changed files",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/factory.py:run_worker; src/forge_workshop_kit/factory_teaching.py:EXERCISES.worker",
+      "evidence": [],
+      "timing": {
+        "elapsed": "1:02",
+        "minutes": 62
+      },
+      "clicks": null
+    },
+    {
+      "number": 24,
+      "key": "return-the-tool-result-to-the-worker",
       "title": "Return the tool result to the worker",
       "kind": "",
       "name": "",
       "notes": "This participant function controls actual tool dispatch. The runtime supplies bounded file, edit, test and task operations. It records the returned result independently. An unknown action must raise an error rather than invoke arbitrary code.",
-      "answer": null
+      "answer": null,
+      "concept": "Return the tool result to the worker",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "1:05",
+        "minutes": 65
+      },
+      "clicks": null
     },
     {
-      "number": 15,
+      "number": 25,
+      "key": "append-the-actual-observation-to-the-next-request",
+      "title": "Append the actual observation to the next request",
+      "kind": "",
+      "name": "",
+      "notes": "The agent action has already been appended as an assistant message. The following user message supplies the observation, any directed messages and remaining action count. The runtime records actual tool execution independently of the learner\u2019s return value. Do not add a second model call here.",
+      "answer": null,
+      "concept": "Append the actual observation to the next request",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/factory.py:run_worker; src/forge_workshop_kit/factory_teaching.py:EXERCISES.worker",
+      "evidence": [],
+      "timing": {
+        "elapsed": "1:07",
+        "minutes": 67
+      },
+      "clicks": null
+    },
+    {
+      "number": 26,
+      "key": "finish-submits-a-patch-for-review",
+      "title": "Finish submits a patch for review",
+      "kind": "",
+      "name": "",
+      "notes": "Point out the status change to review. Human review and integration remain separate. If a worker reaches its action limit without this tested completion, the unfinished file is retained as evidence, not silently merged.",
+      "answer": null,
+      "concept": "Finish submits a patch for review",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/factory.py:run_worker; src/forge_workshop_kit/factory_teaching.py:EXERCISES.worker",
+      "evidence": [],
+      "timing": {
+        "elapsed": "1:09",
+        "minutes": 69
+      },
+      "clicks": null
+    },
+    {
+      "number": 27,
+      "key": "worker-exercise",
       "title": "Run one worker before adding a team",
       "kind": "exercise",
-      "name": "",
+      "name": "worker-exercise",
       "notes": "Allow participants to read a diff before accepting anything. The tool event and test output must be saved even when the worker fails. A recorded failure is an optional teaching example, not a required live outcome.",
-      "answer": null
+      "answer": "worker-answer",
+      "concept": "Run one worker before adding a team",
+      "exercise": {
+        "step": "worker",
+        "functions": [
+          "build_worker_request",
+          "dispatch_action"
+        ],
+        "prerequisites": [
+          "Check my after-midnight scenario",
+          "Check my build_worker_request code"
+        ],
+        "run": "Run one worker on the first feature"
+      },
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "1:13",
+        "minutes": 73
+      },
+      "clicks": null
     },
     {
-      "number": 16,
+      "number": 28,
+      "key": "a-trace-should-answer-what-changed-and-why",
       "title": "A trace should answer what changed and why",
       "kind": "",
       "name": "",
       "notes": "Open the participant\u2019s real trace rather than a made-up dashboard image. Each model request, tool action, failed check and handoff should be attributable to a worker and build. Trace export can be retried without rerunning the model.",
-      "answer": null
+      "answer": null,
+      "concept": "A trace should answer what changed and why",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "1:23",
+        "minutes": 83
+      },
+      "clicks": null
     },
     {
-      "number": 17,
+      "number": 29,
+      "key": "inspect-the-worker-s-test-in-agent-lens",
       "title": "Inspect the worker\u2019s test in Agent Lens",
       "kind": "",
       "name": "",
       "notes": "Open the actual conversation link. The record proves that the presentation worker read and edited a file and ran a passing component check. It does not prove the whole app works. The sibling query worker exhausted its output budget in this rehearsal; preserve that failed attempt. Do not turn one passing span into a completed product claim.",
-      "answer": null
+      "answer": null,
+      "concept": "Inspect the worker\u2019s test in Agent Lens",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "1:27",
+        "minutes": 87
+      },
+      "clicks": null
     },
     {
-      "number": 18,
+      "number": 30,
+      "key": "the-request-has-a-size-limit-even-when-files-are-saved",
+      "title": "The request has a size limit even when files are saved",
+      "kind": "",
+      "name": "",
+      "notes": "Explain why storing a complete file is different from resending it with every action. R5 still hit a bound after a long write, so this policy is not a guarantee that any generated module will fit. Do not imply that a higher output allowance fixes an oversized input.",
+      "answer": null,
+      "concept": "The request has a size limit even when files are saved",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/factory.py:run_worker; src/forge_workshop_kit/factory_teaching.py:EXERCISES.worker",
+      "evidence": [],
+      "timing": {
+        "elapsed": "1:31",
+        "minutes": 91
+      },
+      "clicks": null
+    },
+    {
+      "number": 31,
+      "key": "break-until-1-45",
+      "title": "Break until 1:45",
+      "kind": "break",
+      "name": "",
+      "notes": "Ten-minute break, 1:35\u20131:45. Use the read-only monitor to find participants who requested help. Do not treat missing progress as failure.",
+      "answer": null,
+      "concept": "Break until 1:45",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "1:35",
+        "minutes": 95
+      },
+      "clicks": null
+    },
+    {
+      "number": 32,
+      "key": "choose-work-that-can-happen-independently",
       "title": "Choose work that can happen independently",
       "kind": "",
       "name": "",
       "notes": "The workers own query.py and presentation.py. The query returns the agreed departure records. The display consumes that interface. Use the actual notebook contract to see exactly which fields are required. Click to expose the join, then the whole-product check.",
-      "answer": null
+      "answer": null,
+      "concept": "Choose work that can happen independently",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "1:45",
+        "minutes": 105
+      },
+      "clicks": 2
     },
     {
-      "number": 19,
+      "number": 33,
+      "key": "ready-means-its-prerequisites-passed",
       "title": "Ready means its prerequisites passed",
       "kind": "",
       "name": "",
       "notes": "Completed means accepted completion with saved output, not a worker\u2019s progress narration. The local check should reject a task with an unmet dependency. The precise notebook record fields may include richer status metadata; preserve those contracts.",
-      "answer": null
+      "answer": null,
+      "concept": "Ready means its prerequisites passed",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "1:50",
+        "minutes": 110
+      },
+      "clicks": null
     },
     {
-      "number": 20,
+      "number": 34,
+      "key": "both-workers-can-see-a-pending-task",
+      "title": "Both workers can see a pending task",
+      "kind": "",
+      "name": "",
+      "notes": "Use the local two-thread fixture, not a theoretical timing claim. Ask learners what changes if both read at the same time. A polite prompt does not make two Python operations atomic.",
+      "answer": null,
+      "concept": "Both workers can see a pending task",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/factory.py:TaskBoard.claim; src/forge_workshop_kit/transit.py:qualify_coordination_repair",
+      "evidence": [],
+      "timing": {
+        "elapsed": "1:53",
+        "minutes": 113
+      },
+      "clicks": null
+    },
+    {
+      "number": 35,
+      "key": "a-separate-check-and-write-permits-two-owners",
+      "title": "A separate check and write permits two owners",
+      "kind": "",
+      "name": "",
+      "notes": "The controlled race uses a barrier to reproduce the condition. This two-owner outcome measures coordination code, not model intelligence. Show the broken if-pending then set-owner snippet in the notebook.",
+      "answer": null,
+      "concept": "A separate check and write permits two owners",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/factory.py:TaskBoard.claim; src/forge_workshop_kit/transit.py:qualify_coordination_repair",
+      "evidence": [],
+      "timing": {
+        "elapsed": "1:56",
+        "minutes": 116
+      },
+      "clicks": null
+    },
+    {
+      "number": 36,
+      "key": "one-short-transaction-assigns-one-owner",
+      "title": "One short transaction assigns one owner",
+      "kind": "",
+      "name": "",
+      "notes": "The same two local threads now have one successful claim. The other gets a not-ready or already-claimed error. Holding the lock for the entire model call would serialize the work and block other claims.",
+      "answer": null,
+      "concept": "One short transaction assigns one owner",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/factory.py:TaskBoard.claim; src/forge_workshop_kit/transit.py:qualify_coordination_repair",
+      "evidence": [],
+      "timing": {
+        "elapsed": "2:00",
+        "minutes": 120
+      },
+      "clicks": null
+    },
+    {
+      "number": 37,
+      "key": "keep-the-model-call-outside-the-claim-transaction",
+      "title": "Keep the model call outside the claim transaction",
+      "kind": "",
+      "name": "",
+      "notes": "This is simplified teaching code; the actual store raises FactoryStop and also records dispatch identity, source and timing. Do not instruct participants to replace the store with this excerpt. The required code change is claim_task in the notebook.",
+      "answer": null,
+      "concept": "Keep the model call outside the claim transaction",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/factory.py:TaskBoard.claim; src/forge_workshop_kit/transit.py:qualify_coordination_repair",
+      "evidence": [],
+      "timing": {
+        "elapsed": "2:03",
+        "minutes": 123
+      },
+      "clicks": null
+    },
+    {
+      "number": 38,
+      "key": "tasks-exercise",
       "title": "Make dependencies control the workers",
       "kind": "exercise",
       "name": "tasks-exercise",
       "notes": "Do not solve the race with a prompt asking agents to be careful. Claiming must be atomic in the shared task store. Let two local attempts contend for one task in the free exercise.",
-      "answer": "tasks-answer"
+      "answer": "tasks-answer",
+      "concept": "Make dependencies control the workers",
+      "exercise": {
+        "step": "tasks",
+        "functions": [
+          "ready_tasks",
+          "claim_task"
+        ],
+        "prerequisites": [
+          "Connect and restore my work"
+        ],
+        "run": "Check my ready_tasks code"
+      },
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "2:05",
+        "minutes": 125
+      },
+      "clicks": null
     },
     {
-      "number": 21,
+      "number": 39,
+      "key": "separate-working-copies-protect-unfinished-changes",
       "title": "Separate working copies protect unfinished changes",
       "kind": "",
       "name": "",
       "notes": "This is a practical reason for independent workspaces, not a guarantee that the generated code is safe. Reviewed local code runs with bounded tools and time limits. Remote Sandboxes remain optional and require their own access.",
-      "answer": null
+      "answer": null,
+      "concept": "Separate working copies protect unfinished changes",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "2:15",
+        "minutes": 135
+      },
+      "clicks": null
     },
     {
-      "number": 22,
+      "number": 40,
+      "key": "each-worker-starts-from-the-same-source",
+      "title": "Each worker starts from the same source",
+      "kind": "",
+      "name": "",
+      "notes": "Separate working files do not imply separate authority to change every file. Keep the common starting version visible. This is diagrammatic code flow, not a claim that all future tasks are independent.",
+      "answer": null,
+      "concept": "Each worker starts from the same source",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/factory.py:run_worker; src/forge_workshop_kit/factory_teaching.py:EXERCISES.worker",
+      "evidence": [],
+      "timing": {
+        "elapsed": "2:16",
+        "minutes": 136
+      },
+      "clicks": null
+    },
+    {
+      "number": 41,
+      "key": "each-task-can-edit-only-its-assigned-module",
+      "title": "Each task can edit only its assigned module",
+      "kind": "",
+      "name": "",
+      "notes": "Point out which files are readable and which are editable. Both task contracts name the same return schema. The worker cannot repair a failing test by changing the evaluator.",
+      "answer": null,
+      "concept": "Each task can edit only its assigned module",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/factory.py:run_worker; src/forge_workshop_kit/factory_teaching.py:EXERCISES.worker",
+      "evidence": [],
+      "timing": {
+        "elapsed": "2:19",
+        "minutes": 139
+      },
+      "clicks": null
+    },
+    {
+      "number": 42,
+      "key": "integration-checks-the-patches-against-their-base",
+      "title": "Integration checks the patches against their base",
+      "kind": "",
+      "name": "",
+      "notes": "Explain why different files still need a combined test: both modules can disagree about a field or timezone. The hash guards against stale file replacement; it does not prove the interface is correct.",
+      "answer": null,
+      "concept": "Integration checks the patches against their base",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/factory.py:run_worker; src/forge_workshop_kit/factory_teaching.py:EXERCISES.worker",
+      "evidence": [],
+      "timing": {
+        "elapsed": "2:22",
+        "minutes": 142
+      },
+      "clicks": null
+    },
+    {
+      "number": 43,
+      "key": "run-the-ready-tasks-with-two-workers",
       "title": "Run the ready tasks with two workers",
       "kind": "exercise",
       "name": "",
       "notes": "Keep the concurrency at two for the core exercise. More workers is an optional later experiment. Do not change model or total budget between comparisons and then attribute a difference only to coordination.",
-      "answer": null
+      "answer": null,
+      "concept": "Run the ready tasks with two workers",
+      "exercise": {
+        "step": "team",
+        "functions": [
+          "ready_tasks",
+          "claim_task"
+        ],
+        "prerequisites": [
+          "Check my after-midnight scenario",
+          "Check my build_worker_request code",
+          "Check my ready_tasks code"
+        ],
+        "run": "Run the ready tasks with two workers"
+      },
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "2:25",
+        "minutes": 145
+      },
+      "clicks": null
     },
     {
-      "number": 23,
+      "number": 44,
+      "key": "read-the-timeline-as-work-and-waiting",
       "title": "Read the timeline as work and waiting",
       "kind": "",
       "name": "",
       "notes": "Ask which task is on the critical path. Parallel work can reduce elapsed time while increasing aggregate model cost. Queue time, execution time and integration time belong in separate fields.",
-      "answer": null
+      "answer": null,
+      "concept": "Read the timeline as work and waiting",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "2:35",
+        "minutes": 155
+      },
+      "clicks": null
     },
     {
-      "number": 24,
-      "title": "Save the checkpoint before the break",
+      "number": 45,
+      "key": "find-both-submitted-patches-before-integration",
+      "title": "Find both submitted patches before integration",
       "kind": "",
       "name": "",
-      "notes": "Break runs from 1:45 to 1:55. Integration begins when participants return. Confirm durable local saving. If publication is pending, the work is still complete locally. Reopening or navigating must not start inference.",
-      "answer": null
+      "notes": "This is a checkpoint at 2:40, not a break. Integration starts at 2:45. If one worker is unfinished, keep that outcome and inspect the available record rather than inventing a completed patch.",
+      "answer": null,
+      "concept": "Save the checkpoint before the break",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "2:40",
+        "minutes": 160
+      },
+      "clicks": null
     },
     {
-      "number": 25,
+      "number": 46,
+      "key": "review-a-patch-before-it-enters-the-product",
       "title": "Review a patch before it enters the product",
       "kind": "",
       "name": "",
       "notes": "The user explicitly approved human review of task contracts and patches. Keep the actual diff visible next to its test output. Do not represent a review decision as an executed version until integration really runs.",
-      "answer": null
+      "answer": null,
+      "concept": "Review a patch before it enters the product",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "2:42",
+        "minutes": 162
+      },
+      "clicks": null
     },
     {
-      "number": 26,
+      "number": 47,
+      "key": "test-the-combined-departures-board",
       "title": "Test the combined departures board",
       "kind": "exercise",
       "name": "",
       "notes": "Show the combined source identity and acceptance output. If integration fails, preserve it and diagnose the failure before another edit. The facilitator can use the recorded controlled example if the live patches happen to work.",
-      "answer": null
+      "answer": null,
+      "concept": "Test the combined departures board",
+      "exercise": {
+        "step": "integrate",
+        "functions": [
+          "check_departures"
+        ],
+        "prerequisites": [
+          "Both initial builds saved",
+          "Review both actual diffs",
+          "Review confirmation checkbox"
+        ],
+        "run": "Test the combined departures board",
+        "inspect": "Preview this saved app"
+      },
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "2:45",
+        "minutes": 165
+      },
+      "clicks": null
     },
     {
-      "number": 27,
+      "number": 48,
+      "key": "an-integration-error-can-cross-a-correct-boundary",
       "title": "An integration error can cross a correct boundary",
       "kind": "",
       "name": "",
       "notes": "Do not claim the current agents made this error unless its execution record shows it. This example explains why tests at component boundaries matter. The repair may be to code, task contract, tests or a combination.",
-      "answer": null
+      "answer": null,
+      "concept": "An integration error can cross a correct boundary",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "2:53",
+        "minutes": 173
+      },
+      "clicks": null
     },
     {
-      "number": 28,
+      "number": 49,
+      "key": "use-the-local-preview-to-follow-a-returned-row",
+      "title": "Use the local preview to follow a returned row",
+      "kind": "",
+      "name": "",
+      "notes": "If a live build is wrong, keep the output visible and name the failed requirement. The prepared reference continuation appears only if neither initial build passes development integration; it is labeled and never replaces live results.",
+      "answer": null,
+      "concept": "Use the local preview to follow a returned row",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "2:56",
+        "minutes": 176
+      },
+      "clicks": null
+    },
+    {
+      "number": 50,
+      "key": "break-until-3-20",
+      "title": "Break until 3:20",
+      "kind": "break",
+      "name": "",
+      "notes": "Twenty-minute break, 3:00\u20133:20. Resume the same project. Do not change source or model settings to make the live result match the prepared example.",
+      "answer": null,
+      "concept": "Break until 3:20",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "3:00",
+        "minutes": 180
+      },
+      "clicks": null
+    },
+    {
+      "number": 51,
+      "key": "shared-memory-needs-something-worth-sharing",
       "title": "Shared memory needs something worth sharing",
       "kind": "",
       "name": "",
       "notes": "Connect memory to a specific integration incident or verified behavior. Transcripts record what happened. A lesson is an interpretation intended to help a future task.",
-      "answer": null
+      "answer": null,
+      "concept": "Shared memory needs something worth sharing",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "3:20",
+        "minutes": 200
+      },
+      "clicks": null
     },
     {
-      "number": 29,
+      "number": 52,
+      "key": "check-the-lesson-before-another-agent-relies-on-it",
       "title": "Check the lesson before another agent relies on it",
       "kind": "",
       "name": "",
       "notes": "Click to reveal approved memory, then the fresh worker using it. A lesson can describe a successful pattern as well as a failure. Keep claims and verified observations distinct.",
-      "answer": null
+      "answer": null,
+      "concept": "Check the lesson before another agent relies on it",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "3:23",
+        "minutes": 203
+      },
+      "clicks": 2
     },
     {
-      "number": 30,
+      "number": 53,
+      "key": "write-a-rule-with-a-test-attached",
       "title": "Write a rule with a test attached",
       "kind": "",
       "name": "",
       "notes": "Do not present this as a measured memory success. Explain scope: a rule about schedule times does not mean every display field should print hour 25. Keep the contract version, source evidence and review state visible.",
-      "answer": null
+      "answer": null,
+      "concept": "Write a rule with a test attached",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "3:26",
+        "minutes": 206
+      },
+      "clicks": null
     },
     {
-      "number": 31,
+      "number": 54,
+      "key": "a-saved-note-is-not-automatically-accepted",
+      "title": "A saved note is not automatically accepted",
+      "kind": "",
+      "name": "",
+      "notes": "The examples are illustrative records matching the retrieval schema, not four observations from R5. Ask which one a fresh worker should receive and which fields justify that choice.",
+      "answer": null,
+      "concept": "A saved note is not automatically accepted",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/transit_workshop.py:accept_lesson; src/forge_workshop_kit/factory.py:TaskBoard.memories",
+      "evidence": [],
+      "timing": {
+        "elapsed": "3:29",
+        "minutes": 209
+      },
+      "clicks": null
+    },
+    {
+      "number": 55,
+      "key": "first-exclude-the-unchecked-interpretation",
+      "title": "First exclude the unchecked interpretation",
+      "kind": "",
+      "name": "",
+      "notes": "The agent can propose a lesson. The participant checks its evidence and writes the accepted rule. This gate reduces propagation of guesses; it cannot guarantee the rule is correct in every context.",
+      "answer": null,
+      "concept": "First exclude the unchecked interpretation",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/transit_workshop.py:accept_lesson; src/forge_workshop_kit/factory.py:TaskBoard.memories",
+      "evidence": [],
+      "timing": {
+        "elapsed": "3:31",
+        "minutes": 211
+      },
+      "clicks": null
+    },
+    {
+      "number": 56,
+      "key": "then-check-the-applicable-contract-version",
+      "title": "Then check the applicable contract version",
+      "kind": "",
+      "name": "",
+      "notes": "Do not compare source_revision to the current code fingerprint. A lesson may be relevant to new code while citing an earlier version. The accepted contract version is the applicability check.",
+      "answer": null,
+      "concept": "Then check the applicable contract version",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/transit_workshop.py:accept_lesson; src/forge_workshop_kit/factory.py:TaskBoard.memories",
+      "evidence": [],
+      "timing": {
+        "elapsed": "3:33",
+        "minutes": 213
+      },
+      "clicks": null
+    },
+    {
+      "number": 57,
+      "key": "finally-match-the-task-s-scope-and-tags",
+      "title": "Finally match the task\u2019s scope and tags",
+      "kind": "",
+      "name": "",
+      "notes": "select_memories performs these checks. No vector database is needed for this small project record. Let a participant explain why status alone would retrieve too much.",
+      "answer": null,
+      "concept": "Finally match the task\u2019s scope and tags",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/transit_workshop.py:accept_lesson; src/forge_workshop_kit/factory.py:TaskBoard.memories",
+      "evidence": [],
+      "timing": {
+        "elapsed": "3:35",
+        "minutes": 215
+      },
+      "clicks": null
+    },
+    {
+      "number": 58,
+      "key": "memory-exercise",
       "title": "Save a lesson supported by an execution",
       "kind": "exercise",
       "name": "memory-exercise",
       "notes": "Participants must inspect the evidence rather than approve an agent summary blindly. The retrieval function affects the later actual worker request. A directory listing is not proof that a worker read a lesson.",
-      "answer": "memory-answer"
+      "answer": "memory-answer",
+      "concept": "Save a lesson supported by an execution",
+      "exercise": {
+        "step": "memory",
+        "functions": [
+          "select_memories"
+        ],
+        "prerequisites": [
+          "Passing integrated starting build",
+          "Check my select_memories code"
+        ],
+        "run": "Save a checked lesson",
+        "optional": "Ask the agent to propose a lesson"
+      },
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "3:40",
+        "minutes": 220
+      },
+      "clicks": null
     },
     {
-      "number": 32,
+      "number": 59,
+      "key": "inspect-the-memory-read-then-its-effect",
       "title": "Inspect the memory read, then its effect",
       "kind": "",
       "name": "",
       "notes": "This is the trace-to-behavior chain. A citation or read event establishes consultation, not that the memory caused an improvement. The matched follow-up comparison is what tests that question.",
-      "answer": null
+      "answer": null,
+      "concept": "Inspect the memory read, then its effect",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "3:50",
+        "minutes": 230
+      },
+      "clicks": null
     },
     {
-      "number": 33,
+      "number": 60,
+      "key": "find-the-last-direct-train-between-two-stops",
       "title": "Find the last direct train between two stops",
       "kind": "",
       "name": "",
       "notes": "The follow-up asks for the last direct train between two retained stations, including arrival after midnight, a no-direct-service result and an itinerary download. Each branch uses two workers. Both branches execute; no prerecorded result is substituted for one side. This small paired example teaches the method. One pair cannot establish repeatability or general superiority.",
-      "answer": null
+      "answer": null,
+      "concept": "Find the last direct train between two stops",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "4:00",
+        "minutes": 240
+      },
+      "clicks": null
     },
     {
-      "number": 34,
+      "number": 61,
+      "key": "start-both-follow-ups-from-the-same-release",
+      "title": "Start both follow-ups from the same release",
+      "kind": "",
+      "name": "",
+      "notes": "Each build has two workers. The coordinator invokes the two builds in order, while each build may run its two workers concurrently. Do not describe the two conditions as synchronized or simultaneous. Compare saved initial fingerprints.",
+      "answer": null,
+      "concept": "Start both follow-ups from the same release",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/factory.py:run_worker; src/forge_workshop_kit/factory_teaching.py:EXERCISES.worker",
+      "evidence": [],
+      "timing": {
+        "elapsed": "4:02",
+        "minutes": 242
+      },
+      "clicks": null
+    },
+    {
+      "number": 62,
+      "key": "keep-both-sets-of-patches-and-checks",
+      "title": "Keep both sets of patches and checks",
+      "kind": "",
+      "name": "",
+      "notes": "The specification, starting code, fixed research model, limits and tool implementation are held the same. The lesson cannot be edited after inspecting the first outcome and still count as a matched pair.",
+      "answer": null,
+      "concept": "Keep both sets of patches and checks",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/transit_workshop.py:accept_lesson; src/forge_workshop_kit/factory.py:TaskBoard.memories",
+      "evidence": [],
+      "timing": {
+        "elapsed": "4:05",
+        "minutes": 245
+      },
+      "clicks": null
+    },
+    {
+      "number": 63,
+      "key": "the-follow-up-returns-a-journey-not-a-list-of-guesses",
+      "title": "The follow-up returns a journey, not a list of guesses",
+      "kind": "",
+      "name": "",
+      "notes": "Explain the function inputs and two valid output shapes. The retained dataset is small, so None concerns this schedule subset. It is not a statement that no real-world route exists. The renderer cannot invent a trip when the query returns None.",
+      "answer": null,
+      "concept": "The follow-up returns a journey, not a list of guesses",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/assets/transit/manifest.json; src/forge_workshop_kit/transit.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "4:07",
+        "minutes": 247
+      },
+      "clicks": null
+    },
+    {
+      "number": 64,
+      "key": "run-both-versions-of-the-follow-up-feature",
       "title": "Run both versions of the follow-up feature",
       "kind": "exercise",
       "name": "",
       "notes": "Keep memory fixed during this matched comparison. Do not edit it after seeing the no-memory result and call the pair controlled. If budget or infrastructure prevents a branch from finishing, retain a missing result and label the pair incomplete.",
-      "answer": null
+      "answer": null,
+      "concept": "Run both versions of the follow-up feature",
+      "exercise": {
+        "step": "followup",
+        "functions": [
+          "build_worker_request",
+          "dispatch_action",
+          "ready_tasks",
+          "claim_task",
+          "select_memories"
+        ],
+        "prerequisites": [
+          "Checked starting build",
+          "Saved accepted lesson",
+          "Check my select_memories code"
+        ],
+        "run": "Run both versions of the follow-up feature",
+        "review": "I reviewed the no-lesson and shared-lesson patches",
+        "integrate": "Integrate the reviewed follow-up patches"
+      },
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "4:10",
+        "minutes": 250
+      },
+      "clicks": null
     },
     {
-      "number": 35,
+      "number": 65,
+      "key": "the-factory-has-two-kinds-of-state",
       "title": "The factory has two kinds of state",
       "kind": "",
       "name": "",
       "notes": "This is the distinction between a task ledger and learning. Neither requires sharing a giant conversation among all workers. Both need durable records, clear identities and bounded retrieval.",
-      "answer": null
+      "answer": null,
+      "concept": "The factory has two kinds of state",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "4:27",
+        "minutes": 267
+      },
+      "clicks": null
     },
     {
-      "number": 36,
+      "number": 66,
+      "key": "find-where-the-lesson-entered-the-request",
+      "title": "Find where the lesson entered the request",
+      "kind": "",
+      "name": "",
+      "notes": "If no explicit read_memory action is present, distinguish the initial read_shared_memory selection from an agent-initiated read. Do not claim peer messaging unless the saved events contain it. The R5 workers were coordinated through task records and supplied lessons.",
+      "answer": null,
+      "concept": "Find where the lesson entered the request",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/factory.py:run_worker; src/forge_workshop_kit/factory_teaching.py:EXERCISES.worker",
+      "evidence": [],
+      "timing": {
+        "elapsed": "4:32",
+        "minutes": 272
+      },
+      "clicks": null
+    },
+    {
+      "number": 67,
+      "key": "keep-a-stopped-worker-s-files-and-error",
+      "title": "Keep a stopped worker\u2019s files and error",
+      "kind": "",
+      "name": "",
+      "notes": "Use Recover stopped work only after confirming the earlier execution stopped. A request with an uncertain outcome remains conservatively charged. A bound error is not fixed merely by clicking again. The six-hour schedule includes time to interpret an incomplete build, not unlimited retries.",
+      "answer": null,
+      "concept": "Keep a stopped worker\u2019s files and error",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/factory.py:run_worker; src/forge_workshop_kit/factory_teaching.py:EXERCISES.worker",
+      "evidence": [],
+      "timing": {
+        "elapsed": "4:38",
+        "minutes": 278
+      },
+      "clicks": null
+    },
+    {
+      "number": 68,
+      "key": "break-until-4-55",
+      "title": "Break until 4:55",
+      "kind": "break",
+      "name": "",
+      "notes": "Ten-minute break, 4:45\u20134:55. Stop adding features. The final comparison must include failed or incomplete branches.",
+      "answer": null,
+      "concept": "Break until 4:55",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "4:45",
+        "minutes": 285
+      },
+      "clicks": null
+    },
+    {
+      "number": 69,
+      "key": "evaluate-the-product-and-the-process-separately",
       "title": "Evaluate the product and the process separately",
       "kind": "",
       "name": "",
-      "notes": "Avoid a composite score that conceals these tradeoffs. The saved product rows are matched across versions. Missing builds or evaluations remain missing, not silently dropped or converted to ordinary task failures.",
-      "answer": null
+      "notes": "Avoid a composite score that conceals these tradeoffs. The saved product rows are matched across versions. Missing builds or evaluations remain missing, not silently dropped or converted to ordinary task failures. Repeated task claims include explicit recovery; overlapping reasoning and semantically duplicated code are not measured. Coverage is separate from passed-case rate.",
+      "answer": null,
+      "concept": "Evaluate the product and the process separately",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "4:55",
+        "minutes": 295
+      },
+      "clicks": null
     },
     {
-      "number": 37,
+      "number": 70,
+      "key": "a-scenario-is-an-input-and-an-expected-behavior",
       "title": "A scenario is an input and an expected behavior",
       "kind": "",
       "name": "",
       "notes": "This is a compact teaching excerpt, not the complete final acceptance scorer. Explain why sorting the identifiers before comparing would hide an ordering defect. Failed execution is not equivalent to a valid empty departure list.",
-      "answer": null
+      "answer": null,
+      "concept": "A scenario is an input and an expected behavior",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "4:58",
+        "minutes": 298
+      },
+      "clicks": null
     },
     {
-      "number": 38,
+      "number": 71,
+      "key": "evaluate-exercise",
       "title": "Compare the frozen builds on matching cases",
       "kind": "exercise",
-      "name": "",
+      "name": "evaluate-exercise",
       "notes": "Final grading happens after the build choices freeze. Evaluation Tables Preview uses the working Weave-backed publication path. If publication fails, inspect the notebook rows and retry publication only; do not rerun model work.",
-      "answer": null
+      "answer": "evaluate-answer",
+      "concept": "Compare the frozen builds on matching cases",
+      "exercise": {
+        "step": "evaluate",
+        "functions": [
+          "score_scenario"
+        ],
+        "prerequisites": [
+          "All four integrations recorded",
+          "Check my score_scenario code"
+        ],
+        "run": "Compare the frozen builds",
+        "recovery": "Retry saved Forge publications"
+      },
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "5:03",
+        "minutes": 303
+      },
+      "clicks": null
     },
     {
-      "number": 39,
+      "number": 72,
+      "key": "read-one-comparison-row-before-the-average",
       "title": "Read one comparison row before the average",
       "kind": "",
       "name": "",
       "notes": "Use one scenario to explain the matching inputs, actual outputs and pass criteria before opening the native comparison on the next slide. Keep its source URL and recorded rehearsal identity visible.",
-      "answer": null
+      "answer": null,
+      "concept": "Read one comparison row before the average",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "5:08",
+        "minutes": 308
+      },
+      "clicks": null
     },
     {
-      "number": 40,
+      "number": 73,
+      "key": "compare-the-same-departures-in-forge",
       "title": "Compare the same departures in Forge",
       "kind": "",
       "name": "",
       "notes": "Actual native Evaluation Tables Preview, verified in a signed-out browser. The saved workspace contains two frozen first-release builds and ten matching scenarios, with all twenty underlying evaluation rows read back. This image does not represent the R4 memory followups, which were incomplete. Open a prediction cell and inspect the service date before treating a matching average as sufficient evidence.",
-      "answer": null
+      "answer": null,
+      "concept": "Compare the same departures in Forge",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [
+        "Recorded R4; notes/capture-receipts.json"
+      ],
+      "timing": {
+        "elapsed": "5:10",
+        "minutes": 310
+      },
+      "clicks": null
     },
     {
-      "number": 41,
+      "number": 74,
+      "key": "the-faster-build-missed-two-final-cases",
       "title": "The faster build missed two final cases",
       "kind": "",
       "name": "",
       "notes": "These are final native scores from R5, a separate engineering rehearsal after context compaction changed. All 56 scenario rows are represented. The first builds passed five public development checks each, but the two-worker final product passed only eight of ten reserved scenarios. Do not treat the earlier R4 native screenshot as this R5 comparison. Builder elapsed excludes human review and integration. Actual provider request counts were 8, 12, 5 and 5 respectively. The no-memory query reached its input bound after writing; the memory query exhausted its output allowance. Both stopped before query tests; presentation was retained unchanged. The lesson proposal cost an additional $0.00143474. Total observed inference was $0.06635800 across 31 provider requests, with zero unknown usage. This single pair cannot establish a general speed or memory effect.",
-      "answer": null
+      "answer": null,
+      "concept": "The faster build missed two final cases",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [
+        "Recorded R5; .workshop/transit-v060-live-r5/journal.json; no new runs",
+        "Recorded R4; notes/capture-receipts.json"
+      ],
+      "timing": {
+        "elapsed": "5:13",
+        "minutes": 313
+      },
+      "clicks": null
     },
     {
-      "number": 42,
+      "number": 75,
+      "key": "open-the-two-failing-rows-in-the-final-comparison",
+      "title": "Open the two failing rows in the final comparison",
+      "kind": "",
+      "name": "",
+      "notes": "Use the actual saved native view. The bottom two rows show the query and integrated application cases. Both select 63919613 in the solo output and 63919759 in the team output. The screenshot is preserved; numbered annotations sit beside the relevant fields. Capture provenance is in notes/r5-capture-receipt.json.",
+      "answer": null,
+      "concept": "Open the two failing rows in the final comparison",
+      "exercise": null,
+      "source": "decks/transit/notes/r5-capture-receipt.json",
+      "evidence": [
+        "R5 verified native comparison: dg2ogm6wp3z"
+      ],
+      "timing": {
+        "elapsed": "5:15",
+        "minutes": 315
+      },
+      "clicks": null
+    },
+    {
+      "number": 76,
+      "key": "a-timezone-assumption-selected-the-wrong-train",
       "title": "A timezone assumption selected the wrong train",
       "kind": "",
       "name": "",
       "notes": "The failed cases were departures/utc-input and integrated/departures/utc-input. The two-worker query anchored GTFS service-day midnight to the caller\u2019s timezone. It selected a service-clock 23:03 trip rather than the expected 18:03 Eastern departure after a 23:00 UTC request. The solo query preserved the fixed feed timezone for this historical subset. These are two checks of one defect, not two independent bugs. Both failed follow-up query edits left this earlier bug in place. Ask participants which contract or test they would add before another build.",
-      "answer": null
+      "answer": null,
+      "concept": "A timezone assumption selected the wrong train",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [
+        "Recorded R5; .workshop/transit-v060-live-r5/journal.json; no new runs"
+      ],
+      "timing": {
+        "elapsed": "5:16",
+        "minutes": 316
+      },
+      "clicks": null
     },
     {
-      "number": 43,
+      "number": 77,
+      "key": "interpret-the-request-as-one-instant",
+      "title": "Interpret the request as one instant",
+      "kind": "",
+      "name": "",
+      "notes": "Recorded R5 case: departures/utc-input. This is a same-instant conversion. The feed clock defines the origin of GTFS elapsed service time; the caller is allowed to express the request using another offset.",
+      "answer": null,
+      "concept": "Interpret the request as one instant",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/transit.py:evaluate; src/forge_workshop_kit/transit_workshop.py:evaluate_builds",
+      "evidence": [
+        "R5 departures/utc-input: expectedtrip 63919613"
+      ],
+      "timing": {
+        "elapsed": "5:18",
+        "minutes": 318
+      },
+      "clicks": null
+    },
+    {
+      "number": 78,
+      "key": "the-team-used-the-caller-s-clock-for-service-time",
+      "title": "The team used the caller\u2019s clock for service time",
+      "kind": "",
+      "name": "",
+      "notes": "Recorded behavior, not a hypothesized defect. The team anchored service-day midnight to the request timezone. This changed the chosen record, not only its formatted text. Inspect the source and actual prediction beside the expected row.",
+      "answer": null,
+      "concept": "The team used the caller\u2019s clock for service time",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/transit.py:evaluate; src/forge_workshop_kit/transit_workshop.py:evaluate_builds",
+      "evidence": [
+        "R5 expected63919613; actual63919759"
+      ],
+      "timing": {
+        "elapsed": "5:20",
+        "minutes": 320
+      },
+      "clicks": null
+    },
+    {
+      "number": 79,
+      "key": "the-renderer-carried-the-same-wrong-trip-into-the-board",
+      "title": "The renderer carried the same wrong trip into the board",
+      "kind": "",
+      "name": "",
+      "notes": "The independent suite checks both the query and the complete application. Avoid describing these correlated cases as two independent coding errors. Learners should propose a public UTC-input regression case for a future experiment, after retaining the current outcome.",
+      "answer": null,
+      "concept": "The renderer carried the same wrong trip into the board",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/transit.py:evaluate; src/forge_workshop_kit/transit_workshop.py:evaluate_builds",
+      "evidence": [
+        "R5 two-worker 8/10 final scenarios"
+      ],
+      "timing": {
+        "elapsed": "5:22",
+        "minutes": 322
+      },
+      "clicks": null
+    },
+    {
+      "number": 80,
+      "key": "neither-follow-up-completed-the-query-change",
+      "title": "Neither follow-up completed the query change",
+      "kind": "",
+      "name": "",
+      "notes": "Without memory: oversized input after a saved write. With memory: output allowance exhausted before a complete first action. Both query tasks stopped before testing. The existing query remained; these outcomes do not establish that shared memory caused either failure.",
+      "answer": null,
+      "concept": "Neither follow-up completed the query change",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/transit.py:evaluate; src/forge_workshop_kit/transit_workshop.py:evaluate_builds",
+      "evidence": [
+        "R5 with-memory and without-memory 12/18"
+      ],
+      "timing": {
+        "elapsed": "5:24",
+        "minutes": 324
+      },
+      "clicks": null
+    },
+    {
+      "number": 81,
+      "key": "more-workers-can-still-produce-more-waiting",
       "title": "More workers can still produce more waiting",
       "kind": "",
       "name": "",
       "notes": "Primary sources: Claude Code agent-team docs, Google Research scaling-agent-systems study and Anthropic compiler report. Do not import their performance numbers as a forecast for this model or task.",
-      "answer": null
+      "answer": null,
+      "concept": "More workers can still produce more waiting",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "5:25",
+        "minutes": 325
+      },
+      "clicks": null
     },
     {
-      "number": 44,
+      "number": 82,
+      "key": "choose-a-release-using-the-saved-checks",
       "title": "Choose a release using the saved checks",
       "kind": "",
       "name": "",
       "notes": "The release is a versioned workshop artifact, not an automatic public service deployment. Agent-generated recommendations do not bypass required checks. Preserve previous versions for reproduction and rollback.",
-      "answer": null
+      "answer": null,
+      "concept": "Choose a release using the saved checks",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "5:30",
+        "minutes": 330
+      },
+      "clicks": null
     },
     {
-      "number": 45,
+      "number": 83,
+      "key": "release-exercise",
       "title": "Publish the version you can reproduce",
       "kind": "exercise",
       "name": "release-exercise",
-      "notes": "Use the final fifteen minutes for reproduction, the release decision and a short explanation. If a failed build is the only result, the correct output is a blocked release with evidence. That still completes the learning exercise.",
-      "answer": "release-answer"
+      "notes": "Use the last half-hour for reproduction, release and a short explanation. R5 supports releasing the one-worker departures board. Failed required checks block the follow-up. The output is an artifact and Report, not automatic production deployment.",
+      "answer": "release-answer",
+      "concept": "Publish the version you can reproduce",
+      "exercise": {
+        "step": "release",
+        "functions": [
+          "release_decision"
+        ],
+        "prerequisites": [
+          "Frozen evaluations saved",
+          "Check my release_decision code",
+          "Written conclusion"
+        ],
+        "run": "Publish this release and its evidence"
+      },
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "5:35",
+        "minutes": 335
+      },
+      "clicks": null
     },
     {
-      "number": 46,
+      "number": 84,
+      "key": "reload-the-selected-app-and-repeat-one-case",
+      "title": "Reload the selected app and repeat one case",
+      "kind": "",
+      "name": "",
+      "notes": "This is a local inference-free reproduction. It shows that the delivered source and data yield the saved behavior. It is not a rerun of the stochastic coding agents. Verify one row, not merely that the app opens.",
+      "answer": null,
+      "concept": "Reload the selected app and repeat one case",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "5:44",
+        "minutes": 344
+      },
+      "clicks": null
+    },
+    {
+      "number": 85,
+      "key": "explain-one-result-to-another-participant",
       "title": "Explain one result to another participant",
       "kind": "",
       "name": "",
       "notes": "Give participants two minutes each. The person explaining should control the notebook and open the relevant record. The facilitator should not take the keyboard or supply the conclusion.",
-      "answer": null
+      "answer": null,
+      "concept": "Explain one result to another participant",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "5:48",
+        "minutes": 348
+      },
+      "clicks": null
     },
     {
-      "number": 47,
+      "number": 86,
+      "key": "take-the-coordination-code-to-your-own-project",
       "title": "Take the coordination code to your own project",
       "kind": "",
       "name": "",
       "notes": "Ask each person for one suitable feature, one prerequisite, one acceptance check and one durable project rule from their own team. ARIA is outside the measured comparison and may require additional access.",
-      "answer": null
+      "answer": null,
+      "concept": "Take the coordination code to your own project",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "5:58",
+        "minutes": 358
+      },
+      "clicks": null
     },
     {
-      "number": 48,
+      "number": 87,
+      "key": "tasks-answer",
       "title": "Worked answer: select ready tasks",
       "kind": "answer",
       "name": "tasks-answer",
       "notes": "Use the exact notebook task schema. This answer explains the readiness rule; the claim transaction belongs to the supplied store interface. A separate read followed by an unlocked write allows two workers to claim the same task.",
-      "answer": null
+      "answer": null,
+      "concept": "Worked answer: select ready tasks",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": null,
+        "minutes": null
+      },
+      "clicks": null
     },
     {
-      "number": 49,
+      "number": 88,
+      "key": "memory-answer",
       "title": "Worked answer: retrieve a checked lesson",
       "kind": "answer",
       "name": "memory-answer",
       "notes": "Preserve the notebook schema and evidence validation. An approved lesson still has a scope. If the interface changed, retrieve the current rule or ask for review instead of trusting a stale note.",
-      "answer": null
+      "answer": null,
+      "concept": "Worked answer: retrieve a checked lesson",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": null,
+        "minutes": null
+      },
+      "clicks": null
     },
     {
-      "number": 50,
+      "number": 89,
+      "key": "release-answer",
       "title": "Worked answer: block an unverified release",
       "kind": "answer",
       "name": "release-answer",
       "notes": "This teaching excerpt deliberately blocks missing results and empty check lists. Use the executable notebook record shape for the real decision. A valid release requires the code and checks to refer to the same frozen build.",
-      "answer": null
+      "answer": null,
+      "concept": "Worked answer: block an unverified release",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": null,
+        "minutes": null
+      },
+      "clicks": null
     },
     {
-      "number": 51,
+      "number": 90,
+      "key": "workflow-sources",
       "title": "Sources for the workflow",
       "kind": "",
       "name": "workflow-sources",
       "notes": "These are references for patterns, not required workshop installations. The notebook keeps its coordinator visible in Python and uses the existing Forge Workshop Kit. Software factory has several definitions; use the implemented workshop definition.",
-      "answer": null
+      "answer": null,
+      "concept": "Sources for the workflow",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": null,
+        "minutes": null
+      },
+      "clicks": null
     },
     {
-      "number": 52,
+      "number": 91,
+      "key": "sources-for-the-data-and-evaluation",
       "title": "Sources for the data and evaluation",
       "kind": "",
       "name": "",
       "notes": "The downloaded dataset manifest is authoritative for archive date, checksums, selected rows and licensing. Do not substitute current live schedule data during a comparison. The software-factory teaching experiment is not a transit reliability benchmark.",
-      "answer": null
+      "answer": null,
+      "concept": "Sources for the data and evaluation",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": null,
+        "minutes": null
+      },
+      "clicks": null
+    },
+    {
+      "number": 92,
+      "key": "acceptance-answer",
+      "title": "Worked answer: check the after-midnight departure",
+      "kind": "answer",
+      "name": "acceptance-answer",
+      "notes": "Reveal only after an attempt or requested hint. This checks one public scenario; it does not replace the independent final scorer.",
+      "answer": null,
+      "concept": "Worked answer: check the after-midnight departure",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/assets/transit/manifest.json; src/forge_workshop_kit/transit.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": null,
+        "minutes": null
+      },
+      "clicks": null
+    },
+    {
+      "number": 93,
+      "key": "worker-answer",
+      "title": "Worked answer: dispatch one allowed tool",
+      "kind": "answer",
+      "name": "worker-answer",
+      "notes": "Read action[\"action\"], select the provided callable, invoke it exactly once and return the observation unchanged. The free check rejects an unavailable shell action.",
+      "answer": null,
+      "concept": "Worked answer: dispatch one allowed tool",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/factory.py:run_worker; src/forge_workshop_kit/factory_teaching.py:EXERCISES.worker",
+      "evidence": [],
+      "timing": {
+        "elapsed": null,
+        "minutes": null
+      },
+      "clicks": null
+    },
+    {
+      "number": 94,
+      "key": "evaluate-answer",
+      "title": "Worked answer: check the departure order",
+      "kind": "answer",
+      "name": "evaluate-answer",
+      "notes": "This participant development check tests exact ordered trip IDs. The independent final scorer also checks the other required fields. A missing judgment is not False.",
+      "answer": null,
+      "concept": "Worked answer: check the departure order",
+      "exercise": null,
+      "source": "src/forge_workshop_kit/transit.py:evaluate; src/forge_workshop_kit/transit_workshop.py:evaluate_builds",
+      "evidence": [],
+      "timing": {
+        "elapsed": null,
+        "minutes": null
+      },
+      "clicks": null
     }
   ]
 }

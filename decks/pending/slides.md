@@ -23,7 +23,7 @@ exportFilename: pending-inc
 
 <div class="sub">Build an agent for billing and account access.<br>Inspect its work, then test changes to its instructions.</div>
 <OfficeScene mode="employee" />
-<div class="bottom-note" style="color:#bbd4cb">A three-hour Python workshop at Pending, Inc.</div>
+<div class="bottom-note" style="color:#bbd4cb">A four-hour Python workshop at Pending, Inc.</div>
 
 <!--
 We will implement an agent that can inspect an account, refund a duplicate charge, and provision access. Then we will instrument and evaluate its work before asking an editor agent to revise its instructions. Pending, Inc. and its accounts are fictional; the Python tools, model requests, traces, and evaluations run in your own project.
@@ -91,47 +91,43 @@ The dataset is executable teaching fixtures in cases.py, not a collection of his
 
 # Implement the agent, evaluate it, then test harness changes.
 
-<div class="current-plan"><div>0–55 min<small>Connect, trace, implement the tool and agent handoff</small></div><div>55–105 min<small>Investigate recovery, score the work, make one edit</small></div><div>105–115 min<small>Break; resume from your saved checkpoint</small></div><div>115–180 min<small>Two improvement rounds, fresh tickets, conclusion</small></div></div>
-<div class="bottom-note">Each exercise names the function to edit, the control to run, and the result to inspect.</div>
+<div class="current-plan"><div>0:00–1:10<small>Understand the harness, trace, implement tools and handoff</small></div><div>1:20–2:15<small>MCP, timeout recovery, scoring and a manual edit</small></div><div>2:25–3:30<small>Two rounds of proposed edits and matched probes</small></div><div>3:30–4:00<small>Fresh tickets, comparison, conclusion</small></div></div><div class="bottom-note">Ten-minute breaks at 1:10 and 2:15. Leave each exercise slide visible while participants code.</div>
 
 <!--
-This is the three-hour Pending schedule. Allow 15 minutes at the end for final comparison and discussion. Keep extra implementation detail in worked answers.
+One four-hour session. The schedule includes two ten-minute breaks and hands-on coding. Foundations precede implementation; worked answers are linked for help, not additional required work. Allow final comparisons to finish from saved stages if provider latency is high. Never call a replay the attendee's execution.
 -->
 
 ---
 ---
 
-# The executor dispatches the model’s selected action.
+# The harness builds the request the model receives.
 
-<HarnessMap :level="0" />
-<div class="bottom-note">The executor sends the request and conversation history to the model, then dispatches its chosen action.</div>
+<HarnessParts :level="1" />
 
 <!--
-For this ticket, the model might choose lookup_invoice, then refund_payment. It returns an action name and arguments. Python decides which function handles that action, and the tool changes the simulated account. The model does not directly mutate the account dictionary.
+Point to the system text, tool guide, installed skill names and customer ticket. Ask which item would change if the participant edited instructions. A skill name advertises a procedure; its contents have not yet entered the request.
 -->
 
 ---
 ---
 
-# Instructions define how the agent should handle the ticket.
+# Python executes the action and returns its result.
 
-<HarnessMap :level="1" />
-<div class="bottom-note">The harness supplies task rules, available tools, and the code that passes observations back to the model.</div>
+<HarnessParts :level="2" />
 
 <!--
-The harness is the code and instructions around the model. It controls the request we send, the actions we allow, and the checks we require. We can revise these pieces while using the same model. In our comparison, the dispatcher and tools stay fixed after we test them.
+Keep the request in place. Reveal the selected action and the Python dispatcher. The model produces JSON; the runtime decides which function to call. Follow the returning arrow to my_observation. This is the mechanism we will implement, not a provider-native function-calling example.
 -->
 
 ---
 ---
 
-# Reading a skill adds its procedure to the conversation.
+# Different edits change different parts of the agent.
 
-<HarnessMap :level="2" />
-<div class="bottom-note">The verification skill tells the agent what to inspect before it reports completion.</div>
+<table class="clean-table readable-table"><thead><tr><th>Edit</th><th>What execution receives</th></tr></thead><tbody><tr><td>System instructions</td><td>New instructions in the first request</td></tr><tr><td>Verification skill</td><td>New procedure after a read_skill call</td></tr><tr><td>my_invoice_tool</td><td>Different Python behavior or returned records</td></tr><tr><td>my_observation</td><td>Different history in the next request</td></tr><tr><td>verify_before_finish</td><td>A runtime check before accepting completion</td></tr></tbody></table><div class="bottom-note">We implement the tools first, then freeze that code while comparing harness instructions and workflow rules.</div>
 
 <!--
-A saved skill has no effect until the executor supplies it to the model. Here the agent can call read_skill; the returned procedure enters the same conversation as other tool results. Agent Lens lets us check whether the skill was read and what the model did afterward.
+Use the table to distinguish behavior changes. The model is fixed; it is not retrained when instructions change. The learner develops tools and the loop before the baseline. The later editor cannot rewrite those frozen functions. Ask whether editing an unused skill can explain a changed outcome.
 -->
 
 ---
@@ -290,7 +286,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my invoice lookup<br><strong>Check:</strong> The requested invoice, missing invoice, and other-account checks pass. Account state stays unchanged.</div>
 
-<a class="answer-link" href="/81">Worked answer →</a>
+<a class="answer-link" href="/91">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my invoice lookup.
@@ -393,7 +389,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my tool-to-model handoff<br><strong>Check:</strong> Open the four handoff tabs. Match the action, Python arguments, returned payments, and two appended messages.</div>
 
-<a class="answer-link" href="/82">Worked answer →</a>
+<a class="answer-link" href="/92">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my tool-to-model handoff.
@@ -420,6 +416,17 @@ The model cannot see a Python return value unless the executor includes it in a 
 -->
 
 ---
+---
+
+# A tool result changes the next request, not the weights.
+
+<ExecutionBoundaries :level="1" />
+
+<!--
+Ask a participant to locate the returned payments in the saved next request. This is in-context information available to the next model call. No optimizer or weight update occurs. Reuse this distinction when we introduce the editor.
+-->
+
+---
 class: exercise
 ---
 
@@ -433,6 +440,17 @@ class: exercise
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Freeze this executor and run the two starting tickets.
+-->
+
+---
+---
+
+# Take ten minutes before investigating the timeout.
+
+<OfficeScene mode="employee" /><div class="bottom-note">1:10–1:20 · Save your draft. Return to the model trace and onboarding tools in step 3.</div>
+
+<!--
+Save at 70 minutes. The first break occurs after the two starting cases. Leave the project and next step visible. Reopening the notebook does not execute either case again.
 -->
 
 ---
@@ -465,12 +483,68 @@ The LLM span records the requested and returned model identities, input and outp
 ---
 ---
 
-# Provision Alex’s membership through the MCP tools.
+# The executor starts a local MCP session.
 
-<McpSequence />
+<McpSequence :level="1" />
 
 <!--
-Use the local MCP implementation in pending/mcp_server.py. Distinguish actual protocol discovery and invocation from a function merely named MCP. The simulated service deliberately commits a write before returning a timeout in the development incident.
+MCP is the interface between this Python client and the onboarding service. Here the service is a local subprocess communicating over stdio. There is no gateway or remote Sandbox requirement. A new action starts a session against the saved office state.
+-->
+
+---
+---
+
+# Discovery returns tool names and input schemas.
+
+<McpSequence :level="2" />
+
+<!--
+list_tools returns the actual schema for onboarding_status and provision_member. The discover_onboarding action exposes those records to the model. A schema describes accepted arguments; it does not grant access or execute a write.
+-->
+
+---
+---
+
+# Call the discovered tool with the selected arguments.
+
+<McpSequence :level="3" />
+
+<!--
+The call supplies account_id, email, role and operation_id. The MCP server calls the same office simulator used in our checks. The simulated write can commit before a timeout result comes back.
+-->
+
+---
+---
+
+# Read the returned observation before deciding what to do next.
+
+<McpSequence :level="4" />
+
+<!--
+The server returns JSON and saves office.json. The executor reloads that state and my_observation adds the result to the conversation. A timed-out result and unchanged client expectations cannot establish that the server did nothing.
+-->
+
+---
+---
+
+# Discovery and execution are separate client calls.
+
+
+```python {1-2|3-5|6-9|all}
+await client.initialize()
+tools = await client.list_tools()
+if name == "discover_onboarding":
+    result = {"tools": [{"name": t.name, "inputSchema": t.inputSchema}
+                        for t in tools.tools]}
+else:
+    response = await client.call_tool(name, arguments)
+    result = json.loads(next(c.text for c in response.content
+                             if hasattr(c, "text")))
+```
+<div class="bottom-note">Excerpt from pending/loop.py · Inspect provision_member and onboarding_status in your own Agent Lens conversation.</div>
+
+<!--
+This is the exact client control flow inside mcp_action, with the surrounding context managers omitted. Ask which branch can discover tools without invoking a mutation, and which branch parses a tool response. This is explanatory code, not an additional exercise or model call.
 -->
 
 ---
@@ -604,10 +678,32 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my scorer against four known examples<br><strong>Check:</strong> Full refund passes. Partial refund, no refund, and duplicate refund fail, despite the same confident reply.</div>
 
-<a class="answer-link" href="/83">Worked answer →</a>
+<a class="answer-link" href="/93">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my scorer against four known examples.
+-->
+
+---
+---
+
+# The account can contradict a confident reply.
+
+<JudgeMeaning :level="1" />
+
+<!--
+The public partial-refund fixture contains one 100-cent refund, compared with the required 4900 cents. The model's explanation cannot change that state. Read the actual integer comparison before introducing the judge.
+-->
+
+---
+---
+
+# A valid judge response can still contain a wrong judgment.
+
+<JudgeMeaning :level="2" />
+
+<!--
+Work through availability, schema and correctness separately. The validator can reject strings in boolean fields. It cannot prove complete:true is right. For this illustrative partial-refund example it would be wrong. The live judge's actual reason remains the evidence to inspect.
 -->
 
 ---
@@ -682,10 +778,10 @@ build_messages lists installed skill names. read_skill returns the file contents
 # Take a ten-minute break after saving your progress.
 
 <OfficeScene mode="employee" />
-<div class="bottom-note">Resume at 6 · Improve twice. Reopening the notebook restores saved work without making model calls.</div>
+<div class="bottom-note">2:15–2:25 · Resume at 6 · Improve twice. Reopening the notebook restores saved work without making model calls.</div>
 
 <!--
-Stop at 105 minutes. Use saved checkpoints; opening does not trigger paid work. Have attendees note the next step before the break.
+Second break: 135–145 minutes. Save the manual comparison and return to step 6. Do not start automatic work during the break.
 -->
 
 ---
@@ -931,6 +1027,28 @@ Explanatory excerpt, not a drop-in full function. The actual controller falls ba
 -->
 
 ---
+---
+
+# The next task gets the selected procedure and a checked lesson.
+
+<ExecutionBoundaries :level="2" />
+
+<!--
+A lesson is an agent-written interpretation with a supporting run and limits. It is not a model weight update. We carry the selected harness and lesson into onboarding, while constructing a fresh account state and conversation for that case. The next execution tests whether the lesson transfers.
+-->
+
+---
+---
+
+# Choosing a combination does not test it.
+
+<div class="two-col"><div class="ticket"><div class="account">PROBED CANDIDATES</div><p>A: revised skill<br>B: completion gate</p><p class="mini">Each has its own execution.</p></div><div class="ticket"><div class="account">POSSIBLE COMPOSITION</div><p>Revised skill + gate</p><p class="mini">This combination needs its own execution.</p></div></div><div class="bottom-note">Illustrative choices. Retain this version also receives a confirming run, without inventing changed files.</div>
+
+<!--
+Do not infer that a composition inherits the scores of its ingredients. The combined behavior can differ, so the controller runs it before adoption. The recorded round-one decision retained the parent instead; the previous slides show its reason and execution.
+-->
+
+---
 class: exercise
 ---
 
@@ -1171,7 +1289,7 @@ if run["case_id"] == "double-charge":
 
 This development check distinguishes the four public examples. The trusted final scorer also checks the target payment and unrelated account state.
 
-<span class="source-link"><a href="/84">Continue to judge validation →</a></span> · <span class="source-link"><a href="/43">Return to exercise →</a></span>
+<span class="source-link"><a href="/94">Continue to judge validation →</a></span> · <span class="source-link"><a href="/49">Return to exercise →</a></span>
 
 <!--
 The learner check is deliberately limited. Do not describe it as the full final scorer.
@@ -1196,7 +1314,7 @@ def my_judge_validation(answer):
 
 Valid JSON can still contain an incorrect judgment. Compare the reason with the recorded work.
 
-<span class="source-link"><a href="/43">Return to the exercise →</a></span>
+<span class="source-link"><a href="/49">Return to the exercise →</a></span>
 
 <!--
 Exact semantics of teaching.ANSWERS scorer validation. Boolean strings are invalid. Empty reasons are invalid. Missing judgments stay unavailable.

@@ -219,3 +219,8 @@
 .eval-native-caption{font-size:17px;color:#5f746a;margin-top:12px}
 
 .eval-native-pin{position:absolute;display:grid;place-items:center;transform:translate(-50%,-50%);width:24px;height:24px;border-radius:50%;background:#f1ca70;color:#163c43;border:1px solid #163c43;font:600 16px "IBM Plex Sans",sans-serif;pointer-events:none}
+
+/* Six-hour mixed-audience sequence: keep arithmetic and values readable. */
+.teaching-equation{margin-top:32px;max-width:1060px}.teaching-equation p{font-size:30px;line-height:1.4;margin:22px 0}.teaching-equation .mono{font-family:'IBM Plex Mono';font-size:27px}
+.teaching-values{font-size:21px!important;margin-top:20px!important}.teaching-values th,.teaching-values td{padding:9px 15px!important}.teaching-values td:last-child{font-family:'IBM Plex Mono';white-space:nowrap}
+.schedule-reference .schedule{font-size:21px!important;line-height:1.15}.schedule-reference .schedule td,.schedule-reference .schedule th{padding:5px 14px!important}

@@ -1,7 +1,7 @@
 {
-  "source_sha256": "ed5c97a67e90b30ccfd4afd4fd831eb863a00390494728f762bc0a356c03727a",
-  "slides_checked": 36,
-  "expected_slides": 36,
+  "source_sha256": "0282e2c1fbc99f83db09b27ab5a0d2c98acc0d504111a65423a1ee69d2b7c6ea",
+  "slides_checked": 50,
+  "expected_slides": 50,
   "titles": [
     {
       "number": 1,
@@ -45,141 +45,211 @@
     },
     {
       "number": 9,
+      "key": "board-target",
+      "title": "Predict a label for the whole board"
+    },
+    {
+      "number": 10,
+      "key": "mask-boundary",
+      "title": "Use the mask to investigate the decision"
+    },
+    {
+      "number": 11,
       "key": "encoder",
       "title": "Reuse a fixed image encoder"
     },
     {
-      "number": 10,
-      "key": "patches",
-      "title": "Compare each patch with real normal examples"
+      "number": 12,
+      "key": "patch-grid",
+      "title": "Keep local information as well as the whole image"
     },
     {
-      "number": 11,
+      "number": 13,
+      "key": "patches",
+      "title": "Compare local features at the same board position"
+    },
+    {
+      "number": 14,
+      "key": "append-patches",
+      "title": "Append 196 distances to the 512 whole-image values"
+    },
+    {
+      "number": 15,
       "key": "features",
       "title": "Add local information to the classifier"
     },
     {
-      "number": 12,
+      "number": 16,
       "key": "cache",
       "title": "Check the feature cache without rebuilding everything"
     },
     {
-      "number": 13,
+      "number": 17,
       "key": "classifier",
       "title": "Train the same classifier on each representation"
     },
     {
-      "number": 14,
+      "number": 18,
+      "key": "fit-operation",
+      "title": "Fit on training boards; measure on validation boards"
+    },
+    {
+      "number": 19,
       "key": "threshold",
       "title": "A detector score still needs an operating rule"
     },
     {
-      "number": 15,
+      "number": 20,
+      "key": "validation-cutoff",
+      "title": "Require 11 of the 12 validation defects to be caught"
+    },
+    {
+      "number": 21,
       "key": "threshold-exercise",
       "title": "Implement the validation threshold"
     },
     {
-      "number": 16,
+      "number": 22,
       "key": "metrics",
       "title": "Keep ranking quality and operating errors separate"
     },
     {
-      "number": 17,
+      "number": 23,
+      "key": "ranking-ap",
+      "title": "Calculate ranking quality before choosing one cutoff"
+    },
+    {
+      "number": 24,
+      "key": "operating-errors",
+      "title": "Count operating errors at the chosen cutoff"
+    },
+    {
+      "number": 25,
       "key": "forge",
       "title": "Follow one trained classifier through Forge"
     },
     {
-      "number": 18,
+      "number": 26,
       "key": "forge-training",
       "title": "Read the recorded training call"
     },
     {
-      "number": 19,
-      "key": "break",
-      "title": "Take ten minutes"
+      "number": 27,
+      "key": "training-evidence",
+      "title": "Match the tool call to the saved validation result"
     },
     {
-      "number": 20,
+      "number": 28,
+      "key": "break",
+      "title": "Take ten minutes. Return at 2:20."
+    },
+    {
+      "number": 29,
+      "key": "active-selection",
+      "title": "Choose uncertain boards before opening their labels"
+    },
+    {
+      "number": 30,
+      "key": "random-control",
+      "title": "Give random selection the same labeling budget"
+    },
+    {
+      "number": 31,
       "key": "review",
       "title": "Choose where the review time goes"
     },
     {
-      "number": 21,
+      "number": 32,
       "key": "human",
       "title": "Save what the reviewer actually decided"
     },
     {
-      "number": 22,
+      "number": 33,
       "key": "review-fit",
       "title": "Train with the additional labels"
     },
     {
-      "number": 23,
+      "number": 34,
       "key": "freeze",
       "title": "Choose before opening the final results"
     },
     {
-      "number": 24,
+      "number": 35,
+      "key": "detector-bundle",
+      "title": "Freeze the preprocessing and reference bank too"
+    },
+    {
+      "number": 36,
+      "key": "break-two",
+      "title": "Take ten minutes. Return at 3:30."
+    },
+    {
+      "number": 37,
       "key": "final",
       "title": "Evaluate the same 442 boards"
     },
     {
-      "number": 25,
+      "number": 38,
       "key": "native-comparison",
       "title": "Compare four detectors on the same boards"
     },
     {
-      "number": 26,
+      "number": 39,
       "key": "native-board",
       "title": "Inspect the board behind a prediction"
     },
     {
-      "number": 27,
+      "number": 40,
       "key": "failure",
       "title": "The first worked recipe did not pass its gate"
     },
     {
-      "number": 28,
+      "number": 41,
       "key": "retest",
       "title": "The bounded follow-up improved this teaching retest"
     },
     {
-      "number": 29,
+      "number": 42,
       "key": "improved-case",
       "title": "Inspect a corrected miss"
     },
     {
-      "number": 30,
+      "number": 43,
       "key": "regression",
       "title": "Inspect a new miss too"
     },
     {
-      "number": 31,
+      "number": 44,
       "key": "reproduce",
       "title": "Reload the version you chose"
     },
     {
-      "number": 32,
+      "number": 45,
+      "key": "reload-detector",
+      "title": "Reproduce one score from the saved detector"
+    },
+    {
+      "number": 46,
       "key": "release",
       "title": "A tested artifact can become the next release"
     },
     {
-      "number": 33,
+      "number": 47,
       "key": "conclusion",
       "title": "Write down the decision you would make"
     },
     {
-      "number": 34,
+      "number": 48,
       "key": "answer-features",
       "title": "Worked answer: assemble the local features"
     },
     {
-      "number": 35,
+      "number": 49,
       "key": "answer-threshold",
       "title": "Worked answer: meet the validation recall target"
     },
     {
-      "number": 36,
+      "number": 50,
       "key": "answer-review",
       "title": "Worked answer: choose uncertain cases"
     }
@@ -234,16 +304,8 @@
       "click": 0
     },
     {
-      "slide": 9,
-      "click": 1
-    },
-    {
       "slide": 10,
       "click": 0
-    },
-    {
-      "slide": 10,
-      "click": 1
     },
     {
       "slide": 11,
@@ -256,14 +318,6 @@
     {
       "slide": 13,
       "click": 0
-    },
-    {
-      "slide": 13,
-      "click": 1
-    },
-    {
-      "slide": 13,
-      "click": 2
     },
     {
       "slide": 14,
@@ -280,6 +334,14 @@
     {
       "slide": 17,
       "click": 0
+    },
+    {
+      "slide": 17,
+      "click": 1
+    },
+    {
+      "slide": 17,
+      "click": 2
     },
     {
       "slide": 18,
@@ -316,10 +378,6 @@
     {
       "slide": 26,
       "click": 0
-    },
-    {
-      "slide": 26,
-      "click": 1
     },
     {
       "slide": 27,
@@ -360,6 +418,66 @@
     {
       "slide": 36,
       "click": 0
+    },
+    {
+      "slide": 37,
+      "click": 0
+    },
+    {
+      "slide": 38,
+      "click": 0
+    },
+    {
+      "slide": 39,
+      "click": 0
+    },
+    {
+      "slide": 39,
+      "click": 1
+    },
+    {
+      "slide": 40,
+      "click": 0
+    },
+    {
+      "slide": 41,
+      "click": 0
+    },
+    {
+      "slide": 42,
+      "click": 0
+    },
+    {
+      "slide": 43,
+      "click": 0
+    },
+    {
+      "slide": 44,
+      "click": 0
+    },
+    {
+      "slide": 45,
+      "click": 0
+    },
+    {
+      "slide": 46,
+      "click": 0
+    },
+    {
+      "slide": 47,
+      "click": 0
+    },
+    {
+      "slide": 48,
+      "click": 0
+    },
+    {
+      "slide": 49,
+      "click": 0
+    },
+    {
+      "slide": 50,
+      "click": 0
     }
   ],
   "issues": [],
@@ -367,21 +485,21 @@
   "failed_responses": [],
   "answers": [
     {
-      "slide": 11,
-      "destination": "/forge-workshop-kit/inspection/34",
-      "keyboardReturn": true
-    },
-    {
       "slide": 15,
-      "destination": "/forge-workshop-kit/inspection/35",
+      "destination": "/forge-workshop-kit/inspection/48",
       "keyboardReturn": true
     },
     {
-      "slide": 20,
-      "destination": "/forge-workshop-kit/inspection/36",
+      "slide": 21,
+      "destination": "/forge-workshop-kit/inspection/49",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 31,
+      "destination": "/forge-workshop-kit/inspection/50",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 75,
+  "routes_checked": 103,
   "presenter_notes": true
 }

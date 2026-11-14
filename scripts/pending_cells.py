@@ -27,7 +27,7 @@ get_timeout_practice,set_timeout_practice=mo.state(pending_visuals.new_timeout_p
 ''',True)
 add('''
 mo.stop(get_step()!="setup")
-mo.vstack([mo.Html(ui.heading("Pending, Inc.", "You're on the operations team at a fictional software company. Customers are waiting for refunds and account access. Management has assigned those tickets to an AI employee and given you the job of making it reliable. Its onboarding so far consists of a motivational paragraph.")),
+mo.vstack([mo.md("**4-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/pending/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Pending, Inc.", "You're on the operations team at a fictional software company. Customers are waiting for refunds and account access. Management has assigned those tickets to an AI employee and given you the job of making it reliable. Its onboarding so far consists of a motivational paragraph.")),
 mo.md("**Today's assignment:** get the employee through two customer requests. It needs to look up the right account, decide whether a change is needed, make that change once, and explain what happened. A confident reply won't help a customer who still can't sign in."),
 mo.Html(pending_visuals.office_brief()),
 mo.md("**What's in a case.** Our dataset pairs each customer request with a starting account snapshot: the subscription, payments, refunds, and members. Python tools read and change a separate copy of that snapshot. These are fictional records; no real money moves and no real access is granted."),
