@@ -24,7 +24,7 @@ All five authored notebooks pass marimo dependency checks. The 51 focused tests 
 
 The package build verifies pinned dependencies, checks all seven templates, and exports previews with provider credentials removed. Opening a preview does not execute exercises. Publication verifies the destination project and reads the uploaded source and HTML back before marking a template complete. Existing attendee copies remain unchanged. All seven current templates passed source and HTML readback; the [hosted-template receipt](../evidence/hosted-templates-v061.json) records their versions and hashes.
 
-The [teaching-check receipt](../evidence/v061-teaching-checks.json) records the final slide totals and source hashes. All 33 release downloads passed anonymous checksum verification; see the [download receipt](../evidence/release-downloads-v061.json). All 29 public documentation and source links returned the expected pages. The 26 Forge links were reachable, which alone does not establish record permissions.
+The [teaching-check receipt](../evidence/v061-teaching-checks.json) records the final slide totals and source hashes. All 33 release downloads passed anonymous checksum verification; see the [download receipt](../evidence/release-downloads-v061.json). The browser-deck deployment also passed anonymous checks for all five decks, PDFs and source bundles; 107 authored source files matched their local hashes. See the [public-deck receipt](../evidence/decks-public-v061.json). All 29 public documentation and source links returned the expected pages. The 26 Forge links were reachable, which alone does not establish record permissions.
 
 ## Results remain unchanged
 

@@ -1,0 +1,1009 @@
+{
+  "checked_at_utc": "2026-11-14T19:45:28Z",
+  "deployment": {
+    "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43632477139",
+    "headSha": "6f2964059a37082db73e646694e473b2f21fe928",
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "base": "https://ash0ts.github.io/forge-workshop-kit/",
+  "scope": "Public unauthenticated GET checks; no inference or training. Source archive hashes compared with current local deck source.",
+  "decks": [
+    {
+      "slug": "pending",
+      "expected_slides": 95,
+      "checks": [
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/",
+          "status": 200,
+          "bytes": 2373,
+          "sha256": "b9d55b00bb7887a5f3c92b331c67c851a9c902fdbbe94830a33838d6c64f8164",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/static-routes.json",
+          "status": 200,
+          "bytes": 2899,
+          "sha256": "b7ae411dfce13a87c2279d77769c425f97fb8318de503cc369b1d4e0c1413546",
+          "content_type": "application/json; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/95/",
+          "status": 200,
+          "bytes": 2373,
+          "sha256": "b9d55b00bb7887a5f3c92b331c67c851a9c902fdbbe94830a33838d6c64f8164",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/presenter/95/",
+          "status": 200,
+          "bytes": 2373,
+          "sha256": "b9d55b00bb7887a5f3c92b331c67c851a9c902fdbbe94830a33838d6c64f8164",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/pending-inc.pdf",
+          "status": 200,
+          "bytes": 1033247,
+          "sha256": "09da8eada9c1d5b06a31b8be08fb318cc0aa2eac876f857be8d560d0f6c050ba",
+          "content_type": "application/pdf"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/pending-inc-browser.zip",
+          "status": 200,
+          "bytes": 2571291,
+          "sha256": "44693eaba7501a1226ca074ba50936a9310ac69cc68c6c1ea7f1689c8361573e",
+          "content_type": "application/x-zip-compressed"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/pending-inc-source.zip",
+          "status": 200,
+          "bytes": 853254,
+          "sha256": "06f559997ea2024a669fd7beb1e2de508c3accd0b0def7a92d0faa89d8f6d105",
+          "content_type": "application/x-zip-compressed"
+        }
+      ],
+      "errors": [],
+      "slides": 95,
+      "routes_correct": true,
+      "pdf_signature": true,
+      "pdf_pages": 114,
+      "browser_zip_ok": true,
+      "source_zip_ok": true,
+      "source_slide_count": 95,
+      "source_files_checked": 33,
+      "source_hashes": [
+        {
+          "path": "decks/pending/package.json",
+          "public_sha256": "88371e7f1f0d893c51d2efaf193dea1cf54770fe5c46da21959937d811b18224",
+          "local_sha256": "88371e7f1f0d893c51d2efaf193dea1cf54770fe5c46da21959937d811b18224",
+          "match": true
+        },
+        {
+          "path": "decks/pending/package-lock.json",
+          "public_sha256": "d23bac25bc2be4d6d376d509d560170f90f6bcc198d9a9c6e1c07d1158a6a717",
+          "local_sha256": "d23bac25bc2be4d6d376d509d560170f90f6bcc198d9a9c6e1c07d1158a6a717",
+          "match": true
+        },
+        {
+          "path": "decks/pending/slides.md",
+          "public_sha256": "c078742a327e203bb55c7f28fce2012cb33ffed3a57ab5f99a93920042fd0910",
+          "local_sha256": "c078742a327e203bb55c7f28fce2012cb33ffed3a57ab5f99a93920042fd0910",
+          "match": true
+        },
+        {
+          "path": "decks/pending/style.css",
+          "public_sha256": "58aaf6e2adbc9aecf706582753f2712a946415d5aa35a7f6d8cae526b9a3460c",
+          "local_sha256": "58aaf6e2adbc9aecf706582753f2712a946415d5aa35a7f6d8cae526b9a3460c",
+          "match": true
+        },
+        {
+          "path": "decks/pending/global-bottom.vue",
+          "public_sha256": "1aaf8fdad21df86c05e74a0ce52197e145ea5c1a06aa5bc566b11c3aaab47097",
+          "local_sha256": "1aaf8fdad21df86c05e74a0ce52197e145ea5c1a06aa5bc566b11c3aaab47097",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/AccountLedger.vue",
+          "public_sha256": "98ac87cbbdec9eb57e160d08c687014c296fce35eb05edd24bb6f187c0ed3ad8",
+          "local_sha256": "98ac87cbbdec9eb57e160d08c687014c296fce35eb05edd24bb6f187c0ed3ad8",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/ActionContract.vue",
+          "public_sha256": "0f6f1fba7161c1253678b86e0af369c4e41b0e8a547140ffd608804295847265",
+          "local_sha256": "0f6f1fba7161c1253678b86e0af369c4e41b0e8a547140ffd608804295847265",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/CaptureDetail.vue",
+          "public_sha256": "b0ca82188cc56e9e94250347b2d4d5fdcbd0b2b608b90cbdd434806c30ee152d",
+          "local_sha256": "b0ca82188cc56e9e94250347b2d4d5fdcbd0b2b608b90cbdd434806c30ee152d",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/CompletionGuard.vue",
+          "public_sha256": "b4258ebc9b66925f6284cf930e489d8f12f588a3dd78da052b490ca9c9fd321c",
+          "local_sha256": "b4258ebc9b66925f6284cf930e489d8f12f588a3dd78da052b490ca9c9fd321c",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/EvaluationMatrix.vue",
+          "public_sha256": "eeea9e5e8e5db889072a1cfdb647e040006ccb0ec2478c59db98cf9e4eb04f1f",
+          "local_sha256": "eeea9e5e8e5db889072a1cfdb647e040006ccb0ec2478c59db98cf9e4eb04f1f",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/ExecutionBoundaries.vue",
+          "public_sha256": "20a2ce1d898a4c3307a8ad8e0a437aef5c959e732afa76aefc896156b1110196",
+          "local_sha256": "20a2ce1d898a4c3307a8ad8e0a437aef5c959e732afa76aefc896156b1110196",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/FourChecks.vue",
+          "public_sha256": "302a1e031d8d102dce65213e8d9d8ba7fbba726549e49492fd2e02f331b2ccdf",
+          "local_sha256": "302a1e031d8d102dce65213e8d9d8ba7fbba726549e49492fd2e02f331b2ccdf",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/HarnessMap.vue",
+          "public_sha256": "996219bb806052b008c36b837a5799c410a52294968e1a21cc6b4b759ad42281",
+          "local_sha256": "996219bb806052b008c36b837a5799c410a52294968e1a21cc6b4b759ad42281",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/HarnessParts.vue",
+          "public_sha256": "42980b863f5fa9b4d15ddd87e606ba8219b3a407a020526b96d06bf7af56f472",
+          "local_sha256": "42980b863f5fa9b4d15ddd87e606ba8219b3a407a020526b96d06bf7af56f472",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/ImprovementBranches.vue",
+          "public_sha256": "bcae09f7acaf500f5b4e1b37c1f3d66495b72827fb7d4b3c6e6a31b6014f5b52",
+          "local_sha256": "bcae09f7acaf500f5b4e1b37c1f3d66495b72827fb7d4b3c6e6a31b6014f5b52",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/JudgeMeaning.vue",
+          "public_sha256": "0564c5dbad2fcd0ff65ec623ec8fc7a33be88c2105d3e437c2447b9b9b8df958",
+          "local_sha256": "0564c5dbad2fcd0ff65ec623ec8fc7a33be88c2105d3e437c2447b9b9b8df958",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/McpSequence.vue",
+          "public_sha256": "671f56d23229d65dd0e9f07769de85f9941fae9d2332a035ea5903947bfad658",
+          "local_sha256": "671f56d23229d65dd0e9f07769de85f9941fae9d2332a035ea5903947bfad658",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/OfficeScene.vue",
+          "public_sha256": "0c5b18dd42f77ccc852bbaf9046affc3851653da0187443515a2d31487fef3ab",
+          "local_sha256": "0c5b18dd42f77ccc852bbaf9046affc3851653da0187443515a2d31487fef3ab",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/ProbeComparison.vue",
+          "public_sha256": "80b1638157bd4af310e723c6121748cedf1bd56663818b927f336bda8f738378",
+          "local_sha256": "80b1638157bd4af310e723c6121748cedf1bd56663818b927f336bda8f738378",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/ReceiptFlow.vue",
+          "public_sha256": "bdecc481b793b0d34bb728e68470726851ce42a016337216ad627fc11916595e",
+          "local_sha256": "bdecc481b793b0d34bb728e68470726851ce42a016337216ad627fc11916595e",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/RefundChecks.vue",
+          "public_sha256": "bcac381496075866e80f14147f96a0d89a1d76437648ba7d574e91beb729d1e5",
+          "local_sha256": "bcac381496075866e80f14147f96a0d89a1d76437648ba7d574e91beb729d1e5",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/RetainExecution.vue",
+          "public_sha256": "6023d0ce021f4e21d38e38ee2ade087307a3d02572974915efc32aa6b8b7c9df",
+          "local_sha256": "6023d0ce021f4e21d38e38ee2ade087307a3d02572974915efc32aa6b8b7c9df",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/RetryIdentity.vue",
+          "public_sha256": "a4bae62e6bfb6e2c5b1a0deaed9e94f4e4c26f3d4eafca1b8948942fd4e69e62",
+          "local_sha256": "a4bae62e6bfb6e2c5b1a0deaed9e94f4e4c26f3d4eafca1b8948942fd4e69e62",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/RoundTransfer.vue",
+          "public_sha256": "23dcb185dd5a6ddb2a17aa189655248fa82d4a4200b00650d26c6d5ee20993fd",
+          "local_sha256": "23dcb185dd5a6ddb2a17aa189655248fa82d4a4200b00650d26c6d5ee20993fd",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/ScoringPaths.vue",
+          "public_sha256": "a80049a6b9c0d5249ecd9279869bcf0b48c597fb5a7a0efa204964c15136a4e6",
+          "local_sha256": "a80049a6b9c0d5249ecd9279869bcf0b48c597fb5a7a0efa204964c15136a4e6",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/SkillRead.vue",
+          "public_sha256": "c2be5ead476773a33791e8b1680d0133ab12233259b8ea7e0033141e3f825550",
+          "local_sha256": "c2be5ead476773a33791e8b1680d0133ab12233259b8ea7e0033141e3f825550",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/TimeoutSequence.vue",
+          "public_sha256": "76164ee0d4bcd6355ba189ea14a22daec1919abccf7d5dd4e546a84510bfa5e8",
+          "local_sha256": "76164ee0d4bcd6355ba189ea14a22daec1919abccf7d5dd4e546a84510bfa5e8",
+          "match": true
+        },
+        {
+          "path": "decks/pending/components/ToolLoop.vue",
+          "public_sha256": "b60d8062af8fa9c760c0e3e9d4d18da99f7ba378a82713579565e2d5c8c96b84",
+          "local_sha256": "b60d8062af8fa9c760c0e3e9d4d18da99f7ba378a82713579565e2d5c8c96b84",
+          "match": true
+        },
+        {
+          "path": "decks/pending/data/evaltables-native.json",
+          "public_sha256": "507e8bff6966d8c7a970e86843eb27e5ad054886f0d3a622c2c35ade897869ea",
+          "local_sha256": "507e8bff6966d8c7a970e86843eb27e5ad054886f0d3a622c2c35ade897869ea",
+          "match": true
+        },
+        {
+          "path": "decks/pending/data/recorded-final.json",
+          "public_sha256": "ba7ce0d8411d0beea6862ce74b4421df4e7bb0c8438930c1be9ba27bb4453398",
+          "local_sha256": "ba7ce0d8411d0beea6862ce74b4421df4e7bb0c8438930c1be9ba27bb4453398",
+          "match": true
+        },
+        {
+          "path": "decks/pending/data/visuals.json",
+          "public_sha256": "5bdb8db9b1e0f5b991b095c8f781dba077f704e3510e88375ed1ee606c5dbf11",
+          "local_sha256": "5bdb8db9b1e0f5b991b095c8f781dba077f704e3510e88375ed1ee606c5dbf11",
+          "match": true
+        },
+        {
+          "path": "decks/pending/scripts/build-storyboard.py",
+          "public_sha256": "03c887b25dc4f98362c890ac7c4c89c29931da20cdef7644068672aee7646dbd",
+          "local_sha256": "03c887b25dc4f98362c890ac7c4c89c29931da20cdef7644068672aee7646dbd",
+          "match": true
+        },
+        {
+          "path": "decks/pending/scripts/teaching_depth.py",
+          "public_sha256": "3429789be7ab210edca66957fd941504151428ba5fa8006177ec11d07017ceb4",
+          "local_sha256": "3429789be7ab210edca66957fd941504151428ba5fa8006177ec11d07017ceb4",
+          "match": true
+        }
+      ],
+      "source_mismatches": [],
+      "expected_pdf_pages": 114,
+      "pdf_pages_match": true
+    },
+    {
+      "slug": "solar",
+      "expected_slides": 123,
+      "checks": [
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/",
+          "status": 200,
+          "bytes": 3405,
+          "sha256": "23a21472529f7a45da07cbc2fd662048ed9dcb86d60281031d61b0e0723d09e6",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/static-routes.json",
+          "status": 200,
+          "bytes": 3787,
+          "sha256": "c6bfc4ca6d26e0ad7fa85ffa71e3be8c948f2b4da84caa84233a8ae7a5388adf",
+          "content_type": "application/json; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/123/",
+          "status": 200,
+          "bytes": 3405,
+          "sha256": "23a21472529f7a45da07cbc2fd662048ed9dcb86d60281031d61b0e0723d09e6",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/presenter/123/",
+          "status": 200,
+          "bytes": 3405,
+          "sha256": "23a21472529f7a45da07cbc2fd662048ed9dcb86d60281031d61b0e0723d09e6",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/solar-autoresearch.pdf",
+          "status": 200,
+          "bytes": 2044149,
+          "sha256": "88bf923c9d1c67d3b6cd6870f7f036d472316ccd908e78f92338071bb9b95b98",
+          "content_type": "application/pdf"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/solar-autoresearch-browser.zip",
+          "status": 200,
+          "bytes": 5971688,
+          "sha256": "6daee26f26f9aca95a020c1de78b194b381e461a14875c8c6506976aaa60d2bc",
+          "content_type": "application/x-zip-compressed"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/solar-autoresearch-source.zip",
+          "status": 200,
+          "bytes": 5196506,
+          "sha256": "80120629d3d66f212d8a6abefc54ec63cbda5ab461485bab8598446bc7dbe73f",
+          "content_type": "application/x-zip-compressed"
+        }
+      ],
+      "errors": [],
+      "slides": 123,
+      "routes_correct": true,
+      "pdf_signature": true,
+      "pdf_pages": 213,
+      "browser_zip_ok": true,
+      "source_zip_ok": true,
+      "source_slide_count": 123,
+      "source_files_checked": 37,
+      "source_hashes": [
+        {
+          "path": "decks/solar/package.json",
+          "public_sha256": "cf84f650a6c1a26a38af6d01297e542971b2d0610f976ff8ee35a3f0f1f41f0f",
+          "local_sha256": "cf84f650a6c1a26a38af6d01297e542971b2d0610f976ff8ee35a3f0f1f41f0f",
+          "match": true
+        },
+        {
+          "path": "decks/solar/package-lock.json",
+          "public_sha256": "849f5c79db922b66c9bbb20cff906d0044a0e9768251664ea811ad4105fcaf4e",
+          "local_sha256": "849f5c79db922b66c9bbb20cff906d0044a0e9768251664ea811ad4105fcaf4e",
+          "match": true
+        },
+        {
+          "path": "decks/solar/slides.md",
+          "public_sha256": "3346fe1fb3f290c9e3171adf30503bb7287901be2a18255611f8f525b822376f",
+          "local_sha256": "3346fe1fb3f290c9e3171adf30503bb7287901be2a18255611f8f525b822376f",
+          "match": true
+        },
+        {
+          "path": "decks/solar/style.css",
+          "public_sha256": "65712bec93b743f7e9bd017186b45cbe31509cf56a2aa5c5b7a54f2d1984848f",
+          "local_sha256": "65712bec93b743f7e9bd017186b45cbe31509cf56a2aa5c5b7a54f2d1984848f",
+          "match": true
+        },
+        {
+          "path": "decks/solar/global-bottom.vue",
+          "public_sha256": "7e3562dfd310d754068c993c4ddc87a02cbc1f9425bda3de46d8418be5186466",
+          "local_sha256": "7e3562dfd310d754068c993c4ddc87a02cbc1f9425bda3de46d8418be5186466",
+          "match": true
+        },
+        {
+          "path": "decks/solar/components/ForecastExample.vue",
+          "public_sha256": "7ccb0cf6a322927a7c4c922750935f273e20167dc4998415b4fd28944764c497",
+          "local_sha256": "7ccb0cf6a322927a7c4c922750935f273e20167dc4998415b4fd28944764c497",
+          "match": true
+        },
+        {
+          "path": "decks/solar/components/ForecastWindow.vue",
+          "public_sha256": "a6f515aafcac29a00c8d2cc234469df866d3e457cc6b893b14c5c2568812f246",
+          "local_sha256": "a6f515aafcac29a00c8d2cc234469df866d3e457cc6b893b14c5c2568812f246",
+          "match": true
+        },
+        {
+          "path": "decks/solar/components/LabScene.vue",
+          "public_sha256": "ffee720a2147dc086cad533c89279508d067137d2560a2f2cdb885975a9dce50",
+          "local_sha256": "ffee720a2147dc086cad533c89279508d067137d2560a2f2cdb885975a9dce50",
+          "match": true
+        },
+        {
+          "path": "decks/solar/components/ResearchBranches.vue",
+          "public_sha256": "ace5e6fdd9a1d7aef5fe29cef21fb67b791ecdab35061405ce8736160808ab7a",
+          "local_sha256": "ace5e6fdd9a1d7aef5fe29cef21fb67b791ecdab35061405ce8736160808ab7a",
+          "match": true
+        },
+        {
+          "path": "decks/solar/components/ResearchMap.vue",
+          "public_sha256": "4a9c2ef3a14ae0e98ef70b0df448aebf8cf67090d41a786c7fb4442f4a85c206",
+          "local_sha256": "4a9c2ef3a14ae0e98ef70b0df448aebf8cf67090d41a786c7fb4442f4a85c206",
+          "match": true
+        },
+        {
+          "path": "decks/solar/components/RunInspector.vue",
+          "public_sha256": "0c299869b7861861ec921010e7cd6fb6ce35397faa2fd24685cefb751f893583",
+          "local_sha256": "0c299869b7861861ec921010e7cd6fb6ce35397faa2fd24685cefb751f893583",
+          "match": true
+        },
+        {
+          "path": "decks/solar/components/SolarComputation.vue",
+          "public_sha256": "87073f534af14a7e7fdc83f79682ef9618d788890f4b4ed1dea6bf7544b4a39c",
+          "local_sha256": "87073f534af14a7e7fdc83f79682ef9618d788890f4b4ed1dea6bf7544b4a39c",
+          "match": true
+        },
+        {
+          "path": "decks/solar/components/SolarConcept.vue",
+          "public_sha256": "b3a966f328c74b9fcba4a9a9a260caf5bc62a289bcde92dc693904c1850cc72e",
+          "local_sha256": "b3a966f328c74b9fcba4a9a9a260caf5bc62a289bcde92dc693904c1850cc72e",
+          "match": true
+        },
+        {
+          "path": "decks/solar/components/SolarDataRules.vue",
+          "public_sha256": "453cb86db4c073b8e686273b5fbcaf05c2d53d9d7ad61fca5b8faff3ded5c7f6",
+          "local_sha256": "453cb86db4c073b8e686273b5fbcaf05c2d53d9d7ad61fca5b8faff3ded5c7f6",
+          "match": true
+        },
+        {
+          "path": "decks/solar/components/SolarMechanism.vue",
+          "public_sha256": "cce7ec3e1cc8161f83053fe72a708a56a74d0686d5cd322635332ab8e6ad55c4",
+          "local_sha256": "cce7ec3e1cc8161f83053fe72a708a56a74d0686d5cd322635332ab8e6ad55c4",
+          "match": true
+        },
+        {
+          "path": "decks/solar/data/branch-example.json",
+          "public_sha256": "2cfb9837056a9c3e96bb60b3c5319fa066fd66b9a50e90d2661542c9ee3cf731",
+          "local_sha256": "2cfb9837056a9c3e96bb60b3c5319fa066fd66b9a50e90d2661542c9ee3cf731",
+          "match": true
+        },
+        {
+          "path": "decks/solar/data/evaltables-native.json",
+          "public_sha256": "06c58ce2af1505c69e929367ff2692e170b5958ba156b6da650a5c304799ca0f",
+          "local_sha256": "06c58ce2af1505c69e929367ff2692e170b5958ba156b6da650a5c304799ca0f",
+          "match": true
+        },
+        {
+          "path": "decks/solar/data/recorded-runs.json",
+          "public_sha256": "38bd5f1fbbf545b485a622664d0c9d850b57ae7a254e88e6e1bc6c33837798a0",
+          "local_sha256": "38bd5f1fbbf545b485a622664d0c9d850b57ae7a254e88e6e1bc6c33837798a0",
+          "match": true
+        },
+        {
+          "path": "decks/solar/data/teaching-window.json",
+          "public_sha256": "a83cdd1253905ccdb3995ff8dd7d1bfc49662e651d67b2f93b01df6db39b83da",
+          "local_sha256": "a83cdd1253905ccdb3995ff8dd7d1bfc49662e651d67b2f93b01df6db39b83da",
+          "match": true
+        },
+        {
+          "path": "decks/solar/data/visuals.json",
+          "public_sha256": "5bdb8db9b1e0f5b991b095c8f781dba077f704e3510e88375ed1ee606c5dbf11",
+          "local_sha256": "5bdb8db9b1e0f5b991b095c8f781dba077f704e3510e88375ed1ee606c5dbf11",
+          "match": true
+        },
+        {
+          "path": "decks/solar/scripts/build-evidence-figures.py",
+          "public_sha256": "1edeeb4add97e3243e6f7d59ca46e0b00a5039099b566d296dd3290bd5d6bf7a",
+          "local_sha256": "1edeeb4add97e3243e6f7d59ca46e0b00a5039099b566d296dd3290bd5d6bf7a",
+          "match": true
+        },
+        {
+          "path": "decks/solar/scripts/build-pages.mjs",
+          "public_sha256": "fb6c602e293550f5c5d9f91a78e1e3f035b07b894bb1e186fdf33f6f2bb6b7a8",
+          "local_sha256": "fb6c602e293550f5c5d9f91a78e1e3f035b07b894bb1e186fdf33f6f2bb6b7a8",
+          "match": true
+        },
+        {
+          "path": "decks/solar/scripts/build-storyboard.py",
+          "public_sha256": "2bd296d043eae9232f0aa00e531ee8f4230d367c847dd8c1a407df6f77b75088",
+          "local_sha256": "2bd296d043eae9232f0aa00e531ee8f4230d367c847dd8c1a407df6f77b75088",
+          "match": true
+        },
+        {
+          "path": "decks/solar/scripts/check-answers.py",
+          "public_sha256": "21375ef59e030a45cb8d031d6feaffd30072aae94986481a44301d4b7c085570",
+          "local_sha256": "21375ef59e030a45cb8d031d6feaffd30072aae94986481a44301d4b7c085570",
+          "match": true
+        },
+        {
+          "path": "decks/solar/scripts/check-exercise-contract.py",
+          "public_sha256": "d5946a54c81c5d99a1275ae0ee606665d1d5f50b4f9cde098ed6d65db3997768",
+          "local_sha256": "d5946a54c81c5d99a1275ae0ee606665d1d5f50b4f9cde098ed6d65db3997768",
+          "match": true
+        },
+        {
+          "path": "decks/solar/scripts/check-native.mjs",
+          "public_sha256": "fe7a7910a297eb903ff7aabaa05d141b0013e00d4a6b59e63279598bc9548aab",
+          "local_sha256": "fe7a7910a297eb903ff7aabaa05d141b0013e00d4a6b59e63279598bc9548aab",
+          "match": true
+        },
+        {
+          "path": "decks/solar/scripts/check-pages.mjs",
+          "public_sha256": "b4530a63c671f887398047f13950fe4a0fb34639749cfc3879719d8a69701c2a",
+          "local_sha256": "b4530a63c671f887398047f13950fe4a0fb34639749cfc3879719d8a69701c2a",
+          "match": true
+        },
+        {
+          "path": "decks/solar/scripts/check-recorded-evidence.py",
+          "public_sha256": "b926b3cf1d38601ebd70dcad81c8c93a9bc9d6b70bd643ee08dbad34f4222c28",
+          "local_sha256": "b926b3cf1d38601ebd70dcad81c8c93a9bc9d6b70bd643ee08dbad34f4222c28",
+          "match": true
+        },
+        {
+          "path": "decks/solar/scripts/check-render.mjs",
+          "public_sha256": "34b06aa36f78468595cb5b2eb0fad44841f83f73bae732a0ebdbe6d556e46b1a",
+          "local_sha256": "34b06aa36f78468595cb5b2eb0fad44841f83f73bae732a0ebdbe6d556e46b1a",
+          "match": true
+        },
+        {
+          "path": "decks/solar/scripts/contact-sheets.py",
+          "public_sha256": "be85046791b8d80f13225691600adb0a0ffbda1eccfae26612d2584f0d34adda",
+          "local_sha256": "be85046791b8d80f13225691600adb0a0ffbda1eccfae26612d2584f0d34adda",
+          "match": true
+        },
+        {
+          "path": "decks/solar/scripts/finalize-pdf.py",
+          "public_sha256": "85425c98be275c67b05668c3bcebe6e264c47bc0a4938f83def9b2c9b83b1cc0",
+          "local_sha256": "85425c98be275c67b05668c3bcebe6e264c47bc0a4938f83def9b2c9b83b1cc0",
+          "match": true
+        },
+        {
+          "path": "decks/solar/scripts/package-browser.mjs",
+          "public_sha256": "7d0c8376367c534c1154ff579267fd7e3229f06831ade6e632dd85170ace4d6d",
+          "local_sha256": "7d0c8376367c534c1154ff579267fd7e3229f06831ade6e632dd85170ace4d6d",
+          "match": true
+        },
+        {
+          "path": "decks/solar/scripts/package-release.py",
+          "public_sha256": "9ff52b3ff5a1d69828642f5524b7f051e00313628625af9eb10282b32a523cdc",
+          "local_sha256": "9ff52b3ff5a1d69828642f5524b7f051e00313628625af9eb10282b32a523cdc",
+          "match": true
+        },
+        {
+          "path": "decks/solar/scripts/prepare-teaching-window.py",
+          "public_sha256": "6cdd286da346f19e472c701c26255c7467b10d4639873f580bb1992b9db3cf61",
+          "local_sha256": "6cdd286da346f19e472c701c26255c7467b10d4639873f580bb1992b9db3cf61",
+          "match": true
+        },
+        {
+          "path": "decks/solar/scripts/serve-browser.py",
+          "public_sha256": "47b54aabfa4ef7c2ae751c6b1b7cc7530f205679d70803a6004979e9e0d0aa77",
+          "local_sha256": "47b54aabfa4ef7c2ae751c6b1b7cc7530f205679d70803a6004979e9e0d0aa77",
+          "match": true
+        },
+        {
+          "path": "decks/solar/scripts/snapshot-rehearsal.py",
+          "public_sha256": "affc7515e68fd6dcc9b474c688a2c042b1e48619b37bca367e54cb3cff26c047",
+          "local_sha256": "affc7515e68fd6dcc9b474c688a2c042b1e48619b37bca367e54cb3cff26c047",
+          "match": true
+        },
+        {
+          "path": "decks/solar/scripts/teaching_sequence.py",
+          "public_sha256": "4038fddd9156a67c58ae4d2f1a2f47c1acda8496f3570242fd211e5d2640806a",
+          "local_sha256": "4038fddd9156a67c58ae4d2f1a2f47c1acda8496f3570242fd211e5d2640806a",
+          "match": true
+        }
+      ],
+      "source_mismatches": [],
+      "expected_pdf_pages": 213,
+      "pdf_pages_match": true
+    },
+    {
+      "slug": "routing",
+      "expected_slides": 52,
+      "checks": [
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/",
+          "status": 200,
+          "bytes": 1709,
+          "sha256": "a7c6248ea3c2fd31fa8670d0e5c33a720bfe4fd9eb47e268d8a24e438162e8e8",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/static-routes.json",
+          "status": 200,
+          "bytes": 1609,
+          "sha256": "d84f107bfff722252b5c701b0d65d81e9aa083f3231503dd140cad64865ab17d",
+          "content_type": "application/json; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/52/",
+          "status": 200,
+          "bytes": 1709,
+          "sha256": "a7c6248ea3c2fd31fa8670d0e5c33a720bfe4fd9eb47e268d8a24e438162e8e8",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/presenter/52/",
+          "status": 200,
+          "bytes": 1709,
+          "sha256": "a7c6248ea3c2fd31fa8670d0e5c33a720bfe4fd9eb47e268d8a24e438162e8e8",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/request-routing.pdf",
+          "status": 200,
+          "bytes": 405591,
+          "sha256": "cae9a03fdb130fe00fa8785a3c4a840ae99aee48ad32e5ff98f16f08f09f45f6",
+          "content_type": "application/pdf"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/request-routing-browser.zip",
+          "status": 200,
+          "bytes": 1209171,
+          "sha256": "6c74a99e949bd8599e14dbf871b3b0789f37f2711430f7532459a9a18a8d8234",
+          "content_type": "application/x-zip-compressed"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/request-routing-source.zip",
+          "status": 200,
+          "bytes": 387641,
+          "sha256": "b53a9a23e03070e1b8e6037982da835f8e295a60f70aeb645ac763013a7c1435",
+          "content_type": "application/x-zip-compressed"
+        }
+      ],
+      "errors": [],
+      "slides": 52,
+      "routes_correct": true,
+      "pdf_signature": true,
+      "pdf_pages": 55,
+      "browser_zip_ok": true,
+      "source_zip_ok": true,
+      "source_slide_count": 52,
+      "source_files_checked": 12,
+      "source_hashes": [
+        {
+          "path": "decks/routing/package.json",
+          "public_sha256": "9610f355c50a34df88aa56a988352f41792b71e0d98659b3446841bf2a875447",
+          "local_sha256": "9610f355c50a34df88aa56a988352f41792b71e0d98659b3446841bf2a875447",
+          "match": true
+        },
+        {
+          "path": "decks/routing/package-lock.json",
+          "public_sha256": "9e77f773a52f6e489704a0d8ed4c8471c58ce0f8fdc8d737f7e92ecff75a098e",
+          "local_sha256": "9e77f773a52f6e489704a0d8ed4c8471c58ce0f8fdc8d737f7e92ecff75a098e",
+          "match": true
+        },
+        {
+          "path": "decks/routing/slides.md",
+          "public_sha256": "55335aa5256db3ef6d89e8b9d2b2f6dfd7200c534727fb90e361892b78087c7f",
+          "local_sha256": "55335aa5256db3ef6d89e8b9d2b2f6dfd7200c534727fb90e361892b78087c7f",
+          "match": true
+        },
+        {
+          "path": "decks/routing/style.css",
+          "public_sha256": "129e66943a64e757211f7fb529ca0fc0279dd71c2673b1a6dd7e61fe8e0a5c8c",
+          "local_sha256": "129e66943a64e757211f7fb529ca0fc0279dd71c2673b1a6dd7e61fe8e0a5c8c",
+          "match": true
+        },
+        {
+          "path": "decks/routing/global-bottom.vue",
+          "public_sha256": "1e51276f509d64e1d1ca73880ade3a39dd7a514c4dac05748f986baf5a7dfa51",
+          "local_sha256": "1e51276f509d64e1d1ca73880ade3a39dd7a514c4dac05748f986baf5a7dfa51",
+          "match": true
+        },
+        {
+          "path": "decks/routing/components/RoutingCase.vue",
+          "public_sha256": "941263d89da7718f40ce35a628a65a3b31babed7293bcba8865ac488e4ae0540",
+          "local_sha256": "941263d89da7718f40ce35a628a65a3b31babed7293bcba8865ac488e4ae0540",
+          "match": true
+        },
+        {
+          "path": "decks/routing/components/RoutingWalk.vue",
+          "public_sha256": "61bdce2bef21fbb120b14eb79b77890a5f7a410b4a5abba505c237db836f81c1",
+          "local_sha256": "61bdce2bef21fbb120b14eb79b77890a5f7a410b4a5abba505c237db836f81c1",
+          "match": true
+        },
+        {
+          "path": "decks/routing/data/concept-evidence.json",
+          "public_sha256": "ac373ca8d62c327bcb03c2bfa909af446167089636fa2168fdc332334ad00adf",
+          "local_sha256": "ac373ca8d62c327bcb03c2bfa909af446167089636fa2168fdc332334ad00adf",
+          "match": true
+        },
+        {
+          "path": "decks/routing/data/evaltables-native.json",
+          "public_sha256": "50b4bf522fb7a8716ebdf92df2c0538af17b39eb91fe1653117168c142283069",
+          "local_sha256": "50b4bf522fb7a8716ebdf92df2c0538af17b39eb91fe1653117168c142283069",
+          "match": true
+        },
+        {
+          "path": "decks/routing/data/recorded-review.json",
+          "public_sha256": "28e1f938c837eb79daadb63c9db5a07fd408b276307f4a93fb2a184f1eecfa96",
+          "local_sha256": "28e1f938c837eb79daadb63c9db5a07fd408b276307f4a93fb2a184f1eecfa96",
+          "match": true
+        },
+        {
+          "path": "decks/routing/scripts/build-storyboard.py",
+          "public_sha256": "756a545091209286c019238941193541896b4dd21b5f9a52cdd5b8d9efc55d92",
+          "local_sha256": "756a545091209286c019238941193541896b4dd21b5f9a52cdd5b8d9efc55d92",
+          "match": true
+        },
+        {
+          "path": "decks/routing/scripts/depth_storyboard.py",
+          "public_sha256": "20927721b9eda667cd76c5f091262b67a426d77a270f1c86d246aff581d9bbb5",
+          "local_sha256": "20927721b9eda667cd76c5f091262b67a426d77a270f1c86d246aff581d9bbb5",
+          "match": true
+        }
+      ],
+      "source_mismatches": [],
+      "expected_pdf_pages": 55,
+      "pdf_pages_match": true
+    },
+    {
+      "slug": "inspection",
+      "expected_slides": 50,
+      "checks": [
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/",
+          "status": 200,
+          "bytes": 2208,
+          "sha256": "7542b8bdc626b4db14f0ea90c36e95c15a6d29f4442ce4932030d152e90e8a84",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/static-routes.json",
+          "status": 200,
+          "bytes": 1549,
+          "sha256": "ab379179b13d1f05ac52190a8b9dbbe07f673a735513a26134f2ff73ba487556",
+          "content_type": "application/json; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/50/",
+          "status": 200,
+          "bytes": 2208,
+          "sha256": "7542b8bdc626b4db14f0ea90c36e95c15a6d29f4442ce4932030d152e90e8a84",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/presenter/50/",
+          "status": 200,
+          "bytes": 2208,
+          "sha256": "7542b8bdc626b4db14f0ea90c36e95c15a6d29f4442ce4932030d152e90e8a84",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/visual-inspection.pdf",
+          "status": 200,
+          "bytes": 1414374,
+          "sha256": "d0a7147ff1d11d94356862894b7581656429808131ca76bf2d22b7963895e45b",
+          "content_type": "application/pdf"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/visual-inspection-browser.zip",
+          "status": 200,
+          "bytes": 1837112,
+          "sha256": "7f93408298dd1eb47312cee95c382e12f4e1c57675385af1518869d79748b86b",
+          "content_type": "application/x-zip-compressed"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/visual-inspection-source.zip",
+          "status": 200,
+          "bytes": 1008832,
+          "sha256": "cce9ef0dd832128921b55b6e789696c62e0d8bd7800308aff1197b88739fc380",
+          "content_type": "application/x-zip-compressed"
+        }
+      ],
+      "errors": [],
+      "slides": 50,
+      "routes_correct": true,
+      "pdf_signature": true,
+      "pdf_pages": 56,
+      "browser_zip_ok": true,
+      "source_zip_ok": true,
+      "source_slide_count": 50,
+      "source_files_checked": 9,
+      "source_hashes": [
+        {
+          "path": "decks/inspection/package.json",
+          "public_sha256": "e6b33ac5635b7c0d873d10b283976bd6a59e5b0c90934fbf2de8afcf9ae27455",
+          "local_sha256": "e6b33ac5635b7c0d873d10b283976bd6a59e5b0c90934fbf2de8afcf9ae27455",
+          "match": true
+        },
+        {
+          "path": "decks/inspection/package-lock.json",
+          "public_sha256": "eeb6f3bc4bf6f9902785fb07a6af6d5f2d754f64e25312056ea0ecb58e257a80",
+          "local_sha256": "eeb6f3bc4bf6f9902785fb07a6af6d5f2d754f64e25312056ea0ecb58e257a80",
+          "match": true
+        },
+        {
+          "path": "decks/inspection/slides.md",
+          "public_sha256": "0282e2c1fbc99f83db09b27ab5a0d2c98acc0d504111a65423a1ee69d2b7c6ea",
+          "local_sha256": "0282e2c1fbc99f83db09b27ab5a0d2c98acc0d504111a65423a1ee69d2b7c6ea",
+          "match": true
+        },
+        {
+          "path": "decks/inspection/style.css",
+          "public_sha256": "2cc5d3c505727d58c7c3e17c830e9c9e6b70f6d78eca846bd662946aa426a1b1",
+          "local_sha256": "2cc5d3c505727d58c7c3e17c830e9c9e6b70f6d78eca846bd662946aa426a1b1",
+          "match": true
+        },
+        {
+          "path": "decks/inspection/global-bottom.vue",
+          "public_sha256": "711c47b6f6df8abc0d2a6ab7af965934e46c740e5a58354f7ad104487a26a952",
+          "local_sha256": "711c47b6f6df8abc0d2a6ab7af965934e46c740e5a58354f7ad104487a26a952",
+          "match": true
+        },
+        {
+          "path": "decks/inspection/components/InspectionWalk.vue",
+          "public_sha256": "18fef7e502bca365d7e5a00639c8a7deda609518c0c4fd2c319205e5bb60deff",
+          "local_sha256": "18fef7e502bca365d7e5a00639c8a7deda609518c0c4fd2c319205e5bb60deff",
+          "match": true
+        },
+        {
+          "path": "decks/inspection/data/evaltables-native.json",
+          "public_sha256": "6edcf146ca94a93cf11b8458c1607b07bab9bf66b47439f277205ce4c2837d89",
+          "local_sha256": "6edcf146ca94a93cf11b8458c1607b07bab9bf66b47439f277205ce4c2837d89",
+          "match": true
+        },
+        {
+          "path": "decks/inspection/scripts/build-storyboard.py",
+          "public_sha256": "924f65ad988dfc3f79c137a70fd39f073d0abbd2b8ae9aef7b0b60a4c0c67d1d",
+          "local_sha256": "924f65ad988dfc3f79c137a70fd39f073d0abbd2b8ae9aef7b0b60a4c0c67d1d",
+          "match": true
+        },
+        {
+          "path": "decks/inspection/scripts/depth_storyboard.py",
+          "public_sha256": "80f0a8f0c287be7db7f875c35227ea7f80038d65b75a96670fa7ed0dcf7897de",
+          "local_sha256": "80f0a8f0c287be7db7f875c35227ea7f80038d65b75a96670fa7ed0dcf7897de",
+          "match": true
+        }
+      ],
+      "source_mismatches": [],
+      "expected_pdf_pages": 56,
+      "pdf_pages_match": true
+    },
+    {
+      "slug": "transit",
+      "expected_slides": 94,
+      "checks": [
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/transit/",
+          "status": 200,
+          "bytes": 1822,
+          "sha256": "c94306e2c71674ec0b6d8bca3d4a3c1711f18ebc7c9405e6aef4ce81bed8b140",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/transit/static-routes.json",
+          "status": 200,
+          "bytes": 2869,
+          "sha256": "ae6900c05c793968d772550b42cc3a266e286973d0894eae2194642ea488b3be",
+          "content_type": "application/json; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/transit/94/",
+          "status": 200,
+          "bytes": 1822,
+          "sha256": "c94306e2c71674ec0b6d8bca3d4a3c1711f18ebc7c9405e6aef4ce81bed8b140",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/transit/presenter/94/",
+          "status": 200,
+          "bytes": 1822,
+          "sha256": "c94306e2c71674ec0b6d8bca3d4a3c1711f18ebc7c9405e6aef4ce81bed8b140",
+          "content_type": "text/html; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/transit/transit-factory.pdf",
+          "status": 200,
+          "bytes": 661441,
+          "sha256": "23f0f7be4b55c262a3d30134b552d0e109b1a11fcf33953e5357e73c489803a7",
+          "content_type": "application/pdf"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/transit/transit-factory-browser.zip",
+          "status": 200,
+          "bytes": 5932600,
+          "sha256": "f706bb1e692630397a69494fca60f1adcb7d6a557cf1eefdb1cec63530c75535",
+          "content_type": "application/x-zip-compressed"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/transit/transit-factory-source.zip",
+          "status": 200,
+          "bytes": 4219494,
+          "sha256": "1c9ff6bfd914494a308bf295c60b5cdcf0e926a96d9bbc8505ed66c8082dc7bc",
+          "content_type": "application/x-zip-compressed"
+        }
+      ],
+      "errors": [],
+      "slides": 94,
+      "routes_correct": true,
+      "pdf_signature": true,
+      "pdf_pages": 109,
+      "browser_zip_ok": true,
+      "source_zip_ok": true,
+      "source_slide_count": 94,
+      "source_files_checked": 16,
+      "source_hashes": [
+        {
+          "path": "decks/transit/package.json",
+          "public_sha256": "8d7bda7360bb13178f0616160923238be2c905ef7c7547e355b34256c8b70b35",
+          "local_sha256": "8d7bda7360bb13178f0616160923238be2c905ef7c7547e355b34256c8b70b35",
+          "match": true
+        },
+        {
+          "path": "decks/transit/package-lock.json",
+          "public_sha256": "48018bde9d8213257d57ac9101a3392967efeac2e71dd3b0bc097f1037863438",
+          "local_sha256": "48018bde9d8213257d57ac9101a3392967efeac2e71dd3b0bc097f1037863438",
+          "match": true
+        },
+        {
+          "path": "decks/transit/slides.md",
+          "public_sha256": "34fb8d3b7e82e75e48269c8c78c9cf179633bf7991765e2638ddbc46d9195dab",
+          "local_sha256": "34fb8d3b7e82e75e48269c8c78c9cf179633bf7991765e2638ddbc46d9195dab",
+          "match": true
+        },
+        {
+          "path": "decks/transit/style.css",
+          "public_sha256": "acb111d91612c773cc8c64973afd1463888c0e350c38d76f6852af1f1447a9d4",
+          "local_sha256": "acb111d91612c773cc8c64973afd1463888c0e350c38d76f6852af1f1447a9d4",
+          "match": true
+        },
+        {
+          "path": "decks/transit/global-bottom.vue",
+          "public_sha256": "692f557569cd4949781efc264b8bfa6c9a821594a9ac6b36656f58d306d325bf",
+          "local_sha256": "692f557569cd4949781efc264b8bfa6c9a821594a9ac6b36656f58d306d325bf",
+          "match": true
+        },
+        {
+          "path": "decks/transit/components/ContractBoard.vue",
+          "public_sha256": "84b877cdcb2601bbbdf73889faf04c6aed228c0e9c9a3b181de66da45575207a",
+          "local_sha256": "84b877cdcb2601bbbdf73889faf04c6aed228c0e9c9a3b181de66da45575207a",
+          "match": true
+        },
+        {
+          "path": "decks/transit/components/FactoryFlow.vue",
+          "public_sha256": "d523af6ed3a3bbaa03f003083a5ef21a91c4c04f2c4a07d736e6744804463899",
+          "local_sha256": "d523af6ed3a3bbaa03f003083a5ef21a91c4c04f2c4a07d736e6744804463899",
+          "match": true
+        },
+        {
+          "path": "decks/transit/components/LessonSequence.vue",
+          "public_sha256": "fd40b9a53ff18728e91bcd55624beee1bfecbecde368d402ca582021a539555b",
+          "local_sha256": "fd40b9a53ff18728e91bcd55624beee1bfecbecde368d402ca582021a539555b",
+          "match": true
+        },
+        {
+          "path": "decks/transit/components/MemoryFlow.vue",
+          "public_sha256": "6f1ebd2c68e187ebc79af4da99d3f7df40205f36dea224f42ede71375f1d1226",
+          "local_sha256": "6f1ebd2c68e187ebc79af4da99d3f7df40205f36dea224f42ede71375f1d1226",
+          "match": true
+        },
+        {
+          "path": "decks/transit/scripts/build-storyboard.py",
+          "public_sha256": "529121ab934b6cdfa166c7aa4b48d52aac17d05b201632cdb08e316b3abebbb0",
+          "local_sha256": "529121ab934b6cdfa166c7aa4b48d52aac17d05b201632cdb08e316b3abebbb0",
+          "match": true
+        },
+        {
+          "path": "decks/transit/scripts/check-storyboard.py",
+          "public_sha256": "241eee89df9de916d56035f858373b0e1bfb7e2107c159202bb34a697eda8dc6",
+          "local_sha256": "241eee89df9de916d56035f858373b0e1bfb7e2107c159202bb34a697eda8dc6",
+          "match": true
+        },
+        {
+          "path": "decks/transit/scripts/check-walkthrough.mjs",
+          "public_sha256": "dffbcd2ef542baece5e98dacd29f5dac4b665bbea0298547cba5fa4882fe557d",
+          "local_sha256": "dffbcd2ef542baece5e98dacd29f5dac4b665bbea0298547cba5fa4882fe557d",
+          "match": true
+        },
+        {
+          "path": "decks/transit/scripts/depth-sequences.py",
+          "public_sha256": "3154449493928a34c75f94c800a8c2e5db6bd33908c44133fd2c54542c702599",
+          "local_sha256": "3154449493928a34c75f94c800a8c2e5db6bd33908c44133fd2c54542c702599",
+          "match": true
+        },
+        {
+          "path": "decks/transit/scripts/record-replay.mjs",
+          "public_sha256": "9c0529f4e6d43e7a87caa34526a0f4e926f2d955661fe9f30a72b3e0673bdf02",
+          "local_sha256": "9c0529f4e6d43e7a87caa34526a0f4e926f2d955661fe9f30a72b3e0673bdf02",
+          "match": true
+        },
+        {
+          "path": "decks/transit/scripts/record-walkthrough.mjs",
+          "public_sha256": "b5d4702ba13260d3cb444e9dba0b160b98d95260be473cf609df064fbb6a15bf",
+          "local_sha256": "b5d4702ba13260d3cb444e9dba0b160b98d95260be473cf609df064fbb6a15bf",
+          "match": true
+        },
+        {
+          "path": "decks/transit/scripts/render-walkthrough.py",
+          "public_sha256": "4ccf2e12f116ad5110319db9484b5dc472a0fd199dcf3a041f2d3af4cda6a781",
+          "local_sha256": "4ccf2e12f116ad5110319db9484b5dc472a0fd199dcf3a041f2d3af4cda6a781",
+          "match": true
+        }
+      ],
+      "source_mismatches": [],
+      "expected_pdf_pages": 109,
+      "pdf_pages_match": true
+    }
+  ],
+  "passed": true,
+  "native_browser_check": {
+    "surface": "in-app browser",
+    "hub": "https://ash0ts.github.io/forge-workshop-kit/",
+    "transit_title": "Build a transit app with a team of coding agents",
+    "transit_slides": 94,
+    "next_navigation": "Slide 1 to slide 2 verified",
+    "paid_execution": false
+  }
+}
