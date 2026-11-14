@@ -1,6 +1,5 @@
 """Small public teaching artifact, with checksums before any training."""
 import hashlib
-import json
 import shutil
 import tarfile
 import tempfile

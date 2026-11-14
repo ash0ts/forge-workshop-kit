@@ -1,6 +1,8 @@
-# Release checks · 0.6.1 technical preview
+# Release checks · 0.6.2 technical preview
 
 Version 0.6.1 expands the explanations in all five decks. Each sequence follows an example through intermediate values, code, output, a participant exercise, and a specific Forge investigation. The notebooks add matching introductions and companion-deck links. Runtime behavior, datasets, models, budgets, and saved progress are unchanged. This revision makes no new training, inference, or judging calls.
+
+Version 0.6.2 removes unused generator and media-export code, shares file hashing between build and publication, and rejects malformed publication destinations. Saved-state readers now use the same locks as writers, including initial journal creation. EvalTable readback rejects missing or stringified images. The diagrams and recorded experiments remain those of 0.6.1.
 
 ## Sessions and materials
 
@@ -26,6 +28,8 @@ The package build verifies pinned dependencies, checks all seven templates, and 
 
 The [teaching-check receipt](../evidence/v061-teaching-checks.json) records the final slide totals and source hashes. All 33 release downloads passed anonymous checksum verification; see the [download receipt](../evidence/release-downloads-v061.json). The browser-deck deployment also passed anonymous checks for all five decks, PDFs and source bundles; 107 authored source files matched their local hashes. See the [public-deck receipt](../evidence/decks-public-v061.json). All 29 public documentation and source links returned the expected pages. The 26 Forge links were reachable, which alone does not establish record permissions.
 
+The 0.6.2 cleanup passed all 305 local tests, the unused-name lint checks, and generation/check/export of all seven templates. The new tests cover open-read contention, first journal creation, malformed publisher destinations, and missing image references. They make no training or inference requests.
+
 ## Results remain unchanged
 
 - **Pending:** the committed-write retry repair prevents a duplicate membership. The later harness comparison remains a 4/4 tie.
@@ -40,7 +44,7 @@ The [previous release checks](archive/release-checks-v060.md) retain the executi
 
 The branch workflow passed all nine jobs on macOS, Windows and Linux. The separate tag workflow on the same commit failed one Windows Transit test: the team returned one proposed patch instead of two. A focused local test passes normally. A simulation of Windows file-sharing contention reproduces the symptom when an unlocked task-board read overlaps an atomic replacement. The CI assertion does not print the worker outcome, so this is a plausible cause rather than a confirmed diagnosis of that CI run. The failed Windows job passed on the one bounded retry. That successful retry does not establish reliability.
 
-Use Forge-hosted execution, macOS or Linux for Transit’s two-worker exercise while a narrow file-locking fix is qualified. This presentation release does not change the runtime. The [investigation receipt](../evidence/v061-windows-review.json) preserves the reproduction and its limits.
+Version 0.6.2 repairs the demonstrated read/write race and adds deterministic contention tests. The original CI exception was not saved, so this does not establish that the race was its only cause. The [investigation receipt](../evidence/v061-windows-review.json) preserves the original reproduction and its limits. Windows CI qualification for the patch is pending.
 
 ## Remaining release gates
 

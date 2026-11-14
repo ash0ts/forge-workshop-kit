@@ -62,7 +62,8 @@ def first_release(session):
     scheduler = session.get_draft('factory/tasks')
     solo = transit_workshop.run_initial(session, 'solo', worker)
     team = transit_workshop.run_initial(session, 'team', worker, workers=2, task_code=scheduler)
-    assert len(solo['pending_review']) == len(team['pending_review']) == 2
+    assert len(solo['pending_review']) == len(team['pending_review']) == 2, {
+        'solo_outcomes': solo['outcomes'], 'team_outcomes': team['outcomes']}
     assert 'query.py proposed' in transit_workshop.patch_review(session)
     results = transit_workshop.integrate_initial(session)
     assert all(result['passed'] and result['all_tasks_integrated'] for result in results.values())

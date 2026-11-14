@@ -8,7 +8,7 @@ from forge_workshop_kit.pending.harness import Harness
 from forge_workshop_kit.pending.loop import run_employee,editor_decision,judge_explanation
 from forge_workshop_kit.provider import Provider
 from forge_workshop_kit.session import digest
-from forge_workshop_kit.publication import publish_comparison,publish_report
+from forge_workshop_kit.publication import publish_comparison
 p=argparse.ArgumentParser();p.add_argument('--project',required=True);p.add_argument('--state',default='.workshop/pending-rehearsal');a=p.parse_args()
 s=WorkshopSession(a.project,'pending-direct',state_dir=a.state,budget_usd=4)
 s.check_access(); started=time.time()

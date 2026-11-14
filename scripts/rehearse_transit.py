@@ -1,7 +1,6 @@
 """Explicit maintainer rehearsal. Review returned patches before integrating them."""
 import argparse
 import json
-from pathlib import Path
 
 from forge_workshop_kit import WorkshopSession, factory, transit
 from forge_workshop_kit import factory_teaching as teaching, transit_workshop as lab

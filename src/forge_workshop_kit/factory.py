@@ -153,7 +153,9 @@ class TaskBoard:
             self.add_memory(entry)
 
     def snapshot(self):
-        return json.loads(self.path.read_text(encoding='utf-8'))
+        # An open reader can prevent atomic replacement on Windows.
+        with self.lock:
+            return json.loads(self.path.read_text(encoding='utf-8'))
 
     @contextmanager
     def transaction(self):

@@ -1,7 +1,6 @@
 """Check real product paths without training or model calls."""
 import argparse
 import json
-import time
 from pathlib import Path
 from forge_workshop_kit import WorkshopSession
 from forge_workshop_kit.traces import event,export_trace

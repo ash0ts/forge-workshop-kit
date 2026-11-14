@@ -59,7 +59,7 @@ table = wandb.EvalTable(
 run.log({"final_cases": table})
 ```
 
-Images are real media cells, not file-path strings. The publisher retains the SDK’s evaluation identity, reads back every case and score, and checks the run’s logged table before calling the export complete. A saved comparison view selects only the relevant runs; it does not change the project’s default workspace.
+Images are real media cells, not file-path strings. The publisher retains the SDK’s evaluation identity, reads back every case and score, and checks the run’s logged table before calling the export complete. Image readback checks the stored media type and file references; it does not download and compare every pixel. A saved comparison view selects only the relevant runs; it does not change the project’s default workspace.
 
 ## If an upload fails
 

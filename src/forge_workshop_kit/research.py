@@ -2,7 +2,6 @@
 import ast
 import difflib
 import json
-from pathlib import Path
 
 from .provider import validated_json
 from .session import digest
@@ -63,11 +62,8 @@ def propose(session, number, source, evidence):
                     validate_decision(candidate,source)
             proposal,call=validated_json(session,stage.id,[{'role':'system','content':SYSTEM},
                 {'role':'user','content':json.dumps(prompt)}],validate,max_tokens=16384)
-            candidates=proposal.get('candidates',[])
-            if len(candidates)!=2:
-                raise ValueError('The proposal must contain exactly two candidates.')
+            candidates=proposal['candidates']
             for candidate in candidates:
-                validate_decision(candidate,source)
                 candidate['fingerprint']=digest({'candidate.py':candidate['source']})
                 candidate['diff']=diff(source,candidate['source'])
             files=[]
@@ -131,7 +127,6 @@ def compose(session, number, source, previous, candidates):
             decision,call=validated_json(session,stage.id,[{'role':'system','content':SYSTEM},
                 {'role':'user','content':json.dumps({'mission':mission,**context})}],
                 lambda value: validate_composition(value,source),max_tokens=16384)
-            validate_composition(decision,source)
             decision = normalize_composition(decision)
             decision['diff']=diff(source,decision['source'])
             decision['fingerprint']=digest({'candidate.py':decision['source']})
@@ -145,10 +140,10 @@ def compose(session, number, source, previous, candidates):
 
 
 def trace_decision(session,stage_id):
-    stage=session.read()['stages'][stage_id]
-    request_id=stage['result']['request_id']
+    state=session.read()
+    stage=state['stages'][stage_id]
     # Include every transport attempt for this operation, not just the successful response.
-    requests=[r for key,r in session.read()['requests'].items() if key.startswith(stage_id+'/') and r.get('ended_at')]
+    requests=[r for key,r in state['requests'].items() if key.startswith(stage_id+'/') and r.get('ended_at')]
     return export_trace(session,stage_id,stage['result']['mission'],stage['result'].get('events',[]),requests)
 
 

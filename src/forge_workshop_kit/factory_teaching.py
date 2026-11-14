@@ -4,7 +4,6 @@ from __future__ import annotations
 import html
 import json
 from copy import deepcopy
-from pathlib import Path
 
 from .manifest import get_workshop
 from .session import digest

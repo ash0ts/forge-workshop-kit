@@ -87,17 +87,25 @@ def _request_digest(run, rows, name):
 
 
 def _matches_non_media(actual, expected):
+    if is_image(expected):
+        # Verify the pinned Weave SDK's image envelope without downloading pixels.
+        # A missing image or a stringified path must not pass row readback.
+        if not isinstance(actual, Mapping) or actual.get('_type') != 'CustomWeaveType':
+            return False
+        kind, files = actual.get('weave_type'), actual.get('files')
+        return (isinstance(kind, Mapping) and kind.get('type') == 'PIL.Image.Image'
+                and isinstance(files, Mapping) and bool(files)
+                and all(isinstance(name, str) and name.startswith('image.')
+                        and isinstance(value, str) and bool(value)
+                        for name, value in files.items()))
     if isinstance(expected, dict):
         if not isinstance(actual, Mapping) or set(actual) != set(expected):
             return False
-        # Image cells are checked in the native view; do not download every image
-        # while retrying row publication. All other values are compared exactly.
-        return all(is_image(value) or _matches_non_media(actual[key], value)
-                   for key, value in expected.items())
+        return all(_matches_non_media(actual[key], value) for key, value in expected.items())
     if isinstance(expected, list):
         return (isinstance(actual, Sequence) and not isinstance(actual, str)
                 and len(actual) == len(expected)
-                and all(is_image(value) or _matches_non_media(actual[index], value)
+                and all(_matches_non_media(actual[index], value)
                         for index, value in enumerate(expected)))
     if isinstance(expected, bool) or isinstance(actual, bool):
         return type(actual) is type(expected) and actual == expected

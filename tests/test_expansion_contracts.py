@@ -6,7 +6,7 @@ from forge_workshop_kit.releases import record_release
 from forge_workshop_kit.managed_jobs import submit_once, poll_job, SubmissionNeedsReview
 from forge_workshop_kit.publication import comparison_metrics, _merge_local_work
 from forge_workshop_kit.pending import recovery
-from forge_workshop_kit.media import image_value, checked_image, column_schema, native_fields, native_image
+from forge_workshop_kit.media import image_value, checked_image, weave_value
 
 
 @pytest.fixture
@@ -70,15 +70,15 @@ def test_timeout_repair_changes_actual_state():
     assert fixed['events'][1]['result']['replayed'] is True
 
 
-def test_image_values_are_checked_and_native_media_is_typed(tmp_path):
+def test_image_values_are_checked_and_weave_media_is_typed(tmp_path):
     from PIL import Image
     path = tmp_path / 'board.png'
     Image.new('RGB', (8, 8), 'red').save(path)
     value = image_value(path, 'A recorded board')
-    typed = native_image(value, 'wandb-artifact://immutable/media.png')
-    fields = native_fields({'board': typed, 'label': 'normal'}, 'input')
-    assert fields['input']['label'] == 'normal'
-    assert column_schema('input', 'input.board', [fields['input.board']])['extension_type'] == 'wandb-image'
+    typed = weave_value({'board': value, 'label': 'normal'})
+    assert typed['label'] == 'normal'
+    assert isinstance(typed['board'], Image.Image)
+    assert typed['board'].getpixel((0, 0)) == (255, 0, 0)
     path.write_bytes(b'changed')
     with pytest.raises(ValueError, match='changed'):
         checked_image(value)

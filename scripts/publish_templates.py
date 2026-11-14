@@ -10,13 +10,16 @@ import tempfile
 from pathlib import Path
 
 import httpx
-from release_support import REPOSITORY, ROOT, project_metadata, templates
+from release_support import REPOSITORY, ROOT, project_metadata, sha256, templates
 
 NOTEBOOK_QUERY = """query($id:ID!){notebook(id:$id){id name project{name entity{name}} currentVersion{artifactCollectionName versionIndex sourceFileName} viewerPermissions}}"""
 
 
-def sha256(path):
-    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+def validate_project(project):
+    if not re.fullmatch(r"[\w.-]+/[\w.-]+", project) or any(
+        part in (".", "..") for part in project.split("/")
+    ):
+        raise ValueError("Use entity/project; neither part may be '.' or '..'.")
 
 
 def write_receipt(path, value):
@@ -107,6 +110,7 @@ def remote_matches(api, notebook, project, row):
 def publish_one(project, folder, receipt_path, slug, *, api=None):
     import wandb
 
+    validate_project(project)
     manifest, rows = load_build(folder, [slug])
     row = rows[slug]
     api = api or wandb.Api(timeout=30)
@@ -205,8 +209,10 @@ def main():
     )
     parser.add_argument("--worker", help=argparse.SUPPRESS)
     args = parser.parse_args()
-    if not re.fullmatch(r"[\w.-]+/[\w.-]+", args.project):
-        parser.error("Use entity/project.")
+    try:
+        validate_project(args.project)
+    except ValueError as error:
+        parser.error(str(error))
     folder = (args.build or ROOT / "dist" / ("v" + project_metadata()["version"])).resolve()
     receipt = (
         args.receipt or ROOT / ".workshop-deployments" / args.project / "templates.json"

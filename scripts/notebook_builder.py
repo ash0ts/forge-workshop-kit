@@ -1,14 +1,12 @@
 import ast
 import builtins
 import textwrap
+
+
 class Cell:
-    def __init__(self, code, chamber="setup", kind="display", hide=True):
-        self.code, self.chamber, self.kind, self.hide = (
-            textwrap.dedent(code).strip(),
-            chamber,
-            kind,
-            hide,
-        )
+    def __init__(self, code, hide=True):
+        self.code = textwrap.dedent(code).strip()
+        self.hide = hide
 
 
 def _top_defs(body):
@@ -69,22 +67,6 @@ def analyze(cells):
         }
         refs.append(sorted((loads & everything) - defs[i] - set(dir(builtins))))
     return defs, refs, owner
-
-
-def descendants(cells, start):
-    defs, refs, owner = analyze(cells)
-    children = {i: set() for i in range(len(cells))}
-    for i, names in enumerate(refs):
-        for name in names:
-            children[owner[name]].add(i)
-    seen, stack = set(), list(start)
-    while stack:
-        i = stack.pop()
-        for child in children[i]:
-            if child not in seen:
-                seen.add(child)
-                stack.append(child)
-    return seen
 
 
 def render(cells):

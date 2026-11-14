@@ -137,6 +137,14 @@ def test_publish_rejects_modified_preview(tmp_path):
         publish_templates.load_build(tmp_path)
 
 
+@pytest.mark.parametrize("project", ["../..", "alice/..", "./lab", "alice", "a/b/c"])
+def test_publish_rejects_invalid_project_before_loading_or_writing(tmp_path, project):
+    receipt = tmp_path / "deployment.json"
+    with pytest.raises(ValueError, match="Use entity/project"):
+        publish_templates.publish_one(project, tmp_path, receipt, "starter")
+    assert not receipt.exists()
+
+
 def test_destination_receipts_and_remote_ids_are_project_bound(tmp_path):
     path = tmp_path / "receipt.json"
     publish_templates.write_receipt(

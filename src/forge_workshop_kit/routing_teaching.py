@@ -1,5 +1,4 @@
 """Free checks, restoration, and downloads for the routing notebook."""
-import json
 import tarfile
 import tempfile
 from pathlib import Path

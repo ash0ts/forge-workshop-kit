@@ -1,5 +1,4 @@
 """Gateway-free Pending example: direct inference, local functions and real stdio MCP."""
-import asyncio
 import copy
 import inspect
 import json
@@ -7,7 +6,6 @@ import os
 import sys
 import time
 from dataclasses import asdict
-from pathlib import Path
 
 from ..provider import Provider, output, validated_json
 from ..execution import run_async

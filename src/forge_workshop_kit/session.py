@@ -64,6 +64,7 @@ class WorkshopSession:
                          (digest([project, identity])[:20] if identity else 'local')).resolve()
         self.root.mkdir(parents=True, exist_ok=True)
         self.lock = FileLock(str(self.root / '.lock'))
+        self.state_path = self.root / 'journal.json'
         with self.lock:
             path = self.root / 'identity.json'
             if path.exists():
@@ -79,15 +80,14 @@ class WorkshopSession:
                              if identity else uuid.uuid4().hex,
                              notebook_identity=identity)
                 write_json(path, saved)
+            if not self.state_path.exists():
+                write_json(self.state_path, dict(stages={}, progress={}, publications={}, requests={}))
         self.identity = saved
         self.workspace_id = saved['workspace_id']
         self.publisher = publisher
         self._progress_guard = threading.Lock()
         self._progress_thread = None
         self._progress_pending = False
-        self.state_path = self.root / 'journal.json'
-        if not self.state_path.exists():
-            write_json(self.state_path, dict(stages={}, progress={}, publications={}, requests={}))
 
     @classmethod
     def from_environment(cls, workshop, *, project=None, **kwargs):
@@ -111,7 +111,9 @@ class WorkshopSession:
             write_json(self.state_path, state)
 
     def read(self):
-        return json.loads(self.state_path.read_text(encoding="utf-8"))
+        # Readers and atomic replacements share the same reentrant file lock.
+        with self.lock:
+            return json.loads(self.state_path.read_text(encoding="utf-8"))
 
     def connect(self):
         from .publication import Publisher

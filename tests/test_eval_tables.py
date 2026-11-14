@@ -137,6 +137,27 @@ def test_image_readback_checks_metadata_without_materializing_custom_objects(tmp
     assert all(query['return_expanded_column_values'] is False for query in client.queries)
 
 
+@pytest.mark.parametrize('stored_image', [
+    None,
+    '/tmp/board.png',
+    {'_type': 'CustomWeaveType', 'weave_type': {'type': 'PIL.Image.Image'}, 'files': {}},
+    {'_type': 'CustomWeaveType', 'weave_type': {'type': 'wave.Wave_read'},
+     'files': {'image.png': 'server-content-digest'}},
+])
+def test_image_readback_rejects_missing_or_invalid_media(tmp_path, stored_image):
+    from PIL import Image
+
+    from forge_workshop_kit.media import image_value
+    path = tmp_path / 'board.png'
+    Image.new('RGB', (3, 3), 'orange').save(path)
+    rows, client = deepcopy(ROWS), Client()
+    rows[0]['input']['board'] = image_value(path, 'Example board')
+    client.examples[0].inputs['example']['input.board'] = stored_image
+    client.examples[1].inputs['example']['input.board'] = None
+    with pytest.raises(ValueError, match='inputs differ'):
+        verify_eval_table(client, MARKER, rows)
+
+
 def test_duplicate_cases_and_column_collisions_fail_before_publication():
     with pytest.raises(ValueError, match='one saved row'):
         eval_table_data([ROWS[0], ROWS[0]])

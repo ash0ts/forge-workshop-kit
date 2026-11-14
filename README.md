@@ -24,7 +24,7 @@ Use the companion deck alongside your notebook:
 | Circuit-board inspection | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/inspection/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/inspection/visual-inspection.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/inspection/visual-inspection-source.zip) |
 | Transit software factory | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/transit/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/transit/transit-factory.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/transit/transit-factory-source.zip) |
 
-These decks follow the current gateway-free notebooks. The [v0.6.1 teaching release](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.6.1) includes notebooks, PDFs, and editable deck sources. Teaching datasets keep their existing versioned download links.
+These decks follow the current gateway-free notebooks. The [v0.6.2 maintenance release](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.6.2) includes notebooks, PDFs, and editable deck sources. Teaching datasets keep their existing versioned download links.
 
 For a short demonstration, follow the [current demo guide](docs/current-demo-guide.md). It takes you from a notebook exercise to a trace, code change, and recorded result.
 
@@ -95,19 +95,7 @@ The November 14 qualification adds these worked examples. Scores are not interch
 
 See [transit results and the captioned walkthrough](docs/transit-workshop.md), [routing evidence](docs/routing-workshop.md), [inspection evidence](docs/inspection-workshop.md), and [Solar qualification](docs/solar-qualification.md) for frozen protocols, all outcomes, sources, and limitations. Dataset labels supplied by the authors, participant reviews, and model suggestions remain distinct.
 
-The original November 13 rehearsal is preserved below.
-
-Solar uses GOES-15 X-ray measurements and NASA SDO/AIA images, prepared for small CPU experiments. In the November 13 rehearsal, average error on the reserved image dates was 0.125762 for persistence, 0.122442 for the manually written model, and 0.110011 for the agent-selected model. The agent first changed the training loss to masked absolute error, then zero-initialized the residual head. Its final version had 10.2% lower error than the manual version under the same training budget.
-
-That comparison covers 199 overlapping windows from two days, with one seed. It shows one completed research loop, not a reliable solar-forecasting result. The short GOES training run did worse than persistence. Both results stay in the workshop so you can inspect what the code produced. [Data and calculation details](docs/solar-evidence.md).
-
-Pending uses fictional accounts and payments, including a tool that changes account state before its response times out. All 12 final runs passed the state checks and explanation judgments in the November 13 rehearsal. The editor retained the earlier harness in round one, then revised its verification skill in round two. Those edits did not improve the already-passing final scores. Recorded examples are labeled separately from your own results.
-
-- [Banking77 classifier comparison](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Route-customer-requests-and-learn-from-mistakes:-382ea260--VmlldzoxODMwNzYzNQ==)
-- [PCB1 detector comparison](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-defective-parts-before-they-ship:-5ec44d92--VmlldzoxODMwNzU3Nw==)
-- [Solar November 13 rehearsal Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==)
-- [Pending November 13 rehearsal Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-bc0ee4ab--VmlldzoxODMwMzUyNg==)
-- Earlier rehearsal dashboards: [Solar](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=ogpa6vhy8db) · [Pending](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=nkyxiy1o6wn). Their branch decisions differ from the November 13 walkthrough.
+For the earlier November 13 results, Reports and dashboards, see the [rehearsal archive](docs/archive.md#november-13-rehearsals). The [demo guide](docs/current-demo-guide.md) identifies which saved run to open for each exercise.
 
 ## Run a workshop or build your own
 

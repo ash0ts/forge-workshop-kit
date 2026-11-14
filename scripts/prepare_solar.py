@@ -7,12 +7,10 @@ import shutil
 import time
 from pathlib import Path
 
-import astropy.units as u
 import httpx
 import numpy as np
 import pandas as pd
 from astropy.io import fits
-from sunpy.map import Map
 from sunpy.net import Fido, attrs as a
 from sunpy.timeseries import TimeSeries
 

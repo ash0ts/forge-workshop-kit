@@ -1,5 +1,6 @@
 """Build metadata shared by notebook generation and release verification."""
 
+import hashlib
 import json
 import subprocess
 import tomllib
@@ -8,6 +9,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY = "https://github.com/ash0ts/forge-workshop-kit"
+
+
+def sha256(path):
+    with Path(path).open("rb") as stream:
+        return hashlib.file_digest(stream, "sha256").hexdigest()
 
 
 def project_metadata():

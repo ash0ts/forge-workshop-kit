@@ -97,7 +97,10 @@ def wandb_table_data(rows):
 
 def weave_value(value):
     from PIL import Image
-    return map_values(value, lambda image: Image.open(checked_image(image)).copy())
+    def read(image):
+        with Image.open(checked_image(image)) as source:
+            return source.copy()
+    return map_values(value, read)
 
 
 def matches_saved(output, saved):
@@ -110,38 +113,3 @@ def matches_saved(output, saved):
     if isinstance(saved, list):
         return isinstance(output, list) and len(output) == len(saved) and all(matches_saved(a, b) for a, b in zip(output, saved))
     return output == saved
-
-
-def native_image(value, uri):
-    return {'extension_type': 'wandb-image', 'schema_version': 1, 'wb_media_type': 'image-file',
-            'uri': uri, **{k: value[k] for k in ('sha256', 'size', 'format', 'width', 'height', 'caption')}}
-
-
-def native_fields(value, field):
-    """Keep structured values and expose nested images as actual media columns."""
-    result = {field: value}
-    def visit(node, path):
-        if isinstance(node, dict) and node.get('extension_type') == 'wandb-image':
-            result[path] = node
-        elif isinstance(node, dict):
-            for key, child in node.items():
-                visit(child, path + '.' + key)
-        elif isinstance(node, list):
-            for index, child in enumerate(node):
-                visit(child, path + '.' + str(index))
-    visit(value, field)
-    return result
-
-
-def column_schema(source, name, values):
-    present = [v for v in values if v is not None]
-    result = {'source': source, 'name': name, 'value_type': 'json'}
-    if present and all(isinstance(v, dict) and v.get('extension_type') == 'wandb-image' for v in present):
-        result.update(extension_type='wandb-image', extension_schema_version=1)
-    elif present and all(isinstance(v, str) for v in present):
-        result['value_type'] = 'string'
-    elif present and all(type(v) is bool for v in present):
-        result['value_type'] = 'boolean'
-    elif present and all(type(v) in (int, float) for v in present):
-        result['value_type'] = 'number'
-    return result

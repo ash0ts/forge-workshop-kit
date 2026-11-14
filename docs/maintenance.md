@@ -21,11 +21,10 @@ First upload the matching wheel to the repository's versioned GitHub release. Th
 
 ```sh
 uv run --all-extras python scripts/publish_templates.py \
-  --project YOUR_ENTITY/YOUR_PROJECT \
-  --build dist/v0.6.0
+  --project YOUR_ENTITY/YOUR_PROJECT
 ```
 
-The publisher checks the public wheel and every selected source/preview hash before uploading. It keeps destination-specific receipts under `.workshop-deployments/`, verifies each notebook's destination project before updating it, and reads back the uploaded files. `--only` selects a template. Repeating the command resumes incomplete publication and skips matching uploads.
+The publisher uses the package version to select `dist/v<VERSION>/`; pass `--build PATH` to select a different build. It checks the public wheel and every selected source/preview hash before uploading. It keeps destination-specific receipts under `.workshop-deployments/`, verifies each notebook's destination project before updating it, and reads back the uploaded files. `--only` selects a template. Repeating the command resumes incomplete publication and skips matching uploads.
 
 If notebook creation was interrupted before its ID was saved, the publisher stops rather than creating another copy. Find the notebook in the destination project and pass `--notebook-id SLUG=ID`. Use `--adopt-ids` to import the old unscoped receipt only after every listed destination has been verified.
 

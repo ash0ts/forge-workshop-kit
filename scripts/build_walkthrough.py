@@ -5,7 +5,7 @@ import json
 import shutil
 from pathlib import Path
 
-from forge_workshop_kit import WorkshopSession, ui
+from forge_workshop_kit import WorkshopSession
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--state', default='.workshop/solar-rehearsal')

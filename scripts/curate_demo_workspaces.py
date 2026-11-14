@@ -197,7 +197,7 @@ def main():
         view,records,workspace=build(kind)
         plan=describe(kind,view,records,workspace)
         # Serializing before any write catches invalid filters and panel settings.
-        spec=view._to_model().spec.model_dump(mode='json',by_alias=True)
+        view._to_model().spec.model_dump(mode='json',by_alias=True)
         if api: plan['source_readback']=verify_runs(api,records,workspace)
         if args.save:
             if kind in receipt:

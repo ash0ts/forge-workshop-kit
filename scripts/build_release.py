@@ -1,7 +1,6 @@
 """Build pinned notebooks, a wheel, and saved previews. Never publish or run exercises."""
 
 import argparse
-import hashlib
 import json
 import os
 import shutil
@@ -13,10 +12,7 @@ import zipfile
 from pathlib import Path
 
 from release_support import ROOT, project_metadata, templates
-
-
-def checksum(path):
-    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+from release_support import sha256 as checksum
 
 
 def run(args, *, env=None, timeout=300):
