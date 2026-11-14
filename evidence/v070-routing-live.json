@@ -1,0 +1,193 @@
+{
+  "release": "0.7.0",
+  "date": "2026-11-14",
+  "project": "wandb/forge-workshop-kit",
+  "workspace_id": "c94075293bdf44f2aa396f6ee5e6543b",
+  "purpose": "Maintainer browser rehearsal; controlled release defect and recovery. Not an independent test or external attendee rehearsal.",
+  "capstone_case_count": 77,
+  "cohort_stage_id": "8f7ab949373086d0d98461dfbbf0eb05",
+  "case_selection": "Lexical-first review-pool case ID per intent, frozen before release predictions.",
+  "variants": {
+    "healthy": {
+      "stage_id": "79e43a453f7055b8db367f1229860185",
+      "source_fingerprint": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "metrics": {
+        "macro_f1": 0.8961038961038961,
+        "accuracy": 0.922077922077922,
+        "coverage": 0.8571428571428571,
+        "selective_accuracy": 0.9393939393939394,
+        "count": 77,
+        "latency_seconds": 0.000844459020299837
+      },
+      "checks": {},
+      "artifact": "wandb/forge-workshop-kit/execution-79e43a453f7055b8db367f1229860185:v0",
+      "trace": {
+        "verified": true,
+        "conversation_id": "79e43a453f7055b8db367f1229860185",
+        "trace_id": "70874f8df20ae4999a92715a29237e1f"
+      },
+      "agent_lens": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/79e43a453f7055b8db367f1229860185",
+      "evaluation_run_id": "acef031bc7e3e115cefa235822565b02",
+      "native_evaluation_id": "01a1dbd8-90a1-792c-8ec1-2cb3bccbdc0f",
+      "native_row_count": 77,
+      "native_verified": true
+    },
+    "faulty": {
+      "stage_id": "568a4b3aef6af0258bb2a96ab1b4026c",
+      "source_fingerprint": "9ff1ce3d939a25d4a711484e9cd7c72da832458a4160f45eb1bb0e66cbb581a7",
+      "metrics": {
+        "macro_f1": 0.0,
+        "accuracy": 0.0,
+        "coverage": 0.8571428571428571,
+        "selective_accuracy": 0.0,
+        "count": 77,
+        "latency_seconds": 0.0011446250136941671
+      },
+      "checks": {
+        "label_set": true,
+        "label_order": false,
+        "prediction_parity": false
+      },
+      "artifact": "wandb/forge-workshop-kit/execution-568a4b3aef6af0258bb2a96ab1b4026c:v0",
+      "trace": {
+        "verified": true,
+        "conversation_id": "568a4b3aef6af0258bb2a96ab1b4026c",
+        "trace_id": "d6ef1966808d07ff84e0c58154af3739"
+      },
+      "agent_lens": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/568a4b3aef6af0258bb2a96ab1b4026c",
+      "evaluation_run_id": "a624af5843710940e14cc80cfe4c1621",
+      "native_evaluation_id": "01a1dbd8-d4fd-77ac-bf5e-373a2be9e345",
+      "native_row_count": 77,
+      "native_verified": true
+    },
+    "repaired": {
+      "stage_id": "fb0660a600e69c61e5322f482bb4fbd1",
+      "source_fingerprint": "5575b17aec38ae03ccd635773376cfd19df8649b7ab47e6ce9014bfb2a4415c8",
+      "metrics": {
+        "macro_f1": 0.8961038961038961,
+        "accuracy": 0.922077922077922,
+        "coverage": 0.8571428571428571,
+        "selective_accuracy": 0.9393939393939394,
+        "count": 77,
+        "latency_seconds": 0.0003137910098303109
+      },
+      "checks": {
+        "label_set": true,
+        "label_order": true,
+        "prediction_parity": true
+      },
+      "artifact": "wandb/forge-workshop-kit/execution-fb0660a600e69c61e5322f482bb4fbd1:v0",
+      "trace": {
+        "verified": true,
+        "conversation_id": "fb0660a600e69c61e5322f482bb4fbd1",
+        "trace_id": "5baae51348cc587313ec87a6729c86f0"
+      },
+      "agent_lens": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/fb0660a600e69c61e5322f482bb4fbd1",
+      "evaluation_run_id": "342208ec76c4b2bb08adc5f80effde48",
+      "native_evaluation_id": "01a1dbd9-1494-7a38-96cb-d4574ac26a42",
+      "native_row_count": 77,
+      "native_verified": true
+    },
+    "rollback": {
+      "stage_id": "07ba6464ced23ab18ab2c096302eb4df",
+      "source_fingerprint": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "metrics": {
+        "macro_f1": 0.8961038961038961,
+        "accuracy": 0.922077922077922,
+        "coverage": 0.8571428571428571,
+        "selective_accuracy": 0.9393939393939394,
+        "count": 77,
+        "latency_seconds": 0.0005195000267121941
+      },
+      "checks": {
+        "prediction_parity": true
+      },
+      "artifact": "wandb/forge-workshop-kit/execution-07ba6464ced23ab18ab2c096302eb4df:v0",
+      "trace": {
+        "verified": true,
+        "conversation_id": "07ba6464ced23ab18ab2c096302eb4df",
+        "trace_id": "84631d35bd9ec5b71cc4074172d2b52b"
+      },
+      "agent_lens": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/07ba6464ced23ab18ab2c096302eb4df",
+      "evaluation_run_id": "0b45cc7239e48912ad83d3baa713a061",
+      "native_evaluation_id": "01a1dbdb-045f-7540-a228-b2462a2faea5",
+      "native_row_count": 77,
+      "native_verified": true
+    }
+  },
+  "prediction_parity_fields": [
+    "case_id",
+    "text",
+    "target",
+    "prediction",
+    "confidence",
+    "runner_up",
+    "margin",
+    "abstained",
+    "split"
+  ],
+  "release_decision": {
+    "artifact": "wandb/forge-workshop-kit/routing-release-fb0660a600e69c61e5322f482bb4fbd1:v0",
+    "evaluation": "local-stage:fb0660a600e69c61e5322f482bb4fbd1",
+    "decision": "release",
+    "metrics": {
+      "macro_f1": 0.8961038961038961,
+      "accuracy": 0.922077922077922,
+      "coverage": 0.8571428571428571,
+      "selective_accuracy": 0.9393939393939394,
+      "count": 77,
+      "latency_seconds": 0.0003137910098303109
+    },
+    "checks": {
+      "label_set": true,
+      "label_order": true,
+      "prediction_parity": true
+    },
+    "previous": "wandb/forge-workshop-kit/routing-release-be7511d9ef99370e0f4d5fb549d97e1f:v0",
+    "reason": "The loader preserves both the label set and its exact probability-column order. All 77 repaired predictions match the healthy release; 71 are correct against the reviewed labels. This fixes the controlled release defect without claiming to fix the classifier\u2019s six remaining errors.",
+    "actor": "participant",
+    "id": "86da836cd6e2e1e65ead206477642736",
+    "created_at": 1794689881.569165
+  },
+  "report": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Route-customer-requests-and-learn-from-mistakes:-c9407529--VmlldzoxODMwODkyNA==",
+  "evaltables": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=37umm80le0d",
+  "publication_retry": {
+    "unchanged_executions": 19,
+    "unchanged_requests": 1,
+    "evaluation_ids_unchanged": true
+  },
+  "cost": {
+    "capstone_model_calls": 0,
+    "capstone_training_runs": 0,
+    "full_rehearsal_model_calls": 1,
+    "full_rehearsal_inference_usd": 0.00017744,
+    "unknown_usd": 0,
+    "compute": "Not included in inference amount"
+  },
+  "coverage": {
+    "free_checks": "330 full-suite tests; current exercise references validated separately.",
+    "authored_notebook": "Current Routing action cells via actual browser controls; learner code supplied explicitly.",
+    "browser": "Setup, two baseline fits, one reviewed case, one actual judge, freeze, all three official-test comparisons, full release capstone, Report, publication retry.",
+    "omitted_core_steps": [
+      "Eight prompted routing calls",
+      "Four-case human review exercise (one maintainer case used)",
+      "Retraining with accepted reviews"
+    ],
+    "worked_answers": "Maintainer supplied classifier, judge validator, label-set/order check, and loader repair.",
+    "external_account": "Not performed",
+    "human_usability": "Not performed"
+  },
+  "captures": [
+    {
+      "path": "captures/v070/routing-release-evaltables.png",
+      "source": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=37umm80le0d",
+      "description": "Native Forge comparison; aggregate bars are healthy, faulty, repaired, rollback in that order."
+    }
+  ],
+  "refresh_restore": {
+    "completed_checkpoints_restored": true,
+    "executions_unchanged": 19,
+    "model_request_ids_unchanged": true,
+    "report_and_release_links_restored": true
+  }
+}

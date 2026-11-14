@@ -10,9 +10,26 @@ This is a labeled release drill. Its corrected outputs demonstrate a loader repa
 
 ## Coverage
 
-The current implementation is being validated. Publication and coverage receipts will be added here after their checks finish. Historical runtime scripts do not count as current notebook rehearsal. The shared runner distinguishes free checks, domain execution, authored-cell execution, browser interaction, external-account access, and human rehearsal.
+| Check | Result |
+|---|---|
+| Free checks and domain tests | 330 tests passed locally. The release workflow also passed on macOS, Windows, and Linux. |
+| Authored notebook references | All 44 exercise references match their current functions and controls. All seven notebooks pass marimo checks and regenerate identically. |
+| Rehearsal adapters | Passive loading of all five workshops starts no execution. Replay preserved the saved workspace byte-for-byte. Live mode runs selected current action cells and retains review gates; it does not substitute historical runners. |
+| Routing browser path | Current editors and controls exercised setup, two classifier fits, one review and judge, freezing, the official-test comparisons, the complete release capstone, and the Report. The eight prompted routes and reviewed-label retraining were omitted from this capstone rehearsal. |
+| Release recovery | Exact artifact reload, controlled defect, learner-written check and repair, release decision, and verified rollback completed. A publication-only retry preserved all 19 execution results, the earlier model response, and native evaluation identities. |
+| Native publication | All 3,080 rows in each of three official-test comparisons and all 77 rows in each of four release variants passed native readback. Agent Lens spans were read back for all four release executions. |
+| Decks and packages | Five browser decks, PDFs, and source archives verified. Routing has 70 slides and 73 reveal/PDF states; all 18 new capstone frames were visually reviewed. A source archive built from a fresh temporary directory. |
+| External account and human rehearsal | Still required. Neither is implied by maintainer checks. |
+
+The [live capstone receipt](../evidence/v070-routing-live.json) records executed versions, scores, traces, artifacts, costs, and coverage. The [code audit](../evidence/v070-capstone-audit.json) and [deck checks](../decks/routing/notes/release-capstone-checks.json) cover their separate checks. Maintainer-supplied worked answers were used in the browser rehearsal; it is not a learner usability test.
 
 Opening, navigating, restoring, and replaying saved work must not train or call a model. Publication retries reuse saved results. Rehearsals preserve review gates and identify any worked answers supplied by the maintainer.
+
+## Observed release drill
+
+The healthy release routed 71 of the 77 regression requests correctly. Rotating the labels reduced that to zero without changing confidence or review coverage. The repaired loader and the downloaded prior artifact both reproduced every healthy prediction, including the six remaining classifier errors. The capstone made no model calls and trained no model. The earlier single-judge setup check cost $0.00017744 in inference; notebook compute is separate.
+
+Open the [native comparison](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=37umm80le0d) or [rehearsal Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Route-customer-requests-and-learn-from-mistakes:-c9407529--VmlldzoxODMwODkyNA==). The [capture](../evidence/captures/v070/routing-release-evaltables.png) shows the healthy, faulty, repaired, and rolled-back versions, in that order. The release defect was intentionally introduced; these results do not show improved model generalization.
 
 ## Prior experiments and releases
 

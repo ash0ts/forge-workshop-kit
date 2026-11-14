@@ -101,3 +101,9 @@ Execution and publication are separate. **Retry release publication only** uploa
 Each comparison row keeps the evidence links available when it was first published. A later successful export adds its link to the notebook and Report without creating another evaluation of the same predictions. Unavailable links stay visibly absent from the original row.
 
 Registry is an optional way to curate the exact artifact version, where permissions allow it. It does not deploy the classifier. An optional ARIA investigation requires access in the participant's project; verify its cited case before acting on any suggestion. Neither extension is required to finish the capstone. The core capstone adds no model API calls and keeps the existing inference allowance.
+
+### Recorded release drill
+
+The November 14 maintainer browser rehearsal completed the capstone using the selected embedding classifier. The healthy release correctly routed 71/77 regression requests; the deliberately rotated label mapping routed 0/77 correctly. The learner-written loader repair restored all 77 original predictions. Downloading the previous exact artifact reproduced those same predictions during rollback. Six original classifier mistakes remained throughout healthy, repaired, and rolled-back versions.
+
+All four variants published to [native EvalTables](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=37umm80le0d), with matching case IDs and scores checked by readback. Retrying publication reused the saved executions and evaluation IDs. No capstone training or model requests ran. The [receipt](../evidence/v070-routing-live.json) distinguishes this completed capstone from omitted core exercises and the still-required external-account and human rehearsals.
