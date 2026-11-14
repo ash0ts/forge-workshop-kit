@@ -1,5 +1,5 @@
 {
-  "source_sha256": "f6c80c280cd1b350d4ff58e33f100faacda2c4833b3b02669dbfe292946fd309",
+  "source_sha256": "5505206b1aee72e0038cdeebd995054a0436151d05988e2b4b91b83f23b806ab",
   "slides_checked": 82,
   "expected_slides": 82,
   "titles": [
@@ -11,27 +11,27 @@
     {
       "number": 2,
       "key": "arrival",
-      "title": "Your first morning at Pending, Inc."
+      "title": "You’re adding an agent to the support team."
     },
     {
       "number": 3,
       "key": "ticket",
-      "title": "The customer was charged twice."
+      "title": "Acme wants a duplicate $49 charge refunded."
     },
     {
       "number": 4,
       "key": "success",
-      "title": "Define the account state a correct refund should leave."
+      "title": "Check the account after the agent says it has finished."
     },
     {
       "number": 5,
       "key": "access-ticket",
-      "title": "The access request has no acknowledgement."
+      "title": "Fern needs Alex added to its account."
     },
     {
       "number": 6,
       "key": "request",
-      "title": "Your manager has one more request."
+      "title": "Our dataset is six tickets with resettable account records."
     },
     {
       "number": 7,

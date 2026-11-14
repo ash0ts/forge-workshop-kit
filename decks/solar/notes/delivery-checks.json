@@ -1,5 +1,5 @@
 {
-  "source_sha256": "73fabfb12cb394df798910e41b5218ba4ad99ce44edeb6c3611a259064183ea8",
+  "source_sha256": "a7071010b17160031f71b09b08cab8985f7c0b968cbd738d0dfcba88f74c782d",
   "slides_checked": 101,
   "expected_slides": 101,
   "titles": [
@@ -11,22 +11,22 @@
     {
       "number": 2,
       "key": "arrival",
-      "title": "Prepare a forecast for the lab’s weekly review"
+      "title": "The lab needs a forecast for its weekly review"
     },
     {
       "number": 3,
       "key": "assignment",
-      "title": "Two forecasts from real solar observations"
+      "title": "What the satellites recorded"
     },
     {
       "number": 4,
-      "key": "research-question",
-      "title": "Find the code behind the last score"
+      "key": "path",
+      "title": "What one forecast example contains"
     },
     {
       "number": 5,
-      "key": "path",
-      "title": "What you’ll implement in the notebook"
+      "key": "research-question",
+      "title": "Bring a comparison your colleagues can repeat"
     },
     {
       "number": 6,
@@ -76,7 +76,7 @@
     {
       "number": 15,
       "key": "chronology",
-      "title": "Use earlier dates to train, later dates to test"
+      "title": "Use different dates to fit, choose, and evaluate"
     },
     {
       "number": 16,
