@@ -1,0 +1,348 @@
+{
+  "release": "0.7.0",
+  "release_url": "https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.7.0",
+  "date": "2026-11-14",
+  "templates": {
+    "starter": {
+      "id": "Tm90ZWJvb2s6MTU3NzI=",
+      "status": "verified",
+      "release": "0.7.0",
+      "source_sha256": "ba99fd8a60cb085f4b2b987defde7568943004364a977e2c1107bf18de54c3cc",
+      "html_sha256": "fb4b7a370d7ac278c5f49c349c44c172946460a12922bccc436780b1ed08e0a4",
+      "currentVersion": {
+        "artifactCollectionName": "Forge-Workshop-Kit-Starter",
+        "versionIndex": 15,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzI=/view"
+    },
+    "facilitator": {
+      "id": "Tm90ZWJvb2s6MTU3NzM=",
+      "status": "verified",
+      "release": "0.7.0",
+      "source_sha256": "3e7a236dc1b776f7a3445965b8d9444a1e33de53d3ddcf1b274452a644677c2e",
+      "html_sha256": "2f4d692e5bd219e734e15c7353faf473bd3e8716c10a9441b1962cfe6c76a9fa",
+      "currentVersion": {
+        "artifactCollectionName": "Forge-Workshop-Kit-Progress-monitor",
+        "versionIndex": 15,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzM=/view"
+    },
+    "pending_inc": {
+      "id": "Tm90ZWJvb2s6MTU3NzQ=",
+      "status": "verified",
+      "release": "0.7.0",
+      "source_sha256": "b0ec4ab1e2cccd8cd649d484c118c6c669b018c7e46d8435abc420007c9800f3",
+      "html_sha256": "17be4cf55783e1f6724d1c7db22427dbed12e295af84e56d64b7722ef6bbfc74",
+      "currentVersion": {
+        "artifactCollectionName": "Pending-Inc.-Your-project",
+        "versionIndex": 15,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view"
+    },
+    "solar_autoresearch": {
+      "id": "Tm90ZWJvb2s6MTU3NzU=",
+      "status": "verified",
+      "release": "0.7.0",
+      "source_sha256": "91478b213440da037d6bbd903f3e05be667110cbd11d338df695ebe2ab846565",
+      "html_sha256": "041304024dc69231daff84cadb4387e2a64194cf8fff8c7e7cdc8d2e4bd1c1b8",
+      "currentVersion": {
+        "artifactCollectionName": "Solar-forecasting-with-agent-assisted-experiments",
+        "versionIndex": 15,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view"
+    },
+    "request_routing": {
+      "id": "Tm90ZWJvb2s6MTU5Mjg=",
+      "status": "verified",
+      "release": "0.7.0",
+      "source_sha256": "a1bcebfc21f9147da02d739eb4e077ec345de567c38c7e75ae8ec9b682df82a3",
+      "html_sha256": "377bf8bd6f98f38a5bf008d976eddf9a58c2f96a66370c3da97842136798c5e8",
+      "currentVersion": {
+        "artifactCollectionName": "Route-customer-requests-and-learn-from-mistakes",
+        "versionIndex": 5,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view"
+    },
+    "visual_inspection": {
+      "id": "Tm90ZWJvb2s6MTU5Mjk=",
+      "status": "verified",
+      "release": "0.7.0",
+      "source_sha256": "28960fd6d878ba5482f1852f4070b4730b3006a4bd367afe307b26cf98a91783",
+      "html_sha256": "283ee9e7a3f83dff20d9456397f29d224c424803df0e13175aa52e47a45a06d3",
+      "currentVersion": {
+        "artifactCollectionName": "Find-defective-parts-before-they-ship",
+        "versionIndex": 5,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view"
+    },
+    "transit_factory": {
+      "id": "Tm90ZWJvb2s6MTU5MzI=",
+      "status": "verified",
+      "release": "0.7.0",
+      "source_sha256": "e16f25af68c33af4c9c3d7b58ce9696bcc790ff5818d875f44acb9e38d8a00bd",
+      "html_sha256": "07ec7ca7ae3c3128f1b134a0a068e75a4e2dfba7b0d01520550f792f4096a810",
+      "currentVersion": {
+        "artifactCollectionName": "Build-a-transit-app-with-a-team-of-coding-agents",
+        "versionIndex": 3,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view"
+    }
+  },
+  "downloads": {
+    "release": "0.7.0",
+    "authentication": "none",
+    "files": [
+      {
+        "file": "SHA256SUMS",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/SHA256SUMS",
+        "bytes": 2844,
+        "sha256": "ae125088f87e617dabbabc55b8d28d89e5de036c3ad8ccd514194c90bbb58dea",
+        "verified": true
+      },
+      {
+        "file": "facilitator.html",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/facilitator.html",
+        "bytes": 43174,
+        "sha256": "2f4d692e5bd219e734e15c7353faf473bd3e8716c10a9441b1962cfe6c76a9fa",
+        "verified": true
+      },
+      {
+        "file": "facilitator.py",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/facilitator.py",
+        "bytes": 8741,
+        "sha256": "3e7a236dc1b776f7a3445965b8d9444a1e33de53d3ddcf1b274452a644677c2e",
+        "verified": true
+      },
+      {
+        "file": "forge_workshop_kit-0.7.0-py3-none-any.whl",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/forge_workshop_kit-0.7.0-py3-none-any.whl",
+        "bytes": 410871,
+        "sha256": "90906633439ff5278223312ab59aa703a19845a1760404ac0f67ed74b23cb288",
+        "verified": true
+      },
+      {
+        "file": "forge_workshop_kit-0.7.0.tar.gz",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/forge_workshop_kit-0.7.0.tar.gz",
+        "bytes": 975774,
+        "sha256": "9b9ab8466ff24d9497bd455ef72e7e2410945dd02298032649d04f92a3423bf3",
+        "verified": true
+      },
+      {
+        "file": "pending-inc-browser.zip",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/pending-inc-browser.zip",
+        "bytes": 2780259,
+        "sha256": "76db5b2709901e78b043c3d74cdbb199b098030b1d09f79237a0978bd6d7e0b6",
+        "verified": true
+      },
+      {
+        "file": "pending-inc-source.zip",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/pending-inc-source.zip",
+        "bytes": 857808,
+        "sha256": "6401d69b3a01847952b7a318fd284dcb6ec931919407f4ec7526a224d10e4516",
+        "verified": true
+      },
+      {
+        "file": "pending-inc.pdf",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/pending-inc.pdf",
+        "bytes": 1149944,
+        "sha256": "34b558ae49ccf0c6797c65af5f2743d6866deaed9ea803da44540cf0c4a525b7",
+        "verified": true
+      },
+      {
+        "file": "pending_inc.html",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/pending_inc.html",
+        "bytes": 172686,
+        "sha256": "17be4cf55783e1f6724d1c7db22427dbed12e295af84e56d64b7722ef6bbfc74",
+        "verified": true
+      },
+      {
+        "file": "pending_inc.py",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/pending_inc.py",
+        "bytes": 68608,
+        "sha256": "b0ec4ab1e2cccd8cd649d484c118c6c669b018c7e46d8435abc420007c9800f3",
+        "verified": true
+      },
+      {
+        "file": "release-manifest.json",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/release-manifest.json",
+        "bytes": 6206,
+        "sha256": "72031411d5f68e95a9cea3018852ef0de524e42484f78d5afc20032aa86b5a13",
+        "verified": true
+      },
+      {
+        "file": "request-routing-browser.zip",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/request-routing-browser.zip",
+        "bytes": 1368406,
+        "sha256": "f451a55218bf82c8f0645ebc46b4598e12cda0b00dba6171e98d5f9a7fcb052d",
+        "verified": true
+      },
+      {
+        "file": "request-routing-source.zip",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/request-routing-source.zip",
+        "bytes": 411201,
+        "sha256": "fb7994dfd302c528c70400d72cc8835ff1df07de89fc24759b9788e01fd1daf7",
+        "verified": true
+      },
+      {
+        "file": "request-routing.pdf",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/request-routing.pdf",
+        "bytes": 532677,
+        "sha256": "45a7ccb960faebc807a8e2aa2a92a6988e8218182bf30940b8a87947d13e43bb",
+        "verified": true
+      },
+      {
+        "file": "request_routing.html",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/request_routing.html",
+        "bytes": 167371,
+        "sha256": "377bf8bd6f98f38a5bf008d976eddf9a58c2f96a66370c3da97842136798c5e8",
+        "verified": true
+      },
+      {
+        "file": "request_routing.py",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/request_routing.py",
+        "bytes": 69035,
+        "sha256": "a1bcebfc21f9147da02d739eb4e077ec345de567c38c7e75ae8ec9b682df82a3",
+        "verified": true
+      },
+      {
+        "file": "solar-autoresearch-browser.zip",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/solar-autoresearch-browser.zip",
+        "bytes": 6260835,
+        "sha256": "d3d2850c71511d33265274b270d09651532c0622e11370deabcf6a6ba788f62a",
+        "verified": true
+      },
+      {
+        "file": "solar-autoresearch-source.zip",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/solar-autoresearch-source.zip",
+        "bytes": 5200199,
+        "sha256": "f1a1c97c9dd77a7300ff405bb0a0ea4ad50ab6234b97713606be7bc53a6996f0",
+        "verified": true
+      },
+      {
+        "file": "solar-autoresearch.pdf",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/solar-autoresearch.pdf",
+        "bytes": 2199381,
+        "sha256": "607c18f5b2ebe077c0634364f45416f7ef5ddd7f4becffbaca3a336f7e3652dd",
+        "verified": true
+      },
+      {
+        "file": "solar_autoresearch.html",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/solar_autoresearch.html",
+        "bytes": 191052,
+        "sha256": "041304024dc69231daff84cadb4387e2a64194cf8fff8c7e7cdc8d2e4bd1c1b8",
+        "verified": true
+      },
+      {
+        "file": "solar_autoresearch.py",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/solar_autoresearch.py",
+        "bytes": 103061,
+        "sha256": "91478b213440da037d6bbd903f3e05be667110cbd11d338df695ebe2ab846565",
+        "verified": true
+      },
+      {
+        "file": "starter.html",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/starter.html",
+        "bytes": 36231,
+        "sha256": "fb4b7a370d7ac278c5f49c349c44c172946460a12922bccc436780b1ed08e0a4",
+        "verified": true
+      },
+      {
+        "file": "starter.py",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/starter.py",
+        "bytes": 5951,
+        "sha256": "ba99fd8a60cb085f4b2b987defde7568943004364a977e2c1107bf18de54c3cc",
+        "verified": true
+      },
+      {
+        "file": "transit-factory-browser.zip",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/transit-factory-browser.zip",
+        "bytes": 6133098,
+        "sha256": "57b40ccdd229faa2b23927718f7e61e45526e009d1ef0bae9d4c362db7b7dffb",
+        "verified": true
+      },
+      {
+        "file": "transit-factory-source.zip",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/transit-factory-source.zip",
+        "bytes": 4223775,
+        "sha256": "927b6be06df8384bace1b94d2cc027cd7a22116814f201f5e861769983d4d9b8",
+        "verified": true
+      },
+      {
+        "file": "transit-factory.pdf",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/transit-factory.pdf",
+        "bytes": 752929,
+        "sha256": "bba3bc4890fc2409efa9c1229a228b22c70fea703f1e7f1056eee1abb2ec318d",
+        "verified": true
+      },
+      {
+        "file": "transit_factory.html",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/transit_factory.html",
+        "bytes": 177948,
+        "sha256": "07ec7ca7ae3c3128f1b134a0a068e75a4e2dfba7b0d01520550f792f4096a810",
+        "verified": true
+      },
+      {
+        "file": "transit_factory.py",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/transit_factory.py",
+        "bytes": 46354,
+        "sha256": "e16f25af68c33af4c9c3d7b58ce9696bcc790ff5818d875f44acb9e38d8a00bd",
+        "verified": true
+      },
+      {
+        "file": "visual-inspection-browser.zip",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/visual-inspection-browser.zip",
+        "bytes": 1941279,
+        "sha256": "22e18c9742512fd3993d207bc788e25fdf1965cc3e6e99373f3c0372d5d18411",
+        "verified": true
+      },
+      {
+        "file": "visual-inspection-source.zip",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/visual-inspection-source.zip",
+        "bytes": 1011803,
+        "sha256": "32c5fcd61bf8970ec3d2b0c4b5dcd91abcdcf78616ffcd875649a9a04f478137",
+        "verified": true
+      },
+      {
+        "file": "visual-inspection.pdf",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/visual-inspection.pdf",
+        "bytes": 1447847,
+        "sha256": "d737474bad61045981c9e891ea81362ef25d0cb4e05594dfe6cf9a62198710a2",
+        "verified": true
+      },
+      {
+        "file": "visual_inspection.html",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/visual_inspection.html",
+        "bytes": 165212,
+        "sha256": "283ee9e7a3f83dff20d9456397f29d224c424803df0e13175aa52e47a45a06d3",
+        "verified": true
+      },
+      {
+        "file": "visual_inspection.py",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/visual_inspection.py",
+        "bytes": 53568,
+        "sha256": "28960fd6d878ba5482f1852f4070b4730b3006a4bd367afe307b26cf98a91783",
+        "verified": true
+      }
+    ]
+  },
+  "routing_hosted_preview": "Rendered in Forge with Copy to project and the Release and recover step. Copying from an external account remains unverified.",
+  "checks_workflow": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43640025551",
+  "checks_workflow_result": "success",
+  "deck_workflow": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43640025434",
+  "deck_workflow_result": "success",
+  "external_account_rehearsal": "not performed",
+  "human_usability_rehearsal": "not performed",
+  "routing_deck_browser_readback": {
+    "url": "https://ash0ts.github.io/forge-workshop-kit/routing/1",
+    "slides": 70,
+    "duration": "5\u00bd hours",
+    "title": "Route customer requests and learn from mistakes"
+  }
+}
