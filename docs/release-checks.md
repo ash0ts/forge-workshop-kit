@@ -22,7 +22,9 @@ Every slide and reveal is rendered in the browser and PDF. Checks cover actual t
 
 All five authored notebooks pass marimo dependency checks. The 51 focused tests cover their existing teaching functions, visual helpers, packaging, setup and facilitator behavior. The Python code blocks in the decks parse successfully; abbreviated excerpts remain labeled. Solar and Transit also check their exercise contracts against the actual notebook controls. See each deck’s `notes/delivery-checks.json`, `notes/pdf-checks.json`, and slide map for per-deck receipts.
 
-The package build verifies pinned dependencies, checks all seven templates, and exports previews with provider credentials removed. Opening a preview does not execute exercises. Publication verifies the destination project and reads the uploaded source and HTML back before marking a template complete. Existing attendee copies remain unchanged.
+The package build verifies pinned dependencies, checks all seven templates, and exports previews with provider credentials removed. Opening a preview does not execute exercises. Publication verifies the destination project and reads the uploaded source and HTML back before marking a template complete. Existing attendee copies remain unchanged. All seven current templates passed source and HTML readback; the [hosted-template receipt](../evidence/hosted-templates-v061.json) records their versions and hashes.
+
+The [teaching-check receipt](../evidence/v061-teaching-checks.json) records the final slide totals and source hashes. All 33 release downloads passed anonymous checksum verification; see the [download receipt](../evidence/release-downloads-v061.json). All 29 public documentation and source links returned the expected pages. The 26 Forge links were reachable, which alone does not establish record permissions.
 
 ## Results remain unchanged
 
@@ -33,6 +35,12 @@ The package build verifies pinned dependencies, checks all seven templates, and 
 - **Transit:** one builder passes 10/10 scenarios and the team passes 8/10. Both follow-up builds pass 12/18 after query workers stop at request limits. This does not establish a memory advantage.
 
 The [previous release checks](archive/release-checks-v060.md) retain the execution, cost, trace-readback and evaluation-readback evidence. The [README results table](../README.md#what-happened-in-the-recorded-rehearsal) links each experiment’s protocol and limits. No scores were changed to fit the expanded teaching sequence.
+
+## Windows parallel-worker limitation
+
+The branch workflow passed all nine jobs on macOS, Windows and Linux. The separate tag workflow on the same commit failed one Windows Transit test: the team returned one proposed patch instead of two. A focused local test passes normally. A simulation of Windows file-sharing contention reproduces the symptom when an unlocked task-board read overlaps an atomic replacement. The CI assertion does not print the worker outcome, so this is a plausible cause rather than a confirmed diagnosis of that CI run. The failed Windows job passed on the one bounded retry. That successful retry does not establish reliability.
+
+Use Forge-hosted execution, macOS or Linux for Transit’s two-worker exercise while a narrow file-locking fix is qualified. This presentation release does not change the runtime. The [investigation receipt](../evidence/v061-windows-review.json) preserves the reproduction and its limits.
 
 ## Remaining release gates
 

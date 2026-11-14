@@ -1,0 +1,267 @@
+{
+  "release": "0.6.1",
+  "runtime_changed": false,
+  "new_paid_experiments": 0,
+  "focused_tests": 51,
+  "python_excerpts_parsed": 65,
+  "decks": [
+    {
+      "workshop": "transit",
+      "slides": 94,
+      "browser_reveal_states": 109,
+      "pdf_pages": 109,
+      "source_sha256": "34fb8d3b7e82e75e48269c8c78c9cf179633bf7991765e2638ddbc46d9195dab",
+      "pdf_sha256": "bba3bc4890fc2409efa9c1229a228b22c70fea703f1e7f1056eee1abb2ec318d",
+      "issues": 0,
+      "notes": "decks/transit/notes"
+    },
+    {
+      "workshop": "pending",
+      "slides": 95,
+      "browser_reveal_states": 114,
+      "pdf_pages": 114,
+      "source_sha256": "c078742a327e203bb55c7f28fce2012cb33ffed3a57ab5f99a93920042fd0910",
+      "pdf_sha256": "34b558ae49ccf0c6797c65af5f2743d6866deaed9ea803da44540cf0c4a525b7",
+      "issues": 0,
+      "notes": "decks/pending/notes"
+    },
+    {
+      "workshop": "solar",
+      "slides": 123,
+      "browser_reveal_states": 213,
+      "pdf_pages": 213,
+      "source_sha256": "3346fe1fb3f290c9e3171adf30503bb7287901be2a18255611f8f525b822376f",
+      "pdf_sha256": "607c18f5b2ebe077c0634364f45416f7ef5ddd7f4becffbaca3a336f7e3652dd",
+      "issues": 0,
+      "notes": "decks/solar/notes"
+    },
+    {
+      "workshop": "routing",
+      "slides": 52,
+      "browser_reveal_states": 55,
+      "pdf_pages": 55,
+      "source_sha256": "55335aa5256db3ef6d89e8b9d2b2f6dfd7200c534727fb90e361892b78087c7f",
+      "pdf_sha256": "9ce82f1ff35dc2176fb42a7ee842ab58af0c5577c1ae0edd59d6509c0b968547",
+      "issues": 0,
+      "notes": "decks/routing/notes"
+    },
+    {
+      "workshop": "inspection",
+      "slides": 50,
+      "browser_reveal_states": 56,
+      "pdf_pages": 56,
+      "source_sha256": "0282e2c1fbc99f83db09b27ab5a0d2c98acc0d504111a65423a1ee69d2b7c6ea",
+      "pdf_sha256": "d737474bad61045981c9e891ea81362ef25d0cb4e05594dfe6cf9a62198710a2",
+      "issues": 0,
+      "notes": "decks/inspection/notes"
+    }
+  ],
+  "public_links": [
+    {
+      "url": "https://github.com/ash0ts/forge-workshop-kit.git",
+      "status": 200,
+      "final": "https://github.com/ash0ts/forge-workshop-kit",
+      "title": "GitHub - ash0ts/forge-workshop-kit: Copy a Forge notebook, build an experiment, and inspect the evidence. Gateway-free workshops for participants and facilitators. \u00b7 GitHub",
+      "anchor_present": null
+    },
+    {
+      "url": "https://github.com/ash0ts/forge-workshop-kit",
+      "status": 200,
+      "final": "https://github.com/ash0ts/forge-workshop-kit",
+      "title": "GitHub - ash0ts/forge-workshop-kit: Copy a Forge notebook, build an experiment, and inspect the evidence. Gateway-free workshops for participants and facilitators. \u00b7 GitHub",
+      "anchor_present": null
+    },
+    {
+      "url": "https://docs.coreweave.com/products/agent-lens",
+      "status": 200,
+      "final": "https://docs.coreweave.com/products/agent-lens",
+      "title": "Agent Lens - CoreWeave Docs",
+      "anchor_present": null
+    },
+    {
+      "url": "https://docs.coreweave.com/products/wandb/evaltables/compare-runs",
+      "status": 200,
+      "final": "https://docs.coreweave.com/products/wandb/evaltables/compare-runs",
+      "title": "Compare runs with Eval Tables - CoreWeave Docs",
+      "anchor_present": null
+    },
+    {
+      "url": "https://github.com/google-research/harness2/tree/1cfe254e8d25b15f37048c3730134686abe60335",
+      "status": 200,
+      "final": "https://github.com/google-research/harness2/tree/1cfe254e8d25b15f37048c3730134686abe60335",
+      "title": "GitHub - google-research/harness2 at 1cfe254e8d25b15f37048c3730134686abe60335 \u00b7 GitHub",
+      "anchor_present": null
+    },
+    {
+      "url": "https://www.spaceweather.gov/products/goes-x-ray-flux",
+      "status": 200,
+      "final": "https://www.spaceweather.gov/products/goes-x-ray-flux",
+      "title": "GOES X-ray Flux | NOAA / NWS Space Weather Prediction Center",
+      "anchor_present": null
+    },
+    {
+      "url": "https://sdo.gsfc.nasa.gov/data/channels.php",
+      "status": 200,
+      "final": "https://sdo.gsfc.nasa.gov/data/channels.php",
+      "title": "SDO | Solar Dynamics Observatory",
+      "anchor_present": null
+    },
+    {
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md",
+      "status": 200,
+      "final": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md",
+      "title": "forge-workshop-kit/docs/solar-qualification.md at main \u00b7 ash0ts/forge-workshop-kit \u00b7 GitHub",
+      "anchor_present": null
+    },
+    {
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/recorded-study.json",
+      "status": 200,
+      "final": "https://ash0ts.github.io/forge-workshop-kit/solar/recorded-study.json",
+      "title": "",
+      "anchor_present": null
+    },
+    {
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py",
+      "status": 200,
+      "final": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py",
+      "title": "forge-workshop-kit/src/forge_workshop_kit/routing.py at main \u00b7 ash0ts/forge-workshop-kit \u00b7 GitHub",
+      "anchor_present": null
+    },
+    {
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/routing_cells.py",
+      "status": 200,
+      "final": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/routing_cells.py",
+      "title": "forge-workshop-kit/scripts/routing_cells.py at main \u00b7 ash0ts/forge-workshop-kit \u00b7 GitHub",
+      "anchor_present": null
+    },
+    {
+      "url": "https://github.com/PolyAI-LDN/task-specific-datasets",
+      "status": 200,
+      "final": "https://github.com/PolyAI-LDN/task-specific-datasets",
+      "title": "GitHub - PolyAI-LDN/task-specific-datasets: A collection of task-specific NLU datasets \u00b7 GitHub",
+      "anchor_present": null
+    },
+    {
+      "url": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+      "status": 200,
+      "final": "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2",
+      "title": "sentence-transformers/all-MiniLM-L6-v2 \u00b7 Hugging Face",
+      "anchor_present": null
+    },
+    {
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/routing/qualification.json",
+      "status": 200,
+      "final": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/routing/qualification.json",
+      "title": "forge-workshop-kit/examples/routing/qualification.json at main \u00b7 ash0ts/forge-workshop-kit \u00b7 GitHub",
+      "anchor_present": null
+    },
+    {
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/routing-workshop.md",
+      "status": 200,
+      "final": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/routing-workshop.md",
+      "title": "forge-workshop-kit/docs/routing-workshop.md at main \u00b7 ash0ts/forge-workshop-kit \u00b7 GitHub",
+      "anchor_present": null
+    },
+    {
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_routing.py",
+      "status": 200,
+      "final": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_routing.py",
+      "title": "forge-workshop-kit/scripts/prepare_routing.py at main \u00b7 ash0ts/forge-workshop-kit \u00b7 GitHub",
+      "anchor_present": null
+    },
+    {
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py",
+      "status": 200,
+      "final": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py",
+      "title": "forge-workshop-kit/src/forge_workshop_kit/inspection.py at main \u00b7 ash0ts/forge-workshop-kit \u00b7 GitHub",
+      "anchor_present": null
+    },
+    {
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/inspection_cells.py",
+      "status": 200,
+      "final": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/inspection_cells.py",
+      "title": "forge-workshop-kit/scripts/inspection_cells.py at main \u00b7 ash0ts/forge-workshop-kit \u00b7 GitHub",
+      "anchor_present": null
+    },
+    {
+      "url": "https://github.com/ash0ts/forge-workshop-kit/tree/main/examples/transit",
+      "status": 200,
+      "final": "https://github.com/ash0ts/forge-workshop-kit/tree/main/examples/transit",
+      "title": "forge-workshop-kit/examples/transit at main \u00b7 ash0ts/forge-workshop-kit \u00b7 GitHub",
+      "anchor_present": null
+    },
+    {
+      "url": "https://github.com/mbta/gtfs-documentation/blob/master/reference/gtfs.md",
+      "status": 200,
+      "final": "https://github.com/mbta/gtfs-documentation/blob/master/reference/gtfs.md",
+      "title": "gtfs-documentation/reference/gtfs.md at master \u00b7 mbta/gtfs-documentation \u00b7 GitHub",
+      "anchor_present": null
+    },
+    {
+      "url": "https://github.com/ash0ts/forge-workshop-kit#choose-your-workshop",
+      "status": 200,
+      "final": "https://github.com/ash0ts/forge-workshop-kit#choose-your-workshop",
+      "title": "GitHub - ash0ts/forge-workshop-kit: Copy a Forge notebook, build an experiment, and inspect the evidence. Gateway-free workshops for participants and facilitators. \u00b7 GitHub",
+      "anchor_present": true
+    },
+    {
+      "url": "https://factory.strongdm.ai/",
+      "status": 200,
+      "final": "https://factory.strongdm.ai/",
+      "title": "StrongDM Software Factory",
+      "anchor_present": null
+    },
+    {
+      "url": "https://www.anthropic.com/research/building-c-compiler",
+      "status": 200,
+      "final": "https://www.anthropic.com/research/building-c-compiler",
+      "title": "Building a C compiler with parallel Claudes \\ Anthropic",
+      "anchor_present": null
+    },
+    {
+      "url": "https://code.claude.com/docs/en/agent-teams",
+      "status": 200,
+      "final": "https://code.claude.com/docs/en/agent-teams",
+      "title": "Orchestrate teams of Claude Code sessions - Claude Code Docs",
+      "anchor_present": null
+    },
+    {
+      "url": "https://github.com/gastownhall/gastown",
+      "status": 200,
+      "final": "https://github.com/gastownhall/gastown",
+      "title": "GitHub - gastownhall/gastown: Gas Town - multi-agent workspace manager \u00b7 GitHub",
+      "anchor_present": null
+    },
+    {
+      "url": "https://github.com/gastownhall/beads",
+      "status": 200,
+      "final": "https://github.com/gastownhall/beads",
+      "title": "GitHub - gastownhall/beads: Beads - A memory upgrade for your coding agent \u00b7 GitHub",
+      "anchor_present": null
+    },
+    {
+      "url": "https://gtfs.org/documentation/schedule/reference/",
+      "status": 200,
+      "final": "https://gtfs.org/documentation/schedule/reference/",
+      "title": "Reference - General Transit Feed Specification",
+      "anchor_present": null
+    },
+    {
+      "url": "https://www.anthropic.com/research/components-of-agent-memory",
+      "status": 200,
+      "final": "https://www.anthropic.com/research/components-of-agent-memory",
+      "title": "The components of agent memory \\ Anthropic",
+      "anchor_present": null
+    },
+    {
+      "url": "https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/",
+      "status": 200,
+      "final": "https://research.google/blog/towards-a-science-of-scaling-agent-systems-when-and-why-agent-systems-work/",
+      "title": "Towards a science of scaling agent systems: When and why agent systems work",
+      "anchor_present": null
+    }
+  ],
+  "forge_links": "Reachable app routes; HTTP alone does not establish record permissions.",
+  "external_attendee_rehearsal": "outstanding",
+  "human_usability_rehearsal": "outstanding"
+}
