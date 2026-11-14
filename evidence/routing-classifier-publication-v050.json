@@ -1,0 +1,177 @@
+{
+  "identity": "routing-classifier-publication-v050",
+  "project": "wandb/forge-workshop-kit",
+  "workspace": "382ea26039704629815658015c958946",
+  "source_records": {
+    "tfidf": {
+      "file": "evidence/routing-qualification-20261114/tfidf-17.json",
+      "sha256": "b4b151fc635b7b9e50f13c091d8d9595f0d950f108c7f534dbebf7353c4bf0be",
+      "rows": 3080,
+      "seed": 17
+    },
+    "embedding": {
+      "file": "evidence/routing-qualification-20261114/embedding-17.json",
+      "sha256": "a366a6bf2b6ea494459eee1a02d32d0575e16ef71c1a5b53f5947df3d7b74f28",
+      "rows": 3080,
+      "seed": 17
+    }
+  },
+  "training_runs": 0,
+  "inference_calls": 0,
+  "summaries": {
+    "tfidf": {
+      "macro_f1": 0.8793849387920205,
+      "accuracy": 0.8795454545454545,
+      "coverage": 0.7584415584415585,
+      "selective_accuracy": 0.9606164383561644,
+      "count": 3080,
+      "latency_seconds": 0.015138749993639067,
+      "cost_usd": 0.0
+    },
+    "embedding": {
+      "macro_f1": 0.9202286087269511,
+      "accuracy": 0.9207792207792208,
+      "coverage": 0.9110389610389611,
+      "selective_accuracy": 0.9615110477548111,
+      "count": 3080,
+      "latency_seconds": 0.0008765000093262643,
+      "cost_usd": 0.0
+    }
+  },
+  "publication": {
+    "tfidf": {
+      "comparison_name": "banking-routing-final",
+      "condition": "tfidf",
+      "run_id": "1595b89c817eb257a07c1ac9333fd9c4",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/1595b89c817eb257a07c1ac9333fd9c4",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/banking-routing-final-tfidf-cases:1DA5ANX0OmEXQtWFmzLXgmUX0CRLKCaIMV0MyMkLlKc",
+      "weave_call_id": "01a1daa2-3803-74f9-9849-9aafe610bc44",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/banking-routing-final-tfidf-evaluation:OLXO2X1c8Vmdekdjq6Mr2gQODXpPvxizUNhWipREDYg",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_status": "unavailable",
+      "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+    },
+    "embedding": {
+      "comparison_name": "banking-routing-final",
+      "condition": "embedding",
+      "run_id": "5c010b9321fef7258e7f2b800234f9ec",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/5c010b9321fef7258e7f2b800234f9ec",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/banking-routing-final-embedding-cases:XcYh37plCL1DHkWWPydAXZxxpKYgqzypLD3rpXHVIbk",
+      "weave_call_id": "01a1daa2-8ab7-7d19-a3fa-f34b2a896c52",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/banking-routing-final-embedding-evaluation:9SFxODXXCy3ky0GXBYqSOL3B51t6wWQ0epp8d3CdKt0",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_status": "unavailable",
+      "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}"
+    }
+  },
+  "readback": {
+    "tfidf": {
+      "wandb_summary": {
+        "macro_f1": 0.8793849387920205,
+        "accuracy": 0.8795454545454545,
+        "coverage": 0.7584415584415585,
+        "selective_accuracy": 0.9606164383561644,
+        "cost_usd": 0.0
+      },
+      "wandb_table_rows": 3080,
+      "wandb_predictions_match": true,
+      "weave_evaluation_complete": true,
+      "weave_call_id": "01a1daa2-3803-74f9-9849-9aafe610bc44",
+      "weave_summary": {
+        "output": {
+          "confidence": {
+            "mean": 0.7026208795169316
+          },
+          "needs_review": {
+            "true_count": 744,
+            "true_fraction": 0.24155844155844156
+          }
+        },
+        "saved_score": {
+          "error": {
+            "mean": 0.12045454545454545
+          },
+          "correct": {
+            "true_count": 2709,
+            "true_fraction": 0.8795454545454545
+          },
+          "abstained": {
+            "true_count": 744,
+            "true_fraction": 0.24155844155844156
+          },
+          "latency_seconds": {
+            "mean": 4.9151785693633336e-06
+          }
+        },
+        "model_latency": {
+          "mean": 0.004761697642214887
+        }
+      },
+      "weave_dataset_rows": 3080,
+      "weave_predictions_match": true
+    },
+    "embedding": {
+      "wandb_summary": {
+        "macro_f1": 0.9202286087269511,
+        "accuracy": 0.9207792207792208,
+        "coverage": 0.9110389610389611,
+        "selective_accuracy": 0.9615110477548111,
+        "cost_usd": 0.0
+      },
+      "wandb_table_rows": 3080,
+      "wandb_predictions_match": true,
+      "weave_evaluation_complete": true,
+      "weave_call_id": "01a1daa2-8ab7-7d19-a3fa-f34b2a896c52",
+      "weave_summary": {
+        "output": {
+          "confidence": {
+            "mean": 0.844405528462746
+          },
+          "needs_review": {
+            "true_count": 274,
+            "true_fraction": 0.08896103896103896
+          }
+        },
+        "saved_score": {
+          "error": {
+            "mean": 0.07922077922077922
+          },
+          "correct": {
+            "true_count": 2836,
+            "true_fraction": 0.9207792207792208
+          },
+          "abstained": {
+            "true_count": 274,
+            "true_fraction": 0.08896103896103896
+          },
+          "latency_seconds": {
+            "mean": 2.8457792510592996e-07
+          }
+        },
+        "model_latency": {
+          "mean": 0.005142526734958995
+        }
+      },
+      "weave_dataset_rows": 3080,
+      "weave_predictions_match": true
+    }
+  },
+  "limitations": [
+    "Publication of saved seed-17 qualification predictions, not a new experimental trial.",
+    "Maintainer account; external-attendee access and human rehearsal remain separate.",
+    "Cached feature prediction latency excludes encoder computation.",
+    "Weave operation timing describes reading saved predictions; saved latency_seconds is the original classifier measurement."
+  ],
+  "report": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Route-customer-requests-and-learn-from-mistakes:-382ea260--VmlldzoxODMwNzYzNQ==",
+  "report_http_status": 200,
+  "report_api_readback_verified": true,
+  "report_signed_out_content_verified": false,
+  "report_title": "Route customer requests and learn from mistakes: 382ea260",
+  "inference_cost_usd": 0
+}

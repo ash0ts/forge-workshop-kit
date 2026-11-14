@@ -11,7 +11,7 @@ def image_value(path, caption='', *, root=None):
         width, height = image.size
         format = image.format.lower()
     content = path.read_bytes()
-    saved_path = str(path.relative_to(Path(root).resolve())) if root is not None else str(path)
+    saved_path = path.relative_to(Path(root).resolve()).as_posix() if root is not None else str(path)
     return {'_workshop_type': 'image', 'path': saved_path, 'sha256': hashlib.sha256(content).hexdigest(),
             'size': len(content), 'format': format, 'width': width, 'height': height, 'caption': caption}
 

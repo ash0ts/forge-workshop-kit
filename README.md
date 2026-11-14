@@ -98,6 +98,8 @@ That comparison covers 199 overlapping windows from two days, with one seed. It 
 
 Pending uses fictional accounts and payments, including a tool that changes account state before its response times out. All 12 final runs passed the state checks and explanation judgments in the November 13 rehearsal. The editor retained the earlier harness in round one, then revised its verification skill in round two. Those edits did not improve the already-passing final scores. Recorded examples are labeled separately from your own results.
 
+- [Banking77 classifier comparison](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Route-customer-requests-and-learn-from-mistakes:-382ea260--VmlldzoxODMwNzYzNQ==)
+- [PCB1 detector comparison](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-defective-parts-before-they-ship:-5ec44d92--VmlldzoxODMwNzU3Nw==)
 - [Solar November 13 rehearsal Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==)
 - [Pending November 13 rehearsal Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-bc0ee4ab--VmlldzoxODMwMzUyNg==)
 - Earlier rehearsal dashboards: [Solar](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=ogpa6vhy8db) · [Pending](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=nkyxiy1o6wn). Their branch decisions differ from the November 13 walkthrough.

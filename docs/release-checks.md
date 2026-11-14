@@ -16,7 +16,7 @@ Read the [routing protocol](routing-workshop.md), [inspection protocol](inspecti
 
 ## Service checks
 
-The November 14 live routing rehearsal made eight routing calls and four judge calls. All twelve returned responses with verified stored spans. Observed inference cost was $0.00113494, with no bounded unknown usage or in-flight reservations. The eight routing examples were a small instrumentation check, not a balanced quality evaluation. Judge agreement with the supplied dataset labels is not agreement with human reviewers.
+The November 14 live routing rehearsal made eight routing calls and four judge calls. All twelve returned responses with verified stored spans. Observed inference cost was $0.00113494, with no bounded unknown usage or in-flight reservations. The eight routing examples were a small instrumentation check, not a balanced quality evaluation. Judge agreement with the supplied dataset labels is not agreement with human reviewers. The two saved classifier comparisons published 6,160 rows; every prediction and target was read back from W&B and Weave and matched the qualification files. No classifier was retrained for publication.
 
 The new Pending repair exported actual before/after tool events and passed stored-span readback. The publication check saved typed VisA photographs and masks, W&B results, Weave datasets and completed evaluation calls. The full inspection rehearsal published four versions and 1,768 aligned image rows. Missing masks remain missing media values; a publication retry recovered an upload timeout without rerunning training. A silent Weave export failure found during the check now remains unavailable until server readback succeeds; saved execution is never repeated to repair publication.
 
