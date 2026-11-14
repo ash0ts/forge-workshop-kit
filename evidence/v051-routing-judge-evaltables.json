@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-11-14T17:17:27.555421+00:00",
+  "workshop": "request-routing",
+  "scope": "early native judge-to-human-review comparison",
+  "source_workspace": ".workshop/routing-live-v050",
+  "source_journal_sha256": "3e61737b36ef148909dfed462ac5a770fb86f9c5fe981aabb0d4bb139a3242f1",
+  "status": "not_live_qualified",
+  "reason": "The saved live rehearsal has routing predictions and judgments against dataset reference labels, but no participant review records or routing/judge/summary stage. These records cannot establish human-review agreement.",
+  "saved_counts": {
+    "routing_predictions": 8,
+    "judgments": 4,
+    "participant_review_records": 0,
+    "judge_summary_stages": 0
+  },
+  "dataset_reference_agreement": {
+    "agreements": 3,
+    "available_judgments": 4,
+    "fraction": 0.75,
+    "human_review_agreement": null
+  },
+  "judgments": [
+    {
+      "case_id": "official-train/00225",
+      "stage_id": "f5427dc7f06703d62c00561b6bd27a01",
+      "judge_failed": false,
+      "dataset_reference_failed": true,
+      "agrees_with_dataset_reference": false,
+      "trace_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f5427dc7f06703d62c00561b6bd27a01",
+      "saved_stored_span_readback_verified": true
+    },
+    {
+      "case_id": "official-train/00293",
+      "stage_id": "b6bdafba3dc32250878392df60a7354f",
+      "judge_failed": true,
+      "dataset_reference_failed": true,
+      "agrees_with_dataset_reference": true,
+      "trace_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/b6bdafba3dc32250878392df60a7354f",
+      "saved_stored_span_readback_verified": true
+    },
+    {
+      "case_id": "official-train/00021",
+      "stage_id": "39a27f4d80683c50f01c0c83219c3fa6",
+      "judge_failed": false,
+      "dataset_reference_failed": false,
+      "agrees_with_dataset_reference": true,
+      "trace_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/39a27f4d80683c50f01c0c83219c3fa6",
+      "saved_stored_span_readback_verified": true
+    },
+    {
+      "case_id": "official-train/00023",
+      "stage_id": "6bfe06d20e8e99e00e17232cf2757f61",
+      "judge_failed": false,
+      "dataset_reference_failed": false,
+      "agrees_with_dataset_reference": true,
+      "trace_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/6bfe06d20e8e99e00e17232cf2757f61",
+      "saved_stored_span_readback_verified": true
+    }
+  ],
+  "publication": {
+    "attempted": false,
+    "reason": "No human-review alignment dataset was synthesized or published from dataset references."
+  },
+  "authored_helper_test": {
+    "test": "tests/test_evaluation_surfaces.py::test_routing_publication_uses_saved_reviews_and_preserves_unavailable_judgments",
+    "result": "passed",
+    "tests_passed": 1,
+    "coverage": [
+      "Uses saved participant reviews and summary references",
+      "Carries verified trace links into rows",
+      "Preserves unavailable judgments as missing scores",
+      "Repeating publication builds identical rows"
+    ]
+  },
+  "remaining_attendee_rehearsal": [
+    "Save actual participant reviews with case, accepted label and dataset reference.",
+    "Run the automated judge on those reviewed cases using the notebook.",
+    "Publish the early comparison and verify native rows, review targets, unavailable judgments and Agent Lens links."
+  ],
+  "new_model_calls": 0,
+  "new_training_runs": 0,
+  "source_journal_unchanged": true
+}

@@ -506,6 +506,7 @@ def comparison_metrics(session, name, rows, summary=None):
 def publish_comparison(session, name, versions, *, summaries=None):
     """Publish saved rows once per destination; retries do not execute predictions."""
     from filelock import FileLock
+    _validate_comparison_inputs(versions)
     publisher = session.connect()
     labels = _workshop_labels(session)['comparison_labels']
     receipt_key = 'comparison/' + digest([name, versions] if summaries is None else [name, versions, summaries])[:24]
@@ -581,67 +582,71 @@ def publish_comparison(session, name, versions, *, summaries=None):
                 except Exception as error:
                     record.update(weave_status='unavailable', weave_error=str(error)[:400])
                 save()
-            if record.get('native_status') != 'published':
+            if record.get('native_status') != 'published' or not record.get('native_verified'):
+                if record.get('native_error') and not record.get('native_transport'):
+                    record.setdefault('previous_native_error', record['native_error'])
                 try:
-                    with publisher.run(run_id, name + ' / ' + label, 'workshop-evaluation', {'condition': label}) as run:
+                    with publisher.run(run_id, name + ' / ' + labels.get(label, label),
+                                       'workshop-evaluation', {'condition': label}) as run:
                         try:
-                            if not record.get('native'):
-                                record['native'] = native_table(run, rows, name)
+                            def save_native(value):
+                                record['native_transport'] = value
                                 save()
-                            run.log({'eval_table': record['native']})
-                            record.update(native_status='published')
+                            if record.get('native_transport', {}).get('marker'):
+                                saved_marker = record['native_transport']['marker']
+                                try:
+                                    verify_run_history(session.project + '/' + run_id, safe_name(name), saved_marker)
+                                except EvalTableMarkerMissing:
+                                    run.log({safe_name(name): saved_marker})
+                            transport = native_table(run, rows, safe_name(name),
+                                receipt=record.get('native_transport'), save=save_native)
+                            record.update(native=transport['marker'], native_status='published',
+                                native_backend='weave', native_verified=transport['verified'],
+                                native_url=f'https://forge.coreweave.com/wandb/{session.project}/runs/{run_id}')
                             record.pop('native_error', None)
                         except Exception as error:
-                            # An optional native destination outage does not fail the saved W&B evaluation.
                             record.update(native_status='unavailable', native_error=str(error)[:400])
+                    if record.get('native_verified'):
+                        verify_run_history(session.project + '/' + run_id, safe_name(name), record['native'])
                 except Exception as error:
                     record.update(native_status='unavailable', native_error=str(error)[:400])
                 save()
+        records = session.read()['publications'][receipt_key]
+        view_key = 'evaluation-workspace/' + receipt_key.split('/', 1)[1]
+        def save_view(value):
+            with session.transaction() as state:
+                state['publications'][view_key] = value
+        try:
+            view = publish_eval_workspace(session, safe_name(name), records,
+                previous=session.read()['publications'].get(view_key), save=save_view)
+            if view.get('status') == 'published':
+                with session.transaction() as state:
+                    for row in state['publications'][receipt_key].values():
+                        row['native_comparison_url'] = view['url']
+                        row.pop('native_comparison_error', None)
+        except Exception as error:
+            with session.transaction() as state:
+                for row in state['publications'][receipt_key].values():
+                    row['native_comparison_error'] = str(error)[:400]
         return session.read()['publications'][receipt_key]
 
 
-def native_table(run, rows, name):
-    import wandb
-    from coreweave_evaluations import Client
-    from .media import checked_image, map_values, native_image, native_fields, column_schema
-    images = {}
-    def collect(value):
-        images[value['sha256']] = value
-        return value
-    map_values(rows, collect)
-    references = {}
-    if images:
-        artifact = wandb.Artifact('evaluation-media-' + digest(sorted(images))[:24], type='evaluation-media')
-        for sha, value in sorted(images.items()):
-            artifact.add_file(str(checked_image(value)), name=sha + '.' + value['format'])
-        logged = run.log_artifact(artifact).wait(timeout=120)
-        references = {sha: logged.get_entry(sha + '.' + value['format']).ref_url() for sha, value in images.items()}
-    typed = map_values(rows, lambda value: native_image(value, references[value['sha256']]))
-    prepared = [{'input': {'case_id': r['case_id'], **native_fields(r['input'], 'input')},
-                 'output': {**native_fields(r['prediction'], 'prediction'), **native_fields(r['target'], 'target'),
-                            'evidence': r.get('evidence', {})},
-                 'scores': {k: v for k, v in {'error': r.get('error'), **r.get('scores', {})}.items() if v is not None}}
-                for r in typed]
-    api = wandb.Api()
-    scope = api._service_api.execute_graphql(
-        'query($e:String!,$p:String!){project(entityName:$e,name:$p){internalId}}',
-        {'e': run.entity, 'p': run.project})['project']['internalId']
-    def key(operation):
-        return digest([run.id, name, operation])
-    score_names=sorted({'error'} | {key for row in rows for key in row.get('scores',{})})
-    with Client(base_url='https://evaluations.wandb.ai', api_key=credentials(), scope_id=scope) as client:
-        table = client.eval_tables.create(name=safe_name(name), idempotency_key=key('create'))
-        client.eval_tables.columns.create(table.evaluation_id,
-            dataset_fields=[column_schema(source, field, [r[source].get(field) for r in prepared])
-                for source in ('input', 'output') for field in sorted({f for r in prepared for f in r[source]})],
-            scorers=[{'name': key, 'value_type': 'boolean' if any(type(r.get('scores', {}).get(key)) is bool for r in typed) else 'number'} for key in score_names], idempotency_key=key('columns'))
-        for i in range(0, len(rows), 100):
-            client.eval_tables.rows.add(table.evaluation_id, rows=prepared[i:i+100], idempotency_key=key('rows-' + str(i)))
-        version = client.eval_tables.versions.create(table.evaluation_id, idempotency_key=key('version'))
-    ncols = sum(len({f for r in prepared for f in r[source]}) for source in ('input', 'output')) + len(score_names)
-    return dict(_type='eval-table-ces', schema_version=1, ncols=ncols, nrows=len(rows),
-        evaluation_id=table.evaluation_id, evaluation_version_id=version.evaluation_version_id,
-        dataset_id=table.dataset_id, dataset_version_id=version.dataset_version_id, log_mode='IMMUTABLE')
+def _validate_comparison_inputs(versions):
+    from .media import map_values
+    seen = {}
+    for rows in versions.values():
+        for row in rows:
+            value = map_values(row['input'], lambda image: {k: v for k, v in image.items() if k != 'path'})
+            fingerprint = digest(value)
+            if row['case_id'] in seen and seen[row['case_id']] != fingerprint:
+                raise ValueError('Compared versions need identical inputs for case ' + row['case_id'] +
+                                 '. Keep version names and trace links in outputs or evidence.')
+            seen[row['case_id']] = fingerprint
+
+
+# Keep these entry points patchable for destination-isolation tests.
+from .eval_tables import EvalTableMarkerMissing, publish_eval_table as native_table, verify_run_history
+from .eval_workspace import publish_workspace as publish_eval_workspace
 
 
 def publish_report(session, conclusion, links):

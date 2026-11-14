@@ -290,7 +290,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my invoice lookup<br><strong>Check:</strong> The requested invoice, missing invoice, and other-account checks pass. Account state stays unchanged.</div>
 
-<a class="answer-link" href="/80">Worked answer →</a>
+<a class="answer-link" href="/81">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my invoice lookup.
@@ -393,7 +393,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my tool-to-model handoff<br><strong>Check:</strong> Open the four handoff tabs. Match the action, Python arguments, returned payments, and two appended messages.</div>
 
-<a class="answer-link" href="/81">Worked answer →</a>
+<a class="answer-link" href="/82">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my tool-to-model handoff.
@@ -604,7 +604,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my scorer against four known examples<br><strong>Check:</strong> Full refund passes. Partial refund, no refund, and duplicate refund fail, despite the same confident reply.</div>
 
-<a class="answer-link" href="/82">Worked answer →</a>
+<a class="answer-link" href="/83">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my scorer against four known examples.
@@ -632,7 +632,7 @@ class: exercise
 
 <div class="task">Run the explanation judge on the two saved starting tickets. Find your state check, the independent check, and the judge reason in the saved table.</div>
 
-<div class="done"><strong>Run:</strong> Judge and publish the starting development comparison<br><strong>Check:</strong> Open a case in the saved comparison and follow its conversation link. Explain any disagreement between the two scores.</div>
+<div class="done"><strong>Run:</strong> Judge and publish the starting development comparison<br><strong>Check:</strong> Click Compare in EvalTables beside the result. Open a ticket, compare the state score with the explanation score, and follow its conversation link.</div>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Judge and publish the starting development comparison.
@@ -1010,13 +1010,23 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 ---
 ---
 
-# Open the execution behind a saved evaluation row.
+# Compare the same ticket in Forge.
 
-<div class="native-capture"><a class="capture-link" href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/5a3721335363bceb77f0c88c87e761f8"><CaptureDetail src="/images/visual-v030-pending-comparison.png" :x="80" :y="305" :width="1180" :height="380" label="Four saved W&B Table case rows, scores and execution evidence" /></a>
-<div class="capture-caption">Recorded v0.3.0 rehearsal · W&B Table: four fresh cases for the agent-selected version. · <a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/5a3721335363bceb77f0c88c87e761f8">Open the record ↗</a></div></div>
+<div class="eval-native"><div class="eval-native-image"><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=qeo6ytk9yxz"><img src="/images/evaltables-native.png" alt="Native Forge Evaluation Tables Preview showing saved workshop results"></a><span class="eval-native-pin" style="left:6%;top:39%" aria-hidden="true">1</span><span class="eval-native-pin" style="left:6%;top:77%" aria-hidden="true">2</span><span class="eval-native-pin" style="left:6%;top:53%" aria-hidden="true">3</span></div><div class="eval-native-notes"><p><b>1 · Pick the versions</b><br>Use the starting harness as the reference.</p><p><b>2 · Match the ticket</b><br>All three versions use the same four cases.</p><p><b>3 · Read the tie</b><br>All three pass here. Account checks and explanation judgments remain separate.</p></div></div><p class="eval-native-caption">Recorded results in Forge · Evaluation Tables (Preview) · <a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=qeo6ytk9yxz">Open this comparison ↗</a></p>
 
 <!--
-Actual native W&B Table, not EvalTables and not a three-version aligned comparison. error=0 means the independent account-state check passed. judge_grounded and judge_complete are separate scores. The evaluation row also links execution evidence. All three versions are compared on the next result table. Native EvalTables remains unavailable with HTTP500.
+Click Compare in EvalTables beside the notebook result. This opens the native Weave-backed Evaluation Tables Preview in the W&B workspace. The separate CES EvalTables v2 service can still be unavailable; its status does not erase this working comparison. These are saved rehearsal executions, not new model calls.
+-->
+
+---
+---
+
+# Inspect a request that needs clarification.
+
+<div class="eval-native"><div class="eval-native-image"><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=qeo6ytk9yxz"><img src="/images/evaltables-native-detail.png" alt="Native Forge Evaluation Tables Preview showing saved workshop results"></a><span class="eval-native-pin" style="left:28.3%;top:62%" aria-hidden="true">1</span><span class="eval-native-pin" style="left:28.3%;top:84%" aria-hidden="true">2</span><span class="eval-native-pin" style="left:28.3%;top:27%" aria-hidden="true">3</span></div><div class="eval-native-notes"><p><b>1 · Read the response</b><br>All three ask for missing account-access details.</p><p><b>2 · Check the outcome</b><br>The independent check and explanation judge both pass this case.</p><p><b>3 · Open the trace</b><br>Use evidence.conversation.url to inspect the actual tools.</p></div></div><p class="eval-native-caption">Recorded results in Forge · Evaluation Tables (Preview) · <a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=qeo6ytk9yxz">Open this comparison ↗</a></p>
+
+<!--
+Select the same case across versions. A tie is a result: more verification calls can leave account quality unchanged. Blank judgment cells remain missing. Use the Agent Lens URL saved in that row, rather than an unrelated trace.
 -->
 
 ---
@@ -1028,7 +1038,7 @@ Actual native W&B Table, not EvalTables and not a three-version aligned comparis
 <div class="capture-caption">Recorded v0.3.0 rehearsal · The Report records the complete comparison and its publication status. · <a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-bc0ee4ab--VmlldzoxODMwMzUyNg==">Open the record ↗</a></div></div>
 
 <!--
-Use fresh v030 final table: all12 account checks and explanation judgments are available and pass. Native EvalTables unavailable; screenshot is the actual W&B/Weave/Report surface and must be captioned accordingly.
+Use fresh v030 final table: all12 account checks and explanation judgments are available and pass. The Report screenshot is the actual W&B/Weave/Report surface. The preceding slides show the repaired native Evaluation Tables Preview comparison.
 -->
 
 ---
@@ -1161,7 +1171,7 @@ if run["case_id"] == "double-charge":
 
 This development check distinguishes the four public examples. The trusted final scorer also checks the target payment and unrelated account state.
 
-<span class="source-link"><a href="/83">Continue to judge validation →</a></span> · <span class="source-link"><a href="/43">Return to exercise →</a></span>
+<span class="source-link"><a href="/84">Continue to judge validation →</a></span> · <span class="source-link"><a href="/43">Return to exercise →</a></span>
 
 <!--
 The learner check is deliberately limited. Do not describe it as the full final scorer.
@@ -1200,5 +1210,5 @@ Exact semantics of teaching.ANSWERS scorer validation. Boolean strings are inval
 <div class="sources"><p><a href="https://github.com/ash0ts/forge-workshop-kit">Workshop Kit source and setup</a><br><a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view">Copy the current Pending notebook</a><br><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-bc0ee4ab--VmlldzoxODMwMzUyNg==">Recorded v0.3.0 rehearsal Report</a><br><a href="https://docs.coreweave.com/products/agent-lens">Agent Lens documentation</a><br><a href="https://docs.coreweave.com/products/wandb/evaltables/compare-runs">Native EvalTables comparison guide</a><br><a href="https://github.com/google-research/harness2/tree/1cfe254e8d25b15f37048c3730134686abe60335">Pinned Harness² upstream</a></p></div>
 
 <!--
-The product evidence in this deck uses the v030 rehearsal. Native EvalTables returned HTTP500; W&B and Weave records are saved. Current authored notebook source scripts/pending_cells.py. Historical deck preserved outside current attendee path.
+The product evidence in this deck uses the v030 rehearsal. The current native comparison uses Weave-backed Evaluation Tables Preview. The separate CES v2 service still returns HTTP500; its unavailable status remains in publication details. Current authored notebook source scripts/pending_cells.py. Historical deck preserved outside current attendee path.
 -->

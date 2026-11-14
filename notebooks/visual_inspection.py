@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[inspection] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/forge_workshop_kit-0.5.0-py3-none-any.whl",
+#   "forge-workshop-kit[inspection] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/forge_workshop_kit-0.5.1-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -680,7 +680,11 @@ def _(feedback, get_lab, inspection_conclusion, mo, publish_report, refresh_insp
         raise ValueError("Write your conclusion before publishing the Report.")
     _s.save_draft("inspection/conclusion", inspection_conclusion.value)
     try:
-        _report = publish_report(_s, inspection_conclusion.value, ui.stage_links(_s, teaching.stage_ids(_s)))
+        _links=ui.stage_links(_s,teaching.stage_ids(_s))
+        for _key,_receipt in _s.read()["publications"].items():
+            if _key.startswith("comparison/"):
+                _links.update(ui.comparison_links(_receipt,suffix=_key.rsplit("/",1)[-1][:6]))
+        _report = publish_report(_s, inspection_conclusion.value, _links)
         feedback("report", {"status": "published", "result": _report})
     except Exception as _error:
         feedback("report", {"status": "publication unavailable", "message": str(_error)})

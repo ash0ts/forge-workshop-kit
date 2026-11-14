@@ -279,7 +279,6 @@ def test_advanced_result_flows_through_real_trace_and_all_publication_adapters(s
     import hashlib
     import inspect
 
-    import coreweave_evaluations
     import weave
     from coreweave.forge.agentlens import tracing
 
@@ -341,20 +340,52 @@ def test_advanced_result_flows_through_real_trace_and_all_publication_adapters(s
                         [{'operation_name': 'turn'}, *stored])
 
     logged, native_rows, weave_scores = [], [], []
+    histories, native_children = {}, {}
+
+    class NativeTable:
+        def __init__(self, **kwargs):
+            assert kwargs['backend'] == 'weave'
+            assert kwargs['unsupported_media_mode'] == 'raise'
+            self.values, self.marker = kwargs, None
+
+        def to_json(self, run):
+            if self.marker:
+                return self.marker
+            identity = 'native-' + run.id
+            native_children[identity] = []
+            for values in self.values['data']:
+                row = dict(zip(self.values['columns'], values))
+                inputs = {key: row[key] for key in self.values['input_columns']}
+                outputs = {key: row[key] for key in self.values['output_columns']}
+                scores = {key: row[key] for key in self.values['score_columns']}
+                native_rows.append({'input': inputs, 'output': outputs, 'scores': scores})
+                native_children[identity].append(SimpleNamespace(
+                    op_name='Evaluation.predict_and_score:version', ended_at='finished', exception=None,
+                    inputs={'example': inputs}, output={'output': outputs, 'scores': scores}))
+            self.marker = {'_type': 'eval-table', 'nrows': len(self.values['data']),
+                           'ncols': len(self.values['columns']), 'evaluate_call_id': identity}
+            return self.marker
+
     class Run:
         entity, project = 'test', 'project'
         def __init__(self, identity):
             self.id, self.url, self.summary = identity, 'https://example.test/run/' + identity, {}
         def log(self, value):
             logged.append(value)
+            history = {key: item.to_json(self) if isinstance(item, NativeTable) else item
+                       for key, item in value.items()}
+            histories.setdefault(self.id, []).append(history)
     class Publisher:
         @contextmanager
         def run(self, identity, *args):
             yield Run(identity)
     session.publisher = Publisher()
-    monkeypatch.setattr(wandb, 'Api', lambda: SimpleNamespace(_service_api=SimpleNamespace(
-        execute_graphql=lambda *args: {'project': {'internalId': 'project-internal-id'}})))
+    monkeypatch.setattr(wandb, 'EvalTable', NativeTable)
+    monkeypatch.setattr(wandb, 'Api', lambda: SimpleNamespace(run=lambda path: SimpleNamespace(
+        scan_history=lambda **kwargs: histories[path.split('/')[-1]])))
     monkeypatch.setattr('forge_workshop_kit.publication.credentials', lambda: 'fake')
+    monkeypatch.setattr('forge_workshop_kit.publication.publish_eval_workspace',
+                        lambda *args, **kwargs: {'status': 'published', 'url': 'https://example.test/comparison'})
 
     class Dataset:
         def __init__(self, **kwargs):
@@ -372,26 +403,18 @@ def test_advanced_result_flows_through_real_trace_and_all_publication_adapters(s
     monkeypatch.setattr(weave, 'Dataset', Dataset)
     monkeypatch.setattr(weave, 'Evaluation', Evaluation)
     monkeypatch.setattr(weave, 'op', lambda: lambda function: function)
-    monkeypatch.setattr(weave, 'init', lambda *args: None)
+    def query(request):
+        if 'call_ids' in request['filter']:
+            return [SimpleNamespace(ended_at='finished', exception=None)]
+        return native_children[request['filter']['parent_ids'][0]]
+
+    readback = SimpleNamespace(flush=lambda: None, project_id='test/project',
+        get_call=lambda identity: SimpleNamespace(ended_at='finished', exception=None),
+        server=SimpleNamespace(calls_query_stream=query))
+    monkeypatch.setattr(weave, 'init', lambda project: readback)
     monkeypatch.setattr(weave, 'publish', lambda value, **kwargs:
                         SimpleNamespace(uri=lambda: 'weave:///test/project/' + value.name))
-    monkeypatch.setattr(weave, 'get_client', lambda: SimpleNamespace(flush=lambda: None,
-                        get_call=lambda identity: SimpleNamespace(ended_at='finished', exception=None)))
-
-    class NativeClient:
-        def __init__(self, **kwargs):
-            assert kwargs['scope_id'] == 'project-internal-id'
-            self.eval_tables = SimpleNamespace(
-                create=lambda **kwargs: SimpleNamespace(evaluation_id='eval-id', dataset_id='dataset-id'),
-                columns=SimpleNamespace(create=lambda *args, **kwargs: None),
-                rows=SimpleNamespace(add=lambda *args, **kwargs: native_rows.extend(kwargs['rows'])),
-                versions=SimpleNamespace(create=lambda *args, **kwargs:
-                    SimpleNamespace(evaluation_version_id='ev1', dataset_version_id='dv1')))
-        def __enter__(self):
-            return self
-        def __exit__(self, *args):
-            return False
-    monkeypatch.setattr(coreweave_evaluations, 'Client', NativeClient)
+    monkeypatch.setattr(weave, 'get_client', lambda: readback)
     monkeypatch.setattr('forge_workshop_kit.advanced_comparison.credentials',
                         lambda: pytest.fail('Publication must not run inference'))
 
@@ -404,7 +427,8 @@ def test_advanced_result_flows_through_real_trace_and_all_publication_adapters(s
     assert tables[0].data[0][2] is None
     assert tables[1].data[0][2]['intent'] == 'card_arrival'
     assert len(native_rows) == 4 and native_rows[0]['output']['prediction'] is None
-    assert native_rows[2]['output']['prediction']['intent'] == 'card_arrival'
+    assert native_rows[2]['output']['prediction.intent'] == 'card_arrival'
+    assert all(record['native_verified'] for record in links['comparison'].values())
     assert [row['error'] for row in weave_scores] == [None, None, 0, 0]
     assert len(llms) == 4 and len(sent) == 4
     assert [llm.attributes['workshop.usage_available'] for llm in llms] == [True, False, False, True]

@@ -184,7 +184,7 @@ class: exercise
 
 <div class="kicker">0:08–0:15 · YOUR TURN</div>
 
-<a class="answer-link" href="/89">Worked answer → 89</a>
+<a class="answer-link" href="/90">Worked answer → 90</a>
 
 # Connect and inspect your first tool call
 
@@ -359,7 +359,7 @@ class: exercise
 
 <div class="kicker">0:30–0:40 · YOUR TURN</div>
 
-<a class="answer-link" href="/90">Worked answer → 90</a>
+<a class="answer-link" href="/91">Worked answer → 91</a>
 
 # Write and test persistence
 
@@ -528,7 +528,7 @@ class: exercise
 
 <div class="kicker">0:50–1:05 · YOUR TURN</div>
 
-<a class="answer-link" href="/91">Worked answer → 91</a>
+<a class="answer-link" href="/92">Worked answer → 92</a>
 
 # Write the loss and metric
 
@@ -655,7 +655,7 @@ class: exercise
 
 <div class="kicker">1:15–1:30 · YOUR TURN</div>
 
-<a class="answer-link" href="/92">Worked answer → 92</a>
+<a class="answer-link" href="/93">Worked answer → 93</a>
 
 # Run six configurations and inspect one forecast
 
@@ -895,7 +895,7 @@ class: exercise
 
 <div class="kicker">1:55–2:15 · YOUR TURN</div>
 
-<a class="answer-link" href="/93">Worked answer → 93</a>
+<a class="answer-link" href="/94">Worked answer → 94</a>
 
 # Implement and compare the image predictors
 
@@ -997,7 +997,7 @@ class: exercise
 
 <div class="kicker">2:25–2:40 · YOUR TURN</div>
 
-<a class="answer-link" href="/95">Worked answer → 95</a>
+<a class="answer-link" href="/96">Worked answer → 96</a>
 
 # Choose the evidence for the research agent
 
@@ -1150,7 +1150,7 @@ class: exercise
 
 <div class="kicker">3:00–3:15 · YOUR TURN</div>
 
-<a class="answer-link" href="/96">Worked answer → 96</a>
+<a class="answer-link" href="/97">Worked answer → 97</a>
 
 # Test the selected code, then begin round two
 
@@ -1222,7 +1222,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 
 <!--
-Choose one case identity and compare the predictions for its shared input and target times. Weave stores these evaluation records. Native EvalTables was unavailable during the rehearsal, so the notebook and Weave comparison remain available; publication can be retried separately.
+Choose one case identity and compare the predictions for its shared input and target times. Weave stores these evaluation records. Click Compare in EvalTables to open the native Weave-backed Evaluation Tables Preview. Open Solar images and GOES measurements separately: their errors have different meanings. Upload retries reuse the saved arrays.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1232,7 +1232,7 @@ class: exercise
 
 <div class="kicker">3:25–3:45 · YOUR TURN</div>
 
-<a class="answer-link" href="/97">Worked answer → 97</a>
+<a class="answer-link" href="/98">Worked answer → 98</a>
 
 # Test the selected models on reserved dates
 
@@ -1292,7 +1292,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # The GOES model performed worse than persistence
 
-<div class="scientific-figure"><img class="solar-photo" src="/images/v030-goes-final.png" alt="Observed GOES flux, persistence forecast, and selected model prediction on reserved dates"><div class="image-caption">Final log-flux MAE: selected model 2.469; persistence 0.193. 2,694 accepted windows.</div></div><div class="bottom-note">Compare this forecast with its loss curve before deciding what to change next.</div>
+<div class="scientific-figure"><img class="solar-photo" src="/images/v030-goes-final.png" alt="Observed GOES flux, persistence forecast, and selected model prediction on reserved dates"><div class="image-caption">Final log-flux MAE: selected model 2.469; persistence 0.193. 2,694 accepted windows.</div></div><div class="bottom-note">Compare the forecast with its loss curve. <a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=dtm5k18fpo4">Compare these forecasts in EvalTables ↗</a></div>
 
 
 <!--
@@ -1318,13 +1318,27 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">3:48</div>
 
-# Read the saved score for one image in Weave
+# Compare forecasts for the same timestamp
 
-<div class="native-product-evidence"><a class="product-screen visual-v030-solar-comparison" href="/images/visual-v030-solar-comparison.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-comparison.png" alt="Native Weave expanded row showing prediction mean, target mean, file index, and error"><span v-click="1" class="capture-mark" style="left:23px;top:56px;width:1000px;height:253px" aria-label="Annotation 1: Array summaries"><b>1</b></span><span v-click="2" class="capture-mark" style="left:23px;top:310px;width:1000px;height:36px" aria-label="Annotation 2: Pixel-wise score"><b>2</b></span></a><div class="product-caption"><span>Find file_index 0 and its error. Why is the score not the difference between the two means?</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==">Open the linked results ↗</a></div><div class="image-caption">One saved agent-selected case. Image means summarize the arrays; the score averages pixel errors inside the disk mask.</div></div>
+<div class="eval-native"><div class="eval-native-image"><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=91ypk2or045"><img src="/images/evaltables-native.png" alt="Native Forge Evaluation Tables Preview showing saved workshop results"></a><span class="eval-native-pin" style="left:6%;top:39%" aria-hidden="true">1</span><span class="eval-native-pin" style="left:6%;top:77%" aria-hidden="true">2</span><span class="eval-native-pin" style="left:6%;top:53%" aria-hidden="true">3</span></div><div class="eval-native-notes"><p><b>1 · Choose image versions</b><br>Persistence, manual, and agent-selected use the same cases.</p><p><b>2 · Match forecast times</b><br>Input and target times must match across versions.</p><p><b>3 · Read masked error</b><br>Lower is better for this image task.</p></div></div><p class="eval-native-caption">Recorded results in Forge · Evaluation Tables (Preview) · <a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=91ypk2or045">Open this comparison ↗</a></p>
 
 
 <!--
-This expanded native Weave row is the first final agent-selected image, file_index zero. Prediction mean is −1.760701 and target mean is −1.759181, but masked MAE is 0.109328. Differences between bright and dark pixels can cancel in a mean. The scorer instead takes each pixel’s absolute error before averaging. Open the saved array to see the forecast. The notebook supplies the aligned comparison; this is not native EvalTables. Match this case_id and file_index to the notebook timestamp selector. The per-image score and full-split mean are shown separately.
+Open Compare in EvalTables in the final notebook step. The native Weave-backed Evaluation Tables Preview compares saved predictions. Keep GOES measurement results in their separate comparison. This screenshot comes from saved rehearsal data; publishing it does not retrain the models. Match this case_id and file_index to the notebook timestamp selector. The per-image score and full-split mean are shown separately.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">3:48</div>
+
+# Compare errors for one observed future image
+
+<div class="eval-native"><div class="eval-native-image"><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=91ypk2or045"><img src="/images/evaltables-native-detail.png" alt="Native Forge Evaluation Tables Preview showing saved workshop results"></a><span class="eval-native-pin" style="left:11%;top:80%" aria-hidden="true">1</span><span class="eval-native-pin" style="left:28.3%;top:45%" aria-hidden="true">2</span><span class="eval-native-pin" style="left:28.3%;top:97%" aria-hidden="true">3</span></div><div class="eval-native-notes"><p><b>1 · Match the case</b><br>Use the same case ID in all three columns.</p><p><b>2 · Read the target</b><br>Every forecast is checked against this observed image.</p><p><b>3 · Compare the errors</b><br>The agent-selected version has lower masked error on this case.</p></div></div><p class="eval-native-caption">Recorded results in Forge · Evaluation Tables (Preview) · <a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=91ypk2or045">Open this comparison ↗</a></p>
+
+
+<!--
+The per-case image error averages absolute pixel differences inside the fixed solar-disk mask. Summary means cannot replace that score. Use the notebook image selector or saved prediction artifact to inspect the full arrays. Do not imply that the CES v2 backend succeeded; this is the working native Weave-backed Preview.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1674,11 +1688,11 @@ Source notes and recorded evidence: notes/sources.md.
 
 # When a service is unavailable
 
-<table class="clean-table"><tbody><tr><th>Failure</th><th>Next action</th></tr><tr><td>Project authentication or permission</td><td>Fix access, then retry the check</td></tr><tr><td>Training or inference failed</td><td>Inspect the saved error before retrying work</td></tr><tr><td>Trace or artifact upload failed</td><td>Retry export of the saved execution</td></tr><tr><td>Native EvalTables HTTP 500</td><td>Use notebook and Weave comparisons; retry publication</td></tr></tbody></table>
+<table class="clean-table"><tbody><tr><th>Failure</th><th>Next action</th></tr><tr><td>Project authentication or permission</td><td>Fix access, then retry the check</td></tr><tr><td>Training or inference failed</td><td>Inspect the saved error before retrying work</td></tr><tr><td>Trace or artifact upload failed</td><td>Retry export of the saved execution</td></tr><tr><td>Evaluation comparison upload failed</td><td>Use saved notebook results and retry publication</td></tr></tbody></table>
 
 
 <!--
-Start with the failed operation. An authentication problem needs corrected access. A failed training run needs its saved error inspected. An upload failure needs a publication retry. Native EvalTables returned HTTP 500 during this rehearsal; the notebook and Weave comparisons are still available.
+Start with the failed operation. An authentication problem needs corrected access. A failed training run needs its saved error inspected. An upload failure needs a publication retry. The separate CES v2 API remains unavailable. Native Evaluation Tables Preview uses verified Weave evaluation calls and is the workshop comparison path. If any upload fails, retain the notebook results and retry publication only.
 Source notes and recorded evidence: notes/sources.md.
 -->
 

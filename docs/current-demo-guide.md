@@ -9,6 +9,8 @@ Use these saved rehearsals to show how an instruction or code change affects an 
 
 The Pending and Solar links above follow the November 13 rehearsals. The qualification follow-ups below preserve those results and explain what changed afterward. The project's default workspace also includes template uploads, setup checks and earlier rehearsals. Use the linked records rather than combining events from different sessions.
 
+Open the [native evaluation comparisons](evaluations.md#open-the-recorded-comparisons) when comparing individual cases. These named workspaces select the relevant versions and leave the project default unchanged.
+
 Participants copy a template into their own project, check access, and work through its steps. They use their own Forge authentication, inference access and notebook compute. There is no shared gateway or facilitator token. The [setup instructions](../README.md#start-in-forge) cover hosted and laptop use.
 
 ## Pending, Inc. in eight minutes
@@ -62,7 +64,7 @@ For Solar, open the [three-seed qualification](solar-qualification.md). The repa
 
 - **The hosted notebook preview is blank:** the current browser check hit a public-page-to-local-network error in the embedded preview. The **Copy to project** dialog opened, but that does not verify a copied notebook can run. Try copying the template into your project; if the copied notebook cannot start, use the [laptop setup](../README.md#start-on-your-laptop). The downloadable HTML is a saved preview, not a running notebook. Its initial Solar and Pending screens render directly at desktop and phone widths. [Preview checks](../evidence/ux-v023-static-exports.json).
 - **Agent Lens asks for sign-in:** use the saved notebook view or clearly labeled capture while the participant signs in. A Report link does not grant access to someone else's project.
-- **Native EvalTables is unavailable:** our recorded publications returned HTTP 500. Show the actual notebook comparison, Weave evaluation or W&B Table and name it correctly. Publication can be retried from saved results without repeating training or model calls.
+- **A comparison is unavailable:** use the saved notebook result and choose **Retry publication**. Native EvalTables uses the Weave backend; the CES service remains unavailable. Publication retries do not repeat training or model calls. See [evaluation setup](evaluations.md).
 - **A judgment is missing:** show the execution and the failure separately. A missing explanation judgment is not an incorrect account state and is not a zero score.
 - **A participant is still running:** demonstrate the recorded result, then return to their own project. Their unexecuted edits did not produce the rehearsal's outcome.
 

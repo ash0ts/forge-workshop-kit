@@ -1,0 +1,381 @@
+{
+  "solar-images-final": {
+    "persistence": {
+      "comparison_name": "solar-images-final",
+      "condition": "persistence",
+      "run_id": "3e200f084759b9fe25bae7394a9e0d80",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/3e200f084759b9fe25bae7394a9e0d80",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/solar-images-final-persistence-cases:YZ63odPEUxX74OOPvNYK4xyOKjWTs1Gt9rPiYFZIbwA",
+      "weave_call_id": "01a1db06-5fd9-732b-8956-2e75849828e5",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/solar-images-final-persistence-evaluation:8g4ipyJcrocFBXNDBmfSkoc7AXXMn2ixXTX7V7B1WfQ",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_transport": {
+        "column_roles": {
+          "input_columns": [
+            "case_id",
+            "input.current_image",
+            "input.forecast_origin",
+            "input.one_hour_ago"
+          ],
+          "output_columns": [
+            "prediction.absolute_error",
+            "prediction.display_scale.error_max",
+            "prediction.display_scale.intensity_max",
+            "prediction.display_scale.intensity_min",
+            "prediction.file_index",
+            "prediction.image",
+            "prediction.mean",
+            "target.disk_mask",
+            "target.file_index",
+            "target.image",
+            "target.mean",
+            "evidence"
+          ],
+          "score_columns": [
+            "error"
+          ],
+          "image_columns": [
+            "input.current_image",
+            "input.one_hour_ago",
+            "prediction.absolute_error",
+            "prediction.image",
+            "target.disk_mask",
+            "target.image"
+          ]
+        },
+        "request_digest": "8e8bc7c3a891c5c3ca01caecb009def8369b1c72252001c2a3ac63bc9d3e4699",
+        "backend": "weave",
+        "status": "published",
+        "verified": true,
+        "marker": {
+          "_type": "eval-table",
+          "ncols": 17,
+          "nrows": 199,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1db07-4e1e-729d-b41e-50cc64ff09cb"
+        },
+        "evaluate_call_id": "01a1db07-4e1e-729d-b41e-50cc64ff09cb",
+        "row_count": 199,
+        "verification": "Completed evaluation; all row identities, non-image inputs/outputs, and scores",
+        "image_content_verified": false
+      },
+      "native": {
+        "_type": "eval-table",
+        "ncols": 17,
+        "nrows": 199,
+        "log_mode": "IMMUTABLE",
+        "evaluate_call_id": "01a1db07-4e1e-729d-b41e-50cc64ff09cb"
+      },
+      "native_status": "published",
+      "native_backend": "weave",
+      "native_verified": true,
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/3e200f084759b9fe25bae7394a9e0d80",
+      "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=91ypk2or045"
+    },
+    "manual": {
+      "comparison_name": "solar-images-final",
+      "condition": "manual",
+      "run_id": "2a120c0258937ff91a34587394352a1c",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/2a120c0258937ff91a34587394352a1c",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/solar-images-final-manual-cases:P53LeJWrQjHwAX2rhvdqHT6uQByEjB8oYl8app7sYJc",
+      "weave_call_id": "01a1db0a-fa82-724c-adae-ea598acd7bfb",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/solar-images-final-manual-evaluation:GI6TFNsFjLQcXOMFZdxPXRcWJIFi9OOVYVSqkJKyFUU",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_transport": {
+        "column_roles": {
+          "input_columns": [
+            "case_id",
+            "input.current_image",
+            "input.forecast_origin",
+            "input.one_hour_ago"
+          ],
+          "output_columns": [
+            "prediction.absolute_error",
+            "prediction.display_scale.error_max",
+            "prediction.display_scale.intensity_max",
+            "prediction.display_scale.intensity_min",
+            "prediction.file_index",
+            "prediction.image",
+            "prediction.mean",
+            "target.disk_mask",
+            "target.file_index",
+            "target.image",
+            "target.mean",
+            "evidence.source",
+            "evidence.stage",
+            "evidence.trace.conversation_id",
+            "evidence.trace.expected",
+            "evidence.trace.span_ids.b25f760e77a01d233f5a6e95831f7cc2/evaluate",
+            "evidence.trace.stored_spans",
+            "evidence.trace.trace_id",
+            "evidence.trace.url",
+            "evidence.trace.verified",
+            "evidence.training_trace.conversation_id",
+            "evidence.training_trace.expected",
+            "evidence.training_trace.span_ids.324f93e1eb2f2f1a89bf28abeee776b6/train",
+            "evidence.training_trace.stored_spans",
+            "evidence.training_trace.trace_id",
+            "evidence.training_trace.url",
+            "evidence.training_trace.verified"
+          ],
+          "score_columns": [
+            "error"
+          ],
+          "image_columns": [
+            "input.current_image",
+            "input.one_hour_ago",
+            "prediction.absolute_error",
+            "prediction.image",
+            "target.disk_mask",
+            "target.image"
+          ]
+        },
+        "request_digest": "f5f4c15836ecf86e9917cfa796789c1f0ffacede11057c99f676f4c54fa2d518",
+        "backend": "weave",
+        "status": "published",
+        "verified": true,
+        "marker": {
+          "_type": "eval-table",
+          "ncols": 32,
+          "nrows": 199,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1db0b-7a3e-75c7-bb2b-396eefde47d5"
+        },
+        "evaluate_call_id": "01a1db0b-7a3e-75c7-bb2b-396eefde47d5",
+        "row_count": 199,
+        "verification": "Completed evaluation, every case identity, and every score"
+      },
+      "native": {
+        "_type": "eval-table",
+        "ncols": 32,
+        "nrows": 199,
+        "log_mode": "IMMUTABLE",
+        "evaluate_call_id": "01a1db0b-7a3e-75c7-bb2b-396eefde47d5"
+      },
+      "native_status": "published",
+      "native_backend": "weave",
+      "native_verified": true,
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/2a120c0258937ff91a34587394352a1c",
+      "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=91ypk2or045"
+    },
+    "agent": {
+      "comparison_name": "solar-images-final",
+      "condition": "agent",
+      "run_id": "70d8083b018961232a48515b264713bb",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/70d8083b018961232a48515b264713bb",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/solar-images-final-agent-cases:ESdP1BWajprwX8BBGYGQ89ek42TvXuKX87YUofhdQYg",
+      "weave_call_id": "01a1db0e-5502-7b8a-95de-17db3389f94c",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/solar-images-final-agent-evaluation:nqUJWYXOK6pTmZbOLbbIDnVQi37CvXukk5m9xH1Xdv4",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_transport": {
+        "column_roles": {
+          "input_columns": [
+            "case_id",
+            "input.current_image",
+            "input.forecast_origin",
+            "input.one_hour_ago"
+          ],
+          "output_columns": [
+            "prediction.absolute_error",
+            "prediction.display_scale.error_max",
+            "prediction.display_scale.intensity_max",
+            "prediction.display_scale.intensity_min",
+            "prediction.file_index",
+            "prediction.image",
+            "prediction.mean",
+            "target.disk_mask",
+            "target.file_index",
+            "target.image",
+            "target.mean",
+            "evidence.source",
+            "evidence.stage",
+            "evidence.trace.conversation_id",
+            "evidence.trace.expected",
+            "evidence.trace.span_ids.cde647b9ccfe91c444610f1bf80a07ac/evaluate",
+            "evidence.trace.stored_spans",
+            "evidence.trace.trace_id",
+            "evidence.trace.url",
+            "evidence.trace.verified",
+            "evidence.training_trace.conversation_id",
+            "evidence.training_trace.expected",
+            "evidence.training_trace.span_ids.f7550caa1639e8366efbf9d84a782289/train",
+            "evidence.training_trace.stored_spans",
+            "evidence.training_trace.trace_id",
+            "evidence.training_trace.url",
+            "evidence.training_trace.verified"
+          ],
+          "score_columns": [
+            "error"
+          ],
+          "image_columns": [
+            "input.current_image",
+            "input.one_hour_ago",
+            "prediction.absolute_error",
+            "prediction.image",
+            "target.disk_mask",
+            "target.image"
+          ]
+        },
+        "request_digest": "e032856d858db2d570d2eccb9933d4a5d9e5af767e94f9f9a6fe9377e9e742e7",
+        "backend": "weave",
+        "status": "published",
+        "verified": true,
+        "marker": {
+          "_type": "eval-table",
+          "ncols": 32,
+          "nrows": 199,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1db0e-db9d-7c4a-b4b0-ad2022aa18aa"
+        },
+        "evaluate_call_id": "01a1db0e-db9d-7c4a-b4b0-ad2022aa18aa",
+        "row_count": 199,
+        "verification": "Completed evaluation; all row identities, non-image inputs/outputs, and scores",
+        "image_content_verified": false
+      },
+      "native": {
+        "_type": "eval-table",
+        "ncols": 32,
+        "nrows": 199,
+        "log_mode": "IMMUTABLE",
+        "evaluate_call_id": "01a1db0e-db9d-7c4a-b4b0-ad2022aa18aa"
+      },
+      "native_status": "published",
+      "native_backend": "weave",
+      "native_verified": true,
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/70d8083b018961232a48515b264713bb",
+      "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=91ypk2or045"
+    }
+  },
+  "solar-measurements-final": {
+    "persistence": {
+      "comparison_name": "solar-measurements-final",
+      "condition": "persistence",
+      "run_id": "5c7b1a6c837233853a9132b6b5e5ce23",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/5c7b1a6c837233853a9132b6b5e5ce23",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/solar-measurements-final-persistence-cases:LwKCIabkiY3BoPwuymEWEG9eDFEWzvrfJwSq3INspUQ",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/solar-measurements-final-persistence-evaluation:cDoMX9rUZXWcaSSVV8atiJK8lKX9b4ExZgjY8b8IeYs",
+      "weave_status": "unavailable",
+      "native_status": "published",
+      "weave_error": "This older evaluation has no saved call ID for verification. Its objects are saved, but the evaluation export is unverified.",
+      "previous_native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}",
+      "native_transport": {
+        "column_roles": {
+          "input_columns": [
+            "case_id",
+            "input.forecast_origin"
+          ],
+          "output_columns": [
+            "prediction",
+            "target",
+            "evidence"
+          ],
+          "score_columns": [
+            "error"
+          ],
+          "image_columns": []
+        },
+        "request_digest": "de849a510ab65e5866268b5149205a6b030b9445f23d52ab8927bd7db5a1ed42",
+        "backend": "weave",
+        "status": "published",
+        "verified": true,
+        "marker": {
+          "_type": "eval-table",
+          "ncols": 6,
+          "nrows": 2694,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1db10-1584-7b89-ad9c-1a96f7a877a1"
+        },
+        "evaluate_call_id": "01a1db10-1584-7b89-ad9c-1a96f7a877a1",
+        "row_count": 2694,
+        "verification": "Completed evaluation; all row identities, non-image inputs/outputs, and scores",
+        "image_content_verified": false
+      },
+      "native": {
+        "_type": "eval-table",
+        "ncols": 6,
+        "nrows": 2694,
+        "log_mode": "IMMUTABLE",
+        "evaluate_call_id": "01a1db10-1584-7b89-ad9c-1a96f7a877a1"
+      },
+      "native_backend": "weave",
+      "native_verified": true,
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/5c7b1a6c837233853a9132b6b5e5ce23",
+      "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=dtm5k18fpo4"
+    },
+    "selected-model": {
+      "comparison_name": "solar-measurements-final",
+      "condition": "selected-model",
+      "run_id": "c8450db7a36996d07fd059569ee08fac",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/c8450db7a36996d07fd059569ee08fac",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/solar-measurements-final-selected-model-cases:eibUn6B1ZsoWqQMvK3ueX2gKlSUd4cDcf4sLA1yau5E",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/solar-measurements-final-selected-model-evaluation:OQPrGd1HvkkPrhpNzSuH7E9ljhw4GCI6MMaCfXnyYJg",
+      "weave_status": "unavailable",
+      "native_status": "published",
+      "weave_error": "This older evaluation has no saved call ID for verification. Its objects are saved, but the evaluation export is unverified.",
+      "previous_native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}",
+      "native_transport": {
+        "column_roles": {
+          "input_columns": [
+            "case_id",
+            "input.forecast_origin"
+          ],
+          "output_columns": [
+            "prediction",
+            "target",
+            "evidence.stage",
+            "evidence.trace.conversation_id",
+            "evidence.trace.expected",
+            "evidence.trace.span_ids.b66aef8c512ed64f0b1c344a83245a03/evaluate",
+            "evidence.trace.stored_spans",
+            "evidence.trace.trace_id",
+            "evidence.trace.url",
+            "evidence.trace.verified"
+          ],
+          "score_columns": [
+            "error"
+          ],
+          "image_columns": []
+        },
+        "request_digest": "a513cc42eaca574a8cc6a735ee2983a55cdb4a1f2b8942fee688828b0426f593",
+        "backend": "weave",
+        "status": "published",
+        "verified": true,
+        "marker": {
+          "_type": "eval-table",
+          "ncols": 13,
+          "nrows": 2694,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1db10-5c52-75dd-888c-834f7073f836"
+        },
+        "evaluate_call_id": "01a1db10-5c52-75dd-888c-834f7073f836",
+        "row_count": 2694,
+        "verification": "Completed evaluation; all row identities, non-image inputs/outputs, and scores",
+        "image_content_verified": false
+      },
+      "native": {
+        "_type": "eval-table",
+        "ncols": 13,
+        "nrows": 2694,
+        "log_mode": "IMMUTABLE",
+        "evaluate_call_id": "01a1db10-5c52-75dd-888c-834f7073f836"
+      },
+      "native_backend": "weave",
+      "native_verified": true,
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/c8450db7a36996d07fd059569ee08fac",
+      "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=dtm5k18fpo4"
+    }
+  }
+}

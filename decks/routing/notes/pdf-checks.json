@@ -1,6 +1,6 @@
 {
-  "pages": 38,
-  "slides": 35,
+  "pages": 39,
+  "slides": 36,
   "page_map": [
     {
       "page": 0,
@@ -191,11 +191,16 @@
       "page": 37,
       "slide": 35,
       "click": 0
+    },
+    {
+      "page": 38,
+      "slide": 36,
+      "click": 0
     }
   ],
   "empty_pages": 0,
   "all_pages_rendered": true,
   "converted_links": 6,
-  "source_sha256": "64394687765d82e144b866905ef241db4071218e81cc1802206b520393ccaaa1",
-  "pdf_sha256": "def1a3640bdbf109b7764b02d70469409aa71f94431d55c98c615b01af060320"
+  "source_sha256": "0a23aae40aa366974f4ea3ca6d1485d31e42a4b28aae30e07c9d75949ec6490d",
+  "pdf_sha256": "9a8d22855be434e5919eaaeace73c335fbdab7d7b9bc7131c0d7ceac223355ac"
 }

@@ -101,10 +101,72 @@ def score(prediction,split):
                 examples=len(per_case))
 
 
-def evaluation_rows(prediction,split,*,evidence=None):
+def image_display_scales(predictions, split):
+    """Use the notebook comparison's shared intensity/error scale for each timestamp."""
+    scales = []
+    for i, target in enumerate(split['y'][:, 0]):
+        mask = split['mask'][i, 0].astype(bool)
+        arrays = [target, *(np.asarray(values)[i, 0] for values in predictions.values())]
+        lo = min(float(array.min()) for array in arrays)
+        hi = max(float(array.max()) for array in arrays)
+        error_hi = max(float(np.abs(array - target)[mask].max()) for array in arrays) or 1.
+        scales.append({'intensity_min': lo, 'intensity_max': hi, 'error_max': error_hi})
+    return scales
+
+
+def _array_image(values, directory, caption, *, low, high, cmap, root):
+    """Render numeric arrays as immutable media; scoring still uses full precision."""
+    from io import BytesIO
+    from matplotlib import colormaps
+    from PIL import Image
+    from .media import image_value
+
+    scaled = (np.asarray(values) - low) / (high - low if high > low else 1.)
+    # Notebook imshow uses origin='lower'; ordinary image viewers start at the top.
+    rgba = colormaps[cmap](np.flipud(np.clip(scaled, 0, 1)), bytes=True)
+    buffer = BytesIO()
+    Image.fromarray(rgba).save(buffer, format='PNG')
+    content = buffer.getvalue()
+    path = Path(directory) / (hashlib.sha256(content).hexdigest() + '.png')
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if path.exists() and path.read_bytes() != content:
+        raise ValueError('Saved forecast image differs from its content hash.')
+    if not path.exists():
+        path.write_bytes(content)
+    return image_value(path, caption, root=root)
+
+
+def evaluation_rows(prediction,split,*,evidence=None,media_dir=None,media_root=None,image_scales=None):
+    """Publish exact scores and, when requested, images from the same forecast arrays.
+
+    Calls without media_dir preserve the original scalar-summary row format. Image
+    comparisons pass scales shared across every version, so a color means the same
+    value in each prediction and its error map.
+    """
+    prediction = np.asarray(prediction)
     scores=errors(prediction,split['y'],split['mask'])
     image=prediction.ndim>2
-    return [dict(case_id=str(case),input={'forecast_origin':str(case)},
+    rows = [dict(case_id=str(case),input={'forecast_origin':str(case)},
         prediction={'mean':float(prediction[i].mean()),'file_index':i} if image else prediction[i].tolist(),
         target={'mean':float(split['y'][i].mean()),'file_index':i} if image else split['y'][i].tolist(),
         error=float(scores[i]), evidence=evidence or {}) for i,case in enumerate(split['ids'])]
+    if image and media_dir is not None:
+        if prediction.ndim != 4 or prediction.shape[1] != 1 or split['x'].shape != (len(rows), 2, *prediction.shape[2:]):
+            raise ValueError('Image publication expects two input frames and one forecast frame per case.')
+        scales = image_scales if image_scales is not None else image_display_scales({'prediction': prediction}, split)
+        if len(scales) != len(rows):
+            raise ValueError('Image display scales must match the forecast timestamps.')
+        for i, row in enumerate(rows):
+            scale = scales[i]
+            render = lambda array, caption, low=scale['intensity_min'], high=scale['intensity_max'], cmap='magma': _array_image(
+                array, media_dir, caption + ' · ' + row['case_id'] + ' UTC', low=low, high=high, cmap=cmap, root=media_root)
+            row['input'].update(one_hour_ago=render(split['x'][i, 0], 'Observed one hour before forecast origin'),
+                                current_image=render(split['x'][i, 1], 'Observed at forecast origin'))
+            row['prediction'].update(image=render(prediction[i, 0], 'Predicted one hour ahead'),
+                absolute_error=render(np.abs(prediction[i, 0] - split['y'][i, 0]) * split['mask'][i, 0],
+                                      'Absolute error inside the scoring mask; off-disk pixels set to zero',
+                                      low=0, high=scale['error_max'], cmap='inferno'),
+                display_scale=scale)
+            row['target'].update(image=render(split['y'][i, 0], 'Observed one hour ahead'),
+                                 disk_mask=render(split['mask'][i, 0], 'Scoring disk mask', low=0, high=1, cmap='Greys'))
+    return rows

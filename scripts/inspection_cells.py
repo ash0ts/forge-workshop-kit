@@ -418,7 +418,11 @@ if not inspection_conclusion.value.strip():
     raise ValueError("Write your conclusion before publishing the Report.")
 _s.save_draft("inspection/conclusion", inspection_conclusion.value)
 try:
-    _report = publish_report(_s, inspection_conclusion.value, ui.stage_links(_s, teaching.stage_ids(_s)))
+    _links=ui.stage_links(_s,teaching.stage_ids(_s))
+    for _key,_receipt in _s.read()["publications"].items():
+        if _key.startswith("comparison/"):
+            _links.update(ui.comparison_links(_receipt,suffix=_key.rsplit("/",1)[-1][:6]))
+    _report = publish_report(_s, inspection_conclusion.value, _links)
     feedback("report", {"status": "published", "result": _report})
 except Exception as _error:
     feedback("report", {"status": "publication unavailable", "message": str(_error)})

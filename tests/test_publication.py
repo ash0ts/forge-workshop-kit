@@ -184,7 +184,7 @@ def mock_destinations(monkeypatch, workspace):
         def log(self, value):
             if 'comparison' in value:
                 calls['comparison'] += 1
-            if 'eval_table' in value:
+            if any(isinstance(item, dict) and item.get('_type') == 'eval-table' for item in value.values()):
                 calls['native_log'] += 1
     @contextmanager
     def run(*args, **kwargs):
@@ -213,8 +213,12 @@ def mock_destinations(monkeypatch, workspace):
         publish=publish, op=lambda: (lambda fn: fn),
         get_client=lambda: SimpleNamespace(flush=flush,
             get_call=lambda call_id: SimpleNamespace(ended_at='done', exception=None))))
+    monkeypatch.setattr(publication, 'verify_run_history', lambda *args, **kwargs: True)
+    monkeypatch.setattr(publication, 'publish_eval_workspace', lambda *args, **kwargs: {'status': 'published', 'url': 'https://example.test/native-comparison'})
     return calls
 
+
+NATIVE_RECEIPT = {'marker': {'_type': 'eval-table', 'evaluate_call_id': 'saved-native-id'}, 'verified': True}
 
 VERSIONS = {'model': [{'case_id': 'case-1', 'input': 'input', 'prediction': 'saved',
                        'target': 'saved', 'error': None}]}
@@ -224,31 +228,62 @@ def test_comparison_retry_skips_each_successful_destination(tmp_path, monkeypatc
     workspace = session(tmp_path)
     calls = mock_destinations(monkeypatch, workspace)
     attempts = []
-    def native(*args):
+    def native(*args, **kwargs):
         attempts.append(1)
         if len(attempts) == 1:
             raise RuntimeError('native unavailable')
-        return {'evaluation_id': 'saved-native-id'}
+        return NATIVE_RECEIPT
     monkeypatch.setattr(publication, 'native_table', native)
     first = publication.publish_comparison(workspace, 'comparison', VERSIONS)['model']
     assert first['native_status'] == 'unavailable'
     assert first['wandb_status'] == first['weave_status'] == 'published'
     second = publication.publish_comparison(workspace, 'comparison', VERSIONS)['model']
     assert second['native_status'] == 'published'
-    assert calls == dict(comparison=1, native_log=1, evaluate=1, dataset=1, evaluation=1, flush=1)
+    assert calls == dict(comparison=1, native_log=0, evaluate=1, dataset=1, evaluation=1, flush=1)
     publication.publish_comparison(workspace, 'comparison', VERSIONS)
     assert len(attempts) == 2 and calls['comparison'] == calls['evaluate'] == 1
+
+
+@pytest.mark.parametrize('stored', [True, False, 'unavailable'])
+def test_native_retry_reattaches_only_a_confirmed_missing_marker(tmp_path, monkeypatch, stored):
+    workspace = session(tmp_path)
+    calls = mock_destinations(monkeypatch, workspace)
+    attempts, reads = [], []
+
+    def native(*args, **kwargs):
+        attempts.append(1)
+        kwargs['save'](dict(NATIVE_RECEIPT))
+        if len(attempts) == 1:
+            raise RuntimeError('Readback interrupted')
+        return NATIVE_RECEIPT
+
+    monkeypatch.setattr(publication, 'native_table', native)
+    publication.publish_comparison(workspace, 'final-cases', VERSIONS)
+
+    def history(*args, **kwargs):
+        reads.append(1)
+        if stored == 'unavailable':
+            raise TimeoutError('History service is unavailable')
+        if not stored and len(reads) == 1:
+            raise publication.EvalTableMarkerMissing('No marker in history')
+        return True
+
+    monkeypatch.setattr(publication, 'verify_run_history', history)
+    record = publication.publish_comparison(workspace, 'final-cases', VERSIONS)['model']
+    assert calls['native_log'] == (1 if stored is False else 0)
+    assert record['native_status'] == ('unavailable' if stored == 'unavailable' else 'published')
+    assert len(attempts) == (1 if stored == 'unavailable' else 2)
 
 
 def test_comparison_interrupt_retains_finished_channels(tmp_path, monkeypatch):
     workspace = session(tmp_path)
     calls = mock_destinations(monkeypatch, workspace)
-    monkeypatch.setattr(publication, 'native_table', lambda *args: (_ for _ in ()).throw(KeyboardInterrupt()))
+    monkeypatch.setattr(publication, 'native_table', lambda *args, **kwargs: (_ for _ in ()).throw(KeyboardInterrupt()))
     with pytest.raises(KeyboardInterrupt):
         publication.publish_comparison(workspace, 'comparison', VERSIONS)
     record = next(iter(workspace.read()['publications'].values()))['model']
     assert record['wandb_status'] == record['weave_status'] == 'published'
-    monkeypatch.setattr(publication, 'native_table', lambda *args: {'evaluation_id': 'saved-native-id'})
+    monkeypatch.setattr(publication, 'native_table', lambda *args, **kwargs: NATIVE_RECEIPT)
     publication.publish_comparison(workspace, 'comparison', VERSIONS)
     assert calls['comparison'] == calls['evaluate'] == 1
 
@@ -256,7 +291,7 @@ def test_comparison_interrupt_retains_finished_channels(tmp_path, monkeypatch):
 def test_weave_flush_retry_does_not_repeat_saved_evaluation(tmp_path, monkeypatch):
     workspace = session(tmp_path)
     calls = mock_destinations(monkeypatch, workspace)
-    monkeypatch.setattr(publication, 'native_table', lambda *args: {'evaluation_id': 'saved-native-id'})
+    monkeypatch.setattr(publication, 'native_table', lambda *args, **kwargs: NATIVE_RECEIPT)
     def flush():
         calls['flush'] += 1
         if calls['flush'] == 1:
@@ -272,7 +307,7 @@ def test_weave_flush_retry_does_not_repeat_saved_evaluation(tmp_path, monkeypatc
 def test_silent_weave_export_failure_is_not_reported_as_published(tmp_path, monkeypatch):
     workspace = session(tmp_path)
     calls = mock_destinations(monkeypatch, workspace)
-    monkeypatch.setattr(publication, 'native_table', lambda *args: {'evaluation_id': 'saved-native-id'})
+    monkeypatch.setattr(publication, 'native_table', lambda *args, **kwargs: NATIVE_RECEIPT)
     client = sys.modules['weave'].get_client()
     def missing(call_id):
         raise RuntimeError('404 call not found')
@@ -357,7 +392,7 @@ def test_native_outage_does_not_fail_the_existing_wandb_run(tmp_path, monkeypatc
                 context_errors.append(error)
                 raise
     workspace.publisher.run = observed_run
-    monkeypatch.setattr(publication, 'native_table', lambda *args: (_ for _ in ()).throw(RuntimeError('HTTP 500')))
+    monkeypatch.setattr(publication, 'native_table', lambda *args, **kwargs: (_ for _ in ()).throw(RuntimeError('HTTP 500')))
     result = publication.publish_comparison(workspace, 'comparison', VERSIONS)
     assert result['model']['native_status'] == 'unavailable'
     assert context_errors == []
@@ -604,3 +639,12 @@ def test_legacy_windows_literal_parent_symlink_cannot_escape_snapshot(tmp_path):
     with pytest.raises(ValueError, match='Unsafe checkpoint path'):
         publication._verify_snapshot(root, workspace.identity)
     assert not (root / 'outputs/stage/weights.txt').exists()
+
+
+def test_comparison_rejects_version_specific_inputs_before_publication(tmp_path):
+    workspace = session(tmp_path)
+    with pytest.raises(ValueError, match='identical inputs'):
+        publication.publish_comparison(workspace, 'aligned', {
+            'a': [{'case_id': 'one', 'input': {'prompt': 'same', 'version': 'a'}}],
+            'b': [{'case_id': 'one', 'input': {'prompt': 'same', 'version': 'b'}}]})
+    assert workspace.publisher is None

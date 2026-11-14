@@ -1,7 +1,7 @@
 {
-  "source_sha256": "64394687765d82e144b866905ef241db4071218e81cc1802206b520393ccaaa1",
-  "slides_checked": 35,
-  "expected_slides": 35,
+  "source_sha256": "0a23aae40aa366974f4ea3ca6d1485d31e42a4b28aae30e07c9d75949ec6490d",
+  "slides_checked": 36,
+  "expected_slides": 36,
   "titles": [
     {
       "number": 1,
@@ -113,34 +113,38 @@
     },
     {
       "number": 28,
-      "title": "Open one aligned result, not just the average"
+      "title": "Compare the same requests in Forge"
     },
     {
       "number": 29,
-      "title": "Write the decision you would make"
+      "title": "Read one routing decision"
     },
     {
       "number": 30,
-      "title": "Reproduce the selected version before releasing it"
+      "title": "Write the decision you would make"
     },
     {
       "number": 31,
-      "title": "What to take back to your team"
+      "title": "Reproduce the selected version before releasing it"
     },
     {
       "number": 32,
-      "title": "Worked answer: classifier head"
+      "title": "What to take back to your team"
     },
     {
       "number": 33,
-      "title": "Worked answer: review policy"
+      "title": "Worked answer: classifier head"
     },
     {
       "number": 34,
-      "title": "Worked answer: judge validator"
+      "title": "Worked answer: review policy"
     },
     {
       "number": 35,
+      "title": "Worked answer: judge validator"
+    },
+    {
+      "number": 36,
       "title": "Sources and recorded evidence"
     }
   ],
@@ -296,6 +300,10 @@
     {
       "slide": 35,
       "click": 0
+    },
+    {
+      "slide": 36,
+      "click": 0
     }
   ],
   "issues": [],
@@ -304,20 +312,20 @@
   "answers": [
     {
       "slide": 11,
-      "destination": "/forge-workshop-kit/routing/32",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 15,
       "destination": "/forge-workshop-kit/routing/33",
       "keyboardReturn": true
     },
     {
-      "slide": 22,
+      "slide": 15,
       "destination": "/forge-workshop-kit/routing/34",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 22,
+      "destination": "/forge-workshop-kit/routing/35",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 73,
+  "routes_checked": 75,
   "presenter_notes": true
 }

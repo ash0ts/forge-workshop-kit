@@ -179,7 +179,7 @@ class: exercise
 
 <div class="kicker">0:35</div>
 
-<a class="answer-link" href="/32">Worked answer →</a>
+<a class="answer-link" href="/34">Worked answer →</a>
 
 # Add local information to the classifier
 
@@ -252,7 +252,7 @@ class: exercise
 
 <div class="kicker">1:05</div>
 
-<a class="answer-link" href="/33">Worked answer →</a>
+<a class="answer-link" href="/35">Worked answer →</a>
 
 # Implement the validation threshold
 
@@ -326,7 +326,7 @@ class: exercise
 
 <div class="kicker">1:40</div>
 
-<a class="answer-link" href="/34">Worked answer →</a>
+<a class="answer-link" href="/36">Worked answer →</a>
 
 # Choose where the review time goes
 
@@ -396,7 +396,35 @@ class: exercise
 
 
 <!--
-This is untouched for an attendee following the path. The recorded follow-up used a previously inspected test set, so its claim is narrower. Native EvalTables availability is verified separately from code correctness.
+This is untouched for an attendee following the path. The recorded follow-up used a previously inspected test set, so its claim is narrower. Use Compare in EvalTables after publication. The native Weave-backed Preview and the separate CES v2 service have independent publication statuses.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">2:28</div>
+
+# Compare four detectors on the same boards
+
+<div class="eval-native"><div class="eval-native-image"><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu"><img src="/images/evaltables-native.png" alt="Native Forge Evaluation Tables Preview showing saved workshop results"></a><span class="eval-native-pin" style="left:6%;top:39%" aria-hidden="true">1</span><span class="eval-native-pin" style="left:6%;top:79%" aria-hidden="true">2</span><span class="eval-native-pin" style="left:6%;top:60%" aria-hidden="true">3</span></div><div class="eval-native-notes"><p><b>1 · Set the reference</b><br>Use the whole-image detector first.</p><p><b>2 · Align the board</b><br>Open one case to compare the same photograph.</p><p><b>3 · Read checked outcomes</b><br>Correct and error score the frozen decisions. Review policy is separate.</p></div></div><p class="eval-native-caption">Recorded results in Forge · Evaluation Tables (Preview) · <a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu">Open this comparison ↗</a></p>
+
+
+<!--
+Click Publish saved comparisons to Forge, then Compare in EvalTables. The native Weave-backed Evaluation Tables Preview sits in the W&B workspace. These panels show per-case correctness and error, not average precision. The notebook computes average precision from the complete ranking. Scores and typed images come from the saved final evaluation; this action does not fit another classifier.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">2:30</div>
+
+# Inspect the board behind a prediction
+
+<div class="eval-native-states"><div><div class="eval-native"><div class="eval-native-image"><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu"><img src="/images/evaltables-native-detail.png" alt="Native Forge Evaluation Tables Preview showing saved workshop results"></a><span class="eval-native-pin" style="left:28.3%;top:25%" aria-hidden="true">1</span><span class="eval-native-pin" style="left:28.3%;top:85.5%" aria-hidden="true">2</span><span class="eval-native-pin" style="left:28.3%;top:95%" aria-hidden="true">3</span></div><div class="eval-native-notes"><p><b>1 · Look at the board</b><br>This is the actual PCB1 test photograph.</p><p><b>2 · Compare predictions</b><br>All four flag this board as defective.</p><p><b>3 · Check the threshold</b><br>Read each score against that detector’s frozen cutoff.</p></div></div><p class="eval-native-caption">Recorded results in Forge · Evaluation Tables (Preview) · <a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu">Open this comparison ↗</a></p></div><div v-click="1" class="eval-native-overlay"><div class="eval-native"><div class="eval-native-image"><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu"><img src="/images/evaltables-native-mask.png" alt="Native Forge Evaluation Tables Preview showing saved workshop results"></a><span class="eval-native-pin" style="left:28.3%;top:40%" aria-hidden="true">1</span><span class="eval-native-pin" style="left:28.3%;top:22%" aria-hidden="true">2</span><span class="eval-native-pin" style="left:28.3%;top:88%" aria-hidden="true">3</span></div><div class="eval-native-notes"><p><b>1 · Read the annotation</b><br>White pixels mark the dataset’s reference defects.</p><p><b>2 · Compare decisions</b><br>All four detectors flag this same board.</p><p><b>3 · Check the result</b><br>Every prediction matches the defective label on this case.</p></div></div><p class="eval-native-caption">Reference defect mask: white marks annotated defects, not model localization. · <a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu">Open this comparison ↗</a></p></div></div>
+
+
+<!--
+Click once to reveal the reference defect mask for the same board. White pixels are supplied annotations, not model localization. Do not claim a patch heatmap is a causal explanation or segmentation model. Masks are used for inspection, not classifier inputs. Average precision ranks all boards; one row explains a particular operating decision. The separate CES v2 API remains unavailable; this is the working native Preview.
 Source: notes/sources.md.
 -->
 

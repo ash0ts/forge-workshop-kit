@@ -254,6 +254,33 @@ def training_record(session, row):
                 split=row["inputs"].get("split", "validation"), trace=trace)
 
 
+def image_comparison_rows(predictions, split, *, media_dir, media_root, saved_rows=None):
+    """Add viewable forecasts to new or legacy rows without changing their scores."""
+    from . import solar
+
+    scales = solar.image_display_scales(predictions, split)
+    result = {}
+    if saved_rows is not None and set(predictions) != set(saved_rows):
+        raise ValueError("Saved comparison versions do not match the prediction arrays.")
+    for label, prediction in predictions.items():
+        rows = solar.evaluation_rows(prediction, split, media_dir=media_dir,
+                                     media_root=media_root, image_scales=scales)
+        if saved_rows is not None:
+            original = saved_rows[label]
+            if len(original) != len(rows):
+                raise ValueError("Saved comparison rows do not match the forecast timestamps.")
+            for row, old in zip(rows, original):
+                if row['case_id'] != old['case_id'] or not np.isclose(row['error'], old['error'], rtol=0, atol=1e-12):
+                    raise ValueError("Saved scores or timestamps differ from the supplied forecast arrays.")
+                row.update({key: deepcopy(value) for key, value in old.items()
+                            if key not in ('input', 'prediction', 'target')})
+                row['input'] = {**deepcopy(old['input']), **row['input']}
+                row['prediction'] = {**deepcopy(old['prediction']), **row['prediction']}
+                row['target'] = {**deepcopy(old['target']), **row['target']}
+        result[label] = rows
+    return result
+
+
 def restore_state(session):
     """Rebuild display state from receipts, without loading data or repeating work."""
     stages = session.completed()

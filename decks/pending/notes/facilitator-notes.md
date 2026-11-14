@@ -288,50 +288,54 @@ Final cases: already-refunded, two-invoices, onboarding-recovery, clarify-access
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Freeze versions and run 12 evaluations.
 
-## 73. Open the execution behind a saved evaluation row.
+## 73. Compare the same ticket in Forge.
 
-Actual native W&B Table, not EvalTables and not a three-version aligned comparison. error=0 means the independent account-state check passed. judge_grounded and judge_complete are separate scores. The evaluation row also links execution evidence. All three versions are compared on the next result table. Native EvalTables remains unavailable with HTTP500.
+Click Compare in EvalTables beside the notebook result. This opens the native Weave-backed Evaluation Tables Preview in the W&B workspace. The separate CES EvalTables v2 service can still be unavailable; its status does not erase this working comparison. These are saved rehearsal executions, not new model calls.
 
-## 74. Link the Report’s conclusion to its runs and traces.
+## 74. Inspect a request that needs clarification.
 
-Use fresh v030 final table: all12 account checks and explanation judgments are available and pass. Native EvalTables unavailable; screenshot is the actual W&B/Weave/Report surface and must be captioned accordingly.
+Select the same case across versions. A tie is a result: more verification calls can leave account quality unchanged. Blank judgment cells remain missing. Use the Agent Lens URL saved in that row, rather than an unrelated trace.
 
-## 75. All three harnesses passed the four final cases.
+## 75. Link the Report’s conclusion to its runs and traces.
+
+Use fresh v030 final table: all12 account checks and explanation judgments are available and pass. The Report screenshot is the actual W&B/Weave/Report surface. The preceding slides show the repaired native Evaluation Tables Preview comparison.
+
+## 76. All three harnesses passed the four final cases.
 
 Read the account and explanation columns before the tool-call totals. All versions passed all four cases in this scripted rehearsal, so neither revision increased the measured pass rate. Each revised version made one additional tool call overall. These four cases do not establish repeatability or performance on other workflows. The source is evidence/v030-pending-rehearsal.json.
 
-## 76. Save the case, harness, execution, and scoring records.
+## 77. Save the case, harness, execution, and scoring records.
 
 Artifacts are versioned file bundles. Trace export, result publication and execution have separate statuses. A publication retry uses saved work and must not make another model request.
 
-## 77. Write down what changed and whether it helped.
+## 78. Write down what changed and whether it helped.
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Publish my conclusion with the comparison and evidence.
 
-## 78. Ask ARIA to compare one case across harness versions.
+## 79. Ask ARIA to compare one case across harness versions.
 
 Do not imply ARIA authored these prior results. The prompt asks for evidence analysis, not permission to run new experiments or change budgets.
 
-## 79. Choose a workflow with an observable result to test.
+## 80. Choose a workflow with an observable result to test.
 
 Ask participants to name one workflow in their product with observable output and a check they can run independently of the agent. Have them specify a development case, a likely failure, and a fresh case for testing transfer. They can reuse the instrumentation and improvement controller, but must define what correct work means for that workflow.
 
-## 80. Worked answer · invoice lookup
+## 81. Worked answer · invoice lookup
 
 Exact semantics of teaching.ANSWERS tool. Keep optional so participants attempt the gap first.
 
-## 81. Worked answer · observation handoff
+## 82. Worked answer · observation handoff
 
 Exact answer contract from teaching.py. Both dispatch paths return state/result. Handoff creates a new list.
 
-## 82. Worked answer · inspect the refund
+## 83. Worked answer · inspect the refund
 
 The learner check is deliberately limited. Do not describe it as the full final scorer.
 
-## 83. Worked answer · validate the judge response
+## 84. Worked answer · validate the judge response
 
 Exact semantics of teaching.ANSWERS scorer validation. Boolean strings are invalid. Empty reasons are invalid. Missing judgments stay unavailable.
 
-## 84. Source, notebook, and recorded example
+## 85. Source, notebook, and recorded example
 
-The product evidence in this deck uses the v030 rehearsal. Native EvalTables returned HTTP500; W&B and Weave records are saved. Current authored notebook source scripts/pending_cells.py. Historical deck preserved outside current attendee path.
+The product evidence in this deck uses the v030 rehearsal. The current native comparison uses Weave-backed Evaluation Tables Preview. The separate CES v2 service still returns HTTP500; its unavailable status remains in publication details. Current authored notebook source scripts/pending_cells.py. Historical deck preserved outside current attendee path.

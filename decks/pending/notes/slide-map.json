@@ -1,6 +1,6 @@
 {
-  "total_slides": 84,
-  "main_slides": 79,
+  "total_slides": 85,
+  "main_slides": 80,
   "slides": [
     {
       "number": 1,
@@ -160,7 +160,7 @@
       "title": "Write the invoice lookup.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my invoice lookup.",
-      "answer": 80
+      "answer": 81
     },
     {
       "number": 21,
@@ -224,7 +224,7 @@
       "title": "Append the action and its result to the next request.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my tool-to-model handoff.",
-      "answer": 81
+      "answer": 82
     },
     {
       "number": 29,
@@ -344,7 +344,7 @@
       "title": "Write checks for full, partial, missing, and duplicate refunds.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my scorer against four known examples.",
-      "answer": 82
+      "answer": 83
     },
     {
       "number": 44,
@@ -581,21 +581,29 @@
     {
       "number": 73,
       "key": "native-results",
-      "title": "Open the execution behind a saved evaluation row.",
+      "title": "Compare the same ticket in Forge.",
       "kind": "explanation",
-      "notes": "Actual native W&B Table, not EvalTables and not a three-version aligned comparison. error=0 means the independent account-state check passed. judge_grounded and judge_complete are separate scores. The evaluation row also links execution evidence. All three versions are compared on the next result table. Native EvalTables remains unavailable with HTTP500.",
+      "notes": "Click Compare in EvalTables beside the notebook result. This opens the native Weave-backed Evaluation Tables Preview in the W&B workspace. The separate CES EvalTables v2 service can still be unavailable; its status does not erase this working comparison. These are saved rehearsal executions, not new model calls.",
       "answer": null
     },
     {
       "number": 74,
-      "key": "final-screen",
-      "title": "Link the Report\u2019s conclusion to its runs and traces.",
+      "key": "native-case",
+      "title": "Inspect a request that needs clarification.",
       "kind": "explanation",
-      "notes": "Use fresh v030 final table: all12 account checks and explanation judgments are available and pass. Native EvalTables unavailable; screenshot is the actual W&B/Weave/Report surface and must be captioned accordingly.",
+      "notes": "Select the same case across versions. A tie is a result: more verification calls can leave account quality unchanged. Blank judgment cells remain missing. Use the Agent Lens URL saved in that row, rather than an unrelated trace.",
       "answer": null
     },
     {
       "number": 75,
+      "key": "final-screen",
+      "title": "Link the Report\u2019s conclusion to its runs and traces.",
+      "kind": "explanation",
+      "notes": "Use fresh v030 final table: all12 account checks and explanation judgments are available and pass. The Report screenshot is the actual W&B/Weave/Report surface. The preceding slides show the repaired native Evaluation Tables Preview comparison.",
+      "answer": null
+    },
+    {
+      "number": 76,
       "key": "final-result",
       "title": "All three harnesses passed the four final cases.",
       "kind": "explanation",
@@ -603,7 +611,7 @@
       "answer": null
     },
     {
-      "number": 76,
+      "number": 77,
       "key": "files",
       "title": "Save the case, harness, execution, and scoring records.",
       "kind": "explanation",
@@ -611,7 +619,7 @@
       "answer": null
     },
     {
-      "number": 77,
+      "number": 78,
       "key": "report",
       "title": "Write down what changed and whether it helped.",
       "kind": "exercise",
@@ -619,7 +627,7 @@
       "answer": null
     },
     {
-      "number": 78,
+      "number": 79,
       "key": "aria",
       "title": "Ask ARIA to compare one case across harness versions.",
       "kind": "explanation",
@@ -627,7 +635,7 @@
       "answer": null
     },
     {
-      "number": 79,
+      "number": 80,
       "key": "end",
       "title": "Choose a workflow with an observable result to test.",
       "kind": "explanation",
@@ -635,7 +643,7 @@
       "answer": null
     },
     {
-      "number": 80,
+      "number": 81,
       "key": "answer-tool",
       "title": "Worked answer \u00b7 invoice lookup",
       "kind": "answer",
@@ -643,7 +651,7 @@
       "answer": null
     },
     {
-      "number": 81,
+      "number": 82,
       "key": "answer-loop",
       "title": "Worked answer \u00b7 observation handoff",
       "kind": "answer",
@@ -651,7 +659,7 @@
       "answer": null
     },
     {
-      "number": 82,
+      "number": 83,
       "key": "answer-scorer",
       "title": "Worked answer \u00b7 inspect the refund",
       "kind": "answer",
@@ -659,7 +667,7 @@
       "answer": null
     },
     {
-      "number": 83,
+      "number": 84,
       "key": "answer-judge",
       "title": "Worked answer \u00b7 validate the judge response",
       "kind": "answer",
@@ -667,11 +675,11 @@
       "answer": null
     },
     {
-      "number": 84,
+      "number": 85,
       "key": "sources",
       "title": "Source, notebook, and recorded example",
       "kind": "explanation",
-      "notes": "The product evidence in this deck uses the v030 rehearsal. Native EvalTables returned HTTP500; W&B and Weave records are saved. Current authored notebook source scripts/pending_cells.py. Historical deck preserved outside current attendee path.",
+      "notes": "The product evidence in this deck uses the v030 rehearsal. The current native comparison uses Weave-backed Evaluation Tables Preview. The separate CES v2 service still returns HTTP500; its unavailable status remains in publication details. Current authored notebook source scripts/pending_cells.py. Historical deck preserved outside current attendee path.",
       "answer": null
     }
   ]

@@ -1,7 +1,7 @@
 {
-  "source_sha256": "54eea5a43892ff6372c59bd793b5fe847aaeb2325e791102571a4743cfac8d98",
-  "slides_checked": 34,
-  "expected_slides": 34,
+  "source_sha256": "ed5c97a67e90b30ccfd4afd4fd831eb863a00390494728f762bc0a356c03727a",
+  "slides_checked": 36,
+  "expected_slides": 36,
   "titles": [
     {
       "number": 1,
@@ -125,51 +125,61 @@
     },
     {
       "number": 25,
+      "key": "native-comparison",
+      "title": "Compare four detectors on the same boards"
+    },
+    {
+      "number": 26,
+      "key": "native-board",
+      "title": "Inspect the board behind a prediction"
+    },
+    {
+      "number": 27,
       "key": "failure",
       "title": "The first worked recipe did not pass its gate"
     },
     {
-      "number": 26,
+      "number": 28,
       "key": "retest",
       "title": "The bounded follow-up improved this teaching retest"
     },
     {
-      "number": 27,
+      "number": 29,
       "key": "improved-case",
       "title": "Inspect a corrected miss"
     },
     {
-      "number": 28,
+      "number": 30,
       "key": "regression",
       "title": "Inspect a new miss too"
     },
     {
-      "number": 29,
+      "number": 31,
       "key": "reproduce",
       "title": "Reload the version you chose"
     },
     {
-      "number": 30,
+      "number": 32,
       "key": "release",
       "title": "A tested artifact can become the next release"
     },
     {
-      "number": 31,
+      "number": 33,
       "key": "conclusion",
       "title": "Write down the decision you would make"
     },
     {
-      "number": 32,
+      "number": 34,
       "key": "answer-features",
       "title": "Worked answer: assemble the local features"
     },
     {
-      "number": 33,
+      "number": 35,
       "key": "answer-threshold",
       "title": "Worked answer: meet the validation recall target"
     },
     {
-      "number": 34,
+      "number": 36,
       "key": "answer-review",
       "title": "Worked answer: choose uncertain cases"
     }
@@ -308,6 +318,10 @@
       "click": 0
     },
     {
+      "slide": 26,
+      "click": 1
+    },
+    {
       "slide": 27,
       "click": 0
     },
@@ -338,6 +352,14 @@
     {
       "slide": 34,
       "click": 0
+    },
+    {
+      "slide": 35,
+      "click": 0
+    },
+    {
+      "slide": 36,
+      "click": 0
     }
   ],
   "issues": [],
@@ -346,20 +368,20 @@
   "answers": [
     {
       "slide": 11,
-      "destination": "/forge-workshop-kit/inspection/32",
+      "destination": "/forge-workshop-kit/inspection/34",
       "keyboardReturn": true
     },
     {
       "slide": 15,
-      "destination": "/forge-workshop-kit/inspection/33",
+      "destination": "/forge-workshop-kit/inspection/35",
       "keyboardReturn": true
     },
     {
       "slide": 20,
-      "destination": "/forge-workshop-kit/inspection/34",
+      "destination": "/forge-workshop-kit/inspection/36",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 71,
+  "routes_checked": 75,
   "presenter_notes": true
 }

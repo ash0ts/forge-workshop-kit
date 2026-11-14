@@ -53,7 +53,7 @@ The automated judge receives the request, proposed intent, and rubric. It does n
 
 Training and model calls require explicit buttons. Completed stage results, model files, checksums, human reviews, and provider receipts are saved locally and in checkpoint artifacts. Resume never trains again merely because a notebook opened. Trace or evaluation publication can be retried from saved outputs. A stopped execution needs an explicit retry decision; ambiguous provider calls retain their reservation.
 
-The comparison publishes structured intent, confidence, and review fields to W&B, Weave, and native EvalTables. If native publication is unavailable, the notebook comparison and saved Weave records remain usable. Treat native availability as unverified until a successful live readback.
+The judge exercise publishes its saved decisions beside the participant’s accepted reviews. Final evaluation publishes the classifier comparison before the Report exercise. Click **Compare in EvalTables** at either step to open Evaluation Tables (Preview) in the Forge W&B workspace. The two comparisons answer different questions: judge agreement on reviewed development cases, and classifier quality on the official test set. Upload retries read saved outputs without running the judge or classifiers again. [Publication details and current checks](evaluations.md).
 
 A fresh external-account run and a participant usability rehearsal remain release checks. CPU qualification establishes the worked classifier difference; it does not establish those product-access checks.
 

@@ -25,7 +25,7 @@ The final score table is calculated from the rehearsal records, not captured pro
 | `visual-v030-pending-comparison.png` | Native W&B Table containing four final cases for the agent-selected version. `error=0` denotes a passed account-state check; explanation scores remain separate. | x=80, y=305, width=1180, height=380 |
 | `visual-v030-pending-report.png` | The saved rehearsal Report and its interpretation. | Original only |
 
-Crops use an SVG viewport over the unchanged image. Captures are not redrawn or retouched. Product links may require a Forge login. The W&B Table is neither native EvalTables nor a three-version aligned comparison: native EvalTables returned HTTP 500 in this rehearsal. Weave and W&B records were saved.
+Crops use an SVG viewport over the unchanged image. Captures are not redrawn or retouched. Product links may require a Forge login. The older W&B Table capture remains an ordinary table. New comparison captures show the native Weave-backed Evaluation Tables Preview with aligned saved cases. The separate CES v2 publication attempt still returned HTTP 500; it is not the backend shown by these captures.
 
 The recorded first-round composition retained the parent. The second-round composition changed the verification skill to require exactly-once outcomes and preservation of unrelated records, while keeping the completion gate off. The diff slide quotes the changed sentence from those saved harness decisions; older rehearsal screenshots with different decisions are not used.
 

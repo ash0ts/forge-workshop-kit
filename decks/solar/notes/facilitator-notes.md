@@ -460,7 +460,7 @@ Load the saved weights, switch to evaluation mode, and predict without an optimi
 
 3:21
 
-Choose one case identity and compare the predictions for its shared input and target times. Weave stores these evaluation records. Native EvalTables was unavailable during the rehearsal, so the notebook and Weave comparison remain available; publication can be retried separately.
+Choose one case identity and compare the predictions for its shared input and target times. Weave stores these evaluation records. Click Compare in EvalTables to open the native Weave-backed Evaluation Tables Preview. Open Solar images and GOES measurements separately: their errors have different meanings. Upload retries reuse the saved arrays.
 
 ## 78. Test the selected models on reserved dates
 
@@ -498,133 +498,139 @@ These are the fresh saved final GOES predictions. The selected sixty-step neural
 
 The residual MLP at twelve hundred updates was selected using the mean validation score across seeds seventeen, twenty-nine, and forty-three. Its final mean error is 0.163506, fifteen point one five percent below persistence. All three repetitions improve. These are the same known final dates and overlapping windows; this is a teaching retest, not another independent solar benchmark. There were no new agent calls. The notebook runs this recipe only when the learner clicks Train the worked GOES repair.
 
-## 84. Read the saved score for one image in Weave
+## 84. Compare forecasts for the same timestamp
 
 3:48
 
-This expanded native Weave row is the first final agent-selected image, file_index zero. Prediction mean is −1.760701 and target mean is −1.759181, but masked MAE is 0.109328. Differences between bright and dark pixels can cancel in a mean. The scorer instead takes each pixel’s absolute error before averaging. Open the saved array to see the forecast. The notebook supplies the aligned comparison; this is not native EvalTables. Match this case_id and file_index to the notebook timestamp selector. The per-image score and full-split mean are shown separately.
+Open Compare in EvalTables in the final notebook step. The native Weave-backed Evaluation Tables Preview compares saved predictions. Keep GOES measurement results in their separate comparison. This screenshot comes from saved rehearsal data; publishing it does not retrain the models. Match this case_id and file_index to the notebook timestamp selector. The per-image score and full-split mean are shown separately.
 
-## 85. Check that the saved source contains both selected edits
+## 85. Compare errors for one observed future image
+
+3:48
+
+The per-case image error averages absolute pixel differences inside the fixed solar-disk mask. Summary means cannot replace that score. Use the notebook image selector or saved prediction artifact to inspect the full arrays. Do not imply that the CES v2 backend succeeded; this is the working native Weave-backed Preview.
+
+## 86. Check that the saved source contains both selected edits
 
 3:49
 
 This is execution-f7550caa1639e8366efbf9d84a782289, the exact selected round-two composition. Open the source and weights together. The final evaluation loaded these weights. A different source file with the same model label would not reproduce this experiment.
 
-## 86. Write down what changed and whether it helped
+## 87. Write down what changed and whether it helped
 
 3:50–3:58
 
 Allow eight minutes. Ask participants to name a change, report what happened, and include a remaining miss. A negative result is fine. If publication fails, save the conclusion and retry the upload without rerunning the experiment.
 
-## 87. Bring the results to the lab review
+## 88. Bring the results to the lab review
 
 3:58–4:00
 
 Return to the weekly lab review. Ask participants to open their Report and follow one result to its source and saved prediction. In the recorded rehearsal, the selected image model reduced error, while the GOES model still lost to persistence. Both belong in the review. The image result uses one seed and two test days; it needs testing on other dates. The later qualification found that a repaired GOES recipe beat persistence on all three seeds. The saved image edits helped two seeds and slightly hurt one. Bring both facts to the review; neither replaces the original evidence. Ask each participant to propose a next test grounded in their own forecast.
 
-## 88. Reference and worked answers
+## 89. Reference and worked answers
 
 REFERENCE
 
 These pages are optional answers and recorded examples. Open an answer after participants have tried the exercise. Use the return link to get back to the teaching sequence.
 
-## 89. Put the attribute inside the tool scope
+## 90. Put the attribute inside the tool scope
 
 WORKED ANSWER
 
 The attribute is attached inside the Tool scope. The complete notebook function also supplies its call identity and outer conversation. Use the operation’s timestamps so Agent Lens shows when the work happened, not when it was uploaded.
 
-## 90. Return a copy of the latest observation
+## 91. Return a copy of the latest observation
 
 WORKED ANSWER
 
 The prepared split includes the last observed reading for each forecast window. Return a copy so later changes to the prediction array cannot alter the dataset.
 
-## 91. Implement the training loss and forecast metric
+## 92. Implement the training loss and forecast metric
 
 WORKED ANSWER
 
 Subtract prediction and target, take absolute values, and average. A prediction of one against a target of zero gives one. These are log10 flux units. The training loss above it is separate and uses squared error.
 
-## 92. Compare the settings and loss curves
+## 93. Compare the settings and loss curves
 
 WORKED ANSWER
 
 Open the configuration and curve for two runs. Find the settings they share and the value that differs. If training failed, inspect the error rather than assigning a score to a forecast that does not exist.
 
-## 93. Average the error inside the disk mask
+## 94. Average the error inside the disk mask
 
 WORKED ANSWER
 
 The mask selects the solar disk. Compute the sum and count per image, then average across images. Check identical arrays, a constant one-unit difference, and a difference only outside the mask.
 
-## 94. Add the correction to input channel 1
+## 95. Add the correction to input channel 1
 
 WORKED ANSWER
 
 Channel zero is the earlier image and channel one is the current image. Add the correction to channel one. With a zero correction, this function returns the current image exactly.
 
-## 95. Return validation evidence only
+## 96. Return validation evidence only
 
 WORKED ANSWER
 
 First check that the record belongs to validation. Then return only the listed evidence fields. The current source is supplied separately. The final-test example should raise an error before the agent sees it.
 
-## 96. Pass the candidate’s code to training
+## 97. Pass the candidate’s code to training
 
 WORKED ANSWER
 
 Pass candidate['source'] to training, along with the shared configuration. Passing the parent source here would train the old program while the interface appeared to test a new proposal. Open the saved candidate.py if the result looks suspicious.
 
-## 97. Use the saved model without training it again
+## 98. Use the saved model without training it again
 
 WORKED ANSWER
 
 The selected weights are already trained. Load them and predict the final inputs. Compare the same target timestamps across all versions; persistence uses the current image directly.
 
-## 98. Round 1: absolute loss versus the unchanged model
+## 99. Round 1: absolute loss versus the unchanged model
 
 RECORDED REHEARSAL
 
 The alternative is a real KEEP decision and it is still tested. Candidate A changes only the loss and lowers validation error in this run. The composition keeps A. This is one seed, not evidence of a repeatable effect.
 
-## 99. Round 2: start the correction at zero
+## 100. Round 2: start the correction at zero
 
 RECORDED REHEARSAL
 
 This is the second-round selected edit in v0.3.0. The last convolution starts at zero; before training, the residual correction is zero. The model begins at persistence and learns a correction. Its probe and separate composition test produce the measured validation score.
 
-## 100. Zero initialization applies only to the output layer
+## 101. Zero initialization applies only to the output layer
 
 RECORDED REHEARSAL
 
 The recorded second-round edit zeros the weights and bias of self.net[-1], the last Conv2d. Earlier convolution layers retain their normal initialization. The last layer initially returns zero, so adding its output to the current image reproduces persistence before training. Adam can then learn a correction. This explains the edit; its measured effect is still limited to the recorded comparison.
 
-## 101. Round 2: sampling without replacement did not reduce error
+## 102. Round 2: sampling without replacement did not reduce error
 
 RECORDED REHEARSAL
 
 Candidate B changes the batch sampling to seeded permutations. Its validation error is essentially the same as the parent and slightly higher. The composition keeps zero initialization and rejects the sampling change. Do not attribute a benefit to an untested combination.
 
-## 102. Open the recorded research conversation
+## 103. Open the recorded research conversation
 
 RECORDED REHEARSAL
 
 Open the proposal conversation and follow the evidence-reading tool to the candidate source. The downloadable records contain the same decisions and scores if the native view requires sign-in.
 
-## 103. When a service is unavailable
+## 104. When a service is unavailable
 
 REFERENCE
 
-Start with the failed operation. An authentication problem needs corrected access. A failed training run needs its saved error inspected. An upload failure needs a publication retry. Native EvalTables returned HTTP 500 during this rehearsal; the notebook and Weave comparisons are still available.
+Start with the failed operation. An authentication problem needs corrected access. A failed training run needs its saved error inspected. An upload failure needs a publication retry. The separate CES v2 API remains unavailable. Native Evaluation Tables Preview uses verified Weave evaluation calls and is the workshop comparison path. If any upload fails, retain the notebook results and retry publication only.
 
-## 104. Four-hour session
+## 105. Four-hour session
 
 REFERENCE
 
 Use these times to pace the room. They include coding and discussion, not just execution. If a section takes longer, use its recorded example for discussion rather than claiming a learner’s unexecuted code produced that result.
 
-## 105. Keep working in your own project
+## 106. Keep working in your own project
 
 REFERENCE
 

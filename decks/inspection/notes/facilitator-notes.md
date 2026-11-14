@@ -142,63 +142,75 @@ Retaining the starting representation is valid. The final comparison includes al
 
 2:25
 
-This is untouched for an attendee following the path. The recorded follow-up used a previously inspected test set, so its claim is narrower. Native EvalTables availability is verified separately from code correctness.
+This is untouched for an attendee following the path. The recorded follow-up used a previously inspected test set, so its claim is narrower. Use Compare in EvalTables after publication. The native Weave-backed Preview and the separate CES v2 service have independent publication statuses.
 
-## 25. The first worked recipe did not pass its gate
+## 25. Compare four detectors on the same boards
+
+2:28
+
+Click Publish saved comparisons to Forge, then Compare in EvalTables. The native Weave-backed Evaluation Tables Preview sits in the W&B workspace. These panels show per-case correctness and error, not average precision. The notebook computes average precision from the complete ranking. Scores and typed images come from the saved final evaluation; this action does not fit another classifier.
+
+## 26. Inspect the board behind a prediction
+
+2:30
+
+Click once to reveal the reference defect mask for the same board. White pixels are supplied annotations, not model localization. Do not claim a patch heatmap is a causal explanation or segmentation model. Masks are used for inspection, not classifier inputs. Average precision ranks all boards; one row explains a particular operating decision. The separate CES v2 API remains unavailable; this is the working native Preview.
+
+## 27. The first worked recipe did not pass its gate
 
 2:31 · RECORDED
 
 Preserve the failed result and all active/random review outcomes. This is why we choose the criterion before seeing results.
 
-## 26. The bounded follow-up improved this teaching retest
+## 28. The bounded follow-up improved this teaching retest
 
 2:33 · RECORDED
 
 Both methods selected C=.03 from the same grid. No further tuning followed the retest. This result does not establish repeatability on a new product.
 
-## 27. Inspect a corrected miss
+## 29. Inspect a corrected miss
 
 2:35 · RECORDED
 
 Point to the missing or damaged header-pin area marked by the dataset. The heatmap also responds to background; do not claim it identifies the causal feature or performs accurate segmentation.
 
-## 28. Inspect a new miss too
+## 30. Inspect a new miss too
 
 2:37 · RECORDED
 
 Show the contrast without hiding the final summary. This is a narrower, more honest explanation than saying patch features found all small defects.
 
-## 29. Reload the version you chose
+## 31. Reload the version you chose
 
 2:40
 
 Saved artifacts are useful because another person can repeat the prediction without guessing which notebook cell you last ran.
 
-## 30. A tested artifact can become the next release
+## 32. A tested artifact can become the next release
 
 2:48
 
 This extension needs Registry permissions. The Artifact-based reproduction path remains available without them.
 
-## 31. Write down the decision you would make
+## 33. Write down the decision you would make
 
 2:55
 
 Have participants explain the result to someone else before publishing. A reasonable decision can be to retain the previous detector.
 
-## 32. Worked answer: assemble the local features
+## 34. Worked answer: assemble the local features
 
 OPTIONAL ANSWER
 
 Use the complete notebook answer for the local check. The input has one row per board; axis 1 appends features.
 
-## 33. Worked answer: meet the validation recall target
+## 35. Worked answer: meet the validation recall target
 
 OPTIONAL ANSWER
 
 The retained cutoff depends on validation examples. It does not guarantee the same recall on final boards.
 
-## 34. Worked answer: choose uncertain cases
+## 36. Worked answer: choose uncertain cases
 
 OPTIONAL ANSWER
 

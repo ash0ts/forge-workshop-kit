@@ -1,6 +1,8 @@
 import numpy as np
 import pytest
-from forge_workshop_kit import inspection, inspection_teaching as teaching
+
+from forge_workshop_kit import inspection
+from forge_workshop_kit import inspection_teaching as teaching
 
 
 def data():
@@ -67,6 +69,7 @@ def test_nearest_patch_model_reproduces_and_does_not_match_itself(tmp_path):
 
 def test_typed_media_are_copied_and_relative(tmp_path):
     import hashlib
+
     from PIL import Image
     fixture = data()
     source = tmp_path / 'data'
@@ -75,11 +78,22 @@ def test_typed_media_are_copied_and_relative(tmp_path):
         path = source / f'{i}.png'
         Image.new('RGB', (10, 10), (i, 0, 0)).save(path)
         row.update(image=path.name, image_sha256=hashlib.sha256(path.read_bytes()).hexdigest(), source_sha256='source-hash', mask=None, mask_sha256=None)
+    mask = source / '9-mask.png'
+    mask_values = np.zeros((10, 10), dtype='uint8')
+    mask_values[3, 4] = 1
+    Image.fromarray(mask_values).save(mask)
+    fixture['records'][9].update(mask=mask.name, mask_sha256=hashlib.sha256(mask.read_bytes()).hexdigest())
     fixture.update(root=source, manifest={'encoder':'test'})
     model = inspection.fit_classifier(fixture, [0, 1, 2, 3])
     output = inspection.prediction_rows(fixture, [8, 9], model, 0, destination=tmp_path / 'saved/media', root=tmp_path)
     assert output[0]['input']['path'] == 'saved/media/8.png'
     assert output[0]['input']['_workshop_type'] == 'image'
+    preview = np.asarray(Image.open(tmp_path / output[1]['target']['mask']['path']))
+    assert set(np.unique(preview)) == {0, 255}
+    np.testing.assert_array_equal(preview > 0, mask_values > 0)
+    np.testing.assert_array_equal(np.asarray(Image.open(mask)), mask_values)
+    expected = inspection.score(fixture, [8, 9], model)
+    np.testing.assert_array_equal([row['prediction']['score'] for row in output], expected)
     (source / '8.png').write_bytes(b'changed')
     with pytest.raises(ValueError, match='changed'):
         inspection.prediction_rows(fixture, [8], model, 0)

@@ -1,0 +1,127 @@
+{
+  "pending-final": {
+    "starting": {
+      "comparison_name": "pending-final",
+      "condition": "starting",
+      "run_id": "0927295803323a69460f5beb36d136ed",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/0927295803323a69460f5beb36d136ed",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/pending-final-starting-cases:af4bVyKc6aicIL5LVtJbXpHzb6S5zXIUR8EDV7KsWOk",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/pending-final-starting-evaluation:mB2ZSfywXJyGmMNG3SOCvmI4J87XAiee34rSVaRumyE",
+      "weave_status": "unavailable",
+      "native_status": "published",
+      "weave_error": "This older evaluation has no saved call ID for verification. Its objects are saved, but the evaluation export is unverified.",
+      "previous_native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}",
+      "native_transport": {
+        "request_digest": "7c01811a94991556f5fd552e1305c5dfe2368723bfafdc956423ee9ffe793468",
+        "backend": "weave",
+        "status": "published",
+        "verified": true,
+        "marker": {
+          "_type": "eval-table",
+          "ncols": 29,
+          "nrows": 4,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1db03-db91-7d16-ac01-e78c75676ca3"
+        },
+        "evaluate_call_id": "01a1db03-db91-7d16-ac01-e78c75676ca3",
+        "row_count": 4,
+        "verification": "Completed evaluation, every case identity, and every score"
+      },
+      "native": {
+        "_type": "eval-table",
+        "ncols": 29,
+        "nrows": 4,
+        "log_mode": "IMMUTABLE",
+        "evaluate_call_id": "01a1db03-db91-7d16-ac01-e78c75676ca3"
+      },
+      "native_backend": "weave",
+      "native_verified": true,
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/0927295803323a69460f5beb36d136ed",
+      "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=qeo6ytk9yxz"
+    },
+    "manual": {
+      "comparison_name": "pending-final",
+      "condition": "manual",
+      "run_id": "7bcbc64da07d43e4a323b85accd0b80d",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/7bcbc64da07d43e4a323b85accd0b80d",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/pending-final-manual-cases:sAoQdJtciwf1KiQjZkqKFDvpCYNJgTbgfgzHeVm2tp0",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/pending-final-manual-evaluation:9h0AuRJdfK7PkJ0kyCmX4lx82LRt8GhJkd9nG0oeh3Q",
+      "weave_status": "unavailable",
+      "native_status": "published",
+      "weave_error": "This older evaluation has no saved call ID for verification. Its objects are saved, but the evaluation export is unverified.",
+      "previous_native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}",
+      "native_transport": {
+        "request_digest": "8c91721d4945768495a04498f7936a261bee721aa6e29e4b62258a50390d2b04",
+        "backend": "weave",
+        "status": "published",
+        "verified": true,
+        "marker": {
+          "_type": "eval-table",
+          "ncols": 30,
+          "nrows": 4,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1db04-07cd-73fb-a128-1f109ee0f8f9"
+        },
+        "evaluate_call_id": "01a1db04-07cd-73fb-a128-1f109ee0f8f9",
+        "row_count": 4,
+        "verification": "Completed evaluation, every case identity, and every score"
+      },
+      "native": {
+        "_type": "eval-table",
+        "ncols": 30,
+        "nrows": 4,
+        "log_mode": "IMMUTABLE",
+        "evaluate_call_id": "01a1db04-07cd-73fb-a128-1f109ee0f8f9"
+      },
+      "native_backend": "weave",
+      "native_verified": true,
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/7bcbc64da07d43e4a323b85accd0b80d",
+      "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=qeo6ytk9yxz"
+    },
+    "agent": {
+      "comparison_name": "pending-final",
+      "condition": "agent",
+      "run_id": "5a3721335363bceb77f0c88c87e761f8",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/5a3721335363bceb77f0c88c87e761f8",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/pending-final-agent-cases:1EJatnojYCqK4tzIYqRqmiTaYY9hhGezrRm6pwBqvoI",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/pending-final-agent-evaluation:l50FrvKSQBX9ZZzTlVanHtM3tX8CWSD6qjy8lg1FMWA",
+      "weave_status": "unavailable",
+      "native_status": "published",
+      "weave_error": "This older evaluation has no saved call ID for verification. Its objects are saved, but the evaluation export is unverified.",
+      "previous_native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}",
+      "native_transport": {
+        "request_digest": "0a9101c56393202a91b02136b48360013f43f146569548ab1d7412089eeeb8f8",
+        "backend": "weave",
+        "status": "published",
+        "verified": true,
+        "marker": {
+          "_type": "eval-table",
+          "ncols": 30,
+          "nrows": 4,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1db04-340f-797b-84fa-80aa5d79ec34"
+        },
+        "evaluate_call_id": "01a1db04-340f-797b-84fa-80aa5d79ec34",
+        "row_count": 4,
+        "verification": "Completed evaluation, every case identity, and every score"
+      },
+      "native": {
+        "_type": "eval-table",
+        "ncols": 30,
+        "nrows": 4,
+        "log_mode": "IMMUTABLE",
+        "evaluate_call_id": "01a1db04-340f-797b-84fa-80aa5d79ec34"
+      },
+      "native_backend": "weave",
+      "native_verified": true,
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/5a3721335363bceb77f0c88c87e761f8",
+      "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=qeo6ytk9yxz"
+    }
+  }
+}

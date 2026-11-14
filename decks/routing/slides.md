@@ -165,7 +165,7 @@ class: exercise
 
 # Implement the classifier head
 
-<a class="answer-link" href="32">Worked answer ↗</a>
+<a class="answer-link" href="33">Worked answer ↗</a>
 
 <p class="where">Notebook → Train classifiers</p><ol><li>Complete <code>make_classifier</code> with <code>LogisticRegression(C=10, max_iter=1000, random_state=17)</code>.</li><li>Run the free practice check.</li><li>Train both representations using that same function.</li></ol><div class="done"><strong>Run:</strong> Train both classifiers on the same messages<br><strong>Check:</strong> Compare validation macro-F1 and open the saved source in Forge.</div>
 
@@ -217,7 +217,7 @@ class: exercise
 
 # Write the rule that sends a request to review
 
-<a class="answer-link" href="33">Worked answer ↗</a>
+<a class="answer-link" href="34">Worked answer ↗</a>
 
 <p class="where">Notebook → Review requests</p><ol><li>Complete <code>needs_review(confidence, threshold)</code>.</li><li>Move the threshold and compare coverage with selective accuracy.</li><li>Pick a small-margin request and read both proposed intents.</li></ol><div class="done"><strong>Run:</strong> Check my review rule<br><strong>Check:</strong> Explain why a confidence of 0.2 at threshold 0.5 should go to a person.</div>
 
@@ -321,9 +321,9 @@ class: exercise
 
 # Implement the judge response check
 
-<a class="answer-link" href="34">Worked answer ↗</a>
+<a class="answer-link" href="35">Worked answer ↗</a>
 
-<p class="where">Notebook → Check the judge</p><ol><li>Complete <code>validate_judge</code>. Reject a string such as <code>"false"</code>.</li><li>Read the failure-tag instructions. Define what counts as unresolved rather than wrong.</li><li>Run the judge on up to eight reviewed cases.</li></ol><div class="done"><strong>Run:</strong> Check my judge validator → Compare the judge with up to eight of my reviews<br><strong>Check:</strong> Inspect agreement, false alarms, missed failures, and unavailable judgments.</div>
+<p class="where">Notebook → Check the judge</p><ol><li>Complete <code>validate_judge</code>. Reject a string such as <code>"false"</code>.</li><li>Read the failure-tag instructions. Define what counts as unresolved rather than wrong.</li><li>Run the judge on up to eight reviewed cases.</li></ol><div class="done"><strong>Run:</strong> Check my judge validator → Compare the judge with up to eight of my reviews<br><strong>Check:</strong> Click Compare in EvalTables beside the judge result. Read the judge reason and your accepted review together; unavailable judgments stay blank.</div>
 
 <!--
 The human accepted intent stays out of the judge prompt. The judge receives the request and proposed route. Check one reason, even if the JSON passes. Missing judgments stay missing; do not score them as correct or incorrect.
@@ -401,12 +401,24 @@ All final predictions are retained. The selected model may equal the existing em
 
 <div class="kicker">2:30</div>
 
-# Open one aligned result, not just the average
+# Compare the same requests in Forge
 
-<div class="two-col"><div><h2>In the notebook</h2><p>Select a test request. Read the three predicted intents beside the reference label.</p><h2>In EvalTables</h2><p>Use the same case identity to compare model outputs and scores.</p></div><div><h2>In Artifacts</h2><p>Open the selected classifier, training source, and dataset versions.</p><h2>In Agent Lens</h2><p>Inspect a routing or labeling call that motivated your change.</p></div></div>
+<div class="eval-native"><div class="eval-native-image"><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=fthby6owcpo"><img src="/images/evaltables-native.png" alt="Native Forge Evaluation Tables Preview showing saved workshop results"></a><span class="eval-native-pin" style="left:6%;top:39%" aria-hidden="true">1</span><span class="eval-native-pin" style="left:6%;top:70%" aria-hidden="true">2</span><span class="eval-native-pin" style="left:6%;top:53%" aria-hidden="true">3</span></div><div class="eval-native-notes"><p><b>1 · Set the reference</b><br>Start with the word-based classifier.</p><p><b>2 · Read aligned outputs</b><br>Each version must show the same request.</p><p><b>3 · Separate review from quality</b><br>Deferring a request is a policy choice, not a corrected intent.</p></div></div><p class="eval-native-caption">Recorded results in Forge · Evaluation Tables (Preview) · <a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=fthby6owcpo">Open this comparison ↗</a></p>
 
 <!--
-Native EvalTables availability must be verified live. Until successful publication, show the saved notebook comparison and Weave records, plus the actual publication status. Do not substitute an unrelated screenshot labeled as routing results.
+Final evaluation publishes saved classifier predictions before the Report chapter. Click Compare in EvalTables. This is the native Weave-backed Evaluation Tables Preview in the W&B workspace. Aggregate macro-F1 remains computed from the whole prediction set; it is not the mean of row F1 scores.
+-->
+
+---
+
+<div class="kicker">2:34</div>
+
+# Read one routing decision
+
+<div class="eval-native"><div class="eval-native-image"><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=fthby6owcpo"><img src="/images/evaltables-native-detail.png" alt="Native Forge Evaluation Tables Preview showing saved workshop results"></a><span class="eval-native-pin" style="left:28.3%;top:25%" aria-hidden="true">1</span><span class="eval-native-pin" style="left:28.3%;top:44%" aria-hidden="true">2</span><span class="eval-native-pin" style="left:28.3%;top:40%" aria-hidden="true">3</span></div><div class="eval-native-notes"><p><b>1 · Read the request</b><br>The customer does not recognize an ATM withdrawal.</p><p><b>2 · Compare intents</b><br>Both classifiers choose the published intent on this case.</p><p><b>3 · Check confidence</b><br>The scores differ, but neither model sends this case for review.</p></div></div><p class="eval-native-caption">Recorded results in Forge · Evaluation Tables (Preview) · <a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=fthby6owcpo">Open this comparison ↗</a></p>
+
+<!--
+Use the saved case ID to match outputs. The automated judge comparison is separate and uses participant-reviewed development cases. Its target is agreement with those reviews, not classification accuracy on the official test set. The separate CES v2 service can remain unavailable while this Preview works.
 -->
 
 ---
@@ -419,7 +431,7 @@ class: exercise
 
 
 
-<p class="where">Notebook → Explain the result</p><ol><li>State whether the revised classifier helped on the declared measure.</li><li>Describe one request that still needs a person.</li><li>Publish the saved comparison and your explanation.</li></ol><div class="done"><strong>Run:</strong> Publish saved comparisons and my report<br><strong>Check:</strong> A colleague can follow the reported score to the predictions, selected model, and reviewed data.</div>
+<p class="where">Notebook → Explain the result</p><ol><li>State whether the revised classifier helped on the declared measure.</li><li>Describe one request that still needs a person.</li><li>Publish the saved comparison and your explanation.</li></ol><div class="done"><strong>Run:</strong> Publish my conclusion with the saved comparisons<br><strong>Check:</strong> A colleague can follow the reported score to the predictions, selected model, and reviewed data.</div>
 
 <!--
 Allow final ten minutes for pairs to explain one result. Publishing retries reuse saved executions. The report conclusion should be participant-authored. An improvement is welcome, but understanding a tie or regression completes the learning outcome.
@@ -527,5 +539,5 @@ The notebook worked answer also checks that value is a dictionary before reading
 <ul><li><a href="https://github.com/PolyAI-LDN/task-specific-datasets">Banking77 data, splits, license, and citation</a></li><li><a href="https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2">Frozen MiniLM encoder model card</a></li><li><a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/routing/qualification.json">Frozen qualification recipe</a></li><li><a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/routing-workshop.md">Facilitator timing, results, and limitations</a></li><li><a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_routing.py">Acquisition and feature preparation</a></li></ul>
 
 <!--
-All measured claims come from the saved qualification. Product screenshots should be added only from successful actual routing publication and matched to that record. Until external-account and human rehearsals pass, label this a technical preview.
+All measured claims come from the saved qualification. The native comparison captures show the verified routing publication and link to that saved record. Until external-account and human rehearsals pass, label this a technical preview.
 -->

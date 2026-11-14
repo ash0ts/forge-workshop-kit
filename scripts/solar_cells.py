@@ -547,7 +547,7 @@ _executions = {label: views.comparison_execution(_s, _comparison, version) for l
 _predictions, _records, _unavailable = views.saved_predictions(_s, _names, _split, executions=_executions)
 _predictions = {"Persistence": _split["persistence"], **_predictions}
 _figure, _rows = views.aligned_images(_predictions, _split, index=comparison_timestamp.value)
-mo.vstack([mo.Html(views.comparison_html(_figure, _split["ids"][comparison_timestamp.value])), mo.ui.table(_rows, selection=None, pagination=False), mo.Html(ui.result("Unavailable versions", _unavailable, status="unavailable")) if _unavailable else mo.md(""), ui.evidence(mo, _s, stage_ids=[row["id"] for row in _records.values()], question="Open a version’s files and find predictions.npy. The selected timestamp has the same row index in every saved prediction array. In Weave, find its case_id; image mean is a summary, not the pixel-wise error.")])
+mo.vstack([mo.Html(views.comparison_html(_figure, _split["ids"][comparison_timestamp.value])), mo.ui.table(_rows, selection=None, pagination=False), mo.Html(ui.result("Unavailable versions", _unavailable, status="unavailable")) if _unavailable else mo.md(""), ui.evidence(mo, _s, stage_ids=[row["id"] for row in _records.values()], question="Open a version’s files and find predictions.npy. The selected timestamp has the same row index in every saved prediction array. In EvalTables, find the same forecast origin and compare its prediction, observed future, and disk-masked error images. The image mean is a summary, not the pixel-wise score.")])
 ''', True)
 
 add('''
@@ -712,7 +712,8 @@ _adopted = teaching.saved(_s, "images/round-2/adopt")["result"]["adopted"]
 _versions = {"manual": get_lab()["manual"], "agent": _adopted}
 _freeze, _freeze_id = research.freeze(_s, _versions, get_lab()["dataset"])
 _test = get_lab()["images"]["test"]
-_comparisons = {"persistence": solar.evaluation_rows(_test["persistence"], _test)}
+_predictions = {"persistence": _test["persistence"]}
+_comparison_evidence = {"persistence": {}}
 _results = {"persistence": solar.score(_test["persistence"], _test)}
 for _label, _version in _versions.items():
     _weights = _s.file("outputs/" + _version["stage_id"] + "/weights.pt")
@@ -733,10 +734,17 @@ for _label, _version in _versions.items():
         except Exception as _error:
             _trace = {"status": "unavailable", "error": str(_error)}
         _results[_label] = _stage.result["metrics"]
-        _comparisons[_label] = solar.evaluation_rows(_prediction, _test, evidence={"stage": _stage.id, "source": _stage.source_fingerprint, "trace": _trace, "training_trace": _version.get("trace", {})})
+        _predictions[_label] = _prediction
+        _comparison_evidence[_label] = {"stage": _stage.id, "source": _stage.source_fingerprint, "trace": _trace, "training_trace": _version.get("trace", {})}
 with _s.stage("images/final-comparison", inputs={"freeze": _freeze_id}) as _stage:
     if _stage.needs_run:
-        _stage.record({"metrics_by_version": _results, "rows": _comparisons})
+        _scales = solar.image_display_scales(_predictions, _test)
+        _comparisons = {label: solar.evaluation_rows(prediction, _test, evidence=_comparison_evidence[label],
+            media_dir=_stage.output_dir / "media", media_root=_s.root, image_scales=_scales)
+            for label, prediction in _predictions.items()}
+        np.savez_compressed(_stage.output_dir / "comparison-inputs.npz", **_test)
+        _stage.record({"metrics_by_version": _results, "rows": _comparisons},
+                      files=[_stage.output_dir / "comparison-inputs.npz", *sorted((_stage.output_dir / "media").glob("*.png"))])
 # Measurement selection and scoring remain separate from image prediction.
 _goes_runs = [row for row in _s.completed() if (row["name"].startswith("goes/search-") or row["name"] == "goes/worked-repair") and row["inputs"].get("dataset") == get_lab()["dataset"]]
 if _goes_runs:

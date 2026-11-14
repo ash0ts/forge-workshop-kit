@@ -1,6 +1,6 @@
 {
-  "main_slides": 31,
-  "total_slides": 34,
+  "main_slides": 33,
+  "total_slides": 36,
   "slides": [
     {
       "number": 1,
@@ -237,13 +237,33 @@
       "key": "final",
       "title": "Evaluate the same 442 boards",
       "body": "<div class=\"task\">Notebook step: Inspect untouched boards.</div><ol class=\"exercise-controls\"><li>Click <strong>Evaluate all four frozen detectors on 442 test boards</strong>.</li><li>Choose a test board and compare predictions against its photo and mask.</li><li>Click <strong>Publish saved comparisons to Forge</strong>.</li></ol><div class=\"done\">Check: Every version has a row for the same board; unavailable publication is shown separately.</div>",
-      "notes": "This is untouched for an attendee following the path. The recorded follow-up used a previously inspected test set, so its claim is narrower. Native EvalTables availability is verified separately from code correctness.",
+      "notes": "This is untouched for an attendee following the path. The recorded follow-up used a previously inspected test set, so its claim is narrower. Use Compare in EvalTables after publication. The native Weave-backed Preview and the separate CES v2 service have independent publication statuses.",
       "time": "2:25",
       "kind": "exercise",
       "answer": null
     },
     {
       "number": 25,
+      "key": "native-comparison",
+      "title": "Compare four detectors on the same boards",
+      "body": "<div class=\"eval-native\"><div class=\"eval-native-image\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\"><img src=\"/images/evaltables-native.png\" alt=\"Native Forge Evaluation Tables Preview showing saved workshop results\"></a><span class=\"eval-native-pin\" style=\"left:6%;top:39%\" aria-hidden=\"true\">1</span><span class=\"eval-native-pin\" style=\"left:6%;top:79%\" aria-hidden=\"true\">2</span><span class=\"eval-native-pin\" style=\"left:6%;top:60%\" aria-hidden=\"true\">3</span></div><div class=\"eval-native-notes\"><p><b>1 \u00b7 Set the reference</b><br>Use the whole-image detector first.</p><p><b>2 \u00b7 Align the board</b><br>Open one case to compare the same photograph.</p><p><b>3 \u00b7 Read checked outcomes</b><br>Correct and error score the frozen decisions. Review policy is separate.</p></div></div><p class=\"eval-native-caption\">Recorded results in Forge \u00b7 Evaluation Tables (Preview) \u00b7 <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\">Open this comparison \u2197</a></p>",
+      "notes": "Click Publish saved comparisons to Forge, then Compare in EvalTables. The native Weave-backed Evaluation Tables Preview sits in the W&B workspace. These panels show per-case correctness and error, not average precision. The notebook computes average precision from the complete ranking. Scores and typed images come from the saved final evaluation; this action does not fit another classifier.",
+      "time": "2:28",
+      "kind": "",
+      "answer": null
+    },
+    {
+      "number": 26,
+      "key": "native-board",
+      "title": "Inspect the board behind a prediction",
+      "body": "<div class=\"eval-native-states\"><div><div class=\"eval-native\"><div class=\"eval-native-image\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\"><img src=\"/images/evaltables-native-detail.png\" alt=\"Native Forge Evaluation Tables Preview showing saved workshop results\"></a><span class=\"eval-native-pin\" style=\"left:28.3%;top:25%\" aria-hidden=\"true\">1</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:85.5%\" aria-hidden=\"true\">2</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:95%\" aria-hidden=\"true\">3</span></div><div class=\"eval-native-notes\"><p><b>1 \u00b7 Look at the board</b><br>This is the actual PCB1 test photograph.</p><p><b>2 \u00b7 Compare predictions</b><br>All four flag this board as defective.</p><p><b>3 \u00b7 Check the threshold</b><br>Read each score against that detector\u2019s frozen cutoff.</p></div></div><p class=\"eval-native-caption\">Recorded results in Forge \u00b7 Evaluation Tables (Preview) \u00b7 <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\">Open this comparison \u2197</a></p></div><div v-click=\"1\" class=\"eval-native-overlay\"><div class=\"eval-native\"><div class=\"eval-native-image\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\"><img src=\"/images/evaltables-native-mask.png\" alt=\"Native Forge Evaluation Tables Preview showing saved workshop results\"></a><span class=\"eval-native-pin\" style=\"left:28.3%;top:40%\" aria-hidden=\"true\">1</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:22%\" aria-hidden=\"true\">2</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:88%\" aria-hidden=\"true\">3</span></div><div class=\"eval-native-notes\"><p><b>1 \u00b7 Read the annotation</b><br>White pixels mark the dataset\u2019s reference defects.</p><p><b>2 \u00b7 Compare decisions</b><br>All four detectors flag this same board.</p><p><b>3 \u00b7 Check the result</b><br>Every prediction matches the defective label on this case.</p></div></div><p class=\"eval-native-caption\">Reference defect mask: white marks annotated defects, not model localization. \u00b7 <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\">Open this comparison \u2197</a></p></div></div>",
+      "notes": "Click once to reveal the reference defect mask for the same board. White pixels are supplied annotations, not model localization. Do not claim a patch heatmap is a causal explanation or segmentation model. Masks are used for inspection, not classifier inputs. Average precision ranks all boards; one row explains a particular operating decision. The separate CES v2 API remains unavailable; this is the working native Preview.",
+      "time": "2:30",
+      "kind": "",
+      "answer": null
+    },
+    {
+      "number": 27,
       "key": "failure",
       "title": "The first worked recipe did not pass its gate",
       "body": "<table class=\"clean-table\"><tbody><tr><th>First frozen recipe</th><th>Average precision</th><th>Misses</th><th>False alarms</th></tr><tr><td>Whole image</td><td>0.861762</td><td>4</td><td>36</td></tr><tr><td>Mean-patch + whole image</td><td>0.855382</td><td>2</td><td>33</td></tr></tbody></table><div class=\"bottom-note\">Its declared primary measure was average precision. Fewer operating errors did not turn the AP loss into a pass.</div>",
@@ -253,7 +273,7 @@
       "answer": null
     },
     {
-      "number": 26,
+      "number": 28,
       "key": "retest",
       "title": "The bounded follow-up improved this teaching retest",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Frozen follow-up</th><th>Average precision</th><th>Misses / 40</th><th>False alarms / 402</th></tr><tr><td>Whole image</td><td>0.872900</td><td>4</td><td>23</td></tr><tr><td>Nearest-patch + whole image</td><td>0.885742</td><td>3</td><td>18</td></tr></tbody></table><div class=\"bottom-note\">One predeclared validation grid; already-inspected final images. AP gain: 1.284 points. This is a teaching retest, not fresh benchmark evidence.</div>",
@@ -263,7 +283,7 @@
       "answer": null
     },
     {
-      "number": 27,
+      "number": 29,
       "key": "improved-case",
       "title": "Inspect a corrected miss",
       "body": "<div class=\"figure\"><img src=\"/images/pcb1-anomaly-048.png\" alt=\"Actual PCB1 anomaly-048. The supplied mask marks the right-hand header-pin area.\"><div class=\"caption\">Actual PCB1 anomaly-048. The supplied mask marks the right-hand header-pin area.</div></div><div class=\"bottom-note\">Whole image missed this board; nearest-patch flagged it at its own frozen threshold.</div>",
@@ -273,7 +293,7 @@
       "answer": null
     },
     {
-      "number": 28,
+      "number": 30,
       "key": "regression",
       "title": "Inspect a new miss too",
       "body": "<div class=\"figure\"><img src=\"/images/pcb1-anomaly-015.png\" alt=\"Actual PCB1 anomaly-015. The small annotated region is near the solder/header area.\"><div class=\"caption\">Actual PCB1 anomaly-015. The small annotated region is near the solder/header area.</div></div><div class=\"bottom-note\">Whole image flagged this board; nearest-patch missed it. The average gain does not remove individual regressions.</div>",
@@ -283,7 +303,7 @@
       "answer": null
     },
     {
-      "number": 29,
+      "number": 31,
       "key": "reproduce",
       "title": "Reload the version you chose",
       "body": "<div class=\"task\">Notebook step: Reproduce the selected version.</div><ol class=\"exercise-controls\"><li>Click <strong>Reload the selected classifier and reproduce one prediction</strong>.</li><li>Compare the reloaded score with the saved value.</li><li>Explain what improved, what did not, and what data you would collect next.</li></ol><div class=\"done\">Check: The exact file and source reproduce the saved result; your conclusion links to its evidence.</div>",
@@ -293,7 +313,7 @@
       "answer": null
     },
     {
-      "number": 30,
+      "number": 32,
       "key": "release",
       "title": "A tested artifact can become the next release",
       "body": "<div class=\"flow\"><div class=\"box\">Evaluation<br><small>result + decision</small></div><span>\u2192</span><div class=\"box\">Registry<br><small>exact artifact</small></div><span>\u2192</span><div class=\"box\">Batch predictor<br><small>load that version</small></div></div><div class=\"bottom-note\">Optional: fail a release check, then restore the previous artifact. Registry does not deploy an arbitrary Python classifier.</div>",
@@ -303,7 +323,7 @@
       "answer": null
     },
     {
-      "number": 31,
+      "number": 33,
       "key": "conclusion",
       "title": "Write down the decision you would make",
       "body": "<div class=\"box\"><p>\u201cWe changed ____. On the same boards, ____ improved and ____ got worse. We selected ____ because ____. Before releasing it, we would test ____.\u201d</p></div><div class=\"bottom-note\">Publish my inspection Report \u00b7 include actual comparisons, saved artifacts, and the next question.</div>",
@@ -313,7 +333,7 @@
       "answer": null
     },
     {
-      "number": 32,
+      "number": 34,
       "key": "answer-features",
       "title": "Worked answer: assemble the local features",
       "body": "```python\nwhole = data[\"whole\"][rows]\nif method == \"whole\":\n    return whole\nerrors = inspection.nearest_patch_errors(data, rows, reference)\nlocal = np.log1p(errors).reshape(len(rows), -1)\nreturn np.concatenate([whole, local], axis=1)\n```\n<div class=\"bottom-note\">The notebook answer also supports the historical mean-patch method used in the free fixture.</div>",
@@ -323,7 +343,7 @@
       "answer": null
     },
     {
-      "number": 33,
+      "number": 35,
       "key": "answer-threshold",
       "title": "Worked answer: meet the validation recall target",
       "body": "```python\npositives = np.sort(scores[target == 1])[::-1]\nposition = int(np.ceil(recall * len(positives))) - 1\nreturn float(positives[position])\n```\n<div class=\"bottom-note\">At 12 validation defects and recall .90, keep the top 11 above the threshold.</div>",
@@ -333,7 +353,7 @@
       "answer": null
     },
     {
-      "number": 34,
+      "number": 36,
       "key": "answer-review",
       "title": "Worked answer: choose uncertain cases",
       "body": "```python\nrng = np.random.default_rng(seed)\norder = rng.permutation(len(rows))\norder = order[np.argsort(\n    np.abs(scores[order] - threshold), kind=\"stable\"\n)]\nreturn np.asarray(rows)[order[:budget]]\n```\n<div class=\"bottom-note\">The permutation only breaks equal-distance ties. Do not pass labels to this function.</div>",

@@ -36,4 +36,4 @@ Select a recorded node to read its intent, diff, result, rationale, and Forge li
 
 Show the saved comparison in the notebook. Agent execution, trace export, W&B publication, Weave, and native EvalTables have separate status records. Retry the failed publication from saved work. Do not rerun an experiment to repair a screenshot or missing link.
 
-The current recorded native EvalTables publication is unavailable. The deck therefore uses the actual W&B and Weave comparisons, labeled accordingly.
+The native comparison slides show Evaluation Tables (Preview) in the Forge W&B workspace, backed by saved Weave evaluation calls. Older W&B Table and Weave captures keep their original labels. The separate CES service remains unavailable. See [evaluation setup and recovery](evaluations.md).

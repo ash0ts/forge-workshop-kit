@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[pending] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/forge_workshop_kit-0.5.0-py3-none-any.whl",
+#   "forge-workshop-kit[pending] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/forge_workshop_kit-0.5.1-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -615,7 +615,9 @@ def _(CASES, Harness, asdict, get_pending, harness_diff, manual_event, manual_in
     with _s.stage("pending/manual-decision",sources=_harness.files(),inputs={"event":manual_event.value}) as _decision:
         if _decision.needs_run: _decision.record({"diff":harness_diff(get_pending()["starting"],_harness),"harness":asdict(_harness),"fingerprint":_harness.fingerprint,"authorship":"participant"})
     _runs=[run_employee(_s,c,_harness,"pending/manual",**teaching.hooks(_f)) for c in CASES if c.split=="development"]
-    pending_publish(_s,"pending-development",teaching.comparison_rows({"starting":get_pending()["original"],"manual":_runs}))
+    with _s.stage("pending/development-manual-comparison",inputs={"starting":[r["stage_id"] for r in get_pending()["original"]],"manual":[r["stage_id"] for r in _runs]}) as _comparison:
+        if _comparison.needs_run: _comparison.record({"rows":teaching.comparison_rows({"starting":get_pending().get("evaluation",{}).get("runs",get_pending()["original"]),"manual":_runs})})
+    pending_publish(_s,"pending-development",_comparison.result["rows"])
     pending_checkpoint(_s,"manual")
     pending_refresh(_s)
     return
@@ -633,7 +635,7 @@ def _(asdict, get_pending, get_step, json, mo, move_pending, pending_execution_t
     _after=json.dumps(asdict(get_pending()["manual"]),indent=2)
     _requests=list(_s.read()["requests"].values())
     _skill_views={run["case_id"]:mo.Html(pending_visuals.skill_view(run,[request for request in _requests if request.get("id","").startswith(run["stage_id"]+"/")])) for run in _runs}
-    mo.vstack([mo.Html(ui.diff(_before,_after)),pending_execution_table(teaching.summary_rows(get_pending()["original"])+teaching.summary_rows(_runs,"My procedure")),mo.ui.tabs(_skill_views),ui.evidence(mo,_s,[r["stage_id"] for r in _runs],question="Look for a successful read_skill call. If one is present, check the next model request and later tools. If no read is recorded, do not assume the employee used the skill."),pending_next_step_5])
+    mo.vstack([mo.Html(ui.diff(_before,_after)),pending_execution_table(teaching.summary_rows(get_pending()["original"])+teaching.summary_rows(_runs,"My procedure")),mo.ui.tabs(_skill_views),ui.publication(mo,_s,names=("pending-development",)),ui.evidence(mo,_s,[r["stage_id"] for r in _runs],question="Look for a successful read_skill call. If one is present, check the next model request and later tools. If no read is recorded, do not assume the employee used the skill."),pending_next_step_5])
     return (pending_navigation_33_1, pending_next_step_5,)
 
 
@@ -795,9 +797,18 @@ def _(export_trace, get_display, get_pending, mo, pending_publish, pending_refre
                 export_trace(_s,**_trace_inputs,tool_writer=_f["my_tool_span"],model_writer=_f["my_model_span"])
         except Exception as _error:
             set_display({**get_display(),"export_error":str(_error)})
-    for _name,_label in (("pending/development-evaluation","pending-development"),("pending/final-comparison","pending-final")):
+    _restored=teaching.restore(_s)
+    _manual=teaching.latest(_s,"pending/development-manual-comparison")
+    if _manual:
+        pending_publish(_s,"pending-development",_manual["result"]["rows"])
+    elif _restored.get("manual_runs"):
+        pending_publish(_s,"pending-development",teaching.comparison_rows({"starting":_restored.get("evaluation",{}).get("runs",_restored.get("original",[])),"manual":_restored["manual_runs"]}))
+    else:
+        _development=teaching.latest(_s,"pending/development-evaluation")
+        if _development: pending_publish(_s,"pending-development",_development["result"]["comparison"])
+    for _name,_label in (("pending/timeout-repair","pending-timeout-repair"),("pending/final-comparison","pending-final")):
         _row=teaching.latest(_s,_name)
-        if _row: pending_publish(_s,_label,_row["result"].get("comparison",_row["result"].get("rows")))
+        if _row: pending_publish(_s,_label,_row["result"]["rows"])
     pending_refresh(_s)
     return
 
@@ -840,13 +851,16 @@ def _(get_pending, get_step, mo, move_pending, ui):
 
 
 @app.cell
-def _(get_pending, mo, pending_checkpoint, pending_conclusion, pending_refresh, pending_report, publish_report):
+def _(get_pending, mo, pending_checkpoint, pending_conclusion, pending_refresh, pending_report, publish_report, ui):
     mo.stop(not pending_report.value)
     _s=get_pending()["session"]
     mo.stop(not pending_conclusion.value.strip(),mo.md("Write a conclusion before publishing."))
     _s.save_draft("pending/conclusion",pending_conclusion.value)
-    _links=_s.read()["progress"].get("evidence",{})
-    with _s.stage("pending/report",inputs={"conclusion":pending_conclusion.value}) as _stage:
+    _links=dict(_s.read()["progress"].get("evidence",{}))
+    for _key,_receipt in _s.read()["publications"].items():
+        if _key.startswith("comparison/"):
+            _links.update(ui.comparison_links(_receipt,suffix=_key.rsplit("/",1)[-1][:6]))
+    with _s.stage("pending/report",inputs={"conclusion":pending_conclusion.value,"links":_links}) as _stage:
         if _stage.needs_run:
             _url=publish_report(_s,pending_conclusion.value,_links)
             _stage.record({"url":_url,"conclusion":pending_conclusion.value})

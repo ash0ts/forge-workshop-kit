@@ -22,7 +22,7 @@ Use the companion deck alongside your notebook:
 | Customer request routing | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/routing/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/routing/request-routing.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/routing/request-routing-source.zip) |
 | Circuit-board inspection | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/inspection/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/inspection/visual-inspection.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/inspection/visual-inspection-source.zip) |
 
-These decks follow the current gateway-free notebooks. The [v0.5.0 release package](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.5.0) includes notebooks, PDFs, editable deck sources, and the two new teaching datasets.
+These decks follow the current gateway-free notebooks. The [v0.5.1 release package](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.5.1) includes notebooks, PDFs, and editable deck sources. Teaching datasets keep their existing versioned download links.
 
 For a short demonstration, follow the [current demo guide](docs/current-demo-guide.md). It takes you from a notebook exercise to a trace, code change, and recorded result.
 
@@ -73,7 +73,7 @@ The default inference allowance is $8 per workspace. You can change it during se
 
 Completed work is reused when you reopen the notebook. An interrupted run waits for you to inspect it and choose another attempt. A failed trace or comparison upload can be retried from the saved result without training or calling the model again.
 
-Native EvalTables returned HTTP 500 in our rehearsal. The notebook comparison and Weave records remain available while that publication is unavailable. The notebook shows the upload status separately from the experiment’s result.
+The notebooks publish native **Evaluation Tables (Preview)** through the pinned W&B SDK’s Weave backend. Use **Compare in EvalTables** to open matching cases in a saved Forge W&B workspace. Agent Lens links open the execution behind a result. The separate CES backend still returned HTTP 500 on November 14; this release does not depend on it. [Evaluation setup and recovery](docs/evaluations.md).
 </details>
 
 ## What happened in the recorded rehearsal

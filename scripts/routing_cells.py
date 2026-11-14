@@ -36,6 +36,41 @@ def trace_saved(stage):
         return {"status":"published","url":receipt["url"]}
     except Exception as error:
         return {"status":"publication pending","error":str(error),"next":"Retry saved publications; do not rerun training."}
+def publish_routing_results(session, *, include_judge=True, include_final=True):
+    # This function reads completed records only. It never asks a model or classifier to run.
+    status={}
+    if include_judge:
+        summary=teaching.saved(session,"routing/judge/summary")
+        if summary:
+            state=session.read()
+            reviews={state["reviews"][identity]["case_id"]:state["reviews"][identity] for identity in summary["config"].get("reviews",[]) if identity in state.get("reviews",{})}
+            attempts={row["case_id"]:row for row in summary["result"].get("attempts",[])}
+            rows=[]
+            for human in summary["result"]["human_reviews"]:
+                case_id=human["case_id"]
+                review=reviews.get(case_id,{})
+                judgment=summary["result"]["predictions"].get(case_id)
+                agreed=judgment["failed"]==human["failed"] if judgment is not None else None
+                attempt=attempts.get(case_id,{})
+                trace=state["publications"].get("trace/"+attempt.get("stage_id",""),{})
+                rows.append({"case_id":case_id,"input":{"request":review.get("evidence",{}).get("text"),"proposed_intent":review.get("proposed_label")},
+                    "prediction":{"failed":judgment["failed"] if judgment is not None else None,"reason":judgment.get("reason") if judgment is not None else None,"status":"available" if judgment is not None else "unavailable"},
+                    "target":{"failed":human["failed"],"accepted_intent":review.get("accepted_label")},"error":float(not agreed) if agreed is not None else None,
+                    "scores":{"agrees_with_review":agreed},"evidence":{"review_id":review.get("id"),"dataset_version":review.get("dataset_version"),"judge_stage":attempt.get("stage_id"),"agent_lens":trace.get("url") if trace.get("verified") else None}})
+            try:
+                status["judge"]=publish_comparison(session,"banking-routing-judge-alignment",{"automated-judge":rows})
+            except Exception as error:
+                status["judge"]={"status":"publication pending","error":str(error)}
+    if include_final:
+        records={label:teaching.saved(session,"routing/final/"+label) for label in ("tfidf","embedding","selected")}
+        if all(records.values()):
+            versions={label:record["result"]["predictions"] for label,record in records.items()}
+            try:
+                status["final"]=publish_comparison(session,"banking-routing-final",{label:teaching.publication_rows(rows) for label,rows in versions.items()},summaries={label:routing.score(rows) for label,rows in versions.items()})
+            except Exception as error:
+                status["final"]={"status":"publication pending","error":str(error)}
+    return status
+
 def load_fitted(record):
     session=get_context()["session"]
     path=session.file(record["result"]["model_file"])
@@ -288,7 +323,8 @@ judge_rubric=mo.ui.text_area(value=_s.get_draft("routing/judge-rubric",teaching.
 check_judge=mo.ui.run_button(label="Check my judge validator")
 run_prompted=mo.ui.run_button(label="Route eight development requests with the fixed model",disabled=not bool(_s and teaching.saved(_s,"routing/baseline/embedding")))
 run_judge=mo.ui.run_button(label="Compare the judge with up to eight of my reviews",disabled=not bool(_s and teaching.saved(_s,"routing/review")))
-mo.vstack([mo.Html(ui.step("Check whether the automated judge agrees with you","Complete validate_judge, then inspect the failure-tag instructions. The eight-request routing sample shows the fixed model making typed routing decisions; it is too small to rank it against the full classifiers.","Run the judge on your reviewed cases. Read one false alarm or missed failure, and revise the rubric if needed. A valid JSON response can still be wrong.")),judge_editor,check_judge,judge_rubric,run_prompted,run_judge,mo.accordion({"Worked answer":mo.md("```python\\n"+teaching.VALIDATOR_SOLUTION+"\\n```")})]) if get_step()=="judge" else mo.md("")
+retry_judge_publication=mo.ui.run_button(label="Retry publishing my saved judge comparison",disabled=not bool(_s and teaching.saved(_s,"routing/judge/summary")))
+mo.vstack([mo.Html(ui.step("Check whether the automated judge agrees with you","Complete validate_judge, then inspect the failure-tag instructions. The eight-request routing sample shows the fixed model making typed routing decisions; it is too small to rank it against the full classifiers.","Run the judge on your reviewed cases. Read one false alarm or missed failure, and revise the rubric if needed. A valid JSON response can still be wrong.")),judge_editor,check_judge,judge_rubric,run_prompted,run_judge,retry_judge_publication,ui.publication(mo,_s,names=("banking-routing-judge-alignment",)) if _s else mo.md(""),mo.accordion({"Worked answer":mo.md("```python\\n"+teaching.VALIDATOR_SOLUTION+"\\n```")})]) if get_step()=="judge" else mo.md("")
 ''',True)
 add('''
 mo.stop(not check_judge.value)
@@ -297,6 +333,11 @@ try:
 except Exception as _error:
     show_result("judge validator",{"status":"needs work","message":str(_error)})
 ''',True)
+add('''
+mo.stop(not retry_judge_publication.value)
+show_result("judge publication",publish_routing_results(get_context()["session"],include_final=False))
+refresh()
+''')
 add('''
 mo.stop(not run_prompted.value)
 _s=get_context()["session"]
@@ -348,6 +389,7 @@ show_result("judge agreement",_summary_stage.result)
 if _summary["metrics"]["unavailable"]:
     show_result("Missing judgments",{"message":"The comparison attempt is saved. Missing judgments are not failures of your router and count toward no agreement score. You can continue, or repair access and explicitly retry the failed judge steps."})
 _s.checkpoint("judge")
+show_result("judge publication",publish_routing_results(_s,include_final=False))
 refresh()
 ''')
 add('''
@@ -384,7 +426,8 @@ freeze_reason=mo.ui.text_area(label="Why choose this version? Cite a validation 
 _freeze_blocked=teaching.freeze_prerequisite(_s)
 freeze=mo.ui.run_button(label="Freeze the classifier and review threshold",disabled=bool(_freeze_blocked))
 final_run=mo.ui.run_button(label="Evaluate the frozen versions on all 3,080 test requests",disabled=not bool(_s and teaching.saved(_s,"routing/freeze")))
-mo.vstack([mo.Html(ui.step("Evaluate requests you have not used for editing","Select your model using validation evidence. Freeze its files and the review threshold, then evaluate the official test set once. The final comparison includes both baselines and your chosen version.","Inspect per-intent errors, coverage, latency, and cost. Save a report that explains one improvement and one remaining mistake.")),freeze_choice,freeze_reason,mo.callout(mo.md(_freeze_blocked),kind="warn") if _freeze_blocked else mo.md("Judge comparison attempt saved. Unavailable judgments remain missing."),freeze,final_run]) if get_step()=="final" else mo.md("")
+publish_final_comparison=mo.ui.run_button(label="Publish or retry my saved test comparison",disabled=not bool(_s and teaching.saved(_s,"routing/final/selected")))
+mo.vstack([mo.Html(ui.step("Evaluate requests you have not used for editing","Select your model using validation evidence. Freeze its files and the review threshold, then evaluate the official test set once. The final comparison includes both baselines and your chosen version.","Inspect per-intent errors, coverage, latency, and cost. Save a report that explains one improvement and one remaining mistake.")),freeze_choice,freeze_reason,mo.callout(mo.md(_freeze_blocked),kind="warn") if _freeze_blocked else mo.md("Judge comparison attempt saved. Unavailable judgments remain missing."),freeze,final_run,publish_final_comparison,ui.publication(mo,_s,names=("banking-routing-final",)) if _s else mo.md("")]) if get_step()=="final" else mo.md("")
 ''',True)
 add('''
 mo.stop(not freeze.value)
@@ -415,6 +458,12 @@ for _label,_record in _models.items():
             _rows=[{**row,"abstained":bool(_policy(row["confidence"],_frozen["result"]["threshold"]))} for row in _rows]
             _stage.record({"predictions":_rows,"metrics":routing.score(_rows),"per_intent":routing.per_intent(_rows),"model_stage":_record["id"]})
 _s.checkpoint("final")
+show_result("final publication",publish_routing_results(_s,include_judge=False))
+refresh()
+''')
+add('''
+mo.stop(not publish_final_comparison.value)
+show_result("final publication",publish_routing_results(get_context()["session"],include_judge=False))
 refresh()
 ''')
 add('''
@@ -438,8 +487,8 @@ add('''
 _s=get_context().get("session")
 _revision=get_revision()
 conclusion=mo.ui.text_area(value=_s.get_draft("routing/conclusion","") if _s else "",label="What changed, what improved, and what should a person still review?",full_width=True,on_change=lambda value:_s.save_draft("routing/conclusion",value) if _s else None)
-publish=mo.ui.run_button(label="Publish saved comparisons and my report",disabled=not bool(_s and teaching.saved(_s,"routing/final/selected")))
-retry_exports=mo.ui.run_button(label="Retry saved trace exports",disabled=not bool(_s))
+publish=mo.ui.run_button(label="Publish my conclusion with the saved comparisons",disabled=not bool(_s and teaching.saved(_s,"routing/final/selected")))
+retry_exports=mo.ui.run_button(label="Retry saved traces and comparison uploads",disabled=not bool(_s))
 mo.vstack([mo.Html(ui.step("Explain what you would put into the support queue","Write down the measured change and one mistake you would send to a person. Publish the selected classifier with its preprocessing, reviewed dataset, and matching evaluation.","Open one EvalTables row and the corresponding Agent Lens request. If native publication is unavailable, use the saved notebook comparison and retry publication later.")),conclusion,publish,retry_exports,mo.md("Optional: ask ARIA to inspect the published runs and suggest a regression case. Verify its cited example before accepting the suggestion.")]) if get_step()=="report" else mo.md("")
 ''',True)
 add('''
@@ -453,14 +502,18 @@ for _record in _s.read()["stages"].values():
             _status.append({"stage":_record["name"],"status":"published","url":_receipt["url"]})
         except Exception as _error:_status.append({"stage":_record["name"],"status":"unavailable","error":str(_error)})
 show_result("trace publication",_status)
+show_result("comparison publication",publish_routing_results(_s))
+refresh()
 ''',True)
 add('''
 mo.stop(not publish.value)
 _s=get_context()["session"]
 if not conclusion.value.strip():raise ValueError("Write your conclusion before publishing the report.")
-_versions={label:teaching.saved(_s,"routing/final/"+label)["result"]["predictions"] for label in ("tfidf","embedding","selected")}
-_result=publish_comparison(_s,"banking-routing-final",{label:teaching.publication_rows(rows) for label,rows in _versions.items()},summaries={label:routing.score(rows) for label,rows in _versions.items()})
-_links={label+" evaluation":record["run"] for label,record in _result.items() if record.get("run")}
+_result=publish_routing_results(_s)
+_links={}
+for _key,_receipt in _s.read()["publications"].items():
+    if _key.startswith("comparison/"):
+        _links.update(ui.comparison_links(_receipt,suffix=_key.rsplit("/",1)[-1][:6]))
 _report=publish_report(_s,conclusion.value,_links)
 with _s.stage("routing/report",config={"conclusion":conclusion.value}) as _stage:
     if _stage.needs_run:_stage.record({"comparison":_result,"report":_report})

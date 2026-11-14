@@ -1,6 +1,6 @@
 {
-  "pages": 41,
-  "slides": 34,
+  "pages": 44,
+  "slides": 36,
   "page_map": [
     {
       "page": 0,
@@ -169,48 +169,63 @@
     },
     {
       "page": 33,
+      "slide": 26,
+      "click": 1
+    },
+    {
+      "page": 34,
       "slide": 27,
       "click": 0
     },
     {
-      "page": 34,
+      "page": 35,
       "slide": 28,
       "click": 0
     },
     {
-      "page": 35,
+      "page": 36,
       "slide": 29,
       "click": 0
     },
     {
-      "page": 36,
+      "page": 37,
       "slide": 30,
       "click": 0
     },
     {
-      "page": 37,
+      "page": 38,
       "slide": 31,
       "click": 0
     },
     {
-      "page": 38,
+      "page": 39,
       "slide": 32,
       "click": 0
     },
     {
-      "page": 39,
+      "page": 40,
       "slide": 33,
       "click": 0
     },
     {
-      "page": 40,
+      "page": 41,
       "slide": 34,
+      "click": 0
+    },
+    {
+      "page": 42,
+      "slide": 35,
+      "click": 0
+    },
+    {
+      "page": 43,
+      "slide": 36,
       "click": 0
     }
   ],
   "empty_pages": 0,
   "all_pages_rendered": true,
   "converted_links": 6,
-  "source_sha256": "54eea5a43892ff6372c59bd793b5fe847aaeb2325e791102571a4743cfac8d98",
-  "pdf_sha256": "ed032c62541d122ebc2df7f07d5ea2de43c1fddb4ab5cc6342529c48959199ec"
+  "source_sha256": "ed5c97a67e90b30ccfd4afd4fd831eb863a00390494728f762bc0a356c03727a",
+  "pdf_sha256": "d4bcac68253bd3163b772b303975a6a27aa682e01b76f9b20cd101e05af9f65e"
 }

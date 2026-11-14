@@ -163,48 +163,54 @@
   },
   {
     "slide": 28,
-    "title": "Open one aligned result, not just the average",
+    "title": "Compare the same requests in Forge",
     "time": "2:30",
     "name": ""
   },
   {
     "slide": 29,
+    "title": "Read one routing decision",
+    "time": "2:34",
+    "name": ""
+  },
+  {
+    "slide": 30,
     "title": "Write the decision you would make",
     "time": "2:40",
     "name": ""
   },
   {
-    "slide": 30,
+    "slide": 31,
     "title": "Reproduce the selected version before releasing it",
     "time": "2:50",
     "name": ""
   },
   {
-    "slide": 31,
+    "slide": 32,
     "title": "What to take back to your team",
     "time": "2:57",
     "name": ""
   },
   {
-    "slide": 32,
+    "slide": 33,
     "title": "Worked answer: classifier head",
     "time": "",
     "name": "classifier-answer"
   },
   {
-    "slide": 33,
+    "slide": 34,
     "title": "Worked answer: review policy",
     "time": "",
     "name": "policy-answer"
   },
   {
-    "slide": 34,
+    "slide": 35,
     "title": "Worked answer: judge validator",
     "time": "",
     "name": "validator-answer"
   },
   {
-    "slide": 35,
+    "slide": 36,
     "title": "Sources and recorded evidence",
     "time": "",
     "name": ""

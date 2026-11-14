@@ -1,0 +1,172 @@
+{
+  "visual-inspection-final": {
+    "compare/whole": {
+      "comparison_name": "visual-inspection-final",
+      "condition": "compare/whole",
+      "run_id": "253d2a612c9836b6f9e0d74afeff364c",
+      "wandb_status": "published",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-compare-whole-cases:9pgVVYnUenyburnYo3GG1YBureaU8gD6HMWwkUtQgjQ",
+      "weave_call_id": "01a1da91-63dd-700c-8fac-e1bcd19a4512",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-compare-whole-evaluation:rZ2tJZMb5d6gi5YSjrkpDbicEnnYczMF18wXqvVXGYY",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/253d2a612c9836b6f9e0d74afeff364c",
+      "previous_native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}",
+      "native_transport": {
+        "request_digest": "ed637dfb99a93c8e2b71e7e815660049f280e4d009d92b76259ebff43071bff1",
+        "backend": "weave",
+        "status": "published",
+        "verified": true,
+        "marker": {
+          "_type": "eval-table",
+          "ncols": 12,
+          "nrows": 442,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1db03-52ff-7756-b547-66f8e4cab152"
+        },
+        "evaluate_call_id": "01a1db03-52ff-7756-b547-66f8e4cab152",
+        "row_count": 442,
+        "verification": "Completed evaluation, every case identity, and every score"
+      },
+      "native": {
+        "_type": "eval-table",
+        "ncols": 12,
+        "nrows": 442,
+        "log_mode": "IMMUTABLE",
+        "evaluate_call_id": "01a1db03-52ff-7756-b547-66f8e4cab152"
+      },
+      "native_backend": "weave",
+      "native_verified": true,
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/253d2a612c9836b6f9e0d74afeff364c",
+      "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=wcg3uo5kr1i"
+    },
+    "compare/nearest-patch": {
+      "comparison_name": "visual-inspection-final",
+      "condition": "compare/nearest-patch",
+      "run_id": "604e286451b918c0e98f088f4b9ecd21",
+      "wandb_status": "published",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-compare-nearest-patch-cases:kk46klmbYDQYVXDKrpUPTO2nXwu223LoInWtKNPRyfk",
+      "weave_call_id": "01a1da92-33dc-76b3-aded-9b78ca275336",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-compare-nearest-patch-evaluation:6zTHXCVxvxLtPfXzqYueVaCXcIpxXKKVFeA95AQ7nXE",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/604e286451b918c0e98f088f4b9ecd21",
+      "previous_native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}",
+      "native_transport": {
+        "request_digest": "ba96083d0e15c1f509369472bc2cdbb1db01d96094391637b22a01f2e98bebda",
+        "backend": "weave",
+        "status": "published",
+        "verified": true,
+        "marker": {
+          "_type": "eval-table",
+          "ncols": 12,
+          "nrows": 442,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1db05-8044-76e1-aeaa-4203745a0fa4"
+        },
+        "evaluate_call_id": "01a1db05-8044-76e1-aeaa-4203745a0fa4",
+        "row_count": 442,
+        "verification": "Completed evaluation, every case identity, and every score"
+      },
+      "native": {
+        "_type": "eval-table",
+        "ncols": 12,
+        "nrows": 442,
+        "log_mode": "IMMUTABLE",
+        "evaluate_call_id": "01a1db05-8044-76e1-aeaa-4203745a0fa4"
+      },
+      "native_backend": "weave",
+      "native_verified": true,
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/604e286451b918c0e98f088f4b9ecd21",
+      "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=wcg3uo5kr1i"
+    },
+    "review/active": {
+      "comparison_name": "visual-inspection-final",
+      "condition": "review/active",
+      "run_id": "e275a90471fcbbea9e38335ad1d0f292",
+      "wandb_status": "published",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-review-active-cases:gIvP6n8qaNGLxMzImSKBZ8ITLjLYQrS82DCDSZqyUO8",
+      "weave_call_id": "01a1da92-812d-7e22-bb45-cc875d1b6151",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-review-active-evaluation:bbYQIKfY825FIZYYGJOA5xNcdlG2w08iXKDzn6XymYo",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/e275a90471fcbbea9e38335ad1d0f292",
+      "previous_native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}",
+      "native_transport": {
+        "request_digest": "cf43c94f04118ee64cebfc14c6b4fc2457583e16d569ff71abafbc0e5b218109",
+        "backend": "weave",
+        "status": "published",
+        "verified": true,
+        "marker": {
+          "_type": "eval-table",
+          "ncols": 12,
+          "nrows": 442,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1db06-9b3d-7a5d-a9d3-8835a24dbe4c"
+        },
+        "evaluate_call_id": "01a1db06-9b3d-7a5d-a9d3-8835a24dbe4c",
+        "row_count": 442,
+        "verification": "Completed evaluation, every case identity, and every score"
+      },
+      "native": {
+        "_type": "eval-table",
+        "ncols": 12,
+        "nrows": 442,
+        "log_mode": "IMMUTABLE",
+        "evaluate_call_id": "01a1db06-9b3d-7a5d-a9d3-8835a24dbe4c"
+      },
+      "native_backend": "weave",
+      "native_verified": true,
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/e275a90471fcbbea9e38335ad1d0f292",
+      "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=wcg3uo5kr1i"
+    },
+    "review/random": {
+      "comparison_name": "visual-inspection-final",
+      "condition": "review/random",
+      "run_id": "2df0b2de7ff13bc45e8f9b91f61a6407",
+      "wandb_status": "published",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-review-random-cases:U8znjfDMzSbVbfuLvO7Y74hsaQewaQ5MASNGlpq99kw",
+      "weave_call_id": "01a1da92-c71d-7d6e-96a5-2a7b8846c192",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-review-random-evaluation:Ch4ewPxp2YSohbBdoUD0XaGL4eQnM2g1R5skzjItvTs",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/2df0b2de7ff13bc45e8f9b91f61a6407",
+      "previous_native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}",
+      "native_transport": {
+        "request_digest": "8e580114bdf4a6d6e570e4b9c66eeb3f6127f8208cb4ae73f1e508ac191ff8a3",
+        "backend": "weave",
+        "status": "published",
+        "verified": true,
+        "marker": {
+          "_type": "eval-table",
+          "ncols": 12,
+          "nrows": 442,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1db08-48cd-7e85-825b-085d704fc23b"
+        },
+        "evaluate_call_id": "01a1db08-48cd-7e85-825b-085d704fc23b",
+        "row_count": 442,
+        "verification": "Completed evaluation, every case identity, and every score"
+      },
+      "native": {
+        "_type": "eval-table",
+        "ncols": 12,
+        "nrows": 442,
+        "log_mode": "IMMUTABLE",
+        "evaluate_call_id": "01a1db08-48cd-7e85-825b-085d704fc23b"
+      },
+      "native_backend": "weave",
+      "native_verified": true,
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/2df0b2de7ff13bc45e8f9b91f61a6407",
+      "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=wcg3uo5kr1i"
+    }
+  }
+}

@@ -22,6 +22,6 @@ The authored source is `scripts/build-storyboard.py`. Regenerate rather than edi
 
 The office and dialogue are fictional. Recorded examples use `evidence/v030-pending-rehearsal.json`, saved harness decisions, and actual Agent Lens spans. All 12 final executions and explanation judgments were available and passed; this rehearsal demonstrates the process without a quality gain.
 
-Native EvalTables publication returned HTTP 500. The deck uses actual saved W&B/Weave/Report records and labels them accurately. Product links can require a Forge login.
+The native comparison slides show Weave-backed Evaluation Tables Preview using saved rehearsal records. The separate CES v2 API still returns HTTP 500; publication details preserve that failure. Product links can require a Forge login.
 
 The previous 88-slide November 12 deck remains unchanged in its historical release. Its gateway and remote Sandbox instructions are not part of this deck.

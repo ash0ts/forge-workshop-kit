@@ -9,6 +9,7 @@ import hashlib
 import json
 import time
 from pathlib import Path
+
 import numpy as np
 
 
@@ -204,8 +205,22 @@ def render_case(data, index, scores=None, *, reveal_label=True, reference=None):
     return fig
 
 
+def mask_preview(source, destination):
+    """Display nonzero mask labels as white without changing the source labels."""
+    from PIL import Image
+    with Image.open(source) as image:
+        mask = np.asarray(image) > 0
+    if mask.ndim == 3:
+        mask = mask.any(axis=-1)
+    destination = Path(destination)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    Image.fromarray(mask.astype('uint8') * 255).save(destination)
+    return destination
+
+
 def prediction_rows(data, rows, classifier, threshold, *, build_features=feature_matrix, destination=None, root=None):
     import shutil
+
     from .media import image_value
     def media(row, key, caption):
         source = data['root'] / row[key]
@@ -214,8 +229,11 @@ def prediction_rows(data, rows, classifier, threshold, *, build_features=feature
         path = source
         if destination is not None:
             Path(destination).mkdir(parents=True, exist_ok=True)
-            path = Path(destination) / source.name
-            shutil.copy2(source, path)
+            if key == 'mask':
+                path = mask_preview(source, Path(destination) / (source.stem + '-mask-display.png'))
+            else:
+                path = Path(destination) / source.name
+                shutil.copy2(source, path)
         return image_value(path, caption=caption, root=root)
     values = score(data, rows, classifier, build_features=build_features)
     output = []

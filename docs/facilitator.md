@@ -36,7 +36,7 @@ Keep the scope beside that number: one rehearsal, one seed, and overlapping wind
 - **Code check fails:** ask them to read the expected and returned values. Offer the first hint before the solution.
 - **Access check fails:** distinguish project permissions, inference access, and notebook compute. Continue with local code checks or labeled recorded results while access is resolved.
 - **Training or inference fails:** open the error. Do not switch models or claim the recorded result came from their code.
-- **Publication fails:** use the saved notebook comparison. Retry uploading the result without rerunning the experiment. Native EvalTables was unavailable in our rehearsal; Weave and local comparisons remain available.
+- **Publication fails:** use the saved notebook comparison. Retry uploading the result without rerunning the experiment. Native EvalTables uses the Weave backend. If publication fails, keep working from saved results and retry publication separately.
 - **Time runs short:** stop starting new runs and walk through the saved example. Ask participants to explain the proposed change and how they would test it.
 
 Close by asking each participant for one next experiment and the result that would convince them to keep the change.

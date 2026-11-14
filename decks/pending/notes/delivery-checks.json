@@ -1,7 +1,7 @@
 {
-  "source_sha256": "4b21540a9bc86e39e76fe277942bf0df47945ffb6e9c2b5d873b3193c8dad64f",
-  "slides_checked": 84,
-  "expected_slides": 84,
+  "source_sha256": "63473d55877058a5748975cf3fed2741f19d93788aa8f867666ec98378039dd3",
+  "slides_checked": 85,
+  "expected_slides": 85,
   "titles": [
     {
       "number": 1,
@@ -366,60 +366,65 @@
     {
       "number": 73,
       "key": "native-results",
-      "title": "Open the execution behind a saved evaluation row."
+      "title": "Compare the same ticket in Forge."
     },
     {
       "number": 74,
+      "key": "native-case",
+      "title": "Inspect a request that needs clarification."
+    },
+    {
+      "number": 75,
       "key": "final-screen",
       "title": "Link the Report’s conclusion to its runs and traces."
     },
     {
-      "number": 75,
+      "number": 76,
       "key": "final-result",
       "title": "All three harnesses passed the four final cases."
     },
     {
-      "number": 76,
+      "number": 77,
       "key": "files",
       "title": "Save the case, harness, execution, and scoring records."
     },
     {
-      "number": 77,
+      "number": 78,
       "key": "report",
       "title": "Write down what changed and whether it helped."
     },
     {
-      "number": 78,
+      "number": 79,
       "key": "aria",
       "title": "Ask ARIA to compare one case across harness versions."
     },
     {
-      "number": 79,
+      "number": 80,
       "key": "end",
       "title": "Choose a workflow with an observable result to test."
     },
     {
-      "number": 80,
+      "number": 81,
       "key": "answer-tool",
       "title": "Worked answer · invoice lookup"
     },
     {
-      "number": 81,
+      "number": 82,
       "key": "answer-loop",
       "title": "Worked answer · observation handoff"
     },
     {
-      "number": 82,
+      "number": 83,
       "key": "answer-scorer",
       "title": "Worked answer · inspect the refund"
     },
     {
-      "number": 83,
+      "number": 84,
       "key": "answer-judge",
       "title": "Worked answer · validate the judge response"
     },
     {
-      "number": 84,
+      "number": 85,
       "key": "sources",
       "title": "Source, notebook, and recorded example"
     }
@@ -824,6 +829,10 @@
     {
       "slide": 84,
       "click": 0
+    },
+    {
+      "slide": 85,
+      "click": 0
     }
   ],
   "issues": [],
@@ -832,20 +841,20 @@
   "answers": [
     {
       "slide": 20,
-      "destination": "/forge-workshop-kit/pending/80",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 28,
       "destination": "/forge-workshop-kit/pending/81",
       "keyboardReturn": true
     },
     {
-      "slide": 43,
+      "slide": 28,
       "destination": "/forge-workshop-kit/pending/82",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 43,
+      "destination": "/forge-workshop-kit/pending/83",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 171,
+  "routes_checked": 173,
   "presenter_notes": true
 }

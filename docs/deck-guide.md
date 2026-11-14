@@ -51,4 +51,4 @@ The current authored cells live in `scripts/pending_cells.py`; the generated att
 
 Ask participants to open their own runs when possible. In Agent Lens, choose a particular model request or tool call and inspect its arguments and result. In W&B, find the settings and files used for a training run. In Weave or EvalTables, compare predictions for the same input rather than starting with the averages.
 
-Native EvalTables returned HTTP 500 in the technical rehearsal. Use the notebook and Weave comparisons when that status persists, then retry publication without repeating training or model calls.
+Use **Compare in EvalTables** to open the native Evaluation Tables Preview in the Forge W&B workspace. Select a row to compare its outputs and scores, then follow its Agent Lens link. This uses the SDK’s Weave backend. The CES backend remains unavailable; see [evaluation setup](evaluations.md).

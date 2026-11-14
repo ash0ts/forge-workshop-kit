@@ -1,0 +1,268 @@
+{
+  "visual-inspection-final": {
+    "compare/whole": {
+      "comparison_name": "visual-inspection-final",
+      "condition": "compare/whole",
+      "run_id": "18ff86863b53ae5d664edfb2d14f7ea7",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/18ff86863b53ae5d664edfb2d14f7ea7",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-compare-whole-cases:ty8rUNiUMpTYkpHDdS8rfzf8cI9O9H7z15OX3HYOW74",
+      "weave_call_id": "01a1db15-207a-76a0-98e1-89ce5b251275",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-compare-whole-evaluation:Lu9DtcMeGFODIsrT8lLJoWbxzvUUEDdE2q04i7kiBI0",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_transport": {
+        "column_roles": {
+          "input_columns": [
+            "case_id",
+            "input"
+          ],
+          "output_columns": [
+            "prediction.defective",
+            "prediction.score",
+            "prediction.threshold",
+            "target.defective",
+            "target.mask",
+            "evidence.encoder",
+            "evidence.source_image_sha256"
+          ],
+          "score_columns": [
+            "correct",
+            "defect_score",
+            "error"
+          ],
+          "image_columns": [
+            "input",
+            "target.mask"
+          ]
+        },
+        "request_digest": "307758052d47c62f1e10d555cd68e7a47a257845b094c9ae3ead7ac3e7151a76",
+        "backend": "weave",
+        "status": "published",
+        "verified": true,
+        "marker": {
+          "_type": "eval-table",
+          "ncols": 12,
+          "nrows": 442,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1db15-3c19-74dd-b537-01d0e2fdb813"
+        },
+        "evaluate_call_id": "01a1db15-3c19-74dd-b537-01d0e2fdb813",
+        "row_count": 442,
+        "verification": "Completed evaluation; all row identities, non-image inputs/outputs, and scores",
+        "image_content_verified": false
+      },
+      "native": {
+        "_type": "eval-table",
+        "ncols": 12,
+        "nrows": 442,
+        "log_mode": "IMMUTABLE",
+        "evaluate_call_id": "01a1db15-3c19-74dd-b537-01d0e2fdb813"
+      },
+      "native_status": "published",
+      "native_backend": "weave",
+      "native_verified": true,
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/18ff86863b53ae5d664edfb2d14f7ea7",
+      "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=h43oxpf30iu"
+    },
+    "compare/nearest-patch": {
+      "comparison_name": "visual-inspection-final",
+      "condition": "compare/nearest-patch",
+      "run_id": "522fdd6afed64b85c627b2669247d91f",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/522fdd6afed64b85c627b2669247d91f",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-compare-nearest-patch-cases:OcMKhI2EY2fe8b7SOGfDdYXZBFCvSxw9c8xYvXtsjUU",
+      "weave_call_id": "01a1db15-93fe-7943-b4c4-97604db10e7b",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-compare-nearest-patch-evaluation:oAOQcXIOvg3TGr7O8UAcUFY4uNoJAZGG0FPR9PP3qoM",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_transport": {
+        "column_roles": {
+          "input_columns": [
+            "case_id",
+            "input"
+          ],
+          "output_columns": [
+            "prediction.defective",
+            "prediction.score",
+            "prediction.threshold",
+            "target.defective",
+            "target.mask",
+            "evidence.encoder",
+            "evidence.source_image_sha256"
+          ],
+          "score_columns": [
+            "correct",
+            "defect_score",
+            "error"
+          ],
+          "image_columns": [
+            "input",
+            "target.mask"
+          ]
+        },
+        "request_digest": "6c2161bc16a5696df488fd127ecbec82bf1dd67fb0311b0f07dd5d89b2315c02",
+        "backend": "weave",
+        "status": "published",
+        "verified": true,
+        "marker": {
+          "_type": "eval-table",
+          "ncols": 12,
+          "nrows": 442,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1db15-ab1a-7570-bbb8-f1d51dc8fd91"
+        },
+        "evaluate_call_id": "01a1db15-ab1a-7570-bbb8-f1d51dc8fd91",
+        "row_count": 442,
+        "verification": "Completed evaluation; all row identities, non-image inputs/outputs, and scores",
+        "image_content_verified": false
+      },
+      "native": {
+        "_type": "eval-table",
+        "ncols": 12,
+        "nrows": 442,
+        "log_mode": "IMMUTABLE",
+        "evaluate_call_id": "01a1db15-ab1a-7570-bbb8-f1d51dc8fd91"
+      },
+      "native_status": "published",
+      "native_backend": "weave",
+      "native_verified": true,
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/522fdd6afed64b85c627b2669247d91f",
+      "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=h43oxpf30iu"
+    },
+    "review/active": {
+      "comparison_name": "visual-inspection-final",
+      "condition": "review/active",
+      "run_id": "2d54e21b3bf4c70c8f169a254c8b6481",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/2d54e21b3bf4c70c8f169a254c8b6481",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-review-active-cases:icwUtEr03DKkpTFgGBS0lnRL0ykzYDPWsiPmgaontAM",
+      "weave_call_id": "01a1db16-0059-7066-973e-30002a17ce77",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-review-active-evaluation:MjBHxXudZvBeMmm4Viw26uY8z4iXtAkyjd6Nt96YxYs",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_transport": {
+        "column_roles": {
+          "input_columns": [
+            "case_id",
+            "input"
+          ],
+          "output_columns": [
+            "prediction.defective",
+            "prediction.score",
+            "prediction.threshold",
+            "target.defective",
+            "target.mask",
+            "evidence.encoder",
+            "evidence.source_image_sha256"
+          ],
+          "score_columns": [
+            "correct",
+            "defect_score",
+            "error"
+          ],
+          "image_columns": [
+            "input",
+            "target.mask"
+          ]
+        },
+        "request_digest": "2881d91865d17b261169d3a7558c1eeafebe100dcc651f007eb9bc38b632c864",
+        "backend": "weave",
+        "status": "published",
+        "verified": true,
+        "marker": {
+          "_type": "eval-table",
+          "ncols": 12,
+          "nrows": 442,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1db16-1883-786f-adde-8acf62475353"
+        },
+        "evaluate_call_id": "01a1db16-1883-786f-adde-8acf62475353",
+        "row_count": 442,
+        "verification": "Completed evaluation; all row identities, non-image inputs/outputs, and scores",
+        "image_content_verified": false
+      },
+      "native": {
+        "_type": "eval-table",
+        "ncols": 12,
+        "nrows": 442,
+        "log_mode": "IMMUTABLE",
+        "evaluate_call_id": "01a1db16-1883-786f-adde-8acf62475353"
+      },
+      "native_status": "published",
+      "native_backend": "weave",
+      "native_verified": true,
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/2d54e21b3bf4c70c8f169a254c8b6481",
+      "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=h43oxpf30iu"
+    },
+    "review/random": {
+      "comparison_name": "visual-inspection-final",
+      "condition": "review/random",
+      "run_id": "17d3c52e371686d110fe9b48aad6cf09",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/17d3c52e371686d110fe9b48aad6cf09",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-review-random-cases:YwM3SGuLYQ9b4VfgAe9BFNfMTJmP8HXalRHR6jk0Fuk",
+      "weave_call_id": "01a1db16-6a98-75fb-b56f-85d5668ccdd2",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-review-random-evaluation:hTJYG6CXEtvaNl03urUYrjqmCAbUr1IP5YJt8NBRpZE",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_transport": {
+        "column_roles": {
+          "input_columns": [
+            "case_id",
+            "input"
+          ],
+          "output_columns": [
+            "prediction.defective",
+            "prediction.score",
+            "prediction.threshold",
+            "target.defective",
+            "target.mask",
+            "evidence.encoder",
+            "evidence.source_image_sha256"
+          ],
+          "score_columns": [
+            "correct",
+            "defect_score",
+            "error"
+          ],
+          "image_columns": [
+            "input",
+            "target.mask"
+          ]
+        },
+        "request_digest": "6833a0483799a1e980d9ca3a198afc9c31d8cd30560d1ab1f40319c85f263e18",
+        "backend": "weave",
+        "status": "published",
+        "verified": true,
+        "marker": {
+          "_type": "eval-table",
+          "ncols": 12,
+          "nrows": 442,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1db16-8601-71d9-8765-537c9ee1e2df"
+        },
+        "evaluate_call_id": "01a1db16-8601-71d9-8765-537c9ee1e2df",
+        "row_count": 442,
+        "verification": "Completed evaluation; all row identities, non-image inputs/outputs, and scores",
+        "image_content_verified": false
+      },
+      "native": {
+        "_type": "eval-table",
+        "ncols": 12,
+        "nrows": 442,
+        "log_mode": "IMMUTABLE",
+        "evaluate_call_id": "01a1db16-8601-71d9-8765-537c9ee1e2df"
+      },
+      "native_status": "published",
+      "native_backend": "weave",
+      "native_verified": true,
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/17d3c52e371686d110fe9b48aad6cf09",
+      "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=h43oxpf30iu"
+    }
+  }
+}

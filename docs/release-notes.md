@@ -1,4 +1,14 @@
-# Forge Workshop Kit 0.4.0 technical preview
+# Forge Workshop Kit 0.5.1
+
+The four workshops now publish native **Evaluation Tables (Preview)** through the pinned W&B SDK’s Weave backend. Each comparison opens in a named Forge workspace with its reference version, matching cases and individual scores. Agent Lens links remain attached to the executions; the evaluation table compares their outputs.
+
+Pending publishes the retry repair and harness comparisons. Routing makes judge alignment and final classifier results available before the concluding Report. Solar publishes actual forecast, target and error images, with measurement forecasts in a separate comparison. Inspection publishes board photographs and defect masks as media cells.
+
+Publication is resumable from saved rows and SDK receipts. A failed upload does not repeat training, inference or judging. Missing judgments remain missing. Current decks include native captures and instructions for reading the reference, inputs, outputs and scores.
+
+This revision reuses saved experiments. Scores, datasets, model settings and participant allowances are unchanged. The separate CES backend still returned HTTP 500 on November 14; the native Weave-backed path is verified. External-account and human usability rehearsals remain separate release requirements. See [evaluation setup](evaluations.md) and [release checks](release-checks.md).
+
+## 0.4.0 technical preview
 
 Pending and Solar now follow the same objects through the code, notebook views, and slides. In Pending, participants inspect a tool call and the account state it changed. In Solar, they select a forecast timestamp and compare the models against the same observation. Next and Back reveal the operation being explained without starting another execution.
 

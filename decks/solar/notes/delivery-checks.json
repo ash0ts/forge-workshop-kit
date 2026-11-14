@@ -1,7 +1,7 @@
 {
-  "source_sha256": "30097b3e5ecff13200ff69aaed4e8491b8f07dd5e98923850a1160763028379a",
-  "slides_checked": 105,
-  "expected_slides": 105,
+  "source_sha256": "2e50ab83447e393c02be43699d4957ff3679982ee240d86dd069dfd4d376119f",
+  "slides_checked": 106,
+  "expected_slides": 106,
   "titles": [
     {
       "number": 1,
@@ -421,110 +421,115 @@
     {
       "number": 84,
       "key": "result-meaning",
-      "title": "Read the saved score for one image in Weave"
+      "title": "Compare forecasts for the same timestamp"
     },
     {
       "number": 85,
+      "key": "native-forecast",
+      "title": "Compare errors for one observed future image"
+    },
+    {
+      "number": 86,
       "key": "reproduce",
       "title": "Check that the saved source contains both selected edits"
     },
     {
-      "number": 86,
+      "number": 87,
       "key": "conclusion-turn",
       "title": "Write down what changed and whether it helped"
     },
     {
-      "number": 87,
+      "number": 88,
       "key": "close",
       "title": "Bring the results to the lab review"
     },
     {
-      "number": 88,
+      "number": 89,
       "key": "reference",
       "title": "Reference and worked answers"
     },
     {
-      "number": 89,
+      "number": 90,
       "key": "answer-trace",
       "title": "Put the attribute inside the tool scope"
     },
     {
-      "number": 90,
+      "number": 91,
       "key": "answer-persistence",
       "title": "Return a copy of the latest observation"
     },
     {
-      "number": 91,
+      "number": 92,
       "key": "answer-flux",
       "title": "Implement the training loss and forecast metric"
     },
     {
-      "number": 92,
+      "number": 93,
       "key": "answer-search",
       "title": "Compare the settings and loss curves"
     },
     {
-      "number": 93,
+      "number": 94,
       "key": "answer-images",
       "title": "Average the error inside the disk mask"
     },
     {
-      "number": 94,
+      "number": 95,
       "key": "answer-residual",
       "title": "Add the correction to input channel 1"
     },
     {
-      "number": 95,
+      "number": 96,
       "key": "answer-evidence",
       "title": "Return validation evidence only"
     },
     {
-      "number": 96,
+      "number": 97,
       "key": "answer-controller",
       "title": "Pass the candidate’s code to training"
     },
     {
-      "number": 97,
+      "number": 98,
       "key": "answer-final",
       "title": "Use the saved model without training it again"
     },
     {
-      "number": 98,
+      "number": 99,
       "key": "recorded-edit",
       "title": "Round 1: absolute loss versus the unchanged model"
     },
     {
-      "number": 99,
+      "number": 100,
       "key": "recorded-code",
       "title": "Round 2: start the correction at zero"
     },
     {
-      "number": 100,
+      "number": 101,
       "key": "zero-head",
       "title": "Zero initialization applies only to the output layer"
     },
     {
-      "number": 101,
+      "number": 102,
       "key": "recorded-keep",
       "title": "Round 2: sampling without replacement did not reduce error"
     },
     {
-      "number": 102,
+      "number": 103,
       "key": "recorded-lens",
       "title": "Open the recorded research conversation"
     },
     {
-      "number": 103,
+      "number": 104,
       "key": "recovery",
       "title": "When a service is unavailable"
     },
     {
-      "number": 104,
+      "number": 105,
       "key": "schedule",
       "title": "Four-hour session"
     },
     {
-      "number": 105,
+      "number": 106,
       "key": "links",
       "title": "Keep working in your own project"
     }
@@ -951,14 +956,6 @@
       "click": 0
     },
     {
-      "slide": 84,
-      "click": 1
-    },
-    {
-      "slide": 84,
-      "click": 2
-    },
-    {
       "slide": 85,
       "click": 0
     },
@@ -1041,6 +1038,10 @@
     {
       "slide": 105,
       "click": 0
+    },
+    {
+      "slide": 106,
+      "click": 0
     }
   ],
   "issues": [],
@@ -1049,45 +1050,45 @@
   "answers": [
     {
       "slide": 11,
-      "destination": "/forge-workshop-kit/solar/89",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 22,
       "destination": "/forge-workshop-kit/solar/90",
       "keyboardReturn": true
     },
     {
-      "slide": 33,
+      "slide": 22,
       "destination": "/forge-workshop-kit/solar/91",
       "keyboardReturn": true
     },
     {
-      "slide": 41,
+      "slide": 33,
       "destination": "/forge-workshop-kit/solar/92",
       "keyboardReturn": true
     },
     {
-      "slide": 56,
+      "slide": 41,
       "destination": "/forge-workshop-kit/solar/93",
       "keyboardReturn": true
     },
     {
-      "slide": 63,
-      "destination": "/forge-workshop-kit/solar/95",
+      "slide": 56,
+      "destination": "/forge-workshop-kit/solar/94",
       "keyboardReturn": true
     },
     {
-      "slide": 73,
+      "slide": 63,
       "destination": "/forge-workshop-kit/solar/96",
       "keyboardReturn": true
     },
     {
-      "slide": 78,
+      "slide": 73,
       "destination": "/forge-workshop-kit/solar/97",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 78,
+      "destination": "/forge-workshop-kit/solar/98",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 213,
+  "routes_checked": 215,
   "presenter_notes": true
 }

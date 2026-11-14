@@ -222,11 +222,18 @@ def _weave_url(reference):
 def _comparison_label(record, ordinal):
     """Name a saved comparison from its published object, including legacy receipts."""
     for label, version in record.items():
+        if not isinstance(version, dict):
+            continue
         if version.get('comparison_name'):
             name = version['comparison_name']
             return {'solar-images-final': 'Solar images · final',
                     'solar-measurements-final': 'GOES measurements · final',
-                    'pending-final': 'Office cases · final'}.get(name, name.replace('-', ' ').capitalize())
+                    'pending-final': 'Office cases · final',
+                    'pending-development': 'Office tickets · development',
+                    'pending-timeout-repair': 'Timeout recovery · code repair',
+                    'banking-routing-final': 'Customer requests · final',
+                    'banking-routing-judge-alignment': 'Routing judge · reviewed cases',
+                    'visual-inspection-final': 'Circuit boards · final'}.get(name, name.replace('-', ' ').capitalize())
         for field, suffix in (('evaluation', 'evaluation'), ('dataset', 'cases')):
             reference = version.get(field, '')
             if not isinstance(reference, str) or not reference.startswith('weave:///'):
@@ -240,7 +247,12 @@ def _comparison_label(record, ordinal):
                 name = name[:-len(ending)]
                 return {'solar-images-final': 'Solar images · final',
                         'solar-measurements-final': 'GOES measurements · final',
-                        'pending-final': 'Office cases · final'}.get(
+                        'pending-final': 'Office cases · final',
+                        'pending-development': 'Office tickets · development',
+                        'pending-timeout-repair': 'Timeout recovery · code repair',
+                        'banking-routing-final': 'Customer requests · final',
+                        'banking-routing-judge-alignment': 'Routing judge · reviewed cases',
+                        'visual-inspection-final': 'Circuit boards · final'}.get(
                             name, name.replace('-', ' ').capitalize())
     return f'Saved comparison {ordinal}'
 
@@ -256,6 +268,11 @@ def comparison_links(receipt, *, suffix=''):
             prefix += ' · ' + suffix
         if row.get('run'):
             found[prefix + ' · run'] = row['run']
+        if row.get('native_status') == 'published':
+            if row.get('native_url'):
+                found[prefix + ' · EvalTables results'] = row['native_url']
+            if row.get('native_comparison_url'):
+                found[_comparison_label(receipt, suffix or 1) + (' · ' + suffix if suffix else '') + ' · Compare in EvalTables'] = row['native_comparison_url']
         for key, title in (('dataset', 'cases'), ('evaluation', 'Weave evaluation')):
             url = _weave_url(row.get(key, ''))
             if url:
@@ -263,7 +280,7 @@ def comparison_links(receipt, *, suffix=''):
     return found
 
 
-def publication(mo, session):
+def publication(mo, session, *, names=()):
     rows = []
     destinations = {}
     errors = []
@@ -273,29 +290,42 @@ def publication(mo, session):
         return mo.md('Connect to your project to publish evidence.')
     for key, record in session.read()['publications'].items():
         if key.startswith('comparison/'):
+            if not isinstance(record, dict) or not any(isinstance(version, dict) and any(field in version for field in ('run', 'native_status', 'weave_status', 'comparison_name')) for version in record.values()):
+                continue
+            if names and not any(isinstance(version, dict) and version.get('comparison_name') in names for version in record.values()):
+                continue
             comparison_number += 1
             comparison = _comparison_label(record, comparison_number)
             comparison_names[comparison] = comparison_names.get(comparison, 0) + 1
             if comparison_names[comparison] > 1:
                 comparison += f' · saved set {comparison_names[comparison]}'
             for label, version in record.items():
+                if not isinstance(version, dict):
+                    continue
                 destination_label = comparison + ' / ' + label
                 rows.append({'Comparison': comparison, 'Version': label, 'Weave': version.get('weave_status', 'not published'),
                              'Native EvalTables': version.get('native_status', 'not published'),
+                             'Backend': 'Weave Preview' if version.get('native_backend') == 'weave' else version.get('native_backend', ''),
+                             'Aligned view': 'Ready' if version.get('native_comparison_url') else 'Unavailable' if version.get('native_comparison_error') else 'Not published',
                              'Result run': version.get('run', '')})
                 if version.get('run'):
                     destinations[destination_label + ' · comparison run'] = version['run']
+                if version.get('native_status') == 'published':
+                    if version.get('native_url'):
+                        destinations[destination_label + ' · EvalTables results'] = version['native_url']
+                    if version.get('native_comparison_url'):
+                        destinations[comparison + ' · Compare in EvalTables'] = version['native_comparison_url']
                 for field in ('evaluation', 'dataset'):
                     url = _weave_url(version.get(field))
                     if url:
                         destinations[destination_label + ' · Weave ' + field] = url
-                for field in ('weave_error', 'native_error'):
+                for field in ('weave_error', 'native_error', 'native_comparison_error'):
                     if version.get(field):
                         errors.append(destination_label + ': ' + version[field])
     if not rows:
         return mo.md('Comparisons have not been published yet. Saved executions remain available locally.')
-    partial = any(r['Native EvalTables'] != 'published' or r['Weave'] != 'published' for r in rows)
-    elements = [mo.md('**Publication status**'), mo.Html(links(destinations)),
+    partial = bool(errors) or any(r['Native EvalTables'] != 'published' or r['Weave'] != 'published' for r in rows)
+    elements = [mo.md('**Compare in Forge** · The native comparison opens Evaluation Tables (Preview) in your W&B workspace. Match the same case across versions. Missing scores stay blank.'), mo.Html(links(destinations)),
                 mo.ui.table(rows, selection=None, show_column_summaries=False)]
     if partial:
         elements.append(mo.callout(mo.md('Some comparisons could not be uploaded. You can still use the notebook results and the links above. Retry the upload from saved work without running the experiment again.'), kind='warn'))

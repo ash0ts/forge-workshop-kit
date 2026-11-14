@@ -13,7 +13,7 @@ npm run dev
 
 Open the URL printed in the terminal. Use `/presenter/1` for the speaker notes. Node.js 22.22 or newer is required. Fonts and images are included, and opening the deck does not train models or send model requests.
 
-The deck has 87 main frames and 18 optional worked-answer, recorded-evidence, and reference frames. The main sequence builds diagrams a step at a time, then pauses for participants to work in the notebook. Keep each exercise slide visible while they code. Its button names match the notebook, and its worked-answer link returns to the exercise.
+The deck has 88 main frames and 18 optional worked-answer, recorded-evidence, and reference frames. The main sequence builds diagrams a step at a time, then pauses for participants to work in the notebook. Keep each exercise slide visible while they code. Its button names match the notebook, and its worked-answer link returns to the exercise.
 
 The speaker notes explain what to demonstrate, where to pause, and what participants should inspect. Most of the four hours is for coding and discussion. The opening scene with four notebooks called final is fictional. Forecasting results come from the recorded rehearsal. Native Forge screens show those saved runs, Artifacts, traces, and Reports. Click any product capture to inspect it at full resolution.
 
@@ -47,7 +47,7 @@ One complete November 13 rehearsal supplies the recorded scores, forecasts, code
 
 The small forecasting models train their weights. The research agent’s weights stay fixed while it proposes changes to model and training code. Both improvement rounds use validation results; the final comparison loads the selected weights and predicts the reserved dates.
 
-Native EvalTables returned HTTP 500 during the rehearsal. Use the saved notebook and Weave comparisons if that view is unavailable. Retrying publication can use the completed results without rerunning training.
+The native comparison slides show Weave-backed Evaluation Tables Preview. Image and GOES measurement results remain separate because their scores measure different tasks. The separate CES v2 service still returns HTTP 500. Retrying an upload uses completed results without rerunning training.
 
 [Workshop source and setup](https://github.com/ash0ts/forge-workshop-kit) · [Source notes](notes/sources.md)
 

@@ -1,6 +1,6 @@
 {
-  "main_slides": 87,
-  "total_slides": 105,
+  "main_slides": 88,
+  "total_slides": 106,
   "slides": [
     {
       "number": 1,
@@ -767,7 +767,7 @@
       "key": "aligned",
       "title": "Match each prediction to the same observation times",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Case identity</th><th>Persistence</th><th>Manual</th><th>Agent-selected</th></tr><tr><td>Same input timestamps</td><td>Prediction + error</td><td>Prediction + error</td><td>Prediction + error</td></tr><tr><td>Same target timestamp</td><td>Saved output</td><td>Executed source</td><td>Executed source</td></tr></tbody></table><div class=\"bottom-note\">Use each case ID to find the same input and target times in Weave or EvalTables.</div>",
-      "notes": "Choose one case identity and compare the predictions for its shared input and target times. Weave stores these evaluation records. Native EvalTables was unavailable during the rehearsal, so the notebook and Weave comparison remain available; publication can be retried separately.",
+      "notes": "Choose one case identity and compare the predictions for its shared input and target times. Weave stores these evaluation records. Click Compare in EvalTables to open the native Weave-backed Evaluation Tables Preview. Open Solar images and GOES measurements separately: their errors have different meanings. Upload retries reuse the saved arrays.",
       "kind": "",
       "time": "3:21",
       "answer": null
@@ -816,7 +816,7 @@
       "number": 82,
       "key": "recorded-goes",
       "title": "The GOES model performed worse than persistence",
-      "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/v030-goes-final.png\" alt=\"Observed GOES flux, persistence forecast, and selected model prediction on reserved dates\"><div class=\"image-caption\">Final log-flux MAE: selected model 2.469; persistence 0.193. 2,694 accepted windows.</div></div><div class=\"bottom-note\">Compare this forecast with its loss curve before deciding what to change next.</div>",
+      "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/v030-goes-final.png\" alt=\"Observed GOES flux, persistence forecast, and selected model prediction on reserved dates\"><div class=\"image-caption\">Final log-flux MAE: selected model 2.469; persistence 0.193. 2,694 accepted windows.</div></div><div class=\"bottom-note\">Compare the forecast with its loss curve. <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=dtm5k18fpo4\">Compare these forecasts in EvalTables \u2197</a></div>",
       "notes": "These are the fresh saved final GOES predictions. The selected sixty-step neural model misses badly, while persistence follows the observed flux much more closely. The later repaired recipe changes scaling, residual initialization, loss, and training budget together. Its separately recorded three-seed test follows; this historical failure remains unchanged.",
       "kind": "",
       "time": "3:47 \u00b7 RECORDED REHEARSAL",
@@ -835,15 +835,25 @@
     {
       "number": 84,
       "key": "result-meaning",
-      "title": "Read the saved score for one image in Weave",
-      "body": "<div class=\"native-product-evidence\"><a class=\"product-screen visual-v030-solar-comparison\" href=\"/images/visual-v030-solar-comparison.png\" target=\"_blank\" aria-label=\"Open full-size capture\"><img src=\"/images/visual-v030-solar-comparison.png\" alt=\"Native Weave expanded row showing prediction mean, target mean, file index, and error\"><span v-click=\"1\" class=\"capture-mark\" style=\"left:23px;top:56px;width:1000px;height:253px\" aria-label=\"Annotation 1: Array summaries\"><b>1</b></span><span v-click=\"2\" class=\"capture-mark\" style=\"left:23px;top:310px;width:1000px;height:36px\" aria-label=\"Annotation 2: Pixel-wise score\"><b>2</b></span></a><div class=\"product-caption\"><span>Find file_index 0 and its error. Why is the score not the difference between the two means?</span><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==\">Open the linked results \u2197</a></div><div class=\"image-caption\">One saved agent-selected case. Image means summarize the arrays; the score averages pixel errors inside the disk mask.</div></div>",
-      "notes": "This expanded native Weave row is the first final agent-selected image, file_index zero. Prediction mean is \u22121.760701 and target mean is \u22121.759181, but masked MAE is 0.109328. Differences between bright and dark pixels can cancel in a mean. The scorer instead takes each pixel\u2019s absolute error before averaging. Open the saved array to see the forecast. The notebook supplies the aligned comparison; this is not native EvalTables. Match this case_id and file_index to the notebook timestamp selector. The per-image score and full-split mean are shown separately.",
+      "title": "Compare forecasts for the same timestamp",
+      "body": "<div class=\"eval-native\"><div class=\"eval-native-image\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=91ypk2or045\"><img src=\"/images/evaltables-native.png\" alt=\"Native Forge Evaluation Tables Preview showing saved workshop results\"></a><span class=\"eval-native-pin\" style=\"left:6%;top:39%\" aria-hidden=\"true\">1</span><span class=\"eval-native-pin\" style=\"left:6%;top:77%\" aria-hidden=\"true\">2</span><span class=\"eval-native-pin\" style=\"left:6%;top:53%\" aria-hidden=\"true\">3</span></div><div class=\"eval-native-notes\"><p><b>1 \u00b7 Choose image versions</b><br>Persistence, manual, and agent-selected use the same cases.</p><p><b>2 \u00b7 Match forecast times</b><br>Input and target times must match across versions.</p><p><b>3 \u00b7 Read masked error</b><br>Lower is better for this image task.</p></div></div><p class=\"eval-native-caption\">Recorded results in Forge \u00b7 Evaluation Tables (Preview) \u00b7 <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=91ypk2or045\">Open this comparison \u2197</a></p>",
+      "notes": "Open Compare in EvalTables in the final notebook step. The native Weave-backed Evaluation Tables Preview compares saved predictions. Keep GOES measurement results in their separate comparison. This screenshot comes from saved rehearsal data; publishing it does not retrain the models. Match this case_id and file_index to the notebook timestamp selector. The per-image score and full-split mean are shown separately.",
       "kind": "",
       "time": "3:48",
       "answer": null
     },
     {
       "number": 85,
+      "key": "native-forecast",
+      "title": "Compare errors for one observed future image",
+      "body": "<div class=\"eval-native\"><div class=\"eval-native-image\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=91ypk2or045\"><img src=\"/images/evaltables-native-detail.png\" alt=\"Native Forge Evaluation Tables Preview showing saved workshop results\"></a><span class=\"eval-native-pin\" style=\"left:11%;top:80%\" aria-hidden=\"true\">1</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:45%\" aria-hidden=\"true\">2</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:97%\" aria-hidden=\"true\">3</span></div><div class=\"eval-native-notes\"><p><b>1 \u00b7 Match the case</b><br>Use the same case ID in all three columns.</p><p><b>2 \u00b7 Read the target</b><br>Every forecast is checked against this observed image.</p><p><b>3 \u00b7 Compare the errors</b><br>The agent-selected version has lower masked error on this case.</p></div></div><p class=\"eval-native-caption\">Recorded results in Forge \u00b7 Evaluation Tables (Preview) \u00b7 <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=91ypk2or045\">Open this comparison \u2197</a></p>",
+      "notes": "The per-case image error averages absolute pixel differences inside the fixed solar-disk mask. Summary means cannot replace that score. Use the notebook image selector or saved prediction artifact to inspect the full arrays. Do not imply that the CES v2 backend succeeded; this is the working native Weave-backed Preview.",
+      "kind": "",
+      "time": "3:48",
+      "answer": null
+    },
+    {
+      "number": 86,
       "key": "reproduce",
       "title": "Check that the saved source contains both selected edits",
       "body": "<div class=\"native-product-evidence\"><a class=\"product-screen visual-v030-solar-artifact\" href=\"/images/visual-v030-solar-artifact.png\" target=\"_blank\" aria-label=\"Open full-size capture\"><img src=\"/images/visual-v030-solar-artifact.png\" alt=\"Native W&amp;B Artifact code view showing the selected candidate.py\"></a><div class=\"product-caption\"><span>Find the zero-initialized output layer and the absolute training loss.</span><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f7550caa1639e8366efbf9d84a782289/v0\">Open the Artifact \u2197</a></div><div class=\"image-caption\">The same Artifact also holds <code>losses.json</code>, <code>weights.pt</code>, and <code>predictions.npy</code> from this training run.</div></div>",
@@ -853,7 +863,7 @@
       "answer": null
     },
     {
-      "number": 86,
+      "number": 87,
       "key": "conclusion-turn",
       "title": "Write down what changed and whether it helped",
       "body": "<div class=\"task\">Use your own comparison.</div><ol class=\"exercise-controls\"><li>Name one code change and report its error on the reserved dates.</li><li>Include a forecast that still missed. Say what you would try next.</li><li>Click <strong>Publish my conclusion</strong>. Follow a link in your Report back to the saved code or prediction.</li></ol><div class=\"done\">Check your work: Your conclusion names the change, the measured result, and a remaining problem.</div>",
@@ -863,7 +873,7 @@
       "answer": null
     },
     {
-      "number": 87,
+      "number": 88,
       "key": "close",
       "title": "Bring the results to the lab review",
       "body": "<div class=\"native-product-evidence\"><a class=\"product-screen visual-v030-solar-report\" href=\"/images/visual-v030-solar-report.png\" target=\"_blank\" aria-label=\"Open full-size capture\"><img src=\"/images/visual-v030-solar-report.png\" alt=\"Native Report excerpt summarizing the latest Solar technical rehearsal\"></a><div class=\"product-caption\"><span>Bring one result, its saved source, and the next experiment you would try.</span><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==\">Open the Report \u2197</a></div><div class=\"image-caption\">Recorded technical rehearsal. Use your own completed runs when writing your Report.</div></div>",
@@ -873,7 +883,7 @@
       "answer": null
     },
     {
-      "number": 88,
+      "number": 89,
       "key": "reference",
       "title": "Reference and worked answers",
       "body": "<p class=\"big\">Use these after an attempt, or when live access is unavailable.</p><p>Recorded examples belong to the November 13 technical rehearsal. They are not results from your unexecuted changes.</p><div class=\"bottom-note\">Use the return links to continue the workshop.</div>",
@@ -883,7 +893,7 @@
       "answer": null
     },
     {
-      "number": 89,
+      "number": 90,
       "key": "answer-trace",
       "title": "Put the attribute inside the tool scope",
       "body": "```python\ndef instrument_tool(observation):\n    with tracing.Tool(\n        name=observation[\"name\"],\n        arguments=observation[\"arguments\"],\n        result=observation[\"result\"],\n        started_at=stamp(observation[\"started_at\"]),\n        ended_at=stamp(observation[\"ended_at\"]),\n    ) as tool:\n        tool.set_attributes({\"workshop.exercise\": \"solar-research\"})\n        if observation.get(\"error\"):\n            tool.record_error(RuntimeError(observation[\"error\"]))\n```\n\n",
@@ -893,7 +903,7 @@
       "answer": null
     },
     {
-      "number": 90,
+      "number": 91,
       "key": "answer-persistence",
       "title": "Return a copy of the latest observation",
       "body": "```python\ndef persistence_forecast(split):\n    return split[\"persistence\"].copy()\n```\n\n<p>The copy lets you work with the predictions without changing the dataset.</p>",
@@ -903,7 +913,7 @@
       "answer": null
     },
     {
-      "number": 91,
+      "number": 92,
       "key": "answer-flux",
       "title": "Implement the training loss and forecast metric",
       "body": "```python\ndef training_loss(prediction, target, mask):\n    return ((prediction - target).square() * mask).sum() / mask.sum()\n\ndef my_flux_mae(prediction, target):\n    return float(np.abs(prediction - target).mean())\n\nassert my_flux_mae(np.ones(3), np.zeros(3)) == 1.0\nassert my_flux_mae(np.zeros(3), np.zeros(3)) == 0.0\n```\n\n<p class=\"aside\">Training uses squared error. Evaluation reports mean absolute error.</p>",
@@ -913,7 +923,7 @@
       "answer": null
     },
     {
-      "number": 92,
+      "number": 93,
       "key": "answer-search",
       "title": "Compare the settings and loss curves",
       "body": "<p class=\"big\">Open two runs from the Sweep. Compare their model, width, learning rate, and training steps.</p><p>Then open the loss curves. A lower validation error is easier to interpret when you can see how each model trained.</p><div class=\"bottom-note\">If a run failed, inspect its error. A missing score cannot rank that model.</div>",
@@ -923,7 +933,7 @@
       "answer": null
     },
     {
-      "number": 93,
+      "number": 94,
       "key": "answer-images",
       "title": "Average the error inside the disk mask",
       "body": "```python\ndef my_image_mae(prediction, target, disk_mask):\n    errors = np.abs(prediction - target) * disk_mask\n    per_image = errors.sum(axis=(1, 2, 3))\n    per_image /= disk_mask.sum(axis=(1, 2, 3))\n    return float(per_image.mean())\n```\n\n<p>Test zero error, constant +1 error, and an error only outside the mask.</p>",
@@ -933,7 +943,7 @@
       "answer": null
     },
     {
-      "number": 94,
+      "number": 95,
       "key": "answer-residual",
       "title": "Add the correction to input channel 1",
       "body": "```python\ndef forward(self, x):\n    correction = self.net(x)\n    if architecture == \"residual\":\n        return x[:, 1:2] + correction\n    return correction\n```\n\n<div class=\"bottom-note\">The current image is input channel 1. The return has one channel.</div>",
@@ -943,7 +953,7 @@
       "answer": null
     },
     {
-      "number": 95,
+      "number": 96,
       "key": "answer-evidence",
       "title": "Return validation evidence only",
       "body": "```python\ndef select_validation_evidence(record):\n    if record.get(\"split\") != \"validation\":\n        raise ValueError(\"Only validation evidence is allowed.\")\n    fields = (\"split\", \"config\", \"metrics\", \"losses\",\n              \"errors\", \"trace\", \"stage_id\", \"lessons\")\n    return {name: record[name] for name in fields if name in record}\n```\n\n<div class=\"bottom-note\">The agent also receives the current source. Keep final predictions and scores out of this request.</div>",
@@ -953,7 +963,7 @@
       "answer": null
     },
     {
-      "number": 96,
+      "number": 97,
       "key": "answer-controller",
       "title": "Pass the candidate\u2019s code to training",
       "body": "```python\ncandidate = proposal[\"candidates\"][candidate_index]\nprobe = run_training(\n    session, stage_name, candidate[\"source\"],\n    image_splits, parent[\"config\"], dataset_version, metric_source,\n)\n```\n\n<div class=\"bottom-note\">Use the candidate\u2019s source here. Passing the parent would train the old program again.</div>",
@@ -963,7 +973,7 @@
       "answer": null
     },
     {
-      "number": 97,
+      "number": 98,
       "key": "answer-final",
       "title": "Use the saved model without training it again",
       "body": "<p class=\"big\">Load each selected model\u2019s saved weights and predict the reserved dates.</p><p>Compare the three image forecasts at one timestamp. The input images and observed future should match across all three rows.</p><div class=\"bottom-note\">Persistence copies the current image and needs no trained weights.</div>",
@@ -973,7 +983,7 @@
       "answer": null
     },
     {
-      "number": 98,
+      "number": 99,
       "key": "recorded-edit",
       "title": "Round 1: absolute loss versus the unchanged model",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Tested source</th><th>Validation error \u2193</th></tr><tr><td>Starting residual model</td><td>0.122116</td></tr><tr><td>A \u00b7 use absolute training loss</td><td>0.120553</td></tr><tr><td>B \u00b7 retain squared training loss</td><td>0.122116</td></tr></tbody></table><p>The composition selected A. Its separate test reproduced 0.120553.</p><div class=\"bottom-note\">Recorded v0.3.0: one seed, 142 validation windows, the same forty-step budget.</div>",
@@ -983,7 +993,7 @@
       "answer": null
     },
     {
-      "number": 99,
+      "number": 100,
       "key": "recorded-code",
       "title": "Round 2: start the correction at zero",
       "body": "```python\nif architecture == 'residual':\n    nn.init.zeros_(self.net[-1].weight)\n    nn.init.zeros_(self.net[-1].bias)\n\n# The residual forward pass remains:\nreturn prediction + x[:, 1:2]\n```\n\n<div class=\"bottom-note\">The round-one absolute loss stays. Zero initial correction makes the initial forecast persistence.</div>",
@@ -993,7 +1003,7 @@
       "answer": null
     },
     {
-      "number": 100,
+      "number": 101,
       "key": "zero-head",
       "title": "Zero initialization applies only to the output layer",
       "body": "<SolarDataRules mode=\"zero-head\" />",
@@ -1003,7 +1013,7 @@
       "answer": null
     },
     {
-      "number": 101,
+      "number": 102,
       "key": "recorded-keep",
       "title": "Round 2: sampling without replacement did not reduce error",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Tested source</th><th>Validation error \u2193</th></tr><tr><td>Starting absolute-loss model</td><td>0.120553</td></tr><tr><td>A \u00b7 zero-initialize the residual head</td><td>0.110916</td></tr><tr><td>B \u00b7 sample without replacement</td><td>0.120557</td></tr></tbody></table><p>The composition selected A. It did not combine the unhelpful sampling change.</p><div class=\"bottom-note\">Keep the tested sampling result alongside the selected version for comparison.</div>",
@@ -1013,7 +1023,7 @@
       "answer": null
     },
     {
-      "number": 102,
+      "number": 103,
       "key": "recorded-lens",
       "title": "Open the recorded research conversation",
       "body": "<p class=\"big\"><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/23f4a8510534f241b9c6ccacb0ef3cb7\">Open the proposal and its recorded tool activity \u2197</a></p><p>Find the active configuration, the requested edit, and the returned candidate code. Compare the proposal with the tested source.</p><p class=\"aside\"><a href=\"https://ash0ts.github.io/forge-workshop-kit/solar/recorded-study.json\">Download the recorded source, decisions, scores, and evidence links \u2197</a></p><div class=\"bottom-note\">Agent Lens may require sign-in. The source and saved decisions are also in the downloadable evidence.</div>",
@@ -1023,17 +1033,17 @@
       "answer": null
     },
     {
-      "number": 103,
+      "number": 104,
       "key": "recovery",
       "title": "When a service is unavailable",
-      "body": "<table class=\"clean-table\"><tbody><tr><th>Failure</th><th>Next action</th></tr><tr><td>Project authentication or permission</td><td>Fix access, then retry the check</td></tr><tr><td>Training or inference failed</td><td>Inspect the saved error before retrying work</td></tr><tr><td>Trace or artifact upload failed</td><td>Retry export of the saved execution</td></tr><tr><td>Native EvalTables HTTP 500</td><td>Use notebook and Weave comparisons; retry publication</td></tr></tbody></table>",
-      "notes": "Start with the failed operation. An authentication problem needs corrected access. A failed training run needs its saved error inspected. An upload failure needs a publication retry. Native EvalTables returned HTTP 500 during this rehearsal; the notebook and Weave comparisons are still available.",
+      "body": "<table class=\"clean-table\"><tbody><tr><th>Failure</th><th>Next action</th></tr><tr><td>Project authentication or permission</td><td>Fix access, then retry the check</td></tr><tr><td>Training or inference failed</td><td>Inspect the saved error before retrying work</td></tr><tr><td>Trace or artifact upload failed</td><td>Retry export of the saved execution</td></tr><tr><td>Evaluation comparison upload failed</td><td>Use saved notebook results and retry publication</td></tr></tbody></table>",
+      "notes": "Start with the failed operation. An authentication problem needs corrected access. A failed training run needs its saved error inspected. An upload failure needs a publication retry. The separate CES v2 API remains unavailable. Native Evaluation Tables Preview uses verified Weave evaluation calls and is the workshop comparison path. If any upload fails, retain the notebook results and retry publication only.",
       "kind": "",
       "time": "REFERENCE",
       "answer": null
     },
     {
-      "number": 104,
+      "number": 105,
       "key": "schedule",
       "title": "Four-hour session",
       "body": "<table class=\"clean-table schedule\"><tbody><tr><th>Minutes</th><th>Work</th></tr><tr><td>0\u201315</td><td>Copy, connect, instrument</td></tr><tr><td>15\u201340</td><td>Data and persistence</td></tr><tr><td>40\u201390</td><td>Tracking and six configurations</td></tr><tr><td>90\u2013100</td><td>Break</td></tr><tr><td>100\u2013135</td><td>Image predictors</td></tr><tr><td>135\u2013195</td><td>Evidence and two research rounds</td></tr><tr><td>195\u2013240</td><td>Freeze, compare, reproduce, explain</td></tr></tbody></table>",
@@ -1043,7 +1053,7 @@
       "answer": null
     },
     {
-      "number": 105,
+      "number": 106,
       "key": "links",
       "title": "Keep working in your own project",
       "body": "<p class=\"big\"><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view\">Copy the Solar notebook \u2197</a></p><p><a href=\"https://github.com/ash0ts/forge-workshop-kit\">Source, setup, dataset, and facilitator guide \u2197</a></p><p><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==\">Recorded rehearsal Report \u2197</a></p><p class=\"aside\"><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view\">For an office-agent example, open Pending, Inc. \u2197</a></p><div class=\"bottom-note\">Keep your notebook, code edits, and checkpoints. The facilitator needs no control over your runtime.</div>",

@@ -37,7 +37,7 @@ The editable source and exercise controls come from `scripts/solar_cells.py` and
 - [PyTorch Quickstart](https://docs.pytorch.org/tutorials/beginner/basics/quickstart_tutorial.html): explain a concept beside a short code example and its output. Our wording, diagrams, and exercises are original.
 - [Pinned Harness² workflow](https://github.com/google-research/harness2/tree/1cfe254e8d25b15f37048c3730134686abe60335): Propose–Probe–Compose. This workshop adapts that structure to ML code edits with validation scores; it does not reproduce the paper's task protocol.
 - [Agent Lens](https://docs.coreweave.com/products/agent-lens): native request and tool inspection.
-- [EvalTables comparisons](https://docs.coreweave.com/products/wandb/evaltables/compare-runs): the intended aligned comparison surface. Publication remained unavailable in this rehearsal.
+- [EvalTables comparisons](https://docs.coreweave.com/products/wandb/evaltables/compare-runs): the aligned comparison surface. The current deck uses native Weave-backed Evaluation Tables Preview; the separate CES publication attempt remained unavailable.
 
 ## Scientific figures
 
@@ -75,7 +75,7 @@ Every `visual-v030-solar-*.png` is an actual product capture. Cropping enlarges 
 | `comparison` | Native Weave expanded first final agent-selected case: prediction mean −1.760701, target mean −1.759181, file_index 0, and masked error 0.109328. This is not a multi-version comparison or native EvalTables. |
 | `report` | The current rehearsal Report, ID `VmlldzoxODMwMzU3Nw==`. |
 
-Native EvalTables returned HTTP 500. The notebook comparison, Weave rows, and W&B Report remain available and retain their actual product names. Publication retries must reuse saved executions.
+The native comparison captures show Weave-backed Evaluation Tables Preview in the W&B workspace. The separate CES v2 API still returned HTTP 500. Original notebook, Weave, and Report captures keep their product labels. Publication retries reuse saved executions.
 
 ## Diagrams and setting
 

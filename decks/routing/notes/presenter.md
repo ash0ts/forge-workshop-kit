@@ -160,50 +160,56 @@ The notebook records the selected training stage and model checksum. A policy is
 
 All final predictions are retained. The selected model may equal the existing embedding model; that is a valid keep decision, not an invented third improvement. Keep classifier quality separate from deferral policy.
 
-## 28. Open one aligned result, not just the average
+## 28. Compare the same requests in Forge
 
 2:30
 
-Native EvalTables availability must be verified live. Until successful publication, show the saved notebook comparison and Weave records, plus the actual publication status. Do not substitute an unrelated screenshot labeled as routing results.
+Final evaluation publishes saved classifier predictions before the Report chapter. Click Compare in EvalTables. This is the native Weave-backed Evaluation Tables Preview in the W&B workspace. Aggregate macro-F1 remains computed from the whole prediction set; it is not the mean of row F1 scores.
 
-## 29. Write the decision you would make
+## 29. Read one routing decision
+
+2:34
+
+Use the saved case ID to match outputs. The automated judge comparison is separate and uses participant-reviewed development cases. Its target is agreement with those reviews, not classification accuracy on the official test set. The separate CES v2 service can remain unavailable while this Preview works.
+
+## 30. Write the decision you would make
 
 2:40
 
 Allow final ten minutes for pairs to explain one result. Publishing retries reuse saved executions. The report conclusion should be participant-authored. An improvement is welcome, but understanding a tie or regression completes the learning outcome.
 
-## 30. Reproduce the selected version before releasing it
+## 31. Reproduce the selected version before releasing it
 
 2:50
 
 The core ends with saved reproducible files and evaluation. Registry release and rollback is an advanced module with its own permissions. Specialist SFT changes model weights and needs a separate forecast and explicit launch; it is not required for this workshop.
 
-## 31. What to take back to your team
+## 32. What to take back to your team
 
 2:57
 
 Close with a concrete transfer task. Ask each participant to name one queue, one failure, one measurable outcome, and one person who can review labels in their own workflow. No claims beyond the recorded Banking77 experiment.
 
-## 32. Worked answer: classifier head
+## 33. Worked answer: classifier head
 
 
 
 Offer the answer only after an attempt or a hint request. Learners must still run the free check and both actual training calls.
 
-## 33. Worked answer: review policy
+## 34. Worked answer: review policy
 
 
 
 The function should return a boolean. Exactly the threshold is routed in this specified policy. It is not a proof that the predicted probability is calibrated.
 
-## 34. Worked answer: judge validator
+## 35. Worked answer: judge validator
 
 
 
 The notebook worked answer also checks that value is a dictionary before reading its keys. Do not mistake passing this schema check for agreement with a human.
 
-## 35. Sources and recorded evidence
+## 36. Sources and recorded evidence
 
 
 
-All measured claims come from the saved qualification. Product screenshots should be added only from successful actual routing publication and matched to that record. Until external-account and human rehearsals pass, label this a technical preview.
+All measured claims come from the saved qualification. The native comparison captures show the verified routing publication and link to that saved record. Until external-account and human rehearsals pass, label this a technical preview.

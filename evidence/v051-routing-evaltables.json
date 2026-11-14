@@ -1,0 +1,86 @@
+{
+  "banking-routing-final": {
+    "tfidf": {
+      "comparison_name": "banking-routing-final",
+      "condition": "tfidf",
+      "run_id": "1595b89c817eb257a07c1ac9333fd9c4",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/1595b89c817eb257a07c1ac9333fd9c4",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/banking-routing-final-tfidf-cases:1DA5ANX0OmEXQtWFmzLXgmUX0CRLKCaIMV0MyMkLlKc",
+      "weave_call_id": "01a1db03-48d9-77f7-8923-47765a290eb3",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/banking-routing-final-tfidf-evaluation:OLXO2X1c8Vmdekdjq6Mr2gQODXpPvxizUNhWipREDYg",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_transport": {
+        "request_digest": "dfd1bf8589532977126ecf70ce2ee2c6e8597c41cc8bd341013b81bdc7ea7ef8",
+        "backend": "weave",
+        "status": "published",
+        "verified": true,
+        "marker": {
+          "_type": "eval-table",
+          "ncols": 11,
+          "nrows": 3080,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1db03-6ec6-7df8-b393-3a30c9e6386f"
+        },
+        "evaluate_call_id": "01a1db03-6ec6-7df8-b393-3a30c9e6386f",
+        "row_count": 3080,
+        "verification": "Completed evaluation, every case identity, and every score"
+      },
+      "native": {
+        "_type": "eval-table",
+        "ncols": 11,
+        "nrows": 3080,
+        "log_mode": "IMMUTABLE",
+        "evaluate_call_id": "01a1db03-6ec6-7df8-b393-3a30c9e6386f"
+      },
+      "native_status": "published",
+      "native_backend": "weave",
+      "native_verified": true,
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/1595b89c817eb257a07c1ac9333fd9c4",
+      "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=fthby6owcpo"
+    },
+    "embedding": {
+      "comparison_name": "banking-routing-final",
+      "condition": "embedding",
+      "run_id": "5c010b9321fef7258e7f2b800234f9ec",
+      "wandb_status": "published",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/5c010b9321fef7258e7f2b800234f9ec",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/banking-routing-final-embedding-cases:XcYh37plCL1DHkWWPydAXZxxpKYgqzypLD3rpXHVIbk",
+      "weave_call_id": "01a1db04-695f-76d0-b63c-a46fa17e1807",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/banking-routing-final-embedding-evaluation:9SFxODXXCy3ky0GXBYqSOL3B51t6wWQ0epp8d3CdKt0",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_transport": {
+        "request_digest": "a96b6f8ce9a8457f8ba03be432ab9dfee47f59bff5d5b9241b419625e1a76a6b",
+        "backend": "weave",
+        "status": "published",
+        "verified": true,
+        "marker": {
+          "_type": "eval-table",
+          "ncols": 11,
+          "nrows": 3080,
+          "log_mode": "IMMUTABLE",
+          "evaluate_call_id": "01a1db04-919b-7bc2-b6fc-1ac5d43de323"
+        },
+        "evaluate_call_id": "01a1db04-919b-7bc2-b6fc-1ac5d43de323",
+        "row_count": 3080,
+        "verification": "Completed evaluation, every case identity, and every score"
+      },
+      "native": {
+        "_type": "eval-table",
+        "ncols": 11,
+        "nrows": 3080,
+        "log_mode": "IMMUTABLE",
+        "evaluate_call_id": "01a1db04-919b-7bc2-b6fc-1ac5d43de323"
+      },
+      "native_status": "published",
+      "native_backend": "weave",
+      "native_verified": true,
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/5c010b9321fef7258e7f2b800234f9ec",
+      "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=fthby6owcpo"
+    }
+  }
+}

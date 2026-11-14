@@ -1,5 +1,5 @@
 {
-  "total_slides": 35,
+  "total_slides": 36,
   "slides": [
     {
       "number": 1,
@@ -219,14 +219,22 @@
     },
     {
       "number": 28,
-      "title": "Open one aligned result, not just the average",
+      "title": "Compare the same requests in Forge",
       "kind": "",
       "name": "",
-      "notes": "Native EvalTables availability must be verified live. Until successful publication, show the saved notebook comparison and Weave records, plus the actual publication status. Do not substitute an unrelated screenshot labeled as routing results.",
+      "notes": "Final evaluation publishes saved classifier predictions before the Report chapter. Click Compare in EvalTables. This is the native Weave-backed Evaluation Tables Preview in the W&B workspace. Aggregate macro-F1 remains computed from the whole prediction set; it is not the mean of row F1 scores.",
       "answer": null
     },
     {
       "number": 29,
+      "title": "Read one routing decision",
+      "kind": "",
+      "name": "",
+      "notes": "Use the saved case ID to match outputs. The automated judge comparison is separate and uses participant-reviewed development cases. Its target is agreement with those reviews, not classification accuracy on the official test set. The separate CES v2 service can remain unavailable while this Preview works.",
+      "answer": null
+    },
+    {
+      "number": 30,
       "title": "Write the decision you would make",
       "kind": "exercise",
       "name": "",
@@ -234,7 +242,7 @@
       "answer": null
     },
     {
-      "number": 30,
+      "number": 31,
       "title": "Reproduce the selected version before releasing it",
       "kind": "",
       "name": "",
@@ -242,7 +250,7 @@
       "answer": null
     },
     {
-      "number": 31,
+      "number": 32,
       "title": "What to take back to your team",
       "kind": "",
       "name": "",
@@ -250,7 +258,7 @@
       "answer": null
     },
     {
-      "number": 32,
+      "number": 33,
       "title": "Worked answer: classifier head",
       "kind": "answer",
       "name": "classifier-answer",
@@ -258,7 +266,7 @@
       "answer": null
     },
     {
-      "number": 33,
+      "number": 34,
       "title": "Worked answer: review policy",
       "kind": "answer",
       "name": "policy-answer",
@@ -266,7 +274,7 @@
       "answer": null
     },
     {
-      "number": 34,
+      "number": 35,
       "title": "Worked answer: judge validator",
       "kind": "answer",
       "name": "validator-answer",
@@ -274,11 +282,11 @@
       "answer": null
     },
     {
-      "number": 35,
+      "number": 36,
       "title": "Sources and recorded evidence",
       "kind": "",
       "name": "",
-      "notes": "All measured claims come from the saved qualification. Product screenshots should be added only from successful actual routing publication and matched to that record. Until external-account and human rehearsals pass, label this a technical preview.",
+      "notes": "All measured claims come from the saved qualification. The native comparison captures show the verified routing publication and link to that saved record. Until external-account and human rehearsals pass, label this a technical preview.",
       "answer": null
     }
   ]

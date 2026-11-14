@@ -118,3 +118,13 @@
 
 /* Numbered annotations map to unchanged native captures. */
 .annotations.numbered p{position:relative;padding-left:39px}.annotations.numbered .annotation-number{position:absolute;left:0;top:3px;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--gold);color:var(--ink);font-size:18px;font-weight:600}.annotations.numbered code{font-size:22px!important}.slidev-layout .slidev-code .line{transition:none!important}
+
+/* Native evaluation captures stay unchanged; the adjacent numbered reading order identifies actual fields. */
+.eval-native{display:grid;grid-template-columns:minmax(0,850px) minmax(0,1fr);gap:24px;align-items:start}
+.eval-native-image{position:relative;aspect-ratio:16/9;background:#fff;border:1px solid #aab9ad;border-radius:6px;overflow:hidden}
+.eval-native-image a{display:block;height:100%;opacity:1!important;filter:none!important}
+.eval-native-image img{display:block;width:100%;height:100%;object-fit:contain!important;opacity:1!important;filter:none!important}
+.eval-native-notes{font-size:19px;line-height:1.35}.eval-native-notes p{margin:0 0 18px}.eval-native-notes b{color:#146965}
+.eval-native-caption{font-size:17px;color:#5f746a;margin-top:12px}
+
+.eval-native-pin{position:absolute;display:grid;place-items:center;transform:translate(-50%,-50%);width:24px;height:24px;border-radius:50%;background:#f1ca70;color:#163c43;border:1px solid #163c43;font:600 16px "IBM Plex Sans",sans-serif;pointer-events:none}
