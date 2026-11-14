@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "release": "0.6.2",
+  "checked_at": "2026-11-14T19:58:38.273441+00:00",
+  "commit": "3660c511c025568b8da79cbabac166028b284819",
+  "comparison_commit": "db5bb392f2705ad871aa86586be3b0ac8139730d",
+  "notebooks": [
+    {
+      "slug": "starter",
+      "only_change": "release wheel URL 0.6.1 to 0.6.2",
+      "source_sha256": "d8c05e56ec283ab5689d01c9214aae1c547d580d903a8166940e93ac681c5d00",
+      "preview_sha256": "4a4685da00cad622a3da6df19cab09e0838bb8a935f7f75d44f0fe64f80fc849"
+    },
+    {
+      "slug": "facilitator",
+      "only_change": "release wheel URL 0.6.1 to 0.6.2",
+      "source_sha256": "dc7f723455d673a234bea27d433f945835240d408a86f8525cf41efd31ffa21b",
+      "preview_sha256": "b979c205733097eda93099d2b9b9b37dc470a3568484a4594937199ef7f25340"
+    },
+    {
+      "slug": "pending_inc",
+      "only_change": "release wheel URL 0.6.1 to 0.6.2",
+      "source_sha256": "e6292effedb567681e0837bfd5457f67e8d7b7efe5061b6ae258c8f572c0f63c",
+      "preview_sha256": "9b7f85869e2c5fcf1a6cae23356e00dd74968e85682df4a46e0fcc1f8f99ce9e"
+    },
+    {
+      "slug": "solar_autoresearch",
+      "only_change": "release wheel URL 0.6.1 to 0.6.2",
+      "source_sha256": "c276883785896d6303ebfed7282647ee6ee64d58e0182ff1bc8f318c26930665",
+      "preview_sha256": "5ac64dcd550698e7b990c57993bda2ddfa7b27b082b924cd1f5934cb31861447"
+    },
+    {
+      "slug": "request_routing",
+      "only_change": "release wheel URL 0.6.1 to 0.6.2",
+      "source_sha256": "45bc88b4c35dd3c6e344eb125c93e9c88c896c2874c9ffad880a71094554ff76",
+      "preview_sha256": "260c6058230df3f84aea77d8570960fa973301de0f17c6d15bbc9db2794e29ee"
+    },
+    {
+      "slug": "visual_inspection",
+      "only_change": "release wheel URL 0.6.1 to 0.6.2",
+      "source_sha256": "45fc4eca098850f798bdba815b10281846026af98a6a62d55c4bd7dfd3dfa3af",
+      "preview_sha256": "5a780bbc03dfa11cdee0444e389efe266d7e4f1711b201c2d9db7eaa3ee9a19b"
+    },
+    {
+      "slug": "transit_factory",
+      "only_change": "release wheel URL 0.6.1 to 0.6.2",
+      "source_sha256": "7876693bd5c8a857d73178e929d5d42953eb50e06450b4d863644a495e6d2485",
+      "preview_sha256": "e1d3828017a41afc6975994fd2bde17bb4f301159de72bb28a2f33d1cef361e2"
+    }
+  ],
+  "dependency_lock": {
+    "only_change": "forge-workshop-kit version 0.6.1 to 0.6.2",
+    "sha256": "4269bbb1bf499b75dc5cb1c5936fe4a7868de2ae1ae6287a19a0be4e32a6f718"
+  },
+  "distributions": [
+    {
+      "file": "forge_workshop_kit-0.6.2-py3-none-any.whl",
+      "sha256": "057a598ae89ce33a915449c35418ba8f44378299558d041b9d45e3b20166e28d",
+      "bytes": 382210,
+      "files": 61,
+      "package_source_files": 57,
+      "package_source_matches_checkout": true,
+      "runtime_and_credential_file_paths_absent": true
+    },
+    {
+      "file": "forge_workshop_kit-0.6.2.tar.gz",
+      "sha256": "9b03d8106282d9ce42f474591200683ca745df1d15f95bdb9a6f4686e9ee5aa6",
+      "bytes": 926996,
+      "files": 192,
+      "package_source_files": 57,
+      "package_source_matches_checkout": true,
+      "runtime_and_credential_file_paths_absent": true
+    }
+  ],
+  "unchanged": [
+    "authored workshop cells",
+    "authored decks and their v0.6.1 presentation release",
+    "datasets",
+    "experiment settings"
+  ],
+  "cleanup": [
+    "Remove unused generator fields, branch traversal, legacy media serializers, imports and duplicate decision validation.",
+    "Use a shared streaming SHA-256 helper for package building and template publishing.",
+    "Validate publisher destination paths before file or remote writes.",
+    "Protect journal and task-board reads plus initial journal creation with their write locks.",
+    "Close copied image handles and verify native image envelopes during EvalTables readback.",
+    "Read one saved state snapshot when collecting research decision traces."
+  ],
+  "tests": {
+    "full_suite": {
+      "passed": 305,
+      "seconds": 66.22,
+      "source": "root agent reported completed local suite"
+    },
+    "packaging_and_solar_views": {
+      "passed": 30,
+      "seconds": 12.33,
+      "source": "this agent local test run"
+    }
+  },
+  "scope": "Local read-only distribution/source verification. No rebuild, publication, training or inference. Credential check verifies packaged paths; it is not a general secret scanner.",
+  "status": "passed"
+}

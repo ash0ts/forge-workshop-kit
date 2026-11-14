@@ -28,7 +28,7 @@ The package build verifies pinned dependencies, checks all seven templates, and 
 
 The [teaching-check receipt](../evidence/v061-teaching-checks.json) records the final slide totals and source hashes. All 33 release downloads passed anonymous checksum verification; see the [download receipt](../evidence/release-downloads-v061.json). The browser-deck deployment also passed anonymous checks for all five decks, PDFs and source bundles; 107 authored source files matched their local hashes. See the [public-deck receipt](../evidence/decks-public-v061.json). All 29 public documentation and source links returned the expected pages. The 26 Forge links were reachable, which alone does not establish record permissions.
 
-The 0.6.2 cleanup passed all 305 local tests, the unused-name lint checks, and generation/check/export of all seven templates. The new tests cover open-read contention, first journal creation, malformed publisher destinations, and missing image references. They make no training or inference requests.
+The 0.6.2 cleanup passed all 305 local tests, the unused-name lint checks, and generation/check/export of all seven templates. The new tests cover open-read contention, first journal creation, malformed publisher destinations, and missing image references. They make no training or inference requests. All seven current Forge templates passed source and preview readback, and all 33 release assets passed anonymous checksum checks. See the [cleanup checks](../evidence/v062-cleanup-checks.json), [template receipt](../evidence/hosted-templates-v062.json), and [download receipt](../evidence/release-downloads-v062.json).
 
 ## Results remain unchanged
 
@@ -40,11 +40,13 @@ The 0.6.2 cleanup passed all 305 local tests, the unused-name lint checks, and g
 
 The [previous release checks](archive/release-checks-v060.md) retain the execution, cost, trace-readback and evaluation-readback evidence. The [README results table](../README.md#what-happened-in-the-recorded-rehearsal) links each experiment’s protocol and limits. No scores were changed to fit the expanded teaching sequence.
 
-## Windows parallel-worker limitation
+<a id="windows-parallel-worker-limitation"></a>
+
+## Windows parallel-worker repair
 
 The branch workflow passed all nine jobs on macOS, Windows and Linux. The separate tag workflow on the same commit failed one Windows Transit test: the team returned one proposed patch instead of two. A focused local test passes normally. A simulation of Windows file-sharing contention reproduces the symptom when an unlocked task-board read overlaps an atomic replacement. The CI assertion does not print the worker outcome, so this is a plausible cause rather than a confirmed diagnosis of that CI run. The failed Windows job passed on the one bounded retry. That successful retry does not establish reliability.
 
-Version 0.6.2 repairs the demonstrated read/write race and adds deterministic contention tests. The original CI exception was not saved, so this does not establish that the race was its only cause. The [investigation receipt](../evidence/v061-windows-review.json) preserves the original reproduction and its limits. Windows CI qualification for the patch is pending.
+Version 0.6.2 repairs the demonstrated read/write race and adds deterministic contention tests. The original CI exception was not saved, so this does not establish that the race was its only cause. The [investigation receipt](../evidence/v061-windows-review.json) preserves the original reproduction and its limits. All nine jobs in the 0.6.2 branch workflow passed, including the full Windows suite, with no retries. The [cross-platform receipt](../evidence/v062-ci.json) links the exact jobs. A successful run qualifies this patch; it does not establish that every possible worker failure has been eliminated.
 
 ## Remaining release gates
 

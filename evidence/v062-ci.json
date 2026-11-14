@@ -1,0 +1,192 @@
+{
+  "checked_at": "2026-11-14T20:01:22.984369+00:00",
+  "commit": "3660c511c025568b8da79cbabac166028b284819",
+  "runs": [
+    {
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634850682",
+      "headSha": "3660c511c025568b8da79cbabac166028b284819",
+      "run_id": 43634850682,
+      "jobs": [
+        {
+          "name": "base (ubuntu-latest, pending)",
+          "status": "completed",
+          "conclusion": "success",
+          "databaseId": 132569295341,
+          "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634850682/job/132569295341",
+          "startedAt": "2026-11-14T19:57:13Z",
+          "completedAt": "2026-11-14T19:57:29Z"
+        },
+        {
+          "name": "check (macos-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "databaseId": 132569295568,
+          "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634850682/job/132569295568",
+          "startedAt": "2026-11-14T19:57:14Z",
+          "completedAt": "2026-11-14T20:00:12Z",
+          "pytest_summary": "305 passed, 7 warnings in 135.20s"
+        },
+        {
+          "name": "base (windows-latest, pending)",
+          "status": "completed",
+          "conclusion": "success",
+          "databaseId": 132569295584,
+          "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634850682/job/132569295584",
+          "startedAt": "2026-11-14T19:57:14Z",
+          "completedAt": "2026-11-14T19:57:42Z"
+        },
+        {
+          "name": "base (macos-latest, base)",
+          "status": "completed",
+          "conclusion": "success",
+          "databaseId": 132569295585,
+          "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634850682/job/132569295585",
+          "startedAt": "2026-11-14T19:57:14Z",
+          "completedAt": "2026-11-14T19:57:36Z"
+        },
+        {
+          "name": "check (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "databaseId": 132569295587,
+          "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634850682/job/132569295587",
+          "startedAt": "2026-11-14T19:57:13Z",
+          "completedAt": "2026-11-14T19:58:59Z",
+          "pytest_summary": "305 passed, 7 warnings in 82.27s"
+        },
+        {
+          "name": "base (macos-latest, pending)",
+          "status": "completed",
+          "conclusion": "success",
+          "databaseId": 132569295610,
+          "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634850682/job/132569295610",
+          "startedAt": "2026-11-14T19:57:14Z",
+          "completedAt": "2026-11-14T19:57:38Z"
+        },
+        {
+          "name": "base (windows-latest, base)",
+          "status": "completed",
+          "conclusion": "success",
+          "databaseId": 132569295613,
+          "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634850682/job/132569295613",
+          "startedAt": "2026-11-14T19:57:14Z",
+          "completedAt": "2026-11-14T19:57:50Z"
+        },
+        {
+          "name": "check (windows-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "databaseId": 132569295638,
+          "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634850682/job/132569295638",
+          "startedAt": "2026-11-14T19:57:14Z",
+          "completedAt": "2026-11-14T20:00:24Z",
+          "pytest_summary": "304 passed, 1 skipped, 7 warnings in 139.01s"
+        },
+        {
+          "name": "base (ubuntu-latest, base)",
+          "status": "completed",
+          "conclusion": "success",
+          "databaseId": 132569295763,
+          "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634850682/job/132569295763",
+          "startedAt": "2026-11-14T19:57:14Z",
+          "completedAt": "2026-11-14T19:57:30Z"
+        }
+      ]
+    },
+    {
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634907275",
+      "headSha": "3660c511c025568b8da79cbabac166028b284819",
+      "run_id": 43634907275,
+      "jobs": [
+        {
+          "name": "check (macos-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "databaseId": 132569471192,
+          "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634907275/job/132569471192",
+          "startedAt": "2026-11-14T19:57:55Z",
+          "completedAt": "2026-11-14T20:01:11Z"
+        },
+        {
+          "name": "base (windows-latest, base)",
+          "status": "completed",
+          "conclusion": "success",
+          "databaseId": 132569471476,
+          "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634907275/job/132569471476",
+          "startedAt": "2026-11-14T19:57:54Z",
+          "completedAt": "2026-11-14T19:58:25Z"
+        },
+        {
+          "name": "base (ubuntu-latest, pending)",
+          "status": "completed",
+          "conclusion": "success",
+          "databaseId": 132569471488,
+          "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634907275/job/132569471488",
+          "startedAt": "2026-11-14T19:57:54Z",
+          "completedAt": "2026-11-14T19:58:12Z"
+        },
+        {
+          "name": "check (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "databaseId": 132569471519,
+          "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634907275/job/132569471519",
+          "startedAt": "2026-11-14T19:57:53Z",
+          "completedAt": "2026-11-14T19:59:46Z"
+        },
+        {
+          "name": "check (windows-latest)",
+          "status": "completed",
+          "conclusion": "success",
+          "databaseId": 132569471530,
+          "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634907275/job/132569471530",
+          "startedAt": "2026-11-14T19:57:54Z",
+          "completedAt": "2026-11-14T20:01:00Z"
+        },
+        {
+          "name": "base (macos-latest, base)",
+          "status": "completed",
+          "conclusion": "success",
+          "databaseId": 132569471547,
+          "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634907275/job/132569471547",
+          "startedAt": "2026-11-14T19:57:55Z",
+          "completedAt": "2026-11-14T19:58:28Z"
+        },
+        {
+          "name": "base (ubuntu-latest, base)",
+          "status": "completed",
+          "conclusion": "success",
+          "databaseId": 132569471580,
+          "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634907275/job/132569471580",
+          "startedAt": "2026-11-14T19:57:54Z",
+          "completedAt": "2026-11-14T19:58:10Z"
+        },
+        {
+          "name": "base (macos-latest, pending)",
+          "status": "completed",
+          "conclusion": "success",
+          "databaseId": 132569471602,
+          "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634907275/job/132569471602",
+          "startedAt": "2026-11-14T19:57:55Z",
+          "completedAt": "2026-11-14T19:58:15Z"
+        },
+        {
+          "name": "base (windows-latest, pending)",
+          "status": "completed",
+          "conclusion": "success",
+          "databaseId": 132569471618,
+          "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43634907275/job/132569471618",
+          "startedAt": "2026-11-14T19:57:54Z",
+          "completedAt": "2026-11-14T19:58:19Z"
+        }
+      ]
+    }
+  ],
+  "reruns_requested": false,
+  "scope": "Read-only CI verification. Existing workflows test public fixtures and mocked providers; no paid experiment was launched.",
+  "interpretation": "The demonstrated read/atomic-replace race was repaired and all nine branch jobs passed on Linux, macOS and Windows. The original v0.6.1 failure did not retain its worker exception, so this does not prove that race was its sole cause."
+}

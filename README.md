@@ -58,7 +58,7 @@ For Pending, use `--extra pending` in those commands and open `notebooks/pending
 
 For routing, use `--extra routing` and `notebooks/request_routing.py`. For inspection, use `--extra inspection` and `notebooks/visual_inspection.py`. Download controls verify the pinned teaching data before loading it. Cached features make the required classifier exercises practical on CPU; inspection also lets you recompute four images.
 
-For transit, run `uv sync --frozen` and `uv run marimo edit notebooks/transit_factory.py`. It uses the shared dependencies, Python's standard library, and a bundled 57 KB timetable subset. There is no live transit API or separate app server. For the two-worker exercise, use Forge-hosted execution, macOS or Linux: a Windows concurrency check is intermittent and remains under investigation. See the [release limitation](docs/release-checks.md#windows-parallel-worker-limitation) and the [transit exercises](docs/transit-workshop.md), [six-hour facilitator guide](docs/transit-facilitator.md), and [data provenance and prepared repairs](examples/transit/README.md).
+For transit, run `uv sync --frozen` and `uv run marimo edit notebooks/transit_factory.py`. It uses the shared dependencies, Python's standard library, and a bundled 57 KB timetable subset. There is no live transit API or separate app server. See the [transit exercises](docs/transit-workshop.md), [six-hour facilitator guide](docs/transit-facilitator.md), and [data provenance and prepared repairs](examples/transit/README.md).
 
 ## Work through an exercise
 

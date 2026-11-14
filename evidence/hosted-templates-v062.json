@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "project": "wandb/forge-workshop-kit",
+  "templates": {
+    "starter": {
+      "id": "Tm90ZWJvb2s6MTU3NzI=",
+      "status": "verified",
+      "release": "0.6.2",
+      "source_sha256": "d8c05e56ec283ab5689d01c9214aae1c547d580d903a8166940e93ac681c5d00",
+      "html_sha256": "4a4685da00cad622a3da6df19cab09e0838bb8a935f7f75d44f0fe64f80fc849",
+      "currentVersion": {
+        "artifactCollectionName": "Forge-Workshop-Kit-Starter",
+        "versionIndex": 14,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzI=/view"
+    },
+    "facilitator": {
+      "id": "Tm90ZWJvb2s6MTU3NzM=",
+      "status": "verified",
+      "release": "0.6.2",
+      "source_sha256": "dc7f723455d673a234bea27d433f945835240d408a86f8525cf41efd31ffa21b",
+      "html_sha256": "b979c205733097eda93099d2b9b9b37dc470a3568484a4594937199ef7f25340",
+      "currentVersion": {
+        "artifactCollectionName": "Forge-Workshop-Kit-Progress-monitor",
+        "versionIndex": 14,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzM=/view"
+    },
+    "pending_inc": {
+      "id": "Tm90ZWJvb2s6MTU3NzQ=",
+      "status": "verified",
+      "release": "0.6.2",
+      "source_sha256": "e6292effedb567681e0837bfd5457f67e8d7b7efe5061b6ae258c8f572c0f63c",
+      "html_sha256": "9b7f85869e2c5fcf1a6cae23356e00dd74968e85682df4a46e0fcc1f8f99ce9e",
+      "currentVersion": {
+        "artifactCollectionName": "Pending-Inc.-Your-project",
+        "versionIndex": 14,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view"
+    },
+    "solar_autoresearch": {
+      "id": "Tm90ZWJvb2s6MTU3NzU=",
+      "status": "verified",
+      "release": "0.6.2",
+      "source_sha256": "c276883785896d6303ebfed7282647ee6ee64d58e0182ff1bc8f318c26930665",
+      "html_sha256": "5ac64dcd550698e7b990c57993bda2ddfa7b27b082b924cd1f5934cb31861447",
+      "currentVersion": {
+        "artifactCollectionName": "Solar-forecasting-with-agent-assisted-experiments",
+        "versionIndex": 14,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view"
+    },
+    "request_routing": {
+      "id": "Tm90ZWJvb2s6MTU5Mjg=",
+      "status": "verified",
+      "release": "0.6.2",
+      "source_sha256": "45bc88b4c35dd3c6e344eb125c93e9c88c896c2874c9ffad880a71094554ff76",
+      "html_sha256": "260c6058230df3f84aea77d8570960fa973301de0f17c6d15bbc9db2794e29ee",
+      "currentVersion": {
+        "artifactCollectionName": "Route-customer-requests-and-learn-from-mistakes",
+        "versionIndex": 4,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view"
+    },
+    "visual_inspection": {
+      "id": "Tm90ZWJvb2s6MTU5Mjk=",
+      "status": "verified",
+      "release": "0.6.2",
+      "source_sha256": "45fc4eca098850f798bdba815b10281846026af98a6a62d55c4bd7dfd3dfa3af",
+      "html_sha256": "5a780bbc03dfa11cdee0444e389efe266d7e4f1711b201c2d9db7eaa3ee9a19b",
+      "currentVersion": {
+        "artifactCollectionName": "Find-defective-parts-before-they-ship",
+        "versionIndex": 4,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view"
+    },
+    "transit_factory": {
+      "id": "Tm90ZWJvb2s6MTU5MzI=",
+      "status": "verified",
+      "release": "0.6.2",
+      "source_sha256": "7876693bd5c8a857d73178e929d5d42953eb50e06450b4d863644a495e6d2485",
+      "html_sha256": "e1d3828017a41afc6975994fd2bde17bb4f301159de72bb28a2f33d1cef361e2",
+      "currentVersion": {
+        "artifactCollectionName": "Build-a-transit-app-with-a-team-of-coding-agents",
+        "versionIndex": 2,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view"
+    }
+  }
+}
