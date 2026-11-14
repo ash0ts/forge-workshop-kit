@@ -2,7 +2,7 @@
 
 The airline workshop remains a **technical preview**. The live booking runs, native traces, and evaluation comparisons completed. Native AI Alignment testing did not: all six test requests returned HTTP 500. This prevents a demonstrated automatic-monitor accuracy result. External-account access and a human rehearsal are also outstanding.
 
-The [qualification JSON](../examples/airline-monitoring/qualification.json) records native identities and publication receipts. [Execution records](../examples/airline-monitoring/executions.json) preserve the requests, operations, starting and resulting bookings, checks, and costs. The [Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Monitor-an-airline-service-agent:-recorded-qualification--VmlldzoxODMwOTA4Ng==) links the comparison to its evidence.
+The [qualification JSON](../examples/airline-monitoring/qualification.json) records native identities and publication receipts. [Execution records](../examples/airline-monitoring/executions.json) preserve the requests, operations, starting and resulting bookings, checks, and costs. The [Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Monitor-an-airline-service-agent:-recorded-qualification--VmlldzoxODMwOTE2MQ==) links the comparison to its evidence.
 
 ## Data and task
 
