@@ -50,7 +50,8 @@
         "learner code executes one MLP and CNN forward pass without training",
         "navigation remains usable after local code check",
         "inside/outside-mask fixture uses learner scorer",
-        "selected 2014-02-13T03:00 UTC and verified plot renders that exact timestamp",
+        "selected 2014-02-13T03:00 UTC and verified plot stays at that timestamp",
+        "timestamp survives navigation away and back",
         "Theme {\"background\":\"color(srgb 0.0941176 0.109804 0.101961)\",\"color\":\"color(srgb 0.92549 0.933333 0.929412)\"}",
         "390px view has no page horizontal overflow"
       ],
@@ -142,5 +143,6 @@
     "Native EvalTables unavailable in last live service check; not requalified by this display revision",
     "External-account copy/restore check outstanding",
     "Human usability rehearsal outstanding"
-  ]
+  ],
+  "browser_method": "Saved-record fixture; full notebook render before selector assertions. Keyboard selection and navigation checked. Native marimo dark theme, not only OS media emulation."
 }
