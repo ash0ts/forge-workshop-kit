@@ -64,17 +64,40 @@ try {
       }
       const diagrams = [...root.querySelectorAll('svg[role="img"]')].map(svg => {
         const bounds = svg.getBoundingClientRect();
-        const clippedLabels = [...svg.querySelectorAll('text')].filter(text => {
+        const labels = [...svg.querySelectorAll('text')].filter(text => text.getBoundingClientRect().width);
+        const clippedLabels = labels.filter(text => {
           const label = text.getBoundingClientRect();
           return label.width && label.height && (label.left < bounds.left - 2 || label.right > bounds.right + 2 || label.top < bounds.top - 2 || label.bottom > bounds.bottom + 2);
         }).map(text => text.textContent);
+        const overlappingLabels = [];
+        for (let i = 0; i < labels.length; i++) {
+          const a = labels[i].getBoundingClientRect();
+          for (let j = i + 1; j < labels.length; j++) {
+            const b = labels[j].getBoundingClientRect();
+            if (Math.min(a.right,b.right) - Math.max(a.left,b.left) > 2 && Math.min(a.bottom,b.bottom) - Math.max(a.top,b.top) > 2) {
+              overlappingLabels.push([labels[i].textContent,labels[j].textContent]);
+            }
+          }
+        }
         const description = svg.getAttribute('aria-label') || svg.querySelector('title,desc')?.textContent || '';
-        return {description, clippedLabels};
+        return {description, clippedLabels, overlappingLabels};
       });
-      return {title:expected, overflow, diagrams, missingImages:[...root.querySelectorAll('img')].filter(image => !image.complete || !image.naturalWidth).map(image => image.src)};
+      const textProblems = [], walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      while (walker.nextNode()) {
+        const node = walker.currentNode, parent = node.parentElement;
+        if (!parent || parent.closest('script,style,pre,code')) continue;
+        const range = document.createRange(); range.selectNodeContents(node);
+        if (![...range.getClientRects()].some(rect => rect.width && rect.height)) continue;
+        const text = node.textContent.trim();
+        if (/\uFFFD|\uFFFC|`|\*\*[^*]+\*\*|\[[^\]\n]+\]\(https?:|\{\{[^}]+\}\}/.test(text)) {
+          textProblems.push(text.slice(0,200));
+        }
+      }
+      const clippedCode = [...root.querySelectorAll('pre')].filter(element => element.scrollWidth > element.clientWidth + 2 || element.scrollHeight > element.clientHeight + 2).map(element => element.textContent.slice(0,200));
+      return {title:expected, overflow, diagrams, textProblems, clippedCode, missingImages:[...root.querySelectorAll('img')].filter(image => !image.complete || !image.naturalWidth).map(image => image.src)};
     }, slide.title);
     titles.push({number:slide.number, key:slide.key, title:result.title});
-    if (result.overflow.length || result.missingImages.length || result.diagrams.some(diagram => !diagram.description || diagram.clippedLabels.length)) issues.push({slide:slide.number, ...result});
+    if (result.overflow.length || result.missingImages.length || result.textProblems.length || result.clippedCode.length || result.diagrams.some(diagram => !diagram.description || diagram.clippedLabels.length || diagram.overlappingLabels.length)) issues.push({slide:slide.number, ...result});
     await page.screenshot({path:path.join(output, `${String(slide.number).padStart(3,'0')}.png`)});
     if (slide.answer) {
       const answer = page.locator('a.answer-link:visible');

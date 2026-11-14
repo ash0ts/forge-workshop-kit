@@ -29,11 +29,12 @@ All new diagrams are local SVG/Vue components with no timed motion. Marker IDs u
 
 ## Validation
 
-- All 12 code excerpts, 14 exercise calls, and five native capture calls are unchanged from the preceding authored deck.
+- All 14 exercise calls and five native capture calls are unchanged from the preceding authored deck. The text audit corrected two code excerpts: the model-span example now enters `with span:`, and reflection supplies its supported keyword-only tracing hooks instead of a positional ellipsis. The model-span caption explicitly labels the abbreviated message lists.
 - All 77 prior slide keys retain their relative order. The four new keys are `retry-identity`, `scorer-cases`, `completion-guard`, and `probe-comparison`.
 - The 12 comparison rows are identical to the rehearsal source. Their case/version pairs are unique; the displayed pass values and 12/13/13 tool totals reconcile.
 - Regenerating the deck produces identical slides, slide map, and presenter notes.
-- The final build checked all 81 browser slides and 165 routes, including three worked-answer keyboard returns. It reported no clipped SVG labels, HTML overflow, missing images, failed asset requests, or console errors. All 81 PDF pages were rendered and visually reviewed across seven contact sheets.
+- The text audit restored full contrast to explanatory paragraphs and separated the completion-gate title from its two-line error message.
+- The final build checked all 81 browser slides and 165 routes, including three worked-answer keyboard returns. It reported zero malformed-text, clipped-code, overlapping-label, image, console, or network issues. All 81 PDF pages were rendered and visually reviewed across seven contact sheets; the changed code and diagram frames were also inspected at full size. There were no empty pages, and eight local links were repaired for the downloadable PDF. Browser and PDF checks refer to the same generated slide source.
 - The action handoff, trace-export retry, MCP sequence, refund fixtures, scorer paths, completion guard, probe comparison, KEEP, and two-round handoff were inspected at full size. Arrow direction, labels within boxes, unchanged versions, and reset account state agree with the implementation.
 - All 12 result-cell links match the saved rehearsal records. Focusing the first cell and pressing Enter requested its recorded conversation URL. The navigation was intercepted locally; this check does not claim that attendee access to Forge was retested. See [interaction checks](visual-interaction-checks.json), [browser checks](delivery-checks.json), and [PDF checks](pdf-checks.json).
 

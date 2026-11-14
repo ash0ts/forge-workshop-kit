@@ -1,5 +1,5 @@
 {
-  "source_sha256": "f8ac86e4ce966ef896b00472dcec471de9caeedddacbc949aa26180dfb7f2673",
+  "source_sha256": "29644e3f69db7ef3aaa9657e972d3fa7110adf42612ef16a8657af4ef8c6aff4",
   "slides_checked": 101,
   "expected_slides": 101,
   "titles": [
@@ -11,7 +11,7 @@
     {
       "number": 2,
       "key": "arrival",
-      "title": "We need a baseline before training a model"
+      "title": "Prepare a forecast for the lab’s weekly review"
     },
     {
       "number": 3,
@@ -21,7 +21,7 @@
     {
       "number": 4,
       "key": "research-question",
-      "title": "A changed score needs an explanation"
+      "title": "Find the code behind the last score"
     },
     {
       "number": 5,
@@ -416,7 +416,7 @@
     {
       "number": 83,
       "key": "close",
-      "title": "Use the Report to explain the result and next experiment"
+      "title": "Bring the results to the lab review"
     },
     {
       "number": 84,
@@ -436,7 +436,7 @@
     {
       "number": 87,
       "key": "answer-flux",
-      "title": "Take the mean of the absolute errors"
+      "title": "Implement the training loss and forecast metric"
     },
     {
       "number": 88,

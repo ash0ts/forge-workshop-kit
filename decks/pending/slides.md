@@ -444,12 +444,14 @@ span = tracing.LLM(
     started_at=stamp(record["started_at"]),
     ended_at=stamp(record["ended_at"]),
 )
+with span:
+    span.set_attributes({"workshop.request_id": record["id"]})
 ```
 
-<div class="bottom-note">In <code>my_model_span</code>, inspect the complete message mapping. Add usage only when the provider returned it.</div>
+<div class="bottom-note">Message lists are abbreviated. <code>my_model_span</code> exports the saved response; it does not call the model again.</div>
 
 <!--
-The LLM span records the requested and returned model identities, input and output messages, timing, settings, and available usage. Open my_model_span for the full message mapping; this slide abbreviates the comprehensions. In Agent Lens, find the request after an account lookup and verify that its input contains the returned payments.
+The LLM span records the requested and returned model identities, input and output messages, timing, settings, and available usage. Entering the span context creates and closes the recorded span; constructing the object alone is insufficient. Open my_model_span for the full message mapping and usage handling; this slide abbreviates the comprehensions. Add usage only when the provider returned it. In Agent Lens, find the request after an account lookup and verify that its input contains the returned payments.
 -->
 
 ---
@@ -878,7 +880,10 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 
 
 ```python
-review = reflect_execution(session, round_number, run, ...)
+review = reflect_execution(
+    session, round_number, run,
+    tool_writer=my_tool_span, model_writer=my_model_span,
+)
 adopted = {
     "harness": chosen_harness,
     "lesson": review["lesson"],

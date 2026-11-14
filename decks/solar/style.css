@@ -149,6 +149,15 @@
 .measured-grid{display:grid;grid-template-columns:400px 1fr;gap:50px;align-items:start;margin:35px 0 25px}.measured-gain{font-size:90px;line-height:1;color:var(--teal);letter-spacing:-3px}.measured-grid p{font-size:28px;line-height:1.3}.measured-grid .aside{font-size:22px;margin-top:28px}.measured-grid td{padding:22px 16px}.cover .lab-scene{transform:none;top:176px;width:595px}
 
 .slidev-layout .agent-explanation{font-size:36px;line-height:1.5!important;max-width:1080px;margin-top:50px}
+/* Fictional lab scenes explain why the next experiment is needed. */
+.lab-assignment,.lab-files{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:start;margin-top:37px}
+.scene-label{font:15px 'IBM Plex Mono',monospace;color:var(--muted);margin-bottom:24px}
+.lab-dialogue{border-left:5px solid var(--gold);padding:20px 27px;background:#eeeadd}
+.lab-dialogue p{font-size:35px;line-height:1.35!important;margin:0}
+.lab-task p{font-size:25px;line-height:1.45!important}.lab-task .aside{font-size:22px;margin-top:25px}
+.lab-folder{background:#e8e9dd;border-top:4px solid var(--teal);padding:22px 26px}
+.lab-folder code{display:block;font-size:21px!important;background:transparent!important;padding:7px 0!important;white-space:nowrap}
+.lab-folder p{font-size:22px;margin:22px 0 0}.lab-files h2{font-size:28px!important;margin-top:12px}.lab-files p{font-size:24px}
 /* Native product evidence stays clickable at its original resolution. */
 .product-screen{display:block;width:1120px;height:402px;margin:4px auto 0;border:1px solid #a8b9ad!important;border-radius:4px;background:#fff;overflow:hidden}
 .product-screen img{display:block;width:100%;height:100%;object-fit:contain;object-position:center top}

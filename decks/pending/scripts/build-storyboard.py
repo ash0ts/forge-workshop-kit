@@ -84,7 +84,9 @@ span = tracing.LLM(
     started_at=stamp(record["started_at"]),
     ended_at=stamp(record["ended_at"]),
 )
-''')+'\n<div class="bottom-note">In `my_model_span`, inspect the complete message mapping. Add usage only when the provider returned it.</div>','The LLM span records the requested and returned model identities, input and output messages, timing, settings, and available usage. Open my_model_span for the full message mapping; this slide abbreviates the comprehensions. In Agent Lens, find the request after an account lookup and verify that its input contains the returned payments.')
+with span:
+    span.set_attributes({"workshop.request_id": record["id"]})
+''')+'\n<div class="bottom-note">Message lists are abbreviated. `my_model_span` exports the saved response; it does not call the model again.</div>','The LLM span records the requested and returned model identities, input and output messages, timing, settings, and available usage. Entering the span context creates and closes the recorded span; constructing the object alone is insufficient. Open my_model_span for the full message mapping and usage handling; this slide abbreviates the comprehensions. Add usage only when the provider returned it. In Agent Lens, find the request after an account lookup and verify that its input contains the returned payments.')
 slide('onboarding','Provision Alex’s membership through the MCP tools.','<McpSequence />','Use the local MCP implementation in pending/mcp_server.py. Distinguish actual protocol discovery and invocation from a function merely named MCP. The simulated service deliberately commits a write before returning a timeout in the development incident.')
 for n,title in [(1,'An access request is sent.'),(2,'Provisioning commits before its response times out.'),(3,'Read account access before retrying the write.')]:
     slide('timeout-'+str(n),title,f'<TimeoutSequence :level="{n}" />\n<div class="bottom-note">After a timeout, read the account to determine whether the requested membership already exists.</div>','Explanatory sequence for the committed-write timeout fixture. Use the recorded native trace next to verify the actual recovery. The actual onboarding_status tool reads account_id. A repeated mutation must reuse its operation_id.')
@@ -137,7 +139,10 @@ slide('gate-detail','The completion gate required a check_work call.','<div clas
 slide('probe-comparison','Compare the added checks with the resulting account state.','<ProbeComparison />','Recorded first-round probe A used the parent harness: get_account, refund_payment, get_account, finish. Probe B used verify_before_finish=true: the same first three calls, a rejected finish, check_work, and an accepted finish. Both independent account checks passed. Tool-call counts are four and six for these development probes, distinct from the later final-evaluation totals. Source: the v0.3.0 rehearsal journal pending/round-1/probe-a and probe-b, linked through the native conversations on the preceding slides.')
 slide('keep','The editor retained the parent after comparing the probes.','<RetainExecution />\n<div class="bottom-note"><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c04f575608c6f43d99e1b7b428a23791">Read the recorded composition rationale ↗</a></div>','Open this saved composition if time allows. The editor’s rationale was that the mandatory gate added work while the parent already produced a correct billing outcome. It retained the parent. The controller still runs the selected configuration because every composition receives a confirming execution, including KEEP. The executable content remains unchanged.')
 exercise('compose','Test the selected harness before carrying it forward.','6 · Improve twice','Request a composition. Read what it kept or changed, test those files, and save the tested version with its lesson and limits.','Compare probes and request a composition → Review and test the composition → Save the tested version and its lesson','The chosen execution matches the decision. If it retained the parent, explain why the files are unchanged.')
-slide('reflection','Save the lesson with the run that supports it.',code('''review = reflect_execution(session, round_number, run, ...)
+slide('reflection','Save the lesson with the run that supports it.',code('''review = reflect_execution(
+    session, round_number, run,
+    tool_writer=my_tool_span, model_writer=my_model_span,
+)
 adopted = {
     "harness": chosen_harness,
     "lesson": review["lesson"],

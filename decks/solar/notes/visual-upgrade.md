@@ -1,6 +1,6 @@
 # Solar deck visual upgrade
 
-The deck keeps the v0.3.1 copy, controls, settings, and recorded v0.3.0 experiment. This is a presentation change, not another experiment.
+The deck keeps the current controls, settings, and recorded v0.3.0 experiment. The fictional lab now prepares for a weekly forecast review: identify the code behind a score, compare forecasts, and test an AI research assistant’s proposed edits. This is a presentation change, not another experiment.
 
 | Concept | Slides | Editable source / evidence | Meaning and text alternative |
 | --- | --- | --- | --- |
@@ -29,3 +29,5 @@ The new figures use the same immutable solar-v1 data and rehearsal workspace as 
 Ten representative diagram/figure frames were rendered in headless Chrome against the local Slidev preview, with no page errors. Full-size review caught and corrected a temporal-filter arrow crossing tensor labels, a misplaced operator in the residual figure, and a GOES annotation touching the axis. Model source and saved weights now enter inference separately. The early training frame uses ordinary squared error; its notes explain that the shared GOES loss mask contains only ones.
 
 Exercise names, controls, source-to-probe matches, retained versions, and numerical results passed the exercise-contract, answer-code, and recorded-evidence checks. All 101 browser slides and PDF pages rendered successfully. Browser checks found no missing images, clipped SVG labels, page errors, or failed asset requests; all eight worked-answer keyboard return paths passed. The PDF contact sheets and representative full-size diagrams were visually reviewed. See `delivery-checks.json` and `pdf-checks.json` for the source hashes and validation records.
+
+The November 14 text review inspected every PDF page through nine contact sheets, then enlarged the revised opening, research-assistant diagram, source capture, and worked answers. It corrected the MLP header touching “Flatten,” candidate headings extending beyond their document boxes, and a worked-answer title that described only the absolute metric while also showing squared training loss. The loss/metric distinction is now printed below the code. The revised scene stays separate from the real observations and recorded results; the final review includes both lower image error and the GOES model’s failure to beat persistence.

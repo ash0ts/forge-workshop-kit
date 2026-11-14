@@ -27,7 +27,7 @@
 .clean-table.mini td{padding:10px 12px;font-size:18px}.clean-table.mini th{padding:10px 12px;font-size:15px}
 
 /* Keep theme rem-based paragraph rules from compressing large text. */
-.slidev-layout p{line-height:1.4!important}.slidev-layout p.hero-number{line-height:1.05!important;margin-bottom:28px}.slidev-layout h2{line-height:1.2!important}.slidev-layout .big{line-height:1.3!important}
+.slidev-layout p{line-height:1.4!important;opacity:1!important}.slidev-layout p.hero-number{line-height:1.05!important;margin-bottom:28px}.slidev-layout h2{line-height:1.2!important}.slidev-layout .big{line-height:1.3!important}
 
 .footer{z-index:20}.slidev-layout pre span{color:#2d5155!important}
 

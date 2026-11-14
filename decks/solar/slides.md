@@ -38,13 +38,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">0:01</div>
 
-# We need a baseline before training a model
+# Prepare a forecast for the lab’s weekly review
 
-<p class="big">Our lab has two weeks of satellite observations and wants to predict what happens next.</p><div class="two-col"><div><h2>Start with the latest observation</h2><p>Compare that forecast with the later observation.</p></div><div><h2>Try a trained model</h2><p>Use earlier observations to learn a forecast. Compare it on the same dates.</p></div></div>
+<div class="lab-assignment"><div class="lab-dialogue"><div class="scene-label">Fictional lab · the principal investigator</div><p>“For this week’s review, bring a forecast we can reproduce.”</p></div><div class="lab-task"><h2>You’re the researcher.</h2><p>Use two weeks of real satellite observations to make a forecast, measure its errors, and save enough information for a colleague to repeat it.</p><p class="aside">Start by testing whether the latest observation already makes a reasonable forecast.</p></div></div>
 
 
 <!--
-The lab is our workshop setting. The data is real: two weeks of satellite observations from February 2014. Before fitting a network, we’ll check how well the current measurement predicts a later one. This gives every trained model a concrete baseline to beat. If a network loses to persistence, we need to investigate its inputs, training, and predictions before claiming progress.
+Our fictional lab has a weekly forecast review. The principal investigator, or PI, wants a result the team can repeat. You are the researcher preparing it. The observations are real and come from February 2014. First we will check whether copying the current measurement predicts the future well enough to beat a trained model. This is a small teaching experiment, not a space-weather service.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -66,13 +66,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">0:03</div>
 
-# A changed score needs an explanation
+# Find the code behind the last score
 
-<p class="big">Suppose the next run has lower error. Did we change the model, train it longer, or use different data?</p><div class="two-col"><div><h2>Record what ran</h2><p>Save the source, active settings, data version, and trained weights.</p></div><div><h2>Compare the predictions</h2><p>Keep the forecast target and test dates fixed so the scores mean the same thing.</p></div></div><div class="bottom-note">In our fictional lab, four notebooks are called final. We’ll save the source with each run.</div>
+<div class="lab-files"><div class="lab-folder"><div class="scene-label">Fictional lab shared folder</div><code>forecast_final.py</code><code>forecast_final_v2.py</code><code>forecast_final_final.py</code><code>forecast_final_USE_THIS.py</code><p>Everyone agrees it was one of these.</p></div><div><h2>What produced the forecast?</h2><p>We need the source, settings, data version, and trained weights.</p><h2>What are we comparing?</h2><p>The predictions must use the same target and test dates.</p></div></div><div class="bottom-note">We’ll save the source with each run, before editing it again.</div>
 
 
 <!--
-A score alone doesn’t tell us why a run changed. A teammate needs the code, settings, data, and weights to repeat it. We’ll save those records as part of the experiment, then use matching prediction cases to inspect the difference. The four notebooks called final are a fictional lab detail, though the problem will probably sound familiar.
+The lab’s previous score has a familiar problem: nobody can identify which notebook produced it. The folder and last week’s review are fictional. Ask what records a colleague would need to repeat the forecast. A file called final is not enough; we need the source, settings, data, and weights used for that execution. Saving those records will also let us test code written by the research agent later.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -335,7 +335,7 @@ def persistence_forecast(split):
 
 
 <!--
-Persistence means predicting that the latest value will stay the same. Solar observations are correlated over time, so this simple baseline can be hard to beat. It gives us a comparison before we spend time training a network.
+Persistence means predicting that the latest value will stay the same. Solar observations are correlated over time, so this simple baseline can be hard to beat. At the lab review, someone will ask why we needed a neural network if copying the last reading worked. We should run that comparison before they ask.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -381,7 +381,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 
 <!--
-Use these as possible explanations for a changed score, not claims about this rehearsal. If code, data, or training time differs, we need to know that before deciding why the score moved.
+A colleague at the review asks which setting changed. These are possible explanations, not claims about this rehearsal. If code, data, or training time differs, we need to know that before deciding why the score moved. Saving the active values answers the question without searching all four final notebooks.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -409,7 +409,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 
 <!--
-The learning rate changed from .001 to .003. Data, source, seed, steps, and batch size stayed the same. Both errors were worse than persistence. Check the predictions before deciding whether the lower error is worth pursuing.
+The learning rate changed from .001 to .003. Data, source, seed, steps, and batch size stayed the same. Both errors were worse than persistence. We can explain the setting change at the review, but we still cannot claim to have beaten the baseline. Check the predictions before deciding what to try next.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -673,11 +673,11 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Ten-minute break
 
-<p class="big">Save your work and take ten minutes.<br>We’ll start the image experiment when we return.</p><div class="bottom-note">The notebook can stay open. There’s no exercise to run during the break.</div>
+<p class="big">Save your work and take ten minutes.<br>We’ll start the image experiment when we return.</p><p>The lab coffee has no validation score. Use your judgment.</p><div class="bottom-note">The notebook can stay open. There’s no exercise to run during the break.</div>
 
 
 <!--
-Take ten minutes. Confirm saved work is visible before leaving. No background experiment is required during the break.
+Take ten minutes. Confirm saved work is visible before leaving. The lab coffee is optional; saving the experiment is worth doing first. No background experiment is required during the break.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -873,11 +873,11 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Use the experiment to test agent-written changes
 
-<SolarComputation mode="evidence" />
+<SolarComputation mode="evidence" /><div class="bottom-note">The lab has recruited an AI research assistant. We still review and test its work.</div>
 
 
 <!--
-So far, we wrote the models and chose their settings ourselves. The next exercise asks a language model to propose changes to that code. It reads the current source, active settings, validation errors, and any failures. We’ll review its proposals and run them through the training and scoring functions we already built. This keeps the agent’s explanation separate from the measured effect of its change.
+The lab now has code, saved experiments, and a comparison we can inspect. The PI suggests bringing in an AI research assistant to propose the next changes. It reads the current source, active settings, validation errors, and any failures. We still review its diffs and run them through the training and scoring functions we built. The new colleague gets no exemption from testing.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -901,11 +901,11 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Limit edits to the model and training code
 
-<div class="two-col"><div><h2>The agent may edit</h2><p>Model layers<br>Feature computation<br>Training loss<br>Training procedure</p></div><div><h2>The experiment keeps fixed</h2><p>Training and validation dates<br>What we predict<br>How we score predictions<br>The reserved final-test dates</p></div></div><div class="bottom-note">Candidate Python runs in this notebook’s environment after your review.</div>
+<div class="two-col"><div><h2>The assistant may edit</h2><p>Model layers<br>Feature computation<br>Training loss<br>Training procedure</p></div><div><h2>The experiment keeps fixed</h2><p>Training and validation dates<br>What we predict<br>How we score predictions<br>The reserved final-test dates</p></div></div><div class="bottom-note">Candidate Python runs in this notebook’s environment after your review.</div>
 
 
 <!--
-The agent can edit feature, model, loss, and training code. It cannot change the date partitions, forecast target, or comparison metric. Review every proposed diff before execution. These training subprocesses are time-limited and do not inherit Forge credentials, but they are not a security sandbox.
+The research assistant can edit feature, model, loss, and training code. It cannot change the date partitions, forecast target, or comparison metric. Review every proposed diff before execution, just as you would for a colleague. These training subprocesses are time-limited and do not inherit Forge credentials, but they are not a security sandbox.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1028,7 +1028,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 
 <!--
-After both probes, the agent receives their code and validation results. It can keep one candidate, combine changes, or retain the starting source. Read its rationale beside the scores. The dashed lines show which results it reviewed; they do not mean that both candidates were merged into the selected code.
+After both probes, the agent receives their code and validation results. It can keep one candidate, combine changes, or retain the starting source. Two suggestions do not obligate the lab to accept two changes. Read its rationale beside the scores. The dashed lines show which results it reviewed; they do not mean both candidates were merged into the selected code.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1146,7 +1146,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 
 <!--
-We used validation dates to choose the model. Save that source and its trained weights together before looking at February thirteenth and fourteenth. Final evaluation loads those weights and predicts the reserved inputs without training or selecting again. If we edit after inspecting these results, we need new reserved dates to test the next claim.
+We have used validation dates to choose the version we will bring to the review. Save that source and its trained weights together before looking at February thirteenth and fourteenth. Final evaluation loads those weights and predicts the reserved inputs without training or selecting again. If we edit after inspecting these results, we need new reserved dates to test the next claim.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1294,13 +1294,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">3:58–4:00</div>
 
-# Use the Report to explain the result and next experiment
+# Bring the results to the lab review
 
-<div class="native-product-evidence"><a class="product-screen visual-v030-solar-report" href="/images/visual-v030-solar-report.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-report.png" alt="Native Report excerpt summarizing the latest Solar technical rehearsal"></a><div class="product-caption"><span>Follow one result to its source and forecast, then propose the next test.</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==">Open the Report ↗</a></div><div class="image-caption">Recorded technical rehearsal. Use your own completed runs when writing your Report.</div></div>
+<div class="native-product-evidence"><a class="product-screen visual-v030-solar-report" href="/images/visual-v030-solar-report.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-report.png" alt="Native Report excerpt summarizing the latest Solar technical rehearsal"></a><div class="product-caption"><span>Bring one result, its saved source, and the next experiment you would try.</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==">Open the Report ↗</a></div><div class="image-caption">Recorded technical rehearsal. Use your own completed runs when writing your Report.</div></div>
 
 
 <!--
-Ask participants to open their Report and follow one result to the source and saved prediction. Their next experiment should address something they observed: for example, longer equal training budgets for the GOES models, or new reserved dates for the selected image change. The recorded image improvement comes from one seed and two test days. It is a starting point for that next experiment.
+Return to the weekly lab review. Ask participants to open their Report and follow one result to its source and saved prediction. In the recorded rehearsal, the selected image model reduced error, while the GOES model still lost to persistence. Both belong in the review. The image result uses one seed and two test days; it needs testing on other dates. Longer equal training budgets are a next GOES experiment, not a result we have already measured. Ask each participant to propose a next test grounded in their own forecast.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1375,7 +1375,7 @@ class: answer-code
 
 <div class="kicker">WORKED ANSWER</div>
 
-# Take the mean of the absolute errors
+# Implement the training loss and forecast metric
 
 ```python
 def training_loss(prediction, target, mask):
@@ -1388,7 +1388,7 @@ assert my_flux_mae(np.ones(3), np.zeros(3)) == 1.0
 assert my_flux_mae(np.zeros(3), np.zeros(3)) == 0.0
 ```
 
-
+<p class="aside">Training uses squared error. Evaluation reports mean absolute error.</p>
 <div class="source-link"><a href="/33">Return to Write the loss and metric →</a></div>
 
 <!--

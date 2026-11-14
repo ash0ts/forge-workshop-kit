@@ -118,7 +118,7 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 
 ## 30. Record each model request and its response.
 
-The LLM span records the requested and returned model identities, input and output messages, timing, settings, and available usage. Open my_model_span for the full message mapping; this slide abbreviates the comprehensions. In Agent Lens, find the request after an account lookup and verify that its input contains the returned payments.
+The LLM span records the requested and returned model identities, input and output messages, timing, settings, and available usage. Entering the span context creates and closes the recorded span; constructing the object alone is insufficient. Open my_model_span for the full message mapping and usage handling; this slide abbreviates the comprehensions. Add usage only when the provider returned it. In Agent Lens, find the request after an account lookup and verify that its input contains the returned payments.
 
 ## 31. Provision Alex’s membership through the MCP tools.
 

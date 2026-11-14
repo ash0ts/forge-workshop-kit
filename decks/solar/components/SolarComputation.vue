@@ -40,7 +40,7 @@ const samples=Array.from({length:60},(_,i)=>i)
  <text x="25" y="372" class="small">A 0.3 log10 error is about a 2× flux ratio. The sign is removed before averaging.</text>
 </g>
 <g v-else-if="mode==='mlp'||mode==='cnn'">
- <text x="25" y="25" class="label">ONE GOES INPUT WINDOW · BATCH DIMENSION OMITTED</text>
+ <text x="25" y="25" class="label">GOES INPUT · BATCH AXIS OMITTED</text>
  <text x="25" y="79">XRSA</text><text x="25" y="116">XRSB</text>
  <g v-for="i in samples" :key="i"><rect :x="112+i*4" y="58" width="3" height="27" :fill="mode==='cnn'&&i>=22&&i<27?'#b57339':'#8fb2a4'"/><rect :x="112+i*4" y="95" width="3" height="27" :fill="mode==='cnn'&&i>=22&&i<27?'#b57339':'#52776d'"/></g>
  <text x="112" y="155" class="small">60 time samples →</text><text x="112" y="182" class="mono">shape: [2, 60]</text>
@@ -107,7 +107,7 @@ const samples=Array.from({length:60},(_,i)=>i)
  <path d="M25 45H300L325 70V280H25Z" fill="#e7e3d7" stroke="#9bad9e"/><text x="48" y="88" class="mono">candidate.py</text><text x="48" y="128">Active settings</text><text x="48" y="168">Validation errors + losses</text><text x="48" y="208">Failed attempts + lesson</text><text x="48" y="253" class="small">select_validation_evidence(...)</text>
  <path d="M340 159H420" class="arrow"/><rect x="440" y="94" width="220" height="130" rx="6" fill="#163c43"/><text x="550" y="135" text-anchor="middle" class="white">Research agent</text><text x="550" y="174" text-anchor="middle" class="small white">Fixed language model</text><text x="550" y="203" text-anchor="middle" class="small white">reads → proposes</text>
  <path d="M675 159C715 159 708 84 752 84M675 159C715 159 708 253 752 253" class="arrow"/>
- <g v-for="(letter,i) in ['A','B']" :key="letter" :transform="`translate(770 ${35+i*169})`"><path d="M0 0H285V112H0Z" fill="#f9f6ec" stroke="#9bad9e"/><text x="18" y="28">Candidate {{letter}} · diff to review</text><text x="18" y="58" class="mono deletion">− previous implementation</text><text x="18" y="86" class="mono addition">+ proposed implementation</text></g>
+ <g v-for="(letter,i) in ['A','B']" :key="letter" :transform="`translate(770 ${35+i*169})`"><path d="M0 0H285V112H0Z" fill="#f9f6ec" stroke="#9bad9e"/><text x="18" y="28">Candidate {{letter}} · review diff</text><text x="18" y="58" class="mono deletion">− previous implementation</text><text x="18" y="86" class="mono addition">+ proposed implementation</text></g>
  <text x="25" y="327" class="small">Final-test records are rejected before this request.</text><text x="770" y="352" class="small">You review each diff before training.</text>
  <text x="25" y="376" class="label">WORKFLOW DIAGRAM · THE NEXT SLIDES SHOW THE RECORDED CHANGES</text>
 </g>

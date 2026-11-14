@@ -15,9 +15,9 @@
     {
       "number": 2,
       "key": "arrival",
-      "title": "We need a baseline before training a model",
-      "body": "<p class=\"big\">Our lab has two weeks of satellite observations and wants to predict what happens next.</p><div class=\"two-col\"><div><h2>Start with the latest observation</h2><p>Compare that forecast with the later observation.</p></div><div><h2>Try a trained model</h2><p>Use earlier observations to learn a forecast. Compare it on the same dates.</p></div></div>",
-      "notes": "The lab is our workshop setting. The data is real: two weeks of satellite observations from February 2014. Before fitting a network, we\u2019ll check how well the current measurement predicts a later one. This gives every trained model a concrete baseline to beat. If a network loses to persistence, we need to investigate its inputs, training, and predictions before claiming progress.",
+      "title": "Prepare a forecast for the lab\u2019s weekly review",
+      "body": "<div class=\"lab-assignment\"><div class=\"lab-dialogue\"><div class=\"scene-label\">Fictional lab \u00b7 the principal investigator</div><p>\u201cFor this week\u2019s review, bring a forecast we can reproduce.\u201d</p></div><div class=\"lab-task\"><h2>You\u2019re the researcher.</h2><p>Use two weeks of real satellite observations to make a forecast, measure its errors, and save enough information for a colleague to repeat it.</p><p class=\"aside\">Start by testing whether the latest observation already makes a reasonable forecast.</p></div></div>",
+      "notes": "Our fictional lab has a weekly forecast review. The principal investigator, or PI, wants a result the team can repeat. You are the researcher preparing it. The observations are real and come from February 2014. First we will check whether copying the current measurement predicts the future well enough to beat a trained model. This is a small teaching experiment, not a space-weather service.",
       "kind": "",
       "time": "0:01",
       "answer": null
@@ -35,9 +35,9 @@
     {
       "number": 4,
       "key": "research-question",
-      "title": "A changed score needs an explanation",
-      "body": "<p class=\"big\">Suppose the next run has lower error. Did we change the model, train it longer, or use different data?</p><div class=\"two-col\"><div><h2>Record what ran</h2><p>Save the source, active settings, data version, and trained weights.</p></div><div><h2>Compare the predictions</h2><p>Keep the forecast target and test dates fixed so the scores mean the same thing.</p></div></div><div class=\"bottom-note\">In our fictional lab, four notebooks are called final. We\u2019ll save the source with each run.</div>",
-      "notes": "A score alone doesn\u2019t tell us why a run changed. A teammate needs the code, settings, data, and weights to repeat it. We\u2019ll save those records as part of the experiment, then use matching prediction cases to inspect the difference. The four notebooks called final are a fictional lab detail, though the problem will probably sound familiar.",
+      "title": "Find the code behind the last score",
+      "body": "<div class=\"lab-files\"><div class=\"lab-folder\"><div class=\"scene-label\">Fictional lab shared folder</div><code>forecast_final.py</code><code>forecast_final_v2.py</code><code>forecast_final_final.py</code><code>forecast_final_USE_THIS.py</code><p>Everyone agrees it was one of these.</p></div><div><h2>What produced the forecast?</h2><p>We need the source, settings, data version, and trained weights.</p><h2>What are we comparing?</h2><p>The predictions must use the same target and test dates.</p></div></div><div class=\"bottom-note\">We\u2019ll save the source with each run, before editing it again.</div>",
+      "notes": "The lab\u2019s previous score has a familiar problem: nobody can identify which notebook produced it. The folder and last week\u2019s review are fictional. Ask what records a colleague would need to repeat the forecast. A file called final is not enough; we need the source, settings, data, and weights used for that execution. Saving those records will also let us test code written by the research agent later.",
       "kind": "",
       "time": "0:03",
       "answer": null
@@ -197,7 +197,7 @@
       "key": "persistence",
       "title": "Start by copying the latest reading",
       "body": "```python\ndef persistence_forecast(split):\n    # Latest observed value becomes the future prediction.\n    ...\n```\n\n<p class=\"big\">Predict flux 30 minutes ahead by copying the latest reading.</p><div class=\"bottom-note\">This uses only a reading we already have. It does not look at the future target.</div><div class=\"code-contract compact-contract\"><span><strong>Input:</strong> The latest observed reading in each window</span><span><strong>Output:</strong> One 30-minute-ahead prediction per window</span></div>",
-      "notes": "Persistence means predicting that the latest value will stay the same. Solar observations are correlated over time, so this simple baseline can be hard to beat. It gives us a comparison before we spend time training a network.",
+      "notes": "Persistence means predicting that the latest value will stay the same. Solar observations are correlated over time, so this simple baseline can be hard to beat. At the lab review, someone will ask why we needed a neural network if copying the last reading worked. We should run that comparison before they ask.",
       "kind": "",
       "time": "0:27",
       "answer": null
@@ -227,7 +227,7 @@
       "key": "number",
       "title": "Save what changed between runs",
       "body": "<p class=\"big\">Suppose a second run has a lower validation error. What changed?</p><div class=\"step-path\"><div><h2>Code</h2><p>You changed the loss function.</p></div><div><h2>Data</h2><p>You excluded an incomplete window.</p></div><div><h2>Settings</h2><p>You trained for more steps.</p></div></div><div class=\"bottom-note\">Save these differences so someone else can repeat the comparison.</div>",
-      "notes": "Use these as possible explanations for a changed score, not claims about this rehearsal. If code, data, or training time differs, we need to know that before deciding why the score moved.",
+      "notes": "A colleague at the review asks which setting changed. These are possible explanations, not claims about this rehearsal. If code, data, or training time differs, we need to know that before deciding why the score moved. Saving the active values answers the question without searching all four final notebooks.",
       "kind": "",
       "time": "0:40",
       "answer": null
@@ -247,7 +247,7 @@
       "key": "run-inspector-reveal",
       "title": "These runs used different learning rates",
       "body": "<RunInspector :revealed=\"true\" />",
-      "notes": "The learning rate changed from .001 to .003. Data, source, seed, steps, and batch size stayed the same. Both errors were worse than persistence. Check the predictions before deciding whether the lower error is worth pursuing.",
+      "notes": "The learning rate changed from .001 to .003. Data, source, seed, steps, and batch size stayed the same. Both errors were worse than persistence. We can explain the setting change at the review, but we still cannot claim to have beaten the baseline. Check the predictions before deciding what to try next.",
       "kind": "",
       "time": "0:42",
       "answer": null
@@ -416,8 +416,8 @@
       "number": 42,
       "key": "break",
       "title": "Ten-minute break",
-      "body": "<p class=\"big\">Save your work and take ten minutes.<br>We\u2019ll start the image experiment when we return.</p><div class=\"bottom-note\">The notebook can stay open. There\u2019s no exercise to run during the break.</div>",
-      "notes": "Take ten minutes. Confirm saved work is visible before leaving. No background experiment is required during the break.",
+      "body": "<p class=\"big\">Save your work and take ten minutes.<br>We\u2019ll start the image experiment when we return.</p><p>The lab coffee has no validation score. Use your judgment.</p><div class=\"bottom-note\">The notebook can stay open. There\u2019s no exercise to run during the break.</div>",
+      "notes": "Take ten minutes. Confirm saved work is visible before leaving. The lab coffee is optional; saving the experiment is worth doing first. No background experiment is required during the break.",
       "kind": "",
       "time": "1:30\u20131:40",
       "answer": null
@@ -546,8 +546,8 @@
       "number": 55,
       "key": "agent-need",
       "title": "Use the experiment to test agent-written changes",
-      "body": "<SolarComputation mode=\"evidence\" />",
-      "notes": "So far, we wrote the models and chose their settings ourselves. The next exercise asks a language model to propose changes to that code. It reads the current source, active settings, validation errors, and any failures. We\u2019ll review its proposals and run them through the training and scoring functions we already built. This keeps the agent\u2019s explanation separate from the measured effect of its change.",
+      "body": "<SolarComputation mode=\"evidence\" /><div class=\"bottom-note\">The lab has recruited an AI research assistant. We still review and test its work.</div>",
+      "notes": "The lab now has code, saved experiments, and a comparison we can inspect. The PI suggests bringing in an AI research assistant to propose the next changes. It reads the current source, active settings, validation errors, and any failures. We still review its diffs and run them through the training and scoring functions we built. The new colleague gets no exemption from testing.",
       "kind": "",
       "time": "2:15",
       "answer": null
@@ -566,8 +566,8 @@
       "number": 57,
       "key": "boundaries",
       "title": "Limit edits to the model and training code",
-      "body": "<div class=\"two-col\"><div><h2>The agent may edit</h2><p>Model layers<br>Feature computation<br>Training loss<br>Training procedure</p></div><div><h2>The experiment keeps fixed</h2><p>Training and validation dates<br>What we predict<br>How we score predictions<br>The reserved final-test dates</p></div></div><div class=\"bottom-note\">Candidate Python runs in this notebook\u2019s environment after your review.</div>",
-      "notes": "The agent can edit feature, model, loss, and training code. It cannot change the date partitions, forecast target, or comparison metric. Review every proposed diff before execution. These training subprocesses are time-limited and do not inherit Forge credentials, but they are not a security sandbox.",
+      "body": "<div class=\"two-col\"><div><h2>The assistant may edit</h2><p>Model layers<br>Feature computation<br>Training loss<br>Training procedure</p></div><div><h2>The experiment keeps fixed</h2><p>Training and validation dates<br>What we predict<br>How we score predictions<br>The reserved final-test dates</p></div></div><div class=\"bottom-note\">Candidate Python runs in this notebook\u2019s environment after your review.</div>",
+      "notes": "The research assistant can edit feature, model, loss, and training code. It cannot change the date partitions, forecast target, or comparison metric. Review every proposed diff before execution, just as you would for a colleague. These training subprocesses are time-limited and do not inherit Forge credentials, but they are not a security sandbox.",
       "kind": "",
       "time": "2:19",
       "answer": null
@@ -647,7 +647,7 @@
       "key": "compose",
       "title": "Choose or combine changes using the probe results",
       "body": "<ResearchBranches :level=\"3\" /><div class=\"bottom-note\">The agent can keep A, keep B, combine changes, or retain the starting code.</div>",
-      "notes": "After both probes, the agent receives their code and validation results. It can keep one candidate, combine changes, or retain the starting source. Read its rationale beside the scores. The dashed lines show which results it reviewed; they do not mean that both candidates were merged into the selected code.",
+      "notes": "After both probes, the agent receives their code and validation results. It can keep one candidate, combine changes, or retain the starting source. Two suggestions do not obligate the lab to accept two changes. Read its rationale beside the scores. The dashed lines show which results it reviewed; they do not mean both candidates were merged into the selected code.",
       "kind": "",
       "time": "2:44",
       "answer": null
@@ -727,7 +727,7 @@
       "key": "freeze",
       "title": "Keep the selected code and weights fixed for final evaluation",
       "body": "<SolarComputation mode=\"inference\" />",
-      "notes": "We used validation dates to choose the model. Save that source and its trained weights together before looking at February thirteenth and fourteenth. Final evaluation loads those weights and predicts the reserved inputs without training or selecting again. If we edit after inspecting these results, we need new reserved dates to test the next claim.",
+      "notes": "We have used validation dates to choose the version we will bring to the review. Save that source and its trained weights together before looking at February thirteenth and fourteenth. Final evaluation loads those weights and predicts the reserved inputs without training or selecting again. If we edit after inspecting these results, we need new reserved dates to test the next claim.",
       "kind": "",
       "time": "3:17",
       "answer": null
@@ -825,9 +825,9 @@
     {
       "number": 83,
       "key": "close",
-      "title": "Use the Report to explain the result and next experiment",
-      "body": "<div class=\"native-product-evidence\"><a class=\"product-screen visual-v030-solar-report\" href=\"/images/visual-v030-solar-report.png\" target=\"_blank\" aria-label=\"Open full-size capture\"><img src=\"/images/visual-v030-solar-report.png\" alt=\"Native Report excerpt summarizing the latest Solar technical rehearsal\"></a><div class=\"product-caption\"><span>Follow one result to its source and forecast, then propose the next test.</span><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==\">Open the Report \u2197</a></div><div class=\"image-caption\">Recorded technical rehearsal. Use your own completed runs when writing your Report.</div></div>",
-      "notes": "Ask participants to open their Report and follow one result to the source and saved prediction. Their next experiment should address something they observed: for example, longer equal training budgets for the GOES models, or new reserved dates for the selected image change. The recorded image improvement comes from one seed and two test days. It is a starting point for that next experiment.",
+      "title": "Bring the results to the lab review",
+      "body": "<div class=\"native-product-evidence\"><a class=\"product-screen visual-v030-solar-report\" href=\"/images/visual-v030-solar-report.png\" target=\"_blank\" aria-label=\"Open full-size capture\"><img src=\"/images/visual-v030-solar-report.png\" alt=\"Native Report excerpt summarizing the latest Solar technical rehearsal\"></a><div class=\"product-caption\"><span>Bring one result, its saved source, and the next experiment you would try.</span><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==\">Open the Report \u2197</a></div><div class=\"image-caption\">Recorded technical rehearsal. Use your own completed runs when writing your Report.</div></div>",
+      "notes": "Return to the weekly lab review. Ask participants to open their Report and follow one result to its source and saved prediction. In the recorded rehearsal, the selected image model reduced error, while the GOES model still lost to persistence. Both belong in the review. The image result uses one seed and two test days; it needs testing on other dates. Longer equal training budgets are a next GOES experiment, not a result we have already measured. Ask each participant to propose a next test grounded in their own forecast.",
       "kind": "",
       "time": "3:58\u20134:00",
       "answer": null
@@ -865,8 +865,8 @@
     {
       "number": 87,
       "key": "answer-flux",
-      "title": "Take the mean of the absolute errors",
-      "body": "```python\ndef training_loss(prediction, target, mask):\n    return ((prediction - target).square() * mask).sum() / mask.sum()\n\ndef my_flux_mae(prediction, target):\n    return float(np.abs(prediction - target).mean())\n\nassert my_flux_mae(np.ones(3), np.zeros(3)) == 1.0\nassert my_flux_mae(np.zeros(3), np.zeros(3)) == 0.0\n```\n\n",
+      "title": "Implement the training loss and forecast metric",
+      "body": "```python\ndef training_loss(prediction, target, mask):\n    return ((prediction - target).square() * mask).sum() / mask.sum()\n\ndef my_flux_mae(prediction, target):\n    return float(np.abs(prediction - target).mean())\n\nassert my_flux_mae(np.ones(3), np.zeros(3)) == 1.0\nassert my_flux_mae(np.zeros(3), np.zeros(3)) == 0.0\n```\n\n<p class=\"aside\">Training uses squared error. Evaluation reports mean absolute error.</p>",
       "notes": "Subtract prediction and target, take absolute values, and average. A prediction of one against a target of zero gives one. These are log10 flux units. The training loss above it is separate and uses squared error.",
       "kind": "answer-code",
       "time": "WORKED ANSWER",

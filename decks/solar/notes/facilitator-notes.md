@@ -6,11 +6,11 @@
 
 We’re going to use satellite observations to forecast X-ray flux thirty minutes ahead and solar images one hour ahead. We’ll start with persistence, train a few small models, and record enough information to compare their results. Once that comparison works, we’ll let an agent modify the training code and test whether its changes reduce forecast error. The small models and short training runs fit a CPU workshop; this is not an operational solar forecast.
 
-## 2. We need a baseline before training a model
+## 2. Prepare a forecast for the lab’s weekly review
 
 0:01
 
-The lab is our workshop setting. The data is real: two weeks of satellite observations from February 2014. Before fitting a network, we’ll check how well the current measurement predicts a later one. This gives every trained model a concrete baseline to beat. If a network loses to persistence, we need to investigate its inputs, training, and predictions before claiming progress.
+Our fictional lab has a weekly forecast review. The principal investigator, or PI, wants a result the team can repeat. You are the researcher preparing it. The observations are real and come from February 2014. First we will check whether copying the current measurement predicts the future well enough to beat a trained model. This is a small teaching experiment, not a space-weather service.
 
 ## 3. Two forecasts from real solar observations
 
@@ -18,11 +18,11 @@ The lab is our workshop setting. The data is real: two weeks of satellite observ
 
 Read the instruments before discussing models. The left plot measures solar X-ray flux; the right image records extreme-ultraviolet light at 171 Å. These are real February 2014 observations, prepared at a small scale for CPU teaching. The image uses false color. We are testing forecasts, not predicting a reliable flare warning.
 
-## 4. A changed score needs an explanation
+## 4. Find the code behind the last score
 
 0:03
 
-A score alone doesn’t tell us why a run changed. A teammate needs the code, settings, data, and weights to repeat it. We’ll save those records as part of the experiment, then use matching prediction cases to inspect the difference. The four notebooks called final are a fictional lab detail, though the problem will probably sound familiar.
+The lab’s previous score has a familiar problem: nobody can identify which notebook produced it. The folder and last week’s review are fictional. Ask what records a colleague would need to repeat the forecast. A file called final is not enough; we need the source, settings, data, and weights used for that execution. Saving those records will also let us test code written by the research agent later.
 
 ## 5. What you’ll implement in the notebook
 
@@ -118,7 +118,7 @@ Give participants six minutes. Have them explain one forecast window to a neighb
 
 0:27
 
-Persistence means predicting that the latest value will stay the same. Solar observations are correlated over time, so this simple baseline can be hard to beat. It gives us a comparison before we spend time training a network.
+Persistence means predicting that the latest value will stay the same. Solar observations are correlated over time, so this simple baseline can be hard to beat. At the lab review, someone will ask why we needed a neural network if copying the last reading worked. We should run that comparison before they ask.
 
 ## 21. Measure how far the prediction missed
 
@@ -136,7 +136,7 @@ Allow ten minutes. Let participants attempt the function before opening the answ
 
 0:40
 
-Use these as possible explanations for a changed score, not claims about this rehearsal. If code, data, or training time differs, we need to know that before deciding why the score moved.
+A colleague at the review asks which setting changed. These are possible explanations, not claims about this rehearsal. If code, data, or training time differs, we need to know that before deciding why the score moved. Saving the active values answers the question without searching all four final notebooks.
 
 ## 24. Which setting changed between these runs?
 
@@ -148,7 +148,7 @@ These are two recorded GOES runs. Before revealing the settings, ask what the sc
 
 0:42
 
-The learning rate changed from .001 to .003. Data, source, seed, steps, and batch size stayed the same. Both errors were worse than persistence. Check the predictions before deciding whether the lower error is worth pursuing.
+The learning rate changed from .001 to .003. Data, source, seed, steps, and batch size stayed the same. Both errors were worse than persistence. We can explain the setting change at the review, but we still cannot claim to have beaten the baseline. Check the predictions before deciding what to try next.
 
 ## 26. How an observation becomes a prediction
 
@@ -250,7 +250,7 @@ Allow fifteen minutes. Ask participants to predict which configuration will win 
 
 1:30–1:40
 
-Take ten minutes. Confirm saved work is visible before leaving. No background experiment is required during the break.
+Take ten minutes. Confirm saved work is visible before leaving. The lab coffee is optional; saving the experiment is worth doing first. No background experiment is required during the break.
 
 ## 43. Predict the solar image one hour ahead
 
@@ -328,7 +328,7 @@ Give participants twenty minutes. Start with the local scorer examples, then tra
 
 2:15
 
-So far, we wrote the models and chose their settings ourselves. The next exercise asks a language model to propose changes to that code. It reads the current source, active settings, validation errors, and any failures. We’ll review its proposals and run them through the training and scoring functions we already built. This keeps the agent’s explanation separate from the measured effect of its change.
+The lab now has code, saved experiments, and a comparison we can inspect. The PI suggests bringing in an AI research assistant to propose the next changes. It reads the current source, active settings, validation errors, and any failures. We still review its diffs and run them through the training and scoring functions we built. The new colleague gets no exemption from testing.
 
 ## 56. Which model is being trained?
 
@@ -340,7 +340,7 @@ The language model and the forecasting network have different roles. GLM writes 
 
 2:19
 
-The agent can edit feature, model, loss, and training code. It cannot change the date partitions, forecast target, or comparison metric. Review every proposed diff before execution. These training subprocesses are time-limited and do not inherit Forge credentials, but they are not a security sandbox.
+The research assistant can edit feature, model, loss, and training code. It cannot change the date partitions, forecast target, or comparison metric. Review every proposed diff before execution, just as you would for a colleague. These training subprocesses are time-limited and do not inherit Forge credentials, but they are not a security sandbox.
 
 ## 58. Give the agent the inputs needed to explain a run
 
@@ -388,7 +388,7 @@ Train each candidate on the same training dates and compare its validation error
 
 2:44
 
-After both probes, the agent receives their code and validation results. It can keep one candidate, combine changes, or retain the starting source. Read its rationale beside the scores. The dashed lines show which results it reviewed; they do not mean that both candidates were merged into the selected code.
+After both probes, the agent receives their code and validation results. It can keep one candidate, combine changes, or retain the starting source. Two suggestions do not obligate the lab to accept two changes. Read its rationale beside the scores. The dashed lines show which results it reviewed; they do not mean both candidates were merged into the selected code.
 
 ## 66. Train the composed version before adopting it
 
@@ -436,7 +436,7 @@ Click a candidate, its test, and the selection step. Follow the source change to
 
 3:17
 
-We used validation dates to choose the model. Save that source and its trained weights together before looking at February thirteenth and fourteenth. Final evaluation loads those weights and predicts the reserved inputs without training or selecting again. If we edit after inspecting these results, we need new reserved dates to test the next claim.
+We have used validation dates to choose the version we will bring to the review. Save that source and its trained weights together before looking at February thirteenth and fourteenth. Final evaluation loads those weights and predicts the reserved inputs without training or selecting again. If we edit after inspecting these results, we need new reserved dates to test the next claim.
 
 ## 74. Load the saved weights to make final predictions
 
@@ -492,11 +492,11 @@ This is execution-f7550caa1639e8366efbf9d84a782289, the exact selected round-two
 
 Allow eight minutes. Ask participants to name a change, report what happened, and include a remaining miss. A negative result is fine. If publication fails, save the conclusion and retry the upload without rerunning the experiment.
 
-## 83. Use the Report to explain the result and next experiment
+## 83. Bring the results to the lab review
 
 3:58–4:00
 
-Ask participants to open their Report and follow one result to the source and saved prediction. Their next experiment should address something they observed: for example, longer equal training budgets for the GOES models, or new reserved dates for the selected image change. The recorded image improvement comes from one seed and two test days. It is a starting point for that next experiment.
+Return to the weekly lab review. Ask participants to open their Report and follow one result to its source and saved prediction. In the recorded rehearsal, the selected image model reduced error, while the GOES model still lost to persistence. Both belong in the review. The image result uses one seed and two test days; it needs testing on other dates. Longer equal training budgets are a next GOES experiment, not a result we have already measured. Ask each participant to propose a next test grounded in their own forecast.
 
 ## 84. Reference and worked answers
 
@@ -516,7 +516,7 @@ WORKED ANSWER
 
 The prepared split includes the last observed reading for each forecast window. Return a copy so later changes to the prediction array cannot alter the dataset.
 
-## 87. Take the mean of the absolute errors
+## 87. Implement the training loss and forecast metric
 
 WORKED ANSWER
 
