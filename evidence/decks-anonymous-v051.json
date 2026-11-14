@@ -1,0 +1,181 @@
+{
+  "release": "v0.5.1",
+  "checked_at": "2026-11-14T17:39:41.996238+00:00",
+  "anonymous": true,
+  "authorization_headers": false,
+  "cookies": false,
+  "checks": [
+    {
+      "url": "https://ash0ts.github.io/forge-workshop-kit/pending/",
+      "status": 200,
+      "assets": [
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/assets/index-CwQihBIj.js",
+          "status": 200,
+          "bytes": 194823
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/assets/index-IG8yB_7_.css",
+          "status": 200,
+          "bytes": 160086
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/assets/modules/shiki-V4-KMA-J.css",
+          "status": 200,
+          "bytes": 15321
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/assets/modules/shiki-qO-XvnXj.js",
+          "status": 200,
+          "bytes": 226883
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/assets/modules/vue-DCDkXXP_.js",
+          "status": 200,
+          "bytes": 82326
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/assets/rolldown-runtime-XKyaHtl9.js",
+          "status": 200,
+          "bytes": 726
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/assets/slidev/utils-DTK0bR52.js",
+          "status": 200,
+          "bytes": 3963
+        }
+      ],
+      "pdf_bytes": 995003,
+      "native_capture_matches": true
+    },
+    {
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/",
+      "status": 200,
+      "assets": [
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/assets/index-Bfx73tar.css",
+          "status": 200,
+          "bytes": 137335
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/assets/index-x174qkHj.js",
+          "status": 200,
+          "bytes": 223493
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/assets/modules/shiki-CYI7Adj5.js",
+          "status": 200,
+          "bytes": 226892
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/assets/modules/shiki-V4-KMA-J.css",
+          "status": 200,
+          "bytes": 15321
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/assets/modules/vue-C0NV1Bja.js",
+          "status": 200,
+          "bytes": 82328
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/assets/rolldown-runtime-XKyaHtl9.js",
+          "status": 200,
+          "bytes": 726
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/assets/slidev/utils-DxvQ5Ajh.js",
+          "status": 200,
+          "bytes": 3949
+        }
+      ],
+      "pdf_bytes": 1876158,
+      "native_capture_matches": true
+    },
+    {
+      "url": "https://ash0ts.github.io/forge-workshop-kit/routing/",
+      "status": 200,
+      "assets": [
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/assets/index-BAOGqXOK.js",
+          "status": 200,
+          "bytes": 142558
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/assets/index-GKNyE136.css",
+          "status": 200,
+          "bytes": 115027
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/assets/modules/shiki-DiGHlfiA.js",
+          "status": 200,
+          "bytes": 226874
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/assets/modules/shiki-V4-KMA-J.css",
+          "status": 200,
+          "bytes": 15321
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/assets/modules/vue-mzUzpaw1.js",
+          "status": 200,
+          "bytes": 82326
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/assets/rolldown-runtime-XKyaHtl9.js",
+          "status": 200,
+          "bytes": 726
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/assets/slidev/utils-yRVj045b.js",
+          "status": 200,
+          "bytes": 3900
+        }
+      ],
+      "pdf_bytes": 343321,
+      "native_capture_matches": true
+    },
+    {
+      "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/",
+      "status": 200,
+      "assets": [
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/assets/index-DrTqhxlH.js",
+          "status": 200,
+          "bytes": 140818
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/assets/index-oN2yeWnz.css",
+          "status": 200,
+          "bytes": 114341
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/assets/modules/shiki-DiGHlfiA.js",
+          "status": 200,
+          "bytes": 226874
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/assets/modules/shiki-V4-KMA-J.css",
+          "status": 200,
+          "bytes": 15321
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/assets/modules/vue-mzUzpaw1.js",
+          "status": 200,
+          "bytes": 82326
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/assets/rolldown-runtime-XKyaHtl9.js",
+          "status": 200,
+          "bytes": 726
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/assets/slidev/utils-BdmHwNxD.js",
+          "status": 200,
+          "bytes": 3900
+        }
+      ],
+      "pdf_bytes": 1352001,
+      "native_capture_matches": true
+    }
+  ]
+}

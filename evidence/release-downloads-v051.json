@@ -1,0 +1,225 @@
+{
+  "release": "v0.5.1",
+  "checked_at": "2026-11-14T17:31:25.061759+00:00",
+  "anonymous": true,
+  "authorization_headers": false,
+  "cookies": false,
+  "checks": [
+    {
+      "file": "facilitator.html",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/facilitator.html",
+      "bytes": 43103,
+      "sha256": "07eddd29f9a5f36400236fedf8e41f274d5ae3de6035cb7f505446c02c180486",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "facilitator.py",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/facilitator.py",
+      "bytes": 8462,
+      "sha256": "4e0bc1c5ea90fb438cad2e7e3bb19d1cbd27df4eb904e8a7a877fc6a87af3625",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "forge_workshop_kit-0.5.1-py3-none-any.whl",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/forge_workshop_kit-0.5.1-py3-none-any.whl",
+      "bytes": 200341,
+      "sha256": "ad309157432ada1ffcd302e74c16d39e42b5439b0beb524cb93f1d4a5b921b9d",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "forge_workshop_kit-0.5.1.tar.gz",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/forge_workshop_kit-0.5.1.tar.gz",
+      "bytes": 979567,
+      "sha256": "a5cb49a343848095af137b98ae5ac69df22be40f664767c3a8f7a07a1c3c4da3",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "pending_inc.html",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/pending_inc.html",
+      "bytes": 172209,
+      "sha256": "dbca3e4e211c8f822e75f0498c008a4bf6743ffbee2d3d9eb14ea26b584bbb85",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "pending_inc.py",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/pending_inc.py",
+      "bytes": 65923,
+      "sha256": "649c9e18b3c374b936972149e86a0bfe9c8e5bf76f8670c369e13f59ee0e33d7",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "release-manifest.json",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/release-manifest.json",
+      "bytes": 3282,
+      "sha256": "1949f0d0717427ee3a55eaffbacde43ff8e6448f1ba07781211b15632d4f41d6",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "request_routing.html",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/request_routing.html",
+      "bytes": 161970,
+      "sha256": "c2ca5509a5f14cc946fb90f08f652c09517446d63f875e57d6cb3cb8a370ab9d",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "request_routing.py",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/request_routing.py",
+      "bytes": 50402,
+      "sha256": "4db0874da24a2e5b4c4cf70fc8d1c167635dde02c29e5eb4081b9925fd86326c",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "solar_autoresearch.html",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/solar_autoresearch.html",
+      "bytes": 190551,
+      "sha256": "5b849f1c385604fa26b116d42f5289c638f3617c4e6aae34d3bb72f7ce4b782a",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "solar_autoresearch.py",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/solar_autoresearch.py",
+      "bytes": 98951,
+      "sha256": "cfc9dd0ecfb5d1e6f17672c3a292860c7748a67e6414c1653e4f22572a6925ee",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "starter.html",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/starter.html",
+      "bytes": 36231,
+      "sha256": "73f1ff0e9296650c81ed611a39e16868691dc5a2817e7a3c4f82ae14580abc55",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "starter.py",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/starter.py",
+      "bytes": 5742,
+      "sha256": "4a4a441f36fc62962df25d4c0bfe3d2d8c4e962591a7782ca539e82f748244f5",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "visual_inspection.html",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/visual_inspection.html",
+      "bytes": 164768,
+      "sha256": "d6566e165d235bb803dc351cf3ff741ffb831179f34a1f47f89b848ef598d9f2",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "visual_inspection.py",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/visual_inspection.py",
+      "bytes": 50418,
+      "sha256": "8378f7ea61d462b095ef950c3937a65bfd0196ed258e1c86a1f4cc2e95e344a2",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "pending-inc-browser.zip",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/pending-inc-browser.zip",
+      "bytes": 2559982,
+      "sha256": "f82e39993e9dc8428daed48d785154fa10281e3e80abbd4e1388deaa6a81df11",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "pending-inc-source.zip",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/pending-inc-source.zip",
+      "bytes": 836529,
+      "sha256": "a0a714757fc01618e2662e43456730a4d31ce2ec30aef1288e085952a2fb19fc",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "pending-inc.pdf",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/pending-inc.pdf",
+      "bytes": 1104801,
+      "sha256": "9f5c16b5bfcffac32b981bb24903bacb922457f18c95d245a89e78b8223d1395",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "request-routing-browser.zip",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/request-routing-browser.zip",
+      "bytes": 1181931,
+      "sha256": "a3a830edb81c1314e05312915b2d1c58deebee93296ade6e5db40afc0e44b9d6",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "request-routing-source.zip",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/request-routing-source.zip",
+      "bytes": 350419,
+      "sha256": "72d68081df61482edee7637ea0f2881409786cf26ae9ca9f52147a3e70fbe448",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "request-routing.pdf",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/request-routing.pdf",
+      "bytes": 391890,
+      "sha256": "9a8d22855be434e5919eaaeace73c335fbdab7d7b9bc7131c0d7ceac223355ac",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "solar-autoresearch-browser.zip",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/solar-autoresearch-browser.zip",
+      "bytes": 5944117,
+      "sha256": "62c9a0e0911fa6c0d13d199346860855bebd6c2706c8dedd06a1f9c97faf4d6b",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "solar-autoresearch-source.zip",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/solar-autoresearch-source.zip",
+      "bytes": 5152493,
+      "sha256": "c65ddd652992fa31fab61e50d86537e609ff2f32234de1001f0f537f12da9f67",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "solar-autoresearch.pdf",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/solar-autoresearch.pdf",
+      "bytes": 1993117,
+      "sha256": "572c7cd41ac71de1be51f9d4010333c1d44a08f3408ee1cb84c9c5e13202f612",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "visual-inspection-browser.zip",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/visual-inspection-browser.zip",
+      "bytes": 1820134,
+      "sha256": "fc7509c12641aa9bd5a7678847c838346ab6b0fc79a530c5bf04a63d8da005a5",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "visual-inspection-source.zip",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/visual-inspection-source.zip",
+      "bytes": 990281,
+      "sha256": "14832ac3d573b3fe7e94fc0d62959863b3b77e390549b849a53f332607910193",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "visual-inspection.pdf",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.1/visual-inspection.pdf",
+      "bytes": 1376386,
+      "sha256": "d4bcac68253bd3163b772b303975a6a27aa682e01b76f9b20cd101e05af9f65e",
+      "authentication": "none",
+      "verified": true
+    }
+  ]
+}

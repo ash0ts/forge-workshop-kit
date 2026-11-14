@@ -32,6 +32,14 @@ Readback checks the completed evaluation, every case identity, non-image input a
 
 All 237 automated tests pass after the readback repair. They cover saved-marker recovery, ambiguous uploads, missing scores, changed requests, exact row readback and comparison-column visibility. Publication retries reuse saved evaluations. A run-finish timeout remains a publication failure until its marker is read back or reattached; it does not justify repeating the experiment.
 
+## Published v0.5.1 files
+
+All six current Forge templates passed source and HTML readback against the v0.5.1 release. The [template receipt](../evidence/hosted-templates-v051.json) records their hashes and versions. All 27 release files, including notebooks, the wheel, PDFs and editable deck bundles, passed [anonymous download and checksum checks](../evidence/release-downloads-v051.json). Existing attendee copies were not updated. The current Routing template shows its title and Copy to project control, but this browser still blocks its embedded preview under the local-network policy. Source and HTML readback passed; download/import remains available.
+
+The four browser decks and their PDFs passed [anonymous access checks](../evidence/decks-anonymous-v051.json), including byte-matched native screenshots and linked JavaScript/CSS assets. The [Pages deployment](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43621413432) passed its full render checks. A browser check also followed the published Inspection photo-to-mask reveal.
+
+All nine macOS, Windows and Linux [CI jobs](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43621413456) passed on the published runtime commit. These checks cover the full test suite, reproducible notebook generation and dependency checks. They do not replace an attendee access rehearsal.
+
 ## Code and browser checks
 
 The automated checks cover review withdrawal and test exclusion, scorer-owned aggregate metrics, image hashes, exact release versions, ambiguous managed submissions, restoration and publication-only retries. For v0.5.0, the full suite passed 207 tests at its final integration checkpoint. All nine macOS, Windows and Linux CI jobs passed on the published runtime commit; the final maintainer-only publisher fix also passes the local suite. Notebook generation and marimo dependency checks cover all six templates. Starter and facilitator still do not require Torch or SunPy.
