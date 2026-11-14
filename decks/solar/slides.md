@@ -26,11 +26,11 @@ exportFilename: solar-autoresearch
 
 # Solar forecasting<br>with agent-assisted<br>experiments
 
-<div class="sub">Track forecasting experiments and evaluate changes to the training code.</div><LabScene /><div class="bottom-note">A four-hour Python workshop using real satellite observations.</div>
+<div class="sub">Use satellite observations to compare forecasting models and test agent-written code changes.</div><LabScene /><div class="bottom-note">A four-hour Python workshop using real archived observations.</div>
 
 
 <!--
-We’re going to use satellite observations to forecast X-ray flux thirty minutes ahead and solar images one hour ahead. We’ll start with persistence, train a few small models, and record enough information to compare their results. Once that comparison works, we’ll let an agent modify the training code and test whether its changes reduce forecast error. The small models and short training runs fit a CPU workshop; this is not an operational solar forecast.
+You are joining a fictional research lab preparing for its weekly forecast review. We will use real February 2014 satellite observations to predict X-ray flux thirty minutes ahead and solar images one hour ahead. First we will compare small trained models with copying the latest observation. Then we will ask an agent to edit the image experiment’s code and test those changes with the same comparison. This is a CPU teaching experiment, not an operational solar forecast.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -38,13 +38,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">0:01</div>
 
-# Prepare a forecast for the lab’s weekly review
+# The lab needs a forecast for its weekly review
 
-<div class="lab-assignment"><div class="lab-dialogue"><div class="scene-label">Fictional lab · the principal investigator</div><p>“For this week’s review, bring a forecast we can reproduce.”</p></div><div class="lab-task"><h2>You’re the researcher.</h2><p>Use two weeks of real satellite observations to make a forecast, measure its errors, and save enough information for a colleague to repeat it.</p><p class="aside">Start by testing whether the latest observation already makes a reasonable forecast.</p></div></div>
+<div class="lab-assignment"><div class="lab-dialogue"><div class="scene-label">Fictional lab · the principal investigator</div><p>“Does the model predict anything better than assuming the Sun stays as it is?”</p></div><div class="lab-task"><h2>Your assignment</h2><p>Use observations from February 1–14, 2014 to test that question. Bring a forecast, its errors, and the code a colleague needs to repeat it.</p><p class="aside">The lab is fictional. The satellite observations are real.</p></div></div>
 
 
 <!--
-Our fictional lab has a weekly forecast review. The principal investigator, or PI, wants a result the team can repeat. You are the researcher preparing it. The observations are real and come from February 2014. First we will check whether copying the current measurement predicts the future well enough to beat a trained model. This is a small teaching experiment, not a space-weather service.
+The principal investigator, or PI, runs the weekly research meeting. You are the researcher preparing a comparison for that meeting. The question is deliberately concrete: does a trained model predict the next observation better than simply copying the current one? We have two weeks of archived data, so we can hide later observations, make predictions, and then compare them with what was actually recorded. We are practicing an experiment design; these short runs cannot establish reliable solar forecasting.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -52,13 +52,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">0:02</div>
 
-# Two forecasts from real solar observations
+# What the satellites recorded
 
-<div class="scientific-figure"><img class="solar-photo" src="/images/v030-observations.png" alt="GOES X-ray readings and an AIA solar image from February 1, 2014"><div class="image-caption">Real training observations. NOAA GOES-15 and NASA/SDO AIA 171 Å; prepared with SunPy.</div></div><div class="observation-tasks"><p><strong>Measurements:</strong> use the previous hour to predict flux 30 minutes ahead.</p><p><strong>Images:</strong> use two observations to predict an image one hour ahead.</p></div>
+<div class="opening-observations"><div class="scientific-figure"><img class="solar-photo" src="/images/v030-observations.png" alt="A GOES-15 XRS-B time series and an AIA 171 Å solar image from February 1, 2014"><div class="image-caption">Actual archive observations. NOAA GOES-15 and NASA/SDO AIA; false-color image.</div></div><div class="observation-tasks"><p><strong>GOES-15:</strong> two whole-Sun X-ray readings each minute, measured in watts per square metre.</p><p><strong>AIA 171 Å:</strong> an extreme-ultraviolet view of the Sun’s outer atmosphere, reduced to 64 × 64 pixels.</p></div></div>
 
 
 <!--
-Read the instruments before discussing models. The left plot measures solar X-ray flux; the right image records extreme-ultraviolet light at 171 Å. These are real February 2014 observations, prepared at a small scale for CPU teaching. The image uses false color. We are testing forecasts, not predicting a reliable flare warning.
+GOES gives us two numerical measurements each minute: XRS-A and XRS-B measure X-ray power per square metre in different wavelength bands. The plot shows XRS-B, transformed with log10 because its values span a wide range. AIA is a different instrument on NASA’s Solar Dynamics Observatory. Its 171-angstrom images show extreme-ultraviolet emission from the Sun’s outer atmosphere. The colors represent intensity, not visible light or a direct temperature measurement. Our teaching arrays reduce the images to sixty-four by sixty-four pixels. SunPy retrieves and reads the observations and metadata; our preprocessing code builds the training arrays. These are separate forecasting tasks, not two inputs to one model. Sources: https://www.spaceweather.gov/products/goes-x-ray-flux and https://sdo.gsfc.nasa.gov/data/channels.php.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -66,13 +66,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">0:03</div>
 
-# Find the code behind the last score
+# What one forecast example contains
 
-<div class="lab-files"><div class="lab-folder"><div class="scene-label">Fictional lab shared folder</div><code>forecast_final.py</code><code>forecast_final_v2.py</code><code>forecast_final_final.py</code><code>forecast_final_USE_THIS.py</code><p>Everyone agrees it was one of these.</p></div><div><h2>What produced the forecast?</h2><p>We need the source, settings, data version, and trained weights.</p><h2>What are we comparing?</h2><p>The predictions must use the same target and test dates.</p></div></div><div class="bottom-note">We’ll save the source with each run, before editing it again.</div>
+<ForecastExample /><div class="bottom-note">Persistence predicts no change. A trained model must beat it on the same future observations.</div>
 
 
 <!--
-The lab’s previous score has a familiar problem: nobody can identify which notebook produced it. The folder and last week’s review are fictional. Ask what records a colleague would need to repeat the forecast. A file called final is not enough; we need the source, settings, data, and weights used for that execution. Saving those records will also let us test code written by the research agent later.
+Both examples shown here exist in the prepared training data. Set the clock to 01:00 UTC on February 1. For GOES, the model can read sixty one-minute samples in each channel, from 00:01 through 01:00, and must predict XRS-B at 01:30. Persistence uses only the current XRS-B reading as that forecast. For AIA, the model sees images from 00:00 and 01:00 and predicts the image at 02:00; persistence copies the 01:00 image. The future observations are targets for scoring, never inputs to the prediction. We compare absolute error in log-flux units for GOES and mean absolute error in normalized image intensity inside the solar disk for AIA. The scores stay separate. If little changes over the horizon, copying the latest observation can be hard to beat. We will measure that rather than assume the trained model wins.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -80,13 +80,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">0:04</div>
 
-# What you’ll implement in the notebook
+# Bring a comparison your colleagues can repeat
 
-<div class="step-path"><div><h2>Baseline forecast</h2><p>Load observations, build windows, and measure persistence.</p></div><div><h2>Tracked training</h2><p>Compare model settings and save the resulting files.</p></div><div><h2>Code changes</h2><p>Review proposed edits and train each candidate.</p></div><div><h2>Final evaluation</h2><p>Load selected weights and predict the reserved dates.</p></div></div><div class="bottom-note">You’ll edit Python in your own notebook and publish the results to your Forge project.</div>
+<div class="lab-files"><div class="lab-folder"><div class="scene-label">Fictional lab shared folder</div><code>forecast_final.py</code><code>forecast_final_v2.py</code><code>forecast_final_final.py</code><code>forecast_final_USE_THIS.py</code><p>Last week’s score came from one of these.</p></div><div><h2>Show the comparison.</h2><p>Predictions and errors on the same dates, including persistence and the cases the model got wrong.</p><h2>Save what produced it.</h2><p>Data version, source, settings, trained weights, and outputs, together in one run.</p></div></div><div class="bottom-note">Later, an agent will edit the image-model code. We’ll test its changes using this same comparison.</div>
 
 
 <!--
-Most of the session is spent editing and running Python. Each exercise has a local check, a run button, a result to examine, and a link to the saved work in Forge. The two tasks share the same experiment tracking. Later, we’ll use the image experiment to test agent-written code changes.
+At the review, a lower error is useful only if we know what produced it and what it was compared with. The four final files are our fictional lab’s previous filing system. We will use Forge and W&B to connect the code, configuration, data, weights, and predictions to each run. The measurement task teaches that stack with a scalar output; the image task reuses it for predictions we can inspect pixel by pixel. Only then do we add an AI research assistant. It will read the image code and validation results and propose edits to the model or training procedure. It will not alter the data, target, or final scoring rules.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -242,13 +242,13 @@ Source notes and recorded evidence: notes/sources.md.
 
 <div class="kicker">0:17</div>
 
-# Use earlier dates to train, later dates to test
+# Use different dates to fit, choose, and evaluate
 
-<ForecastWindow :split="true" /><div class="bottom-note">February 2014, UTC. Fit normalization on training data only.</div>
+<ForecastWindow :split="true" /><div class="bottom-note">February 2014, UTC. Each example’s inputs and target stay inside one date partition.</div>
 
 
 <!--
-Train on February 1–10, choose models using February 11–12, and leave February 13–14 for the final comparison. Every input and the target of a window must belong to one partition. Fit normalization using training data only.
+These dates serve three different research decisions. February 1–10 trains the model weights and supplies the normalization statistics. February 11–12 lets us compare architectures, settings, and later the agent’s code changes. We will look at those validation errors repeatedly, so they cannot also be our final test. February 13–14 stays reserved until we freeze the selected code and weights. Then we evaluate without training again. A window whose history or target crosses a boundary is excluded. The reserved dates give us an honest comparison for this short period, not evidence of reliable forecasting in other months.
 Source notes and recorded evidence: notes/sources.md.
 -->
 

@@ -1,4 +1,6 @@
-# Release checks · 0.4.0 technical preview
+# Release checks · 0.4.1 technical preview
+
+Version 0.4.1 expands the openings in both decks and notebooks. Pending explains the customer requests, starting account records, and required account changes. Solar introduces the lab's review assignment, instruments, forecast inputs and targets, and comparison against persistence before project setup. The exercises, datasets, settings, and saved results are unchanged. The Solar introduction now appears only on the setup step.
 
 This revision changes the teaching views, deck reveals, and notebook explanations. The data, model settings, scores, three-hour Pending schedule, four-hour Solar schedule, and workflow compatibility version 1 are unchanged. It uses the November 13 rehearsals. No new training or inference was run.
 

@@ -4,31 +4,31 @@
 
 0:00
 
-We’re going to use satellite observations to forecast X-ray flux thirty minutes ahead and solar images one hour ahead. We’ll start with persistence, train a few small models, and record enough information to compare their results. Once that comparison works, we’ll let an agent modify the training code and test whether its changes reduce forecast error. The small models and short training runs fit a CPU workshop; this is not an operational solar forecast.
+You are joining a fictional research lab preparing for its weekly forecast review. We will use real February 2014 satellite observations to predict X-ray flux thirty minutes ahead and solar images one hour ahead. First we will compare small trained models with copying the latest observation. Then we will ask an agent to edit the image experiment’s code and test those changes with the same comparison. This is a CPU teaching experiment, not an operational solar forecast.
 
-## 2. Prepare a forecast for the lab’s weekly review
+## 2. The lab needs a forecast for its weekly review
 
 0:01
 
-Our fictional lab has a weekly forecast review. The principal investigator, or PI, wants a result the team can repeat. You are the researcher preparing it. The observations are real and come from February 2014. First we will check whether copying the current measurement predicts the future well enough to beat a trained model. This is a small teaching experiment, not a space-weather service.
+The principal investigator, or PI, runs the weekly research meeting. You are the researcher preparing a comparison for that meeting. The question is deliberately concrete: does a trained model predict the next observation better than simply copying the current one? We have two weeks of archived data, so we can hide later observations, make predictions, and then compare them with what was actually recorded. We are practicing an experiment design; these short runs cannot establish reliable solar forecasting.
 
-## 3. Two forecasts from real solar observations
+## 3. What the satellites recorded
 
 0:02
 
-Read the instruments before discussing models. The left plot measures solar X-ray flux; the right image records extreme-ultraviolet light at 171 Å. These are real February 2014 observations, prepared at a small scale for CPU teaching. The image uses false color. We are testing forecasts, not predicting a reliable flare warning.
+GOES gives us two numerical measurements each minute: XRS-A and XRS-B measure X-ray power per square metre in different wavelength bands. The plot shows XRS-B, transformed with log10 because its values span a wide range. AIA is a different instrument on NASA’s Solar Dynamics Observatory. Its 171-angstrom images show extreme-ultraviolet emission from the Sun’s outer atmosphere. The colors represent intensity, not visible light or a direct temperature measurement. Our teaching arrays reduce the images to sixty-four by sixty-four pixels. SunPy retrieves and reads the observations and metadata; our preprocessing code builds the training arrays. These are separate forecasting tasks, not two inputs to one model. Sources: https://www.spaceweather.gov/products/goes-x-ray-flux and https://sdo.gsfc.nasa.gov/data/channels.php.
 
-## 4. Find the code behind the last score
+## 4. What one forecast example contains
 
 0:03
 
-The lab’s previous score has a familiar problem: nobody can identify which notebook produced it. The folder and last week’s review are fictional. Ask what records a colleague would need to repeat the forecast. A file called final is not enough; we need the source, settings, data, and weights used for that execution. Saving those records will also let us test code written by the research agent later.
+Both examples shown here exist in the prepared training data. Set the clock to 01:00 UTC on February 1. For GOES, the model can read sixty one-minute samples in each channel, from 00:01 through 01:00, and must predict XRS-B at 01:30. Persistence uses only the current XRS-B reading as that forecast. For AIA, the model sees images from 00:00 and 01:00 and predicts the image at 02:00; persistence copies the 01:00 image. The future observations are targets for scoring, never inputs to the prediction. We compare absolute error in log-flux units for GOES and mean absolute error in normalized image intensity inside the solar disk for AIA. The scores stay separate. If little changes over the horizon, copying the latest observation can be hard to beat. We will measure that rather than assume the trained model wins.
 
-## 5. What you’ll implement in the notebook
+## 5. Bring a comparison your colleagues can repeat
 
 0:04
 
-Most of the session is spent editing and running Python. Each exercise has a local check, a run button, a result to examine, and a link to the saved work in Forge. The two tasks share the same experiment tracking. Later, we’ll use the image experiment to test agent-written code changes.
+At the review, a lower error is useful only if we know what produced it and what it was compared with. The four final files are our fictional lab’s previous filing system. We will use Forge and W&B to connect the code, configuration, data, weights, and predictions to each run. The measurement task teaches that stack with a scalar output; the image task reuses it for predictions we can inspect pixel by pixel. Only then do we add an AI research assistant. It will read the image code and validation results and propose edits to the model or training procedure. It will not alter the data, target, or final scoring rules.
 
 ## 6. Copy the notebook into your Forge project
 
@@ -84,11 +84,11 @@ Read the timeline from left to right. The model receives sixty minutes of X-ray 
 
 Each input contains two channels and sixty one-minute samples, from minute minus fifty-nine through zero. Only XRS-B is predicted thirty minutes later. This plot reverses input standardization to show both channels in log-flux units. The target point is kept out of the input tensor.
 
-## 15. Use earlier dates to train, later dates to test
+## 15. Use different dates to fit, choose, and evaluate
 
 0:17
 
-Train on February 1–10, choose models using February 11–12, and leave February 13–14 for the final comparison. Every input and the target of a window must belong to one partition. Fit normalization using training data only.
+These dates serve three different research decisions. February 1–10 trains the model weights and supplies the normalization statistics. February 11–12 lets us compare architectures, settings, and later the agent’s code changes. We will look at those validation errors repeatedly, so they cannot also be our final test. February 13–14 stays reserved until we freeze the selected code and weights. Then we evaluate without training again. A window whose history or target crosses a boundary is excluded. The reserved dates give us an honest comparison for this short period, not evidence of reliable forecasting in other months.
 
 ## 16. Normalize the inputs without changing the target units
 

@@ -21,7 +21,7 @@ exportFilename: pending-inc
 ---
 # Please improve<br>yourself.
 
-<div class="sub">Implement a billing agent, instrument its actions,<br>and test changes proposed by an editor agent.</div>
+<div class="sub">Build an agent for billing and account access.<br>Inspect its work, then test changes to its instructions.</div>
 <OfficeScene mode="employee" />
 <div class="bottom-note" style="color:#bbd4cb">A three-hour Python workshop at Pending, Inc.</div>
 
@@ -33,60 +33,57 @@ We will implement an agent that can inspect an account, refund a duplicate charg
 class: opening-story
 ---
 
-# Your first morning at Pending, Inc.
+# You’re adding an agent to the support team.
 
-<div class="arrival-scene"><div class="scene-prose"><p>Pending, Inc. is our fictional SaaS company. Your team is adding an agent to billing and account support.</p><p class="spoken">“Our first fully autonomous employee.”</p><p>The manager calls it autonomous. So far, the team has supplied this handbook.</p></div><div class="scene-props"><OfficeScene mode="employee" /><div class="handbook-page"><span class="prop-label">EMPLOYEE HANDBOOK · PAGE 1 OF 1</span><p>Be helpful.<br>Use good judgment.</p></div></div></div>
+<div class="arrival-scene"><div class="scene-prose"><p>Pending, Inc. is our fictional SaaS company. Customers pay for subscriptions, and their coworkers need access to their accounts.</p><p>Your team wants an agent to handle refunds and membership requests. A wrong action can refund the wrong payment or give someone the wrong access.</p><p class="scene-caption">Management has supplied the handbook on the right. We’ll have to implement the rest.</p></div><div class="scene-props"><OfficeScene mode="employee" /><div class="handbook-page"><span class="prop-label">EMPLOYEE HANDBOOK · PAGE 1 OF 1</span><p>Be helpful.<br>Use good judgment.</p></div></div></div>
 
 <!--
-Pending, Inc. is a teaching setting for a familiar engineering problem: connecting a model to existing application operations. The handbook is an opening illustration. We will build and test a configured starting harness before comparing any revisions.
+Set the context before naming the harness. We are building a support agent that can change account state, so a plausible reply is not enough. The company and customer accounts are fictional. The Python operations, model requests, traces, and checks are real workshop code. The one-page handbook is an opening illustration, not the measured starting harness. Participants will build and test the starting version before comparing changes.
 -->
 
 ---
 class: opening-story
 ---
 
-# The customer was charged twice.
+# Acme wants a duplicate $49 charge refunded.
 
-<div class="first-ticket-scene"><div class="customer-note"><div class="prop-label">ACME → BILLING</div><h2>Two $49 payments for invoice inv-1</h2><p>Please refund the duplicate $49 charge.</p></div><div class="scene-prose"><p class="spoken">“Can I see the invoice?”</p><div class="empty-tool-menu"><span>Available tools</span><code>[]</code></div><p>To answer the request, the agent needs account records and a tool that can issue a refund.</p></div></div>
+<div class="first-ticket-scene"><div class="customer-note"><div class="prop-label">TICKET · ACME BILLING</div><h2>We were charged twice for invoice inv-1.</h2><p>Keep the original payment and refund the duplicate.</p></div><div><div class="prop-label">ACME’S STARTING ACCOUNT</div><table class="clean-table readable-table"><tbody><thead><tr><th>Payment</th><th>Invoice</th><th>Amount</th></tr></thead><tbody><tr><td>pay-1</td><td>inv-1</td><td>$49</td></tr><tr><td>pay-2</td><td>inv-1</td><td>$49</td></tr></tbody></tbody></table><p class="mini">Both payments are captured. No refund is recorded.</p><p style="font-size:25px">The agent needs to read this account, identify pay-2 as the duplicate, and refund it once.</p></div></div>
 
 <!--
-Read the customer request and ask what the agent must know before issuing a refund. The development fixture contains two captured 4900-cent payments on Acme invoice inv-1. The correct outcome refunds pay-2 once while preserving pay-1 and the other account. The empty tool menu explains what we need to implement; it is an illustration rather than a recorded model failure.
+Source: cases.py, double-charge. Its mission explicitly says to keep pay-1 and refund the duplicate. Both pay-1 and pay-2 are captured 4900-cent payments for inv-1, and refunds starts empty. Ask what must be read before changing anything: the account identity, invoice identity, payment identity and existing refunds. Another account also has inv-1, so searching by invoice alone is insufficient. No real payment service is connected.
 -->
 
 ---
 ---
 
-# Define the account state a correct refund should leave.
+# Check the account after the agent says it has finished.
 
 <AccountLedger />
 
 <!--
-Ask someone to name the account fields they would check after this request. We need to identify the correct payment, refund the full amount once, and preserve unrelated state. We will later use partial refunds, duplicate refunds, and false completion claims to test the scorer. A fluent final reply cannot establish these account facts.
+Read the desired outcome from left to right. The tool appends one full 4900-cent refund for pay-2. Both captured payment records remain; there is no modeled account balance or payment deletion. The independent scorer compares the whole resulting account with the expected account and checks that the requested work was completed. A separate LLM judge compares the employee’s explanation with its recorded actions. A reply saying the refund is complete cannot create a missing refund or excuse a duplicate. These are expected fixture states, not recorded performance results.
 -->
 
 ---
 ---
 
-# The access request has no acknowledgement.
+# Fern needs Alex added to its account.
 
-<div class="two-col"><div class="ticket"><div class="account">FERN → ACCOUNT SUPPORT</div><p>Add alex@example.test<br>with the member role.</p></div><div class="ticket"><div class="account">RESPONSE</div><p>Request timed out.</p><p>Did access fail, or did the reply fail?</p></div></div><div class="bottom-note">Second public development ticket. One membership is the required result; account state will tell us whether the write succeeded.</div>
+<div class="two-col"><div class="ticket"><div class="account">TICKET · FERN ACCOUNT ACCESS</div><p>Add alex@example.test<br>with the member role.</p><p style="font-size:22px"><strong>Starting state:</strong> active, paid subscription; no members.</p></div><div class="ticket"><div class="account">REQUIRED ACCOUNT STATE</div><p>Exactly one membership<br>for Alex, with role member.</p><p style="font-size:22px">The simulator saves the membership, then returns a timeout. The agent must read access before deciding whether to retry.</p></div></div><div class="bottom-note">A second write can create a duplicate membership. The final explanation must describe what the account and tool records support.</div>
 
 <!--
-Introduce the second office task before the protocol details. Billing asks us to choose the right payment and act once. Onboarding asks us to handle uncertainty after a write. Both need tools, readable traces and checks on the resulting account. The injected timeout is a fictional teaching incident implemented in the simulator.
+Source: cases.py, missing-seat, and simulator.py, provision_timeout_after_commit. Fern starts active and paid, with members empty. The requested email is alex@example.test and the requested role is member. The first provisioning write commits before the injected timeout is returned. From the timeout alone, the agent cannot establish whether access exists; onboarding_status can read the account. The expected final state contains exactly one matching membership, with unrelated state unchanged. This is a separate development case from Acme, not the same account continued into another task. The later MCP and timeout exercises show the implementation and recovery choices.
 -->
 
 ---
-class: opening-bridge
 ---
 
-# Your manager has one more request.
+# Our dataset is six tickets with resettable account records.
 
-<p class="manager-request">“Once it works, could it improve itself?”</p>
-<p class="story-to-code">We’ll first implement the tools and the code that passes their results back to the model. With traces and scoring in place, we can ask an editor agent to propose two changes and test whether they improve the same task.</p>
-<div class="bottom-note">The editor changes the harness. The model and the scoring rules remain fixed.</div>
+<p style="font-size:26px;max-width:1080px">Each fictional case contains a customer request, an initial account snapshot, and an expected outcome. Some also specify a simulated tool failure.</p><div class="two-col" style="margin-top:27px"><div class="ticket"><div class="account">2 DEVELOPMENT TICKETS</div><p>Acme’s duplicate charge<br>Fern’s missing membership</p><p style="font-size:22px">Use these to build the tools, inspect mistakes, write checks, and test instruction changes.</p></div><div class="ticket"><div class="account">4 FRESH FINAL TICKETS</div><p>New billing and<br>account-access situations</p><p style="font-size:22px">Keep these out of the editor’s context. Evaluate the starting, manual, and agent-revised harnesses on the same cases.</p></div></div><div class="bottom-note">Every execution starts from a fresh copy of its case. Three harnesses × four final tickets gives 12 evaluations.</div>
 
 <!--
-We will first make the agent executable and observable. Once we can inspect a run and score its outcome, we can give those same records to an editor agent. It changes instructions and selected workflow settings, while our tested tools and final scorer remain fixed. That lets us compare the proposed procedures under the same conditions.
+The dataset is executable teaching fixtures in cases.py, not a collection of historical customer chats. The two development cases let us explain and test the mechanics. The four final cases vary the billing or access situation; their expected outcomes and grader output stay outside improvement prompts. Source files are public, so learners can inspect them, but the final comparison is only informative if we stop choosing edits before running it. Every candidate starts with the same initial account state; one candidate’s refund cannot carry into another candidate’s test. We will first write an instruction change ourselves, then ask an editor agent to propose and test alternatives. The research question in this small workshop is whether those changes affect correct work on fresh tickets. Six cases do not establish production reliability.
 -->
 
 ---

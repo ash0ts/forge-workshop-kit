@@ -1,5 +1,7 @@
 # Real observations, measured improvement
 
+> **Historical rehearsal: v0.2.0.** This page preserves that rehearsal’s results and edit order. The current deck uses the [v0.3.0 walkthrough](../decks/solar/notes/sources.md#current-walkthrough) and its [saved execution records](../decks/solar/public/recorded-study.json).
+
 Solar Autoresearch uses satellite observations and a small CPU experiment. The lab, researchers and dialogue are fictional. The measurements, images, saved predictions and reported scores are real.
 
 The recorded rehearsal gives us a concrete result to teach: two reviewed code changes reduced final image-forecast error by **10.15% against the manually built model** and **12.52% against copying the latest image**. The gain comes from one run on two reserved dates. Participants reproduce the method and measure their own outcome; their edits do not inherit the recorded result.

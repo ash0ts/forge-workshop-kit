@@ -18,7 +18,7 @@ Use the companion deck alongside your notebook:
 | Pending, Inc. | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/pending/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/pending/pending-inc.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/pending/pending-inc-source.zip) |
 | Solar Autoresearch | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/solar/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/solar/solar-autoresearch.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/solar/solar-autoresearch-source.zip) |
 
-These decks follow the current gateway-free notebooks. The [v0.4.0 release package](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.4.0) includes the notebooks, PDFs, and editable deck sources.
+These decks follow the current gateway-free notebooks. The [v0.4.1 release package](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.4.1) includes the notebooks, PDFs, and editable deck sources.
 
 For a short demonstration, follow the [current demo guide](docs/current-demo-guide.md). It takes you from a notebook exercise to a trace, code change, and result in the two recorded rehearsals.
 

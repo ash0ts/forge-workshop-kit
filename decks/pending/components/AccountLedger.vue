@@ -13,6 +13,6 @@ const arrow=useId().replace(/:/g,'')
 <rect x="653" y="209" width="433" height="62" rx="7" fill="#bcdcca"/><text x="670" y="248" font-family="IBM Plex Mono" style="font-size:23px">refunds: [pay-2 · 4900¢]</text>
 <path d="M486 172H632" stroke="#527b72" stroke-width="3" :marker-end="`url(#${arrow})`"/><text x="559" y="137" text-anchor="middle" style="font-size:20px">refund</text><text x="559" y="205" text-anchor="middle" style="font-size:20px">pay-2 once</text>
 <rect x="20" y="318" width="1080" height="53" rx="8" fill="#f3e4b7"/><text x="40" y="352" style="font-size:23px">Preserve pay-1, all unrelated records, and the other customer’s account.</text>
-<text x="22" y="406" style="font-size:18px">Expected fixture state, not a recorded run. The scorer compares the account contents, independently of the final reply.</text>
+<text x="22" y="406" style="font-size:18px">Expected fixture state. Code checks the account; an LLM judge checks the reply against recorded actions.</text>
 </g></svg>
 </template>

@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[solar] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.4.0/forge_workshop_kit-0.4.0-py3-none-any.whl",
+#   "forge-workshop-kit[solar] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.4.1/forge_workshop_kit-0.4.1-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "aioftp==0.28.3",
 #   "aiohappyeyeballs==2.7.1",
@@ -185,9 +185,18 @@ def _():
 
 
 @app.cell(hide_code=True)
-def _(mo, ui):
-    mo.vstack([mo.Html(ui.heading("Solar forecasting with agent-assisted experiments", "You’re working with a research lab’s satellite observations. The task is to forecast X-ray flux 30 minutes ahead and a solar image one hour ahead. You’ll implement a baseline, train small neural networks, and compare their predictions on dates excluded from training.", theme="lab")),
-    mo.md("**Your fictional lab has a weekly forecast review.** The PI asks for a result a colleague can reproduce. Last week’s shared folder had four notebooks called final. This time, you’ll save the data version, preprocessing, code, settings, and predictions with each experiment. Once you can compare the results, you’ll ask an AI research assistant to edit the image model’s Python code and test its proposals by the same rules.")])
+def _(get_step, mo, ui):
+    mo.stop(get_step() != "setup")
+    mo.vstack([mo.Html(ui.heading("Solar forecasting with agent-assisted experiments", "You're preparing a forecast for a fictional research lab's weekly review. The team needs to decide which model to develop further. Your job is to compare its predictions with later satellite observations and bring an experiment a colleague can repeat.", theme="lab")),
+    mo.md("Last week's shared folder had four notebooks called final. One reported a lower error, but nobody could tell which preprocessing or weights produced it. You'll save those details with each run."),
+    mo.md("### The observations you'll use"),
+    mo.md("The lab is fictional; the data are real satellite observations from **February 1–14, 2014**. SunPy is the Python library we'll use to inspect the observations and their metadata. We'll tackle two related prediction tasks separately:"),
+    mo.md("**First, measurements over time.** GOES-15 recorded the Sun's X-ray flux: the X-ray power received per square metre. Each example gives the model 60 one-minute readings from two sensor channels. It must predict the XRS-B channel **30 minutes ahead**. We'll compare that number with the later measurement, using average error in log-flux units."),
+    mo.md("**Then, images over time.** SDO's AIA instrument recorded extreme-ultraviolet images of the Sun. We use its 171 Å channel, reduced to **64 × 64 pixels**. Each example contains an image from an hour ago and one from now; the target is the image **one hour later**. We'll compare predicted and observed brightness inside the solar disk. The displayed colors represent intensity."),
+    mo.md("### What you need to bring to the review"),
+    mo.md("Start by copying the latest observation as the forecast. This is **persistence**. Compare each trained model with this baseline to find out whether it reduces error. Train on February 1–10, choose changes using 11–12, then freeze your choice before testing on 13–14. We'll skip windows with missing observations; normalization comes from training dates only."),
+    mo.md("You'll compare training settings and existing architectures first. Then an AI research assistant will edit the image-model code, and you'll test its proposals using the same validation data and scorer. Bring the predictions, errors, and saved code to the review, including any version that did worse. This small CPU experiment teaches the research process; two final-test days do not establish an operational solar forecast."),
+    mo.accordion({"Where these observations come from":mo.md("[GOES X-ray measurements and SunPy](https://docs.sunpy.org/en/stable/generated/gallery/time_series/goes_xrs_example.html) · [NASA's explanation of the AIA channels](https://sdo.gsfc.nasa.gov/data/channels.php) · [Workshop acquisition and preparation code](https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_solar.py). The prepared download contains measurements, image arrays, a representative FITS image, source checksums, and quality exclusions. You do not need to download the raw archive yourself.")})])
     return
 
 
@@ -224,7 +233,7 @@ def _(set_feedback):
 def _(get_lab, get_step, go_to, mo, teaching, ui):
     _s = get_lab().get("session")
     solar_navigation = ui.navigation(mo, teaching.STEPS, get_step(), go_to, completed=teaching.completed_steps(_s) if _s else (), label="Workshop steps")
-    mo.vstack([solar_navigation, mo.Html(ui.context(_s)) if _s else mo.md("**Start at Connect.** Your code and results stay in your project. Training and model calls run only when you click their Run buttons.")])
+    mo.vstack([mo.Html(ui.STYLE), solar_navigation, mo.Html(ui.context(_s)) if _s else mo.md("**Start at Connect.** Your code and results stay in your project. Training and model calls run only when you click their Run buttons.")])
     return (solar_navigation,)
 
 

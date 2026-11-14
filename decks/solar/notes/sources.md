@@ -17,6 +17,8 @@ The first round selected absolute training loss over the unchanged squared-loss 
 
 The editable source and exercise controls come from `scripts/solar_cells.py` and `src/forge_workshop_kit/solar_teaching.py`. `notes/exercise-contract-checks.json` reconciles the deck's named functions and buttons against those files. Both paths are relative to the repository root.
 
+- [NOAA GOES X-ray Flux](https://www.spaceweather.gov/products/goes-x-ray-flux): one-minute solar X-ray measurements in two wavelength bands. The deck uses the archived GOES-15 data, not the current operational feed.
+- [NASA SDO channels](https://sdo.gsfc.nasa.gov/data/channels.php): AIA 171 Å images extreme-ultraviolet emission from the quiet corona and upper transition region. False color shows intensity; it is not a direct temperature map.
 - [SunPy time-series tutorial](https://docs.sunpy.org/en/stable/tutorial/timeseries.html): inspect actual observations and units before modeling them.
 - [SunPy map tutorial](https://docs.sunpy.org/en/stable/tutorial/maps.html): inspect dates, wavelength, and FITS metadata.
 - [SunPy AIA synopsis client](https://docs.sunpy.org/en/stable/generated/api/sunpy.net.dataretriever.AIASynopsisClient.html) and [JSOC calibrated archive](https://jsoc1.stanford.edu/data/aia/synoptic/README.html): AIA acquisition and provenance.
@@ -28,7 +30,7 @@ The editable source and exercise controls come from `scripts/solar_cells.py` and
 
 ## Scientific figures
 
-Data is NOAA GOES-15 and NASA/SDO AIA 171 Å observations from February 1–14, 2014, prepared with SunPy. Credit NOAA, the AIA science team, JSOC, and SunPy. The immutable dataset manifest preserves acquisition URLs, checksums, quality exclusions, and preprocessing. The prepared image arrays are 64 × 64.
+Data is NOAA GOES-15 and NASA/SDO AIA 171 Å observations from February 1–14, 2014. SunPy retrieves and reads observations and FITS metadata; the kit’s preprocessing code prepares the arrays. Credit NOAA, the AIA science team, JSOC, and SunPy. The immutable dataset manifest preserves acquisition URLs, checksums, quality exclusions, and preprocessing. The prepared image arrays are 64 × 64.
 
 `scripts/build-evidence-figures.py` plots actual observations and saved predictions without training or inference. `notes/visual-v030-figures.json` records each output, stage identity, and checksum.
 
@@ -68,7 +70,9 @@ Native EvalTables returned HTTP 500. The notebook comparison, Weave rows, and W&
 
 The original research-lab illustration supplies atmosphere. Its monitor and props are illustrative, and the lab setting and four notebooks named final are explicitly fictional. No generated scientific result is used.
 
-`SolarMechanism.vue`, `SolarComputation.vue`, `SolarDataRules.vue`, `ForecastWindow.vue`, `ResearchMap.vue`, and `ResearchBranches.vue` are editable SVG diagrams. They explain input shapes, residual addition, masked error, fixed versus trained weights, experiment records, and branching decisions. They do not claim a proposed edit improves quality. The mask picture is labeled an illustration of the calculation.
+`ForecastExample.vue`, `SolarMechanism.vue`, `SolarComputation.vue`, `SolarDataRules.vue`, `ForecastWindow.vue`, `ResearchMap.vue`, and `ResearchBranches.vue` are editable SVG diagrams. They explain input shapes, residual addition, masked error, fixed versus trained weights, experiment records, and branching decisions. They do not claim a proposed edit improves quality. The mask picture is labeled an illustration of the calculation.
+
+The opening `ForecastExample.vue` uses accepted training examples at forecast origin `2014-02-01T01:00`: GOES history `00:01–01:00` predicts XRS-B at `01:30`; AIA images at `00:00` and `01:00` predict the image at `02:00`. The persistence column explains a forecast rule, not a measured score. The two tasks remain separate. `load_goes` and `load_aia` in `src/forge_workshop_kit/solar.py` define these windows.
 
 Solid branch lines carry code forward; dashed lines carry reviewed results. Selecting or retaining a version is a decision. Training it is an execution. Candidate colors identify alternatives and do not represent quality.
 

@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[pending] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.4.0/forge_workshop_kit-0.4.0-py3-none-any.whl",
+#   "forge-workshop-kit[pending] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.4.1/forge_workshop_kit-0.4.1-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -131,8 +131,12 @@ def _():
 @app.cell(hide_code=True)
 def _(get_step, mo, pending_visuals, ui):
     mo.stop(get_step()!="setup")
-    mo.vstack([mo.Html(ui.heading("Pending, Inc.", "A customer was charged twice for the same invoice. Your agent needs to read the payments, refund the duplicate charge, and confirm what changed. You'll write the tool it uses to look up the invoice and the code that returns tool results to the model. The company and accounts are fictional.")),
-    mo.md("The next ticket involves an account-access request that times out after it has already succeeded. You'll use Agent Lens to inspect the agent's response and write checks against the account state. After testing an instruction change yourself, you'll build a controller that asks another agent to propose and test further changes. Management would appreciate fewer meetings about the handbook."),mo.Html(pending_visuals.office_brief())])
+    mo.vstack([mo.Html(ui.heading("Pending, Inc.", "You're on the operations team at a fictional software company. Customers are waiting for refunds and account access. Management has assigned those tickets to an AI employee and given you the job of making it reliable. Its onboarding so far consists of a motivational paragraph.")),
+    mo.md("**Today's assignment:** get the employee through two customer requests. It needs to look up the right account, decide whether a change is needed, make that change once, and explain what happened. A confident reply won't help a customer who still can't sign in."),
+    mo.Html(pending_visuals.office_brief()),
+    mo.md("**What's in a case.** Our dataset pairs each customer request with a starting account snapshot: the subscription, payments, refunds, and members. Python tools read and change a separate copy of that snapshot. These are fictional records; no real money moves and no real access is granted."),
+    mo.md("**What counts as success.** We check the account after the employee finishes: was the right payment refunded, does the requested access exist, and were unrelated records left alone? A separate judge checks whether the reply matches the recorded work. You'll use two development tickets while building and debugging, then compare the starting, manually edited, and agent-edited harnesses on four fresh cases."),
+    mo.md("You'll first write the invoice tool, connect its results to the model, and trace the work in Agent Lens. Then you'll change the employee's instructions yourself and ask another agent to propose and test further edits. The model stays fixed. We're testing whether changing how it works helps it handle the next ticket.")])
     return
 
 

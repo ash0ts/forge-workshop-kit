@@ -47,10 +47,10 @@ def _link(url, label):
 def office_brief():
     """The two public development tickets, before their implementation lessons."""
     return _section("Two tickets for our new colleague", '<div class="pv-grid">' + _cell(
-        "Billing · Acme", "<p>Two captured payments of $49 share invoice inv-1.</p><p><strong>Required outcome:</strong> refund pay-2 once, keep pay-1 and other accounts unchanged.</p>"
+        "Billing · Acme", "<p>Acme reports a duplicate charge. Here is the starting payment record:</p><table><thead><tr><th>Payment</th><th>Invoice</th><th>Captured</th></tr></thead><tbody><tr><td><code>pay-1</code></td><td><code>inv-1</code></td><td>$49</td></tr><tr><td><code>pay-2</code></td><td><code>inv-1</code></td><td>$49</td></tr></tbody></table><p><strong>Required outcome:</strong> one $49 refund for <code>pay-2</code>. Both payment records remain; the refund is a separate record. Keep <code>pay-1</code> and other accounts unchanged.</p>"
     ) + _cell(
-        "Account access · Fern", "<p>Add alex@example.test with the member role. The write can succeed before its response times out.</p><p><strong>Required outcome:</strong> one membership, with an explanation supported by the account.</p>"
-    ) + '</div><p class="pv-muted">Fictional accounts, executable Python tools. The model chooses an action; Python changes the account; independent checks assess the result.</p>')
+        "Account access · Fern", "<p>Fern has a paid subscription, but Alex has no membership. The request is to add <code>alex@example.test</code> with the <code>member</code> role.</p><p>The service can save that membership and then time out before returning its response. Retrying as a new operation can create a duplicate.</p><p><strong>Required outcome:</strong> exactly one membership for Alex, with the requested role. Confirm it exists before reporting success.</p>"
+    ) + '</div><p class="pv-muted">The starting records are supplied to the simulator. The employee discovers their contents through tools; the success checks run against the resulting account state.</p>')
 
 
 def handoff_frames(check):

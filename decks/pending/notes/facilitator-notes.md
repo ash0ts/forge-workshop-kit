@@ -4,25 +4,25 @@
 
 We will implement an agent that can inspect an account, refund a duplicate charge, and provision access. Then we will instrument and evaluate its work before asking an editor agent to revise its instructions. Pending, Inc. and its accounts are fictional; the Python tools, model requests, traces, and evaluations run in your own project.
 
-## 2. Your first morning at Pending, Inc.
+## 2. You’re adding an agent to the support team.
 
-Pending, Inc. is a teaching setting for a familiar engineering problem: connecting a model to existing application operations. The handbook is an opening illustration. We will build and test a configured starting harness before comparing any revisions.
+Set the context before naming the harness. We are building a support agent that can change account state, so a plausible reply is not enough. The company and customer accounts are fictional. The Python operations, model requests, traces, and checks are real workshop code. The one-page handbook is an opening illustration, not the measured starting harness. Participants will build and test the starting version before comparing changes.
 
-## 3. The customer was charged twice.
+## 3. Acme wants a duplicate $49 charge refunded.
 
-Read the customer request and ask what the agent must know before issuing a refund. The development fixture contains two captured 4900-cent payments on Acme invoice inv-1. The correct outcome refunds pay-2 once while preserving pay-1 and the other account. The empty tool menu explains what we need to implement; it is an illustration rather than a recorded model failure.
+Source: cases.py, double-charge. Its mission explicitly says to keep pay-1 and refund the duplicate. Both pay-1 and pay-2 are captured 4900-cent payments for inv-1, and refunds starts empty. Ask what must be read before changing anything: the account identity, invoice identity, payment identity and existing refunds. Another account also has inv-1, so searching by invoice alone is insufficient. No real payment service is connected.
 
-## 4. Define the account state a correct refund should leave.
+## 4. Check the account after the agent says it has finished.
 
-Ask someone to name the account fields they would check after this request. We need to identify the correct payment, refund the full amount once, and preserve unrelated state. We will later use partial refunds, duplicate refunds, and false completion claims to test the scorer. A fluent final reply cannot establish these account facts.
+Read the desired outcome from left to right. The tool appends one full 4900-cent refund for pay-2. Both captured payment records remain; there is no modeled account balance or payment deletion. The independent scorer compares the whole resulting account with the expected account and checks that the requested work was completed. A separate LLM judge compares the employee’s explanation with its recorded actions. A reply saying the refund is complete cannot create a missing refund or excuse a duplicate. These are expected fixture states, not recorded performance results.
 
-## 5. The access request has no acknowledgement.
+## 5. Fern needs Alex added to its account.
 
-Introduce the second office task before the protocol details. Billing asks us to choose the right payment and act once. Onboarding asks us to handle uncertainty after a write. Both need tools, readable traces and checks on the resulting account. The injected timeout is a fictional teaching incident implemented in the simulator.
+Source: cases.py, missing-seat, and simulator.py, provision_timeout_after_commit. Fern starts active and paid, with members empty. The requested email is alex@example.test and the requested role is member. The first provisioning write commits before the injected timeout is returned. From the timeout alone, the agent cannot establish whether access exists; onboarding_status can read the account. The expected final state contains exactly one matching membership, with unrelated state unchanged. This is a separate development case from Acme, not the same account continued into another task. The later MCP and timeout exercises show the implementation and recovery choices.
 
-## 6. Your manager has one more request.
+## 6. Our dataset is six tickets with resettable account records.
 
-We will first make the agent executable and observable. Once we can inspect a run and score its outcome, we can give those same records to an editor agent. It changes instructions and selected workflow settings, while our tested tools and final scorer remain fixed. That lets us compare the proposed procedures under the same conditions.
+The dataset is executable teaching fixtures in cases.py, not a collection of historical customer chats. The two development cases let us explain and test the mechanics. The four final cases vary the billing or access situation; their expected outcomes and grader output stay outside improvement prompts. Source files are public, so learners can inspect them, but the final comparison is only informative if we stop choosing edits before running it. Every candidate starts with the same initial account state; one candidate’s refund cannot carry into another candidate’s test. We will first write an instruction change ourselves, then ask an editor agent to propose and test alternatives. The research question in this small workshop is whether those changes affect correct work on fresh tickets. Six cases do not establish production reliability.
 
 ## 7. Implement the agent, evaluate it, then test harness changes.
 
