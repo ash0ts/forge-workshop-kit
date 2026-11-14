@@ -5,10 +5,15 @@
       "slug": "starter",
       "id": "starter",
       "kind": "starter",
-      "title": "Forge Workshop Kit · Starter",
+      "title": "Forge Workshop Kit \u00b7 Starter",
       "workflow_version": "1",
       "extras": [],
-      "steps": [["exercise", "My exercise"]],
+      "steps": [
+        [
+          "exercise",
+          "My exercise"
+        ]
+      ],
       "checkpoint_prefixes": [],
       "comparison_labels": {}
     },
@@ -16,7 +21,7 @@
       "slug": "facilitator",
       "id": "facilitator",
       "kind": "monitor",
-      "title": "Forge Workshop Kit · Progress monitor",
+      "title": "Forge Workshop Kit \u00b7 Progress monitor",
       "workflow_version": "1",
       "extras": [],
       "steps": [],
@@ -27,12 +32,163 @@
       "slug": "pending_inc",
       "id": "pending-direct-teaching",
       "kind": "workshop",
-      "title": "Pending, Inc. · Your project",
+      "title": "Pending, Inc. \u00b7 Your project",
       "workflow_version": "1",
-      "extras": ["pending"],
-      "steps": [["setup", "Connect and trace"], ["tools", "Build an invoice tool"], ["loop", "Pass observations to the agent"], ["evals", "Check the work"], ["manual", "Edit one procedure"], ["improve", "Improve twice"], ["final", "Compare fresh tickets"], ["report", "Explain the result"]],
-      "checkpoint_prefixes": [["pending/round-", "improve"], ["pending/original", "loop"], ["pending/check-tool", "tools"], ["pending/check-loop", "loop"], ["pending/setup-trace", "setup"], ["pending/manual", "manual"], ["pending/judge", "evals"], ["pending/final", "final"], ["pending/freeze", "final"], ["pending/report", "report"], ["round-", "improve"], ["loop-check", "loop"], ["scorer-check", "evals"], ["setup", "setup"], ["tools", "tools"], ["loop", "loop"], ["evals", "evals"], ["manual", "manual"], ["improve", "improve"], ["final", "final"], ["report", "report"]],
-      "comparison_labels": {"starting": "Starting instructions", "manual": "Manual revision", "agent": "Agent-selected version"}
+      "extras": [
+        "pending"
+      ],
+      "steps": [
+        [
+          "setup",
+          "Connect and trace"
+        ],
+        [
+          "tools",
+          "Build an invoice tool"
+        ],
+        [
+          "loop",
+          "Pass observations to the agent"
+        ],
+        [
+          "evals",
+          "Check the work"
+        ],
+        [
+          "manual",
+          "Edit one procedure"
+        ],
+        [
+          "improve",
+          "Improve twice"
+        ],
+        [
+          "final",
+          "Compare fresh tickets"
+        ],
+        [
+          "report",
+          "Explain the result"
+        ]
+      ],
+      "checkpoint_prefixes": [
+        [
+          "pending/round-",
+          "improve"
+        ],
+        [
+          "pending/original",
+          "loop"
+        ],
+        [
+          "pending/check-tool",
+          "tools"
+        ],
+        [
+          "pending/check-loop",
+          "loop"
+        ],
+        [
+          "pending/setup-trace",
+          "setup"
+        ],
+        [
+          "pending/manual",
+          "manual"
+        ],
+        [
+          "pending/judge",
+          "evals"
+        ],
+        [
+          "pending/final",
+          "final"
+        ],
+        [
+          "pending/freeze",
+          "final"
+        ],
+        [
+          "pending/report",
+          "report"
+        ],
+        [
+          "round-",
+          "improve"
+        ],
+        [
+          "loop-check",
+          "loop"
+        ],
+        [
+          "scorer-check",
+          "evals"
+        ],
+        [
+          "setup",
+          "setup"
+        ],
+        [
+          "tools",
+          "tools"
+        ],
+        [
+          "loop",
+          "loop"
+        ],
+        [
+          "evals",
+          "evals"
+        ],
+        [
+          "manual",
+          "manual"
+        ],
+        [
+          "improve",
+          "improve"
+        ],
+        [
+          "final",
+          "final"
+        ],
+        [
+          "report",
+          "report"
+        ]
+      ],
+      "comparison_labels": {
+        "starting": "Starting instructions",
+        "manual": "Manual revision",
+        "agent": "Agent-selected version"
+      },
+      "comparisons": {
+        "pending-final": {
+          "metrics": [
+            {
+              "key": "error",
+              "label": "Unresolved tickets",
+              "unit": "fraction",
+              "direction": "min",
+              "aggregate": "mean",
+              "report": true,
+              "summary_key": "error_mean"
+            }
+          ]
+        },
+        "pending-timeout-repair": {
+          "metrics": [
+            {
+              "key": "duplicates",
+              "label": "Duplicate memberships",
+              "unit": "count",
+              "direction": "min",
+              "aggregate": "mean",
+              "report": true
+            }
+          ]
+        }
+      }
     },
     {
       "slug": "solar_autoresearch",
@@ -40,10 +196,388 @@
       "kind": "workshop",
       "title": "Solar forecasting with agent-assisted experiments",
       "workflow_version": "1",
-      "extras": ["solar"],
-      "steps": [["setup", "Connect"], ["data", "Solar data"], ["baseline", "Persistence"], ["search", "Track and search"], ["images", "Solar images"], ["research", "Research agent"], ["final", "Final evaluation"]],
-      "checkpoint_prefixes": [["images/round-", "research"], ["goes/search-", "search"], ["images/manual-", "images"], ["images/final", "final"], ["goes/final", "final"], ["report", "final"], ["setup", "setup"], ["data", "data"], ["baseline", "baseline"], ["search", "search"], ["images", "images"], ["research", "research"], ["final", "final"]],
-      "comparison_labels": {"persistence": "Persistence", "manual": "Manual image model", "agent": "Agent-selected image model", "goes-persistence": "GOES persistence", "image-persistence": "Image persistence"}
+      "extras": [
+        "solar"
+      ],
+      "steps": [
+        [
+          "setup",
+          "Connect"
+        ],
+        [
+          "data",
+          "Solar data"
+        ],
+        [
+          "baseline",
+          "Persistence"
+        ],
+        [
+          "search",
+          "Track and search"
+        ],
+        [
+          "images",
+          "Solar images"
+        ],
+        [
+          "research",
+          "Research agent"
+        ],
+        [
+          "final",
+          "Final evaluation"
+        ]
+      ],
+      "checkpoint_prefixes": [
+        [
+          "images/round-",
+          "research"
+        ],
+        [
+          "goes/search-",
+          "search"
+        ],
+        [
+          "images/manual-",
+          "images"
+        ],
+        [
+          "images/final",
+          "final"
+        ],
+        [
+          "goes/final",
+          "final"
+        ],
+        [
+          "report",
+          "final"
+        ],
+        [
+          "setup",
+          "setup"
+        ],
+        [
+          "data",
+          "data"
+        ],
+        [
+          "baseline",
+          "baseline"
+        ],
+        [
+          "search",
+          "search"
+        ],
+        [
+          "images",
+          "images"
+        ],
+        [
+          "research",
+          "research"
+        ],
+        [
+          "final",
+          "final"
+        ]
+      ],
+      "comparison_labels": {
+        "persistence": "Persistence",
+        "manual": "Manual image model",
+        "agent": "Agent-selected image model",
+        "goes-persistence": "GOES persistence",
+        "image-persistence": "Image persistence"
+      },
+      "comparisons": {
+        "solar-images-final": {
+          "metrics": [
+            {
+              "key": "error",
+              "label": "Image error",
+              "unit": "normalized intensity",
+              "direction": "min",
+              "aggregate": "mean",
+              "report": true,
+              "summary_key": "error_mean"
+            }
+          ]
+        },
+        "solar-measurements-final": {
+          "metrics": [
+            {
+              "key": "error",
+              "label": "GOES error",
+              "unit": "log10 W/m\u00b2",
+              "direction": "min",
+              "aggregate": "mean",
+              "report": true,
+              "summary_key": "error_mean"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "request_routing",
+      "id": "banking-routing",
+      "kind": "workshop",
+      "title": "Route customer requests and learn from mistakes",
+      "workflow_version": "1",
+      "extras": [
+        "routing"
+      ],
+      "steps": [
+        [
+          "setup",
+          "Connect"
+        ],
+        [
+          "data",
+          "Read the requests"
+        ],
+        [
+          "baseline",
+          "Train the baselines"
+        ],
+        [
+          "review",
+          "Review disagreements"
+        ],
+        [
+          "judge",
+          "Check the automated reviewer"
+        ],
+        [
+          "improve",
+          "Train with reviewed labels"
+        ],
+        [
+          "final",
+          "Compare untouched requests"
+        ],
+        [
+          "report",
+          "Explain and reproduce"
+        ]
+      ],
+      "checkpoint_prefixes": [
+        [
+          "setup",
+          "setup"
+        ],
+        [
+          "data",
+          "data"
+        ],
+        [
+          "baseline",
+          "baseline"
+        ],
+        [
+          "review",
+          "review"
+        ],
+        [
+          "judge",
+          "judge"
+        ],
+        [
+          "improve",
+          "improve"
+        ],
+        [
+          "final",
+          "final"
+        ],
+        [
+          "report",
+          "report"
+        ]
+      ],
+      "comparison_labels": {},
+      "comparisons": {
+        "banking-routing-final": {
+          "metrics": [
+            {
+              "key": "macro_f1",
+              "label": "Macro F1",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "accuracy",
+              "label": "Correct routes",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "coverage",
+              "label": "Answered requests",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "selective_accuracy",
+              "label": "Correct answered routes",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "latency_seconds",
+              "label": "Latency",
+              "unit": "seconds",
+              "direction": "min",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "cost_usd",
+              "label": "Inference cost",
+              "unit": "USD",
+              "direction": "min",
+              "aggregate": "scorer",
+              "report": true
+            }
+          ]
+        }
+      },
+      "release_status": "technical-preview"
+    },
+    {
+      "slug": "visual_inspection",
+      "id": "visual-inspection",
+      "kind": "workshop",
+      "title": "Find defective parts before they ship",
+      "workflow_version": "1",
+      "extras": [
+        "inspection"
+      ],
+      "steps": [
+        [
+          "setup",
+          "Connect"
+        ],
+        [
+          "data",
+          "Inspect the boards"
+        ],
+        [
+          "features",
+          "Compute image features"
+        ],
+        [
+          "compare",
+          "Compare global and patch features"
+        ],
+        [
+          "review",
+          "Choose examples to review"
+        ],
+        [
+          "freeze",
+          "Freeze the detector"
+        ],
+        [
+          "evaluate",
+          "Inspect untouched boards"
+        ],
+        [
+          "reproduce",
+          "Reproduce the selected version"
+        ]
+      ],
+      "checkpoint_prefixes": [
+        [
+          "setup",
+          "setup"
+        ],
+        [
+          "data",
+          "data"
+        ],
+        [
+          "features",
+          "features"
+        ],
+        [
+          "compare",
+          "compare"
+        ],
+        [
+          "review",
+          "review"
+        ],
+        [
+          "freeze",
+          "freeze"
+        ],
+        [
+          "evaluate",
+          "evaluate"
+        ],
+        [
+          "reproduce",
+          "reproduce"
+        ]
+      ],
+      "comparison_labels": {},
+      "comparisons": {
+        "visual-inspection-final": {
+          "metrics": [
+            {
+              "key": "average_precision",
+              "label": "Defect average precision",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "defect_recall",
+              "label": "Defects caught",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "false_alarm_rate",
+              "label": "False alarms",
+              "unit": "fraction",
+              "direction": "min",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "review_fraction",
+              "label": "Sent to review",
+              "unit": "fraction",
+              "direction": "context",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "seconds",
+              "label": "Execution time",
+              "unit": "seconds",
+              "direction": "min",
+              "aggregate": "scorer",
+              "report": false
+            }
+          ]
+        }
+      },
+      "release_status": "technical-preview"
     }
   ]
 }

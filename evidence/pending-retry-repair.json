@@ -1,0 +1,364 @@
+{
+  "qualification": "fixed public development incident; no model calls",
+  "before": {
+    "case_id": "missing-seat",
+    "world": {
+      "accounts": {
+        "fern": {
+          "id": "fern",
+          "name": "Example customer",
+          "subscription": {
+            "status": "active",
+            "paid": true
+          },
+          "payments": [
+            {
+              "id": "pay-1",
+              "invoice_id": "inv-1",
+              "amount_cents": 4900,
+              "status": "captured"
+            },
+            {
+              "id": "pay-2",
+              "invoice_id": "inv-1",
+              "amount_cents": 4900,
+              "status": "captured"
+            }
+          ],
+          "refunds": [],
+          "members": [
+            {
+              "email": "alex@example.test",
+              "role": "member"
+            },
+            {
+              "email": "alex@example.test",
+              "role": "member"
+            }
+          ]
+        },
+        "other-account": {
+          "id": "other-account",
+          "name": "Unrelated customer",
+          "subscription": {
+            "status": "active",
+            "paid": true
+          },
+          "payments": [
+            {
+              "id": "pay-1",
+              "invoice_id": "inv-1",
+              "amount_cents": 4900,
+              "status": "captured"
+            },
+            {
+              "id": "pay-2",
+              "invoice_id": "inv-1",
+              "amount_cents": 4900,
+              "status": "captured"
+            }
+          ],
+          "refunds": [],
+          "members": []
+        }
+      },
+      "operations": {
+        "join-alex": {
+          "signature": "[\"provision_member\", {\"account_id\": \"fern\", \"email\": \"alex@example.test\", \"role\": \"member\"}]",
+          "receipt": {
+            "ok": true,
+            "operation_id": "join-alex",
+            "member": {
+              "email": "alex@example.test",
+              "role": "member"
+            }
+          }
+        },
+        "join-alex-retry": {
+          "signature": "[\"provision_member\", {\"account_id\": \"fern\", \"email\": \"alex@example.test\", \"role\": \"member\"}]",
+          "receipt": {
+            "ok": true,
+            "operation_id": "join-alex-retry",
+            "member": {
+              "email": "alex@example.test",
+              "role": "member"
+            }
+          }
+        }
+      },
+      "journal": [
+        {
+          "tool": "provision_member",
+          "arguments": {
+            "account_id": "fern",
+            "email": "alex@example.test",
+            "role": "member",
+            "operation_id": "join-alex"
+          },
+          "receipt": {
+            "ok": true,
+            "operation_id": "join-alex",
+            "member": {
+              "email": "alex@example.test",
+              "role": "member"
+            }
+          }
+        },
+        {
+          "tool": "provision_member",
+          "arguments": {
+            "account_id": "fern",
+            "email": "alex@example.test",
+            "role": "member",
+            "operation_id": "join-alex-retry"
+          },
+          "receipt": {
+            "ok": true,
+            "operation_id": "join-alex-retry",
+            "member": {
+              "email": "alex@example.test",
+              "role": "member"
+            }
+          }
+        }
+      ],
+      "faults_seen": [
+        "provision_timeout_after_commit"
+      ]
+    },
+    "events": [
+      {
+        "id": "recovery-tool-0",
+        "name": "provision_member",
+        "arguments": {
+          "account_id": "fern",
+          "email": "alex@example.test",
+          "role": "member",
+          "operation_id": "join-alex"
+        },
+        "result": {
+          "ok": false,
+          "error": "timeout",
+          "message": "No acknowledgement received. The operation may have committed; inspect current access."
+        },
+        "started_at": 1794667040.26406,
+        "ended_at": 1794667040.2641122,
+        "error": "timeout"
+      },
+      {
+        "id": "recovery-tool-1",
+        "name": "provision_member",
+        "arguments": {
+          "account_id": "fern",
+          "email": "alex@example.test",
+          "role": "member",
+          "operation_id": "join-alex-retry"
+        },
+        "result": {
+          "ok": true,
+          "operation_id": "join-alex-retry",
+          "member": {
+            "email": "alex@example.test",
+            "role": "member"
+          }
+        },
+        "started_at": 1794667040.264116,
+        "ended_at": 1794667040.2641668,
+        "error": null
+      }
+    ],
+    "result": {
+      "ok": true,
+      "operation_id": "join-alex-retry",
+      "member": {
+        "email": "alex@example.test",
+        "role": "member"
+      }
+    },
+    "error": null,
+    "membership_count": 2,
+    "duplicates": 1,
+    "single_membership": false,
+    "verified_account": false,
+    "passed": false
+  },
+  "after": {
+    "case_id": "missing-seat",
+    "world": {
+      "accounts": {
+        "fern": {
+          "id": "fern",
+          "name": "Example customer",
+          "subscription": {
+            "status": "active",
+            "paid": true
+          },
+          "payments": [
+            {
+              "id": "pay-1",
+              "invoice_id": "inv-1",
+              "amount_cents": 4900,
+              "status": "captured"
+            },
+            {
+              "id": "pay-2",
+              "invoice_id": "inv-1",
+              "amount_cents": 4900,
+              "status": "captured"
+            }
+          ],
+          "refunds": [],
+          "members": [
+            {
+              "email": "alex@example.test",
+              "role": "member"
+            }
+          ]
+        },
+        "other-account": {
+          "id": "other-account",
+          "name": "Unrelated customer",
+          "subscription": {
+            "status": "active",
+            "paid": true
+          },
+          "payments": [
+            {
+              "id": "pay-1",
+              "invoice_id": "inv-1",
+              "amount_cents": 4900,
+              "status": "captured"
+            },
+            {
+              "id": "pay-2",
+              "invoice_id": "inv-1",
+              "amount_cents": 4900,
+              "status": "captured"
+            }
+          ],
+          "refunds": [],
+          "members": []
+        }
+      },
+      "operations": {
+        "join-alex": {
+          "signature": "[\"provision_member\", {\"account_id\": \"fern\", \"email\": \"alex@example.test\", \"role\": \"member\"}]",
+          "receipt": {
+            "ok": true,
+            "operation_id": "join-alex",
+            "member": {
+              "email": "alex@example.test",
+              "role": "member"
+            }
+          }
+        }
+      },
+      "journal": [
+        {
+          "tool": "provision_member",
+          "arguments": {
+            "account_id": "fern",
+            "email": "alex@example.test",
+            "role": "member",
+            "operation_id": "join-alex"
+          },
+          "receipt": {
+            "ok": true,
+            "operation_id": "join-alex",
+            "member": {
+              "email": "alex@example.test",
+              "role": "member"
+            }
+          }
+        }
+      ],
+      "faults_seen": [
+        "provision_timeout_after_commit"
+      ]
+    },
+    "events": [
+      {
+        "id": "recovery-tool-0",
+        "name": "provision_member",
+        "arguments": {
+          "account_id": "fern",
+          "email": "alex@example.test",
+          "role": "member",
+          "operation_id": "join-alex"
+        },
+        "result": {
+          "ok": false,
+          "error": "timeout",
+          "message": "No acknowledgement received. The operation may have committed; inspect current access."
+        },
+        "started_at": 1794667040.264225,
+        "ended_at": 1794667040.264266,
+        "error": "timeout"
+      },
+      {
+        "id": "recovery-tool-1",
+        "name": "provision_member",
+        "arguments": {
+          "account_id": "fern",
+          "email": "alex@example.test",
+          "role": "member",
+          "operation_id": "join-alex"
+        },
+        "result": {
+          "ok": true,
+          "operation_id": "join-alex",
+          "member": {
+            "email": "alex@example.test",
+            "role": "member"
+          },
+          "replayed": true
+        },
+        "started_at": 1794667040.264269,
+        "ended_at": 1794667040.2643158,
+        "error": null
+      },
+      {
+        "id": "recovery-tool-2",
+        "name": "onboarding_status",
+        "arguments": {
+          "account_id": "fern"
+        },
+        "result": {
+          "ok": true,
+          "subscription": {
+            "status": "active",
+            "paid": true
+          },
+          "members": [
+            {
+              "email": "alex@example.test",
+              "role": "member"
+            }
+          ]
+        },
+        "started_at": 1794667040.264317,
+        "ended_at": 1794667040.26436,
+        "error": null
+      }
+    ],
+    "result": {
+      "ok": true,
+      "subscription": {
+        "status": "active",
+        "paid": true
+      },
+      "members": [
+        {
+          "email": "alex@example.test",
+          "role": "member"
+        }
+      ]
+    },
+    "error": null,
+    "membership_count": 1,
+    "duplicates": 0,
+    "single_membership": true,
+    "verified_account": true,
+    "passed": true
+  }
+}

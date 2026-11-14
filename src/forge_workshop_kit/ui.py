@@ -47,12 +47,14 @@ def _fonts():
     return '<style>' + ''.join(rules) + '</style>'
 
 
-def heading(title, description, *, theme='office'):
+def heading(title, description, *, theme='office', eyebrow=None):
     labels = {'neutral': 'Forge workshop', 'office': 'Pending, Inc. · Forge workshop',
-              'lab': 'Solar Forecasting Lab · Forge workshop'}
+              'lab': 'Solar Forecasting Lab · Forge workshop',
+              'routing': 'Customer support · Forge workshop',
+              'inspection': 'PCB inspection · Forge workshop'}
     if theme not in labels:
-        raise ValueError('Workshop theme must be neutral, office, or lab.')
-    content = (f'<div class="workshop-label">{labels[theme]}</div>'
+        raise ValueError('Unknown workshop theme.')
+    content = (f'<div class="workshop-label">{escape(eyebrow or labels[theme])}</div>'
                f'<h1>{escape(title)}</h1><p>{escape(description)}</p>')
     if theme == 'lab':
         asset = files('forge_workshop_kit').joinpath('assets', 'solar-lab.svg')

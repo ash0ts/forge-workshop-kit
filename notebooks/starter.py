@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.4.1/forge_workshop_kit-0.4.1-py3-none-any.whl",
+#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/forge_workshop_kit-0.5.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -56,11 +56,11 @@
 #   "packaging==26.3",
 #   "parso==0.8.7",
 #   "pdfminer-six==20260107",
-#   "pillow==13.0.0",
+#   "pillow==12.3.0",
 #   "platformdirs==4.14.5",
 #   "polyfile-weave==0.5.9",
 #   "propcache==0.5.4",
-#   "protobuf==7.36.2",
+#   "protobuf==6.33.6",
 #   "psutil==7.2.2 ; sys_platform != 'android' and sys_platform != 'emscripten'",
 #   "pycparser==3.12 ; (implementation_name != 'PyPy' and platform_python_implementation != 'PyPy') or (implementation_name == 'pypy' and platform_python_implementation == 'PyPy' and sys_platform != 'emscripten')",
 #   "pydantic==2.14.3",

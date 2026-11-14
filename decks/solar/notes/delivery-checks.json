@@ -1,7 +1,7 @@
 {
-  "source_sha256": "a7071010b17160031f71b09b08cab8985f7c0b968cbd738d0dfcba88f74c782d",
-  "slides_checked": 101,
-  "expected_slides": 101,
+  "source_sha256": "30097b3e5ecff13200ff69aaed4e8491b8f07dd5e98923850a1160763028379a",
+  "slides_checked": 105,
+  "expected_slides": 105,
   "titles": [
     {
       "number": 1,
@@ -210,301 +210,321 @@
     },
     {
       "number": 42,
+      "key": "goes-repair-code",
+      "title": "Let the model learn a correction to persistence"
+    },
+    {
+      "number": 43,
+      "key": "goes-repair-turn",
+      "title": "Test the worked measurement repair"
+    },
+    {
+      "number": 44,
       "key": "break",
       "title": "Ten-minute break"
     },
     {
-      "number": 43,
+      "number": 45,
       "key": "images-window",
       "title": "Predict the solar image one hour ahead"
     },
     {
-      "number": 44,
+      "number": 46,
       "key": "image-stack",
       "title": "Track the image model with the same experiment records"
     },
     {
-      "number": 45,
+      "number": 47,
       "key": "persistence-image",
       "title": "See exactly which images become input and target"
     },
     {
-      "number": 46,
+      "number": 48,
       "key": "conv",
       "title": "Predicting the future image with a small CNN"
     },
     {
-      "number": 47,
+      "number": 49,
       "key": "residual",
       "title": "Predict a correction to the current image"
     },
     {
-      "number": 48,
+      "number": 50,
       "key": "residual-code",
       "title": "Implement the residual predictor’s forward pass"
     },
     {
-      "number": 49,
+      "number": 51,
       "key": "residual-observed",
       "title": "Inspect the correction produced by the saved model"
     },
     {
-      "number": 50,
+      "number": 52,
       "key": "image-score",
       "title": "Measure prediction error inside the solar disk"
     },
     {
-      "number": 51,
+      "number": 53,
       "key": "image-score-code",
       "title": "Check the image scorer on three known errors"
     },
     {
-      "number": 52,
+      "number": 54,
       "key": "loss",
       "title": "Training loss and evaluation error have different jobs"
     },
     {
-      "number": 53,
+      "number": 55,
       "key": "image-code-screen",
       "title": "Compare forecasts for the same validation case"
     },
     {
-      "number": 54,
+      "number": 56,
       "key": "image-turn",
       "title": "Implement and compare the image predictors"
     },
     {
-      "number": 55,
+      "number": 57,
       "key": "agent-need",
       "title": "Use the experiment to test agent-written changes"
     },
     {
-      "number": 56,
+      "number": 58,
       "key": "weights",
       "title": "Which model is being trained?"
     },
     {
-      "number": 57,
+      "number": 59,
       "key": "boundaries",
       "title": "Limit edits to the model and training code"
     },
     {
-      "number": 58,
+      "number": 60,
       "key": "evidence",
       "title": "Give the agent the inputs needed to explain a run"
     },
     {
-      "number": 59,
+      "number": 61,
       "key": "agent-span",
       "title": "Follow the agent’s work in Agent Lens"
     },
     {
-      "number": 60,
+      "number": 62,
       "key": "native-lens",
       "title": "Read the evidence that went into the proposal"
     },
     {
-      "number": 61,
+      "number": 63,
       "key": "evidence-turn",
       "title": "Choose the evidence for the research agent"
     },
     {
-      "number": 62,
+      "number": 64,
       "key": "propose",
       "title": "Ask for two changes to the same starting code"
     },
     {
-      "number": 63,
+      "number": 65,
       "key": "native-diff",
       "title": "The first proposal changes one loss operation"
     },
     {
-      "number": 64,
+      "number": 66,
       "key": "probe",
       "title": "Train and score each candidate"
     },
     {
-      "number": 65,
+      "number": 67,
       "key": "compose",
       "title": "Choose or combine changes using the probe results"
     },
     {
-      "number": 66,
+      "number": 68,
       "key": "test-composed",
       "title": "Train the composed version before adopting it"
     },
     {
-      "number": 67,
+      "number": 69,
       "key": "adoption-rule",
       "title": "Adopt the tested code only if validation error is lower"
     },
     {
-      "number": 68,
+      "number": 70,
       "key": "native-training",
       "title": "Open the training call behind the chosen version"
     },
     {
-      "number": 69,
+      "number": 71,
       "key": "repeat",
       "title": "Use the selected code and results in round two"
     },
     {
-      "number": 70,
+      "number": 72,
       "key": "round1-turn",
       "title": "Propose and test two changes"
     },
     {
-      "number": 71,
+      "number": 73,
       "key": "round2-turn",
       "title": "Test the selected code, then begin round two"
     },
     {
-      "number": 72,
+      "number": 74,
       "key": "branch-inspect",
       "title": "Follow one proposal through the branch diagram"
     },
     {
-      "number": 73,
+      "number": 75,
       "key": "freeze",
       "title": "Keep the selected code and weights fixed for final evaluation"
     },
     {
-      "number": 74,
+      "number": 76,
       "key": "frozen-code",
       "title": "Load the saved weights to make final predictions"
     },
     {
-      "number": 75,
+      "number": 77,
       "key": "aligned",
       "title": "Match each prediction to the same observation times"
     },
     {
-      "number": 76,
+      "number": 78,
       "key": "final-turn",
       "title": "Test the selected models on reserved dates"
     },
     {
-      "number": 77,
+      "number": 79,
       "key": "recorded-final",
       "title": "In this rehearsal, image error fell 10.15%"
     },
     {
-      "number": 78,
+      "number": 80,
       "key": "recorded-image",
       "title": "Compare the two models on one reserved-date image"
     },
     {
-      "number": 79,
+      "number": 81,
+      "key": "qualified-images",
+      "title": "The image edits helped two seeds and slightly hurt one"
+    },
+    {
+      "number": 82,
       "key": "recorded-goes",
       "title": "The GOES model performed worse than persistence"
     },
     {
-      "number": 80,
+      "number": 83,
+      "key": "qualified-goes",
+      "title": "The measurement repair passed its three-seed check"
+    },
+    {
+      "number": 84,
       "key": "result-meaning",
       "title": "Read the saved score for one image in Weave"
     },
     {
-      "number": 81,
+      "number": 85,
       "key": "reproduce",
       "title": "Check that the saved source contains both selected edits"
     },
     {
-      "number": 82,
+      "number": 86,
       "key": "conclusion-turn",
       "title": "Write down what changed and whether it helped"
     },
     {
-      "number": 83,
+      "number": 87,
       "key": "close",
       "title": "Bring the results to the lab review"
     },
     {
-      "number": 84,
+      "number": 88,
       "key": "reference",
       "title": "Reference and worked answers"
     },
     {
-      "number": 85,
+      "number": 89,
       "key": "answer-trace",
       "title": "Put the attribute inside the tool scope"
     },
     {
-      "number": 86,
+      "number": 90,
       "key": "answer-persistence",
       "title": "Return a copy of the latest observation"
     },
     {
-      "number": 87,
+      "number": 91,
       "key": "answer-flux",
       "title": "Implement the training loss and forecast metric"
     },
     {
-      "number": 88,
+      "number": 92,
       "key": "answer-search",
       "title": "Compare the settings and loss curves"
     },
     {
-      "number": 89,
+      "number": 93,
       "key": "answer-images",
       "title": "Average the error inside the disk mask"
     },
     {
-      "number": 90,
+      "number": 94,
       "key": "answer-residual",
       "title": "Add the correction to input channel 1"
     },
     {
-      "number": 91,
+      "number": 95,
       "key": "answer-evidence",
       "title": "Return validation evidence only"
     },
     {
-      "number": 92,
+      "number": 96,
       "key": "answer-controller",
       "title": "Pass the candidate’s code to training"
     },
     {
-      "number": 93,
+      "number": 97,
       "key": "answer-final",
       "title": "Use the saved model without training it again"
     },
     {
-      "number": 94,
+      "number": 98,
       "key": "recorded-edit",
       "title": "Round 1: absolute loss versus the unchanged model"
     },
     {
-      "number": 95,
+      "number": 99,
       "key": "recorded-code",
       "title": "Round 2: start the correction at zero"
     },
     {
-      "number": 96,
+      "number": 100,
       "key": "zero-head",
       "title": "Zero initialization applies only to the output layer"
     },
     {
-      "number": 97,
+      "number": 101,
       "key": "recorded-keep",
       "title": "Round 2: sampling without replacement did not reduce error"
     },
     {
-      "number": 98,
+      "number": 102,
       "key": "recorded-lens",
       "title": "Open the recorded research conversation"
     },
     {
-      "number": 99,
+      "number": 103,
       "key": "recovery",
       "title": "When a service is unavailable"
     },
     {
-      "number": 100,
+      "number": 104,
       "key": "schedule",
       "title": "Four-hour session"
     },
     {
-      "number": 101,
+      "number": 105,
       "key": "links",
       "title": "Keep working in your own project"
     }
@@ -711,6 +731,18 @@
       "click": 0
     },
     {
+      "slide": 42,
+      "click": 1
+    },
+    {
+      "slide": 42,
+      "click": 2
+    },
+    {
+      "slide": 42,
+      "click": 3
+    },
+    {
       "slide": 43,
       "click": 0
     },
@@ -735,18 +767,6 @@
       "click": 0
     },
     {
-      "slide": 48,
-      "click": 1
-    },
-    {
-      "slide": 48,
-      "click": 2
-    },
-    {
-      "slide": 48,
-      "click": 3
-    },
-    {
       "slide": 49,
       "click": 0
     },
@@ -755,20 +775,20 @@
       "click": 0
     },
     {
-      "slide": 51,
-      "click": 0
-    },
-    {
-      "slide": 51,
+      "slide": 50,
       "click": 1
     },
     {
-      "slide": 51,
+      "slide": 50,
       "click": 2
     },
     {
-      "slide": 51,
+      "slide": 50,
       "click": 3
+    },
+    {
+      "slide": 51,
+      "click": 0
     },
     {
       "slide": 52,
@@ -777,6 +797,18 @@
     {
       "slide": 53,
       "click": 0
+    },
+    {
+      "slide": 53,
+      "click": 1
+    },
+    {
+      "slide": 53,
+      "click": 2
+    },
+    {
+      "slide": 53,
+      "click": 3
     },
     {
       "slide": 54,
@@ -807,20 +839,20 @@
       "click": 0
     },
     {
-      "slide": 60,
-      "click": 1
-    },
-    {
-      "slide": 60,
-      "click": 2
-    },
-    {
       "slide": 61,
       "click": 0
     },
     {
       "slide": 62,
       "click": 0
+    },
+    {
+      "slide": 62,
+      "click": 1
+    },
+    {
+      "slide": 62,
+      "click": 2
     },
     {
       "slide": 63,
@@ -847,20 +879,20 @@
       "click": 0
     },
     {
-      "slide": 68,
-      "click": 1
-    },
-    {
-      "slide": 68,
-      "click": 2
-    },
-    {
       "slide": 69,
       "click": 0
     },
     {
       "slide": 70,
       "click": 0
+    },
+    {
+      "slide": 70,
+      "click": 1
+    },
+    {
+      "slide": 70,
+      "click": 2
     },
     {
       "slide": 71,
@@ -903,14 +935,6 @@
       "click": 0
     },
     {
-      "slide": 80,
-      "click": 1
-    },
-    {
-      "slide": 80,
-      "click": 2
-    },
-    {
       "slide": 81,
       "click": 0
     },
@@ -925,6 +949,14 @@
     {
       "slide": 84,
       "click": 0
+    },
+    {
+      "slide": 84,
+      "click": 1
+    },
+    {
+      "slide": 84,
+      "click": 2
     },
     {
       "slide": 85,
@@ -993,6 +1025,22 @@
     {
       "slide": 101,
       "click": 0
+    },
+    {
+      "slide": 102,
+      "click": 0
+    },
+    {
+      "slide": 103,
+      "click": 0
+    },
+    {
+      "slide": 104,
+      "click": 0
+    },
+    {
+      "slide": 105,
+      "click": 0
     }
   ],
   "issues": [],
@@ -1001,45 +1049,45 @@
   "answers": [
     {
       "slide": 11,
-      "destination": "/forge-workshop-kit/solar/85",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 22,
-      "destination": "/forge-workshop-kit/solar/86",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 33,
-      "destination": "/forge-workshop-kit/solar/87",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 41,
-      "destination": "/forge-workshop-kit/solar/88",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 54,
       "destination": "/forge-workshop-kit/solar/89",
       "keyboardReturn": true
     },
     {
-      "slide": 61,
+      "slide": 22,
+      "destination": "/forge-workshop-kit/solar/90",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 33,
       "destination": "/forge-workshop-kit/solar/91",
       "keyboardReturn": true
     },
     {
-      "slide": 71,
+      "slide": 41,
       "destination": "/forge-workshop-kit/solar/92",
       "keyboardReturn": true
     },
     {
-      "slide": 76,
+      "slide": 56,
       "destination": "/forge-workshop-kit/solar/93",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 63,
+      "destination": "/forge-workshop-kit/solar/95",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 73,
+      "destination": "/forge-workshop-kit/solar/96",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 78,
+      "destination": "/forge-workshop-kit/solar/97",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 205,
+  "routes_checked": 213,
   "presenter_notes": true
 }

@@ -32,6 +32,12 @@ Each comparison tracks W&B, Weave and native EvalTables publication separately. 
 
 The small `workshops.json` manifest owns template titles, step names, dependency extras and comparison labels. It does not execute stages. Workshop code stays in the authored notebook cells and domain modules.
 
+It also owns comparison metrics, units, direction and aggregation. Macro-F1 and average precision come from the scorer's aggregate over the frozen predictions; publication must not average per-row F1 or AP values. Image descriptors record relative paths and content hashes. Publication preserves images and structured outputs as typed values, and restore verifies the same bytes.
+
+Reviews record the case, proposed and accepted labels, reviewer, dataset version and supporting evidence. Only verified development reviews enter a revised training dataset; a later withdrawal supersedes an accepted label. Release decisions pin an artifact version and evaluation, with a previous version for rollback. Managed training records submission intent before the request and saves the returned job ID. An ambiguous submission requires reconciliation rather than an automatic second job.
+
+Weave publication verifies the completed evaluation call by its saved call ID after flushing. Dataset or Evaluation objects alone do not establish that result traces reached the server. A missing call remains unavailable and a publication retry reuses saved predictions.
+
 ## Project setup
 
 `setup.project_context()` reads the hosted notebook’s `WANDB_ENTITY` and `WANDB_PROJECT`. Those values take precedence over a local `WORKSHOP_PROJECT` default when a notebook identity is present. The hosted setup shows the detected project without an editable destination field. Local notebooks accept an explicit project. See the [participant setup guide](setup.md).

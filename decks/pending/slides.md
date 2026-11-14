@@ -47,7 +47,7 @@ class: opening-story
 
 # Acme wants a duplicate $49 charge refunded.
 
-<div class="first-ticket-scene"><div class="customer-note"><div class="prop-label">TICKET · ACME BILLING</div><h2>We were charged twice for invoice inv-1.</h2><p>Keep the original payment and refund the duplicate.</p></div><div><div class="prop-label">ACME’S STARTING ACCOUNT</div><table class="clean-table readable-table"><tbody><thead><tr><th>Payment</th><th>Invoice</th><th>Amount</th></tr></thead><tbody><tr><td>pay-1</td><td>inv-1</td><td>$49</td></tr><tr><td>pay-2</td><td>inv-1</td><td>$49</td></tr></tbody></tbody></table><p class="mini">Both payments are captured. No refund is recorded.</p><p style="font-size:25px">The agent needs to read this account, identify pay-2 as the duplicate, and refund it once.</p></div></div>
+<div class="first-ticket-scene"><div class="customer-note"><div class="prop-label">TICKET · ACME BILLING</div><h2>We were charged twice for invoice inv-1.</h2><p>Keep the original payment and refund the duplicate.</p></div><div><div class="prop-label">ACME’S STARTING ACCOUNT</div><table class="clean-table readable-table"><thead><tr><th>Payment</th><th>Invoice</th><th>Amount</th></tr></thead><tbody><tr><td>pay-1</td><td>inv-1</td><td>$49</td></tr><tr><td>pay-2</td><td>inv-1</td><td>$49</td></tr></tbody></table><p class="mini">Both payments are captured. No refund is recorded.</p><p style="font-size:25px">The agent needs to read this account, identify pay-2 as the duplicate, and refund it once.</p></div></div>
 
 <!--
 Source: cases.py, double-charge. Its mission explicitly says to keep pay-1 and refund the duplicate. Both pay-1 and pay-2 are captured 4900-cent payments for inv-1, and refunds starts empty. Ask what must be read before changing anything: the account identity, invoice identity, payment identity and existing refunds. Another account also has inv-1, so searching by invoice alone is insufficient. No real payment service is connected.
@@ -290,7 +290,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my invoice lookup<br><strong>Check:</strong> The requested invoice, missing invoice, and other-account checks pass. Account state stays unchanged.</div>
 
-<a class="answer-link" href="/78">Worked answer →</a>
+<a class="answer-link" href="/80">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my invoice lookup.
@@ -393,7 +393,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my tool-to-model handoff<br><strong>Check:</strong> Open the four handoff tabs. Match the action, Python arguments, returned payments, and two appended messages.</div>
 
-<a class="answer-link" href="/79">Worked answer →</a>
+<a class="answer-link" href="/81">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my tool-to-model handoff.
@@ -521,6 +521,33 @@ In notebook step 3, use the free local timeout practice. Predict the member coun
 -->
 
 ---
+class: exercise
+---
+
+# Repair the retry in Python.
+
+<div class="where">Notebook · 3 · Pass observations to the agent</div>
+
+<div class="task">Edit recover_access: reuse the original operation_id, then read onboarding_status. Run both procedures from the same starting state.</div>
+
+<div class="done"><strong>Run:</strong> Compare the two retry procedures<br><strong>Check:</strong> The new-ID retry produces two memberships. Your repair should produce one membership and an account read.</div>
+
+<!--
+Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Compare the two retry procedures.
+-->
+
+---
+---
+
+# One retry policy changes the account twice.
+
+<div class="two-col"><div><h2>New operation ID</h2><p style="font-size:54px">2 memberships</p><p>The service treats the retry as a new request.</p></div><div><h2>Same ID + account read</h2><p style="font-size:54px">1 membership</p><p>The saved receipt is returned. The read confirms access.</p></div></div><div class="bottom-note">Measured simulator repair. No model calls. The later agent-written harness comparison still has a 4/4 tie.</div>
+
+<!--
+Source evidence/pending-retry-repair.json. Both execute the same committed-write timeout from fresh state. Distinguish this participant-written Python repair from the later instructions-only comparison. Ask participants to open their recovery trace and find the repeated operation ID.
+-->
+
+---
 ---
 
 # Inspect the timeout and the following status check.
@@ -577,7 +604,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my scorer against four known examples<br><strong>Check:</strong> Full refund passes. Partial refund, no refund, and duplicate refund fail, despite the same confident reply.</div>
 
-<a class="answer-link" href="/80">Worked answer →</a>
+<a class="answer-link" href="/82">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my scorer against four known examples.
@@ -1134,7 +1161,7 @@ if run["case_id"] == "double-charge":
 
 This development check distinguishes the four public examples. The trusted final scorer also checks the target payment and unrelated account state.
 
-<span class="source-link"><a href="/81">Continue to judge validation →</a></span> · <span class="source-link"><a href="/41">Return to exercise →</a></span>
+<span class="source-link"><a href="/83">Continue to judge validation →</a></span> · <span class="source-link"><a href="/43">Return to exercise →</a></span>
 
 <!--
 The learner check is deliberately limited. Do not describe it as the full final scorer.
@@ -1159,7 +1186,7 @@ def my_judge_validation(answer):
 
 Valid JSON can still contain an incorrect judgment. Compare the reason with the recorded work.
 
-<span class="source-link"><a href="/41">Return to the exercise →</a></span>
+<span class="source-link"><a href="/43">Return to the exercise →</a></span>
 
 <!--
 Exact semantics of teaching.ANSWERS scorer validation. Boolean strings are invalid. Empty reasons are invalid. Missing judgments stay unavailable.

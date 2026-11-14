@@ -29,12 +29,16 @@ jobs:
           cache-dependency-path: |
             decks/solar/package-lock.json
             decks/pending/package-lock.json
+            decks/routing/package-lock.json
+            decks/inspection/package-lock.json
       - uses: astral-sh/setup-uv@v6
         with:
           version: '0.11.27'
       - run: |
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm ci --prefix decks/solar
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm ci --prefix decks/pending
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm ci --prefix decks/routing
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm ci --prefix decks/inspection
           cd decks/solar
           npx playwright install --with-deps chromium
       - run: python3 scripts/build_decks.py --pdf --validate

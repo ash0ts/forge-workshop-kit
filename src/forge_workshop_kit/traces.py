@@ -78,10 +78,14 @@ def export_trace(session, identity, mission, events, requests=(), *, tool_writer
                     output_messages=[tracing.Message(role='assistant', content=choice.get('message',{}).get('content') or '')],
                     started_at=stamp(record['started_at']), ended_at=stamp(record['ended_at']))
                 usage = res.get('usage') or {}
-                if all(type(usage.get(k)) is int for k in ('prompt_tokens','completion_tokens')):
+                if not isinstance(usage, dict):
+                    usage = {}
+                measured_usage = all(type(usage.get(k)) is int and usage[k] >= 0
+                                     for k in ('prompt_tokens','completion_tokens'))
+                if measured_usage:
                     llm.usage = tracing.Usage(input_tokens=usage['prompt_tokens'], output_tokens=usage['completion_tokens'])
                 with llm:
-                    llm.set_attributes({'workshop.request_id': record['id'], 'workshop.usage_available': bool(usage)})
+                    llm.set_attributes({'workshop.request_id': record['id'], 'workshop.usage_available': measured_usage})
                     if record.get('error'):
                         llm.record_error(RuntimeError(record['error']))
             for event in events:
@@ -127,9 +131,12 @@ def verify_trace(session, key, receipt, events, requests):
             row = matching[0]
             if row.get('request_model') != request['request']['model']:
                 raise RuntimeError('Stored model differs')
+            usage = (request.get('response') or {}).get('usage') or {}
+            measured_usage = isinstance(usage, dict) and all(
+                type(usage.get(key)) is int and usage[key] >= 0
+                for key in ('prompt_tokens', 'completion_tokens'))
             for source, dest in [('prompt_tokens','input_tokens'), ('completion_tokens','output_tokens')]:
-                usage = (request.get('response') or {}).get('usage') or {}
-                if source in usage and row.get(dest) != usage[source]:
+                if measured_usage and row.get(dest) != usage[source]:
                     raise RuntimeError('Stored usage differs')
     receipt.update(verified=True, stored_spans=len(rows))
     with session.transaction() as state:

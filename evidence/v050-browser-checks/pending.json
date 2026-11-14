@@ -1,0 +1,13 @@
+{
+  "edited": true,
+  "passed": true,
+  "live_access_checked": false,
+  "publication_disabled": true,
+  "workshop": "pending",
+  "check": "Edited recover_access in the notebook and ran both recovery functions against reset simulator state",
+  "fresh_account": false,
+  "model_calls": 0,
+  "source": "scripts/pending_cells.py",
+  "screenshot": "pending-retry-repair.png",
+  "publication_check": "../v050-publication-check.json"
+}

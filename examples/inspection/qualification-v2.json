@@ -1,0 +1,17 @@
+{
+  "identity": "visa-pcb1-teaching-retest-v2",
+  "status": "frozen-before-validation-search",
+  "reason": "The positional-mean patch classifier improved validation AP but lost test AP. A normal board can have more than one plausible feature vector at a position. Compare distance to the closest actual training example instead of distance to their mean.",
+  "data": "inspection-v1",
+  "split_seed": 2718,
+  "methods": ["whole", "nearest-patch"],
+  "C_grid": [0.03, 0.3, 3.0],
+  "selection": "Choose highest validation average precision separately within each method; exact ties prefer smaller C.",
+  "nearest_patch": "minimum mean squared standardized feature distance to normal fit examples at the same 14x14 location; append log1p distances to whole-image features",
+  "threshold": "largest validation threshold with at least 0.90 defect recall",
+  "primary_measure": "average_precision",
+  "qualification": "selected nearest-patch AP must exceed selected whole-image AP on the already-inspected official test partition",
+  "test_status": "teaching retest of inspected images, not fresh benchmark evidence",
+  "stop": "One fixed grid only. Publish every validation outcome and both final outcomes. No test-based retuning.",
+  "compute": "local CPU; no provider calls"
+}

@@ -1,0 +1,168 @@
+{
+  "checked_at": "2026-11-14T15:15:45.220311+00:00",
+  "workshop": "visual-inspection",
+  "release": "v0.5.0",
+  "project": "wandb/forge-workshop-kit",
+  "execution": "Headless Chrome against the real local marimo notebook, with authorized operator Forge credentials.",
+  "state": ".workshop/inspection-browser-v050",
+  "browser": "Chrome",
+  "desktop_viewport": [
+    1440,
+    1100
+  ],
+  "narrow_viewport": [
+    390,
+    844
+  ],
+  "live": [
+    "Project write-access check",
+    "Tool-only Forge setup trace with stored readback",
+    "Real pinned VisA PCB1 images, masks, split and cached features",
+    "Edits to feature, threshold and review-selection functions followed by free local checks",
+    "CPU training for whole-image, nearest-patch, reviewed active and reviewed random models",
+    "Recorded review selection and an unresolved human-assessment response",
+    "Frozen model files and feature code",
+    "Four versions evaluated on all 442 official test boards",
+    "Actual Forge trace exports and checkpoint uploads",
+    "Reload selected saved classifier and reproduce its prediction",
+    "Reopen notebook, restore completed stages, reload dataset, select a saved test board"
+  ],
+  "mocked_services": [],
+  "paid_provider_requests": 0,
+  "complete_stages": [
+    {
+      "name": "setup/trace",
+      "id": "ebd3e15dfb5eee8d6ba20f88a8cefead",
+      "status": "complete",
+      "source_fingerprint": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "artifact_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-ebd3e15dfb5eee8d6ba20f88a8cefead/v0"
+    },
+    {
+      "name": "compare/whole",
+      "id": "91586c640b729e76863e439a964a9296",
+      "status": "complete",
+      "source_fingerprint": "477f8149d36ed124c6eaa93d2ad91750c79d8a658764c778c8dcd3f377fabb09",
+      "artifact_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-91586c640b729e76863e439a964a9296/v0"
+    },
+    {
+      "name": "compare/nearest-patch",
+      "id": "815d2826eaf6ca09bbcceda79745ac93",
+      "status": "complete",
+      "source_fingerprint": "477f8149d36ed124c6eaa93d2ad91750c79d8a658764c778c8dcd3f377fabb09",
+      "artifact_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-815d2826eaf6ca09bbcceda79745ac93/v0"
+    },
+    {
+      "name": "review/selection",
+      "id": "29e7ae4a038bea05686ed1611d6c768a",
+      "status": "complete",
+      "source_fingerprint": "bec561c9fd054e943b28433035db1d6b8c54feffb27395608c6cb53987acd16e",
+      "artifact_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-29e7ae4a038bea05686ed1611d6c768a/v0"
+    },
+    {
+      "name": "review/assessment/pcb1-normal-0714",
+      "id": "ca1c8dcd2b0e885c69ca697f0e73e701",
+      "status": "complete",
+      "source_fingerprint": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "artifact_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-ca1c8dcd2b0e885c69ca697f0e73e701/v0"
+    },
+    {
+      "name": "review/active",
+      "id": "d0efff7e225b79d7eb5fa3baece6f9eb",
+      "status": "complete",
+      "source_fingerprint": "03ec8c55300096794932c353914256135121a596ba87cb992670429655db3e2f",
+      "artifact_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-d0efff7e225b79d7eb5fa3baece6f9eb/v0"
+    },
+    {
+      "name": "review/random",
+      "id": "b37f1741308d27542f9782416ab09133",
+      "status": "complete",
+      "source_fingerprint": "03ec8c55300096794932c353914256135121a596ba87cb992670429655db3e2f",
+      "artifact_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-b37f1741308d27542f9782416ab09133/v0"
+    },
+    {
+      "name": "freeze",
+      "id": "a23e55f2213cbf765b875bc46f08d509",
+      "status": "complete",
+      "source_fingerprint": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "artifact_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-a23e55f2213cbf765b875bc46f08d509/v0"
+    },
+    {
+      "name": "evaluate",
+      "id": "6ca6dbf7ca5119546ba9d83ab253bd86",
+      "status": "complete",
+      "source_fingerprint": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "artifact_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-6ca6dbf7ca5119546ba9d83ab253bd86/v0"
+    }
+  ],
+  "final_prediction_rows": 1768,
+  "selected_version": "compare/whole",
+  "selection_note": "The UI driver retained the default whole-image version to exercise freezing and reproduction. This is browser validation, not the validation-selected public worked rehearsal; that separate rehearsal selected review/random.",
+  "traces": [
+    {
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ebd3e15dfb5eee8d6ba20f88a8cefead",
+      "stored_spans": 2,
+      "verified": true
+    },
+    {
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/91586c640b729e76863e439a964a9296",
+      "stored_spans": 2,
+      "verified": true
+    },
+    {
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/815d2826eaf6ca09bbcceda79745ac93",
+      "stored_spans": 2,
+      "verified": true
+    },
+    {
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/d0efff7e225b79d7eb5fa3baece6f9eb",
+      "stored_spans": 2,
+      "verified": true
+    },
+    {
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/b37f1741308d27542f9782416ab09133",
+      "stored_spans": 2,
+      "verified": true
+    }
+  ],
+  "browser_javascript_errors": [],
+  "publication_boundary": "Final comparison transport was verified separately from the saved worked rehearsal, in evidence/inspection-live-v050.json. This browser run did not republish the 1768 rows. The notebook displays its publication status separately.",
+  "native_evaltables": "The separate live publication returned HTTP 500. Verified W&B image tables and Weave evaluations remain available; no successful native EvalTables view is claimed.",
+  "source_validation": {
+    "browser_executed_notebook_sha256": "bdd4f83273d13184647587383200724e010e4b0f1f00ca65865c15ebb670c10e",
+    "current_notebook_sha256": "575a18fdc8e2c12b5175ce8c715a63c309a4e32875dda34425bece504467646c",
+    "later_changes": "Cache identities and final-evaluation guard were tightened after the full browser run; eight focused tests exercise the authored actions, and marimo check passed. Browser restoration was checked again afterward."
+  },
+  "screenshots": [
+    {
+      "path": "evidence/inspection-browser-v050/inspection-browser-data.png",
+      "sha256": "fc556ae90dc802f2ce8f98be28604d30de4b0742db4bbcacb50775f38e9e0e04"
+    },
+    {
+      "path": "evidence/inspection-browser-v050/inspection-browser-features.png",
+      "sha256": "dd1dd35685cc7b3a4053cf038c57cb9402760eaf33dcf9805ee78ccd573d8251"
+    },
+    {
+      "path": "evidence/inspection-browser-v050/inspection-browser-evaluate-restored.png",
+      "sha256": "147584bf1a56d83aca48d8dde1e3c603ed7a33f535121122566f13a3b1a4a2a0"
+    },
+    {
+      "path": "evidence/inspection-browser-v050/inspection-browser-narrow.png",
+      "sha256": "d562ee6702bb44bedff5cfc962b8254978683f053e2cbb213d84eb9db1f37a1b"
+    },
+    {
+      "path": "evidence/inspection-browser-v050/inspection-browser-case-detail.png",
+      "sha256": "d87a2de1929e92b57f72dc12676dd0954c0a4cf1f3a9bef1ebf247acc727d635"
+    }
+  ],
+  "readiness_limits": [
+    "Operator account, not a fresh external attendee account.",
+    "No participant usability rehearsal has occurred.",
+    "The driver used worked solutions to validate the exercise wiring.",
+    "The optional four-board encoder recomputation was covered by local validation, not clicked in this browser path.",
+    "The public worked result is a teaching retest of previously inspected test images, not a new unseen research benchmark."
+  ],
+  "restored_case_check": {
+    "case_id": "pcb1-anomaly-048",
+    "result": "The restored selector shows the real board, its defect mask, all four saved scores, and matching freeze/evaluation artifact links."
+  }
+}

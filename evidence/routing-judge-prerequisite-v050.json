@@ -1,0 +1,13 @@
+{
+  "test": "Routing prerequisite browser check; isolated test workspace",
+  "provider": "Deliberately disabled; one unavailable judgment is a UI test fixture",
+  "inference_calls": 0,
+  "checks": {
+    "blocked_before_judge_attempt": true,
+    "attempt_saved": true,
+    "missing_agreement": null,
+    "unavailable_count": 1,
+    "freeze_enabled_after_attempt": true
+  },
+  "browser_errors": []
+}

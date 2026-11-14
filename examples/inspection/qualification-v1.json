@@ -1,0 +1,21 @@
+{
+  "identity": "visa-pcb1-worked-example-v1",
+  "status": "frozen-before-final-evaluation",
+  "source_revision": "2a692ab575001cbde74d402d897a7286086c6199",
+  "upstream_split": "split_csv/2cls_highshot.csv",
+  "split_seed": 2718,
+  "training_partition": {"fit_fraction": 0.6, "review_fraction": 0.2, "validation_fraction": 0.2},
+  "encoder": "resnet18-imagenet1k-v1-layer2-layer3-rp64-v1",
+  "classifier": {"type": "logistic-regression", "C": 1.0, "class_weight": "balanced", "max_iter": 2000},
+  "patch_method": "normal-training positional mean and variance; per-patch squared standardized residuals appended to whole-image features",
+  "threshold": "largest validation threshold with at least 0.90 defect recall",
+  "review_budget": 24,
+  "review_seeds": [17, 29, 43],
+  "active_selection": "smallest absolute distance to frozen initial threshold; seeded tie breaks",
+  "random_selection": "uniform without replacement from same review pool",
+  "primary_measure": "average_precision",
+  "qualification": "patch method average precision must exceed whole-image average precision on the official test partition; report every outcome",
+  "test_access": "only after both models and operating thresholds are saved; official test images excluded from fitting, review and threshold selection",
+  "exclusions": "none; missing files stop preparation",
+  "compute": "local CPU; no provider calls"
+}

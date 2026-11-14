@@ -218,7 +218,9 @@ def check_model(source, task):
     scope = functions(source)
     shape = (2, 60) if task == "measurement" else (2, 8, 8)
     for architecture in (("mlp", "cnn") if task == "measurement" else ("conv", "residual")):
-        model = scope["build_model"](shape, {"architecture": architecture, "width": 4})
+        model = scope["build_model"](shape, {"architecture": architecture, "width": 4,
+                                           "residual": True, "target_center": 0.,
+                                           "target_scale": 1.})
         x = torch.zeros((2, *shape))
         prediction = model(x)
         expected = (2, 1) if task == "measurement" else (2, 1, 8, 8)
@@ -229,6 +231,14 @@ def check_model(source, task):
         if not torch.isfinite(loss) or loss.ndim:
             raise ValueError("training_loss must return one finite scalar.")
     return {"checks": 4, "result": "Both architectures return the required shape and a finite training loss. No training ran."}
+
+
+def measurement_repair_config(normalization, *, seed=17):
+    """The fixed GOES recipe qualified on three seeds; scaling is train-fitted."""
+    return {"architecture": "mlp", "residual": True, "width": 16,
+            "learning_rate": .001, "steps": 1200, "batch_size": 64, "seed": seed,
+            "target_center": normalization["mean"][0][1][0],
+            "target_scale": normalization["std"][0][1][0]}
 
 
 def saved(session, name):

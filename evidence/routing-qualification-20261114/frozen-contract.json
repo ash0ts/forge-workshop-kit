@@ -1,0 +1,37 @@
+{
+  "sha256": "c56cab7971819095eb550bf914ac633e83496a54d0d0d966cc05d072dcaf685b",
+  "contract": {
+    "identity": "banking77-routing-qualification-20261114",
+    "question": "Does a fixed sentence encoder with a trained linear head improve macro-F1 over word TF-IDF with the same classifier on Banking77?",
+    "dataset_revision": "57ec275d8078af65b7731c2a98be812d844a6d6b",
+    "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+    "encoder_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "encoder_max_length": 256,
+    "split_seed": 20261114,
+    "validation_per_intent": 10,
+    "review_per_intent": 10,
+    "classifier": "LogisticRegression",
+    "C": 10.0,
+    "max_iter": 1000,
+    "qualification_seeds": [
+      17,
+      29,
+      43
+    ],
+    "tfidf": {
+      "ngram_range": [
+        1,
+        2
+      ],
+      "min_df": 1,
+      "sublinear_tf": true
+    },
+    "primary_metric": "macro_f1",
+    "test": "Original official test partition; no selection or changes using its results.",
+    "review_budget": 50,
+    "abstention_threshold": 0.5,
+    "prompted_sample": 8,
+    "release_rule": "All predetermined seeds must improve macro-F1 to advertise a dependable worked improvement; publish every outcome. Seed repetitions are not independent datasets.",
+    "review_rule": "Human accepted labels only. Qualification uses published labels explicitly marked dataset-reference replay, not human review or teacher-generated labels."
+  }
+}

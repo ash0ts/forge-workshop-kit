@@ -19,6 +19,7 @@ contracts = [
     ("persistence-turn", "Persistence", ["persistence_forecast"], ["Check my persistence function", "Run my persistence baseline"]),
     ("tracking-turn", "Track and search", ["training_loss", "my_flux_mae", "run_training"], ["Check my measurement code"]),
     ("search-turn", "Track and search", [], ["Run six tracked configurations"]),
+    ("goes-repair-turn", "Track and search", ["forward", "fit"], ["Check the GOES repair code", "Train the worked GOES repair"]),
     ("image-turn", "Solar images", ["ImagePredictor.forward", "my_image_mae"], ["Check my image code", "Compare convolutional and residual predictors"]),
     ("evidence-turn", "Research agent", ["select_validation_evidence"], ["Check my evidence selection"]),
     ("round1-turn", "Research agent", ["next_research_action"], []),

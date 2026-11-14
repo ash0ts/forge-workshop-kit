@@ -1,34 +1,37 @@
-# Release checks · 0.4.1 technical preview
+# Release checks · 0.5.0 technical preview
 
-Version 0.4.1 expands the openings in both decks and notebooks. Pending explains the customer requests, starting account records, and required account changes. Solar introduces the lab's review assignment, instruments, forecast inputs and targets, and comparison against persistence before project setup. The exercises, datasets, settings, and saved results are unchanged. The Solar introduction now appears only on the setup step.
+This release adds customer-request routing and circuit-board inspection to the gateway-free Workshop Kit. Pending adds an editable retry repair. Solar adds a qualified GOES recipe and publishes the mixed three-seed image result. Previous releases, rehearsal evidence and attendee copies remain unchanged.
 
-This revision changes the teaching views, deck reveals, and notebook explanations. The data, model settings, scores, three-hour Pending schedule, four-hour Solar schedule, and workflow compatibility version 1 are unchanged. It uses the November 13 rehearsals. No new training or inference was run.
+## Worked examples
 
-## Notebook checks
+| Exercise | Qualification | Outcome |
+| --- | --- | --- |
+| Pending | Same simulated committed-write timeout, two recovery functions | New operation ID creates two memberships. Original ID plus account read leaves one. The separate harness comparison remains a 4/4 tie. |
+| Banking77 | Frozen official test; TF–IDF versus frozen MiniLM features | Macro-F1 0.879385 → 0.920229. Three seeds reproduce the deterministic classifier result. |
+| VisA PCB1 | Frozen supervised split and bounded validation-selected follow-up | AP 0.872900 → 0.885742. Teaching retest after a failed first recipe; both remain published. |
+| GOES | Three predeclared seeds; validation selects residual MLP, 1,200 updates | All three beat persistence. Mean MAE 0.163506 versus 0.192706. Inspected final dates are teaching retests. |
+| AIA images | Exact image recipe repeated across three seeds | Two gains and one 0.21% regression; the all-seed gate fails. Do not call it a reliable improvement. |
 
-The browser checks used isolated copies of saved rehearsal workspaces. Inference, training, trace export, and publication were disabled in those verification processes. The controls were tested against real saved outputs; project access was stubbed and is not an attendee-access check.
+Read the [routing protocol](routing-workshop.md), [inspection protocol](inspection-workshop.md), and [Solar qualification](solar-qualification.md) before using the results as teaching claims. These are distinct experiments with different metrics, not a combined benchmark.
 
-- Pending: action/arguments/result/message tabs; timeout, retry with the same operation ID, a new operation, and reset; actual skill-read status; branch selection; and aligned final-case selection. The saved request and execution records did not change.
-- Solar: accepted-window selection and normalization; learner-authored MLP and CNN forward passes without training; scorer arithmetic inside and outside the disk mask; and aligned frozen predictions at the selected timestamp. Navigation remains responsive after the free code check. The saved request and execution records did not change.
-- Shared branch views: desktop, narrow and dark presentation, keyboard selection, and the sequence Candidate A → Test A → Candidate B → Test B. The detail panel separates proposals, actual executions, decisions, missing results, and retained versions.
-- Unit checks cover retained versions, rejected changes, missing traces, scorer errors, per-image averaging, shared image scales, selected execution identity, and the notebook's reactive dependencies. The existing recovery and accounting checks remain in the full suite.
+## Service checks
 
-See [browser and source checks](../evidence/v040/validation.json). The [visual walkthrough](visual-sequence.md) describes what to inspect at each step.
+The November 14 live routing rehearsal made eight routing calls and four judge calls. All twelve returned responses with verified stored spans. Observed inference cost was $0.00113494, with no bounded unknown usage or in-flight reservations. The eight routing examples were a small instrumentation check, not a balanced quality evaluation. Judge agreement with the supplied dataset labels is not agreement with human reviewers.
 
-## Deck and package checks
+The new Pending repair exported actual before/after tool events and passed stored-span readback. The publication check saved typed VisA photographs and masks, W&B results, Weave datasets and completed evaluation calls. The full inspection rehearsal published four versions and 1,768 aligned image rows. Missing masks remain missing media values; a publication retry recovered an upload timeout without rerunning training. A silent Weave export failure found during the check now remains unavailable until server readback succeeds; saved execution is never repeated to repair publication.
 
-Pending has 82 slides and 98 reveal states; Solar has 101 slides and 121 reveal states. Every state was rendered and checked for clipping, missing images, malformed text, diagram label collisions, keyboard advance and return. Every PDF page was rendered and visually reviewed. Worked-answer links return to the correct exercise even when reveals add PDF pages.
+Native EvalTables returned HTTP 500 again. Notebook comparisons, W&B tables and verified Weave evaluations are the available fallback. The UI reports each publication destination separately. Screenshots must not imply that native EvalTables succeeded.
 
-Numbered annotations use the original native Forge captures and preserve their source links. The decks label recorded results and show the actual W&B and Weave comparisons. They do not present an unavailable native EvalTables page as a successful publication.
+## Code and browser checks
 
-The official Slidev skill is vendored from the reviewed revision listed in [UPSTREAM.md](../.agents/skills/slidev/UPSTREAM.md). The package and notebook previews are built without participant credentials. Source bundles include the shared visual definitions. Notebook regeneration, marimo validation, distribution-content checks, and the full unit suite are part of the release build.
+The automated checks cover review withdrawal and test exclusion, scorer-owned aggregate metrics, image hashes, exact release versions, ambiguous managed submissions, restoration and publication-only retries. The full suite passed 206 tests at the final integration checkpoint. Notebook generation and marimo dependency checks cover all six templates. Starter and facilitator still do not require Torch or SunPy.
 
-## What the recorded results establish
+Browser checks cover actual learner edits and CPU execution, with live provider/publication rehearsals recorded separately. The inspection browser rehearsal completed nine stages and all 1,768 predictions, followed by reproducing a saved model. Its review-selection and freeze records now include the exact parent model and source; changed choices after final evaluation require a new teaching-retest workspace. Pending’s retry repair was checked in a fresh browser session; routing completed its code-edit, review, retrain and frozen-test path using a clearly identified service fixture. Browser checks distinguish saved-record playback from live service access. A copied rehearsal workspace is not a fresh-account test. Qualification arrays, state changes and local checks use the actual lesson implementation; recorded output is never attributed to an unexecuted learner edit.
 
-Pending's three versions each passed all four final cases. It demonstrates changed behavior and an inspectable improvement process, without a measured quality gain. Solar's selected image model improved on the manual model in the recorded rehearsal; its GOES neural model performed worse than persistence. Those are fixed-seed teaching examples, not independent statistical replications. The complete scores, costs and historical service checks remain in the [v0.3.0 evidence review](archive/release-checks-v030.md).
+Deck validation renders every slide and reveal, checks assets and answer-return links, and renders every PDF page. The new decks use real requests and board photographs, with source links and recorded-result labels. See each deck’s `notes/delivery-checks.json` and `notes/pdf-checks.json` for the machine-readable results.
 
-## Remaining limits
+## Remaining release gates
 
-Native EvalTables returned HTTP 500 in the last live service check. This presentation revision made no new service-test claim. W&B results, Weave evaluations and notebook comparisons remain available, and publication can be retried from saved records without another experiment.
+Fresh external-account copying and a human usability rehearsal remain outstanding. The new advanced SFT, Registry and remote-research modules include explicit access checks, cost controls and offline tests; they are not live-qualified training workshops. No paid advanced training or Sandbox job was launched for this release. Registry selection does not deploy a model, and ARIA queued execution still requires an active Launch worker.
 
-Hosted template publication is verified by reading back the uploaded source and preview files. That does not establish that a fresh attendee can copy and run them. The external-account copy/restore check and human usability rehearsal remain outstanding. This release is a technical preview.
+Use this as a technical preview, with the recorded fallback available. It is not yet evidence that a room of new participants can finish within the workshop schedule.

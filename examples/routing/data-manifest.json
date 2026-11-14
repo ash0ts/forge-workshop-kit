@@ -1,0 +1,46 @@
+{
+  "dataset": "Banking77",
+  "dataset_revision": "57ec275d8078af65b7731c2a98be812d844a6d6b",
+  "license": "CC-BY-4.0",
+  "source": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/",
+  "sources": {
+    "train.csv": {
+      "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data/train.csv",
+      "sha256": "b06e26ac675513959a63135f11b94ea7786ed02da65db93a5650d8838cbc664b"
+    },
+    "test.csv": {
+      "url": "https://raw.githubusercontent.com/PolyAI-LDN/task-specific-datasets/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data/test.csv",
+      "sha256": "d12d6e3bc4c3103966ae786dc435913c0c563dfa328f5a3646d0e62cfeeb474d"
+    }
+  },
+  "citation": "Casanueva et al. (2020), Efficient Intent Detection with Dual Sentence Encoders.",
+  "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+  "encoder_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+  "encoder_license": "Apache-2.0",
+  "encoder_files": {
+    "config.json": "953f9c0d463486b10a6871cc2fd59f223b2c70184f49815e7efbcab5d8908b41",
+    "tokenizer_config.json": "acb92769e8195aabd29b7b2137a9e6d6e25c476a4f15aa4355c233426c61576b",
+    "tokenizer.json": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+    "vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3",
+    "special_tokens_map.json": "303df45a03609e4ead04bc3dc1536d0ab19b5358db685b6f3da123d05ec200e3",
+    "model.safetensors": "53aa51172d142c89d9012cce15ae4d6cc0ca6895895114379cacb4fab128d9db"
+  },
+  "pooling": "attention-masked mean, L2 normalized",
+  "max_length": 256,
+  "dimensions": 384,
+  "split_seed": 20261114,
+  "counts": {
+    "train": 8463,
+    "validation": 770,
+    "review": 770,
+    "test": 3080
+  },
+  "encoder_cpu_seconds": 23.157216833991697,
+  "files": {
+    "train.csv": "b06e26ac675513959a63135f11b94ea7786ed02da65db93a5650d8838cbc664b",
+    "test.csv": "d12d6e3bc4c3103966ae786dc435913c0c563dfa328f5a3646d0e62cfeeb474d",
+    "LICENSE-Banking77.txt": "7e7170e3cebf88a9f60c7b8421418323c09304da1af4d5e90f4da1dc1c8a2661",
+    "cases.json": "67eca644b0786c84a587c0cc1b0052c389821e4ac0623294fcd823079a3fc014",
+    "embeddings.npy": "f9d48a4043c5a634b88ab60a64dead153e4ec3042e0d6e86a83a1bbe8f1205d2"
+  }
+}

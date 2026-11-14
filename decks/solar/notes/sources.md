@@ -13,6 +13,17 @@ The same workspace supplies proposals, executed source, validation scores, final
 
 The first round selected absolute training loss over the unchanged squared-loss version. The second selected a zero-initialized residual head and rejected permutation batching. The final source includes the two selected changes in that order.
 
+## Fixed-recipe qualification
+
+The November 14 follow-up is separate from that agent rehearsal. Its [frozen protocol and all results](../../../evidence/solar-fixed-recipes-2026-11-14/) use seeds 17, 29, and 43 and the same real observations. No new research-agent calls ran. The known final dates are a teaching retest.
+
+- `public/qualification-summary.json` is copied from the qualification summary at build time.
+- `public/images/images-seeds-deck.png` shows the manual and combined-edit image scores from all three seeds. The mean falls 5.79%; seed 43 gets 0.21% worse. The strict every-seed improvement gate fails.
+- `public/images/goes-seeds-deck.png` shows persistence and the validation-selected residual MLP at 1,200 updates. Its mean final error is 0.163506 versus persistence 0.192706. All seeds improve; the GOES worked-repair gate passes.
+- `scripts/plot_solar_qualification.py` renders both figures from the saved summary. `docs/solar-qualification.md` supplies equivalent numeric tables and the interpretation.
+
+The new exercise uses the exact **Train the worked GOES repair** control in the notebook. It keeps the six original search runs and saves the repair separately. Its source, configuration, validation result, weights, and trace are linked; the repair is eligible for final selection by validation score. These recipe changes are tested together, so the results do not isolate an individual training mechanism. The older GOES failure and original one-seed image gain remain in the deck.
+
 ## Teaching sources
 
 The editable source and exercise controls come from `scripts/solar_cells.py` and `src/forge_workshop_kit/solar_teaching.py`. `notes/exercise-contract-checks.json` reconciles the deck's named functions and buttons against those files. Both paths are relative to the repository root.

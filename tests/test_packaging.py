@@ -59,8 +59,8 @@ def test_notebook_build_rejects_uv_exporter_drift(monkeypatch):
 
 
 def test_manifest_is_independent_and_preserves_workflow_identity():
-    assert len(list_templates()) == 4
-    assert len(list_workshops()) == 2
+    assert {row['slug'] for row in list_templates()} == {'starter', 'facilitator', 'pending_inc', 'solar_autoresearch', 'request_routing', 'visual_inspection'}
+    assert len(list_workshops()) == 4
     solar = get_workshop("solar-autoresearch")
     assert solar["workflow_version"] == "1"
     solar["steps"].clear()
@@ -83,7 +83,7 @@ def test_notebook_pins_only_its_selected_workshop():
         version = release_support.project_metadata()["version"]
         assert f"v{version}/forge_workshop_kit-{version}" in dependencies[0]
         assert any(item.startswith("torch==") for item in dependencies) == (
-            row["slug"] == "solar_autoresearch"
+            row["slug"] in ("solar_autoresearch", "visual_inspection")
         )
         assert any(item.startswith("sunpy==") for item in dependencies) == (
             row["slug"] == "solar_autoresearch"
@@ -96,7 +96,7 @@ def test_notebook_pins_only_its_selected_workshop():
             release_support.locked_requirements(tuple(row["extras"]))
         )
         assert bool(content.get("tool", {}).get("uv", {}).get("sources")) == (
-            row["slug"] == "solar_autoresearch"
+            row["slug"] in ("solar_autoresearch", "visual_inspection")
         )
 
 

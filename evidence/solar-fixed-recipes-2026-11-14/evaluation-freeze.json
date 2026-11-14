@@ -1,0 +1,151 @@
+{
+  "validation_sha256": "8c48b150022ab27a6bf82472fc03d879701803bcc1771dbbebfcb6711624118f",
+  "goes_recipe": "mlp-residual-1200",
+  "source_and_weights": {
+    "images/manual/17": {
+      "source": "7d68978690bb4927772c4a7092def6c67754d38a82cbed5ef53bc372cb8e725b",
+      "weights": "eb59cfcf123ee2ad0d9e8ce1caf9187e46710e6da14645c80f157c2c00543576"
+    },
+    "images/manual/29": {
+      "source": "7d68978690bb4927772c4a7092def6c67754d38a82cbed5ef53bc372cb8e725b",
+      "weights": "131f1b2a06daf4932db7119ba9b27c1714c305eada2fdccbe9e2fd765d809629"
+    },
+    "images/manual/43": {
+      "source": "7d68978690bb4927772c4a7092def6c67754d38a82cbed5ef53bc372cb8e725b",
+      "weights": "5757ad91d51f660c570ef94a99c706b76c56f09cac7659d90ae86aaf698f7717"
+    },
+    "images/mae/17": {
+      "source": "9bbf351427a367c8851478b143374e952ea6d759cb63aa5d9e5d5b03167992ec",
+      "weights": "9505849e97f8178fd47d35abdc766e8f4a8555bb96a048e64571fd1cb3799143"
+    },
+    "images/mae/29": {
+      "source": "9bbf351427a367c8851478b143374e952ea6d759cb63aa5d9e5d5b03167992ec",
+      "weights": "1dec52708f0ce84c64745192ef784d21ce97eb8890859a9fd6c722aa3851c053"
+    },
+    "images/mae/43": {
+      "source": "9bbf351427a367c8851478b143374e952ea6d759cb63aa5d9e5d5b03167992ec",
+      "weights": "c129cb3124676b1ce490c72c36f38b2e137f649a75f502fc12a7393e0f6c5664"
+    },
+    "images/zero_residual/17": {
+      "source": "eaeb94b5463e18a0f907a1066050a5893e33a9003717745f48a668f1dd7438b5",
+      "weights": "1378d073725015d28d5e85b2b6aa751d98ddb43df7162b91c1efae76bbbe8158"
+    },
+    "images/zero_residual/29": {
+      "source": "eaeb94b5463e18a0f907a1066050a5893e33a9003717745f48a668f1dd7438b5",
+      "weights": "244eb376d648d6e2342cf2eeb4d91342292be9cf9e2eff1f68b9840345c62d97"
+    },
+    "images/zero_residual/43": {
+      "source": "eaeb94b5463e18a0f907a1066050a5893e33a9003717745f48a668f1dd7438b5",
+      "weights": "00f20c6c7e59e43a6814bca7877fd775149fcd61169f5395ef02a577e8551e81"
+    },
+    "goes/historical/17": {
+      "source": "7d68978690bb4927772c4a7092def6c67754d38a82cbed5ef53bc372cb8e725b",
+      "weights": "98e0aef35654da743784a1e8993d51b1710ee76df71796f3628ff25c5171cc93"
+    },
+    "goes/historical/29": {
+      "source": "7d68978690bb4927772c4a7092def6c67754d38a82cbed5ef53bc372cb8e725b",
+      "weights": "81f781cd80e63d917afa3be3c5781d2aadcfe4f4f85e40f7228fdb83613278f8"
+    },
+    "goes/historical/43": {
+      "source": "7d68978690bb4927772c4a7092def6c67754d38a82cbed5ef53bc372cb8e725b",
+      "weights": "89cc33ff3eb51bd5782b1ad873888f72f5def6aecc1bb1e02071aa57977c01b8"
+    },
+    "goes/mlp-direct-400/17": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "6041ca2018c84605a51cd3df756e777bbd930ee5552c42acfaf86b4257b8c9bd"
+    },
+    "goes/mlp-direct-400/29": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "b4ae7a54b722a8b7eb0ad87868dcb64862262e02c82cc7f4bbb92152ae7a3cee"
+    },
+    "goes/mlp-direct-400/43": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "d0d20b0911fcedea39ee95e117cb692d25289d303fd08980bc041f5f1d3b31cf"
+    },
+    "goes/mlp-direct-1200/17": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "4f3c40dd69a40dc872cf87804a76529d457d47629d760f0591f03ab91d5e000d"
+    },
+    "goes/mlp-direct-1200/29": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "22f99f8583b5922061814bb556fc10c9648fde4d44de5ed54ed1b7c730f8ab72"
+    },
+    "goes/mlp-direct-1200/43": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "a9bb4843f023befd271be2d0414145156405d679b355114ec621a0f6a3fd0b7d"
+    },
+    "goes/mlp-residual-400/17": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "759a2f84c8e1652e155eb9c3b6f2a115242f7052e5805905e5c661da58a3fe9d"
+    },
+    "goes/mlp-residual-400/29": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "34143c3e413da12bc435f7c58e4b8a88a6fb4882fc9e5ed02ab6dcca8a6fa338"
+    },
+    "goes/mlp-residual-400/43": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "375d6ac0200bdc7e071cc95a9249e46eb0609cf97d3d0a4abf84a87874a7ffcd"
+    },
+    "goes/mlp-residual-1200/17": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "af1e0bb489a95a692c9dad414f60fc762a8a7c13ae8d7b7dc1802398c28c1960"
+    },
+    "goes/mlp-residual-1200/29": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "4b095c2d22b356df1cb7ebe9325a2ef8ca41b0209e2fc9d22f9111c2091db55e"
+    },
+    "goes/mlp-residual-1200/43": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "6d7e6cded6abb5ffe47e8c24370b6d5d601eb27f91fab5edd54c14b12d6a474a"
+    },
+    "goes/cnn-direct-400/17": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "d4be455890ba920dde0845a7b5ead3c0f62837c704c209001baf0d681ce25c01"
+    },
+    "goes/cnn-direct-400/29": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "bc00d37a71bded6add5e2d1cacaf9b7077a101f8b6197a6ca7878ed6fcbd40a1"
+    },
+    "goes/cnn-direct-400/43": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "e70850b253c3fecced3b0e78a2e1ce66df8f8d8cb0141ead67669af110c326c9"
+    },
+    "goes/cnn-direct-1200/17": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "b3290ce631048c7b782c39980f9baba31005824320a002ddf3765caa84a947ab"
+    },
+    "goes/cnn-direct-1200/29": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "a6f4e0d1c497dfed79f55ffd6eceeb105c9d0e08e0163aab6aa8fe4f73ca6980"
+    },
+    "goes/cnn-direct-1200/43": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "4fccd80a17fe79f68245e4a200efc077c467412d80a6c546ee295d343ed4a25a"
+    },
+    "goes/cnn-residual-400/17": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "65c1d458a9d33306c0a761e01d615ee2ad132de1315c4e49cb6b6abede245a30"
+    },
+    "goes/cnn-residual-400/29": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "76e905d368c432bbccdea7f89f16dbe394724bd7ea045e553ea6c59e1b177618"
+    },
+    "goes/cnn-residual-400/43": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "947e66afece9e8fdc70539be632f52edc2a8739c396957366f3fad8f2aa090c3"
+    },
+    "goes/cnn-residual-1200/17": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "0a48c98cb8762030a796530335fb706a350c51c175c0b58f03aeef9500288b1a"
+    },
+    "goes/cnn-residual-1200/29": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "860ef8374db5e26964a81a09d52d9ca2a0ac4938fffa203259a16b520dafe093"
+    },
+    "goes/cnn-residual-1200/43": {
+      "source": "20d4d5dc81dbbcb9fdb1e8c9fc1c984081e0564cc4eb4922c79711615ad22242",
+      "weights": "074efd15187a2fb0898f58ba80dece6f229da12530744914cce2a5d43f4c0a1d"
+    }
+  },
+  "evaluation_kind": "Known final dates: teaching retest"
+}

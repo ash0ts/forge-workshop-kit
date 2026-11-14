@@ -445,9 +445,31 @@ def _merge_local_work(restored, local):
         restored['progress'] = local['progress']
     if local.get('view'):
         restored['view'] = local['view']
-    for key in ('retries', 'recovery'):
+    for key in ('retries', 'recovery', 'reviews', 'releases'):
         if local.get(key):
             restored.setdefault(key, {}).update(local[key])
+    for key, row in local.get('managed_jobs', {}).items():
+        old = restored.setdefault('managed_jobs', {}).get(key, {})
+        if not old.get('job_id') or row.get('job_id'):
+            restored['managed_jobs'][key] = row
+    for key, row in local.get('advanced_comparisons', {}).items():
+        old = restored.setdefault('advanced_comparisons', {}).get(key)
+        if old is None:
+            restored['advanced_comparisons'][key] = row
+            continue
+        if old.get('plan') != row.get('plan'):
+            raise ValueError('Saved advanced comparison has conflicting request plans.')
+        for request_id, receipt in row.get('requests', {}).items():
+            previous = old.setdefault('requests', {}).get(request_id)
+            if previous and previous.get('request') != receipt.get('request'):
+                raise ValueError('Saved advanced request contents conflict.')
+            if previous is None or (previous.get('status') == 'pending' and receipt.get('status') != 'pending'):
+                old['requests'][request_id] = receipt
+        # An accounting stop survives restore even when another snapshot has a result.
+        if row.get('stop'):
+            old['stop'] = row['stop']
+        if row.get('result') and not old.get('result'):
+            old['result'] = row['result']
 
 
 def monitor(projects, workshop_id, *, api=None):
@@ -461,16 +483,40 @@ def _save_comparison_receipt(session, key, label, record):
         state['publications'].setdefault(key, {})[label] = dict(record)
 
 
-def publish_comparison(session, name, versions):
+def comparison_metrics(session, name, rows, summary=None):
+    """Only average row metrics declared as means; F1/AP must come from the scorer."""
+    specs = _workshop_labels(session).get('comparisons', {}).get(name, {}).get('metrics', [])
+    if not specs:
+        specs = [{'key': 'error', 'aggregate': 'mean', 'summary_key': 'error_mean'}]
+    result = {}
+    for spec in specs:
+        key = spec['key']
+        values = [row.get('error') if key == 'error' else row.get('scores', {}).get(key) for row in rows]
+        available = [v for v in values if v is not None]
+        value = (summary or {}).get(key)
+        if spec.get('aggregate') == 'mean':
+            value = sum(available) / len(available) if available else None
+        result[name + '/' + spec.get('summary_key', key)] = value
+        result[name + '/' + key + '_available'] = len(available)
+    result['planned_scores'] = len(rows)
+    result['available_scores'] = sum(row.get('error') is not None for row in rows)
+    return result
+
+
+def publish_comparison(session, name, versions, *, summaries=None):
     """Publish saved rows once per destination; retries do not execute predictions."""
     from filelock import FileLock
     publisher = session.connect()
     labels = _workshop_labels(session)['comparison_labels']
-    receipt_key = 'comparison/' + digest([name, versions])[:24]
+    receipt_key = 'comparison/' + digest([name, versions] if summaries is None else [name, versions, summaries])[:24]
     # Two notebook cells may retry publication, but must not publish the same rows together.
     with FileLock(str(session.root / ('.' + receipt_key.replace('/', '-') + '.lock'))):
         for label, rows in versions.items():
+            if len({r['case_id'] for r in rows}) != len(rows):
+                raise ValueError('Each version needs one saved row per case identity.')
             run_id = digest([session.workspace_id, name, label, rows])[:32]
+            from .media import bind_root
+            rows = bind_root(rows, session.root)
             record = dict(session.read()['publications'].get(receipt_key, {}).get(label, {}))
             # Older receipts were saved only after the W&B table had been written.
             if record.get('run') and 'wandb_status' not in record:
@@ -481,50 +527,56 @@ def publish_comparison(session, name, versions):
             if record.get('wandb_status') != 'published':
                 try:
                     import wandb
+                    from .media import wandb_table_data
                     with publisher.run(run_id, name + ' / ' + labels.get(label, label), 'workshop-evaluation', {'condition': label}) as run:
-                        table = wandb.Table(columns=['case_id', 'input', 'prediction', 'target', 'error', 'scores', 'evidence'],
-                            data=[[r['case_id'], json.dumps(r['input']), json.dumps(r['prediction']),
-                                   json.dumps(r['target']), r.get('error'), json.dumps(r.get('scores', {})),
-                                   json.dumps(r.get('evidence', {}))] for r in rows])
+                        columns, data = wandb_table_data(rows)
+                        table = wandb.Table(columns=columns, data=data)
                         run.log({'comparison': table})
-                        available = [r['error'] for r in rows if r.get('error') is not None]
-                        run.summary[name + '/error_mean'] = sum(available) / len(available) if available else None
-                        run.summary['available_scores'] = len(available)
-                        run.summary['planned_scores'] = len(rows)
+                        run.summary.update(comparison_metrics(session, name, rows, (summaries or {}).get(label)))
                         url = run.url
                     record.update(wandb_status='published', run=url)
                     record.pop('wandb_error', None)
                 except Exception as error:
                     record.update(wandb_status='unavailable', wandb_error=str(error)[:400])
                 save()
-            if record.get('weave_status') != 'published':
+            if record.get('weave_status') != 'published' or not record.get('weave_verified'):
                 try:
                     import weave
                     weave.init(session.project)
-                    dataset = weave.Dataset(name=safe_name(name + '-' + label + '-cases'), rows=rows)
+                    from .media import weave_value, matches_saved
+                    dataset = weave.Dataset(name=safe_name(name + '-' + label + '-cases'), rows=weave_value(rows))
                     if not record.get('dataset'):
                         record['dataset'] = weave.publish(dataset).uri()
                         save()
                     @weave.op()
                     def saved_prediction(case_id: str):
-                        return next(row for row in rows if row['case_id'] == case_id)['prediction']
+                        return weave_value(next(row for row in rows if row['case_id'] == case_id)['prediction'])
                     @weave.op()
                     def saved_score(case_id: str, output):
                         row = next(row for row in rows if row['case_id'] == case_id)
-                        if output != row['prediction']:
+                        if not matches_saved(output, row['prediction']):
                             raise ValueError('Saved prediction differs from execution')
                         return {'error': row.get('error'), **row.get('scores', {})}
                     from .execution import run_async
                     evaluation = weave.Evaluation(name=safe_name(name + '-' + label + '-evaluation'), dataset=dataset, scorers=[saved_score])
                     if not record.get('weave_evaluated'):
-                        run_async(lambda: evaluation.evaluate(saved_prediction))
+                        _, call = run_async(lambda: evaluation.evaluate.call(evaluation, saved_prediction))
+                        record['weave_call_id'] = call.id
                         record['weave_evaluated'] = True
                         save()
                     if not record.get('evaluation'):
                         record['evaluation'] = weave.publish(evaluation, name=safe_name(name + '-' + label + '-evaluation')).uri()
                         save()
-                    weave.get_client().flush()
-                    record.update(weave_status='published')
+                    client = weave.get_client()
+                    client.flush()
+                    if not record.get('weave_call_id'):
+                        raise RuntimeError('This older evaluation has no saved call ID for verification. '
+                                           'Its objects are saved, but the evaluation export is unverified.')
+                    stored = client.get_call(record['weave_call_id'])
+                    if stored.ended_at is None or stored.exception is not None:
+                        raise RuntimeError('The stored evaluation is incomplete or failed. '
+                                           'The local results remain available; retry publication, not the experiment.')
+                    record.update(weave_status='published', weave_verified=True)
                     record.pop('weave_error', None)
                 except Exception as error:
                     record.update(weave_status='unavailable', weave_error=str(error)[:400])
@@ -551,6 +603,25 @@ def publish_comparison(session, name, versions):
 def native_table(run, rows, name):
     import wandb
     from coreweave_evaluations import Client
+    from .media import checked_image, map_values, native_image, native_fields, column_schema
+    images = {}
+    def collect(value):
+        images[value['sha256']] = value
+        return value
+    map_values(rows, collect)
+    references = {}
+    if images:
+        artifact = wandb.Artifact('evaluation-media-' + digest(sorted(images))[:24], type='evaluation-media')
+        for sha, value in sorted(images.items()):
+            artifact.add_file(str(checked_image(value)), name=sha + '.' + value['format'])
+        logged = run.log_artifact(artifact).wait(timeout=120)
+        references = {sha: logged.get_entry(sha + '.' + value['format']).ref_url() for sha, value in images.items()}
+    typed = map_values(rows, lambda value: native_image(value, references[value['sha256']]))
+    prepared = [{'input': {'case_id': r['case_id'], **native_fields(r['input'], 'input')},
+                 'output': {**native_fields(r['prediction'], 'prediction'), **native_fields(r['target'], 'target'),
+                            'evidence': r.get('evidence', {})},
+                 'scores': {k: v for k, v in {'error': r.get('error'), **r.get('scores', {})}.items() if v is not None}}
+                for r in typed]
     api = wandb.Api()
     scope = api._service_api.execute_graphql(
         'query($e:String!,$p:String!){project(entityName:$e,name:$p){internalId}}',
@@ -561,19 +632,14 @@ def native_table(run, rows, name):
     with Client(base_url='https://evaluations.wandb.ai', api_key=credentials(), scope_id=scope) as client:
         table = client.eval_tables.create(name=safe_name(name), idempotency_key=key('create'))
         client.eval_tables.columns.create(table.evaluation_id,
-            dataset_fields=[{'source': source, 'name': field, 'value_type': 'string'}
-                for source, fields in [('input', ['case_id', 'input']),
-                                       ('output', ['prediction', 'target', 'evidence'])] for field in fields],
-            scorers=[{'name': key, 'value_type': 'number'} for key in score_names], idempotency_key=key('columns'))
+            dataset_fields=[column_schema(source, field, [r[source].get(field) for r in prepared])
+                for source in ('input', 'output') for field in sorted({f for r in prepared for f in r[source]})],
+            scorers=[{'name': key, 'value_type': 'boolean' if any(type(r.get('scores', {}).get(key)) is bool for r in typed) else 'number'} for key in score_names], idempotency_key=key('columns'))
         for i in range(0, len(rows), 100):
-            client.eval_tables.rows.add(table.evaluation_id, rows=[{
-                'input': {'case_id': r['case_id'], 'input': json.dumps(r['input'])},
-                'output': {'prediction': json.dumps(r['prediction']), 'target': json.dumps(r['target']),
-                           'evidence': json.dumps(r.get('evidence', {}))},
-                'scores': {k:v for k,v in {'error':r.get('error'),**r.get('scores',{})}.items() if v is not None}}
-                for r in rows[i:i+100]], idempotency_key=key('rows-' + str(i)))
+            client.eval_tables.rows.add(table.evaluation_id, rows=prepared[i:i+100], idempotency_key=key('rows-' + str(i)))
         version = client.eval_tables.versions.create(table.evaluation_id, idempotency_key=key('version'))
-    return dict(_type='eval-table-ces', schema_version=1, ncols=6, nrows=len(rows),
+    ncols = sum(len({f for r in prepared for f in r[source]}) for source in ('input', 'output')) + len(score_names)
+    return dict(_type='eval-table-ces', schema_version=1, ncols=ncols, nrows=len(rows),
         evaluation_id=table.evaluation_id, evaluation_version_id=version.evaluation_version_id,
         dataset_id=table.dataset_id, dataset_version_id=version.dataset_version_id, log_mode='IMMUTABLE')
 
@@ -584,26 +650,33 @@ def publish_report(session, conclusion, links):
         raise ValueError('Write your conclusion before publishing.')
     receipt_key = 'report-' + digest([conclusion, links])
     saved = session.read()['publications'].get(receipt_key)
-    if saved:
+    report_manifest = digest(_workshop_labels(session))
+    if saved and saved.get('comparison_layout') == 2 and saved.get('report_manifest') == report_manifest:
         url=saved['url']
         entity=session.project.split('/')[0]
         if url.startswith('https://forge.coreweave.com/') and not url.startswith('https://forge.coreweave.com/wandb/'+entity+'/'):
             url=url.replace('https://forge.coreweave.com/','https://forge.coreweave.com/wandb/',1)
         return url
     entity, project = session.project.split('/')
-    report = wr.Report(entity=entity, project=project, title=_workshop_labels(session)['title'] + ': ' + session.workspace_id[:8],
-        description='A participant experiment with saved code, predictions, and research-agent traces.')
+    existing_url = saved['url'].replace('https://forge.coreweave.com/wandb/', 'https://wandb.ai/', 1) if saved else None
+    report = wr.Report.from_url(existing_url) if saved else wr.Report(
+        entity=entity, project=project, title=_workshop_labels(session)['title'] + ': ' + session.workspace_id[:8],
+        description='A participant experiment with saved code, predictions, and execution traces.')
     report.blocks = [wr.H1(text='What I tested'), wr.P(text=conclusion),
         wr.H2(text='Evidence'), *[wr.P(text=wr.Link(text=label, url=url)) for label, url in links.items()],
         wr.PanelGrid(runsets=[wr.Runset(entity=entity, project=project,
             filters=f'Config("workspace_id") == "{session.workspace_id}"')],
-            panels=[wr.ScalarChart(title='Image final error',metric='solar-images-final/error_mean'),
-                    wr.ScalarChart(title='Measurement final error',metric='solar-measurements-final/error_mean')]
-                    if session.workshop=='solar-autoresearch' else [wr.ScalarChart(title='Final case error',metric='pending-final/error_mean')])]
+            panels=[wr.BarPlot(title=spec['label'] + (' (' + spec.get('unit', '') + ')' if spec.get('unit') else ''),
+                              metrics=[name + '/' + spec.get('summary_key', spec['key'])],
+                              orientation='h', max_runs_to_show=20,
+                              legend_template='${config:condition}',
+                              layout=wr.Layout(w=12, h=5))
+                    for name, comparison in _workshop_labels(session).get('comparisons', {}).items()
+                    for spec in comparison['metrics'] if spec.get('report', False)])]
     report.save()
     url=report.url
     if url.startswith('https://forge.coreweave.com/') and not url.startswith('https://forge.coreweave.com/wandb/'+entity+'/'):
         url=url.replace('https://forge.coreweave.com/','https://forge.coreweave.com/wandb/',1)
     with session.transaction() as state:
-        state['publications'][receipt_key] = {'url': url}
+        state['publications'][receipt_key] = {'url': url, 'comparison_layout': 2, 'report_manifest': report_manifest}
     return url

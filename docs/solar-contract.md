@@ -18,6 +18,8 @@ The release contains prepared arrays and a representative FITS file, not thousan
 
 Configuration search compares six bounded runs: MLP and temporal CNN, each with three width/learning-rate configurations. Image experiments compare a convolutional model and a residual predictor. CPU settings and source are pinned in each run.
 
+The measurement exercise then offers an explicit worked repair: a zero-initialized residual MLP trained with consistent flux scaling, absolute loss, and 1,200 updates. It saves a separate run and is eligible for final selection by validation error. Editing or opening its code never runs training. The [three-seed qualification](solar-qualification.md) records its before/after results and the limits of the known-date retest.
+
 The research agent is `zai-org/GLM-5.3-Flash`, fixed throughout a workspace. It proposes two code candidates per round, receives validation evidence, and composes or retains a version. Every proposed source is reviewed; compositions are tested. There are two rounds. Data partitions, target definitions and the independent scorer remain fixed. No test scores enter the research prompt.
 
 Final image comparison: persistence, best manual version by validation error, and the adopted agent version. Freeze executed source and model weights before final inference. Reuse that model, without fitting on final data. Keep errors, missing outputs and failed attempts distinct.
@@ -28,6 +30,6 @@ Each claim follows source → executed fingerprint → training receipt → vali
 
 This is a small teaching excerpt, not an operational flare forecast, a reproduction of Surya, or evidence of general recursive improvement. Adjacent frames are correlated. Report task means and examples; do not count pixels or neighboring timestamps as independent research trials. We use deterministic metrics rather than an LLM judge for numeric prediction quality.
 
-The six initial measurement runs deliberately use a short, visible 60-step training budget. Inspect the training curve before interpreting an architecture comparison: a model still learning its output scale is undertrained. Participants can change that budget uniformly and record another search. This is not a claim that these settings tune either architecture well.
+The six initial measurement runs use a short, visible 60-step training budget. Inspect the training curve before interpreting an architecture comparison: a model still learning its output scale is undertrained. The worked repair changes the recipe and records another execution; it does not replace the original failure. The recipe improved all three qualification seeds, while the saved image edits improved two and slightly worsened one. Neither result promises that a learner's new edit will help.
 
 Optional GPU extension: start a separate workspace, change the worker device explicitly, and record device, precision, batch size, training budget and compute cost. Keep partitions and the independent scorer unchanged. Do not compare a longer GPU search with the CPU exercise as though only the architecture changed.

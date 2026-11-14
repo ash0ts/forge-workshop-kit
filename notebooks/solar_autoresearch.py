@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[solar] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.4.1/forge_workshop_kit-0.4.1-py3-none-any.whl",
+#   "forge-workshop-kit[solar] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/forge_workshop_kit-0.5.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "aioftp==0.28.3",
 #   "aiohappyeyeballs==2.7.1",
@@ -90,12 +90,12 @@
 #   "parso==0.8.7",
 #   "partd==1.4.2",
 #   "pdfminer-six==20260107",
-#   "pillow==13.0.0",
+#   "pillow==12.3.0",
 #   "pims==0.7",
 #   "platformdirs==4.14.5",
 #   "polyfile-weave==0.5.9",
 #   "propcache==0.5.4",
-#   "protobuf==7.36.2",
+#   "protobuf==6.33.6",
 #   "psutil==7.2.2 ; sys_platform != 'android' and sys_platform != 'emscripten'",
 #   "pyavm==0.9.9",
 #   "pycparser==3.12 ; (implementation_name != 'PyPy' and platform_python_implementation != 'PyPy') or (implementation_name == 'pypy' and platform_python_implementation == 'PyPy' and sys_platform != 'emscripten')",
@@ -521,7 +521,8 @@ def _(get_feedback, get_lab, get_step, go_to, mo, persistence_editor, teaching, 
 @app.cell(hide_code=True)
 def _():
     DEFAULT_SOURCE = '"""Editable research code. The data split and final scorer live elsewhere."""\nimport torch\nfrom torch import nn\n\n\ndef build_model(input_shape, config):\n    width=config.get(\'width\',16)\n    architecture=config.get(\'architecture\',\'mlp\')\n    if len(input_shape)==2:\n        if architecture==\'mlp\':\n            return nn.Sequential(nn.Flatten(),nn.Linear(input_shape[0]*input_shape[1],width),\n                                 nn.ReLU(),nn.Linear(width,1))\n        return nn.Sequential(nn.Conv1d(input_shape[0],width,5,padding=2),nn.ReLU(),\n                             nn.AdaptiveAvgPool1d(1),nn.Flatten(),nn.Linear(width,1))\n    class ImagePredictor(nn.Module):\n        def __init__(self):\n            super().__init__()\n            self.net=nn.Sequential(nn.Conv2d(2,width,3,padding=1),nn.ReLU(),\n                                   nn.Conv2d(width,width,3,padding=1),nn.ReLU(),\n                                   nn.Conv2d(width,1,3,padding=1))\n        def forward(self,x):\n            prediction=self.net(x)\n            return prediction+x[:,1:2] if architecture==\'residual\' else prediction\n    return ImagePredictor()\n\n\ndef training_loss(prediction,target,mask):\n    return ((prediction-target).square()*mask).sum()/mask.sum()\n\n\ndef fit(model,x,y,mask,config):\n    optimizer=torch.optim.Adam(model.parameters(),lr=config.get(\'learning_rate\',.001))\n    generator=torch.Generator().manual_seed(config.get(\'seed\',17))\n    losses=[]\n    model.train()\n    for step in range(config.get(\'steps\',40)):\n        indices=torch.randint(len(x),(min(config.get(\'batch_size\',16),len(x)),),generator=generator)\n        prediction=model(x[indices])\n        loss=training_loss(prediction,y[indices],mask[indices])\n        optimizer.zero_grad()\n        loss.backward()\n        optimizer.step()\n        losses.append(float(loss.detach()))\n    return losses\n'
-    return (DEFAULT_SOURCE,)
+    GOES_REPAIR_SOURCE = '"""Predict log-flux on a consistent scale, optionally correcting persistence.\n\nThe caller supplies normalization fitted on training observations only. Validation\nand final targets never enter build_model or fit.\n"""\nimport torch\nfrom torch import nn\n\n\ndef build_model(input_shape, config):\n    width = config.get("width", 16)\n\n    class FluxPredictor(nn.Module):\n        def __init__(self):\n            super().__init__()\n            if config["architecture"] == "mlp":\n                self.net = nn.Sequential(\n                    nn.Flatten(), nn.Linear(input_shape[0] * input_shape[1], width),\n                    nn.ReLU(), nn.Linear(width, 1),\n                )\n            else:\n                self.net = nn.Sequential(\n                    nn.Conv1d(input_shape[0], width, 5, padding=2), nn.ReLU(),\n                    nn.AdaptiveAvgPool1d(1), nn.Flatten(), nn.Linear(width, 1),\n                )\n            self.residual = config["residual"]\n            self.register_buffer("center", torch.tensor(float(config["target_center"])))\n            self.register_buffer("scale", torch.tensor(float(config["target_scale"])))\n            if self.residual:\n                nn.init.zeros_(self.net[-1].weight)\n                nn.init.zeros_(self.net[-1].bias)\n\n        def forward(self, x):\n            value = self.net(x)\n            if self.residual:\n                value = value + x[:, 1, -1:]\n            return value * self.scale + self.center\n\n    return FluxPredictor()\n\n\ndef training_loss(prediction, target, mask):\n    return ((prediction - target).abs() * mask).sum() / mask.sum()\n\n\ndef fit(model, x, y, mask, config):\n    optimizer = torch.optim.Adam(model.parameters(), lr=config["learning_rate"])\n    generator = torch.Generator().manual_seed(config["seed"])\n    losses = []\n    model.train()\n    for _ in range(config["steps"]):\n        indices = torch.randint(len(x), (min(config["batch_size"], len(x)),), generator=generator)\n        # Both prediction and target use the same training-fitted flux scale.\n        loss = training_loss(model(x[indices]), y[indices], mask[indices]) / model.scale\n        optimizer.zero_grad()\n        loss.backward()\n        optimizer.step()\n        losses.append(float(loss.detach()))\n    return losses\n'
+    return (DEFAULT_SOURCE, GOES_REPAIR_SOURCE,)
 
 
 @app.cell(hide_code=True)
@@ -660,14 +661,13 @@ def _(digest, flux_metric_editor, get_lab, measurement_editor, mo, os, refresh_s
 
 
 @app.cell(hide_code=True)
-def _(get_feedback, get_lab, get_step, go_to, measurement_editor, mo, teaching, ui):
+def _(get_feedback, get_lab, get_step, measurement_editor, mo, teaching, ui):
     mo.stop(get_step() != "search")
     _s = get_lab().get("session")
     _rows = [] if not _s else [row for row in _s.completed() if row["name"].startswith("goes/search-")]
     _check = get_feedback().get("measurement-check", {})
-    solar_next_step_10 = ui.next_step(mo, "Next: predict a solar image", "images", go_to)
-    mo.vstack([mo.md(teaching.draft_status(_s, "solar/measurement", measurement_editor.value, stage_prefix="goes/search-")) if _s else mo.md(""), mo.Html(ui.result("Local measurement checks", _check, status=_check.get("status", "not checked"))), mo.ui.table([{"Run": row["name"], "Architecture": row["config"]["architecture"], "Width": row["config"]["width"], "Learning rate": row["config"]["learning_rate"], **row["result"]["metrics"]} for row in _rows], selection=None), ui.evidence(mo, _s, stage_ids=[row["id"] for row in _rows], question="Open the Measurement Sweep and choose one MLP and one CNN. Compare validation_error, width, and learning rate. In each run’s files, find candidate.py and losses.json to see which code trained and how its loss changed.") if _s else mo.md(""), solar_next_step_10])
-    return (solar_next_step_10,)
+    mo.vstack([mo.md(teaching.draft_status(_s, "solar/measurement", measurement_editor.value, stage_prefix="goes/search-")) if _s else mo.md(""), mo.Html(ui.result("Local measurement checks", _check, status=_check.get("status", "not checked"))), mo.ui.table([{"Run": row["name"], "Architecture": row["config"]["architecture"], "Width": row["config"]["width"], "Learning rate": row["config"]["learning_rate"], **row["result"]["metrics"]} for row in _rows], selection=None), ui.evidence(mo, _s, stage_ids=[row["id"] for row in _rows], question="Open the Measurement Sweep and choose one MLP and one CNN. Compare validation_error, width, and learning rate. In each run’s files, find candidate.py and losses.json to see which code trained and how its loss changed.") if _s else mo.md("")])
+    return
 
 
 @app.cell(hide_code=True)
@@ -693,6 +693,48 @@ def _(get_lab, inspect_goes_run, mo, np, ui, views):
     _primary = {label: _metrics[key] for key, label in (("error", "Forecast MAE"), ("persistence_error", "Persistence MAE"), ("examples", "Validation windows"), ("seconds", "Execution seconds")) if key in _metrics}
     mo.vstack([mo.Html(ui.result("Settings used for this execution", _row["config"])), views.goes_investigation(np.load(_path, allow_pickle=False), get_lab()["goes"]["validation"], losses=_row["result"].get("losses", []), title=_row["name"]), mo.Html(ui.result("Validation result", _primary)), mo.accordion({"All saved metrics, including your development scorer": mo.Html(ui.result("Saved metrics", _metrics))}), ui.evidence(mo, _s, stage_ids=[_row["id"]], question="Open this run’s training span and find steps and learning_rate. Then open losses.json in its files. Do the saved values match this plot?")])
     return
+
+
+@app.cell(hide_code=True)
+def _(GOES_REPAIR_SOURCE, get_lab, get_step, mo, teaching):
+    mo.stop(get_step() != "search")
+    _s = get_lab().get("session")
+    mo.stop(not _s)
+    measurement_repair_editor = mo.ui.code_editor(value=_s.get_draft("solar/measurement-repair", GOES_REPAIR_SOURCE), language="python", min_height=280, max_height=650, label="Worked GOES repair: inspect or edit the forecasting code", on_change=lambda value: _s.save_draft("solar/measurement-repair", value))
+    check_measurement_repair = mo.ui.run_button(label="Check the GOES repair code")
+    run_measurement_repair = mo.ui.run_button(label="Train the worked GOES repair", disabled=not bool(get_lab().get("goes")) or teaching.saved(_s, "images/freeze") is not None)
+    mo.vstack([mo.md("### Repair a forecast that loses to persistence"), mo.md("The earlier rehearsal's best 60-update neural model lost to copying the latest measurement. Open its loss curve above before changing the code. In this worked repair, `forward` adds a learned correction to the latest standardized XRS-B reading, then converts back to log-flux units. The correction starts at zero. `fit` puts predictions and targets on the same training-fitted scale and trains for 1,200 updates."), mo.md("Inspect `forward` and the loss calculation below. Check the code, then train this one recipe. It uses the same observations and scorer as your search. Compare its validation error with persistence and your previous runs; a lower training loss alone is not the answer."), measurement_repair_editor, check_measurement_repair, run_measurement_repair, mo.md("**Recorded qualification:** this fixed recipe beat persistence on seeds 17, 29, and 43. Those runs reused previously inspected final dates, so they are teaching retests. Your run is recorded separately. [All qualification outcomes and reproduction instructions](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md). The repair changes several training choices together; it does not isolate which one caused the gain.")])
+    return (check_measurement_repair, measurement_repair_editor, run_measurement_repair,)
+
+
+@app.cell(hide_code=True)
+def _(check_measurement_repair, checked, measurement_repair_editor, mo, teaching):
+    mo.stop(not check_measurement_repair.value)
+    checked("measurement-repair-check", lambda: teaching.check_model(measurement_repair_editor.value, "measurement"))
+    return
+
+
+@app.cell
+def _(flux_metric_editor, get_lab, measurement_repair_editor, mo, refresh_saved, run_measurement_repair, run_training, teaching):
+    mo.stop(not run_measurement_repair.value)
+    teaching.check_model(measurement_repair_editor.value, "measurement")
+    teaching.check_flux_metric(flux_metric_editor.value)
+    _s = get_lab()["session"]
+    _config = teaching.measurement_repair_config(get_lab()["goes_normalization"])
+    run_training(_s, "goes/worked-repair", measurement_repair_editor.value, get_lab()["goes"], _config, get_lab()["dataset"], flux_metric_editor.value)
+    refresh_saved()
+    return
+
+
+@app.cell(hide_code=True)
+def _(get_feedback, get_lab, get_step, go_to, mo, teaching, ui):
+    mo.stop(get_step() != "search")
+    _s = get_lab().get("session")
+    _repair = teaching.saved(_s, "goes/worked-repair") if _s else None
+    _check = get_feedback().get("measurement-repair-check", {})
+    solar_next_step_10 = ui.next_step(mo, "Next: predict a solar image", "images", go_to)
+    mo.vstack([mo.Html(ui.result("Repair code check", _check, status=_check.get("status", "not checked"))), mo.Html(ui.result("Your worked repair", _repair["result"]["metrics"])) if _repair else mo.md("The repair has not run. Its button trains one model; editing this code does not start training."), ui.evidence(mo, _s, stage_ids=[_repair["id"]], question="Open this training call and its Artifact. Find the 1,200 updates, training-fitted scale, candidate.py, and weights.pt. Compare validation_error with the persistence run.") if _repair else mo.md(""), solar_next_step_10])
+    return (solar_next_step_10,)
 
 
 @app.cell(hide_code=True)
@@ -830,7 +872,7 @@ def _(get_step, mo, ui):
             mo.md("**Recorded example · a completed rehearsal, separate from your results.**"),
             mo.md("| Frozen image model | Mean error |\n|---|---:|\n| Persistence | 0.12576 |\n| Manual model | 0.12244 |\n| Agent-edited model | 0.11001 |"),
             mo.md("**10.15% lower error than the manual model.** The selected edits zero-initialized the residual output layer and changed training loss to masked L1."),
-            mo.md("One seed; 199 overlapping windows on February 13–14, 2014. The GOES measurement model performed worse than persistence. Your results appear in your own comparison.")
+            mo.md("That rehearsal used one seed and 199 overlapping windows on February 13–14, 2014. The GOES measurement model performed worse than persistence in that rehearsal. A later fixed-recipe check found image error fell for seeds 17 and 29 but rose slightly for seed 43. The mean fell across seeds; the edit did not help every run. The GOES repair above did beat persistence on all three seeds. [Inspect every qualification outcome](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md). Your results appear in your own comparison.")
         ]), kind="info"),
         mo.accordion({"Open the recorded evidence": mo.Html(ui.links({
             "Recorded result and limitations": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==",
@@ -1032,7 +1074,7 @@ def _(event, export_trace, final_button, get_lab, instrument_tool, mo, np, plots
         if _stage.needs_run:
             _stage.record({"metrics_by_version": _results, "rows": _comparisons})
     # Measurement selection and scoring remain separate from image prediction.
-    _goes_runs = [row for row in _s.completed() if row["name"].startswith("goes/search-") and row["inputs"].get("dataset") == get_lab()["dataset"]]
+    _goes_runs = [row for row in _s.completed() if (row["name"].startswith("goes/search-") or row["name"] == "goes/worked-repair") and row["inputs"].get("dataset") == get_lab()["dataset"]]
     if _goes_runs:
         _best = min(_goes_runs, key=lambda row: row["result"]["metrics"]["validation_error"])
         _test = get_lab()["goes"]["test"]

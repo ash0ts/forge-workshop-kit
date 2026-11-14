@@ -17,3 +17,7 @@ dist/
 node_modules
 
 .context/
+.cache/
+
+# Generated render validation captures; selected teaching captures are in public/.
+.screenshots/

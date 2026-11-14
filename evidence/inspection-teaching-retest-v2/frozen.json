@@ -1,0 +1,160 @@
+{
+  "protocol_sha256": "6043e825905932ccc8bbe75241e64dbb207b063370d2e64a07ae3821af4aa5cc",
+  "all_validation": [
+    {
+      "method": "whole",
+      "C": 0.03,
+      "threshold": -0.49874019622802734,
+      "validation": {
+        "average_precision": 0.7915945165945167,
+        "defect_recall": 0.9166666666666666,
+        "false_alarm_rate": 0.08333333333333333,
+        "misses": 1,
+        "false_alarms": 10,
+        "review_fraction": 0.0,
+        "review_count": 0,
+        "auto_pass_misses": 1,
+        "examples": 132,
+        "defective": 12,
+        "normal": 120
+      },
+      "file": "whole.npz",
+      "sha256": "74b94a8564b2c211f05662ab28ac34177ef0c5078ead6c9137ca81676b30b569"
+    },
+    {
+      "method": "whole",
+      "C": 0.3,
+      "threshold": -2.1804823875427246,
+      "validation": {
+        "average_precision": 0.755380635160047,
+        "defect_recall": 0.9166666666666666,
+        "false_alarm_rate": 0.10833333333333334,
+        "misses": 1,
+        "false_alarms": 13,
+        "review_fraction": 0.0,
+        "review_count": 0,
+        "auto_pass_misses": 1,
+        "examples": 132,
+        "defective": 12,
+        "normal": 120
+      }
+    },
+    {
+      "method": "whole",
+      "C": 3.0,
+      "threshold": -3.6907873153686523,
+      "validation": {
+        "average_precision": 0.756478220658893,
+        "defect_recall": 0.9166666666666666,
+        "false_alarm_rate": 0.14166666666666666,
+        "misses": 1,
+        "false_alarms": 17,
+        "review_fraction": 0.0,
+        "review_count": 0,
+        "auto_pass_misses": 1,
+        "examples": 132,
+        "defective": 12,
+        "normal": 120
+      }
+    },
+    {
+      "method": "nearest-patch",
+      "C": 0.03,
+      "threshold": -1.1144962310791016,
+      "validation": {
+        "average_precision": 0.8839225589225589,
+        "defect_recall": 0.9166666666666666,
+        "false_alarm_rate": 0.03333333333333333,
+        "misses": 1,
+        "false_alarms": 4,
+        "review_fraction": 0.0,
+        "review_count": 0,
+        "auto_pass_misses": 1,
+        "examples": 132,
+        "defective": 12,
+        "normal": 120
+      },
+      "file": "nearest-patch.npz",
+      "sha256": "ddc371b87c976885990a14e825bb47a5ef2248beb5f07f5ba8629fcf8a63fc09"
+    },
+    {
+      "method": "nearest-patch",
+      "C": 0.3,
+      "threshold": -2.258091449737549,
+      "validation": {
+        "average_precision": 0.8750127056730831,
+        "defect_recall": 0.9166666666666666,
+        "false_alarm_rate": 0.03333333333333333,
+        "misses": 1,
+        "false_alarms": 4,
+        "review_fraction": 0.0,
+        "review_count": 0,
+        "auto_pass_misses": 1,
+        "examples": 132,
+        "defective": 12,
+        "normal": 120
+      }
+    },
+    {
+      "method": "nearest-patch",
+      "C": 3.0,
+      "threshold": -2.888772964477539,
+      "validation": {
+        "average_precision": 0.8695707070707072,
+        "defect_recall": 0.9166666666666666,
+        "false_alarm_rate": 0.03333333333333333,
+        "misses": 1,
+        "false_alarms": 4,
+        "review_fraction": 0.0,
+        "review_count": 0,
+        "auto_pass_misses": 1,
+        "examples": 132,
+        "defective": 12,
+        "normal": 120
+      }
+    }
+  ],
+  "selected": {
+    "whole": {
+      "method": "whole",
+      "C": 0.03,
+      "threshold": -0.49874019622802734,
+      "validation": {
+        "average_precision": 0.7915945165945167,
+        "defect_recall": 0.9166666666666666,
+        "false_alarm_rate": 0.08333333333333333,
+        "misses": 1,
+        "false_alarms": 10,
+        "review_fraction": 0.0,
+        "review_count": 0,
+        "auto_pass_misses": 1,
+        "examples": 132,
+        "defective": 12,
+        "normal": 120
+      },
+      "file": "whole.npz",
+      "sha256": "74b94a8564b2c211f05662ab28ac34177ef0c5078ead6c9137ca81676b30b569"
+    },
+    "nearest-patch": {
+      "method": "nearest-patch",
+      "C": 0.03,
+      "threshold": -1.1144962310791016,
+      "validation": {
+        "average_precision": 0.8839225589225589,
+        "defect_recall": 0.9166666666666666,
+        "false_alarm_rate": 0.03333333333333333,
+        "misses": 1,
+        "false_alarms": 4,
+        "review_fraction": 0.0,
+        "review_count": 0,
+        "auto_pass_misses": 1,
+        "examples": 132,
+        "defective": 12,
+        "normal": 120
+      },
+      "file": "nearest-patch.npz",
+      "sha256": "ddc371b87c976885990a14e825bb47a5ef2248beb5f07f5ba8629fcf8a63fc09"
+    }
+  },
+  "test_status": "teaching retest of inspected images, not fresh benchmark evidence"
+}

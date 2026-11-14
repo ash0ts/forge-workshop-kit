@@ -1,0 +1,227 @@
+{
+  "project": "wandb/forge-workshop-kit",
+  "state": ".workshop/inspection-v050-rehearsal",
+  "seconds": 139.34905900000012,
+  "models": {
+    "compare/whole": {
+      "average_precision": 0.8728996091625387,
+      "defect_recall": 0.9,
+      "false_alarm_rate": 0.05721393034825871,
+      "misses": 4,
+      "false_alarms": 23,
+      "review_fraction": 0.03619909502262444,
+      "review_count": 16,
+      "auto_pass_misses": 3,
+      "examples": 442,
+      "defective": 40,
+      "normal": 402
+    },
+    "compare/nearest-patch": {
+      "average_precision": 0.8857424111028463,
+      "defect_recall": 0.925,
+      "false_alarm_rate": 0.04477611940298507,
+      "misses": 3,
+      "false_alarms": 18,
+      "review_fraction": 0.049773755656108594,
+      "review_count": 22,
+      "auto_pass_misses": 1,
+      "examples": 442,
+      "defective": 40,
+      "normal": 402
+    },
+    "review/active": {
+      "average_precision": 0.8990810288722902,
+      "defect_recall": 0.975,
+      "false_alarm_rate": 0.03980099502487562,
+      "misses": 1,
+      "false_alarms": 16,
+      "review_fraction": 0.033936651583710405,
+      "review_count": 15,
+      "auto_pass_misses": 1,
+      "examples": 442,
+      "defective": 40,
+      "normal": 402
+    },
+    "review/random": {
+      "average_precision": 0.8873417838958045,
+      "defect_recall": 0.875,
+      "false_alarm_rate": 0.029850746268656716,
+      "misses": 5,
+      "false_alarms": 12,
+      "review_fraction": 0.03619909502262444,
+      "review_count": 16,
+      "auto_pass_misses": 2,
+      "examples": 442,
+      "defective": 40,
+      "normal": 402
+    }
+  },
+  "selected": "review/random",
+  "review_case_ids": {
+    "review/active": [
+      "pcb1-normal-0714",
+      "pcb1-normal-0946",
+      "pcb1-anomaly-064",
+      "pcb1-normal-0753",
+      "pcb1-normal-0790",
+      "pcb1-normal-0651",
+      "pcb1-normal-0744",
+      "pcb1-normal-0737",
+      "pcb1-anomaly-082",
+      "pcb1-normal-0810",
+      "pcb1-normal-0611",
+      "pcb1-normal-0731",
+      "pcb1-normal-0697",
+      "pcb1-normal-0682",
+      "pcb1-normal-0775",
+      "pcb1-normal-0856",
+      "pcb1-normal-0649",
+      "pcb1-normal-0831",
+      "pcb1-normal-0724",
+      "pcb1-anomaly-033",
+      "pcb1-normal-0786",
+      "pcb1-normal-0809",
+      "pcb1-normal-0739",
+      "pcb1-normal-0793"
+    ],
+    "review/random": [
+      "pcb1-normal-0581",
+      "pcb1-normal-0619",
+      "pcb1-normal-0281",
+      "pcb1-normal-0575",
+      "pcb1-normal-0437",
+      "pcb1-anomaly-096",
+      "pcb1-normal-0099",
+      "pcb1-normal-0962",
+      "pcb1-normal-0409",
+      "pcb1-normal-0260",
+      "pcb1-normal-0058",
+      "pcb1-normal-0378",
+      "pcb1-normal-0912",
+      "pcb1-normal-0744",
+      "pcb1-normal-0845",
+      "pcb1-normal-0831",
+      "pcb1-normal-0268",
+      "pcb1-normal-0656",
+      "pcb1-normal-0490",
+      "pcb1-normal-0643",
+      "pcb1-normal-0969",
+      "pcb1-normal-0141",
+      "pcb1-normal-0790",
+      "pcb1-normal-0075"
+    ]
+  },
+  "executions": 6,
+  "final_prediction_rows": 1768,
+  "reproduction": "every saved test score matched",
+  "inference_requests": 0,
+  "publication": {
+    "compare/whole": {
+      "comparison_name": "visual-inspection-final",
+      "condition": "compare/whole",
+      "run_id": "253d2a612c9836b6f9e0d74afeff364c",
+      "wandb_status": "published",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-compare-whole-cases:9pgVVYnUenyburnYo3GG1YBureaU8gD6HMWwkUtQgjQ",
+      "weave_call_id": "01a1da91-63dd-700c-8fac-e1bcd19a4512",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-compare-whole-evaluation:rZ2tJZMb5d6gi5YSjrkpDbicEnnYczMF18wXqvVXGYY",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_status": "unavailable",
+      "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/253d2a612c9836b6f9e0d74afeff364c"
+    },
+    "compare/nearest-patch": {
+      "comparison_name": "visual-inspection-final",
+      "condition": "compare/nearest-patch",
+      "run_id": "604e286451b918c0e98f088f4b9ecd21",
+      "wandb_status": "published",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-compare-nearest-patch-cases:kk46klmbYDQYVXDKrpUPTO2nXwu223LoInWtKNPRyfk",
+      "weave_call_id": "01a1da92-33dc-76b3-aded-9b78ca275336",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-compare-nearest-patch-evaluation:6zTHXCVxvxLtPfXzqYueVaCXcIpxXKKVFeA95AQ7nXE",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_status": "unavailable",
+      "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/604e286451b918c0e98f088f4b9ecd21"
+    },
+    "review/active": {
+      "comparison_name": "visual-inspection-final",
+      "condition": "review/active",
+      "run_id": "e275a90471fcbbea9e38335ad1d0f292",
+      "wandb_status": "published",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-review-active-cases:gIvP6n8qaNGLxMzImSKBZ8ITLjLYQrS82DCDSZqyUO8",
+      "weave_call_id": "01a1da92-812d-7e22-bb45-cc875d1b6151",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-review-active-evaluation:bbYQIKfY825FIZYYGJOA5xNcdlG2w08iXKDzn6XymYo",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_status": "unavailable",
+      "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/e275a90471fcbbea9e38335ad1d0f292"
+    },
+    "review/random": {
+      "comparison_name": "visual-inspection-final",
+      "condition": "review/random",
+      "run_id": "2df0b2de7ff13bc45e8f9b91f61a6407",
+      "wandb_status": "published",
+      "dataset": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-review-random-cases:U8znjfDMzSbVbfuLvO7Y74hsaQewaQ5MASNGlpq99kw",
+      "weave_call_id": "01a1da92-c71d-7d6e-96a5-2a7b8846c192",
+      "weave_evaluated": true,
+      "evaluation": "weave:///wandb/forge-workshop-kit/object/visual-inspection-final-review-random-evaluation:Ch4ewPxp2YSohbBdoUD0XaGL4eQnM2g1R5skzjItvTs",
+      "weave_status": "published",
+      "weave_verified": true,
+      "native_status": "unavailable",
+      "native_error": "Error code: 500 - {'error': {'code': 'internal_error', 'message': 'an unexpected error occurred'}}",
+      "run": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/2df0b2de7ff13bc45e8f9b91f61a6407"
+    }
+  },
+  "traces": {
+    "compare/whole": {
+      "trace_id": "556b57f7ca97d8a3e4d6dcb6b3f85201",
+      "conversation_id": "f18536533b586759997a5dc392e6d94d",
+      "verified": true,
+      "expected": 2,
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f18536533b586759997a5dc392e6d94d",
+      "span_ids": {
+        "5150f2f911e979924932a1ae": "ec73c21d95712d0c"
+      },
+      "stored_spans": 2
+    },
+    "compare/nearest-patch": {
+      "trace_id": "c47364fcf580c9f8586141a009559573",
+      "conversation_id": "ff65c2eaa1cc5c5cf8adb6cb706f5f52",
+      "verified": true,
+      "expected": 2,
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ff65c2eaa1cc5c5cf8adb6cb706f5f52",
+      "span_ids": {
+        "21cb8a87cfa29477a71b325e": "55b1f2c395305213"
+      },
+      "stored_spans": 2
+    },
+    "review/active": {
+      "trace_id": "734e1eaf920f102ec856340b319392bc",
+      "conversation_id": "a94edc8c1ab980f7b659cdcadb64571b",
+      "verified": true,
+      "expected": 2,
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/a94edc8c1ab980f7b659cdcadb64571b",
+      "span_ids": {
+        "992cb85076f58f6636417636": "f556d5191ae156eb"
+      },
+      "stored_spans": 2
+    },
+    "review/random": {
+      "trace_id": "44774a1327fecc9753c0a0aeb0390dea",
+      "conversation_id": "3ccc06dc2c501129939893c061095c99",
+      "verified": true,
+      "expected": 2,
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3ccc06dc2c501129939893c061095c99",
+      "span_ids": {
+        "7ce450e2aef137e60632e7ea": "ea1204119e4552db"
+      },
+      "stored_spans": 2
+    }
+  },
+  "report": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-defective-parts-before-they-ship:-5ec44d92--VmlldzoxODMwNzU3Nw=="
+}

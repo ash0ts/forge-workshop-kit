@@ -1,0 +1,263 @@
+{
+  "identity": "routing-live-v050",
+  "project": "wandb/forge-workshop-kit",
+  "workspace": "0e608dc341954299a8546daf693c6318",
+  "model": "zai-org/GLM-5.3-Flash",
+  "cost": {
+    "observed_usd": 0.00113494,
+    "bounded_unknown_usd": 0,
+    "inflight_usd": 0
+  },
+  "outcomes": [
+    {
+      "kind": "route",
+      "case_id": "official-train/00035",
+      "status": "complete",
+      "response": {
+        "intent": "card_arrival",
+        "needs_review": false,
+        "reason": "Customer is asking for a status update on a replacement card's delivery, which matches the card_arrival intent."
+      },
+      "reference": "card_arrival",
+      "correct": true,
+      "trace": {
+        "trace_id": "bc6639ce32d024284b2c1be6332e33b6",
+        "conversation_id": "d3a94d169681f2fe5b898a67fcd61887",
+        "verified": true,
+        "expected": 2,
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/d3a94d169681f2fe5b898a67fcd61887",
+        "span_ids": {},
+        "stored_spans": 2
+      }
+    },
+    {
+      "kind": "route",
+      "case_id": "official-train/00054",
+      "status": "complete",
+      "response": {
+        "intent": "card_arrival",
+        "needs_review": false,
+        "reason": "Customer is asking how to track or check the delivery status of a card that has been sent."
+      },
+      "reference": "card_arrival",
+      "correct": true,
+      "trace": {
+        "trace_id": "5ae3fdade256d379631deddc845e7994",
+        "conversation_id": "80ac4656978b0f96a7ed8551429e212f",
+        "verified": true,
+        "expected": 2,
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/80ac4656978b0f96a7ed8551429e212f",
+        "span_ids": {},
+        "stored_spans": 2
+      }
+    },
+    {
+      "kind": "route",
+      "case_id": "official-train/00058",
+      "status": "complete",
+      "response": {
+        "intent": "card_delivery_estimate",
+        "needs_review": false,
+        "reason": "Customer already ordered a card and is asking when it will arrive, which is a delivery timing estimate."
+      },
+      "reference": "card_arrival",
+      "correct": false,
+      "trace": {
+        "trace_id": "0f0241acfe60eb46b1ae8a7292f7c777",
+        "conversation_id": "0aef7ab080eaac6ec8bfe40fa9d927d1",
+        "verified": true,
+        "expected": 2,
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/0aef7ab080eaac6ec8bfe40fa9d927d1",
+        "span_ids": {},
+        "stored_spans": 2
+      }
+    },
+    {
+      "kind": "route",
+      "case_id": "official-train/00074",
+      "status": "complete",
+      "response": {
+        "intent": "card_delivery_estimate",
+        "needs_review": false,
+        "reason": "Customer is asking about tracking the delivery progress of an ordered card, which matches the card delivery estimate intent."
+      },
+      "reference": "card_arrival",
+      "correct": false,
+      "trace": {
+        "trace_id": "e293ce3f50dab06d2ab03a72469785b5",
+        "conversation_id": "81af42ccec41078bb2ac9e00030c0a0d",
+        "verified": true,
+        "expected": 2,
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/81af42ccec41078bb2ac9e00030c0a0d",
+        "span_ids": {},
+        "stored_spans": 2
+      }
+    },
+    {
+      "kind": "route",
+      "case_id": "official-train/00104",
+      "status": "complete",
+      "response": {
+        "intent": "card_arrival",
+        "needs_review": false,
+        "reason": "Customer is asking about the status of a card they already ordered; standard card arrival inquiry."
+      },
+      "reference": "card_arrival",
+      "correct": true,
+      "trace": {
+        "trace_id": "ce94b3904891fe4e781ba29789954415",
+        "conversation_id": "b0cdfb39451be6ee1a7ea6ee5c17e16a",
+        "verified": true,
+        "expected": 2,
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/b0cdfb39451be6ee1a7ea6ee5c17e16a",
+        "span_ids": {},
+        "stored_spans": 2
+      }
+    },
+    {
+      "kind": "route",
+      "case_id": "official-train/00120",
+      "status": "complete",
+      "response": {
+        "intent": "card_arrival",
+        "needs_review": false,
+        "reason": "Customer reports their physical card has not arrived in the mail yet."
+      },
+      "reference": "card_arrival",
+      "correct": true,
+      "trace": {
+        "trace_id": "3f53116660763620646de52334c0e16d",
+        "conversation_id": "1e76c0416be7eb523dee35c6c99b13e8",
+        "verified": true,
+        "expected": 2,
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/1e76c0416be7eb523dee35c6c99b13e8",
+        "span_ids": {},
+        "stored_spans": 2
+      }
+    },
+    {
+      "kind": "route",
+      "case_id": "official-train/00128",
+      "status": "complete",
+      "response": {
+        "intent": "card_arrival",
+        "needs_review": false,
+        "reason": "Customer is asking about tracking a card that has already been sent, which concerns card arrival/delivery status."
+      },
+      "reference": "card_arrival",
+      "correct": true,
+      "trace": {
+        "trace_id": "d975dd98faa3b4a210eada05363bd2f5",
+        "conversation_id": "62b55c352da01b8f6fecd79fae101b1b",
+        "verified": true,
+        "expected": 2,
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/62b55c352da01b8f6fecd79fae101b1b",
+        "span_ids": {},
+        "stored_spans": 2
+      }
+    },
+    {
+      "kind": "route",
+      "case_id": "official-train/00129",
+      "status": "complete",
+      "response": {
+        "intent": "card_delivery_estimate",
+        "needs_review": false,
+        "reason": "Customer is asking about the delivery timeframe for a new card."
+      },
+      "reference": "card_arrival",
+      "correct": false,
+      "trace": {
+        "trace_id": "9b92918ebc2d03c951b64f4a16d42a70",
+        "conversation_id": "6bdebe11e30726e4fe9c6ff09ac1cf83",
+        "verified": true,
+        "expected": 2,
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/6bdebe11e30726e4fe9c6ff09ac1cf83",
+        "span_ids": {},
+        "stored_spans": 2
+      }
+    },
+    {
+      "kind": "judge",
+      "case_id": "official-train/00225",
+      "expected_source": "published dataset reference; not a human review",
+      "status": "complete",
+      "judgment": {
+        "failed": false,
+        "reason": "Request asks about activating a card, which matches the activate_my_card intent."
+      },
+      "reference_failed": true,
+      "trace": {
+        "trace_id": "3ff82863d42e9ea797a277e2e60c399a",
+        "conversation_id": "f5427dc7f06703d62c00561b6bd27a01",
+        "verified": true,
+        "expected": 2,
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f5427dc7f06703d62c00561b6bd27a01",
+        "span_ids": {},
+        "stored_spans": 2
+      }
+    },
+    {
+      "kind": "judge",
+      "case_id": "official-train/00293",
+      "expected_source": "published dataset reference; not a human review",
+      "status": "complete",
+      "judgment": {
+        "failed": true,
+        "reason": "The request is a general informational question about currency value when traveling abroad, not a complaint about a specific cash withdrawal processed at a wrong exchange rate."
+      },
+      "reference_failed": true,
+      "trace": {
+        "trace_id": "7500f4af07c9ec215d6adabbe8451a75",
+        "conversation_id": "b6bdafba3dc32250878392df60a7354f",
+        "verified": true,
+        "expected": 2,
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/b6bdafba3dc32250878392df60a7354f",
+        "span_ids": {},
+        "stored_spans": 2
+      }
+    },
+    {
+      "kind": "judge",
+      "case_id": "official-train/00021",
+      "expected_source": "published dataset reference; not a human review",
+      "status": "complete",
+      "judgment": {
+        "failed": false,
+        "reason": "The request asks about card delivery status, which directly matches the card_arrival intent."
+      },
+      "reference_failed": false,
+      "trace": {
+        "trace_id": "5b14693c4806b536d1031543d39852fe",
+        "conversation_id": "39a27f4d80683c50f01c0c83219c3fa6",
+        "verified": true,
+        "expected": 2,
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/39a27f4d80683c50f01c0c83219c3fa6",
+        "span_ids": {},
+        "stored_spans": 2
+      }
+    },
+    {
+      "kind": "judge",
+      "case_id": "official-train/00023",
+      "expected_source": "published dataset reference; not a human review",
+      "status": "complete",
+      "judgment": {
+        "failed": false,
+        "reason": "Request about a card not yet received matches the card_arrival intent."
+      },
+      "reference_failed": false,
+      "trace": {
+        "trace_id": "ada48f8b1e5d6e829982c6b0b84c4058",
+        "conversation_id": "6bfe06d20e8e99e00e17232cf2757f61",
+        "verified": true,
+        "expected": 2,
+        "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/6bfe06d20e8e99e00e17232cf2757f61",
+        "span_ids": {},
+        "stored_spans": 2
+      }
+    }
+  ],
+  "trace_readback_complete": true,
+  "limitation": "Provider and tracing rehearsal in the maintainer account. Not a fresh external account or human usability rehearsal."
+}

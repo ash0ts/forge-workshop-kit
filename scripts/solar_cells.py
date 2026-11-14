@@ -3,6 +3,7 @@ from pathlib import Path
 from notebook_builder import Cell
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT = (ROOT / "examples/solar/candidate.py").read_text(encoding="utf-8")
+GOES_REPAIR = (ROOT / "examples/solar/qualification/goes_scaled.py").read_text(encoding="utf-8")
 cells = []
 
 def add(code, hide=False):
@@ -278,6 +279,7 @@ mo.vstack([mo.md(teaching.draft_status(_s, "solar/persistence", persistence_edit
 ''', True)
 add('''
 DEFAULT_SOURCE = ''' + repr(DEFAULT) + '''
+GOES_REPAIR_SOURCE = ''' + repr(GOES_REPAIR) + '''
 ''', True)
 add('''
 mo.stop(get_step() != "search")
@@ -396,8 +398,7 @@ mo.stop(get_step() != "search")
 _s = get_lab().get("session")
 _rows = [] if not _s else [row for row in _s.completed() if row["name"].startswith("goes/search-")]
 _check = get_feedback().get("measurement-check", {})
-solar_next_step_10 = ui.next_step(mo, "Next: predict a solar image", "images", go_to)
-mo.vstack([mo.md(teaching.draft_status(_s, "solar/measurement", measurement_editor.value, stage_prefix="goes/search-")) if _s else mo.md(""), mo.Html(ui.result("Local measurement checks", _check, status=_check.get("status", "not checked"))), mo.ui.table([{"Run": row["name"], "Architecture": row["config"]["architecture"], "Width": row["config"]["width"], "Learning rate": row["config"]["learning_rate"], **row["result"]["metrics"]} for row in _rows], selection=None), ui.evidence(mo, _s, stage_ids=[row["id"] for row in _rows], question="Open the Measurement Sweep and choose one MLP and one CNN. Compare validation_error, width, and learning rate. In each run’s files, find candidate.py and losses.json to see which code trained and how its loss changed.") if _s else mo.md(""), solar_next_step_10])
+mo.vstack([mo.md(teaching.draft_status(_s, "solar/measurement", measurement_editor.value, stage_prefix="goes/search-")) if _s else mo.md(""), mo.Html(ui.result("Local measurement checks", _check, status=_check.get("status", "not checked"))), mo.ui.table([{"Run": row["name"], "Architecture": row["config"]["architecture"], "Width": row["config"]["width"], "Learning rate": row["config"]["learning_rate"], **row["result"]["metrics"]} for row in _rows], selection=None), ui.evidence(mo, _s, stage_ids=[row["id"] for row in _rows], question="Open the Measurement Sweep and choose one MLP and one CNN. Compare validation_error, width, and learning rate. In each run’s files, find candidate.py and losses.json to see which code trained and how its loss changed.") if _s else mo.md("")])
 ''', True)
 add('''
 mo.stop(get_step() != "search")
@@ -417,6 +418,37 @@ mo.stop(not _path.exists(), mo.md("The prediction file is missing. Restore its s
 _metrics = _row["result"]["metrics"]
 _primary = {label: _metrics[key] for key, label in (("error", "Forecast MAE"), ("persistence_error", "Persistence MAE"), ("examples", "Validation windows"), ("seconds", "Execution seconds")) if key in _metrics}
 mo.vstack([mo.Html(ui.result("Settings used for this execution", _row["config"])), views.goes_investigation(np.load(_path, allow_pickle=False), get_lab()["goes"]["validation"], losses=_row["result"].get("losses", []), title=_row["name"]), mo.Html(ui.result("Validation result", _primary)), mo.accordion({"All saved metrics, including your development scorer": mo.Html(ui.result("Saved metrics", _metrics))}), ui.evidence(mo, _s, stage_ids=[_row["id"]], question="Open this run’s training span and find steps and learning_rate. Then open losses.json in its files. Do the saved values match this plot?")])
+''', True)
+
+add('''
+mo.stop(get_step() != "search")
+_s = get_lab().get("session")
+mo.stop(not _s)
+measurement_repair_editor = mo.ui.code_editor(value=_s.get_draft("solar/measurement-repair", GOES_REPAIR_SOURCE), language="python", min_height=280, max_height=650, label="Worked GOES repair: inspect or edit the forecasting code", on_change=lambda value: _s.save_draft("solar/measurement-repair", value))
+check_measurement_repair = mo.ui.run_button(label="Check the GOES repair code")
+run_measurement_repair = mo.ui.run_button(label="Train the worked GOES repair", disabled=not bool(get_lab().get("goes")) or teaching.saved(_s, "images/freeze") is not None)
+mo.vstack([mo.md("### Repair a forecast that loses to persistence"), mo.md("The earlier rehearsal's best 60-update neural model lost to copying the latest measurement. Open its loss curve above before changing the code. In this worked repair, `forward` adds a learned correction to the latest standardized XRS-B reading, then converts back to log-flux units. The correction starts at zero. `fit` puts predictions and targets on the same training-fitted scale and trains for 1,200 updates."), mo.md("Inspect `forward` and the loss calculation below. Check the code, then train this one recipe. It uses the same observations and scorer as your search. Compare its validation error with persistence and your previous runs; a lower training loss alone is not the answer."), measurement_repair_editor, check_measurement_repair, run_measurement_repair, mo.md("**Recorded qualification:** this fixed recipe beat persistence on seeds 17, 29, and 43. Those runs reused previously inspected final dates, so they are teaching retests. Your run is recorded separately. [All qualification outcomes and reproduction instructions](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md). The repair changes several training choices together; it does not isolate which one caused the gain.")])
+''', True)
+add('''
+mo.stop(not check_measurement_repair.value)
+checked("measurement-repair-check", lambda: teaching.check_model(measurement_repair_editor.value, "measurement"))
+''', True)
+add('''
+mo.stop(not run_measurement_repair.value)
+teaching.check_model(measurement_repair_editor.value, "measurement")
+teaching.check_flux_metric(flux_metric_editor.value)
+_s = get_lab()["session"]
+_config = teaching.measurement_repair_config(get_lab()["goes_normalization"])
+run_training(_s, "goes/worked-repair", measurement_repair_editor.value, get_lab()["goes"], _config, get_lab()["dataset"], flux_metric_editor.value)
+refresh_saved()
+''')
+add('''
+mo.stop(get_step() != "search")
+_s = get_lab().get("session")
+_repair = teaching.saved(_s, "goes/worked-repair") if _s else None
+_check = get_feedback().get("measurement-repair-check", {})
+solar_next_step_10 = ui.next_step(mo, "Next: predict a solar image", "images", go_to)
+mo.vstack([mo.Html(ui.result("Repair code check", _check, status=_check.get("status", "not checked"))), mo.Html(ui.result("Your worked repair", _repair["result"]["metrics"])) if _repair else mo.md("The repair has not run. Its button trains one model; editing this code does not start training."), ui.evidence(mo, _s, stage_ids=[_repair["id"]], question="Open this training call and its Artifact. Find the 1,200 updates, training-fitted scale, candidate.py, and weights.pt. Compare validation_error with the persistence run.") if _repair else mo.md(""), solar_next_step_10])
 ''', True)
 
 add('''
@@ -525,7 +557,7 @@ mo.vstack([
         mo.md("**Recorded example · a completed rehearsal, separate from your results.**"),
         mo.md("| Frozen image model | Mean error |\\n|---|---:|\\n| Persistence | 0.12576 |\\n| Manual model | 0.12244 |\\n| Agent-edited model | 0.11001 |"),
         mo.md("**10.15% lower error than the manual model.** The selected edits zero-initialized the residual output layer and changed training loss to masked L1."),
-        mo.md("One seed; 199 overlapping windows on February 13–14, 2014. The GOES measurement model performed worse than persistence. Your results appear in your own comparison.")
+        mo.md("That rehearsal used one seed and 199 overlapping windows on February 13–14, 2014. The GOES measurement model performed worse than persistence in that rehearsal. A later fixed-recipe check found image error fell for seeds 17 and 29 but rose slightly for seed 43. The mean fell across seeds; the edit did not help every run. The GOES repair above did beat persistence on all three seeds. [Inspect every qualification outcome](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md). Your results appear in your own comparison.")
     ]), kind="info"),
     mo.accordion({"Open the recorded evidence": mo.Html(ui.links({
         "Recorded result and limitations": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==",
@@ -706,7 +738,7 @@ with _s.stage("images/final-comparison", inputs={"freeze": _freeze_id}) as _stag
     if _stage.needs_run:
         _stage.record({"metrics_by_version": _results, "rows": _comparisons})
 # Measurement selection and scoring remain separate from image prediction.
-_goes_runs = [row for row in _s.completed() if row["name"].startswith("goes/search-") and row["inputs"].get("dataset") == get_lab()["dataset"]]
+_goes_runs = [row for row in _s.completed() if (row["name"].startswith("goes/search-") or row["name"] == "goes/worked-repair") and row["inputs"].get("dataset") == get_lab()["dataset"]]
 if _goes_runs:
     _best = min(_goes_runs, key=lambda row: row["result"]["metrics"]["validation_error"])
     _test = get_lab()["goes"]["test"]

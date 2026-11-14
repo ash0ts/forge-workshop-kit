@@ -195,10 +195,12 @@ def mock_destinations(monkeypatch, workspace):
             pass
     class Evaluation:
         def __init__(self, **kwargs):
-            pass
-        async def evaluate(self, fn):
+            self.evaluate = SimpleNamespace(call=self.evaluate_call)
+        async def evaluate_call(self, instance, fn):
+            assert instance is self
             calls['evaluate'] += 1
             assert fn('case-1') == 'saved'
+            return {}, SimpleNamespace(id='saved-call-id')
     def publish(obj, **kwargs):
         kind = 'dataset' if isinstance(obj, Dataset) else 'evaluation'
         calls[kind] += 1
@@ -209,7 +211,8 @@ def mock_destinations(monkeypatch, workspace):
     monkeypatch.setitem(sys.modules, 'weave', SimpleNamespace(
         init=lambda project: None, Dataset=Dataset, Evaluation=Evaluation,
         publish=publish, op=lambda: (lambda fn: fn),
-        get_client=lambda: SimpleNamespace(flush=flush)))
+        get_client=lambda: SimpleNamespace(flush=flush,
+            get_call=lambda call_id: SimpleNamespace(ended_at='done', exception=None))))
     return calls
 
 
@@ -258,11 +261,29 @@ def test_weave_flush_retry_does_not_repeat_saved_evaluation(tmp_path, monkeypatc
         calls['flush'] += 1
         if calls['flush'] == 1:
             raise RuntimeError('export interrupted')
-    sys.modules['weave'].get_client = lambda: SimpleNamespace(flush=flush)
+    sys.modules['weave'].get_client = lambda: SimpleNamespace(flush=flush,
+        get_call=lambda call_id: SimpleNamespace(ended_at='done', exception=None))
     first = publication.publish_comparison(workspace, 'comparison', VERSIONS)['model']
     assert first['weave_status'] == 'unavailable' and first['weave_evaluated']
     publication.publish_comparison(workspace, 'comparison', VERSIONS)
     assert calls['flush'] == 2 and calls['evaluate'] == calls['dataset'] == calls['evaluation'] == 1
+
+
+def test_silent_weave_export_failure_is_not_reported_as_published(tmp_path, monkeypatch):
+    workspace = session(tmp_path)
+    calls = mock_destinations(monkeypatch, workspace)
+    monkeypatch.setattr(publication, 'native_table', lambda *args: {'evaluation_id': 'saved-native-id'})
+    client = sys.modules['weave'].get_client()
+    def missing(call_id):
+        raise RuntimeError('404 call not found')
+    client.get_call = missing
+    sys.modules['weave'].get_client = lambda: client
+    first = publication.publish_comparison(workspace, 'comparison', VERSIONS)['model']
+    assert first['weave_status'] == 'unavailable' and first['weave_call_id'] == 'saved-call-id'
+    client.get_call = lambda call_id: SimpleNamespace(ended_at='done', exception=None)
+    second = publication.publish_comparison(workspace, 'comparison', VERSIONS)['model']
+    assert second['weave_verified'] and second['weave_status'] == 'published'
+    assert calls['evaluate'] == calls['dataset'] == calls['evaluation'] == 1
 
 
 def test_published_outputs_are_referenced_without_reading_them_again(tmp_path, monkeypatch):

@@ -1,0 +1,159 @@
+{
+  "identity": "banking77-routing-qualification-20261114",
+  "contract_sha256": "c56cab7971819095eb550bf914ac633e83496a54d0d0d966cc05d072dcaf685b",
+  "data_manifest_sha256": "90df5312b15a932e50c2c87a833de980ebb5fd9bdf9e86fa2336928c46e96129",
+  "qualified": true,
+  "pairs": [
+    {
+      "seed": 17,
+      "macro_f1_difference": 0.040843669934930604
+    },
+    {
+      "seed": 29,
+      "macro_f1_difference": 0.040843669934930604
+    },
+    {
+      "seed": 43,
+      "macro_f1_difference": 0.040843669934930604
+    }
+  ],
+  "runs": [
+    {
+      "kind": "tfidf",
+      "seed": 17,
+      "status": "complete",
+      "training_seconds": 3.361815125012072,
+      "validation": {
+        "macro_f1": 0.8820896503541562,
+        "accuracy": 0.8831168831168831,
+        "coverage": 0.7337662337662337,
+        "selective_accuracy": 0.95929203539823,
+        "count": 770,
+        "latency_seconds": 0.005025749997003004
+      },
+      "final": {
+        "macro_f1": 0.8793849387920205,
+        "accuracy": 0.8795454545454545,
+        "coverage": 0.7584415584415585,
+        "selective_accuracy": 0.9606164383561644,
+        "count": 3080,
+        "latency_seconds": 0.015138749993639067
+      }
+    },
+    {
+      "kind": "embedding",
+      "seed": 17,
+      "status": "complete",
+      "training_seconds": 0.2939706670003943,
+      "validation": {
+        "macro_f1": 0.9135799605442091,
+        "accuracy": 0.9142857142857143,
+        "coverage": 0.9064935064935065,
+        "selective_accuracy": 0.9584527220630372,
+        "count": 770,
+        "latency_seconds": 0.00032316698343493044
+      },
+      "final": {
+        "macro_f1": 0.9202286087269511,
+        "accuracy": 0.9207792207792208,
+        "coverage": 0.9110389610389611,
+        "selective_accuracy": 0.9615110477548111,
+        "count": 3080,
+        "latency_seconds": 0.0008765000093262643
+      }
+    },
+    {
+      "kind": "tfidf",
+      "seed": 29,
+      "status": "complete",
+      "training_seconds": 3.292419166013133,
+      "validation": {
+        "macro_f1": 0.8820896503541562,
+        "accuracy": 0.8831168831168831,
+        "coverage": 0.7337662337662337,
+        "selective_accuracy": 0.95929203539823,
+        "count": 770,
+        "latency_seconds": 0.00502404200960882
+      },
+      "final": {
+        "macro_f1": 0.8793849387920205,
+        "accuracy": 0.8795454545454545,
+        "coverage": 0.7584415584415585,
+        "selective_accuracy": 0.9606164383561644,
+        "count": 3080,
+        "latency_seconds": 0.014878916001180189
+      }
+    },
+    {
+      "kind": "embedding",
+      "seed": 29,
+      "status": "complete",
+      "training_seconds": 0.31585799998720177,
+      "validation": {
+        "macro_f1": 0.9135799605442091,
+        "accuracy": 0.9142857142857143,
+        "coverage": 0.9064935064935065,
+        "selective_accuracy": 0.9584527220630372,
+        "count": 770,
+        "latency_seconds": 0.00033045798772946
+      },
+      "final": {
+        "macro_f1": 0.9202286087269511,
+        "accuracy": 0.9207792207792208,
+        "coverage": 0.9110389610389611,
+        "selective_accuracy": 0.9615110477548111,
+        "count": 3080,
+        "latency_seconds": 0.0008516669913660735
+      }
+    },
+    {
+      "kind": "tfidf",
+      "seed": 43,
+      "status": "complete",
+      "training_seconds": 3.6931714169913903,
+      "validation": {
+        "macro_f1": 0.8820896503541562,
+        "accuracy": 0.8831168831168831,
+        "coverage": 0.7337662337662337,
+        "selective_accuracy": 0.95929203539823,
+        "count": 770,
+        "latency_seconds": 0.005139290995430201
+      },
+      "final": {
+        "macro_f1": 0.8793849387920205,
+        "accuracy": 0.8795454545454545,
+        "coverage": 0.7584415584415585,
+        "selective_accuracy": 0.9606164383561644,
+        "count": 3080,
+        "latency_seconds": 0.014622874994529413
+      }
+    },
+    {
+      "kind": "embedding",
+      "seed": 43,
+      "status": "complete",
+      "training_seconds": 0.29354870901443064,
+      "validation": {
+        "macro_f1": 0.9135799605442091,
+        "accuracy": 0.9142857142857143,
+        "coverage": 0.9064935064935065,
+        "selective_accuracy": 0.9584527220630372,
+        "count": 770,
+        "latency_seconds": 0.00032358302269130945
+      },
+      "final": {
+        "macro_f1": 0.9202286087269511,
+        "accuracy": 0.9207792207792208,
+        "coverage": 0.9110389610389611,
+        "selective_accuracy": 0.9615110477548111,
+        "count": 3080,
+        "latency_seconds": 0.0008121249848045409
+      }
+    }
+  ],
+  "local_seconds": 16.775936791993445,
+  "inference_cost_usd": 0,
+  "compute": "Local CPU; two BLAS threads; no billed external training.",
+  "python": "3.13.14",
+  "limitation": "One benchmark split. Repeated deterministic classifier fits are reproducibility checks, not independent datasets or confidence intervals."
+}

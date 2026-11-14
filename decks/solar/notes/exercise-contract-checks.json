@@ -60,7 +60,20 @@
       ]
     },
     {
-      "slide": 54,
+      "slide": 43,
+      "key": "goes-repair-turn",
+      "notebook_step": "Track and search",
+      "functions": [
+        "forward",
+        "fit"
+      ],
+      "controls": [
+        "Check the GOES repair code",
+        "Train the worked GOES repair"
+      ]
+    },
+    {
+      "slide": 56,
       "key": "image-turn",
       "notebook_step": "Solar images",
       "functions": [
@@ -73,7 +86,7 @@
       ]
     },
     {
-      "slide": 61,
+      "slide": 63,
       "key": "evidence-turn",
       "notebook_step": "Research agent",
       "functions": [
@@ -84,7 +97,7 @@
       ]
     },
     {
-      "slide": 70,
+      "slide": 72,
       "key": "round1-turn",
       "notebook_step": "Research agent",
       "functions": [
@@ -93,7 +106,7 @@
       "controls": []
     },
     {
-      "slide": 76,
+      "slide": 78,
       "key": "final-turn",
       "notebook_step": "Final evaluation",
       "functions": [],
@@ -102,7 +115,7 @@
       ]
     },
     {
-      "slide": 82,
+      "slide": 86,
       "key": "conclusion-turn",
       "notebook_step": "Final evaluation",
       "functions": [],

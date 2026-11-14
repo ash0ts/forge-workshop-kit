@@ -1,0 +1,53 @@
+{
+  "test": "isolated browser control test",
+  "project": "ui-test/routing",
+  "native_publication": "stubbed, not claimed",
+  "inference_calls": 0,
+  "stages": [
+    {
+      "name": "routing/setup",
+      "status": "complete"
+    },
+    {
+      "name": "routing/data",
+      "status": "complete"
+    },
+    {
+      "name": "routing/baseline/tfidf",
+      "status": "complete"
+    },
+    {
+      "name": "routing/baseline/embedding",
+      "status": "complete"
+    },
+    {
+      "name": "routing/review",
+      "status": "complete"
+    },
+    {
+      "name": "routing/improve",
+      "status": "complete"
+    },
+    {
+      "name": "routing/freeze",
+      "status": "complete"
+    },
+    {
+      "name": "routing/final/tfidf",
+      "status": "complete"
+    },
+    {
+      "name": "routing/final/embedding",
+      "status": "complete"
+    },
+    {
+      "name": "routing/final/selected",
+      "status": "complete"
+    },
+    {
+      "name": "routing/report",
+      "status": "complete"
+    }
+  ],
+  "browser_errors": []
+}

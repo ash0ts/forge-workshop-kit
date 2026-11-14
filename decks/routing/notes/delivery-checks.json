@@ -1,0 +1,323 @@
+{
+  "source_sha256": "64394687765d82e144b866905ef241db4071218e81cc1802206b520393ccaaa1",
+  "slides_checked": 35,
+  "expected_slides": 35,
+  "titles": [
+    {
+      "number": 1,
+      "title": "Route customer requests and learn from mistakes"
+    },
+    {
+      "number": 2,
+      "title": "The support queue needs a destination"
+    },
+    {
+      "number": 3,
+      "title": "A manager has offered to automate forwarding"
+    },
+    {
+      "number": 4,
+      "title": "The dataset contains 77 banking intents"
+    },
+    {
+      "number": 5,
+      "title": "Give each partition one job"
+    },
+    {
+      "number": 6,
+      "title": "Open your copy and add your first trace"
+    },
+    {
+      "number": 7,
+      "title": "The span should explain the operation"
+    },
+    {
+      "number": 8,
+      "title": "Read a request before revealing its label"
+    },
+    {
+      "number": 9,
+      "title": "Start with a word-based classifier"
+    },
+    {
+      "number": 10,
+      "title": "Then change the representation"
+    },
+    {
+      "number": 11,
+      "title": "Implement the classifier head"
+    },
+    {
+      "number": 12,
+      "title": "Macro-F1 gives each intent equal weight"
+    },
+    {
+      "number": 13,
+      "title": "The worked comparison reduced routing mistakes"
+    },
+    {
+      "number": 14,
+      "title": "A router can also ask a person"
+    },
+    {
+      "number": 15,
+      "title": "Write the rule that sends a request to review"
+    },
+    {
+      "number": 16,
+      "title": "Read the disagreement before declaring failure"
+    },
+    {
+      "number": 17,
+      "title": "Save labels someone can trace back to a decision"
+    },
+    {
+      "number": 18,
+      "title": "Break until 1:30"
+    },
+    {
+      "number": 19,
+      "title": "A prompted model returns a typed decision"
+    },
+    {
+      "number": 20,
+      "title": "Inspect eight actual model routes"
+    },
+    {
+      "number": 21,
+      "title": "An automated failure tag needs its own evaluation"
+    },
+    {
+      "number": 22,
+      "title": "Implement the judge response check"
+    },
+    {
+      "number": 23,
+      "title": "The judge disagreed with the dataset label"
+    },
+    {
+      "number": 24,
+      "title": "Use reviewed data to run a new experiment"
+    },
+    {
+      "number": 25,
+      "title": "Train with your accepted labels"
+    },
+    {
+      "number": 26,
+      "title": "Freeze what the final comparison will use"
+    },
+    {
+      "number": 27,
+      "title": "Evaluate all matching test requests"
+    },
+    {
+      "number": 28,
+      "title": "Open one aligned result, not just the average"
+    },
+    {
+      "number": 29,
+      "title": "Write the decision you would make"
+    },
+    {
+      "number": 30,
+      "title": "Reproduce the selected version before releasing it"
+    },
+    {
+      "number": 31,
+      "title": "What to take back to your team"
+    },
+    {
+      "number": 32,
+      "title": "Worked answer: classifier head"
+    },
+    {
+      "number": 33,
+      "title": "Worked answer: review policy"
+    },
+    {
+      "number": 34,
+      "title": "Worked answer: judge validator"
+    },
+    {
+      "number": 35,
+      "title": "Sources and recorded evidence"
+    }
+  ],
+  "click_states": [
+    {
+      "slide": 1,
+      "click": 0
+    },
+    {
+      "slide": 2,
+      "click": 0
+    },
+    {
+      "slide": 2,
+      "click": 1
+    },
+    {
+      "slide": 3,
+      "click": 0
+    },
+    {
+      "slide": 4,
+      "click": 0
+    },
+    {
+      "slide": 5,
+      "click": 0
+    },
+    {
+      "slide": 6,
+      "click": 0
+    },
+    {
+      "slide": 7,
+      "click": 0
+    },
+    {
+      "slide": 7,
+      "click": 1
+    },
+    {
+      "slide": 7,
+      "click": 2
+    },
+    {
+      "slide": 8,
+      "click": 0
+    },
+    {
+      "slide": 9,
+      "click": 0
+    },
+    {
+      "slide": 10,
+      "click": 0
+    },
+    {
+      "slide": 11,
+      "click": 0
+    },
+    {
+      "slide": 12,
+      "click": 0
+    },
+    {
+      "slide": 13,
+      "click": 0
+    },
+    {
+      "slide": 14,
+      "click": 0
+    },
+    {
+      "slide": 15,
+      "click": 0
+    },
+    {
+      "slide": 16,
+      "click": 0
+    },
+    {
+      "slide": 17,
+      "click": 0
+    },
+    {
+      "slide": 18,
+      "click": 0
+    },
+    {
+      "slide": 19,
+      "click": 0
+    },
+    {
+      "slide": 20,
+      "click": 0
+    },
+    {
+      "slide": 21,
+      "click": 0
+    },
+    {
+      "slide": 22,
+      "click": 0
+    },
+    {
+      "slide": 23,
+      "click": 0
+    },
+    {
+      "slide": 24,
+      "click": 0
+    },
+    {
+      "slide": 25,
+      "click": 0
+    },
+    {
+      "slide": 26,
+      "click": 0
+    },
+    {
+      "slide": 27,
+      "click": 0
+    },
+    {
+      "slide": 28,
+      "click": 0
+    },
+    {
+      "slide": 29,
+      "click": 0
+    },
+    {
+      "slide": 30,
+      "click": 0
+    },
+    {
+      "slide": 31,
+      "click": 0
+    },
+    {
+      "slide": 32,
+      "click": 0
+    },
+    {
+      "slide": 33,
+      "click": 0
+    },
+    {
+      "slide": 34,
+      "click": 0
+    },
+    {
+      "slide": 35,
+      "click": 0
+    }
+  ],
+  "issues": [],
+  "console_errors": [],
+  "failed_responses": [],
+  "answers": [
+    {
+      "slide": 11,
+      "destination": "/forge-workshop-kit/routing/32",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 15,
+      "destination": "/forge-workshop-kit/routing/33",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 22,
+      "destination": "/forge-workshop-kit/routing/34",
+      "keyboardReturn": true
+    }
+  ],
+  "routes_checked": 73,
+  "presenter_notes": true
+}

@@ -1,6 +1,6 @@
 {
-  "main_slides": 83,
-  "total_slides": 101,
+  "main_slides": 87,
+  "total_slides": 105,
   "slides": [
     {
       "number": 1,
@@ -396,8 +396,8 @@
       "number": 40,
       "key": "learning-curve",
       "title": "Check whether the model has finished learning",
-      "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/v030-goes-loss.png\" alt=\"Saved GOES model loss curve over 60 training steps\"><div class=\"image-caption\">Selected MLP: width 16, learning rate .003, seed 17. Saved v0.3.0 training losses.</div></div><div class=\"bottom-note\">The loss was still falling at the limit. Longer training is a next experiment, not a measured result here.</div>",
-      "notes": "The selected GOES model\u2019s loss was still falling after sixty steps. That suggests testing a longer training budget, but it does not tell us that more steps would beat persistence. Look at the predictions and validation score alongside the curve. We have not run the longer-budget experiment.",
+      "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/v030-goes-loss.png\" alt=\"Saved GOES model loss curve over 60 training steps\"><div class=\"image-caption\">Selected MLP: width 16, learning rate .003, seed 17. Saved v0.3.0 training losses.</div></div><div class=\"bottom-note\">Historical 60-step run. A later worked repair tests scaling, residual prediction, and a longer budget together.</div>",
+      "notes": "The selected GOES model\u2019s loss was still falling after sixty steps. That suggests testing a longer training budget, but it does not tell us that more steps would beat persistence. Look at the predictions and validation score alongside the curve. The later qualification tested a complete repaired recipe. It does not isolate the effect of additional training alone.",
       "kind": "",
       "time": "1:11",
       "answer": null
@@ -414,6 +414,26 @@
     },
     {
       "number": 42,
+      "key": "goes-repair-code",
+      "title": "Let the model learn a correction to persistence",
+      "body": "```python {2|3|4|all}\ndef forward(self, x):\n    correction = self.net(x)\n    standardized = x[:, 1, -1:] + correction\n    return standardized * self.scale + self.center\n\n# Zero-initialize the correction head before training.\n# Fit scaling on training dates; score in log-flux units.\n```\n\n<div class=\"bottom-note\">The repair also uses absolute loss and 1,200 updates. These choices are tested together.</div>",
+      "notes": "The latest XRS-B input is standardized. Add a learned correction, then convert it back with the same training-fitted center and scale. A zero-initialized final layer begins exactly at persistence. The fit function divides the prediction and target error by the same scale. We changed several parts of the recipe together, so the measured result cannot tell us which individual change caused the gain. Ask participants to point to the addition and unit conversion in their editable code. Advance the code highlights one step at a time; use Back to revisit the previous statement.",
+      "kind": "",
+      "time": "1:24",
+      "answer": null
+    },
+    {
+      "number": 43,
+      "key": "goes-repair-turn",
+      "title": "Test the worked measurement repair",
+      "body": "<div class=\"task\">Stay in <strong>4 \u00b7 Track and search</strong>, below the saved forecasts.</div><ol class=\"exercise-controls\"><li>Read <code>forward</code> and <code>fit</code> in <strong>Worked GOES repair: inspect or edit the forecasting code</strong>.</li><li>Click <strong>Check the GOES repair code</strong>, then <strong>Train the worked GOES repair</strong>.</li><li>Compare validation error with persistence and your search. Open its training call and weights Artifact.</li></ol><div class=\"done\">Check your work: Explain the initial forecast, the output units, and whether your validation error fell.</div>",
+      "notes": "Use the last five minutes of the measurement exercise. This is one CPU run, not another paid agent request. Its exact source, configuration, and weights are saved separately. The recipe beat persistence on three predeclared seeds in qualification, but a learner edit is a new experiment. Final selection considers its validation score; do not choose using final dates.",
+      "kind": "exercise",
+      "time": "1:25\u20131:30",
+      "answer": null
+    },
+    {
+      "number": 44,
       "key": "break",
       "title": "Ten-minute break",
       "body": "<p class=\"big\">Save your work and take ten minutes.<br>We\u2019ll start the image experiment when we return.</p><p>The lab coffee has no validation score. Use your judgment.</p><div class=\"bottom-note\">The notebook can stay open. There\u2019s no exercise to run during the break.</div>",
@@ -423,7 +443,7 @@
       "answer": null
     },
     {
-      "number": 43,
+      "number": 45,
       "key": "images-window",
       "title": "Predict the solar image one hour ahead",
       "body": "<ForecastWindow mode=\"images\" /><div class=\"bottom-note\">AIA 171 \u00c5. Prepared 64 \u00d7 64 arrays. One-hour forecasting.</div>",
@@ -433,7 +453,7 @@
       "answer": null
     },
     {
-      "number": 44,
+      "number": 46,
       "key": "image-stack",
       "title": "Track the image model with the same experiment records",
       "body": "<ResearchMap :level=\"3\" /><div class=\"bottom-note\">The input and prediction changed shape. Source, settings, weights, and evidence still belong together. The image score uses normalized log1p intensity.</div>",
@@ -443,7 +463,7 @@
       "answer": null
     },
     {
-      "number": 45,
+      "number": 47,
       "key": "persistence-image",
       "title": "See exactly which images become input and target",
       "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/v030-image-window.png\" alt=\"Earlier and current AIA observations beside the future target\"><div class=\"image-caption\">First accepted training window. All three images share the same intensity scale.</div></div><div class=\"bottom-note\">The target is hidden from the model during prediction. It is used afterward to measure the miss.</div>",
@@ -453,7 +473,7 @@
       "answer": null
     },
     {
-      "number": 46,
+      "number": 48,
       "key": "conv",
       "title": "Predicting the future image with a small CNN",
       "body": "<SolarMechanism mode=\"residual\" :reveal=\"1\" />",
@@ -463,7 +483,7 @@
       "answer": null
     },
     {
-      "number": 47,
+      "number": 49,
       "key": "residual",
       "title": "Predict a correction to the current image",
       "body": "<SolarMechanism mode=\"residual\" :reveal=\"2\" />",
@@ -473,7 +493,7 @@
       "answer": null
     },
     {
-      "number": 48,
+      "number": 50,
       "key": "residual-code",
       "title": "Implement the residual predictor\u2019s forward pass",
       "body": "```python {2|3|4|all}\ndef forward(self, x):\n    correction = self.net(x)       # [batch, 1, 64, 64]\n    current_image = x[:, 1:2]      # keep the channel axis\n    return current_image + correction\n```\n\n<div class=\"code-contract\"><span><strong>Input:</strong> earlier image + current image</span><span><strong>Output:</strong> one future image per example</span></div><p class=\"aside\">Check: if <code>correction</code> is zero, the forecast equals the current image.</p>",
@@ -483,7 +503,7 @@
       "answer": null
     },
     {
-      "number": 49,
+      "number": 51,
       "key": "residual-observed",
       "title": "Inspect the correction produced by the saved model",
       "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/v031-residual-correction.png\" alt=\"Current AIA image plus the saved residual model correction equals its forecast\"><div class=\"image-caption\">First validation case. Current image and forecast use the same intensity scale; the middle panel shows a signed correction.</div></div>",
@@ -493,7 +513,7 @@
       "answer": null
     },
     {
-      "number": 50,
+      "number": 52,
       "key": "image-score",
       "title": "Measure prediction error inside the solar disk",
       "body": "<SolarMechanism mode=\"mask\" />",
@@ -503,7 +523,7 @@
       "answer": null
     },
     {
-      "number": 51,
+      "number": 53,
       "key": "image-score-code",
       "title": "Check the image scorer on three known errors",
       "body": "```python {1|2-3|4|all}\nabsolute_error = np.abs(prediction - target)\nper_image = (absolute_error * disk_mask).sum(axis=(1, 2, 3))\nper_image /= disk_mask.sum(axis=(1, 2, 3))\nreturn float(per_image.mean())\n```\n\n<div class=\"code-contract\"><span><strong>Identical arrays:</strong> score 0</span><span><strong>Every disk pixel +1:</strong> score 1</span><span><strong>Only off-disk pixels +1:</strong> score 0</span></div>",
@@ -513,7 +533,7 @@
       "answer": null
     },
     {
-      "number": 52,
+      "number": 54,
       "key": "loss",
       "title": "Training loss and evaluation error have different jobs",
       "body": "<SolarComputation mode=\"loss\" />",
@@ -523,7 +543,7 @@
       "answer": null
     },
     {
-      "number": 53,
+      "number": 55,
       "key": "image-code-screen",
       "title": "Compare forecasts for the same validation case",
       "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/v030-validation-predictions.png\" alt=\"Matched convolutional and residual predictions beside the same observed future\"><div class=\"image-caption\">Recorded v0.3.0 forecasts. First accepted validation case; common intensity and error scales.</div></div><div class=\"bottom-note\">Notebook: select one forecast timestamp. Compare persistence and both models on common scales.</div>",
@@ -533,7 +553,7 @@
       "answer": null
     },
     {
-      "number": 54,
+      "number": 56,
       "key": "image-turn",
       "title": "Implement and compare the image predictors",
       "body": "<div class=\"task\">Open <strong>5 \u00b7 Solar images</strong>.</div><ol class=\"exercise-controls\"><li>Edit <code>ImagePredictor.forward</code>, <code>training_loss</code>, and <code>my_image_mae</code>.</li><li>Click <strong>Check my image code</strong>. A +1 error should score 1; an off-disk change should score 0.</li><li>Click <strong>Compare convolutional and residual predictors</strong>. Inspect both forecasts.</li></ol><div class=\"done\">Check your work: Show which model validation selected, then point to a region where its forecast missed.</div>",
@@ -543,7 +563,7 @@
       "answer": "answer-images"
     },
     {
-      "number": 55,
+      "number": 57,
       "key": "agent-need",
       "title": "Use the experiment to test agent-written changes",
       "body": "<SolarComputation mode=\"evidence\" /><div class=\"bottom-note\">The lab has recruited an AI research assistant. We still review and test its work.</div>",
@@ -553,7 +573,7 @@
       "answer": null
     },
     {
-      "number": 56,
+      "number": 58,
       "key": "weights",
       "title": "Which model is being trained?",
       "body": "<SolarMechanism mode=\"weights\" />",
@@ -563,7 +583,7 @@
       "answer": null
     },
     {
-      "number": 57,
+      "number": 59,
       "key": "boundaries",
       "title": "Limit edits to the model and training code",
       "body": "<div class=\"two-col\"><div><h2>The assistant may edit</h2><p>Model layers<br>Feature computation<br>Training loss<br>Training procedure</p></div><div><h2>The experiment keeps fixed</h2><p>Training and validation dates<br>What we predict<br>How we score predictions<br>The reserved final-test dates</p></div></div><div class=\"bottom-note\">Candidate Python runs in this notebook\u2019s environment after your review.</div>",
@@ -573,7 +593,7 @@
       "answer": null
     },
     {
-      "number": 58,
+      "number": 60,
       "key": "evidence",
       "title": "Give the agent the inputs needed to explain a run",
       "body": "<div class=\"step-path\"><div><h2>Exact source</h2><p>The files that produced the parent result.</p></div><div><h2>Active settings</h2><p>Architecture, steps, width, optimizer values.</p></div><div><h2>Validation evidence</h2><p>Curves, errors, predictions, and failed attempts.</p></div></div><div class=\"bottom-note\">A default in source may not be the value the run used.</div>",
@@ -583,7 +603,7 @@
       "answer": null
     },
     {
-      "number": 59,
+      "number": 61,
       "key": "agent-span",
       "title": "Follow the agent\u2019s work in Agent Lens",
       "body": "<div class=\"step-path\"><div><h2>Open the request</h2><p>Read what we asked the agent to change.</p></div><div><h2>Inspect the tool calls</h2><p>Find the evidence it read and the code it returned.</p></div><div><h2>Follow the test</h2><p>Open the training call and look at its result or error.</p></div></div><div class=\"bottom-note\">Compare the agent\u2019s stated reason with what happened when its code ran.</div>",
@@ -593,7 +613,7 @@
       "answer": null
     },
     {
-      "number": 60,
+      "number": 62,
       "key": "native-lens",
       "title": "Read the evidence that went into the proposal",
       "body": "<div class=\"native-product-evidence\"><a class=\"product-screen visual-v030-solar-evidence\" href=\"/images/visual-v030-solar-evidence.png\" target=\"_blank\" aria-label=\"Open full-size capture\"><img src=\"/images/visual-v030-solar-evidence.png\" alt=\"Native read_validation_evidence span from the current Solar proposal\"><span v-click=\"1\" class=\"capture-mark\" style=\"left:70px;top:3px;width:800px;height:190px\" aria-label=\"Annotation 1: Parent settings\"><b>1</b></span><span v-click=\"2\" class=\"capture-mark\" style=\"left:70px;top:210px;width:800px;height:184px\" aria-label=\"Annotation 2: Validation evidence\"><b>2</b></span></a><div class=\"product-caption\"><span>Find the parent configuration and validation error before reading its proposal.</span><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/23f4a8510534f241b9c6ccacb0ef3cb7/spans\">Open the proposal \u2197</a></div><div class=\"image-caption\">Recorded v0.3.0 round 1. The agent receives validation evidence, never the reserved-date score.</div></div>",
@@ -603,7 +623,7 @@
       "answer": null
     },
     {
-      "number": 61,
+      "number": 63,
       "key": "evidence-turn",
       "title": "Choose the evidence for the research agent",
       "body": "<div class=\"task\">Open <strong>6. Test agent-written changes to the image model</strong>.</div><ol class=\"exercise-controls\"><li>In <code>select_validation_evidence(record)</code>, keep the active settings and validation results. Click <strong>Check my evidence selection</strong>.</li><li>Read the check result. Confirm that the final-test example is rejected.</li><li>Name the validation fields your function will send to the agent. What can it learn from them?</li></ol><div class=\"done\">Check your work: You can name the code and validation results the agent will receive.</div>",
@@ -613,7 +633,7 @@
       "answer": "answer-evidence"
     },
     {
-      "number": 62,
+      "number": 64,
       "key": "propose",
       "title": "Ask for two changes to the same starting code",
       "body": "<ResearchBranches :level=\"1\" /><div class=\"bottom-note\"><a href=\"https://github.com/google-research/harness2/tree/1cfe254e8d25b15f37048c3730134686abe60335\">Harness\u00b2-inspired</a>: our probes train forecasting weights and include validation scores.</div>",
@@ -623,7 +643,7 @@
       "answer": null
     },
     {
-      "number": 63,
+      "number": 65,
       "key": "native-diff",
       "title": "The first proposal changes one loss operation",
       "body": "```python\ndef training_loss(prediction, target, mask):\n    # Before: square each miss.\n    # After: take its absolute size.\n    return ((prediction - target).abs() * mask).sum() / mask.sum()\n```\n\n<div class=\"diff\"><div class=\"del\">\u2212 (prediction - target).square()</div><div class=\"add\">+ (prediction - target).abs()</div></div><p class=\"aside\">Agent\u2019s hypothesis: training on absolute error may help the fixed absolute-error score. The probe tests that claim.</p>",
@@ -633,7 +653,7 @@
       "answer": null
     },
     {
-      "number": 64,
+      "number": 66,
       "key": "probe",
       "title": "Train and score each candidate",
       "body": "<ResearchBranches :level=\"2\" /><div class=\"bottom-note\">Use the same training and validation data. Keep failed runs visible.</div>",
@@ -643,7 +663,7 @@
       "answer": null
     },
     {
-      "number": 65,
+      "number": 67,
       "key": "compose",
       "title": "Choose or combine changes using the probe results",
       "body": "<ResearchBranches :level=\"3\" /><div class=\"bottom-note\">The agent can keep A, keep B, combine changes, or retain the starting code.</div>",
@@ -653,7 +673,7 @@
       "answer": null
     },
     {
-      "number": 66,
+      "number": 68,
       "key": "test-composed",
       "title": "Train the composed version before adopting it",
       "body": "<ResearchBranches :level=\"4\" /><div class=\"bottom-note\">Run the selected code on the same training and validation dates.</div>",
@@ -663,7 +683,7 @@
       "answer": null
     },
     {
-      "number": 67,
+      "number": 69,
       "key": "adoption-rule",
       "title": "Adopt the tested code only if validation error is lower",
       "body": "<SolarDataRules mode=\"adoption\" />",
@@ -673,7 +693,7 @@
       "answer": null
     },
     {
-      "number": 68,
+      "number": 70,
       "key": "native-training",
       "title": "Open the training call behind the chosen version",
       "body": "<div class=\"native-product-evidence\"><a class=\"product-screen visual-v030-solar-training\" href=\"/images/visual-v030-solar-training.png\" target=\"_blank\" aria-label=\"Open full-size capture\"><img src=\"/images/visual-v030-solar-training.png\" alt=\"Native train_and_validate tool span with actual source settings and returned metrics\"><span v-click=\"1\" class=\"capture-mark\" style=\"left:14px;top:45px;width:880px;height:160px\" aria-label=\"Annotation 1: Training settings\"><b>1</b></span><span v-click=\"2\" class=\"capture-mark\" style=\"left:14px;top:245px;width:880px;height:145px\" aria-label=\"Annotation 2: Measured output\"><b>2</b></span></a><div class=\"product-caption\"><span>Check the configuration, then find validation_error in the returned result.</span><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f7550caa1639e8366efbf9d84a782289\">Open the selected training call \u2197</a></div><div class=\"image-caption\">Recorded v0.3.0 round 2 composition test. \u201cerror\u201d is forecast error here, not an exception.</div></div>",
@@ -683,7 +703,7 @@
       "answer": null
     },
     {
-      "number": 69,
+      "number": 71,
       "key": "repeat",
       "title": "Use the selected code and results in round two",
       "body": "<ResearchBranches :level=\"5\" /><div class=\"bottom-note\">Use the selected code and what the first tests showed to plan the next changes.</div>",
@@ -693,7 +713,7 @@
       "answer": null
     },
     {
-      "number": 70,
+      "number": 72,
       "key": "round1-turn",
       "title": "Propose and test two changes",
       "body": "<div class=\"task\">Inspect <code>next_research_action</code> in <strong>6. Test agent-written changes to the image model</strong>.</div><ol class=\"exercise-controls\"><li><strong>Propose two code changes</strong>. Read both diffs.</li><li>Confirm review of Candidate A \u2192 <strong>Test Candidate A</strong>. Confirm review of Candidate B \u2192 <strong>Test Candidate B</strong>.</li><li><strong>Record my comparison</strong>, then <strong>Request a composition</strong>.</li></ol><div class=\"done\">Check your work: Each candidate\u2019s proposal diff and training result are linked in Agent Lens.</div>",
@@ -703,7 +723,7 @@
       "answer": null
     },
     {
-      "number": 71,
+      "number": 73,
       "key": "round2-turn",
       "title": "Test the selected code, then begin round two",
       "body": "<div class=\"task\">Continue the same workbench.</div><ol class=\"exercise-controls\"><li>Confirm review of composition, then <strong>Test the composition</strong>.</li><li>Click <strong>Save the adopted version and lesson</strong>. Check whether the parent was retained.</li><li>Repeat the process in round two using the previous outcome.</li></ol><div class=\"done\">Check your work: Open the selected version from each round and explain why it was kept.</div>",
@@ -713,7 +733,7 @@
       "answer": "answer-controller"
     },
     {
-      "number": 72,
+      "number": 74,
       "key": "branch-inspect",
       "title": "Follow one proposal through the branch diagram",
       "body": "<ResearchBranches :level=\"5\" :interactive=\"true\" :recorded=\"true\" />",
@@ -723,7 +743,7 @@
       "answer": null
     },
     {
-      "number": 73,
+      "number": 75,
       "key": "freeze",
       "title": "Keep the selected code and weights fixed for final evaluation",
       "body": "<SolarComputation mode=\"inference\" />",
@@ -733,7 +753,7 @@
       "answer": null
     },
     {
-      "number": 74,
+      "number": 76,
       "key": "frozen-code",
       "title": "Load the saved weights to make final predictions",
       "body": "```python\nmodel = build_model(input_shape, frozen_config)\nmodel.load_state_dict(saved_weights)\nmodel.eval()\nwith torch.no_grad():\n    prediction = model(final_inputs)\n```\n\n<div class=\"bottom-note\">There is no optimizer step in this stage.</div>",
@@ -743,7 +763,7 @@
       "answer": null
     },
     {
-      "number": 75,
+      "number": 77,
       "key": "aligned",
       "title": "Match each prediction to the same observation times",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Case identity</th><th>Persistence</th><th>Manual</th><th>Agent-selected</th></tr><tr><td>Same input timestamps</td><td>Prediction + error</td><td>Prediction + error</td><td>Prediction + error</td></tr><tr><td>Same target timestamp</td><td>Saved output</td><td>Executed source</td><td>Executed source</td></tr></tbody></table><div class=\"bottom-note\">Use each case ID to find the same input and target times in Weave or EvalTables.</div>",
@@ -753,7 +773,7 @@
       "answer": null
     },
     {
-      "number": 76,
+      "number": 78,
       "key": "final-turn",
       "title": "Test the selected models on reserved dates",
       "body": "<div class=\"task\">Open <strong>7. Evaluate the selected models on reserved dates</strong>.</div><ol class=\"exercise-controls\"><li>Click <strong>Freeze versions and evaluate reserved dates</strong>.</li><li>Choose one timestamp. Compare each image forecast with the same observed future.</li><li>Open one result\u2019s training record and Agent Lens call. Compare the image scores separately from the GOES scores.</li></ol><div class=\"done\">Check your work: Explain a difference between two forecasts using their images and scores.</div>",
@@ -763,7 +783,7 @@
       "answer": "answer-final"
     },
     {
-      "number": 77,
+      "number": 79,
       "key": "recorded-final",
       "title": "In this rehearsal, image error fell 10.15%",
       "body": "<div class=\"measured-grid\"><div><div class=\"measured-gain\">10.15%</div><p>less error than the manually selected model</p><p class=\"aside\">Agent edits: use absolute training loss, then zero-initialize the residual head.</p></div><table class=\"clean-table\"><tbody><tr><th>Frozen version</th><th>Masked MAE \u2193</th></tr><tr><td>Persistence</td><td>0.125762</td></tr><tr><td>Manual residual model</td><td>0.122442</td></tr><tr><td>Agent-selected code</td><td>0.110011</td></tr></tbody></table></div><p class=\"aside\">Actual AIA 171 \u00c5 observations. 199 overlapping windows; February 13\u201314, 2014; one seed. <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==\">Open the recorded comparison \u2197</a></p><div class=\"bottom-note\">A measured result from this rehearsal, not a promised outcome for your edits.</div>",
@@ -773,7 +793,7 @@
       "answer": null
     },
     {
-      "number": 78,
+      "number": 80,
       "key": "recorded-image",
       "title": "Compare the two models on one reserved-date image",
       "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/v030-final-predictions.png\" alt=\"Manual and agent-selected forecasts for the same first accepted final case\"><div class=\"image-caption\">Forecast origin 2014-02-13T02:48 UTC. Same inputs, target, intensity scale, and error scale.</div></div><div class=\"bottom-note\">The first accepted case is shown, not the case with the largest improvement.</div>",
@@ -783,17 +803,37 @@
       "answer": null
     },
     {
-      "number": 79,
+      "number": 81,
+      "key": "qualified-images",
+      "title": "The image edits helped two seeds and slightly hurt one",
+      "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/images-seeds-deck.png\" alt=\"Combined image edits lower error for seed 17 from 0.122442 to 0.110011 and seed 29 from 0.117650 to 0.109566, but raise seed 43 from 0.110168 to 0.110397\"><div class=\"image-caption\">Same saved sources, 40 updates per run, three predeclared training seeds. Final dates were already known.</div></div><div class=\"bottom-note\">Mean error falls 5.79%. The predeclared requirement to improve every seed fails.</div>",
+      "notes": "The earlier ten point one five percent result remains correct for seed seventeen. It is not a result to promise for every run. Seed forty-three already has a strong manual model, and the combined edits are slightly worse. Its loss-only edit does better than both, which is retained in the full table. Initialization and sampled batches both change with the seed, so we do not know which caused this difference. This is fixed-code repetition, not three independent agent discoveries.",
+      "kind": "",
+      "time": "3:46 \u00b7 THREE-SEED CHECK",
+      "answer": null
+    },
+    {
+      "number": 82,
       "key": "recorded-goes",
       "title": "The GOES model performed worse than persistence",
       "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/v030-goes-final.png\" alt=\"Observed GOES flux, persistence forecast, and selected model prediction on reserved dates\"><div class=\"image-caption\">Final log-flux MAE: selected model 2.469; persistence 0.193. 2,694 accepted windows.</div></div><div class=\"bottom-note\">Compare this forecast with its loss curve before deciding what to change next.</div>",
-      "notes": "These are the fresh saved final GOES predictions. The selected sixty-step neural model misses badly, while persistence follows the observed flux much more closely. The training curve suggests a longer equal budget as a follow-up. That follow-up has not been run, and the failure does not establish that neural forecasting cannot work.",
+      "notes": "These are the fresh saved final GOES predictions. The selected sixty-step neural model misses badly, while persistence follows the observed flux much more closely. The later repaired recipe changes scaling, residual initialization, loss, and training budget together. Its separately recorded three-seed test follows; this historical failure remains unchanged.",
       "kind": "",
       "time": "3:47 \u00b7 RECORDED REHEARSAL",
       "answer": null
     },
     {
-      "number": 80,
+      "number": 83,
+      "key": "qualified-goes",
+      "title": "The measurement repair passed its three-seed check",
+      "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/goes-seeds-deck.png\" alt=\"GOES persistence MAE is 0.192706; the repaired recipe scores 0.162878, 0.163880 and 0.163760 for seeds 17, 29 and 43\"><div class=\"image-caption\">Recorded qualification: selected on validation dates, then evaluated with frozen weights on known final dates.</div></div><div class=\"bottom-note\"><a href=\"https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md\">All configurations, seeds, sources, and reproduction instructions \u2197</a></div>",
+      "notes": "The residual MLP at twelve hundred updates was selected using the mean validation score across seeds seventeen, twenty-nine, and forty-three. Its final mean error is 0.163506, fifteen point one five percent below persistence. All three repetitions improve. These are the same known final dates and overlapping windows; this is a teaching retest, not another independent solar benchmark. There were no new agent calls. The notebook runs this recipe only when the learner clicks Train the worked GOES repair.",
+      "kind": "",
+      "time": "3:47 \u00b7 THREE-SEED CHECK",
+      "answer": null
+    },
+    {
+      "number": 84,
       "key": "result-meaning",
       "title": "Read the saved score for one image in Weave",
       "body": "<div class=\"native-product-evidence\"><a class=\"product-screen visual-v030-solar-comparison\" href=\"/images/visual-v030-solar-comparison.png\" target=\"_blank\" aria-label=\"Open full-size capture\"><img src=\"/images/visual-v030-solar-comparison.png\" alt=\"Native Weave expanded row showing prediction mean, target mean, file index, and error\"><span v-click=\"1\" class=\"capture-mark\" style=\"left:23px;top:56px;width:1000px;height:253px\" aria-label=\"Annotation 1: Array summaries\"><b>1</b></span><span v-click=\"2\" class=\"capture-mark\" style=\"left:23px;top:310px;width:1000px;height:36px\" aria-label=\"Annotation 2: Pixel-wise score\"><b>2</b></span></a><div class=\"product-caption\"><span>Find file_index 0 and its error. Why is the score not the difference between the two means?</span><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==\">Open the linked results \u2197</a></div><div class=\"image-caption\">One saved agent-selected case. Image means summarize the arrays; the score averages pixel errors inside the disk mask.</div></div>",
@@ -803,7 +843,7 @@
       "answer": null
     },
     {
-      "number": 81,
+      "number": 85,
       "key": "reproduce",
       "title": "Check that the saved source contains both selected edits",
       "body": "<div class=\"native-product-evidence\"><a class=\"product-screen visual-v030-solar-artifact\" href=\"/images/visual-v030-solar-artifact.png\" target=\"_blank\" aria-label=\"Open full-size capture\"><img src=\"/images/visual-v030-solar-artifact.png\" alt=\"Native W&amp;B Artifact code view showing the selected candidate.py\"></a><div class=\"product-caption\"><span>Find the zero-initialized output layer and the absolute training loss.</span><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f7550caa1639e8366efbf9d84a782289/v0\">Open the Artifact \u2197</a></div><div class=\"image-caption\">The same Artifact also holds <code>losses.json</code>, <code>weights.pt</code>, and <code>predictions.npy</code> from this training run.</div></div>",
@@ -813,7 +853,7 @@
       "answer": null
     },
     {
-      "number": 82,
+      "number": 86,
       "key": "conclusion-turn",
       "title": "Write down what changed and whether it helped",
       "body": "<div class=\"task\">Use your own comparison.</div><ol class=\"exercise-controls\"><li>Name one code change and report its error on the reserved dates.</li><li>Include a forecast that still missed. Say what you would try next.</li><li>Click <strong>Publish my conclusion</strong>. Follow a link in your Report back to the saved code or prediction.</li></ol><div class=\"done\">Check your work: Your conclusion names the change, the measured result, and a remaining problem.</div>",
@@ -823,17 +863,17 @@
       "answer": null
     },
     {
-      "number": 83,
+      "number": 87,
       "key": "close",
       "title": "Bring the results to the lab review",
       "body": "<div class=\"native-product-evidence\"><a class=\"product-screen visual-v030-solar-report\" href=\"/images/visual-v030-solar-report.png\" target=\"_blank\" aria-label=\"Open full-size capture\"><img src=\"/images/visual-v030-solar-report.png\" alt=\"Native Report excerpt summarizing the latest Solar technical rehearsal\"></a><div class=\"product-caption\"><span>Bring one result, its saved source, and the next experiment you would try.</span><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==\">Open the Report \u2197</a></div><div class=\"image-caption\">Recorded technical rehearsal. Use your own completed runs when writing your Report.</div></div>",
-      "notes": "Return to the weekly lab review. Ask participants to open their Report and follow one result to its source and saved prediction. In the recorded rehearsal, the selected image model reduced error, while the GOES model still lost to persistence. Both belong in the review. The image result uses one seed and two test days; it needs testing on other dates. Longer equal training budgets are a next GOES experiment, not a result we have already measured. Ask each participant to propose a next test grounded in their own forecast.",
+      "notes": "Return to the weekly lab review. Ask participants to open their Report and follow one result to its source and saved prediction. In the recorded rehearsal, the selected image model reduced error, while the GOES model still lost to persistence. Both belong in the review. The image result uses one seed and two test days; it needs testing on other dates. The later qualification found that a repaired GOES recipe beat persistence on all three seeds. The saved image edits helped two seeds and slightly hurt one. Bring both facts to the review; neither replaces the original evidence. Ask each participant to propose a next test grounded in their own forecast.",
       "kind": "",
       "time": "3:58\u20134:00",
       "answer": null
     },
     {
-      "number": 84,
+      "number": 88,
       "key": "reference",
       "title": "Reference and worked answers",
       "body": "<p class=\"big\">Use these after an attempt, or when live access is unavailable.</p><p>Recorded examples belong to the November 13 technical rehearsal. They are not results from your unexecuted changes.</p><div class=\"bottom-note\">Use the return links to continue the workshop.</div>",
@@ -843,7 +883,7 @@
       "answer": null
     },
     {
-      "number": 85,
+      "number": 89,
       "key": "answer-trace",
       "title": "Put the attribute inside the tool scope",
       "body": "```python\ndef instrument_tool(observation):\n    with tracing.Tool(\n        name=observation[\"name\"],\n        arguments=observation[\"arguments\"],\n        result=observation[\"result\"],\n        started_at=stamp(observation[\"started_at\"]),\n        ended_at=stamp(observation[\"ended_at\"]),\n    ) as tool:\n        tool.set_attributes({\"workshop.exercise\": \"solar-research\"})\n        if observation.get(\"error\"):\n            tool.record_error(RuntimeError(observation[\"error\"]))\n```\n\n",
@@ -853,7 +893,7 @@
       "answer": null
     },
     {
-      "number": 86,
+      "number": 90,
       "key": "answer-persistence",
       "title": "Return a copy of the latest observation",
       "body": "```python\ndef persistence_forecast(split):\n    return split[\"persistence\"].copy()\n```\n\n<p>The copy lets you work with the predictions without changing the dataset.</p>",
@@ -863,7 +903,7 @@
       "answer": null
     },
     {
-      "number": 87,
+      "number": 91,
       "key": "answer-flux",
       "title": "Implement the training loss and forecast metric",
       "body": "```python\ndef training_loss(prediction, target, mask):\n    return ((prediction - target).square() * mask).sum() / mask.sum()\n\ndef my_flux_mae(prediction, target):\n    return float(np.abs(prediction - target).mean())\n\nassert my_flux_mae(np.ones(3), np.zeros(3)) == 1.0\nassert my_flux_mae(np.zeros(3), np.zeros(3)) == 0.0\n```\n\n<p class=\"aside\">Training uses squared error. Evaluation reports mean absolute error.</p>",
@@ -873,7 +913,7 @@
       "answer": null
     },
     {
-      "number": 88,
+      "number": 92,
       "key": "answer-search",
       "title": "Compare the settings and loss curves",
       "body": "<p class=\"big\">Open two runs from the Sweep. Compare their model, width, learning rate, and training steps.</p><p>Then open the loss curves. A lower validation error is easier to interpret when you can see how each model trained.</p><div class=\"bottom-note\">If a run failed, inspect its error. A missing score cannot rank that model.</div>",
@@ -883,7 +923,7 @@
       "answer": null
     },
     {
-      "number": 89,
+      "number": 93,
       "key": "answer-images",
       "title": "Average the error inside the disk mask",
       "body": "```python\ndef my_image_mae(prediction, target, disk_mask):\n    errors = np.abs(prediction - target) * disk_mask\n    per_image = errors.sum(axis=(1, 2, 3))\n    per_image /= disk_mask.sum(axis=(1, 2, 3))\n    return float(per_image.mean())\n```\n\n<p>Test zero error, constant +1 error, and an error only outside the mask.</p>",
@@ -893,7 +933,7 @@
       "answer": null
     },
     {
-      "number": 90,
+      "number": 94,
       "key": "answer-residual",
       "title": "Add the correction to input channel 1",
       "body": "```python\ndef forward(self, x):\n    correction = self.net(x)\n    if architecture == \"residual\":\n        return x[:, 1:2] + correction\n    return correction\n```\n\n<div class=\"bottom-note\">The current image is input channel 1. The return has one channel.</div>",
@@ -903,7 +943,7 @@
       "answer": null
     },
     {
-      "number": 91,
+      "number": 95,
       "key": "answer-evidence",
       "title": "Return validation evidence only",
       "body": "```python\ndef select_validation_evidence(record):\n    if record.get(\"split\") != \"validation\":\n        raise ValueError(\"Only validation evidence is allowed.\")\n    fields = (\"split\", \"config\", \"metrics\", \"losses\",\n              \"errors\", \"trace\", \"stage_id\", \"lessons\")\n    return {name: record[name] for name in fields if name in record}\n```\n\n<div class=\"bottom-note\">The agent also receives the current source. Keep final predictions and scores out of this request.</div>",
@@ -913,7 +953,7 @@
       "answer": null
     },
     {
-      "number": 92,
+      "number": 96,
       "key": "answer-controller",
       "title": "Pass the candidate\u2019s code to training",
       "body": "```python\ncandidate = proposal[\"candidates\"][candidate_index]\nprobe = run_training(\n    session, stage_name, candidate[\"source\"],\n    image_splits, parent[\"config\"], dataset_version, metric_source,\n)\n```\n\n<div class=\"bottom-note\">Use the candidate\u2019s source here. Passing the parent would train the old program again.</div>",
@@ -923,7 +963,7 @@
       "answer": null
     },
     {
-      "number": 93,
+      "number": 97,
       "key": "answer-final",
       "title": "Use the saved model without training it again",
       "body": "<p class=\"big\">Load each selected model\u2019s saved weights and predict the reserved dates.</p><p>Compare the three image forecasts at one timestamp. The input images and observed future should match across all three rows.</p><div class=\"bottom-note\">Persistence copies the current image and needs no trained weights.</div>",
@@ -933,7 +973,7 @@
       "answer": null
     },
     {
-      "number": 94,
+      "number": 98,
       "key": "recorded-edit",
       "title": "Round 1: absolute loss versus the unchanged model",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Tested source</th><th>Validation error \u2193</th></tr><tr><td>Starting residual model</td><td>0.122116</td></tr><tr><td>A \u00b7 use absolute training loss</td><td>0.120553</td></tr><tr><td>B \u00b7 retain squared training loss</td><td>0.122116</td></tr></tbody></table><p>The composition selected A. Its separate test reproduced 0.120553.</p><div class=\"bottom-note\">Recorded v0.3.0: one seed, 142 validation windows, the same forty-step budget.</div>",
@@ -943,7 +983,7 @@
       "answer": null
     },
     {
-      "number": 95,
+      "number": 99,
       "key": "recorded-code",
       "title": "Round 2: start the correction at zero",
       "body": "```python\nif architecture == 'residual':\n    nn.init.zeros_(self.net[-1].weight)\n    nn.init.zeros_(self.net[-1].bias)\n\n# The residual forward pass remains:\nreturn prediction + x[:, 1:2]\n```\n\n<div class=\"bottom-note\">The round-one absolute loss stays. Zero initial correction makes the initial forecast persistence.</div>",
@@ -953,7 +993,7 @@
       "answer": null
     },
     {
-      "number": 96,
+      "number": 100,
       "key": "zero-head",
       "title": "Zero initialization applies only to the output layer",
       "body": "<SolarDataRules mode=\"zero-head\" />",
@@ -963,7 +1003,7 @@
       "answer": null
     },
     {
-      "number": 97,
+      "number": 101,
       "key": "recorded-keep",
       "title": "Round 2: sampling without replacement did not reduce error",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Tested source</th><th>Validation error \u2193</th></tr><tr><td>Starting absolute-loss model</td><td>0.120553</td></tr><tr><td>A \u00b7 zero-initialize the residual head</td><td>0.110916</td></tr><tr><td>B \u00b7 sample without replacement</td><td>0.120557</td></tr></tbody></table><p>The composition selected A. It did not combine the unhelpful sampling change.</p><div class=\"bottom-note\">Keep the tested sampling result alongside the selected version for comparison.</div>",
@@ -973,7 +1013,7 @@
       "answer": null
     },
     {
-      "number": 98,
+      "number": 102,
       "key": "recorded-lens",
       "title": "Open the recorded research conversation",
       "body": "<p class=\"big\"><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/23f4a8510534f241b9c6ccacb0ef3cb7\">Open the proposal and its recorded tool activity \u2197</a></p><p>Find the active configuration, the requested edit, and the returned candidate code. Compare the proposal with the tested source.</p><p class=\"aside\"><a href=\"https://ash0ts.github.io/forge-workshop-kit/solar/recorded-study.json\">Download the recorded source, decisions, scores, and evidence links \u2197</a></p><div class=\"bottom-note\">Agent Lens may require sign-in. The source and saved decisions are also in the downloadable evidence.</div>",
@@ -983,7 +1023,7 @@
       "answer": null
     },
     {
-      "number": 99,
+      "number": 103,
       "key": "recovery",
       "title": "When a service is unavailable",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Failure</th><th>Next action</th></tr><tr><td>Project authentication or permission</td><td>Fix access, then retry the check</td></tr><tr><td>Training or inference failed</td><td>Inspect the saved error before retrying work</td></tr><tr><td>Trace or artifact upload failed</td><td>Retry export of the saved execution</td></tr><tr><td>Native EvalTables HTTP 500</td><td>Use notebook and Weave comparisons; retry publication</td></tr></tbody></table>",
@@ -993,7 +1033,7 @@
       "answer": null
     },
     {
-      "number": 100,
+      "number": 104,
       "key": "schedule",
       "title": "Four-hour session",
       "body": "<table class=\"clean-table schedule\"><tbody><tr><th>Minutes</th><th>Work</th></tr><tr><td>0\u201315</td><td>Copy, connect, instrument</td></tr><tr><td>15\u201340</td><td>Data and persistence</td></tr><tr><td>40\u201390</td><td>Tracking and six configurations</td></tr><tr><td>90\u2013100</td><td>Break</td></tr><tr><td>100\u2013135</td><td>Image predictors</td></tr><tr><td>135\u2013195</td><td>Evidence and two research rounds</td></tr><tr><td>195\u2013240</td><td>Freeze, compare, reproduce, explain</td></tr></tbody></table>",
@@ -1003,7 +1043,7 @@
       "answer": null
     },
     {
-      "number": 101,
+      "number": 105,
       "key": "links",
       "title": "Keep working in your own project",
       "body": "<p class=\"big\"><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view\">Copy the Solar notebook \u2197</a></p><p><a href=\"https://github.com/ash0ts/forge-workshop-kit\">Source, setup, dataset, and facilitator guide \u2197</a></p><p><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==\">Recorded rehearsal Report \u2197</a></p><p class=\"aside\"><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view\">For an office-agent example, open Pending, Inc. \u2197</a></p><div class=\"bottom-note\">Keep your notebook, code edits, and checkpoints. The facilitator needs no control over your runtime.</div>",

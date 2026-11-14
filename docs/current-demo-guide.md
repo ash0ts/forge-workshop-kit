@@ -1,4 +1,4 @@
-# Demonstrate the two workshops
+# Demonstrate the workshops
 
 Use these saved rehearsals to show how an instruction or code change affects an agent's work. Participants can follow the same sequence in their own notebook: run the starting version, inspect a failure or limitation, edit the code, and compare the results. Tell the audience when you switch to the recorded example. Opening its pages does not run an experiment.
 
@@ -7,7 +7,7 @@ Use these saved rehearsals to show how an instruction or code change affects an 
 | Pending, Inc. | [Copy the office notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) | [Pending deck](https://ash0ts.github.io/forge-workshop-kit/pending/) | [November 13 Pending Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-bc0ee4ab--VmlldzoxODMwMzUyNg==) |
 | Solar forecasting with agent-assisted experiments | [Copy the research notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view) | [Solar deck](https://ash0ts.github.io/forge-workshop-kit/solar/) | [November 13 Solar Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==) |
 
-These links follow one November 13 rehearsal per workshop. The project's default workspace also includes template uploads, setup checks and earlier rehearsals. Use the linked records rather than combining events from different sessions.
+The Pending and Solar links above follow the November 13 rehearsals. The qualification follow-ups below preserve those results and explain what changed afterward. The project's default workspace also includes template uploads, setup checks and earlier rehearsals. Use the linked records rather than combining events from different sessions.
 
 Participants copy a template into their own project, check access, and work through its steps. They use their own Forge authentication, inference access and notebook compute. There is no shared gateway or facilitator token. The [setup instructions](../README.md#start-in-forge) cover hosted and laptop use.
 
@@ -36,6 +36,27 @@ Participants predict future solar measurements and images, then ask an agent to 
 6. **Ask for the next experiment.** “Would this edit still help with another seed and another date range?” The observed image improvement is a reason to test that question. The GOES failure needs its own investigation; averaging the two tasks together would hide it.
 
 Explain which model is changing. We use the same language model for the research agent throughout the workshop. It edits Python code; running that code trains the small forecasting model's weights. Follow the [four-hour runbook](facilitator.md) for the hands-on session.
+
+## Show the qualified repairs
+
+In Pending's **Pass observations to the agent** step, edit `recover_access` and click **Compare the two retry procedures**. A new operation ID adds Alex twice; reusing the original ID and reading the account leaves one membership. This is a code repair against actual simulator state. It does not turn the separate 4/4 harness tie into a gain. [Saved repair and native trace links](../evidence/v050-publication-check.json).
+
+For Solar, open the [three-seed qualification](solar-qualification.md). The repaired GOES model has 15.15% lower mean error than persistence and improves all three seeds. The image edit improves two seeds and slightly regresses on the third. Explain why the average image gain does not meet the stricter all-seed teaching gate. These use previously inspected dates and are teaching retests.
+
+## Request routing in six minutes
+
+1. Open the [routing deck](https://ash0ts.github.io/forge-workshop-kit/routing/) and compare a missing card with a card that does not work. Ask which support workflow each needs.
+2. Show the TF–IDF and frozen-embedding classifiers. The recorded official-test macro-F1 rises from 0.879385 to 0.920229. Explain that the encoder stays fixed while the classifier is fitted.
+3. Open the [recorded judge disagreement](https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f5427dc7f06703d62c00561b6bd27a01). The request says “Can I activate a card in the app?” The judge accepts `activate_my_card`; the dataset says `card_linking`. Ask what else a reviewer would need before accepting a label.
+4. In the notebook, save a review, show its dataset version, and follow it into retraining. The participant's later improvement is measured separately from the qualified classifier comparison. [Three-hour instructions](routing-workshop.md).
+
+## Circuit-board inspection in six minutes
+
+1. Open the [inspection deck](https://ash0ts.github.io/forge-workshop-kit/inspection/) and show one actual board before revealing its mask.
+2. Compare a whole-image feature vector with the patch-distance grid. The latter can expose small local differences; it is not a defect-segmentation model.
+3. Show `pcb1-anomaly-048`, where the patch version catches a defect the whole-image model misses, then `pcb1-anomaly-015`, where the result reverses. Keep the counterexample visible.
+4. Open the [recorded Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-defective-parts-before-they-ship:-5ec44d92--VmlldzoxODMwNzU3Nw==). Compare AP, misses, false alarms and review volume. Both active and random selection receive 24 additional labels.
+5. Reload a frozen classifier file and reproduce its prediction. The first patch recipe failed; the revised 1.284-point AP gain is a teaching retest. [Protocol and all outcomes](inspection-workshop.md).
 
 ## When a product view is unavailable
 

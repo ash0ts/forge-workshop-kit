@@ -191,7 +191,7 @@ def test_recorded_example_matches_evidence_and_cannot_execute_work():
         assert f"{scores[label]['error']:.5f}" in code
     relative = 100 * (1 - scores['agent']['error'] / scores['manual']['error'])
     assert f'{relative:.2f}% lower' in code
-    assert '199 overlapping windows' in code and 'One seed' in code
+    assert '199 overlapping windows' in code and 'one seed' in code.lower()
     assert 'separate from your results' in code
     assert 'GOES measurement model performed worse' in code
     assert '6e768bbe--VmlldzoxODMwMzU3Nw==' in code

@@ -1,4 +1,4 @@
-"""Build both workshop decks and downloads. Never publish or execute a workshop."""
+"""Build workshop decks and downloads. Never publish or execute a workshop."""
 
 import argparse
 import hashlib
@@ -17,6 +17,8 @@ DECKS = {
         "title": "Solar forecasting with agent-assisted experiments",
         "filename": "solar-autoresearch",
     },
+    "routing": {"title": "Route customer requests and learn from mistakes", "filename": "request-routing"},
+    "inspection": {"title": "Find defective parts before they ship", "filename": "visual-inspection"},
 }
 SOURCE_ITEMS = (
     "README.md",

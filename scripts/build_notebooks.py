@@ -2,10 +2,10 @@
 import argparse
 from pathlib import Path
 from notebook_builder import Cell, render
-from release_support import notebook_header
+from release_support import notebook_header, templates
 ROOT=Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--only', choices=['solar_autoresearch', 'pending_inc', 'starter', 'facilitator'])
+parser.add_argument('--only', choices=[row['slug'] for row in templates()])
 selected = parser.parse_args().only
 
 
@@ -18,8 +18,9 @@ def save(name,title,cells):
         encoding='utf-8', newline='\n',
     )
 
-from solar_cells import cells as solar_cells
-save("solar_autoresearch.py","Solar Autoresearch",solar_cells)
+if selected in (None, 'solar_autoresearch'):
+    from solar_cells import cells as solar_cells
+    save("solar_autoresearch.py","Solar Autoresearch",solar_cells)
 
 def add(code,hide=False):
     cells.append(Cell(code,hide=hide))
@@ -131,5 +132,12 @@ mo.md(str(stage.result))
 ''')
 save('starter.py','My Forge workshop',cells)
 
-from pending_cells import cells as pending_cells
-save("pending_inc.py","Pending, Inc.",pending_cells)
+if selected in (None, 'pending_inc'):
+    from pending_cells import cells as pending_cells
+    save("pending_inc.py","Pending, Inc.",pending_cells)
+if selected in (None, 'request_routing'):
+    from routing_cells import cells as routing_cells
+    save('request_routing.py', 'Route customer requests', routing_cells)
+if selected in (None, 'visual_inspection'):
+    from inspection_cells import cells as inspection_cells
+    save('visual_inspection.py', 'Find defective parts before they ship', inspection_cells)

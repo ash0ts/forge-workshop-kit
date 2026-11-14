@@ -1,9 +1,9 @@
 # Copy the notebook and start
 
 1. Sign in to [Forge](https://forge.coreweave.com) and create a teaching project in your own account or a team where you can write. Use public projects if the facilitator needs to read progress without an invitation. Files published there are public, so use the workshop data.
-2. Open the [Pending template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) or [Solar template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view), choose **Copy to project**, and select your project. Open the editable copy. If copying is unavailable, import the corresponding `.py` file from [notebooks](../notebooks) into your project.
+2. Choose a template from the [workshop list](../README.md#choose-your-workshop), choose **Copy to project**, and select your project. Open the editable copy. If copying is unavailable, import the corresponding `.py` file from [notebooks](../notebooks) into your project.
 3. Initialize the cells with marimo’s **Run all stale cells** control. This creates the exercise controls. It does not press their Run buttons.
-4. Check the displayed project. An editable hosted copy reads its project and credentials from Forge. Click **Connect and restore my work** in Solar or **Check my project and restore saved work** in Pending.
+4. Check the displayed project. An editable hosted copy reads its project and credentials from Forge. Click **Connect and restore my work** in Solar or routing, **Check my project and restore saved work** in Pending, or **Connect and restore my inspection work** in inspection.
 5. Complete the first tracing exercise and open its Agent Lens conversation. Send the facilitator your project link if you want them to see progress and help requests. They do not need your credentials.
 
 The setup table separates project writes, stored traces, inference, Weave evaluations, and native EvalTables. A successful project check does not establish access to all five. The check makes no model calls. Your first explicit model run checks inference access and billing; your first evaluation publication checks the evaluation services.
@@ -23,6 +23,8 @@ uv run --extra pending marimo edit notebooks/pending_inc.py
 ```
 
 For Solar, use `--extra solar` in all three uv commands and open `notebooks/solar_autoresearch.py` instead. Enter your writable `entity/project` in the setup step. You can also set `WORKSHOP_PROJECT` before launching. Tools and training run in the notebook’s Python runtime. Inference and publication use your own Forge credentials.
+
+Routing uses `--extra routing` with `notebooks/request_routing.py`; inspection uses `--extra inspection` with `notebooks/visual_inspection.py`. Both download a checksum-verified teaching bundle when you explicitly click Download. Their classifier training runs on CPU. The routing model and judge calls use your inference allowance; inspection's required path does not call a model API.
 
 ## Resume or recover
 

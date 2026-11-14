@@ -1,0 +1,212 @@
+[
+  {
+    "slide": 1,
+    "title": "Route customer requests<br>and learn from mistakes",
+    "time": "0:00",
+    "name": ""
+  },
+  {
+    "slide": 2,
+    "title": "The support queue needs a destination",
+    "time": "0:02",
+    "name": ""
+  },
+  {
+    "slide": 3,
+    "title": "A manager has offered to automate forwarding",
+    "time": "0:04",
+    "name": ""
+  },
+  {
+    "slide": 4,
+    "title": "The dataset contains 77 banking intents",
+    "time": "0:06",
+    "name": ""
+  },
+  {
+    "slide": 5,
+    "title": "Give each partition one job",
+    "time": "0:08",
+    "name": ""
+  },
+  {
+    "slide": 6,
+    "title": "Open your copy and add your first trace",
+    "time": "0:10",
+    "name": ""
+  },
+  {
+    "slide": 7,
+    "title": "The span should explain the operation",
+    "time": "0:15",
+    "name": ""
+  },
+  {
+    "slide": 8,
+    "title": "Read a request before revealing its label",
+    "time": "0:20",
+    "name": ""
+  },
+  {
+    "slide": 9,
+    "title": "Start with a word-based classifier",
+    "time": "0:30",
+    "name": ""
+  },
+  {
+    "slide": 10,
+    "title": "Then change the representation",
+    "time": "0:34",
+    "name": ""
+  },
+  {
+    "slide": 11,
+    "title": "Implement the classifier head",
+    "time": "0:38",
+    "name": ""
+  },
+  {
+    "slide": 12,
+    "title": "Macro-F1 gives each intent equal weight",
+    "time": "0:45",
+    "name": ""
+  },
+  {
+    "slide": 13,
+    "title": "The worked comparison reduced routing mistakes",
+    "time": "0:50",
+    "name": ""
+  },
+  {
+    "slide": 14,
+    "title": "A router can also ask a person",
+    "time": "0:55",
+    "name": ""
+  },
+  {
+    "slide": 15,
+    "title": "Write the rule that sends a request to review",
+    "time": "1:00",
+    "name": ""
+  },
+  {
+    "slide": 16,
+    "title": "Read the disagreement before declaring failure",
+    "time": "1:07",
+    "name": ""
+  },
+  {
+    "slide": 17,
+    "title": "Save labels someone can trace back to a decision",
+    "time": "1:13",
+    "name": ""
+  },
+  {
+    "slide": 18,
+    "title": "Break until 1:30",
+    "time": "1:20",
+    "name": ""
+  },
+  {
+    "slide": 19,
+    "title": "A prompted model returns a typed decision",
+    "time": "1:30",
+    "name": ""
+  },
+  {
+    "slide": 20,
+    "title": "Inspect eight actual model routes",
+    "time": "1:35",
+    "name": ""
+  },
+  {
+    "slide": 21,
+    "title": "An automated failure tag needs its own evaluation",
+    "time": "1:39",
+    "name": ""
+  },
+  {
+    "slide": 22,
+    "title": "Implement the judge response check",
+    "time": "1:44",
+    "name": ""
+  },
+  {
+    "slide": 23,
+    "title": "The judge disagreed with the dataset label",
+    "time": "1:53",
+    "name": ""
+  },
+  {
+    "slide": 24,
+    "title": "Use reviewed data to run a new experiment",
+    "time": "1:55",
+    "name": ""
+  },
+  {
+    "slide": 25,
+    "title": "Train with your accepted labels",
+    "time": "2:00",
+    "name": ""
+  },
+  {
+    "slide": 26,
+    "title": "Freeze what the final comparison will use",
+    "time": "2:15",
+    "name": ""
+  },
+  {
+    "slide": 27,
+    "title": "Evaluate all matching test requests",
+    "time": "2:20",
+    "name": ""
+  },
+  {
+    "slide": 28,
+    "title": "Open one aligned result, not just the average",
+    "time": "2:30",
+    "name": ""
+  },
+  {
+    "slide": 29,
+    "title": "Write the decision you would make",
+    "time": "2:40",
+    "name": ""
+  },
+  {
+    "slide": 30,
+    "title": "Reproduce the selected version before releasing it",
+    "time": "2:50",
+    "name": ""
+  },
+  {
+    "slide": 31,
+    "title": "What to take back to your team",
+    "time": "2:57",
+    "name": ""
+  },
+  {
+    "slide": 32,
+    "title": "Worked answer: classifier head",
+    "time": "",
+    "name": "classifier-answer"
+  },
+  {
+    "slide": 33,
+    "title": "Worked answer: review policy",
+    "time": "",
+    "name": "policy-answer"
+  },
+  {
+    "slide": 34,
+    "title": "Worked answer: judge validator",
+    "time": "",
+    "name": "validator-answer"
+  },
+  {
+    "slide": 35,
+    "title": "Sources and recorded evidence",
+    "time": "",
+    "name": ""
+  }
+]

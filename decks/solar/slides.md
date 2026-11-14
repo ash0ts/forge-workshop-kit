@@ -184,7 +184,7 @@ class: exercise
 
 <div class="kicker">0:08–0:15 · YOUR TURN</div>
 
-<a class="answer-link" href="/85">Worked answer → 85</a>
+<a class="answer-link" href="/89">Worked answer → 89</a>
 
 # Connect and inspect your first tool call
 
@@ -359,7 +359,7 @@ class: exercise
 
 <div class="kicker">0:30–0:40 · YOUR TURN</div>
 
-<a class="answer-link" href="/86">Worked answer → 86</a>
+<a class="answer-link" href="/90">Worked answer → 90</a>
 
 # Write and test persistence
 
@@ -528,7 +528,7 @@ class: exercise
 
 <div class="kicker">0:50–1:05 · YOUR TURN</div>
 
-<a class="answer-link" href="/87">Worked answer → 87</a>
+<a class="answer-link" href="/91">Worked answer → 91</a>
 
 # Write the loss and metric
 
@@ -641,11 +641,11 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Check whether the model has finished learning
 
-<div class="scientific-figure"><img class="solar-photo" src="/images/v030-goes-loss.png" alt="Saved GOES model loss curve over 60 training steps"><div class="image-caption">Selected MLP: width 16, learning rate .003, seed 17. Saved v0.3.0 training losses.</div></div><div class="bottom-note">The loss was still falling at the limit. Longer training is a next experiment, not a measured result here.</div>
+<div class="scientific-figure"><img class="solar-photo" src="/images/v030-goes-loss.png" alt="Saved GOES model loss curve over 60 training steps"><div class="image-caption">Selected MLP: width 16, learning rate .003, seed 17. Saved v0.3.0 training losses.</div></div><div class="bottom-note">Historical 60-step run. A later worked repair tests scaling, residual prediction, and a longer budget together.</div>
 
 
 <!--
-The selected GOES model’s loss was still falling after sixty steps. That suggests testing a longer training budget, but it does not tell us that more steps would beat persistence. Look at the predictions and validation score alongside the curve. We have not run the longer-budget experiment.
+The selected GOES model’s loss was still falling after sixty steps. That suggests testing a longer training budget, but it does not tell us that more steps would beat persistence. Look at the predictions and validation score alongside the curve. The later qualification tested a complete repaired recipe. It does not isolate the effect of additional training alone.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -655,7 +655,7 @@ class: exercise
 
 <div class="kicker">1:15–1:30 · YOUR TURN</div>
 
-<a class="answer-link" href="/88">Worked answer → 88</a>
+<a class="answer-link" href="/92">Worked answer → 92</a>
 
 # Run six configurations and inspect one forecast
 
@@ -664,6 +664,46 @@ class: exercise
 
 <!--
 Allow fifteen minutes. Ask participants to predict which configuration will win before running the search. After it finishes, have them explain one result from the loss curve and forecast. Keep failed runs visible so the comparison accounts for what happened.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">1:24</div>
+
+# Let the model learn a correction to persistence
+
+```python {2|3|4|all}
+def forward(self, x):
+    correction = self.net(x)
+    standardized = x[:, 1, -1:] + correction
+    return standardized * self.scale + self.center
+
+# Zero-initialize the correction head before training.
+# Fit scaling on training dates; score in log-flux units.
+```
+
+<div class="bottom-note">The repair also uses absolute loss and 1,200 updates. These choices are tested together.</div>
+
+
+<!--
+The latest XRS-B input is standardized. Add a learned correction, then convert it back with the same training-fitted center and scale. A zero-initialized final layer begins exactly at persistence. The fit function divides the prediction and target error by the same scale. We changed several parts of the recipe together, so the measured result cannot tell us which individual change caused the gain. Ask participants to point to the addition and unit conversion in their editable code. Advance the code highlights one step at a time; use Back to revisit the previous statement.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+class: exercise
+---
+
+<div class="kicker">1:25–1:30 · YOUR TURN</div>
+
+# Test the worked measurement repair
+
+<div class="task">Stay in <strong>4 · Track and search</strong>, below the saved forecasts.</div><ol class="exercise-controls"><li>Read <code>forward</code> and <code>fit</code> in <strong>Worked GOES repair: inspect or edit the forecasting code</strong>.</li><li>Click <strong>Check the GOES repair code</strong>, then <strong>Train the worked GOES repair</strong>.</li><li>Compare validation error with persistence and your search. Open its training call and weights Artifact.</li></ol><div class="done">Check your work: Explain the initial forecast, the output units, and whether your validation error fell.</div>
+
+
+<!--
+Use the last five minutes of the measurement exercise. This is one CPU run, not another paid agent request. Its exact source, configuration, and weights are saved separately. The recipe beat persistence on three predeclared seeds in qualification, but a learner edit is a new experiment. Final selection considers its validation score; do not choose using final dates.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -855,7 +895,7 @@ class: exercise
 
 <div class="kicker">1:55–2:15 · YOUR TURN</div>
 
-<a class="answer-link" href="/89">Worked answer → 89</a>
+<a class="answer-link" href="/93">Worked answer → 93</a>
 
 # Implement and compare the image predictors
 
@@ -957,7 +997,7 @@ class: exercise
 
 <div class="kicker">2:25–2:40 · YOUR TURN</div>
 
-<a class="answer-link" href="/91">Worked answer → 91</a>
+<a class="answer-link" href="/95">Worked answer → 95</a>
 
 # Choose the evidence for the research agent
 
@@ -1110,7 +1150,7 @@ class: exercise
 
 <div class="kicker">3:00–3:15 · YOUR TURN</div>
 
-<a class="answer-link" href="/92">Worked answer → 92</a>
+<a class="answer-link" href="/96">Worked answer → 96</a>
 
 # Test the selected code, then begin round two
 
@@ -1192,7 +1232,7 @@ class: exercise
 
 <div class="kicker">3:25–3:45 · YOUR TURN</div>
 
-<a class="answer-link" href="/93">Worked answer → 93</a>
+<a class="answer-link" href="/97">Worked answer → 97</a>
 
 # Test the selected models on reserved dates
 
@@ -1234,6 +1274,20 @@ Source notes and recorded evidence: notes/sources.md.
 
 ---
 
+<div class="kicker">3:46 · THREE-SEED CHECK</div>
+
+# The image edits helped two seeds and slightly hurt one
+
+<div class="scientific-figure"><img class="solar-photo" src="/images/images-seeds-deck.png" alt="Combined image edits lower error for seed 17 from 0.122442 to 0.110011 and seed 29 from 0.117650 to 0.109566, but raise seed 43 from 0.110168 to 0.110397"><div class="image-caption">Same saved sources, 40 updates per run, three predeclared training seeds. Final dates were already known.</div></div><div class="bottom-note">Mean error falls 5.79%. The predeclared requirement to improve every seed fails.</div>
+
+
+<!--
+The earlier ten point one five percent result remains correct for seed seventeen. It is not a result to promise for every run. Seed forty-three already has a strong manual model, and the combined edits are slightly worse. Its loss-only edit does better than both, which is retained in the full table. Initialization and sampled batches both change with the seed, so we do not know which caused this difference. This is fixed-code repetition, not three independent agent discoveries.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
 <div class="kicker">3:47 · RECORDED REHEARSAL</div>
 
 # The GOES model performed worse than persistence
@@ -1242,7 +1296,21 @@ Source notes and recorded evidence: notes/sources.md.
 
 
 <!--
-These are the fresh saved final GOES predictions. The selected sixty-step neural model misses badly, while persistence follows the observed flux much more closely. The training curve suggests a longer equal budget as a follow-up. That follow-up has not been run, and the failure does not establish that neural forecasting cannot work.
+These are the fresh saved final GOES predictions. The selected sixty-step neural model misses badly, while persistence follows the observed flux much more closely. The later repaired recipe changes scaling, residual initialization, loss, and training budget together. Its separately recorded three-seed test follows; this historical failure remains unchanged.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">3:47 · THREE-SEED CHECK</div>
+
+# The measurement repair passed its three-seed check
+
+<div class="scientific-figure"><img class="solar-photo" src="/images/goes-seeds-deck.png" alt="GOES persistence MAE is 0.192706; the repaired recipe scores 0.162878, 0.163880 and 0.163760 for seeds 17, 29 and 43"><div class="image-caption">Recorded qualification: selected on validation dates, then evaluated with frozen weights on known final dates.</div></div><div class="bottom-note"><a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md">All configurations, seeds, sources, and reproduction instructions ↗</a></div>
+
+
+<!--
+The residual MLP at twelve hundred updates was selected using the mean validation score across seeds seventeen, twenty-nine, and forty-three. Its final mean error is 0.163506, fifteen point one five percent below persistence. All three repetitions improve. These are the same known final dates and overlapping windows; this is a teaching retest, not another independent solar benchmark. There were no new agent calls. The notebook runs this recipe only when the learner clicks Train the worked GOES repair.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1300,7 +1368,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 
 <!--
-Return to the weekly lab review. Ask participants to open their Report and follow one result to its source and saved prediction. In the recorded rehearsal, the selected image model reduced error, while the GOES model still lost to persistence. Both belong in the review. The image result uses one seed and two test days; it needs testing on other dates. Longer equal training budgets are a next GOES experiment, not a result we have already measured. Ask each participant to propose a next test grounded in their own forecast.
+Return to the weekly lab review. Ask participants to open their Report and follow one result to its source and saved prediction. In the recorded rehearsal, the selected image model reduced error, while the GOES model still lost to persistence. Both belong in the review. The image result uses one seed and two test days; it needs testing on other dates. The later qualification found that a repaired GOES recipe beat persistence on all three seeds. The saved image edits helped two seeds and slightly hurt one. Bring both facts to the review; neither replaces the original evidence. Ask each participant to propose a next test grounded in their own forecast.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1427,7 +1495,7 @@ def my_image_mae(prediction, target, disk_mask):
 ```
 
 <p>Test zero error, constant +1 error, and an error only outside the mask.</p>
-<div class="source-link"><a href="/54">Return to Implement and compare the image predictors →</a></div>
+<div class="source-link"><a href="/56">Return to Implement and compare the image predictors →</a></div>
 
 <!--
 The mask selects the solar disk. Compute the sum and count per image, then average across images. Check identical arrays, a constant one-unit difference, and a difference only outside the mask.
@@ -1474,7 +1542,7 @@ def select_validation_evidence(record):
 ```
 
 <div class="bottom-note">The agent also receives the current source. Keep final predictions and scores out of this request.</div>
-<div class="source-link"><a href="/61">Return to Choose the evidence for the research agent →</a></div>
+<div class="source-link"><a href="/63">Return to Choose the evidence for the research agent →</a></div>
 
 <!--
 First check that the record belongs to validation. Then return only the listed evidence fields. The current source is supplied separately. The final-test example should raise an error before the agent sees it.
@@ -1498,7 +1566,7 @@ probe = run_training(
 ```
 
 <div class="bottom-note">Use the candidate’s source here. Passing the parent would train the old program again.</div>
-<div class="source-link"><a href="/71">Return to Test the selected code, then begin round two →</a></div>
+<div class="source-link"><a href="/73">Return to Test the selected code, then begin round two →</a></div>
 
 <!--
 Pass candidate['source'] to training, along with the shared configuration. Passing the parent source here would train the old program while the interface appeared to test a new proposal. Open the saved candidate.py if the result looks suspicious.
@@ -1512,7 +1580,7 @@ Source notes and recorded evidence: notes/sources.md.
 # Use the saved model without training it again
 
 <p class="big">Load each selected model’s saved weights and predict the reserved dates.</p><p>Compare the three image forecasts at one timestamp. The input images and observed future should match across all three rows.</p><div class="bottom-note">Persistence copies the current image and needs no trained weights.</div>
-<div class="source-link"><a href="/76">Return to Test the selected models on reserved dates →</a></div>
+<div class="source-link"><a href="/78">Return to Test the selected models on reserved dates →</a></div>
 
 <!--
 The selected weights are already trained. Load them and predict the final inputs. Compare the same target timestamps across all versions; persistence uses the current image directly.

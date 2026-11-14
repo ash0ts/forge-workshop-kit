@@ -83,7 +83,7 @@ def notebook_header(slug, title):
     ]
     lines.extend("#   " + json.dumps(requirement) + "," for requirement in dependencies)
     lines.append("# ]")
-    if "solar" in extras:
+    if "solar" in extras or "inspection" in extras:
         lines.extend(
             [
                 "# [tool.uv.sources]",

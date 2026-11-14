@@ -1,0 +1,55 @@
+{
+  "workshop": "solar-autoresearch",
+  "date": "2026-11-14",
+  "mode": "saved-record browser check",
+  "notebook_sha256": "78cfbb8750e398644590ffcacaa256410f0a6a9bc59223ebfb7b08bb977eefd0",
+  "checks": [
+    "Current notebook exposes a separate GOES repair editor and explicit training control; frozen rehearsal blocks training.",
+    "Changing build_model to an incorrect shape produces the actual local shape-check failure.",
+    "The next-step action follows the worked repair and its local-check result.",
+    "Restored repair source passes free MLP/CNN forward-shape and finite-loss checks.",
+    "Recorded section separates historical one-seed gain, mixed image-seed results, and three-seed GOES repair with the exact evidence link.",
+    "Edited repair draft survives step navigation and a fresh notebook connection after reload.",
+    "390px layout keeps the repair instructions and editor on the page without horizontal page overflow."
+  ],
+  "errors": [],
+  "requests_unchanged": true,
+  "stages_unchanged": true,
+  "new_training_runs": 0,
+  "new_inference_requests": 0,
+  "publication_disabled": true,
+  "live_access_checked": false,
+  "external_attendee_rehearsal": false,
+  "screenshots": [
+    "solar-goes-repair-desktop.png",
+    "solar-goes-repair-check.png",
+    "solar-recorded-qualification.png",
+    "solar-goes-repair-narrow.png"
+  ],
+  "visual_inspection": {
+    "desktop": true,
+    "narrow_390px": true,
+    "theme": "light",
+    "native_dark_theme_checked": false,
+    "reviewed_screenshots": [
+      "solar-goes-repair-desktop.png",
+      "solar-goes-repair-check.png",
+      "solar-recorded-qualification.png",
+      "solar-goes-repair-narrow.png"
+    ]
+  },
+  "limitations": [
+    "Access and restore used local validation fixtures; no external-account or publication check was performed.",
+    "Historical executions came from a copied saved rehearsal. The displayed local check uses the edited source.",
+    "The qualification link destination was checked, not the unpublished GitHub document HTTP response."
+  ],
+  "automation_notes": [
+    "One check attempt timed out after an editor update. Repeating with a longer editor-settle wait passed. No training or request receipts changed in either attempt."
+  ],
+  "screenshots_sha256": {
+    "solar-goes-repair-desktop.png": "b00aacdc37948fd86a513b72bd08377c1528c79e120e0c42af4ae9292780cd26",
+    "solar-goes-repair-check.png": "33552dffcc64000b9dcf6e981b36812a3a76901a1371829a5cb3c5178099418e",
+    "solar-recorded-qualification.png": "d5aa32f6032fb775a0d9c866730d0a2153e3420747a8d59a420a2c9045d58919",
+    "solar-goes-repair-narrow.png": "327fdf946907f8cb680b9d6989c46fa262fd3fd0b588f179ca3136478099058c"
+  }
+}

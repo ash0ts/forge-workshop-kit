@@ -1,0 +1,365 @@
+{
+  "source_sha256": "54eea5a43892ff6372c59bd793b5fe847aaeb2325e791102571a4743cfac8d98",
+  "slides_checked": 34,
+  "expected_slides": 34,
+  "titles": [
+    {
+      "number": 1,
+      "key": "opening",
+      "title": "Find defective parts before they ship"
+    },
+    {
+      "number": 2,
+      "key": "assignment",
+      "title": "The factory has two ways to waste a good morning"
+    },
+    {
+      "number": 3,
+      "key": "real-data",
+      "title": "Start with the boards, not the score"
+    },
+    {
+      "number": 4,
+      "key": "dataset",
+      "title": "What is in the teaching set?"
+    },
+    {
+      "number": 5,
+      "key": "partitions",
+      "title": "Separate the data before choosing a model"
+    },
+    {
+      "number": 6,
+      "key": "connect",
+      "title": "Connect to your own experiment"
+    },
+    {
+      "number": 7,
+      "key": "trace-code",
+      "title": "The trace describes a call that actually ran"
+    },
+    {
+      "number": 8,
+      "key": "inspect",
+      "title": "Inspect one board before revealing its label"
+    },
+    {
+      "number": 9,
+      "key": "encoder",
+      "title": "Reuse a fixed image encoder"
+    },
+    {
+      "number": 10,
+      "key": "patches",
+      "title": "Compare each patch with real normal examples"
+    },
+    {
+      "number": 11,
+      "key": "features",
+      "title": "Add local information to the classifier"
+    },
+    {
+      "number": 12,
+      "key": "cache",
+      "title": "Check the feature cache without rebuilding everything"
+    },
+    {
+      "number": 13,
+      "key": "classifier",
+      "title": "Train the same classifier on each representation"
+    },
+    {
+      "number": 14,
+      "key": "threshold",
+      "title": "A detector score still needs an operating rule"
+    },
+    {
+      "number": 15,
+      "key": "threshold-exercise",
+      "title": "Implement the validation threshold"
+    },
+    {
+      "number": 16,
+      "key": "metrics",
+      "title": "Keep ranking quality and operating errors separate"
+    },
+    {
+      "number": 17,
+      "key": "forge",
+      "title": "Follow one trained classifier through Forge"
+    },
+    {
+      "number": 18,
+      "key": "forge-training",
+      "title": "Read the recorded training call"
+    },
+    {
+      "number": 19,
+      "key": "break",
+      "title": "Take ten minutes"
+    },
+    {
+      "number": 20,
+      "key": "review",
+      "title": "Choose where the review time goes"
+    },
+    {
+      "number": 21,
+      "key": "human",
+      "title": "Save what the reviewer actually decided"
+    },
+    {
+      "number": 22,
+      "key": "review-fit",
+      "title": "Train with the additional labels"
+    },
+    {
+      "number": 23,
+      "key": "freeze",
+      "title": "Choose before opening the final results"
+    },
+    {
+      "number": 24,
+      "key": "final",
+      "title": "Evaluate the same 442 boards"
+    },
+    {
+      "number": 25,
+      "key": "failure",
+      "title": "The first worked recipe did not pass its gate"
+    },
+    {
+      "number": 26,
+      "key": "retest",
+      "title": "The bounded follow-up improved this teaching retest"
+    },
+    {
+      "number": 27,
+      "key": "improved-case",
+      "title": "Inspect a corrected miss"
+    },
+    {
+      "number": 28,
+      "key": "regression",
+      "title": "Inspect a new miss too"
+    },
+    {
+      "number": 29,
+      "key": "reproduce",
+      "title": "Reload the version you chose"
+    },
+    {
+      "number": 30,
+      "key": "release",
+      "title": "A tested artifact can become the next release"
+    },
+    {
+      "number": 31,
+      "key": "conclusion",
+      "title": "Write down the decision you would make"
+    },
+    {
+      "number": 32,
+      "key": "answer-features",
+      "title": "Worked answer: assemble the local features"
+    },
+    {
+      "number": 33,
+      "key": "answer-threshold",
+      "title": "Worked answer: meet the validation recall target"
+    },
+    {
+      "number": 34,
+      "key": "answer-review",
+      "title": "Worked answer: choose uncertain cases"
+    }
+  ],
+  "click_states": [
+    {
+      "slide": 1,
+      "click": 0
+    },
+    {
+      "slide": 2,
+      "click": 0
+    },
+    {
+      "slide": 3,
+      "click": 0
+    },
+    {
+      "slide": 4,
+      "click": 0
+    },
+    {
+      "slide": 5,
+      "click": 0
+    },
+    {
+      "slide": 6,
+      "click": 0
+    },
+    {
+      "slide": 7,
+      "click": 0
+    },
+    {
+      "slide": 7,
+      "click": 1
+    },
+    {
+      "slide": 7,
+      "click": 2
+    },
+    {
+      "slide": 7,
+      "click": 3
+    },
+    {
+      "slide": 8,
+      "click": 0
+    },
+    {
+      "slide": 9,
+      "click": 0
+    },
+    {
+      "slide": 9,
+      "click": 1
+    },
+    {
+      "slide": 10,
+      "click": 0
+    },
+    {
+      "slide": 10,
+      "click": 1
+    },
+    {
+      "slide": 11,
+      "click": 0
+    },
+    {
+      "slide": 12,
+      "click": 0
+    },
+    {
+      "slide": 13,
+      "click": 0
+    },
+    {
+      "slide": 13,
+      "click": 1
+    },
+    {
+      "slide": 13,
+      "click": 2
+    },
+    {
+      "slide": 14,
+      "click": 0
+    },
+    {
+      "slide": 15,
+      "click": 0
+    },
+    {
+      "slide": 16,
+      "click": 0
+    },
+    {
+      "slide": 17,
+      "click": 0
+    },
+    {
+      "slide": 18,
+      "click": 0
+    },
+    {
+      "slide": 19,
+      "click": 0
+    },
+    {
+      "slide": 20,
+      "click": 0
+    },
+    {
+      "slide": 21,
+      "click": 0
+    },
+    {
+      "slide": 22,
+      "click": 0
+    },
+    {
+      "slide": 23,
+      "click": 0
+    },
+    {
+      "slide": 24,
+      "click": 0
+    },
+    {
+      "slide": 25,
+      "click": 0
+    },
+    {
+      "slide": 26,
+      "click": 0
+    },
+    {
+      "slide": 27,
+      "click": 0
+    },
+    {
+      "slide": 28,
+      "click": 0
+    },
+    {
+      "slide": 29,
+      "click": 0
+    },
+    {
+      "slide": 30,
+      "click": 0
+    },
+    {
+      "slide": 31,
+      "click": 0
+    },
+    {
+      "slide": 32,
+      "click": 0
+    },
+    {
+      "slide": 33,
+      "click": 0
+    },
+    {
+      "slide": 34,
+      "click": 0
+    }
+  ],
+  "issues": [],
+  "console_errors": [],
+  "failed_responses": [],
+  "answers": [
+    {
+      "slide": 11,
+      "destination": "/forge-workshop-kit/inspection/32",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 15,
+      "destination": "/forge-workshop-kit/inspection/33",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 20,
+      "destination": "/forge-workshop-kit/inspection/34",
+      "keyboardReturn": true
+    }
+  ],
+  "routes_checked": 71,
+  "presenter_notes": true
+}
