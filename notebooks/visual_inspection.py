@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[inspection] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.6.2/forge_workshop_kit-0.6.2-py3-none-any.whl",
+#   "forge-workshop-kit[inspection] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/forge_workshop_kit-0.7.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -126,6 +126,7 @@ __generated_with = "0.25.2"
 app = marimo.App(width="medium", app_title='Find defective parts before they ship')
 
 
+# workshop-cell: visual_inspection/display/1
 @app.cell(hide_code=True)
 def _():
     import json
@@ -144,6 +145,7 @@ def _():
     return (Path, WorkshopSession, digest, event, export_trace, get_feedback, get_lab, get_step, inspection, json, mo, np, publish_comparison, publish_report, save_review, set_feedback, set_lab, set_step, setup, teaching, ui,)
 
 
+# workshop-cell: visual_inspection/definitions/go_to
 @app.cell(hide_code=True)
 def _(get_lab, set_feedback, set_lab, set_step):
     def go_to(step):
@@ -159,6 +161,7 @@ def _(get_lab, set_feedback, set_lab, set_step):
     return (feedback, go_to, refresh_inspection,)
 
 
+# workshop-cell: visual_inspection/definitions/inspection_nav
 @app.cell(hide_code=True)
 def _(get_lab, get_step, go_to, mo, teaching, ui):
     _s = get_lab().get("session")
@@ -167,6 +170,7 @@ def _(get_lab, get_step, go_to, mo, teaching, ui):
     return (inspection_nav,)
 
 
+# workshop-cell: visual_inspection/display/4
 @app.cell(hide_code=True)
 def _(get_step, mo, ui):
     mo.stop(get_step() != "setup")
@@ -177,6 +181,7 @@ def _(get_step, mo, ui):
     return
 
 
+# workshop-cell: visual_inspection/controls/connect_inspection
 @app.cell(hide_code=True)
 def _(get_step, mo, setup):
     mo.stop(get_step() != "setup")
@@ -188,6 +193,7 @@ def _(get_step, mo, setup):
     return (connect_inspection, inspection_allowance, inspection_project,)
 
 
+# workshop-cell: visual_inspection/action/connect_inspection
 @app.cell(hide_code=True)
 def _(WorkshopSession, connect_inspection, feedback, inspection_allowance, inspection_project, mo, set_lab, set_step, setup):
     mo.stop(not connect_inspection.value)
@@ -204,6 +210,7 @@ def _(WorkshopSession, connect_inspection, feedback, inspection_allowance, inspe
     return
 
 
+# workshop-cell: visual_inspection/definitions/instrument_inspection_tool
 @app.cell
 def _():
     def instrument_inspection_tool(observation):
@@ -220,6 +227,7 @@ def _():
     return (instrument_inspection_tool,)
 
 
+# workshop-cell: visual_inspection/controls/first_inspection_trace
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, go_to, mo, ui):
     continue_inspection_data = ui.next_step(mo, "Next: inspect the boards", "data", go_to)
@@ -229,6 +237,7 @@ def _(get_feedback, get_lab, get_step, go_to, mo, ui):
     return (continue_inspection_data, first_inspection_trace,)
 
 
+# workshop-cell: visual_inspection/action/first_inspection_trace
 @app.cell(hide_code=True)
 def _(event, export_trace, feedback, first_inspection_trace, get_lab, instrument_inspection_tool, mo, np, refresh_inspection):
     mo.stop(not first_inspection_trace.value)
@@ -247,6 +256,7 @@ def _(event, export_trace, feedback, first_inspection_trace, get_lab, instrument
     return
 
 
+# workshop-cell: visual_inspection/display/10
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() != "setup")
@@ -255,6 +265,7 @@ def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     return
 
 
+# workshop-cell: visual_inspection/controls/load_inspection
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo, ui):
     mo.stop(get_step() != "data")
@@ -263,6 +274,7 @@ def _(get_lab, get_step, mo, ui):
     return (load_inspection,)
 
 
+# workshop-cell: visual_inspection/action/load_inspection
 @app.cell(hide_code=True)
 def _(get_lab, inspection, load_inspection, mo, set_lab, teaching):
     mo.stop(not load_inspection.value)
@@ -273,6 +285,7 @@ def _(get_lab, inspection, load_inspection, mo, set_lab, teaching):
     return
 
 
+# workshop-cell: visual_inspection/definitions/continue_inspection_features
 @app.cell(hide_code=True)
 def _(get_lab, get_step, go_to, mo, ui):
     continue_inspection_features = ui.next_step(mo, "Next: add patch features", "features", go_to)
@@ -285,6 +298,7 @@ def _(get_lab, get_step, go_to, mo, ui):
     return (board_choice, continue_inspection_features, show_board_label,)
 
 
+# workshop-cell: visual_inspection/display/14
 @app.cell(hide_code=True)
 def _(board_choice, get_lab, get_step, inspection, mo, show_board_label):
     mo.stop(get_step() != "data" or not get_lab().get("data"))
@@ -292,6 +306,7 @@ def _(board_choice, get_lab, get_step, inspection, mo, show_board_label):
     return
 
 
+# workshop-cell: visual_inspection/controls/check_inspection_features
 @app.cell(hide_code=True)
 def _(get_lab, get_step, go_to, mo, teaching, ui):
     continue_inspection_compare = ui.next_step(mo, "Next: train and compare", "compare", go_to)
@@ -302,6 +317,7 @@ def _(get_lab, get_step, go_to, mo, teaching, ui):
     return (check_inspection_features, continue_inspection_compare, feature_editor,)
 
 
+# workshop-cell: visual_inspection/definitions/build_features
 @app.cell
 def _(feature_editor, teaching):
     def build_features(data, rows, method, reference=None):
@@ -309,6 +325,7 @@ def _(feature_editor, teaching):
     return (build_features,)
 
 
+# workshop-cell: visual_inspection/action/check_inspection_features
 @app.cell(hide_code=True)
 def _(check_inspection_features, feature_editor, feedback, get_lab, mo, refresh_inspection, teaching):
     mo.stop(not check_inspection_features.value)
@@ -322,6 +339,7 @@ def _(check_inspection_features, feature_editor, feedback, get_lab, mo, refresh_
     return
 
 
+# workshop-cell: visual_inspection/display/18
 @app.cell(hide_code=True)
 def _(get_feedback, get_step, mo, ui):
     mo.stop(get_step() != "features")
@@ -329,6 +347,7 @@ def _(get_feedback, get_step, mo, ui):
     return
 
 
+# workshop-cell: visual_inspection/controls/check_inspection_threshold
 @app.cell(hide_code=True)
 def _(get_lab, get_step, go_to, mo, teaching, ui):
     continue_inspection_review = ui.next_step(mo, "Next: choose a review batch", "review", go_to)
@@ -340,6 +359,7 @@ def _(get_lab, get_step, go_to, mo, teaching, ui):
     return (check_inspection_threshold, continue_inspection_review, threshold_editor, train_inspection,)
 
 
+# workshop-cell: visual_inspection/definitions/choose_threshold
 @app.cell
 def _(teaching, threshold_editor):
     def choose_threshold(target, scores, recall=.90):
@@ -347,6 +367,7 @@ def _(teaching, threshold_editor):
     return (choose_threshold,)
 
 
+# workshop-cell: visual_inspection/action/check_inspection_threshold
 @app.cell(hide_code=True)
 def _(check_inspection_threshold, feedback, mo, refresh_inspection, teaching, threshold_editor):
     mo.stop(not check_inspection_threshold.value)
@@ -358,6 +379,7 @@ def _(check_inspection_threshold, feedback, mo, refresh_inspection, teaching, th
     return
 
 
+# workshop-cell: visual_inspection/action/train_inspection
 @app.cell
 def _(build_features, choose_threshold, event, export_trace, feature_editor, feedback, get_lab, inspection, instrument_inspection_tool, mo, refresh_inspection, teaching, threshold_editor, train_inspection):
     mo.stop(not train_inspection.value)
@@ -388,6 +410,7 @@ def _(build_features, choose_threshold, event, export_trace, feature_editor, fee
     return
 
 
+# workshop-cell: visual_inspection/display/23
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() != "compare")
@@ -402,6 +425,7 @@ def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     return
 
 
+# workshop-cell: visual_inspection/controls/check_inspection_review
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo, teaching):
     _s = get_lab().get("session")
@@ -412,6 +436,7 @@ def _(get_lab, get_step, mo, teaching):
     return (check_inspection_review, review_editor, select_inspection_review,)
 
 
+# workshop-cell: visual_inspection/action/check_inspection_review
 @app.cell(hide_code=True)
 def _(check_inspection_review, feedback, mo, refresh_inspection, review_editor, teaching):
     mo.stop(not check_inspection_review.value)
@@ -423,6 +448,7 @@ def _(check_inspection_review, feedback, mo, refresh_inspection, review_editor, 
     return
 
 
+# workshop-cell: visual_inspection/action/select_inspection_review
 @app.cell(hide_code=True)
 def _(feature_editor, feedback, get_lab, inspection, mo, refresh_inspection, review_editor, select_inspection_review, teaching):
     mo.stop(not select_inspection_review.value)
@@ -447,6 +473,7 @@ def _(feature_editor, feedback, get_lab, inspection, mo, refresh_inspection, rev
     return
 
 
+# workshop-cell: visual_inspection/controls/save_inspection_review
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, go_to, mo, teaching, ui):
     continue_inspection_freeze = ui.next_step(mo, "Next: freeze a detector", "freeze", go_to)
@@ -463,6 +490,7 @@ def _(get_feedback, get_lab, get_step, go_to, mo, teaching, ui):
     return (continue_inspection_freeze, reveal_review, review_board, review_guess, save_inspection_review, train_reviewed,)
 
 
+# workshop-cell: visual_inspection/display/28
 @app.cell(hide_code=True)
 def _(get_lab, get_step, inspection, mo, reveal_review, review_board, teaching):
     mo.stop(get_step() != "review" or review_board.value is None or not get_lab().get("data"))
@@ -470,6 +498,7 @@ def _(get_lab, get_step, inspection, mo, reveal_review, review_board, teaching):
     return
 
 
+# workshop-cell: visual_inspection/action/save_inspection_review
 @app.cell(hide_code=True)
 def _(feedback, get_lab, mo, refresh_inspection, reveal_review, review_board, review_guess, save_inspection_review, save_review):
     mo.stop(not save_inspection_review.value)
@@ -484,6 +513,7 @@ def _(feedback, get_lab, mo, refresh_inspection, reveal_review, review_board, re
     return
 
 
+# workshop-cell: visual_inspection/action/train_reviewed
 @app.cell
 def _(build_features, choose_threshold, event, export_trace, feature_editor, feedback, get_lab, inspection, instrument_inspection_tool, mo, np, refresh_inspection, review_editor, teaching, threshold_editor, train_reviewed):
     mo.stop(not train_reviewed.value)
@@ -518,6 +548,7 @@ def _(build_features, choose_threshold, event, export_trace, feature_editor, fee
     return
 
 
+# workshop-cell: visual_inspection/display/31
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() != "review")
@@ -526,6 +557,7 @@ def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     return
 
 
+# workshop-cell: visual_inspection/controls/freeze_inspection
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, go_to, mo, teaching, ui):
     continue_inspection_evaluate = ui.next_step(mo, "Next: test the frozen versions", "evaluate", go_to)
@@ -544,6 +576,7 @@ def _(get_feedback, get_lab, get_step, go_to, mo, teaching, ui):
     return (continue_inspection_evaluate, freeze_choice, freeze_inspection, freeze_reason,)
 
 
+# workshop-cell: visual_inspection/action/freeze_inspection
 @app.cell(hide_code=True)
 def _(feedback, freeze_choice, freeze_inspection, freeze_reason, get_lab, mo, refresh_inspection, teaching):
     mo.stop(not freeze_inspection.value)
@@ -568,6 +601,7 @@ def _(feedback, freeze_choice, freeze_inspection, freeze_reason, get_lab, mo, re
     return
 
 
+# workshop-cell: visual_inspection/controls/run_inspection_final
 @app.cell(hide_code=True)
 def _(get_lab, get_step, go_to, mo, teaching, ui):
     continue_inspection_reproduce = ui.next_step(mo, "Next: reproduce and write the conclusion", "reproduce", go_to)
@@ -579,6 +613,7 @@ def _(get_lab, get_step, go_to, mo, teaching, ui):
     return (continue_inspection_reproduce, retry_inspection_publication, run_inspection_final,)
 
 
+# workshop-cell: visual_inspection/action/run_inspection_final
 @app.cell
 def _(feedback, get_lab, inspection, mo, refresh_inspection, run_inspection_final, teaching):
     mo.stop(not run_inspection_final.value)
@@ -605,6 +640,7 @@ def _(feedback, get_lab, inspection, mo, refresh_inspection, run_inspection_fina
     return
 
 
+# workshop-cell: visual_inspection/action/retry_inspection_publication
 @app.cell(hide_code=True)
 def _(feedback, get_lab, mo, publish_comparison, refresh_inspection, retry_inspection_publication, teaching):
     mo.stop(not retry_inspection_publication.value)
@@ -619,6 +655,7 @@ def _(feedback, get_lab, mo, publish_comparison, refresh_inspection, retry_inspe
     return
 
 
+# workshop-cell: visual_inspection/definitions/final_board
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() != "evaluate")
@@ -631,6 +668,7 @@ def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     return (final_board,)
 
 
+# workshop-cell: visual_inspection/display/38
 @app.cell(hide_code=True)
 def _(final_board, get_lab, get_step, inspection, mo, teaching):
     mo.stop(get_step() != "evaluate" or final_board.value is None or not get_lab().get("data"))
@@ -642,6 +680,7 @@ def _(final_board, get_lab, get_step, inspection, mo, teaching):
     return
 
 
+# workshop-cell: visual_inspection/controls/reproduce_inspection
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo, teaching):
     mo.stop(get_step() != "reproduce")
@@ -653,6 +692,7 @@ def _(get_lab, get_step, mo, teaching):
     return (inspection_conclusion, report_inspection, reproduce_inspection,)
 
 
+# workshop-cell: visual_inspection/action/reproduce_inspection
 @app.cell
 def _(feedback, get_lab, inspection, mo, np, refresh_inspection, reproduce_inspection, teaching):
     mo.stop(not reproduce_inspection.value)
@@ -672,6 +712,7 @@ def _(feedback, get_lab, inspection, mo, np, refresh_inspection, reproduce_inspe
     return
 
 
+# workshop-cell: visual_inspection/action/report_inspection
 @app.cell(hide_code=True)
 def _(feedback, get_lab, inspection_conclusion, mo, publish_report, refresh_inspection, report_inspection, teaching, ui):
     mo.stop(not report_inspection.value)
@@ -692,6 +733,7 @@ def _(feedback, get_lab, inspection_conclusion, mo, publish_report, refresh_insp
     return
 
 
+# workshop-cell: visual_inspection/display/42
 @app.cell(hide_code=True)
 def _(get_feedback, get_step, mo, ui):
     mo.stop(get_step() != "reproduce")
@@ -699,6 +741,7 @@ def _(get_feedback, get_step, mo, ui):
     return
 
 
+# workshop-cell: visual_inspection/controls/recompute_encoder
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo):
     mo.stop(get_step() != "features")
@@ -707,6 +750,7 @@ def _(get_lab, get_step, mo):
     return (recompute_encoder,)
 
 
+# workshop-cell: visual_inspection/action/recompute_encoder
 @app.cell(hide_code=True)
 def _(Path, event, export_trace, feedback, get_lab, instrument_inspection_tool, mo, recompute_encoder, refresh_inspection, teaching):
     mo.stop(not recompute_encoder.value)
@@ -725,6 +769,7 @@ def _(Path, event, export_trace, feedback, get_lab, instrument_inspection_tool, 
     return
 
 
+# workshop-cell: visual_inspection/display/45
 @app.cell(hide_code=True)
 def _(get_feedback, get_step, mo, ui):
     mo.stop(get_step() != "features")
@@ -732,6 +777,7 @@ def _(get_feedback, get_step, mo, ui):
     return
 
 
+# workshop-cell: visual_inspection/controls/send_inspection_help
 @app.cell(hide_code=True)
 def _(get_lab, mo):
     _s = get_lab().get("session")
@@ -741,6 +787,7 @@ def _(get_lab, mo):
     return (inspection_help, send_inspection_help,)
 
 
+# workshop-cell: visual_inspection/action/send_inspection_help
 @app.cell(hide_code=True)
 def _(get_lab, inspection_help, mo, refresh_inspection, send_inspection_help):
     mo.stop(not send_inspection_help.value)
@@ -750,6 +797,7 @@ def _(get_lab, inspection_help, mo, refresh_inspection, send_inspection_help):
     return
 
 
+# workshop-cell: visual_inspection/controls/allow_inspection_retry
 @app.cell(hide_code=True)
 def _(get_lab, mo):
     _s = get_lab().get("session")
@@ -762,6 +810,7 @@ def _(get_lab, mo):
     return (allow_inspection_retry, inspection_confirm_stopped, inspection_recovery,)
 
 
+# workshop-cell: visual_inspection/action/allow_inspection_retry
 @app.cell(hide_code=True)
 def _(allow_inspection_retry, feedback, get_lab, inspection_confirm_stopped, inspection_recovery, mo, refresh_inspection):
     mo.stop(not allow_inspection_retry.value)

@@ -4,9 +4,10 @@ import textwrap
 
 
 class Cell:
-    def __init__(self, code, hide=True):
+    def __init__(self, code, hide=True, cell_id=None):
         self.code = textwrap.dedent(code).strip()
         self.hide = hide
+        self.cell_id = cell_id
 
 
 def _top_defs(body):
@@ -76,5 +77,6 @@ def render(cells):
         returns = "return (" + ", ".join(sorted(names)) + ",)" if names else "return"
         decorator = "@app.cell(hide_code=True)" if cell.hide else "@app.cell"
         body = textwrap.indent(cell.code + "\n" + returns, "    ")
-        out.append(f"\n\n{decorator}\ndef _({', '.join(args)}):\n{body}\n")
+        identity = f"# workshop-cell: {cell.cell_id}\n" if cell.cell_id else ""
+        out.append(f"\n\n{identity}{decorator}\ndef _({', '.join(args)}):\n{body}\n")
     return "".join(out)

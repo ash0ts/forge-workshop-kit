@@ -71,7 +71,7 @@ add('''
 _s = get_lab().get("session")
 _revision = get_recovery_revision()
 _view = get_step()
-solar_recovery_refresh = mo.ui.button(label="Check for stopped or failed work", on_click=lambda _: set_recovery_revision(get_recovery_revision() + 1), disabled=not bool(_s))
+solar_recovery_refresh = mo.ui.button(label="Check for stopped or failed work", on_click=lambda _: set_recovery_revision(lambda previous: previous + 1), disabled=not bool(_s))
 _options = _s.recovery_options() if _s else []
 _choices = {setup.recovery_label(_s.workshop, row) + " · " + row["id"][:6]: row["id"] for row in _options}
 solar_recovery_choice = mo.ui.dropdown(_choices, value=next(iter(_choices), None), label="Execution to review", full_width=True) if _choices else mo.ui.dropdown({"No failed executions": ""}, value="No failed executions", disabled=True)
@@ -95,7 +95,7 @@ except Exception as _error:
     _message = str(_error)
 set_feedback(lambda current: {**current, "recovery": _message})
 refresh_saved()
-set_recovery_revision(get_recovery_revision() + 1)
+set_recovery_revision(lambda previous: previous + 1)
 ''', True)
 add('''
 _message = get_feedback().get("recovery")

@@ -648,3 +648,44 @@ def test_comparison_rejects_version_specific_inputs_before_publication(tmp_path)
             'a': [{'case_id': 'one', 'input': {'prompt': 'same', 'version': 'a'}}],
             'b': [{'case_id': 'one', 'input': {'prompt': 'same', 'version': 'b'}}]})
     assert workspace.publisher is None
+
+
+def test_adding_comparison_version_reuses_published_siblings(tmp_path, monkeypatch):
+    workspace = session(tmp_path)
+    calls = mock_destinations(monkeypatch, workspace)
+    native = []
+    monkeypatch.setattr(publication, 'native_table', lambda *a, **kw: native.append(1) or NATIVE_RECEIPT)
+    first = publication.publish_comparison(workspace, 'release-drill', VERSIONS)
+    extended = {**VERSIONS, 'rollback': VERSIONS['model']}
+    second = publication.publish_comparison(workspace, 'release-drill', extended)
+    assert calls['comparison'] == calls['evaluate'] == calls['dataset'] == calls['evaluation'] == 2
+    assert len(native) == 2
+    assert first['model']['run_id'] == second['model']['run_id']
+    publication.publish_comparison(workspace, 'release-drill', extended)
+    assert calls['evaluate'] == 2 and len(native) == 2
+
+
+def test_new_version_retries_only_unavailable_sibling_service(tmp_path, monkeypatch):
+    workspace = session(tmp_path)
+    calls = mock_destinations(monkeypatch, workspace)
+    attempts = []
+    def native(*args, **kwargs):
+        attempts.append(1)
+        if len(attempts) == 1:
+            raise RuntimeError('Native upload unavailable')
+        return NATIVE_RECEIPT
+    monkeypatch.setattr(publication, 'native_table', native)
+    publication.publish_comparison(workspace, 'release-drill', VERSIONS)
+    publication.publish_comparison(workspace, 'release-drill', {**VERSIONS, 'rollback': VERSIONS['model']})
+    assert calls['evaluate'] == calls['comparison'] == 2
+    assert len(attempts) == 3
+
+
+def test_changed_summary_does_not_repeat_prediction_evaluation(tmp_path, monkeypatch):
+    workspace = session(tmp_path)
+    calls = mock_destinations(monkeypatch, workspace)
+    monkeypatch.setattr(publication, 'native_table', lambda *a, **kw: NATIVE_RECEIPT)
+    publication.publish_comparison(workspace, 'release-drill', VERSIONS, summaries={'model': {'accuracy': .5}})
+    publication.publish_comparison(workspace, 'release-drill', VERSIONS, summaries={'model': {'accuracy': .6}})
+    assert calls['comparison'] == 2
+    assert calls['evaluate'] == calls['dataset'] == calls['evaluation'] == 1

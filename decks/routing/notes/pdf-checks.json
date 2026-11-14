@@ -1,6 +1,6 @@
 {
-  "pages": 55,
-  "slides": 52,
+  "pages": 73,
+  "slides": 70,
   "page_map": [
     {
       "page": 0,
@@ -276,11 +276,101 @@
       "page": 54,
       "slide": 52,
       "click": 0
+    },
+    {
+      "page": 55,
+      "slide": 53,
+      "click": 0
+    },
+    {
+      "page": 56,
+      "slide": 54,
+      "click": 0
+    },
+    {
+      "page": 57,
+      "slide": 55,
+      "click": 0
+    },
+    {
+      "page": 58,
+      "slide": 56,
+      "click": 0
+    },
+    {
+      "page": 59,
+      "slide": 57,
+      "click": 0
+    },
+    {
+      "page": 60,
+      "slide": 58,
+      "click": 0
+    },
+    {
+      "page": 61,
+      "slide": 59,
+      "click": 0
+    },
+    {
+      "page": 62,
+      "slide": 60,
+      "click": 0
+    },
+    {
+      "page": 63,
+      "slide": 61,
+      "click": 0
+    },
+    {
+      "page": 64,
+      "slide": 62,
+      "click": 0
+    },
+    {
+      "page": 65,
+      "slide": 63,
+      "click": 0
+    },
+    {
+      "page": 66,
+      "slide": 64,
+      "click": 0
+    },
+    {
+      "page": 67,
+      "slide": 65,
+      "click": 0
+    },
+    {
+      "page": 68,
+      "slide": 66,
+      "click": 0
+    },
+    {
+      "page": 69,
+      "slide": 67,
+      "click": 0
+    },
+    {
+      "page": 70,
+      "slide": 68,
+      "click": 0
+    },
+    {
+      "page": 71,
+      "slide": 69,
+      "click": 0
+    },
+    {
+      "page": 72,
+      "slide": 70,
+      "click": 0
     }
   ],
   "empty_pages": 0,
   "all_pages_rendered": true,
-  "converted_links": 6,
-  "source_sha256": "55335aa5256db3ef6d89e8b9d2b2f6dfd7200c534727fb90e361892b78087c7f",
-  "pdf_sha256": "9ce82f1ff35dc2176fb42a7ee842ab58af0c5577c1ae0edd59d6509c0b968547"
+  "converted_links": 8,
+  "source_sha256": "cbab6b77bd6dd97bc6ece76e0aeb26e488b5d5113a8c97f60f6855c5f0862be8",
+  "pdf_sha256": "45a7ccb960faebc807a8e2aa2a92a6988e8218182bf30940b8a87947d13e43bb"
 }

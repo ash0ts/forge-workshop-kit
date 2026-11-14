@@ -1,7 +1,7 @@
 """Authored request-routing workshop. Keep training and evaluation calls visible."""
 from notebook_builder import Cell
 cells=[]
-def add(code,hide=False): cells.append(Cell(code,hide=hide))
+def add(code,hide=False,cell_id=None): cells.append(Cell(code,hide=hide,cell_id=cell_id))
 
 add('''
 import json
@@ -10,6 +10,7 @@ from pathlib import Path
 import joblib
 import marimo as mo
 from forge_workshop_kit import WorkshopSession, setup, ui, routing, routing_teaching as teaching
+from forge_workshop_kit import routing_release as release_lab
 from forge_workshop_kit.review import save_review, reviewed_dataset
 from forge_workshop_kit.provider import validated_json, Provider
 from forge_workshop_kit.session import digest
@@ -26,13 +27,13 @@ def go_to(step):
     if session: session.set_view(step)
     set_step(step)
 def refresh():
-    set_revision(get_revision()+1)
+    set_revision(lambda previous: previous+1)
 def show_result(name,result):
     set_output(lambda old:{**old,name:result})
 def trace_saved(stage):
     session=get_context()["session"]
     try:
-        receipt=export_trace(session, **saved_trace_inputs(session,stage.id), tool_writer=instrument_tool)
+        receipt=export_trace(session, **saved_trace_inputs(session,stage["id"] if isinstance(stage,dict) else stage.id), tool_writer=instrument_tool)
         return {"status":"published","url":receipt["url"]}
     except Exception as error:
         return {"status":"publication pending","error":str(error),"next":"Retry saved publications; do not rerun training."}
@@ -69,6 +70,12 @@ def publish_routing_results(session, *, include_judge=True, include_final=True):
                 status["final"]=publish_comparison(session,"banking-routing-final",{label:teaching.publication_rows(rows) for label,rows in versions.items()},summaries={label:routing.score(rows) for label,rows in versions.items()})
             except Exception as error:
                 status["final"]={"status":"publication pending","error":str(error)}
+    records=release_lab.comparisons(session)
+    if records:
+        try:
+            versions={label:release_lab.comparison_rows(session,record) for label,record in records.items()}
+            status["release"]=publish_comparison(session,"banking-routing-release-drill",versions,summaries={label:record["result"]["metrics"] for label,record in records.items()})
+        except Exception as error:status["release"]={"status":"publication pending","error":str(error)}
     return status
 
 def load_fitted(record):
@@ -88,7 +95,7 @@ add('''
 _s = get_context().get("session")
 _revision = get_revision()
 _view = get_step()
-routing_recovery_refresh = mo.ui.button(label="Check for stopped or failed work", on_click=lambda _: set_revision(get_revision() + 1), disabled=not bool(_s))
+routing_recovery_refresh = mo.ui.button(label="Check for stopped or failed work", on_click=lambda _: set_revision(lambda previous: previous + 1), disabled=not bool(_s))
 _options = _s.recovery_options() if _s else []
 _choices = {setup.recovery_label(_s.workshop, row) + " · " + row["id"][:6]: row["id"] for row in _options}
 routing_recovery_choice = mo.ui.dropdown(_choices, value=next(iter(_choices), None), label="Execution to review", full_width=True) if _choices else mo.ui.dropdown({"No failed executions": ""}, value="No failed executions", disabled=True)
@@ -129,7 +136,7 @@ mo.md("Help request saved. Send an empty message when it is resolved.")
 ''', True)
 add('''
 mo.stop(get_step()!="setup")
-mo.vstack([mo.md("**4-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/routing/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Route customer requests and learn from mistakes", "You're joining a fictional bank's support team. A missing card, a broken card, and an unfamiliar payment need different workflows. You'll build a router, inspect its mistakes, review labels, and test a revised classifier.", theme="routing")),mo.md("The messages come from **Banking77**, published by PolyAI's researchers. It contains 10,003 training messages and 3,080 test messages across 77 banking intents. We reserve ten training examples per intent for validation and ten for review. The official test set stays untouched until the final comparison. These are public teaching data, not your customers' records."),mo.md("We'll start with word counts weighted by how distinctive they are, then train the same classifier on frozen sentence embeddings. After that, you decide which uncertain requests need a person. The support queue is fictional. Its enthusiasm for automatically forwarding tickets is familiar."),mo.md("**Today's output:** a selected router, the reviewed examples it learned from, an evaluation on matching requests, and a trace explaining one routing or labeling decision.")])
+mo.vstack([mo.md("**5½-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/routing/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Route customer requests and learn from mistakes", "You're joining a fictional bank's support team. A missing card, a broken card, and an unfamiliar payment need different workflows. You'll build a router, inspect its mistakes, review labels, and test a revised classifier.", theme="routing")),mo.md("The messages come from **Banking77**, published by PolyAI's researchers. It contains 10,003 training messages and 3,080 test messages across 77 banking intents. We reserve ten training examples per intent for validation and ten for review. The official test set stays untouched until the final comparison. These are public teaching data, not your customers' records."),mo.md("We'll start with word counts weighted by how distinctive they are, then train the same classifier on frozen sentence embeddings. After that, you decide which uncertain requests need a person. The support queue is fictional. Its enthusiasm for automatically forwarding tickets is familiar."),mo.md("**Today's output:** a selected router, the reviewed examples it learned from, an evaluation on matching requests, and a trace explaining one routing or labeling decision.")])
 ''',True)
 add('''
 _context=setup.project_context()
@@ -486,6 +493,144 @@ mo.vstack([mo.Html(ui.result("This customer request",{"Request":_comparison[0]["
 add('''
 _s=get_context().get("session")
 _revision=get_revision()
+_release_records={name:teaching.saved(_s,"routing/release/"+name) for name in ("prepare","reproduce","incident","repair","decision","rollback")} if _s else {}
+_release_ready=bool(_s and teaching.saved(_s,"routing/final/selected"))
+_phase=next((name for name in ("prepare","reproduce","incident","repair","decision","rollback") if not _release_records.get(name)),"complete")
+if _release_records.get("decision") and _release_records["decision"]["result"]["release"]["decision"]=="reject":_phase="complete"
+release_prepare=mo.ui.run_button(label="Prepare the selected router for release",disabled=not _release_ready)
+release_reload=mo.ui.run_button(label="Publish and reload the exact release artifact",disabled=not bool(_release_records.get("prepare")))
+release_incident=mo.ui.run_button(label="Run the deliberately faulty release",disabled=not bool(_release_records.get("reproduce")))
+release_check=mo.ui.run_button(label="Check my release and repair code")
+release_repair=mo.ui.run_button(label="Run my repaired loader on the same requests",disabled=not bool(_release_records.get("incident")))
+release_loader_editor=mo.ui.code_editor(value=_s.get_draft("routing/release-loader",release_lab.LOADER_STARTER) if _s else release_lab.LOADER_STARTER,language="python",on_change=lambda value:_s.save_draft("routing/release-loader",value) if _s else None,debounce=False)
+release_check_editor=mo.ui.code_editor(value=_s.get_draft("routing/release-check",release_lab.CHECK_STARTER) if _s else release_lab.CHECK_STARTER,language="python",on_change=lambda value:_s.save_draft("routing/release-check",value) if _s else None,debounce=False)
+release_choice=mo.ui.radio({"Release the tested repair":"release","Reject the repair and keep the previous release":"reject"},value="Release the tested repair",label="Release decision")
+release_reason=mo.ui.text_area(value=_s.get_draft("routing/release-reason","") if _s else "",label="Which checks support this decision?",full_width=True,on_change=lambda value:_s.save_draft("routing/release-reason",value) if _s else None)
+release_decide=mo.ui.run_button(label="Save my release decision",disabled=not bool(_release_records.get("repair")))
+release_rollback=mo.ui.run_button(label="Restore the previous release and verify its predictions",disabled=not bool(_release_records.get("decision")))
+release_retry=mo.ui.run_button(label="Retry release publication only",disabled=not bool(_release_records.get("prepare")))
+_phase_ui={
+    "prepare":mo.vstack([mo.md("**1. Package the selected router.** Save its classifier, preprocessing identity, label order, review policy, and source. Freeze one review-pool request per intent before computing any release predictions."),release_prepare]),
+    "reproduce":mo.vstack([mo.md("**2. Reload the published version.** Upload the saved package, download its exact `:vN` version, and predict the fixed request batch. This uses cached features and CPU classifier inference. It makes no model API calls."),release_reload]),
+    "incident":mo.vstack([mo.md("**3. Run a controlled incident.** The faulty loader rotates the intent names while leaving the probabilities unchanged. This defect is deliberately introduced for the drill. Open its Agent Lens tool result and compare one destination with the healthy version."),mo.md("```python\\n"+release_lab.FAULTY_LOADER+"\\n```"),release_incident]),
+    "repair":mo.vstack([mo.md("**4. Write the check and repair.** Compare one request below and save your reviewed regression case. Complete `check_release` so names in the wrong order fail. Complete `label_names` to preserve the classifier's probability-column order. Your functions are saved in the actual repaired package and used by the batch below."),release_check_editor,release_loader_editor,release_check,release_repair,mo.accordion({"Hint":mo.md("Compare sets to check membership, and lists to check order. Do not sort the model's class list."),"Worked answer":mo.md("```python\\n"+release_lab.CHECK_SOLUTION+"\\n"+release_lab.LOADER_SOLUTION+"\\n```")})]),
+    "decision":mo.vstack([mo.md("**5. Decide whether to release.** Read the checks and matching requests below. The repair should reproduce the healthy classifier, including its remaining mistakes. Saving this decision uploads the saved repaired package; it does not run it again."),release_choice,release_reason,release_decide]),
+    "rollback":mo.vstack([mo.md("**6. Practice rollback.** Download the previous exact artifact and compare its outputs with the healthy batch. A saved pointer alone is not a verified rollback."),release_rollback]),
+    "complete":mo.md("**Release drill saved.** Explain the defect, your repair, and the rollback result in the conclusion. The official test comparison above is unchanged.")}
+mo.vstack([mo.Html(ui.heading("The classifier passed. The release did not.","Your support team has selected a router. Now check that the released files preserve the same decisions. This is a controlled release drill, not a new claim about model quality.",theme="routing")),mo.md("**Regression set:** one lexical-first review-pool request per intent. Some may have been used for review or retraining. These are reproduction checks, not independent test results."),_phase_ui[_phase] if _release_ready else mo.callout(mo.md("Complete the final classifier comparison first. [Go to the final comparison](#final)."),kind="warn"),mo.accordion({"Publication failed?":mo.vstack([mo.md("Saved executions remain available. Retry uploads here, then use the current step's button. Completed batches are reused."),release_retry]),"Optional Registry and ARIA":mo.md("The required release is this notebook's batch predictor. If you have Registry access, link the exact artifact version after the checks pass. Registry does not deploy it. Where ARIA is enabled, ask it to investigate the saved incident; verify its cited request before accepting a suggestion.")})]) if get_step()=="release" else mo.md("")
+''',True,cell_id="routing.release.controls")
+add('''
+mo.stop(not release_prepare.value)
+_s=get_context()["session"]
+_record=release_lab.prepare(_s,get_data())
+show_result("release package",{"Cases":_record["result"]["case_count"],"Files":list(_record["result"]["metadata"]["files"]),"Next":"Publish and reload the exact release artifact."})
+_s.checkpoint("release")
+refresh()
+''',True,cell_id="routing.release.prepare")
+add('''
+mo.stop(not release_reload.value)
+_s=get_context()["session"]
+_record=release_lab.reproduce_selected(_s,get_data())
+show_result("reloaded release",{"Artifact":_record["result"]["artifact"],**_record["result"]["metrics"]})
+show_result("release trace",trace_saved(_record))
+_s.checkpoint("release")
+refresh()
+''',True,cell_id="routing.release.reproduce")
+add('''
+mo.stop(not release_incident.value)
+_s=get_context()["session"]
+_record=release_lab.run_variant(_s,get_data(),variant="incident")
+show_result("controlled release incident",{"Checks":_record["result"]["checks"],"Meaning":"The names still match, but their order does not. Confidence alone does not reveal this defect."})
+show_result("incident trace",trace_saved(_record))
+_s.checkpoint("release")
+refresh()
+''',True,cell_id="routing.release.incident")
+add('''
+mo.stop(not release_check.value)
+try:show_result("release code check",release_lab.check_exercises(release_loader_editor.value,release_check_editor.value))
+except Exception as _error:show_result("release code check",{"status":"needs work","message":str(_error)})
+''',True,cell_id="routing.release.check")
+add('''
+mo.stop(not release_repair.value)
+_s=get_context()["session"]
+_record=release_lab.run_variant(_s,get_data(),variant="repair",loader_source=release_loader_editor.value,check_source=release_check_editor.value)
+show_result("repair checks",_record["result"]["checks"])
+show_result("repair trace",trace_saved(_record))
+_s.checkpoint("release")
+show_result("release comparison",publish_routing_results(_s,include_judge=False,include_final=False))
+refresh()
+''',True,cell_id="routing.release.repair")
+add('''
+mo.stop(not release_decide.value)
+_s=get_context()["session"]
+_record=release_lab.decide(_s,decision=release_choice.value,reason=release_reason.value)
+show_result("release decision",_record)
+_s.checkpoint("release")
+refresh()
+''',True,cell_id="routing.release.decision")
+add('''
+mo.stop(not release_rollback.value)
+_s=get_context()["session"]
+_record=release_lab.rollback(_s,get_data())
+show_result("rollback",_record["result"]["release"])
+show_result("rollback trace",trace_saved(_record))
+_s.checkpoint("release")
+show_result("release comparison",publish_routing_results(_s,include_judge=False,include_final=False))
+refresh()
+''',True,cell_id="routing.release.rollback")
+add('''
+mo.stop(not release_retry.value)
+_s=get_context()["session"]
+_status={}
+for _name in ("prepare","incident","repair"):
+    _record=teaching.saved(_s,"routing/release/"+_name)
+    if _record:
+        try:_status[_name]=release_lab.publish_bundle(_s,_record)
+        except Exception as _error:_status[_name]={"status":"publication pending","error":str(_error)}
+for _record in release_lab.comparisons(_s).values():
+    _status["trace/"+_record["id"]]=trace_saved(_record)
+show_result("release artifact publication",_status)
+show_result("release comparison",publish_routing_results(_s,include_judge=False,include_final=False))
+refresh()
+''',True,cell_id="routing.release.retry")
+add('''
+_s=get_context().get("session")
+_revision=get_revision()
+_release_versions=release_lab.comparisons(_s) if _s else {}
+_release_rows={label:record["result"]["predictions"] for label,record in _release_versions.items()}
+_release_cases=list(_release_rows.values())[0] if _release_rows else []
+release_case=mo.ui.dropdown({r["text"]:r["case_id"] for r in _release_cases},value=_release_cases[0]["text"] if _release_cases else None,label="Follow one request across releases",full_width=True)
+mo.vstack([mo.ui.table(teaching.metrics_table(_release_rows),selection=None),release_case]) if get_step()=="release" and _release_rows else mo.md("")
+''',True,cell_id="routing.release.compare")
+add('''
+mo.stop(get_step()!="release" or not release_case.value)
+_s=get_context()["session"]
+_versions=release_lab.comparisons(_s)
+_rows=[{"Version":label,"Destination":row["prediction"],"Reference":row["target"],"Confidence":round(row["confidence"],3),"Needs review":row["abstained"]} for label,record in _versions.items() for row in record["result"]["predictions"] if row["case_id"]==release_case.value]
+_faulty=next((row for row in _versions.get("faulty",{}).get("result",{}).get("predictions",[]) if row["case_id"]==release_case.value),None)
+release_accept_label=mo.ui.dropdown({name:name for name in sorted({r["target"] for r in _versions["healthy"]["result"]["predictions"]})},label="Your reviewed intent",full_width=True)
+release_review_reason=mo.ui.text_area(value=_s.get_draft("routing/release-review-reason","") if _s else "",label="Why should this request go to that workflow?",full_width=True,on_change=lambda value:_s.save_draft("routing/release-review-reason",value))
+release_save_case=mo.ui.run_button(label="Save this reviewed regression case",disabled=not bool(_faulty))
+mo.vstack([mo.ui.table(_rows,selection=None),mo.md("Choose the intended support workflow after reading the request. Saving this case records your review; it does not retrain the frozen classifier."),release_accept_label,release_review_reason,release_save_case])
+''',True,cell_id="routing.release.review.controls")
+add('''
+mo.stop(not release_save_case.value)
+if not release_accept_label.value:raise ValueError("Choose an intent after reviewing the request.")
+if not release_review_reason.value.strip():raise ValueError("Explain why this request belongs in that workflow.")
+_s=get_context()["session"]
+_incident=teaching.saved(_s,"routing/release/incident")
+_row=next(row for row in _incident["result"]["predictions"] if row["case_id"]==release_case.value)
+_review=save_review(_s,case_id=_row["case_id"],proposed_label=_row["prediction"],accepted_label=release_accept_label.value,reviewer=_s.workspace_id,dataset_version="routing-release-regression/"+_incident["result"]["metadata"]["dataset"],evidence={"text":_row["text"],"controlled_drill":True,"incident_stage":_incident["id"],"reason":release_review_reason.value})
+with _s.stage("routing/release/regression",config={"review":_review["id"]}) as _stage:
+    if _stage.needs_run:_stage.record({"review":_review,"expected_behavior":"Preserve the classifier probability-column mapping. Human acceptance does not change the frozen model."})
+_s.checkpoint("release")
+show_result("saved regression case",{"Request":_row["text"],"Accepted intent":release_accept_label.value,"Review":_review["id"]})
+refresh()
+''',True,cell_id="routing.release.review")
+
+add('''
+_s=get_context().get("session")
+_revision=get_revision()
 conclusion=mo.ui.text_area(value=_s.get_draft("routing/conclusion","") if _s else "",label="What changed, what improved, and what should a person still review?",full_width=True,on_change=lambda value:_s.save_draft("routing/conclusion",value) if _s else None)
 publish=mo.ui.run_button(label="Publish my conclusion with the saved comparisons",disabled=not bool(_s and teaching.saved(_s,"routing/final/selected")))
 retry_exports=mo.ui.run_button(label="Retry saved traces and comparison uploads",disabled=not bool(_s))
@@ -510,12 +655,12 @@ mo.stop(not publish.value)
 _s=get_context()["session"]
 if not conclusion.value.strip():raise ValueError("Write your conclusion before publishing the report.")
 _result=publish_routing_results(_s)
-_links={}
+_links=release_lab.evidence_links(_s)
 for _key,_receipt in _s.read()["publications"].items():
     if _key.startswith("comparison/"):
         _links.update(ui.comparison_links(_receipt,suffix=_key.rsplit("/",1)[-1][:6]))
-_report=publish_report(_s,conclusion.value,_links)
-with _s.stage("routing/report",config={"conclusion":conclusion.value}) as _stage:
+_report=publish_report(_s,conclusion.value+release_lab.report_text(_s),_links)
+with _s.stage("routing/report",config={"conclusion":conclusion.value,"release_summary":release_lab.report_text(_s)}) as _stage:
     if _stage.needs_run:_stage.record({"comparison":_result,"report":_report})
 _s.checkpoint("report")
 show_result("publication",{"comparison":_result,"report":_report})

@@ -313,49 +313,155 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Use the saved case ID to match outputs. The automated judge comparison is separate and uses participant-reviewed development cases. Its target is agreement with those reviews, not classification accuracy on the official test set. The separate CES v2 service can remain unavailable while this Preview works.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
 
-## 46. Write the decision you would make
+## 46. Take ten minutes. Return at 4:05.
 
 3:55
 
-Allow final ten minutes for pairs to explain one result. Publishing retries reuse saved executions. The report conclusion should be participant-authored. An improvement is welcome, but understanding a tie or regression completes the learning outcome.
-Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
+Break from 3:55 to 4:05. Existing official-test results are complete; do not tune against them during the release lab.
 
-## 47. Reproduce the selected version before releasing it
+## 47. The classifier works. Can another process use it?
 
-3:57
+4:05
 
-The core ends with saved reproducible files and evaluation. Registry release and rollback is an advanced module with its own permissions. Specialist SFT changes model weights and needs a separate forecast and explicit launch; it is not required for this workshop.
-Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
+The scenario changes from model selection to delivery. The model weights stay fixed. Participants will see how an integration defect can invalidate an otherwise useful model. Explain the fault in advance; do not stage it as an organic discovery.
 
-## 48. What to take back to your team
+## 48. Save what the predictor needs, then reload it
 
-3:59
+4:08
+
+The artifact contains classifier, feature representation identity, intent order, review policy, source, checks, and fixed case IDs. The source sequence is abbreviated. An exact artifact version permits reproduction; a mutable latest alias does not identify what ran. Never unpickle arbitrary downloaded models; use the artifact just created in the participant project.
+
+## 49. Load your selected version from its artifact
+
+4:11
+
+Give learners time to make the change before showing a worked answer. This release drill reuses the selected classifier. It sends no inference request and does not train again. Find the exact saved stage and native evidence links in the result.
+
+## 50. Choose the regression cases before predicting
+
+4:17
+
+The cohort is selected and saved before predictions, using the lexical first review-pool case per intent. Some reviewed cases may have been accepted into training. This batch tests release behavior, not generalization. The original 3,080 official test predictions remain unchanged.
+
+## 51. A probability belongs to a specific intent
+
+4:20
+
+Illustrative three-column values; the real model has 77 intent columns. Trace column 1 from 0.84 to card_not_working using model.classes_. The message and probabilities are explanatory, not a recorded participant output.
+
+## 52. Rotated labels send column 1 to another queue
+
+4:22
+
+The deliberately faulty loader rotates the names by one position. Column1 still contains 0.84 but now names cash_withdrawal_not_recognised. Valid output and high confidence do not establish a correct destination. Participants inspect actual 77-class predictions in the next exercise.
+
+## 53. Find one request sent to the wrong queue
+
+4:26
+
+Give learners time to make the change before showing a worked answer. This release drill reuses the selected classifier. It sends no inference request and does not train again. Find the exact saved stage and native evidence links in the result.
+
+## 54. Checking the label set misses this defect
+
+4:33
+
+All expected names are still present. A set comparison discards order, precisely the part that links probability columns to intents. Ask learners which extra check would detect the fault.
+
+## 55. Check order before accepting the loaded model
+
+4:35
+
+Implement both exact order and set checks. Do not sort labels as the repair: a classifier may use another class order. The free fixture intentionally uses a nonalphabetical order.
+
+## 56. Repair the loader and write its regression check
+
+4:40
+
+Give learners time to make the change before showing a worked answer. This release drill reuses the selected classifier. It sends no inference request and does not train again. Find the exact saved stage and native evidence links in the result.
+
+## 57. A repaired loader should reproduce the intact release
+
+4:50
+
+Compare the healthy, faulty and repaired outputs by case ID. Parity with the intact release establishes recovery from this drill. Macro-F1 still measures agreement with labels. A model can reproduce its own mistakes perfectly. Keep those two claims separate.
+
+## 58. Compare three versions of the same request
+
+4:56
+
+This is an investigation guide rather than a product screenshot. Use native links from the release result. If publication is unavailable, inspect the notebook comparison and retry publication only. Do not rerun the batch to fix an export error.
+
+## 59. Decide whether this release passes its checks
+
+5:00
+
+Give learners time to make the change before showing a worked answer. This release drill reuses the selected classifier. It sends no inference request and does not train again. Find the exact saved stage and native evidence links in the result.
+
+## 60. Rollback reloads a version; it does not undo training
+
+5:08
+
+Require an explicit rollback action. Preserve the faulty release and its evidence for diagnosis rather than deleting it. The required path uses Artifacts in the participant project; Registry permissions are optional.
+
+## 61. Restore the previous version and verify it
+
+5:12
+
+Give learners time to make the change before showing a worked answer. This release drill reuses the selected classifier. It sends no inference request and does not train again. Find the exact saved stage and native evidence links in the result.
+
+## 62. Separate the model gain from the release repair
+
+5:20
+
+Have participants explain both results without merging denominators or calling the drill a new benchmark. Preserve original 3,080-test predictions; the 77-case capstone cohort is reused and may overlap reviewed training additions. Keep remaining genuine classifier errors in the conclusion.
+
+## 63. Write the decision you would make
+
+5:25
+
+Final five minutes: explain the classifier comparison and the release drill separately. Include the tested artifact, decision, rollback evidence, and remaining errors. Publication reuses saved work.
+
+## 64. Optional: organize approved versions in Registry
+
+5:28
+
+Registry manages versions, not automatic deployment. ARIA access and usage are separate; it cannot approve a repair automatically. The core capstone contains no new inference calls or training. Specialist fine-tuning remains a separately qualified future lesson.
+
+## 65. What to take back to your team
+
+5:29
 
 Close with a concrete transfer task. Ask each participant to name one queue, one failure, one measurable outcome, and one person who can review labels in their own workflow. No claims beyond the recorded Banking77 experiment.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
 
-## 49. Worked answer: classifier head
+## 66. Worked answer: classifier head
 
 
 
 Offer the answer only after an attempt or a hint request. Learners must still run the free check and both actual training calls.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
 
-## 50. Worked answer: review policy
+## 67. Worked answer: review policy
 
 
 
 The function should return a boolean. Exactly the threshold is routed in this specified policy. It is not a proof that the predicted probability is calibrated.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
 
-## 51. Worked answer: judge validator
+## 68. Worked answer: judge validator
 
 
 
 This uses the same type guard as the notebook. Valid JSON is only a response contract; it does not establish agreement with a reviewer.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
 
-## 52. Sources and recorded evidence
+## 69. Worked answer: preserve the probability-column order
+
+
+
+This checks the metadata contract; the subsequent saved batch checks prediction parity independently. Passing both checks does not prove every route is correct. Give the worked answer after an attempt or explicit request.
+
+## 70. Sources and recorded evidence
 
 
 

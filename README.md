@@ -10,7 +10,7 @@ Each participant works in their own project. The facilitator can read the progre
 | --- | --- |
 | [Solar Autoresearch · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view) | Join a research lab working with real satellite observations. Build forecasts, compare training settings, then ask an agent to propose and test code changes. Six hours. |
 | [Pending, Inc. · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) | Give an office agent tools for refunds and account access. Check its work, edit its instructions, then build an agent that makes and tests further edits. Four hours. |
-| [Route customer requests · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view) | Compare two classifiers on Banking77, review mistakes, check a judge against human labels, and freeze a revised router. Four hours. |
+| [Route customer requests · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view) | Compare classifiers on Banking77, review mistakes, check a judge against human labels, then release the router and repair a controlled loading defect. Five and a half hours. |
 | [Find defective parts · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view) | Compare whole-image and patch features on real VisA circuit-board photographs, spend a fixed review budget, and reproduce the selected detector. Four hours. |
 | [Build a transit app · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view) | Give two coding agents separate parts of a departure board, review and test their patches, then compare fresh workers with and without a checked lesson. Real historical MBTA schedules. Six hours. |
 
@@ -24,7 +24,7 @@ Use the companion deck alongside your notebook:
 | Circuit-board inspection | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/inspection/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/inspection/visual-inspection.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/inspection/visual-inspection-source.zip) |
 | Transit software factory | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/transit/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/transit/transit-factory.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/transit/transit-factory-source.zip) |
 
-These decks follow the current gateway-free notebooks. The [v0.6.2 maintenance release](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.6.2) includes notebooks, PDFs, and editable deck sources. Teaching datasets keep their existing versioned download links.
+These decks follow the current gateway-free notebooks. The [v0.7.0 release](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.7.0) includes notebooks, PDFs, and editable deck sources. Teaching datasets keep their existing versioned download links.
 
 For a short demonstration, follow the [current demo guide](docs/current-demo-guide.md). It takes you from a notebook exercise to a trace, code change, and recorded result.
 
@@ -131,3 +131,9 @@ Put the experiment, scorer, tracing, and improvement code in the notebook where 
 The advanced modules require their own access check and cost approval. Registry links a tested artifact; it does not deploy it. SFT changes model weights, while the core harness exercise keeps the language model fixed. Sandboxes and ARIA/Launch remain optional and are not needed to copy or run the core notebooks.
 
 Previous releases and deployment notes are linked from the [archive](docs/archive.md).
+
+## Create or run another workshop
+
+The repository includes a [workshop authoring skill](.agents/skills/forge-workshops/SKILL.md) and a shared `forge-workshop` command. They connect the authored notebook, exercise references, deck, and rehearsal records. Participants do not need either to use a copied template.
+
+Start with the [authoring guide](docs/authoring.md). A rehearsal records exactly which current notebook actions ran; browser, external-account, and human checks remain separate. The [maintenance guide](docs/maintenance.md) covers builds and explicit publication.

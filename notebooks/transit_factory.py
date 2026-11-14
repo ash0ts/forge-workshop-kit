@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.6.2/forge_workshop_kit-0.6.2-py3-none-any.whl",
+#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/forge_workshop_kit-0.7.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -98,6 +98,7 @@ __generated_with = "0.25.2"
 app = marimo.App(width="medium", app_title='Build a transit app with a team of coding agents')
 
 
+# workshop-cell: transit_factory/display/1
 @app.cell(hide_code=True)
 def _():
     import json
@@ -116,10 +117,11 @@ def _():
     return (Path, WorkshopSession, digest, draft_cache, event, export_trace, factory, get_context, get_output, get_revision, get_step, json, lab, mo, saved_trace_inputs, set_context, set_output, set_revision, set_step, setup, teaching, transit, ui,)
 
 
+# workshop-cell: transit_factory/definitions/refresh
 @app.cell(hide_code=True)
-def _(draft_cache, get_context, get_revision, instrument_tool, lab, set_output, set_revision, set_step, teaching):
+def _(draft_cache, get_context, instrument_tool, lab, set_output, set_revision, set_step, teaching):
     def refresh():
-        set_revision(get_revision()+1)
+        set_revision(lambda previous: previous+1)
     def go_to(step):
         session=get_context().get("session")
         if session: session.set_view(step)
@@ -143,6 +145,7 @@ def _(draft_cache, get_context, get_revision, instrument_tool, lab, set_output, 
     return (active_sources, current_session, export_saved_traces, go_to, read_draft, refresh, save_draft, show,)
 
 
+# workshop-cell: transit_factory/definitions/step_navigation
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, go_to, mo, teaching, ui):
     _s=current_session()
@@ -152,6 +155,7 @@ def _(current_session, get_revision, get_step, go_to, mo, teaching, ui):
     return (step_navigation,)
 
 
+# workshop-cell: transit_factory/display/4
 @app.cell(hide_code=True)
 def _(get_step, mo, ui):
     mo.stop(get_step()!="setup")
@@ -159,6 +163,7 @@ def _(get_step, mo, ui):
     return
 
 
+# workshop-cell: transit_factory/controls/connect
 @app.cell(hide_code=True)
 def _(get_step, mo, setup):
     _env=setup.project_context()
@@ -169,6 +174,7 @@ def _(get_step, mo, setup):
     return (allowance, connect, project,)
 
 
+# workshop-cell: transit_factory/action/connect
 @app.cell(hide_code=True)
 def _(WorkshopSession, allowance, connect, mo, project, refresh, set_context, set_step, setup):
     mo.stop(not connect.value)
@@ -182,6 +188,7 @@ def _(WorkshopSession, allowance, connect, mo, project, refresh, set_context, se
     return
 
 
+# workshop-cell: transit_factory/definitions/instrument_tool
 @app.cell
 def _():
     # This function is used for the setup trace and every builder's tool span.
@@ -200,6 +207,7 @@ def _():
     return (instrument_tool,)
 
 
+# workshop-cell: transit_factory/controls/setup_trace
 @app.cell(hide_code=True)
 def _(current_session, get_step, mo):
     setup_trace=mo.ui.run_button(label="Send my first Agent Lens trace",disabled=not bool(current_session()))
@@ -207,6 +215,7 @@ def _(current_session, get_step, mo):
     return (setup_trace,)
 
 
+# workshop-cell: transit_factory/action/setup_trace
 @app.cell(hide_code=True)
 def _(current_session, event, export_trace, instrument_tool, lab, mo, refresh, saved_trace_inputs, setup_trace, show, transit):
     mo.stop(not setup_trace.value)
@@ -225,6 +234,7 @@ def _(current_session, event, export_trace, instrument_tool, lab, mo, refresh, s
     return
 
 
+# workshop-cell: transit_factory/display/10
 @app.cell(hide_code=True)
 def _(get_step, lab, mo):
     mo.stop(get_step()!="setup")
@@ -233,6 +243,7 @@ def _(get_step, lab, mo):
     return
 
 
+# workshop-cell: transit_factory/controls/acceptance_check
 @app.cell(hide_code=True)
 def _(current_session, get_step, mo, read_draft, save_draft, teaching):
     _s=current_session()
@@ -242,6 +253,7 @@ def _(current_session, get_step, mo, read_draft, save_draft, teaching):
     return (acceptance_check, acceptance_code,)
 
 
+# workshop-cell: transit_factory/action/acceptance_check
 @app.cell(hide_code=True)
 def _(acceptance_check, acceptance_code, current_session, lab, mo, refresh, save_draft, show, teaching):
     mo.stop(not acceptance_check.value)
@@ -258,6 +270,7 @@ def _(acceptance_check, acceptance_code, current_session, lab, mo, refresh, save
     return
 
 
+# workshop-cell: transit_factory/display/13
 @app.cell(hide_code=True)
 def _(acceptance_code, current_session, digest, get_output, get_step, mo):
     mo.stop(get_step()!="setup")
@@ -268,6 +281,7 @@ def _(acceptance_code, current_session, digest, get_output, get_step, mo):
     return
 
 
+# workshop-cell: transit_factory/controls/worker_check
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, mo, read_draft, save_draft, teaching, ui):
     _s=current_session()
@@ -279,6 +293,7 @@ def _(current_session, get_revision, get_step, mo, read_draft, save_draft, teach
     return (worker_check, worker_code,)
 
 
+# workshop-cell: transit_factory/action/worker_check
 @app.cell(hide_code=True)
 def _(current_session, lab, mo, refresh, save_draft, show, teaching, worker_check, worker_code):
     mo.stop(not worker_check.value)
@@ -295,6 +310,7 @@ def _(current_session, lab, mo, refresh, save_draft, show, teaching, worker_chec
     return
 
 
+# workshop-cell: transit_factory/display/16
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_step, mo):
     mo.stop(get_step()!='worker')
@@ -304,6 +320,7 @@ def _(current_session, get_output, get_step, mo):
     return
 
 
+# workshop-cell: transit_factory/controls/tasks_check
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, mo, read_draft, save_draft, teaching, ui):
     _s=current_session()
@@ -315,6 +332,7 @@ def _(current_session, get_revision, get_step, mo, read_draft, save_draft, teach
     return (tasks_check, tasks_code,)
 
 
+# workshop-cell: transit_factory/action/tasks_check
 @app.cell(hide_code=True)
 def _(current_session, lab, mo, refresh, save_draft, show, tasks_check, tasks_code, teaching):
     mo.stop(not tasks_check.value)
@@ -331,6 +349,7 @@ def _(current_session, lab, mo, refresh, save_draft, show, tasks_check, tasks_co
     return
 
 
+# workshop-cell: transit_factory/display/19
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_step, mo):
     mo.stop(get_step()!='tasks')
@@ -340,6 +359,7 @@ def _(current_session, get_output, get_step, mo):
     return
 
 
+# workshop-cell: transit_factory/controls/memory_check
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, mo, read_draft, save_draft, teaching, ui):
     _s=current_session()
@@ -351,6 +371,7 @@ def _(current_session, get_revision, get_step, mo, read_draft, save_draft, teach
     return (memory_check, memory_code,)
 
 
+# workshop-cell: transit_factory/action/memory_check
 @app.cell(hide_code=True)
 def _(current_session, lab, memory_check, memory_code, mo, refresh, save_draft, show, teaching):
     mo.stop(not memory_check.value)
@@ -367,6 +388,7 @@ def _(current_session, lab, memory_check, memory_code, mo, refresh, save_draft, 
     return
 
 
+# workshop-cell: transit_factory/display/22
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_step, mo):
     mo.stop(get_step()!='memory')
@@ -376,6 +398,7 @@ def _(current_session, get_output, get_step, mo):
     return
 
 
+# workshop-cell: transit_factory/controls/evaluate_check
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, mo, read_draft, save_draft, teaching, ui):
     _s=current_session()
@@ -387,6 +410,7 @@ def _(current_session, get_revision, get_step, mo, read_draft, save_draft, teach
     return (evaluate_check, evaluate_code,)
 
 
+# workshop-cell: transit_factory/action/evaluate_check
 @app.cell(hide_code=True)
 def _(current_session, evaluate_check, evaluate_code, lab, mo, refresh, save_draft, show, teaching):
     mo.stop(not evaluate_check.value)
@@ -403,6 +427,7 @@ def _(current_session, evaluate_check, evaluate_code, lab, mo, refresh, save_dra
     return
 
 
+# workshop-cell: transit_factory/display/25
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_step, mo):
     mo.stop(get_step()!='evaluate')
@@ -412,6 +437,7 @@ def _(current_session, get_output, get_step, mo):
     return
 
 
+# workshop-cell: transit_factory/controls/release_check
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, mo, read_draft, save_draft, teaching, ui):
     _s=current_session()
@@ -423,6 +449,7 @@ def _(current_session, get_revision, get_step, mo, read_draft, save_draft, teach
     return (release_check, release_code,)
 
 
+# workshop-cell: transit_factory/action/release_check
 @app.cell(hide_code=True)
 def _(current_session, lab, mo, refresh, release_check, release_code, save_draft, show, teaching):
     mo.stop(not release_check.value)
@@ -439,6 +466,7 @@ def _(current_session, lab, mo, refresh, release_check, release_code, save_draft
     return
 
 
+# workshop-cell: transit_factory/display/28
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_step, mo):
     mo.stop(get_step()!='release')
@@ -448,6 +476,7 @@ def _(current_session, get_output, get_step, mo):
     return
 
 
+# workshop-cell: transit_factory/controls/run_solo
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, lab, mo):
     _s=current_session()
@@ -458,6 +487,7 @@ def _(current_session, get_revision, get_step, lab, mo):
     return (run_solo,)
 
 
+# workshop-cell: transit_factory/action/run_solo
 @app.cell(hide_code=True)
 def _(current_session, export_saved_traces, lab, mo, refresh, run_solo, show, worker_code):
     mo.stop(not run_solo.value)
@@ -470,6 +500,7 @@ def _(current_session, export_saved_traces, lab, mo, refresh, run_solo, show, wo
     return
 
 
+# workshop-cell: transit_factory/display/31
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_step, lab, mo, teaching):
     mo.stop(get_step()!="tasks")
@@ -480,6 +511,7 @@ def _(current_session, get_output, get_step, lab, mo, teaching):
     return
 
 
+# workshop-cell: transit_factory/controls/run_team
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, lab, mo, ui):
     _s=current_session()
@@ -490,6 +522,7 @@ def _(current_session, get_revision, get_step, lab, mo, ui):
     return (run_team,)
 
 
+# workshop-cell: transit_factory/action/run_team
 @app.cell(hide_code=True)
 def _(current_session, export_saved_traces, lab, mo, refresh, run_team, show, tasks_code, worker_code):
     mo.stop(not run_team.value)
@@ -502,6 +535,7 @@ def _(current_session, export_saved_traces, lab, mo, refresh, run_team, show, ta
     return
 
 
+# workshop-cell: transit_factory/controls/run_integration
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, lab, mo, ui):
     _s=current_session()
@@ -512,6 +546,7 @@ def _(current_session, get_revision, get_step, lab, mo, ui):
     return (reviewed_patches, run_integration,)
 
 
+# workshop-cell: transit_factory/action/run_integration
 @app.cell(hide_code=True)
 def _(current_session, export_saved_traces, lab, mo, refresh, reviewed_patches, run_integration, show):
     mo.stop(not run_integration.value)
@@ -524,6 +559,7 @@ def _(current_session, export_saved_traces, lab, mo, refresh, reviewed_patches, 
     return
 
 
+# workshop-cell: transit_factory/controls/continue_reference
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, lab, mo):
     _s=current_session()
@@ -534,6 +570,7 @@ def _(current_session, get_revision, get_step, lab, mo):
     return (continue_reference,)
 
 
+# workshop-cell: transit_factory/action/continue_reference
 @app.cell(hide_code=True)
 def _(continue_reference, current_session, lab, mo, refresh, show):
     mo.stop(not continue_reference.value)
@@ -542,6 +579,7 @@ def _(continue_reference, current_session, lab, mo, refresh, show):
     return
 
 
+# workshop-cell: transit_factory/controls/preview_app
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, lab, mo):
     _s=current_session()
@@ -554,6 +592,7 @@ def _(current_session, get_revision, get_step, lab, mo):
     return (preview_app, preview_stop, preview_time, preview_version,)
 
 
+# workshop-cell: transit_factory/action/preview_app
 @app.cell(hide_code=True)
 def _(current_session, lab, mo, preview_app, preview_stop, preview_time, preview_version, show):
     mo.stop(not preview_app.value)
@@ -564,6 +603,7 @@ def _(current_session, lab, mo, preview_app, preview_stop, preview_time, preview
     return
 
 
+# workshop-cell: transit_factory/controls/propose_lesson
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, lab, mo):
     _s=current_session()
@@ -576,6 +616,7 @@ def _(current_session, get_revision, get_step, lab, mo):
     return (lesson_evidence, lesson_text, propose_lesson, save_lesson,)
 
 
+# workshop-cell: transit_factory/action/propose_lesson
 @app.cell(hide_code=True)
 def _(current_session, export_saved_traces, lab, mo, propose_lesson, refresh, show):
     mo.stop(not propose_lesson.value)
@@ -585,6 +626,7 @@ def _(current_session, export_saved_traces, lab, mo, propose_lesson, refresh, sh
     return
 
 
+# workshop-cell: transit_factory/action/save_lesson
 @app.cell(hide_code=True)
 def _(current_session, lab, lesson_evidence, lesson_text, memory_code, mo, refresh, save_lesson, show, teaching):
     mo.stop(not save_lesson.value)
@@ -596,6 +638,7 @@ def _(current_session, lab, lesson_evidence, lesson_text, memory_code, mo, refre
     return
 
 
+# workshop-cell: transit_factory/controls/run_followup
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, lab, mo, ui):
     _s=current_session()
@@ -605,6 +648,7 @@ def _(current_session, get_revision, get_step, lab, mo, ui):
     return (run_followup,)
 
 
+# workshop-cell: transit_factory/action/run_followup
 @app.cell(hide_code=True)
 def _(current_session, export_saved_traces, lab, memory_code, mo, refresh, run_followup, show, tasks_code, worker_code):
     mo.stop(not run_followup.value)
@@ -615,6 +659,7 @@ def _(current_session, export_saved_traces, lab, memory_code, mo, refresh, run_f
     return
 
 
+# workshop-cell: transit_factory/controls/integrate_followup
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, lab, mo):
     _s=current_session()
@@ -625,6 +670,7 @@ def _(current_session, get_revision, get_step, lab, mo):
     return (integrate_followup, reviewed_followup,)
 
 
+# workshop-cell: transit_factory/action/integrate_followup
 @app.cell(hide_code=True)
 def _(current_session, integrate_followup, lab, mo, refresh, reviewed_followup, show):
     mo.stop(not integrate_followup.value)
@@ -635,6 +681,7 @@ def _(current_session, integrate_followup, lab, mo, refresh, reviewed_followup, 
     return
 
 
+# workshop-cell: transit_factory/controls/run_evaluation
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, lab, mo, ui):
     _s=current_session()
@@ -645,6 +692,7 @@ def _(current_session, get_revision, get_step, lab, mo, ui):
     return (retry_publication, run_evaluation,)
 
 
+# workshop-cell: transit_factory/action/run_evaluation
 @app.cell(hide_code=True)
 def _(current_session, evaluate_code, lab, mo, refresh, run_evaluation, show, teaching):
     mo.stop(not run_evaluation.value)
@@ -657,6 +705,7 @@ def _(current_session, evaluate_code, lab, mo, refresh, run_evaluation, show, te
     return
 
 
+# workshop-cell: transit_factory/action/retry_publication
 @app.cell(hide_code=True)
 def _(current_session, export_saved_traces, lab, mo, refresh, retry_publication, show):
     mo.stop(not retry_publication.value)
@@ -667,6 +716,7 @@ def _(current_session, export_saved_traces, lab, mo, refresh, retry_publication,
     return
 
 
+# workshop-cell: transit_factory/controls/release_button
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, lab, mo):
     _s=current_session()
@@ -678,6 +728,7 @@ def _(current_session, get_revision, get_step, lab, mo):
     return (conclusion, release_button, release_version,)
 
 
+# workshop-cell: transit_factory/action/release_button
 @app.cell(hide_code=True)
 def _(conclusion, current_session, lab, mo, refresh, release_button, release_code, release_version, show, teaching):
     mo.stop(not release_button.value)
@@ -689,6 +740,7 @@ def _(conclusion, current_session, lab, mo, refresh, release_button, release_cod
     return
 
 
+# workshop-cell: transit_factory/display/52
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_revision, get_step, lab, mo):
     _s=current_session()
@@ -699,6 +751,7 @@ def _(current_session, get_output, get_revision, get_step, lab, mo):
     return
 
 
+# workshop-cell: transit_factory/display/53
 @app.cell(hide_code=True)
 def _(get_step, go_to, mo, teaching, ui):
     _index=next(i for i,step in enumerate(teaching.STEPS) if step[0]==get_step())
@@ -708,6 +761,7 @@ def _(get_step, go_to, mo, teaching, ui):
     return (next_step_control,)
 
 
+# workshop-cell: transit_factory/display/54
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, lab, mo, teaching, ui):
     _s=current_session()
@@ -717,6 +771,7 @@ def _(current_session, get_revision, get_step, lab, mo, teaching, ui):
     return
 
 
+# workshop-cell: transit_factory/definitions/help_form
 @app.cell(hide_code=True)
 def _(current_session, get_revision, mo):
     _s=current_session()
@@ -727,6 +782,7 @@ def _(current_session, get_revision, mo):
     return (help_form,)
 
 
+# workshop-cell: transit_factory/display/56
 @app.cell(hide_code=True)
 def _(current_session, help_form, mo):
     mo.stop(help_form.value is None or not current_session())
@@ -735,6 +791,7 @@ def _(current_session, help_form, mo):
     return
 
 
+# workshop-cell: transit_factory/controls/retry_execution
 @app.cell(hide_code=True)
 def _(current_session, get_revision, mo):
     _s=current_session()
@@ -747,6 +804,7 @@ def _(current_session, get_revision, mo):
     return (confirm_stopped, recovery, retry_execution,)
 
 
+# workshop-cell: transit_factory/action/retry_execution
 @app.cell(hide_code=True)
 def _(confirm_stopped, current_session, lab, mo, recovery, refresh, retry_execution, show):
     mo.stop(not retry_execution.value)

@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "checked_at": "2026-11-14T20:53:45.009457+00:00",
+  "scope": "Independent local code and deterministic test audit of the Routing release/recovery capstone and comparison publication reuse.",
+  "source_sha256": {
+    "src/forge_workshop_kit/routing_release.py": "26b429cb2a231c428ffbafbbc6503ea4becf6bc910b55c31c246d5e85f5a2647",
+    "src/forge_workshop_kit/routing_teaching.py": "d12b4ce81c27d07e58da22aed0be90915f6fb0acd749777b4e1ef63841fc3e09",
+    "scripts/routing_cells.py": "bece9191e7e3f8873a7bdb032bc0cb4226c96bb3a0792e8f486268ab5bd0dc29",
+    "src/forge_workshop_kit/publication.py": "e3a9702ec548f4a303652aa639fb38a14f0b6f1db75b36e251f6a866b768c664",
+    "tests/test_routing_release.py": "4d985ccddcc70d713c0f656295383f00ded090ba06e5374406c4a514dd4ed259",
+    "tests/test_publication.py": "18489720f26ee77a72116571648128155b02a8f5aae6a722d6bd97d2bd6dffb0",
+    "tests/test_evaluation_surfaces.py": "a69c9ee520b7e5629127a7f69965f4898bf110a3d244cf077cc1754fdc8c5e63",
+    "docs/routing-workshop.md": "e39c830fb7fef6d1efdc282fbf154eecb36908c7d33fb2c392fe32f01b8b5b37"
+  },
+  "tests": {
+    "command": ".venv/bin/pytest -q tests/test_routing_release.py tests/test_routing.py tests/test_publication.py tests/test_evaluation_surfaces.py",
+    "passed": 60,
+    "failed": 0,
+    "elapsed_seconds": 2.35
+  },
+  "checks": [
+    "Regression cohort selects the lexical first review-pool case per training intent before release predictions; official-test stages remain unchanged.",
+    "Exact version bundles preserve classifier, preprocessing and encoder identity, probability-column order, learner policy, learner classifier source, and prediction runtime.",
+    "A new prediction refuses changed installed runtime or data. Completed cached batches remain reusable.",
+    "Controlled label rotation preserves probabilities while changing destination names. The learner loader and release checker execute on the repaired batch.",
+    "Deterministic two-intent fixture demonstrates healthy 1.0, faulty 0.0, and repaired 1.0 accuracy; this is a test fixture, not a live Banking77 result.",
+    "Rollback verifies prediction parity before recording success. Rejection retains the earlier release without requiring publication of a selected repair.",
+    "Release navigation remains incomplete until rejection or matching, verified rollback.",
+    "Completed upload receipts survive SDK run-close errors. Restarting reuses completed batches without training or provider requests.",
+    "Adding a comparison version reuses sibling run/evaluation receipts. Failed native publication retries only that service. Aggregate summary corrections do not repeat prediction evaluations.",
+    "Evaluation-row evidence is fixed at first publication; late verified export links are available in notebook/report links without duplicating saved evaluation rows.",
+    "Report text distinguishes the controlled regression set from independent official-test results and only describes rollback after verified completion.",
+    "Reactive completion callbacks use functional state updates rather than reading the state they write."
+  ],
+  "local_markdown_links": {
+    "files_with_links": 11,
+    "links_checked": 85,
+    "broken": [],
+    "scope": "File existence for relative/absolute local Markdown links in changed/new docs. External URLs and Slidev named route links were excluded."
+  },
+  "limitations": [
+    "This receipt does not claim a complete live browser path, external-account access check, or human usability rehearsal.",
+    "This audit did not publish native services. Root-session live browser/publication results are recorded separately.",
+    "Embedding reproduction uses the pinned cached encoder features; batch latency excludes encoding.",
+    "Saved model files use joblib and must come from a trusted source. This is a notebook batch release exercise, not a deployed production endpoint.",
+    "Review-pool requests may have been accepted into development training. They are regression/reproduction cases, not an independent test set."
+  ]
+}

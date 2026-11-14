@@ -24,7 +24,7 @@ download: false
 
 # Route customer requests<br>and learn from mistakes
 
-<div class="sub">Train a support router, review its errors, and test a revised version using public banking requests.</div><div class="bottom-note">Four hours · CPU classifiers · Agent Lens · W&B · Weave and EvalTables</div>
+<div class="sub">Train a support router, review its errors, and test a revised version, then release and recover it using public banking requests.</div><div class="bottom-note">5½ hours · CPU classifiers · Agent Lens · W&B · Weave and EvalTables</div>
 
 <!--
 The support team is fictional. The messages are public Banking77 data. We will make a genuine measured classifier comparison, then let participants run an open-ended data review experiment. Do not promise that every personal review will improve the score.
@@ -252,7 +252,7 @@ name: classifier-exercise
 
 # Implement the classifier head
 
-<a class="answer-link" href="/49">Worked answer ↗</a>
+<a class="answer-link" href="/66">Worked answer ↗</a>
 
 <p class="where">Notebook → Train classifiers</p><ol><li>Complete <code>make_classifier</code> with <code>LogisticRegression(C=10, max_iter=1000, random_state=17)</code>.</li><li>Run the free practice check.</li><li>Train both representations using that same function.</li></ol><div class="done"><strong>Run:</strong> Train both classifiers on the same messages<br><strong>Check:</strong> Compare validation macro-F1 and open the saved source in Forge.</div>
 
@@ -390,7 +390,7 @@ name: policy-exercise
 
 # Write the rule that sends a request to review
 
-<a class="answer-link" href="/50">Worked answer ↗</a>
+<a class="answer-link" href="/67">Worked answer ↗</a>
 
 <p class="where">Notebook → Review requests</p><ol><li>Complete <code>needs_review(confidence, threshold)</code>.</li><li>Move the threshold and compare coverage with selective accuracy.</li><li>Pick a small-margin request and read both proposed intents.</li></ol><div class="done"><strong>Run:</strong> Check my review rule<br><strong>Check:</strong> Explain why a confidence of 0.2 at threshold 0.5 should go to a person.</div>
 
@@ -557,7 +557,7 @@ name: validator-exercise
 
 # Implement the judge response check
 
-<a class="answer-link" href="/51">Worked answer ↗</a>
+<a class="answer-link" href="/68">Worked answer ↗</a>
 
 <p class="where">Notebook → Check the judge</p><ol><li>Complete <code>validate_judge</code>. Reject a string such as <code>"false"</code>.</li><li>Read the failure-tag instructions. Define what counts as unresolved rather than wrong.</li><li>Run the judge on up to eight reviewed cases.</li></ol><div class="done"><strong>Run:</strong> Check my judge validator → Compare the judge with up to eight of my reviews<br><strong>Check:</strong> Click Compare in EvalTables beside the judge result. Read the judge reason and your accepted review together; unavailable judgments stay blank.</div>
 
@@ -738,43 +738,294 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 -->
 
 ---
+name: release-break
+---
+
+<div class="kicker">3:55</div>
+
+# Take ten minutes. Return at 4:05.
+
+<p class="sub">Your classifier is selected. After the break, we will load its saved files and check that it still routes requests the same way.</p><p class="aside">The support team has asked whether “saved somewhere” counts as released.</p>
+
+<!--
+Break from 3:55 to 4:05. Existing official-test results are complete; do not tune against them during the release lab.
+-->
+
+---
+name: release-request
+---
+
+<div class="kicker">4:05</div>
+
+# The classifier works. Can another process use it?
+
+<div class="quote">“Please put the chosen version into the batch router. The queues are already there.”</div><div class="flow"><div>Selected experiment<small>Known predictions</small></div><b class="arrow">→</b><div>Saved release<small>Exact files and metadata</small></div><b class="arrow">→</b><div>Reloaded predictor<small>Do the destinations still match?</small></div></div><p class="caption">We will introduce a loader defect deliberately. This is a release drill, not a newly discovered model failure.</p>
+
+<!--
+The scenario changes from model selection to delivery. The model weights stay fixed. Participants will see how an integration defect can invalidate an otherwise useful model. Explain the fault in advance; do not stage it as an organic discovery.
+-->
+
+---
+name: release-bundle
+---
+
+<div class="kicker">4:08</div>
+
+# Save what the predictor needs, then reload it
+
+<ReleaseWalk kind="bundle" />
+
+<!--
+The artifact contains classifier, feature representation identity, intent order, review policy, source, checks, and fixed case IDs. The source sequence is abbreviated. An exact artifact version permits reproduction; a mutable latest alias does not identify what ran. Never unpickle arbitrary downloaded models; use the artifact just created in the participant project.
+-->
+
+---
+class: exercise
+name: release-prepare-exercise
+---
+
+<div class="kicker">4:11</div>
+
+# Load your selected version from its artifact
+
+
+
+<p class="where">Notebook → Release and recover</p><ol><li>Click <b>Prepare the selected router for release</b>. Inspect the files it saves.</li><li>Click <b>Publish and reload the exact release artifact</b>. Copy its exact version into your notes.</li><li>Compare the reloaded predictions with the intact saved release.</li></ol><div class="done"><strong>Run:</strong> Prepare the selected router for release → Publish and reload the exact release artifact<br><strong>Check:</strong> Prediction parity passes without fitting another classifier.</div>
+
+<!--
+Give learners time to make the change before showing a worked answer. This release drill reuses the selected classifier. It sends no inference request and does not train again. Find the exact saved stage and native evidence links in the result.
+-->
+
+---
+name: release-cohort
+---
+
+<div class="kicker">4:17</div>
+
+# Choose the regression cases before predicting
+
+<svg class="diagram" viewBox="0 0 1120 290" role="img" aria-label="The existing 770-example review pool supplies one case per intent. Lexically first case IDs define 77 fixed regression cases. The official test set is unchanged."><rect x="0" y="45" width="300" height="115" fill="#e5e9dc"/><text x="22" y="86" style="font-size:28px">770 review requests</text><text x="22" y="128" style="font-size:21px">Training-derived pool</text><path d="M315 105H390" stroke="#718a7c" stroke-width="3"/><rect x="405" y="45" width="300" height="115" fill="#d3e6dc"/><text x="427" y="86" style="font-size:28px">One per intent</text><text x="427" y="128" style="font-size:21px">First case ID, sorted</text><path d="M720 105H795" stroke="#718a7c" stroke-width="3"/><rect x="810" y="45" width="300" height="115" fill="#d3e6dc"/><text x="832" y="86" style="font-size:28px">77 fixed cases</text><text x="832" y="128" style="font-size:21px">Same batch, each release</text><text x="0" y="230" style="font-size:24px">Regression and reproduction check: not a new independent test set.</text></svg>
+
+<!--
+The cohort is selected and saved before predictions, using the lexical first review-pool case per intent. Some reviewed cases may have been accepted into training. This batch tests release behavior, not generalization. The original 3,080 official test predictions remain unchanged.
+-->
+
+---
+name: release-columns
+---
+
+<div class="kicker">4:20</div>
+
+# A probability belongs to a specific intent
+
+<ReleaseWalk kind="mapping" :step="1" />
+
+<!--
+Illustrative three-column values; the real model has 77 intent columns. Trace column 1 from 0.84 to card_not_working using model.classes_. The message and probabilities are explanatory, not a recorded participant output.
+-->
+
+---
+name: release-fault
+---
+
+<div class="kicker">4:22</div>
+
+# Rotated labels send column 1 to another queue
+
+<ReleaseWalk kind="mapping" :step="2" />
+
+<!--
+The deliberately faulty loader rotates the names by one position. Column1 still contains 0.84 but now names cash_withdrawal_not_recognised. Valid output and high confidence do not establish a correct destination. Participants inspect actual 77-class predictions in the next exercise.
+-->
+
+---
+class: exercise
+name: release-incident-exercise
+---
+
+<div class="kicker">4:26</div>
+
+# Find one request sent to the wrong queue
+
+
+
+<p class="where">Notebook → Release and recover</p><ol><li>Run the faulty loader on the fixed batch.</li><li>Open its Agent Lens operation and compare the loaded label order with the saved model classes.</li><li>Choose a changed route. Record its case, proposed intent, accepted label, and your reason.</li></ol><div class="done"><strong>Run:</strong> Run the deliberately faulty release<br><strong>Check:</strong> The weights and confidence are unchanged; the returned intent moves.</div>
+
+<!--
+Give learners time to make the change before showing a worked answer. This release drill reuses the selected classifier. It sends no inference request and does not train again. Find the exact saved stage and native evidence links in the result.
+-->
+
+---
+name: release-set-check
+---
+
+<div class="kicker">4:33</div>
+
+# Checking the label set misses this defect
+
+<ReleaseWalk kind="checks" :step="1" />
+
+<!--
+All expected names are still present. A set comparison discards order, precisely the part that links probability columns to intents. Ask learners which extra check would detect the fault.
+-->
+
+---
+name: release-order-check
+---
+
+<div class="kicker">4:35</div>
+
+# Check order before accepting the loaded model
+
+<ReleaseWalk kind="checks" :step="2" />
+
+<!--
+Implement both exact order and set checks. Do not sort labels as the repair: a classifier may use another class order. The free fixture intentionally uses a nonalphabetical order.
+-->
+
+---
+class: exercise
+name: release-repair-exercise
+---
+
+<div class="kicker">4:40</div>
+
+# Repair the loader and write its regression check
+
+<a class="answer-link" href="/69">Worked answer ↗</a>
+
+<p class="where">Notebook → Release and recover</p><ol><li>Complete <code>label_names(model_classes)</code> by preserving the supplied order.</li><li>Complete <code>check_release(model_classes, loaded_labels)</code>. Check the label set and exact order.</li><li>Run the free check, then execute your repaired loader on the same 77 requests.</li></ol><div class="done"><strong>Run:</strong> Check my release and repair code → Run my repaired loader on the same requests<br><strong>Check:</strong> Order and prediction parity pass. Existing classifier mistakes may remain.</div>
+
+<!--
+Give learners time to make the change before showing a worked answer. This release drill reuses the selected classifier. It sends no inference request and does not train again. Find the exact saved stage and native evidence links in the result.
+-->
+
+---
+name: release-parity
+---
+
+<div class="kicker">4:50</div>
+
+# A repaired loader should reproduce the intact release
+
+<ReleaseWalk kind="checks" :step="3" />
+
+<!--
+Compare the healthy, faulty and repaired outputs by case ID. Parity with the intact release establishes recovery from this drill. Macro-F1 still measures agreement with labels. A model can reproduce its own mistakes perfectly. Keep those two claims separate.
+-->
+
+---
+name: release-investigate
+---
+
+<div class="kicker">4:56</div>
+
+# Compare three versions of the same request
+
+<table class="clean-table small-table"><thead><tr><th>Version</th><th>What to inspect</th><th>Question</th></tr></thead><tbody><tr><td>Intact release</td><td>Saved intent + confidence</td><td>What did the selected version return?</td></tr><tr><td>Faulty loader</td><td>Same probabilities, rotated names</td><td>Which destination changed?</td></tr><tr><td>Your repair</td><td>Restored mapping + regression check</td><td>Did the prediction return to its original value?</td></tr></tbody></table><p class="release-evidence">Open the notebook’s saved comparison in EvalTables. Then follow one changed case to its batch trace and exact artifact.</p><p class="caption">No fabricated result is shown here. Use your actual saved rows; publication status is separate from execution.</p>
+
+<!--
+This is an investigation guide rather than a product screenshot. Use native links from the release result. If publication is unavailable, inspect the notebook comparison and retry publication only. Do not rerun the batch to fix an export error.
+-->
+
+---
+class: exercise
+name: release-decision-exercise
+---
+
+<div class="kicker">5:00</div>
+
+# Decide whether this release passes its checks
+
+
+
+<p class="where">Notebook → Release and recover</p><ol><li>Review label order, set membership, and prediction parity.</li><li>Select release or reject and explain the choice. A failed check cannot be approved as a passing release.</li><li>Save the exact artifact and comparison alongside your decision.</li></ol><div class="done"><strong>Run:</strong> Save my release decision<br><strong>Check:</strong> The decision names the tested artifact and its checks.</div>
+
+<!--
+Give learners time to make the change before showing a worked answer. This release drill reuses the selected classifier. It sends no inference request and does not train again. Find the exact saved stage and native evidence links in the result.
+-->
+
+---
+name: release-rollback
+---
+
+<div class="kicker">5:08</div>
+
+# Rollback reloads a version; it does not undo training
+
+<div class="flow"><div>Previous intact artifact<small>Exact version remains available</small></div><b class="arrow">→</b><div>Fresh restore folder<small>Load saved model and metadata</small></div><b class="arrow">→</b><div>Same request batch<small>Verify the original predictions</small></div></div><p>You are switching the batch predictor’s selected files. No new fit and no model-weight reversal are needed.</p><p class="caption">Registry can organize approved versions. It does not deploy this Python predictor automatically.</p>
+
+<!--
+Require an explicit rollback action. Preserve the faulty release and its evidence for diagnosis rather than deleting it. The required path uses Artifacts in the participant project; Registry permissions are optional.
+-->
+
+---
+class: exercise
+name: release-rollback-exercise
+---
+
+<div class="kicker">5:12</div>
+
+# Restore the previous version and verify it
+
+
+
+<p class="where">Notebook → Release and recover</p><ol><li>Click the restore control. Confirm it loads the previously recorded exact artifact.</li><li>Run its fixed batch and check parity with the intact release.</li><li>Explain which defect the rollback removed and which classifier errors it cannot fix.</li></ol><div class="done"><strong>Run:</strong> Restore the previous release and verify its predictions<br><strong>Check:</strong> Restored predictions match the saved intact version.</div>
+
+<!--
+Give learners time to make the change before showing a worked answer. This release drill reuses the selected classifier. It sends no inference request and does not train again. Find the exact saved stage and native evidence links in the result.
+-->
+
+---
+name: release-conclusion
+---
+
+<div class="kicker">5:20</div>
+
+# Separate the model gain from the release repair
+
+<div class="two-col"><div><h2>Model comparison</h2><p>Did a different representation or accepted training data improve routing on the official test set?</p></div><div><h2>Release drill</h2><p>Did the repaired loader reproduce the selected model’s destinations on the fixed regression batch?</p></div></div><p class="caption">The first measures a classifier change. The second verifies recovery from a known implementation defect.</p>
+
+<!--
+Have participants explain both results without merging denominators or calling the drill a new benchmark. Preserve original 3,080-test predictions; the 77-case capstone cohort is reused and may overlap reviewed training additions. Keep remaining genuine classifier errors in the conclusion.
+-->
+
+---
 class: exercise
 name: report-exercise
 ---
 
-<div class="kicker">3:55</div>
+<div class="kicker">5:25</div>
 
 # Write the decision you would make
 
 
 
-<p class="where">Notebook → Explain the result</p><ol><li>State whether the revised classifier helped on the declared measure.</li><li>Describe one request that still needs a person.</li><li>Publish the saved comparison and your explanation.</li></ol><div class="done"><strong>Run:</strong> Publish my conclusion with the saved comparisons<br><strong>Check:</strong> A colleague can follow the reported score to the predictions, selected model, and reviewed data.</div>
+<p class="where">Notebook → Explain the result</p><ol><li>Separate the official-test classifier result from the controlled release repair.</li><li>Describe a remaining routing mistake and the regression check you added.</li><li>Publish the saved comparison and your explanation.</li></ol><div class="done"><strong>Run:</strong> Publish my conclusion with the saved comparisons<br><strong>Check:</strong> A colleague can follow the reported score to the predictions, selected model, and reviewed data.</div>
 
 <!--
-Allow final ten minutes for pairs to explain one result. Publishing retries reuse saved executions. The report conclusion should be participant-authored. An improvement is welcome, but understanding a tie or regression completes the learning outcome.
-Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
+Final five minutes: explain the classifier comparison and the release drill separately. Include the tested artifact, decision, rollback evidence, and remaining errors. Publication reuses saved work.
 -->
 
 ---
 name: release
 ---
 
-<div class="kicker">3:57</div>
+<div class="kicker">5:28</div>
 
-# Reproduce the selected version before releasing it
+# Optional: organize approved versions in Registry
 
-<div class="flow"><div>Evaluation + decision<small>Why this version was selected</small></div><b class="arrow">→</b><div>Exact artifact<small>Code, preprocessing, weights</small></div><b class="arrow">→</b><div>Batch prediction<small>Reproduce a saved case</small></div></div><p>Optional: link the evaluated artifact to Registry, run a release check, and restore the previous version after a failed check.</p><p class="caption">Registry stores selected artifact versions. It does not automatically deploy an arbitrary model.</p>
+<p>Link the exact evaluated artifact to Registry if your project has permission. Keep the checks, previous version, and release decision alongside it.</p><p>ARIA can investigate the saved incident where access permits. Verify its cited event before accepting a proposed next test.</p><p class="caption">These are optional. Your batch predictor and Artifact-based rollback already work without Registry or ARIA.</p>
 
 <!--
-The core ends with saved reproducible files and evaluation. Registry release and rollback is an advanced module with its own permissions. Specialist SFT changes model weights and needs a separate forecast and explicit launch; it is not required for this workshop.
-Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
+Registry manages versions, not automatic deployment. ARIA access and usage are separate; it cannot approve a repair automatically. The core capstone contains no new inference calls or training. Specialist fine-tuning remains a separately qualified future lesson.
 -->
 
 ---
 name: close
 ---
 
-<div class="kicker">3:59</div>
+<div class="kicker">5:29</div>
 
 # What to take back to your team
 
@@ -855,6 +1106,34 @@ def validate_judge(value):
 <!--
 This uses the same type guard as the notebook. Valid JSON is only a response contract; it does not establish agreement with a reviewer.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
+-->
+
+---
+class: answer
+name: release-repair-answer
+---
+
+<div class="kicker">Reference</div>
+
+# Worked answer: preserve the probability-column order
+
+```python
+def label_names(model_classes):
+    return list(model_classes)
+
+def check_release(model_classes, loaded_labels):
+    expected = list(model_classes)
+    loaded = list(loaded_labels)
+    return {
+        "label_set": set(loaded) == set(expected),
+        "label_order": loaded == expected,
+    }
+```
+
+<p class="answer-nav source-link"><a href="/56">Return to the release repair exercise ↩</a></p>
+
+<!--
+This checks the metadata contract; the subsequent saved batch checks prediction parity independently. Passing both checks does not prove every route is correct. Give the worked answer after an attempt or explicit request.
 -->
 
 ---

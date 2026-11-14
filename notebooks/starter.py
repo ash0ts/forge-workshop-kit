@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.6.2/forge_workshop_kit-0.6.2-py3-none-any.whl",
+#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/forge_workshop_kit-0.7.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -98,6 +98,7 @@ __generated_with = "0.25.2"
 app = marimo.App(width="medium", app_title='My Forge workshop')
 
 
+# workshop-cell: starter/display/1
 @app.cell(hide_code=True)
 def _():
     import os
@@ -108,6 +109,7 @@ def _():
     return (WorkshopSession, mo, os, setup, time, tracing, ui,)
 
 
+# workshop-cell: starter/controls/connect
 @app.cell(hide_code=True)
 def _(mo, setup, ui):
     mo.md("# My workshop\nCopy this notebook to your project, then replace the square calculation below with your own exercise. The tracing scopes show how to send its arguments and result to Agent Lens.")
@@ -118,6 +120,7 @@ def _(mo, setup, ui):
     return (connect, project,)
 
 
+# workshop-cell: starter/action/connect
 @app.cell
 def _(WorkshopSession, connect, mo, project, setup):
     mo.stop(not connect.value)
@@ -129,6 +132,7 @@ def _(WorkshopSession, connect, mo, project, setup):
     return (session,)
 
 
+# workshop-cell: starter/controls/run_exercise
 @app.cell(hide_code=True)
 def _(mo):
     run_exercise=mo.ui.run_button(label="Run my instrumented exercise")
@@ -136,6 +140,7 @@ def _(mo):
     return (run_exercise,)
 
 
+# workshop-cell: starter/action/run_exercise
 @app.cell
 def _(mo, run_exercise, session, tracing):
     mo.stop(not run_exercise.value)

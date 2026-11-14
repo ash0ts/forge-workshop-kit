@@ -2,7 +2,7 @@
 
 Use each deck to explain the next code change, then leave the exercise instructions on screen while participants work in the notebook. The Solar workshop covers forecasting experiments in a research lab. Pending, Inc. covers an office agent handling billing and account access.
 
-The expanded decks teach the foundations and the implementation in one session. Pending, Routing and Inspection take four hours; Solar and Transit take six. These allocations include exercises and breaks. Participants need basic Python, but do not need to arrive knowing the metrics, tensor shapes or coordination mechanisms.
+The expanded decks teach the foundations and the implementation in one session. Pending and Inspection take four hours; Routing takes five and a half; Solar and Transit take six. These allocations include exercises and breaks. Participants need basic Python, but do not need to arrive knowing the metrics, tensor shapes or coordination mechanisms.
 
 Follow the same request, observation or proposed edit through its intermediate values before moving to a product screen. Then ask participants to explain one value and find the code that produced it. The diagrams retain their positions as each operation appears. The PDF includes those states so it can be read without the presenter.
 
@@ -59,7 +59,7 @@ Use **Compare in EvalTables** to open the native Evaluation Tables Preview in th
 
 ## Routing, inspection and transit
 
-For [Routing](routing-workshop.md), follow one customer message through features, fitting, prediction and review. Compute a per-intent F1 before averaging across the 77 intents. Separate confidence-based routing from margin-based review selection, and keep the prompted routing sample separate from the classifier evaluation.
+For [Routing](routing-workshop.md), follow one customer message through features, fitting, prediction and review. Compute a per-intent F1 before averaging across the 77 intents. Separate confidence-based routing from margin-based review selection, and keep the prompted routing sample separate from the classifier evaluation. The release capstone then reproduces the selected model, introduces a labeled loader defect, repairs its intent mapping, and verifies rollback. Its regression batch comes from the development review pool; it is not another test benchmark.
 
 For [Inspection](inspection-workshop.md), keep the same board visible while explaining its whole-image and patch features. Show how the normal reference bank produces distances, how the classifier produces a score, and how a frozen threshold produces a decision. Masks help inspect defects; they are not training inputs. Active and random selection receive equal review budgets.
 

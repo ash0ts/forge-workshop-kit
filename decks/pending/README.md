@@ -14,7 +14,7 @@ From the Workshop Kit root:
 python3 scripts/build_decks.py --only pending --install --pdf --validate
 ```
 
-This generates a browser deck, PDF, and source package. Build and preview make no workshop model calls. For local editing, run `npm run dev` inside this directory after installing its locked dependencies.
+This generates a browser deck, PDF, and source package. Build and preview make no workshop model calls. For local editing, run `npm run dev` inside this directory after installing the shared locked dependencies with `npm ci --prefix ..`.
 
 The authored source is `scripts/build-storyboard.py`. Regenerate rather than editing `slides.md` or presenter notes by hand. The diagrams are editable Vue/SVG components. Each meaningful build is a separate slide so the PDF keeps the same teaching sequence. The [visual guide](notes/visual-upgrade.md) maps the explanations to their code, fixtures, and recorded results.
 

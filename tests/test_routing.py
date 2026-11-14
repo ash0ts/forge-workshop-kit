@@ -113,3 +113,34 @@ def test_final_freeze_requires_judge_attempt_not_routing_sample(tmp_path):
     assert teaching.freeze_prerequisite(session) is None
     assert "judge" in teaching.completed_steps(session)
     assert teaching.judge_summary(session)["result"]["metrics"]["agreement"] is None
+
+
+def test_download_resolves_temporary_directory_alias(tmp_path, monkeypatch):
+    """macOS /var aliases /private/var; valid archive entries remain inside it."""
+    import contextlib
+    import hashlib
+    import io
+    import tarfile
+    from types import SimpleNamespace
+
+    real = tmp_path / 'real'
+    real.mkdir()
+    alias = tmp_path / 'alias'
+    alias.symlink_to(real, target_is_directory=True)
+    payload = b'[]'
+    manifest = {'encoder_revision': routing.ENCODER_REVISION, 'dataset_revision': routing.DATA_REVISION,
+                'files': {'cases.json': hashlib.sha256(payload).hexdigest()}}
+    buffer = io.BytesIO()
+    with tarfile.open(fileobj=buffer, mode='w:gz') as bundle:
+        for name, body in [('cases.json', payload), ('manifest.json', json.dumps(manifest).encode())]:
+            entry = tarfile.TarInfo('banking77-v1/' + name)
+            entry.size = len(body)
+            bundle.addfile(entry, io.BytesIO(body))
+    archive = buffer.getvalue()
+    monkeypatch.setattr(teaching.tempfile, 'TemporaryDirectory', lambda: contextlib.nullcontext(str(alias)))
+    monkeypatch.setattr(teaching.httpx, 'get', lambda *a, **k: SimpleNamespace(
+        text=hashlib.sha256(archive).hexdigest(), raise_for_status=lambda: None))
+    monkeypatch.setattr(teaching.httpx, 'stream', lambda *a, **k: contextlib.nullcontext(SimpleNamespace(
+        raise_for_status=lambda: None, iter_bytes=lambda: iter([archive]))))
+    destination = teaching.download(tmp_path / 'downloaded')
+    assert (destination / 'cases.json').read_bytes() == payload

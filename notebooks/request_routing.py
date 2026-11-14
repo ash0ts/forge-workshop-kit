@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[routing] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.6.2/forge_workshop_kit-0.6.2-py3-none-any.whl",
+#   "forge-workshop-kit[routing] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/forge_workshop_kit-0.7.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -111,9 +111,10 @@
 # ///
 import marimo
 __generated_with = "0.25.2"
-app = marimo.App(width="medium", app_title='Route customer requests')
+app = marimo.App(width="medium", app_title='Route customer requests and learn from mistakes')
 
 
+# workshop-cell: request_routing/display/1
 @app.cell(hide_code=True)
 def _():
     import json
@@ -122,6 +123,7 @@ def _():
     import joblib
     import marimo as mo
     from forge_workshop_kit import WorkshopSession, setup, ui, routing, routing_teaching as teaching
+    from forge_workshop_kit import routing_release as release_lab
     from forge_workshop_kit.review import save_review, reviewed_dataset
     from forge_workshop_kit.provider import validated_json, Provider
     from forge_workshop_kit.session import digest
@@ -131,23 +133,24 @@ def _():
     get_step, set_step = mo.state("setup", allow_self_loops=True)
     get_output, set_output = mo.state({})
     get_revision, set_revision = mo.state(0)
-    return (Path, Provider, WorkshopSession, digest, event, export_trace, get_context, get_output, get_revision, get_step, joblib, json, mo, publish_comparison, publish_report, reviewed_dataset, routing, save_review, saved_trace_inputs, set_context, set_output, set_revision, set_step, setup, teaching, time, ui, validated_json,)
+    return (Path, Provider, WorkshopSession, digest, event, export_trace, get_context, get_output, get_revision, get_step, joblib, json, mo, publish_comparison, publish_report, release_lab, reviewed_dataset, routing, save_review, saved_trace_inputs, set_context, set_output, set_revision, set_step, setup, teaching, time, ui, validated_json,)
 
 
+# workshop-cell: request_routing/definitions/go_to
 @app.cell(hide_code=True)
-def _(export_trace, get_context, get_revision, instrument_tool, joblib, publish_comparison, routing, saved_trace_inputs, set_output, set_revision, set_step, teaching):
+def _(export_trace, get_context, instrument_tool, joblib, publish_comparison, release_lab, routing, saved_trace_inputs, set_output, set_revision, set_step, teaching):
     def go_to(step):
         session=get_context().get("session")
         if session: session.set_view(step)
         set_step(step)
     def refresh():
-        set_revision(get_revision()+1)
+        set_revision(lambda previous: previous+1)
     def show_result(name,result):
         set_output(lambda old:{**old,name:result})
     def trace_saved(stage):
         session=get_context()["session"]
         try:
-            receipt=export_trace(session, **saved_trace_inputs(session,stage.id), tool_writer=instrument_tool)
+            receipt=export_trace(session, **saved_trace_inputs(session,stage["id"] if isinstance(stage,dict) else stage.id), tool_writer=instrument_tool)
             return {"status":"published","url":receipt["url"]}
         except Exception as error:
             return {"status":"publication pending","error":str(error),"next":"Retry saved publications; do not rerun training."}
@@ -184,6 +187,12 @@ def _(export_trace, get_context, get_revision, instrument_tool, joblib, publish_
                     status["final"]=publish_comparison(session,"banking-routing-final",{label:teaching.publication_rows(rows) for label,rows in versions.items()},summaries={label:routing.score(rows) for label,rows in versions.items()})
                 except Exception as error:
                     status["final"]={"status":"publication pending","error":str(error)}
+        records=release_lab.comparisons(session)
+        if records:
+            try:
+                versions={label:release_lab.comparison_rows(session,record) for label,record in records.items()}
+                status["release"]=publish_comparison(session,"banking-routing-release-drill",versions,summaries={label:record["result"]["metrics"] for label,record in records.items()})
+            except Exception as error:status["release"]={"status":"publication pending","error":str(error)}
         return status
 
     def load_fitted(record):
@@ -195,6 +204,7 @@ def _(export_trace, get_context, get_revision, instrument_tool, joblib, publish_
     return (go_to, load_fitted, publish_routing_results, refresh, show_result, trace_saved,)
 
 
+# workshop-cell: request_routing/definitions/routing_navigation
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, go_to, mo, teaching, ui):
     _s=get_context().get("session")
@@ -204,12 +214,13 @@ def _(get_context, get_revision, get_step, go_to, mo, teaching, ui):
     return (routing_navigation,)
 
 
+# workshop-cell: request_routing/definitions/routing_recovery_refresh
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, set_revision, setup):
     _s = get_context().get("session")
     _revision = get_revision()
     _view = get_step()
-    routing_recovery_refresh = mo.ui.button(label="Check for stopped or failed work", on_click=lambda _: set_revision(get_revision() + 1), disabled=not bool(_s))
+    routing_recovery_refresh = mo.ui.button(label="Check for stopped or failed work", on_click=lambda _: set_revision(lambda previous: previous + 1), disabled=not bool(_s))
     _options = _s.recovery_options() if _s else []
     _choices = {setup.recovery_label(_s.workshop, row) + " · " + row["id"][:6]: row["id"] for row in _options}
     routing_recovery_choice = mo.ui.dropdown(_choices, value=next(iter(_choices), None), label="Execution to review", full_width=True) if _choices else mo.ui.dropdown({"No failed executions": ""}, value="No failed executions", disabled=True)
@@ -217,6 +228,7 @@ def _(get_context, get_revision, get_step, mo, set_revision, setup):
     return (routing_recovery_choice, routing_recovery_refresh,)
 
 
+# workshop-cell: request_routing/controls/routing_recovery_allow
 @app.cell(hide_code=True)
 def _(get_context, mo, routing_recovery_choice, ui):
     _s = get_context().get("session")
@@ -228,6 +240,7 @@ def _(get_context, mo, routing_recovery_choice, ui):
     return (routing_recovery_allow, routing_recovery_confirm,)
 
 
+# workshop-cell: request_routing/action/routing_recovery_allow
 @app.cell(hide_code=True)
 def _(get_context, mo, refresh, routing_recovery_allow, routing_recovery_choice, routing_recovery_confirm, set_output):
     mo.stop(not routing_recovery_allow.value)
@@ -242,6 +255,7 @@ def _(get_context, mo, refresh, routing_recovery_allow, routing_recovery_choice,
     return
 
 
+# workshop-cell: request_routing/display/7
 @app.cell(hide_code=True)
 def _(get_output, mo):
     _message = get_output().get("recovery")
@@ -249,6 +263,7 @@ def _(get_output, mo):
     return
 
 
+# workshop-cell: request_routing/controls/help_button
 @app.cell(hide_code=True)
 def _(get_context, mo):
     help_message = mo.ui.text_area(label="What do you need help with?", full_width=True)
@@ -257,6 +272,7 @@ def _(get_context, mo):
     return (help_button, help_message,)
 
 
+# workshop-cell: request_routing/action/help_button
 @app.cell(hide_code=True)
 def _(get_context, help_button, help_message, mo):
     mo.stop(not help_button.value)
@@ -265,13 +281,15 @@ def _(get_context, help_button, help_message, mo):
     return
 
 
+# workshop-cell: request_routing/display/10
 @app.cell(hide_code=True)
 def _(get_step, mo, ui):
     mo.stop(get_step()!="setup")
-    mo.vstack([mo.md("**4-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/routing/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Route customer requests and learn from mistakes", "You're joining a fictional bank's support team. A missing card, a broken card, and an unfamiliar payment need different workflows. You'll build a router, inspect its mistakes, review labels, and test a revised classifier.", theme="routing")),mo.md("The messages come from **Banking77**, published by PolyAI's researchers. It contains 10,003 training messages and 3,080 test messages across 77 banking intents. We reserve ten training examples per intent for validation and ten for review. The official test set stays untouched until the final comparison. These are public teaching data, not your customers' records."),mo.md("We'll start with word counts weighted by how distinctive they are, then train the same classifier on frozen sentence embeddings. After that, you decide which uncertain requests need a person. The support queue is fictional. Its enthusiasm for automatically forwarding tickets is familiar."),mo.md("**Today's output:** a selected router, the reviewed examples it learned from, an evaluation on matching requests, and a trace explaining one routing or labeling decision.")])
+    mo.vstack([mo.md("**5½-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/routing/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Route customer requests and learn from mistakes", "You're joining a fictional bank's support team. A missing card, a broken card, and an unfamiliar payment need different workflows. You'll build a router, inspect its mistakes, review labels, and test a revised classifier.", theme="routing")),mo.md("The messages come from **Banking77**, published by PolyAI's researchers. It contains 10,003 training messages and 3,080 test messages across 77 banking intents. We reserve ten training examples per intent for validation and ten for review. The official test set stays untouched until the final comparison. These are public teaching data, not your customers' records."),mo.md("We'll start with word counts weighted by how distinctive they are, then train the same classifier on frozen sentence embeddings. After that, you decide which uncertain requests need a person. The support queue is fictional. Its enthusiasm for automatically forwarding tickets is familiar."),mo.md("**Today's output:** a selected router, the reviewed examples it learned from, an evaluation on matching requests, and a trace explaining one routing or labeling decision.")])
     return
 
 
+# workshop-cell: request_routing/controls/connect
 @app.cell(hide_code=True)
 def _(get_step, mo, setup):
     _context=setup.project_context()
@@ -282,6 +300,7 @@ def _(get_step, mo, setup):
     return (allowance, connect, project_input,)
 
 
+# workshop-cell: request_routing/action/connect
 @app.cell(hide_code=True)
 def _(WorkshopSession, allowance, connect, mo, project_input, refresh, set_context, set_step, setup):
     mo.stop(not connect.value)
@@ -296,6 +315,7 @@ def _(WorkshopSession, allowance, connect, mo, project_input, refresh, set_conte
     return
 
 
+# workshop-cell: request_routing/definitions/instrument_tool
 @app.cell
 def _():
     # This scope writes the tool spans used in every export below.
@@ -313,6 +333,7 @@ def _():
     return (instrument_tool,)
 
 
+# workshop-cell: request_routing/controls/first_trace
 @app.cell(hide_code=True)
 def _(get_context, get_step, mo):
     first_trace=mo.ui.run_button(label="Send my first Agent Lens trace",disabled=not bool(get_context().get("session")))
@@ -320,6 +341,7 @@ def _(get_context, get_step, mo):
     return (first_trace,)
 
 
+# workshop-cell: request_routing/action/first_trace
 @app.cell(hide_code=True)
 def _(event, first_trace, get_context, mo, refresh, show_result, trace_saved):
     mo.stop(not first_trace.value)
@@ -334,6 +356,7 @@ def _(event, first_trace, get_context, mo, refresh, show_result, trace_saved):
     return
 
 
+# workshop-cell: request_routing/controls/load_data_button
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, ui):
     _s=get_context().get("session")
@@ -343,6 +366,7 @@ def _(get_context, get_revision, get_step, mo, ui):
     return (load_data_button,)
 
 
+# workshop-cell: request_routing/action/load_data_button
 @app.cell(hide_code=True)
 def _(get_context, load_data_button, mo, refresh, routing, set_context, teaching):
     mo.stop(not load_data_button.value)
@@ -357,6 +381,7 @@ def _(get_context, load_data_button, mo, refresh, routing, set_context, teaching
     return
 
 
+# workshop-cell: request_routing/definitions/get_data
 @app.cell(hide_code=True)
 def _(get_context, routing, teaching):
     def get_data():
@@ -368,6 +393,7 @@ def _(get_context, routing, teaching):
     return (get_data,)
 
 
+# workshop-cell: request_routing/definitions/request_picker
 @app.cell(hide_code=True)
 def _(get_context, get_data, get_revision, get_step, mo, routing, teaching):
     _s=get_context().get("session")
@@ -380,6 +406,7 @@ def _(get_context, get_data, get_revision, get_step, mo, routing, teaching):
     return (request_picker, reveal_label,)
 
 
+# workshop-cell: request_routing/display/20
 @app.cell(hide_code=True)
 def _(get_data, get_step, mo, request_picker, reveal_label, routing):
     mo.stop(get_step()!="data" or not request_picker.value)
@@ -388,6 +415,7 @@ def _(get_data, get_step, mo, request_picker, reveal_label, routing):
     return
 
 
+# workshop-cell: request_routing/controls/check_classifier
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, teaching, ui):
     _s=get_context().get("session")
@@ -399,6 +427,7 @@ def _(get_context, get_revision, get_step, mo, teaching, ui):
     return (check_classifier, classifier_editor, train_classifiers,)
 
 
+# workshop-cell: request_routing/action/check_classifier
 @app.cell(hide_code=True)
 def _(check_classifier, classifier_editor, mo, show_result, teaching):
     mo.stop(not check_classifier.value)
@@ -409,6 +438,7 @@ def _(check_classifier, classifier_editor, mo, show_result, teaching):
     return
 
 
+# workshop-cell: request_routing/action/train_classifiers
 @app.cell
 def _(classifier_editor, get_context, get_data, joblib, mo, refresh, routing, show_result, teaching, time, trace_saved, train_classifiers):
     mo.stop(not train_classifiers.value)
@@ -433,6 +463,7 @@ def _(classifier_editor, get_context, get_data, joblib, mo, refresh, routing, sh
     return
 
 
+# workshop-cell: request_routing/display/24
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, teaching):
     _s=get_context().get("session")
@@ -442,6 +473,7 @@ def _(get_context, get_revision, get_step, mo, teaching):
     return
 
 
+# workshop-cell: request_routing/controls/check_policy
 @app.cell(hide_code=True)
 def _(get_context, get_data, get_revision, get_step, mo, routing, teaching, ui):
     _s=get_context().get("session")
@@ -460,6 +492,7 @@ def _(get_context, get_data, get_revision, get_step, mo, routing, teaching, ui):
     return (accepted_label, check_policy, policy_editor, review_picker, review_threshold, reviewer, save_label,)
 
 
+# workshop-cell: request_routing/action/check_policy
 @app.cell(hide_code=True)
 def _(check_policy, mo, policy_editor, show_result, teaching):
     mo.stop(not check_policy.value)
@@ -470,6 +503,7 @@ def _(check_policy, mo, policy_editor, show_result, teaching):
     return
 
 
+# workshop-cell: request_routing/display/27
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, policy_editor, review_threshold, routing, teaching, ui):
     mo.stop(get_step()!="review")
@@ -485,6 +519,7 @@ def _(get_context, get_revision, get_step, mo, policy_editor, review_threshold, 
     return
 
 
+# workshop-cell: request_routing/display/28
 @app.cell(hide_code=True)
 def _(get_context, get_step, mo, review_picker, teaching, ui):
     mo.stop(get_step()!="review" or not review_picker.value)
@@ -494,6 +529,7 @@ def _(get_context, get_step, mo, review_picker, teaching, ui):
     return
 
 
+# workshop-cell: request_routing/action/save_label
 @app.cell
 def _(accepted_label, get_context, get_data, json, mo, refresh, review_picker, reviewed_dataset, reviewer, routing, save_label, save_review, show_result, teaching):
     mo.stop(not save_label.value)
@@ -513,6 +549,7 @@ def _(accepted_label, get_context, get_data, json, mo, refresh, review_picker, r
     return
 
 
+# workshop-cell: request_routing/controls/check_judge
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, teaching, ui):
     _s=get_context().get("session")
@@ -527,6 +564,7 @@ def _(get_context, get_revision, get_step, mo, teaching, ui):
     return (check_judge, judge_editor, judge_rubric, retry_judge_publication, run_judge, run_prompted,)
 
 
+# workshop-cell: request_routing/action/check_judge
 @app.cell(hide_code=True)
 def _(check_judge, judge_editor, mo, show_result, teaching):
     mo.stop(not check_judge.value)
@@ -537,6 +575,7 @@ def _(check_judge, judge_editor, mo, show_result, teaching):
     return
 
 
+# workshop-cell: request_routing/action/retry_judge_publication
 @app.cell
 def _(get_context, mo, publish_routing_results, refresh, retry_judge_publication, show_result):
     mo.stop(not retry_judge_publication.value)
@@ -545,6 +584,7 @@ def _(get_context, mo, publish_routing_results, refresh, retry_judge_publication
     return
 
 
+# workshop-cell: request_routing/action/run_prompted
 @app.cell
 def _(get_context, get_data, mo, refresh, routing, run_prompted, show_result, teaching, trace_saved, validated_json):
     mo.stop(not run_prompted.value)
@@ -566,6 +606,7 @@ def _(get_context, get_data, mo, refresh, routing, run_prompted, show_result, te
     return
 
 
+# workshop-cell: request_routing/action/run_judge
 @app.cell
 def _(get_context, get_data, json, judge_editor, judge_rubric, mo, publish_routing_results, refresh, reviewed_dataset, routing, run_judge, show_result, teaching, trace_saved, validated_json):
     mo.stop(not run_judge.value)
@@ -605,6 +646,7 @@ def _(get_context, get_data, json, judge_editor, judge_rubric, mo, publish_routi
     return
 
 
+# workshop-cell: request_routing/controls/retrain
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, teaching, ui):
     _s=get_context().get("session")
@@ -614,6 +656,7 @@ def _(get_context, get_revision, get_step, mo, teaching, ui):
     return (retrain,)
 
 
+# workshop-cell: request_routing/action/retrain
 @app.cell
 def _(classifier_editor, get_context, get_data, joblib, mo, refresh, retrain, review_threshold, reviewed_dataset, routing, show_result, teaching, time, trace_saved):
     mo.stop(not retrain.value)
@@ -637,6 +680,7 @@ def _(classifier_editor, get_context, get_data, joblib, mo, refresh, retrain, re
     return
 
 
+# workshop-cell: request_routing/controls/freeze
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, teaching, ui):
     _s=get_context().get("session")
@@ -651,6 +695,7 @@ def _(get_context, get_revision, get_step, mo, teaching, ui):
     return (final_run, freeze, freeze_choice, freeze_reason, publish_final_comparison,)
 
 
+# workshop-cell: request_routing/action/freeze
 @app.cell
 def _(freeze, freeze_choice, freeze_reason, get_context, mo, policy_editor, refresh, review_threshold, teaching):
     mo.stop(not freeze.value)
@@ -668,6 +713,7 @@ def _(freeze, freeze_choice, freeze_reason, get_context, mo, policy_editor, refr
     return
 
 
+# workshop-cell: request_routing/action/final_run
 @app.cell
 def _(final_run, get_context, get_data, load_fitted, mo, publish_routing_results, refresh, routing, show_result, teaching):
     mo.stop(not final_run.value)
@@ -689,6 +735,7 @@ def _(final_run, get_context, get_data, load_fitted, mo, publish_routing_results
     return
 
 
+# workshop-cell: request_routing/action/publish_final_comparison
 @app.cell
 def _(get_context, mo, publish_final_comparison, publish_routing_results, refresh, show_result):
     mo.stop(not publish_final_comparison.value)
@@ -697,6 +744,7 @@ def _(get_context, mo, publish_final_comparison, publish_routing_results, refres
     return
 
 
+# workshop-cell: request_routing/definitions/final_picker
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, teaching):
     _s=get_context().get("session")
@@ -708,6 +756,7 @@ def _(get_context, get_revision, get_step, mo, teaching):
     return (final_picker,)
 
 
+# workshop-cell: request_routing/display/42
 @app.cell(hide_code=True)
 def _(final_picker, get_context, get_step, mo, teaching, ui):
     mo.stop(get_step()!="final" or not final_picker.value)
@@ -720,6 +769,192 @@ def _(final_picker, get_context, get_step, mo, teaching, ui):
     return
 
 
+# workshop-cell: routing.release.controls
+@app.cell(hide_code=True)
+def _(get_context, get_revision, get_step, mo, release_lab, teaching, ui):
+    _s=get_context().get("session")
+    _revision=get_revision()
+    _release_records={name:teaching.saved(_s,"routing/release/"+name) for name in ("prepare","reproduce","incident","repair","decision","rollback")} if _s else {}
+    _release_ready=bool(_s and teaching.saved(_s,"routing/final/selected"))
+    _phase=next((name for name in ("prepare","reproduce","incident","repair","decision","rollback") if not _release_records.get(name)),"complete")
+    if _release_records.get("decision") and _release_records["decision"]["result"]["release"]["decision"]=="reject":_phase="complete"
+    release_prepare=mo.ui.run_button(label="Prepare the selected router for release",disabled=not _release_ready)
+    release_reload=mo.ui.run_button(label="Publish and reload the exact release artifact",disabled=not bool(_release_records.get("prepare")))
+    release_incident=mo.ui.run_button(label="Run the deliberately faulty release",disabled=not bool(_release_records.get("reproduce")))
+    release_check=mo.ui.run_button(label="Check my release and repair code")
+    release_repair=mo.ui.run_button(label="Run my repaired loader on the same requests",disabled=not bool(_release_records.get("incident")))
+    release_loader_editor=mo.ui.code_editor(value=_s.get_draft("routing/release-loader",release_lab.LOADER_STARTER) if _s else release_lab.LOADER_STARTER,language="python",on_change=lambda value:_s.save_draft("routing/release-loader",value) if _s else None,debounce=False)
+    release_check_editor=mo.ui.code_editor(value=_s.get_draft("routing/release-check",release_lab.CHECK_STARTER) if _s else release_lab.CHECK_STARTER,language="python",on_change=lambda value:_s.save_draft("routing/release-check",value) if _s else None,debounce=False)
+    release_choice=mo.ui.radio({"Release the tested repair":"release","Reject the repair and keep the previous release":"reject"},value="Release the tested repair",label="Release decision")
+    release_reason=mo.ui.text_area(value=_s.get_draft("routing/release-reason","") if _s else "",label="Which checks support this decision?",full_width=True,on_change=lambda value:_s.save_draft("routing/release-reason",value) if _s else None)
+    release_decide=mo.ui.run_button(label="Save my release decision",disabled=not bool(_release_records.get("repair")))
+    release_rollback=mo.ui.run_button(label="Restore the previous release and verify its predictions",disabled=not bool(_release_records.get("decision")))
+    release_retry=mo.ui.run_button(label="Retry release publication only",disabled=not bool(_release_records.get("prepare")))
+    _phase_ui={
+        "prepare":mo.vstack([mo.md("**1. Package the selected router.** Save its classifier, preprocessing identity, label order, review policy, and source. Freeze one review-pool request per intent before computing any release predictions."),release_prepare]),
+        "reproduce":mo.vstack([mo.md("**2. Reload the published version.** Upload the saved package, download its exact `:vN` version, and predict the fixed request batch. This uses cached features and CPU classifier inference. It makes no model API calls."),release_reload]),
+        "incident":mo.vstack([mo.md("**3. Run a controlled incident.** The faulty loader rotates the intent names while leaving the probabilities unchanged. This defect is deliberately introduced for the drill. Open its Agent Lens tool result and compare one destination with the healthy version."),mo.md("```python\n"+release_lab.FAULTY_LOADER+"\n```"),release_incident]),
+        "repair":mo.vstack([mo.md("**4. Write the check and repair.** Compare one request below and save your reviewed regression case. Complete `check_release` so names in the wrong order fail. Complete `label_names` to preserve the classifier's probability-column order. Your functions are saved in the actual repaired package and used by the batch below."),release_check_editor,release_loader_editor,release_check,release_repair,mo.accordion({"Hint":mo.md("Compare sets to check membership, and lists to check order. Do not sort the model's class list."),"Worked answer":mo.md("```python\n"+release_lab.CHECK_SOLUTION+"\n"+release_lab.LOADER_SOLUTION+"\n```")})]),
+        "decision":mo.vstack([mo.md("**5. Decide whether to release.** Read the checks and matching requests below. The repair should reproduce the healthy classifier, including its remaining mistakes. Saving this decision uploads the saved repaired package; it does not run it again."),release_choice,release_reason,release_decide]),
+        "rollback":mo.vstack([mo.md("**6. Practice rollback.** Download the previous exact artifact and compare its outputs with the healthy batch. A saved pointer alone is not a verified rollback."),release_rollback]),
+        "complete":mo.md("**Release drill saved.** Explain the defect, your repair, and the rollback result in the conclusion. The official test comparison above is unchanged.")}
+    mo.vstack([mo.Html(ui.heading("The classifier passed. The release did not.","Your support team has selected a router. Now check that the released files preserve the same decisions. This is a controlled release drill, not a new claim about model quality.",theme="routing")),mo.md("**Regression set:** one lexical-first review-pool request per intent. Some may have been used for review or retraining. These are reproduction checks, not independent test results."),_phase_ui[_phase] if _release_ready else mo.callout(mo.md("Complete the final classifier comparison first. [Go to the final comparison](#final)."),kind="warn"),mo.accordion({"Publication failed?":mo.vstack([mo.md("Saved executions remain available. Retry uploads here, then use the current step's button. Completed batches are reused."),release_retry]),"Optional Registry and ARIA":mo.md("The required release is this notebook's batch predictor. If you have Registry access, link the exact artifact version after the checks pass. Registry does not deploy it. Where ARIA is enabled, ask it to investigate the saved incident; verify its cited request before accepting a suggestion.")})]) if get_step()=="release" else mo.md("")
+    return (release_check, release_check_editor, release_choice, release_decide, release_incident, release_loader_editor, release_prepare, release_reason, release_reload, release_repair, release_retry, release_rollback,)
+
+
+# workshop-cell: routing.release.prepare
+@app.cell(hide_code=True)
+def _(get_context, get_data, mo, refresh, release_lab, release_prepare, show_result):
+    mo.stop(not release_prepare.value)
+    _s=get_context()["session"]
+    _record=release_lab.prepare(_s,get_data())
+    show_result("release package",{"Cases":_record["result"]["case_count"],"Files":list(_record["result"]["metadata"]["files"]),"Next":"Publish and reload the exact release artifact."})
+    _s.checkpoint("release")
+    refresh()
+    return
+
+
+# workshop-cell: routing.release.reproduce
+@app.cell(hide_code=True)
+def _(get_context, get_data, mo, refresh, release_lab, release_reload, show_result, trace_saved):
+    mo.stop(not release_reload.value)
+    _s=get_context()["session"]
+    _record=release_lab.reproduce_selected(_s,get_data())
+    show_result("reloaded release",{"Artifact":_record["result"]["artifact"],**_record["result"]["metrics"]})
+    show_result("release trace",trace_saved(_record))
+    _s.checkpoint("release")
+    refresh()
+    return
+
+
+# workshop-cell: routing.release.incident
+@app.cell(hide_code=True)
+def _(get_context, get_data, mo, refresh, release_incident, release_lab, show_result, trace_saved):
+    mo.stop(not release_incident.value)
+    _s=get_context()["session"]
+    _record=release_lab.run_variant(_s,get_data(),variant="incident")
+    show_result("controlled release incident",{"Checks":_record["result"]["checks"],"Meaning":"The names still match, but their order does not. Confidence alone does not reveal this defect."})
+    show_result("incident trace",trace_saved(_record))
+    _s.checkpoint("release")
+    refresh()
+    return
+
+
+# workshop-cell: routing.release.check
+@app.cell(hide_code=True)
+def _(mo, release_check, release_check_editor, release_lab, release_loader_editor, show_result):
+    mo.stop(not release_check.value)
+    try:show_result("release code check",release_lab.check_exercises(release_loader_editor.value,release_check_editor.value))
+    except Exception as _error:show_result("release code check",{"status":"needs work","message":str(_error)})
+    return
+
+
+# workshop-cell: routing.release.repair
+@app.cell(hide_code=True)
+def _(get_context, get_data, mo, publish_routing_results, refresh, release_check_editor, release_lab, release_loader_editor, release_repair, show_result, trace_saved):
+    mo.stop(not release_repair.value)
+    _s=get_context()["session"]
+    _record=release_lab.run_variant(_s,get_data(),variant="repair",loader_source=release_loader_editor.value,check_source=release_check_editor.value)
+    show_result("repair checks",_record["result"]["checks"])
+    show_result("repair trace",trace_saved(_record))
+    _s.checkpoint("release")
+    show_result("release comparison",publish_routing_results(_s,include_judge=False,include_final=False))
+    refresh()
+    return
+
+
+# workshop-cell: routing.release.decision
+@app.cell(hide_code=True)
+def _(get_context, mo, refresh, release_choice, release_decide, release_lab, release_reason, show_result):
+    mo.stop(not release_decide.value)
+    _s=get_context()["session"]
+    _record=release_lab.decide(_s,decision=release_choice.value,reason=release_reason.value)
+    show_result("release decision",_record)
+    _s.checkpoint("release")
+    refresh()
+    return
+
+
+# workshop-cell: routing.release.rollback
+@app.cell(hide_code=True)
+def _(get_context, get_data, mo, publish_routing_results, refresh, release_lab, release_rollback, show_result, trace_saved):
+    mo.stop(not release_rollback.value)
+    _s=get_context()["session"]
+    _record=release_lab.rollback(_s,get_data())
+    show_result("rollback",_record["result"]["release"])
+    show_result("rollback trace",trace_saved(_record))
+    _s.checkpoint("release")
+    show_result("release comparison",publish_routing_results(_s,include_judge=False,include_final=False))
+    refresh()
+    return
+
+
+# workshop-cell: routing.release.retry
+@app.cell(hide_code=True)
+def _(get_context, mo, publish_routing_results, refresh, release_lab, release_retry, show_result, teaching, trace_saved):
+    mo.stop(not release_retry.value)
+    _s=get_context()["session"]
+    _status={}
+    for _name in ("prepare","incident","repair"):
+        _record=teaching.saved(_s,"routing/release/"+_name)
+        if _record:
+            try:_status[_name]=release_lab.publish_bundle(_s,_record)
+            except Exception as _error:_status[_name]={"status":"publication pending","error":str(_error)}
+    for _record in release_lab.comparisons(_s).values():
+        _status["trace/"+_record["id"]]=trace_saved(_record)
+    show_result("release artifact publication",_status)
+    show_result("release comparison",publish_routing_results(_s,include_judge=False,include_final=False))
+    refresh()
+    return
+
+
+# workshop-cell: routing.release.compare
+@app.cell(hide_code=True)
+def _(get_context, get_revision, get_step, mo, release_lab, teaching):
+    _s=get_context().get("session")
+    _revision=get_revision()
+    _release_versions=release_lab.comparisons(_s) if _s else {}
+    _release_rows={label:record["result"]["predictions"] for label,record in _release_versions.items()}
+    _release_cases=list(_release_rows.values())[0] if _release_rows else []
+    release_case=mo.ui.dropdown({r["text"]:r["case_id"] for r in _release_cases},value=_release_cases[0]["text"] if _release_cases else None,label="Follow one request across releases",full_width=True)
+    mo.vstack([mo.ui.table(teaching.metrics_table(_release_rows),selection=None),release_case]) if get_step()=="release" and _release_rows else mo.md("")
+    return (release_case,)
+
+
+# workshop-cell: routing.release.review.controls
+@app.cell(hide_code=True)
+def _(get_context, get_step, mo, release_case, release_lab):
+    mo.stop(get_step()!="release" or not release_case.value)
+    _s=get_context()["session"]
+    _versions=release_lab.comparisons(_s)
+    _rows=[{"Version":label,"Destination":row["prediction"],"Reference":row["target"],"Confidence":round(row["confidence"],3),"Needs review":row["abstained"]} for label,record in _versions.items() for row in record["result"]["predictions"] if row["case_id"]==release_case.value]
+    _faulty=next((row for row in _versions.get("faulty",{}).get("result",{}).get("predictions",[]) if row["case_id"]==release_case.value),None)
+    release_accept_label=mo.ui.dropdown({name:name for name in sorted({r["target"] for r in _versions["healthy"]["result"]["predictions"]})},label="Your reviewed intent",full_width=True)
+    release_review_reason=mo.ui.text_area(value=_s.get_draft("routing/release-review-reason","") if _s else "",label="Why should this request go to that workflow?",full_width=True,on_change=lambda value:_s.save_draft("routing/release-review-reason",value))
+    release_save_case=mo.ui.run_button(label="Save this reviewed regression case",disabled=not bool(_faulty))
+    mo.vstack([mo.ui.table(_rows,selection=None),mo.md("Choose the intended support workflow after reading the request. Saving this case records your review; it does not retrain the frozen classifier."),release_accept_label,release_review_reason,release_save_case])
+    return (release_accept_label, release_review_reason, release_save_case,)
+
+
+# workshop-cell: routing.release.review
+@app.cell(hide_code=True)
+def _(get_context, mo, refresh, release_accept_label, release_case, release_review_reason, release_save_case, save_review, show_result, teaching):
+    mo.stop(not release_save_case.value)
+    if not release_accept_label.value:raise ValueError("Choose an intent after reviewing the request.")
+    if not release_review_reason.value.strip():raise ValueError("Explain why this request belongs in that workflow.")
+    _s=get_context()["session"]
+    _incident=teaching.saved(_s,"routing/release/incident")
+    _row=next(row for row in _incident["result"]["predictions"] if row["case_id"]==release_case.value)
+    _review=save_review(_s,case_id=_row["case_id"],proposed_label=_row["prediction"],accepted_label=release_accept_label.value,reviewer=_s.workspace_id,dataset_version="routing-release-regression/"+_incident["result"]["metadata"]["dataset"],evidence={"text":_row["text"],"controlled_drill":True,"incident_stage":_incident["id"],"reason":release_review_reason.value})
+    with _s.stage("routing/release/regression",config={"review":_review["id"]}) as _stage:
+        if _stage.needs_run:_stage.record({"review":_review,"expected_behavior":"Preserve the classifier probability-column mapping. Human acceptance does not change the frozen model."})
+    _s.checkpoint("release")
+    show_result("saved regression case",{"Request":_row["text"],"Accepted intent":release_accept_label.value,"Review":_review["id"]})
+    refresh()
+    return
+
+
+# workshop-cell: request_routing/controls/publish
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, teaching, ui):
     _s=get_context().get("session")
@@ -731,6 +966,7 @@ def _(get_context, get_revision, get_step, mo, teaching, ui):
     return (conclusion, publish, retry_exports,)
 
 
+# workshop-cell: request_routing/action/retry_exports
 @app.cell(hide_code=True)
 def _(export_trace, get_context, instrument_tool, mo, publish_routing_results, refresh, retry_exports, saved_trace_inputs, show_result):
     mo.stop(not retry_exports.value)
@@ -748,18 +984,19 @@ def _(export_trace, get_context, instrument_tool, mo, publish_routing_results, r
     return
 
 
+# workshop-cell: request_routing/action/publish
 @app.cell
-def _(conclusion, get_context, mo, publish, publish_report, publish_routing_results, refresh, show_result, ui):
+def _(conclusion, get_context, mo, publish, publish_report, publish_routing_results, refresh, release_lab, show_result, ui):
     mo.stop(not publish.value)
     _s=get_context()["session"]
     if not conclusion.value.strip():raise ValueError("Write your conclusion before publishing the report.")
     _result=publish_routing_results(_s)
-    _links={}
+    _links=release_lab.evidence_links(_s)
     for _key,_receipt in _s.read()["publications"].items():
         if _key.startswith("comparison/"):
             _links.update(ui.comparison_links(_receipt,suffix=_key.rsplit("/",1)[-1][:6]))
-    _report=publish_report(_s,conclusion.value,_links)
-    with _s.stage("routing/report",config={"conclusion":conclusion.value}) as _stage:
+    _report=publish_report(_s,conclusion.value+release_lab.report_text(_s),_links)
+    with _s.stage("routing/report",config={"conclusion":conclusion.value,"release_summary":release_lab.report_text(_s)}) as _stage:
         if _stage.needs_run:_stage.record({"comparison":_result,"report":_report})
     _s.checkpoint("report")
     show_result("publication",{"comparison":_result,"report":_report})
@@ -767,6 +1004,7 @@ def _(conclusion, get_context, mo, publish, publish_report, publish_routing_resu
     return
 
 
+# workshop-cell: request_routing/display/58
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, teaching, ui):
     mo.stop(get_step()!="report")
@@ -778,6 +1016,7 @@ def _(get_context, get_revision, get_step, mo, teaching, ui):
     return
 
 
+# workshop-cell: request_routing/display/59
 @app.cell(hide_code=True)
 def _(get_output, get_step, mo, ui):
     _outputs=get_output()
@@ -786,6 +1025,7 @@ def _(get_output, get_step, mo, ui):
     return
 
 
+# workshop-cell: request_routing/definitions/routing_next
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, go_to, mo, teaching, ui):
     _s=get_context().get("session")

@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.6.2/forge_workshop_kit-0.6.2-py3-none-any.whl",
+#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/forge_workshop_kit-0.7.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -98,6 +98,7 @@ __generated_with = "0.25.2"
 app = marimo.App(width="medium", app_title='Workshop progress')
 
 
+# workshop-cell: facilitator/definitions/monitor_roster_path
 @app.cell(hide_code=True)
 def _():
     import os
@@ -111,6 +112,7 @@ def _():
     return (Path, datetime, get_roster, list_workshops, load_roster, mo, monitor, monitor_roster_path, os, save_roster, set_roster, timezone,)
 
 
+# workshop-cell: facilitator/definitions/monitor_intro
 @app.cell(hide_code=True)
 def _(get_roster, list_workshops, mo):
     monitor_intro = mo.md("# Workshop progress\nAdd participants’ public project links and save the roster. This notebook reads their progress; it cannot run their code. A missing update means unknown. Ask the participant before assuming a run failed.")
@@ -129,6 +131,7 @@ def _(get_roster, list_workshops, mo):
     return (monitor_intro, roster_form,)
 
 
+# workshop-cell: facilitator/display/3
 @app.cell(hide_code=True)
 def _(mo, monitor_roster_path, roster_form, save_roster, set_roster):
     mo.stop(roster_form.value is None)
@@ -142,6 +145,7 @@ def _(mo, monitor_roster_path, roster_form, save_roster, set_roster):
     return
 
 
+# workshop-cell: facilitator/controls/refresh
 @app.cell(hide_code=True)
 def _(mo):
     auto_refresh = mo.ui.checkbox(label="Refresh every 30 seconds while this notebook is open")
@@ -150,6 +154,7 @@ def _(mo):
     return (auto_refresh, refresh,)
 
 
+# workshop-cell: facilitator/display/5
 @app.cell(hide_code=True)
 def _(auto_refresh, mo):
     timer = mo.ui.refresh(default_interval=30) if auto_refresh.value else None
@@ -157,6 +162,7 @@ def _(auto_refresh, mo):
     return (timer,)
 
 
+# workshop-cell: facilitator/display/6
 @app.cell
 def _(auto_refresh, datetime, get_roster, mo, monitor, refresh, timer, timezone):
     mo.stop(not get_roster().get("projects"), mo.md("Save at least one project above."))

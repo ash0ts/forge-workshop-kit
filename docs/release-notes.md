@@ -1,4 +1,12 @@
-# Forge Workshop Kit 0.5.1
+# Forge Workshop Kit 0.7.0
+
+Routing now continues beyond selecting a classifier. Participants reproduce its exact artifact, investigate a deliberately faulty label mapping, add a regression check, repair the loader, and verify rollback. The additional 90 minutes include a break. The existing test-set comparison stays separate from this development regression drill.
+
+Maintainers have a repository-local workshop skill and shared commands for authoring, checking, rehearsing, building, and publishing. Exercise references connect current action cells to their controls and deck instructions. Rehearsals report their actual coverage; old qualification scripts are not counted as current notebook runs. The decks share one dependency toolchain.
+
+Previous releases and attendee copies remain intact. The default inference allowance stays at $8; the release drill needs no model calls. See [release checks](release-checks.md) for validation and remaining external-account and human-rehearsal requirements.
+
+## 0.5.1
 
 The four workshops now publish native **Evaluation Tables (Preview)** through the pinned W&B SDK’s Weave backend. Each comparison opens in a named Forge workspace with its reference version, matching cases and individual scores. Agent Lens links remain attached to the executions; the evaluation table compares their outputs.
 

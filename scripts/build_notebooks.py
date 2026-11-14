@@ -1,33 +1,44 @@
 """Build editable notebooks from authored cells; hosted/local use the same source."""
+
 import argparse
 from pathlib import Path
+
 from notebook_builder import Cell, render
 from release_support import notebook_header, templates
-ROOT=Path(__file__).resolve().parents[1]
+
+from forge_workshop_kit.authoring import bind_cells, load_cells
+
+ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument('--only', choices=[row['slug'] for row in templates()])
+parser.add_argument("--only", choices=[row["slug"] for row in templates()])
 selected = parser.parse_args().only
 
 
-def save(name,title,cells):
-    if selected and name != selected + '.py':
+def save(name, title, cells):
+    if selected and name != selected + ".py":
         return
     header = notebook_header(Path(name).stem, title)
-    (ROOT/'notebooks'/name).write_text(
-        header+render(cells)+'\nif __name__ == "__main__":\n    app.run()\n',
-        encoding='utf-8', newline='\n',
+    (ROOT / "notebooks" / name).write_text(
+        header
+        + render(bind_cells(Path(name).stem, cells))
+        + '\nif __name__ == "__main__":\n    app.run()\n',
+        encoding="utf-8",
+        newline="\n",
     )
 
-if selected in (None, 'solar_autoresearch'):
-    from solar_cells import cells as solar_cells
-    save("solar_autoresearch.py","Solar Autoresearch",solar_cells)
 
-def add(code,hide=False):
-    cells.append(Cell(code,hide=hide))
+for row in templates():
+    if row.get("authoring", {}).get("cells_module") and selected in (None, row["slug"]):
+        save(row["slug"] + ".py", row["title"], load_cells(ROOT, row["slug"]))
 
 
-cells=[]
-add('''
+def add(code, hide=False):
+    cells.append(Cell(code, hide=hide))
+
+
+cells = []
+add(
+    """
 import os
 from pathlib import Path
 from datetime import datetime, timezone
@@ -36,8 +47,11 @@ from forge_workshop_kit.monitoring import monitor, load_roster, save_roster
 from forge_workshop_kit.manifest import list_workshops
 monitor_roster_path = Path(os.getenv("WORKSHOP_MONITOR_ROSTER", ".workshop/facilitator/roster.json"))
 get_roster, set_roster = mo.state(load_roster(monitor_roster_path))
-''',True)
-add('''
+""",
+    True,
+)
+add(
+    """
 monitor_intro = mo.md("# Workshop progress\\nAdd participants’ public project links and save the roster. This notebook reads their progress; it cannot run their code. A missing update means unknown. Ask the participant before assuming a run failed.")
 _saved = get_roster()
 _options = {row["title"]: row["id"] for row in list_workshops()}
@@ -51,8 +65,11 @@ roster_form = mo.Html("<section><h3>Participants</h3>{projects}{workshop}<detail
     session=mo.ui.text(value=_saved.get("session", ""), label="Exact notebook copy ID · optional"),
 ).form(submit_button_label="Save roster and filters")
 mo.vstack([monitor_intro, roster_form, mo.md("The roster saves in this monitor’s runtime. Date filters use the last published update. Leave IDs blank to include all copies; each workspace gets its own row.")])
-''',True)
-add('''
+""",
+    True,
+)
+add(
+    """
 mo.stop(roster_form.value is None)
 try:
     _values = {**roster_form.value, "projects": roster_form.value["projects"].splitlines()}
@@ -61,17 +78,25 @@ try:
     mo.output.replace(mo.md("Roster saved. Click **Refresh progress** to read the projects."))
 except Exception as _error:
     mo.output.replace(mo.callout(mo.md(str(_error)), kind="warn"))
-''',True)
-add('''
+""",
+    True,
+)
+add(
+    """
 auto_refresh = mo.ui.checkbox(label="Refresh every 30 seconds while this notebook is open")
 refresh = mo.ui.run_button(label="Refresh progress")
 mo.hstack([refresh, auto_refresh])
-''',True)
-add('''
+""",
+    True,
+)
+add(
+    """
 timer = mo.ui.refresh(default_interval=30) if auto_refresh.value else None
 timer
-''',True)
-add('''
+""",
+    True,
+)
+add("""
 mo.stop(not get_roster().get("projects"), mo.md("Save at least one project above."))
 mo.stop(not refresh.value and not auto_refresh.value)
 if timer is not None:
@@ -85,37 +110,46 @@ try:
 except Exception as _error:
     rows = []
     mo.output.replace(mo.callout(mo.md("Progress unavailable: " + str(_error) + ". Participant notebooks can continue."), kind="warn"))
-''')
-save('facilitator.py','Workshop progress',cells)
+""")
+save("facilitator.py", "Workshop progress", cells)
 
-cells=[]
-add('''
+cells = []
+add(
+    """
 import os
 import time
 import marimo as mo
 from forge_workshop_kit import WorkshopSession, setup, ui
 from coreweave.forge.agentlens import tracing
-''',True)
-add('''
+""",
+    True,
+)
+add(
+    """
 mo.md("# My workshop\\nCopy this notebook to your project, then replace the square calculation below with your own exercise. The tracing scopes show how to send its arguments and result to Agent Lens.")
 _context=setup.project_context()
 project=mo.ui.text(value=_context["project"],label="entity/project",disabled=_context["hosted"] and _context["detected"])
 connect=mo.ui.run_button(label="Check project access")
 mo.vstack([mo.Html(ui.result("Copied notebook project", {"Project": _context["project"]})) if _context["hosted"] and _context["detected"] else project,connect])
-''',True)
-add('''
+""",
+    True,
+)
+add("""
 mo.stop(not connect.value)
 session=WorkshopSession.from_environment("starter",project=project.value)
 _access=session.check_access()
 session.restore()
 setup.save_access(session,_access)
 mo.ui.table(setup.capabilities(session), selection=None, pagination=False)
-''')
-add('''
+""")
+add(
+    """
 run_exercise=mo.ui.run_button(label="Run my instrumented exercise")
 run_exercise
-''',True)
-add('''
+""",
+    True,
+)
+add("""
 mo.stop(not run_exercise.value)
 sdk=tracing.init(session.project,autopatch_integrations=False)
 with session.stage("exercise",config={"input":3}) as stage:
@@ -129,19 +163,5 @@ with session.stage("exercise",config={"input":3}) as stage:
         sdk.force_flush()
 session.checkpoint("exercise")
 mo.md(str(stage.result))
-''')
-save('starter.py','My Forge workshop',cells)
-
-if selected in (None, 'pending_inc'):
-    from pending_cells import cells as pending_cells
-    save("pending_inc.py","Pending, Inc.",pending_cells)
-if selected in (None, 'request_routing'):
-    from routing_cells import cells as routing_cells
-    save('request_routing.py', 'Route customer requests', routing_cells)
-if selected in (None, 'visual_inspection'):
-    from inspection_cells import cells as inspection_cells
-    save('visual_inspection.py', 'Find defective parts before they ship', inspection_cells)
-
-if selected in (None, "transit_factory"):
-    from transit_cells import cells as transit_cells
-    save("transit_factory.py", "Build a transit app with a team of coding agents", transit_cells)
+""")
+save("starter.py", "My Forge workshop", cells)

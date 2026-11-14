@@ -1,11 +1,11 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "templates": [
     {
       "slug": "starter",
       "id": "starter",
       "kind": "starter",
-      "title": "Forge Workshop Kit \u00b7 Starter",
+      "title": "Forge Workshop Kit · Starter",
       "workflow_version": "1",
       "extras": [],
       "steps": [
@@ -21,7 +21,7 @@
       "slug": "facilitator",
       "id": "facilitator",
       "kind": "monitor",
-      "title": "Forge Workshop Kit \u00b7 Progress monitor",
+      "title": "Forge Workshop Kit · Progress monitor",
       "workflow_version": "1",
       "extras": [],
       "steps": [],
@@ -32,7 +32,7 @@
       "slug": "pending_inc",
       "id": "pending-direct-teaching",
       "kind": "workshop",
-      "title": "Pending, Inc. \u00b7 Your project",
+      "title": "Pending, Inc. · Your project",
       "workflow_version": "1",
       "extras": [
         "pending"
@@ -188,6 +188,203 @@
             }
           ]
         }
+      },
+      "authoring": {
+        "cells_module": "pending_cells",
+        "notebook": "notebooks/pending_inc.py",
+        "deck": {
+          "directory": "pending",
+          "title": "Pending, Inc.",
+          "file_stem": "pending-inc",
+          "storyboard": "decks/pending/scripts/build-storyboard.py"
+        },
+        "runbook": "docs/pending-facilitator.md",
+        "exercises": [
+          {
+            "id": "setup-operation",
+            "step": "setup",
+            "cell_id": "pending_inc/action/pending_trace",
+            "function": null,
+            "activity": "revise",
+            "task": "In the inspect_notebook operation in the visible action cell, return one more measured environment field.",
+            "check_control": null,
+            "run_control": "pending_trace",
+            "prerequisites": [],
+            "expected_output": "The saved tool result contains your field; setup makes no model request.",
+            "forge_investigation": "Open inspect_notebook in Agent Lens and match the added field to its Python return value."
+          },
+          {
+            "id": "tool-tracing",
+            "step": "setup",
+            "cell_id": "pending_inc/action/pending_trace",
+            "function": "my_tool_span",
+            "activity": "inspect",
+            "task": "Read my_tool_span in the instrumentation editor. Identify where arguments, results, errors, call identity, and actual timestamps enter the Tool scope.",
+            "check_control": null,
+            "run_control": "pending_trace",
+            "prerequisites": [],
+            "expected_output": "A verified tool span with the recorded operation times and returned environment fields.",
+            "forge_investigation": "Find the arguments, returned dictionary, and start/end times in your setup tool span.",
+            "function_source": "src/forge_workshop_kit/pending/teaching.py"
+          },
+          {
+            "id": "tool",
+            "step": "tools",
+            "cell_id": "pending_inc/action/check_pending_tool",
+            "function": "my_invoice_tool",
+            "activity": "implement",
+            "task": "Complete my_invoice_tool: select the requested account, filter payments by invoice_id, and return that account’s refunds without changing its state.",
+            "check_control": "check_pending_tool",
+            "run_control": "check_pending_tool",
+            "prerequisites": [
+              "setup"
+            ],
+            "expected_output": "The requested invoice, missing invoice, and other-account checks pass without mutating account state.",
+            "forge_investigation": "Find the exact account_id and invoice_id arguments and the returned payments in the lookup span.",
+            "function_source": "src/forge_workshop_kit/pending/teaching.py"
+          },
+          {
+            "id": "loop",
+            "step": "loop",
+            "cell_id": "pending_inc/action/run_pending",
+            "function": "my_dispatch",
+            "activity": "implement",
+            "task": "Route lookup_invoice to your Python function. Delegate other action names to their registered tools and return the resulting world and observation.",
+            "check_control": "check_pending_loop",
+            "run_control": "run_pending",
+            "prerequisites": [
+              "setup",
+              "tool"
+            ],
+            "expected_output": "The selected tool runs once with its arguments; unrelated tools remain available.",
+            "forge_investigation": "Follow lookup_invoice from the selected action to its Python arguments and returned payments.",
+            "function_source": "src/forge_workshop_kit/pending/teaching.py",
+            "run_label": "Freeze this executor and run the two starting tickets"
+          },
+          {
+            "id": "observation",
+            "step": "loop",
+            "cell_id": "pending_inc/action/run_pending",
+            "function": "my_observation",
+            "activity": "implement",
+            "task": "Append the selected action and its actual result to a new message list. Leave the previous request unchanged.",
+            "check_control": "check_pending_loop",
+            "run_control": "run_pending",
+            "prerequisites": [
+              "setup",
+              "tool",
+              "loop"
+            ],
+            "expected_output": "The next request contains the assistant action and returned tool observation.",
+            "forge_investigation": "Open the model request after an invoice lookup and find the same payments that the tool returned.",
+            "function_source": "src/forge_workshop_kit/pending/teaching.py",
+            "run_label": "Freeze this executor and run the two starting tickets"
+          },
+          {
+            "id": "model-tracing",
+            "step": "loop",
+            "cell_id": "pending_inc/action/run_pending",
+            "function": "my_model_span",
+            "activity": "inspect",
+            "task": "Read my_model_span, then trace one starting ticket. Follow the request messages, returned model identity, and usage fields from its saved receipt into the LLM scope.",
+            "check_control": "check_pending_loop",
+            "run_control": "run_pending",
+            "prerequisites": [
+              "setup",
+              "tool",
+              "loop",
+              "observation"
+            ],
+            "expected_output": "Model spans match the starting ticket’s actual requests; missing usage is not replaced with invented counts.",
+            "forge_investigation": "Open a starting-ticket model span. Match its input messages and response to the preceding tool result.",
+            "function_source": "src/forge_workshop_kit/pending/teaching.py",
+            "run_label": "Freeze this executor and run the two starting tickets"
+          },
+          {
+            "id": "retry",
+            "step": "loop",
+            "cell_id": "pending_inc/action/check_recovery",
+            "function": "recover_access",
+            "activity": "implement",
+            "task": "Reuse the timed-out write’s original operation_id, then read onboarding_status. Compare both recovery procedures from the same starting state.",
+            "check_control": "check_recovery",
+            "run_control": "check_recovery",
+            "prerequisites": [
+              "setup"
+            ],
+            "expected_output": "The new-ID retry adds duplicate memberships; the repaired procedure leaves one membership and records an account read.",
+            "forge_investigation": "Compare the committed-write timeout, retry arguments, and subsequent status check in the two recovery traces.",
+            "function_source": "src/forge_workshop_kit/pending/recovery.py"
+          },
+          {
+            "id": "state-scorer",
+            "step": "evals",
+            "cell_id": "pending_inc/action/pending_judge",
+            "function": "my_state_check",
+            "activity": "implement",
+            "task": "For the billing ticket, require exactly one refund of 4,900 cents. Score the saved account state, not the employee’s summary.",
+            "check_control": "check_pending_scorer",
+            "run_control": "pending_judge",
+            "prerequisites": [
+              "loop",
+              "observation"
+            ],
+            "expected_output": "Full refund passes; partial, absent, and duplicate refunds fail despite identical completion claims.",
+            "forge_investigation": "Compare the account check and explanation judgment for the same starting ticket in the development evaluation.",
+            "function_source": "src/forge_workshop_kit/pending/teaching.py"
+          },
+          {
+            "id": "judge-validator",
+            "step": "evals",
+            "cell_id": "pending_inc/action/pending_judge",
+            "function": "my_judge_validation",
+            "activity": "implement",
+            "task": "Require boolean grounded and complete fields and a nonempty reason. Reject malformed judge answers before treating them as scores.",
+            "check_control": "check_pending_scorer",
+            "run_control": "pending_judge",
+            "prerequisites": [
+              "loop",
+              "observation"
+            ],
+            "expected_output": "Valid answers pass the local check; string booleans and empty reasons fail. Unavailable judgments remain missing.",
+            "forge_investigation": "Open the saved judge request and reason. Check whether a structurally valid answer agrees with the recorded actions.",
+            "function_source": "src/forge_workshop_kit/pending/teaching.py"
+          },
+          {
+            "id": "manual-skill",
+            "step": "manual",
+            "cell_id": "pending_inc/action/manual_pending",
+            "function": null,
+            "activity": "revise",
+            "task": "Choose the action that prompted your change and write a verification procedure in the skill editor. Rerun both development tickets.",
+            "check_control": null,
+            "run_control": "manual_pending",
+            "prerequisites": [
+              "evals"
+            ],
+            "expected_output": "A saved skill diff and two runs from the same initial account records; no assumed quality gain.",
+            "forge_investigation": "Look for a successful read_skill call, its text in the next request, and any changed tool sequence."
+          },
+          {
+            "id": "improvement-controller",
+            "step": "improve",
+            "cell_id": "pending_inc/action/improve_pending",
+            "function": null,
+            "activity": "inspect",
+            "task": "Read the visible improvement controller. Trace the parent execution into proposal evidence, the selected decision into Harness, and that harness into each probe. Review each actual diff before running it.",
+            "check_control": null,
+            "run_control": "improve_pending",
+            "prerequisites": [
+              "manual"
+            ],
+            "expected_output": "Two rounds of proposals, probes, tested composition, and saved lessons, including unchanged versions when retained.",
+            "forge_investigation": "Select a branch and match its changed files, proposal rationale, executed harness, and Agent Lens conversation.",
+            "run_label": "Round 1 · Ask for two competing changes; then follow the current phase"
+          }
+        ],
+        "free_check_tests": [
+          "tests/test_pending_teaching.py::test_free_checks_require_the_actual_missing_behaviors"
+        ]
       }
     },
     {
@@ -309,7 +506,7 @@
             {
               "key": "error",
               "label": "GOES error",
-              "unit": "log10 W/m\u00b2",
+              "unit": "log10 W/m²",
               "direction": "min",
               "aggregate": "mean",
               "report": true,
@@ -317,6 +514,254 @@
             }
           ]
         }
+      },
+      "authoring": {
+        "cells_module": "solar_cells",
+        "notebook": "notebooks/solar_autoresearch.py",
+        "deck": {
+          "directory": "solar",
+          "title": "Solar forecasting with agent-assisted experiments",
+          "file_stem": "solar-autoresearch",
+          "storyboard": "decks/solar/scripts/build-storyboard.py"
+        },
+        "runbook": "docs/facilitator.md",
+        "exercises": [
+          {
+            "id": "tracing",
+            "step": "setup",
+            "cell_id": "solar_autoresearch/action/first_trace",
+            "function": "instrument_tool",
+            "activity": "implement",
+            "task": "Add workshop.exercise=\"solar-research\" inside the Tool scope. Keep the recorded arguments, result, identity, timing, and errors.",
+            "check_control": "check_instrumentation",
+            "run_control": "first_trace",
+            "prerequisites": [],
+            "expected_output": "The free check passes and the environment operation appears with your attribute.",
+            "forge_investigation": "Open inspect_training_environment in Agent Lens and find your attribute and its returned NumPy version.",
+            "function_source": "src/forge_workshop_kit/solar_teaching.py"
+          },
+          {
+            "id": "persistence",
+            "step": "baseline",
+            "cell_id": "solar_autoresearch/action/baseline_button",
+            "function": "persistence_forecast",
+            "activity": "implement",
+            "task": "Return a copy of the most recent measurement for each forecast window. Do not read the future target to form the prediction.",
+            "check_control": "check_persistence",
+            "run_control": "baseline_button",
+            "prerequisites": [
+              "data"
+            ],
+            "expected_output": "One prediction per window and the validation MAE for copying the latest reading.",
+            "forge_investigation": "Find the baseline’s dataset identity, date split, saved predictions, and error.",
+            "function_source": "src/forge_workshop_kit/solar_teaching.py"
+          },
+          {
+            "id": "measurement-loss",
+            "step": "search",
+            "cell_id": "solar_autoresearch/action/run_search",
+            "function": "training_loss",
+            "activity": "implement",
+            "task": "Complete the measurement model’s training_loss by averaging squared errors over the valid mask.",
+            "check_control": "check_measurement",
+            "run_control": "run_search",
+            "prerequisites": [
+              "data",
+              "persistence"
+            ],
+            "expected_output": "The local loss checks pass; six training runs use the completed loss with fixed data partitions.",
+            "forge_investigation": "Compare candidate.py and losses.json with the source and learning curves in the selected Sweep run.",
+            "function_source": "examples/solar/candidate.py"
+          },
+          {
+            "id": "flux-metric",
+            "step": "search",
+            "cell_id": "solar_autoresearch/action/run_search",
+            "function": "my_flux_mae",
+            "activity": "implement",
+            "task": "Average the absolute difference between predicted and observed log-flux. Test identical values and a constant one-unit error.",
+            "check_control": "check_measurement",
+            "run_control": "run_search",
+            "prerequisites": [
+              "data",
+              "persistence"
+            ],
+            "expected_output": "Identical arrays score 0 and a constant one-unit error scores 1; the learner metric agrees with the fixed scorer.",
+            "forge_investigation": "Find learner_metric and the independent validation error in the same training result.",
+            "function_source": "src/forge_workshop_kit/solar_teaching.py"
+          },
+          {
+            "id": "measurement-model",
+            "step": "search",
+            "cell_id": "solar_autoresearch/action/inspect_shapes",
+            "function": "build_model",
+            "activity": "inspect",
+            "task": "Inspect build_model. Follow the MLP flattening and temporal CNN operations through the printed input and output tensor shapes.",
+            "check_control": "check_measurement",
+            "run_control": "inspect_shapes",
+            "prerequisites": [
+              "data",
+              "measurement-loss"
+            ],
+            "expected_output": "A small forward pass returns one forecast per example without training or inference calls.",
+            "forge_investigation": "After the search, compare architecture, width, and source in the MLP and CNN runs.",
+            "function_source": "examples/solar/candidate.py"
+          },
+          {
+            "id": "training-record",
+            "step": "search",
+            "cell_id": "solar_autoresearch/action/run_search",
+            "function": "run_training",
+            "activity": "inspect",
+            "task": "In the visible run_training function, find where source, settings, dataset identity, metrics, weights, predictions, and losses are saved for one execution.",
+            "check_control": "check_measurement",
+            "run_control": "run_search",
+            "prerequisites": [
+              "data",
+              "measurement-loss",
+              "flux-metric"
+            ],
+            "expected_output": "Six bounded configurations produce separate tracked runs and reusable saved outputs.",
+            "forge_investigation": "Open one Sweep run and its Artifact. Match candidate.py, weights.pt, predictions.npy, configuration, and validation score."
+          },
+          {
+            "id": "measurement-repair",
+            "step": "search",
+            "cell_id": "solar_autoresearch/action/run_measurement_repair",
+            "function": "forward",
+            "activity": "inspect",
+            "task": "Inspect FluxPredictor.forward in the worked GOES repair. Follow the learned correction from the latest standardized XRS-B reading back to log-flux units.",
+            "check_control": "check_measurement_repair",
+            "run_control": "run_measurement_repair",
+            "prerequisites": [
+              "data",
+              "flux-metric"
+            ],
+            "expected_output": "The free forward-pass check passes; the explicit run compares the fixed recipe’s validation error with persistence.",
+            "forge_investigation": "Open the repair run and find its source, training-fitted scale, 1,200 updates, and saved validation forecast.",
+            "function_source": "examples/solar/qualification/goes_scaled.py"
+          },
+          {
+            "id": "measurement-repair-training",
+            "step": "search",
+            "cell_id": "solar_autoresearch/action/run_measurement_repair",
+            "function": "fit",
+            "activity": "inspect",
+            "task": "Inspect fit in the worked GOES repair and identify where prediction and target use the same training-fitted scale before computing loss.",
+            "check_control": "check_measurement_repair",
+            "run_control": "run_measurement_repair",
+            "prerequisites": [
+              "data",
+              "flux-metric"
+            ],
+            "expected_output": "The recorded recipe and loss history explain what trained; lower training loss alone is not the completion criterion.",
+            "forge_investigation": "Compare the repair’s loss history and validation error with the earlier search and persistence runs.",
+            "function_source": "examples/solar/qualification/goes_scaled.py"
+          },
+          {
+            "id": "image-model",
+            "step": "images",
+            "cell_id": "solar_autoresearch/action/run_images",
+            "function": "forward",
+            "activity": "implement",
+            "task": "Complete ImagePredictor.forward: add x[:, 1:2] to the network output for the residual architecture; keep direct prediction separate.",
+            "check_control": "check_images",
+            "run_control": "run_images",
+            "prerequisites": [
+              "data"
+            ],
+            "expected_output": "Both architectures return a future image of the expected shape and train on identical image windows.",
+            "forge_investigation": "Compare the direct and residual runs’ source, predictions, and validation errors.",
+            "function_source": "examples/solar/candidate.py"
+          },
+          {
+            "id": "image-loss",
+            "step": "images",
+            "cell_id": "solar_autoresearch/action/run_images",
+            "function": "training_loss",
+            "activity": "implement",
+            "task": "Complete training_loss in the separate image-model draft. Average squared pixel errors using the provided disk mask.",
+            "check_control": "check_images",
+            "run_control": "run_images",
+            "prerequisites": [
+              "data"
+            ],
+            "expected_output": "The local image checks pass; both manual models use the same authored training loss.",
+            "forge_investigation": "Open each manual image model’s candidate.py and loss history before comparing its validation forecast.",
+            "function_source": "examples/solar/candidate.py"
+          },
+          {
+            "id": "image-score",
+            "step": "images",
+            "cell_id": "solar_autoresearch/action/try_scorer",
+            "function": "my_image_mae",
+            "activity": "implement",
+            "task": "Average absolute error over valid pixels for each image, then average the image scores. Move the illustrative error on and off the disk.",
+            "check_control": "check_images",
+            "run_control": "try_scorer",
+            "prerequisites": [
+              "data"
+            ],
+            "expected_output": "A +1 error over the disk scores 1; changing only off-disk pixels scores 0.",
+            "forge_investigation": "After training, compare learner_metric with the fixed masked image error in the same run.",
+            "function_source": "src/forge_workshop_kit/solar_teaching.py"
+          },
+          {
+            "id": "evidence",
+            "step": "research",
+            "cell_id": "solar_autoresearch/action/research_button",
+            "function": "select_validation_evidence",
+            "activity": "implement",
+            "task": "Select configuration, validation metrics, losses, errors, trace links, stage identity, and available lessons. Reject final-test evidence.",
+            "check_control": "check_evidence",
+            "run_control": "research_button",
+            "prerequisites": [
+              "images"
+            ],
+            "expected_output": "The free check rejects test records and preserves the evidence actually sent with each proposal.",
+            "forge_investigation": "Open the evidence-read span and proposal request; match them to the selected parent training run.",
+            "function_source": "src/forge_workshop_kit/solar_teaching.py",
+            "run_label": "Round 1: Propose two code changes"
+          },
+          {
+            "id": "research-controller",
+            "step": "research",
+            "cell_id": "solar_autoresearch/action/research_button",
+            "function": "next_research_action",
+            "activity": "inspect",
+            "task": "Read next_research_action and the visible action cell. Follow saved phase records, actual diff review, candidate source passed to run_training, and the composition test.",
+            "check_control": null,
+            "run_control": "research_button",
+            "prerequisites": [
+              "images",
+              "evidence"
+            ],
+            "expected_output": "Two proposals per round are reviewed and tested; composition is tested before selection.",
+            "forge_investigation": "Follow a branch from the code diff to the training result and the next research-agent request.",
+            "run_label": "Round 1: current action; then Round 2: current action"
+          },
+          {
+            "id": "adoption-rule",
+            "step": "research",
+            "cell_id": "solar_autoresearch/action/research_button",
+            "function": "choose_adoption",
+            "activity": "inspect",
+            "task": "Inspect choose_adoption. Explain why failed, tied, or worse validation results retain the parent and why final-test scores do not choose the winner.",
+            "check_control": null,
+            "run_control": "research_button",
+            "prerequisites": [
+              "images",
+              "evidence"
+            ],
+            "expected_output": "The adopted record names the tested candidate only when its validation error is strictly lower; otherwise the parent remains.",
+            "forge_investigation": "Compare the adoption record, tested composition, and retained lesson in the branch view.",
+            "run_label": "Round 1: Save the adopted version and lesson; repeat in Round 2"
+          }
+        ],
+        "free_check_tests": [
+          "tests/test_solar_teaching.py::test_starter_gaps_fail_and_worked_answers_are_executable",
+          "tests/test_solar_teaching.py::test_model_gaps_and_solution_preserve_architecture_shapes"
+        ]
       }
     },
     {
@@ -358,11 +803,19 @@
           "Compare untouched requests"
         ],
         [
+          "release",
+          "Release and recover"
+        ],
+        [
           "report",
           "Explain and reproduce"
         ]
       ],
       "checkpoint_prefixes": [
+        [
+          "routing/release/",
+          "release"
+        ],
         [
           "setup",
           "setup"
@@ -396,7 +849,12 @@
           "report"
         ]
       ],
-      "comparison_labels": {},
+      "comparison_labels": {
+        "healthy": "Working release · regression cohort",
+        "faulty": "Controlled label-order defect",
+        "repaired": "Repaired release wrapper",
+        "rollback": "Restored previous release"
+      },
       "comparisons": {
         "banking-routing-final": {
           "metrics": [
@@ -449,9 +907,172 @@
               "report": true
             }
           ]
+        },
+        "banking-routing-release-drill": {
+          "title": "Controlled release drill · review-pool regression cases",
+          "metrics": [
+            {
+              "key": "macro_f1",
+              "label": "Macro F1",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "accuracy",
+              "label": "Correct routes",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "coverage",
+              "label": "Answered requests",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "selective_accuracy",
+              "label": "Correct answered routes",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "latency_seconds",
+              "label": "Latency",
+              "unit": "seconds",
+              "direction": "min",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "count",
+              "label": "Regression requests evaluated",
+              "unit": "count",
+              "direction": "context",
+              "aggregate": "scorer",
+              "report": true
+            }
+          ]
         }
       },
-      "release_status": "technical-preview"
+      "release_status": "technical-preview",
+      "authoring": {
+        "cells_module": "routing_cells",
+        "notebook": "notebooks/request_routing.py",
+        "deck": {
+          "directory": "routing",
+          "title": "Route customer requests and learn from mistakes",
+          "file_stem": "request-routing",
+          "storyboard": "decks/routing/scripts/build-storyboard.py"
+        },
+        "runbook": "docs/routing-workshop.md",
+        "exercises": [
+          {
+            "id": "tracing",
+            "step": "setup",
+            "cell_id": "request_routing/action/first_trace",
+            "function": "instrument_tool",
+            "activity": "revise",
+            "task": "Add a descriptive span attribute inside instrument_tool. Send the setup trace before training the classifier.",
+            "check_control": null,
+            "run_control": "first_trace",
+            "prerequisites": [],
+            "expected_output": "The setup operation appears in your own project with its arguments, result, timing, and added attribute.",
+            "forge_investigation": "Open the setup Tool span in Agent Lens and find the attribute you wrote."
+          },
+          {
+            "id": "classifier",
+            "step": "baseline",
+            "cell_id": "request_routing/action/train_classifiers",
+            "function": "make_classifier",
+            "function_source": "src/forge_workshop_kit/routing_teaching.py",
+            "check_control": "check_classifier",
+            "run_control": "train_classifiers",
+            "prerequisites": [
+              "data"
+            ],
+            "expected_output": "Two fitted classifiers with validation predictions.",
+            "forge_investigation": "Compare preprocessing, configuration, and macro F1.",
+            "activity": "implement",
+            "task": "Construct and return a LogisticRegression estimator with the specified settings. The run action fits it on TF–IDF and frozen sentence features."
+          },
+          {
+            "id": "review",
+            "step": "review",
+            "cell_id": "request_routing/action/save_label",
+            "function": "needs_review",
+            "function_source": "src/forge_workshop_kit/routing_teaching.py",
+            "check_control": "check_policy",
+            "run_control": "save_label",
+            "prerequisites": [
+              "baseline"
+            ],
+            "expected_output": "A reviewed label with its supporting request.",
+            "forge_investigation": "Open the versioned review record and its original prediction.",
+            "activity": "implement",
+            "task": "Implement needs_review using the probability threshold. Examine uncertain requests and save your accepted labels with their evidence."
+          },
+          {
+            "id": "judge",
+            "step": "judge",
+            "cell_id": "request_routing/action/run_judge",
+            "function": "validate_judge",
+            "function_source": "src/forge_workshop_kit/routing_teaching.py",
+            "check_control": "check_judge",
+            "run_control": "run_judge",
+            "prerequisites": [
+              "review"
+            ],
+            "expected_output": "Available judgments remain separate from invalid or unavailable results.",
+            "forge_investigation": "Compare the judge with the accepted human labels.",
+            "activity": "implement",
+            "task": "Implement validate_judge to check boolean fields and a nonempty reason before comparing automated judgments with your reviewed labels."
+          },
+          {
+            "id": "release-loader",
+            "step": "release",
+            "cell_id": "routing.release.repair",
+            "function": "label_names",
+            "function_source": "src/forge_workshop_kit/routing_release.py",
+            "check_control": "release_check",
+            "run_control": "release_repair",
+            "prerequisites": [
+              "final"
+            ],
+            "expected_output": "The repaired loader maps each probability column back to its original intent and reproduces healthy predictions on the fixed review-pool cases.",
+            "forge_investigation": "Compare one wrong route with the healthy and repaired rows; find the unchanged probabilities and changed intent ordering.",
+            "activity": "implement",
+            "task": "Repair label_names to preserve the classifier’s class order. First prepare and reload the release, then run the deliberately faulty loader; test your repair on that same saved cohort."
+          },
+          {
+            "id": "release-repair",
+            "step": "release",
+            "cell_id": "routing.release.repair",
+            "function": "check_release",
+            "function_source": "src/forge_workshop_kit/routing_release.py",
+            "check_control": "release_check",
+            "run_control": "release_repair",
+            "prerequisites": [
+              "final",
+              "release-loader"
+            ],
+            "expected_output": "Healthy, faulty, and repaired predictions on the same requests, with label-order checks.",
+            "forge_investigation": "Follow a changed route through its trace, saved wrapper, and aligned evaluation row.",
+            "activity": "implement",
+            "task": "Complete check_release with separate label-set and label-order checks. Catch a reordered label list even when every original name is still present."
+          }
+        ],
+        "free_check_tests": [
+          "tests/test_routing.py::test_exercises_require_the_missing_behavior"
+        ]
+      }
     },
     {
       "slug": "visual_inspection",
@@ -577,7 +1198,85 @@
           ]
         }
       },
-      "release_status": "technical-preview"
+      "release_status": "technical-preview",
+      "authoring": {
+        "cells_module": "inspection_cells",
+        "notebook": "notebooks/visual_inspection.py",
+        "deck": {
+          "directory": "inspection",
+          "title": "Find defective parts before they ship",
+          "file_stem": "visual-inspection",
+          "storyboard": "decks/inspection/scripts/build-storyboard.py"
+        },
+        "runbook": "docs/inspection-workshop.md",
+        "exercises": [
+          {
+            "id": "tracing",
+            "step": "setup",
+            "cell_id": "visual_inspection/action/first_inspection_trace",
+            "function": "instrument_inspection_tool",
+            "activity": "revise",
+            "task": "Add an attribute describing the feature representation inside instrument_inspection_tool. Use the same writer for setup and later training operations.",
+            "check_control": null,
+            "run_control": "first_inspection_trace",
+            "prerequisites": [],
+            "expected_output": "The setup operation has the added attribute; later feature and training calls use the same scope.",
+            "forge_investigation": "Find your attribute, returned NumPy version, and actual operation timestamps in Agent Lens."
+          },
+          {
+            "id": "features",
+            "step": "features",
+            "cell_id": "visual_inspection/action/train_inspection",
+            "function": "build_features",
+            "function_source": "src/forge_workshop_kit/inspection_teaching.py",
+            "check_control": "check_inspection_features",
+            "run_control": "train_inspection",
+            "prerequisites": [
+              "data"
+            ],
+            "expected_output": "Global and patch feature vectors use the same board IDs.",
+            "forge_investigation": "Compare the models and their saved feature implementations.",
+            "activity": "implement",
+            "task": "Complete build_features(data, rows, method, reference=None). Retain whole-image features or add nearest-normal-patch distances using the training reference bank."
+          },
+          {
+            "id": "threshold",
+            "step": "compare",
+            "cell_id": "visual_inspection/action/train_inspection",
+            "function": "choose_threshold",
+            "function_source": "src/forge_workshop_kit/inspection_teaching.py",
+            "check_control": "check_inspection_threshold",
+            "run_control": "train_inspection",
+            "prerequisites": [
+              "data",
+              "features"
+            ],
+            "expected_output": "A threshold selected using validation data.",
+            "forge_investigation": "Find misses, false alarms, and review volume separately.",
+            "activity": "implement",
+            "task": "Complete choose_threshold using validation targets and scores. Select the highest threshold satisfying the requested recall."
+          },
+          {
+            "id": "review",
+            "step": "review",
+            "cell_id": "visual_inspection/action/select_inspection_review",
+            "function": "choose_review",
+            "function_source": "src/forge_workshop_kit/inspection_teaching.py",
+            "check_control": "check_inspection_review",
+            "run_control": "select_inspection_review",
+            "prerequisites": [
+              "compare"
+            ],
+            "expected_output": "Two review selections of exactly 24 boards.",
+            "forge_investigation": "Compare active and random selections under the same budget.",
+            "activity": "implement",
+            "task": "Complete choose_review so active selection takes the examples closest to the frozen threshold. Compare its 24-board budget with a random selection."
+          }
+        ],
+        "free_check_tests": [
+          "tests/test_inspection.py::test_exercises_and_starters"
+        ]
+      }
     },
     {
       "slug": "transit_factory",
@@ -742,7 +1441,176 @@
           ]
         }
       },
-      "release_status": "technical-preview"
+      "release_status": "technical-preview",
+      "authoring": {
+        "cells_module": "transit_cells",
+        "notebook": "notebooks/transit_factory.py",
+        "deck": {
+          "directory": "transit",
+          "title": "Build a transit app with a team of coding agents",
+          "file_stem": "transit-factory",
+          "storyboard": "decks/transit/scripts/build-storyboard.py"
+        },
+        "runbook": "docs/transit-facilitator.md",
+        "exercises": [
+          {
+            "id": "tracing",
+            "step": "setup",
+            "cell_id": "transit_factory/action/setup_trace",
+            "function": "instrument_tool",
+            "activity": "revise",
+            "task": "Inspect instrument_tool and add a descriptive task attribute. Preserve the operation’s worker/task identities and actual timestamps.",
+            "check_control": null,
+            "run_control": "setup_trace",
+            "prerequisites": [],
+            "expected_output": "A setup Tool span appears in your project; the same writer records subsequent worker tools.",
+            "forge_investigation": "Find the added attribute and task identity on the setup span, then on a builder’s tool span."
+          },
+          {
+            "id": "acceptance",
+            "step": "setup",
+            "cell_id": "transit_factory/action/acceptance_check",
+            "function": "check_departures",
+            "activity": "implement",
+            "task": "Require trip 63926435 with service_date 2024-11-28 and departure_time 2024-11-29T00:08:00-05:00.",
+            "check_control": "acceptance_check",
+            "run_control": "acceptance_check",
+            "prerequisites": [],
+            "expected_output": "The real after-midnight departure passes; removing it or changing its service day fails.",
+            "forge_investigation": "After integration, find this same acceptance result beside the exact GTFS and source versions.",
+            "function_source": "src/forge_workshop_kit/factory_teaching.py"
+          },
+          {
+            "id": "worker",
+            "step": "worker",
+            "cell_id": "transit_factory/action/run_solo",
+            "function": "build_worker_request",
+            "activity": "implement",
+            "task": "Build the worker’s request from its approved task, interface contract, current source, and selected lessons. Keep reserved answers out of context.",
+            "check_control": "worker_check",
+            "run_control": "run_solo",
+            "prerequisites": [
+              "setup",
+              "acceptance"
+            ],
+            "expected_output": "The free check retains task, source, and lesson content; the explicit run starts one worker with that request.",
+            "forge_investigation": "Open the initial model request and find the assigned files, task, and supplied lessons.",
+            "function_source": "src/forge_workshop_kit/factory_teaching.py",
+            "check_label": "Check my build_worker_request code"
+          },
+          {
+            "id": "dispatch",
+            "step": "worker",
+            "cell_id": "transit_factory/action/run_solo",
+            "function": "dispatch_action",
+            "activity": "implement",
+            "task": "Look up the selected operation in the allowed tools, call it exactly once with the action dictionary, and return its result. Reject unknown operations.",
+            "check_control": "worker_check",
+            "run_control": "run_solo",
+            "prerequisites": [
+              "setup",
+              "acceptance"
+            ],
+            "expected_output": "A selected read/edit/test operation returns the actual observation to the worker’s next request.",
+            "forge_investigation": "Follow one chosen operation through its arguments, tool result, and following model request.",
+            "function_source": "src/forge_workshop_kit/factory_teaching.py",
+            "check_label": "Check my build_worker_request code"
+          },
+          {
+            "id": "claims",
+            "step": "tasks",
+            "cell_id": "transit_factory/action/run_team",
+            "function": "ready_tasks",
+            "activity": "implement",
+            "task": "Return pending tasks only when every dependency is integrated. A submitted patch does not unblock integration.",
+            "check_control": "tasks_check",
+            "run_control": "run_team",
+            "prerequisites": [
+              "worker",
+              "dispatch",
+              "acceptance"
+            ],
+            "expected_output": "The local dependency check blocks unfinished prerequisites and admits integrated ones.",
+            "forge_investigation": "Compare claim and integration events in the task board with the worker conversations.",
+            "function_source": "src/forge_workshop_kit/factory_teaching.py",
+            "check_label": "Check my ready_tasks code"
+          },
+          {
+            "id": "atomic-claim",
+            "step": "tasks",
+            "cell_id": "transit_factory/action/run_team",
+            "function": "claim_task",
+            "activity": "implement",
+            "task": "Call the task board’s atomic claim operation before starting a worker. Compare it with the deliberately unsafe read-then-write race.",
+            "check_control": "tasks_check",
+            "run_control": "run_team",
+            "prerequisites": [
+              "worker",
+              "dispatch",
+              "acceptance"
+            ],
+            "expected_output": "Two simultaneous attempts produce exactly one owner for a task.",
+            "forge_investigation": "Find the accepted ownership claim before the worker’s first edit and follow that task through integration.",
+            "function_source": "src/forge_workshop_kit/factory_teaching.py",
+            "check_label": "Check my ready_tasks code"
+          },
+          {
+            "id": "memory",
+            "step": "memory",
+            "cell_id": "transit_factory/action/run_followup",
+            "function": "select_memories",
+            "activity": "implement",
+            "task": "Retrieve accepted lessons with matching project scope, current contract revision, and relevant tags. Exclude proposed, stale, and unrelated notes.",
+            "check_control": "memory_check",
+            "run_control": "run_followup",
+            "prerequisites": [
+              "integrate"
+            ],
+            "expected_output": "The free check returns only the supported current lesson; matched follow-up workers differ only in their accepted-lesson input.",
+            "forge_investigation": "Open read_memory and the next model request. Identify the exact lesson returned and the subsequent code it may have influenced.",
+            "function_source": "src/forge_workshop_kit/factory_teaching.py",
+            "check_label": "Check my select_memories code"
+          },
+          {
+            "id": "scorer",
+            "step": "evaluate",
+            "cell_id": "transit_factory/action/run_evaluation",
+            "function": "score_scenario",
+            "activity": "implement",
+            "task": "Compare the actual and expected departure identifier lists, including their order. A completion message cannot replace a departure.",
+            "check_control": "evaluate_check",
+            "run_control": "run_evaluation",
+            "prerequisites": [
+              "followup"
+            ],
+            "expected_output": "Exact lists pass; missing or reordered departures fail. The independent reserved-scenario scorer remains separate.",
+            "forge_investigation": "Open a matched case in EvalTables and trace its delivered departure list back to the tested source.",
+            "function_source": "src/forge_workshop_kit/factory_teaching.py",
+            "check_label": "Check my score_scenario code"
+          },
+          {
+            "id": "release",
+            "step": "release",
+            "cell_id": "transit_factory/action/release_button",
+            "function": "release_decision",
+            "activity": "implement",
+            "task": "Require a nonempty result set and every reserved scenario to have passed=True. Reject missing or failed results.",
+            "check_control": "release_check",
+            "run_control": "release_button",
+            "prerequisites": [
+              "evaluate"
+            ],
+            "expected_output": "The local release check rejects empty, false, and unavailable results; publication records the selected source and decision.",
+            "forge_investigation": "Open the released Artifact and its evaluation. Verify source, dataset, contracts, lessons, and test results before reproducing the app.",
+            "function_source": "src/forge_workshop_kit/factory_teaching.py",
+            "check_label": "Check my release_decision code"
+          }
+        ],
+        "free_check_tests": [
+          "tests/test_factory.py::test_dependencies_require_integration_not_worker_finish",
+          "tests/test_factory.py::test_claim_is_atomic_and_does_not_reclaim_a_live_worker"
+        ]
+      }
     }
   ]
 }

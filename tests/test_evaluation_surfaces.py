@@ -55,9 +55,10 @@ def test_routing_publication_uses_saved_reviews_and_preserves_unavailable_judgme
         'predictions': {'c1': {'failed': False, 'reason': 'A wrong judgment'}, 'c2': None},
         'attempts': [{'case_id': 'c1', 'stage_id': 'j1'}, {'case_id': 'c2', 'stage_id': 'j2'}]}}
     session = SimpleNamespace(read=lambda: {'reviews': reviews, 'publications': {
-        'trace/j1': {'url': 'https://forge.example/j1', 'verified': True}}})
+        'trace/j1': {'url': 'https://forge.example/j1', 'verified': True}}, 'stages': {}})
     publications = []
-    namespace = {'teaching': SimpleNamespace(saved=lambda _session, name: summary if name == 'routing/judge/summary' else None),
+    from forge_workshop_kit import routing_release
+    namespace = {'release_lab': routing_release, 'teaching': SimpleNamespace(saved=lambda _session, name: summary if name == 'routing/judge/summary' else None),
                  'publish_comparison': lambda session, name, versions: publications.append((name, versions)) or versions}
     publish = authored_function('routing_cells', 'publish_routing_results', namespace)
     publish(session, include_final=False)

@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[pending] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.6.2/forge_workshop_kit-0.6.2-py3-none-any.whl",
+#   "forge-workshop-kit[pending] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/forge_workshop_kit-0.7.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -102,9 +102,10 @@
 # ///
 import marimo
 __generated_with = "0.25.2"
-app = marimo.App(width="medium", app_title='Pending, Inc.')
+app = marimo.App(width="medium", app_title='Pending, Inc. · Your project')
 
 
+# workshop-cell: pending_inc/display/1
 @app.cell(hide_code=True)
 def _():
     import os
@@ -128,6 +129,7 @@ def _():
     return (CASES, Harness, WorkshopSession, asdict, copy, editor_decision, event, export_trace, get_display, get_pending, get_recovery_revision, get_step, get_timeout_practice, harness_diff, json, judge_explanation, mo, os, pending_visuals, publish_comparison, publish_report, recovery, reflect_execution, run_employee, saved_trace_inputs, set_display, set_pending, set_recovery_revision, set_step, set_timeout_practice, setup, teaching, time, ui,)
 
 
+# workshop-cell: pending_inc/display/2
 @app.cell(hide_code=True)
 def _(get_step, mo, pending_visuals, ui):
     mo.stop(get_step()!="setup")
@@ -140,6 +142,7 @@ def _(get_step, mo, pending_visuals, ui):
     return
 
 
+# workshop-cell: pending_inc/definitions/move_pending
 @app.cell(hide_code=True)
 def _(get_display, get_pending, get_step, mo, publish_comparison, set_display, set_pending, set_step, teaching, ui):
     def move_pending(step):
@@ -175,12 +178,13 @@ def _(get_display, get_pending, get_step, mo, publish_comparison, set_display, s
     return (move_pending, pending_checkpoint, pending_execution_table, pending_navigation_2_1, pending_publish, pending_refresh,)
 
 
+# workshop-cell: pending_inc/definitions/pending_recovery_refresh
 @app.cell(hide_code=True)
 def _(get_pending, get_recovery_revision, get_step, mo, set_recovery_revision, setup):
     _s = get_pending().get("session")
     _revision = get_recovery_revision()
     _view = get_step()
-    pending_recovery_refresh = mo.ui.button(label="Check for stopped or failed work", on_click=lambda _: set_recovery_revision(get_recovery_revision() + 1), disabled=not bool(_s))
+    pending_recovery_refresh = mo.ui.button(label="Check for stopped or failed work", on_click=lambda _: set_recovery_revision(lambda previous: previous + 1), disabled=not bool(_s))
     _options = _s.recovery_options() if _s else []
     _choices = {setup.recovery_label(_s.workshop, row) + " · " + row["id"][:6]: row["id"] for row in _options}
     pending_recovery_choice = mo.ui.dropdown(_choices, value=next(iter(_choices), None), label="Execution to review", full_width=True) if _choices else mo.ui.dropdown({"No failed executions": ""}, value="No failed executions", disabled=True)
@@ -188,6 +192,7 @@ def _(get_pending, get_recovery_revision, get_step, mo, set_recovery_revision, s
     return (pending_recovery_choice, pending_recovery_refresh,)
 
 
+# workshop-cell: pending_inc/controls/pending_recovery_allow
 @app.cell(hide_code=True)
 def _(get_pending, mo, pending_recovery_choice, ui):
     _s = get_pending().get("session")
@@ -199,8 +204,9 @@ def _(get_pending, mo, pending_recovery_choice, ui):
     return (pending_recovery_allow, pending_recovery_confirm,)
 
 
+# workshop-cell: pending_inc/action/pending_recovery_allow
 @app.cell(hide_code=True)
-def _(get_display, get_pending, get_recovery_revision, mo, pending_recovery_allow, pending_recovery_choice, pending_recovery_confirm, pending_refresh, set_display, set_recovery_revision):
+def _(get_display, get_pending, mo, pending_recovery_allow, pending_recovery_choice, pending_recovery_confirm, pending_refresh, set_display, set_recovery_revision):
     mo.stop(not pending_recovery_allow.value)
     _s = get_pending()["session"]
     try:
@@ -210,10 +216,11 @@ def _(get_display, get_pending, get_recovery_revision, mo, pending_recovery_allo
         _message = str(_error)
     set_display({**get_display(), "recovery": _message})
     pending_refresh(_s)
-    set_recovery_revision(get_recovery_revision() + 1)
+    set_recovery_revision(lambda previous: previous + 1)
     return
 
 
+# workshop-cell: pending_inc/display/7
 @app.cell(hide_code=True)
 def _(get_display, mo):
     _message = get_display().get("recovery")
@@ -221,6 +228,7 @@ def _(get_display, mo):
     return
 
 
+# workshop-cell: pending_inc/controls/pending_connect
 @app.cell(hide_code=True)
 def _(get_step, mo, setup, ui):
     mo.stop(get_step()!="setup")
@@ -232,6 +240,7 @@ def _(get_step, mo, setup, ui):
     return (pending_allowance, pending_connect, pending_project,)
 
 
+# workshop-cell: pending_inc/action/pending_connect
 @app.cell
 def _(WorkshopSession, get_display, mo, pending_allowance, pending_connect, pending_project, pending_refresh, set_display, set_step, setup):
     mo.stop(not pending_connect.value)
@@ -252,6 +261,7 @@ def _(WorkshopSession, get_display, mo, pending_allowance, pending_connect, pend
     return
 
 
+# workshop-cell: pending_inc/controls/pending_help_button
 @app.cell(hide_code=True)
 def _(get_pending, mo):
     pending_help=mo.ui.text_area(label="What do you need help with?",full_width=True)
@@ -260,6 +270,7 @@ def _(get_pending, mo):
     return (pending_help, pending_help_button,)
 
 
+# workshop-cell: pending_inc/action/pending_help_button
 @app.cell
 def _(get_pending, mo, pending_help, pending_help_button):
     mo.stop(not pending_help_button.value)
@@ -268,6 +279,7 @@ def _(get_pending, mo, pending_help, pending_help_button):
     return
 
 
+# workshop-cell: pending_inc/controls/pending_trace
 @app.cell(hide_code=True)
 def _(get_display, get_pending, get_step, mo, move_pending, setup, teaching, ui):
     pending_navigation_11_1 = ui.prerequisite(mo,"Connect to a writable project first.","setup",move_pending)
@@ -280,6 +292,7 @@ def _(get_display, get_pending, get_step, mo, move_pending, setup, teaching, ui)
     return (instrumentation_editor, pending_navigation_11_1, pending_prerequisite_1, pending_trace,)
 
 
+# workshop-cell: pending_inc/action/pending_trace
 @app.cell
 def _(event, export_trace, get_display, get_pending, instrumentation_editor, mo, pending_checkpoint, pending_refresh, pending_trace, set_display, teaching):
     mo.stop(not pending_trace.value)
@@ -298,6 +311,7 @@ def _(event, export_trace, get_display, get_pending, instrumentation_editor, mo,
     return
 
 
+# workshop-cell: pending_inc/definitions/pending_navigation_13_1
 @app.cell(hide_code=True)
 def _(get_pending, get_step, mo, move_pending, teaching, ui):
     pending_navigation_13_1 = ui.next_step(mo,"Build the invoice lookup","tools",move_pending)
@@ -310,6 +324,7 @@ def _(get_pending, get_step, mo, move_pending, teaching, ui):
     return (pending_navigation_13_1, pending_next_step_1,)
 
 
+# workshop-cell: pending_inc/controls/check_pending_tool
 @app.cell(hide_code=True)
 def _(get_pending, get_step, mo, move_pending, teaching, ui):
     pending_navigation_14_1 = ui.prerequisite(mo,"Connect to your project so the notebook can save your code and test results.","setup",move_pending)
@@ -322,6 +337,7 @@ def _(get_pending, get_step, mo, move_pending, teaching, ui):
     return (check_pending_tool, pending_navigation_14_1, pending_prerequisite_2, tool_editor,)
 
 
+# workshop-cell: pending_inc/action/check_pending_tool
 @app.cell
 def _(check_pending_tool, event, export_trace, get_display, get_pending, mo, pending_checkpoint, pending_refresh, set_display, teaching, tool_editor):
     mo.stop(not check_pending_tool.value)
@@ -349,6 +365,7 @@ def _(check_pending_tool, event, export_trace, get_display, get_pending, mo, pen
     return
 
 
+# workshop-cell: pending_inc/definitions/pending_navigation_16_1
 @app.cell(hide_code=True)
 def _(get_display, get_pending, get_step, mo, move_pending, teaching, tool_editor, ui):
     pending_navigation_16_1 = ui.next_step(mo,"Wire the tool into an agent request","loop",move_pending)
@@ -361,6 +378,7 @@ def _(get_display, get_pending, get_step, mo, move_pending, teaching, tool_edito
     return (pending_navigation_16_1, pending_next_step_2,)
 
 
+# workshop-cell: pending_inc/definitions/loop_editor
 @app.cell(hide_code=True)
 def _(Harness, get_pending, get_step, mo, teaching, ui):
     mo.stop(get_step()!="loop")
@@ -371,6 +389,7 @@ def _(Harness, get_pending, get_step, mo, teaching, ui):
     return (loop_editor, starting_instructions,)
 
 
+# workshop-cell: pending_inc/controls/check_pending_loop
 @app.cell(hide_code=True)
 def _(get_pending, get_step, loop_editor, mo, move_pending, teaching, ui):
     pending_navigation_18_1 = ui.prerequisite(mo,"Verify your setup trace before starting model calls.","setup",move_pending)
@@ -385,6 +404,7 @@ def _(get_pending, get_step, loop_editor, mo, move_pending, teaching, ui):
     return (check_pending_loop, pending_navigation_18_1, pending_prerequisite_3, run_pending,)
 
 
+# workshop-cell: pending_inc/action/check_pending_loop
 @app.cell
 def _(check_pending_loop, get_display, get_pending, loop_editor, mo, pending_checkpoint, pending_refresh, set_display, teaching):
     mo.stop(not check_pending_loop.value)
@@ -404,6 +424,7 @@ def _(check_pending_loop, get_display, get_pending, loop_editor, mo, pending_che
     return
 
 
+# workshop-cell: pending_inc/action/run_pending
 @app.cell
 def _(CASES, Harness, get_pending, loop_editor, mo, pending_checkpoint, pending_refresh, run_employee, run_pending, starting_instructions, teaching):
     mo.stop(not run_pending.value)
@@ -422,6 +443,7 @@ def _(CASES, Harness, get_pending, loop_editor, mo, pending_checkpoint, pending_
     return
 
 
+# workshop-cell: pending_inc/definitions/pending_navigation_21_1
 @app.cell(hide_code=True)
 def _(get_display, get_pending, get_step, loop_editor, mo, move_pending, pending_execution_table, pending_visuals, teaching, ui):
     pending_navigation_21_1 = ui.next_step(mo,"Check the account and judge the explanation","evals",move_pending)
@@ -443,6 +465,7 @@ def _(get_display, get_pending, get_step, loop_editor, mo, move_pending, pending
     return (pending_navigation_21_1, pending_next_step_3,)
 
 
+# workshop-cell: pending_inc/definitions/timeout_start
 @app.cell(hide_code=True)
 def _(get_step, get_timeout_practice, mo, pending_visuals, set_timeout_practice):
     mo.stop(get_step()!="loop")
@@ -457,6 +480,7 @@ def _(get_step, get_timeout_practice, mo, pending_visuals, set_timeout_practice)
     return (timeout_new, timeout_read, timeout_reset, timeout_same, timeout_start,)
 
 
+# workshop-cell: pending_inc/controls/check_recovery
 @app.cell
 def _(get_pending, get_step, mo, recovery):
     mo.stop(get_step()!="loop")
@@ -467,6 +491,7 @@ def _(get_pending, get_step, mo, recovery):
     return (check_recovery, recovery_editor,)
 
 
+# workshop-cell: pending_inc/action/check_recovery
 @app.cell
 def _(check_recovery, export_trace, get_display, get_pending, mo, pending_checkpoint, pending_publish, recovery, recovery_editor, set_display):
     mo.stop(not check_recovery.value)
@@ -497,6 +522,7 @@ def _(check_recovery, export_trace, get_display, get_pending, mo, pending_checkp
     return
 
 
+# workshop-cell: pending_inc/display/26
 @app.cell
 def _(get_display, get_pending, get_step, mo):
     mo.stop(get_step()!="loop")
@@ -511,6 +537,7 @@ def _(get_display, get_pending, get_step, mo):
     return
 
 
+# workshop-cell: pending_inc/definitions/pending_navigation_26_1
 @app.cell(hide_code=True)
 def _(get_pending, get_step, mo, move_pending, pending_visuals, teaching, ui):
     pending_navigation_26_1 = ui.prerequisite(mo,"Finish the two starting tickets, then pass the scorer checks above.","loop",move_pending)
@@ -523,6 +550,7 @@ def _(get_pending, get_step, mo, move_pending, pending_visuals, teaching, ui):
     return (judge_rubric, pending_navigation_26_1, pending_prerequisite_4, scorer_editor,)
 
 
+# workshop-cell: pending_inc/controls/check_pending_scorer
 @app.cell(hide_code=True)
 def _(get_pending, get_step, mo, scorer_editor, teaching, ui):
     mo.stop(get_step()!="evals")
@@ -534,6 +562,7 @@ def _(get_pending, get_step, mo, scorer_editor, teaching, ui):
     return (check_pending_scorer, pending_judge,)
 
 
+# workshop-cell: pending_inc/action/check_pending_scorer
 @app.cell
 def _(check_pending_scorer, get_display, get_pending, mo, pending_checkpoint, pending_refresh, scorer_editor, set_display, teaching):
     mo.stop(not check_pending_scorer.value)
@@ -552,6 +581,7 @@ def _(check_pending_scorer, get_display, get_pending, mo, pending_checkpoint, pe
     return
 
 
+# workshop-cell: pending_inc/action/pending_judge
 @app.cell
 def _(get_pending, judge_explanation, judge_rubric, mo, pending_checkpoint, pending_judge, pending_publish, pending_refresh, scorer_editor, teaching):
     mo.stop(not pending_judge.value)
@@ -577,6 +607,7 @@ def _(get_pending, judge_explanation, judge_rubric, mo, pending_checkpoint, pend
     return
 
 
+# workshop-cell: pending_inc/definitions/pending_navigation_30_1
 @app.cell(hide_code=True)
 def _(get_display, get_pending, get_step, mo, move_pending, scorer_editor, teaching, ui):
     pending_navigation_30_1 = ui.next_step(mo,"Change one procedure using that evidence","manual",move_pending)
@@ -590,6 +621,7 @@ def _(get_display, get_pending, get_step, mo, move_pending, scorer_editor, teach
     return (pending_navigation_30_1, pending_next_step_4,)
 
 
+# workshop-cell: pending_inc/controls/manual_pending
 @app.cell(hide_code=True)
 def _(get_pending, get_step, mo, move_pending, ui):
     pending_navigation_31_1 = ui.prerequisite(mo,"Check and publish the starting development result first.","evals",move_pending)
@@ -604,6 +636,7 @@ def _(get_pending, get_step, mo, move_pending, ui):
     return (manual_event, manual_instructions, manual_pending, pending_navigation_31_1, pending_prerequisite_5,)
 
 
+# workshop-cell: pending_inc/action/manual_pending
 @app.cell
 def _(CASES, Harness, asdict, get_pending, harness_diff, manual_event, manual_instructions, manual_pending, mo, pending_checkpoint, pending_publish, pending_refresh, run_employee, teaching):
     mo.stop(not manual_pending.value)
@@ -623,6 +656,7 @@ def _(CASES, Harness, asdict, get_pending, harness_diff, manual_event, manual_in
     return
 
 
+# workshop-cell: pending_inc/definitions/pending_navigation_33_1
 @app.cell(hide_code=True)
 def _(asdict, get_pending, get_step, json, mo, move_pending, pending_execution_table, pending_visuals, teaching, ui):
     pending_navigation_33_1 = ui.next_step(mo,"Ask an agent for two alternative procedures","improve",move_pending)
@@ -639,6 +673,7 @@ def _(asdict, get_pending, get_step, json, mo, move_pending, pending_execution_t
     return (pending_navigation_33_1, pending_next_step_5,)
 
 
+# workshop-cell: pending_inc/controls/improve_pending
 @app.cell(hide_code=True)
 def _(Harness, asdict, get_pending, get_step, json, mo, move_pending, pending_execution_table, teaching, ui):
     pending_navigation_34_1 = ui.prerequisite(mo,"Run your manual procedure first.","manual",move_pending)
@@ -667,6 +702,7 @@ def _(Harness, asdict, get_pending, get_step, json, mo, move_pending, pending_ex
     return (improve_pending, pending_navigation_34_1, pending_navigation_34_2, pending_next_step_6, pending_prerequisite_6, review_pending,)
 
 
+# workshop-cell: pending_inc/action/improve_pending
 @app.cell
 def _(CASES, Harness, asdict, editor_decision, get_pending, improve_pending, mo, pending_checkpoint, pending_refresh, reflect_execution, review_pending, run_employee, teaching):
     mo.stop(not improve_pending.value)
@@ -709,6 +745,7 @@ def _(CASES, Harness, asdict, editor_decision, get_pending, improve_pending, mo,
     return
 
 
+# workshop-cell: pending_inc/display/37
 @app.cell(hide_code=True)
 def _(get_pending, get_step, mo, ui):
     mo.stop(get_step()!="improve")
@@ -719,6 +756,7 @@ def _(get_pending, get_step, mo, ui):
     return
 
 
+# workshop-cell: pending_inc/controls/pending_final
 @app.cell(hide_code=True)
 def _(get_pending, get_step, mo, move_pending, teaching, ui):
     pending_navigation_37_1 = ui.prerequisite(mo,"Finish both improvement rounds before freezing versions.","improve",move_pending)
@@ -736,6 +774,7 @@ def _(get_pending, get_step, mo, move_pending, teaching, ui):
     return (pending_final, pending_navigation_37_1, pending_prerequisite_7, pending_retry, pending_retry_judges,)
 
 
+# workshop-cell: pending_inc/action/pending_final
 @app.cell
 def _(CASES, Harness, asdict, get_pending, json, judge_explanation, mo, pending_checkpoint, pending_final, pending_publish, pending_refresh, run_employee, teaching):
     mo.stop(not pending_final.value)
@@ -761,6 +800,7 @@ def _(CASES, Harness, asdict, get_pending, json, judge_explanation, mo, pending_
     return
 
 
+# workshop-cell: pending_inc/action/pending_retry_judges
 @app.cell
 def _(copy, get_pending, judge_explanation, mo, pending_checkpoint, pending_publish, pending_refresh, pending_retry_judges, teaching):
     mo.stop(not pending_retry_judges.value)
@@ -784,6 +824,7 @@ def _(copy, get_pending, judge_explanation, mo, pending_checkpoint, pending_publ
     return
 
 
+# workshop-cell: pending_inc/action/pending_retry
 @app.cell
 def _(export_trace, get_display, get_pending, mo, pending_publish, pending_refresh, pending_retry, saved_trace_inputs, set_display, teaching):
     mo.stop(not pending_retry.value)
@@ -813,6 +854,7 @@ def _(export_trace, get_display, get_pending, mo, pending_publish, pending_refre
     return
 
 
+# workshop-cell: pending_inc/definitions/pending_final_case
 @app.cell(hide_code=True)
 def _(get_pending, get_step, mo, pending_execution_table, pending_visuals, teaching, ui):
     mo.stop(get_step()!="final")
@@ -827,6 +869,7 @@ def _(get_pending, get_step, mo, pending_execution_table, pending_visuals, teach
     return (pending_final_case,)
 
 
+# workshop-cell: pending_inc/definitions/pending_navigation_42_1
 @app.cell(hide_code=True)
 def _(get_pending, get_step, mo, move_pending, pending_final_case, pending_visuals, ui):
     pending_navigation_42_1 = ui.next_step(mo,"Write up your comparison","report",move_pending)
@@ -838,6 +881,7 @@ def _(get_pending, get_step, mo, move_pending, pending_final_case, pending_visua
     return (pending_navigation_42_1, pending_next_step_7,)
 
 
+# workshop-cell: pending_inc/controls/pending_report
 @app.cell(hide_code=True)
 def _(get_pending, get_step, mo, move_pending, ui):
     pending_navigation_43_1 = ui.prerequisite(mo,"Complete the fresh-ticket comparison first.","final",move_pending)
@@ -850,6 +894,7 @@ def _(get_pending, get_step, mo, move_pending, ui):
     return (pending_conclusion, pending_navigation_43_1, pending_prerequisite_8, pending_report,)
 
 
+# workshop-cell: pending_inc/action/pending_report
 @app.cell
 def _(get_pending, mo, pending_checkpoint, pending_conclusion, pending_refresh, pending_report, publish_report, ui):
     mo.stop(not pending_report.value)
@@ -869,6 +914,7 @@ def _(get_pending, mo, pending_checkpoint, pending_conclusion, pending_refresh, 
     return
 
 
+# workshop-cell: pending_inc/display/46
 @app.cell(hide_code=True)
 def _(get_pending, get_step, mo, ui):
     mo.stop(get_step()!="report")

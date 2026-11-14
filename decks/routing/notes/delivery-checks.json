@@ -1,7 +1,7 @@
 {
-  "source_sha256": "55335aa5256db3ef6d89e8b9d2b2f6dfd7200c534727fb90e361892b78087c7f",
-  "slides_checked": 52,
-  "expected_slides": 52,
+  "source_sha256": "cbab6b77bd6dd97bc6ece76e0aeb26e488b5d5113a8c97f60f6855c5f0862be8",
+  "slides_checked": 70,
+  "expected_slides": 70,
   "titles": [
     {
       "number": 1,
@@ -230,36 +230,126 @@
     },
     {
       "number": 46,
+      "key": "release-break",
+      "title": "Take ten minutes. Return at 4:05."
+    },
+    {
+      "number": 47,
+      "key": "release-request",
+      "title": "The classifier works. Can another process use it?"
+    },
+    {
+      "number": 48,
+      "key": "release-bundle",
+      "title": "Save what the predictor needs, then reload it"
+    },
+    {
+      "number": 49,
+      "key": "release-prepare-exercise",
+      "title": "Load your selected version from its artifact"
+    },
+    {
+      "number": 50,
+      "key": "release-cohort",
+      "title": "Choose the regression cases before predicting"
+    },
+    {
+      "number": 51,
+      "key": "release-columns",
+      "title": "A probability belongs to a specific intent"
+    },
+    {
+      "number": 52,
+      "key": "release-fault",
+      "title": "Rotated labels send column 1 to another queue"
+    },
+    {
+      "number": 53,
+      "key": "release-incident-exercise",
+      "title": "Find one request sent to the wrong queue"
+    },
+    {
+      "number": 54,
+      "key": "release-set-check",
+      "title": "Checking the label set misses this defect"
+    },
+    {
+      "number": 55,
+      "key": "release-order-check",
+      "title": "Check order before accepting the loaded model"
+    },
+    {
+      "number": 56,
+      "key": "release-repair-exercise",
+      "title": "Repair the loader and write its regression check"
+    },
+    {
+      "number": 57,
+      "key": "release-parity",
+      "title": "A repaired loader should reproduce the intact release"
+    },
+    {
+      "number": 58,
+      "key": "release-investigate",
+      "title": "Compare three versions of the same request"
+    },
+    {
+      "number": 59,
+      "key": "release-decision-exercise",
+      "title": "Decide whether this release passes its checks"
+    },
+    {
+      "number": 60,
+      "key": "release-rollback",
+      "title": "Rollback reloads a version; it does not undo training"
+    },
+    {
+      "number": 61,
+      "key": "release-rollback-exercise",
+      "title": "Restore the previous version and verify it"
+    },
+    {
+      "number": 62,
+      "key": "release-conclusion",
+      "title": "Separate the model gain from the release repair"
+    },
+    {
+      "number": 63,
       "key": "report-exercise",
       "title": "Write the decision you would make"
     },
     {
-      "number": 47,
+      "number": 64,
       "key": "release",
-      "title": "Reproduce the selected version before releasing it"
+      "title": "Optional: organize approved versions in Registry"
     },
     {
-      "number": 48,
+      "number": 65,
       "key": "close",
       "title": "What to take back to your team"
     },
     {
-      "number": 49,
+      "number": 66,
       "key": "classifier-answer",
       "title": "Worked answer: classifier head"
     },
     {
-      "number": 50,
+      "number": 67,
       "key": "policy-answer",
       "title": "Worked answer: review policy"
     },
     {
-      "number": 51,
+      "number": 68,
       "key": "validator-answer",
       "title": "Worked answer: judge validator"
     },
     {
-      "number": 52,
+      "number": 69,
+      "key": "release-repair-answer",
+      "title": "Worked answer: preserve the probability-column order"
+    },
+    {
+      "number": 70,
       "key": "sources",
       "title": "Sources and recorded evidence"
     }
@@ -484,6 +574,78 @@
     {
       "slide": 52,
       "click": 0
+    },
+    {
+      "slide": 53,
+      "click": 0
+    },
+    {
+      "slide": 54,
+      "click": 0
+    },
+    {
+      "slide": 55,
+      "click": 0
+    },
+    {
+      "slide": 56,
+      "click": 0
+    },
+    {
+      "slide": 57,
+      "click": 0
+    },
+    {
+      "slide": 58,
+      "click": 0
+    },
+    {
+      "slide": 59,
+      "click": 0
+    },
+    {
+      "slide": 60,
+      "click": 0
+    },
+    {
+      "slide": 61,
+      "click": 0
+    },
+    {
+      "slide": 62,
+      "click": 0
+    },
+    {
+      "slide": 63,
+      "click": 0
+    },
+    {
+      "slide": 64,
+      "click": 0
+    },
+    {
+      "slide": 65,
+      "click": 0
+    },
+    {
+      "slide": 66,
+      "click": 0
+    },
+    {
+      "slide": 67,
+      "click": 0
+    },
+    {
+      "slide": 68,
+      "click": 0
+    },
+    {
+      "slide": 69,
+      "click": 0
+    },
+    {
+      "slide": 70,
+      "click": 0
     }
   ],
   "issues": [],
@@ -492,20 +654,25 @@
   "answers": [
     {
       "slide": 15,
-      "destination": "/forge-workshop-kit/routing/49",
+      "destination": "/forge-workshop-kit/routing/66",
       "keyboardReturn": true
     },
     {
       "slide": 24,
-      "destination": "/forge-workshop-kit/routing/50",
+      "destination": "/forge-workshop-kit/routing/67",
       "keyboardReturn": true
     },
     {
       "slide": 34,
-      "destination": "/forge-workshop-kit/routing/51",
+      "destination": "/forge-workshop-kit/routing/68",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 56,
+      "destination": "/forge-workshop-kit/routing/69",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 107,
+  "routes_checked": 283,
   "presenter_notes": true
 }

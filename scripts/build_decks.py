@@ -2,6 +2,7 @@
 
 import argparse
 import hashlib
+import html
 import json
 import os
 import shutil
@@ -11,20 +12,19 @@ import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+MANIFEST = ROOT / "src/forge_workshop_kit/workshops.json"
 DECKS = {
-    "transit": {"title": "Build a transit app with a team of coding agents", "filename": "transit-factory"},
-    "pending": {"title": "Pending, Inc.", "filename": "pending-inc"},
-    "solar": {
-        "title": "Solar forecasting with agent-assisted experiments",
-        "filename": "solar-autoresearch",
-    },
-    "routing": {"title": "Route customer requests and learn from mistakes", "filename": "request-routing"},
-    "inspection": {"title": "Find defective parts before they ship", "filename": "visual-inspection"},
+    row["authoring"]["deck"]["directory"]: {
+        "title": row["authoring"]["deck"]["title"],
+        "filename": row["authoring"]["deck"]["file_stem"],
+    }
+    for row in json.loads(MANIFEST.read_text())["templates"]
+    if row.get("authoring", {}).get("deck")
 }
+
 SOURCE_ITEMS = (
     "README.md",
     "package.json",
-    "package-lock.json",
     "slides.md",
     "style.css",
     "global-bottom.vue",
@@ -57,6 +57,14 @@ def source_archive(path, deck, slug):
                     bundle.write(file, Path("decks") / slug / file.relative_to(deck))
         for name in ("build_decks.py", "validate_deck.mjs", "check_deck_pdf.py", "serve_deck.py"):
             bundle.write(ROOT / "scripts" / name, Path("scripts") / name)
+        for name in ("package.json", "package-lock.json", "scripts/deck.mjs"):
+            bundle.write(ROOT / "decks" / name, Path("decks") / name)
+        manifest = json.loads(MANIFEST.read_text())
+        manifest["templates"] = [
+            row for row in manifest["templates"]
+            if row.get("authoring", {}).get("deck", {}).get("directory") == slug
+        ]
+        bundle.writestr("src/forge_workshop_kit/workshops.json", json.dumps(manifest, indent=2) + "\n")
         definitions = Path("src/forge_workshop_kit/assets/visuals.json")
         bundle.write(ROOT / definitions, definitions)
         bundle.writestr(
@@ -70,14 +78,51 @@ def source_archive(path, deck, slug):
         )
 
 
+def write_routes(directory, layout, base):
+    routes = ["presenter", "overview", "notes"] + [
+        route for slide in layout["slides"]
+        for route in (str(slide["number"]), f"presenter/{slide['number']}")
+    ]
+    for route in routes:
+        destination = directory / route / "index.html"
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(directory / "index.html", destination)
+    aliases = []
+    for slide in layout["slides"]:
+        name = slide.get("name") or slide.get("key")
+        if not name:
+            continue
+        if not all(c.isalnum() or c in "-_" for c in name):
+            raise ValueError(f"Unsafe slide alias: {name}")
+        for prefix in ("", "presenter/"):
+            route = prefix + name
+            target = f"{base}{prefix}{slide['number']}"
+            destination = directory / route / "index.html"
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_text(
+                '<!doctype html><html lang="en"><meta charset="utf-8">'
+                f'<meta http-equiv="refresh" content="0;url={html.escape(target, quote=True)}">'
+                f'<title>{html.escape(slide["title"])}</title>'
+                f'<a href="{html.escape(target, quote=True)}">Open this slide</a></html>'
+            )
+            aliases.append(route)
+    shutil.copyfile(directory / "index.html", directory / "404.html")
+    (directory / "static-routes.json").write_text(json.dumps({"routes": routes + aliases}, indent=2) + "\n")
+
+
+def install_toolchain():
+    """All decks resolve the same pinned dependencies from their parent directory."""
+    run(["npm", "ci"], ROOT / "decks", {**os.environ, "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"})
+
+
 def build(slug, output, *, install=False, pdf=False, validate=False):
     deck = ROOT / "decks" / slug
     settings = DECKS[slug]
-    cli = deck / "node_modules/@slidev/cli/bin/slidev.mjs"
+    cli = ROOT / "decks/node_modules/@slidev/cli/bin/slidev.mjs"
     if install:
-        run(["npm", "ci"], deck, {**os.environ, "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"})
+        install_toolchain()
     if not cli.exists():
-        raise SystemExit(f"Missing Slidev dependencies in {deck}. Run with --install first.")
+        raise SystemExit("Missing shared Slidev dependencies. Run with --install first.")
     base = f"/forge-workshop-kit/{slug}/"
     site = output / "site" / slug
     local = output / "browser" / slug
@@ -92,20 +137,11 @@ def build(slug, output, *, install=False, pdf=False, validate=False):
         run([sys.executable, str(generator)], deck, {**os.environ, "DECK_BASE": base})
         run(["node", str(cli), "build", "--base", base, "--out", str(site)], deck)
         layout = json.loads((deck / "notes/slide-map.json").read_text())
-        routes = ["presenter", "overview", "notes"] + [
-            route
-            for slide in layout["slides"]
-            for route in (str(slide["number"]), f"presenter/{slide['number']}")
-        ]
-        for route in routes:
-            destination = site / route / "index.html"
-            destination.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(site / "index.html", destination)
-        shutil.copyfile(site / "index.html", site / "404.html")
-        (site / "static-routes.json").write_text(json.dumps({"routes": routes}, indent=2) + "\n")
+        write_routes(site, layout, base)
     finally:
         run([sys.executable, str(generator)], deck, {**os.environ, "DECK_BASE": ""})
     run(["node", str(cli), "build", "--out", str(local)], deck)
+    write_routes(local, layout, "/")
     shutil.copyfile(ROOT / "scripts/serve_deck.py", local / "serve.py")
     (local / "README.txt").write_text(
         f"{settings['title']}\n\nRun python3 serve.py (Windows: py serve.py).\n"
@@ -165,7 +201,7 @@ def main():
     parser.add_argument("--only", choices=DECKS, action="append")
     parser.add_argument("--output", type=Path, default=ROOT / "dist/decks")
     parser.add_argument(
-        "--install", action="store_true", help="Install each deck's locked npm dependencies"
+        "--install", action="store_true", help="Install the shared locked Slidev toolchain once"
     )
     parser.add_argument(
         "--pdf", action="store_true", help="Export and render every PDF page; requires Chrome"
@@ -175,8 +211,10 @@ def main():
     )
     args = parser.parse_args()
     output = args.output.resolve()
+    if args.install:
+        install_toolchain()
     rows = [
-        build(slug, output, install=args.install, pdf=args.pdf, validate=args.validate)
+        build(slug, output, pdf=args.pdf, validate=args.validate)
         for slug in (args.only or DECKS)
     ]
     available = [

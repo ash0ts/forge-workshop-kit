@@ -8,7 +8,9 @@ from importlib.resources import files
 
 @cache
 def _manifest():
-    return json.loads(files("forge_workshop_kit").joinpath("workshops.json").read_text(encoding="utf-8"))
+    return json.loads(
+        files("forge_workshop_kit").joinpath("workshops.json").read_text(encoding="utf-8")
+    )
 
 
 def list_templates():
@@ -32,3 +34,12 @@ def template(slug):
         if row["slug"] == slug:
             return row
     raise ValueError(f"Unknown notebook template: {slug}")
+
+
+def authoring(slug):
+    """Authoring metadata is separate from participant runtime contracts."""
+    return template(slug).get("authoring", {})
+
+
+def deck_templates():
+    return tuple(row for row in list_workshops() if row.get("authoring", {}).get("deck"))

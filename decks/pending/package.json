@@ -6,19 +6,5 @@
     "dev": "slidev --port 3059",
     "build": "slidev build",
     "export": "slidev export --output pending-inc.pdf --with-clicks --wait 2000"
-  },
-  "devDependencies": {
-    "@slidev/cli": "53.1.0",
-    "@slidev/theme-default": "0.25.0",
-    "playwright": "1.64.1",
-    "playwright-chromium": "1.64.1"
-  },
-  "dependencies": {
-    "@fontsource/ibm-plex-mono": "5.3.0",
-    "@fontsource/ibm-plex-sans": "5.3.0"
-  },
-  "overrides": {
-    "dompurify": "3.4.17",
-    "image-size": "2.1.0"
   }
 }

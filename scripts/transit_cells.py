@@ -20,7 +20,7 @@ draft_cache = {}
 ''', True)
 add('''
 def refresh():
-    set_revision(get_revision()+1)
+    set_revision(lambda previous: previous+1)
 def go_to(step):
     session=get_context().get("session")
     if session: session.set_view(step)

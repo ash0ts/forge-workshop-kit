@@ -1,6 +1,6 @@
 [project]
 name = "forge-workshop-kit"
-version = "0.6.2"
+version = "0.7.0"
 description = "Copy a notebook, build an experiment, save the evidence in your own Forge project."
 requires-python = ">=3.11,<3.14"
 dependencies = [
@@ -8,6 +8,9 @@ dependencies = [
   "coreweave==0.1.0b0", "wandb-workspaces==0.4.13", "httpx==0.28.1",
   "filelock>=3.16,<4",
 ]
+
+[project.scripts]
+forge-workshop = "forge_workshop_kit.cli:main"
 
 [project.optional-dependencies]
 pending = ["mcp>=1.20,<2"]
@@ -35,6 +38,7 @@ exclude = ["**/__marimo__/**"]
 include = [
   "/src", "/scripts", "/notebooks", "/tests", "/examples", "/docs",
   "/README.md", "/LICENSE", "/pyproject.toml", "/uv.lock", "/data/README.md",
+  "/.agents/skills/forge-workshops",
 ]
 
 [tool.pytest.ini_options]

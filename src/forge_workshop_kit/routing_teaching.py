@@ -95,8 +95,16 @@ def freeze_prerequisite(session):
 def completed_steps(session):
     if not session: return ()
     names={r["name"] for r in session.read()["stages"].values() if r["status"]=="complete"}
-    return [step for step in ("setup","data","baseline","review","judge","improve","final","report")
-            if (bool(judge_summary(session)) if step == "judge" else any(name.startswith("routing/"+step) for name in names))]
+    decision = saved(session, "routing/release/decision")
+    rollback = saved(session, "routing/release/rollback")
+    release = decision["result"]["release"] if decision else {}
+    release_complete = (release.get("decision") == "reject" or bool(
+        release.get("decision") == "release" and rollback
+        and rollback["result"].get("release", {}).get("previous") == release.get("artifact")
+        and rollback["result"].get("checks", {}).get("prediction_parity") is True))
+    return [step for step in ("setup","data","baseline","review","judge","improve","final","release","report")
+            if (bool(judge_summary(session)) if step == "judge" else release_complete if step == "release"
+                else any(name.startswith("routing/"+step) for name in names))]
 
 
 def metrics_table(versions):
@@ -126,7 +134,7 @@ def download(destination, *, base_url=DATA_URL):
         routing.verify_data(destination)
         return destination
     with tempfile.TemporaryDirectory() as directory:
-        temporary=Path(directory)
+        temporary=Path(directory).resolve()
         expected=httpx.get(base_url+'/banking77-v1.sha256',follow_redirects=True,timeout=30)
         expected.raise_for_status()
         archive=temporary/'banking77-v1.tar.gz'

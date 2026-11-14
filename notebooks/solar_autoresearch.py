@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[solar] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.6.2/forge_workshop_kit-0.6.2-py3-none-any.whl",
+#   "forge-workshop-kit[solar] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.7.0/forge_workshop_kit-0.7.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "aioftp==0.28.3",
 #   "aiohappyeyeballs==2.7.1",
@@ -158,9 +158,10 @@
 # ///
 import marimo
 __generated_with = "0.25.2"
-app = marimo.App(width="medium", app_title='Solar Autoresearch')
+app = marimo.App(width="medium", app_title='Solar forecasting with agent-assisted experiments')
 
 
+# workshop-cell: solar_autoresearch/display/1
 @app.cell(hide_code=True)
 def _():
     import os
@@ -184,6 +185,7 @@ def _():
     return (Path, WorkshopSession, dataset, digest, event, export_trace, get_feedback, get_lab, get_recovery_revision, get_step, get_tracing_check, json, mo, np, os, plots, publish_comparison, publish_report, research, saved_trace_inputs, set_feedback, set_lab, set_recovery_revision, set_step, set_tracing_check, setup, solar, stamp, teaching, time, training, ui, views,)
 
 
+# workshop-cell: solar_autoresearch/display/2
 @app.cell(hide_code=True)
 def _(get_step, mo, ui):
     mo.stop(get_step() != "setup")
@@ -200,6 +202,7 @@ def _(get_step, mo, ui):
     return
 
 
+# workshop-cell: solar_autoresearch/definitions/go_to
 @app.cell(hide_code=True)
 def _(get_lab, set_step):
     def go_to(step):
@@ -210,6 +213,7 @@ def _(get_lab, set_step):
     return (go_to,)
 
 
+# workshop-cell: solar_autoresearch/definitions/refresh_saved
 @app.cell(hide_code=True)
 def _(get_lab, set_lab, teaching):
     def refresh_saved():
@@ -218,6 +222,7 @@ def _(get_lab, set_lab, teaching):
     return (refresh_saved,)
 
 
+# workshop-cell: solar_autoresearch/definitions/checked
 @app.cell(hide_code=True)
 def _(set_feedback):
     def checked(name, action):
@@ -229,6 +234,7 @@ def _(set_feedback):
     return (checked,)
 
 
+# workshop-cell: solar_autoresearch/definitions/solar_navigation
 @app.cell(hide_code=True)
 def _(get_lab, get_step, go_to, mo, teaching, ui):
     _s = get_lab().get("session")
@@ -237,12 +243,13 @@ def _(get_lab, get_step, go_to, mo, teaching, ui):
     return (solar_navigation,)
 
 
+# workshop-cell: solar_autoresearch/definitions/solar_recovery_refresh
 @app.cell(hide_code=True)
 def _(get_lab, get_recovery_revision, get_step, mo, set_recovery_revision, setup):
     _s = get_lab().get("session")
     _revision = get_recovery_revision()
     _view = get_step()
-    solar_recovery_refresh = mo.ui.button(label="Check for stopped or failed work", on_click=lambda _: set_recovery_revision(get_recovery_revision() + 1), disabled=not bool(_s))
+    solar_recovery_refresh = mo.ui.button(label="Check for stopped or failed work", on_click=lambda _: set_recovery_revision(lambda previous: previous + 1), disabled=not bool(_s))
     _options = _s.recovery_options() if _s else []
     _choices = {setup.recovery_label(_s.workshop, row) + " · " + row["id"][:6]: row["id"] for row in _options}
     solar_recovery_choice = mo.ui.dropdown(_choices, value=next(iter(_choices), None), label="Execution to review", full_width=True) if _choices else mo.ui.dropdown({"No failed executions": ""}, value="No failed executions", disabled=True)
@@ -250,6 +257,7 @@ def _(get_lab, get_recovery_revision, get_step, mo, set_recovery_revision, setup
     return (solar_recovery_choice, solar_recovery_refresh,)
 
 
+# workshop-cell: solar_autoresearch/controls/solar_recovery_allow
 @app.cell(hide_code=True)
 def _(get_lab, mo, solar_recovery_choice, ui):
     _s = get_lab().get("session")
@@ -261,8 +269,9 @@ def _(get_lab, mo, solar_recovery_choice, ui):
     return (solar_recovery_allow, solar_recovery_confirm,)
 
 
+# workshop-cell: solar_autoresearch/action/solar_recovery_allow
 @app.cell(hide_code=True)
-def _(get_lab, get_recovery_revision, mo, refresh_saved, set_feedback, set_recovery_revision, solar_recovery_allow, solar_recovery_choice, solar_recovery_confirm):
+def _(get_lab, mo, refresh_saved, set_feedback, set_recovery_revision, solar_recovery_allow, solar_recovery_choice, solar_recovery_confirm):
     mo.stop(not solar_recovery_allow.value)
     _s = get_lab()["session"]
     try:
@@ -272,10 +281,11 @@ def _(get_lab, get_recovery_revision, mo, refresh_saved, set_feedback, set_recov
         _message = str(_error)
     set_feedback(lambda current: {**current, "recovery": _message})
     refresh_saved()
-    set_recovery_revision(get_recovery_revision() + 1)
+    set_recovery_revision(lambda previous: previous + 1)
     return
 
 
+# workshop-cell: solar_autoresearch/display/10
 @app.cell(hide_code=True)
 def _(get_feedback, mo):
     _message = get_feedback().get("recovery")
@@ -283,6 +293,7 @@ def _(get_feedback, mo):
     return
 
 
+# workshop-cell: solar_autoresearch/controls/help_button
 @app.cell(hide_code=True)
 def _(get_lab, mo):
     help_message = mo.ui.text_area(label="What do you need help with?", full_width=True)
@@ -291,6 +302,7 @@ def _(get_lab, mo):
     return (help_button, help_message,)
 
 
+# workshop-cell: solar_autoresearch/action/help_button
 @app.cell(hide_code=True)
 def _(get_lab, help_button, help_message, mo):
     mo.stop(not help_button.value)
@@ -299,6 +311,7 @@ def _(get_lab, help_button, help_message, mo):
     return
 
 
+# workshop-cell: solar_autoresearch/controls/connect_button
 @app.cell(hide_code=True)
 def _(get_step, mo, setup, ui):
     mo.stop(get_step() != "setup")
@@ -310,6 +323,7 @@ def _(get_step, mo, setup, ui):
     return (allowance, connect_button, project_input,)
 
 
+# workshop-cell: solar_autoresearch/action/connect_button
 @app.cell(hide_code=True)
 def _(WorkshopSession, allowance, connect_button, mo, project_input, set_feedback, set_lab, set_step, setup, teaching):
     mo.stop(not connect_button.value)
@@ -330,6 +344,7 @@ def _(WorkshopSession, allowance, connect_button, mo, project_input, set_feedbac
     return
 
 
+# workshop-cell: solar_autoresearch/controls/check_instrumentation
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo, teaching):
     _s = get_lab().get("session")
@@ -339,6 +354,7 @@ def _(get_lab, get_step, mo, teaching):
     return (check_instrumentation, instrumentation_editor,)
 
 
+# workshop-cell: solar_autoresearch/definitions/instrument_tool
 @app.cell
 def _(instrumentation_editor, teaching):
     # The edited function below is the writer used by every export in this notebook.
@@ -347,6 +363,7 @@ def _(instrumentation_editor, teaching):
     return (instrument_tool,)
 
 
+# workshop-cell: solar_autoresearch/action/check_instrumentation
 @app.cell(hide_code=True)
 def _(check_instrumentation, digest, instrumentation_editor, mo, set_tracing_check, teaching):
     mo.stop(not check_instrumentation.value)
@@ -358,6 +375,7 @@ def _(check_instrumentation, digest, instrumentation_editor, mo, set_tracing_che
     return
 
 
+# workshop-cell: solar_autoresearch/controls/first_trace
 @app.cell(hide_code=True)
 def _(digest, get_feedback, get_lab, get_step, get_tracing_check, go_to, instrumentation_editor, mo, setup, teaching, ui):
     mo.stop(get_step() != "setup")
@@ -370,6 +388,7 @@ def _(digest, get_feedback, get_lab, get_step, get_tracing_check, go_to, instrum
     return (first_trace, solar_next_step_2,)
 
 
+# workshop-cell: solar_autoresearch/action/first_trace
 @app.cell(hide_code=True)
 def _(event, export_trace, first_trace, get_lab, instrument_tool, instrumentation_editor, mo, np, refresh_saved, set_feedback, teaching):
     mo.stop(not first_trace.value)
@@ -389,6 +408,7 @@ def _(event, export_trace, first_trace, get_lab, instrument_tool, instrumentatio
     return
 
 
+# workshop-cell: solar_autoresearch/display/20
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() != "setup")
@@ -402,6 +422,7 @@ def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     return
 
 
+# workshop-cell: solar_autoresearch/controls/load_data
 @app.cell(hide_code=True)
 def _(get_lab, get_step, go_to, mo, ui):
     mo.stop(get_step() != "data")
@@ -412,6 +433,7 @@ def _(get_lab, get_step, go_to, mo, ui):
     return (load_data, solar_prerequisite_3,)
 
 
+# workshop-cell: solar_autoresearch/action/load_data
 @app.cell(hide_code=True)
 def _(dataset, get_lab, load_data, mo, set_lab, solar):
     mo.stop(not load_data.value)
@@ -429,6 +451,7 @@ def _(dataset, get_lab, load_data, mo, set_lab, solar):
     return (Map,)
 
 
+# workshop-cell: solar_autoresearch/definitions/solar_next_step_4
 @app.cell(hide_code=True)
 def _(get_lab, get_step, go_to, mo, plots, teaching, ui):
     mo.stop(get_step() != "data")
@@ -439,6 +462,7 @@ def _(get_lab, get_step, go_to, mo, plots, teaching, ui):
     return (solar_next_step_4,)
 
 
+# workshop-cell: solar_autoresearch/definitions/window_split
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo):
     mo.stop(get_step() not in ("data", "baseline"))
@@ -448,6 +472,7 @@ def _(get_lab, get_step, mo):
     return (window_split,)
 
 
+# workshop-cell: solar_autoresearch/definitions/window_index
 @app.cell(hide_code=True)
 def _(get_lab, mo, window_split):
     _split = get_lab()["goes"][window_split.value]
@@ -457,6 +482,7 @@ def _(get_lab, mo, window_split):
     return (window_index, window_standardized,)
 
 
+# workshop-cell: solar_autoresearch/display/26
 @app.cell(hide_code=True)
 def _(get_lab, mo, views, window_index, window_split, window_standardized):
     _values = views.window_values(get_lab()["goes"][window_split.value], get_lab()["goes_normalization"], window_index.value, standardized=window_standardized.value)
@@ -464,6 +490,7 @@ def _(get_lab, mo, views, window_index, window_split, window_standardized):
     return
 
 
+# workshop-cell: solar_autoresearch/controls/check_persistence
 @app.cell(hide_code=True)
 def _(get_lab, get_step, go_to, mo, teaching, ui):
     mo.stop(get_step() != "baseline")
@@ -478,6 +505,7 @@ def _(get_lab, get_step, go_to, mo, teaching, ui):
     return (baseline_button, check_persistence, persistence_editor, solar_prerequisite_5, solar_prerequisite_6,)
 
 
+# workshop-cell: solar_autoresearch/action/check_persistence
 @app.cell(hide_code=True)
 def _(check_persistence, checked, mo, persistence_editor, teaching):
     mo.stop(not check_persistence.value)
@@ -485,6 +513,7 @@ def _(check_persistence, checked, mo, persistence_editor, teaching):
     return
 
 
+# workshop-cell: solar_autoresearch/action/baseline_button
 @app.cell(hide_code=True)
 def _(baseline_button, export_trace, get_lab, instrument_tool, mo, np, persistence_editor, refresh_saved, set_feedback, solar, teaching, time):
     mo.stop(not baseline_button.value)
@@ -507,6 +536,7 @@ def _(baseline_button, export_trace, get_lab, instrument_tool, mo, np, persisten
     return
 
 
+# workshop-cell: solar_autoresearch/definitions/solar_next_step_7
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, go_to, mo, persistence_editor, teaching, ui):
     mo.stop(get_step() != "baseline")
@@ -518,6 +548,7 @@ def _(get_feedback, get_lab, get_step, go_to, mo, persistence_editor, teaching, 
     return (solar_next_step_7,)
 
 
+# workshop-cell: solar_autoresearch/display/31
 @app.cell(hide_code=True)
 def _():
     DEFAULT_SOURCE = '"""Editable research code. The data split and final scorer live elsewhere."""\nimport torch\nfrom torch import nn\n\n\ndef build_model(input_shape, config):\n    width=config.get(\'width\',16)\n    architecture=config.get(\'architecture\',\'mlp\')\n    if len(input_shape)==2:\n        if architecture==\'mlp\':\n            return nn.Sequential(nn.Flatten(),nn.Linear(input_shape[0]*input_shape[1],width),\n                                 nn.ReLU(),nn.Linear(width,1))\n        return nn.Sequential(nn.Conv1d(input_shape[0],width,5,padding=2),nn.ReLU(),\n                             nn.AdaptiveAvgPool1d(1),nn.Flatten(),nn.Linear(width,1))\n    class ImagePredictor(nn.Module):\n        def __init__(self):\n            super().__init__()\n            self.net=nn.Sequential(nn.Conv2d(2,width,3,padding=1),nn.ReLU(),\n                                   nn.Conv2d(width,width,3,padding=1),nn.ReLU(),\n                                   nn.Conv2d(width,1,3,padding=1))\n        def forward(self,x):\n            prediction=self.net(x)\n            return prediction+x[:,1:2] if architecture==\'residual\' else prediction\n    return ImagePredictor()\n\n\ndef training_loss(prediction,target,mask):\n    return ((prediction-target).square()*mask).sum()/mask.sum()\n\n\ndef fit(model,x,y,mask,config):\n    optimizer=torch.optim.Adam(model.parameters(),lr=config.get(\'learning_rate\',.001))\n    generator=torch.Generator().manual_seed(config.get(\'seed\',17))\n    losses=[]\n    model.train()\n    for step in range(config.get(\'steps\',40)):\n        indices=torch.randint(len(x),(min(config.get(\'batch_size\',16),len(x)),),generator=generator)\n        prediction=model(x[indices])\n        loss=training_loss(prediction,y[indices],mask[indices])\n        optimizer.zero_grad()\n        loss.backward()\n        optimizer.step()\n        losses.append(float(loss.detach()))\n    return losses\n'
@@ -525,6 +556,7 @@ def _():
     return (DEFAULT_SOURCE, GOES_REPAIR_SOURCE,)
 
 
+# workshop-cell: solar_autoresearch/controls/check_measurement
 @app.cell(hide_code=True)
 def _(DEFAULT_SOURCE, get_lab, get_step, go_to, mo, teaching, ui):
     mo.stop(get_step() != "search")
@@ -540,6 +572,7 @@ def _(DEFAULT_SOURCE, get_lab, get_step, go_to, mo, teaching, ui):
     return (check_measurement, flux_metric_editor, measurement_editor, run_search, solar_prerequisite_8, solar_prerequisite_9,)
 
 
+# workshop-cell: solar_autoresearch/action/check_measurement
 @app.cell(hide_code=True)
 def _(check_measurement, checked, flux_metric_editor, measurement_editor, mo, teaching):
     mo.stop(not check_measurement.value)
@@ -549,6 +582,7 @@ def _(check_measurement, checked, flux_metric_editor, measurement_editor, mo, te
     return
 
 
+# workshop-cell: solar_autoresearch/controls/inspect_shapes
 @app.cell(hide_code=True)
 def _(get_step, mo):
     mo.stop(get_step() != "search")
@@ -558,6 +592,7 @@ def _(get_step, mo):
     return (inspect_shapes, shape_architecture,)
 
 
+# workshop-cell: solar_autoresearch/action/inspect_shapes
 @app.cell(hide_code=True)
 def _(checked, digest, inspect_shapes, measurement_editor, mo, shape_architecture, views):
     mo.stop(not inspect_shapes.value)
@@ -565,6 +600,7 @@ def _(checked, digest, inspect_shapes, measurement_editor, mo, shape_architectur
     return
 
 
+# workshop-cell: solar_autoresearch/display/36
 @app.cell(hide_code=True)
 def _(digest, get_feedback, get_step, measurement_editor, mo):
     mo.stop(get_step() != "search")
@@ -573,6 +609,7 @@ def _(digest, get_feedback, get_step, measurement_editor, mo):
     return
 
 
+# workshop-cell: solar_autoresearch/display/37
 @app.cell(hide_code=True)
 def _(get_step, mo):
     mo.stop(get_step() != "search")
@@ -580,6 +617,7 @@ def _(get_step, mo):
     return
 
 
+# workshop-cell: solar_autoresearch/definitions/run_training
 @app.cell
 def _(event, export_trace, instrument_tool, np, plots, teaching, training):
     def run_training(session, name, source, splits, config, data_fingerprint, metric_source):
@@ -613,6 +651,7 @@ def _(event, export_trace, instrument_tool, np, plots, teaching, training):
     return (run_training,)
 
 
+# workshop-cell: solar_autoresearch/action/run_search
 @app.cell
 def _(digest, flux_metric_editor, get_lab, measurement_editor, mo, os, refresh_saved, run_search, run_training, teaching):
     mo.stop(not run_search.value)
@@ -660,6 +699,7 @@ def _(digest, flux_metric_editor, get_lab, measurement_editor, mo, os, refresh_s
     return (wandb,)
 
 
+# workshop-cell: solar_autoresearch/display/40
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, measurement_editor, mo, teaching, ui):
     mo.stop(get_step() != "search")
@@ -670,6 +710,7 @@ def _(get_feedback, get_lab, get_step, measurement_editor, mo, teaching, ui):
     return
 
 
+# workshop-cell: solar_autoresearch/display/41
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo):
     mo.stop(get_step() != "search")
@@ -681,6 +722,7 @@ def _(get_lab, get_step, mo):
     return (inspect_goes_run,)
 
 
+# workshop-cell: solar_autoresearch/display/42
 @app.cell(hide_code=True)
 def _(get_lab, inspect_goes_run, mo, np, ui, views):
     mo.stop(inspect_goes_run is None)
@@ -695,6 +737,7 @@ def _(get_lab, inspect_goes_run, mo, np, ui, views):
     return
 
 
+# workshop-cell: solar_autoresearch/controls/check_measurement_repair
 @app.cell(hide_code=True)
 def _(GOES_REPAIR_SOURCE, get_lab, get_step, mo, teaching):
     mo.stop(get_step() != "search")
@@ -707,6 +750,7 @@ def _(GOES_REPAIR_SOURCE, get_lab, get_step, mo, teaching):
     return (check_measurement_repair, measurement_repair_editor, run_measurement_repair,)
 
 
+# workshop-cell: solar_autoresearch/action/check_measurement_repair
 @app.cell(hide_code=True)
 def _(check_measurement_repair, checked, measurement_repair_editor, mo, teaching):
     mo.stop(not check_measurement_repair.value)
@@ -714,6 +758,7 @@ def _(check_measurement_repair, checked, measurement_repair_editor, mo, teaching
     return
 
 
+# workshop-cell: solar_autoresearch/action/run_measurement_repair
 @app.cell
 def _(flux_metric_editor, get_lab, measurement_repair_editor, mo, refresh_saved, run_measurement_repair, run_training, teaching):
     mo.stop(not run_measurement_repair.value)
@@ -726,6 +771,7 @@ def _(flux_metric_editor, get_lab, measurement_repair_editor, mo, refresh_saved,
     return
 
 
+# workshop-cell: solar_autoresearch/definitions/solar_next_step_10
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, go_to, mo, teaching, ui):
     mo.stop(get_step() != "search")
@@ -737,6 +783,7 @@ def _(get_feedback, get_lab, get_step, go_to, mo, teaching, ui):
     return (solar_next_step_10,)
 
 
+# workshop-cell: solar_autoresearch/controls/check_images
 @app.cell(hide_code=True)
 def _(DEFAULT_SOURCE, get_lab, get_step, go_to, mo, teaching, ui):
     mo.stop(get_step() != "images")
@@ -753,6 +800,7 @@ def _(DEFAULT_SOURCE, get_lab, get_step, go_to, mo, teaching, ui):
     return (check_images, image_editor, image_metric_editor, run_images, solar_prerequisite_11, solar_prerequisite_12,)
 
 
+# workshop-cell: solar_autoresearch/action/check_images
 @app.cell(hide_code=True)
 def _(check_images, checked, image_editor, image_metric_editor, mo, teaching):
     mo.stop(not check_images.value)
@@ -762,6 +810,7 @@ def _(check_images, checked, image_editor, image_metric_editor, mo, teaching):
     return
 
 
+# workshop-cell: solar_autoresearch/controls/try_scorer
 @app.cell(hide_code=True)
 def _(get_step, mo):
     mo.stop(get_step() != "images")
@@ -772,6 +821,7 @@ def _(get_step, mo):
     return (fixture_error, fixture_inside, try_scorer,)
 
 
+# workshop-cell: solar_autoresearch/display/50
 @app.cell(hide_code=True)
 def _(fixture_error, fixture_inside, mo, views):
     _fixture = views.scorer_fixture(fixture_error.value, inside=fixture_inside.value)
@@ -779,6 +829,7 @@ def _(fixture_error, fixture_inside, mo, views):
     return
 
 
+# workshop-cell: solar_autoresearch/action/try_scorer
 @app.cell(hide_code=True)
 def _(checked, digest, fixture_error, fixture_inside, image_metric_editor, mo, np, teaching, try_scorer, views):
     mo.stop(not try_scorer.value)
@@ -794,6 +845,7 @@ def _(checked, digest, fixture_error, fixture_inside, image_metric_editor, mo, n
     return
 
 
+# workshop-cell: solar_autoresearch/display/52
 @app.cell(hide_code=True)
 def _(digest, fixture_error, fixture_inside, get_feedback, get_step, image_metric_editor, mo, ui):
     mo.stop(get_step() != "images")
@@ -804,6 +856,7 @@ def _(digest, fixture_error, fixture_inside, get_feedback, get_step, image_metri
     return
 
 
+# workshop-cell: solar_autoresearch/action/run_images
 @app.cell(hide_code=True)
 def _(get_lab, image_editor, image_metric_editor, mo, refresh_saved, run_images, run_training, teaching):
     mo.stop(not run_images.value)
@@ -818,6 +871,7 @@ def _(get_lab, image_editor, image_metric_editor, mo, refresh_saved, run_images,
     return
 
 
+# workshop-cell: solar_autoresearch/definitions/solar_next_step_13
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, go_to, image_editor, mo, teaching, ui):
     mo.stop(get_step() != "images")
@@ -830,6 +884,7 @@ def _(get_feedback, get_lab, get_step, go_to, image_editor, mo, teaching, ui):
     return (solar_next_step_13,)
 
 
+# workshop-cell: solar_autoresearch/definitions/comparison_timestamp
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo, teaching):
     mo.stop(get_step() not in ("images", "final"))
@@ -849,6 +904,7 @@ def _(get_lab, get_step, mo, teaching):
     return (comparison_timestamp,)
 
 
+# workshop-cell: solar_autoresearch/display/56
 @app.cell(hide_code=True)
 def _(comparison_timestamp, get_lab, get_step, mo, teaching, ui, views):
     _s = get_lab()["session"]
@@ -864,6 +920,7 @@ def _(comparison_timestamp, get_lab, get_step, mo, teaching, ui, views):
     return
 
 
+# workshop-cell: solar_autoresearch/display/57
 @app.cell(hide_code=True)
 def _(get_step, mo, ui):
     mo.stop(get_step() not in ("images", "research"))
@@ -883,6 +940,7 @@ def _(get_step, mo, ui):
     return
 
 
+# workshop-cell: solar_autoresearch/definitions/next_research_action
 @app.cell
 def _(teaching):
     def next_research_action(session):
@@ -897,6 +955,7 @@ def _(teaching):
     return (choose_adoption, next_research_action,)
 
 
+# workshop-cell: solar_autoresearch/controls/check_evidence
 @app.cell(hide_code=True)
 def _(get_lab, get_step, go_to, mo, teaching, ui):
     mo.stop(get_step() != "research")
@@ -909,6 +968,7 @@ def _(get_lab, get_step, go_to, mo, teaching, ui):
     return (check_evidence, evidence_editor, solar_prerequisite_14,)
 
 
+# workshop-cell: solar_autoresearch/action/check_evidence
 @app.cell(hide_code=True)
 def _(check_evidence, checked, digest, evidence_editor, mo, teaching):
     mo.stop(not check_evidence.value)
@@ -916,6 +976,7 @@ def _(check_evidence, checked, digest, evidence_editor, mo, teaching):
     return
 
 
+# workshop-cell: solar_autoresearch/controls/research_button
 @app.cell(hide_code=True)
 def _(digest, evidence_editor, get_feedback, get_lab, get_step, go_to, mo, next_research_action, teaching, ui):
     mo.stop(get_step() != "research")
@@ -960,6 +1021,7 @@ def _(digest, evidence_editor, get_feedback, get_lab, get_step, go_to, mo, next_
     return (research_button, research_note, solar_next_step_17, solar_prerequisite_15, solar_prerequisite_16,)
 
 
+# workshop-cell: solar_autoresearch/action/research_button
 @app.cell
 def _(choose_adoption, evidence_editor, get_lab, mo, next_research_action, refresh_saved, research, research_button, research_note, run_training, set_feedback, teaching):
     mo.stop(not research_button.value)
@@ -1024,6 +1086,7 @@ def _(choose_adoption, evidence_editor, get_lab, mo, next_research_action, refre
     return
 
 
+# workshop-cell: solar_autoresearch/controls/final_button
 @app.cell(hide_code=True)
 def _(get_lab, get_step, go_to, mo, next_research_action, ui):
     mo.stop(get_step() != "final")
@@ -1039,6 +1102,7 @@ def _(get_lab, get_step, go_to, mo, next_research_action, ui):
     return (conclusion, final_button, report_button, retry_publication, solar_prerequisite_18, solar_prerequisite_19,)
 
 
+# workshop-cell: solar_autoresearch/action/final_button
 @app.cell
 def _(event, export_trace, final_button, get_lab, instrument_tool, mo, np, plots, publish_comparison, refresh_saved, research, set_feedback, solar, teaching, training):
     mo.stop(not final_button.value)
@@ -1120,6 +1184,7 @@ def _(event, export_trace, final_button, get_lab, instrument_tool, mo, np, plots
     return
 
 
+# workshop-cell: solar_autoresearch/action/report_button
 @app.cell(hide_code=True)
 def _(conclusion, get_lab, mo, publish_report, refresh_saved, report_button, ui):
     mo.stop(not report_button.value)
@@ -1134,6 +1199,7 @@ def _(conclusion, get_lab, mo, publish_report, refresh_saved, report_button, ui)
     return
 
 
+# workshop-cell: solar_autoresearch/action/retry_publication
 @app.cell(hide_code=True)
 def _(export_trace, get_lab, instrument_tool, mo, publish_comparison, refresh_saved, retry_publication, saved_trace_inputs, set_feedback, teaching):
     mo.stop(not retry_publication.value)
@@ -1158,6 +1224,7 @@ def _(export_trace, get_lab, instrument_tool, mo, publish_comparison, refresh_sa
     return
 
 
+# workshop-cell: solar_autoresearch/display/67
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() != "final")
@@ -1182,6 +1249,7 @@ def _(get_lab, get_step, mo, teaching, ui):
     return
 
 
+# workshop-cell: solar_autoresearch/display/68
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo, np, teaching, ui, views):
     mo.stop(get_step() != "final")

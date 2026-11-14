@@ -63,6 +63,8 @@ slide('Worked answer: judge validator','```python\ndef validate_judge(value):\n 
 slide('Sources and recorded evidence','<ul><li><a href="https://github.com/PolyAI-LDN/task-specific-datasets">Banking77 data, splits, license, and citation</a></li><li><a href="https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2">Frozen MiniLM encoder model card</a></li><li><a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/routing/qualification.json">Frozen qualification recipe</a></li><li><a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/routing-workshop.md">Facilitator timing, results, and limitations</a></li><li><a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_routing.py">Acquisition and feature preparation</a></li></ul>','All measured claims come from the saved qualification. The native comparison captures show the verified routing publication and link to that saved record. Until external-account and human rehearsals pass, label this a technical preview.')
 from depth_storyboard import extend
 slides=extend(slides)
+from release_storyboard import extend as release_extend
+slides=release_extend(slides)
 header='''---\ntheme: default\ntitle: Route customer requests and learn from mistakes\nauthor: Anish Shah\nclass: cover\nlayout: default\naspectRatio: 16/9\ncanvasWidth: 1280\ncolorSchema: light\ntransition: fade\nwakeLock: false\nfonts:\n  sans: IBM Plex Sans\n  mono: IBM Plex Mono\n  provider: none\nmdc: true\nhighlighter: shiki\ndrawings:\n  enabled: false\ndownload: false\n---\n'''
 chunks=[]
 for i,s in enumerate(slides):
@@ -78,7 +80,7 @@ for index,item in enumerate(slides):
     if item['name']:text=text.replace('href="/'+item['name']+'"', 'href="/'+str(index+1)+'"')
 text=re.sub(r'href="/(\d+)"', lambda match:'href="'+base+match.group(1)+'"', text)
 (ROOT/'slides.md').write_text(text)
-(ROOT/'notes/slide-map.json').write_text(json.dumps({'session_minutes':240,'main_slides':sum(s['start_minute'] is not None for s in slides),'total_slides':len(slides),'slides':[{'number':i+1,**s} for i,s in enumerate(slides)]},indent=2)+'\n')
+(ROOT/'notes/slide-map.json').write_text(json.dumps({'session_minutes':330,'main_slides':sum(s['start_minute'] is not None for s in slides),'total_slides':len(slides),'slides':[{'number':i+1,**s} for i,s in enumerate(slides)]},indent=2)+'\n')
 (ROOT/'notes/presenter.md').write_text('\n\n'.join(f'## {i+1}. {s["title"].replace("<br>"," ")}\n\n{s["time"]}\n\n{s["notes"]}' for i,s in enumerate(slides)))
 (ROOT/'notes/slide-index.json').write_text(json.dumps([{'slide':i+1,'title':s['title'],'time':s['time'],'name':s['name']} for i,s in enumerate(slides)],indent=2)+'\n')
 print(f'Generated {len(slides)} routing slides.')

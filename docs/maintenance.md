@@ -2,6 +2,19 @@
 
 `pyproject.toml` owns the package version. `src/forge_workshop_kit/workshops.json` owns template names, exercise labels, dependency extras and workflow compatibility. Leave the workflow version unchanged for copy or packaging changes so saved experiments remain usable.
 
+## Use the shared commands
+
+From a source checkout, run `uv run --all-extras forge-workshop --help`. The commands wrap the existing build and publication paths; they do not add a service. See [authoring](authoring.md) for scaffolding, exercise bindings, and rehearsal coverage.
+
+```sh
+uv run --all-extras forge-workshop check request_routing
+uv run --all-extras forge-workshop doctor request_routing
+uv run --all-extras forge-workshop build request_routing --pdf --validate
+uv run --all-extras forge-workshop publish request_routing --project YOUR_ENTITY/YOUR_PROJECT
+```
+
+Publication still requires the matching wheel on the versioned GitHub release. It remains separate from building. The script entry points below remain available for existing automation.
+
 ## Build locally
 
 ```sh
@@ -38,7 +51,7 @@ The current decks live in `decks/pending`, `decks/solar`, `decks/routing`, `deck
 python3 scripts/build_decks.py --install --pdf --validate
 ```
 
-Use Node.js 22.23.2 or later and `uv`. PDF export needs Chrome; set `CHROME_PATH` to your installed browser executable, or install the deck's Playwright Chromium with `npx playwright install chromium` from `decks/solar`. The PDF checker installs its own pinned maintenance dependencies through `uv`; it does not add them to participants' notebooks.
+Use Node.js 22.23.2 or later and `uv`. PDF export needs Chrome; set `CHROME_PATH` to your installed browser executable, or install the deck's Playwright Chromium with `npx playwright install chromium` from `decks`. The PDF checker installs its own pinned maintenance dependencies through `uv`; it does not add them to participants' notebooks.
 
 The build writes browser decks to `dist/decks/site/` and PDFs, offline browser bundles, and editable source archives to `dist/decks/downloads/`. It checks each slide and reveal, exercises Back, renders every PDF page, checks image loading, and follows worked-answer links back to their exercises. PDF links use slide identities rather than physical page numbers, because a reveal adds a page. Use `--only transit` or another workshop name while editing one deck. Without `--pdf` and `--validate`, the command only builds browser copies and source archives.
 

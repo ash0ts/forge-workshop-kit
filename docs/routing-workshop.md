@@ -4,7 +4,7 @@ A fictional banking support team needs to send each request to the right workflo
 
 The data are real public support queries from [Banking77](https://github.com/PolyAI-LDN/task-specific-datasets), published by Casanueva and colleagues under CC-BY-4.0. This is an intent-routing exercise, not financial advice, fraud detection, or a system for taking action on accounts.
 
-## Four-hour session
+## Five-and-a-half-hour session
 
 The deck pauses at each transformation before the participant writes or runs it. One request stays visible while it becomes features, probabilities, a review decision, and a saved training example. The extra time is for explanation and practice; the experiment still uses the same cases, models and inference allowance.
 
@@ -20,7 +20,13 @@ The deck pauses at each transformation before the participant writes or runs it.
 | 190–210 | Refit using accepted review labels and compare validation results | Explain the data change and decide whether to retain the earlier model |
 | 210–220 | Break | Save the selected version and keep final-test results closed |
 | 220–235 | Freeze the classifier and policy, evaluate all 3,080 official test requests | Inspect matching requests in EvalTables and separate quality from coverage |
-| 235–240 | Publish the conclusion and identify the files needed to reproduce it | Name one remaining mistake and the next experiment |
+| 235–240 | Draft the model-quality conclusion | Name one remaining mistake and preserve the official-test comparison |
+| 240–250 | Break | The selected model and predictions are saved |
+| 250–265 | Package and reload the selected router from its exact artifact version | Find the classifier, preprocessing identity, label order, policy, and code |
+| 265–285 | Run the controlled label-order incident and follow one request | Explain why a confident probability can reach the wrong support queue |
+| 285–305 | Save a reviewed regression case, write the release check, and repair the loader | Match probability columns to intent names; compare all fixed requests |
+| 305–320 | Release or reject the repair, then practice rollback when released | Verify the previous artifact reproduces its saved predictions |
+| 320–330 | Publish the model and release conclusions together | Separate model quality, release correctness, and the remaining errors |
 
 The deck’s threshold slider recomputes coverage from the saved 770 validation predictions. It makes no model call. The F1 walkthrough uses actual saved `card_arrival` predictions: 34 true positives, three false positives and six false negatives. The eight prompted routing calls and the judge exercise are separate paths: the judge reviews classifier proposals attached to participants’ accepted labels, not those eight prompted routes.
 
@@ -74,3 +80,24 @@ The complete requests, costs, and verified trace identities are in `evidence/rou
 The isolated browser check exercised the actual classifier editor, two CPU fits, a clearly labeled test-only review, retraining, freezing, all three 3,080-row final comparisons, and the publication controls. Provider and publication calls were disabled in that UI test. No browser errors or model calls occurred. This checks the interface separately from the live request/trace rehearsal; it is not an external attendee or human usability result.
 
 A separate browser check verified the final prerequisite: freezing is disabled before a judge-comparison attempt and enabled after an attempted comparison with an explicitly unavailable judgment. That test disabled inference and publication; it verified the recovery path, not judge quality. Its record is `evidence/routing-judge-prerequisite-v050.json`.
+
+
+## Release and recovery capstone
+
+The capstone adds a controlled deployment problem after the classifier comparison. It runs a batch predictor in the notebook; it does not start a production service or train another model.
+
+Click **Prepare the selected router for release**. The package contains the fitted classifier, its label-column order, the participant's review policy and classifier source, the dataset/encoder identity, and prediction-runtime source. The regression set is fixed by taking the lexically first review-pool case ID in each intent before any release prediction runs. These 77 requests may include reviewed training examples. They check reproduction, not independent generalization. The official test results stay unchanged.
+
+Click **Publish and reload the exact release artifact** to download the saved `:vN` version and predict the fixed batch. The embedding version uses the existing pinned feature cache. Its latency does not include sentence encoding. Only load artifacts you created or trust: joblib files can execute Python when loaded.
+
+The incident is deliberately introduced. The faulty loader rotates label names, so the same probability column points at another support workflow. Run it, open the corresponding Agent Lens operation, and follow one request through healthy and faulty outputs. Confidence and review coverage can stay unchanged even while routing quality falls.
+
+Write `check_release(model_classes, loaded_labels)` to check both label membership and ordering. Write `label_names(model_classes)` to preserve the classifier's column order. The free check includes nonalphabetical labels so sorting is not mistaken for a valid repair. The same functions are saved with and used by the repaired release. Use **Save this reviewed regression case** to record your accepted intent and the incident that prompted it. This does not change the frozen classifier or repeat training.
+
+The repair comparison reports accuracy, macro-F1, routing coverage, prediction latency, and exact prediction parity against the healthy release. Passing parity restores the old behavior, including any original classifier mistakes. Choose **Save my release decision** after explaining the checks. Rejection retains the previous version and completes the decision exercise. If you release the repair, **Restore the previous release and verify its predictions** downloads the prior artifact and checks its outputs before recording rollback.
+
+Execution and publication are separate. **Retry release publication only** uploads saved packages, traces, and aligned comparisons. It does not rerun predictions. Completed batches and decisions survive restarts. The Report includes the incident results and release decision alongside the original model-quality conclusion.
+
+Each comparison row keeps the evidence links available when it was first published. A later successful export adds its link to the notebook and Report without creating another evaluation of the same predictions. Unavailable links stay visibly absent from the original row.
+
+Registry is an optional way to curate the exact artifact version, where permissions allow it. It does not deploy the classifier. An optional ARIA investigation requires access in the participant's project; verify its cited case before acting on any suggestion. Neither extension is required to finish the capstone. The core capstone adds no model API calls and keeps the existing inference allowance.

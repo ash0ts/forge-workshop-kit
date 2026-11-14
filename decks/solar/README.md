@@ -7,7 +7,7 @@ Start with the [Solar notebook template](https://forge.coreweave.com/notebooks/T
 ## Present the workshop
 
 ```sh
-npm ci
+npm ci --prefix ..
 npm run dev
 ```
 

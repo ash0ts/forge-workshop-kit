@@ -69,7 +69,7 @@ add('''
 _s = get_pending().get("session")
 _revision = get_recovery_revision()
 _view = get_step()
-pending_recovery_refresh = mo.ui.button(label="Check for stopped or failed work", on_click=lambda _: set_recovery_revision(get_recovery_revision() + 1), disabled=not bool(_s))
+pending_recovery_refresh = mo.ui.button(label="Check for stopped or failed work", on_click=lambda _: set_recovery_revision(lambda previous: previous + 1), disabled=not bool(_s))
 _options = _s.recovery_options() if _s else []
 _choices = {setup.recovery_label(_s.workshop, row) + " · " + row["id"][:6]: row["id"] for row in _options}
 pending_recovery_choice = mo.ui.dropdown(_choices, value=next(iter(_choices), None), label="Execution to review", full_width=True) if _choices else mo.ui.dropdown({"No failed executions": ""}, value="No failed executions", disabled=True)
@@ -93,7 +93,7 @@ except Exception as _error:
     _message = str(_error)
 set_display({**get_display(), "recovery": _message})
 pending_refresh(_s)
-set_recovery_revision(get_recovery_revision() + 1)
+set_recovery_revision(lambda previous: previous + 1)
 ''', True)
 add('''
 _message = get_display().get("recovery")

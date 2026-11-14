@@ -1,0 +1,17 @@
+{
+  "revision": "0.7.0",
+  "slides": 70,
+  "browser_reveal_states": 73,
+  "pdf_pages": 73,
+  "session_minutes": 330,
+  "new_capstone_frames": 18,
+  "new_frames_visually_reviewed": true,
+  "worked_answer_keyboard_returns": 4,
+  "source_sha256": "cbab6b77bd6dd97bc6ece76e0aeb26e488b5d5113a8c97f60f6855c5f0862be8",
+  "component_sha256": "3a38018d7c8474bc2415a05b282aca91ca13c8d9a9bf439ddd6d4d9f6c123586",
+  "probability_diagrams": "Explicit illustrative values; not recorded participant predictions.",
+  "native_captures": "Existing core comparisons retained. No fabricated capstone product captures.",
+  "source_archive_check": "Extracted to a fresh temporary directory, installed shared locked dependencies, and built without the operator checkout.",
+  "external_account_rehearsal": "Not performed by deck validation.",
+  "human_rehearsal": "Still required."
+}

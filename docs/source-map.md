@@ -3,6 +3,8 @@
 - `scripts/solar_cells.py` and `scripts/pending_cells.py`: authored exercise cells; the notebook generator is the source of truth for hosted and laptop templates.
 - `scripts/routing_cells.py` and `scripts/inspection_cells.py`: authored review, classification, judge-calibration and visual-inspection exercises.
 - `scripts/transit_cells.py`: authored acceptance, worker dispatch, task ownership, memory retrieval and release exercises.
+- `.agents/skills/forge-workshops/SKILL.md`: authoring and delivery guidance that links the existing contracts.
+- `src/forge_workshop_kit/cli.py`: checkout commands for scaffolding, checking, rehearsal, building, and explicit publication.
 - `scripts/build_notebooks.py`: generates the participant, starter and read-only facilitator notebooks.
 - `notebooks/solar_autoresearch.py`: editable forecast, instrumentation, search and research controller.
 - `notebooks/pending_inc.py`: editable office tool, dispatch, observation, tracing, scorer, judge and improvement exercises.
@@ -20,6 +22,7 @@
 - `src/forge_workshop_kit/provider.py`: direct inference, request reservations and accounting.
 - `src/forge_workshop_kit/review.py`: versioned human review decisions and judge agreement, including unavailable judgments.
 - `src/forge_workshop_kit/media.py`: checked image descriptors and typed publication.
+- `src/forge_workshop_kit/routing_release.py`: release bundles, controlled label-mapping incident, regression comparison, and rollback for Routing.
 - `src/forge_workshop_kit/releases.py` and `managed_jobs.py`: exact artifact selection, rollback records, and restart-safe managed training IDs.
 - `examples/advanced/`: optional SFT, Registry and remote execution examples, with separate access and cost requirements.
 - `src/forge_workshop_kit/pending/`: fictional office tools, MCP server, harness and independent state checks.

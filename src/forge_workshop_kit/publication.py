@@ -481,6 +481,8 @@ def monitor(projects, workshop_id, *, api=None):
 def _save_comparison_receipt(session, key, label, record):
     with session.transaction() as state:
         state['publications'].setdefault(key, {})[label] = dict(record)
+        if record.get('run_id'):
+            state['publications']['comparison-version/' + record['run_id']] = dict(record)
 
 
 def comparison_metrics(session, name, rows, summary=None):
@@ -511,20 +513,41 @@ def publish_comparison(session, name, versions, *, summaries=None):
     labels = _workshop_labels(session)['comparison_labels']
     receipt_key = 'comparison/' + digest([name, versions] if summaries is None else [name, versions, summaries])[:24]
     # Two notebook cells may retry publication, but must not publish the same rows together.
-    with FileLock(str(session.root / ('.' + receipt_key.replace('/', '-') + '.lock'))):
+    with FileLock(str(session.root / ('.comparison-name-' + digest(name)[:24] + '.lock'))):
         for label, rows in versions.items():
             if len({r['case_id'] for r in rows}) != len(rows):
                 raise ValueError('Each version needs one saved row per case identity.')
             run_id = digest([session.workspace_id, name, label, rows])[:32]
             from .media import bind_root
             rows = bind_root(rows, session.root)
-            record = dict(session.read()['publications'].get(receipt_key, {}).get(label, {}))
+            publications = session.read()['publications']
+            # A comparison can gain a new version without republishing its earlier
+            # predictions. Keep one service receipt per exact set of version rows.
+            record = publications.get('comparison-version/' + run_id)
+            if not record:
+                record = publications.get(receipt_key, {}).get(label)
+            if not record:
+                prior = [value.get(label) for key, value in publications.items()
+                         if key.startswith('comparison/') and isinstance(value, dict)]
+                matches = [value for value in prior if value and value.get('run_id') == run_id
+                           and value.get('comparison_name') == name and value.get('condition') == label]
+                record = max(matches, key=lambda value: sum(value.get(field) == 'published'
+                             for field in ('wandb_status', 'weave_status', 'native_status')), default={})
+            record = dict(record)
+            summary_fingerprint = digest((summaries or {}).get(label, {}))
+            if (record.get('summary_fingerprint') not in (None, summary_fingerprint)
+                    or (record and 'summary_fingerprint' not in record and label in (summaries or {}))):
+                # Correcting an aggregate updates the existing run, not the saved
+                # prediction evaluation. Row data and run identity are unchanged.
+                record['wandb_status'] = 'pending'
+            record['summary_fingerprint'] = summary_fingerprint
             # Older receipts were saved only after the W&B table had been written.
             if record.get('run') and 'wandb_status' not in record:
                 record['wandb_status'] = 'published'
             record.update(comparison_name=name, condition=label, run_id=run_id)
             def save():
                 _save_comparison_receipt(session, receipt_key, label, record)
+            save()
             if record.get('wandb_status') != 'published':
                 try:
                     import wandb
