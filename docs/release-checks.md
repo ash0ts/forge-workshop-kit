@@ -31,7 +31,17 @@ Domain tests cover source checksums, family-separated partitions, full-itinerary
 
 Opening, editing, restoring, and inspecting results must not send model requests. Explicit execution controls spend the participant's own inference allowance. Native tag judging has separate billing, and participants must turn off **Apply with AI** when they finish.
 
+The [first 0.8.0 Windows check](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43646117496) passed 367 tests and skipped one, but failed the airline dataset checksum: Git had converted LF to CRLF during checkout. The pinned airline assets now disable Git text conversion, and the acquisition script writes JSON as explicit UTF-8 bytes. The data and recorded checksums are unchanged. A local Git checkout test with `core.autocrlf=true` verifies every pinned asset byte while an ordinary text control converts to CRLF; that check and the 17 airline domain tests pass. A successful Windows CI rerun remains the platform confirmation.
+
 Fresh external-account copying, native monitoring service recovery, and a human usability rehearsal remain outstanding. Maintainer execution and automated checks do not establish that participants can finish unaided. Keep this workshop labeled **technical preview** until those checks pass.
+
+## Published materials
+
+The [v0.8.0 prerelease](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.8.0) contains the package, notebook source and preview, public evidence, browser deck, PDF, editable deck source, and captioned recorded guide. The guide uses real saved captures and diagrams; it is not a recording of a complete live participant session.
+
+The [airline template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view) and [facilitator monitor](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzM=/view) were published to `wandb/forge-workshop-kit`. Their source and HTML were downloaded and checked against the local release hashes. The airline template renders in Forge and exposes **Copy to project** under the maintainer account. That does not establish external-account access. No notebook kernel or model request was started by publication.
+
+Other published workshop templates were left unchanged. Deployment receipts remain scoped to the destination project.
 
 ## Prior releases
 

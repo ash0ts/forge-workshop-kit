@@ -116,7 +116,7 @@ def main():
         previous = families.setdefault(case["family_id"], case["partition"])
         assert previous == case["partition"], "A source passenger crosses partitions"
     OUT.mkdir(parents=True, exist_ok=True)
-    (OUT / "cases.json").write_text(json.dumps(cases, ensure_ascii=False, separators=(",", ":")) + "\n")
+    (OUT / "cases.json").write_bytes((json.dumps(cases, ensure_ascii=False, separators=(",", ":")) + "\n").encode("utf-8"))
     (OUT / "LICENSE.txt").write_bytes(sources["LICENSE"][0])
     (OUT / "upstream-policy.md").write_bytes(sources[paths[3]][0])
     manifest = {"revision": REVISION, "license": "MIT", "source": "https://github.com/sierra-research/tau2-bench",
@@ -129,7 +129,7 @@ def main():
             "No seat inventory mutation, new reservation booking, or upstream LLM user simulator.",
             "Payment updates and confirmations are checked by independent workshop code."],
         "cases_sha256": hashlib.sha256((OUT / "cases.json").read_bytes()).hexdigest()}
-    (OUT / "provenance.json").write_text(json.dumps(manifest, indent=2) + "\n")
+    (OUT / "provenance.json").write_bytes((json.dumps(manifest, indent=2) + "\n").encode("utf-8"))
     print(json.dumps({"cases": len(cases), "bytes": (OUT / "cases.json").stat().st_size,
         "kinds": {p: [c["kind"] for c in cases if c["partition"] == p] for p in PARTITIONS}}, indent=2))
 

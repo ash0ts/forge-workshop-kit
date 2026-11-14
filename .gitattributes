@@ -1,2 +1,4 @@
-# Preserve the exact pinned upstream policy bytes for checksum verification.
+# Preserve pinned asset bytes, including checksums, on every checkout platform.
+src/forge_workshop_kit/assets/airline/* -text
+# Keep the upstream policy's original whitespace.
 src/forge_workshop_kit/assets/airline/upstream-policy.md -whitespace
