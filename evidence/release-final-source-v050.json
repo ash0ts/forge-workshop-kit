@@ -1,0 +1,128 @@
+{
+  "checked_at": "2026-11-14T15:28:48.093860+00:00",
+  "anonymous": true,
+  "expected_source_sha256": "dfa153edf0c6df1fdbf8928fc1dafb508d05c3c0f07f10a3dc341dfad706f516",
+  "source_matches": true,
+  "elapsed_seconds": 0.5,
+  "attempts": 1,
+  "checks": [
+    {
+      "name": "forge_workshop_kit-0.5.0.tar.gz",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/forge_workshop_kit-0.5.0.tar.gz",
+      "status": 200,
+      "bytes": 957073,
+      "sha256": "dfa153edf0c6df1fdbf8928fc1dafb508d05c3c0f07f10a3dc341dfad706f516"
+    },
+    {
+      "name": "release-manifest.json",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/release-manifest.json",
+      "status": 200,
+      "bytes": 3282,
+      "sha256": "44d533999924c8a3a5c0fe8711dd3c1af9c9924ed5f6ed5cd5a669ccc7849f20",
+      "manifest": {
+        "schema_version": 1,
+        "release": "0.5.0",
+        "wheel": {
+          "file": "forge_workshop_kit-0.5.0-py3-none-any.whl",
+          "sha256": "277fc7b2370798a10a5c9d45f88b9373f444278bea825d16673a2f6ef207e962",
+          "bytes": 191657,
+          "files": 52
+        },
+        "source_distribution": {
+          "file": "forge_workshop_kit-0.5.0.tar.gz",
+          "sha256": "dfa153edf0c6df1fdbf8928fc1dafb508d05c3c0f07f10a3dc341dfad706f516",
+          "bytes": 957073,
+          "files": 164
+        },
+        "templates": {
+          "starter": {
+            "title": "Forge Workshop Kit \u00b7 Starter",
+            "workshop_id": "starter",
+            "workflow_version": "1",
+            "source": {
+              "file": "starter.py",
+              "sha256": "0e1bf90c065d2d255635c9b78c3d363b62d5150bdf9747277c14afbd063ca1fa"
+            },
+            "html": {
+              "file": "starter.html",
+              "sha256": "08fea9971d9ae7990b1f70383b297b0ec9f41bdb0189987937806cdb2779a360"
+            }
+          },
+          "facilitator": {
+            "title": "Forge Workshop Kit \u00b7 Progress monitor",
+            "workshop_id": "facilitator",
+            "workflow_version": "1",
+            "source": {
+              "file": "facilitator.py",
+              "sha256": "67ab87fb03b0bd13b8c32ca70aec384e6d7d4ca5af2db06659108241b05a70e5"
+            },
+            "html": {
+              "file": "facilitator.html",
+              "sha256": "c281fcaf012eb557cf56796d198e0fb3d6d79b89394bc01ea13b202c9a5c5e7b"
+            }
+          },
+          "pending_inc": {
+            "title": "Pending, Inc. \u00b7 Your project",
+            "workshop_id": "pending-direct-teaching",
+            "workflow_version": "1",
+            "source": {
+              "file": "pending_inc.py",
+              "sha256": "4b6cd10ce4b9007800dde85b7a047d6f5d55368f856d53ac2a5665c706e2aded"
+            },
+            "html": {
+              "file": "pending_inc.html",
+              "sha256": "7470303a84d680d7289e0a2348e155020a8cc0d524b01372cbb9bb7b8fb85604"
+            }
+          },
+          "solar_autoresearch": {
+            "title": "Solar forecasting with agent-assisted experiments",
+            "workshop_id": "solar-autoresearch",
+            "workflow_version": "1",
+            "source": {
+              "file": "solar_autoresearch.py",
+              "sha256": "78cfbb8750e398644590ffcacaa256410f0a6a9bc59223ebfb7b08bb977eefd0"
+            },
+            "html": {
+              "file": "solar_autoresearch.html",
+              "sha256": "1677714d4ad76e17a183b691cf8335e7da1bf8001505fda4fe79c146bf09ace4"
+            }
+          },
+          "request_routing": {
+            "title": "Route customer requests and learn from mistakes",
+            "workshop_id": "banking-routing",
+            "workflow_version": "1",
+            "source": {
+              "file": "request_routing.py",
+              "sha256": "953d66941ae003d8a0a8f7ff2d759d3e468411848a9627aa014925a35b428112"
+            },
+            "html": {
+              "file": "request_routing.html",
+              "sha256": "c9a533618f306efb1396c4061285006048b28aec247ace5af64414133b204dbd"
+            }
+          },
+          "visual_inspection": {
+            "title": "Find defective parts before they ship",
+            "workshop_id": "visual-inspection",
+            "workflow_version": "1",
+            "source": {
+              "file": "visual_inspection.py",
+              "sha256": "575a18fdc8e2c12b5175ce8c715a63c309a4e32875dda34425bece504467646c"
+            },
+            "html": {
+              "file": "visual_inspection.html",
+              "sha256": "06fb1acdee819e54333f055c713bf419fbef7bf14deca08bc363cf5762873d75"
+            }
+          }
+        },
+        "lock_sha256": "84908649a679bfc7d84e44609ded2fbf8cb845ca587e4c1e379e3ce726e56436"
+      }
+    },
+    {
+      "name": "workshop-qualification-v0.5.0.zip",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/workshop-qualification-v0.5.0.zip",
+      "status": 200,
+      "bytes": 5060539,
+      "sha256": "db078c4ceaa80e5251455e1d973d2f861689ddaf0ea69b03ebade78480adfd19"
+    }
+  ]
+}

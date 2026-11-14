@@ -10,8 +10,8 @@ Each participant works in their own project. The facilitator can read the progre
 | --- | --- |
 | [Solar Autoresearch · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view) | Join a research lab working with real satellite observations. Build forecasts, compare training settings, then ask an agent to propose and test code changes. Four hours. |
 | [Pending, Inc. · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) | Give an office agent tools for refunds and account access. Check its work, edit its instructions, then build an agent that makes and tests further edits. Three hours. |
-| [Route customer requests](notebooks/request_routing.py) | Compare two classifiers on Banking77, review mistakes, check a judge against human labels, and freeze a revised router. Three hours. |
-| [Find defective parts](notebooks/visual_inspection.py) | Compare whole-image and patch features on real VisA circuit-board photographs, spend a fixed review budget, and reproduce the selected detector. Three hours. |
+| [Route customer requests · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view) | Compare two classifiers on Banking77, review mistakes, check a judge against human labels, and freeze a revised router. Three hours. |
+| [Find defective parts · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view) | Compare whole-image and patch features on real VisA circuit-board photographs, spend a fixed review budget, and reproduce the selected detector. Three hours. |
 
 Use the companion deck alongside your notebook:
 

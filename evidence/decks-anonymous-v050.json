@@ -1,0 +1,268 @@
+{
+  "checked_at": "2026-11-14T15:26:39.244575+00:00",
+  "workflow": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43609334158",
+  "anonymous": true,
+  "authorization_headers": false,
+  "cookies": false,
+  "checks": [
+    {
+      "url": "https://ash0ts.github.io/forge-workshop-kit/",
+      "final_url": "https://ash0ts.github.io/forge-workshop-kit/",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 772,
+      "sha256": "ec504c6e4932795e158151d9c08a4bf83d42bd0cedf1705e13ed3e3e8e8211a7",
+      "title": "Forge Workshop Kit decks",
+      "assets": []
+    },
+    {
+      "url": "https://ash0ts.github.io/forge-workshop-kit/pending/",
+      "final_url": "https://ash0ts.github.io/forge-workshop-kit/pending/",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 2283,
+      "sha256": "cf7634e15e4181ce6bf3fa3690c383f258ceb6ba1fbc7fa1971ef93e50eaa7f9",
+      "title": "Please improve yourself \u00b7 Pending, Inc. - Slidev",
+      "assets": [
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/assets/index-Ccw8vpcR.js",
+          "status": 200,
+          "bytes": 193785,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/assets/rolldown-runtime-XKyaHtl9.js",
+          "status": 200,
+          "bytes": 726,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/assets/modules/shiki-qO-XvnXj.js",
+          "status": 200,
+          "bytes": 226883,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/assets/slidev/utils-DTK0bR52.js",
+          "status": 200,
+          "bytes": 3963,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/assets/modules/vue-DCDkXXP_.js",
+          "status": 200,
+          "bytes": 82326,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/assets/modules/shiki-V4-KMA-J.css",
+          "status": 200,
+          "bytes": 15321,
+          "content_type": "text/css; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/pending/assets/index-C8nLVDc5.css",
+          "status": 200,
+          "bytes": 159186,
+          "content_type": "text/css; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/",
+      "final_url": "https://ash0ts.github.io/forge-workshop-kit/solar/",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 3408,
+      "sha256": "5cb67a1ffb2986d5d8b97e56cc4d74ea43f81e3c84eaab052c1fc8adba29a2fe",
+      "title": "Solar forecasting with agent-assisted experiments - Slidev",
+      "assets": [
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/assets/index-dJLNLIz_.js",
+          "status": 200,
+          "bytes": 222370,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/assets/rolldown-runtime-XKyaHtl9.js",
+          "status": 200,
+          "bytes": 726,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/assets/modules/shiki-CYI7Adj5.js",
+          "status": 200,
+          "bytes": 226892,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/assets/slidev/utils-DxvQ5Ajh.js",
+          "status": 200,
+          "bytes": 3949,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/assets/modules/vue-C0NV1Bja.js",
+          "status": 200,
+          "bytes": 82328,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/assets/modules/shiki-V4-KMA-J.css",
+          "status": 200,
+          "bytes": 15321,
+          "content_type": "text/css; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/solar/assets/index-CIPwgZK8.css",
+          "status": 200,
+          "bytes": 136435,
+          "content_type": "text/css; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "url": "https://ash0ts.github.io/forge-workshop-kit/routing/",
+      "final_url": "https://ash0ts.github.io/forge-workshop-kit/routing/",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1510,
+      "sha256": "742bc6d7f2b24b0c6ec24885f612bf4e3c0209b027bf491c3838899d327c67ac",
+      "title": "Route customer requests and learn from mistakes - Slidev",
+      "assets": [
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/assets/index-sT-R31ow.js",
+          "status": 200,
+          "bytes": 141478,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/assets/rolldown-runtime-XKyaHtl9.js",
+          "status": 200,
+          "bytes": 726,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/assets/modules/shiki-DiGHlfiA.js",
+          "status": 200,
+          "bytes": 226874,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/assets/slidev/utils-yRVj045b.js",
+          "status": 200,
+          "bytes": 3900,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/assets/modules/vue-mzUzpaw1.js",
+          "status": 200,
+          "bytes": 82326,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/assets/modules/shiki-V4-KMA-J.css",
+          "status": 200,
+          "bytes": 15321,
+          "content_type": "text/css; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/routing/assets/index-DaAYp8Nv.css",
+          "status": 200,
+          "bytes": 114127,
+          "content_type": "text/css; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/",
+      "final_url": "https://ash0ts.github.io/forge-workshop-kit/inspection/",
+      "status": 200,
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1899,
+      "sha256": "86b027760885b07ad2f160221abd6c83346883b64b6da8285024f05f88a81d00",
+      "title": "Find defective parts before they ship - Slidev",
+      "assets": [
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/assets/index-CA5omHTa.js",
+          "status": 200,
+          "bytes": 138397,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/assets/rolldown-runtime-XKyaHtl9.js",
+          "status": 200,
+          "bytes": 726,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/assets/modules/shiki-DiGHlfiA.js",
+          "status": 200,
+          "bytes": 226874,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/assets/slidev/utils-BdmHwNxD.js",
+          "status": 200,
+          "bytes": 3900,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/assets/modules/vue-mzUzpaw1.js",
+          "status": 200,
+          "bytes": 82326,
+          "content_type": "application/javascript; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/assets/modules/shiki-V4-KMA-J.css",
+          "status": 200,
+          "bytes": 15321,
+          "content_type": "text/css; charset=utf-8"
+        },
+        {
+          "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/assets/index-BAvL13Rj.css",
+          "status": 200,
+          "bytes": 113332,
+          "content_type": "text/css; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "url": "https://ash0ts.github.io/forge-workshop-kit/pending/pending-inc.pdf",
+      "final_url": "https://ash0ts.github.io/forge-workshop-kit/pending/pending-inc.pdf",
+      "status": 200,
+      "content_type": "application/pdf",
+      "bytes": 907584,
+      "sha256": "4f3e34bb9116fef26bd528c74e492757f27ae0ab371faa33471f940e4bb4f88b",
+      "pdf_magic": "%PDF-"
+    },
+    {
+      "url": "https://ash0ts.github.io/forge-workshop-kit/solar/solar-autoresearch.pdf",
+      "final_url": "https://ash0ts.github.io/forge-workshop-kit/solar/solar-autoresearch.pdf",
+      "status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1832704,
+      "sha256": "290e2739c65da7126610c82f07a12b78dd3511138069dfe2be4bb145acf67039",
+      "pdf_magic": "%PDF-"
+    },
+    {
+      "url": "https://ash0ts.github.io/forge-workshop-kit/routing/request-routing.pdf",
+      "final_url": "https://ash0ts.github.io/forge-workshop-kit/routing/request-routing.pdf",
+      "status": 200,
+      "content_type": "application/pdf",
+      "bytes": 191229,
+      "sha256": "03aff5fabd691459f3335ddd9b01dd95c1916fccd8b8823c43cb842e1466e95e",
+      "pdf_magic": "%PDF-"
+    },
+    {
+      "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/visual-inspection.pdf",
+      "final_url": "https://ash0ts.github.io/forge-workshop-kit/inspection/visual-inspection.pdf",
+      "status": 200,
+      "content_type": "application/pdf",
+      "bytes": 1125638,
+      "sha256": "dd35ece83f3787d84c3b3b3a782b233fa7ad986153a5780666393c61fdbf5639",
+      "pdf_magic": "%PDF-"
+    }
+  ],
+  "passed": true
+}

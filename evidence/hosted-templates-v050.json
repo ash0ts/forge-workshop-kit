@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "release": "0.5.0",
+  "project": "wandb/forge-workshop-kit",
+  "verification": "Exact hosted source and HTML hashes match the release manifest. Maintainer credentials; external attendee access remains unverified.",
+  "templates": {
+    "starter": {
+      "id": "Tm90ZWJvb2s6MTU3NzI=",
+      "status": "verified",
+      "release": "0.5.0",
+      "source_sha256": "0e1bf90c065d2d255635c9b78c3d363b62d5150bdf9747277c14afbd063ca1fa",
+      "html_sha256": "08fea9971d9ae7990b1f70383b297b0ec9f41bdb0189987937806cdb2779a360",
+      "currentVersion": {
+        "artifactCollectionName": "Forge-Workshop-Kit-Starter",
+        "versionIndex": 11,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzI=/view"
+    },
+    "facilitator": {
+      "id": "Tm90ZWJvb2s6MTU3NzM=",
+      "status": "verified",
+      "release": "0.5.0",
+      "source_sha256": "67ab87fb03b0bd13b8c32ca70aec384e6d7d4ca5af2db06659108241b05a70e5",
+      "html_sha256": "c281fcaf012eb557cf56796d198e0fb3d6d79b89394bc01ea13b202c9a5c5e7b",
+      "currentVersion": {
+        "artifactCollectionName": "Forge-Workshop-Kit-Progress-monitor",
+        "versionIndex": 11,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzM=/view"
+    },
+    "pending_inc": {
+      "id": "Tm90ZWJvb2s6MTU3NzQ=",
+      "status": "verified",
+      "release": "0.5.0",
+      "source_sha256": "4b6cd10ce4b9007800dde85b7a047d6f5d55368f856d53ac2a5665c706e2aded",
+      "html_sha256": "7470303a84d680d7289e0a2348e155020a8cc0d524b01372cbb9bb7b8fb85604",
+      "currentVersion": {
+        "artifactCollectionName": "Pending-Inc.-Your-project",
+        "versionIndex": 11,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view"
+    },
+    "solar_autoresearch": {
+      "id": "Tm90ZWJvb2s6MTU3NzU=",
+      "status": "verified",
+      "release": "0.5.0",
+      "source_sha256": "78cfbb8750e398644590ffcacaa256410f0a6a9bc59223ebfb7b08bb977eefd0",
+      "html_sha256": "1677714d4ad76e17a183b691cf8335e7da1bf8001505fda4fe79c146bf09ace4",
+      "currentVersion": {
+        "artifactCollectionName": "Solar-forecasting-with-agent-assisted-experiments",
+        "versionIndex": 11,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view"
+    },
+    "request_routing": {
+      "id": "Tm90ZWJvb2s6MTU5Mjg=",
+      "status": "verified",
+      "release": "0.5.0",
+      "source_sha256": "953d66941ae003d8a0a8f7ff2d759d3e468411848a9627aa014925a35b428112",
+      "html_sha256": "c9a533618f306efb1396c4061285006048b28aec247ace5af64414133b204dbd",
+      "currentVersion": {
+        "artifactCollectionName": "Route-customer-requests-and-learn-from-mistakes",
+        "versionIndex": 1,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view"
+    },
+    "visual_inspection": {
+      "id": "Tm90ZWJvb2s6MTU5Mjk=",
+      "status": "verified",
+      "release": "0.5.0",
+      "source_sha256": "575a18fdc8e2c12b5175ce8c715a63c309a4e32875dda34425bece504467646c",
+      "html_sha256": "06fb1acdee819e54333f055c713bf419fbef7bf14deca08bc363cf5762873d75",
+      "currentVersion": {
+        "artifactCollectionName": "Find-defective-parts-before-they-ship",
+        "versionIndex": 1,
+        "sourceFileName": "notebook.py"
+      },
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view"
+    }
+  },
+  "browser_check": {
+    "account": "maintainer",
+    "templates": [
+      "request_routing",
+      "visual_inspection"
+    ],
+    "titles_and_copy_controls": "visible",
+    "embedded_preview": "blocked by browser local-network policy",
+    "error": "The connection is blocked because it was initiated by a public page to connect to devices or servers on your local network.",
+    "fresh_external_account": "not tested",
+    "screenshot": "v050-browser-checks/routing-hosted-preview.png"
+  }
+}

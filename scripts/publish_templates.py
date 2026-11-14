@@ -140,7 +140,13 @@ def publish_one(project, folder, receipt_path, slug, *, api=None):
             "mutation($id:ID!,$n:String!){renameNotebook(input:{id:$id,name:$n}){notebook{id}}}",
             {"id": record["id"], "n": row["title"]},
         )
-        # Destination was read back before either rename or artifact publication.
+        # Renaming can move the current version to a different artifact collection.
+        # Verify the destination again and use the collection returned after rename.
+        notebook = read_notebook(query, record["id"], project)
+        if notebook.get("name") != row["title"] or not (notebook.get("currentVersion") or {}).get("artifactCollectionName"):
+            raise RuntimeError(
+                "The renamed notebook is not ready for upload. Rerun publication to read its current collection; do not create another notebook."
+            )
         with wandb.init(
             entity=entity,
             project=project_name,

@@ -291,3 +291,75 @@ def test_python_distribution_rejects_runtime_state(tmp_path):
         archive.add(secret, arcname="forge_workshop_kit-0.3.0/.env")
     with pytest.raises(ValueError, match="Runtime or presentation"):
         check_distribution(sdist)
+
+
+def test_renamed_notebook_uploads_to_current_collection(tmp_path, monkeypatch):
+    built_release(tmp_path)
+    receipt = tmp_path / 'deployment.json'
+    publish_templates.write_receipt(receipt, {
+        'schema_version': 1, 'project': 'alice/lab',
+        'templates': {'starter': {'id': 'same', 'status': 'publishing'}},
+    })
+    old_source = tmp_path / 'old.py'
+    old_source.write_text('old template')
+    calls = {'rename': 0, 'upload': 0, 'reads': 0}
+
+    class Entry:
+        def __init__(self, path):
+            self.path = path
+        def download(self, root):
+            return self.path
+
+    class API:
+        def __init__(self):
+            self._service_api = self
+            self.name = 'Untitled'
+            self.collection = 'Untitled'
+            self.version = 0
+            self.uploaded = {}
+        def execute_graphql(self, query, variables):
+            assert 'createNotebook' not in query, 'Resume the saved notebook identity.'
+            if 'renameNotebook' in query:
+                calls['rename'] += 1
+                self.name = variables['n']
+                self.collection = 'Starter-renamed-collection'
+                return {'renameNotebook': {'notebook': {'id': 'same'}}}
+            calls['reads'] += 1
+            return {'notebook': {'id': 'same', 'name': self.name,
+                'project': {'name': 'lab', 'entity': {'name': 'alice'}},
+                'currentVersion': {'artifactCollectionName': self.collection, 'versionIndex': self.version}}}
+        def artifact(self, path, type):
+            assert path == f'alice/lab/{self.collection}:v{self.version}'
+            assert type == 'notebook'
+            return SimpleNamespace(get_entry=lambda name: Entry(self.uploaded.get(name, old_source)))
+    api = API()
+
+    class Artifact:
+        def __init__(self, name, **kwargs):
+            # This is the regression: the old implementation used Untitled here.
+            assert name == api.collection == 'Starter-renamed-collection'
+            self.files = {}
+        def add_file(self, path, name):
+            self.files[name] = Path(path)
+
+    class Run:
+        def __enter__(self):
+            return self
+        def __exit__(self, *args):
+            return False
+        def log_artifact(self, artifact):
+            calls['upload'] += 1
+            api.uploaded = artifact.files
+            api.version += 1
+            return SimpleNamespace(wait=lambda timeout: None)
+
+    import wandb
+    monkeypatch.setattr(wandb, 'init', lambda **kwargs: Run())
+    monkeypatch.setattr(wandb, 'Artifact', Artifact)
+    publish_templates.publish_one('alice/lab', tmp_path, receipt, 'starter', api=api)
+    record = json.loads(receipt.read_text())['templates']['starter']
+    assert record['status'] == 'verified'
+    assert record['currentVersion']['artifactCollectionName'] == 'Starter-renamed-collection'
+    assert calls == {'rename': 1, 'upload': 1, 'reads': 3}
+    publish_templates.publish_one('alice/lab', tmp_path, receipt, 'starter', api=api)
+    assert calls == {'rename': 1, 'upload': 1, 'reads': 4}

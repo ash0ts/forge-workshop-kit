@@ -1,0 +1,109 @@
+{
+  "release": "v0.5.0",
+  "checks": [
+    {
+      "file": "forge_workshop_kit-0.5.0-py3-none-any.whl",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/forge_workshop_kit-0.5.0-py3-none-any.whl",
+      "bytes": 191657,
+      "sha256": "277fc7b2370798a10a5c9d45f88b9373f444278bea825d16673a2f6ef207e962",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "banking77-v1.tar.gz",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/banking77-v1.tar.gz",
+      "bytes": 19108081,
+      "sha256": "6be098212dd82be42b88114492a96c32e8a2eb91f24c4a808447494f9ecb5929",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "inspection-v1.tar.gz",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/inspection-v1.tar.gz",
+      "bytes": 51490972,
+      "sha256": "157aeea2871d072a2fd079af5547217f628b16948a806914fef7f0de77db204b",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "facilitator.py",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/facilitator.py",
+      "bytes": 8462,
+      "sha256": "67ab87fb03b0bd13b8c32ca70aec384e6d7d4ca5af2db06659108241b05a70e5",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "pending_inc.py",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/pending_inc.py",
+      "bytes": 64749,
+      "sha256": "4b6cd10ce4b9007800dde85b7a047d6f5d55368f856d53ac2a5665c706e2aded",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "request_routing.py",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/request_routing.py",
+      "bytes": 46091,
+      "sha256": "953d66941ae003d8a0a8f7ff2d759d3e468411848a9627aa014925a35b428112",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "solar_autoresearch.py",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/solar_autoresearch.py",
+      "bytes": 98272,
+      "sha256": "78cfbb8750e398644590ffcacaa256410f0a6a9bc59223ebfb7b08bb977eefd0",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "starter.py",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/starter.py",
+      "bytes": 5742,
+      "sha256": "0e1bf90c065d2d255635c9b78c3d363b62d5150bdf9747277c14afbd063ca1fa",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "visual_inspection.py",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/visual_inspection.py",
+      "bytes": 50191,
+      "sha256": "575a18fdc8e2c12b5175ce8c715a63c309a4e32875dda34425bece504467646c",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "pending-inc.pdf",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/pending-inc.pdf",
+      "bytes": 1016449,
+      "sha256": "3c745d30f613c246af79ba74e24b0ac70fe4adc41a1802dbd0a534fa57c6351e",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "request-routing.pdf",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/request-routing.pdf",
+      "bytes": 238950,
+      "sha256": "def1a3640bdbf109b7764b02d70469409aa71f94431d55c98c615b01af060320",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "solar-autoresearch.pdf",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/solar-autoresearch.pdf",
+      "bytes": 1950247,
+      "sha256": "37cf61f3a8336a9499a48d74aea6e400725a71db5b02ac7a4be5a343d89171fb",
+      "authentication": "none",
+      "verified": true
+    },
+    {
+      "file": "visual-inspection.pdf",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0/visual-inspection.pdf",
+      "bytes": 1148022,
+      "sha256": "ed032c62541d122ebc2df7f07d5ea2de43c1fddb4ab5cc6342529c48959199ec",
+      "authentication": "none",
+      "verified": true
+    }
+  ]
+}
