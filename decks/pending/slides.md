@@ -65,6 +65,17 @@ Ask someone to name the account fields they would check after this request. We n
 -->
 
 ---
+---
+
+# The access request has no acknowledgement.
+
+<div class="two-col"><div class="ticket"><div class="account">FERN → ACCOUNT SUPPORT</div><p>Add alex@example.test<br>with the member role.</p></div><div class="ticket"><div class="account">RESPONSE</div><p>Request timed out.</p><p>Did access fail, or did the reply fail?</p></div></div><div class="bottom-note">Second public development ticket. One membership is the required result; account state will tell us whether the write succeeded.</div>
+
+<!--
+Introduce the second office task before the protocol details. Billing asks us to choose the right payment and act once. Onboarding asks us to handle uncertainty after a write. Both need tools, readable traces and checks on the resulting account. The injected timeout is a fictional teaching incident implemented in the simulator.
+-->
+
+---
 class: opening-bridge
 ---
 
@@ -200,7 +211,7 @@ The event helper runs the supplied function and returns two objects. result is w
 # Export the saved operation as an Agent Lens span.
 
 
-```python
+```python {1-3|4-7|8-10|all}
 with tracing.Tool(
     name=record["name"],
     arguments=record["arguments"],
@@ -252,7 +263,7 @@ Verified v0.3.0 baseline billing tool span get_account. The model chose get_acco
 
 # Check which account records the model received.
 
-<div class="annotated"><CaptureDetail src="/images/visual-v030-pending-lookup.png" :x="580" :y="245" :width="690" :height="445" label="Native get_account span: account_id acme and returned account with payment pay-1" /><div class="annotations"><p>The argument is <code>account_id: acme</code>.</p><p>The result contains that account and its payments.</p><p>Find the next model call that used this observation.</p></div></div>
+<div class="annotated"><CaptureDetail src="/images/visual-v030-pending-lookup.png" :x="580" :y="245" :width="690" :height="445" :markers="[{number:1,y:315},{number:2,y:455}]" label="Native get_account span: account_id acme and returned account with payment pay-1" /><div class="annotations numbered"><p><span class="annotation-number">1</span><code>arguments</code> supplied <code>account_id: acme</code>.</p><p><span class="annotation-number">2</span><code>result</code> contains that account and its payments.</p><p>Use the next model span to check whether its input contains this observation.</p></div></div>
 
 <!--
 Enlarged native crop x580,y245,w690,h445. Saved get_account, not lookup_invoice. Do not infer that the model called the authored lookup tool; this example teaches the same span fields participants instrumented.
@@ -282,7 +293,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my invoice lookup<br><strong>Check:</strong> The requested invoice, missing invoice, and other-account checks pass. Account state stays unchanged.</div>
 
-<a class="answer-link" href="/77">Worked answer →</a>
+<a class="answer-link" href="/78">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my invoice lookup.
@@ -360,7 +371,7 @@ Same objects and positions across these five frames. Show the actual action/resu
 # Dispatch lookup_invoice to your function.
 
 
-```python
+```python {1-3|4|all}
 def my_dispatch(name, arguments, world, invoice_tool, call_tool):
     if name == "lookup_invoice":
         return world, invoice_tool(world, **arguments)
@@ -383,9 +394,9 @@ class: exercise
 
 <div class="task">Complete my_dispatch and my_observation. Append the action and actual result to a new message list, keeping the previous request unchanged.</div>
 
-<div class="done"><strong>Run:</strong> Test my tool-to-model handoff<br><strong>Check:</strong> Expand the next request. It contains the two returned payments and the action that produced them.</div>
+<div class="done"><strong>Run:</strong> Test my tool-to-model handoff<br><strong>Check:</strong> Open the four handoff tabs. Match the action, Python arguments, returned payments, and two appended messages.</div>
 
-<a class="answer-link" href="/78">Worked answer →</a>
+<a class="answer-link" href="/79">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my tool-to-model handoff.
@@ -397,7 +408,7 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 # Include the tool observation in the conversation history.
 
 
-```python
+```python {1-2|3|all}
 return messages + [
     {"role": "assistant", "content": json.dumps(action)},
     {"role": "user", "content": "Tool observation: " + json.dumps(result)},
@@ -405,7 +416,7 @@ return messages + [
 ```
 
 <p>The next model request includes both the action it selected and the returned payments. It can use those records to decide which payment to refund.</p>
-<div class="bottom-note">This executor uses structured JSON actions and observation messages. Follow its existing message contract.</div>
+<div class="bottom-note">The user-role message carries tool data in this JSON protocol. It is not a new customer instruction.</div>
 
 <!--
 The model cannot see a Python return value unless the executor includes it in a later request. Append the chosen action and its result to a new list so the previous request stays available for inspection. This executor uses JSON actions and a user message containing the observation; it is not using the OpenAI tool-message protocol.
@@ -433,7 +444,7 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 # Record each model request and its response.
 
 
-```python
+```python {1-5|6-10|11-12|all}
 req = record["request"]
 response = record.get("response") or {}
 span = tracing.LLM(
@@ -509,7 +520,7 @@ Explanatory sequence for the committed-write timeout fixture. Use the recorded n
 <RetryIdentity />
 
 <!--
-Illustration of simulator.execute after a committed provisioning request. The same operation_id and identical arguments return the stored receipt with replayed=true. A new operation_id is a new mutation and can add a duplicate membership. Reusing an ID with different arguments is rejected. The recorded onboarding recovery read status instead of retrying, so this diagram explains tool behavior rather than claiming this branch occurred in that run.
+In notebook step 3, use the free local timeout practice. Predict the member count, trigger the timeout, and compare reading status with same-ID and new-ID retries. Reset between alternatives. This uses Python only, changes no saved employee run, and makes no model request. Illustration of simulator.execute after a committed provisioning request. The same operation_id and identical arguments return the stored receipt with replayed=true. A new operation_id is a new mutation and can add a duplicate membership. Reusing an ID with different arguments is rejected. The recorded onboarding recovery read status instead of retrying, so this diagram explains tool behavior rather than claiming this branch occurred in that run.
 -->
 
 ---
@@ -529,7 +540,7 @@ v0.3.0 skill-loaded onboarding: timeout span 5ddd78b1e9faa2d3; recovery status s
 
 # The tool says the write may have committed.
 
-<div class="annotated"><CaptureDetail src="/images/visual-v030-pending-timeout.png" :x="580" :y="423" :width="690" :height="280" label="Native timeout output says the operation may have committed; inspect current access" /><div class="annotations"><p>The request names the account, member, role, and operation.</p><p>The returned message directs the employee to inspect access.</p></div></div><div class="bottom-note">Enlarged native span. The failed response does not establish whether the membership was created.</div>
+<div class="annotated"><CaptureDetail src="/images/visual-v030-pending-timeout.png" :x="580" :y="423" :width="690" :height="280" :markers="[{number:1,y:488},{number:2,y:655}]" label="Native timeout output says the operation may have committed; inspect current access" /><div class="annotations numbered"><p><span class="annotation-number">1</span>The arguments identify Fern, Alex, the member role, and the operation ID.</p><p><span class="annotation-number">2</span>The result reports a timeout and says the write may have committed. Read access before another write.</p></div></div><div class="bottom-note">Enlarged native span. The failed response does not establish whether the membership was created.</div>
 
 <!--
 Crop x580,y423,w690,h280 from the unchanged1280x720 native capture. Follow its conversation link on the preceding slide. The next operation in the saved trace is onboarding_status.
@@ -569,7 +580,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my scorer against four known examples<br><strong>Check:</strong> Full refund passes. Partial refund, no refund, and duplicate refund fail, despite the same confident reply.</div>
 
-<a class="answer-link" href="/79">Worked answer →</a>
+<a class="answer-link" href="/80">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my scorer against four known examples.
@@ -595,7 +606,7 @@ class: exercise
 
 <div class="where">Notebook · 4 · Check the work</div>
 
-<div class="task">Run the explanation judge on the two saved starting tickets. Read its reasons alongside your state checks.</div>
+<div class="task">Run the explanation judge on the two saved starting tickets. Find your state check, the independent check, and the judge reason in the saved table.</div>
 
 <div class="done"><strong>Run:</strong> Judge and publish the starting development comparison<br><strong>Check:</strong> Open a case in the saved comparison and follow its conversation link. Explain any disagreement between the two scores.</div>
 
@@ -606,14 +617,12 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 ---
 ---
 
-# Compare the same case across versions.
+# Know which check produced the score.
 
-<table class="clean-table readable-table"><tbody><tr><th>Case</th><th>Harness version</th><th>Account correct?</th><th>Explanation grounded?</th><th>Trace</th></tr><tr><td>double-charge</td><td>Starting instructions</td><td>State checker</td><td>LLM judge</td><td>Actual run</td></tr><tr><td>double-charge</td><td>Manual revision</td><td>State checker</td><td>LLM judge</td><td>Actual run</td></tr></tbody></table>
-<p>Keep correctness, tool errors, time, and cost in separate columns.</p>
-<div class="bottom-note">Illustrative column mapping. Missing judgments stay missing. This is not a product screenshot.</div>
+<FourChecks />
 
 <!--
-Weave preserves the evaluation data. W&B stores run artifacts and result tables. Native EvalTables publication is attempted, but the latest rehearsal returned HTTP 500. Use saved Weave/notebook comparisons rather than presenting a fabricated native screen.
+The public check_work result can influence the employee. The participant-written scorer teaches a bounded account check. The independent final grader checks complete expected state and the resolution. The explanation judge compares the reply with recorded actions. Its validator checks structure, not correctness. Ask a participant which check an improver is allowed to see.
 -->
 
 ---
@@ -635,13 +644,12 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 ---
 ---
 
-# Compare account correctness with the added tool calls.
+# An installed skill must be read before it can guide the model.
 
-<p class="big">If the revised agent adds a check, determine what that check changed in the final account.</p>
-<div class="two-col"><div><h2>Behavior</h2><p>Which skill was read?<br>Which checks or retries ran?<br>Did the edit add work?</p></div><div><h2>Outcome</h2><p>Was the account correct?<br>Was the explanation accurate?<br>Did the same case improve?</p></div></div>
+<SkillRead />
 
 <!--
-Ask participants to identify the changed instruction and the corresponding tool calls. If both versions leave the account correct, report that result. An extra check may change cost or latency without improving the outcome on this case.
+build_messages lists installed skill names. read_skill returns the file contents, and my_observation appends that result to the next request. The notebook checks the actual read event and later saved request. No read means we cannot claim the skill influenced this execution. Loading it still does not prove the agent followed it; inspect the subsequent tools.
 -->
 
 ---
@@ -735,7 +743,7 @@ Reflect asks the editor what it learned from the selected run and where that con
 # Give the editor the starting execution and harness.
 
 
-```python
+```python {1|2-4|all}
 experience = [run_employee(session, case, parent, prefix + "starting", **hooks)]
 editor_decision(
     session, round_number, "propose", parent, experience,
@@ -771,7 +779,7 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 # Construct and execute the proposed harness.
 
 
-```python
+```python {1|2-3|all}
 harness = Harness(**decision["harness"])
 run = run_employee(session, case, harness, prefix + phase, **hooks)
 assert run["harness_fingerprint"] == decision["fingerprint"]
@@ -879,7 +887,7 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 # Save the lesson with the run that supports it.
 
 
-```python
+```python {1-4|5-8|all}
 review = reflect_execution(
     session, round_number, run,
     tool_writer=my_tool_span, model_writer=my_model_span,
@@ -967,7 +975,7 @@ class: exercise
 
 <div class="where">Notebook · 7 · Compare fresh tickets</div>
 
-<div class="task">Freeze the versions and run the final comparison. Open one matching case across the starting, manual, and agent-selected versions.</div>
+<div class="task">Freeze the versions and run the final comparison. Use the saved-ticket selector to align the starting, manual, and agent-selected outputs.</div>
 
 <div class="done"><strong>Run:</strong> Freeze versions and run 12 evaluations<br><strong>Check:</strong> Follow a score to its account state, judge reason, trace, and harness. Keep unavailable judgments separate from wrong answers.</div>
 
@@ -1082,7 +1090,7 @@ def my_invoice_tool(state, account_id, invoice_id):
 
 Select the account first. Filter its payments. The returned value does not mutate state.
 
-<span class="source-link"><a href="/19">Return to the exercise →</a></span>
+<span class="source-link"><a href="/20">Return to the exercise →</a></span>
 
 <!--
 Exact semantics of teaching.ANSWERS tool. Keep optional so participants attempt the gap first.
@@ -1108,7 +1116,7 @@ def my_observation(messages, action, result):
     ]
 ```
 
-<span class="source-link"><a href="/27">Return to the exercise →</a></span>
+<span class="source-link"><a href="/28">Return to the exercise →</a></span>
 
 <!--
 Exact answer contract from teaching.py. Both dispatch paths return state/result. Handoff creates a new list.
@@ -1129,7 +1137,7 @@ if run["case_id"] == "double-charge":
 
 This development check distinguishes the four public examples. The trusted final scorer also checks the target payment and unrelated account state.
 
-<span class="source-link"><a href="/80">Continue to judge validation →</a></span> · <span class="source-link"><a href="/40">Return to exercise →</a></span>
+<span class="source-link"><a href="/81">Continue to judge validation →</a></span> · <span class="source-link"><a href="/41">Return to exercise →</a></span>
 
 <!--
 The learner check is deliberately limited. Do not describe it as the full final scorer.
@@ -1154,7 +1162,7 @@ def my_judge_validation(answer):
 
 Valid JSON can still contain an incorrect judgment. Compare the reason with the recorded work.
 
-<span class="source-link"><a href="/40">Return to the exercise →</a></span>
+<span class="source-link"><a href="/41">Return to the exercise →</a></span>
 
 <!--
 Exact semantics of teaching.ANSWERS scorer validation. Boolean strings are invalid. Empty reasons are invalid. Missing judgments stay unavailable.

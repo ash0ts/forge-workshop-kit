@@ -1,0 +1,42 @@
+{
+  "sources": {
+    "src/forge_workshop_kit/ui.py": "cab13d204e74b67e01a42c6c813ec55cad04cf9050d585555909a73eaeb7a875",
+    "src/forge_workshop_kit/visuals.py": "ef8349a6a5ac46a02b91721e7f7a02370ac0edbfc89e8c4cdde08bbdacc615b1",
+    "src/forge_workshop_kit/assets/visuals.json": "5bdb8db9b1e0f5b991b095c8f781dba077f704e3510e88375ed1ee606c5dbf11"
+  },
+  "rehearsals": [
+    "v030-pending",
+    "solar-v030-rehearsal"
+  ],
+  "final_checks": [
+    {
+      "kind": "pending",
+      "visiblePanels": 1,
+      "keyboardChanged": true,
+      "desktopOverflow": false,
+      "narrowOverflow": false,
+      "selectedTitle": "Test candidate B",
+      "controls": 20,
+      "links": 11
+    },
+    {
+      "kind": "solar",
+      "visiblePanels": 1,
+      "keyboardChanged": true,
+      "desktopOverflow": false,
+      "narrowOverflow": false,
+      "selectedTitle": "Test candidate B",
+      "controls": 16,
+      "links": 7
+    }
+  ],
+  "screenshots": [
+    "pending-desktop.png",
+    "pending-narrow.png",
+    "pending-dark.png",
+    "solar-desktop.png",
+    "solar-narrow.png",
+    "solar-dark.png"
+  ],
+  "marimo_check": "Native radio selection and keyboard verified in real marimo; pre-order screenshot retained separately. Final ordering verified in both rendered HTML fixtures."
+}

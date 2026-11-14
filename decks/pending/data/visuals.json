@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "colors": {
+    "parent": "#7c8985",
+    "candidate_a": "#4382a6",
+    "candidate_b": "#c17b40",
+    "composition": "#526b66",
+    "execution": "#163c43",
+    "selection": "#237a6c"
+  },
+  "edges": {
+    "code": {"dash": null, "label": "Code or harness passed to an execution"},
+    "evidence": {"dash": "6 5", "label": "Execution evidence reviewed"},
+    "selection": {"dash": null, "label": "Selected version", "requires_record": true}
+  },
+  "labels": {
+    "keep": "Retain this version",
+    "planned": "Not run",
+    "color": "Color identifies a branch, not its quality.",
+    "selection": "Selection is a saved decision; it is not another execution."
+  },
+  "recorded_examples": {
+    "pending_v030": {
+      "label": "Recorded Pending rehearsal · v0.3.0",
+      "project": "wandb/forge-workshop-kit",
+      "proposal": "13b62fe7dfee9decae8eb815e7559800",
+      "composition": "c04f575608c6f43d99e1b7b428a23791",
+      "composition_execution": "0d575e91e278ef9ee1e5475c8fb8b3c7",
+      "selection": "293be75c873f4b2fad979aefe1deb3e9"
+    },
+    "solar_v030": {
+      "label": "Recorded Solar rehearsal · v0.3.0",
+      "project": "wandb/forge-workshop-kit",
+      "proposal": "f67b35115662dea4c433dcd112ad6d68",
+      "composition": "dabc9d06506c8797fb999a4f26222978",
+      "composition_execution": "f7550caa1639e8366efbf9d84a782289",
+      "selection": "670371e975a1c4ec66a87cd7c304c700"
+    }
+  }
+}

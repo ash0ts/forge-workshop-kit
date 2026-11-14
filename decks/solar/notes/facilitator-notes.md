@@ -58,7 +58,7 @@ Check these settings before running anything. The eight-dollar allowance applies
 
 0:07
 
-Conversation identifies the execution. Turn holds the mission. Tool records one operation. The attribute line is the learner edit, not a second call. Actual instrumentation also supplies start and end timestamps and records exceptions. Run the free check, send the setup trace, then find the same field in Agent Lens.
+Conversation identifies the execution. Turn holds the mission. Tool records one operation. The attribute line is the learner edit, not a second call. Actual instrumentation also supplies start and end timestamps and records exceptions. Run the free check, send the setup trace, then find the same field in Agent Lens. Advance the code highlights one step at a time; use Back to revisit the previous statement.
 
 ## 11. Connect and inspect your first tool call
 
@@ -178,7 +178,7 @@ A W&B run stores settings and metric history. A W&B Artifact stores a versioned 
 
 0:47
 
-This shortened example shows where saving sits around training. The notebook’s run_training function runs your source, then saves the result. If that same stage has already completed, the saved result can be restored instead of training again.
+This shortened example shows where saving sits around training. The notebook’s run_training function runs your source, then saves the result. If that same stage has already completed, the saved result can be restored instead of training again. Advance the code highlights one step at a time; use Back to revisit the previous statement.
 
 ## 31. What changes during one training step
 
@@ -286,7 +286,7 @@ Much of the current image may remain similar one hour later. We can copy that im
 
 1:49
 
-The diagram and code describe the same addition. Ask participants why x[:, 1] would remove a dimension and why x[:, 1:2] preserves it. The notebook implementation also branches on architecture so the convolutional comparison still returns only the network output.
+The diagram and code describe the same addition. Ask participants why x[:, 1] would remove a dimension and why x[:, 1:2] preserves it. The notebook implementation also branches on architecture so the convolutional comparison still returns only the network output. Advance the code highlights one step at a time; use Back to revisit the previous statement.
 
 ## 49. Inspect the correction produced by the saved model
 
@@ -304,7 +304,7 @@ This is a diagram of the scoring calculation, not a forecast. The fixed mask ass
 
 1:51
 
-Run the three local examples before training. They explain what the scorer measures. The participant writes this development scorer, and the protected primary scorer checks the comparison with the same published rule. Missing or invalid predictions are not zero error.
+Run the three local examples before training. They explain what the scorer measures. The participant writes this development scorer, and the protected primary scorer checks the comparison with the same published rule. Missing or invalid predictions are not zero error. Advance the code highlights one step at a time; use Back to revisit the previous statement. In the notebook, move the error outside the scoring mask, then click Try my image scorer on these pixels. The two public grids have different mask sizes; images still receive equal weight.
 
 ## 52. Training loss and evaluation error have different jobs
 
@@ -478,7 +478,7 @@ These are the fresh saved final GOES predictions. The selected sixty-step neural
 
 3:48
 
-This expanded native Weave row is the first final agent-selected image, file_index zero. Prediction mean is −1.760701 and target mean is −1.759181, but masked MAE is 0.109328. Differences between bright and dark pixels can cancel in a mean. The scorer instead takes each pixel’s absolute error before averaging. Open the saved array to see the forecast. The notebook supplies the aligned comparison; this is not native EvalTables.
+This expanded native Weave row is the first final agent-selected image, file_index zero. Prediction mean is −1.760701 and target mean is −1.759181, but masked MAE is 0.109328. Differences between bright and dark pixels can cancel in a mean. The scorer instead takes each pixel’s absolute error before averaging. Open the saved array to see the forecast. The notebook supplies the aligned comparison; this is not native EvalTables. Match this case_id and file_index to the notebook timestamp selector. The per-image score and full-split mean are shown separately.
 
 ## 81. Check that the saved source contains both selected edits
 

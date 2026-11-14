@@ -1,5 +1,5 @@
 {
-  "source_sha256": "29644e3f69db7ef3aaa9657e972d3fa7110adf42612ef16a8657af4ef8c6aff4",
+  "source_sha256": "73fabfb12cb394df798910e41b5218ba4ad99ce44edeb6c3611a259064183ea8",
   "slides_checked": 101,
   "expected_slides": 101,
   "titles": [
@@ -507,6 +507,492 @@
       "number": 101,
       "key": "links",
       "title": "Keep working in your own project"
+    }
+  ],
+  "click_states": [
+    {
+      "slide": 1,
+      "click": 0
+    },
+    {
+      "slide": 2,
+      "click": 0
+    },
+    {
+      "slide": 3,
+      "click": 0
+    },
+    {
+      "slide": 4,
+      "click": 0
+    },
+    {
+      "slide": 5,
+      "click": 0
+    },
+    {
+      "slide": 6,
+      "click": 0
+    },
+    {
+      "slide": 7,
+      "click": 0
+    },
+    {
+      "slide": 8,
+      "click": 0
+    },
+    {
+      "slide": 9,
+      "click": 0
+    },
+    {
+      "slide": 10,
+      "click": 0
+    },
+    {
+      "slide": 10,
+      "click": 1
+    },
+    {
+      "slide": 10,
+      "click": 2
+    },
+    {
+      "slide": 10,
+      "click": 3
+    },
+    {
+      "slide": 11,
+      "click": 0
+    },
+    {
+      "slide": 12,
+      "click": 0
+    },
+    {
+      "slide": 12,
+      "click": 1
+    },
+    {
+      "slide": 12,
+      "click": 2
+    },
+    {
+      "slide": 13,
+      "click": 0
+    },
+    {
+      "slide": 14,
+      "click": 0
+    },
+    {
+      "slide": 15,
+      "click": 0
+    },
+    {
+      "slide": 16,
+      "click": 0
+    },
+    {
+      "slide": 17,
+      "click": 0
+    },
+    {
+      "slide": 18,
+      "click": 0
+    },
+    {
+      "slide": 19,
+      "click": 0
+    },
+    {
+      "slide": 20,
+      "click": 0
+    },
+    {
+      "slide": 21,
+      "click": 0
+    },
+    {
+      "slide": 22,
+      "click": 0
+    },
+    {
+      "slide": 23,
+      "click": 0
+    },
+    {
+      "slide": 24,
+      "click": 0
+    },
+    {
+      "slide": 25,
+      "click": 0
+    },
+    {
+      "slide": 26,
+      "click": 0
+    },
+    {
+      "slide": 27,
+      "click": 0
+    },
+    {
+      "slide": 28,
+      "click": 0
+    },
+    {
+      "slide": 29,
+      "click": 0
+    },
+    {
+      "slide": 30,
+      "click": 0
+    },
+    {
+      "slide": 30,
+      "click": 1
+    },
+    {
+      "slide": 30,
+      "click": 2
+    },
+    {
+      "slide": 30,
+      "click": 3
+    },
+    {
+      "slide": 31,
+      "click": 0
+    },
+    {
+      "slide": 32,
+      "click": 0
+    },
+    {
+      "slide": 33,
+      "click": 0
+    },
+    {
+      "slide": 34,
+      "click": 0
+    },
+    {
+      "slide": 35,
+      "click": 0
+    },
+    {
+      "slide": 36,
+      "click": 0
+    },
+    {
+      "slide": 37,
+      "click": 0
+    },
+    {
+      "slide": 38,
+      "click": 0
+    },
+    {
+      "slide": 39,
+      "click": 0
+    },
+    {
+      "slide": 40,
+      "click": 0
+    },
+    {
+      "slide": 41,
+      "click": 0
+    },
+    {
+      "slide": 42,
+      "click": 0
+    },
+    {
+      "slide": 43,
+      "click": 0
+    },
+    {
+      "slide": 44,
+      "click": 0
+    },
+    {
+      "slide": 45,
+      "click": 0
+    },
+    {
+      "slide": 46,
+      "click": 0
+    },
+    {
+      "slide": 47,
+      "click": 0
+    },
+    {
+      "slide": 48,
+      "click": 0
+    },
+    {
+      "slide": 48,
+      "click": 1
+    },
+    {
+      "slide": 48,
+      "click": 2
+    },
+    {
+      "slide": 48,
+      "click": 3
+    },
+    {
+      "slide": 49,
+      "click": 0
+    },
+    {
+      "slide": 50,
+      "click": 0
+    },
+    {
+      "slide": 51,
+      "click": 0
+    },
+    {
+      "slide": 51,
+      "click": 1
+    },
+    {
+      "slide": 51,
+      "click": 2
+    },
+    {
+      "slide": 51,
+      "click": 3
+    },
+    {
+      "slide": 52,
+      "click": 0
+    },
+    {
+      "slide": 53,
+      "click": 0
+    },
+    {
+      "slide": 54,
+      "click": 0
+    },
+    {
+      "slide": 55,
+      "click": 0
+    },
+    {
+      "slide": 56,
+      "click": 0
+    },
+    {
+      "slide": 57,
+      "click": 0
+    },
+    {
+      "slide": 58,
+      "click": 0
+    },
+    {
+      "slide": 59,
+      "click": 0
+    },
+    {
+      "slide": 60,
+      "click": 0
+    },
+    {
+      "slide": 60,
+      "click": 1
+    },
+    {
+      "slide": 60,
+      "click": 2
+    },
+    {
+      "slide": 61,
+      "click": 0
+    },
+    {
+      "slide": 62,
+      "click": 0
+    },
+    {
+      "slide": 63,
+      "click": 0
+    },
+    {
+      "slide": 64,
+      "click": 0
+    },
+    {
+      "slide": 65,
+      "click": 0
+    },
+    {
+      "slide": 66,
+      "click": 0
+    },
+    {
+      "slide": 67,
+      "click": 0
+    },
+    {
+      "slide": 68,
+      "click": 0
+    },
+    {
+      "slide": 68,
+      "click": 1
+    },
+    {
+      "slide": 68,
+      "click": 2
+    },
+    {
+      "slide": 69,
+      "click": 0
+    },
+    {
+      "slide": 70,
+      "click": 0
+    },
+    {
+      "slide": 71,
+      "click": 0
+    },
+    {
+      "slide": 72,
+      "click": 0
+    },
+    {
+      "slide": 73,
+      "click": 0
+    },
+    {
+      "slide": 74,
+      "click": 0
+    },
+    {
+      "slide": 75,
+      "click": 0
+    },
+    {
+      "slide": 76,
+      "click": 0
+    },
+    {
+      "slide": 77,
+      "click": 0
+    },
+    {
+      "slide": 78,
+      "click": 0
+    },
+    {
+      "slide": 79,
+      "click": 0
+    },
+    {
+      "slide": 80,
+      "click": 0
+    },
+    {
+      "slide": 80,
+      "click": 1
+    },
+    {
+      "slide": 80,
+      "click": 2
+    },
+    {
+      "slide": 81,
+      "click": 0
+    },
+    {
+      "slide": 82,
+      "click": 0
+    },
+    {
+      "slide": 83,
+      "click": 0
+    },
+    {
+      "slide": 84,
+      "click": 0
+    },
+    {
+      "slide": 85,
+      "click": 0
+    },
+    {
+      "slide": 86,
+      "click": 0
+    },
+    {
+      "slide": 87,
+      "click": 0
+    },
+    {
+      "slide": 88,
+      "click": 0
+    },
+    {
+      "slide": 89,
+      "click": 0
+    },
+    {
+      "slide": 90,
+      "click": 0
+    },
+    {
+      "slide": 91,
+      "click": 0
+    },
+    {
+      "slide": 92,
+      "click": 0
+    },
+    {
+      "slide": 93,
+      "click": 0
+    },
+    {
+      "slide": 94,
+      "click": 0
+    },
+    {
+      "slide": 95,
+      "click": 0
+    },
+    {
+      "slide": 96,
+      "click": 0
+    },
+    {
+      "slide": 97,
+      "click": 0
+    },
+    {
+      "slide": 98,
+      "click": 0
+    },
+    {
+      "slide": 99,
+      "click": 0
+    },
+    {
+      "slide": 100,
+      "click": 0
+    },
+    {
+      "slide": 101,
+      "click": 0
     }
   ],
   "issues": [],

@@ -1,6 +1,6 @@
 {
-  "total_slides": 81,
-  "main_slides": 76,
+  "total_slides": 82,
+  "main_slides": 77,
   "slides": [
     {
       "number": 1,
@@ -36,6 +36,14 @@
     },
     {
       "number": 5,
+      "key": "access-ticket",
+      "title": "The access request has no acknowledgement.",
+      "kind": "explanation",
+      "notes": "Introduce the second office task before the protocol details. Billing asks us to choose the right payment and act once. Onboarding asks us to handle uncertainty after a write. Both need tools, readable traces and checks on the resulting account. The injected timeout is a fictional teaching incident implemented in the simulator.",
+      "answer": null
+    },
+    {
+      "number": 6,
       "key": "request",
       "title": "Your manager has one more request.",
       "kind": "opening-bridge",
@@ -43,7 +51,7 @@
       "answer": null
     },
     {
-      "number": 6,
+      "number": 7,
       "key": "schedule",
       "title": "Implement the agent, evaluate it, then test harness changes.",
       "kind": "explanation",
@@ -51,7 +59,7 @@
       "answer": null
     },
     {
-      "number": 7,
+      "number": 8,
       "key": "harness-0",
       "title": "The executor dispatches the model\u2019s selected action.",
       "kind": "explanation",
@@ -59,7 +67,7 @@
       "answer": null
     },
     {
-      "number": 8,
+      "number": 9,
       "key": "harness-1",
       "title": "Instructions define how the agent should handle the ticket.",
       "kind": "explanation",
@@ -67,7 +75,7 @@
       "answer": null
     },
     {
-      "number": 9,
+      "number": 10,
       "key": "harness-2",
       "title": "Reading a skill adds its procedure to the conversation.",
       "kind": "explanation",
@@ -75,7 +83,7 @@
       "answer": null
     },
     {
-      "number": 10,
+      "number": 11,
       "key": "copy",
       "title": "Copy the notebook into your own project.",
       "kind": "explanation",
@@ -83,7 +91,7 @@
       "answer": null
     },
     {
-      "number": 11,
+      "number": 12,
       "key": "local",
       "title": "The same notebook runs on a laptop.",
       "kind": "explanation",
@@ -91,7 +99,7 @@
       "answer": null
     },
     {
-      "number": 12,
+      "number": 13,
       "key": "access",
       "title": "Check where your work will be saved.",
       "kind": "exercise",
@@ -99,7 +107,7 @@
       "answer": null
     },
     {
-      "number": 13,
+      "number": 14,
       "key": "record",
       "title": "Save an operation\u2019s inputs, output, and timing.",
       "kind": "explanation",
@@ -107,7 +115,7 @@
       "answer": null
     },
     {
-      "number": 14,
+      "number": 15,
       "key": "tool-scope",
       "title": "Export the saved operation as an Agent Lens span.",
       "kind": "explanation",
@@ -115,7 +123,7 @@
       "answer": null
     },
     {
-      "number": 15,
+      "number": 16,
       "key": "trace",
       "title": "Add an environment field and inspect it in Agent Lens.",
       "kind": "exercise",
@@ -123,7 +131,7 @@
       "answer": null
     },
     {
-      "number": 16,
+      "number": 17,
       "key": "trace-screen",
       "title": "Inspect the account requested by this tool call.",
       "kind": "explanation",
@@ -131,7 +139,7 @@
       "answer": null
     },
     {
-      "number": 17,
+      "number": 18,
       "key": "trace-detail",
       "title": "Check which account records the model received.",
       "kind": "explanation",
@@ -139,7 +147,7 @@
       "answer": null
     },
     {
-      "number": 18,
+      "number": 19,
       "key": "invoice",
       "title": "The tool reads one invoice from one account.",
       "kind": "explanation",
@@ -147,15 +155,15 @@
       "answer": null
     },
     {
-      "number": 19,
+      "number": 20,
       "key": "tool",
       "title": "Write the invoice lookup.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my invoice lookup.",
-      "answer": 77
+      "answer": 78
     },
     {
-      "number": 20,
+      "number": 21,
       "key": "tool-schema",
       "title": "Connect the action schema to your Python function.",
       "kind": "explanation",
@@ -163,7 +171,7 @@
       "answer": null
     },
     {
-      "number": 21,
+      "number": 22,
       "key": "loop-1",
       "title": "Start with the customer\u2019s request.",
       "kind": "explanation",
@@ -171,7 +179,7 @@
       "answer": null
     },
     {
-      "number": 22,
+      "number": 23,
       "key": "loop-2",
       "title": "The model chooses an action and its arguments.",
       "kind": "explanation",
@@ -179,7 +187,7 @@
       "answer": null
     },
     {
-      "number": 23,
+      "number": 24,
       "key": "loop-3",
       "title": "Your dispatcher calls the Python function.",
       "kind": "explanation",
@@ -187,7 +195,7 @@
       "answer": null
     },
     {
-      "number": 24,
+      "number": 25,
       "key": "loop-4",
       "title": "The function returns the account records.",
       "kind": "explanation",
@@ -195,7 +203,7 @@
       "answer": null
     },
     {
-      "number": 25,
+      "number": 26,
       "key": "loop-5",
       "title": "Put those records into the next request.",
       "kind": "explanation",
@@ -203,7 +211,7 @@
       "answer": null
     },
     {
-      "number": 26,
+      "number": 27,
       "key": "dispatch",
       "title": "Dispatch lookup_invoice to your function.",
       "kind": "explanation",
@@ -211,15 +219,15 @@
       "answer": null
     },
     {
-      "number": 27,
+      "number": 28,
       "key": "handoff",
       "title": "Append the action and its result to the next request.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my tool-to-model handoff.",
-      "answer": 78
+      "answer": 79
     },
     {
-      "number": 28,
+      "number": 29,
       "key": "messages",
       "title": "Include the tool observation in the conversation history.",
       "kind": "explanation",
@@ -227,7 +235,7 @@
       "answer": null
     },
     {
-      "number": 29,
+      "number": 30,
       "key": "starting",
       "title": "Test the starting harness on billing and onboarding.",
       "kind": "exercise",
@@ -235,7 +243,7 @@
       "answer": null
     },
     {
-      "number": 30,
+      "number": 31,
       "key": "model-span",
       "title": "Record each model request and its response.",
       "kind": "explanation",
@@ -243,7 +251,7 @@
       "answer": null
     },
     {
-      "number": 31,
+      "number": 32,
       "key": "onboarding",
       "title": "Provision Alex\u2019s membership through the MCP tools.",
       "kind": "explanation",
@@ -251,7 +259,7 @@
       "answer": null
     },
     {
-      "number": 32,
+      "number": 33,
       "key": "timeout-1",
       "title": "An access request is sent.",
       "kind": "explanation",
@@ -259,7 +267,7 @@
       "answer": null
     },
     {
-      "number": 33,
+      "number": 34,
       "key": "timeout-2",
       "title": "Provisioning commits before its response times out.",
       "kind": "explanation",
@@ -267,7 +275,7 @@
       "answer": null
     },
     {
-      "number": 34,
+      "number": 35,
       "key": "timeout-3",
       "title": "Read account access before retrying the write.",
       "kind": "explanation",
@@ -275,15 +283,15 @@
       "answer": null
     },
     {
-      "number": 35,
+      "number": 36,
       "key": "retry-identity",
       "title": "A stable operation_id prevents a repeated write.",
       "kind": "explanation",
-      "notes": "Illustration of simulator.execute after a committed provisioning request. The same operation_id and identical arguments return the stored receipt with replayed=true. A new operation_id is a new mutation and can add a duplicate membership. Reusing an ID with different arguments is rejected. The recorded onboarding recovery read status instead of retrying, so this diagram explains tool behavior rather than claiming this branch occurred in that run.",
+      "notes": "In notebook step 3, use the free local timeout practice. Predict the member count, trigger the timeout, and compare reading status with same-ID and new-ID retries. Reset between alternatives. This uses Python only, changes no saved employee run, and makes no model request. Illustration of simulator.execute after a committed provisioning request. The same operation_id and identical arguments return the stored receipt with replayed=true. A new operation_id is a new mutation and can add a duplicate membership. Reusing an ID with different arguments is rejected. The recorded onboarding recovery read status instead of retrying, so this diagram explains tool behavior rather than claiming this branch occurred in that run.",
       "answer": null
     },
     {
-      "number": 36,
+      "number": 37,
       "key": "timeout-screen",
       "title": "Inspect the timeout and the following status check.",
       "kind": "explanation",
@@ -291,7 +299,7 @@
       "answer": null
     },
     {
-      "number": 37,
+      "number": 38,
       "key": "timeout-detail",
       "title": "The tool says the write may have committed.",
       "kind": "explanation",
@@ -299,7 +307,7 @@
       "answer": null
     },
     {
-      "number": 38,
+      "number": 39,
       "key": "checks",
       "title": "Check the account and the explanation separately.",
       "kind": "explanation",
@@ -307,7 +315,7 @@
       "answer": null
     },
     {
-      "number": 39,
+      "number": 40,
       "key": "scorer-cases",
       "title": "The same confident reply can accompany four account states.",
       "kind": "explanation",
@@ -315,15 +323,15 @@
       "answer": null
     },
     {
-      "number": 40,
+      "number": 41,
       "key": "scorer",
       "title": "Write checks for full, partial, missing, and duplicate refunds.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my scorer against four known examples.",
-      "answer": 79
+      "answer": 80
     },
     {
-      "number": 41,
+      "number": 42,
       "key": "judge",
       "title": "Ask the judge to compare the reply with recorded actions.",
       "kind": "explanation",
@@ -331,7 +339,7 @@
       "answer": null
     },
     {
-      "number": 42,
+      "number": 43,
       "key": "publish-dev",
       "title": "Publish development results with both kinds of score.",
       "kind": "exercise",
@@ -339,15 +347,15 @@
       "answer": null
     },
     {
-      "number": 43,
+      "number": 44,
       "key": "compare-fields",
-      "title": "Compare the same case across versions.",
+      "title": "Know which check produced the score.",
       "kind": "explanation",
-      "notes": "Weave preserves the evaluation data. W&B stores run artifacts and result tables. Native EvalTables publication is attempted, but the latest rehearsal returned HTTP 500. Use saved Weave/notebook comparisons rather than presenting a fabricated native screen.",
+      "notes": "The public check_work result can influence the employee. The participant-written scorer teaches a bounded account check. The independent final grader checks complete expected state and the resolution. The explanation judge compares the reply with recorded actions. Its validator checks structure, not correctness. Ask a participant which check an improver is allowed to see.",
       "answer": null
     },
     {
-      "number": 44,
+      "number": 45,
       "key": "manual",
       "title": "Revise the verification skill and rerun both tickets.",
       "kind": "exercise",
@@ -355,15 +363,15 @@
       "answer": null
     },
     {
-      "number": 45,
+      "number": 46,
       "key": "manual-interpret",
-      "title": "Compare account correctness with the added tool calls.",
+      "title": "An installed skill must be read before it can guide the model.",
       "kind": "explanation",
-      "notes": "Ask participants to identify the changed instruction and the corresponding tool calls. If both versions leave the account correct, report that result. An extra check may change cost or latency without improving the outcome on this case.",
+      "notes": "build_messages lists installed skill names. read_skill returns the file contents, and my_observation appends that result to the next request. The notebook checks the actual read event and later saved request. No read means we cannot claim the skill influenced this execution. Loading it still does not prove the agent followed it; inspect the subsequent tools.",
       "answer": null
     },
     {
-      "number": 46,
+      "number": 47,
       "key": "break",
       "title": "Take a ten-minute break after saving your progress.",
       "kind": "explanation",
@@ -371,7 +379,7 @@
       "answer": null
     },
     {
-      "number": 47,
+      "number": 48,
       "key": "editor",
       "title": "Management would like to automate management.",
       "kind": "explanation",
@@ -379,7 +387,7 @@
       "answer": null
     },
     {
-      "number": 48,
+      "number": 49,
       "key": "branch-1",
       "title": "Propose two edits to the same starting harness.",
       "kind": "explanation",
@@ -387,7 +395,7 @@
       "answer": null
     },
     {
-      "number": 49,
+      "number": 50,
       "key": "branch-2",
       "title": "Run each candidate from the original account state.",
       "kind": "explanation",
@@ -395,7 +403,7 @@
       "answer": null
     },
     {
-      "number": 50,
+      "number": 51,
       "key": "branch-3",
       "title": "Compare the probe results before selecting a harness.",
       "kind": "explanation",
@@ -403,7 +411,7 @@
       "answer": null
     },
     {
-      "number": 51,
+      "number": 52,
       "key": "branch-4",
       "title": "Execute the harness returned by the composition decision.",
       "kind": "explanation",
@@ -411,7 +419,7 @@
       "answer": null
     },
     {
-      "number": 52,
+      "number": 53,
       "key": "branch-5",
       "title": "Save the selected harness and a lesson for onboarding.",
       "kind": "explanation",
@@ -419,7 +427,7 @@
       "answer": null
     },
     {
-      "number": 53,
+      "number": 54,
       "key": "propose-code",
       "title": "Give the editor the starting execution and harness.",
       "kind": "explanation",
@@ -427,7 +435,7 @@
       "answer": null
     },
     {
-      "number": 54,
+      "number": 55,
       "key": "propose",
       "title": "Review the proposed instruction and workflow changes.",
       "kind": "exercise",
@@ -435,7 +443,7 @@
       "answer": null
     },
     {
-      "number": 55,
+      "number": 56,
       "key": "probe-code",
       "title": "Construct and execute the proposed harness.",
       "kind": "explanation",
@@ -443,7 +451,7 @@
       "answer": null
     },
     {
-      "number": 56,
+      "number": 57,
       "key": "probes",
       "title": "Run both candidates and inspect their tool sequences.",
       "kind": "exercise",
@@ -451,7 +459,7 @@
       "answer": null
     },
     {
-      "number": 57,
+      "number": 58,
       "key": "completion-guard",
       "title": "Require a passing check of the current state before finish.",
       "kind": "explanation",
@@ -459,7 +467,7 @@
       "answer": null
     },
     {
-      "number": 58,
+      "number": 59,
       "key": "gate-screen",
       "title": "This candidate required a check before completion.",
       "kind": "explanation",
@@ -467,7 +475,7 @@
       "answer": null
     },
     {
-      "number": 59,
+      "number": 60,
       "key": "gate-detail",
       "title": "The completion gate required a check_work call.",
       "kind": "explanation",
@@ -475,7 +483,7 @@
       "answer": null
     },
     {
-      "number": 60,
+      "number": 61,
       "key": "probe-comparison",
       "title": "Compare the added checks with the resulting account state.",
       "kind": "explanation",
@@ -483,7 +491,7 @@
       "answer": null
     },
     {
-      "number": 61,
+      "number": 62,
       "key": "keep",
       "title": "The editor retained the parent after comparing the probes.",
       "kind": "explanation",
@@ -491,7 +499,7 @@
       "answer": null
     },
     {
-      "number": 62,
+      "number": 63,
       "key": "compose",
       "title": "Test the selected harness before carrying it forward.",
       "kind": "exercise",
@@ -499,7 +507,7 @@
       "answer": null
     },
     {
-      "number": 63,
+      "number": 64,
       "key": "reflection",
       "title": "Save the lesson with the run that supports it.",
       "kind": "explanation",
@@ -507,7 +515,7 @@
       "answer": null
     },
     {
-      "number": 64,
+      "number": 65,
       "key": "round-two",
       "title": "Use the selected harness to start the onboarding round.",
       "kind": "exercise",
@@ -515,7 +523,7 @@
       "answer": null
     },
     {
-      "number": 65,
+      "number": 66,
       "key": "round-two-result",
       "title": "The second round changed the verification skill.",
       "kind": "explanation",
@@ -523,7 +531,7 @@
       "answer": null
     },
     {
-      "number": 66,
+      "number": 67,
       "key": "skill-diff",
       "title": "The skill makes the final check more specific.",
       "kind": "explanation",
@@ -531,7 +539,7 @@
       "answer": null
     },
     {
-      "number": 67,
+      "number": 68,
       "key": "rsi",
       "title": "The next round tests changes to the previous selection.",
       "kind": "explanation",
@@ -539,7 +547,7 @@
       "answer": null
     },
     {
-      "number": 68,
+      "number": 69,
       "key": "freeze",
       "title": "Freeze three harnesses for the fresh-case comparison.",
       "kind": "explanation",
@@ -547,7 +555,7 @@
       "answer": null
     },
     {
-      "number": 69,
+      "number": 70,
       "key": "final",
       "title": "Compare all three versions on fresh tickets.",
       "kind": "exercise",
@@ -555,7 +563,7 @@
       "answer": null
     },
     {
-      "number": 70,
+      "number": 71,
       "key": "native-results",
       "title": "Open the execution behind a saved evaluation row.",
       "kind": "explanation",
@@ -563,7 +571,7 @@
       "answer": null
     },
     {
-      "number": 71,
+      "number": 72,
       "key": "final-screen",
       "title": "Link the Report\u2019s conclusion to its runs and traces.",
       "kind": "explanation",
@@ -571,7 +579,7 @@
       "answer": null
     },
     {
-      "number": 72,
+      "number": 73,
       "key": "final-result",
       "title": "All three harnesses passed the four final cases.",
       "kind": "explanation",
@@ -579,7 +587,7 @@
       "answer": null
     },
     {
-      "number": 73,
+      "number": 74,
       "key": "files",
       "title": "Save the case, harness, execution, and scoring records.",
       "kind": "explanation",
@@ -587,7 +595,7 @@
       "answer": null
     },
     {
-      "number": 74,
+      "number": 75,
       "key": "report",
       "title": "Write down what changed and whether it helped.",
       "kind": "exercise",
@@ -595,7 +603,7 @@
       "answer": null
     },
     {
-      "number": 75,
+      "number": 76,
       "key": "aria",
       "title": "Ask ARIA to compare one case across harness versions.",
       "kind": "explanation",
@@ -603,7 +611,7 @@
       "answer": null
     },
     {
-      "number": 76,
+      "number": 77,
       "key": "end",
       "title": "Choose a workflow with an observable result to test.",
       "kind": "explanation",
@@ -611,7 +619,7 @@
       "answer": null
     },
     {
-      "number": 77,
+      "number": 78,
       "key": "answer-tool",
       "title": "Worked answer \u00b7 invoice lookup",
       "kind": "answer",
@@ -619,7 +627,7 @@
       "answer": null
     },
     {
-      "number": 78,
+      "number": 79,
       "key": "answer-loop",
       "title": "Worked answer \u00b7 observation handoff",
       "kind": "answer",
@@ -627,7 +635,7 @@
       "answer": null
     },
     {
-      "number": 79,
+      "number": 80,
       "key": "answer-scorer",
       "title": "Worked answer \u00b7 inspect the refund",
       "kind": "answer",
@@ -635,7 +643,7 @@
       "answer": null
     },
     {
-      "number": 80,
+      "number": 81,
       "key": "answer-judge",
       "title": "Worked answer \u00b7 validate the judge response",
       "kind": "answer",
@@ -643,7 +651,7 @@
       "answer": null
     },
     {
-      "number": 81,
+      "number": 82,
       "key": "sources",
       "title": "Source, notebook, and recorded example",
       "kind": "explanation",

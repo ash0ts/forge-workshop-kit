@@ -1,7 +1,7 @@
 {
-  "source_sha256": "85f3307c4dfff344fb50bd067550b4a23533b0cf04ccb2aef34a972429ebfc3d",
-  "slides_checked": 81,
-  "expected_slides": 81,
+  "source_sha256": "f6c80c280cd1b350d4ff58e33f100faacda2c4833b3b02669dbfe292946fd309",
+  "slides_checked": 82,
+  "expected_slides": 82,
   "titles": [
     {
       "number": 1,
@@ -25,388 +25,787 @@
     },
     {
       "number": 5,
+      "key": "access-ticket",
+      "title": "The access request has no acknowledgement."
+    },
+    {
+      "number": 6,
       "key": "request",
       "title": "Your manager has one more request."
     },
     {
-      "number": 6,
+      "number": 7,
       "key": "schedule",
       "title": "Implement the agent, evaluate it, then test harness changes."
     },
     {
-      "number": 7,
+      "number": 8,
       "key": "harness-0",
       "title": "The executor dispatches the model’s selected action."
     },
     {
-      "number": 8,
+      "number": 9,
       "key": "harness-1",
       "title": "Instructions define how the agent should handle the ticket."
     },
     {
-      "number": 9,
+      "number": 10,
       "key": "harness-2",
       "title": "Reading a skill adds its procedure to the conversation."
     },
     {
-      "number": 10,
+      "number": 11,
       "key": "copy",
       "title": "Copy the notebook into your own project."
     },
     {
-      "number": 11,
+      "number": 12,
       "key": "local",
       "title": "The same notebook runs on a laptop."
     },
     {
-      "number": 12,
+      "number": 13,
       "key": "access",
       "title": "Check where your work will be saved."
     },
     {
-      "number": 13,
+      "number": 14,
       "key": "record",
       "title": "Save an operation’s inputs, output, and timing."
     },
     {
-      "number": 14,
+      "number": 15,
       "key": "tool-scope",
       "title": "Export the saved operation as an Agent Lens span."
     },
     {
-      "number": 15,
+      "number": 16,
       "key": "trace",
       "title": "Add an environment field and inspect it in Agent Lens."
     },
     {
-      "number": 16,
+      "number": 17,
       "key": "trace-screen",
       "title": "Inspect the account requested by this tool call."
     },
     {
-      "number": 17,
+      "number": 18,
       "key": "trace-detail",
       "title": "Check which account records the model received."
     },
     {
-      "number": 18,
+      "number": 19,
       "key": "invoice",
       "title": "The tool reads one invoice from one account."
     },
     {
-      "number": 19,
+      "number": 20,
       "key": "tool",
       "title": "Write the invoice lookup."
     },
     {
-      "number": 20,
+      "number": 21,
       "key": "tool-schema",
       "title": "Connect the action schema to your Python function."
     },
     {
-      "number": 21,
+      "number": 22,
       "key": "loop-1",
       "title": "Start with the customer’s request."
     },
     {
-      "number": 22,
+      "number": 23,
       "key": "loop-2",
       "title": "The model chooses an action and its arguments."
     },
     {
-      "number": 23,
+      "number": 24,
       "key": "loop-3",
       "title": "Your dispatcher calls the Python function."
     },
     {
-      "number": 24,
+      "number": 25,
       "key": "loop-4",
       "title": "The function returns the account records."
     },
     {
-      "number": 25,
+      "number": 26,
       "key": "loop-5",
       "title": "Put those records into the next request."
     },
     {
-      "number": 26,
+      "number": 27,
       "key": "dispatch",
       "title": "Dispatch lookup_invoice to your function."
     },
     {
-      "number": 27,
+      "number": 28,
       "key": "handoff",
       "title": "Append the action and its result to the next request."
     },
     {
-      "number": 28,
+      "number": 29,
       "key": "messages",
       "title": "Include the tool observation in the conversation history."
     },
     {
-      "number": 29,
+      "number": 30,
       "key": "starting",
       "title": "Test the starting harness on billing and onboarding."
     },
     {
-      "number": 30,
+      "number": 31,
       "key": "model-span",
       "title": "Record each model request and its response."
     },
     {
-      "number": 31,
+      "number": 32,
       "key": "onboarding",
       "title": "Provision Alex’s membership through the MCP tools."
     },
     {
-      "number": 32,
+      "number": 33,
       "key": "timeout-1",
       "title": "An access request is sent."
     },
     {
-      "number": 33,
+      "number": 34,
       "key": "timeout-2",
       "title": "Provisioning commits before its response times out."
     },
     {
-      "number": 34,
+      "number": 35,
       "key": "timeout-3",
       "title": "Read account access before retrying the write."
     },
     {
-      "number": 35,
+      "number": 36,
       "key": "retry-identity",
       "title": "A stable operation_id prevents a repeated write."
     },
     {
-      "number": 36,
+      "number": 37,
       "key": "timeout-screen",
       "title": "Inspect the timeout and the following status check."
     },
     {
-      "number": 37,
+      "number": 38,
       "key": "timeout-detail",
       "title": "The tool says the write may have committed."
     },
     {
-      "number": 38,
+      "number": 39,
       "key": "checks",
       "title": "Check the account and the explanation separately."
     },
     {
-      "number": 39,
+      "number": 40,
       "key": "scorer-cases",
       "title": "The same confident reply can accompany four account states."
     },
     {
-      "number": 40,
+      "number": 41,
       "key": "scorer",
       "title": "Write checks for full, partial, missing, and duplicate refunds."
     },
     {
-      "number": 41,
+      "number": 42,
       "key": "judge",
       "title": "Ask the judge to compare the reply with recorded actions."
     },
     {
-      "number": 42,
+      "number": 43,
       "key": "publish-dev",
       "title": "Publish development results with both kinds of score."
     },
     {
-      "number": 43,
+      "number": 44,
       "key": "compare-fields",
-      "title": "Compare the same case across versions."
+      "title": "Know which check produced the score."
     },
     {
-      "number": 44,
+      "number": 45,
       "key": "manual",
       "title": "Revise the verification skill and rerun both tickets."
     },
     {
-      "number": 45,
+      "number": 46,
       "key": "manual-interpret",
-      "title": "Compare account correctness with the added tool calls."
+      "title": "An installed skill must be read before it can guide the model."
     },
     {
-      "number": 46,
+      "number": 47,
       "key": "break",
       "title": "Take a ten-minute break after saving your progress."
     },
     {
-      "number": 47,
+      "number": 48,
       "key": "editor",
       "title": "Management would like to automate management."
     },
     {
-      "number": 48,
+      "number": 49,
       "key": "branch-1",
       "title": "Propose two edits to the same starting harness."
     },
     {
-      "number": 49,
+      "number": 50,
       "key": "branch-2",
       "title": "Run each candidate from the original account state."
     },
     {
-      "number": 50,
+      "number": 51,
       "key": "branch-3",
       "title": "Compare the probe results before selecting a harness."
     },
     {
-      "number": 51,
+      "number": 52,
       "key": "branch-4",
       "title": "Execute the harness returned by the composition decision."
     },
     {
-      "number": 52,
+      "number": 53,
       "key": "branch-5",
       "title": "Save the selected harness and a lesson for onboarding."
     },
     {
-      "number": 53,
+      "number": 54,
       "key": "propose-code",
       "title": "Give the editor the starting execution and harness."
     },
     {
-      "number": 54,
+      "number": 55,
       "key": "propose",
       "title": "Review the proposed instruction and workflow changes."
     },
     {
-      "number": 55,
+      "number": 56,
       "key": "probe-code",
       "title": "Construct and execute the proposed harness."
     },
     {
-      "number": 56,
+      "number": 57,
       "key": "probes",
       "title": "Run both candidates and inspect their tool sequences."
     },
     {
-      "number": 57,
+      "number": 58,
       "key": "completion-guard",
       "title": "Require a passing check of the current state before finish."
     },
     {
-      "number": 58,
+      "number": 59,
       "key": "gate-screen",
       "title": "This candidate required a check before completion."
     },
     {
-      "number": 59,
+      "number": 60,
       "key": "gate-detail",
       "title": "The completion gate required a check_work call."
     },
     {
-      "number": 60,
+      "number": 61,
       "key": "probe-comparison",
       "title": "Compare the added checks with the resulting account state."
     },
     {
-      "number": 61,
+      "number": 62,
       "key": "keep",
       "title": "The editor retained the parent after comparing the probes."
     },
     {
-      "number": 62,
+      "number": 63,
       "key": "compose",
       "title": "Test the selected harness before carrying it forward."
     },
     {
-      "number": 63,
+      "number": 64,
       "key": "reflection",
       "title": "Save the lesson with the run that supports it."
     },
     {
-      "number": 64,
+      "number": 65,
       "key": "round-two",
       "title": "Use the selected harness to start the onboarding round."
     },
     {
-      "number": 65,
+      "number": 66,
       "key": "round-two-result",
       "title": "The second round changed the verification skill."
     },
     {
-      "number": 66,
+      "number": 67,
       "key": "skill-diff",
       "title": "The skill makes the final check more specific."
     },
     {
-      "number": 67,
+      "number": 68,
       "key": "rsi",
       "title": "The next round tests changes to the previous selection."
     },
     {
-      "number": 68,
+      "number": 69,
       "key": "freeze",
       "title": "Freeze three harnesses for the fresh-case comparison."
     },
     {
-      "number": 69,
+      "number": 70,
       "key": "final",
       "title": "Compare all three versions on fresh tickets."
     },
     {
-      "number": 70,
+      "number": 71,
       "key": "native-results",
       "title": "Open the execution behind a saved evaluation row."
     },
     {
-      "number": 71,
+      "number": 72,
       "key": "final-screen",
       "title": "Link the Report’s conclusion to its runs and traces."
     },
     {
-      "number": 72,
+      "number": 73,
       "key": "final-result",
       "title": "All three harnesses passed the four final cases."
     },
     {
-      "number": 73,
+      "number": 74,
       "key": "files",
       "title": "Save the case, harness, execution, and scoring records."
     },
     {
-      "number": 74,
+      "number": 75,
       "key": "report",
       "title": "Write down what changed and whether it helped."
     },
     {
-      "number": 75,
+      "number": 76,
       "key": "aria",
       "title": "Ask ARIA to compare one case across harness versions."
     },
     {
-      "number": 76,
+      "number": 77,
       "key": "end",
       "title": "Choose a workflow with an observable result to test."
     },
     {
-      "number": 77,
+      "number": 78,
       "key": "answer-tool",
       "title": "Worked answer · invoice lookup"
     },
     {
-      "number": 78,
+      "number": 79,
       "key": "answer-loop",
       "title": "Worked answer · observation handoff"
     },
     {
-      "number": 79,
+      "number": 80,
       "key": "answer-scorer",
       "title": "Worked answer · inspect the refund"
     },
     {
-      "number": 80,
+      "number": 81,
       "key": "answer-judge",
       "title": "Worked answer · validate the judge response"
     },
     {
-      "number": 81,
+      "number": 82,
       "key": "sources",
       "title": "Source, notebook, and recorded example"
+    }
+  ],
+  "click_states": [
+    {
+      "slide": 1,
+      "click": 0
+    },
+    {
+      "slide": 2,
+      "click": 0
+    },
+    {
+      "slide": 3,
+      "click": 0
+    },
+    {
+      "slide": 4,
+      "click": 0
+    },
+    {
+      "slide": 5,
+      "click": 0
+    },
+    {
+      "slide": 6,
+      "click": 0
+    },
+    {
+      "slide": 7,
+      "click": 0
+    },
+    {
+      "slide": 8,
+      "click": 0
+    },
+    {
+      "slide": 9,
+      "click": 0
+    },
+    {
+      "slide": 10,
+      "click": 0
+    },
+    {
+      "slide": 11,
+      "click": 0
+    },
+    {
+      "slide": 12,
+      "click": 0
+    },
+    {
+      "slide": 13,
+      "click": 0
+    },
+    {
+      "slide": 14,
+      "click": 0
+    },
+    {
+      "slide": 15,
+      "click": 0
+    },
+    {
+      "slide": 15,
+      "click": 1
+    },
+    {
+      "slide": 15,
+      "click": 2
+    },
+    {
+      "slide": 15,
+      "click": 3
+    },
+    {
+      "slide": 16,
+      "click": 0
+    },
+    {
+      "slide": 17,
+      "click": 0
+    },
+    {
+      "slide": 18,
+      "click": 0
+    },
+    {
+      "slide": 19,
+      "click": 0
+    },
+    {
+      "slide": 20,
+      "click": 0
+    },
+    {
+      "slide": 21,
+      "click": 0
+    },
+    {
+      "slide": 22,
+      "click": 0
+    },
+    {
+      "slide": 23,
+      "click": 0
+    },
+    {
+      "slide": 24,
+      "click": 0
+    },
+    {
+      "slide": 25,
+      "click": 0
+    },
+    {
+      "slide": 26,
+      "click": 0
+    },
+    {
+      "slide": 27,
+      "click": 0
+    },
+    {
+      "slide": 27,
+      "click": 1
+    },
+    {
+      "slide": 27,
+      "click": 2
+    },
+    {
+      "slide": 28,
+      "click": 0
+    },
+    {
+      "slide": 29,
+      "click": 0
+    },
+    {
+      "slide": 29,
+      "click": 1
+    },
+    {
+      "slide": 29,
+      "click": 2
+    },
+    {
+      "slide": 30,
+      "click": 0
+    },
+    {
+      "slide": 31,
+      "click": 0
+    },
+    {
+      "slide": 31,
+      "click": 1
+    },
+    {
+      "slide": 31,
+      "click": 2
+    },
+    {
+      "slide": 31,
+      "click": 3
+    },
+    {
+      "slide": 32,
+      "click": 0
+    },
+    {
+      "slide": 33,
+      "click": 0
+    },
+    {
+      "slide": 34,
+      "click": 0
+    },
+    {
+      "slide": 35,
+      "click": 0
+    },
+    {
+      "slide": 36,
+      "click": 0
+    },
+    {
+      "slide": 37,
+      "click": 0
+    },
+    {
+      "slide": 38,
+      "click": 0
+    },
+    {
+      "slide": 39,
+      "click": 0
+    },
+    {
+      "slide": 40,
+      "click": 0
+    },
+    {
+      "slide": 41,
+      "click": 0
+    },
+    {
+      "slide": 42,
+      "click": 0
+    },
+    {
+      "slide": 43,
+      "click": 0
+    },
+    {
+      "slide": 44,
+      "click": 0
+    },
+    {
+      "slide": 45,
+      "click": 0
+    },
+    {
+      "slide": 46,
+      "click": 0
+    },
+    {
+      "slide": 47,
+      "click": 0
+    },
+    {
+      "slide": 48,
+      "click": 0
+    },
+    {
+      "slide": 49,
+      "click": 0
+    },
+    {
+      "slide": 50,
+      "click": 0
+    },
+    {
+      "slide": 51,
+      "click": 0
+    },
+    {
+      "slide": 52,
+      "click": 0
+    },
+    {
+      "slide": 53,
+      "click": 0
+    },
+    {
+      "slide": 54,
+      "click": 0
+    },
+    {
+      "slide": 54,
+      "click": 1
+    },
+    {
+      "slide": 54,
+      "click": 2
+    },
+    {
+      "slide": 55,
+      "click": 0
+    },
+    {
+      "slide": 56,
+      "click": 0
+    },
+    {
+      "slide": 56,
+      "click": 1
+    },
+    {
+      "slide": 56,
+      "click": 2
+    },
+    {
+      "slide": 57,
+      "click": 0
+    },
+    {
+      "slide": 58,
+      "click": 0
+    },
+    {
+      "slide": 59,
+      "click": 0
+    },
+    {
+      "slide": 60,
+      "click": 0
+    },
+    {
+      "slide": 61,
+      "click": 0
+    },
+    {
+      "slide": 62,
+      "click": 0
+    },
+    {
+      "slide": 63,
+      "click": 0
+    },
+    {
+      "slide": 64,
+      "click": 0
+    },
+    {
+      "slide": 64,
+      "click": 1
+    },
+    {
+      "slide": 64,
+      "click": 2
+    },
+    {
+      "slide": 65,
+      "click": 0
+    },
+    {
+      "slide": 66,
+      "click": 0
+    },
+    {
+      "slide": 67,
+      "click": 0
+    },
+    {
+      "slide": 68,
+      "click": 0
+    },
+    {
+      "slide": 69,
+      "click": 0
+    },
+    {
+      "slide": 70,
+      "click": 0
+    },
+    {
+      "slide": 71,
+      "click": 0
+    },
+    {
+      "slide": 72,
+      "click": 0
+    },
+    {
+      "slide": 73,
+      "click": 0
+    },
+    {
+      "slide": 74,
+      "click": 0
+    },
+    {
+      "slide": 75,
+      "click": 0
+    },
+    {
+      "slide": 76,
+      "click": 0
+    },
+    {
+      "slide": 77,
+      "click": 0
+    },
+    {
+      "slide": 78,
+      "click": 0
+    },
+    {
+      "slide": 79,
+      "click": 0
+    },
+    {
+      "slide": 80,
+      "click": 0
+    },
+    {
+      "slide": 81,
+      "click": 0
+    },
+    {
+      "slide": 82,
+      "click": 0
     }
   ],
   "issues": [],
@@ -414,21 +813,21 @@
   "failed_responses": [],
   "answers": [
     {
-      "slide": 19,
-      "destination": "/forge-workshop-kit/pending/77",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 27,
+      "slide": 20,
       "destination": "/forge-workshop-kit/pending/78",
       "keyboardReturn": true
     },
     {
-      "slide": 40,
+      "slide": 28,
       "destination": "/forge-workshop-kit/pending/79",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 41,
+      "destination": "/forge-workshop-kit/pending/80",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 165,
+  "routes_checked": 167,
   "presenter_notes": true
 }

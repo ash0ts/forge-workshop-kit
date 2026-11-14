@@ -1,0 +1,74 @@
+{
+  "parent": {
+    "title": "Manual residual model",
+    "explanation": "Same source, dates, seed, and training settings start both candidates.",
+    "diff": "",
+    "error": 0.12211618815677268,
+    "stage_id": "324f93e1eb2f2f1a89bf28abeee776b6",
+    "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/324f93e1eb2f2f1a89bf28abeee776b6",
+    "artifact": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-324f93e1eb2f2f1a89bf28abeee776b6/v0"
+  },
+  "a": {
+    "title": "A \u00b7 use absolute loss",
+    "explanation": "Agent proposal: align the training loss with the fixed absolute-error metric.",
+    "diff": "--- previous/candidate.py\n+++ proposed/candidate.py\n@@ -25,7 +25,7 @@\n \n \n def training_loss(prediction,target,mask):\n-    return ((prediction-target).square()*mask).sum()/mask.sum()\n+    return ((prediction-target).abs()*mask).sum()/mask.sum()\n \n \n def fit(model,x,y,mask,config):\n",
+    "error": null,
+    "stage_id": "23f4a8510534f241b9c6ccacb0ef3cb7",
+    "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/23f4a8510534f241b9c6ccacb0ef3cb7",
+    "artifact": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-23f4a8510534f241b9c6ccacb0ef3cb7/v0"
+  },
+  "b": {
+    "title": "B \u00b7 retain squared loss",
+    "explanation": "Agent proposal: retain the existing source and test it under the same training budget.",
+    "diff": "",
+    "error": null,
+    "stage_id": "23f4a8510534f241b9c6ccacb0ef3cb7",
+    "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/23f4a8510534f241b9c6ccacb0ef3cb7",
+    "artifact": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-23f4a8510534f241b9c6ccacb0ef3cb7/v0"
+  },
+  "pa": {
+    "title": "Test A",
+    "explanation": "This is the saved training execution of the absolute-loss candidate.",
+    "diff": "",
+    "error": 0.1205529392403616,
+    "stage_id": "8211d6079769fab40d06c7459fe5007e",
+    "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/8211d6079769fab40d06c7459fe5007e",
+    "artifact": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-8211d6079769fab40d06c7459fe5007e/v0"
+  },
+  "pb": {
+    "title": "Test B",
+    "explanation": "The unchanged source also receives a matched probe; KEEP does not invent an edited version.",
+    "diff": "",
+    "error": 0.12211618815677268,
+    "stage_id": "364272b50820a338514a23b0416af58b",
+    "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/364272b50820a338514a23b0416af58b",
+    "artifact": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-364272b50820a338514a23b0416af58b/v0"
+  },
+  "compose": {
+    "title": "Select A for testing",
+    "explanation": "The agent selected A\u2019s one-line edit. This decision itself did not train weights.",
+    "diff": "--- previous/candidate.py\n+++ proposed/candidate.py\n@@ -25,7 +25,7 @@\n \n \n def training_loss(prediction,target,mask):\n-    return ((prediction-target).square()*mask).sum()/mask.sum()\n+    return ((prediction-target).abs()*mask).sum()/mask.sum()\n \n \n def fit(model,x,y,mask,config):\n",
+    "error": null,
+    "stage_id": "1051461256dcf4daeeaa6893a4ac8d5e",
+    "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/1051461256dcf4daeeaa6893a4ac8d5e",
+    "artifact": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-1051461256dcf4daeeaa6893a4ac8d5e/v0"
+  },
+  "test": {
+    "title": "Test composition",
+    "explanation": "The composed source was trained and scored in its own execution before adoption.",
+    "diff": "",
+    "error": 0.1205529392403616,
+    "stage_id": "633314e18eb00a5e1a084977d5212d5b",
+    "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/633314e18eb00a5e1a084977d5212d5b",
+    "artifact": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-633314e18eb00a5e1a084977d5212d5b/v0"
+  },
+  "next": {
+    "title": "Save selected version",
+    "explanation": "The tested composition lowered validation error. Its source and lesson became the parent for round two.",
+    "diff": "",
+    "error": null,
+    "stage_id": "2af70f492f07619f099022cf823c0d2f",
+    "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-2af70f492f07619f099022cf823c0d2f/v0",
+    "artifact": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-2af70f492f07619f099022cf823c0d2f/v0"
+  }
+}

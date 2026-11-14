@@ -18,7 +18,7 @@ Use the companion deck alongside your notebook:
 | Pending, Inc. | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/pending/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/pending/pending-inc.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/pending/pending-inc-source.zip) |
 | Solar Autoresearch | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/solar/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/solar/solar-autoresearch.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/solar/solar-autoresearch-source.zip) |
 
-These decks follow the current gateway-free notebooks. The [v0.3.0 release package](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.3.0) preserves its original notebook files and deck revision.
+These decks follow the current gateway-free notebooks. The [v0.4.0 release package](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.4.0) includes the notebooks, PDFs, and editable deck sources.
 
 For a short demonstration, follow the [current demo guide](docs/current-demo-guide.md). It takes you from a notebook exercise to a trace, code change, and result in the two recorded rehearsals.
 
@@ -55,6 +55,8 @@ For Pending, use `--extra pending` in those commands and open `notebooks/pending
 Each step explains the task, shows the code to edit, and provides a local check before you run it. Afterward, look at the result and follow the **Inspect in Forge** instruction. It might ask you to find a tool’s arguments in Agent Lens or compare two forecasts in a W&B run.
 
 The numbered buttons let you browse without starting work. If a run button is disabled, the message beside it names the step to complete first. App view keeps the exercise editors visible and hides support cells. Switch to code view when you want to follow those calls too.
+
+Use the guided views to follow one ticket or forecast through its code and results. Pending shows the tool arguments, returned observation, and resulting account state. Solar lets you compare forecasts at the same timestamp and calculate what the scorer counts. Selecting a view never launches training or inference. The [visual sequence guide](docs/visual-sequence.md) has the questions to investigate in Forge.
 
 Drafts save as you edit. Completed runs save the code they used, so changing a draft doesn’t rewrite an earlier result. The notebook also uploads checkpoints as W&B Artifacts: versioned collections of your code, predictions, model weights, and progress. Check that an upload succeeded before discarding the notebook runtime. On your laptop, keep the `.workshop/` directory to resume later.
 

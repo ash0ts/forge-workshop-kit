@@ -9,7 +9,31 @@ LAB_ASSET=ROOT/'public/images/solar-lab.svg'
 if LAB_SOURCE.exists():
     shutil.copy2(LAB_SOURCE,LAB_ASSET)
 assert LAB_ASSET.exists(), 'The Solar Forecasting Lab artwork is missing.'
+VISUAL_SOURCE=ROOT.parents[1]/'src/forge_workshop_kit/assets/visuals.json'
+if VISUAL_SOURCE.exists():
+    shutil.copy2(VISUAL_SOURCE, ROOT/'data/visuals.json')
 recorded=json.loads((ROOT/'public/recorded-study.json').read_text())
+by_name={row['name']:row for row in recorded['stages']}
+proposal=by_name['images/round-1/propose']
+candidates=proposal['result']['candidates']
+def branch_record(name, title, explanation, diff=''):
+    row=by_name[name]
+    metrics=row['result'].get('metrics', {})
+    return dict(title=title, explanation=explanation, diff=diff,
+                error=metrics.get('validation_error'), stage_id=row['id'],
+                url=row.get('trace', {}).get('url') or row.get('artifact_url'),
+                artifact=row.get('artifact_url'))
+branch_example={
+    'parent':branch_record('images/manual-residual','Manual residual model','Same source, dates, seed, and training settings start both candidates.'),
+    'a':branch_record('images/round-1/propose','A · use absolute loss','Agent proposal: align the training loss with the fixed absolute-error metric.', candidates[0]['diff']),
+    'b':branch_record('images/round-1/propose','B · retain squared loss','Agent proposal: retain the existing source and test it under the same training budget.'),
+    'pa':branch_record('images/round-1/probe-0','Test A','This is the saved training execution of the absolute-loss candidate.'),
+    'pb':branch_record('images/round-1/probe-1','Test B','The unchanged source also receives a matched probe; KEEP does not invent an edited version.'),
+    'compose':branch_record('images/round-1/compose','Select A for testing','The agent selected A’s one-line edit. This decision itself did not train weights.', candidates[0]['diff']),
+    'test':branch_record('images/round-1/composition-test','Test composition','The composed source was trained and scored in its own execution before adoption.'),
+    'next':branch_record('images/round-1/adopt','Save selected version','The tested composition lowered validation error. Its source and lesson became the parent for round two.'),
+}
+(ROOT/'data/branch-example.json').write_text(json.dumps(branch_example, indent=2))
 image_results=next(row['result']['metrics_by_version'] for row in recorded['stages'] if row['name']=='images/final-comparison')
 relative_gain=1-image_results['agent']['error']/image_results['manual']['error']
 BASE='/' + os.environ.get('DECK_BASE', '').strip('/') + '/'
@@ -25,8 +49,15 @@ def turn(key,title,task,actions,done,notes,time,answer=None):
     add(key,title,body,notes,'exercise',time,answer)
 def pic(name,alt,caption):return f'<div class="scientific-figure"><img class="solar-photo" src="/images/{name}" alt="{html.escape(alt)}"><div class="image-caption">{caption}</div></div>'
 def screen(name, alt, prompt, url, link_label, caption):
+    areas = {
+        'visual-v030-solar-trace.png': [(430,195,676,74,'Tool arguments'),(430,278,676,115,'Returned observation')],
+        'visual-v030-solar-evidence.png': [(70,3,800,190,'Parent settings'),(70,210,800,184,'Validation evidence')],
+        'visual-v030-solar-training.png': [(14,45,880,160,'Training settings'),(14,245,880,145,'Measured output')],
+        'visual-v030-solar-comparison.png': [(23,56,1000,253,'Array summaries'),(23,310,1000,36,'Pixel-wise score')],
+    }.get(name, [])
+    marks = ''.join(f'<span v-click="{i}" class="capture-mark" style="left:{x}px;top:{y}px;width:{w}px;height:{h}px" aria-label="Annotation {i}: {html.escape(label)}"><b>{i}</b></span>' for i,(x,y,w,h,label) in enumerate(areas,1))
     return (f'<div class="native-product-evidence"><a class="product-screen {name.removesuffix(".png")}" href="/images/{name}" target="_blank" aria-label="Open full-size capture">'
-            f'<img src="/images/{name}" alt="{html.escape(alt)}"></a>'
+            f'<img src="/images/{name}" alt="{html.escape(alt)}">{marks}</a>'
             f'<div class="product-caption"><span>{prompt}</span><a href="{url}">{link_label} ↗</a></div>'
             f'<div class="image-caption">{caption}</div></div>')
 SOLAR_WORKSPACE='https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw=='
@@ -100,7 +131,7 @@ add('native-training','Open the training call behind the chosen version',screen(
 add('repeat','Use the selected code and results in round two', '<ResearchBranches :level="5" />'+note('Use the selected code and what the first tests showed to plan the next changes.'), 'Round two begins with the code selected in round one and a saved lesson explaining what the probes showed. The agent reads both before proposing its next edits. It may now change code introduced by its previous proposal. That repeated use of the earlier result is the recursive part of this research procedure.','', '2:48')
 turn('round1-turn','Propose and test two changes','Inspect <code>next_research_action</code> in <strong>6. Test agent-written changes to the image model</strong>.',['<strong>Propose two code changes</strong>. Read both diffs.','Confirm review of Candidate A → <strong>Test Candidate A</strong>. Confirm review of Candidate B → <strong>Test Candidate B</strong>.','<strong>Record my comparison</strong>, then <strong>Request a composition</strong>.'],'Each candidate’s proposal diff and training result are linked in Agent Lens.','Keep this slide visible while participants propose and test the first two candidates. Ask them to explain each diff before confirming review. After both tests, record a comparison and request the agent’s choice.','2:50–3:00')
 turn('round2-turn','Test the selected code, then begin round two','Continue the same workbench.',['Confirm review of composition, then <strong>Test the composition</strong>.','Click <strong>Save the adopted version and lesson</strong>. Check whether the parent was retained.','Repeat the process in round two using the previous outcome.'],'Open the selected version from each round and explain why it was kept.','Give participants fifteen minutes for the tested selection and the second round. Retaining the previous code is a valid outcome. Ask why it was retained, then show its saved execution rather than treating KEEP as skipped work.','3:00–3:15','answer-controller')
-add('branch-inspect','Follow one proposal through the branch diagram', '<ResearchBranches :level="5" :interactive="true" />', 'Click a candidate, its test, and the selection step. Follow the source change to its validation result and explain why the agent retained or rejected it. This deck diagram explains the process. The notebook’s branch view links the participant’s own files, decisions, traces, and results.','', '3:15')
+add('branch-inspect','Follow one proposal through the branch diagram', '<ResearchBranches :level="5" :interactive="true" :recorded="true" />', 'Click a candidate, its test, and the selection step. Follow the source change to its validation result and explain why the agent retained or rejected it. This deck diagram explains the process. The notebook’s branch view links the participant’s own files, decisions, traces, and results.','', '3:15')
 add('freeze','Keep the selected code and weights fixed for final evaluation','<SolarComputation mode="inference" />','We have used validation dates to choose the version we will bring to the review. Save that source and its trained weights together before looking at February thirteenth and fourteenth. Final evaluation loads those weights and predicts the reserved inputs without training or selecting again. If we edit after inspecting these results, we need new reserved dates to test the next claim.','','3:17')
 add('frozen-code','Load the saved weights to make final predictions', code('model = build_model(input_shape, frozen_config)\nmodel.load_state_dict(saved_weights)\nmodel.eval()\nwith torch.no_grad():\n    prediction = model(final_inputs)')+note('There is no optimizer step in this stage.'), 'Load the saved weights, switch to evaluation mode, and predict without an optimizer step. Final evaluation measures the selected trained model; it does not train another one.','', '3:19')
 add('aligned','Match each prediction to the same observation times', '<table class="clean-table"><tr><th>Case identity</th><th>Persistence</th><th>Manual</th><th>Agent-selected</th></tr><tr><td>Same input timestamps</td><td>Prediction + error</td><td>Prediction + error</td><td>Prediction + error</td></tr><tr><td>Same target timestamp</td><td>Saved output</td><td>Executed source</td><td>Executed source</td></tr></table>'+note('Use each case ID to find the same input and target times in Weave or EvalTables.'), 'Choose one case identity and compare the predictions for its shared input and target times. Weave stores these evaluation records. Native EvalTables was unavailable during the rehearsal, so the notebook and Weave comparison remain available; publication can be retried separately.','', '3:21')
@@ -177,6 +208,35 @@ for row,when in zip(recorded_main,('3:45 · RECORDED REHEARSAL','3:46 · RECORDE
 for row in slides:
     if row['key']=='result-meaning': row['time']='3:48'
     if row['key']=='reproduce': row['time']='3:49'
+# Native click builds emphasize the actual statements participants will edit.
+highlights = {
+    "trace-scopes": "1-2|3-6|7|all",
+    "stage": "1-5|6-7|8|all",
+    "residual-code": "2|3|4|all",
+    "image-score-code": "1|2-3|4|all",
+}
+for slide in slides:
+    if slide["key"] in highlights:
+        slide["body"] = slide["body"].replace("```python\n", "```python {" + highlights[slide["key"]] + "}\n", 1)
+        slide["notes"] += " Advance the code highlights one step at a time; use Back to revisit the previous statement."
+
+# The deck points to the same free inspection controls as the notebook.
+for slide in slides:
+    if slide["key"] == "goes-normalization":
+        slide["body"] += note("Notebook: choose a window, then toggle standardized inputs. The target does not change.")
+    elif slide["key"] == "goes-mlp":
+        slide["body"] += note("Notebook: Run one forward pass and show tensor shapes. This does not train weights.")
+    elif slide["key"] == "goes-cnn":
+        slide["body"] += note("Choose Temporal CNN in the same check. Compare its output shapes with the MLP.")
+    elif slide["key"] == "search-turn":
+        slide["body"] = slide["body"].replace("Open one run’s Artifact. Find its source and predictions, then compare the forecast with its loss curve and score.", "In the notebook, choose <strong>Inspect a saved measurement run</strong>. Compare its loss, forecast, and persistence. Follow its Forge links to the saved source.")
+    elif slide["key"] == "image-score-code":
+        slide["notes"] += " In the notebook, move the error outside the scoring mask, then click Try my image scorer on these pixels. The two public grids have different mask sizes; images still receive equal weight."
+    elif slide["key"] == "image-code-screen":
+        slide["body"] = slide["body"].replace("Compare the error maps, then check the score across all 142 validation windows.", "Notebook: select one forecast timestamp. Compare persistence and both models on common scales.")
+    elif slide["key"] == "result-meaning":
+        slide["notes"] += " Match this case_id and file_index to the notebook timestamp selector. The per-image score and full-split mean are shown separately."
+
 for slide in slides:
     slide['body']=slide['body'].replace('href="/images/', 'href="'+BASE+'images/')
     slide['body']=re.sub(r'(<table[^>]*>)', r'\1<tbody>', slide['body']).replace('</table>', '</tbody></table>')

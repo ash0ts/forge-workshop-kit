@@ -2,9 +2,10 @@
 
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 
 import pymupdf
 from PIL import Image, ImageDraw
@@ -13,7 +14,24 @@ deck, target = (Path(value).resolve() for value in sys.argv[1:3])
 prefix = sys.argv[3]
 layout = json.loads((deck / "notes/slide-map.json").read_text())
 document = pymupdf.open(target)
-assert len(document) == layout["total_slides"], (len(document), layout["total_slides"])
+# Click builds add physical pages. Resolve the printed slide number rather than
+# assuming that slide 20 is physical PDF page 20.
+page_map = []
+for index, page in enumerate(document):
+    labels = re.findall(r"\b(\d+)\s*/\s*" + str(layout["total_slides"]) + r"\b", page.get_text())
+    assert labels, f"PDF page {index + 1} has no slide-number footer"
+    slide = int(labels[-1])
+    click = sum(entry["slide"] == slide for entry in page_map)
+    page_map.append({"page": index, "slide": slide, "click": click})
+assert sorted(set(row["slide"] for row in page_map)) == list(range(1, layout["total_slides"] + 1))
+assert [row["slide"] for row in page_map] == sorted(row["slide"] for row in page_map)
+checks_path = deck / "notes/delivery-checks.json"
+if checks_path.exists():
+    checked = json.loads(checks_path.read_text())
+    source_hash = hashlib.sha256((deck / "slides.md").read_bytes()).hexdigest()
+    if checked.get("source_sha256") == source_hash and checked.get("click_states"):
+        assert [{"slide": row["slide"], "click": row["click"]} for row in page_map] == checked["click_states"], "PDF builds differ from checked browser click states"
+first_page = {slide: next(row["page"] for row in page_map if row["slide"] == slide) for slide in range(1, layout["total_slides"] + 1)}
 converted = 0
 for page in document:
     assert page.get_text().strip(), "Empty PDF page"
@@ -23,12 +41,12 @@ for page in document:
             continue
         route = parsed.path.strip("/")
         page.delete_link(link)
-        if route.isdigit() and 1 <= int(route) <= len(document):
+        if route.isdigit() and int(route) in first_page:
             page.insert_link(
                 {
                     "kind": pymupdf.LINK_GOTO,
                     "from": link["from"],
-                    "page": int(route) - 1,
+                    "page": next((row["page"] for row in page_map if row["slide"] == int(route) and row["click"] == int(parse_qs(parsed.query).get("clicks", [0])[0])), first_page[int(route)]),
                     "to": pymupdf.Point(0, 0),
                 }
             )
@@ -69,6 +87,8 @@ for offset in range(0, len(document), 12):
     sheet.save(screens / f"pdf-contact-{offset // 12 + 1:02}.png")
 result = {
     "pages": len(document),
+    "slides": layout["total_slides"],
+    "page_map": page_map,
     "empty_pages": 0,
     "all_pages_rendered": True,
     "converted_links": converted,

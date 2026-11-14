@@ -10,6 +10,9 @@ from html import escape
 from importlib.resources import files
 from urllib.parse import quote, urlparse
 
+from . import visuals
+from .session import digest
+
 STYLE = '''<style>
 :root{--wk-ink:var(--text-primary,#163c43);--wk-muted:var(--text-secondary,#526b66);--wk-paper:var(--background,#fbfaf5);--wk-line:var(--border,#b7c7c0);--wk-accent:#237a6c;--wk-gold:#f1ca70}
 .dark,.dark-theme,[data-theme="dark"]{--wk-ink:#e8efea;--wk-muted:#bbcec4;--wk-paper:#152a30;--wk-line:#5c766f;--wk-accent:#79cfb7}
@@ -25,6 +28,8 @@ STYLE = '''<style>
 .workshop-evidence a:focus-visible,.workshop-branch a:focus-visible,.workshop-branch summary:focus-visible{outline:3px solid #b88a28;outline-offset:3px}
 .workshop-diff{white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.65 'IBM Plex Mono',monospace;border:1px solid var(--wk-line);border-radius:6px;padding:12px;max-height:420px;overflow:auto;color:var(--wk-ink)}.workshop-diff .add{background:#237a6c20;display:block}.workshop-diff .del{background:#c17b4025;display:block}
 .workshop-branch{margin:16px 0;border:1px solid var(--wk-line);border-radius:8px;padding:18px;scroll-margin-top:20px}.workshop-branch:target{outline:3px solid #c99e39}.workshop-branch h3{font-size:19px;margin:0 0 8px}.workshop-branch p{line-height:1.55}.workshop-branch summary{cursor:pointer;font-size:15px}.workshop-branch svg{width:100%;display:block}.workshop-branch code{overflow-wrap:anywhere}.workshop-branch dl{margin:12px 0}.workshop-branch dt{font-size:12px;color:var(--wk-muted)}.workshop-branch dd{margin:0 0 10px;overflow-wrap:anywhere}
+.workshop-workbench{color:var(--wk-ink);font-family:'IBM Plex Sans',system-ui,sans-serif;min-width:0;margin:18px 0}.workshop-workbench fieldset{border:1px solid var(--wk-line);border-radius:9px;padding:16px;min-width:0}.workshop-workbench legend{font-weight:600;font-size:20px;padding:0 8px}.workshop-workbench .wk-grid{display:grid;grid-template-columns:minmax(220px,30%) minmax(0,1fr);gap:20px;align-items:start}.workshop-workbench .wk-options{display:grid;gap:7px;max-height:650px;overflow:auto;padding:4px}.workshop-workbench .wk-choice{display:block;border:1px solid var(--wk-line);border-left:5px solid var(--wk-role);padding:9px 11px;border-radius:5px;cursor:pointer;line-height:1.35;background:var(--wk-paper)}.workshop-workbench .wk-choice strong{display:block;font-size:14px;overflow-wrap:anywhere}.workshop-workbench .wk-choice small{display:block;color:var(--wk-muted);font-size:12px;margin:4px 0}.workshop-workbench .wk-radio{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.workshop-workbench .wk-panel{display:none;min-width:0;border-left:4px solid var(--wk-role);padding-left:18px}.workshop-workbench .wk-panel h3{font-size:22px;line-height:1.3;margin:0 0 10px}.workshop-workbench .wk-panel h4{font-size:16px;margin:18px 0 8px}.workshop-workbench .wk-panel p{line-height:1.6}.workshop-workbench .wk-panel code{overflow-wrap:anywhere}.workshop-workbench details{margin:12px 0}.workshop-workbench summary{cursor:pointer;line-height:1.5}.workshop-workbench .wk-status{font-size:13px;color:var(--wk-muted)}.workshop-workbench .wk-round{font-size:14px;margin:12px 0 3px}.workshop-workbench .wk-role{font-size:12px;text-transform:uppercase;letter-spacing:.05em}.workshop-workbench .wk-warning{border-left:3px solid #c17b40;padding:10px;background:#c17b4015}.workshop-workbench .workshop-result{padding:12px;margin:12px 0}.workshop-workbench .wk-legend{font-size:13px;color:var(--wk-muted);line-height:1.6}.workshop-workbench .wk-neighbors{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}.workshop-workbench .wk-neighbors label{cursor:pointer;text-decoration:underline;font-size:14px}.workshop-workbench :is(a,summary):focus-visible{outline:3px solid #b88a28;outline-offset:3px}
+@media(max-width:760px){.workshop-workbench .wk-grid{grid-template-columns:1fr}.workshop-workbench .wk-options{max-height:230px;grid-template-columns:repeat(2,minmax(0,1fr))}.workshop-workbench .wk-round{grid-column:1/-1}.workshop-workbench .wk-panel{padding-left:12px}.workshop-workbench fieldset{padding:12px}.workshop-workbench .wk-choice strong{font-size:13px}}
 @media(max-width:650px){.workshop-head{padding:20px}.workshop-head[data-theme="lab"]{flex-direction:column;align-items:flex-start;gap:12px}.workshop-lab-art{width:150px}.workshop-result dl{grid-template-columns:1fr}.workshop-result dd{margin-bottom:8px}.workshop-evidence a{width:100%}}
 @media(prefers-reduced-motion:reduce){.workshop-branch{scroll-behavior:auto}}
 </style>'''
@@ -389,45 +394,226 @@ def branches(session):
     return ''.join(_branch_detail(session, row) for row in rows) or '<p>The branches will appear here after the agent proposes changes and you test them.</p>'
 
 
+def _branch_status(node):
+    labels = {'not_run': 'Not run', 'proposed': 'Proposed · not an execution',
+              'complete': 'Completed', 'failed': 'Failed', 'running': 'Interrupted or in progress',
+              'unavailable': 'Unavailable'}
+    text = labels.get(node['status'], node['status'].replace('_', ' ').capitalize())
+    if node['selected']:
+        text = 'Selected · retained files' if node['retained'] else 'Selected version saved'
+    elif node['execution']:
+        execution = node['execution']
+        text = 'Execution: ' + labels.get(execution['status'], execution['status'])
+        agent_status = execution['result'].get('status')
+        if agent_status and agent_status != 'complete':
+            text += ' · agent: ' + str(agent_status)
+    return text
+
+
+def _branch_quote(label, value):
+    text = str(value)
+    if len(text) <= 280:
+        return '<p><strong>' + label + ':</strong> ' + escape(text) + '</p>'
+    excerpt = text[:260].rsplit(' ', 1)[0] + '…'
+    return ('<p><strong>' + label + ':</strong> ' + escape(excerpt) + '</p>'
+            + '<details><summary>Read the full saved explanation</summary><p>'
+            + escape(text) + '</p></details>')
+
+
+def _branch_panel(session, node):
+    decision, saved = node['decision'], node['result']
+    content = [f'<div class="wk-role">Round {node["round"]} · '
+               + escape(node['key'].replace('-', ' ')) + '</div>',
+               '<h3>' + escape(node['title']) + '</h3>',
+               '<p class="wk-status">' + escape(_branch_status(node)) + '</p>']
+    if node['status'] == 'not_run':
+        content.append('<p>This step has no saved result yet. Use the exercise’s run control to do the work; choosing a branch here only changes what you see.</p>')
+        return ''.join(content)
+    rationale = decision.get('rationale')
+    if rationale and not node['selected']:
+        content.append(_branch_quote('The agent’s reason for this change', rationale))
+    if node['key'] == 'proposal':
+        content.append('<p>The agent returned two proposals. Open Candidate A and Candidate B to compare their intended changes, then open each test to see what executed.</p>')
+    if node['selected']:
+        if node['retained']:
+            content.append('<p><strong>Retain this version.</strong> The saved selection keeps the previous files. This decision is separate from any test execution.</p>')
+        else:
+            content.append('<p>The saved decision selects these files for the next task. It does not establish a quality gain by itself.</p>')
+        if saved.get('failure_fallback'):
+            content.append('<p class="wk-warning">The composed run did not complete. The selection falls back to the previous valid harness.</p>')
+        recommendation = node.get('composition_recommendation', {})
+        if recommendation.get('rationale'):
+            content.append(_branch_quote('The agent’s composition recommendation', recommendation['rationale']))
+    elif decision.get('decision') == 'KEEP':
+        content.append('<p><strong>Retain this version.</strong> The proposal keeps the executable files unchanged. A later test is still a separate execution.</p>')
+    content.append('<h4>Inspect in Forge</h4>')
+    evidence_links = stage_links(session, node['record_ids'])
+    content.append(links(evidence_links) if evidence_links else
+                   '<p>No Forge link is saved for this step. The local decision and files remain available below.</p>')
+    if node['diff']:
+        content.append('<h4>What changed</h4><pre class="workshop-diff">' + escape(str(node['diff'])) + '</pre>')
+    elif node['files'] and decision.get('decision') != 'KEEP' and not node['selected']:
+        content.append('<p>The saved files are available below. A before/after diff was not recorded.</p>')
+    execution = node['execution']
+    if execution:
+        if node.get('selection_execution_mismatch'):
+            content.append('<p class="wk-warning">The attempted execution used different files from the selected version. Its result is shown as the attempted test, not as a test of the selected files.</p>')
+        elif node['fingerprint_match'] is False:
+            content.append('<p class="wk-warning">The executed fingerprint does not match this proposal. Do not attribute its result to the proposed edit.</p>')
+        elif node['fingerprint_match'] is True:
+            content.append('<p>The executed files match this version.</p>')
+        if execution['metrics']:
+            metric_labels = {'task_success': 'Task completed correctly',
+                'state_correct': 'Account state correct', 'completion_correct': 'Resolution correct',
+                'reason': 'State check', 'expected_resolution': 'Expected resolution',
+                'validation_error': 'Validation error', 'error': 'Mean absolute error',
+                'persistence_error': 'Persistence error', 'seconds': 'Execution seconds',
+                'skill_vs_persistence': 'Improvement over persistence (fraction)',
+                'examples': 'Examples', 'learner_metric': 'Learner scorer error',
+                'learner_metric_matches': 'Learner scorer agrees'}
+            metrics = {metric_labels.get(k, k.replace('_', ' ').capitalize()): v
+                       for k, v in execution['metrics'].items()}
+            content.append(result('Observed execution result', metrics,
+                                  status=execution['status']))
+        else:
+            content.append('<p>No score is saved for this execution.</p>')
+        if execution['result'].get('errors'):
+            content.append('<p class="wk-warning">' + escape(_display(execution['result']['errors'])) + '</p>')
+        if execution['record'].get('error'):
+            content.append('<p class="wk-warning">' + escape(_display(execution['record']['error'])) + '</p>')
+    for key, label in [('lesson', 'Agent’s proposed lesson'), ('limits', 'Stated limits'),
+                       ('error', 'Error'), ('execution_error', 'Execution error')]:
+        value = saved.get(key) or decision.get(key)
+        if value:
+            content.append(_branch_quote(label, _display(value)))
+    exact = {}
+    for identity in node['record_ids']:
+        exact.update(span_links(session, identity))
+    if exact:
+        content.append('<details><summary>Open a recorded tool or model span</summary>' + links(exact) + '</details>')
+    content.append('<details><summary>Files, fingerprints, and saved attempts</summary>')
+    if node['fingerprint']:
+        content.append('<p>Version fingerprint: <code>' + escape(node['fingerprint']) + '</code></p>')
+    if execution and execution['fingerprint']:
+        content.append('<p>Executed fingerprint: <code>' + escape(execution['fingerprint']) + '</code></p>')
+    for name, source in (node['files'] or node['sources']).items():
+        content.append('<h4>' + escape(name) + '</h4><pre class="workshop-diff">' + escape(str(source)) + '</pre>')
+    for attempt in node['attempts']:
+        content.append('<p><code>' + escape(attempt['id']) + '</code> · '
+                       + escape(attempt['status']) + '</p>')
+        if attempt.get('error'):
+            content.append('<pre class="workshop-diff">' + escape(str(attempt['error'])) + '</pre>')
+    content.append('</details>')
+    return ''.join(content)
+
+
+def branch_workbench_html(session, *, key='improvement'):
+    """HTML-only branch selection: no callback can rerun an exercise or write a receipt."""
+    groups = visuals.branch_records(session.read())
+    nodes = [node for group in groups for node in group['nodes']]
+    if not nodes:
+        return STYLE + '<section class="workshop-workbench"><h3>Your improvement history</h3><p>Run the first proposal to create two branches. Their files, tests, and selection will appear here.</p></section>'
+    vocabulary = visuals.contract()
+    namespace = 'wk-' + digest([key, session.project, session.workspace_id])[:14]
+    default = next((index for index, node in enumerate(nodes) if node['status'] != 'not_run'), 0)
+    selectors, inputs, choices, panels = [], [], [], []
+    last_round = None
+    for index, node in enumerate(nodes):
+        identity = namespace + '-' + str(index)
+        color = vocabulary['colors'][node['role']]
+        selectors.append(f'#{identity}:checked~.wk-grid .wk-panel[data-choice="{index}"]{{display:block}}')
+        selectors.append(f'#{identity}:checked~.wk-grid label[for="{identity}"]{{outline:2px solid var(--wk-accent);outline-offset:1px;font-weight:600}}')
+        selectors.append(f'#{identity}:focus-visible~.wk-grid label[for="{identity}"]{{outline:3px solid #b88a28;outline-offset:2px}}')
+        accessible = f'Round {node["round"]}, {node["key"].replace("-", " ")}: {node["title"]}. {_branch_status(node)}'
+        inputs.append(f'<input class="wk-radio" type="radio" name="{namespace}" id="{identity}"'
+                      f' aria-label="{escape(accessible, quote=True)}" aria-controls="{identity}-panel"'
+                      + (' checked' if index == default else '') + '>')
+        if node['id'].rsplit('/', 1)[0] != last_round:
+            last_round = node['id'].rsplit('/', 1)[0]
+            choices.append(f'<h3 class="wk-round">Round {node["round"]}</h3>')
+        choices.append(f'<label class="wk-choice" for="{identity}" style="--wk-role:{color}">'
+                       f'<small>{escape(node["key"].replace("-", " "))}</small><strong>{escape(node["title"])}</strong>'
+                       f'<small>{escape(_branch_status(node))}</small></label>')
+        neighbors = []
+        for offset, label in [(-1, '← Previous step'), (1, 'Next step →')]:
+            target = index + offset
+            if 0 <= target < len(nodes):
+                neighbors.append(f'<label for="{namespace}-{target}">{label}</label>')
+        relations = []
+        names = {n['id']: n['title'] for n in nodes}
+        for group in groups:
+            for edge in group['edges']:
+                if node['id'] in (edge['from'], edge['to']):
+                    relations.append('<li>' + escape(names[edge['from']]) + ' → '
+                                     + escape(names[edge['to']]) + ': '
+                                     + escape(vocabulary['edges'][edge['kind']]['label']) + '.</li>')
+        relationships = ('<details><summary>Recorded connections</summary><ul>'
+                         + ''.join(relations) + '</ul></details>') if relations else ''
+        panels.append(f'<article class="wk-panel" data-choice="{index}" id="{identity}-panel"'
+                      f' aria-label="{escape(node["title"], quote=True)}" style="--wk-role:{color}">'
+                      + _branch_panel(session, node) + relationships + '<nav class="wk-neighbors" aria-label="Explore steps">'
+                      + ''.join(neighbors) + '</nav></article>')
+    other = [r for group in groups for r in group['other_records']]
+    extra = ('<details><summary>Reviews and other saved events</summary>'
+             + ''.join(_branch_detail(session, row) for row in other) + '</details>') if other else ''
+    return (STYLE + '<style>' + ''.join(selectors) + '</style>'
+            + '<section class="workshop-workbench"><fieldset><legend>Your improvement history</legend>'
+            + '<p>Choose a step to read its files, result, and Forge links. Use the arrow keys within the choices to move between steps. No work runs when you select a step.</p>'
+            + '<p class="wk-legend">Gray: starting version · blue: A · orange: B · neutral: composition. '
+            + 'A saved selection is labeled explicitly. Color does not represent quality.</p>'
+            + ''.join(inputs) + '<div class="wk-grid"><div class="wk-options" aria-label="Saved steps">'
+            + ''.join(choices) + '</div><div>' + ''.join(panels) + '</div></div></fieldset>' + extra + '</section>')
+
+
+def branch_workbench(mo, session, *, key='improvement'):
+    return mo.Html(branch_workbench_html(session, key=key))
+
+
+
+
+
+
+
+
+
+
 def branch_graph(session):
-    """Two explicit proposal branches. Edges show workflow, not code adoption."""
-    rows = list(session.read()['stages'].values())
-    rows.sort(key=lambda row: row.get('started_at', 0))
-    svg = ['<section class="workshop-branch"><p><strong>Improvement history</strong> · Select a step to see the proposed edit, its test result, and the agent’s explanation. The last step in each round shows which version was kept.</p><svg viewBox="0 0 1020 670" role="img" aria-label="Two rounds with separate candidate A and B probes, composition, test, and selection">']
-    for number in (1, 2):
-        group = [r for r in rows if f'/round-{number}/' in r['name']]
-        def find(*suffixes):
-            return next((r for r in reversed(group) if any(r['name'].endswith('/' + suffix) for suffix in suffixes)), None)
-        proposal = find('propose')
-        candidates = (proposal or {}).get('result', {}).get('candidates', [])
-        adopt = find('adopt', 'adopted')
-        y = 55 + (number-1)*325
-        svg.append(f'<text x="20" y="{y}" fill="var(--wk-ink)" font-size="20">Round {number}</text>')
-        nodes = [
-            (105, y+125, 'Propose two changes', proposal, 'proposal'),
-            (315, y+60, candidates[0].get('title','Candidate A') if candidates else 'Candidate A', find('probe-a','probe-0','candidate-0','probe-result-0') or proposal, 'candidate'),
-            (315, y+200, candidates[1].get('title','Candidate B') if len(candidates)>1 else 'Candidate B', find('probe-b','probe-1','candidate-1','probe-result-1') or proposal, 'candidate'),
-            (540, y+125, 'Compose a version', find('compose'), 'decision'),
-            (750, y+125, 'Test the composition', find('composition-test','composition','composition-result'), 'execution'),
-            (940, y+125, 'Retain this version' if adopt and _retained_selection(adopt, rows) else 'Save selected version', adopt, 'adoption'),
-        ]
-        edges = [(0,1),(0,2),(1,3),(2,3),(3,4),(4,5)]
-        for a,b in edges:
-            x1,y1,_,r1,_=nodes[a];x2,y2,_,r2,_=nodes[b]
-            dash = '' if r1 and r2 else ' stroke-dasharray="5 5"'
-            svg.append(f'<path d="M{x1+9},{y1} C{(x1+x2)/2},{y1} {(x1+x2)/2},{y2} {x2-9},{y2}" fill="none" stroke="#96aaa2" stroke-width="2"{dash}/>')
-        for x,yy,label,record,kind in nodes:
-            status = (record or {}).get('status','not run')
-            if kind=='candidate' and record is proposal and proposal:
-                status = 'proposed; not tested'
-            color = '#4382a6' if kind=='candidate' else '#c17b40' if kind=='decision' else '#237a6c'
-            if not record or status != 'complete': color='#7c8985'
-            if record:
-                svg.append(f'<a href="#branch-{escape(record["id"])}" aria-label="Round {number}: {escape(label,quote=True)}; {escape(status)}">')
-            svg.append(f'<circle cx="{x}" cy="{yy}" r="8" fill="{color}"/><text x="{x}" y="{yy+25}" text-anchor="middle" fill="var(--wk-ink)" font-size="14">')
-            for j,line in enumerate(textwrap.wrap(label, 23)[:3]):
-                svg.append(f'<tspan x="{x}" dy="{0 if j==0 else 17}">{escape(line)}</tspan>')
-            svg.append(f'</text><text x="{x}" y="{yy-18}" text-anchor="middle" fill="var(--wk-muted)" font-size="11">{escape(status)}</text>')
-            if record: svg.append('</a>')
-    svg.append('</svg><p>Blue: candidate · orange: composition decision · dashed line: work not yet recorded. Position and color do not represent quality.</p></section>')
-    return ''.join(svg) + branches(session)
+    """Static compatibility view using the same saved relationships as the workbench."""
+    groups = visuals.branch_records(session.read())
+    colors = visuals.contract()['colors']
+    diagrams = []
+    for group in groups:
+        positions = {'parent': (85, 90), 'proposal': (85, 230),
+                     'candidate-a': (300, 90), 'probe-a': (510, 90),
+                     'candidate-b': (300, 230), 'probe-b': (510, 230),
+                     'compose': (725, 160), 'composition-test': (930, 160),
+                     'selection': (930, 335), 'reflection': (725, 335)}
+        by_id = {node['id']: node for node in group['nodes']}
+        marker = 'arrow-' + digest(group['id'])[:10]
+        svg = [f'<section class="workshop-branch"><h3>Round {group["round"]}</h3>',
+               '<svg viewBox="0 0 1060 415" role="img" aria-label="Saved proposal, execution, evidence, and selection relationships">',
+               '<title>Saved improvement branches</title><desc>Blue identifies candidate A and orange candidate B. Solid arrows pass files to an execution. Dashed arrows mean the composition reviewed an execution. Selection is labeled separately. Missing work has no invented connection.</desc>',
+               f'<defs><marker id="{marker}" markerWidth="7" markerHeight="7" refX="7" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7" fill="var(--wk-muted)"/></marker></defs>']
+        for edge in group['edges']:
+            a, b = by_id[edge['from']], by_id[edge['to']]
+            x1, y1 = positions[a['key']]; x2, y2 = positions[b['key']]
+            dashed = ' stroke-dasharray="6 5"' if edge['kind'] == 'evidence' else ''
+            svg.append(f'<path d="M{x1},{y1} C{(x1+x2)/2},{y1} {(x1+x2)/2},{y2} {x2},{y2}" fill="none" stroke="var(--wk-muted)" stroke-width="2" marker-end="url(#{marker})"{dashed}><title>{escape(visuals.contract()["edges"][edge["kind"]]["label"])}</title></path>')
+        for node in group['nodes']:
+            x, y = positions[node['key']]
+            if node['record_id']:
+                svg.append(f'<a href="#branch-{escape(node["record_id"])}" aria-label="{escape(node["title"], quote=True)}">')
+            svg.append(f'<circle cx="{x}" cy="{y}" r="8" fill="{colors[node["role"]]}"/>')
+            label = node['title']
+            lines = textwrap.wrap(label, 24)
+            if len(lines) > 3:
+                lines = lines[:3]; lines[-1] = lines[-1].rstrip('., ') + '…'
+            svg.append(f'<text x="{x}" y="{y+24}" text-anchor="middle" fill="var(--wk-ink)" style="font-size:13px">')
+            for index, line in enumerate(lines):
+                svg.append(f'<tspan x="{x}" dy="{0 if index == 0 else 16}">{escape(line)}</tspan>')
+            svg.append(f'</text><text x="{x}" y="{y-17}" text-anchor="middle" fill="var(--wk-muted)" style="font-size:11px">{escape(_branch_status(node))}</text>')
+            if node['record_id']:
+                svg.append('</a>')
+        svg.append('</svg><p>Solid: files passed to an execution. Dashed: execution evidence reviewed. Selection is explicit; color does not represent quality.</p></section>')
+        diagrams.append(''.join(svg))
+    return STYLE + ''.join(diagrams) + branches(session)

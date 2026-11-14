@@ -184,8 +184,9 @@ def test_recorded_example_matches_evidence_and_cannot_execute_work():
     sys.path.insert(0, str(root / 'scripts'))
     from solar_cells import cells
     code = next(cell.code for cell in cells if '**Recorded example' in cell.code)
-    evidence = json.loads((root / 'evidence/ux-v020-solar.json').read_text())
-    scores = evidence['final_images']
+    evidence = json.loads((root / 'decks/solar/public/recorded-study.json').read_text())
+    scores = next(row['result']['metrics_by_version'] for row in evidence['stages']
+                  if row['name'] == 'images/final-comparison')
     for label in ('manual', 'agent', 'persistence'):
         assert f"{scores[label]['error']:.5f}" in code
     relative = 100 * (1 - scores['agent']['error'] / scores['manual']['error'])
@@ -193,7 +194,8 @@ def test_recorded_example_matches_evidence_and_cannot_execute_work():
     assert '199 overlapping windows' in code and 'One seed' in code
     assert 'separate from your results' in code
     assert 'GOES measurement model performed worse' in code
-    assert evidence['report'] in code
+    assert '6e768bbe--VmlldzoxODMwMzU3Nw==' in code
+    assert 'decks/solar/public/recorded-study.json' in code
     calls = [node.func for node in ast.walk(ast.parse(code)) if isinstance(node, ast.Call)]
     assert all(isinstance(fn, ast.Attribute) and isinstance(fn.value, ast.Name)
                and fn.value.id in ('mo', 'ui') or isinstance(fn, ast.Name)

@@ -4,6 +4,8 @@ The research lab is fictional; the satellite observations are real. Start with t
 
 Before class, open the templates from an attendee account, check compute and inference access, and download the teaching data. Add participant project links to the progress monitor. Keep the [recorded deck](https://ash0ts.github.io/forge-workshop-kit/solar/) available if someone cannot run a step.
 
+Use the [visual sequence guide](visual-sequence.md) beside this schedule. For each selector, ask participants to identify what changed and what stayed fixed. A different timestamp changes the case; toggling normalization changes the displayed input units; selecting a branch changes the record being inspected. None of these actions starts training.
+
 ## Four-hour schedule
 
 Leave each exercise slide on screen while participants work. Give them time to try the code before opening a hint or worked answer.

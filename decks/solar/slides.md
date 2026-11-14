@@ -160,7 +160,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Wrap one operation, then inspect what you recorded
 
-```python
+```python {1-2|3-6|7|all}
 with tracing.Conversation(conversation_id=execution_id):
     with tracing.Turn(agent_name="researcher", messages=mission):
         with tracing.Tool(
@@ -174,7 +174,7 @@ with tracing.Conversation(conversation_id=execution_id):
 
 
 <!--
-Conversation identifies the execution. Turn holds the mission. Tool records one operation. The attribute line is the learner edit, not a second call. Actual instrumentation also supplies start and end timestamps and records exceptions. Run the free check, send the setup trace, then find the same field in Agent Lens.
+Conversation identifies the execution. Turn holds the mission. Tool records one operation. The attribute line is the learner edit, not a second call. Actual instrumentation also supplies start and end timestamps and records exceptions. Run the free check, send the setup trace, then find the same field in Agent Lens. Advance the code highlights one step at a time; use Back to revisit the previous statement.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -202,7 +202,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Find the field your code added to the span
 
-<div class="native-product-evidence"><a class="product-screen visual-v030-solar-trace" href="/images/visual-v030-solar-trace.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-trace.png" alt="Native Agent Lens setup tool span from the current Solar rehearsal"></a><div class="product-caption"><span>Read the returned NumPy version. Open Raw to find workshop.exercise.</span><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/4ca0a7e5c9d1fe30d24079ea5b98b750">Open the setup trace ↗</a></div><div class="image-caption">Recorded v0.3.0 environment check. No language-model call was needed.</div></div>
+<div class="native-product-evidence"><a class="product-screen visual-v030-solar-trace" href="/images/visual-v030-solar-trace.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-trace.png" alt="Native Agent Lens setup tool span from the current Solar rehearsal"><span v-click="1" class="capture-mark" style="left:430px;top:195px;width:676px;height:74px" aria-label="Annotation 1: Tool arguments"><b>1</b></span><span v-click="2" class="capture-mark" style="left:430px;top:278px;width:676px;height:115px" aria-label="Annotation 2: Returned observation"><b>2</b></span></a><div class="product-caption"><span>Read the returned NumPy version. Open Raw to find workshop.exercise.</span><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/4ca0a7e5c9d1fe30d24079ea5b98b750">Open the setup trace ↗</a></div><div class="image-caption">Recorded v0.3.0 environment check. No language-model call was needed.</div></div>
 
 
 <!--
@@ -258,7 +258,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Normalize the inputs without changing the target units
 
-<SolarComputation mode="normalization" />
+<SolarComputation mode="normalization" /><div class="bottom-note">Notebook: choose a window, then toggle standardized inputs. The target does not change.</div>
 
 
 <!--
@@ -475,7 +475,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Save code and outputs with each training run
 
-```python
+```python {1-5|6-7|8|all}
 with session.stage(
     "measurement/run", config=config,
     sources={"candidate.py": source},
@@ -490,7 +490,7 @@ with session.stage(
 
 
 <!--
-This shortened example shows where saving sits around training. The notebook’s run_training function runs your source, then saves the result. If that same stage has already completed, the saved result can be restored instead of training again.
+This shortened example shows where saving sits around training. The notebook’s run_training function runs your source, then saves the result. If that same stage has already completed, the saved result can be restored instead of training again. Advance the code highlights one step at a time; use Back to revisit the previous statement.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -560,7 +560,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # How the MLP uses an hour of measurements
 
-<SolarComputation mode="mlp" />
+<SolarComputation mode="mlp" /><div class="bottom-note">Notebook: Run one forward pass and show tensor shapes. This does not train weights.</div>
 
 
 <!--
@@ -574,7 +574,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # How the temporal CNN uses the same measurements
 
-<SolarComputation mode="cnn" />
+<SolarComputation mode="cnn" /><div class="bottom-note">Choose Temporal CNN in the same check. Compare its output shapes with the MLP.</div>
 
 
 <!--
@@ -659,7 +659,7 @@ class: exercise
 
 # Run six configurations and inspect one forecast
 
-<div class="task">Stay in <strong>4 · Track and search</strong>.</div><ol class="exercise-controls"><li>Click <strong>Run six tracked configurations</strong>.</li><li>Open the Sweep. Compare validation error and training time for two configurations.</li><li>Open one run’s Artifact. Find its source and predictions, then compare the forecast with its loss curve and score.</li></ol><div class="done">Check your work: Explain one comparison using the settings, curve, and forecast.</div>
+<div class="task">Stay in <strong>4 · Track and search</strong>.</div><ol class="exercise-controls"><li>Click <strong>Run six tracked configurations</strong>.</li><li>Open the Sweep. Compare validation error and training time for two configurations.</li><li>In the notebook, choose <strong>Inspect a saved measurement run</strong>. Compare its loss, forecast, and persistence. Follow its Forge links to the saved source.</li></ol><div class="done">Check your work: Explain one comparison using the settings, curve, and forecast.</div>
 
 
 <!--
@@ -757,7 +757,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Implement the residual predictor’s forward pass
 
-```python
+```python {2|3|4|all}
 def forward(self, x):
     correction = self.net(x)       # [batch, 1, 64, 64]
     current_image = x[:, 1:2]      # keep the channel axis
@@ -768,7 +768,7 @@ def forward(self, x):
 
 
 <!--
-The diagram and code describe the same addition. Ask participants why x[:, 1] would remove a dimension and why x[:, 1:2] preserves it. The notebook implementation also branches on architecture so the convolutional comparison still returns only the network output.
+The diagram and code describe the same addition. Ask participants why x[:, 1] would remove a dimension and why x[:, 1:2] preserves it. The notebook implementation also branches on architecture so the convolutional comparison still returns only the network output. Advance the code highlights one step at a time; use Back to revisit the previous statement.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -806,7 +806,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Check the image scorer on three known errors
 
-```python
+```python {1|2-3|4|all}
 absolute_error = np.abs(prediction - target)
 per_image = (absolute_error * disk_mask).sum(axis=(1, 2, 3))
 per_image /= disk_mask.sum(axis=(1, 2, 3))
@@ -817,7 +817,7 @@ return float(per_image.mean())
 
 
 <!--
-Run the three local examples before training. They explain what the scorer measures. The participant writes this development scorer, and the protected primary scorer checks the comparison with the same published rule. Missing or invalid predictions are not zero error.
+Run the three local examples before training. They explain what the scorer measures. The participant writes this development scorer, and the protected primary scorer checks the comparison with the same published rule. Missing or invalid predictions are not zero error. Advance the code highlights one step at a time; use Back to revisit the previous statement. In the notebook, move the error outside the scoring mask, then click Try my image scorer on these pixels. The two public grids have different mask sizes; images still receive equal weight.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -841,7 +841,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Compare forecasts for the same validation case
 
-<div class="scientific-figure"><img class="solar-photo" src="/images/v030-validation-predictions.png" alt="Matched convolutional and residual predictions beside the same observed future"><div class="image-caption">Recorded v0.3.0 forecasts. First accepted validation case; common intensity and error scales.</div></div><div class="bottom-note">Compare the error maps, then check the score across all 142 validation windows.</div>
+<div class="scientific-figure"><img class="solar-photo" src="/images/v030-validation-predictions.png" alt="Matched convolutional and residual predictions beside the same observed future"><div class="image-caption">Recorded v0.3.0 forecasts. First accepted validation case; common intensity and error scales.</div></div><div class="bottom-note">Notebook: select one forecast timestamp. Compare persistence and both models on common scales.</div>
 
 
 <!--
@@ -943,7 +943,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Read the evidence that went into the proposal
 
-<div class="native-product-evidence"><a class="product-screen visual-v030-solar-evidence" href="/images/visual-v030-solar-evidence.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-evidence.png" alt="Native read_validation_evidence span from the current Solar proposal"></a><div class="product-caption"><span>Find the parent configuration and validation error before reading its proposal.</span><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/23f4a8510534f241b9c6ccacb0ef3cb7/spans">Open the proposal ↗</a></div><div class="image-caption">Recorded v0.3.0 round 1. The agent receives validation evidence, never the reserved-date score.</div></div>
+<div class="native-product-evidence"><a class="product-screen visual-v030-solar-evidence" href="/images/visual-v030-solar-evidence.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-evidence.png" alt="Native read_validation_evidence span from the current Solar proposal"><span v-click="1" class="capture-mark" style="left:70px;top:3px;width:800px;height:190px" aria-label="Annotation 1: Parent settings"><b>1</b></span><span v-click="2" class="capture-mark" style="left:70px;top:210px;width:800px;height:184px" aria-label="Annotation 2: Validation evidence"><b>2</b></span></a><div class="product-caption"><span>Find the parent configuration and validation error before reading its proposal.</span><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/23f4a8510534f241b9c6ccacb0ef3cb7/spans">Open the proposal ↗</a></div><div class="image-caption">Recorded v0.3.0 round 1. The agent receives validation evidence, never the reserved-date score.</div></div>
 
 
 <!--
@@ -1066,7 +1066,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Open the training call behind the chosen version
 
-<div class="native-product-evidence"><a class="product-screen visual-v030-solar-training" href="/images/visual-v030-solar-training.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-training.png" alt="Native train_and_validate tool span with actual source settings and returned metrics"></a><div class="product-caption"><span>Check the configuration, then find validation_error in the returned result.</span><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f7550caa1639e8366efbf9d84a782289">Open the selected training call ↗</a></div><div class="image-caption">Recorded v0.3.0 round 2 composition test. “error” is forecast error here, not an exception.</div></div>
+<div class="native-product-evidence"><a class="product-screen visual-v030-solar-training" href="/images/visual-v030-solar-training.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-training.png" alt="Native train_and_validate tool span with actual source settings and returned metrics"><span v-click="1" class="capture-mark" style="left:14px;top:45px;width:880px;height:160px" aria-label="Annotation 1: Training settings"><b>1</b></span><span v-click="2" class="capture-mark" style="left:14px;top:245px;width:880px;height:145px" aria-label="Annotation 2: Measured output"><b>2</b></span></a><div class="product-caption"><span>Check the configuration, then find validation_error in the returned result.</span><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f7550caa1639e8366efbf9d84a782289">Open the selected training call ↗</a></div><div class="image-caption">Recorded v0.3.0 round 2 composition test. “error” is forecast error here, not an exception.</div></div>
 
 
 <!--
@@ -1128,7 +1128,7 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Follow one proposal through the branch diagram
 
-<ResearchBranches :level="5" :interactive="true" />
+<ResearchBranches :level="5" :interactive="true" :recorded="true" />
 
 
 <!--
@@ -1252,11 +1252,11 @@ Source notes and recorded evidence: notes/sources.md.
 
 # Read the saved score for one image in Weave
 
-<div class="native-product-evidence"><a class="product-screen visual-v030-solar-comparison" href="/images/visual-v030-solar-comparison.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-comparison.png" alt="Native Weave expanded row showing prediction mean, target mean, file index, and error"></a><div class="product-caption"><span>Find file_index 0 and its error. Why is the score not the difference between the two means?</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==">Open the linked results ↗</a></div><div class="image-caption">One saved agent-selected case. Image means summarize the arrays; the score averages pixel errors inside the disk mask.</div></div>
+<div class="native-product-evidence"><a class="product-screen visual-v030-solar-comparison" href="/images/visual-v030-solar-comparison.png" target="_blank" aria-label="Open full-size capture"><img src="/images/visual-v030-solar-comparison.png" alt="Native Weave expanded row showing prediction mean, target mean, file index, and error"><span v-click="1" class="capture-mark" style="left:23px;top:56px;width:1000px;height:253px" aria-label="Annotation 1: Array summaries"><b>1</b></span><span v-click="2" class="capture-mark" style="left:23px;top:310px;width:1000px;height:36px" aria-label="Annotation 2: Pixel-wise score"><b>2</b></span></a><div class="product-caption"><span>Find file_index 0 and its error. Why is the score not the difference between the two means?</span><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==">Open the linked results ↗</a></div><div class="image-caption">One saved agent-selected case. Image means summarize the arrays; the score averages pixel errors inside the disk mask.</div></div>
 
 
 <!--
-This expanded native Weave row is the first final agent-selected image, file_index zero. Prediction mean is −1.760701 and target mean is −1.759181, but masked MAE is 0.109328. Differences between bright and dark pixels can cancel in a mean. The scorer instead takes each pixel’s absolute error before averaging. Open the saved array to see the forecast. The notebook supplies the aligned comparison; this is not native EvalTables.
+This expanded native Weave row is the first final agent-selected image, file_index zero. Prediction mean is −1.760701 and target mean is −1.759181, but masked MAE is 0.109328. Differences between bright and dark pixels can cancel in a mean. The scorer instead takes each pixel’s absolute error before averaging. Open the saved array to see the forecast. The notebook supplies the aligned comparison; this is not native EvalTables. Match this case_id and file_index to the notebook timestamp selector. The per-image score and full-split mean are shown separately.
 Source notes and recorded evidence: notes/sources.md.
 -->
 

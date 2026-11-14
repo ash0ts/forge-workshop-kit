@@ -54,6 +54,8 @@ def source_archive(path, deck, slug):
                     bundle.write(file, Path("decks") / slug / file.relative_to(deck))
         for name in ("build_decks.py", "validate_deck.mjs", "check_deck_pdf.py", "serve_deck.py"):
             bundle.write(ROOT / "scripts" / name, Path("scripts") / name)
+        definitions = Path("src/forge_workshop_kit/assets/visuals.json")
+        bundle.write(ROOT / definitions, definitions)
         bundle.writestr(
             "README.md",
             f"# {DECKS[slug]['title']}\n\n"

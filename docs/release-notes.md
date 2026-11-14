@@ -1,4 +1,14 @@
-# Forge Workshop Kit 0.3.1 technical preview
+# Forge Workshop Kit 0.4.0 technical preview
+
+Pending and Solar now follow the same objects through the code, notebook views, and slides. In Pending, participants inspect a tool call and the account state it changed. In Solar, they select a forecast timestamp and compare the models against the same observation. Next and Back reveal the operation being explained without starting another execution.
+
+The branch views use gray for the parent, blue for Candidate A, and orange for Candidate B. Solid connections show code or execution flow; dashed connections show reviewed evidence. Selection and status are written explicitly. A retained version shows the unchanged code and its reason. Saved decisions, diffs, results, and Forge links appear beside the selected branch.
+
+The office exercise explains when a skill was actually read, gives participants a resettable timeout example, and separates the agent's check from the development scorer, final grader, and explanation judge. The lab exercise adds forecast-window inspection, free model-shape checks, scorer arithmetic, matched image predictions, and a closer look at the unsuccessful GOES run.
+
+Slides reveal code and annotations in steps; the downloadable PDFs retain those steps. Both workshops use the existing November 13 rehearsal. No training, paid inference, model settings, data, or scores changed. Native EvalTables availability and the external-attendee rehearsal remain explicit limits. See [release checks](release-checks.md).
+
+## 0.3.1
 
 The decks now explain the forecasting and account-support tasks before introducing the experiment machinery. Solar opens with the observations, forecast horizons, and baseline comparison. Pending opens with a duplicate charge and a request that succeeds before returning a timeout. Code walkthroughs describe the inputs, changed behavior, and outputs participants should check.
 

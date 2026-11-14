@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[solar] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.3.1/forge_workshop_kit-0.3.1-py3-none-any.whl",
+#   "forge-workshop-kit[solar] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.4.0/forge_workshop_kit-0.4.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "aioftp==0.28.3",
 #   "aiohappyeyeballs==2.7.1",
@@ -171,6 +171,7 @@ def _():
     import marimo as mo
     from forge_workshop_kit import WorkshopSession, setup
     from forge_workshop_kit import solar, training, research, ui, plots, solar_teaching as teaching
+    from forge_workshop_kit import solar_views as views
     from forge_workshop_kit.session import digest
     from forge_workshop_kit.download import dataset
     from forge_workshop_kit.publication import publish_comparison, publish_report
@@ -180,35 +181,43 @@ def _():
     get_tracing_check, set_tracing_check = mo.state({})
     get_step, set_step = mo.state("setup", allow_self_loops=True)
     get_recovery_revision, set_recovery_revision = mo.state(0)
-    return (Path, WorkshopSession, dataset, digest, event, export_trace, get_feedback, get_lab, get_recovery_revision, get_step, get_tracing_check, json, mo, np, os, plots, publish_comparison, publish_report, research, saved_trace_inputs, set_feedback, set_lab, set_recovery_revision, set_step, set_tracing_check, setup, solar, stamp, teaching, time, training, ui,)
+    return (Path, WorkshopSession, dataset, digest, event, export_trace, get_feedback, get_lab, get_recovery_revision, get_step, get_tracing_check, json, mo, np, os, plots, publish_comparison, publish_report, research, saved_trace_inputs, set_feedback, set_lab, set_recovery_revision, set_step, set_tracing_check, setup, solar, stamp, teaching, time, training, ui, views,)
 
 
 @app.cell(hide_code=True)
 def _(mo, ui):
     mo.vstack([mo.Html(ui.heading("Solar forecasting with agent-assisted experiments", "You’re working with a research lab’s satellite observations. The task is to forecast X-ray flux 30 minutes ahead and a solar image one hour ahead. You’ll implement a baseline, train small neural networks, and compare their predictions on dates excluded from training.", theme="lab")),
-    mo.md("To compare those errors, we need to know what changed between runs. You’ll save the data version, preprocessing, code, settings, and predictions with each experiment. Once you can make that comparison, you’ll ask an agent to edit the image model’s Python code, review its changes, and train each candidate before deciding which version to keep.")])
+    mo.md("**Your fictional lab has a weekly forecast review.** The PI asks for a result a colleague can reproduce. Last week’s shared folder had four notebooks called final. This time, you’ll save the data version, preprocessing, code, settings, and predictions with each experiment. Once you can compare the results, you’ll ask an AI research assistant to edit the image model’s Python code and test its proposals by the same rules.")])
     return
 
 
 @app.cell(hide_code=True)
-def _(get_feedback, get_lab, set_feedback, set_lab, set_step, teaching):
+def _(get_lab, set_step):
     def go_to(step):
         session = get_lab().get("session")
         if session:
             session.set_view(step)
         set_step(step)
+    return (go_to,)
 
+
+@app.cell(hide_code=True)
+def _(get_lab, set_lab, teaching):
     def refresh_saved():
         context = get_lab()
         set_lab({**context, **teaching.restore_state(context["session"])})
+    return (refresh_saved,)
 
+
+@app.cell(hide_code=True)
+def _(set_feedback):
     def checked(name, action):
         try:
             result = action()
-            set_feedback({**get_feedback(), name: {"status": "complete", **result}})
+            set_feedback(lambda current: {**current, name: {"status": "complete", **result}})
         except Exception as error:
-            set_feedback({**get_feedback(), name: {"status": "needs work", "message": str(error)}})
-    return (checked, go_to, refresh_saved,)
+            set_feedback(lambda current: {**current, name: {"status": "needs work", "message": str(error)}})
+    return (checked,)
 
 
 @app.cell(hide_code=True)
@@ -244,7 +253,7 @@ def _(get_lab, mo, solar_recovery_choice, ui):
 
 
 @app.cell(hide_code=True)
-def _(get_feedback, get_lab, get_recovery_revision, mo, refresh_saved, set_feedback, set_recovery_revision, solar_recovery_allow, solar_recovery_choice, solar_recovery_confirm):
+def _(get_lab, get_recovery_revision, mo, refresh_saved, set_feedback, set_recovery_revision, solar_recovery_allow, solar_recovery_choice, solar_recovery_confirm):
     mo.stop(not solar_recovery_allow.value)
     _s = get_lab()["session"]
     try:
@@ -252,7 +261,7 @@ def _(get_feedback, get_lab, get_recovery_revision, mo, refresh_saved, set_feedb
         _message = "Retry allowed. Return to this step’s run button to start attempt " + str(_route["attempt"]) + ". Completed work will be reused."
     except Exception as _error:
         _message = str(_error)
-    set_feedback({**get_feedback(), "recovery": _message})
+    set_feedback(lambda current: {**current, "recovery": _message})
     refresh_saved()
     set_recovery_revision(get_recovery_revision() + 1)
     return
@@ -293,7 +302,7 @@ def _(get_step, mo, setup, ui):
 
 
 @app.cell(hide_code=True)
-def _(WorkshopSession, allowance, connect_button, get_feedback, mo, project_input, set_feedback, set_lab, set_step, setup, teaching):
+def _(WorkshopSession, allowance, connect_button, mo, project_input, set_feedback, set_lab, set_step, setup, teaching):
     mo.stop(not connect_button.value)
     _s = None
     _access = None
@@ -304,11 +313,11 @@ def _(WorkshopSession, allowance, connect_button, get_feedback, mo, project_inpu
         setup.save_access(_s, _access)
         set_lab(teaching.restore_state(_s))
         set_step(_s.get_view("setup"))
-        set_feedback({**get_feedback(), "setup": {"status": "complete", **_access, "restore": _restored}})
+        set_feedback(lambda current: {**current, "setup": {"status": "complete", **_access, "restore": _restored}})
     except Exception as _error:
         if _s is not None and _access is None:
             setup.save_access(_s, {"write_access": False, "error": str(_error)})
-        set_feedback({**get_feedback(), "setup": {"status": "unavailable", "message": str(_error), "next": "Check that you’re signed in and can write to this project, then try Connect again."}})
+        set_feedback(lambda current: {**current, "setup": {"status": "unavailable", "message": str(_error), "next": "Check that you’re signed in and can write to this project, then try Connect again."}})
     return
 
 
@@ -353,7 +362,7 @@ def _(digest, get_feedback, get_lab, get_step, get_tracing_check, go_to, instrum
 
 
 @app.cell(hide_code=True)
-def _(event, export_trace, first_trace, get_feedback, get_lab, instrument_tool, instrumentation_editor, mo, np, refresh_saved, set_feedback, teaching):
+def _(event, export_trace, first_trace, get_lab, instrument_tool, instrumentation_editor, mo, np, refresh_saved, set_feedback, teaching):
     mo.stop(not first_trace.value)
     _s = get_lab()["session"]
     teaching.check_instrumentation(instrumentation_editor.value)
@@ -364,9 +373,9 @@ def _(event, export_trace, first_trace, get_feedback, get_lab, instrument_tool, 
     try:
         _trace = export_trace(_s, _stage.id, "Inspect my CPU research environment", _stage.result["events"], tool_writer=instrument_tool)
         _s.checkpoint("setup", evidence={"Setup conversation": _trace["url"]})
-        set_feedback({**get_feedback(), "setup_trace": {"status": "complete", "stored spans": _trace["stored_spans"]}})
+        set_feedback(lambda current: {**current, "setup_trace": {"status": "complete", "stored spans": _trace["stored_spans"]}})
     except Exception as _error:
-        set_feedback({**get_feedback(), "setup_trace": {"status": "publication pending", "message": str(_error), "next": "The check is saved. Click Send my first Agent Lens trace again to retry its upload."}})
+        set_feedback(lambda current: {**current, "setup_trace": {"status": "publication pending", "message": str(_error), "next": "The check is saved. Click Send my first Agent Lens trace again to retry its upload."}})
     refresh_saved()
     return
 
@@ -407,7 +416,7 @@ def _(dataset, get_lab, load_data, mo, set_lab, solar):
         if _stage.needs_run:
             _stage.record({"dataset": _fingerprint, "development_windows": {k: len(v["ids"]) for k, v in _goes.items() if k != "test"}, "normalization": _normalization, "image_date": str(_map.date), "wavelength": str(_map.wavelength)})
     _s.checkpoint("data")
-    set_lab({**get_lab(), "data_path": str(_path), "dataset": _fingerprint, "goes": _goes, "images": _images})
+    set_lab({**get_lab(), "data_path": str(_path), "dataset": _fingerprint, "goes": _goes, "goes_normalization": _normalization, "images": _images})
     return (Map,)
 
 
@@ -419,6 +428,31 @@ def _(get_lab, get_step, go_to, mo, plots, teaching, ui):
     solar_next_step_4 = ui.next_step(mo, "Next: implement persistence", "baseline", go_to)
     mo.vstack([mo.Html(ui.result("Dataset loaded", _record["result"])) if _record else mo.md("Click Load the solar dataset to see the observations and a first forecast plot."), plots.forecast(get_lab()["goes"]["validation"]["persistence"], get_lab()["goes"]["validation"], title="Validation measurements: the latest observation as a forecast") if get_lab().get("goes") else mo.md("Returning to the notebook? Click Load the solar dataset to put the arrays back in memory. Your completed experiments stay saved."), ui.evidence(mo, _s, stage_ids=[_record["id"]], question="Open data / loaded · files. This W&B Artifact is a versioned collection of saved files. Find the observation date and wavelength in its dataset record; later runs will save code, weights, and predictions the same way.") if _record else mo.md(""), solar_next_step_4])
     return (solar_next_step_4,)
+
+
+@app.cell(hide_code=True)
+def _(get_lab, get_step, mo):
+    mo.stop(get_step() not in ("data", "baseline"))
+    mo.stop(not get_lab().get("goes"))
+    window_split = mo.ui.radio({"Training dates": "train", "Validation dates": "validation"}, value="Training dates", inline=True, label="Inspect an observed window")
+    mo.vstack([mo.md("### Follow one observation into the model"), mo.md("Choose a window, then switch its input units. The future target stays in log-flux units. This viewer reads the data; it does not run a forecast."), window_split])
+    return (window_split,)
+
+
+@app.cell(hide_code=True)
+def _(get_lab, mo, window_split):
+    _split = get_lab()["goes"][window_split.value]
+    window_index = mo.ui.slider(start=0, stop=len(_split["ids"])-1, value=0, step=1, show_value=True, label="Window index")
+    window_standardized = mo.ui.checkbox(label="Show the standardized inputs the neural model receives")
+    mo.hstack([window_index, window_standardized])
+    return (window_index, window_standardized,)
+
+
+@app.cell(hide_code=True)
+def _(get_lab, mo, views, window_index, window_split, window_standardized):
+    _values = views.window_values(get_lab()["goes"][window_split.value], get_lab()["goes_normalization"], window_index.value, standardized=window_standardized.value)
+    mo.vstack([views.window_figure(_values), mo.ui.table(views.window_rows(_values), selection=None, pagination=False), mo.md("**Code to inspect:** `x = (log_flux - training_mean) / training_std`. Only the input changes scale. `split['persistence']` holds the latest log10 XRS-B reading; `split['y']` is the future target. Copying the standardized last input would give the baseline the wrong units."), mo.accordion({"Why some times have no window": mo.md("`load_goes` checks every minute from the first input through the target, including the 30-minute gap after the forecast origin. A missing minute or a crossed date boundary rejects that window. February 8 is absent from this archive. The slider contains accepted windows only.")})])
+    return
 
 
 @app.cell(hide_code=True)
@@ -443,7 +477,7 @@ def _(check_persistence, checked, mo, persistence_editor, teaching):
 
 
 @app.cell(hide_code=True)
-def _(baseline_button, export_trace, get_feedback, get_lab, instrument_tool, mo, np, persistence_editor, refresh_saved, set_feedback, solar, teaching, time):
+def _(baseline_button, export_trace, get_lab, instrument_tool, mo, np, persistence_editor, refresh_saved, set_feedback, solar, teaching, time):
     mo.stop(not baseline_button.value)
     teaching.check_persistence(persistence_editor.value)
     _s = get_lab()["session"]
@@ -458,7 +492,7 @@ def _(baseline_button, export_trace, get_feedback, get_lab, instrument_tool, mo,
     try:
         export_trace(_s, _stage.id, "Evaluate my persistence forecast on validation dates", _stage.result["events"], tool_writer=instrument_tool)
     except Exception as _error:
-        set_feedback({**get_feedback(), "baseline-export": str(_error)})
+        set_feedback(lambda current: {**current, "baseline-export": str(_error)})
     _s.checkpoint("baseline")
     refresh_saved()
     return
@@ -502,6 +536,37 @@ def _(check_measurement, checked, flux_metric_editor, measurement_editor, mo, te
     def _check():
         return {"model": teaching.check_model(measurement_editor.value, "measurement"), "metric": teaching.check_flux_metric(flux_metric_editor.value)}
     checked("measurement-check", _check)
+    return
+
+
+@app.cell(hide_code=True)
+def _(get_step, mo):
+    mo.stop(get_step() != "search")
+    shape_architecture = mo.ui.radio({"MLP": "mlp", "Temporal CNN": "cnn"}, value="MLP", inline=True, label="Which implementation should receive a batch?")
+    inspect_shapes = mo.ui.run_button(label="Run one forward pass and show tensor shapes")
+    mo.vstack([mo.md("### Follow a batch through your code"), mo.md("Choose an architecture and run one forward pass with two synthetic inputs. It uses your current `build_model` function. No weights are trained and no provider is called. N is the batch size; the other axes are channels and time."), shape_architecture, inspect_shapes])
+    return (inspect_shapes, shape_architecture,)
+
+
+@app.cell(hide_code=True)
+def _(checked, digest, inspect_shapes, measurement_editor, mo, shape_architecture, views):
+    mo.stop(not inspect_shapes.value)
+    checked("forward-shapes", lambda: {"source": digest(measurement_editor.value), "architecture": shape_architecture.value, "layers": views.forward_shapes(measurement_editor.value, shape_architecture.value)})
+    return
+
+
+@app.cell(hide_code=True)
+def _(digest, get_feedback, get_step, measurement_editor, mo):
+    mo.stop(get_step() != "search")
+    _check = get_feedback().get("forward-shapes", {})
+    mo.vstack([mo.ui.table(_check.get("layers", []), selection=None, pagination=False), mo.md("MLP flattens two channels × 60 samples into 120 numbers. CNN slides five-sample filters across those channels, then averages the time positions. Both return one prediction per input."), mo.md("This shape check used an earlier draft. Click the forward-pass button again to inspect your current code.") if _check.get("source") and _check["source"] != digest(measurement_editor.value) else mo.md("")]) if _check.get("status") == "complete" else mo.md(_check.get("message", "Run the forward pass to see its intermediate shapes."))
+    return
+
+
+@app.cell(hide_code=True)
+def _(get_step, mo):
+    mo.stop(get_step() != "search")
+    mo.accordion({"Read run_training in three parts": mo.md("**1. Execute:** `training.train(...)` runs the source you wrote and returns predictions and metrics.\n\n**2. Save:** `stage.record(..., files=...)` preserves that source with weights.pt, predictions.npy, losses.json, and the plot. A W&B Artifact is the versioned bundle of those files.\n\n**3. Inspect:** `export_trace(...)` sends the observed training call to Agent Lens. `session.checkpoint(name)` saves progress. A failed upload can be retried without training again.\n\nFind these three statements in the editable function below. After a run, open the matching training span and its Artifact.")})
     return
 
 
@@ -597,6 +662,31 @@ def _(get_feedback, get_lab, get_step, go_to, measurement_editor, mo, teaching, 
 
 
 @app.cell(hide_code=True)
+def _(get_lab, get_step, mo):
+    mo.stop(get_step() != "search")
+    _s = get_lab().get("session")
+    _rows = [] if not _s else [row for row in _s.completed() if row["name"].startswith("goes/search-") and "validation_error" in row["result"].get("metrics", {})]
+    _options = {row["name"] + " · " + row["config"]["architecture"] + " · " + row["id"][:6]: row["id"] for row in _rows}
+    inspect_goes_run = mo.ui.dropdown(_options, value=next(iter(_options), None), label="Inspect a saved measurement run", full_width=True) if _options else None
+    mo.vstack([mo.md("### Bring a forecast to the lab review"), mo.md("A decreasing training loss is not enough. Compare the saved model forecast with persistence and the observed future. This reads saved arrays; it does not extend training."), inspect_goes_run]) if _options else mo.md("")
+    return (inspect_goes_run,)
+
+
+@app.cell(hide_code=True)
+def _(get_lab, inspect_goes_run, mo, np, ui, views):
+    mo.stop(inspect_goes_run is None)
+    _s = get_lab()["session"]
+    _row = _s.read()["stages"][inspect_goes_run.value]
+    _path = _s.file("outputs/" + _row["id"] + "/predictions.npy")
+    mo.stop(not get_lab().get("goes"), mo.md("Load the solar dataset to inspect this saved forecast."))
+    mo.stop(not _path.exists(), mo.md("The prediction file is missing. Restore its saved Artifact before comparing it."))
+    _metrics = _row["result"]["metrics"]
+    _primary = {label: _metrics[key] for key, label in (("error", "Forecast MAE"), ("persistence_error", "Persistence MAE"), ("examples", "Validation windows"), ("seconds", "Execution seconds")) if key in _metrics}
+    mo.vstack([mo.Html(ui.result("Settings used for this execution", _row["config"])), views.goes_investigation(np.load(_path, allow_pickle=False), get_lab()["goes"]["validation"], losses=_row["result"].get("losses", []), title=_row["name"]), mo.Html(ui.result("Validation result", _primary)), mo.accordion({"All saved metrics, including your development scorer": mo.Html(ui.result("Saved metrics", _metrics))}), ui.evidence(mo, _s, stage_ids=[_row["id"]], question="Open this run’s training span and find steps and learning_rate. Then open losses.json in its files. Do the saved values match this plot?")])
+    return
+
+
+@app.cell(hide_code=True)
 def _(DEFAULT_SOURCE, get_lab, get_step, go_to, mo, teaching, ui):
     mo.stop(get_step() != "images")
     _s = get_lab().get("session")
@@ -622,6 +712,48 @@ def _(check_images, checked, image_editor, image_metric_editor, mo, teaching):
 
 
 @app.cell(hide_code=True)
+def _(get_step, mo):
+    mo.stop(get_step() != "images")
+    fixture_error = mo.ui.slider(start=-3, stop=3, step=.5, value=1, show_value=True, label="Error in the first synthetic image")
+    fixture_inside = mo.ui.checkbox(value=True, label="Put the error inside the scoring mask")
+    try_scorer = mo.ui.run_button(label="Try my image scorer on these pixels")
+    mo.vstack([mo.md("### Check what the score counts"), mo.md("These two tiny grids are arithmetic examples, not solar observations. The second image has four included pixels and twice the error. Move the error outside the mask, then test your own function. Each image gets equal weight in the final average."), mo.hstack([fixture_error, fixture_inside]), try_scorer])
+    return (fixture_error, fixture_inside, try_scorer,)
+
+
+@app.cell(hide_code=True)
+def _(fixture_error, fixture_inside, mo, views):
+    _fixture = views.scorer_fixture(fixture_error.value, inside=fixture_inside.value)
+    mo.vstack([views.fixture_figure(_fixture), mo.ui.table(_fixture["rows"], selection=None, pagination=False), mo.md("Expected mean of the two image errors: **" + str(_fixture["expected"]) + "**. The target is zero, so each displayed signed value is prediction minus target.")])
+    return
+
+
+@app.cell(hide_code=True)
+def _(checked, digest, fixture_error, fixture_inside, image_metric_editor, mo, np, teaching, try_scorer, views):
+    mo.stop(not try_scorer.value)
+    def _try():
+        identity = {"source": digest(image_metric_editor.value), "fixture": [fixture_error.value, fixture_inside.value]}
+        example = views.scorer_fixture(fixture_error.value, inside=fixture_inside.value)
+        try:
+            actual = teaching.functions(image_metric_editor.value)["my_image_mae"](example["prediction"], example["target"], example["mask"])
+            return {**identity, "Your scorer": float(actual), "Expected": example["expected"], "Matches": bool(np.isclose(actual, example["expected"]))}
+        except Exception as error:
+            return {**identity, "status": "needs work", "message": str(error), "Expected": example["expected"]}
+    checked("fixture-score", _try)
+    return
+
+
+@app.cell(hide_code=True)
+def _(digest, fixture_error, fixture_inside, get_feedback, get_step, image_metric_editor, mo, ui):
+    mo.stop(get_step() != "images")
+    _result = get_feedback().get("fixture-score", {})
+    _fresh = _result.get("source") == digest(image_metric_editor.value) and _result.get("fixture") == [fixture_error.value, fixture_inside.value]
+    _visible = {key: _result[key] for key in ("Your scorer", "Expected", "Matches", "message") if key in _result}
+    mo.vstack([mo.Html(ui.result("Your scorer on this example", _visible, status=_result.get("status", "not checked"))), mo.accordion({"Check details": mo.Html(ui.result("Saved local check", _result))})]) if _fresh else mo.md("Click Try my image scorer on these pixels to check the current code and selected example.")
+    return
+
+
+@app.cell(hide_code=True)
 def _(get_lab, image_editor, image_metric_editor, mo, refresh_saved, run_images, run_training, teaching):
     mo.stop(not run_images.value)
     teaching.check_model(image_editor.value, "image")
@@ -641,10 +773,44 @@ def _(get_feedback, get_lab, get_step, go_to, image_editor, mo, teaching, ui):
     _s = get_lab().get("session")
     _rows = [] if not _s else [row for row in _s.completed() if row["name"].startswith("images/manual-")]
     _check = get_feedback().get("image-check", {})
-    _previews = [mo.image(str(_s.file("outputs/" + row["id"] + "/predictions.png"))) for row in _rows if _s.file("outputs/" + row["id"] + "/predictions.png").exists()]
+
     solar_next_step_13 = ui.next_step(mo, "Next: let the researcher propose code changes", "research", go_to)
-    mo.vstack([mo.md(teaching.draft_status(_s, "solar/image", image_editor.value, stage_prefix="images/manual-")) if _s else mo.md(""), mo.Html(ui.result("Local image checks", _check, status=_check.get("status", "not checked"))) if _check else mo.md("**Your image results.** Saved runs appear below. If you change the code, check it before training again."), mo.ui.table(teaching.metric_rows({row["config"]["architecture"]: row["result"]["metrics"] for row in _rows}), selection=None), *_previews, ui.evidence(mo, _s, stage_ids=[row["id"] for row in _rows], question="Pick one forecast where the models differ. Open that model’s files to find weights.pt, then its Agent Lens training span to see the settings and elapsed time. Describe the difference you can see in the error image.") if _s else mo.md(""), solar_next_step_13])
+    mo.vstack([mo.md(teaching.draft_status(_s, "solar/image", image_editor.value, stage_prefix="images/manual-")) if _s else mo.md(""), mo.Html(ui.result("Local image checks", _check, status=_check.get("status", "not checked"))) if _check else mo.md("**Your image results.** Saved runs appear below. If you change the code, check it before training again."), mo.ui.table(teaching.metric_rows({row["config"]["architecture"]: row["result"]["metrics"] for row in _rows}), selection=None), ui.evidence(mo, _s, stage_ids=[row["id"] for row in _rows], question="Pick one forecast where the models differ. Open that model’s files to find weights.pt, then its Agent Lens training span to see the settings and elapsed time. Describe the difference you can see in the error image.") if _s else mo.md(""), solar_next_step_13])
     return (solar_next_step_13,)
+
+
+@app.cell(hide_code=True)
+def _(get_lab, get_step, mo, teaching):
+    mo.stop(get_step() not in ("images", "final"))
+    _s = get_lab().get("session")
+    mo.stop(not _s or not get_lab().get("images"))
+    _final = get_step() == "final"
+    mo.stop(_final and teaching.saved(_s, "images/final-comparison") is None)
+    _split_name = "test" if _final else "validation"
+    _split = get_lab()["images"][_split_name]
+    _selection_key = "solar/comparison-timestamp/" + get_lab()["dataset"] + "/" + _split_name
+    _origins = [str(timestamp) for timestamp in _split["ids"]]
+    _selected_origin = _s.get_draft(_selection_key, _origins[0])
+    if _selected_origin not in _origins:
+        _selected_origin = _origins[0]
+    comparison_timestamp = mo.ui.dropdown({origin + " UTC": i for i, origin in enumerate(_origins)}, value=_selected_origin + " UTC", label="Forecast origin · all versions use this timestamp", full_width=True, on_change=lambda value: _s.save_draft(_selection_key, _origins[value]) if value is not None else None)
+    mo.vstack([mo.md("### Compare the same image across versions"), mo.md("Choose a timestamp. Persistence copies the current image; the other columns use saved predictions. Every forecast shares one intensity scale, and every error image shares another. The table separates this image’s error from the mean over the full split."), comparison_timestamp])
+    return (comparison_timestamp,)
+
+
+@app.cell(hide_code=True)
+def _(comparison_timestamp, get_lab, get_step, mo, teaching, ui, views):
+    _s = get_lab()["session"]
+    _final = get_step() == "final"
+    _split = get_lab()["images"]["test" if _final else "validation"]
+    _names = {"Manual": "images/final-manual", "Agent-edited": "images/final-agent"} if _final else {"Direct CNN": "images/manual-conv", "Residual CNN": "images/manual-residual"}
+    _comparison = teaching.saved(_s, "images/final-comparison") if _final else None
+    _executions = {label: views.comparison_execution(_s, _comparison, version) for label, version in (("Manual", "manual"), ("Agent-edited", "agent"))} if _final else None
+    _predictions, _records, _unavailable = views.saved_predictions(_s, _names, _split, executions=_executions)
+    _predictions = {"Persistence": _split["persistence"], **_predictions}
+    _figure, _rows = views.aligned_images(_predictions, _split, index=comparison_timestamp.value)
+    mo.vstack([mo.Html(views.comparison_html(_figure, _split["ids"][comparison_timestamp.value])), mo.ui.table(_rows, selection=None, pagination=False), mo.Html(ui.result("Unavailable versions", _unavailable, status="unavailable")) if _unavailable else mo.md(""), ui.evidence(mo, _s, stage_ids=[row["id"] for row in _records.values()], question="Open a version’s files and find predictions.npy. The selected timestamp has the same row index in every saved prediction array. In Weave, find its case_id; image mean is a summary, not the pixel-wise error.")])
+    return
 
 
 @app.cell(hide_code=True)
@@ -658,9 +824,9 @@ def _(get_step, mo, ui):
             mo.md("One seed; 199 overlapping windows on February 13–14, 2014. The GOES measurement model performed worse than persistence. Your results appear in your own comparison.")
         ]), kind="info"),
         mo.accordion({"Open the recorded evidence": mo.Html(ui.links({
-            "Recorded result and limitations": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/solar-autoresearch:-2d92533d--VmlldzoxODMwMjY4OQ==",
-            "Actual diffs and execution records": "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/ux-v020-solar.json",
-            "Selected code and weights": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f5e5d198bc9479f78d9a4b1c8c8979e3/v0",
+            "Recorded result and limitations": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==",
+            "Actual diffs and execution records": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/solar/public/recorded-study.json",
+            "Selected code and weights": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f7550caa1639e8366efbf9d84a782289/v0",
         }))})
     ])
     return
@@ -738,13 +904,13 @@ def _(digest, evidence_editor, get_feedback, get_lab, get_step, go_to, mo, next_
     elif not get_lab().get("images"):
         _parts.append(solar_prerequisite_16)
     solar_next_step_17 = ui.next_step(mo, "Next: freeze and evaluate", "final", go_to)
-    _parts += [ui.evidence(mo, _s, stage_ids=[row["id"] for row in (_proposal, _composition) if row], question="Open the proposal in Agent Lens. Find the validation score and code sent to the agent, then compare its explanation with the changed lines below. What does the edit try to fix?"), mo.Html(ui.branch_graph(_s)), solar_next_step_17]
+    _parts += [ui.evidence(mo, _s, stage_ids=[row["id"] for row in (_proposal, _composition) if row], question="Open the proposal in Agent Lens. Find the validation score and code sent to the agent, then compare its explanation with the changed lines below. What does the edit try to fix?"), ui.branch_workbench(mo, _s, key="solar-research"), solar_next_step_17]
     mo.vstack(_parts)
     return (research_button, research_note, solar_next_step_17, solar_prerequisite_15, solar_prerequisite_16,)
 
 
 @app.cell
-def _(choose_adoption, evidence_editor, get_feedback, get_lab, mo, next_research_action, refresh_saved, research, research_button, research_note, run_training, set_feedback, teaching):
+def _(choose_adoption, evidence_editor, get_lab, mo, next_research_action, refresh_saved, research, research_button, research_note, run_training, set_feedback, teaching):
     mo.stop(not research_button.value)
     _s = get_lab()["session"]
     _number, _phase, _label = next_research_action(_s)
@@ -760,7 +926,7 @@ def _(choose_adoption, evidence_editor, get_feedback, get_lab, mo, next_research
         try:
             research.trace_decision(_s, _id)
         except Exception as _error:
-            set_feedback({**get_feedback(), "research-export": str(_error)})
+            set_feedback(lambda current: {**current, "research-export": str(_error)})
     elif _phase.startswith("review-"):
         mo.stop(not research_note.value.strip(), mo.md("In the review note, name the line that changed and what you expect it to do."))
         _candidate = teaching.saved(_s, _prefix + "compose")["result"]["decision"] if _phase == "review-composition" else teaching.saved(_s, _prefix + "propose")["result"]["candidates"][int(_phase[-1])]
@@ -794,7 +960,7 @@ def _(choose_adoption, evidence_editor, get_feedback, get_lab, mo, next_research
         try:
             research.trace_decision(_s, _id)
         except Exception as _error:
-            set_feedback({**get_feedback(), "research-export": str(_error)})
+            set_feedback(lambda current: {**current, "research-export": str(_error)})
     elif _phase == "adopt":
         _decision = research.normalize_composition(teaching.saved(_s, _prefix + "compose")["result"]["decision"])
         _executed = teaching.saved(_s, _prefix + "composition-result")["result"]
@@ -823,7 +989,7 @@ def _(get_lab, get_step, go_to, mo, next_research_action, ui):
 
 
 @app.cell
-def _(event, export_trace, final_button, get_feedback, get_lab, instrument_tool, mo, np, plots, publish_comparison, refresh_saved, research, set_feedback, solar, teaching, training):
+def _(event, export_trace, final_button, get_lab, instrument_tool, mo, np, plots, publish_comparison, refresh_saved, research, set_feedback, solar, teaching, training):
     mo.stop(not final_button.value)
     mo.output.replace(mo.md("**Evaluating your selected models.** Loading the saved weights and predicting the reserved dates."))
     _s = get_lab()["session"]
@@ -889,7 +1055,7 @@ def _(event, export_trace, final_button, get_feedback, get_lab, instrument_tool,
                 with mo.status.spinner(title="Publishing " + _label + " from saved predictions"):
                     publish_comparison(_s, _label, _saved["result"]["rows"])
             except Exception as _error:
-                set_feedback({**get_feedback(), "publication": str(_error)})
+                set_feedback(lambda current: {**current, "publication": str(_error)})
     refresh_saved()
     mo.output.replace(mo.md("**Your comparison is ready below.** Open the published links, or use the notebook table if a service is unavailable."))
     return
@@ -910,7 +1076,7 @@ def _(conclusion, get_lab, mo, publish_report, refresh_saved, report_button, ui)
 
 
 @app.cell(hide_code=True)
-def _(export_trace, get_feedback, get_lab, instrument_tool, mo, publish_comparison, refresh_saved, retry_publication, saved_trace_inputs, set_feedback, teaching):
+def _(export_trace, get_lab, instrument_tool, mo, publish_comparison, refresh_saved, retry_publication, saved_trace_inputs, set_feedback, teaching):
     mo.stop(not retry_publication.value)
     _s = get_lab()["session"]
     _status = _s.retry_publication()
@@ -928,7 +1094,7 @@ def _(export_trace, get_feedback, get_lab, instrument_tool, mo, publish_comparis
                 _status[_label] = publish_comparison(_s, _label, _saved["result"]["rows"])
             except Exception as _error:
                 _status[_label] = str(_error)
-    set_feedback({**get_feedback(), "publication_retry": _status})
+    set_feedback(lambda current: {**current, "publication_retry": _status})
     refresh_saved()
     return
 
@@ -943,11 +1109,6 @@ def _(get_lab, get_step, mo, teaching, ui):
     _parts = [mo.md("### Final image errors")]
     if _image:
         _parts.append(mo.ui.table(teaching.metric_rows(_image["result"]["metrics_by_version"]), selection=None))
-        for _row in _s.completed():
-            if _row["name"] in ("images/final-manual", "images/final-agent"):
-                _path = _s.file("outputs/" + _row["id"] + "/predictions.png")
-                if _path.exists():
-                    _parts.append(mo.image(str(_path)))
     else:
         _parts.append(mo.md("Run the frozen comparison above to see your final image scores."))
     _parts.append(mo.md("### Final measurement errors"))
@@ -959,6 +1120,22 @@ def _(get_lab, get_step, mo, teaching, ui):
         _parts.append(mo.md("Your final GOES scores will appear here. We keep them separate because measurement and image errors use different units."))
     _parts += [ui.evidence(mo, _s, stage_ids=[row["id"] for row in _s.completed() if row["name"] in ("images/final-manual", "images/final-agent", "images/final-comparison", "goes/final", "goes/final-comparison")], extra=_s.read()["progress"].get("evidence", {}), question="Choose the same forecast timestamp in each version. Compare its predicted image and error, then follow the code and trace links. Which visible difference supports your conclusion?"), ui.publication(mo, _s), mo.md("**Optional ARIA investigation:** Review my Report and linked research-agent traces. Identify one supported reason a change helped or hurt, cite the exact event and prediction, and propose one next experiment. Do not launch new runs.")]
     mo.vstack(_parts)
+    return
+
+
+@app.cell(hide_code=True)
+def _(get_lab, get_step, mo, np, teaching, ui, views):
+    mo.stop(get_step() != "final")
+    _s = get_lab().get("session")
+    _comparison = teaching.saved(_s, "goes/final-comparison") if _s else None
+    mo.stop(not _comparison or not get_lab().get("goes"))
+    _row = views.comparison_execution(_s, _comparison, "selected-model")
+    mo.stop(not _row, mo.md("The GOES execution referenced by the saved final comparison is unavailable locally. Restore its Artifact; a newer attempt will not be substituted."))
+    _path = _s.file("outputs/" + _row["id"] + "/predictions.npy")
+    mo.stop(not _path.exists(), mo.md("Restore the final GOES prediction Artifact to inspect this saved result."))
+    _selected_training_id = _row.get("inputs", {}).get("selected_stage")
+    _training = next((row for row in _s.completed() if row["id"] == _selected_training_id), None)
+    mo.vstack([mo.md("### Does the selected measurement model beat persistence?"), mo.md("These are predictions from saved weights on the reserved dates. The loss curve belongs to its earlier training run. A falling training loss alone does not establish better forecasting."), mo.Html(ui.result("Selected settings", _row["config"])), mo.md("The exact selected training record is unavailable locally. Restore its Artifact to inspect the loss curve; no other run is substituted.") if not _training else mo.md(""), views.goes_investigation(np.load(_path, allow_pickle=False), get_lab()["goes"]["test"], losses=_training["result"].get("losses", []) if _training else [], title="Frozen GOES model"), ui.evidence(mo, _s, stage_ids=[_row["id"]] + ([_training["id"]] if _training else []), question="Compare the saved training and final-evaluation calls. Which one updates weights? Which one loads weights.pt and only predicts?")])
     return
 
 if __name__ == "__main__":

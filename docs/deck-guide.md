@@ -4,6 +4,8 @@ Use each deck to explain the next code change, then leave the exercise instructi
 
 Each exercise links to a worked answer after the main deck. Give participants time to try before opening it, then use the return link to resume. When showing a rehearsal capture, say that it is a recorded result.
 
+The [visual sequence guide](visual-sequence.md) explains the new selectors, code highlights, branch connections, and questions to ask at each view. Advance one operation at a time, then ask someone to point to the value that changed. These inspection controls read saved records; execution still requires a separate run button.
+
 ## Solar forecasting with agent-assisted experiments
 
 Follow the [four-hour runbook](facilitator.md) and [slide-by-slide presenter notes](../decks/solar/notes/facilitator-notes.md). The diagrams add one part at a time in both the browser deck and PDF.

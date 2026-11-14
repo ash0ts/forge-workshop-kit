@@ -1,0 +1,146 @@
+{
+  "release": "0.4.0",
+  "paid_inference_calls": 0,
+  "training_runs": 0,
+  "publication_in_browser_checks": "disabled",
+  "authentication_in_browser_checks": "stubbed; not a live attendee-access check",
+  "unit_tests_passed": 154,
+  "workflow_compatibility": 1,
+  "notebook_checks": {
+    "pending-browser": {
+      "errors": [],
+      "overflow": {
+        "body": 390,
+        "width": 390
+      },
+      "comparisonSwitch": 1
+    },
+    "pending-dark": {
+      "errors": [],
+      "colors": {
+        "color": "color(srgb 0.92549 0.933333 0.929412)",
+        "body": "color(srgb 0.0941176 0.109804 0.101961)"
+      }
+    },
+    "pending-saved-records": {
+      "requests_unchanged": true,
+      "stages_unchanged": true,
+      "request_count": 114,
+      "stage_count": 61
+    },
+    "solar-browser": {
+      "checks": [
+        "accepted-window selection and input normalization",
+        "learner code executes one MLP and CNN forward pass without training",
+        "navigation remains usable after local code check",
+        "inside/outside-mask fixture uses learner scorer",
+        "selected 2014-02-13T03:00 UTC and verified plot stays at that timestamp",
+        "timestamp survives navigation away and back",
+        "Theme {\"background\":\"color(srgb 1 1 1)\",\"color\":\"color(srgb 0.0588235 0.0901961 0.164706)\"}",
+        "390px view has no page horizontal overflow"
+      ],
+      "errors": [],
+      "requests_unchanged": true,
+      "executions_unchanged": true,
+      "live_access_checked": false
+    },
+    "solar-dark": {
+      "checks": [
+        "accepted-window selection and input normalization",
+        "learner code executes one MLP and CNN forward pass without training",
+        "navigation remains usable after local code check",
+        "inside/outside-mask fixture uses learner scorer",
+        "selected 2014-02-13T03:00 UTC and verified plot renders that exact timestamp",
+        "Theme {\"background\":\"color(srgb 0.0941176 0.109804 0.101961)\",\"color\":\"color(srgb 0.92549 0.933333 0.929412)\"}",
+        "390px view has no page horizontal overflow"
+      ],
+      "errors": [],
+      "requests_unchanged": true,
+      "executions_unchanged": true,
+      "live_access_checked": false
+    },
+    "branches": {
+      "sources": {
+        "src/forge_workshop_kit/ui.py": "cab13d204e74b67e01a42c6c813ec55cad04cf9050d585555909a73eaeb7a875",
+        "src/forge_workshop_kit/visuals.py": "ef8349a6a5ac46a02b91721e7f7a02370ac0edbfc89e8c4cdde08bbdacc615b1",
+        "src/forge_workshop_kit/assets/visuals.json": "5bdb8db9b1e0f5b991b095c8f781dba077f704e3510e88375ed1ee606c5dbf11"
+      },
+      "rehearsals": [
+        "v030-pending",
+        "solar-v030-rehearsal"
+      ],
+      "final_checks": [
+        {
+          "kind": "pending",
+          "visiblePanels": 1,
+          "keyboardChanged": true,
+          "desktopOverflow": false,
+          "narrowOverflow": false,
+          "selectedTitle": "Test candidate B",
+          "controls": 20,
+          "links": 11
+        },
+        {
+          "kind": "solar",
+          "visiblePanels": 1,
+          "keyboardChanged": true,
+          "desktopOverflow": false,
+          "narrowOverflow": false,
+          "selectedTitle": "Test candidate B",
+          "controls": 16,
+          "links": 7
+        }
+      ],
+      "screenshots": [
+        "pending-desktop.png",
+        "pending-narrow.png",
+        "pending-dark.png",
+        "solar-desktop.png",
+        "solar-narrow.png",
+        "solar-dark.png"
+      ],
+      "marimo_check": "Native radio selection and keyboard verified in real marimo; pre-order screenshot retained separately. Final ordering verified in both rendered HTML fixtures."
+    }
+  },
+  "decks": {
+    "pending": {
+      "slides": 82,
+      "reveal_states": 98,
+      "issues": [],
+      "console_errors": [],
+      "pdf_pages": 98,
+      "all_pages_rendered": true,
+      "all_pages_visually_reviewed": true,
+      "source_sha256": "f6c80c280cd1b350d4ff58e33f100faacda2c4833b3b02669dbfe292946fd309",
+      "pdf_sha256": "6e50ed090c11e516e2a1e22a7c97a1ab165bf9877a1672c0da289de2074b7244"
+    },
+    "solar": {
+      "slides": 101,
+      "reveal_states": 121,
+      "issues": [],
+      "console_errors": [],
+      "pdf_pages": 121,
+      "all_pages_rendered": true,
+      "all_pages_visually_reviewed": true,
+      "source_sha256": "73fabfb12cb394df798910e41b5218ba4ad99ce44edeb6c3611a259064183ea8",
+      "pdf_sha256": "322591d07033ca2c57319651b7ddbfe3da46ed31b0ba68153b23824d9e8cf577"
+    }
+  },
+  "sources": {
+    "scripts/solar_cells.py": "ca8ff249a3a56980ebd76ebb629e242a8e77a434c2882ba05ee0525945bc288a",
+    "scripts/pending_cells.py": "7363720f37b5a56e8f51e719c115622329060ce44c506bb927089b534c549091",
+    "src/forge_workshop_kit/ui.py": "cab13d204e74b67e01a42c6c813ec55cad04cf9050d585555909a73eaeb7a875",
+    "src/forge_workshop_kit/visuals.py": "ef8349a6a5ac46a02b91721e7f7a02370ac0edbfc89e8c4cdde08bbdacc615b1",
+    "src/forge_workshop_kit/solar_views.py": "4e0734cb2a8e01e8c7d0322ec55e88c1777e35ea6e2ddc7e0e46105ec86d16d9",
+    "src/forge_workshop_kit/pending/visuals.py": "f06bfb83f37868efb6617a3e6ef11ec8d7ecb99d25c74cd3fd06c1ac66981ea1",
+    "notebooks/pending_inc.py": "db1a210d840c4fee701ad65c008421a54bd29c4c07dcad92b7f7c765731620be",
+    "notebooks/solar_autoresearch.py": "db4024eaf3e424a1f258429a2f4759d6e2e83e1aaabc568d5352563138fa35d6",
+    "notebooks/starter.py": "a3532a639d3a8ab139ad4134150970ca63ae8bb5026ed7c1c49a9051fab66454",
+    "notebooks/facilitator.py": "d29d82b7f71becdee09cbc37d2477650f61ea23c018c46673324c9d986d425dd"
+  },
+  "remaining_limits": [
+    "Native EvalTables unavailable in last live service check; not requalified by this display revision",
+    "External-account copy/restore check outstanding",
+    "Human usability rehearsal outstanding"
+  ]
+}

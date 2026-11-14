@@ -31,3 +31,19 @@ Ten representative diagram/figure frames were rendered in headless Chrome agains
 Exercise names, controls, source-to-probe matches, retained versions, and numerical results passed the exercise-contract, answer-code, and recorded-evidence checks. All 101 browser slides and PDF pages rendered successfully. Browser checks found no missing images, clipped SVG labels, page errors, or failed asset requests; all eight worked-answer keyboard return paths passed. The PDF contact sheets and representative full-size diagrams were visually reviewed. See `delivery-checks.json` and `pdf-checks.json` for the source hashes and validation records.
 
 The November 14 text review inspected every PDF page through nine contact sheets, then enlarged the revised opening, research-assistant diagram, source capture, and worked answers. It corrected the MLP header touching “Flatten,” candidate headings extending beyond their document boxes, and a worked-answer title that described only the absolute metric while also showing squared training loss. The loss/metric distinction is now printed below the code. The revised scene stays separate from the real observations and recorded results; the final review includes both lower image error and the GOES model’s failure to beat persistence.
+
+## Coordinated notebook inspection
+
+The current notebook adds read-only views backed by its loaded arrays and saved execution files:
+
+- The GOES window viewer shows both input channels and the separate future target. Toggling input normalization preserves target and persistence units.
+- An explicit forward-pass check uses the participant’s `build_model` implementation and reports intermediate shapes. It does not call `fit`, create an optimizer, or alter the random state used by later training.
+- Public scorer fixtures expose signed errors, included pixels, and per-image averaging. These arithmetic examples are labeled and do not replace solar observations.
+- One timestamp aligns persistence, manual, and agent forecasts, with common intensity and error scales. Missing saved predictions remain unavailable. Per-case scores and full-split means appear separately.
+- The GOES investigation pairs saved loss history, settings, prediction, and persistence. Final predictions appear only after the frozen evaluation is complete.
+
+`solar_views.py` handles these views; the authored cells keep controls and learner code visible. Existing training outputs and experimental stage identities are unchanged. The recorded notebook callout now links the same v0.3.0 workspace as this deck.
+
+Four code excerpts use native Slidev line highlights. Four actual Forge captures reveal numbered regions for arguments, returned values, validation evidence, and the pixel-wise score. Full-resolution captures remain linked. The interactive branch diagram uses the shared `visuals.json` grammar and actual round-one proposal, probe, composition, and selection records. Its detail panel includes the one-line loss diff and native evidence links; selection remains separate from execution.
+
+Targeted browser inspection covered the code highlights, all annotated captures, and recorded branch selections without page errors. It caught and corrected a score annotation pointing to the adjacent evidence row. Notebook browser review found a reactive feedback loop; the writer now has its own cell and uses functional state updates, with a dependency regression check. Full-deck/PDF validation is performed by the coordinated build.

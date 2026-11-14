@@ -1,38 +1,32 @@
-# Release checks · 0.3.0 technical preview
+# Release checks · 0.4.0 technical preview
 
-This release changes copied-project setup, recovery, installation and publication. The datasets, forecasting settings, agent model and recorded v0.2 examples are unchanged. Workflow compatibility remains version 1.
+This revision changes the teaching views, deck reveals, and notebook explanations. The data, model settings, scores, three-hour Pending schedule, four-hour Solar schedule, and workflow compatibility version 1 are unchanged. It uses the November 13 rehearsals. No new training or inference was run.
 
-## What was checked
+## Notebook checks
 
-- Local tests cover notebook identity across renames, isolated copies, explicit recovery, completed sibling reuse, request matching, uncertain request accounting, atomic restore and publication-only retries.
-- All nine clean GitHub Actions jobs passed on Ubuntu, macOS and Windows: the 129-test suite, notebook regeneration without source changes, marimo checks, and base/Pending installation checks. See [the CI run](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43504142842). The checks found and fixed Windows path and text-encoding differences before release.
-- Both notebooks were driven in a browser through navigation and recovery, including narrow layouts. Authorizing a retry did not execute it. Uncertain requests required confirmation and retained their reservation. The facilitator saved and restored its roster. See [browser checks](../evidence/ux-v030-browser-checks.json).
-- Starter and facilitator install without Torch, SunPy or MCP. Pending adds MCP; Solar adds its scientific dependencies. The generated hosted requirements were resolved independently and checked against the local lockfile. See [installation checks](../evidence/packaging-v030.json).
-- A fresh workspace restored seven independently published output artifacts with matching bytes. An interrupted or corrupt download cannot install the completed journal first. See [restore check](../evidence/v030-seven-artifact-restore.json).
-- Live publication checks saved W&B results, Weave evaluations and a failed tool operation in Agent Lens. Retrying the native comparison left the successful Weave references unchanged. These service checks made no model calls and trained no models. See [service checks](../evidence/v030-services.json).
-- All 94 Solar slides and PDF pages rendered. The laptop commands now select the Solar dependency extra; the workshop narrative and recorded results are unchanged.
+The browser checks used isolated copies of saved rehearsal workspaces. Inference, training, trace export, and publication were disabled in those verification processes. The controls were tested against real saved outputs; project access was stubbed and is not an attendee-access check.
 
-## Installation and saving overhead
+- Pending: action/arguments/result/message tabs; timeout, retry with the same operation ID, a new operation, and reset; actual skill-read status; branch selection; and aligned final-case selection. The saved request and execution records did not change.
+- Solar: accepted-window selection and normalization; learner-authored MLP and CNN forward passes without training; scorer arithmetic inside and outside the disk mask; and aligned frozen predictions at the selected timestamp. Navigation remains responsive after the free code check. The saved request and execution records did not change.
+- Shared branch views: desktop, narrow and dark presentation, keyboard selection, and the sequence Candidate A → Test A → Candidate B → Test B. The detail panel separates proposals, actual executions, decisions, missing results, and retained versions.
+- Unit checks cover retained versions, rejected changes, missing traces, scorer errors, per-image averaging, shared image scales, selected execution identity, and the notebook's reactive dependencies. The existing recovery and accounting checks remain in the full suite.
 
-On macOS arm64 with Python 3.13, one warm-cache install per profile measured these installed dependency sizes. These are local cached-install measurements, not cold-download timings or cross-platform performance claims.
+See [browser and source checks](../evidence/v040/validation.json). The [visual walkthrough](visual-sequence.md) describes what to inspect at each step.
 
-| Profile | Installed dependencies | Cached installation |
-|---|---:|---:|
-| Previous shared environment | 1,272,048 KiB | 1.654 s |
-| Starter / facilitator | 328,448 KiB | 0.328 s |
-| Pending | 330,320 KiB | 0.331 s |
-| Solar | 1,204,152 KiB | 0.654 s |
+## Deck and package checks
 
-Preparing a checkpoint from an existing saved Solar workspace required 32.11 MB when it copied every output. Referencing the already-published outputs reduced the new payload to 5.43 MB; the request-only accounting ledger was 248 KB. Snapshot preparation took 0.257, 0.056 and 0.025 seconds respectively in one local check. This used mocked publication metadata and measured no network performance. The separate live seven-output checkpoint uploaded in 4.0 seconds. See [snapshot measurements](../evidence/publication-snapshot-local.json).
+Pending has 82 slides and 98 reveal states; Solar has 101 slides and 121 reveal states. Every state was rendered and checked for clipping, missing images, malformed text, diagram label collisions, keyboard advance and return. Every PDF page was rendered and visually reviewed. Worked-answer links return to the correct exercise even when reveals add PDF pages.
 
-## Rehearsals and remaining limits
+Numbered annotations use the original native Forge captures and preserve their source links. The decks label recorded results and show the actual W&B and Weave comparisons. They do not present an unavailable native EvalTables page as a successful publication.
 
-The fresh Pending rehearsal completed both refinement rounds, all 12 final executions and all 12 explanation judgments. Every final execution used its frozen harness and had verified stored spans. Each of the three versions passed all four cases, so this checks the workflow without showing a quality gain. Observed inference cost was $0.03093452; bounded-unknown and in-flight cost were zero. W&B and Weave comparisons were published. See the [rehearsal evidence](../evidence/v030-pending-rehearsal.json).
+The official Slidev skill is vendored from the reviewed revision listed in [UPSTREAM.md](../.agents/skills/slidev/UPSTREAM.md). The package and notebook previews are built without participant credentials. Source bundles include the shared visual definitions. Notebook regeneration, marimo validation, distribution-content checks, and the full unit suite are part of the release build.
 
-The fresh Solar rehearsal completed six search configurations, both research-agent rounds and frozen-date evaluation. Across 199 final image windows, error was 0.125762 for persistence, 0.122442 for the manual model and 0.110011 for the selected agent-written model. The GOES neural model still failed to beat persistence: 2.468975 versus 0.192706 across 2,694 windows. These fresh executions reproduce the fixed-seed teaching examples; they are not independent statistical replications. Inference cost was $0.02072570 across five attempts, including one output-limit retry, with no unknown usage. All five W&B and Weave comparisons and the rehearsal Report were published. See the [Solar rehearsal evidence](../evidence/solar-rehearsal-v030.json).
+## What the recorded results establish
 
-Both rehearsals use scripted maintainer execution, not participant usability tests. Early receipts retain the existing editable installation's old package metadata; refreshed installation metadata appears on later stages. The actual executed code and version fingerprints remain saved; those historical receipts were not rewritten. The costs above cover inference, not notebook compute.
+Pending's three versions each passed all four final cases. It demonstrates changed behavior and an inspectable improvement process, without a measured quality gain. Solar's selected image model improved on the manual model in the recorded rehearsal; its GOES neural model performed worse than persistence. Those are fixed-seed teaching examples, not independent statistical replications. The complete scores, costs and historical service checks remain in the [v0.3.0 evidence review](archive/release-checks-v030.md).
 
-Native EvalTables still returned HTTP 500 in this release's live check. W&B results, Weave evaluations and notebook comparisons remain available; the failed native publication can be retried from saved records. Solar's final progress update also timed out after its checkpoint and results were published; its monitor status remains unavailable rather than implying the experiment failed. See the [Solar audit](../evidence/solar-rehearsal-v030-audit.json). The hosted read-only preview is also blocked in this verification browser by its public-to-local-network restriction. This was not bypassed. Copy-to-project controls are present, but that observation alone does not establish successful attendee setup.
+## Remaining limits
 
-An external-account copy/restore check and a human usability rehearsal remain outstanding. This is a technical preview, not a claim of classroom readiness. [Previous release checks](archive/release-checks-through-v023.md) preserve the earlier scientific rehearsals and product captures.
+Native EvalTables returned HTTP 500 in the last live service check. This presentation revision made no new service-test claim. W&B results, Weave evaluations and notebook comparisons remain available, and publication can be retried from saved records without another experiment.
+
+Hosted template publication is verified by reading back the uploaded source and preview files. That does not establish that a fresh attendee can copy and run them. The external-account copy/restore check and human usability rehearsal remain outstanding. This release is a technical preview.
