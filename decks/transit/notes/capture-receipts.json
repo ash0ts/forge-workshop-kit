@@ -1,0 +1,71 @@
+{
+  "captures": [
+    {
+      "id": "reference-departures",
+      "source": "Reference implementation exported by transit.export_app, order=2",
+      "source_url": "https://github.com/ash0ts/forge-workshop-kit/tree/main/examples/transit",
+      "local_url": "http://127.0.0.1:3091",
+      "captured_at": "2026-11-14T18:05:14.511Z",
+      "viewport": {
+        "width": 1440,
+        "height": 1100
+      },
+      "original": "public/images/reference-app-original.png",
+      "display": "public/images/reference-departures.png",
+      "crop": {
+        "x": 160,
+        "y": 140,
+        "width": 1120,
+        "height": 630
+      },
+      "redactions": [],
+      "alterations": [],
+      "status": "Reference implementation; not an agent result",
+      "hashes": {
+        "app.py": "6864da88547a4c318cf19c74a6dafed466acc8229dca7e5d2e9a4b489445d75a",
+        "query.py": "751eb08072cf02bcca9d7b3b84f4b6b1dc80d37d1f808cbb6dce51ec91d71934",
+        "presentation.py": "62b635b4ec98b86f139ee05748633058ab2063397456c86b4ec4806bca93b896",
+        "tables.json.gz": "06cd4430815e87bdf47dac13f4c35ac3454a2c85b4821d6160d6bc8800c84606"
+      }
+    },
+    {
+      "id": "agent-lens-worker-test-r3",
+      "source": "Native Agent Lens capture supplied by the rehearsal operator",
+      "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c3c5ad393c98e294c667ab04f3a018c1/spans/turns/f95c96cf7b6c19aa29123342250297aa/spans/e2f00d23857411df",
+      "rehearsal": "R3",
+      "original": "public/images/agent-lens-worker-test.png",
+      "display": "public/images/agent-lens-worker-test.png",
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "redactions": [],
+      "alterations": [],
+      "sha256": "984819ffa204c01c527a23c42e130b09fc647f0deeb8c8540695da653dea964e",
+      "verified_stored_spans": 11,
+      "observed": "Presentation worker component test returned passed: true; this is not an integration result. Query worker in the same rehearsal exhausted output allowance."
+    },
+    {
+      "id": "native-comparison-r4",
+      "source": "Actual signed-out Forge Evaluation Tables Preview workspace",
+      "source_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=5lkijosxo9y",
+      "captured_at": "2026-11-14T18:33:02.156Z",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "original": "public/images/native-comparison-r4.png",
+      "display": "public/images/native-comparison-r4-detail.png",
+      "crop": {
+        "x": 80,
+        "y": 270,
+        "width": 1824,
+        "height": 720
+      },
+      "alterations": [],
+      "redactions": [],
+      "sha256": "af122f9c9bf46bfb45452e141dcb40519f28dff716b3232b1e3efb94d29adcea",
+      "observed": "Earlier engineering rehearsal R4. 10 aligned scenarios; each build passed 10/10. Operator verified all 20 saved evaluation rows. This table covers first-release builds, not the incomplete followups."
+    }
+  ]
+}

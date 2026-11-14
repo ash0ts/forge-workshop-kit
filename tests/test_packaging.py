@@ -59,8 +59,8 @@ def test_notebook_build_rejects_uv_exporter_drift(monkeypatch):
 
 
 def test_manifest_is_independent_and_preserves_workflow_identity():
-    assert {row['slug'] for row in list_templates()} == {'starter', 'facilitator', 'pending_inc', 'solar_autoresearch', 'request_routing', 'visual_inspection'}
-    assert len(list_workshops()) == 4
+    assert {row['slug'] for row in list_templates()} == {'starter', 'facilitator', 'pending_inc', 'solar_autoresearch', 'request_routing', 'visual_inspection', 'transit_factory'}
+    assert len(list_workshops()) == 5
     solar = get_workshop("solar-autoresearch")
     assert solar["workflow_version"] == "1"
     solar["steps"].clear()
@@ -278,6 +278,7 @@ def test_python_distribution_rejects_runtime_state(tmp_path):
         ".env",
         "evidence/run.json",
         "data/solar-v1/aia.npz",
+        "notebooks/__marimo__/session/transit_factory.py.json",
     ):
         wheel = tmp_path / "bad.whl"
         with zipfile.ZipFile(wheel, "w") as archive:
@@ -289,6 +290,10 @@ def test_python_distribution_rejects_runtime_state(tmp_path):
     sdist = tmp_path / "bad.tar.gz"
     with tarfile.open(sdist, "w:gz") as archive:
         archive.add(secret, arcname="forge_workshop_kit-0.3.0/.env")
+    with pytest.raises(ValueError, match="Runtime or presentation"):
+        check_distribution(sdist)
+    with tarfile.open(sdist, "w:gz") as archive:
+        archive.add(secret, arcname="forge_workshop_kit-0.6.0/notebooks/__marimo__/session/transit_factory.py.json")
     with pytest.raises(ValueError, match="Runtime or presentation"):
         check_distribution(sdist)
 

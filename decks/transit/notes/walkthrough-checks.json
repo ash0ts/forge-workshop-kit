@@ -1,0 +1,22 @@
+{
+  "videos": [
+    {
+      "id": "walkthrough",
+      "chapters": 7,
+      "duration": 124.84,
+      "width": 1600,
+      "height": 1140
+    },
+    {
+      "id": "recorded-video",
+      "chapters": 11,
+      "duration": 97.6,
+      "width": 1600,
+      "height": 1140
+    }
+  ],
+  "page_errors": [],
+  "narrow_width": 390,
+  "caption_mode": "Burned below the unaltered recorded viewport",
+  "paid_calls": 0
+}

@@ -28,7 +28,8 @@ def stored_spans(project, trace_id, *, expected, timeout=25):
 
 
 def export_trace(session, identity, mission, events, requests=(), *, tool_writer=None,
-                 model_writer=None):
+                 model_writer=None, agent_name=None, worker_id=None, task_id=None,
+                 dispatch_id=None, parent_conversation_id=None, conversation_name=None):
     from coreweave.forge.agentlens import tracing as tracing
     from opentelemetry import trace
     key = 'trace/' + identity
@@ -47,12 +48,20 @@ def export_trace(session, identity, mission, events, requests=(), *, tool_writer
     ends = [r['ended_at'] for r in requests] + [e['ended_at'] for e in events]
     stage = session.read()['stages'].get(identity, {})
     stage_name = stage.get('name', mission)
+    context = {key: value for key, value in {
+        'workshop.worker_id': worker_id, 'workshop.task_id': task_id,
+        'workshop.dispatch_id': dispatch_id,
+        'workshop.parent_conversation_id': parent_conversation_id,
+    }.items() if value is not None}
+    label = conversation_name or f'{session.workshop} / {stage_name}'
+    if worker_id and not conversation_name:
+        label += f' / {worker_id}'
     with tracing.Conversation(conversation_id=conversation_id,
-        conversation_name=f'{session.workshop} / {stage_name}', attributes={
+        conversation_name=label, attributes={
             'workshop.id': session.workshop, 'workshop.workspace': session.workspace_id,
             'workshop.release': session.version, 'workshop.stage': stage_name,
-            'workshop.source_fingerprint': stage.get('source_fingerprint', '')}):
-        with tracing.Turn(agent_name='researcher' if requests else 'participant',
+            'workshop.source_fingerprint': stage.get('source_fingerprint', ''), **context}):
+        with tracing.Turn(agent_name=agent_name or ('researcher' if requests else 'participant'),
             messages=[tracing.Message(role='user', content=mission)],
             started_at=stamp(min(times) if times else time.time()),
             ended_at=stamp(max(ends) if ends else time.time())):
@@ -60,7 +69,7 @@ def export_trace(session, identity, mission, events, requests=(), *, tool_writer
             receipt = dict(trace_id=tid, conversation_id=conversation_id, verified=False,
                 expected=1 + len(events) + len(requests),
                 url=f'https://forge.coreweave.com/agent-lens/{session.project}/conversations/{conversation_id}',
-                span_ids={})
+                span_ids={}, context=context, agent_name=agent_name or ('researcher' if requests else 'participant'))
             with session.transaction() as state:
                 state['publications'][key] = receipt
             for record in requests:
@@ -159,12 +168,14 @@ def saved_trace_inputs(session, stage_or_id):
                 if (key == row['id'] or key.startswith(row['id'] + '/')
                     or key == result.get('request_id')) and request.get('ended_at') is not None]
     requests.sort(key=lambda request: (request.get('started_at', 0), request.get('id', '')))
-    mission = result.get('mission')
+    mission = result.get('mission') or row.get('inputs', {}).get('mission')
     if not mission:
         mission = next((message['content'] for request in requests
                         for message in request['request'].get('messages', [])
                         if message.get('role') == 'user'), row['name'])
-    return {'identity': row['id'], 'mission': mission,
+    context = {key: value for key, value in (result.get('trace_context') or row.get('inputs', {}).get('trace_context', {})).items()
+               if key in ('agent_name', 'worker_id', 'task_id', 'dispatch_id', 'parent_conversation_id', 'conversation_name')}
+    return {'identity': row['id'], 'mission': mission, **context,
             'events': sorted(events.values(), key=lambda event: (event['started_at'], event['id'])),
             'requests': requests}
 

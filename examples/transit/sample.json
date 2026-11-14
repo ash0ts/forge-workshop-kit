@@ -1,0 +1,149 @@
+{
+  "departures": [
+    {
+      "trip_id": "63926435",
+      "route_id": "Red",
+      "headsign": "Alewife",
+      "stop_id": "70076",
+      "stop_name": "Park Street",
+      "service_date": "2024-11-28",
+      "departure_time": "2024-11-29T00:08:00-05:00"
+    },
+    {
+      "trip_id": "63926267",
+      "route_id": "Red",
+      "headsign": "Alewife",
+      "stop_id": "70076",
+      "stop_name": "Park Street",
+      "service_date": "2024-11-28",
+      "departure_time": "2024-11-29T00:13:00-05:00"
+    }
+  ],
+  "journey": {
+    "trip_id": "63926266",
+    "route_id": "Red",
+    "headsign": "Alewife",
+    "origin_stop_id": "70080",
+    "destination_stop_id": "70072",
+    "service_date": "2024-11-28",
+    "departure_time": "2024-11-29T00:48:00-05:00",
+    "arrival_time": "2024-11-29T01:18:00-05:00"
+  },
+  "table_columns": {
+    "agency": [
+      "agency_id",
+      "agency_lang",
+      "agency_name",
+      "agency_phone",
+      "agency_timezone",
+      "agency_url"
+    ],
+    "calendar": [
+      "end_date",
+      "friday",
+      "monday",
+      "saturday",
+      "service_id",
+      "start_date",
+      "sunday",
+      "thursday",
+      "tuesday",
+      "wednesday"
+    ],
+    "calendar_dates": [
+      "date",
+      "exception_type",
+      "holiday_name",
+      "service_id"
+    ],
+    "feed_info": [
+      "feed_contact_email",
+      "feed_end_date",
+      "feed_id",
+      "feed_lang",
+      "feed_publisher_name",
+      "feed_publisher_url",
+      "feed_start_date",
+      "feed_version"
+    ],
+    "routes": [
+      "agency_id",
+      "line_id",
+      "listed_route",
+      "network_id",
+      "route_color",
+      "route_desc",
+      "route_fare_class",
+      "route_id",
+      "route_long_name",
+      "route_short_name",
+      "route_sort_order",
+      "route_text_color",
+      "route_type",
+      "route_url"
+    ],
+    "stop_times": [
+      "arrival_time",
+      "checkpoint_id",
+      "continuous_drop_off",
+      "continuous_pickup",
+      "departure_time",
+      "drop_off_type",
+      "pickup_type",
+      "stop_headsign",
+      "stop_id",
+      "stop_sequence",
+      "timepoint",
+      "trip_id"
+    ],
+    "stops": [
+      "at_street",
+      "level_id",
+      "location_type",
+      "municipality",
+      "on_street",
+      "parent_station",
+      "platform_code",
+      "platform_name",
+      "stop_address",
+      "stop_code",
+      "stop_desc",
+      "stop_id",
+      "stop_lat",
+      "stop_lon",
+      "stop_name",
+      "stop_url",
+      "vehicle_type",
+      "wheelchair_boarding",
+      "zone_id"
+    ],
+    "trips": [
+      "bikes_allowed",
+      "block_id",
+      "direction_id",
+      "route_id",
+      "route_pattern_id",
+      "service_id",
+      "shape_id",
+      "trip_headsign",
+      "trip_id",
+      "trip_route_type",
+      "trip_short_name",
+      "wheelchair_accessible"
+    ]
+  },
+  "raw_stop_time": {
+    "arrival_time": "24:08:00",
+    "checkpoint_id": "pktrm",
+    "continuous_drop_off": "",
+    "continuous_pickup": "",
+    "departure_time": "24:08:00",
+    "drop_off_type": "0",
+    "pickup_type": "0",
+    "stop_headsign": "",
+    "stop_id": "70076",
+    "stop_sequence": "150",
+    "timepoint": "0",
+    "trip_id": "63926435"
+  }
+}

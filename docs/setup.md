@@ -26,6 +26,8 @@ For Solar, use `--extra solar` in all three uv commands and open `notebooks/sola
 
 Routing uses `--extra routing` with `notebooks/request_routing.py`; inspection uses `--extra inspection` with `notebooks/visual_inspection.py`. Both download a checksum-verified teaching bundle when you explicitly click Download. Their classifier training runs on CPU. The routing model and judge calls use your inference allowance; inspection's required path does not call a model API.
 
+Transit needs only the shared dependencies. Run `uv sync --frozen`, `uv run wandb login`, then `uv run marimo edit notebooks/transit_factory.py`. Its historical MBTA subset is included in the package. The builders use your inference account; their Python patches and acceptance checks run locally. Start with **Understand the departures board**, complete the free acceptance check, then use the next-step control. A failed build remains visible. If neither initial build works, the notebook offers an explicitly labeled prepared app so you can continue the memory exercise.
+
 ## Resume or recover
 
 Reopen the same notebook copy and connect. Drafts and completed results restore from the local workspace or its last uploaded checkpoint. Keep the `.workshop/` directory on a laptop. Before discarding a hosted runtime, confirm its checkpoint uploaded.

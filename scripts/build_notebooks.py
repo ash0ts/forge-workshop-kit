@@ -141,3 +141,7 @@ if selected in (None, 'request_routing'):
 if selected in (None, 'visual_inspection'):
     from inspection_cells import cells as inspection_cells
     save('visual_inspection.py', 'Find defective parts before they ship', inspection_cells)
+
+if selected in (None, "transit_factory"):
+    from transit_cells import cells as transit_cells
+    save("transit_factory.py", "Build a transit app with a team of coding agents", transit_cells)

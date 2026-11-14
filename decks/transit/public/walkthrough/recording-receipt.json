@@ -1,0 +1,19 @@
+{
+  "kind": "Actual browser recording with captions placed below the unaltered viewport",
+  "source": "scripts/record-walkthrough.mjs",
+  "duration_seconds": 124.84,
+  "paid_calls": 0,
+  "live_agent_execution": false,
+  "content": [
+    "Notebook code edits",
+    "Free acceptance, dispatch, claims, memory and scoring checks",
+    "Reference app using real historical MBTA rows"
+  ],
+  "limitations": "This worked-example segment does not demonstrate live worker inference or an agent-produced application. Native rehearsal evidence is separate.",
+  "reference_app_download": {
+    "file": "transit-reference-app.zip",
+    "source": "dist/v0.6.0/transit-reference-app.zip",
+    "sha256": "5ba11b1df35f39ff45d42b4a19aeffa01269de64aca6e9acfa68baf68018e006",
+    "authorship": "Instructor-authored reference implementation; not an agent-produced result"
+  }
+}

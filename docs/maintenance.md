@@ -22,7 +22,7 @@ First upload the matching wheel to the repository's versioned GitHub release. Th
 ```sh
 uv run --all-extras python scripts/publish_templates.py \
   --project YOUR_ENTITY/YOUR_PROJECT \
-  --build dist/v0.4.0
+  --build dist/v0.6.0
 ```
 
 The publisher checks the public wheel and every selected source/preview hash before uploading. It keeps destination-specific receipts under `.workshop-deployments/`, verifies each notebook's destination project before updating it, and reads back the uploaded files. `--only` selects a template. Repeating the command resumes incomplete publication and skips matching uploads.
@@ -33,7 +33,7 @@ Existing attendee copies are separate notebooks. Updating the templates does not
 
 ## Build the companion decks
 
-The current decks live in `decks/pending` and `decks/solar`. Their storyboards generate the slides and presenter notes. Shared branch colors, labels and recorded-example identities live in `src/forge_workshop_kit/assets/visuals.json`; both storyboards copy that definition into their portable deck sources. The official Slidev skill is pinned under `.agents/skills/slidev`, with its upstream revision in `UPSTREAM.md`. From the repository root, run:
+The current decks live in `decks/pending`, `decks/solar`, `decks/routing`, `decks/inspection`, and `decks/transit`. Their storyboards generate the slides and presenter notes. Shared branch colors, labels and recorded-example identities live in `src/forge_workshop_kit/assets/visuals.json`. The official Slidev skill is pinned under `.agents/skills/slidev`, with its upstream revision in `UPSTREAM.md`. From the repository root, run:
 
 ```sh
 python3 scripts/build_decks.py --install --pdf --validate
@@ -41,9 +41,9 @@ python3 scripts/build_decks.py --install --pdf --validate
 
 Use Node.js 22.23.2 or later and `uv`. PDF export needs Chrome; set `CHROME_PATH` to your installed browser executable, or install the deck's Playwright Chromium with `npx playwright install chromium` from `decks/solar`. The PDF checker installs its own pinned maintenance dependencies through `uv`; it does not add them to participants' notebooks.
 
-The build writes both browser decks to `dist/decks/site/` and PDFs, offline browser bundles, and editable source archives to `dist/decks/downloads/`. It checks each slide and reveal, exercises Back, renders every PDF page, checks image loading, and follows worked-answer links back to their exercises. PDF links use slide identities rather than physical page numbers, because a reveal adds a page. Use `--only pending` or `--only solar` while editing one deck. Without `--pdf` and `--validate`, the command only builds browser copies and source archives.
+The build writes browser decks to `dist/decks/site/` and PDFs, offline browser bundles, and editable source archives to `dist/decks/downloads/`. It checks each slide and reveal, exercises Back, renders every PDF page, checks image loading, and follows worked-answer links back to their exercises. PDF links use slide identities rather than physical page numbers, because a reveal adds a page. Use `--only transit` or another workshop name while editing one deck. Without `--pdf` and `--validate`, the command only builds browser copies and source archives.
 
-Opening or building a deck sends no training or inference requests. The command does not publish. The `Workshop decks` GitHub Actions workflow publishes the validated site when a deck change reaches `main`, preserving the existing `/solar/` address and adding `/pending/`. Previous GitHub release attachments remain unchanged.
+Opening or building a deck sends no training or inference requests. The command does not publish. The `Workshop decks` GitHub Actions workflow publishes the validated site when a deck change reaches `main`, preserving each workshop’s address. Previous GitHub release attachments remain unchanged.
 
 ## Saved work
 

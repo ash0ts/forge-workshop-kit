@@ -1,0 +1,33 @@
+{
+  "manifest": "mbta-red-central-20241128-v1",
+  "bundled_data_verified": true,
+  "archive_cached": true,
+  "member_hashes_match": true,
+  "license_verified": true,
+  "archive_hash_matches": true,
+  "public_reserved_overlap": {
+    "1": [],
+    "2": []
+  },
+  "counts": {
+    "agency": 1,
+    "feed_info": 1,
+    "routes": 1,
+    "stops": 15,
+    "trips": 1252,
+    "stop_times": 6260,
+    "calendar": 4,
+    "calendar_dates": 1
+  },
+  "subset_bytes": 57162,
+  "wheel": {
+    "forge_workshop_kit-0.6.0-py3-none-any.whl": {
+      "manifest.json": true,
+      "tables.json.gz": true,
+      "developers-license-agreement.pdf": true
+    }
+  },
+  "actual_model_requests_scanned": 28,
+  "reserved_case_id_hits_in_actual_requests": [],
+  "runtime_in_wheel": true
+}

@@ -1,0 +1,34 @@
+WEBVTT
+
+00:00:03.900 --> 00:00:10.900
+Recorded rehearsal R4. These are saved agent executions, restored in the notebook. Opening this view starts no new build.
+
+00:00:10.900 --> 00:00:16.900
+The query and presentation tasks each have one owner. Both patches were integrated into the first-release app.
+
+00:00:17.000 --> 00:00:21.000
+Open the query task to read the worker’s stated decision and the files it changed.
+
+00:00:21.000 --> 00:00:28.000
+This is the saved query.py diff. The added code converts service-day times and filters scheduled departures.
+
+00:00:28.200 --> 00:00:35.200
+The saved run_tests event includes the returned check and an exact native span link for this worker and build.
+
+00:00:35.200 --> 00:00:43.200
+This is the authenticated Agent Lens capture of that same R4 span. The query component passed; integration is checked separately.
+
+00:00:51.300 --> 00:00:59.300
+R4 preserved all outcomes. Both first releases passed 10/10. Both follow-up builds scored 14/18 after query workers hit an input bound.
+
+00:01:03.900 --> 00:01:10.900
+The actual public EvalTables comparison aligns the same first-release scenarios. The single-worker build is the reference.
+
+00:01:12.500 --> 00:01:20.500
+Inspect the returned departures, including service date and civil timestamp. Both builds pass this case; that is a tie in product quality.
+
+00:01:21.700 --> 00:01:28.700
+This is the actual R4 team app, exported from its frozen source. It is not the instructor-authored reference application.
+
+00:01:29.700 --> 00:01:36.700
+Change the requested time and read the recomputed schedule. The saved app runs locally; this interaction makes no model call.

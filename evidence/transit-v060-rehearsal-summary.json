@@ -1,0 +1,121 @@
+{
+  "release": "0.6.0",
+  "qualification_inference_usd": 0.15251406,
+  "unknown_usd": 0,
+  "inflight_usd": 0,
+  "export": {
+    "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.6.0/transit-rehearsal-evidence.json.gz",
+    "sha256": "42658fbaeeff4dc39a364b9eae36d306ae13b8152f47f1a400bc3efc1a9e17a8",
+    "bytes": 949910,
+    "privacy_scan": "No credential fields, transport headers, model reasoning fields or operator filesystem paths."
+  },
+  "rehearsals": [
+    {
+      "identity": "transit-v060-live",
+      "costs": {
+        "observed_usd": 0.00364732,
+        "bounded_unknown_usd": 0,
+        "inflight_usd": 0
+      },
+      "evaluations": {},
+      "request_ledger_entries": 2,
+      "returned_provider_responses": 2
+    },
+    {
+      "identity": "transit-v060-live-r2",
+      "costs": {
+        "observed_usd": 0.01615712,
+        "bounded_unknown_usd": 0,
+        "inflight_usd": 0
+      },
+      "evaluations": {},
+      "request_ledger_entries": 6,
+      "returned_provider_responses": 6
+    },
+    {
+      "identity": "transit-v060-live-r3",
+      "costs": {
+        "observed_usd": 0.0170277,
+        "bounded_unknown_usd": 0,
+        "inflight_usd": 0
+      },
+      "evaluations": {},
+      "request_ledger_entries": 12,
+      "returned_provider_responses": 12
+    },
+    {
+      "identity": "transit-v060-live-r4",
+      "costs": {
+        "observed_usd": 0.04932392,
+        "bounded_unknown_usd": 0,
+        "inflight_usd": 0
+      },
+      "evaluations": {
+        "solo": {
+          "passed_count": 10,
+          "total": 10,
+          "scenario_pass_rate": 1.0
+        },
+        "team": {
+          "passed_count": 10,
+          "total": 10,
+          "scenario_pass_rate": 1.0
+        },
+        "without-memory": {
+          "passed_count": 14,
+          "total": 18,
+          "scenario_pass_rate": 0.7777777777777778
+        },
+        "with-memory": {
+          "passed_count": 14,
+          "total": 18,
+          "scenario_pass_rate": 0.7777777777777778
+        }
+      },
+      "request_ledger_entries": 28,
+      "returned_provider_responses": 28
+    },
+    {
+      "identity": "transit-v060-live-r5",
+      "costs": {
+        "observed_usd": 0.066358,
+        "bounded_unknown_usd": 0,
+        "inflight_usd": 0
+      },
+      "evaluations": {
+        "solo": {
+          "passed_count": 10,
+          "total": 10,
+          "scenario_pass_rate": 1.0
+        },
+        "team": {
+          "passed_count": 8,
+          "total": 10,
+          "scenario_pass_rate": 0.8
+        },
+        "without-memory": {
+          "passed_count": 12,
+          "total": 18,
+          "scenario_pass_rate": 0.6666666666666666
+        },
+        "with-memory": {
+          "passed_count": 12,
+          "total": 18,
+          "scenario_pass_rate": 0.6666666666666666
+        }
+      },
+      "request_ledger_entries": 31,
+      "returned_provider_responses": 31
+    }
+  ],
+  "report_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-transit-app-with-a-team-of-coding-agents:-5db535f8--VmlldzoxODMwODQ4NQ==",
+  "native_comparisons": [
+    "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=dg2ogm6wp3z",
+    "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=f9jpm0yjsxy"
+  ],
+  "release_archive": {
+    "file": "transit-r5-departure-board.zip",
+    "sha256": "c7a0717c6c7256102282f6495c95a834fbb1fb0ccfd74def417ffcde8114c37b"
+  },
+  "boundary": "R5 is the final engineering rehearsal, not a successful memory-effect study. Earlier qualifications used different runtime bounds/context policies. The instructor reference is separate. External-account copy and human rehearsal remain outstanding."
+}

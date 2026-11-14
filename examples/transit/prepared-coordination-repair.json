@@ -1,0 +1,34 @@
+{
+  "kind": "prepared task-claim implementation repair; no model calls",
+  "before": {
+    "attempts": [
+      {
+        "worker": "worker-a",
+        "claimed": true
+      },
+      {
+        "worker": "worker-b",
+        "claimed": true
+      }
+    ],
+    "successful_claims": 2
+  },
+  "after": {
+    "attempts": [
+      {
+        "worker": "worker-a",
+        "claimed": true
+      },
+      {
+        "worker": "worker-b",
+        "claimed": false
+      }
+    ],
+    "successful_claims": 1,
+    "saved_owner": "worker-a"
+  },
+  "invariant": "One pending task has at most one active owner.",
+  "change": "Check readiness and save ownership in one locked TaskBoard transaction.",
+  "improved": true,
+  "inference_cost_usd": 0.0
+}

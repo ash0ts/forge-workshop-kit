@@ -1,0 +1,55 @@
+WEBVTT
+
+00:00:01.100 --> 00:00:07.100
+Worked example: edit the coordination code and run free checks in the actual notebook. No agents run in this segment.
+
+00:00:07.100 --> 00:00:13.100
+The input is a real archived MBTA schedule. A 24:08 departure belongs to the previous service day.
+
+00:00:13.200 --> 00:00:18.200
+Start by checking the behavior the app must preserve. The starter function is deliberately incomplete.
+
+00:00:19.000 --> 00:00:23.000
+The free check reports the missing implementation. It does not make a model request.
+
+00:00:23.800 --> 00:00:30.800
+Require the actual trip, service date and civil departure time together. This is the worked answer.
+
+00:00:31.000 --> 00:00:37.000
+The real row passes. A missing departure and the wrong service day fail. These are useful negative controls.
+
+00:00:38.400 --> 00:00:46.400
+Complete both halves of the worker loop: build its request, then dispatch only an allowed action and return the result.
+
+00:00:47.200 --> 00:00:53.200
+The free check exercises those functions with stub tools. Starting the real coding worker is a separate action.
+
+00:00:53.800 --> 00:00:58.800
+Now write the coordinator. A task can start only after its dependencies are integrated.
+
+00:00:59.600 --> 00:01:06.600
+The readiness check and atomic claim serve different purposes: dependencies first, then one owner.
+
+00:01:07.400 --> 00:01:13.400
+Run the real dependency and competing-claim checks. The integration task must stay blocked until its inputs are ready.
+
+00:01:14.800 --> 00:01:21.900
+Retrieve accepted lessons for this scope and interface version. Proposed notes and old rules stay out of the worker request.
+
+00:01:22.700 --> 00:01:28.700
+A useful-looking note is not automatically evidence. The later comparison tests whether the checked lesson changes the work.
+
+00:01:30.900 --> 00:01:36.900
+Compare the actual departure IDs in order. The final evaluation also checks the full output with an independent scorer.
+
+00:01:37.800 --> 00:01:44.800
+This is the reference app running locally, not an agent result. The rider chooses a platform and a historical time.
+
+00:01:44.900 --> 00:01:50.900
+At Park Street after midnight, the board includes the 00:08 train from the previous service day.
+
+00:01:50.900 --> 00:01:56.900
+The follow-up feature finds a direct journey and preserves an arrival after midnight. It does not plan transfers.
+
+00:01:56.900 --> 00:02:02.900
+The itinerary is an actual output file. Worker builds must reproduce the required behavior before release.

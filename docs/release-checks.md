@@ -1,4 +1,37 @@
-# Release checks · 0.5.1 technical preview
+# Release checks · 0.6.0 technical preview
+
+Version 0.6.0 adds the four-hour transit software-factory workshop. It uses a frozen public MBTA timetable, two coding workers, explicit patch integration, checked project lessons, and the existing participant-owned Forge setup. Previous workshop experiments and attendee copies are unchanged.
+
+## Transit results and qualification
+
+The final engineering rehearsal (R5) produced 10/10 passing scenarios for one worker and 8/10 for two workers. Both initial builds passed their public development checks. The team used the caller’s timezone for the service day and selected the wrong train for a UTC input; two final checks expose the same underlying defect.
+
+The follow-up builds with and without a checked lesson both scored 12/18. Their query tasks stopped at input or output limits before testing, so those unfinished changes were not integrated. These outcomes do not establish that memory helped or hurt. The released agent-built app is the passing single-worker departure board. The complete instructor reference app passes 18/18 and is labeled separately.
+
+R5 made 31 provider requests, costing **$0.06635800**, with zero unknown usage and no outstanding reservations. This includes the lesson proposal. Elapsed build times exclude human review and integration. The [workshop guide](transit-workshop.md) links the native comparisons and explains the actual timezone defect. All five engineering qualifications, including the earlier output- and context-limit failures, are retained in the release evidence. They are runtime qualifications, not pooled independent trials.
+
+The deterministic teaching repairs are also checked: preserving the previous service day restores two missing departure cases (8/10 → 10/10), and an atomic claim permits one owner where the deliberately unsafe claim allows two. Neither is presented as an agent-written improvement.
+
+## Code, product and presentation checks
+
+- **292 automated tests passed**, followed by two focused tests for the final Report evidence-link change. The suite covers task ownership, dependency blocking, patch conflicts, stale lessons, actual participant dispatch, interrupted-worker recovery, exact executed source, publication-only retries and request accounting.
+- All **24 R5 execution traces** passed stored-span readback. All **56 final scenario rows** passed native EvalTable readback. A publication-only retry completed a missing run marker without repeating workers or grading.
+- All seven generated notebooks pass marimo dependency checks. Repeated generation leaves their source unchanged. The final package includes the source, timetable, license and provenance; it excludes local state, credentials and operator records.
+- Browser checks cover navigation, retained drafts, restoration, code checks, recorded task/diff/trace links and a narrow dark layout. These are separate from the live provider runs.
+- The transit deck passed **52-slide, 67-reveal/PDF-page and 107-route checks**, including three worked-answer returns. The two captioned recordings contain 18 tested chapter links. The recorded R4 agent walkthrough and the instructor reference demonstration remain explicitly separate from R5.
+- Final reserved scenario identifiers were absent from all R5 worker requests. The local source remains inspectable by learners; the worker context excludes those cases and expected answers.
+
+See the [browser and package receipts](../evidence/v060-browser-checks/) and the deck’s [delivery checks](../decks/transit/notes/delivery-checks.json). Runtime and final-result failures remain visible in the evidence.
+
+## Remaining release gates
+
+Fresh external-account copying and a participant usability rehearsal remain outstanding. The complete live execution and publication path was exercised from the maintainer environment; that is not proof that attendees can finish in four hours. The stopped follow-up query tasks also mean the current bounds do not guarantee delivery of the second feature. Use the saved outcomes and the separate reference continuation when that happens.
+
+This is a technical preview. The $8 allowance is participant-adjustable and covers inference only; notebook compute is separate. Native comparisons use the verified Weave-backed Evaluation Tables Preview path. The older CES endpoint’s HTTP 500 does not block that path.
+
+---
+
+# Previous release · 0.5.1 technical preview
 
 Version 0.5.1 repairs native evaluation publication and updates the four decks. It reuses saved experiments. Version 0.5.0 added customer-request routing and circuit-board inspection to the gateway-free Workshop Kit. Pending adds an editable retry repair. Solar adds a qualified GOES recipe and publishes the mixed three-seed image result. Previous releases, rehearsal evidence and attendee copies remain unchanged.
 

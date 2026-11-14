@@ -1,0 +1,1128 @@
+{
+  "kind": "prepared implementation repair; no model calls",
+  "before": {
+    "order": 1,
+    "dataset_id": "mbta-red-central-20241128-v1",
+    "rows": [
+      {
+        "case_id": "departures/quiet-hours",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70076",
+            "2024-11-29T02:00:00-05:00",
+            5
+          ]
+        },
+        "outputs": {
+          "prediction": [],
+          "expected": [],
+          "error": null,
+          "source_fingerprint": "e12270dd132afa846a1678db4dacafa26dc3ea1dd901cbad3b9ae1da78c4b804"
+        },
+        "scores": {
+          "scenario_pass": 1.0
+        },
+        "status": "completed"
+      },
+      {
+        "case_id": "departures/weekend",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70080",
+            "2024-11-30T15:00:00-05:00",
+            3
+          ]
+        },
+        "outputs": {
+          "prediction": [
+            {
+              "trip_id": "63655348",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70080",
+              "stop_name": "South Station",
+              "service_date": "2024-11-30",
+              "departure_time": "2024-11-30T15:00:00-05:00"
+            },
+            {
+              "trip_id": "63655237",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70080",
+              "stop_name": "South Station",
+              "service_date": "2024-11-30",
+              "departure_time": "2024-11-30T15:08:00-05:00"
+            },
+            {
+              "trip_id": "63655349",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70080",
+              "stop_name": "South Station",
+              "service_date": "2024-11-30",
+              "departure_time": "2024-11-30T15:16:00-05:00"
+            }
+          ],
+          "expected": [
+            {
+              "trip_id": "63655348",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70080",
+              "stop_name": "South Station",
+              "service_date": "2024-11-30",
+              "departure_time": "2024-11-30T15:00:00-05:00"
+            },
+            {
+              "trip_id": "63655237",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70080",
+              "stop_name": "South Station",
+              "service_date": "2024-11-30",
+              "departure_time": "2024-11-30T15:08:00-05:00"
+            },
+            {
+              "trip_id": "63655349",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70080",
+              "stop_name": "South Station",
+              "service_date": "2024-11-30",
+              "departure_time": "2024-11-30T15:16:00-05:00"
+            }
+          ],
+          "error": null,
+          "source_fingerprint": "e12270dd132afa846a1678db4dacafa26dc3ea1dd901cbad3b9ae1da78c4b804"
+        },
+        "scores": {
+          "scenario_pass": 1.0
+        },
+        "status": "completed"
+      },
+      {
+        "case_id": "departures/utc-input",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70072",
+            "2024-12-02T23:00:00+00:00",
+            4
+          ]
+        },
+        "outputs": {
+          "prediction": [
+            {
+              "trip_id": "63919613",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:03:00-05:00"
+            },
+            {
+              "trip_id": "63919836",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:09:00-05:00"
+            },
+            {
+              "trip_id": "63919631",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:14:00-05:00"
+            },
+            {
+              "trip_id": "63919837",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:20:00-05:00"
+            }
+          ],
+          "expected": [
+            {
+              "trip_id": "63919613",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:03:00-05:00"
+            },
+            {
+              "trip_id": "63919836",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:09:00-05:00"
+            },
+            {
+              "trip_id": "63919631",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:14:00-05:00"
+            },
+            {
+              "trip_id": "63919837",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:20:00-05:00"
+            }
+          ],
+          "error": null,
+          "source_fingerprint": "e12270dd132afa846a1678db4dacafa26dc3ea1dd901cbad3b9ae1da78c4b804"
+        },
+        "scores": {
+          "scenario_pass": 1.0
+        },
+        "status": "completed"
+      },
+      {
+        "case_id": "departures/other-direction",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70071",
+            "2024-12-03T00:20:00-05:00",
+            4
+          ]
+        },
+        "outputs": {
+          "prediction": [],
+          "expected": [
+            {
+              "trip_id": "63919738",
+              "route_id": "Red",
+              "headsign": "Ashmont",
+              "stop_id": "70071",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-03T00:23:00-05:00"
+            },
+            {
+              "trip_id": "63919756",
+              "route_id": "Red",
+              "headsign": "Braintree",
+              "stop_id": "70071",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-03T00:33:00-05:00"
+            },
+            {
+              "trip_id": "63919744",
+              "route_id": "Red",
+              "headsign": "Ashmont",
+              "stop_id": "70071",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-03T00:43:00-05:00"
+            }
+          ],
+          "error": null,
+          "source_fingerprint": "e12270dd132afa846a1678db4dacafa26dc3ea1dd901cbad3b9ae1da78c4b804"
+        },
+        "scores": {
+          "scenario_pass": 0.0
+        },
+        "status": "completed"
+      },
+      {
+        "case_id": "departures/final-day",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70077",
+            "2024-12-04T12:00:00-05:00",
+            3
+          ]
+        },
+        "outputs": {
+          "prediction": [
+            {
+              "trip_id": "63919894",
+              "route_id": "Red",
+              "headsign": "Braintree",
+              "stop_id": "70077",
+              "stop_name": "Downtown Crossing",
+              "service_date": "2024-12-04",
+              "departure_time": "2024-12-04T12:00:00-05:00"
+            },
+            {
+              "trip_id": "63919642",
+              "route_id": "Red",
+              "headsign": "Ashmont",
+              "stop_id": "70077",
+              "stop_name": "Downtown Crossing",
+              "service_date": "2024-12-04",
+              "departure_time": "2024-12-04T12:06:00-05:00"
+            },
+            {
+              "trip_id": "63919895",
+              "route_id": "Red",
+              "headsign": "Braintree",
+              "stop_id": "70077",
+              "stop_name": "Downtown Crossing",
+              "service_date": "2024-12-04",
+              "departure_time": "2024-12-04T12:12:00-05:00"
+            }
+          ],
+          "expected": [
+            {
+              "trip_id": "63919894",
+              "route_id": "Red",
+              "headsign": "Braintree",
+              "stop_id": "70077",
+              "stop_name": "Downtown Crossing",
+              "service_date": "2024-12-04",
+              "departure_time": "2024-12-04T12:00:00-05:00"
+            },
+            {
+              "trip_id": "63919642",
+              "route_id": "Red",
+              "headsign": "Ashmont",
+              "stop_id": "70077",
+              "stop_name": "Downtown Crossing",
+              "service_date": "2024-12-04",
+              "departure_time": "2024-12-04T12:06:00-05:00"
+            },
+            {
+              "trip_id": "63919895",
+              "route_id": "Red",
+              "headsign": "Braintree",
+              "stop_id": "70077",
+              "stop_name": "Downtown Crossing",
+              "service_date": "2024-12-04",
+              "departure_time": "2024-12-04T12:12:00-05:00"
+            }
+          ],
+          "error": null,
+          "source_fingerprint": "e12270dd132afa846a1678db4dacafa26dc3ea1dd901cbad3b9ae1da78c4b804"
+        },
+        "scores": {
+          "scenario_pass": 1.0
+        },
+        "status": "completed"
+      },
+      {
+        "case_id": "integrated/departures/quiet-hours",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70076",
+            "2024-11-29T02:00:00-05:00",
+            5
+          ]
+        },
+        "outputs": {
+          "html": "<h2>Acceptance result</h2><p>Historical schedule. Data provided by MassDOT / MBTA.</p><p>No scheduled departures in the next two hours</p>",
+          "prediction": [],
+          "error": null,
+          "source_fingerprint": "e12270dd132afa846a1678db4dacafa26dc3ea1dd901cbad3b9ae1da78c4b804"
+        },
+        "scores": {
+          "scenario_pass": 1.0
+        },
+        "status": "completed"
+      },
+      {
+        "case_id": "integrated/departures/weekend",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70080",
+            "2024-11-30T15:00:00-05:00",
+            3
+          ]
+        },
+        "outputs": {
+          "html": "<h2>Acceptance result</h2><p>Historical schedule. Data provided by MassDOT / MBTA.</p><table><thead><tr><th>Platform</th><th>Toward</th><th>Scheduled departure</th></tr></thead><tbody><tr><td>South Station</td><td>Alewife</td><td><time>2024-11-30T15:00:00-05:00</time></td></tr><tr><td>South Station</td><td>Alewife</td><td><time>2024-11-30T15:08:00-05:00</time></td></tr><tr><td>South Station</td><td>Alewife</td><td><time>2024-11-30T15:16:00-05:00</time></td></tr></tbody></table>",
+          "prediction": [
+            {
+              "trip_id": "63655348",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70080",
+              "stop_name": "South Station",
+              "service_date": "2024-11-30",
+              "departure_time": "2024-11-30T15:00:00-05:00"
+            },
+            {
+              "trip_id": "63655237",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70080",
+              "stop_name": "South Station",
+              "service_date": "2024-11-30",
+              "departure_time": "2024-11-30T15:08:00-05:00"
+            },
+            {
+              "trip_id": "63655349",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70080",
+              "stop_name": "South Station",
+              "service_date": "2024-11-30",
+              "departure_time": "2024-11-30T15:16:00-05:00"
+            }
+          ],
+          "error": null,
+          "source_fingerprint": "e12270dd132afa846a1678db4dacafa26dc3ea1dd901cbad3b9ae1da78c4b804"
+        },
+        "scores": {
+          "scenario_pass": 1.0
+        },
+        "status": "completed"
+      },
+      {
+        "case_id": "integrated/departures/utc-input",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70072",
+            "2024-12-02T23:00:00+00:00",
+            4
+          ]
+        },
+        "outputs": {
+          "html": "<h2>Acceptance result</h2><p>Historical schedule. Data provided by MassDOT / MBTA.</p><table><thead><tr><th>Platform</th><th>Toward</th><th>Scheduled departure</th></tr></thead><tbody><tr><td>Kendall/MIT</td><td>Alewife</td><td><time>2024-12-02T18:03:00-05:00</time></td></tr><tr><td>Kendall/MIT</td><td>Alewife</td><td><time>2024-12-02T18:09:00-05:00</time></td></tr><tr><td>Kendall/MIT</td><td>Alewife</td><td><time>2024-12-02T18:14:00-05:00</time></td></tr><tr><td>Kendall/MIT</td><td>Alewife</td><td><time>2024-12-02T18:20:00-05:00</time></td></tr></tbody></table>",
+          "prediction": [
+            {
+              "trip_id": "63919613",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:03:00-05:00"
+            },
+            {
+              "trip_id": "63919836",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:09:00-05:00"
+            },
+            {
+              "trip_id": "63919631",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:14:00-05:00"
+            },
+            {
+              "trip_id": "63919837",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:20:00-05:00"
+            }
+          ],
+          "error": null,
+          "source_fingerprint": "e12270dd132afa846a1678db4dacafa26dc3ea1dd901cbad3b9ae1da78c4b804"
+        },
+        "scores": {
+          "scenario_pass": 1.0
+        },
+        "status": "completed"
+      },
+      {
+        "case_id": "integrated/departures/other-direction",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70071",
+            "2024-12-03T00:20:00-05:00",
+            4
+          ]
+        },
+        "outputs": {
+          "html": "<h2>Acceptance result</h2><p>Historical schedule. Data provided by MassDOT / MBTA.</p><p>No scheduled departures in the next two hours</p>",
+          "prediction": [],
+          "error": null,
+          "source_fingerprint": "e12270dd132afa846a1678db4dacafa26dc3ea1dd901cbad3b9ae1da78c4b804"
+        },
+        "scores": {
+          "scenario_pass": 0.0
+        },
+        "status": "completed"
+      },
+      {
+        "case_id": "integrated/departures/final-day",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70077",
+            "2024-12-04T12:00:00-05:00",
+            3
+          ]
+        },
+        "outputs": {
+          "html": "<h2>Acceptance result</h2><p>Historical schedule. Data provided by MassDOT / MBTA.</p><table><thead><tr><th>Platform</th><th>Toward</th><th>Scheduled departure</th></tr></thead><tbody><tr><td>Downtown Crossing</td><td>Braintree</td><td><time>2024-12-04T12:00:00-05:00</time></td></tr><tr><td>Downtown Crossing</td><td>Ashmont</td><td><time>2024-12-04T12:06:00-05:00</time></td></tr><tr><td>Downtown Crossing</td><td>Braintree</td><td><time>2024-12-04T12:12:00-05:00</time></td></tr></tbody></table>",
+          "prediction": [
+            {
+              "trip_id": "63919894",
+              "route_id": "Red",
+              "headsign": "Braintree",
+              "stop_id": "70077",
+              "stop_name": "Downtown Crossing",
+              "service_date": "2024-12-04",
+              "departure_time": "2024-12-04T12:00:00-05:00"
+            },
+            {
+              "trip_id": "63919642",
+              "route_id": "Red",
+              "headsign": "Ashmont",
+              "stop_id": "70077",
+              "stop_name": "Downtown Crossing",
+              "service_date": "2024-12-04",
+              "departure_time": "2024-12-04T12:06:00-05:00"
+            },
+            {
+              "trip_id": "63919895",
+              "route_id": "Red",
+              "headsign": "Braintree",
+              "stop_id": "70077",
+              "stop_name": "Downtown Crossing",
+              "service_date": "2024-12-04",
+              "departure_time": "2024-12-04T12:12:00-05:00"
+            }
+          ],
+          "error": null,
+          "source_fingerprint": "e12270dd132afa846a1678db4dacafa26dc3ea1dd901cbad3b9ae1da78c4b804"
+        },
+        "scores": {
+          "scenario_pass": 1.0
+        },
+        "status": "completed"
+      }
+    ],
+    "passed": false,
+    "passed_count": 8,
+    "total": 10,
+    "source_fingerprint": "5fe67496fa2896f8b39f557deb08287fd2bfd95bd6e60379cfa2259d561ddb6b",
+    "scenario_pass_rate": 0.8,
+    "fingerprint": "e12270dd132afa846a1678db4dacafa26dc3ea1dd901cbad3b9ae1da78c4b804",
+    "elapsed_seconds": 0.1377898329810705,
+    "status": "completed",
+    "kind": "reserved deterministic acceptance",
+    "partition": "reserved; excludes public development case identities"
+  },
+  "after": {
+    "order": 1,
+    "dataset_id": "mbta-red-central-20241128-v1",
+    "rows": [
+      {
+        "case_id": "departures/quiet-hours",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70076",
+            "2024-11-29T02:00:00-05:00",
+            5
+          ]
+        },
+        "outputs": {
+          "prediction": [],
+          "expected": [],
+          "error": null,
+          "source_fingerprint": "df6a027e4b441c9e6637302fada4ca9ed1fef31647b3de4107518869abb5a013"
+        },
+        "scores": {
+          "scenario_pass": 1.0
+        },
+        "status": "completed"
+      },
+      {
+        "case_id": "departures/weekend",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70080",
+            "2024-11-30T15:00:00-05:00",
+            3
+          ]
+        },
+        "outputs": {
+          "prediction": [
+            {
+              "trip_id": "63655348",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70080",
+              "stop_name": "South Station",
+              "service_date": "2024-11-30",
+              "departure_time": "2024-11-30T15:00:00-05:00"
+            },
+            {
+              "trip_id": "63655237",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70080",
+              "stop_name": "South Station",
+              "service_date": "2024-11-30",
+              "departure_time": "2024-11-30T15:08:00-05:00"
+            },
+            {
+              "trip_id": "63655349",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70080",
+              "stop_name": "South Station",
+              "service_date": "2024-11-30",
+              "departure_time": "2024-11-30T15:16:00-05:00"
+            }
+          ],
+          "expected": [
+            {
+              "trip_id": "63655348",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70080",
+              "stop_name": "South Station",
+              "service_date": "2024-11-30",
+              "departure_time": "2024-11-30T15:00:00-05:00"
+            },
+            {
+              "trip_id": "63655237",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70080",
+              "stop_name": "South Station",
+              "service_date": "2024-11-30",
+              "departure_time": "2024-11-30T15:08:00-05:00"
+            },
+            {
+              "trip_id": "63655349",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70080",
+              "stop_name": "South Station",
+              "service_date": "2024-11-30",
+              "departure_time": "2024-11-30T15:16:00-05:00"
+            }
+          ],
+          "error": null,
+          "source_fingerprint": "df6a027e4b441c9e6637302fada4ca9ed1fef31647b3de4107518869abb5a013"
+        },
+        "scores": {
+          "scenario_pass": 1.0
+        },
+        "status": "completed"
+      },
+      {
+        "case_id": "departures/utc-input",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70072",
+            "2024-12-02T23:00:00+00:00",
+            4
+          ]
+        },
+        "outputs": {
+          "prediction": [
+            {
+              "trip_id": "63919613",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:03:00-05:00"
+            },
+            {
+              "trip_id": "63919836",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:09:00-05:00"
+            },
+            {
+              "trip_id": "63919631",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:14:00-05:00"
+            },
+            {
+              "trip_id": "63919837",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:20:00-05:00"
+            }
+          ],
+          "expected": [
+            {
+              "trip_id": "63919613",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:03:00-05:00"
+            },
+            {
+              "trip_id": "63919836",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:09:00-05:00"
+            },
+            {
+              "trip_id": "63919631",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:14:00-05:00"
+            },
+            {
+              "trip_id": "63919837",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:20:00-05:00"
+            }
+          ],
+          "error": null,
+          "source_fingerprint": "df6a027e4b441c9e6637302fada4ca9ed1fef31647b3de4107518869abb5a013"
+        },
+        "scores": {
+          "scenario_pass": 1.0
+        },
+        "status": "completed"
+      },
+      {
+        "case_id": "departures/other-direction",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70071",
+            "2024-12-03T00:20:00-05:00",
+            4
+          ]
+        },
+        "outputs": {
+          "prediction": [
+            {
+              "trip_id": "63919738",
+              "route_id": "Red",
+              "headsign": "Ashmont",
+              "stop_id": "70071",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-03T00:23:00-05:00"
+            },
+            {
+              "trip_id": "63919756",
+              "route_id": "Red",
+              "headsign": "Braintree",
+              "stop_id": "70071",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-03T00:33:00-05:00"
+            },
+            {
+              "trip_id": "63919744",
+              "route_id": "Red",
+              "headsign": "Ashmont",
+              "stop_id": "70071",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-03T00:43:00-05:00"
+            }
+          ],
+          "expected": [
+            {
+              "trip_id": "63919738",
+              "route_id": "Red",
+              "headsign": "Ashmont",
+              "stop_id": "70071",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-03T00:23:00-05:00"
+            },
+            {
+              "trip_id": "63919756",
+              "route_id": "Red",
+              "headsign": "Braintree",
+              "stop_id": "70071",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-03T00:33:00-05:00"
+            },
+            {
+              "trip_id": "63919744",
+              "route_id": "Red",
+              "headsign": "Ashmont",
+              "stop_id": "70071",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-03T00:43:00-05:00"
+            }
+          ],
+          "error": null,
+          "source_fingerprint": "df6a027e4b441c9e6637302fada4ca9ed1fef31647b3de4107518869abb5a013"
+        },
+        "scores": {
+          "scenario_pass": 1.0
+        },
+        "status": "completed"
+      },
+      {
+        "case_id": "departures/final-day",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70077",
+            "2024-12-04T12:00:00-05:00",
+            3
+          ]
+        },
+        "outputs": {
+          "prediction": [
+            {
+              "trip_id": "63919894",
+              "route_id": "Red",
+              "headsign": "Braintree",
+              "stop_id": "70077",
+              "stop_name": "Downtown Crossing",
+              "service_date": "2024-12-04",
+              "departure_time": "2024-12-04T12:00:00-05:00"
+            },
+            {
+              "trip_id": "63919642",
+              "route_id": "Red",
+              "headsign": "Ashmont",
+              "stop_id": "70077",
+              "stop_name": "Downtown Crossing",
+              "service_date": "2024-12-04",
+              "departure_time": "2024-12-04T12:06:00-05:00"
+            },
+            {
+              "trip_id": "63919895",
+              "route_id": "Red",
+              "headsign": "Braintree",
+              "stop_id": "70077",
+              "stop_name": "Downtown Crossing",
+              "service_date": "2024-12-04",
+              "departure_time": "2024-12-04T12:12:00-05:00"
+            }
+          ],
+          "expected": [
+            {
+              "trip_id": "63919894",
+              "route_id": "Red",
+              "headsign": "Braintree",
+              "stop_id": "70077",
+              "stop_name": "Downtown Crossing",
+              "service_date": "2024-12-04",
+              "departure_time": "2024-12-04T12:00:00-05:00"
+            },
+            {
+              "trip_id": "63919642",
+              "route_id": "Red",
+              "headsign": "Ashmont",
+              "stop_id": "70077",
+              "stop_name": "Downtown Crossing",
+              "service_date": "2024-12-04",
+              "departure_time": "2024-12-04T12:06:00-05:00"
+            },
+            {
+              "trip_id": "63919895",
+              "route_id": "Red",
+              "headsign": "Braintree",
+              "stop_id": "70077",
+              "stop_name": "Downtown Crossing",
+              "service_date": "2024-12-04",
+              "departure_time": "2024-12-04T12:12:00-05:00"
+            }
+          ],
+          "error": null,
+          "source_fingerprint": "df6a027e4b441c9e6637302fada4ca9ed1fef31647b3de4107518869abb5a013"
+        },
+        "scores": {
+          "scenario_pass": 1.0
+        },
+        "status": "completed"
+      },
+      {
+        "case_id": "integrated/departures/quiet-hours",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70076",
+            "2024-11-29T02:00:00-05:00",
+            5
+          ]
+        },
+        "outputs": {
+          "html": "<h2>Acceptance result</h2><p>Historical schedule. Data provided by MassDOT / MBTA.</p><p>No scheduled departures in the next two hours</p>",
+          "prediction": [],
+          "error": null,
+          "source_fingerprint": "df6a027e4b441c9e6637302fada4ca9ed1fef31647b3de4107518869abb5a013"
+        },
+        "scores": {
+          "scenario_pass": 1.0
+        },
+        "status": "completed"
+      },
+      {
+        "case_id": "integrated/departures/weekend",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70080",
+            "2024-11-30T15:00:00-05:00",
+            3
+          ]
+        },
+        "outputs": {
+          "html": "<h2>Acceptance result</h2><p>Historical schedule. Data provided by MassDOT / MBTA.</p><table><thead><tr><th>Platform</th><th>Toward</th><th>Scheduled departure</th></tr></thead><tbody><tr><td>South Station</td><td>Alewife</td><td><time>2024-11-30T15:00:00-05:00</time></td></tr><tr><td>South Station</td><td>Alewife</td><td><time>2024-11-30T15:08:00-05:00</time></td></tr><tr><td>South Station</td><td>Alewife</td><td><time>2024-11-30T15:16:00-05:00</time></td></tr></tbody></table>",
+          "prediction": [
+            {
+              "trip_id": "63655348",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70080",
+              "stop_name": "South Station",
+              "service_date": "2024-11-30",
+              "departure_time": "2024-11-30T15:00:00-05:00"
+            },
+            {
+              "trip_id": "63655237",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70080",
+              "stop_name": "South Station",
+              "service_date": "2024-11-30",
+              "departure_time": "2024-11-30T15:08:00-05:00"
+            },
+            {
+              "trip_id": "63655349",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70080",
+              "stop_name": "South Station",
+              "service_date": "2024-11-30",
+              "departure_time": "2024-11-30T15:16:00-05:00"
+            }
+          ],
+          "error": null,
+          "source_fingerprint": "df6a027e4b441c9e6637302fada4ca9ed1fef31647b3de4107518869abb5a013"
+        },
+        "scores": {
+          "scenario_pass": 1.0
+        },
+        "status": "completed"
+      },
+      {
+        "case_id": "integrated/departures/utc-input",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70072",
+            "2024-12-02T23:00:00+00:00",
+            4
+          ]
+        },
+        "outputs": {
+          "html": "<h2>Acceptance result</h2><p>Historical schedule. Data provided by MassDOT / MBTA.</p><table><thead><tr><th>Platform</th><th>Toward</th><th>Scheduled departure</th></tr></thead><tbody><tr><td>Kendall/MIT</td><td>Alewife</td><td><time>2024-12-02T18:03:00-05:00</time></td></tr><tr><td>Kendall/MIT</td><td>Alewife</td><td><time>2024-12-02T18:09:00-05:00</time></td></tr><tr><td>Kendall/MIT</td><td>Alewife</td><td><time>2024-12-02T18:14:00-05:00</time></td></tr><tr><td>Kendall/MIT</td><td>Alewife</td><td><time>2024-12-02T18:20:00-05:00</time></td></tr></tbody></table>",
+          "prediction": [
+            {
+              "trip_id": "63919613",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:03:00-05:00"
+            },
+            {
+              "trip_id": "63919836",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:09:00-05:00"
+            },
+            {
+              "trip_id": "63919631",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:14:00-05:00"
+            },
+            {
+              "trip_id": "63919837",
+              "route_id": "Red",
+              "headsign": "Alewife",
+              "stop_id": "70072",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-02T18:20:00-05:00"
+            }
+          ],
+          "error": null,
+          "source_fingerprint": "df6a027e4b441c9e6637302fada4ca9ed1fef31647b3de4107518869abb5a013"
+        },
+        "scores": {
+          "scenario_pass": 1.0
+        },
+        "status": "completed"
+      },
+      {
+        "case_id": "integrated/departures/other-direction",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70071",
+            "2024-12-03T00:20:00-05:00",
+            4
+          ]
+        },
+        "outputs": {
+          "html": "<h2>Acceptance result</h2><p>Historical schedule. Data provided by MassDOT / MBTA.</p><table><thead><tr><th>Platform</th><th>Toward</th><th>Scheduled departure</th></tr></thead><tbody><tr><td>Kendall/MIT</td><td>Ashmont</td><td><time>2024-12-03T00:23:00-05:00</time></td></tr><tr><td>Kendall/MIT</td><td>Braintree</td><td><time>2024-12-03T00:33:00-05:00</time></td></tr><tr><td>Kendall/MIT</td><td>Ashmont</td><td><time>2024-12-03T00:43:00-05:00</time></td></tr></tbody></table>",
+          "prediction": [
+            {
+              "trip_id": "63919738",
+              "route_id": "Red",
+              "headsign": "Ashmont",
+              "stop_id": "70071",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-03T00:23:00-05:00"
+            },
+            {
+              "trip_id": "63919756",
+              "route_id": "Red",
+              "headsign": "Braintree",
+              "stop_id": "70071",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-03T00:33:00-05:00"
+            },
+            {
+              "trip_id": "63919744",
+              "route_id": "Red",
+              "headsign": "Ashmont",
+              "stop_id": "70071",
+              "stop_name": "Kendall/MIT",
+              "service_date": "2024-12-02",
+              "departure_time": "2024-12-03T00:43:00-05:00"
+            }
+          ],
+          "error": null,
+          "source_fingerprint": "df6a027e4b441c9e6637302fada4ca9ed1fef31647b3de4107518869abb5a013"
+        },
+        "scores": {
+          "scenario_pass": 1.0
+        },
+        "status": "completed"
+      },
+      {
+        "case_id": "integrated/departures/final-day",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70077",
+            "2024-12-04T12:00:00-05:00",
+            3
+          ]
+        },
+        "outputs": {
+          "html": "<h2>Acceptance result</h2><p>Historical schedule. Data provided by MassDOT / MBTA.</p><table><thead><tr><th>Platform</th><th>Toward</th><th>Scheduled departure</th></tr></thead><tbody><tr><td>Downtown Crossing</td><td>Braintree</td><td><time>2024-12-04T12:00:00-05:00</time></td></tr><tr><td>Downtown Crossing</td><td>Ashmont</td><td><time>2024-12-04T12:06:00-05:00</time></td></tr><tr><td>Downtown Crossing</td><td>Braintree</td><td><time>2024-12-04T12:12:00-05:00</time></td></tr></tbody></table>",
+          "prediction": [
+            {
+              "trip_id": "63919894",
+              "route_id": "Red",
+              "headsign": "Braintree",
+              "stop_id": "70077",
+              "stop_name": "Downtown Crossing",
+              "service_date": "2024-12-04",
+              "departure_time": "2024-12-04T12:00:00-05:00"
+            },
+            {
+              "trip_id": "63919642",
+              "route_id": "Red",
+              "headsign": "Ashmont",
+              "stop_id": "70077",
+              "stop_name": "Downtown Crossing",
+              "service_date": "2024-12-04",
+              "departure_time": "2024-12-04T12:06:00-05:00"
+            },
+            {
+              "trip_id": "63919895",
+              "route_id": "Red",
+              "headsign": "Braintree",
+              "stop_id": "70077",
+              "stop_name": "Downtown Crossing",
+              "service_date": "2024-12-04",
+              "departure_time": "2024-12-04T12:12:00-05:00"
+            }
+          ],
+          "error": null,
+          "source_fingerprint": "df6a027e4b441c9e6637302fada4ca9ed1fef31647b3de4107518869abb5a013"
+        },
+        "scores": {
+          "scenario_pass": 1.0
+        },
+        "status": "completed"
+      }
+    ],
+    "passed": true,
+    "passed_count": 10,
+    "total": 10,
+    "source_fingerprint": "0d1839c15651515cc6665da0d737fa4d4cd54db66cd1b345df9b3097e3375707",
+    "scenario_pass_rate": 1.0,
+    "fingerprint": "df6a027e4b441c9e6637302fada4ca9ed1fef31647b3de4107518869abb5a013",
+    "elapsed_seconds": 0.16462233400670812,
+    "status": "completed",
+    "kind": "reserved deterministic acceptance",
+    "partition": "reserved; excludes public development case identities"
+  },
+  "change": "Include the previous service day when querying shortly after midnight.",
+  "improved": true,
+  "inference_cost_usd": 0.0
+}

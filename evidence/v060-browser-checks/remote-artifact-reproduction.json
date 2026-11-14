@@ -1,0 +1,10 @@
+{
+  "artifact": "wandb/forge-workshop-kit/execution-b239ffe686c17968a0a79bce5d11699c:v0",
+  "artifact_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-b239ffe686c17968a0a79bce5d11699c/v0",
+  "archive_sha256": "c7a0717c6c7256102282f6495c95a834fbb1fb0ccfd74def417ffcde8114c37b",
+  "source_verified": true,
+  "reproduced_case": "departures/utc-input",
+  "actual_first_trip": "63919613",
+  "model_calls": 0,
+  "downloaded_from_remote_artifact": true
+}

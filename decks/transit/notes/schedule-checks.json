@@ -1,0 +1,280 @@
+{
+  "duration_minutes": 240,
+  "setup": [
+    0,
+    20
+  ],
+  "single_worker": [
+    20,
+    45
+  ],
+  "task_claims": [
+    45,
+    70
+  ],
+  "two_workers": [
+    70,
+    105
+  ],
+  "break": [
+    105,
+    115
+  ],
+  "integration": [
+    115,
+    145
+  ],
+  "memory": [
+    145,
+    170
+  ],
+  "followup": [
+    170,
+    205
+  ],
+  "evaluation": [
+    205,
+    225
+  ],
+  "release_and_conclusion": [
+    225,
+    240
+  ],
+  "ordered_slides": [
+    {
+      "title": "Build a transit app<br>with a team of coding agents",
+      "time": "0:00",
+      "minutes": 0
+    },
+    {
+      "title": "Your team needs a departures board",
+      "time": "0:01",
+      "minutes": 1
+    },
+    {
+      "title": "Here is the application we want to deliver",
+      "time": "0:02",
+      "minutes": 2
+    },
+    {
+      "title": "The inputs are public transit records",
+      "time": "0:03",
+      "minutes": 3
+    },
+    {
+      "title": "The last train can belong to yesterday\u2019s service",
+      "time": "0:05",
+      "minutes": 5
+    },
+    {
+      "title": "Turn the brief into checks",
+      "time": "0:07",
+      "minutes": 7
+    },
+    {
+      "title": "A software factory needs a way to finish work",
+      "time": "0:08",
+      "minutes": 8
+    },
+    {
+      "title": "Add the task board and two workers",
+      "time": "0:09",
+      "minutes": 9
+    },
+    {
+      "title": "Your project contains the experiment",
+      "time": "0:10",
+      "minutes": 10
+    },
+    {
+      "title": "Connect and inspect the source data",
+      "time": "0:11",
+      "minutes": 11
+    },
+    {
+      "title": "Write the after-midnight acceptance check",
+      "time": "0:15",
+      "minutes": 15
+    },
+    {
+      "title": "One worker still needs a complete loop",
+      "time": "0:20",
+      "minutes": 20
+    },
+    {
+      "title": "Give the worker the task it is allowed to solve",
+      "time": "0:23",
+      "minutes": 23
+    },
+    {
+      "title": "Return the tool result to the worker",
+      "time": "0:26",
+      "minutes": 26
+    },
+    {
+      "title": "Run one worker before adding a team",
+      "time": "0:30",
+      "minutes": 30
+    },
+    {
+      "title": "A trace should answer what changed and why",
+      "time": "0:40",
+      "minutes": 40
+    },
+    {
+      "title": "Inspect the worker\u2019s test in Agent Lens",
+      "time": "0:43",
+      "minutes": 43
+    },
+    {
+      "title": "Choose work that can happen independently",
+      "time": "0:45",
+      "minutes": 45
+    },
+    {
+      "title": "Ready means its prerequisites passed",
+      "time": "0:50",
+      "minutes": 50
+    },
+    {
+      "title": "Make dependencies control the workers",
+      "time": "0:55",
+      "minutes": 55
+    },
+    {
+      "title": "Separate working copies protect unfinished changes",
+      "time": "1:08",
+      "minutes": 68
+    },
+    {
+      "title": "Run the ready tasks with two workers",
+      "time": "1:10",
+      "minutes": 70
+    },
+    {
+      "title": "Read the timeline as work and waiting",
+      "time": "1:25",
+      "minutes": 85
+    },
+    {
+      "title": "Save the checkpoint before the break",
+      "time": "1:45",
+      "minutes": 105
+    },
+    {
+      "title": "Review a patch before it enters the product",
+      "time": "1:55",
+      "minutes": 115
+    },
+    {
+      "title": "Test the combined departures board",
+      "time": "2:00",
+      "minutes": 120
+    },
+    {
+      "title": "An integration error can cross a correct boundary",
+      "time": "2:12",
+      "minutes": 132
+    },
+    {
+      "title": "Shared memory needs something worth sharing",
+      "time": "2:25",
+      "minutes": 145
+    },
+    {
+      "title": "Check the lesson before another agent relies on it",
+      "time": "2:28",
+      "minutes": 148
+    },
+    {
+      "title": "Write a rule with a test attached",
+      "time": "2:32",
+      "minutes": 152
+    },
+    {
+      "title": "Save a lesson supported by an execution",
+      "time": "2:36",
+      "minutes": 156
+    },
+    {
+      "title": "Inspect the memory read, then its effect",
+      "time": "2:44",
+      "minutes": 164
+    },
+    {
+      "title": "Find the last direct train between two stops",
+      "time": "2:50",
+      "minutes": 170
+    },
+    {
+      "title": "Run both versions of the follow-up feature",
+      "time": "2:55",
+      "minutes": 175
+    },
+    {
+      "title": "The factory has two kinds of state",
+      "time": "3:15",
+      "minutes": 195
+    },
+    {
+      "title": "Evaluate the product and the process separately",
+      "time": "3:25",
+      "minutes": 205
+    },
+    {
+      "title": "A scenario is an input and an expected behavior",
+      "time": "3:27",
+      "minutes": 207
+    },
+    {
+      "title": "Compare the frozen builds on matching cases",
+      "time": "3:30",
+      "minutes": 210
+    },
+    {
+      "title": "Read one comparison row before the average",
+      "time": "3:34",
+      "minutes": 214
+    },
+    {
+      "title": "Compare the same departures in Forge",
+      "time": "3:35",
+      "minutes": 215
+    },
+    {
+      "title": "The faster build missed two final cases",
+      "time": "3:37",
+      "minutes": 217
+    },
+    {
+      "title": "A timezone assumption selected the wrong train",
+      "time": "3:38",
+      "minutes": 218
+    },
+    {
+      "title": "More workers can still produce more waiting",
+      "time": "3:40",
+      "minutes": 220
+    },
+    {
+      "title": "Choose a release using the saved checks",
+      "time": "3:45",
+      "minutes": 225
+    },
+    {
+      "title": "Publish the version you can reproduce",
+      "time": "3:47",
+      "minutes": 227
+    },
+    {
+      "title": "Explain one result to another participant",
+      "time": "3:53",
+      "minutes": 233
+    },
+    {
+      "title": "Take the coordination code to your own project",
+      "time": "3:58",
+      "minutes": 238
+    }
+  ]
+}

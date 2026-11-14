@@ -1,0 +1,76 @@
+{
+  "scanned_changed_or_new_files": 103,
+  "secret_pattern_findings": [],
+  "archives": {
+    "forge_workshop_kit-0.6.0-py3-none-any.whl": {
+      "bytes": 382446,
+      "sha256": "4211981bc7db3a31768119d54659c733b43d91d6a7192741e240e6f812e85bd4",
+      "member_count": 61,
+      "manifest_hash_matches": true,
+      "forbidden_files": [],
+      "transit_assets": {
+        "forge_workshop_kit/assets/transit/developers-license-agreement.pdf": "e791e24e86b9e974de060c3b238abfc392260cad54ccc0d2d3d4f0a61846b91a",
+        "forge_workshop_kit/assets/transit/manifest.json": "ad1294c9e635db6931796514e4b6bad5bf2a18cffebd52c89b96eac012b54bb6",
+        "forge_workshop_kit/assets/transit/tables.json.gz": "06cd4430815e87bdf47dac13f4c35ac3454a2c85b4821d6160d6bc8800c84606"
+      },
+      "runtime_modules": {
+        "forge_workshop_kit/factory.py": "a90bb955911d9cf607679f8fe512042fea812bcb41702b63f64bb5c29beb26b3",
+        "forge_workshop_kit/factory_teaching.py": "cf91527b6b1974bb099cdbca4b781fdc7b0aa26603d24aa405193c0dd55a7df9",
+        "forge_workshop_kit/transit.py": "1d6625cf0751ed731af34fe79d681ae6e08ccb9a734102d1af67259034ac6e80",
+        "forge_workshop_kit/transit_workshop.py": "7ec6a8df55880d8bb0ec8a5ea228f8bdac6d1632821f456d7df75deba745a630"
+      },
+      "checked_source_files": 57,
+      "stale_source_files": []
+    },
+    "forge_workshop_kit-0.6.0.tar.gz": {
+      "bytes": 916100,
+      "sha256": "9a99e7fb5566988f48e7ba260c840bd1de0de9d5dda7ef7c5e2232ac6321a898",
+      "member_count": 189,
+      "manifest_hash_matches": true,
+      "forbidden_files": [],
+      "transit_assets": {
+        "forge_workshop_kit-0.6.0/src/forge_workshop_kit/assets/transit/developers-license-agreement.pdf": "e791e24e86b9e974de060c3b238abfc392260cad54ccc0d2d3d4f0a61846b91a",
+        "forge_workshop_kit-0.6.0/src/forge_workshop_kit/assets/transit/manifest.json": "ad1294c9e635db6931796514e4b6bad5bf2a18cffebd52c89b96eac012b54bb6",
+        "forge_workshop_kit-0.6.0/src/forge_workshop_kit/assets/transit/tables.json.gz": "06cd4430815e87bdf47dac13f4c35ac3454a2c85b4821d6160d6bc8800c84606"
+      },
+      "runtime_modules": {
+        "forge_workshop_kit-0.6.0/src/forge_workshop_kit/factory.py": "a90bb955911d9cf607679f8fe512042fea812bcb41702b63f64bb5c29beb26b3",
+        "forge_workshop_kit-0.6.0/src/forge_workshop_kit/factory_teaching.py": "cf91527b6b1974bb099cdbca4b781fdc7b0aa26603d24aa405193c0dd55a7df9",
+        "forge_workshop_kit-0.6.0/src/forge_workshop_kit/transit.py": "1d6625cf0751ed731af34fe79d681ae6e08ccb9a734102d1af67259034ac6e80",
+        "forge_workshop_kit-0.6.0/src/forge_workshop_kit/transit_workshop.py": "7ec6a8df55880d8bb0ec8a5ea228f8bdac6d1632821f456d7df75deba745a630"
+      },
+      "checked_source_files": 188,
+      "stale_source_files": []
+    }
+  },
+  "excluded_from_review": [
+    ".DS_Store"
+  ],
+  "notebook_generation": "All 7 authored notebooks regenerated unchanged after final recovery patch; earlier double-generation byte-identical.",
+  "tests": "13 packaging tests passed after adding marimo-cache exclusion fixtures; all seven templates rebuilt. Earlier 14 packaging/evidence tests and all seven marimo checks passed; recovery owner reports 38 targeted tests plus two Report tests.",
+  "data_rebuild_byte_matches": {
+    "developers-license-agreement.pdf": true,
+    "tables.json.gz": true,
+    "manifest.json": true
+  },
+  "ownership_review": "Standalone forge-workshop-kit repository; existing wildcard owner @ash0ts covers all additions. No ownership transfer or wandb/core path change.",
+  "missing_local_doc_links": [],
+  "final_recovery_patch_included": true,
+  "recovery_validation": "Runtime owner reports 38 targeted tests and Ruff passed; worker runtime, prompts, model and context policy unchanged.",
+  "release_manifest_verified": true,
+  "templates_verified": [
+    "starter",
+    "facilitator",
+    "pending_inc",
+    "solar_autoresearch",
+    "request_routing",
+    "visual_inspection",
+    "transit_factory"
+  ],
+  "report_link_patch_included": true,
+  "host_specific_path_findings": [],
+  "source_archive_status": "Current source and documentation bytes match; generated marimo sessions excluded.",
+  "build_directory": "dist/v0.6.0",
+  "audited_at_utc": "2026-11-14T18:51:22.994753+00:00",
+  "cache_exclusion": "Both archives reject __marimo__ paths; source build excludes generated session caches."
+}

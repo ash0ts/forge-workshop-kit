@@ -1,0 +1,507 @@
+{
+  "source_sha256": "5148c2fd3167c9b5361c7e35b06d16644f705faed8a6b68e18954726a39d5228",
+  "slides_checked": 52,
+  "expected_slides": 52,
+  "titles": [
+    {
+      "number": 1,
+      "title": "Build a transit app with a team of coding agents"
+    },
+    {
+      "number": 2,
+      "title": "Your team needs a departures board"
+    },
+    {
+      "number": 3,
+      "title": "Here is the application we want to deliver"
+    },
+    {
+      "number": 4,
+      "title": "The inputs are public transit records"
+    },
+    {
+      "number": 5,
+      "title": "The last train can belong to yesterday’s service"
+    },
+    {
+      "number": 6,
+      "title": "Turn the brief into checks"
+    },
+    {
+      "number": 7,
+      "title": "A software factory needs a way to finish work"
+    },
+    {
+      "number": 8,
+      "title": "Add the task board and two workers"
+    },
+    {
+      "number": 9,
+      "title": "Your project contains the experiment"
+    },
+    {
+      "number": 10,
+      "title": "Connect and inspect the source data"
+    },
+    {
+      "number": 11,
+      "title": "Write the after-midnight acceptance check"
+    },
+    {
+      "number": 12,
+      "title": "One worker still needs a complete loop"
+    },
+    {
+      "number": 13,
+      "title": "Give the worker the task it is allowed to solve"
+    },
+    {
+      "number": 14,
+      "title": "Return the tool result to the worker"
+    },
+    {
+      "number": 15,
+      "title": "Run one worker before adding a team"
+    },
+    {
+      "number": 16,
+      "title": "A trace should answer what changed and why"
+    },
+    {
+      "number": 17,
+      "title": "Inspect the worker’s test in Agent Lens"
+    },
+    {
+      "number": 18,
+      "title": "Choose work that can happen independently"
+    },
+    {
+      "number": 19,
+      "title": "Ready means its prerequisites passed"
+    },
+    {
+      "number": 20,
+      "title": "Make dependencies control the workers"
+    },
+    {
+      "number": 21,
+      "title": "Separate working copies protect unfinished changes"
+    },
+    {
+      "number": 22,
+      "title": "Run the ready tasks with two workers"
+    },
+    {
+      "number": 23,
+      "title": "Read the timeline as work and waiting"
+    },
+    {
+      "number": 24,
+      "title": "Save the checkpoint before the break"
+    },
+    {
+      "number": 25,
+      "title": "Review a patch before it enters the product"
+    },
+    {
+      "number": 26,
+      "title": "Test the combined departures board"
+    },
+    {
+      "number": 27,
+      "title": "An integration error can cross a correct boundary"
+    },
+    {
+      "number": 28,
+      "title": "Shared memory needs something worth sharing"
+    },
+    {
+      "number": 29,
+      "title": "Check the lesson before another agent relies on it"
+    },
+    {
+      "number": 30,
+      "title": "Write a rule with a test attached"
+    },
+    {
+      "number": 31,
+      "title": "Save a lesson supported by an execution"
+    },
+    {
+      "number": 32,
+      "title": "Inspect the memory read, then its effect"
+    },
+    {
+      "number": 33,
+      "title": "Find the last direct train between two stops"
+    },
+    {
+      "number": 34,
+      "title": "Run both versions of the follow-up feature"
+    },
+    {
+      "number": 35,
+      "title": "The factory has two kinds of state"
+    },
+    {
+      "number": 36,
+      "title": "Evaluate the product and the process separately"
+    },
+    {
+      "number": 37,
+      "title": "A scenario is an input and an expected behavior"
+    },
+    {
+      "number": 38,
+      "title": "Compare the frozen builds on matching cases"
+    },
+    {
+      "number": 39,
+      "title": "Read one comparison row before the average"
+    },
+    {
+      "number": 40,
+      "title": "Compare the same departures in Forge"
+    },
+    {
+      "number": 41,
+      "title": "The faster build missed two final cases"
+    },
+    {
+      "number": 42,
+      "title": "A timezone assumption selected the wrong train"
+    },
+    {
+      "number": 43,
+      "title": "More workers can still produce more waiting"
+    },
+    {
+      "number": 44,
+      "title": "Choose a release using the saved checks"
+    },
+    {
+      "number": 45,
+      "title": "Publish the version you can reproduce"
+    },
+    {
+      "number": 46,
+      "title": "Explain one result to another participant"
+    },
+    {
+      "number": 47,
+      "title": "Take the coordination code to your own project"
+    },
+    {
+      "number": 48,
+      "title": "Worked answer: select ready tasks"
+    },
+    {
+      "number": 49,
+      "title": "Worked answer: retrieve a checked lesson"
+    },
+    {
+      "number": 50,
+      "title": "Worked answer: block an unverified release"
+    },
+    {
+      "number": 51,
+      "title": "Sources for the workflow"
+    },
+    {
+      "number": 52,
+      "title": "Sources for the data and evaluation"
+    }
+  ],
+  "click_states": [
+    {
+      "slide": 1,
+      "click": 0
+    },
+    {
+      "slide": 2,
+      "click": 0
+    },
+    {
+      "slide": 3,
+      "click": 0
+    },
+    {
+      "slide": 4,
+      "click": 0
+    },
+    {
+      "slide": 5,
+      "click": 0
+    },
+    {
+      "slide": 6,
+      "click": 0
+    },
+    {
+      "slide": 7,
+      "click": 0
+    },
+    {
+      "slide": 8,
+      "click": 0
+    },
+    {
+      "slide": 8,
+      "click": 1
+    },
+    {
+      "slide": 8,
+      "click": 2
+    },
+    {
+      "slide": 8,
+      "click": 3
+    },
+    {
+      "slide": 9,
+      "click": 0
+    },
+    {
+      "slide": 10,
+      "click": 0
+    },
+    {
+      "slide": 11,
+      "click": 0
+    },
+    {
+      "slide": 12,
+      "click": 0
+    },
+    {
+      "slide": 13,
+      "click": 0
+    },
+    {
+      "slide": 13,
+      "click": 1
+    },
+    {
+      "slide": 13,
+      "click": 2
+    },
+    {
+      "slide": 14,
+      "click": 0
+    },
+    {
+      "slide": 14,
+      "click": 1
+    },
+    {
+      "slide": 14,
+      "click": 2
+    },
+    {
+      "slide": 15,
+      "click": 0
+    },
+    {
+      "slide": 16,
+      "click": 0
+    },
+    {
+      "slide": 17,
+      "click": 0
+    },
+    {
+      "slide": 18,
+      "click": 0
+    },
+    {
+      "slide": 18,
+      "click": 1
+    },
+    {
+      "slide": 18,
+      "click": 2
+    },
+    {
+      "slide": 19,
+      "click": 0
+    },
+    {
+      "slide": 19,
+      "click": 1
+    },
+    {
+      "slide": 19,
+      "click": 2
+    },
+    {
+      "slide": 20,
+      "click": 0
+    },
+    {
+      "slide": 21,
+      "click": 0
+    },
+    {
+      "slide": 22,
+      "click": 0
+    },
+    {
+      "slide": 23,
+      "click": 0
+    },
+    {
+      "slide": 24,
+      "click": 0
+    },
+    {
+      "slide": 25,
+      "click": 0
+    },
+    {
+      "slide": 26,
+      "click": 0
+    },
+    {
+      "slide": 27,
+      "click": 0
+    },
+    {
+      "slide": 28,
+      "click": 0
+    },
+    {
+      "slide": 29,
+      "click": 0
+    },
+    {
+      "slide": 29,
+      "click": 1
+    },
+    {
+      "slide": 29,
+      "click": 2
+    },
+    {
+      "slide": 30,
+      "click": 0
+    },
+    {
+      "slide": 31,
+      "click": 0
+    },
+    {
+      "slide": 32,
+      "click": 0
+    },
+    {
+      "slide": 33,
+      "click": 0
+    },
+    {
+      "slide": 34,
+      "click": 0
+    },
+    {
+      "slide": 35,
+      "click": 0
+    },
+    {
+      "slide": 36,
+      "click": 0
+    },
+    {
+      "slide": 37,
+      "click": 0
+    },
+    {
+      "slide": 37,
+      "click": 1
+    },
+    {
+      "slide": 37,
+      "click": 2
+    },
+    {
+      "slide": 38,
+      "click": 0
+    },
+    {
+      "slide": 39,
+      "click": 0
+    },
+    {
+      "slide": 40,
+      "click": 0
+    },
+    {
+      "slide": 41,
+      "click": 0
+    },
+    {
+      "slide": 42,
+      "click": 0
+    },
+    {
+      "slide": 43,
+      "click": 0
+    },
+    {
+      "slide": 44,
+      "click": 0
+    },
+    {
+      "slide": 45,
+      "click": 0
+    },
+    {
+      "slide": 46,
+      "click": 0
+    },
+    {
+      "slide": 47,
+      "click": 0
+    },
+    {
+      "slide": 48,
+      "click": 0
+    },
+    {
+      "slide": 49,
+      "click": 0
+    },
+    {
+      "slide": 50,
+      "click": 0
+    },
+    {
+      "slide": 51,
+      "click": 0
+    },
+    {
+      "slide": 52,
+      "click": 0
+    }
+  ],
+  "issues": [],
+  "console_errors": [],
+  "failed_responses": [],
+  "answers": [
+    {
+      "slide": 20,
+      "destination": "/forge-workshop-kit/transit/48",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 31,
+      "destination": "/forge-workshop-kit/transit/49",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 45,
+      "destination": "/forge-workshop-kit/transit/50",
+      "keyboardReturn": true
+    }
+  ],
+  "routes_checked": 107,
+  "presenter_notes": true
+}

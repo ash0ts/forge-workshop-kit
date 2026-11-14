@@ -31,6 +31,7 @@ jobs:
             decks/pending/package-lock.json
             decks/routing/package-lock.json
             decks/inspection/package-lock.json
+            decks/transit/package-lock.json
       - uses: astral-sh/setup-uv@v6
         with:
           version: '0.11.27'
@@ -39,6 +40,7 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm ci --prefix decks/pending
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm ci --prefix decks/routing
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm ci --prefix decks/inspection
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm ci --prefix decks/transit
           cd decks/solar
           npx playwright install --with-deps chromium
       - run: python3 scripts/build_decks.py --pdf --validate

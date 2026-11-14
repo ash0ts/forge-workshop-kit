@@ -1,0 +1,67 @@
+{
+  "scope": "Local authored Transit notebook; no paid calls",
+  "checks": {
+    "all_nine_steps_navigate": true,
+    "central_continue_control": true,
+    "authored_public_acceptance_passes_and_rejects_mutations": true,
+    "authored_ready_and_claim_functions_pass": true,
+    "actual_two_thread_race_before_owners": 2,
+    "actual_two_thread_race_after_owners": 1,
+    "draft_retained_after_check": true,
+    "draft_retained_after_navigation": true,
+    "narrow_width_px": 430,
+    "narrow_document_overflow": false,
+    "dark_theme_source": "isolated marimo project configuration",
+    "javascript_errors_after_fixes": [],
+    "worked_code_functions": [
+      "public acceptance",
+      "worker request and dispatch",
+      "ready tasks and atomic claim",
+      "memory retrieval",
+      "scorer",
+      "release decision"
+    ]
+  },
+  "screenshots": [
+    "task-race-result.png",
+    "setup-narrow-dark.png",
+    "tasks-narrow-dark.png",
+    "restored-task-diff.png",
+    "restored-event-span.png",
+    "restored-event-narrow.png",
+    "restored-task-narrow-dark.png"
+  ],
+  "limitations": [
+    "Not an external-account or human rehearsal",
+    "R4 is historical live evidence; fresh R5 handled by root",
+    "Provider calls and native product readback handled separately",
+    "The native source page may require project authentication"
+  ],
+  "restored_R4": {
+    "source": "Isolated copy of transit-v060-live-r4; root live state unchanged",
+    "results": {
+      "solo": "10/10",
+      "team": "10/10",
+      "without-memory": "14/18",
+      "with-memory": "14/18"
+    },
+    "task_to_actual_diff": true,
+    "task_to_actual_operations": true,
+    "event_to_verified_native_span": true,
+    "source_unchanged_by_link_attachment": true,
+    "cross_build_claim_link_guard": true,
+    "comparison_restored": true,
+    "narrow_width_px": 430,
+    "narrow_document_overflow": false,
+    "dark_theme": "Actual marimo project configuration",
+    "paid_execution_controls_clicked": false,
+    "publication_controls_clicked": false,
+    "release_history": "No R4 release decision existed in this snapshot; no release invented."
+  },
+  "test_results": {
+    "transit_and_verified_links": "21 passed",
+    "transit_workshop_glue": "7 passed",
+    "marimo_check": "passed",
+    "python_compile": "passed"
+  }
+}

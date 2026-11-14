@@ -1,8 +1,10 @@
 import concurrent.futures
+
 import httpx
 import pytest
+
 from forge_workshop_kit import WorkshopSession
-from forge_workshop_kit.provider import Provider, ProviderStop, MODEL
+from forge_workshop_kit.provider import MODEL, Provider, ProviderStop
 
 
 def provider(tmp_path, monkeypatch, response, budget=8):
@@ -52,3 +54,18 @@ def test_concurrent_reservations_cannot_exceed_allowance(tmp_path,monkeypatch):
         rows=list(pool.map(call,range(4)))
     assert sum(r is not None for r in rows)==1
     assert sum(p.summary().values())<=.005
+
+
+def test_32k_output_is_reserved_and_larger_requests_are_rejected(tmp_path,monkeypatch):
+    calls=[]
+    def response(request):
+        calls.append(request)
+        return httpx.Response(200,json={'model':MODEL,'choices':[{'message':{'content':'{}'}}]})
+    p=provider(tmp_path,monkeypatch,response)
+    record=p.complete('large',[],max_tokens=32768)
+    assert record['request']['max_tokens']==32768
+    assert record['reserved_usd']==pytest.approx((4098*.12 + 32768*.38)/1e6)
+    assert record['unknown_usd']==record['reserved_usd']
+    with pytest.raises(ValueError,match='32768'):
+        p.complete('too-large',[],max_tokens=32769)
+    assert len(calls)==1

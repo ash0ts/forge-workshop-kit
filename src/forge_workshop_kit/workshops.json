@@ -578,6 +578,171 @@
         }
       },
       "release_status": "technical-preview"
+    },
+    {
+      "slug": "transit_factory",
+      "id": "transit-factory",
+      "kind": "workshop",
+      "title": "Build a transit app with a team of coding agents",
+      "workflow_version": "1",
+      "extras": [],
+      "steps": [
+        [
+          "setup",
+          "Understand the departures board"
+        ],
+        [
+          "worker",
+          "Run one builder"
+        ],
+        [
+          "tasks",
+          "Divide and claim the work"
+        ],
+        [
+          "team",
+          "Run two builders"
+        ],
+        [
+          "integrate",
+          "Test the combined app"
+        ],
+        [
+          "memory",
+          "Keep a checked lesson"
+        ],
+        [
+          "followup",
+          "Build the next feature"
+        ],
+        [
+          "evaluate",
+          "Compare frozen builds"
+        ],
+        [
+          "release",
+          "Reproduce and release"
+        ]
+      ],
+      "checkpoint_prefixes": [
+        [
+          "factory/setup",
+          "setup"
+        ],
+        [
+          "factory/worker",
+          "worker"
+        ],
+        [
+          "factory/tasks",
+          "tasks"
+        ],
+        [
+          "factory/team",
+          "team"
+        ],
+        [
+          "factory/integrate",
+          "integrate"
+        ],
+        [
+          "factory/memory",
+          "memory"
+        ],
+        [
+          "factory/followup",
+          "followup"
+        ],
+        [
+          "factory/evaluate",
+          "evaluate"
+        ],
+        [
+          "factory/release",
+          "release"
+        ]
+      ],
+      "comparison_labels": {
+        "solo": "One builder",
+        "team": "Two coordinated builders",
+        "without-memory": "Team without lessons",
+        "with-memory": "Team with checked lessons"
+      },
+      "comparisons": {
+        "transit-first-release": {
+          "metrics": [
+            {
+              "key": "pass_rate",
+              "label": "Acceptance scenarios passed",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "coverage",
+              "label": "Scenarios evaluated",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "seconds",
+              "label": "Build elapsed time",
+              "unit": "seconds",
+              "direction": "min",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "cost_usd",
+              "label": "Observed inference cost",
+              "unit": "USD",
+              "direction": "min",
+              "aggregate": "scorer",
+              "report": true
+            }
+          ]
+        },
+        "transit-memory-followup": {
+          "metrics": [
+            {
+              "key": "pass_rate",
+              "label": "Acceptance scenarios passed",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "coverage",
+              "label": "Scenarios evaluated",
+              "unit": "fraction",
+              "direction": "max",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "seconds",
+              "label": "Build elapsed time",
+              "unit": "seconds",
+              "direction": "min",
+              "aggregate": "scorer",
+              "report": true
+            },
+            {
+              "key": "cost_usd",
+              "label": "Observed inference cost",
+              "unit": "USD",
+              "direction": "min",
+              "aggregate": "scorer",
+              "report": true
+            }
+          ]
+        }
+      },
+      "release_status": "technical-preview"
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "kind": "Actual browser recording with captions placed below the unaltered viewport",
+  "source": "scripts/record-replay.mjs",
+  "duration_seconds": 97.6,
+  "paid_calls": 0,
+  "live_agent_execution": false,
+  "content": [
+    "Saved R4 task board and actual patch",
+    "Matching Agent Lens evidence",
+    "Native aligned evaluations",
+    "Actual R4 team first-release app"
+  ],
+  "limitations": "Replay of saved R4 executions, not a new live build. Both first builds passed 10/10; both follow-ups scored 14/18 after context-bound query failures. No memory advantage was established.",
+  "rehearsal": "transit-v060-live-r4",
+  "team_app_fingerprint": "993e10dad5d2e71b649aafb1a3632062cbdc4b6d9bfded5736fb1e20f0acd815",
+  "native_agent_lens_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/b12ffc8bc8427644cef616c34265ad7f/spans/turns/241b2eafb5060017fb6f9b78d6acbfe2/spans/0aed8384a1436468",
+  "native_comparison_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=5lkijosxo9y",
+  "agent_lens_presentation": "Labeled authenticated screenshot; no authentication material extracted",
+  "evaltables_presentation": "Actual read-only navigation in a signed-out browser",
+  "mp4_sha256": "9a078e7eaa6d50b7c95317aaa0514bd5acecbb8c343e21747c7e30087e0fce9d"
+}

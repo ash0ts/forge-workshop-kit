@@ -1,0 +1,56 @@
+{
+  "dataset_id": "mbta-red-central-20241128-v1",
+  "archive_url": "https://cdn.mbtace.com/archive/20241128.zip",
+  "archive_sha256": "a034da05b7d71d9ce8977b9c59bee831cec52c4bf4a560ae3ad09e3064c27bcd",
+  "archive_index": "https://cdn.mbta.com/archive/archived_feeds.txt",
+  "source_member_sha256": {
+    "agency.txt": "696fa6abd174ad4c8e2222f2e971f7c4e819fe220f201cd8d6ad54ef882aebe8",
+    "feed_info.txt": "9667f471c2f2ebbf6165927592121f7153d74c0930a285a70e5b1737dac008b8",
+    "routes.txt": "b162bf5961692d629bf3b7a851d0fabce12d064d0ec8b392e1fdae1f129ee8dd",
+    "stops.txt": "11a7cc14c66f171dcb72ac806140dded3314cb49aa5a2a19bfda17d3736125b3",
+    "trips.txt": "8d34731b8dd94283987879f09d851bbd1105866684cb43593ea1c051b974772d",
+    "stop_times.txt": "8a95819269a031f09b329e1bd039e3fcf698075b6a0ade843d32f580617aafe9",
+    "calendar.txt": "7a1212a9459bab5f34524f15f80a2103750b6c9217028dec310abfd8f4dc89da",
+    "calendar_dates.txt": "4d411041767327aadfb0f2f5df6885cf66003c6f18070c18118ec6356db6b11e"
+  },
+  "feed_version": "Winter 2025, 2024-12-05T23:45:10+00:00, version D",
+  "valid_from": "2024-11-28",
+  "valid_through": "2024-12-04",
+  "agency_timezone": "America/New_York",
+  "utc_offset_for_selected_dates": "-05:00",
+  "route_ids": [
+    "Red"
+  ],
+  "platform_ids": [
+    "70071",
+    "70072",
+    "70073",
+    "70074",
+    "70075",
+    "70076",
+    "70077",
+    "70078",
+    "70079",
+    "70080"
+  ],
+  "counts": {
+    "agency": 1,
+    "feed_info": 1,
+    "routes": 1,
+    "stops": 15,
+    "trips": 1252,
+    "stop_times": 6260,
+    "calendar": 4,
+    "calendar_dates": 1
+  },
+  "selection": "All Red Line trips active during the archive validity week; stop times restricted to ten central platforms. Retain original columns and string values. Include parent stations, referenced calendars, and all exceptions for retained service IDs.",
+  "limitations": "Historical scheduled departures, not observed arrivals or live predictions. Central Red Line subset only; no transfers, accessibility routing, fares, real-time disruptions, or dates outside the pinned week.",
+  "license": "Massachusetts Department of Transportation Developers License Agreement (2009-11-13)",
+  "license_url": "https://raw.githubusercontent.com/mbta/gtfs-documentation/02da961b963ba3d3a66042ca4d5bd19e21ce5c0a/developers-license-agreement.pdf",
+  "license_sha256": "e791e24e86b9e974de060c3b238abfc392260cad54ccc0d2d3d4f0a61846b91a",
+  "attribution": "Contains historical schedule data provided by MassDOT and the MBTA. This independent teaching application is not affiliated with or endorsed by either agency.",
+  "files": {
+    "tables.json.gz": "06cd4430815e87bdf47dac13f4c35ac3454a2c85b4821d6160d6bc8800c84606",
+    "developers-license-agreement.pdf": "e791e24e86b9e974de060c3b238abfc392260cad54ccc0d2d3d4f0a61846b91a"
+  }
+}

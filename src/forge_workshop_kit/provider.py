@@ -43,8 +43,8 @@ class Provider:
                 raise ProviderStop('No request was sent. Saving its reservation failed; retry this execution after publication access recovers.') from error
 
     def complete(self, request_id, messages, *, max_tokens=8192):
-        if not 1 <= max_tokens <= 16384:
-            raise ValueError('Output limit must be 1–16384 tokens.')
+        if not 1 <= max_tokens <= 32768:
+            raise ValueError('Output limit must be 1–32768 tokens.')
         request = dict(model=MODEL, messages=json.loads(json.dumps(messages)), max_tokens=max_tokens,
                        temperature=0.2, response_format={'type': 'json_object'})
         # Conservative bytes-plus-overhead bound. This is separate from context capacity.

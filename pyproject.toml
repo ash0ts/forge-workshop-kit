@@ -1,6 +1,6 @@
 [project]
 name = "forge-workshop-kit"
-version = "0.5.1"
+version = "0.6.0"
 description = "Copy a notebook, build an experiment, save the evidence in your own Forge project."
 requires-python = ">=3.11,<3.14"
 dependencies = [
@@ -31,6 +31,7 @@ build-backend = "hatchling.build"
 packages = ["src/forge_workshop_kit"]
 
 [tool.hatch.build.targets.sdist]
+exclude = ["**/__marimo__/**"]
 include = [
   "/src", "/scripts", "/notebooks", "/tests", "/examples", "/docs",
   "/README.md", "/LICENSE", "/pyproject.toml", "/uv.lock", "/data/README.md",

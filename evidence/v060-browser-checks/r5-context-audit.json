@@ -1,0 +1,227 @@
+{
+  "campaign": "transit-v060-live-r5",
+  "complete_request_set": true,
+  "request_count": 31,
+  "request_status_counts": {
+    "complete": 31
+  },
+  "builds": [
+    "solo",
+    "team",
+    "without-memory",
+    "with-memory"
+  ],
+  "evaluations": [
+    "solo",
+    "team",
+    "without-memory",
+    "with-memory"
+  ],
+  "public_reserved_case_overlap": [],
+  "reserved_case_ids_in_actual_model_requests": [],
+  "requests": [
+    {
+      "request_id": "046af3f8b8d37de47de7226f2c360daa/step-0/0",
+      "status": "complete",
+      "messages_sha256": "22df86ee64e2ac5b148c7eda80964c05e8f21ab7fedd367cef39cf8ade028fbf",
+      "message_count": 3
+    },
+    {
+      "request_id": "046af3f8b8d37de47de7226f2c360daa/step-1/0",
+      "status": "complete",
+      "messages_sha256": "6f8aacd0d9399804514e7e7b3b03e2882fc8e7028e05e1a345146c685d961e8e",
+      "message_count": 6
+    },
+    {
+      "request_id": "046af3f8b8d37de47de7226f2c360daa/step-2/0",
+      "status": "complete",
+      "messages_sha256": "def774ab0cdd44cf3f27bce50862f3b7b112aaad433b70a903d573db984705a1",
+      "message_count": 8
+    },
+    {
+      "request_id": "046af3f8b8d37de47de7226f2c360daa/step-3/0",
+      "status": "complete",
+      "messages_sha256": "c496083623c36b591e24e914aba221a621b8abd20df1248eed40989c8e5e6498",
+      "message_count": 10
+    },
+    {
+      "request_id": "29ea8320f8b2d50b5fd43cb4a0b7f88c/step-0/0",
+      "status": "complete",
+      "messages_sha256": "648d4ec0c847396c73b5274e5c1407b9fa9f276a415eb18856bf0e9f7adf0cc3",
+      "message_count": 3
+    },
+    {
+      "request_id": "29ea8320f8b2d50b5fd43cb4a0b7f88c/step-1/0",
+      "status": "complete",
+      "messages_sha256": "fab5b2ca28da9e5bc676dc3ed893827e4e9523da34a1edaaa3dddd478358730f",
+      "message_count": 6
+    },
+    {
+      "request_id": "29ea8320f8b2d50b5fd43cb4a0b7f88c/step-2/0",
+      "status": "complete",
+      "messages_sha256": "324243515bedfb689f77981ef0f8f3d17d93122fb6c63b89bbf4192ba44f8d63",
+      "message_count": 8
+    },
+    {
+      "request_id": "29ea8320f8b2d50b5fd43cb4a0b7f88c/step-3/0",
+      "status": "complete",
+      "messages_sha256": "c344719eaa019d95a906c7c4f14d7be0febd7e730ea04b3320212e0b1593c668",
+      "message_count": 10
+    },
+    {
+      "request_id": "78f5800b281056d48d452bcf9d39a27e/step-0/0",
+      "status": "complete",
+      "messages_sha256": "22df86ee64e2ac5b148c7eda80964c05e8f21ab7fedd367cef39cf8ade028fbf",
+      "message_count": 3
+    },
+    {
+      "request_id": "8a9d68fdd5845b2bda6a79eb3ce2fb05/step-0/0",
+      "status": "complete",
+      "messages_sha256": "648d4ec0c847396c73b5274e5c1407b9fa9f276a415eb18856bf0e9f7adf0cc3",
+      "message_count": 3
+    },
+    {
+      "request_id": "78f5800b281056d48d452bcf9d39a27e/step-1/0",
+      "status": "complete",
+      "messages_sha256": "6f8aacd0d9399804514e7e7b3b03e2882fc8e7028e05e1a345146c685d961e8e",
+      "message_count": 6
+    },
+    {
+      "request_id": "8a9d68fdd5845b2bda6a79eb3ce2fb05/step-1/0",
+      "status": "complete",
+      "messages_sha256": "fab5b2ca28da9e5bc676dc3ed893827e4e9523da34a1edaaa3dddd478358730f",
+      "message_count": 6
+    },
+    {
+      "request_id": "8a9d68fdd5845b2bda6a79eb3ce2fb05/step-2/0",
+      "status": "complete",
+      "messages_sha256": "791e2e3c3b9878eda3617315f1294b0cf85d328e2232097b75ea618f8149b30b",
+      "message_count": 8
+    },
+    {
+      "request_id": "8a9d68fdd5845b2bda6a79eb3ce2fb05/step-3/0",
+      "status": "complete",
+      "messages_sha256": "a61e479c923984ada3518f7cd92bfab0aeb02c8b04b627fe817c67d551abf98e",
+      "message_count": 10
+    },
+    {
+      "request_id": "8a9d68fdd5845b2bda6a79eb3ce2fb05/step-4/0",
+      "status": "complete",
+      "messages_sha256": "049526209c31f139750e2a667bb9e7ec5b7c108882df5da7dc4e4028b8537f01",
+      "message_count": 12
+    },
+    {
+      "request_id": "8a9d68fdd5845b2bda6a79eb3ce2fb05/step-5/0",
+      "status": "complete",
+      "messages_sha256": "55f3610717a5553980c584fbaf5c97d56b71a596d6e7a84f4093c8fdc6802379",
+      "message_count": 14
+    },
+    {
+      "request_id": "78f5800b281056d48d452bcf9d39a27e/step-2/0",
+      "status": "complete",
+      "messages_sha256": "3999e25849246bc5be28fa0ef7aa50523e872555d00e34045673b03a7cb98c67",
+      "message_count": 8
+    },
+    {
+      "request_id": "78f5800b281056d48d452bcf9d39a27e/step-3/0",
+      "status": "complete",
+      "messages_sha256": "4375a54b9e06ab599f117a7610ff2fb2f5c189ab49ac8a0632abdd4d9625e80a",
+      "message_count": 10
+    },
+    {
+      "request_id": "78f5800b281056d48d452bcf9d39a27e/step-4/0",
+      "status": "complete",
+      "messages_sha256": "faaa3caf9e40c5da9253539bff5e4b8c2d26473ef7c8679cc8683d36e11240b4",
+      "message_count": 12
+    },
+    {
+      "request_id": "78f5800b281056d48d452bcf9d39a27e/step-5/0",
+      "status": "complete",
+      "messages_sha256": "92bda92dec12b36a58fe5b6976edc358c2e3e022fe089d923e9b7fa16a8d10d3",
+      "message_count": 14
+    },
+    {
+      "request_id": "9a624d75bd72717c1ca1982e54fbb8aa/proposal/0",
+      "status": "complete",
+      "messages_sha256": "65ec2978b874d8a41985574876778cd0297932842e6ec4d3704ba000eea6d253",
+      "message_count": 2
+    },
+    {
+      "request_id": "1a0f4df26d5376f340142277ca70a925/step-0/0",
+      "status": "complete",
+      "messages_sha256": "670e5fffc378170011447085716dc228381bfcc68d81cf9274583898921907c1",
+      "message_count": 3
+    },
+    {
+      "request_id": "2d04768190aa8047c72ab821193d139b/step-0/0",
+      "status": "complete",
+      "messages_sha256": "a56eac9474b4fccd9952a488d2f02d82549de00a24e493ca1d75ebb780aedb70",
+      "message_count": 3
+    },
+    {
+      "request_id": "2d04768190aa8047c72ab821193d139b/step-1/0",
+      "status": "complete",
+      "messages_sha256": "7685202dd860371e4b5c7dbc5f5075e85495a3e69abe1a941659830a24c90027",
+      "message_count": 6
+    },
+    {
+      "request_id": "2d04768190aa8047c72ab821193d139b/step-2/0",
+      "status": "complete",
+      "messages_sha256": "289b83404c723b2e7776d04649823d3197f878dfa884a1eae6b7a40d0e2e7615",
+      "message_count": 8
+    },
+    {
+      "request_id": "1a0f4df26d5376f340142277ca70a925/step-1/0",
+      "status": "complete",
+      "messages_sha256": "e6175c94646df166ddbad40b80964ac548e59482611df104c967e5e1138f0c1a",
+      "message_count": 6
+    },
+    {
+      "request_id": "ed47c9a28da1135ab29726a2d09485e7/step-0/0",
+      "status": "complete",
+      "messages_sha256": "a56eac9474b4fccd9952a488d2f02d82549de00a24e493ca1d75ebb780aedb70",
+      "message_count": 3
+    },
+    {
+      "request_id": "e0dc7034a0a4ca494e299a0a4a37b256/step-0/0",
+      "status": "complete",
+      "messages_sha256": "d921d7fcf2859ed664a834fa9d8be6e37cacdeaee623e3605ac47e4a92ba7ed2",
+      "message_count": 3
+    },
+    {
+      "request_id": "e0dc7034a0a4ca494e299a0a4a37b256/step-1/0",
+      "status": "complete",
+      "messages_sha256": "fad39862ed382d2db2f52286dc7828d62873c7bd9aacbb07bc2c513933d62b57",
+      "message_count": 6
+    },
+    {
+      "request_id": "ed47c9a28da1135ab29726a2d09485e7/step-1/0",
+      "status": "complete",
+      "messages_sha256": "7685202dd860371e4b5c7dbc5f5075e85495a3e69abe1a941659830a24c90027",
+      "message_count": 6
+    },
+    {
+      "request_id": "ed47c9a28da1135ab29726a2d09485e7/step-2/0",
+      "status": "complete",
+      "messages_sha256": "e59cbea1569e9d12a9cf5fb72822ea8c23610d1c4007495c6b76aaa6cbfa1c1e",
+      "message_count": 8
+    }
+  ],
+  "static_context_boundary": {
+    "worker_readable_files": [
+      "query.py",
+      "presentation.py",
+      "contract.md",
+      "sample.json"
+    ],
+    "worker_writable_files": [
+      "query.py",
+      "presentation.py"
+    ],
+    "worker_tests": "Fixed public transit.development_runner",
+    "final_evaluation": "transit.evaluate after builds frozen; no model call receives the reserved scorer",
+    "memory_evidence": "Passing public initial integration check plus adopted source excerpt",
+    "source_visibility": "Participants can inspect final scorer source in the public repository; it is not granted to builder tools."
+  },
+  "limitation": "Identifier scan is combined with code-path review; it is not a claim that public benchmark source cannot be inspected by participants."
+}

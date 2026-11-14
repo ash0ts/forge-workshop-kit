@@ -76,3 +76,18 @@ def test_null_result_from_raised_tool_error_matches_forge_empty_field(tmp_path, 
         {'operation_name': 'turn'}, {'operation_name': 'execute_tool', 'tool_call_id': 'tool-0',
          'tool_call_arguments': '{"fixture": true}', 'tool_call_result': ''}])
     assert traces.verify_trace(session, 'trace/test', receipt, [observed], [])['verified']
+
+
+def test_failed_worker_keeps_its_actual_role_and_task_context(tmp_path):
+    from forge_workshop_kit.traces import saved_trace_inputs
+    session = WorkshopSession('test/project', 'transit-factory', state_dir=tmp_path)
+    context = {'agent_name': 'builder-2', 'worker_id': 'builder-2',
+               'task_id': 'presentation', 'dispatch_id': 'claim-1'}
+    with pytest.raises(TimeoutError):
+        with session.stage('factory/build/team/worker/presentation', inputs={
+                'mission': 'Render the departure board', 'trace_context': context}) as stage:
+            raise TimeoutError('The worker stopped before returning a patch')
+    saved = saved_trace_inputs(session, stage.id)
+    assert saved['mission'] == 'Render the departure board'
+    assert all(saved[key] == value for key, value in context.items())
+    assert 'parent_conversation_id' not in saved

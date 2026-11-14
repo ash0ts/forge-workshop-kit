@@ -12,6 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DECKS = {
+    "transit": {"title": "Build a transit app with a team of coding agents", "filename": "transit-factory"},
     "pending": {"title": "Pending, Inc.", "filename": "pending-inc"},
     "solar": {
         "title": "Solar forecasting with agent-assisted experiments",

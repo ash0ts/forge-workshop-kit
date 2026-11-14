@@ -1,6 +1,6 @@
 # Forge Workshop Kit
 
-Four coding workshops for testing changes to agents and models. Build an office agent, train solar forecasts, route customer requests, or inspect circuit boards. Each workshop follows an actual result through its code, data, trace, and evaluation. Worked examples show a measured repair or gain; the live exercise can also tie or regress.
+Five coding workshops for testing changes to agents and models. Build an office agent, train solar forecasts, route customer requests, inspect circuit boards, or coordinate coding agents building a transit app. Each workshop follows an actual result through its code, data, trace, and evaluation. Worked examples show a measured repair or gain; the live exercise can also tie or regress.
 
 Each participant works in their own project. The facilitator can read the progress you publish, but cannot run your notebook. You use your own Forge authentication, inference access, and notebook compute.
 
@@ -12,6 +12,7 @@ Each participant works in their own project. The facilitator can read the progre
 | [Pending, Inc. · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) | Give an office agent tools for refunds and account access. Check its work, edit its instructions, then build an agent that makes and tests further edits. Three hours. |
 | [Route customer requests · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view) | Compare two classifiers on Banking77, review mistakes, check a judge against human labels, and freeze a revised router. Three hours. |
 | [Find defective parts · open template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view) | Compare whole-image and patch features on real VisA circuit-board photographs, spend a fixed review budget, and reproduce the selected detector. Three hours. |
+| [Build a transit app · notebook source](notebooks/transit_factory.py) | Give two coding agents separate parts of a departure board, review and test their patches, then compare fresh workers with and without a checked lesson. Real historical MBTA schedules. Four hours. |
 
 Use the companion deck alongside your notebook:
 
@@ -21,8 +22,9 @@ Use the companion deck alongside your notebook:
 | Solar Autoresearch | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/solar/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/solar/solar-autoresearch.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/solar/solar-autoresearch-source.zip) |
 | Customer request routing | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/routing/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/routing/request-routing.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/routing/request-routing-source.zip) |
 | Circuit-board inspection | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/inspection/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/inspection/visual-inspection.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/inspection/visual-inspection-source.zip) |
+| Transit software factory | [Browser deck](https://ash0ts.github.io/forge-workshop-kit/transit/) | [PDF](https://ash0ts.github.io/forge-workshop-kit/transit/transit-factory.pdf) · [Editable source](https://ash0ts.github.io/forge-workshop-kit/transit/transit-factory-source.zip) |
 
-These decks follow the current gateway-free notebooks. The [v0.5.1 release package](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.5.1) includes notebooks, PDFs, and editable deck sources. Teaching datasets keep their existing versioned download links.
+These decks follow the current gateway-free notebooks. The [v0.6.0 release package](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.6.0) includes notebooks, PDFs, and editable deck sources. Teaching datasets keep their existing versioned download links.
 
 For a short demonstration, follow the [current demo guide](docs/current-demo-guide.md). It takes you from a notebook exercise to a trace, code change, and recorded result.
 
@@ -35,7 +37,7 @@ For setup and recovery, follow [Copy the notebook and start](docs/setup.md).
 1. Sign in to [Forge](https://forge.coreweave.com). Create a public teaching project under your account or a team where you have write access. Its name has two parts, such as `your-name/solar-workshop`.
 2. Open a template above and choose **Copy to project**. Select your project and open the editable copy. If the project isn’t offered in the copy dialog, download the notebook’s `.py` file from [notebooks](notebooks) and import it into your project.
 3. Use marimo’s **Run all stale cells** control once to initialize the notebook. This creates the controls; it does not press the exercise run buttons or start training or inference.
-4. In Solar or routing, click **Connect and restore my work**. In Pending, click **Check my project and restore saved work**. In inspection, click **Connect and restore my inspection work**. Confirm that the project shown is yours. Follow the first exercise to publish a trace and open it in Agent Lens.
+4. In Solar, routing, or transit, click **Connect and restore my work**. In Pending, click **Check my project and restore saved work**. In inspection, click **Connect and restore my inspection work**. Confirm that the project shown is yours. Follow the first exercise to publish a trace and open it in Agent Lens.
 5. Give the facilitator your project link if you want them to see progress and help requests. They don’t need your API key.
 
 Your account needs notebook compute and inference access as well as permission to write to the project. The setup check verifies project access; the first model request checks whether inference is available. Use the supplied public or fictional data: other people can read files and results you publish to a public teaching project.
@@ -55,6 +57,8 @@ uv run --extra solar marimo edit notebooks/solar_autoresearch.py
 For Pending, use `--extra pending` in those commands and open `notebooks/pending_inc.py`. Starter and facilitator need no extra; `uv sync --frozen` installs only their shared dependencies. Enter your `entity/project` in the notebook and follow the same setup exercise. Tools and training run on your laptop; model requests and publication use your Forge account. You don’t need Docker or a local API service.
 
 For routing, use `--extra routing` and `notebooks/request_routing.py`. For inspection, use `--extra inspection` and `notebooks/visual_inspection.py`. Download controls verify the pinned teaching data before loading it. Cached features make the required classifier exercises practical on CPU; inspection also lets you recompute four images.
+
+For transit, run `uv sync --frozen` and `uv run marimo edit notebooks/transit_factory.py`. It uses the shared dependencies, Python's standard library, and a bundled 57 KB timetable subset. There is no live transit API or separate app server. See the [transit exercises](docs/transit-workshop.md), [four-hour facilitator guide](docs/transit-facilitator.md), and [data provenance and prepared repairs](examples/transit/README.md).
 
 ## Work through an exercise
 
@@ -87,8 +91,9 @@ The November 14 qualification adds these worked examples. Scores are not interch
 | VisA PCB1 | Average precision **0.872900 → 0.885742**; misses **4 → 3**, false alarms **23 → 18** on 442 test boards | The bounded follow-up improved on already-inspected test images. This is a teaching retest; the failed first recipe remains published. |
 | GOES | Persistence MAE **0.192706**; residual MLP **0.162878, 0.163880, 0.163760** across seeds 17, 29, 43 | The validation-selected recipe beat persistence in all three teaching retests. Previously inspected final dates are not newly unseen data. |
 | AIA images | Changes of **+10.15%, +6.87%, −0.21%** against the manual model across the same seeds | Two improvements and one small regression. The fixed recipe did not pass the all-seed reliability gate. |
+| Transit app | One worker **10/10**; two workers **8/10**. Both follow-ups **12/18** | The faster team selected the wrong train for a UTC input. Follow-up query workers stopped at input/output limits; this does not establish a memory benefit or loss. |
 
-See [routing evidence](docs/routing-workshop.md), [inspection evidence](docs/inspection-workshop.md), and [Solar qualification](docs/solar-qualification.md) for frozen protocols, all outcomes, sources, and limitations. Dataset labels supplied by the authors, participant reviews, and model suggestions remain distinct.
+See [transit results and the captioned walkthrough](docs/transit-workshop.md), [routing evidence](docs/routing-workshop.md), [inspection evidence](docs/inspection-workshop.md), and [Solar qualification](docs/solar-qualification.md) for frozen protocols, all outcomes, sources, and limitations. Dataset labels supplied by the authors, participant reviews, and model suggestions remain distinct.
 
 The original November 13 rehearsal is preserved below.
 

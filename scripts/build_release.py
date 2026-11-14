@@ -43,6 +43,7 @@ def check_distribution(path):
         "decks",
         ".venv",
         "__pycache__",
+        "__marimo__",
     }
     for name in names:
         parts = Path(name).parts

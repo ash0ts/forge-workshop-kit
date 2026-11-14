@@ -1,0 +1,421 @@
+{
+  "total_slides": 52,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Build a transit app<br>with a team of coding agents",
+      "kind": "cover",
+      "name": "",
+      "notes": "The department and deadline are fictional. The schedule records are real public MBTA data. Participants build a bounded software factory; we do not claim to reproduce an unattended production engineering organization.",
+      "answer": null
+    },
+    {
+      "number": 2,
+      "title": "Your team needs a departures board",
+      "kind": "",
+      "name": "",
+      "notes": "Start with the person using the software. Ask what could make a plausible-looking board wrong. Listen for wrong date, wrong stop, missing departures and misleading times. No model or agent count appears before the product is clear.",
+      "answer": null
+    },
+    {
+      "number": 3,
+      "title": "Here is the application we want to deliver",
+      "kind": "",
+      "name": "",
+      "notes": "This is a real capture of the reference implementation, not a model outcome. Participants will inspect the app their workers actually produce. Call out the selected Park Street platform, midnight on November 29, and first scheduled departure at 00:08. The next slides explain why that train belongs to November 28 service.",
+      "answer": null
+    },
+    {
+      "number": 4,
+      "title": "The inputs are public transit records",
+      "kind": "",
+      "name": "",
+      "notes": "Open the notebook data receipt and read its archive date and checksum. Do not describe the small teaching subset as the complete MBTA system. MBTA describes its feed at https://github.com/mbta/gtfs-documentation/blob/master/reference/gtfs.md .",
+      "answer": null
+    },
+    {
+      "number": 5,
+      "title": "The last train can belong to yesterday\u2019s service",
+      "kind": "",
+      "name": "",
+      "notes": "This is an actual retained row: trip 63926435, stop 70076, departure_time 24:08:00, stop_sequence 150, ThanksgivingDay service, headsign Alewife. The civil timestamp is 2024-11-29T00:08:00-05:00. Ask what a parser restricted to 0..23 hours would do. The rule must survive between components.",
+      "answer": null
+    },
+    {
+      "number": 6,
+      "title": "Turn the brief into checks",
+      "kind": "",
+      "name": "",
+      "notes": "These are requirements for our product, not a claim that the initial code fails them. Show the concrete acceptance inputs and expected outputs in the notebook. Final cases stay outside the coding-worker context until the versions are frozen.",
+      "answer": null
+    },
+    {
+      "number": 7,
+      "title": "A software factory needs a way to finish work",
+      "kind": "",
+      "name": "",
+      "notes": "Software factory is a broad term. This slide states the operational meaning we implement. It includes specification, coordination, verification and release. It is not simply a chat room with several role prompts.",
+      "answer": null
+    },
+    {
+      "number": 8,
+      "title": "Add the task board and two workers",
+      "kind": "",
+      "name": "",
+      "notes": "Click once to reveal workers, once to reveal integration, once to reveal the checked lesson. Solid arrows show code or execution flow. The dashed arrow identifies reviewed evidence. The diagram is explanatory, not a recorded run.",
+      "answer": null
+    },
+    {
+      "number": 9,
+      "title": "Your project contains the experiment",
+      "kind": "",
+      "name": "",
+      "notes": "Keep the distinction between agents sharing project records and attendees sharing credentials. The latter does not happen. The notebook has an adjustable inference allowance; notebook compute is billed separately. Opening the notebook does not start agents.",
+      "answer": null
+    },
+    {
+      "number": 10,
+      "title": "Connect and inspect the source data",
+      "kind": "exercise",
+      "name": "",
+      "notes": "Do not ask participants to paste a key into a code cell. Hosted authentication comes from their own account. Locally use wandb login. Access checks should distinguish a writable project from inference entitlement.",
+      "answer": null
+    },
+    {
+      "number": 11,
+      "title": "Write the after-midnight acceptance check",
+      "kind": "exercise",
+      "name": "",
+      "notes": "The scenario is written by the participant and later runs on the integrated app. It is public development evidence, not a hidden final answer. Show how a plausible train list can still use the wrong service day.",
+      "answer": null
+    },
+    {
+      "number": 12,
+      "title": "One worker still needs a complete loop",
+      "kind": "",
+      "name": "",
+      "notes": "Start with the familiar single-agent harness. Multiple agents do not remove the need for correct tool observation handling, explicit stopping and independent checks. Model settings stay fixed in the comparisons.",
+      "answer": null
+    },
+    {
+      "number": 13,
+      "title": "Give the worker the task it is allowed to solve",
+      "kind": "",
+      "name": "",
+      "notes": "Explain each input before editing: task is the approved contract, sources are the current worker copy, lessons are explicitly retrieved project memory. This excerpt shows the fields that matter; follow the notebook function signature for the executable implementation.",
+      "answer": null
+    },
+    {
+      "number": 14,
+      "title": "Return the tool result to the worker",
+      "kind": "",
+      "name": "",
+      "notes": "This participant function controls actual tool dispatch. The runtime supplies bounded file, edit, test and task operations. It records the returned result independently. An unknown action must raise an error rather than invoke arbitrary code.",
+      "answer": null
+    },
+    {
+      "number": 15,
+      "title": "Run one worker before adding a team",
+      "kind": "exercise",
+      "name": "",
+      "notes": "Allow participants to read a diff before accepting anything. The tool event and test output must be saved even when the worker fails. A recorded failure is an optional teaching example, not a required live outcome.",
+      "answer": null
+    },
+    {
+      "number": 16,
+      "title": "A trace should answer what changed and why",
+      "kind": "",
+      "name": "",
+      "notes": "Open the participant\u2019s real trace rather than a made-up dashboard image. Each model request, tool action, failed check and handoff should be attributable to a worker and build. Trace export can be retried without rerunning the model.",
+      "answer": null
+    },
+    {
+      "number": 17,
+      "title": "Inspect the worker\u2019s test in Agent Lens",
+      "kind": "",
+      "name": "",
+      "notes": "Open the actual conversation link. The record proves that the presentation worker read and edited a file and ran a passing component check. It does not prove the whole app works. The sibling query worker exhausted its output budget in this rehearsal; preserve that failed attempt. Do not turn one passing span into a completed product claim.",
+      "answer": null
+    },
+    {
+      "number": 18,
+      "title": "Choose work that can happen independently",
+      "kind": "",
+      "name": "",
+      "notes": "The workers own query.py and presentation.py. The query returns the agreed departure records. The display consumes that interface. Use the actual notebook contract to see exactly which fields are required. Click to expose the join, then the whole-product check.",
+      "answer": null
+    },
+    {
+      "number": 19,
+      "title": "Ready means its prerequisites passed",
+      "kind": "",
+      "name": "",
+      "notes": "Completed means accepted completion with saved output, not a worker\u2019s progress narration. The local check should reject a task with an unmet dependency. The precise notebook record fields may include richer status metadata; preserve those contracts.",
+      "answer": null
+    },
+    {
+      "number": 20,
+      "title": "Make dependencies control the workers",
+      "kind": "exercise",
+      "name": "tasks-exercise",
+      "notes": "Do not solve the race with a prompt asking agents to be careful. Claiming must be atomic in the shared task store. Let two local attempts contend for one task in the free exercise.",
+      "answer": "tasks-answer"
+    },
+    {
+      "number": 21,
+      "title": "Separate working copies protect unfinished changes",
+      "kind": "",
+      "name": "",
+      "notes": "This is a practical reason for independent workspaces, not a guarantee that the generated code is safe. Reviewed local code runs with bounded tools and time limits. Remote Sandboxes remain optional and require their own access.",
+      "answer": null
+    },
+    {
+      "number": 22,
+      "title": "Run the ready tasks with two workers",
+      "kind": "exercise",
+      "name": "",
+      "notes": "Keep the concurrency at two for the core exercise. More workers is an optional later experiment. Do not change model or total budget between comparisons and then attribute a difference only to coordination.",
+      "answer": null
+    },
+    {
+      "number": 23,
+      "title": "Read the timeline as work and waiting",
+      "kind": "",
+      "name": "",
+      "notes": "Ask which task is on the critical path. Parallel work can reduce elapsed time while increasing aggregate model cost. Queue time, execution time and integration time belong in separate fields.",
+      "answer": null
+    },
+    {
+      "number": 24,
+      "title": "Save the checkpoint before the break",
+      "kind": "",
+      "name": "",
+      "notes": "Break runs from 1:45 to 1:55. Integration begins when participants return. Confirm durable local saving. If publication is pending, the work is still complete locally. Reopening or navigating must not start inference.",
+      "answer": null
+    },
+    {
+      "number": 25,
+      "title": "Review a patch before it enters the product",
+      "kind": "",
+      "name": "",
+      "notes": "The user explicitly approved human review of task contracts and patches. Keep the actual diff visible next to its test output. Do not represent a review decision as an executed version until integration really runs.",
+      "answer": null
+    },
+    {
+      "number": 26,
+      "title": "Test the combined departures board",
+      "kind": "exercise",
+      "name": "",
+      "notes": "Show the combined source identity and acceptance output. If integration fails, preserve it and diagnose the failure before another edit. The facilitator can use the recorded controlled example if the live patches happen to work.",
+      "answer": null
+    },
+    {
+      "number": 27,
+      "title": "An integration error can cross a correct boundary",
+      "kind": "",
+      "name": "",
+      "notes": "Do not claim the current agents made this error unless its execution record shows it. This example explains why tests at component boundaries matter. The repair may be to code, task contract, tests or a combination.",
+      "answer": null
+    },
+    {
+      "number": 28,
+      "title": "Shared memory needs something worth sharing",
+      "kind": "",
+      "name": "",
+      "notes": "Connect memory to a specific integration incident or verified behavior. Transcripts record what happened. A lesson is an interpretation intended to help a future task.",
+      "answer": null
+    },
+    {
+      "number": 29,
+      "title": "Check the lesson before another agent relies on it",
+      "kind": "",
+      "name": "",
+      "notes": "Click to reveal approved memory, then the fresh worker using it. A lesson can describe a successful pattern as well as a failure. Keep claims and verified observations distinct.",
+      "answer": null
+    },
+    {
+      "number": 30,
+      "title": "Write a rule with a test attached",
+      "kind": "",
+      "name": "",
+      "notes": "Do not present this as a measured memory success. Explain scope: a rule about schedule times does not mean every display field should print hour 25. Keep the contract version, source evidence and review state visible.",
+      "answer": null
+    },
+    {
+      "number": 31,
+      "title": "Save a lesson supported by an execution",
+      "kind": "exercise",
+      "name": "memory-exercise",
+      "notes": "Participants must inspect the evidence rather than approve an agent summary blindly. The retrieval function affects the later actual worker request. A directory listing is not proof that a worker read a lesson.",
+      "answer": "memory-answer"
+    },
+    {
+      "number": 32,
+      "title": "Inspect the memory read, then its effect",
+      "kind": "",
+      "name": "",
+      "notes": "This is the trace-to-behavior chain. A citation or read event establishes consultation, not that the memory caused an improvement. The matched follow-up comparison is what tests that question.",
+      "answer": null
+    },
+    {
+      "number": 33,
+      "title": "Find the last direct train between two stops",
+      "kind": "",
+      "name": "",
+      "notes": "The follow-up asks for the last direct train between two retained stations, including arrival after midnight, a no-direct-service result and an itinerary download. Each branch uses two workers. Both branches execute; no prerecorded result is substituted for one side. This small paired example teaches the method. One pair cannot establish repeatability or general superiority.",
+      "answer": null
+    },
+    {
+      "number": 34,
+      "title": "Run both versions of the follow-up feature",
+      "kind": "exercise",
+      "name": "",
+      "notes": "Keep memory fixed during this matched comparison. Do not edit it after seeing the no-memory result and call the pair controlled. If budget or infrastructure prevents a branch from finishing, retain a missing result and label the pair incomplete.",
+      "answer": null
+    },
+    {
+      "number": 35,
+      "title": "The factory has two kinds of state",
+      "kind": "",
+      "name": "",
+      "notes": "This is the distinction between a task ledger and learning. Neither requires sharing a giant conversation among all workers. Both need durable records, clear identities and bounded retrieval.",
+      "answer": null
+    },
+    {
+      "number": 36,
+      "title": "Evaluate the product and the process separately",
+      "kind": "",
+      "name": "",
+      "notes": "Avoid a composite score that conceals these tradeoffs. The saved product rows are matched across versions. Missing builds or evaluations remain missing, not silently dropped or converted to ordinary task failures.",
+      "answer": null
+    },
+    {
+      "number": 37,
+      "title": "A scenario is an input and an expected behavior",
+      "kind": "",
+      "name": "",
+      "notes": "This is a compact teaching excerpt, not the complete final acceptance scorer. Explain why sorting the identifiers before comparing would hide an ordering defect. Failed execution is not equivalent to a valid empty departure list.",
+      "answer": null
+    },
+    {
+      "number": 38,
+      "title": "Compare the frozen builds on matching cases",
+      "kind": "exercise",
+      "name": "",
+      "notes": "Final grading happens after the build choices freeze. Evaluation Tables Preview uses the working Weave-backed publication path. If publication fails, inspect the notebook rows and retry publication only; do not rerun model work.",
+      "answer": null
+    },
+    {
+      "number": 39,
+      "title": "Read one comparison row before the average",
+      "kind": "",
+      "name": "",
+      "notes": "Use one scenario to explain the matching inputs, actual outputs and pass criteria before opening the native comparison on the next slide. Keep its source URL and recorded rehearsal identity visible.",
+      "answer": null
+    },
+    {
+      "number": 40,
+      "title": "Compare the same departures in Forge",
+      "kind": "",
+      "name": "",
+      "notes": "Actual native Evaluation Tables Preview, verified in a signed-out browser. The saved workspace contains two frozen first-release builds and ten matching scenarios, with all twenty underlying evaluation rows read back. This image does not represent the R4 memory followups, which were incomplete. Open a prediction cell and inspect the service date before treating a matching average as sufficient evidence.",
+      "answer": null
+    },
+    {
+      "number": 41,
+      "title": "The faster build missed two final cases",
+      "kind": "",
+      "name": "",
+      "notes": "These are final native scores from R5, a separate engineering rehearsal after context compaction changed. All 56 scenario rows are represented. The first builds passed five public development checks each, but the two-worker final product passed only eight of ten reserved scenarios. Do not treat the earlier R4 native screenshot as this R5 comparison. Builder elapsed excludes human review and integration. Actual provider request counts were 8, 12, 5 and 5 respectively. The no-memory query reached its input bound after writing; the memory query exhausted its output allowance. Both stopped before query tests; presentation was retained unchanged. The lesson proposal cost an additional $0.00143474. Total observed inference was $0.06635800 across 31 provider requests, with zero unknown usage. This single pair cannot establish a general speed or memory effect.",
+      "answer": null
+    },
+    {
+      "number": 42,
+      "title": "A timezone assumption selected the wrong train",
+      "kind": "",
+      "name": "",
+      "notes": "The failed cases were departures/utc-input and integrated/departures/utc-input. The two-worker query anchored GTFS service-day midnight to the caller\u2019s timezone. It selected a service-clock 23:03 trip rather than the expected 18:03 Eastern departure after a 23:00 UTC request. The solo query preserved the fixed feed timezone for this historical subset. These are two checks of one defect, not two independent bugs. Both failed follow-up query edits left this earlier bug in place. Ask participants which contract or test they would add before another build.",
+      "answer": null
+    },
+    {
+      "number": 43,
+      "title": "More workers can still produce more waiting",
+      "kind": "",
+      "name": "",
+      "notes": "Primary sources: Claude Code agent-team docs, Google Research scaling-agent-systems study and Anthropic compiler report. Do not import their performance numbers as a forecast for this model or task.",
+      "answer": null
+    },
+    {
+      "number": 44,
+      "title": "Choose a release using the saved checks",
+      "kind": "",
+      "name": "",
+      "notes": "The release is a versioned workshop artifact, not an automatic public service deployment. Agent-generated recommendations do not bypass required checks. Preserve previous versions for reproduction and rollback.",
+      "answer": null
+    },
+    {
+      "number": 45,
+      "title": "Publish the version you can reproduce",
+      "kind": "exercise",
+      "name": "release-exercise",
+      "notes": "Use the final fifteen minutes for reproduction, the release decision and a short explanation. If a failed build is the only result, the correct output is a blocked release with evidence. That still completes the learning exercise.",
+      "answer": "release-answer"
+    },
+    {
+      "number": 46,
+      "title": "Explain one result to another participant",
+      "kind": "",
+      "name": "",
+      "notes": "Give participants two minutes each. The person explaining should control the notebook and open the relevant record. The facilitator should not take the keyboard or supply the conclusion.",
+      "answer": null
+    },
+    {
+      "number": 47,
+      "title": "Take the coordination code to your own project",
+      "kind": "",
+      "name": "",
+      "notes": "Ask each person for one suitable feature, one prerequisite, one acceptance check and one durable project rule from their own team. ARIA is outside the measured comparison and may require additional access.",
+      "answer": null
+    },
+    {
+      "number": 48,
+      "title": "Worked answer: select ready tasks",
+      "kind": "answer",
+      "name": "tasks-answer",
+      "notes": "Use the exact notebook task schema. This answer explains the readiness rule; the claim transaction belongs to the supplied store interface. A separate read followed by an unlocked write allows two workers to claim the same task.",
+      "answer": null
+    },
+    {
+      "number": 49,
+      "title": "Worked answer: retrieve a checked lesson",
+      "kind": "answer",
+      "name": "memory-answer",
+      "notes": "Preserve the notebook schema and evidence validation. An approved lesson still has a scope. If the interface changed, retrieve the current rule or ask for review instead of trusting a stale note.",
+      "answer": null
+    },
+    {
+      "number": 50,
+      "title": "Worked answer: block an unverified release",
+      "kind": "answer",
+      "name": "release-answer",
+      "notes": "This teaching excerpt deliberately blocks missing results and empty check lists. Use the executable notebook record shape for the real decision. A valid release requires the code and checks to refer to the same frozen build.",
+      "answer": null
+    },
+    {
+      "number": 51,
+      "title": "Sources for the workflow",
+      "kind": "",
+      "name": "workflow-sources",
+      "notes": "These are references for patterns, not required workshop installations. The notebook keeps its coordinator visible in Python and uses the existing Forge Workshop Kit. Software factory has several definitions; use the implemented workshop definition.",
+      "answer": null
+    },
+    {
+      "number": 52,
+      "title": "Sources for the data and evaluation",
+      "kind": "",
+      "name": "",
+      "notes": "The downloaded dataset manifest is authoritative for archive date, checksums, selected rows and licensing. Do not substitute current live schedule data during a comparison. The software-factory teaching experiment is not a transit reliability benchmark.",
+      "answer": null
+    }
+  ]
+}

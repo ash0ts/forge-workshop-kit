@@ -1,0 +1,19 @@
+{
+  "source_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=dg2ogm6wp3z",
+  "captured_at": "2026-11-14T18:44:48.771Z",
+  "method": "Signed-out browser screenshot of native Forge comparison; no records modified",
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "files": [
+    {
+      "path": "public/images/native-comparison-r5.png",
+      "sha256": "fa33cc60f671bc64575eb8418cc0f574d95acb89893d3d07131f15eb38a18cc1"
+    },
+    {
+      "path": "public/images/native-comparison-r5-detail.png",
+      "sha256": "4d32a925749fab9ebf39b05a483788ed79ad98e584efe38e2a26e3291dfcb7ba"
+    }
+  ]
+}
