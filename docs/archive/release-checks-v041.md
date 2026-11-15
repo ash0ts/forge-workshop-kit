@@ -13,7 +13,7 @@ The browser checks used isolated copies of saved rehearsal workspaces. Inference
 - Shared branch views: desktop, narrow and dark presentation, keyboard selection, and the sequence Candidate A → Test A → Candidate B → Test B. The detail panel separates proposals, actual executions, decisions, missing results, and retained versions.
 - Unit checks cover retained versions, rejected changes, missing traces, scorer errors, per-image averaging, shared image scales, selected execution identity, and the notebook's reactive dependencies. The existing recovery and accounting checks remain in the full suite.
 
-See [browser and source checks](../evidence/v040/validation.json). The [visual walkthrough](visual-sequence.md) describes what to inspect at each step.
+See [browser and source checks](../../evidence/v040/validation.json). The [visual walkthrough](../teaching-sequence.md#use-consistent-visual-conventions) describes what to inspect at each step.
 
 ## Deck and package checks
 
@@ -21,11 +21,11 @@ Pending has 82 slides and 98 reveal states; Solar has 101 slides and 121 reveal 
 
 Numbered annotations use the original native Forge captures and preserve their source links. The decks label recorded results and show the actual W&B and Weave comparisons. They do not present an unavailable native EvalTables page as a successful publication.
 
-The official Slidev skill is vendored from the reviewed revision listed in [UPSTREAM.md](../.agents/skills/slidev/UPSTREAM.md). The package and notebook previews are built without participant credentials. Source bundles include the shared visual definitions. Notebook regeneration, marimo validation, distribution-content checks, and the full unit suite are part of the release build.
+The official Slidev skill is vendored from the reviewed revision listed in [UPSTREAM.md](../../.agents/skills/slidev/UPSTREAM.md). The package and notebook previews are built without participant credentials. Source bundles include the shared visual definitions. Notebook regeneration, marimo validation, distribution-content checks, and the full unit suite are part of the release build.
 
 ## What the recorded results establish
 
-Pending's three versions each passed all four final cases. It demonstrates changed behavior and an inspectable improvement process, without a measured quality gain. Solar's selected image model improved on the manual model in the recorded rehearsal; its GOES neural model performed worse than persistence. Those are fixed-seed teaching examples, not independent statistical replications. The complete scores, costs and historical service checks remain in the [v0.3.0 evidence review](archive/release-checks-v030.md).
+Pending's three versions each passed all four final cases. It demonstrates changed behavior and an inspectable improvement process, without a measured quality gain. Solar's selected image model improved on the manual model in the recorded rehearsal; its GOES neural model performed worse than persistence. Those are fixed-seed teaching examples, not independent statistical replications. The complete scores, costs and historical service checks remain in the [v0.3.0 evidence review](release-checks-v030.md).
 
 ## Remaining limits
 

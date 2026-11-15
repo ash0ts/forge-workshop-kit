@@ -1,64 +1,76 @@
-# Author and rehearse a workshop
+# Author a workshop
 
-Use this checkout to maintain the notebook, companion deck, and facilitator guide together. Participants only need their copied notebook. They do not need the authoring commands or an agent skill.
+Use [CONTRIBUTING.md](../CONTRIBUTING.md) to set up a checkout and find the source files. This guide covers the lesson structure, manifest references, and rehearsal tools. Participants need none of the authoring commands or repository-local skills.
 
-The repository-local [forge-workshops skill](../.agents/skills/forge-workshops/SKILL.md) guides a coding agent through this work. It links to the kit's existing contracts rather than maintaining another runtime or copies of SDK instructions.
+## Define the lesson
 
-## Start with an exercise
+Write down the audience, duration, learning outcome, dataset and license, change participants will test, comparison, metric, and budget. Choose a concrete input that can be followed through the code and output. Read the existing workshop before extending it so the new material uses the same terms and saved records.
 
-Write down the audience, duration, learning outcome, dataset and license, change participants will test, comparison, metric, and budget. Choose a concrete input that can be followed through the code and output. Each exercise should name the function to edit, the free check, the execution button, the expected output, and a specific field or result to inspect in Forge.
+Follow the [teaching sequence](teaching-sequence.md): inspect an example, explain its intermediate values, change code, run a free check, execute explicitly, and investigate the result. The notebook and deck should name the same function, button, output, and Forge field. Put longer explanations and worked answers where learners can open them without interrupting the main exercise.
 
-The workshop manifest owns titles, workflow identities, dependency extras, entry points, and exercise references. Authored cells own learner code and explanations. Storyboards own diagrams, presenter notes, and slide sequence. See the [source map](source-map.md) for their locations.
-
-Use the [teaching sequence](teaching-sequence.md) to order those exercises. Participants inspect a development example before connecting, run one result before a batch, and examine an error before implementing an alternative. Explain the code they will change beside its inputs and output. Predictions are short discussion prompts or existing notes, not additional approval forms.
+## Scaffold a workshop
 
 ```sh
-uv sync --frozen --all-extras
-uv run --all-extras forge-workshop --help
-uv run --all-extras forge-workshop new my_workshop --title "My workshop"
-uv run --all-extras forge-workshop check my_workshop
-uv run --all-extras forge-workshop build my_workshop --install
-uv run --all-extras forge-workshop open my_workshop
+uv run forge-workshop new my_workshop --title "My workshop"
+uv run forge-workshop check my_workshop
 ```
 
-The scaffold is a starting point, not a qualified workshop. Complete its lesson and validation before adding it to the participant catalog. Existing workshop files are never overwritten by scaffolding.
+The scaffold creates an authored cell module, storyboard, runbook, and manifest entry with `release_status: draft`. It refuses to overwrite existing destinations. Replace its example and placeholder completion check before adding it to the public catalog. Add the dependencies and tests the lesson actually needs; do not install every workshop's stack by default.
 
-## Use the same code in checks and rehearsals
+The CLI needs a source checkout. The participant wheel does not include the deck toolchain or the complete authoring environment. To work from another directory, use the global `--root PATH` option before the command.
 
-Stable action-cell IDs connect the manifest to the authored notebook. Rehearsals use those cells, their current configuration, learner hooks, and review gates. They must not substitute an old domain script and call that a notebook rehearsal.
+## Bind exercises to their code
 
-Keep these kinds of coverage separate:
+[workshops.json](../src/forge_workshop_kit/workshops.json) owns notebook and deck entry points, dependency extras, workflow compatibility, and exercise references. Each exercise identifies:
 
-| Check | What it establishes |
-| --- | --- |
-| Free checks | The small exercises accept the intended values and reject the demonstrated mistakes |
-| Domain execution | The model, tool, or comparison implementation runs under its tested inputs |
-| Authored-cell execution | The current notebook action, hooks, stage identities, and publication path ran |
-| Browser interactions | Controls, prerequisites, navigation, and results worked in the rendered notebook |
-| External-account access | A separate attendee account could copy and use the required products |
-| Human rehearsal | A participant could follow the exercises without the facilitator operating the notebook |
+- A stable exercise ID and notebook step.
+- The action cell, editable function, free-check control, and run control.
+- Prerequisites, expected output, and one specific Forge investigation.
 
-A replay reads saved records. It does not train, send inference, prepare data, or retry publication. A live rehearsal uses a separate state directory, the current manifest identity, and an explicit project and allowance. Missing adapters or incomplete coverage must remain visible. Worked answers may be supplied for a technical check, but that does not establish participant usability.
+Keep prose and learner code in authored cells; metadata is not a second implementation. `forge-workshop check SLUG --write-reference` validates the bindings and writes the exercise reference under `dist/references/`. `--source-only` skips the registered free-check tests.
+
+Action-cell IDs normally derive from their control symbols. Before renaming a control, give its cell an explicit stable ID so saved rehearsal references do not move. A copy edit should not change stage identity, configuration, input references, or workflow compatibility. The [technical specification](../techspec.md) explains those execution contracts.
+
+When splitting a batch into smaller teaching steps, keep each execution's existing inputs and identity. Mark the aggregate checkpoint complete only when all required matching results exist. Test a partial workspace as well as a completed one; a cached result must not conceal an unfinished search trial or missing comparison case.
+
+ARIA stop placement, evidence allowlists, recorded investigations, and citation notes have their own [contract](aria-investigations.md). Use that contract when adding or revising an investigation; do not copy its access and billing instructions into each runbook.
+
+## Rehearse the authored notebook
+
+List the current action IDs without running them:
 
 ```sh
-uv run --all-extras forge-workshop rehearse request_routing --list-actions
-uv run --all-extras forge-workshop rehearse request_routing --mode replay --state .workshop/my-routing
-uv run --all-extras forge-workshop rehearse request_routing --mode live \
+uv run --extra routing forge-workshop rehearse request_routing --list-actions
+```
+
+Replay reads an existing workspace journal and reports its saved stages. It does not create results, prepare data, train, call a model, or retry publication:
+
+```sh
+uv run --extra routing forge-workshop rehearse request_routing --mode replay --state .workshop/my-routing
+```
+
+For a live rehearsal, choose a separate state directory, project, and allowance:
+
+```sh
+uv run --extra routing forge-workshop rehearse request_routing --mode live \
   --project YOUR_ENTITY/YOUR_PROJECT --state .workshop/routing-rehearsal --budget-usd 8
 ```
 
-Live mode is an interactive runner. Use `list` to see the current controls, `inputs` to list editable values, `show NAME` to read one, `step` to navigate, `set NAME JSON` to supply an input, and `run` with an exact action-cell ID. It does not choose candidates, accept diffs, or release a version for you. Use `status` to inspect coverage and `quit` to save the receipt. Browser and human checks still need their own rehearsals.
+Live mode executes the current authored action cells. It is interactive: `list` shows controls, `inputs` lists editable values, `show NAME` displays one, `step STEP` navigates, `set NAME JSON_VALUE` changes an input, and `run EXACT_CELL_ID` executes an action. Use `status` to inspect coverage and `quit` to save the receipt. It does not fill in answers, accept diffs, or select releases for the operator.
 
-## Check setup without starting an experiment
+Historical domain scripts can qualify a recipe, but they do not establish that the current notebook works. Record coverage separately:
 
-`forge-workshop doctor` checks the local environment by default. Add `--services --project ENTITY/PROJECT` to request service access checks. Neither path sends a model request. Project access alone does not establish inference billing, trace readback, or evaluation publication.
+| Coverage | What was checked |
+| --- | --- |
+| Free checks | Learner functions accept the intended values and reject the demonstrated mistakes |
+| Domain execution | A model, tool, or comparison ran on the stated inputs |
+| Authored cells | Current notebook actions, learner hooks, identities, and review controls ran |
+| Browser | Rendered controls, prerequisites, navigation, and results worked |
+| External account | An attendee account could copy the template and use the required products |
+| Human rehearsal | A participant completed and explained the exercise without the facilitator operating it |
 
-Use [setup and recovery](setup.md) for participant-facing instructions. Keep the facilitator [monitor](../notebooks/facilitator.py) read-only. It shows published progress and explicit help requests; an absent update remains unknown.
+Worked answers are useful for a technical check, but cannot establish participant usability. Record absent adapters or incomplete checks as limitations. Keep the current findings in [release checks](release-checks.md), with proposed follow-up work in [next-up.md](../next-up.md).
 
-## Build and publish separately
+## Use product documentation at the boundary
 
-`forge-workshop build` generates notebooks, packages, and the mapped deck. PDF and browser validation are explicit options. `forge-workshop publish` requires a destination project and verifies the release before updating templates. Follow [maintenance](maintenance.md) for release assets, publication readback, and prior-version preservation.
-
-The CLI runs from a source checkout. Installing the participant wheel alone does not install storyboards, maintainer tools, or unpublished data. This keeps participant installation smaller and avoids implying that a wheel contains the full authoring environment.
-
-For product-specific help, the [official W&B skills](https://github.com/wandb/skills) cover tracing, evaluations, and experiment work. Their helper dependencies can differ from this kit's pins. Review that compatibility before using them; attendees do not need them installed.
+Use [setup](setup.md) for participant access and recovery, [evaluation publication](evaluations.md) for comparison backends, and [maintenance](maintenance.md) for builds and destination-checked publication. The optional [official W&B skills](https://github.com/wandb/skills) can help with product-specific work; check their dependencies against the kit's lockfile before using their helpers.

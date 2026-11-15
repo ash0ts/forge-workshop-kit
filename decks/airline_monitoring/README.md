@@ -1,21 +1,25 @@
-# Airline monitoring deck
+# Airline monitoring
 
-The authored source is `scripts/build-storyboard.py`. It generates `slides.md`, presenter notes, and the slide map used by browser/PDF validation. The session follows one itinerary through observation, native tag review, regression-case curation, a code repair, matched evaluation, and subsequent monitoring.
+A six-hour workshop following a passenger request through an airline agent, human review, a monitoring rule, a regression case, and a tested repair. The bookings are simulated records adapted from a pinned public benchmark. A successful booking API call can still produce the wrong itinerary.
 
-The deck uses the Workshop Kit's shared pinned Slidev toolchain. From the repository root:
+[Browser deck](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/) · [Copy the notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view) · [Facilitator runbook](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/airline_monitoring-runbook.md) · [Presenter notes](notes/presenter.md)
+
+## Edit and check
+
+Edit `scripts/build-storyboard.py`; it generates the slides, presenter notes, and slide map. `AirlineMechanism.vue` contains the itinerary replacement, tracing, monitoring denominators, regression reconstruction, and matched-comparison diagrams. The same objects remain visible across reveals, with text descriptions and intermediate PDF states. Follow the [shared deck instructions](../README.md) to preview, build, and validate.
+
+`data/native-captures.json` identifies each native image, source URL, and annotation. Keep the originals unchanged. The [visual map](notes/visual-coverage.json) connects diagrams to the operation they explain. Simplified itinerary labels and arithmetic examples are illustrations, not recorded agent outcomes.
+
+## Recordings and qualification
+
+The [captioned guide](public/walkthrough/index.html) uses saved v0.8.0 rehearsal screens. Its video, keyboard chapter navigation, and transcript preview the workshop; they do not show live clicks or every later revision. The ARIA investigations have their own actual responses and checked sources.
+
+After browser validation, regenerate that guide from the repository root with:
 
 ```sh
-python scripts/build_decks.py --only airline_monitoring --pdf --validate
+python3 decks/airline_monitoring/scripts/build-walkthrough.py
 ```
 
-No workshop execution, training, inference, or publication occurs during this build. Use Node.js 22.23.2 or later and the existing locked dependencies in `decks/`.
+Video rendering needs Pillow, ffmpeg, and a local font supplied through `--font`; the default is macOS Arial Unicode. `--skip-video` regenerates only HTML, transcript, and source manifest. The input captures must exist in the deck's `.screenshots` directory.
 
-The simplified itinerary labels and arithmetic examples are explicitly identified as illustrations. Native captures are included only when `data/native-captures.json` identifies an existing image, source URL, and annotations. The original images remain unchanged. Missing native verification does not become a successful exercise through a diagram.
-
-`components/AirlineMechanism.vue` contains the editable worked diagrams: flight-list replacement, related-record assignment, request and observation handoff, span parentage, judge context, saved versus draft criteria, approved nonstop changes, monitoring denominators, regression reconstruction, list slicing, and matched comparisons. Sixteen existing slides use these diagrams; the deck remains 73 slides. The same objects stay in place across click reveals. Each diagram includes an accessible description, and the PDF exports the meaningful intermediate states. [Visual coverage](notes/visual-coverage.json) records what each revision replaces and the evidence behind it.
-
-See the [facilitator runbook](../../docs/airline_monitoring-runbook.md) for the six-hour schedule and recovery instructions. The notebook's manifest and authored cells own exact learner function and control names.
-
-The [recorded guide](public/walkthrough/index.html) follows 13 saved screens in 3 minutes 42 seconds. It includes a captioned MP4, keyboard chapter navigation, and a transcript. It is assembled from the verified deck and native rehearsal captures; it does not depict live clicks. The video preserves the captured screen and places captions below it. These are the v0.8.0 rehearsal screens; they do not show every diagram added in the current visual revision.
-
-After validating the deck, regenerate the guide with `python decks/airline_monitoring/scripts/build-walkthrough.py` from the repository root. Video rendering needs Pillow, ffmpeg, and a local font supplied through `--font` (the default is macOS Arial Unicode). `--skip-video` regenerates only the HTML, transcript, and source manifest. The source captures must be present in the deck's `.screenshots` directory from browser validation.
+This remains a technical preview. All forty recorded agent conversations passed booking checks, so the live comparison shows a tie. Native AI Alignment requests returned HTTP 500, and the session had no completed Insights cluster. [Qualification](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/airline-monitoring-qualification.md) keeps those missing monitoring results separate from booking correctness. Do not turn an illustration into a claim that the native exercise passed.

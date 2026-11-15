@@ -1,4 +1,8 @@
-# Pending visual explanations
+# Pending visual-design notes
+
+**Archived design note, November 14, 2026.** Preserved from [revision `86b74a4`](https://github.com/ash0ts/forge-workshop-kit/commit/86b74a4). Slide numbers, counts, and validation statements below describe that revision, not the current deck. The provenance and design rationale remain useful when editing its diagrams.
+
+Use the [current deck guide](../README.md) for authoring and presentation, and [the generated slide map](slide-map.json) for current exercise identities.
 
 The current deck contains 82 slides. The latest revision introduces the second office ticket earlier, explains skill loading and the four checking functions, annotates native spans, and highlights code in seven progressive builds. Existing diagrams remain grounded in the same public fixtures and saved rehearsal. The authored source is [build-storyboard.py](../scripts/build-storyboard.py); every build regenerates the slides, slide map, and presenter notes.
 

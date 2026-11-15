@@ -16,7 +16,9 @@ The [ARIA guide](aria-investigations.md) describes the activities and access req
 | Decks and PDFs | The new sequences show the question, a claim from the actual response, and the checked source. Original captures are preserved; annotations identify fields without replacing values. Browser and PDF receipts accompany the release. |
 | Packaging and publication | The build checks all eight templates and exports credential-free previews. Publication verifies the destination and reads back source and preview hashes. Maintainer publication does not establish external-account access. |
 
-The release's `validation-v0100.json` records final test counts, build results, native conversation identities, and outstanding checks. No workshop model was retrained and no underlying agent experiment was repeated to make an ARIA attachment. ARIA conversations are new usage outside the notebook's $8 inference allowance; their cost is marked unavailable where the product did not expose it.
+The [final validation receipt](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.10.0/validation-v0100.json) records test counts, build results, native conversation identities, and outstanding checks. The complete local suite passed 475 tests after the UTF-8 authoring fix. [Windows, Linux, and macOS CI](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43749901938) also passed. The [deck deployment](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43748011053) rendered and checked all six decks and PDFs.
+
+All eight templates passed source/preview readback. The maintainer browser check loaded all six workshop previews and their **Copy to project** controls; it did not create or run external-account copies. The [validation bundle](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.10.0/validation-v0100.zip) preserves detailed receipts and captures. No workshop model was retrained and no underlying agent experiment was repeated to make an ARIA attachment. ARIA conversations are new usage outside the notebook's $8 inference allowance; their cost is marked unavailable where the product did not expose it.
 
 ## What the recordings establish
 
@@ -28,7 +30,7 @@ The rehearsed interaction uses exact source links and saved excerpts, plus a nat
 
 ## Outstanding readiness checks
 
-Fresh external-team access, a participant without ARIA access, and a human rehearsal remain outstanding. The recording path is tested locally without provider calls; that is not a fresh-account access test. All six workshops remain **technical previews**.
+The prioritized work and completion criteria are in [next-up.md](../next-up.md). Fresh external-team access, a participant without ARIA access, and a human rehearsal remain outstanding. The recording path is tested locally without provider calls; that is not a fresh-account access test. All six workshops remain **technical previews**.
 
 Native EvalTables comparisons were inspected using the existing Weave-backed publication path. Missing metrics are not inferred from unrelated displayed fields. Airline's earlier AI Alignment HTTP 500 responses and unavailable Insights clusters remain explicit limitations; this revision does not claim those services recovered. See [evaluation recovery](evaluations.md) and [Airline qualification](airline-monitoring-qualification.md).
 

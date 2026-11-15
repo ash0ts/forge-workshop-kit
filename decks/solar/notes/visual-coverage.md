@@ -1,4 +1,8 @@
-# Worked Solar diagrams
+# Solar worked-diagram notes
+
+**Archived design note, November 14, 2026.** Preserved from [revision `acc5d87`](https://github.com/ash0ts/forge-workshop-kit/commit/acc5d87). Slide numbers, counts, and validation statements below describe that revision, not the current deck. The provenance and design rationale remain useful when editing its diagrams.
+
+Use the [current deck guide](../README.md) for authoring and presentation, and [the generated slide map](slide-map.json) for current exercise identities.
 
 This pass replaces eight existing explanations without extending the 123-slide session. The editable diagrams live in `components/SolarWorked.vue`; `scripts/teaching_sequence.py` places them beside the relevant code. Each has three states and a text description.
 

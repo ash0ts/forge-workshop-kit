@@ -1,15 +1,19 @@
-# Request-routing workshop deck
+# Request routing
 
-This 5½-hour deck follows the current `notebooks/request_routing.py`. The audience joins a fictional bank support team, uses real Banking77 requests, trains two classifiers, reviews uncertain cases, checks a judge, and evaluates a frozen version.
+A five-and-a-half-hour workshop for a banking support team deciding where requests belong. Participants use real Banking77 messages, compare TF–IDF with frozen sentence embeddings, inspect mistakes, review labels, and check an automated reviewer. The final capstone reproduces the selected classifier, repairs a deliberately faulty label mapping, and verifies rollback.
 
-Edit `scripts/build-storyboard.py`, then regenerate `slides.md`. It contains exact notebook controls, editable function names, presenter notes, and optional worked answers. `RoutingCase.vue` uses recorded review-pool predictions; it does not invent attendee outcomes.
+[Browser deck](https://ash0ts.github.io/forge-workshop-kit/routing/) · [Copy the notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view) · [Workshop and schedule](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/routing-workshop.md) · [Presenter notes](notes/presenter.md)
 
-The measured worked example is a 4.0844-point macro-F1 gain from frozen MiniLM features over word TF–IDF on the official test set. Participant review/retraining is an honest live experiment and may tie or regress. Evidence and limits are in `../../docs/routing-workshop.md`.
+## Edit and check
 
-Build with the repository's `scripts/build_decks.py --only routing`. The deck includes an actual Agent Lens judge conversation and a preserved original capture with its source link. The 12-call live rehearsal verifies requests and stored spans, not judge reliability. The native comparison slides use Weave-backed Evaluation Tables Preview in the W&B workspace. They are separate from the CES v2 publication attempt, whose HTTP 500 remains visible in the saved receipt.
+`scripts/build-storyboard.py` generates the slides, presenter notes, and slide map. Use `scripts/depth_storyboard.py` for the worked explanations and `scripts/release_storyboard.py` for the release capstone. Follow the [shared deck instructions](../README.md) to preview, build, and validate.
 
-The original four-hour sequence now continues through a 90-minute release-and-recovery capstone, including a third ten-minute break. The new lab deliberately rotates the saved intent labels, compares the faulty and repaired loader on 77 frozen review cases, and restores the intact release. It does not retrain, send model requests, or change the official-test comparison. Progressive diagrams connect the editable function to its inputs and outputs; adjacent slides preserve the same objects for backward navigation and PDF export. Edit `scripts/depth_storyboard.py` for these sequences and timing, then run `scripts/build-storyboard.py`. Symbolic exercise/answer names resolve during generation. `notes/slide-map.json` records the concept, source, evidence, exercise control and timing for each slide.
+`RoutingMechanism.vue` explains the feature and decision calculations; `RoutingCase.vue` uses saved review-pool predictions. `ReleaseWalk.vue` shows probability columns and their label mapping. Illustrative probabilities are labeled separately from actual predictions.
 
-Edit `scripts/release_storyboard.py` and `components/ReleaseWalk.vue` for the capstone. Probability values in its diagrams are explicitly illustrative. Actual predictions and native links come from the learner’s saved batch; no capstone screenshot is fabricated.
+`data/feature-example.json` contains values derived from frozen public files and their checksums. `scripts/derive-visual-evidence.py` reproduces these examples without classifier training or paid calls. The slide map connects concepts to notebook functions, controls, evidence, and timing.
 
-The visual revision replaces text-card explanations with editable SVG mechanisms beside their code, keeping the existing slide count and session schedule. `components/RoutingMechanism.vue` owns the figures. `data/feature-example.json` contains values derived from frozen public files, including source checksums; `scripts/derive-visual-evidence.py` reproduces them without classifier training or paid calls. Schematic arrays and public arithmetic fixtures are labeled separately from saved predictions.
+## Recorded examples
+
+The frozen-embedding classifier gains 4.0844 macro-F1 percentage points over TF–IDF on the official test set. Participant review and retraining is a separate experiment that can tie or regress. The eight prompted requests are also separate from the full classifier evaluation and judge calibration.
+
+The release drill rotates labels without changing probability columns, then restores the original predictions. It uses development review cases and adds no training or model calls. It does not improve the underlying classifier. [Qualification and release evidence](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/routing-workshop.md) identify the runs and limits. Native captures preserve their source links; [evaluation publication](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/evaluations.md) describes the working comparison path.

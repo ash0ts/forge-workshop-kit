@@ -1,54 +1,49 @@
 ---
 name: forge-workshops
-description: Author, revise, rehearse, and publish Forge Workshop Kit notebooks and companion decks. Use when building a hands-on workshop or preparing its delivery.
+description: Create, revise, rehearse, and publish Forge Workshop Kit notebooks and decks. Use when authoring a workshop or preparing its delivery from this repository.
 ---
 
 # Forge workshops
 
-Work in the standalone Workshop Kit checkout. The participant copies a notebook into their own project and uses their own credentials. Keep the editable lesson in the authored cells; the shared package owns saving, accounting, publication, and progress. Read the [source map](../../../docs/source-map.md) and [framework contract](../../../docs/framework.md) before changing those boundaries.
+Work in the standalone Workshop Kit checkout. Read [AGENTS.md](../../../AGENTS.md) for its execution and compatibility boundaries, then [CONTRIBUTING.md](../../../CONTRIBUTING.md) for source locations and local checks. Participants copy notebooks into their own projects; this skill is for contributors, not a participant dependency.
 
-## Establish the lesson
+## Choose the relevant guide
 
-Read the current notebook, storyboard, and runbook before proposing changes. Record the audience, duration, learning outcome, dataset and license, intervention, comparison, metric, and budget. Preserve decisions already supplied by the requester. Ask only for choices that affect the exercise and cannot be recovered from the existing material.
+Load only the material needed for the requested change:
 
-Follow one concrete example through intermediate values, the responsible code, its output, a participant exercise, and a specific investigation in Forge. Give learners a bounded code change, a free local check, an explicit execution control, and a result they can explain. A form or approval is not a replacement for implementing the concept.
+| Task | Read |
+| --- | --- |
+| Understand current readiness or choose follow-up work | [next-up.md](../../../next-up.md) |
+| Change runtime behavior, saving, accounting, or recovery | [Technical specification](../../../techspec.md) |
+| Add a workshop, bind exercises, or rehearse action cells | [Authoring](../../../docs/authoring.md) |
+| Change lesson order or explanations | [Teaching sequence](../../../docs/teaching-sequence.md) |
+| Revise diagrams, slide reveals, or product captures | [Visual conventions](../../../docs/teaching-sequence.md#use-consistent-visual-conventions) and the affected deck's storyboard |
+| Change ARIA context, citation notes, or recordings | [ARIA investigations](../../../docs/aria-investigations.md) |
+| Change evaluation rows or publication | [Evaluation publication](../../../docs/evaluations.md) |
+| Build or publish a release | [Maintenance](../../../docs/maintenance.md) and [release checks](../../../docs/release-checks.md) |
 
-Let participants inspect one bundled development example before authentication. Explain the request, available information, and expected outcome; label recorded executions. Introduce one working result before a batch or search, inspect its errors before proposing an alternative, and make a human comparison before automating that decision. Use the [teaching sequence](../../../docs/teaching-sequence.md) when revising notebook and deck order. Keep prediction prompts brief and separate from measured agent inputs. Worked answers remain available on request.
+## Establish the work
 
-For new workshops, use `forge-workshop new` from the [authoring guide](../../../docs/authoring.md). Complete the scaffold before publishing it. The manifest owns exercise references and entry points; authored cells and storyboards own explanations. Edit those sources and regenerate, rather than patching generated notebooks or slide Markdown.
+Read the affected notebook source, storyboard, and runbook before editing. For a new lesson, identify the audience, learning outcome, dataset and license, intervention, comparison, metric, duration, and budget. Recover those decisions from existing material or the request before asking for missing choices.
 
-## Preserve the experiment
+Follow a concrete input through its intermediate values, code, output, participant exercise, and Forge investigation. A participant should change code that affects the next execution. Keep implementation explanations beside the code and put humor in the setting, not in controls or errors.
 
-Use the existing session, stage, provider, and publication contracts. A completed execution with a failed upload is still completed. A replay is saved evidence, never the outcome of a learner's unexecuted edit. Keep unknown usage reserved, unavailable judgments missing, and publication retries independent of model or training calls.
+Edit authored sources and manifest references together, then regenerate their outputs. Use `forge-workshop --help` and the command's own help to verify flags. Do not invent a parallel build system or copy SDK instructions into this skill. Product-specific guidance may come from the [official W&B skills](https://github.com/wandb/skills), after checking compatibility with the kit's pinned dependencies.
 
-Keep the learner's project and the exact executed code attached to results. Opening, editing, navigating, restoring, or building a notebook must not execute an exercise. Review gates remain real in a rehearsal. Do not silently substitute models, change splits, or select examples by favorable scores.
+## Stance
 
-When splitting a batch into teaching steps, preserve each execution's stage name, configuration, source contents, and input references. Complete the aggregate checkpoint only after all required results exist. Test partial and legacy completed workspaces. A separately scheduled search job and a cached training result are different records; neither may conceal a missing configuration.
+Reading source, editing local materials, running free checks, and building are ordinary contributor work. Live rehearsals and publication use the task's existing authorization, explicit run controls, project, and allowance. If the request only asks for local changes, return the checked local result without publishing it.
 
-Read [evaluation publication](../../../docs/evaluations.md) when changing comparisons. Consult the [official W&B skills](https://github.com/wandb/skills) for product-specific guidance, but check their dependency requirements against this kit before using their helpers. They are optional authoring aids, not participant dependencies.
+When credentials or a native feature are unavailable, preserve completed work and report the affected check. Use an existing recorded exercise where the workshop supports one. Do not fabricate a recording, introduce shared credentials, or rerun an experiment to replace a failed upload.
 
-## Use ARIA to investigate saved work
+## Success criteria
 
-For each workshop, place the eight-minute development investigation after a participant interpretation and before an intervention. Place the seven-minute conclusion check after the frozen comparison and before Report publication. Follow [ARIA investigations](../../../docs/aria-investigations.md). Keep early context limited to the selected development or validation records; exclude complete journals, final comparisons, and worked repairs.
+- The lesson identifies a concrete change, output, and record to inspect.
+- Notebook, deck, runbook, and manifest refer to the same functions and controls.
+- Results and captures match saved code, inputs, and outputs; unsuccessful and missing results remain visible.
+- Validation states which source, browser, native-access, and human checks actually ran.
+- Requested deliverables are complete, with publication status and remaining limitations stated.
 
-Use genuine source-linked responses and captures. Preserve uncertainty, unsuccessful answers, and unavailable recordings. Native context controls must be rehearsed; copied prompt text is not an attachment. Verify a citation against the actual event, value, prediction, or changed line. ARIA notes never silently become labels, scores, prompts, approved lessons, or release decisions. Keep team/Smart-feature access and separately billed usage explicit, with a recorded path for participants without access.
+## Not this skill
 
-## Rehearse what participants receive
-
-Use the current authored action cells and stable exercise IDs. Historical qualification scripts can establish a recipe or domain behavior; they cannot establish that the current notebook works. Record free checks, domain execution, authored-cell execution, browser interaction, external-account access, and human rehearsal separately.
-
-Inspect the actual notebook and rendered deck. Check code beside its effect, readable labels, meaningful reveal states, Back navigation, worked-answer returns, and exact function/button references. Preserve original product captures and their source links. Use diagrams for mechanisms and real captures for observed product behavior. Never invent traces, scores, screenshots, or successful publication.
-
-## Build and publish
-
-Use the commands and destination checks in [maintenance](../../../docs/maintenance.md). Building is local; publishing is a separate action to an explicit project. Existing task authorization applies. If publication was not requested, provide the validated build rather than uploading it. If authentication or a product feature is unavailable, preserve the build and report the affected check; do not introduce a gateway or facilitator credential workaround.
-
-Keep previous releases and attendee copies intact. Package version and workflow compatibility are separate. Update [release checks](../../../docs/release-checks.md) with the coverage actually obtained, including any external-account or human checks still outstanding.
-
-## Completion
-
-- The participant-authored change affects the subsequent execution.
-- Notebook, deck, runbook, and manifest identify the same exercise and control.
-- Results open the matching code, data, trace, and comparison where available.
-- Validation distinguishes observed behavior from untested access or usability.
-- Requested deliverables are built and publication status is explicit.
+This skill does not authorize experiment spending, external publication, or messages to others beyond the user's task. It does not replace the product's SDK documentation or the participant's workshop instructions. Use the linked contracts for those details rather than adding another copy here.

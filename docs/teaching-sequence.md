@@ -29,6 +29,16 @@ Follow the same case and intermediate values in both surfaces. A reveal answers 
 
 Use Agent Lens to locate an operation, runs and Sweeps to compare experiments, Artifacts to reproduce saved files, and EvalTables to inspect matching cases. Native tag criteria and Alignment answer whether a monitor agrees with reviewed examples. Each product link gets one specific investigation task.
 
+## Use consistent visual conventions
+
+Keep the same case and values in stable positions across reveals. Label inputs, outputs, units, and tensor shapes beside the corresponding code. A screenshot annotation should point to an actual field without hiding its value; retain the original capture and its source link. Next/Back and case selectors only change what is displayed, never execute the experiment.
+
+For candidate branches, use gray for the parent, blue for Candidate A, and orange for Candidate B. Composition uses a neutral decision card. Solid arrows show code or execution flow; dashed arrows show reviewed evidence. Color never indicates quality. Label the selection and status in text.
+
+Selecting a saved branch should show its intent, actual diff, probe result, decision, and Forge links. **Retain this version** means unchanged code, with the reason. Proposed or planned work has no execution or trace until one is recorded. Do not draw an invented improvement conversation for a manual edit.
+
+The [deck guide](deck-guide.md) describes the objects and distinctions to follow in each workshop. The domain runbooks own the data rules and calculations; publication recovery stays in [evaluations](evaluations.md).
+
 ## Ask ARIA after the participant has an interpretation
 
 Schedule an eight-minute development investigation before the proposed intervention and a seven-minute conclusion check before Report publication. Reuse discussion time. Show the selected case and versions, the participant’s hypothesis, an actual ARIA response, and the source used to check one claim. The question, response, and verification remain separate frames in the deck and explicit actions in the notebook.

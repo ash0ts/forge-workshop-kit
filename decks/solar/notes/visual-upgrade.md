@@ -1,4 +1,8 @@
-# Solar deck visual upgrade
+# Solar visual-design notes
+
+**Archived design note, November 14, 2026.** Preserved from [revision `9c50182`](https://github.com/ash0ts/forge-workshop-kit/commit/9c50182). Slide numbers, counts, and validation statements below describe that revision, not the current deck. The provenance and design rationale remain useful when editing its diagrams.
+
+Use the [current deck guide](../README.md) for authoring and presentation, and [the generated slide map](slide-map.json) for current exercise identities.
 
 The deck keeps the current controls, settings, and recorded v0.3.0 experiment. The fictional lab now prepares for a weekly forecast review: identify the code behind a score, compare forecasts, and test an AI research assistant’s proposed edits. This is a presentation change, not another experiment.
 

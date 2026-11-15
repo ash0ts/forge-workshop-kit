@@ -26,13 +26,23 @@ uv run --extra pending wandb login
 uv run --extra pending marimo edit notebooks/pending_inc.py
 ```
 
-For Solar, use `--extra solar` in all three uv commands and open `notebooks/solar_autoresearch.py` instead. Enter your writable `entity/project` in the setup step. You can also set `WORKSHOP_PROJECT` before launching. Tools and training run in the notebook’s Python runtime. Inference and publication use your own Forge credentials.
+Choose the extra and notebook below. Replace `pending` in the three uv commands above; for “none,” omit `--extra pending` entirely.
 
-Routing uses `--extra routing` with `notebooks/request_routing.py`; inspection uses `--extra inspection` with `notebooks/visual_inspection.py`. Both download a checksum-verified teaching bundle when you explicitly click Download. Their classifier training runs on CPU. The routing model and judge calls use your inference allowance; inspection's required path does not call a model API.
+| Workshop | Dependency extra | Notebook |
+| --- | --- | --- |
+| Pending | `pending` | `notebooks/pending_inc.py` |
+| Solar | `solar` | `notebooks/solar_autoresearch.py` |
+| Routing | `routing` | `notebooks/request_routing.py` |
+| Inspection | `inspection` | `notebooks/visual_inspection.py` |
+| Transit | none | `notebooks/transit_factory.py` |
+| Airline | none | `notebooks/airline_monitoring.py` |
+| Starter / facilitator | none | `notebooks/starter.py` / `notebooks/facilitator.py` |
 
-Transit needs only the shared dependencies. Run `uv sync --frozen`, `uv run wandb login`, then `uv run marimo edit notebooks/transit_factory.py`. Its historical MBTA subset is included in the package. The builders use your inference account; their Python patches and acceptance checks run locally. Start with **Understand the departures board**, complete the free acceptance check, then use the next-step control. A failed build remains visible. If neither initial build works, the notebook offers an explicitly labeled prepared app so you can continue the memory exercise.
+Use Python 3.11–3.13. Enter your writable `entity/project` in the setup step, or set `WORKSHOP_PROJECT` before launching. Tools and training run in the notebook’s Python runtime. Inference and publication use your Forge credentials. The first command installs the shared dependencies plus only the selected workshop’s stack.
 
-Airline uses the shared dependencies and `notebooks/airline_monitoring.py`. Its fictional bookings and tools are included; you do not need an airline API or remote Sandbox. Inspect the opening itinerary, connect, and instrument one discovery conversation before continuing the batch. Review booking outcomes before calibrating a monitoring rule. Its [qualification record](airline-monitoring-qualification.md) lists the native monitoring limitations: saved tag configuration and manual labels work, while the tested AI Alignment requests returned HTTP 500 and the new session had no Insights clusters. Keep those results unavailable rather than treating them as successful negatives.
+Solar, Routing, and Inspection download checksum-verified teaching bundles through explicit controls. Their required training runs on CPU. Pending’s office simulator, Transit’s historical schedule subset, and Airline’s fictional bookings are included. None requires a live customer or transit service. The required Inspection path makes no model API requests; the other workshops use inference for their agent or judge exercises.
+
+For Airline’s native monitoring access, read the [qualification record](airline-monitoring-qualification.md). Tag configuration and manual labels were verified, but the last AI Alignment tests returned HTTP 500 and the prepared Insights activity remains unqualified. Keep those results unavailable rather than treating them as successful negatives.
 
 Native Agent Lens automatic tag judging has separate billing outside the $8 notebook inference allowance. After the exercise, disable **Apply with AI** on the workshop tag and use the notebook's **Verify automatic tagging is off** control. Read-only tag-result checks do not repeat the airline conversations. Explicit Alignment tests can incur new judging charges; a failed test is not an incorrect booking.
 

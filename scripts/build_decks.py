@@ -57,7 +57,7 @@ def source_archive(path, deck, slug):
                     bundle.write(file, Path("decks") / slug / file.relative_to(deck))
         for name in ("build_decks.py", "validate_deck.mjs", "check_deck_pdf.py", "serve_deck.py", "aria_storyboard.py"):
             bundle.write(ROOT / "scripts" / name, Path("scripts") / name)
-        for name in ("package.json", "package-lock.json", "scripts/deck.mjs", "aria.css"):
+        for name in ("README.md", "package.json", "package-lock.json", "scripts/deck.mjs", "aria.css"):
             bundle.write(ROOT / "decks" / name, Path("decks") / name)
         manifest = json.loads(MANIFEST.read_text(encoding='utf-8'))
         manifest["templates"] = [

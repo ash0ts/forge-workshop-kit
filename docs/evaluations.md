@@ -12,10 +12,13 @@ Agent Lens answers a different question: what happened while the agent was worki
 | Routing: judge review | The automated judge and the saved human review | Agreement, the reason for disagreement and unavailable judgments |
 | Routing: final requests | Frozen classifiers on the same requests | Intent, correctness, abstention, latency and cost; macro-F1 remains a run-level metric |
 | Inspection: final boards | Whole-image, patch, active-review and random-review models | Actual photographs, reference masks, misses, false alarms and review decisions |
+| Routing: release drill | Healthy, faulty, and repaired loaders | Matching review-pool requests and probability-to-intent mapping; this is not a new test set |
+| Transit: initial and follow-up builds | Solo/team, then without/with accepted lessons | Actual departure outputs, application checks, incomplete builds, and trace links |
+| Airline: development, reserved, and subsequent requests | Original and repaired agents | Requested itinerary change, preserved flights, resulting booking, and independent checks; monitor agreement is separate |
 
 ## Open the recorded comparisons
 
-These views reuse the saved rehearsal outputs. The November 14 publication check did not retrain models or request new judgments.
+These views reuse saved rehearsal outputs. Their publication checks did not retrain models or request new judgments. [Recorded results](recorded-results.md) links each workshop’s protocol and qualification.
 
 | Comparison | Saved predictions |
 | --- | ---: |
@@ -25,6 +28,11 @@ These views reuse the saved rehearsal outputs. The November 14 publication check
 | [Solar measurements](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=dtm5k18fpo4) | 5,388 |
 | [Routing classifiers](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=fthby6owcpo) | 6,160 |
 | [Board inspection](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=h43oxpf30iu) | 1,768 |
+| [Transit first release](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=dg2ogm6wp3z) | 20 |
+| [Transit memory comparison](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=f9jpm0yjsxy) | 36 |
+| [Airline development](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=4wzxelfxod1) | 8 |
+| [Airline reserved requests](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=m6e4y19blu9) | 12 |
+| [Airline subsequent requests](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=8woi2lgyt5c) | 8 |
 
 Prediction counts include each version of the same case. They are not counts of independent tasks. The Routing judge-alignment exercise requires the participant's saved human reviews; the recorded four-judgment check used dataset labels and is not presented as human alignment.
 

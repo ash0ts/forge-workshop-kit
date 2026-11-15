@@ -1,4 +1,16 @@
-# Forge Workshop Kit 0.9.0
+# Release notes
+
+Use [release checks](release-checks.md) for verification evidence and [next-up.md](../next-up.md) for unfinished work. These entries describe changes when each version shipped.
+
+## 0.10.0 technical preview
+
+Each of the six workshops now has two ARIA investigations: examine a development result before changing the implementation, then question the frozen comparison before publishing the Report. Participants give their own explanation first and verify one cited claim. Twelve recorded investigations preserve actual responses, context limits, source records, and citation checks for the no-access path.
+
+The activities reuse existing experiment results. They do not change datasets, measured prompts, scores, workflow identities, or inference allowances. The [ARIA guide](aria-investigations.md) covers live context and recorded activities. External-account and human rehearsals remain outstanding; all six workshops remain technical previews.
+
+A follow-up source fix makes authoring-file reads explicit UTF-8 on Windows. It does not change the generated notebooks or decks. The [corrected authoring bundle](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.10.0/forge-workshop-kit-v0.10.0-authoring-fix.zip) and current checkout contain it; original release assets remain available. [Release evidence](release-checks.md).
+
+## 0.9.0
 
 The six workshops now introduce a development example before account setup, then teach one result before larger batches or comparisons. Participants inspect outcomes before proposing fixes, calibrating judges, or configuring monitoring. The [teaching sequence](teaching-sequence.md) describes the shared pattern.
 

@@ -1,4 +1,8 @@
-# Six-hour Solar teaching sequence
+# Solar teaching-expansion notes
+
+**Archived design note, November 14, 2026.** Preserved from [revision `6f29640`](https://github.com/ash0ts/forge-workshop-kit/commit/6f29640). Slide numbers, counts, and validation statements below describe that revision, not the current deck. The provenance and design rationale remain useful when editing its diagrams.
+
+Use the [current deck guide](../README.md) for authoring and presentation, and [the generated slide map](slide-map.json) for current exercise identities.
 
 The authored sequence is `scripts/build-storyboard.py` plus `scripts/teaching_sequence.py`. Both write the generated slides, presenter notes, and slide map. The slide map records each concept, notebook exercise, source, evidence type, reveal count, and timing block. Worked-answer links resolve from stable slide keys after insertion.
 

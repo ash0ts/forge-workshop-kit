@@ -1,58 +1,21 @@
 # Solar forecasting with agent-assisted experiments
 
-This six-hour deck accompanies the Solar Autoresearch notebook. Participants use GOES X-ray measurements to forecast flux thirty minutes ahead, then use AIA images to predict an image one hour ahead. They implement persistence, train small models, and save the code, settings, and outputs needed to compare results. Once that comparison works, a research agent proposes changes to the image model’s training code. Participants review the diffs and test their effect on forecast error. The setting is a fictional lab’s weekly forecast review. Participants bring a result, its saved code, and a next experiment. Pending, Inc. remains the separate office workshop.
+This six-hour workshop follows a research lab preparing its weekly forecast review. Participants use real GOES measurements to forecast X-ray flux thirty minutes ahead, then AIA images to predict an image one hour ahead. They implement persistence, train small models, and save enough code, settings, and outputs to reproduce the comparison. A research agent then proposes changes to the image model's training code.
 
-Start with the [Solar notebook template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view). Choose **Copy to project**, open your copy in **Edit**, and follow the **Connect** step. Each participant uses their own project and account. There is no workshop gateway or host token.
+[Browser deck](https://ash0ts.github.io/forge-workshop-kit/solar/) · [Copy the notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view) · [Facilitator runbook](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/facilitator.md) · [Presenter notes](notes/facilitator-notes.md)
 
-## Present the workshop
+## Edit and check
 
-```sh
-npm ci --prefix ..
-npm run dev
-```
+Edit `scripts/build-storyboard.py` and `scripts/teaching_sequence.py`, then regenerate the slides, slide map, and presenter notes. Diagram components live in `components/`; typography and spacing live in `style.css`. Follow the [shared deck instructions](../README.md) to preview, build, and validate.
 
-Open the URL printed in the terminal. Use `/presenter/1` for the speaker notes. Node.js 22.22 or newer is required. Fonts and images are included, and opening the deck does not train models or send model requests.
+The browser includes selectors for saved branches and configurations. The PDF preserves the explanatory reveal states and worked answers. Keep an exercise slide visible while participants code; its functions and buttons correspond to the authored notebook cells.
 
-The deck has 111 main frames and 18 optional worked-answer, recorded-evidence, and reference frames. The main sequence builds diagrams a step at a time, then pauses for participants to work in the notebook. Keep each exercise slide visible while they code. Its button names match the notebook, and its worked-answer link returns to the exercise.
+## Recorded examples
 
-The speaker notes explain what to demonstrate, where to pause, and what participants should inspect. The six-hour session includes 55 minutes of breaks, with time for coding, discussion, and both research rounds. The opening scene with four notebooks called final is fictional. Forecasting results come from the recorded rehearsal. Native Forge screens show those saved runs, Artifacts, traces, and Reports. Click any product capture to inspect it at full resolution.
+The lab and its four notebooks named `final` are fictional. The observations, forecasts, source changes, and Forge records are real. `public/recorded-study.json` contains the original November 13 rehearsal: image error fell from 0.122442 to 0.110011 compared with the manual model, while the GOES model lost to persistence. The image result covers 199 overlapping windows on two days with one seed.
 
-## Build the browser copy and PDF
+The later [three-seed qualification](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md) preserves a mixed image result and a successful combined GOES repair. Those are teaching retests on previously inspected dates. Keep them separate from the original rehearsal and from a learner's live results. The [evidence review](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-evidence.md) explains the source data and limits.
 
-From the repository root, run the shared build command:
+The forecasting models train their weights; the research agent stays fixed while proposing Python changes. Development investigations use validation records. Frozen measurement and image comparisons remain separate because their metrics measure different tasks.
 
-```sh
-python3 scripts/build_decks.py --only solar --install --pdf --validate
-```
-
-This builds the browser deck, exports the PDF, and checks every slide and PDF page. It requires Chrome. The browser copy is written to `dist/decks/site/solar/`; the PDF, offline browser bundle, and editable source archive are in `dist/decks/downloads/`.
-
-The PDF includes all incremental diagrams and worked-answer links. In the browser, participants can also select branches and reveal the settings behind two recorded runs. Separate static frames keep those explanations readable in the PDF.
-
-## Edit the deck
-
-Edit `scripts/build-storyboard.py` and its `scripts/teaching_sequence.py` module, then run:
-
-```sh
-python3 scripts/build-storyboard.py
-```
-
-This regenerates `slides.md`, the slide map, and presenter notes. Diagram components live in `components/`; colors, typography, and spacing live in `style.css`. The [visual guide](notes/visual-upgrade.md) maps each explanation to its code or saved data. The laboratory artwork is an illustration. Keep it distinct from the saved product captures and forecast images.
-
-## Use the recorded example
-
-One complete November 13 rehearsal supplies the recorded scores, forecasts, code changes, and Agent Lens links. The image model’s error fell 10.15% relative to the manually selected model on 199 overlapping windows across two reserved days, using one seed. The GOES model performed worse than persistence. Both results remain in the main teaching sequence.
-
-`public/recorded-study.json` contains the saved source, settings, decisions, scores, and links behind those examples. Attendees’ edits need their own executions and results.
-
-The small forecasting models train their weights. The research agent’s weights stay fixed while it proposes changes to model and training code. Both improvement rounds use validation results; the final comparison loads the selected weights and predicts the reserved dates.
-
-The native comparison slides show Weave-backed Evaluation Tables Preview. Image and GOES measurement results remain separate because their scores measure different tasks. The separate CES v2 service still returns HTTP 500. Retrying an upload uses completed results without rerunning training.
-
-[Workshop source and setup](https://github.com/ash0ts/forge-workshop-kit) · [Source notes](notes/sources.md)
-
-## Check and package changes
-
-Use the shared build command above for the final browser, PDF, navigation, and image checks. The answer, exercise-contract, and recorded-evidence checks verify code examples, notebook controls, and the saved results without training or model calls.
-
-See [deck build and publication instructions](../../docs/maintenance.md) for publishing the generated files. Publishing is a separate action from building.
+[Source notes](notes/sources.md) identify captures and figures. [Earlier design notes](../README.md#earlier-design-notes) preserve prior visual mappings and validation history. Current slide identities and exercise references live in `notes/slide-map.json`.

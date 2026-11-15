@@ -1,27 +1,22 @@
-# Transit software-factory workshop deck
+# Transit software factory
 
-**Technical preview.** The deck builds and its interactions have been checked. Live worker execution and native Forge readback are recorded; workshop readiness still requires an external-account check and a human rehearsal.
+A six-hour workshop about coding agents building one departure-board application. Participants write a small coordinator, run workers in separate copies, review and integrate patches, then test whether a checked project lesson helps the next feature. The timetable is a frozen historical MBTA schedule, not live arrivals.
 
-A six-hour companion to the current Transit notebook. Participants build a historical MBTA departures board, write a small task coordinator, run two coding workers, review and integrate their changes, and test whether checked project lessons help a later feature.
+[Browser deck](https://ash0ts.github.io/forge-workshop-kit/transit/) · [Copy the notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view) · [Workshop guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-workshop.md) · [Facilitator runbook](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-facilitator.md) · [Presenter notes](notes/presenter.md)
 
-Edit `scripts/build-storyboard.py` and its `scripts/depth-sequences.py` extension, then regenerate `slides.md`. The six-hour schedule includes breaks at 1:35–1:45, 3:00–3:20 and 4:45–4:55. The editable Vue/SVG diagrams keep task, worker, integration and memory positions stable across reveals. Presenter notes and worked-answer links are generated from the same storyboard. Native product screenshots are added only after the corresponding transit publication has been read back; the reference-app screenshot is labeled separately from agent results. Source hashes and its unedited original are retained.
+## Edit and check
 
-```sh
-npm ci --prefix ..
-python3 scripts/build-storyboard.py
-npm run dev
-npm run build
-npm run export
-```
+Edit `scripts/build-storyboard.py`, `scripts/depth-sequences.py`, and `scripts/visual-sequences.py`. They generate slides, notes, and the slide map. Follow the [shared deck instructions](../README.md) to preview, build, and validate.
 
-The repository build command will generate browser and source bundles, a PDF containing the meaningful reveals, and delivery checks. Building or opening the deck makes no model requests. The data receipt in the notebook identifies the public archive, retained rows and source checksum.
+`TransitMechanism.vue` contains the GTFS joins, service-day clocks, worker edit loop, claim race, dependencies, patch integration, lesson filtering, and comparisons. Objects stay in the same positions across reveals. [Visual provenance](notes/visual-coverage.md) distinguishes illustrative edits from recorded outcomes.
 
-See the [workshop guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-workshop.md) for setup and technical boundaries and the [facilitator script](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-facilitator.md) for the schedule. The working lesson requires an actual attendee access check and a human rehearsal before it is described as ready for a live class.
+## Recordings and evidence
 
-The captioned browser recording is `public/walkthrough/worked-example.mp4`. Its adjacent `index.html` provides chapter navigation and a transcript. It shows worked code edits, free local checks and the reference application, with no model calls. The native R3 Agent Lens capture is separate and explicitly labeled. Capture and recording receipts preserve the distinction between reference output, recorded worker behavior and integrated product results.
+The [captioned player](public/walkthrough/index.html) has two recordings:
 
-The player links a separate `transit-reference-app.zip`. This is the instructor-authored application shown in the recording, with its 18 passing reference checks. It includes historical MBTA data and runs locally with `uv run --with marimo marimo edit app.py`; it makes no model calls.
+- **Worked example:** code edits and free checks followed by the instructor-authored reference app. It makes no model calls. The separate `transit-reference-app.zip` reproduces that app and its eighteen passing reference scenarios.
+- **Recorded result:** saved R4 worker patches, a matching Agent Lens test span, the native comparison, and exported team app. It preserves failed follow-ups and launches no new workers.
 
-A second recording, `public/walkthrough/recorded-result.mp4`, follows actual saved R4 executions through the task board, query patch, matching Agent Lens test span, native aligned evaluation and exported team app. It records navigation of existing results, not new inference. The player states the first-release passes and the failed follow-ups separately.
+The main result table uses the later R5 rehearsal. Earlier R3 and R4 captures keep their own labels. R5 supports the one-worker first release; the follow-up feature remains blocked, and its memory comparison establishes no quality benefit. [Recorded outcomes](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-workshop.md#what-the-final-engineering-rehearsal-showed) explain these differences and measured costs.
 
-The current visual sequence uses `components/TransitMechanism.vue` and `scripts/visual-sequences.py`. These replace abstract cards with joined GTFS rows, paired clock representations, a source diff and tool result, a two-thread claim timeline, a dependency graph, owned patches, filtered lessons, and aligned results. Fixed diagrams and click builds share the same inputs. Labels identify illustrative edits separately from recorded R5 outcomes. See [visual coverage and provenance](notes/visual-coverage.md).
+The deck is a technical preview. Native readback and maintainer recording do not establish external-account access or participant usability. See the [current release checks](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/release-checks.md).

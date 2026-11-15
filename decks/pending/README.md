@@ -1,27 +1,17 @@
 # Pending, Inc.
 
-A four-hour Python workshop about an agent that handles duplicate charges and account access at a fictional company. Participants implement a tool and its observation handoff, trace the execution in Agent Lens, and score account state separately from the final reply. They then test manual and agent-written harness changes on the same cases.
+A four-hour Python workshop about an employee agent handling duplicate charges and account access at a fictional company. Participants implement its tools and observation handoff, trace the work in Agent Lens, score the account separately from the reply, then test manual and agent-written harness changes.
 
-The deck follows the current notebook’s eight steps. Each code exercise explains the inputs, the change to make, and the output to inspect. Presenter notes work through the control flow and the reasons for resetting cases, testing composition decisions, and holding back final cases.
+[Browser deck](https://ash0ts.github.io/forge-workshop-kit/pending/) · [Copy the notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) · [Facilitator runbook](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/pending-facilitator.md) · [Presenter notes](notes/facilitator-notes.md)
 
-Open the [current notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) and copy it into your own project. Use the [setup guide](../../README.md) and [four-hour runbook](../../docs/pending-facilitator.md). The [presenter notes](notes/facilitator-notes.md) explain each slide.
+## Edit and check
 
-## Build
+Edit `scripts/build-storyboard.py`; it generates `slides.md`, the slide map, and presenter notes. The diagrams are Vue/SVG components. Follow the [shared deck instructions](../README.md) to preview, build, and validate. The [authored notebook cells](https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/pending_cells.py) own the learner function names and controls.
 
-From the Workshop Kit root:
+## Recorded examples
 
-```sh
-python3 scripts/build_decks.py --only pending --install --pdf --validate
-```
+The office and dialogue are fictional. Recorded examples use the [rehearsal record](https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/v030-pending-rehearsal.json), saved harness decisions, and actual Agent Lens spans. All twelve final account checks and explanation judgments passed. The changed harnesses therefore show a tie on these cases. The deterministic timeout-retry repair demonstrates a separate implementation improvement.
 
-This generates a browser deck, PDF, and source package. Build and preview make no workshop model calls. For local editing, run `npm run dev` inside this directory after installing the shared locked dependencies with `npm ci --prefix ..`.
+Native comparison slides use saved Weave-backed Evaluation Tables Preview results. [Evaluation publication](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/evaluations.md) distinguishes this path from the earlier failed CES attempt. The two ARIA investigations preserve the response and checked source; they do not supply another score.
 
-The authored source is `scripts/build-storyboard.py`. Regenerate rather than editing `slides.md` or presenter notes by hand. The diagrams are editable Vue/SVG components. Each meaningful build is a separate slide so the PDF keeps the same teaching sequence. The [visual guide](notes/visual-upgrade.md) maps the explanations to their code, fixtures, and recorded results.
-
-## Evidence
-
-The office and dialogue are fictional. Recorded examples use `evidence/v030-pending-rehearsal.json`, saved harness decisions, and actual Agent Lens spans. All 12 final executions and explanation judgments were available and passed; this rehearsal demonstrates the process without a quality gain.
-
-The native comparison slides show Weave-backed Evaluation Tables Preview using saved rehearsal records. The separate CES v2 API still returns HTTP 500; publication details preserve that failure. Product links can require a Forge login.
-
-The previous 88-slide November 12 deck remains unchanged in its historical release. Its gateway and remote Sandbox instructions are not part of this deck.
+[Source notes](notes/sources.md) identify captures and examples. [Earlier visual-design notes](notes/visual-upgrade.md) retain historical mappings and checks. The November 12 deck remains in its original release; its gateway and remote Sandbox setup does not apply here.

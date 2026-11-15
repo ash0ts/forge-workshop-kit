@@ -1,9 +1,17 @@
-# Visual Inspection companion deck
+# Visual inspection
 
-Edit `scripts/build-storyboard.py`, then run the shared deck build. The deck uses the same controls and function names as `scripts/inspection_cells.py`. The deck includes native Agent Lens and Evaluation Tables Preview captures from saved executions. Its standalone photographs and masks are actual VisA examples. On the comparison detail slide, the next click reveals the reference defect mask: white pixels mark the supplied annotation, not model localization.
+A four-hour workshop for a team checking circuit boards. Participants inspect real VisA PCB1 photographs, compare whole-image and patch features, select a threshold, and compare equal-budget review policies. Supplied defect masks help inspect errors; they are not classifier inputs or proof of why a prediction changed.
 
-The failed first recipe and the explicitly labeled teaching retest both appear. Local images retain VisA attribution and the source link. Opening the deck does not run training or inference.
+[Browser deck](https://ash0ts.github.io/forge-workshop-kit/inspection/) · [Copy the notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view) · [Workshop and schedule](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md) · [Presenter notes](notes/facilitator-notes.md)
 
-The four-hour teaching sequence includes two ten-minute breaks. Progressive diagrams connect the editable function to its inputs and outputs; adjacent slides preserve the same objects for backward navigation and PDF export. Edit `scripts/depth_storyboard.py` for these sequences and timing, then run `scripts/build-storyboard.py`. Symbolic exercise/answer names resolve during generation. `notes/slide-map.json` records the concept, source, evidence, exercise control and timing for each slide.
+## Edit and check
 
-The visual revision replaces text-card explanations with editable SVG mechanisms beside their code, keeping the existing slide count and session schedule. `components/InspectionMechanism.vue` owns the figures. `data/feature-example.json` contains values derived from frozen public files, including source checksums; `scripts/derive-visual-evidence.py` reproduces them without classifier training or paid calls. Schematic arrays and public arithmetic fixtures are labeled separately from saved predictions.
+Edit `scripts/build-storyboard.py` and `scripts/depth_storyboard.py`, then regenerate the slides, presenter notes, and slide map. `InspectionMechanism.vue` follows features, distances, scores, and decisions beside their code. The controls match the [authored notebook cells](https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/inspection_cells.py). Follow the [shared deck instructions](../README.md) to preview, build, and validate.
+
+`data/feature-example.json` retains values derived from frozen public files and their checksums. `scripts/derive-visual-evidence.py` reproduces them without classifier training or paid calls. Schematic arrays and scorer fixtures are labeled separately from saved board predictions.
+
+## Recorded examples
+
+The deck preserves the failed first recipe and the later, labeled teaching retest. Show both a recovered defect and a new miss when explaining the changed representation. On the comparison detail slide, the next click reveals the reference mask; white pixels identify the supplied annotation, not model localization.
+
+Photographs and masks retain VisA attribution. Native Agent Lens and Evaluation Tables Preview captures come from saved executions. The [qualification record](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md#recorded-qualification) and [source notes](notes/sources.md) explain their provenance and limits. Learner edits need their own executions.
