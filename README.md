@@ -6,6 +6,8 @@ Participants copy a notebook into their own project and use their own credential
 
 **These are technical previews.** The notebooks and decks are published, but external-account checks and participant rehearsals are still outstanding. See [current status and next steps](next-up.md) before scheduling a class.
 
+To share the work, choose a [package for reading, demonstrating, running, or adapting a workshop](docs/use-the-workshops.md). Each points to the relevant Report, deck, notebook, and next action.
+
 ## Choose your workshop
 
 The durations include coding, discussion, and breaks. Participants should be comfortable reading basic Python.
