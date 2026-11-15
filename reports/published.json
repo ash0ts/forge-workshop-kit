@@ -7,7 +7,7 @@
       "notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view",
       "deck_url": "https://ash0ts.github.io/forge-workshop-kit/pending/",
       "source": "reports/pending.md",
-      "source_sha256": "36c20a6ffd8e490709e011a84232f2d103965c231814fd9c8c0a758734874388",
+      "source_sha256": "8d6d4d85a110f87fb9a48cf14c5e565a0b82c7434efcdfa6c198f9204cdbc309",
       "anonymous_readback": true
     },
     "solar": {
@@ -16,7 +16,7 @@
       "notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view",
       "deck_url": "https://ash0ts.github.io/forge-workshop-kit/solar/",
       "source": "reports/solar.md",
-      "source_sha256": "65153c395118ad03c14c20555b5b56b12d90645de39638675b938d5171833bc6",
+      "source_sha256": "67f1a4f8a78d1919ad2506ae09041dfcfa19fcdf704acfe5fb565d7058dc737c",
       "anonymous_readback": true
     },
     "routing": {
@@ -25,7 +25,7 @@
       "notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view",
       "deck_url": "https://ash0ts.github.io/forge-workshop-kit/routing/",
       "source": "reports/routing.md",
-      "source_sha256": "c160d9be3fcdd60c2abd1a4c759df0197c85d52525ae9887d941fed44edbc512",
+      "source_sha256": "741a17fe35b64cca9dcc8254b8f6fe5b52b260e90e169b3a40ee367067c36c54",
       "anonymous_readback": true
     },
     "inspection": {
@@ -34,7 +34,7 @@
       "notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view",
       "deck_url": "https://ash0ts.github.io/forge-workshop-kit/inspection/",
       "source": "reports/inspection.md",
-      "source_sha256": "16fb24e510432641aa288c290199a6a1e99297251723cd463c46c427870269d2",
+      "source_sha256": "86b12871c0739eef5723e6154bb330c0a7236d17abad2a1708fdbae6591a6845",
       "anonymous_readback": true
     },
     "transit": {
@@ -43,7 +43,7 @@
       "notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view",
       "deck_url": "https://ash0ts.github.io/forge-workshop-kit/transit/",
       "source": "reports/transit.md",
-      "source_sha256": "063e4f3521bcb79bee3764d57571e46254c5476b63ea253c16b7d88b5cfe97a8",
+      "source_sha256": "baa4955925df3084fe504db6f0bd82fdb15a512be899de2d39f79138ecb2921e",
       "anonymous_readback": true
     },
     "airline": {
@@ -52,7 +52,7 @@
       "notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view",
       "deck_url": "https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/",
       "source": "reports/airline.md",
-      "source_sha256": "ce858ad226b24c7f4f83aff829e6fec0be578f3c90e2d64e5b7c231072ac962c",
+      "source_sha256": "c750aaf9128a0bbe657a440b7c7c62f3e9c7f4d54281bf594ae5ebde121702ed",
       "anonymous_readback": true
     }
   }

@@ -1,0 +1,453 @@
+{
+  "date": "2026-11-15",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "reports": {
+    "pending": {
+      "headings": [
+        "Build an agent you can inspect, then test changes to its harness",
+        "Refund the duplicate and leave the rest alone",
+        "Follow the request into Agent Lens",
+        "Handle a write whose acknowledgement was lost",
+        "Check what changed before improving the instructions",
+        "Let another agent propose the procedure",
+        "Test the frozen versions on the same tickets",
+        "Build your own employee",
+        "Privacy Preference Center",
+        " Manage Consent Preferences",
+        "Cookie List"
+      ],
+      "images": [
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/billing-state.png",
+          "top": 801.2421875,
+          "width": 2040
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/tool-handoff.png",
+          "top": 2188.703125,
+          "width": 2040
+        },
+        {
+          "complete": true,
+          "src": "https://ash0ts.github.io/forge-workshop-kit/pending/images/visual-v030-pending-lookup.png",
+          "top": 3160.65625,
+          "width": 1280
+        },
+        {
+          "complete": true,
+          "src": "https://ash0ts.github.io/forge-workshop-kit/pending/aria/investigate/investigate-verification.png",
+          "top": 3931.5,
+          "width": 1280
+        },
+        {
+          "complete": true,
+          "src": "https://ash0ts.github.io/forge-workshop-kit/pending/images/visual-v030-pending-timeout.png",
+          "top": 4943.3203125,
+          "width": 1280
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/timeout-repair.png",
+          "top": 5739.875,
+          "width": 2040
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/recovery-members.png",
+          "top": 6787.4296875,
+          "width": 1280
+        },
+        {
+          "complete": true,
+          "src": "https://ash0ts.github.io/forge-workshop-kit/pending/images/visual-v030-pending-verification.png",
+          "top": 8266.7265625,
+          "width": 1280
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/recorded-first-round.png",
+          "top": 9037.5703125,
+          "width": 2040
+        },
+        {
+          "complete": true,
+          "src": "https://ash0ts.github.io/forge-workshop-kit/pending/images/evaltables-native-detail.png",
+          "top": 10166.1015625,
+          "width": 1280
+        }
+      ],
+      "notebooks": [
+        "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view",
+        "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view"
+      ]
+    },
+    "solar": {
+      "headings": [
+        "Test research-agent changes against real solar observations",
+        "Define the forecast before training a model",
+        "A falling learning curve can still produce a poor forecast",
+        "Predict a change in the solar image",
+        "Ask the agent for a change we can test",
+        "The next round examines its earlier code",
+        "Compare matching predictions, then test another seed",
+        "Run the experiments in your project",
+        "Privacy Preference Center",
+        " Manage Consent Preferences",
+        "Cookie List"
+      ],
+      "images": [
+        {
+          "complete": true,
+          "src": "https://ash0ts.github.io/forge-workshop-kit/solar/images/v031-goes-window.png",
+          "top": 896.375,
+          "width": 1782
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/solar/goes-training-and-forecast.png",
+          "top": 1848.09375,
+          "width": 2040
+        },
+        {
+          "complete": true,
+          "src": "https://ash0ts.github.io/forge-workshop-kit/solar/images/v030-image-window.png",
+          "top": 2881.15625,
+          "width": 1613
+        },
+        {
+          "complete": true,
+          "src": "https://ash0ts.github.io/forge-workshop-kit/solar/images/v031-residual-correction.png",
+          "top": 3585.03125,
+          "width": 1458
+        },
+        {
+          "complete": true,
+          "src": "https://ash0ts.github.io/forge-workshop-kit/solar/images/visual-v030-solar-evidence.png",
+          "top": 4527.1953125,
+          "width": 1280
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/solar/recorded-code-branches.png",
+          "top": 5654.7265625,
+          "width": 2040
+        },
+        {
+          "complete": true,
+          "src": "https://ash0ts.github.io/forge-workshop-kit/solar/images/visual-v030-solar-artifact.png",
+          "top": 6790.125,
+          "width": 1280
+        },
+        {
+          "complete": true,
+          "src": "https://ash0ts.github.io/forge-workshop-kit/solar/images/v030-final-predictions.png",
+          "top": 7801.9453125,
+          "width": 1748
+        },
+        {
+          "complete": true,
+          "src": "https://ash0ts.github.io/forge-workshop-kit/solar/images/evaltables-native-detail.png",
+          "top": 8450.59375,
+          "width": 1280
+        },
+        {
+          "complete": true,
+          "src": "https://ash0ts.github.io/forge-workshop-kit/solar/images/images-seeds-deck.png",
+          "top": 9221.4375,
+          "width": 1920
+        }
+      ],
+      "notebooks": [
+        "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view",
+        "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view"
+      ]
+    },
+    "routing": {
+      "headings": [
+        "Train a support router, then check what you released",
+        "Change what the classifier can see",
+        "Decide which requests can skip review",
+        "Review a label before teaching a judge to accept it",
+        "Preserve the meaning of each probability when releasing",
+        "Run the workshop yourself",
+        "Privacy Preference Center",
+        " Manage Consent Preferences",
+        "Cookie List"
+      ],
+      "images": [
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/request-comparison.png",
+          "top": 480.5546875,
+          "width": 2160
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/representations.png",
+          "top": 1629.7734375,
+          "width": 2160
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/classifier-results.png",
+          "top": 3191.3671875,
+          "width": 2160
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/routing/public/images/evaltables-native.png",
+          "top": 4067.40625,
+          "width": 1280
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/routing/public/images/evaltables-native-detail.png",
+          "top": 4838.25,
+          "width": 1280
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/routing/public/images/agent-lens-judge-detail.png",
+          "top": 5874.0703125,
+          "width": 630
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/label-mapping.png",
+          "top": 6808.3125,
+          "width": 2160
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/evidence/captures/v070/routing-release-evaltables.png",
+          "top": 7901.2421875,
+          "width": 1280
+        }
+      ],
+      "notebooks": [
+        "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view",
+        "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view"
+      ]
+    },
+    "inspection": {
+      "headings": [
+        "Find a missed defect, then test the change",
+        "Establish what the baseline receives",
+        "Compare local features with normal boards",
+        "Turn a score into an inspection decision",
+        "Compare the ranking and the operating errors",
+        "Decide which additional labels to acquire",
+        "Run the workshop yourself",
+        "Privacy Preference Center",
+        " Manage Consent Preferences",
+        "Cookie List"
+      ],
+      "images": [
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/inspection/public/images/pcb1-anomaly-048.png",
+          "top": 411.1328125,
+          "width": 1680
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/feature-path.png",
+          "top": 1659.9453125,
+          "width": 2160
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/patch-distance.png",
+          "top": 2616.921875,
+          "width": 2160
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/inspection/public/images/agent-lens-training-original.png",
+          "top": 3733.8984375,
+          "width": 1280
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/case-decisions.png",
+          "top": 4839.140625,
+          "width": 2160
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/inspection/public/images/pcb1-anomaly-015.png",
+          "top": 5663.7578125,
+          "width": 1680
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/detector-results.png",
+          "top": 6358.7734375,
+          "width": 2160
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/inspection/public/images/evaltables-native-detail.png",
+          "top": 7464.96875,
+          "width": 1280
+        }
+      ],
+      "notebooks": [
+        "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view",
+        "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view"
+      ]
+    },
+    "transit": {
+      "headings": [
+        "Coordinate coding agents, then test the app they built",
+        "Start with a departure someone should be able to catch",
+        "Let one worker build the first version",
+        "Split the work without splitting the contract",
+        "Check what the quicker build delivered",
+        "Decide what the next workers should remember",
+        "Run the workshop in your project",
+        "Privacy Preference Center",
+        " Manage Consent Preferences",
+        "Cookie List"
+      ],
+      "images": [
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/service-day.png",
+          "top": 937.5078125,
+          "width": 1920
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/transit/public/images/reference-departures.png",
+          "top": 1775.3515625,
+          "width": 1120
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/r5-worker-test.png",
+          "top": 2882.3046875,
+          "width": 1280
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/worker-integration.png",
+          "top": 3824.703125,
+          "width": 1920
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/build-comparison.png",
+          "top": 5273.828125,
+          "width": 1920
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/transit/public/images/native-comparison-r5-detail.png",
+          "top": 6204,
+          "width": 1824
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/r5-release-artifact.png",
+          "top": 6820.7109375,
+          "width": 1280
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/memory-comparison.png",
+          "top": 7927.6640625,
+          "width": 1920
+        }
+      ],
+      "notebooks": [
+        "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view",
+        "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view"
+      ]
+    },
+    "airline": {
+      "headings": [
+        "Turn an airline agent's behavior into monitoring rules and regression tests",
+        "Keep the return flight in the write",
+        "Find the request, then follow the recovery",
+        "Decide what the tag should detect",
+        "Count what was processed before calculating accuracy",
+        "Make the reviewed incident reproducible",
+        "Compare the booking outcomes after the repair",
+        "Run the workflow in your project",
+        "Privacy Preference Center",
+        " Manage Consent Preferences",
+        "Cookie List"
+      ],
+      "images": [
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/itinerary-change.png",
+          "top": 922.0859375,
+          "width": 1920
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/different-checks.png",
+          "top": 1854.3046875,
+          "width": 1920
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-saved-view.png",
+          "top": 2879.8515625,
+          "width": 1280
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-conversation-error.png",
+          "top": 3676.40625,
+          "width": 1280
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-tag-configuration.png",
+          "top": 4739.6484375,
+          "width": 1280
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-alignment-unavailable.png",
+          "top": 5561.9140625,
+          "width": 1280
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/monitor-denominators.png",
+          "top": 6804.8671875,
+          "width": 1920
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/regression-replay.png",
+          "top": 8252.90625,
+          "width": 1920
+        },
+        {
+          "complete": true,
+          "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-evaltables.png",
+          "top": 9366.703125,
+          "width": 1280
+        }
+      ],
+      "notebooks": [
+        "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view",
+        "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view"
+      ]
+    }
+  },
+  "narrow_layout": {
+    "status": "unverified",
+    "reason": "Viewport override requested 768px, but the browser remained at 1280px; no narrow-layout pass claimed."
+  }
+}

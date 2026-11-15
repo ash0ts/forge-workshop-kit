@@ -19,41 +19,77 @@
       "source_sha256": "8d6d4d85a110f87fb9a48cf14c5e565a0b82c7434efcdfa6c198f9204cdbc309",
       "images": 10,
       "blocks": 42,
-      "python_excerpts_parse": true
+      "python_excerpts_parse": true,
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ==",
+      "anonymous_readback": true,
+      "native_images_loaded": 10
     },
     "solar": {
       "source_sha256": "67f1a4f8a78d1919ad2506ae09041dfcfa19fcdf704acfe5fb565d7058dc737c",
       "images": 10,
       "blocks": 43,
-      "python_excerpts_parse": true
+      "python_excerpts_parse": true,
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg==",
+      "anonymous_readback": true,
+      "native_images_loaded": 10
     },
     "routing": {
       "source_sha256": "741a17fe35b64cca9dcc8254b8f6fe5b52b260e90e169b3a40ee367067c36c54",
       "images": 8,
       "blocks": 35,
-      "python_excerpts_parse": true
+      "python_excerpts_parse": true,
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw==",
+      "anonymous_readback": true,
+      "native_images_loaded": 8
     },
     "inspection": {
       "source_sha256": "86b12871c0739eef5723e6154bb330c0a7236d17abad2a1708fdbae6591a6845",
       "images": 8,
       "blocks": 31,
-      "python_excerpts_parse": true
+      "python_excerpts_parse": true,
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA==",
+      "anonymous_readback": true,
+      "native_images_loaded": 8
     },
     "transit": {
       "source_sha256": "baa4955925df3084fe504db6f0bd82fdb15a512be899de2d39f79138ecb2921e",
       "images": 8,
       "blocks": 31,
-      "python_excerpts_parse": true
+      "python_excerpts_parse": true,
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ==",
+      "anonymous_readback": true,
+      "native_images_loaded": 8
     },
     "airline": {
       "source_sha256": "c750aaf9128a0bbe657a440b7c7c62f3e9c7f4d54281bf594ae5ebde121702ed",
       "images": 9,
       "blocks": 37,
-      "python_excerpts_parse": true
+      "python_excerpts_parse": true,
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA==",
+      "anonymous_readback": true,
+      "native_images_loaded": 9
     }
   },
-  "native_publication": "pending",
-  "browser": "pending",
+  "native_publication": {
+    "status": "passed",
+    "existing_report_ids_preserved": true,
+    "anonymous_full_content_readback": true,
+    "public_image_urls_verified": 53,
+    "inference_or_training_executions": 0
+  },
+  "browser": {
+    "status": "desktop passed",
+    "viewport": "1280x720",
+    "reports_verified": 6,
+    "images_loaded": 53,
+    "notebook_links_match_catalog": true,
+    "narrow_layout": {
+      "status": "unverified",
+      "reason": "Viewport override requested 768px, but the browser remained at 1280px; no narrow-layout pass claimed."
+    },
+    "receipt": "evidence/learning-reports/visual-revision-20261115/browser-checks.json"
+  },
   "external_account_rehearsal": "not performed; readiness unchanged",
-  "human_usability_rehearsal": "not performed; readiness unchanged"
+  "human_usability_rehearsal": "not performed; readiness unchanged",
+  "source_commit": "2cbfc7b"
 }
