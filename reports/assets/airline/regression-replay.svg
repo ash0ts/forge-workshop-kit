@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="604.8pt" viewBox="0 0 864 604.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 604.8
+L 864 604.8
+L 864 0
+L 0 0
+z
+" style="fill: #f8f5ee"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 156.96 185.04
+L 707.04 185.04
+Q 714.24 185.04 714.24 177.84
+L 714.24 117.36
+Q 714.24 110.16 707.04 110.16
+L 156.96 110.16
+Q 149.76 110.16 149.76 117.36
+L 149.76 177.84
+Q 149.76 185.04 156.96 185.04
+z
+" clip-path="url(#p52f3bae17b)" style="fill: #eeece6; stroke: #8b9593; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 52.56 343.44
+L 393.84 343.44
+Q 401.04 343.44 401.04 336.24
+L 401.04 246.96
+Q 401.04 239.76 393.84 239.76
+L 52.56 239.76
+Q 45.36 239.76 45.36 246.96
+L 45.36 336.24
+Q 45.36 343.44 52.56 343.44
+z
+" clip-path="url(#p52f3bae17b)" style="fill: #f4e8db; stroke: #bc6d35; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 470.16 343.44
+L 811.44 343.44
+Q 818.64 343.44 818.64 336.24
+L 818.64 246.96
+Q 818.64 239.76 811.44 239.76
+L 470.16 239.76
+Q 462.96 239.76 462.96 246.96
+L 462.96 336.24
+Q 462.96 343.44 470.16 343.44
+z
+" clip-path="url(#p52f3bae17b)" style="fill: #e6eff6; stroke: #3478ad; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 307.872949 188.207446
+Q 266.400827 212.399518 226.47388 235.690237
+" clip-path="url(#p52f3bae17b)" style="fill: none; stroke: #183f3e; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 233.614452 235.229555
+L 226.47388 235.690237
+L 230.389677 229.70137
+z
+" clip-path="url(#p52f3bae17b)" style="fill: #183f3e; stroke: #183f3e; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 556.127051 188.207446
+Q 597.599173 212.399518 637.52612 235.690237
+" clip-path="url(#p52f3bae17b)" style="fill: none; stroke: #183f3e; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 633.610323 229.70137
+L 637.52612 235.690237
+L 630.385548 235.229555
+z
+" clip-path="url(#p52f3bae17b)" style="fill: #183f3e; stroke: #183f3e; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 223.2 347.602588
+Q 223.2 358.200283 223.2 367.009123
+" clip-path="url(#p52f3bae17b)" style="fill: none; stroke: #183f3e; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 226.4 360.609123
+L 223.2 367.009123
+L 220 360.609123
+z
+" clip-path="url(#p52f3bae17b)" style="fill: #183f3e; stroke: #183f3e; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 640.8 347.602588
+Q 640.8 358.200283 640.8 367.009123
+" clip-path="url(#p52f3bae17b)" style="fill: none; stroke: #183f3e; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 644 360.609123
+L 640.8 367.009123
+L 637.6 360.609123
+z
+" clip-path="url(#p52f3bae17b)" style="fill: #183f3e; stroke: #183f3e; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 52.56 534.24
+L 393.84 534.24
+Q 401.04 534.24 401.04 527.04
+L 401.04 444.96
+Q 401.04 437.76 393.84 437.76
+L 52.56 437.76
+Q 45.36 437.76 45.36 444.96
+L 45.36 527.04
+Q 45.36 534.24 52.56 534.24
+z
+" clip-path="url(#p52f3bae17b)" style="fill: #f8f5ee; stroke: #bc6d35; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 470.16 534.24
+L 811.44 534.24
+Q 818.64 534.24 818.64 527.04
+L 818.64 444.96
+Q 818.64 437.76 811.44 437.76
+L 470.16 437.76
+Q 462.96 437.76 462.96 444.96
+L 462.96 527.04
+Q 462.96 534.24 470.16 534.24
+z
+" clip-path="url(#p52f3bae17b)" style="fill: #f8f5ee; stroke: #3478ad; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 223.2 416.00127
+Q 223.2 424.802994 223.2 431.815865
+" clip-path="url(#p52f3bae17b)" style="fill: none; stroke: #183f3e; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 226.4 425.415865
+L 223.2 431.815865
+L 220 425.415865
+z
+" clip-path="url(#p52f3bae17b)" style="fill: #183f3e; stroke: #183f3e; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 640.8 416.00127
+Q 640.8 424.802994 640.8 431.815865
+" clip-path="url(#p52f3bae17b)" style="fill: none; stroke: #183f3e; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 644 425.415865
+L 640.8 431.815865
+L 637.6 425.415865
+z
+" clip-path="url(#p52f3bae17b)" style="fill: #183f3e; stroke: #183f3e; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 26px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #183f3e" x="39.6" y="51.712813" transform="rotate(-0 39.6 51.712813)">Replay the reviewed request from its original booking</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #546563" x="39.6" y="84.779063" transform="rotate(-0 39.6 84.779063)">Controlled local regression · no model calls · confirmation remains enforced</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 21px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #183f3e" x="432" y="153.394688" transform="rotate(-0 432 153.394688)">Saved request + original [HAT007, HAT174]</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 21px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(130.422656 283.219688)">Omission adapter</text>
+    <text style="font-size: 21px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(123.802734 311.569688)">Proposes [HAT061]</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 20px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(560.359375 283.61875)">Itinerary builder</text>
+    <text style="font-size: 20px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(501 310.61875)">Proposes [HAT061, HAT174]</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 21px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #183f3e" x="223.2" y="398.112656" transform="rotate(-0 223.2 398.112656)">Passenger refuses</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 21px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #183f3e" x="640.8" y="398.112656" transform="rotate(-0 640.8 398.112656)">Passenger confirms</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 17px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(83.108047 479.215938)">Booking stays [HAT007, HAT174]</text>
+    <text style="font-size: 17px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(91.043594 502.165938)">Requested change: incomplete</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 17px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(484.6975 479.215938)">Booking becomes [HAT061, HAT174]</text>
+    <text style="font-size: 17px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(549.458203 502.165938)">Booking checks: pass</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #546563" x="46.8" y="579.863125" transform="rotate(-0 46.8 579.863125)">The separate calibration incident deliberately bypassed refusal and removed the return flight.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p52f3bae17b">
+   <rect x="0" y="0" width="864" height="604.8"/>
+  </clipPath>
+ </defs>
+</svg>

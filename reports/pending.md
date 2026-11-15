@@ -1,16 +1,20 @@
 # Build an agent you can inspect, then test changes to its harness
 
-Pending, Inc. has hired an AI employee to handle refunds and account access. Management considers the job delegated. We still need to write the code that lets the employee do it.
+Pending, Inc. has hired an AI employee to handle refunds and account access. Management considers the job delegated. The employee has been provided with a motivational paragraph.
 
-The workshop starts with two fictional customer tickets. Acme has two captured payments of 4,900 cents for the same invoice and wants the duplicate refunded. Fern wants Alex added to its account, but the access tool can commit the change and then time out. We can inspect every account, payment, refund, and membership, so we can check the employee's work independently of its reply.
+We built this workshop around the work that paragraph leaves out. The agent needs to read an account, choose a tool, receive its result, and check that it changed the right thing. We call those instructions, tools, skills, and orchestration code the agent's harness. Later, another agent gets the job of improving it. We can follow its edits into the next execution and ask whether they helped.
 
-You'll build that employee in an editable Python notebook, instrument its work in Agent Lens, and compare changes to its instructions. Then another agent will propose changes to those instructions. The interesting question is whether the resulting employee handles the account correctly, including when a tool's response leaves the situation unclear.
+The office and customers are fictional. The Python, model requests, traces, and evaluations run. You can [copy the notebook into your own Forge project](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) and implement the same steps. This article follows the recorded instructor run, including a proposed improvement we rejected.
 
-## Give the employee something it can use
+## Refund the duplicate and leave the rest alone
 
-An agent's harness includes the instructions it receives, available tools, skill files it can read, and code that carries observations into subsequent requests. Those pieces affect execution in different ways. Registering a tool makes an action available. Writing a Python function supplies its implementation. Saving a skill file does not mean the model has read it.
+Acme has two captured payments of 4,900 cents against invoice `inv-1`. The request is to keep `pay-1` and refund the duplicate. We can inspect the complete simulated account, so we don't have to take the employee's final message as proof that it did the job.
 
-Start with the invoice tool. The notebook asks you to implement this function:
+![The Acme account begins with two captured payments and no refunds. The requested outcome adds one full refund against pay-2 while preserving the payment ledger.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/billing-state.png)
+
+*The recorded result contains one 4,900-cent refund against `pay-2`. Captured payments remain in the simulator's ledger; the refund is a separate record. [Inspect the saved account and actions](https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/assets/aria/pending_inc/investigate-source-records.json).*
+
+First, give the employee a way to read the invoice. The notebook asks you to complete `my_invoice_tool`, then tests it against two accounts, an absent invoice, and the original state. A read must not issue a refund as a side effect.
 
 ```python
 def my_invoice_tool(state, account_id, invoice_id):
@@ -24,23 +28,60 @@ def my_invoice_tool(state, account_id, invoice_id):
     }
 ```
 
-The account lookup happens before the invoice filter. That's deliberate: different accounts can have the same invoice identifier. The free check tests both accounts, an absent invoice, and whether the function accidentally mutates the account.
+The order matters. We select the account before filtering its payments because another customer can also have an invoice called `inv-1`. The tool schema tells the model which arguments to supply. This Python function determines what those arguments do.
 
-Next, connect a chosen action to that function and return its observation to the model. These are separate steps. If you call Python and discard the result, the model's next request still lacks the payment records. The notebook exposes both `my_dispatch` and `my_observation`, then shows the action, arguments, return value, and next request together.
+Calling the function is only half the connection. The next model request also needs its return value. You implement the dispatch and observation functions so the payment records reach that request:
 
-![Agent Lens shows the account argument and returned payment records for a recorded billing run.](https://ash0ts.github.io/forge-workshop-kit/pending/images/visual-v030-pending-lookup.png)
+```python
+def my_dispatch(name, arguments, world, invoice_tool, call_tool):
+    if name == "lookup_invoice":
+        return world, invoice_tool(world, **arguments)
+    return call_tool(world, name, arguments)
 
-*Recorded example: the employee chose the registered `get_account` tool here. This capture does not show it choosing the learner's `lookup_invoice` function. Open the [conversation](https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c2458ce8b6bb52274d29b5c5a691424b/spans) and find the account identifier in both the input and returned record.*
+def my_observation(messages, action, result):
+    return messages + [
+        {"role": "assistant", "content": json.dumps(action)},
+        {"role": "user", "content": "Tool observation: " + json.dumps(result)},
+    ]
+```
 
-You also write tracing scopes that preserve real arguments, results, errors, and timing. Compare those spans with the notebook's saved execution events. A trace is helpful only if it describes the operation that ran.
+![A chosen lookup_invoice action passes Acme and inv-1 to my_dispatch, receives the payment records, and appends them to the next model request through my_observation.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/tool-handoff.png)
 
-## Recover from a write whose response was lost
+*This is the notebook's worked handoff, including its serialized action and observation messages. If `my_observation` discards the result, the model won't see the records your Python function returned. The free check exercises this connection without calling a model.*
 
-The second ticket uses onboarding tools discovered and called through local MCP. MCP supplies a way to discover and invoke the tools; you still need to understand each tool's behavior.
+## Follow the request into Agent Lens
 
-In the resettable timeout exercise, `provision_member` adds Alex before returning an error. The starter recovery function adds `-retry` to the operation identifier and sends the write again. The simulator treats that as a different operation and adds Alex twice.
+We instrument the actual model and tool calls with Forge SDK scopes, including their arguments, returned values, errors, and timestamps. That lets us open a particular action instead of interpreting a summary of the whole run.
 
-The repaired function keeps the original identity and checks the account:
+In the recorded billing run, the employee chose the more general `get_account` tool. Here are the account argument and returned payments it saw:
+
+![Agent Lens shows the actual get_account call and expanded account record, including both captured payments.](https://ash0ts.github.io/forge-workshop-kit/pending/images/visual-v030-pending-lookup.png)
+
+*Find `account_id: acme` in the input, then the two `inv-1` payments in the output. This capture records `get_account`, not the learner's `lookup_invoice`. [Open the conversation](https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c2458ce8b6bb52274d29b5c5a691424b/spans) · [Full-size capture](https://ash0ts.github.io/forge-workshop-kit/pending/images/visual-v030-pending-lookup.png).*
+
+The employee refunded `pay-2`, read the account again, and resolved the ticket. But an earlier event complicates the explanation: it had tried to read a skill named `lookup_invoice`, and the tool returned **Skill not installed**.
+
+![The selected read_skill event in Agent Lens returns Skill not installed.](https://ash0ts.github.io/forge-workshop-kit/pending/aria/investigate/investigate-verification.png)
+
+*The call happened; the skill was not loaded. The later refund succeeded anyway. Open the first tool event and inspect its result before attributing this run to a skill. [Recorded source](https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c2458ce8b6bb52274d29b5c5a691424b) · [Full-size capture](https://ash0ts.github.io/forge-workshop-kit/pending/aria/investigate/investigate-verification.png).*
+
+This is why the workshop separates instructions, skills, tool schemas, tool implementations, and conversation history. Saving text changes a file. A successful `read_skill` places that text in the employee's context. A correct outcome alone cannot tell us which of those things happened.
+
+## Handle a write whose acknowledgement was lost
+
+The second ticket asks the employee to add Alex to Fern's account. Its onboarding tools are discovered and invoked through local MCP (Model Context Protocol). MCP provides the discovery and call interface; the tool implementation still determines what happens when a request fails.
+
+Our simulator can add the membership and then return a timeout. The caller has an error while the account already has Alex. In the recorded run, you can inspect that ambiguous response directly:
+
+![The recorded provision_member call returns a timeout after the simulated membership write.](https://ash0ts.github.io/forge-workshop-kit/pending/images/visual-v030-pending-timeout.png)
+
+*Look at the operation identifier and the error message. Neither establishes the account's current membership list. [Open the run](https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/481ae944f1062c5381870a00319f65a3/spans) · [Full-size capture](https://ash0ts.github.io/forge-workshop-kit/pending/images/visual-v030-pending-timeout.png).*
+
+We make the recovery behavior a small code exercise before asking an agent to improve anything. The starter retries with a new operation identifier, `join-alex-retry`. The simulator interprets that as a new write and adds another membership. Keeping the original identifier returns the stored receipt instead; an account read then verifies the result.
+
+![The same committed timeout produces two memberships with a new-ID retry and one membership with a same-ID retry followed by an account read.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/timeout-repair.png)
+
+*Recorded local comparison: two memberships before the repair, one afterward. These are two reset copies of the same incident, with no model calls. [Exact events and account states](https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/pending-retry-repair.json).*
 
 ```python
 def recover_access(arguments, call_tool):
@@ -51,46 +92,68 @@ def recover_access(arguments, call_tool):
     )
 ```
 
-In this simulator, reusing the identifier returns the saved receipt without adding another membership. The subsequent read verifies the account. The [recorded local comparison](https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/pending-retry-repair.json) contains two memberships before the repair and one afterward. This is a deterministic code exercise with no model calls, so you can predict the result, change the function, and immediately check it.
+The live agent's recorded recovery took the other sensible route: it read status immediately, saw Alex present once, and didn't repeat the write. The code exercise demonstrates same-ID retry behavior; the agent trace demonstrates recovery through inspection. We keep those accounts separate.
 
-![A recorded onboarding tool call has a timeout even though the simulated write may have committed.](https://ash0ts.github.io/forge-workshop-kit/pending/images/visual-v030-pending-timeout.png)
+![The subsequent onboarding_status call shows Alex present once in Fern's account.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/recovery-members.png)
 
-*A separate recorded agent run encounters the same kind of timeout. In [its conversation](https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/481ae944f1062c5381870a00319f65a3/spans), inspect the operation identifier, the error, and the following account read. The red error alone does not establish whether access was granted.*
+*The account read resolves what the timeout could not. Follow the same conversation from the failed call to this returned membership. [Open this status span](https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/481ae944f1062c5381870a00319f65a3/spans/turns/796dff8c92e7bf0c7fff2e8941a340df/spans/e62596437e485145) · [Full-size capture](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/recovery-members.png).*
 
-## Check the account and the explanation separately
+## Check what changed before improving the instructions
 
-For the billing development case, you write a state check requiring exactly one full 4,900-cent refund. A partial refund should fail even if the employee confidently says the problem is resolved.
+You write a development scorer against account state. For the billing ticket, exactly one full 4,900-cent refund should pass; a partial refund should fail even if the employee announces success. The explanation judge separately checks whether that announcement matches the recorded work. Its structured answer must contain booleans and a reason, but parsing its response doesn't establish that the judgment is right. A missing response stays missing.
 
-The explanation judge answers another question: does the reply accurately describe the recorded work and unresolved issues? You write its rubric and validate its structured response. Boolean fields and a nonempty reason make an answer parseable. They don't establish that the judgment is correct. If the judge produces no answer, its score remains unavailable.
+The employee's `check_work` tool serves a third purpose: feedback it can consult during execution. The independent final grader runs outside the conversation and checks the complete expected state. Each answers a different question:
 
-The employee also has a `check_work` tool. That is feedback available during its execution. Your development scorer and the independent final grader run outside that conversation. Keeping these roles separate lets you ask whether the employee checked its work, whether the account is correct, and whether its explanation is accurate without collapsing them into one success flag.
+| Check | What we can learn |
+|---|---|
+| Employee's `check_work` call | Whether it requested and received feedback before finishing |
+| Your development scorer | Whether your implemented rule accepts the returned account |
+| Independent final grader | Whether the account and resolution satisfy the final case |
+| Explanation judge | Whether its reply accurately describes the recorded work |
 
-## Test an instruction change before automating the editing
+After inspecting a development event, you edit the verification skill yourself and rerun from the original account. Look for the skill read, then compare the tool sequence and checked state. Those are the records we want before delegating the editing job.
 
-Choose an event from a development ticket and write the procedure you'd want the employee to follow next time. The notebook installs it as a verification skill. In the next run, look for `read_skill` and inspect the following model request. If no read occurred, don't attribute a changed tool sequence to text the employee never received.
+## Let another agent propose the procedure
 
-Rerun both tickets from their original account states. Keep the model and tested executor fixed while changing the harness. Now you can compare the instruction diff with the tool sequence and checked account state.
+The editor receives the current harness and development execution. Its model stays fixed, as do the tools, fixtures, scoring, and budget. It can change instructions, skills, and bounded workflow rules. It proposes two candidates; you review their diffs and test each on its own fresh account.
 
-The editor agent then proposes two competing harness changes. You review their actual diffs, probe both on isolated copies, and ask the editor which changes to keep or combine. A composition needs its own test. Retaining the current version is also valid. A second round carries the chosen harness and a saved lesson into onboarding.
+In the first recorded round, Candidate A retained the parent. Candidate B changed one setting:
 
-Agent Lens exposes the editor's evidence reads and decisions. Artifacts preserve the files that ran. The branch view connects a proposal to its test and eventual selection, including rejected candidates. The research pattern is Propose, Probe, and Compose, adapted here to two office tasks rather than presented as a replication of an upstream benchmark.
+```diff
+- "verify_before_finish": false
++ "verify_before_finish": true
+```
 
-## What happened in the recorded comparison
+The proposed benefit was mandatory verification. During the probe, B refunded the duplicate and reread the account, then tried to finish without calling `check_work`. The new gate rejected that attempt. B called the checker and finished successfully.
 
-We froze the starting, manually revised, and agent-selected harnesses, then ran each on the same four final tickets. In the current [recorded rehearsal](https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/pending/data/recorded-final.json), all three passed all four account checks and explanation judgments. Their tool-call totals were 12, 13, and 13.
+![Agent Lens shows Candidate B's rejected finish followed by check_work and an accepted finish.](https://ash0ts.github.io/forge-workshop-kit/pending/images/visual-v030-pending-verification.png)
 
-The extra call in the revised versions did not produce a measured task-quality gain on this suite. The deterministic timeout repair above demonstrates an implementation improvement; the harness comparison demonstrates a tie. Four tickets in one rehearsal cannot establish that the versions are generally equivalent.
+*Find the first `finish`, its rejection, and the following `check_work`. The setting changed execution. Whether that extra work improved the account is a separate check. [Inspect Candidate B](https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/9633d416f5fce6aaa0124ab6ddc38c46/spans) · [Full-size capture](https://ash0ts.github.io/forge-workshop-kit/pending/images/visual-v030-pending-verification.png).*
 
-![Native EvalTables aligns one ticket across starting, manually revised, and agent-selected harnesses.](https://ash0ts.github.io/forge-workshop-kit/pending/images/evaltables-native-detail.png)
+Both candidates refunded once. The composer retained the parent, reasoning that the gate had added a rejected finish without improving this outcome. We executed that retained harness again, then carried it and a scoped lesson into onboarding.
 
-*In this aligned case, each version asks for missing access details. Open the [saved comparison](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=qeo6ytk9yxz), inspect the questions and account check, then follow a conversation link. These are instructor results, not outcomes from your edits.*
+![The billing round branches from the manual parent into an unchanged candidate and a mandatory-check candidate, tests both, and retains the parent after reviewing the executions.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/recorded-first-round.png)
 
-The notebook includes two optional ARIA investigations: explain a development result, then check the frozen conclusion. Select specific records and verify one cited claim. ARIA's interpretation does not become a score or automatically change the harness. Recorded investigations are available if your project lacks ARIA access.
+*A selection is a decision about tested alternatives. It is not a new quality score. [Open the composition decision](https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c04f575608c6f43d99e1b7b428a23791). This one billing probe cannot settle when a completion gate is worth requiring. [Saved branch decisions and events](https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/pending/recorded-branches.json).*
 
-## Run it in your own project
+The second round expanded the skill to require that the intended change appear exactly once and that unrelated records remain unchanged. It kept the finish gate off. That is the recursive part: the editor examines work produced by earlier instructions and uses it to revise the next procedure. We preserve the alternatives because a final prompt alone would hide why the gate was rejected.
 
-Open the [Pending, Inc. notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view), choose **Copy to project**, and open your editable copy. Use **Run all stale cells** to create the controls, inspect the opening example, and check that the displayed destination is your project. Exercise buttons start execution explicitly.
+This Propose–Probe–Compose sequence follows the [Harness² approach](https://github.com/google-research/harness2/tree/1cfe254e8d25b15f37048c3730134686abe60335). Our workshop carries the selected harness and lesson between two office tasks; it is a teaching adaptation of the upstream cross-task protocol.
 
-You need basic Python, project write access, notebook compute, and inference access. The adjustable $8 notebook inference allowance does not include compute or ARIA usage. No workshop gateway or remote Sandbox entitlement is required. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) includes the laptop path, access checks, and saved-work recovery; the [deck](https://ash0ts.github.io/forge-workshop-kit/pending/) accompanies the four-hour workshop.
+## Test the frozen versions on the same tickets
 
-This is a technical preview with external-account checks and participant rehearsals still outstanding. Start with the invoice function and free handoff check, then follow your own run into Agent Lens.
+We froze the starting, manually revised, and agent-selected harnesses and ran all three on four final tickets. Each passed all four account checks and explanation judgments. Tool-call totals were 12, 13, and 13. The revised versions did more work without a measured task-quality gain on this suite.
+
+![Native EvalTables aligns one final ticket across the starting, manual, and agent-selected versions, with their responses and independent checks.](https://ash0ts.github.io/forge-workshop-kit/pending/images/evaltables-native-detail.png)
+
+*This aligned case needs clarification. Read what each version asks before comparing its scores, then follow its conversation link. [Open the native comparison](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=qeo6ytk9yxz) · [Full-size capture](https://ash0ts.github.io/forge-workshop-kit/pending/images/evaltables-native-detail.png) · [All twelve recorded results](https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/pending/data/recorded-final.json).*
+
+The deterministic retry repair improved the implementation. The agent-written harness comparison tied. Four final cases in one rehearsal don't establish general equivalence, and we haven't made the office worse just to give its Process Improvement department something to celebrate.
+
+## Build your own employee
+
+[Open Pending, Inc. and choose **Copy to project**](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view). Open the editable copy, use **Run all stale cells** to create its controls, and check that the destination is your project. Start with the invoice function and its free check; explicit exercise buttons run the employee and editor.
+
+The [four-hour deck](https://ash0ts.github.io/forge-workshop-kit/pending/) accompanies the notebook. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) covers laptop use, credentials, and returning to saved work. You'll need basic Python, project write access, notebook compute, and inference access. The adjustable $8 notebook inference allowance excludes compute and ARIA. No workshop gateway or remote Sandbox entitlement is required.
+
+Two optional ARIA stops let you question your development diagnosis and final conclusion, then verify a cited record. Recorded investigations are included when ARIA isn't available. The materials remain a technical preview while external-account checks and participant rehearsals are outstanding. Your run may produce a different branch; the notebook retains the files, actions, and checks needed to explain it.

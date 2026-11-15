@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "renderer": "scripts/build_report_pending_solar_visuals.py",
+  "inference_calls": 0,
+  "training_calls": 0,
+  "figures": [
+    {
+      "id": "pending/billing-state",
+      "file": "reports/assets/pending/billing-state.png",
+      "editable_svg": "reports/assets/pending/billing-state.svg",
+      "question": "Which account records should the refund change?",
+      "takeaway": "One full refund against pay-2; captured payment records remain in the simulated ledger.",
+      "sources": [
+        {
+          "file": "src/forge_workshop_kit/assets/aria/pending_inc/investigate-source-records.json",
+          "sha256": "55bb887842315a9b8beacef9f5e91e94b47726fef926e6e00e7bf8d6b02f5b92"
+        }
+      ],
+      "boundary": "A state diagram of one fictional recorded ticket, not a production settlement claim.",
+      "visually_inspected": true,
+      "semantics": "Gray parent; blue A; orange B. Explicit text carries selection/outcome. Solid code/operation flow; dashed reviewed evidence.",
+      "sha256": "81395e41962338f5d3e927a02acfd28eada9fea0bef4d65f12c240b2177e0ac1"
+    },
+    {
+      "id": "pending/tool-handoff",
+      "file": "reports/assets/pending/tool-handoff.png",
+      "editable_svg": "reports/assets/pending/tool-handoff.svg",
+      "question": "How does the Python return value enter the next model request?",
+      "takeaway": "Dispatch and observation handoff are separately implemented; both must run.",
+      "sources": [
+        {
+          "file": "src/forge_workshop_kit/pending/teaching.py",
+          "sha256": "863ce01bdcddd64403f443b4126b74ced520ed6635d703d7a1aa101bf5cdfde3"
+        }
+      ],
+      "boundary": "Worked learner implementation; this is not evidence that the recorded model selected lookup_invoice.",
+      "visually_inspected": true,
+      "semantics": "Gray parent; blue A; orange B. Explicit text carries selection/outcome. Solid code/operation flow; dashed reviewed evidence.",
+      "sha256": "5dcbac2fa385aa8d8ed36bac623e961d14941ae258688dff1b80f2e2514a905b"
+    },
+    {
+      "id": "pending/timeout-repair",
+      "file": "reports/assets/pending/timeout-repair.png",
+      "editable_svg": "reports/assets/pending/timeout-repair.svg",
+      "question": "What does changing the retry identifier do to the account?",
+      "takeaway": "The new ID produces two memberships; same ID plus status check produces one.",
+      "sources": [
+        {
+          "file": "evidence/pending-retry-repair.json",
+          "sha256": "6ac8ad0c62029d87492210c9c0d64bbccbe3cec3f819b1e0db521f492868bbfe"
+        },
+        {
+          "file": "src/forge_workshop_kit/pending/recovery.py",
+          "sha256": "7abefa10e51497b8b7fbe7125127f2d96157e7a924314320d4c335c70cabda5e"
+        }
+      ],
+      "boundary": "Local deterministic exercise, separate from the model execution that recovered without retrying.",
+      "visually_inspected": true,
+      "semantics": "Gray parent; blue A; orange B. Explicit text carries selection/outcome. Solid code/operation flow; dashed reviewed evidence.",
+      "sha256": "bf8881e2f40fef95f4df0d1f10a31b54d4123ce0306d323cfae609c6b53a8d65"
+    },
+    {
+      "id": "pending/recorded-first-round",
+      "file": "reports/assets/pending/recorded-first-round.png",
+      "editable_svg": "reports/assets/pending/recorded-first-round.svg",
+      "question": "Why did the composer retain the manual parent?",
+      "takeaway": "Both probes refunded correctly; the mandatory check added a rejected finish.",
+      "sources": [
+        {
+          "file": "reports/assets/pending/recorded-branches.json",
+          "sha256": "b7499396b3602470a79ed705cbf3f042b65d3031523ecf273c83f7d005de8a8f"
+        }
+      ],
+      "boundary": "One recorded billing case does not show that completion gates never help.",
+      "visually_inspected": true,
+      "semantics": "Gray parent; blue A; orange B. Explicit text carries selection/outcome. Solid code/operation flow; dashed reviewed evidence.",
+      "sha256": "500df6b6f6ddae9d0fe80fb4d6a11e7c4a647f8d5fb1d243c7de5fed6f6a5939"
+    },
+    {
+      "id": "solar/goes-training-and-forecast",
+      "file": "reports/assets/solar/goes-training-and-forecast.png",
+      "editable_svg": "reports/assets/solar/goes-training-and-forecast.svg",
+      "question": "Did a decreasing training loss produce a competitive forecast?",
+      "takeaway": "The selected short-budget neural model remained worse than persistence.",
+      "sources": [
+        {
+          "file": "decks/solar/public/recorded-study.json",
+          "sha256": "946e7cd83efe4fd3e176177d3a60d3680ce3a7453902fd6fda8c5e014bc38cf1"
+        }
+      ],
+      "boundary": "Training squared error and final absolute error are separate metrics with separate units.",
+      "visually_inspected": true,
+      "semantics": "Gray parent; blue A; orange B. Explicit text carries selection/outcome. Solid code/operation flow; dashed reviewed evidence.",
+      "sha256": "60886323b38326905eafe67c271eb074a43a8e2454fd35c3fc5d72f24a0027de"
+    },
+    {
+      "id": "solar/recorded-code-branches",
+      "file": "reports/assets/solar/recorded-code-branches.png",
+      "editable_svg": "reports/assets/solar/recorded-code-branches.svg",
+      "question": "Which competing code change survived the second round?",
+      "takeaway": "Zero initialization was selected and retested; permutation sampling was rejected.",
+      "sources": [
+        {
+          "file": "decks/solar/public/recorded-study.json",
+          "sha256": "946e7cd83efe4fd3e176177d3a60d3680ce3a7453902fd6fda8c5e014bc38cf1"
+        }
+      ],
+      "boundary": "Validation only, seed17,142 images,40updates. A+B was not tested; one seed cannot establish repeatability.",
+      "visually_inspected": true,
+      "semantics": "Gray parent; blue A; orange B. Explicit text carries selection/outcome. Solid code/operation flow; dashed reviewed evidence.",
+      "sha256": "914f23e9375d2cdd55af1827b7fe6842de0a1c36a25c7a1ce044130266d88932"
+    }
+  ]
+}

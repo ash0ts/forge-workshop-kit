@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="554.4pt" viewBox="0 0 864 554.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 554.4
+L 864 554.4
+L 864 0
+L 0 0
+z
+" style="fill: #f8f5ee"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 52.56 203.04
+L 285.84 203.04
+Q 293.04 203.04 293.04 195.84
+L 293.04 110.16
+Q 293.04 102.96 285.84 102.96
+L 52.56 102.96
+Q 45.36 102.96 45.36 110.16
+L 45.36 195.84
+Q 45.36 203.04 52.56 203.04
+z
+" clip-path="url(#p336f2e06f1)" style="fill: #e6eff6; stroke: #3478ad; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 52.56 329.04
+L 285.84 329.04
+Q 293.04 329.04 293.04 321.84
+L 293.04 236.16
+Q 293.04 228.96 285.84 228.96
+L 52.56 228.96
+Q 45.36 228.96 45.36 236.16
+L 45.36 321.84
+Q 45.36 329.04 52.56 329.04
+z
+" clip-path="url(#p336f2e06f1)" style="fill: #e4efeb; stroke: #147d79; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 52.56 455.04
+L 285.84 455.04
+Q 293.04 455.04 293.04 447.84
+L 293.04 362.16
+Q 293.04 354.96 285.84 354.96
+L 52.56 354.96
+Q 45.36 354.96 45.36 362.16
+L 45.36 447.84
+Q 45.36 455.04 52.56 455.04
+z
+" clip-path="url(#p336f2e06f1)" style="fill: #f4e8db; stroke: #bc6d35; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 26px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #183f3e" x="39.6" y="51.814375" transform="rotate(-0 39.6 51.814375)">Three checks ask different questions</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #546563" x="39.6" y="84.779063" transform="rotate(-0 39.6 84.779063)">One request can contain a failed tool call and still finish correctly</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 19px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #183f3e" x="169.2" y="160.083438" transform="rotate(-0 169.2 160.083438)">Tool execution</text>
+   </g>
+   <g id="text_4">
+    <text style="font-weight: 700; font-size: 21px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #183f3e" x="320.4" y="143.189063" transform="rotate(-0 320.4 143.189063)">Did this call return?</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #546563" x="320.4" y="178.655" transform="rotate(-0 320.4 178.655)">Error, arguments, timing</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 19px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #183f3e" x="169.2" y="284.242813" transform="rotate(-0 169.2 284.242813)">Booking correctness</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 21px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #183f3e" x="320.4" y="267.072656" transform="rotate(-0 320.4 267.072656)">Did the requested change happen?</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #546563" x="320.4" y="304.655" transform="rotate(-0 320.4 304.655)">Flights, passengers, policy, confirmation</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 19px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #183f3e" x="169.2" y="410.242813" transform="rotate(-0 169.2 410.242813)">Explanation judgment</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 21px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #183f3e" x="320.4" y="393.072656" transform="rotate(-0 320.4 393.072656)">Does the reply match the work?</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #546563" x="320.4" y="431.38875" transform="rotate(-0 320.4 431.38875)">Claims, unresolved issues, available context</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #546563" x="46.8" y="518.939062" transform="rotate(-0 46.8 518.939062)">Recorded qualification: 10 tool errors; all 40 final bookings passed independent checks.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p336f2e06f1">
+   <rect x="0" y="0" width="864" height="554.4"/>
+  </clipPath>
+ </defs>
+</svg>

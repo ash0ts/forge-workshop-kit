@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1036.8pt" height="626.4pt" viewBox="0 0 1036.8 626.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 626.4
+L 1036.8 626.4
+L 1036.8 0
+L 0 0
+z
+" style="fill: #f7f3e9"/>
+  </g>
+  <g id="axes_1">
+   <g id="line2d_1">
+    <path d="M 238.464 231.768
+L 839.808 231.768
+" clip-path="url(#p4bd4a8c3d2)" style="fill: none; stroke: #c9d4cd; stroke-width: 5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 238.464 231.768
+L 763.376943 231.768
+" clip-path="url(#p4bd4a8c3d2)" style="fill: none; stroke: #3971ae; stroke-width: 5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 238.464 269.352
+L 839.808 269.352
+" clip-path="url(#p4bd4a8c3d2)" style="fill: none; stroke: #c9d4cd; stroke-width: 5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 238.464 269.352
+L 771.099884 269.352
+" clip-path="url(#p4bd4a8c3d2)" style="fill: none; stroke: #bc6638; stroke-width: 5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 238.464 369.576
+L 539.136 369.576
+" clip-path="url(#p4bd4a8c3d2)" style="fill: none; stroke: #3971ae; stroke-width: 5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 238.464 407.16
+L 463.968 407.16
+" clip-path="url(#p4bd4a8c3d2)" style="fill: none; stroke: #bc6638; stroke-width: 5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 238.464 507.384
+L 699.4944 507.384
+" clip-path="url(#p4bd4a8c3d2)" style="fill: none; stroke: #3971ae; stroke-width: 5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_8">
+    <path d="M 238.464 544.968
+L 599.2704 544.968
+" clip-path="url(#p4bd4a8c3d2)" style="fill: none; stroke: #bc6638; stroke-width: 5; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 26px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #183a3b" x="51.84" y="64.234" transform="rotate(-0 51.84 64.234)">The patch change helps in aggregate and still creates a new miss</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 17px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #526766" x="51.84" y="98.857" transform="rotate(-0 51.84 98.857)">Teaching retest · 442 previously inspected test boards · 40 defective, 402 normal</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 22px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #183a3b" x="51.84" y="169.128" transform="rotate(-0 51.84 169.128)">Average precision</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 16px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #526766" x="51.84" y="206.712" transform="rotate(-0 51.84 206.712)">Higher is better</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 16px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #3971ae" x="62.208" y="237.768" transform="rotate(-0 62.208 237.768)">Whole</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 600; font-size: 21px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #3971ae" x="870.912" y="239.643" transform="rotate(-0 870.912 239.643)">0.8729</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 16px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #bc6638" x="62.208" y="275.352" transform="rotate(-0 62.208 275.352)">Patches</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 600; font-size: 21px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #bc6638" x="870.912" y="277.227" transform="rotate(-0 870.912 277.227)">0.8857</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 22px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #183a3b" x="51.84" y="306.936" transform="rotate(-0 51.84 306.936)">Missed defects</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 16px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #526766" x="51.84" y="344.52" transform="rotate(-0 51.84 344.52)">Out of 40 defects; lower is better</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 16px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #3971ae" x="62.208" y="375.576" transform="rotate(-0 62.208 375.576)">Whole</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 600; font-size: 21px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #3971ae" x="870.912" y="377.451" transform="rotate(-0 870.912 377.451)">4</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 16px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #bc6638" x="62.208" y="413.16" transform="rotate(-0 62.208 413.16)">Patches</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 600; font-size: 21px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #bc6638" x="870.912" y="415.035" transform="rotate(-0 870.912 415.035)">3</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 22px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #183a3b" x="51.84" y="444.744" transform="rotate(-0 51.84 444.744)">False alarms</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 16px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #526766" x="51.84" y="482.328" transform="rotate(-0 51.84 482.328)">Out of 402 normal boards; lower is better</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 16px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #3971ae" x="62.208" y="513.384" transform="rotate(-0 62.208 513.384)">Whole</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 600; font-size: 21px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #3971ae" x="870.912" y="515.259" transform="rotate(-0 870.912 515.259)">23</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 16px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #bc6638" x="62.208" y="550.968" transform="rotate(-0 62.208 550.968)">Patches</text>
+   </g>
+   <g id="text_20">
+    <text style="font-weight: 600; font-size: 21px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #bc6638" x="870.912" y="552.843" transform="rotate(-0 870.912 552.843)">18</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #526766" x="51.84" y="595.08" transform="rotate(-0 51.84 595.08)">Earlier average-patch recipe: AP fell from 0.8618 to 0.8554. The nearest-patch retest is shown above.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p4bd4a8c3d2">
+   <rect x="0" y="0" width="1036.8" height="626.4"/>
+  </clipPath>
+ </defs>
+</svg>

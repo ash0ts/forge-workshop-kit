@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "renderer": "scripts/build_report_routing_inspection_visuals.py",
+  "figures": [
+    {
+      "id": "routing/request-comparison",
+      "question": "What changes for the same request?",
+      "alt": "Word features predict compromised_card at .053; sentence features predict card_arrival at .382. Both probabilities are below .5, so both send the request to review.",
+      "boundary": "One validation example. Probabilities are uncalibrated; changed prediction does not mean automatic routing.",
+      "png": "reports/assets/routing/request-comparison.png",
+      "svg": "reports/assets/routing/request-comparison.svg",
+      "sources": [
+        {
+          "path": "evidence/routing-qualification-20261114/tfidf-17.json",
+          "sha256": "b4b151fc635b7b9e50f13c091d8d9595f0d950f108c7f534dbebf7353c4bf0be"
+        },
+        {
+          "path": "evidence/routing-qualification-20261114/embedding-17.json",
+          "sha256": "a366a6bf2b6ea494459eee1a02d32d0575e16ef71c1a5b53f5947df3d7b74f28"
+        }
+      ]
+    },
+    {
+      "id": "routing/representations",
+      "question": "What does the classifier receive?",
+      "alt": "The same request becomes sparse TF\u2013IDF word features or a frozen 384-value sentence vector. Each representation trains a logistic classifier with the same settings and 77 output columns.",
+      "boundary": "Tokens are an illustrative subset, not a feature-importance explanation. No embedding coordinates or weights are fabricated.",
+      "png": "reports/assets/routing/representations.png",
+      "svg": "reports/assets/routing/representations.svg",
+      "sources": [
+        {
+          "path": "src/forge_workshop_kit/routing.py",
+          "sha256": "6b22e5208439b2f720f910673f016c50f50c680c141ca721711710b8e0b71807"
+        },
+        {
+          "path": "docs/routing-workshop.md",
+          "sha256": "ef142334b809d84e88efdbbc191e73146a3b3c0bd577c7241c1ab74fed09f153"
+        }
+      ]
+    },
+    {
+      "id": "routing/classifier-results",
+      "question": "Which measured quantities improved?",
+      "alt": "Macro-F1 rises from 87.94 to 92.02 percent, coverage from 75.84 to 91.10 percent, and accuracy among automatically routed requests from 96.06 to 96.15 percent.",
+      "boundary": "Do not interpret cached classifier time as full service latency or deterministic seed repeats as uncertainty estimates.",
+      "png": "reports/assets/routing/classifier-results.png",
+      "svg": "reports/assets/routing/classifier-results.svg",
+      "sources": [
+        {
+          "path": "evidence/routing-qualification-20261114/summary.json",
+          "sha256": "e633dd07b0c8af1f756c1a36c082259f72d8e4e787e1748834048f5d09b6a068"
+        }
+      ]
+    },
+    {
+      "id": "routing/label-mapping",
+      "question": "How can an unchanged probability route to the wrong queue?",
+      "alt": "Three symbolic probability columns retain their positions while the faulty loader rotates their label names. Repair restores the original order. A set-membership check cannot detect this permutation.",
+      "boundary": "The labels come from the free-check fixture. This is an explanatory drill, not a captured production prediction.",
+      "png": "reports/assets/routing/label-mapping.png",
+      "svg": "reports/assets/routing/label-mapping.svg",
+      "sources": [
+        {
+          "path": "src/forge_workshop_kit/routing_release.py",
+          "sha256": "26b429cb2a231c428ffbafbbc6503ea4becf6bc910b55c31c246d5e85f5a2647"
+        }
+      ]
+    },
+    {
+      "id": "inspection/feature-path",
+      "question": "What extra information reaches the patch classifier?",
+      "alt": "A frozen ResNet-18 produces 512 whole-image values and a 14 by 14 by 64 patch array. One distance per patch adds 196 values, yielding 708 features for the logistic classifier.",
+      "boundary": "Supplied defect masks do not enter this path. The 64-channel projection is fixed, not learned by the classifier.",
+      "png": "reports/assets/inspection/feature-path.png",
+      "svg": "reports/assets/inspection/feature-path.svg",
+      "sources": [
+        {
+          "path": "src/forge_workshop_kit/inspection_encoder.py",
+          "sha256": "3d66784e160e466ec8156fcdaa8cb73eb3928b5f0ad86474d61926794f398617"
+        },
+        {
+          "path": "src/forge_workshop_kit/inspection.py",
+          "sha256": "6075f9a48888f147329e8e2900ca61b5462cf821dda7f1314f92da588a502b35"
+        },
+        {
+          "path": "docs/inspection-workshop.md",
+          "sha256": "d16d186120dbd8517339091fe14a55f3b841da3f2fc7a3ac2744b4f5d7ed5c0e"
+        }
+      ]
+    },
+    {
+      "id": "inspection/patch-distance",
+      "question": "What does one bright cell in the distance map measure?",
+      "alt": "Each 64-value query patch is scaled using reference-bank variation, compared with normal patches at the same position, and assigned the smallest mean squared distance. Repeat at 196 positions.",
+      "boundary": "The diagram does not invent patch distances or imply localization is causal. Self matches are excluded.",
+      "png": "reports/assets/inspection/patch-distance.png",
+      "svg": "reports/assets/inspection/patch-distance.svg",
+      "sources": [
+        {
+          "path": "src/forge_workshop_kit/inspection.py",
+          "sha256": "6075f9a48888f147329e8e2900ca61b5462cf821dda7f1314f92da588a502b35"
+        }
+      ]
+    },
+    {
+      "id": "inspection/case-decisions",
+      "question": "Why is one negative score a miss and another a detection?",
+      "alt": "For board 048 the whole score is .507 below its cutoff and patch score .228 above its cutoff. For board 015 the whole score is .620 above and patch score .324 below. One miss is recovered and another introduced.",
+      "boundary": "Decision values are not probabilities. Relative positions compare decisions, not calibrated certainty across models.",
+      "png": "reports/assets/inspection/case-decisions.png",
+      "svg": "reports/assets/inspection/case-decisions.svg",
+      "sources": [
+        {
+          "path": "evidence/inspection-teaching-retest-v2/predictions.json",
+          "sha256": "ab1f95d0ac7d9360e312355f985db3685c3c4683a212d38357369e8b6d7fd83f"
+        }
+      ]
+    },
+    {
+      "id": "inspection/detector-results",
+      "question": "Does the recovered board reflect an aggregate gain?",
+      "alt": "On 442 test boards, average precision rises from .8729 to .8857, missed defects fall from 4 to 3, and false alarms fall from 23 to 18. The first average-patch recipe reduced average precision.",
+      "boundary": "The test images had already been inspected. This is a teaching retest, not independent confirmation or production qualification.",
+      "png": "reports/assets/inspection/detector-results.png",
+      "svg": "reports/assets/inspection/detector-results.svg",
+      "sources": [
+        {
+          "path": "evidence/inspection-teaching-retest-v2/results.json",
+          "sha256": "077bb88f8e3c4b43e5475d8b8851fa2ea458dbb968fea627e407d6c6ec7c9f99"
+        },
+        {
+          "path": "evidence/inspection-qualification-v1/results.json",
+          "sha256": "30def41d13f0a38587548e0785baa09cee81e10875975e79e876535665b3e46e"
+        }
+      ]
+    }
+  ]
+}

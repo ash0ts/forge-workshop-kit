@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="576pt" viewBox="0 0 864 576" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 576
+L 864 576
+L 864 0
+L 0 0
+z
+" style="fill: #f8f5ee"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 228.96 203.04
+L 476.64 203.04
+Q 483.84 203.04 483.84 195.84
+L 483.84 110.16
+Q 483.84 102.96 476.64 102.96
+L 228.96 102.96
+Q 221.76 102.96 221.76 110.16
+L 221.76 195.84
+Q 221.76 203.04 228.96 203.04
+z
+" clip-path="url(#p3af5711b07)" style="fill: #eeece6; stroke: #8b9593; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 531.36 203.04
+L 815.04 203.04
+Q 822.24 203.04 822.24 195.84
+L 822.24 110.16
+Q 822.24 102.96 815.04 102.96
+L 531.36 102.96
+Q 524.16 102.96 524.16 110.16
+L 524.16 195.84
+Q 524.16 203.04 531.36 203.04
+z
+" clip-path="url(#p3af5711b07)" style="fill: #e4efeb; stroke: #147d79; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 228.96 350.64
+L 476.64 350.64
+Q 483.84 350.64 483.84 343.44
+L 483.84 257.76
+Q 483.84 250.56 476.64 250.56
+L 228.96 250.56
+Q 221.76 250.56 221.76 257.76
+L 221.76 343.44
+Q 221.76 350.64 228.96 350.64
+z
+" clip-path="url(#p3af5711b07)" style="fill: #e6eff6; stroke: #3478ad; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 531.36 350.64
+L 815.04 350.64
+Q 822.24 350.64 822.24 343.44
+L 822.24 257.76
+Q 822.24 250.56 815.04 250.56
+L 531.36 250.56
+Q 524.16 250.56 524.16 257.76
+L 524.16 343.44
+Q 524.16 350.64 531.36 350.64
+z
+" clip-path="url(#p3af5711b07)" style="fill: #e4efeb; stroke: #147d79; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 352.8 207.20127
+Q 352.8 226.801093 352.8 244.612062
+" clip-path="url(#p3af5711b07)" style="fill: none; stroke: #3478ad; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 356 238.212062
+L 352.8 244.612062
+L 349.6 238.212062
+z
+" clip-path="url(#p3af5711b07)" style="fill: #3478ad; stroke: #3478ad; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 673.2 207.20127
+Q 673.2 226.801093 673.2 244.612062
+" clip-path="url(#p3af5711b07)" style="fill: none; stroke: #147d79; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 676.4 238.212062
+L 673.2 244.612062
+L 670 238.212062
+z
+" clip-path="url(#p3af5711b07)" style="fill: #147d79; stroke: #147d79; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 52.56 527.04
+L 815.04 527.04
+Q 822.24 527.04 822.24 519.84
+L 822.24 448.56
+Q 822.24 441.36 815.04 441.36
+L 52.56 441.36
+Q 45.36 441.36 45.36 448.56
+L 45.36 519.84
+Q 45.36 527.04 52.56 527.04
+z
+" clip-path="url(#p3af5711b07)" style="fill: #f4e8db; stroke: #bc6d35; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 26px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #183f3e" x="39.6" y="51.712813" transform="rotate(-0 39.6 51.712813)">Change the outward flight; keep the journey home</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #546563" x="39.6" y="84.779063" transform="rotate(-0 39.6 84.779063)">Simulated reservation 59XX6W · replace segment [0:1] · complete-itinerary API</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 18px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #183f3e" x="46.8" y="152.496562" transform="rotate(-0 46.8 152.496562)">Original booking</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 20px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(267.907812 144.842188)">HAT007 · May 19</text>
+    <text style="font-size: 20px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(301.329687 173.779688)">LAS → ATL</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 20px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(588.307812 144.842188)">HAT174 · May 29</text>
+    <text style="font-size: 20px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(621.729687 173.779688)">ATL → LAS</text>
+   </g>
+   <g id="text_6">
+    <text style="font-weight: 700; font-size: 18px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #183f3e" x="46.8" y="300.166875" transform="rotate(-0 46.8 300.166875)">Required result</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 20px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(267.907812 292.442187)">HAT061 · May 19</text>
+    <text style="font-size: 20px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(301.329687 321.379687)">LAS → ATL</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 20px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(588.307812 292.442187)">HAT174 · May 29</text>
+    <text style="font-size: 20px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(621.729687 321.379687)">ATL → LAS</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #3478ad" x="352.8" y="389.890938" transform="rotate(-0 352.8 389.890938)">Replace this flight</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #147d79" x="673.2" y="389.890938" transform="rotate(-0 673.2 389.890938)">Preserve this flight</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 19px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(155.062578 476.617813)">Send [HAT061, HAT174] after fare quote and confirmation.</text>
+    <text style="font-size: 19px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(147.937578 502.267812)">Sending only [HAT061] replaces the booking with one flight.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p3af5711b07">
+   <rect x="0" y="0" width="864" height="576"/>
+  </clipPath>
+ </defs>
+</svg>

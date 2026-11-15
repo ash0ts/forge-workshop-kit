@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="540pt" viewBox="0 0 864 540" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 540
+L 864 540
+L 864 0
+L 0 0
+z
+" style="fill: #f7f4e9"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 35.28 102.96
+L 414.72 102.96
+Q 419.04 102.96 419.04 107.28
+L 419.04 191.52
+Q 419.04 195.84 414.72 195.84
+L 35.28 195.84
+Q 30.96 195.84 30.96 191.52
+L 30.96 107.28
+Q 30.96 102.96 35.28 102.96
+z
+" clip-path="url(#pbb3221334d)" style="fill: #fffdf7; stroke: #237a6c; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 449.28 102.96
+L 828.72 102.96
+Q 833.04 102.96 833.04 107.28
+L 833.04 191.52
+Q 833.04 195.84 828.72 195.84
+L 449.28 195.84
+Q 444.96 195.84 444.96 191.52
+L 444.96 107.28
+Q 444.96 102.96 449.28 102.96
+z
+" clip-path="url(#pbb3221334d)" style="fill: #fffdf7; stroke: #c17b40; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 35.28 264.96
+L 414.72 264.96
+Q 419.04 264.96 419.04 269.28
+L 419.04 364.32
+Q 419.04 368.64 414.72 368.64
+L 35.28 368.64
+Q 30.96 368.64 30.96 364.32
+L 30.96 269.28
+Q 30.96 264.96 35.28 264.96
+z
+" clip-path="url(#pbb3221334d)" style="fill: #fffdf7; stroke: #c17b40; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 449.28 264.96
+L 828.72 264.96
+Q 833.04 264.96 833.04 269.28
+L 833.04 364.32
+Q 833.04 368.64 828.72 368.64
+L 449.28 368.64
+Q 444.96 368.64 444.96 364.32
+L 444.96 269.28
+Q 444.96 264.96 449.28 264.96
+z
+" clip-path="url(#pbb3221334d)" style="fill: #fffdf7; stroke: #237a6c; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 223.2 374.957227
+Q 223.2 391.677026 223.2 406.607971
+" clip-path="url(#pbb3221334d)" style="fill: none; stroke: #c17b40; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 226 401.007971
+L 223.2 406.607971
+L 220.4 401.007971
+z
+" clip-path="url(#pbb3221334d)" style="fill: #c17b40; stroke: #c17b40; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 640.8 374.957227
+Q 640.8 391.677026 640.8 406.607971
+" clip-path="url(#pbb3221334d)" style="fill: none; stroke: #237a6c; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 643.6 401.007971
+L 640.8 406.607971
+L 638 401.007971
+z
+" clip-path="url(#pbb3221334d)" style="fill: #237a6c; stroke: #237a6c; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 22px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #153d3e" x="32.4" y="49.380625" transform="rotate(-0 32.4 49.380625)">A timeout leaves two different states to inspect</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #546862" x="32.4" y="73.93125" transform="rotate(-0 32.4 73.93125)">Recorded local exercise · No model calls · Each recovery starts from the same committed write</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #237a6c" x="45.36" y="130.569375" transform="rotate(-0 45.36 130.569375)">Office state</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #153d3e" x="45.36" y="159.61125" transform="rotate(-0 45.36 159.61125)">join-alex committed. Alex is already a member.</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #c17b40" x="459.36" y="130.569375" transform="rotate(-0 459.36 130.569375)">Caller observation</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #153d3e" x="459.36" y="159.61125" transform="rotate(-0 459.36 159.61125)">error="timeout"; no acknowledgement</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #c17b40" x="32.4" y="243.599453" transform="rotate(-0 32.4 243.599453)">Starter recovery</text>
+   </g>
+   <g id="text_8">
+    <text style="font-weight: 700; font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #237a6c" x="446.4" y="243.749531" transform="rotate(-0 446.4 243.749531)">Repaired recovery</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #c17b40" x="45.36" y="291.158437" transform="rotate(-0 45.36 291.158437)">Send join-alex-retry</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #153d3e" x="45.36" y="321.61125" transform="rotate(-0 45.36 321.61125)">New operation ID → another mutation</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #237a6c" x="459.36" y="291.158437" transform="rotate(-0 459.36 291.158437)">Send join-alex</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #153d3e" x="459.36" y="321.61125" transform="rotate(-0 459.36 321.61125)">Same operation ID → saved receipt</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 24px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #c17b40" x="46.8" y="452.4225" transform="rotate(-0 46.8 452.4225)">2 memberships</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #153d3e" x="46.8" y="485.871562" transform="rotate(-0 46.8 485.871562)">No verification read</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 24px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #237a6c" x="460.8" y="452.4225" transform="rotate(-0 460.8 452.4225)">1 membership</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #153d3e" x="460.8" y="484.431406" transform="rotate(-0 460.8 484.431406)">onboarding_status confirms the account</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pbb3221334d">
+   <rect x="0" y="0" width="864" height="540"/>
+  </clipPath>
+ </defs>
+</svg>

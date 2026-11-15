@@ -1,48 +1,68 @@
 # Turn an airline agent's behavior into monitoring rules and regression tests
 
-A passenger asks to change the outward flight of a round trip. The booking API accepts the agent's request and returns a reservation. The agent says the change is complete. There is one more thing to check: does the passenger still have a flight home?
+A passenger wants to change the outward flight of a round trip. The agent has to find a replacement, explain the fare difference, and get confirmation. It also has to leave the return flight alone. That last requirement is easy to lose when the booking API replaces the entire itinerary.
 
-We built this workshop around an API that replaces the entire itinerary. Leaving the return flight out of the input removes it from the booking, even when the tool call succeeds. Participants inspect the agent's work, decide what a monitoring rule should detect, and turn reviewed examples into tests for a repair.
+We built this workshop to follow that request from the conversation to the booking, then into a monitoring rule and a regression test. The question is practical: when an agent says it changed a flight, what would let us check its work across many requests, find the exceptions, and test a repair before releasing it?
 
-The bookings and passenger requests are simulated records adapted from a pinned, MIT-licensed [τ-bench airline environment](https://github.com/sierra-research/tau2-bench/tree/989d3285ae669e49503324bdb9981bf14fccedeb). They are not customer traffic, and this workshop does not reproduce the benchmark. All 40 live qualification conversations passed the independent booking checks. The missing-return incident is a separately labeled controlled exercise; we don't relabel it as a mistake the live agent made.
+The bookings are simulated records adapted from a pinned, MIT-licensed [τ-bench airline environment](https://github.com/sierra-research/tau2-bench/tree/989d3285ae669e49503324bdb9981bf14fccedeb). We use its data and complete-itinerary update behavior; this is a workshop adaptation, not customer traffic or a benchmark replication. The live qualification completed all 40 conversations with passing booking checks. A separate controlled omission exercise provides a failure we can reproduce without pretending the agent made it spontaneously.
 
-The [six-hour notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view) and [deck](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/) teach the implementation. The workshop remains a technical preview: native Alignment judging and a relevant Insights example are not yet qualified, and fresh-account and participant rehearsals remain outstanding.
+You can follow the records here without an account, then copy the [six-hour notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view) into your project. The [deck](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/) supplies the code walkthrough. Native Alignment judging, a relevant Insights example, fresh-account access, and a participant rehearsal remain unqualified; the current workshop is a technical preview.
 
-## Check the booking behind the response
+## Keep the return flight in the write
 
-The worked round-trip example here uses reservation `59XX6W`. The passenger wants to replace outward flight `HAT007` with `HAT061` on May 19 while preserving return flight `HAT174` on May 29. The agent must also preserve the passengers and cabin, quote the fare difference, and obtain confirmation.
+Our worked round trip is reservation `59XX6W`. The passenger asks to replace `HAT007` from Las Vegas to Atlanta on May 19 with `HAT061`. The return, `HAT174` on May 29, should survive unchanged. So should the passengers and cabin. The agent must quote the price difference and ask before writing.
 
-The resulting itinerary should contain both `HAT061` and `HAT174`. Sending only `HAT061` expresses a complete booking with one flight. The API cannot infer that the omitted flight was meant to survive.
+![Simulated booking 59XX6W starts with HAT007 outward and HAT174 returning. The required itinerary replaces HAT007 with HAT061 while preserving HAT174.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/itinerary-change.png)
 
-This gives us three separate questions. Did the operation return successfully? Did the booking satisfy the request? Does the agent's explanation match the booking and any unresolved work? A trace error, a booking-state check, and an explanation judge answer different parts of that investigation.
+*The API takes the complete replacement itinerary. Sending `[HAT061]` supplies a one-flight booking; `[HAT061, HAT174]` preserves the journey home. These identifiers come from the [saved development request](https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/airline_monitoring/data/representative-case.json).*
 
-We instrument the model and tool calls with their actual inputs, outputs, errors, and timestamps. Version and traffic-batch attributes let participants find the requests belonging to a comparison instead of mixing every experiment in the project.
+A successful API response establishes that the operation returned. It does not establish that the supplied list matched the passenger's request. We therefore keep three kinds of checking visible: tool execution, independent booking-state checks, and a judge of the agent's explanation.
 
-![Agent Lens showing a timed-out reservation read, followed by later model and tool calls in the same conversation.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-conversation-error.png)
+![Tool checks inspect errors and timing; booking checks inspect the requested state, policy, and confirmation; explanation judgments inspect claims against recorded work.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/different-checks.png)
 
-*This recorded request concerns the same reservation, 59XX6W. The read timed out without changing the booking. The agent retried, obtained confirmation, and completed the change correctly. [Open the source conversation](https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3673f9ec7c917166a808d6473195a2ae).*
+*One conversation can contain a failed read, recover, and produce the correct booking. Conversely, a successful write can save the wrong itinerary. Each check needs the evidence for its own question.*
 
-Start by finding that error in Agent Lens, then follow the successful read and the booking write. Ten tool errors occurred across the 40 qualified conversations, but every final booking passed. Counting those errors as ten failed passenger requests would give us the wrong conclusion.
+The notebook begins with a local booking example. Inspect its flights and predict what should remain before connecting to a service. Later you write the instrumented conversation, the monitor's arithmetic, the regression-case constructor, and the itinerary helper. These functions affect the executions you compare.
 
-## Review examples before writing a monitor
+## Find the request, then follow the recovery
 
-Participants first save their own assessment of a turn, with its supporting event and expected behavior. They then define an **Unrequested itinerary change** tag. Its criteria should compare the passenger's requested scope, original booking, write arguments, and resulting booking.
+We attach the agent version and traffic-batch identity to the recorded work. Without those fields, a conversation list can mix the starting agent, a candidate repair, and requests from another exercise. A saved view makes the scope inspectable.
 
-A rule that simply flags fewer flights will fail on ordinary cases. Replacing two connecting outbound flights with one nonstop can be correct. A one-way booking may have one flight. A pending request with no confirmed write may be unresolved without having damaged anything. The calibration pack includes these controls alongside the deliberately omitted return.
+![Native Agent Lens conversation view shows the saved Airline qualification view, request rows, spans, and tool-error counts.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-saved-view.png)
 
-Agent Lens Alignment is where participants compare proposed tag criteria with reviewed labels and inspect disagreements. A saved human label and a completed model judgment must remain distinguishable. Testing alternative criteria also does not update the live rule until those criteria are saved.
+*The instructor's saved view filters the workshop agent and its `airline.version` attribute. Find the row mentioning `59XX6W`, then open its conversation. The error badge counts tool errors, not incorrect bookings. [Open the saved view](https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/views/01a1dc0a-3ea9-73bd-b0b8-bd7ecd7d9951).*
 
-![Native Alignment showing a reviewed expected result beside unscored turns and no completed test result.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-alignment-unavailable.png)
+In that recorded conversation, `get_reservation_details` timed out before returning the booking. The trace records the actual exception, arguments, and timing. The model received the failure, retried the read, obtained confirmation, and completed the requested change correctly.
 
-*This is the actual qualification screen. Six native test requests returned HTTP 500, so the model predictions remained unavailable. The saved review is evidence of a human assessment, not evidence that automatic judging worked. [Inspect the qualification and native identities](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/airline-monitoring-qualification.md).*
+![Agent Lens shows the failed get_reservation_details span for 59XX6W, its TimeoutError, and later calls in the same conversation.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-conversation-error.png)
 
-The prepared project also had no completed Insights cluster covering this workshop session. Insights is intended to help locate recurring behavior across traffic; the current Airline material cannot claim a demonstrated cluster investigation. Participants can inspect the saved conversations and complete the local review exercises while these native paths remain unqualified.
+*Read the selected span's reservation ID and error message. Open the conversation and follow the later read, quote, confirmation, and write; the write is below the screenshot's visible area. The read timeout made no booking change. [Open this exact tool span](https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3673f9ec7c917166a808d6473195a2ae/spans/turns/b4ad558d6ba484805a84991dd3f9e7c1/spans/faf64a520e6af500).*
 
-## Keep missing judgments out of the denominator
+Ten tool errors occurred across the 40 live qualification conversations, while all final bookings passed the independent checks. If we labeled every conversation containing a red span as an agent failure, we'd build a monitor of recoverable tool errors and call it booking quality.
 
-A monitor can be inaccurate even when the agent performs well. It can also appear quiet because processing has not completed. Participants implement the arithmetic that separates those possibilities.
+## Decide what the tag should detect
 
-The notebook's worked implementation begins by selecting completed predictions explicitly:
+We ask participants to review a turn before writing the tag criteria. Save the passenger's requested scope, the event that supports your judgment, and what should have happened. Then turn that assessment into an **Unrequested itinerary change** rule.
+
+“Fewer flights” is an insufficient rule. A passenger may explicitly replace two connecting flights with one nonstop. A one-way itinerary may have only one flight. A request still awaiting confirmation may have made no write at all. The rule needs the original booking, requested change, write arguments, and returned state, along with any recovery visible in the turn.
+
+![Agent Lens tag configuration shows the saved unrequested-itinerary criteria, Apply with AI switch, and exact workshop-agent filter.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-tag-configuration.png)
+
+*Inspect three fields: the criteria describe the behavior; **Apply with AI** controls automatic judging; **Filter by agent name** limits its scope. This is a recorded instructor configuration. Automatic judging was disabled at the end of qualification. [Open the native configuration](https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/edit).*
+
+Alignment compares alternative criteria with reviewed labels. We inspect disagreements before choosing the live rule. A proposed criterion doesn't become the deployed criterion until it is saved, and a human label doesn't become a model prediction merely because both appear in the same view.
+
+![Native Alignment displays a human expected result, selected turn context, and unscored turns without a completed model test result.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-alignment-unavailable.png)
+
+*The expected label was saved, but six native test requests returned HTTP 500. The model judgment remained unavailable. This screenshot documents that limit rather than implying a successful calibration. [Open the recorded native identities and qualification](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/airline-monitoring-qualification.md).*
+
+The prepared project also had no completed Insights cluster covering this workshop session. A cluster could help us find related requests, but we haven't demonstrated that investigation for Airline yet. Saved conversations and the local calibration pack remain available for reviewing individual examples. Neither a cluster nor a saved filter automatically supplies the starting state and expected behavior needed for a regression test.
+
+## Count what was processed before calculating accuracy
+
+An empty tag column can mean that the rule found no issue. It can also mean that the turn hasn't been judged. We make processing status part of the learner's monitor implementation so those cases don't collapse into the same result.
+
+The worked `my_monitor()` selects completed boolean predictions, then finds which of them also have a human label:
 
 ```python
 completed = [r for r in rows
@@ -52,15 +72,19 @@ known = [r for r in completed
          if type(r.get("human_label")) is bool]
 ```
 
-This is an excerpt from `my_monitor()`. Coverage uses all eligible rows as its denominator. Precision and recall use the completed predictions that also have a reviewed label. If those predictions are unavailable, the metrics remain unavailable; an absent tag does not silently become a negative finding.
+Coverage uses all eligible turns as its denominator. Precision asks how many flagged issues were supported by the reviewed labels. Recall asks how many reviewed issues were found. We keep unflagged controls in the review because inspecting only alerts would hide the missed issues.
 
-Reviewing only alerts would also conceal missed problems. The notebook keeps unflagged controls in the review and regression exercises. Native judging is scoped to the workshop agent, and automatic tagging must be disabled when the exercise ends. Closing the notebook does not disable it.
+![Eligible turns divide into completed predictions and unprocessed or unavailable turns. Coverage uses all eligible turns; precision and recall use completed predictions with human labels.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/monitor-denominators.png)
 
-## Preserve enough state to replay the incident
+*These are metric definitions, not measured native-monitor results. Precision and recall remain unavailable for the recorded Airline qualification because the native test predictions were unavailable. An empty denominator stays missing.*
 
-A transcript is not sufficient to recreate a booking mistake. Participants implement `case_from_reviewed_turn()` to retain the original request, starting reservation, policy, reviewed expectation, and source event. Discovery and review examples can enter this development dataset; reserved evaluation requests stay outside repair and rubric tuning.
+Native judges also work with turn-level context. If the original itinerary or passenger instruction is absent from the selected turn, record insufficient evidence instead of inferring a violation from the final list of flights. That limitation belongs in the review, not in a hidden assumption inside the rubric.
 
-The itinerary repair itself is small. After validating the replacement range, the learner's function returns the untouched prefix, requested flights, and untouched suffix:
+## Make the reviewed incident reproducible
+
+To test a repair, we need to reconstruct the condition that exposed the problem. A transcript alone won't do it. `case_from_reviewed_turn()` preserves the original request, starting booking, policy, expected behavior, and source event. Discovery examples and reviewed controls can enter this development dataset. Reserved evaluation requests stay outside repair and rubric tuning.
+
+For this API, the helper must construct a whole itinerary. The main expression in `my_itinerary_builder()` is small:
 
 ```python
 return copy.deepcopy(
@@ -70,26 +94,32 @@ return copy.deepcopy(
 )
 ```
 
-This is the central expression in `my_itinerary_builder()`. The interval is half-open: replace `replace_start` through the element before `replace_stop`. A deep copy avoids changing the original booking while constructing a proposal.
+The range is half-open: replace the element at `replace_start` through the element before `replace_stop`. For `59XX6W`, `[0:1]` selects the outbound flight. The untouched suffix contains `HAT174`, which must be copied into the proposed booking. The full function also validates its inputs; the deep copy keeps proposal construction from mutating the original booking.
 
-The controlled regression compares a deliberately incomplete adapter with this repair. On the omitted-return example, the incomplete proposal fails; the complete proposal passes. Both preserve the read-only control. The replay enforces confirmation, so the passenger refuses the incomplete proposal and the booking stays unchanged. That differs from the deliberately unauthorized write in the calibration incident. The [saved regression proof](https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/airline-monitoring/regression-proof.md) explains both states. This exercise makes no model calls.
+We compare that helper with a deliberately incomplete adapter on the same reviewed cases. Confirmation remains enforced in the replay, which makes its outcome different from the calibration incident that deliberately bypassed refusal.
 
-## Compare the live versions without promising a gain
+![The controlled omission adapter proposes only HAT061; the passenger refuses and the booking remains unchanged. The repaired builder proposes HAT061 plus HAT174; confirmation succeeds and booking checks pass.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/regression-replay.png)
 
-After testing the helper, participants run matched development requests, freeze the versions, and evaluate reserved requests in isolated booking copies. W&B preserves the code and settings; Weave and native EvalTables align the same input across both executions. Each row links the response to its resulting booking and trace.
+*The faulty replay leaves the requested change incomplete. It does not remove the return, because the simulated passenger refuses the incomplete proposal. The separate calibration incident deliberately ignored that refusal. Both adapters preserve the read-only control. [Inspect the saved regression proof](https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/airline-monitoring/regression-proof.md).*
 
-![Native EvalTables showing both versions at 100 percent task success on the same development requests.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-evaltables.png)
+This comparison makes no model calls. It demonstrates the effect of repairing the itinerary-construction code under fixed inputs. We still need a separate agent comparison to learn whether supplying that helper changes the agent's completed work.
 
-*The recorded development comparison contains four matched requests per version. Both pass. [Open the comparison](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=4wzxelfxod1) and read an individual booking before interpreting the aggregate.*
+## Compare the booking outcomes after the repair
 
-Both agents also passed all six reserved requests and all four subsequent requests. The repaired agent called the itinerary helper nine times across its runs, but the live comparison established no quality gain. The deterministic adapter repair and the agent comparison establish different things.
+We run matched development requests, freeze the versions, and evaluate reserved requests in isolated booking copies. W&B saves the code and settings; Weave and native EvalTables align the same request across both executions. The output includes the resulting booking as well as the reply.
 
-All 40 recorded conversations cost $0.02330616 in direct model inference. A separate explanation-judge call brought the total to $0.02401506. These are observed rehearsal costs, not a price promise; native tag judging and notebook compute are separate. Monitor precision and recall remain unavailable because Alignment predictions were unavailable.
+![Native EvalTables shows the starting version as Reference and four matched development requests per version, both with 100 percent task success.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-evaltables.png)
 
-## Try the workflow yourself
+*Keep the starting version selected as Reference. Open an individual request and compare the returned flight lists and checks. The two 100% bars are a tie across four development requests per version. [Open the actual comparison](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=4wzxelfxod1).*
 
-[Open the Airline notebook and choose **Copy to project**](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view). Confirm your own writable Forge destination, inspect the local booking example, and follow the setup check. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) includes the laptop path and recovery instructions. No workshop gateway or facilitator credentials are needed.
+Both agents also passed all six reserved requests and all four subsequent requests. The repaired agent called the itinerary helper nine times across its runs, so the added code did enter execution. The live comparison nevertheless established no booking-quality gain. The earlier helper repair and this tie answer different questions.
 
-The notebook's adjustable $8 allowance covers its own inference calls, not native tag judging, compute, or optional ARIA usage. Explicit controls start model calls; publication retries reuse saved executions. Use the labeled recordings and local checks when a native feature is unavailable, and keep that status in your conclusion.
+All 40 recorded conversations cost $0.02330616 in direct model inference. A separate explanation-judge call brought the total to $0.02401506. Native tag judging and notebook compute are separate charges; these rehearsal numbers aren't an attendee price guarantee. The [qualification record](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/airline-monitoring-qualification.md) retains the executions, costs, and unavailable native results.
 
-Finish by showing one reviewed request, its original and final booking, a supporting tool event, and a regression case that can reproduce the condition you care about. Then explain separately whether the agent improved, whether the monitor detected the right behavior, and what your evaluation now checks that it previously missed.
+## Run the workflow in your project
+
+[Open the Airline notebook and choose **Copy to project**](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view). Confirm your own writable destination and inspect the local booking example before the access check. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) covers the hosted and laptop paths. You don't need a workshop gateway or facilitator credentials.
+
+The adjustable $8 notebook allowance covers its own model calls. Native tag judging, compute, and optional ARIA usage follow their separate account settings. Explicit run controls start inference; publication retries reuse saved executions. Disable the workshop tag's automatic judging when you're finished. Closing the notebook does not disable it.
+
+Bring one reviewed request through the whole exercise: original booking, trace, human judgment, regression case, changed code, and final booking. Then state separately what you learned about the agent, the monitor, and the test suite. If the live agent succeeds, keep that success and use the labeled controlled incident to examine the failure condition.

@@ -1,0 +1,548 @@
+{
+  "kind": "Recorded instructor rehearsal excerpt; fictional accounts",
+  "workspace_id": "bc0ee4ab00c54596aab3452fa634a69c",
+  "records": [
+    {
+      "id": "13b62fe7dfee9decae8eb815e7559800",
+      "stage": "pending/round-1/propose",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/13b62fe7dfee9decae8eb815e7559800",
+      "candidates": [
+        {
+          "decision": "KEEP",
+          "title": "Retain parent harness after a clean duplicate-refund run",
+          "rationale": "The single observed execution already satisfied the published rules end to end: it read the account first, identified two captured payments on the same invoice as a duplicate charge, refunded only the second payment in full and exactly once using an explicit operation_id, re-read the account to confirm the refund was recorded while the original payment stayed captured, and finished with an honest resolved summary and no unrelated changes. There were no timeouts, failed reads, or rule violations, and prior_experience is empty, so no observed failure or imported lesson justifies editing the harness; the competing change would add mandatory steps this run never needed.",
+          "harness": {
+            "instructions": "Resolve the customer's office task using the available tools. Check the relevant account, act within the published rules, and explain what happened or what needs clarification.",
+            "verification_skill": "After a timeout, inspect the account before repeating a write. Reuse the same operation_id for the same intended write. Verify the account before claiming completion.",
+            "tool_skill": "",
+            "verify_before_finish": false,
+            "read_retries": 0
+          },
+          "lesson": "Read state first, refund the duplicate exactly once with an explicit operation_id, then re-read to confirm before finishing; this pattern resolved the case correctly with no harness changes.",
+          "limits": "Evidence is one successful run of a single duplicate-charge case with no timeout, read failure, or onboarding ambiguity; it does not test timeout recovery, clarification handling, or multi-step onboarding, so KEEP rests only on what was observed.",
+          "diff": "",
+          "fingerprint": "5cfd358201e0c1b5d2c8d534971ec59bb23fffeea0db36d5bd4efa278f040bf0"
+        },
+        {
+          "decision": "CHANGE",
+          "title": "Make pre-finish verification mandatory",
+          "rationale": "The post-write re-read in the trace is what made the finish summary truthful: it confirmed the refund was recorded and the original payment untouched before completion was claimed. The parent only advises that verification in verification_skill while verify_before_finish is false, so a future run could finish on the write response alone. Flipping verify_before_finish to true enforces the verification the skill text already recommends, generalizing the behavior that made this run trustworthy while leaving every other harness field unchanged; the cost is at most one extra read per task.",
+          "harness": {
+            "instructions": "Resolve the customer's office task using the available tools. Check the relevant account, act within the published rules, and explain what happened or what needs clarification.",
+            "verification_skill": "After a timeout, inspect the account before repeating a write. Reuse the same operation_id for the same intended write. Verify the account before claiming completion.",
+            "tool_skill": "",
+            "verify_before_finish": true,
+            "read_retries": 0
+          },
+          "lesson": "The post-write re-read underwrote an honest, verified finish; making verification mandatory turns observed good behavior into a harness guarantee instead of relying on agent initiative.",
+          "limits": "Adds a mandatory verification step even when a write response is already definitive, and it does not address timeout recovery or missing-identity clarification beyond the existing skill text; its benefit appears only in runs where the agent would otherwise skip verification.",
+          "diff": "--- before/workflow.json\n+++ after/workflow.json\n@@ -1,4 +1,4 @@\n {\n-  \"verify_before_finish\": false,\n+  \"verify_before_finish\": true,\n   \"read_retries\": 0\n }\n",
+          "fingerprint": "4d36aab043971380809fdc4c7d2a990b254b0058669eb2327ab6f790c582e028"
+        }
+      ]
+    },
+    {
+      "id": "9d597bbac108840ef407a8e216c15dd4",
+      "stage": "pending/round-1/probe-a-execution/double-charge",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/9d597bbac108840ef407a8e216c15dd4",
+      "harness_fingerprint": "5cfd358201e0c1b5d2c8d534971ec59bb23fffeea0db36d5bd4efa278f040bf0",
+      "events": [
+        {
+          "name": "get_account",
+          "arguments": {
+            "account_id": "acme"
+          },
+          "result": {
+            "ok": true,
+            "account": {
+              "id": "acme",
+              "name": "Example customer",
+              "subscription": {
+                "status": "active",
+                "paid": true
+              },
+              "payments": [
+                {
+                  "id": "pay-1",
+                  "invoice_id": "inv-1",
+                  "amount_cents": 4900,
+                  "status": "captured"
+                },
+                {
+                  "id": "pay-2",
+                  "invoice_id": "inv-1",
+                  "amount_cents": 4900,
+                  "status": "captured"
+                }
+              ],
+              "refunds": [],
+              "members": []
+            }
+          }
+        },
+        {
+          "name": "refund_payment",
+          "arguments": {
+            "account_id": "acme",
+            "payment_id": "pay-2",
+            "operation_id": "refund-pay-2-duplicate-inv-1"
+          },
+          "result": {
+            "ok": true,
+            "operation_id": "refund-pay-2-duplicate-inv-1",
+            "refund": {
+              "payment_id": "pay-2",
+              "amount_cents": 4900
+            }
+          }
+        },
+        {
+          "name": "get_account",
+          "arguments": {
+            "account_id": "acme"
+          },
+          "result": {
+            "ok": true,
+            "account": {
+              "id": "acme",
+              "name": "Example customer",
+              "subscription": {
+                "status": "active",
+                "paid": true
+              },
+              "payments": [
+                {
+                  "id": "pay-1",
+                  "invoice_id": "inv-1",
+                  "amount_cents": 4900,
+                  "status": "captured"
+                },
+                {
+                  "id": "pay-2",
+                  "invoice_id": "inv-1",
+                  "amount_cents": 4900,
+                  "status": "captured"
+                }
+              ],
+              "refunds": [
+                {
+                  "payment_id": "pay-2",
+                  "amount_cents": 4900
+                }
+              ],
+              "members": []
+            }
+          }
+        },
+        {
+          "name": "finish",
+          "arguments": {
+            "summary": "Verified account acme had two captured payments of $49.00 (4900 cents) for the same invoice inv-1: pay-1 and pay-2. Per the duplicate-payment rule, refunded pay-2 in full (operation_id refund-pay-2-duplicate-inv-1) and kept the original pay-1 captured. Post-refund read confirms the refund of 4900 cents is recorded against pay-2 while pay-1 remains captured. Subscription, memberships, and all other records were left unchanged.",
+            "resolution": "resolved",
+            "questions": []
+          },
+          "result": {
+            "accepted": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "9633d416f5fce6aaa0124ab6ddc38c46",
+      "stage": "pending/round-1/probe-b-execution/double-charge",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/9633d416f5fce6aaa0124ab6ddc38c46",
+      "harness_fingerprint": "4d36aab043971380809fdc4c7d2a990b254b0058669eb2327ab6f790c582e028",
+      "events": [
+        {
+          "name": "get_account",
+          "arguments": {
+            "account_id": "acme"
+          },
+          "result": {
+            "ok": true,
+            "account": {
+              "id": "acme",
+              "name": "Example customer",
+              "subscription": {
+                "status": "active",
+                "paid": true
+              },
+              "payments": [
+                {
+                  "id": "pay-1",
+                  "invoice_id": "inv-1",
+                  "amount_cents": 4900,
+                  "status": "captured"
+                },
+                {
+                  "id": "pay-2",
+                  "invoice_id": "inv-1",
+                  "amount_cents": 4900,
+                  "status": "captured"
+                }
+              ],
+              "refunds": [],
+              "members": []
+            }
+          }
+        },
+        {
+          "name": "refund_payment",
+          "arguments": {
+            "account_id": "acme",
+            "payment_id": "pay-2",
+            "operation_id": "refund-acme-pay-2"
+          },
+          "result": {
+            "ok": true,
+            "operation_id": "refund-acme-pay-2",
+            "refund": {
+              "payment_id": "pay-2",
+              "amount_cents": 4900
+            }
+          }
+        },
+        {
+          "name": "get_account",
+          "arguments": {
+            "account_id": "acme"
+          },
+          "result": {
+            "ok": true,
+            "account": {
+              "id": "acme",
+              "name": "Example customer",
+              "subscription": {
+                "status": "active",
+                "paid": true
+              },
+              "payments": [
+                {
+                  "id": "pay-1",
+                  "invoice_id": "inv-1",
+                  "amount_cents": 4900,
+                  "status": "captured"
+                },
+                {
+                  "id": "pay-2",
+                  "invoice_id": "inv-1",
+                  "amount_cents": 4900,
+                  "status": "captured"
+                }
+              ],
+              "refunds": [
+                {
+                  "payment_id": "pay-2",
+                  "amount_cents": 4900
+                }
+              ],
+              "members": []
+            }
+          }
+        },
+        {
+          "name": "finish",
+          "arguments": {
+            "summary": "Verified account acme had two captured payments of $49.00 (4900 cents) for the same invoice inv-1: pay-1 (original) and pay-2 (duplicate). Per the duplicate-payment rule, refunded the duplicate pay-2 in full once using operation_id refund-acme-pay-2; the API confirmed a 4900-cent refund, and a follow-up account read shows the refund recorded for pay-2. The original payment pay-1 remains captured and unchanged, and no other payments, memberships, or subscriptions were modified.",
+            "resolution": "resolved",
+            "questions": []
+          },
+          "result": {
+            "ok": false,
+            "error": "Check the current work before submitting."
+          }
+        },
+        {
+          "name": "check_work",
+          "arguments": {},
+          "result": {
+            "passed": true,
+            "observation": "Matching refunds: 1. Expected one."
+          }
+        },
+        {
+          "name": "finish",
+          "arguments": {
+            "summary": "Verified account acme had two captured payments of $49.00 (4900 cents) for the same invoice inv-1: pay-1 (original) and pay-2 (duplicate). Per the duplicate-payment rule, refunded the duplicate pay-2 in full once using operation_id refund-acme-pay-2; the API confirmed a 4900-cent refund, and a follow-up account read shows the refund recorded for pay-2. The original payment pay-1 remains captured and unchanged, and no other payments, memberships, or subscriptions were modified. The public check confirms exactly one matching refund, as expected.",
+            "resolution": "resolved",
+            "questions": []
+          },
+          "result": {
+            "accepted": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "c04f575608c6f43d99e1b7b428a23791",
+      "stage": "pending/round-1/compose",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c04f575608c6f43d99e1b7b428a23791",
+      "decision": {
+        "decision": "KEEP",
+        "title": "Keep parent harness: account-read verification sufficed; the check_work gate only added a rejected finish",
+        "rationale": "Both executions resolved the case identically and correctly: they read the account, confirmed two captured payments on the same invoice, refunded the duplicate exactly once with a distinct operation_id, re-read to confirm the refund was recorded, and left the original payment and all other records untouched. The only harness difference was verify_before_finish. Execution 1 ran the parent harness (false) and its finish was accepted on the first attempt, with verification already satisfied by the post-refund account read. Execution 2 flipped verify_before_finish to true but did not tell the agent to run check_work first, so its first finish was rejected ('Check the current work before submitting'), forcing a wasted check_work call that merely confirmed what the account read already showed ('Matching refunds: 1. Expected one.') before a second finish was accepted. The observed evidence shows the added gate produced no correctness benefit in this case and introduced a failure mode (uninstructed agents hit a rejected submission). The existing verification_skill already mandates verifying state before claiming completion, and the agent complied. No change is warranted.",
+        "harness": {
+          "instructions": "Resolve the customer's office task using the available tools. Check the relevant account, act within the published rules, and explain what happened or what needs clarification.",
+          "verification_skill": "After a timeout, inspect the account before repeating a write. Reuse the same operation_id for the same intended write. Verify the account before claiming completion.",
+          "tool_skill": "",
+          "verify_before_finish": false,
+          "read_retries": 0
+        },
+        "lesson": "In this office suite, a post-write read of the affected records is sufficient pre-finish verification for straightforward single-write tasks; enabling a mandatory pre-finish public check without also instructing the agent to run it first causes a rejected finish submission and a redundant retry, while the check itself only restates what the record read already established.",
+        "limits": "Evidence comes from a single simple duplicate-refund case with one write, no timeouts, no ambiguous state, and no onboarding/clarification path. It does not establish that skipping the public check is safe for multi-write tasks, timeout recovery, or cases where the public check could catch an error a plain record read would miss, nor that the gate would behave better if the instructions explicitly required running it before finish.",
+        "diff": "",
+        "fingerprint": "5cfd358201e0c1b5d2c8d534971ec59bb23fffeea0db36d5bd4efa278f040bf0"
+      }
+    },
+    {
+      "id": "9f964428fe2fddb56bb2a7160dd60fdf",
+      "stage": "pending/round-2/propose",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/9f964428fe2fddb56bb2a7160dd60fdf",
+      "candidates": [
+        {
+          "decision": "KEEP",
+          "title": "Keep parent harness: timeout protocol and scope discipline already produced a correct run",
+          "rationale": "The single execution of this harness on this task shows every harness-relevant behavior succeeding: the agent read the account first and confirmed the onboarding prerequisites (active paid subscription, explicitly requested email and role, role within the allowed set), loaded the installed verification skill, and when provision_member timed out it followed that skill exactly - inspecting current access via onboarding_status before repeating anything, finding the write had committed exactly once, and not re-provisioning. It left the two captured same-invoice payments untouched, honoring the rule that unrelated payments stay unchanged, and its finish summary matches the observed state with resolution 'resolved'. This run also supplies what the prior double-charge experience lacked: the timeout/idempotency guidance was actually exercised here and worked. That prior lesson comes from a separately identified refund task whose own limits state it covers nothing about onboarding; importing refund behavior into this membership mission would contradict 'keep all unrelated payments unchanged'. With no harness-attributable failure, misread, or scope violation in the evidence, retaining the parent is the supported choice.",
+          "harness": {
+            "instructions": "Resolve the customer's office task using the available tools. Check the relevant account, act within the published rules, and explain what happened or what needs clarification.",
+            "verification_skill": "After a timeout, inspect the account before repeating a write. Reuse the same operation_id for the same intended write. Verify the account before claiming completion.",
+            "tool_skill": "",
+            "verify_before_finish": false,
+            "read_retries": 0
+          },
+          "lesson": "This execution demonstrates the parent verification skill's timeout protocol working end to end: after a timed-out mutation the agent read state instead of retrying blindly, confirmed a single commit, and finished with an accurate summary; prerequisite checks and scope discipline came from the parent instructions plus the published rules. The prior double-charge lesson (refund a captured duplicate once) is a hypothesis from a different task domain and does not transfer: its limits explicitly exclude onboarding, and the duplicate payment pair visible in this account is out of scope for a membership mission, so the correct transfer is 'do not apply it here' - which the parent instructions already produced.",
+          "limits": "Evidence is one completed run with no independent grade (check_work was never called and no scoring output exists), so 'correct' is judged from tool outputs and the summary's consistency with them, not an external score. The access read confirms the member and subscription but does not display the payment ledger, so the summary's claim that payments were unchanged rests on the agent issuing no payment writes plus the pre-write account read, not on a post-write ledger read. The clean-acknowledgement path - a write succeeding on the first attempt with no timeout forcing a verification read - was not observed, so behavior in that case is untested by this evidence.",
+          "diff": "",
+          "fingerprint": "5cfd358201e0c1b5d2c8d534971ec59bb23fffeea0db36d5bd4efa278f040bf0"
+        },
+        {
+          "decision": "CHANGE",
+          "title": "Enforce verification before finish so confirmation does not depend on a timeout occurring",
+          "rationale": "The mission's success criterion is 'Confirm the access exists', and the harness's own verification_skill says 'Verify the account before claiming completion', yet verify_before_finish is false, making that mandate advisory. In the observed run the only post-write verification (the access read showing the provisioned member) happened because the provisioning call timed out and its error told the agent to inspect current access; on a run where the write acknowledges cleanly, nothing in the harness requires any state read before finish, and completion would rest on the write's response alone - which the rules warn against treating as ground truth. Setting verify_before_finish to true turns the already-installed verification policy into an enforced pre-finish step, guaranteeing the mission's confirmation requirement on every run without touching instructions, skills, or retry settings. It is the minimal edit closing the one gap this execution exposes; prerequisite checks, timeout handling, and scope discipline all worked and stay unchanged.",
+          "harness": {
+            "instructions": "Resolve the customer's office task using the available tools. Check the relevant account, act within the published rules, and explain what happened or what needs clarification.",
+            "verification_skill": "After a timeout, inspect the account before repeating a write. Reuse the same operation_id for the same intended write. Verify the account before claiming completion.",
+            "tool_skill": "",
+            "verify_before_finish": true,
+            "read_retries": 0
+          },
+          "lesson": "The execution shows verification in this harness is triggered by failure, not by policy: the agent verified access only after a timeout, exactly as the verification skill directs, and the run ended accurate. The generalizable lesson is that a harness whose verification skill mandates pre-completion verification while verify_before_finish is false relies on a write error occurring to make the agent verify; enforcement should match the stated policy so that confirming a mutation is guaranteed rather than incidental to a timeout.",
+          "limits": "This edit is preventive, not corrective: the observed run already verified before finishing and its summary matches the observed state, so a probe may show no outcome difference on timeout-prone runs, and the change costs one extra read on clean ones. The clean-acknowledgement failure mode it targets is inferred from the harness configuration, not observed in this evidence. The enforced read's shape is unspecified - whether it re-reads the full account or only access - so it may still not produce a post-write payment-ledger read, leaving the 'no other payments changed' claim an inference. Nothing here addresses refunds, other accounts, or whether the extra read changes any grade.",
+          "diff": "--- before/workflow.json\n+++ after/workflow.json\n@@ -1,4 +1,4 @@\n {\n-  \"verify_before_finish\": false,\n+  \"verify_before_finish\": true,\n   \"read_retries\": 0\n }\n",
+          "fingerprint": "4d36aab043971380809fdc4c7d2a990b254b0058669eb2327ab6f790c582e028"
+        }
+      ]
+    },
+    {
+      "id": "eed7d5145a734310e26420402401b315",
+      "stage": "pending/round-2/probe-a-execution/missing-seat",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/eed7d5145a734310e26420402401b315",
+      "harness_fingerprint": "5cfd358201e0c1b5d2c8d534971ec59bb23fffeea0db36d5bd4efa278f040bf0",
+      "events": [
+        {
+          "name": "get_account",
+          "arguments": {
+            "account_id": "fern"
+          },
+          "result": {
+            "ok": true,
+            "account": {
+              "id": "fern",
+              "name": "Example customer",
+              "subscription": {
+                "status": "active",
+                "paid": true
+              },
+              "payments": [
+                {
+                  "id": "pay-1",
+                  "invoice_id": "inv-1",
+                  "amount_cents": 4900,
+                  "status": "captured"
+                },
+                {
+                  "id": "pay-2",
+                  "invoice_id": "inv-1",
+                  "amount_cents": 4900,
+                  "status": "captured"
+                }
+              ],
+              "refunds": [],
+              "members": []
+            }
+          }
+        },
+        {
+          "name": "provision_member",
+          "arguments": {
+            "account_id": "fern",
+            "email": "alex@example.test",
+            "role": "member",
+            "operation_id": "op-fern-alex-member-001"
+          },
+          "result": {
+            "ok": false,
+            "error": "timeout",
+            "message": "No acknowledgement received. The operation may have committed; inspect current access."
+          }
+        },
+        {
+          "name": "onboarding_status",
+          "arguments": {
+            "account_id": "fern"
+          },
+          "result": {
+            "ok": true,
+            "subscription": {
+              "status": "active",
+              "paid": true
+            },
+            "members": [
+              {
+                "email": "alex@example.test",
+                "role": "member"
+              }
+            ]
+          }
+        },
+        {
+          "name": "finish",
+          "arguments": {
+            "summary": "Added alex@example.test as a member of account fern. The account has an active paid subscription, the requested email and role (member) were explicit, and member is an allowed role, so provisioning was permitted. The provision_member call returned a timeout warning that the operation might have committed, so instead of retrying (which could duplicate the change), I read the current access state via onboarding_status: it confirms alex@example.test now exists as a member with role 'member'. No payments, refunds, or other records were modified.",
+            "resolution": "resolved",
+            "questions": []
+          },
+          "result": {
+            "accepted": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "ccc4d870e41f768fafa86310a03135df",
+      "stage": "pending/round-2/probe-b-execution/missing-seat",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ccc4d870e41f768fafa86310a03135df",
+      "harness_fingerprint": "4d36aab043971380809fdc4c7d2a990b254b0058669eb2327ab6f790c582e028",
+      "events": [
+        {
+          "name": "get_account",
+          "arguments": {
+            "account_id": "fern"
+          },
+          "result": {
+            "ok": true,
+            "account": {
+              "id": "fern",
+              "name": "Example customer",
+              "subscription": {
+                "status": "active",
+                "paid": true
+              },
+              "payments": [
+                {
+                  "id": "pay-1",
+                  "invoice_id": "inv-1",
+                  "amount_cents": 4900,
+                  "status": "captured"
+                },
+                {
+                  "id": "pay-2",
+                  "invoice_id": "inv-1",
+                  "amount_cents": 4900,
+                  "status": "captured"
+                }
+              ],
+              "refunds": [],
+              "members": []
+            }
+          }
+        },
+        {
+          "name": "provision_member",
+          "arguments": {
+            "account_id": "fern",
+            "email": "alex@example.test",
+            "role": "member",
+            "operation_id": "onboard-fern-alex-member-001"
+          },
+          "result": {
+            "ok": false,
+            "error": "timeout",
+            "message": "No acknowledgement received. The operation may have committed; inspect current access."
+          }
+        },
+        {
+          "name": "onboarding_status",
+          "arguments": {
+            "account_id": "fern"
+          },
+          "result": {
+            "ok": true,
+            "subscription": {
+              "status": "active",
+              "paid": true
+            },
+            "members": [
+              {
+                "email": "alex@example.test",
+                "role": "member"
+              }
+            ]
+          }
+        },
+        {
+          "name": "finish",
+          "arguments": {
+            "summary": "Onboarding for alex@example.test on account fern is complete and verified. Steps: (1) get_account confirmed fern has an active paid subscription, satisfying the onboarding prerequisite; the request explicitly specified the email alex@example.test and role member, both allowed, so no clarification was needed. (2) provision_member was called with operation_id onboard-fern-alex-member-001, but it returned a timeout warning that the mutation may have committed. (3) Following the rule for timed-out mutations, I did not blindly retry; instead I read current state via onboarding_status, which shows the operation did commit: members now include {email: alex@example.test, role: member}. No retry was performed, so there is no risk of a duplicate provisioning. No other payments, memberships, or subscriptions were touched (the two captured payments on inv-1 were left unchanged; they share the same invoice ID but no refund was requested or performed). Access confirmed: alex@example.test is an active member on paid account fern.",
+            "resolution": "resolved",
+            "questions": []
+          },
+          "result": {
+            "ok": false,
+            "error": "Check the current work before submitting."
+          }
+        },
+        {
+          "name": "check_work",
+          "arguments": {},
+          "result": {
+            "passed": true,
+            "observation": "Matching memberships: 1. Expected one."
+          }
+        },
+        {
+          "name": "finish",
+          "arguments": {
+            "summary": "Onboarding for alex@example.test on account fern is complete and verified. Steps: (1) get_account confirmed fern has an active paid subscription, satisfying the onboarding prerequisite; the request explicitly specified the email alex@example.test and role member, both allowed, so no clarification was needed. (2) provision_member was called with operation_id onboard-fern-alex-member-001, but it returned a timeout warning that the mutation may have committed. (3) Following the rule for timed-out mutations, I did not blindly retry; instead I read current state via onboarding_status, which showed the operation did commit: members include {email: alex@example.test, role: member}. No retry was performed, so there is no risk of duplicate provisioning. check_work confirms exactly one matching membership. No other payments, memberships, or subscriptions were touched (the two captured payments on inv-1 were left unchanged; no refund was requested or performed). Access confirmed: alex@example.test is an active member on paid account fern.",
+            "resolution": "resolved",
+            "questions": []
+          },
+          "result": {
+            "accepted": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "a39aede201a0fe7320092976c0501e42",
+      "stage": "pending/round-2/compose",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/a39aede201a0fe7320092976c0501e42",
+      "decision": {
+        "decision": "CHANGE",
+        "title": "Keep finish gate off; fold exactly-once verification into the skill",
+        "rationale": "Both runs reached the same accepted end state: the requested member provisioned exactly once after a timeout, no blind retry, no duplicate, no stray refunds, unrelated payments untouched. The only harness delta was verify_before_finish=true in run 2, which forced a check_work call and caused one rejected finish before acceptance \u2014 extra overhead with no outcome gain, since run 1's agent already verified via onboarding_status under the skill text alone. Run 2's unique contribution was the verification semantics its check surfaced (exactly one matching membership, unrelated records unchanged); retain that as explicit skill guidance while keeping the parent's gate-off, low-overhead configuration.",
+        "harness": {
+          "instructions": "Resolve the customer's office task using the available tools. Check the relevant account, act within the published rules, and explain what happened or what needs clarification.",
+          "verification_skill": "After a timeout, inspect the account before repeating a write. Reuse the same operation_id for the same intended write. Verify the account before claiming completion: confirm the intended change is present exactly once (no duplicate side effects) and that unrelated payments, memberships, and subscriptions are unchanged.",
+          "tool_skill": "",
+          "verify_before_finish": false,
+          "read_retries": 0
+        },
+        "lesson": "Reading current access state after a provision timeout (instead of retrying) correctly resolved commit ambiguity in both runs and avoided duplicate membership. Pre-finish verification should confirm the change appears exactly once and unrelated records are unchanged; that behavior can be driven by skill text alone, while the enforced check gate only added a rejected finish without changing any outcome.",
+        "limits": "Both observations come from the same simple case: the timed-out write had actually committed, the account had no pre-existing members, and no refund work was present. The operation_id-reuse path was never exercised (neither run retried), and the gate-off choice rests on a single A/B comparison; behavior when a timeout does NOT commit, or when duplicates already exist, remains untested.",
+        "diff": "--- before/skills/verify-operation.md\n+++ after/skills/verify-operation.md\n@@ -1 +1 @@\n-After a timeout, inspect the account before repeating a write. Reuse the same operation_id for the same intended write. Verify the account before claiming completion.\n+After a timeout, inspect the account before repeating a write. Reuse the same operation_id for the same intended write. Verify the account before claiming completion: confirm the intended change is present exactly once (no duplicate side effects) and that unrelated payments, memberships, and subscriptions are unchanged.\n",
+        "fingerprint": "2cf7a0743cf9929b3b3fd3d7e115ad8d99223ecdbd780415d741b8fbfa785923"
+      }
+    }
+  ]
+}

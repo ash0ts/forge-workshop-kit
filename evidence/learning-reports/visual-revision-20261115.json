@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-15",
+  "scope": "Visual and editorial revision of the six public learning Reports. No workshop executions rerun.",
+  "writing_reference": {
+    "url": "https://forge.coreweave.com/wandb/wandb/harness2-agent-lens-v4/reports/Recreating-Harness---VmlldzoxODE5OTAxNQ",
+    "displayed_updated_date": "2026-11-10",
+    "read_in_browser": true
+  },
+  "local": {
+    "publisher_and_authoring_tests_passed": 17,
+    "figure_scripts_ruff": "passed",
+    "diff_check": "passed",
+    "codeowners_review": "reports/ and scripts/ covered by * @ash0ts",
+    "source_hashes_checked": 191,
+    "source_hash_mismatches": []
+  },
+  "reports": {
+    "pending": {
+      "source_sha256": "8d6d4d85a110f87fb9a48cf14c5e565a0b82c7434efcdfa6c198f9204cdbc309",
+      "images": 10,
+      "blocks": 42,
+      "python_excerpts_parse": true
+    },
+    "solar": {
+      "source_sha256": "67f1a4f8a78d1919ad2506ae09041dfcfa19fcdf704acfe5fb565d7058dc737c",
+      "images": 10,
+      "blocks": 43,
+      "python_excerpts_parse": true
+    },
+    "routing": {
+      "source_sha256": "741a17fe35b64cca9dcc8254b8f6fe5b52b260e90e169b3a40ee367067c36c54",
+      "images": 8,
+      "blocks": 35,
+      "python_excerpts_parse": true
+    },
+    "inspection": {
+      "source_sha256": "86b12871c0739eef5723e6154bb330c0a7236d17abad2a1708fdbae6591a6845",
+      "images": 8,
+      "blocks": 31,
+      "python_excerpts_parse": true
+    },
+    "transit": {
+      "source_sha256": "baa4955925df3084fe504db6f0bd82fdb15a512be899de2d39f79138ecb2921e",
+      "images": 8,
+      "blocks": 31,
+      "python_excerpts_parse": true
+    },
+    "airline": {
+      "source_sha256": "c750aaf9128a0bbe657a440b7c7c62f3e9c7f4d54281bf594ae5ebde121702ed",
+      "images": 9,
+      "blocks": 37,
+      "python_excerpts_parse": true
+    }
+  },
+  "native_publication": "pending",
+  "browser": "pending",
+  "external_account_rehearsal": "not performed; readiness unchanged",
+  "human_usability_rehearsal": "not performed; readiness unchanged"
+}

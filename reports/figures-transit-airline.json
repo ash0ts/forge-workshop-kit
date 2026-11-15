@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-15",
+  "renderer": "Matplotlib with bundled DejaVu Sans; editable SVG and PNG exports",
+  "semantic_colors": {
+    "parent": "gray",
+    "first_condition_or_worker": "blue",
+    "second_condition_or_worker": "orange",
+    "review_or_preserved_state": "teal"
+  },
+  "arrows": {
+    "solid": "code, data or action flow",
+    "dashed": "reviewed evidence supplied as context"
+  },
+  "figures": [
+    {
+      "id": "transit/service-day",
+      "question": "What calendar date does 24:08 mean?",
+      "takeaway": "Service-date arithmetic preserves the after-midnight departure.",
+      "class": "explanatory-figure",
+      "sources": [
+        {
+          "path": "examples/transit/README.md",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/transit/README.md",
+          "sha256": "05a0a0bcd7135234ea713c919aa5d93828cbb72030bf937558de4d4dcdc06e22"
+        },
+        {
+          "path": "docs/transit-workshop.md",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-workshop.md",
+          "sha256": "86b575bce60d3e496244ea58293287f9d4812ed20deba81a50c08b9f6071768e"
+        }
+      ],
+      "boundary": "Real retained MBTA example; no live travel claim.",
+      "svg": {
+        "path": "reports/assets/transit/service-day.svg",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/transit/service-day.svg",
+        "sha256": "69bac5addf13301e06927045d6d7373131f92a525dd3b984c1e07b13099ca01c"
+      },
+      "png": {
+        "path": "reports/assets/transit/service-day.png",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/transit/service-day.png",
+        "sha256": "48047d75bdb7a4aa77a72b86fe88cfca2281551f949422bd8d54f9fad2490d19"
+      },
+      "generator": "scripts/build_report_transit_airline_visuals.py",
+      "visually_inspected": true,
+      "text_bounds_checked": true
+    },
+    {
+      "id": "transit/worker-integration",
+      "question": "How do separate workers produce a checked app?",
+      "takeaway": "Owned patches require participant review, integration, and combined checks.",
+      "class": "explanatory-figure",
+      "sources": [
+        {
+          "path": "src/forge_workshop_kit/factory.py",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory.py",
+          "sha256": "ccca4f997a426202cb998f224757575f1a3370bcbdac8a98e36b5af61e86a9f5"
+        },
+        {
+          "path": "src/forge_workshop_kit/transit.py",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/transit.py",
+          "sha256": "1d6625cf0751ed731af34fe79d681ae6e08ccb9a734102d1af67259034ac6e80"
+        }
+      ],
+      "boundary": "Implemented architecture, not a record that every worker succeeded.",
+      "svg": {
+        "path": "reports/assets/transit/worker-integration.svg",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/transit/worker-integration.svg",
+        "sha256": "93f16d3276a18317adf2df19bba91cf9376c7c97614c62acfea472b5e00fc296"
+      },
+      "png": {
+        "path": "reports/assets/transit/worker-integration.png",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/transit/worker-integration.png",
+        "sha256": "8ffb566a4f6a00e067b28c251c0cdaf649737d11cb0da642641e1ea3a973752e"
+      },
+      "generator": "scripts/build_report_transit_airline_visuals.py",
+      "visually_inspected": true,
+      "text_bounds_checked": true
+    },
+    {
+      "id": "transit/build-comparison",
+      "question": "Did the faster build produce the same correct app?",
+      "takeaway": "R5 team is quicker within builder time but fails two final checks for one UTC defect.",
+      "class": "explanatory-figure",
+      "sources": [
+        {
+          "path": "evidence/transit-v060-rehearsal-summary.json",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/transit-v060-rehearsal-summary.json",
+          "sha256": "a5c5288147697f8b71e647903451b1d455d8423d85e14b75f56d2e9c2ca1ab0a"
+        },
+        {
+          "path": "docs/transit-workshop.md",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-workshop.md",
+          "sha256": "86b575bce60d3e496244ea58293287f9d4812ed20deba81a50c08b9f6071768e"
+        }
+      ],
+      "boundary": "One run per condition; time excludes human review and integration.",
+      "svg": {
+        "path": "reports/assets/transit/build-comparison.svg",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/transit/build-comparison.svg",
+        "sha256": "1d7114ae51142c7bbbdd9d2798d0e2625ca8834705ba317f17dc926c77cf98a2"
+      },
+      "png": {
+        "path": "reports/assets/transit/build-comparison.png",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/transit/build-comparison.png",
+        "sha256": "033d8ec512d947395426522f632c5b4a51c22892e9e62dc9bd6ce8f1bf23b33e"
+      },
+      "generator": "scripts/build_report_transit_airline_visuals.py",
+      "visually_inspected": true,
+      "text_bounds_checked": true
+    },
+    {
+      "id": "transit/memory-comparison",
+      "question": "What changed between the memory comparison arms?",
+      "takeaway": "Accepted applicable notes differ; requirements, source, contracts and limits remain matched.",
+      "class": "explanatory-figure",
+      "sources": [
+        {
+          "path": "src/forge_workshop_kit/factory.py",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory.py",
+          "sha256": "ccca4f997a426202cb998f224757575f1a3370bcbdac8a98e36b5af61e86a9f5"
+        },
+        {
+          "path": "docs/transit-workshop.md",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-workshop.md",
+          "sha256": "86b575bce60d3e496244ea58293287f9d4812ed20deba81a50c08b9f6071768e"
+        }
+      ],
+      "boundary": "Both 12/18; stopped query workers; neither release supported and no demonstrated memory benefit.",
+      "svg": {
+        "path": "reports/assets/transit/memory-comparison.svg",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/transit/memory-comparison.svg",
+        "sha256": "323593891468d6b06bdad5c18a6bb388d082dc7bcecdff2fc08532b3219f3396"
+      },
+      "png": {
+        "path": "reports/assets/transit/memory-comparison.png",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/transit/memory-comparison.png",
+        "sha256": "3cc4c29bd7a0e804d670a6a3d3de1f47049c3c0b2f76a5f37d4acadd36aa3f52"
+      },
+      "generator": "scripts/build_report_transit_airline_visuals.py",
+      "visually_inspected": true,
+      "text_bounds_checked": true
+    },
+    {
+      "id": "airline/itinerary-change",
+      "question": "Which flights should the update contain?",
+      "takeaway": "The requested outbound replacement must preserve HAT174.",
+      "class": "explanatory-figure",
+      "sources": [
+        {
+          "path": "decks/airline_monitoring/data/representative-case.json",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/airline_monitoring/data/representative-case.json",
+          "sha256": "c2530b7f6f279a933960981b0c177c83544355f4cbe3dcc58213b0f9653d1889"
+        },
+        {
+          "path": "src/forge_workshop_kit/assets/airline/cases.json",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/assets/airline/cases.json",
+          "sha256": "2461b491aafddee470b658f491f2d10daa4edbbfee518ec4dfdcbb36f52cb42c"
+        }
+      ],
+      "boundary": "Simulated development reservation 59XX6W; diagram is not a production incident.",
+      "svg": {
+        "path": "reports/assets/airline/itinerary-change.svg",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/airline/itinerary-change.svg",
+        "sha256": "22a169dd8d71a28128ae6001db82194ba6a20dfc447406bda9b622638a0a6a7d"
+      },
+      "png": {
+        "path": "reports/assets/airline/itinerary-change.png",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/airline/itinerary-change.png",
+        "sha256": "a6032574c4c4989ad0ef39db4009499eee5463afa50818d40f32407137502717"
+      },
+      "generator": "scripts/build_report_transit_airline_visuals.py",
+      "visually_inspected": true,
+      "text_bounds_checked": true
+    },
+    {
+      "id": "airline/different-checks",
+      "question": "What do execution, state and explanation checks each establish?",
+      "takeaway": "A recovered tool error can coexist with correct booking state.",
+      "class": "explanatory-figure",
+      "sources": [
+        {
+          "path": "src/forge_workshop_kit/airline.py",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline.py",
+          "sha256": "3bbafdc4482cd13fbc698a800fff91e9deeb96db606a63962353aa49d1af4562"
+        },
+        {
+          "path": "docs/airline-monitoring-qualification.md",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/airline-monitoring-qualification.md",
+          "sha256": "546e121a2eda3eb93dd3e8d8df39cd85d733fab47003325e8a02b4b2523f6d6a"
+        }
+      ],
+      "boundary": "40 correct bookings and ten tool errors are different units; no invented judge validation.",
+      "svg": {
+        "path": "reports/assets/airline/different-checks.svg",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/airline/different-checks.svg",
+        "sha256": "a8f87969c630662623e2eea47314ad61c537c623a3548493c2ad0fa38376f6b6"
+      },
+      "png": {
+        "path": "reports/assets/airline/different-checks.png",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/airline/different-checks.png",
+        "sha256": "424c8e5a933f2605eb60bd9e13cbae51c21e958c3f2241f2cdaf7a4b29d30936"
+      },
+      "generator": "scripts/build_report_transit_airline_visuals.py",
+      "visually_inspected": true,
+      "text_bounds_checked": true
+    },
+    {
+      "id": "airline/monitor-denominators",
+      "question": "Which turns belong in each monitoring denominator?",
+      "takeaway": "Unprocessed is unavailable, not negative.",
+      "class": "explanatory-figure",
+      "sources": [
+        {
+          "path": "src/forge_workshop_kit/airline_teaching.py",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py",
+          "sha256": "8ff9a289c2066a50e73e36cf818d1aa968cb2ecb87c6cc00ee32196c62f41344"
+        }
+      ],
+      "boundary": "Definition diagram; no measured native monitor precision/recall claimed.",
+      "svg": {
+        "path": "reports/assets/airline/monitor-denominators.svg",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/airline/monitor-denominators.svg",
+        "sha256": "22a588f395430f20de09b2e814c4c1074aca8db8b3b63566f0d0d0d2d90e3cc4"
+      },
+      "png": {
+        "path": "reports/assets/airline/monitor-denominators.png",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/airline/monitor-denominators.png",
+        "sha256": "c3e9a5d41b6aa492419d7d9b5ddc71e8998369a121cd599c05fc779a5d0cb8e9"
+      },
+      "generator": "scripts/build_report_transit_airline_visuals.py",
+      "visually_inspected": true,
+      "text_bounds_checked": true
+    },
+    {
+      "id": "airline/regression-replay",
+      "question": "Why does the omission fail without removing the return in replay?",
+      "takeaway": "Confirmation refuses the incomplete proposal; the repaired proposal passes.",
+      "class": "explanatory-figure",
+      "sources": [
+        {
+          "path": "examples/airline-monitoring/regression-proof.md",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/airline-monitoring/regression-proof.md",
+          "sha256": "fa2889f3bc5c52776d3efd54c18b166ba46d0005eaf206c1bc979e0257747abc"
+        },
+        {
+          "path": "examples/airline-monitoring/regression-proof.json",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/airline-monitoring/regression-proof.json",
+          "sha256": "666a94acaadb3dd44bf977c28835ed31724dbfb68e79b913c62c1b121c9bc852"
+        }
+      ],
+      "boundary": "Controlled local adapter comparison, separate from unauthorized calibration write and successful live agent runs.",
+      "svg": {
+        "path": "reports/assets/airline/regression-replay.svg",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/airline/regression-replay.svg",
+        "sha256": "421d30f2e674fcd39127637ba3938789b7e97b9019b68767b32f4a510f095268"
+      },
+      "png": {
+        "path": "reports/assets/airline/regression-replay.png",
+        "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/airline/regression-replay.png",
+        "sha256": "d1a5ad95f109b566bc133a768a16a53a0caabb4b77b1d3570ab400b7f260b3ea"
+      },
+      "generator": "scripts/build_report_transit_airline_visuals.py",
+      "visually_inspected": true,
+      "text_bounds_checked": true
+    }
+  ]
+}

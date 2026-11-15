@@ -17,4 +17,16 @@ Use the [setup guide](../docs/setup.md) for account requirements, local installa
 
 Edit the six Markdown sources here. The `sources-*.json` ledgers link claims and visuals to existing public evidence; they are contributor records, not Report body content. Update the ledger when changing a claim. `published.json` records the stable public destinations and exact source hashes.
 
+Figures follow one example through its inputs, code, and result. `figures-*.json` records their source data, interpretation, and limits. Generated PNGs and editable SVGs live in `assets/`; native Forge screenshots keep their original pixels and a link to the captured record. Use the caption to tell readers which field to inspect.
+
+Regenerate the explanatory figures with the matching script:
+
+```sh
+uv run --extra routing python scripts/build_report_pending_solar_visuals.py
+uv run --extra routing python scripts/build_report_routing_inspection_visuals.py
+uv run --extra routing python scripts/build_report_transit_airline_visuals.py
+```
+
+These commands read saved evidence and render figures; they do not train models or call services. Publish new image files to the public repository before updating a Report that references them. Inspect the rendered figures and native Report page, including full-size image links and the notebook invitation.
+
 [Build and publication instructions](../docs/maintenance.md#publish-learning-reports) explain the preview, destination checks, anonymous readback, and recovery after an interrupted save. Publication creates no experiment runs. Existing rehearsal Reports and participant conclusions remain separate.

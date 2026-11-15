@@ -1,36 +1,54 @@
 # Coordinate coding agents, then test the app they built
 
-We built this workshop around a departure board for people leaving an evening event. It sounds like a small enough product to hand to two coding agents: one writes the schedule query, the other builds the display. They still have to agree about which day a train belongs to.
+We wanted a small app that people leaving an evening event could use to find their next train. A schedule query and a departure board seemed like reasonable jobs for two coding agents. Give each worker a file, agree on the interface, and combine their patches.
 
-That detail became a useful way to teach agent coordination. Participants write the Python that assigns work, passes observations back to workers, reviews patches, and retrieves lessons for a later feature. They then check the resulting application. Our recorded two-worker build finished faster than the single-worker build, but returned the wrong train on a reserved scenario. We kept that result.
+The catch was in the timetable. A train listed at `24:08:00` belongs to the previous service day, even though the passenger's clock says it's tomorrow. A second worker can help build the screen. It doesn't remove the need for both workers to mean the same thing by “tonight.”
 
-You can follow the example below without an account. The [six-hour notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view) contains the implementation exercises, and the [companion deck](https://ash0ts.github.io/forge-workshop-kit/transit/) explains each step. This is a technical preview; fresh-account access and a participant rehearsal remain outstanding.
+This workshop makes the coordination code part of the lesson. We build a worker's read–edit–test cycle, divide the work, check the combined app, and carry reviewed lessons into a later feature. The recorded team completed its build phase faster than one worker, but its app failed a timezone case. That gives us something concrete to investigate beyond whether the agents stayed busy.
 
-## Start with the train someone needs to catch
+You can read the examples here without an account. The [six-hour editable notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view) and [visual deck](https://ash0ts.github.io/forge-workshop-kit/transit/) contain the exercises. They're a technical preview; fresh-account access and a participant rehearsal remain outstanding.
 
-The product setting is fictional. Its data comes from the real MBTA schedule archive for November 28 through December 4, 2024. We freeze the feed so every build receives the same records. The subset retains Red Line platforms at five stations, along with their trips, stop times, and service calendars. It describes historical scheduled service, not live arrivals or current travel advice.
+## Start with a departure someone should be able to catch
 
-GTFS, the schedule format, separates a **service date** from the date on the passenger's clock. The retained trip `63926435` has a departure time of `24:08:00` at Park Street under the November 28 service calendar. That means 00:08 on November 29. At 00:05, the board should still include that train.
+The evening-event setting is fictional. The records come from the MBTA's public schedule archive for November 28 through December 4, 2024. We retain ten Red Line platforms across five stations, including their trips, stop times, and service calendars. Every build receives the same historical feed. The app does not show live arrivals.
 
-![Instructor reference board showing the Park Street departures just after midnight, beginning at 00:08.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/transit/public/images/reference-departures.png)
+One retained trip, `63926435`, leaves Park Street toward Alewife at `24:08:00` under the November 28 service calendar. GTFS allows hours above 23 because a service day can continue after midnight. This departure occurs at 00:08 Eastern on November 29. A passenger checking at 00:05 should see it.
 
-*The instructor-authored reference app makes the expected behavior visible before any agent runs. The first displayed departure belongs to the previous service day. This screen is not an agent result. [Inspect the data and reference implementation](https://github.com/ash0ts/forge-workshop-kit/tree/main/examples/transit).*
+![A real Park Street record maps November 28 service time 24:08 to November 29 at 00:08 Eastern. A query at 00:05 should include the departure.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/service-day.png)
 
-The notebook starts with this local query and an acceptance check. Participants change the input time, predict whether the train should appear, and implement a condition that catches a missing departure or an incorrect service date. That gives them a concrete requirement before they ask an agent to write code.
+*The conversion keeps the service date and the passenger's clock date separate. Rejecting an hour above 23, or checking only the new day's service, can drop this train. [Inspect the retained records](https://github.com/ash0ts/forge-workshop-kit/tree/main/examples/transit).*
 
-## Give a worker a bounded job
+We provide a reference app so you can see the expected output before asking a model to write anything. Change the stop or time and read the resulting row. Then write an acceptance check for the train, its departure time, and its service date.
 
-The first builder receives the feature request, shared interfaces, starting files, and allowed tools. Its repeated work is straightforward: read a file, propose an edit, run a development test, then inspect the returned observation. Participants complete `build_worker_request()` and `dispatch_action()` so the code they write determines what reaches the model and which action executes.
+![Instructor-authored reference board showing Park Street departures after midnight, beginning at 00:08.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/transit/public/images/reference-departures.png)
 
-The model writes the app's query and presentation code. Participants inspect the diffs and integrate the patches before trying the board. A passing component test does not establish that the combined application returns the right departures.
+*Find the `00:08` departure and its service date. This is the reference implementation, not an agent-generated result. You can [download and run it locally](https://ash0ts.github.io/forge-workshop-kit/transit/walkthrough/transit-reference-app.zip) without inference access.*
 
-We trace the assignment, file reads, edits, and tests with worker and task identities. In Agent Lens, select a test call and find the exact file version it tested. Then open the worker's next model request: did the failure reach the model, and did the next patch address it? That is a more specific investigation than reading the worker's final claim that it finished.
+That small check gives the agent a requirement we can inspect. “Build a nice departures page” would leave much more of the behavior to its interpretation.
 
-## Two workers need an ownership rule
+## Let one worker build the first version
 
-Once one builder has produced an inspectable result, we split query and presentation work between two workers. Each gets a separate working copy and a file ownership contract. The task board distinguishes pending work, running work, submitted patches, and integrated changes.
+We start with one builder. It receives the work order, the component interfaces, the starting files, and the tools it may call. Its tools read files, write changes, and run the supplied development tests. The model's next request includes the tool observation, so a failed test can affect its next edit.
 
-The dependency rule in the kit is small enough to read:
+You complete `build_worker_request()` and `dispatch_action()`. Those functions control what the worker sees and which proposed action executes. The worker writes the app code; you write the mechanism around it and review the patch before integration.
+
+A trace should make that distinction visible. An assignment, a file read, a patch, and a test are separate events with worker and task identities. In Agent Lens, choose a test call, read its output, and follow the next model request. Did the worker receive the error? Did it change the relevant code, or merely announce that it was finished?
+
+![Agent Lens shows the R5 query worker repairing its file after a failed development test, then obtaining a passing run_tests result for order-1-query.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/r5-worker-test.png)
+
+*This is the R5 team's query worker. Follow the earlier failed test, the `write_file` edit, and the selected later `run_tests` result for `order-1-query`. The visible weekday-evening development check passes. The reserved UTC case, examined below, still fails. [Open this exact test span](https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/78f5800b281056d48d452bcf9d39a27e/spans/turns/fe62dc13f2c0ff75e6ae55712b8813de/spans/9b4bfb6dc13fc10b).*
+
+A component test tells us about that component's checked behavior. We still need to integrate the patch and try the application, where the query's output becomes the display's input.
+
+## Split the work without splitting the contract
+
+For the team build, the query worker owns `query.py`, and the presentation worker owns `presentation.py`. Both receive the shared interfaces. Separate working copies let them edit concurrently; file ownership prevents one worker from silently rewriting the other's component.
+
+![Two workers receive the same starting files and contracts, edit separate owned files, and submit patches for participant review, integration, and combined application checks.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/worker-integration.png)
+
+*Solid arrows follow code from the starting copy through each patch into the integrated app. A conflict stops integration for inspection. Submitted, integrated, and independently checked are different states.*
+
+We also need to decide when work is ready. The kit's selection rule is deliberately small:
 
 ```python
 def ready_tasks(tasks):
@@ -40,41 +58,56 @@ def ready_tasks(tasks):
                     for dep in row['depends_on'])]
 ```
 
-This is the implemented selection rule. A dependent task waits for integrated code, rather than a worker's completion message. The separate `board.claim(task_id, worker_id)` call checks readiness and saves one owner while holding the task-store lock. The model runs after that lock is released.
+Each row names its dependencies. A dependent task can start only after those dependencies have been integrated, rather than when a worker says it has finished.
 
-The free exercise deliberately lets two threads attempt the same task. A separate check followed by an unlocked write allows both claims; the atomic operation permits one. This demonstrates a coordination repair without arranging an agent failure. We still have to measure whether the resulting team builds a better product.
+That rule alone does not prevent a race. If two workers both read “pending” before either writes an owner, both can take the same task. `board.claim(task_id, worker_id)` checks readiness and saves the owner while holding the task-store lock. It releases the lock before the model runs, so independent work can still proceed concurrently.
 
-## Inspect the completed product before calling it faster
+The free exercise reproduces the race with two threads, then checks your atomic claim implementation. The repair changes duplicate ownership into one successful claim. We can establish that improvement directly, without hoping a model happens to mishandle coordination during the workshop.
 
-We compared one builder and two coordinated builders on the same first work order, starting source, model, development checks, and aggregate request allowance. After reviewing the builds, we froze them and ran reserved scenarios. Here is the recorded R5 engineering rehearsal:
+## Check what the quicker build delivered
 
-| Build | Final checks passed | Builder elapsed time | Recorded model cost |
-| --- | ---: | ---: | ---: |
-| One worker | 10/10 | 124.78 s | $0.01107 |
-| Two workers | 8/10 | 94.91 s | $0.01221 |
+We compared one builder with two coordinated builders on the same first work order, starting source, model, development checks, and aggregate request allowance. Both builds passed all five public development checks. We then froze their source and ran reserved scenarios.
 
-Elapsed time excludes human review and integration. Both builds had passed all five public development checks. The team was quicker within that measured interval, but its product failed the query and rendered-board checks for one underlying timezone defect.
+![The R5 one-worker build passes ten of ten final checks in 124.78 seconds at $0.01107. The two-worker build passes eight of ten in 94.91 seconds at $0.01221.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/build-comparison.png)
 
-A request at 23:00 UTC means 18:00 Eastern. The correct next trip was `63919613` at 18:03 Eastern. The team anchored the service day to the request's timezone and selected the later trip `63919759`. We were checking the chosen train, not just its display format.
+*These are the recorded R5 results, one build per condition. Builder time excludes human review and integration. The two-worker build saved time during that interval and failed two checks for the same underlying defect.*
 
-![Native EvalTables comparison showing the one-worker and two-worker results, with different trip IDs on the matching UTC-input rows.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/transit/public/images/native-comparison-r5-detail.png)
+The failed request arrived at 23:00 UTC, which is 18:00 Eastern. It should return trip `63919613` at 18:03 Eastern. The team query anchored the service day to the caller's timezone and returned later trip `63919759`. This changed which train the passenger saw; it wasn't just a formatting difference.
 
-*The two UTC-input rows check the query and its rendered output. They expose the same defect, so they should not become a story about two independent bugs. [Open this recorded comparison](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=dg2ogm6wp3z).*
+Native EvalTables aligns the same scenario across the two builds. Read the actual trip IDs in the query row, then inspect the rendered-board row. Those are two views of one bug.
 
-In the notebook, participants follow a comparison row back to the integrated source, worker patch, and trace. W&B runs preserve the build settings and costs; Artifacts preserve the code, contracts, data reference, tests, and release decision. The single-worker board is the supported release from this rehearsal.
+![Native EvalTables aligns the one-worker and two-worker outputs. The matching UTC-input rows return different trip IDs.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/transit/public/images/native-comparison-r5-detail.png)
 
-## Give the next team a checked lesson
+*Find `departures/utc-input` and `integrated/departures/utc-input`. The reference returns `63919613`; the team returns `63919759`. [Open the recorded comparison](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=dg2ogm6wp3z).*
 
-The follow-up asks fresh workers to find the last direct train and produce a downloadable itinerary. We separate three kinds of information: tasks say who owns unfinished work; contracts define interfaces and units; lessons record a reviewed observation, its evidence, and where it applies.
+The notebook connects each row to the integrated source, worker patches, and trace. W&B runs preserve settings and measured cost. Artifacts preserve the source, contracts, data reference, and release decision. We retained the single-worker departures board from this rehearsal. The additional worker had not earned a release merely by returning sooner.
 
-Participants implement `select_memories()`. A proposed note, an unrelated note, or a lesson for a superseded contract should stay out of the worker's request. After retrieval, they inspect the actual request to confirm what was supplied. A memory-read event proves consultation; it does not prove that the lesson helped.
+![Native W&B Artifact file view shows the saved solo release, source files, source fingerprint, per-file checksums, and evaluation record.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/r5-release-artifact.png)
 
-Both follow-up teams receive the same starting release and requirements. Only access to accepted lessons differs. In R5, both builds passed 12 of 18 final checks. Their query workers stopped at input or output limits before completing tests. Neither follow-up was releasable, and this pair establishes no memory benefit. The [qualification record](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-workshop.md#what-the-final-engineering-rehearsal-showed) preserves these outcomes and the earlier rehearsals.
+*Open the **Files** tab, then `release.json`: `query.py`, `presentation.py`, the contract, and the sample travel together with the evaluated source identity. The UI truncates long lines, so download the artifact to inspect or reproduce the complete code. [Open this exact release version](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-b239ffe686c17968a0a79bce5d11699c/v0/files/files/1/release.json).*
+
+## Decide what the next workers should remember
+
+The second work order asks fresh workers to find the last direct train and produce a downloadable itinerary. They need the current component contracts. They may also benefit from a checked lesson about an earlier problem.
+
+The notebook prepares these lessons from development work before running the reserved checks described above. The later UTC failure can motivate a future experiment; it cannot become a lesson supplied to this already-frozen comparison.
+
+We keep those records separate. The task board says who owns unfinished work. Project contracts define interfaces and units. A lesson contains an observation, supporting evidence, a scope, a contract version, and a review status. An unreviewed guess should not acquire authority just because it survived in a file.
+
+You implement `select_memories()` to exclude proposed, unrelated, or stale notes. After a worker retrieves a lesson, inspect its next request to verify that the lesson text arrived. A memory-read event proves retrieval; the resulting code and tests tell us whether it helped.
+
+![A participant reviews a proposed note before applicable accepted lessons enter one follow-up team's context. The comparison team receives no experience notes; both R5 follow-ups pass twelve of eighteen final checks.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/memory-comparison.png)
+
+*Dashed arrows carry reviewed evidence into a later request. Both teams receive the same starting release, requirements, contracts, model, and limits. Only accepted experience notes differ. [Open the follow-up comparison](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=f9jpm0yjsxy).*
+
+In R5, both follow-ups passed 12 of 18 final checks. Their query workers stopped at input or output limits before completing tests; the presentation work remained saved. Neither follow-up was releasable, and this pair establishes no memory benefit. The [qualification record](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-workshop.md#what-the-final-engineering-rehearsal-showed) preserves these results alongside earlier attempts.
+
+A next experiment could change the task breakdown or allowed context, but it would need a new comparison. Increasing the limit only for the build we prefer would answer a different question.
 
 ## Run the workshop in your project
 
-[Open the Transit notebook and choose **Copy to project**](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view). Confirm that the displayed destination is your own writable Forge project, then follow the opening timetable exercise and access check. [The setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) also covers running the same notebook locally.
+[Open the Transit notebook and choose **Copy to project**](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view). Confirm your own writable project, then try the timetable example and its free check. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) covers the hosted and laptop paths; the [deck](https://ash0ts.github.io/forge-workshop-kit/transit/) walks through the code and intermediate states.
 
-The notebook uses your credentials and an adjustable $8 inference allowance. Notebook compute and optional ARIA use are separate. Local checks need no model call; explicit run controls start builders. Saved work can be resumed, and failed publication can be retried without repeating a completed build.
+The notebook uses your credentials and an adjustable $8 inference allowance. Compute and optional ARIA use are separate. Explicit run controls start builders. Saved responses and patches survive restart; retrying publication does not repeat a completed build.
 
-By the end, you'll have the coordinator you edited, an app or a documented blocked release, and records showing who changed each component and which checks it passed. Your conclusion can be that the extra worker was not worth it for this task. The comparison is there to help you make that decision.
+You finish by reproducing a released version or explaining why a build remains blocked. Bring the actual app, the failed or passing scenario, and the patch responsible. That is enough to make a concrete case for keeping the team, changing its coordination, or going back to one worker.

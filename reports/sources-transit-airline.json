@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "purpose": "Source ledger for public learning Reports. Existing records only; no new experiments or native-feature checks.",
+  "purpose": "Source ledger for public learning Reports, new sourced explanatory figures, and preserved native captures. No new experiments.",
   "checked_at": "2026-11-15",
   "reports": {
     "transit": {
@@ -94,7 +94,7 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "948b9ffd721e281cbec2346e5cada00400dc2b6dbc418ebf52ec5402121b54cf"
+              "sha256": "18a178bd9d8ecf37c826e4cef9a4f0fddbee15927f25c0bb2259f8c0f90aada0"
             },
             {
               "path": "docs/setup.md",
@@ -122,13 +122,55 @@
       ],
       "images": [
         {
+          "path": "reports/assets/transit/service-day.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/service-day.png",
+          "sha256": "48047d75bdb7a4aa77a72b86fe88cfca2281551f949422bd8d54f9fad2490d19",
+          "alt": "A real Park Street record maps November 28 service time 24:08 to November 29 at 00:08 Eastern. A query at 00:05 should include the departure.",
+          "visually_inspected": true,
+          "identity": "transit/service-day",
+          "source_url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/figures-transit-airline.json",
+          "caption_boundary": "Real retained MBTA example; no live travel claim."
+        },
+        {
           "path": "decks/transit/public/images/reference-departures.png",
           "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/transit/public/images/reference-departures.png",
           "sha256": "5d5f58692715fda054f60a4f380000dc4c5f1585443e431ffe07a54feacac55c",
           "source_url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/transit/README.md",
           "identity": "reference-departures",
           "caption_boundary": "Instructor-authored reference app, not an agent result. Shows November29 midnight query and 00:08 first departure.",
-          "visually_inspected": true
+          "visually_inspected": true,
+          "alt": "Instructor-authored reference board showing Park Street departures after midnight, beginning at 00:08."
+        },
+        {
+          "path": "reports/assets/transit/r5-worker-test.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/r5-worker-test.png",
+          "sha256": "93878e47777039fc6a66d312e07a213e6c6530e3f3bdc1f21aa05b2450af7a65",
+          "alt": "Agent Lens shows the R5 query worker repairing its file after a failed development test, then obtaining a passing run_tests result for order-1-query.",
+          "visually_inspected": true,
+          "identity": "transit-v060-live-r5 / order-1-query",
+          "captured": "2026-11-15",
+          "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/78f5800b281056d48d452bcf9d39a27e/spans/turns/fe62dc13f2c0ff75e6ae55712b8813de/spans/9b4bfb6dc13fc10b",
+          "caption_boundary": "R5 worker repairs a failed public test; selected run_tests passes. Reserved UTC acceptance still fails."
+        },
+        {
+          "path": "reports/assets/transit/worker-integration.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/worker-integration.png",
+          "sha256": "8ffb566a4f6a00e067b28c251c0cdaf649737d11cb0da642641e1ea3a973752e",
+          "alt": "Two workers receive the same starting files and contracts, edit separate owned files, and submit patches for participant review, integration, and combined application checks.",
+          "visually_inspected": true,
+          "identity": "transit/worker-integration",
+          "source_url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/figures-transit-airline.json",
+          "caption_boundary": "Implemented architecture, not a record that every worker succeeded."
+        },
+        {
+          "path": "reports/assets/transit/build-comparison.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/build-comparison.png",
+          "sha256": "033d8ec512d947395426522f632c5b4a51c22892e9e62dc9bd6ce8f1bf23b33e",
+          "alt": "The R5 one-worker build passes ten of ten final checks in 124.78 seconds at $0.01107. The two-worker build passes eight of ten in 94.91 seconds at $0.01221.",
+          "visually_inspected": true,
+          "identity": "transit/build-comparison",
+          "source_url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/figures-transit-airline.json",
+          "caption_boundary": "One run per condition; time excludes human review and integration."
         },
         {
           "path": "decks/transit/public/images/native-comparison-r5-detail.png",
@@ -137,6 +179,27 @@
           "source_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=dg2ogm6wp3z",
           "identity": "transit-v060-live-r5",
           "caption_boundary": "Actual R5 matched outputs and UTC defect. Must not be labeled R4 or independent bugs.",
+          "visually_inspected": true,
+          "alt": "Native EvalTables aligns the one-worker and two-worker outputs. The matching UTC-input rows return different trip IDs."
+        },
+        {
+          "path": "reports/assets/transit/memory-comparison.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/memory-comparison.png",
+          "sha256": "3cc4c29bd7a0e804d670a6a3d3de1f47049c3c0b2f76a5f37d4acadd36aa3f52",
+          "alt": "A participant reviews a proposed note before applicable accepted lessons enter one follow-up team's context. The comparison team receives no experience notes; both R5 follow-ups pass twelve of eighteen final checks.",
+          "visually_inspected": true,
+          "identity": "transit/memory-comparison",
+          "source_url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/figures-transit-airline.json",
+          "caption_boundary": "Both 12/18; stopped query workers; neither release supported and no demonstrated memory benefit."
+        },
+        {
+          "path": "reports/assets/transit/r5-release-artifact.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/r5-release-artifact.png",
+          "sha256": "c745b88713e650c2de91c0f124006754fb40d60acd42e5ed551798df6722fb11",
+          "source_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-b239ffe686c17968a0a79bce5d11699c/v0/files/files/1/release.json",
+          "identity": "transit-v060-live-r5 / solo release v0",
+          "captured": "2026-11-15",
+          "caption_boundary": "Actual release file with source identity and checksums. Native preview truncates long lines, so complete code requires download. Not a deployment claim.",
           "visually_inspected": true
         }
       ],
@@ -144,7 +207,8 @@
         "One paired R5 engineering rehearsal, not general evidence that teams are faster or memory helps.",
         "Reference app is separately authored.",
         "External-account access and participant rehearsal outstanding."
-      ]
+      ],
+      "source_sha256": "baa4955925df3084fe504db6f0bd82fdb15a512be899de2d39f79138ecb2921e"
     },
     "airline": {
       "file": "reports/airline.md",
@@ -175,7 +239,7 @@
           "upstream": "https://github.com/sierra-research/tau2-bench/tree/989d3285ae669e49503324bdb9981bf14fccedeb"
         },
         {
-          "claim": "59XX6W requested HAT007→HAT061 on May 19 with HAT174 on May 29 preserved. Same recorded discovery request encounters read timeout then recovers.",
+          "claim": "59XX6W requested HAT007\u2192HAT061 on May 19 with HAT174 on May 29 preserved. Same recorded discovery request encounters read timeout then recovers.",
           "sources": [
             {
               "path": "src/forge_workshop_kit/assets/airline/cases.json",
@@ -291,7 +355,7 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "948b9ffd721e281cbec2346e5cada00400dc2b6dbc418ebf52ec5402121b54cf"
+              "sha256": "18a178bd9d8ecf37c826e4cef9a4f0fddbee15927f25c0bb2259f8c0f90aada0"
             },
             {
               "path": "docs/setup.md",
@@ -328,13 +392,56 @@
       ],
       "images": [
         {
+          "path": "reports/assets/airline/itinerary-change.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/itinerary-change.png",
+          "sha256": "a6032574c4c4989ad0ef39db4009499eee5463afa50818d40f32407137502717",
+          "alt": "Simulated booking 59XX6W starts with HAT007 outward and HAT174 returning. The required itinerary replaces HAT007 with HAT061 while preserving HAT174.",
+          "visually_inspected": true,
+          "identity": "airline/itinerary-change",
+          "source_url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/figures-transit-airline.json",
+          "caption_boundary": "Simulated development reservation 59XX6W; diagram is not a production incident."
+        },
+        {
+          "path": "reports/assets/airline/different-checks.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/different-checks.png",
+          "sha256": "424c8e5a933f2605eb60bd9e13cbae51c21e958c3f2241f2cdaf7a4b29d30936",
+          "alt": "Tool checks inspect errors and timing; booking checks inspect the requested state, policy, and confirmation; explanation judgments inspect claims against recorded work.",
+          "visually_inspected": true,
+          "identity": "airline/different-checks",
+          "source_url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/figures-transit-airline.json",
+          "caption_boundary": "40 correct bookings and ten tool errors are different units; no invented judge validation."
+        },
+        {
+          "path": "decks/airline_monitoring/public/captures/native-saved-view.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-saved-view.png",
+          "sha256": "34c6f68b0a9ee175f3673c8137ac3ff503255c5f2554ca6e72714b9873e33b7c",
+          "alt": "Native Agent Lens conversation view shows the saved Airline qualification view, request rows, spans, and tool-error counts.",
+          "visually_inspected": true,
+          "identity": "Airline qualification saved view / baseline",
+          "captured": "2026-11-14",
+          "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/views/01a1dc0a-3ea9-73bd-b0b8-bd7ecd7d9951",
+          "caption_boundary": "Real saved view filtered by exact agent and custom airline.version. Errors are tool events, not booking failures."
+        },
+        {
           "path": "decks/airline_monitoring/public/captures/native-conversation-error.png",
           "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-conversation-error.png",
           "sha256": "1a06f25fb25be5518c1be90035bb757e3726b753138db506a403b8a36d801586",
           "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3673f9ec7c917166a808d6473195a2ae",
           "identity": "airline-discovery-02 / 2026-11-14",
           "caption_boundary": "Recorded discovery02 read error followed by recovery; not an itinerary failure.",
-          "visually_inspected": true
+          "visually_inspected": true,
+          "alt": "Agent Lens shows the failed get_reservation_details span for 59XX6W, its TimeoutError, and later calls in the same conversation."
+        },
+        {
+          "path": "decks/airline_monitoring/public/captures/native-tag-configuration.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-tag-configuration.png",
+          "sha256": "2b1fa9f410a772b7d2eb5d641cedb69a3a092c2d9f3ce33d73f1b7400e3eb5c1",
+          "alt": "Agent Lens tag configuration shows the saved unrequested-itinerary criteria, Apply with AI switch, and exact workshop-agent filter.",
+          "visually_inspected": true,
+          "identity": "airline qualification tag / 2026-11-14",
+          "captured": "2026-11-14",
+          "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/edit",
+          "caption_boundary": "Recorded enabled switch; tag disabled and verified at end. Criteria and exact scope exist; automatic judge accuracy unqualified."
         },
         {
           "path": "decks/airline_monitoring/public/captures/native-alignment-unavailable.png",
@@ -343,7 +450,28 @@
           "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test",
           "identity": "airline qualification / 2026-11-14",
           "caption_boundary": "Human expected label and unscored turns. Six native tests unavailable; no automatic-accuracy claim.",
-          "visually_inspected": true
+          "visually_inspected": true,
+          "alt": "Native Alignment displays a human expected result, selected turn context, and unscored turns without a completed model test result."
+        },
+        {
+          "path": "reports/assets/airline/monitor-denominators.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/monitor-denominators.png",
+          "sha256": "c3e9a5d41b6aa492419d7d9b5ddc71e8998369a121cd599c05fc779a5d0cb8e9",
+          "alt": "Eligible turns divide into completed predictions and unprocessed or unavailable turns. Coverage uses all eligible turns; precision and recall use completed predictions with human labels.",
+          "visually_inspected": true,
+          "identity": "airline/monitor-denominators",
+          "source_url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/figures-transit-airline.json",
+          "caption_boundary": "Definition diagram; no measured native monitor precision/recall claimed."
+        },
+        {
+          "path": "reports/assets/airline/regression-replay.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/regression-replay.png",
+          "sha256": "d1a5ad95f109b566bc133a768a16a53a0caabb4b77b1d3570ab400b7f260b3ea",
+          "alt": "The controlled omission adapter proposes only HAT061; the passenger refuses and the booking remains unchanged. The repaired builder proposes HAT061 plus HAT174; confirmation succeeds and booking checks pass.",
+          "visually_inspected": true,
+          "identity": "airline/regression-replay",
+          "source_url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/figures-transit-airline.json",
+          "caption_boundary": "Controlled local adapter comparison, separate from unauthorized calibration write and successful live agent runs."
         },
         {
           "path": "decks/airline_monitoring/public/captures/native-evaltables.png",
@@ -352,7 +480,8 @@
           "source_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=4wzxelfxod1",
           "identity": "airline development / 2026-11-14",
           "caption_boundary": "Four matched development requests per version, both 100% task success. Distinct from six-case final comparison.",
-          "visually_inspected": true
+          "visually_inspected": true,
+          "alt": "Native EvalTables shows the starting version as Reference and four matched development requests per version, both with 100 percent task success."
         }
       ],
       "limitations": [
@@ -360,7 +489,8 @@
         "No demonstrated native Alignment accuracy or relevant Insights cluster.",
         "External-account, complete current browser path, and human rehearsal outstanding.",
         "Recorded runtime later received tracing error-handling changes; original 40 executions remain tied to their original source."
-      ]
+      ],
+      "source_sha256": "63249e529519aa70551f5bffc38df422191da9c075ca34f72d669133c6bf5302"
     }
   }
 }

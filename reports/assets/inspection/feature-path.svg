@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1036.8pt" height="648pt" viewBox="0 0 1036.8 648" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 648
+L 1036.8 648
+L 1036.8 0
+L 0 0
+z
+" style="fill: #f7f3e9"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 55.9872 243.648
+L 980.8128 243.648
+Q 991.1808 243.648 991.1808 237.168
+L 991.1808 138.672
+Q 991.1808 132.192 980.8128 132.192
+L 55.9872 132.192
+Q 45.6192 132.192 45.6192 138.672
+L 45.6192 237.168
+Q 45.6192 243.648 55.9872 243.648
+z
+" clip-path="url(#p9604eb75f0)" style="fill: #ffffff; stroke: #c9d4cd; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 279.936 248.241665
+Q 279.936 268.921823 279.936 287.701323
+" clip-path="url(#p9604eb75f0)" style="fill: none; stroke: #183a3b; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 282.936 281.701323
+L 279.936 287.701323
+L 276.936 281.701323
+z
+" clip-path="url(#p9604eb75f0)" style="fill: #183a3b; stroke: #183a3b; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 756.864 248.241665
+Q 756.864 268.921823 756.864 287.701323
+" clip-path="url(#p9604eb75f0)" style="fill: none; stroke: #183a3b; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 759.864 281.701323
+L 756.864 287.701323
+L 753.864 281.701323
+z
+" clip-path="url(#p9604eb75f0)" style="fill: #183a3b; stroke: #183a3b; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 55.9872 457.488
+L 493.5168 457.488
+Q 503.8848 457.488 503.8848 451.008
+L 503.8848 307.152
+Q 503.8848 300.672 493.5168 300.672
+L 55.9872 300.672
+Q 45.6192 300.672 45.6192 307.152
+L 45.6192 451.008
+Q 45.6192 457.488 55.9872 457.488
+z
+" clip-path="url(#p9604eb75f0)" style="fill: #ffffff; stroke: #c9d4cd; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 543.2832 457.488
+L 980.8128 457.488
+Q 991.1808 457.488 991.1808 451.008
+L 991.1808 307.152
+Q 991.1808 300.672 980.8128 300.672
+L 543.2832 300.672
+Q 532.9152 300.672 532.9152 307.152
+L 532.9152 451.008
+Q 532.9152 457.488 543.2832 457.488
+z
+" clip-path="url(#p9604eb75f0)" style="fill: #ffffff; stroke: #c9d4cd; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 281.690156 461.039304
+Q 321.406727 482.759304 359.455716 503.567345
+" clip-path="url(#p9604eb75f0)" style="fill: none; stroke: #183a3b; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 355.630926 498.056357
+L 359.455716 503.567345
+L 352.752052 503.320584
+z
+" clip-path="url(#p9604eb75f0)" style="fill: #183a3b; stroke: #183a3b; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 755.109844 461.039304
+Q 715.393273 482.759304 677.344284 503.567345
+" clip-path="url(#p9604eb75f0)" style="fill: none; stroke: #183a3b; stroke-width: 1.7; stroke-linecap: round"/>
+    <path d="M 684.047948 503.320584
+L 677.344284 503.567345
+L 681.169074 498.056357
+z
+" clip-path="url(#p9604eb75f0)" style="fill: #183a3b; stroke: #183a3b; stroke-width: 1.7; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 55.9872 619.488
+L 980.8128 619.488
+Q 991.1808 619.488 991.1808 613.008
+L 991.1808 514.512
+Q 991.1808 508.032 980.8128 508.032
+L 55.9872 508.032
+Q 45.6192 508.032 45.6192 514.512
+L 45.6192 613.008
+Q 45.6192 619.488 55.9872 619.488
+z
+" clip-path="url(#p9604eb75f0)" style="fill: #ffffff; stroke: #c9d4cd; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 62.208 142.56
+L 974.592 142.56
+" clip-path="url(#p9604eb75f0)" style="fill: none; stroke: #207b72; stroke-width: 4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 62.208 311.04
+L 487.296 311.04
+" clip-path="url(#p9604eb75f0)" style="fill: none; stroke: #3971ae; stroke-width: 4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 549.504 311.04
+L 974.592 311.04
+" clip-path="url(#p9604eb75f0)" style="fill: none; stroke: #bc6638; stroke-width: 4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 62.208 518.4
+L 974.592 518.4
+" clip-path="url(#p9604eb75f0)" style="fill: none; stroke: #207b72; stroke-width: 4; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 26px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #183a3b" x="51.84" y="65.53" transform="rotate(-0 51.84 65.53)">Give the classifier a whole-board view and local comparisons</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 17px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #526766" x="51.84" y="101.665" transform="rotate(-0 51.84 101.665)">Fixed encoder weights · participant code assembles the features</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 600; font-size: 20px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #207b72" x="72.576" y="188.98" transform="rotate(-0 72.576 188.98)">Photograph encoded by frozen ResNet-18</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 17px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #183a3b" x="72.576" y="230.66" transform="rotate(-0 72.576 230.66)">Resize to 224 × 224; apply the saved channel normalization.</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 600; font-size: 20px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #3971ae" x="72.576" y="357.46" transform="rotate(-0 72.576 357.46)">Whole-image branch</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 17px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #183a3b" transform="translate(72.576 399.037734)">512 values summarizing the image</text>
+    <text style="font-size: 17px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #183a3b" transform="translate(72.576 430.08)">The baseline uses only this branch.</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 600; font-size: 20px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #bc6638" x="559.872" y="357.46" transform="rotate(-0 559.872 357.46)">Patch branch</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 17px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #183a3b" transform="translate(559.872 399.14)">14 × 14 positions, each with 64 values</text>
+    <text style="font-size: 17px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #183a3b" transform="translate(559.872 430.08)">Compare each position with normal boards.</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 600; font-size: 20px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #207b72" x="72.576" y="564.82" transform="rotate(-0 72.576 564.82)">512 image values + 196 patch distances = 708 features</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 17px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #183a3b" x="72.576" y="606.397734" transform="rotate(-0 72.576 606.397734)">Standardize with training values, then fit the logistic classifier.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p9604eb75f0">
+   <rect x="0" y="0" width="1036.8" height="648"/>
+  </clipPath>
+ </defs>
+</svg>

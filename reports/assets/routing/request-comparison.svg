@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1036.8pt" height="576pt" viewBox="0 0 1036.8 576" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 576
+L 1036.8 576
+L 1036.8 0
+L 0 0
+z
+" style="fill: #f7f3e9"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 55.9872 458.496
+L 493.5168 458.496
+Q 503.8848 458.496 503.8848 452.736
+L 503.8848 249.984
+Q 503.8848 244.224 493.5168 244.224
+L 55.9872 244.224
+Q 45.6192 244.224 45.6192 249.984
+L 45.6192 452.736
+Q 45.6192 458.496 55.9872 458.496
+z
+" clip-path="url(#p4006904592)" style="fill: #ffffff; stroke: #c9d4cd; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 543.2832 458.496
+L 980.8128 458.496
+Q 991.1808 458.496 991.1808 452.736
+L 991.1808 249.984
+Q 991.1808 244.224 980.8128 244.224
+L 543.2832 244.224
+Q 532.9152 244.224 532.9152 249.984
+L 532.9152 452.736
+Q 532.9152 458.496 543.2832 458.496
+z
+" clip-path="url(#p4006904592)" style="fill: #ffffff; stroke: #c9d4cd; stroke-width: 1.2; stroke-linejoin: miter"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 62.208 253.44
+L 487.296 253.44
+" clip-path="url(#p4006904592)" style="fill: none; stroke: #3971ae; stroke-width: 4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 549.504 253.44
+L 974.592 253.44
+" clip-path="url(#p4006904592)" style="fill: none; stroke: #bc6638; stroke-width: 4; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 26px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #183a3b" x="51.84" y="61.21" transform="rotate(-0 51.84 61.21)">One request, two predictions</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 17px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #526766" x="51.84" y="92.305" transform="rotate(-0 51.84 92.305)">Recorded validation example · official-train/00035 · no new model execution</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 26px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #183a3b" x="51.84" y="155.52" transform="rotate(-0 51.84 155.52)">“Can I get an update on my replacement card?”</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 18px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #526766" x="51.84" y="195.84" transform="rotate(-0 51.84 195.84)">Dataset intent: card_arrival</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 600; font-size: 20px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #3971ae" x="72.576" y="296.98" transform="rotate(-0 72.576 296.98)">Word features</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 21px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #183a3b" x="72.576" y="334.08" transform="rotate(-0 72.576 334.08)">compromised_card</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 19px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #183a3b" x="72.576" y="380.16" transform="rotate(-0 72.576 380.16)">Top probability: 0.053</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 18px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #3971ae" x="72.576" y="426.24" transform="rotate(-0 72.576 426.24)">Send to review at cutoff 0.5</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 600; font-size: 20px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #bc6638" x="559.872" y="296.98" transform="rotate(-0 559.872 296.98)">Sentence features</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 21px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #183a3b" x="559.872" y="334.08" transform="rotate(-0 559.872 334.08)">card_arrival</text>
+   </g>
+   <g id="text_11">
+    <text style="font-size: 19px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #183a3b" x="559.872" y="380.16" transform="rotate(-0 559.872 380.16)">Top probability: 0.382</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 18px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #bc6638" x="559.872" y="426.24" transform="rotate(-0 559.872 426.24)">Send to review at cutoff 0.5</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 19px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #183a3b" x="51.84" y="518.4" transform="rotate(-0 51.84 518.4)">The second prediction matches the label. Neither version routes this request automatically.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p4006904592">
+   <rect x="0" y="0" width="1036.8" height="576"/>
+  </clipPath>
+ </defs>
+</svg>

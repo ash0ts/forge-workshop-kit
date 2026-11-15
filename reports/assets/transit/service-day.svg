@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="540pt" viewBox="0 0 864 540" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 540
+L 864 540
+L 864 0
+L 0 0
+z
+" style="fill: #f8f5ee"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 48.96 217.44
+L 347.04 217.44
+Q 354.24 217.44 354.24 210.24
+L 354.24 124.56
+Q 354.24 117.36 347.04 117.36
+L 48.96 117.36
+Q 41.76 117.36 41.76 124.56
+L 41.76 210.24
+Q 41.76 217.44 48.96 217.44
+z
+" clip-path="url(#pdbe064cc15)" style="fill: #eeece6; stroke: #8b9593; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 452.16 217.44
+L 815.04 217.44
+Q 822.24 217.44 822.24 210.24
+L 822.24 124.56
+Q 822.24 117.36 815.04 117.36
+L 452.16 117.36
+Q 444.96 117.36 444.96 124.56
+L 444.96 210.24
+Q 444.96 217.44 452.16 217.44
+z
+" clip-path="url(#pdbe064cc15)" style="fill: #e4efeb; stroke: #147d79; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 361.996436 167.04
+Q 399.59689 167.04 435.40849 167.04
+" clip-path="url(#pdbe064cc15)" style="fill: none; stroke: #183f3e; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 429.00849 163.84
+L 435.40849 167.04
+L 429.00849 170.24
+z
+" clip-path="url(#pdbe064cc15)" style="fill: #183f3e; stroke: #183f3e; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 72 352.8
+L 792 352.8
+" clip-path="url(#pdbe064cc15)" style="fill: none; stroke: #8b9593; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 108 362.16
+L 108 343.44
+" clip-path="url(#pdbe064cc15)" style="fill: none; stroke: #8b9593; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 324 362.16
+L 324 343.44
+" clip-path="url(#pdbe064cc15)" style="fill: none; stroke: #8b9593; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 540 362.16
+L 540 343.44
+" clip-path="url(#pdbe064cc15)" style="fill: none; stroke: #3478ad; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 669.6 362.16
+L 669.6 343.44
+" clip-path="url(#pdbe064cc15)" style="fill: none; stroke: #147d79; stroke-width: 3; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 26px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #183f3e" x="39.6" y="51.712812" transform="rotate(-0 39.6 51.712812)">The train after midnight still has a service day</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #546563" x="39.6" y="84.779063" transform="rotate(-0 39.6 84.779063)">Real MBTA record · Park Street · trip 63926435 · historical schedule</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 18px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(75.182344 161.042344)">Service date: Nov 28, 2024</text>
+    <text style="font-size: 18px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(81.492188 184.516875)">GTFS departure: 24:08:00</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 18px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(523.74375 160.216875)">Passenger clock: Nov 29</text>
+    <text style="font-size: 18px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(570.6 186.101719)">00:08 Eastern</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 21px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #183f3e" x="432" y="272.194688" transform="rotate(-0 432 272.194688)">Nov 28 midnight + 24 hours + 8 minutes</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #8b9593" x="108" y="322.62375" transform="rotate(-0 108 322.62375)">Nov 28</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 20px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #8b9593" x="108" y="393.199687" transform="rotate(-0 108 393.199687)">23:55</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #8b9593" x="324" y="322.62375" transform="rotate(-0 324 322.62375)">Nov 29</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 20px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #8b9593" x="324" y="393.199687" transform="rotate(-0 324 393.199687)">00:00</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #3478ad" x="540" y="321.07375" transform="rotate(-0 540 321.07375)">Query</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 20px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #3478ad" x="540" y="393.199687" transform="rotate(-0 540 393.199687)">00:05</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 16px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #147d79" x="669.6" y="320.96875" transform="rotate(-0 669.6 320.96875)">Departure</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 20px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #147d79" x="669.6" y="393.199687" transform="rotate(-0 669.6 393.199687)">00:08</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 19px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #183f3e" x="432" y="455.242813" transform="rotate(-0 432 455.242813)">At 00:05, include the 00:08 train from the previous service day.</text>
+   </g>
+   <g id="text_15">
+    <text style="font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #546563" x="43.2" y="507.406406" transform="rotate(-0 43.2 507.406406)">Source: retained stop_times and calendar records; not a live arrival prediction.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pdbe064cc15">
+   <rect x="0" y="0" width="864" height="540"/>
+  </clipPath>
+ </defs>
+</svg>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="561.6pt" viewBox="0 0 864 561.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 561.6
+L 864 561.6
+L 864 0
+L 0 0
+z
+" style="fill: #f8f5ee"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 52.56 253.44
+L 343.44 253.44
+Q 350.64 253.44 350.64 246.24
+L 350.64 164.16
+Q 350.64 156.96 343.44 156.96
+L 52.56 156.96
+Q 45.36 156.96 45.36 164.16
+L 45.36 246.24
+Q 45.36 253.44 52.56 253.44
+z
+" clip-path="url(#pf9c5eb12c8)" style="fill: #eeece6; stroke: #8b9593; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 452.16 253.44
+L 807.84 253.44
+Q 815.04 253.44 815.04 246.24
+L 815.04 164.16
+Q 815.04 156.96 807.84 156.96
+L 452.16 156.96
+Q 444.96 156.96 444.96 164.16
+L 444.96 246.24
+Q 444.96 253.44 452.16 253.44
+z
+" clip-path="url(#pf9c5eb12c8)" style="fill: #e4efeb; stroke: #147d79; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 354.80127 205.2
+Q 395.999997 205.2 435.40987 205.2
+" clip-path="url(#pf9c5eb12c8)" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #183f3e; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 429.00987 202
+L 435.40987 205.2
+L 429.00987 208.4
+z
+" clip-path="url(#pf9c5eb12c8)" style="fill: #183f3e; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #183f3e; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 52.56 440.64
+L 383.04 440.64
+Q 390.24 440.64 390.24 433.44
+L 390.24 347.76
+Q 390.24 340.56 383.04 340.56
+L 52.56 340.56
+Q 45.36 340.56 45.36 347.76
+L 45.36 433.44
+Q 45.36 440.64 52.56 440.64
+z
+" clip-path="url(#pf9c5eb12c8)" style="fill: #e6eff6; stroke: #3478ad; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 480.96 440.64
+L 811.44 440.64
+Q 818.64 440.64 818.64 433.44
+L 818.64 347.76
+Q 818.64 340.56 811.44 340.56
+L 480.96 340.56
+Q 473.76 340.56 473.76 347.76
+L 473.76 433.44
+Q 473.76 440.64 480.96 440.64
+z
+" clip-path="url(#pf9c5eb12c8)" style="fill: #f4e8db; stroke: #bc6d35; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 640.8 257.598743
+Q 640.8 297.000699 640.8 334.6138
+" clip-path="url(#pf9c5eb12c8)" style="fill: none; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #183f3e; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 644 328.2138
+L 640.8 334.6138
+L 637.6 328.2138
+z
+" clip-path="url(#pf9c5eb12c8)" style="fill: #183f3e; stroke-dasharray: 5.92,2.56; stroke-dashoffset: 0; stroke: #183f3e; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 26px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #183f3e" x="39.6" y="51.712812" transform="rotate(-0 39.6 51.712812)">Carry a reviewed lesson into the next work order</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #546563" x="39.6" y="84.779062" transform="rotate(-0 39.6 84.779062)">Same starting release, specification, contracts, model, and request limits</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 17px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(137.0125 186.940937)">Proposed note</text>
+    <text style="font-size: 17px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(121.865234 209.890937)">Evidence + scope</text>
+    <text style="font-size: 17px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(127.601406 234.487812)">Contract version</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 19px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(496.728359 197.617812)">Participant reviews the note</text>
+    <text style="font-size: 19px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(517.233516 223.267812)">Accept, reject, or revise</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 19px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(115.775937 384.858437)">Team without lessons</text>
+    <text style="font-size: 19px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(69.325391 408.667812)">No experience notes in context</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 18px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(519.980625 383.416875)">Team with accepted lessons</text>
+    <text style="font-size: 18px; font-family: 'DejaVu Sans'; fill: #183f3e" transform="translate(500.892187 407.716875)">Only applicable notes in context</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 19px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #3478ad" x="216" y="503.482813" transform="rotate(-0 216 503.482813)">R5: 12/18 final checks passed</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 19px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #bc6d35" x="648" y="503.482813" transform="rotate(-0 648 503.482813)">R5: 12/18 final checks passed</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #546563" x="46.8" y="543.863125" transform="rotate(-0 46.8 543.863125)">Both query workers stopped before testing. Neither follow-up was releasable.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pf9c5eb12c8">
+   <rect x="0" y="0" width="864" height="561.6"/>
+  </clipPath>
+ </defs>
+</svg>

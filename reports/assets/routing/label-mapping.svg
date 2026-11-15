@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1036.8pt" height="626.4pt" viewBox="0 0 1036.8 626.4" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 626.4
+L 1036.8 626.4
+L 1036.8 0
+L 0 0
+z
+" style="fill: #f7f3e9"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 311.04 300.672
+L 528.768 300.672
+L 528.768 219.24
+L 311.04 219.24
+z
+" clip-path="url(#p4bd4a8c3d2)" style="fill: #ffffff; stroke: #c9d4cd; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 539.136 300.672
+L 756.864 300.672
+L 756.864 219.24
+L 539.136 219.24
+z
+" clip-path="url(#p4bd4a8c3d2)" style="fill: #ffffff; stroke: #c9d4cd; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 767.232 300.672
+L 984.96 300.672
+L 984.96 219.24
+L 767.232 219.24
+z
+" clip-path="url(#p4bd4a8c3d2)" style="fill: #ffffff; stroke: #c9d4cd; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 311.04 425.952
+L 528.768 425.952
+L 528.768 344.52
+L 311.04 344.52
+z
+" clip-path="url(#p4bd4a8c3d2)" style="fill: #ffffff; stroke: #c9d4cd; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 539.136 425.952
+L 756.864 425.952
+L 756.864 344.52
+L 539.136 344.52
+z
+" clip-path="url(#p4bd4a8c3d2)" style="fill: #ffffff; stroke: #c9d4cd; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 767.232 425.952
+L 984.96 425.952
+L 984.96 344.52
+L 767.232 344.52
+z
+" clip-path="url(#p4bd4a8c3d2)" style="fill: #ffffff; stroke: #c9d4cd; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 311.04 551.232
+L 528.768 551.232
+L 528.768 469.8
+L 311.04 469.8
+z
+" clip-path="url(#p4bd4a8c3d2)" style="fill: #ffffff; stroke: #c9d4cd; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 539.136 551.232
+L 756.864 551.232
+L 756.864 469.8
+L 539.136 469.8
+z
+" clip-path="url(#p4bd4a8c3d2)" style="fill: #ffffff; stroke: #c9d4cd; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 767.232 551.232
+L 984.96 551.232
+L 984.96 469.8
+L 767.232 469.8
+z
+" clip-path="url(#p4bd4a8c3d2)" style="fill: #ffffff; stroke: #c9d4cd; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 600; font-size: 26px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #183a3b" x="51.84" y="64.234" transform="rotate(-0 51.84 64.234)">The loader changes the label without changing the probability</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 17px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #526766" x="51.84" y="98.857" transform="rotate(-0 51.84 98.857)">Controlled drill · three-label free-check example · p[0], p[1], p[2] are symbols</text>
+   </g>
+   <g id="text_3">
+    <text style="font-size: 30px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: middle; fill: #183a3b" x="414.72" y="169.128" transform="rotate(-0 414.72 169.128)">p[0]</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 30px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: middle; fill: #183a3b" x="642.816" y="169.128" transform="rotate(-0 642.816 169.128)">p[1]</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 30px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: middle; fill: #183a3b" x="870.912" y="169.128" transform="rotate(-0 870.912 169.128)">p[2]</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 19px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #183a3b" x="51.84" y="175.392" transform="rotate(-0 51.84 175.392)">Model columns</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 600; font-size: 21px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #3971ae" x="51.84" y="263.088" transform="rotate(-0 51.84 263.088)">Healthy</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #3971ae" transform="translate(405.068062 258.963)">card</text>
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #3971ae" transform="translate(378.077437 278.463)">not_working</text>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #3971ae" transform="translate(633.164062 258.963)">card</text>
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #3971ae" transform="translate(626.946094 278.463)">arrival</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #3971ae" transform="translate(860.405766 258.963)">cash</text>
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #3971ae" transform="translate(838.776469 278.463)">withdrawal</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 600; font-size: 21px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #bc6638" x="51.84" y="388.368" transform="rotate(-0 51.84 388.368)">Faulty</text>
+   </g>
+   <g id="text_12">
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #bc6638" transform="translate(405.068062 384.243)">card</text>
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #bc6638" transform="translate(398.850094 403.743)">arrival</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #bc6638" transform="translate(632.309766 384.243)">cash</text>
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #bc6638" transform="translate(610.680469 403.743)">withdrawal</text>
+   </g>
+   <g id="text_14">
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #bc6638" transform="translate(861.260063 384.243)">card</text>
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #bc6638" transform="translate(834.269437 403.743)">not_working</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 600; font-size: 21px; font-family: 'IBM Plex Sans SemiBold'; text-anchor: start; fill: #207b72" x="51.84" y="513.648" transform="rotate(-0 51.84 513.648)">Repaired</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #207b72" transform="translate(405.068062 509.523)">card</text>
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #207b72" transform="translate(378.077437 529.023)">not_working</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #207b72" transform="translate(633.164062 509.523)">card</text>
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #207b72" transform="translate(626.946094 529.023)">arrival</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #207b72" transform="translate(860.405766 509.523)">cash</text>
+    <text style="font-size: 15px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; fill: #207b72" transform="translate(838.776469 529.023)">withdrawal</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 18px; font-family: 'IBM Plex Sans', 'DejaVu Sans'; text-anchor: start; fill: #183a3b" x="51.84" y="601.344" transform="rotate(-0 51.84 601.344)">Checking the set of names passes. Checking their order catches the defect.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p4bd4a8c3d2">
+   <rect x="0" y="0" width="1036.8" height="626.4"/>
+  </clipPath>
+ </defs>
+</svg>

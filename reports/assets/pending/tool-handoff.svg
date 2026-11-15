@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="864pt" height="511.2pt" viewBox="0 0 864 511.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 511.2
+L 864 511.2
+L 864 0
+L 0 0
+z
+" style="fill: #f7f4e9"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 35.28 106.56
+L 353.52 106.56
+Q 357.84 106.56 357.84 110.88
+L 357.84 213.12
+Q 357.84 217.44 353.52 217.44
+L 35.28 217.44
+Q 30.96 217.44 30.96 213.12
+L 30.96 110.88
+Q 30.96 106.56 35.28 106.56
+z
+" clip-path="url(#p15921fb643)" style="fill: #fffdf7; stroke: #4382a6; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 442.08 106.56
+L 828.72 106.56
+Q 833.04 106.56 833.04 110.88
+L 833.04 213.12
+Q 833.04 217.44 828.72 217.44
+L 442.08 217.44
+Q 437.76 217.44 437.76 213.12
+L 437.76 110.88
+Q 437.76 106.56 442.08 106.56
+z
+" clip-path="url(#p15921fb643)" style="fill: #fffdf7; stroke: #4382a6; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 361.997227 162
+Q 397.439945 162 431.093809 162
+" clip-path="url(#p15921fb643)" style="fill: none; stroke: #153d3e; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 425.493809 159.2
+L 431.093809 162
+L 425.493809 164.8
+z
+" clip-path="url(#p15921fb643)" style="fill: #153d3e; stroke: #153d3e; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 442.08 261.36
+L 828.72 261.36
+Q 833.04 261.36 833.04 265.68
+L 833.04 367.92
+Q 833.04 372.24 828.72 372.24
+L 442.08 372.24
+Q 437.76 372.24 437.76 367.92
+L 437.76 265.68
+Q 437.76 261.36 442.08 261.36
+z
+" clip-path="url(#p15921fb643)" style="fill: #fffdf7; stroke: #237a6c; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 637.2 222.318369
+Q 637.2 239.399354 637.2 254.691485
+" clip-path="url(#p15921fb643)" style="fill: none; stroke: #153d3e; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 640 249.091485
+L 637.2 254.691485
+L 634.4 249.091485
+z
+" clip-path="url(#p15921fb643)" style="fill: #153d3e; stroke: #153d3e; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 35.28 261.36
+L 353.52 261.36
+Q 357.84 261.36 357.84 265.68
+L 357.84 367.92
+Q 357.84 372.24 353.52 372.24
+L 35.28 372.24
+Q 30.96 372.24 30.96 367.92
+L 30.96 265.68
+Q 30.96 261.36 35.28 261.36
+z
+" clip-path="url(#p15921fb643)" style="fill: #fffdf7; stroke: #237a6c; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 432.882773 316.8
+Q 397.440055 316.8 363.786191 316.8
+" clip-path="url(#p15921fb643)" style="fill: none; stroke: #153d3e; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 369.386191 319.6
+L 363.786191 316.8
+L 369.386191 314
+z
+" clip-path="url(#p15921fb643)" style="fill: #153d3e; stroke: #153d3e; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 194.4 377.84083
+Q 194.4 396.718185 194.4 413.806686
+" clip-path="url(#p15921fb643)" style="fill: none; stroke: #153d3e; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 197.2 408.206686
+L 194.4 413.806686
+L 191.6 408.206686
+z
+" clip-path="url(#p15921fb643)" style="fill: #153d3e; stroke: #153d3e; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 22px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #153d3e" x="32.4" y="49.294688" transform="rotate(-0 32.4 49.294688)">The Python return value has to reach the next request</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #546862" x="32.4" y="73.93125" transform="rotate(-0 32.4 73.93125)">Worked learner code · This diagram explains dispatch, not a recorded model choice</text>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #4382a6" x="45.36" y="134.169375" transform="rotate(-0 45.36 134.169375)">1  Chosen action</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #153d3e" transform="translate(45.36 163.044375)">lookup_invoice</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #153d3e" transform="translate(45.36 180.444375)">account_id="acme", invoice_id="inv-1"</text>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #4382a6" x="452.16" y="132.618438" transform="rotate(-0 452.16 132.618438)">2  my_dispatch calls your function</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #153d3e" x="452.16" y="163.044375" transform="rotate(-0 452.16 163.044375)">my_invoice_tool(world, **arguments)</text>
+   </g>
+   <g id="text_7">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #237a6c" x="452.16" y="288.969375" transform="rotate(-0 452.16 288.969375)">3  Returned observation</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #153d3e" transform="translate(452.16 318.01125)">payments: [pay-1, pay-2]</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #153d3e" transform="translate(452.16 335.867813)">refunds: []</text>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #237a6c" x="45.36" y="287.418437" transform="rotate(-0 45.36 287.418437)">4  my_observation appends</text>
+   </g>
+   <g id="text_10">
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #153d3e" transform="translate(45.36 318.01125)">Previous messages + chosen action</text>
+    <text style="font-size: 12px; font-family: 'DejaVu Sans'; fill: #153d3e" transform="translate(45.36 336.57375)">+ serialized tool result</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 18px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #153d3e" x="32.4" y="449.946563" transform="rotate(-0 32.4 449.946563)">Next model request includes the payment records.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p15921fb643">
+   <rect x="0" y="0" width="864" height="511.2"/>
+  </clipPath>
+ </defs>
+</svg>

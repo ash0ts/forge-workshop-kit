@@ -9,7 +9,7 @@
       "claims": [
         {
           "id": "routing-data",
-          "claim": "Banking77 has 77 intents; workshop split is 8463 train, 770 validation, 770 review; official test stays 3080. Opening request official-train/00021 is in review and labeled card_arrival.",
+          "claim": "Banking77 has 77 intents; workshop split is 8463 train, 770 validation, 770 review; official test stays 3080. Article follows validation request official-train/00035; notebook bundled opening remains review example official-train/00021.",
           "sources": [
             {
               "path": "docs/routing-workshop.md",
@@ -137,7 +137,7 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "948b9ffd721e281cbec2346e5cada00400dc2b6dbc418ebf52ec5402121b54cf"
+              "sha256": "18a178bd9d8ecf37c826e4cef9a4f0fddbee15927f25c0bb2259f8c0f90aada0"
             },
             {
               "path": "docs/setup.md",
@@ -148,6 +148,20 @@
               "path": "docs/routing-workshop.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/routing-workshop.md",
               "sha256": "ef142334b809d84e88efdbbc191e73146a3b3c0bd577c7241c1ab74fed09f153"
+            }
+          ]
+        },
+        {
+          "id": "routing-followed-validation-case",
+          "claim": "official-train/00035 text asks for an update on a replacement card. TF-IDF compromised_card .053366; embeddings card_arrival .382128. Both defer at .5; reference card_arrival.",
+          "sources": [
+            {
+              "path": "evidence/routing-qualification-20261114/tfidf-17.json",
+              "sha256": "b4b151fc635b7b9e50f13c091d8d9595f0d950f108c7f534dbebf7353c4bf0be"
+            },
+            {
+              "path": "evidence/routing-qualification-20261114/embedding-17.json",
+              "sha256": "a366a6bf2b6ea494459eee1a02d32d0575e16ef71c1a5b53f5947df3d7b74f28"
             }
           ]
         }
@@ -182,8 +196,77 @@
           "origin": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=37umm80le0d",
           "license": "Existing repository Forge capture; public/fictional teaching data.",
           "visually_inspected": true
+        },
+        {
+          "path": "reports/assets/routing/request-comparison.png",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/request-comparison.png",
+          "sha256": "2ab21440797417a843518499d32b6871020ff3a0431888c3d8c4c66f361165b6",
+          "question": "What changes for the same request?",
+          "caption_scope": "One validation example. Probabilities are uncalibrated; changed prediction does not mean automatic routing.",
+          "origin": [
+            "evidence/routing-qualification-20261114/tfidf-17.json",
+            "evidence/routing-qualification-20261114/embedding-17.json"
+          ],
+          "license": "Original Workshop Kit diagram derived from cited public source and saved records.",
+          "visually_inspected": true,
+          "editable_source": "reports/assets/routing/request-comparison.svg",
+          "generator": "scripts/build_report_routing_inspection_visuals.py"
+        },
+        {
+          "path": "reports/assets/routing/representations.png",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/representations.png",
+          "sha256": "7d8cf71990aaf79cffc18a60e7cb5e1dde1aa8c5900c2e6cfea60de9acb6bf29",
+          "question": "What does the classifier receive?",
+          "caption_scope": "Tokens are an illustrative subset, not a feature-importance explanation. No embedding coordinates or weights are fabricated.",
+          "origin": [
+            "src/forge_workshop_kit/routing.py",
+            "docs/routing-workshop.md"
+          ],
+          "license": "Original Workshop Kit diagram derived from cited public source and saved records.",
+          "visually_inspected": true,
+          "editable_source": "reports/assets/routing/representations.svg",
+          "generator": "scripts/build_report_routing_inspection_visuals.py"
+        },
+        {
+          "path": "reports/assets/routing/classifier-results.png",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/classifier-results.png",
+          "sha256": "bfc0626acee274806aeeaab2d9836992863ddf84bef9760c1be917ec221a735b",
+          "question": "Which measured quantities improved?",
+          "caption_scope": "Do not interpret cached classifier time as full service latency or deterministic seed repeats as uncertainty estimates.",
+          "origin": [
+            "evidence/routing-qualification-20261114/summary.json"
+          ],
+          "license": "Original Workshop Kit diagram derived from cited public source and saved records.",
+          "visually_inspected": true,
+          "editable_source": "reports/assets/routing/classifier-results.svg",
+          "generator": "scripts/build_report_routing_inspection_visuals.py"
+        },
+        {
+          "path": "decks/routing/public/images/evaltables-native-detail.png",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/routing/public/images/evaltables-native-detail.png",
+          "sha256": "47924d265d864d4368143a7c9080e71454741dee1a54085429e88b2926c62808",
+          "question": "Does a higher probability change the routing outcome for this request?",
+          "caption_scope": "Actual test request official-test/02743; both correct, with probabilities .5865 and .8987. Separate from opening validation case.",
+          "origin": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=fthby6owcpo",
+          "license": "Existing repository native Forge capture with public Banking77 request.",
+          "visually_inspected": true
+        },
+        {
+          "path": "reports/assets/routing/label-mapping.png",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/label-mapping.png",
+          "sha256": "abe5731f6bff32427d62ac044dc10694a1c835d5da8d058c2167fbe20ec67521",
+          "question": "How can an unchanged probability route to the wrong queue?",
+          "caption_scope": "The labels come from the free-check fixture. This is an explanatory drill, not a captured production prediction.",
+          "origin": [
+            "src/forge_workshop_kit/routing_release.py"
+          ],
+          "license": "Original Workshop Kit diagram derived from cited public source and saved records.",
+          "visually_inspected": true,
+          "editable_source": "reports/assets/routing/label-mapping.svg",
+          "generator": "scripts/build_report_routing_inspection_visuals.py"
         }
-      ]
+      ],
+      "article_sha256": "741a17fe35b64cca9dcc8254b8f6fe5b52b260e90e169b3a40ee367067c36c54"
     },
     "inspection": {
       "file": "reports/inspection.md",
@@ -360,7 +443,7 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "948b9ffd721e281cbec2346e5cada00400dc2b6dbc418ebf52ec5402121b54cf"
+              "sha256": "18a178bd9d8ecf37c826e4cef9a4f0fddbee15927f25c0bb2259f8c0f90aada0"
             },
             {
               "path": "docs/setup.md",
@@ -405,14 +488,92 @@
           "origin": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=h43oxpf30iu",
           "license": "Existing repository Forge capture containing VisA image, CC BY 4.0.",
           "visually_inspected": true
+        },
+        {
+          "path": "reports/assets/inspection/feature-path.png",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/feature-path.png",
+          "sha256": "5380473c7eeaf8e5a972ef68df9ae173e61242c954216d273997b5f3ecdc7b1a",
+          "question": "What extra information reaches the patch classifier?",
+          "caption_scope": "Supplied defect masks do not enter this path. The 64-channel projection is fixed, not learned by the classifier.",
+          "origin": [
+            "src/forge_workshop_kit/inspection_encoder.py",
+            "src/forge_workshop_kit/inspection.py",
+            "docs/inspection-workshop.md"
+          ],
+          "license": "Original Workshop Kit diagram derived from cited public source and saved records.",
+          "visually_inspected": true,
+          "editable_source": "reports/assets/inspection/feature-path.svg",
+          "generator": "scripts/build_report_routing_inspection_visuals.py"
+        },
+        {
+          "path": "reports/assets/inspection/patch-distance.png",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/patch-distance.png",
+          "sha256": "7ee5bd2a4d6a62d553134428de90956fdbdbf2e766811a926692e8a09b478cc9",
+          "question": "What does one bright cell in the distance map measure?",
+          "caption_scope": "The diagram does not invent patch distances or imply localization is causal. Self matches are excluded.",
+          "origin": [
+            "src/forge_workshop_kit/inspection.py"
+          ],
+          "license": "Original Workshop Kit diagram derived from cited public source and saved records.",
+          "visually_inspected": true,
+          "editable_source": "reports/assets/inspection/patch-distance.svg",
+          "generator": "scripts/build_report_routing_inspection_visuals.py"
+        },
+        {
+          "path": "decks/inspection/public/images/agent-lens-training-original.png",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/inspection/public/images/agent-lens-training-original.png",
+          "sha256": "1c5378d6bde79e03184f63d4cd6b0afdc3914d473d9a9e003876f455e53e1cac",
+          "question": "Which inputs and saved output belong to this training call?",
+          "caption_scope": "Actual nearest-patch training tool event: 397 fit boards, C=.03, validation AP .8839; no LLM inference claim.",
+          "origin": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ff65c2eaa1cc5c5cf8adb6cb706f5f52",
+          "license": "Existing repository native Forge capture with public fictional training data.",
+          "visually_inspected": true
+        },
+        {
+          "path": "reports/assets/inspection/case-decisions.png",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/case-decisions.png",
+          "sha256": "6095695754da958f0dc3ea183743c976740fb75595b295cffd6fa276b6420a73",
+          "question": "Why is one negative score a miss and another a detection?",
+          "caption_scope": "Decision values are not probabilities. Relative positions compare decisions, not calibrated certainty across models.",
+          "origin": [
+            "evidence/inspection-teaching-retest-v2/predictions.json"
+          ],
+          "license": "Original Workshop Kit diagram derived from cited public source and saved records.",
+          "visually_inspected": true,
+          "editable_source": "reports/assets/inspection/case-decisions.svg",
+          "generator": "scripts/build_report_routing_inspection_visuals.py"
+        },
+        {
+          "path": "reports/assets/inspection/detector-results.png",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/detector-results.png",
+          "sha256": "0470f8560d17db430a593d92c6711f75a535576c5ac1edee778f31e8e7eb16a1",
+          "question": "Does the recovered board reflect an aggregate gain?",
+          "caption_scope": "The test images had already been inspected. This is a teaching retest, not independent confirmation or production qualification.",
+          "origin": [
+            "evidence/inspection-teaching-retest-v2/results.json",
+            "evidence/inspection-qualification-v1/results.json"
+          ],
+          "license": "Original Workshop Kit diagram derived from cited public source and saved records.",
+          "visually_inspected": true,
+          "editable_source": "reports/assets/inspection/detector-results.svg",
+          "generator": "scripts/build_report_routing_inspection_visuals.py"
         }
-      ]
+      ],
+      "article_sha256": "86b12871c0739eef5723e6154bb330c0a7236d17abad2a1708fdbae6591a6845"
     }
   },
   "validation": {
-    "python_excerpts": "All fenced Python excerpts compiled without execution.",
-    "local_visual_paths": "All six embedded visual files exist and were inspected.",
-    "paid_work": "None.",
-    "native_publication": "Not performed by draft author; parent release task owns publication and public-access checks."
+    "python_excerpts": "All 5 fenced Python excerpts parse without execution.",
+    "local_visual_paths": "Sixteen embedded visual files exist; eight new PNG/SVG figures and eight existing captures/photos were inspected.",
+    "paid_work": "None; no training, inference or publication by this author.",
+    "native_publication": "Not performed by draft author; parent release task owns publication and public-access checks.",
+    "rendered_report": "Parent owns final public Report and narrow-browser checks.",
+    "figure_text_bounds": "All eight generated figures checked actual text extents against the canvas after font rendering; no clipped labels.",
+    "figures": "All eight final PNGs were visually inspected; source SVGs retained. Rerunning the renderer performs no fitting or service calls."
+  },
+  "voice_reference": {
+    "url": "https://forge.coreweave.com/wandb/wandb/harness2-agent-lens-v4/reports/Recreating-Harness---VmlldzoxODE5OTAxNQ",
+    "local_read": "../nj-hub-harness-workshop/articles/recreating-harness2/article.md",
+    "use": "Follow one observed case through mechanism, code, execution and comparison; no borrowed claims or text."
   }
 }
