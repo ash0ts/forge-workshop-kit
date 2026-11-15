@@ -120,7 +120,7 @@ base = os.environ.get('DECK_BASE', '/')
 for i, item in enumerate(slides):
     if item['name']: text = text.replace('href="/' + item['name'] + '"', 'href="/' + str(i + 1) + '"')
 text = re.sub(r'href="/(\d+)"', lambda m: 'href="' + base + m.group(1) + '"', text)
-(ROOT/'slides.md').write_text(text)
+(ROOT/'slides.md').write_text(text, encoding='utf-8')
 (ROOT/'notes/slide-map.json').write_text(json.dumps({'total_slides':len(slides), 'duration_minutes':360,
     'schedule':[{'start':start,'end':end,'activity':activity} for start,end,activity in schedule],
     'slides':[{'number':i+1, 'key':s['name'] or re.sub(r'[^a-z0-9]+','-',s['title'].replace('<br>',' ').lower()).strip('-'),
@@ -128,6 +128,6 @@ text = re.sub(r'href="/(\d+)"', lambda m: 'href="' + base + m.group(1) + '"', te
               'concept':s['concept'], 'exercise':s['exercise'], 'source':s['source'], 'evidence':s['evidence'],
               'timing':{'elapsed':s['time'] or None,'minutes':s['elapsed_minutes']},
               'clicks':s['clicks']}
-             for i,s in enumerate(slides)]}, indent=2)+'\n')
-(ROOT/'notes/presenter.md').write_text('\n\n'.join(f'## {i+1}. {s["title"].replace("<br>", " ")}\n\n{s["time"]}\n\n{s["notes"]}' for i,s in enumerate(slides))+'\n')
+             for i,s in enumerate(slides)]}, indent=2)+'\n', encoding='utf-8')
+(ROOT/'notes/presenter.md').write_text('\n\n'.join(f'## {i+1}. {s["title"].replace("<br>", " ")}\n\n{s["time"]}\n\n{s["notes"]}' for i,s in enumerate(slides))+'\n', encoding='utf-8')
 print(f'Generated {len(slides)} transit slides.')

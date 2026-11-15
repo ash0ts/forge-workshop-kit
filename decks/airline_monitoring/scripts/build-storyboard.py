@@ -64,7 +64,7 @@ def exercise(title, step, function, actions, button, check, minute, name, answer
 
 def capture(key, title, explanation, minute, task):
     receipt=ROOT/'data/native-captures.json'
-    records=json.loads(receipt.read_text()).get('captures',[]) if receipt.exists() else []
+    records=json.loads(receipt.read_text(encoding='utf-8')).get('captures',[]) if receipt.exists() else []
     record=next((r for r in records if r.get('key')==key),None)
     if not record:
         return
@@ -93,10 +93,10 @@ def capture(key, title, explanation, minute, task):
 slide('Monitor an airline service agent<br>and build better evaluations','<div class="sub">Investigate booking mistakes, test a monitoring rule, and turn reviewed incidents into checks for the next version.</div><div class="bottom-note">Six hours · Basic Python · Simulated airline data · Your own Forge project<br>Technical preview: native Alignment judging and prepared Insights remain unqualified.</div>','Set the situation before introducing products. Participants operate a simulated airline customer-service agent. They will distinguish a request completing, a booking being correct, and a monitor detecting a problem. Those are three separate observations.',0,'introduction','cover')
 case_source=REPO/'src/forge_workshop_kit/assets/airline/cases.json'
 if case_source.exists():
-    central_case=next(case for case in json.loads(case_source.read_text()) if case['id']=='airline-discovery-02')
-    ROOT.joinpath('data/representative-case.json').write_text(json.dumps({k:central_case[k] for k in ('id','source_task_id','source_url','mission','passenger')},indent=2)+'\n')
+    central_case=next(case for case in json.loads(case_source.read_text(encoding='utf-8')) if case['id']=='airline-discovery-02')
+    ROOT.joinpath('data/representative-case.json').write_text(json.dumps({k:central_case[k] for k in ('id','source_task_id','source_url','mission','passenger')},indent=2)+'\n', encoding='utf-8')
 else:
-    central_case=json.loads(ROOT.joinpath('data/representative-case.json').read_text())
+    central_case=json.loads(ROOT.joinpath('data/representative-case.json').read_text(encoding='utf-8'))
 real_before=[('HAT007','LAS → ATL · May 19','untouched'),('HAT174','ATL → LAS · May 29','untouched'),('','','ghost')]
 real_after=[('HAT061','LAS → ATL · May 19','changed'),('HAT174','ATL → LAS · May 29','untouched'),('','','ghost')]
 slide('The passenger wants a different outward flight','<div class="quote">Change HAT007 to HAT061 on May 19. Keep the other flight, passengers, and cabin. Quote the fare difference and ask before changing the booking.</div>'+itinerary([('Current booking',real_before)],'Paraphrased workshop request · source reservation 59XX6W · 2024 dates · airline-discovery-02'),'Open airline-discovery-02 in the notebook. The reservation is from upstream source task '+central_case['source_task_id']+'. The workshop adapted its request to exercise a bounded segment change. Ask what must change and what must remain untouched.',3,'passenger-request',source=central_case['source_url'])
@@ -175,11 +175,11 @@ slide('The next release has a check the first release lacked','<p class="princip
 import ast
 answer_source_path=REPO/'src/forge_workshop_kit/airline_teaching.py'
 if answer_source_path.exists():
-    source_tree=ast.parse(answer_source_path.read_text())
+    source_tree=ast.parse(answer_source_path.read_text(encoding='utf-8'))
     answers=next(ast.literal_eval(node.value) for node in source_tree.body if isinstance(node,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='ANSWERS' for t in node.targets))
-    ROOT.joinpath('data/teaching-answers.json').write_text(json.dumps(answers,indent=2)+'\n')
+    ROOT.joinpath('data/teaching-answers.json').write_text(json.dumps(answers,indent=2)+'\n', encoding='utf-8')
 else:
-    answers=json.loads(ROOT.joinpath('data/teaching-answers.json').read_text())
+    answers=json.loads(ROOT.joinpath('data/teaching-answers.json').read_text(encoding='utf-8'))
 
 def formatted_answer(key):
     answer_source=answers[key].replace('def my_itinerary_builder(current_flights, replace_start, replace_stop, replacement_flights):', 'def my_itinerary_builder(\n    current_flights, replace_start, replace_stop, replacement_flights\n):').replace('return copy.deepcopy(current_flights[:replace_start] + replacement_flights + current_flights[replace_stop:])', 'return copy.deepcopy(\n        current_flights[:replace_start] + replacement_flights\n        + current_flights[replace_stop:]\n    )')
@@ -196,11 +196,11 @@ slide('Sources and saved evidence','<ul class="reference-list"><li><a href="'+NO
 
 manifest_path=REPO/'src/forge_workshop_kit/workshops.json'
 if manifest_path.exists():
-    manifest=json.loads(manifest_path.read_text())
+    manifest=json.loads(manifest_path.read_text(encoding='utf-8'))
     workshop=next(row for row in manifest['templates'] if row['slug']=='airline_monitoring')
-    ROOT.joinpath('data/workshop-reference.json').write_text(json.dumps(workshop,indent=2)+'\n')
+    ROOT.joinpath('data/workshop-reference.json').write_text(json.dumps(workshop,indent=2)+'\n', encoding='utf-8')
 else:
-    workshop=json.loads(ROOT.joinpath('data/workshop-reference.json').read_text())
+    workshop=json.loads(ROOT.joinpath('data/workshop-reference.json').read_text(encoding='utf-8'))
 by_id={row['id']:row for row in workshop['authoring']['exercises']}
 for item in slides:
     exercise_id={'discovery':'discover','state-check':'score','alignment-test':'native-test','judge-execution':'explanation','report':'conclude'}.get(item['exercise_id'],item['exercise_id'])
@@ -210,11 +210,11 @@ for item in slides:
 
 notebook_path=REPO/'scripts/airline_monitoring_cells.py'
 if notebook_path.exists():
-    notebook_source=notebook_path.read_text()
+    notebook_source=notebook_path.read_text(encoding='utf-8')
     control_labels=set(match[1] for match in re.findall(r"mo\.ui\.run_button\(label=([\"'])(.*?)\1",notebook_source))
 else:
-    control_labels=set(json.loads(ROOT.joinpath('notes/exercise-controls.json').read_text())['labels'])
-ROOT.joinpath('notes/exercise-controls.json').write_text(json.dumps({'source':'scripts/airline_monitoring_cells.py','labels':sorted(control_labels),'references':[{'slide_name':item['name'],'exercise':item.get('exercise_reference')} for item in slides if item.get('exercise_reference')]},indent=2)+'\n')
+    control_labels=set(json.loads(ROOT.joinpath('notes/exercise-controls.json').read_text(encoding='utf-8'))['labels'])
+ROOT.joinpath('notes/exercise-controls.json').write_text(json.dumps({'source':'scripts/airline_monitoring_cells.py','labels':sorted(control_labels),'references':[{'slide_name':item['name'],'exercise':item.get('exercise_reference')} for item in slides if item.get('exercise_reference')]},indent=2)+'\n', encoding='utf-8')
 
 header='''---\ntheme: default\ntitle: Monitor an airline service agent and build better evaluations\nauthor: Anish Shah\nclass: cover\nlayout: default\naspectRatio: 16/9\ncanvasWidth: 1280\ncolorSchema: light\ntransition: fade\nwakeLock: false\nfonts:\n  sans: IBM Plex Sans\n  mono: IBM Plex Mono\n  provider: none\nmdc: true\nhighlighter: shiki\ndrawings:\n  enabled: false\ndownload: false\n---\n'''
 
@@ -285,7 +285,7 @@ ROOT.joinpath('notes/visual-coverage.json').write_text(json.dumps({
     'preview': {'slide': 4, 'click': 2, 'path': 'public/graphics-preview.png',
                 'kind': 'Current rendered deck; not a native product capture'},
     'revisions': visual_coverage,
-}, indent=2) + '\n')
+}, indent=2) + '\n', encoding='utf-8')
 
 # Shared ARIA context, response and citation-check frames.
 import runpy as _aria_runpy
@@ -303,7 +303,7 @@ for index,item in enumerate(slides):
 text=re.sub(r'href="/(\d+)"',lambda m:'href="'+base+m.group(1)+'"',text)
 ROOT.joinpath('slides.md').write_text(text,encoding='utf-8')
 ROOT.joinpath('notes').mkdir(exist_ok=True)
-ROOT.joinpath('notes/slide-map.json').write_text(json.dumps({'session_minutes':360,'main_slides':sum(s['start_minute'] is not None for s in slides),'total_slides':len(slides),'slides':[{'number':i+1,**s} for i,s in enumerate(slides)]},indent=2)+'\n')
-ROOT.joinpath('notes/slide-index.json').write_text(json.dumps([{'slide':i+1,'title':s['title'],'name':s['name'],'time':s['time']} for i,s in enumerate(slides)],indent=2)+'\n')
-ROOT.joinpath('notes/presenter.md').write_text('\n\n'.join(f'## {i+1}. {s["title"].replace("<br>"," ")}\n\n{s["time"]}\n\n{s["notes"]}' for i,s in enumerate(slides))+'\n')
+ROOT.joinpath('notes/slide-map.json').write_text(json.dumps({'session_minutes':360,'main_slides':sum(s['start_minute'] is not None for s in slides),'total_slides':len(slides),'slides':[{'number':i+1,**s} for i,s in enumerate(slides)]},indent=2)+'\n', encoding='utf-8')
+ROOT.joinpath('notes/slide-index.json').write_text(json.dumps([{'slide':i+1,'title':s['title'],'name':s['name'],'time':s['time']} for i,s in enumerate(slides)],indent=2)+'\n', encoding='utf-8')
+ROOT.joinpath('notes/presenter.md').write_text('\n\n'.join(f'## {i+1}. {s["title"].replace("<br>"," ")}\n\n{s["time"]}\n\n{s["notes"]}' for i,s in enumerate(slides))+'\n', encoding='utf-8')
 print(f'Generated {len(slides)} airline monitoring slides.')

@@ -11,18 +11,18 @@ BASE='/' + os.environ.get('DECK_BASE','').strip('/') + '/'
 if BASE=='//': BASE='/'
 DATA=KIT/'data/inspection-v1'
 if DATA.exists():
-    records=json.loads((DATA/'records.json').read_text())
+    records=json.loads((DATA/'records.json').read_text(encoding='utf-8'))
     for label, name in [(0,'normal'),(1,'defect')]:
         row=next(r for r in records if r['partition']=='fit' and r['label']==label)
         shutil.copy2(DATA/row['image'],ROOT/'public/images'/f'fit-{name}.jpg')
 RETEST=KIT/'evidence/inspection-teaching-retest-v2/results.json'
 if RETEST.exists():shutil.copy2(RETEST,ROOT/'public/recorded-retest.json')
-recorded=json.loads((ROOT/'public/recorded-retest.json').read_text())
+recorded=json.loads((ROOT/'public/recorded-retest.json').read_text(encoding='utf-8'))
 slides=[]
 
 def eval_capture(detail=False, items=()):
     source_path=ROOT/'data/evaltables-native.json'
-    source=json.loads(source_path.read_text()) if source_path.exists() else {}
+    source=json.loads(source_path.read_text(encoding='utf-8')) if source_path.exists() else {}
     image='evaltables-native-mask.png' if detail == 'mask' else 'evaltables-native-detail.png' if detail else 'evaltables-native.png'
     url=source.get('detail_url' if detail else 'url',source.get('url',''))
     rendered='<img src="/images/'+image+'" alt="Native Forge Evaluation Tables Preview showing saved workshop results">'
@@ -95,7 +95,7 @@ for i,s in enumerate(slides):
     answer=f'<a class="answer-link" href="{BASE}{indices[s["answer"]]}">Worked answer →</a>\n\n' if s['answer'] else ''
     back=''.join(f'<div class="source-link"><a href="{BASE}{indices[x["key"]]}">Return to {x["title"]}</a></div>' for x in slides if x['answer']==s['key'])
     parts.append(fm+f'<div class="kicker">{s["time"]}</div>\n\n'+answer+'# '+s['title']+'\n\n'+s['body']+'\n'+back+'\n\n<!--\n'+s['notes']+'\nSource: notes/sources.md.\n-->\n')
-(ROOT/'slides.md').write_text(front+''.join(parts))
-(ROOT/'notes/slide-map.json').write_text(json.dumps({'session_minutes':240,'main_slides':main_count,'total_slides':len(slides),'slides':[{'number':i+1,**s} for i,s in enumerate(slides)]},indent=2))
-(ROOT/'notes/facilitator-notes.md').write_text('# Visual inspection presenter notes\n\n'+'\n\n'.join(f'## {i+1}. {s["title"]}\n\n{s["time"]}\n\n{s["notes"]}' for i,s in enumerate(slides)))
+(ROOT/'slides.md').write_text(front+''.join(parts), encoding='utf-8')
+(ROOT/'notes/slide-map.json').write_text(json.dumps({'session_minutes':240,'main_slides':main_count,'total_slides':len(slides),'slides':[{'number':i+1,**s} for i,s in enumerate(slides)]},indent=2), encoding='utf-8')
+(ROOT/'notes/facilitator-notes.md').write_text('# Visual inspection presenter notes\n\n'+'\n\n'.join(f'## {i+1}. {s["title"]}\n\n{s["time"]}\n\n{s["notes"]}' for i,s in enumerate(slides)), encoding='utf-8')
 print(f'{main_count} main slides, {len(slides)-main_count} optional answers')

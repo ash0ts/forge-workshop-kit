@@ -48,7 +48,7 @@ def _safe_url(value):
     return str(value) if str(value).startswith(('https://','http://')) else ''
 
 def _definition(deck, stop):
-    manifest=json.loads((KIT/'src/forge_workshop_kit/workshops.json').read_text())
+    manifest=json.loads((KIT/'src/forge_workshop_kit/workshops.json').read_text(encoding='utf-8'))
     workshop=next(item for item in manifest['templates'] if item['slug']==SLUGS[deck])
     return next(item for item in workshop['aria_investigations'] if item['id']==stop)
 
@@ -57,7 +57,7 @@ def _pack(deck, stop):
     path=KIT/'src/forge_workshop_kit/assets/aria'/SLUGS[deck]/f'{stop}.json'
     if not path.exists():
         return {'status':'unavailable','response':'','records':[], 'captures':[]},path
-    return json.loads(path.read_text()),path
+    return json.loads(path.read_text(encoding='utf-8')),path
 
 def _asset_url(path):
     return os.environ.get('DECK_BASE','').rstrip('/')+'/'+path.lstrip('/')

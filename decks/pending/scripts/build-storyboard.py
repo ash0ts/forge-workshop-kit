@@ -7,12 +7,12 @@ import re
 ROOT=Path(__file__).resolve().parents[1]
 KIT=ROOT.parents[1]
 S=[]
-(ROOT/'data'/'visuals.json').write_text((KIT/'src/forge_workshop_kit/assets/visuals.json').read_text())
+(ROOT/'data'/'visuals.json').write_text((KIT/'src/forge_workshop_kit/assets/visuals.json').read_text(encoding='utf-8'), encoding='utf-8')
 BASE=os.environ.get('DECK_BASE','').rstrip('/')
 
 def eval_capture(detail=False, items=()):
     source_path=ROOT/'data/evaltables-native.json'
-    source=json.loads(source_path.read_text()) if source_path.exists() else {}
+    source=json.loads(source_path.read_text(encoding='utf-8')) if source_path.exists() else {}
     image='evaltables-native-detail.png' if detail else 'evaltables-native.png'
     url=source.get('detail_url' if detail else 'url',source.get('url',''))
     rendered='<img src="/images/'+image+'" alt="Native Forge Evaluation Tables Preview showing saved workshop results">'
@@ -271,7 +271,7 @@ for i,s in enumerate(S):
     content=f'# {s["title"]}\n\n{body}\n\n<!--\n{s["notes"]}\n-->\n'
     if i: content=('---\n'+('class: '+s['cls']+'\n' if s['cls'] else '')+'---\n\n')+content
     parts.append(content)
-(ROOT/'slides.md').write_text(header+'\n'.join(parts))
-(ROOT/'notes/facilitator-notes.md').write_text('# Pending, Inc. presenter notes\n\nOne four-hour session, including breaks at 1:10–1:20 and 2:15–2:25.\n\n'+ '\n\n'.join(f'## {i+1}. {s["title"].replace("<br>"," ")}\n\n{s["timing"]["section"]} · {s["timing"]["start_minute"]}–{s["timing"]["start_minute"]+s["timing"]["duration_minutes"]} minutes\n\n{s["notes"]}' for i,s in enumerate(S))+'\n')
-(ROOT/'notes/slide-map.json').write_text(json.dumps({'duration_minutes':240,'total_slides':len(S),'main_slides':ids['answer-tool']-1,'sections':[dict(anchor=key,title=title,start_minute=start,duration_minutes=duration) for key,title,start,duration,*_ in SECTIONS],'slides':[{'number':i+1,'key':s['key'],'title':s['title'],'kind':s['cls'] or 'explanation','notes':s['notes'],**{field:s[field] for field in ('concept','exercise','source','evidence','timing')},'answer': next((ids[key] for key in ids if key.startswith('answer-') and ('#'+key+'\"') in s['body']),None)} for i,s in enumerate(S)]},indent=2)+'\n')
+(ROOT/'slides.md').write_text(header+'\n'.join(parts), encoding='utf-8')
+(ROOT/'notes/facilitator-notes.md').write_text('# Pending, Inc. presenter notes\n\nOne four-hour session, including breaks at 1:10–1:20 and 2:15–2:25.\n\n'+ '\n\n'.join(f'## {i+1}. {s["title"].replace("<br>"," ")}\n\n{s["timing"]["section"]} · {s["timing"]["start_minute"]}–{s["timing"]["start_minute"]+s["timing"]["duration_minutes"]} minutes\n\n{s["notes"]}' for i,s in enumerate(S))+'\n', encoding='utf-8')
+(ROOT/'notes/slide-map.json').write_text(json.dumps({'duration_minutes':240,'total_slides':len(S),'main_slides':ids['answer-tool']-1,'sections':[dict(anchor=key,title=title,start_minute=start,duration_minutes=duration) for key,title,start,duration,*_ in SECTIONS],'slides':[{'number':i+1,'key':s['key'],'title':s['title'],'kind':s['cls'] or 'explanation','notes':s['notes'],**{field:s[field] for field in ('concept','exercise','source','evidence','timing')},'answer': next((ids[key] for key in ids if key.startswith('answer-') and ('#'+key+'\"') in s['body']),None)} for i,s in enumerate(S)]},indent=2)+'\n', encoding='utf-8')
 print(f'Wrote {len(S)} slides')

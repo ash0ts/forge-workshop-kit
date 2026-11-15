@@ -1,0 +1,43 @@
+{
+  "version": "0.10.0",
+  "scope": "authoring-only UTF-8 correction",
+  "checked_at": "2026-11-15T18:47:41.469258+00:00",
+  "changed_sources": [
+    "scripts/aria_storyboard.py",
+    "scripts/build_decks.py",
+    "scripts/check_deck_pdf.py",
+    "tests/test_aria_storyboard.py",
+    "decks/solar/scripts/teaching_sequence.py",
+    "decks/solar/scripts/build-storyboard.py",
+    "decks/airline_monitoring/scripts/build-storyboard.py",
+    "decks/transit/scripts/build-storyboard.py",
+    "decks/inspection/scripts/build-storyboard.py",
+    "decks/routing/scripts/build-storyboard.py",
+    "decks/pending/scripts/build-storyboard.py",
+    "scripts/build_release.py",
+    "tests/test_aria_bundle.py"
+  ],
+  "focused_tests": {
+    "passed": 25,
+    "command": ".venv/bin/python -m pytest tests/test_aria_storyboard.py tests/test_aria_bundle.py -q"
+  },
+  "locale_regression": "Path.open emulated cp1252 when encoding was absent or locale; all twelve recordings and 36 frames match normal rendering.",
+  "storyboard_regeneration": {
+    "locale": "emulated cp1252",
+    "workshops": 6,
+    "slides": 548,
+    "markdown_and_json_files_compared": 166,
+    "changed_generated_files": []
+  },
+  "explicit_utf8_ast_audit": "passed",
+  "release_assets": "Existing published wheel, PDFs, browser bundles and source archives unchanged.",
+  "limitation": "Windows CI rerun is separate from local locale emulation.",
+  "free_suite": {
+    "passed": 475,
+    "warnings": 7,
+    "seconds": 83.89,
+    "command": ".venv/bin/python -m pytest -q"
+  },
+  "archive_regression": "Unicode response is preserved exactly in a deterministic recording bundle under an emulated cp1252 default.",
+  "ownership_review": "Existing * @ash0ts rule covers the authoring scripts, tests, and receipt; no ownership changed."
+}

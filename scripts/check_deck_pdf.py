@@ -12,7 +12,7 @@ from PIL import Image, ImageDraw
 
 deck, target = (Path(value).resolve() for value in sys.argv[1:3])
 prefix = sys.argv[3]
-layout = json.loads((deck / "notes/slide-map.json").read_text())
+layout = json.loads((deck / "notes/slide-map.json").read_text(encoding='utf-8'))
 document = pymupdf.open(target)
 # Click builds add physical pages. Resolve the printed slide number rather than
 # assuming that slide 20 is physical PDF page 20.
@@ -27,7 +27,7 @@ assert sorted(set(row["slide"] for row in page_map)) == list(range(1, layout["to
 assert [row["slide"] for row in page_map] == sorted(row["slide"] for row in page_map)
 checks_path = deck / "notes/delivery-checks.json"
 if checks_path.exists():
-    checked = json.loads(checks_path.read_text())
+    checked = json.loads(checks_path.read_text(encoding='utf-8'))
     source_hash = hashlib.sha256((deck / "slides.md").read_bytes()).hexdigest()
     if checked.get("source_sha256") == source_hash and checked.get("click_states"):
         assert [{"slide": row["slide"], "click": row["click"]} for row in page_map] == checked["click_states"], "PDF builds differ from checked browser click states"
@@ -95,5 +95,5 @@ result = {
     "source_sha256": hashlib.sha256((deck / "slides.md").read_bytes()).hexdigest(),
     "pdf_sha256": hashlib.sha256(target.read_bytes()).hexdigest(),
 }
-(deck / "notes/pdf-checks.json").write_text(json.dumps(result, indent=2) + "\n")
+(deck / "notes/pdf-checks.json").write_text(json.dumps(result, indent=2) + "\n", encoding='utf-8')
 print(json.dumps(result))

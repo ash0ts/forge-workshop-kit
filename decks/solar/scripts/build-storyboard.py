@@ -18,15 +18,15 @@ if QUALIFICATION.exists():
         shutil.copy2(QUALIFICATION / name, ROOT / 'public/images' / name)
     shutil.copy2(QUALIFICATION / 'summary.json', ROOT / 'public/qualification-summary.json')
 shutil.copy2(ROOT / 'public/qualification-summary.json', ROOT / 'data/qualification-summary.json')
-qualification = json.loads((ROOT / 'data/qualification-summary.json').read_text())
-recorded=json.loads((ROOT/'public/recorded-study.json').read_text())
+qualification = json.loads((ROOT / 'data/qualification-summary.json').read_text(encoding='utf-8'))
+recorded=json.loads((ROOT/'public/recorded-study.json').read_text(encoding='utf-8'))
 by_name={row['name']:row for row in recorded['stages']}
 proposal=by_name['images/round-1/propose']
 candidates=proposal['result']['candidates']
 
 def eval_capture(detail=False, items=()):
     source_path=ROOT/'data/evaltables-native.json'
-    source=json.loads(source_path.read_text()) if source_path.exists() else {}
+    source=json.loads(source_path.read_text(encoding='utf-8')) if source_path.exists() else {}
     image='evaltables-native-detail.png' if detail else 'evaltables-native.png'
     url=source.get('detail_url' if detail else 'url',source.get('url',''))
     rendered='<img src="/images/'+image+'" alt="Native Forge Evaluation Tables Preview showing saved workshop results">'
@@ -54,7 +54,7 @@ branch_example={
     'test':branch_record('images/round-1/composition-test','Test composition','The composed source was trained and scored in its own execution before adoption.'),
     'next':branch_record('images/round-1/adopt','Save selected version','The tested composition lowered validation error. Its source and lesson became the parent for round two.'),
 }
-(ROOT/'data/branch-example.json').write_text(json.dumps(branch_example, indent=2))
+(ROOT/'data/branch-example.json').write_text(json.dumps(branch_example, indent=2), encoding='utf-8')
 image_results=next(row['result']['metrics_by_version'] for row in recorded['stages'] if row['name']=='images/final-comparison')
 relative_gain=1-image_results['agent']['error']/image_results['manual']['error']
 BASE='/' + os.environ.get('DECK_BASE', '').strip('/') + '/'
@@ -181,7 +181,7 @@ add('recorded-code','Round 2: start the correction at zero',code("if architectur
 add('recorded-keep','Round 2: sampling without replacement did not reduce error','<table class="clean-table"><tr><th>Tested source</th><th>Validation error ↓</th></tr><tr><td>Starting absolute-loss model</td><td>0.120553</td></tr><tr><td>A · zero-initialize the residual head</td><td>0.110916</td></tr><tr><td>B · sample without replacement</td><td>0.120557</td></tr></table><p>The composition selected A. It did not combine the unhelpful sampling change.</p>' + note('Keep the tested sampling result alongside the selected version for comparison.'),'Candidate B changes the batch sampling to seeded permutations. Its validation error is essentially the same as the parent and slightly higher. The composition keeps zero initialization and rejects the sampling change. Do not attribute a benefit to an untested combination.','','RECORDED REHEARSAL')
 add('recorded-final','In this rehearsal, image error fell 10.15%', f'<div class="measured-grid"><div><div class="measured-gain">{relative_gain:.2%}</div><p>less error than the manually selected model</p><p class="aside">Agent edits: use absolute training loss, then zero-initialize the residual head.</p></div><table class="clean-table"><tr><th>Frozen version</th><th>Masked MAE ↓</th></tr><tr><td>Persistence</td><td>{image_results["persistence"]["error"]:.6f}</td></tr><tr><td>Manual residual model</td><td>{image_results["manual"]["error"]:.6f}</td></tr><tr><td>Agent-selected code</td><td>{image_results["agent"]["error"]:.6f}</td></tr></table></div><p class="aside">Actual AIA 171 Å observations. 199 overlapping windows; February 13–14, 2014; one seed. <a href="{REPORT}">Open the recorded comparison ↗</a></p>'+note('A measured result from this rehearsal, not a promised outcome for your edits.'), 'The selected agent code combined the absolute training loss from round one with a zero-initialized residual head from round two. Its final masked MAE was 0.11001095193834161, versus 0.1224417336622075 for the manual model and 0.12576198700564592 for persistence. The 10.15% is a relative reduction in error versus manual. This is one seed and 199 overlapping windows across two reserved days, not evidence of reliable solar forecasting across other periods.', '', '3:45 · RECORDED REHEARSAL')
 add('recorded-image','Compare the two models on one reserved-date image',pic('v030-final-predictions.png','Manual and agent-selected forecasts for the same first accepted final case','Forecast origin 2014-02-13T02:48 UTC. Same inputs, target, intensity scale, and error scale.') + note('The first accepted case is shown, not the case with the largest improvement.'),'This figure is regenerated from the fresh v0.3.0 saved predictions. Compare manual and agent-selected forecasts on exactly the same case. The fixed error scale helps show differences without changing the colors between rows. The aggregate score includes all 199 accepted final windows.','','RECORDED REHEARSAL')
-_native_sources=json.loads((ROOT/'data/evaltables-native.json').read_text()) if (ROOT/'data/evaltables-native.json').exists() else {}
+_native_sources=json.loads((ROOT/'data/evaltables-native.json').read_text(encoding='utf-8')) if (ROOT/'data/evaltables-native.json').exists() else {}
 _goes_link=('<a href="'+_native_sources['goes_url']+'">Compare these forecasts in EvalTables ↗</a>') if _native_sources.get('goes_url') else ''
 add('recorded-goes','The GOES model performed worse than persistence',pic('v030-goes-final.png','Observed GOES flux, persistence forecast, and selected model prediction on reserved dates','Final log-flux MAE: selected model 2.469; persistence 0.193. 2,694 accepted windows.') + note('Compare the forecast with its loss curve. '+_goes_link),'These are the fresh saved final GOES predictions. The selected sixty-step neural model misses badly, while persistence follows the observed flux much more closely. The later repaired recipe changes scaling, residual initialization, loss, and training budget together. Its separately recorded three-seed test follows; this historical failure remains unchanged.','','RECORDED REHEARSAL')
 add('qualified-goes','The measurement repair passed its three-seed check',pic('goes-seeds-deck.png','GOES persistence MAE is 0.192706; the repaired recipe scores 0.162878, 0.163880 and 0.163760 for seeds 17, 29 and 43','Recorded qualification: selected on validation dates, then evaluated with frozen weights on known final dates.') + note('<a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md">All configurations, seeds, sources, and reproduction instructions ↗</a>'),'The residual MLP at twelve hundred updates was selected using the mean validation score across seeds seventeen, twenty-nine, and forty-three. Its final mean error is 0.163506, fifteen point one five percent below persistence. All three repetitions improve. These are the same known final dates and overlapping windows; this is a teaching retest, not another independent solar benchmark. There were no new agent calls. The notebook runs this recipe only when the learner clicks Train the worked GOES repair.','','RECORDED QUALIFICATION')
@@ -294,10 +294,10 @@ for i,s in enumerate(slides):
     back=('<div class="source-link">'+ ' · '.join(f'<a href="{BASE}{indices[x["key"]]}">Return to {x["title"]} →</a>' for x in returns)+'</div>') if returns else ''
     body=f'<div class="kicker">{s["time"]}'+(' · YOUR TURN' if s['kind']=='exercise' else '')+f'</div>\n\n{answer}# {s["title"]}\n\n{s["body"]}\n{back}\n\n<!--\n{s["notes"]}\nSource notes and recorded evidence: notes/sources.md.\n-->\n'
     parts.append(fm+body)
-(ROOT/'slides.md').write_text(front+''.join(parts))
-(ROOT/'notes/slide-map.json').write_text(json.dumps({'session_minutes':360,'main_slides':main_count,'total_slides':len(slides),'slides':[{'number':i+1,**s} for i,s in enumerate(slides)]},indent=2))
-(ROOT/'notes/facilitator-notes.md').write_text('# Solar forecasting workshop presenter notes\n\n'+ '\n\n'.join(f'## {i+1}. {s["title"]}\n\n{s["time"]}\n\n{s["notes"]}' for i,s in enumerate(slides)))
+(ROOT/'slides.md').write_text(front+''.join(parts), encoding='utf-8')
+(ROOT/'notes/slide-map.json').write_text(json.dumps({'session_minutes':360,'main_slides':main_count,'total_slides':len(slides),'slides':[{'number':i+1,**s} for i,s in enumerate(slides)]},indent=2), encoding='utf-8')
+(ROOT/'notes/facilitator-notes.md').write_text('# Solar forecasting workshop presenter notes\n\n'+ '\n\n'.join(f'## {i+1}. {s["title"]}\n\n{s["time"]}\n\n{s["notes"]}' for i,s in enumerate(slides)), encoding='utf-8')
 readme=ROOT/'README.md'
 if readme.exists():
-    readme.write_text(re.sub(r'The deck has \d+ main frames and \d+ optional', f'The deck has {main_count} main frames and {len(slides)-main_count} optional', readme.read_text()))
+    readme.write_text(re.sub(r'The deck has \d+ main frames and \d+ optional', f'The deck has {main_count} main frames and {len(slides)-main_count} optional', readme.read_text(encoding='utf-8')), encoding='utf-8')
 print(f'{main_count} main slides, {len(slides)-main_count} reference/answer slides, {len(slides)} total')

@@ -18,7 +18,7 @@ DECKS = {
         "title": row["authoring"]["deck"]["title"],
         "filename": row["authoring"]["deck"]["file_stem"],
     }
-    for row in json.loads(MANIFEST.read_text())["templates"]
+    for row in json.loads(MANIFEST.read_text(encoding='utf-8'))["templates"]
     if row.get("authoring", {}).get("deck")
 }
 
@@ -59,7 +59,7 @@ def source_archive(path, deck, slug):
             bundle.write(ROOT / "scripts" / name, Path("scripts") / name)
         for name in ("package.json", "package-lock.json", "scripts/deck.mjs", "aria.css"):
             bundle.write(ROOT / "decks" / name, Path("decks") / name)
-        manifest = json.loads(MANIFEST.read_text())
+        manifest = json.loads(MANIFEST.read_text(encoding='utf-8'))
         manifest["templates"] = [
             row for row in manifest["templates"]
             if row.get("authoring", {}).get("deck", {}).get("directory") == slug
@@ -109,11 +109,11 @@ def write_routes(directory, layout, base):
                 '<!doctype html><html lang="en"><meta charset="utf-8">'
                 f'<meta http-equiv="refresh" content="0;url={html.escape(target, quote=True)}">'
                 f'<title>{html.escape(slide["title"])}</title>'
-                f'<a href="{html.escape(target, quote=True)}">Open this slide</a></html>'
+                f'<a href="{html.escape(target, quote=True)}">Open this slide</a></html>', encoding='utf-8'
             )
             aliases.append(route)
     shutil.copyfile(directory / "index.html", directory / "404.html")
-    (directory / "static-routes.json").write_text(json.dumps({"routes": routes + aliases}, indent=2) + "\n")
+    (directory / "static-routes.json").write_text(json.dumps({"routes": routes + aliases}, indent=2) + "\n", encoding='utf-8')
 
 
 def install_toolchain():
@@ -142,7 +142,7 @@ def build(slug, output, *, install=False, pdf=False, validate=False):
     try:
         run([sys.executable, str(generator)], deck, {**os.environ, "DECK_BASE": base})
         run(["node", str(cli), "build", "--base", base, "--out", str(site)], deck)
-        layout = json.loads((deck / "notes/slide-map.json").read_text())
+        layout = json.loads((deck / "notes/slide-map.json").read_text(encoding='utf-8'))
         write_routes(site, layout, base)
     finally:
         run([sys.executable, str(generator)], deck, {**os.environ, "DECK_BASE": ""})
@@ -153,7 +153,7 @@ def build(slug, output, *, install=False, pdf=False, validate=False):
         f"{settings['title']}\n\nRun python3 serve.py (Windows: py serve.py).\n"
         "Open the local address printed by the server. Presenter notes: /presenter/1.\n"
         "Arrow keys change slides. Worked-answer links return to the exercise.\n\n"
-        "Opening this deck sends no inference or training requests. Forge links use your account.\n"
+        "Opening this deck sends no inference or training requests. Forge links use your account.\n", encoding='utf-8'
     )
     if validate:
         run(["node", str(ROOT / "scripts/validate_deck.mjs"), str(deck), str(site), base], ROOT)
@@ -236,7 +236,7 @@ def main():
         "margin:4rem auto;padding:0 1.5rem;color:#163c43;background:#faf7ee}li{margin:1rem 0}"
         "a{color:#146965}</style><h1>Forge Workshop Kit</h1>"
         f"<p>Choose the deck for your notebook.</p><ul>{links}</ul>"
-        '<p><a href="https://github.com/ash0ts/forge-workshop-kit">Notebooks and setup instructions</a></p></html>'
+        '<p><a href="https://github.com/ash0ts/forge-workshop-kit">Notebooks and setup instructions</a></p></html>', encoding='utf-8'
     )
     (output / "site/.nojekyll").touch()
     files = [
@@ -252,7 +252,7 @@ def main():
         json.dumps(
             {"built_decks": rows, "available_decks": available, "downloads": files}, indent=2
         )
-        + "\n"
+        + "\n", encoding='utf-8'
     )
     print(f"Built {len(rows)} decks in {output}. Nothing was published.")
 

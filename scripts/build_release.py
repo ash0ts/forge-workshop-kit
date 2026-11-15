@@ -60,7 +60,7 @@ def check_distribution(path):
 def build_aria_bundle(output, version, *, root=ROOT):
     """Package the twelve completed investigations for use without Forge access."""
     assets = root / "src/forge_workshop_kit/assets/aria"
-    workshop_rows = json.loads((root / "src/forge_workshop_kit/workshops.json").read_text())["templates"]
+    workshop_rows = json.loads((root / "src/forge_workshop_kit/workshops.json").read_text(encoding="utf-8"))["templates"]
     recordings = []
 
     def required_file(folder, name):
@@ -72,7 +72,7 @@ def build_aria_bundle(output, version, *, root=ROOT):
     for workshop in workshop_rows:
         for stop in workshop.get("aria_investigations", []):
             source = required_file(assets.parent, stop["recorded_example"])
-            record = json.loads(source.read_text())
+            record = json.loads(source.read_text(encoding="utf-8"))
             if (record.get("status") != "recorded" or record.get("stop_id") != stop["id"]
                     or record.get("workshop") not in (workshop["slug"], workshop["id"])
                     or not all(record.get(key) for key in ("prompt", "response", "records", "citation_check"))):

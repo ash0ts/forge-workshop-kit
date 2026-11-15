@@ -54,6 +54,29 @@ def test_standalone_recording_archive_is_complete_and_reproducible(tmp_path):
     assert build_aria_bundle(tmp_path / 'release', '0.10.0', root=root)['sha256'] == result['sha256']
 
 
+def test_recording_archive_preserves_unicode_with_windows_default_encoding(tmp_path, monkeypatch):
+    root = tmp_path / 'checkout'
+    folder = recording_checkout(root)
+    path = folder / 'investigate.json'
+    record = json.loads(path.read_text(encoding='utf-8'))
+    record['response'] = 'The passenger’s return is unchanged. 検証済み'
+    path.write_text(json.dumps(record, ensure_ascii=False), encoding='utf-8')
+    expected = build_aria_bundle(tmp_path / 'expected', '0.10.0', root=root)
+
+    original_open = Path.open
+    def windows_text_open(path, mode='r', buffering=-1, encoding=None, errors=None, newline=None):
+        if 'b' not in mode and encoding in (None, 'locale'):
+            encoding = 'cp1252'
+        return original_open(path, mode, buffering, encoding, errors, newline)
+    monkeypatch.setattr(Path, 'open', windows_text_open)
+
+    actual = build_aria_bundle(tmp_path / 'actual', '0.10.0', root=root)
+    assert actual['sha256'] == expected['sha256']
+    with zipfile.ZipFile(tmp_path / 'actual' / actual['file']) as bundle:
+        saved = json.loads(bundle.read('aria/example/investigate.json'))
+        assert saved['response'] == record['response']
+
+
 @pytest.mark.parametrize('problem', ['response', 'capture', 'path', 'status'])
 def test_incomplete_or_escaping_recordings_are_not_packaged(tmp_path, problem):
     root = tmp_path / 'checkout'

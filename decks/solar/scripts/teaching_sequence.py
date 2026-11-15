@@ -32,7 +32,7 @@ def expand(slides, root):
     def code(text,highlight='all'):
         return '```python {'+highlight+'}\n'+text+'\n```\n\n'
     def note(text): return '<div class="bottom-note">'+text+'</div>'
-    window=json.loads((root/'data/teaching-window.json').read_text())
+    window=json.loads((root/'data/teaching-window.json').read_text(encoding='utf-8'))
 
     # One actual object links the opening, transformations, baseline and metric.
     find('goes-window').update(body=graphic('window'), clicks=2,

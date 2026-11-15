@@ -8,7 +8,7 @@ slides=[]
 
 def eval_capture(detail=False, items=()):
     source_path=ROOT/'data/evaltables-native.json'
-    source=json.loads(source_path.read_text()) if source_path.exists() else {}
+    source=json.loads(source_path.read_text(encoding='utf-8')) if source_path.exists() else {}
     image='evaltables-native-detail.png' if detail else 'evaltables-native.png'
     url=source.get('detail_url' if detail else 'url',source.get('url',''))
     rendered='<img src="/images/'+image+'" alt="Native Forge Evaluation Tables Preview showing saved workshop results">'
@@ -83,8 +83,8 @@ if base=='//':base='/'
 for index,item in enumerate(slides):
     if item['name']:text=text.replace('href="/'+item['name']+'"', 'href="/'+str(index+1)+'"')
 text=re.sub(r'href="/(\d+)"', lambda match:'href="'+base+match.group(1)+'"', text)
-(ROOT/'slides.md').write_text(text)
-(ROOT/'notes/slide-map.json').write_text(json.dumps({'session_minutes':330,'main_slides':sum(s['start_minute'] is not None for s in slides),'total_slides':len(slides),'slides':[{'number':i+1,**s} for i,s in enumerate(slides)]},indent=2)+'\n')
-(ROOT/'notes/presenter.md').write_text('\n\n'.join(f'## {i+1}. {s["title"].replace("<br>"," ")}\n\n{s["time"]}\n\n{s["notes"]}' for i,s in enumerate(slides)))
-(ROOT/'notes/slide-index.json').write_text(json.dumps([{'slide':i+1,'title':s['title'],'time':s['time'],'name':s['name']} for i,s in enumerate(slides)],indent=2)+'\n')
+(ROOT/'slides.md').write_text(text, encoding='utf-8')
+(ROOT/'notes/slide-map.json').write_text(json.dumps({'session_minutes':330,'main_slides':sum(s['start_minute'] is not None for s in slides),'total_slides':len(slides),'slides':[{'number':i+1,**s} for i,s in enumerate(slides)]},indent=2)+'\n', encoding='utf-8')
+(ROOT/'notes/presenter.md').write_text('\n\n'.join(f'## {i+1}. {s["title"].replace("<br>"," ")}\n\n{s["time"]}\n\n{s["notes"]}' for i,s in enumerate(slides)), encoding='utf-8')
+(ROOT/'notes/slide-index.json').write_text(json.dumps([{'slide':i+1,'title':s['title'],'time':s['time'],'name':s['name']} for i,s in enumerate(slides)],indent=2)+'\n', encoding='utf-8')
 print(f'Generated {len(slides)} routing slides.')

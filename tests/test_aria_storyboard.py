@@ -12,7 +12,7 @@ spec.loader.exec_module(storyboard)
 
 
 def rows_for(deck):
-    data=json.loads((ROOT/'decks'/deck/'notes/slide-map.json').read_text())
+    data=json.loads((ROOT/'decks'/deck/'notes/slide-map.json').read_text(encoding='utf-8'))
     rows=[]
     for row in data['slides']:
         # The maps omit authored body in some decks. Enrichment needs no execution.
@@ -81,3 +81,23 @@ def test_capture_and_offline_links_follow_the_deck_deployment_prefix(monkeypatch
     pack={'status':'recorded','response':'Actual answer','transcript_paths':{'html':'investigate-transcript.html'}}
     response=storyboard._frame('pending','investigate',1,pack,[])
     assert 'href="/forge-workshop-kit/pending/aria/investigate/investigate-transcript.html"' in response
+
+
+@pytest.mark.parametrize('deck',storyboard.SLUGS)
+def test_recorded_frames_do_not_depend_on_windows_default_encoding(deck,monkeypatch):
+    expected={}
+    for stop in ('investigate','conclusion'):
+        pack,_=storyboard._pack(deck,stop)
+        expected[stop]=[storyboard._frame(deck,stop,phase,pack,[]) for phase in range(3)]
+
+    original_open=Path.open
+    def windows_text_open(path,mode='r',buffering=-1,encoding=None,errors=None,newline=None):
+        if 'b' not in mode and encoding in (None,'locale'):
+            encoding='cp1252'
+        return original_open(path,mode,buffering,encoding,errors,newline)
+    monkeypatch.setattr(Path,'open',windows_text_open)
+
+    for stop in ('investigate','conclusion'):
+        pack,_=storyboard._pack(deck,stop)
+        actual=[storyboard._frame(deck,stop,phase,pack,[]) for phase in range(3)]
+        assert actual==expected[stop]
