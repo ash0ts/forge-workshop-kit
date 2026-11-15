@@ -38,7 +38,7 @@
       ]
     },
     {
-      "slide": 35,
+      "slide": 44,
       "key": "tracking-turn",
       "notebook_step": "Track and search",
       "functions": [
@@ -56,11 +56,12 @@
       "notebook_step": "Track and search",
       "functions": [],
       "controls": [
-        "Run six tracked configurations"
+        "Run one tracked Sweep trial",
+        "Run the remaining Sweep trials"
       ]
     },
     {
-      "slide": 51,
+      "slide": 50,
       "key": "goes-repair-turn",
       "notebook_step": "Track and search",
       "functions": [
@@ -73,7 +74,7 @@
       ]
     },
     {
-      "slide": 65,
+      "slide": 64,
       "key": "image-turn",
       "notebook_step": "Solar images",
       "functions": [
@@ -86,7 +87,7 @@
       ]
     },
     {
-      "slide": 75,
+      "slide": 74,
       "key": "evidence-turn",
       "notebook_step": "Research agent",
       "functions": [
@@ -97,7 +98,7 @@
       ]
     },
     {
-      "slide": 89,
+      "slide": 88,
       "key": "round1-turn",
       "notebook_step": "Research agent",
       "functions": [
@@ -106,7 +107,7 @@
       "controls": []
     },
     {
-      "slide": 96,
+      "slide": 95,
       "key": "final-turn",
       "notebook_step": "Final evaluation",
       "functions": [],
@@ -115,7 +116,7 @@
       ]
     },
     {
-      "slide": 106,
+      "slide": 105,
       "key": "conclusion-turn",
       "notebook_step": "Final evaluation",
       "functions": [],

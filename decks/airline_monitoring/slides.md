@@ -141,9 +141,9 @@ name: booking
 
 <div class="kicker">0:25 · Airline service monitoring</div>
 
-# Check access and inspect the starting itinerary
+# Try the replacement API, then connect your project
 
-<p class="where">Notebook → Inspect the booking</p><div class="task-target">Edit your expected booking explanation</div><ol><li>Open your own copy and confirm the project shown in setup.</li><li>Read the reservation and identify the outbound segment range.</li><li>Save the flights to change and the flights that must remain.</li></ol><div class="done"><b>Run:</b> Connect and restore my work → Save my expected booking<br><b>Finished when:</b> You can name the changed range and the flight that must survive.</div>
+<p class="where">Notebook → Inspect the booking</p><div class="task-target">Edit your expected booking explanation</div><ol><li>The notebook starts with Sofia: New York → Phoenix → Las Vegas, reservation 4BMN53. Replace HAT201 with HAT002; keep HAT173.</li><li>Try the local booking change. Compare approval and the complete trip; this controlled API drill bypasses confirmation.</li><li>Connect your project, then save what should change and what must remain.</li></ol><div class="done"><b>Run:</b> Try the booking change locally → Connect and restore my work → Save my expected booking<br><b>Finished when:</b> You can name the changed range and the flight that must survive.</div>
 
 <!--
 Give participants time to make the change themselves. Have one person point to the input, the changed line, and the observed output. Opening or checking a function sends no model request. Follow the named run control only after the free check passes.
@@ -211,9 +211,9 @@ name: discovery
 
 <div class="kicker">0:39 · Airline service monitoring</div>
 
-# Instrument the agent before sending its first batch
+# Instrument the agent and inspect one request
 
-<p class="where">Notebook → Run discovery traffic</p><div class="task-target">Edit my_model_span and my_tool_span</div><ol><li>Add version and traffic-batch attributes to the scopes.</li><li>Keep tool arguments, result, error, and actual timing.</li><li>Run the discovery batch, then follow one returned conversation link.</li></ol><div class="done"><b>Run:</b> Check my tracing code → Send my first Agent Lens trace → Run eight discovery requests<br><b>Finished when:</b> Find the same itinerary in the tool receipt and its stored Agent Lens span.</div>
+<p class="where">Notebook → Run discovery traffic</p><div class="task-target">Edit my_model_span and my_tool_span</div><ol><li>Add version and traffic-batch attributes to the scopes.</li><li>Keep tool arguments, result, error, and actual timing.</li><li>Run Sofia’s request, then find the preserved Phoenix–Las Vegas connection in its trace.</li></ol><div class="done"><b>Run:</b> Check my tracing code → Send my first Agent Lens trace → Run the first discovery request<br><b>Finished when:</b> Find the same itinerary in the tool receipt and its stored Agent Lens span.</div>
 
 <!--
 Give participants time to make the change themselves. Have one person point to the input, the changed line, and the observed output. Opening or checking a function sends no model request. Follow the named run control only after the free check passes.
@@ -231,7 +231,7 @@ clicks: 3
 <AirlineMechanism mode="loop" :reveal="$clicks + 1" />
 
 <!--
-Give everyone several minutes on one conversation. Ask them to point to the actual return flight rather than merely an exception field. If the agent was correct, record that success and continue with the labeled calibration drill for the diagnostic exercise.
+Give everyone several minutes on one conversation. For the first request, ask them to find Sofia’s PHX–LAS connection, HAT173. The earlier diagram used a separate round-trip discovery booking, 59XX6W. In either case, inspect the untouched flight rather than merely an exception field. If the agent was correct, record that success and continue with the labeled calibration drill for the diagnostic exercise.
 
 Visual sequence: Follow one chosen action through arguments, the state write, the observation, and the next request. The returned booking must be appended before the next model call. Ask participants to locate that exact observation in Agent Lens; the final reply alone cannot prove what the model received.
 -->
@@ -262,6 +262,21 @@ name: capture-recovery
 
 <!--
 Read the failed tool operation, the next model request, and the subsequent tool result. Then verify the complete booking. Capture identity and original are recorded in data/native-captures.json. This is recorded evidence, not the participant’s live result.
+-->
+
+---
+class: exercise
+name: remaining-discovery
+---
+
+<div class="kicker">0:57 · Airline service monitoring</div>
+
+# Continue with the other seven requests
+
+<p class="where">Notebook → Run discovery traffic</p><div class="task-target">Reuse the saved tracing functions</div><ol><li>Inspect the first booking and the API arguments before continuing.</li><li>Run the remaining seven cases with the saved tracing implementation.</li><li>Compare an ordinary outcome with a recovered error or unresolved request.</li></ol><div class="done"><b>Run:</b> Run the remaining seven discovery requests<br><b>Finished when:</b> Eight case identities are saved. Reopening reuses completed requests.</div>
+
+<!--
+Give participants time to make the change themselves. Have one person point to the input, the changed line, and the observed output. Opening or checking a function sends no model request. Follow the named run control only after the free check passes.
 -->
 
 ---
@@ -336,6 +351,21 @@ Give participants time to make the change themselves. Have one person point to t
 -->
 
 ---
+class: exercise
+name: review
+---
+
+<div class="kicker">1:36 · Airline service monitoring</div>
+
+# Review the booking before asking a tag to judge it
+
+<p class="where">Notebook → Review booking outcomes</p><div class="task-target">Edit your human turn review</div><ol><li>Read the selected passenger request and before/after booking together.</li><li>Label an unrequested change, no unrequested change, or insufficient evidence.</li><li>Save the exact supporting operation, reason, and expected behavior.</li></ol><div class="done"><b>Run:</b> Save my turn review<br><b>Finished when:</b> A reviewed label links to the same turn and operation. Saving it does not complete monitoring.</div>
+
+<!--
+Give participants time to make the change themselves. Have one person point to the input, the changed line, and the observed output. Opening or checking a function sends no model request. Follow the named run control only after the free check passes.
+-->
+
+---
 name: break-one
 ---
 
@@ -391,7 +421,7 @@ name: counterexamples
 <table class="monitor-table "><thead><tr><th>Example</th><th>What the criterion must account for</th></tr></thead><tbody><tr><td>A one-way booking</td><td>There was never a return flight to preserve.</td></tr><tr><td>An explicitly approved full-itinerary change</td><td>All original flights may legitimately be replaced.</td></tr><tr><td>A failed write followed by successful recovery</td><td>Judge the resolved state and the turn’s scope.</td></tr><tr><td>A request waiting for confirmation</td><td>No write has been approved yet.</td></tr><tr><td>Missing original booking</td><td>Insufficient evidence is not a negative finding.</td></tr></tbody></table>
 
 <!--
-Use actual reviewed turns when available. The calibration pack is a labeled teaching fallback, not a claim about the learner’s live failure rate. Keep all disagreements and their reasons.
+Human review comes before this optional calibration pack. Create six controlled calibration traces only after saving a booking review. Use actual reviewed turns when available. The calibration pack is a labeled teaching fallback, not a claim about the learner’s live failure rate. Keep all disagreements and their reasons.
 -->
 
 ---
@@ -586,7 +616,7 @@ name: monitor
 
 # Calculate monitor quality and send new traffic
 
-<a class="answer-link" href="/69">Worked answer ↗</a>
+<a class="answer-link" href="/71">Worked answer ↗</a>
 
 <p class="where">Notebook → Check monitoring on new requests</p><div class="task-target">Edit my_monitor</div><ol><li>Compute precision and recall using reviewed, processed turns.</li><li>Compute coverage over eligible turns, retaining missing judgments.</li><li>Enable the saved tag for this workspace’s agent and run the monitor-check batch.</li></ol><div class="done"><b>Run:</b> Check my monitoring calculations → Run four new requests → Read tag results → Calculate agreement with my reviews<br><b>Finished when:</b> You can explain every denominator and name any turns still awaiting judgment.</div>
 
@@ -665,7 +695,7 @@ name: curate
 
 # Build a regression case from the reviewed turn
 
-<a class="answer-link" href="/70">Worked answer ↗</a>
+<a class="answer-link" href="/72">Worked answer ↗</a>
 
 <p class="where">Notebook → Curate regression cases</p><div class="task-target">Edit case_from_reviewed_turn</div><ol><li>Copy the initial booking, request, policy, and approved scope.</li><li>Preserve the reviewer’s decision and the exact source identities.</li><li>Add an unflagged control alongside the reported failure.</li></ol><div class="done"><b>Run:</b> Check my regression-case builder → Save reviewed regression cases<br><b>Finished when:</b> Rerunning the case starts from the original booking, not its mutated state.</div>
 
@@ -710,7 +740,7 @@ name: state-check
 
 # Add the booking check the old evaluation missed
 
-<a class="answer-link" href="/71">Worked answer ↗</a>
+<a class="answer-link" href="/73">Worked answer ↗</a>
 
 <p class="where">Notebook → Curate regression cases</p><div class="task-target">Edit my_state_scorer and my_judge_validation</div><ol><li>Implement preservation and confirmation checks; inspect the independent task-success score beside them.</li><li>Try the correct booking, missing return, and unconfirmed-write fixtures.</li><li>Keep the explanation judgment separate from those state checks.</li></ol><div class="done"><b>Run:</b> Check my booking scorer → Check my judge-response validator → Save my development evaluation code<br><b>Finished when:</b> Your scorer rejects the missing return and an unapproved write.</div>
 
@@ -810,7 +840,7 @@ name: repair
 
 # Test the repair on matched development bookings
 
-<a class="answer-link" href="/72">Worked answer ↗</a>
+<a class="answer-link" href="/74">Worked answer ↗</a>
 
 <p class="where">Notebook → Repair itinerary handling</p><div class="task-target">Edit my_itinerary_builder</div><ol><li>Implement the range replacement and validate its bounds.</li><li>Test a one-way case, connecting itinerary, and full replacement.</li><li>Run the curated regression cases, then compare both versions on the development bookings.</li></ol><div class="done"><b>Run:</b> Check my itinerary repair → Run my curated regression cases → Compare on four development bookings<br><b>Finished when:</b> Each pair starts from the same state and records the exact builder that ran.</div>
 
@@ -855,7 +885,7 @@ name: judge-execution
 
 # Judge one saved explanation against its evidence
 
-<a class="answer-link" href="/68">Worked answer ↗</a>
+<a class="answer-link" href="/70">Worked answer ↗</a>
 
 <p class="where">Notebook → Build regression cases</p><div class="task-target">Edit my_judge_validation and the explanation rubric</div><ol><li>Choose a saved development execution.</li><li>Read the booking result and the final response together.</li><li>Run one explicit judgment and inspect its cited event IDs.</li></ol><div class="done"><b>Run:</b> Judge this saved explanation<br><b>Finished when:</b> The response validates, and its cited events support or contradict its reason.</div>
 
@@ -1075,7 +1105,7 @@ def my_judge_validation(answer):
         raise ValueError("Cite event identities as a list of strings")
     return answer
 ```
-<p class="source-link"><a href="/54">Return to the explanation-judge exercise ↗</a></p>
+<p class="source-link"><a href="/56">Return to the explanation-judge exercise ↗</a></p>
 
 <!--
 This is the notebook’s actual validator. It checks shape and types, not the truth of the judgment.
@@ -1104,7 +1134,7 @@ def my_monitor(rows):
         "recall": tp / (tp + fn) if tp + fn else None,
         "unavailable": len(rows) - len(completed)}
 ```
-<p class="source-link"><a href="/37">Return to monitoring calculations ↗</a></p>
+<p class="source-link"><a href="/39">Return to monitoring calculations ↗</a></p>
 
 <!--
 This is the notebook’s actual my_monitor implementation. Review unflagged cases too; an alerts-only sample cannot establish recall across traffic.
@@ -1119,7 +1149,7 @@ name: answer-case
 
 # Worked answer: preserve the original case inputs
 
-<div class="bundle-list"><div>Copy the initial booking<small>A deep copy prevents later mutations changing the test</small></div><div>Keep request and policy<small>Preserve the rules used by this execution</small></div><div>Attach the reviewed expectation<small>Include scope, result, reviewer, and rationale</small></div><div>Retain native identities<small>Link back to the conversation and supporting span</small></div></div><p class="source-link"><a href="/42">Return to the curation exercise ↗</a></p>
+<div class="bundle-list"><div>Copy the initial booking<small>A deep copy prevents later mutations changing the test</small></div><div>Keep request and policy<small>Preserve the rules used by this execution</small></div><div>Attach the reviewed expectation<small>Include scope, result, reviewer, and rationale</small></div><div>Retain native identities<small>Link back to the conversation and supporting span</small></div></div><p class="source-link"><a href="/44">Return to the curation exercise ↗</a></p>
 
 <!--
 Use the actual case_from_reviewed_turn signature in the notebook. Do not synthesize a nonexistent native turn or treat a listing of spans as proof that a specific diagnostic was read.
@@ -1140,7 +1170,7 @@ untouched_prefix = actual[:start] == original[:start]
 untouched_suffix = actual[start + len(replacement):] == original[stop:]
 booking_correct = requested_change and untouched_prefix and untouched_suffix
 ```
-<p>Compare flight identities and relevant fields, not only list length. Keep confirmation and policy checks alongside these state checks.</p><p class="source-link"><a href="/45">Return to the state scorer exercise ↗</a></p>
+<p>Compare flight identities and relevant fields, not only list length. Keep confirmation and policy checks alongside these state checks.</p><p class="source-link"><a href="/47">Return to the state scorer exercise ↗</a></p>
 
 <!--
 Illustrative list-based scorer excerpt. The actual evaluator must use the recorded approved scope and final state, not values inferred from the agent’s final response.
@@ -1168,7 +1198,7 @@ def my_itinerary_builder(
         + current_flights[replace_stop:]
     )
 ```
-<p class="source-link"><a href="/51">Return to the repair exercise ↗</a></p>
+<p class="source-link"><a href="/53">Return to the repair exercise ↗</a></p>
 
 <!--
 This is the notebook’s actual itinerary builder. The deep copy prevents the result from mutating the original booking. The agent must still select the correct range and obtain confirmation.

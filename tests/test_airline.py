@@ -289,3 +289,64 @@ def test_reserved_inputs_do_not_expose_passenger_oracle_or_final_grades(tmp_path
         assert all(key not in serialized for key in ('allows_write', 'max_extra_dollars',
             'source_task_id', 'task_success', 'request_scope', 'expected_behavior'))
         assert len(messages) == 2 and messages[0]['role'] == 'system'
+
+
+def test_free_opening_preserves_api_semantics_without_provider(monkeypatch):
+    from forge_workshop_kit import airline_teaching
+    monkeypatch.setattr(airline.Provider, 'complete', lambda *a, **k: pytest.fail('Free opening called a model'))
+    omitted = airline_teaching.opening_booking(False)
+    preserved = airline_teaching.opening_booking(True)
+    assert omitted['case_id'] == preserved['case_id'] == 'airline-discovery-01'
+    assert omitted['api_saved'] and preserved['api_saved']
+    assert not omitted['passenger_approved'] and preserved['passenger_approved']
+    assert omitted['before'] == preserved['before']
+    assert len(omitted['after']) < len(preserved['after'])
+
+
+def test_split_discovery_reuses_eight_identities_and_frozen_hooks(tmp_path, monkeypatch):
+    from forge_workshop_kit import airline_teaching
+    session = WorkshopSession('user/project', 'airline-monitoring', state_dir=tmp_path)
+    # Provider is a local deterministic test double. An incomplete answer is a saved outcome.
+    requests = scripted_provider(monkeypatch, [{'action': 'finish', 'arguments': {'summary': 'No booking changed.', 'outcome': 'unresolved'}}] * 8)
+    monkeypatch.setattr(airline, 'export_trace', lambda *a, **k: {'verified': False})
+    source = airline_teaching.ANSWERS['instrumentation']
+    with pytest.raises(ValueError, match='first discovery'):
+        airline_teaching.run_discovery(session, source)
+    first = airline_teaching.run_discovery(session, source, first_only=True)
+    assert len(first) == len(requests) == 1
+    remainder = airline_teaching.run_discovery(session, source + '\n# Later draft; not installed mid-batch.\n')
+    assert len(remainder) == 7 and len(requests) == 8
+    before = {r['id'] for r in session.completed()}
+    airline_teaching.run_discovery(session, source + '\n# Another draft\n', first_only=True)
+    airline_teaching.run_discovery(session, source)
+    assert len(requests) == 8 and {r['id'] for r in session.completed()} == before
+    hooks = airline_teaching.compile_code(source)
+    # The former one-button path must also reuse exactly those records.
+    airline.run_batch(session, 'discovery', tool_writer=hooks['my_tool_span'], model_writer=hooks['my_model_span'])
+    assert len(requests) == 8 and {r['id'] for r in session.completed()} == before
+    assert session.read()['airline_discovery_tracing']['source'] == source
+    # A pre-split saved notebook has no batch-level hook record. Recover actual hooks.
+    with session.transaction() as state:
+        state.pop('airline_discovery_tracing')
+    airline_teaching.run_discovery(session, source + '\n# New draft after legacy restore\n')
+    assert len(requests) == 8 and {r['id'] for r in session.completed()} == before
+
+
+def test_review_checkpoint_does_not_complete_monitoring(tmp_path):
+    from forge_workshop_kit import airline_teaching
+    session = WorkshopSession('user/project', 'airline-monitoring', state_dir=tmp_path)
+    # Older notebook saves incorrectly marked monitoring after a single review.
+    with session.transaction() as state:
+        state['progress']['completed'] = ['monitor']
+    with session.stage('airline/review/example/turn', config={}) as stage:
+        stage.record({'decision': 'accepted', 'human_label': False})
+    assert 'review' in airline_teaching.completed_steps(session)
+    assert 'monitor' not in airline_teaching.completed_steps(session)
+    for case in airline.load_cases('monitoring'):
+        with session.stage('airline/baseline/' + case['id'], config={}) as stage:
+            stage.record({'split': 'monitoring', 'label': 'baseline', 'case_id': case['id']})
+    assert not airline_teaching.monitor_complete(session)
+    with session.stage('airline/monitor-agreement', config={}) as stage:
+        stage.record({'rows': [{'prediction': None, 'human_label': False, 'status': 'unavailable'}]})
+    assert airline_teaching.monitor_complete(session)
+    assert 'monitor' in airline_teaching.completed_steps(session)

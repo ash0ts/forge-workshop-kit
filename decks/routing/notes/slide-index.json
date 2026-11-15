@@ -19,402 +19,414 @@
   },
   {
     "slide": 4,
-    "title": "The dataset contains 77 banking intents",
-    "time": "0:07",
-    "name": "dataset"
+    "title": "Read a request before revealing its label",
+    "time": "0:06",
+    "name": "read-request"
   },
   {
     "slide": 5,
-    "title": "Give each partition one job",
-    "time": "0:10",
-    "name": "partitions"
+    "title": "The dataset contains 77 banking intents",
+    "time": "0:09",
+    "name": "dataset"
   },
   {
     "slide": 6,
-    "title": "Open your copy and add your first trace",
-    "time": "0:15",
-    "name": "connect"
+    "title": "Give each partition one job",
+    "time": "0:12",
+    "name": "partitions"
   },
   {
     "slide": 7,
-    "title": "The span should explain the operation",
-    "time": "0:22",
-    "name": "trace"
+    "title": "Open your copy and add your first trace",
+    "time": "0:16",
+    "name": "connect"
   },
   {
     "slide": 8,
-    "title": "Read a request before revealing its label",
-    "time": "0:26",
-    "name": "read-request"
+    "title": "The span should explain the operation",
+    "time": "0:23",
+    "name": "trace"
   },
   {
     "slide": 9,
     "title": "Start with a word-based classifier",
-    "time": "0:36",
+    "time": "0:30",
     "name": "words"
   },
   {
     "slide": 10,
     "title": "Measure the words and phrases in one request",
-    "time": "0:39",
+    "time": "0:35",
     "name": "word-vector"
   },
   {
     "slide": 11,
-    "title": "Then change the representation",
-    "time": "0:46",
-    "name": "embeddings"
-  },
-  {
-    "slide": 12,
-    "title": "Keep one vector for each request",
-    "time": "0:49",
-    "name": "sentence-vector"
-  },
-  {
-    "slide": 13,
-    "title": "Construct the estimator before fitting it",
-    "time": "0:52",
-    "name": "construct-head"
-  },
-  {
-    "slide": 14,
-    "title": "Fit the head on the labeled training rows",
-    "time": "0:54",
-    "name": "fit-head"
-  },
-  {
-    "slide": 15,
     "title": "Implement the classifier head",
-    "time": "0:57",
+    "time": "0:40",
     "name": "classifier-exercise"
   },
   {
+    "slide": 12,
+    "title": "Read one prediction before comparing models",
+    "time": "0:51",
+    "name": "baseline-observation"
+  },
+  {
+    "slide": 13,
+    "title": "Then change the representation",
+    "time": "0:56",
+    "name": "embeddings"
+  },
+  {
+    "slide": 14,
+    "title": "Keep one vector for each request",
+    "time": "0:59",
+    "name": "sentence-vector"
+  },
+  {
+    "slide": 15,
+    "title": "Construct the estimator before fitting it",
+    "time": "1:02",
+    "name": "construct-head"
+  },
+  {
     "slide": 16,
-    "title": "A fitted classifier returns 77 probabilities",
-    "time": "1:08",
-    "name": "predict-probabilities"
+    "title": "Fit the head on the labeled training rows",
+    "time": "1:04",
+    "name": "fit-head"
   },
   {
     "slide": 17,
-    "title": "Macro-F1 gives each intent equal weight",
-    "time": "1:12",
-    "name": "macro-f1"
+    "title": "A fitted classifier returns 77 probabilities",
+    "time": "1:07",
+    "name": "predict-probabilities"
   },
   {
     "slide": 18,
-    "title": "Count the errors for one intent",
-    "time": "1:15",
-    "name": "intent-counts"
+    "title": "Test the sentence-feature alternative",
+    "time": "1:10",
+    "name": "alternative-exercise"
   },
   {
     "slide": 19,
-    "title": "Calculate F1, then average across intents",
-    "time": "1:18",
-    "name": "intent-average"
+    "title": "Macro-F1 gives each intent equal weight",
+    "time": "1:16",
+    "name": "macro-f1"
   },
   {
     "slide": 20,
-    "title": "The worked comparison reduced routing mistakes",
-    "time": "1:22",
-    "name": "recorded-gain"
+    "title": "Count the errors for one intent",
+    "time": "1:18",
+    "name": "intent-counts"
   },
   {
     "slide": 21,
+    "title": "Calculate F1, then average across intents",
+    "time": "1:21",
+    "name": "intent-average"
+  },
+  {
+    "slide": 22,
+    "title": "The worked comparison reduced routing mistakes",
+    "time": "1:26",
+    "name": "recorded-gain"
+  },
+  {
+    "slide": 23,
     "title": "A router can also ask a person",
     "time": "1:35",
     "name": "deferral"
   },
   {
-    "slide": 22,
+    "slide": 24,
     "title": "Move the threshold without retraining",
     "time": "1:38",
     "name": "threshold-policy"
   },
   {
-    "slide": 23,
+    "slide": 25,
     "title": "Choose labeling candidates by their top-two margin",
     "time": "1:42",
     "name": "review-margin"
   },
   {
-    "slide": 24,
+    "slide": 26,
     "title": "Write the rule that sends a request to review",
     "time": "1:45",
     "name": "policy-exercise"
   },
   {
-    "slide": 25,
+    "slide": 27,
     "title": "Read the disagreement before declaring failure",
     "time": "1:52",
     "name": "review-case"
   },
   {
-    "slide": 26,
+    "slide": 28,
     "title": "Save labels someone can trace back to a decision",
     "time": "2:00",
     "name": "review-exercise"
   },
   {
-    "slide": 27,
+    "slide": 29,
     "title": "Keep the proposal and accepted label separate",
     "time": "2:06",
     "name": "review-provenance"
   },
   {
-    "slide": 28,
+    "slide": 30,
     "title": "Take ten minutes. Return at 2:20.",
     "time": "2:10",
     "name": "break-one"
   },
   {
-    "slide": 29,
+    "slide": 31,
     "title": "A prompted model returns a typed decision",
     "time": "2:20",
     "name": "typed-route"
   },
   {
-    "slide": 30,
+    "slide": 32,
     "title": "The judge reviews a route in a separate call",
     "time": "2:25",
     "name": "two-model-tasks"
   },
   {
-    "slide": 31,
+    "slide": 33,
     "title": "Inspect eight actual model routes",
     "time": "2:31",
     "name": "prompted-exercise"
   },
   {
-    "slide": 32,
+    "slide": 34,
     "title": "Check the model-based judge against your reviews",
     "time": "2:40",
     "name": "judge-purpose"
   },
   {
-    "slide": 33,
+    "slide": 35,
     "title": "Keep the accepted label out of the judge prompt",
     "time": "2:44",
     "name": "judge-evidence"
   },
   {
-    "slide": 34,
+    "slide": 36,
     "title": "Implement the judge response check",
     "time": "2:50",
     "name": "validator-exercise"
   },
   {
-    "slide": 35,
+    "slide": 37,
     "title": "The judge disagreed with the dataset label",
     "time": "3:03",
     "name": "recorded-judge"
   },
   {
-    "slide": 36,
+    "slide": 38,
     "title": "Use reviewed data to run a new experiment",
     "time": "3:10",
     "name": "review-dataset"
   },
   {
-    "slide": 37,
+    "slide": 39,
     "title": "Refit the head with your accepted labels",
     "time": "3:14",
     "name": "accepted-training"
   },
   {
-    "slide": 38,
+    "slide": 40,
     "title": "Train with your accepted labels",
     "time": "3:18",
     "name": "retrain-exercise"
   },
   {
-    "slide": 39,
+    "slide": 41,
     "title": "Take ten minutes. Return at 3:40.",
     "time": "3:30",
     "name": "break-two"
   },
   {
-    "slide": 40,
+    "slide": 42,
     "title": "Freeze what the final comparison will use",
     "time": "3:40",
     "name": "freeze"
   },
   {
-    "slide": 41,
+    "slide": 43,
     "title": "Save the transformations with the weights",
     "time": "3:42",
     "name": "freeze-files"
   },
   {
-    "slide": 42,
+    "slide": 44,
     "title": "Evaluate all matching test requests",
     "time": "3:45",
     "name": "final-exercise"
   },
   {
-    "slide": 43,
+    "slide": 45,
     "title": "Compare matching requests, then the operating policy",
     "time": "3:48",
     "name": "aligned-requests"
   },
   {
-    "slide": 44,
+    "slide": 46,
     "title": "Compare the same requests in Forge",
     "time": "3:50",
     "name": "native-comparison"
   },
   {
-    "slide": 45,
+    "slide": 47,
     "title": "Read one routing decision",
     "time": "3:52",
     "name": "native-row"
   },
   {
-    "slide": 46,
+    "slide": 48,
     "title": "Take ten minutes. Return at 4:05.",
     "time": "3:55",
     "name": "release-break"
   },
   {
-    "slide": 47,
+    "slide": 49,
     "title": "The classifier works. Can another process use it?",
     "time": "4:05",
     "name": "release-request"
   },
   {
-    "slide": 48,
+    "slide": 50,
     "title": "Save what the predictor needs, then reload it",
     "time": "4:08",
     "name": "release-bundle"
   },
   {
-    "slide": 49,
+    "slide": 51,
     "title": "Load your selected version from its artifact",
     "time": "4:11",
     "name": "release-prepare-exercise"
   },
   {
-    "slide": 50,
+    "slide": 52,
     "title": "Choose the regression cases before predicting",
     "time": "4:17",
     "name": "release-cohort"
   },
   {
-    "slide": 51,
+    "slide": 53,
     "title": "A probability belongs to a specific intent",
     "time": "4:20",
     "name": "release-columns"
   },
   {
-    "slide": 52,
+    "slide": 54,
     "title": "Rotated labels send column 1 to another queue",
     "time": "4:22",
     "name": "release-fault"
   },
   {
-    "slide": 53,
+    "slide": 55,
     "title": "Find one request sent to the wrong queue",
     "time": "4:26",
     "name": "release-incident-exercise"
   },
   {
-    "slide": 54,
+    "slide": 56,
     "title": "Checking the label set misses this defect",
     "time": "4:33",
     "name": "release-set-check"
   },
   {
-    "slide": 55,
+    "slide": 57,
     "title": "Check order before accepting the loaded model",
     "time": "4:35",
     "name": "release-order-check"
   },
   {
-    "slide": 56,
+    "slide": 58,
     "title": "Repair the loader and write its regression check",
     "time": "4:40",
     "name": "release-repair-exercise"
   },
   {
-    "slide": 57,
+    "slide": 59,
     "title": "A repaired loader should reproduce the intact release",
     "time": "4:50",
     "name": "release-parity"
   },
   {
-    "slide": 58,
+    "slide": 60,
     "title": "Compare three versions of the same request",
     "time": "4:56",
     "name": "release-investigate"
   },
   {
-    "slide": 59,
+    "slide": 61,
     "title": "Decide whether this release passes its checks",
     "time": "5:00",
     "name": "release-decision-exercise"
   },
   {
-    "slide": 60,
+    "slide": 62,
     "title": "Rollback reloads a version; it does not undo training",
     "time": "5:08",
     "name": "release-rollback"
   },
   {
-    "slide": 61,
+    "slide": 63,
     "title": "Restore the previous version and verify it",
     "time": "5:12",
     "name": "release-rollback-exercise"
   },
   {
-    "slide": 62,
+    "slide": 64,
     "title": "Separate the model gain from the release repair",
     "time": "5:20",
     "name": "release-conclusion"
   },
   {
-    "slide": 63,
+    "slide": 65,
     "title": "Write the decision you would make",
     "time": "5:25",
     "name": "report-exercise"
   },
   {
-    "slide": 64,
+    "slide": 66,
     "title": "Optional: organize approved versions in Registry",
     "time": "5:28",
     "name": "release"
   },
   {
-    "slide": 65,
+    "slide": 67,
     "title": "What to take back to your team",
     "time": "5:29",
     "name": "close"
   },
   {
-    "slide": 66,
+    "slide": 68,
     "title": "Worked answer: classifier head",
     "time": "",
     "name": "classifier-answer"
   },
   {
-    "slide": 67,
+    "slide": 69,
     "title": "Worked answer: review policy",
     "time": "",
     "name": "policy-answer"
   },
   {
-    "slide": 68,
+    "slide": 70,
     "title": "Worked answer: judge validator",
     "time": "",
     "name": "validator-answer"
   },
   {
-    "slide": 69,
+    "slide": 71,
     "title": "Worked answer: preserve the probability-column order",
     "time": "",
     "name": "release-repair-answer"
   },
   {
-    "slide": 70,
+    "slide": 72,
     "title": "Sources and recorded evidence",
     "time": "",
     "name": "sources"

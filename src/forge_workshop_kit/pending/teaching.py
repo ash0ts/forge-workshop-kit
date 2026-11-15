@@ -340,3 +340,24 @@ def tool_rows(run):
         rows.append({'Step':index+1,'Tool':event['name'],'Outcome':'Error' if event.get('error') else 'Returned',
                      'Observation':str(detail)[:160]})
     return rows
+
+
+def invoice_preview(account_id="acme"):
+    """Read a bundled development account without a session or model call."""
+    case = next(case for case in CASES if case.id == "double-charge")
+    return compile_code(ANSWERS["tool"])["my_invoice_tool"](copy.deepcopy(case.initial), account_id, "inv-1")
+
+
+def skill_handoff_example():
+    """Explicit local example of skill loading; it is not a recorded agent choice."""
+    skill = "After a timeout, inspect the account before retrying the write."
+    harness = Harness(verification_skill=skill)
+    action = {"action": "read_skill", "arguments": {"name": "verify-operation"}}
+    # The same named-file lookup used by the employee's read_skill action.
+    result = {"text": {"verify-operation": harness.verification_skill,
+                       "office-tools": harness.tool_skill}[action["arguments"]["name"]]}
+    before = [{"role": "system", "content": "Available skill: verify-operation"}]
+    after = compile_code(ANSWERS["loop"])["my_observation"](before, action, result)
+    return {"file": harness.files()["skills/verify-operation.md"], "before": before,
+            "action": action, "result": result, "after": after,
+            "label": "Free local example; no model chose this action"}

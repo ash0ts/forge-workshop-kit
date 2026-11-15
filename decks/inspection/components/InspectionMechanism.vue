@@ -13,13 +13,13 @@ const code={data:['photo = record["image"]','label = record["label"]','mask = re
 </script>
 <template>
 <div class="im-layout"><div class="im-visual">
-<svg v-if="kind==='data'" viewBox="0 0 660 440" role="img" aria-label="Actual VisA board photograph and supplied mask. Only the photograph enters the classifier; the defect label supervises training and the mask is for human inspection.">
- <text x="12" y="29" class="heading">{{fact.case_id}} · actual fitting example</text>
+<svg v-if="kind==='data'" viewBox="0 0 660 440" role="img" :aria-label="step>1?'Actual VisA board photograph and supplied defect mask. Only the photograph enters the classifier; the mask is for human inspection.':'A VisA PCB1 fitting photograph. Decide whether this board should pass before seeing its label and annotation.'">
+ <text x="12" y="29" class="heading">{{step>1?`${fact.case_id} · actual fitting example`:'VisA PCB1 fitting example'}}</text>
  <image :href="asset('fit-defect-image.jpg')" x="12" y="55" width="270" height="245" preserveAspectRatio="xMidYMid meet"/>
- <g :opacity="step>1?1:.22"><image class="im-mask" :href="asset('fit-defect-mask.png')" x="370" y="55" width="270" height="245" preserveAspectRatio="xMidYMid meet"/><text x="386" y="329" class="small">Supplied defect annotation</text></g>
+ <g v-if="step>1"><image class="im-mask" :href="asset('fit-defect-mask.png')" x="370" y="55" width="270" height="245" preserveAspectRatio="xMidYMid meet"/><text x="386" y="329" class="small">Supplied defect annotation</text></g>
  <text x="15" y="329" class="small">Photograph → model input</text><path d="M148 344V380H300" class="arrow"/><text x="310" y="388" class="heading">Predict defective / normal</text>
  <path v-if="step>1" d="M495 344V369M484 345L506 367M506 345L484 367" class="orange-line"/>
- <text x="12" y="430" class="small">White mask pixels locate the annotation. No mask enters this detector.</text>
+ <text x="12" y="430" class="small">{{step>1?'White mask pixels locate the annotation. No mask enters this detector.':'Would you pass this board or send it for inspection?'}}</text>
 </svg>
 <svg v-else-if="kind==='encoder'" viewBox="0 0 660 440" role="img" aria-label="A 224 by 224 RGB photo goes through frozen ResNet-18. Whole-image features have 512 channels; local features retain 14 by 14 spatial positions and 64 channels per position.">
  <image :href="asset('fit-defect-image.jpg')" x="12" y="50" width="185" height="185"/>

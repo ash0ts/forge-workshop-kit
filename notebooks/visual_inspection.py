@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[inspection] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.8.0/forge_workshop_kit-0.8.0-py3-none-any.whl",
+#   "forge-workshop-kit[inspection] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.9.0/forge_workshop_kit-0.9.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -166,7 +166,7 @@ def _(get_lab, set_feedback, set_lab, set_step):
 def _(get_lab, get_step, go_to, mo, teaching, ui):
     _s = get_lab().get("session")
     inspection_nav = ui.navigation(mo, teaching.STEPS, get_step(), go_to, completed=teaching.completed_steps(_s), label="Workshop steps")
-    mo.vstack([mo.Html(ui.STYLE), inspection_nav, mo.Html(ui.context(_s)) if _s else mo.md("Start at Connect. Looking at images and editing code do not run a classifier or publish records.")])
+    mo.vstack([mo.Html(ui.STYLE), inspection_nav, mo.Html(ui.context(_s)) if _s else mo.md("Inspect the opening board, then connect. Looking at images and editing code does not train or publish.")])
     return (inspection_nav,)
 
 
@@ -178,6 +178,28 @@ def _(get_step, mo, ui):
     mo.md("The photographs are real **VisA PCB1** observations, released by the SPot-the-Difference authors under CC BY 4.0. They show one circuit-board family, with normal and defective examples and pixel masks identifying annotated defects. We’ll use the authors’ supervised split. The final 442 boards stay outside training and threshold selection."),
     mo.md("We’ll first compress each photograph into one feature vector. Then we’ll keep local patch information to see whether small defects become easier to detect. You’ll choose a review batch, train again, freeze a threshold, and check missed defects, false alarms, and review workload separately. A factory pilot would need more products and operating conditions than this teaching set."),
     mo.md("The recorded follow-up improved average precision from **0.8729 to 0.8857**, with misses falling from 4 to 3 and false alarms from 23 to 18. It was a teaching retest of images already inspected during a failed first recipe. Your own run may differ; don’t select a model by looking at its final-test result.")])
+    return
+
+
+# workshop-cell: visual_inspection/controls/opening_example
+@app.cell(hide_code=True)
+def _(mo):
+    opening_board_choice = mo.ui.radio(["Pass", "Send for inspection"], label="Would you pass this board?")
+    opening_board_reveal = mo.ui.checkbox(label="Reveal the supplied defect annotation")
+    return (opening_board_choice, opening_board_reveal,)
+
+
+# workshop-cell: visual_inspection/opening_example
+@app.cell(hide_code=True)
+def _(get_step, mo, np, opening_board_choice, opening_board_reveal, teaching):
+    _board=teaching.opening_board()
+    _opening=[mo.md("### Inspect one board before connecting"),mo.image(_board["image"],alt="A VisA PCB1 circuit board photographed from above, with components and copper traces visible.",width=320),opening_board_choice,opening_board_reveal]
+    if opening_board_reveal.value:
+        from PIL import Image as _Image
+        _mask=np.asarray(_Image.open(_board["mask"]))
+        _opening.extend([mo.image(_Image.fromarray((_mask>0).astype("uint8")*255),alt="Supplied defect mask for the displayed board: white pixels mark annotated defects; black pixels are unmarked.",width=320),mo.md("Published label: **defective**. White pixels show the supplied annotation, not a model explanation."),mo.accordion({"Source and checksums":mo.md(f"Case: `{_board['case_id']}` · partition: `{_board['partition']}`\n\nSource image: `{_board['source_image']}`\n\nSource SHA-256: `{_board['source_sha256']}`\n\nBundled image SHA-256: `{_board['image_sha256']}`\n\nBundled mask SHA-256: `{_board['mask_sha256']}`")})])
+    _opening.append(mo.md("VisA PCB1 fitting example · CC BY 4.0. This bundled example needs no account or download. [Dataset source](https://github.com/amazon-science/spot-diff)"))
+    mo.vstack(_opening) if get_step()=="setup" else mo.md("")
     return
 
 
@@ -256,7 +278,7 @@ def _(event, export_trace, feedback, first_inspection_trace, get_lab, instrument
     return
 
 
-# workshop-cell: visual_inspection/display/10
+# workshop-cell: visual_inspection/display/12
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() != "setup")
@@ -285,20 +307,20 @@ def _(get_lab, inspection, load_inspection, mo, set_lab, teaching):
     return
 
 
-# workshop-cell: visual_inspection/definitions/continue_inspection_features
+# workshop-cell: visual_inspection/definitions/continue_inspection_baseline
 @app.cell(hide_code=True)
 def _(get_lab, get_step, go_to, mo, ui):
-    continue_inspection_features = ui.next_step(mo, "Next: add patch features", "features", go_to)
+    continue_inspection_baseline = ui.next_step(mo, "Next: train the whole-image baseline", "baseline", go_to)
     mo.stop(get_step() != "data")
     _data = get_lab().get("data")
     _options = {r["case_id"]: i for i, r in enumerate(_data["records"]) if r["partition"] == "fit"} if _data else {}
     board_choice = mo.ui.dropdown(_options, value=next(iter(_options), None), label="Training board", disabled=not bool(_options))
     show_board_label = mo.ui.checkbox(label="Reveal the published defect label and mask")
-    mo.vstack([board_choice, show_board_label, continue_inspection_features])
-    return (board_choice, continue_inspection_features, show_board_label,)
+    mo.vstack([board_choice, show_board_label, continue_inspection_baseline])
+    return (board_choice, continue_inspection_baseline, show_board_label,)
 
 
-# workshop-cell: visual_inspection/display/14
+# workshop-cell: visual_inspection/display/16
 @app.cell(hide_code=True)
 def _(board_choice, get_lab, get_step, inspection, mo, show_board_label):
     mo.stop(get_step() != "data" or not get_lab().get("data"))
@@ -315,6 +337,35 @@ def _(get_lab, get_step, go_to, mo, teaching, ui):
     check_inspection_features = mo.ui.run_button(label="Check my patch-feature function")
     mo.vstack([mo.md("### Keep the local information\nThe fixed ImageNet encoder gives us a 512-value whole-image vector and a 14 × 14 grid of patch vectors. In `build_features`, turn the patch-error map into a row and append it to the whole-image features. The trained classifier will actually use your function."), feature_editor, check_inspection_features, mo.accordion({"Hint": mo.md("Use `inspection.nearest_patch_errors(data, rows, reference)` for nearest-patch. Apply np.log1p, reshape to `(len(rows), -1)`, then concatenate along axis 1."), "Worked answer": mo.md("```python\n" + teaching.FEATURE_SOLUTION + "\n```"), "What is cached?": mo.md("ResNet-18’s ImageNet weights stay fixed. We resize each board to 224 × 224, normalize channels, and extract whole-image and local features. The prepared cache preserves exact source and weight hashes. Fitting a classifier changes its weights, not the image encoder.")}), continue_inspection_compare]) if get_step() == "features" else mo.md("")
     return (check_inspection_features, continue_inspection_compare, feature_editor,)
+
+
+# workshop-cell: visual_inspection/controls/patch_distance
+@app.cell(hide_code=True)
+def _(get_lab, get_step, mo):
+    patch_distance_check = mo.ui.run_button(label="Calculate one patch distance",disabled=not bool(get_lab().get("data")))
+    mo.vstack([mo.md("### Work through one position before flattening the map"),mo.md("The calculation below uses position (7, 7) of fitting board pcb1-anomaly-005 and normal fitting boards only. Find the smallest distance, then compare it with nearest_patch_errors."),patch_distance_check]) if get_step()=="features" else mo.md("")
+    return (patch_distance_check,)
+
+
+# workshop-cell: visual_inspection/action/patch_distance
+@app.cell
+def _(get_lab, inspection, mo, np, patch_distance_check, refresh_inspection):
+    mo.stop(not patch_distance_check.value)
+    _data=get_lab()["data"]
+    _query=next(i for i,row in enumerate(_data["records"]) if row["case_id"]=="pcb1-anomaly-005" and row["partition"]=="fit")
+    _fit=inspection.indices(_data,"fit")
+    _normals=_fit[inspection.labels(_data,_fit)==0]
+    _reference={"bank":_data["patches"][_normals],"case_ids":[_data["records"][int(i)]["case_id"] for i in _normals]}
+    _bank=_reference["bank"][:,7,7,:]
+    _query_vector=_data["patches"][_query,7,7,:]
+    _scale=np.maximum(_bank.std(axis=0),.1)
+    _distances=np.mean((_query_vector/_scale-_bank/_scale)**2,axis=1)
+    _closest=int(np.argmin(_distances))
+    _expected=float(inspection.nearest_patch_errors(_data,np.array([_query]),_reference)[0,7,7])
+    assert np.isclose(_distances[_closest],_expected,atol=1e-5)
+    mo.ui.table([{"Query":"pcb1-anomaly-005","Position":"(7, 7)","Channels":len(_query_vector),"Normal fitting boards":len(_normals),"Closest board":_reference["case_ids"][_closest],"Mean squared scaled distance":float(_distances[_closest]),"log1p feature":float(np.log1p(_distances[_closest]))}],selection=None)
+    refresh_inspection()
+    return
 
 
 # workshop-cell: visual_inspection/definitions/build_features
@@ -339,24 +390,69 @@ def _(check_inspection_features, feature_editor, feedback, get_lab, mo, refresh_
     return
 
 
-# workshop-cell: visual_inspection/display/18
+# workshop-cell: visual_inspection/controls/check_inspection_threshold
+@app.cell(hide_code=True)
+def _(get_lab, get_step, go_to, mo, teaching, ui):
+    _s = get_lab().get("session")
+    threshold_editor = mo.ui.code_editor(value=_s.get_draft("inspection/threshold", teaching.THRESHOLD_STARTER) if _s else teaching.THRESHOLD_STARTER, language="python", on_change=lambda value: _s.save_draft("inspection/threshold", value) if _s else None, debounce=False)
+    check_inspection_threshold = mo.ui.run_button(label="Check my threshold function")
+    train_whole = mo.ui.run_button(label="Train the whole-image baseline", disabled=not bool(get_lab().get("data")))
+    _seen=bool(_s and (_s.get_draft("inspection/baseline-observation",None) or teaching.saved(_s,"compare/nearest-patch")))
+    train_inspection = mo.ui.run_button(label="Train the patch-feature alternative", disabled=not bool(_s and teaching.saved(_s,"compare/whole")))
+    mo.vstack([mo.md("### Choose an operating rule for the baseline"),mo.md("The baseline uses the 512 whole-image values already returned by build_features. Complete choose_threshold so at least 90% of validation defects score at or above the cutoff. Then fit the baseline and inspect a miss or false alarm. We will keep this rule and classifier settings fixed when adding patches."),threshold_editor,check_inspection_threshold,mo.accordion({"Worked answer":mo.md("```python"+chr(10)+teaching.THRESHOLD_SOLUTION+chr(10)+"```")}),train_whole]) if get_step()=="baseline" else mo.vstack([mo.md("### Test the added patch information"),mo.md("The patch model uses the same fitting boards, C=0.03, and threshold rule. Only the feature representation changes. The whole-image result stays saved."),train_inspection,mo.md("Inspect a validation board before testing patches. Saving a note is optional.") if not _seen else mo.md("The baseline observation is saved."),ui.next_step(mo,"Next: choose a review batch","review",go_to)]) if get_step()=="compare" else mo.md("")
+    return (check_inspection_threshold, threshold_editor, train_inspection, train_whole,)
+
+
+# workshop-cell: visual_inspection/controls/baseline_observation
+@app.cell(hide_code=True)
+def _(get_lab, get_step, go_to, inspection, mo, teaching, ui):
+    _s=get_lab().get("session")
+    _data=get_lab().get("data")
+    _base=teaching.saved(_s,"compare/whole") if _s else None
+    _choices={}
+    if _base and _data:
+        _rows=inspection.indices(_data,"validation")
+        _model=teaching.model_from_stage(_s,"compare/whole")
+        _scores=inspection.score(_data,_rows,_model,build_features=teaching.functions(_base["sources"]["features.py"])["build_features"])
+        _mistakes=[int(i) for i,score in zip(_rows,_scores) if bool(score>=_model["threshold"])!=bool(_data["records"][int(i)]["label"])]
+        _choices={_data["records"][i]["case_id"]:i for i in (_mistakes or list(_rows))}
+    validation_board=mo.ui.dropdown(_choices,value=next(iter(_choices),None),label="Validation board to investigate",disabled=not bool(_choices))
+    inspection_baseline_note=mo.ui.text_area(value=_s.get_draft("inspection/baseline-note","") if _s else "",label="Optional note: what did the baseline miss or flag, and what might patches change?",on_change=lambda value:_s.save_draft("inspection/baseline-note",value) if _s else None,full_width=True)
+    save_inspection_observation=mo.ui.run_button(label="Save my baseline observation",disabled=not bool(_choices))
+    mo.vstack([mo.md("### Inspect a baseline decision"),validation_board,inspection_baseline_note,save_inspection_observation,ui.next_step(mo,"Next: add patch features","features",go_to)]) if get_step()=="baseline" else mo.md("")
+    return (inspection_baseline_note, save_inspection_observation, validation_board,)
+
+
+# workshop-cell: visual_inspection/display/baseline_board
+@app.cell(hide_code=True)
+def _(get_lab, get_step, inspection, mo, teaching, validation_board):
+    mo.stop(get_step()!="baseline" or validation_board.value is None or not get_lab().get("data"))
+    _s=get_lab()["session"]
+    _data=get_lab()["data"]
+    _base=teaching.saved(_s,"compare/whole")
+    _model=teaching.model_from_stage(_s,"compare/whole")
+    _score=float(inspection.score(_data,[validation_board.value],_model,build_features=teaching.functions(_base["sources"]["features.py"])["build_features"])[0])
+    mo.vstack([inspection.render_case(_data,validation_board.value,reveal_label=True),mo.md("Saved whole-image model: score **"+str(round(_score,3))+"**, cutoff **"+str(round(_model["threshold"],3))+"**. Scores at or above the cutoff are flagged. This is a validation board, not a final-test example.")])
+    return
+
+
+# workshop-cell: visual_inspection/action/baseline_observation
+@app.cell(hide_code=True)
+def _(get_lab, inspection_baseline_note, mo, refresh_inspection, save_inspection_observation, validation_board):
+    mo.stop(not save_inspection_observation.value)
+    mo.stop(not inspection_baseline_note.value.strip(),mo.md("Write a note to save it, or continue without one."))
+    _s=get_lab()["session"]
+    _s.save_draft("inspection/baseline-observation",{"row":validation_board.value,"note":inspection_baseline_note.value})
+    refresh_inspection()
+    return
+
+
+# workshop-cell: visual_inspection/display/26
 @app.cell(hide_code=True)
 def _(get_feedback, get_step, mo, ui):
     mo.stop(get_step() != "features")
     mo.Html(ui.result("Local check", get_feedback().get("features", {})))
     return
-
-
-# workshop-cell: visual_inspection/controls/check_inspection_threshold
-@app.cell(hide_code=True)
-def _(get_lab, get_step, go_to, mo, teaching, ui):
-    continue_inspection_review = ui.next_step(mo, "Next: choose a review batch", "review", go_to)
-    _s = get_lab().get("session")
-    threshold_editor = mo.ui.code_editor(value=_s.get_draft("inspection/threshold", teaching.THRESHOLD_STARTER) if _s else teaching.THRESHOLD_STARTER, language="python", on_change=lambda value: _s.save_draft("inspection/threshold", value) if _s else None, debounce=False)
-    check_inspection_threshold = mo.ui.run_button(label="Check my threshold function")
-    train_inspection = mo.ui.run_button(label="Train both feature representations", disabled=not bool(get_lab().get("data")))
-    mo.vstack([mo.md("### Choose what passes the line\nWrite `choose_threshold` so at least 90% of validation defects remain above its cutoff. A high recall can create more false alarms; both counts belong in the result. We use validation only. Test labels must not influence this choice."), threshold_editor, check_inspection_threshold, mo.accordion({"Worked answer": mo.md("```python\n" + teaching.THRESHOLD_SOLUTION + "\n```")}), mo.md("Train the same class-balanced logistic classifier with C=0.03 on each representation. The patch version compares each patch with actual normal training patches at the same position. Our recorded recipe selected C using validation; this workshop fixes it before your run."), train_inspection, continue_inspection_review]) if get_step() == "compare" else mo.md("")
-    return (check_inspection_threshold, continue_inspection_review, threshold_editor, train_inspection,)
 
 
 # workshop-cell: visual_inspection/definitions/choose_threshold
@@ -379,6 +475,41 @@ def _(check_inspection_threshold, feedback, mo, refresh_inspection, teaching, th
     return
 
 
+# workshop-cell: visual_inspection/action/train_whole
+@app.cell
+def _(build_features, choose_threshold, event, export_trace, feature_editor, feedback, get_lab, inspection, instrument_inspection_tool, mo, refresh_inspection, teaching, threshold_editor, train_whole):
+    mo.stop(not train_whole.value)
+    teaching.check_whole_features(feature_editor.value)
+    teaching.check_threshold(threshold_editor.value)
+    _s, _data = get_lab()["session"], get_lab()["data"]
+    _fit, _val = inspection.indices(_data, "fit"), inspection.indices(_data, "validation")
+    _method='whole'
+    teaching.check_matched_settings(_s,_method,feature_editor.value,threshold_editor.value,_data)
+    with _s.stage("compare/" + _method, config={"method": _method, "C": .03, "threshold_recall": .90}, sources={"features.py": feature_editor.value, "threshold.py": threshold_editor.value}) as _stage:
+        if _stage.needs_run:
+            def _train_and_validate():
+                _model = inspection.fit_classifier(_data, _fit, _method, build_features=build_features, C=.03)
+                _values = inspection.score(_data, _val, _model, build_features=build_features)
+                _threshold = choose_threshold(inspection.labels(_data, _val), _values)
+                _metrics = inspection.metrics(inspection.labels(_data, _val), _values, _threshold)
+                _path = _stage.output_dir / "classifier.npz"
+                _sha = inspection.save_classifier(_path, _model, _threshold)
+                return {"metrics": _metrics, "model_file": _path.relative_to(_s.root).as_posix(), "model_sha256": _sha, "seconds": _model["seconds"]}
+            _result, _event = event("train_and_validate_classifier", {"method": _method, "training_boards": len(_fit), "C": .03}, _train_and_validate, on_error=_stage.record_event)
+            _stage.record({**_result, "events": [_event]}, files=[_s.file(_result["model_file"])])
+    try:
+        export_trace(_s, _stage.id, "Compare " + _method + " board features", _stage.result["events"], tool_writer=instrument_inspection_tool)
+    except Exception as _error:
+        feedback("publication", {"status": "trace pending", "message": str(_error)})
+
+    _s.checkpoint("baseline")
+    if teaching.saved(_s,"compare/whole") and teaching.saved(_s,"compare/nearest-patch"):
+        _s.checkpoint("compare")
+    feedback("compare", {"status": "saved", "representation": _method})
+    refresh_inspection()
+    return
+
+
 # workshop-cell: visual_inspection/action/train_inspection
 @app.cell
 def _(build_features, choose_threshold, event, export_trace, feature_editor, feedback, get_lab, inspection, instrument_inspection_tool, mo, refresh_inspection, teaching, threshold_editor, train_inspection):
@@ -387,33 +518,36 @@ def _(build_features, choose_threshold, event, export_trace, feature_editor, fee
     teaching.check_threshold(threshold_editor.value)
     _s, _data = get_lab()["session"], get_lab()["data"]
     _fit, _val = inspection.indices(_data, "fit"), inspection.indices(_data, "validation")
-    for _method in ["whole", "nearest-patch"]:
-        with _s.stage("compare/" + _method, config={"method": _method, "C": .03, "threshold_recall": .90}, sources={"features.py": feature_editor.value, "threshold.py": threshold_editor.value}) as _stage:
-            if _stage.needs_run:
-                def _train_and_validate():
-                    _model = inspection.fit_classifier(_data, _fit, _method, build_features=build_features, C=.03)
-                    _values = inspection.score(_data, _val, _model, build_features=build_features)
-                    _threshold = choose_threshold(inspection.labels(_data, _val), _values)
-                    _metrics = inspection.metrics(inspection.labels(_data, _val), _values, _threshold)
-                    _path = _stage.output_dir / "classifier.npz"
-                    _sha = inspection.save_classifier(_path, _model, _threshold)
-                    return {"metrics": _metrics, "model_file": _path.relative_to(_s.root).as_posix(), "model_sha256": _sha, "seconds": _model["seconds"]}
-                _result, _event = event("train_and_validate_classifier", {"method": _method, "training_boards": len(_fit), "C": .03}, _train_and_validate, on_error=_stage.record_event)
-                _stage.record({**_result, "events": [_event]}, files=[_s.file(_result["model_file"])])
-        try:
-            export_trace(_s, _stage.id, "Compare " + _method + " board features", _stage.result["events"], tool_writer=instrument_inspection_tool)
-        except Exception as _error:
-            feedback("publication", {"status": "trace pending", "message": str(_error)})
-    _s.checkpoint("compare")
-    feedback("compare", {"status": "complete"})
+    _method='nearest-patch'
+    teaching.check_matched_settings(_s,_method,feature_editor.value,threshold_editor.value,_data)
+    with _s.stage("compare/" + _method, config={"method": _method, "C": .03, "threshold_recall": .90}, sources={"features.py": feature_editor.value, "threshold.py": threshold_editor.value}) as _stage:
+        if _stage.needs_run:
+            def _train_and_validate():
+                _model = inspection.fit_classifier(_data, _fit, _method, build_features=build_features, C=.03)
+                _values = inspection.score(_data, _val, _model, build_features=build_features)
+                _threshold = choose_threshold(inspection.labels(_data, _val), _values)
+                _metrics = inspection.metrics(inspection.labels(_data, _val), _values, _threshold)
+                _path = _stage.output_dir / "classifier.npz"
+                _sha = inspection.save_classifier(_path, _model, _threshold)
+                return {"metrics": _metrics, "model_file": _path.relative_to(_s.root).as_posix(), "model_sha256": _sha, "seconds": _model["seconds"]}
+            _result, _event = event("train_and_validate_classifier", {"method": _method, "training_boards": len(_fit), "C": .03}, _train_and_validate, on_error=_stage.record_event)
+            _stage.record({**_result, "events": [_event]}, files=[_s.file(_result["model_file"])])
+    try:
+        export_trace(_s, _stage.id, "Compare " + _method + " board features", _stage.result["events"], tool_writer=instrument_inspection_tool)
+    except Exception as _error:
+        feedback("publication", {"status": "trace pending", "message": str(_error)})
+
+    if teaching.saved(_s,"compare/whole") and teaching.saved(_s,"compare/nearest-patch"):
+        _s.checkpoint("compare")
+    feedback("compare", {"status": "saved", "representation": _method})
     refresh_inspection()
     return
 
 
-# workshop-cell: visual_inspection/display/23
+# workshop-cell: visual_inspection/display/31
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, mo, teaching, ui):
-    mo.stop(get_step() != "compare")
+    mo.stop(get_step() not in ("baseline", "compare"))
     _s = get_lab().get("session")
     _rows = []
     if _s:
@@ -490,7 +624,7 @@ def _(get_feedback, get_lab, get_step, go_to, mo, teaching, ui):
     return (continue_inspection_freeze, reveal_review, review_board, review_guess, save_inspection_review, train_reviewed,)
 
 
-# workshop-cell: visual_inspection/display/28
+# workshop-cell: visual_inspection/display/36
 @app.cell(hide_code=True)
 def _(get_lab, get_step, inspection, mo, reveal_review, review_board, teaching):
     mo.stop(get_step() != "review" or review_board.value is None or not get_lab().get("data"))
@@ -548,7 +682,7 @@ def _(build_features, choose_threshold, event, export_trace, feature_editor, fee
     return
 
 
-# workshop-cell: visual_inspection/display/31
+# workshop-cell: visual_inspection/display/39
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() != "review")
@@ -584,6 +718,9 @@ def _(feedback, freeze_choice, freeze_inspection, freeze_reason, get_lab, mo, re
     if not freeze_reason.value.strip():
         raise ValueError("Save a short reason for your selection.")
     _names = ["compare/whole", "compare/nearest-patch", "review/active", "review/random"]
+    _missing=[name for name in _names if not teaching.saved(_s,name)]
+    if _missing:
+        raise ValueError("Complete both representations and both reviewed classifiers before freezing. Missing: " + ", ".join(_missing))
     _versions = {name: {"stage_id": teaching.saved(_s, name)["id"], "model_file": teaching.saved(_s, name)["result"]["model_file"], "sha256": teaching.saved(_s, name)["result"]["model_sha256"], "feature_source": teaching.saved(_s, name)["sources"]["features.py"]} for name in _names}
     _evaluated = teaching.saved(_s, "evaluate")
     if _evaluated:
@@ -668,7 +805,7 @@ def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     return (final_board,)
 
 
-# workshop-cell: visual_inspection/display/38
+# workshop-cell: visual_inspection/display/46
 @app.cell(hide_code=True)
 def _(final_board, get_lab, get_step, inspection, mo, teaching):
     mo.stop(get_step() != "evaluate" or final_board.value is None or not get_lab().get("data"))
@@ -733,7 +870,7 @@ def _(feedback, get_lab, inspection_conclusion, mo, publish_report, refresh_insp
     return
 
 
-# workshop-cell: visual_inspection/display/42
+# workshop-cell: visual_inspection/display/50
 @app.cell(hide_code=True)
 def _(get_feedback, get_step, mo, ui):
     mo.stop(get_step() != "reproduce")
@@ -769,7 +906,7 @@ def _(Path, event, export_trace, feedback, get_lab, instrument_inspection_tool, 
     return
 
 
-# workshop-cell: visual_inspection/display/45
+# workshop-cell: visual_inspection/display/53
 @app.cell(hide_code=True)
 def _(get_feedback, get_step, mo, ui):
     mo.stop(get_step() != "features")

@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.8.0/forge_workshop_kit-0.8.0-py3-none-any.whl",
+#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.9.0/forge_workshop_kit-0.9.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -200,7 +200,7 @@ def _(airline, digest, get_context, set_output, set_revision, set_step, teaching
         session = get_context()["session"]
         return "airline-" + session.workspace_id
 
-    def batch(partition, label="baseline", builder=None):
+    def batch(partition, label="baseline", builder=None, *, first_only=False):
         session = get_context()["session"]
         if partition in ("final", "subsequent"):
             tracing_source = saved("airline/frozen")["result"]["instrumentation"]
@@ -208,6 +208,8 @@ def _(airline, digest, get_context, set_output, set_revision, set_step, teaching
             if not checked("instrumentation"):
                 raise ValueError("The tracing draft changed. Run Check my tracing code before this execution.")
             tracing_source = source_for("instrumentation")
+        if partition == "discovery":
+            return teaching.run_discovery(session, tracing_source, first_only=first_only)
         scorer = None
         if partition == "development":
             scorer = teaching.compile_code(saved("airline/evaluation-code")["result"]["sources"]["state_scorer.py"])["my_state_scorer"]
@@ -220,10 +222,10 @@ def _(airline, digest, get_context, set_output, set_revision, set_step, teaching
 
 # workshop-cell: airline_monitoring/definitions/airline_navigation
 @app.cell(hide_code=True)
-def _(STEPS, get_context, get_revision, get_step, go_to, mo, ui):
+def _(STEPS, get_context, get_revision, get_step, go_to, mo, teaching, ui):
     _s = get_context().get("session")
     _revision = get_revision()
-    _done = _s.read().get("progress", {}).get("completed", []) if _s else []
+    _done = teaching.completed_steps(_s)
     airline_navigation = ui.navigation(mo, STEPS, get_step(), go_to, completed=_done, label="Your monitoring shift")
     mo.vstack([mo.Html(ui.STYLE), airline_navigation, mo.Html(ui.context(_s)) if _s else mo.md("Copy this notebook into a project you can write to. Your traces and results will belong to that project.")])
     return (airline_navigation,)
@@ -231,11 +233,11 @@ def _(STEPS, get_context, get_revision, get_step, go_to, mo, ui):
 
 # workshop-cell: airline_monitoring/display/4
 @app.cell(hide_code=True)
-def _(checked, get_context, get_step, go_to, mo, review_for, runs_for, saved, ui):
+def _(checked, get_context, get_step, go_to, mo, review_for, runs_for, saved, teaching, ui):
     _s = get_context().get("session")
     _current = get_step()
     _missing = None
-    if _current != "setup" and not _s:
+    if _current not in ("setup", "booking") and not _s:
         _missing = ("Connect to your project and restore your work first.", "setup")
     elif _current == "discovery" and not saved("airline/booking"):
         _missing = ("Save your expected booking before running the agent.", "booking")
@@ -243,12 +245,14 @@ def _(checked, get_context, get_step, go_to, mo, review_for, runs_for, saved, ui
         _missing = ("Complete and check your tracing functions before sending requests.", "setup")
     elif _current == "investigate" and not runs_for("discovery"):
         _missing = ("Run the discovery requests so there is an execution to investigate.", "discovery")
-    elif _current == "align" and not saved("airline/investigation"):
-        _missing = ("Save one evidence-linked investigation before defining the tag.", "investigate")
+    elif _current == "review" and not saved("airline/investigation"):
+        _missing = ("Save one evidence-linked investigation before labeling its outcome.", "investigate")
+    elif _current == "align" and not teaching.review_complete(_s):
+        _missing = ("Review a booking outcome before defining an automated tag.", "review")
     elif _current == "monitor" and not saved("airline/tag-context"):
         _missing = ("Read back your saved native tag and agent scope first.", "align")
     elif _current == "curate" and not any(review_for(run["stage_id"]) for run in runs_for("discovery") + runs_for("monitoring") + runs_for("calibration")):
-        _missing = ("Save a turn review, including its expected behavior and supporting event.", "monitor")
+        _missing = ("Save a turn review, including its expected behavior and supporting event.", "review")
     elif _current == "repair" and not (saved("airline/regression") and saved("airline/evaluation-code")):
         _missing = ("Save your regression cases and development evaluation code before testing a repair.", "curate")
     elif _current == "final" and not saved("airline/development-complete"):
@@ -268,7 +272,38 @@ def _(get_revision, get_step, mo, ui):
     _revision = get_revision()
 
     mo.stop(get_step() != "setup")
-    mo.vstack([mo.Html(ui.heading("Monitor an airline service agent and build better evaluations", "A passenger asks to change the outbound leg of a round trip. The booking API accepts a complete replacement itinerary. If the agent leaves out the return flight, a successful API call can still produce the wrong booking.", theme="neutral", eyebrow="Airline service desk · Six-hour Forge workshop")), mo.md("You will run a working agent, inspect its behavior in Agent Lens, review a monitoring rule, and turn incidents into regression tests. Then you will repair the itinerary code and compare both versions on reserved requests. The passenger should still have a flight home."), mo.md("**Data:** simulated bookings, requests, and airline policy from a pinned MIT-licensed revision of [τ-bench](https://github.com/sierra-research/tau2-bench/tree/989d3285ae669e49503324bdb9981bf14fccedeb). This workshop adapts those records; it is not a benchmark replication or real passenger traffic. Related bookings stay in the same partition. Reserved cases remain outside the repair and tag-tuning steps."), mo.md("The notebook runs tools locally. Model calls use your fixed inference model and your account. The $8 allowance covers notebook inference; native tag judging and notebook compute are billed separately. Opening a step or editing code starts no paid work."), mo.md("[Companion deck](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/) · [Source and dataset provenance](https://github.com/ash0ts/forge-workshop-kit/tree/main/docs/airline_monitoring-runbook.md)")])
+    mo.vstack([mo.Html(ui.heading("Monitor an airline service agent and build better evaluations", "Sofia is flying from New York to Las Vegas through Phoenix. She wants to replace her first flight and keep the Phoenix–Las Vegas connection. The booking API replaces the complete itinerary: leaving out that connection can strand her in Phoenix even when the write succeeds.", theme="neutral", eyebrow="Airline service desk · Six-hour Forge workshop")), mo.md("You will run a working agent, inspect its behavior in Agent Lens, review a monitoring rule, and turn incidents into regression tests. Then you will repair the itinerary code and compare both versions on reserved requests. Sofia should still have a complete trip to Las Vegas."), mo.md("**Data:** simulated bookings, requests, and airline policy from a pinned MIT-licensed revision of [τ-bench](https://github.com/sierra-research/tau2-bench/tree/989d3285ae669e49503324bdb9981bf14fccedeb). This workshop adapts those records; it is not a benchmark replication or real passenger traffic. Related bookings stay in the same partition. Reserved cases remain outside the repair and tag-tuning steps."), mo.md("The notebook runs tools locally. Model calls use your fixed inference model and your account. The $8 allowance covers notebook inference; native tag judging and notebook compute are billed separately. Opening a step or editing code starts no paid work."), mo.md("[Companion deck](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/) · [Source and dataset provenance](https://github.com/ash0ts/forge-workshop-kit/tree/main/docs/airline_monitoring-runbook.md)")])
+    return
+
+
+# workshop-cell: airline_monitoring/controls/try_booking
+@app.cell(hide_code=True)
+def _(get_revision, get_step, mo, teaching):
+    _revision = get_revision()
+
+    opening_itinerary = mo.ui.radio({"Send only the changed flights": False, "Send the changed flights and preserve the rest": True}, value="Send only the changed flights", label="What will the replacement API receive?")
+    try_booking = mo.ui.run_button(label="Try the booking change locally")
+    mo.vstack([mo.md("### First, try the booking API"), mo.md(teaching.discovery_cases()[0]["mission"]), mo.md("Choose the flight list to send, then compare the booking before and after. This free simulator demonstration intentionally calls the API even when the passenger refuses; the live agent must get confirmation. No account, model request, or trace publication is needed."), opening_itinerary, try_booking]) if get_step() == "setup" else mo.md("")
+    return (opening_itinerary, try_booking,)
+
+
+# workshop-cell: airline_monitoring/action/try_booking
+@app.cell(hide_code=True)
+def _(mo, opening_itinerary, show, teaching, try_booking):
+    mo.stop(not try_booking.value)
+    show("opening-booking", teaching.opening_booking(include_untouched=opening_itinerary.value))
+    return
+
+
+# workshop-cell: airline_monitoring/display/8
+@app.cell(hide_code=True)
+def _(get_output, get_revision, get_step, mo):
+    _revision = get_revision()
+
+    _opening = get_output().get("opening-booking")
+    mo.stop(get_step() != "setup" or not _opening)
+    _rows = [{"When": when, "Flight": flight["flight_number"], "Date": flight["date"], "From": flight.get("origin"), "To": flight.get("destination")} for when, flights in (("Before", _opening["before"]), ("After", _opening["after"])) for flight in flights]
+    mo.vstack([mo.ui.table(_rows, selection=None), mo.md("**API saved:** " + str(_opening["api_saved"]) + " · **Passenger approved:** " + str(_opening["passenger_approved"])), mo.md("The API replaces the whole flight list. A successful write does not establish that the passenger got the itinerary they asked for. Now connect your project so we can follow an agent making this decision."), mo.accordion({"Exact replacement arguments": mo.json(_opening["arguments"])})])
     return
 
 
@@ -356,7 +391,7 @@ def _(airline, get_context, get_revision, get_step, mo, ui):
     return (booking_picker,)
 
 
-# workshop-cell: airline_monitoring/display/12
+# workshop-cell: airline_monitoring/display/15
 @app.cell(hide_code=True)
 def _(airline, booking_picker, get_revision, get_step, mo):
     _revision = get_revision()
@@ -390,16 +425,29 @@ def _(booking_explanation, booking_picker, get_context, mo, save_booking, save_l
     return
 
 
-# workshop-cell: airline_monitoring/controls/run_discovery
+# workshop-cell: airline_monitoring/controls/run_first_discovery
 @app.cell(hide_code=True)
-def _(checked, get_context, get_revision, get_step, mo, saved, ui):
+def _(checked, get_context, get_revision, get_step, mo, runs_for, saved, teaching, ui):
     _revision = get_revision()
 
     _s = get_context().get("session")
     _ready = bool(_s and saved("airline/booking") and checked("instrumentation"))
-    run_discovery = mo.ui.run_button(label="Run eight discovery requests", disabled=not _ready)
-    mo.vstack([mo.Html(ui.step("Let the service agent handle eight requests", "This is the starting agent using the complete-itinerary API. It is allowed to succeed. Each booking starts in an isolated copy; the passenger confirms only an offer that respects their request.", "For one request, compare the starting booking, actual tool arguments, resulting booking, and final response.")), mo.md("At most ten model requests per conversation, including transport retries. Completed cases are reused if a later case fails. This is the first paid exercise."), run_discovery, mo.md("Complete the booking explanation and tracing check first.") if not _ready else mo.md("Your tracing functions will record this batch.")]) if get_step() == "discovery" else mo.md("")
-    return (run_discovery,)
+    _first_id = teaching.discovery_cases()[0]["id"]
+    _first_done = any(row["case_id"] == _first_id for row in runs_for("discovery", "baseline"))
+    run_first_discovery = mo.ui.run_button(label="Run the first discovery request", disabled=not _ready)
+    run_discovery = mo.ui.run_button(label="Run the remaining seven discovery requests", disabled=not (_ready and _first_done))
+    mo.vstack([mo.Html(ui.step("Follow one request before running the batch", "Run the first request, chosen by its case ID before any outcomes are known. In its saved execution below, compare the starting booking, tool arguments, returned booking, and final response. Then run the other seven requests.", "You can point to the operation that preserved or changed Sofia’s Phoenix–Las Vegas connection before moving to the batch.")), mo.md("Each booking starts in an isolated copy. At most ten model requests per conversation, including retries. The starting agent is allowed to succeed. This is the first paid exercise."), run_first_discovery, mo.md("After inspecting the first result, continue with the same tracing functions. The batch freezes those functions on its first request; editing the draft afterward does not change already-saved executions."), run_discovery, mo.md("Complete the booking explanation and tracing check first.") if not _ready else mo.md("Completed requests are reused after a restart or a later failure.")]) if get_step() == "discovery" else mo.md("")
+    return (run_discovery, run_first_discovery,)
+
+
+# workshop-cell: airline_monitoring/action/run_first_discovery
+@app.cell(hide_code=True)
+def _(batch, get_context, mo, refresh, run_first_discovery, show):
+    mo.stop(not run_first_discovery.value)
+    show("discovery-first", batch("discovery", first_only=True))
+    get_context()["session"].checkpoint("discovery-first")
+    refresh()
+    return
 
 
 # workshop-cell: airline_monitoring/action/run_discovery
@@ -412,7 +460,7 @@ def _(batch, get_context, mo, refresh, run_discovery, show):
     return
 
 
-# workshop-cell: airline_monitoring/display/17
+# workshop-cell: airline_monitoring/display/21
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, ui):
     _revision = get_revision()
@@ -477,20 +525,72 @@ def _(get_context, investigation_case, investigation_claim, investigation_span, 
     return
 
 
-# workshop-cell: airline_monitoring/controls/run_calibration
+# workshop-cell: airline_monitoring/definitions/review_case
 @app.cell(hide_code=True)
-def _(get_context, get_revision, get_step, mo):
+def _(get_context, get_revision, get_step, mo, runs_for, ui):
     _revision = get_revision()
 
-    run_calibration = mo.ui.run_button(label="Create six controlled calibration traces", disabled=not bool(get_context().get("session")))
-    mo.vstack([mo.md("### If the live agent made no relevant mistake"), mo.md("Create six local simulator incidents for tag calibration: an omitted return flight, a valid one-way trip, a connection-to-nonstop change, an explicitly requested whole-itinerary change, recovery, and a request awaiting confirmation. These are controlled tool-only drills with no model calls. Their labels are teaching examples, not measured agent failures."), run_calibration]) if get_step() in ("investigate", "align") else mo.md("")
+    _s = get_context().get("session")
+    _reviewable = runs_for("discovery") + runs_for("monitoring") + runs_for("calibration")
+    review_case = mo.ui.dropdown({r["case_id"]: r["stage_id"] for r in _reviewable}, value=_reviewable[0]["case_id"] if _reviewable else None, label="Turn to review", full_width=True)
+    mo.vstack([mo.Html(ui.step("Label the booking outcome yourself", "Read the passenger request, starting booking, and returned booking. Decide whether an unrequested change occurred before asking a tag judge to decide.", "Save the label, expected behavior, and exact supporting operation. Insufficient evidence remains a separate finding.")), review_case]) if get_step() in ("review", "monitor") else mo.md("")
+    return (review_case,)
+
+
+# workshop-cell: airline_monitoring/controls/save_review
+@app.cell(hide_code=True)
+def _(get_revision, get_step, mo, review_case, runs_for, ui):
+    _revision = get_revision()
+
+    _reviewable = runs_for("discovery") + runs_for("monitoring") + runs_for("calibration")
+    review_label = mo.ui.radio({"Unrequested change": True, "No unrequested change": False, "Insufficient evidence": None}, value="Insufficient evidence", label="Your label")
+    review_expected = mo.ui.text_area(label="What behavior should a corrected agent produce from this starting booking?", full_width=True)
+    review_reason = mo.ui.text_area(label="Which request and booking details support your label?", full_width=True)
+    review_span = mo.ui.text(label="Supporting native span URL", full_width=True)
+    _selected_review = next((r for r in _reviewable if r["stage_id"] == review_case.value), None)
+    _events = (_selected_review or {}).get("events", [])
+    review_event = mo.ui.dropdown({str(index + 1) + " · " + e["name"]: e["id"] for index, e in enumerate(_events)}, value="1 · " + _events[0]["name"] if _events else None, label="Operation supporting your review", full_width=True)
+    _review_flights = [{"When": when, "Flight": flight["flight_number"], "Date": flight["date"]} for when, flights in (("Before", (_selected_review or {}).get("initial_state", {}).get("reservation", {}).get("flights", [])), ("After", (_selected_review or {}).get("world", {}).get("reservation", {}).get("flights", []))) for flight in flights]
+    save_review = mo.ui.run_button(label="Save my turn review", disabled=not bool(_reviewable))
+    mo.vstack([mo.md("Review ordinary outcomes as well as suspected failures. A successful recovery or valid shorter itinerary is a useful counterexample."), mo.md("**Selected request:** " + (_selected_review or {}).get("mission", "Choose a completed request.")), mo.ui.table(_review_flights, selection=None), ui.evidence(mo, _s, [_selected_review["stage_id"]], "Compare the returned booking with this passenger request.") if _selected_review else mo.md(""), review_label, review_reason, review_expected, review_span, review_event, save_review]) if get_step() in ("review", "monitor") else mo.md("")
+    return (review_event, review_expected, review_label, review_reason, review_span, save_review,)
+
+
+# workshop-cell: airline_monitoring/action/save_review
+@app.cell(hide_code=True)
+def _(get_context, mo, refresh, review_case, review_event, review_expected, review_label, review_reason, review_span, runs_for, save_local, save_review, teaching, trace_url):
+    mo.stop(not save_review.value)
+    _s = get_context()["session"]
+    _run = next(r for r in runs_for("discovery") + runs_for("monitoring") + runs_for("calibration") if r["stage_id"] == review_case.value)
+    _link = trace_url(_run)
+    mo.stop(not review_reason.value.strip() or not review_expected.value.strip(), mo.md("Explain the evidence and the expected behavior before saving the review."))
+    mo.stop(not _link or not review_span.value.startswith(_link + "/"), mo.md("Use a span in this selected run's verified Agent Lens conversation."))
+    _receipt = _s.read()["publications"].get("trace/" + _run["stage_id"], {})
+    _span_id = _receipt.get("span_ids", {}).get(review_event.value)
+    mo.stop(not _span_id or not review_span.value.rstrip("/").endswith("/" + _span_id), mo.md("The span URL must point to the selected operation. Open its link in the saved execution details."))
+    _turn_receipt = next((turn for turn in _receipt.get("turns", [_receipt]) if review_event.value in turn.get("span_ids", {})), None)
+    mo.stop(not _turn_receipt or ("/turns/" + _turn_receipt["trace_id"] + "/") not in review_span.value, mo.md("The selected operation belongs to another turn. Use its exact turn-and-span link."))
+    save_local("airline/review/" + _run["stage_id"] + "/" + _turn_receipt["trace_id"], {"stage_id": _run["stage_id"], "trace_id": _turn_receipt["trace_id"], "case_id": _run["case_id"], "human_label": review_label.value, "reason": review_reason.value, "span_url": review_span.value, "conversation_url": _link, "reviewer": _s.workspace_id, "expected_behavior": review_expected.value, "supporting_event_id": review_event.value, "decision": "accepted" if review_label.value is not None else "insufficient_evidence"})
+    if teaching.review_complete(_s): _s.checkpoint("review")
+    refresh()
+    return
+
+
+# workshop-cell: airline_monitoring/controls/run_calibration
+@app.cell(hide_code=True)
+def _(get_context, get_revision, get_step, mo, teaching):
+    _revision = get_revision()
+
+    run_calibration = mo.ui.run_button(label="Create six controlled calibration traces", disabled=not teaching.review_complete(get_context().get("session")))
+    mo.vstack([mo.md("### If the live agent made no relevant mistake"), mo.md("Create six local simulator incidents for tag calibration: an omitted return flight, a valid one-way trip, a connection-to-nonstop change, an explicitly requested whole-itinerary change, recovery, and a request awaiting confirmation. These are controlled tool-only drills with no model calls. Their labels are teaching examples, not measured agent failures."), run_calibration]) if get_step() == "align" else mo.md("")
     return (run_calibration,)
 
 
 # workshop-cell: airline_monitoring/action/run_calibration
 @app.cell(hide_code=True)
-def _(airline_calibration, get_context, mo, refresh, run_calibration, show):
+def _(airline_calibration, get_context, mo, refresh, run_calibration, show, teaching):
     mo.stop(not run_calibration.value)
+    mo.stop(not teaching.review_complete(get_context().get("session")), mo.md("Save a booking review before creating calibration examples."))
     _runs = airline_calibration.run_calibration_pack(get_context()["session"])
     show("calibration", {"status": "Controlled simulator incidents saved", "count": len(_runs), "model_calls": 0, "next": "Open these labeled conversations in Agent Lens, inspect their actual tools, and add relevant turns to Alignment."})
     refresh()
@@ -499,21 +599,22 @@ def _(airline_calibration, get_context, mo, refresh, run_calibration, show):
 
 # workshop-cell: airline_monitoring/controls/read_native_tag
 @app.cell(hide_code=True)
-def _(get_context, get_revision, get_step, mo, native_scope, saved, ui):
+def _(get_context, get_revision, get_step, mo, native_scope, teaching, ui):
     _revision = get_revision()
 
     _s = get_context().get("session")
     tag_id = mo.ui.text(value=_s.get_draft("airline/tag-id", "") if _s else "", label="Native tag ID", on_change=lambda value: _s.save_draft("airline/tag-id", value) if _s else None, full_width=True)
-    read_native_tag = mo.ui.run_button(label="Read back my tag and alignment", disabled=not bool(saved("airline/investigation")))
+    read_native_tag = mo.ui.run_button(label="Read back my tag and alignment", disabled=not teaching.review_complete(_s))
     mo.vstack([mo.Html(ui.step("Review an Unrequested itinerary change rule", "In Tags, choose New tag, Create manually, then turn on Apply with AI to reveal the criteria and agent filter. Create one tag scoped to the exact agent name below, then stop sending new traffic while you calibrate it. In Alignment, label both suspect and ordinary turns, test criteria, and inspect the judge's reasons. Alignment tests do not update live criteria: save your chosen criteria and read them back before the next traffic batch.", "You can explain a false positive, a missed issue, and a turn with insufficient evidence.")), mo.md("**Agent scope:** `" + (native_scope() if _s else "Connect first") + "`"), mo.md("Start with the request and what changed, not a count of remaining flights. Include a one-way booking, a valid connection-to-nonstop change, a requested full-itinerary change, recovery, and a request waiting for confirmation. Native judges see turn-level evidence; missing context is not a negative finding."), mo.Html(ui.links({"Open native Agent Lens": "https://forge.coreweave.com/agent-lens/" + _s.project, "How to create and align tags": "https://docs.coreweave.com/products/agent-lens/tags/create-tag"}) if _s else ""), tag_id, read_native_tag, mo.md("This readback checks saved native configuration. During release qualification, native Alignment test requests returned HTTP 500. The test control preserves those judgments as unavailable; it does not replace them with a local judge or report a failed booking. Tag configuration and manual labels remained accessible. Native tag calls are billed outside the notebook allowance.")]) if get_step() == "align" else mo.md("")
     return (read_native_tag, tag_id,)
 
 
 # workshop-cell: airline_monitoring/action/read_native_tag
 @app.cell(hide_code=True)
-def _(agent_lens, get_context, mo, native_scope, read_native_tag, refresh, save_local, show, tag_id):
+def _(agent_lens, get_context, mo, native_scope, read_native_tag, refresh, save_local, show, tag_id, teaching):
     mo.stop(not read_native_tag.value)
     _s = get_context()["session"]
+    mo.stop(not teaching.review_complete(_s), mo.md("Review a booking outcome before defining the tag."))
     try:
         _snapshot = agent_lens.save_tag_snapshot(_s, tag_id.value.strip(), native_scope())
         _client = agent_lens.LensClient(_s.project)
@@ -553,13 +654,14 @@ def _(check_monitor, check_source, mo, show, teaching):
 
 # workshop-cell: airline_monitoring/action/run_monitoring
 @app.cell(hide_code=True)
-def _(agent_lens, batch, get_context, mo, refresh, run_monitoring, save_local, saved, show):
+def _(agent_lens, batch, get_context, mo, refresh, run_monitoring, save_local, saved, show, teaching):
     mo.stop(not run_monitoring.value)
     _s = get_context()["session"]
     _tag = saved("airline/tag-context")["result"]
     _snapshot = agent_lens.save_tag_snapshot(_s, _tag["tag_id"], _tag["agent_name"], require_enabled=True)
     save_local("airline/tag-context", {**_tag, "snapshot": _snapshot})
     show("monitoring", batch("monitoring"))
+    if teaching.monitor_complete(_s): _s.checkpoint("monitor")
     refresh()
     return
 
@@ -577,55 +679,6 @@ def _(agent_lens, get_context, mo, read_monitoring, refresh, runs_for, save_loca
         show("monitoring-native", _native)
     except Exception as _error: show("monitoring-native", {"status": "unavailable", "error": str(_error)})
     refresh()
-    return
-
-
-# workshop-cell: airline_monitoring/definitions/review_case
-@app.cell(hide_code=True)
-def _(get_context, get_revision, get_step, mo, runs_for):
-    _revision = get_revision()
-
-    _s = get_context().get("session")
-    _reviewable = runs_for("discovery") + runs_for("monitoring") + runs_for("calibration")
-    review_case = mo.ui.dropdown({r["case_id"]: r["stage_id"] for r in _reviewable}, value=_reviewable[0]["case_id"] if _reviewable else None, label="Turn to review", full_width=True)
-    mo.vstack([mo.md("Choose a completed request, then review its evidence below."), review_case]) if get_step() == "monitor" else mo.md("")
-    return (review_case,)
-
-
-# workshop-cell: airline_monitoring/controls/save_review
-@app.cell(hide_code=True)
-def _(get_revision, get_step, mo, review_case, runs_for):
-    _revision = get_revision()
-
-    _reviewable = runs_for("discovery") + runs_for("monitoring") + runs_for("calibration")
-    review_label = mo.ui.radio({"Unrequested change": True, "No unrequested change": False, "Insufficient evidence": None}, value="Insufficient evidence", label="Your label")
-    review_expected = mo.ui.text_area(label="What behavior should a corrected agent produce from this starting booking?", full_width=True)
-    review_reason = mo.ui.text_area(label="Which request and booking details support your label?", full_width=True)
-    review_span = mo.ui.text(label="Supporting native span URL", full_width=True)
-    _selected_review = next((r for r in _reviewable if r["stage_id"] == review_case.value), None)
-    _events = (_selected_review or {}).get("events", [])
-    review_event = mo.ui.dropdown({str(index + 1) + " · " + e["name"]: e["id"] for index, e in enumerate(_events)}, value="1 · " + _events[0]["name"] if _events else None, label="Operation supporting your review", full_width=True)
-    save_review = mo.ui.run_button(label="Save my turn review", disabled=not bool(_reviewable))
-    mo.vstack([mo.md("**Review before counting.** Include unflagged controls. Read the passenger's request and the whole booking; the native tag is the claim you are checking."), review_label, review_reason, review_expected, review_span, review_event, save_review]) if get_step() == "monitor" else mo.md("")
-    return (review_event, review_expected, review_label, review_reason, review_span, save_review,)
-
-
-# workshop-cell: airline_monitoring/action/save_review
-@app.cell(hide_code=True)
-def _(get_context, mo, review_case, review_event, review_expected, review_label, review_reason, review_span, runs_for, save_local, save_review, trace_url):
-    mo.stop(not save_review.value)
-    _s = get_context()["session"]
-    _run = next(r for r in runs_for("discovery") + runs_for("monitoring") + runs_for("calibration") if r["stage_id"] == review_case.value)
-    _link = trace_url(_run)
-    mo.stop(not review_reason.value.strip() or not review_expected.value.strip(), mo.md("Explain the evidence and the expected behavior before saving the review."))
-    mo.stop(not _link or not review_span.value.startswith(_link + "/"), mo.md("Use a span in this selected run's verified Agent Lens conversation."))
-    _receipt = _s.read()["publications"].get("trace/" + _run["stage_id"], {})
-    _span_id = _receipt.get("span_ids", {}).get(review_event.value)
-    mo.stop(not _span_id or not review_span.value.rstrip("/").endswith("/" + _span_id), mo.md("The span URL must point to the selected operation. Open its link in the saved execution details."))
-    _turn_receipt = next((turn for turn in _receipt.get("turns", [_receipt]) if review_event.value in turn.get("span_ids", {})), None)
-    mo.stop(not _turn_receipt or ("/turns/" + _turn_receipt["trace_id"] + "/") not in review_span.value, mo.md("The selected operation belongs to another turn. Use its exact turn-and-span link."))
-    save_local("airline/review/" + _run["stage_id"] + "/" + _turn_receipt["trace_id"], {"stage_id": _run["stage_id"], "trace_id": _turn_receipt["trace_id"], "case_id": _run["case_id"], "human_label": review_label.value, "reason": review_reason.value, "span_url": review_span.value, "conversation_url": _link, "reviewer": _s.workspace_id, "expected_behavior": review_expected.value, "supporting_event_id": review_event.value, "decision": "accepted" if review_label.value is not None else "insufficient_evidence"})
-    _s.checkpoint("monitor")
     return
 
 
@@ -685,7 +738,7 @@ def _(agent_lens, alignment_picker, get_context, mo, refresh, run_alignment_test
 
 # workshop-cell: airline_monitoring/action/calculate_monitor
 @app.cell(hide_code=True)
-def _(calculate_monitor, digest, get_context, mo, review_for, save_local, saved, show, source_for, teaching):
+def _(calculate_monitor, digest, get_context, mo, refresh, review_for, save_local, saved, show, source_for, teaching):
     mo.stop(not calculate_monitor.value)
     _s = get_context()["session"]
     _fn = teaching.compile_code(source_for("monitor"))["my_monitor"]
@@ -700,6 +753,8 @@ def _(calculate_monitor, digest, get_context, mo, review_for, save_local, saved,
     _result = _fn(_rows)
     save_local("airline/monitor-agreement", {"metrics": _result, "rows": _rows}, sources={"monitor.py": source_for("monitor")})
     show("monitor-agreement", {**_result, "scope": "Explicit native tests paired with reviews of the same turn; live requests and labeled calibration drills may both be represented"})
+    if teaching.monitor_complete(_s): _s.checkpoint("monitor")
+    refresh()
     return
 
 
@@ -1035,14 +1090,14 @@ def _(agent_lens, confirm_tag_off, get_context, mo, refresh, save_local, saved, 
 def _(get_context, get_revision, get_step, mo, runs_for):
     _s = get_context().get("session")
     _revision = get_revision()
-    _phase = {"discovery": "discovery", "investigate": "discovery", "monitor": "monitoring", "repair": "development", "final": "final", "traffic": "subsequent"}.get(get_step())
+    _phase = {"discovery": "discovery", "investigate": "discovery", "review": "discovery", "monitor": "monitoring", "repair": "development", "final": "final", "traffic": "subsequent"}.get(get_step())
     _current_runs = (runs_for(_phase) if _phase else []) + (runs_for("calibration") if get_step() in ("investigate", "align") else [])
     run_picker = mo.ui.dropdown({r["label"] + " · " + r["case_id"]: r["stage_id"] for r in _current_runs}, value=_current_runs[0]["label"] + " · " + _current_runs[0]["case_id"] if _current_runs else None, label="Saved execution to inspect", full_width=True)
     mo.vstack([mo.md("### Compare the booking with the request"), mo.ui.table([{"Request": r["case_id"], "Version": r["label"], "Completed": r["status"], "Booking checks": r.get("scores", {}).get("task_success"), "Origin": r.get("scenario_origin", "Live simulator agent"), "Model attempts": r.get("model_attempts"), "Time (s)": r.get("elapsed_seconds"), "Measured cost (USD)": r.get("cost_usd"), "Unresolved cost bound (USD)": r.get("bounded_unknown_usd")} for r in _current_runs], selection=None), run_picker]) if _current_runs else mo.md("")
     return (run_picker,)
 
 
-# workshop-cell: airline_monitoring/display/63
+# workshop-cell: airline_monitoring/display/67
 @app.cell(hide_code=True)
 def _(get_context, get_revision, mo, run_picker, runs_for, ui):
     _revision = get_revision()
@@ -1058,11 +1113,11 @@ def _(get_context, get_revision, mo, run_picker, runs_for, ui):
     return
 
 
-# workshop-cell: airline_monitoring/display/64
+# workshop-cell: airline_monitoring/display/68
 @app.cell(hide_code=True)
 def _(get_context, get_output, get_revision, get_step, mo, saved, ui):
     _revision = get_revision()
-    _prefixes = {"setup": ("setup", "check/instrumentation"), "investigate": ("insights", "calibration"), "align": ("align", "calibration"), "monitor": ("check/monitor", "monitoring-native", "alignment-test", "monitor-agreement"), "curate": ("check/curation", "check/state_scorer", "check/judge_validation", "curation", "evaluation-code"), "repair": ("check/itinerary_builder", "regression-check", "explanation-judge"), "final": ("freeze", "publication"), "traffic": ("subsequent-native", "publication"), "report": ("publication", "report", "tag-off")}
+    _prefixes = {"setup": ("setup", "check/instrumentation"), "investigate": ("insights",), "align": ("align", "calibration"), "monitor": ("check/monitor", "monitoring-native", "alignment-test", "monitor-agreement"), "curate": ("check/curation", "check/state_scorer", "check/judge_validation", "curation", "evaluation-code"), "repair": ("check/itinerary_builder", "regression-check", "explanation-judge"), "final": ("freeze", "publication"), "traffic": ("subsequent-native", "publication"), "report": ("publication", "report", "tag-off")}
     _items = []
     for _key in _prefixes.get(get_step(), ()):
         _value = get_output().get(_key)
@@ -1140,7 +1195,7 @@ def _(export_trace, get_context, hooks, mo, native_scope, publish_saved_comparis
     return
 
 
-# workshop-cell: airline_monitoring/display/68
+# workshop-cell: airline_monitoring/display/72
 @app.cell(hide_code=True)
 def _(get_output, mo, ui):
     _recovery = get_output().get("recovery")

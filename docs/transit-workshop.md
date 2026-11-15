@@ -63,6 +63,8 @@ The separate CES v2 evaluation endpoint is not required for this workshop. Its h
 
 ## What the comparison can show
 
+You can run the saved timetable and write the after-midnight acceptance check before connecting. After the single-worker build, review and integrate its patches, then preview its actual app. Repeat that review and integration for the two-worker build. The follow-up starting release is selected only after both integrations exist, using the existing team-then-solo preference for a passing build.
+
 Keep the initial single-worker and coordinated build records. They explain differences in work allocation, integration and cost. The memory comparison uses matching follow-up requests and initial code, with shared lessons as the only intended treatment difference. It still contains only one pair per participant.
 
 Freeze the versions before final acceptance scenarios run. Final checks stay outside coding-worker requests and memory construction. Failed builds remain represented. An unavailable execution or judgment is different from a completed application that returns the wrong departure.

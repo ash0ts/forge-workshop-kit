@@ -1,0 +1,14 @@
+{
+  "case_id": "pcb1-anomaly-005",
+  "label": 1,
+  "partition": "fit",
+  "source_image": "pcb1/Data/Images/Anomaly/005.JPG",
+  "source_sha256": "ec34541be729af29a287bde12d4e3955cf3f83c734baea8a9505a7b801ce54e2",
+  "image": "images/pcb1-anomaly-005.jpg",
+  "image_sha256": "5c75dd80bcd1f9e8d12551afc94081c8dba07ed17680ee323c8122f5906e6ab8",
+  "mask": "masks/pcb1-anomaly-005.png",
+  "mask_sha256": "f0521ca9ebb2cfc3d54050255d6019da495861b7bb60372acd6d487ae8521352",
+  "license": "VisA CC BY 4.0",
+  "source_archive": "https://github.com/amazon-science/spot-diff",
+  "original_record_file": "data/inspection-v1/records.json"
+}

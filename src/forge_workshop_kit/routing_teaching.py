@@ -10,6 +10,11 @@ from .manifest import get_workshop
 
 STEPS = tuple(tuple(step) for step in get_workshop("banking-routing")["steps"])
 DATA_URL = "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0"
+OPENING_REQUEST = {
+    "case_id": "official-train/00021", "text": "What is the status of my card's delivery?",
+    "label": "card_arrival", "split": "review",
+    "source": "https://github.com/PolyAI-LDN/task-specific-datasets",
+}
 
 CLASSIFIER_STARTER = '''def make_classifier():
     from sklearn.linear_model import LogisticRegression
@@ -85,11 +90,52 @@ def judge_summary(session):
 
 
 def freeze_prerequisite(session):
-    if not session or not saved(session, "routing/baseline/embedding"):
+    if not baselines_complete(session):
         return "Train the two baseline classifiers first."
+    first = saved(session, "routing/baseline/tfidf")
+    second = saved(session, "routing/baseline/embedding")
+    if first.get("sources", {}).get("classifier.py") != second.get("sources", {}).get("classifier.py"):
+        return "The two representations used different classifier code. Restore the matched comparison before freezing."
     if not judge_summary(session):
         return "In Check the automated reviewer, run Compare the judge with up to eight of my reviews. Unavailable judgments are saved and will not block you afterward."
     return None
+
+
+def baselines_complete(session):
+    return bool(session and all(saved(session, "routing/baseline/" + kind) for kind in ("tfidf", "embedding")))
+
+
+def check_matched_classifier(session, source):
+    """Splitting the buttons must not turn a representation test into a settings test."""
+    for kind in ("tfidf", "embedding"):
+        record = saved(session, "routing/baseline/" + kind)
+        if record and record.get("sources", {}).get("classifier.py") != source:
+            raise ValueError("Restore the classifier code used for the saved " + kind +
+                             " run. Both representations must use the same classifier settings; use a new workspace for another recipe.")
+
+
+def validation_examples(session, kind="tfidf"):
+    record = saved(session, "routing/baseline/" + kind) if session else None
+    rows = (record or {}).get("result", {}).get("validation", [])
+    return sorted(rows, key=lambda row: (row["prediction"] == row["target"], row["case_id"]))
+
+
+def prompted_examples(session):
+    """The fixed eight-request sample from the saved embedding validation run."""
+    record = saved(session, "routing/baseline/embedding") if session else None
+    rows = (record or {}).get("result", {}).get("validation", [])
+    return sorted(rows, key=lambda row: row["case_id"])[:8]
+
+
+def prompted_complete(session):
+    rows = prompted_examples(session)
+    if len(rows) != 8:
+        return False
+    for row in rows:
+        record = saved(session, "routing/judge/prompted/" + row["case_id"])
+        if not record or record.get("result", {}).get("case_id") != row["case_id"]:
+            return False
+    return True
 
 
 def completed_steps(session):
@@ -102,8 +148,11 @@ def completed_steps(session):
         release.get("decision") == "release" and rollback
         and rollback["result"].get("release", {}).get("previous") == release.get("artifact")
         and rollback["result"].get("checks", {}).get("prediction_parity") is True))
-    return [step for step in ("setup","data","baseline","review","judge","improve","final","release","report")
+    return [step for step in ("setup","data","baseline","alternative","review","prompted","judge","improve","final","release","report")
             if (bool(judge_summary(session)) if step == "judge" else release_complete if step == "release"
+                else baselines_complete(session) if step == "baseline"
+                else "routing/baseline/embedding" in names if step == "alternative"
+                else prompted_complete(session) if step == "prompted"
                 else any(name.startswith("routing/"+step) for name in names))]
 
 

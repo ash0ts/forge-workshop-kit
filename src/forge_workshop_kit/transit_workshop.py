@@ -63,6 +63,8 @@ def can_run(session, action):
         return False
     checks = {'solo': _checked(session, 'acceptance') and _checked(session, 'worker'),
               'team': _checked(session, 'acceptance') and _checked(session, 'worker') and _checked(session, 'tasks'),
+              'integrate-solo': 'solo' in state.get('builds', {}),
+              'integrate-team': 'team' in state.get('builds', {}),
               'integrate': all(name in state.get('builds', {}) for name in ('solo', 'team')),
               'prepared-reference': all(name in state.get('integrations', {}) for name in ('solo', 'team'))
                   and not state.get('base_release') and not state.get('frozen') and _checked(session, 'acceptance'),
@@ -84,6 +86,8 @@ def blocked(session, action):
         return 'The comparison is frozen. Inspect its saved results; use a new workspace for another build.'
     return {'solo': 'Check your departure acceptance rule and build_worker_request first.',
             'team': 'Check your departure acceptance rule, build_worker_request, ready_tasks, and claim_task first.',
+            'integrate-solo': 'Run the one-builder attempt, then review its patches.',
+            'integrate-team': 'Run the two-builder attempt, then review its patches.',
             'integrate': 'Run both the one-builder and two-builder attempts first.',
             'prepared-reference': 'Review both initial attempts and test their integration first. Use this continuation only when neither produces a passing release.',
             'preview': 'Review and integrate the returned patches first.',
@@ -156,10 +160,10 @@ def run_initial(session, label, worker_code, *, workers=1, task_code=None):
     return _build(session, label, transit.starter_sources(), 1, worker_code, task_code, workers=workers)
 
 
-def patch_review(session, followup=False):
+def patch_review(session, followup=False, *, labels=None):
     state = _state(session)
     parts = []
-    for label in (('without-memory', 'with-memory') if followup else ('solo', 'team')):
+    for label in (labels if labels is not None else ('without-memory', 'with-memory') if followup else ('solo', 'team')):
         if label not in state.get('builds', {}):
             continue
         board = factory.load_board(session, label).snapshot()
@@ -230,9 +234,10 @@ def _integrate(session, labels):
     return output_rows
 
 
-def integrate_initial(session):
-    _require(session, 'integrate')
-    results = _integrate(session, ('solo', 'team'))
+def _select_initial_release(session):
+    results = _state(session).get('integrations', {})
+    if not all(label in results for label in ('solo', 'team')):
+        return
     # Fixed preference: two-worker build, otherwise the tested one-worker build.
     # A prepared repair is available separately; it never replaces a failed live build.
     if not _state(session).get('base_release'):
@@ -241,6 +246,23 @@ def integrate_initial(session):
             if row['passed'] and row['all_tasks_integrated']:
                 _put(session, 'base_release', {'label': label, 'sources': row['sources'], 'fingerprint': row['source_fingerprint']})
                 break
+
+
+def integrate_build(session, label):
+    """Review one initial build without choosing the follow-up's starting release early."""
+    if label not in ('solo', 'team'):
+        raise ValueError('Choose solo or team for the first work order.')
+    _require(session, 'integrate-' + label)
+    results = _integrate(session, (label,))
+    _select_initial_release(session)
+    return results
+
+
+def integrate_initial(session):
+    """Compatibility entry point: integrate both initial builds and select as before."""
+    _require(session, 'integrate')
+    results = _integrate(session, ('solo', 'team'))
+    _select_initial_release(session)
     return results
 
 
@@ -686,16 +708,19 @@ def result_views(mo,session,step,outputs):
         views.extend([mo.md('### '+LABELS[label]),mo.Html(teaching.task_board(board)),
                       mo.Html(teaching.timeline(board['events'])),
                       mo.accordion({'Saved build details':mo.json(state['builds'][label]['result']['metrics'])})])
-    for key in (step+' check',step,'lesson proposal' if step=='memory' else '', 'app' if step=='integrate' else ''):
+    for key in (step+' check',step,'lesson proposal' if step=='memory' else '', 'app' if step in ('worker','integrate') else ''):
         if key and key in outputs:
             value=outputs[key]
+            if key == 'app' and step == 'worker' and value.get('build') != 'solo':
+                continue
             if isinstance(value,dict) and value.get('html'):
                 # Candidate HTML is rendered in an opaque, script-disabled frame.
                 views.append(mo.Html('<iframe title="Saved transit app" sandbox="" style="width:100%;height:300px;border:1px solid #888" srcdoc="'+html.escape(value['html'],quote=True)+'"></iframe>'))
             else: views.append(mo.accordion({key:mo.json(value)}))
-    if step=='integrate' and state.get('integrations'):
+    if step in ('worker','integrate') and state.get('integrations'):
         views.append(mo.ui.table([{'build':LABELS[k],'passed':r['passed'],'integrated':r['all_tasks_integrated'],
-                                  'checks':len(r['checks'])} for k,r in state['integrations'].items() if k in ('solo','team')],selection=None))
+                                  'checks':len(r['checks'])} for k,r in state['integrations'].items()
+                                 if k in (('solo',) if step == 'worker' else ('solo','team'))],selection=None))
     if step=='memory' and state.get('lesson'): views.append(mo.json(state['lesson']))
     if step in ('evaluate','release') and state.get('evaluations'):
         views.append(mo.ui.table([{'Version':LABELS[k],'All checks passed':'Yes' if r['passed'] else 'No',

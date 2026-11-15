@@ -1,7 +1,7 @@
 {
   "session_minutes": 330,
-  "main_slides": 65,
-  "total_slides": 70,
+  "main_slides": 67,
+  "total_slides": 72,
   "slides": [
     {
       "number": 1,
@@ -69,19 +69,48 @@
       "timing": {
         "section": "setup",
         "start": 4,
-        "duration": 3
+        "duration": 2
       }
     },
     {
       "number": 4,
+      "title": "Read a request before revealing its label",
+      "body": "\n\n<p class=\"where\">Notebook \u2192 Inspect requests</p><ol><li>Click Download and check Banking77.</li><li>Choose a request and explain the support workflow it needs.</li><li>Reveal the published label. Keep any disagreement as a question to inspect.</li></ol><div class=\"done\"><strong>Run:</strong> Download and check Banking77<br><strong>Check:</strong> Identify a request where similar wording could lead to a different intent.</div>",
+      "notes": "Allow five minutes for individual predictions and partner discussion. The download includes 20 MB of cached features, original CSVs, license, and checksum manifest. Data loading sends no model call. Inspect the bundled development request in setup before authenticating. Guess its intent, then reveal the published annotation.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
+      "time": "0:06",
+      "kind": "exercise",
+      "name": "read-request",
+      "answer": null,
+      "key": "read-request",
+      "start_minute": 6,
+      "concept": "Read a request before revealing its label",
+      "source": [
+        "src/forge_workshop_kit/routing.py",
+        "scripts/routing_cells.py"
+      ],
+      "evidence": [],
+      "exercise": {
+        "step": "read-request",
+        "function": null,
+        "check": null,
+        "run": "Download and check Banking77"
+      },
+      "timing": {
+        "section": "setup",
+        "start": 6,
+        "duration": 3
+      }
+    },
+    {
+      "number": 5,
       "title": "The dataset contains 77 banking intents",
       "body": "<div class=\"two-col\"><div class=\"metric\">10,003<small>Original training messages</small></div><div class=\"metric\">3,080<small>Original test messages</small></div></div><p>Banking77 was published by PolyAI researchers with intent annotations. We preserve the official test split.</p><p class=\"caption\">CC-BY-4.0 \u00b7 Casanueva et al., 2020 \u00b7 Dataset source and checksums travel with the workshop download.</p>",
       "notes": "The data are public queries, not attendee customer records. There are 77 classes. The official test set contains 40 examples per class. One low-resource training class has only 35 examples, which is why we reserve ten validation and ten review cases per class rather than twenty each.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
-      "time": "0:07",
+      "time": "0:09",
       "kind": "",
       "name": "dataset",
       "key": "dataset",
-      "start_minute": 7,
+      "start_minute": 9,
       "concept": "The dataset contains 77 banking intents",
       "source": [
         "src/forge_workshop_kit/routing.py",
@@ -91,20 +120,20 @@
       "exercise": null,
       "timing": {
         "section": "setup",
-        "start": 7,
+        "start": 9,
         "duration": 3
       }
     },
     {
-      "number": 5,
+      "number": 6,
       "title": "Give each partition one job",
       "body": "<svg class=\"diagram\" viewBox=\"0 0 1120 290\" role=\"img\" aria-label=\"8463 train messages fit models,770 validation choose changes,770 review accept labels,3080 official test evaluate frozen versions\"><rect x=\"0\" y=\"30\" width=\"330\" height=\"135\" fill=\"#d5e5d8\"/><rect x=\"350\" y=\"30\" width=\"230\" height=\"135\" fill=\"#e6e5ce\"/><rect x=\"600\" y=\"30\" width=\"230\" height=\"135\" fill=\"#e6e5ce\"/><rect x=\"850\" y=\"30\" width=\"260\" height=\"135\" fill=\"#dfe3e0\"/><text x=\"24\" y=\"70\" style=\"font-size:29px\">8,463 train</text><text x=\"24\" y=\"115\" style=\"font-size:22px\">Fit classifier weights</text><text x=\"372\" y=\"70\" style=\"font-size:29px\">770 validation</text><text x=\"372\" y=\"115\" style=\"font-size:22px\">Choose settings</text><text x=\"622\" y=\"70\" style=\"font-size:29px\">770 review</text><text x=\"622\" y=\"115\" style=\"font-size:22px\">Accept labels</text><text x=\"872\" y=\"70\" style=\"font-size:29px\">3,080 test</text><text x=\"872\" y=\"115\" style=\"font-size:22px\">Score frozen choices</text><path d=\"M20 190H820\" stroke=\"#587a69\" stroke-width=\"2\"/><text x=\"225\" y=\"230\" style=\"font-size:23px\">Derived from the authors\u2019 training split</text><text x=\"872\" y=\"230\" style=\"font-size:23px\">Official test split</text></svg>",
       "notes": "The split order was fixed before any model score. Ten examples of every intent go to validation and ten to the review pool. The test partition is only opened after selection freezes. Files are public for teaching; the code keeps final cases out of model-editing and labeling prompts.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
-      "time": "0:10",
+      "time": "0:12",
       "kind": "",
       "name": "partitions",
       "key": "partitions",
-      "start_minute": 10,
+      "start_minute": 12,
       "concept": "Give each partition one job",
       "source": [
         "src/forge_workshop_kit/routing.py",
@@ -114,21 +143,21 @@
       "exercise": null,
       "timing": {
         "section": "setup",
-        "start": 10,
-        "duration": 5
+        "start": 12,
+        "duration": 4
       }
     },
     {
-      "number": 6,
+      "number": 7,
       "title": "Open your copy and add your first trace",
       "body": "\n\n<p class=\"where\">Notebook \u2192 Connect</p><ol><li>Copy the template into a writable project and open Edit.</li><li>Run stale cells to create the controls; exercise buttons stay unpressed.</li><li>In <code>instrument_tool</code>, add a descriptive span attribute.</li></ol><div class=\"done\"><strong>Run:</strong> Connect and restore my work \u2192 Send my first Agent Lens trace<br><strong>Check:</strong> Find your attribute in the tool span.</div>",
       "notes": "Let everyone open their own project. Hosted authentication is inherited; there is no shared gateway or host token. The $8 adjustable allowance covers fixed-model inference; CPU notebook charges are separate.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
-      "time": "0:15",
+      "time": "0:16",
       "kind": "exercise",
       "name": "connect",
       "answer": null,
       "key": "connect",
-      "start_minute": 15,
+      "start_minute": 16,
       "concept": "Open your copy and add your first trace",
       "source": [
         "src/forge_workshop_kit/routing.py",
@@ -143,20 +172,20 @@
       },
       "timing": {
         "section": "setup",
-        "start": 15,
+        "start": 16,
         "duration": 7
       }
     },
     {
-      "number": 7,
+      "number": 8,
       "title": "The span should explain the operation",
       "body": "```python {1-4|5-8|all}\nwith tracing.Tool(\n    name=observation[\"name\"],\n    arguments=observation[\"arguments\"],\n    result=observation[\"result\"],\n    started_at=stamp(observation[\"started_at\"]),\n    ended_at=stamp(observation[\"ended_at\"]),\n) as span:\n    span.set_attributes({\"workshop.exercise\": \"request-routing\"})\n```<p class=\"caption\">Open the returned Agent Lens link. Check the arguments, result, timestamp, and your attribute.</p>",
       "notes": "The notebook captures an independent event receipt and uses this participant-written function to export it. We compare stored spans with the receipt. A publication failure does not mean the operation failed or should be repeated.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
-      "time": "0:22",
+      "time": "0:23",
       "kind": "",
       "name": "trace",
       "key": "trace",
-      "start_minute": 22,
+      "start_minute": 23,
       "concept": "The span should explain the operation",
       "source": [
         "src/forge_workshop_kit/routing.py",
@@ -166,37 +195,8 @@
       "exercise": null,
       "timing": {
         "section": "setup",
-        "start": 22,
-        "duration": 4
-      }
-    },
-    {
-      "number": 8,
-      "title": "Read a request before revealing its label",
-      "body": "\n\n<p class=\"where\">Notebook \u2192 Inspect requests</p><ol><li>Click Download and check Banking77.</li><li>Choose a request and explain the support workflow it needs.</li><li>Reveal the published label. Keep any disagreement as a question to inspect.</li></ol><div class=\"done\"><strong>Run:</strong> Download and check Banking77<br><strong>Check:</strong> Identify a request where similar wording could lead to a different intent.</div>",
-      "notes": "Allow five minutes for individual predictions and partner discussion. The download includes 20 MB of cached features, original CSVs, license, and checksum manifest. Data loading sends no model call.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
-      "time": "0:26",
-      "kind": "exercise",
-      "name": "read-request",
-      "answer": null,
-      "key": "read-request",
-      "start_minute": 26,
-      "concept": "Read a request before revealing its label",
-      "source": [
-        "src/forge_workshop_kit/routing.py",
-        "scripts/routing_cells.py"
-      ],
-      "evidence": [],
-      "exercise": {
-        "step": "read-request",
-        "function": null,
-        "check": null,
-        "run": "Download and check Banking77"
-      },
-      "timing": {
-        "section": "data",
-        "start": 26,
-        "duration": 10
+        "start": 23,
+        "duration": 7
       }
     },
     {
@@ -204,11 +204,11 @@
       "title": "Start with a word-based classifier",
       "body": "<div class=\"flow\"><div>Request<small>\u201cWhere is my card?\u201d</small></div><b class=\"arrow\">\u2192</b><div>TF\u2013IDF<small>Word unigrams and bigrams</small></div><b class=\"arrow\">\u2192</b><div>Linear classifier<small>77 intent probabilities</small></div></div><p>TF\u2013IDF gives distinctive words and phrases more weight. The classifier learns which combinations indicate each intent.</p><p class=\"caption\">The text example illustrates the representation. The measured comparison uses the complete fixed partitions.</p>",
       "notes": "Explain unigrams and bigrams with card and my card. Fit the vectorizer only on training messages so validation vocabulary does not alter the feature space. This is a standard, inexpensive baseline, not a deliberately broken model.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
-      "time": "0:36",
+      "time": "0:30",
       "kind": "",
       "name": "words",
       "key": "words",
-      "start_minute": 36,
+      "start_minute": 30,
       "concept": "Start with a word-based classifier",
       "source": [
         "src/forge_workshop_kit/routing.py",
@@ -217,9 +217,9 @@
       "evidence": [],
       "exercise": null,
       "timing": {
-        "section": "representations",
-        "start": 36,
-        "duration": 3
+        "section": "data",
+        "start": 30,
+        "duration": 5
       }
     },
     {
@@ -230,8 +230,8 @@
       "body": "<RoutingMechanism kind=\"vocabulary\" :step=\"1\" />",
       "notes": "Read the real review-pool message aloud. The default tokenizer produces my, card, isn, here, yet; single-letter t is omitted. The nine nonzero TF\u2013IDF weights are recalculated from the frozen 8,463 training messages and shown against the actual 21,527-column vocabulary. IDF and the vocabulary use training text only.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
       "kind": "",
-      "time": "0:39",
-      "start_minute": 39,
+      "time": "0:35",
+      "start_minute": 35,
       "answer": null,
       "exercise": null,
       "concept": "Measure the words and phrases in one request",
@@ -244,21 +244,78 @@
         "examples/routing/recorded-review.json"
       ],
       "timing": {
-        "section": "representations",
-        "start": 39,
-        "duration": 7
+        "section": "data",
+        "start": 35,
+        "duration": 5
       }
     },
     {
       "number": 11,
+      "title": "Implement the classifier head",
+      "body": "<a class=\"answer-link\" href=\"/classifier-answer\">Worked answer \u2197</a>\n\n<p class=\"where\">Notebook \u2192 Train the word classifier</p><ol><li>Complete <code>make_classifier</code> with <code>LogisticRegression(C=10, max_iter=1000, random_state=17)</code>.</li><li>Click <strong>Check my classifier code</strong>, then <strong>Fit and predict four practice points</strong>.</li><li>Fit the word-feature baseline first. We will change representations after inspecting its errors.</li></ol><div class=\"done\"><strong>Run:</strong> Train the word-feature baseline<br><strong>Check:</strong> Open one validation request and the saved classifier source in Forge.</div>",
+      "notes": "The participant function is used in both actual fits. CPU training is bounded by iterations and two numerical-library threads. In preparation each fit took under four seconds with cached features; participant machines and hosting differ. Use the four-point practice fit to distinguish creating an estimator from fitting it. Practice points are illustrative and are not Banking77 embeddings.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
+      "time": "0:40",
+      "kind": "exercise",
+      "name": "classifier-exercise",
+      "answer": "classifier-answer",
+      "key": "classifier-exercise",
+      "start_minute": 40,
+      "concept": "Implement the classifier head",
+      "source": [
+        "src/forge_workshop_kit/routing.py",
+        "scripts/routing_cells.py"
+      ],
+      "evidence": [],
+      "exercise": {
+        "step": "Train the word classifier",
+        "function": "make_classifier",
+        "check": "Check my classifier code",
+        "run": "Train the word-feature baseline"
+      },
+      "timing": {
+        "section": "representations",
+        "start": 40,
+        "duration": 11
+      }
+    },
+    {
+      "number": 12,
+      "name": "baseline-observation",
+      "key": "baseline-observation",
+      "title": "Read one prediction before comparing models",
+      "body": "<div class=\"where\">Notebook: Train the word classifier</div><ol><li>Select a saved validation request. Read the message, predicted intent, and reference intent.</li><li>Describe the mismatch, or explain a correct route. What might the word representation miss?</li><li>Optionally click <strong>Save my baseline observation</strong>.</li></ol><p class=\"done\"><b>Check:</b> The first classifier is saved. The two-representation comparison is still incomplete.</p>",
+      "notes": "Keep the baseline result on screen before discussing embeddings or aggregate gains. Opening another case only reads saved predictions. Ask participants for a testable representation hypothesis, not a claim that every mistake will disappear.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/routing_cells.py.",
+      "kind": "exercise",
+      "time": "0:51",
+      "start_minute": 51,
+      "answer": null,
+      "concept": "Read one prediction before comparing models",
+      "source": [
+        "scripts/routing_cells.py"
+      ],
+      "evidence": [],
+      "exercise": {
+        "step": "Train the word classifier",
+        "function": null,
+        "check": null,
+        "run": "Save my baseline observation"
+      },
+      "timing": {
+        "section": "representations",
+        "start": 51,
+        "duration": 5
+      }
+    },
+    {
+      "number": 13,
       "title": "Then change the representation",
       "body": "<div class=\"flow\"><div>Request<small>Same messages and splits</small></div><b class=\"arrow\">\u2192</b><div>Frozen MiniLM<small>384 numbers per message</small></div><b class=\"arrow\">\u2192</b><div>Linear classifier<small>Same training recipe</small></div></div><p>The pretrained encoder gives semantically similar sentences nearby representations. Only the classifier\u2019s weights train here.</p><p class=\"caption\">all-MiniLM-L6-v2 \u00b7 pinned revision \u00b7 attention-masked mean pooling \u00b7 L2 normalization</p>",
       "notes": "Contrast sentence representation with lexical overlap. The cached encoder features are versioned and can be regenerated by the supplied preparation code. Cache lookup timing is not end-to-end encoder latency. The comparison changes representation, not data quantity or test cases.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
-      "time": "0:46",
+      "time": "0:56",
       "kind": "",
       "name": "embeddings",
       "key": "embeddings",
-      "start_minute": 46,
+      "start_minute": 56,
       "concept": "Then change the representation",
       "source": [
         "src/forge_workshop_kit/routing.py",
@@ -268,20 +325,20 @@
       "exercise": null,
       "timing": {
         "section": "representations",
-        "start": 46,
+        "start": 56,
         "duration": 3
       }
     },
     {
-      "number": 12,
+      "number": 14,
       "name": "sentence-vector",
       "key": "sentence-vector",
       "title": "Keep one vector for each request",
       "body": "<RoutingMechanism kind=\"vector\" :step=\"2\" />",
       "notes": "Compare the unchanged message with the different representation. Explain 384 as the encoder output size, not a count of hand-chosen keywords. The heatmap shows all 384 actual cached coordinates in index order. Color is signed magnitude, not semantic location. Encoder weights stay frozen.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
       "kind": "",
-      "time": "0:49",
-      "start_minute": 49,
+      "time": "0:59",
+      "start_minute": 59,
       "answer": null,
       "exercise": null,
       "concept": "Keep one vector for each request",
@@ -293,20 +350,20 @@
       "evidence": [],
       "timing": {
         "section": "representations",
-        "start": 49,
+        "start": 59,
         "duration": 3
       }
     },
     {
-      "number": 13,
+      "number": 15,
       "name": "construct-head",
       "key": "construct-head",
       "title": "Construct the estimator before fitting it",
       "body": "<RoutingMechanism kind=\"fit\" :step=\"1\" />",
       "notes": "Point to make_classifier: it returns an unfitted estimator. C is inverse regularization strength; changing it changes the training objective, not the number of output intents. max_iter limits optimization. Use the fixed recipe in the required path.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
       "kind": "",
-      "time": "0:52",
-      "start_minute": 52,
+      "time": "1:02",
+      "start_minute": 62,
       "answer": null,
       "exercise": null,
       "concept": "Construct the estimator before fitting it",
@@ -318,20 +375,20 @@
       "evidence": [],
       "timing": {
         "section": "representations",
-        "start": 52,
+        "start": 62,
         "duration": 2
       }
     },
     {
-      "number": 14,
+      "number": 16,
       "name": "fit-head",
       "key": "fit-head",
       "title": "Fit the head on the labeled training rows",
       "body": "<RoutingMechanism kind=\"fit\" :step=\"2\" />",
       "notes": "The learner factory supplies the estimator in both branches. TF\u2013IDF fits a vectorizer and head; the embedding branch fits the head on cached features. Both see the same 8,463 labels. The sparse vocabulary width and 384 embedding values are different input spaces.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
       "kind": "",
-      "time": "0:54",
-      "start_minute": 54,
+      "time": "1:04",
+      "start_minute": 64,
       "answer": null,
       "exercise": null,
       "concept": "Fit the head on the labeled training rows",
@@ -343,49 +400,20 @@
       "evidence": [],
       "timing": {
         "section": "representations",
-        "start": 54,
+        "start": 64,
         "duration": 3
       }
     },
     {
-      "number": 15,
-      "title": "Implement the classifier head",
-      "body": "<a class=\"answer-link\" href=\"/classifier-answer\">Worked answer \u2197</a>\n\n<p class=\"where\">Notebook \u2192 Train classifiers</p><ol><li>Complete <code>make_classifier</code> with <code>LogisticRegression(C=10, max_iter=1000, random_state=17)</code>.</li><li>Run the free practice check.</li><li>Train both representations using that same function.</li></ol><div class=\"done\"><strong>Run:</strong> Train both classifiers on the same messages<br><strong>Check:</strong> Compare validation macro-F1 and open the saved source in Forge.</div>",
-      "notes": "The participant function is used in both actual fits. CPU training is bounded by iterations and two numerical-library threads. In preparation each fit took under four seconds with cached features; participant machines and hosting differ.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
-      "time": "0:57",
-      "kind": "exercise",
-      "name": "classifier-exercise",
-      "answer": "classifier-answer",
-      "key": "classifier-exercise",
-      "start_minute": 57,
-      "concept": "Implement the classifier head",
-      "source": [
-        "src/forge_workshop_kit/routing.py",
-        "scripts/routing_cells.py"
-      ],
-      "evidence": [],
-      "exercise": {
-        "step": "Train classifiers",
-        "function": "make_classifier",
-        "check": "Check my classifier code",
-        "run": "Train both classifiers on the same messages"
-      },
-      "timing": {
-        "section": "representations",
-        "start": 57,
-        "duration": 11
-      }
-    },
-    {
-      "number": 16,
+      "number": 17,
       "name": "predict-probabilities",
       "key": "predict-probabilities",
       "title": "A fitted classifier returns 77 probabilities",
       "body": "<RoutingMechanism kind=\"fit\" :step=\"3\" />",
       "notes": "After the exercise, locate predict_proba and classes_. Array position alone is not an intent label; the class order maps columns to names. Ask which files would be needed to predict after restarting.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
       "kind": "",
-      "time": "1:08",
-      "start_minute": 68,
+      "time": "1:07",
+      "start_minute": 67,
       "answer": null,
       "exercise": null,
       "concept": "A fitted classifier returns 77 probabilities",
@@ -397,20 +425,48 @@
       "evidence": [],
       "timing": {
         "section": "representations",
-        "start": 68,
-        "duration": 4
+        "start": 67,
+        "duration": 3
       }
     },
     {
-      "number": 17,
+      "number": 18,
+      "name": "alternative-exercise",
+      "key": "alternative-exercise",
+      "title": "Test the sentence-feature alternative",
+      "body": "<div class=\"where\">Notebook: Compare sentence features</div><ol><li>Keep make_classifier unchanged.</li><li>Click <strong>Train the sentence-feature alternative</strong>.</li><li>Return to the same validation request. Compare both predictions before the aggregate table.</li></ol><p class=\"done\"><b>Check:</b> Both runs use identical classifier code and training messages.</p>",
+      "notes": "The encoder is frozen and its cached vectors are versioned. This button completes the existing two-run comparison; it adds no third fit. Previously completed workspaces reuse their saved runs.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/routing_cells.py.",
+      "kind": "exercise",
+      "time": "1:10",
+      "start_minute": 70,
+      "answer": null,
+      "concept": "Test the sentence-feature alternative",
+      "source": [
+        "scripts/routing_cells.py"
+      ],
+      "evidence": [],
+      "exercise": {
+        "step": "Compare sentence features",
+        "function": null,
+        "check": null,
+        "run": "Train the sentence-feature alternative"
+      },
+      "timing": {
+        "section": "representations",
+        "start": 70,
+        "duration": 6
+      }
+    },
+    {
+      "number": 19,
       "title": "Macro-F1 gives each intent equal weight",
       "body": "<div class=\"two-col\"><div><h2>Precision</h2><p>Of the requests sent to an intent, how many belonged there?</p><h2>Recall</h2><p>Of the requests that belonged there, how many did we find?</p></div><div><h2>F1 per intent</h2><p>The harmonic mean of that intent\u2019s precision and recall.</p><h2>Macro-F1</h2><p>Average the 77 intent scores. Keep per-intent mistakes alongside it.</p></div></div>",
       "notes": "Do not average row-wise F1 values. Macro-F1 is computed from the whole matched prediction set. Accuracy is also reported. Neither metric tells the whole operational story because review can defer some cases.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
-      "time": "1:12",
+      "time": "1:16",
       "kind": "",
       "name": "macro-f1",
       "key": "macro-f1",
-      "start_minute": 72,
+      "start_minute": 76,
       "concept": "Macro-F1 gives each intent equal weight",
       "source": [
         "src/forge_workshop_kit/routing.py",
@@ -423,20 +479,20 @@
       "exercise": null,
       "timing": {
         "section": "metrics",
-        "start": 72,
-        "duration": 3
+        "start": 76,
+        "duration": 2
       }
     },
     {
-      "number": 18,
+      "number": 20,
       "name": "intent-counts",
       "key": "intent-counts",
       "title": "Count the errors for one intent",
       "body": "<RoutingMechanism kind=\"metrics\" :step=\"1\" />",
       "notes": "These are the recorded embedding model\u2019s official-test card_arrival predictions: 34 true positives, 3 false positives, 6 false negatives. Trace a misroute to the appropriate count. This example explains the metric; do not select a new model using these final examples.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
       "kind": "",
-      "time": "1:15",
-      "start_minute": 75,
+      "time": "1:18",
+      "start_minute": 78,
       "answer": null,
       "exercise": null,
       "concept": "Count the errors for one intent",
@@ -450,20 +506,20 @@
       ],
       "timing": {
         "section": "metrics",
-        "start": 75,
+        "start": 78,
         "duration": 3
       }
     },
     {
-      "number": 19,
+      "number": 21,
       "name": "intent-average",
       "key": "intent-average",
       "title": "Calculate F1, then average across intents",
       "body": "<RoutingMechanism kind=\"metrics\" :step=\"2\" />",
       "notes": "Compute precision 34/37 and recall 34/40. F1 is 68/77=0.883117 for this intent. The bars show all 77 saved intent F1s; their mean is the existing 0.920229 result. A per-case correct flag is a different measurement.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
       "kind": "",
-      "time": "1:18",
-      "start_minute": 78,
+      "time": "1:21",
+      "start_minute": 81,
       "answer": null,
       "exercise": null,
       "concept": "Calculate F1, then average across intents",
@@ -477,20 +533,20 @@
       ],
       "timing": {
         "section": "metrics",
-        "start": 78,
-        "duration": 4
+        "start": 81,
+        "duration": 5
       }
     },
     {
-      "number": 20,
+      "number": 22,
       "title": "The worked comparison reduced routing mistakes",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Fixed recipe</th><th>Test macro-F1</th><th>Accuracy</th></tr><tr><td>Word TF\u2013IDF + classifier</td><td>0.879385</td><td>0.879545</td></tr><tr><td>Frozen MiniLM + classifier</td><td>0.920229</td><td>0.920779</td></tr></tbody></table><p>Embedding features improved macro-F1 by <strong>4.0844 percentage points</strong> on the same 3,080 test messages.</p><p class=\"caption\">Recorded qualification, not your live result. Seeds 17, 29, 43 produced identical fits; this is one dataset split, not three independent studies.</p>",
       "notes": "The fixed contract preceded final evaluation. Publish all six outcomes. Participants will inspect their own validation results first; the recorded result is a worked comparison and cannot be attributed to unexecuted learner edits. The deterministic seed repetitions check reproduction rather than uncertainty.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
-      "time": "1:22",
+      "time": "1:26",
       "kind": "",
       "name": "recorded-gain",
       "key": "recorded-gain",
-      "start_minute": 82,
+      "start_minute": 86,
       "concept": "The worked comparison reduced routing mistakes",
       "source": [
         "src/forge_workshop_kit/routing.py",
@@ -503,12 +559,12 @@
       "exercise": null,
       "timing": {
         "section": "metrics",
-        "start": 82,
-        "duration": 13
+        "start": 86,
+        "duration": 9
       }
     },
     {
-      "number": 21,
+      "number": 23,
       "title": "A router can also ask a person",
       "body": "<div class=\"two-col\"><div class=\"metric\">Coverage<small>Fraction routed automatically</small></div><div class=\"metric\">Selective accuracy<small>Accuracy among those routed requests</small></div></div><p>Raising the review threshold can improve selective accuracy while sending more work to people. That is a policy tradeoff, not a new classifier.</p><p class=\"caption\">At threshold 0.5 in the recorded test: TF\u2013IDF routes 75.84%; embeddings route 91.10%. Both are about 96% accurate among routed requests.</p>",
       "notes": "Ask what happens if every request is deferred. Coverage becomes zero, selective accuracy is unavailable, and full classifier quality remains unchanged. The model probabilities are not calibrated guarantees.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
@@ -534,7 +590,7 @@
       }
     },
     {
-      "number": 22,
+      "number": 24,
       "name": "threshold-policy",
       "key": "threshold-policy",
       "title": "Move the threshold without retraining",
@@ -561,7 +617,7 @@
       }
     },
     {
-      "number": 23,
+      "number": 25,
       "name": "review-margin",
       "key": "review-margin",
       "title": "Choose labeling candidates by their top-two margin",
@@ -588,7 +644,7 @@
       }
     },
     {
-      "number": 24,
+      "number": 26,
       "title": "Write the rule that sends a request to review",
       "body": "<a class=\"answer-link\" href=\"/policy-answer\">Worked answer \u2197</a>\n\n<p class=\"where\">Notebook \u2192 Review requests</p><ol><li>Complete <code>needs_review(confidence, threshold)</code>.</li><li>Move the threshold and compare coverage with selective accuracy.</li><li>Pick a small-margin request and read both proposed intents.</li></ol><div class=\"done\"><strong>Run:</strong> Check my review rule<br><strong>Check:</strong> Explain why a confidence of 0.2 at threshold 0.5 should go to a person.</div>",
       "notes": "The function changes the displayed policy and the policy frozen for final evaluation. Its local check is free. Let people observe the coverage tradeoff rather than supply a preferred threshold.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
@@ -617,7 +673,7 @@
       }
     },
     {
-      "number": 25,
+      "number": 27,
       "title": "Read the disagreement before declaring failure",
       "body": "<RoutingCase />",
       "notes": "These four examples are actual outputs from the training-derived review pool. The published annotation is a reference, not proof that every message is unambiguous. The first two were selected as disagreements with the dataset annotation; the last two agree with it. They are not human review records. Let learners explain disagreement in their own words.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
@@ -642,7 +698,7 @@
       }
     },
     {
-      "number": 26,
+      "number": 28,
       "title": "Save labels someone can trace back to a decision",
       "body": "\n\n<p class=\"where\">Notebook \u2192 Review requests</p><ol><li>Review at least four requests, including a correct route and a mistake.</li><li>Select the accepted intent yourself and enter a reviewer name or alias.</li><li>Save each label; do not copy the model suggestion just because it is available.</li></ol><div class=\"done\"><strong>Run:</strong> Save my reviewed label<br><strong>Check:</strong> The saved record contains case, proposal, accepted label, reviewer, and dataset version.</div>",
       "notes": "Show the provenance fields in the dataset artifact. Accepted human labels alone can extend training. Teacher suggestions and published-reference replay remain distinct. Encourage a discussion when participants disagree with the benchmark annotation.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
@@ -671,7 +727,7 @@
       }
     },
     {
-      "number": 27,
+      "number": 29,
       "name": "review-provenance",
       "key": "review-provenance",
       "title": "Keep the proposal and accepted label separate",
@@ -696,7 +752,7 @@
       }
     },
     {
-      "number": 28,
+      "number": 30,
       "title": "Take ten minutes. Return at 2:20.",
       "body": "<p class=\"sub\">Save the checkpoint. Your reviews and completed training stay with this notebook copy.</p><p class=\"aside\">The support queue can survive ten minutes without being automatically forwarded.</p>",
       "notes": "Break from elapsed 2:10 to 2:20. Confirm the reviews and trained versions are saved. Reopening does not train or call a model.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
@@ -719,7 +775,7 @@
       }
     },
     {
-      "number": 29,
+      "number": 31,
       "title": "A prompted model returns a typed decision",
       "body": "```json\n{\n  \"intent\": \"card_arrival\",\n  \"needs_review\": false,\n  \"reason\": \"The customer asks about delivery.\"\n}\n```<p>The validator checks allowed intents and real booleans. It cannot tell whether the chosen workflow fits the message.</p><p class=\"caption\">Illustrative response. The notebook saves actual requests, provider settings, usage, and responses.</p>",
       "notes": "Run only eight preselected development requests. This sample teaches model behavior and trace inspection; it is too small to rank against classifiers evaluated on 3,080 final cases. The provider is fixed and charged to the participant allowance.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
@@ -742,7 +798,7 @@
       }
     },
     {
-      "number": 30,
+      "number": 32,
       "name": "two-model-tasks",
       "key": "two-model-tasks",
       "title": "The judge reviews a route in a separate call",
@@ -767,9 +823,9 @@
       }
     },
     {
-      "number": 31,
+      "number": 33,
       "title": "Inspect eight actual model routes",
-      "body": "\n\n<p class=\"where\">Notebook \u2192 Check the judge</p><ol><li>Click the routing button once.</li><li>Open a model span in Agent Lens and find the customer request and returned intent.</li><li>Compare one answer with the corresponding classifier output.</li></ol><div class=\"done\"><strong>Run:</strong> Route eight development requests with the fixed model<br><strong>Check:</strong> Match the case ID and response to the saved provider receipt.</div>",
+      "body": "\n\n<p class=\"where\">Notebook \u2192 Route requests with the model</p><ol><li>Click the routing button once.</li><li>Open a model span in Agent Lens and find the customer request and returned intent.</li><li>Compare one answer with the corresponding classifier output.</li></ol><div class=\"done\"><strong>Run:</strong> Route eight development requests with the fixed model<br><strong>Check:</strong> Match the case ID and response to the saved provider receipt.</div>",
       "notes": "Every request is durable and bounded. Each case gets a separate stage, so completed siblings can be reused after a failure. No test examples or accepted review labels enter the routing prompt.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
       "time": "2:31",
       "kind": "exercise",
@@ -796,7 +852,7 @@
       }
     },
     {
-      "number": 32,
+      "number": 34,
       "title": "Check the model-based judge against your reviews",
       "body": "<div class=\"flow\"><div>Request + route<small>What happened</small></div><b class=\"arrow\">\u2192</b><div>Judge rubric<small>Was this the wrong workflow?</small></div><b class=\"arrow\">\u2192</b><div>Compare with a person<small>False alarms and missed failures</small></div></div><p>A successful API call can return the wrong intent. A valid judgment can also disagree with your review.</p>",
       "notes": "The notebook uses a model-based judge exercise. It is not silently creating native Agent Lens tags or pretending to generate Insights. Native tag alignment is an optional access-qualified extension. Prepared Insights require an independently verified cohort, not waiting live for new clusters.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
@@ -819,7 +875,7 @@
       }
     },
     {
-      "number": 33,
+      "number": 35,
       "name": "judge-evidence",
       "key": "judge-evidence",
       "title": "Keep the accepted label out of the judge prompt",
@@ -844,9 +900,9 @@
       }
     },
     {
-      "number": 34,
+      "number": 36,
       "title": "Implement the judge response check",
-      "body": "<a class=\"answer-link\" href=\"/validator-answer\">Worked answer \u2197</a>\n\n<p class=\"where\">Notebook \u2192 Check the judge</p><ol><li>Complete <code>validate_judge</code>. Reject a string such as <code>\"false\"</code>.</li><li>Read the failure-tag instructions. Define what counts as unresolved rather than wrong.</li><li>Run the judge on up to eight reviewed cases.</li></ol><div class=\"done\"><strong>Run:</strong> Check my judge validator \u2192 Compare the judge with up to eight of my reviews<br><strong>Check:</strong> Click Compare in EvalTables beside the judge result. Read the judge reason and your accepted review together; unavailable judgments stay blank.</div>",
+      "body": "<a class=\"answer-link\" href=\"/validator-answer\">Worked answer \u2197</a>\n\n<p class=\"where\">Notebook \u2192 Check the automated reviewer</p><ol><li>Complete <code>validate_judge</code>. Reject a string such as <code>\"false\"</code>.</li><li>Read your saved human reviews, then the failure-tag instructions. Define what counts as unresolved rather than wrong.</li><li>Run the judge on up to eight reviewed cases.</li></ol><div class=\"done\"><strong>Run:</strong> Check my judge validator \u2192 Compare the judge with up to eight of my reviews<br><strong>Check:</strong> Click Compare in EvalTables beside the judge result. Read the judge reason and your accepted review together; unavailable judgments stay blank.</div>",
       "notes": "The human accepted intent stays out of the judge prompt. The judge receives the request and proposed route. Check one reason, even if the JSON passes. Missing judgments stay missing; do not score them as correct or incorrect.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
       "time": "2:50",
       "kind": "exercise",
@@ -873,7 +929,7 @@
       }
     },
     {
-      "number": 35,
+      "number": 37,
       "title": "The judge disagreed with the dataset label",
       "body": "<div class=\"capture-layout\"><div class=\"capture\"><img src=\"/images/agent-lens-judge-detail.png\" alt=\"Actual Agent Lens conversation: Can I activate a card in the app? Proposed intent activate_my_card; judge returned failed false.\"/><span class=\"capture-pin pin-request\">1</span><span class=\"capture-pin pin-decision\">2</span></div><div class=\"capture-notes\"><p><b>1 \u00b7 Request</b><br>\u201cCan I activate a card in the app?\u201d</p><p><b>2 \u00b7 Judge</b><br><code>failed: false</code><br>\u201cRequest asks about activating a card, which matches the activate_my_card intent.\u201d</p><p>The dataset says <code>card_linking</code>. Inspect the ambiguity before calling either side wrong.</p></div></div><p class=\"caption\"><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f5427dc7f06703d62c00561b6bd27a01\">Open the actual conversation \u2197</a> \u00b7 Recorded development rehearsal. Three of four judge decisions matched the dataset reference; no human calibration is claimed.</p>",
       "notes": "The screenshot is an authenticated native capture. Its JSON pane clips the end of the reason; the caption quotes the full saved response. Both the request and failed:false are visible. Twelve development-only requests completed, their stored spans were verified, and observed inference cost was $0.00113494. Eight routing requests were an instrumentation sample, not a quality benchmark. Human review is still necessary.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
@@ -899,7 +955,7 @@
       }
     },
     {
-      "number": 36,
+      "number": 38,
       "title": "Use reviewed data to run a new experiment",
       "body": "<div class=\"flow\"><div>Accepted review<small>Human label and provenance</small></div><b class=\"arrow\">\u2192</b><div>Training dataset version<small>Original training + reviewed cases</small></div><b class=\"arrow\">\u2192</b><div>Revised classifier<small>Same frozen encoder</small></div></div><p>The test set does not enter this path. Use validation to decide whether to keep the revised model.</p>",
       "notes": "The request review changes training data. It does not alter the encoder or hide difficult test examples. A review can be wrong, redundant, or too small to matter. Live improvement is measured, not scripted.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
@@ -922,7 +978,7 @@
       }
     },
     {
-      "number": 37,
+      "number": 39,
       "name": "accepted-training",
       "key": "accepted-training",
       "title": "Refit the head with your accepted labels",
@@ -947,7 +1003,7 @@
       }
     },
     {
-      "number": 38,
+      "number": 40,
       "title": "Train with your accepted labels",
       "body": "\n\n<p class=\"where\">Notebook \u2192 Improve the router</p><ol><li>Inspect the saved review dataset.</li><li>Train the classifier using those labels.</li><li>Compare validation errors with the earlier embedding classifier. Keep the earlier version if the revision does not help.</li></ol><div class=\"done\"><strong>Run:</strong> Train a classifier with my reviewed examples<br><strong>Check:</strong> Explain one changed prediction and decide whether it supports your selection.</div>",
       "notes": "This is the honest live experiment after the qualified representation improvement. Do not replace its result with the recorded gain. If labels disagree with the published annotation, inspect the text and the choice before attributing a score change to better data.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
@@ -976,7 +1032,7 @@
       }
     },
     {
-      "number": 39,
+      "number": 41,
       "name": "break-two",
       "key": "break-two",
       "title": "Take ten minutes. Return at 3:40.",
@@ -999,7 +1055,7 @@
       }
     },
     {
-      "number": 40,
+      "number": 42,
       "title": "Freeze what the final comparison will use",
       "body": "<svg class=\"diagram\" viewBox=\"0 0 1120 290\" role=\"img\" aria-label=\"Classifier weights, preprocessing, review threshold and source are frozen before final evaluation\"><g fill=\"#e4e9dc\" stroke=\"#96ad9e\"><rect x=\"10\" y=\"45\" width=\"250\" height=\"120\"/><rect x=\"290\" y=\"45\" width=\"250\" height=\"120\"/><rect x=\"570\" y=\"45\" width=\"250\" height=\"120\"/><rect x=\"850\" y=\"45\" width=\"250\" height=\"120\"/></g><g style=\"font-size:26px\"><text x=\"32\" y=\"90\">Classifier weights</text><text x=\"313\" y=\"90\">Preprocessing</text><text x=\"593\" y=\"90\">Review threshold</text><text x=\"873\" y=\"90\">Source + datasets</text></g><g style=\"font-size:19px\"><text x=\"32\" y=\"130\">Exact saved file</text><text x=\"313\" y=\"130\">Vectorizer or encoder</text><text x=\"593\" y=\"130\">Your tested policy</text><text x=\"873\" y=\"130\">What produced them</text></g><path d=\"M10 205H1100\" stroke=\"#237a6c\" stroke-width=\"4\"/><text x=\"360\" y=\"250\" style=\"font-size:26px\">Then open the official test partition</text></svg>",
       "notes": "The notebook records the selected training stage and model checksum. A policy is part of the release decision and must be fixed before seeing the final requests. After final evaluation, another choice is a separately labeled teaching retest.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
@@ -1022,7 +1078,7 @@
       }
     },
     {
-      "number": 41,
+      "number": 43,
       "name": "freeze-files",
       "key": "freeze-files",
       "title": "Save the transformations with the weights",
@@ -1047,7 +1103,7 @@
       }
     },
     {
-      "number": 42,
+      "number": 44,
       "title": "Evaluate all matching test requests",
       "body": "\n\n<p class=\"where\">Notebook \u2192 Final comparison</p><ol><li>Choose the selected classifier and give a validation-based reason.</li><li>Freeze the classifier and review threshold.</li><li>Evaluate TF\u2013IDF, embeddings, and your selected version on the same 3,080 messages.</li></ol><div class=\"done\"><strong>Run:</strong> Freeze the classifier and review threshold \u2192 Evaluate the frozen versions on all 3,080 test requests<br><strong>Check:</strong> Compare macro-F1, per-intent errors, coverage, and latency separately.</div>",
       "notes": "All final predictions are retained. The selected model may equal the existing embedding model; that is a valid keep decision, not an invented third improvement. Keep classifier quality separate from deferral policy.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
@@ -1076,7 +1132,7 @@
       }
     },
     {
-      "number": 43,
+      "number": 45,
       "name": "aligned-requests",
       "key": "aligned-requests",
       "title": "Compare matching requests, then the operating policy",
@@ -1101,7 +1157,7 @@
       }
     },
     {
-      "number": 44,
+      "number": 46,
       "title": "Compare the same requests in Forge",
       "body": "<div class=\"eval-native\"><div class=\"eval-native-image\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=fthby6owcpo\"><img src=\"/images/evaltables-native.png\" alt=\"Native Forge Evaluation Tables Preview showing saved workshop results\"></a><span class=\"eval-native-pin\" style=\"left:6%;top:39%\" aria-hidden=\"true\">1</span><span class=\"eval-native-pin\" style=\"left:6%;top:70%\" aria-hidden=\"true\">2</span><span class=\"eval-native-pin\" style=\"left:6%;top:53%\" aria-hidden=\"true\">3</span></div><div class=\"eval-native-notes\"><p><b>1 \u00b7 Set the reference</b><br>Start with the word-based classifier.</p><p><b>2 \u00b7 Read aligned outputs</b><br>Each version must show the same request.</p><p><b>3 \u00b7 Separate review from quality</b><br>Deferring a request is a policy choice, not a corrected intent.</p></div></div><p class=\"eval-native-caption\">Recorded results in Forge \u00b7 Evaluation Tables (Preview) \u00b7 <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=fthby6owcpo\">Open this comparison \u2197</a></p>",
       "notes": "Final evaluation publishes saved classifier predictions before the Report chapter. Click Compare in EvalTables. This is the native Weave-backed Evaluation Tables Preview in the W&B workspace. Aggregate macro-F1 remains computed from the whole prediction set; it is not the mean of row F1 scores.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
@@ -1126,7 +1182,7 @@
       }
     },
     {
-      "number": 45,
+      "number": 47,
       "title": "Read one routing decision",
       "body": "<div class=\"eval-native\"><div class=\"eval-native-image\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=fthby6owcpo\"><img src=\"/images/evaltables-native-detail.png\" alt=\"Native Forge Evaluation Tables Preview showing saved workshop results\"></a><span class=\"eval-native-pin\" style=\"left:28.3%;top:25%\" aria-hidden=\"true\">1</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:44%\" aria-hidden=\"true\">2</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:40%\" aria-hidden=\"true\">3</span></div><div class=\"eval-native-notes\"><p><b>1 \u00b7 Read the request</b><br>The customer does not recognize an ATM withdrawal.</p><p><b>2 \u00b7 Compare intents</b><br>Both classifiers choose the published intent on this case.</p><p><b>3 \u00b7 Check confidence</b><br>The scores differ, but neither model sends this case for review.</p></div></div><p class=\"eval-native-caption\">Recorded results in Forge \u00b7 Evaluation Tables (Preview) \u00b7 <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=fthby6owcpo\">Open this comparison \u2197</a></p>",
       "notes": "Use the saved case ID to match outputs. The automated judge comparison is separate and uses participant-reviewed development cases. Its target is agreement with those reviews, not classification accuracy on the official test set. The separate CES v2 service can remain unavailable while this Preview works.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
@@ -1151,7 +1207,7 @@
       }
     },
     {
-      "number": 46,
+      "number": 48,
       "name": "release-break",
       "key": "release-break",
       "title": "Take ten minutes. Return at 4:05.",
@@ -1175,7 +1231,7 @@
       }
     },
     {
-      "number": 47,
+      "number": 49,
       "name": "release-request",
       "key": "release-request",
       "title": "The classifier works. Can another process use it?",
@@ -1199,7 +1255,7 @@
       }
     },
     {
-      "number": 48,
+      "number": 50,
       "name": "release-bundle",
       "key": "release-bundle",
       "title": "Save what the predictor needs, then reload it",
@@ -1223,7 +1279,7 @@
       }
     },
     {
-      "number": 49,
+      "number": 51,
       "name": "release-prepare-exercise",
       "key": "release-prepare-exercise",
       "title": "Load your selected version from its artifact",
@@ -1252,7 +1308,7 @@
       }
     },
     {
-      "number": 50,
+      "number": 52,
       "name": "release-cohort",
       "key": "release-cohort",
       "title": "Choose the regression cases before predicting",
@@ -1276,7 +1332,7 @@
       }
     },
     {
-      "number": 51,
+      "number": 53,
       "name": "release-columns",
       "key": "release-columns",
       "title": "A probability belongs to a specific intent",
@@ -1300,7 +1356,7 @@
       }
     },
     {
-      "number": 52,
+      "number": 54,
       "name": "release-fault",
       "key": "release-fault",
       "title": "Rotated labels send column 1 to another queue",
@@ -1324,7 +1380,7 @@
       }
     },
     {
-      "number": 53,
+      "number": 55,
       "name": "release-incident-exercise",
       "key": "release-incident-exercise",
       "title": "Find one request sent to the wrong queue",
@@ -1353,7 +1409,7 @@
       }
     },
     {
-      "number": 54,
+      "number": 56,
       "name": "release-set-check",
       "key": "release-set-check",
       "title": "Checking the label set misses this defect",
@@ -1377,7 +1433,7 @@
       }
     },
     {
-      "number": 55,
+      "number": 57,
       "name": "release-order-check",
       "key": "release-order-check",
       "title": "Check order before accepting the loaded model",
@@ -1401,7 +1457,7 @@
       }
     },
     {
-      "number": 56,
+      "number": 58,
       "name": "release-repair-exercise",
       "key": "release-repair-exercise",
       "title": "Repair the loader and write its regression check",
@@ -1430,7 +1486,7 @@
       }
     },
     {
-      "number": 57,
+      "number": 59,
       "name": "release-parity",
       "key": "release-parity",
       "title": "A repaired loader should reproduce the intact release",
@@ -1454,7 +1510,7 @@
       }
     },
     {
-      "number": 58,
+      "number": 60,
       "name": "release-investigate",
       "key": "release-investigate",
       "title": "Compare three versions of the same request",
@@ -1478,7 +1534,7 @@
       }
     },
     {
-      "number": 59,
+      "number": 61,
       "name": "release-decision-exercise",
       "key": "release-decision-exercise",
       "title": "Decide whether this release passes its checks",
@@ -1507,7 +1563,7 @@
       }
     },
     {
-      "number": 60,
+      "number": 62,
       "name": "release-rollback",
       "key": "release-rollback",
       "title": "Rollback reloads a version; it does not undo training",
@@ -1531,7 +1587,7 @@
       }
     },
     {
-      "number": 61,
+      "number": 63,
       "name": "release-rollback-exercise",
       "key": "release-rollback-exercise",
       "title": "Restore the previous version and verify it",
@@ -1560,7 +1616,7 @@
       }
     },
     {
-      "number": 62,
+      "number": 64,
       "name": "release-conclusion",
       "key": "release-conclusion",
       "title": "Separate the model gain from the release repair",
@@ -1584,7 +1640,7 @@
       }
     },
     {
-      "number": 63,
+      "number": 65,
       "title": "Write the decision you would make",
       "body": "\n\n<p class=\"where\">Notebook \u2192 Explain the result</p><ol><li>Separate the official-test classifier result from the controlled release repair.</li><li>Describe a remaining routing mistake and the regression check you added.</li><li>Publish the saved comparison and your explanation.</li></ol><div class=\"done\"><strong>Run:</strong> Publish my conclusion with the saved comparisons<br><strong>Check:</strong> A colleague can follow the reported score to the predictions, selected model, and reviewed data.</div>",
       "notes": "Final five minutes: explain the classifier comparison and the release drill separately. Include the tested artifact, decision, rollback evidence, and remaining errors. Publication reuses saved work.",
@@ -1613,7 +1669,7 @@
       }
     },
     {
-      "number": 64,
+      "number": 66,
       "title": "Optional: organize approved versions in Registry",
       "body": "<p>Link the exact evaluated artifact to Registry if your project has permission. Keep the checks, previous version, and release decision alongside it.</p><p>ARIA can investigate the saved incident where access permits. Verify its cited event before accepting a proposed next test.</p><p class=\"caption\">These are optional. Your batch predictor and Artifact-based rollback already work without Registry or ARIA.</p>",
       "notes": "Registry manages versions, not automatic deployment. ARIA access and usage are separate; it cannot approve a repair automatically. The core capstone contains no new inference calls or training. Specialist fine-tuning remains a separately qualified future lesson.",
@@ -1636,7 +1692,7 @@
       }
     },
     {
-      "number": 65,
+      "number": 67,
       "title": "What to take back to your team",
       "body": "<p>Pick a real routing decision with a small, clear label set. Save the requests you reviewed, explain what a wrong route means, and compare the next version on cases you did not edit against.</p><p>Keep the human review cost visible. Sending every difficult case to a person can improve the reported selective accuracy while leaving the support team with more work.</p><p class=\"caption\">Optional ARIA investigation: ask it to inspect one published disagreement and propose a regression case. Check the cited event before accepting its proposal.</p>",
       "notes": "Close with a concrete transfer task. Ask each participant to name one queue, one failure, one measurable outcome, and one person who can review labels in their own workflow. No claims beyond the recorded Banking77 experiment.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
@@ -1659,9 +1715,9 @@
       }
     },
     {
-      "number": 66,
+      "number": 68,
       "title": "Worked answer: classifier head",
-      "body": "```python\ndef make_classifier():\n    from sklearn.linear_model import LogisticRegression\n    return LogisticRegression(\n        C=10, max_iter=1000, random_state=17\n    )\n```<p>This function constructs the head. The later fit call trains it for both feature representations. It does not load or fine-tune the sentence encoder.</p><p class=\"answer-nav source-link\"><a href=\"/classifier-exercise\">Return to the classifier exercise \u21a9</a></p>",
+      "body": "```python\ndef make_classifier():\n    from sklearn.linear_model import LogisticRegression\n    return LogisticRegression(\n        C=10, max_iter=1000, random_state=17\n    )\n```<p>This function constructs the head for both feature representations. The fit call trains it. It does not load or fine-tune the sentence encoder.</p><p class=\"answer-nav source-link\"><a href=\"/classifier-exercise\">Return to the classifier exercise \u21a9</a></p>",
       "notes": "Offer the answer only after an attempt or a hint request. Learners must still run the free check and both actual training calls.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
       "time": "",
       "kind": "answer",
@@ -1682,7 +1738,7 @@
       }
     },
     {
-      "number": 67,
+      "number": 69,
       "title": "Worked answer: review policy",
       "body": "```python\ndef needs_review(confidence, threshold):\n    return confidence < threshold\n```<p>At 0.5, a 0.2 prediction is deferred. A 0.9 prediction is routed. Choosing a threshold remains a policy decision that should be checked on validation cases.</p><p class=\"answer-nav source-link\"><a href=\"/policy-exercise\">Return to the review exercise \u21a9</a></p>",
       "notes": "The function should return a boolean. Exactly the threshold is routed in this specified policy. It is not a proof that the predicted probability is calibrated.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
@@ -1705,7 +1761,7 @@
       }
     },
     {
-      "number": 68,
+      "number": 70,
       "title": "Worked answer: judge validator",
       "body": "```python\ndef validate_judge(value):\n    if not isinstance(value, dict) or set(value) != {\"failed\", \"reason\"}:\n        raise ValueError(\"Return failed and reason.\")\n    if type(value[\"failed\"]) is not bool:\n        raise ValueError(\"Use a boolean.\")\n    if not isinstance(value[\"reason\"], str) or not value[\"reason\"].strip():\n        raise ValueError(\"Give a reason.\")\n    return value\n```<p class=\"answer-nav source-link\"><a href=\"/validator-exercise\">Return to the judge exercise \u21a9</a></p>",
       "notes": "This uses the same type guard as the notebook. Valid JSON is only a response contract; it does not establish agreement with a reviewer.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",
@@ -1728,7 +1784,7 @@
       }
     },
     {
-      "number": 69,
+      "number": 71,
       "name": "release-repair-answer",
       "key": "release-repair-answer",
       "title": "Worked answer: preserve the probability-column order",
@@ -1752,7 +1808,7 @@
       }
     },
     {
-      "number": 70,
+      "number": 72,
       "title": "Sources and recorded evidence",
       "body": "<ul><li><a href=\"https://github.com/PolyAI-LDN/task-specific-datasets\">Banking77 data, splits, license, and citation</a></li><li><a href=\"https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2\">Frozen MiniLM encoder model card</a></li><li><a href=\"https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/routing/qualification.json\">Frozen qualification recipe</a></li><li><a href=\"https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/routing-workshop.md\">Facilitator timing, results, and limitations</a></li><li><a href=\"https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_routing.py\">Acquisition and feature preparation</a></li></ul>",
       "notes": "All measured claims come from the saved qualification. The native comparison captures show the verified routing publication and link to that saved record. Until external-account and human rehearsals pass, label this a technical preview.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.",

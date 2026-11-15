@@ -1,7 +1,7 @@
 {
-  "source_sha256": "6da5bf143e5b82cb551da4a4664952f80955777cf2819fd1df48ffb3355f843f",
-  "slides_checked": 70,
-  "expected_slides": 70,
+  "source_sha256": "114670b7a43c9f59f5ab4fdec4ca0e273a7260cd0b4c08b689f23a0b22546fdc",
+  "slides_checked": 72,
+  "expected_slides": 72,
   "titles": [
     {
       "number": 1,
@@ -20,28 +20,28 @@
     },
     {
       "number": 4,
+      "key": "read-request",
+      "title": "Read a request before revealing its label"
+    },
+    {
+      "number": 5,
       "key": "dataset",
       "title": "The dataset contains 77 banking intents"
     },
     {
-      "number": 5,
+      "number": 6,
       "key": "partitions",
       "title": "Give each partition one job"
     },
     {
-      "number": 6,
+      "number": 7,
       "key": "connect",
       "title": "Open your copy and add your first trace"
     },
     {
-      "number": 7,
+      "number": 8,
       "key": "trace",
       "title": "The span should explain the operation"
-    },
-    {
-      "number": 8,
-      "key": "read-request",
-      "title": "Read a request before revealing its label"
     },
     {
       "number": 9,
@@ -55,301 +55,311 @@
     },
     {
       "number": 11,
-      "key": "embeddings",
-      "title": "Then change the representation"
-    },
-    {
-      "number": 12,
-      "key": "sentence-vector",
-      "title": "Keep one vector for each request"
-    },
-    {
-      "number": 13,
-      "key": "construct-head",
-      "title": "Construct the estimator before fitting it"
-    },
-    {
-      "number": 14,
-      "key": "fit-head",
-      "title": "Fit the head on the labeled training rows"
-    },
-    {
-      "number": 15,
       "key": "classifier-exercise",
       "title": "Implement the classifier head"
     },
     {
+      "number": 12,
+      "key": "baseline-observation",
+      "title": "Read one prediction before comparing models"
+    },
+    {
+      "number": 13,
+      "key": "embeddings",
+      "title": "Then change the representation"
+    },
+    {
+      "number": 14,
+      "key": "sentence-vector",
+      "title": "Keep one vector for each request"
+    },
+    {
+      "number": 15,
+      "key": "construct-head",
+      "title": "Construct the estimator before fitting it"
+    },
+    {
       "number": 16,
+      "key": "fit-head",
+      "title": "Fit the head on the labeled training rows"
+    },
+    {
+      "number": 17,
       "key": "predict-probabilities",
       "title": "A fitted classifier returns 77 probabilities"
     },
     {
-      "number": 17,
+      "number": 18,
+      "key": "alternative-exercise",
+      "title": "Test the sentence-feature alternative"
+    },
+    {
+      "number": 19,
       "key": "macro-f1",
       "title": "Macro-F1 gives each intent equal weight"
     },
     {
-      "number": 18,
+      "number": 20,
       "key": "intent-counts",
       "title": "Count the errors for one intent"
     },
     {
-      "number": 19,
+      "number": 21,
       "key": "intent-average",
       "title": "Calculate F1, then average across intents"
     },
     {
-      "number": 20,
+      "number": 22,
       "key": "recorded-gain",
       "title": "The worked comparison reduced routing mistakes"
     },
     {
-      "number": 21,
+      "number": 23,
       "key": "deferral",
       "title": "A router can also ask a person"
     },
     {
-      "number": 22,
+      "number": 24,
       "key": "threshold-policy",
       "title": "Move the threshold without retraining"
     },
     {
-      "number": 23,
+      "number": 25,
       "key": "review-margin",
       "title": "Choose labeling candidates by their top-two margin"
     },
     {
-      "number": 24,
+      "number": 26,
       "key": "policy-exercise",
       "title": "Write the rule that sends a request to review"
     },
     {
-      "number": 25,
+      "number": 27,
       "key": "review-case",
       "title": "Read the disagreement before declaring failure"
     },
     {
-      "number": 26,
+      "number": 28,
       "key": "review-exercise",
       "title": "Save labels someone can trace back to a decision"
     },
     {
-      "number": 27,
+      "number": 29,
       "key": "review-provenance",
       "title": "Keep the proposal and accepted label separate"
     },
     {
-      "number": 28,
+      "number": 30,
       "key": "break-one",
       "title": "Take ten minutes. Return at 2:20."
     },
     {
-      "number": 29,
+      "number": 31,
       "key": "typed-route",
       "title": "A prompted model returns a typed decision"
     },
     {
-      "number": 30,
+      "number": 32,
       "key": "two-model-tasks",
       "title": "The judge reviews a route in a separate call"
     },
     {
-      "number": 31,
+      "number": 33,
       "key": "prompted-exercise",
       "title": "Inspect eight actual model routes"
     },
     {
-      "number": 32,
+      "number": 34,
       "key": "judge-purpose",
       "title": "Check the model-based judge against your reviews"
     },
     {
-      "number": 33,
+      "number": 35,
       "key": "judge-evidence",
       "title": "Keep the accepted label out of the judge prompt"
     },
     {
-      "number": 34,
+      "number": 36,
       "key": "validator-exercise",
       "title": "Implement the judge response check"
     },
     {
-      "number": 35,
+      "number": 37,
       "key": "recorded-judge",
       "title": "The judge disagreed with the dataset label"
     },
     {
-      "number": 36,
+      "number": 38,
       "key": "review-dataset",
       "title": "Use reviewed data to run a new experiment"
     },
     {
-      "number": 37,
+      "number": 39,
       "key": "accepted-training",
       "title": "Refit the head with your accepted labels"
     },
     {
-      "number": 38,
+      "number": 40,
       "key": "retrain-exercise",
       "title": "Train with your accepted labels"
     },
     {
-      "number": 39,
+      "number": 41,
       "key": "break-two",
       "title": "Take ten minutes. Return at 3:40."
     },
     {
-      "number": 40,
+      "number": 42,
       "key": "freeze",
       "title": "Freeze what the final comparison will use"
     },
     {
-      "number": 41,
+      "number": 43,
       "key": "freeze-files",
       "title": "Save the transformations with the weights"
     },
     {
-      "number": 42,
+      "number": 44,
       "key": "final-exercise",
       "title": "Evaluate all matching test requests"
     },
     {
-      "number": 43,
+      "number": 45,
       "key": "aligned-requests",
       "title": "Compare matching requests, then the operating policy"
     },
     {
-      "number": 44,
+      "number": 46,
       "key": "native-comparison",
       "title": "Compare the same requests in Forge"
     },
     {
-      "number": 45,
+      "number": 47,
       "key": "native-row",
       "title": "Read one routing decision"
     },
     {
-      "number": 46,
+      "number": 48,
       "key": "release-break",
       "title": "Take ten minutes. Return at 4:05."
     },
     {
-      "number": 47,
+      "number": 49,
       "key": "release-request",
       "title": "The classifier works. Can another process use it?"
     },
     {
-      "number": 48,
+      "number": 50,
       "key": "release-bundle",
       "title": "Save what the predictor needs, then reload it"
     },
     {
-      "number": 49,
+      "number": 51,
       "key": "release-prepare-exercise",
       "title": "Load your selected version from its artifact"
     },
     {
-      "number": 50,
+      "number": 52,
       "key": "release-cohort",
       "title": "Choose the regression cases before predicting"
     },
     {
-      "number": 51,
+      "number": 53,
       "key": "release-columns",
       "title": "A probability belongs to a specific intent"
     },
     {
-      "number": 52,
+      "number": 54,
       "key": "release-fault",
       "title": "Rotated labels send column 1 to another queue"
     },
     {
-      "number": 53,
+      "number": 55,
       "key": "release-incident-exercise",
       "title": "Find one request sent to the wrong queue"
     },
     {
-      "number": 54,
+      "number": 56,
       "key": "release-set-check",
       "title": "Checking the label set misses this defect"
     },
     {
-      "number": 55,
+      "number": 57,
       "key": "release-order-check",
       "title": "Check order before accepting the loaded model"
     },
     {
-      "number": 56,
+      "number": 58,
       "key": "release-repair-exercise",
       "title": "Repair the loader and write its regression check"
     },
     {
-      "number": 57,
+      "number": 59,
       "key": "release-parity",
       "title": "A repaired loader should reproduce the intact release"
     },
     {
-      "number": 58,
+      "number": 60,
       "key": "release-investigate",
       "title": "Compare three versions of the same request"
     },
     {
-      "number": 59,
+      "number": 61,
       "key": "release-decision-exercise",
       "title": "Decide whether this release passes its checks"
     },
     {
-      "number": 60,
+      "number": 62,
       "key": "release-rollback",
       "title": "Rollback reloads a version; it does not undo training"
     },
     {
-      "number": 61,
+      "number": 63,
       "key": "release-rollback-exercise",
       "title": "Restore the previous version and verify it"
     },
     {
-      "number": 62,
+      "number": 64,
       "key": "release-conclusion",
       "title": "Separate the model gain from the release repair"
     },
     {
-      "number": 63,
+      "number": 65,
       "key": "report-exercise",
       "title": "Write the decision you would make"
     },
     {
-      "number": 64,
+      "number": 66,
       "key": "release",
       "title": "Optional: organize approved versions in Registry"
     },
     {
-      "number": 65,
+      "number": 67,
       "key": "close",
       "title": "What to take back to your team"
     },
     {
-      "number": 66,
+      "number": 68,
       "key": "classifier-answer",
       "title": "Worked answer: classifier head"
     },
     {
-      "number": 67,
+      "number": 69,
       "key": "policy-answer",
       "title": "Worked answer: review policy"
     },
     {
-      "number": 68,
+      "number": 70,
       "key": "validator-answer",
       "title": "Worked answer: judge validator"
     },
     {
-      "number": 69,
+      "number": 71,
       "key": "release-repair-answer",
       "title": "Worked answer: preserve the probability-column order"
     },
     {
-      "number": 70,
+      "number": 72,
       "key": "sources",
       "title": "Sources and recorded evidence"
     }
@@ -388,16 +398,16 @@
       "click": 0
     },
     {
-      "slide": 7,
-      "click": 1
-    },
-    {
-      "slide": 7,
-      "click": 2
+      "slide": 8,
+      "click": 0
     },
     {
       "slide": 8,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 8,
+      "click": 2
     },
     {
       "slide": 9,
@@ -646,6 +656,14 @@
     {
       "slide": 70,
       "click": 0
+    },
+    {
+      "slide": 71,
+      "click": 0
+    },
+    {
+      "slide": 72,
+      "click": 0
     }
   ],
   "issues": [],
@@ -653,26 +671,26 @@
   "failed_responses": [],
   "answers": [
     {
-      "slide": 15,
-      "destination": "/forge-workshop-kit/routing/66",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 24,
-      "destination": "/forge-workshop-kit/routing/67",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 34,
+      "slide": 11,
       "destination": "/forge-workshop-kit/routing/68",
       "keyboardReturn": true
     },
     {
-      "slide": 56,
+      "slide": 26,
       "destination": "/forge-workshop-kit/routing/69",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 36,
+      "destination": "/forge-workshop-kit/routing/70",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 58,
+      "destination": "/forge-workshop-kit/routing/71",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 283,
+  "routes_checked": 291,
   "presenter_notes": true
 }

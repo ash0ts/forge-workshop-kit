@@ -10,6 +10,93 @@ import linecache
 from . import airline
 from .session import digest
 
+
+def discovery_cases():
+    """Choose the opening request by case identity, before seeing any outcome."""
+    return sorted(airline.load_cases('discovery'), key=lambda case: case['id'])
+
+
+def opening_booking(include_untouched=True):
+    """Free simulator demonstration; not a model execution or a traffic observation."""
+    case = discovery_cases()[0]
+    environment = airline.AirlineEnvironment(case)
+    before = copy.deepcopy(environment.world['reservation']['flights'])
+    scope = case['passenger']
+    flights = airline.build_itinerary(airline.flight_ids(before), scope['replace_start'],
+        scope['replace_stop'], scope['replacement']) if include_untouched else copy.deepcopy(scope['replacement'])
+    quote = environment.call('quote_change', {'flights': flights})
+    confirmation = environment.call('request_confirmation', {'flights': flights, 'fare_difference': quote['fare_difference']})
+    payment = next(key for key, value in environment.world['user']['payment_methods'].items()
+                   if value['source'] == 'credit_card' or value['amount'] >= quote['fare_difference'])
+    # Deliberately exercise API semantics even when the scripted passenger refuses.
+    # This is a labeled local drill; the live agent must obtain confirmation.
+    result = environment.call('update_reservation_flights', {
+        'reservation_id': environment.world['reservation']['reservation_id'],
+        'flights': flights, 'payment_id': payment})
+    return {'case_id': case['id'], 'request': case['mission'], 'before': before,
+            'arguments': flights, 'after': copy.deepcopy(environment.world['reservation']['flights']),
+            'api_saved': result['saved'], 'passenger_approved': confirmation['approved'],
+            'origin': 'Controlled local API demonstration; no model or Forge request'}
+
+
+def run_discovery(session, tracing_source, *, first_only=False):
+    """Split the existing eight conversations without changing their runtime or hooks."""
+    cases = discovery_cases()
+    state = session.read()
+    completed = {row['result']['case_id'] for row in state['stages'].values()
+                 if row['status'] == 'complete' and (row.get('result') or {}).get('split') == 'discovery'
+                 and row['result'].get('label') == 'baseline'}
+    if not first_only and cases[0]['id'] not in completed:
+        raise ValueError('Run the first discovery request and inspect its booking before continuing the batch.')
+    frozen = state.get('airline_discovery_tracing')
+    if frozen is None:
+        names = {f"airline/baseline/{case['id']}" for case in cases}
+        old_sources = {(row['sources']['tool_writer.py'], row['sources']['model_writer.py'])
+                       for row in state['stages'].values() if row['name'] in names
+                       and 'tool_writer.py' in row.get('sources', {}) and 'model_writer.py' in row['sources']}
+        if len(old_sources) > 1:
+            raise ValueError('This saved discovery batch used different tracing implementations. Preserve those results; use a fresh workspace for a new matched batch.')
+        # Older notebooks did not save a batch-level source. Recover its actual hooks.
+        source = '\n'.join(next(iter(old_sources))) if old_sources else tracing_source
+        frozen = {'source': source, 'fingerprint': digest(source)}
+        with session.transaction() as journal:
+            frozen = journal.setdefault('airline_discovery_tracing', frozen)
+    values = compile_code(frozen['source'])
+    selected = cases[:1] if first_only else cases[1:]
+    return [airline.execute_conversation(session, case, label='baseline',
+                tool_writer=values['my_tool_span'], model_writer=values['my_model_span'])
+            for case in selected]
+
+
+def review_complete(session):
+    return bool(session and any(row['status'] == 'complete'
+        and row['name'].startswith('airline/review/')
+        and (row.get('result') or {}).get('decision') == 'accepted'
+        for row in session.read()['stages'].values()))
+
+
+def monitor_complete(session):
+    if session is None:
+        return False
+    stages = session.completed()
+    cases = {row['result']['case_id'] for row in stages
+             if (row.get('result') or {}).get('split') == 'monitoring'
+             and row['result'].get('label') == 'baseline'}
+    agreement = any(row['name'] == 'airline/monitor-agreement' and row['result'].get('rows') for row in stages)
+    return len(cases) == len(airline.load_cases('monitoring')) and agreement
+
+
+def completed_steps(session):
+    """A review alone never marks the monitoring exercise complete, including old saves."""
+    done = set(session.read().get('progress', {}).get('completed', [])) if session else set()
+    if review_complete(session):
+        done.add('review')
+    if monitor_complete(session):
+        done.add('monitor')
+    else:
+        done.discard('monitor')
+    return done
+
 STARTERS = {
     'instrumentation': '''def my_tool_span(record):
     from coreweave.forge.agentlens import tracing

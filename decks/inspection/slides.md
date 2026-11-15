@@ -55,11 +55,26 @@ Source: notes/sources.md.
 
 # Start with the boards, not the score
 
-<div class="photo-pair"><div><img src="/images/fit-normal.jpg" alt="Actual normal PCB1 training photograph"><p>Training example A</p></div><div><img src="/images/fit-defect.jpg" alt="Actual anomalous PCB1 training photograph"><p>Training example B</p></div></div><div class="bottom-note">VisA PCB1 · real photographs · labels hidden for this first inspection</div>
+<div class="photo-pair"><div><img src="/images/fit-normal.jpg" alt="VisA PCB1 fitting photograph A, viewed from above"><p>Training example A</p></div><div><img src="/images/fit-defect.jpg" alt="VisA PCB1 fitting photograph B, viewed from above"><p>Training example B</p></div></div><div class="bottom-note">VisA PCB1 · real photographs · labels hidden for this first inspection</div>
 
 
 <!--
-Ask learners to identify a region they would inspect. Do not infer a defect type without checking the supplied mask. They will reveal masks in the notebook.
+Ask learners to identify a region they would inspect. Do not infer a defect type without checking the supplied mask. They will reveal masks in the notebook. The same fitting example is bundled in the notebook setup. Ask for a pass/review choice before revealing its annotation; no authentication or download is needed.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">0:06</div>
+
+# Predict a label for the whole board
+
+<InspectionMechanism kind="data" :step="1" />
+
+
+<!--
+Ask participants to choose pass or inspection before advancing. The first figure hides its source label and mask. Identify the photograph as the input and the binary label as the target. A detector flags a board; it does not learn pixel labels here.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Source: notes/sources.md.
 -->
@@ -67,6 +82,21 @@ Source: notes/sources.md.
 ---
 
 <div class="kicker">0:08</div>
+
+# Use the mask to investigate the decision
+
+<InspectionMechanism kind="data" :step="2" />
+
+
+<!--
+Now reveal pcb1-anomaly-005 from the fitting partition: source image pcb1/Data/Images/Anomaly/005.JPG, SHA-256 ec34541be729af29a287bde12d4e3955cf3f83c734baea8a9505a7b801ce54e2, VisA CC BY 4.0. Source metadata and bundled image/mask checksums are in decks/inspection/data/feature-example.json. Ask which input would leak the answer if passed to the classifier. The mask is reference evidence for human inspection; neither masks nor test labels enter feature assembly.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">0:10</div>
 
 # What is in the teaching set?
 
@@ -81,7 +111,7 @@ Source: notes/sources.md.
 
 ---
 
-<div class="kicker">0:11</div>
+<div class="kicker">0:13</div>
 
 # Separate the data before choosing a model
 
@@ -98,7 +128,7 @@ Source: notes/sources.md.
 class: exercise
 ---
 
-<div class="kicker">0:16</div>
+<div class="kicker">0:17</div>
 
 # Connect to your own experiment
 
@@ -157,36 +187,6 @@ Source: notes/sources.md.
 
 <div class="kicker">0:32</div>
 
-# Predict a label for the whole board
-
-<InspectionMechanism kind="data" :step="1" />
-
-
-<!--
-After participants inspect a training photo, identify the input photograph and the binary target separately. A detector flags a board. The supplied mask marks pixels, but this model does not learn pixel labels.
-Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
-Source: notes/sources.md.
--->
-
----
-
-<div class="kicker">0:34</div>
-
-# Use the mask to investigate the decision
-
-<InspectionMechanism kind="data" :step="2" />
-
-
-<!--
-Ask which input would leak the answer if passed to the classifier. The mask is reference evidence for human inspection; neither masks nor test labels enter feature assembly.
-Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
-Source: notes/sources.md.
--->
-
----
-
-<div class="kicker">0:37</div>
-
 # Reuse a fixed image encoder
 
 <InspectionMechanism kind="encoder" :step="1" />
@@ -200,93 +200,9 @@ Source: notes/sources.md.
 
 ---
 
-<div class="kicker">0:41</div>
+<div class="kicker">0:37</div>
 
-# Keep local information as well as the whole image
-
-<InspectionMechanism kind="encoder" :step="2" />
-
-
-<!--
-Read the shapes out loud: N boards, 14 rows, 14 columns, 64 feature channels. The overlay shows feature positions schematically, not exact independent image crops. The whole-image representation has 512 values; the grid retains spatial differences.
-Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
-Source: notes/sources.md.
--->
-
----
-
-<div class="kicker">0:47</div>
-
-# Compare local features at the same board position
-
-<InspectionMechanism kind="patch" :step="1" />
-
-
-<!--
-Use only normal fitting boards as the reference bank. At each spatial position, find the closest actual reference vector after scaling. A normal fitting board cannot match itself. The older mean-patch result is preserved beside the later recorded comparison.
-Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
-Source: notes/sources.md.
--->
-
----
-
-<div class="kicker">0:53</div>
-
-# Append 196 distances to the 512 whole-image values
-
-<InspectionMechanism kind="features" :step="2" />
-
-
-<!--
-Walk the same board through errors, log1p, reshape and concatenate. The output has 708 columns. axis=0 would add observations rather than features and fail the shape/order fixture. log1p compresses large distances; it does not turn them into probabilities.
-Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
-Source: notes/sources.md.
--->
-
----
-class: exercise
----
-
-<div class="kicker">0:59</div>
-
-<a class="answer-link" href="/48">Worked answer →</a>
-
-# Add local information to the classifier
-
-<div class="task">Notebook step: Compute image features.</div><ol class="exercise-controls"><li>Complete <code>build_features</code>: calculate patch errors, apply <code>np.log1p</code>, and flatten one row per board.</li><li>Append the patch values to the whole-image vector along axis 1.</li><li>Click <strong>Check my patch-feature function</strong>.</li></ol><div class="done">Check: The check preserves board order and verifies both whole-image and nearest-patch behavior.</div>
-
-
-<!--
-The learner function is passed into fitting and saved with the freeze. Final evaluation reloads that saved source, not the current draft.
-Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
-Source: notes/sources.md.
--->
-
----
-
-<div class="kicker">1:14</div>
-
-# Check the feature cache without rebuilding everything
-
-```python
-weights = teaching.fetch_weights(weights_path)
-result = teaching.recompute_batch(data_root, weights)
-assert result["matching_cached_features"]
-```
-<div class="bottom-note">Optional button: Recompute four cached board features. Downloads pinned weights; no model-provider call.</div>
-
-
-<!--
-The retained lossless inputs allow exact feature comparison. The prepared full cache took 39.25 seconds on the preparation Mac using two Torch CPU threads. This is not an attendee timing guarantee.
-Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
-Source: notes/sources.md.
--->
-
----
-
-<div class="kicker">1:19</div>
-
-# Train the same classifier on each representation
+# Fit a first detector on whole-image features
 
 ```python {1-4|6|all}
 model = inspection.fit_classifier(
@@ -310,7 +226,7 @@ Source: notes/sources.md.
 
 ---
 
-<div class="kicker">1:22</div>
+<div class="kicker">0:40</div>
 
 # Fit on training boards; measure on validation boards
 
@@ -325,7 +241,7 @@ Source: notes/sources.md.
 
 ---
 
-<div class="kicker">1:26</div>
+<div class="kicker">0:44</div>
 
 # A detector score still needs an operating rule
 
@@ -340,7 +256,7 @@ Source: notes/sources.md.
 
 ---
 
-<div class="kicker">1:32</div>
+<div class="kicker">0:48</div>
 
 # Require 11 of the 12 validation defects to be caught
 
@@ -357,18 +273,153 @@ Source: notes/sources.md.
 class: exercise
 ---
 
-<div class="kicker">1:38</div>
+<div class="kicker">0:53</div>
 
-<a class="answer-link" href="/49">Worked answer →</a>
+<a class="answer-link" href="/52">Worked answer →</a>
 
 # Implement the validation threshold
 
-<div class="task">Notebook step: Compare global and patch features.</div><ol class="exercise-controls"><li>In <code>choose_threshold</code>, sort the scores of known validation defects.</li><li>Choose the largest cutoff that still catches at least 90% of them.</li><li>Click <strong>Check my threshold function</strong>, then <strong>Train both feature representations</strong>.</li></ol><div class="done">Check: Compare misses and false alarms alongside average precision.</div>
+<div class="task">Notebook step: Train the whole-image baseline.</div><ol class="exercise-controls"><li>In <code>choose_threshold</code>, sort the scores of known validation defects.</li><li>Choose the largest cutoff that still catches at least 90% of them.</li><li>Click <strong>Check my threshold function</strong>, then <strong>Train the whole-image baseline</strong>.</li></ol><div class="done">Check: Open one validation miss or false alarm before adding patch features.</div>
 
 
 <!--
 Allow participants to finish the local check before training. The 90 percent requirement constrains recall on validation only, not a guarantee for the final set.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+class: exercise
+---
+
+<div class="kicker">1:05</div>
+
+# Inspect a baseline miss or false alarm
+
+<div class="task">Notebook: Train the whole-image baseline</div><ol class="exercise-controls"><li>Select a validation board. Compare the photograph, annotation, score, and cutoff.</li><li>Explain what the whole-image detector missed or flagged. What local detail might help?</li><li>Optionally click <strong>Save my baseline observation</strong>.</li></ol><p class="done"><b>Check:</b> A saved baseline decision supports your hypothesis. No patch model has run yet.</p>
+
+
+<!--
+Choose a saved validation error if available; do not force a failure. If the baseline gets the selected board right, describe what evidence would distinguish the next representation. The displayed score comes from the saved weights and feature source.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/inspection_cells.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">1:12</div>
+
+# Keep local information as well as the whole image
+
+<InspectionMechanism kind="encoder" :step="2" />
+
+
+<!--
+Read the shapes out loud: N boards, 14 rows, 14 columns, 64 feature channels. The overlay shows feature positions schematically, not exact independent image crops. The whole-image representation has 512 values; the grid retains spatial differences.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">1:16</div>
+
+# Compare local features at the same board position
+
+<InspectionMechanism kind="patch" :step="1" />
+
+
+<!--
+Use only normal fitting boards as the reference bank. At each spatial position, find the closest actual reference vector after scaling. A normal fitting board cannot match itself. The older mean-patch result is preserved beside the later recorded comparison.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+class: exercise
+---
+
+<div class="kicker">1:22</div>
+
+# Calculate the distance at one image position
+
+<div class="task">Notebook: Compute image features</div><p>Click <strong>Calculate one patch distance</strong>. Read the visible calculation at row 7, column 7 of fitting board pcb1-anomaly-005.</p><ol class="exercise-controls"><li>Scale each channel using normal fitting boards.</li><li>Compare the query vector with each normal vector at that position.</li><li>Take the smallest mean squared difference, then log1p.</li></ol><p class="done"><b>Check:</b> Your displayed minimum agrees with nearest_patch_errors.</p>
+
+
+<!--
+These values come from the real prepared feature cache, not the five-board threshold fixture. Only fitting boards form the reference bank. The free calculation does not fit a classifier.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/inspection_cells.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">1:27</div>
+
+# Append 196 distances to the 512 whole-image values
+
+<InspectionMechanism kind="features" :step="2" />
+
+
+<!--
+Walk the same board through errors, log1p, reshape and concatenate. The output has 708 columns. axis=0 would add observations rather than features and fail the shape/order fixture. log1p compresses large distances; it does not turn them into probabilities.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+class: exercise
+---
+
+<div class="kicker">1:32</div>
+
+<a class="answer-link" href="/51">Worked answer →</a>
+
+# Add local information to the classifier
+
+<div class="task">Notebook step: Compute image features.</div><ol class="exercise-controls"><li>Complete <code>build_features</code>: calculate patch errors, apply <code>np.log1p</code>, and flatten one row per board.</li><li>Append the patch values to the whole-image vector along axis 1.</li><li>Click <strong>Check my patch-feature function</strong>.</li></ol><div class="done">Check: The check preserves board order and verifies both whole-image and nearest-patch behavior.</div>
+
+
+<!--
+The learner function is passed into fitting and saved with the freeze. Final evaluation reloads that saved source, not the current draft.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+
+<div class="kicker">1:41</div>
+
+# Check the feature cache without rebuilding everything
+
+```python
+weights = teaching.fetch_weights(weights_path)
+result = teaching.recompute_batch(data_root, weights)
+assert result["matching_cached_features"]
+```
+<div class="bottom-note">Optional button: Recompute four cached board features. Downloads pinned weights; no model-provider call.</div>
+
+
+<!--
+The retained lossless inputs allow exact feature comparison. The prepared full cache took 39.25 seconds on the preparation Mac using two Torch CPU threads. This is not an attendee timing guarantee.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Source: notes/sources.md.
+-->
+
+---
+class: exercise
+---
+
+<div class="kicker">1:44</div>
+
+# Test patches against the saved baseline
+
+<div class="task">Notebook: Compare global and patch features</div><ol class="exercise-controls"><li>Keep the whole-image branch, C=0.03, and threshold rule unchanged.</li><li>Click <strong>Train the patch-feature alternative</strong>.</li><li>Compare its validation mistakes with the saved whole-image result.</li></ol><p class="done"><b>Check:</b> Both representations are saved before continuing to review selection.</p>
+
+
+<!--
+The first fit remains valid while learners implement the patch branch. A changed threshold rule or changed whole-image inputs would confound this comparison and is rejected. Previously saved matching runs are reused.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/inspection_cells.py.
 Source: notes/sources.md.
 -->
 
@@ -513,7 +564,7 @@ class: exercise
 
 <div class="kicker">2:31</div>
 
-<a class="answer-link" href="/50">Worked answer →</a>
+<a class="answer-link" href="/53">Worked answer →</a>
 
 # Choose where the review time goes
 
@@ -792,7 +843,7 @@ local = np.log1p(errors).reshape(len(rows), -1)
 return np.concatenate([whole, local], axis=1)
 ```
 <div class="bottom-note">Both branches are exercised by the free check. The live comparison uses nearest-patch.</div>
-<div class="source-link"><a href="/15">Return to Add local information to the classifier</a></div>
+<div class="source-link"><a href="/22">Return to Add local information to the classifier</a></div>
 
 <!--
 The complete function signature is in the notebook. This body includes the historical mean-patch branch required by the free fixture. Each row remains one board; concatenation extends its feature columns.
@@ -812,7 +863,7 @@ position = int(np.ceil(recall * len(positives))) - 1
 return float(positives[position])
 ```
 <div class="bottom-note">At 12 validation defects and recall .90, keep the top 11 above the threshold.</div>
-<div class="source-link"><a href="/21">Return to Implement the validation threshold</a></div>
+<div class="source-link"><a href="/16">Return to Implement the validation threshold</a></div>
 
 <!--
 The retained cutoff depends on validation examples. It does not guarantee the same recall on final boards.
@@ -835,7 +886,7 @@ order = order[np.argsort(
 return np.asarray(rows)[order[:budget]]
 ```
 <div class="bottom-note">The permutation only breaks equal-distance ties. Do not pass labels to this function.</div>
-<div class="source-link"><a href="/31">Return to Choose where the review time goes</a></div>
+<div class="source-link"><a href="/34">Return to Choose where the review time goes</a></div>
 
 <!--
 Active selection here is uncertainty sampling. It is one policy to test, not a proven universal choice.

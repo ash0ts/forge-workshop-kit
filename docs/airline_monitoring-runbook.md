@@ -25,19 +25,21 @@ The live qualification completed all 40 conversations with passing task checks. 
 
 ## Opening script
 
-“An airline agent has been asked to change a passenger's outbound journey. The return flight should stay. The booking API takes the entire itinerary, so a perfectly successful call can still remove the wrong flight. We will inspect what the agent did, decide what a monitoring rule should catch, and make a test that catches the same problem before a later release.
+“Sofia is flying from New York to Las Vegas through Phoenix. She wants a different first flight, but her Phoenix–Las Vegas connection should stay. The booking API takes the entire itinerary, so a perfectly successful call can still strand her in Phoenix. We will inspect what the agent did, decide what a monitoring rule should catch, and make a test that catches the same problem before a later release.
 
 “These are simulated bookings from a public benchmark. Your live agent may get the request right. If it does, keep that result. We have a labeled local incident for learning the failure mechanism. The point is to connect a claim about behavior to a booking, a trace, and a repeatable check.”
+
+The notebook opening and first live request use **airline-discovery-01**, reservation **4BMN53**: replace **HAT201** with **HAT002** and preserve **HAT173** on May 22. The deck’s early API diagram uses the separate round-trip example **airline-discovery-02**, reservation **59XX6W**; identify that switch when moving into the notebook. The same preservation rule applies to a connection or a return flight.
 
 ## Timed facilitation
 
 | Elapsed | Lead with | Participant task and completion check |
 | --- | --- | --- |
-| **0–25** | “What should change, and what must survive?” | Inspect the exact request and booking. Connect the copied notebook. Save the expected change, the segment range, and the flights that must remain. |
-| **25–65** | “Record the work before inspecting it.” | Edit model/tool scopes, add version and traffic-batch attributes, run eight discovery conversations, and open one stored tool result. |
-| **65–100** | “A chart or cluster gives us somewhere to look.” | Read Overview as project context. In Conversations, filter the exact agent and custom `airline.version = baseline`, save the view, and inspect discovery requests. Investigate prepared Insights only when a completed cluster exists. Save one claim with its supporting event and recovery status. |
+| **0–25** | “What should change, and what must survive?” | Before connecting, use **Try the booking change locally** to compare partial and complete replacement lists. This controlled API drill deliberately bypasses confirmation; it is not an agent failure. Then connect the copied notebook. Save the expected change, the segment range, and the flights that must remain. |
+| **25–65** | “Record the work before inspecting it.” | Edit model/tool scopes, add version and traffic-batch attributes, run **Run the first discovery request**, and inspect its booking and stored tool result. Then use **Run the remaining seven discovery requests**. The same tracing source and eight case identities are retained. |
+| **65–100** | “A chart or cluster gives us somewhere to look.” | Read Overview as project context. In Conversations, filter the exact agent and custom `airline.version = baseline`, save the view, and inspect discovery requests. Investigate prepared Insights only when a completed cluster exists. Save one claim with its supporting event and recovery status. In **Review booking outcomes**, save your own label, reason, and expected behavior before creating a native tag. |
 | **100–110** | Break | Save the investigation. Do not rerun successful cases to create a failure. |
-| **110–155** | “Write a rule that survives a counterexample.” | Review native Alignment turns, including legitimate shorter itineraries. Test revised criteria, save the selected rule, and read back the native identity. |
+| **110–155** | “Write a rule that survives a counterexample.” | After the human review, optionally create the controlled calibration traces. Review native Alignment turns, including legitimate shorter itineraries. Test revised criteria, save the selected rule, and read back the native identity. |
 | **155–190** | “Which cases did we judge, and which did we miss?” | Implement precision, recall, and coverage. Enable the scoped tag and run four monitor checks. Live assignments only establish positive matches; calculate agreement from explicit Alignment results and keep all other turns unknown. |
 | **190–230** | “Save the booking before it was changed.” | Implement regression-case construction and state checks. Curate a reviewed incident plus an unflagged control. Keep the explanation judge separate. |
 | **230–240** | Break | Save the selected criteria and regression dataset. |
@@ -45,6 +47,8 @@ The live qualification completed all 40 conversations with passing task checks. 
 | **285–320** | “Stop choosing before opening these cases.” | Freeze the tested version. Run six reserved requests across both versions. Inspect one aligned case in EvalTables and its two traces. |
 | **320–345** | “Use the same rule on later requests.” | Run four subsequent requests across both versions. Compare tags with booking checks and examine coverage before interpreting a changed alert rate. |
 | **345–360** | “What would you keep, and what would you test next?” | Publish saved results and a short Report. Reproduce one case. Disable automatic tagging and verify its native state. |
+
+A saved human review completes **Review booking outcomes**, not **Check monitoring on new requests**. Monitoring completes after all four monitor-check cases and a saved agreement calculation; unavailable native predictions remain unavailable.
 
 Keep the breaks fixed. If a service is slow, use its saved evidence to explain the result and resume publication separately. Do not cut the comparison by silently dropping failed or missing cases. Record unfinished work and continue with the clearly labeled fallback.
 

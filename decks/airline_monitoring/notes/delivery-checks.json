@@ -1,7 +1,7 @@
 {
-  "source_sha256": "a038d92c80ffeda5fe127efaabeb2d8c19d12bed979b8d1fad1fb121a5aa3f71",
-  "slides_checked": 73,
-  "expected_slides": 73,
+  "source_sha256": "d31314201b22133d488830492f37a843a6fae8704dea437a8bde4dee228b3b52",
+  "slides_checked": 75,
+  "expected_slides": 75,
   "titles": [
     {
       "number": 1,
@@ -37,7 +37,7 @@
     },
     {
       "number": 9,
-      "title": "Check access and inspect the starting itinerary"
+      "title": "Try the replacement API, then connect your project"
     },
     {
       "number": 10,
@@ -53,7 +53,7 @@
     },
     {
       "number": 13,
-      "title": "Instrument the agent before sending its first batch"
+      "title": "Instrument the agent and inspect one request"
     },
     {
       "number": 14,
@@ -69,230 +69,238 @@
     },
     {
       "number": 17,
-      "title": "Keep three questions separate"
+      "title": "Continue with the other seven requests"
     },
     {
       "number": 18,
-      "title": "Use Overview for context, then open Conversations"
+      "title": "Keep three questions separate"
     },
     {
       "number": 19,
-      "title": "Insights suggests a pattern worth investigating"
+      "title": "Use Overview for context, then open Conversations"
     },
     {
       "number": 20,
-      "title": "An error is not always an unresolved failure"
+      "title": "Insights suggests a pattern worth investigating"
     },
     {
       "number": 21,
-      "title": "Save one claim with the turn that supports it"
+      "title": "An error is not always an unresolved failure"
     },
     {
       "number": 22,
-      "title": "Break until 1:50"
+      "title": "Save one claim with the turn that supports it"
     },
     {
       "number": 23,
-      "title": "Define a behavior that a reviewer can check"
+      "title": "Review the booking before asking a tag to judge it"
     },
     {
       "number": 24,
-      "title": "Fewer flights can be the correct result"
+      "title": "Break until 1:50"
     },
     {
       "number": 25,
-      "title": "Add counterexamples before trusting the rule"
+      "title": "Define a behavior that a reviewer can check"
     },
     {
       "number": 26,
-      "title": "A native tag has criteria, labels, and a live state"
+      "title": "Fewer flights can be the correct result"
     },
     {
       "number": 27,
-      "title": "Save the criteria and check the tag’s scope"
+      "title": "Add counterexamples before trusting the rule"
     },
     {
       "number": 28,
-      "title": "Turn context limits what the judge can know"
+      "title": "A native tag has criteria, labels, and a live state"
     },
     {
       "number": 29,
-      "title": "Test your tag against reviewed turns"
+      "title": "Save the criteria and check the tag’s scope"
     },
     {
       "number": 30,
-      "title": "Test one reviewed turn in native Alignment"
+      "title": "Turn context limits what the judge can know"
     },
     {
       "number": 31,
-      "title": "A saved review is not a completed judge result"
+      "title": "Test your tag against reviewed turns"
     },
     {
       "number": 32,
-      "title": "A valid response can contain a wrong judgment"
+      "title": "Test one reviewed turn in native Alignment"
     },
     {
       "number": 33,
-      "title": "Measure the monitor on reviewed cases"
+      "title": "A saved review is not a completed judge result"
     },
     {
       "number": 34,
-      "title": "Precision asks whether an alert deserves review"
+      "title": "A valid response can contain a wrong judgment"
     },
     {
       "number": 35,
-      "title": "Recall asks which failures the monitor missed"
+      "title": "Measure the monitor on reviewed cases"
     },
     {
       "number": 36,
-      "title": "Coverage tells us which turns were judged"
+      "title": "Precision asks whether an alert deserves review"
     },
     {
       "number": 37,
-      "title": "Calculate monitor quality and send new traffic"
+      "title": "Recall asks which failures the monitor missed"
     },
     {
       "number": 38,
-      "title": "A missing live tag does not establish a negative judgment"
+      "title": "Coverage tells us which turns were judged"
     },
     {
       "number": 39,
-      "title": "Freeze the rule before comparing agent versions"
+      "title": "Calculate monitor quality and send new traffic"
     },
     {
       "number": 40,
-      "title": "A reviewed turn becomes a regression case"
+      "title": "A missing live tag does not establish a negative judgment"
     },
     {
       "number": 41,
-      "title": "Keep enough information to replay the request"
+      "title": "Freeze the rule before comparing agent versions"
     },
     {
       "number": 42,
-      "title": "Build a regression case from the reviewed turn"
+      "title": "A reviewed turn becomes a regression case"
     },
     {
       "number": 43,
-      "title": "Score the change and the preserved flights separately"
+      "title": "Keep enough information to replay the request"
     },
     {
       "number": 44,
-      "title": "The explanation judge answers a different question"
+      "title": "Build a regression case from the reviewed turn"
     },
     {
       "number": 45,
-      "title": "Add the booking check the old evaluation missed"
+      "title": "Score the change and the preserved flights separately"
     },
     {
       "number": 46,
-      "title": "Save the case and its checks with the checkpoint"
+      "title": "The explanation judge answers a different question"
     },
     {
       "number": 47,
-      "title": "Break until 4:00"
+      "title": "Add the booking check the old evaluation missed"
     },
     {
       "number": 48,
-      "title": "Repair the list operation, then compare the behavior"
+      "title": "Save the case and its checks with the checkpoint"
     },
     {
       "number": 49,
-      "title": "Replace a range without dropping its neighbors"
+      "title": "Break until 4:00"
     },
     {
       "number": 50,
-      "title": "Walk through the values before running the model"
+      "title": "Repair the list operation, then compare the behavior"
     },
     {
       "number": 51,
-      "title": "Test the repair on matched development bookings"
+      "title": "Replace a range without dropping its neighbors"
     },
     {
       "number": 52,
-      "title": "The passenger must approve the proposed change"
+      "title": "Walk through the values before running the model"
     },
     {
       "number": 53,
-      "title": "Explain a passing repair without overstating it"
+      "title": "Test the repair on matched development bookings"
     },
     {
       "number": 54,
-      "title": "Judge one saved explanation against its evidence"
+      "title": "The passenger must approve the proposed change"
     },
     {
       "number": 55,
-      "title": "Freeze code before opening the reserved requests"
+      "title": "Explain a passing repair without overstating it"
     },
     {
       "number": 56,
-      "title": "Compare six reserved bookings across both versions"
+      "title": "Judge one saved explanation against its evidence"
     },
     {
       "number": 57,
-      "title": "Read the same request across the two versions"
+      "title": "Freeze code before opening the reserved requests"
     },
     {
       "number": 58,
-      "title": "Set the starting agent as the comparison reference"
+      "title": "Compare six reserved bookings across both versions"
     },
     {
       "number": 59,
-      "title": "Read both outputs for the same request"
+      "title": "Read the same request across the two versions"
     },
     {
       "number": 60,
-      "title": "The recorded agent comparison was a tie"
+      "title": "Set the starting agent as the comparison reference"
     },
     {
       "number": 61,
-      "title": "Report denominators and unresolved work"
+      "title": "Read both outputs for the same request"
     },
     {
       "number": 62,
-      "title": "Use later traffic to check the frozen monitor"
+      "title": "The recorded agent comparison was a tie"
     },
     {
       "number": 63,
-      "title": "Check what the monitor catches after the repair"
+      "title": "Report denominators and unresolved work"
     },
     {
       "number": 64,
-      "title": "A falling alert count has several explanations"
+      "title": "Use later traffic to check the frozen monitor"
     },
     {
       "number": 65,
-      "title": "Write down what changed and whether it helped"
+      "title": "Check what the monitor catches after the repair"
     },
     {
       "number": 66,
-      "title": "Publish the comparison and stop automatic judging"
+      "title": "A falling alert count has several explanations"
     },
     {
       "number": 67,
-      "title": "The next release has a check the first release lacked"
+      "title": "Write down what changed and whether it helped"
     },
     {
       "number": 68,
-      "title": "Worked answer: validate a judge response"
+      "title": "Publish the comparison and stop automatic judging"
     },
     {
       "number": 69,
-      "title": "Worked answer: keep unknown judgments out of the matrix"
+      "title": "The next release has a check the first release lacked"
     },
     {
       "number": 70,
-      "title": "Worked answer: preserve the original case inputs"
+      "title": "Worked answer: validate a judge response"
     },
     {
       "number": 71,
-      "title": "Worked answer: check both change and preservation"
+      "title": "Worked answer: keep unknown judgments out of the matrix"
     },
     {
       "number": 72,
-      "title": "Worked answer: build the complete replacement list"
+      "title": "Worked answer: preserve the original case inputs"
     },
     {
       "number": 73,
+      "title": "Worked answer: check both change and preservation"
+    },
+    {
+      "number": 74,
+      "title": "Worked answer: build the complete replacement list"
+    },
+    {
+      "number": 75,
       "title": "Sources and saved evidence"
     }
   ],
@@ -442,20 +450,20 @@
       "click": 0
     },
     {
-      "slide": 19,
-      "click": 1
-    },
-    {
-      "slide": 19,
-      "click": 2
-    },
-    {
-      "slide": 19,
-      "click": 3
+      "slide": 20,
+      "click": 0
     },
     {
       "slide": 20,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 20,
+      "click": 2
+    },
+    {
+      "slide": 20,
+      "click": 3
     },
     {
       "slide": 21,
@@ -472,14 +480,6 @@
     {
       "slide": 24,
       "click": 0
-    },
-    {
-      "slide": 24,
-      "click": 1
-    },
-    {
-      "slide": 24,
-      "click": 2
     },
     {
       "slide": 25,
@@ -522,6 +522,14 @@
       "click": 0
     },
     {
+      "slide": 30,
+      "click": 1
+    },
+    {
+      "slide": 30,
+      "click": 2
+    },
+    {
       "slide": 31,
       "click": 0
     },
@@ -530,24 +538,8 @@
       "click": 0
     },
     {
-      "slide": 32,
-      "click": 1
-    },
-    {
-      "slide": 32,
-      "click": 2
-    },
-    {
       "slide": 33,
       "click": 0
-    },
-    {
-      "slide": 33,
-      "click": 1
-    },
-    {
-      "slide": 33,
-      "click": 2
     },
     {
       "slide": 34,
@@ -558,30 +550,38 @@
       "click": 1
     },
     {
-      "slide": 35,
-      "click": 0
-    },
-    {
-      "slide": 35,
-      "click": 1
-    },
-    {
-      "slide": 36,
-      "click": 0
-    },
-    {
-      "slide": 36,
-      "click": 1
-    },
-    {
-      "slide": 36,
+      "slide": 34,
       "click": 2
+    },
+    {
+      "slide": 35,
+      "click": 0
+    },
+    {
+      "slide": 35,
+      "click": 1
+    },
+    {
+      "slide": 35,
+      "click": 2
+    },
+    {
+      "slide": 36,
+      "click": 0
+    },
+    {
+      "slide": 36,
+      "click": 1
     },
     {
       "slide": 37,
       "click": 0
     },
     {
+      "slide": 37,
+      "click": 1
+    },
+    {
       "slide": 38,
       "click": 0
     },
@@ -596,14 +596,6 @@
     {
       "slide": 39,
       "click": 0
-    },
-    {
-      "slide": 39,
-      "click": 1
-    },
-    {
-      "slide": 39,
-      "click": 2
     },
     {
       "slide": 40,
@@ -622,8 +614,24 @@
       "click": 0
     },
     {
+      "slide": 41,
+      "click": 1
+    },
+    {
+      "slide": 41,
+      "click": 2
+    },
+    {
       "slide": 42,
       "click": 0
+    },
+    {
+      "slide": 42,
+      "click": 1
+    },
+    {
+      "slide": 42,
+      "click": 2
     },
     {
       "slide": 43,
@@ -642,14 +650,6 @@
       "click": 0
     },
     {
-      "slide": 46,
-      "click": 1
-    },
-    {
-      "slide": 46,
-      "click": 2
-    },
-    {
       "slide": 47,
       "click": 0
     },
@@ -658,42 +658,42 @@
       "click": 0
     },
     {
-      "slide": 49,
-      "click": 0
-    },
-    {
-      "slide": 49,
+      "slide": 48,
       "click": 1
     },
     {
-      "slide": 49,
+      "slide": 48,
       "click": 2
     },
     {
       "slide": 49,
-      "click": 3
-    },
-    {
-      "slide": 49,
-      "click": 4
-    },
-    {
-      "slide": 50,
       "click": 0
     },
     {
       "slide": 50,
-      "click": 1
-    },
-    {
-      "slide": 50,
-      "click": 2
+      "click": 0
     },
     {
       "slide": 51,
       "click": 0
     },
     {
+      "slide": 51,
+      "click": 1
+    },
+    {
+      "slide": 51,
+      "click": 2
+    },
+    {
+      "slide": 51,
+      "click": 3
+    },
+    {
+      "slide": 51,
+      "click": 4
+    },
+    {
       "slide": 52,
       "click": 0
     },
@@ -704,10 +704,6 @@
     {
       "slide": 52,
       "click": 2
-    },
-    {
-      "slide": 52,
-      "click": 3
     },
     {
       "slide": 53,
@@ -718,20 +714,20 @@
       "click": 0
     },
     {
-      "slide": 55,
-      "click": 0
-    },
-    {
-      "slide": 55,
+      "slide": 54,
       "click": 1
     },
     {
-      "slide": 55,
+      "slide": 54,
       "click": 2
     },
     {
-      "slide": 55,
+      "slide": 54,
       "click": 3
+    },
+    {
+      "slide": 55,
+      "click": 0
     },
     {
       "slide": 56,
@@ -750,6 +746,10 @@
       "click": 2
     },
     {
+      "slide": 57,
+      "click": 3
+    },
+    {
       "slide": 58,
       "click": 0
     },
@@ -758,16 +758,16 @@
       "click": 0
     },
     {
-      "slide": 60,
-      "click": 0
-    },
-    {
-      "slide": 60,
+      "slide": 59,
       "click": 1
     },
     {
-      "slide": 60,
+      "slide": 59,
       "click": 2
+    },
+    {
+      "slide": 60,
+      "click": 0
     },
     {
       "slide": 61,
@@ -786,16 +786,24 @@
       "click": 2
     },
     {
-      "slide": 62,
-      "click": 3
-    },
-    {
       "slide": 63,
       "click": 0
     },
     {
       "slide": 64,
       "click": 0
+    },
+    {
+      "slide": 64,
+      "click": 1
+    },
+    {
+      "slide": 64,
+      "click": 2
+    },
+    {
+      "slide": 64,
+      "click": 3
     },
     {
       "slide": 65,
@@ -832,6 +840,14 @@
     {
       "slide": 73,
       "click": 0
+    },
+    {
+      "slide": 74,
+      "click": 0
+    },
+    {
+      "slide": 75,
+      "click": 0
     }
   ],
   "issues": [],
@@ -839,31 +855,31 @@
   "failed_responses": [],
   "answers": [
     {
-      "slide": 37,
-      "destination": "/forge-workshop-kit/airline_monitoring/69",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 42,
-      "destination": "/forge-workshop-kit/airline_monitoring/70",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 45,
+      "slide": 39,
       "destination": "/forge-workshop-kit/airline_monitoring/71",
       "keyboardReturn": true
     },
     {
-      "slide": 51,
+      "slide": 44,
       "destination": "/forge-workshop-kit/airline_monitoring/72",
       "keyboardReturn": true
     },
     {
-      "slide": 54,
-      "destination": "/forge-workshop-kit/airline_monitoring/68",
+      "slide": 47,
+      "destination": "/forge-workshop-kit/airline_monitoring/73",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 53,
+      "destination": "/forge-workshop-kit/airline_monitoring/74",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 56,
+      "destination": "/forge-workshop-kit/airline_monitoring/70",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 295,
+  "routes_checked": 303,
   "presenter_notes": true
 }

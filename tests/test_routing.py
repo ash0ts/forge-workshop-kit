@@ -100,8 +100,9 @@ def test_participant_head_settings_are_recorded():
 def test_final_freeze_requires_judge_attempt_not_routing_sample(tmp_path):
     from forge_workshop_kit import WorkshopSession
     session = WorkshopSession("test/routing", "banking-routing", state_dir=tmp_path)
-    with session.stage("routing/baseline/embedding") as stage:
-        stage.record({"model_sha256": "test"})
+    for kind in ("tfidf", "embedding"):
+        with session.stage("routing/baseline/" + kind, sources={"classifier.py": teaching.CLASSIFIER_SOLUTION}) as stage:
+            stage.record({"model_sha256": "test"})
     with session.stage("routing/judge/prompted/case-a") as stage:
         stage.record({"intent": "card_arrival"})
     assert teaching.freeze_prerequisite(session)

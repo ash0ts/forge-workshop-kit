@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[routing] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.8.0/forge_workshop_kit-0.8.0-py3-none-any.whl",
+#   "forge-workshop-kit[routing] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.9.0/forge_workshop_kit-0.9.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -289,6 +289,21 @@ def _(get_step, mo, ui):
     return
 
 
+# workshop-cell: request_routing/controls/opening_example
+@app.cell(hide_code=True)
+def _(mo):
+    opening_route = mo.ui.radio(["card_arrival", "card_not_working", "cash_withdrawal"], label="Which support workflow does this request need?")
+    opening_reveal = mo.ui.checkbox(label="Reveal the published intent")
+    return (opening_reveal, opening_route,)
+
+
+# workshop-cell: request_routing/opening_example
+@app.cell(hide_code=True)
+def _(get_step, mo, opening_reveal, opening_route, teaching):
+    mo.vstack([mo.md("### Try one request before connecting"), mo.md(teaching.OPENING_REQUEST["text"]), opening_route, opening_reveal, mo.md("Published intent: **card_arrival**. A missing delivery and a broken card need different teams. This is one public review-pool example, not a test request.") if opening_reveal.value else mo.md("Choose a queue and explain why. No account, download, or model call is needed."), mo.md("[Banking77 source · CC BY 4.0]("+teaching.OPENING_REQUEST["source"]+")")]) if get_step()=="setup" else mo.md("")
+    return
+
+
 # workshop-cell: request_routing/controls/connect
 @app.cell(hide_code=True)
 def _(get_step, mo, setup):
@@ -406,7 +421,7 @@ def _(get_context, get_data, get_revision, get_step, mo, routing, teaching):
     return (request_picker, reveal_label,)
 
 
-# workshop-cell: request_routing/display/20
+# workshop-cell: request_routing/display/22
 @app.cell(hide_code=True)
 def _(get_data, get_step, mo, request_picker, reveal_label, routing):
     mo.stop(get_step()!="data" or not request_picker.value)
@@ -422,9 +437,12 @@ def _(get_context, get_revision, get_step, mo, teaching, ui):
     _revision=get_revision()
     classifier_editor=mo.ui.code_editor(value=_s.get_draft("routing/classifier",teaching.CLASSIFIER_STARTER) if _s else teaching.CLASSIFIER_STARTER,language="python",on_change=lambda source:_s.save_draft("routing/classifier",source) if _s else None,debounce=False)
     check_classifier=mo.ui.run_button(label="Check my classifier code")
-    train_classifiers=mo.ui.run_button(label="Train both classifiers on the same messages",disabled=not bool(_s and teaching.saved(_s,"routing/data")))
-    mo.vstack([mo.Html(ui.step("Train two routers","Complete make_classifier. Both models learn from the same 8,463 messages. The first uses word unigrams and bigrams; the second uses fixed 384-number sentence vectors. No encoder weights change.","Compare validation macro-F1 and review coverage. Open the run in Forge to inspect its code and settings.")),classifier_editor,check_classifier,train_classifiers,mo.accordion({"Hint":mo.md("Return a scikit-learn LogisticRegression object with C=10, max_iter=1000, random_state=17."),"Worked answer":mo.md("```python\n"+teaching.CLASSIFIER_SOLUTION+"\n```")})]) if get_step()=="baseline" else mo.md("")
-    return (check_classifier, classifier_editor, train_classifiers,)
+    practice_fit=mo.ui.run_button(label="Fit and predict four practice points")
+    train_classifiers=mo.ui.run_button(label="Train the word-feature baseline",disabled=not bool(_s and teaching.saved(_s,"routing/data")))
+    _seen=bool(_s and (_s.get_draft("routing/baseline-observation", None) or teaching.saved(_s,"routing/baseline/embedding")))
+    train_embedding=mo.ui.run_button(label="Train the sentence-feature alternative",disabled=not bool(_s and teaching.saved(_s,"routing/baseline/tfidf")))
+    mo.vstack([mo.Html(ui.step("Train a first router, then inspect its mistakes","Complete make_classifier. Fit the small practice example below, then train the word-feature baseline on 8,463 messages. Keep the classifier settings fixed when we change its input representation.","Read a validation request and explain its route before opening the alternative.")),classifier_editor,check_classifier,practice_fit,train_classifiers,mo.md("**Word-feature baseline saved.** Inspect a validation request below, then open Compare sentence features. The comparison completes after both runs are saved.") if _s and teaching.saved(_s,"routing/baseline/tfidf") else mo.md(""),mo.accordion({"Hint":mo.md("Return LogisticRegression(C=10, max_iter=1000, random_state=17). The constructor does not fit it."),"Worked answer":mo.md("```python"+chr(10)+teaching.CLASSIFIER_SOLUTION+chr(10)+"```")})]) if get_step()=="baseline" else mo.vstack([mo.Html(ui.step("Change the representation, keep the experiment fixed","The same classifier now receives cached 384-value sentence vectors. Both runs use the same training messages and classifier code; the encoder weights stay fixed.","Compare the same validation request before reading the aggregate score.")),classifier_editor,train_embedding,mo.md("Inspect one word-feature prediction before running the alternative. Saving a note is optional.") if not _seen else mo.md("The baseline observation is saved.")]) if get_step()=="alternative" else mo.md("")
+    return (check_classifier, classifier_editor, practice_fit, train_classifiers, train_embedding,)
 
 
 # workshop-cell: request_routing/action/check_classifier
@@ -438,6 +456,21 @@ def _(check_classifier, classifier_editor, mo, show_result, teaching):
     return
 
 
+# workshop-cell: request_routing/action/practice_fit
+@app.cell
+def _(classifier_editor, mo, practice_fit, teaching):
+    mo.stop(not practice_fit.value)
+    import numpy as np
+    # Four illustrative points, not Banking77 embeddings. Changing make_classifier changes this fit.
+    _practice_model=teaching.functions(classifier_editor.value)["make_classifier"]()
+    _practice_X=np.array([[0.,0.],[0.,.1],[1.,1.],[1.,.9]])
+    _practice_y=np.array(["delivery","delivery","broken_card","broken_card"])
+    _practice_model.fit(_practice_X,_practice_y)
+    _practice_probabilities=_practice_model.predict_proba(_practice_X)
+    mo.ui.table([{"Input":list(x),"Target":y,"Prediction":p,"Probabilities":list(prob),"Column order":list(_practice_model.classes_)} for x,y,p,prob in zip(_practice_X,_practice_y,_practice_model.predict(_practice_X),_practice_probabilities)],selection=None)
+    return (np,)
+
+
 # workshop-cell: request_routing/action/train_classifiers
 @app.cell
 def _(classifier_editor, get_context, get_data, joblib, mo, refresh, routing, show_result, teaching, time, trace_saved, train_classifiers):
@@ -446,19 +479,88 @@ def _(classifier_editor, get_context, get_data, joblib, mo, refresh, routing, sh
     _s=get_context()["session"]
     _data=get_data()
     _factory=teaching.functions(classifier_editor.value)["make_classifier"]
+    _kind='tfidf'
+    teaching.check_matched_classifier(_s,classifier_editor.value)
+    with _s.stage("routing/baseline/"+_kind,config={"kind":_kind,"seed":17,"dataset":routing.checksum(_data["root"]/"manifest.json")},sources={"classifier.py":classifier_editor.value}) as _stage:
+        if _stage.needs_run:
+            _started=time.time()
+            _fitted=routing.fit_classifier(_data,_kind,factory=_factory)
+            _rows=routing.predict(_fitted,_data,"validation")
+            _review=routing.predict(_fitted,_data,"review")
+            _model_path=_stage.output_dir/"classifier.joblib"
+            joblib.dump(_fitted,_model_path)
+            _event={"id":_stage.id+"/train","name":"train_routing_classifier","arguments":{"kind":_kind,"training_examples":len(_fitted["training_ids"])},"result":routing.score(_rows),"started_at":_started,"ended_at":time.time(),"status":"complete"}
+            _stage.record({"model_file":str(_model_path.relative_to(_s.root)),"model_sha256":routing.checksum(_model_path),"validation":_rows,"review":_review,"metrics":routing.score(_rows),"events":[_event]},files=[_model_path])
+    show_result(_kind,{"execution":"Word-feature baseline saved. Inspect a validation request, then train the sentence-feature alternative.","comparison":"Both representations are saved." if teaching.baselines_complete(_s) else "One of two representations is saved; the comparison is not complete yet.","publication":trace_saved(_stage)})
+
+    _s.checkpoint("baseline-tfidf")
+    if teaching.baselines_complete(_s): _s.checkpoint("baseline")
+    refresh()
+    return
+
+
+# workshop-cell: request_routing/action/train_embedding
+@app.cell
+def _(classifier_editor, get_context, get_data, joblib, mo, refresh, routing, show_result, teaching, time, trace_saved, train_embedding):
+    mo.stop(not train_embedding.value)
+    teaching.check_classifier(classifier_editor.value)
+    _s=get_context()["session"]
+    _data=get_data()
+    _factory=teaching.functions(classifier_editor.value)["make_classifier"]
+    _kind='embedding'
+    if not teaching.saved(_s,"routing/baseline/tfidf"):
+        raise ValueError("Train the word-feature baseline first.")
+    teaching.check_matched_classifier(_s,classifier_editor.value)
+    with _s.stage("routing/baseline/"+_kind,config={"kind":_kind,"seed":17,"dataset":routing.checksum(_data["root"]/"manifest.json")},sources={"classifier.py":classifier_editor.value}) as _stage:
+        if _stage.needs_run:
+            _started=time.time()
+            _fitted=routing.fit_classifier(_data,_kind,factory=_factory)
+            _rows=routing.predict(_fitted,_data,"validation")
+            _review=routing.predict(_fitted,_data,"review")
+            _model_path=_stage.output_dir/"classifier.joblib"
+            joblib.dump(_fitted,_model_path)
+            _event={"id":_stage.id+"/train","name":"train_routing_classifier","arguments":{"kind":_kind,"training_examples":len(_fitted["training_ids"])},"result":routing.score(_rows),"started_at":_started,"ended_at":time.time(),"status":"complete"}
+            _stage.record({"model_file":str(_model_path.relative_to(_s.root)),"model_sha256":routing.checksum(_model_path),"validation":_rows,"review":_review,"metrics":routing.score(_rows),"events":[_event]},files=[_model_path])
+    show_result(_kind,trace_saved(_stage))
+
+    if teaching.baselines_complete(_s): _s.checkpoint("baseline")
+    refresh()
+    return
+
+
+# workshop-cell: request_routing/controls/baseline_observation
+@app.cell(hide_code=True)
+def _(get_context, get_revision, get_step, mo, teaching):
+    _s=get_context().get("session")
+    _revision=get_revision()
+    _baseline_examples=teaching.validation_examples(_s)
+    baseline_case=mo.ui.dropdown({row["case_id"]+" · "+row["text"]:row["case_id"] for row in _baseline_examples},value=(_baseline_examples[0]["case_id"]+" · "+_baseline_examples[0]["text"]) if _baseline_examples else None,label="Validation request",full_width=True)
+    baseline_observation=mo.ui.text_area(value=_s.get_draft("routing/baseline-note", "") if _s else "",label="Optional note: what happened, and what might sentence features change?",on_change=lambda value:_s.save_draft("routing/baseline-note",value) if _s else None,full_width=True)
+    save_baseline_observation=mo.ui.run_button(label="Save my baseline observation",disabled=not bool(_baseline_examples))
+    mo.vstack([mo.md("### Read a prediction before summarizing the run"),baseline_case,baseline_observation,save_baseline_observation]) if get_step() in ("baseline","alternative") else mo.md("")
+    return (baseline_case, baseline_observation, save_baseline_observation,)
+
+
+# workshop-cell: request_routing/display/baseline_case
+@app.cell(hide_code=True)
+def _(baseline_case, get_context, get_step, mo, teaching):
+    mo.stop(not baseline_case.value or get_step() not in ("baseline","alternative"))
+    _s=get_context()["session"]
+    _rows=[]
     for _kind in ("tfidf","embedding"):
-        with _s.stage("routing/baseline/"+_kind,config={"kind":_kind,"seed":17,"dataset":routing.checksum(_data["root"]/"manifest.json")},sources={"classifier.py":classifier_editor.value}) as _stage:
-            if _stage.needs_run:
-                _started=time.time()
-                _fitted=routing.fit_classifier(_data,_kind,factory=_factory)
-                _rows=routing.predict(_fitted,_data,"validation")
-                _review=routing.predict(_fitted,_data,"review")
-                _model_path=_stage.output_dir/"classifier.joblib"
-                joblib.dump(_fitted,_model_path)
-                _event={"id":_stage.id+"/train","name":"train_routing_classifier","arguments":{"kind":_kind,"training_examples":len(_fitted["training_ids"])},"result":routing.score(_rows),"started_at":_started,"ended_at":time.time(),"status":"complete"}
-                _stage.record({"model_file":str(_model_path.relative_to(_s.root)),"model_sha256":routing.checksum(_model_path),"validation":_rows,"review":_review,"metrics":routing.score(_rows),"events":[_event]},files=[_model_path])
-        show_result(_kind,trace_saved(_stage))
-    _s.checkpoint("baseline")
+        _row=next((row for row in teaching.validation_examples(_s,_kind) if row["case_id"]==baseline_case.value),None)
+        if _row:_rows.append({"Version":_kind,"Request":_row["text"],"Predicted queue":_row["prediction"],"Published intent":_row["target"],"Confidence":_row["confidence"]})
+    mo.ui.table(_rows,selection=None)
+    return
+
+
+# workshop-cell: request_routing/action/baseline_observation
+@app.cell(hide_code=True)
+def _(baseline_case, baseline_observation, get_context, mo, refresh, save_baseline_observation):
+    mo.stop(not save_baseline_observation.value)
+    mo.stop(not baseline_observation.value.strip(),mo.md("Write a note to save it, or continue without one."))
+    _s=get_context()["session"]
+    _s.save_draft("routing/baseline-observation",{"case_id":baseline_case.value,"note":baseline_observation.value})
     refresh()
     return
 
@@ -468,8 +570,8 @@ def _(classifier_editor, get_context, get_data, joblib, mo, refresh, routing, sh
 def _(get_context, get_revision, get_step, mo, teaching):
     _s=get_context().get("session")
     _revision=get_revision()
-    _baselines={name:teaching.saved(_s,"routing/baseline/"+name) for name in ("tfidf","embedding")} if _s else {}
-    mo.ui.table(teaching.metrics_table({name:row["result"]["validation"] for name,row in _baselines.items() if row}),selection=None) if get_step()=="baseline" and any(_baselines.values()) else mo.md("")
+    _baselines={name:teaching.saved(_s,"routing/baseline/"+name) if _s else None for name in ("tfidf","embedding")}
+    mo.accordion({"Validation summary after inspecting a request":mo.ui.table(teaching.metrics_table({name:row["result"]["validation"] for name,row in _baselines.items() if row}),selection=None)}) if get_step() in ("baseline","alternative") and any(_baselines.values()) else mo.md("")
     return
 
 
@@ -503,7 +605,7 @@ def _(check_policy, mo, policy_editor, show_result, teaching):
     return
 
 
-# workshop-cell: request_routing/display/27
+# workshop-cell: request_routing/display/34
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, policy_editor, review_threshold, routing, teaching, ui):
     mo.stop(get_step()!="review")
@@ -519,7 +621,7 @@ def _(get_context, get_revision, get_step, mo, policy_editor, review_threshold, 
     return
 
 
-# workshop-cell: request_routing/display/28
+# workshop-cell: request_routing/display/35
 @app.cell(hide_code=True)
 def _(get_context, get_step, mo, review_picker, teaching, ui):
     mo.stop(get_step()!="review" or not review_picker.value)
@@ -549,19 +651,30 @@ def _(accepted_label, get_context, get_data, json, mo, refresh, review_picker, r
     return
 
 
+# workshop-cell: request_routing/controls/run_prompted
+@app.cell(hide_code=True)
+def _(get_context, get_revision, get_step, mo, teaching, ui):
+    _s=get_context().get("session")
+    _revision=get_revision()
+    run_prompted=mo.ui.run_button(label="Route eight development requests with the fixed model",disabled=not bool(_s and teaching.saved(_s,"routing/baseline/embedding")))
+    mo.vstack([mo.Html(ui.step("Inspect a model making the routing decision","This model chooses a queue. In the next step, a separate call will judge a proposed route. Run eight development examples and find the intent, review flag, and reason in one response.","Open its Agent Lens conversation. This small instrumentation sample is not the full classifier comparison.")),run_prompted]) if get_step()=="prompted" else mo.md("")
+    return (run_prompted,)
+
+
 # workshop-cell: request_routing/controls/check_judge
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, teaching, ui):
     _s=get_context().get("session")
     _revision=get_revision()
     judge_editor=mo.ui.code_editor(value=_s.get_draft("routing/judge-validator",teaching.VALIDATOR_STARTER) if _s else teaching.VALIDATOR_STARTER,language="python",on_change=lambda source:_s.save_draft("routing/judge-validator",source) if _s else None,debounce=False)
+    _review_record=teaching.saved(_s,"routing/review") if _s else None
+    _review_rows=[{"Request":r.get("evidence",{}).get("text"),"Proposed route":r.get("proposed_label"),"Your accepted route":r.get("accepted_label"),"Reviewer":r.get("reviewer")} for r in (_review_record["result"]["rows"] if _review_record else [])]
     judge_rubric=mo.ui.text_area(value=_s.get_draft("routing/judge-rubric",teaching.JUDGE_RUBRIC) if _s else teaching.JUDGE_RUBRIC,label="Failure-tag instructions",full_width=True,on_change=lambda value:_s.save_draft("routing/judge-rubric",value) if _s else None)
     check_judge=mo.ui.run_button(label="Check my judge validator")
-    run_prompted=mo.ui.run_button(label="Route eight development requests with the fixed model",disabled=not bool(_s and teaching.saved(_s,"routing/baseline/embedding")))
     run_judge=mo.ui.run_button(label="Compare the judge with up to eight of my reviews",disabled=not bool(_s and teaching.saved(_s,"routing/review")))
     retry_judge_publication=mo.ui.run_button(label="Retry publishing my saved judge comparison",disabled=not bool(_s and teaching.saved(_s,"routing/judge/summary")))
-    mo.vstack([mo.Html(ui.step("Check whether the automated judge agrees with you","Complete validate_judge, then inspect the failure-tag instructions. The eight-request routing sample shows the fixed model making typed routing decisions; it is too small to rank it against the full classifiers.","Run the judge on your reviewed cases. Read one false alarm or missed failure, and revise the rubric if needed. A valid JSON response can still be wrong.")),judge_editor,check_judge,judge_rubric,run_prompted,run_judge,retry_judge_publication,ui.publication(mo,_s,names=("banking-routing-judge-alignment",)) if _s else mo.md(""),mo.accordion({"Worked answer":mo.md("```python\n"+teaching.VALIDATOR_SOLUTION+"\n```")})]) if get_step()=="judge" else mo.md("")
-    return (check_judge, judge_editor, judge_rubric, retry_judge_publication, run_judge, run_prompted,)
+    mo.vstack([mo.Html(ui.step("Check whether the automated judge agrees with you","Start with the cases you reviewed. Complete validate_judge, then write criteria that distinguish an incorrect route from a reasonable request for review. Your accepted labels stay outside the judge prompt.","Run the judge on your reviewed cases. Read one false alarm or missed failure, and revise the rubric if needed. A valid JSON response can still be wrong.")),mo.ui.table(_review_rows,selection=None) if _review_rows else mo.md("Save a reviewed label in Review requests before defining the judge criteria."),judge_editor,check_judge,judge_rubric,run_judge,retry_judge_publication,ui.publication(mo,_s,names=("banking-routing-judge-alignment",)) if _s else mo.md(""),mo.accordion({"Worked answer":mo.md("```python\n"+teaching.VALIDATOR_SOLUTION+"\n```")})]) if get_step()=="judge" else mo.md("")
+    return (check_judge, judge_editor, judge_rubric, retry_judge_publication, run_judge,)
 
 
 # workshop-cell: request_routing/action/check_judge
@@ -591,7 +704,9 @@ def _(get_context, get_data, mo, refresh, routing, run_prompted, show_result, te
     _s=get_context()["session"]
     _data=get_data()
     _intents=sorted({r["label"] for r in _data["rows"] if r["split"]=="train"})
-    _rows=sorted(teaching.saved(_s,"routing/baseline/embedding")["result"]["validation"],key=lambda r:r["case_id"])[:8]
+    _rows=teaching.prompted_examples(_s)
+    if len(_rows)!=8:
+        raise ValueError("Restore the embedding validation results before running the eight-request sample.")
     _results=[]
     for _row in _rows:
         with _s.stage("routing/judge/prompted/"+_row["case_id"],config={"case_id":_row["case_id"]}) as _stage:
@@ -601,7 +716,7 @@ def _(get_context, get_data, mo, refresh, routing, run_prompted, show_result, te
         _results.append(_stage.result)
         show_result("prompted trace",trace_saved(_stage))
     show_result("prompted routes",_results)
-    _s.checkpoint("routing-sample")
+    if teaching.prompted_complete(_s): _s.checkpoint("routing-sample")
     refresh()
     return
 
@@ -756,7 +871,7 @@ def _(get_context, get_revision, get_step, mo, teaching):
     return (final_picker,)
 
 
-# workshop-cell: request_routing/display/42
+# workshop-cell: request_routing/display/50
 @app.cell(hide_code=True)
 def _(final_picker, get_context, get_step, mo, teaching, ui):
     mo.stop(get_step()!="final" or not final_picker.value)
@@ -1004,7 +1119,7 @@ def _(conclusion, get_context, mo, publish, publish_report, publish_routing_resu
     return
 
 
-# workshop-cell: request_routing/display/58
+# workshop-cell: request_routing/display/66
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, teaching, ui):
     mo.stop(get_step()!="report")
@@ -1016,7 +1131,7 @@ def _(get_context, get_revision, get_step, mo, teaching, ui):
     return
 
 
-# workshop-cell: request_routing/display/59
+# workshop-cell: request_routing/display/67
 @app.cell(hide_code=True)
 def _(get_output, get_step, mo, ui):
     _outputs=get_output()
@@ -1030,7 +1145,8 @@ def _(get_output, get_step, mo, ui):
 def _(get_context, get_revision, get_step, go_to, mo, teaching, ui):
     _s=get_context().get("session")
     _revision=get_revision()
-    _records=[r for r in _s.read()["stages"].values() if r["status"]=="complete" and (r["name"].startswith("routing/"+get_step()) or get_step()=="report")] if _s else []
+    _prefix={"alternative":"routing/baseline/", "prompted":"routing/judge/prompted/"}.get(get_step(),"routing/"+get_step())
+    _records=[r for r in _s.read()["stages"].values() if r["status"]=="complete" and (r["name"].startswith(_prefix) or get_step()=="report")] if _s else []
     routing_next=ui.next_step(mo,"Next: "+teaching.STEPS[min([s[0] for s in teaching.STEPS].index(get_step())+1,len(teaching.STEPS)-1)][1],teaching.STEPS[min([s[0] for s in teaching.STEPS].index(get_step())+1,len(teaching.STEPS)-1)][0],go_to)
     mo.vstack([ui.evidence(mo,_s,stage_ids=[r["id"] for r in _records],question="Open one operation. Match its case ID, returned intent, and executed source to the result in this notebook.") if _s and _records else mo.md(""),routing_next])
     return (routing_next,)

@@ -5,6 +5,7 @@
 - `scripts/transit_cells.py`: authored acceptance, worker dispatch, task ownership, memory retrieval and release exercises.
 - `scripts/airline_monitoring_cells.py`: authored tracing, native tag review, regression curation, booking comparison, and subsequent-monitoring exercises.
 - `.agents/skills/forge-workshops/SKILL.md`: authoring and delivery guidance that links the existing contracts.
+- `docs/teaching-sequence.md`: how to order worked examples, code changes, comparisons, and Forge investigations in the notebooks and decks.
 - `src/forge_workshop_kit/cli.py`: checkout commands for scaffolding, checking, rehearsal, building, and explicit publication.
 - `scripts/build_notebooks.py`: generates the participant, starter and read-only facilitator notebooks.
 - `notebooks/solar_autoresearch.py`: editable forecast, instrumentation, search and research controller.

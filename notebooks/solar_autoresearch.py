@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[solar] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.8.0/forge_workshop_kit-0.8.0-py3-none-any.whl",
+#   "forge-workshop-kit[solar] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.9.0/forge_workshop_kit-0.9.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "aioftp==0.28.3",
 #   "aiohappyeyeballs==2.7.1",
@@ -202,6 +202,25 @@ def _(get_step, mo, ui):
     return
 
 
+# workshop-cell: solar_autoresearch/definitions/preview_target
+@app.cell(hide_code=True)
+def _(get_step, mo, teaching):
+    mo.stop(get_step() != "setup")
+    _solar_preview = teaching.development_preview()
+    preview_target = mo.ui.checkbox(label="Show the later observation and this forecast's error")
+    mo.vstack([mo.md("### Try one forecast before signing in"), mo.md("This bundled example is a real training-date reading, not a model run. At **" + _solar_preview["origin"] + " UTC**, XRS-B log-flux is **" + str(round(_solar_preview["latest_log10"], 6)) + "**. Persistence predicts the same value 30 minutes later. Before revealing the target, say what that assumption means."), mo.md("```python\nforecast = latest_log10\nabsolute_error = abs(forecast - target_log10)\n```"), preview_target])
+    return (preview_target,)
+
+
+# workshop-cell: solar_autoresearch/display/4
+@app.cell(hide_code=True)
+def _(get_step, mo, preview_target, teaching, ui):
+    mo.stop(get_step() != "setup")
+    _example = teaching.development_preview()
+    mo.Html(ui.result("One observed forecast window", {"Forecast origin (UTC)": _example["origin"], "Target time (UTC)": _example["target_time"], "Persistence forecast": _example["latest_log10"], "Observed target": _example["target_log10"], "Absolute log-flux error": abs(_example["latest_log10"] - _example["target_log10"]), "Source": "Bundled GOES-15 training example; not a new experiment"})) if preview_target.value else mo.md("You can inspect this example without authentication. Connect below when you are ready to save your own work.")
+    return
+
+
 # workshop-cell: solar_autoresearch/definitions/go_to
 @app.cell(hide_code=True)
 def _(get_lab, set_step):
@@ -285,7 +304,7 @@ def _(get_lab, mo, refresh_saved, set_feedback, set_recovery_revision, solar_rec
     return
 
 
-# workshop-cell: solar_autoresearch/display/10
+# workshop-cell: solar_autoresearch/display/12
 @app.cell(hide_code=True)
 def _(get_feedback, mo):
     _message = get_feedback().get("recovery")
@@ -408,7 +427,7 @@ def _(event, export_trace, first_trace, get_lab, instrument_tool, instrumentatio
     return
 
 
-# workshop-cell: solar_autoresearch/display/20
+# workshop-cell: solar_autoresearch/display/22
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() != "setup")
@@ -482,7 +501,7 @@ def _(get_lab, mo, window_split):
     return (window_index, window_standardized,)
 
 
-# workshop-cell: solar_autoresearch/display/26
+# workshop-cell: solar_autoresearch/display/28
 @app.cell(hide_code=True)
 def _(get_lab, mo, views, window_index, window_split, window_standardized):
     _values = views.window_values(get_lab()["goes"][window_split.value], get_lab()["goes_normalization"], window_index.value, standardized=window_standardized.value)
@@ -548,7 +567,7 @@ def _(get_feedback, get_lab, get_step, go_to, mo, persistence_editor, teaching, 
     return (solar_next_step_7,)
 
 
-# workshop-cell: solar_autoresearch/display/31
+# workshop-cell: solar_autoresearch/display/33
 @app.cell(hide_code=True)
 def _():
     DEFAULT_SOURCE = '"""Editable research code. The data split and final scorer live elsewhere."""\nimport torch\nfrom torch import nn\n\n\ndef build_model(input_shape, config):\n    width=config.get(\'width\',16)\n    architecture=config.get(\'architecture\',\'mlp\')\n    if len(input_shape)==2:\n        if architecture==\'mlp\':\n            return nn.Sequential(nn.Flatten(),nn.Linear(input_shape[0]*input_shape[1],width),\n                                 nn.ReLU(),nn.Linear(width,1))\n        return nn.Sequential(nn.Conv1d(input_shape[0],width,5,padding=2),nn.ReLU(),\n                             nn.AdaptiveAvgPool1d(1),nn.Flatten(),nn.Linear(width,1))\n    class ImagePredictor(nn.Module):\n        def __init__(self):\n            super().__init__()\n            self.net=nn.Sequential(nn.Conv2d(2,width,3,padding=1),nn.ReLU(),\n                                   nn.Conv2d(width,width,3,padding=1),nn.ReLU(),\n                                   nn.Conv2d(width,1,3,padding=1))\n        def forward(self,x):\n            prediction=self.net(x)\n            return prediction+x[:,1:2] if architecture==\'residual\' else prediction\n    return ImagePredictor()\n\n\ndef training_loss(prediction,target,mask):\n    return ((prediction-target).square()*mask).sum()/mask.sum()\n\n\ndef fit(model,x,y,mask,config):\n    optimizer=torch.optim.Adam(model.parameters(),lr=config.get(\'learning_rate\',.001))\n    generator=torch.Generator().manual_seed(config.get(\'seed\',17))\n    losses=[]\n    model.train()\n    for step in range(config.get(\'steps\',40)):\n        indices=torch.randint(len(x),(min(config.get(\'batch_size\',16),len(x)),),generator=generator)\n        prediction=model(x[indices])\n        loss=training_loss(prediction,y[indices],mask[indices])\n        optimizer.zero_grad()\n        loss.backward()\n        optimizer.step()\n        losses.append(float(loss.detach()))\n    return losses\n'
@@ -566,10 +585,9 @@ def _(DEFAULT_SOURCE, get_lab, get_step, go_to, mo, teaching, ui):
     measurement_editor = mo.ui.code_editor(value=_s.get_draft("solar/measurement", teaching.model_starter(DEFAULT_SOURCE, "measurement")), language="python", min_height=320, max_height=650, label="Measurement model source: complete training_loss", on_change=lambda value: _s.save_draft("solar/measurement", value))
     flux_metric_editor = mo.ui.code_editor(value=_s.get_draft("solar/flux-metric", teaching.FLUX_STARTER), language="python", min_height=120, label="Implement my_flux_mae", on_change=lambda value: _s.save_draft("solar/flux-metric", value))
     check_measurement = mo.ui.run_button(label="Check my measurement code")
-    run_search = mo.ui.run_button(label="Run six tracked configurations", disabled=not bool(get_lab().get("goes")) or teaching.saved(_s, "images/freeze") is not None)
     solar_prerequisite_9 = ui.prerequisite(mo, "Load the dataset before training.", "data", go_to)
-    mo.vstack([mo.Html(ui.step("4. Record the experiment before comparing it", "Complete training_loss and my_flux_mae below. The loss trains the model; mean absolute error (MAE) measures how far its forecasts miss. Check your code, then click Run six tracked configurations.", "You’ll get six runs: three small feed-forward networks (MLPs) and three temporal convolutional networks (CNNs). Compare their validation errors in the Sweep.")), mo.md("Read `run_training` below before you run it. It saves your settings, metrics, code, trained weights, and predictions with each experiment. Open one run afterward and find those files."), measurement_editor, flux_metric_editor, check_measurement, mo.accordion({"Hint": mo.md("For training_loss, square the prediction error, multiply by the mask, sum, and divide by the mask sum. For my_flux_mae, average the absolute errors. A negative miss must not cancel a positive miss."), "Worked answers": mo.md("```python\ndef training_loss(prediction, target, mask):\n    return ((prediction - target).square() * mask).sum() / mask.sum()\n\n" + teaching.FLUX_SOLUTION + "\n```"), "Why this is a search": mo.md("A Sweep tries settings in implementations we already have. Here it tries three width/learning-rate combinations for each architecture. Every run uses seed 17, 60 training steps, and batch size 32. Later, the agent will change the code itself.")}), run_search, solar_prerequisite_9 if not get_lab().get("goes") else mo.md("The six runs train on this notebook’s CPU. If you return later with the same code and settings, the notebook uses the saved runs.")])
-    return (check_measurement, flux_metric_editor, measurement_editor, run_search, solar_prerequisite_8, solar_prerequisite_9,)
+    mo.vstack([mo.Html(ui.step("4. Follow the model before training it", "Start with build_model in the source below. Choose an architecture and use the free forward-pass check to see how a batch becomes a prediction. Then complete training_loss and my_flux_mae.", "Train one tracked Sweep trial, inspect its files and forecast, then schedule the remaining five configurations.")), measurement_editor, solar_prerequisite_9 if not get_lab().get("goes") else mo.md("The free shape check does not train weights. Your loss and metric will be checked before the first training run.")])
+    return (check_measurement, flux_metric_editor, measurement_editor, solar_prerequisite_8, solar_prerequisite_9,)
 
 
 # workshop-cell: solar_autoresearch/action/check_measurement
@@ -584,12 +602,13 @@ def _(check_measurement, checked, flux_metric_editor, measurement_editor, mo, te
 
 # workshop-cell: solar_autoresearch/controls/inspect_shapes
 @app.cell(hide_code=True)
-def _(get_step, mo):
+def _(get_lab, get_step, go_to, mo, ui):
     mo.stop(get_step() != "search")
     shape_architecture = mo.ui.radio({"MLP": "mlp", "Temporal CNN": "cnn"}, value="MLP", inline=True, label="Which implementation should receive a batch?")
-    inspect_shapes = mo.ui.run_button(label="Run one forward pass and show tensor shapes")
-    mo.vstack([mo.md("### Follow a batch through your code"), mo.md("Choose an architecture and run one forward pass with two synthetic inputs. It uses your current `build_model` function. No weights are trained and no provider is called. N is the batch size; the other axes are channels and time."), shape_architecture, inspect_shapes])
-    return (inspect_shapes, shape_architecture,)
+    inspect_shapes = mo.ui.run_button(label="Run one forward pass and show tensor shapes", disabled=not bool(get_lab().get("session")))
+    solar_shapes_prerequisite = ui.prerequisite(mo, "Connect to open your editable model source, then return here for the free shape check.", "setup", go_to)
+    mo.vstack([mo.md("### Follow a batch through your code"), mo.md("Choose an architecture and run one forward pass with two synthetic inputs. It uses your current `build_model` function. No weights are trained and no provider is called. N is the batch size; the other axes are channels and time."), shape_architecture, inspect_shapes, solar_shapes_prerequisite if not get_lab().get("session") else mo.md("")])
+    return (inspect_shapes, shape_architecture, solar_shapes_prerequisite,)
 
 
 # workshop-cell: solar_autoresearch/action/inspect_shapes
@@ -600,7 +619,7 @@ def _(checked, digest, inspect_shapes, measurement_editor, mo, shape_architectur
     return
 
 
-# workshop-cell: solar_autoresearch/display/36
+# workshop-cell: solar_autoresearch/display/38
 @app.cell(hide_code=True)
 def _(digest, get_feedback, get_step, measurement_editor, mo):
     mo.stop(get_step() != "search")
@@ -609,7 +628,15 @@ def _(digest, get_feedback, get_step, measurement_editor, mo):
     return
 
 
-# workshop-cell: solar_autoresearch/display/37
+# workshop-cell: solar_autoresearch/display/39
+@app.cell(hide_code=True)
+def _(check_measurement, flux_metric_editor, get_step, mo, teaching):
+    mo.stop(get_step() != "search")
+    mo.vstack([mo.md("### Write the loss and the reported metric"), mo.md("Complete `training_loss` in the model source above, then implement `my_flux_mae` below. The loss trains the model; MAE measures its forecast error. A negative miss must not cancel a positive one."), flux_metric_editor, check_measurement, mo.accordion({"Hint": mo.md("Square the prediction error, multiply by the mask, sum, and divide by the mask sum for training_loss. Average absolute errors for my_flux_mae."), "Worked answers": mo.md("```python\ndef training_loss(prediction, target, mask):\n    return ((prediction - target).square() * mask).sum() / mask.sum()\n\n" + teaching.FLUX_SOLUTION + "\n```"), "The six settings": mo.md("Three width/learning-rate pairs for each architecture. All six use seed 17, 60 updates, and batch size 32. The first trial and remaining trials belong to this same Sweep.")})])
+    return
+
+
+# workshop-cell: solar_autoresearch/display/40
 @app.cell(hide_code=True)
 def _(get_step, mo):
     mo.stop(get_step() != "search")
@@ -651,78 +678,158 @@ def _(event, export_trace, instrument_tool, np, plots, teaching, training):
     return (run_training,)
 
 
+# workshop-cell: solar_autoresearch/definitions/run_measurement_sweep
+@app.cell
+def _(digest, flux_metric_editor, get_lab, measurement_editor, os, refresh_saved, run_training, teaching):
+    def run_measurement_sweep(max_new_trials):
+        import wandb
+        teaching.check_model(measurement_editor.value, "measurement")
+        teaching.check_flux_metric(flux_metric_editor.value)
+        session = get_lab()["session"]
+        plan = teaching.freeze_search_plan(session, measurement_editor.value, flux_metric_editor.value, get_lab()["dataset"])
+        with session.stage("goes/create-sweep", inputs={"source": plan["source"], "metric": plan["metric"], "configurations": plan["configurations"]}) as sweep_stage:
+            if sweep_stage.needs_run:
+                sweep_id = wandb.sweep({"method": "grid", "metric": {"name": "validation_error", "goal": "minimize"}, "parameters": {"trial": {"values": list(range(6))}}}, entity=session.project.split('/')[0], project=session.project.split('/')[1])
+                sweep_stage.record({"sweep_id": sweep_id})
+        sweep_id = sweep_stage.result["sweep_id"]
+        path = session.project + "/" + sweep_id.split('/')[-1]
+        def scheduled():
+            native = [{"trial": int(run.config["trial"]), "id": run.id, "state": run.state} for run in wandb.Api().sweep(path).runs]
+            local = list(session.read().get("solar_sweep_trials", {}).get(sweep_id, {}).values())
+            status = teaching.sweep_assignments(native, local)
+            for row in native:
+                teaching.record_sweep_assignment(session, sweep_id, row["trial"], row["id"], row["state"])
+            return status
+        before = scheduled()
+        if max_new_trials > 1 and not before["finished"]:
+            raise ValueError("Run one tracked Sweep trial first, then inspect its saved result before scheduling the remaining configurations.")
+        if before["unresolved"]:
+            raise ValueError("An assigned Sweep run is still running, failed, or unavailable. Inspect its native run before requesting more jobs; no ambiguous trial is resent. Saved training remains available.")
+        # A cached model is not a scheduled Sweep job. Its job still has to publish
+        # that cached result under the appropriate trial index.
+        count = min(max_new_trials, len(before["unassigned"]))
+        if max_new_trials == 1 and before["assigned"]:
+            count = 0
+        def trial():
+            run_id, index = None, None
+            try:
+                with wandb.init(entity=session.project.split('/')[0], project=session.project.split('/')[1], job_type="workshop-sweep") as run:
+                    index, run_id = int(run.config.trial), run.id
+                    config = plan["configurations"][index]
+                    teaching.record_sweep_assignment(session, sweep_id, index, run_id, "running")
+                    run.name = f"GOES / {config['architecture'].upper()} / width {config['width']} / lr {config['learning_rate']}"
+                    run.config.update({"experiment": config, "dataset": plan["dataset"], "source_fingerprint": digest({"candidate.py": plan["source"], "development_metric.py": plan["metric"]})})
+                    publisher = session.publisher
+                    session.publisher = None
+                    try:
+                        record = run_training(session, "goes/search-" + str(index), plan["source"], get_lab()["goes"], config, plan["dataset"], plan["metric"])
+                    finally:
+                        session.publisher = publisher
+                    run.summary["execution_stage"] = record["stage_id"]
+                    run.log(record["metrics"])
+                teaching.record_sweep_assignment(session, sweep_id, index, run_id, "finished")
+            except Exception:
+                if run_id is not None:
+                    teaching.record_sweep_assignment(session, sweep_id, index, run_id, "failed")
+                raise
+        if count:
+            environment = {key: os.environ.get(key) for key in ("WANDB_RUN_ID", "WANDB_SWEEP_ID", "WANDB_SWEEP_PARAM_PATH")}
+            try:
+                wandb.agent(sweep_id, function=trial, count=count, entity=session.project.split('/')[0], project=session.project.split('/')[1])
+            finally:
+                for key, value in environment.items():
+                    if value is None: os.environ.pop(key, None)
+                    else: os.environ[key] = value
+        status = scheduled()
+        rows = teaching.sweep_training_rows(session, plan)
+        complete = len(status["finished"]) == len(rows) == 6
+        session.checkpoint("search" if complete else "search-first-trial", evidence={"Measurement Sweep": "https://wandb.ai/" + session.project + "/sweeps/" + sweep_id.split('/')[-1]})
+        refresh_saved()
+        return {"Sweep trial assignments": len(status["assigned"]), "Finished Sweep runs": len(status["finished"]), "Saved training results": len(rows), "Still unassigned": status["unassigned"], "Unresolved Sweep runs": status["unresolved"], "Complete": complete}
+    return (run_measurement_sweep,)
+
+
+# workshop-cell: solar_autoresearch/controls/run_first_trial
+@app.cell(hide_code=True)
+def _(get_lab, get_step, mo, teaching):
+    mo.stop(get_step() != "search")
+    _s = get_lab().get("session")
+    _plan = teaching.saved(_s, "goes/sweep-plan") if _s else None
+    _sweep = teaching.saved(_s, "goes/create-sweep") if _s else None
+    _trials = _s.read().get("solar_sweep_trials", {}).get(_sweep["result"]["sweep_id"], {}) if _sweep else {}
+    _first_done = any(row["state"] == "finished" for row in _trials.values())
+    _locked = bool(_s and teaching.saved(_s, "images/freeze"))
+    run_first_trial = mo.ui.run_button(label="Run one tracked Sweep trial", disabled=not bool(get_lab().get("goes")) or _locked or _first_done)
+    run_search = mo.ui.run_button(label="Run the remaining Sweep trials", disabled=not _first_done or _locked)
+    restore_search_code = mo.ui.run_button(label="Restore the frozen Sweep drafts", disabled=not bool(_plan))
+    mo.vstack([mo.md("### Train one configuration, then inspect it"), mo.md("The first button schedules one job in the six-configuration Sweep. Open that run's configuration, loss curve, source, and predictions below. Then schedule the remaining five. Both buttons use the same frozen model source, metric, dataset and settings. Editing a draft after the first trial does not change that Sweep."), run_first_trial, run_search, mo.accordion({"Changed a draft during the Sweep?": mo.vstack([mo.md("Restore the frozen drafts, then return to this step to reload the editors. A saved training result can be reused by its matching Sweep job; it does not count as a job that has already been scheduled."), restore_search_code])})])
+    return (restore_search_code, run_first_trial, run_search,)
+
+
+# workshop-cell: solar_autoresearch/action/run_first_trial
+@app.cell
+def _(checked, mo, run_first_trial, run_measurement_sweep):
+    mo.stop(not run_first_trial.value)
+    checked("sweep", lambda: run_measurement_sweep(1))
+    return
+
+
 # workshop-cell: solar_autoresearch/action/run_search
 @app.cell
-def _(digest, flux_metric_editor, get_lab, measurement_editor, mo, os, refresh_saved, run_search, run_training, teaching):
+def _(checked, mo, run_measurement_sweep, run_search):
     mo.stop(not run_search.value)
-    import wandb
-    teaching.check_model(measurement_editor.value, "measurement")
-    teaching.check_flux_metric(flux_metric_editor.value)
+    checked("sweep", lambda: run_measurement_sweep(6))
+    return
+
+
+# workshop-cell: solar_autoresearch/action/restore_search_code
+@app.cell(hide_code=True)
+def _(get_lab, mo, refresh_saved, restore_search_code, teaching):
+    mo.stop(not restore_search_code.value)
     _s = get_lab()["session"]
-    _configurations = [{"architecture": a, "width": w, "learning_rate": lr, "steps": 60, "seed": 17, "batch_size": 32} for a in ("mlp", "cnn") for w, lr in ((16, .001), (32, .001), (16, .003))]
-    _source = measurement_editor.value
-    _metric = flux_metric_editor.value
-    with _s.stage("goes/create-sweep", inputs={"source": _source, "metric": _metric, "configurations": _configurations}) as _sweep_stage:
-        if _sweep_stage.needs_run:
-            _sweep_id = wandb.sweep({"method": "grid", "metric": {"name": "validation_error", "goal": "minimize"}, "parameters": {"trial": {"values": list(range(6))}}}, entity=_s.project.split('/')[0], project=_s.project.split('/')[1])
-            _sweep_stage.record({"sweep_id": _sweep_id})
-    _completed = {row["name"] for row in _s.completed() if row["sources"].get("candidate.py") == _source and row["sources"].get("development_metric.py") == _metric}
-    _remaining = sum("goes/search-" + str(i) not in _completed for i in range(6))
-    def _trial():
-        with wandb.init(entity=_s.project.split('/')[0], project=_s.project.split('/')[1], job_type="workshop-sweep") as _run:
-            _i = int(_run.config.trial)
-            _cfg = _configurations[_i]
-            _run.name = f"GOES / {_cfg['architecture'].upper()} / width {_cfg['width']} / lr {_cfg['learning_rate']}"
-            _run.config.update({"experiment": _configurations[_i], "dataset": get_lab()["dataset"], "source_fingerprint": digest({"candidate.py": _source, "development_metric.py": _metric})})
-            # A Sweep owns its active W&B run. Save local receipts now; publish their
-            # separate runs/artifacts after the Sweep finishes to avoid nested run IDs.
-            _publisher = _s.publisher
-            _s.publisher = None
-            try:
-                _record = run_training(_s, "goes/search-" + str(_i), _source, get_lab()["goes"], _configurations[_i], get_lab()["dataset"], _metric)
-            finally:
-                _s.publisher = _publisher
-            _run.summary["execution_stage"] = _record["stage_id"]
-            _run.log(_record["metrics"])
-    if _remaining:
-        _sweep_environment = {key: os.environ.get(key) for key in ("WANDB_RUN_ID", "WANDB_SWEEP_ID", "WANDB_SWEEP_PARAM_PATH")}
-        try:
-            wandb.agent(_sweep_stage.result["sweep_id"], function=_trial, count=_remaining, entity=_s.project.split('/')[0], project=_s.project.split('/')[1])
-        finally:
-            for _key, _value in _sweep_environment.items():
-                if _value is None:
-                    os.environ.pop(_key, None)
-                else:
-                    os.environ[_key] = _value
-    _s.checkpoint("search", evidence={"Measurement Sweep": "https://wandb.ai/" + _s.project + "/sweeps/" + _sweep_stage.result["sweep_id"].split('/')[-1]})
+    _plan = teaching.saved(_s, "goes/sweep-plan")["result"]
+    _s.save_draft("solar/measurement", _plan["source"])
+    _s.save_draft("solar/flux-metric", _plan["metric"])
     refresh_saved()
-    return (wandb,)
+    mo.md("Frozen drafts restored. Leave Track and search and return to reload the editors.")
+    return
 
 
-# workshop-cell: solar_autoresearch/display/40
+# workshop-cell: solar_autoresearch/display/47
+@app.cell(hide_code=True)
+def _(get_feedback, get_step, mo, ui):
+    mo.stop(get_step() != "search")
+    _status = get_feedback().get("sweep")
+    mo.Html(ui.result("Sweep scheduling and saved training", _status, status=_status.get("status", "not started"))) if _status else mo.md("")
+    return
+
+
+# workshop-cell: solar_autoresearch/display/48
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, measurement_editor, mo, teaching, ui):
     mo.stop(get_step() != "search")
     _s = get_lab().get("session")
-    _rows = [] if not _s else [row for row in _s.completed() if row["name"].startswith("goes/search-")]
+    _plan = teaching.saved(_s, "goes/sweep-plan") if _s else None
+    _rows = teaching.sweep_training_rows(_s, _plan["result"]) if _plan else [] if not _s else [row for row in _s.completed() if row["name"].startswith("goes/search-")]
     _check = get_feedback().get("measurement-check", {})
     mo.vstack([mo.md(teaching.draft_status(_s, "solar/measurement", measurement_editor.value, stage_prefix="goes/search-")) if _s else mo.md(""), mo.Html(ui.result("Local measurement checks", _check, status=_check.get("status", "not checked"))), mo.ui.table([{"Run": row["name"], "Architecture": row["config"]["architecture"], "Width": row["config"]["width"], "Learning rate": row["config"]["learning_rate"], **row["result"]["metrics"]} for row in _rows], selection=None), ui.evidence(mo, _s, stage_ids=[row["id"] for row in _rows], question="Open the Measurement Sweep and choose one MLP and one CNN. Compare validation_error, width, and learning rate. In each run’s files, find candidate.py and losses.json to see which code trained and how its loss changed.") if _s else mo.md("")])
     return
 
 
-# workshop-cell: solar_autoresearch/display/41
+# workshop-cell: solar_autoresearch/display/49
 @app.cell(hide_code=True)
-def _(get_lab, get_step, mo):
+def _(get_lab, get_step, mo, teaching):
     mo.stop(get_step() != "search")
     _s = get_lab().get("session")
-    _rows = [] if not _s else [row for row in _s.completed() if row["name"].startswith("goes/search-") and "validation_error" in row["result"].get("metrics", {})]
+    _plan = teaching.saved(_s, "goes/sweep-plan") if _s else None
+    _rows = teaching.sweep_training_rows(_s, _plan["result"]) if _plan else [] if not _s else [row for row in _s.completed() if row["name"].startswith("goes/search-") and "validation_error" in row["result"].get("metrics", {})]
     _options = {row["name"] + " · " + row["config"]["architecture"] + " · " + row["id"][:6]: row["id"] for row in _rows}
     inspect_goes_run = mo.ui.dropdown(_options, value=next(iter(_options), None), label="Inspect a saved measurement run", full_width=True) if _options else None
     mo.vstack([mo.md("### Bring a forecast to the lab review"), mo.md("A decreasing training loss is not enough. Compare the saved model forecast with persistence and the observed future. This reads saved arrays; it does not extend training."), inspect_goes_run]) if _options else mo.md("")
     return (inspect_goes_run,)
 
 
-# workshop-cell: solar_autoresearch/display/42
+# workshop-cell: solar_autoresearch/display/50
 @app.cell(hide_code=True)
 def _(get_lab, inspect_goes_run, mo, np, ui, views):
     mo.stop(inspect_goes_run is None)
@@ -737,16 +844,27 @@ def _(get_lab, inspect_goes_run, mo, np, ui, views):
     return
 
 
-# workshop-cell: solar_autoresearch/controls/check_measurement_repair
+# workshop-cell: solar_autoresearch/definitions/goes_diagnosis
 @app.cell(hide_code=True)
-def _(GOES_REPAIR_SOURCE, get_lab, get_step, mo, teaching):
+def _(get_lab, get_step, mo):
     mo.stop(get_step() != "search")
     _s = get_lab().get("session")
     mo.stop(not _s)
+    goes_diagnosis = mo.ui.text_area(value=_s.get_draft("solar/goes-diagnosis", ""), label="What would you check before changing this model?", full_width=True, on_change=lambda value: _s.save_draft("solar/goes-diagnosis", value))
+    show_goes_repair = mo.ui.checkbox(label="Show the worked GOES repair and its recorded results", value=_s.get_draft("solar/show-goes-repair", "") == "yes", on_change=lambda value: _s.save_draft("solar/show-goes-repair", "yes" if value else ""))
+    mo.vstack([mo.md("### Diagnose the forecast before reading the repair"), mo.md("In the recorded 60-update rehearsal, the selected model's final error was 2.468975; persistence scored 0.192706. Keep that failed result. For your run, compare the output's units with the target, the loss history, and the forecast. Write one possible cause and one check that could disprove it. A falling training loss alone does not establish better forecasting."), goes_diagnosis, show_goes_repair, mo.md("The diagnostic note is optional. It stays in your notebook and is not supplied to the research agent. Opening the worked answer does not train a model.")])
+    return (goes_diagnosis, show_goes_repair,)
+
+
+# workshop-cell: solar_autoresearch/controls/check_measurement_repair
+@app.cell(hide_code=True)
+def _(GOES_REPAIR_SOURCE, get_lab, get_step, mo, show_goes_repair, teaching):
+    mo.stop(get_step() != "search" or not show_goes_repair.value)
+    _s = get_lab()["session"]
     measurement_repair_editor = mo.ui.code_editor(value=_s.get_draft("solar/measurement-repair", GOES_REPAIR_SOURCE), language="python", min_height=280, max_height=650, label="Worked GOES repair: inspect or edit the forecasting code", on_change=lambda value: _s.save_draft("solar/measurement-repair", value))
     check_measurement_repair = mo.ui.run_button(label="Check the GOES repair code")
     run_measurement_repair = mo.ui.run_button(label="Train the worked GOES repair", disabled=not bool(get_lab().get("goes")) or teaching.saved(_s, "images/freeze") is not None)
-    mo.vstack([mo.md("### Repair a forecast that loses to persistence"), mo.md("The earlier rehearsal's best 60-update neural model lost to copying the latest measurement. Open its loss curve above before changing the code. In this worked repair, `forward` adds a learned correction to the latest standardized XRS-B reading, then converts back to log-flux units. The correction starts at zero. `fit` puts predictions and targets on the same training-fitted scale and trains for 1,200 updates."), mo.md("Inspect `forward` and the loss calculation below. Check the code, then train this one recipe. It uses the same observations and scorer as your search. Compare its validation error with persistence and your previous runs; a lower training loss alone is not the answer."), measurement_repair_editor, check_measurement_repair, run_measurement_repair, mo.md("**Recorded qualification:** this fixed recipe beat persistence on seeds 17, 29, and 43. Those runs reused previously inspected final dates, so they are teaching retests. Your run is recorded separately. [All qualification outcomes and reproduction instructions](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md). The repair changes several training choices together; it does not isolate which one caused the gain.")])
+    mo.vstack([mo.md("### Worked answer: compare your diagnosis with this recipe"), mo.md("`forward` adds a learned correction to the latest standardized XRS-B reading, then converts back to log-flux units. The correction starts at zero. `fit` puts predictions and targets on the same training-fitted scale and trains for 1,200 updates. Inspect those lines before running the recipe."), measurement_repair_editor, check_measurement_repair, run_measurement_repair, mo.md("**Recorded qualification:** this fixed recipe beat persistence on seeds 17, 29, and 43. Those runs reused previously inspected final dates, so they are teaching retests. Your run is separate. The recipe changes several choices together and does not isolate which caused the gain. [All qualification outcomes](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md).")])
     return (check_measurement_repair, measurement_repair_editor, run_measurement_repair,)
 
 
@@ -773,13 +891,14 @@ def _(flux_metric_editor, get_lab, measurement_repair_editor, mo, refresh_saved,
 
 # workshop-cell: solar_autoresearch/definitions/solar_next_step_10
 @app.cell(hide_code=True)
-def _(get_feedback, get_lab, get_step, go_to, mo, teaching, ui):
+def _(get_feedback, get_lab, get_step, go_to, mo, show_goes_repair, teaching, ui):
     mo.stop(get_step() != "search")
     _s = get_lab().get("session")
     _repair = teaching.saved(_s, "goes/worked-repair") if _s else None
     _check = get_feedback().get("measurement-repair-check", {})
     solar_next_step_10 = ui.next_step(mo, "Next: predict a solar image", "images", go_to)
-    mo.vstack([mo.Html(ui.result("Repair code check", _check, status=_check.get("status", "not checked"))), mo.Html(ui.result("Your worked repair", _repair["result"]["metrics"])) if _repair else mo.md("The repair has not run. Its button trains one model; editing this code does not start training."), ui.evidence(mo, _s, stage_ids=[_repair["id"]], question="Open this training call and its Artifact. Find the 1,200 updates, training-fitted scale, candidate.py, and weights.pt. Compare validation_error with the persistence run.") if _repair else mo.md(""), solar_next_step_10])
+    _repair_details = [mo.Html(ui.result("Repair code check", _check, status=_check.get("status", "not checked"))) if _check else mo.md("Click Check the GOES repair code above to test this function without training."), mo.Html(ui.result("Your worked repair", _repair["result"]["metrics"])) if _repair else mo.md("The repair has not run. Its button trains one model; editing this code does not start training."), ui.evidence(mo, _s, stage_ids=[_repair["id"]], question="Open this training call and its Artifact. Find the 1,200 updates, training-fitted scale, candidate.py, and weights.pt. Compare validation_error with the persistence run.") if _repair else mo.md("")] if show_goes_repair.value else []
+    mo.vstack([*_repair_details, solar_next_step_10])
     return (solar_next_step_10,)
 
 
@@ -821,7 +940,7 @@ def _(get_step, mo):
     return (fixture_error, fixture_inside, try_scorer,)
 
 
-# workshop-cell: solar_autoresearch/display/50
+# workshop-cell: solar_autoresearch/display/59
 @app.cell(hide_code=True)
 def _(fixture_error, fixture_inside, mo, views):
     _fixture = views.scorer_fixture(fixture_error.value, inside=fixture_inside.value)
@@ -845,7 +964,7 @@ def _(checked, digest, fixture_error, fixture_inside, image_metric_editor, mo, n
     return
 
 
-# workshop-cell: solar_autoresearch/display/52
+# workshop-cell: solar_autoresearch/display/61
 @app.cell(hide_code=True)
 def _(digest, fixture_error, fixture_inside, get_feedback, get_step, image_metric_editor, mo, ui):
     mo.stop(get_step() != "images")
@@ -904,7 +1023,7 @@ def _(get_lab, get_step, mo, teaching):
     return (comparison_timestamp,)
 
 
-# workshop-cell: solar_autoresearch/display/56
+# workshop-cell: solar_autoresearch/display/65
 @app.cell(hide_code=True)
 def _(comparison_timestamp, get_lab, get_step, mo, teaching, ui, views):
     _s = get_lab()["session"]
@@ -920,7 +1039,7 @@ def _(comparison_timestamp, get_lab, get_step, mo, teaching, ui, views):
     return
 
 
-# workshop-cell: solar_autoresearch/display/57
+# workshop-cell: solar_autoresearch/display/66
 @app.cell(hide_code=True)
 def _(get_step, mo, ui):
     mo.stop(get_step() not in ("images", "research"))
@@ -1224,7 +1343,7 @@ def _(export_trace, get_lab, instrument_tool, mo, publish_comparison, refresh_sa
     return
 
 
-# workshop-cell: solar_autoresearch/display/67
+# workshop-cell: solar_autoresearch/display/76
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() != "final")
@@ -1249,7 +1368,7 @@ def _(get_lab, get_step, mo, teaching, ui):
     return
 
 
-# workshop-cell: solar_autoresearch/display/68
+# workshop-cell: solar_autoresearch/display/77
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo, np, teaching, ui, views):
     mo.stop(get_step() != "final")

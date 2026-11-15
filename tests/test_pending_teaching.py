@@ -283,3 +283,25 @@ def test_raised_mcp_error_has_a_durable_event_before_propagation(tmp_path, monke
     assert event['ended_at'] >= event['started_at']
     assert exported == [event]
     assert any(path.endswith('/partial.json') for path in failed['files'])
+
+
+def test_pre_auth_invoice_and_skill_examples_do_not_need_a_session():
+    assert len(teaching.invoice_preview()['payments']) == 2
+    example = teaching.skill_handoff_example()
+    assert example['action'] == {'action': 'read_skill', 'arguments': {'name': 'verify-operation'}}
+    assert example['result']['text'] in example['file']
+    assert example['result']['text'] not in json.dumps(example['before'])
+    assert example['result']['text'] in json.dumps(example['after'])
+    assert 'no model' in example['label'].lower()
+
+
+def test_optional_candidate_reasoning_does_not_enter_editor_inputs():
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parents[1] / 'scripts'))
+    from pending_cells import cells
+    action = next(c.code for c in cells if c.code.startswith('mo.stop(not improve_pending.value)'))
+    assert 'pending_my_choice' not in action
+    assert 'pending_my_reason' not in action
+    assert 'editor_decision(_s,_number,"compose",_parent,_probes,' in action
+    assert 'my-comparison' not in action

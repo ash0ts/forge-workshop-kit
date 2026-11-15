@@ -15,10 +15,10 @@ def extend(slides):
                    concept=row['title'].replace('<br>',' '),source=[IMPLEMENTATION,NOTEBOOK],evidence=[],exercise=None)
         row['body']=row['body'].replace('Three hours','Four hours').replace('three hours','four hours')
         if key in ['features','threshold-exercise','review']:
-            row['exercise']={'step':{'features':'Compute image features','threshold-exercise':'Compare global and patch features','review':'Choose examples to review'}[key],
+            row['exercise']={'step':{'features':'Compute image features','threshold-exercise':'Train the whole-image baseline','review':'Choose examples to review'}[key],
               'function':{'features':'build_features','threshold-exercise':'choose_threshold','review':'choose_review'}[key],
               'check':{'features':'Check my patch-feature function','threshold-exercise':'Check my threshold function','review':'Check my review selector'}[key],
-              'run':{'features':None,'threshold-exercise':'Train both feature representations','review':'Select 24 boards for each review method'}[key]}
+              'run':{'features':None,'threshold-exercise':'Train the whole-image baseline','review':'Select 24 boards for each review method'}[key]}
         elif row['kind']=='exercise':row['exercise']={'step':key,'function':None,'check':None,'run':re.findall(r'<strong>([^<]+)</strong>',row['body'])}
         if key in ['real-data','dataset','encoder','patches']:row['evidence']=['data/inspection-v1/manifest.json','docs/inspection-workshop.md']
         if key in ['native-comparison','native-board']:row['evidence']=['decks/inspection/data/evaltables-native.json']
@@ -56,9 +56,9 @@ return np.concatenate([whole, local], axis=1)
             'body':f'<InspectionMechanism kind="{"features" if kind=="patch" and step==2 else kind}" :step="{step}" />','notes':notes,'time':label(minute),'start_minute':minute,
             'kind':'','answer':None,'concept':title,'exercise':None,'source':[IMPLEMENTATION,NOTEBOOK,'src/forge_workshop_kit/inspection_teaching.py'],'evidence':list(evidence)})
     walk('inspect','board-target','Predict a label for the whole board','data',1,32,
-        'After participants inspect a training photo, identify the input photograph and the binary target separately. A detector flags a board. The supplied mask marks pixels, but this model does not learn pixel labels.', ['data/inspection-v1/records.json'])
+        'Ask participants to choose pass or inspection before advancing. The first figure hides its source label and mask. Identify the photograph as the input and the binary label as the target. A detector flags a board; it does not learn pixel labels here.', ['data/inspection-v1/records.json'])
     walk('inspect','mask-boundary','Use the mask to investigate the decision','data',2,34,
-        'Ask which input would leak the answer if passed to the classifier. The mask is reference evidence for human inspection; neither masks nor test labels enter feature assembly.', ['data/inspection-v1/records.json'])
+        'Now reveal pcb1-anomaly-005 from the fitting partition: source image pcb1/Data/Images/Anomaly/005.JPG, SHA-256 ec34541be729af29a287bde12d4e3955cf3f83c734baea8a9505a7b801ce54e2, VisA CC BY 4.0. Source metadata and bundled image/mask checksums are in decks/inspection/data/feature-example.json. Ask which input would leak the answer if passed to the classifier. The mask is reference evidence for human inspection; neither masks nor test labels enter feature assembly.', ['data/inspection-v1/records.json','decks/inspection/data/feature-example.json'])
     walk('encoder','patch-grid','Keep local information as well as the whole image','encoder',2,41,
         'Read the shapes out loud: N boards, 14 rows, 14 columns, 64 feature channels. The overlay shows feature positions schematically, not exact independent image crops. The whole-image representation has 512 values; the grid retains spatial differences.', ['src/forge_workshop_kit/inspection_encoder.py'])
     walk('patches','append-patches','Append 196 distances to the 512 whole-image values','patch',2,53,
@@ -89,6 +89,34 @@ return np.concatenate([whole, local], axis=1)
        'time':'3:20','start_minute':200,'kind':'','answer':None,'concept':'Pause after freezing the comparison','exercise':None,'source':[NOTEBOOK],'evidence':[]})
     out=[]
     for row in slides:out+=extra.get((row['key'],True),[]);out.append(row);out+=extra.get((row['key'],False),[])
+    def exercise_row(key,title,body,minute,step,run,notes):
+        return dict(name=key,key=key,title=title,body=body,notes=notes,kind='exercise',
+                    time=label(minute),start_minute=minute,answer=None,concept=title,
+                    source=[NOTEBOOK],evidence=[],exercise=dict(step=step,function=None,check=None,run=run))
+    out.extend([
+        exercise_row('baseline-observation','Inspect a baseline miss or false alarm',
+            '<div class="task">Notebook: Train the whole-image baseline</div><ol class="exercise-controls"><li>Select a validation board. Compare the photograph, annotation, score, and cutoff.</li><li>Explain what the whole-image detector missed or flagged. What local detail might help?</li><li>Optionally click <strong>Save my baseline observation</strong>.</li></ol><p class="done"><b>Check:</b> A saved baseline decision supports your hypothesis. No patch model has run yet.</p>',
+            65,'Train the whole-image baseline','Save my baseline observation',
+            'Choose a saved validation error if available; do not force a failure. If the baseline gets the selected board right, describe what evidence would distinguish the next representation. The displayed score comes from the saved weights and feature source.'),
+        exercise_row('one-patch-distance','Calculate the distance at one image position',
+            '<div class="task">Notebook: Compute image features</div><p>Click <strong>Calculate one patch distance</strong>. Read the visible calculation at row 7, column 7 of fitting board pcb1-anomaly-005.</p><ol class="exercise-controls"><li>Scale each channel using normal fitting boards.</li><li>Compare the query vector with each normal vector at that position.</li><li>Take the smallest mean squared difference, then log1p.</li></ol><p class="done"><b>Check:</b> Your displayed minimum agrees with nearest_patch_errors.</p>',
+            82,'Compute image features','Calculate one patch distance',
+            'These values come from the real prepared feature cache, not the five-board threshold fixture. Only fitting boards form the reference bank. The free calculation does not fit a classifier.'),
+        exercise_row('patch-experiment','Test patches against the saved baseline',
+            '<div class="task">Notebook: Compare global and patch features</div><ol class="exercise-controls"><li>Keep the whole-image branch, C=0.03, and threshold rule unchanged.</li><li>Click <strong>Train the patch-feature alternative</strong>.</li><li>Compare its validation mistakes with the saved whole-image result.</li></ol><p class="done"><b>Check:</b> Both representations are saved before continuing to review selection.</p>',
+            104,'Compare global and patch features','Train the patch-feature alternative',
+            'The first fit remains valid while learners implement the patch branch. A changed threshold rule or changed whole-image inputs would confound this comparison and is rejected. Previously saved matching runs are reused.'),
+    ])
+    first=[('opening',0),('assignment',2),('real-data',4),('board-target',6),('mask-boundary',8),
+           ('dataset',10),('partitions',13),('connect',17),('trace-code',23),('inspect',27),('encoder',32),
+           ('classifier',37),('fit-operation',40),('threshold',44),('validation-cutoff',48),
+           ('threshold-exercise',53),('baseline-observation',65),('patch-grid',72),('patches',76),
+           ('one-patch-distance',82),('append-patches',87),('features',92),('cache',101),('patch-experiment',104)]
+    by_key={row['key']:row for row in out}
+    for key,minute in first: by_key[key].update(start_minute=minute,time=label(minute))
+    chosen={key for key,_ in first}
+    out=[by_key[key] for key,_ in first]+[row for row in out if row['key'] not in chosen]
+    by_key['real-data']['notes']+=' The same fitting example is bundled in the notebook setup. Ask for a pass/review choice before revealing its annotation; no authentication or download is needed.'
     timed=[s for s in out if s['start_minute'] is not None]
     for i,row in enumerate(timed):
         start=row['start_minute'];end=timed[i+1]['start_minute'] if i+1<len(timed) else 240

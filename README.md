@@ -28,7 +28,7 @@ Use the companion deck alongside your notebook:
 
 Preview a worked diagram: [forecasting losses](https://ash0ts.github.io/forge-workshop-kit/solar/graphics-preview.png), [routing errors and F1](https://ash0ts.github.io/forge-workshop-kit/routing/graphics-preview.png), [circuit-board patch distances](https://ash0ts.github.io/forge-workshop-kit/inspection/graphics-preview.png), [atomic task claims](https://ash0ts.github.io/forge-workshop-kit/transit/graphics-preview.png), or [itinerary replacement](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/graphics-preview.png). The browser decks reveal the intermediate steps; the PDFs include those states.
 
-These decks follow the current gateway-free notebooks. Version 0.8.0 adds the airline technical preview; its [qualification record](docs/airline-monitoring-qualification.md) separates completed checks from unavailable product features and remaining rehearsals. The [v0.7.0 release](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.7.0) remains available. Teaching datasets keep their existing versioned download links.
+These decks follow the current gateway-free notebooks. Version 0.9.0 brings worked examples forward, separates the first run from larger comparisons, and places human review before automated judging. It preserves the recorded experiments. Airline's [qualification record](docs/airline-monitoring-qualification.md) separates completed checks from unavailable product features and remaining rehearsals. Earlier releases and the teaching datasets keep their existing versioned download links.
 
 For a short demonstration, follow the [current demo guide](docs/current-demo-guide.md). It takes you from a notebook exercise to a trace, code change, and recorded result.
 
@@ -40,7 +40,7 @@ For setup and recovery, follow [Copy the notebook and start](docs/setup.md).
 
 1. Sign in to [Forge](https://forge.coreweave.com). Create a public teaching project under your account or a team where you have write access. Its name has two parts, such as `your-name/solar-workshop`.
 2. Open a template above and choose **Copy to project**. Select your project and open the editable copy. If the project isn’t offered in the copy dialog, download the notebook’s `.py` file from [notebooks](notebooks) and import it into your project.
-3. Use marimo’s **Run all stale cells** control once to initialize the notebook. This creates the controls; it does not press the exercise run buttons or start training or inference.
+3. Use marimo’s **Run all stale cells** control once to initialize the notebook. This creates the controls; it does not press the exercise run buttons or start training or inference. Inspect the opening development example and predict what should happen before connecting.
 4. In Solar, routing, or transit, click **Connect and restore my work**. In Pending, click **Check my project and restore saved work**. In inspection, click **Connect and restore my inspection work**. Confirm that the project shown is yours. Follow the first exercise to publish a trace and open it in Agent Lens.
 5. Give the facilitator your project link if you want them to see progress and help requests. They don’t need your API key.
 

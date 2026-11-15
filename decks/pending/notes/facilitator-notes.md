@@ -326,17 +326,17 @@ Score the work and edit one procedure · 105–135 minutes
 
 The public check_work result can influence the employee. The participant-written scorer teaches a bounded account check. The independent final grader checks complete expected state and the resolution. The explanation judge compares the reply with recorded actions. Its validator checks structure, not correctness. Ask a participant which check an improver is allowed to see.
 
-## 55. Revise the verification skill and rerun both tickets.
+## 55. An installed skill must be read before it can guide the model.
+
+Score the work and edit one procedure · 105–135 minutes
+
+build_messages lists installed skill names. read_skill returns the file contents, and my_observation appends that result to the next request. Before editing, the notebook shows skill reads from the starting tickets. If there is no read, say so. The optional free example demonstrates the named file, returned text, and next request without pretending that a model chose it. After editing, compare the actual read event and later saved request. No read means we cannot claim the skill influenced this execution. Loading it still does not prove the agent followed it; inspect the subsequent tools.
+
+## 56. Revise the verification skill and rerun both tickets.
 
 Score the work and edit one procedure · 105–135 minutes
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Save this procedure and rerun both development tickets.
-
-## 56. An installed skill must be read before it can guide the model.
-
-Score the work and edit one procedure · 105–135 minutes
-
-build_messages lists installed skill names. read_skill returns the file contents, and my_observation appends that result to the next request. The notebook checks the actual read event and later saved request. No read means we cannot claim the skill influenced this execution. Loading it still does not prove the agent followed it; inspect the subsequent tools.
 
 ## 57. Take a ten-minute break after saving your progress.
 
@@ -432,7 +432,7 @@ Recorded first-round probe A used the parent harness: get_account, refund_paymen
 
 Propose, probe and compose · 145–185 minutes
 
-Open this saved composition if time allows. The editor’s rationale was that the mandatory gate added work while the parent already produced a correct billing outcome. It retained the parent. The controller still runs the selected configuration because every composition receives a confirming execution, including KEEP. The executable content remains unchanged.
+Ask learners for their optional A/B/retain reasoning before showing this composition. Their notebook notes are not provided to the editor. Open this saved composition if time allows. The editor’s rationale was that the mandatory gate added work while the parent already produced a correct billing outcome. It retained the parent. The controller still runs the selected configuration because every composition receives a confirming execution, including KEEP. The executable content remains unchanged.
 
 ## 73. Test the selected harness before carrying it forward.
 

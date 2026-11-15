@@ -746,6 +746,17 @@ The public check_work result can influence the employee. The participant-written
 -->
 
 ---
+---
+
+# An installed skill must be read before it can guide the model.
+
+<SkillRead />
+
+<!--
+build_messages lists installed skill names. read_skill returns the file contents, and my_observation appends that result to the next request. Before editing, the notebook shows skill reads from the starting tickets. If there is no read, say so. The optional free example demonstrates the named file, returned text, and next request without pretending that a model chose it. After editing, compare the actual read event and later saved request. No read means we cannot claim the skill influenced this execution. Loading it still does not prove the agent followed it; inspect the subsequent tools.
+-->
+
+---
 class: exercise
 ---
 
@@ -759,17 +770,6 @@ class: exercise
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Save this procedure and rerun both development tickets.
--->
-
----
----
-
-# An installed skill must be read before it can guide the model.
-
-<SkillRead />
-
-<!--
-build_messages lists installed skill names. read_skill returns the file contents, and my_observation appends that result to the next request. The notebook checks the actual read event and later saved request. No read means we cannot claim the skill influenced this execution. Loading it still does not prove the agent followed it; inspect the subsequent tools.
 -->
 
 ---
@@ -982,7 +982,7 @@ Recorded first-round probe A used the parent harness: get_account, refund_paymen
 <div class="bottom-note"><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c04f575608c6f43d99e1b7b428a23791">Read the recorded composition rationale ↗</a></div>
 
 <!--
-Open this saved composition if time allows. The editor’s rationale was that the mandatory gate added work while the parent already produced a correct billing outcome. It retained the parent. The controller still runs the selected configuration because every composition receives a confirming execution, including KEEP. The executable content remains unchanged.
+Ask learners for their optional A/B/retain reasoning before showing this composition. Their notebook notes are not provided to the editor. Open this saved composition if time allows. The editor’s rationale was that the mandatory gate added work while the parent already produced a correct billing outcome. It retained the parent. The controller still runs the selected configuration because every composition receives a confirming execution, including KEEP. The executable content remains unchanged.
 -->
 
 ---
@@ -993,7 +993,7 @@ class: exercise
 
 <div class="where">Notebook · 6 · Improve twice</div>
 
-<div class="task">Request a composition. Read what it kept or changed, test those files, and save the tested version with its lesson and limits.</div>
+<div class="task">Before requesting composition, optionally choose A, B, the parent, or a combination and cite a probe result in the notebook. Then ask the editor, compare its reasoning with yours, and test the selected files.</div>
 
 <div class="done"><strong>Run:</strong> Compare probes and request a composition → Review and test the composition → Save the tested version and its lesson<br><strong>Check:</strong> The chosen execution matches the decision. If it retained the parent, explain why the files are unchanged.</div>
 

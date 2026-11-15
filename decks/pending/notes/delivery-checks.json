@@ -1,5 +1,5 @@
 {
-  "source_sha256": "c078742a327e203bb55c7f28fce2012cb33ffed3a57ab5f99a93920042fd0910",
+  "source_sha256": "2556b22a7339f2279160012b73d8a6c46af571c1e72bb43cf5e760968122a081",
   "slides_checked": 95,
   "expected_slides": 95,
   "titles": [
@@ -275,13 +275,13 @@
     },
     {
       "number": 55,
-      "key": "manual",
-      "title": "Revise the verification skill and rerun both tickets."
+      "key": "manual-interpret",
+      "title": "An installed skill must be read before it can guide the model."
     },
     {
       "number": 56,
-      "key": "manual-interpret",
-      "title": "An installed skill must be read before it can guide the model."
+      "key": "manual",
+      "title": "Revise the verification skill and rerun both tickets."
     },
     {
       "number": 57,
@@ -957,6 +957,6 @@
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 193,
+  "routes_checked": 383,
   "presenter_notes": true
 }

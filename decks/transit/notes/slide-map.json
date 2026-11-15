@@ -1,5 +1,5 @@
 {
-  "total_slides": 94,
+  "total_slides": 95,
   "duration_minutes": 360,
   "schedule": [
     {
@@ -288,24 +288,6 @@
     },
     {
       "number": 13,
-      "key": "add-the-task-board-and-two-workers",
-      "title": "Add the task board and two workers",
-      "kind": "",
-      "name": "",
-      "notes": "Click once to reveal workers, once to reveal integration, once to reveal the checked lesson. Solid arrows show code or execution flow. The dashed arrow identifies reviewed evidence. The diagram is explanatory, not a recorded run.",
-      "answer": null,
-      "concept": "Add the task board and two workers",
-      "exercise": null,
-      "source": "scripts/transit_cells.py",
-      "evidence": [],
-      "timing": {
-        "elapsed": "0:28",
-        "minutes": 28
-      },
-      "clicks": 3
-    },
-    {
-      "number": 14,
       "key": "two-workers-means-two-contexts-around-the-same-model",
       "title": "Two workers means two contexts around the same model",
       "kind": "",
@@ -319,6 +301,33 @@
       "timing": {
         "elapsed": "0:29",
         "minutes": 29
+      },
+      "clicks": null
+    },
+    {
+      "number": 14,
+      "key": "acceptance-exercise",
+      "title": "Write the after-midnight acceptance check",
+      "kind": "exercise",
+      "name": "acceptance-exercise",
+      "notes": "The scenario is written by the participant and later runs on the integrated app. It is public development evidence, not a hidden final answer. Show how a plausible train list can still use the wrong service day. Run the reference query and acceptance check before authentication. The reference output is supplied code, not an agent build. The notebook saves this draft and passing check when the participant later connects.",
+      "answer": "acceptance-answer",
+      "concept": "Write the after-midnight acceptance check",
+      "exercise": {
+        "step": "setup",
+        "functions": [
+          "check_departures"
+        ],
+        "prerequisites": [
+          "Open the notebook; no account required"
+        ],
+        "run": "Check my after-midnight scenario"
+      },
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:22",
+        "minutes": 22
       },
       "clicks": null
     },
@@ -388,33 +397,6 @@
     },
     {
       "number": 18,
-      "key": "acceptance-exercise",
-      "title": "Write the after-midnight acceptance check",
-      "kind": "exercise",
-      "name": "acceptance-exercise",
-      "notes": "The scenario is written by the participant and later runs on the integrated app. It is public development evidence, not a hidden final answer. Show how a plausible train list can still use the wrong service day.",
-      "answer": "acceptance-answer",
-      "concept": "Write the after-midnight acceptance check",
-      "exercise": {
-        "step": "setup",
-        "functions": [
-          "check_departures"
-        ],
-        "prerequisites": [
-          "Connect and restore my work"
-        ],
-        "run": "Check my after-midnight scenario"
-      },
-      "source": "scripts/transit_cells.py",
-      "evidence": [],
-      "timing": {
-        "elapsed": "0:42",
-        "minutes": 42
-      },
-      "clicks": null
-    },
-    {
-      "number": 19,
       "key": "one-worker-still-needs-a-complete-loop",
       "title": "One worker still needs a complete loop",
       "kind": "",
@@ -432,7 +414,7 @@
       "clicks": 3
     },
     {
-      "number": 20,
+      "number": 19,
       "key": "give-the-worker-the-task-it-is-allowed-to-solve",
       "title": "Give the worker the task it is allowed to solve",
       "kind": "",
@@ -450,7 +432,7 @@
       "clicks": null
     },
     {
-      "number": 21,
+      "number": 20,
       "key": "the-first-action-reads-the-assigned-file",
       "title": "The first action reads the assigned file",
       "kind": "",
@@ -468,7 +450,7 @@
       "clicks": null
     },
     {
-      "number": 22,
+      "number": 21,
       "key": "the-edit-includes-the-version-it-was-based-on",
       "title": "The edit includes the version it was based on",
       "kind": "",
@@ -486,7 +468,7 @@
       "clicks": null
     },
     {
-      "number": 23,
+      "number": 22,
       "key": "run-the-checks-against-the-changed-files",
       "title": "Run the checks against the changed files",
       "kind": "",
@@ -504,7 +486,7 @@
       "clicks": null
     },
     {
-      "number": 24,
+      "number": 23,
       "key": "return-the-tool-result-to-the-worker",
       "title": "Return the tool result to the worker",
       "kind": "",
@@ -522,7 +504,7 @@
       "clicks": null
     },
     {
-      "number": 25,
+      "number": 24,
       "key": "append-the-actual-observation-to-the-next-request",
       "title": "Append the actual observation to the next request",
       "kind": "",
@@ -540,7 +522,7 @@
       "clicks": null
     },
     {
-      "number": 26,
+      "number": 25,
       "key": "finish-submits-a-patch-for-review",
       "title": "Finish submits a patch for review",
       "kind": "",
@@ -558,7 +540,7 @@
       "clicks": null
     },
     {
-      "number": 27,
+      "number": 26,
       "key": "worker-exercise",
       "title": "Run one worker before adding a team",
       "kind": "exercise",
@@ -587,7 +569,7 @@
       "clicks": null
     },
     {
-      "number": 28,
+      "number": 27,
       "key": "a-trace-should-answer-what-changed-and-why",
       "title": "A trace should answer what changed and why",
       "kind": "",
@@ -605,7 +587,7 @@
       "clicks": null
     },
     {
-      "number": 29,
+      "number": 28,
       "key": "inspect-the-worker-s-test-in-agent-lens",
       "title": "Inspect the worker\u2019s test in Agent Lens",
       "kind": "",
@@ -619,6 +601,35 @@
       "timing": {
         "elapsed": "1:27",
         "minutes": 87
+      },
+      "clicks": null
+    },
+    {
+      "number": 29,
+      "key": "solo-integration-exercise",
+      "title": "Review and run the one-builder app",
+      "kind": "exercise",
+      "name": "solo-integration-exercise",
+      "notes": "A solo worker can produce both components. This integration uses the same saved solo stage and files as the later comparison. It does not select the follow-up starting release yet: that choice waits for both integrations. Failed checks remain visible. Reviewing and previewing uses no model requests.",
+      "answer": null,
+      "concept": "reviewed solo integration",
+      "exercise": {
+        "step": "worker",
+        "functions": [
+          "integrate_build"
+        ],
+        "prerequisites": [
+          "Saved solo patches",
+          "Participant patch review"
+        ],
+        "run": "Review and test the one-builder app",
+        "inspect": "Preview this saved app"
+      },
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "1:28",
+        "minutes": 88
       },
       "clicks": null
     },
@@ -642,6 +653,33 @@
     },
     {
       "number": 31,
+      "key": "use-the-local-preview-to-follow-a-returned-row",
+      "title": "Use the local preview to follow a returned row",
+      "kind": "",
+      "name": "",
+      "notes": "If a live build is wrong, keep the output visible and name the failed requirement. The prepared reference continuation appears only if neither initial build passes development integration; it is labeled and never replaces live results. First preview the solo integration. Repeat this same inspection after the team integration. The dropdown contains only saved integrations.",
+      "answer": null,
+      "concept": "Use the local preview to follow a returned row",
+      "exercise": {
+        "step": "worker",
+        "functions": [
+          "preview"
+        ],
+        "prerequisites": [
+          "Saved solo integration"
+        ],
+        "run": "Preview this saved app"
+      },
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "1:32",
+        "minutes": 92
+      },
+      "clicks": null
+    },
+    {
+      "number": 32,
       "key": "break-until-1-45",
       "title": "Break until 1:45",
       "kind": "break",
@@ -659,7 +697,25 @@
       "clicks": null
     },
     {
-      "number": 32,
+      "number": 33,
+      "key": "add-the-task-board-and-two-workers",
+      "title": "Add the task board and two workers",
+      "kind": "",
+      "name": "",
+      "notes": "Click once to reveal workers, once to reveal integration, once to reveal the checked lesson. Solid arrows show code or execution flow. The dashed arrow identifies reviewed evidence. The diagram is explanatory, not a recorded run.",
+      "answer": null,
+      "concept": "Add the task board and two workers",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "1:45",
+        "minutes": 105
+      },
+      "clicks": 3
+    },
+    {
+      "number": 34,
       "key": "choose-work-that-can-happen-independently",
       "title": "Choose work that can happen independently",
       "kind": "",
@@ -677,7 +733,7 @@
       "clicks": 1
     },
     {
-      "number": 33,
+      "number": 35,
       "key": "ready-means-its-prerequisites-passed",
       "title": "Ready means its prerequisites passed",
       "kind": "",
@@ -695,7 +751,7 @@
       "clicks": null
     },
     {
-      "number": 34,
+      "number": 36,
       "key": "both-workers-can-see-a-pending-task",
       "title": "Both workers can see a pending task",
       "kind": "",
@@ -713,7 +769,7 @@
       "clicks": null
     },
     {
-      "number": 35,
+      "number": 37,
       "key": "a-separate-check-and-write-permits-two-owners",
       "title": "A separate check and write permits two owners",
       "kind": "",
@@ -731,7 +787,7 @@
       "clicks": null
     },
     {
-      "number": 36,
+      "number": 38,
       "key": "one-short-transaction-assigns-one-owner",
       "title": "One short transaction assigns one owner",
       "kind": "",
@@ -749,7 +805,7 @@
       "clicks": null
     },
     {
-      "number": 37,
+      "number": 39,
       "key": "keep-the-model-call-outside-the-claim-transaction",
       "title": "Keep the model call outside the claim transaction",
       "kind": "",
@@ -767,7 +823,7 @@
       "clicks": null
     },
     {
-      "number": 38,
+      "number": 40,
       "key": "tasks-exercise",
       "title": "Make dependencies control the workers",
       "kind": "exercise",
@@ -795,7 +851,7 @@
       "clicks": null
     },
     {
-      "number": 39,
+      "number": 41,
       "key": "separate-working-copies-protect-unfinished-changes",
       "title": "Separate working copies protect unfinished changes",
       "kind": "",
@@ -813,7 +869,7 @@
       "clicks": 2
     },
     {
-      "number": 40,
+      "number": 42,
       "key": "each-worker-starts-from-the-same-source",
       "title": "Each worker starts from the same source",
       "kind": "",
@@ -831,7 +887,7 @@
       "clicks": null
     },
     {
-      "number": 41,
+      "number": 43,
       "key": "each-task-can-edit-only-its-assigned-module",
       "title": "Each task can edit only its assigned module",
       "kind": "",
@@ -849,7 +905,7 @@
       "clicks": null
     },
     {
-      "number": 42,
+      "number": 44,
       "key": "integration-checks-the-patches-against-their-base",
       "title": "Integration checks the patches against their base",
       "kind": "",
@@ -867,7 +923,7 @@
       "clicks": null
     },
     {
-      "number": 43,
+      "number": 45,
       "key": "run-the-ready-tasks-with-two-workers",
       "title": "Run the ready tasks with two workers",
       "kind": "exercise",
@@ -897,7 +953,7 @@
       "clicks": null
     },
     {
-      "number": 44,
+      "number": 46,
       "key": "read-the-timeline-as-work-and-waiting",
       "title": "Read the timeline as work and waiting",
       "kind": "",
@@ -915,7 +971,7 @@
       "clicks": null
     },
     {
-      "number": 45,
+      "number": 47,
       "key": "find-both-submitted-patches-before-integration",
       "title": "Find both submitted patches before integration",
       "kind": "",
@@ -933,7 +989,7 @@
       "clicks": null
     },
     {
-      "number": 46,
+      "number": 48,
       "key": "review-a-patch-before-it-enters-the-product",
       "title": "Review a patch before it enters the product",
       "kind": "",
@@ -951,12 +1007,12 @@
       "clicks": null
     },
     {
-      "number": 47,
+      "number": 49,
       "key": "test-the-combined-departures-board",
       "title": "Test the combined departures board",
       "kind": "exercise",
       "name": "",
-      "notes": "Show the combined source identity and acceptance output. If integration fails, preserve it and diagnose the failure before another edit. The facilitator can use the recorded controlled example if the live patches happen to work.",
+      "notes": "Show the combined source identity and acceptance output. If integration fails, preserve it and diagnose the failure before another edit. The facilitator can use the recorded controlled example if the live patches happen to work. This button now integrates only the two-worker build. The solo integration remains saved and is reused; after both results exist, the unchanged selection rule chooses the follow-up starting source.",
       "answer": null,
       "concept": "Test the combined departures board",
       "exercise": {
@@ -965,8 +1021,8 @@
           "check_departures"
         ],
         "prerequisites": [
-          "Both initial builds saved",
-          "Review both actual diffs",
+          "Two-worker build saved",
+          "Review its query and presentation diffs",
           "Review confirmation checkbox"
         ],
         "run": "Test the combined departures board",
@@ -981,7 +1037,7 @@
       "clicks": null
     },
     {
-      "number": 48,
+      "number": 50,
       "key": "an-integration-error-can-cross-a-correct-boundary",
       "title": "An integration error can cross a correct boundary",
       "kind": "",
@@ -999,25 +1055,7 @@
       "clicks": null
     },
     {
-      "number": 49,
-      "key": "use-the-local-preview-to-follow-a-returned-row",
-      "title": "Use the local preview to follow a returned row",
-      "kind": "",
-      "name": "",
-      "notes": "If a live build is wrong, keep the output visible and name the failed requirement. The prepared reference continuation appears only if neither initial build passes development integration; it is labeled and never replaces live results.",
-      "answer": null,
-      "concept": "Use the local preview to follow a returned row",
-      "exercise": null,
-      "source": "scripts/transit_cells.py",
-      "evidence": [],
-      "timing": {
-        "elapsed": "2:56",
-        "minutes": 176
-      },
-      "clicks": null
-    },
-    {
-      "number": 50,
+      "number": 51,
       "key": "break-until-3-20",
       "title": "Break until 3:20",
       "kind": "break",
@@ -1035,7 +1073,7 @@
       "clicks": null
     },
     {
-      "number": 51,
+      "number": 52,
       "key": "shared-memory-needs-something-worth-sharing",
       "title": "Shared memory needs something worth sharing",
       "kind": "",
@@ -1053,7 +1091,7 @@
       "clicks": null
     },
     {
-      "number": 52,
+      "number": 53,
       "key": "check-the-lesson-before-another-agent-relies-on-it",
       "title": "Check the lesson before another agent relies on it",
       "kind": "",
@@ -1071,7 +1109,7 @@
       "clicks": 2
     },
     {
-      "number": 53,
+      "number": 54,
       "key": "write-a-rule-with-a-test-attached",
       "title": "Write a rule with a test attached",
       "kind": "",
@@ -1089,7 +1127,7 @@
       "clicks": null
     },
     {
-      "number": 54,
+      "number": 55,
       "key": "a-saved-note-is-not-automatically-accepted",
       "title": "A saved note is not automatically accepted",
       "kind": "",
@@ -1107,7 +1145,7 @@
       "clicks": null
     },
     {
-      "number": 55,
+      "number": 56,
       "key": "first-exclude-the-unchecked-interpretation",
       "title": "First exclude the unchecked interpretation",
       "kind": "",
@@ -1125,7 +1163,7 @@
       "clicks": null
     },
     {
-      "number": 56,
+      "number": 57,
       "key": "then-check-the-applicable-contract-version",
       "title": "Then check the applicable contract version",
       "kind": "",
@@ -1143,7 +1181,7 @@
       "clicks": null
     },
     {
-      "number": 57,
+      "number": 58,
       "key": "finally-match-the-task-s-scope-and-tags",
       "title": "Finally match the task\u2019s scope and tags",
       "kind": "",
@@ -1161,7 +1199,7 @@
       "clicks": null
     },
     {
-      "number": 58,
+      "number": 59,
       "key": "memory-exercise",
       "title": "Save a lesson supported by an execution",
       "kind": "exercise",
@@ -1190,7 +1228,7 @@
       "clicks": null
     },
     {
-      "number": 59,
+      "number": 60,
       "key": "inspect-the-memory-read-then-its-effect",
       "title": "Inspect the memory read, then its effect",
       "kind": "",
@@ -1208,7 +1246,7 @@
       "clicks": null
     },
     {
-      "number": 60,
+      "number": 61,
       "key": "find-the-last-direct-train-between-two-stops",
       "title": "Find the last direct train between two stops",
       "kind": "",
@@ -1226,7 +1264,7 @@
       "clicks": null
     },
     {
-      "number": 61,
+      "number": 62,
       "key": "start-both-follow-ups-from-the-same-release",
       "title": "Start both follow-ups from the same release",
       "kind": "",
@@ -1244,7 +1282,7 @@
       "clicks": null
     },
     {
-      "number": 62,
+      "number": 63,
       "key": "keep-both-sets-of-patches-and-checks",
       "title": "Keep both sets of patches and checks",
       "kind": "",
@@ -1262,7 +1300,7 @@
       "clicks": null
     },
     {
-      "number": 63,
+      "number": 64,
       "key": "the-follow-up-returns-a-journey-not-a-list-of-guesses",
       "title": "The follow-up returns a journey, not a list of guesses",
       "kind": "",
@@ -1280,7 +1318,7 @@
       "clicks": null
     },
     {
-      "number": 64,
+      "number": 65,
       "key": "run-both-versions-of-the-follow-up-feature",
       "title": "Run both versions of the follow-up feature",
       "kind": "exercise",
@@ -1315,7 +1353,7 @@
       "clicks": null
     },
     {
-      "number": 65,
+      "number": 66,
       "key": "the-factory-has-two-kinds-of-state",
       "title": "The factory has two kinds of state",
       "kind": "",
@@ -1333,7 +1371,7 @@
       "clicks": null
     },
     {
-      "number": 66,
+      "number": 67,
       "key": "find-where-the-lesson-entered-the-request",
       "title": "Find where the lesson entered the request",
       "kind": "",
@@ -1351,7 +1389,7 @@
       "clicks": null
     },
     {
-      "number": 67,
+      "number": 68,
       "key": "keep-a-stopped-worker-s-files-and-error",
       "title": "Keep a stopped worker\u2019s files and error",
       "kind": "",
@@ -1369,7 +1407,7 @@
       "clicks": null
     },
     {
-      "number": 68,
+      "number": 69,
       "key": "break-until-4-55",
       "title": "Break until 4:55",
       "kind": "break",
@@ -1387,7 +1425,7 @@
       "clicks": null
     },
     {
-      "number": 69,
+      "number": 70,
       "key": "evaluate-the-product-and-the-process-separately",
       "title": "Evaluate the product and the process separately",
       "kind": "",
@@ -1405,7 +1443,7 @@
       "clicks": null
     },
     {
-      "number": 70,
+      "number": 71,
       "key": "a-scenario-is-an-input-and-an-expected-behavior",
       "title": "A scenario is an input and an expected behavior",
       "kind": "",
@@ -1423,7 +1461,7 @@
       "clicks": null
     },
     {
-      "number": 71,
+      "number": 72,
       "key": "evaluate-exercise",
       "title": "Compare the frozen builds on matching cases",
       "kind": "exercise",
@@ -1452,7 +1490,7 @@
       "clicks": null
     },
     {
-      "number": 72,
+      "number": 73,
       "key": "read-one-comparison-row-before-the-average",
       "title": "Read one comparison row before the average",
       "kind": "",
@@ -1470,7 +1508,7 @@
       "clicks": null
     },
     {
-      "number": 73,
+      "number": 74,
       "key": "compare-the-same-departures-in-forge",
       "title": "Compare the same departures in Forge",
       "kind": "",
@@ -1490,7 +1528,7 @@
       "clicks": null
     },
     {
-      "number": 74,
+      "number": 75,
       "key": "the-faster-build-missed-two-final-cases",
       "title": "The faster build missed two final cases",
       "kind": "",
@@ -1511,7 +1549,7 @@
       "clicks": null
     },
     {
-      "number": 75,
+      "number": 76,
       "key": "open-the-two-failing-rows-in-the-final-comparison",
       "title": "Open the two failing rows in the final comparison",
       "kind": "",
@@ -1531,7 +1569,7 @@
       "clicks": null
     },
     {
-      "number": 76,
+      "number": 77,
       "key": "a-timezone-assumption-selected-the-wrong-train",
       "title": "A timezone assumption selected the wrong train",
       "kind": "",
@@ -1551,7 +1589,7 @@
       "clicks": 2
     },
     {
-      "number": 77,
+      "number": 78,
       "key": "interpret-the-request-as-one-instant",
       "title": "Interpret the request as one instant",
       "kind": "",
@@ -1571,7 +1609,7 @@
       "clicks": null
     },
     {
-      "number": 78,
+      "number": 79,
       "key": "the-team-used-the-caller-s-clock-for-service-time",
       "title": "The team used the caller\u2019s clock for service time",
       "kind": "",
@@ -1591,7 +1629,7 @@
       "clicks": null
     },
     {
-      "number": 79,
+      "number": 80,
       "key": "the-renderer-carried-the-same-wrong-trip-into-the-board",
       "title": "The renderer carried the same wrong trip into the board",
       "kind": "",
@@ -1611,7 +1649,7 @@
       "clicks": null
     },
     {
-      "number": 80,
+      "number": 81,
       "key": "neither-follow-up-completed-the-query-change",
       "title": "Neither follow-up completed the query change",
       "kind": "",
@@ -1631,7 +1669,7 @@
       "clicks": null
     },
     {
-      "number": 81,
+      "number": 82,
       "key": "more-workers-can-still-produce-more-waiting",
       "title": "More workers can still produce more waiting",
       "kind": "",
@@ -1649,7 +1687,7 @@
       "clicks": null
     },
     {
-      "number": 82,
+      "number": 83,
       "key": "choose-a-release-using-the-saved-checks",
       "title": "Choose a release using the saved checks",
       "kind": "",
@@ -1667,7 +1705,7 @@
       "clicks": null
     },
     {
-      "number": 83,
+      "number": 84,
       "key": "release-exercise",
       "title": "Publish the version you can reproduce",
       "kind": "exercise",
@@ -1696,7 +1734,7 @@
       "clicks": null
     },
     {
-      "number": 84,
+      "number": 85,
       "key": "reload-the-selected-app-and-repeat-one-case",
       "title": "Reload the selected app and repeat one case",
       "kind": "",
@@ -1714,7 +1752,7 @@
       "clicks": null
     },
     {
-      "number": 85,
+      "number": 86,
       "key": "explain-one-result-to-another-participant",
       "title": "Explain one result to another participant",
       "kind": "",
@@ -1732,7 +1770,7 @@
       "clicks": null
     },
     {
-      "number": 86,
+      "number": 87,
       "key": "take-the-coordination-code-to-your-own-project",
       "title": "Take the coordination code to your own project",
       "kind": "",
@@ -1750,7 +1788,7 @@
       "clicks": null
     },
     {
-      "number": 87,
+      "number": 88,
       "key": "tasks-answer",
       "title": "Worked answer: select ready tasks",
       "kind": "answer",
@@ -1768,7 +1806,7 @@
       "clicks": null
     },
     {
-      "number": 88,
+      "number": 89,
       "key": "memory-answer",
       "title": "Worked answer: retrieve a checked lesson",
       "kind": "answer",
@@ -1786,7 +1824,7 @@
       "clicks": null
     },
     {
-      "number": 89,
+      "number": 90,
       "key": "release-answer",
       "title": "Worked answer: block an unverified release",
       "kind": "answer",
@@ -1804,7 +1842,7 @@
       "clicks": null
     },
     {
-      "number": 90,
+      "number": 91,
       "key": "workflow-sources",
       "title": "Sources for the workflow",
       "kind": "",
@@ -1822,7 +1860,7 @@
       "clicks": null
     },
     {
-      "number": 91,
+      "number": 92,
       "key": "sources-for-the-data-and-evaluation",
       "title": "Sources for the data and evaluation",
       "kind": "",
@@ -1840,7 +1878,7 @@
       "clicks": null
     },
     {
-      "number": 92,
+      "number": 93,
       "key": "acceptance-answer",
       "title": "Worked answer: check the after-midnight departure",
       "kind": "answer",
@@ -1858,7 +1896,7 @@
       "clicks": null
     },
     {
-      "number": 93,
+      "number": 94,
       "key": "worker-answer",
       "title": "Worked answer: dispatch one allowed tool",
       "kind": "answer",
@@ -1876,7 +1914,7 @@
       "clicks": null
     },
     {
-      "number": 94,
+      "number": 95,
       "key": "evaluate-answer",
       "title": "Worked answer: check the departure order",
       "kind": "answer",

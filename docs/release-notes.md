@@ -1,4 +1,14 @@
-# Forge Workshop Kit 0.8.0 technical preview
+# Forge Workshop Kit 0.9.0
+
+The six workshops now introduce a development example before account setup, then teach one result before larger batches or comparisons. Participants inspect outcomes before proposing fixes, calibrating judges, or configuring monitoring. The [teaching sequence](teaching-sequence.md) describes the shared pattern.
+
+Pending connects skill loading to the edit exercise and asks participants to compare candidates before the editor chooses. Solar starts with one trial of the existing Sweep. Routing and Inspection separate their baseline and alternative representations. Transit allows the single-worker app to be integrated and previewed before the team build. Airline starts with one booking conversation and places reviewed outcomes before tag calibration.
+
+The revision preserves experiment settings, datasets, stage identities, inference allowances, and final comparison sizes. Completed matching work is reused, including when resuming between newly separated controls. No new scientific results are claimed. Recorded gains, ties, regressions, and unavailable judgments remain labeled.
+
+The notebooks, decks, PDFs, exercise references, and facilitator schedules are released together. The [release checks](release-checks.md) distinguish automated validation, product access, publication, and the human rehearsal still needed. Previous releases and attendee copies remain unchanged.
+
+## 0.8.0 technical preview
 
 The sixth workshop follows an airline service agent from observed booking changes to native Agent Lens tags, human review, regression cases, an itinerary repair, and subsequent monitoring. It uses fictional records and tool semantics adapted from Sierra tau-bench, with scripted passenger confirmations. It is not a reproduction of the benchmark.
 

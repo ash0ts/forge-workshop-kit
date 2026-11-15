@@ -18,10 +18,10 @@ def extend(original):
                    concept=row['title'].replace('<br>',' '),source=[IMPLEMENTATION,NOTEBOOK],evidence=[])
         row['body']=row['body'].replace('Three hours','Four hours')
         if row.get('answer'):
-            row['exercise']={'step':{'classifier-exercise':'Train classifiers','policy-exercise':'Review requests','validator-exercise':'Check the judge'}[key],
+            row['exercise']={'step':{'classifier-exercise':'Train the word classifier','policy-exercise':'Review requests','validator-exercise':'Check the judge'}[key],
                'function':{'classifier-exercise':'make_classifier','policy-exercise':'needs_review','validator-exercise':'validate_judge'}[key],
                'check':{'classifier-exercise':'Check my classifier code','policy-exercise':'Check my review rule','validator-exercise':'Check my judge validator'}[key],
-               'run':{'classifier-exercise':'Train both classifiers on the same messages','policy-exercise':None,'validator-exercise':'Compare the judge with up to eight of my reviews'}[key]}
+               'run':{'classifier-exercise':'Train the word-feature baseline','policy-exercise':None,'validator-exercise':'Compare the judge with up to eight of my reviews'}[key]}
         elif row['kind']=='exercise':
             row['exercise']={'step':key,'function':None,'check':None,'run':re.sub('<.*?>','',row['body']).split('Run:')[-1].split('Check:')[0].strip()}
         else:row['exercise']=None
@@ -83,6 +83,33 @@ def extend(original):
     expanded=[]
     for row in slides:
         expanded+=additions.get((row['key'],True),[]);expanded.append(row);expanded+=additions.get((row['key'],False),[])
+    # Let the learner inspect a first result before introducing another representation.
+    def exercise_row(key, title, body, minute, step, run, notes):
+        return dict(name=key,key=key,title=title,body=body,notes=notes,kind='exercise',
+                    time=time_label(minute),start_minute=minute,answer=None,concept=title,
+                    source=[NOTEBOOK],evidence=[],exercise=dict(step=step,function=None,check=None,run=run))
+    expanded.extend([
+        exercise_row('baseline-observation','Read one prediction before comparing models',
+            '<div class="where">Notebook: Train the word classifier</div><ol><li>Select a saved validation request. Read the message, predicted intent, and reference intent.</li><li>Describe the mismatch, or explain a correct route. What might the word representation miss?</li><li>Optionally click <strong>Save my baseline observation</strong>.</li></ol><p class="done"><b>Check:</b> The first classifier is saved. The two-representation comparison is still incomplete.</p>',
+            51,'Train the word classifier','Save my baseline observation',
+            'Keep the baseline result on screen before discussing embeddings or aggregate gains. Opening another case only reads saved predictions. Ask participants for a testable representation hypothesis, not a claim that every mistake will disappear.'),
+        exercise_row('alternative-exercise','Test the sentence-feature alternative',
+            '<div class="where">Notebook: Compare sentence features</div><ol><li>Keep make_classifier unchanged.</li><li>Click <strong>Train the sentence-feature alternative</strong>.</li><li>Return to the same validation request. Compare both predictions before the aggregate table.</li></ol><p class="done"><b>Check:</b> Both runs use identical classifier code and training messages.</p>',
+            70,'Compare sentence features','Train the sentence-feature alternative',
+            'The encoder is frozen and its cached vectors are versioned. This button completes the existing two-run comparison; it adds no third fit. Previously completed workspaces reuse their saved runs.'),
+    ])
+    first=[('cover',0),('queue',2),('manager',4),('read-request',6),('dataset',9),('partitions',12),
+           ('connect',16),('trace',23),('words',30),('word-vector',35),('classifier-exercise',40),
+           ('baseline-observation',51),('embeddings',56),('sentence-vector',59),('construct-head',62),
+           ('fit-head',64),('predict-probabilities',67),('alternative-exercise',70),('macro-f1',76),
+           ('intent-counts',78),('intent-average',81),('recorded-gain',86)]
+    by_key={row['key']:row for row in expanded}
+    for key,minute in first:
+        by_key[key].update(start_minute=minute,time=time_label(minute))
+    chosen={key for key,_ in first}
+    expanded=[by_key[key] for key,_ in first]+[row for row in expanded if row['key'] not in chosen]
+    by_key['read-request']['notes']+=' Inspect the bundled development request in setup before authenticating. Guess its intent, then reveal the published annotation.'
+    by_key['classifier-exercise']['notes']+=' Use the four-point practice fit to distinguish creating an estimator from fitting it. Practice points are illustrative and are not Banking77 embeddings.'
     timed=[s for s in expanded if s['start_minute'] is not None]
     for i,row in enumerate(timed):
         start=row['start_minute']; end=timed[i+1]['start_minute'] if i+1<len(timed) else 240

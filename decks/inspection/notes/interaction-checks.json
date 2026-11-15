@@ -1,7 +1,6 @@
 {
   "deck": "inspection",
-  "verified_via": "Native browser keyboard input",
-  "slide": 19,
+  "verified_via": "Native browser keyboard input on prior revision",
   "initial": {
     "threshold": 0.7,
     "misses": 1,
@@ -20,5 +19,10 @@
   "keyboard_increment": 0.05,
   "display_only": true,
   "publication_or_inference_triggered": false,
-  "screenshot": "/private/tmp/classification-visual-upgrade/inspection-slider.png"
+  "verified_slide_number_prior_revision": 19,
+  "slide_key": "threshold",
+  "current_slide_number": 14,
+  "current_source_sha256": "2af1421ef90b8ec3ea67df47d33a433a05481a941b0291a241b6d8185ea7bd60",
+  "validation_status": "Prior-revision interaction evidence; not rerun against this source revision.",
+  "prior_capture_in_this_release": false
 }

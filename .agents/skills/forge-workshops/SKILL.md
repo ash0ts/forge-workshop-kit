@@ -13,6 +13,8 @@ Read the current notebook, storyboard, and runbook before proposing changes. Rec
 
 Follow one concrete example through intermediate values, the responsible code, its output, a participant exercise, and a specific investigation in Forge. Give learners a bounded code change, a free local check, an explicit execution control, and a result they can explain. A form or approval is not a replacement for implementing the concept.
 
+Let participants inspect one bundled development example before authentication. Explain the request, available information, and expected outcome; label recorded executions. Introduce one working result before a batch or search, inspect its errors before proposing an alternative, and make a human comparison before automating that decision. Use the [teaching sequence](../../../docs/teaching-sequence.md) when revising notebook and deck order. Keep prediction prompts brief and separate from measured agent inputs. Worked answers remain available on request.
+
 For new workshops, use `forge-workshop new` from the [authoring guide](../../../docs/authoring.md). Complete the scaffold before publishing it. The manifest owns exercise references and entry points; authored cells and storyboards own explanations. Edit those sources and regenerate, rather than patching generated notebooks or slide Markdown.
 
 ## Preserve the experiment
@@ -20,6 +22,8 @@ For new workshops, use `forge-workshop new` from the [authoring guide](../../../
 Use the existing session, stage, provider, and publication contracts. A completed execution with a failed upload is still completed. A replay is saved evidence, never the outcome of a learner's unexecuted edit. Keep unknown usage reserved, unavailable judgments missing, and publication retries independent of model or training calls.
 
 Keep the learner's project and the exact executed code attached to results. Opening, editing, navigating, restoring, or building a notebook must not execute an exercise. Review gates remain real in a rehearsal. Do not silently substitute models, change splits, or select examples by favorable scores.
+
+When splitting a batch into teaching steps, preserve each execution's stage name, configuration, source contents, and input references. Complete the aggregate checkpoint only after all required results exist. Test partial and legacy completed workspaces. A separately scheduled search job and a cached training result are different records; neither may conceal a missing configuration.
 
 Read [evaluation publication](../../../docs/evaluations.md) when changing comparisons. Consult the [official W&B skills](https://github.com/wandb/skills) for product-specific guidance, but check their dependency requirements against this kit before using their helpers. They are optional authoring aids, not participant dependencies.
 

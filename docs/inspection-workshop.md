@@ -20,11 +20,11 @@ The deck follows a real board through its feature arrays, a classifier score, an
 
 | Time | Participants change or investigate | Check before moving on |
 |---|---|---|
-| 0–27 | Copy the notebook, configure their project and add a Forge Tool attribute | Find the actual operation and attribute in Agent Lens |
-| 27–37 | Inspect a board before revealing the label and mask | Distinguish board classification from defect localization |
-| 37–79 | Follow the frozen encoder, implement `build_features`, optionally verify four cached rows | Explain 512 whole-image values plus 196 patch distances, and preserve board order |
-| 79–98 | Follow a fit into validation predictions and explore the free threshold fixture | Supply the same learner feature function to fitting and scoring |
-| 98–130 | Complete `choose_threshold`, train both representations, inspect ranking and operating errors | Explain AP, missed defects, false alarms and the saved model file |
+| 0–27 | Inspect the bundled fitting-board photo before connecting, then add a Forge Tool attribute | Give a pass/review reason, reveal the annotation, and find the actual operation in Agent Lens |
+| 27–53 | Inspect training boards, follow the frozen encoder and fit, then explore the threshold fixture | Distinguish a photograph, feature vector, classifier score, and decision |
+| 53–72 | Complete `choose_threshold`, train the whole-image baseline, and inspect a validation error | Save a hypothesis before introducing patch features |
+| 72–104 | Calculate one actual patch distance and implement `build_features`; optionally verify four cached rows | Explain 512 whole-image values plus 196 patch distances, preserving board order |
+| 104–130 | Train the patch alternative with the same settings, then inspect ranking and operating errors | Compare saved models and explain AP, missed defects, and false alarms |
 | 130–140 | Break | Both trained versions are saved |
 | 140–173 | Implement `choose_review`, compare active and random selections, save an assessment | Both branches select 24 boards before opening labels |
 | 173–200 | Train both reviewed classifiers, select a version and freeze the comparison | Keep feature changes, extra labels and review policy distinct |
@@ -33,6 +33,8 @@ The deck follows a real board through its feature arrays, a classifier score, an
 | 234–240 | Reload a classifier and publish the conclusion | Reproduce one saved score and name the next validation question |
 
 The interactive threshold and AP illustrations use the notebook’s existing public five-board fixture. They are labeled as practice values, not PCB1 results. The actual recorded comparison and native captures remain separate. No extra training or inference is needed to use the deck controls.
+
+The whole-image baseline works with the starter feature function; its patch branch is intentionally unfinished. Saving that first result completes the baseline step. The comparison checkpoint requires both representations. A learner can add patch behavior without changing the saved baseline’s whole-image inputs or threshold rule. Existing completed runs remain reusable.
 
 The review batch uses the dataset's supplied labels to simulate acquiring annotations. Participants' individual assessments are saved separately. We do not label the whole batch human-reviewed or claim active selection wins because it obtained additional labels. Both selection methods receive exactly 24 labels.
 

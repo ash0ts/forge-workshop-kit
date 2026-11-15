@@ -5,7 +5,7 @@ import json
 SCHEDULE = [
     ('setup','Connect and trace an operation',0,25,'cover'),
     ('data','Read observations and implement persistence',25,65,'goes-window'),
-    ('tracking','Explain loss and save a training run',65,95,'number'),
+    ('tracking','Explain training and saved experiment files',65,95,'number'),
     ('break-one','Break',95,110,'break-one'),
     ('search','Inspect model shapes and compare configurations',110,155,'search-levels'),
     ('images','Implement image prediction and scoring',155,200,'images-window'),
@@ -76,8 +76,8 @@ def expand(slides, root):
         'model.eval()\nwith torch.no_grad():\n    prediction = model(validation_x)\nerror = fixed_score(prediction, validation_y)', '1|2-3|4|all')+note('eval() changes layer behavior; no_grad() stops gradient recording. Neither call selects a model.'),
         'eval disables training-specific behavior such as dropout if a candidate uses it. no_grad prevents autograd from retaining a differentiation graph. Our current small models do not need dropout to illustrate the distinction. The fixed parent scorer compares predictions to validation targets. Participants choose a configuration using validation; the optimizer itself never updates from these validation targets in this workshop. This is an explanatory excerpt of the scoring boundary, not the exact function signature.',
         'Training updates versus validation selection',source=['src/forge_workshop_kit/training.py'])])
-    insert('tracking-turn',[slide('break-one','Take a fifteen-minute break',
-        '<p>Your draft loss and metric should be saved. Check that completed results remain visible after navigating away and back.</p><p>After the break, we’ll follow a batch through the two forecasting models.</p>',
+    insert('artifacts',[slide('break-one','Take a fifteen-minute break',
+        '<p>Your persistence result should be saved. Check that it remains visible after navigating away and back.</p><p>After the break, we’ll follow a batch through the models, write the loss and metric, and train one tracked trial.</p>',
         'Use minutes 95 through 110. Do not start a new training run during the break. A pending publication can be retried from saved results later.', 'Saved work and pacing')])
     insert('search-levels',[slide('batch-shapes','Read the batch, channel and time axes',graphic('batch'),
         'B counts windows processed together. Each window has two instrument channels and sixty time positions. The target has one value per window. The training configuration uses batch size thirty-two. The notebook free shape demonstration uses batch size two and width four so learners can inspect a small forward pass; it does not train and does not change later random state. Ask learners to explain x[0,1,-1] before revealing the output shape.',
@@ -96,6 +96,10 @@ def expand(slides, root):
         'config = {"architecture": "cnn", "width": 16,\n          "learning_rate": 0.001, "steps": 60, "seed": 17}\nmodel = build_model((2, 60), config)\noptimizer = torch.optim.Adam(model.parameters(),\n                             lr=config["learning_rate"])', '1-2|3|4-5|all')+note('Width and learning rate are settings. The weights and biases inside model.parameters() are trained.'),
         'The six Sweep configurations are predefined; the required exercise is a bounded comparison, not an adaptive search algorithm. Architecture chooses an existing implementation. Width changes its number of hidden features. Learning rate scales updates. Steps fixes the update budget. Seed controls initialization and sampling. None of these is itself a learned model weight. All comparisons must record the settings because a favorable score does not tell us which choices produced it.',
         'Parameters, hyperparameters and architecture choice',source=['examples/solar/candidate.py','scripts/solar_cells.py'])])
+    # Complete the shape walkthrough before learners implement the loss.
+    loss_exercise = find('tracking-turn')
+    slides.remove(loss_exercise)
+    insert('parameter-code', [loss_exercise])
     slides.remove(find('break'))
 
     insert('persistence-image',[slide('image-units','Put image inputs and targets in the same units',
@@ -187,7 +191,7 @@ def expand(slides, root):
         'data-turn':('data','load_goes / load_aia','','Load the solar dataset'),
         'persistence-turn':('baseline','persistence_forecast','Check my persistence function','Run my persistence baseline'),
         'tracking-turn':('search','training_loss / my_flux_mae','Check my measurement code',''),
-        'search-turn':('search','build_model / run_training','Run one forward pass and show tensor shapes','Run six tracked configurations'),
+        'search-turn':('search','build_model / run_training','Run one forward pass and show tensor shapes','Run one tracked Sweep trial → Run the remaining Sweep trials'),
         'goes-repair-turn':('search','FluxPredictor.forward / fit','Check the GOES repair code','Train the worked GOES repair'),
         'image-turn':('images','ImagePredictor.forward / training_loss / my_image_mae','Check my image code','Compare convolutional and residual predictors'),
         'evidence-turn':('research','select_validation_evidence','Check my evidence selection','Round 1: Propose two code changes'),

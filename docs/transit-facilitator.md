@@ -17,9 +17,9 @@ Use the current Transit notebook and companion deck. This is one six-hour sessio
 
 | Elapsed time | Say and demonstrate | Participant task | Check before moving on |
 | --- | --- | --- | --- |
-| 0:00–0:30 | “Someone leaving an evening event needs the next train. A list that looks plausible is not enough.” Follow one actual stop-time row through the trip, active service date and civil timestamp. | Explain why 24:08 on Nov 28 service means 00:08 on Nov 29. Identify what a correct board must return. | They name both dates and the same trip ID. |
-| 0:30–0:50 | “Use your own project so you can reopen every result after today.” Show the setup span’s arguments, output and recorded time. | Connect, edit an attribute in `instrument_tool()`, send the setup trace and implement `check_departures()`. | Their trace is in their project. The real row passes; a missing train and wrong service day fail. |
-| 0:50–1:35 | “The model chooses an action. Python runs it. The next request needs the result.” Step through read, hash-checked edit, test and submission. | Complete `build_worker_request()` and `dispatch_action()`. Run the free check, then the single-worker build. Open one request, file edit and test in Agent Lens. | They show the actual observation supplied to the next request, not just the action the model requested. |
+| 0:00–0:30 | “Someone leaving an evening event needs the next train. A list that looks plausible is not enough.” Follow one actual stop-time row through the trip, active service date and civil timestamp. | Run **Show departures from the saved timetable**, then write and check `check_departures()`, before connecting. Explain why 24:08 on Nov 28 service means 00:08 on Nov 29. | They name both dates and the same trip ID. |
+| 0:30–0:50 | “Use your own project so you can reopen every result after today.” Show the setup span’s arguments, output and recorded time. | Connect, restore the opening draft and check, edit an attribute in `instrument_tool()`, and send the setup trace. | Their trace is in their project. The real row passes; a missing train and wrong service day fail. |
+| 0:50–1:35 | “The model chooses an action. Python runs it. The next request needs the result.” Step through read, hash-checked edit, test and submission. | Complete `build_worker_request()` and `dispatch_action()`. Run the free check, then the single-worker build. Open one request, file edit and test in Agent Lens. Review the patches, click **Review and test the one-builder app**, then **Preview this saved app**. | They show the actual observation supplied to the next request, not just the action the model requested. |
 | 1:35–1:45 | “Keep the saved task and source. We’ll add coordination after the break.” | Ten-minute break. | No duplicate requests start when they return. |
 | 1:45–2:25 | “Both threads can see pending. That does not give both permission to start.” Show the controlled two-owner race and atomic one-owner repair. | Complete `ready_tasks()` and `claim_task()`. Run the free dependency and claim checks. Inspect permitted files and separate working copies. | Only pending work with integrated dependencies starts. One task has one owner. The lock is released before model execution. |
 | 2:25–3:00 | “These modules share an interface. They still need to work together.” Start the two-worker build, then review the actual patches. | Run the team, inspect claims and diffs, confirm review, test integration and preview Park Street after midnight. | The reviewed files match the tested files. The displayed row retains the service date and boarding timestamp. |
@@ -36,15 +36,17 @@ Tell participants which notebook step to open before naming a button. A free che
 
 | Notebook step | First | Then |
 | --- | --- | --- |
-| Understand the departures board | **Connect and restore my work**, then **Send my first Agent Lens trace** | **Check my after-midnight scenario** |
-| Run one builder | **Check my build_worker_request code** checks both request construction and dispatch | **Run one worker on the first feature** |
+| Understand the departures board | **Show departures from the saved timetable**, then **Check my after-midnight scenario**; no account needed | **Connect and restore my work**, then **Send my first Agent Lens trace** |
+| Run one builder | **Check my build_worker_request code**, then **Run one worker on the first feature** | Review the actual patches, **Review and test the one-builder app**, then **Preview this saved app** |
 | Divide and claim the work | **Check my ready_tasks code** checks readiness, claims and the local race | Explain the two-owner to one-owner result before continuing |
 | Run two builders | Confirm the worker and task checks still match the saved code | **Run the ready tasks with two workers** |
-| Test the combined app | Read both diffs; tick **I reviewed both builds' patches below and their development checks** | **Test the combined departures board**, then **Preview this saved app** |
+| Test the combined app | Read both diffs; tick **I reviewed the two-builder patches and their development checks** | **Test the combined departures board**, then **Preview this saved app** |
 | Keep a checked lesson | **Check my select_memories code**; optionally **Ask the agent to propose a lesson** | Choose **Supporting development result**, write the rule, then **Save a checked lesson** |
 | Build the next feature | **Run both versions of the follow-up feature** | Review both diffs; tick **I reviewed the no-lesson and shared-lesson patches**; **Integrate the reviewed follow-up patches** |
 | Compare frozen builds | **Check my score_scenario code** | **Compare the frozen builds** |
 | Reproduce and release | **Check my release_decision code**; select the tested version and write the conclusion | **Publish this release and its evidence** |
+
+Seeing the solo app does not select the source for the memory comparison. That selection still waits for both initial integrations, with the same team-then-solo preference when checks pass. Both follow-ups start from that one saved release.
 
 **Retry saved Forge publications** exports completed work again. **Allow another attempt** authorizes recovery of stopped execution; it does not itself start the builder. Do not confuse these controls.
 

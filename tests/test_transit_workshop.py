@@ -390,3 +390,39 @@ def test_report_links_use_named_verified_comparisons_and_the_selected_stage(tmp_
     links = transit_workshop.saved_evidence_links(session, 'team', 'team-release')
     assert links['Release execution'] == 'https://example.test/release'
     assert 'Acceptance checks: Two builders' not in links
+
+
+def test_solo_preview_precedes_team_without_selecting_followup_source(workshop):
+    session, calls = workshop
+    worker = session.get_draft('factory/worker')
+    transit_workshop.run_initial(session, 'solo', worker)
+    assert transit_workshop.can_run(session, 'integrate-solo')
+    assert not transit_workshop.can_run(session, 'integrate-team')
+    first = transit_workshop.integrate_build(session, 'solo')['solo']
+    assert first['passed']
+    assert not transit_workshop._state(session).get('base_release')
+    count = len(calls)
+    preview = transit_workshop.preview(session, 'solo', '70076', '2024-11-29T00:05:00-05:00')
+    assert '63926435' in json.dumps(preview)
+    assert len(calls) == count
+    assert '<h3>One builder</h3>' in transit_workshop.patch_review(session, labels=('solo',))
+    transit_workshop.run_initial(session, 'team', worker, workers=2,
+                                 task_code=session.get_draft('factory/tasks'))
+    transit_workshop.integrate_build(session, 'team')
+    state = transit_workshop._state(session)
+    assert state['base_release']['label'] == 'team'
+    assert state['integrations']['solo']['stage_id'] == first['stage_id']
+    assert state['integrations']['solo']['source_fingerprint'] == first['source_fingerprint']
+    count = len(calls)
+    # The old combined entry point remains an idempotent compatibility path.
+    repeated = transit_workshop.integrate_initial(session)
+    assert repeated['solo']['stage_id'] == first['stage_id']
+    assert len(calls) == count
+    evidence = next(iter(transit_workshop.lesson_evidence_options(session).values()))
+    transit_workshop.accept_lesson(session, 'Preserve service-day hours above 24.', evidence)
+    transit_workshop.run_followups(session, worker, session.get_draft('factory/tasks'),
+                                  session.get_draft('factory/memory'))
+    plain = factory.load_board(session, 'without-memory').snapshot()
+    memory = factory.load_board(session, 'with-memory').snapshot()
+    assert plain['config']['initial'] == memory['config']['initial']
+    assert plain['config']['initial'] == state['base_release']['sources']

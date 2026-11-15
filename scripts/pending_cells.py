@@ -35,6 +35,16 @@ mo.md("**What counts as success.** We check the account after the employee finis
 mo.md("You'll first write the invoice tool, connect its results to the model, and trace the work in Agent Lens. Then you'll change the employee's instructions yourself and ask another agent to propose and test further edits. The model stays fixed. We're testing whether changing how it works helps it handle the next ticket.")])
 ''',True)
 add('''
+mo.stop(get_step()!="setup")
+pending_preview_account=mo.ui.radio({"Acme's account":"acme","Unrelated account":"other-account"},value="Acme's account",inline=True,label="Which account should the lookup read?")
+pending_preview_reveal=mo.ui.checkbox(label="Show the invoice records for this account")
+mo.vstack([mo.md("### Inspect a ticket before signing in"),mo.md("Acme reports two charges for invoice inv-1. Before seeing the lookup, name the payment that should be refunded and the records that should stay unchanged. This free example reads the bundled development snapshot. It does not call a model or publish anything."),mo.md("```python\\nmy_invoice_tool(state, account_id, 'inv-1')\\n```"),pending_preview_account,pending_preview_reveal])
+''',True)
+add('''
+mo.stop(get_step()!="setup")
+mo.vstack([mo.Html(ui.result("Requested account",{"account_id":pending_preview_account.value,"invoice_id":"inv-1"})),mo.ui.table(teaching.invoice_preview(pending_preview_account.value)["payments"],selection=None),mo.md("These fictional accounts reuse the same invoice and payment IDs. The customer named Acme: matching an invoice number alone is not enough to authorize a refund in another account.")]) if pending_preview_reveal.value else mo.md("Connect below when you are ready to save your own tool, traces and results.")
+''',True)
+add('''
 def move_pending(step):
     if get_pending().get("session"):
         get_pending()["session"].set_view(step)
@@ -389,6 +399,19 @@ _evaluation=get_pending().get("evaluation",{})
 mo.vstack([mo.ui.table(_check.get("rows",[]),selection=None),mo.md(_check.get("error","")),mo.ui.table(_evaluation.get("rows",[]),selection=None),ui.publication(mo,_s) if _s else mo.md(""),ui.evidence(mo,_s,[r["stage_id"] for r in _evaluation.get("runs",[])],question="Choose a ticket and compare its account check with its explanation score. Open the trace: did the refund happen, and did the reply describe it accurately?") if _s else mo.md(""),pending_next_step_4])
 ''',True)
 add('''
+mo.stop(get_step()!="manual")
+_s=get_pending().get("session")
+_requests=list(_s.read()["requests"].values()) if _s else []
+_skill_views={run["case_id"]:mo.Html(pending_visuals.skill_view(run,[request for request in _requests if request.get("id","").startswith(run["stage_id"]+"/")])) for run in get_pending().get("original",[])}
+pending_skill_example=mo.ui.checkbox(label="Show a free example of read_skill and the next request")
+mo.vstack([mo.md("### Check whether the starting employee read a skill"),mo.md("Before editing, inspect the starting tickets below. A skill file and a successful read are different observations. If no read is recorded, say so. The optional local example shows how returned text reaches the next request; it does not claim your employee read it."),mo.ui.tabs(_skill_views) if _skill_views else mo.md("Run the starting tickets to inspect their actual skill reads."),pending_skill_example])
+''',True)
+add('''
+mo.stop(get_step()!="manual" or not pending_skill_example.value)
+_example=teaching.skill_handoff_example()
+mo.vstack([mo.md("**Free local example. No model chose this action.** The initial message names the skill. The read returns its text. The observation function appends that text to the next request."),mo.Html(ui.result("Installed file",{"skills/verify-operation.md":_example["file"]})),mo.ui.tabs({"Before read":mo.json(_example["before"]),"Action":mo.json(_example["action"]),"Returned text":mo.json(_example["result"]),"Next request":mo.json(_example["after"])})])
+''',True)
+add('''
 pending_prerequisite_5=ui.prerequisite(mo,"Check and publish the starting development result first.","evals",move_pending)
 mo.stop(get_step()!="manual")
 _s=get_pending().get("session")
@@ -434,6 +457,13 @@ _s=get_pending().get("session")
 _number,_phase,_label=teaching.next_phase(_s) if _s else (1,"propose","Connect first")
 _decision=teaching.active_decision(_s,_number,_phase) if _s else None
 review_pending=mo.ui.checkbox(label="I reviewed this version's files and rationale")
+_reason_key=f"pending/round-{_number}/my-comparison"
+_choice_key=f"pending/round-{_number}/my-choice"
+_choice_options={"Not decided":"undecided","Candidate A":"a","Candidate B":"b","Retain the parent":"keep","Combine parts":"combine"}
+_saved_choice=_s.get_draft(_choice_key,"undecided") if _s else "undecided"
+pending_my_choice=mo.ui.radio(_choice_options,value=next(label for label,value in _choice_options.items() if value==_saved_choice),label="Which version would you choose?",on_change=lambda value:_s.save_draft(_choice_key,value) if _s else None)
+pending_my_reason=mo.ui.text_area(value=_s.get_draft(_reason_key,"") if _s else "",label="Which probe result supports your choice?",full_width=True,on_change=lambda value:_s.save_draft(_reason_key,value) if _s else None)
+
 improve_pending=mo.ui.run_button(label=f"Round {_number} · {_label}",disabled=not bool(get_pending().get("manual")) or _phase=="done",full_width=True)
 _views=[mo.Html(ui.step("6. Ask an agent to revise the instructions", "The editor agent reads a billing run and proposes two changes to the instructions. Read each diff and test both on the billing ticket. Then repeat with onboarding, using the version you kept and what you learned from billing.","After both tests, ask the editor to choose or combine the changes. Test that version too. It can keep the current instructions if neither change is worth using.")),mo.md("Management would like to automate management. Please review its changes.")]
 if _s:
@@ -444,6 +474,11 @@ if _decision:
 if _s and _phase in ("compose","composition-test","adopted","done"):
     _probes=[teaching.latest(_s,f"pending/round-{_number}/probe-"+letter) for letter in ("a","b")]
     _views.append(pending_execution_table([row for letter,saved in zip(("A","B"),_probes) if saved for row in teaching.summary_rows([saved["result"]["run"]],"Candidate "+letter)]))
+    if _phase=="compose":
+        _views.extend([mo.md("**Before asking the editor:** choose A, B, the parent, or a combination, and cite a probe result. These optional notes are saved for you; the editor does not receive them. You can request composition without filling them in."),pending_my_choice,pending_my_reason])
+    elif _s.get_draft(_reason_key,"") or _saved_choice!="undecided":
+        _views.append(mo.Html(ui.result("Your reasoning before composition",{"Choice":_saved_choice,"Evidence":_s.get_draft(_reason_key,"")})))
+
 _views.extend([improve_pending,pending_prerequisite_6 if not get_pending().get("manual") else mo.md("")])
 if _s: _views.append(ui.branch_workbench(mo,_s,key="pending-improvement"))
 if _phase=="done": _views.append(pending_next_step_6)

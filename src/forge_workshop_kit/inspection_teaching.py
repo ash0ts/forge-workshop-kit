@@ -13,6 +13,13 @@ from . import inspection
 from .manifest import get_workshop
 STEPS = tuple(tuple(step) for step in get_workshop('visual-inspection')['steps'])
 RELEASE = 'https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.5.0'
+OPENING_ASSETS = Path(__file__).parent / 'assets' / 'inspection'
+
+
+def opening_board():
+    """One bundled fitting example; this performs no download or service request."""
+    row = json.loads((OPENING_ASSETS / 'provenance.json').read_text())
+    return {**row, 'image': OPENING_ASSETS / 'board.jpg', 'mask': OPENING_ASSETS / 'mask.png'}
 FEATURE_STARTER = '''def build_features(data, rows, method, reference=None):
     whole = data["whole"][rows]
     if method == "whole":
@@ -71,6 +78,13 @@ def check_features(source):
     return {'status': 'complete', 'check': 'Board order and local features match the fixture; no training ran.'}
 
 
+def check_whole_features(source):
+    fn = functions(source)['build_features']
+    fixture = {'whole': np.arange(12.).reshape(3, 4)}
+    np.testing.assert_array_equal(fn(fixture, np.array([2, 0]), 'whole'), fixture['whole'][[2, 0]])
+    return {'status': 'complete', 'check': 'Whole-image rows preserve board order. Patch code is not needed yet.'}
+
+
 def check_threshold(source):
     f = functions(source)['choose_threshold']
     target = np.array([1, 0, 1, 1, 0])
@@ -109,7 +123,37 @@ def model_from_stage(session, name):
 
 
 def completed_steps(session):
-    return set(session.read()['progress'].get('completed', [])) if session else set()
+    if not session:
+        return set()
+    completed = set(session.read()['progress'].get('completed', []))
+    whole = saved(session, 'compare/whole')
+    patch = saved(session, 'compare/nearest-patch')
+    if whole:
+        completed.add('baseline')
+    if whole and patch:
+        completed.add('compare')
+    else:
+        completed.discard('compare')
+    return completed
+
+
+def check_matched_settings(session, method, feature_source, threshold_source, data):
+    """Only the patch branch may change between the two representation runs."""
+    current = saved(session, 'compare/' + method)
+    if current and current['sources'] != {'features.py': feature_source, 'threshold.py': threshold_source}:
+        raise ValueError('This version is already saved. Restore its source to reuse it; use a new workspace for another recipe.')
+    whole = saved(session, 'compare/whole')
+    if method == 'nearest-patch' and not whole:
+        raise ValueError('Run the whole-image baseline and inspect a validation board first.')
+    if method == 'nearest-patch':
+        if whole['sources']['threshold.py'] != threshold_source:
+            raise ValueError('Restore the baseline threshold rule so the representation comparison uses the same operating rule.')
+        rows = np.concatenate([inspection.indices(data, 'fit'), inspection.indices(data, 'validation')])
+        old = functions(whole['sources']['features.py'])['build_features'](data, rows, 'whole')
+        new = functions(feature_source)['build_features'](data, rows, 'whole')
+        if not np.array_equal(old, new):
+            raise ValueError('Keep the whole-image branch unchanged. Add patch features without changing the baseline inputs.')
+    return True
 
 
 def download(destination='data/inspection-v1', *, base_url=RELEASE):

@@ -72,6 +72,7 @@ slide('Sources for the data and evaluation', '<ul class="source-list"><li><a hre
 
 schedule = runpy.run_path(str(ROOT / 'scripts/depth-sequences.py'))['deepen'](slides)
 runpy.run_path(str(ROOT / 'scripts/visual-sequences.py'))['illustrate'](slides)
+runpy.run_path(str(ROOT / 'scripts/pedagogy-sequence.py'))['reorder'](slides)
 
 # Stable aliases keep worked-answer links aligned when slides are inserted.
 for item in slides:

@@ -214,7 +214,7 @@ def stages_for_step(session, step):
     """Select saved executions relevant to the current exercise, without publishing."""
     prefixes = {
         'setup': ('factory/setup',),
-        'worker': ('factory/build/solo/',),
+        'worker': ('factory/build/solo/', 'factory/review/solo/', 'factory/integration/solo'),
         'tasks': ('factory/build/solo/',),
         'team': ('factory/build/team/',),
         'integrate': ('factory/integration/solo', 'factory/integration/team', 'factory/build/solo/', 'factory/build/team/'),

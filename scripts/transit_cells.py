@@ -53,6 +53,55 @@ mo.stop(get_step()!="setup")
 mo.vstack([mo.md("**6-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/transit/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Build a transit app with a team of coding agents","People leaving an evening event need the next departures and the last service home. Your team is building the departure board. You'll give two coding agents separate tasks, test their combined work, and decide what the next builders should remember.",theme="neutral",eyebrow="Six-hour software factory workshop")),mo.md("The schedule is real: a frozen MBTA GTFS feed for **November 28 to December 4, 2024**. GTFS joins routes, trips, stops, service calendars, and stop times. You'll inspect those records before asking agents to change code. The app displays historical scheduled departures, not live arrival predictions."),mo.md("**Your output:** a departure board you can run, the coordinator you wrote, and a release linked to its tests and Agent Lens conversations. The first work order adds next departures. The second adds the last departure tonight and an itinerary download."),mo.md("A software factory connects a request to assignments, code, integration tests, and a release decision. The builder agents write the app's query and display modules. You write the task selection, handoffs, memory retrieval, and checks around them."),mo.md("[GTFS source and terms](https://github.com/mbta/gtfs-documentation) · [Software-factory background](https://factory.strongdm.ai/) · [Workshop source](https://github.com/ash0ts/forge-workshop-kit/blob/main/notebooks/transit_factory.py)")])
 ''',True)
 add('''
+mo.stop(get_step()!="setup")
+_data=lab.data_preview()
+mo.vstack([mo.md("### Read one departure before writing code\\nA trip references a service calendar. Its stop times belong to that service day. After-midnight values can exceed 24:00:00. The feed date is part of the input, not the computer's current date."),mo.ui.table([{"Trip":row["trip_id"],"Platform":row["stop_id"],"GTFS departure":row["departure_time"],"Service calendar":row["service_id"]} for row in _data["departures"]],selection=None),mo.accordion({"Source, checksum, and extraction":mo.json(_data["manifest"])}),mo.md("Trip **63926435** has a **24:08:00** departure at Park Street on Thanksgiving's service calendar. That means **00:08 on November 29**, with **November 28** retained as its service date. At 00:05, a useful board must still include it. Write that requirement below before building the app.")])
+''',True)
+add('''
+mo.stop(get_step()!="setup")
+opening_clock=mo.ui.radio({"00:05, before the train": "2024-11-29T00:05:00-05:00", "00:09, after it left": "2024-11-29T00:09:00-05:00"},value="00:05, before the train",label="Park Street on November 29",inline=True)
+try_departure=mo.ui.run_button(label="Show departures from the saved timetable")
+mo.vstack([mo.md("### Try the timetable before connecting\\nChoose a clock time and predict whether the 00:08 train should appear. This runs the supplied reference query locally. It is a teaching example, not an agent-built app, and needs no account."),opening_clock,try_departure])
+''',True)
+add('''
+mo.stop(not try_departure.value)
+_rows=transit.reference_departures(transit.load_data(),"70076",opening_clock.value)
+show("opening departures",{"at":opening_clock.value,"rows":_rows})
+''',True)
+add('''
+mo.stop(get_step()!="setup")
+_example=get_output().get("opening departures")
+_opening_explanation = ("Trip 63926435 appears: at 00:05, its 00:08 departure is still ahead. Its service date is November 28 and its boarding date is November 29." if _example and any(row["trip_id"] == "63926435" for row in _example["rows"]) else "Trip 63926435 is omitted: at 00:09, its 00:08 departure has passed. The next departure shown is 00:13. These after-midnight trains still belong to the November 28 service day.")
+mo.vstack([mo.md("**Reference query at " + _example["at"] + "**"),mo.ui.table(_example["rows"],selection=None),mo.md(_opening_explanation),mo.md("The acceptance exercise below uses the original 00:05 query. Write a check that catches a missing 00:08 train or an incorrect service date.")]) if _example else mo.md("")
+''',True)
+add('''
+_s=current_session()
+acceptance_code=mo.ui.code_editor(value=read_draft("acceptance",teaching.ACCEPTANCE_STARTER),language="python",on_change=lambda text:save_draft("acceptance",text),debounce=False)
+acceptance_check=mo.ui.run_button(label="Check my after-midnight scenario")
+mo.vstack([mo.md("### Write one acceptance scenario\\nComplete `check_departures(rows)`. Return True when the train above appears with both dates correct. Your check will also run on the combined app. The free check below uses the real public example, then removes the train and changes its service date to make sure your condition catches both errors."),acceptance_code,acceptance_check,mo.accordion({"Hint":mo.md("Use `any(...)` over the rows. Check `trip_id`, `service_date`, and `departure_time` together."),"Worked answer":mo.md("```python\\n"+teaching.ACCEPTANCE_SOLUTION+"\\n```")})]) if get_step()=="setup" else mo.md("")
+''',True)
+add('''
+mo.stop(not acceptance_check.value)
+save_draft("acceptance",acceptance_code.value)
+try:
+    _result=teaching.check_acceptance(acceptance_code.value)
+    if current_session():
+        current_session().save_draft("factory/acceptance",acceptance_code.value)
+        lab.save_check(current_session(),"acceptance",acceptance_code.value,_result)
+    show("acceptance check",_result)
+except Exception as _error:
+    show("acceptance check",{"status":"Needs a change","message":str(_error)})
+refresh()
+''',True)
+add('''
+mo.stop(get_step()!="setup")
+_session=current_session()
+_result=get_output().get("acceptance check") or (_session.read().get("factory_checks",{}).get("acceptance") if _session else None)
+if _result and _result.get("source_fingerprint") != digest(acceptance_code.value): _result=None
+mo.callout(mo.md("**Scenario passed.** The real departure passes; the missing train and wrong service day fail." if _result and _result.get("passed") else (_result or {}).get("message","Run your scenario check above. No model or training call is involved.")),kind="success" if _result and _result.get("passed") else "info")
+''',True)
+
+add('''
 _env=setup.project_context()
 project=mo.ui.text(value=_env["project"],label="Your Forge project",disabled=_env["hosted"] and _env["detected"],full_width=True)
 allowance=mo.ui.number(value=8,start=.01,stop=1000,label="Inference allowance in USD; notebook compute is separate")
@@ -65,6 +114,13 @@ _s=WorkshopSession.from_environment("transit-factory",project=project.value,budg
 _access=_s.check_access()
 _s.restore()
 setup.save_access(_s,_access)
+# Keep a checked pre-connection draft without replacing restored work.
+if _s.get_draft("factory/acceptance",None) is None and "acceptance" in draft_cache:
+    _source=draft_cache["acceptance"]
+    _s.save_draft("factory/acceptance",_source)
+    _check=get_output().get("acceptance check",{})
+    if _check.get("passed") and _check.get("source_fingerprint")==digest(_source):
+        lab.save_check(_s,"acceptance",_source,_check)
 set_context({"session":_s})
 set_step(_s.get_view("setup"))
 refresh()
@@ -103,38 +159,6 @@ except Exception as _error:
 _s.checkpoint("setup")
 refresh()
 ''',True)
-add('''
-mo.stop(get_step()!="setup")
-_data=lab.data_preview()
-mo.vstack([mo.md("### Read one departure before writing code\\nA trip references a service calendar. Its stop times belong to that service day. After-midnight values can exceed 24:00:00. The feed date is part of the input, not the computer's current date."),mo.ui.table([{"Trip":row["trip_id"],"Platform":row["stop_id"],"GTFS departure":row["departure_time"],"Service calendar":row["service_id"]} for row in _data["departures"]],selection=None),mo.accordion({"Source, checksum, and extraction":mo.json(_data["manifest"])}),mo.md("Trip **63926435** has a **24:08:00** departure at Park Street on Thanksgiving's service calendar. That means **00:08 on November 29**, with **November 28** retained as its service date. At 00:05, a useful board must still include it. Write that requirement below before building the app.")])
-''',True)
-add('''
-_s=current_session()
-acceptance_code=mo.ui.code_editor(value=read_draft("acceptance",teaching.ACCEPTANCE_STARTER),language="python",on_change=lambda text:save_draft("acceptance",text),debounce=False)
-acceptance_check=mo.ui.run_button(label="Check my after-midnight scenario")
-mo.vstack([mo.md("### Write one acceptance scenario\\nComplete `check_departures(rows)`. Return True when the train above appears with both dates correct. Your check will also run on the combined app. The free check below uses the real public example, then removes the train and changes its service date to make sure your condition catches both errors."),acceptance_code,acceptance_check,mo.accordion({"Hint":mo.md("Use `any(...)` over the rows. Check `trip_id`, `service_date`, and `departure_time` together."),"Worked answer":mo.md("```python\\n"+teaching.ACCEPTANCE_SOLUTION+"\\n```")})]) if get_step()=="setup" else mo.md("")
-''',True)
-add('''
-mo.stop(not acceptance_check.value)
-save_draft("acceptance",acceptance_code.value)
-try:
-    _result=teaching.check_acceptance(acceptance_code.value)
-    if current_session():
-        current_session().save_draft("factory/acceptance",acceptance_code.value)
-        lab.save_check(current_session(),"acceptance",acceptance_code.value,_result)
-    show("acceptance check",_result)
-except Exception as _error:
-    show("acceptance check",{"status":"Needs a change","message":str(_error)})
-refresh()
-''',True)
-add('''
-mo.stop(get_step()!="setup")
-_session=current_session()
-_result=get_output().get("acceptance check") or (_session.read().get("factory_checks",{}).get("acceptance") if _session else None)
-if _result and _result.get("source_fingerprint") != digest(acceptance_code.value): _result=None
-mo.callout(mo.md("**Scenario passed.** The real departure passes; the missing train and wrong service day fail." if _result and _result.get("passed") else (_result or {}).get("message","Run your scenario check above. No model or training call is involved.")),kind="success" if _result and _result.get("passed") else "info")
-''',True)
-
 # One editor appears at the relevant step; drafts are saved independently.
 for name in ('worker','tasks','memory','evaluate','release'):
     add(f'''
@@ -182,6 +206,21 @@ _s.checkpoint("worker")
 refresh()
 ''',True)
 add('''
+_s=current_session()
+_revision=get_revision()
+reviewed_solo=mo.ui.checkbox(label="I reviewed the one-builder patches and their development checks")
+integrate_solo=mo.ui.run_button(label="Review and test the one-builder app",disabled=not lab.can_run(_s,"integrate-solo"))
+mo.vstack([mo.md("### Try the first build before adding another worker\\nRead the query and display patches. Test them together, then use the preview below. A successful component test does not establish that the app works. This integration does not choose the starting release for the memory experiment; that decision waits for both builds."),mo.Html(lab.patch_review(_s,labels=("solo",))),reviewed_solo,integrate_solo,mo.md(lab.blocked(_s,"integrate-solo"))]) if get_step()=="worker" else mo.md("")
+''',True)
+add('''
+mo.stop(not integrate_solo.value)
+mo.stop(not reviewed_solo.value,mo.md("Read the one-builder diffs and confirm your review first."))
+show("solo integration",lab.integrate_build(current_session(),"solo"))
+show("traces",export_saved_traces())
+current_session().checkpoint("solo-integration")
+refresh()
+''',True)
+add('''
 mo.stop(get_step()!="tasks")
 _session=current_session()
 _result=get_output().get("tasks check") or (_session.read().get("factory_checks",{}).get("tasks",{}) if _session else {})
@@ -207,14 +246,14 @@ refresh()
 add('''
 _s=current_session()
 _revision=get_revision()
-reviewed_patches=mo.ui.checkbox(label="I reviewed both builds' patches below and their development checks")
-run_integration=mo.ui.run_button(label="Test the combined departures board",disabled=not lab.can_run(_s,"integrate"))
-mo.vstack([mo.Html(ui.step("Review the patches together","Read the query and display diffs below. Both modules can pass their own checks while disagreeing about the interface.","The integration action applies reviewed patches and runs development scenarios. Final reserved scenarios remain separate.")),mo.Html(lab.patch_review(_s)),reviewed_patches,run_integration,mo.md(lab.blocked(_s,"integrate"))]) if get_step()=="integrate" else mo.md("")
+reviewed_patches=mo.ui.checkbox(label="I reviewed the two-builder patches and their development checks")
+run_integration=mo.ui.run_button(label="Test the combined departures board",disabled=not lab.can_run(_s,"integrate-team"))
+mo.vstack([mo.Html(ui.step("Review the patches together","Read the query and display diffs below. Both modules can pass their own checks while disagreeing about the interface.","The integration action applies reviewed patches and runs development scenarios. Final reserved scenarios remain separate.")),mo.Html(lab.patch_review(_s,labels=("team",))),reviewed_patches,run_integration,mo.md(lab.blocked(_s,"integrate-team"))]) if get_step()=="integrate" else mo.md("")
 ''',True)
 add('''
 mo.stop(not run_integration.value)
 mo.stop(not reviewed_patches.value,mo.md("Read the actual diffs and confirm the review above first."))
-_result=lab.integrate_initial(current_session())
+_result=lab.integrate_build(current_session(),"team")
 show("integrate",_result)
 show("traces",export_saved_traces())
 current_session().checkpoint("integrate")
@@ -237,14 +276,15 @@ _s=current_session()
 _revision=get_revision()
 preview_stop=mo.ui.dropdown(lab.stop_choices(),value=next(iter(lab.stop_choices())),label="Stop")
 preview_time=mo.ui.text(value="2024-11-29T00:05:00-05:00",label="Historical local time")
-preview_version=mo.ui.dropdown({"One builder":"solo","Two builders":"team"},value="Two builders",label="Integrated version")
-preview_app=mo.ui.run_button(label="Preview this saved app",disabled=not lab.can_run(_s,"preview"))
-mo.vstack([mo.md("### Try the app\\nChoose a stop and time from the saved week. Previewing runs the reviewed Python locally; it makes no model requests."),mo.hstack([preview_stop,preview_version]),preview_time,preview_app]) if get_step()=="integrate" else mo.md("")
+_available_previews={lab.LABELS[label]:label for label in lab._state(_s).get("integrations",{}) if label in (("solo",) if get_step()=="worker" else ("solo","team"))}
+preview_version=mo.ui.dropdown(_available_previews,value=next(iter(_available_previews),None),label="Integrated version")
+preview_app=mo.ui.run_button(label="Preview this saved app",disabled=not bool(_available_previews))
+mo.vstack([mo.md("### Try the app\\nChoose a stop and time from the saved week. Previewing runs the reviewed Python locally; it makes no model requests."),mo.hstack([preview_stop,preview_version]),preview_time,preview_app]) if get_step() in ("worker","integrate") else mo.md("")
 ''',True)
 add('''
 mo.stop(not preview_app.value)
 try:
-    show("app",lab.preview(current_session(),preview_version.value,preview_stop.value,preview_time.value))
+    show("app",{**lab.preview(current_session(),preview_version.value,preview_stop.value,preview_time.value),"build":preview_version.value})
 except Exception as _error:
     show("app",{"error":str(_error)})
 ''',True)

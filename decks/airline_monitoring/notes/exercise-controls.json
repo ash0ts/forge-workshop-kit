@@ -24,9 +24,10 @@
     "Read the subsequent batch's tag results",
     "Refresh native Alignment examples",
     "Retry saved trace and result publications",
-    "Run eight discovery requests",
     "Run four new requests",
     "Run my curated regression cases",
+    "Run the first discovery request",
+    "Run the remaining seven discovery requests",
     "Save my development evaluation code",
     "Save my expected booking",
     "Save my turn review",
@@ -35,6 +36,7 @@
     "Send a help request",
     "Send my first Agent Lens trace",
     "Test the saved criteria on this reviewed turn",
+    "Try the booking change locally",
     "Verify automatic tagging is off"
   ],
   "references": [
@@ -59,16 +61,37 @@
       "exercise": {
         "id": "discover",
         "step": "discovery",
-        "cell_id": "airline_monitoring/action/run_discovery",
+        "cell_id": "airline_monitoring/action/run_first_discovery",
         "function": "my_model_span",
         "check_control": "check_instrumentation",
-        "run_control": "run_discovery",
+        "run_control": "run_first_discovery",
         "prerequisites": [
           "setup",
           "booking"
         ],
-        "expected_output": "Eight saved discovery executions with starting and resulting itineraries.",
+        "expected_output": "One saved discovery conversation with the original booking, tool arguments, returned booking, and final response.",
         "forge_investigation": "Follow one booking update from the passenger request through the tool arguments to its returned booking.",
+        "function_source": "src/forge_workshop_kit/airline_teaching.py",
+        "run_label": "Run the first discovery request"
+      }
+    },
+    {
+      "slide_name": "remaining-discovery",
+      "exercise": {
+        "id": "remaining-discovery",
+        "step": "discovery",
+        "cell_id": "airline_monitoring/action/run_discovery",
+        "function": "my_model_span",
+        "activity": "inspect",
+        "task": "Inspect the first request, then continue the original batch. Completed matching cases are reused.",
+        "check_control": "check_instrumentation",
+        "run_control": "run_discovery",
+        "run_label": "Run the remaining seven discovery requests",
+        "prerequisites": [
+          "discover"
+        ],
+        "expected_output": "Eight unique discovery conversations are saved before the discovery checkpoint completes.",
+        "forge_investigation": "Compare a successful booking, recovery, refusal, or unresolved result without treating a missing result as success.",
         "function_source": "src/forge_workshop_kit/airline_teaching.py"
       }
     },
@@ -89,6 +112,24 @@
       }
     },
     {
+      "slide_name": "review",
+      "exercise": {
+        "id": "review",
+        "step": "review",
+        "cell_id": "airline_monitoring/action/save_review",
+        "function": null,
+        "activity": "inspect",
+        "task": "Review the passenger request, original itinerary, recorded operations, and resulting booking. Save a label and the evidence supporting it before drafting tag criteria.",
+        "check_control": null,
+        "run_control": "save_review",
+        "prerequisites": [
+          "investigate"
+        ],
+        "expected_output": "A reviewed turn is saved with its stage and trace identities; monitoring is not marked complete.",
+        "forge_investigation": "Use the same reviewed turn in native Alignment and inspect disagreements with the automated judge."
+      }
+    },
+    {
       "slide_name": "align",
       "exercise": {
         "id": "align",
@@ -98,7 +139,7 @@
         "check_control": null,
         "run_control": "read_native_tag",
         "prerequisites": [
-          "investigate"
+          "review"
         ],
         "expected_output": "Native criteria, scope, and alignment readback; unavailable features remain explicit.",
         "forge_investigation": "Label turns, test criteria in Alignment, then save chosen criteria before enabling the tag."

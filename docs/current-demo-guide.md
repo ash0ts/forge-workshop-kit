@@ -2,6 +2,8 @@
 
 Use these saved rehearsals to show how an instruction or code change affects an agent's work. Participants can follow the same sequence in their own notebook: run the starting version, inspect a failure or limitation, edit the code, and compare the results. Tell the audience when you switch to the recorded example. Opening its pages does not run an experiment.
 
+Begin with the notebook's bundled development example before connecting an account. Ask what should change and what should remain intact. Show one result before a batch, and ask for a diagnosis before opening a worked answer. For a candidate comparison, let someone choose a version and explain their choice before revealing the editor's decision. These prompts are discussion, not additional approval forms.
+
 | Workshop | Participant notebook | Companion deck | Results and walkthrough links |
 | --- | --- | --- | --- |
 | Pending, Inc. | [Copy the office notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) | [Pending deck](https://ash0ts.github.io/forge-workshop-kit/pending/) | [November 13 Pending Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-bc0ee4ab--VmlldzoxODMwMzUyNg==) |
@@ -50,7 +52,7 @@ For Solar, open the [three-seed qualification](solar-qualification.md). The repa
 1. Open the [routing deck](https://ash0ts.github.io/forge-workshop-kit/routing/) and compare a missing card with a card that does not work. Ask which support workflow each needs.
 2. Show the TF–IDF and frozen-embedding classifiers. The recorded official-test macro-F1 rises from 0.879385 to 0.920229. Explain that the encoder stays fixed while the classifier is fitted.
 3. Open the [recorded judge disagreement](https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f5427dc7f06703d62c00561b6bd27a01). The request says “Can I activate a card in the app?” The judge accepts `activate_my_card`; the dataset says `card_linking`. Ask what else a reviewer would need before accepting a label.
-4. In the notebook, save a review, show its dataset version, and follow it into retraining. The participant's later improvement is measured separately from the qualified classifier comparison. [Four-hour instructions](routing-workshop.md).
+4. In the notebook, save a review, show its dataset version, and follow it into retraining. The participant's later improvement is measured separately from the qualified classifier comparison. [Five-and-a-half-hour instructions](routing-workshop.md).
 
 ## Circuit-board inspection in six minutes
 

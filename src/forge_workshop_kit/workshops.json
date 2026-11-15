@@ -559,36 +559,38 @@
           {
             "id": "measurement-loss",
             "step": "search",
-            "cell_id": "solar_autoresearch/action/run_search",
+            "cell_id": "solar_autoresearch/action/run_first_trial",
             "function": "training_loss",
             "activity": "implement",
             "task": "Complete the measurement model\u2019s training_loss by averaging squared errors over the valid mask.",
             "check_control": "check_measurement",
-            "run_control": "run_search",
+            "run_control": "run_first_trial",
             "prerequisites": [
               "data",
               "persistence"
             ],
-            "expected_output": "The local loss checks pass; six training runs use the completed loss with fixed data partitions.",
+            "expected_output": "The free loss check passes; the first Sweep trial uses this source. The remaining trials reuse the same code and fixed data partitions.",
             "forge_investigation": "Compare candidate.py and losses.json with the source and learning curves in the selected Sweep run.",
-            "function_source": "examples/solar/candidate.py"
+            "function_source": "examples/solar/candidate.py",
+            "run_label": "Run one tracked Sweep trial"
           },
           {
             "id": "flux-metric",
             "step": "search",
-            "cell_id": "solar_autoresearch/action/run_search",
+            "cell_id": "solar_autoresearch/action/run_first_trial",
             "function": "my_flux_mae",
             "activity": "implement",
             "task": "Average the absolute difference between predicted and observed log-flux. Test identical values and a constant one-unit error.",
             "check_control": "check_measurement",
-            "run_control": "run_search",
+            "run_control": "run_first_trial",
             "prerequisites": [
               "data",
               "persistence"
             ],
             "expected_output": "Identical arrays score 0 and a constant one-unit error scores 1; the learner metric agrees with the fixed scorer.",
             "forge_investigation": "Find learner_metric and the independent validation error in the same training result.",
-            "function_source": "src/forge_workshop_kit/solar_teaching.py"
+            "function_source": "src/forge_workshop_kit/solar_teaching.py",
+            "run_label": "Run one tracked Sweep trial"
           },
           {
             "id": "measurement-model",
@@ -596,12 +598,11 @@
             "cell_id": "solar_autoresearch/action/inspect_shapes",
             "function": "build_model",
             "activity": "inspect",
-            "task": "Inspect build_model. Follow the MLP flattening and temporal CNN operations through the printed input and output tensor shapes.",
-            "check_control": "check_measurement",
+            "task": "Inspect build_model before implementing the loss. Run the free forward pass and follow the MLP and temporal CNN input and output shapes.",
+            "check_control": "inspect_shapes",
             "run_control": "inspect_shapes",
             "prerequisites": [
-              "data",
-              "measurement-loss"
+              "data"
             ],
             "expected_output": "A small forward pass returns one forecast per example without training or inference calls.",
             "forge_investigation": "After the search, compare architecture, width, and source in the MLP and CNN runs.",
@@ -610,19 +611,36 @@
           {
             "id": "training-record",
             "step": "search",
-            "cell_id": "solar_autoresearch/action/run_search",
+            "cell_id": "solar_autoresearch/action/run_first_trial",
             "function": "run_training",
             "activity": "inspect",
             "task": "In the visible run_training function, find where source, settings, dataset identity, metrics, weights, predictions, and losses are saved for one execution.",
             "check_control": "check_measurement",
-            "run_control": "run_search",
+            "run_control": "run_first_trial",
             "prerequisites": [
               "data",
               "measurement-loss",
               "flux-metric"
             ],
-            "expected_output": "Six bounded configurations produce separate tracked runs and reusable saved outputs.",
-            "forge_investigation": "Open one Sweep run and its Artifact. Match candidate.py, weights.pt, predictions.npy, configuration, and validation score."
+            "expected_output": "One tracked trial saves its source, weights, predictions, losses, and validation score. Continue the same Sweep to complete all six configurations.",
+            "forge_investigation": "Open one Sweep run and its Artifact. Match candidate.py, weights.pt, predictions.npy, configuration, and validation score.",
+            "run_label": "Run one tracked Sweep trial"
+          },
+          {
+            "id": "remaining-sweep",
+            "step": "search",
+            "cell_id": "solar_autoresearch/action/run_search",
+            "function": "run_measurement_sweep",
+            "activity": "inspect",
+            "task": "Inspect the first trial\u2019s curve and validation forecast. Keep its code and metric unchanged, then run the remaining configurations in the same Sweep.",
+            "check_control": "check_measurement",
+            "run_control": "run_search",
+            "run_label": "Run the remaining Sweep trials",
+            "prerequisites": [
+              "training-record"
+            ],
+            "expected_output": "All six distinct configurations have matching completed training records. Previously completed trials are reused.",
+            "forge_investigation": "Compare architecture, width, learning rate, and loss curves across the six runs in the same native Sweep."
           },
           {
             "id": "measurement-repair",
@@ -630,7 +648,7 @@
             "cell_id": "solar_autoresearch/action/run_measurement_repair",
             "function": "forward",
             "activity": "inspect",
-            "task": "Inspect FluxPredictor.forward in the worked GOES repair. Follow the learned correction from the latest standardized XRS-B reading back to log-flux units.",
+            "task": "Inspect the validation forecast and loss curve first, then open the worked GOES repair. Follow FluxPredictor.forward from the latest standardized reading back to log-flux units.",
             "check_control": "check_measurement_repair",
             "run_control": "run_measurement_repair",
             "prerequisites": [
@@ -784,11 +802,19 @@
         ],
         [
           "baseline",
-          "Train the baselines"
+          "Train the word classifier"
+        ],
+        [
+          "alternative",
+          "Compare sentence features"
         ],
         [
           "review",
           "Review disagreements"
+        ],
+        [
+          "prompted",
+          "Route requests with the model"
         ],
         [
           "judge",
@@ -812,6 +838,26 @@
         ]
       ],
       "checkpoint_prefixes": [
+        [
+          "routing/baseline/tfidf",
+          "baseline"
+        ],
+        [
+          "baseline-tfidf",
+          "baseline"
+        ],
+        [
+          "routing/baseline/embedding",
+          "alternative"
+        ],
+        [
+          "routing/judge/prompted/",
+          "prompted"
+        ],
+        [
+          "routing-sample",
+          "prompted"
+        ],
         [
           "routing/release/",
           "release"
@@ -998,10 +1044,26 @@
             "prerequisites": [
               "data"
             ],
-            "expected_output": "Two fitted classifiers with validation predictions.",
-            "forge_investigation": "Compare preprocessing, configuration, and macro F1.",
+            "expected_output": "One fitted TF\u2013IDF classifier with validation predictions.",
+            "forge_investigation": "Find a mistaken route and its feature settings in the saved TF\u2013IDF run.",
             "activity": "implement",
-            "task": "Construct and return a LogisticRegression estimator with the specified settings. The run action fits it on TF\u2013IDF and frozen sentence features."
+            "task": "Construct a LogisticRegression estimator, try fit and predict on a small fixture, then fit it on TF\u2013IDF features and inspect validation mistakes."
+          },
+          {
+            "id": "embedding-classifier",
+            "step": "alternative",
+            "cell_id": "request_routing/action/train_embedding",
+            "function": "make_classifier",
+            "function_source": "src/forge_workshop_kit/routing_teaching.py",
+            "check_control": "check_classifier",
+            "run_control": "train_embedding",
+            "prerequisites": [
+              "classifier"
+            ],
+            "expected_output": "Matched TF\u2013IDF and sentence-feature validation predictions; the comparison completes only when both are saved.",
+            "forge_investigation": "Compare the two runs on the same validation requests; inspect one corrected route and one remaining error.",
+            "activity": "implement",
+            "task": "Use the same estimator and settings with frozen sentence features. Compare the saved validation mistakes before choosing a representation."
           },
           {
             "id": "review",
@@ -1018,6 +1080,21 @@
             "forge_investigation": "Open the versioned review record and its original prediction.",
             "activity": "implement",
             "task": "Implement needs_review using the probability threshold. Examine uncertain requests and save your accepted labels with their evidence."
+          },
+          {
+            "id": "prompted-routing",
+            "step": "prompted",
+            "cell_id": "request_routing/action/run_prompted",
+            "function": null,
+            "activity": "investigate",
+            "task": "Run the bounded eight-request prompted demonstration and inspect a chosen intent before asking another model to judge it.",
+            "check_control": null,
+            "run_control": "run_prompted",
+            "prerequisites": [
+              "review"
+            ],
+            "expected_output": "Eight saved development routes, separate from full classifier evaluation.",
+            "forge_investigation": "Open one routing conversation and compare the message, chosen intent, and explanation."
           },
           {
             "id": "judge",
@@ -1093,6 +1170,10 @@
           "Inspect the boards"
         ],
         [
+          "baseline",
+          "Train the whole-image baseline"
+        ],
+        [
           "features",
           "Compute image features"
         ],
@@ -1118,6 +1199,18 @@
         ]
       ],
       "checkpoint_prefixes": [
+        [
+          "compare/whole",
+          "baseline"
+        ],
+        [
+          "baseline",
+          "baseline"
+        ],
+        [
+          "compare/nearest-patch",
+          "compare"
+        ],
         [
           "setup",
           "setup"
@@ -1224,6 +1317,22 @@
             "forge_investigation": "Find your attribute, returned NumPy version, and actual operation timestamps in Agent Lens."
           },
           {
+            "id": "threshold",
+            "step": "baseline",
+            "cell_id": "visual_inspection/action/train_whole",
+            "function": "choose_threshold",
+            "function_source": "src/forge_workshop_kit/inspection_teaching.py",
+            "check_control": "check_inspection_threshold",
+            "run_control": "train_whole",
+            "prerequisites": [
+              "data"
+            ],
+            "expected_output": "The whole-image classifier, validation predictions, and a threshold selected from validation data.",
+            "forge_investigation": "Find misses, false alarms, and review volume separately.",
+            "activity": "implement",
+            "task": "Complete choose_threshold using validation targets and scores. Select the highest threshold satisfying the requested recall."
+          },
+          {
             "id": "features",
             "step": "features",
             "cell_id": "visual_inspection/action/train_inspection",
@@ -1232,29 +1341,12 @@
             "check_control": "check_inspection_features",
             "run_control": "train_inspection",
             "prerequisites": [
-              "data"
+              "threshold"
             ],
-            "expected_output": "Global and patch feature vectors use the same board IDs.",
+            "expected_output": "Patch-feature predictions aligned to the saved whole-image baseline; comparison complete only when both exist.",
             "forge_investigation": "Compare the models and their saved feature implementations.",
             "activity": "implement",
-            "task": "Complete build_features(data, rows, method, reference=None). Retain whole-image features or add nearest-normal-patch distances using the training reference bank."
-          },
-          {
-            "id": "threshold",
-            "step": "compare",
-            "cell_id": "visual_inspection/action/train_inspection",
-            "function": "choose_threshold",
-            "function_source": "src/forge_workshop_kit/inspection_teaching.py",
-            "check_control": "check_inspection_threshold",
-            "run_control": "train_inspection",
-            "prerequisites": [
-              "data",
-              "features"
-            ],
-            "expected_output": "A threshold selected using validation data.",
-            "forge_investigation": "Find misses, false alarms, and review volume separately.",
-            "activity": "implement",
-            "task": "Complete choose_threshold using validation targets and scores. Select the highest threshold satisfying the requested recall."
+            "task": "Inspect a whole-image validation miss, calculate one patch distance, then add nearest-normal-patch distances in build_features(data, rows, method, reference=None). Keep whole-image behavior unchanged."
           },
           {
             "id": "review",
@@ -1454,6 +1546,20 @@
         "runbook": "docs/transit-facilitator.md",
         "exercises": [
           {
+            "id": "opening-timetable",
+            "step": "setup",
+            "cell_id": "transit_factory/action/try_departure",
+            "function": null,
+            "activity": "inspect",
+            "task": "Choose a service date and stop in the bundled historical timetable. Predict which departure should appear after midnight, then check the returned civil date.",
+            "check_control": null,
+            "run_control": "try_departure",
+            "run_label": "Show departures from the saved timetable",
+            "prerequisites": [],
+            "expected_output": "Historical departures are shown locally without a session, agent call, or publication.",
+            "forge_investigation": "After building the app, compare the same service-time conversion with its acceptance result."
+          },
+          {
             "id": "tracing",
             "step": "setup",
             "cell_id": "transit_factory/action/setup_trace",
@@ -1515,6 +1621,23 @@
             "forge_investigation": "Follow one chosen operation through its arguments, tool result, and following model request.",
             "function_source": "src/forge_workshop_kit/factory_teaching.py",
             "check_label": "Check my build_worker_request code"
+          },
+          {
+            "id": "solo-integration",
+            "step": "worker",
+            "cell_id": "transit_factory/action/integrate_solo",
+            "function": null,
+            "activity": "inspect",
+            "task": "Read the single builder\u2019s actual patches, test their integration, then try the saved board before adding a second worker.",
+            "check_control": null,
+            "run_control": "integrate_solo",
+            "run_label": "Review and test the one-builder app",
+            "prerequisites": [
+              "worker",
+              "dispatch"
+            ],
+            "expected_output": "The solo integration and app preview are available. The later memory comparison starting release is not selected yet.",
+            "forge_investigation": "Follow one integrated patch to its builder trace and combined acceptance checks."
           },
           {
             "id": "claims",
@@ -1637,6 +1760,10 @@
           "Investigate in Agent Lens"
         ],
         [
+          "review",
+          "Review booking outcomes"
+        ],
+        [
           "align",
           "Review a monitoring rule"
         ],
@@ -1687,6 +1814,10 @@
           "align"
         ],
         [
+          "review",
+          "review"
+        ],
+        [
           "monitor",
           "monitor"
         ],
@@ -1728,6 +1859,19 @@
         "runbook": "docs/airline_monitoring-runbook.md",
         "exercises": [
           {
+            "id": "opening-booking",
+            "step": "setup",
+            "cell_id": "airline_monitoring/action/try_booking",
+            "function": null,
+            "activity": "inspect",
+            "task": "Read the request and predict what happens when the update API receives only changed flights instead of the complete itinerary. Try the local simulator.",
+            "check_control": null,
+            "run_control": "try_booking",
+            "prerequisites": [],
+            "expected_output": "The original and resulting simulated booking show which untouched flights were preserved or lost. No model call or account is required.",
+            "forge_investigation": "Later, locate the actual itinerary arguments in your own discovery conversation."
+          },
+          {
             "id": "instrument",
             "step": "setup",
             "cell_id": "airline_monitoring/action/first_trace",
@@ -1755,16 +1899,34 @@
           {
             "id": "discover",
             "step": "discovery",
-            "cell_id": "airline_monitoring/action/run_discovery",
+            "cell_id": "airline_monitoring/action/run_first_discovery",
             "function": "my_model_span",
             "check_control": "check_instrumentation",
-            "run_control": "run_discovery",
+            "run_control": "run_first_discovery",
             "prerequisites": [
               "setup",
               "booking"
             ],
-            "expected_output": "Eight saved discovery executions with starting and resulting itineraries.",
+            "expected_output": "One saved discovery conversation with the original booking, tool arguments, returned booking, and final response.",
             "forge_investigation": "Follow one booking update from the passenger request through the tool arguments to its returned booking.",
+            "function_source": "src/forge_workshop_kit/airline_teaching.py",
+            "run_label": "Run the first discovery request"
+          },
+          {
+            "id": "remaining-discovery",
+            "step": "discovery",
+            "cell_id": "airline_monitoring/action/run_discovery",
+            "function": "my_model_span",
+            "activity": "inspect",
+            "task": "Inspect the first request, then continue the original batch. Completed matching cases are reused.",
+            "check_control": "check_instrumentation",
+            "run_control": "run_discovery",
+            "run_label": "Run the remaining seven discovery requests",
+            "prerequisites": [
+              "discover"
+            ],
+            "expected_output": "Eight unique discovery conversations are saved before the discovery checkpoint completes.",
+            "forge_investigation": "Compare a successful booking, recovery, refusal, or unresolved result without treating a missing result as success.",
             "function_source": "src/forge_workshop_kit/airline_teaching.py"
           },
           {
@@ -1782,16 +1944,31 @@
           },
           {
             "id": "calibration",
-            "step": "investigate",
+            "step": "align",
             "cell_id": "airline_monitoring/action/run_calibration",
             "function": null,
             "check_control": null,
             "run_control": "run_calibration",
             "prerequisites": [
-              "setup"
+              "review"
             ],
             "expected_output": "Six actual local tool-only simulator incidents, labeled controlled calibration; zero agent model calls.",
             "forge_investigation": "Compare the omitted-return incident with a valid one-way booking and a request awaiting confirmation. These are not spontaneous live agent failures."
+          },
+          {
+            "id": "review",
+            "step": "review",
+            "cell_id": "airline_monitoring/action/save_review",
+            "function": null,
+            "activity": "inspect",
+            "task": "Review the passenger request, original itinerary, recorded operations, and resulting booking. Save a label and the evidence supporting it before drafting tag criteria.",
+            "check_control": null,
+            "run_control": "save_review",
+            "prerequisites": [
+              "investigate"
+            ],
+            "expected_output": "A reviewed turn is saved with its stage and trace identities; monitoring is not marked complete.",
+            "forge_investigation": "Use the same reviewed turn in native Alignment and inspect disagreements with the automated judge."
           },
           {
             "id": "align",
@@ -1801,7 +1978,7 @@
             "check_control": null,
             "run_control": "read_native_tag",
             "prerequisites": [
-              "investigate"
+              "review"
             ],
             "expected_output": "Native criteria, scope, and alignment readback; unavailable features remain explicit.",
             "forge_investigation": "Label turns, test criteria in Alignment, then save chosen criteria before enabling the tag."

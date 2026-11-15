@@ -12,11 +12,11 @@ The schedule includes two short breaks and a thirty-minute meal break. Leave the
 
 | Minutes | Lead the room through | Completion check |
 | --- | --- | --- |
-| 0–25 | Introduce the weekly forecast review, both satellite instruments, and the two prediction tasks. Copy the notebook, connect, edit `instrument_tool`, and send the first trace. | Each participant finds the field they added in their own Agent Lens span. |
+| 0–25 | Introduce the weekly forecast review, both satellite instruments, and the two prediction tasks. Copy the notebook and inspect its bundled GOES training-date example before signing in. Then connect, edit `instrument_tool`, and send the first trace. | Each participant finds the field they added in their own Agent Lens span. |
 | 25–65 | Follow the actual 01:00 UTC GOES window through its history, target, date split, input normalization, persistence forecast, and error. Implement `persistence_forecast`. | Explain why the standardized input is not the persistence prediction. Reject a window crossing a split or gap. |
 | 65–95 | Explain a training loss, gradient, optimizer step, and separate validation score. Complete `training_loss` and `my_flux_mae`. Inspect `run_training` and how it saves source and outputs. | Show the difference between predicting, updating weights, and recording results. Find the source and prediction attached to one execution. |
 | 95–110 | Fifteen-minute break. Save drafts and completed work. | Reopening a completed result does not train again. |
-| 110–155 | Read batch axes and indexing. Calculate one linear unit, then follow the MLP and CNN shapes. Run six configurations. Inspect the historical GOES failure and the worked repair. | Compare the saved configuration, forecast, loss curve, and persistence. Explain which settings differ and which model weights were trained. |
+| 110–155 | Read batch axes and indexing. Calculate one linear unit, then follow the MLP and CNN shapes. Run one tracked Sweep trial and inspect its source, settings, loss curve and forecast. Schedule the remaining five in the same Sweep. Diagnose the historical GOES failure before selecting the optional worked-answer checkbox. | Compare the saved configuration, forecast, loss curve, and persistence. Explain which settings differ and which model weights were trained. |
 | 155–200 | Introduce image units and tensor shapes. Implement residual prediction and masked MAE. Use the public pixel fixture, then train the convolutional and residual models. | Match input, prediction, target, and error at one timestamp. Explain the per-image reduction before averaging images. |
 | 200–230 | Thirty-minute meal break. Keep the selected image comparison saved. | Participants return to their own unchanged draft and results. |
 | 230–260 | Build the research-agent context. Explain which program receives training targets, validation evidence, and final-test records. Complete `select_validation_evidence`; inspect the actual evidence-read span. | A participant can identify the fields sent in the request and the notebook operation that read their saved provenance. |
@@ -63,3 +63,5 @@ Use the [qualification outcomes](solar-qualification.md) and [evidence review](s
 - **Time runs short:** stop launching work. Walk through a recorded diff, execution, and comparison, then let participants explain how they would test their draft. Keep its unexecuted status explicit.
 
 End with each participant's next experiment and the result that would make them keep the change.
+
+The split Sweep freezes the same source, metric, dataset and six configurations after the first run. Count assigned Sweep jobs separately from saved training results. Opening a result or the worked repair does not schedule work. A native run with an unresolved status is shown for investigation rather than silently resubmitted.

@@ -1,5 +1,5 @@
 {
-  "source_sha256": "b0daa9aacdd570a54e59342bb12f8dfdc9fb07eb3abcefa7e4ed24fd0d963ce7",
+  "source_sha256": "4e70fd6a131b0e1c87e9764fa67dc754b16d903385e3a78386541402a31aca12",
   "slides_checked": 123,
   "expected_slides": 123,
   "titles": [
@@ -175,53 +175,53 @@
     },
     {
       "number": 35,
-      "key": "tracking-turn",
-      "title": "Write the loss and metric"
-    },
-    {
-      "number": 36,
       "key": "break-one",
       "title": "Take a fifteen-minute break"
     },
     {
-      "number": 37,
+      "number": 36,
       "key": "search-levels",
       "title": "Changing settings, choosing models, and editing code"
     },
     {
-      "number": 38,
+      "number": 37,
       "key": "batch-shapes",
       "title": "Read the batch, channel and time axes"
     },
     {
-      "number": 39,
+      "number": 38,
       "key": "batch-indexing",
       "title": "Keep each prediction paired with its own target"
     },
     {
-      "number": 40,
+      "number": 39,
       "key": "goes-mlp",
       "title": "How the MLP uses an hour of measurements"
     },
     {
-      "number": 41,
+      "number": 40,
       "key": "one-neuron",
       "title": "Calculate one hidden unit before adding the whole layer"
     },
     {
-      "number": 42,
+      "number": 41,
       "key": "goes-cnn",
       "title": "How the temporal CNN uses the same measurements"
     },
     {
-      "number": 43,
+      "number": 42,
       "key": "convolution-weights",
       "title": "Reuse one filter at each time position"
     },
     {
-      "number": 44,
+      "number": 43,
       "key": "parameter-code",
       "title": "Choose settings separately from the weights being learned"
+    },
+    {
+      "number": 44,
+      "key": "tracking-turn",
+      "title": "Write the loss and metric"
     },
     {
       "number": 45,
@@ -246,322 +246,322 @@
     {
       "number": 49,
       "key": "search-turn",
-      "title": "Run six configurations and inspect one forecast"
+      "title": "Inspect one trial before running the rest"
     },
     {
       "number": 50,
-      "key": "goes-repair-code",
-      "title": "Let the model learn a correction to persistence"
+      "key": "goes-repair-turn",
+      "title": "Diagnose the forecast before opening the repair"
     },
     {
       "number": 51,
-      "key": "goes-repair-turn",
-      "title": "Test the worked measurement repair"
-    },
-    {
-      "number": 52,
       "key": "images-window",
       "title": "Predict the solar image one hour ahead"
     },
     {
-      "number": 53,
+      "number": 52,
       "key": "persistence-image",
       "title": "See exactly which images become input and target"
     },
     {
-      "number": 54,
+      "number": 53,
       "key": "image-units",
       "title": "Put image inputs and targets in the same units"
     },
     {
-      "number": 55,
+      "number": 54,
       "key": "image-batch",
       "title": "Keep the two image times in separate channels"
     },
     {
-      "number": 56,
+      "number": 55,
       "key": "conv",
       "title": "Predicting the future image with a small CNN"
     },
     {
-      "number": 57,
+      "number": 56,
       "key": "residual",
       "title": "Predict a correction to the current image"
     },
     {
-      "number": 58,
+      "number": 57,
       "key": "residual-code",
       "title": "Implement the residual predictor’s forward pass"
     },
     {
-      "number": 59,
+      "number": 58,
       "key": "residual-observed",
       "title": "Inspect the correction produced by the saved model"
     },
     {
-      "number": 60,
+      "number": 59,
       "key": "image-score",
       "title": "Measure prediction error inside the solar disk"
     },
     {
-      "number": 61,
+      "number": 60,
       "key": "image-score-code",
       "title": "Check the image scorer on three known errors"
     },
     {
-      "number": 62,
+      "number": 61,
       "key": "equal-image-average",
       "title": "Give each forecast image one score"
     },
     {
-      "number": 63,
+      "number": 62,
       "key": "loss",
       "title": "Training loss and evaluation error have different jobs"
     },
     {
-      "number": 64,
+      "number": 63,
       "key": "image-code-screen",
       "title": "Compare forecasts for the same validation case"
     },
     {
-      "number": 65,
+      "number": 64,
       "key": "image-turn",
       "title": "Implement and compare the image predictors"
     },
     {
-      "number": 66,
+      "number": 65,
       "key": "meal-break",
       "title": "Pause for thirty minutes before the research-agent exercise"
     },
     {
-      "number": 67,
+      "number": 66,
       "key": "agent-need",
       "title": "Use the experiment to test agent-written changes"
     },
     {
-      "number": 68,
+      "number": 67,
       "key": "weights",
       "title": "Which model is being trained?"
     },
     {
-      "number": 69,
+      "number": 68,
       "key": "boundaries",
       "title": "Limit edits to the model and training code"
     },
     {
-      "number": 70,
+      "number": 69,
       "key": "agent-context",
       "title": "Give each program only the data it needs"
     },
     {
-      "number": 71,
+      "number": 70,
       "key": "research-tool-result",
       "title": "Gather validation evidence before requesting a proposal"
     },
     {
-      "number": 72,
+      "number": 71,
       "key": "evidence",
       "title": "Give the agent the inputs needed to explain a run"
     },
     {
-      "number": 73,
+      "number": 72,
       "key": "agent-span",
       "title": "Follow the agent’s work in Agent Lens"
     },
     {
-      "number": 74,
+      "number": 73,
       "key": "native-lens",
       "title": "Read the evidence that went into the proposal"
     },
     {
-      "number": 75,
+      "number": 74,
       "key": "evidence-turn",
       "title": "Choose the evidence for the research agent"
     },
     {
-      "number": 76,
+      "number": 75,
       "key": "propose",
       "title": "Ask for two changes to the same starting code"
     },
     {
-      "number": 77,
+      "number": 76,
       "key": "native-diff",
       "title": "The first proposal changes one loss operation"
     },
     {
-      "number": 78,
+      "number": 77,
       "key": "loss-change-effect",
       "title": "The loss edit changes which errors receive larger gradients"
     },
     {
-      "number": 79,
+      "number": 78,
       "key": "probe",
       "title": "Train and score each candidate"
     },
     {
-      "number": 80,
+      "number": 79,
       "key": "compose",
       "title": "Choose or combine changes using the probe results"
     },
     {
-      "number": 81,
+      "number": 80,
       "key": "test-composed",
       "title": "Train the composed version before adopting it"
     },
     {
-      "number": 82,
+      "number": 81,
       "key": "composition-versus-adoption",
       "title": "Test the recommendation before carrying it forward"
     },
     {
-      "number": 83,
+      "number": 82,
       "key": "adoption-rule",
       "title": "Adopt the tested code only if validation error is lower"
     },
     {
-      "number": 84,
+      "number": 83,
       "key": "native-training",
       "title": "Open the training call behind the chosen version"
     },
     {
-      "number": 85,
+      "number": 84,
       "key": "recorded-code",
       "title": "Round 2: start the correction at zero"
     },
     {
-      "number": 86,
+      "number": 85,
       "key": "zero-head",
       "title": "Zero initialization applies only to the output layer"
     },
     {
-      "number": 87,
+      "number": 86,
       "key": "zero-head-gradients",
       "title": "Zeroing the last layer still allows learning"
     },
     {
-      "number": 88,
+      "number": 87,
       "key": "repeat",
       "title": "Use the selected code and results in round two"
     },
     {
-      "number": 89,
+      "number": 88,
       "key": "round1-turn",
       "title": "Propose and test two changes"
     },
     {
-      "number": 90,
+      "number": 89,
       "key": "round2-turn",
       "title": "Test the selected code, then begin round two"
     },
     {
-      "number": 91,
+      "number": 90,
       "key": "branch-inspect",
       "title": "Follow one proposal through the branch diagram"
     },
     {
-      "number": 92,
+      "number": 91,
       "key": "break-two",
       "title": "Take ten minutes before opening the final dates"
     },
     {
-      "number": 93,
+      "number": 92,
       "key": "freeze",
       "title": "Keep the selected code and weights fixed for final evaluation"
     },
     {
-      "number": 94,
+      "number": 93,
       "key": "frozen-code",
       "title": "Load the saved weights to make final predictions"
     },
     {
-      "number": 95,
+      "number": 94,
       "key": "aligned",
       "title": "Match each prediction to the same observation times"
     },
     {
-      "number": 96,
+      "number": 95,
       "key": "final-turn",
       "title": "Test the selected models on reserved dates"
     },
     {
-      "number": 97,
+      "number": 96,
       "key": "recorded-final",
       "title": "In this rehearsal, image error fell 10.15%"
     },
     {
-      "number": 98,
+      "number": 97,
       "key": "recorded-image",
       "title": "Compare the two models on one reserved-date image"
     },
     {
-      "number": 99,
+      "number": 98,
       "key": "qualified-images",
       "title": "The image edits helped two seeds and slightly hurt one"
     },
     {
-      "number": 100,
+      "number": 99,
       "key": "repeatability",
       "title": "The same image edit helped two seeds and hurt one"
     },
     {
-      "number": 101,
+      "number": 100,
       "key": "recorded-goes",
       "title": "The GOES model performed worse than persistence"
     },
     {
-      "number": 102,
+      "number": 101,
       "key": "qualified-goes",
       "title": "The measurement repair passed its three-seed check"
     },
     {
-      "number": 103,
+      "number": 102,
       "key": "result-meaning",
       "title": "Compare forecasts for the same timestamp"
     },
     {
-      "number": 104,
+      "number": 103,
       "key": "native-forecast",
       "title": "Compare errors for one observed future image"
     },
     {
-      "number": 105,
+      "number": 104,
       "key": "reproduce",
       "title": "Check that the saved source contains both selected edits"
     },
     {
-      "number": 106,
+      "number": 105,
       "key": "conclusion-turn",
       "title": "Write down what changed and whether it helped"
     },
     {
-      "number": 107,
+      "number": 106,
       "key": "close",
       "title": "Bring the results to the lab review"
     },
     {
-      "number": 108,
+      "number": 107,
       "key": "reference",
       "title": "Reference and worked answers"
     },
     {
-      "number": 109,
+      "number": 108,
       "key": "answer-trace",
       "title": "Put the attribute inside the tool scope"
     },
     {
-      "number": 110,
+      "number": 109,
       "key": "answer-persistence",
       "title": "Return a copy of the latest observation"
     },
     {
-      "number": 111,
+      "number": 110,
       "key": "answer-flux",
       "title": "Implement the training loss and forecast metric"
     },
     {
-      "number": 112,
+      "number": 111,
       "key": "answer-search",
       "title": "Compare the settings and loss curves"
+    },
+    {
+      "number": 112,
+      "key": "goes-repair-code",
+      "title": "Let the model learn a correction to persistence"
     },
     {
       "number": 113,
@@ -901,6 +901,14 @@
       "click": 0
     },
     {
+      "slide": 37,
+      "click": 1
+    },
+    {
+      "slide": 37,
+      "click": 2
+    },
+    {
       "slide": 38,
       "click": 0
     },
@@ -925,6 +933,10 @@
       "click": 2
     },
     {
+      "slide": 39,
+      "click": 3
+    },
+    {
       "slide": 40,
       "click": 0
     },
@@ -935,10 +947,6 @@
     {
       "slide": 40,
       "click": 2
-    },
-    {
-      "slide": 40,
-      "click": 3
     },
     {
       "slide": 41,
@@ -953,22 +961,22 @@
       "click": 2
     },
     {
-      "slide": 42,
-      "click": 0
-    },
-    {
-      "slide": 42,
-      "click": 1
-    },
-    {
-      "slide": 42,
-      "click": 2
-    },
-    {
-      "slide": 42,
+      "slide": 41,
       "click": 3
     },
     {
+      "slide": 42,
+      "click": 0
+    },
+    {
+      "slide": 42,
+      "click": 1
+    },
+    {
+      "slide": 42,
+      "click": 2
+    },
+    {
       "slide": 43,
       "click": 0
     },
@@ -981,20 +989,12 @@
       "click": 2
     },
     {
-      "slide": 44,
-      "click": 0
-    },
-    {
-      "slide": 44,
-      "click": 1
-    },
-    {
-      "slide": 44,
-      "click": 2
-    },
-    {
-      "slide": 44,
+      "slide": 43,
       "click": 3
+    },
+    {
+      "slide": 44,
+      "click": 0
     },
     {
       "slide": 45,
@@ -1029,18 +1029,6 @@
       "click": 0
     },
     {
-      "slide": 50,
-      "click": 1
-    },
-    {
-      "slide": 50,
-      "click": 2
-    },
-    {
-      "slide": 50,
-      "click": 3
-    },
-    {
       "slide": 51,
       "click": 0
     },
@@ -1053,32 +1041,32 @@
       "click": 0
     },
     {
-      "slide": 54,
-      "click": 0
-    },
-    {
-      "slide": 54,
+      "slide": 53,
       "click": 1
     },
     {
-      "slide": 54,
+      "slide": 53,
       "click": 2
     },
     {
-      "slide": 54,
+      "slide": 53,
       "click": 3
     },
     {
-      "slide": 55,
+      "slide": 54,
       "click": 0
     },
     {
-      "slide": 55,
+      "slide": 54,
       "click": 1
     },
     {
-      "slide": 55,
+      "slide": 54,
       "click": 2
+    },
+    {
+      "slide": 55,
+      "click": 0
     },
     {
       "slide": 56,
@@ -1089,26 +1077,38 @@
       "click": 0
     },
     {
-      "slide": 58,
-      "click": 0
-    },
-    {
-      "slide": 58,
+      "slide": 57,
       "click": 1
     },
     {
-      "slide": 58,
+      "slide": 57,
       "click": 2
     },
     {
-      "slide": 58,
+      "slide": 57,
       "click": 3
+    },
+    {
+      "slide": 58,
+      "click": 0
     },
     {
       "slide": 59,
       "click": 0
     },
     {
+      "slide": 59,
+      "click": 1
+    },
+    {
+      "slide": 59,
+      "click": 2
+    },
+    {
+      "slide": 59,
+      "click": 3
+    },
+    {
       "slide": 60,
       "click": 0
     },
@@ -1137,10 +1137,6 @@
       "click": 2
     },
     {
-      "slide": 61,
-      "click": 3
-    },
-    {
       "slide": 62,
       "click": 0
     },
@@ -1155,14 +1151,6 @@
     {
       "slide": 63,
       "click": 0
-    },
-    {
-      "slide": 63,
-      "click": 1
-    },
-    {
-      "slide": 63,
-      "click": 2
     },
     {
       "slide": 64,
@@ -1189,6 +1177,14 @@
       "click": 0
     },
     {
+      "slide": 69,
+      "click": 1
+    },
+    {
+      "slide": 69,
+      "click": 2
+    },
+    {
       "slide": 70,
       "click": 0
     },
@@ -1201,20 +1197,12 @@
       "click": 2
     },
     {
-      "slide": 71,
-      "click": 0
-    },
-    {
-      "slide": 71,
-      "click": 1
-    },
-    {
-      "slide": 71,
-      "click": 2
-    },
-    {
-      "slide": 71,
+      "slide": 70,
       "click": 3
+    },
+    {
+      "slide": 71,
+      "click": 0
     },
     {
       "slide": 72,
@@ -1225,16 +1213,16 @@
       "click": 0
     },
     {
-      "slide": 74,
-      "click": 0
-    },
-    {
-      "slide": 74,
+      "slide": 73,
       "click": 1
     },
     {
-      "slide": 74,
+      "slide": 73,
       "click": 2
+    },
+    {
+      "slide": 74,
+      "click": 0
     },
     {
       "slide": 75,
@@ -1249,16 +1237,16 @@
       "click": 0
     },
     {
-      "slide": 78,
-      "click": 0
-    },
-    {
-      "slide": 78,
+      "slide": 77,
       "click": 1
     },
     {
-      "slide": 78,
+      "slide": 77,
       "click": 2
+    },
+    {
+      "slide": 78,
+      "click": 0
     },
     {
       "slide": 79,
@@ -1273,32 +1261,32 @@
       "click": 0
     },
     {
-      "slide": 82,
-      "click": 0
-    },
-    {
-      "slide": 82,
+      "slide": 81,
       "click": 1
     },
     {
-      "slide": 82,
+      "slide": 81,
       "click": 2
+    },
+    {
+      "slide": 82,
+      "click": 0
     },
     {
       "slide": 83,
       "click": 0
     },
     {
-      "slide": 84,
-      "click": 0
-    },
-    {
-      "slide": 84,
+      "slide": 83,
       "click": 1
     },
     {
-      "slide": 84,
+      "slide": 83,
       "click": 2
+    },
+    {
+      "slide": 84,
+      "click": 0
     },
     {
       "slide": 85,
@@ -1309,16 +1297,16 @@
       "click": 0
     },
     {
-      "slide": 87,
-      "click": 0
-    },
-    {
-      "slide": 87,
+      "slide": 86,
       "click": 1
     },
     {
-      "slide": 87,
+      "slide": 86,
       "click": 2
+    },
+    {
+      "slide": 87,
+      "click": 0
     },
     {
       "slide": 88,
@@ -1341,20 +1329,20 @@
       "click": 0
     },
     {
-      "slide": 93,
-      "click": 0
-    },
-    {
-      "slide": 93,
+      "slide": 92,
       "click": 1
     },
     {
-      "slide": 93,
+      "slide": 92,
       "click": 2
     },
     {
-      "slide": 93,
+      "slide": 92,
       "click": 3
+    },
+    {
+      "slide": 93,
+      "click": 0
     },
     {
       "slide": 94,
@@ -1381,16 +1369,16 @@
       "click": 0
     },
     {
-      "slide": 100,
-      "click": 0
-    },
-    {
-      "slide": 100,
+      "slide": 99,
       "click": 1
     },
     {
-      "slide": 100,
+      "slide": 99,
       "click": 2
+    },
+    {
+      "slide": 100,
+      "click": 0
     },
     {
       "slide": 101,
@@ -1439,6 +1427,18 @@
     {
       "slide": 112,
       "click": 0
+    },
+    {
+      "slide": 112,
+      "click": 1
+    },
+    {
+      "slide": 112,
+      "click": 2
+    },
+    {
+      "slide": 112,
+      "click": 3
     },
     {
       "slide": 113,
@@ -1491,41 +1491,46 @@
   "answers": [
     {
       "slide": 11,
-      "destination": "/forge-workshop-kit/solar/109",
+      "destination": "/forge-workshop-kit/solar/108",
       "keyboardReturn": true
     },
     {
       "slide": 24,
+      "destination": "/forge-workshop-kit/solar/109",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 44,
       "destination": "/forge-workshop-kit/solar/110",
       "keyboardReturn": true
     },
     {
-      "slide": 35,
+      "slide": 49,
       "destination": "/forge-workshop-kit/solar/111",
       "keyboardReturn": true
     },
     {
-      "slide": 49,
+      "slide": 50,
       "destination": "/forge-workshop-kit/solar/112",
       "keyboardReturn": true
     },
     {
-      "slide": 65,
+      "slide": 64,
       "destination": "/forge-workshop-kit/solar/113",
       "keyboardReturn": true
     },
     {
-      "slide": 75,
+      "slide": 74,
       "destination": "/forge-workshop-kit/solar/115",
       "keyboardReturn": true
     },
     {
-      "slide": 90,
+      "slide": 89,
       "destination": "/forge-workshop-kit/solar/116",
       "keyboardReturn": true
     },
     {
-      "slide": 96,
+      "slide": 95,
       "destination": "/forge-workshop-kit/solar/117",
       "keyboardReturn": true
     }

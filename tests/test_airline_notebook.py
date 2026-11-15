@@ -233,3 +233,21 @@ def test_booking_choice_and_explanation_survive_save_and_restart(tmp_path):
     assert other.scope["booking_picker"].value == case_id
     assert other.scope["booking_explanation"].value == explanation
     assert not restored.read()["requests"]
+
+
+def test_opening_booking_runs_before_authentication(tmp_path, monkeypatch):
+    monkeypatch.setattr('forge_workshop_kit.provider.Provider.complete', Mock(side_effect=AssertionError('Opening is free')))
+    monkeypatch.setattr(WorkshopSession, 'from_environment', Mock(side_effect=AssertionError('Opening needs no account')))
+    runner = AuthoredAdapter(ROOT, SLUG, project='attendee/airline', state=tmp_path, output=lambda _: None)
+    assert runner.refresh() == {}
+    runner.run(SLUG + '/action/try_booking')
+    first = runner.scope['get_output']()['opening-booking']
+    assert first['api_saved'] and not first['passenger_approved']
+    runner.scope['opening_itinerary']._update('Send the changed flights and preserve the rest')
+    runner.run(SLUG + '/action/try_booking')
+    complete = runner.scope['get_output']()['opening-booking']
+    assert complete['passenger_approved']
+    assert len(complete['after']) > len(first['after'])
+    runner.navigate('review')
+    assert runner.refresh_errors == {}
+    assert not (tmp_path / 'journal.json').exists()

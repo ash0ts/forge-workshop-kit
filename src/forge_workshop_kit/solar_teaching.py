@@ -312,7 +312,14 @@ def completed_steps(session):
         complete.add("data")
     if "goes/persistence" in names:
         complete.add("baseline")
-    if all(f"goes/search-{number}" in names for number in range(6)):
+    plan = saved(session, "goes/sweep-plan")
+    if plan:
+        sweep = saved(session, "goes/create-sweep")
+        trials = session.read().get("solar_sweep_trials", {}).get(sweep["result"]["sweep_id"], {}) if sweep else {}
+        if len(sweep_training_rows(session, plan["result"])) == 6 and {row["trial"] for row in trials.values() if row["state"] == "finished"} == set(range(6)):
+            complete.add("search")
+    elif all(f"goes/search-{number}" in names for number in range(6)):
+        # Earlier releases completed the Sweep in one batch without this ledger.
         complete.add("search")
     if {"images/manual-conv", "images/manual-residual"} <= names:
         complete.add("images")
@@ -358,3 +365,77 @@ def draft_status(session, name, current, *, stage_prefix=None):
             matches = last["sources"].get("candidate.py") == current
             saved_text += " · " + ("matches the last executed source" if matches else "differs from the last executed source")
     return saved_text
+
+
+def measurement_configurations():
+    """The existing six-trial design, in its original trial-index order."""
+    return [{"architecture": architecture, "width": width, "learning_rate": rate,
+             "steps": 60, "seed": 17, "batch_size": 32}
+            for architecture in ("mlp", "cnn")
+            for width, rate in ((16, .001), (32, .001), (16, .003))]
+
+
+def freeze_search_plan(session, source, metric, dataset):
+    """Freeze the split Sweep once; later clicks must use those exact inputs."""
+    plan = {"source": source, "metric": metric, "dataset": dataset,
+            "configurations": measurement_configurations()}
+    previous = saved(session, "goes/sweep-plan")
+    if previous:
+        if previous["result"] != plan:
+            raise ValueError("This Sweep already has frozen code, metric and data. Restore the frozen drafts before running its remaining trials.")
+        return deepcopy(previous["result"])
+    with session.stage("goes/sweep-plan", inputs=plan) as stage:
+        if stage.needs_run:
+            stage.record(plan)
+    return deepcopy(stage.result)
+
+
+def sweep_assignments(native_runs, local_trials=()):
+    """Count scheduler assignments, not cached training executions.
+
+    Native states win when present. A saved local assignment also prevents a
+    second allocation while the server's list catches up after a disconnect.
+    """
+    assignments = {}
+    for row in [*local_trials, *native_runs]:
+        trial = row.get("trial")
+        if type(trial) is not int or trial not in range(6):
+            raise ValueError("The Sweep returned a trial outside the frozen six configurations.")
+        if trial in assignments and assignments[trial]["id"] != row["id"]:
+            raise ValueError("A trial has multiple Sweep run IDs. Inspect its runs before continuing.")
+        assignments[trial] = dict(row)
+    return {"assigned": sorted(assignments),
+            "finished": sorted(i for i, row in assignments.items() if row["state"] == "finished"),
+            "unresolved": [row for row in assignments.values() if row["state"] != "finished"],
+            "unassigned": [i for i in range(6) if i not in assignments]}
+
+
+def record_sweep_assignment(session, sweep_id, trial, run_id, state):
+    """Save scheduler receipts separately from reusable model-training results."""
+    with session.transaction() as journal:
+        trials = journal.setdefault("solar_sweep_trials", {}).setdefault(sweep_id, {})
+        key = str(trial)
+        if key in trials and trials[key]["id"] != run_id:
+            raise ValueError("This trial already belongs to a different Sweep run.")
+        trials[key] = {"trial": trial, "id": run_id, "state": state}
+
+
+def sweep_training_rows(session, plan):
+    """Only the six executions matching every frozen input belong in this view."""
+    rows = []
+    for i, config in enumerate(plan["configurations"]):
+        matches = [row for row in session.completed()
+                   if row["name"] == f"goes/search-{i}"
+                   and row["sources"] == {"candidate.py": plan["source"], "development_metric.py": plan["metric"]}
+                   and row["config"] == config
+                   and row["inputs"] == {"dataset": plan["dataset"], "split": "validation"}]
+        if matches:
+            rows.append(max(matches, key=lambda row: row.get("ended_at", 0)))
+    return rows
+
+
+def development_preview():
+    """One bundled real training-date observation; no session or download."""
+    import json
+    from importlib.resources import files
+    return json.loads(files("forge_workshop_kit").joinpath("assets/solar-preview.json").read_text())

@@ -1,7 +1,7 @@
 {
   "scope": "airline_monitoring only; no runtime or experiment change",
-  "slide_count_before": 73,
-  "slide_count_after": 73,
+  "slide_count_before": 75,
+  "slide_count_after": 75,
   "before_custom_svg_mechanism_slides": 0,
   "after_custom_svg_mechanism_slides": 16,
   "distinct_mechanisms": 14,

@@ -16,9 +16,9 @@ The release contains prepared arrays and a representative FITS file, not thousan
 
 ## Search and agent edits
 
-Configuration search compares six bounded runs: MLP and temporal CNN, each with three width/learning-rate configurations. Image experiments compare a convolutional model and a residual predictor. CPU settings and source are pinned in each run.
+Configuration search compares six bounded runs: MLP and temporal CNN, each with three width/learning-rate configurations. Image experiments compare a convolutional model and a residual predictor. CPU settings and source are pinned in each run. Schedule one trial, inspect it, then schedule the other five in the same native Sweep. The split freezes source, metric, data identity and all six configurations. Scheduler assignments and cached training outputs are tracked separately.
 
-The measurement exercise then offers an explicit worked repair: a zero-initialized residual MLP trained with consistent flux scaling, absolute loss, and 1,200 updates. It saves a separate run and is eligible for final selection by validation error. Editing or opening its code never runs training. The [three-seed qualification](solar-qualification.md) records its before/after results and the limits of the known-date retest.
+After a diagnostic prompt and an explicit worked-answer selection, the measurement exercise offers a repair: a zero-initialized residual MLP trained with consistent flux scaling, absolute loss, and 1,200 updates. It saves a separate run and is eligible for final selection by validation error. Editing or opening its code never runs training. The [three-seed qualification](solar-qualification.md) records its before/after results and the limits of the known-date retest.
 
 The research agent is `zai-org/GLM-5.3-Flash`, fixed throughout a workspace. It proposes two code candidates per round, receives validation evidence, and composes or retains a version. Every proposed source is reviewed; compositions are tested. There are two rounds. Data partitions, target definitions and the independent scorer remain fixed. No test scores enter the research prompt.
 

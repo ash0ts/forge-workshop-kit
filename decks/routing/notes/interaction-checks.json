@@ -1,7 +1,6 @@
 {
   "deck": "routing",
-  "verified_via": "Native browser keyboard input",
-  "slide": 22,
+  "verified_via": "Native browser keyboard input on prior revision",
   "initial": {
     "threshold": 0.5,
     "automatic_routes": 698,
@@ -18,5 +17,10 @@
   "keyboard_increment": 0.05,
   "display_only": true,
   "publication_or_inference_triggered": false,
-  "screenshot": "/private/tmp/classification-visual-upgrade/routing-slider.png"
+  "verified_slide_number_prior_revision": 22,
+  "slide_key": "threshold-policy",
+  "current_slide_number": 24,
+  "current_source_sha256": "114670b7a43c9f59f5ab4fdec4ca0e273a7260cd0b4c08b689f23a0b22546fdc",
+  "validation_status": "Prior-revision interaction evidence; not rerun against this source revision.",
+  "prior_capture_in_this_release": false
 }

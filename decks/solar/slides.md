@@ -203,7 +203,7 @@ name: setup-turn
 
 <div class="kicker">0:00–0:25 · YOUR TURN</div>
 
-<a class="answer-link" href="/109">Worked answer → 109</a>
+<a class="answer-link" href="/108">Worked answer → 108</a>
 
 # Connect and inspect your first tool call
 
@@ -459,7 +459,7 @@ name: persistence-turn
 
 <div class="kicker">0:25–1:05 · YOUR TURN</div>
 
-<a class="answer-link" href="/110">Worked answer → 110</a>
+<a class="answer-link" href="/109">Worked answer → 109</a>
 
 # Write and test persistence
 
@@ -483,7 +483,7 @@ name: number
 
 
 <!--
-A colleague at the review asks which setting changed. These are possible explanations, not claims about this rehearsal. If code, data, or training time differs, we need to know that before deciding why the score moved. Saving the active values answers the question without searching all four final notebooks. Session block: Explain loss and save a training run (minutes 65–95).
+A colleague at the review asks which setting changed. These are possible explanations, not claims about this rehearsal. If code, data, or training time differs, we need to know that before deciding why the score moved. Saving the active values answers the question without searching all four final notebooks. Session block: Explain training and saved experiment files (minutes 65–95).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -499,7 +499,7 @@ name: run-inspector
 
 
 <!--
-These are two recorded GOES runs. Before revealing the settings, ask what the scores let us conclude. Then click Show active settings. Both runs used the same source and training budget; their learning rates differed. Session block: Explain loss and save a training run (minutes 65–95).
+These are two recorded GOES runs. Before revealing the settings, ask what the scores let us conclude. Then click Show active settings. Both runs used the same source and training budget; their learning rates differed. Session block: Explain training and saved experiment files (minutes 65–95).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -515,7 +515,7 @@ name: run-inspector-reveal
 
 
 <!--
-The learning rate changed from .001 to .003. Data, source, seed, steps, and batch size stayed the same. Both errors were worse than persistence. We can explain the setting change at the review, but we still cannot claim to have beaten the baseline. Check the predictions before deciding what to try next. Session block: Explain loss and save a training run (minutes 65–95).
+The learning rate changed from .001 to .003. Data, source, seed, steps, and batch size stayed the same. Both errors were worse than persistence. We can explain the setting change at the review, but we still cannot claim to have beaten the baseline. Check the predictions before deciding what to try next. Session block: Explain training and saved experiment files (minutes 65–95).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -531,7 +531,7 @@ name: independent
 
 
 <!--
-Keep the target, dates, and primary metric unchanged while comparing models. If we changed the metric after seeing a result, the lower number could describe a different task. Our candidate code can change the predictor and training procedure while this comparison rule stays fixed. Session block: Explain loss and save a training run (minutes 65–95).
+Keep the target, dates, and primary metric unchanged while comparing models. If we changed the metric after seeing a result, the lower number could describe a different task. Our candidate code can change the predictor and training procedure while this comparison rule stays fixed. Session block: Explain training and saved experiment files (minutes 65–95).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -556,7 +556,7 @@ with session.stage(name, config=config,
 
 
 <!--
-Find the full editable run_training function in the notebook. The stage identifies a request to train specific source with specific settings and data. Its completed result is reused only for that matching request. training.train runs the program and returns predictions. stage.record stores its result and output files. Publication follows execution; an upload failure does not erase training or require training again. The ellipsis abbreviates arguments in this teaching excerpt; it is not a paste-ready function. Session block: Explain loss and save a training run (minutes 65–95).
+Find the full editable run_training function in the notebook. The stage identifies a request to train specific source with specific settings and data. Its completed result is reused only for that matching request. training.train runs the program and returns predictions. stage.record stores its result and output files. Publication follows execution; an upload failure does not erase training or require training again. The ellipsis abbreviates arguments in this teaching excerpt; it is not a paste-ready function. Session block: Explain training and saved experiment files (minutes 65–95).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -573,7 +573,7 @@ name: training-step
 
 
 <!--
-In fit, the GOES model predicts a batch and computes squared error against training targets. The shared loss function has an all-ones mask for GOES; the image exercise later uses the mask to select disk pixels. loss.backward computes gradients. Adam updates the forecasting model weights. The training targets participate in these updates. Validation inputs are predicted without gradients, and validation targets are scored by the parent process outside candidate code. Reveal one operation at a time. Ask what changed before advancing. Back restores the previous state. Session block: Explain loss and save a training run (minutes 65–95).
+In fit, the GOES model predicts a batch and computes squared error against training targets. The shared loss function has an all-ones mask for GOES; the image exercise later uses the mask to select disk pixels. loss.backward computes gradients. Adam updates the forecasting model weights. The training targets participate in these updates. Validation inputs are predicted without gradients, and validation targets are scored by the parent process outside candidate code. Reveal one operation at a time. Ask what changed before advancing. Back restores the previous state. Session block: Explain training and saved experiment files (minutes 65–95).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -590,7 +590,7 @@ name: gradient-arithmetic
 
 
 <!--
-Use a one-weight model to explain the derivative before showing PyTorch. With x equal two and target three, loss is (2w minus three) squared. At w equal one, its derivative is minus four. A simple gradient-descent step subtracts learning rate times gradient. The displayed update uses 0.1 and gives w equal 1.4. This is arithmetic, not a logged workshop result. Our real model uses Adam, which also maintains estimates of gradient moments. Do not describe this example as an exact Adam update. Session block: Explain loss and save a training run (minutes 65–95).
+Use a one-weight model to explain the derivative before showing PyTorch. With x equal two and target three, loss is (2w minus three) squared. At w equal one, its derivative is minus four. A simple gradient-descent step subtracts learning rate times gradient. The displayed update uses 0.1 and gives w equal 1.4. This is arithmetic, not a logged workshop result. Our real model uses Adam, which also maintains estimates of gradient moments. Do not describe this example as an exact Adam update. Session block: Explain training and saved experiment files (minutes 65–95).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -614,7 +614,7 @@ optimizer.step()
 
 
 <!--
-zero_grad clears accumulated gradients; PyTorch adds new gradients unless we clear them. The forward pass creates predictions and records the operations needed for differentiation. backward computes derivatives of the loss with respect to trainable parameters. step applies the optimizer update. The workshop loops over a fixed number of optimizer steps, not a promised number of full dataset epochs. Training sample order and initialization depend on the seed. Learners edit training_loss; they can inspect the surrounding fit function. Session block: Explain loss and save a training run (minutes 65–95).
+zero_grad clears accumulated gradients; PyTorch adds new gradients unless we clear them. The forward pass creates predictions and records the operations needed for differentiation. backward computes derivatives of the loss with respect to trainable parameters. step applies the optimizer update. The workshop loops over a fixed number of optimizer steps, not a promised number of full dataset epochs. Training sample order and initialization depend on the seed. Learners edit training_loss; they can inspect the surrounding fit function. Session block: Explain training and saved experiment files (minutes 65–95).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -639,7 +639,7 @@ with torch.no_grad(): prediction = model(validation_x)
 
 
 <!--
-eval disables training-specific behavior such as dropout if a candidate uses it. no_grad prevents autograd from retaining a differentiation graph. Our current small models do not need dropout to illustrate the distinction. The fixed parent scorer compares predictions to validation targets. Participants choose a configuration using validation; the optimizer itself never updates from these validation targets in this workshop. This is an explanatory excerpt of the scoring boundary, not the exact function signature. Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code. Session block: Explain loss and save a training run (minutes 65–95).
+eval disables training-specific behavior such as dropout if a candidate uses it. no_grad prevents autograd from retaining a differentiation graph. Our current small models do not need dropout to illustrate the distinction. The fixed parent scorer compares predictions to validation targets. Participants choose a configuration using validation; the optimizer itself never updates from these validation targets in this workshop. This is an explanatory excerpt of the scoring boundary, not the exact function signature. Keep the graphic visible while reading the two-line excerpt. Advance to reveal the next quantity; Back restores the earlier explanation. Diagrams are explanatory and do not execute code. Session block: Explain training and saved experiment files (minutes 65–95).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -655,26 +655,7 @@ name: artifacts
 
 
 <!--
-The local completion record tells the notebook which work finished. The checkpoint Artifact stores a copy in your project. If the runtime is replaced, restore the checkpoint before continuing. An upload failure can be retried using the local files. Session block: Explain loss and save a training run (minutes 65–95).
-Source notes and recorded evidence: notes/sources.md.
--->
-
----
-class: exercise
-name: tracking-turn
----
-
-<div class="kicker">1:05–1:35 · YOUR TURN</div>
-
-<a class="answer-link" href="/111">Worked answer → 111</a>
-
-# Write the loss and metric
-
-<div class="task">Open <strong>4 · Track and search</strong>.</div><ol class="exercise-controls"><li>Implement <code>training_loss</code> and <code>my_flux_mae</code>.</li><li>Click <strong>Check my measurement code</strong>. Test identical arrays and a constant one-unit error.</li><li>In <code>run_training</code>, find where it saves source, settings, weights, and predictions. The next exercise will produce those files.</li></ol><div class="done">Check your work: Your checks pass, and you can point to where run_training saves its files.</div>
-
-
-<!--
-Allow fifteen minutes. Have participants implement the loss and metric, run the small checks, then find the file-saving calls in run_training. The next exercise produces those files. If they struggle with the metric, use a prediction of one against a target of zero as the first example. Session block: Explain loss and save a training run (minutes 65–95).
+The local completion record tells the notebook which work finished. The checkpoint Artifact stores a copy in your project. If the runtime is replaced, restore the checkpoint before continuing. An upload failure can be retried using the local files. Session block: Explain training and saved experiment files (minutes 65–95).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -686,7 +667,7 @@ name: break-one
 
 # Take a fifteen-minute break
 
-<p>Your draft loss and metric should be saved. Check that completed results remain visible after navigating away and back.</p><p>After the break, we’ll follow a batch through the two forecasting models.</p>
+<p>Your persistence result should be saved. Check that it remains visible after navigating away and back.</p><p>After the break, we’ll follow a batch through the models, write the loss and metric, and train one tracked trial.</p>
 
 
 <!--
@@ -845,6 +826,25 @@ Source notes and recorded evidence: notes/sources.md.
 -->
 
 ---
+class: exercise
+name: tracking-turn
+---
+
+<div class="kicker">1:50–2:35 · YOUR TURN</div>
+
+<a class="answer-link" href="/110">Worked answer → 110</a>
+
+# Write the loss and metric
+
+<div class="task">Open <strong>4 · Track and search</strong>.</div><ol class="exercise-controls"><li>Implement <code>training_loss</code> and <code>my_flux_mae</code>.</li><li>Click <strong>Check my measurement code</strong>. Test identical arrays and a constant one-unit error.</li><li>In <code>run_training</code>, find where it saves source, settings, weights, and predictions. The next exercise will produce those files.</li></ol><div class="done">Check your work: Your checks pass, and you can point to where run_training saves its files.</div>
+
+
+<!--
+Allow fifteen minutes. Have participants implement the loss and metric, run the small checks, then find the file-saving calls in run_training. The next exercise produces those files. If they struggle with the metric, use a prediction of one against a target of zero as the first example. Session block: Inspect model shapes and compare configurations (minutes 110–155).
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
 class: worked-visual
 clicks: 2
 name: configs
@@ -880,14 +880,16 @@ def trial():
         result = run_training(config_for(run.config.trial))
         run.log(result["metrics"])
 
-wandb.agent(sweep_id, function=trial, count=6)
+wandb.agent(sweep_id, function=trial, count=1)
+# Inspect that run before scheduling the remaining five.
+wandb.agent(sweep_id, function=trial, count=5)
 ```
 
 <div class="bottom-note">The notebook contains the full implementation and reuses already-completed runs.</div><div class="code-contract compact-contract"><span><strong>Input:</strong> Six predefined configurations</span><span><strong>Output:</strong> Six tracked training runs with matching metrics</span></div>
 
 
 <!--
-The Sweep assigns a trial configuration, and wandb.init creates its tracked run. run_training fits the model, saves its files, and returns metrics; run.log adds those metrics to the run. wandb.agent repeats this for the six configurations. The notebook includes the full entity, project, and configuration setup shown in this shortened excerpt. Session block: Inspect model shapes and compare configurations (minutes 110–155).
+The Sweep assigns a trial configuration, and wandb.init creates its tracked run. run_training fits the model, saves its files, and returns metrics; run.log adds those metrics to the run. The first wandb.agent call schedules one trial. Inspect its saved files and forecast, then the second call schedules the other five. Counts come from assigned Sweep jobs; a cached training result still needs its matching tracked job. The notebook includes the full entity, project, and configuration setup shown in this shortened excerpt. Session block: Inspect model shapes and compare configurations (minutes 110–155).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -919,7 +921,7 @@ name: learning-curve
 
 
 <!--
-The selected GOES model’s loss was still falling after sixty steps. That suggests testing a longer training budget, but it does not tell us that more steps would beat persistence. Look at the predictions and validation score alongside the curve. The later qualification tested a complete repaired recipe. It does not isolate the effect of additional training alone. Session block: Inspect model shapes and compare configurations (minutes 110–155).
+The selected GOES model’s loss was still falling after sixty steps. That suggests testing a longer training budget, but it does not tell us that more steps would beat persistence. Look at the predictions and validation score alongside the curve. Before opening the worked repair, propose a check of output units or training progress. The later qualification tested a complete repaired recipe. It does not isolate the effect of additional training alone. Session block: Inspect model shapes and compare configurations (minutes 110–155).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -930,41 +932,15 @@ name: search-turn
 
 <div class="kicker">1:50–2:35 · YOUR TURN</div>
 
-<a class="answer-link" href="/112">Worked answer → 112</a>
+<a class="answer-link" href="/111">Worked answer → 111</a>
 
-# Run six configurations and inspect one forecast
+# Inspect one trial before running the rest
 
-<div class="task">Stay in <strong>4 · Track and search</strong>.</div><ol class="exercise-controls"><li>Click <strong>Run six tracked configurations</strong>.</li><li>Open the Sweep. Compare validation error and training time for two configurations.</li><li>In the notebook, choose <strong>Inspect a saved measurement run</strong>. Compare its loss, forecast, and persistence. Follow its Forge links to the saved source.</li></ol><div class="done">Check your work: Explain one comparison using the settings, curve, and forecast.</div>
-
-
-<!--
-Allow fifteen minutes. Ask participants to predict which configuration will win before running the search. After it finishes, have them explain one result from the loss curve and forecast. Keep failed runs visible so the comparison accounts for what happened. Session block: Inspect model shapes and compare configurations (minutes 110–155).
-Source notes and recorded evidence: notes/sources.md.
--->
-
----
-name: goes-repair-code
----
-
-<div class="kicker">1:50–2:35</div>
-
-# Let the model learn a correction to persistence
-
-```python {2|3|4|all}
-def forward(self, x):
-    correction = self.net(x)
-    standardized = x[:, 1, -1:] + correction
-    return standardized * self.scale + self.center
-
-# Zero-initialize the correction head before training.
-# Fit scaling on training dates; score in log-flux units.
-```
-
-<div class="bottom-note">The repair also uses absolute loss and 1,200 updates. These choices are tested together.</div>
+<div class="task">Stay in <strong>4 · Track and search</strong>.</div><ol class="exercise-controls"><li>Click <strong>Run one tracked Sweep trial</strong>. Open its configuration, source, weights, loss curve and forecast.</li><li>Click <strong>Run the remaining Sweep trials</strong>. Compare two configurations in the same Sweep.</li><li>In the notebook, choose <strong>Inspect a saved measurement run</strong>. Compare its loss, forecast, and persistence. Follow its Forge links to the saved source.</li></ol><div class="done">Check your work: Explain one comparison using the settings, curve, and forecast.</div>
 
 
 <!--
-The latest XRS-B input is standardized. Add a learned correction, then convert it back with the same training-fitted center and scale. A zero-initialized final layer begins exactly at persistence. The fit function divides the prediction and target error by the same scale. We changed several parts of the recipe together, so the measured result cannot tell us which individual change caused the gain. Ask participants to point to the addition and unit conversion in their editable code. Advance the code highlights one step at a time; use Back to revisit the previous statement. Session block: Inspect model shapes and compare configurations (minutes 110–155).
+Allow fifteen minutes. Pause after the first trial and ask participants to identify its configuration, data and code before scheduling the remaining five. After it finishes, have them explain one result from the loss curve and forecast. Keep failed runs visible so the comparison accounts for what happened. Session block: Inspect model shapes and compare configurations (minutes 110–155).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -975,13 +951,15 @@ name: goes-repair-turn
 
 <div class="kicker">1:50–2:35 · YOUR TURN</div>
 
-# Test the worked measurement repair
+<a class="answer-link" href="/112">Worked answer → 112</a>
 
-<div class="task">Stay in <strong>4 · Track and search</strong>, below the saved forecasts.</div><ol class="exercise-controls"><li>Read <code>forward</code> and <code>fit</code> in <strong>Worked GOES repair: inspect or edit the forecasting code</strong>.</li><li>Click <strong>Check the GOES repair code</strong>, then <strong>Train the worked GOES repair</strong>.</li><li>Compare validation error with persistence and your search. Open its training call and weights Artifact.</li></ol><div class="done">Check your work: Explain the initial forecast, the output units, and whether your validation error fell.</div>
+# Diagnose the forecast before opening the repair
+
+<div class="task">Stay in <strong>4 · Track and search</strong>, below the saved forecasts.</div><ol class="exercise-controls"><li>Compare the saved forecast, target units, and loss curve. Under <strong>What would you check before changing this model?</strong>, name one possible cause and a check that could disprove it. Saving a note is optional.</li><li>After your diagnosis, select <strong>Show the worked GOES repair and its recorded results</strong>. Inspect <code>forward</code> and <code>fit</code>; the linked worked answer explains the correction.</li><li>Click <strong>Check the GOES repair code</strong>, then <strong>Train the worked GOES repair</strong>. Compare its validation error with persistence and open its weights Artifact.</li></ol><div class="done">Check your work: Explain the initial forecast, the output units, and whether your validation error fell.</div>
 
 
 <!--
-Use the last five minutes of the measurement exercise. This is one CPU run, not another paid agent request. Its exact source, configuration, and weights are saved separately. The recipe beat persistence on three predeclared seeds in qualification, but a learner edit is a new experiment. Final selection considers its validation score; do not choose using final dates. Session block: Inspect model shapes and compare configurations (minutes 110–155).
+Discuss the diagnosis before revealing the recipe. The optional note is for the learner and never enters an agent prompt. Use the last five minutes of the measurement exercise. This is one CPU run, not another paid agent request. Its exact source, configuration, and weights are saved separately. The recipe beat persistence on three predeclared seeds in qualification, but a learner edit is a new experiment. Final selection considers its validation score; do not choose using final dates. Session block: Inspect model shapes and compare configurations (minutes 110–155).
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -2068,7 +2046,7 @@ assert my_flux_mae(np.zeros(3), np.zeros(3)) == 0.0
 ```
 
 <p class="aside">Training uses squared error. Evaluation reports mean absolute error.</p>
-<div class="source-link"><a href="/35">Return to Write the loss and metric →</a></div>
+<div class="source-link"><a href="/44">Return to Write the loss and metric →</a></div>
 
 <!--
 Subtract prediction and target, take absolute values, and average. A prediction of one against a target of zero gives one. These are log10 flux units. The training loss above it is separate and uses squared error.
@@ -2084,10 +2062,37 @@ name: answer-search
 # Compare the settings and loss curves
 
 <p class="big">Open two runs from the Sweep. Compare their model, width, learning rate, and training steps.</p><p>Then open the loss curves. A lower validation error is easier to interpret when you can see how each model trained.</p><div class="bottom-note">If a run failed, inspect its error. A missing score cannot rank that model.</div>
-<div class="source-link"><a href="/49">Return to Run six configurations and inspect one forecast →</a></div>
+<div class="source-link"><a href="/49">Return to Inspect one trial before running the rest →</a></div>
 
 <!--
 Open the configuration and curve for two runs. Find the settings they share and the value that differs. If training failed, inspect the error rather than assigning a score to a forecast that does not exist.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+class: answer-code
+name: goes-repair-code
+---
+
+<div class="kicker">WORKED ANSWER</div>
+
+# Let the model learn a correction to persistence
+
+```python {2|3|4|all}
+def forward(self, x):
+    correction = self.net(x)
+    standardized = x[:, 1, -1:] + correction
+    return standardized * self.scale + self.center
+
+# Zero-initialize the correction head before training.
+# Fit scaling on training dates; score in log-flux units.
+```
+
+<div class="bottom-note">The repair also uses absolute loss and 1,200 updates. These choices are tested together.</div>
+<div class="source-link"><a href="/50">Return to Diagnose the forecast before opening the repair →</a></div>
+
+<!--
+The latest XRS-B input is standardized. Add a learned correction, then convert it back with the same training-fitted center and scale. A zero-initialized final layer begins exactly at persistence. The fit function divides the prediction and target error by the same scale. We changed several parts of the recipe together, so the measured result cannot tell us which individual change caused the gain. Ask participants to point to the addition and unit conversion in their editable code. Advance the code highlights one step at a time; use Back to revisit the previous statement.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -2109,7 +2114,7 @@ def my_image_mae(prediction, target, disk_mask):
 ```
 
 <p>Test zero error, constant +1 error, and an error only outside the mask.</p>
-<div class="source-link"><a href="/65">Return to Implement and compare the image predictors →</a></div>
+<div class="source-link"><a href="/64">Return to Implement and compare the image predictors →</a></div>
 
 <!--
 The mask selects the solar disk. Compute the sum and count per image, then average across images. Check identical arrays, a constant one-unit difference, and a difference only outside the mask.
@@ -2159,7 +2164,7 @@ def select_validation_evidence(record):
 ```
 
 <div class="bottom-note">The agent also receives the current source. Keep final predictions and scores out of this request.</div>
-<div class="source-link"><a href="/75">Return to Choose the evidence for the research agent →</a></div>
+<div class="source-link"><a href="/74">Return to Choose the evidence for the research agent →</a></div>
 
 <!--
 First check that the record belongs to validation. Then return only the listed evidence fields. The current source is supplied separately. The final-test example should raise an error before the agent sees it.
@@ -2184,7 +2189,7 @@ probe = run_training(
 ```
 
 <div class="bottom-note">Use the candidate’s source here. Passing the parent would train the old program again.</div>
-<div class="source-link"><a href="/90">Return to Test the selected code, then begin round two →</a></div>
+<div class="source-link"><a href="/89">Return to Test the selected code, then begin round two →</a></div>
 
 <!--
 Pass candidate['source'] to training, along with the shared configuration. Passing the parent source here would train the old program while the interface appeared to test a new proposal. Open the saved candidate.py if the result looks suspicious.
@@ -2200,7 +2205,7 @@ name: answer-final
 # Use the saved model without training it again
 
 <p class="big">Load each selected model’s saved weights and predict the reserved dates.</p><p>Compare the three image forecasts at one timestamp. The input images and observed future should match across all three rows.</p><div class="bottom-note">Persistence copies the current image and needs no trained weights.</div>
-<div class="source-link"><a href="/96">Return to Test the selected models on reserved dates →</a></div>
+<div class="source-link"><a href="/95">Return to Test the selected models on reserved dates →</a></div>
 
 <!--
 The selected weights are already trained. Load them and predict the final inputs. Compare the same target timestamps across all versions; persistence uses the current image directly.
@@ -2280,7 +2285,7 @@ name: schedule
 
 # Six-hour session with three breaks
 
-<table class="clean-table schedule"><tbody><tr><th>Minutes</th><th>Work</th></tr><tr><td>0–25</td><td>Connect and trace an operation</td></tr><tr><td>25–65</td><td>Read observations and implement persistence</td></tr><tr><td>65–95</td><td>Explain loss and save a training run</td></tr><tr><td>95–110</td><td>Break</td></tr><tr><td>110–155</td><td>Inspect model shapes and compare configurations</td></tr><tr><td>155–200</td><td>Implement image prediction and scoring</td></tr><tr><td>200–230</td><td>Meal break</td></tr><tr><td>230–260</td><td>Build the research-agent request</td></tr><tr><td>260–310</td><td>Review and test two rounds of changes</td></tr><tr><td>310–320</td><td>Break</td></tr><tr><td>320–345</td><td>Freeze and compare on reserved dates</td></tr><tr><td>345–360</td><td>Reproduce and explain the result</td></tr></tbody></table>
+<table class="clean-table schedule"><tbody><tr><th>Minutes</th><th>Work</th></tr><tr><td>0–25</td><td>Connect and trace an operation</td></tr><tr><td>25–65</td><td>Read observations and implement persistence</td></tr><tr><td>65–95</td><td>Explain training and saved experiment files</td></tr><tr><td>95–110</td><td>Break</td></tr><tr><td>110–155</td><td>Inspect model shapes and compare configurations</td></tr><tr><td>155–200</td><td>Implement image prediction and scoring</td></tr><tr><td>200–230</td><td>Meal break</td></tr><tr><td>230–260</td><td>Build the research-agent request</td></tr><tr><td>260–310</td><td>Review and test two rounds of changes</td></tr><tr><td>310–320</td><td>Break</td></tr><tr><td>320–345</td><td>Freeze and compare on reserved dates</td></tr><tr><td>345–360</td><td>Reproduce and explain the result</td></tr></tbody></table>
 
 
 <!--

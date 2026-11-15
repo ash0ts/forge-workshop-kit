@@ -62,10 +62,28 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 -->
 
 ---
+class: exercise
+name: read-request
+---
+
+<div class="kicker">0:06</div>
+
+# Read a request before revealing its label
+
+
+
+<p class="where">Notebook → Inspect requests</p><ol><li>Click Download and check Banking77.</li><li>Choose a request and explain the support workflow it needs.</li><li>Reveal the published label. Keep any disagreement as a question to inspect.</li></ol><div class="done"><strong>Run:</strong> Download and check Banking77<br><strong>Check:</strong> Identify a request where similar wording could lead to a different intent.</div>
+
+<!--
+Allow five minutes for individual predictions and partner discussion. The download includes 20 MB of cached features, original CSVs, license, and checksum manifest. Data loading sends no model call. Inspect the bundled development request in setup before authenticating. Guess its intent, then reveal the published annotation.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
+-->
+
+---
 name: dataset
 ---
 
-<div class="kicker">0:07</div>
+<div class="kicker">0:09</div>
 
 # The dataset contains 77 banking intents
 
@@ -80,7 +98,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 name: partitions
 ---
 
-<div class="kicker">0:10</div>
+<div class="kicker">0:12</div>
 
 # Give each partition one job
 
@@ -96,7 +114,7 @@ class: exercise
 name: connect
 ---
 
-<div class="kicker">0:15</div>
+<div class="kicker">0:16</div>
 
 # Open your copy and add your first trace
 
@@ -113,7 +131,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 name: trace
 ---
 
-<div class="kicker">0:22</div>
+<div class="kicker">0:23</div>
 
 # The span should explain the operation
 
@@ -136,28 +154,10 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 -->
 
 ---
-class: exercise
-name: read-request
----
-
-<div class="kicker">0:26</div>
-
-# Read a request before revealing its label
-
-
-
-<p class="where">Notebook → Inspect requests</p><ol><li>Click Download and check Banking77.</li><li>Choose a request and explain the support workflow it needs.</li><li>Reveal the published label. Keep any disagreement as a question to inspect.</li></ol><div class="done"><strong>Run:</strong> Download and check Banking77<br><strong>Check:</strong> Identify a request where similar wording could lead to a different intent.</div>
-
-<!--
-Allow five minutes for individual predictions and partner discussion. The download includes 20 MB of cached features, original CSVs, license, and checksum manifest. Data loading sends no model call.
-Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
--->
-
----
 name: words
 ---
 
-<div class="kicker">0:36</div>
+<div class="kicker">0:30</div>
 
 # Start with a word-based classifier
 
@@ -172,7 +172,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 name: word-vector
 ---
 
-<div class="kicker">0:39</div>
+<div class="kicker">0:35</div>
 
 # Measure the words and phrases in one request
 
@@ -184,10 +184,44 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 -->
 
 ---
+class: exercise
+name: classifier-exercise
+---
+
+<div class="kicker">0:40</div>
+
+# Implement the classifier head
+
+<a class="answer-link" href="/68">Worked answer ↗</a>
+
+<p class="where">Notebook → Train the word classifier</p><ol><li>Complete <code>make_classifier</code> with <code>LogisticRegression(C=10, max_iter=1000, random_state=17)</code>.</li><li>Click <strong>Check my classifier code</strong>, then <strong>Fit and predict four practice points</strong>.</li><li>Fit the word-feature baseline first. We will change representations after inspecting its errors.</li></ol><div class="done"><strong>Run:</strong> Train the word-feature baseline<br><strong>Check:</strong> Open one validation request and the saved classifier source in Forge.</div>
+
+<!--
+The participant function is used in both actual fits. CPU training is bounded by iterations and two numerical-library threads. In preparation each fit took under four seconds with cached features; participant machines and hosting differ. Use the four-point practice fit to distinguish creating an estimator from fitting it. Practice points are illustrative and are not Banking77 embeddings.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
+-->
+
+---
+class: exercise
+name: baseline-observation
+---
+
+<div class="kicker">0:51</div>
+
+# Read one prediction before comparing models
+
+<div class="where">Notebook: Train the word classifier</div><ol><li>Select a saved validation request. Read the message, predicted intent, and reference intent.</li><li>Describe the mismatch, or explain a correct route. What might the word representation miss?</li><li>Optionally click <strong>Save my baseline observation</strong>.</li></ol><p class="done"><b>Check:</b> The first classifier is saved. The two-representation comparison is still incomplete.</p>
+
+<!--
+Keep the baseline result on screen before discussing embeddings or aggregate gains. Opening another case only reads saved predictions. Ask participants for a testable representation hypothesis, not a claim that every mistake will disappear.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/routing_cells.py.
+-->
+
+---
 name: embeddings
 ---
 
-<div class="kicker">0:46</div>
+<div class="kicker">0:56</div>
 
 # Then change the representation
 
@@ -202,7 +236,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 name: sentence-vector
 ---
 
-<div class="kicker">0:49</div>
+<div class="kicker">0:59</div>
 
 # Keep one vector for each request
 
@@ -217,7 +251,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 name: construct-head
 ---
 
-<div class="kicker">0:52</div>
+<div class="kicker">1:02</div>
 
 # Construct the estimator before fitting it
 
@@ -232,7 +266,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 name: fit-head
 ---
 
-<div class="kicker">0:54</div>
+<div class="kicker">1:04</div>
 
 # Fit the head on the labeled training rows
 
@@ -244,28 +278,10 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 -->
 
 ---
-class: exercise
-name: classifier-exercise
----
-
-<div class="kicker">0:57</div>
-
-# Implement the classifier head
-
-<a class="answer-link" href="/66">Worked answer ↗</a>
-
-<p class="where">Notebook → Train classifiers</p><ol><li>Complete <code>make_classifier</code> with <code>LogisticRegression(C=10, max_iter=1000, random_state=17)</code>.</li><li>Run the free practice check.</li><li>Train both representations using that same function.</li></ol><div class="done"><strong>Run:</strong> Train both classifiers on the same messages<br><strong>Check:</strong> Compare validation macro-F1 and open the saved source in Forge.</div>
-
-<!--
-The participant function is used in both actual fits. CPU training is bounded by iterations and two numerical-library threads. In preparation each fit took under four seconds with cached features; participant machines and hosting differ.
-Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
--->
-
----
 name: predict-probabilities
 ---
 
-<div class="kicker">1:08</div>
+<div class="kicker">1:07</div>
 
 # A fitted classifier returns 77 probabilities
 
@@ -277,10 +293,26 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 -->
 
 ---
+class: exercise
+name: alternative-exercise
+---
+
+<div class="kicker">1:10</div>
+
+# Test the sentence-feature alternative
+
+<div class="where">Notebook: Compare sentence features</div><ol><li>Keep make_classifier unchanged.</li><li>Click <strong>Train the sentence-feature alternative</strong>.</li><li>Return to the same validation request. Compare both predictions before the aggregate table.</li></ol><p class="done"><b>Check:</b> Both runs use identical classifier code and training messages.</p>
+
+<!--
+The encoder is frozen and its cached vectors are versioned. This button completes the existing two-run comparison; it adds no third fit. Previously completed workspaces reuse their saved runs.
+Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/routing_cells.py.
+-->
+
+---
 name: macro-f1
 ---
 
-<div class="kicker">1:12</div>
+<div class="kicker">1:16</div>
 
 # Macro-F1 gives each intent equal weight
 
@@ -295,7 +327,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 name: intent-counts
 ---
 
-<div class="kicker">1:15</div>
+<div class="kicker">1:18</div>
 
 # Count the errors for one intent
 
@@ -310,7 +342,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 name: intent-average
 ---
 
-<div class="kicker">1:18</div>
+<div class="kicker">1:21</div>
 
 # Calculate F1, then average across intents
 
@@ -325,7 +357,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 name: recorded-gain
 ---
 
-<div class="kicker">1:22</div>
+<div class="kicker">1:26</div>
 
 # The worked comparison reduced routing mistakes
 
@@ -390,7 +422,7 @@ name: policy-exercise
 
 # Write the rule that sends a request to review
 
-<a class="answer-link" href="/67">Worked answer ↗</a>
+<a class="answer-link" href="/69">Worked answer ↗</a>
 
 <p class="where">Notebook → Review requests</p><ol><li>Complete <code>needs_review(confidence, threshold)</code>.</li><li>Move the threshold and compare coverage with selective accuracy.</li><li>Pick a small-margin request and read both proposed intents.</li></ol><div class="done"><strong>Run:</strong> Check my review rule<br><strong>Check:</strong> Explain why a confidence of 0.2 at threshold 0.5 should go to a person.</div>
 
@@ -511,7 +543,7 @@ name: prompted-exercise
 
 
 
-<p class="where">Notebook → Check the judge</p><ol><li>Click the routing button once.</li><li>Open a model span in Agent Lens and find the customer request and returned intent.</li><li>Compare one answer with the corresponding classifier output.</li></ol><div class="done"><strong>Run:</strong> Route eight development requests with the fixed model<br><strong>Check:</strong> Match the case ID and response to the saved provider receipt.</div>
+<p class="where">Notebook → Route requests with the model</p><ol><li>Click the routing button once.</li><li>Open a model span in Agent Lens and find the customer request and returned intent.</li><li>Compare one answer with the corresponding classifier output.</li></ol><div class="done"><strong>Run:</strong> Route eight development requests with the fixed model<br><strong>Check:</strong> Match the case ID and response to the saved provider receipt.</div>
 
 <!--
 Every request is durable and bounded. Each case gets a separate stage, so completed siblings can be reused after a failure. No test examples or accepted review labels enter the routing prompt.
@@ -557,9 +589,9 @@ name: validator-exercise
 
 # Implement the judge response check
 
-<a class="answer-link" href="/68">Worked answer ↗</a>
+<a class="answer-link" href="/70">Worked answer ↗</a>
 
-<p class="where">Notebook → Check the judge</p><ol><li>Complete <code>validate_judge</code>. Reject a string such as <code>"false"</code>.</li><li>Read the failure-tag instructions. Define what counts as unresolved rather than wrong.</li><li>Run the judge on up to eight reviewed cases.</li></ol><div class="done"><strong>Run:</strong> Check my judge validator → Compare the judge with up to eight of my reviews<br><strong>Check:</strong> Click Compare in EvalTables beside the judge result. Read the judge reason and your accepted review together; unavailable judgments stay blank.</div>
+<p class="where">Notebook → Check the automated reviewer</p><ol><li>Complete <code>validate_judge</code>. Reject a string such as <code>"false"</code>.</li><li>Read your saved human reviews, then the failure-tag instructions. Define what counts as unresolved rather than wrong.</li><li>Run the judge on up to eight reviewed cases.</li></ol><div class="done"><strong>Run:</strong> Check my judge validator → Compare the judge with up to eight of my reviews<br><strong>Check:</strong> Click Compare in EvalTables beside the judge result. Read the judge reason and your accepted review together; unavailable judgments stay blank.</div>
 
 <!--
 The human accepted intent stays out of the judge prompt. The judge receives the request and proposed route. Check one reason, even if the JSON passes. Missing judgments stay missing; do not score them as correct or incorrect.
@@ -892,7 +924,7 @@ name: release-repair-exercise
 
 # Repair the loader and write its regression check
 
-<a class="answer-link" href="/69">Worked answer ↗</a>
+<a class="answer-link" href="/71">Worked answer ↗</a>
 
 <p class="where">Notebook → Release and recover</p><ol><li>Complete <code>label_names(model_classes)</code> by preserving the supplied order.</li><li>Complete <code>check_release(model_classes, loaded_labels)</code>. Check the label set and exact order.</li><li>Run the free check, then execute your repaired loader on the same 77 requests.</li></ol><div class="done"><strong>Run:</strong> Check my release and repair code → Run my repaired loader on the same requests<br><strong>Check:</strong> Order and prediction parity pass. Existing classifier mistakes may remain.</div>
 
@@ -1053,7 +1085,7 @@ def make_classifier():
     )
 ```
 
-<p>This function constructs the head. The later fit call trains it for both feature representations. It does not load or fine-tune the sentence encoder.</p><p class="answer-nav source-link"><a href="/15">Return to the classifier exercise ↩</a></p>
+<p>This function constructs the head for both feature representations. The fit call trains it. It does not load or fine-tune the sentence encoder.</p><p class="answer-nav source-link"><a href="/11">Return to the classifier exercise ↩</a></p>
 
 <!--
 Offer the answer only after an attempt or a hint request. Learners must still run the free check and both actual training calls.
@@ -1074,7 +1106,7 @@ def needs_review(confidence, threshold):
     return confidence < threshold
 ```
 
-<p>At 0.5, a 0.2 prediction is deferred. A 0.9 prediction is routed. Choosing a threshold remains a policy decision that should be checked on validation cases.</p><p class="answer-nav source-link"><a href="/24">Return to the review exercise ↩</a></p>
+<p>At 0.5, a 0.2 prediction is deferred. A 0.9 prediction is routed. Choosing a threshold remains a policy decision that should be checked on validation cases.</p><p class="answer-nav source-link"><a href="/26">Return to the review exercise ↩</a></p>
 
 <!--
 The function should return a boolean. Exactly the threshold is routed in this specified policy. It is not a proof that the predicted probability is calibrated.
@@ -1101,7 +1133,7 @@ def validate_judge(value):
     return value
 ```
 
-<p class="answer-nav source-link"><a href="/34">Return to the judge exercise ↩</a></p>
+<p class="answer-nav source-link"><a href="/36">Return to the judge exercise ↩</a></p>
 
 <!--
 This uses the same type guard as the notebook. Valid JSON is only a response contract; it does not establish agreement with a reviewer.
@@ -1130,7 +1162,7 @@ def check_release(model_classes, loaded_labels):
     }
 ```
 
-<p class="answer-nav source-link"><a href="/56">Return to the release repair exercise ↩</a></p>
+<p class="answer-nav source-link"><a href="/58">Return to the release repair exercise ↩</a></p>
 
 <!--
 This checks the metadata contract; the subsequent saved batch checks prediction parity independently. Passing both checks does not prove every route is correct. Give the worked answer after an attempt or explicit request.

@@ -22,6 +22,10 @@ Bind every interactive element to a notebook global. This includes navigation an
 
 Render completed work from stage records, not temporary display state. Publication receipts are separate: an experiment can be complete while its trace or native comparison is unavailable. Retry publication using the saved result. Never put training or inference inside a render, navigation callback, or restore path.
 
+Teaching steps can expose one execution before the remainder of a batch. They reuse the original per-model or per-case stage identities. An aggregate checkpoint is complete only when all required matching results exist. Preserve the exact configuration, source contents, and input references when moving a run to another control. Changed learner code belongs to a different execution, even when its button has the same label.
+
+Solar keeps native Sweep assignments separate from saved training results; a cached training result alone does not prove that the scheduler assigned every configuration. Transit can integrate and preview the solo build early, but selects the follow-up starting release only after both initial integrations. The second build still starts from the common starter source.
+
 ## Saving and publication
 
 Execution records are written locally before publication. A completed response stays completed if an upload fails. Progress and help requests publish a small run update without waiting for model artifacts. Hosted inference first publishes a small request ledger; failure to save the reservation prevents the request from being sent.

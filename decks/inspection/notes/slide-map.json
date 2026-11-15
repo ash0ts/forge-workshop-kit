@@ -1,7 +1,7 @@
 {
   "session_minutes": 240,
-  "main_slides": 47,
-  "total_slides": 50,
+  "main_slides": 50,
+  "total_slides": 53,
   "slides": [
     {
       "number": 1,
@@ -55,8 +55,8 @@
       "number": 3,
       "key": "real-data",
       "title": "Start with the boards, not the score",
-      "body": "<div class=\"photo-pair\"><div><img src=\"/images/fit-normal.jpg\" alt=\"Actual normal PCB1 training photograph\"><p>Training example A</p></div><div><img src=\"/images/fit-defect.jpg\" alt=\"Actual anomalous PCB1 training photograph\"><p>Training example B</p></div></div><div class=\"bottom-note\">VisA PCB1 \u00b7 real photographs \u00b7 labels hidden for this first inspection</div>",
-      "notes": "Ask learners to identify a region they would inspect. Do not infer a defect type without checking the supplied mask. They will reveal masks in the notebook.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
+      "body": "<div class=\"photo-pair\"><div><img src=\"/images/fit-normal.jpg\" alt=\"VisA PCB1 fitting photograph A, viewed from above\"><p>Training example A</p></div><div><img src=\"/images/fit-defect.jpg\" alt=\"VisA PCB1 fitting photograph B, viewed from above\"><p>Training example B</p></div></div><div class=\"bottom-note\">VisA PCB1 \u00b7 real photographs \u00b7 labels hidden for this first inspection</div>",
+      "notes": "Ask learners to identify a region they would inspect. Do not infer a defect type without checking the supplied mask. They will reveal masks in the notebook. The same fitting example is bundled in the notebook setup. Ask for a pass/review choice before revealing its annotation; no authentication or download is needed.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
       "time": "0:04",
       "kind": "",
       "answer": null,
@@ -75,20 +75,75 @@
       "timing": {
         "section": "setup",
         "start": 4,
-        "duration": 4
+        "duration": 2
       }
     },
     {
       "number": 4,
+      "key": "board-target",
+      "name": "board-target",
+      "title": "Predict a label for the whole board",
+      "body": "<InspectionMechanism kind=\"data\" :step=\"1\" />",
+      "notes": "Ask participants to choose pass or inspection before advancing. The first figure hides its source label and mask. Identify the photograph as the input and the binary label as the target. A detector flags a board; it does not learn pixel labels here.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
+      "time": "0:06",
+      "start_minute": 6,
+      "kind": "",
+      "answer": null,
+      "concept": "Predict a label for the whole board",
+      "exercise": null,
+      "source": [
+        "src/forge_workshop_kit/inspection.py",
+        "scripts/inspection_cells.py",
+        "src/forge_workshop_kit/inspection_teaching.py"
+      ],
+      "evidence": [
+        "data/inspection-v1/records.json"
+      ],
+      "timing": {
+        "section": "setup",
+        "start": 6,
+        "duration": 2
+      }
+    },
+    {
+      "number": 5,
+      "key": "mask-boundary",
+      "name": "mask-boundary",
+      "title": "Use the mask to investigate the decision",
+      "body": "<InspectionMechanism kind=\"data\" :step=\"2\" />",
+      "notes": "Now reveal pcb1-anomaly-005 from the fitting partition: source image pcb1/Data/Images/Anomaly/005.JPG, SHA-256 ec34541be729af29a287bde12d4e3955cf3f83c734baea8a9505a7b801ce54e2, VisA CC BY 4.0. Source metadata and bundled image/mask checksums are in decks/inspection/data/feature-example.json. Ask which input would leak the answer if passed to the classifier. The mask is reference evidence for human inspection; neither masks nor test labels enter feature assembly.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
+      "time": "0:08",
+      "start_minute": 8,
+      "kind": "",
+      "answer": null,
+      "concept": "Use the mask to investigate the decision",
+      "exercise": null,
+      "source": [
+        "src/forge_workshop_kit/inspection.py",
+        "scripts/inspection_cells.py",
+        "src/forge_workshop_kit/inspection_teaching.py"
+      ],
+      "evidence": [
+        "data/inspection-v1/records.json",
+        "decks/inspection/data/feature-example.json"
+      ],
+      "timing": {
+        "section": "setup",
+        "start": 8,
+        "duration": 2
+      }
+    },
+    {
+      "number": 6,
       "key": "dataset",
       "title": "What is in the teaching set?",
       "body": "<div class=\"cards\"><div class=\"card\"><strong>1,104 photographs</strong><p>One PCB family. 1,004 normal boards and 100 defective boards.</p></div><div class=\"card\"><strong>Image labels</strong><p>A board-level normal or defective label is the classifier target.</p></div><div class=\"card\"><strong>Defect masks</strong><p>Annotations let us inspect mistakes. They never enter the classifier.</p></div></div><div class=\"bottom-note\">VisA, Zou et al. \u00b7 CC BY 4.0 \u00b7 the provided supervised split is preserved</div>",
       "notes": "Explain the distinction between detecting a defective board and locating its defect. This classifier does the former. A patch-distance heatmap is not a segmentation model.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "0:08",
+      "time": "0:10",
       "kind": "",
       "answer": null,
       "name": "dataset",
-      "start_minute": 8,
+      "start_minute": 10,
       "concept": "What is in the teaching set?",
       "source": [
         "src/forge_workshop_kit/inspection.py",
@@ -101,21 +156,21 @@
       "exercise": null,
       "timing": {
         "section": "setup",
-        "start": 8,
+        "start": 10,
         "duration": 3
       }
     },
     {
-      "number": 5,
+      "number": 7,
       "key": "partitions",
       "title": "Separate the data before choosing a model",
       "body": "<div class=\"flow\"><div class=\"box\">397<br><small>fit models</small></div><span>+</span><div class=\"box\">133<br><small>review pool</small></div><span>+</span><div class=\"box\">132<br><small>validation</small></div><span>\u2502</span><div class=\"box\">442<br><small>final test</small></div></div><div class=\"bottom-note\">Only the authors\u2019 training partition is subdivided. The official test partition stays unchanged.</div>",
       "notes": "The 132 validation boards contain 12 defects. A threshold targeting 90 percent recall must catch at least 11. Test data is public for reproduction, so this is a teaching boundary rather than a security barrier.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "0:11",
+      "time": "0:13",
       "kind": "",
       "answer": null,
       "name": "partitions",
-      "start_minute": 11,
+      "start_minute": 13,
       "concept": "Separate the data before choosing a model",
       "source": [
         "src/forge_workshop_kit/inspection.py",
@@ -125,21 +180,21 @@
       "exercise": null,
       "timing": {
         "section": "setup",
-        "start": 11,
-        "duration": 5
+        "start": 13,
+        "duration": 4
       }
     },
     {
-      "number": 6,
+      "number": 8,
       "key": "connect",
       "title": "Connect to your own experiment",
       "body": "<div class=\"task\">Open the Visual Inspection notebook and copy it into your Forge project.</div><ol class=\"exercise-controls\"><li>Confirm <strong>Your Forge entity/project</strong>.</li><li>Click <strong>Connect and restore my inspection work</strong>.</li><li>Edit the attribute in <code>instrument_inspection_tool</code>, then click <strong>Send my first inspection trace</strong>.</li></ol><div class=\"done\">Check: Find your attribute and the returned NumPy version in Agent Lens.</div>",
       "notes": "Hosted authentication comes from the copied notebook. A laptop uses uv run wandb login. The core path has no inference calls; notebook compute remains separately billed.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "0:16",
+      "time": "0:17",
       "kind": "exercise",
       "answer": null,
       "name": "connect",
-      "start_minute": 16,
+      "start_minute": 17,
       "concept": "Connect to your own experiment",
       "source": [
         "src/forge_workshop_kit/inspection.py",
@@ -158,12 +213,12 @@
       },
       "timing": {
         "section": "setup",
-        "start": 16,
-        "duration": 7
+        "start": 17,
+        "duration": 6
       }
     },
     {
-      "number": 7,
+      "number": 9,
       "key": "trace-code",
       "title": "The trace describes a call that actually ran",
       "body": "```python {1-4|5-6|7-8|all}\nwith tracing.Tool(\n    name=observation[\"name\"],\n    arguments=observation[\"arguments\"],\n    result=observation[\"result\"],\n    started_at=stamp(observation[\"started_at\"]),\n    ended_at=stamp(observation[\"ended_at\"]),\n) as tool:\n    tool.set_attributes({\"workshop.exercise\": \"pcb-inspection\"})\n```\n<div class=\"bottom-note\">Open the same call in Agent Lens. Match its arguments, result and timing to these fields.</div>",
@@ -187,7 +242,7 @@
       }
     },
     {
-      "number": 8,
+      "number": 10,
       "key": "inspect",
       "title": "Inspect one board before revealing its label",
       "body": "<div class=\"task\">Notebook step: Inspect the boards.</div><ol class=\"exercise-controls\"><li>Click <strong>Download and verify the PCB1 teaching data</strong>.</li><li>Choose a training board. Explain what would make you inspect it.</li><li>Turn on <strong>Reveal the published defect label and mask</strong>.</li></ol><div class=\"done\">Check: Describe the annotated region without treating the mask as an input to your detector.</div>",
@@ -219,70 +274,16 @@
       }
     },
     {
-      "number": 9,
-      "key": "board-target",
-      "name": "board-target",
-      "title": "Predict a label for the whole board",
-      "body": "<InspectionMechanism kind=\"data\" :step=\"1\" />",
-      "notes": "After participants inspect a training photo, identify the input photograph and the binary target separately. A detector flags a board. The supplied mask marks pixels, but this model does not learn pixel labels.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "0:32",
-      "start_minute": 32,
-      "kind": "",
-      "answer": null,
-      "concept": "Predict a label for the whole board",
-      "exercise": null,
-      "source": [
-        "src/forge_workshop_kit/inspection.py",
-        "scripts/inspection_cells.py",
-        "src/forge_workshop_kit/inspection_teaching.py"
-      ],
-      "evidence": [
-        "data/inspection-v1/records.json"
-      ],
-      "timing": {
-        "section": "data",
-        "start": 32,
-        "duration": 2
-      }
-    },
-    {
-      "number": 10,
-      "key": "mask-boundary",
-      "name": "mask-boundary",
-      "title": "Use the mask to investigate the decision",
-      "body": "<InspectionMechanism kind=\"data\" :step=\"2\" />",
-      "notes": "Ask which input would leak the answer if passed to the classifier. The mask is reference evidence for human inspection; neither masks nor test labels enter feature assembly.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "0:34",
-      "start_minute": 34,
-      "kind": "",
-      "answer": null,
-      "concept": "Use the mask to investigate the decision",
-      "exercise": null,
-      "source": [
-        "src/forge_workshop_kit/inspection.py",
-        "scripts/inspection_cells.py",
-        "src/forge_workshop_kit/inspection_teaching.py"
-      ],
-      "evidence": [
-        "data/inspection-v1/records.json"
-      ],
-      "timing": {
-        "section": "data",
-        "start": 34,
-        "duration": 3
-      }
-    },
-    {
       "number": 11,
       "key": "encoder",
       "title": "Reuse a fixed image encoder",
       "body": "<InspectionMechanism kind=\"encoder\" :step=\"1\" />",
       "notes": "The ImageNet encoder is fixed. Fitting our logistic classifier changes its weights but not ResNet-18. The small cache can be reused in a CPU notebook.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "0:37",
+      "time": "0:32",
       "kind": "",
       "answer": null,
       "name": "encoder",
-      "start_minute": 37,
+      "start_minute": 32,
       "concept": "Reuse a fixed image encoder",
       "source": [
         "src/forge_workshop_kit/inspection.py",
@@ -294,155 +295,23 @@
       ],
       "exercise": null,
       "timing": {
-        "section": "features",
-        "start": 37,
-        "duration": 4
-      }
-    },
-    {
-      "number": 12,
-      "key": "patch-grid",
-      "name": "patch-grid",
-      "title": "Keep local information as well as the whole image",
-      "body": "<InspectionMechanism kind=\"encoder\" :step=\"2\" />",
-      "notes": "Read the shapes out loud: N boards, 14 rows, 14 columns, 64 feature channels. The overlay shows feature positions schematically, not exact independent image crops. The whole-image representation has 512 values; the grid retains spatial differences.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "0:41",
-      "start_minute": 41,
-      "kind": "",
-      "answer": null,
-      "concept": "Keep local information as well as the whole image",
-      "exercise": null,
-      "source": [
-        "src/forge_workshop_kit/inspection.py",
-        "scripts/inspection_cells.py",
-        "src/forge_workshop_kit/inspection_teaching.py"
-      ],
-      "evidence": [
-        "src/forge_workshop_kit/inspection_encoder.py"
-      ],
-      "timing": {
-        "section": "features",
-        "start": 41,
-        "duration": 6
-      }
-    },
-    {
-      "number": 13,
-      "key": "patches",
-      "title": "Compare local features at the same board position",
-      "body": "<InspectionMechanism kind=\"patch\" :step=\"1\" />",
-      "notes": "Use only normal fitting boards as the reference bank. At each spatial position, find the closest actual reference vector after scaling. A normal fitting board cannot match itself. The older mean-patch result is preserved beside the later recorded comparison.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "0:47",
-      "kind": "",
-      "answer": null,
-      "name": "patches",
-      "start_minute": 47,
-      "concept": "Compare each patch with real normal examples",
-      "source": [
-        "src/forge_workshop_kit/inspection.py",
-        "scripts/inspection_cells.py"
-      ],
-      "evidence": [
-        "data/inspection-v1/manifest.json",
-        "docs/inspection-workshop.md"
-      ],
-      "exercise": null,
-      "timing": {
-        "section": "features",
-        "start": 47,
-        "duration": 6
-      }
-    },
-    {
-      "number": 14,
-      "key": "append-patches",
-      "name": "append-patches",
-      "title": "Append 196 distances to the 512 whole-image values",
-      "body": "<InspectionMechanism kind=\"features\" :step=\"2\" />",
-      "notes": "Walk the same board through errors, log1p, reshape and concatenate. The output has 708 columns. axis=0 would add observations rather than features and fail the shape/order fixture. log1p compresses large distances; it does not turn them into probabilities.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "0:53",
-      "start_minute": 53,
-      "kind": "",
-      "answer": null,
-      "concept": "Append 196 distances to the 512 whole-image values",
-      "exercise": null,
-      "source": [
-        "src/forge_workshop_kit/inspection.py",
-        "scripts/inspection_cells.py",
-        "src/forge_workshop_kit/inspection_teaching.py"
-      ],
-      "evidence": [],
-      "timing": {
-        "section": "features",
-        "start": 53,
-        "duration": 6
-      }
-    },
-    {
-      "number": 15,
-      "key": "features",
-      "title": "Add local information to the classifier",
-      "body": "<div class=\"task\">Notebook step: Compute image features.</div><ol class=\"exercise-controls\"><li>Complete <code>build_features</code>: calculate patch errors, apply <code>np.log1p</code>, and flatten one row per board.</li><li>Append the patch values to the whole-image vector along axis 1.</li><li>Click <strong>Check my patch-feature function</strong>.</li></ol><div class=\"done\">Check: The check preserves board order and verifies both whole-image and nearest-patch behavior.</div>",
-      "notes": "The learner function is passed into fitting and saved with the freeze. Final evaluation reloads that saved source, not the current draft.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "0:59",
-      "kind": "exercise",
-      "answer": "answer-features",
-      "name": "features",
-      "start_minute": 59,
-      "concept": "Add local information to the classifier",
-      "source": [
-        "src/forge_workshop_kit/inspection.py",
-        "scripts/inspection_cells.py"
-      ],
-      "evidence": [],
-      "exercise": {
-        "step": "Compute image features",
-        "function": "build_features",
-        "check": "Check my patch-feature function",
-        "run": null
-      },
-      "timing": {
-        "section": "features",
-        "start": 59,
-        "duration": 15
-      }
-    },
-    {
-      "number": 16,
-      "key": "cache",
-      "title": "Check the feature cache without rebuilding everything",
-      "body": "```python\nweights = teaching.fetch_weights(weights_path)\nresult = teaching.recompute_batch(data_root, weights)\nassert result[\"matching_cached_features\"]\n```\n<div class=\"bottom-note\">Optional button: Recompute four cached board features. Downloads pinned weights; no model-provider call.</div>",
-      "notes": "The retained lossless inputs allow exact feature comparison. The prepared full cache took 39.25 seconds on the preparation Mac using two Torch CPU threads. This is not an attendee timing guarantee.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "1:14",
-      "kind": "",
-      "answer": null,
-      "name": "cache",
-      "start_minute": 74,
-      "concept": "Check the feature cache without rebuilding everything",
-      "source": [
-        "src/forge_workshop_kit/inspection.py",
-        "scripts/inspection_cells.py"
-      ],
-      "evidence": [],
-      "exercise": null,
-      "timing": {
-        "section": "features",
-        "start": 74,
+        "section": "data",
+        "start": 32,
         "duration": 5
       }
     },
     {
-      "number": 17,
+      "number": 12,
       "key": "classifier",
-      "title": "Train the same classifier on each representation",
+      "title": "Fit a first detector on whole-image features",
       "body": "```python {1-4|6|all}\nmodel = inspection.fit_classifier(\n    data, fit_rows, method,\n    build_features=build_features,\n    C=0.03,\n)\nvalidation_scores = inspection.score(\n    data, validation_rows, model,\n    build_features=build_features,\n)\n```\n<div class=\"bottom-note\">C controls regularization. This worked recipe fixes C before your run; labels and training cases are the same.</div>",
       "notes": "Do not describe this as training a vision foundation model. We fit a logistic classifier over fixed encoder outputs. Patch distances add features but do not use pixel masks.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "1:19",
+      "time": "0:37",
       "kind": "",
       "answer": null,
       "name": "classifier",
-      "start_minute": 79,
-      "concept": "Train the same classifier on each representation",
+      "start_minute": 37,
+      "concept": "Fit a first detector on whole-image features",
       "source": [
         "src/forge_workshop_kit/inspection.py",
         "scripts/inspection_cells.py"
@@ -450,20 +319,20 @@
       "evidence": [],
       "exercise": null,
       "timing": {
-        "section": "classifier",
-        "start": 79,
+        "section": "features",
+        "start": 37,
         "duration": 3
       }
     },
     {
-      "number": 18,
+      "number": 13,
       "key": "fit-operation",
       "name": "fit-operation",
       "title": "Fit on training boards; measure on validation boards",
       "body": "<InspectionMechanism kind=\"train\" :step=\"1\" />",
       "notes": "Point to the learner build_features argument. The same function must be supplied to fit and score. We fit a small class-balanced logistic classifier, not the ResNet encoder. Saving a completed fit and exporting its trace happen afterward.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "1:22",
-      "start_minute": 82,
+      "time": "0:40",
+      "start_minute": 40,
       "kind": "",
       "answer": null,
       "concept": "Fit on training boards; measure on validation boards",
@@ -475,22 +344,22 @@
       ],
       "evidence": [],
       "timing": {
-        "section": "classifier",
-        "start": 82,
+        "section": "features",
+        "start": 40,
         "duration": 4
       }
     },
     {
-      "number": 19,
+      "number": 14,
       "key": "threshold",
       "title": "A detector score still needs an operating rule",
       "body": "<InspectionMechanism kind=\"threshold\" :step=\"1\" />",
       "notes": "Scores are decision values, not calibrated defect probabilities. The optional review margin is in score units. A valid threshold function does not make the policy safe.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "1:26",
+      "time": "0:44",
       "kind": "",
       "answer": null,
       "name": "threshold",
-      "start_minute": 86,
+      "start_minute": 44,
       "concept": "A detector score still needs an operating rule",
       "source": [
         "src/forge_workshop_kit/inspection.py",
@@ -499,20 +368,20 @@
       "evidence": [],
       "exercise": null,
       "timing": {
-        "section": "classifier",
-        "start": 86,
-        "duration": 6
+        "section": "features",
+        "start": 44,
+        "duration": 4
       }
     },
     {
-      "number": 20,
+      "number": 15,
       "key": "validation-cutoff",
       "name": "validation-cutoff",
       "title": "Require 11 of the 12 validation defects to be caught",
       "body": "<InspectionMechanism kind=\"threshold\" :step=\"2\" />",
       "notes": "The slider uses the exact existing free fixture. With three fixture defects and recall 2/3 the cutoff is 0.7. For the real validation set, ceil(.9*12)=11. Explain that the chosen cutoff constrains this validation set only.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "1:32",
-      "start_minute": 92,
+      "time": "0:48",
+      "start_minute": 48,
       "kind": "",
       "answer": null,
       "concept": "Require 11 of the 12 validation defects to be caught",
@@ -527,22 +396,22 @@
         "docs/inspection-workshop.md"
       ],
       "timing": {
-        "section": "classifier",
-        "start": 92,
-        "duration": 6
+        "section": "features",
+        "start": 48,
+        "duration": 5
       }
     },
     {
-      "number": 21,
+      "number": 16,
       "key": "threshold-exercise",
       "title": "Implement the validation threshold",
-      "body": "<div class=\"task\">Notebook step: Compare global and patch features.</div><ol class=\"exercise-controls\"><li>In <code>choose_threshold</code>, sort the scores of known validation defects.</li><li>Choose the largest cutoff that still catches at least 90% of them.</li><li>Click <strong>Check my threshold function</strong>, then <strong>Train both feature representations</strong>.</li></ol><div class=\"done\">Check: Compare misses and false alarms alongside average precision.</div>",
+      "body": "<div class=\"task\">Notebook step: Train the whole-image baseline.</div><ol class=\"exercise-controls\"><li>In <code>choose_threshold</code>, sort the scores of known validation defects.</li><li>Choose the largest cutoff that still catches at least 90% of them.</li><li>Click <strong>Check my threshold function</strong>, then <strong>Train the whole-image baseline</strong>.</li></ol><div class=\"done\">Check: Open one validation miss or false alarm before adding patch features.</div>",
       "notes": "Allow participants to finish the local check before training. The 90 percent requirement constrains recall on validation only, not a guarantee for the final set.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "1:38",
+      "time": "0:53",
       "kind": "exercise",
       "answer": "answer-threshold",
       "name": "threshold-exercise",
-      "start_minute": 98,
+      "start_minute": 53,
       "concept": "Implement the validation threshold",
       "source": [
         "src/forge_workshop_kit/inspection.py",
@@ -550,19 +419,235 @@
       ],
       "evidence": [],
       "exercise": {
-        "step": "Compare global and patch features",
+        "step": "Train the whole-image baseline",
         "function": "choose_threshold",
         "check": "Check my threshold function",
-        "run": "Train both feature representations"
+        "run": "Train the whole-image baseline"
       },
       "timing": {
-        "section": "metrics",
-        "start": 98,
-        "duration": 14
+        "section": "features",
+        "start": 53,
+        "duration": 12
+      }
+    },
+    {
+      "number": 17,
+      "name": "baseline-observation",
+      "key": "baseline-observation",
+      "title": "Inspect a baseline miss or false alarm",
+      "body": "<div class=\"task\">Notebook: Train the whole-image baseline</div><ol class=\"exercise-controls\"><li>Select a validation board. Compare the photograph, annotation, score, and cutoff.</li><li>Explain what the whole-image detector missed or flagged. What local detail might help?</li><li>Optionally click <strong>Save my baseline observation</strong>.</li></ol><p class=\"done\"><b>Check:</b> A saved baseline decision supports your hypothesis. No patch model has run yet.</p>",
+      "notes": "Choose a saved validation error if available; do not force a failure. If the baseline gets the selected board right, describe what evidence would distinguish the next representation. The displayed score comes from the saved weights and feature source.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/inspection_cells.py.",
+      "kind": "exercise",
+      "time": "1:05",
+      "start_minute": 65,
+      "answer": null,
+      "concept": "Inspect a baseline miss or false alarm",
+      "source": [
+        "scripts/inspection_cells.py"
+      ],
+      "evidence": [],
+      "exercise": {
+        "step": "Train the whole-image baseline",
+        "function": null,
+        "check": null,
+        "run": "Save my baseline observation"
+      },
+      "timing": {
+        "section": "features",
+        "start": 65,
+        "duration": 7
+      }
+    },
+    {
+      "number": 18,
+      "key": "patch-grid",
+      "name": "patch-grid",
+      "title": "Keep local information as well as the whole image",
+      "body": "<InspectionMechanism kind=\"encoder\" :step=\"2\" />",
+      "notes": "Read the shapes out loud: N boards, 14 rows, 14 columns, 64 feature channels. The overlay shows feature positions schematically, not exact independent image crops. The whole-image representation has 512 values; the grid retains spatial differences.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
+      "time": "1:12",
+      "start_minute": 72,
+      "kind": "",
+      "answer": null,
+      "concept": "Keep local information as well as the whole image",
+      "exercise": null,
+      "source": [
+        "src/forge_workshop_kit/inspection.py",
+        "scripts/inspection_cells.py",
+        "src/forge_workshop_kit/inspection_teaching.py"
+      ],
+      "evidence": [
+        "src/forge_workshop_kit/inspection_encoder.py"
+      ],
+      "timing": {
+        "section": "features",
+        "start": 72,
+        "duration": 4
+      }
+    },
+    {
+      "number": 19,
+      "key": "patches",
+      "title": "Compare local features at the same board position",
+      "body": "<InspectionMechanism kind=\"patch\" :step=\"1\" />",
+      "notes": "Use only normal fitting boards as the reference bank. At each spatial position, find the closest actual reference vector after scaling. A normal fitting board cannot match itself. The older mean-patch result is preserved beside the later recorded comparison.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
+      "time": "1:16",
+      "kind": "",
+      "answer": null,
+      "name": "patches",
+      "start_minute": 76,
+      "concept": "Compare each patch with real normal examples",
+      "source": [
+        "src/forge_workshop_kit/inspection.py",
+        "scripts/inspection_cells.py"
+      ],
+      "evidence": [
+        "data/inspection-v1/manifest.json",
+        "docs/inspection-workshop.md"
+      ],
+      "exercise": null,
+      "timing": {
+        "section": "features",
+        "start": 76,
+        "duration": 6
+      }
+    },
+    {
+      "number": 20,
+      "name": "one-patch-distance",
+      "key": "one-patch-distance",
+      "title": "Calculate the distance at one image position",
+      "body": "<div class=\"task\">Notebook: Compute image features</div><p>Click <strong>Calculate one patch distance</strong>. Read the visible calculation at row 7, column 7 of fitting board pcb1-anomaly-005.</p><ol class=\"exercise-controls\"><li>Scale each channel using normal fitting boards.</li><li>Compare the query vector with each normal vector at that position.</li><li>Take the smallest mean squared difference, then log1p.</li></ol><p class=\"done\"><b>Check:</b> Your displayed minimum agrees with nearest_patch_errors.</p>",
+      "notes": "These values come from the real prepared feature cache, not the five-board threshold fixture. Only fitting boards form the reference bank. The free calculation does not fit a classifier.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/inspection_cells.py.",
+      "kind": "exercise",
+      "time": "1:22",
+      "start_minute": 82,
+      "answer": null,
+      "concept": "Calculate the distance at one image position",
+      "source": [
+        "scripts/inspection_cells.py"
+      ],
+      "evidence": [],
+      "exercise": {
+        "step": "Compute image features",
+        "function": null,
+        "check": null,
+        "run": "Calculate one patch distance"
+      },
+      "timing": {
+        "section": "classifier",
+        "start": 82,
+        "duration": 5
+      }
+    },
+    {
+      "number": 21,
+      "key": "append-patches",
+      "name": "append-patches",
+      "title": "Append 196 distances to the 512 whole-image values",
+      "body": "<InspectionMechanism kind=\"features\" :step=\"2\" />",
+      "notes": "Walk the same board through errors, log1p, reshape and concatenate. The output has 708 columns. axis=0 would add observations rather than features and fail the shape/order fixture. log1p compresses large distances; it does not turn them into probabilities.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
+      "time": "1:27",
+      "start_minute": 87,
+      "kind": "",
+      "answer": null,
+      "concept": "Append 196 distances to the 512 whole-image values",
+      "exercise": null,
+      "source": [
+        "src/forge_workshop_kit/inspection.py",
+        "scripts/inspection_cells.py",
+        "src/forge_workshop_kit/inspection_teaching.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "classifier",
+        "start": 87,
+        "duration": 5
       }
     },
     {
       "number": 22,
+      "key": "features",
+      "title": "Add local information to the classifier",
+      "body": "<div class=\"task\">Notebook step: Compute image features.</div><ol class=\"exercise-controls\"><li>Complete <code>build_features</code>: calculate patch errors, apply <code>np.log1p</code>, and flatten one row per board.</li><li>Append the patch values to the whole-image vector along axis 1.</li><li>Click <strong>Check my patch-feature function</strong>.</li></ol><div class=\"done\">Check: The check preserves board order and verifies both whole-image and nearest-patch behavior.</div>",
+      "notes": "The learner function is passed into fitting and saved with the freeze. Final evaluation reloads that saved source, not the current draft.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
+      "time": "1:32",
+      "kind": "exercise",
+      "answer": "answer-features",
+      "name": "features",
+      "start_minute": 92,
+      "concept": "Add local information to the classifier",
+      "source": [
+        "src/forge_workshop_kit/inspection.py",
+        "scripts/inspection_cells.py"
+      ],
+      "evidence": [],
+      "exercise": {
+        "step": "Compute image features",
+        "function": "build_features",
+        "check": "Check my patch-feature function",
+        "run": null
+      },
+      "timing": {
+        "section": "classifier",
+        "start": 92,
+        "duration": 9
+      }
+    },
+    {
+      "number": 23,
+      "key": "cache",
+      "title": "Check the feature cache without rebuilding everything",
+      "body": "```python\nweights = teaching.fetch_weights(weights_path)\nresult = teaching.recompute_batch(data_root, weights)\nassert result[\"matching_cached_features\"]\n```\n<div class=\"bottom-note\">Optional button: Recompute four cached board features. Downloads pinned weights; no model-provider call.</div>",
+      "notes": "The retained lossless inputs allow exact feature comparison. The prepared full cache took 39.25 seconds on the preparation Mac using two Torch CPU threads. This is not an attendee timing guarantee.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
+      "time": "1:41",
+      "kind": "",
+      "answer": null,
+      "name": "cache",
+      "start_minute": 101,
+      "concept": "Check the feature cache without rebuilding everything",
+      "source": [
+        "src/forge_workshop_kit/inspection.py",
+        "scripts/inspection_cells.py"
+      ],
+      "evidence": [],
+      "exercise": null,
+      "timing": {
+        "section": "metrics",
+        "start": 101,
+        "duration": 3
+      }
+    },
+    {
+      "number": 24,
+      "name": "patch-experiment",
+      "key": "patch-experiment",
+      "title": "Test patches against the saved baseline",
+      "body": "<div class=\"task\">Notebook: Compare global and patch features</div><ol class=\"exercise-controls\"><li>Keep the whole-image branch, C=0.03, and threshold rule unchanged.</li><li>Click <strong>Train the patch-feature alternative</strong>.</li><li>Compare its validation mistakes with the saved whole-image result.</li></ol><p class=\"done\"><b>Check:</b> Both representations are saved before continuing to review selection.</p>",
+      "notes": "The first fit remains valid while learners implement the patch branch. A changed threshold rule or changed whole-image inputs would confound this comparison and is rejected. Previously saved matching runs are reused.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/inspection_cells.py.",
+      "kind": "exercise",
+      "time": "1:44",
+      "start_minute": 104,
+      "answer": null,
+      "concept": "Test patches against the saved baseline",
+      "source": [
+        "scripts/inspection_cells.py"
+      ],
+      "evidence": [],
+      "exercise": {
+        "step": "Compare global and patch features",
+        "function": null,
+        "check": null,
+        "run": "Train the patch-feature alternative"
+      },
+      "timing": {
+        "section": "metrics",
+        "start": 104,
+        "duration": 8
+      }
+    },
+    {
+      "number": 25,
       "key": "metrics",
       "title": "Keep ranking quality and operating errors separate",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Measure</th><th>Question it answers</th></tr><tr><td>Average precision</td><td>Are defective boards ranked ahead of normal boards?</td></tr><tr><td>Misses and false alarms</td><td>What happens at the frozen threshold?</td></tr><tr><td>Review volume</td><td>How many decisions are handed to a person?</td></tr></tbody></table>",
@@ -586,7 +671,7 @@
       }
     },
     {
-      "number": 23,
+      "number": 26,
       "key": "ranking-ap",
       "name": "ranking-ap",
       "title": "Calculate ranking quality before choosing one cutoff",
@@ -613,7 +698,7 @@
       }
     },
     {
-      "number": 24,
+      "number": 27,
       "key": "operating-errors",
       "name": "operating-errors",
       "title": "Count operating errors at the chosen cutoff",
@@ -638,7 +723,7 @@
       }
     },
     {
-      "number": 25,
+      "number": 28,
       "key": "forge",
       "title": "Follow one trained classifier through Forge",
       "body": "<div class=\"flow\"><div class=\"box\">Agent Lens<br><small>training operation</small></div><span>\u2192</span><div class=\"box\">W&B run<br><small>settings + metrics</small></div><span>\u2192</span><div class=\"box\">Artifact<br><small>classifier + source</small></div></div><div class=\"bottom-note\">Open your own links. Find C, the representation, the validation errors, and the saved classifier file.</div>",
@@ -662,7 +747,7 @@
       }
     },
     {
-      "number": 26,
+      "number": 29,
       "key": "forge-training",
       "title": "Read the recorded training call",
       "body": "<div class=\"native-pair\"><div class=\"native-crop\"><img src=\"/images/agent-lens-training-original.png\" alt=\"Native Agent Lens tool input and validation output for the nearest-patch classifier\"><span class=\"pin one\">1</span><span class=\"pin two\">2</span></div><div class=\"native-notes\"><h2>1 \u00b7 What ran</h2><p>397 fitting boards.<br>Nearest-patch features.<br>C = 0.03.</p><h2>2 \u00b7 What it returned</h2><p>On <strong>132 validation boards</strong>: AP 0.883923, one missed defect, four false alarms.</p><p class=\"small\">These are validation results. Final-test AP is reported later.</p></div></div><div class=\"bottom-note\"><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ff65c2eaa1cc5c5cf8adb6cb706f5f52\">Open this recorded call in Agent Lens \u2197</a> \u00b7 Cropped for legibility; the source capture is included.</div>",
@@ -688,7 +773,7 @@
       }
     },
     {
-      "number": 27,
+      "number": 30,
       "key": "training-evidence",
       "name": "training-evidence",
       "title": "Match the tool call to the saved validation result",
@@ -713,7 +798,7 @@
       }
     },
     {
-      "number": 28,
+      "number": 31,
       "key": "break",
       "title": "Take ten minutes. Return at 2:20.",
       "body": "<div class=\"sub\">Before you leave, check that both trained versions are saved. The notebook will wait; it has not developed an independent work ethic.</div>",
@@ -737,7 +822,7 @@
       }
     },
     {
-      "number": 29,
+      "number": 32,
       "key": "active-selection",
       "name": "active-selection",
       "title": "Choose uncertain boards before opening their labels",
@@ -764,7 +849,7 @@
       }
     },
     {
-      "number": 30,
+      "number": 33,
       "key": "random-control",
       "name": "random-control",
       "title": "Give random selection the same labeling budget",
@@ -789,7 +874,7 @@
       }
     },
     {
-      "number": 31,
+      "number": 34,
       "key": "review",
       "title": "Choose where the review time goes",
       "body": "<div class=\"task\">Notebook step: Choose examples to review.</div><ol class=\"exercise-controls\"><li>Complete <code>choose_review</code> using distance from the current threshold. Do not read labels.</li><li>Click <strong>Check my review selector</strong>.</li><li>Click <strong>Select 24 boards for each review method</strong>.</li></ol><div class=\"done\">Check: The active and random methods select 24 cases each from the same pool.</div>",
@@ -818,7 +903,7 @@
       }
     },
     {
-      "number": 32,
+      "number": 35,
       "key": "human",
       "title": "Save what the reviewer actually decided",
       "body": "<div class=\"two-col\"><div class=\"box\"><h2>Your assessment</h2><p>Choose normal, defective, or needs another reviewer before revealing the annotation.</p><p>Save your assessment and whether the annotation was visible.</p></div><div class=\"box\"><h2>Batch acquisition</h2><p>Reveal the authors\u2019 supplied labels for the selected 24 boards.</p><p>Label this a simulation of acquiring annotations.</p></div></div>",
@@ -842,7 +927,7 @@
       }
     },
     {
-      "number": 33,
+      "number": 36,
       "key": "review-fit",
       "title": "Train with the additional labels",
       "body": "<div class=\"task\">Use both review selections, not just the one you prefer.</div><ol class=\"exercise-controls\"><li>Inspect selected board photos and masks. Save at least one assessment.</li><li>Click <strong>Reveal batch labels and train the two reviewed classifiers</strong>.</li><li>Compare validation AP, misses and false alarms with the initial detector.</li></ol><div class=\"done\">Check: Both new models use 397 initial boards plus 24 revealed cases.</div>",
@@ -873,7 +958,7 @@
       }
     },
     {
-      "number": 34,
+      "number": 37,
       "key": "freeze",
       "title": "Choose before opening the final results",
       "body": "<div class=\"task\">Notebook step: Freeze the detector.</div><ol class=\"exercise-controls\"><li>Compare the four validation rows.</li><li>Choose a version and explain the tradeoff you accept.</li><li>Click <strong>Freeze models and thresholds before testing</strong>.</li></ol><div class=\"done\">Check: The freeze contains the classifier, exact feature source, threshold and selection reason.</div>",
@@ -904,7 +989,7 @@
       }
     },
     {
-      "number": 35,
+      "number": 38,
       "key": "detector-bundle",
       "name": "detector-bundle",
       "title": "Freeze the preprocessing and reference bank too",
@@ -929,7 +1014,7 @@
       }
     },
     {
-      "number": 36,
+      "number": 39,
       "key": "break-two",
       "name": "break-two",
       "title": "Take ten minutes. Return at 3:30.",
@@ -952,7 +1037,7 @@
       }
     },
     {
-      "number": 37,
+      "number": 40,
       "key": "final",
       "title": "Evaluate the same 442 boards",
       "body": "<div class=\"task\">Notebook step: Inspect untouched boards.</div><ol class=\"exercise-controls\"><li>Click <strong>Evaluate all four frozen detectors on 442 test boards</strong>.</li><li>Choose a test board and compare predictions against its photo and mask.</li><li>Click <strong>Publish saved comparisons to Forge</strong>.</li></ol><div class=\"done\">Check: Every version has a row for the same board; unavailable publication is shown separately.</div>",
@@ -984,7 +1069,7 @@
       }
     },
     {
-      "number": 38,
+      "number": 41,
       "key": "native-comparison",
       "title": "Compare four detectors on the same boards",
       "body": "<div class=\"eval-native\"><div class=\"eval-native-image\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\"><img src=\"/images/evaltables-native.png\" alt=\"Native Forge Evaluation Tables Preview showing saved workshop results\"></a><span class=\"eval-native-pin\" style=\"left:6%;top:39%\" aria-hidden=\"true\">1</span><span class=\"eval-native-pin\" style=\"left:6%;top:79%\" aria-hidden=\"true\">2</span><span class=\"eval-native-pin\" style=\"left:6%;top:60%\" aria-hidden=\"true\">3</span></div><div class=\"eval-native-notes\"><p><b>1 \u00b7 Set the reference</b><br>Use the whole-image detector first.</p><p><b>2 \u00b7 Align the board</b><br>Open one case to compare the same photograph.</p><p><b>3 \u00b7 Read checked outcomes</b><br>Correct and error score the frozen decisions. Review policy is separate.</p></div></div><p class=\"eval-native-caption\">Recorded results in Forge \u00b7 Evaluation Tables (Preview) \u00b7 <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\">Open this comparison \u2197</a></p>",
@@ -1010,7 +1095,7 @@
       }
     },
     {
-      "number": 39,
+      "number": 42,
       "key": "native-board",
       "title": "Inspect the board behind a prediction",
       "body": "<div class=\"eval-native-states\"><div><div class=\"eval-native\"><div class=\"eval-native-image\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\"><img src=\"/images/evaltables-native-detail.png\" alt=\"Native Forge Evaluation Tables Preview showing saved workshop results\"></a><span class=\"eval-native-pin\" style=\"left:28.3%;top:25%\" aria-hidden=\"true\">1</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:85.5%\" aria-hidden=\"true\">2</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:95%\" aria-hidden=\"true\">3</span></div><div class=\"eval-native-notes\"><p><b>1 \u00b7 Look at the board</b><br>This is the actual PCB1 test photograph.</p><p><b>2 \u00b7 Compare predictions</b><br>All four flag this board as defective.</p><p><b>3 \u00b7 Check the threshold</b><br>Read each score against that detector\u2019s frozen cutoff.</p></div></div><p class=\"eval-native-caption\">Recorded results in Forge \u00b7 Evaluation Tables (Preview) \u00b7 <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\">Open this comparison \u2197</a></p></div><div v-click=\"1\" class=\"eval-native-overlay\"><div class=\"eval-native\"><div class=\"eval-native-image\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\"><img src=\"/images/evaltables-native-mask.png\" alt=\"Native Forge Evaluation Tables Preview showing saved workshop results\"></a><span class=\"eval-native-pin\" style=\"left:28.3%;top:40%\" aria-hidden=\"true\">1</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:22%\" aria-hidden=\"true\">2</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:88%\" aria-hidden=\"true\">3</span></div><div class=\"eval-native-notes\"><p><b>1 \u00b7 Read the annotation</b><br>White pixels mark the dataset\u2019s reference defects.</p><p><b>2 \u00b7 Compare decisions</b><br>All four detectors flag this same board.</p><p><b>3 \u00b7 Check the result</b><br>Every prediction matches the defective label on this case.</p></div></div><p class=\"eval-native-caption\">Reference defect mask: white marks annotated defects, not model localization. \u00b7 <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\">Open this comparison \u2197</a></p></div></div>",
@@ -1036,7 +1121,7 @@
       }
     },
     {
-      "number": 40,
+      "number": 43,
       "key": "failure",
       "title": "The first worked recipe did not pass its gate",
       "body": "<table class=\"clean-table\"><tbody><tr><th>First frozen recipe</th><th>Average precision</th><th>Misses</th><th>False alarms</th></tr><tr><td>Whole image</td><td>0.861762</td><td>4</td><td>36</td></tr><tr><td>Mean-patch + whole image</td><td>0.855382</td><td>2</td><td>33</td></tr></tbody></table><div class=\"bottom-note\">Its declared primary measure was average precision. Fewer operating errors did not turn the AP loss into a pass.</div>",
@@ -1062,7 +1147,7 @@
       }
     },
     {
-      "number": 41,
+      "number": 44,
       "key": "retest",
       "title": "The bounded follow-up improved this teaching retest",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Frozen follow-up</th><th>Average precision</th><th>Misses / 40</th><th>False alarms / 402</th></tr><tr><td>Whole image</td><td>0.872900</td><td>4</td><td>23</td></tr><tr><td>Nearest-patch + whole image</td><td>0.885742</td><td>3</td><td>18</td></tr></tbody></table><div class=\"bottom-note\">One predeclared validation grid; already-inspected final images. AP gain: 1.284 points. This is a teaching retest, not fresh benchmark evidence.</div>",
@@ -1089,7 +1174,7 @@
       }
     },
     {
-      "number": 42,
+      "number": 45,
       "key": "improved-case",
       "title": "Inspect a corrected miss",
       "body": "<InspectionMechanism kind=\"outcomes\" case-id=\"pcb1-anomaly-048\" />",
@@ -1116,7 +1201,7 @@
       }
     },
     {
-      "number": 43,
+      "number": 46,
       "key": "regression",
       "title": "Inspect a new miss too",
       "body": "<InspectionMechanism kind=\"outcomes\" case-id=\"pcb1-anomaly-015\" />",
@@ -1143,7 +1228,7 @@
       }
     },
     {
-      "number": 44,
+      "number": 47,
       "key": "reproduce",
       "title": "Reload the version you chose",
       "body": "<div class=\"task\">Notebook step: Reproduce the selected version.</div><ol class=\"exercise-controls\"><li>Click <strong>Reload the selected classifier and reproduce one prediction</strong>.</li><li>Compare the reloaded score with the saved value.</li><li>Explain what improved, what did not, and what data you would collect next.</li></ol><div class=\"done\">Check: The exact file and source reproduce the saved result; your conclusion links to its evidence.</div>",
@@ -1174,7 +1259,7 @@
       }
     },
     {
-      "number": 45,
+      "number": 48,
       "key": "reload-detector",
       "name": "reload-detector",
       "title": "Reproduce one score from the saved detector",
@@ -1199,7 +1284,7 @@
       }
     },
     {
-      "number": 46,
+      "number": 49,
       "key": "release",
       "title": "A tested artifact can become the next release",
       "body": "<div class=\"flow\"><div class=\"box\">Evaluation<br><small>result + decision</small></div><span>\u2192</span><div class=\"box\">Registry<br><small>exact artifact</small></div><span>\u2192</span><div class=\"box\">Batch predictor<br><small>load that version</small></div></div><div class=\"bottom-note\">Optional: fail a release check, then restore the previous artifact. Registry does not deploy an arbitrary Python classifier.</div>",
@@ -1223,7 +1308,7 @@
       }
     },
     {
-      "number": 47,
+      "number": 50,
       "key": "conclusion",
       "title": "Write down the decision you would make",
       "body": "<div class=\"box\"><p>\u201cWe changed ____. On the same boards, ____ improved and ____ got worse. We selected ____ because ____. Before releasing it, we would test ____.\u201d</p></div><div class=\"bottom-note\">Publish my inspection Report \u00b7 include actual comparisons, saved artifacts, and the next question.</div>",
@@ -1247,7 +1332,7 @@
       }
     },
     {
-      "number": 48,
+      "number": 51,
       "key": "answer-features",
       "title": "Worked answer: assemble the local features",
       "body": "```python\nwhole = data[\"whole\"][rows]\nif method == \"whole\":\n    return whole\nif method == \"nearest-patch\":\n    errors = inspection.nearest_patch_errors(data, rows, reference)\nelse:\n    errors = inspection.patch_errors(data[\"patches\"][rows], reference)\nlocal = np.log1p(errors).reshape(len(rows), -1)\nreturn np.concatenate([whole, local], axis=1)\n```\n<div class=\"bottom-note\">Both branches are exercised by the free check. The live comparison uses nearest-patch.</div>",
@@ -1271,7 +1356,7 @@
       }
     },
     {
-      "number": 49,
+      "number": 52,
       "key": "answer-threshold",
       "title": "Worked answer: meet the validation recall target",
       "body": "```python\npositives = np.sort(scores[target == 1])[::-1]\nposition = int(np.ceil(recall * len(positives))) - 1\nreturn float(positives[position])\n```\n<div class=\"bottom-note\">At 12 validation defects and recall .90, keep the top 11 above the threshold.</div>",
@@ -1295,7 +1380,7 @@
       }
     },
     {
-      "number": 50,
+      "number": 53,
       "key": "answer-review",
       "title": "Worked answer: choose uncertain cases",
       "body": "```python\nrng = np.random.default_rng(seed)\norder = rng.permutation(len(rows))\norder = order[np.argsort(\n    np.abs(scores[order] - threshold), kind=\"stable\"\n)]\nreturn np.asarray(rows)[order[:budget]]\n```\n<div class=\"bottom-note\">The permutation only breaks equal-distance ties. Do not pass labels to this function.</div>",

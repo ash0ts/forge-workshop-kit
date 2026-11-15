@@ -10,6 +10,8 @@ Write down the audience, duration, learning outcome, dataset and license, change
 
 The workshop manifest owns titles, workflow identities, dependency extras, entry points, and exercise references. Authored cells own learner code and explanations. Storyboards own diagrams, presenter notes, and slide sequence. See the [source map](source-map.md) for their locations.
 
+Use the [teaching sequence](teaching-sequence.md) to order those exercises. Participants inspect a development example before connecting, run one result before a batch, and examine an error before implementing an alternative. Explain the code they will change beside its inputs and output. Predictions are short discussion prompts or existing notes, not additional approval forms.
+
 ```sh
 uv sync --frozen --all-extras
 uv run --all-extras forge-workshop --help

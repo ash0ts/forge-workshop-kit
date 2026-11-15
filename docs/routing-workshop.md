@@ -10,10 +10,10 @@ The deck pauses at each transformation before the participant writes or runs it.
 
 | Time | Participants change or investigate | Check before moving on |
 |---|---|---|
-| 0–26 | Copy the notebook, add a tracing attribute, send a setup trace | Find the field in their own Agent Lens span |
-| 26–36 | Inspect Banking77 requests and the fixed partitions | Explain why similar messages can need different support workflows |
-| 36–72 | Follow text into features, implement `make_classifier`, fit both models | Distinguish constructing, fitting and predicting; inspect the saved source |
-| 72–95 | Calculate one intent’s precision, recall and F1 from recorded predictions | Explain why macro-F1 requires the complete matched prediction set |
+| 0–30 | Guess the bundled development request’s intent before connecting; inspect partitions and send a setup trace | Explain the expected route, then find the tracing field in Agent Lens |
+| 30–56 | Implement `make_classifier`, fit four practice points, then train the word-feature baseline | Inspect a validation request and save an observation before discussing alternatives |
+| 56–76 | Explain frozen sentence features and run the alternative with unchanged classifier code | Compare both predictions on the same request; both saved runs complete the comparison |
+| 76–95 | Calculate one intent’s precision, recall and F1 from recorded predictions | Explain why macro-F1 requires the complete matched prediction set |
 | 95–130 | Implement the review policy, inspect confidence and margin, save four labels | Separate automatic deferral from choosing labeling candidates |
 | 130–140 | Break | Trained versions and reviews are saved |
 | 140–190 | Run eight model routes, implement the judge validator, compare with personal reviews | Keep schema validity, judgment agreement and routing quality separate |
@@ -29,6 +29,10 @@ The deck pauses at each transformation before the participant writes or runs it.
 | 320–330 | Publish the model and release conclusions together | Separate model quality, release correctness, and the remaining errors |
 
 The deck’s threshold slider recomputes coverage from the saved 770 validation predictions. It makes no model call. The F1 walkthrough uses actual saved `card_arrival` predictions: 34 true positives, three false positives and six false negatives. The eight prompted routing calls and the judge exercise are separate paths: the judge reviews classifier proposals attached to participants’ accepted labels, not those eight prompted routes.
+
+The first training button saves the TF–IDF model and enables validation-case inspection. The baseline comparison checkpoint remains incomplete until the sentence-feature run is also saved. Existing completed comparisons restore without additional fitting. If the classifier draft differs from the first run, restore that source before continuing; a different recipe belongs in another workspace.
+
+The notebook separates **Route with the fixed model** from **Check the automated reviewer**. In the latter, ask participants to read their saved human reviews before editing the rubric.
 
 Run labels and code checks are literal. The notebook's occasional support-desk humor does not replace an instruction or a failure message.
 
