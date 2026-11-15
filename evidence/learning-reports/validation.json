@@ -1,0 +1,74 @@
+{
+  "checked_at": "2026-11-15T22:08:06.483020+00:00",
+  "project": "wandb/forge-workshop-kit",
+  "reports": [
+    {
+      "workshop": "pending",
+      "report": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ==",
+      "source_sha256": "36c20a6ffd8e490709e011a84232f2d103965c231814fd9c8c0a758734874388",
+      "anonymous_content_readback": true,
+      "rendered_images": 3,
+      "browser_check": "Authenticated Forge page: headings, code, images, tables, and notebook links inspected",
+      "screenshot": "pending.png"
+    },
+    {
+      "workshop": "solar",
+      "report": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg==",
+      "source_sha256": "65153c395118ad03c14c20555b5b56b12d90645de39638675b938d5171833bc6",
+      "anonymous_content_readback": true,
+      "rendered_images": 4,
+      "browser_check": "Authenticated Forge page: headings, code, images, tables, and notebook links inspected",
+      "screenshot": "solar.png"
+    },
+    {
+      "workshop": "routing",
+      "report": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw==",
+      "source_sha256": "c160d9be3fcdd60c2abd1a4c759df0197c85d52525ae9887d941fed44edbc512",
+      "anonymous_content_readback": true,
+      "rendered_images": 3,
+      "browser_check": "Authenticated Forge page: headings, code, images, tables, and notebook links inspected",
+      "screenshot": "routing.png"
+    },
+    {
+      "workshop": "inspection",
+      "report": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA==",
+      "source_sha256": "16fb24e510432641aa288c290199a6a1e99297251723cd463c46c427870269d2",
+      "anonymous_content_readback": true,
+      "rendered_images": 3,
+      "browser_check": "Authenticated Forge page: headings, code, images, tables, and notebook links inspected",
+      "screenshot": "inspection.png"
+    },
+    {
+      "workshop": "transit",
+      "report": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ==",
+      "source_sha256": "063e4f3521bcb79bee3764d57571e46254c5476b63ea253c16b7d88b5cfe97a8",
+      "anonymous_content_readback": true,
+      "rendered_images": 2,
+      "browser_check": "Authenticated Forge page: headings, code, images, tables, and notebook links inspected",
+      "screenshot": "transit.png"
+    },
+    {
+      "workshop": "airline",
+      "report": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA==",
+      "source_sha256": "ce858ad226b24c7f4f83aff829e6fec0be578f3c90e2d64e5b7c231072ac962c",
+      "anonymous_content_readback": true,
+      "rendered_images": 3,
+      "browser_check": "Authenticated Forge page: headings, code, images, tables, and notebook links inspected",
+      "screenshot": "airline.png"
+    }
+  ],
+  "checks": {
+    "publisher_tests_passed": 7,
+    "ruff": "passed",
+    "library_report_and_notebook_links": 12,
+    "paid_inference_requests": 0,
+    "training_runs": 0,
+    "authoring_cli_tests_passed": 10,
+    "library_browser_check": "passed; six Report/deck/notebook groups",
+    "library_screenshot": "library.png"
+  },
+  "limits": [
+    "Anonymous content access was verified through GraphQL; browser rendering was checked in an authenticated session.",
+    "No new external-account notebook or human rehearsal was performed; workshop readiness classifications are unchanged."
+  ]
+}

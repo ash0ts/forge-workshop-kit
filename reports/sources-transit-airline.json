@@ -1,0 +1,366 @@
+{
+  "schema_version": 1,
+  "purpose": "Source ledger for public learning Reports. Existing records only; no new experiments or native-feature checks.",
+  "checked_at": "2026-11-15",
+  "reports": {
+    "transit": {
+      "file": "reports/transit.md",
+      "title": "Coordinate coding agents, then test the app they built",
+      "workshop": "transit",
+      "notebook": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view",
+      "deck": "https://ash0ts.github.io/forge-workshop-kit/transit/",
+      "claims": [
+        {
+          "claim": "Historical MBTA feed, five retained stations, trip 63926435 at Park Street 24:08 under November 28 service means November 29 00:08 Eastern; not live arrivals.",
+          "sources": [
+            {
+              "path": "examples/transit/README.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/transit/README.md",
+              "sha256": "05a0a0bcd7135234ea713c919aa5d93828cbb72030bf937558de4d4dcdc06e22"
+            },
+            {
+              "path": "scripts/prepare_transit.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_transit.py",
+              "sha256": "402edc37f852c96e262d7b8fb435746e24e4257f0b8d416c9246e1bc819d5667"
+            }
+          ]
+        },
+        {
+          "claim": "Visible worker hooks and task readiness require integrated dependencies. Atomic claim holds the store lock and records ownership before dispatch; free race check is separate from model quality.",
+          "sources": [
+            {
+              "path": "scripts/transit_cells.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/transit_cells.py",
+              "sha256": "88686a9541300625185b8a2e1858a8409f653506d0402212538508307dd5f64a"
+            },
+            {
+              "path": "src/forge_workshop_kit/factory.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory.py",
+              "sha256": "ccca4f997a426202cb998f224757575f1a3370bcbdac8a98e36b5af61e86a9f5"
+            },
+            {
+              "path": "src/forge_workshop_kit/factory_teaching.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory_teaching.py",
+              "sha256": "cfe4e0b13c318db59b7f170503806825e9e6aabfa44d6c5dfacaa3e2d89bf0cd"
+            }
+          ]
+        },
+        {
+          "claim": "R5 solo 10/10 in 124.78s at $0.01107; team 8/10 in 94.91s at $0.01221. Both initially pass five development checks. Time excludes human review/integration.",
+          "sources": [
+            {
+              "path": "docs/transit-workshop.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-workshop.md",
+              "sha256": "86b575bce60d3e496244ea58293287f9d4812ed20deba81a50c08b9f6071768e"
+            },
+            {
+              "path": "evidence/transit-v060-rehearsal-summary.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/transit-v060-rehearsal-summary.json",
+              "sha256": "a5c5288147697f8b71e647903451b1d455d8423d85e14b75f56d2e9c2ca1ab0a"
+            }
+          ],
+          "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=dg2ogm6wp3z"
+        },
+        {
+          "claim": "Two UTC scenario failures expose one underlying bug: request 23:00 UTC, expected 18:03 Eastern trip 63919613, team returned trip 63919759.",
+          "sources": [
+            {
+              "path": "docs/transit-workshop.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-workshop.md",
+              "sha256": "86b575bce60d3e496244ea58293287f9d4812ed20deba81a50c08b9f6071768e"
+            }
+          ],
+          "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=dg2ogm6wp3z"
+        },
+        {
+          "claim": "R5 with/without-memory follow-ups each 12/18; query tasks stop at input/output limits before testing. No demonstrated memory benefit and neither follow-up is releasable.",
+          "sources": [
+            {
+              "path": "docs/transit-workshop.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-workshop.md",
+              "sha256": "86b575bce60d3e496244ea58293287f9d4812ed20deba81a50c08b9f6071768e"
+            },
+            {
+              "path": "evidence/transit-v060-rehearsal-summary.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/transit-v060-rehearsal-summary.json",
+              "sha256": "a5c5288147697f8b71e647903451b1d455d8423d85e14b75f56d2e9c2ca1ab0a"
+            }
+          ],
+          "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=f9jpm0yjsxy"
+        },
+        {
+          "claim": "Copy into own project; editable notebook, adjustable $8 inference allowance, separate compute/ARIA; technical preview external-account and human rehearsals outstanding.",
+          "sources": [
+            {
+              "path": "README.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
+              "sha256": "948b9ffd721e281cbec2346e5cada00400dc2b6dbc418ebf52ec5402121b54cf"
+            },
+            {
+              "path": "docs/setup.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md",
+              "sha256": "203fb84ffc06c4ddd1dda4bc8eb8b851eea43099593c09b092f9019f72f0bdca"
+            },
+            {
+              "path": "docs/transit-facilitator.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-facilitator.md",
+              "sha256": "3f2532dfe6dc44420bfaf67fe15a36ae0a8238a060e6ce3ab782fc8e8713cbd5"
+            }
+          ]
+        }
+      ],
+      "code": [
+        {
+          "function": "ready_tasks",
+          "source": {
+            "path": "src/forge_workshop_kit/factory.py",
+            "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory.py",
+            "sha256": "ccca4f997a426202cb998f224757575f1a3370bcbdac8a98e36b5af61e86a9f5"
+          },
+          "kind": "Implemented function, formatting preserved in substance; no changed behavior"
+        }
+      ],
+      "images": [
+        {
+          "path": "decks/transit/public/images/reference-departures.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/transit/public/images/reference-departures.png",
+          "sha256": "5d5f58692715fda054f60a4f380000dc4c5f1585443e431ffe07a54feacac55c",
+          "source_url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/transit/README.md",
+          "identity": "reference-departures",
+          "caption_boundary": "Instructor-authored reference app, not an agent result. Shows November29 midnight query and 00:08 first departure.",
+          "visually_inspected": true
+        },
+        {
+          "path": "decks/transit/public/images/native-comparison-r5-detail.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/transit/public/images/native-comparison-r5-detail.png",
+          "sha256": "4d32a925749fab9ebf39b05a483788ed79ad98e584efe38e2a26e3291dfcb7ba",
+          "source_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=dg2ogm6wp3z",
+          "identity": "transit-v060-live-r5",
+          "caption_boundary": "Actual R5 matched outputs and UTC defect. Must not be labeled R4 or independent bugs.",
+          "visually_inspected": true
+        }
+      ],
+      "limitations": [
+        "One paired R5 engineering rehearsal, not general evidence that teams are faster or memory helps.",
+        "Reference app is separately authored.",
+        "External-account access and participant rehearsal outstanding."
+      ]
+    },
+    "airline": {
+      "file": "reports/airline.md",
+      "title": "Turn an airline agent's behavior into monitoring rules and regression tests",
+      "workshop": "airline_monitoring",
+      "notebook": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view",
+      "deck": "https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/",
+      "claims": [
+        {
+          "claim": "Fictional simulated records adapted from tau2-bench pinned MIT revision; complete-itinerary replacement; not production traffic or benchmark replication.",
+          "sources": [
+            {
+              "path": "src/forge_workshop_kit/assets/airline/provenance.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/assets/airline/provenance.json",
+              "sha256": "0f76dd83e967f4a743ba0aefff165bf1c9db9cc62e29ad0da1c1d07073fbdb51"
+            },
+            {
+              "path": "docs/airline-monitoring-qualification.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/airline-monitoring-qualification.md",
+              "sha256": "546e121a2eda3eb93dd3e8d8df39cd85d733fab47003325e8a02b4b2523f6d6a"
+            },
+            {
+              "path": "src/forge_workshop_kit/airline.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline.py",
+              "sha256": "3bbafdc4482cd13fbc698a800fff91e9deeb96db606a63962353aa49d1af4562"
+            }
+          ],
+          "upstream": "https://github.com/sierra-research/tau2-bench/tree/989d3285ae669e49503324bdb9981bf14fccedeb"
+        },
+        {
+          "claim": "59XX6W requested HAT007→HAT061 on May 19 with HAT174 on May 29 preserved. Same recorded discovery request encounters read timeout then recovers.",
+          "sources": [
+            {
+              "path": "src/forge_workshop_kit/assets/airline/cases.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/assets/airline/cases.json",
+              "sha256": "2461b491aafddee470b658f491f2d10daa4edbbfee518ec4dfdcbb36f52cb42c"
+            },
+            {
+              "path": "decks/airline_monitoring/data/representative-case.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/airline_monitoring/data/representative-case.json",
+              "sha256": "c2530b7f6f279a933960981b0c177c83544355f4cbe3dcc58213b0f9653d1889"
+            },
+            {
+              "path": "decks/airline_monitoring/data/native-captures.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/airline_monitoring/data/native-captures.json",
+              "sha256": "d10b44ebd5b7064a50461b2d274ecc8e9c24cbeab0dc0df709c6ecabbb1bdaa0"
+            }
+          ],
+          "native_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3673f9ec7c917166a808d6473195a2ae"
+        },
+        {
+          "claim": "All 40/40 live booking checks pass; ten tool errors recovered; both versions pass 4/4 development, 6/6 reserved, 4/4 later; helper used nine times; no observed quality gain.",
+          "sources": [
+            {
+              "path": "docs/airline-monitoring-qualification.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/airline-monitoring-qualification.md",
+              "sha256": "546e121a2eda3eb93dd3e8d8df39cd85d733fab47003325e8a02b4b2523f6d6a"
+            },
+            {
+              "path": "examples/airline-monitoring/qualification.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/airline-monitoring/qualification.json",
+              "sha256": "6f14095f8d2442004b87c39799ccf22c50810cd7706988fdfafb42f3cba96e3b"
+            },
+            {
+              "path": "examples/airline-monitoring/executions.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/airline-monitoring/executions.json",
+              "sha256": "167f8e6d27e9f6f16fac0d350ea500e0f84eb297037c59dc2cac5c29cbee19cc"
+            }
+          ]
+        },
+        {
+          "claim": "$0.02330616 live conversation cost; $0.02401506 after separate explanation judge; excludes native judges/compute; no missing usage.",
+          "sources": [
+            {
+              "path": "docs/airline-monitoring-qualification.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/airline-monitoring-qualification.md",
+              "sha256": "546e121a2eda3eb93dd3e8d8df39cd85d733fab47003325e8a02b4b2523f6d6a"
+            },
+            {
+              "path": "examples/airline-monitoring/qualification.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/airline-monitoring/qualification.json",
+              "sha256": "6f14095f8d2442004b87c39799ccf22c50810cd7706988fdfafb42f3cba96e3b"
+            }
+          ]
+        },
+        {
+          "claim": "Alignment criteria/manual labels verified but six AI test requests returned HTTP 500; no relevant completed Insights cluster;monitor precision/recall unavailable;tag disabled and verified.",
+          "sources": [
+            {
+              "path": "docs/airline-monitoring-qualification.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/airline-monitoring-qualification.md",
+              "sha256": "546e121a2eda3eb93dd3e8d8df39cd85d733fab47003325e8a02b4b2523f6d6a"
+            },
+            {
+              "path": "examples/airline-monitoring/qualification.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/airline-monitoring/qualification.json",
+              "sha256": "6f14095f8d2442004b87c39799ccf22c50810cd7706988fdfafb42f3cba96e3b"
+            },
+            {
+              "path": "docs/airline_monitoring-runbook.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/airline_monitoring-runbook.md",
+              "sha256": "02cda8f78edd10e92cf7e062cdd33e75fa962732cf5c14813ee44d6f55a3e814"
+            }
+          ]
+        },
+        {
+          "claim": "Controlled omitted-return incident bypassed confirmation. Regression replay of faulty proposal respects refusal and leaves booking unchanged; repair accepted; read-only control preserved; zero new model calls.",
+          "sources": [
+            {
+              "path": "examples/airline-monitoring/regression-proof.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/airline-monitoring/regression-proof.md",
+              "sha256": "fa2889f3bc5c52776d3efd54c18b166ba46d0005eaf206c1bc979e0257747abc"
+            },
+            {
+              "path": "examples/airline-monitoring/regression-proof.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/airline-monitoring/regression-proof.json",
+              "sha256": "666a94acaadb3dd44bf977c28835ed31724dbfb68e79b913c62c1b121c9bc852"
+            },
+            {
+              "path": "src/forge_workshop_kit/airline_teaching.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py",
+              "sha256": "8ff9a289c2066a50e73e36cf818d1aa968cb2ecb87c6cc00ee32196c62f41344"
+            }
+          ]
+        },
+        {
+          "claim": "Notebook learner code includes instrumentation, monitor denominators, curation, scorer, judge validation and itinerary builder; one workspace-scoped tag, required shutdown.",
+          "sources": [
+            {
+              "path": "scripts/airline_monitoring_cells.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/airline_monitoring_cells.py",
+              "sha256": "de7b49fdb698b4f2e81f0308e9e62d8d0cf6ef14e1b990689564da8c9e5064a3"
+            },
+            {
+              "path": "docs/airline_monitoring-runbook.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/airline_monitoring-runbook.md",
+              "sha256": "02cda8f78edd10e92cf7e062cdd33e75fa962732cf5c14813ee44d6f55a3e814"
+            }
+          ]
+        },
+        {
+          "claim": "Self-service own project and credentials, adjustable $8 inference allowance excludes native judging, compute, and ARIA; technical preview; external and human checks outstanding.",
+          "sources": [
+            {
+              "path": "README.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
+              "sha256": "948b9ffd721e281cbec2346e5cada00400dc2b6dbc418ebf52ec5402121b54cf"
+            },
+            {
+              "path": "docs/setup.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md",
+              "sha256": "203fb84ffc06c4ddd1dda4bc8eb8b851eea43099593c09b092f9019f72f0bdca"
+            },
+            {
+              "path": "docs/airline-monitoring-qualification.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/airline-monitoring-qualification.md",
+              "sha256": "546e121a2eda3eb93dd3e8d8df39cd85d733fab47003325e8a02b4b2523f6d6a"
+            }
+          ]
+        }
+      ],
+      "code": [
+        {
+          "function": "my_monitor",
+          "source": {
+            "path": "src/forge_workshop_kit/airline_teaching.py",
+            "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py",
+            "sha256": "8ff9a289c2066a50e73e36cf818d1aa968cb2ecb87c6cc00ee32196c62f41344"
+          },
+          "kind": "Exact completed/known expressions from worked answer, reformatted; remainder deliberately omitted and explained."
+        },
+        {
+          "function": "my_itinerary_builder",
+          "source": {
+            "path": "src/forge_workshop_kit/airline_teaching.py",
+            "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py",
+            "sha256": "8ff9a289c2066a50e73e36cf818d1aa968cb2ecb87c6cc00ee32196c62f41344"
+          },
+          "kind": "Exact returned expression reformatted; input-validation lines omitted and explained."
+        }
+      ],
+      "images": [
+        {
+          "path": "decks/airline_monitoring/public/captures/native-conversation-error.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-conversation-error.png",
+          "sha256": "1a06f25fb25be5518c1be90035bb757e3726b753138db506a403b8a36d801586",
+          "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3673f9ec7c917166a808d6473195a2ae",
+          "identity": "airline-discovery-02 / 2026-11-14",
+          "caption_boundary": "Recorded discovery02 read error followed by recovery; not an itinerary failure.",
+          "visually_inspected": true
+        },
+        {
+          "path": "decks/airline_monitoring/public/captures/native-alignment-unavailable.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-alignment-unavailable.png",
+          "sha256": "835871f1ccac9874de8971a4abe23ef26c0be20fc7e6162fdcaa961921bfb285",
+          "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test",
+          "identity": "airline qualification / 2026-11-14",
+          "caption_boundary": "Human expected label and unscored turns. Six native tests unavailable; no automatic-accuracy claim.",
+          "visually_inspected": true
+        },
+        {
+          "path": "decks/airline_monitoring/public/captures/native-evaltables.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-evaltables.png",
+          "sha256": "32cca02cf2020d649a513fd05a624bf344edc17cc834b28ceff811c01669fdad",
+          "source_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=4wzxelfxod1",
+          "identity": "airline development / 2026-11-14",
+          "caption_boundary": "Four matched development requests per version, both 100% task success. Distinct from six-case final comparison.",
+          "visually_inspected": true
+        }
+      ],
+      "limitations": [
+        "Controlled drills are excluded from 40 live agent outcomes.",
+        "No demonstrated native Alignment accuracy or relevant Insights cluster.",
+        "External-account, complete current browser path, and human rehearsal outstanding.",
+        "Recorded runtime later received tracing error-handling changes; original 40 executions remain tied to their original source."
+      ]
+    }
+  }
+}

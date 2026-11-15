@@ -1,0 +1,231 @@
+{
+  "description": "Sources for public learning Reports. All numerical outcomes are saved instructor executions, not new experiments or participant results.",
+  "reviewed_at": "2026-11-15",
+  "reports": [
+    {
+      "slug": "pending",
+      "source": "reports/pending.md",
+      "notebook": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view",
+      "claims": [
+        {
+          "claim": "Fictional billing and access tasks, learner-authored invoice/dispatch/observation/scorer functions, read_skill requirement, two improvement rounds and twelve final evaluations.",
+          "files": [
+            "scripts/pending_cells.py",
+            "src/forge_workshop_kit/pending/teaching.py",
+            "src/forge_workshop_kit/pending/loop.py",
+            "docs/pending-facilitator.md"
+          ],
+          "source_urls": [
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/pending_cells.py",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/teaching.py",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/loop.py",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/pending-facilitator.md"
+          ]
+        },
+        {
+          "claim": "The local timeout repair produces two memberships with a new operation ID and one with the original ID followed by an account read. No model calls.",
+          "files": [
+            "src/forge_workshop_kit/pending/recovery.py",
+            "evidence/pending-retry-repair.json"
+          ],
+          "source_urls": [
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/recovery.py",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/pending-retry-repair.json"
+          ]
+        },
+        {
+          "claim": "Current recorded comparison: all three versions pass four account checks and four explanation judgments; tool-call totals 12, 13, 13.",
+          "files": [
+            "decks/pending/data/recorded-final.json",
+            "evidence/v030-pending-rehearsal.json",
+            "decks/pending/notes/sources.md"
+          ],
+          "source_urls": [
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/pending/data/recorded-final.json",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/v030-pending-rehearsal.json",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/pending/notes/sources.md"
+          ]
+        },
+        {
+          "claim": "Weave-backed native EvalTables comparison verified; historical CES errors are not the backend shown.",
+          "files": [
+            "evidence/v051-pendingfinal-evaltables.json",
+            "decks/pending/notes/sources.md"
+          ],
+          "source_urls": [
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/v051-pendingfinal-evaltables.json",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/pending/notes/sources.md"
+          ]
+        },
+        {
+          "claim": "Participant project setup, adjustable $8 allowance, technical-preview qualification and two analysis-only ARIA investigations.",
+          "files": [
+            "README.md",
+            "docs/setup.md",
+            "docs/aria-investigations.md"
+          ],
+          "source_urls": [
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-investigations.md"
+          ]
+        }
+      ],
+      "visuals": [
+        {
+          "file": "decks/pending/public/images/visual-v030-pending-lookup.png",
+          "public_url": "https://ash0ts.github.io/forge-workshop-kit/pending/images/visual-v030-pending-lookup.png",
+          "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c2458ce8b6bb52274d29b5c5a691424b/spans",
+          "meaning": "Actual get_account arguments/result in recorded billing run. Does not show learner lookup_invoice execution.",
+          "provenance": "evidence/deck-native-captures-v030.json",
+          "sha256": "37cb52fdd66ef0014989f479df2fbab89716f58633b43776813fd3b5dfbadf05",
+          "visually_inspected": true
+        },
+        {
+          "file": "decks/pending/public/images/visual-v030-pending-timeout.png",
+          "public_url": "https://ash0ts.github.io/forge-workshop-kit/pending/images/visual-v030-pending-timeout.png",
+          "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/481ae944f1062c5381870a00319f65a3/spans",
+          "meaning": "Actual provision_member timeout in a separate agent run; not the local deterministic repair experiment.",
+          "provenance": "evidence/deck-native-captures-v030.json",
+          "sha256": "aff1ef27e38b7ee88c6d215905ca99a98f29ff739bcc92076a3898cf8a5987c0",
+          "visually_inspected": true
+        },
+        {
+          "file": "decks/pending/public/images/evaltables-native-detail.png",
+          "public_url": "https://ash0ts.github.io/forge-workshop-kit/pending/images/evaltables-native-detail.png",
+          "source_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=qeo6ytk9yxz",
+          "meaning": "Weave-backed native EvalTables aligns the clarification case across three recorded versions.",
+          "provenance": "evidence/v051-pendingfinal-evaltables.json",
+          "sha256": "3130bd491645bf0c1946c99c3006a2959053387081d7e4f01e4dba1f7a5b9d65",
+          "visually_inspected": true
+        }
+      ],
+      "limits": [
+        "Simulation, not real customers or a production billing API.",
+        "Deterministic retry improvement is separate from the later harness tie.",
+        "One scripted rehearsal with four final cases does not establish general equivalence.",
+        "External-account and participant rehearsals remain outstanding."
+      ]
+    },
+    {
+      "slug": "solar",
+      "source": "reports/solar.md",
+      "notebook": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view",
+      "claims": [
+        {
+          "claim": "Real February 1\u201314 2014 GOES-15 and AIA 171 observations; 60-minute GOES history and +30-minute target; two images and +60-minute target; train/validation/final date partitioning and train-only scaling.",
+          "files": [
+            "docs/solar-contract.md",
+            "src/forge_workshop_kit/solar.py",
+            "scripts/prepare_solar.py"
+          ],
+          "source_urls": [
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-contract.md",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/solar.py",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_solar.py"
+          ]
+        },
+        {
+          "claim": "Learner persistence, flux and masked image metrics, model training/Sweep and reviewed research-code changes are connected to current authored cells.",
+          "files": [
+            "scripts/solar_cells.py",
+            "src/forge_workshop_kit/solar_teaching.py",
+            "src/forge_workshop_kit/solar.py"
+          ],
+          "source_urls": [
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/solar_cells.py",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/solar_teaching.py",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/solar.py"
+          ]
+        },
+        {
+          "claim": "Current recorded image edit order is absolute loss then zero-initialized residual head, with final error 0.110011 versus manual 0.122442 and persistence 0.125762; original GOES selected model 2.468975 versus persistence 0.192706.",
+          "files": [
+            "decks/solar/notes/sources.md",
+            "decks/solar/public/recorded-study.json",
+            "evidence/solar-rehearsal-v030.json"
+          ],
+          "source_urls": [
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/solar/notes/sources.md",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/solar/public/recorded-study.json",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/solar-rehearsal-v030.json"
+          ]
+        },
+        {
+          "claim": "Frozen follow-up recipe improves GOES on seeds 17/29/43 with errors 0.162878/0.163880/0.163760. Image edits improve two seeds and regress one; strict all-seed gate failed.",
+          "files": [
+            "docs/solar-qualification.md",
+            "evidence/solar-fixed-recipes-2026-11-14/protocol.json",
+            "evidence/solar-fixed-recipes-2026-11-14/summary.json",
+            "evidence/solar-fixed-recipes-2026-11-14/evaluation-freeze.json"
+          ],
+          "source_urls": [
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/solar-fixed-recipes-2026-11-14/protocol.json",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/solar-fixed-recipes-2026-11-14/summary.json",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/solar-fixed-recipes-2026-11-14/evaluation-freeze.json"
+          ]
+        },
+        {
+          "claim": "Participant project setup, adjustable $8 allowance, separate compute and ARIA billing, technical-preview qualification.",
+          "files": [
+            "README.md",
+            "docs/setup.md",
+            "docs/aria-investigations.md"
+          ],
+          "source_urls": [
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-investigations.md"
+          ]
+        }
+      ],
+      "visuals": [
+        {
+          "file": "decks/solar/public/images/v031-goes-window.png",
+          "public_url": "https://ash0ts.github.io/forge-workshop-kit/solar/images/v031-goes-window.png",
+          "source_url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/solar/notes/sources.md",
+          "meaning": "Actual first accepted training window. Image itself labels origin 2014-02-01T00:59 UTC; report does not borrow the separate diagram timestamp.",
+          "provenance": "decks/solar/notes/sources.md",
+          "sha256": "4924b4e158edd6d382115694aa6b352b004485efeede4741eb26da296b9629be",
+          "visually_inspected": true
+        },
+        {
+          "file": "decks/solar/public/images/visual-v030-solar-artifact.png",
+          "public_url": "https://ash0ts.github.io/forge-workshop-kit/solar/images/visual-v030-solar-artifact.png",
+          "source_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f7550caa1639e8366efbf9d84a782289/v0/files/files/0/candidate.py",
+          "meaning": "Native source artifact for the adopted image candidate, showing zero initialization and absolute loss.",
+          "provenance": "evidence/deck-native-captures-v030.json",
+          "sha256": "5c1944ebf55ec04c034ebf0afd92b96bc983089900ebfa74282806955e686667",
+          "visually_inspected": true
+        },
+        {
+          "file": "decks/solar/public/images/v030-final-predictions.png",
+          "public_url": "https://ash0ts.github.io/forge-workshop-kit/solar/images/v030-final-predictions.png",
+          "source_url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/solar/public/recorded-study.json",
+          "meaning": "First accepted recorded final image forecast, origin 2014-02-13T02:48 UTC; aligned intensity and error scales. Not largest-gain selection.",
+          "provenance": "decks/solar/notes/visual-v030-figures.json",
+          "sha256": "acb45e5555bc43b23c974745b167bf86c32dce69d579e6a13ea3d2381c6f26cd",
+          "visually_inspected": true
+        },
+        {
+          "file": "decks/solar/public/images/images-seeds-deck.png",
+          "public_url": "https://ash0ts.github.io/forge-workshop-kit/solar/images/images-seeds-deck.png",
+          "source_url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md",
+          "meaning": "Saved manual and combined-edit errors across predetermined seeds; includes seed 43 regression.",
+          "provenance": "evidence/solar-fixed-recipes-2026-11-14/summary.json",
+          "sha256": "7abef933b5aafa5c5f1cf47a6509c58a77a7881037c0fde58e8ebd37945777cf",
+          "visually_inspected": true
+        }
+      ],
+      "limits": [
+        "Small CPU teaching experiment, not an operational solar forecast or foundation-model replication.",
+        "Original final dates were subsequently inspected; qualification is a teaching retest.",
+        "Overlapping windows from two days are correlated.",
+        "Recipe replay does not establish the agent can rediscover edits.",
+        "All claimed gains belong to exact saved runs; image all-seed reliability gate failed.",
+        "External-account and participant rehearsals remain outstanding."
+      ]
+    }
+  ]
+}

@@ -121,6 +121,35 @@ def install_toolchain():
     run(["npm", "ci"], ROOT / "decks", {**os.environ, "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"})
 
 
+def write_library_index(directory, available):
+    catalog_path = ROOT / "reports/published.json"
+    reports = json.loads(catalog_path.read_text(encoding="utf-8"))["reports"] if catalog_path.exists() else {}
+    links = []
+    for row in available:
+        slug = row["slug"]
+        report = reports.get("airline" if slug == "airline_monitoring" else slug)
+        actions = f'<a href="{html.escape(slug)}/">Deck</a>'
+        if report:
+            actions = (f'<a href="{html.escape(report["url"], quote=True)}">Read the learning Report</a> · '
+                       + actions + f' · <a href="{html.escape(report["notebook_url"], quote=True)}">Copy the notebook</a>')
+        links.append(f'<li><strong>{html.escape(row["title"])}</strong><br>{actions}</li>')
+    (directory / "index.html").write_text(
+        '<!doctype html><html lang="en"><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width,initial-scale=1">'
+        '<title>Forge Workshop Kit</title><style>body{font:20px/1.5 system-ui;max-width:52rem;'
+        'margin:4rem auto;padding:0 1.5rem;color:#163c43;background:#faf7ee}li{margin:1.5rem 0}'
+        'a{color:#146965}a:focus-visible{outline:3px solid #146965;outline-offset:4px}</style>'
+        '<h1>Forge Workshop Kit</h1><p>Start with a worked example in the Report, '
+        'then copy its notebook into your own Forge project to change the code and run the exercises.</p>'
+        '<p>These are technical previews. You can read the recorded results without running an experiment. '
+        'Notebook execution uses your own project access and billing.</p>'
+        f'<ul>{"".join(links)}</ul>'
+        '<p><a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md">Setup instructions</a> · '
+        '<a href="https://github.com/ash0ts/forge-workshop-kit">Source and contributor guide</a></p></html>',
+        encoding="utf-8",
+    )
+
+
 def build(slug, output, *, install=False, pdf=False, validate=False):
     deck = ROOT / "decks" / slug
     settings = DECKS[slug]
@@ -228,16 +257,7 @@ def main():
         for slug, settings in DECKS.items()
         if (output / "site" / slug / "index.html").exists()
     ]
-    links = "".join(f'<li><a href="{row["slug"]}/">{row["title"]}</a></li>' for row in available)
-    (output / "site/index.html").write_text(
-        '<!doctype html><html lang="en"><meta charset="utf-8">'
-        '<meta name="viewport" content="width=device-width,initial-scale=1">'
-        "<title>Forge Workshop Kit decks</title><style>body{font:20px system-ui;max-width:48rem;"
-        "margin:4rem auto;padding:0 1.5rem;color:#163c43;background:#faf7ee}li{margin:1rem 0}"
-        "a{color:#146965}</style><h1>Forge Workshop Kit</h1>"
-        f"<p>Choose the deck for your notebook.</p><ul>{links}</ul>"
-        '<p><a href="https://github.com/ash0ts/forge-workshop-kit">Notebooks and setup instructions</a></p></html>', encoding='utf-8'
-    )
+    write_library_index(output / "site", available)
     (output / "site/.nojekyll").touch()
     files = [
         {

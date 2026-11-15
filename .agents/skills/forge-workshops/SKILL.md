@@ -21,6 +21,7 @@ Load only the material needed for the requested change:
 | Change ARIA context, citation notes, or recordings | [ARIA investigations](../../../docs/aria-investigations.md) |
 | Change evaluation rows or publication | [Evaluation publication](../../../docs/evaluations.md) |
 | Build or publish a release | [Maintenance](../../../docs/maintenance.md) and [release checks](../../../docs/release-checks.md) |
+| Write or update public learning Reports | [Report sources](../../../reports/README.md) and [Report publication](../../../docs/maintenance.md#publish-learning-reports) |
 
 ## Establish the work
 

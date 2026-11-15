@@ -64,6 +64,30 @@ If creation was interrupted before the notebook ID was saved, the publisher stop
 
 Updating a template leaves attendee copies unchanged. Do not replace prior release assets under the same filename, move a published tag, or delete saved participant state. Corrections to an existing release need a separately named artifact or a new version, with the difference described in its release notes. Historical gateway material belongs in the [archive](archive.md), not current setup instructions.
 
+## Publish learning Reports
+
+The six [learning Reports](../reports/README.md) explain a worked example and link to the corresponding self-service notebook. Their Markdown sources are independent of saved participant conclusions and historical rehearsal Reports. Edit the source and claim ledger together; no training or inference is needed.
+
+Build native Report payloads locally:
+
+```sh
+uv run python scripts/publish_learning_reports.py --project wandb/forge-workshop-kit
+```
+
+Inspect the Markdown, images, and payloads in `dist/learning-reports/`. Publish to the existing public project and refresh the public link catalog:
+
+```sh
+uv run python scripts/publish_learning_reports.py --project wandb/forge-workshop-kit --apply --catalog reports/published.json
+```
+
+Use `--only pending` for one Report; other names are `solar`, `routing`, `inspection`, `transit`, and `airline`. The publisher checks the destination, reuses IDs from `.workshop-deployments/<entity>/<project>/learning-reports.json`, and verifies the complete content without authentication. It preserves a backup before updating a Report and stops if someone edited the published content independently. Reconcile that change with the Markdown first.
+
+If creation is interrupted before the ID is saved, locate the Report in that project and resume with `--adopt SLUG=REPORT_ID`. Do not discard the pending receipt and create another copy. After publication, inspect the native page, images, tables, code, and notebook CTA in a browser. Anonymous API readback and browser rendering are separate checks. Notebook execution still requires the reader's account and access.
+
+A fresh contributor checkout has the public catalog but no private publication receipts. The publisher stops instead of creating duplicate Reports. For an existing destination, verify the Report linked in `reports/published.json`, then adopt its ID (the part after `--` in its URL). Use `--only` to update one Report. Publishing to a different project creates separate Reports there.
+
+Commit the sources and `reports/published.json` together. The deck-library build reads this catalog to place **Read the learning Report**, **Deck**, and **Copy the notebook** together. It does not publish Reports or run workshop code. Keep destination receipts and revision backups out of Git.
+
 ## Record what shipped
 
 Keep the source commit, package hashes, template destination/readback receipt, deck validation, and unresolved access checks together for each release. Verify the public links after publication. Do not promote a workshop's readiness because its build succeeded: browser, external-account, native-feature, and human-rehearsal evidence remain separate.

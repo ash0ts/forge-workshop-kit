@@ -4,9 +4,9 @@ Status as of November 15, 2026, after the v0.10.0 release and its UTF-8 authorin
 
 ## What is available
 
-Six participant notebooks, a starter, and a read-only facilitator monitor are published in Forge. Each workshop has a browser deck, PDF, source, exercises, and recorded evidence. The latest release adds two ARIA investigations per workshop, with twelve actual recorded responses and citation checks for participants without live access.
+Six participant notebooks, a starter, and a read-only facilitator monitor are published in Forge. Each workshop has a browser deck, PDF, source, exercises, and recorded evidence. The latest release adds two ARIA investigations per workshop, with twelve actual recorded responses and citation checks for participants without live access. Six [public learning Reports](reports/README.md) now explain the examples and link readers directly to the notebooks they can copy.
 
-The current setup is participant-owned: copy into your project, use your credentials, and save results locally and as checkpoint artifacts. No gateway is needed. Existing copies and pinned releases remain unchanged. This documentation cleanup does not change notebook code, results, or package version.
+The current setup is participant-owned: copy into your project, use your credentials, and save results locally and as checkpoint artifacts. No gateway is needed. Existing copies and pinned releases remain unchanged. The learning Reports reuse recorded evidence; they do not change notebook code, results, or package version.
 
 **All six workshops remain technical previews.** Maintainer checks, successful uploads, and recorded executions do not establish that a new participant can complete the class. The priorities below are the remaining qualification work, not promises that the services already work for every account.
 

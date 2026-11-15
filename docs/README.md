@@ -6,6 +6,7 @@ Start with the [repository README](../README.md) to choose a workshop. Use this 
 
 | Need | Read |
 | --- | --- |
+| Learn from a worked example before opening the notebook | [Public learning Reports](../reports/README.md) |
 | Copy a template, run locally, or recover saved work | [Setup](setup.md) |
 | Give a short demonstration using saved results | [Demo guide](current-demo-guide.md) |
 | Present the companion slides | [Deck guide](deck-guide.md) |

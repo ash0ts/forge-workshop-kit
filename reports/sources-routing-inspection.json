@@ -1,0 +1,418 @@
+{
+  "schema_version": 1,
+  "purpose": "Claim and visual provenance for public learning Reports. Instructor results do not describe unexecuted learner edits.",
+  "reviewed_on": "2026-11-15",
+  "reports": {
+    "routing": {
+      "file": "reports/routing.md",
+      "notebook": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view",
+      "claims": [
+        {
+          "id": "routing-data",
+          "claim": "Banking77 has 77 intents; workshop split is 8463 train, 770 validation, 770 review; official test stays 3080. Opening request official-train/00021 is in review and labeled card_arrival.",
+          "sources": [
+            {
+              "path": "docs/routing-workshop.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/routing-workshop.md",
+              "sha256": "ef142334b809d84e88efdbbc191e73146a3b3c0bd577c7241c1ab74fed09f153"
+            },
+            {
+              "path": "src/forge_workshop_kit/routing_teaching.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing_teaching.py",
+              "sha256": "90f6b2ba648ae5337531104e47944fba3cbf14314bafb520d5e7909da03a20ca"
+            },
+            {
+              "path": "src/forge_workshop_kit/routing.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py",
+              "sha256": "6b22e5208439b2f720f910673f016c50f50c680c141ca721711710b8e0b71807"
+            }
+          ],
+          "upstream": "https://github.com/PolyAI-LDN/task-specific-datasets/tree/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data"
+        },
+        {
+          "id": "routing-mechanism",
+          "claim": "Word unigrams/bigrams with sublinear TF and frozen 384-value embeddings feed the same LogisticRegression constructor; fit and predict remain separate; probabilities map by model.classes_.",
+          "sources": [
+            {
+              "path": "src/forge_workshop_kit/routing.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py",
+              "sha256": "6b22e5208439b2f720f910673f016c50f50c680c141ca721711710b8e0b71807"
+            },
+            {
+              "path": "src/forge_workshop_kit/routing_teaching.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing_teaching.py",
+              "sha256": "90f6b2ba648ae5337531104e47944fba3cbf14314bafb520d5e7909da03a20ca"
+            },
+            {
+              "path": "scripts/routing_cells.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/routing_cells.py",
+              "sha256": "d58fec9ec968e1b0529bcbdb0dac00ad885195aa29e9187ddc5a3061ba16d637"
+            }
+          ]
+        },
+        {
+          "id": "routing-quality",
+          "claim": "Macro-F1 0.879385 vs 0.920229; coverage at .5 75.84% vs 91.10%; selective accuracy 96.06% vs 96.15%; deterministic seeds repeat predictions, not independent experiments.",
+          "sources": [
+            {
+              "path": "docs/routing-workshop.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/routing-workshop.md",
+              "sha256": "ef142334b809d84e88efdbbc191e73146a3b3c0bd577c7241c1ab74fed09f153"
+            },
+            {
+              "path": "docs/recorded-results.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/recorded-results.md",
+              "sha256": "40bef22374322430259eaa1ef58420c8218f9668098472295d3467fa8664614a"
+            }
+          ],
+          "limitations": [
+            "Official test comparison of these fixed classifiers only.",
+            "Cached prediction latency excludes sentence encoding.",
+            "Classifier probabilities are not calibrated guarantees."
+          ]
+        },
+        {
+          "id": "routing-f1",
+          "claim": "Recorded card_arrival has 34 TP, 3 FP, 6 FN; illustrative arithmetic 2TP/(2TP+FP+FN)=68/77\u2248.883 describes one intent.",
+          "sources": [
+            {
+              "path": "docs/routing-workshop.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/routing-workshop.md",
+              "sha256": "ef142334b809d84e88efdbbc191e73146a3b3c0bd577c7241c1ab74fed09f153"
+            }
+          ]
+        },
+        {
+          "id": "routing-judge",
+          "claim": "Recorded judge accepted activate_my_card for the app activation request but dataset reference is card_linking; 3/4 decisions matched reference; 8 prompted routes are not the classifier benchmark.",
+          "sources": [
+            {
+              "path": "docs/routing-workshop.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/routing-workshop.md",
+              "sha256": "ef142334b809d84e88efdbbc191e73146a3b3c0bd577c7241c1ab74fed09f153"
+            },
+            {
+              "path": "evidence/routing-live-v050.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/routing-live-v050.json",
+              "sha256": "7ed06fc0a7ccb0c782d105c9b031d2ff2f4d2da1fbb1e18a420aa2d887bc6680"
+            }
+          ],
+          "native": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f5427dc7f06703d62c00561b6bd27a01",
+          "limitations": [
+            "Four dataset-reference comparisons are not human calibration.",
+            "Unavailable judges remain missing.",
+            "Screenshot reason is clipped; native source retains it."
+          ]
+        },
+        {
+          "id": "routing-release",
+          "claim": "Controlled label rotation preserves columns and confidence; 77 fixed review cases produce 71 healthy correct, 0 faulty, and repair/rollback restore all 77 original predictions while preserving six model mistakes; capstone makes no training or model calls.",
+          "sources": [
+            {
+              "path": "src/forge_workshop_kit/routing_release.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing_release.py",
+              "sha256": "26b429cb2a231c428ffbafbbc6503ea4becf6bc910b55c31c246d5e85f5a2647"
+            },
+            {
+              "path": "evidence/v070-routing-live.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/v070-routing-live.json",
+              "sha256": "02e93da9bdb925594c390c373a9479cd89cbdfda5d4caa803caaf6905159a218"
+            },
+            {
+              "path": "docs/routing-workshop.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/routing-workshop.md",
+              "sha256": "ef142334b809d84e88efdbbc191e73146a3b3c0bd577c7241c1ab74fed09f153"
+            }
+          ],
+          "native": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=37umm80le0d",
+          "limitations": [
+            "Deliberate incident drill, not observed production failure.",
+            "Review-pool regression/reproduction set, not independent held-out test."
+          ]
+        },
+        {
+          "id": "routing-self-service",
+          "claim": "Current notebook CTA, 5.5-hour duration, own writable project, explicit execution, adjustable $8 inference allowance with compute/ARIA separate; external-account and participant rehearsals outstanding.",
+          "sources": [
+            {
+              "path": "README.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
+              "sha256": "948b9ffd721e281cbec2346e5cada00400dc2b6dbc418ebf52ec5402121b54cf"
+            },
+            {
+              "path": "docs/setup.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md",
+              "sha256": "203fb84ffc06c4ddd1dda4bc8eb8b851eea43099593c09b092f9019f72f0bdca"
+            },
+            {
+              "path": "docs/routing-workshop.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/routing-workshop.md",
+              "sha256": "ef142334b809d84e88efdbbc191e73146a3b3c0bd577c7241c1ab74fed09f153"
+            }
+          ]
+        }
+      ],
+      "visuals": [
+        {
+          "path": "decks/routing/public/images/evaltables-native.png",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/routing/public/images/evaltables-native.png",
+          "sha256": "fe2f62afcc5a49247a64c8a7909bc5f97a6a9744576b20ba4e03d555ba5843e4",
+          "question": "How do two classifiers route the same request?",
+          "caption_scope": "Recorded instructor final comparison; displayed correct bar is accuracy, not macro-F1.",
+          "origin": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=fthby6owcpo",
+          "license": "Existing repository Forge capture; public/fictional teaching data.",
+          "visually_inspected": true
+        },
+        {
+          "path": "decks/routing/public/images/agent-lens-judge-detail.png",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/routing/public/images/agent-lens-judge-detail.png",
+          "sha256": "90ad1bd7ac2f5acdd3562f72bd2b3b302809439ee1f7242ddd0d0754a3c349de",
+          "question": "What did the judge receive and return on the disputed intent?",
+          "caption_scope": "Shows actual request and failed=false; reason clipping is explicitly disclosed.",
+          "origin": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f5427dc7f06703d62c00561b6bd27a01",
+          "license": "Existing repository Forge capture; public Banking77 example.",
+          "visually_inspected": true
+        },
+        {
+          "path": "evidence/captures/v070/routing-release-evaltables.png",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/evidence/captures/v070/routing-release-evaltables.png",
+          "sha256": "06215f4072500028d24404f6b8f363d5594537af0f5bf93765da1e472f58793b",
+          "question": "Can routing correctness fail while confidence-based coverage stays fixed?",
+          "caption_scope": "Controlled drill: healthy, faulty, repaired, rollback; all output relationships sourced from v070 receipt.",
+          "origin": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=37umm80le0d",
+          "license": "Existing repository Forge capture; public/fictional teaching data.",
+          "visually_inspected": true
+        }
+      ]
+    },
+    "inspection": {
+      "file": "reports/inspection.md",
+      "notebook": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view",
+      "claims": [
+        {
+          "id": "inspection-data",
+          "claim": "VisA PCB1 contains 1104 boards, 1004 normal and 100 anomalous; fixed test 402 normal/40 anomaly; training-derived 397 fit, 133 review, 132 validation with 12 validation defects; masks inspection-only.",
+          "sources": [
+            {
+              "path": "docs/inspection-workshop.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md",
+              "sha256": "d16d186120dbd8517339091fe14a55f3b841da3f2fc7a3ac2744b4f5d7ed5c0e"
+            },
+            {
+              "path": "src/forge_workshop_kit/inspection.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py",
+              "sha256": "6075f9a48888f147329e8e2900ca61b5462cf821dda7f1314f92da588a502b35"
+            }
+          ],
+          "upstream": "https://github.com/amazon-science/spot-diff/tree/2a692ab575001cbde74d402d897a7286086c6199",
+          "license": "CC BY 4.0; image reuse attribution appears beside figures."
+        },
+        {
+          "id": "inspection-features",
+          "claim": "Frozen ResNet-18 with 224x224 inputs yields 512 whole-image features and 14x14x64 patch representations; scaled same-position nearest normal patch distance excludes self match; log1p local map appends 196 values for 708 total.",
+          "sources": [
+            {
+              "path": "docs/inspection-workshop.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md",
+              "sha256": "d16d186120dbd8517339091fe14a55f3b841da3f2fc7a3ac2744b4f5d7ed5c0e"
+            },
+            {
+              "path": "src/forge_workshop_kit/inspection.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py",
+              "sha256": "6075f9a48888f147329e8e2900ca61b5462cf821dda7f1314f92da588a502b35"
+            },
+            {
+              "path": "src/forge_workshop_kit/inspection_encoder.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection_encoder.py",
+              "sha256": "3d66784e160e466ec8156fcdaa8cb73eb3928b5f0ad86474d61926794f398617"
+            },
+            {
+              "path": "src/forge_workshop_kit/inspection_teaching.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection_teaching.py",
+              "sha256": "a65089c1b37be314dcbf622a455685113b3a260e3353e086b83e09eca035f77b"
+            }
+          ],
+          "limitations": [
+            "Article excerpt focuses on nearest-patch and labels omitted earlier recipe branch.",
+            "Distance maps are not causal explanations or segmentation."
+          ]
+        },
+        {
+          "id": "inspection-operating-point",
+          "claim": "Largest threshold catching >=90% validation defects; with 12 requires 11. Scores are classifier decision values; AP ranks across thresholds.",
+          "sources": [
+            {
+              "path": "src/forge_workshop_kit/inspection.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py",
+              "sha256": "6075f9a48888f147329e8e2900ca61b5462cf821dda7f1314f92da588a502b35"
+            },
+            {
+              "path": "src/forge_workshop_kit/inspection_teaching.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection_teaching.py",
+              "sha256": "a65089c1b37be314dcbf622a455685113b3a260e3353e086b83e09eca035f77b"
+            }
+          ]
+        },
+        {
+          "id": "inspection-first-failure",
+          "claim": "Original positional-mean recipe AP regressed from 0.861762 to 0.855382 despite reduced operating errors.",
+          "sources": [
+            {
+              "path": "evidence/inspection-qualification-v1/results.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/inspection-qualification-v1/results.json",
+              "sha256": "30def41d13f0a38587548e0785baa09cee81e10875975e79e876535665b3e46e"
+            },
+            {
+              "path": "docs/inspection-workshop.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md",
+              "sha256": "d16d186120dbd8517339091fe14a55f3b841da3f2fc7a3ac2744b4f5d7ed5c0e"
+            }
+          ]
+        },
+        {
+          "id": "inspection-retest",
+          "claim": "Whole AP .8728996092, misses4, false alarms23; nearest-patch AP .8857424111, misses3, false alarms18. 1.284 percentage-point AP gain.",
+          "sources": [
+            {
+              "path": "evidence/inspection-teaching-retest-v2/results.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/inspection-teaching-retest-v2/results.json",
+              "sha256": "077bb88f8e3c4b43e5475d8b8851fa2ea458dbb968fea627e407d6c6ec7c9f99"
+            },
+            {
+              "path": "docs/inspection-workshop.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md",
+              "sha256": "d16d186120dbd8517339091fe14a55f3b841da3f2fc7a3ac2744b4f5d7ed5c0e"
+            }
+          ],
+          "limitations": [
+            "Teaching retest on already-inspected test data, not new held-out evidence.",
+            "One PCB family; does not qualify industrial deployment."
+          ]
+        },
+        {
+          "id": "inspection-case-changes",
+          "claim": "Anomaly048 whole\u2248-1.006 missed / patch\u2248-.887 flagged; anomaly015 whole\u2248.121 flagged / patch\u2248-1.439 missed; thresholds whole\u2248-.499, patch\u2248-1.114.",
+          "sources": [
+            {
+              "path": "docs/inspection-workshop.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md",
+              "sha256": "d16d186120dbd8517339091fe14a55f3b841da3f2fc7a3ac2744b4f5d7ed5c0e"
+            },
+            {
+              "path": "decks/inspection/public/recorded-retest.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/inspection/public/recorded-retest.json",
+              "sha256": "077bb88f8e3c4b43e5475d8b8851fa2ea458dbb968fea627e407d6c6ec7c9f99"
+            },
+            {
+              "path": "decks/inspection/public/images/pcb1-anomaly-048.png",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/inspection/public/images/pcb1-anomaly-048.png",
+              "sha256": "b29e7316fde2a72321dde56c955870bf09b9f27d3b8328059dce2dd30b4a8abc"
+            },
+            {
+              "path": "decks/inspection/public/images/pcb1-anomaly-015.png",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/inspection/public/images/pcb1-anomaly-015.png",
+              "sha256": "e7a3a10544d2141daa6c169e839a52369cab008f0ea25d121c310500cb8520ad"
+            }
+          ]
+        },
+        {
+          "id": "inspection-review",
+          "claim": "Active and random review receive 24 labels each; selection occurs before labels; supplied dataset labels simulate acquisition; participant assessments separate; no assumed selection gain.",
+          "sources": [
+            {
+              "path": "docs/inspection-workshop.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md",
+              "sha256": "d16d186120dbd8517339091fe14a55f3b841da3f2fc7a3ac2744b4f5d7ed5c0e"
+            },
+            {
+              "path": "scripts/inspection_cells.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/inspection_cells.py",
+              "sha256": "6749d5804a58306309e39804663b765872af3fd6893a6ae53055f9042a337067"
+            },
+            {
+              "path": "src/forge_workshop_kit/inspection_teaching.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection_teaching.py",
+              "sha256": "a65089c1b37be314dcbf622a455685113b3a260e3353e086b83e09eca035f77b"
+            }
+          ]
+        },
+        {
+          "id": "inspection-forge",
+          "claim": "Native display comparison includes typed image, four saved detectors, encoder/source identity, score/threshold. Export retries reuse saved evaluations.",
+          "sources": [
+            {
+              "path": "evidence/v051-inspection-display-evaltables.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/v051-inspection-display-evaltables.json",
+              "sha256": "d86476c00e5d80bcad3763b474ed83f461271b67068c3219d6c34804fbaacd84"
+            },
+            {
+              "path": "docs/inspection-workshop.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md",
+              "sha256": "d16d186120dbd8517339091fe14a55f3b841da3f2fc7a3ac2744b4f5d7ed5c0e"
+            }
+          ],
+          "native": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=h43oxpf30iu"
+        },
+        {
+          "id": "inspection-self-service",
+          "claim": "Current 4-hour notebook runs core on CPU without inference API calls; own project; explicit controls; optional ARIA separate; external-account and human rehearsal remain outstanding.",
+          "sources": [
+            {
+              "path": "README.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
+              "sha256": "948b9ffd721e281cbec2346e5cada00400dc2b6dbc418ebf52ec5402121b54cf"
+            },
+            {
+              "path": "docs/setup.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md",
+              "sha256": "203fb84ffc06c4ddd1dda4bc8eb8b851eea43099593c09b092f9019f72f0bdca"
+            },
+            {
+              "path": "docs/inspection-workshop.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md",
+              "sha256": "d16d186120dbd8517339091fe14a55f3b841da3f2fc7a3ac2744b4f5d7ed5c0e"
+            }
+          ]
+        }
+      ],
+      "visuals": [
+        {
+          "path": "decks/inspection/public/images/pcb1-anomaly-048.png",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/inspection/public/images/pcb1-anomaly-048.png",
+          "sha256": "b29e7316fde2a72321dde56c955870bf09b9f27d3b8328059dce2dd30b4a8abc",
+          "question": "Which recorded missed board became flagged?",
+          "caption_scope": "Photograph, supplied mask, and patch-distance map. Flags follow each frozen threshold; map does not establish causality.",
+          "origin": "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/inspection-teaching-retest-v2/results.json",
+          "license": "VisA images and masks CC BY 4.0; repository-rendered comparison.",
+          "visually_inspected": true
+        },
+        {
+          "path": "decks/inspection/public/images/pcb1-anomaly-015.png",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/inspection/public/images/pcb1-anomaly-015.png",
+          "sha256": "e7a3a10544d2141daa6c169e839a52369cab008f0ea25d121c310500cb8520ad",
+          "question": "Did the patch representation introduce another miss?",
+          "caption_scope": "Recorded counterexample; do not present aggregate gain as all-case improvement.",
+          "origin": "https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/inspection-teaching-retest-v2/results.json",
+          "license": "VisA images and masks CC BY 4.0; repository-rendered comparison.",
+          "visually_inspected": true
+        },
+        {
+          "path": "decks/inspection/public/images/evaltables-native-detail.png",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/inspection/public/images/evaltables-native-detail.png",
+          "sha256": "b916bb14c7738ebf0d9ad7e4345fa03d3b2eff4666a74412619c52f0dbc9c8a9",
+          "question": "Which files and operating point explain a selected board decision?",
+          "caption_scope": "Actual native detail for anomaly040, distinct from anomalies048/015; four variants include review candidates.",
+          "origin": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=h43oxpf30iu",
+          "license": "Existing repository Forge capture containing VisA image, CC BY 4.0.",
+          "visually_inspected": true
+        }
+      ]
+    }
+  },
+  "validation": {
+    "python_excerpts": "All fenced Python excerpts compiled without execution.",
+    "local_visual_paths": "All six embedded visual files exist and were inspected.",
+    "paid_work": "None.",
+    "native_publication": "Not performed by draft author; parent release task owns publication and public-access checks."
+  }
+}

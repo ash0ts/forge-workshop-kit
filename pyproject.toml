@@ -36,7 +36,7 @@ packages = ["src/forge_workshop_kit"]
 [tool.hatch.build.targets.sdist]
 exclude = ["**/__marimo__/**"]
 include = [
-  "/src", "/scripts", "/notebooks", "/tests", "/examples", "/docs",
+  "/src", "/scripts", "/notebooks", "/tests", "/examples", "/docs", "/reports",
   "/README.md", "/CONTRIBUTING.md", "/AGENTS.md", "/techspec.md", "/next-up.md",
   "/LICENSE", "/pyproject.toml", "/uv.lock", "/data/README.md",
   "/.agents/skills/forge-workshops",
