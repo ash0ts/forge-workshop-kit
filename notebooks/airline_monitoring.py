@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.9.0/forge_workshop_kit-0.9.0-py3-none-any.whl",
+#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.10.0/forge_workshop_kit-0.10.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -105,6 +105,7 @@ def _():
     import time
     import marimo as mo
     from forge_workshop_kit import WorkshopSession, setup, ui, airline, airline_teaching as teaching
+    from forge_workshop_kit import aria
     from forge_workshop_kit import agent_lens, airline_calibration, airline_regression
     from forge_workshop_kit.manifest import get_workshop
     from forge_workshop_kit.session import digest
@@ -115,7 +116,7 @@ def _():
     get_revision, set_revision = mo.state(0)
     get_output, set_output = mo.state({})
     STEPS = tuple(tuple(row) for row in get_workshop("airline-monitoring")["steps"])
-    return (STEPS, WorkshopSession, agent_lens, airline, airline_calibration, airline_regression, digest, event, export_trace, get_context, get_output, get_revision, get_step, get_workshop, json, mo, publish_comparison, saved_trace_inputs, set_context, set_output, set_revision, set_step, setup, teaching, time, ui, write_report,)
+    return (STEPS, WorkshopSession, agent_lens, airline, airline_calibration, airline_regression, aria, digest, event, export_trace, get_context, get_output, get_revision, get_step, get_workshop, json, mo, publish_comparison, saved_trace_inputs, set_context, set_output, set_revision, set_step, setup, teaching, time, ui, write_report,)
 
 
 # workshop-cell: airline_monitoring/helpers
@@ -576,6 +577,20 @@ def _(get_context, mo, refresh, review_case, review_event, review_expected, revi
     return
 
 
+# workshop-cell: airline_monitoring/aria/investigate
+@app.cell(hide_code=True)
+def _(aria, get_context, get_revision, get_step, mo, review_case, review_for):
+    mo.stop(get_step() != "review")
+    _s=get_context().get("session")
+    _revision=get_revision()
+    _review=review_for(review_case.value) if _s and review_case.value else None
+    _ids=[_review["id"],_review["result"]["stage_id"]] if _review else []
+    _reason=_review["result"].get("reason", "") if _review else ""
+    airline_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=_ids,interpretation=_reason,workshop="airline-monitoring")
+    mo.vstack([mo.md("Save your own turn review above before checking it with ARIA. Its explanation does not replace your label or become tag criteria.") if not _review else mo.md("Compare ARIA's explanation with the review you saved. If it uses a different turn or unavailable context, leave the finding unresolved."),airline_aria_investigate])
+    return (airline_aria_investigate,)
+
+
 # workshop-cell: airline_monitoring/controls/run_calibration
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, teaching):
@@ -1034,8 +1049,19 @@ def _(get_context, get_revision, get_step, mo, runs_for, saved, ui):
     conclusion = mo.ui.text_area(value=_s.get_draft("airline/conclusion", "") if _s else "", label="What changed in the agent, the monitor, and the evaluation suite? Include one remaining problem and the next test.", on_change=lambda text: _s.save_draft("airline/conclusion", text) if _s else None, full_width=True)
     publish_report = mo.ui.run_button(label="Publish my conclusion", disabled=len(runs_for("subsequent")) != 8)
     confirm_tag_off = mo.ui.run_button(label="Verify automatic tagging is off", disabled=not bool(saved("airline/tag-context")))
-    mo.vstack([mo.Html(ui.step("Write down what the comparison supports", "Separate booking quality from monitoring agreement and tool errors. Link one claim to its trace and matching case. Name what remains unresolved rather than describing every valid judge response as correct.", "Your Report links back to the saved code and results. Turn off Apply with AI for this workshop tag and verify the change below.")), publish_results, conclusion, publish_report, mo.md("**Stop automatic judging:** open your native tag, disable Apply with AI, save it, then click the verification button. Closing the notebook does not disable the tag."), confirm_tag_off]) if get_step() == "report" else mo.vstack([mo.md("Publish the saved predictions to compare matching requests in Forge. This button never sends another passenger request."), publish_results]) if get_step() in ("final", "traffic") else mo.md("")
+    mo.vstack([mo.Html(ui.step("Write down what the comparison supports", "Separate booking quality from monitoring agreement and tool errors. Link one claim to its trace and matching case. Name what remains unresolved rather than describing every valid judge response as correct.", "Your Report links back to the saved code and results. Turn off Apply with AI for this workshop tag and verify the change below.")), publish_results, conclusion]) if get_step() == "report" else mo.vstack([mo.md("Publish the saved predictions to compare matching requests in Forge. This button never sends another passenger request."), publish_results]) if get_step() in ("final", "traffic") else mo.md("")
     return (conclusion, confirm_tag_off, publish_report, publish_results,)
+
+
+# workshop-cell: airline_monitoring/aria/conclusion
+@app.cell(hide_code=True)
+def _(aria, conclusion, confirm_tag_off, get_context, get_revision, get_step, mo, publish_report):
+    mo.stop(get_step() != "report")
+    _s=get_context().get("session")
+    _revision=get_revision()
+    airline_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=conclusion.value,workshop="airline-monitoring")
+    mo.vstack([airline_aria_conclusion,publish_report,mo.md("**Stop automatic judging:** open your native tag, disable Apply with AI, save it, then click the verification button. Closing the notebook does not disable the tag."),confirm_tag_off])
+    return (airline_aria_conclusion,)
 
 
 # workshop-cell: airline_monitoring/action/publish_results
@@ -1097,7 +1123,7 @@ def _(get_context, get_revision, get_step, mo, runs_for):
     return (run_picker,)
 
 
-# workshop-cell: airline_monitoring/display/67
+# workshop-cell: airline_monitoring/display/69
 @app.cell(hide_code=True)
 def _(get_context, get_revision, mo, run_picker, runs_for, ui):
     _revision = get_revision()
@@ -1113,7 +1139,7 @@ def _(get_context, get_revision, mo, run_picker, runs_for, ui):
     return
 
 
-# workshop-cell: airline_monitoring/display/68
+# workshop-cell: airline_monitoring/display/70
 @app.cell(hide_code=True)
 def _(get_context, get_output, get_revision, get_step, mo, saved, ui):
     _revision = get_revision()
@@ -1195,7 +1221,7 @@ def _(export_trace, get_context, hooks, mo, native_scope, publish_saved_comparis
     return
 
 
-# workshop-cell: airline_monitoring/display/72
+# workshop-cell: airline_monitoring/display/74
 @app.cell(hide_code=True)
 def _(get_output, mo, ui):
     _recovery = get_output().get("recovery")

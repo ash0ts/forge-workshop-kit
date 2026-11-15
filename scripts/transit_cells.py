@@ -1,13 +1,14 @@
 """Authored transit workshop: participant functions control the builders."""
 from notebook_builder import Cell
 cells=[]
-def add(code, hide=False): cells.append(Cell(code,hide=hide))
+def add(code, hide=False, cell_id=None): cells.append(Cell(code,hide=hide,cell_id=cell_id))
 
 add('''
 import json
 from pathlib import Path
 import marimo as mo
 from forge_workshop_kit import WorkshopSession, setup, ui
+from forge_workshop_kit import aria
 from forge_workshop_kit import factory, transit, factory_teaching as teaching
 from forge_workshop_kit import transit_workshop as lab
 from forge_workshop_kit.traces import event, export_trace, saved_trace_inputs
@@ -289,6 +290,13 @@ except Exception as _error:
     show("app",{"error":str(_error)})
 ''',True)
 add('''
+mo.stop(get_step()!="memory")
+_s=current_session()
+_revision=get_revision()
+transit_aria_investigate=aria.investigation(mo,_s,"investigate",workshop="transit-factory")
+mo.vstack([mo.md("Before asking a builder to draft a lesson, explain one observation from the integrated app's development checks. The final reserved scenarios stay out of this investigation."),transit_aria_investigate])
+''', True, cell_id='transit_factory/aria/investigate')
+add('''
 _s=current_session()
 _revision=get_revision()
 lesson_text=mo.ui.text_area(value=_s.get_draft("factory/lesson-text","") if _s else "",label="The rule you checked and where it applies",full_width=True,on_change=lambda text:_s.save_draft("factory/lesson-text",text) if _s else None)
@@ -367,8 +375,15 @@ _revision=get_revision()
 release_version=mo.ui.dropdown(lab.release_choices(_s),value=next(iter(lab.release_choices(_s)),None),label="Tested version to release",full_width=True)
 conclusion=mo.ui.text_area(value=_s.get_draft("factory/conclusion","") if _s else "",label="What shipped, what failed, and what you would test next",full_width=True,on_change=lambda text:_s.save_draft("factory/conclusion",text) if _s else None)
 release_button=mo.ui.run_button(label="Publish this release and its evidence",disabled=not lab.can_run(_s,"release"))
-mo.vstack([mo.md("### Reproduce the version you selected\\nThe release contains the exact app code, data, contract, memory version, and checked results. Your release_decision runs before publication. If no build passes, retain the previous version and explain what is blocked."),release_version,conclusion,release_button,mo.md(lab.blocked(_s,"release"))]) if get_step()=="release" else mo.md("")
+mo.vstack([mo.md("### Reproduce the version you selected\\nThe release contains the exact app code, data, contract, memory version, and checked results. Your release_decision runs before publication. If no build passes, retain the previous version and explain what is blocked."),release_version,conclusion,mo.md(lab.blocked(_s,"release"))]) if get_step()=="release" else mo.md("")
 ''',True)
+add('''
+mo.stop(get_step()!="release")
+_s=current_session()
+_revision=get_revision()
+transit_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=conclusion.value,workshop="transit-factory")
+mo.vstack([transit_aria_conclusion,release_button])
+''', True, cell_id='transit_factory/aria/conclusion')
 add('''
 mo.stop(not release_button.value)
 teaching.check_exercise("release",release_code.value)

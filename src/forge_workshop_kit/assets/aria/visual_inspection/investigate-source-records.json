@@ -1,0 +1,73 @@
+{
+  "kind": "saved-record excerpt; not a Forge screenshot",
+  "recording_id": "aria-v0100-inspection-investigate",
+  "recorded_at": "2026-11-15T18:17:30.562355+00:00",
+  "context_method": "The validation photograph pcb1-anomaly-086.jpg was attached through the native Add images control. The exact prompt supplied run/conversation URLs, aggregate validation excerpts, and a score reproduced locally from the saved model; no native run attachment was selected. ARIA retrieved only the named run and conversation and confirmed aggregate counts. It described visible image content but did not identify the defect, independently verify its label, or rerun the score.",
+  "prompt_sha256": "50ed5c81465940734132bab35440b2758807e253959ef6f5df3eb2a24c1db441",
+  "records": [
+    {
+      "label": "compare/whole",
+      "identity": "f18536533b586759997a5dc392e6d94d",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f18536533b586759997a5dc392e6d94d"
+    }
+  ],
+  "excerpt": {
+    "validation_metrics": {
+      "average_precision": 0.7915945165945167,
+      "defect_recall": 0.9166666666666666,
+      "false_alarm_rate": 0.08333333333333333,
+      "misses": 1,
+      "false_alarms": 10,
+      "review_fraction": 0.0,
+      "review_count": 0,
+      "auto_pass_misses": 1,
+      "examples": 132,
+      "defective": 12,
+      "normal": 120
+    },
+    "settings": {
+      "method": "whole",
+      "C": 0.03,
+      "review_budget": 0
+    },
+    "feature_contract": "Frozen ImageNet ResNet-18; 512 whole-image values; supplied defect masks are inspection aids, not classifier inputs. The aggregate validation metrics below are supplemented by the attached validation photograph and its separately reproduced score."
+  },
+  "supplemental_evidence": {
+    "case_id": "pcb1-anomaly-086",
+    "split": "validation",
+    "target_defective": true,
+    "saved_model_stage_id": "f18536533b586759997a5dc392e6d94d",
+    "reproduced_score_as_supplied": -3.9363274574,
+    "frozen_threshold_as_supplied": -0.4987401962,
+    "predicted_defective": false,
+    "source": "Free local forward pass of the saved whole-image classifier; no training or publication. Score and threshold were supplied in the exact prompt, not independently computed by ARIA.",
+    "mask_attached": false,
+    "mask_used_as_model_input": false
+  },
+  "attachments": [
+    {
+      "path": "pcb1-anomaly-086.jpg",
+      "mime_type": "image/jpeg",
+      "source_path": "data/inspection-v1/images/pcb1-anomaly-086.jpg",
+      "source_dataset": "VisA PCB1 teaching subset; validation partition",
+      "provided_to_aria": true,
+      "attachment_control": "Add images",
+      "sha256": "dc591435634deab6aa1a30c535e10da851f37a27e4f1fdc7212ce8049798301b",
+      "caption": "The actual pcb1-anomaly-086 validation photograph attached to ARIA. Its known defective label comes from the dataset; ARIA did not visually identify the defect. No mask was attached. VisA: Zou, Jeong, Pemula, Zhang, and Dabeer, SPot-the-Difference (ECCV 2022), CC BY 4.0. This is the kit’s prepared teaching image, copied without further edits.",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "Zou, Jeong, Pemula, Zhang, and Dabeer. SPot-the-Difference (ECCV 2022).",
+      "source_url": "https://github.com/amazon-science/spot-diff",
+      "source_archive": "https://amazon-visual-anomaly.s3.us-west-2.amazonaws.com/VisA_20220922.tar",
+      "source_image": "pcb1/Data/Images/Anomaly/086.JPG",
+      "source_sha256": "ba17adea64c5aff07f0d87a5eb41c01938cd13780ab4d5c5152f622a44933a24",
+      "license_file": "visa-license.txt"
+    }
+  ],
+  "citation_check": {
+    "claim": "The whole-image validation run missed one of twelve defective boards and flagged ten of 120 normal boards.",
+    "assessment": "supported",
+    "reason": "Saved compare/whole metrics contain misses=1, defective=12, false_alarms=10, and normal=120. This gives defect recall 11/12 and false-alarm rate 10/120, matching the native run and training-call values quoted by ARIA. The attached board and supplied score do not establish that representation caused the miss; ARIA correctly left the cause unresolved.",
+    "record_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f18536533b586759997a5dc392e6d94d"
+  }
+}

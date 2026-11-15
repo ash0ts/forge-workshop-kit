@@ -1,0 +1,129 @@
+{
+  "kind": "saved-record excerpt; not a Forge screenshot",
+  "recording_id": "aria-v0100-transit-investigate",
+  "recorded_at": "2026-11-15T18:20:15.885234+00:00",
+  "context_method": "Exact URLs and public development-check excerpts; no native attachment. ARIA retrieved only the two named runs and conversations read-only, confirming combined-application and participant-acceptance checks. The detailed previous-service-day trip and timestamps were supplied excerpts. It did not inspect reserved scenarios or claim that these outputs prove parser correctness in every timezone.",
+  "prompt_sha256": "e512d6bdb1f75d695878333102e4471d499455265baf1a6157bafc46c37486c6",
+  "records": [
+    {
+      "label": "factory/integration/solo",
+      "identity": "467e83bf4626e7fb910763fe0d55127c",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/467e83bf4626e7fb910763fe0d55127c"
+    },
+    {
+      "label": "factory/integration/team",
+      "identity": "284f7f1dc00adf6c96f712568f19113c",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/284f7f1dc00adf6c96f712568f19113c"
+    }
+  ],
+  "excerpt": {
+    "factory/integration/solo": {
+      "passed": true,
+      "checks": [
+        {
+          "case_id": "departures/weekday-evening",
+          "passed": true
+        },
+        {
+          "case_id": "departures/previous-service-day",
+          "passed": true
+        },
+        {
+          "case_id": "departures/holiday-addition",
+          "passed": true
+        },
+        {
+          "case_id": "presentation/0",
+          "passed": true
+        },
+        {
+          "case_id": "presentation/1",
+          "passed": true
+        }
+      ],
+      "previous_service_example": {
+        "input_case": "departures/previous-service-day",
+        "expected": [
+          {
+            "trip_id": "63926435",
+            "route_id": "Red",
+            "headsign": "Alewife",
+            "stop_id": "70076",
+            "stop_name": "Park Street",
+            "service_date": "2024-11-28",
+            "departure_time": "2024-11-29T00:08:00-05:00"
+          }
+        ],
+        "actual": [
+          {
+            "trip_id": "63926435",
+            "route_id": "Red",
+            "headsign": "Alewife",
+            "stop_id": "70076",
+            "stop_name": "Park Street",
+            "service_date": "2024-11-28",
+            "departure_time": "2024-11-29T00:08:00-05:00"
+          }
+        ]
+      }
+    },
+    "factory/integration/team": {
+      "passed": true,
+      "checks": [
+        {
+          "case_id": "departures/weekday-evening",
+          "passed": true
+        },
+        {
+          "case_id": "departures/previous-service-day",
+          "passed": true
+        },
+        {
+          "case_id": "departures/holiday-addition",
+          "passed": true
+        },
+        {
+          "case_id": "presentation/0",
+          "passed": true
+        },
+        {
+          "case_id": "presentation/1",
+          "passed": true
+        }
+      ],
+      "previous_service_example": {
+        "input_case": "departures/previous-service-day",
+        "expected": [
+          {
+            "trip_id": "63926435",
+            "route_id": "Red",
+            "headsign": "Alewife",
+            "stop_id": "70076",
+            "stop_name": "Park Street",
+            "service_date": "2024-11-28",
+            "departure_time": "2024-11-29T00:08:00-05:00"
+          }
+        ],
+        "actual": [
+          {
+            "trip_id": "63926435",
+            "route_id": "Red",
+            "headsign": "Alewife",
+            "stop_id": "70076",
+            "stop_name": "Park Street",
+            "service_date": "2024-11-28",
+            "departure_time": "2024-11-29T00:08:00-05:00"
+          }
+        ]
+      }
+    }
+  },
+  "supplemental_evidence": {},
+  "attachments": [],
+  "citation_check": {
+    "claim": "Both integrated builds pass the public previous-service-day check; the example keeps the original service day after midnight.",
+    "assessment": "supported",
+    "reason": "The saved solo and team integration results both pass departures/previous-service-day. Their matched expected and actual first departure is trip 63926435, service_date 2024-11-28, departure_time 2024-11-29T00:08:00-05:00. The native team capture confirms public integrated checks passed; the complete date values come from the supplied saved result. Passing these cases does not establish parser causality or coverage of all timezones.",
+    "record_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/467e83bf4626e7fb910763fe0d55127c"
+  }
+}

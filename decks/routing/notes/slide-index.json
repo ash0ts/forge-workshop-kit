@@ -73,360 +73,396 @@
   },
   {
     "slide": 13,
-    "title": "Then change the representation",
-    "time": "0:56",
-    "name": "embeddings"
+    "title": "Investigate this result",
+    "time": "0:51 \u00b7 8 minutes across these three frames",
+    "name": "aria-investigate"
   },
   {
     "slide": 14,
-    "title": "Keep one vector for each request",
-    "time": "0:59",
-    "name": "sentence-vector"
+    "title": "Read one claim in the recorded response",
+    "time": "0:51 \u00b7 8 minutes across these three frames",
+    "name": "aria-investigate-response"
   },
   {
     "slide": 15,
-    "title": "Construct the estimator before fitting it",
-    "time": "1:02",
-    "name": "construct-head"
+    "title": "Open the source and check that claim",
+    "time": "0:51 \u00b7 8 minutes across these three frames",
+    "name": "aria-investigate-verify"
   },
   {
     "slide": 16,
-    "title": "Fit the head on the labeled training rows",
-    "time": "1:04",
-    "name": "fit-head"
+    "title": "Then change the representation",
+    "time": "0:59",
+    "name": "embeddings"
   },
   {
     "slide": 17,
+    "title": "Keep one vector for each request",
+    "time": "1:01",
+    "name": "sentence-vector"
+  },
+  {
+    "slide": 18,
+    "title": "Construct the estimator before fitting it",
+    "time": "1:03",
+    "name": "construct-head"
+  },
+  {
+    "slide": 19,
+    "title": "Fit the head on the labeled training rows",
+    "time": "1:05",
+    "name": "fit-head"
+  },
+  {
+    "slide": 20,
     "title": "A fitted classifier returns 77 probabilities",
     "time": "1:07",
     "name": "predict-probabilities"
   },
   {
-    "slide": 18,
+    "slide": 21,
     "title": "Test the sentence-feature alternative",
     "time": "1:10",
     "name": "alternative-exercise"
   },
   {
-    "slide": 19,
+    "slide": 22,
     "title": "Macro-F1 gives each intent equal weight",
     "time": "1:16",
     "name": "macro-f1"
   },
   {
-    "slide": 20,
+    "slide": 23,
     "title": "Count the errors for one intent",
     "time": "1:18",
     "name": "intent-counts"
   },
   {
-    "slide": 21,
+    "slide": 24,
     "title": "Calculate F1, then average across intents",
     "time": "1:21",
     "name": "intent-average"
   },
   {
-    "slide": 22,
+    "slide": 25,
     "title": "The worked comparison reduced routing mistakes",
     "time": "1:26",
     "name": "recorded-gain"
   },
   {
-    "slide": 23,
+    "slide": 26,
     "title": "A router can also ask a person",
     "time": "1:35",
     "name": "deferral"
   },
   {
-    "slide": 24,
+    "slide": 27,
     "title": "Move the threshold without retraining",
     "time": "1:38",
     "name": "threshold-policy"
   },
   {
-    "slide": 25,
+    "slide": 28,
     "title": "Choose labeling candidates by their top-two margin",
     "time": "1:42",
     "name": "review-margin"
   },
   {
-    "slide": 26,
+    "slide": 29,
     "title": "Write the rule that sends a request to review",
     "time": "1:45",
     "name": "policy-exercise"
   },
   {
-    "slide": 27,
+    "slide": 30,
     "title": "Read the disagreement before declaring failure",
     "time": "1:52",
     "name": "review-case"
   },
   {
-    "slide": 28,
+    "slide": 31,
     "title": "Save labels someone can trace back to a decision",
     "time": "2:00",
     "name": "review-exercise"
   },
   {
-    "slide": 29,
+    "slide": 32,
     "title": "Keep the proposal and accepted label separate",
     "time": "2:06",
     "name": "review-provenance"
   },
   {
-    "slide": 30,
+    "slide": 33,
     "title": "Take ten minutes. Return at 2:20.",
     "time": "2:10",
     "name": "break-one"
   },
   {
-    "slide": 31,
+    "slide": 34,
     "title": "A prompted model returns a typed decision",
     "time": "2:20",
     "name": "typed-route"
   },
   {
-    "slide": 32,
+    "slide": 35,
     "title": "The judge reviews a route in a separate call",
     "time": "2:25",
     "name": "two-model-tasks"
   },
   {
-    "slide": 33,
+    "slide": 36,
     "title": "Inspect eight actual model routes",
     "time": "2:31",
     "name": "prompted-exercise"
   },
   {
-    "slide": 34,
+    "slide": 37,
     "title": "Check the model-based judge against your reviews",
     "time": "2:40",
     "name": "judge-purpose"
   },
   {
-    "slide": 35,
+    "slide": 38,
     "title": "Keep the accepted label out of the judge prompt",
     "time": "2:44",
     "name": "judge-evidence"
   },
   {
-    "slide": 36,
+    "slide": 39,
     "title": "Implement the judge response check",
     "time": "2:50",
     "name": "validator-exercise"
   },
   {
-    "slide": 37,
+    "slide": 40,
     "title": "The judge disagreed with the dataset label",
     "time": "3:03",
     "name": "recorded-judge"
   },
   {
-    "slide": 38,
+    "slide": 41,
     "title": "Use reviewed data to run a new experiment",
     "time": "3:10",
     "name": "review-dataset"
   },
   {
-    "slide": 39,
+    "slide": 42,
     "title": "Refit the head with your accepted labels",
     "time": "3:14",
     "name": "accepted-training"
   },
   {
-    "slide": 40,
+    "slide": 43,
     "title": "Train with your accepted labels",
     "time": "3:18",
     "name": "retrain-exercise"
   },
   {
-    "slide": 41,
+    "slide": 44,
     "title": "Take ten minutes. Return at 3:40.",
     "time": "3:30",
     "name": "break-two"
   },
   {
-    "slide": 42,
+    "slide": 45,
     "title": "Freeze what the final comparison will use",
     "time": "3:40",
     "name": "freeze"
   },
   {
-    "slide": 43,
+    "slide": 46,
     "title": "Save the transformations with the weights",
     "time": "3:42",
     "name": "freeze-files"
   },
   {
-    "slide": 44,
+    "slide": 47,
     "title": "Evaluate all matching test requests",
     "time": "3:45",
     "name": "final-exercise"
   },
   {
-    "slide": 45,
+    "slide": 48,
     "title": "Compare matching requests, then the operating policy",
     "time": "3:48",
     "name": "aligned-requests"
   },
   {
-    "slide": 46,
+    "slide": 49,
     "title": "Compare the same requests in Forge",
     "time": "3:50",
     "name": "native-comparison"
   },
   {
-    "slide": 47,
+    "slide": 50,
     "title": "Read one routing decision",
     "time": "3:52",
     "name": "native-row"
   },
   {
-    "slide": 48,
+    "slide": 51,
     "title": "Take ten minutes. Return at 4:05.",
     "time": "3:55",
     "name": "release-break"
   },
   {
-    "slide": 49,
+    "slide": 52,
     "title": "The classifier works. Can another process use it?",
     "time": "4:05",
     "name": "release-request"
   },
   {
-    "slide": 50,
+    "slide": 53,
     "title": "Save what the predictor needs, then reload it",
     "time": "4:08",
     "name": "release-bundle"
   },
   {
-    "slide": 51,
+    "slide": 54,
     "title": "Load your selected version from its artifact",
     "time": "4:11",
     "name": "release-prepare-exercise"
   },
   {
-    "slide": 52,
+    "slide": 55,
     "title": "Choose the regression cases before predicting",
     "time": "4:17",
     "name": "release-cohort"
   },
   {
-    "slide": 53,
+    "slide": 56,
     "title": "A probability belongs to a specific intent",
     "time": "4:20",
     "name": "release-columns"
   },
   {
-    "slide": 54,
+    "slide": 57,
     "title": "Rotated labels send column 1 to another queue",
     "time": "4:22",
     "name": "release-fault"
   },
   {
-    "slide": 55,
+    "slide": 58,
     "title": "Find one request sent to the wrong queue",
     "time": "4:26",
     "name": "release-incident-exercise"
   },
   {
-    "slide": 56,
+    "slide": 59,
     "title": "Checking the label set misses this defect",
     "time": "4:33",
     "name": "release-set-check"
   },
   {
-    "slide": 57,
+    "slide": 60,
     "title": "Check order before accepting the loaded model",
     "time": "4:35",
     "name": "release-order-check"
   },
   {
-    "slide": 58,
+    "slide": 61,
     "title": "Repair the loader and write its regression check",
     "time": "4:40",
     "name": "release-repair-exercise"
   },
   {
-    "slide": 59,
+    "slide": 62,
     "title": "A repaired loader should reproduce the intact release",
     "time": "4:50",
     "name": "release-parity"
   },
   {
-    "slide": 60,
+    "slide": 63,
     "title": "Compare three versions of the same request",
     "time": "4:56",
     "name": "release-investigate"
   },
   {
-    "slide": 61,
+    "slide": 64,
     "title": "Decide whether this release passes its checks",
     "time": "5:00",
     "name": "release-decision-exercise"
   },
   {
-    "slide": 62,
+    "slide": 65,
     "title": "Rollback reloads a version; it does not undo training",
     "time": "5:08",
     "name": "release-rollback"
   },
   {
-    "slide": 63,
+    "slide": 66,
     "title": "Restore the previous version and verify it",
     "time": "5:12",
     "name": "release-rollback-exercise"
   },
   {
-    "slide": 64,
+    "slide": 67,
     "title": "Separate the model gain from the release repair",
     "time": "5:20",
     "name": "release-conclusion"
   },
   {
-    "slide": 65,
+    "slide": 68,
+    "title": "Check our conclusion",
+    "time": "5:18 \u00b7 7 minutes across these three frames",
+    "name": "aria-conclusion"
+  },
+  {
+    "slide": 69,
+    "title": "Read one claim in the recorded response",
+    "time": "5:18 \u00b7 7 minutes across these three frames",
+    "name": "aria-conclusion-response"
+  },
+  {
+    "slide": 70,
+    "title": "Open the source and check that claim",
+    "time": "5:18 \u00b7 7 minutes across these three frames",
+    "name": "aria-conclusion-verify"
+  },
+  {
+    "slide": 71,
     "title": "Write the decision you would make",
     "time": "5:25",
     "name": "report-exercise"
   },
   {
-    "slide": 66,
+    "slide": 72,
     "title": "Optional: organize approved versions in Registry",
     "time": "5:28",
     "name": "release"
   },
   {
-    "slide": 67,
+    "slide": 73,
     "title": "What to take back to your team",
     "time": "5:29",
     "name": "close"
   },
   {
-    "slide": 68,
+    "slide": 74,
     "title": "Worked answer: classifier head",
     "time": "",
     "name": "classifier-answer"
   },
   {
-    "slide": 69,
+    "slide": 75,
     "title": "Worked answer: review policy",
     "time": "",
     "name": "policy-answer"
   },
   {
-    "slide": 70,
+    "slide": 76,
     "title": "Worked answer: judge validator",
     "time": "",
     "name": "validator-answer"
   },
   {
-    "slide": 71,
+    "slide": 77,
     "title": "Worked answer: preserve the probability-column order",
     "time": "",
     "name": "release-repair-answer"
   },
   {
-    "slide": 72,
+    "slide": 78,
     "title": "Sources and recorded evidence",
     "time": "",
     "name": "sources"

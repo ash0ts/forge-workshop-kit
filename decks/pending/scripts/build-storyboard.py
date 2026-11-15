@@ -193,7 +193,6 @@ shot('final-screen','Link the Report’s conclusion to its runs and traces.','vi
 slide('final-result','All three harnesses passed the four final cases.','<EvaluationMatrix :recorded="true" />','Read the account and explanation columns before the tool-call totals. All versions passed all four cases in this scripted rehearsal, so neither revision increased the measured pass rate. Each revised version made one additional tool call overall. These four cases do not establish repeatability or performance on other workflows. The source is evidence/v030-pending-rehearsal.json.')
 slide('files','Save the case, harness, execution, and scoring records.','<div class="sequence"><div class="step">Case<small>request + initial state</small></div><div class="arrow">→</div><div class="step">Harness<small>instructions + skill</small></div><div class="arrow">→</div><div class="step">Execution<small>trace + final state</small></div><div class="arrow">→</div><div class="step">Evaluation<small>checks + judge reason</small></div></div>\n<p>W&B Artifacts save the exact files as versions. The Report links the explanation to these saved records.</p>','Artifacts are versioned file bundles. Trace export, result publication and execution have separate statuses. A publication retry uses saved work and must not make another model request.')
 exercise('report','Write down what changed and whether it helped.','8 · Explain the result','Name the edit, the behavior you observed, and the final comparison. Link one trace and one matching case. Suggest the next test.','Publish my conclusion with the comparison and evidence','Someone else can open the records behind your conclusion. No higher score is required.')
-slide('aria','Ask ARIA to compare one case across harness versions.','<div class="quote">Compare my starting and agent-selected harnesses on the same fresh ticket. Use the linked evaluation, execution trace, and harness diff. Explain what changed in behavior and whether the account result changed. Cite the relevant records before suggesting another experiment.</div>\n<div class="bottom-note">Optional. Verify one citation yourself. This investigation is outside the measured comparison.</div>','Do not imply ARIA authored these prior results. The prompt asks for evidence analysis, not permission to run new experiments or change budgets.')
 slide('end','Choose a workflow with an observable result to test.','<p class="big">Start with a task whose result you can inspect independently: an account update, an access change, or another completed operation.</p>\n<p>Record the agent’s actions and define the success checks before asking it to revise its own procedures. Test the revised harness on the same cases, then on cases it has not seen.</p>\n<div class="bottom-note">Write down a development case and a different case to hold back for evaluation.</div>','Ask participants to name one workflow in their product with observable output and a check they can run independently of the agent. Have them specify a development case, a likely failure, and a fresh case for testing transfer. They can reuse the instrumentation and improvement controller, but must define what correct work means for that workflow.')
 slide('answer-tool','Worked answer · invoice lookup',code('''def my_invoice_tool(state, account_id, invoice_id):
     account = state["accounts"][account_id]
@@ -230,6 +229,10 @@ slide('sources','Source, notebook, and recorded example','<div class="sources"><
 
 from teaching_depth import enrich
 SECTIONS = enrich(S, code)
+# Shared ARIA context, response and citation-check frames.
+import runpy as _aria_runpy
+_aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/aria_storyboard.py'))['enrich'](S, ROOT, 'pending')
+
 
 header='''---
 theme: default

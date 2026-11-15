@@ -1,0 +1,51 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Request Routing / Investigate this result / source values</title><style>
+:root { color-scheme:light dark; --paper:#f7f3e8; --ink:#142c32; --accent:#136b70; --line:#bec9c4; }
+@media(prefers-color-scheme:dark) { :root { --paper:#152528; --ink:#ecede3; --accent:#8cdbce; --line:#526968; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font:18px/1.55 system-ui,sans-serif; }
+main { max-width:1080px; margin:auto; padding:32px 28px; }
+h1 { font-size:clamp(1.8rem,4vw,3rem); line-height:1.14; margin:.5em 0; }
+h2 { font-size:1.35rem; margin-top:1.6em; }
+a { color:var(--accent); overflow-wrap:anywhere; }
+a:focus-visible,summary:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+.notice { padding:16px 20px; border-left:5px solid var(--accent); }
+table { width:100%; border-collapse:collapse; table-layout:fixed; }
+th,td { padding:12px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; overflow-wrap:anywhere; }
+th:first-child,td:first-child { width:35%; }
+pre { white-space:pre-wrap; overflow-wrap:anywhere; font:14px/1.6 ui-monospace,monospace; padding:18px; border:1px solid var(--line); border-radius:8px; }
+.response { white-space:pre-wrap; overflow-wrap:anywhere; padding:20px; border:1px solid var(--line); }
+img { display:block; max-width:100%; height:auto; }
+.capture-frame { position:relative; }
+.capture-box { position:absolute; border:2px solid #ffcf66; pointer-events:none; }
+.capture-box b { position:absolute; top:-1.2em; left:-2px; padding:0 6px; color:#142c32; background:#ffcf66; font:700 13px/1.4 system-ui,sans-serif; }
+small { opacity:.8; }
+@media(max-width:600px) { main { padding:20px 16px; } th,td { padding:8px 5px; font-size:15px; } }
+</style></head><body><main><h1>Request Routing / Investigate this result / source values</h1><p class="notice"><strong>Saved-record excerpt.</strong> These are the exact values supplied in the instructor’s recorded prompt. This page is a local teaching view, not a native Forge capture and not a participant execution.</p><p>Exact run and conversation URLs plus a saved validation-row excerpt; no native attachment. ARIA retrieved the named run and its train_routing_classifier event read-only and confirmed aggregate metrics. The individual request and abstention result were available only in the supplied excerpt; no case-level native readback is claimed.</p><h2>Open the source records</h2><ul><li><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ec8f27e3cbac834c7cfefece929fd468">routing/baseline/tfidf</a></li></ul><h2>Values supplied to ARIA</h2><table><thead><tr><th>Source field</th><th>Recorded value</th></tr></thead><tbody><tr><th scope="row">validation_example.case_id</th><td>&quot;official-train/00035&quot;</td></tr><tr><th scope="row">validation_example.text</th><td>&quot;Can I get an update on my replacement card?&quot;</td></tr><tr><th scope="row">validation_example.target</th><td>&quot;card_arrival&quot;</td></tr><tr><th scope="row">validation_example.prediction</th><td>&quot;compromised_card&quot;</td></tr><tr><th scope="row">validation_example.confidence</th><td>0.053366252213165544</td></tr><tr><th scope="row">validation_example.runner_up</th><td>&quot;order_physical_card&quot;</td></tr><tr><th scope="row">validation_example.margin</th><td>0.0007096001389567327</td></tr><tr><th scope="row">validation_example.abstained</th><td>true</td></tr><tr><th scope="row">validation_example.split</th><td>&quot;validation&quot;</td></tr><tr><th scope="row">validation_example.latency_seconds</th><td>6.2903688310391525e-06</td></tr><tr><th scope="row">validation_example.inference_cost_usd</th><td>0.0</td></tr><tr><th scope="row">validation_example.cost_note</th><td>&quot;Local classifier inference; notebook compute billed separately.&quot;</td></tr><tr><th scope="row">metrics.macro_f1</th><td>0.8820896503541562</td></tr><tr><th scope="row">metrics.accuracy</th><td>0.8831168831168831</td></tr><tr><th scope="row">metrics.coverage</th><td>0.7337662337662337</td></tr><tr><th scope="row">metrics.selective_accuracy</th><td>0.95929203539823</td></tr><tr><th scope="row">metrics.count</th><td>770</td></tr><tr><th scope="row">metrics.latency_seconds</th><td>0.004843583999900147</td></tr><tr><th scope="row">classifier_settings.kind</th><td>&quot;tfidf&quot;</td></tr><tr><th scope="row">classifier_settings.seed</th><td>17</td></tr><tr><th scope="row">classifier_settings.dataset</th><td>&quot;90df5312b15a932e50c2c87a833de980ebb5fd9bdf9e86fa2336928c46e96129&quot;</td></tr></tbody></table><details><summary>Complete supplied excerpt</summary><pre>{
+  &quot;validation_example&quot;: {
+    &quot;case_id&quot;: &quot;official-train/00035&quot;,
+    &quot;text&quot;: &quot;Can I get an update on my replacement card?&quot;,
+    &quot;target&quot;: &quot;card_arrival&quot;,
+    &quot;prediction&quot;: &quot;compromised_card&quot;,
+    &quot;confidence&quot;: 0.053366252213165544,
+    &quot;runner_up&quot;: &quot;order_physical_card&quot;,
+    &quot;margin&quot;: 0.0007096001389567327,
+    &quot;abstained&quot;: true,
+    &quot;split&quot;: &quot;validation&quot;,
+    &quot;latency_seconds&quot;: 6.2903688310391525e-06,
+    &quot;inference_cost_usd&quot;: 0.0,
+    &quot;cost_note&quot;: &quot;Local classifier inference; notebook compute billed separately.&quot;
+  },
+  &quot;metrics&quot;: {
+    &quot;macro_f1&quot;: 0.8820896503541562,
+    &quot;accuracy&quot;: 0.8831168831168831,
+    &quot;coverage&quot;: 0.7337662337662337,
+    &quot;selective_accuracy&quot;: 0.95929203539823,
+    &quot;count&quot;: 770,
+    &quot;latency_seconds&quot;: 0.004843583999900147
+  },
+  &quot;classifier_settings&quot;: {
+    &quot;kind&quot;: &quot;tfidf&quot;,
+    &quot;seed&quot;: 17,
+    &quot;dataset&quot;: &quot;90df5312b15a932e50c2c87a833de980ebb5fd9bdf9e86fa2336928c46e96129&quot;
+  }
+}</pre></details><p><a href="investigate-transcript.html">Read the actual ARIA conversation</a></p></main></body></html>

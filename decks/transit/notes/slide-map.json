@@ -1,5 +1,5 @@
 {
-  "total_slides": 95,
+  "total_slides": 101,
   "duration_minutes": 360,
   "schedule": [
     {
@@ -1074,6 +1074,93 @@
     },
     {
       "number": 52,
+      "key": "aria-investigate",
+      "title": "Investigate this result",
+      "kind": "aria-investigation",
+      "name": "aria-investigate",
+      "notes": "Allocate 8 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/transit_factory/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "answer": null,
+      "concept": "Which checked observation could support a scoped lesson for future builders? If a failure occurred, inspect the repair before accepting the lesson.",
+      "exercise": {
+        "step": "integrate",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/transit_factory/investigate.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/467e83bf4626e7fb910763fe0d55127c",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/284f7f1dc00adf6c96f712568f19113c"
+      ],
+      "timing": {
+        "elapsed": "3:20 \u00b7 8 minutes across these three frames",
+        "minutes": 200
+      },
+      "clicks": null
+    },
+    {
+      "number": 53,
+      "key": "aria-investigate-response",
+      "title": "Read one claim in the recorded response",
+      "kind": "aria-investigation",
+      "name": "aria-investigate-response",
+      "notes": "Allocate 8 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/transit_factory/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "answer": null,
+      "concept": "Which checked observation could support a scoped lesson for future builders? If a failure occurred, inspect the repair before accepting the lesson.",
+      "exercise": {
+        "step": "integrate",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/transit_factory/investigate.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/467e83bf4626e7fb910763fe0d55127c",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/284f7f1dc00adf6c96f712568f19113c"
+      ],
+      "timing": {
+        "elapsed": "3:20 \u00b7 8 minutes across these three frames",
+        "minutes": 200
+      },
+      "clicks": null
+    },
+    {
+      "number": 54,
+      "key": "aria-investigate-verify",
+      "title": "Open the source and check that claim",
+      "kind": "aria-investigation",
+      "name": "aria-investigate-verify",
+      "notes": "Allocate 8 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/transit_factory/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "answer": null,
+      "concept": "Which checked observation could support a scoped lesson for future builders? If a failure occurred, inspect the repair before accepting the lesson.",
+      "exercise": {
+        "step": "integrate",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/transit_factory/investigate.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/467e83bf4626e7fb910763fe0d55127c",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/284f7f1dc00adf6c96f712568f19113c"
+      ],
+      "timing": {
+        "elapsed": "3:20 \u00b7 8 minutes across these three frames",
+        "minutes": 200
+      },
+      "clicks": null
+    },
+    {
+      "number": 55,
       "key": "shared-memory-needs-something-worth-sharing",
       "title": "Shared memory needs something worth sharing",
       "kind": "",
@@ -1085,13 +1172,13 @@
       "source": "scripts/transit_cells.py",
       "evidence": [],
       "timing": {
-        "elapsed": "3:20",
-        "minutes": 200
+        "elapsed": "3:28",
+        "minutes": 208
       },
       "clicks": null
     },
     {
-      "number": 53,
+      "number": 56,
       "key": "check-the-lesson-before-another-agent-relies-on-it",
       "title": "Check the lesson before another agent relies on it",
       "kind": "",
@@ -1103,13 +1190,13 @@
       "source": "scripts/transit_cells.py",
       "evidence": [],
       "timing": {
-        "elapsed": "3:23",
-        "minutes": 203
+        "elapsed": "3:29",
+        "minutes": 209
       },
       "clicks": 2
     },
     {
-      "number": 54,
+      "number": 57,
       "key": "write-a-rule-with-a-test-attached",
       "title": "Write a rule with a test attached",
       "kind": "",
@@ -1121,13 +1208,13 @@
       "source": "scripts/transit_cells.py",
       "evidence": [],
       "timing": {
-        "elapsed": "3:26",
-        "minutes": 206
+        "elapsed": "3:30",
+        "minutes": 210
       },
       "clicks": null
     },
     {
-      "number": 55,
+      "number": 58,
       "key": "a-saved-note-is-not-automatically-accepted",
       "title": "A saved note is not automatically accepted",
       "kind": "",
@@ -1139,13 +1226,13 @@
       "source": "src/forge_workshop_kit/transit_workshop.py:accept_lesson; src/forge_workshop_kit/factory.py:TaskBoard.memories",
       "evidence": [],
       "timing": {
-        "elapsed": "3:29",
-        "minutes": 209
+        "elapsed": "3:31",
+        "minutes": 211
       },
       "clicks": null
     },
     {
-      "number": 56,
+      "number": 59,
       "key": "first-exclude-the-unchecked-interpretation",
       "title": "First exclude the unchecked interpretation",
       "kind": "",
@@ -1157,13 +1244,13 @@
       "source": "src/forge_workshop_kit/transit_workshop.py:accept_lesson; src/forge_workshop_kit/factory.py:TaskBoard.memories",
       "evidence": [],
       "timing": {
-        "elapsed": "3:31",
-        "minutes": 211
+        "elapsed": "3:32",
+        "minutes": 212
       },
       "clicks": null
     },
     {
-      "number": 57,
+      "number": 60,
       "key": "then-check-the-applicable-contract-version",
       "title": "Then check the applicable contract version",
       "kind": "",
@@ -1181,7 +1268,7 @@
       "clicks": null
     },
     {
-      "number": 58,
+      "number": 61,
       "key": "finally-match-the-task-s-scope-and-tags",
       "title": "Finally match the task\u2019s scope and tags",
       "kind": "",
@@ -1199,7 +1286,7 @@
       "clicks": null
     },
     {
-      "number": 59,
+      "number": 62,
       "key": "memory-exercise",
       "title": "Save a lesson supported by an execution",
       "kind": "exercise",
@@ -1228,7 +1315,7 @@
       "clicks": null
     },
     {
-      "number": 60,
+      "number": 63,
       "key": "inspect-the-memory-read-then-its-effect",
       "title": "Inspect the memory read, then its effect",
       "kind": "",
@@ -1246,7 +1333,7 @@
       "clicks": null
     },
     {
-      "number": 61,
+      "number": 64,
       "key": "find-the-last-direct-train-between-two-stops",
       "title": "Find the last direct train between two stops",
       "kind": "",
@@ -1264,7 +1351,7 @@
       "clicks": null
     },
     {
-      "number": 62,
+      "number": 65,
       "key": "start-both-follow-ups-from-the-same-release",
       "title": "Start both follow-ups from the same release",
       "kind": "",
@@ -1282,7 +1369,7 @@
       "clicks": null
     },
     {
-      "number": 63,
+      "number": 66,
       "key": "keep-both-sets-of-patches-and-checks",
       "title": "Keep both sets of patches and checks",
       "kind": "",
@@ -1300,7 +1387,7 @@
       "clicks": null
     },
     {
-      "number": 64,
+      "number": 67,
       "key": "the-follow-up-returns-a-journey-not-a-list-of-guesses",
       "title": "The follow-up returns a journey, not a list of guesses",
       "kind": "",
@@ -1318,7 +1405,7 @@
       "clicks": null
     },
     {
-      "number": 65,
+      "number": 68,
       "key": "run-both-versions-of-the-follow-up-feature",
       "title": "Run both versions of the follow-up feature",
       "kind": "exercise",
@@ -1353,7 +1440,7 @@
       "clicks": null
     },
     {
-      "number": 66,
+      "number": 69,
       "key": "the-factory-has-two-kinds-of-state",
       "title": "The factory has two kinds of state",
       "kind": "",
@@ -1371,7 +1458,7 @@
       "clicks": null
     },
     {
-      "number": 67,
+      "number": 70,
       "key": "find-where-the-lesson-entered-the-request",
       "title": "Find where the lesson entered the request",
       "kind": "",
@@ -1389,7 +1476,7 @@
       "clicks": null
     },
     {
-      "number": 68,
+      "number": 71,
       "key": "keep-a-stopped-worker-s-files-and-error",
       "title": "Keep a stopped worker\u2019s files and error",
       "kind": "",
@@ -1407,7 +1494,7 @@
       "clicks": null
     },
     {
-      "number": 69,
+      "number": 72,
       "key": "break-until-4-55",
       "title": "Break until 4:55",
       "kind": "break",
@@ -1425,7 +1512,7 @@
       "clicks": null
     },
     {
-      "number": 70,
+      "number": 73,
       "key": "evaluate-the-product-and-the-process-separately",
       "title": "Evaluate the product and the process separately",
       "kind": "",
@@ -1443,7 +1530,7 @@
       "clicks": null
     },
     {
-      "number": 71,
+      "number": 74,
       "key": "a-scenario-is-an-input-and-an-expected-behavior",
       "title": "A scenario is an input and an expected behavior",
       "kind": "",
@@ -1461,7 +1548,7 @@
       "clicks": null
     },
     {
-      "number": 72,
+      "number": 75,
       "key": "evaluate-exercise",
       "title": "Compare the frozen builds on matching cases",
       "kind": "exercise",
@@ -1490,7 +1577,7 @@
       "clicks": null
     },
     {
-      "number": 73,
+      "number": 76,
       "key": "read-one-comparison-row-before-the-average",
       "title": "Read one comparison row before the average",
       "kind": "",
@@ -1508,7 +1595,7 @@
       "clicks": null
     },
     {
-      "number": 74,
+      "number": 77,
       "key": "compare-the-same-departures-in-forge",
       "title": "Compare the same departures in Forge",
       "kind": "",
@@ -1528,7 +1615,7 @@
       "clicks": null
     },
     {
-      "number": 75,
+      "number": 78,
       "key": "the-faster-build-missed-two-final-cases",
       "title": "The faster build missed two final cases",
       "kind": "",
@@ -1549,7 +1636,7 @@
       "clicks": null
     },
     {
-      "number": 76,
+      "number": 79,
       "key": "open-the-two-failing-rows-in-the-final-comparison",
       "title": "Open the two failing rows in the final comparison",
       "kind": "",
@@ -1569,7 +1656,7 @@
       "clicks": null
     },
     {
-      "number": 77,
+      "number": 80,
       "key": "a-timezone-assumption-selected-the-wrong-train",
       "title": "A timezone assumption selected the wrong train",
       "kind": "",
@@ -1589,7 +1676,7 @@
       "clicks": 2
     },
     {
-      "number": 78,
+      "number": 81,
       "key": "interpret-the-request-as-one-instant",
       "title": "Interpret the request as one instant",
       "kind": "",
@@ -1609,7 +1696,7 @@
       "clicks": null
     },
     {
-      "number": 79,
+      "number": 82,
       "key": "the-team-used-the-caller-s-clock-for-service-time",
       "title": "The team used the caller\u2019s clock for service time",
       "kind": "",
@@ -1629,7 +1716,7 @@
       "clicks": null
     },
     {
-      "number": 80,
+      "number": 83,
       "key": "the-renderer-carried-the-same-wrong-trip-into-the-board",
       "title": "The renderer carried the same wrong trip into the board",
       "kind": "",
@@ -1649,7 +1736,7 @@
       "clicks": null
     },
     {
-      "number": 81,
+      "number": 84,
       "key": "neither-follow-up-completed-the-query-change",
       "title": "Neither follow-up completed the query change",
       "kind": "",
@@ -1669,7 +1756,7 @@
       "clicks": null
     },
     {
-      "number": 82,
+      "number": 85,
       "key": "more-workers-can-still-produce-more-waiting",
       "title": "More workers can still produce more waiting",
       "kind": "",
@@ -1687,7 +1774,7 @@
       "clicks": null
     },
     {
-      "number": 83,
+      "number": 86,
       "key": "choose-a-release-using-the-saved-checks",
       "title": "Choose a release using the saved checks",
       "kind": "",
@@ -1705,7 +1792,100 @@
       "clicks": null
     },
     {
-      "number": 84,
+      "number": 87,
+      "key": "aria-conclusion",
+      "title": "Check our conclusion",
+      "kind": "aria-investigation",
+      "name": "aria-conclusion",
+      "notes": "Allocate 7 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/transit_factory/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "answer": null,
+      "concept": "Check the solo/team and with/without-memory conclusions. Separate correctness, duplicated work, integration attempts, elapsed time, and cost; retrieval alone does not establish that memory helped.",
+      "exercise": {
+        "step": "evaluate",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/transit_factory/conclusion.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/e11ffa49b71896fb877e2a7c821fa2e1",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/a8d73a215bf11c9ae267956656f05caa",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/6c7b7b6daeb47890999aa69754554369",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c4e62c51a22d9c0528897ce5175af383"
+      ],
+      "timing": {
+        "elapsed": "5:35 \u00b7 7 minutes across these three frames",
+        "minutes": 335
+      },
+      "clicks": null
+    },
+    {
+      "number": 88,
+      "key": "aria-conclusion-response",
+      "title": "Read one claim in the recorded response",
+      "kind": "aria-investigation",
+      "name": "aria-conclusion-response",
+      "notes": "Allocate 7 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/transit_factory/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "answer": null,
+      "concept": "Check the solo/team and with/without-memory conclusions. Separate correctness, duplicated work, integration attempts, elapsed time, and cost; retrieval alone does not establish that memory helped.",
+      "exercise": {
+        "step": "evaluate",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/transit_factory/conclusion.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/e11ffa49b71896fb877e2a7c821fa2e1",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/a8d73a215bf11c9ae267956656f05caa",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/6c7b7b6daeb47890999aa69754554369",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c4e62c51a22d9c0528897ce5175af383"
+      ],
+      "timing": {
+        "elapsed": "5:35 \u00b7 7 minutes across these three frames",
+        "minutes": 335
+      },
+      "clicks": null
+    },
+    {
+      "number": 89,
+      "key": "aria-conclusion-verify",
+      "title": "Open the source and check that claim",
+      "kind": "aria-investigation",
+      "name": "aria-conclusion-verify",
+      "notes": "Allocate 7 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/transit_factory/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "answer": null,
+      "concept": "Check the solo/team and with/without-memory conclusions. Separate correctness, duplicated work, integration attempts, elapsed time, and cost; retrieval alone does not establish that memory helped.",
+      "exercise": {
+        "step": "evaluate",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/transit_factory/conclusion.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/e11ffa49b71896fb877e2a7c821fa2e1",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/a8d73a215bf11c9ae267956656f05caa",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/6c7b7b6daeb47890999aa69754554369",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c4e62c51a22d9c0528897ce5175af383"
+      ],
+      "timing": {
+        "elapsed": "5:35 \u00b7 7 minutes across these three frames",
+        "minutes": 335
+      },
+      "clicks": null
+    },
+    {
+      "number": 90,
       "key": "release-exercise",
       "title": "Publish the version you can reproduce",
       "kind": "exercise",
@@ -1728,13 +1908,13 @@
       "source": "scripts/transit_cells.py",
       "evidence": [],
       "timing": {
-        "elapsed": "5:35",
-        "minutes": 335
+        "elapsed": "5:42",
+        "minutes": 342
       },
       "clicks": null
     },
     {
-      "number": 85,
+      "number": 91,
       "key": "reload-the-selected-app-and-repeat-one-case",
       "title": "Reload the selected app and repeat one case",
       "kind": "",
@@ -1752,7 +1932,7 @@
       "clicks": null
     },
     {
-      "number": 86,
+      "number": 92,
       "key": "explain-one-result-to-another-participant",
       "title": "Explain one result to another participant",
       "kind": "",
@@ -1770,7 +1950,7 @@
       "clicks": null
     },
     {
-      "number": 87,
+      "number": 93,
       "key": "take-the-coordination-code-to-your-own-project",
       "title": "Take the coordination code to your own project",
       "kind": "",
@@ -1788,7 +1968,7 @@
       "clicks": null
     },
     {
-      "number": 88,
+      "number": 94,
       "key": "tasks-answer",
       "title": "Worked answer: select ready tasks",
       "kind": "answer",
@@ -1806,7 +1986,7 @@
       "clicks": null
     },
     {
-      "number": 89,
+      "number": 95,
       "key": "memory-answer",
       "title": "Worked answer: retrieve a checked lesson",
       "kind": "answer",
@@ -1824,7 +2004,7 @@
       "clicks": null
     },
     {
-      "number": 90,
+      "number": 96,
       "key": "release-answer",
       "title": "Worked answer: block an unverified release",
       "kind": "answer",
@@ -1842,7 +2022,7 @@
       "clicks": null
     },
     {
-      "number": 91,
+      "number": 97,
       "key": "workflow-sources",
       "title": "Sources for the workflow",
       "kind": "",
@@ -1860,7 +2040,7 @@
       "clicks": null
     },
     {
-      "number": 92,
+      "number": 98,
       "key": "sources-for-the-data-and-evaluation",
       "title": "Sources for the data and evaluation",
       "kind": "",
@@ -1878,7 +2058,7 @@
       "clicks": null
     },
     {
-      "number": 93,
+      "number": 99,
       "key": "acceptance-answer",
       "title": "Worked answer: check the after-midnight departure",
       "kind": "answer",
@@ -1896,7 +2076,7 @@
       "clicks": null
     },
     {
-      "number": 94,
+      "number": 100,
       "key": "worker-answer",
       "title": "Worked answer: dispatch one allowed tool",
       "kind": "answer",
@@ -1914,7 +2094,7 @@
       "clicks": null
     },
     {
-      "number": 95,
+      "number": 101,
       "key": "evaluate-answer",
       "title": "Worked answer: check the departure order",
       "kind": "answer",

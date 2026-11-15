@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[routing] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.9.0/forge_workshop_kit-0.9.0-py3-none-any.whl",
+#   "forge-workshop-kit[routing] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.10.0/forge_workshop_kit-0.10.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -123,6 +123,7 @@ def _():
     import joblib
     import marimo as mo
     from forge_workshop_kit import WorkshopSession, setup, ui, routing, routing_teaching as teaching
+    from forge_workshop_kit import aria
     from forge_workshop_kit import routing_release as release_lab
     from forge_workshop_kit.review import save_review, reviewed_dataset
     from forge_workshop_kit.provider import validated_json, Provider
@@ -133,7 +134,7 @@ def _():
     get_step, set_step = mo.state("setup", allow_self_loops=True)
     get_output, set_output = mo.state({})
     get_revision, set_revision = mo.state(0)
-    return (Path, Provider, WorkshopSession, digest, event, export_trace, get_context, get_output, get_revision, get_step, joblib, json, mo, publish_comparison, publish_report, release_lab, reviewed_dataset, routing, save_review, saved_trace_inputs, set_context, set_output, set_revision, set_step, setup, teaching, time, ui, validated_json,)
+    return (Path, Provider, WorkshopSession, aria, digest, event, export_trace, get_context, get_output, get_revision, get_step, joblib, json, mo, publish_comparison, publish_report, release_lab, reviewed_dataset, routing, save_review, saved_trace_inputs, set_context, set_output, set_revision, set_step, setup, teaching, time, ui, validated_json,)
 
 
 # workshop-cell: request_routing/definitions/go_to
@@ -554,6 +555,18 @@ def _(baseline_case, get_context, get_step, mo, teaching):
     return
 
 
+# workshop-cell: request_routing/aria/investigate
+@app.cell(hide_code=True)
+def _(aria, baseline_case, baseline_observation, get_context, get_revision, get_step, mo, teaching):
+    mo.stop(get_step()!="baseline")
+    _s=get_context().get("session")
+    _revision=get_revision()
+    _baseline=teaching.saved(_s,"routing/baseline/tfidf") if _s else None
+    routing_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=[_baseline["id"]] if _baseline else [],case_ids=[baseline_case.value] if baseline_case.value else [],interpretation=baseline_observation.value,workshop="banking-routing")
+    mo.vstack([mo.md("Keep the selected validation request in view while checking the explanation. The sentence-feature comparison has not run yet."),routing_aria_investigate])
+    return (routing_aria_investigate,)
+
+
 # workshop-cell: request_routing/action/baseline_observation
 @app.cell(hide_code=True)
 def _(baseline_case, baseline_observation, get_context, mo, refresh, save_baseline_observation):
@@ -605,7 +618,7 @@ def _(check_policy, mo, policy_editor, show_result, teaching):
     return
 
 
-# workshop-cell: request_routing/display/34
+# workshop-cell: request_routing/display/35
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, policy_editor, review_threshold, routing, teaching, ui):
     mo.stop(get_step()!="review")
@@ -621,7 +634,7 @@ def _(get_context, get_revision, get_step, mo, policy_editor, review_threshold, 
     return
 
 
-# workshop-cell: request_routing/display/35
+# workshop-cell: request_routing/display/36
 @app.cell(hide_code=True)
 def _(get_context, get_step, mo, review_picker, teaching, ui):
     mo.stop(get_step()!="review" or not review_picker.value)
@@ -871,7 +884,7 @@ def _(get_context, get_revision, get_step, mo, teaching):
     return (final_picker,)
 
 
-# workshop-cell: request_routing/display/50
+# workshop-cell: request_routing/display/51
 @app.cell(hide_code=True)
 def _(final_picker, get_context, get_step, mo, teaching, ui):
     mo.stop(get_step()!="final" or not final_picker.value)
@@ -913,7 +926,7 @@ def _(get_context, get_revision, get_step, mo, release_lab, teaching, ui):
         "decision":mo.vstack([mo.md("**5. Decide whether to release.** Read the checks and matching requests below. The repair should reproduce the healthy classifier, including its remaining mistakes. Saving this decision uploads the saved repaired package; it does not run it again."),release_choice,release_reason,release_decide]),
         "rollback":mo.vstack([mo.md("**6. Practice rollback.** Download the previous exact artifact and compare its outputs with the healthy batch. A saved pointer alone is not a verified rollback."),release_rollback]),
         "complete":mo.md("**Release drill saved.** Explain the defect, your repair, and the rollback result in the conclusion. The official test comparison above is unchanged.")}
-    mo.vstack([mo.Html(ui.heading("The classifier passed. The release did not.","Your support team has selected a router. Now check that the released files preserve the same decisions. This is a controlled release drill, not a new claim about model quality.",theme="routing")),mo.md("**Regression set:** one lexical-first review-pool request per intent. Some may have been used for review or retraining. These are reproduction checks, not independent test results."),_phase_ui[_phase] if _release_ready else mo.callout(mo.md("Complete the final classifier comparison first. [Go to the final comparison](#final)."),kind="warn"),mo.accordion({"Publication failed?":mo.vstack([mo.md("Saved executions remain available. Retry uploads here, then use the current step's button. Completed batches are reused."),release_retry]),"Optional Registry and ARIA":mo.md("The required release is this notebook's batch predictor. If you have Registry access, link the exact artifact version after the checks pass. Registry does not deploy it. Where ARIA is enabled, ask it to investigate the saved incident; verify its cited request before accepting a suggestion.")})]) if get_step()=="release" else mo.md("")
+    mo.vstack([mo.Html(ui.heading("The classifier passed. The release did not.","Your support team has selected a router. Now check that the released files preserve the same decisions. This is a controlled release drill, not a new claim about model quality.",theme="routing")),mo.md("**Regression set:** one lexical-first review-pool request per intent. Some may have been used for review or retraining. These are reproduction checks, not independent test results."),_phase_ui[_phase] if _release_ready else mo.callout(mo.md("Complete the final classifier comparison first. [Go to the final comparison](#final)."),kind="warn"),mo.accordion({"Publication failed?":mo.vstack([mo.md("Saved executions remain available. Retry uploads here, then use the current step's button. Completed batches are reused."),release_retry]),"Optional Registry exercise":mo.md("The required release is this notebook's batch predictor. If you have Registry access, link the exact artifact version after the checks pass. Registry does not deploy it.")})]) if get_step()=="release" else mo.md("")
     return (release_check, release_check_editor, release_choice, release_decide, release_incident, release_loader_editor, release_prepare, release_reason, release_reload, release_repair, release_retry, release_rollback,)
 
 
@@ -1077,8 +1090,19 @@ def _(get_context, get_revision, get_step, mo, teaching, ui):
     conclusion=mo.ui.text_area(value=_s.get_draft("routing/conclusion","") if _s else "",label="What changed, what improved, and what should a person still review?",full_width=True,on_change=lambda value:_s.save_draft("routing/conclusion",value) if _s else None)
     publish=mo.ui.run_button(label="Publish my conclusion with the saved comparisons",disabled=not bool(_s and teaching.saved(_s,"routing/final/selected")))
     retry_exports=mo.ui.run_button(label="Retry saved traces and comparison uploads",disabled=not bool(_s))
-    mo.vstack([mo.Html(ui.step("Explain what you would put into the support queue","Write down the measured change and one mistake you would send to a person. Publish the selected classifier with its preprocessing, reviewed dataset, and matching evaluation.","Open one EvalTables row and the corresponding Agent Lens request. If native publication is unavailable, use the saved notebook comparison and retry publication later.")),conclusion,publish,retry_exports,mo.md("Optional: ask ARIA to inspect the published runs and suggest a regression case. Verify its cited example before accepting the suggestion.")]) if get_step()=="report" else mo.md("")
+    mo.vstack([mo.Html(ui.step("Explain what you would put into the support queue","Write down the measured change and one mistake you would send to a person. Publish the selected classifier with its preprocessing, reviewed dataset, and matching evaluation.","Open one EvalTables row and the corresponding Agent Lens request. If native publication is unavailable, use the saved notebook comparison and retry publication later.")),conclusion,retry_exports]) if get_step()=="report" else mo.md("")
     return (conclusion, publish, retry_exports,)
+
+
+# workshop-cell: request_routing/aria/conclusion
+@app.cell(hide_code=True)
+def _(aria, conclusion, get_context, get_revision, get_step, mo, publish):
+    mo.stop(get_step()!="report")
+    _s=get_context().get("session")
+    _revision=get_revision()
+    routing_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=conclusion.value,workshop="banking-routing")
+    mo.vstack([routing_aria_conclusion,publish])
+    return (routing_aria_conclusion,)
 
 
 # workshop-cell: request_routing/action/retry_exports
@@ -1119,7 +1143,7 @@ def _(conclusion, get_context, mo, publish, publish_report, publish_routing_resu
     return
 
 
-# workshop-cell: request_routing/display/66
+# workshop-cell: request_routing/display/68
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, teaching, ui):
     mo.stop(get_step()!="report")
@@ -1131,7 +1155,7 @@ def _(get_context, get_revision, get_step, mo, teaching, ui):
     return
 
 
-# workshop-cell: request_routing/display/67
+# workshop-cell: request_routing/display/69
 @app.cell(hide_code=True)
 def _(get_output, get_step, mo, ui):
     _outputs=get_output()

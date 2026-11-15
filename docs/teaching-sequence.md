@@ -29,6 +29,12 @@ Follow the same case and intermediate values in both surfaces. A reveal answers 
 
 Use Agent Lens to locate an operation, runs and Sweeps to compare experiments, Artifacts to reproduce saved files, and EvalTables to inspect matching cases. Native tag criteria and Alignment answer whether a monitor agrees with reviewed examples. Each product link gets one specific investigation task.
 
+## Ask ARIA after the participant has an interpretation
+
+Schedule an eight-minute development investigation before the proposed intervention and a seven-minute conclusion check before Report publication. Reuse discussion time. Show the selected case and versions, the participant’s hypothesis, an actual ARIA response, and the source used to check one claim. The question, response, and verification remain separate frames in the deck and explicit actions in the notebook.
+
+Use the [ARIA investigation contract](aria-investigations.md). Early context contains only allowed development or validation records. Closing suggestions concern a future experiment. No answer automatically becomes a prompt, label, rubric, lesson, or release decision. Personal-project participants use the recorded exercise; unavailable recordings remain unavailable.
+
 ## Teaching references
 
 The sequence adapts the small Python implementations and recurring evaluation in [Andrew Ng's agentic-AI course](https://www.deeplearning.ai/courses/agentic-ai), domain review and judge calibration in [Hamel Husain's evaluation guidance](https://hamel.dev/blog/posts/evals/), and early working applications in [fast.ai's teaching approach](https://www.fast.ai/posts/2016-10-08-overview.html). These are references, not endorsements or reviews of this kit.

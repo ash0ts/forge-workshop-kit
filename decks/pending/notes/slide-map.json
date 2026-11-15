@@ -1,7 +1,7 @@
 {
   "duration_minutes": 240,
-  "total_slides": 95,
-  "main_slides": 90,
+  "total_slides": 100,
+  "main_slides": 95,
   "sections": [
     {
       "anchor": "cover",
@@ -540,7 +540,7 @@
         "start_minute": 40,
         "duration_minutes": 30
       },
-      "answer": 91
+      "answer": 96
     },
     {
       "number": 21,
@@ -719,7 +719,7 @@
         "start_minute": 40,
         "duration_minutes": 30
       },
-      "answer": 92
+      "answer": 97
     },
     {
       "number": 29,
@@ -1223,7 +1223,7 @@
         "start_minute": 105,
         "duration_minutes": 30
       },
-      "answer": 93
+      "answer": 98
     },
     {
       "number": 50,
@@ -1374,6 +1374,87 @@
     },
     {
       "number": 56,
+      "key": "aria-investigate",
+      "title": "Investigate this result",
+      "kind": "aria-investigation",
+      "notes": "Allocate 8 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "concept": "Check one billing ticket: what changed in the account, what did the employee claim, and did read_skill occur before the procedure was used?",
+      "exercise": {
+        "step": "evals",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/pending_inc/investigate.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c2458ce8b6bb52274d29b5c5a691424b"
+      ],
+      "timing": {
+        "section": "Investigate this result",
+        "start_minute": 117,
+        "duration_minutes": 8
+      },
+      "answer": null
+    },
+    {
+      "number": 57,
+      "key": "aria-investigate-response",
+      "title": "Read one claim in the recorded response",
+      "kind": "aria-investigation",
+      "notes": "Allocate 8 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "concept": "Check one billing ticket: what changed in the account, what did the employee claim, and did read_skill occur before the procedure was used?",
+      "exercise": {
+        "step": "evals",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/pending_inc/investigate.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c2458ce8b6bb52274d29b5c5a691424b"
+      ],
+      "timing": {
+        "section": "Investigate this result",
+        "start_minute": 117,
+        "duration_minutes": 8
+      },
+      "answer": null
+    },
+    {
+      "number": 58,
+      "key": "aria-investigate-verify",
+      "title": "Open the source and check that claim",
+      "kind": "aria-investigation",
+      "notes": "Allocate 8 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "concept": "Check one billing ticket: what changed in the account, what did the employee claim, and did read_skill occur before the procedure was used?",
+      "exercise": {
+        "step": "evals",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/pending_inc/investigate.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c2458ce8b6bb52274d29b5c5a691424b"
+      ],
+      "timing": {
+        "section": "Investigate this result",
+        "start_minute": 117,
+        "duration_minutes": 8
+      },
+      "answer": null
+    },
+    {
+      "number": 59,
       "key": "manual",
       "title": "Revise the verification skill and rerun both tickets.",
       "kind": "exercise",
@@ -1400,7 +1481,7 @@
       "answer": null
     },
     {
-      "number": 57,
+      "number": 60,
       "key": "break",
       "title": "Take a ten-minute break after saving your progress.",
       "kind": "explanation",
@@ -1421,7 +1502,7 @@
       "answer": null
     },
     {
-      "number": 58,
+      "number": 61,
       "key": "editor",
       "title": "Management would like to automate management.",
       "kind": "explanation",
@@ -1445,7 +1526,7 @@
       "answer": null
     },
     {
-      "number": 59,
+      "number": 62,
       "key": "branch-1",
       "title": "Propose two edits to the same starting harness.",
       "kind": "explanation",
@@ -1469,7 +1550,7 @@
       "answer": null
     },
     {
-      "number": 60,
+      "number": 63,
       "key": "branch-2",
       "title": "Run each candidate from the original account state.",
       "kind": "explanation",
@@ -1493,7 +1574,7 @@
       "answer": null
     },
     {
-      "number": 61,
+      "number": 64,
       "key": "branch-3",
       "title": "Compare the probe results before selecting a harness.",
       "kind": "explanation",
@@ -1517,7 +1598,7 @@
       "answer": null
     },
     {
-      "number": 62,
+      "number": 65,
       "key": "branch-4",
       "title": "Execute the harness returned by the composition decision.",
       "kind": "explanation",
@@ -1541,7 +1622,7 @@
       "answer": null
     },
     {
-      "number": 63,
+      "number": 66,
       "key": "branch-5",
       "title": "Save the selected harness and a lesson for onboarding.",
       "kind": "explanation",
@@ -1565,7 +1646,7 @@
       "answer": null
     },
     {
-      "number": 64,
+      "number": 67,
       "key": "propose-code",
       "title": "Give the editor the starting execution and harness.",
       "kind": "explanation",
@@ -1589,7 +1670,7 @@
       "answer": null
     },
     {
-      "number": 65,
+      "number": 68,
       "key": "propose",
       "title": "Review the proposed instruction and workflow changes.",
       "kind": "exercise",
@@ -1616,7 +1697,7 @@
       "answer": null
     },
     {
-      "number": 66,
+      "number": 69,
       "key": "probe-code",
       "title": "Construct and execute the proposed harness.",
       "kind": "explanation",
@@ -1640,7 +1721,7 @@
       "answer": null
     },
     {
-      "number": 67,
+      "number": 70,
       "key": "probes",
       "title": "Run both candidates and inspect their tool sequences.",
       "kind": "exercise",
@@ -1667,7 +1748,7 @@
       "answer": null
     },
     {
-      "number": 68,
+      "number": 71,
       "key": "completion-guard",
       "title": "Require a passing check of the current state before finish.",
       "kind": "explanation",
@@ -1691,7 +1772,7 @@
       "answer": null
     },
     {
-      "number": 69,
+      "number": 72,
       "key": "gate-screen",
       "title": "This candidate required a check before completion.",
       "kind": "explanation",
@@ -1715,7 +1796,7 @@
       "answer": null
     },
     {
-      "number": 70,
+      "number": 73,
       "key": "gate-detail",
       "title": "The completion gate required a check_work call.",
       "kind": "explanation",
@@ -1739,7 +1820,7 @@
       "answer": null
     },
     {
-      "number": 71,
+      "number": 74,
       "key": "probe-comparison",
       "title": "Compare the added checks with the resulting account state.",
       "kind": "explanation",
@@ -1763,7 +1844,7 @@
       "answer": null
     },
     {
-      "number": 72,
+      "number": 75,
       "key": "keep",
       "title": "The editor retained the parent after comparing the probes.",
       "kind": "explanation",
@@ -1787,7 +1868,7 @@
       "answer": null
     },
     {
-      "number": 73,
+      "number": 76,
       "key": "compose",
       "title": "Test the selected harness before carrying it forward.",
       "kind": "exercise",
@@ -1814,7 +1895,7 @@
       "answer": null
     },
     {
-      "number": 74,
+      "number": 77,
       "key": "reflection",
       "title": "Save the lesson with the run that supports it.",
       "kind": "explanation",
@@ -1838,7 +1919,7 @@
       "answer": null
     },
     {
-      "number": 75,
+      "number": 78,
       "key": "between-rounds",
       "title": "The next task gets the selected procedure and a checked lesson.",
       "kind": "explanation",
@@ -1862,7 +1943,7 @@
       "answer": null
     },
     {
-      "number": 76,
+      "number": 79,
       "key": "compose-not-test",
       "title": "Choosing a combination does not test it.",
       "kind": "explanation",
@@ -1886,7 +1967,7 @@
       "answer": null
     },
     {
-      "number": 77,
+      "number": 80,
       "key": "round-two",
       "title": "Use the selected harness to start the onboarding round.",
       "kind": "exercise",
@@ -1913,7 +1994,7 @@
       "answer": null
     },
     {
-      "number": 78,
+      "number": 81,
       "key": "round-two-result",
       "title": "The second round changed the verification skill.",
       "kind": "explanation",
@@ -1937,7 +2018,7 @@
       "answer": null
     },
     {
-      "number": 79,
+      "number": 82,
       "key": "skill-diff",
       "title": "The skill makes the final check more specific.",
       "kind": "explanation",
@@ -1961,7 +2042,7 @@
       "answer": null
     },
     {
-      "number": 80,
+      "number": 83,
       "key": "rsi",
       "title": "The next round tests changes to the previous selection.",
       "kind": "explanation",
@@ -1985,7 +2066,7 @@
       "answer": null
     },
     {
-      "number": 81,
+      "number": 84,
       "key": "freeze",
       "title": "Freeze three harnesses for the fresh-case comparison.",
       "kind": "explanation",
@@ -2009,7 +2090,7 @@
       "answer": null
     },
     {
-      "number": 82,
+      "number": 85,
       "key": "final",
       "title": "Compare all three versions on fresh tickets.",
       "kind": "exercise",
@@ -2036,7 +2117,7 @@
       "answer": null
     },
     {
-      "number": 83,
+      "number": 86,
       "key": "native-results",
       "title": "Compare the same ticket in Forge.",
       "kind": "explanation",
@@ -2060,7 +2141,7 @@
       "answer": null
     },
     {
-      "number": 84,
+      "number": 87,
       "key": "native-case",
       "title": "Inspect a request that needs clarification.",
       "kind": "explanation",
@@ -2084,7 +2165,7 @@
       "answer": null
     },
     {
-      "number": 85,
+      "number": 88,
       "key": "final-screen",
       "title": "Link the Report\u2019s conclusion to its runs and traces.",
       "kind": "explanation",
@@ -2108,7 +2189,7 @@
       "answer": null
     },
     {
-      "number": 86,
+      "number": 89,
       "key": "final-result",
       "title": "All three harnesses passed the four final cases.",
       "kind": "explanation",
@@ -2132,7 +2213,7 @@
       "answer": null
     },
     {
-      "number": 87,
+      "number": 90,
       "key": "files",
       "title": "Save the case, harness, execution, and scoring records.",
       "kind": "explanation",
@@ -2156,7 +2237,97 @@
       "answer": null
     },
     {
-      "number": 88,
+      "number": 91,
+      "key": "aria-conclusion",
+      "title": "Check our conclusion",
+      "kind": "aria-investigation",
+      "notes": "Allocate 7 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "concept": "Compare the starting, manual, and agent-selected harnesses on the same tickets. Did account correctness change, or only tool use and checking?",
+      "exercise": {
+        "step": "final",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/fdcf3eb3fbcae1cf6b7b765e7654c36b",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/25cf9e219e38e8f6c445e3e38b16749b",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/20db682821e9f8633eb809db08ad981a",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/8d05c61780b324b33edc1c1d8a47db9a"
+      ],
+      "timing": {
+        "section": "Check our conclusion",
+        "start_minute": 230,
+        "duration_minutes": 7
+      },
+      "answer": null
+    },
+    {
+      "number": 92,
+      "key": "aria-conclusion-response",
+      "title": "Read one claim in the recorded response",
+      "kind": "aria-investigation",
+      "notes": "Allocate 7 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "concept": "Compare the starting, manual, and agent-selected harnesses on the same tickets. Did account correctness change, or only tool use and checking?",
+      "exercise": {
+        "step": "final",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/fdcf3eb3fbcae1cf6b7b765e7654c36b",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/25cf9e219e38e8f6c445e3e38b16749b",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/20db682821e9f8633eb809db08ad981a",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/8d05c61780b324b33edc1c1d8a47db9a"
+      ],
+      "timing": {
+        "section": "Check our conclusion",
+        "start_minute": 230,
+        "duration_minutes": 7
+      },
+      "answer": null
+    },
+    {
+      "number": 93,
+      "key": "aria-conclusion-verify",
+      "title": "Open the source and check that claim",
+      "kind": "aria-investigation",
+      "notes": "Allocate 7 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "concept": "Compare the starting, manual, and agent-selected harnesses on the same tickets. Did account correctness change, or only tool use and checking?",
+      "exercise": {
+        "step": "final",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/fdcf3eb3fbcae1cf6b7b765e7654c36b",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/25cf9e219e38e8f6c445e3e38b16749b",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/20db682821e9f8633eb809db08ad981a",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/8d05c61780b324b33edc1c1d8a47db9a"
+      ],
+      "timing": {
+        "section": "Check our conclusion",
+        "start_minute": 230,
+        "duration_minutes": 7
+      },
+      "answer": null
+    },
+    {
+      "number": 94,
       "key": "report",
       "title": "Write down what changed and whether it helped.",
       "kind": "exercise",
@@ -2183,31 +2354,7 @@
       "answer": null
     },
     {
-      "number": 89,
-      "key": "aria",
-      "title": "Ask ARIA to compare one case across harness versions.",
-      "kind": "explanation",
-      "notes": "Do not imply ARIA authored these prior results. The prompt asks for evidence analysis, not permission to run new experiments or change budgets.",
-      "concept": "Ask ARIA to compare one case across harness versions",
-      "exercise": {
-        "step": "8 \u00b7 Explain the result"
-      },
-      "source": [
-        "scripts/pending_cells.py",
-        "src/forge_workshop_kit/pending/loop.py"
-      ],
-      "evidence": [
-        "evidence/v030-pending-rehearsal.json"
-      ],
-      "timing": {
-        "section": "Explain the result",
-        "start_minute": 230,
-        "duration_minutes": 10
-      },
-      "answer": null
-    },
-    {
-      "number": 90,
+      "number": 95,
       "key": "end",
       "title": "Choose a workflow with an observable result to test.",
       "kind": "explanation",
@@ -2231,7 +2378,7 @@
       "answer": null
     },
     {
-      "number": 91,
+      "number": 96,
       "key": "answer-tool",
       "title": "Worked answer \u00b7 invoice lookup",
       "kind": "answer",
@@ -2253,7 +2400,7 @@
       "answer": null
     },
     {
-      "number": 92,
+      "number": 97,
       "key": "answer-loop",
       "title": "Worked answer \u00b7 observation handoff",
       "kind": "answer",
@@ -2275,7 +2422,7 @@
       "answer": null
     },
     {
-      "number": 93,
+      "number": 98,
       "key": "answer-scorer",
       "title": "Worked answer \u00b7 inspect the refund",
       "kind": "answer",
@@ -2297,7 +2444,7 @@
       "answer": null
     },
     {
-      "number": 94,
+      "number": 99,
       "key": "answer-judge",
       "title": "Worked answer \u00b7 validate the judge response",
       "kind": "answer",
@@ -2319,7 +2466,7 @@
       "answer": null
     },
     {
-      "number": 95,
+      "number": 100,
       "key": "sources",
       "title": "Source, notebook, and recorded example",
       "kind": "explanation",

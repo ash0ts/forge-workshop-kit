@@ -10,6 +10,7 @@ from pathlib import Path
 import numpy as np
 import marimo as mo
 from forge_workshop_kit import WorkshopSession, setup, ui, inspection
+from forge_workshop_kit import aria
 from forge_workshop_kit import inspection_teaching as teaching
 from forge_workshop_kit.session import digest
 from forge_workshop_kit.traces import event, export_trace
@@ -201,7 +202,7 @@ if _base and _data:
 validation_board=mo.ui.dropdown(_choices,value=next(iter(_choices),None),label="Validation board to investigate",disabled=not bool(_choices))
 inspection_baseline_note=mo.ui.text_area(value=_s.get_draft("inspection/baseline-note","") if _s else "",label="Optional note: what did the baseline miss or flag, and what might patches change?",on_change=lambda value:_s.save_draft("inspection/baseline-note",value) if _s else None,full_width=True)
 save_inspection_observation=mo.ui.run_button(label="Save my baseline observation",disabled=not bool(_choices))
-mo.vstack([mo.md("### Inspect a baseline decision"),validation_board,inspection_baseline_note,save_inspection_observation,ui.next_step(mo,"Next: add patch features","features",go_to)]) if get_step()=="baseline" else mo.md("")
+mo.vstack([mo.md("### Inspect a baseline decision"),validation_board,inspection_baseline_note,save_inspection_observation]) if get_step()=="baseline" else mo.md("")
 ''', True, cell_id='visual_inspection/controls/baseline_observation')
 add('''
 mo.stop(get_step()!="baseline" or validation_board.value is None or not get_lab().get("data"))
@@ -212,6 +213,15 @@ _model=teaching.model_from_stage(_s,"compare/whole")
 _score=float(inspection.score(_data,[validation_board.value],_model,build_features=teaching.functions(_base["sources"]["features.py"])["build_features"])[0])
 mo.vstack([inspection.render_case(_data,validation_board.value,reveal_label=True),mo.md("Saved whole-image model: score **"+str(round(_score,3))+"**, cutoff **"+str(round(_model["threshold"],3))+"**. Scores at or above the cutoff are flagged. This is a validation board, not a final-test example.")])
 ''', True, cell_id='visual_inspection/display/baseline_board')
+add('''
+mo.stop(get_step()!="baseline")
+_s=get_lab().get("session")
+_baseline=teaching.saved(_s,"compare/whole") if _s else None
+_selected_case=get_lab()["data"]["records"][validation_board.value]["case_id"] if get_lab().get("data") and validation_board.value is not None else None
+inspection_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=[_baseline["id"]] if _baseline else [],case_ids=[_selected_case] if _selected_case else [],interpretation=inspection_baseline_note.value,workshop="visual-inspection")
+inspection_after_aria=ui.next_step(mo,"Next: add patch features","features",go_to)
+mo.vstack([inspection_aria_investigate,inspection_after_aria])
+''', True, cell_id='visual_inspection/aria/investigate')
 add('''
 mo.stop(not save_inspection_observation.value)
 mo.stop(not inspection_baseline_note.value.strip(),mo.md("Write a note to save it, or continue without one."))
@@ -497,8 +507,14 @@ _s = get_lab().get("session")
 inspection_conclusion = mo.ui.text_area(value=_s.get_draft("inspection/conclusion", "") if _s else "", on_change=lambda value: _s.save_draft("inspection/conclusion", value) if _s else None, label="What changed, whether it helped, and what you would test next", full_width=True)
 reproduce_inspection = mo.ui.run_button(label="Reload the selected classifier and reproduce one prediction", disabled=not bool(get_lab().get("session") and teaching.saved(get_lab()["session"], "evaluate")))
 report_inspection = mo.ui.run_button(label="Publish my inspection Report", disabled=not bool(get_lab().get("session") and teaching.saved(get_lab()["session"], "evaluate")))
-mo.vstack([mo.md("### Leave the next engineer a reproducible result\\nReload the selected file and reproduce a saved prediction. In your conclusion, separate the feature change, the extra labeled examples and the review policy. State which comparison improved and which did not. A lower missed-defect count is not a deployment guarantee."), inspection_conclusion, reproduce_inspection, report_inspection, mo.accordion({"Optional extension": mo.md("Link the evaluated classifier artifact to Registry if you have access. Load that exact version in a batch predictor, fail a release check, and return to the previous version. Registry tracks the selected artifact; it does not deploy this Python classifier for you.")})])
+mo.vstack([mo.md("### Leave the next engineer a reproducible result\\nReload the selected file and reproduce a saved prediction. In your conclusion, separate the feature change, the extra labeled examples and the review policy. State which comparison improved and which did not. A lower missed-defect count is not a deployment guarantee."), inspection_conclusion, reproduce_inspection, mo.accordion({"Optional extension": mo.md("Link the evaluated classifier artifact to Registry if you have access. Load that exact version in a batch predictor, fail a release check, and return to the previous version. Registry tracks the selected artifact; it does not deploy this Python classifier for you.")})])
 ''', True)
+add('''
+mo.stop(get_step()!="reproduce")
+_s=get_lab().get("session")
+inspection_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=inspection_conclusion.value,workshop="visual-inspection")
+mo.vstack([inspection_aria_conclusion,report_inspection])
+''', True, cell_id='visual_inspection/aria/conclusion')
 add('''
 mo.stop(not reproduce_inspection.value)
 _s, _data = get_lab()["session"], get_lab()["data"]

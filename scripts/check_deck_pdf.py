@@ -50,7 +50,7 @@ for page in document:
                     "to": pymupdf.Point(0, 0),
                 }
             )
-        elif route.startswith(("images/", "recorded-")):
+        elif route.startswith(("images/", "recorded-", "aria/")):
             page.insert_link(
                 {
                     "kind": pymupdf.LINK_URI,

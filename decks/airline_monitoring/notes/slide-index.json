@@ -145,306 +145,342 @@
   },
   {
     "slide": 25,
-    "title": "Define a behavior that a reviewer can check",
-    "name": "tag-definition",
-    "time": "1:50"
+    "title": "Investigate this result",
+    "name": "aria-investigate",
+    "time": "1:50 \u00b7 8 minutes across these three frames"
   },
   {
     "slide": 26,
-    "title": "Fewer flights can be the correct result",
-    "name": "counterexample-nonstop",
-    "time": "1:55"
+    "title": "Read one claim in the recorded response",
+    "name": "aria-investigate-response",
+    "time": "1:50 \u00b7 8 minutes across these three frames"
   },
   {
     "slide": 27,
+    "title": "Open the source and check that claim",
+    "name": "aria-investigate-verify",
+    "time": "1:50 \u00b7 8 minutes across these three frames"
+  },
+  {
+    "slide": 28,
+    "title": "Define a behavior that a reviewer can check",
+    "name": "tag-definition",
+    "time": "1:58"
+  },
+  {
+    "slide": 29,
+    "title": "Fewer flights can be the correct result",
+    "name": "counterexample-nonstop",
+    "time": "1:59"
+  },
+  {
+    "slide": 30,
     "title": "Add counterexamples before trusting the rule",
     "name": "counterexamples",
     "time": "2:00"
   },
   {
-    "slide": 28,
+    "slide": 31,
     "title": "A native tag has criteria, labels, and a live state",
     "name": "tag-lifecycle",
     "time": "2:05"
   },
   {
-    "slide": 29,
+    "slide": 32,
     "title": "Save the criteria and check the tag\u2019s scope",
     "name": "capture-tag-configuration",
     "time": "2:08"
   },
   {
-    "slide": 30,
+    "slide": 33,
     "title": "Turn context limits what the judge can know",
     "name": "judge-context",
     "time": "2:10"
   },
   {
-    "slide": 31,
+    "slide": 34,
     "title": "Test your tag against reviewed turns",
     "name": "align",
     "time": "2:15"
   },
   {
-    "slide": 32,
+    "slide": 35,
     "title": "Test one reviewed turn in native Alignment",
     "name": "alignment-test",
     "time": "2:20"
   },
   {
-    "slide": 33,
+    "slide": 36,
     "title": "A saved review is not a completed judge result",
     "name": "capture-alignment",
     "time": "2:22"
   },
   {
-    "slide": 34,
+    "slide": 37,
     "title": "A valid response can contain a wrong judgment",
     "name": "judge-validation",
     "time": "2:29"
   },
   {
-    "slide": 35,
+    "slide": 38,
     "title": "Measure the monitor on reviewed cases",
     "name": "confusion",
     "time": "2:35"
   },
   {
-    "slide": 36,
+    "slide": 39,
     "title": "Precision asks whether an alert deserves review",
     "name": "precision",
     "time": "2:39"
   },
   {
-    "slide": 37,
+    "slide": 40,
     "title": "Recall asks which failures the monitor missed",
     "name": "recall",
     "time": "2:42"
   },
   {
-    "slide": 38,
+    "slide": 41,
     "title": "Coverage tells us which turns were judged",
     "name": "coverage",
     "time": "2:45"
   },
   {
-    "slide": 39,
+    "slide": 42,
     "title": "Calculate monitor quality and send new traffic",
     "name": "monitor",
     "time": "2:50"
   },
   {
-    "slide": 40,
+    "slide": 43,
     "title": "A missing live tag does not establish a negative judgment",
     "name": "live-missingness",
     "time": "3:00"
   },
   {
-    "slide": 41,
+    "slide": 44,
     "title": "Freeze the rule before comparing agent versions",
     "name": "freeze-monitor",
     "time": "3:02"
   },
   {
-    "slide": 42,
+    "slide": 45,
     "title": "A reviewed turn becomes a regression case",
     "name": "curation",
     "time": "3:10"
   },
   {
-    "slide": 43,
+    "slide": 46,
     "title": "Keep enough information to replay the request",
     "name": "case-fields",
     "time": "3:15"
   },
   {
-    "slide": 44,
+    "slide": 47,
     "title": "Build a regression case from the reviewed turn",
     "name": "curate",
     "time": "3:22"
   },
   {
-    "slide": 45,
+    "slide": 48,
     "title": "Score the change and the preserved flights separately",
     "name": "state-scoring",
     "time": "3:31"
   },
   {
-    "slide": 46,
+    "slide": 49,
     "title": "The explanation judge answers a different question",
     "name": "separate-judge",
     "time": "3:36"
   },
   {
-    "slide": 47,
+    "slide": 50,
     "title": "Add the booking check the old evaluation missed",
     "name": "state-check",
     "time": "3:41"
   },
   {
-    "slide": 48,
+    "slide": 51,
     "title": "Save the case and its checks with the checkpoint",
     "name": "regression-artifact",
     "time": "3:48"
   },
   {
-    "slide": 49,
+    "slide": 52,
     "title": "Break until 4:00",
     "name": "break-two",
     "time": "3:50"
   },
   {
-    "slide": 50,
+    "slide": 53,
     "title": "Repair the list operation, then compare the behavior",
     "name": "repair-problem",
     "time": "4:00"
   },
   {
-    "slide": 51,
+    "slide": 54,
     "title": "Replace a range without dropping its neighbors",
     "name": "range-repair",
     "time": "4:06"
   },
   {
-    "slide": 52,
+    "slide": 55,
     "title": "Walk through the values before running the model",
     "name": "range-values",
     "time": "4:10"
   },
   {
-    "slide": 53,
+    "slide": 56,
     "title": "Test the repair on matched development bookings",
     "name": "repair",
     "time": "4:15"
   },
   {
-    "slide": 54,
+    "slide": 57,
     "title": "The passenger must approve the proposed change",
     "name": "confirmation",
     "time": "4:24"
   },
   {
-    "slide": 55,
+    "slide": 58,
     "title": "Explain a passing repair without overstating it",
     "name": "repair-boundary",
     "time": "4:32"
   },
   {
-    "slide": 56,
+    "slide": 59,
     "title": "Judge one saved explanation against its evidence",
     "name": "judge-execution",
     "time": "4:33"
   },
   {
-    "slide": 57,
+    "slide": 60,
     "title": "Freeze code before opening the reserved requests",
     "name": "freeze",
     "time": "4:40"
   },
   {
-    "slide": 58,
+    "slide": 61,
     "title": "Compare six reserved bookings across both versions",
     "name": "final",
     "time": "4:46"
   },
   {
-    "slide": 59,
+    "slide": 62,
     "title": "Read the same request across the two versions",
     "name": "aligned-comparison",
     "time": "4:54"
   },
   {
-    "slide": 60,
+    "slide": 63,
     "title": "Set the starting agent as the comparison reference",
     "name": "capture-evaltables",
     "time": "4:59"
   },
   {
-    "slide": 61,
+    "slide": 64,
     "title": "Read both outputs for the same request",
     "name": "capture-evaltables-case",
     "time": "5:02"
   },
   {
-    "slide": 62,
+    "slide": 65,
     "title": "The recorded agent comparison was a tie",
     "name": "recorded-results",
     "time": "5:05"
   },
   {
-    "slide": 63,
+    "slide": 66,
     "title": "Report denominators and unresolved work",
     "name": "report-measures",
     "time": "5:08"
   },
   {
-    "slide": 64,
+    "slide": 67,
     "title": "Use later traffic to check the frozen monitor",
     "name": "subsequent",
     "time": "5:20"
   },
   {
-    "slide": 65,
+    "slide": 68,
     "title": "Check what the monitor catches after the repair",
     "name": "traffic",
     "time": "5:26"
   },
   {
-    "slide": 66,
+    "slide": 69,
     "title": "A falling alert count has several explanations",
     "name": "alerts",
     "time": "5:37"
   },
   {
-    "slide": 67,
+    "slide": 70,
+    "title": "Check our conclusion",
+    "name": "aria-conclusion",
+    "time": "5:45 \u00b7 7 minutes across these three frames"
+  },
+  {
+    "slide": 71,
+    "title": "Read one claim in the recorded response",
+    "name": "aria-conclusion-response",
+    "time": "5:45 \u00b7 7 minutes across these three frames"
+  },
+  {
+    "slide": 72,
+    "title": "Open the source and check that claim",
+    "name": "aria-conclusion-verify",
+    "time": "5:45 \u00b7 7 minutes across these three frames"
+  },
+  {
+    "slide": 73,
     "title": "Write down what changed and whether it helped",
     "name": "conclusion",
-    "time": "5:45"
+    "time": "5:52"
   },
   {
-    "slide": 68,
+    "slide": 74,
     "title": "Publish the comparison and stop automatic judging",
     "name": "report",
-    "time": "5:50"
+    "time": "5:53"
   },
   {
-    "slide": 69,
+    "slide": 75,
     "title": "The next release has a check the first release lacked",
     "name": "end",
     "time": "5:58"
   },
   {
-    "slide": 70,
+    "slide": 76,
     "title": "Worked answer: validate a judge response",
     "name": "answer-judge",
     "time": "Reference"
   },
   {
-    "slide": 71,
+    "slide": 77,
     "title": "Worked answer: keep unknown judgments out of the matrix",
     "name": "answer-monitor",
     "time": "Reference"
   },
   {
-    "slide": 72,
+    "slide": 78,
     "title": "Worked answer: preserve the original case inputs",
     "name": "answer-case",
     "time": "Reference"
   },
   {
-    "slide": 73,
+    "slide": 79,
     "title": "Worked answer: check both change and preservation",
     "name": "answer-state",
     "time": "Reference"
   },
   {
-    "slide": 74,
+    "slide": 80,
     "title": "Worked answer: build the complete replacement list",
     "name": "answer-builder",
     "time": "Reference"
   },
   {
-    "slide": 75,
+    "slide": 81,
     "title": "Sources and saved evidence",
     "name": "sources",
     "time": "Reference"

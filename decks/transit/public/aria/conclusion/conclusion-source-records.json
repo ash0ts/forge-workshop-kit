@@ -1,0 +1,121 @@
+{
+  "kind": "saved-record excerpt; not a Forge screenshot",
+  "recording_id": "aria-v0100-transit-conclusion",
+  "recorded_at": "2026-11-15T18:22:26.122115+00:00",
+  "context_method": "Exact URLs and frozen acceptance excerpts; no native attachment. ARIA retrieved all four named runs and conversations read-only and confirmed independent acceptance counts. It inspected matching UTC-input cases and the follow-up fingerprints. The selected final records did not prove that a lesson was consumed. Its proposed next step is an archival code-path audit rather than an executed experiment.",
+  "prompt_sha256": "85ffe9305eee6d11de2d9f55f23482f8ccd7b43612bcd7c7e04fa3dfde845f56",
+  "records": [
+    {
+      "label": "factory/evaluate/solo",
+      "identity": "e11ffa49b71896fb877e2a7c821fa2e1",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/e11ffa49b71896fb877e2a7c821fa2e1"
+    },
+    {
+      "label": "factory/evaluate/team",
+      "identity": "a8d73a215bf11c9ae267956656f05caa",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/a8d73a215bf11c9ae267956656f05caa"
+    },
+    {
+      "label": "factory/evaluate/without-memory",
+      "identity": "6c7b7b6daeb47890999aa69754554369",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/6c7b7b6daeb47890999aa69754554369"
+    },
+    {
+      "label": "factory/evaluate/with-memory",
+      "identity": "c4e62c51a22d9c0528897ce5175af383",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c4e62c51a22d9c0528897ce5175af383"
+    }
+  ],
+  "excerpt": {
+    "factory/evaluate/solo": {
+      "passed_count": 10,
+      "total": 10,
+      "scenario_pass_rate": 1.0,
+      "elapsed_seconds": 0.15488866603118367
+    },
+    "factory/evaluate/team": {
+      "passed_count": 8,
+      "total": 10,
+      "scenario_pass_rate": 0.8,
+      "elapsed_seconds": 0.128166542010149
+    },
+    "factory/evaluate/without-memory": {
+      "passed_count": 12,
+      "total": 18,
+      "scenario_pass_rate": 0.6666666666666666,
+      "elapsed_seconds": 0.17118924998794682
+    },
+    "factory/evaluate/with-memory": {
+      "passed_count": 12,
+      "total": 18,
+      "scenario_pass_rate": 0.6666666666666666,
+      "elapsed_seconds": 0.1797366660030093
+    },
+    "team_failures": [
+      {
+        "case_id": "departures/utc-input",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70072",
+            "2024-12-02T23:00:00+00:00",
+            4
+          ]
+        },
+        "first_actual": [
+          {
+            "trip_id": "63919759",
+            "route_id": "Red",
+            "headsign": "Alewife",
+            "stop_id": "70072",
+            "stop_name": "Kendall/MIT",
+            "service_date": "2024-12-02",
+            "departure_time": "2024-12-02T23:03:00+00:00"
+          }
+        ],
+        "first_expected": [
+          {
+            "trip_id": "63919613",
+            "route_id": "Red",
+            "headsign": "Alewife",
+            "stop_id": "70072",
+            "stop_name": "Kendall/MIT",
+            "service_date": "2024-12-02",
+            "departure_time": "2024-12-02T18:03:00-05:00"
+          }
+        ]
+      },
+      {
+        "case_id": "integrated/departures/utc-input",
+        "inputs": {
+          "function": "query.departures",
+          "arguments": [
+            "70072",
+            "2024-12-02T23:00:00+00:00",
+            4
+          ]
+        },
+        "first_actual": [
+          {
+            "trip_id": "63919759",
+            "route_id": "Red",
+            "headsign": "Alewife",
+            "stop_id": "70072",
+            "stop_name": "Kendall/MIT",
+            "service_date": "2024-12-02",
+            "departure_time": "2024-12-02T23:03:00+00:00"
+          }
+        ],
+        "first_expected": null
+      }
+    ]
+  },
+  "supplemental_evidence": {},
+  "attachments": [],
+  "citation_check": {
+    "claim": "The solo build passed 10/10 reserved checks, the team passed 8/10, and both follow-up builds passed 12/18.",
+    "assessment": "supported",
+    "reason": "The saved factory/evaluate/solo, team, without-memory, and with-memory results contain passed_count/total values 10/10, 8/10, 12/18, and 12/18. These match the native independent_acceptance events reported by ARIA. The first native EvalTables capture shows the separate 10-case comparison only. The UTC case has different trip IDs despite timestamps representing the same instant; a propagated defect is a hypothesis, not an established root cause.",
+    "record_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/e11ffa49b71896fb877e2a7c821fa2e1"
+  }
+}

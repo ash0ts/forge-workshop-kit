@@ -55,9 +55,9 @@ def source_archive(path, deck, slug):
             for file in sorted(item.rglob("*") if item.is_dir() else [item]):
                 if file.is_file() and "__pycache__" not in file.parts:
                     bundle.write(file, Path("decks") / slug / file.relative_to(deck))
-        for name in ("build_decks.py", "validate_deck.mjs", "check_deck_pdf.py", "serve_deck.py"):
+        for name in ("build_decks.py", "validate_deck.mjs", "check_deck_pdf.py", "serve_deck.py", "aria_storyboard.py"):
             bundle.write(ROOT / "scripts" / name, Path("scripts") / name)
-        for name in ("package.json", "package-lock.json", "scripts/deck.mjs"):
+        for name in ("package.json", "package-lock.json", "scripts/deck.mjs", "aria.css"):
             bundle.write(ROOT / "decks" / name, Path("decks") / name)
         manifest = json.loads(MANIFEST.read_text())
         manifest["templates"] = [
@@ -65,6 +65,12 @@ def source_archive(path, deck, slug):
             if row.get("authoring", {}).get("deck", {}).get("directory") == slug
         ]
         bundle.writestr("src/forge_workshop_kit/workshops.json", json.dumps(manifest, indent=2) + "\n")
+        aria_slug = {"pending": "pending_inc", "solar": "solar_autoresearch", "routing": "request_routing", "inspection": "visual_inspection", "transit": "transit_factory", "airline_monitoring": "airline_monitoring"}[slug]
+        aria_path = ROOT / "src/forge_workshop_kit/assets/aria" / aria_slug
+        if aria_path.exists():
+            for file in sorted(aria_path.rglob("*")):
+                if file.is_file():
+                    bundle.write(file, file.relative_to(ROOT))
         definitions = Path("src/forge_workshop_kit/assets/visuals.json")
         bundle.write(ROOT / definitions, definitions)
         bundle.writestr(

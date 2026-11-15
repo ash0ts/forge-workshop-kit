@@ -1,0 +1,65 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Solar Autoresearch / Check our conclusion / source values</title><style>
+:root { color-scheme:light dark; --paper:#f7f3e8; --ink:#142c32; --accent:#136b70; --line:#bec9c4; }
+@media(prefers-color-scheme:dark) { :root { --paper:#152528; --ink:#ecede3; --accent:#8cdbce; --line:#526968; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font:18px/1.55 system-ui,sans-serif; }
+main { max-width:1080px; margin:auto; padding:32px 28px; }
+h1 { font-size:clamp(1.8rem,4vw,3rem); line-height:1.14; margin:.5em 0; }
+h2 { font-size:1.35rem; margin-top:1.6em; }
+a { color:var(--accent); overflow-wrap:anywhere; }
+a:focus-visible,summary:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+.notice { padding:16px 20px; border-left:5px solid var(--accent); }
+table { width:100%; border-collapse:collapse; table-layout:fixed; }
+th,td { padding:12px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; overflow-wrap:anywhere; }
+th:first-child,td:first-child { width:35%; }
+pre { white-space:pre-wrap; overflow-wrap:anywhere; font:14px/1.6 ui-monospace,monospace; padding:18px; border:1px solid var(--line); border-radius:8px; }
+.response { white-space:pre-wrap; overflow-wrap:anywhere; padding:20px; border:1px solid var(--line); }
+img { display:block; max-width:100%; height:auto; }
+.capture-frame { position:relative; }
+.capture-box { position:absolute; border:2px solid #ffcf66; pointer-events:none; }
+.capture-box b { position:absolute; top:-1.2em; left:-2px; padding:0 6px; color:#142c32; background:#ffcf66; font:700 13px/1.4 system-ui,sans-serif; }
+small { opacity:.8; }
+@media(max-width:600px) { main { padding:20px 16px; } th,td { padding:8px 5px; font-size:15px; } }
+</style></head><body><main><h1>Solar Autoresearch / Check our conclusion / source values</h1><p class="notice"><strong>Saved-record excerpt.</strong> These are the exact values supplied in the instructor’s recorded prompt. This page is a local teaching view, not a native Forge capture and not a participant execution.</p><p>Exact URLs and saved frozen-comparison excerpts; no native attachment. ARIA reports retrieving both named W&amp;B runs and their execution JSON artifacts read-only, including metrics_by_version. The date range, overlapping-window limitation, and one-seed scope were supplied in the prompt. The recording does not establish a cause for the GOES failure.</p><h2>Open the source records</h2><ul><li><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/4d1bfd4e02dcf10bc59b2236a9219f4c">images/final-comparison</a></li><li><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/f0fefa942fc5ab6f5ed7da1efb577219">goes/final-comparison</a></li></ul><h2>Values supplied to ARIA</h2><table><thead><tr><th>Source field</th><th>Recorded value</th></tr></thead><tbody><tr><th scope="row">image.persistence.error</th><td>0.12576198700564592</td></tr><tr><th scope="row">image.persistence.persistence_error</th><td>0.12576198700564592</td></tr><tr><th scope="row">image.persistence.skill_vs_persistence</th><td>0.0</td></tr><tr><th scope="row">image.persistence.examples</th><td>199</td></tr><tr><th scope="row">image.manual.error</th><td>0.1224417336622075</td></tr><tr><th scope="row">image.manual.persistence_error</th><td>0.12576198700564592</td></tr><tr><th scope="row">image.manual.skill_vs_persistence</th><td>0.026401088456795563</td></tr><tr><th scope="row">image.manual.examples</th><td>199</td></tr><tr><th scope="row">image.manual.final_error</th><td>0.1224417336622075</td></tr><tr><th scope="row">image.manual.seconds</th><td>1.207076072692871</td></tr><tr><th scope="row">image.agent.error</th><td>0.11001095193834161</td></tr><tr><th scope="row">image.agent.persistence_error</th><td>0.12576198700564592</td></tr><tr><th scope="row">image.agent.skill_vs_persistence</th><td>0.12524480124981796</td></tr><tr><th scope="row">image.agent.examples</th><td>199</td></tr><tr><th scope="row">image.agent.final_error</th><td>0.11001095193834161</td></tr><tr><th scope="row">image.agent.seconds</th><td>0.7789530754089355</td></tr><tr><th scope="row">measurement.persistence.error</th><td>0.19270602844340234</td></tr><tr><th scope="row">measurement.persistence.persistence_error</th><td>0.19270602844340234</td></tr><tr><th scope="row">measurement.persistence.skill_vs_persistence</th><td>0.0</td></tr><tr><th scope="row">measurement.persistence.examples</th><td>2694</td></tr><tr><th scope="row">measurement.selected-model.error</th><td>2.468974582071028</td></tr><tr><th scope="row">measurement.selected-model.persistence_error</th><td>0.19270602844340234</td></tr><tr><th scope="row">measurement.selected-model.skill_vs_persistence</th><td>-11.812129449267148</td></tr><tr><th scope="row">measurement.selected-model.examples</th><td>2694</td></tr><tr><th scope="row">measurement.selected-model.final_error</th><td>2.468974582071028</td></tr><tr><th scope="row">measurement.selected-model.seconds</th><td>0.597012996673584</td></tr><tr><th scope="row">scope</th><td>&quot;Frozen February 13–14, 2014; overlapping windows, one seed. Later GOES repair and multiseed outcomes are separate teaching retests.&quot;</td></tr></tbody></table><details><summary>Complete supplied excerpt</summary><pre>{
+  &quot;image&quot;: {
+    &quot;persistence&quot;: {
+      &quot;error&quot;: 0.12576198700564592,
+      &quot;persistence_error&quot;: 0.12576198700564592,
+      &quot;skill_vs_persistence&quot;: 0.0,
+      &quot;examples&quot;: 199
+    },
+    &quot;manual&quot;: {
+      &quot;error&quot;: 0.1224417336622075,
+      &quot;persistence_error&quot;: 0.12576198700564592,
+      &quot;skill_vs_persistence&quot;: 0.026401088456795563,
+      &quot;examples&quot;: 199,
+      &quot;final_error&quot;: 0.1224417336622075,
+      &quot;seconds&quot;: 1.207076072692871
+    },
+    &quot;agent&quot;: {
+      &quot;error&quot;: 0.11001095193834161,
+      &quot;persistence_error&quot;: 0.12576198700564592,
+      &quot;skill_vs_persistence&quot;: 0.12524480124981796,
+      &quot;examples&quot;: 199,
+      &quot;final_error&quot;: 0.11001095193834161,
+      &quot;seconds&quot;: 0.7789530754089355
+    }
+  },
+  &quot;measurement&quot;: {
+    &quot;persistence&quot;: {
+      &quot;error&quot;: 0.19270602844340234,
+      &quot;persistence_error&quot;: 0.19270602844340234,
+      &quot;skill_vs_persistence&quot;: 0.0,
+      &quot;examples&quot;: 2694
+    },
+    &quot;selected-model&quot;: {
+      &quot;error&quot;: 2.468974582071028,
+      &quot;persistence_error&quot;: 0.19270602844340234,
+      &quot;skill_vs_persistence&quot;: -11.812129449267148,
+      &quot;examples&quot;: 2694,
+      &quot;final_error&quot;: 2.468974582071028,
+      &quot;seconds&quot;: 0.597012996673584
+    }
+  },
+  &quot;scope&quot;: &quot;Frozen February 13–14, 2014; overlapping windows, one seed. Later GOES repair and multiseed outcomes are separate teaching retests.&quot;
+}</pre></details><p><a href="conclusion-transcript.html">Read the actual ARIA conversation</a></p></main></body></html>

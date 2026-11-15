@@ -150,27 +150,45 @@ Give participants time to make the change themselves. Have one person point to t
 
 Ten-minute break. Keep the fixed batches and state; do not restart discovery to generate a more convenient failure.
 
-## 25. Define a behavior that a reviewer can check
+## 25. Investigate this result
 
-1:50
+1:50 · 8 minutes across these three frames
+
+Allocate 8 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/airline_monitoring/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+
+## 26. Read one claim in the recorded response
+
+1:50 · 8 minutes across these three frames
+
+Allocate 8 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/airline_monitoring/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+
+## 27. Open the source and check that claim
+
+1:50 · 8 minutes across these three frames
+
+Allocate 8 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/airline_monitoring/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+
+## 28. Define a behavior that a reviewer can check
+
+1:58
 
 The initial proposed criterion is intentionally a starting hypothesis for alignment, not a validated native rule. Participants must review what evidence exists in each turn. Requests may authorize replacing the entire itinerary.
 
-## 26. Fewer flights can be the correct result
+## 29. Fewer flights can be the correct result
 
-1:55
+1:59
 
 This is the central counterexample to a naive flight-count rule. Ask the room whether changing three segments to two is sufficient evidence of failure. It is not.
 
 Visual sequence: The connecting point disappears while the origin, destination, and return remain. Ask whether fewer segments is a failure before revealing the approved nonstop. The answer depends on the request, not the count. These segment names and airport positions are illustrative.
 
-## 27. Add counterexamples before trusting the rule
+## 30. Add counterexamples before trusting the rule
 
 2:00
 
 Human review comes before this optional calibration pack. Create six controlled calibration traces only after saving a booking review. Use actual reviewed turns when available. The calibration pack is a labeled teaching fallback, not a claim about the learner’s live failure rate. Keep all disagreements and their reasons.
 
-## 28. A native tag has criteria, labels, and a live state
+## 31. A native tag has criteria, labels, and a live state
 
 2:05
 
@@ -178,13 +196,13 @@ Walk through native Tags and Alignment. Creating or editing a notebook rubric is
 
 Visual sequence: Keep the right-hand saved criterion in place while the Alignment draft is tested. Only the final explicit-save arrow changes live criteria. A failed Alignment test produces no judgment; it does not silently disable, update, or validate the saved live rule.
 
-## 29. Save the criteria and check the tag’s scope
+## 32. Save the criteria and check the tag’s scope
 
 2:08
 
 Read the saved criteria, Apply with AI setting, and exact workshop-agent scope. This recorded tag ID is not a participant default. Capture identity and original are recorded in data/native-captures.json. This is recorded evidence, not the participant’s live result.
 
-## 30. Turn context limits what the judge can know
+## 33. Turn context limits what the judge can know
 
 2:10
 
@@ -192,31 +210,31 @@ Native judges see turn-level evidence. Do not assume every model span contains t
 
 Visual sequence: The selected turn has a write and a reply but lacks the earlier booking. Ask which evidence establishes a return was removed. In this illustrated context it is unavailable. A reviewer with the full conversation knows more than the turn-level judge; keep that context difference in the review record.
 
-## 31. Test your tag against reviewed turns
+## 34. Test your tag against reviewed turns
 
 2:15
 
 Give participants time to make the change themselves. Have one person point to the input, the changed line, and the observed output. Opening or checking a function sends no model request. Follow the named run control only after the free check passes.
 
-## 32. Test one reviewed turn in native Alignment
+## 35. Test one reviewed turn in native Alignment
 
 2:20
 
 Give participants time to make the change themselves. Have one person point to the input, the changed line, and the observed output. Opening or checking a function sends no model request. Follow the named run control only after the free check passes.
 
-## 33. A saved review is not a completed judge result
+## 36. A saved review is not a completed judge result
 
 2:22
 
 Inspect the saved review and the test status. A failed native test has no prediction to compare; do not turn it into a negative label. Capture identity and original are recorded in data/native-captures.json. This is recorded evidence, not the participant’s live result.
 
-## 34. A valid response can contain a wrong judgment
+## 37. A valid response can contain a wrong judgment
 
 2:29
 
 This is a local structured-response exercise for the explanation judge, separate from the native tag’s server-side implementation. A string false is not a boolean false. Preserve unavailable judgments rather than replace them with false.
 
-## 35. Measure the monitor on reviewed cases
+## 38. Measure the monitor on reviewed cases
 
 2:35
 
@@ -224,7 +242,7 @@ Walk through one cell at a time. The human review is the reference for this calc
 
 Visual sequence: Reveal the true positives, false positive, and remaining cells in place. Human review supplies the reference labels. These eight rows are illustrative arithmetic and not a successful native Alignment result. No unavailable prediction enters this matrix.
 
-## 36. Precision asks whether an alert deserves review
+## 39. Precision asks whether an alert deserves review
 
 2:39
 
@@ -232,7 +250,7 @@ The denominator is the tagged turns with a reviewed label, not all requests. Ale
 
 Visual sequence: The outlined row is the denominator: all four reviewed alerts. Three are reviewed failures. The faded second row is irrelevant to precision but needed for recall. If there are no alerts, leave precision unavailable. This graphic does not describe native workshop outcomes.
 
-## 37. Recall asks which failures the monitor missed
+## 40. Recall asks which failures the monitor missed
 
 2:42
 
@@ -240,7 +258,7 @@ Precision and recall happen to match in this arithmetic example, but they use di
 
 Visual sequence: The outlined column is the denominator: all four reviewed failures. One was not alerted. The same 75 percent hides a different question from precision. Review unflagged controls so this missed-failure cell can be populated. The arithmetic remains illustrative.
 
-## 38. Coverage tells us which turns were judged
+## 41. Coverage tells us which turns were judged
 
 2:45
 
@@ -248,13 +266,13 @@ A missing tag is not enough to identify a completed negative judgment. Read proc
 
 Visual sequence: Count the eight completed predictions, then divide by all ten eligible turns. Only after that do we join completed predictions to human reviews for the agreement matrix. The two question marks remain unknown. Positive live assignments by themselves cannot establish this denominator.
 
-## 39. Calculate monitor quality and send new traffic
+## 42. Calculate monitor quality and send new traffic
 
 2:50
 
 Give participants time to make the change themselves. Have one person point to the input, the changed line, and the observed output. Opening or checking a function sends no model request. Follow the named run control only after the free check passes.
 
-## 40. A missing live tag does not establish a negative judgment
+## 43. A missing live tag does not establish a negative judgment
 
 3:00
 
@@ -262,13 +280,13 @@ Keep the live assignment view separate from the explicit Alignment-test result s
 
 Visual sequence: All three branches can produce the same absent live tag. Ask what readback distinguishes them. Explicit native test outcomes can establish known positive and negative predictions; a blank assignment cannot. Keep pending, failed, and missing context separate where native records support them.
 
-## 41. Freeze the rule before comparing agent versions
+## 44. Freeze the rule before comparing agent versions
 
 3:02
 
 The native rule needs the same workspace scope for both versions but enough attributes to filter them independently. The local notebook cannot guarantee the native service has completed processing. Show its readback status.
 
-## 42. A reviewed turn becomes a regression case
+## 45. A reviewed turn becomes a regression case
 
 3:10
 
@@ -276,61 +294,61 @@ Make curation an explicit code exercise. The case contains the original booking,
 
 Visual sequence: The arrow into the regression case comes from before the write. The crossed arrow from the mutated booking explains a common reconstruction error. Keep the request, policy, approved scope, human review, and source identities with the initial state. This omission incident is a labeled illustration, not an invented live failure.
 
-## 43. Keep enough information to replay the request
+## 46. Keep enough information to replay the request
 
 3:15
 
 Ask what happens if someone saves only the final reply. They cannot reconstruct the original itinerary or determine what was unrequested. These records are public simulated examples; the same technique with real passengers needs an appropriate privacy review.
 
-## 44. Build a regression case from the reviewed turn
+## 47. Build a regression case from the reviewed turn
 
 3:22
 
 Give participants time to make the change themselves. Have one person point to the input, the changed line, and the observed output. Opening or checking a function sends no model request. Follow the named run control only after the free check passes.
 
-## 45. Score the change and the preserved flights separately
+## 48. Score the change and the preserved flights separately
 
 3:31
 
 The state scorer is deterministic over recorded state. It does not use the agent’s final assertion as proof. A completion score must fail when the requested change is missing, even if the unchanged return is preserved.
 
-## 46. The explanation judge answers a different question
+## 49. The explanation judge answers a different question
 
 3:36
 
 The explanation judge receives the recorded work needed for its rubric. Human review and deterministic state checks remain distinct evidence. Missing judgments stay unavailable; do not average them as zero or success.
 
-## 47. Add the booking check the old evaluation missed
+## 50. Add the booking check the old evaluation missed
 
 3:41
 
 Give participants time to make the change themselves. Have one person point to the input, the changed line, and the observed output. Opening or checking a function sends no model request. Follow the named run control only after the free check passes.
 
-## 48. Save the case and its checks with the checkpoint
+## 51. Save the case and its checks with the checkpoint
 
 3:48
 
 Show the checkpoint link produced by the participant’s session. Ask someone to identify the source case, reviewer, and actual function. A named dataset without its initial booking cannot reproduce this incident.
 
-## 49. Break until 4:00
+## 52. Break until 4:00
 
 3:50
 
 Ten-minute break. Do not edit final cases or resample cases based on which version looks better.
 
-## 50. Repair the list operation, then compare the behavior
+## 53. Repair the list operation, then compare the behavior
 
 4:00
 
 Revisit the same concrete request. The implementation change builds a complete replacement itinerary from the requested range and untouched prefix and suffix. It does not depend on a flight-count heuristic.
 
-## 51. Replace a range without dropping its neighbors
+## 54. Replace a range without dropping its neighbors
 
 4:06
 
 The example replaces original[0:2] with one flight and preserves original[2:]. Do not assume every request changes one flight. A full-itinerary change legitimately has start zero and stop len(original).
 
-## 52. Walk through the values before running the model
+## 55. Walk through the values before running the model
 
 4:10
 
@@ -338,43 +356,43 @@ This is a free, simplified arithmetic check. It establishes the list transformat
 
 Visual sequence: Point to index two: the half-open replacement stops before return-1. First expose the index range, then the empty prefix, replacement, and untouched suffix. The last line is the participant function’s list operation. Their free check also validates bounds and copies the data.
 
-## 53. Test the repair on matched development bookings
+## 56. Test the repair on matched development bookings
 
 4:15
 
 Give participants time to make the change themselves. Have one person point to the input, the changed line, and the observed output. Opening or checking a function sends no model request. Follow the named run control only after the free check passes.
 
-## 54. The passenger must approve the proposed change
+## 57. The passenger must approve the proposed change
 
 4:24
 
 Confirm that the scripted passenger enforces the source request’s requirements. A correct refusal or request for clarification may be the right outcome. The code repair cannot compensate for an incorrect approval policy.
 
-## 55. Explain a passing repair without overstating it
+## 58. Explain a passing repair without overstating it
 
 4:32
 
 Keep deterministic repair results separate from live stochastic outcomes. A live success remains a success. Never replace it with a failure to improve the story.
 
-## 56. Judge one saved explanation against its evidence
+## 59. Judge one saved explanation against its evidence
 
 4:33
 
 Give participants time to make the change themselves. Have one person point to the input, the changed line, and the observed output. Opening or checking a function sends no model request. Follow the named run control only after the free check passes.
 
-## 57. Freeze code before opening the reserved requests
+## 60. Freeze code before opening the reserved requests
 
 4:40
 
 Final expected answers do not enter the solver or rubric-tuning contexts. The local source files are inspectable for teaching, so this is a controlled workshop comparison, not a secure blind benchmark.
 
-## 58. Compare six reserved bookings across both versions
+## 61. Compare six reserved bookings across both versions
 
 4:46
 
 Give participants time to make the change themselves. Have one person point to the input, the changed line, and the observed output. Opening or checking a function sends no model request. Follow the named run control only after the free check passes.
 
-## 59. Read the same request across the two versions
+## 62. Read the same request across the two versions
 
 4:54
 
@@ -382,19 +400,19 @@ Teach the alignment before opening EvalTables. Compare the complete booking stat
 
 Visual sequence: The same case forks into two isolated initial bookings. Each uses its own recorded source and trace. The dashed link means aligned comparison, not shared mutable state or a handoff. Keep booking-state checks, explanation judgments, and monitor outcomes in separate fields.
 
-## 60. Set the starting agent as the comparison reference
+## 63. Set the starting agent as the comparison reference
 
 4:59
 
 Choose an identical case in the two versions. Read the state scores, output booking, judgment status, and trace links. Capture identity and original are recorded in data/native-captures.json. This is recorded evidence, not the participant’s live result.
 
-## 61. Read both outputs for the same request
+## 64. Read both outputs for the same request
 
 5:02
 
 Identify the shared input and the separate predictions. Open the underlying booking and native trace before explaining a passing score. Capture identity and original are recorded in data/native-captures.json. This is recorded evidence, not the participant’s live result.
 
-## 62. The recorded agent comparison was a tie
+## 65. The recorded agent comparison was a tie
 
 5:05
 
@@ -402,79 +420,97 @@ Preserve the successful baseline. Do not describe the helper as improving task q
 
 Visual sequence: Reveal the starting row first, then the repair row. All six case outcomes match; there is no passing case unique to the repair. Both versions also pass four subsequent requests. Native monitoring accuracy is unavailable. The local omission drill demonstrates a repair independently of this observed tie.
 
-## 63. Report denominators and unresolved work
+## 66. Report denominators and unresolved work
 
 5:08
 
 A six-case comparison has limited reach. Show each failure and avoid a general claim that monitoring improves all agents. If all cases tie, inspect whether behavior or cost changed while correctness stayed equal.
 
-## 64. Use later traffic to check the frozen monitor
+## 67. Use later traffic to check the frozen monitor
 
 5:20
 
 The subsequent batch is separate from the six final requests. Do not tune the monitor after seeing one version’s outcomes. Read the differences between state outcomes and tag classifications.
 
-## 65. Check what the monitor catches after the repair
+## 68. Check what the monitor catches after the repair
 
 5:26
 
 Give participants time to make the change themselves. Have one person point to the input, the changed line, and the observed output. Opening or checking a function sends no model request. Follow the named run control only after the free check passes.
 
-## 66. A falling alert count has several explanations
+## 69. A falling alert count has several explanations
 
 5:37
 
 Ask participants to rule out each explanation with the records. A workshop that simply celebrates a downward chart has skipped the measurement problem it was meant to teach.
 
-## 67. Write down what changed and whether it helped
+## 70. Check our conclusion
 
-5:45
+5:45 · 7 minutes across these three frames
+
+Allocate 7 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/airline_monitoring/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+
+## 71. Read one claim in the recorded response
+
+5:45 · 7 minutes across these three frames
+
+Allocate 7 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/airline_monitoring/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+
+## 72. Open the source and check that claim
+
+5:45 · 7 minutes across these three frames
+
+Allocate 7 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/airline_monitoring/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+
+## 73. Write down what changed and whether it helped
+
+5:52
 
 The participant conclusion should cite one actual case and its exact code, booking, trace, and evaluation. Improvements are welcome; a documented tie or regression also completes the lesson.
 
-## 68. Publish the comparison and stop automatic judging
+## 74. Publish the comparison and stop automatic judging
 
-5:50
+5:53
 
 Give participants time to make the change themselves. Have one person point to the input, the changed line, and the observed output. Opening or checking a function sends no model request. Follow the named run control only after the free check passes.
 
-## 69. The next release has a check the first release lacked
+## 75. The next release has a check the first release lacked
 
 5:58
 
 End by asking someone to reproduce a case from its saved initial state. Do not conclude with a promise of autonomous improvement. Monitoring, human review, and offline evaluation each answered a different question.
 
-## 70. Worked answer: validate a judge response
+## 76. Worked answer: validate a judge response
 
 Reference
 
 This is the notebook’s actual validator. It checks shape and types, not the truth of the judgment.
 
-## 71. Worked answer: keep unknown judgments out of the matrix
+## 77. Worked answer: keep unknown judgments out of the matrix
 
 Reference
 
 This is the notebook’s actual my_monitor implementation. Review unflagged cases too; an alerts-only sample cannot establish recall across traffic.
 
-## 72. Worked answer: preserve the original case inputs
+## 78. Worked answer: preserve the original case inputs
 
 Reference
 
 Use the actual case_from_reviewed_turn signature in the notebook. Do not synthesize a nonexistent native turn or treat a listing of spans as proof that a specific diagnostic was read.
 
-## 73. Worked answer: check both change and preservation
+## 79. Worked answer: check both change and preservation
 
 Reference
 
 Illustrative list-based scorer excerpt. The actual evaluator must use the recorded approved scope and final state, not values inferred from the agent’s final response.
 
-## 74. Worked answer: build the complete replacement list
+## 80. Worked answer: build the complete replacement list
 
 Reference
 
 This is the notebook’s actual itinerary builder. The deep copy prevents the result from mutating the original booking. The agent must still select the correct range and obtain confirmation.
 
-## 75. Sources and saved evidence
+## 81. Sources and saved evidence
 
 Reference
 

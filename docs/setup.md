@@ -10,6 +10,10 @@ The setup table separates project writes, stored traces, inference, Weave evalua
 
 The default inference allowance is $8 for this workspace. Change it during setup if needed. It counts retries and reserves a maximum for requests whose usage is unknown. Notebook compute is billed separately. No workshop gateway, host token, or remote Sandbox entitlement is required.
 
+## Use ARIA during the investigations
+
+Each workshop pauses twice to ask ARIA about selected saved results and check a citation. Live access requires a supported team project with Smart features; personal-project participants use the bundled recorded investigation. A successful project check does not prove ARIA access. ARIA usage is separate from the notebook’s $8 inference allowance. Follow the [investigation instructions](aria-investigations.md) for native attachments, billing, and the no-access path. No ARIA activity blocks the coding exercises.
+
 ## Work locally
 
 Install Git and [uv](https://docs.astral.sh/uv/getting-started/installation/), then clone this repository. Install the dependencies for your workshop:

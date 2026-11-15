@@ -1,33 +1,39 @@
-# Release checks · 0.9.0 technical preview
+# Release checks · 0.10.0 technical preview
 
-This revision changes the order in which participants learn the six workshops. Each opens with a development example before authentication. A single result precedes larger batches, and reviewed outcomes precede alternative models, judges, monitoring rules, and agent decisions. The datasets, experiment settings, workflow identities, allowances, and final comparisons are unchanged.
+This revision adds two scheduled ARIA investigations to each workshop: eight minutes after a development result and seven minutes before the final Report. Participants explain their interpretation, ask ARIA about selected records, and check one cited observation. These activities replace existing discussion time. Datasets, experiment settings, workflow identities, inference allowances, and final comparisons are unchanged.
 
-No new paid experiments were run for this release. Earlier qualification outcomes remain in the [archive](archive.md), including the [0.8.0 Airline evidence](archive/release-checks-v080.md). A changed lesson order does not establish a new model result or upgrade classroom readiness.
+The [ARIA guide](aria-investigations.md) describes the activities and access requirements. The [0.9.0 checks](archive/release-checks-v090.md) preserve validation of the preceding teaching sequence. Existing attendee copies and release assets remain unchanged.
 
-## What was checked
+## What this revision checks
 
 | Coverage | Evidence and limits |
 | --- | --- |
-| Domain and recovery tests | The suite covers saving, retries, accounting, restoration, publication, independent scoring, and the new split actions. See the accompanying `validation-v090.json` release asset for the final count. |
-| Current authored actions | Tests execute Solar's first-trial/remaining-trials controller, Routing and Inspection's separate training actions, Transit solo integration, and Airline first-request/batch continuation with controlled fixtures. They verify original stage identities and reuse of completed work. These are not live provider rehearsals. |
-| Generated notebooks | All eight templates, including starter and facilitator, undergo marimo checks and credential-free HTML export. Both hidden and revealed Routing/Inspection opening examples were also exported. |
-| Browser interactions | Fresh local notebooks were opened without credentials. Checks cover the bundled examples, reveals, case choices, prerequisite messages, and navigation. This is focused interaction coverage, not a new full live browser rehearsal of every paid step. |
-| Decks and PDFs | Each browser slide and meaningful reveal is checked for actual text bounds, console errors, assets, and answer navigation. Every PDF page is rendered; receipts must match the current source hash. Representative revised screens receive visual inspection. |
-| Hosted publication | The destination-verified publisher downloads each template's source and HTML and compares their hashes. This checks the published artifacts under the maintainer account, not external participant permissions. |
-| Human usability | Not performed for the revised ordering. A participant unfamiliar with the kit must still complete an exercise and explain its intermediate value, code, and Forge record. |
+| Context and saving | Free tests cover development-only stage selection, workspace isolation, unavailable links and cases, exact evidence identity, local note persistence, old journals, Report inclusion, and facilitator summaries. Notes never enter measured prompts or scores. |
+| Authored notebooks | All twelve activities are bound to current authored cells and manifest references. Routing's first investigation requires only TF–IDF; development activities precede their interventions; closing activities precede Report publication. |
+| Browser interactions | The shared card is checked with saved evidence, including prompt editing, recorded fallback, citation saving, restoration, narrow layout, and light/dark themes. Navigating and saving do not create requests, training stages, or publications. This does not replace an external participant rehearsal. |
+| Native ARIA | Actual conversations use the selected records and exact prompts. Each recording retains its answer, source links, access limitations, and a checked citation. Supplied excerpts and records independently retrieved by ARIA are distinguished. |
+| Native media | The Inspection development recording attaches the actual validation photograph. ARIA describes visible components but explicitly cannot establish the defect visually. The supplied defect label and reproduced score are identified as separate evidence. |
+| Decks and PDFs | The new sequences show the question, a claim from the actual response, and the checked source. Original captures are preserved; annotations identify fields without replacing values. Browser and PDF receipts accompany the release. |
+| Packaging and publication | The build checks all eight templates and exports credential-free previews. Publication verifies the destination and reads back source and preview hashes. Maintainer publication does not establish external-account access. |
 
-The new compatibility checks include a cached first Solar trial with unfinished native Sweep assignments, changed source between comparison actions, partially completed discovery batches, and a solo Transit preview before the team build. A completed search still needs all six matching results; a completed discovery batch still needs eight conversations. Early solo integration does not choose the later memory comparison's starting release.
+The release's `validation-v0100.json` records final test counts, build results, native conversation identities, and outstanding checks. No workshop model was retrained and no underlying agent experiment was repeated to make an ARIA attachment. ARIA conversations are new usage outside the notebook's $8 inference allowance; their cost is marked unavailable where the product did not expose it.
 
-Browser/export checks caught and corrected same-cell marimo control reads in the new classification previews, an enabled Solar control whose editable source was unavailable, and opening explanations that did not match the selected booking or departure. These checks complement the authored-action tests.
+## What the recordings establish
 
-## Native services and readiness
+The recordings preserve disagreement and incomplete evidence. Pending's final scores remain tied. Solar's image improvement and worse GOES result remain separate. Routing distinguishes a controlled loader defect from classifier error. Inspection preserves the detector selected before test evaluation even where another detector has fewer test misses. Transit retains its observed coordination and memory outcomes. Airline distinguishes booking correctness from monitoring agreement and processing coverage.
 
-Native EvalTables uses the previously verified Weave-backed Preview path. Publication retries reuse saved results. This revision does not replace the earlier readback evidence with a new evaluation run; see [evaluation setup and recovery](evaluations.md).
+Native URL retrieval worked for the named records in several investigations. The first Pending response relied on supplied excerpts and explicitly said so. The Inspection closing response verified the saved selected identity and metrics but could not independently establish the selection chronology. These are teaching examples of evidence limits, not failed answers replaced with invented successes.
 
-Airline's last qualification saved native tag configuration and manual Alignment labels, but six AI Alignment tests returned HTTP 500 and the new session had no completed Insights clusters. Those results remain unavailable. No local grouping is labeled as native Insights, and missing judgments do not count as passes or negative labels. See the [Airline qualification record](airline-monitoring-qualification.md).
+The rehearsed interaction uses exact source links and saved excerpts, plus a native image attachment for Inspection. Pasting a URL or an `@run-name` string is not a native attachment and does not prove retrieval. Native run/Weave attachment controls remain dependent on the available interface; participants must check the actual context and response. The workshop does not claim that ARIA interpreted an EvalTables panel merely because its URL was supplied.
 
-Fresh external-account copying, the outstanding native monitoring checks, and a human rehearsal remain required. All six workshops retain their **technical-preview** classification. The participant-controlled $8 notebook inference allowance is unchanged; notebook compute and native tag judging are separate charges.
+## Outstanding readiness checks
+
+Fresh external-team access, a participant without ARIA access, and a human rehearsal remain outstanding. The recording path is tested locally without provider calls; that is not a fresh-account access test. All six workshops remain **technical previews**.
+
+Native EvalTables comparisons were inspected using the existing Weave-backed publication path. Missing metrics are not inferred from unrelated displayed fields. Airline's earlier AI Alignment HTTP 500 responses and unavailable Insights clusters remain explicit limitations; this revision does not claim those services recovered. See [evaluation recovery](evaluations.md) and [Airline qualification](airline-monitoring-qualification.md).
+
+ARIA requires suitable team-project access and Smart features. Its usage follows organization settings and is separate from notebook inference and compute. No access check sends an ARIA message automatically. Airline's automatic tag shutdown remains in its closing schedule.
 
 ## Materials
 
-The [v0.9.0 release](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.9.0) coordinates notebook sources and previews, the Python package, six browser decks and PDFs, editable deck sources, facilitator schedules, and validation receipts. Current template IDs stay stable. Existing attendee copies and earlier release assets are untouched.
+The [v0.10.0 release](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.10.0) coordinates the package, current notebook sources and previews, six decks and PDFs, twelve recorded investigations, editable sources, facilitator schedules, and validation receipts. Current template identities stay stable; previously copied notebooks are untouched.

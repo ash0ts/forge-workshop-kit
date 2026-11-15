@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[pending] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.9.0/forge_workshop_kit-0.9.0-py3-none-any.whl",
+#   "forge-workshop-kit[pending] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.10.0/forge_workshop_kit-0.10.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -115,6 +115,7 @@ def _():
     import copy
     import marimo as mo
     from forge_workshop_kit import WorkshopSession, ui, setup
+    from forge_workshop_kit import aria
     from forge_workshop_kit.pending import teaching, recovery, visuals as pending_visuals
     from forge_workshop_kit.pending.cases import CASES
     from forge_workshop_kit.pending.harness import Harness, harness_diff
@@ -126,7 +127,7 @@ def _():
     get_step,set_step=mo.state("setup",allow_self_loops=True)
     get_recovery_revision,set_recovery_revision=mo.state(0)
     get_timeout_practice,set_timeout_practice=mo.state(pending_visuals.new_timeout_practice(),allow_self_loops=True)
-    return (CASES, Harness, WorkshopSession, asdict, copy, editor_decision, event, export_trace, get_display, get_pending, get_recovery_revision, get_step, get_timeout_practice, harness_diff, json, judge_explanation, mo, os, pending_visuals, publish_comparison, publish_report, recovery, reflect_execution, run_employee, saved_trace_inputs, set_display, set_pending, set_recovery_revision, set_step, set_timeout_practice, setup, teaching, time, ui,)
+    return (CASES, Harness, WorkshopSession, aria, asdict, copy, editor_decision, event, export_trace, get_display, get_pending, get_recovery_revision, get_step, get_timeout_practice, harness_diff, json, judge_explanation, mo, os, pending_visuals, publish_comparison, publish_report, recovery, reflect_execution, run_employee, saved_trace_inputs, set_display, set_pending, set_recovery_revision, set_step, set_timeout_practice, setup, teaching, time, ui,)
 
 
 # workshop-cell: pending_inc/display/2
@@ -635,8 +636,20 @@ def _(get_display, get_pending, get_step, mo, move_pending, scorer_editor, teach
     _check=teaching.check_status(_s,"scorer",{"scorer.py":scorer_editor.value})
     _check["error"]=get_display().get("scorer",{}).get("error","")
     _evaluation=get_pending().get("evaluation",{})
-    mo.vstack([mo.ui.table(_check.get("rows",[]),selection=None),mo.md(_check.get("error","")),mo.ui.table(_evaluation.get("rows",[]),selection=None),ui.publication(mo,_s) if _s else mo.md(""),ui.evidence(mo,_s,[r["stage_id"] for r in _evaluation.get("runs",[])],question="Choose a ticket and compare its account check with its explanation score. Open the trace: did the refund happen, and did the reply describe it accurately?") if _s else mo.md(""),pending_next_step_4])
+    mo.vstack([mo.ui.table(_check.get("rows",[]),selection=None),mo.md(_check.get("error","")),mo.ui.table(_evaluation.get("rows",[]),selection=None),ui.publication(mo,_s) if _s else mo.md(""),ui.evidence(mo,_s,[r["stage_id"] for r in _evaluation.get("runs",[])],question="Choose a ticket and compare its account check with its explanation score. Open the trace: did the refund happen, and did the reply describe it accurately?") if _s else mo.md("")])
     return (pending_navigation_32_1, pending_next_step_4,)
+
+
+# workshop-cell: pending_inc/aria/investigate
+@app.cell(hide_code=True)
+def _(aria, get_pending, get_step, mo, pending_next_step_4, teaching):
+    mo.stop(get_step()!="evals")
+    _s=get_pending().get("session")
+    _evaluation=teaching.latest(_s,"pending/development-evaluation") if _s else None
+    _ids=([_evaluation["id"]]+[r["stage_id"] for r in _evaluation["result"].get("runs",[])]) if _evaluation else []
+    pending_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=_ids,workshop="pending-direct-teaching")
+    mo.vstack([pending_aria_investigate,pending_next_step_4])
+    return (pending_aria_investigate,)
 
 
 # workshop-cell: pending_inc/definitions/pending_skill_example
@@ -651,7 +664,7 @@ def _(get_pending, get_step, mo, pending_visuals):
     return (pending_skill_example,)
 
 
-# workshop-cell: pending_inc/display/35
+# workshop-cell: pending_inc/display/36
 @app.cell(hide_code=True)
 def _(get_step, mo, pending_skill_example, teaching, ui):
     mo.stop(get_step()!="manual" or not pending_skill_example.value)
@@ -663,8 +676,8 @@ def _(get_step, mo, pending_skill_example, teaching, ui):
 # workshop-cell: pending_inc/controls/manual_pending
 @app.cell(hide_code=True)
 def _(get_pending, get_step, mo, move_pending, ui):
-    pending_navigation_35_1 = ui.prerequisite(mo,"Check and publish the starting development result first.","evals",move_pending)
-    pending_prerequisite_5=pending_navigation_35_1
+    pending_navigation_36_1 = ui.prerequisite(mo,"Check and publish the starting development result first.","evals",move_pending)
+    pending_prerequisite_5=pending_navigation_36_1
     mo.stop(get_step()!="manual")
     _s=get_pending().get("session")
     _events={f"{r['case_id']} · {i+1}. {e['name']} · {'error' if e.get('error') else 'returned'}":e["id"] for r in get_pending().get("original",[]) for i,e in enumerate(r["events"])}
@@ -672,7 +685,7 @@ def _(get_pending, get_step, mo, move_pending, ui):
     manual_instructions=mo.ui.text_area(value=_s.get_draft("pending/manual","") if _s else "",label="Write the procedure the employee should follow",full_width=True,on_change=lambda value:_s.save_draft("pending/manual",value) if _s else None)
     manual_pending=mo.ui.run_button(label="Save this procedure and rerun both development tickets",disabled=not bool(get_pending().get("evaluation")),full_width=True)
     mo.vstack([mo.Html(ui.step("5. Change an instruction and rerun both tickets", "Choose an action from a starting ticket. Write a short instruction for what the employee should do differently next time, such as checking the account after a timeout. This text becomes an installed verification skill. The employee sees its name and must call read_skill to load its contents.","Rerun both tickets, then compare the tool calls and account checks with the starting runs. Each run starts from the same account data; only your instruction changes.")),mo.md("Write the procedure you'd want a new colleague to follow. Then see whether the employee reads and follows it."),manual_event,manual_instructions,manual_pending,pending_prerequisite_5 if not get_pending().get("evaluation") else mo.md("")])
-    return (manual_event, manual_instructions, manual_pending, pending_navigation_35_1, pending_prerequisite_5,)
+    return (manual_event, manual_instructions, manual_pending, pending_navigation_36_1, pending_prerequisite_5,)
 
 
 # workshop-cell: pending_inc/action/manual_pending
@@ -695,11 +708,11 @@ def _(CASES, Harness, asdict, get_pending, harness_diff, manual_event, manual_in
     return
 
 
-# workshop-cell: pending_inc/definitions/pending_navigation_37_1
+# workshop-cell: pending_inc/definitions/pending_navigation_38_1
 @app.cell(hide_code=True)
 def _(asdict, get_pending, get_step, json, mo, move_pending, pending_execution_table, pending_visuals, teaching, ui):
-    pending_navigation_37_1 = ui.next_step(mo,"Ask an agent for two alternative procedures","improve",move_pending)
-    pending_next_step_5=pending_navigation_37_1
+    pending_navigation_38_1 = ui.next_step(mo,"Ask an agent for two alternative procedures","improve",move_pending)
+    pending_next_step_5=pending_navigation_38_1
     mo.stop(get_step()!="manual")
     _s=get_pending().get("session")
     _runs=get_pending().get("manual_runs",[])
@@ -709,16 +722,16 @@ def _(asdict, get_pending, get_step, json, mo, move_pending, pending_execution_t
     _requests=list(_s.read()["requests"].values())
     _skill_views={run["case_id"]:mo.Html(pending_visuals.skill_view(run,[request for request in _requests if request.get("id","").startswith(run["stage_id"]+"/")])) for run in _runs}
     mo.vstack([mo.Html(ui.diff(_before,_after)),pending_execution_table(teaching.summary_rows(get_pending()["original"])+teaching.summary_rows(_runs,"My procedure")),mo.ui.tabs(_skill_views),ui.publication(mo,_s,names=("pending-development",)),ui.evidence(mo,_s,[r["stage_id"] for r in _runs],question="Look for a successful read_skill call. If one is present, check the next model request and later tools. If no read is recorded, do not assume the employee used the skill."),pending_next_step_5])
-    return (pending_navigation_37_1, pending_next_step_5,)
+    return (pending_navigation_38_1, pending_next_step_5,)
 
 
 # workshop-cell: pending_inc/controls/improve_pending
 @app.cell(hide_code=True)
 def _(Harness, asdict, get_pending, get_step, json, mo, move_pending, pending_execution_table, teaching, ui):
-    pending_navigation_38_1 = ui.prerequisite(mo,"Run your manual procedure first.","manual",move_pending)
-    pending_prerequisite_6=pending_navigation_38_1
-    pending_navigation_38_2 = ui.next_step(mo,"Freeze and compare on fresh tickets","final",move_pending)
-    pending_next_step_6=pending_navigation_38_2
+    pending_navigation_39_1 = ui.prerequisite(mo,"Run your manual procedure first.","manual",move_pending)
+    pending_prerequisite_6=pending_navigation_39_1
+    pending_navigation_39_2 = ui.next_step(mo,"Freeze and compare on fresh tickets","final",move_pending)
+    pending_next_step_6=pending_navigation_39_2
     mo.stop(get_step()!="improve")
     _s=get_pending().get("session")
     _number,_phase,_label=teaching.next_phase(_s) if _s else (1,"propose","Connect first")
@@ -750,7 +763,7 @@ def _(Harness, asdict, get_pending, get_step, json, mo, move_pending, pending_ex
     if _s: _views.append(ui.branch_workbench(mo,_s,key="pending-improvement"))
     if _phase=="done": _views.append(pending_next_step_6)
     mo.vstack(_views)
-    return (improve_pending, pending_my_choice, pending_my_reason, pending_navigation_38_1, pending_navigation_38_2, pending_next_step_6, pending_prerequisite_6, review_pending,)
+    return (improve_pending, pending_my_choice, pending_my_reason, pending_navigation_39_1, pending_navigation_39_2, pending_next_step_6, pending_prerequisite_6, review_pending,)
 
 
 # workshop-cell: pending_inc/action/improve_pending
@@ -796,7 +809,7 @@ def _(CASES, Harness, asdict, editor_decision, get_pending, improve_pending, mo,
     return
 
 
-# workshop-cell: pending_inc/display/41
+# workshop-cell: pending_inc/display/42
 @app.cell(hide_code=True)
 def _(get_pending, get_step, mo, ui):
     mo.stop(get_step()!="improve")
@@ -810,8 +823,8 @@ def _(get_pending, get_step, mo, ui):
 # workshop-cell: pending_inc/controls/pending_final
 @app.cell(hide_code=True)
 def _(get_pending, get_step, mo, move_pending, teaching, ui):
-    pending_navigation_41_1 = ui.prerequisite(mo,"Finish both improvement rounds before freezing versions.","improve",move_pending)
-    pending_prerequisite_7=pending_navigation_41_1
+    pending_navigation_42_1 = ui.prerequisite(mo,"Finish both improvement rounds before freezing versions.","improve",move_pending)
+    pending_prerequisite_7=pending_navigation_42_1
     mo.stop(get_step()!="final")
     _s=get_pending().get("session")
     _ready=bool(_s) and teaching.next_phase(_s)[1]=="done"
@@ -822,7 +835,7 @@ def _(get_pending, get_step, mo, move_pending, teaching, ui):
     _retryable=sum(r.get("explanation_judgment",{}).get("status")=="unavailable" and _judge_failures.count("pending/judge/"+r["stage_id"])<2 for runs in get_pending().get("final",{}).get("runs",{}).values() for r in runs)
     pending_retry_judges=mo.ui.run_button(label=f"Retry {_retryable} unavailable explanation judgment(s) only" if _retryable else "No further explanation-judge retries needed or available",disabled=not bool(_retryable),full_width=True)
     mo.vstack([mo.Html(ui.step("7. Test the three instruction sets on new tickets", "Run three versions on four new tickets: the starting instructions, your edit, and the instructions kept after two editor rounds. The editor has not seen these tickets or their scores.","Compare the same ticket across all three versions. Check what happened to the account and what the employee said happened. Keep errors and missing judge answers visible.")),mo.md("These tickets are new to the employee. This is where we find out whether the revised handbook helps beyond the cases we used to write it."),pending_final,pending_retry,mo.md("**Some explanation scores are missing.** Review each failed judge execution in the recovery controls above and allow a retry, then use the button below. The employee’s work will not run again. If the judge fails twice, leave its score unavailable.") if _missing else mo.md(""),pending_retry_judges,pending_prerequisite_7 if not _ready else mo.md("")])
-    return (pending_final, pending_navigation_41_1, pending_prerequisite_7, pending_retry, pending_retry_judges,)
+    return (pending_final, pending_navigation_42_1, pending_prerequisite_7, pending_retry, pending_retry_judges,)
 
 
 # workshop-cell: pending_inc/action/pending_final
@@ -920,29 +933,39 @@ def _(get_pending, get_step, mo, pending_execution_table, pending_visuals, teach
     return (pending_final_case,)
 
 
-# workshop-cell: pending_inc/definitions/pending_navigation_46_1
+# workshop-cell: pending_inc/definitions/pending_navigation_47_1
 @app.cell(hide_code=True)
 def _(get_pending, get_step, mo, move_pending, pending_final_case, pending_visuals, ui):
-    pending_navigation_46_1 = ui.next_step(mo,"Write up your comparison","report",move_pending)
-    pending_next_step_7=pending_navigation_46_1
+    pending_navigation_47_1 = ui.next_step(mo,"Write up your comparison","report",move_pending)
+    pending_next_step_7=pending_navigation_47_1
     mo.stop(get_step()!="final")
     _final=get_pending().get("final",{})
     mo.stop(not _final)
     mo.vstack([mo.Html(pending_visuals.comparison_view(_final["runs"],pending_final_case.value)),pending_next_step_7])
-    return (pending_navigation_46_1, pending_next_step_7,)
+    return (pending_navigation_47_1, pending_next_step_7,)
 
 
 # workshop-cell: pending_inc/controls/pending_report
 @app.cell(hide_code=True)
 def _(get_pending, get_step, mo, move_pending, ui):
-    pending_navigation_47_1 = ui.prerequisite(mo,"Complete the fresh-ticket comparison first.","final",move_pending)
-    pending_prerequisite_8=pending_navigation_47_1
+    pending_navigation_48_1 = ui.prerequisite(mo,"Complete the fresh-ticket comparison first.","final",move_pending)
+    pending_prerequisite_8=pending_navigation_48_1
     mo.stop(get_step()!="report")
     _s=get_pending().get("session")
     pending_conclusion=mo.ui.text_area(value=_s.get_draft("pending/conclusion","") if _s else "",label="What changed, what happened, and what would you test next?",full_width=True,on_change=lambda value:_s.save_draft("pending/conclusion",value) if _s else None)
     pending_report=mo.ui.run_button(label="Publish my conclusion with the comparison and evidence",disabled=not bool(get_pending().get("final")),full_width=True)
-    mo.vstack([mo.Html(ui.step("8. Explain what changed", "Choose one fresh ticket. Explain what you changed, what the employee did, and what the account check and judge found. Link to the trace and instructions you used. If the edit did not help, say so.","Publish your Report, then follow its links to the comparison and ticket. The saved code and result files are W&B Artifacts: versioned files you or a teammate can reopen later.")),pending_conclusion,pending_report,pending_prerequisite_8 if not get_pending().get("final") else mo.md(""),mo.md("**Optional ARIA prompt:** Review my Report and linked conversations. Find one supported explanation for a difference, cite the event and harness version, and suggest one next test. Do not run new experiments.")])
-    return (pending_conclusion, pending_navigation_47_1, pending_prerequisite_8, pending_report,)
+    mo.vstack([mo.Html(ui.step("8. Explain what changed", "Choose one fresh ticket. Explain what you changed, what the employee did, and what the account check and judge found. Link to the trace and instructions you used. If the edit did not help, say so.","Publish your Report, then follow its links to the comparison and ticket. The saved code and result files are W&B Artifacts: versioned files you or a teammate can reopen later.")),pending_conclusion,pending_prerequisite_8 if not get_pending().get("final") else mo.md("")])
+    return (pending_conclusion, pending_navigation_48_1, pending_prerequisite_8, pending_report,)
+
+
+# workshop-cell: pending_inc/aria/conclusion
+@app.cell(hide_code=True)
+def _(aria, get_pending, get_step, mo, pending_conclusion, pending_report):
+    mo.stop(get_step()!="report")
+    _s=get_pending().get("session")
+    pending_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=pending_conclusion.value,workshop="pending-direct-teaching")
+    mo.vstack([pending_aria_conclusion,pending_report])
+    return (pending_aria_conclusion,)
 
 
 # workshop-cell: pending_inc/action/pending_report
@@ -965,7 +988,7 @@ def _(get_pending, mo, pending_checkpoint, pending_conclusion, pending_refresh, 
     return
 
 
-# workshop-cell: pending_inc/display/50
+# workshop-cell: pending_inc/display/52
 @app.cell(hide_code=True)
 def _(get_pending, get_step, mo, ui):
     mo.stop(get_step()!="report")

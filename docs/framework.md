@@ -49,3 +49,9 @@ Weave publication verifies the completed evaluation call by its saved call ID af
 The explicit connection check verifies project writes and stores an access receipt. The setup table reads saved receipts to distinguish project access, trace readback, inference, Weave, and native EvalTables. Rendering it sends no request. Inference remains unverified until a participant explicitly runs a model call.
 
 `Stage.record_event()` saves a tool or training failure before its exception propagates. The notebook’s export retry includes these events from failed stages as well as completed results. Publication remains separate from execution; neither a failed upload nor browsing recovery options creates a new paid request.
+
+## ARIA investigations
+
+The optional live investigation uses saved records from the current workspace. `build_aria_context(session, stop_id, record_ids)` resolves explicit records into a prompt and evidence links without network requests. Manifest definitions restrict the early stop to development or validation sources. Citation notes use the existing draft/checkpoint path and retain the selected record identities. They are not scorer outputs, comparison prerequisites, or editor context.
+
+The shared card saves locally before ordinary checkpoint publication. Opening it, copying a prompt, choosing records, or reading a recording must not trigger inference, training, publication, or an ARIA message. Missing investigation notes do not invalidate old journals. The facilitator reports mode and citation-check status without collecting conversation contents. See [ARIA investigations](aria-investigations.md) for the teaching and access contract.

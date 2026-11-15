@@ -1,0 +1,51 @@
+{
+  "kind": "saved-record excerpt; not a Forge screenshot",
+  "recording_id": "aria-v0100-routing-investigate",
+  "recorded_at": "2026-11-15T18:09:39.903973+00:00",
+  "context_method": "Exact run and conversation URLs plus a saved validation-row excerpt; no native attachment. ARIA retrieved the named run and its train_routing_classifier event read-only and confirmed aggregate metrics. The individual request and abstention result were available only in the supplied excerpt; no case-level native readback is claimed.",
+  "prompt_sha256": "71994bd1866be4e3d3ec664ed905421c0bb29fbdcef284dee305c63e5eab708a",
+  "records": [
+    {
+      "label": "routing/baseline/tfidf",
+      "identity": "ec8f27e3cbac834c7cfefece929fd468",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ec8f27e3cbac834c7cfefece929fd468"
+    }
+  ],
+  "excerpt": {
+    "validation_example": {
+      "case_id": "official-train/00035",
+      "text": "Can I get an update on my replacement card?",
+      "target": "card_arrival",
+      "prediction": "compromised_card",
+      "confidence": 0.053366252213165544,
+      "runner_up": "order_physical_card",
+      "margin": 0.0007096001389567327,
+      "abstained": true,
+      "split": "validation",
+      "latency_seconds": 6.2903688310391525e-06,
+      "inference_cost_usd": 0.0,
+      "cost_note": "Local classifier inference; notebook compute billed separately."
+    },
+    "metrics": {
+      "macro_f1": 0.8820896503541562,
+      "accuracy": 0.8831168831168831,
+      "coverage": 0.7337662337662337,
+      "selective_accuracy": 0.95929203539823,
+      "count": 770,
+      "latency_seconds": 0.004843583999900147
+    },
+    "classifier_settings": {
+      "kind": "tfidf",
+      "seed": 17,
+      "dataset": "90df5312b15a932e50c2c87a833de980ebb5fd9bdf9e86fa2336928c46e96129"
+    }
+  },
+  "supplemental_evidence": {},
+  "attachments": [],
+  "citation_check": {
+    "claim": "The selected validation request had a wrong proposed intent, but the review policy abstained.",
+    "assessment": "supported",
+    "reason": "The saved validation row official-train/00035 has target card_arrival, prediction compromised_card, and abstained=true. Confidence is 0.053366252213165544 and margin is 0.0007096001389567327. The check uses this saved row; ARIA retrieved only aggregate metrics from the native conversation. The evidence does not establish that representation caused the error.",
+    "record_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ec8f27e3cbac834c7cfefece929fd468"
+  }
+}

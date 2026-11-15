@@ -274,7 +274,12 @@ slides.insert(next(i for i, row in enumerate(slides) if row['key'] == 'answer-se
 
 from teaching_sequence import expand
 slides, main_count = expand(slides, ROOT)
+# Shared ARIA context, response and citation-check frames.
+import runpy as _aria_runpy
+_aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/aria_storyboard.py'))['enrich'](slides, ROOT, 'solar')
 
+
+main_count=sum(not str(s.get('kind','')).startswith('answer') and s.get('time') not in {'REFERENCE','WORKED ANSWER','RECORDED REHEARSAL'} for s in slides)
 for slide in slides:
     slide['body']=slide['body'].replace('href="/images/', 'href="'+BASE+'images/')
     slide['body']=re.sub(r'(<table[^>]*>)', r'\1<tbody>', slide['body']).replace('</table>', '</tbody></table>')

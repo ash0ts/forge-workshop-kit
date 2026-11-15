@@ -6,6 +6,7 @@ Use [the current templates and setup](../README.md) for a new workshop. These li
 - [Checks through v0.2.3](archive/release-checks-through-v023.md): the earlier rehearsals, captures and known limitations.
 - [Version 0.7.0 checks](archive/release-checks-v070.md): Routing release, repair, rollback, and publication evidence before the airline workshop was added.
 - [Version 0.8.0 checks](archive/release-checks-v080.md): Airline execution, monitoring access, and publication evidence before the six-workshop teaching revision.
+- [Version 0.9.0 checks](archive/release-checks-v090.md): the six-workshop teaching sequence before the scheduled ARIA investigations.
 - [Pending November 12 and self-service releases](https://github.com/ash0ts/pending-inc-workshop/releases): the office workshop before the shared kit.
 - [Operator archive](https://github.com/ash0ts/harness2-workshop/tree/codex/pending-inc-chambers): historical gateway implementations and deployment evidence. New templates do not import this code.
 

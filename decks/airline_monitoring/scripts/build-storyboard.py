@@ -286,6 +286,11 @@ ROOT.joinpath('notes/visual-coverage.json').write_text(json.dumps({
                 'kind': 'Current rendered deck; not a native product capture'},
     'revisions': visual_coverage,
 }, indent=2) + '\n')
+
+# Shared ARIA context, response and citation-check frames.
+import runpy as _aria_runpy
+_aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/aria_storyboard.py'))['enrich'](slides, ROOT, 'airline_monitoring')
+
 chunks=[]
 for i,s in enumerate(slides):
     front='' if not i else '\n---\n'+(f'class: {s["kind"]}\n' if s['kind'] else '')+(f'name: {s["name"]}\n' if s['name'] else '')+(f'clicks: {s["clicks"]}\n' if s.get('clicks') else '')+'---\n'

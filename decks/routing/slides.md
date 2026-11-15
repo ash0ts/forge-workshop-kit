@@ -192,7 +192,7 @@ name: classifier-exercise
 
 # Implement the classifier head
 
-<a class="answer-link" href="/68">Worked answer ↗</a>
+<a class="answer-link" href="/74">Worked answer ↗</a>
 
 <p class="where">Notebook → Train the word classifier</p><ol><li>Complete <code>make_classifier</code> with <code>LogisticRegression(C=10, max_iter=1000, random_state=17)</code>.</li><li>Click <strong>Check my classifier code</strong>, then <strong>Fit and predict four practice points</strong>.</li><li>Fit the word-feature baseline first. We will change representations after inspecting its errors.</li></ol><div class="done"><strong>Run:</strong> Train the word-feature baseline<br><strong>Check:</strong> Open one validation request and the saved classifier source in Forge.</div>
 
@@ -218,10 +218,55 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/
 -->
 
 ---
+class: aria-investigation
+name: aria-investigate
+---
+
+<div class="kicker">0:51 · 8 minutes across these three frames</div>
+
+# Investigate this result
+
+<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source."><g><rect x="0" y="18" width="340" height="116" rx="8" fill="#d9e9e1" stroke="#48675d"/><text x="18" y="54" fill="#183b31" style="font-size:23px">Your interpretation</text><text x="18" y="91" fill="#42584f" style="font-size:17px">Validation message</text></g><path d="M345 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M360 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="370" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="388" y="54" fill="#183b31" style="font-size:23px">ARIA response</text><text x="388" y="91" fill="#42584f" style="font-size:17px">TF–IDF probabilities</text></g><path d="M715 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M730 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="740" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="758" y="54" fill="#183b31" style="font-size:23px">Checked source record</text><text x="758" y="91" fill="#42584f" style="font-size:17px">Vectorizer and intent order</text></g></svg></div><div class="aria-question">Inspect one TF–IDF validation decision. Does the request and classifier output support your explanation, and what could sentence features change?</div><div class="aria-two"><div><b>Start with your explanation</b><p>What do you think happened? Which observation supports it?</p><p>Copy the notebook’s prompt and add native context in Forge.</p></div><div><b>Selected instructor records</b><ul class="aria-records"><li><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ec8f27e3cbac834c7cfefece929fd468" target="_blank" rel="noopener">routing/baseline/tfidf ↗</a></li></ul></div></div><p class="aria-foot">Use only the selected development or validation records. Check ARIA’s selected project. Use exact record URLs; add native context where this surface offers it.</p>
+
+<!--
+Allocate 8 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/request_routing/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+-->
+
+---
+class: aria-investigation
+name: aria-investigate-response
+---
+
+<div class="kicker">0:51 · 8 minutes across these three frames</div>
+
+# Read one claim in the recorded response
+
+<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source."><g><rect x="0" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="18" y="54" fill="#183b31" style="font-size:23px">Your interpretation</text><text x="18" y="91" fill="#42584f" style="font-size:17px">Validation message</text></g><path d="M345 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M360 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="370" y="18" width="340" height="116" rx="8" fill="#d9e9e1" stroke="#48675d"/><text x="388" y="54" fill="#183b31" style="font-size:23px">ARIA response</text><text x="388" y="91" fill="#42584f" style="font-size:17px">TF–IDF probabilities</text></g><path d="M715 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M730 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="740" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="758" y="54" fill="#183b31" style="font-size:23px">Checked source record</text><text x="758" y="91" fill="#42584f" style="font-size:17px">Vectorizer and intent order</text></g></svg></div><div class="aria-response"><figure class="aria-screen"><a href="/aria/investigate/investigate-response.png" target="_blank"><img src="/aria/investigate/investigate-response.png" alt="Actual ARIA response. Check its distinction between retrieved native records and supplied evidence excerpts."></a></figure><div><b>Recorded instructor investigation</b><blockquote>the classifier’s proposed intent was wrong, but the policy withheld it.</blockquote><p>Does this statement follow from the records, or is it a possible explanation?</p><p><a href="/aria/investigate/investigate-transcript.html" target="_blank">Read the full transcript without sign-in ↗</a></p><a href="https://forge.coreweave.com/aria/threads/01a1e065-aba5-7982-88c1-62b4f66abb8a" target="_blank" rel="noopener">Open the recorded conversation ↗</a></div></div><p class="aria-foot">The recording uses instructor results. It does not describe your unexecuted edits.</p>
+
+<!--
+Allocate 8 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/request_routing/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+-->
+
+---
+class: aria-investigation
+name: aria-investigate-verify
+---
+
+<div class="kicker">0:51 · 8 minutes across these three frames</div>
+
+# Open the source and check that claim
+
+<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source."><g><rect x="0" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="18" y="54" fill="#183b31" style="font-size:23px">Your interpretation</text><text x="18" y="91" fill="#42584f" style="font-size:17px">Validation message</text></g><path d="M345 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M360 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="370" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="388" y="54" fill="#183b31" style="font-size:23px">ARIA response</text><text x="388" y="91" fill="#42584f" style="font-size:17px">TF–IDF probabilities</text></g><path d="M715 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M730 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="740" y="18" width="340" height="116" rx="8" fill="#d9e9e1" stroke="#48675d"/><text x="758" y="54" fill="#183b31" style="font-size:23px">Checked source record</text><text x="758" y="91" fill="#42584f" style="font-size:17px">Vectorizer and intent order</text></g></svg></div><div class="aria-response"><figure class="aria-screen"><a href="/aria/investigate/investigate-verification.png" target="_blank"><img src="/aria/investigate/investigate-verification.png" alt="Native TF–IDF training span: 8,463 training examples and 770 validation examples; macro-F1 0.88209 and coverage 0.73377."><svg viewBox="0 0 1280 720" preserveAspectRatio="none" aria-hidden="true"><rect x="622.0" y="383.0" width="635.0" height="124.0" rx="5" fill="none" stroke="#f7bd59" stroke-width="3"/><circle cx="608.0" cy="396.0" r="12" fill="#f7bd59" stroke="#182820" stroke-width="1.5"/><text x="608.0" y="400.0" fill="#182820" text-anchor="middle" style="font-size:14px;font-weight:600">1</text><rect x="622.0" y="514.0" width="635.0" height="193.0" rx="5" fill="none" stroke="#f7bd59" stroke-width="3"/><circle cx="608.0" cy="527.0" r="12" fill="#f7bd59" stroke="#182820" stroke-width="1.5"/><text x="608.0" y="531.0" fill="#182820" text-anchor="middle" style="font-size:14px;font-weight:600">2</text></svg></a><figcaption><span><b>1</b> TF–IDF input</span><span><b>2</b> Validation metrics</span></figcaption></figure><div><b>Citation check: supported</b><p>The saved validation row official-train/00035 has target card_arrival, prediction compromised_card, and abstained=true. Confidence is 0.0533663 and margin is 0.0007096. The check uses this saved row; ARIA retrieved only aggregate metrics from the native conversation. The evidence does not establish that representation caused the error.</p><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ec8f27e3cbac834c7cfefece929fd468" target="_blank" rel="noopener">Open the checked source ↗</a><p><a href="/aria/investigate/investigate-source-records.html" target="_blank">Check the supplied source values offline ↗</a></p></div></div><p class="aria-foot">Save your own citation check. ARIA’s answer does not become a label, score, approved lesson, or release decision.</p>
+
+<!--
+Allocate 8 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/request_routing/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+-->
+
+---
 name: embeddings
 ---
 
-<div class="kicker">0:56</div>
+<div class="kicker">0:59</div>
 
 # Then change the representation
 
@@ -236,7 +281,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 name: sentence-vector
 ---
 
-<div class="kicker">0:59</div>
+<div class="kicker">1:01</div>
 
 # Keep one vector for each request
 
@@ -251,7 +296,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 name: construct-head
 ---
 
-<div class="kicker">1:02</div>
+<div class="kicker">1:03</div>
 
 # Construct the estimator before fitting it
 
@@ -266,7 +311,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 name: fit-head
 ---
 
-<div class="kicker">1:04</div>
+<div class="kicker">1:05</div>
 
 # Fit the head on the labeled training rows
 
@@ -422,7 +467,7 @@ name: policy-exercise
 
 # Write the rule that sends a request to review
 
-<a class="answer-link" href="/69">Worked answer ↗</a>
+<a class="answer-link" href="/75">Worked answer ↗</a>
 
 <p class="where">Notebook → Review requests</p><ol><li>Complete <code>needs_review(confidence, threshold)</code>.</li><li>Move the threshold and compare coverage with selective accuracy.</li><li>Pick a small-margin request and read both proposed intents.</li></ol><div class="done"><strong>Run:</strong> Check my review rule<br><strong>Check:</strong> Explain why a confidence of 0.2 at threshold 0.5 should go to a person.</div>
 
@@ -589,7 +634,7 @@ name: validator-exercise
 
 # Implement the judge response check
 
-<a class="answer-link" href="/70">Worked answer ↗</a>
+<a class="answer-link" href="/76">Worked answer ↗</a>
 
 <p class="where">Notebook → Check the automated reviewer</p><ol><li>Complete <code>validate_judge</code>. Reject a string such as <code>"false"</code>.</li><li>Read your saved human reviews, then the failure-tag instructions. Define what counts as unresolved rather than wrong.</li><li>Run the judge on up to eight reviewed cases.</li></ol><div class="done"><strong>Run:</strong> Check my judge validator → Compare the judge with up to eight of my reviews<br><strong>Check:</strong> Click Compare in EvalTables beside the judge result. Read the judge reason and your accepted review together; unavailable judgments stay blank.</div>
 
@@ -924,7 +969,7 @@ name: release-repair-exercise
 
 # Repair the loader and write its regression check
 
-<a class="answer-link" href="/71">Worked answer ↗</a>
+<a class="answer-link" href="/77">Worked answer ↗</a>
 
 <p class="where">Notebook → Release and recover</p><ol><li>Complete <code>label_names(model_classes)</code> by preserving the supplied order.</li><li>Complete <code>check_release(model_classes, loaded_labels)</code>. Check the label set and exact order.</li><li>Run the free check, then execute your repaired loader on the same 77 requests.</li></ol><div class="done"><strong>Run:</strong> Check my release and repair code → Run my repaired loader on the same requests<br><strong>Check:</strong> Order and prediction parity pass. Existing classifier mistakes may remain.</div>
 
@@ -1023,6 +1068,51 @@ Have participants explain both results without merging denominators or calling t
 -->
 
 ---
+class: aria-investigation
+name: aria-conclusion
+---
+
+<div class="kicker">5:18 · 7 minutes across these three frames</div>
+
+# Check our conclusion
+
+<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source."><g><rect x="0" y="18" width="340" height="116" rx="8" fill="#d9e9e1" stroke="#48675d"/><text x="18" y="54" fill="#183b31" style="font-size:23px">Your interpretation</text><text x="18" y="91" fill="#42584f" style="font-size:17px">Same regression request</text></g><path d="M345 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M360 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="370" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="388" y="54" fill="#183b31" style="font-size:23px">ARIA response</text><text x="388" y="91" fill="#42584f" style="font-size:17px">Healthy, faulty, repaired loader</text></g><path d="M715 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M730 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="740" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="758" y="54" fill="#183b31" style="font-size:23px">Checked source record</text><text x="758" y="91" fill="#42584f" style="font-size:17px">Probability-column label order</text></g></svg></div><div class="aria-question">Separate remaining classifier mistakes from the controlled label-mapping release defect. Verify the repair decision and rollback using identical requests.</div><div class="aria-two"><div><b>Start with your explanation</b><p>What do you think happened? Which observation supports it?</p><p>Copy the notebook’s prompt and add native context in Forge.</p></div><div><b>Selected instructor records</b><ul class="aria-records"><li><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/79e43a453f7055b8db367f1229860185" target="_blank" rel="noopener">routing/release/reproduce ↗</a></li><li><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/568a4b3aef6af0258bb2a96ab1b4026c" target="_blank" rel="noopener">routing/release/incident ↗</a></li><li><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/fb0660a600e69c61e5322f482bb4fbd1" target="_blank" rel="noopener">routing/release/repair ↗</a></li></ul></div></div><p class="aria-foot">Keep the compared versions frozen. Suggest a future experiment without running it. Check ARIA’s selected project. Use exact record URLs; add native context where this surface offers it.</p>
+
+<!--
+Allocate 7 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/request_routing/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+-->
+
+---
+class: aria-investigation
+name: aria-conclusion-response
+---
+
+<div class="kicker">5:18 · 7 minutes across these three frames</div>
+
+# Read one claim in the recorded response
+
+<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source."><g><rect x="0" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="18" y="54" fill="#183b31" style="font-size:23px">Your interpretation</text><text x="18" y="91" fill="#42584f" style="font-size:17px">Same regression request</text></g><path d="M345 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M360 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="370" y="18" width="340" height="116" rx="8" fill="#d9e9e1" stroke="#48675d"/><text x="388" y="54" fill="#183b31" style="font-size:23px">ARIA response</text><text x="388" y="91" fill="#42584f" style="font-size:17px">Healthy, faulty, repaired loader</text></g><path d="M715 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M730 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="740" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="758" y="54" fill="#183b31" style="font-size:23px">Checked source record</text><text x="758" y="91" fill="#42584f" style="font-size:17px">Probability-column label order</text></g></svg></div><div class="aria-response"><figure class="aria-screen"><a href="/aria/conclusion/conclusion-response.png" target="_blank"><img src="/aria/conclusion/conclusion-response.png" alt="Actual ARIA response. Check its distinction between retrieved native records and supplied evidence excerpts."></a></figure><div><b>Recorded instructor investigation</b><blockquote>92.21% → 0% → 92.21% → 92.21%</blockquote><p>Does this statement follow from the records, or is it a possible explanation?</p><p><a href="/aria/conclusion/conclusion-transcript.html" target="_blank">Read the full transcript without sign-in ↗</a></p><a href="https://forge.coreweave.com/aria/threads/01a1e066-bc9f-7572-9336-a4334a5d273e" target="_blank" rel="noopener">Open the recorded conversation ↗</a></div></div><p class="aria-foot">The recording uses instructor results. It does not describe your unexecuted edits.</p>
+
+<!--
+Allocate 7 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/request_routing/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+-->
+
+---
+class: aria-investigation
+name: aria-conclusion-verify
+---
+
+<div class="kicker">5:18 · 7 minutes across these three frames</div>
+
+# Open the source and check that claim
+
+<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source."><g><rect x="0" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="18" y="54" fill="#183b31" style="font-size:23px">Your interpretation</text><text x="18" y="91" fill="#42584f" style="font-size:17px">Same regression request</text></g><path d="M345 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M360 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="370" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="388" y="54" fill="#183b31" style="font-size:23px">ARIA response</text><text x="388" y="91" fill="#42584f" style="font-size:17px">Healthy, faulty, repaired loader</text></g><path d="M715 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M730 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="740" y="18" width="340" height="116" rx="8" fill="#d9e9e1" stroke="#48675d"/><text x="758" y="54" fill="#183b31" style="font-size:23px">Checked source record</text><text x="758" y="91" fill="#42584f" style="font-size:17px">Probability-column label order</text></g></svg></div><div class="aria-response"><figure class="aria-screen"><a href="/aria/conclusion/conclusion-verification.png" target="_blank"><img src="/aria/conclusion/conclusion-verification.png" alt="Controlled release drill: a refund request is sent to activate_my_card with confidence 0.8887."><svg viewBox="0 0 1280 720" preserveAspectRatio="none" aria-hidden="true"><rect x="650.0" y="448.0" width="580.0" height="61.0" rx="5" fill="none" stroke="#f7bd59" stroke-width="3"/><circle cx="636.0" cy="461.0" r="12" fill="#f7bd59" stroke="#182820" stroke-width="1.5"/><text x="636.0" y="465.0" fill="#182820" text-anchor="middle" style="font-size:14px;font-weight:600">1</text></svg></a><figcaption><span><b>1</b> Target, destination, confidence</span></figcaption></figure><div><b>Citation check: supported</b><p>The same 77 review-pool requests have accuracy 0.922078 for healthy, repaired, and rollback releases, and 0 for the incident. Saved repair and rollback checks report prediction_parity=true; the incident has label_order=false. These reproduction results match ARIA’s retrieved run summaries. They are not independent test results, and do not remove the classifier’s remaining errors.</p><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/79e43a453f7055b8db367f1229860185" target="_blank" rel="noopener">Open the checked source ↗</a><p><a href="/aria/conclusion/conclusion-source-records.html" target="_blank">Check the supplied source values offline ↗</a></p></div></div><p class="aria-foot">Save your own citation check. ARIA’s answer does not become a label, score, approved lesson, or release decision.</p>
+
+<!--
+Allocate 7 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/request_routing/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+-->
+
+---
 class: exercise
 name: report-exercise
 ---
@@ -1047,10 +1137,10 @@ name: release
 
 # Optional: organize approved versions in Registry
 
-<p>Link the exact evaluated artifact to Registry if your project has permission. Keep the checks, previous version, and release decision alongside it.</p><p>ARIA can investigate the saved incident where access permits. Verify its cited event before accepting a proposed next test.</p><p class="caption">These are optional. Your batch predictor and Artifact-based rollback already work without Registry or ARIA.</p>
+<p>Link the exact evaluated artifact to Registry if your project has permission. Keep the checks, previous version, and release decision alongside it.</p><p class="caption">Registry manages selected versions. Your batch predictor and Artifact-based rollback already work without it.</p>
 
 <!--
-Registry manages versions, not automatic deployment. ARIA access and usage are separate; it cannot approve a repair automatically. The core capstone contains no new inference calls or training. Specialist fine-tuning remains a separately qualified future lesson.
+Registry manages versions, not automatic deployment. The core capstone contains no new inference calls or training. Specialist fine-tuning remains a separately qualified future lesson.
 -->
 
 ---
@@ -1061,7 +1151,7 @@ name: close
 
 # What to take back to your team
 
-<p>Pick a real routing decision with a small, clear label set. Save the requests you reviewed, explain what a wrong route means, and compare the next version on cases you did not edit against.</p><p>Keep the human review cost visible. Sending every difficult case to a person can improve the reported selective accuracy while leaving the support team with more work.</p><p class="caption">Optional ARIA investigation: ask it to inspect one published disagreement and propose a regression case. Check the cited event before accepting its proposal.</p>
+<p>Pick a real routing decision with a small, clear label set. Save the requests you reviewed, explain what a wrong route means, and compare the next version on cases you did not edit against.</p><p>Keep the human review cost visible. Sending every difficult case to a person can improve the reported selective accuracy while leaving the support team with more work.</p>
 
 <!--
 Close with a concrete transfer task. Ask each participant to name one queue, one failure, one measurable outcome, and one person who can review labels in their own workflow. No claims beyond the recorded Banking77 experiment.
@@ -1106,7 +1196,7 @@ def needs_review(confidence, threshold):
     return confidence < threshold
 ```
 
-<p>At 0.5, a 0.2 prediction is deferred. A 0.9 prediction is routed. Choosing a threshold remains a policy decision that should be checked on validation cases.</p><p class="answer-nav source-link"><a href="/26">Return to the review exercise ↩</a></p>
+<p>At 0.5, a 0.2 prediction is deferred. A 0.9 prediction is routed. Choosing a threshold remains a policy decision that should be checked on validation cases.</p><p class="answer-nav source-link"><a href="/29">Return to the review exercise ↩</a></p>
 
 <!--
 The function should return a boolean. Exactly the threshold is routed in this specified policy. It is not a proof that the predicted probability is calibrated.
@@ -1133,7 +1223,7 @@ def validate_judge(value):
     return value
 ```
 
-<p class="answer-nav source-link"><a href="/36">Return to the judge exercise ↩</a></p>
+<p class="answer-nav source-link"><a href="/39">Return to the judge exercise ↩</a></p>
 
 <!--
 This uses the same type guard as the notebook. Valid JSON is only a response contract; it does not establish agreement with a reviewer.
@@ -1162,7 +1252,7 @@ def check_release(model_classes, loaded_labels):
     }
 ```
 
-<p class="answer-nav source-link"><a href="/58">Return to the release repair exercise ↩</a></p>
+<p class="answer-nav source-link"><a href="/61">Return to the release repair exercise ↩</a></p>
 
 <!--
 This checks the metadata contract; the subsequent saved batch checks prediction parity independently. Passing both checks does not prove every route is correct. Give the worked answer after an attempt or explicit request.

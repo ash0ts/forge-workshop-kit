@@ -1,0 +1,347 @@
+{
+  "version": "0.10.0",
+  "checked_at": "2026-11-15T18:38:50.041880+00:00",
+  "status": "passed",
+  "decks": [
+    {
+      "workshop": "pending",
+      "slides": 100,
+      "reveal_states": 119,
+      "pdf_pages": 119,
+      "checked_routes": 403,
+      "offline_recording_links_checked": 8,
+      "issues": 0,
+      "console_errors": 0,
+      "failed_responses": 0,
+      "build_warnings": 0,
+      "all_pdf_pages_rendered": true,
+      "slide_source_sha256": "be882aadf7c2d8c19555885efdcf5b7986abbd028ff619982ce9b1dc15733b35",
+      "pdf_sha256": "6698a64f93de3bef4d938f329635216c48c37f0bc630113a3de2828c78ac6b19",
+      "source_zip_sha256": "399c9c7d5e2e24e0768e8223a789dafb0df5246d6a9a236f510347811f4b663c",
+      "delivery_receipt": "decks/pending/notes/delivery-checks.json",
+      "pdf_receipt": "decks/pending/notes/pdf-checks.json"
+    },
+    {
+      "workshop": "solar",
+      "slides": 129,
+      "reveal_states": 222,
+      "pdf_pages": 222,
+      "checked_routes": 519,
+      "offline_recording_links_checked": 8,
+      "issues": 0,
+      "console_errors": 0,
+      "failed_responses": 0,
+      "build_warnings": 0,
+      "all_pdf_pages_rendered": true,
+      "slide_source_sha256": "02efa396a12f6c4e45b2ee31356dd0be88e469fe61fc3c2dee01c24ad75f6eaf",
+      "pdf_sha256": "f85bd1f944b76a5b70c428d9a7e495279b8b9b4ebb1a5b01d72cd2d57acdf6ad",
+      "source_zip_sha256": "ca90d372ac1f811be57bbe01fa48771833601c3976e5c1ae1788c02a6a2b4c9e",
+      "delivery_receipt": "decks/solar/notes/delivery-checks.json",
+      "pdf_receipt": "decks/solar/notes/pdf-checks.json"
+    },
+    {
+      "workshop": "routing",
+      "slides": 78,
+      "reveal_states": 81,
+      "pdf_pages": 81,
+      "checked_routes": 315,
+      "offline_recording_links_checked": 8,
+      "issues": 0,
+      "console_errors": 0,
+      "failed_responses": 0,
+      "build_warnings": 0,
+      "all_pdf_pages_rendered": true,
+      "slide_source_sha256": "d6baa3350726f7f5a78953d85af90e0cb0b70a3df0a6de7d2b9aca42756a38da",
+      "pdf_sha256": "0c628702dbdb9af03b301177355a65ee0361feb49b6194ef19e37620f104c675",
+      "source_zip_sha256": "27d8f9e605c7f9b2d6cb53a2f76e40671dba934680d53da8871648e6d354cb74",
+      "delivery_receipt": "decks/routing/notes/delivery-checks.json",
+      "pdf_receipt": "decks/routing/notes/pdf-checks.json"
+    },
+    {
+      "workshop": "inspection",
+      "slides": 59,
+      "reveal_states": 65,
+      "pdf_pages": 65,
+      "checked_routes": 239,
+      "offline_recording_links_checked": 8,
+      "issues": 0,
+      "console_errors": 0,
+      "failed_responses": 0,
+      "build_warnings": 0,
+      "all_pdf_pages_rendered": true,
+      "slide_source_sha256": "650de7fb0597967eeaedfe547efb7e61ee4ae049c98828ead1eb6dc97880a65d",
+      "pdf_sha256": "7579106080ba379dfe9e05c1cfb84cd82dc05c7f454100ab9a1244a2695184f2",
+      "source_zip_sha256": "398c0fbc8b1320a345420565a8b0e756ca0b3fce9097d135ddc02b94fbad0253",
+      "delivery_receipt": "decks/inspection/notes/delivery-checks.json",
+      "pdf_receipt": "decks/inspection/notes/pdf-checks.json"
+    },
+    {
+      "workshop": "transit",
+      "slides": 101,
+      "reveal_states": 124,
+      "pdf_pages": 124,
+      "checked_routes": 407,
+      "offline_recording_links_checked": 8,
+      "issues": 0,
+      "console_errors": 0,
+      "failed_responses": 0,
+      "build_warnings": 0,
+      "all_pdf_pages_rendered": true,
+      "slide_source_sha256": "4f9a03cd5b6e522593df0bf5281c0865cb8b9366ea0a9906ca0ce4c42d9db1d7",
+      "pdf_sha256": "71a714a3611df75bbbff6fb990b918522fda7f3449c0862418d5914d8c4d6b42",
+      "source_zip_sha256": "2c2d448991aed3e5a33b0eb7d868d6a80c9abb6b0f4f272127a6700596248b9e",
+      "delivery_receipt": "decks/transit/notes/delivery-checks.json",
+      "pdf_receipt": "decks/transit/notes/pdf-checks.json"
+    },
+    {
+      "workshop": "airline_monitoring",
+      "slides": 81,
+      "reveal_states": 142,
+      "pdf_pages": 142,
+      "checked_routes": 327,
+      "offline_recording_links_checked": 8,
+      "issues": 0,
+      "console_errors": 0,
+      "failed_responses": 0,
+      "build_warnings": 0,
+      "all_pdf_pages_rendered": true,
+      "slide_source_sha256": "4afd7754dcb7a1b09749f017d370ea5b42fd1e7268a446537ec0435723dc4182",
+      "pdf_sha256": "630188a5fe1d3cc6fbefee2822fca8ad563a1964bed7976351d7a2d41e1efa30",
+      "source_zip_sha256": "c1aea8c73b26cd8bd8fd3c81cce06a8dc9674ed959fac9051ee751e43ab4f77b",
+      "delivery_receipt": "decks/airline_monitoring/notes/delivery-checks.json",
+      "pdf_receipt": "decks/airline_monitoring/notes/pdf-checks.json"
+    }
+  ],
+  "totals": {
+    "decks": 6,
+    "slides": 548,
+    "reveal_states": 753,
+    "pdf_pages": 753,
+    "aria_investigations": 12,
+    "aria_teaching_frames": 36,
+    "offline_recording_links_checked": 48
+  },
+  "renderer_tests": {
+    "passed": 13,
+    "command": ".venv/bin/python -m pytest tests/test_aria_storyboard.py -q"
+  },
+  "manual_checks": [
+    {
+      "workshop": "pending",
+      "slides": [
+        92,
+        93
+      ],
+      "result": "Portrait ARIA response and annotated source verification remain readable; source and offline links present."
+    },
+    {
+      "workshop": "solar",
+      "slides": [
+        110
+      ],
+      "result": "Long citation check, native source, transcript and offline source links remain readable. Clicked both offline pages and inspected exact prompt, response and source values without sign-in."
+    },
+    {
+      "workshop": "inspection",
+      "slides": [
+        20
+      ],
+      "result": "Native tool span and numbered field callouts match the cited validation counts. Readable final proof saved."
+    }
+  ],
+  "proof_image": "evidence/v0100-aria-deck-proof.png",
+  "native_verification_captures": [
+    {
+      "workshop": "request_routing",
+      "stop_id": "investigate",
+      "path": "investigate-verification.png",
+      "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ec8f27e3cbac834c7cfefece929fd468/spans/turns/8360e0566ace17b9fd81855ae7fc9f33/spans/57c691083fcd2b33",
+      "caption": "Native TF\u2013IDF training span: 8,463 training examples and 770 validation examples; macro-F1 0.88209 and coverage 0.73377.",
+      "claim_verified": "The native span verifies the TF\u2013IDF training input and aggregate validation metrics. It does not expose the selected request\u2019s probability columns, so the official-train/00035 explanation still needs its saved prediction record.",
+      "annotations": [
+        {
+          "x": 0.4859375,
+          "y": 0.5319444444444444,
+          "width": 0.49609375,
+          "height": 0.17222222222222222,
+          "label": "TF\u2013IDF input"
+        },
+        {
+          "x": 0.4859375,
+          "y": 0.7138888888888889,
+          "width": 0.49609375,
+          "height": 0.26805555555555555,
+          "label": "Validation metrics"
+        }
+      ]
+    },
+    {
+      "workshop": "request_routing",
+      "stop_id": "conclusion",
+      "path": "conclusion-verification.png",
+      "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/568a4b3aef6af0258bb2a96ab1b4026c/spans/turns/d6ef1966808d07ff84e0c58154af3739/spans/dcb58132175b2328",
+      "caption": "Controlled release drill: a refund request is sent to activate_my_card with confidence 0.8887.",
+      "claim_verified": "The native incident span shows target Refund_not_showing_up, prediction activate_my_card, confidence .8887002468, and release_variant incident for official-train/05684. This establishes the wrong destination in the drill; diagnosing column order also requires the saved loader and release checks.",
+      "annotations": [
+        {
+          "x": 0.5078125,
+          "y": 0.6222222222222222,
+          "width": 0.453125,
+          "height": 0.08472222222222223,
+          "label": "Target, destination, confidence"
+        }
+      ]
+    },
+    {
+      "workshop": "visual_inspection",
+      "stop_id": "investigate",
+      "path": "investigate-verification.png",
+      "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f18536533b586759997a5dc392e6d94d/spans/turns/556b57f7ca97d8a3e4d6dcb6b3f85201/spans/ec73c21d95712d0c",
+      "caption": "Whole-image validation: one missed defect and ten false alarms among 132 boards.",
+      "claim_verified": "The recorded whole-image training span reports average_precision .7915945166, defect_recall .9166666667, misses1, false_alarms10, examples132, defective12, normal120. These counts support a threshold/representation investigation but do not establish its cause.",
+      "annotations": [
+        {
+          "x": 0.5078125,
+          "y": 0.5902777777777778,
+          "width": 0.44921875,
+          "height": 0.14583333333333334,
+          "label": "Errors at the frozen threshold"
+        },
+        {
+          "x": 0.5078125,
+          "y": 0.7986111111111112,
+          "width": 0.44921875,
+          "height": 0.07222222222222222,
+          "label": "Validation denominator"
+        }
+      ]
+    },
+    {
+      "workshop": "visual_inspection",
+      "stop_id": "conclusion",
+      "path": "conclusion-verification.png",
+      "source_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu",
+      "caption": "Native final comparison aligns 442 boards across whole-image, patch, active-review, and random-review versions.",
+      "claim_verified": "Native EvalTables displays four aligned versions, 442 cases, and rounded correctness .94/.95/.96/.96. It does not display the separate miss counts in this view; claims about 4/3/1/5 misses require the saved deterministic metrics or inspected positive rows.",
+      "annotations": [
+        {
+          "x": 0.07578125,
+          "y": 0.5527777777777778,
+          "width": 0.21484375,
+          "height": 0.19027777777777777,
+          "label": "Correctness, not miss count"
+        },
+        {
+          "x": 0.8515625,
+          "y": 0.9333333333333333,
+          "width": 0.125,
+          "height": 0.041666666666666664,
+          "label": "442 aligned cases"
+        }
+      ]
+    },
+    {
+      "workshop": "transit_factory",
+      "stop_id": "investigate",
+      "path": "investigate-verification.png",
+      "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/284f7f1dc00adf6c96f712568f19113c/spans/turns/48c40969b999d10749ed0699156a9447/spans/2b8ca47205371c61",
+      "caption": "The integrated team build passes its public development checks; weekday-evening is one visible checked case.",
+      "claim_verified": "The native test_combined_application event has input build=team and output passed=true with departures/weekday-evening passed=true. This is a development result, not proof against the reserved UTC defect. The screenshot does not compare solo integration or show every case.",
+      "annotations": [
+        {
+          "x": 0.4859375,
+          "y": 0.37083333333333335,
+          "width": 0.49609375,
+          "height": 0.14583333333333334,
+          "label": "Integrated team build"
+        },
+        {
+          "x": 0.50546875,
+          "y": 0.5833333333333334,
+          "width": 0.44921875,
+          "height": 0.15,
+          "label": "Public development checks"
+        }
+      ]
+    },
+    {
+      "workshop": "transit_factory",
+      "stop_id": "conclusion",
+      "path": "conclusion-verification.png",
+      "source_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=dg2ogm6wp3z",
+      "caption": "First-release native comparison: one builder passes 10/10 scenarios; two coordinated builders pass 8/10.",
+      "claim_verified": "Native EvalTables shows 10 aligned cases with pass_rate 1.0 versus .8. The UTC-input row returns different trip IDs while both executions are completed. This view does not establish the later with/without-memory tie or cost comparison.",
+      "annotations": [
+        {
+          "x": 0.303125,
+          "y": 0.4861111111111111,
+          "width": 0.21484375,
+          "height": 0.13194444444444445,
+          "label": "1.0 versus 0.8 pass rate"
+        },
+        {
+          "x": 0.8515625,
+          "y": 0.9333333333333333,
+          "width": 0.125,
+          "height": 0.041666666666666664,
+          "label": "Ten matching cases"
+        }
+      ]
+    },
+    {
+      "workshop": "airline_monitoring",
+      "stop_id": "investigate",
+      "path": "investigate-verification.png",
+      "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3673f9ec7c917166a808d6473195a2ae/spans/turns/d6a80ff46b04fb22a11f029c05b1789e/spans/d2d52003ab8fa13b",
+      "caption": "The returned reservation contains the new HAT061 outbound and the unchanged HAT174 return.",
+      "claim_verified": "Native update_reservation_flights output shows saved=true, outbound HAT061 LAS\u2192ATL May19, and retained return HAT174 ATL\u2192LAS May29. The earlier error badge did not imply an incorrect final itinerary.",
+      "annotations": [
+        {
+          "x": 0.50625,
+          "y": 0.5875,
+          "width": 0.453125,
+          "height": 0.14027777777777778,
+          "label": "Changed outbound flight"
+        },
+        {
+          "x": 0.50625,
+          "y": 0.7611111111111111,
+          "width": 0.453125,
+          "height": 0.1388888888888889,
+          "label": "Return flight retained"
+        }
+      ]
+    },
+    {
+      "workshop": "airline_monitoring",
+      "stop_id": "conclusion",
+      "path": "conclusion-verification.png",
+      "source_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=m6e4y19blu9",
+      "caption": "Six paired final requests: both versions preserve passengers and booking details, while their execution-error counts differ.",
+      "claim_verified": "Native final EvalTables displays six matching requests and both versions at100% outcome_matches_state and passengers_and_booking_preserved. execution_errors differs .17 versus .33. This screen does not establish monitor agreement, processing coverage, or all40 conversation outcomes; those remain separate source checks.",
+      "annotations": [
+        {
+          "x": 0.303125,
+          "y": 0.4861111111111111,
+          "width": 0.21484375,
+          "height": 0.13194444444444445,
+          "label": "Execution errors"
+        },
+        {
+          "x": 0.5296875,
+          "y": 0.4861111111111111,
+          "width": 0.44375,
+          "height": 0.13194444444444445,
+          "label": "Booking checks: both 100%"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Native verification captures were inspected with the existing instructor account, not a new external attendee account.",
+    "Human participant rehearsal remains pending.",
+    "Native chat and project access are not implied by working offline transcripts.",
+    "Recorded responses preserve excerpt-only analysis, uncertainty and unavailable monitoring coverage.",
+    "No underlying workshop training or model execution was rerun by these deck builds."
+  ]
+}

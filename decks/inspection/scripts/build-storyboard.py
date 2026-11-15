@@ -82,6 +82,10 @@ add('answer-threshold','Worked answer: meet the validation recall target',code('
 add('answer-review','Worked answer: choose uncertain cases',code('rng = np.random.default_rng(seed)\norder = rng.permutation(len(rows))\norder = order[np.argsort(\n    np.abs(scores[order] - threshold), kind="stable"\n)]\nreturn np.asarray(rows)[order[:budget]]')+note('The permutation only breaks equal-distance ties. Do not pass labels to this function.'), 'Active selection here is uncertainty sampling. It is one policy to test, not a proven universal choice.', 'OPTIONAL ANSWER')
 from depth_storyboard import extend
 slides=extend(slides)
+# Shared ARIA context, response and citation-check frames.
+import runpy as _aria_runpy
+_aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/aria_storyboard.py'))['enrich'](slides, ROOT, 'inspection')
+
 main_count=sum(s['start_minute'] is not None for s in slides)
 indices={s['key']:i+1 for i,s in enumerate(slides)}
 front='''---\ntheme: default\ntitle: Find defective parts before they ship\nauthor: Anish Shah\nclass: cover\nlayout: default\naspectRatio: 16/9\ncanvasWidth: 1280\ncolorSchema: light\ntransition: fade\nwakeLock: false\nfonts:\n  sans: IBM Plex Sans\n  mono: IBM Plex Mono\n  provider: none\nmdc: true\nhighlighter: shiki\ndrawings:\n  enabled: false\ndownload: false\nexportFilename: visual-inspection\n---\n\n'''

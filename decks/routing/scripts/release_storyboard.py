@@ -91,8 +91,8 @@ def extend(slides):
             s['notes']='Final five minutes: explain the classifier comparison and the release drill separately. Include the tested artifact, decision, rollback evidence, and remaining errors. Publication reuses saved work.'
         if s['key']=='release':
             s['start_minute']=328;s['time']='5:28';s['title']='Optional: organize approved versions in Registry'
-            s['body']='<p>Link the exact evaluated artifact to Registry if your project has permission. Keep the checks, previous version, and release decision alongside it.</p><p>ARIA can investigate the saved incident where access permits. Verify its cited event before accepting a proposed next test.</p><p class="caption">These are optional. Your batch predictor and Artifact-based rollback already work without Registry or ARIA.</p>'
-            s['notes']='Registry manages versions, not automatic deployment. ARIA access and usage are separate; it cannot approve a repair automatically. The core capstone contains no new inference calls or training. Specialist fine-tuning remains a separately qualified future lesson.'
+            s['body']='<p>Link the exact evaluated artifact to Registry if your project has permission. Keep the checks, previous version, and release decision alongside it.</p><p class="caption">Registry is optional. Your batch predictor and Artifact-based rollback already work without it.</p>'
+            s['notes']='Registry manages versions, not automatic deployment. The core capstone contains no new inference calls or training. Specialist fine-tuning remains a separately qualified future lesson.'
         if s['key']=='close':s['start_minute']=329;s['time']='5:29'
         if s['key']=='sources':output.extend(answers)
         output.append(s)

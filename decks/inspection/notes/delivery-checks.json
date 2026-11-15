@@ -1,7 +1,7 @@
 {
-  "source_sha256": "2abfe3fe6dda887211c155a39f7b16c46d83f9735e1814f76ef23dd5148f92fe",
-  "slides_checked": 53,
-  "expected_slides": 53,
+  "source_sha256": "650de7fb0597967eeaedfe547efb7e61ee4ae049c98828ead1eb6dc97880a65d",
+  "slides_checked": 59,
+  "expected_slides": 59,
   "titles": [
     {
       "number": 1,
@@ -90,181 +90,211 @@
     },
     {
       "number": 18,
+      "key": "aria-investigate",
+      "title": "Investigate this result"
+    },
+    {
+      "number": 19,
+      "key": "aria-investigate-response",
+      "title": "Read one claim in the recorded response"
+    },
+    {
+      "number": 20,
+      "key": "aria-investigate-verify",
+      "title": "Open the source and check that claim"
+    },
+    {
+      "number": 21,
       "key": "patch-grid",
       "title": "Keep local information as well as the whole image"
     },
     {
-      "number": 19,
+      "number": 22,
       "key": "patches",
       "title": "Compare local features at the same board position"
     },
     {
-      "number": 20,
+      "number": 23,
       "key": "one-patch-distance",
       "title": "Calculate the distance at one image position"
     },
     {
-      "number": 21,
+      "number": 24,
       "key": "append-patches",
       "title": "Append 196 distances to the 512 whole-image values"
     },
     {
-      "number": 22,
+      "number": 25,
       "key": "features",
       "title": "Add local information to the classifier"
     },
     {
-      "number": 23,
+      "number": 26,
       "key": "cache",
       "title": "Check the feature cache without rebuilding everything"
     },
     {
-      "number": 24,
+      "number": 27,
       "key": "patch-experiment",
       "title": "Test patches against the saved baseline"
     },
     {
-      "number": 25,
+      "number": 28,
       "key": "metrics",
       "title": "Keep ranking quality and operating errors separate"
     },
     {
-      "number": 26,
+      "number": 29,
       "key": "ranking-ap",
       "title": "Calculate ranking quality before choosing one cutoff"
     },
     {
-      "number": 27,
+      "number": 30,
       "key": "operating-errors",
       "title": "Count operating errors at the chosen cutoff"
     },
     {
-      "number": 28,
+      "number": 31,
       "key": "forge",
       "title": "Follow one trained classifier through Forge"
     },
     {
-      "number": 29,
+      "number": 32,
       "key": "forge-training",
       "title": "Read the recorded training call"
     },
     {
-      "number": 30,
+      "number": 33,
       "key": "training-evidence",
       "title": "Match the tool call to the saved validation result"
     },
     {
-      "number": 31,
+      "number": 34,
       "key": "break",
       "title": "Take ten minutes. Return at 2:20."
     },
     {
-      "number": 32,
+      "number": 35,
       "key": "active-selection",
       "title": "Choose uncertain boards before opening their labels"
     },
     {
-      "number": 33,
+      "number": 36,
       "key": "random-control",
       "title": "Give random selection the same labeling budget"
     },
     {
-      "number": 34,
+      "number": 37,
       "key": "review",
       "title": "Choose where the review time goes"
     },
     {
-      "number": 35,
+      "number": 38,
       "key": "human",
       "title": "Save what the reviewer actually decided"
     },
     {
-      "number": 36,
+      "number": 39,
       "key": "review-fit",
       "title": "Train with the additional labels"
     },
     {
-      "number": 37,
+      "number": 40,
       "key": "freeze",
       "title": "Choose before opening the final results"
     },
     {
-      "number": 38,
+      "number": 41,
       "key": "detector-bundle",
       "title": "Freeze the preprocessing and reference bank too"
     },
     {
-      "number": 39,
+      "number": 42,
       "key": "break-two",
       "title": "Take ten minutes. Return at 3:30."
     },
     {
-      "number": 40,
+      "number": 43,
       "key": "final",
       "title": "Evaluate the same 442 boards"
     },
     {
-      "number": 41,
+      "number": 44,
       "key": "native-comparison",
       "title": "Compare four detectors on the same boards"
     },
     {
-      "number": 42,
+      "number": 45,
       "key": "native-board",
       "title": "Inspect the board behind a prediction"
     },
     {
-      "number": 43,
+      "number": 46,
       "key": "failure",
       "title": "The first worked recipe did not pass its gate"
     },
     {
-      "number": 44,
+      "number": 47,
       "key": "retest",
       "title": "The bounded follow-up improved this teaching retest"
     },
     {
-      "number": 45,
+      "number": 48,
       "key": "improved-case",
       "title": "Inspect a corrected miss"
     },
     {
-      "number": 46,
+      "number": 49,
       "key": "regression",
       "title": "Inspect a new miss too"
     },
     {
-      "number": 47,
+      "number": 50,
+      "key": "aria-conclusion",
+      "title": "Check our conclusion"
+    },
+    {
+      "number": 51,
+      "key": "aria-conclusion-response",
+      "title": "Read one claim in the recorded response"
+    },
+    {
+      "number": 52,
+      "key": "aria-conclusion-verify",
+      "title": "Open the source and check that claim"
+    },
+    {
+      "number": 53,
       "key": "reproduce",
       "title": "Reload the version you chose"
     },
     {
-      "number": 48,
+      "number": 54,
       "key": "reload-detector",
       "title": "Reproduce one score from the saved detector"
     },
     {
-      "number": 49,
+      "number": 55,
       "key": "release",
       "title": "A tested artifact can become the next release"
     },
     {
-      "number": 50,
+      "number": 56,
       "key": "conclusion",
       "title": "Write down the decision you would make"
     },
     {
-      "number": 51,
+      "number": 57,
       "key": "answer-features",
       "title": "Worked answer: assemble the local features"
     },
     {
-      "number": 52,
+      "number": 58,
       "key": "answer-threshold",
       "title": "Worked answer: meet the validation recall target"
     },
     {
-      "number": 53,
+      "number": 59,
       "key": "answer-review",
       "title": "Worked answer: choose uncertain cases"
     }
@@ -459,10 +489,6 @@
       "click": 0
     },
     {
-      "slide": 42,
-      "click": 1
-    },
-    {
       "slide": 43,
       "click": 0
     },
@@ -473,6 +499,10 @@
     {
       "slide": 45,
       "click": 0
+    },
+    {
+      "slide": 45,
+      "click": 1
     },
     {
       "slide": 46,
@@ -505,6 +535,30 @@
     {
       "slide": 53,
       "click": 0
+    },
+    {
+      "slide": 54,
+      "click": 0
+    },
+    {
+      "slide": 55,
+      "click": 0
+    },
+    {
+      "slide": 56,
+      "click": 0
+    },
+    {
+      "slide": 57,
+      "click": 0
+    },
+    {
+      "slide": 58,
+      "click": 0
+    },
+    {
+      "slide": 59,
+      "click": 0
     }
   ],
   "issues": [],
@@ -513,20 +567,21 @@
   "answers": [
     {
       "slide": 16,
-      "destination": "/forge-workshop-kit/inspection/52",
+      "destination": "/forge-workshop-kit/inspection/58",
       "keyboardReturn": true
     },
     {
-      "slide": 22,
-      "destination": "/forge-workshop-kit/inspection/51",
+      "slide": 25,
+      "destination": "/forge-workshop-kit/inspection/57",
       "keyboardReturn": true
     },
     {
-      "slide": 34,
-      "destination": "/forge-workshop-kit/inspection/53",
+      "slide": 37,
+      "destination": "/forge-workshop-kit/inspection/59",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 215,
+  "routes_checked": 239,
+  "recording_links_checked": 8,
   "presenter_notes": true
 }

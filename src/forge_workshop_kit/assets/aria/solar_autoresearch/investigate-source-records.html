@@ -1,0 +1,60 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Solar Autoresearch / Investigate this result / source values</title><style>
+:root { color-scheme:light dark; --paper:#f7f3e8; --ink:#142c32; --accent:#136b70; --line:#bec9c4; }
+@media(prefers-color-scheme:dark) { :root { --paper:#152528; --ink:#ecede3; --accent:#8cdbce; --line:#526968; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font:18px/1.55 system-ui,sans-serif; }
+main { max-width:1080px; margin:auto; padding:32px 28px; }
+h1 { font-size:clamp(1.8rem,4vw,3rem); line-height:1.14; margin:.5em 0; }
+h2 { font-size:1.35rem; margin-top:1.6em; }
+a { color:var(--accent); overflow-wrap:anywhere; }
+a:focus-visible,summary:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+.notice { padding:16px 20px; border-left:5px solid var(--accent); }
+table { width:100%; border-collapse:collapse; table-layout:fixed; }
+th,td { padding:12px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; overflow-wrap:anywhere; }
+th:first-child,td:first-child { width:35%; }
+pre { white-space:pre-wrap; overflow-wrap:anywhere; font:14px/1.6 ui-monospace,monospace; padding:18px; border:1px solid var(--line); border-radius:8px; }
+.response { white-space:pre-wrap; overflow-wrap:anywhere; padding:20px; border:1px solid var(--line); }
+img { display:block; max-width:100%; height:auto; }
+.capture-frame { position:relative; }
+.capture-box { position:absolute; border:2px solid #ffcf66; pointer-events:none; }
+.capture-box b { position:absolute; top:-1.2em; left:-2px; padding:0 6px; color:#142c32; background:#ffcf66; font:700 13px/1.4 system-ui,sans-serif; }
+small { opacity:.8; }
+@media(max-width:600px) { main { padding:20px 16px; } th,td { padding:8px 5px; font-size:15px; } }
+</style></head><body><main><h1>Solar Autoresearch / Investigate this result / source values</h1><p class="notice"><strong>Saved-record excerpt.</strong> These are the exact values supplied in the instructor’s recorded prompt. This page is a local teaching view, not a native Forge capture and not a participant execution.</p><p>Exact URLs and saved validation excerpts; no native attachment. ARIA retrieved the two named W&amp;B run summaries read-only and checked validation metrics and dataset identity. Its discussion of loss history and units relied on supplied excerpts.</p><h2>Open the source records</h2><ul><li><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ff57eba2f9e3704d9bee074e4b4c9bea">goes/search-2</a></li><li><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/34be79df856314de9497c9715ad8da99">goes/persistence</a></li></ul><h2>Values supplied to ARIA</h2><table><thead><tr><th>Source field</th><th>Recorded value</th></tr></thead><tbody><tr><th scope="row">selected_run</th><td>&quot;goes/search-2&quot;</td></tr><tr><th scope="row">config.architecture</th><td>&quot;mlp&quot;</td></tr><tr><th scope="row">config.width</th><td>16</td></tr><tr><th scope="row">config.learning_rate</th><td>0.003</td></tr><tr><th scope="row">config.steps</th><td>60</td></tr><tr><th scope="row">config.seed</th><td>17</td></tr><tr><th scope="row">config.batch_size</th><td>32</td></tr><tr><th scope="row">metrics.error</th><td>2.7121469205813082</td></tr><tr><th scope="row">metrics.persistence_error</th><td>0.17826738542856696</td></tr><tr><th scope="row">metrics.skill_vs_persistence</th><td>-14.213926619617615</td></tr><tr><th scope="row">metrics.examples</th><td>2779</td></tr><tr><th scope="row">metrics.validation_error</th><td>2.7121469205813082</td></tr><tr><th scope="row">metrics.seconds</th><td>1.9001059532165527</td></tr><tr><th scope="row">metrics.learner_metric</th><td>2.712146759033203</td></tr><tr><th scope="row">metrics.learner_metric_matches</th><td>true</td></tr><tr><th scope="row">loss_first_3[0]</th><td>31.394834518432617</td></tr><tr><th scope="row">loss_first_3[1]</th><td>29.03706169128418</td></tr><tr><th scope="row">loss_first_3[2]</th><td>27.466228485107422</td></tr><tr><th scope="row">loss_last_3[0]</th><td>10.946819305419922</td></tr><tr><th scope="row">loss_last_3[1]</th><td>9.598377227783203</td></tr><tr><th scope="row">loss_last_3[2]</th><td>9.454852104187012</td></tr><tr><th scope="row">persistence_validation_metrics.error</th><td>0.17826738542856696</td></tr><tr><th scope="row">persistence_validation_metrics.persistence_error</th><td>0.17826738542856696</td></tr><tr><th scope="row">persistence_validation_metrics.skill_vs_persistence</th><td>0.0</td></tr><tr><th scope="row">persistence_validation_metrics.examples</th><td>2779</td></tr><tr><th scope="row">units</th><td>&quot;target log10 GOES XRS-B flux in W/m²; inputs standardized using training dates; validation February 11–12, 2014&quot;</td></tr></tbody></table><details><summary>Complete supplied excerpt</summary><pre>{
+  &quot;selected_run&quot;: &quot;goes/search-2&quot;,
+  &quot;config&quot;: {
+    &quot;architecture&quot;: &quot;mlp&quot;,
+    &quot;width&quot;: 16,
+    &quot;learning_rate&quot;: 0.003,
+    &quot;steps&quot;: 60,
+    &quot;seed&quot;: 17,
+    &quot;batch_size&quot;: 32
+  },
+  &quot;metrics&quot;: {
+    &quot;error&quot;: 2.7121469205813082,
+    &quot;persistence_error&quot;: 0.17826738542856696,
+    &quot;skill_vs_persistence&quot;: -14.213926619617615,
+    &quot;examples&quot;: 2779,
+    &quot;validation_error&quot;: 2.7121469205813082,
+    &quot;seconds&quot;: 1.9001059532165527,
+    &quot;learner_metric&quot;: 2.712146759033203,
+    &quot;learner_metric_matches&quot;: true
+  },
+  &quot;loss_first_3&quot;: [
+    31.394834518432617,
+    29.03706169128418,
+    27.466228485107422
+  ],
+  &quot;loss_last_3&quot;: [
+    10.946819305419922,
+    9.598377227783203,
+    9.454852104187012
+  ],
+  &quot;persistence_validation_metrics&quot;: {
+    &quot;error&quot;: 0.17826738542856696,
+    &quot;persistence_error&quot;: 0.17826738542856696,
+    &quot;skill_vs_persistence&quot;: 0.0,
+    &quot;examples&quot;: 2779
+  },
+  &quot;units&quot;: &quot;target log10 GOES XRS-B flux in W/m²; inputs standardized using training dates; validation February 11–12, 2014&quot;
+}</pre></details><p><a href="investigate-transcript.html">Read the actual ARIA conversation</a></p></main></body></html>

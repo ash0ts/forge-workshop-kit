@@ -1,0 +1,26 @@
+/* Shared ARIA sequence: explanatory diagrams and genuine source captures. */
+.slidev-layout.aria-investigation { padding: 44px 62px 38px; }
+.slidev-layout.aria-investigation h1 { font-size: 37px; line-height: 1.16; margin: 0 0 16px; max-width: 1120px; }
+.aria-sequence { width: 100%; height: 96px; margin: 0 0 10px; }
+.aria-question { font-size: 28px; line-height: 1.3; margin: 8px 0 22px; color: #153d33; }
+.aria-two { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+.aria-two b,.aria-response b { font-size: 22px; }
+.aria-two p { font-size: 21px; line-height: 1.4; margin: 9px 0 15px; }
+.aria-response p { font-size: 18px; line-height: 1.35; margin: 9px 0 15px; }
+.aria-response { display: flex; gap: 28px; align-items: start; min-height: 215px; }
+.aria-response > div { flex: 1; min-width: 0; }
+.aria-screen { display: block; width: max-content; flex: 0 0 auto; max-width: 61%; margin: 0; }
+.aria-screen > a { display: block; position: relative; border: 1px solid #aebdb2; background: #fff; }
+.aria-screen img { display: block; width: auto; height: 340px; max-width: 100%; object-fit: contain; }
+.aria-screen svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.aria-screen figcaption { display: flex; flex-wrap: wrap; gap: 5px 16px; margin-top: 7px; font-size: 15px; line-height: 1.25; }
+.aria-screen figcaption b { font-size: 15px; color: #895811; }
+.aria-response blockquote { font-size: 22px; line-height: 1.4; margin: 12px 0; padding: 0 0 0 18px; border-left: 3px solid #398170; }
+.aria-response a { font-size: 18px; }
+.aria-foot { font-size: 16px; line-height: 1.3; color: #52665c; margin: 12px 0 0; }
+.aria-unavailable { border-left: 4px solid #b48a44; padding: 18px 24px; background: #f1ecdc; font-size: 24px; line-height: 1.5; }
+.aria-unavailable p { margin: 10px 0 0; font-size: 23px; }
+.aria-investigation a:focus-visible { outline: 3px solid #267969; outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { .aria-investigation * { transition: none !important; animation: none !important; } }
+.aria-records { padding-left: 24px; margin: 9px 0; font-size: 21px; line-height: 1.4; }
+.aria-records li { margin: 0 0 10px; }

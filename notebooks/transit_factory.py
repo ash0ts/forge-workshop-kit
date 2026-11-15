@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.9.0/forge_workshop_kit-0.9.0-py3-none-any.whl",
+#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.10.0/forge_workshop_kit-0.10.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -105,6 +105,7 @@ def _():
     from pathlib import Path
     import marimo as mo
     from forge_workshop_kit import WorkshopSession, setup, ui
+    from forge_workshop_kit import aria
     from forge_workshop_kit import factory, transit, factory_teaching as teaching
     from forge_workshop_kit import transit_workshop as lab
     from forge_workshop_kit.traces import event, export_trace, saved_trace_inputs
@@ -114,7 +115,7 @@ def _():
     get_revision, set_revision = mo.state(0)
     get_output, set_output = mo.state({})
     draft_cache = {}
-    return (Path, WorkshopSession, digest, draft_cache, event, export_trace, factory, get_context, get_output, get_revision, get_step, json, lab, mo, saved_trace_inputs, set_context, set_output, set_revision, set_step, setup, teaching, transit, ui,)
+    return (Path, WorkshopSession, aria, digest, draft_cache, event, export_trace, factory, get_context, get_output, get_revision, get_step, json, lab, mo, saved_trace_inputs, set_context, set_output, set_revision, set_step, setup, teaching, transit, ui,)
 
 
 # workshop-cell: transit_factory/definitions/refresh
@@ -663,6 +664,17 @@ def _(current_session, lab, mo, preview_app, preview_stop, preview_time, preview
     return
 
 
+# workshop-cell: transit_factory/aria/investigate
+@app.cell(hide_code=True)
+def _(aria, current_session, get_revision, get_step, mo):
+    mo.stop(get_step()!="memory")
+    _s=current_session()
+    _revision=get_revision()
+    transit_aria_investigate=aria.investigation(mo,_s,"investigate",workshop="transit-factory")
+    mo.vstack([mo.md("Before asking a builder to draft a lesson, explain one observation from the integrated app's development checks. The final reserved scenarios stay out of this investigation."),transit_aria_investigate])
+    return (transit_aria_investigate,)
+
+
 # workshop-cell: transit_factory/controls/propose_lesson
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, lab, mo):
@@ -784,8 +796,19 @@ def _(current_session, get_revision, get_step, lab, mo):
     release_version=mo.ui.dropdown(lab.release_choices(_s),value=next(iter(lab.release_choices(_s)),None),label="Tested version to release",full_width=True)
     conclusion=mo.ui.text_area(value=_s.get_draft("factory/conclusion","") if _s else "",label="What shipped, what failed, and what you would test next",full_width=True,on_change=lambda text:_s.save_draft("factory/conclusion",text) if _s else None)
     release_button=mo.ui.run_button(label="Publish this release and its evidence",disabled=not lab.can_run(_s,"release"))
-    mo.vstack([mo.md("### Reproduce the version you selected\nThe release contains the exact app code, data, contract, memory version, and checked results. Your release_decision runs before publication. If no build passes, retain the previous version and explain what is blocked."),release_version,conclusion,release_button,mo.md(lab.blocked(_s,"release"))]) if get_step()=="release" else mo.md("")
+    mo.vstack([mo.md("### Reproduce the version you selected\nThe release contains the exact app code, data, contract, memory version, and checked results. Your release_decision runs before publication. If no build passes, retain the previous version and explain what is blocked."),release_version,conclusion,mo.md(lab.blocked(_s,"release"))]) if get_step()=="release" else mo.md("")
     return (conclusion, release_button, release_version,)
+
+
+# workshop-cell: transit_factory/aria/conclusion
+@app.cell(hide_code=True)
+def _(aria, conclusion, current_session, get_revision, get_step, mo, release_button):
+    mo.stop(get_step()!="release")
+    _s=current_session()
+    _revision=get_revision()
+    transit_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=conclusion.value,workshop="transit-factory")
+    mo.vstack([transit_aria_conclusion,release_button])
+    return (transit_aria_conclusion,)
 
 
 # workshop-cell: transit_factory/action/release_button
@@ -800,7 +823,7 @@ def _(conclusion, current_session, lab, mo, refresh, release_button, release_cod
     return
 
 
-# workshop-cell: transit_factory/display/57
+# workshop-cell: transit_factory/display/59
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_revision, get_step, lab, mo):
     _s=current_session()
@@ -811,7 +834,7 @@ def _(current_session, get_output, get_revision, get_step, lab, mo):
     return
 
 
-# workshop-cell: transit_factory/display/58
+# workshop-cell: transit_factory/display/60
 @app.cell(hide_code=True)
 def _(get_step, go_to, mo, teaching, ui):
     _index=next(i for i,step in enumerate(teaching.STEPS) if step[0]==get_step())
@@ -821,7 +844,7 @@ def _(get_step, go_to, mo, teaching, ui):
     return (next_step_control,)
 
 
-# workshop-cell: transit_factory/display/59
+# workshop-cell: transit_factory/display/61
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, lab, mo, teaching, ui):
     _s=current_session()
@@ -842,7 +865,7 @@ def _(current_session, get_revision, mo):
     return (help_form,)
 
 
-# workshop-cell: transit_factory/display/61
+# workshop-cell: transit_factory/display/63
 @app.cell(hide_code=True)
 def _(current_session, help_form, mo):
     mo.stop(help_form.value is None or not current_session())

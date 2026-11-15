@@ -10,6 +10,10 @@
 - `scripts/build_notebooks.py`: generates the participant, starter and read-only facilitator notebooks.
 - `notebooks/solar_autoresearch.py`: editable forecast, instrumentation, search and research controller.
 - `notebooks/pending_inc.py`: editable office tool, dispatch, observation, tracing, scorer, judge and improvement exercises.
+- `src/forge_workshop_kit/aria.py`: selection of saved investigation records, context prompts, recording readback, and local citation notes. No automatic ARIA requests.
+- `src/forge_workshop_kit/assets/aria/`: genuine instructor investigation packs, original product captures, transcripts, and checked citations.
+- `scripts/aria_storyboard.py` and `decks/aria.css`: the shared question, response, and source-verification frames in all six decks.
+- `docs/aria-investigations.md`: attendee context controls, access, billing, and facilitation.
 - `src/forge_workshop_kit/ui.py`: shared navigation, result, branch and Forge evidence views. It never executes an experiment.
 - `src/forge_workshop_kit/solar_teaching.py` and `pending/teaching.py`: free development checks, saved draft state, phase prerequisites and optional worked answers.
 - `examples/solar/candidate.py`: model, loss and training code the agent can edit.

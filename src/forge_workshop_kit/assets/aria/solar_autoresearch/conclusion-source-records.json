@@ -1,0 +1,70 @@
+{
+  "kind": "saved-record excerpt; not a Forge screenshot",
+  "recording_id": "aria-v0100-solar-conclusion",
+  "recorded_at": "2026-11-15T18:08:25.901739+00:00",
+  "context_method": "Exact URLs and saved frozen-comparison excerpts; no native attachment. ARIA reports retrieving both named W&B runs and their execution JSON artifacts read-only, including metrics_by_version. The date range, overlapping-window limitation, and one-seed scope were supplied in the prompt. The recording does not establish a cause for the GOES failure.",
+  "prompt_sha256": "2ccc96db84816eddbc2988d7699d741d38d15d83b3ed918b2f172fb08f8f8a0c",
+  "records": [
+    {
+      "label": "images/final-comparison",
+      "identity": "4d1bfd4e02dcf10bc59b2236a9219f4c",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/4d1bfd4e02dcf10bc59b2236a9219f4c"
+    },
+    {
+      "label": "goes/final-comparison",
+      "identity": "f0fefa942fc5ab6f5ed7da1efb577219",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/f0fefa942fc5ab6f5ed7da1efb577219"
+    }
+  ],
+  "excerpt": {
+    "image": {
+      "persistence": {
+        "error": 0.12576198700564592,
+        "persistence_error": 0.12576198700564592,
+        "skill_vs_persistence": 0.0,
+        "examples": 199
+      },
+      "manual": {
+        "error": 0.1224417336622075,
+        "persistence_error": 0.12576198700564592,
+        "skill_vs_persistence": 0.026401088456795563,
+        "examples": 199,
+        "final_error": 0.1224417336622075,
+        "seconds": 1.207076072692871
+      },
+      "agent": {
+        "error": 0.11001095193834161,
+        "persistence_error": 0.12576198700564592,
+        "skill_vs_persistence": 0.12524480124981796,
+        "examples": 199,
+        "final_error": 0.11001095193834161,
+        "seconds": 0.7789530754089355
+      }
+    },
+    "measurement": {
+      "persistence": {
+        "error": 0.19270602844340234,
+        "persistence_error": 0.19270602844340234,
+        "skill_vs_persistence": 0.0,
+        "examples": 2694
+      },
+      "selected-model": {
+        "error": 2.468974582071028,
+        "persistence_error": 0.19270602844340234,
+        "skill_vs_persistence": -11.812129449267148,
+        "examples": 2694,
+        "final_error": 2.468974582071028,
+        "seconds": 0.597012996673584
+      }
+    },
+    "scope": "Frozen February 13–14, 2014; overlapping windows, one seed. Later GOES repair and multiseed outcomes are separate teaching retests."
+  },
+  "supplemental_evidence": {},
+  "attachments": [],
+  "citation_check": {
+    "claim": "The agent image version has lower recorded error than persistence, while the selected GOES model has higher error than persistence.",
+    "assessment": "supported",
+    "reason": "Saved images/final-comparison metrics show agent error 0.11001095193834161 versus persistence 0.12576198700564592 across 199 examples, giving 12.524480124981796% lower error. Saved goes/final-comparison shows selected-model error 2.468974582071028 versus persistence 0.19270602844340234 across 2694 examples, a ratio of 12.812129449267148. These match the artifact values ARIA reports retrieving. They do not establish broad forecasting reliability or identify why a change helped.",
+    "record_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/4d1bfd4e02dcf10bc59b2236a9219f4c"
+  }
+}

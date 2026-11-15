@@ -1,0 +1,136 @@
+{
+  "kind": "saved-record excerpt; not a Forge screenshot",
+  "recording_id": "aria-v0100-pending-investigate",
+  "recorded_at": "2026-11-15T18:04:06.686431+00:00",
+  "context_method": "Exact URLs and verbatim saved development excerpts. No native attachment. ARIA explicitly did not independently retrieve the record.",
+  "prompt_sha256": "390ec307ae7853180525f379768bed53f71f1dc53d7c944a65da2e960ac50ac0",
+  "records": [
+    {
+      "label": "pending/original/double-charge",
+      "identity": "c2458ce8b6bb52274d29b5c5a691424b",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c2458ce8b6bb52274d29b5c5a691424b"
+    }
+  ],
+  "excerpt": {
+    "case_id": "double-charge",
+    "mission": "Account acme was charged twice for invoice inv-1. Keep the original payment pay-1, refund the duplicate, and explain the result.",
+    "scores": {
+      "task_success": true,
+      "state_correct": true,
+      "completion_correct": true,
+      "reason": "Expected entire account state and resolution match",
+      "expected_resolution": "resolved"
+    },
+    "events": [
+      {
+        "id": "c2458ce8b6bb52274d29b5c5a691424b/tool-0",
+        "name": "read_skill",
+        "arguments": {
+          "name": "lookup_invoice"
+        },
+        "result": {
+          "text": "Skill not installed"
+        }
+      },
+      {
+        "id": "c2458ce8b6bb52274d29b5c5a691424b/tool-1",
+        "name": "get_account",
+        "arguments": {
+          "account_id": "acme"
+        },
+        "result": {
+          "ok": true,
+          "account": {
+            "id": "acme",
+            "name": "Example customer",
+            "subscription": {
+              "status": "active",
+              "paid": true
+            },
+            "payments": [
+              {
+                "id": "pay-1",
+                "invoice_id": "inv-1",
+                "amount_cents": 4900,
+                "status": "captured"
+              },
+              {
+                "id": "pay-2",
+                "invoice_id": "inv-1",
+                "amount_cents": 4900,
+                "status": "captured"
+              }
+            ],
+            "refunds": [],
+            "members": []
+          }
+        }
+      },
+      {
+        "id": "c2458ce8b6bb52274d29b5c5a691424b/tool-2",
+        "name": "refund_payment",
+        "arguments": {
+          "account_id": "acme",
+          "payment_id": "pay-2",
+          "operation_id": "refund-acme-pay-2"
+        },
+        "result": {
+          "ok": true,
+          "operation_id": "refund-acme-pay-2",
+          "refund": {
+            "payment_id": "pay-2",
+            "amount_cents": 4900
+          }
+        }
+      },
+      {
+        "id": "c2458ce8b6bb52274d29b5c5a691424b/tool-3",
+        "name": "get_account",
+        "arguments": {
+          "account_id": "acme"
+        },
+        "result": {
+          "ok": true,
+          "account": {
+            "id": "acme",
+            "name": "Example customer",
+            "subscription": {
+              "status": "active",
+              "paid": true
+            },
+            "payments": [
+              {
+                "id": "pay-1",
+                "invoice_id": "inv-1",
+                "amount_cents": 4900,
+                "status": "captured"
+              },
+              {
+                "id": "pay-2",
+                "invoice_id": "inv-1",
+                "amount_cents": 4900,
+                "status": "captured"
+              }
+            ],
+            "refunds": [
+              {
+                "payment_id": "pay-2",
+                "amount_cents": 4900
+              }
+            ],
+            "members": []
+          }
+        }
+      }
+    ],
+    "resolution": "resolved"
+  },
+  "supplemental_evidence": {},
+  "attachments": [],
+  "citation_check": {
+    "claim": "The skill call returned Skill not installed; a call is not proof of loading.",
+    "record_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c2458ce8b6bb52274d29b5c5a691424b",
+    "assessment": "supported",
+    "reason": "Agent Lens tool-0 observation says Skill not installed. The full saved sequence has no successful read_skill. The refund and later get_account independently show pay-2 refunded once."
+  }
+}

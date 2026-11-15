@@ -551,5 +551,40 @@
         }
       ]
     }
-  }
+  },
+  "aria_investigations": [
+    {
+      "id": "investigate",
+      "title": "Investigate this result",
+      "step": "review",
+      "minutes": 8,
+      "question": "Challenge your saved human review using the requested change, original itinerary, returned booking, and recovery evidence. Is an unrequested change established or is context missing?",
+      "allowed_stage_patterns": [
+        "airline/(baseline/[^/]+|review/[^/]+/[^/]+)"
+      ],
+      "allowed_partitions": [
+        "development",
+        "dev",
+        "validation",
+        "discovery"
+      ],
+      "recorded_example": "aria/airline_monitoring/investigate.json",
+      "deck_anchor": "aria-investigate",
+      "prompt_version": 1
+    },
+    {
+      "id": "conclusion",
+      "title": "Check our conclusion",
+      "step": "traffic",
+      "minutes": 7,
+      "question": "Check agent correctness, monitor precision and recall, processing coverage, and missing judgments separately across final and subsequent requests. Preserve successful live outcomes.",
+      "allowed_stage_patterns": [
+        "airline/((baseline|repaired)/[^/]+|monitor-agreement|monitor-readback|tag-context|subsequent-agreement)"
+      ],
+      "allowed_partitions": [],
+      "recorded_example": "aria/airline_monitoring/conclusion.json",
+      "deck_anchor": "aria-conclusion",
+      "prompt_version": 1
+    }
+  ]
 }

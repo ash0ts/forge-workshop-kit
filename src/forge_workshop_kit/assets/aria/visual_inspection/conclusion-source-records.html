@@ -1,0 +1,80 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Visual Inspection / Check our conclusion / source values</title><style>
+:root { color-scheme:light dark; --paper:#f7f3e8; --ink:#142c32; --accent:#136b70; --line:#bec9c4; }
+@media(prefers-color-scheme:dark) { :root { --paper:#152528; --ink:#ecede3; --accent:#8cdbce; --line:#526968; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font:18px/1.55 system-ui,sans-serif; }
+main { max-width:1080px; margin:auto; padding:32px 28px; }
+h1 { font-size:clamp(1.8rem,4vw,3rem); line-height:1.14; margin:.5em 0; }
+h2 { font-size:1.35rem; margin-top:1.6em; }
+a { color:var(--accent); overflow-wrap:anywhere; }
+a:focus-visible,summary:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+.notice { padding:16px 20px; border-left:5px solid var(--accent); }
+table { width:100%; border-collapse:collapse; table-layout:fixed; }
+th,td { padding:12px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; overflow-wrap:anywhere; }
+th:first-child,td:first-child { width:35%; }
+pre { white-space:pre-wrap; overflow-wrap:anywhere; font:14px/1.6 ui-monospace,monospace; padding:18px; border:1px solid var(--line); border-radius:8px; }
+.response { white-space:pre-wrap; overflow-wrap:anywhere; padding:20px; border:1px solid var(--line); }
+img { display:block; max-width:100%; height:auto; }
+.capture-frame { position:relative; }
+.capture-box { position:absolute; border:2px solid #ffcf66; pointer-events:none; }
+.capture-box b { position:absolute; top:-1.2em; left:-2px; padding:0 6px; color:#142c32; background:#ffcf66; font:700 13px/1.4 system-ui,sans-serif; }
+small { opacity:.8; }
+@media(max-width:600px) { main { padding:20px 16px; } th,td { padding:8px 5px; font-size:15px; } }
+</style></head><body><main><h1>Visual Inspection / Check our conclusion / source values</h1><p class="notice"><strong>Saved-record excerpt.</strong> These are the exact values supplied in the instructor’s recorded prompt. This page is a local teaching view, not a native Forge capture and not a participant execution.</p><p>Exact evaluation run URL plus frozen-comparison excerpts; no native attachment. ARIA retrieved the named evaluation run and its execution JSON artifact read-only, confirming selected identity and final metrics. It did not verify a separate timestamped selection event. Its proposed next step is an audit of existing selection evidence, not a new experiment; that actual response is preserved.</p><h2>Open the source records</h2><ul><li><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/08c45f8ed417d216d026cf1abdc280b2">evaluate</a></li></ul><h2>Values supplied to ARIA</h2><table><thead><tr><th>Source field</th><th>Recorded value</th></tr></thead><tbody><tr><th scope="row">selected_using_validation</th><td>&quot;review/random&quot;</td></tr><tr><th scope="row">test_summaries.compare/whole.average_precision</th><td>0.8728996091625387</td></tr><tr><th scope="row">test_summaries.compare/whole.defect_recall</th><td>0.9</td></tr><tr><th scope="row">test_summaries.compare/whole.false_alarm_rate</th><td>0.05721393034825871</td></tr><tr><th scope="row">test_summaries.compare/whole.misses</th><td>4</td></tr><tr><th scope="row">test_summaries.compare/whole.false_alarms</th><td>23</td></tr><tr><th scope="row">test_summaries.compare/whole.review_fraction</th><td>0.03619909502262444</td></tr><tr><th scope="row">test_summaries.compare/whole.review_count</th><td>16</td></tr><tr><th scope="row">test_summaries.compare/whole.auto_pass_misses</th><td>3</td></tr><tr><th scope="row">test_summaries.compare/whole.examples</th><td>442</td></tr><tr><th scope="row">test_summaries.compare/whole.defective</th><td>40</td></tr><tr><th scope="row">test_summaries.compare/whole.normal</th><td>402</td></tr><tr><th scope="row">test_summaries.compare/nearest-patch.average_precision</th><td>0.8857424111028463</td></tr><tr><th scope="row">test_summaries.compare/nearest-patch.defect_recall</th><td>0.925</td></tr><tr><th scope="row">test_summaries.compare/nearest-patch.false_alarm_rate</th><td>0.04477611940298507</td></tr><tr><th scope="row">test_summaries.compare/nearest-patch.misses</th><td>3</td></tr><tr><th scope="row">test_summaries.compare/nearest-patch.false_alarms</th><td>18</td></tr><tr><th scope="row">test_summaries.compare/nearest-patch.review_fraction</th><td>0.049773755656108594</td></tr><tr><th scope="row">test_summaries.compare/nearest-patch.review_count</th><td>22</td></tr><tr><th scope="row">test_summaries.compare/nearest-patch.auto_pass_misses</th><td>1</td></tr><tr><th scope="row">test_summaries.compare/nearest-patch.examples</th><td>442</td></tr><tr><th scope="row">test_summaries.compare/nearest-patch.defective</th><td>40</td></tr><tr><th scope="row">test_summaries.compare/nearest-patch.normal</th><td>402</td></tr><tr><th scope="row">test_summaries.review/active.average_precision</th><td>0.8990810288722902</td></tr><tr><th scope="row">test_summaries.review/active.defect_recall</th><td>0.975</td></tr><tr><th scope="row">test_summaries.review/active.false_alarm_rate</th><td>0.03980099502487562</td></tr><tr><th scope="row">test_summaries.review/active.misses</th><td>1</td></tr><tr><th scope="row">test_summaries.review/active.false_alarms</th><td>16</td></tr><tr><th scope="row">test_summaries.review/active.review_fraction</th><td>0.033936651583710405</td></tr><tr><th scope="row">test_summaries.review/active.review_count</th><td>15</td></tr><tr><th scope="row">test_summaries.review/active.auto_pass_misses</th><td>1</td></tr><tr><th scope="row">test_summaries.review/active.examples</th><td>442</td></tr><tr><th scope="row">test_summaries.review/active.defective</th><td>40</td></tr><tr><th scope="row">test_summaries.review/active.normal</th><td>402</td></tr><tr><th scope="row">test_summaries.review/random.average_precision</th><td>0.8873417838958045</td></tr><tr><th scope="row">test_summaries.review/random.defect_recall</th><td>0.875</td></tr><tr><th scope="row">test_summaries.review/random.false_alarm_rate</th><td>0.029850746268656716</td></tr><tr><th scope="row">test_summaries.review/random.misses</th><td>5</td></tr><tr><th scope="row">test_summaries.review/random.false_alarms</th><td>12</td></tr><tr><th scope="row">test_summaries.review/random.review_fraction</th><td>0.03619909502262444</td></tr><tr><th scope="row">test_summaries.review/random.review_count</th><td>16</td></tr><tr><th scope="row">test_summaries.review/random.auto_pass_misses</th><td>2</td></tr><tr><th scope="row">test_summaries.review/random.examples</th><td>442</td></tr><tr><th scope="row">test_summaries.review/random.defective</th><td>40</td></tr><tr><th scope="row">test_summaries.review/random.normal</th><td>402</td></tr><tr><th scope="row">scope</th><td>&quot;442 historical test boards; the chosen version was review/random. Equal reviewed-label budget of 24 for active and random. Do not select a replacement using these final results.&quot;</td></tr></tbody></table><details><summary>Complete supplied excerpt</summary><pre>{
+  &quot;selected_using_validation&quot;: &quot;review/random&quot;,
+  &quot;test_summaries&quot;: {
+    &quot;compare/whole&quot;: {
+      &quot;average_precision&quot;: 0.8728996091625387,
+      &quot;defect_recall&quot;: 0.9,
+      &quot;false_alarm_rate&quot;: 0.05721393034825871,
+      &quot;misses&quot;: 4,
+      &quot;false_alarms&quot;: 23,
+      &quot;review_fraction&quot;: 0.03619909502262444,
+      &quot;review_count&quot;: 16,
+      &quot;auto_pass_misses&quot;: 3,
+      &quot;examples&quot;: 442,
+      &quot;defective&quot;: 40,
+      &quot;normal&quot;: 402
+    },
+    &quot;compare/nearest-patch&quot;: {
+      &quot;average_precision&quot;: 0.8857424111028463,
+      &quot;defect_recall&quot;: 0.925,
+      &quot;false_alarm_rate&quot;: 0.04477611940298507,
+      &quot;misses&quot;: 3,
+      &quot;false_alarms&quot;: 18,
+      &quot;review_fraction&quot;: 0.049773755656108594,
+      &quot;review_count&quot;: 22,
+      &quot;auto_pass_misses&quot;: 1,
+      &quot;examples&quot;: 442,
+      &quot;defective&quot;: 40,
+      &quot;normal&quot;: 402
+    },
+    &quot;review/active&quot;: {
+      &quot;average_precision&quot;: 0.8990810288722902,
+      &quot;defect_recall&quot;: 0.975,
+      &quot;false_alarm_rate&quot;: 0.03980099502487562,
+      &quot;misses&quot;: 1,
+      &quot;false_alarms&quot;: 16,
+      &quot;review_fraction&quot;: 0.033936651583710405,
+      &quot;review_count&quot;: 15,
+      &quot;auto_pass_misses&quot;: 1,
+      &quot;examples&quot;: 442,
+      &quot;defective&quot;: 40,
+      &quot;normal&quot;: 402
+    },
+    &quot;review/random&quot;: {
+      &quot;average_precision&quot;: 0.8873417838958045,
+      &quot;defect_recall&quot;: 0.875,
+      &quot;false_alarm_rate&quot;: 0.029850746268656716,
+      &quot;misses&quot;: 5,
+      &quot;false_alarms&quot;: 12,
+      &quot;review_fraction&quot;: 0.03619909502262444,
+      &quot;review_count&quot;: 16,
+      &quot;auto_pass_misses&quot;: 2,
+      &quot;examples&quot;: 442,
+      &quot;defective&quot;: 40,
+      &quot;normal&quot;: 402
+    }
+  },
+  &quot;scope&quot;: &quot;442 historical test boards; the chosen version was review/random. Equal reviewed-label budget of 24 for active and random. Do not select a replacement using these final results.&quot;
+}</pre></details><p><a href="conclusion-transcript.html">Read the actual ARIA conversation</a></p></main></body></html>

@@ -11,8 +11,9 @@ The deck pauses at each transformation before the participant writes or runs it.
 | Time | Participants change or investigate | Check before moving on |
 |---|---|---|
 | 0–30 | Guess the bundled development request’s intent before connecting; inspect partitions and send a setup trace | Explain the expected route, then find the tracing field in Agent Lens |
-| 30–56 | Implement `make_classifier`, fit four practice points, then train the word-feature baseline | Inspect a validation request and save an observation before discussing alternatives |
-| 56–76 | Explain frozen sentence features and run the alternative with unchanged classifier code | Compare both predictions on the same request; both saved runs complete the comparison |
+| 30–51 | Implement `make_classifier`, fit four practice points, then train the word-feature baseline | Inspect a validation request and save an observation before discussing alternatives |
+| 51–59 | Ask ARIA to examine your interpretation of one TF–IDF validation request | Check a cited prediction or feature before discussing embeddings |
+| 59–76 | Explain frozen sentence features and run the alternative with unchanged classifier code | Compare both predictions on the same request; both saved runs complete the comparison |
 | 76–95 | Calculate one intent’s precision, recall and F1 from recorded predictions | Explain why macro-F1 requires the complete matched prediction set |
 | 95–130 | Implement the review policy, inspect confidence and margin, save four labels | Separate automatic deferral from choosing labeling candidates |
 | 130–140 | Break | Trained versions and reviews are saved |
@@ -25,8 +26,9 @@ The deck pauses at each transformation before the participant writes or runs it.
 | 250–265 | Package and reload the selected router from its exact artifact version | Find the classifier, preprocessing identity, label order, policy, and code |
 | 265–285 | Run the controlled label-order incident and follow one request | Explain why a confident probability can reach the wrong support queue |
 | 285–305 | Save a reviewed regression case, write the release check, and repair the loader | Match probability columns to intent names; compare all fixed requests |
-| 305–320 | Release or reject the repair, then practice rollback when released | Verify the previous artifact reproduces its saved predictions |
-| 320–330 | Publish the model and release conclusions together | Separate model quality, release correctness, and the remaining errors |
+| 305–318 | Release or reject the repair, then practice rollback when released | Verify the previous artifact reproduces its saved predictions |
+| 318–325 | Check the frozen model and release conclusions with ARIA or the recording | Separate the classifier gain from the loader repair; verify one citation |
+| 325–330 | Publish the model and release conclusions together | Separate model quality, release correctness, and the remaining errors |
 
 The deck’s threshold slider recomputes coverage from the saved 770 validation predictions. It makes no model call. The F1 walkthrough uses actual saved `card_arrival` predictions: 34 true positives, three false positives and six false negatives. The eight prompted routing calls and the judge exercise are separate paths: the judge reviews classifier proposals attached to participants’ accepted labels, not those eight prompted routes.
 
@@ -104,10 +106,12 @@ Execution and publication are separate. **Retry release publication only** uploa
 
 Each comparison row keeps the evidence links available when it was first published. A later successful export adds its link to the notebook and Report without creating another evaluation of the same predictions. Unavailable links stay visibly absent from the original row.
 
-Registry is an optional way to curate the exact artifact version, where permissions allow it. It does not deploy the classifier. An optional ARIA investigation requires access in the participant's project; verify its cited case before acting on any suggestion. Neither extension is required to finish the capstone. The core capstone adds no model API calls and keeps the existing inference allowance.
+Registry is an optional way to curate the exact artifact version, where permissions allow it. It does not deploy the classifier. The scheduled ARIA conclusion check uses live access or the recorded investigation; verify its cited case before accepting its explanation. The core capstone adds no model API calls and keeps the existing inference allowance.
 
 ### Recorded release drill
 
 The November 14 maintainer browser rehearsal completed the capstone using the selected embedding classifier. The healthy release correctly routed 71/77 regression requests; the deliberately rotated label mapping routed 0/77 correctly. The learner-written loader repair restored all 77 original predictions. Downloading the previous exact artifact reproduced those same predictions during rollback. Six original classifier mistakes remained throughout healthy, repaired, and rolled-back versions.
 
 All four variants published to [native EvalTables](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=37umm80le0d), with matching case IDs and scores checked by readback. Retrying publication reused the saved executions and evaluation IDs. No capstone training or model requests ran. The [receipt](../evidence/v070-routing-live.json) distinguishes this completed capstone from omitted core exercises and the still-required external-account and human rehearsals.
+
+Use the [ARIA investigation guide](aria-investigations.md) for native context attachment, the recorded fallback, citation checks, access requirements, and separate ARIA usage. These stops replace discussion time and do not add execution gates.

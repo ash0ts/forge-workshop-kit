@@ -332,241 +332,271 @@ Score the work and edit one procedure · 105–135 minutes
 
 build_messages lists installed skill names. read_skill returns the file contents, and my_observation appends that result to the next request. Before editing, the notebook shows skill reads from the starting tickets. If there is no read, say so. The optional free example demonstrates the named file, returned text, and next request without pretending that a model chose it. After editing, compare the actual read event and later saved request. No read means we cannot claim the skill influenced this execution. Loading it still does not prove the agent followed it; inspect the subsequent tools.
 
-## 56. Revise the verification skill and rerun both tickets.
+## 56. Investigate this result
+
+Investigate this result · 117–125 minutes
+
+Allocate 8 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+
+## 57. Read one claim in the recorded response
+
+Investigate this result · 117–125 minutes
+
+Allocate 8 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+
+## 58. Open the source and check that claim
+
+Investigate this result · 117–125 minutes
+
+Allocate 8 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+
+## 59. Revise the verification skill and rerun both tickets.
 
 Score the work and edit one procedure · 105–135 minutes
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Save this procedure and rerun both development tickets.
 
-## 57. Take a ten-minute break after saving your progress.
+## 60. Take a ten-minute break after saving your progress.
 
 Break · 135–145 minutes
 
 Second break: 135–145 minutes. Save the manual comparison and return to step 6. Do not start automatic work during the break.
 
-## 58. Management would like to automate management.
+## 61. Management would like to automate management.
 
 Propose, probe and compose · 145–185 minutes
 
 The editor uses the same fixed model, but its request is to revise the harness rather than resolve a customer ticket. We supply the current configuration and a saved execution. The permitted edits are instructions, the verification skill, and bounded workflow rules. Tools and scoring stay fixed so any measured difference concerns the harness we changed.
 
-## 59. Propose two edits to the same starting harness.
+## 62. Propose two edits to the same starting harness.
 
 Propose, probe and compose · 145–185 minutes
 
 Propose asks the editor for two competing changes, such as clearer verification instructions or a mandatory completion check. A and B start from the same parent. Neither receives the other candidate’s test result at this point. We review their saved configurations before allowing the probes.
 
-## 60. Run each candidate from the original account state.
+## 63. Run each candidate from the original account state.
 
 Propose, probe and compose · 145–185 minutes
 
 If candidate A has already issued a refund, B must not inherit that refunded account. The controller resets the case before each probe. Compare the actions and returned state of both runs; a successful tool response alone does not tell us the ticket was handled correctly.
 
-## 61. Compare the probe results before selecting a harness.
+## 64. Compare the probe results before selecting a harness.
 
 Propose, probe and compose · 145–185 minutes
 
 Compose receives the proposed configurations and both execution records. It can choose A or B, combine parts of them, or retain the parent. Its rationale explains that choice, but the choice still needs an execution. The solid paths show versions; colors identify alternatives rather than scores.
 
-## 62. Execute the harness returned by the composition decision.
+## 65. Execute the harness returned by the composition decision.
 
 Propose, probe and compose · 145–185 minutes
 
 A combination may differ from both tested candidates, so we run the returned configuration as its own probe. A Retain decision also runs through this step without inventing a new executable version. We can then inspect the specific execution associated with the decision.
 
-## 63. Save the selected harness and a lesson for onboarding.
+## 66. Save the selected harness and a lesson for onboarding.
 
 Propose, probe and compose · 145–185 minutes
 
 Reflect asks the editor what it learned from the selected run and where that conclusion may not apply. We keep the lesson with that run, then execute the selected harness on onboarding before proposing more changes. This carried-harness teaching protocol differs from the full upstream Harness² cross-task procedure.
 
-## 64. Give the editor the starting execution and harness.
+## 67. Give the editor the starting execution and harness.
 
 Propose, probe and compose · 145–185 minutes
 
 Conceptual variable names match the visible controller; actual notebook uses _s,_case,_parent,_prefix,_f. It passes prior_experience from round1 into round2. Ask which input would be inappropriate: final-test scores.
 
-## 65. Review the proposed instruction and workflow changes.
+## 68. Review the proposed instruction and workflow changes.
 
 Propose, probe and compose · 145–185 minutes
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Round 1 · Ask for two competing changes.
 
-## 66. Construct and execute the proposed harness.
+## 69. Construct and execute the proposed harness.
 
 Propose, probe and compose · 145–185 minutes
 
 The editor returns a structured harness in its decision. The controller constructs that harness, executes it on a reset case, and checks the recorded content fingerprint against the decision. That comparison catches running the wrong version. It says nothing about whether the selected instructions are good; the account scorer answers that separately.
 
-## 67. Run both candidates and inspect their tool sequences.
+## 70. Run both candidates and inspect their tool sequences.
 
 Propose, probe and compose · 145–185 minutes
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Round 1 · Review and test candidate A; then candidate B.
 
-## 68. Require a passing check of the current state before finish.
+## 71. Require a passing check of the current state before finish.
 
 Propose, probe and compose · 145–185 minutes
 
 The loop stores last_check with passed and the digest of world. With verify_before_finish true, finish is rejected if that check is absent, failed, or no longer matches the current state. This is a runtime completion rule. check_work gives public development feedback; the independent final scorer separately checks entire expected accounts and the required resolution.
 
-## 69. This candidate required a check before completion.
+## 72. This candidate required a check before completion.
 
 Propose, probe and compose · 145–185 minutes
 
 Recorded candidate B changed verify_before_finish from false to true. It produced the explicit check sequence. Spans: rejected finish 9ed1e7824138ec0e, check_work 2d49d1d8d3ddeb5d, accepted finish 3e19e007d013d4d2. This is a behavior change, not yet evidence of better quality.
 
-## 70. The completion gate required a check_work call.
+## 73. The completion gate required a check_work call.
 
 Propose, probe and compose · 145–185 minutes
 
 Crop x580,y251,w690,h185 from the unchanged1280x720 native capture. Gate behavior is confirmed by the subsequent check_work and accepted finish spans, not inferred from the proposal title.
 
-## 71. Compare the added checks with the resulting account state.
+## 74. Compare the added checks with the resulting account state.
 
 Propose, probe and compose · 145–185 minutes
 
 Recorded first-round probe A used the parent harness: get_account, refund_payment, get_account, finish. Probe B used verify_before_finish=true: the same first three calls, a rejected finish, check_work, and an accepted finish. Both independent account checks passed. Tool-call counts are four and six for these development probes, distinct from the later final-evaluation totals. Source: the v0.3.0 rehearsal journal pending/round-1/probe-a and probe-b, linked through the native conversations on the preceding slides.
 
-## 72. The editor retained the parent after comparing the probes.
+## 75. The editor retained the parent after comparing the probes.
 
 Propose, probe and compose · 145–185 minutes
 
 Ask learners for their optional A/B/retain reasoning before showing this composition. Their notebook notes are not provided to the editor. Open this saved composition if time allows. The editor’s rationale was that the mandatory gate added work while the parent already produced a correct billing outcome. It retained the parent. The controller still runs the selected configuration because every composition receives a confirming execution, including KEEP. The executable content remains unchanged.
 
-## 73. Test the selected harness before carrying it forward.
+## 76. Test the selected harness before carrying it forward.
 
 Propose, probe and compose · 145–185 minutes
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Compare probes and request a composition → Review and test the composition → Save the tested version and its lesson.
 
-## 74. Save the lesson with the run that supports it.
+## 77. Save the lesson with the run that supports it.
 
 Propose, probe and compose · 145–185 minutes
 
 Explanatory excerpt, not a drop-in full function. The actual controller falls back to the parent if the chosen execution does not complete. The lesson is agent-authored interpretation backed by a saved run.
 
-## 75. The next task gets the selected procedure and a checked lesson.
+## 78. The next task gets the selected procedure and a checked lesson.
 
 Carry a lesson into the next task · 185–210 minutes
 
 A lesson is an agent-written interpretation with a supporting run and limits. It is not a model weight update. We carry the selected harness and lesson into onboarding, while constructing a fresh account state and conversation for that case. The next execution tests whether the lesson transfers.
 
-## 76. Choosing a combination does not test it.
+## 79. Choosing a combination does not test it.
 
 Carry a lesson into the next task · 185–210 minutes
 
 Do not infer that a composition inherits the scores of its ingredients. The combined behavior can differ, so the controller runs it before adoption. The recorded round-one decision retained the parent instead; the previous slides show its reason and execution.
 
-## 77. Use the selected harness to start the onboarding round.
+## 80. Use the selected harness to start the onboarding round.
 
 Carry a lesson into the next task · 185–210 minutes
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Round 2 · Ask for two competing changes; follow the current action.
 
-## 78. The second round changed the verification skill.
+## 81. The second round changed the verification skill.
 
 Carry a lesson into the next task · 185–210 minutes
 
 In the recorded onboarding round, the editor selected a more specific verification skill while leaving verify_before_finish off. Open the decision to read its rationale, then the chosen execution to inspect how the agent used those files. The next slide shows the exact changed sentence.
 
-## 79. The skill makes the final check more specific.
+## 82. The skill makes the final check more specific.
 
 Carry a lesson into the next task · 185–210 minutes
 
 Source .workshop/v030-pending/journal.json, pending/round-1/compose and pending/round-2/compose verification_skill. Display is an exact excerpt of the changed sentence. Round2 selected that skill with verify_before_finish=false. Link to preceding decision and execution; no attribution of final-quality gain.
 
-## 80. The next round tests changes to the previous selection.
+## 83. The next round tests changes to the previous selection.
 
 Carry a lesson into the next task · 185–210 minutes
 
 Recursive self-improvement here means that an agent evaluates executions of a harness, proposes revisions, and later examines work done under the selected revision. The retained lesson supplies context for the next attempt. The language model’s weights never change. Our workshop carries a selected harness between two tasks; the upstream Harness² procedure has a broader recursion and experience-library design.
 
-## 81. Freeze three harnesses for the fresh-case comparison.
+## 84. Freeze three harnesses for the fresh-case comparison.
 
 Evaluate frozen harnesses · 210–230 minutes
 
 Final cases: already-refunded, two-invoices, onboarding-recovery, clarify-access. Their files are public for teaching but are excluded from improvement context. The starting version is the configured tested employee, not the deliberately blank opening illustration.
 
-## 82. Compare all three versions on fresh tickets.
+## 85. Compare all three versions on fresh tickets.
 
 Evaluate frozen harnesses · 210–230 minutes
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Freeze versions and run 12 evaluations.
 
-## 83. Compare the same ticket in Forge.
+## 86. Compare the same ticket in Forge.
 
 Evaluate frozen harnesses · 210–230 minutes
 
 Click Compare in EvalTables beside the notebook result. This opens the native Weave-backed Evaluation Tables Preview in the W&B workspace. The separate CES EvalTables v2 service can still be unavailable; its status does not erase this working comparison. These are saved rehearsal executions, not new model calls.
 
-## 84. Inspect a request that needs clarification.
+## 87. Inspect a request that needs clarification.
 
 Evaluate frozen harnesses · 210–230 minutes
 
 Select the same case across versions. A tie is a result: more verification calls can leave account quality unchanged. Blank judgment cells remain missing. Use the Agent Lens URL saved in that row, rather than an unrelated trace.
 
-## 85. Link the Report’s conclusion to its runs and traces.
+## 88. Link the Report’s conclusion to its runs and traces.
 
 Evaluate frozen harnesses · 210–230 minutes
 
 Use fresh v030 final table: all12 account checks and explanation judgments are available and pass. The Report screenshot is the actual W&B/Weave/Report surface. The preceding slides show the repaired native Evaluation Tables Preview comparison.
 
-## 86. All three harnesses passed the four final cases.
+## 89. All three harnesses passed the four final cases.
 
 Evaluate frozen harnesses · 210–230 minutes
 
 Read the account and explanation columns before the tool-call totals. All versions passed all four cases in this scripted rehearsal, so neither revision increased the measured pass rate. Each revised version made one additional tool call overall. These four cases do not establish repeatability or performance on other workflows. The source is evidence/v030-pending-rehearsal.json.
 
-## 87. Save the case, harness, execution, and scoring records.
+## 90. Save the case, harness, execution, and scoring records.
 
 Evaluate frozen harnesses · 210–230 minutes
 
 Artifacts are versioned file bundles. Trace export, result publication and execution have separate statuses. A publication retry uses saved work and must not make another model request.
 
-## 88. Write down what changed and whether it helped.
+## 91. Check our conclusion
+
+Check our conclusion · 230–237 minutes
+
+Allocate 7 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+
+## 92. Read one claim in the recorded response
+
+Check our conclusion · 230–237 minutes
+
+Allocate 7 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+
+## 93. Open the source and check that claim
+
+Check our conclusion · 230–237 minutes
+
+Allocate 7 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+
+## 94. Write down what changed and whether it helped.
 
 Explain the result · 230–240 minutes
 
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Publish my conclusion with the comparison and evidence.
 
-## 89. Ask ARIA to compare one case across harness versions.
-
-Explain the result · 230–240 minutes
-
-Do not imply ARIA authored these prior results. The prompt asks for evidence analysis, not permission to run new experiments or change budgets.
-
-## 90. Choose a workflow with an observable result to test.
+## 95. Choose a workflow with an observable result to test.
 
 Explain the result · 230–240 minutes
 
 Ask participants to name one workflow in their product with observable output and a check they can run independently of the agent. Have them specify a development case, a likely failure, and a fresh case for testing transfer. They can reuse the instrumentation and improvement controller, but must define what correct work means for that workflow.
 
-## 91. Worked answer · invoice lookup
+## 96. Worked answer · invoice lookup
 
 Worked answers · 240–240 minutes
 
 Exact semantics of teaching.ANSWERS tool. Keep optional so participants attempt the gap first.
 
-## 92. Worked answer · observation handoff
+## 97. Worked answer · observation handoff
 
 Worked answers · 240–240 minutes
 
 Exact answer contract from teaching.py. Both dispatch paths return state/result. Handoff creates a new list.
 
-## 93. Worked answer · inspect the refund
+## 98. Worked answer · inspect the refund
 
 Worked answers · 240–240 minutes
 
 The learner check is deliberately limited. Do not describe it as the full final scorer.
 
-## 94. Worked answer · validate the judge response
+## 99. Worked answer · validate the judge response
 
 Worked answers · 240–240 minutes
 
 Exact semantics of teaching.ANSWERS scorer validation. Boolean strings are invalid. Empty reasons are invalid. Missing judgments stay unavailable.
 
-## 95. Source, notebook, and recorded example
+## 100. Source, notebook, and recorded example
 
 Worked answers · 240–240 minutes
 

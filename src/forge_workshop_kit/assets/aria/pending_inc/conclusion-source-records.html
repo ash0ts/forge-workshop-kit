@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pending Inc / Check our conclusion / source values</title><style>
+:root { color-scheme:light dark; --paper:#f7f3e8; --ink:#142c32; --accent:#136b70; --line:#bec9c4; }
+@media(prefers-color-scheme:dark) { :root { --paper:#152528; --ink:#ecede3; --accent:#8cdbce; --line:#526968; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font:18px/1.55 system-ui,sans-serif; }
+main { max-width:1080px; margin:auto; padding:32px 28px; }
+h1 { font-size:clamp(1.8rem,4vw,3rem); line-height:1.14; margin:.5em 0; }
+h2 { font-size:1.35rem; margin-top:1.6em; }
+a { color:var(--accent); overflow-wrap:anywhere; }
+a:focus-visible,summary:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+.notice { padding:16px 20px; border-left:5px solid var(--accent); }
+table { width:100%; border-collapse:collapse; table-layout:fixed; }
+th,td { padding:12px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; overflow-wrap:anywhere; }
+th:first-child,td:first-child { width:35%; }
+pre { white-space:pre-wrap; overflow-wrap:anywhere; font:14px/1.6 ui-monospace,monospace; padding:18px; border:1px solid var(--line); border-radius:8px; }
+.response { white-space:pre-wrap; overflow-wrap:anywhere; padding:20px; border:1px solid var(--line); }
+img { display:block; max-width:100%; height:auto; }
+.capture-frame { position:relative; }
+.capture-box { position:absolute; border:2px solid #ffcf66; pointer-events:none; }
+.capture-box b { position:absolute; top:-1.2em; left:-2px; padding:0 6px; color:#142c32; background:#ffcf66; font:700 13px/1.4 system-ui,sans-serif; }
+small { opacity:.8; }
+@media(max-width:600px) { main { padding:20px 16px; } th,td { padding:8px 5px; font-size:15px; } }
+</style></head><body><main><h1>Pending Inc / Check our conclusion / source values</h1><p class="notice"><strong>Saved-record excerpt.</strong> These are the exact values supplied in the instructor’s recorded prompt. This page is a local teaching view, not a native Forge capture and not a participant execution.</p><p>Exact URLs and saved frozen-comparison excerpts; no native attachment. ARIA retrieved the four named W&amp;B run summaries read-only. Those summaries showed completion but did not contain pass counts; the counts and tool sequences in its answer came from the supplied excerpts.</p><h2>Open the source records</h2><ul><li><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/fdcf3eb3fbcae1cf6b7b765e7654c36b">pending/final-comparison</a></li><li><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/25cf9e219e38e8f6c445e3e38b16749b">pending/final-starting/already-refunded</a></li><li><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/20db682821e9f8633eb809db08ad981a">pending/final-manual/already-refunded</a></li><li><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/8d05c61780b324b33edc1c1d8a47db9a">pending/final-agent/already-refunded</a></li></ul><h2>Values supplied to ARIA</h2><table><thead><tr><th>Source field</th><th>Recorded value</th></tr></thead><tbody><tr><th scope="row">starting.case_id</th><td>&quot;already-refunded&quot;</td></tr><tr><th scope="row">starting.task_success</th><td>true</td></tr><tr><th scope="row">starting.tool_sequence[0]</th><td>&quot;get_account&quot;</td></tr><tr><th scope="row">starting.tool_sequence[1]</th><td>&quot;finish&quot;</td></tr><tr><th scope="row">manual.case_id</th><td>&quot;already-refunded&quot;</td></tr><tr><th scope="row">manual.task_success</th><td>true</td></tr><tr><th scope="row">manual.tool_sequence[0]</th><td>&quot;get_account&quot;</td></tr><tr><th scope="row">manual.tool_sequence[1]</th><td>&quot;finish&quot;</td></tr><tr><th scope="row">agent.case_id</th><td>&quot;already-refunded&quot;</td></tr><tr><th scope="row">agent.task_success</th><td>true</td></tr><tr><th scope="row">agent.tool_sequence[0]</th><td>&quot;get_account&quot;</td></tr><tr><th scope="row">agent.tool_sequence[1]</th><td>&quot;finish&quot;</td></tr><tr><th scope="row">counts.starting.passes</th><td>4</td></tr><tr><th scope="row">counts.starting.total</th><td>4</td></tr><tr><th scope="row">counts.manual.passes</th><td>4</td></tr><tr><th scope="row">counts.manual.total</th><td>4</td></tr><tr><th scope="row">counts.agent.passes</th><td>4</td></tr><tr><th scope="row">counts.agent.total</th><td>4</td></tr></tbody></table><details><summary>Complete supplied excerpt</summary><pre>{
+  &quot;starting&quot;: {
+    &quot;case_id&quot;: &quot;already-refunded&quot;,
+    &quot;task_success&quot;: true,
+    &quot;tool_sequence&quot;: [
+      &quot;get_account&quot;,
+      &quot;finish&quot;
+    ]
+  },
+  &quot;manual&quot;: {
+    &quot;case_id&quot;: &quot;already-refunded&quot;,
+    &quot;task_success&quot;: true,
+    &quot;tool_sequence&quot;: [
+      &quot;get_account&quot;,
+      &quot;finish&quot;
+    ]
+  },
+  &quot;agent&quot;: {
+    &quot;case_id&quot;: &quot;already-refunded&quot;,
+    &quot;task_success&quot;: true,
+    &quot;tool_sequence&quot;: [
+      &quot;get_account&quot;,
+      &quot;finish&quot;
+    ]
+  },
+  &quot;counts&quot;: {
+    &quot;starting&quot;: {
+      &quot;passes&quot;: 4,
+      &quot;total&quot;: 4
+    },
+    &quot;manual&quot;: {
+      &quot;passes&quot;: 4,
+      &quot;total&quot;: 4
+    },
+    &quot;agent&quot;: {
+      &quot;passes&quot;: 4,
+      &quot;total&quot;: 4
+    }
+  }
+}</pre></details><p><a href="conclusion-transcript.html">Read the actual ARIA conversation</a></p></main></body></html>

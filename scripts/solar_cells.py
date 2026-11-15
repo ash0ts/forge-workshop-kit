@@ -6,8 +6,8 @@ DEFAULT = (ROOT / "examples/solar/candidate.py").read_text(encoding="utf-8")
 GOES_REPAIR = (ROOT / "examples/solar/qualification/goes_scaled.py").read_text(encoding="utf-8")
 cells = []
 
-def add(code, hide=False):
-    cells.append(Cell(code, hide=hide))
+def add(code, hide=False, cell_id=None):
+    cells.append(Cell(code, hide=hide, cell_id=cell_id))
 
 add('''
 import os
@@ -17,6 +17,7 @@ from pathlib import Path
 import numpy as np
 import marimo as mo
 from forge_workshop_kit import WorkshopSession, setup
+from forge_workshop_kit import aria
 from forge_workshop_kit import solar, training, research, ui, plots, solar_teaching as teaching
 from forge_workshop_kit import solar_views as views
 from forge_workshop_kit.session import digest
@@ -501,15 +502,23 @@ _s = get_lab().get("session")
 mo.stop(not _s)
 goes_diagnosis = mo.ui.text_area(value=_s.get_draft("solar/goes-diagnosis", ""), label="What would you check before changing this model?", full_width=True, on_change=lambda value: _s.save_draft("solar/goes-diagnosis", value))
 show_goes_repair = mo.ui.checkbox(label="Show the worked GOES repair and its recorded results", value=_s.get_draft("solar/show-goes-repair", "") == "yes", on_change=lambda value: _s.save_draft("solar/show-goes-repair", "yes" if value else ""))
-mo.vstack([mo.md("### Diagnose the forecast before reading the repair"), mo.md("In the recorded 60-update rehearsal, the selected model's final error was 2.468975; persistence scored 0.192706. Keep that failed result. For your run, compare the output's units with the target, the loss history, and the forecast. Write one possible cause and one check that could disprove it. A falling training loss alone does not establish better forecasting."), goes_diagnosis, show_goes_repair, mo.md("The diagnostic note is optional. It stays in your notebook and is not supplied to the research agent. Opening the worked answer does not train a model.")])
+mo.vstack([mo.md("### Diagnose the forecast before reading the repair"), mo.md("For your selected validation run, compare the output's units with the target, the loss history, and the forecast. Write one possible cause and one check that could disprove it. A falling training loss alone does not establish better forecasting."), goes_diagnosis, mo.md("The diagnostic note is optional. It stays in your notebook and is not supplied to the research agent. Opening the worked answer does not train a model.")])
 ''', True)
+add('''
+mo.stop(get_step() != "search")
+_s=get_lab().get("session")
+_baseline=teaching.saved(_s,"goes/persistence") if _s else None
+_ids=([inspect_goes_run.value] if inspect_goes_run is not None and inspect_goes_run.value else [])+([_baseline["id"]] if _baseline else [])
+solar_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=_ids,interpretation=goes_diagnosis.value,workshop="solar-autoresearch")
+mo.vstack([solar_aria_investigate,show_goes_repair])
+''', True, cell_id='solar_autoresearch/aria/investigate')
 add('''
 mo.stop(get_step() != "search" or not show_goes_repair.value)
 _s = get_lab()["session"]
 measurement_repair_editor = mo.ui.code_editor(value=_s.get_draft("solar/measurement-repair", GOES_REPAIR_SOURCE), language="python", min_height=280, max_height=650, label="Worked GOES repair: inspect or edit the forecasting code", on_change=lambda value: _s.save_draft("solar/measurement-repair", value))
 check_measurement_repair = mo.ui.run_button(label="Check the GOES repair code")
 run_measurement_repair = mo.ui.run_button(label="Train the worked GOES repair", disabled=not bool(get_lab().get("goes")) or teaching.saved(_s, "images/freeze") is not None)
-mo.vstack([mo.md("### Worked answer: compare your diagnosis with this recipe"), mo.md("`forward` adds a learned correction to the latest standardized XRS-B reading, then converts back to log-flux units. The correction starts at zero. `fit` puts predictions and targets on the same training-fitted scale and trains for 1,200 updates. Inspect those lines before running the recipe."), measurement_repair_editor, check_measurement_repair, run_measurement_repair, mo.md("**Recorded qualification:** this fixed recipe beat persistence on seeds 17, 29, and 43. Those runs reused previously inspected final dates, so they are teaching retests. Your run is separate. The recipe changes several choices together and does not isolate which caused the gain. [All qualification outcomes](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md).")])
+mo.vstack([mo.md("### Worked answer: compare your diagnosis with this recipe"), mo.md("`forward` adds a learned correction to the latest standardized XRS-B reading, then converts back to log-flux units. The correction starts at zero. `fit` puts predictions and targets on the same training-fitted scale and trains for 1,200 updates. Inspect those lines before running the recipe."), measurement_repair_editor, check_measurement_repair, run_measurement_repair, mo.md("**Recorded original result:** the 60-update model scored 2.468975 on final dates; persistence scored 0.192706. This unsuccessful rehearsal remains part of the record. **Recorded qualification:** this fixed recipe beat persistence on seeds 17, 29, and 43. Those runs reused previously inspected final dates, so they are teaching retests. Your run is separate. The recipe changes several choices together and does not isolate which caused the gain. [All qualification outcomes](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md).")])
 ''', True)
 add('''
 mo.stop(not check_measurement_repair.value)
@@ -785,7 +794,7 @@ report_button = mo.ui.run_button(label="Publish my conclusion", disabled=not boo
 retry_publication = mo.ui.run_button(label="Retry saved exports and comparison publication", disabled=not bool(_s))
 solar_prerequisite_18 = ui.prerequisite(mo, "Finish both research rounds before freezing versions.", "research", go_to)
 solar_prerequisite_19 = ui.prerequisite(mo, "Go to Solar data and click Load the solar dataset before evaluating.", "data", go_to)
-mo.vstack([mo.Html(ui.step("7. Evaluate the selected models on reserved dates", "Click Freeze versions and evaluate reserved dates. We’ll use the saved weights to compare persistence, your manual image model, and the agent-edited model on February 13–14. We’ll also score your selected GOES model separately.", "Pick one forecast and explain what changed. Then write your conclusion below and click Publish my conclusion.")), final_button, solar_prerequisite_18 if not _done else solar_prerequisite_19 if not get_lab().get("images") else mo.md("These two test days were held back while you chose changes. One seed and overlapping forecast windows make this a teaching result, not evidence of reliable solar forecasting."), conclusion, report_button, mo.accordion({"A trace or comparison did not upload": mo.vstack([mo.md("Your executions and predictions are saved locally. Use the retry button to upload them again without training or calling the research agent. If native EvalTables is unavailable, use the notebook comparison and the published Weave links. Unavailable results stay marked unavailable."), retry_publication])})])
+mo.vstack([mo.Html(ui.step("7. Evaluate the selected models on reserved dates", "Click Freeze versions and evaluate reserved dates. We’ll use the saved weights to compare persistence, your manual image model, and the agent-edited model on February 13–14. We’ll also score your selected GOES model separately.", "Pick one forecast and explain what changed. Then write your conclusion below and click Publish my conclusion.")), final_button, solar_prerequisite_18 if not _done else solar_prerequisite_19 if not get_lab().get("images") else mo.md("These two test days were held back while you chose changes. One seed and overlapping forecast windows make this a teaching result, not evidence of reliable solar forecasting."), mo.accordion({"A trace or comparison did not upload": mo.vstack([mo.md("Your executions and predictions are saved locally. Use the retry button to upload them again without training or calling the research agent. If native EvalTables is unavailable, use the notebook comparison and the published Weave links. Unavailable results stay marked unavailable."), retry_publication])})])
 ''', True)
 add('''
 mo.stop(not final_button.value)
@@ -915,7 +924,7 @@ elif get_lab().get("goes_final"):
     _parts.append(mo.Html(ui.result("Restored measurement evaluation", get_lab()["goes_final"])))
 else:
     _parts.append(mo.md("Your final GOES scores will appear here. We keep them separate because measurement and image errors use different units."))
-_parts += [ui.evidence(mo, _s, stage_ids=[row["id"] for row in _s.completed() if row["name"] in ("images/final-manual", "images/final-agent", "images/final-comparison", "goes/final", "goes/final-comparison")], extra=_s.read()["progress"].get("evidence", {}), question="Choose the same forecast timestamp in each version. Compare its predicted image and error, then follow the code and trace links. Which visible difference supports your conclusion?"), ui.publication(mo, _s), mo.md("**Optional ARIA investigation:** Review my Report and linked research-agent traces. Identify one supported reason a change helped or hurt, cite the exact event and prediction, and propose one next experiment. Do not launch new runs.")]
+_parts += [ui.evidence(mo, _s, stage_ids=[row["id"] for row in _s.completed() if row["name"] in ("images/final-manual", "images/final-agent", "images/final-comparison", "goes/final", "goes/final-comparison")], extra=_s.read()["progress"].get("evidence", {}), question="Choose the same forecast timestamp in each version. Compare its predicted image and error, then follow the code and trace links. Which visible difference supports your conclusion?"), ui.publication(mo, _s)]
 mo.vstack(_parts)
 ''', True)
 
@@ -932,3 +941,10 @@ _selected_training_id = _row.get("inputs", {}).get("selected_stage")
 _training = next((row for row in _s.completed() if row["id"] == _selected_training_id), None)
 mo.vstack([mo.md("### Does the selected measurement model beat persistence?"), mo.md("These are predictions from saved weights on the reserved dates. The loss curve belongs to its earlier training run. A falling training loss alone does not establish better forecasting."), mo.Html(ui.result("Selected settings", _row["config"])), mo.md("The exact selected training record is unavailable locally. Restore its Artifact to inspect the loss curve; no other run is substituted.") if not _training else mo.md(""), views.goes_investigation(np.load(_path, allow_pickle=False), get_lab()["goes"]["test"], losses=_training["result"].get("losses", []) if _training else [], title="Frozen GOES model"), ui.evidence(mo, _s, stage_ids=[_row["id"]] + ([_training["id"]] if _training else []), question="Compare the saved training and final-evaluation calls. Which one updates weights? Which one loads weights.pt and only predicts?")])
 ''', True)
+
+add('''
+mo.stop(get_step() != "final")
+_s=get_lab().get("session")
+solar_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=conclusion.value,workshop="solar-autoresearch")
+mo.vstack([mo.md("### Write your interpretation before asking ARIA"),conclusion,solar_aria_conclusion,report_button])
+''', True, cell_id='solar_autoresearch/aria/conclusion')

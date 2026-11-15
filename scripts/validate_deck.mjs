@@ -33,6 +33,7 @@ await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const base = `http://127.0.0.1:${server.address().port}${prefix}`;
 const browser = await chromium.launch({headless:true, executablePath});
 const issues = [], pageErrors = [], networkErrors = [], answers = [], titles = [], clickStates = [];
+const assetLinks = new Set();
 try {
   const page = await browser.newPage({viewport:{width:1280,height:720}, reducedMotion:'reduce'});
   // Slidev's display wake lock is optional and unavailable in headless CI.
@@ -52,6 +53,12 @@ try {
       const template = document.createElement('div'); template.innerHTML = title.replace(/<br\s*\/?\s*>/gi, ' ');
       return [...document.querySelectorAll('.slidev-layout')].some(root => root.getBoundingClientRect().width > 0 && normalize(root.querySelector('h1')?.innerText || '') === normalize(template.textContent));
     }, slide.title);
+    const localAssets = await page.locator('.slidev-layout a[href]').evaluateAll(links => links.map(link => new URL(link.getAttribute('href'), window.location.href).href).filter(url => url.startsWith(window.location.origin + '/') && new URL(url).pathname.includes('/aria/')));
+    for (const url of localAssets) {
+      if (assetLinks.has(url)) continue;
+      assetLinks.add(url);
+      if (!url.startsWith(base) || (await fetch(url)).status !== 200) issues.push({slide:slide.number,error:'ARIA recording link is unavailable',url});
+    }
     let currentClick = 0;
     for (;;) {
     const result = await page.evaluate(title => {
@@ -168,7 +175,7 @@ try {
   if (!presenter) issues.push({error:'Presenter notes missing'});
   const currentSourceSha256 = createHash('sha256').update(await fs.readFile(path.join(deck,'slides.md'))).digest('hex');
   if (currentSourceSha256 !== sourceSha256) issues.push({error:'Slide source changed during validation; rebuild before publishing'});
-  const result = {source_sha256:sourceSha256, slides_checked:titles.length, expected_slides:layout.total_slides, titles, click_states:clickStates, issues, console_errors:pageErrors, failed_responses:networkErrors, answers, routes_checked:routes.length, presenter_notes:presenter};
+  const result = {source_sha256:sourceSha256, slides_checked:titles.length, expected_slides:layout.total_slides, titles, click_states:clickStates, issues, console_errors:pageErrors, failed_responses:networkErrors, answers, routes_checked:routes.length, recording_links_checked:assetLinks.size, presenter_notes:presenter};
   await fs.writeFile(path.join(deck, 'notes/delivery-checks.json'), JSON.stringify(result,null,2) + '\n');
   console.log(JSON.stringify({slides_checked:titles.length, click_states_checked:clickStates.length, issues, console_errors:pageErrors, failed_responses:networkErrors, answers:answers.length},null,2));
   if (issues.length || pageErrors.length || networkErrors.length) process.exitCode = 1;

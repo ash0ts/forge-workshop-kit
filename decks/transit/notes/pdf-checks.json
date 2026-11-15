@@ -1,6 +1,6 @@
 {
-  "pages": 118,
-  "slides": 95,
+  "pages": 124,
+  "slides": 101,
   "page_map": [
     {
       "page": 0,
@@ -354,28 +354,28 @@
     },
     {
       "page": 70,
-      "slide": 53,
-      "click": 1
-    },
-    {
-      "page": 71,
-      "slide": 53,
-      "click": 2
-    },
-    {
-      "page": 72,
       "slide": 54,
       "click": 0
     },
     {
-      "page": 73,
+      "page": 71,
       "slide": 55,
       "click": 0
     },
     {
-      "page": 74,
+      "page": 72,
       "slide": 56,
       "click": 0
+    },
+    {
+      "page": 73,
+      "slide": 56,
+      "click": 1
+    },
+    {
+      "page": 74,
+      "slide": 56,
+      "click": 2
     },
     {
       "page": 75,
@@ -454,28 +454,28 @@
     },
     {
       "page": 90,
-      "slide": 71,
-      "click": 1
-    },
-    {
-      "page": 91,
-      "slide": 71,
-      "click": 2
-    },
-    {
-      "page": 92,
       "slide": 72,
       "click": 0
     },
     {
-      "page": 93,
+      "page": 91,
       "slide": 73,
       "click": 0
     },
     {
-      "page": 94,
+      "page": 92,
       "slide": 74,
       "click": 0
+    },
+    {
+      "page": 93,
+      "slide": 74,
+      "click": 1
+    },
+    {
+      "page": 94,
+      "slide": 74,
+      "click": 2
     },
     {
       "page": 95,
@@ -494,28 +494,28 @@
     },
     {
       "page": 98,
-      "slide": 77,
-      "click": 1
-    },
-    {
-      "page": 99,
-      "slide": 77,
-      "click": 2
-    },
-    {
-      "page": 100,
       "slide": 78,
       "click": 0
     },
     {
-      "page": 101,
+      "page": 99,
       "slide": 79,
       "click": 0
     },
     {
-      "page": 102,
+      "page": 100,
       "slide": 80,
       "click": 0
+    },
+    {
+      "page": 101,
+      "slide": 80,
+      "click": 1
+    },
+    {
+      "page": 102,
+      "slide": 80,
+      "click": 2
     },
     {
       "page": 103,
@@ -591,11 +591,41 @@
       "page": 117,
       "slide": 95,
       "click": 0
+    },
+    {
+      "page": 118,
+      "slide": 96,
+      "click": 0
+    },
+    {
+      "page": 119,
+      "slide": 97,
+      "click": 0
+    },
+    {
+      "page": 120,
+      "slide": 98,
+      "click": 0
+    },
+    {
+      "page": 121,
+      "slide": 99,
+      "click": 0
+    },
+    {
+      "page": 122,
+      "slide": 100,
+      "click": 0
+    },
+    {
+      "page": 123,
+      "slide": 101,
+      "click": 0
     }
   ],
   "empty_pages": 0,
   "all_pages_rendered": true,
-  "converted_links": 12,
-  "source_sha256": "bba3a0f53e1dc26defdadd2f17778bbba380eb02a5ab891d1227bf1effc56c13",
-  "pdf_sha256": "73dfecdcc10b0ecca06a372480886acbf853504855ec6a2a6d0ce8dfc20f3a76"
+  "converted_links": 20,
+  "source_sha256": "4f9a03cd5b6e522593df0bf5281c0865cb8b9366ea0a9906ca0ce4c42d9db1d7",
+  "pdf_sha256": "71a714a3611df75bbbff6fb990b918522fda7f3449c0862418d5914d8c4d6b42"
 }

@@ -1,0 +1,136 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pending Inc / Investigate this result / source values</title><style>
+:root { color-scheme:light dark; --paper:#f7f3e8; --ink:#142c32; --accent:#136b70; --line:#bec9c4; }
+@media(prefers-color-scheme:dark) { :root { --paper:#152528; --ink:#ecede3; --accent:#8cdbce; --line:#526968; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font:18px/1.55 system-ui,sans-serif; }
+main { max-width:1080px; margin:auto; padding:32px 28px; }
+h1 { font-size:clamp(1.8rem,4vw,3rem); line-height:1.14; margin:.5em 0; }
+h2 { font-size:1.35rem; margin-top:1.6em; }
+a { color:var(--accent); overflow-wrap:anywhere; }
+a:focus-visible,summary:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+.notice { padding:16px 20px; border-left:5px solid var(--accent); }
+table { width:100%; border-collapse:collapse; table-layout:fixed; }
+th,td { padding:12px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; overflow-wrap:anywhere; }
+th:first-child,td:first-child { width:35%; }
+pre { white-space:pre-wrap; overflow-wrap:anywhere; font:14px/1.6 ui-monospace,monospace; padding:18px; border:1px solid var(--line); border-radius:8px; }
+.response { white-space:pre-wrap; overflow-wrap:anywhere; padding:20px; border:1px solid var(--line); }
+img { display:block; max-width:100%; height:auto; }
+.capture-frame { position:relative; }
+.capture-box { position:absolute; border:2px solid #ffcf66; pointer-events:none; }
+.capture-box b { position:absolute; top:-1.2em; left:-2px; padding:0 6px; color:#142c32; background:#ffcf66; font:700 13px/1.4 system-ui,sans-serif; }
+small { opacity:.8; }
+@media(max-width:600px) { main { padding:20px 16px; } th,td { padding:8px 5px; font-size:15px; } }
+</style></head><body><main><h1>Pending Inc / Investigate this result / source values</h1><p class="notice"><strong>Saved-record excerpt.</strong> These are the exact values supplied in the instructor’s recorded prompt. This page is a local teaching view, not a native Forge capture and not a participant execution.</p><p>Exact URLs and verbatim saved development excerpts. No native attachment. ARIA explicitly did not independently retrieve the record.</p><h2>Open the source records</h2><ul><li><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c2458ce8b6bb52274d29b5c5a691424b">pending/original/double-charge</a></li></ul><h2>Values supplied to ARIA</h2><table><thead><tr><th>Source field</th><th>Recorded value</th></tr></thead><tbody><tr><th scope="row">case_id</th><td>&quot;double-charge&quot;</td></tr><tr><th scope="row">mission</th><td>&quot;Account acme was charged twice for invoice inv-1. Keep the original payment pay-1, refund the duplicate, and explain the result.&quot;</td></tr><tr><th scope="row">scores.task_success</th><td>true</td></tr><tr><th scope="row">scores.state_correct</th><td>true</td></tr><tr><th scope="row">scores.completion_correct</th><td>true</td></tr><tr><th scope="row">scores.reason</th><td>&quot;Expected entire account state and resolution match&quot;</td></tr><tr><th scope="row">scores.expected_resolution</th><td>&quot;resolved&quot;</td></tr><tr><th scope="row">events[0].id</th><td>&quot;c2458ce8b6bb52274d29b5c5a691424b/tool-0&quot;</td></tr><tr><th scope="row">events[0].name</th><td>&quot;read_skill&quot;</td></tr><tr><th scope="row">events[0].arguments.name</th><td>&quot;lookup_invoice&quot;</td></tr><tr><th scope="row">events[0].result.text</th><td>&quot;Skill not installed&quot;</td></tr><tr><th scope="row">events[1].id</th><td>&quot;c2458ce8b6bb52274d29b5c5a691424b/tool-1&quot;</td></tr><tr><th scope="row">events[1].name</th><td>&quot;get_account&quot;</td></tr><tr><th scope="row">events[1].arguments.account_id</th><td>&quot;acme&quot;</td></tr><tr><th scope="row">events[1].result.ok</th><td>true</td></tr><tr><th scope="row">events[1].result.account.id</th><td>&quot;acme&quot;</td></tr><tr><th scope="row">events[1].result.account.name</th><td>&quot;Example customer&quot;</td></tr><tr><th scope="row">events[1].result.account.subscription.status</th><td>&quot;active&quot;</td></tr><tr><th scope="row">events[1].result.account.subscription.paid</th><td>true</td></tr><tr><th scope="row">events[1].result.account.payments[0].id</th><td>&quot;pay-1&quot;</td></tr><tr><th scope="row">events[1].result.account.payments[0].invoice_id</th><td>&quot;inv-1&quot;</td></tr><tr><th scope="row">events[1].result.account.payments[0].amount_cents</th><td>4900</td></tr><tr><th scope="row">events[1].result.account.payments[0].status</th><td>&quot;captured&quot;</td></tr><tr><th scope="row">events[1].result.account.payments[1].id</th><td>&quot;pay-2&quot;</td></tr><tr><th scope="row">events[1].result.account.payments[1].invoice_id</th><td>&quot;inv-1&quot;</td></tr><tr><th scope="row">events[1].result.account.payments[1].amount_cents</th><td>4900</td></tr><tr><th scope="row">events[1].result.account.payments[1].status</th><td>&quot;captured&quot;</td></tr><tr><th scope="row">events[2].id</th><td>&quot;c2458ce8b6bb52274d29b5c5a691424b/tool-2&quot;</td></tr><tr><th scope="row">events[2].name</th><td>&quot;refund_payment&quot;</td></tr><tr><th scope="row">events[2].arguments.account_id</th><td>&quot;acme&quot;</td></tr><tr><th scope="row">events[2].arguments.payment_id</th><td>&quot;pay-2&quot;</td></tr><tr><th scope="row">events[2].arguments.operation_id</th><td>&quot;refund-acme-pay-2&quot;</td></tr><tr><th scope="row">events[2].result.ok</th><td>true</td></tr><tr><th scope="row">events[2].result.operation_id</th><td>&quot;refund-acme-pay-2&quot;</td></tr><tr><th scope="row">events[2].result.refund.payment_id</th><td>&quot;pay-2&quot;</td></tr><tr><th scope="row">events[2].result.refund.amount_cents</th><td>4900</td></tr><tr><th scope="row">events[3].id</th><td>&quot;c2458ce8b6bb52274d29b5c5a691424b/tool-3&quot;</td></tr><tr><th scope="row">events[3].name</th><td>&quot;get_account&quot;</td></tr><tr><th scope="row">events[3].arguments.account_id</th><td>&quot;acme&quot;</td></tr><tr><th scope="row">events[3].result.ok</th><td>true</td></tr><tr><th scope="row">events[3].result.account.id</th><td>&quot;acme&quot;</td></tr><tr><th scope="row">events[3].result.account.name</th><td>&quot;Example customer&quot;</td></tr><tr><th scope="row">events[3].result.account.subscription.status</th><td>&quot;active&quot;</td></tr><tr><th scope="row">events[3].result.account.subscription.paid</th><td>true</td></tr><tr><th scope="row">events[3].result.account.payments[0].id</th><td>&quot;pay-1&quot;</td></tr><tr><th scope="row">events[3].result.account.payments[0].invoice_id</th><td>&quot;inv-1&quot;</td></tr><tr><th scope="row">events[3].result.account.payments[0].amount_cents</th><td>4900</td></tr><tr><th scope="row">events[3].result.account.payments[0].status</th><td>&quot;captured&quot;</td></tr><tr><th scope="row">events[3].result.account.payments[1].id</th><td>&quot;pay-2&quot;</td></tr><tr><th scope="row">events[3].result.account.payments[1].invoice_id</th><td>&quot;inv-1&quot;</td></tr><tr><th scope="row">events[3].result.account.payments[1].amount_cents</th><td>4900</td></tr><tr><th scope="row">events[3].result.account.payments[1].status</th><td>&quot;captured&quot;</td></tr><tr><th scope="row">events[3].result.account.refunds[0].payment_id</th><td>&quot;pay-2&quot;</td></tr><tr><th scope="row">events[3].result.account.refunds[0].amount_cents</th><td>4900</td></tr><tr><th scope="row">resolution</th><td>&quot;resolved&quot;</td></tr></tbody></table><details><summary>Complete supplied excerpt</summary><pre>{
+  &quot;case_id&quot;: &quot;double-charge&quot;,
+  &quot;mission&quot;: &quot;Account acme was charged twice for invoice inv-1. Keep the original payment pay-1, refund the duplicate, and explain the result.&quot;,
+  &quot;scores&quot;: {
+    &quot;task_success&quot;: true,
+    &quot;state_correct&quot;: true,
+    &quot;completion_correct&quot;: true,
+    &quot;reason&quot;: &quot;Expected entire account state and resolution match&quot;,
+    &quot;expected_resolution&quot;: &quot;resolved&quot;
+  },
+  &quot;events&quot;: [
+    {
+      &quot;id&quot;: &quot;c2458ce8b6bb52274d29b5c5a691424b/tool-0&quot;,
+      &quot;name&quot;: &quot;read_skill&quot;,
+      &quot;arguments&quot;: {
+        &quot;name&quot;: &quot;lookup_invoice&quot;
+      },
+      &quot;result&quot;: {
+        &quot;text&quot;: &quot;Skill not installed&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;c2458ce8b6bb52274d29b5c5a691424b/tool-1&quot;,
+      &quot;name&quot;: &quot;get_account&quot;,
+      &quot;arguments&quot;: {
+        &quot;account_id&quot;: &quot;acme&quot;
+      },
+      &quot;result&quot;: {
+        &quot;ok&quot;: true,
+        &quot;account&quot;: {
+          &quot;id&quot;: &quot;acme&quot;,
+          &quot;name&quot;: &quot;Example customer&quot;,
+          &quot;subscription&quot;: {
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;paid&quot;: true
+          },
+          &quot;payments&quot;: [
+            {
+              &quot;id&quot;: &quot;pay-1&quot;,
+              &quot;invoice_id&quot;: &quot;inv-1&quot;,
+              &quot;amount_cents&quot;: 4900,
+              &quot;status&quot;: &quot;captured&quot;
+            },
+            {
+              &quot;id&quot;: &quot;pay-2&quot;,
+              &quot;invoice_id&quot;: &quot;inv-1&quot;,
+              &quot;amount_cents&quot;: 4900,
+              &quot;status&quot;: &quot;captured&quot;
+            }
+          ],
+          &quot;refunds&quot;: [],
+          &quot;members&quot;: []
+        }
+      }
+    },
+    {
+      &quot;id&quot;: &quot;c2458ce8b6bb52274d29b5c5a691424b/tool-2&quot;,
+      &quot;name&quot;: &quot;refund_payment&quot;,
+      &quot;arguments&quot;: {
+        &quot;account_id&quot;: &quot;acme&quot;,
+        &quot;payment_id&quot;: &quot;pay-2&quot;,
+        &quot;operation_id&quot;: &quot;refund-acme-pay-2&quot;
+      },
+      &quot;result&quot;: {
+        &quot;ok&quot;: true,
+        &quot;operation_id&quot;: &quot;refund-acme-pay-2&quot;,
+        &quot;refund&quot;: {
+          &quot;payment_id&quot;: &quot;pay-2&quot;,
+          &quot;amount_cents&quot;: 4900
+        }
+      }
+    },
+    {
+      &quot;id&quot;: &quot;c2458ce8b6bb52274d29b5c5a691424b/tool-3&quot;,
+      &quot;name&quot;: &quot;get_account&quot;,
+      &quot;arguments&quot;: {
+        &quot;account_id&quot;: &quot;acme&quot;
+      },
+      &quot;result&quot;: {
+        &quot;ok&quot;: true,
+        &quot;account&quot;: {
+          &quot;id&quot;: &quot;acme&quot;,
+          &quot;name&quot;: &quot;Example customer&quot;,
+          &quot;subscription&quot;: {
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;paid&quot;: true
+          },
+          &quot;payments&quot;: [
+            {
+              &quot;id&quot;: &quot;pay-1&quot;,
+              &quot;invoice_id&quot;: &quot;inv-1&quot;,
+              &quot;amount_cents&quot;: 4900,
+              &quot;status&quot;: &quot;captured&quot;
+            },
+            {
+              &quot;id&quot;: &quot;pay-2&quot;,
+              &quot;invoice_id&quot;: &quot;inv-1&quot;,
+              &quot;amount_cents&quot;: 4900,
+              &quot;status&quot;: &quot;captured&quot;
+            }
+          ],
+          &quot;refunds&quot;: [
+            {
+              &quot;payment_id&quot;: &quot;pay-2&quot;,
+              &quot;amount_cents&quot;: 4900
+            }
+          ],
+          &quot;members&quot;: []
+        }
+      }
+    }
+  ],
+  &quot;resolution&quot;: &quot;resolved&quot;
+}</pre></details><p><a href="investigate-transcript.html">Read the actual ARIA conversation</a></p></main></body></html>

@@ -1,7 +1,7 @@
 {
   "session_minutes": 240,
-  "main_slides": 50,
-  "total_slides": 53,
+  "main_slides": 56,
+  "total_slides": 59,
   "slides": [
     {
       "number": 1,
@@ -460,6 +460,126 @@
     },
     {
       "number": 18,
+      "key": "aria-investigate",
+      "name": "aria-investigate",
+      "title": "Investigate this result",
+      "body": "<div class=\"aria-sequence-wrap\"><svg class=\"aria-sequence\" viewBox=\"0 0 1110 154\" role=\"img\" aria-label=\"Explain your interpretation, read ARIA\u2019s answer, and check its cited source.\"><g><rect x=\"0\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#d9e9e1\" stroke=\"#48675d\"/><text x=\"18\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Your interpretation</text><text x=\"18\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Validation board photograph</text></g><path d=\"M345 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M360 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"370\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"388\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">ARIA response</text><text x=\"388\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Whole-image score and cutoff</text></g><path d=\"M715 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M730 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"740\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"758\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Checked source record</text><text x=\"758\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Frozen features and reference label</text></g></svg></div><div class=\"aria-question\">Inspect one whole-image validation prediction. Is the suspected problem with the representation, the threshold, or still unresolved? Masks are inspection aids, not model inputs.</div><div class=\"aria-two\"><div><b>Start with your explanation</b><p>What do you think happened? Which observation supports it?</p><p>Copy the notebook\u2019s prompt and add native context in Forge.</p></div><div><b>Selected instructor records</b><ul class=\"aria-records\"><li><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f18536533b586759997a5dc392e6d94d\" target=\"_blank\" rel=\"noopener\">compare/whole \u2197</a></li></ul></div></div><p class=\"aria-foot\">Use only the selected development or validation records. Check ARIA\u2019s selected project. Use exact record URLs; add native context where this surface offers it.</p>",
+      "notes": "Allocate 8 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/visual_inspection/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "time": "1:04 \u00b7 8 minutes across these three frames",
+      "start_minute": 64,
+      "kind": "aria-investigation",
+      "answer": null,
+      "concept": "Inspect one whole-image validation prediction. Is the suspected problem with the representation, the threshold, or still unresolved? Masks are inspection aids, not model inputs.",
+      "exercise": {
+        "step": "baseline",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/visual_inspection/investigate.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f18536533b586759997a5dc392e6d94d"
+      ],
+      "timing": {
+        "section": "Investigate this result",
+        "start_minute": 64,
+        "duration_minutes": 8
+      },
+      "cls": "aria-investigation",
+      "elapsed_minutes": 64,
+      "clicks": null,
+      "aria": {
+        "stop_id": "investigate",
+        "phase": "question",
+        "duration_minutes": 8,
+        "recorded_status": "recorded"
+      }
+    },
+    {
+      "number": 19,
+      "key": "aria-investigate-response",
+      "name": "aria-investigate-response",
+      "title": "Read one claim in the recorded response",
+      "body": "<div class=\"aria-sequence-wrap\"><svg class=\"aria-sequence\" viewBox=\"0 0 1110 154\" role=\"img\" aria-label=\"Explain your interpretation, read ARIA\u2019s answer, and check its cited source.\"><g><rect x=\"0\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"18\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Your interpretation</text><text x=\"18\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Validation board photograph</text></g><path d=\"M345 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M360 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"370\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#d9e9e1\" stroke=\"#48675d\"/><text x=\"388\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">ARIA response</text><text x=\"388\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Whole-image score and cutoff</text></g><path d=\"M715 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M730 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"740\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"758\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Checked source record</text><text x=\"758\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Frozen features and reference label</text></g></svg></div><div class=\"aria-response\"><figure class=\"aria-screen\"><a href=\"/aria/investigate/investigate-response.png\" target=\"_blank\"><img src=\"/aria/investigate/investigate-response.png\" alt=\"Actual ARIA response. Check its distinction between retrieved native records and supplied evidence excerpts.\"></a></figure><div><b>Recorded instructor investigation</b><blockquote>91.7% defect recall and 8.3% false-alarm rate</blockquote><p>Does this statement follow from the records, or is it a possible explanation?</p><p><a href=\"/aria/investigate/investigate-transcript.html\" target=\"_blank\">Read the full transcript without sign-in \u2197</a></p><a href=\"https://forge.coreweave.com/aria/threads/01a1e06c-ffe3-7542-863d-c0ade9bf44ee\" target=\"_blank\" rel=\"noopener\">Open the recorded conversation \u2197</a></div></div><p class=\"aria-foot\">The recording uses instructor results. It does not describe your unexecuted edits.</p>",
+      "notes": "Allocate 8 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/visual_inspection/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "time": "1:04 \u00b7 8 minutes across these three frames",
+      "start_minute": 64,
+      "kind": "aria-investigation",
+      "answer": null,
+      "concept": "Inspect one whole-image validation prediction. Is the suspected problem with the representation, the threshold, or still unresolved? Masks are inspection aids, not model inputs.",
+      "exercise": {
+        "step": "baseline",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/visual_inspection/investigate.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f18536533b586759997a5dc392e6d94d"
+      ],
+      "timing": {
+        "section": "Investigate this result",
+        "start_minute": 64,
+        "duration_minutes": 8
+      },
+      "cls": "aria-investigation",
+      "elapsed_minutes": 64,
+      "clicks": null,
+      "aria": {
+        "stop_id": "investigate",
+        "phase": "response",
+        "duration_minutes": 8,
+        "recorded_status": "recorded"
+      }
+    },
+    {
+      "number": 20,
+      "key": "aria-investigate-verify",
+      "name": "aria-investigate-verify",
+      "title": "Open the source and check that claim",
+      "body": "<div class=\"aria-sequence-wrap\"><svg class=\"aria-sequence\" viewBox=\"0 0 1110 154\" role=\"img\" aria-label=\"Explain your interpretation, read ARIA\u2019s answer, and check its cited source.\"><g><rect x=\"0\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"18\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Your interpretation</text><text x=\"18\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Validation board photograph</text></g><path d=\"M345 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M360 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"370\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"388\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">ARIA response</text><text x=\"388\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Whole-image score and cutoff</text></g><path d=\"M715 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M730 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"740\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#d9e9e1\" stroke=\"#48675d\"/><text x=\"758\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Checked source record</text><text x=\"758\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Frozen features and reference label</text></g></svg></div><div class=\"aria-response\"><figure class=\"aria-screen\"><a href=\"/aria/investigate/investigate-verification.png\" target=\"_blank\"><img src=\"/aria/investigate/investigate-verification.png\" alt=\"Whole-image validation: one missed defect and ten false alarms among 132 boards.\"><svg viewBox=\"0 0 1280 720\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><rect x=\"650.0\" y=\"425.0\" width=\"575.0\" height=\"105.0\" rx=\"5\" fill=\"none\" stroke=\"#f7bd59\" stroke-width=\"3\"/><circle cx=\"636.0\" cy=\"438.0\" r=\"12\" fill=\"#f7bd59\" stroke=\"#182820\" stroke-width=\"1.5\"/><text x=\"636.0\" y=\"442.0\" fill=\"#182820\" text-anchor=\"middle\" style=\"font-size:14px;font-weight:600\">1</text><rect x=\"650.0\" y=\"575.0\" width=\"575.0\" height=\"51.99999999999999\" rx=\"5\" fill=\"none\" stroke=\"#f7bd59\" stroke-width=\"3\"/><circle cx=\"636.0\" cy=\"588.0\" r=\"12\" fill=\"#f7bd59\" stroke=\"#182820\" stroke-width=\"1.5\"/><text x=\"636.0\" y=\"592.0\" fill=\"#182820\" text-anchor=\"middle\" style=\"font-size:14px;font-weight:600\">2</text></svg></a><figcaption><span><b>1</b> Errors at the frozen threshold</span><span><b>2</b> Validation denominator</span></figcaption></figure><div><b>Citation check: supported</b><p>Saved compare/whole metrics contain misses=1, defective=12, false_alarms=10, and normal=120. This gives defect recall 11/12 and false-alarm rate 10/120, matching the native run and training-call values quoted by ARIA. The attached board and supplied score do not establish that representation caused the miss; ARIA correctly left the cause unresolved.</p><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f18536533b586759997a5dc392e6d94d\" target=\"_blank\" rel=\"noopener\">Open the checked source \u2197</a><p><a href=\"/aria/investigate/investigate-source-records.html\" target=\"_blank\">Check the supplied source values offline \u2197</a></p></div></div><p class=\"aria-foot\">Save your own citation check. ARIA\u2019s answer does not become a label, score, approved lesson, or release decision.</p>",
+      "notes": "Allocate 8 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/visual_inspection/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "time": "1:04 \u00b7 8 minutes across these three frames",
+      "start_minute": 64,
+      "kind": "aria-investigation",
+      "answer": null,
+      "concept": "Inspect one whole-image validation prediction. Is the suspected problem with the representation, the threshold, or still unresolved? Masks are inspection aids, not model inputs.",
+      "exercise": {
+        "step": "baseline",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/visual_inspection/investigate.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f18536533b586759997a5dc392e6d94d"
+      ],
+      "timing": {
+        "section": "Investigate this result",
+        "start_minute": 64,
+        "duration_minutes": 8
+      },
+      "cls": "aria-investigation",
+      "elapsed_minutes": 64,
+      "clicks": null,
+      "aria": {
+        "stop_id": "investigate",
+        "phase": "verify",
+        "duration_minutes": 8,
+        "recorded_status": "recorded"
+      }
+    },
+    {
+      "number": 21,
       "key": "patch-grid",
       "name": "patch-grid",
       "title": "Keep local information as well as the whole image",
@@ -486,7 +606,7 @@
       }
     },
     {
-      "number": 19,
+      "number": 22,
       "key": "patches",
       "title": "Compare local features at the same board position",
       "body": "<InspectionMechanism kind=\"patch\" :step=\"1\" />",
@@ -513,7 +633,7 @@
       }
     },
     {
-      "number": 20,
+      "number": 23,
       "name": "one-patch-distance",
       "key": "one-patch-distance",
       "title": "Calculate the distance at one image position",
@@ -541,7 +661,7 @@
       }
     },
     {
-      "number": 21,
+      "number": 24,
       "key": "append-patches",
       "name": "append-patches",
       "title": "Append 196 distances to the 512 whole-image values",
@@ -566,7 +686,7 @@
       }
     },
     {
-      "number": 22,
+      "number": 25,
       "key": "features",
       "title": "Add local information to the classifier",
       "body": "<div class=\"task\">Notebook step: Compute image features.</div><ol class=\"exercise-controls\"><li>Complete <code>build_features</code>: calculate patch errors, apply <code>np.log1p</code>, and flatten one row per board.</li><li>Append the patch values to the whole-image vector along axis 1.</li><li>Click <strong>Check my patch-feature function</strong>.</li></ol><div class=\"done\">Check: The check preserves board order and verifies both whole-image and nearest-patch behavior.</div>",
@@ -595,7 +715,7 @@
       }
     },
     {
-      "number": 23,
+      "number": 26,
       "key": "cache",
       "title": "Check the feature cache without rebuilding everything",
       "body": "```python\nweights = teaching.fetch_weights(weights_path)\nresult = teaching.recompute_batch(data_root, weights)\nassert result[\"matching_cached_features\"]\n```\n<div class=\"bottom-note\">Optional button: Recompute four cached board features. Downloads pinned weights; no model-provider call.</div>",
@@ -619,7 +739,7 @@
       }
     },
     {
-      "number": 24,
+      "number": 27,
       "name": "patch-experiment",
       "key": "patch-experiment",
       "title": "Test patches against the saved baseline",
@@ -647,7 +767,7 @@
       }
     },
     {
-      "number": 25,
+      "number": 28,
       "key": "metrics",
       "title": "Keep ranking quality and operating errors separate",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Measure</th><th>Question it answers</th></tr><tr><td>Average precision</td><td>Are defective boards ranked ahead of normal boards?</td></tr><tr><td>Misses and false alarms</td><td>What happens at the frozen threshold?</td></tr><tr><td>Review volume</td><td>How many decisions are handed to a person?</td></tr></tbody></table>",
@@ -671,7 +791,7 @@
       }
     },
     {
-      "number": 26,
+      "number": 29,
       "key": "ranking-ap",
       "name": "ranking-ap",
       "title": "Calculate ranking quality before choosing one cutoff",
@@ -698,7 +818,7 @@
       }
     },
     {
-      "number": 27,
+      "number": 30,
       "key": "operating-errors",
       "name": "operating-errors",
       "title": "Count operating errors at the chosen cutoff",
@@ -723,7 +843,7 @@
       }
     },
     {
-      "number": 28,
+      "number": 31,
       "key": "forge",
       "title": "Follow one trained classifier through Forge",
       "body": "<div class=\"flow\"><div class=\"box\">Agent Lens<br><small>training operation</small></div><span>\u2192</span><div class=\"box\">W&B run<br><small>settings + metrics</small></div><span>\u2192</span><div class=\"box\">Artifact<br><small>classifier + source</small></div></div><div class=\"bottom-note\">Open your own links. Find C, the representation, the validation errors, and the saved classifier file.</div>",
@@ -747,7 +867,7 @@
       }
     },
     {
-      "number": 29,
+      "number": 32,
       "key": "forge-training",
       "title": "Read the recorded training call",
       "body": "<div class=\"native-pair\"><div class=\"native-crop\"><img src=\"/images/agent-lens-training-original.png\" alt=\"Native Agent Lens tool input and validation output for the nearest-patch classifier\"><span class=\"pin one\">1</span><span class=\"pin two\">2</span></div><div class=\"native-notes\"><h2>1 \u00b7 What ran</h2><p>397 fitting boards.<br>Nearest-patch features.<br>C = 0.03.</p><h2>2 \u00b7 What it returned</h2><p>On <strong>132 validation boards</strong>: AP 0.883923, one missed defect, four false alarms.</p><p class=\"small\">These are validation results. Final-test AP is reported later.</p></div></div><div class=\"bottom-note\"><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ff65c2eaa1cc5c5cf8adb6cb706f5f52\">Open this recorded call in Agent Lens \u2197</a> \u00b7 Cropped for legibility; the source capture is included.</div>",
@@ -773,7 +893,7 @@
       }
     },
     {
-      "number": 30,
+      "number": 33,
       "key": "training-evidence",
       "name": "training-evidence",
       "title": "Match the tool call to the saved validation result",
@@ -798,7 +918,7 @@
       }
     },
     {
-      "number": 31,
+      "number": 34,
       "key": "break",
       "title": "Take ten minutes. Return at 2:20.",
       "body": "<div class=\"sub\">Before you leave, check that both trained versions are saved. The notebook will wait; it has not developed an independent work ethic.</div>",
@@ -822,7 +942,7 @@
       }
     },
     {
-      "number": 32,
+      "number": 35,
       "key": "active-selection",
       "name": "active-selection",
       "title": "Choose uncertain boards before opening their labels",
@@ -849,7 +969,7 @@
       }
     },
     {
-      "number": 33,
+      "number": 36,
       "key": "random-control",
       "name": "random-control",
       "title": "Give random selection the same labeling budget",
@@ -874,7 +994,7 @@
       }
     },
     {
-      "number": 34,
+      "number": 37,
       "key": "review",
       "title": "Choose where the review time goes",
       "body": "<div class=\"task\">Notebook step: Choose examples to review.</div><ol class=\"exercise-controls\"><li>Complete <code>choose_review</code> using distance from the current threshold. Do not read labels.</li><li>Click <strong>Check my review selector</strong>.</li><li>Click <strong>Select 24 boards for each review method</strong>.</li></ol><div class=\"done\">Check: The active and random methods select 24 cases each from the same pool.</div>",
@@ -903,7 +1023,7 @@
       }
     },
     {
-      "number": 35,
+      "number": 38,
       "key": "human",
       "title": "Save what the reviewer actually decided",
       "body": "<div class=\"two-col\"><div class=\"box\"><h2>Your assessment</h2><p>Choose normal, defective, or needs another reviewer before revealing the annotation.</p><p>Save your assessment and whether the annotation was visible.</p></div><div class=\"box\"><h2>Batch acquisition</h2><p>Reveal the authors\u2019 supplied labels for the selected 24 boards.</p><p>Label this a simulation of acquiring annotations.</p></div></div>",
@@ -927,7 +1047,7 @@
       }
     },
     {
-      "number": 36,
+      "number": 39,
       "key": "review-fit",
       "title": "Train with the additional labels",
       "body": "<div class=\"task\">Use both review selections, not just the one you prefer.</div><ol class=\"exercise-controls\"><li>Inspect selected board photos and masks. Save at least one assessment.</li><li>Click <strong>Reveal batch labels and train the two reviewed classifiers</strong>.</li><li>Compare validation AP, misses and false alarms with the initial detector.</li></ol><div class=\"done\">Check: Both new models use 397 initial boards plus 24 revealed cases.</div>",
@@ -958,7 +1078,7 @@
       }
     },
     {
-      "number": 37,
+      "number": 40,
       "key": "freeze",
       "title": "Choose before opening the final results",
       "body": "<div class=\"task\">Notebook step: Freeze the detector.</div><ol class=\"exercise-controls\"><li>Compare the four validation rows.</li><li>Choose a version and explain the tradeoff you accept.</li><li>Click <strong>Freeze models and thresholds before testing</strong>.</li></ol><div class=\"done\">Check: The freeze contains the classifier, exact feature source, threshold and selection reason.</div>",
@@ -989,7 +1109,7 @@
       }
     },
     {
-      "number": 38,
+      "number": 41,
       "key": "detector-bundle",
       "name": "detector-bundle",
       "title": "Freeze the preprocessing and reference bank too",
@@ -1014,7 +1134,7 @@
       }
     },
     {
-      "number": 39,
+      "number": 42,
       "key": "break-two",
       "name": "break-two",
       "title": "Take ten minutes. Return at 3:30.",
@@ -1037,7 +1157,7 @@
       }
     },
     {
-      "number": 40,
+      "number": 43,
       "key": "final",
       "title": "Evaluate the same 442 boards",
       "body": "<div class=\"task\">Notebook step: Inspect untouched boards.</div><ol class=\"exercise-controls\"><li>Click <strong>Evaluate all four frozen detectors on 442 test boards</strong>.</li><li>Choose a test board and compare predictions against its photo and mask.</li><li>Click <strong>Publish saved comparisons to Forge</strong>.</li></ol><div class=\"done\">Check: Every version has a row for the same board; unavailable publication is shown separately.</div>",
@@ -1069,7 +1189,7 @@
       }
     },
     {
-      "number": 41,
+      "number": 44,
       "key": "native-comparison",
       "title": "Compare four detectors on the same boards",
       "body": "<div class=\"eval-native\"><div class=\"eval-native-image\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\"><img src=\"/images/evaltables-native.png\" alt=\"Native Forge Evaluation Tables Preview showing saved workshop results\"></a><span class=\"eval-native-pin\" style=\"left:6%;top:39%\" aria-hidden=\"true\">1</span><span class=\"eval-native-pin\" style=\"left:6%;top:79%\" aria-hidden=\"true\">2</span><span class=\"eval-native-pin\" style=\"left:6%;top:60%\" aria-hidden=\"true\">3</span></div><div class=\"eval-native-notes\"><p><b>1 \u00b7 Set the reference</b><br>Use the whole-image detector first.</p><p><b>2 \u00b7 Align the board</b><br>Open one case to compare the same photograph.</p><p><b>3 \u00b7 Read checked outcomes</b><br>Correct and error score the frozen decisions. Review policy is separate.</p></div></div><p class=\"eval-native-caption\">Recorded results in Forge \u00b7 Evaluation Tables (Preview) \u00b7 <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\">Open this comparison \u2197</a></p>",
@@ -1095,7 +1215,7 @@
       }
     },
     {
-      "number": 42,
+      "number": 45,
       "key": "native-board",
       "title": "Inspect the board behind a prediction",
       "body": "<div class=\"eval-native-states\"><div><div class=\"eval-native\"><div class=\"eval-native-image\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\"><img src=\"/images/evaltables-native-detail.png\" alt=\"Native Forge Evaluation Tables Preview showing saved workshop results\"></a><span class=\"eval-native-pin\" style=\"left:28.3%;top:25%\" aria-hidden=\"true\">1</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:85.5%\" aria-hidden=\"true\">2</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:95%\" aria-hidden=\"true\">3</span></div><div class=\"eval-native-notes\"><p><b>1 \u00b7 Look at the board</b><br>This is the actual PCB1 test photograph.</p><p><b>2 \u00b7 Compare predictions</b><br>All four flag this board as defective.</p><p><b>3 \u00b7 Check the threshold</b><br>Read each score against that detector\u2019s frozen cutoff.</p></div></div><p class=\"eval-native-caption\">Recorded results in Forge \u00b7 Evaluation Tables (Preview) \u00b7 <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\">Open this comparison \u2197</a></p></div><div v-click=\"1\" class=\"eval-native-overlay\"><div class=\"eval-native\"><div class=\"eval-native-image\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\"><img src=\"/images/evaltables-native-mask.png\" alt=\"Native Forge Evaluation Tables Preview showing saved workshop results\"></a><span class=\"eval-native-pin\" style=\"left:28.3%;top:40%\" aria-hidden=\"true\">1</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:22%\" aria-hidden=\"true\">2</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:88%\" aria-hidden=\"true\">3</span></div><div class=\"eval-native-notes\"><p><b>1 \u00b7 Read the annotation</b><br>White pixels mark the dataset\u2019s reference defects.</p><p><b>2 \u00b7 Compare decisions</b><br>All four detectors flag this same board.</p><p><b>3 \u00b7 Check the result</b><br>Every prediction matches the defective label on this case.</p></div></div><p class=\"eval-native-caption\">Reference defect mask: white marks annotated defects, not model localization. \u00b7 <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\">Open this comparison \u2197</a></p></div></div>",
@@ -1121,7 +1241,7 @@
       }
     },
     {
-      "number": 43,
+      "number": 46,
       "key": "failure",
       "title": "The first worked recipe did not pass its gate",
       "body": "<table class=\"clean-table\"><tbody><tr><th>First frozen recipe</th><th>Average precision</th><th>Misses</th><th>False alarms</th></tr><tr><td>Whole image</td><td>0.861762</td><td>4</td><td>36</td></tr><tr><td>Mean-patch + whole image</td><td>0.855382</td><td>2</td><td>33</td></tr></tbody></table><div class=\"bottom-note\">Its declared primary measure was average precision. Fewer operating errors did not turn the AP loss into a pass.</div>",
@@ -1147,7 +1267,7 @@
       }
     },
     {
-      "number": 44,
+      "number": 47,
       "key": "retest",
       "title": "The bounded follow-up improved this teaching retest",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Frozen follow-up</th><th>Average precision</th><th>Misses / 40</th><th>False alarms / 402</th></tr><tr><td>Whole image</td><td>0.872900</td><td>4</td><td>23</td></tr><tr><td>Nearest-patch + whole image</td><td>0.885742</td><td>3</td><td>18</td></tr></tbody></table><div class=\"bottom-note\">One predeclared validation grid; already-inspected final images. AP gain: 1.284 points. This is a teaching retest, not fresh benchmark evidence.</div>",
@@ -1174,7 +1294,7 @@
       }
     },
     {
-      "number": 45,
+      "number": 48,
       "key": "improved-case",
       "title": "Inspect a corrected miss",
       "body": "<InspectionMechanism kind=\"outcomes\" case-id=\"pcb1-anomaly-048\" />",
@@ -1201,16 +1321,16 @@
       }
     },
     {
-      "number": 46,
+      "number": 49,
       "key": "regression",
       "title": "Inspect a new miss too",
       "body": "<InspectionMechanism kind=\"outcomes\" case-id=\"pcb1-anomaly-015\" />",
       "notes": "Show the contrast without hiding the final summary. This is a narrower, more honest explanation than saying patch features found all small defects.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "3:51",
+      "time": "3:49",
       "kind": "",
       "answer": null,
       "name": "regression",
-      "start_minute": 231,
+      "start_minute": 229,
       "concept": "Inspect a new miss too",
       "source": [
         "src/forge_workshop_kit/inspection.py",
@@ -1225,19 +1345,140 @@
         "section": "final",
         "start": 231,
         "duration": 3
+      },
+      "elapsed_minutes": 229
+    },
+    {
+      "number": 50,
+      "key": "aria-conclusion",
+      "title": "Check our conclusion",
+      "body": "<div class=\"aria-sequence-wrap\"><svg class=\"aria-sequence\" viewBox=\"0 0 1110 154\" role=\"img\" aria-label=\"Explain your interpretation, read ARIA\u2019s answer, and check its cited source.\"><g><rect x=\"0\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#d9e9e1\" stroke=\"#48675d\"/><text x=\"18\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Your interpretation</text><text x=\"18\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Same final boards</text></g><path d=\"M345 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M360 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"370\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"388\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">ARIA response</text><text x=\"388\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Frozen detectors and cutoffs</text></g><path d=\"M715 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M730 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"740\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"758\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Checked source record</text><text x=\"758\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Misses, false alarms, review volume</text></g></svg></div><div class=\"aria-question\">Compare frozen detector results: recovered misses, new mistakes, false alarms, and the additional reviewed labels. Do not equate patch-distance images with causal explanations.</div><div class=\"aria-two\"><div><b>Start with your explanation</b><p>What do you think happened? Which observation supports it?</p><p>Copy the notebook\u2019s prompt and add native context in Forge.</p></div><div><b>Selected instructor records</b><ul class=\"aria-records\"><li><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/08c45f8ed417d216d026cf1abdc280b2\" target=\"_blank\" rel=\"noopener\">evaluate \u2197</a></li></ul></div></div><p class=\"aria-foot\">Keep the compared versions frozen. Suggest a future experiment without running it. Check ARIA\u2019s selected project. Use exact record URLs; add native context where this surface offers it.</p>",
+      "notes": "Allocate 7 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/visual_inspection/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "time": "3:50 \u00b7 7 minutes across these three frames",
+      "kind": "aria-investigation",
+      "answer": null,
+      "name": "aria-conclusion",
+      "start_minute": 230,
+      "concept": "Compare frozen detector results: recovered misses, new mistakes, false alarms, and the additional reviewed labels. Do not equate patch-distance images with causal explanations.",
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/visual_inspection/conclusion.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/08c45f8ed417d216d026cf1abdc280b2"
+      ],
+      "exercise": {
+        "step": "evaluate",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "timing": {
+        "section": "Check our conclusion",
+        "start_minute": 230,
+        "duration_minutes": 7
+      },
+      "elapsed_minutes": 230,
+      "cls": "aria-investigation",
+      "clicks": null,
+      "aria": {
+        "stop_id": "conclusion",
+        "phase": "question",
+        "duration_minutes": 7,
+        "recorded_status": "recorded"
       }
     },
     {
-      "number": 47,
+      "number": 51,
+      "key": "aria-conclusion-response",
+      "title": "Read one claim in the recorded response",
+      "body": "<div class=\"aria-sequence-wrap\"><svg class=\"aria-sequence\" viewBox=\"0 0 1110 154\" role=\"img\" aria-label=\"Explain your interpretation, read ARIA\u2019s answer, and check its cited source.\"><g><rect x=\"0\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"18\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Your interpretation</text><text x=\"18\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Same final boards</text></g><path d=\"M345 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M360 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"370\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#d9e9e1\" stroke=\"#48675d\"/><text x=\"388\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">ARIA response</text><text x=\"388\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Frozen detectors and cutoffs</text></g><path d=\"M715 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M730 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"740\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"758\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Checked source record</text><text x=\"758\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Misses, false alarms, review volume</text></g></svg></div><div class=\"aria-response\"><figure class=\"aria-screen\"><a href=\"/aria/conclusion/conclusion-response.png\" target=\"_blank\"><img src=\"/aria/conclusion/conclusion-response.png\" alt=\"Actual ARIA response. Check its distinction between retrieved native records and supplied evidence excerpts.\"></a></figure><div><b>Recorded instructor investigation</b><blockquote>16 false alarms versus 12</blockquote><p>Does this statement follow from the records, or is it a possible explanation?</p><p><a href=\"/aria/conclusion/conclusion-transcript.html\" target=\"_blank\">Read the full transcript without sign-in \u2197</a></p><a href=\"https://forge.coreweave.com/aria/threads/01a1e06d-f15f-75e0-b27a-43e3063e6110\" target=\"_blank\" rel=\"noopener\">Open the recorded conversation \u2197</a></div></div><p class=\"aria-foot\">The recording uses instructor results. It does not describe your unexecuted edits.</p>",
+      "notes": "Allocate 7 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/visual_inspection/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "time": "3:50 \u00b7 7 minutes across these three frames",
+      "kind": "aria-investigation",
+      "answer": null,
+      "name": "aria-conclusion-response",
+      "start_minute": 230,
+      "concept": "Compare frozen detector results: recovered misses, new mistakes, false alarms, and the additional reviewed labels. Do not equate patch-distance images with causal explanations.",
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/visual_inspection/conclusion.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/08c45f8ed417d216d026cf1abdc280b2"
+      ],
+      "exercise": {
+        "step": "evaluate",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "timing": {
+        "section": "Check our conclusion",
+        "start_minute": 230,
+        "duration_minutes": 7
+      },
+      "elapsed_minutes": 230,
+      "cls": "aria-investigation",
+      "clicks": null,
+      "aria": {
+        "stop_id": "conclusion",
+        "phase": "response",
+        "duration_minutes": 7,
+        "recorded_status": "recorded"
+      }
+    },
+    {
+      "number": 52,
+      "key": "aria-conclusion-verify",
+      "title": "Open the source and check that claim",
+      "body": "<div class=\"aria-sequence-wrap\"><svg class=\"aria-sequence\" viewBox=\"0 0 1110 154\" role=\"img\" aria-label=\"Explain your interpretation, read ARIA\u2019s answer, and check its cited source.\"><g><rect x=\"0\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"18\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Your interpretation</text><text x=\"18\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Same final boards</text></g><path d=\"M345 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M360 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"370\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"388\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">ARIA response</text><text x=\"388\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Frozen detectors and cutoffs</text></g><path d=\"M715 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M730 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"740\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#d9e9e1\" stroke=\"#48675d\"/><text x=\"758\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Checked source record</text><text x=\"758\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Misses, false alarms, review volume</text></g></svg></div><div class=\"aria-response\"><figure class=\"aria-screen\"><a href=\"/aria/conclusion/conclusion-verification.png\" target=\"_blank\"><img src=\"/aria/conclusion/conclusion-verification.png\" alt=\"Native final comparison aligns 442 boards across whole-image, patch, active-review, and random-review versions.\"><svg viewBox=\"0 0 1280 720\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><rect x=\"97.0\" y=\"398.0\" width=\"275.0\" height=\"137.0\" rx=\"5\" fill=\"none\" stroke=\"#f7bd59\" stroke-width=\"3\"/><circle cx=\"83.0\" cy=\"411.0\" r=\"12\" fill=\"#f7bd59\" stroke=\"#182820\" stroke-width=\"1.5\"/><text x=\"83.0\" y=\"415.0\" fill=\"#182820\" text-anchor=\"middle\" style=\"font-size:14px;font-weight:600\">1</text><rect x=\"1090.0\" y=\"672.0\" width=\"160.0\" height=\"30.0\" rx=\"5\" fill=\"none\" stroke=\"#f7bd59\" stroke-width=\"3\"/><circle cx=\"1076.0\" cy=\"685.0\" r=\"12\" fill=\"#f7bd59\" stroke=\"#182820\" stroke-width=\"1.5\"/><text x=\"1076.0\" y=\"689.0\" fill=\"#182820\" text-anchor=\"middle\" style=\"font-size:14px;font-weight:600\">2</text></svg></a><figcaption><span><b>1</b> Correctness, not miss count</span><span><b>2</b> 442 aligned cases</span></figcaption></figure><div><b>Citation check: supported</b><p>The saved evaluate result has selected=review/random. Among the same 442 boards, review/active has misses=1 and false_alarms=16, while review/random has misses=5 and false_alarms=12. These match the artifact values ARIA reports reading. The native screenshot shows rounded correctness, not those separate counts. This check does not independently establish the time of selection or a causal advantage of active sampling.</p><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/08c45f8ed417d216d026cf1abdc280b2\" target=\"_blank\" rel=\"noopener\">Open the checked source \u2197</a><p><a href=\"/aria/conclusion/conclusion-source-records.html\" target=\"_blank\">Check the supplied source values offline \u2197</a></p></div></div><p class=\"aria-foot\">Save your own citation check. ARIA\u2019s answer does not become a label, score, approved lesson, or release decision.</p>",
+      "notes": "Allocate 7 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/visual_inspection/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "time": "3:50 \u00b7 7 minutes across these three frames",
+      "kind": "aria-investigation",
+      "answer": null,
+      "name": "aria-conclusion-verify",
+      "start_minute": 230,
+      "concept": "Compare frozen detector results: recovered misses, new mistakes, false alarms, and the additional reviewed labels. Do not equate patch-distance images with causal explanations.",
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/visual_inspection/conclusion.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/08c45f8ed417d216d026cf1abdc280b2"
+      ],
+      "exercise": {
+        "step": "evaluate",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "timing": {
+        "section": "Check our conclusion",
+        "start_minute": 230,
+        "duration_minutes": 7
+      },
+      "elapsed_minutes": 230,
+      "cls": "aria-investigation",
+      "clicks": null,
+      "aria": {
+        "stop_id": "conclusion",
+        "phase": "verify",
+        "duration_minutes": 7,
+        "recorded_status": "recorded"
+      }
+    },
+    {
+      "number": 53,
       "key": "reproduce",
       "title": "Reload the version you chose",
       "body": "<div class=\"task\">Notebook step: Reproduce the selected version.</div><ol class=\"exercise-controls\"><li>Click <strong>Reload the selected classifier and reproduce one prediction</strong>.</li><li>Compare the reloaded score with the saved value.</li><li>Explain what improved, what did not, and what data you would collect next.</li></ol><div class=\"done\">Check: The exact file and source reproduce the saved result; your conclusion links to its evidence.</div>",
       "notes": "Saved artifacts are useful because another person can repeat the prediction without guessing which notebook cell you last ran.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "3:54",
+      "time": "3:57",
       "kind": "exercise",
       "answer": null,
       "name": "reproduce",
-      "start_minute": 234,
+      "start_minute": 237,
       "concept": "Reload the version you chose",
       "source": [
         "src/forge_workshop_kit/inspection.py",
@@ -1256,17 +1497,18 @@
         "section": "reproduce",
         "start": 234,
         "duration": 2
-      }
+      },
+      "elapsed_minutes": 237
     },
     {
-      "number": 48,
+      "number": 54,
       "key": "reload-detector",
       "name": "reload-detector",
       "title": "Reproduce one score from the saved detector",
       "body": "<InspectionMechanism kind=\"freeze\" :step=\"2\" />",
       "notes": "The reload operation uses the frozen feature source rather than the current editor draft. Compare its output with the previously saved score for the same case. An artifact makes that complete version addressable; Registry is an optional release extension.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "3:56",
-      "start_minute": 236,
+      "time": "3:58",
+      "start_minute": 238,
       "kind": "",
       "answer": null,
       "concept": "Reproduce one score from the saved detector",
@@ -1281,19 +1523,20 @@
         "section": "reproduce",
         "start": 236,
         "duration": 1
-      }
+      },
+      "elapsed_minutes": 238
     },
     {
-      "number": 49,
+      "number": 55,
       "key": "release",
       "title": "A tested artifact can become the next release",
       "body": "<div class=\"flow\"><div class=\"box\">Evaluation<br><small>result + decision</small></div><span>\u2192</span><div class=\"box\">Registry<br><small>exact artifact</small></div><span>\u2192</span><div class=\"box\">Batch predictor<br><small>load that version</small></div></div><div class=\"bottom-note\">Optional: fail a release check, then restore the previous artifact. Registry does not deploy an arbitrary Python classifier.</div>",
       "notes": "This extension needs Registry permissions. The Artifact-based reproduction path remains available without them.\nTeaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.",
-      "time": "3:57",
+      "time": "3:58",
       "kind": "",
       "answer": null,
       "name": "release",
-      "start_minute": 237,
+      "start_minute": 238,
       "concept": "A tested artifact can become the next release",
       "source": [
         "src/forge_workshop_kit/inspection.py",
@@ -1305,10 +1548,11 @@
         "section": "reproduce",
         "start": 237,
         "duration": 2
-      }
+      },
+      "elapsed_minutes": 238
     },
     {
-      "number": 50,
+      "number": 56,
       "key": "conclusion",
       "title": "Write down the decision you would make",
       "body": "<div class=\"box\"><p>\u201cWe changed ____. On the same boards, ____ improved and ____ got worse. We selected ____ because ____. Before releasing it, we would test ____.\u201d</p></div><div class=\"bottom-note\">Publish my inspection Report \u00b7 include actual comparisons, saved artifacts, and the next question.</div>",
@@ -1332,7 +1576,7 @@
       }
     },
     {
-      "number": 51,
+      "number": 57,
       "key": "answer-features",
       "title": "Worked answer: assemble the local features",
       "body": "```python\nwhole = data[\"whole\"][rows]\nif method == \"whole\":\n    return whole\nif method == \"nearest-patch\":\n    errors = inspection.nearest_patch_errors(data, rows, reference)\nelse:\n    errors = inspection.patch_errors(data[\"patches\"][rows], reference)\nlocal = np.log1p(errors).reshape(len(rows), -1)\nreturn np.concatenate([whole, local], axis=1)\n```\n<div class=\"bottom-note\">Both branches are exercised by the free check. The live comparison uses nearest-patch.</div>",
@@ -1356,7 +1600,7 @@
       }
     },
     {
-      "number": 52,
+      "number": 58,
       "key": "answer-threshold",
       "title": "Worked answer: meet the validation recall target",
       "body": "```python\npositives = np.sort(scores[target == 1])[::-1]\nposition = int(np.ceil(recall * len(positives))) - 1\nreturn float(positives[position])\n```\n<div class=\"bottom-note\">At 12 validation defects and recall .90, keep the top 11 above the threshold.</div>",
@@ -1380,7 +1624,7 @@
       }
     },
     {
-      "number": 53,
+      "number": 59,
       "key": "answer-review",
       "title": "Worked answer: choose uncertain cases",
       "body": "```python\nrng = np.random.default_rng(seed)\norder = rng.permutation(len(rows))\norder = order[np.argsort(\n    np.abs(scores[order] - threshold), kind=\"stable\"\n)]\nreturn np.asarray(rows)[order[:budget]]\n```\n<div class=\"bottom-note\">The permutation only breaks equal-distance ties. Do not pass labels to this function.</div>",

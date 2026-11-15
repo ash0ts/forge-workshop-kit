@@ -1,0 +1,81 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Airline Monitoring / Check our conclusion / source values</title><style>
+:root { color-scheme:light dark; --paper:#f7f3e8; --ink:#142c32; --accent:#136b70; --line:#bec9c4; }
+@media(prefers-color-scheme:dark) { :root { --paper:#152528; --ink:#ecede3; --accent:#8cdbce; --line:#526968; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font:18px/1.55 system-ui,sans-serif; }
+main { max-width:1080px; margin:auto; padding:32px 28px; }
+h1 { font-size:clamp(1.8rem,4vw,3rem); line-height:1.14; margin:.5em 0; }
+h2 { font-size:1.35rem; margin-top:1.6em; }
+a { color:var(--accent); overflow-wrap:anywhere; }
+a:focus-visible,summary:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+.notice { padding:16px 20px; border-left:5px solid var(--accent); }
+table { width:100%; border-collapse:collapse; table-layout:fixed; }
+th,td { padding:12px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; overflow-wrap:anywhere; }
+th:first-child,td:first-child { width:35%; }
+pre { white-space:pre-wrap; overflow-wrap:anywhere; font:14px/1.6 ui-monospace,monospace; padding:18px; border:1px solid var(--line); border-radius:8px; }
+.response { white-space:pre-wrap; overflow-wrap:anywhere; padding:20px; border:1px solid var(--line); }
+img { display:block; max-width:100%; height:auto; }
+.capture-frame { position:relative; }
+.capture-box { position:absolute; border:2px solid #ffcf66; pointer-events:none; }
+.capture-box b { position:absolute; top:-1.2em; left:-2px; padding:0 6px; color:#142c32; background:#ffcf66; font:700 13px/1.4 system-ui,sans-serif; }
+small { opacity:.8; }
+@media(max-width:600px) { main { padding:20px 16px; } th,td { padding:8px 5px; font-size:15px; } }
+</style></head><body><main><h1>Airline Monitoring / Check our conclusion / source values</h1><p class="notice"><strong>Saved-record excerpt.</strong> These are the exact values supplied in the instructor’s recorded prompt. This page is a local teaching view, not a native Forge capture and not a participant execution.</p><p>Exact final and subsequent run URLs plus saved qualification excerpts; no native attachment. ARIA retrieved the four named run summaries read-only and verified six final and four subsequent scores per version. The 40-conversation total, absent monitor rows, and unavailable Alignment tests came from supplied qualification excerpts, not those four run summaries. Its actual next suggestion is an audit of existing monitoring events, without sending new traffic or changing a tag.</p><h2>Open the source records</h2><ul><li><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/6e61f9742d2bd73de556495259b40011">final/baseline</a></li><li><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/b76342ec86c76151084f51ba07c330ec">final/repaired</a></li><li><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/c786194dbc62194080e2c8f713e82095">subsequent/baseline</a></li><li><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/14415e9202dc1ec0c6df978b7be961c7">subsequent/repaired</a></li></ul><h2>Values supplied to ARIA</h2><table><thead><tr><th>Source field</th><th>Recorded value</th></tr></thead><tbody><tr><th scope="row">all_live_conversations</th><td>40</td></tr><tr><th scope="row">all_live_booking_passes</th><td>40</td></tr><tr><th scope="row">direct_model_cost.observed_usd</th><td>0.02401506</td></tr><tr><th scope="row">direct_model_cost.bounded_unknown_usd</th><td>0</td></tr><tr><th scope="row">direct_model_cost.inflight_usd</th><td>0</td></tr><tr><th scope="row">native_monitoring.tag_id</th><td>&quot;01a1dbfc-34e0-7540-a690-0fb598377ae6&quot;</td></tr><tr><th scope="row">native_monitoring.read_at</th><td>1794692799.448919</td></tr><tr><th scope="row">native_monitoring.processing_coverage</th><td>null</td></tr><tr><th scope="row">native_monitoring.cost_usd</th><td>null</td></tr><tr><th scope="row">native_monitoring.native_billing</th><td>&quot;Native tag judging is outside the notebook inference allowance.&quot;</td></tr><tr><th scope="row">monitor_row_statuses.unobserved</th><td>40</td></tr><tr><th scope="row">native_alignment_tests[0].id</th><td>&quot;baa6338f12d769acf71d0e3aa87bfb71c3dd03c1711d3488f01910cd4b505c58&quot;</td></tr><tr><th scope="row">native_alignment_tests[0].status</th><td>&quot;unavailable&quot;</td></tr><tr><th scope="row">native_alignment_tests[0].prediction</th><td>null</td></tr><tr><th scope="row">native_alignment_tests[0].error</th><td>&quot;Server error &#x27;500 Internal Server Error&#x27; for url &#x27;https://forge.coreweave.com/api/pulse/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test?example_id=01a1dbfe-4603-7cf7-ab2f-f03951d7041a&#x27;\nFor more information check: https://developer.mozilla.or&quot;</td></tr><tr><th scope="row">native_alignment_tests[1].id</th><td>&quot;128c56ff7b4588182a27c20bf62880bbcfd0405e98ba67f6faf68df4c7c12203&quot;</td></tr><tr><th scope="row">native_alignment_tests[1].status</th><td>&quot;unavailable&quot;</td></tr><tr><th scope="row">native_alignment_tests[1].prediction</th><td>null</td></tr><tr><th scope="row">native_alignment_tests[1].error</th><td>&quot;Server error &#x27;500 Internal Server Error&#x27; for url &#x27;https://forge.coreweave.com/api/pulse/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test?example_id=01a1dbfe-4ab5-7a3a-847b-4380bbfc08e2&#x27;\nFor more information check: https://developer.mozilla.or&quot;</td></tr><tr><th scope="row">native_alignment_tests[2].id</th><td>&quot;bdc94458c6dda5c9ca3a339c6313ad32f764d1fa353b607db13acc0ec1b6814c&quot;</td></tr><tr><th scope="row">native_alignment_tests[2].status</th><td>&quot;unavailable&quot;</td></tr><tr><th scope="row">native_alignment_tests[2].prediction</th><td>null</td></tr><tr><th scope="row">native_alignment_tests[2].error</th><td>&quot;Server error &#x27;500 Internal Server Error&#x27; for url &#x27;https://forge.coreweave.com/api/pulse/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test?example_id=01a1dbfe-4eb9-7684-8788-75f690fef09d&#x27;\nFor more information check: https://developer.mozilla.or&quot;</td></tr><tr><th scope="row">native_alignment_tests[3].id</th><td>&quot;1cf803bdbb2d07d03f6ff70b791436751ae4e428c015a26fe5eec3d3316c4bc6&quot;</td></tr><tr><th scope="row">native_alignment_tests[3].status</th><td>&quot;unavailable&quot;</td></tr><tr><th scope="row">native_alignment_tests[3].prediction</th><td>null</td></tr><tr><th scope="row">native_alignment_tests[3].error</th><td>&quot;Server error &#x27;500 Internal Server Error&#x27; for url &#x27;https://forge.coreweave.com/api/pulse/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test?example_id=01a1dbfe-53a9-7175-b8fa-248d56eed23f&#x27;\nFor more information check: https://developer.mozilla.or&quot;</td></tr><tr><th scope="row">native_alignment_tests[4].id</th><td>&quot;ad1cace3938de0714a2319cfc53ab0d6b5f97b2808ffe7a07b45758147a4f9b5&quot;</td></tr><tr><th scope="row">native_alignment_tests[4].status</th><td>&quot;unavailable&quot;</td></tr><tr><th scope="row">native_alignment_tests[4].prediction</th><td>null</td></tr><tr><th scope="row">native_alignment_tests[4].error</th><td>&quot;Server error &#x27;500 Internal Server Error&#x27; for url &#x27;https://forge.coreweave.com/api/pulse/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test?example_id=01a1dbfe-5813-703a-b290-d7f9c08455c7&#x27;\nFor more information check: https://developer.mozilla.or&quot;</td></tr><tr><th scope="row">native_alignment_tests[5].id</th><td>&quot;922c15de3e04c506666694501511a2d0d04e0037e67df7cc10fcaa840e543b48&quot;</td></tr><tr><th scope="row">native_alignment_tests[5].status</th><td>&quot;unavailable&quot;</td></tr><tr><th scope="row">native_alignment_tests[5].prediction</th><td>null</td></tr><tr><th scope="row">native_alignment_tests[5].error</th><td>&quot;Server error &#x27;500 Internal Server Error&#x27; for url &#x27;https://forge.coreweave.com/api/pulse/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test?example_id=01a1dbfe-5c7e-79e5-950a-247cb5304e8f&#x27;\nFor more information check: https://developer.mozilla.or&quot;</td></tr><tr><th scope="row">automatic_tagging_disabled</th><td>true</td></tr><tr><th scope="row">scope</th><td>&quot;All 40 recorded live conversations passed deterministic booking checks. Controlled calibration incidents are tool-only drills, not spontaneous model failures. An absent assignment cannot distinguish a pending turn from completed no-match.&quot;</td></tr></tbody></table><details><summary>Complete supplied excerpt</summary><pre>{
+  &quot;all_live_conversations&quot;: 40,
+  &quot;all_live_booking_passes&quot;: 40,
+  &quot;direct_model_cost&quot;: {
+    &quot;observed_usd&quot;: 0.02401506,
+    &quot;bounded_unknown_usd&quot;: 0,
+    &quot;inflight_usd&quot;: 0
+  },
+  &quot;native_monitoring&quot;: {
+    &quot;tag_id&quot;: &quot;01a1dbfc-34e0-7540-a690-0fb598377ae6&quot;,
+    &quot;read_at&quot;: 1794692799.448919,
+    &quot;processing_coverage&quot;: null,
+    &quot;cost_usd&quot;: null,
+    &quot;native_billing&quot;: &quot;Native tag judging is outside the notebook inference allowance.&quot;
+  },
+  &quot;monitor_row_statuses&quot;: {
+    &quot;unobserved&quot;: 40
+  },
+  &quot;native_alignment_tests&quot;: [
+    {
+      &quot;id&quot;: &quot;baa6338f12d769acf71d0e3aa87bfb71c3dd03c1711d3488f01910cd4b505c58&quot;,
+      &quot;status&quot;: &quot;unavailable&quot;,
+      &quot;prediction&quot;: null,
+      &quot;error&quot;: &quot;Server error &#x27;500 Internal Server Error&#x27; for url &#x27;https://forge.coreweave.com/api/pulse/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test?example_id=01a1dbfe-4603-7cf7-ab2f-f03951d7041a&#x27;\nFor more information check: https://developer.mozilla.or&quot;
+    },
+    {
+      &quot;id&quot;: &quot;128c56ff7b4588182a27c20bf62880bbcfd0405e98ba67f6faf68df4c7c12203&quot;,
+      &quot;status&quot;: &quot;unavailable&quot;,
+      &quot;prediction&quot;: null,
+      &quot;error&quot;: &quot;Server error &#x27;500 Internal Server Error&#x27; for url &#x27;https://forge.coreweave.com/api/pulse/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test?example_id=01a1dbfe-4ab5-7a3a-847b-4380bbfc08e2&#x27;\nFor more information check: https://developer.mozilla.or&quot;
+    },
+    {
+      &quot;id&quot;: &quot;bdc94458c6dda5c9ca3a339c6313ad32f764d1fa353b607db13acc0ec1b6814c&quot;,
+      &quot;status&quot;: &quot;unavailable&quot;,
+      &quot;prediction&quot;: null,
+      &quot;error&quot;: &quot;Server error &#x27;500 Internal Server Error&#x27; for url &#x27;https://forge.coreweave.com/api/pulse/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test?example_id=01a1dbfe-4eb9-7684-8788-75f690fef09d&#x27;\nFor more information check: https://developer.mozilla.or&quot;
+    },
+    {
+      &quot;id&quot;: &quot;1cf803bdbb2d07d03f6ff70b791436751ae4e428c015a26fe5eec3d3316c4bc6&quot;,
+      &quot;status&quot;: &quot;unavailable&quot;,
+      &quot;prediction&quot;: null,
+      &quot;error&quot;: &quot;Server error &#x27;500 Internal Server Error&#x27; for url &#x27;https://forge.coreweave.com/api/pulse/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test?example_id=01a1dbfe-53a9-7175-b8fa-248d56eed23f&#x27;\nFor more information check: https://developer.mozilla.or&quot;
+    },
+    {
+      &quot;id&quot;: &quot;ad1cace3938de0714a2319cfc53ab0d6b5f97b2808ffe7a07b45758147a4f9b5&quot;,
+      &quot;status&quot;: &quot;unavailable&quot;,
+      &quot;prediction&quot;: null,
+      &quot;error&quot;: &quot;Server error &#x27;500 Internal Server Error&#x27; for url &#x27;https://forge.coreweave.com/api/pulse/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test?example_id=01a1dbfe-5813-703a-b290-d7f9c08455c7&#x27;\nFor more information check: https://developer.mozilla.or&quot;
+    },
+    {
+      &quot;id&quot;: &quot;922c15de3e04c506666694501511a2d0d04e0037e67df7cc10fcaa840e543b48&quot;,
+      &quot;status&quot;: &quot;unavailable&quot;,
+      &quot;prediction&quot;: null,
+      &quot;error&quot;: &quot;Server error &#x27;500 Internal Server Error&#x27; for url &#x27;https://forge.coreweave.com/api/pulse/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/test?example_id=01a1dbfe-5c7e-79e5-950a-247cb5304e8f&#x27;\nFor more information check: https://developer.mozilla.or&quot;
+    }
+  ],
+  &quot;automatic_tagging_disabled&quot;: true,
+  &quot;scope&quot;: &quot;All 40 recorded live conversations passed deterministic booking checks. Controlled calibration incidents are tool-only drills, not spontaneous model failures. An absent assignment cannot distinguish a pending turn from completed no-match.&quot;
+}</pre></details><p><a href="conclusion-transcript.html">Read the actual ARIA conversation</a></p></main></body></html>

@@ -286,7 +286,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my invoice lookup<br><strong>Check:</strong> The requested invoice, missing invoice, and other-account checks pass. Account state stays unchanged.</div>
 
-<a class="answer-link" href="/91">Worked answer →</a>
+<a class="answer-link" href="/96">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my invoice lookup.
@@ -389,7 +389,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my tool-to-model handoff<br><strong>Check:</strong> Open the four handoff tabs. Match the action, Python arguments, returned payments, and two appended messages.</div>
 
-<a class="answer-link" href="/92">Worked answer →</a>
+<a class="answer-link" href="/97">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my tool-to-model handoff.
@@ -678,7 +678,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my scorer against four known examples<br><strong>Check:</strong> Full refund passes. Partial refund, no refund, and duplicate refund fail, despite the same confident reply.</div>
 
-<a class="answer-link" href="/93">Worked answer →</a>
+<a class="answer-link" href="/98">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my scorer against four known examples.
@@ -754,6 +754,42 @@ The public check_work result can influence the employee. The participant-written
 
 <!--
 build_messages lists installed skill names. read_skill returns the file contents, and my_observation appends that result to the next request. Before editing, the notebook shows skill reads from the starting tickets. If there is no read, say so. The optional free example demonstrates the named file, returned text, and next request without pretending that a model chose it. After editing, compare the actual read event and later saved request. No read means we cannot claim the skill influenced this execution. Loading it still does not prove the agent followed it; inspect the subsequent tools.
+-->
+
+---
+class: aria-investigation
+---
+
+# Investigate this result
+
+<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source."><g><rect x="0" y="18" width="340" height="116" rx="8" fill="#d9e9e1" stroke="#48675d"/><text x="18" y="54" fill="#183b31" style="font-size:23px">Your interpretation</text><text x="18" y="91" fill="#42584f" style="font-size:17px">Ticket and checked account</text></g><path d="M345 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M360 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="370" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="388" y="54" fill="#183b31" style="font-size:23px">ARIA response</text><text x="388" y="91" fill="#42584f" style="font-size:17px">Selected starting execution</text></g><path d="M715 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M730 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="740" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="758" y="54" fill="#183b31" style="font-size:23px">Checked source record</text><text x="758" y="91" fill="#42584f" style="font-size:17px">Tool result and read_skill event</text></g></svg></div><div class="aria-question">Check one billing ticket: what changed in the account, what did the employee claim, and did read_skill occur before the procedure was used?</div><div class="aria-two"><div><b>Start with your explanation</b><p>What do you think happened? Which observation supports it?</p><p>Copy the notebook’s prompt and add native context in Forge.</p></div><div><b>Selected instructor records</b><ul class="aria-records"><li><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c2458ce8b6bb52274d29b5c5a691424b" target="_blank" rel="noopener">pending/original/double-charge ↗</a></li></ul></div></div><p class="aria-foot">Use only the selected development or validation records. Check ARIA’s selected project. Use exact record URLs; add native context where this surface offers it.</p>
+
+<!--
+Allocate 8 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+-->
+
+---
+class: aria-investigation
+---
+
+# Read one claim in the recorded response
+
+<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source."><g><rect x="0" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="18" y="54" fill="#183b31" style="font-size:23px">Your interpretation</text><text x="18" y="91" fill="#42584f" style="font-size:17px">Ticket and checked account</text></g><path d="M345 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M360 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="370" y="18" width="340" height="116" rx="8" fill="#d9e9e1" stroke="#48675d"/><text x="388" y="54" fill="#183b31" style="font-size:23px">ARIA response</text><text x="388" y="91" fill="#42584f" style="font-size:17px">Selected starting execution</text></g><path d="M715 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M730 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="740" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="758" y="54" fill="#183b31" style="font-size:23px">Checked source record</text><text x="758" y="91" fill="#42584f" style="font-size:17px">Tool result and read_skill event</text></g></svg></div><div class="aria-response"><figure class="aria-screen"><a href="/aria/investigate/investigate-response.png" target="_blank"><img src="/aria/investigate/investigate-response.png" alt="Actual ARIA response. It explicitly limits its answer to the supplied excerpt."></a></figure><div><b>Recorded instructor investigation</b><blockquote>success does not prove a verification skill was read.</blockquote><p>Does this statement follow from the records, or is it a possible explanation?</p><p><a href="/aria/investigate/investigate-transcript.html" target="_blank">Read the full transcript without sign-in ↗</a></p><a href="https://forge.coreweave.com/aria/threads/01a1e060-143f-75e1-a2fd-a02f0c4bef27" target="_blank" rel="noopener">Open the recorded conversation ↗</a></div></div><p class="aria-foot">The recording uses instructor results. It does not describe your unexecuted edits.</p>
+
+<!--
+Allocate 8 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+-->
+
+---
+class: aria-investigation
+---
+
+# Open the source and check that claim
+
+<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source."><g><rect x="0" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="18" y="54" fill="#183b31" style="font-size:23px">Your interpretation</text><text x="18" y="91" fill="#42584f" style="font-size:17px">Ticket and checked account</text></g><path d="M345 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M360 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="370" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="388" y="54" fill="#183b31" style="font-size:23px">ARIA response</text><text x="388" y="91" fill="#42584f" style="font-size:17px">Selected starting execution</text></g><path d="M715 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M730 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="740" y="18" width="340" height="116" rx="8" fill="#d9e9e1" stroke="#48675d"/><text x="758" y="54" fill="#183b31" style="font-size:23px">Checked source record</text><text x="758" y="91" fill="#42584f" style="font-size:17px">Tool result and read_skill event</text></g></svg></div><div class="aria-response"><figure class="aria-screen"><a href="/aria/investigate/investigate-verification.png" target="_blank"><img src="/aria/investigate/investigate-verification.png" alt="Agent Lens: the returned observation is Skill not installed."></a></figure><div><b>Citation check: supported</b><p>Agent Lens tool-0 observation says Skill not installed. The full saved sequence has no successful read_skill. The refund and later get_account independently show pay-2 refunded once.</p><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c2458ce8b6bb52274d29b5c5a691424b" target="_blank" rel="noopener">Open the checked source ↗</a><p><a href="/aria/investigate/investigate-source-records.html" target="_blank">Check the supplied source values offline ↗</a></p></div></div><p class="aria-foot">Save your own citation check. ARIA’s answer does not become a label, score, approved lesson, or release decision.</p>
+
+<!--
+Allocate 8 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
 -->
 
 ---
@@ -1183,6 +1219,42 @@ Artifacts are versioned file bundles. Trace export, result publication and execu
 -->
 
 ---
+class: aria-investigation
+---
+
+# Check our conclusion
+
+<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source."><g><rect x="0" y="18" width="340" height="116" rx="8" fill="#d9e9e1" stroke="#48675d"/><text x="18" y="54" fill="#183b31" style="font-size:23px">Your interpretation</text><text x="18" y="91" fill="#42584f" style="font-size:17px">Same fresh ticket</text></g><path d="M345 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M360 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="370" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="388" y="54" fill="#183b31" style="font-size:23px">ARIA response</text><text x="388" y="91" fill="#42584f" style="font-size:17px">Three frozen harnesses</text></g><path d="M715 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M730 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="740" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="758" y="54" fill="#183b31" style="font-size:23px">Checked source record</text><text x="758" y="91" fill="#42584f" style="font-size:17px">Account checks and tool events</text></g></svg></div><div class="aria-question">Compare the starting, manual, and agent-selected harnesses on the same tickets. Did account correctness change, or only tool use and checking?</div><div class="aria-two"><div><b>Start with your explanation</b><p>What do you think happened? Which observation supports it?</p><p>Copy the notebook’s prompt and add native context in Forge.</p></div><div><b>Selected instructor records</b><ul class="aria-records"><li><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/fdcf3eb3fbcae1cf6b7b765e7654c36b" target="_blank" rel="noopener">pending/final-comparison ↗</a></li><li><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/25cf9e219e38e8f6c445e3e38b16749b" target="_blank" rel="noopener">pending/final-starting/already-refunded ↗</a></li><li><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/20db682821e9f8633eb809db08ad981a" target="_blank" rel="noopener">pending/final-manual/already-refunded ↗</a></li></ul></div></div><p class="aria-foot">Keep the compared versions frozen. Suggest a future experiment without running it. Check ARIA’s selected project. Use exact record URLs; add native context where this surface offers it.</p>
+
+<!--
+Allocate 7 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+-->
+
+---
+class: aria-investigation
+---
+
+# Read one claim in the recorded response
+
+<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source."><g><rect x="0" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="18" y="54" fill="#183b31" style="font-size:23px">Your interpretation</text><text x="18" y="91" fill="#42584f" style="font-size:17px">Same fresh ticket</text></g><path d="M345 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M360 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="370" y="18" width="340" height="116" rx="8" fill="#d9e9e1" stroke="#48675d"/><text x="388" y="54" fill="#183b31" style="font-size:23px">ARIA response</text><text x="388" y="91" fill="#42584f" style="font-size:17px">Three frozen harnesses</text></g><path d="M715 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M730 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="740" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="758" y="54" fill="#183b31" style="font-size:23px">Checked source record</text><text x="758" y="91" fill="#42584f" style="font-size:17px">Account checks and tool events</text></g></svg></div><div class="aria-response"><figure class="aria-screen"><a href="/aria/conclusion/conclusion-response.png" target="_blank"><img src="/aria/conclusion/conclusion-response.png" alt="Actual ARIA response. Check its distinction between retrieved native records and supplied evidence excerpts."></a></figure><div><b>Recorded instructor investigation</b><blockquote>not higher correctness for any harness.</blockquote><p>Does this statement follow from the records, or is it a possible explanation?</p><p><a href="/aria/conclusion/conclusion-transcript.html" target="_blank">Read the full transcript without sign-in ↗</a></p><a href="https://forge.coreweave.com/aria/threads/01a1e061-ff2e-7471-a695-0877d87d71aa" target="_blank" rel="noopener">Open the recorded conversation ↗</a></div></div><p class="aria-foot">The recording uses instructor results. It does not describe your unexecuted edits.</p>
+
+<!--
+Allocate 7 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+-->
+
+---
+class: aria-investigation
+---
+
+# Open the source and check that claim
+
+<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source."><g><rect x="0" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="18" y="54" fill="#183b31" style="font-size:23px">Your interpretation</text><text x="18" y="91" fill="#42584f" style="font-size:17px">Same fresh ticket</text></g><path d="M345 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M360 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="370" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="388" y="54" fill="#183b31" style="font-size:23px">ARIA response</text><text x="388" y="91" fill="#42584f" style="font-size:17px">Three frozen harnesses</text></g><path d="M715 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M730 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="740" y="18" width="340" height="116" rx="8" fill="#d9e9e1" stroke="#48675d"/><text x="758" y="54" fill="#183b31" style="font-size:23px">Checked source record</text><text x="758" y="91" fill="#42584f" style="font-size:17px">Account checks and tool events</text></g></svg></div><div class="aria-response"><figure class="aria-screen"><a href="/aria/conclusion/conclusion-verification.png" target="_blank"><img src="/aria/conclusion/conclusion-verification.png" alt="Native EvalTables overview: each version has completion 1 and error 0. This screen does not show the four independent account grades; check the supplied saved records for those grades."></a></figure><div><b>Citation check: supported</b><p>The local saved pending/final-comparison result contains four runs with task_success=true for each version. The already-refunded executions all show get_account then finish. Native run summaries retrieved by ARIA did not include these counts; this check uses the saved execution records, not a claimed native trace readback.</p><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/fdcf3eb3fbcae1cf6b7b765e7654c36b" target="_blank" rel="noopener">Open the checked source ↗</a><p><a href="/aria/conclusion/conclusion-source-records.html" target="_blank">Check the supplied source values offline ↗</a></p></div></div><p class="aria-foot">Save your own citation check. ARIA’s answer does not become a label, score, approved lesson, or release decision.</p>
+
+<!--
+Allocate 7 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+-->
+
+---
 class: exercise
 ---
 
@@ -1196,18 +1268,6 @@ class: exercise
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Publish my conclusion with the comparison and evidence.
--->
-
----
----
-
-# Ask ARIA to compare one case across harness versions.
-
-<div class="quote">Compare my starting and agent-selected harnesses on the same fresh ticket. Use the linked evaluation, execution trace, and harness diff. Explain what changed in behavior and whether the account result changed. Cite the relevant records before suggesting another experiment.</div>
-<div class="bottom-note">Optional. Verify one citation yourself. This investigation is outside the measured comparison.</div>
-
-<!--
-Do not imply ARIA authored these prior results. The prompt asks for evidence analysis, not permission to run new experiments or change budgets.
 -->
 
 ---
@@ -1289,7 +1349,7 @@ if run["case_id"] == "double-charge":
 
 This development check distinguishes the four public examples. The trusted final scorer also checks the target payment and unrelated account state.
 
-<span class="source-link"><a href="/94">Continue to judge validation →</a></span> · <span class="source-link"><a href="/49">Return to exercise →</a></span>
+<span class="source-link"><a href="/99">Continue to judge validation →</a></span> · <span class="source-link"><a href="/49">Return to exercise →</a></span>
 
 <!--
 The learner check is deliberately limited. Do not describe it as the full final scorer.

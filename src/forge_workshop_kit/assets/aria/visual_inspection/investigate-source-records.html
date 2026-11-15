@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Visual Inspection / Investigate this result / source values</title><style>
+:root { color-scheme:light dark; --paper:#f7f3e8; --ink:#142c32; --accent:#136b70; --line:#bec9c4; }
+@media(prefers-color-scheme:dark) { :root { --paper:#152528; --ink:#ecede3; --accent:#8cdbce; --line:#526968; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font:18px/1.55 system-ui,sans-serif; }
+main { max-width:1080px; margin:auto; padding:32px 28px; }
+h1 { font-size:clamp(1.8rem,4vw,3rem); line-height:1.14; margin:.5em 0; }
+h2 { font-size:1.35rem; margin-top:1.6em; }
+a { color:var(--accent); overflow-wrap:anywhere; }
+a:focus-visible,summary:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
+.notice { padding:16px 20px; border-left:5px solid var(--accent); }
+table { width:100%; border-collapse:collapse; table-layout:fixed; }
+th,td { padding:12px; border-bottom:1px solid var(--line); vertical-align:top; text-align:left; overflow-wrap:anywhere; }
+th:first-child,td:first-child { width:35%; }
+pre { white-space:pre-wrap; overflow-wrap:anywhere; font:14px/1.6 ui-monospace,monospace; padding:18px; border:1px solid var(--line); border-radius:8px; }
+.response { white-space:pre-wrap; overflow-wrap:anywhere; padding:20px; border:1px solid var(--line); }
+img { display:block; max-width:100%; height:auto; }
+.capture-frame { position:relative; }
+.capture-box { position:absolute; border:2px solid #ffcf66; pointer-events:none; }
+.capture-box b { position:absolute; top:-1.2em; left:-2px; padding:0 6px; color:#142c32; background:#ffcf66; font:700 13px/1.4 system-ui,sans-serif; }
+small { opacity:.8; }
+@media(max-width:600px) { main { padding:20px 16px; } th,td { padding:8px 5px; font-size:15px; } }
+</style></head><body><main><h1>Visual Inspection / Investigate this result / source values</h1><p class="notice"><strong>Saved-record excerpt.</strong> These are the exact values supplied in the instructor’s recorded prompt. This page is a local teaching view, not a native Forge capture and not a participant execution.</p><p>The validation photograph pcb1-anomaly-086.jpg was attached through the native Add images control. The exact prompt supplied run/conversation URLs, aggregate validation excerpts, and a score reproduced locally from the saved model; no native run attachment was selected. ARIA retrieved only the named run and conversation and confirmed aggregate counts. It described visible image content but did not identify the defect, independently verify its label, or rerun the score.</p><h2>Open the source records</h2><ul><li><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f18536533b586759997a5dc392e6d94d">compare/whole</a></li></ul><h2>Values supplied to ARIA</h2><table><thead><tr><th>Source field</th><th>Recorded value</th></tr></thead><tbody><tr><th scope="row">validation_metrics.average_precision</th><td>0.7915945165945167</td></tr><tr><th scope="row">validation_metrics.defect_recall</th><td>0.9166666666666666</td></tr><tr><th scope="row">validation_metrics.false_alarm_rate</th><td>0.08333333333333333</td></tr><tr><th scope="row">validation_metrics.misses</th><td>1</td></tr><tr><th scope="row">validation_metrics.false_alarms</th><td>10</td></tr><tr><th scope="row">validation_metrics.review_fraction</th><td>0.0</td></tr><tr><th scope="row">validation_metrics.review_count</th><td>0</td></tr><tr><th scope="row">validation_metrics.auto_pass_misses</th><td>1</td></tr><tr><th scope="row">validation_metrics.examples</th><td>132</td></tr><tr><th scope="row">validation_metrics.defective</th><td>12</td></tr><tr><th scope="row">validation_metrics.normal</th><td>120</td></tr><tr><th scope="row">settings.method</th><td>&quot;whole&quot;</td></tr><tr><th scope="row">settings.C</th><td>0.03</td></tr><tr><th scope="row">settings.review_budget</th><td>0</td></tr><tr><th scope="row">feature_contract</th><td>&quot;Frozen ImageNet ResNet-18; 512 whole-image values; supplied defect masks are inspection aids, not classifier inputs. The aggregate validation metrics below are supplemented by the attached validation photograph and its separately reproduced score.&quot;</td></tr></tbody></table><details><summary>Complete supplied excerpt</summary><pre>{
+  &quot;validation_metrics&quot;: {
+    &quot;average_precision&quot;: 0.7915945165945167,
+    &quot;defect_recall&quot;: 0.9166666666666666,
+    &quot;false_alarm_rate&quot;: 0.08333333333333333,
+    &quot;misses&quot;: 1,
+    &quot;false_alarms&quot;: 10,
+    &quot;review_fraction&quot;: 0.0,
+    &quot;review_count&quot;: 0,
+    &quot;auto_pass_misses&quot;: 1,
+    &quot;examples&quot;: 132,
+    &quot;defective&quot;: 12,
+    &quot;normal&quot;: 120
+  },
+  &quot;settings&quot;: {
+    &quot;method&quot;: &quot;whole&quot;,
+    &quot;C&quot;: 0.03,
+    &quot;review_budget&quot;: 0
+  },
+  &quot;feature_contract&quot;: &quot;Frozen ImageNet ResNet-18; 512 whole-image values; supplied defect masks are inspection aids, not classifier inputs. The aggregate validation metrics below are supplemented by the attached validation photograph and its separately reproduced score.&quot;
+}</pre></details><p><a href="investigate-transcript.html">Read the actual ARIA conversation</a></p><h2>Additional context supplied with this question</h2><pre>{
+  &quot;case_id&quot;: &quot;pcb1-anomaly-086&quot;,
+  &quot;split&quot;: &quot;validation&quot;,
+  &quot;target_defective&quot;: true,
+  &quot;saved_model_stage_id&quot;: &quot;f18536533b586759997a5dc392e6d94d&quot;,
+  &quot;reproduced_score_as_supplied&quot;: -3.9363274574,
+  &quot;frozen_threshold_as_supplied&quot;: -0.4987401962,
+  &quot;predicted_defective&quot;: false,
+  &quot;source&quot;: &quot;Free local forward pass of the saved whole-image classifier; no training or publication. Score and threshold were supplied in the exact prompt, not independently computed by ARIA.&quot;,
+  &quot;mask_attached&quot;: false,
+  &quot;mask_used_as_model_input&quot;: false
+}</pre><h2>Images attached to this question</h2><figure><img src="pcb1-anomaly-086.jpg" alt="The actual pcb1-anomaly-086 validation photograph attached to ARIA. Its known defective label comes from the dataset; ARIA did not visually identify the defect. No mask was attached. VisA: Zou, Jeong, Pemula, Zhang, and Dabeer, SPot-the-Difference (ECCV 2022), CC BY 4.0. This is the kit’s prepared teaching image, copied without further edits."><figcaption>The actual pcb1-anomaly-086 validation photograph attached to ARIA. Its known defective label comes from the dataset; ARIA did not visually identify the defect. No mask was attached. VisA: Zou, Jeong, Pemula, Zhang, and Dabeer, SPot-the-Difference (ECCV 2022), CC BY 4.0. This is the kit’s prepared teaching image, copied without further edits.</figcaption></figure></main></body></html>

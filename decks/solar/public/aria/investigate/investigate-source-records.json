@@ -1,0 +1,65 @@
+{
+  "kind": "saved-record excerpt; not a Forge screenshot",
+  "recording_id": "aria-v0100-solar-investigate",
+  "recorded_at": "2026-11-15T18:07:04.894064+00:00",
+  "context_method": "Exact URLs and saved validation excerpts; no native attachment. ARIA retrieved the two named W&B run summaries read-only and checked validation metrics and dataset identity. Its discussion of loss history and units relied on supplied excerpts.",
+  "prompt_sha256": "dd3c791f13ad702f7fbc0fdd60ab584fdb6947f6f4816dbecc18b48bb0197d1e",
+  "records": [
+    {
+      "label": "goes/search-2",
+      "identity": "ff57eba2f9e3704d9bee074e4b4c9bea",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ff57eba2f9e3704d9bee074e4b4c9bea"
+    },
+    {
+      "label": "goes/persistence",
+      "identity": "34be79df856314de9497c9715ad8da99",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/34be79df856314de9497c9715ad8da99"
+    }
+  ],
+  "excerpt": {
+    "selected_run": "goes/search-2",
+    "config": {
+      "architecture": "mlp",
+      "width": 16,
+      "learning_rate": 0.003,
+      "steps": 60,
+      "seed": 17,
+      "batch_size": 32
+    },
+    "metrics": {
+      "error": 2.7121469205813082,
+      "persistence_error": 0.17826738542856696,
+      "skill_vs_persistence": -14.213926619617615,
+      "examples": 2779,
+      "validation_error": 2.7121469205813082,
+      "seconds": 1.9001059532165527,
+      "learner_metric": 2.712146759033203,
+      "learner_metric_matches": true
+    },
+    "loss_first_3": [
+      31.394834518432617,
+      29.03706169128418,
+      27.466228485107422
+    ],
+    "loss_last_3": [
+      10.946819305419922,
+      9.598377227783203,
+      9.454852104187012
+    ],
+    "persistence_validation_metrics": {
+      "error": 0.17826738542856696,
+      "persistence_error": 0.17826738542856696,
+      "skill_vs_persistence": 0.0,
+      "examples": 2779
+    },
+    "units": "target log10 GOES XRS-B flux in W/m²; inputs standardized using training dates; validation February 11–12, 2014"
+  },
+  "supplemental_evidence": {},
+  "attachments": [],
+  "citation_check": {
+    "claim": "The selected GOES validation model error exceeds the persistence error on the same 2,779 examples.",
+    "assessment": "supported",
+    "reason": "The saved goes/search-2 metrics contain validation_error=2.7121469205813082 and examples=2779. Saved goes/persistence has error=0.17826738542856696 and examples=2779. These match the native summary values quoted by ARIA. A scaling explanation remains a hypothesis; no training change was run.",
+    "record_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ff57eba2f9e3704d9bee074e4b4c9bea"
+  }
+}

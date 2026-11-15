@@ -380,10 +380,55 @@ Ten-minute break. Keep the fixed batches and state; do not restart discovery to 
 -->
 
 ---
+class: aria-investigation
+name: aria-investigate
+---
+
+<div class="kicker">1:50 · 8 minutes across these three frames · Airline service monitoring</div>
+
+# Investigate this result
+
+<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source."><g><rect x="0" y="18" width="340" height="116" rx="8" fill="#d9e9e1" stroke="#48675d"/><text x="18" y="54" fill="#183b31" style="font-size:23px">Your interpretation</text><text x="18" y="91" fill="#42584f" style="font-size:17px">Passenger request</text></g><path d="M345 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M360 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="370" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="388" y="54" fill="#183b31" style="font-size:23px">ARIA response</text><text x="388" y="91" fill="#42584f" style="font-size:17px">Original and returned itinerary</text></g><path d="M715 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M730 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="740" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="758" y="54" fill="#183b31" style="font-size:23px">Checked source record</text><text x="758" y="91" fill="#42584f" style="font-size:17px">Reviewed turn and recovery events</text></g></svg></div><div class="aria-question">Challenge your saved human review using the requested change, original itinerary, returned booking, and recovery evidence. Is an unrequested change established or is context missing?</div><div class="aria-two"><div><b>Start with your explanation</b><p>What do you think happened? Which observation supports it?</p><p>Copy the notebook’s prompt and add native context in Forge.</p></div><div><b>Selected instructor records</b><ul class="aria-records"><li><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3673f9ec7c917166a808d6473195a2ae" target="_blank" rel="noopener">airline-discovery-02 ↗</a></li></ul></div></div><p class="aria-foot">Use only the selected development or validation records. Check ARIA’s selected project. Use exact record URLs; add native context where this surface offers it.</p>
+
+<!--
+Allocate 8 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/airline_monitoring/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+-->
+
+---
+class: aria-investigation
+name: aria-investigate-response
+---
+
+<div class="kicker">1:50 · 8 minutes across these three frames · Airline service monitoring</div>
+
+# Read one claim in the recorded response
+
+<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source."><g><rect x="0" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="18" y="54" fill="#183b31" style="font-size:23px">Your interpretation</text><text x="18" y="91" fill="#42584f" style="font-size:17px">Passenger request</text></g><path d="M345 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M360 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="370" y="18" width="340" height="116" rx="8" fill="#d9e9e1" stroke="#48675d"/><text x="388" y="54" fill="#183b31" style="font-size:23px">ARIA response</text><text x="388" y="91" fill="#42584f" style="font-size:17px">Original and returned itinerary</text></g><path d="M715 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M730 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="740" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="758" y="54" fill="#183b31" style="font-size:23px">Checked source record</text><text x="758" y="91" fill="#42584f" style="font-size:17px">Reviewed turn and recovery events</text></g></svg></div><div class="aria-response"><figure class="aria-screen"><a href="/aria/investigate/investigate-response.png" target="_blank"><img src="/aria/investigate/investigate-response.png" alt="Actual ARIA response. Check its distinction between retrieved native records and supplied evidence excerpts."></a></figure><div><b>Recorded instructor investigation</b><blockquote>no unrequested itinerary change observed</blockquote><p>Does this statement follow from the records, or is it a possible explanation?</p><p><a href="/aria/investigate/investigate-transcript.html" target="_blank">Read the full transcript without sign-in ↗</a></p><a href="https://forge.coreweave.com/aria/threads/01a1e072-9033-7900-836d-bc3c4f5cc719" target="_blank" rel="noopener">Open the recorded conversation ↗</a></div></div><p class="aria-foot">The recording uses instructor results. It does not describe your unexecuted edits.</p>
+
+<!--
+Allocate 8 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/airline_monitoring/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+-->
+
+---
+class: aria-investigation
+name: aria-investigate-verify
+---
+
+<div class="kicker">1:50 · 8 minutes across these three frames · Airline service monitoring</div>
+
+# Open the source and check that claim
+
+<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source."><g><rect x="0" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="18" y="54" fill="#183b31" style="font-size:23px">Your interpretation</text><text x="18" y="91" fill="#42584f" style="font-size:17px">Passenger request</text></g><path d="M345 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M360 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="370" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="388" y="54" fill="#183b31" style="font-size:23px">ARIA response</text><text x="388" y="91" fill="#42584f" style="font-size:17px">Original and returned itinerary</text></g><path d="M715 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M730 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="740" y="18" width="340" height="116" rx="8" fill="#d9e9e1" stroke="#48675d"/><text x="758" y="54" fill="#183b31" style="font-size:23px">Checked source record</text><text x="758" y="91" fill="#42584f" style="font-size:17px">Reviewed turn and recovery events</text></g></svg></div><div class="aria-response"><figure class="aria-screen"><a href="/aria/investigate/investigate-verification.png" target="_blank"><img src="/aria/investigate/investigate-verification.png" alt="The returned reservation contains the new HAT061 outbound and the unchanged HAT174 return."><svg viewBox="0 0 1280 720" preserveAspectRatio="none" aria-hidden="true"><rect x="648.0" y="423.0" width="580.0" height="101.0" rx="5" fill="none" stroke="#f7bd59" stroke-width="3"/><circle cx="634.0" cy="436.0" r="12" fill="#f7bd59" stroke="#182820" stroke-width="1.5"/><text x="634.0" y="440.0" fill="#182820" text-anchor="middle" style="font-size:14px;font-weight:600">1</text><rect x="648.0" y="548.0" width="580.0" height="100.0" rx="5" fill="none" stroke="#f7bd59" stroke-width="3"/><circle cx="634.0" cy="561.0" r="12" fill="#f7bd59" stroke="#182820" stroke-width="1.5"/><text x="634.0" y="565.0" fill="#182820" text-anchor="middle" style="font-size:14px;font-weight:600">2</text></svg></a><figcaption><span><b>1</b> Changed outbound flight</span><span><b>2</b> Return flight retained</span></figcaption></figure><div><b>Citation check: supported</b><p>The saved airline-discovery-02 booking starts with HAT007 outbound and HAT174 return; its update_reservation_flights result contains HAT061 on May 19 and HAT174 on May 29. The native verification capture shows these returned flights. The actual trace also has confirmation before the write. This supports the reviewed booking outcome, not a claim that native monitoring processed the turn.</p><a href="https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/3673f9ec7c917166a808d6473195a2ae" target="_blank" rel="noopener">Open the checked source ↗</a><p><a href="/aria/investigate/investigate-source-records.html" target="_blank">Check the supplied source values offline ↗</a></p></div></div><p class="aria-foot">Save your own citation check. ARIA’s answer does not become a label, score, approved lesson, or release decision.</p>
+
+<!--
+Allocate 8 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/airline_monitoring/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+-->
+
+---
 name: tag-definition
 ---
 
-<div class="kicker">1:50 · Airline service monitoring</div>
+<div class="kicker">1:58 · Airline service monitoring</div>
 
 # Define a behavior that a reviewer can check
 
@@ -398,7 +443,7 @@ name: counterexample-nonstop
 clicks: 2
 ---
 
-<div class="kicker">1:55 · Airline service monitoring</div>
+<div class="kicker">1:59 · Airline service monitoring</div>
 
 # Fewer flights can be the correct result
 
@@ -616,7 +661,7 @@ name: monitor
 
 # Calculate monitor quality and send new traffic
 
-<a class="answer-link" href="/71">Worked answer ↗</a>
+<a class="answer-link" href="/77">Worked answer ↗</a>
 
 <p class="where">Notebook → Check monitoring on new requests</p><div class="task-target">Edit my_monitor</div><ol><li>Compute precision and recall using reviewed, processed turns.</li><li>Compute coverage over eligible turns, retaining missing judgments.</li><li>Enable the saved tag for this workspace’s agent and run the monitor-check batch.</li></ol><div class="done"><b>Run:</b> Check my monitoring calculations → Run four new requests → Read tag results → Calculate agreement with my reviews<br><b>Finished when:</b> You can explain every denominator and name any turns still awaiting judgment.</div>
 
@@ -695,7 +740,7 @@ name: curate
 
 # Build a regression case from the reviewed turn
 
-<a class="answer-link" href="/72">Worked answer ↗</a>
+<a class="answer-link" href="/78">Worked answer ↗</a>
 
 <p class="where">Notebook → Curate regression cases</p><div class="task-target">Edit case_from_reviewed_turn</div><ol><li>Copy the initial booking, request, policy, and approved scope.</li><li>Preserve the reviewer’s decision and the exact source identities.</li><li>Add an unflagged control alongside the reported failure.</li></ol><div class="done"><b>Run:</b> Check my regression-case builder → Save reviewed regression cases<br><b>Finished when:</b> Rerunning the case starts from the original booking, not its mutated state.</div>
 
@@ -740,7 +785,7 @@ name: state-check
 
 # Add the booking check the old evaluation missed
 
-<a class="answer-link" href="/73">Worked answer ↗</a>
+<a class="answer-link" href="/79">Worked answer ↗</a>
 
 <p class="where">Notebook → Curate regression cases</p><div class="task-target">Edit my_state_scorer and my_judge_validation</div><ol><li>Implement preservation and confirmation checks; inspect the independent task-success score beside them.</li><li>Try the correct booking, missing return, and unconfirmed-write fixtures.</li><li>Keep the explanation judgment separate from those state checks.</li></ol><div class="done"><b>Run:</b> Check my booking scorer → Check my judge-response validator → Save my development evaluation code<br><b>Finished when:</b> Your scorer rejects the missing return and an unapproved write.</div>
 
@@ -840,7 +885,7 @@ name: repair
 
 # Test the repair on matched development bookings
 
-<a class="answer-link" href="/74">Worked answer ↗</a>
+<a class="answer-link" href="/80">Worked answer ↗</a>
 
 <p class="where">Notebook → Repair itinerary handling</p><div class="task-target">Edit my_itinerary_builder</div><ol><li>Implement the range replacement and validate its bounds.</li><li>Test a one-way case, connecting itinerary, and full replacement.</li><li>Run the curated regression cases, then compare both versions on the development bookings.</li></ol><div class="done"><b>Run:</b> Check my itinerary repair → Run my curated regression cases → Compare on four development bookings<br><b>Finished when:</b> Each pair starts from the same state and records the exact builder that ran.</div>
 
@@ -885,7 +930,7 @@ name: judge-execution
 
 # Judge one saved explanation against its evidence
 
-<a class="answer-link" href="/70">Worked answer ↗</a>
+<a class="answer-link" href="/76">Worked answer ↗</a>
 
 <p class="where">Notebook → Build regression cases</p><div class="task-target">Edit my_judge_validation and the explanation rubric</div><ol><li>Choose a saved development execution.</li><li>Read the booking result and the final response together.</li><li>Run one explicit judgment and inspect its cited event IDs.</li></ol><div class="done"><b>Run:</b> Judge this saved explanation<br><b>Finished when:</b> The response validates, and its cited events support or contradict its reason.</div>
 
@@ -1042,10 +1087,55 @@ Ask participants to rule out each explanation with the records. A workshop that 
 -->
 
 ---
+class: aria-investigation
+name: aria-conclusion
+---
+
+<div class="kicker">5:45 · 7 minutes across these three frames · Airline service monitoring</div>
+
+# Check our conclusion
+
+<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source."><g><rect x="0" y="18" width="340" height="116" rx="8" fill="#d9e9e1" stroke="#48675d"/><text x="18" y="54" fill="#183b31" style="font-size:23px">Your interpretation</text><text x="18" y="91" fill="#42584f" style="font-size:17px">Matching reserved bookings</text></g><path d="M345 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M360 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="370" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="388" y="54" fill="#183b31" style="font-size:23px">ARIA response</text><text x="388" y="91" fill="#42584f" style="font-size:17px">Original and repaired versions</text></g><path d="M715 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M730 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="740" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="758" y="54" fill="#183b31" style="font-size:23px">Checked source record</text><text x="758" y="91" fill="#42584f" style="font-size:17px">Agent checks, monitor coverage</text></g></svg></div><div class="aria-question">Check agent correctness, monitor precision and recall, processing coverage, and missing judgments separately across final and subsequent requests. Preserve successful live outcomes.</div><div class="aria-two"><div><b>Start with your explanation</b><p>What do you think happened? Which observation supports it?</p><p>Copy the notebook’s prompt and add native context in Forge.</p></div><div><b>Selected instructor records</b><ul class="aria-records"><li><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/6e61f9742d2bd73de556495259b40011" target="_blank" rel="noopener">final/baseline ↗</a></li><li><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/b76342ec86c76151084f51ba07c330ec" target="_blank" rel="noopener">final/repaired ↗</a></li><li><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/c786194dbc62194080e2c8f713e82095" target="_blank" rel="noopener">subsequent/baseline ↗</a></li></ul></div></div><p class="aria-foot">Keep the compared versions frozen. Suggest a future experiment without running it. Check ARIA’s selected project. Use exact record URLs; add native context where this surface offers it.</p>
+
+<!--
+Allocate 7 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/airline_monitoring/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+-->
+
+---
+class: aria-investigation
+name: aria-conclusion-response
+---
+
+<div class="kicker">5:45 · 7 minutes across these three frames · Airline service monitoring</div>
+
+# Read one claim in the recorded response
+
+<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source."><g><rect x="0" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="18" y="54" fill="#183b31" style="font-size:23px">Your interpretation</text><text x="18" y="91" fill="#42584f" style="font-size:17px">Matching reserved bookings</text></g><path d="M345 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M360 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="370" y="18" width="340" height="116" rx="8" fill="#d9e9e1" stroke="#48675d"/><text x="388" y="54" fill="#183b31" style="font-size:23px">ARIA response</text><text x="388" y="91" fill="#42584f" style="font-size:17px">Original and repaired versions</text></g><path d="M715 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M730 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="740" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="758" y="54" fill="#183b31" style="font-size:23px">Checked source record</text><text x="758" y="91" fill="#42584f" style="font-size:17px">Agent checks, monitor coverage</text></g></svg></div><div class="aria-response"><figure class="aria-screen"><a href="/aria/conclusion/conclusion-response.png" target="_blank"><img src="/aria/conclusion/conclusion-response.png" alt="Actual ARIA response. Check its distinction between retrieved native records and supplied evidence excerpts."></a></figure><div><b>Recorded instructor investigation</b><blockquote>not a measured improvement over baseline</blockquote><p>Does this statement follow from the records, or is it a possible explanation?</p><p><a href="/aria/conclusion/conclusion-transcript.html" target="_blank">Read the full transcript without sign-in ↗</a></p><a href="https://forge.coreweave.com/aria/threads/01a1e073-5631-72e1-a4dd-563ddc9353dd" target="_blank" rel="noopener">Open the recorded conversation ↗</a></div></div><p class="aria-foot">The recording uses instructor results. It does not describe your unexecuted edits.</p>
+
+<!--
+Allocate 7 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/airline_monitoring/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+-->
+
+---
+class: aria-investigation
+name: aria-conclusion-verify
+---
+
+<div class="kicker">5:45 · 7 minutes across these three frames · Airline service monitoring</div>
+
+# Open the source and check that claim
+
+<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source."><g><rect x="0" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="18" y="54" fill="#183b31" style="font-size:23px">Your interpretation</text><text x="18" y="91" fill="#42584f" style="font-size:17px">Matching reserved bookings</text></g><path d="M345 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M360 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="370" y="18" width="340" height="116" rx="8" fill="#f0eee4" stroke="#48675d"/><text x="388" y="54" fill="#183b31" style="font-size:23px">ARIA response</text><text x="388" y="91" fill="#42584f" style="font-size:17px">Original and repaired versions</text></g><path d="M715 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M730 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/><g><rect x="740" y="18" width="340" height="116" rx="8" fill="#d9e9e1" stroke="#48675d"/><text x="758" y="54" fill="#183b31" style="font-size:23px">Checked source record</text><text x="758" y="91" fill="#42584f" style="font-size:17px">Agent checks, monitor coverage</text></g></svg></div><div class="aria-response"><figure class="aria-screen"><a href="/aria/conclusion/conclusion-verification.png" target="_blank"><img src="/aria/conclusion/conclusion-verification.png" alt="Six paired final requests: both versions preserve passengers and booking details, while their execution-error counts differ."><svg viewBox="0 0 1280 720" preserveAspectRatio="none" aria-hidden="true"><rect x="388.0" y="350.0" width="275.0" height="95.0" rx="5" fill="none" stroke="#f7bd59" stroke-width="3"/><circle cx="374.0" cy="363.0" r="12" fill="#f7bd59" stroke="#182820" stroke-width="1.5"/><text x="374.0" y="367.0" fill="#182820" text-anchor="middle" style="font-size:14px;font-weight:600">1</text><rect x="678.0" y="350.0" width="568.0" height="95.0" rx="5" fill="none" stroke="#f7bd59" stroke-width="3"/><circle cx="664.0" cy="363.0" r="12" fill="#f7bd59" stroke="#182820" stroke-width="1.5"/><text x="664.0" y="367.0" fill="#182820" text-anchor="middle" style="font-size:14px;font-weight:600">2</text></svg></a><figcaption><span><b>1</b> Execution errors</span><span><b>2</b> Booking checks: both 100%</span></figcaption></figure><div><b>Citation check: supported</b><p>Saved qualification comparisons and live execution records match the native summaries: task_success=1.0 for six final cases and four subsequent cases per version. The local qualification separately records 40 booking passes, 40 unobserved monitoring rows, null processing coverage, and six unavailable Alignment tests. Missing predictions cannot supply a monitor-agreement denominator. The native screenshot verifies final booking outcomes only; it does not establish native tag agreement or the total of 40.</p><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/6e61f9742d2bd73de556495259b40011" target="_blank" rel="noopener">Open the checked source ↗</a><p><a href="/aria/conclusion/conclusion-source-records.html" target="_blank">Check the supplied source values offline ↗</a></p></div></div><p class="aria-foot">Save your own citation check. ARIA’s answer does not become a label, score, approved lesson, or release decision.</p>
+
+<!--
+Allocate 7 minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/airline_monitoring/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.
+-->
+
+---
 name: conclusion
 ---
 
-<div class="kicker">5:45 · Airline service monitoring</div>
+<div class="kicker">5:52 · Airline service monitoring</div>
 
 # Write down what changed and whether it helped
 
@@ -1060,7 +1150,7 @@ class: exercise
 name: report
 ---
 
-<div class="kicker">5:50 · Airline service monitoring</div>
+<div class="kicker">5:53 · Airline service monitoring</div>
 
 # Publish the comparison and stop automatic judging
 
@@ -1105,7 +1195,7 @@ def my_judge_validation(answer):
         raise ValueError("Cite event identities as a list of strings")
     return answer
 ```
-<p class="source-link"><a href="/56">Return to the explanation-judge exercise ↗</a></p>
+<p class="source-link"><a href="/59">Return to the explanation-judge exercise ↗</a></p>
 
 <!--
 This is the notebook’s actual validator. It checks shape and types, not the truth of the judgment.
@@ -1134,7 +1224,7 @@ def my_monitor(rows):
         "recall": tp / (tp + fn) if tp + fn else None,
         "unavailable": len(rows) - len(completed)}
 ```
-<p class="source-link"><a href="/39">Return to monitoring calculations ↗</a></p>
+<p class="source-link"><a href="/42">Return to monitoring calculations ↗</a></p>
 
 <!--
 This is the notebook’s actual my_monitor implementation. Review unflagged cases too; an alerts-only sample cannot establish recall across traffic.
@@ -1149,7 +1239,7 @@ name: answer-case
 
 # Worked answer: preserve the original case inputs
 
-<div class="bundle-list"><div>Copy the initial booking<small>A deep copy prevents later mutations changing the test</small></div><div>Keep request and policy<small>Preserve the rules used by this execution</small></div><div>Attach the reviewed expectation<small>Include scope, result, reviewer, and rationale</small></div><div>Retain native identities<small>Link back to the conversation and supporting span</small></div></div><p class="source-link"><a href="/44">Return to the curation exercise ↗</a></p>
+<div class="bundle-list"><div>Copy the initial booking<small>A deep copy prevents later mutations changing the test</small></div><div>Keep request and policy<small>Preserve the rules used by this execution</small></div><div>Attach the reviewed expectation<small>Include scope, result, reviewer, and rationale</small></div><div>Retain native identities<small>Link back to the conversation and supporting span</small></div></div><p class="source-link"><a href="/47">Return to the curation exercise ↗</a></p>
 
 <!--
 Use the actual case_from_reviewed_turn signature in the notebook. Do not synthesize a nonexistent native turn or treat a listing of spans as proof that a specific diagnostic was read.
@@ -1170,7 +1260,7 @@ untouched_prefix = actual[:start] == original[:start]
 untouched_suffix = actual[start + len(replacement):] == original[stop:]
 booking_correct = requested_change and untouched_prefix and untouched_suffix
 ```
-<p>Compare flight identities and relevant fields, not only list length. Keep confirmation and policy checks alongside these state checks.</p><p class="source-link"><a href="/47">Return to the state scorer exercise ↗</a></p>
+<p>Compare flight identities and relevant fields, not only list length. Keep confirmation and policy checks alongside these state checks.</p><p class="source-link"><a href="/50">Return to the state scorer exercise ↗</a></p>
 
 <!--
 Illustrative list-based scorer excerpt. The actual evaluator must use the recorded approved scope and final state, not values inferred from the agent’s final response.
@@ -1198,7 +1288,7 @@ def my_itinerary_builder(
         + current_flights[replace_stop:]
     )
 ```
-<p class="source-link"><a href="/53">Return to the repair exercise ↗</a></p>
+<p class="source-link"><a href="/56">Return to the repair exercise ↗</a></p>
 
 <!--
 This is the notebook’s actual itinerary builder. The deep copy prevents the result from mutating the original booking. The agent must still select the correct range and obtain confirmation.

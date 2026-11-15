@@ -385,7 +385,42 @@
         "free_check_tests": [
           "tests/test_pending_teaching.py::test_free_checks_require_the_actual_missing_behaviors"
         ]
-      }
+      },
+      "aria_investigations": [
+        {
+          "id": "investigate",
+          "title": "Investigate this result",
+          "step": "evals",
+          "minutes": 8,
+          "question": "Check one billing ticket: what changed in the account, what did the employee claim, and did read_skill occur before the procedure was used?",
+          "allowed_stage_patterns": [
+            "pending/(original/[^/]+|development-evaluation)"
+          ],
+          "allowed_partitions": [
+            "development",
+            "dev",
+            "validation",
+            "discovery"
+          ],
+          "recorded_example": "aria/pending_inc/investigate.json",
+          "deck_anchor": "aria-investigate",
+          "prompt_version": 1
+        },
+        {
+          "id": "conclusion",
+          "title": "Check our conclusion",
+          "step": "final",
+          "minutes": 7,
+          "question": "Compare the starting, manual, and agent-selected harnesses on the same tickets. Did account correctness change, or only tool use and checking?",
+          "allowed_stage_patterns": [
+            "pending/(final-(starting|manual|agent)/[^/]+|final-comparison|freeze)"
+          ],
+          "allowed_partitions": [],
+          "recorded_example": "aria/pending_inc/conclusion.json",
+          "deck_anchor": "aria-conclusion",
+          "prompt_version": 1
+        }
+      ]
     },
     {
       "slug": "solar_autoresearch",
@@ -780,7 +815,42 @@
           "tests/test_solar_teaching.py::test_starter_gaps_fail_and_worked_answers_are_executable",
           "tests/test_solar_teaching.py::test_model_gaps_and_solution_preserve_architecture_shapes"
         ]
-      }
+      },
+      "aria_investigations": [
+        {
+          "id": "investigate",
+          "title": "Investigate this result",
+          "step": "search",
+          "minutes": 8,
+          "question": "Check your explanation of one GOES validation forecast against persistence, units, normalization, settings, and its loss history. Which explanation needs another experiment?",
+          "allowed_stage_patterns": [
+            "goes/(persistence|search-[0-5])"
+          ],
+          "allowed_partitions": [
+            "development",
+            "dev",
+            "validation",
+            "discovery"
+          ],
+          "recorded_example": "aria/solar_autoresearch/investigate.json",
+          "deck_anchor": "aria-investigate",
+          "prompt_version": 1
+        },
+        {
+          "id": "conclusion",
+          "title": "Check our conclusion",
+          "step": "final",
+          "minutes": 7,
+          "question": "Check the conclusion separately for measurements and images. Distinguish the measured gain from an untested explanation and preserve the unsuccessful GOES result.",
+          "allowed_stage_patterns": [
+            "(goes/final(-comparison)?|images/(final-(manual|agent)|final-comparison|freeze))"
+          ],
+          "allowed_partitions": [],
+          "recorded_example": "aria/solar_autoresearch/conclusion.json",
+          "deck_anchor": "aria-conclusion",
+          "prompt_version": 1
+        }
+      ]
     },
     {
       "slug": "request_routing",
@@ -1149,7 +1219,43 @@
         "free_check_tests": [
           "tests/test_routing.py::test_exercises_require_the_missing_behavior"
         ]
-      }
+      },
+      "aria_investigations": [
+        {
+          "id": "investigate",
+          "title": "Investigate this result",
+          "step": "baseline",
+          "minutes": 8,
+          "question": "Inspect one TF\u2013IDF validation decision. Does the request and classifier output support your explanation, and what could sentence features change?",
+          "allowed_stage_patterns": [
+            "routing/baseline/tfidf"
+          ],
+          "allowed_partitions": [
+            "development",
+            "dev",
+            "validation",
+            "discovery",
+            "review"
+          ],
+          "recorded_example": "aria/request_routing/investigate.json",
+          "deck_anchor": "aria-investigate",
+          "prompt_version": 1
+        },
+        {
+          "id": "conclusion",
+          "title": "Check our conclusion",
+          "step": "release",
+          "minutes": 7,
+          "question": "Separate remaining classifier mistakes from the controlled label-mapping release defect. Verify the repair decision and rollback using identical requests.",
+          "allowed_stage_patterns": [
+            "routing/(final/(tfidf|embedding|selected)|release/(prepare|reproduce|incident|repair|decision|rollback|regression))"
+          ],
+          "allowed_partitions": [],
+          "recorded_example": "aria/request_routing/conclusion.json",
+          "deck_anchor": "aria-conclusion",
+          "prompt_version": 1
+        }
+      ]
     },
     {
       "slug": "visual_inspection",
@@ -1368,7 +1474,42 @@
         "free_check_tests": [
           "tests/test_inspection.py::test_exercises_and_starters"
         ]
-      }
+      },
+      "aria_investigations": [
+        {
+          "id": "investigate",
+          "title": "Investigate this result",
+          "step": "baseline",
+          "minutes": 8,
+          "question": "Inspect one whole-image validation prediction. Is the suspected problem with the representation, the threshold, or still unresolved? Masks are inspection aids, not model inputs.",
+          "allowed_stage_patterns": [
+            "compare/whole"
+          ],
+          "allowed_partitions": [
+            "development",
+            "dev",
+            "validation",
+            "discovery"
+          ],
+          "recorded_example": "aria/visual_inspection/investigate.json",
+          "deck_anchor": "aria-investigate",
+          "prompt_version": 1
+        },
+        {
+          "id": "conclusion",
+          "title": "Check our conclusion",
+          "step": "evaluate",
+          "minutes": 7,
+          "question": "Compare frozen detector results: recovered misses, new mistakes, false alarms, and the additional reviewed labels. Do not equate patch-distance images with causal explanations.",
+          "allowed_stage_patterns": [
+            "(evaluate|freeze|compare/(whole|nearest-patch)|review/(active|random))"
+          ],
+          "allowed_partitions": [],
+          "recorded_example": "aria/visual_inspection/conclusion.json",
+          "deck_anchor": "aria-conclusion",
+          "prompt_version": 1
+        }
+      ]
     },
     {
       "slug": "transit_factory",
@@ -1733,7 +1874,42 @@
           "tests/test_factory.py::test_dependencies_require_integration_not_worker_finish",
           "tests/test_factory.py::test_claim_is_atomic_and_does_not_reclaim_a_live_worker"
         ]
-      }
+      },
+      "aria_investigations": [
+        {
+          "id": "investigate",
+          "title": "Investigate this result",
+          "step": "integrate",
+          "minutes": 8,
+          "question": "Which checked observation could support a scoped lesson for future builders? If a failure occurred, inspect the repair before accepting the lesson.",
+          "allowed_stage_patterns": [
+            "factory/integration/(solo|team)"
+          ],
+          "allowed_partitions": [
+            "development",
+            "dev",
+            "validation",
+            "discovery"
+          ],
+          "recorded_example": "aria/transit_factory/investigate.json",
+          "deck_anchor": "aria-investigate",
+          "prompt_version": 1
+        },
+        {
+          "id": "conclusion",
+          "title": "Check our conclusion",
+          "step": "evaluate",
+          "minutes": 7,
+          "question": "Check the solo/team and with/without-memory conclusions. Separate correctness, duplicated work, integration attempts, elapsed time, and cost; retrieval alone does not establish that memory helped.",
+          "allowed_stage_patterns": [
+            "factory/(evaluate/[^/]+|integration/[^/]+|memory/proposal)"
+          ],
+          "allowed_partitions": [],
+          "recorded_example": "aria/transit_factory/conclusion.json",
+          "deck_anchor": "aria-conclusion",
+          "prompt_version": 1
+        }
+      ]
     },
     {
       "slug": "airline_monitoring",
@@ -2288,7 +2464,42 @@
             }
           ]
         }
-      }
+      },
+      "aria_investigations": [
+        {
+          "id": "investigate",
+          "title": "Investigate this result",
+          "step": "review",
+          "minutes": 8,
+          "question": "Challenge your saved human review using the requested change, original itinerary, returned booking, and recovery evidence. Is an unrequested change established or is context missing?",
+          "allowed_stage_patterns": [
+            "airline/(baseline/[^/]+|review/[^/]+/[^/]+)"
+          ],
+          "allowed_partitions": [
+            "development",
+            "dev",
+            "validation",
+            "discovery"
+          ],
+          "recorded_example": "aria/airline_monitoring/investigate.json",
+          "deck_anchor": "aria-investigate",
+          "prompt_version": 1
+        },
+        {
+          "id": "conclusion",
+          "title": "Check our conclusion",
+          "step": "traffic",
+          "minutes": 7,
+          "question": "Check agent correctness, monitor precision and recall, processing coverage, and missing judgments separately across final and subsequent requests. Preserve successful live outcomes.",
+          "allowed_stage_patterns": [
+            "airline/((baseline|repaired)/[^/]+|monitor-agreement|monitor-readback|tag-context|subsequent-agreement)"
+          ],
+          "allowed_partitions": [],
+          "recorded_example": "aria/airline_monitoring/conclusion.json",
+          "deck_anchor": "aria-conclusion",
+          "prompt_version": 1
+        }
+      ]
     }
   ]
 }

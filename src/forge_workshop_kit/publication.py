@@ -681,7 +681,9 @@ def publish_report(session, conclusion, links):
     import wandb_workspaces.reports.v2 as wr
     if not conclusion.strip():
         raise ValueError('Write your conclusion before publishing.')
-    receipt_key = 'report-' + digest([conclusion, links])
+    from .aria import report_notes
+    aria_notes = report_notes(session)
+    receipt_key = 'report-' + digest([conclusion, links] + ([aria_notes] if aria_notes else []))
     saved = session.read()['publications'].get(receipt_key)
     report_manifest = digest(_workshop_labels(session))
     if saved and saved.get('comparison_layout') == 3 and saved.get('report_manifest') == report_manifest:
@@ -706,6 +708,13 @@ def publish_report(session, conclusion, links):
                               layout=wr.Layout(w=12, h=5))
                     for name, comparison in _workshop_labels(session).get('comparisons', {}).items()
                     for spec in comparison['metrics'] if spec.get('report', False)])]
+    if aria_notes:
+        report.blocks += [wr.H2(text='What I checked with ARIA')]
+        for note in aria_notes:
+            report.blocks += [wr.P(text=f"{note['mode'].title()} investigation: {note['claim']}\nMy assessment: {note['assessment']}. {note['reason']}")]
+            for label, key in [('Checked evidence', 'record_url'), ('ARIA conversation', 'conversation_url')]:
+                if note.get(key):
+                    report.blocks.append(wr.P(text=wr.Link(text=label, url=note[key])))
     report.save()
     url=report.url
     if url.startswith('https://forge.coreweave.com/') and not url.startswith('https://forge.coreweave.com/wandb/'+entity+'/'):

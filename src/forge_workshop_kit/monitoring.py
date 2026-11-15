@@ -107,7 +107,7 @@ def monitor(projects, workshop_id, *, api=None, since=None, until=None, workspac
                     status=summary.get('status', 'unknown'), completed=len(summary.get('completed', [])),
                     failed=summary.get('failed_executions', []), help=summary.get('help_request', ''),
                     updated_at=updated, last_update=datetime.fromtimestamp(updated, timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC') if updated else 'Unknown',
-                    evidence=summary.get('evidence', {}), url=run.url))
+                    evidence=summary.get('evidence', {}), aria_investigations=summary.get('aria_investigations', {}), url=run.url))
             return rows or [dict(project=project, status='unknown', step='No matching progress update', last_update='Unknown')]
         except Exception as error:
             return [dict(project=project, status='unavailable', error=str(error)[:300], last_update='Unknown')]

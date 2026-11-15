@@ -22,15 +22,17 @@ The deck follows a real board through its feature arrays, a classifier score, an
 |---|---|---|
 | 0–27 | Inspect the bundled fitting-board photo before connecting, then add a Forge Tool attribute | Give a pass/review reason, reveal the annotation, and find the actual operation in Agent Lens |
 | 27–53 | Inspect training boards, follow the frozen encoder and fit, then explore the threshold fixture | Distinguish a photograph, feature vector, classifier score, and decision |
-| 53–72 | Complete `choose_threshold`, train the whole-image baseline, and inspect a validation error | Save a hypothesis before introducing patch features |
+| 53–64 | Complete `choose_threshold`, train the whole-image baseline, and inspect a validation error | Save a hypothesis before introducing patch features |
+| 64–72 | Ask ARIA to check that hypothesis against the validation photograph, score, and cutoff | Verify one observation; keep masks out of classifier inputs |
 | 72–104 | Calculate one actual patch distance and implement `build_features`; optionally verify four cached rows | Explain 512 whole-image values plus 196 patch distances, preserving board order |
 | 104–130 | Train the patch alternative with the same settings, then inspect ranking and operating errors | Compare saved models and explain AP, missed defects, and false alarms |
 | 130–140 | Break | Both trained versions are saved |
 | 140–173 | Implement `choose_review`, compare active and random selections, save an assessment | Both branches select 24 boards before opening labels |
 | 173–200 | Train both reviewed classifiers, select a version and freeze the comparison | Keep feature changes, extra labels and review policy distinct |
 | 200–210 | Break | Selected source, models and thresholds are saved |
-| 210–234 | Evaluate the same 442 boards and inspect improvements and regressions | Read scores against each model’s threshold; use AP for the complete ranking |
-| 234–240 | Reload a classifier and publish the conclusion | Reproduce one saved score and name the next validation question |
+| 210–230 | Evaluate the same 442 boards, inspect improvements and regressions, and reproduce one score | Read scores against each model’s threshold; use AP for the complete ranking |
+| 230–237 | Check the frozen comparison with ARIA or the recording | Verify a recovered defect or a new mistake and distinguish threshold from representation |
+| 237–240 | Publish the conclusion | Name the next validation question |
 
 The interactive threshold and AP illustrations use the notebook’s existing public five-board fixture. They are labeled as practice values, not PCB1 results. The actual recorded comparison and native captures remain separate. No extra training or inference is needed to use the deck controls.
 
@@ -70,3 +72,5 @@ Fresh external-account copying, browser completion and human rehearsal are relea
 
 
 The [live publication check](../evidence/inspection-live-v050.json) used the saved worked-answer executions, with no additional inference or classifier fitting. All four W&B image tables and all four Weave evaluation calls were published and read back. The CES EvalTables attempt returned HTTP 500 in that check. The current release publishes these saved results through the native Weave-backed Evaluation Tables Preview instead; see [publication checks](evaluations.md). The [rehearsal Report](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-defective-parts-before-they-ship:-5ec44d92--VmlldzoxODMwNzU3Nw==) compares all four frozen versions. Its selected version follows validation, so it need not have the best final-test result.
+
+Use the [ARIA investigation guide](aria-investigations.md) for native context attachment, the recorded fallback, citation checks, access requirements, and separate ARIA usage. These stops replace discussion time and do not add execution gates.

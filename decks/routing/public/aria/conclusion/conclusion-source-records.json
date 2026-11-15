@@ -1,0 +1,153 @@
+{
+  "kind": "saved-record excerpt; not a Forge screenshot",
+  "recording_id": "aria-v0100-routing-conclusion",
+  "recorded_at": "2026-11-15T18:11:17.572549+00:00",
+  "context_method": "Exact run and conversation URLs plus saved release-drill excerpts; no native attachment. ARIA retrieved the four named runs and conversations read-only, confirmed aggregate accuracy and inspected the incident loader event. Label-order and parity-check findings were supplied excerpts. ARIA correctly left the stronger unchanged-weights claim pending a component-hash comparison.",
+  "prompt_sha256": "92277d11cea63614c9acda5c76bfe004053258b9a86af185c869e7e89c2ff16c",
+  "records": [
+    {
+      "label": "routing/release/reproduce",
+      "identity": "79e43a453f7055b8db367f1229860185",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/79e43a453f7055b8db367f1229860185"
+    },
+    {
+      "label": "routing/release/incident",
+      "identity": "568a4b3aef6af0258bb2a96ab1b4026c",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/568a4b3aef6af0258bb2a96ab1b4026c"
+    },
+    {
+      "label": "routing/release/repair",
+      "identity": "fb0660a600e69c61e5322f482bb4fbd1",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/fb0660a600e69c61e5322f482bb4fbd1"
+    },
+    {
+      "label": "routing/release/rollback",
+      "identity": "07ba6464ced23ab18ab2c096302eb4df",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/07ba6464ced23ab18ab2c096302eb4df"
+    }
+  ],
+  "excerpt": {
+    "reproduce": {
+      "metrics": {
+        "macro_f1": 0.8961038961038961,
+        "accuracy": 0.922077922077922,
+        "coverage": 0.8571428571428571,
+        "selective_accuracy": 0.9393939393939394,
+        "count": 77,
+        "latency_seconds": 0.000844459020299837
+      },
+      "checks": null,
+      "selected_request": {
+        "case_id": "official-train/05684",
+        "text": "They said I would get a refund but I don't see it on my statement.",
+        "target": "Refund_not_showing_up",
+        "prediction": "Refund_not_showing_up",
+        "confidence": 0.8887002468109131,
+        "runner_up": "request_refund",
+        "margin": 0.7981458902359009,
+        "abstained": false,
+        "split": "review",
+        "latency_seconds": 1.0967000263634246e-05,
+        "inference_cost_usd": 0.0,
+        "cost_note": "Local classifier inference; notebook compute billed separately.",
+        "release_variant": "healthy"
+      }
+    },
+    "incident": {
+      "metrics": {
+        "macro_f1": 0.0,
+        "accuracy": 0.0,
+        "coverage": 0.8571428571428571,
+        "selective_accuracy": 0.0,
+        "count": 77,
+        "latency_seconds": 0.0011446250136941671
+      },
+      "checks": {
+        "label_set": true,
+        "label_order": false,
+        "prediction_parity": false
+      },
+      "selected_request": {
+        "case_id": "official-train/05684",
+        "text": "They said I would get a refund but I don't see it on my statement.",
+        "target": "Refund_not_showing_up",
+        "prediction": "activate_my_card",
+        "confidence": 0.8887002468109131,
+        "runner_up": "reverted_card_payment?",
+        "margin": 0.7981458902359009,
+        "abstained": false,
+        "split": "review",
+        "latency_seconds": 1.4865259918106067e-05,
+        "inference_cost_usd": 0.0,
+        "cost_note": "Local classifier inference; notebook compute billed separately.",
+        "release_variant": "incident"
+      }
+    },
+    "repair": {
+      "metrics": {
+        "macro_f1": 0.8961038961038961,
+        "accuracy": 0.922077922077922,
+        "coverage": 0.8571428571428571,
+        "selective_accuracy": 0.9393939393939394,
+        "count": 77,
+        "latency_seconds": 0.0003137910098303109
+      },
+      "checks": {
+        "label_set": true,
+        "label_order": true,
+        "prediction_parity": true
+      },
+      "selected_request": {
+        "case_id": "official-train/05684",
+        "text": "They said I would get a refund but I don't see it on my statement.",
+        "target": "Refund_not_showing_up",
+        "prediction": "Refund_not_showing_up",
+        "confidence": 0.8887002468109131,
+        "runner_up": "request_refund",
+        "margin": 0.7981458902359009,
+        "abstained": false,
+        "split": "review",
+        "latency_seconds": 4.075207919874168e-06,
+        "inference_cost_usd": 0.0,
+        "cost_note": "Local classifier inference; notebook compute billed separately.",
+        "release_variant": "repair"
+      }
+    },
+    "rollback": {
+      "metrics": {
+        "macro_f1": 0.8961038961038961,
+        "accuracy": 0.922077922077922,
+        "coverage": 0.8571428571428571,
+        "selective_accuracy": 0.9393939393939394,
+        "count": 77,
+        "latency_seconds": 0.0005195000267121941
+      },
+      "checks": {
+        "prediction_parity": true
+      },
+      "selected_request": {
+        "case_id": "official-train/05684",
+        "text": "They said I would get a refund but I don't see it on my statement.",
+        "target": "Refund_not_showing_up",
+        "prediction": "Refund_not_showing_up",
+        "confidence": 0.8887002468109131,
+        "runner_up": "request_refund",
+        "margin": 0.7981458902359009,
+        "abstained": false,
+        "split": "review",
+        "latency_seconds": 6.746753593664858e-06,
+        "inference_cost_usd": 0.0,
+        "cost_note": "Local classifier inference; notebook compute billed separately.",
+        "release_variant": "healthy"
+      }
+    }
+  },
+  "supplemental_evidence": {},
+  "attachments": [],
+  "citation_check": {
+    "claim": "The controlled release defect reduced accuracy from 92.21% to zero, and the repair and rollback restored the healthy predictions.",
+    "assessment": "supported",
+    "reason": "The same 77 review-pool requests have accuracy 0.922077922077922 for healthy, repaired, and rollback releases, and 0 for the incident. Saved repair and rollback checks report prediction_parity=true; the incident has label_order=false. These reproduction results match ARIA’s retrieved run summaries. They are not independent test results, and do not remove the classifier’s remaining errors.",
+    "record_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/79e43a453f7055b8db367f1229860185"
+  }
+}

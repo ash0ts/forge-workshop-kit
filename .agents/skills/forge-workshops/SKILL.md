@@ -27,6 +27,12 @@ When splitting a batch into teaching steps, preserve each execution's stage name
 
 Read [evaluation publication](../../../docs/evaluations.md) when changing comparisons. Consult the [official W&B skills](https://github.com/wandb/skills) for product-specific guidance, but check their dependency requirements against this kit before using their helpers. They are optional authoring aids, not participant dependencies.
 
+## Use ARIA to investigate saved work
+
+For each workshop, place the eight-minute development investigation after a participant interpretation and before an intervention. Place the seven-minute conclusion check after the frozen comparison and before Report publication. Follow [ARIA investigations](../../../docs/aria-investigations.md). Keep early context limited to the selected development or validation records; exclude complete journals, final comparisons, and worked repairs.
+
+Use genuine source-linked responses and captures. Preserve uncertainty, unsuccessful answers, and unavailable recordings. Native context controls must be rehearsed; copied prompt text is not an attachment. Verify a citation against the actual event, value, prediction, or changed line. ARIA notes never silently become labels, scores, prompts, approved lessons, or release decisions. Keep team/Smart-feature access and separately billed usage explicit, with a recorded path for participants without access.
+
 ## Rehearse what participants receive
 
 Use the current authored action cells and stable exercise IDs. Historical qualification scripts can establish a recipe or domain behavior; they cannot establish that the current notebook works. Record free checks, domain execution, authored-cell execution, browser interaction, external-account access, and human rehearsal separately.

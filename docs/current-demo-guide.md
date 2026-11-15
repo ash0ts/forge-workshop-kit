@@ -15,6 +15,17 @@ Open the [native evaluation comparisons](evaluations.md#open-the-recorded-compar
 
 Participants copy a template into their own project, check access, and work through its steps. They use their own Forge authentication, inference access and notebook compute. There is no shared gateway or facilitator token. The [setup instructions](../README.md#start-in-forge) cover hosted and laptop use.
 
+## Show one ARIA citation check
+
+Use this in place of the final discussion in a short demo. Open the [Pending conclusion activity](https://ash0ts.github.io/forge-workshop-kit/pending/aria-conclusion/). Do not introduce another experiment.
+
+1. **Select the result and ask for an interpretation.** In Pending, show the three frozen harnesses: each passed four fresh tickets. Ask whether a different tool sequence establishes better account correctness.
+2. **Ask ARIA or open the recording.** Use the notebook’s **Check our conclusion** card. Choose **Copy investigation prompt**, open the selected Forge record, and check ARIA’s project before sending. If live access is unavailable, choose **Use the recorded investigation**. The [actual instructor response](https://forge.coreweave.com/aria/threads/01a1e061-ff2e-7471-a695-0877d87d71aa) says the result does not show higher correctness for any harness. Its [bundled transcript and captures](../src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json) remain accessible without that chat’s permissions.
+3. **Check what ARIA actually established.** Open the [selected final-comparison run](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/fdcf3eb3fbcae1cf6b7b765e7654c36b) and its saved comparison. Match the four account checks per version. ARIA retrieved run summaries but used supplied execution excerpts for those counts; do not describe its answer as independent trace verification.
+4. **Save the conclusion in your own words.** Use **Save citation check** to mark the claim supported, disputed, or unresolved. A supported tie still leaves a useful next question: which additional ticket could expose the value of the added checking?
+
+The [activity guide](aria-investigations.md#use-the-investigation-card) gives the exact controls, evidence boundaries, and access fallback for all twelve stops. A pasted URL does not prove ARIA read a record. ARIA usage follows the organization’s settings and is outside the notebook’s inference allowance.
+
 ## Pending, Inc. in eight minutes
 
 The agent handles a duplicate charge and an account-access request for a fictional company. Participants write its tools and the code that passes tool results back to the model. They then test changes to its instructions and procedures. The customer accounts are fictional; the saved model requests, tool calls and evaluations came from actual executions of that simulator.

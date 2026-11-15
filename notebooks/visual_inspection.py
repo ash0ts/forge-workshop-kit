@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[inspection] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.9.0/forge_workshop_kit-0.9.0-py3-none-any.whl",
+#   "forge-workshop-kit[inspection] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.10.0/forge_workshop_kit-0.10.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -134,6 +134,7 @@ def _():
     import numpy as np
     import marimo as mo
     from forge_workshop_kit import WorkshopSession, setup, ui, inspection
+    from forge_workshop_kit import aria
     from forge_workshop_kit import inspection_teaching as teaching
     from forge_workshop_kit.session import digest
     from forge_workshop_kit.traces import event, export_trace
@@ -142,7 +143,7 @@ def _():
     get_lab, set_lab = mo.state({})
     get_step, set_step = mo.state("setup", allow_self_loops=True)
     get_feedback, set_feedback = mo.state({})
-    return (Path, WorkshopSession, digest, event, export_trace, get_feedback, get_lab, get_step, inspection, json, mo, np, publish_comparison, publish_report, save_review, set_feedback, set_lab, set_step, setup, teaching, ui,)
+    return (Path, WorkshopSession, aria, digest, event, export_trace, get_feedback, get_lab, get_step, inspection, json, mo, np, publish_comparison, publish_report, save_review, set_feedback, set_lab, set_step, setup, teaching, ui,)
 
 
 # workshop-cell: visual_inspection/definitions/go_to
@@ -405,7 +406,7 @@ def _(get_lab, get_step, go_to, mo, teaching, ui):
 
 # workshop-cell: visual_inspection/controls/baseline_observation
 @app.cell(hide_code=True)
-def _(get_lab, get_step, go_to, inspection, mo, teaching, ui):
+def _(get_lab, get_step, inspection, mo, teaching):
     _s=get_lab().get("session")
     _data=get_lab().get("data")
     _base=teaching.saved(_s,"compare/whole") if _s else None
@@ -419,7 +420,7 @@ def _(get_lab, get_step, go_to, inspection, mo, teaching, ui):
     validation_board=mo.ui.dropdown(_choices,value=next(iter(_choices),None),label="Validation board to investigate",disabled=not bool(_choices))
     inspection_baseline_note=mo.ui.text_area(value=_s.get_draft("inspection/baseline-note","") if _s else "",label="Optional note: what did the baseline miss or flag, and what might patches change?",on_change=lambda value:_s.save_draft("inspection/baseline-note",value) if _s else None,full_width=True)
     save_inspection_observation=mo.ui.run_button(label="Save my baseline observation",disabled=not bool(_choices))
-    mo.vstack([mo.md("### Inspect a baseline decision"),validation_board,inspection_baseline_note,save_inspection_observation,ui.next_step(mo,"Next: add patch features","features",go_to)]) if get_step()=="baseline" else mo.md("")
+    mo.vstack([mo.md("### Inspect a baseline decision"),validation_board,inspection_baseline_note,save_inspection_observation]) if get_step()=="baseline" else mo.md("")
     return (inspection_baseline_note, save_inspection_observation, validation_board,)
 
 
@@ -436,6 +437,19 @@ def _(get_lab, get_step, inspection, mo, teaching, validation_board):
     return
 
 
+# workshop-cell: visual_inspection/aria/investigate
+@app.cell(hide_code=True)
+def _(aria, get_lab, get_step, go_to, inspection_baseline_note, mo, teaching, ui, validation_board):
+    mo.stop(get_step()!="baseline")
+    _s=get_lab().get("session")
+    _baseline=teaching.saved(_s,"compare/whole") if _s else None
+    _selected_case=get_lab()["data"]["records"][validation_board.value]["case_id"] if get_lab().get("data") and validation_board.value is not None else None
+    inspection_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=[_baseline["id"]] if _baseline else [],case_ids=[_selected_case] if _selected_case else [],interpretation=inspection_baseline_note.value,workshop="visual-inspection")
+    inspection_after_aria=ui.next_step(mo,"Next: add patch features","features",go_to)
+    mo.vstack([inspection_aria_investigate,inspection_after_aria])
+    return (inspection_after_aria, inspection_aria_investigate,)
+
+
 # workshop-cell: visual_inspection/action/baseline_observation
 @app.cell(hide_code=True)
 def _(get_lab, inspection_baseline_note, mo, refresh_inspection, save_inspection_observation, validation_board):
@@ -447,7 +461,7 @@ def _(get_lab, inspection_baseline_note, mo, refresh_inspection, save_inspection
     return
 
 
-# workshop-cell: visual_inspection/display/26
+# workshop-cell: visual_inspection/display/27
 @app.cell(hide_code=True)
 def _(get_feedback, get_step, mo, ui):
     mo.stop(get_step() != "features")
@@ -544,7 +558,7 @@ def _(build_features, choose_threshold, event, export_trace, feature_editor, fee
     return
 
 
-# workshop-cell: visual_inspection/display/31
+# workshop-cell: visual_inspection/display/32
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() not in ("baseline", "compare"))
@@ -624,7 +638,7 @@ def _(get_feedback, get_lab, get_step, go_to, mo, teaching, ui):
     return (continue_inspection_freeze, reveal_review, review_board, review_guess, save_inspection_review, train_reviewed,)
 
 
-# workshop-cell: visual_inspection/display/36
+# workshop-cell: visual_inspection/display/37
 @app.cell(hide_code=True)
 def _(get_lab, get_step, inspection, mo, reveal_review, review_board, teaching):
     mo.stop(get_step() != "review" or review_board.value is None or not get_lab().get("data"))
@@ -682,7 +696,7 @@ def _(build_features, choose_threshold, event, export_trace, feature_editor, fee
     return
 
 
-# workshop-cell: visual_inspection/display/39
+# workshop-cell: visual_inspection/display/40
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() != "review")
@@ -805,7 +819,7 @@ def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     return (final_board,)
 
 
-# workshop-cell: visual_inspection/display/46
+# workshop-cell: visual_inspection/display/47
 @app.cell(hide_code=True)
 def _(final_board, get_lab, get_step, inspection, mo, teaching):
     mo.stop(get_step() != "evaluate" or final_board.value is None or not get_lab().get("data"))
@@ -825,8 +839,18 @@ def _(get_lab, get_step, mo, teaching):
     inspection_conclusion = mo.ui.text_area(value=_s.get_draft("inspection/conclusion", "") if _s else "", on_change=lambda value: _s.save_draft("inspection/conclusion", value) if _s else None, label="What changed, whether it helped, and what you would test next", full_width=True)
     reproduce_inspection = mo.ui.run_button(label="Reload the selected classifier and reproduce one prediction", disabled=not bool(get_lab().get("session") and teaching.saved(get_lab()["session"], "evaluate")))
     report_inspection = mo.ui.run_button(label="Publish my inspection Report", disabled=not bool(get_lab().get("session") and teaching.saved(get_lab()["session"], "evaluate")))
-    mo.vstack([mo.md("### Leave the next engineer a reproducible result\nReload the selected file and reproduce a saved prediction. In your conclusion, separate the feature change, the extra labeled examples and the review policy. State which comparison improved and which did not. A lower missed-defect count is not a deployment guarantee."), inspection_conclusion, reproduce_inspection, report_inspection, mo.accordion({"Optional extension": mo.md("Link the evaluated classifier artifact to Registry if you have access. Load that exact version in a batch predictor, fail a release check, and return to the previous version. Registry tracks the selected artifact; it does not deploy this Python classifier for you.")})])
+    mo.vstack([mo.md("### Leave the next engineer a reproducible result\nReload the selected file and reproduce a saved prediction. In your conclusion, separate the feature change, the extra labeled examples and the review policy. State which comparison improved and which did not. A lower missed-defect count is not a deployment guarantee."), inspection_conclusion, reproduce_inspection, mo.accordion({"Optional extension": mo.md("Link the evaluated classifier artifact to Registry if you have access. Load that exact version in a batch predictor, fail a release check, and return to the previous version. Registry tracks the selected artifact; it does not deploy this Python classifier for you.")})])
     return (inspection_conclusion, report_inspection, reproduce_inspection,)
+
+
+# workshop-cell: visual_inspection/aria/conclusion
+@app.cell(hide_code=True)
+def _(aria, get_lab, get_step, inspection_conclusion, mo, report_inspection):
+    mo.stop(get_step()!="reproduce")
+    _s=get_lab().get("session")
+    inspection_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=inspection_conclusion.value,workshop="visual-inspection")
+    mo.vstack([inspection_aria_conclusion,report_inspection])
+    return (inspection_aria_conclusion,)
 
 
 # workshop-cell: visual_inspection/action/reproduce_inspection
@@ -870,7 +894,7 @@ def _(feedback, get_lab, inspection_conclusion, mo, publish_report, refresh_insp
     return
 
 
-# workshop-cell: visual_inspection/display/50
+# workshop-cell: visual_inspection/display/52
 @app.cell(hide_code=True)
 def _(get_feedback, get_step, mo, ui):
     mo.stop(get_step() != "reproduce")
@@ -906,7 +930,7 @@ def _(Path, event, export_trace, feedback, get_lab, instrument_inspection_tool, 
     return
 
 
-# workshop-cell: visual_inspection/display/53
+# workshop-cell: visual_inspection/display/55
 @app.cell(hide_code=True)
 def _(get_feedback, get_step, mo, ui):
     mo.stop(get_step() != "features")

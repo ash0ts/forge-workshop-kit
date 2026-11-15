@@ -2,8 +2,8 @@
 from notebook_builder import Cell
 
 cells=[]
-def add(code,hide=False):
-    cells.append(Cell(code,hide=hide))
+def add(code,hide=False,cell_id=None):
+    cells.append(Cell(code,hide=hide,cell_id=cell_id))
 
 add('''
 import os
@@ -13,6 +13,7 @@ from dataclasses import asdict
 import copy
 import marimo as mo
 from forge_workshop_kit import WorkshopSession, ui, setup
+from forge_workshop_kit import aria
 from forge_workshop_kit.pending import teaching, recovery, visuals as pending_visuals
 from forge_workshop_kit.pending.cases import CASES
 from forge_workshop_kit.pending.harness import Harness, harness_diff
@@ -396,8 +397,16 @@ _s=get_pending().get("session")
 _check=teaching.check_status(_s,"scorer",{"scorer.py":scorer_editor.value})
 _check["error"]=get_display().get("scorer",{}).get("error","")
 _evaluation=get_pending().get("evaluation",{})
-mo.vstack([mo.ui.table(_check.get("rows",[]),selection=None),mo.md(_check.get("error","")),mo.ui.table(_evaluation.get("rows",[]),selection=None),ui.publication(mo,_s) if _s else mo.md(""),ui.evidence(mo,_s,[r["stage_id"] for r in _evaluation.get("runs",[])],question="Choose a ticket and compare its account check with its explanation score. Open the trace: did the refund happen, and did the reply describe it accurately?") if _s else mo.md(""),pending_next_step_4])
+mo.vstack([mo.ui.table(_check.get("rows",[]),selection=None),mo.md(_check.get("error","")),mo.ui.table(_evaluation.get("rows",[]),selection=None),ui.publication(mo,_s) if _s else mo.md(""),ui.evidence(mo,_s,[r["stage_id"] for r in _evaluation.get("runs",[])],question="Choose a ticket and compare its account check with its explanation score. Open the trace: did the refund happen, and did the reply describe it accurately?") if _s else mo.md("")])
 ''',True)
+add('''
+mo.stop(get_step()!="evals")
+_s=get_pending().get("session")
+_evaluation=teaching.latest(_s,"pending/development-evaluation") if _s else None
+_ids=([_evaluation["id"]]+[r["stage_id"] for r in _evaluation["result"].get("runs",[])]) if _evaluation else []
+pending_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=_ids,workshop="pending-direct-teaching")
+mo.vstack([pending_aria_investigate,pending_next_step_4])
+''', True, cell_id='pending_inc/aria/investigate')
 add('''
 mo.stop(get_step()!="manual")
 _s=get_pending().get("session")
@@ -635,8 +644,14 @@ mo.stop(get_step()!="report")
 _s=get_pending().get("session")
 pending_conclusion=mo.ui.text_area(value=_s.get_draft("pending/conclusion","") if _s else "",label="What changed, what happened, and what would you test next?",full_width=True,on_change=lambda value:_s.save_draft("pending/conclusion",value) if _s else None)
 pending_report=mo.ui.run_button(label="Publish my conclusion with the comparison and evidence",disabled=not bool(get_pending().get("final")),full_width=True)
-mo.vstack([mo.Html(ui.step("8. Explain what changed", "Choose one fresh ticket. Explain what you changed, what the employee did, and what the account check and judge found. Link to the trace and instructions you used. If the edit did not help, say so.","Publish your Report, then follow its links to the comparison and ticket. The saved code and result files are W&B Artifacts: versioned files you or a teammate can reopen later.")),pending_conclusion,pending_report,pending_prerequisite_8 if not get_pending().get("final") else mo.md(""),mo.md("**Optional ARIA prompt:** Review my Report and linked conversations. Find one supported explanation for a difference, cite the event and harness version, and suggest one next test. Do not run new experiments.")])
+mo.vstack([mo.Html(ui.step("8. Explain what changed", "Choose one fresh ticket. Explain what you changed, what the employee did, and what the account check and judge found. Link to the trace and instructions you used. If the edit did not help, say so.","Publish your Report, then follow its links to the comparison and ticket. The saved code and result files are W&B Artifacts: versioned files you or a teammate can reopen later.")),pending_conclusion,pending_prerequisite_8 if not get_pending().get("final") else mo.md("")])
 ''',True)
+add('''
+mo.stop(get_step()!="report")
+_s=get_pending().get("session")
+pending_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=pending_conclusion.value,workshop="pending-direct-teaching")
+mo.vstack([pending_aria_conclusion,pending_report])
+''', True, cell_id='pending_inc/aria/conclusion')
 add('''
 mo.stop(not pending_report.value)
 _s=get_pending()["session"]

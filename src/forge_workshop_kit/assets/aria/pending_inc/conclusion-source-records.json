@@ -1,0 +1,77 @@
+{
+  "kind": "saved-record excerpt; not a Forge screenshot",
+  "recording_id": "aria-v0100-pending-conclusion",
+  "recorded_at": "2026-11-15T18:05:43.563645+00:00",
+  "context_method": "Exact URLs and saved frozen-comparison excerpts; no native attachment. ARIA retrieved the four named W&B run summaries read-only. Those summaries showed completion but did not contain pass counts; the counts and tool sequences in its answer came from the supplied excerpts.",
+  "prompt_sha256": "d612bff1d2416d05821f5a39ae84fc92e60f60168e40f9f8e57b4ffc6238ba70",
+  "records": [
+    {
+      "label": "pending/final-comparison",
+      "identity": "fdcf3eb3fbcae1cf6b7b765e7654c36b",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/fdcf3eb3fbcae1cf6b7b765e7654c36b"
+    },
+    {
+      "label": "pending/final-starting/already-refunded",
+      "identity": "25cf9e219e38e8f6c445e3e38b16749b",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/25cf9e219e38e8f6c445e3e38b16749b"
+    },
+    {
+      "label": "pending/final-manual/already-refunded",
+      "identity": "20db682821e9f8633eb809db08ad981a",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/20db682821e9f8633eb809db08ad981a"
+    },
+    {
+      "label": "pending/final-agent/already-refunded",
+      "identity": "8d05c61780b324b33edc1c1d8a47db9a",
+      "url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/8d05c61780b324b33edc1c1d8a47db9a"
+    }
+  ],
+  "excerpt": {
+    "starting": {
+      "case_id": "already-refunded",
+      "task_success": true,
+      "tool_sequence": [
+        "get_account",
+        "finish"
+      ]
+    },
+    "manual": {
+      "case_id": "already-refunded",
+      "task_success": true,
+      "tool_sequence": [
+        "get_account",
+        "finish"
+      ]
+    },
+    "agent": {
+      "case_id": "already-refunded",
+      "task_success": true,
+      "tool_sequence": [
+        "get_account",
+        "finish"
+      ]
+    },
+    "counts": {
+      "starting": {
+        "passes": 4,
+        "total": 4
+      },
+      "manual": {
+        "passes": 4,
+        "total": 4
+      },
+      "agent": {
+        "passes": 4,
+        "total": 4
+      }
+    }
+  },
+  "supplemental_evidence": {},
+  "attachments": [],
+  "citation_check": {
+    "claim": "The recorded three-way comparison passed four of four cases per version; it does not show higher task correctness for a harness.",
+    "assessment": "supported",
+    "reason": "The local saved pending/final-comparison result contains four runs with task_success=true for each version. The already-refunded executions all show get_account then finish. Native run summaries retrieved by ARIA did not include these counts; this check uses the saved execution records, not a claimed native trace readback.",
+    "record_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/fdcf3eb3fbcae1cf6b7b765e7654c36b"
+  }
+}

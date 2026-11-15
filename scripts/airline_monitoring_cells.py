@@ -15,6 +15,7 @@ import json
 import time
 import marimo as mo
 from forge_workshop_kit import WorkshopSession, setup, ui, airline, airline_teaching as teaching
+from forge_workshop_kit import aria
 from forge_workshop_kit import agent_lens, airline_calibration, airline_regression
 from forge_workshop_kit.manifest import get_workshop
 from forge_workshop_kit.session import digest
@@ -362,6 +363,16 @@ refresh()
 ''', cell_id="airline_monitoring/action/save_review")
 
 add('''
+mo.stop(get_step() != "review")
+_s=get_context().get("session")
+_revision=get_revision()
+_review=review_for(review_case.value) if _s and review_case.value else None
+_ids=[_review["id"],_review["result"]["stage_id"]] if _review else []
+_reason=_review["result"].get("reason", "") if _review else ""
+airline_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=_ids,interpretation=_reason,workshop="airline-monitoring")
+mo.vstack([mo.md("Save your own turn review above before checking it with ARIA. Its explanation does not replace your label or become tag criteria.") if not _review else mo.md("Compare ARIA's explanation with the review you saved. If it uses a different turn or unavailable context, leave the finding unresolved."),airline_aria_investigate])
+''', True, cell_id='airline_monitoring/aria/investigate')
+add('''
 run_calibration = mo.ui.run_button(label="Create six controlled calibration traces", disabled=not teaching.review_complete(get_context().get("session")))
 mo.vstack([mo.md("### If the live agent made no relevant mistake"), mo.md("Create six local simulator incidents for tag calibration: an omitted return flight, a valid one-way trip, a connection-to-nonstop change, an explicitly requested whole-itinerary change, recovery, and a request awaiting confirmation. These are controlled tool-only drills with no model calls. Their labels are teaching examples, not measured agent failures."), run_calibration]) if get_step() == "align" else mo.md("")
 ''')
@@ -671,8 +682,15 @@ publish_results = mo.ui.run_button(label="Publish saved comparisons", disabled=n
 conclusion = mo.ui.text_area(value=_s.get_draft("airline/conclusion", "") if _s else "", label="What changed in the agent, the monitor, and the evaluation suite? Include one remaining problem and the next test.", on_change=lambda text: _s.save_draft("airline/conclusion", text) if _s else None, full_width=True)
 publish_report = mo.ui.run_button(label="Publish my conclusion", disabled=len(runs_for("subsequent")) != 8)
 confirm_tag_off = mo.ui.run_button(label="Verify automatic tagging is off", disabled=not bool(saved("airline/tag-context")))
-mo.vstack([mo.Html(ui.step("Write down what the comparison supports", "Separate booking quality from monitoring agreement and tool errors. Link one claim to its trace and matching case. Name what remains unresolved rather than describing every valid judge response as correct.", "Your Report links back to the saved code and results. Turn off Apply with AI for this workshop tag and verify the change below.")), publish_results, conclusion, publish_report, mo.md("**Stop automatic judging:** open your native tag, disable Apply with AI, save it, then click the verification button. Closing the notebook does not disable the tag."), confirm_tag_off]) if get_step() == "report" else mo.vstack([mo.md("Publish the saved predictions to compare matching requests in Forge. This button never sends another passenger request."), publish_results]) if get_step() in ("final", "traffic") else mo.md("")
+mo.vstack([mo.Html(ui.step("Write down what the comparison supports", "Separate booking quality from monitoring agreement and tool errors. Link one claim to its trace and matching case. Name what remains unresolved rather than describing every valid judge response as correct.", "Your Report links back to the saved code and results. Turn off Apply with AI for this workshop tag and verify the change below.")), publish_results, conclusion]) if get_step() == "report" else mo.vstack([mo.md("Publish the saved predictions to compare matching requests in Forge. This button never sends another passenger request."), publish_results]) if get_step() in ("final", "traffic") else mo.md("")
 ''')
+add('''
+mo.stop(get_step() != "report")
+_s=get_context().get("session")
+_revision=get_revision()
+airline_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=conclusion.value,workshop="airline-monitoring")
+mo.vstack([airline_aria_conclusion,publish_report,mo.md("**Stop automatic judging:** open your native tag, disable Apply with AI, save it, then click the verification button. Closing the notebook does not disable the tag."),confirm_tag_off])
+''', True, cell_id='airline_monitoring/aria/conclusion')
 add('''
 mo.stop(not publish_results.value)
 show("publication", publish_saved_comparisons())

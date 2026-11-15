@@ -1,6 +1,6 @@
 {
-  "pages": 75,
-  "slides": 72,
+  "pages": 81,
+  "slides": 78,
   "page_map": [
     {
       "page": 0,
@@ -376,11 +376,41 @@
       "page": 74,
       "slide": 72,
       "click": 0
+    },
+    {
+      "page": 75,
+      "slide": 73,
+      "click": 0
+    },
+    {
+      "page": 76,
+      "slide": 74,
+      "click": 0
+    },
+    {
+      "page": 77,
+      "slide": 75,
+      "click": 0
+    },
+    {
+      "page": 78,
+      "slide": 76,
+      "click": 0
+    },
+    {
+      "page": 79,
+      "slide": 77,
+      "click": 0
+    },
+    {
+      "page": 80,
+      "slide": 78,
+      "click": 0
     }
   ],
   "empty_pages": 0,
   "all_pages_rendered": true,
-  "converted_links": 8,
-  "source_sha256": "114670b7a43c9f59f5ab4fdec4ca0e273a7260cd0b4c08b689f23a0b22546fdc",
-  "pdf_sha256": "e51d116150bc54ac8178190606fcf3de03bc5a6f1cf797ffe2c22931169797f2"
+  "converted_links": 16,
+  "source_sha256": "d6baa3350726f7f5a78953d85af90e0cb0b70a3df0a6de7d2b9aca42756a38da",
+  "pdf_sha256": "0c628702dbdb9af03b301177355a65ee0361feb49b6194ef19e37620f104c675"
 }

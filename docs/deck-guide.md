@@ -45,7 +45,7 @@ The current deck explains each change with a concrete input and output before th
 | Edit the verification procedure | **5 · Edit one procedure**; selected evidence and verification skill | **Save this procedure and rerun both development tickets** |
 | Propose and test procedure changes | **6 · Improve twice**; visible proposal, probe, composition and adoption code | Use the one current **Round N · …** control. Review the displayed diff before testing; the notebook advances from saved records. |
 | Compare three versions on fresh cases | **7 · Compare fresh tickets**; frozen versions and independent scoring | **Freeze versions and run 12 evaluations** |
-| Explain the result | **8 · Explain the result**; conclusion and evidence links | **Publish my conclusion with the comparison and evidence**. The optional ARIA prompt asks for analysis, not new executions. |
+| Explain the result | **8 · Explain the result**; conclusion and evidence links | **Publish my conclusion with the comparison and evidence**. Use the seven-minute ARIA conclusion check before publication, live or recorded. Verify one citation. |
 
 The invoice tool runs in local Python and onboarding uses actual local MCP. The participant's credentials publish directly to their project. Do not use the historical deck's remote Sandbox registration, gateway URL, host tokens, or renewal instructions. The editor changes the harness after the participant's executor is frozen; it cannot replace the tool loop or trusted final scorer.
 
@@ -66,3 +66,7 @@ For [Inspection](inspection-workshop.md), keep the same board visible while expl
 For [Transit](transit-facilitator.md), follow an after-midnight GTFS departure from its service date to the displayed civil time. Then follow a worker's file edit, test and integration. Explain task ownership through the free two-worker race. Trace one accepted lesson through retrieval into the next worker request before discussing whether it helped.
 
 The authored storyboards own the deck text. Their slide maps link concepts, code references, exercises, evidence and time allocations. Worked answers use stable identities so inserting an explanation does not send a learner back to the wrong exercise. Existing participant code and saved execution identities remain unchanged.
+
+## ARIA investigation frames
+
+Each workshop reserves eight minutes after a development result and seven before Report publication. The shared sequence keeps the question, selected records, response, and checked citation visible across three frames. The [investigation guide](aria-investigations.md) lists the exact notebook controls and the current native-context fallback. A capture of an answer is evidence of what ARIA said; opening the cited record checks whether the claim is supported. Excerpt-only responses remain labeled.
