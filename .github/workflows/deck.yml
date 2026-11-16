@@ -2,10 +2,11 @@ name: Workshop decks
 on:
   push:
     branches: [main]
-    paths: ['decks/**', 'skills/**', 'visual-guides/**', 'docs/**', 'next-up.md', 'reports/published.json', 'src/forge_workshop_kit/assets/visuals.json', 'src/forge_workshop_kit/assets/aria/**', 'src/forge_workshop_kit/workshops.json', 'scripts/aria_storyboard.py', 'scripts/build_aria_recordings.py', 'scripts/build_decks.py', 'scripts/build_share_packet.py', 'scripts/build_share_links.py', 'scripts/render_share_qr.mjs', 'scripts/share_storyboard.py', 'scripts/render_share_packet.mjs', 'scripts/build_visual_guides.py', 'scripts/illustrate_*.py', 'scripts/technical_guide_storyboard.py', 'scripts/scene_storyboard.py', 'scripts/validate_deck.mjs', 'scripts/check_deck_pdf.py', 'scripts/serve_deck.py', '.github/workflows/deck.yml']
+    paths: ['decks/**', 'skills/**', 'visual-guides/**', 'docs/**', 'next-up.md', 'reports/published.json', 'src/forge_workshop_kit/assets/visuals.json', 'src/forge_workshop_kit/assets/aria/**', 'src/forge_workshop_kit/workshops.json', 'scripts/aria_storyboard.py', 'scripts/build_aria_recordings.py', 'scripts/build_decks.py', 'scripts/build_share_packet.py', 'scripts/build_share_links.py', 'scripts/render_share_qr.mjs', 'scripts/share_storyboard.py', 'scripts/render_share_packet.mjs', 'scripts/build_visual_guides.py', 'scripts/illustrate_*.py', 'scripts/technical_guide_storyboard.py', 'scripts/scene_storyboard.py', 'scripts/validate_deck.mjs', 'scripts/check_deck_pdf.py', 'scripts/serve_deck.py', '.github/workflows/deck.yml', '.github/scripts/pages-artifact.cjs']
   workflow_dispatch:
 
 permissions:
+  actions: read
   contents: read
   pages: write
   id-token: write
@@ -38,7 +39,16 @@ jobs:
       - run: python3 scripts/build_decks.py --pdf --validate
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
+        id: upload
         with:
           path: dist/decks/site
+      - name: Wait for Pages artifact metadata
+        uses: actions/github-script@v7
+        env:
+          PAGES_ARTIFACT_ID: ${{ steps.upload.outputs.artifact_id }}
+        with:
+          script: |
+            const { waitForPagesArtifact } = require('./.github/scripts/pages-artifact.cjs');
+            await waitForPagesArtifact({ github, context, core, artifactId: process.env.PAGES_ARTIFACT_ID });
       - uses: actions/deploy-pages@v4
         id: deployment

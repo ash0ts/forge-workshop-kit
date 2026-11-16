@@ -44,6 +44,18 @@ Validation checks slide and reveal states, Back navigation, worked-answer return
 
 The [Workshop decks workflow](../.github/workflows/deck.yml) publishes validated site output after matching changes reach `main`, or by explicit workflow dispatch. It does not upload assets to a GitHub release or publish Forge templates.
 
+### Retry a Pages deployment
+
+If deck validation and artifact upload succeeded but Pages deployment failed, run [Republish validated workshop decks](../.github/workflows/republish-decks.yml) on `main`. Set `source_run_id` to the numeric ID from the original Actions run URL:
+
+```sh
+gh workflow run republish-decks.yml --ref main -f source_run_id=RUN_ID
+```
+
+The recovery workflow checks that the source is a completed `deck.yml` run on this repository's `main` branch, with successful validation and upload steps. It uses [download-artifact](https://github.com/actions/download-artifact) to recover the existing `artifact.tar`, uploads that archive unchanged, waits for its metadata to become visible, and calls [deploy-pages](https://github.com/actions/deploy-pages). It does not rebuild decks or execute workshop code. Both publication workflows share the same concurrency group, so wait for any active publication to finish before starting recovery.
+
+Pages artifacts expire after one day. If the artifact is missing or expired, rerun the ordinary deck workflow. Check the deployed site and its downloads after either path succeeds.
+
 ### Build the meeting packet
 
 The complete deck build also creates `dist/decks/site/packet/`: a briefing page and PDF, six deck PDFs, setup and demo instructions, a facilitator start guide, a short running guide for each deck, detailed facilitator notes, and a downloadable ZIP. The authored brief and Slack copy live in [sharing.md](sharing.md); workshop links come from the existing manifest and Report catalog.
