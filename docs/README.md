@@ -12,7 +12,7 @@ Start with the [repository README](../README.md) to choose a workshop. Use this 
 | Prepare and lead a session | [Facilitator start guide](facilitator-start.md), with a short running guide for each deck |
 | Choose materials for a reader, demo, hands-on pilot, or new workshop | [Use the workshop materials](use-the-workshops.md) |
 | Learn from a worked example before opening the notebook | [Public learning Reports](../reports/README.md) |
-| Copy a template, run locally, or recover saved work | [Setup](setup.md) |
+| Download a notebook, run locally, or recover saved work | [Setup](setup.md) |
 | Give a short demonstration using saved results | [Demo guide](current-demo-guide.md) |
 | Present the companion slides | [Deck guide](deck-guide.md) |
 | Ask ARIA about a result and check its answer | [ARIA investigations](aria-investigations.md) |

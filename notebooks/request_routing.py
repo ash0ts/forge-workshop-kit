@@ -213,7 +213,7 @@ def _(get_context, get_revision, get_step, go_to, mo, teaching, technical_guides
     _s=get_context().get("session")
     _revision=get_revision()
     routing_navigation=ui.navigation(mo,teaching.STEPS,get_step(),go_to,completed=teaching.completed_steps(_s),label="Workshop steps")
-    mo.vstack([mo.Html(ui.STYLE + technical_guides.theme_style()),routing_navigation,mo.Html(ui.context(_s)) if _s else mo.md("Copy this notebook to your own Forge project. Opening it does not send model requests or train a classifier.")])
+    mo.vstack([mo.Html(ui.STYLE + technical_guides.theme_style()),routing_navigation,mo.Html(ui.context(_s)) if _s else mo.md("Connect this notebook to your own Forge project to save the classifier runs and reviews there. Opening it does not send model requests or train a classifier.")])
     return (routing_navigation,)
 
 
@@ -296,7 +296,7 @@ def _(get_context, help_button, help_message, mo):
 @app.cell(hide_code=True)
 def _(get_step, mo, ui):
     mo.stop(get_step()!="setup")
-    mo.vstack([mo.md("**5½-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/routing/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Route customer requests and learn from mistakes", "You're joining a fictional bank's support team. A missing card, a broken card, and an unfamiliar payment need different workflows. You'll build a router, inspect its mistakes, review labels, and test a revised classifier.", theme="routing")),mo.md("The messages come from **Banking77**, published by PolyAI's researchers. It contains 10,003 training messages and 3,080 test messages across 77 banking intents. We reserve ten training examples per intent for validation and ten for review. The official test set stays untouched until the final comparison. These are public teaching data, not your customers' records."),mo.md("We'll start with word counts weighted by how distinctive they are, then train the same classifier on frozen sentence embeddings. After that, you decide which uncertain requests need a person. The support queue is fictional. Its enthusiasm for automatically forwarding tickets is familiar."),mo.md("**Today's output:** a selected router, the reviewed examples it learned from, an evaluation on matching requests, and a trace explaining one routing or labeling decision.")])
+    mo.vstack([mo.md("**5½-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/routing/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Route customer requests and learn from mistakes", "You're joining a fictional bank's support team. A card that has not arrived belongs in a different queue from a card that has stopped working. You'll train a classifier to choose that queue, inspect a request it gets wrong, and test whether different inputs help.", theme="routing")),mo.md("The messages come from **Banking77**, published by PolyAI's researchers. It contains 10,003 training messages and 3,080 test messages across 77 banking intents. We reserve ten training examples per intent for validation and ten for review. The official test set stays untouched until the final comparison. We'll use the supplied messages throughout the workshop."),mo.md("We'll start with word counts weighted by how distinctive they are, then train the same classifier on frozen sentence embeddings. After that, you decide which uncertain requests need a person. The support queue is fictional. Its enthusiasm for automatically forwarding tickets is familiar."),mo.md("**By the end:** open one request in EvalTables and explain why the two classifiers sent it to different queues. Load your selected model from its Artifact and check that it makes the same predictions. Then investigate a controlled release bug that changes the intent names without changing the model's probabilities.")])
     return
 
 
@@ -322,7 +322,7 @@ def _(get_step, mo, setup):
     project_input=mo.ui.text(value=_context["project"],label="Your Forge project",disabled=_context["hosted"] and _context["detected"],full_width=True)
     allowance=mo.ui.number(value=8,start=.01,stop=1000,label="Inference allowance in USD; notebook CPU is separate")
     connect=mo.ui.run_button(label="Connect and restore my work")
-    mo.vstack([project_input,allowance,connect,mo.md("On a laptop, authenticate with `uv run wandb login`. Use a project you can write to. Classifier training runs on this notebook's CPU; only the explicit routing and judge buttons use billed inference.")]) if get_step()=="setup" else mo.md("")
+    mo.vstack([project_input,allowance,connect,mo.md("Use the login command from this notebook’s start page before connecting. Use a project you can write to. Classifier training runs on this notebook's CPU; only the explicit routing and judge buttons use billed inference.")]) if get_step()=="setup" else mo.md("")
     return (allowance, connect, project_input,)
 
 
@@ -581,7 +581,7 @@ def _(aria, baseline_case, baseline_observation, get_context, get_revision, get_
     _revision=get_revision()
     _baseline=teaching.saved(_s,"routing/baseline/tfidf") if _s else None
     routing_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=[_baseline["id"]] if _baseline else [],case_ids=[baseline_case.value] if baseline_case.value else [],interpretation=baseline_observation.value,workshop="banking-routing")
-    mo.vstack([mo.md("Keep the selected validation request in view while checking the explanation. The sentence-feature comparison has not run yet."),routing_aria_investigate])
+    mo.vstack([mo.md("Ask ARIA to check your explanation of this TF–IDF prediction. Read the request and the probability it cites before deciding whether sentence features are worth testing. You have not run that comparison yet."),routing_aria_investigate])
     return (routing_aria_investigate,)
 
 

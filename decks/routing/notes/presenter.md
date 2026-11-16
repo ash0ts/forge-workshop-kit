@@ -2,7 +2,7 @@
 
 0:00
 
-The support team is fictional. The messages are public Banking77 data. We will make a genuine measured classifier comparison, then let participants run an open-ended data review experiment. Do not promise that every personal review will improve the score.
+Start with a missing card and a broken card: the next person handling them needs to do different work. Participants train a classifier on public Banking77 messages, inspect a wrong destination, and test a different representation. Open the same request in EvalTables to compare probabilities and review decisions. Finish by loading the selected classifier and checking that its intent names still match its probability columns.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
 Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
@@ -49,17 +49,17 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 The split order was fixed before any model score. Ten examples of every intent go to validation and ten to the review pool. The test partition is only opened after selection freezes. Files are public for teaching; the code keeps final cases out of model-editing and labeling prompts.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
 
-## 8. Open the materials and copy the notebook
+## 8. Open the materials and download the notebook
 
 0:16
 
-Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
+Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Download the v0.12.0 Python file to a persistent folder. The page provides the pinned W&B sign-in and marimo launch commands. Enter a writable Forge project in notebook setup. The older hosted template is an optional path, not the current download. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
 
-## 9. Open your copy and add your first trace
+## 9. Open your notebook and add your first trace
 
 0:16
 
-Let everyone open their own project. Hosted authentication is inherited; there is no shared gateway or host token. The $8 adjustable allowance covers fixed-model inference; CPU notebook charges are separate.
+Enter the participant’s writable Forge project in Connect. Local training uses their laptop CPU. The adjustable $8 allowance covers model inference; hosted compute, if used, has separate charges.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
 
 ## 10. The span should explain the operation
@@ -512,7 +512,7 @@ Setting frame: point to the active work object, then advance to the complete exp
 
 5:29
 
-Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
+Keep this slide up during questions. Participants resume their saved notebook file. The QR page provides the current notebook, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
 
 ## 77. Worked answer: classifier head
 

@@ -12,7 +12,7 @@ The schedule includes two short breaks and a thirty-minute meal break. Leave the
 
 | Minutes | Lead the room through | Completion check |
 | --- | --- | --- |
-| 0–25 | Introduce the weekly forecast review, both satellite instruments, and the two prediction tasks. Copy the notebook and inspect its bundled GOES training-date example before running its connection check. Then connect, edit `instrument_tool`, and send the first trace. | Each participant finds the field they added in their own Agent Lens span. |
+| 0–25 | Introduce the weekly forecast review, both satellite instruments, and the two prediction tasks. Open the downloaded notebook and inspect its bundled GOES training-date example before running its connection check. Then connect, edit `instrument_tool`, and send the first trace. | Each participant finds the field they added in their own Agent Lens span. |
 | 25–65 | Follow the actual 01:00 UTC GOES window through its history, target, date split, input normalization, persistence forecast, and error. Implement `persistence_forecast`. | Explain why the standardized input is not the persistence prediction. Reject a window crossing a split or gap. |
 | 65–95 | Explain a training loss, gradient, optimizer step, and separate validation score. Complete `training_loss` and `my_flux_mae`. Inspect `run_training` and how it saves source and outputs. | Show the difference between predicting, updating weights, and recording results. Find the source and prediction attached to one execution. |
 | 95–110 | Fifteen-minute break. Save drafts and completed work. | Reopening a completed result does not train again. |

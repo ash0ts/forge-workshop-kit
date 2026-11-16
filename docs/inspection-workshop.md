@@ -2,7 +2,7 @@
 
 This four-hour workshop puts participants on a fictional circuit-board inspection team. The photos are real VisA PCB1 observations. Participants write feature assembly, threshold selection and review-selection code, then compare the same boards across the resulting classifiers.
 
-Copy the Visual Inspection notebook into a writable Forge project. The core path runs on notebook CPU and makes no inference API calls. Locally, install the `inspection` extra and open `notebooks/visual_inspection.py` with marimo. The project login is yours; no gateway or facilitator credential is involved.
+Save the notebook and follow the [Inspection start page](https://ash0ts.github.io/forge-workshop-kit/packet/start/inspection.html) to run it locally. Enter your writable Forge project to save its runs and artifacts. The core path uses your laptop CPU and makes no inference API calls. The [setup guide](setup.md) also covers working from a repository checkout.
 
 ## Data and prediction task
 

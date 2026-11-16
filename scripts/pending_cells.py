@@ -33,9 +33,9 @@ mo.stop(get_step()!="setup")
 mo.vstack([mo.md("**4-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/pending/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Pending, Inc.", "You're on the operations team at a fictional software company. Customers are waiting for refunds and account access. Management has assigned those tickets to an AI employee and given you the job of making it reliable. Its onboarding so far consists of a motivational paragraph.")),
 mo.md("**Today's assignment:** get the employee through two customer requests. It needs to look up the right account, decide whether a change is needed, make that change once, and explain what happened. A confident reply won't help a customer who still can't sign in."),
 mo.Html(pending_visuals.office_brief()),
-mo.md("**What's in a case.** Our dataset pairs each customer request with a starting account snapshot: the subscription, payments, refunds, and members. Python tools read and change a separate copy of that snapshot. These are fictional records; no real money moves and no real access is granted."),
+mo.md("**What's in a case.** Each ticket comes with a starting account: its subscription, payments, refunds, and members. For Acme's duplicate charge, you'll find two captured payments and decide which one should be refunded. The tools change a separate copy of these fictional records for every run."),
 mo.md("**What counts as success.** We check the account after the employee finishes: was the right payment refunded, does the requested access exist, and were unrelated records left alone? A separate judge checks whether the reply matches the recorded work. You'll use two development tickets while building and debugging, then compare the starting, manually edited, and agent-edited harnesses on four fresh cases."),
-mo.md("You'll first write the invoice tool, connect its results to the model, and trace the work in Agent Lens. Then you'll change the employee's instructions yourself and ask another agent to propose and test further edits. The model stays fixed. We're testing whether changing how it works helps it handle the next ticket.")])
+mo.md("You'll write the invoice tool and pass its returned payments into the next model request. Open that request in Agent Lens to check what the employee saw before it chose a refund. Then edit its instructions yourself and ask another agent to propose further changes. Keep the model fixed and compare the accounts each version leaves behind.")])
 ''',True)
 add('''
 mo.stop(get_step()!="setup")
@@ -122,7 +122,7 @@ _context=setup.project_context()
 pending_project=mo.ui.text(value=_context["project"],label="Your Forge entity/project",disabled=_context["hosted"] and _context["detected"],full_width=True)
 pending_allowance=mo.ui.number(value=8,start=.01,stop=1000,label="Inference limit in USD; notebook compute is separate")
 pending_connect=mo.ui.run_button(label="Check my project and restore saved work",full_width=True)
-mo.vstack([mo.Html(ui.step("1. Connect your project and send a trace", "Copy this notebook into your own Forge project. We use that project and your existing Forge login. On a laptop, enter entity/project and run uv run wandb login first.","Click Check my project and restore saved work. You should see your project name and a successful connection. This check makes no model calls.")),mo.Html(ui.result("Copied notebook project",{"Project":_context["project"],"Access":"Uses your Forge login"})) if _context["hosted"] and _context["detected"] else pending_project,pending_allowance,pending_connect])
+mo.vstack([mo.Html(ui.step("1. Connect your project and send a trace", "Enter the Forge project where you want your traces and results saved. Use the login command from this notebook’s start page, then connect below. If you imported this file into Forge, check the detected project.","Click Check my project and restore saved work. You should see your project name and a successful connection. This check makes no model calls.")),mo.Html(ui.result("Copied notebook project",{"Project":_context["project"],"Access":"Uses your Forge login"})) if _context["hosted"] and _context["detected"] else pending_project,pending_allowance,pending_connect])
 ''',True)
 add('''
 mo.stop(not pending_connect.value)
@@ -415,7 +415,7 @@ _s=get_pending().get("session")
 _evaluation=teaching.latest(_s,"pending/development-evaluation") if _s else None
 _ids=([_evaluation["id"]]+[r["stage_id"] for r in _evaluation["result"].get("runs",[])]) if _evaluation else []
 pending_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=_ids,workshop="pending-direct-teaching")
-pending_aria_investigate
+mo.vstack([mo.md("Choose one development ticket and explain what the employee did. Ask ARIA to check that explanation against the account and tool calls. Open a cited call yourself: did it read the skill, and did the requested account change happen?"),pending_aria_investigate])
 ''', True, cell_id='pending_inc/aria/investigate')
 add('''
 mo.vstack([aria.response(mo,pending_aria_investigate),pending_next_step_4])

@@ -47,7 +47,7 @@ add('''
 mo.stop(get_step() != "setup")
 mo.vstack([mo.md("**4-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/inspection/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Find defective parts before they ship", "You’re joining a fictional circuit-board inspection team. A missed defect can leave the factory; a false alarm sends a usable board for another inspection. Your job is to compare both outcomes before choosing a detector.", theme="inspection")),
 mo.md("The photographs are real **VisA PCB1** observations, released by the SPot-the-Difference authors under CC BY 4.0. They show one circuit-board family, with normal and defective examples and pixel masks identifying annotated defects. We’ll use the authors’ supervised split. The final 442 boards stay outside training and threshold selection."),
-mo.md("We’ll first compress each photograph into one feature vector. Then we’ll keep local patch information to see whether small defects become easier to detect. You’ll choose a review batch, train again, freeze a threshold, and check missed defects, false alarms, and review workload separately. A factory pilot would need more products and operating conditions than this teaching set."),
+mo.md("Start with a detector that compresses the whole photograph into one feature vector. Inspect a board it misses, then try features that preserve local patch information. Open the same board in EvalTables to compare its score and cutoff across versions. You'll also choose which additional boards to label and check whether that review helps. A factory pilot would need more products and operating conditions than this teaching set."),
 mo.md("The recorded follow-up improved average precision from **0.8729 to 0.8857**, with misses falling from 4 to 3 and false alarms from 23 to 18. It was a teaching retest of images already inspected during a failed first recipe. Your own run may differ; don’t select a model by looking at its final-test result.")])
 ''', True)
 add('''
@@ -70,7 +70,7 @@ _context = setup.project_context()
 inspection_project = mo.ui.text(value=_context["project"], label="Your Forge entity/project", disabled=_context["hosted"] and _context["detected"], full_width=True)
 inspection_allowance = mo.ui.number(value=8, start=.01, stop=1000, label="Optional inference allowance in USD; this core classifier path uses no model API")
 connect_inspection = mo.ui.run_button(label="Connect and restore my inspection work")
-mo.vstack([inspection_project, inspection_allowance, mo.md("Use your own writable project. Locally, run uv run wandb login first. CPU feature and classifier work uses notebook compute; it is separate from inference billing."), connect_inspection])
+mo.vstack([inspection_project, inspection_allowance, mo.md("Use your own writable project and the login command from this notebook’s start page. Feature extraction and classifier training use your laptop’s CPU. Hosted compute, if used, has separate charges."), connect_inspection])
 ''', True)
 add('''
 mo.stop(not connect_inspection.value)
@@ -234,7 +234,7 @@ _baseline=teaching.saved(_s,"compare/whole") if _s else None
 _selected_case=get_lab()["data"]["records"][validation_board.value]["case_id"] if get_lab().get("data") and validation_board.value is not None else None
 inspection_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=[_baseline["id"]] if _baseline else [],case_ids=[_selected_case] if _selected_case else [],interpretation=inspection_baseline_note.value,workshop="visual-inspection")
 inspection_after_aria=ui.next_step(mo,"Next: add patch features","features",go_to)
-inspection_aria_investigate
+mo.vstack([mo.md("Ask ARIA to check your explanation of the selected board. Compare its claim with the photograph, score, and cutoff. Would moving the cutoff address this mistake, and which other boards might that send for inspection?"),inspection_aria_investigate])
 ''', True, cell_id='visual_inspection/aria/investigate')
 add('''
 mo.vstack([aria.response(mo,inspection_aria_investigate),inspection_after_aria])

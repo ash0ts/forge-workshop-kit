@@ -1,5 +1,5 @@
 {
-  "source_sha256": "5d80893a11f84380fff2a57b79ac55db7374919ef61800372b66635c28e5a43a",
+  "source_sha256": "ae509cc58b57d5e67127a2eb3dd16dd2c5c29a4466329257df3328120914455b",
   "preflight_only": false,
   "slides_checked": 62,
   "expected_slides": 62,
@@ -47,7 +47,7 @@
     {
       "number": 9,
       "key": "workshop-start",
-      "title": "Open the materials and copy the notebook"
+      "title": "Open the materials and download the notebook"
     },
     {
       "number": 10,

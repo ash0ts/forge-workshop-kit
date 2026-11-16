@@ -1,6 +1,6 @@
 # Share a workshop
 
-Use the [sharing page](https://ash0ts.github.io/forge-workshop-kit/share/) to copy a tracked link or download a QR code. Use the [community Slack link](https://utm.io/uuIaS) when sharing with prospective participants in an external Slack community and the [video link](https://utm.io/uuIan) in the recording's description and closing screen. Both open the public library, with different source attribution. Each workshop also has its own link to a start page with copy, import, and laptop instructions.
+Use the [sharing page](https://ash0ts.github.io/forge-workshop-kit/share/) to copy a tracked link or download a QR code. Use the [community Slack link](https://utm.io/uuIaS) when sharing with prospective participants in an external Slack community and the [video link](https://utm.io/uuIan) in the recording's description and closing screen. Both open the public library, with different source attribution. Each workshop also has its own link to a start page with the current notebook download and local launch commands.
 
 For coworker reviews, internal Slack threads, and routine link checking, share the [untracked library address](https://ash0ts.github.io/forge-workshop-kit/). The legacy internal link `utm.io/uuIac` remains valid, but its previous coworker and verification traffic must not be presented as external acquisition.
 
@@ -11,7 +11,7 @@ The destination includes the illustrated example, deck, facilitator instructions
 - Show the workshop QR when introducing the session and when wrapping up. Keep it visible while people open the page.
 - Use the same workshop QR on its poster or handout. Keep the white border, preserve its square shape, and include the written short link for people who cannot scan it.
 - Use the community Slack link for an external invitation, the video link with the walkthrough, and a workshop link when the invitation names one session. Internal enablement uses the untracked library address.
-- Keep the direct notebook link beside the copy instructions. The sharing link leads to the public introduction; the notebook link opens Forge and may ask the participant to sign in.
+- Keep the notebook download beside its launch commands. The start page explains how to save the file, log in, and open the notebook locally. The optional older hosted template is labeled separately.
 
 Download PNG for a message and SVG for a slide or print layout. Both encode the same registered short URL. Do not replace the destination with a local preview address or a facilitator's notebook copy.
 

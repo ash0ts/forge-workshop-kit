@@ -1,5 +1,5 @@
 {
-  "source_sha256": "0438389bd6387972fa774b55fc0c378eb8b7b1de3b3fa961666ae355d63c21d5",
+  "source_sha256": "2da2137f3b076a71720068720ac2e6fa01ec5958c69991399d1eec34c3a5c78e",
   "preflight_only": false,
   "slides_checked": 102,
   "expected_slides": 102,
@@ -62,12 +62,12 @@
     {
       "number": 12,
       "key": "copy",
-      "title": "Open the materials and copy the notebook"
+      "title": "Open the materials and download the notebook"
     },
     {
       "number": 13,
       "key": "local",
-      "title": "The same notebook runs on a laptop."
+      "title": "Open the notebook you downloaded."
     },
     {
       "number": 14,

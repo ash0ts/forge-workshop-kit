@@ -23,12 +23,12 @@ exportFilename: pending-inc
 # Please improve<br>yourself.
 
 <figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="pending/start"><img :src="&quot;/scenes/pending/start.svg&quot;" alt="Pending, Inc.: Follow one customer request into the office. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
-<div v-else class="workshop-setting-detail"><div class="sub">Build an agent for billing and account access.<br>Inspect its work, then test changes to its instructions.</div>
+<div v-else class="workshop-setting-detail"><div class="sub">Give an office agent refund and account-access tools.<br>Check what it changes, then test its instructions.</div>
 <OfficeScene mode="employee" />
 <div class="bottom-note" style="color:#bbd4cb">A four-hour Python workshop at Pending, Inc.</div></div>
 
 <!--
-We will implement an agent that can inspect an account, refund a duplicate charge, and provision access. Then we will instrument and evaluate its work before asking an editor agent to revise its instructions. Pending, Inc. and its accounts are fictional; the Python tools, model requests, traces, and evaluations run in your own project.
+Start with Acme: two payments for one invoice and a request to refund the duplicate. Participants write the lookup, pass its result to the model, and inspect the chosen payment in Agent Lens. Then they change the instructions and compare the resulting accounts on matching tickets. Pending, Inc. and its customers are fictional; the tools and model calls run in the participant's project.
 Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
@@ -157,33 +157,28 @@ Use the table to distinguish behavior changes. The model is fixed; it is not ret
 class: workshop-sharing
 ---
 
-# Open the materials and copy the notebook
+# Open the materials and download the notebook
 
-<div class="workshop-share-layout"><div class="workshop-share-instructions"><ol><li><strong>Open this workshop’s page.</strong> Scan the code or type the short link.</li><li><strong>Choose the notebook.</strong> Sign in to Forge, then choose <strong>Copy to project</strong>.</li><li><strong>Open your copy in Edit.</strong> Run all stale cells once to initialize the controls.</li><li><strong>Check the destination.</strong> Use your own writable project and account.</li></ol></div><div class="workshop-share-code"><a href="https://utm.io/uuH96" aria-label="Open this workshop’s materials"><img src="/images/workshop-qr.svg" width="280" height="280" alt="QR code opening this workshop’s notebook, deck, Report, and run guide"></a><a class="workshop-share-url" href="https://utm.io/uuH96">utm.io/uuH96</a><p>Notebook · Report · Deck · Run guide</p></div></div><p class="workshop-share-footer">The $8 adjustable allowance covers notebook inference. Notebook compute is billed separately.</p>
+<div class="workshop-share-layout"><div class="workshop-share-instructions"><ol><li><strong>Open this workshop’s page.</strong> Scan the code or type the short link.</li><li><strong>Download the current notebook.</strong> Save the Python file in a folder you will keep.</li><li><strong>Follow the two commands.</strong> Sign in, then open the saved file in marimo.</li><li><strong>Check the destination.</strong> Use your own writable project and account.</li></ol></div><div class="workshop-share-code"><a href="https://utm.io/uuH96" aria-label="Open this workshop’s materials"><img src="/images/workshop-qr.svg" width="280" height="280" alt="QR code opening this workshop’s notebook, deck, Report, and run guide"></a><a class="workshop-share-url" href="https://utm.io/uuH96">utm.io/uuH96</a><p>Notebook · Report · Deck · Run guide</p></div></div><p class="workshop-share-footer">The $8 adjustable allowance covers notebook inference. Notebook compute is billed separately.</p>
 
 <!--
-Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
+Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Download the v0.12.0 Python file to a persistent folder. The page provides the pinned W&B sign-in and marimo launch commands. Enter a writable Forge project in notebook setup. The older hosted template is an optional path, not the current download. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
 -->
 
 ---
 ---
 
-# The same notebook runs on a laptop.
+# Open the notebook you downloaded.
 
 ```sh
-git clone https://github.com/ash0ts/forge-workshop-kit.git
-cd forge-workshop-kit
-uv sync --frozen --extra pending
-uv run --extra pending wandb login --verify
-uv run --extra pending marimo edit notebooks/pending_inc.py
+uvx --from wandb==0.31.0 wandb login --host https://api.wandb.ai --verify
+uvx --from marimo==0.25.2 marimo edit --sandbox pending_inc.py
 ```
 
-Enter `YOUR_ENTITY/YOUR_PROJECT` in the notebook.
-
-<div class="bottom-note">Local Python and local MCP run the office tools. You do not need Docker or remote Sandboxes.</div>
+Run these commands in the folder containing your saved file. Use **Run all stale cells** once, then enter `YOUR_ENTITY/YOUR_PROJECT` in Connect.
 
 <!--
-These commands correspond to the kit README and locked pending extra. Do not send participants to old start.py or office_notebook.py. Inference uses their own access and billing. Windows supports the same uv commands.
+Install uv first. The sandbox option creates a local dependency environment, not a remote Forge Sandbox. Keep the terminal and notebook folder. Exercise buttons start model calls; initialization does not.
 -->
 
 ---
@@ -1338,10 +1333,10 @@ class: workshop-sharing
 
 # Keep the notebook and workshop materials
 
-<div class="workshop-share-layout"><div class="workshop-share-instructions"><p>Return to your saved notebook copy to continue your work.</p><ol><li><strong>Revisit the example.</strong> The Report links its claims to recorded results.</li><li><strong>Keep the materials.</strong> Open the deck, download the PDF, or get the source.</li><li><strong>Run a session.</strong> Use the short run guide and facilitator notes.</li></ol></div><div class="workshop-share-code"><a href="https://utm.io/uuH96" aria-label="Open this workshop’s materials"><img src="/images/workshop-qr.svg" width="280" height="280" alt="QR code opening this workshop’s notebook, deck, Report, and run guide"></a><a class="workshop-share-url" href="https://utm.io/uuH96">utm.io/uuH96</a><p>Notebook · Report · Deck · Run guide</p></div></div><p class="workshop-share-footer">The shared page has the template and references. Your executions remain in your own project.</p>
+<div class="workshop-share-layout"><div class="workshop-share-instructions"><p>Reopen your saved notebook file to continue your work.</p><ol><li><strong>Revisit the example.</strong> The Report links its claims to recorded results.</li><li><strong>Keep the materials.</strong> Open the deck, download the PDF, or get the source.</li><li><strong>Run a session.</strong> Use the short run guide and facilitator notes.</li></ol></div><div class="workshop-share-code"><a href="https://utm.io/uuH96" aria-label="Open this workshop’s materials"><img src="/images/workshop-qr.svg" width="280" height="280" alt="QR code opening this workshop’s notebook, deck, Report, and run guide"></a><a class="workshop-share-url" href="https://utm.io/uuH96">utm.io/uuH96</a><p>Notebook · Report · Deck · Run guide</p></div></div><p class="workshop-share-footer">The shared page has the current download and references. Your Forge records remain in your own project.</p>
 
 <!--
-Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
+Keep this slide up during questions. Participants resume their saved notebook file. The QR page provides the current notebook, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
 -->
 
 ---
@@ -1447,7 +1442,7 @@ Exact semantics of teaching.ANSWERS scorer validation. Boolean strings are inval
 
 # Source, notebook, and recorded example
 
-<div class="sources"><p><a href="https://github.com/ash0ts/forge-workshop-kit">Workshop Kit source and setup</a><br><a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view">Copy the current Pending notebook</a><br><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-bc0ee4ab--VmlldzoxODMwMzUyNg==">Recorded v0.3.0 rehearsal Report</a><br><a href="https://docs.coreweave.com/products/agent-lens">Agent Lens documentation</a><br><a href="https://docs.coreweave.com/products/wandb/evaltables/compare-runs">Native EvalTables comparison guide</a><br><a href="https://github.com/google-research/harness2/tree/1cfe254e8d25b15f37048c3730134686abe60335">Pinned Harness² upstream</a></p></div>
+<div class="sources"><p><a href="https://github.com/ash0ts/forge-workshop-kit">Workshop Kit source and setup</a><br><a href="https://ash0ts.github.io/forge-workshop-kit/packet/start/pending.html">Download and start the current Pending notebook</a><br><a href="https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/pending-direct-teaching:-bc0ee4ab--VmlldzoxODMwMzUyNg==">Recorded v0.3.0 rehearsal Report</a><br><a href="https://docs.coreweave.com/products/agent-lens">Agent Lens documentation</a><br><a href="https://docs.coreweave.com/products/wandb/evaltables/compare-runs">Native EvalTables comparison guide</a><br><a href="https://github.com/google-research/harness2/tree/1cfe254e8d25b15f37048c3730134686abe60335">Pinned Harness² upstream</a></p></div>
 
 <!--
 The product evidence in this deck uses the v030 rehearsal. The current native comparison uses Weave-backed Evaluation Tables Preview. The separate CES v2 service still returns HTTP500; its unavailable status remains in publication details. Current authored notebook source scripts/pending_cells.py. Historical deck preserved outside current attendee path.

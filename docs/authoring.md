@@ -66,7 +66,7 @@ Historical domain scripts can qualify a recipe, but they do not establish that t
 | Domain execution | A model, tool, or comparison ran on the stated inputs |
 | Authored cells | Current notebook actions, learner hooks, identities, and review controls ran |
 | Browser | Rendered controls, prerequisites, navigation, and results worked |
-| External account | An attendee account could copy the template and use the required products |
+| External account | An attendee account could launch the current notebook and use the required products; hosted import/copy is qualified separately |
 | Human rehearsal | A participant completed and explained the exercise without the facilitator operating it |
 
 Worked answers are useful for a technical check, but cannot establish participant usability. Record absent adapters or incomplete checks as limitations. Keep the current findings in [release checks](release-checks.md), with proposed follow-up work in [next-up.md](../next-up.md).

@@ -7,7 +7,7 @@ Use the [timed narration script](../media/walkthrough/narration.md) when dubbing
 | Time | Show | Explain |
 | --- | --- | --- |
 | 0:00–0:50 | Public library and one Report | Why working demos still need investigation and evaluation |
-| 0:50–1:30 | Notebook start page and running guide | Read, copy or import, check access, then execute explicitly |
+| 0:50–1:30 | Notebook start page and running guide | Save the notebook, launch locally, check access, then execute explicitly |
 | 1:30–2:25 | Pending tool handoff and Agent Lens | Inspect an action and check its account outcome |
 | 2:25–3:25 | Solar forecast window, run, and files | Compare research changes and reproduce a forecast |
 | 3:25–4:20 | Routing mapping drill and evaluations | Separate model quality from release correctness |

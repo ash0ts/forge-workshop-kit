@@ -200,7 +200,7 @@ def _(get_step, mo, ui):
     mo.md("**Then, images over time.** SDO's AIA instrument recorded extreme-ultraviolet images of the Sun. We use its 171 Å channel, reduced to **64 × 64 pixels**. Each example contains an image from an hour ago and one from now; the target is the image **one hour later**. We'll compare predicted and observed brightness inside the solar disk. The displayed colors represent intensity."),
     mo.md("### What you need to bring to the review"),
     mo.md("Start by copying the latest observation as the forecast. This is **persistence**. Compare each trained model with this baseline to find out whether it reduces error. Train on February 1–10, choose changes using 11–12, then freeze your choice before testing on 13–14. We'll skip windows with missing observations; normalization comes from training dates only."),
-    mo.md("You'll compare training settings and existing architectures first. Then an AI research assistant will edit the image-model code, and you'll test its proposals using the same validation data and scorer. Bring the predictions, errors, and saved code to the review, including any version that did worse. This small CPU experiment teaches the research process; two final-test days do not establish an operational solar forecast."),
+    mo.md("Train one model and inspect its forecast before comparing the other settings. Open the training run to find its loss history, then its saved files to recover the source and weights. Later, a research agent will propose edits to the image-model code. You'll read each diff, train it, and compare its validation error with the previous version. Bring those forecasts to the review, including any that got worse. Two final-test days are enough for this teaching exercise, but not to establish a reliable solar forecast."),
     mo.accordion({"Where these observations come from":mo.md("[GOES X-ray measurements and SunPy](https://docs.sunpy.org/en/stable/generated/gallery/time_series/goes_xrs_example.html) · [NASA's explanation of the AIA channels](https://sdo.gsfc.nasa.gov/data/channels.php) · [Workshop acquisition and preparation code](https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/prepare_solar.py). The prepared download contains measurements, image arrays, a representative FITS image, source checksums, and quality exclusions. You do not need to download the raw archive yourself.")})])
     return
 
@@ -349,7 +349,7 @@ def _(get_step, mo, setup, ui):
     project_input = mo.ui.text(value=_context["project"], placeholder="your-name/solar-research", label="Your Forge project", disabled=_context["hosted"] and _context["detected"], full_width=True)
     allowance = mo.ui.number(value=8, start=.01, stop=1000, label="Inference allowance in USD; notebook compute is separate")
     connect_button = mo.ui.run_button(label="Connect and restore my work")
-    mo.vstack([mo.Html(ui.step("1. Connect to your own project", "This copy uses its own Forge project and your signed-in account. Confirm the project below, then click Connect and restore my work. On a laptop, enter entity/project and run uv run wandb login first.", "Once the connection succeeds, add your first trace in the code below.")), mo.Html(ui.result("Copied notebook project", {"Project": _context["project"], "Access": "Uses your Forge login"})) if _context["hosted"] and _context["detected"] else project_input, allowance, connect_button])
+    mo.vstack([mo.Html(ui.step("1. Connect to your own project", "Enter your writable Forge entity/project below, then click Connect and restore my work. Use the login command from the start page first. If you imported this file into Forge, check the detected project.", "Once the connection succeeds, add your first trace in the code below.")), mo.Html(ui.result("Copied notebook project", {"Project": _context["project"], "Access": "Uses your Forge login"})) if _context["hosted"] and _context["detected"] else project_input, allowance, connect_button])
     return (allowance, connect_button, project_input,)
 
 
@@ -883,7 +883,7 @@ def _(aria, get_lab, get_step, goes_diagnosis, inspect_goes_run, mo, teaching):
     _baseline=teaching.saved(_s,"goes/persistence") if _s else None
     _ids=([inspect_goes_run.value] if inspect_goes_run is not None and inspect_goes_run.value else [])+([_baseline["id"]] if _baseline else [])
     solar_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=_ids,interpretation=goes_diagnosis.value,workshop="solar-autoresearch")
-    solar_aria_investigate
+    mo.vstack([mo.md("Ask ARIA to check your diagnosis against the selected forecast, persistence, and loss history. If it suggests a cause, find the saved value supporting that explanation and name the experiment you would need to test it."),solar_aria_investigate])
     return (solar_aria_investigate,)
 
 

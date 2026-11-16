@@ -10,7 +10,7 @@ The Pending and Solar walkthroughs below follow the November 13 rehearsals. The 
 
 Open the [native evaluation comparisons](evaluations.md#open-the-recorded-comparisons) when comparing individual cases. These named workspaces select the relevant versions and leave the project default unchanged.
 
-Participants copy a template into their own project, check access, and work through its steps. They use their own Forge authentication, inference access and notebook compute. There is no shared gateway or facilitator token. The [setup instructions](setup.md) cover hosted and laptop use.
+Participants download the current notebook, save it in a folder, and open it locally using the commands on its start page. They connect to their own Forge project, check access, and work through the exercises. The [setup instructions](setup.md) explain authentication, dependencies, and returning to saved work. Hosted template updates are still blocked; use the current download for a pilot.
 
 ## Show one ARIA citation check
 
@@ -96,7 +96,7 @@ This is a technical-preview walkthrough. Native service recovery, external-accou
 
 ## When a product view is unavailable
 
-- **The hosted notebook preview is blank:** try **Copy to project** and open the editable copy. If it cannot start, use [laptop setup](setup.md#work-locally). A downloadable HTML preview is not a running notebook. The v0.10.0 maintainer check loaded all six previews and their copy controls; external-account execution remains a separate outstanding check. See [release checks](release-checks.md).
+- **The hosted notebook redirects or will not open:** use the current download and [local launch instructions](setup.md). Hosted templates remain on v0.11.1 while notebook-management access blocks updates. A downloadable HTML preview lets you read the exercise but does not execute it. See [release checks](release-checks.md).
 - **Agent Lens asks for sign-in:** use the saved notebook view or clearly labeled capture while the participant signs in. A Report link does not grant access to someone else's project.
 - **A comparison is unavailable:** use the saved notebook result and choose **Retry publication**. Native EvalTables uses the Weave backend; the CES service remains unavailable. Publication retries do not repeat training or model calls. See [evaluation setup](evaluations.md).
 - **A judgment is missing:** show the execution and the failure separately. A missing explanation judgment is not an incorrect account state and is not a zero score.

@@ -2,7 +2,7 @@
 
 0:00
 
-Set the situation before introducing products. Participants operate a simulated airline customer-service agent. They will distinguish a request completing, a booking being correct, and a monitor detecting a problem. Those are three separate observations.
+Begin with the requested change and ask which flights must remain. Participants open a conversation in Agent Lens and compare the returned booking with that request. They review several turns before testing a tag in Alignment, then save an incident as a regression case. A recovered tool error and a missing return flight should not receive the same label.
 Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 2. What you will build and inspect
@@ -53,11 +53,11 @@ These are the approved execution counts, totalling 40 conversations. Development
 
 Visual sequence: Start with the family bracket, not the batch counts. The connected dots stand for related records, not three named passengers. Reveal the assigned groups, then show why putting a related task in final evaluation leaks the family across partitions. The counts are the actual frozen plan.
 
-## 9. Open the materials and copy the notebook
+## 9. Open the materials and download the notebook
 
 0:21
 
-Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
+Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Download the v0.12.0 Python file to a persistent folder. The page provides the pinned W&B sign-in and marimo launch commands. Enter a writable Forge project in notebook setup. The older hosted template is an optional path, not the current download. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
 
 ## 10. Try the replacement API, then connect your project
 
@@ -502,7 +502,7 @@ Setting frame: point to the active work object, then advance to the complete exp
 
 5:58
 
-Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
+Keep this slide up during questions. Participants resume their saved notebook file. The QR page provides the current notebook, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
 
 ## 78. Worked answer: validate a judge response
 

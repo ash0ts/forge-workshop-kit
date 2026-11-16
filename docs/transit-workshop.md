@@ -22,7 +22,7 @@ The source is the [MBTA GTFS archive dated November 28, 2024](https://cdn.mbtace
 
 One retained record is trip `63926435` at stop `70076`, toward Alewife. Its departure time is `24:08:00` under `ThanksgivingDay` service. For service date November 28, that means November 29 at 00:08 Eastern. This is why a function that accepts only clock hours 0 through 23 is insufficient. [GTFS defines service-day times and the schedule fields](https://gtfs.org/documentation/schedule/reference/); [MBTA documents its implementation](https://github.com/mbta/gtfs-documentation/blob/master/reference/gtfs.md).
 
-Participants copy the current template into their own writable Forge project. The notebook uses their existing authentication and an adjustable inference allowance, defaulting to $8. Notebook compute charges are separate. There is no workshop gateway, shared access token or required remote Sandbox entitlement. A local checkout uses the same authored notebook through `uv sync --frozen` and `uv run marimo edit`.
+Participants save the current notebook and follow the [Transit start page](https://ash0ts.github.io/forge-workshop-kit/packet/start/transit.html) to run it locally. They enter their own writable Forge project, where traces, artifacts, and evaluations are saved. The adjustable inference allowance defaults to $8; local execution uses the laptop CPU. Hosted compute, if used, is separate. The [setup guide](setup.md) covers authentication and returning to saved work.
 
 Opening, editing, selecting a view or restoring saved work does not launch workers. Explicit run controls start paid execution. Durable receipts preserve completed requests and their outputs; publication can be retried without repeating them.
 

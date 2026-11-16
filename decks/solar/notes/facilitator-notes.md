@@ -36,26 +36,26 @@ Both examples shown here exist in the prepared training data. Set the clock to 0
 
 0:00–0:25
 
-At the review, a lower error is useful only if we know what produced it and what it was compared with. The four final files are our fictional lab’s previous filing system. We will use Forge and W&B to connect the code, configuration, data, weights, and predictions to each run. The measurement task teaches that stack with a scalar output; the image task reuses it for predictions we can inspect pixel by pixel. Only then do we add an AI research assistant. It will read the image code and validation results and propose edits to the model or training procedure. It will not alter the data, target, or final scoring rules. Session block: Connect and trace an operation (minutes 0–25).
+The four final files are the lab's previous filing system. Ask which one a colleague would need to repeat the forecast. We will open the run to find its settings and loss history, then recover the source and weights from its Artifact. First do this for one X-ray measurement, then for an image whose errors we can inspect pixel by pixel. Later, an AI research assistant will propose edits to that image code. We review the diff and train it on the same dates before deciding whether it helped. Session block: Connect and trace an operation (minutes 0–25).
 Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
-## 7. Open the materials and copy the notebook
+## 7. Open the materials and download the notebook
 
 0:00–0:25
 
-Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
+Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Download the v0.12.0 Python file to a persistent folder. The page provides the pinned W&B sign-in and marimo launch commands. Enter a writable Forge project in notebook setup. The older hosted template is an optional path, not the current download. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
 
-## 8. Copy the notebook into the project you will use
-
-0:00–0:25
-
-Show the native copy dialog. The copied notebook uses its destination project. A laptop uses manual entry. Confirm the project before executing. The browser preview limitation remains separate from notebook execution. Session block: Connect and trace an operation (minutes 0–25).
-
-## 9. Run the same notebook on your laptop
+## 8. Check where your runs will be saved
 
 0:00–0:25
 
-Hosted participants can skip this slide. On a laptop, install Git and uv, clone the repository, and run these commands. Authenticate in the terminal and keep that terminal open while marimo runs. There is no extra workshop service to start. Session block: Connect and trace an operation (minutes 0–25).
+This is a recorded hosted-copy dialog, not the required startup path. The current path uses a saved local file and manual project entry. Show the project field in Connect, then open the first trace to verify where it went. Hosted updates are blocked by notebook-management access. Session block: Connect and trace an operation (minutes 0–25).
+
+## 9. Open the notebook you downloaded
+
+0:00–0:25
+
+The start page supplies the current Python notebook. Save it in a folder you will keep, then run these commands there. The sandbox flag installs pinned Python dependencies locally; it does not request a remote Forge Sandbox. Enter your writable entity/project in Connect. Use the individual exercise buttons after initialization. Session block: Connect and trace an operation (minutes 0–25).
 
 ## 10. Check the compute and inference settings
 
@@ -694,7 +694,7 @@ Setting frame: point to the active work object, then advance to the complete exp
 
 5:45–6:00
 
-Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
+Keep this slide up during questions. Participants resume their saved notebook file. The QR page provides the current notebook, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
 
 ## 115. Reference and worked answers
 

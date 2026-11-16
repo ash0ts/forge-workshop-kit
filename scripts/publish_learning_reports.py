@@ -82,10 +82,16 @@ def build_report(slug, project):
     flush()
     if len(images) < 2:
         raise ValueError(f"{slug}: include at least two teaching visuals")
-    if not any("forge.coreweave.com/notebooks/" in link for link in links):
-        raise ValueError(f"{slug}: missing self-service notebook link")
-    if "Copy to project" not in source:
-        raise ValueError(f"{slug}: missing Copy to project instruction")
+    workshop_slug = "airline_monitoring" if slug == "airline" else slug
+    notebook_start = f"https://ash0ts.github.io/forge-workshop-kit/packet/start/{workshop_slug}.html"
+    if notebook_start not in links:
+        raise ValueError(f"{slug}: missing current notebook start page")
+    if not any(link.startswith("https://ash0ts.github.io/forge-workshop-kit/packet/notebooks/")
+               and link.endswith(".py") for link in links):
+        raise ValueError(f"{slug}: missing current notebook download")
+    if not any(link.startswith("https://github.com/ash0ts/forge-workshop-kit/releases/download/")
+               and link.endswith(".py") for link in links):
+        raise ValueError(f"{slug}: missing versioned notebook download")
     report = wr.Report(
         entity=entity, project=name, title=title, width="fixed",
         description="A worked example with code, recorded results, and a notebook you can run in your own Forge project.",
@@ -95,7 +101,7 @@ def build_report(slug, project):
         "slug": slug, "title": title, "project": project,
         "source": f"reports/{slug}.md", "source_sha256": digest(source),
         "images": images, "links": list(dict.fromkeys(links)), "blocks": len(blocks),
-        "notebook_url": next(link for link in links if "forge.coreweave.com/notebooks/" in link),
+        "notebook_url": notebook_start,
         "deck_url": "https://ash0ts.github.io/forge-workshop-kit/" + ("airline_monitoring" if slug == "airline" else slug) + "/",
     }
     # A rendering-only revision (for example linked figure captions) must still
@@ -175,6 +181,11 @@ def build_catalog(project, receipts, previous):
             for key in ("notebook_url", "deck_url"):
                 metadata[key] = fallback[key]
         rows[slug] = {key: metadata[key] for key in ("title", "url", "notebook_url", "deck_url", "source", "source_sha256", "anonymous_readback")}
+        # The current start page and a previous hosted template serve different
+        # purposes. Keep the verified hosted identity when refreshing prose.
+        known = previous.get("reports", {}).get(slug, {}) if previous.get("project") == project else {}
+        if hosted_url := metadata.get("hosted_notebook_url") or known.get("hosted_notebook_url"):
+            rows[slug]["hosted_notebook_url"] = hosted_url
     return {"project": project, "reports": rows}
 
 

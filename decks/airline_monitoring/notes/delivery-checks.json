@@ -1,5 +1,5 @@
 {
-  "source_sha256": "06d19bfcb0cbfd76268bd234b4b95664dd36a21840ead5c2933673220735d3ad",
+  "source_sha256": "4b1adabe73dac5d241efb4ff1b27d67b63356f9917a85384d450b0a0c1907e64",
   "preflight_only": false,
   "slides_checked": 83,
   "expected_slides": 83,
@@ -39,7 +39,7 @@
     },
     {
       "number": 9,
-      "title": "Open the materials and copy the notebook"
+      "title": "Open the materials and download the notebook"
     },
     {
       "number": 10,

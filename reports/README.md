@@ -2,7 +2,7 @@
 
 These six articles follow a practical problem through the code, a recorded execution, and the decision that followed. You can inspect a refund, forecast, routing mistake, defective board, departure query, or changed booking before opening a notebook. Each article explains which Forge record supports its conclusion and links to the editable exercise.
 
-Start with a Report for the technical explanation. Its packet contains the deck, visual guides, copyable notebook, and instructions for a short demonstration or a facilitated session. To try the code, open the workshop start page and choose the Forge copy, import, or laptop path. In Forge, choose **Copy to project**. Your copy uses your credentials and saves work in your project; the facilitator only reads published progress.
+Start with a Report for the technical explanation. Its workshop page has the deck, visual guides, editable notebook, and running instructions. To try the code, download the current notebook and follow that page's login and launch commands. The notebook runs locally and publishes results to your own Forge project; the facilitator only reads published progress.
 
 | Workshop | Learning Report | Materials and running instructions |
 | --- | --- | --- |
@@ -13,7 +13,7 @@ Start with a Report for the technical explanation. Its packet contains the deck,
 | Transit software factory | [Coordinate coding agents, then test the app they built](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ==) | [Transit packet](https://utm.io/uuIaa) |
 | Airline monitoring | [Turn an airline agent's behavior into monitoring rules and regression tests](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA==) | [Airline packet](https://utm.io/uuIab) |
 
-The direct ARIA controls are in the [v0.12.0 downloads](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.12.0). Hosted templates remain on v0.11.1 while Forge notebook-management access blocks their update. Each Report links the current notebook download and its import or laptop instructions.
+Each Report links the current website notebook with the revised explanations and direct ARIA controls. It also links the [original v0.12.0 release](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.12.0) for reproducing that version. Optional hosted templates remain on v0.11.1 while notebook-management access blocks their update.
 
 Use the [setup guide](../docs/setup.md) for account requirements, local installation, and recovery. The [recorded-results guide](../docs/recorded-results.md) explains the measured gains, ties, regressions, and teaching retests. These remain technical previews: native access and participant rehearsals must be checked for the intended class. See [current status](../next-up.md) before describing a complete live workshop as ready.
 

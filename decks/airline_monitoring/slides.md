@@ -26,10 +26,10 @@ download: false
 # Monitor an airline service agent<br>and build better evaluations
 
 <figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="airline_monitoring/start"><img :src="&quot;/scenes/airline_monitoring/start.svg&quot;" alt="Airline booking operations: Keep both journeys visible while changing the booking. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
-<div v-else class="workshop-setting-detail"><div class="sub">Investigate booking mistakes, test a monitoring rule, and turn reviewed incidents into checks for the next version.</div><div class="bottom-note">Six hours · Basic Python · Simulated airline data · Your own Forge project<br>Technical preview: native Alignment judging and prepared Insights remain unqualified.</div></div>
+<div v-else class="workshop-setting-detail"><div class="sub">Check that a flight change preserves the rest of the trip.<br>Use reviewed conversations to test a monitor and an agent repair.</div><div class="bottom-note">Six hours · Basic Python · Simulated airline data · Your own Forge project<br>Technical preview: native Alignment judging and prepared Insights remain unqualified.</div></div>
 
 <!--
-Set the situation before introducing products. Participants operate a simulated airline customer-service agent. They will distinguish a request completing, a booking being correct, and a monitor detecting a problem. Those are three separate observations.
+Begin with the requested change and ask which flights must remain. Participants open a conversation in Agent Lens and compare the returned booking with that request. They review several turns before testing a tag in Alignment, then save an incident as a regression case. A recovered tool error and a missing return flight should not receive the same label.
 Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
@@ -149,12 +149,12 @@ name: setup
 
 <div class="kicker">0:21 · Airline service monitoring</div>
 
-# Open the materials and copy the notebook
+# Open the materials and download the notebook
 
-<div class="workshop-share-layout"><div class="workshop-share-instructions"><ol><li><strong>Open this workshop’s page.</strong> Scan the code or type the short link.</li><li><strong>Choose the notebook.</strong> Sign in to Forge, then choose <strong>Copy to project</strong>.</li><li><strong>Open your copy in Edit.</strong> Run all stale cells once to initialize the controls.</li><li><strong>Check the destination.</strong> Use your own writable project and account.</li></ol></div><div class="workshop-share-code"><a href="https://utm.io/uuIab" aria-label="Open this workshop’s materials"><img src="/images/workshop-qr.svg" width="280" height="280" alt="QR code opening this workshop’s notebook, deck, Report, and run guide"></a><a class="workshop-share-url" href="https://utm.io/uuIab">utm.io/uuIab</a><p>Notebook · Report · Deck · Run guide</p></div></div><p class="workshop-share-footer">The $8 adjustable allowance covers notebook inference. Notebook compute is billed separately. Native tag judging has separate charges.</p>
+<div class="workshop-share-layout"><div class="workshop-share-instructions"><ol><li><strong>Open this workshop’s page.</strong> Scan the code or type the short link.</li><li><strong>Download the current notebook.</strong> Save the Python file in a folder you will keep.</li><li><strong>Follow the two commands.</strong> Sign in, then open the saved file in marimo.</li><li><strong>Check the destination.</strong> Use your own writable project and account.</li></ol></div><div class="workshop-share-code"><a href="https://utm.io/uuIab" aria-label="Open this workshop’s materials"><img src="/images/workshop-qr.svg" width="280" height="280" alt="QR code opening this workshop’s notebook, deck, Report, and run guide"></a><a class="workshop-share-url" href="https://utm.io/uuIab">utm.io/uuIab</a><p>Notebook · Report · Deck · Run guide</p></div></div><p class="workshop-share-footer">The $8 adjustable allowance covers notebook inference. Notebook compute is billed separately. Native tag judging has separate charges.</p>
 
 <!--
-Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
+Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Download the v0.12.0 Python file to a persistent folder. The page provides the pinned W&B sign-in and marimo launch commands. Enter a writable Forge project in notebook setup. The older hosted template is an optional path, not the current download. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
 -->
 
 ---
@@ -1232,10 +1232,10 @@ name: workshop-take-home
 
 # Keep the notebook and workshop materials
 
-<div class="workshop-share-layout"><div class="workshop-share-instructions"><p>Return to your saved notebook copy to continue your work.</p><ol><li><strong>Revisit the example.</strong> The Report links its claims to recorded results.</li><li><strong>Keep the materials.</strong> Open the deck, download the PDF, or get the source.</li><li><strong>Run a session.</strong> Use the short run guide and facilitator notes.</li></ol></div><div class="workshop-share-code"><a href="https://utm.io/uuIab" aria-label="Open this workshop’s materials"><img src="/images/workshop-qr.svg" width="280" height="280" alt="QR code opening this workshop’s notebook, deck, Report, and run guide"></a><a class="workshop-share-url" href="https://utm.io/uuIab">utm.io/uuIab</a><p>Notebook · Report · Deck · Run guide</p></div></div><p class="workshop-share-footer">The shared page has the template and references. Your executions remain in your own project.</p>
+<div class="workshop-share-layout"><div class="workshop-share-instructions"><p>Reopen your saved notebook file to continue your work.</p><ol><li><strong>Revisit the example.</strong> The Report links its claims to recorded results.</li><li><strong>Keep the materials.</strong> Open the deck, download the PDF, or get the source.</li><li><strong>Run a session.</strong> Use the short run guide and facilitator notes.</li></ol></div><div class="workshop-share-code"><a href="https://utm.io/uuIab" aria-label="Open this workshop’s materials"><img src="/images/workshop-qr.svg" width="280" height="280" alt="QR code opening this workshop’s notebook, deck, Report, and run guide"></a><a class="workshop-share-url" href="https://utm.io/uuIab">utm.io/uuIab</a><p>Notebook · Report · Deck · Run guide</p></div></div><p class="workshop-share-footer">The shared page has the current download and references. Your Forge records remain in your own project.</p>
 
 <!--
-Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
+Keep this slide up during questions. Participants resume their saved notebook file. The QR page provides the current notebook, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
 -->
 
 ---
@@ -1368,7 +1368,7 @@ name: sources
 
 # Sources and saved evidence
 
-<ul class="reference-list"><li><a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view">Hosted notebook template — copy into your project</a></li><li><a href="https://github.com/sierra-research/tau2-bench/blob/989d3285ae669e49503324bdb9981bf14fccedeb/src/tau2/domains/airline/tools.py">Pinned airline API implementation</a></li><li><a href="https://github.com/sierra-research/tau2-bench/blob/989d3285ae669e49503324bdb9981bf14fccedeb/data/tau2/domains/airline/">Source airline data and policy</a></li><li><a href="https://docs.coreweave.com/products/agent-lens/tags/create-tag">Native Agent Lens tags and judging criteria</a></li><li><a href="https://github.com/ash0ts/forge-workshop-kit">Source, data provenance, local checks, and release status</a></li></ul><p class="caption">Recorded captures have their original image, source URL, selected record, and annotations in this deck’s source package. No paid work runs when this deck opens.</p>
+<ul class="reference-list"><li><a href="https://ash0ts.github.io/forge-workshop-kit/packet/start/airline_monitoring.html">Current notebook and launch instructions</a></li><li><a href="https://github.com/sierra-research/tau2-bench/blob/989d3285ae669e49503324bdb9981bf14fccedeb/src/tau2/domains/airline/tools.py">Pinned airline API implementation</a></li><li><a href="https://github.com/sierra-research/tau2-bench/blob/989d3285ae669e49503324bdb9981bf14fccedeb/data/tau2/domains/airline/">Source airline data and policy</a></li><li><a href="https://docs.coreweave.com/products/agent-lens/tags/create-tag">Native Agent Lens tags and judging criteria</a></li><li><a href="https://github.com/ash0ts/forge-workshop-kit">Source, data provenance, local checks, and release status</a></li></ul><p class="caption">Recorded captures have their original image, source URL, selected record, and annotations in this deck’s source package. No paid work runs when this deck opens.</p>
 
 <!--
 Consult the release evidence for actual validation coverage. External-account access and human rehearsal are not established by a successful deck build.

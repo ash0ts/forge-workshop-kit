@@ -6,7 +6,7 @@ One four-hour session, including breaks at 1:10–1:20 and 2:15–2:25.
 
 Understand the task and harness · 0–20 minutes
 
-We will implement an agent that can inspect an account, refund a duplicate charge, and provision access. Then we will instrument and evaluate its work before asking an editor agent to revise its instructions. Pending, Inc. and its accounts are fictional; the Python tools, model requests, traces, and evaluations run in your own project.
+Start with Acme: two payments for one invoice and a request to refund the duplicate. Participants write the lookup, pass its result to the model, and inspect the chosen payment in Agent Lens. Then they change the instructions and compare the resulting accounts on matching tickets. Pending, Inc. and its customers are fictional; the tools and model calls run in the participant's project.
 Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 2. What you will build and inspect
@@ -72,17 +72,17 @@ Understand the task and harness · 0–20 minutes
 
 Use the table to distinguish behavior changes. The model is fixed; it is not retrained when instructions change. The learner develops tools and the loop before the baseline. The later editor cannot rewrite those frozen functions. Ask whether editing an unused skill can explain a changed outcome.
 
-## 12. Open the materials and copy the notebook
+## 12. Open the materials and download the notebook
 
 Connect and instrument · 20–40 minutes
 
-Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
+Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Download the v0.12.0 Python file to a persistent folder. The page provides the pinned W&B sign-in and marimo launch commands. Enter a writable Forge project in notebook setup. The older hosted template is an optional path, not the current download. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
 
-## 13. The same notebook runs on a laptop.
+## 13. Open the notebook you downloaded.
 
 Connect and instrument · 20–40 minutes
 
-These commands correspond to the kit README and locked pending extra. Do not send participants to old start.py or office_notebook.py. Inference uses their own access and billing. Windows supports the same uv commands.
+Install uv first. The sandbox option creates a local dependency environment, not a remote Forge Sandbox. Keep the terminal and notebook folder. Exercise buttons start model calls; initialization does not.
 
 ## 14. Check where your work will be saved.
 
@@ -594,7 +594,7 @@ Setting frame: point to the active work object, then advance to the complete exp
 
 Explain the result · 230–240 minutes
 
-Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
+Keep this slide up during questions. Participants resume their saved notebook file. The QR page provides the current notebook, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
 
 ## 98. Worked answer · invoice lookup
 

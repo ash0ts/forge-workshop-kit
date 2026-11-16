@@ -19,6 +19,10 @@ def test_articles_build_without_authentication():
         assert plan["blocks"] >= 10
         assert len(plan["images"]) >= 2
         assert any("notebooks/" in url for url in plan["links"])
+        assert plan["notebook_url"].startswith("https://ash0ts.github.io/forge-workshop-kit/packet/start/")
+        assert plan["notebook_url"] in plan["links"]
+        assert any("/packet/notebooks/" in url and url.endswith(".py") for url in plan["links"])
+        assert any("/releases/download/" in url and url.endswith(".py") for url in plan["links"])
         model = report._to_model()
         assert model.spec.blocks
 
@@ -84,6 +88,7 @@ def test_partial_publication_keeps_links_from_older_receipts():
         _, plan = reports.build_report(slug, project)
         receipts[slug] = {**plan, "status": "published", "url": f"https://wandb.ai/{project}/reports/learning--{slug}", "anonymous_readback": True}
     previous = reports.build_catalog(project, receipts, {})
+    previous["reports"]["pending"]["hosted_notebook_url"] = "https://forge.coreweave.com/notebooks/previous-template/view"
     for slug in reports.SLUGS[1:]:
         del receipts[slug]["notebook_url"]
         del receipts[slug]["deck_url"]

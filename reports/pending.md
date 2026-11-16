@@ -4,9 +4,9 @@ Pending, Inc. has hired an AI employee to handle refunds and account access. Man
 
 We built this workshop around the work that paragraph leaves out. The agent needs to read an account, choose a tool, receive its result, and check that it changed the right thing. We call those instructions, tools, skills, and orchestration code the agent's harness. Later, another agent gets the job of improving it. We can follow its edits into the next execution and ask whether they helped.
 
-The office and customers are fictional. The Python, model requests, traces, and evaluations run. You can [copy the notebook into your own Forge project](https://ash0ts.github.io/forge-workshop-kit/packet/start/pending.html) and implement the same steps. This article follows the recorded instructor run, including a proposed improvement we rejected.
+The office and customers are fictional. The Python, model requests, traces, and evaluations run. You can [open the notebook and use your own Forge project](https://ash0ts.github.io/forge-workshop-kit/packet/start/pending.html) and implement the same steps. This article follows the recorded instructor run, including a proposed improvement we rejected.
 
-We use Forge to run a ticket, inspect the tool calls and resulting account, choose a development example, revise the harness, and evaluate the frozen versions on matching tickets. This is the work behind an agent that can take actions in a customer account: a fluent reply is only one output to check. Agent Lens exposes what it did; the account checks and aligned evaluation show whether it delivered the requested change.
+Start with the refund below. We'll find the selected payment in Agent Lens, inspect the account after the write, and check whether the employee's reply describes what actually happened. Then we'll edit the instructions around those tools and compare the resulting accounts on the same tickets. That gives us a way to tell whether an extra check helped or simply added another call.
 
 ## Refund the duplicate and leave the rest alone
 
@@ -159,14 +159,16 @@ The deterministic retry repair improved the implementation. The agent-written ha
 
 ## Build your own employee
 
-For the direct ARIA controls described below, use the [v0.12.0 notebook download](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/pending_inc.py). Hosted templates remain on v0.11.1 while Forge notebook-management access blocks their update. The start page includes import and laptop instructions for the current download.
+Download the current [Pending, Inc. notebook](https://ash0ts.github.io/forge-workshop-kit/packet/notebooks/pending_inc.py) into a folder you will keep. Follow its [start page](https://ash0ts.github.io/forge-workshop-kit/packet/start/pending.html) to log in and launch the saved file. The command installs its pinned dependencies and opens an editable local notebook; your results are published to your own Forge project.
 
-The start page offers notebook copy, import, and laptop setup. You can also open the [Forge template directly](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view). If the hosted link sends you back to Home, use the import or local option on that page; your saved work does not need to be rerun.
+The optional [hosted template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) remains on v0.11.1 while notebook-management access blocks its update. Use the current download for the revised exercises and direct ARIA controls. The [original v0.12.0 file](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/pending_inc.py) remains available for reproducing that release.
 
-[Open Pending, Inc. and choose **Copy to project**](https://ash0ts.github.io/forge-workshop-kit/packet/start/pending.html). Open the editable copy, use **Run all stale cells** to create its controls, and check that the destination is your project. Start with the invoice function and its free check; explicit exercise buttons run the employee and editor.
+In your notebook, use **Run all stale cells** to create the controls, then enter your writable Forge project. Start with the invoice function and its free check; explicit exercise buttons run the employee and editor.
 
 The [four-hour deck](https://ash0ts.github.io/forge-workshop-kit/pending/) accompanies the notebook. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) covers laptop use, credentials, and returning to saved work. You'll need basic Python, project write access, notebook compute, and inference access. The adjustable $8 notebook inference allowance excludes compute and ARIA. No workshop gateway or remote Sandbox entitlement is required.
 
-Two ARIA activities let you question your development diagnosis and final conclusion, then verify a cited record. At the stop, click **Start ARIA investigation** to send your explanation and the selected records. **Open ARIA conversation** takes you to that same conversation in Forge; **Check ARIA response** brings its answer back into the notebook. Use the recorded investigations when live ARIA isn't available. Its explanation does not become an account check or an automatic harness edit.
+At the first ARIA stop, explain what you think happened on a development ticket. Did the employee read the skill? Did it change the right account? Click **Start ARIA investigation**, then **Open ARIA conversation** to discuss the selected records. **Check ARIA response** brings the answer back into the notebook. Open a cited tool call and check its arguments and result yourself; a recorded investigation is available if you cannot use live ARIA.
+
+Return to that distinction at the closing stop: did a harness change improve the account outcome, or did the versions complete the same work with different tool calls? Use the checked result to write your conclusion, including a tie if that is what your runs show.
 
 For a short demonstration or a facilitated session, [open the Pending packet](https://utm.io/uuH96). It brings together this Report, the deck, notebook, visual guides, and running instructions. The materials remain a technical preview while external-account checks and participant rehearsals are outstanding. Your run may produce a different branch; keep the files, actions, and checks needed to explain it.

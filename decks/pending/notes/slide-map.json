@@ -82,7 +82,7 @@
       "key": "cover",
       "title": "Please improve<br>yourself.",
       "kind": "cover workshop-setting-slide",
-      "notes": "We will implement an agent that can inspect an account, refund a duplicate charge, and provision access. Then we will instrument and evaluate its work before asking an editor agent to revise its instructions. Pending, Inc. and its accounts are fictional; the Python tools, model requests, traces, and evaluations run in your own project.\nSetting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.",
+      "notes": "Start with Acme: two payments for one invoice and a request to refund the duplicate. Participants write the lookup, pass its result to the model, and inspect the chosen payment in Agent Lens. Then they change the instructions and compare the resulting accounts on matching tickets. Pending, Inc. and its customers are fictional; the tools and model calls run in the participant's project.\nSetting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.",
       "clicks": 1,
       "technical_guide": null,
       "concept": "Please improve yourself",
@@ -342,12 +342,12 @@
     {
       "number": 12,
       "key": "copy",
-      "title": "Open the materials and copy the notebook",
+      "title": "Open the materials and download the notebook",
       "kind": "workshop-sharing",
-      "notes": "Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.",
+      "notes": "Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Download the v0.12.0 Python file to a persistent folder. The page provides the pinned W&B sign-in and marimo launch commands. Enter a writable Forge project in notebook setup. The older hosted template is an optional path, not the current download. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.",
       "clicks": 0,
       "technical_guide": null,
-      "concept": "Copy the notebook into your own project",
+      "concept": "Open the notebook and connect your project",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
       },
@@ -365,12 +365,12 @@
     {
       "number": 13,
       "key": "local",
-      "title": "The same notebook runs on a laptop.",
+      "title": "Open the notebook you downloaded.",
       "kind": "explanation",
-      "notes": "These commands correspond to the kit README and locked pending extra. Do not send participants to old start.py or office_notebook.py. Inference uses their own access and billing. Windows supports the same uv commands.",
+      "notes": "Install uv first. The sandbox option creates a local dependency environment, not a remote Forge Sandbox. Keep the terminal and notebook folder. Exercise buttons start model calls; initialization does not.",
       "clicks": 0,
       "technical_guide": null,
-      "concept": "The same notebook runs on a laptop",
+      "concept": "Open the notebook you downloaded",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
       },
@@ -2591,7 +2591,7 @@
       "key": "workshop-take-home",
       "title": "Keep the notebook and workshop materials",
       "kind": "workshop-sharing",
-      "notes": "Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.",
+      "notes": "Keep this slide up during questions. Participants resume their saved notebook file. The QR page provides the current notebook, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.",
       "clicks": 0,
       "technical_guide": null,
       "concept": "workshop-take-home",

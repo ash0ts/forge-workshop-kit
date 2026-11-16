@@ -6,7 +6,7 @@ The catch was in the timetable. A train listed at `24:08:00` belongs to the prev
 
 This workshop makes the coordination code part of the lesson. We build a worker's read–edit–test cycle, divide the work, check the combined app, and carry reviewed lessons into a later feature. The recorded team completed its build phase faster than one worker, but its app failed a timezone case. That gives us something concrete to investigate beyond whether the agents stayed busy.
 
-This is a small software-factory exercise: agents produce patches from a work order, while participants define interfaces, review the changes, run acceptance checks, and decide what can ship. Forge keeps the assignments and tool calls visible in Agent Lens, the build measurements in runs, the source in Artifacts, and matching scenarios in EvalTables. We can test coordination and shared lessons against the application they produce.
+We'll follow each assignment in Agent Lens, read the returned patch, and check how it behaves in the combined app. The acceptance cases in EvalTables let us compare the solo and team builds on the same departures. Later, fresh workers receive a second work order with or without a reviewed lesson from the first build. That lets us check what the lesson changed in the app they delivered.
 
 You can read the examples here without an account. The [six-hour editable notebook](https://ash0ts.github.io/forge-workshop-kit/packet/start/transit.html) and [visual deck](https://ash0ts.github.io/forge-workshop-kit/transit/) contain the exercises. They're a technical preview; fresh-account access and a participant rehearsal remain outstanding.
 
@@ -111,14 +111,16 @@ A next experiment could change the task breakdown or allowed context, but it wou
 
 ## Run the workshop in your project
 
-For the direct ARIA controls described below, use the [v0.12.0 notebook download](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/transit_factory.py). Hosted templates remain on v0.11.1 while Forge notebook-management access blocks their update. The start page includes import and laptop instructions for the current download.
+Download the current [Transit notebook](https://ash0ts.github.io/forge-workshop-kit/packet/notebooks/transit_factory.py) into a folder you will keep. Follow its [start page](https://ash0ts.github.io/forge-workshop-kit/packet/start/transit.html) to log in and launch the saved file. The command installs its pinned dependencies and opens an editable local notebook; your results are published to your own Forge project.
 
-The start page offers notebook copy, import, and laptop setup. You can also open the [Forge template directly](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view). If the hosted link sends you back to Home, use the import or local option on that page; your saved work does not need to be rerun.
+The optional [hosted template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view) remains on v0.11.1 while notebook-management access blocks its update. Use the current download for the revised exercises and direct ARIA controls. The [original v0.12.0 file](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/transit_factory.py) remains available for reproducing that release.
 
-[Open the Transit notebook and choose **Copy to project**](https://ash0ts.github.io/forge-workshop-kit/packet/start/transit.html). Confirm your own writable project, then try the timetable example and its free check. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) covers the hosted and laptop paths; the [deck](https://ash0ts.github.io/forge-workshop-kit/transit/) walks through the code and intermediate states.
+Enter your writable Forge project, then try the timetable example and its free check. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) explains login and saved-work recovery; the [deck](https://ash0ts.github.io/forge-workshop-kit/transit/) walks through the code and intermediate states.
 
 The notebook uses your credentials and an adjustable $8 inference allowance. Compute and optional ARIA use are separate. Explicit run controls start builders. Saved responses and patches survive restart; retrying publication does not repeat a completed build.
 
-Two ARIA activities examine development failures and the frozen comparison. At the stop, click **Start ARIA investigation** to send your explanation and the selected records. **Open ARIA conversation** takes you to that same conversation in Forge; **Check ARIA response** brings its answer back into the notebook. Verify its explanation against the worker event, integrated source, and application check. It does not accept a shared lesson or approve a release for you; recorded investigations are available without live ARIA access.
+Before accepting a shared lesson, explain a result from the initial builds and identify the test or patch that supports it. Click **Start ARIA investigation**, then **Open ARIA conversation** to ask ARIA to check that explanation. **Check ARIA response** brings the answer back into the notebook. Open the cited worker event or application check and decide how broadly the lesson should apply. Use a recorded investigation if live ARIA is unavailable.
+
+At the closing stop, compare what the workers delivered as well as how quickly they finished. Check whether the accepted lesson prevented the same mistake in the later feature, and include its preparation and retrieval costs in your conclusion.
 
 Use the [Transit packet](https://utm.io/uuIaa) for this Report, the deck, notebook, visual guides, and running instructions. A short demonstration can follow one departure through the reference app and the recorded timezone failure. In the full session, finish by reproducing a released version or explaining why a build remains blocked, with the actual scenario and patch responsible.

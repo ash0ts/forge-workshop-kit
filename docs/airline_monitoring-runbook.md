@@ -1,6 +1,6 @@
 # Airline monitoring workshop
 
-Six hours for participants who can read basic Python. Each person copies the notebook into a writable Forge project and uses their own credentials. The facilitator reads progress; there is no gateway.
+Six hours for participants who can read basic Python. Each person downloads the notebook, runs it locally, and connects to their own writable Forge project. The facilitator reads progress; there is no gateway.
 
 Participants investigate a simulated airline service agent, review a native monitoring rule, and turn an observed booking mistake into a regression case. They then compare a repair on matched requests and inspect how the same monitor behaves afterward.
 
@@ -14,8 +14,8 @@ The live qualification completed all 40 conversations with passing task checks. 
 
 ## Before the session
 
-- Open the [hosted participant template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view) and copy it into your project. The [Workshop Kit hub](https://ash0ts.github.io/forge-workshop-kit/) links the deck and [source/laptop setup](https://github.com/ash0ts/forge-workshop-kit). Use the release's validation record to check which access and rehearsal checks passed.
-- Rehearse copying into a participant-owned project. Check trace publication, native Tags and Alignment access, evaluation publication, and the prepared Insights project with an external attendee account.
+- Follow the [Airline start page](https://ash0ts.github.io/forge-workshop-kit/packet/start/airline_monitoring.html) to save the current notebook and launch it locally. The [Workshop Kit hub](https://ash0ts.github.io/forge-workshop-kit/) links the deck and setup guide. Use the release’s validation record to check which access and rehearsal checks passed.
+- Rehearse local startup and connection to a participant-owned project. Check trace publication, native Tags and Alignment access, evaluation publication, and the prepared Insights project with an external attendee account.
 - Check whether the prepared project has a completed native Insights run. If it does, open the cluster, its representative conversations, and a counterexample. If it reports no completed run, the native exercise remains unavailable; use source-linked turns and say so. A fresh participant batch may not produce a cluster during the session.
 - Confirm the frozen data assignments and the supplied local checks. Passenger and reservation families must not cross discovery, monitor-check, development, final, and later-traffic groups.
 - Check the fixed model and current inference access. The notebook defaults to an adjustable $8 inference allowance. Notebook compute and native tag judging are separate; show the measured qualification cost rather than promise the limiter caps those services.

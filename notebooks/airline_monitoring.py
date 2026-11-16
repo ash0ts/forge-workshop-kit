@@ -230,7 +230,7 @@ def _(STEPS, get_context, get_revision, get_step, go_to, mo, teaching, technical
     _revision = get_revision()
     _done = teaching.completed_steps(_s)
     airline_navigation = ui.navigation(mo, STEPS, get_step(), go_to, completed=_done, label="Your monitoring shift")
-    mo.vstack([mo.Html(ui.STYLE + technical_guides.theme_style()), airline_navigation, mo.Html(ui.context(_s)) if _s else mo.md("Copy this notebook into a project you can write to. Your traces and results will belong to that project.")])
+    mo.vstack([mo.Html(ui.STYLE + technical_guides.theme_style()), airline_navigation, mo.Html(ui.context(_s)) if _s else mo.md("Enter a Forge project you can write to. The notebook will save your conversations, reviewed cases, and evaluation results there.")])
     return (airline_navigation,)
 
 
@@ -283,7 +283,7 @@ def _(get_revision, get_step, mo, ui):
     _revision = get_revision()
 
     mo.stop(get_step() != "setup")
-    mo.vstack([mo.Html(ui.heading("Monitor an airline service agent and build better evaluations", "Sofia is flying from New York to Las Vegas through Phoenix. She wants to replace her first flight and keep the Phoenix–Las Vegas connection. The booking API replaces the complete itinerary: leaving out that connection can strand her in Phoenix even when the write succeeds.", theme="neutral", eyebrow="Airline service desk · Six-hour Forge workshop")), mo.md("You will run a working agent, inspect its behavior in Agent Lens, review a monitoring rule, and turn incidents into regression tests. Then you will repair the itinerary code and compare both versions on reserved requests. Sofia should still have a complete trip to Las Vegas."), mo.md("**Data:** simulated bookings, requests, and airline policy from a pinned MIT-licensed revision of [τ-bench](https://github.com/sierra-research/tau2-bench/tree/989d3285ae669e49503324bdb9981bf14fccedeb). This workshop adapts those records; it is not a benchmark replication or real passenger traffic. Related bookings stay in the same partition. Reserved cases remain outside the repair and tag-tuning steps."), mo.md("The notebook runs tools locally. Model calls use your fixed inference model and your account. The $8 allowance covers notebook inference; native tag judging and notebook compute are billed separately. Opening a step or editing code starts no paid work."), mo.md("[Companion deck](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/) · [Source and dataset provenance](https://github.com/ash0ts/forge-workshop-kit/tree/main/docs/airline_monitoring-runbook.md)")])
+    mo.vstack([mo.Html(ui.heading("Monitor an airline service agent and build better evaluations", "Sofia is flying from New York to Las Vegas through Phoenix. She wants to replace her first flight and keep the Phoenix–Las Vegas connection. The booking API replaces the complete itinerary: leaving out that connection can strand her in Phoenix even when the write succeeds.", theme="neutral", eyebrow="Airline service desk · Six-hour Forge workshop")), mo.md("Run Sofia's request and open its Agent Lens conversation. Compare the requested change with the flights returned by the tool: can she still get to Las Vegas? Review more turns before writing a tag for unrequested itinerary changes. Then save a booking and its expected outcome as a regression case, repair the itinerary helper, and compare both versions on the same requests."), mo.md("**Data:** simulated bookings, requests, and airline policy from a pinned MIT-licensed revision of [τ-bench](https://github.com/sierra-research/tau2-bench/tree/989d3285ae669e49503324bdb9981bf14fccedeb). These are simulated passengers. We adapt the records for the exercises rather than reproduce the benchmark score. Related bookings stay together when we split the data, and the final requests stay out of repair and tag-tuning steps."), mo.md("The notebook runs tools locally. Model calls use your fixed inference model and your account. The $8 allowance covers notebook inference; native tag judging and notebook compute are billed separately. Opening a step or editing code starts no paid work."), mo.md("[Companion deck](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/) · [Source and dataset provenance](https://github.com/ash0ts/forge-workshop-kit/tree/main/docs/airline_monitoring-runbook.md)")])
     return
 
 
@@ -327,7 +327,7 @@ def _(get_revision, get_step, mo, setup):
     project_input = mo.ui.text(value=_context["project"], label="Your Forge project", disabled=_context["hosted"] and _context["detected"], full_width=True)
     allowance = mo.ui.number(value=8, start=.01, stop=1000, label="Notebook inference allowance · USD")
     connect = mo.ui.run_button(label="Connect and restore my work")
-    mo.vstack([project_input, allowance, connect, mo.md("On a laptop, run `uv run wandb login` first. Your project must allow traces, artifacts, and evaluations. The connection check does not send a model request.")]) if get_step() == "setup" else mo.md("")
+    mo.vstack([project_input, allowance, connect, mo.md("Use the login command from this notebook’s start page first. Your project must allow traces, artifacts, and evaluations. The connection check does not send a model request.")]) if get_step() == "setup" else mo.md("")
     return (allowance, connect, project_input,)
 
 
@@ -597,7 +597,7 @@ def _(aria, get_context, get_revision, get_step, mo, review_case, review_for):
     _ids=[_review["id"],_review["result"]["stage_id"]] if _review else []
     _reason=_review["result"].get("reason", "") if _review else ""
     airline_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=_ids,interpretation=_reason,workshop="airline-monitoring")
-    mo.vstack([mo.md("Save your own turn review above before checking it with ARIA. Its explanation does not replace your label or become tag criteria.") if not _review else mo.md("Compare ARIA's explanation with the review you saved. If it uses a different turn or unavailable context, leave the finding unresolved."),airline_aria_investigate])
+    mo.vstack([mo.md("Save your turn review above, then ask ARIA to check it against the passenger's request and returned booking. Did the agent lose a flight, recover from an error, or stop to ask for confirmation?") if not _review else mo.md("Compare ARIA's explanation with your saved review and open the cited turn. Check which flights remained and whether the passenger confirmed the change. If the cited turn cannot answer the question, record what is missing."),airline_aria_investigate])
     return (airline_aria_investigate,)
 
 

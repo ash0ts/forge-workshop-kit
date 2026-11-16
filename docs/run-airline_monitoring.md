@@ -4,7 +4,7 @@
 
 A passenger wants to change one part of a trip. The booking API replaces the entire itinerary, so a successful call can still remove an untouched connection or return flight. Participants inspect the booking, review a monitoring rule, reconstruct regression cases, and test a repair. The bookings are simulated data adapted from the public τ-bench airline environment.
 
-[Open deck](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/) · [Copy notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view) · [Full runbook](airline_monitoring-runbook.md) · [Facilitator setup](facilitator-start.md)
+[Open deck](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/) · [Start notebook](https://ash0ts.github.io/forge-workshop-kit/packet/start/airline_monitoring.html) · [Full runbook](airline_monitoring-runbook.md) · [Facilitator setup](facilitator-start.md)
 
 ## Before presenting
 

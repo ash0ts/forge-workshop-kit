@@ -114,7 +114,7 @@ If creation is interrupted before the ID is saved, locate the Report in that pro
 
 A fresh contributor checkout has the public catalog but no private publication receipts. The publisher stops instead of creating duplicate Reports. For an existing destination, verify the Report linked in `reports/published.json`, then adopt its ID (the part after `--` in its URL). Use `--only` to update one Report. Publishing to a different project creates separate Reports there.
 
-Commit the sources and `reports/published.json` together. The deck-library build reads this catalog to place **Read the learning Report**, **Deck**, and **Notebook · Forge sign-in** together. It does not publish Reports or run workshop code. Keep destination receipts and revision backups out of Git.
+Commit the sources and `reports/published.json` together. The deck-library build reads this catalog to link the Report, deck, and current notebook start page. The optional hosted template has a separate URL in the catalog. The build does not publish Reports or run workshop code. Keep destination receipts and revision backups out of Git.
 
 ## Record what shipped
 

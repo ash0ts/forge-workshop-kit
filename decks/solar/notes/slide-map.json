@@ -7,7 +7,7 @@
       "number": 1,
       "key": "cover",
       "title": "Solar forecasting<br>with agent-assisted<br>experiments",
-      "body": "<figure v-if=\"$clicks === 0\" class=\"workshop-setting-frame\" data-workshop-scene=\"solar/start\"><img :src=\"&quot;/scenes/solar/start.svg&quot;\" alt=\"Solar forecasting lab: Start with dated observations, not a forecast result. Illustrative setting.\" /><figcaption><span>Next \u2192 explanation and evidence</span></figcaption></figure>\n<div v-else class=\"workshop-setting-detail\"><div class=\"sub\">Use satellite observations to compare forecasting models and test agent-written code changes.</div><LabScene /><div class=\"bottom-note\">A six-hour Python workshop using real archived observations.</div></div>",
+      "body": "<figure v-if=\"$clicks === 0\" class=\"workshop-setting-frame\" data-workshop-scene=\"solar/start\"><img :src=\"&quot;/scenes/solar/start.svg&quot;\" alt=\"Solar forecasting lab: Start with dated observations, not a forecast result. Illustrative setting.\" /><figcaption><span>Next \u2192 explanation and evidence</span></figcaption></figure>\n<div v-else class=\"workshop-setting-detail\"><div class=\"sub\">Forecast the next satellite observation.<br>Train a model, inspect its errors, and test an agent's edits.</div><LabScene /><div class=\"bottom-note\">A six-hour Python workshop using real archived observations.</div></div>",
       "notes": "You are joining a fictional research lab preparing for its weekly forecast review. We will use real February 2014 satellite observations to predict X-ray flux thirty minutes ahead and solar images one hour ahead. First we will compare small trained models with copying the latest observation. Then we will ask an agent to edit the image experiment\u2019s code and test those changes with the same comparison. This is a CPU teaching experiment, not an operational solar forecast. Session block: Connect and trace an operation (minutes 0\u201325).\nSetting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.",
       "kind": "cover workshop-setting-slide",
       "time": "0:00\u20130:25",
@@ -156,7 +156,7 @@
       "key": "research-question",
       "title": "Bring a comparison your colleagues can repeat",
       "body": "<figure v-if=\"$clicks === 0\" class=\"workshop-setting-frame\" data-workshop-scene=\"solar/inspect\"><img :src=\"&quot;/scenes/solar/inspect.svg&quot;\" alt=\"Solar forecasting lab: Can a source change improve this fixed forecasting task? Illustrative setting.\" /><figcaption><span>Next \u2192 explanation and evidence</span></figcaption></figure>\n<div v-else class=\"workshop-setting-detail\"><div class=\"lab-files\"><div class=\"lab-folder\"><div class=\"scene-label\">Fictional lab shared folder</div><code>forecast_final.py</code><code>forecast_final_v2.py</code><code>forecast_final_final.py</code><code>forecast_final_USE_THIS.py</code><p>Last week\u2019s score came from one of these.</p></div><div><h2>Show the comparison.</h2><p>Predictions and errors on the same dates, including persistence and the cases the model got wrong.</p><h2>Save what produced it.</h2><p>Data version, source, settings, trained weights, and outputs, together in one run.</p></div></div><div class=\"bottom-note\">Later, an agent will edit the image-model code. We\u2019ll test its changes using this same comparison.</div></div>",
-      "notes": "At the review, a lower error is useful only if we know what produced it and what it was compared with. The four final files are our fictional lab\u2019s previous filing system. We will use Forge and W&B to connect the code, configuration, data, weights, and predictions to each run. The measurement task teaches that stack with a scalar output; the image task reuses it for predictions we can inspect pixel by pixel. Only then do we add an AI research assistant. It will read the image code and validation results and propose edits to the model or training procedure. It will not alter the data, target, or final scoring rules. Session block: Connect and trace an operation (minutes 0\u201325).\nSetting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.",
+      "notes": "The four final files are the lab's previous filing system. Ask which one a colleague would need to repeat the forecast. We will open the run to find its settings and loss history, then recover the source and weights from its Artifact. First do this for one X-ray measurement, then for an image whose errors we can inspect pixel by pixel. Later, an AI research assistant will propose edits to that image code. We review the diff and train it on the same dates before deciding whether it helped. Session block: Connect and trace an operation (minutes 0\u201325).\nSetting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.",
       "kind": "workshop-setting-slide",
       "time": "0:00\u20130:25",
       "answer": null,
@@ -184,9 +184,9 @@
     {
       "number": 7,
       "key": "copy",
-      "title": "Open the materials and copy the notebook",
-      "body": "<div class=\"workshop-share-layout\"><div class=\"workshop-share-instructions\"><ol><li><strong>Open this workshop\u2019s page.</strong> Scan the code or type the short link.</li><li><strong>Choose the notebook.</strong> Sign in to Forge, then choose <strong>Copy to project</strong>.</li><li><strong>Open your copy in Edit.</strong> Run all stale cells once to initialize the controls.</li><li><strong>Check the destination.</strong> Use your own writable project and account.</li></ol></div><div class=\"workshop-share-code\"><a href=\"https://utm.io/uuH97\" aria-label=\"Open this workshop\u2019s materials\"><img src=\"/images/workshop-qr.svg\" width=\"280\" height=\"280\" alt=\"QR code opening this workshop\u2019s notebook, deck, Report, and run guide\"></a><a class=\"workshop-share-url\" href=\"https://utm.io/uuH97\">utm.io/uuH97</a><p>Notebook \u00b7 Report \u00b7 Deck \u00b7 Run guide</p></div></div><p class=\"workshop-share-footer\">The $8 adjustable allowance covers notebook inference. Notebook compute is billed separately.</p>",
-      "notes": "Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.",
+      "title": "Open the materials and download the notebook",
+      "body": "<div class=\"workshop-share-layout\"><div class=\"workshop-share-instructions\"><ol><li><strong>Open this workshop\u2019s page.</strong> Scan the code or type the short link.</li><li><strong>Download the current notebook.</strong> Save the Python file in a folder you will keep.</li><li><strong>Follow the two commands.</strong> Sign in, then open the saved file in marimo.</li><li><strong>Check the destination.</strong> Use your own writable project and account.</li></ol></div><div class=\"workshop-share-code\"><a href=\"https://utm.io/uuH97\" aria-label=\"Open this workshop\u2019s materials\"><img src=\"/images/workshop-qr.svg\" width=\"280\" height=\"280\" alt=\"QR code opening this workshop\u2019s notebook, deck, Report, and run guide\"></a><a class=\"workshop-share-url\" href=\"https://utm.io/uuH97\">utm.io/uuH97</a><p>Notebook \u00b7 Report \u00b7 Deck \u00b7 Run guide</p></div></div><p class=\"workshop-share-footer\">The $8 adjustable allowance covers notebook inference. Notebook compute is billed separately.</p>",
+      "notes": "Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Download the v0.12.0 Python file to a persistent folder. The page provides the pinned W&B sign-in and marimo launch commands. Enter a writable Forge project in notebook setup. The older hosted template is an optional path, not the current download. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.",
       "kind": "workshop-sharing",
       "time": "0:00\u20130:25",
       "answer": null,
@@ -198,7 +198,7 @@
         "section_start": 0,
         "section_end": 25
       },
-      "concept": "Copy the notebook into your Forge project",
+      "concept": "Open the notebook and connect your project",
       "source": "https://utm.io/uuH97",
       "evidence": {
         "type": "explanation",
@@ -210,9 +210,9 @@
     {
       "number": 8,
       "key": "setup-screen",
-      "title": "Copy the notebook into the project you will use",
-      "body": "<div class=\"copy-native\"><a class=\"copy-dialog\" href=\"/images/visual-v030-solar-setup.png\" target=\"_blank\"><img src=\"/images/visual-v030-solar-setup.png\" alt=\"Native Forge Copy to project dialog\"></a><div><h2>Choose your destination.</h2><p>Select a project you can write to. Open the copy in Edit.</p><h2>Check it in the notebook.</h2><p>Hosted Forge detects the copied notebook\u2019s project. Laptop users enter it in Connect.</p><p class=\"aside\">After copying, check the project name in Connect. Your runs and traces should land there.</p></div></div>",
-      "notes": "Show the native copy dialog. The copied notebook uses its destination project. A laptop uses manual entry. Confirm the project before executing. The browser preview limitation remains separate from notebook execution. Session block: Connect and trace an operation (minutes 0\u201325).",
+      "title": "Check where your runs will be saved",
+      "body": "<div class=\"copy-native\"><a class=\"copy-dialog\" href=\"/images/visual-v030-solar-setup.png\" target=\"_blank\"><img src=\"/images/visual-v030-solar-setup.png\" alt=\"Native Forge Copy to project dialog\"></a><div><h2>Enter your Forge project.</h2><p>In the downloaded notebook, enter a writable <code>entity/project</code> in Connect.</p><h2>Check the destination.</h2><p>Your first trace should appear in that project.</p><p class=\"aside\">The recorded dialog shows optional hosted copying. Hosted templates are older; use the current download.</p></div></div>",
+      "notes": "This is a recorded hosted-copy dialog, not the required startup path. The current path uses a saved local file and manual project entry. Show the project field in Connect, then open the first trace to verify where it went. Hosted updates are blocked by notebook-management access. Session block: Connect and trace an operation (minutes 0\u201325).",
       "kind": "",
       "time": "0:00\u20130:25",
       "answer": null,
@@ -224,7 +224,7 @@
         "section_start": 0,
         "section_end": 25
       },
-      "concept": "Copy the notebook into the project you will use",
+      "concept": "Check where your runs will be saved",
       "source": [
         "scripts/solar_cells.py",
         "src/forge_workshop_kit/solar.py"
@@ -239,9 +239,9 @@
     {
       "number": 9,
       "key": "local",
-      "title": "Run the same notebook on your laptop",
-      "body": "```sh\ngit clone https://github.com/ash0ts/forge-workshop-kit.git\ncd forge-workshop-kit\nuv sync --frozen --extra solar\nuv run --extra solar wandb login --verify\nuv run --extra solar marimo edit notebooks/solar_autoresearch.py\n```\n\n<p class=\"aside\">In Connect, enter <code>your-entity/your-project</code>. Keep the terminal open.</p><div class=\"bottom-note\">Install Git and uv first. Hosted participants skip these commands.</div>",
-      "notes": "Hosted participants can skip this slide. On a laptop, install Git and uv, clone the repository, and run these commands. Authenticate in the terminal and keep that terminal open while marimo runs. There is no extra workshop service to start. Session block: Connect and trace an operation (minutes 0\u201325).",
+      "title": "Open the notebook you downloaded",
+      "body": "```sh\nuvx --from wandb==0.31.0 wandb login --host https://api.wandb.ai --verify\nuvx --from marimo==0.25.2 marimo edit --sandbox solar_autoresearch.py\n```\n\n<p class=\"aside\">Run these commands in the folder containing your saved notebook. Keep the terminal open.</p><div class=\"bottom-note\">Install uv first. Use Run all stale cells once to create the exercise controls.</div>",
+      "notes": "The start page supplies the current Python notebook. Save it in a folder you will keep, then run these commands there. The sandbox flag installs pinned Python dependencies locally; it does not request a remote Forge Sandbox. Enter your writable entity/project in Connect. Use the individual exercise buttons after initialization. Session block: Connect and trace an operation (minutes 0\u201325).",
       "kind": "",
       "time": "0:00\u20130:25",
       "answer": null,
@@ -253,7 +253,7 @@
         "section_start": 0,
         "section_end": 25
       },
-      "concept": "Run the same notebook on your laptop",
+      "concept": "Open the notebook you downloaded",
       "source": [
         "scripts/solar_cells.py",
         "src/forge_workshop_kit/solar.py"
@@ -3454,8 +3454,8 @@
       "number": 114,
       "key": "workshop-take-home",
       "title": "Keep the notebook and workshop materials",
-      "body": "<div class=\"workshop-share-layout\"><div class=\"workshop-share-instructions\"><p>Return to your saved notebook copy to continue your work.</p><ol><li><strong>Revisit the example.</strong> The Report links its claims to recorded results.</li><li><strong>Keep the materials.</strong> Open the deck, download the PDF, or get the source.</li><li><strong>Run a session.</strong> Use the short run guide and facilitator notes.</li></ol></div><div class=\"workshop-share-code\"><a href=\"https://utm.io/uuH97\" aria-label=\"Open this workshop\u2019s materials\"><img src=\"/images/workshop-qr.svg\" width=\"280\" height=\"280\" alt=\"QR code opening this workshop\u2019s notebook, deck, Report, and run guide\"></a><a class=\"workshop-share-url\" href=\"https://utm.io/uuH97\">utm.io/uuH97</a><p>Notebook \u00b7 Report \u00b7 Deck \u00b7 Run guide</p></div></div><p class=\"workshop-share-footer\">The shared page has the template and references. Your executions remain in your own project.</p>",
-      "notes": "Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.",
+      "body": "<div class=\"workshop-share-layout\"><div class=\"workshop-share-instructions\"><p>Reopen your saved notebook file to continue your work.</p><ol><li><strong>Revisit the example.</strong> The Report links its claims to recorded results.</li><li><strong>Keep the materials.</strong> Open the deck, download the PDF, or get the source.</li><li><strong>Run a session.</strong> Use the short run guide and facilitator notes.</li></ol></div><div class=\"workshop-share-code\"><a href=\"https://utm.io/uuH97\" aria-label=\"Open this workshop\u2019s materials\"><img src=\"/images/workshop-qr.svg\" width=\"280\" height=\"280\" alt=\"QR code opening this workshop\u2019s notebook, deck, Report, and run guide\"></a><a class=\"workshop-share-url\" href=\"https://utm.io/uuH97\">utm.io/uuH97</a><p>Notebook \u00b7 Report \u00b7 Deck \u00b7 Run guide</p></div></div><p class=\"workshop-share-footer\">The shared page has the current download and references. Your Forge records remain in your own project.</p>",
+      "notes": "Keep this slide up during questions. Participants resume their saved notebook file. The QR page provides the current notebook, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.",
       "kind": "workshop-sharing",
       "time": "5:45\u20136:00",
       "answer": null,
@@ -3907,7 +3907,7 @@
       "number": 131,
       "key": "links",
       "title": "Keep working in your own project",
-      "body": "<p class=\"big\"><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view\">Copy the Solar notebook \u2197</a></p><p><a href=\"https://github.com/ash0ts/forge-workshop-kit\">Source, setup, dataset, and facilitator guide \u2197</a></p><p><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==\">Recorded rehearsal Report \u2197</a></p><p class=\"aside\"><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view\">For an office-agent example, open Pending, Inc. \u2197</a></p><div class=\"bottom-note\">Keep your notebook, code edits, and checkpoints. The facilitator needs no control over your runtime.</div>",
+      "body": "<p class=\"big\"><a href=\"https://ash0ts.github.io/forge-workshop-kit/packet/start/solar.html\">Download and start the Solar notebook \u2197</a></p><p><a href=\"https://github.com/ash0ts/forge-workshop-kit\">Source, setup, dataset, and facilitator guide \u2197</a></p><p><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==\">Recorded rehearsal Report \u2197</a></p><p class=\"aside\"><a href=\"https://ash0ts.github.io/forge-workshop-kit/packet/start/pending.html\">For an office-agent example, open Pending, Inc. \u2197</a></p><div class=\"bottom-note\">Keep your notebook, code edits, and checkpoints. The facilitator needs no control over your runtime.</div>",
       "notes": "Participants keep their notebook and project. Use these links to continue the exercises, inspect the source, or revisit the recorded example. There is no facilitator gateway to renew.",
       "kind": "",
       "time": "REFERENCE",

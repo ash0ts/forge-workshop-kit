@@ -2,7 +2,7 @@
 
 An agent can return a convincing answer after changing the wrong booking. A classifier can score well and still route requests incorrectly after release. Two coding agents can finish their assignments while the combined application fails its checks.
 
-These six Python workshops follow problems like these from the input to the code, result, and evidence. Each includes a worked example, editable notebook, illustrated deck, saved results, and a facilitator guide. Begin with the example, predict what should happen, implement a small change, and compare the result with that prediction.
+In these six Python workshops, you inspect a result like this and work through the code responsible for it. Then you make a small change and test what happens. Each workshop includes a worked example, editable notebook, illustrated deck, saved results, and a facilitator guide.
 
 Watch the [ten-minute captioned tour](https://ash0ts.github.io/forge-workshop-kit/walkthrough/) to see the exercises and their saved Forge records before choosing one.
 
@@ -21,20 +21,22 @@ The durations include hands-on exercises and breaks. All workshops assume basic 
 
 ## Follow the work through Forge
 
-Write and run the implementation in **Notebooks**. Find the actual requests, tool results, and failures in **Agent Lens**. Compare training settings and curves in **W&B runs and Sweeps**. Use **Artifacts** to recover the exact data, code, weights, and predictions. Inspect matching cases in **Weave and EvalTables**, then explain the outcome in a **Report**.
+The exercises give you a reason to use each screen. When an airline tool call succeeds, open **Agent Lens** and check whether the returned booking still contains the passenger's return flight. When a forecast is poor, open its **training run** to inspect the settings and loss history. When you change a circuit-board detector, use **EvalTables** to compare the same photographs across versions, including the new mistakes. Recover the selected model and preprocessing from **Artifacts** and reproduce its predictions in your notebook.
 
-ARIA investigations ask you to check an interpretation against selected saved records. Its explanation is something to verify, not an evaluation score or an approved code change.
+Twice during each workshop, ask **ARIA** to check your explanation of a saved result. Read one of its cited records before deciding what you agree with and what you would test next. The final **Report** records your conclusion and links the results that support it.
 
 ## Start with the example
 
-Choose a workshop in the [public library](https://ash0ts.github.io/forge-workshop-kit/). Its start page links the Forge template and a downloadable notebook, with copy, import, and laptop instructions. No account is needed to read the saved example or deck. Live work uses your own project, credentials, and billing.
+Choose a workshop in the [public library](https://ash0ts.github.io/forge-workshop-kit/). Read its example or deck without an account. To try the code, download the current notebook and follow its start page's login and launch commands. It runs locally and saves results to your own Forge project.
 
-Current downloads are v0.12.0. Hosted templates are still v0.11.1 while the publisher's Forge notebook-management access is blocked. Use the downloaded notebook locally for the new direct ARIA controls. A redirect to Forge Home is an access issue; the start page includes an alternative path.
+Current website notebooks include the revised explanations and use the v0.12.0 runtime. Optional hosted templates remain on v0.11.1 while notebook-management access blocks their update; use the website download for the current exercises and direct ARIA controls.
 
 The default notebook inference allowance is $8 and can be adjusted. Compute, ARIA, and native tag judging are billed separately. Opening a notebook does not begin training or send a model request. [Setup and recovery](setup.md) explains access checks and saved progress.
 
-## Read the results honestly
+## What the recorded runs showed
 
-The examples include gains, ties, regressions, and unavailable judgments. A recorded result does not describe an edit you have not run. These are technical previews: external-account and participant rehearsals remain open, and Airline's native monitoring activities have explicit access limitations. Check the [recorded results](recorded-results.md) and [current status](../next-up.md) before scheduling a full class.
+The recorded classifier comparisons improved, Pending's final harnesses tied, and Transit’s two-agent build failed checks that the solo build passed. The workshops use those outcomes to work out what to inspect or test next. See the [recorded results](recorded-results.md) for the measurements and source records.
+
+These are technical previews. External-account checks and participant rehearsals are still outstanding, and Airline's native monitoring activities have additional access limitations. Check [current status](../next-up.md) before scheduling a full class.
 
 To lead a session, use the [facilitator start guide](facilitator-start.md) and its workshop-specific run guide. To adapt the materials, start with the [contributor guide](../CONTRIBUTING.md).

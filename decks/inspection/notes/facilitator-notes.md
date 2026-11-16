@@ -4,7 +4,7 @@
 
 0:00
 
-The inspection team is fictional. The VisA PCB1 images, masks and recorded comparisons are real. Do not promise that every participant run improves.
+The team needs to catch defective boards without asking a person to inspect every good one. Start by looking at a real VisA PCB1 photograph before revealing its annotation. After training the baseline, follow a missed board through its features, score, and cutoff. Use EvalTables to compare that same board across versions, then inspect the other misses and false alarms before choosing a detector.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
@@ -58,17 +58,17 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 The 132 validation boards contain 12 defects. A threshold targeting 90 percent recall must catch at least 11. Test data is public for reproduction, so this is a teaching boundary rather than a security barrier.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 
-## 9. Open the materials and copy the notebook
+## 9. Open the materials and download the notebook
 
 0:17
 
-Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
+Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Download the v0.12.0 Python file to a persistent folder. The page provides the pinned W&B sign-in and marimo launch commands. Enter a writable Forge project in notebook setup. The older hosted template is an optional path, not the current download. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
 
 ## 10. Connect to your own experiment
 
 0:17
 
-Hosted authentication comes from the copied notebook. A laptop uses uv run wandb login. The core path has no inference calls; notebook compute remains separately billed.
+Use the pinned login command on the start page, initialize the controls once, and enter a writable Forge project. The core path uses the laptop CPU and makes no inference calls. Hosted compute, if used, has separate charges.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
 
 ## 11. The trace describes a call that actually ran
@@ -414,7 +414,7 @@ Setting frame: point to the active work object, then advance to the complete exp
 
 3:59
 
-Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
+Keep this slide up during questions. Participants resume their saved notebook file. The QR page provides the current notebook, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
 
 ## 60. Worked answer: assemble the local features
 

@@ -2,7 +2,7 @@
 
 0:00
 
-The department and deadline are fictional. The schedule records are real public MBTA data. Participants build a bounded software factory; we do not claim to reproduce an unattended production engineering organization. The single session includes three breaks. The extra time is for tracing one concrete input through the implementation, writing the coordinator and explaining the recorded failures.
+Begin with the person leaving the event who needs to catch a train. The builders will implement a query and a screen; participants write the coordinator and decide whether the combined app meets the request. Follow worker patches and tests in Agent Lens, then inspect the actual departures. The saved MBTA feed is historical, so this app shows scheduled service for those dates. The single session includes three breaks. The extra time is for tracing one concrete input through the implementation, writing the coordinator and explaining the recorded failures.
 Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 2. What you will build and inspect
@@ -98,17 +98,17 @@ The scenario is written by the participant and later runs on the integrated app.
 
 Keep the distinction between agents sharing project records and attendees sharing credentials. The latter does not happen. The notebook has an adjustable inference allowance; notebook compute is billed separately. Opening the notebook does not start agents.
 
-## 17. Open the materials and copy the notebook
+## 17. Open the materials and download the notebook
 
 0:33
 
-Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
+Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Download the v0.12.0 Python file to a persistent folder. The page provides the pinned W&B sign-in and marimo launch commands. Enter a writable Forge project in notebook setup. The older hosted template is an optional path, not the current download. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
 
 ## 18. Connect and inspect the source data
 
 0:33
 
-Do not ask participants to paste a key into a code cell. Hosted authentication comes from their own account. Locally use wandb login. Access checks should distinguish a writable project from inference entitlement. The workshop list in the README links to the current native Transit template. If copying is unavailable, use its notebook source/import fallback; do not send attendees to the reference app.
+Use the start page’s pinned login and local launch commands. Initialize the controls once with Run all stale cells, then enter the participant’s writable project. The project check and inference access are separate. The downloadable reference app demonstrates the finished board; it is not the editable workshop notebook.
 
 ## 19. Record the operation that you just ran
 
@@ -584,7 +584,7 @@ Setting frame: point to the active work object, then advance to the complete exp
 
 5:58
 
-Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
+Keep this slide up during questions. Participants resume their saved notebook file. The QR page provides the current notebook, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
 
 ## 97. Worked answer: select ready tasks
 

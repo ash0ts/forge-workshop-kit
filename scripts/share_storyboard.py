@@ -30,21 +30,21 @@ def _body(url, *, closing, workshop):
     url = escape(url, quote=True)
     if closing:
         instructions = (
-            "<p>Return to your saved notebook copy to continue your work.</p>"
+            "<p>Reopen your saved notebook file to continue your work.</p>"
             "<ol><li><strong>Revisit the example.</strong> The Report links its claims to recorded results.</li>"
             "<li><strong>Keep the materials.</strong> Open the deck, download the PDF, or get the source.</li>"
             "<li><strong>Run a session.</strong> Use the short run guide and facilitator notes.</li></ol>"
         )
-        footer = "The shared page has the template and references. Your executions remain in your own project."
+        footer = "The shared page has the current download and references. Your Forge records remain in your own project."
     else:
         instructions = (
             "<ol><li><strong>Open this workshop’s page.</strong> Scan the code or type the short link.</li>"
-            "<li><strong>Choose the notebook.</strong> Sign in to Forge, then choose <strong>Copy to project</strong>.</li>"
-            "<li><strong>Open your copy in Edit.</strong> Run all stale cells once to initialize the controls.</li>"
+            "<li><strong>Download the current notebook.</strong> Save the Python file in a folder you will keep.</li>"
+            "<li><strong>Follow the two commands.</strong> Sign in, then open the saved file in marimo.</li>"
             "<li><strong>Check the destination.</strong> Use your own writable project and account.</li></ol>"
         )
         footer = (
-            "The first exercise follows. Opening the copy does not start training or inference."
+            "The first exercise follows. Opening the file does not start training or inference."
             if workshop == "inspection" else
             "The $8 adjustable allowance covers notebook inference. Notebook compute is billed separately."
         )
@@ -84,18 +84,20 @@ def enrich(slides, deck_root, workshop):
     setup = by_key[setup_key] if replace_setup else _new_slide(by_key[setup_key], "workshop-start")
     if not replace_setup:
         slides.insert(slides.index(by_key[setup_key]), setup)
-    setup.update(title="Open the materials and copy the notebook",
+    setup.update(title="Open the materials and download the notebook",
                  body=_body(url, closing=False, workshop=workshop), source=url,
                  notes="Leave this QR code visible while participants open the workshop page. "
-                 "It links the current notebook, Report, deck, and run guide. Choose Notebook, "
-                 "sign in, then copy into a writable project. Continue to the existing setup exercise. "
+                 "It links the current notebook, Report, deck, and run guide. Download the v0.12.0 Python file "
+                 "to a persistent folder. The page provides the pinned W&B sign-in and marimo launch commands. "
+                 "Enter a writable Forge project in notebook setup. The older hosted template is an optional path, "
+                 "not the current download. Continue to the existing setup exercise. "
                  "The short link is managed in docs/share-links.json; do not reuse a historical event QR.")
     setup["cls" if "cls" in setup else "kind"] = "workshop-sharing"
     closing = _new_slide(by_key[closing_key], "workshop-take-home")
     closing.update(title="Keep the notebook and workshop materials",
                    body=_body(url, closing=True, workshop=workshop), source=url,
-                   notes="Keep this slide up during questions. Participants resume their saved notebook copy. "
-                   "The QR page provides the template, Report, downloads, and short facilitator run guide. "
+                   notes="Keep this slide up during questions. Participants resume their saved notebook file. "
+                   "The QR page provides the current notebook, Report, downloads, and short facilitator run guide. "
                    "Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.")
     slides.insert(slides.index(by_key[closing_key]) + 1, closing)
     (deck_root / "notes/share-links.json").write_text(json.dumps({

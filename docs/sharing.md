@@ -10,7 +10,7 @@ I've been building six hands-on workshops for engineers learning how to use Forg
 
 Participants write Python, inspect the output, make a change, and check whether it helped. They use Forge to follow agent calls, compare training runs, review individual mistakes, and recover the exact code and data behind a result. The examples connect running an application to observing it, curating cases, improving the implementation, and evaluating the change.
 
-Each has an illustrated Report, a deck, recorded results, and a notebook to copy into your own project. You can read an example, borrow a short demo, or run a hands-on pilot. I'd like people to try one exercise and tell me where they get stuck or which customer workflow it resembles.
+Each has an illustrated Report, a deck, recorded results, and a notebook you can run locally and connect to your own Forge project. You can read an example, borrow a short demo, or run a hands-on pilot. I'd like people to try one exercise and tell me where they get stuck or which customer workflow it resembles.
 
 ## A ten-minute meeting
 
@@ -39,7 +39,7 @@ I've been building six hands-on workshops for engineers who want to use Forge to
 - **Transit:** two coding agents build a departure board. Inspect ownership, patches, integration tests, and whether a shared lesson helps the next build.
 - **Airline:** a booking agent must preserve the passenger's return flight. Connect traced behavior to reviewed monitoring rules and regression tests.
 
-The packet has illustrated Reports, decks, recorded results, and notebooks you can copy into your own project: https://ash0ts.github.io/forge-workshop-kit/
+The packet has illustrated Reports, decks, recorded results, and notebooks you can run in your own workspace: https://ash0ts.github.io/forge-workshop-kit/
 
 Here's a ten-minute tour of the exercises and their Forge records: https://ash0ts.github.io/forge-workshop-kit/walkthrough/
 
@@ -47,7 +47,7 @@ Recorded demos are available now; the full sessions are technical previews. I'd 
 
 ## Follow-up for a technical pilot
 
-Pick the project closest to your work and open its notebook from the packet. Copy it into your own Forge project, initialize the controls, then complete the access check and first exercise. You use your own credentials; the facilitator only reads progress you share.
+Pick the project closest to your work and open its notebook from the packet. Save the downloaded file in a folder, follow its login and local launch commands, then initialize the controls and enter your Forge project. Complete the access check and first exercise. You use your own credentials; the facilitator only reads progress you share.
 
 Please send the workshop name, step, expected result, and what happened. Leave keys and tokens out. The [setup guide](setup.md) explains access, local execution, and recovery. The $8 notebook inference allowance is adjustable; notebook compute, ARIA, and native tag judging are billed separately.
 
@@ -57,7 +57,7 @@ Use the [untracked library link](https://ash0ts.github.io/forge-workshop-kit/) f
 
 The decks, PDFs, diagrams, public learning Reports, and recorded examples are available for reading and recorded demonstrations. Local checks and maintainer rehearsals cover implementation behavior. They do not establish that every new account can complete a full class.
 
-Use the v0.12.0 download for the new direct ARIA controls. The hosted templates remain v0.11.1 while Forge notebook-management access blocks their update. The notebook start pages explain copy, import, and laptop alternatives; do not present the hosted refresh as complete.
+Use the current website download for the revised explanations and direct ARIA controls. The hosted templates remain v0.11.1 while Forge notebook-management access blocks their update. The notebook start pages give the saved-file download and local launch commands; do not present the hosted refresh as complete.
 
 Before scheduling a hands-on class, finish the external-account and human checks in [current status](../next-up.md). Airline's AI Alignment and prepared Insights activities remain unqualified. ARIA recordings support the investigation when live access is unavailable. In Airline, disable **Apply with AI** when a live tagging activity ends; closing the notebook does not turn off automatic judging.
 

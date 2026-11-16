@@ -1,6 +1,6 @@
 # Run a Forge workshop
 
-Pick one workshop for the audience, then choose a recorded demonstration or a hands-on pilot. You do not need to teach all six. A demonstration follows saved code and results; a pilot asks each participant to copy the notebook and run an exercise in their own project.
+Pick one workshop for the audience, then choose a recorded demonstration or a hands-on pilot. You do not need to teach all six. A demonstration follows saved code and results; a pilot asks each participant to download the notebook, run an exercise locally, and inspect the result in their own Forge project.
 
 **The full workshops are technical previews.** Complete the external-account and participant checks in [current status](../next-up.md) before scheduling a class. The published decks and recorded examples can be used for meetings now.
 
@@ -20,9 +20,9 @@ All assume basic Python. The durations include explanations, coding, and breaks.
 ## Prepare the room
 
 1. Open the chosen guide, browser deck, PDF, and notebook start page. Keep the PDF and the recorded example available if a service is slow. For offline interaction, extract the browser ZIP and run `python3 serve.py --open` (Windows: `py serve.py --open`). The PDF opens directly. The [deck guide](deck-guide.md) explains presentation controls and worked answers.
-2. For a hands-on session, rehearse an attendee-style copy using the intended account type. Check notebook compute, project writes, tracing, inference, and evaluation publication separately. Use the [participant setup guide](setup.md); laptop instructions are included.
+2. For a hands-on session, download the current notebook into a fresh folder and follow the [participant setup guide](setup.md) using the intended account type. Check local startup, project writes, tracing, inference, and evaluation publication separately. Use **Run all stale cells** once to create the controls, then use each exercise’s own Run button.
 3. Send the workshop’s [registered sharing link or QR](share-links.md), setup guide, and duration before the session. Its public packet card includes the notebook link. Participants use their own project and credentials. Ask for their project link only if they want you to read progress. Public teaching projects must contain only the supplied public or fictional data.
-4. Copy the [facilitator monitor](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzM=/view) into your project. Add the project roster, select the workshop, then use **Save roster and filters** and **Refresh progress**. [Monitor setup](setup.md#read-participant-progress) covers filtering and saved rosters.
+4. Open the read-only facilitator monitor using the [local monitor instructions](setup.md#read-participant-progress). Add the project roster, select the workshop, then use **Save roster and filters** and **Refresh progress**. Keep the saved roster with the monitor’s notebook file.
 5. Confirm the spending explanation: the default $8 notebook inference allowance is adjustable. Notebook compute, ARIA, and native tag judging are separate. A recorded demonstration requires none of those live calls.
 
 ## Lead each exercise

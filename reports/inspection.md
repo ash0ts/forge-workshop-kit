@@ -8,9 +8,9 @@ Look at the right-hand pin on the board below. The dataset marks that region as 
 
 We built this workshop around a fictional manufacturing team deciding which circuit boards to hold for inspection. The photographs are real observations from [VisA's PCB1 collection](https://github.com/amazon-science/spot-diff/tree/2a692ab575001cbde74d402d897a7286086c6199): 1,004 normal boards and 100 anomalous ones. A detector that misses defects creates one kind of problem. A detector that flags every board creates another queue for the team to work through.
 
-The [copyable notebook](https://ash0ts.github.io/forge-workshop-kit/packet/start/inspection.html) lets you build the feature and decision code, investigate mistakes, and compare the same photographs across versions. The board above belongs to the recorded teaching retest. Your notebook starts with development examples before opening its final comparison.
+The [editable notebook](https://ash0ts.github.io/forge-workshop-kit/packet/start/inspection.html) lets you build the feature and decision code, investigate mistakes, and compare the same photographs across versions. The board above belongs to the recorded teaching retest. Your notebook starts with development examples before opening its final comparison.
 
-We use Forge to compare training runs, inspect the same board across detector versions in EvalTables, and recover the features, reference bank, and classifier from Artifacts. The practical decisions are which representation to use, where to set the inspection cutoff, and which additional labels to acquire. Those decisions affect missed defects and the workload passed to human inspectors, so we keep both visible.
+We'll follow one board through the feature calculation, classifier score, and inspection cutoff. Then we'll open its EvalTables row to compare the detector versions and look for boards that changed in the other direction. The selected detector's Artifact includes its reference bank and preprocessing so we can load it again and check that it makes the same decisions.
 
 ## Establish what the baseline receives
 
@@ -106,14 +106,16 @@ Open [the native EvalTables comparison](https://forge.coreweave.com/wandb/wandb/
 
 ## Run the workshop yourself
 
-For the direct ARIA controls described below, use the [v0.12.0 notebook download](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/visual_inspection.py). Hosted templates remain on v0.11.1 while Forge notebook-management access blocks their update. The start page includes import and laptop instructions for the current download.
+Download the current [Circuit-board inspection notebook](https://ash0ts.github.io/forge-workshop-kit/packet/notebooks/visual_inspection.py) into a folder you will keep. Follow its [start page](https://ash0ts.github.io/forge-workshop-kit/packet/start/inspection.html) to log in and launch the saved file. The command installs its pinned dependencies and opens an editable local notebook; your results are published to your own Forge project.
 
-The start page offers notebook copy, import, and laptop setup. You can also open the [Forge template directly](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view). If the hosted link sends you back to Home, use the import or local option on that page; your saved work does not need to be rerun.
+The optional [hosted template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view) remains on v0.11.1 while notebook-management access blocks its update. Use the current download for the revised exercises and direct ARIA controls. The [original v0.12.0 file](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/visual_inspection.py) remains available for reproducing that release.
 
-Open the [Circuit-board inspection notebook](https://ash0ts.github.io/forge-workshop-kit/packet/start/inspection.html), choose **Copy to project**, and select a writable project of your own. Use **Run all stale cells** once to create the controls, inspect the bundled development board, and follow the access check. Each training operation has an explicit run button.
+Use **Run all stale cells** to create the controls, inspect the bundled development board, and connect your writable Forge project. Each training operation has its own run button.
 
 The full workshop takes four hours and assumes basic Python. The core exercises use CPU and make no inference API calls; notebook compute is billed separately. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) includes the laptop path, and the [companion deck](https://ash0ts.github.io/forge-workshop-kit/inspection/) follows the same calculations. Optional ARIA investigations have separate access and usage requirements, with recorded investigations available.
 
-ARIA's two activities examine a validation decision and the final comparison. At the stop, click **Start ARIA investigation** to send your explanation and the selected records. **Open ARIA conversation** takes you to that same conversation in Forge; **Check ARIA response** brings its answer back into the notebook. Check its claims against the photograph, score, threshold, and reference label. Its explanation does not replace those checks or become a new defect label.
+At the first ARIA stop, explain a missed validation board. Is the score close to the cutoff, or do you suspect that whole-image features lose a small defect? Click **Start ARIA investigation**, then **Open ARIA conversation** to discuss the selected photograph and result. **Check ARIA response** brings the answer back into the notebook. Check a cited score or threshold before deciding whether to test a different representation or a different cutoff.
+
+At the closing stop, compare the recovered misses with the new mistakes and false alarms. Include the results of the equal-budget labeling comparison before deciding which detector you would use. Recorded investigations are available if live ARIA is unavailable.
 
 The [Inspection packet](https://utm.io/uuH99) brings together this Report, the deck, notebook, visual guides, and running instructions. Use the recorded board comparison for a short demonstration or fit the detectors in your own project. The materials remain technical previews pending external-account checks and participant rehearsals.

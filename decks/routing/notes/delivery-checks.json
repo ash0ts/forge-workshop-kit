@@ -1,5 +1,5 @@
 {
-  "source_sha256": "9dc408b48c6872a9f92682f95232a03c054065cd8eb06a54bb5e68fdc4d1937e",
+  "source_sha256": "7f09a8c489e4a02e27215793b1fd6558540d58dafb723b45efb75dfdffae8995",
   "preflight_only": false,
   "slides_checked": 81,
   "expected_slides": 81,
@@ -42,12 +42,12 @@
     {
       "number": 8,
       "key": "workshop-start",
-      "title": "Open the materials and copy the notebook"
+      "title": "Open the materials and download the notebook"
     },
     {
       "number": 9,
       "key": "connect",
-      "title": "Open your copy and add your first trace"
+      "title": "Open your notebook and add your first trace"
     },
     {
       "number": 10,

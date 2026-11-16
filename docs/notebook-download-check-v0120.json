@@ -1,0 +1,412 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-16",
+  "release": "0.12.0",
+  "source_commit": "5a14c339386889c54fc9a921005dc4ef840399b1",
+  "hosted_delivery": {
+    "status": "blocked_before_mutation",
+    "viewer": "ashah1",
+    "project": "wandb/forge-workshop-kit",
+    "api_hosts_checked": [
+      "https://api.wandb.ai",
+      "https://api.forge.coreweave.com"
+    ],
+    "message": "Marimo notebook management is not enabled",
+    "native_browser": {
+      "account": "Anish Shah / ashah1",
+      "requested_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzI=/view",
+      "observed": "Redirected to /wandb/home; no notebook or Copy control displayed",
+      "checked_by": "root browser task"
+    },
+    "publications": 0,
+    "flags_or_permissions_changed": false
+  },
+  "current_download": {
+    "release_base_url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/",
+    "sources": [
+      {
+        "workshop": "pending_inc",
+        "file": "pending_inc.py",
+        "sha256": "c6750d61ff88c8dbe4ff371c1a6e9cba8a331dc4b21e78927f5f631ba0e8289f",
+        "bytes": 76390
+      },
+      {
+        "workshop": "solar_autoresearch",
+        "file": "solar_autoresearch.py",
+        "sha256": "1a8336ae0b08d1588b4012428d980ae5aeb28bcb009f1b63d147eb01b2890ef5",
+        "bytes": 114343
+      },
+      {
+        "workshop": "request_routing",
+        "file": "request_routing.py",
+        "sha256": "734adbcdba8b0cddb8c23cf504d1479366cf2b0b22c29c5b250c2e43c06e94d8",
+        "bytes": 81198
+      },
+      {
+        "workshop": "visual_inspection",
+        "file": "visual_inspection.py",
+        "sha256": "2ae7ee1c787c2616cdf9c51c0a0d11bb45c54b49570e188521303cc6db33ade2",
+        "bytes": 67544
+      },
+      {
+        "workshop": "transit_factory",
+        "file": "transit_factory.py",
+        "sha256": "43bf45b041049b02c2c84cad5d45b66b5f2ea2c01e01b04f9a594e83ceb97a27",
+        "bytes": 53701
+      },
+      {
+        "workshop": "airline_monitoring",
+        "file": "airline_monitoring.py",
+        "sha256": "fbdd18c3f2b22faf7bb9bf938e2cd2b4129d0a7b5bba283fe195d5a55fc5ebaf",
+        "bytes": 92216
+      }
+    ],
+    "all_match_release_manifest": true,
+    "keep_local_file": true,
+    "remote_url_launch_rejected_reason": "marimo downloads a remote URL to a temporary source file; a saved local file preserves edits."
+  },
+  "commands": {
+    "authentication": "uvx --from wandb==0.31.0 wandb login --host https://api.wandb.ai --verify",
+    "authentication_result": "Passed using the already saved cloud login; no key supplied or printed.",
+    "open": "uvx --from marimo==0.25.2 marimo edit --sandbox <saved-notebook>.py",
+    "restart": "Run the same command from the same saved folder.",
+    "initialize": "Use marimo’s visible Run all control once to load the workshop controls. Then use individual exercise run buttons.",
+    "sandbox_meaning": "The marimo --sandbox flag installs a local Python dependency environment; it does not request a remote CoreWeave Sandbox."
+  },
+  "clean_directory_render": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "uv": "0.11.27",
+    "marimo": "0.25.2",
+    "checkout_on_pythonpath": false,
+    "provider_environment_variables_removed": true,
+    "wandb_mode": "offline",
+    "local_saved_login_still_present": true,
+    "training_or_inference_controls_selected": false,
+    "workshop_journal_created": false,
+    "results": [
+      {
+        "workshop": "pending_inc",
+        "returncode": 0,
+        "elapsed_seconds": 7.86,
+        "html_bytes": 559212
+      },
+      {
+        "workshop": "solar_autoresearch",
+        "returncode": 0,
+        "elapsed_seconds": 19.35,
+        "html_bytes": 716188
+      },
+      {
+        "workshop": "request_routing",
+        "returncode": 0,
+        "elapsed_seconds": 7.65,
+        "html_bytes": 585236
+      },
+      {
+        "workshop": "visual_inspection",
+        "returncode": 0,
+        "elapsed_seconds": 8.57,
+        "html_bytes": 670577
+      },
+      {
+        "workshop": "transit_factory",
+        "returncode": 0,
+        "elapsed_seconds": 4.64,
+        "html_bytes": 486060
+      },
+      {
+        "workshop": "airline_monitoring",
+        "returncode": 0,
+        "elapsed_seconds": 4.9,
+        "html_bytes": 638587
+      }
+    ],
+    "timing_scope": "Warm package caches on this workstation; not an installation or workshop timing qualification."
+  },
+  "tls_recovery": {
+    "initial_result": "Default bundled certificate roots rejected the managed workstation chain for release-assets.githubusercontent.com with UnknownIssuer.",
+    "fix": "UV_SYSTEM_CERTS=true",
+    "verification_disabled": false,
+    "reference": "https://docs.astral.sh/uv/concepts/authentication/certificates/",
+    "scope": "Only needed when the device relies on an organization certificate installed in the operating-system trust store.",
+    "posix": "export UV_SYSTEM_CERTS=true",
+    "powershell": "$env:UV_SYSTEM_CERTS = \"true\""
+  },
+  "native_browser_download_check": {
+    "status": "passed_initialization_free_check_and_browser_refresh",
+    "workshop": "pending_inc",
+    "scope": "Current downloaded file in its own dependency environment; initial UI and free checks only.",
+    "fresh_folder_separate_from_exports": true,
+    "auto_instantiate_default": false,
+    "earlier_export_sidecar_observation": "Opening the export folder showed saved outputs as stale before initialization; subsequent browser verification uses an independent directory containing only the downloaded source.",
+    "ancestor_stopped_cells": "Expected mo.stop prerequisite, step, and unpressed-button gates; not dependency setup failures.",
+    "observed": "After explicit user approval, the visible Run all control initialized the notebook. The editor reported zero errors and zero warnings. The free invoice check displayed pay-1 and pay-2 for inv-1, each captured for 4900. Selecting Unrelated account changed the output account_id to other-account; selecting Acme restored that fixture.",
+    "source_kind": "Original immutable v0.12.0 release download; current website notebooks differ only in display prose.",
+    "source_sha256": "c6750d61ff88c8dbe4ff371c1a6e9cba8a331dc4b21e78927f5f631ba0e8289f",
+    "checks": [
+      "Visible Run all initialized the released notebook",
+      "Free invoice fixture check executed",
+      "Account selector changed displayed local result and returned to Acme",
+      "Browser reload retained the displayed free-check result and selected controls"
+    ],
+    "reported_errors": 0,
+    "reported_warnings": 0,
+    "paid_or_publication_controls_selected": false,
+    "refresh_status": "Passed browser reload without another Run all: Acme selection, invoice checkbox, and both captured inv-1 payments remained visible; zero errors and warnings.",
+    "screenshot": "dist/copy-review/pending-download-free-check.png",
+    "checked_by": "Root CUA browser task; server session remained running without stderr or traceback",
+    "refresh_scope": "Browser refresh with the same running kernel; not a destroyed-runtime or external-account restore qualification.",
+    "runtime_cleanup": "Stopped only the temporary verification session after browser checks, using its normal quit confirmation. Exit code 0; no active work was running."
+  },
+  "limits": [
+    "Hosted current-version copying remains unavailable on the checked account.",
+    "This is local execution connected to the participant’s Forge project, not a hosted Forge runtime.",
+    "No new full workshop execution, fresh-account rehearsal, or human usability rehearsal was performed.",
+    "Other operating systems have not been exercised through this download-only command during this check."
+  ],
+  "website_source_revision": {
+    "delivery_path": "/packet/notebooks/<filename>.py",
+    "copy_source": "Current regenerated notebooks/*.py, not the immutable release asset.",
+    "pinned_runtime": "forge-workshop-kit 0.12.0",
+    "cells": [
+      {
+        "workshop": "pending_inc",
+        "source_sha256": "cef043baf1916572fa73eab0456965c579fa193be9de3eaedd02a188bfb2dd1e",
+        "release_source_sha256": "c6750d61ff88c8dbe4ff371c1a6e9cba8a331dc4b21e78927f5f631ba0e8289f",
+        "cell_count": 56,
+        "action_cell_count": 16,
+        "action_cells_match_release": true,
+        "action_cells_sha256": "8f61cb2f557004049599c4085fc78d33c2a217b6069903a3eb195e1d1e098a0c",
+        "changed_cells": [
+          "pending_inc/display/2",
+          "pending_inc/controls/pending_connect",
+          "pending_inc/aria/investigate"
+        ]
+      },
+      {
+        "workshop": "solar_autoresearch",
+        "source_sha256": "aaf621f8e4d734d78caddd13e964c1f5df22f0a41a8c0adf1b8464bb1713efc2",
+        "release_source_sha256": "1a8336ae0b08d1588b4012428d980ae5aeb28bcb009f1b63d147eb01b2890ef5",
+        "cell_count": 83,
+        "action_cell_count": 23,
+        "action_cells_match_release": true,
+        "action_cells_sha256": "057bc67f4d649b0c534342d18dddbfa26b20873a83c2ad46156c57eb3f39711f",
+        "changed_cells": [
+          "solar_autoresearch/display/2",
+          "solar_autoresearch/controls/connect_button",
+          "solar_autoresearch/aria/investigate"
+        ]
+      },
+      {
+        "workshop": "request_routing",
+        "source_sha256": "24db9e0948a3aab6f2e584b86319e3d4650ae999ffd366c2a04fe8aceda2b366",
+        "release_source_sha256": "734adbcdba8b0cddb8c23cf504d1479366cf2b0b22c29c5b250c2e43c06e94d8",
+        "cell_count": 74,
+        "action_cell_count": 31,
+        "action_cells_match_release": true,
+        "action_cells_sha256": "94998171e678f19b9b8b4babebce86eaf9eda8d9008476350add07d1cee4e9b5",
+        "changed_cells": [
+          "request_routing/definitions/routing_navigation",
+          "request_routing/display/11",
+          "request_routing/controls/connect",
+          "request_routing/aria/investigate"
+        ]
+      },
+      {
+        "workshop": "visual_inspection",
+        "source_sha256": "44a38ee94ace142da34f871de52b2d01a9645c4d3dab5ceab17e353c93e9973b",
+        "release_source_sha256": "2ae7ee1c787c2616cdf9c51c0a0d11bb45c54b49570e188521303cc6db33ade2",
+        "cell_count": 63,
+        "action_cell_count": 21,
+        "action_cells_match_release": true,
+        "action_cells_sha256": "5deff7cc88211f0988d80131d48fbef0a46dee545e771f31c56c875ea8d66c43",
+        "changed_cells": [
+          "visual_inspection/display/5",
+          "visual_inspection/controls/connect_inspection",
+          "visual_inspection/aria/investigate"
+        ]
+      },
+      {
+        "workshop": "transit_factory",
+        "source_sha256": "337ae4191bd020edca2f672ec62e8ae6c2931e11cdf31fa4fa976f0eb83c0c7f",
+        "release_source_sha256": "43bf45b041049b02c2c84cad5d45b66b5f2ea2c01e01b04f9a594e83ceb97a27",
+        "cell_count": 69,
+        "action_cell_count": 23,
+        "action_cells_match_release": true,
+        "action_cells_sha256": "3c9967e785990c3883d2f85b2d848f89557e3da86680524cde24238e2a0878d7",
+        "changed_cells": [
+          "transit_factory/definitions/step_navigation",
+          "transit_factory/display/5",
+          "transit_factory/controls/connect",
+          "transit_factory/aria/investigate"
+        ]
+      },
+      {
+        "workshop": "airline_monitoring",
+        "source_sha256": "32c947ae130f43cffd6135e31700be7f37d2b361df529115e5151e869f5f30c5",
+        "release_source_sha256": "fbdd18c3f2b22faf7bb9bf938e2cd2b4129d0a7b5bba283fe195d5a55fc5ebaf",
+        "cell_count": 82,
+        "action_cell_count": 37,
+        "action_cells_match_release": true,
+        "action_cells_sha256": "01d28d3fb92fb671163fce17f20186ad4d9620fb06006c7ecf72fbe49f2ff102",
+        "changed_cells": [
+          "airline_monitoring/definitions/airline_navigation",
+          "airline_monitoring/display/6",
+          "airline_monitoring/controls/connect",
+          "airline_monitoring/aria/investigate"
+        ]
+      }
+    ],
+    "verification": "Compared every generated action-cell body and identity with the immutable released notebook. All 151 match; display and setup text changed. The authored-source comparison against Git HEAD independently found the same 151 unchanged action cells.",
+    "built_packet_readback": [
+      {
+        "workshop": "pending_inc",
+        "start": "start/pending.html",
+        "download": "../notebooks/pending_inc.py",
+        "sha256": "cef043baf1916572fa73eab0456965c579fa193be9de3eaedd02a188bfb2dd1e",
+        "matches_current_source": true,
+        "matches_materials_archive": true
+      },
+      {
+        "workshop": "solar_autoresearch",
+        "start": "start/solar.html",
+        "download": "../notebooks/solar_autoresearch.py",
+        "sha256": "aaf621f8e4d734d78caddd13e964c1f5df22f0a41a8c0adf1b8464bb1713efc2",
+        "matches_current_source": true,
+        "matches_materials_archive": true
+      },
+      {
+        "workshop": "request_routing",
+        "start": "start/routing.html",
+        "download": "../notebooks/request_routing.py",
+        "sha256": "24db9e0948a3aab6f2e584b86319e3d4650ae999ffd366c2a04fe8aceda2b366",
+        "matches_current_source": true,
+        "matches_materials_archive": true
+      },
+      {
+        "workshop": "visual_inspection",
+        "start": "start/inspection.html",
+        "download": "../notebooks/visual_inspection.py",
+        "sha256": "44a38ee94ace142da34f871de52b2d01a9645c4d3dab5ceab17e353c93e9973b",
+        "matches_current_source": true,
+        "matches_materials_archive": true
+      },
+      {
+        "workshop": "transit_factory",
+        "start": "start/transit.html",
+        "download": "../notebooks/transit_factory.py",
+        "sha256": "337ae4191bd020edca2f672ec62e8ae6c2931e11cdf31fa4fa976f0eb83c0c7f",
+        "matches_current_source": true,
+        "matches_materials_archive": true
+      },
+      {
+        "workshop": "airline_monitoring",
+        "start": "start/airline_monitoring.html",
+        "download": "../notebooks/airline_monitoring.py",
+        "sha256": "32c947ae130f43cffd6135e31700be7f37d2b361df529115e5151e869f5f30c5",
+        "matches_current_source": true,
+        "matches_materials_archive": true
+      }
+    ],
+    "built_packet_status": "Passed: all six primary download links resolve to the final regenerated notebook source, and the same bytes appear in workshop-materials.zip.",
+    "action_cell_count": 151,
+    "action_cell_scope": "All authored cells recognized by authoring.action_catalog, including nine Routing release-capstone cells with explicit IDs. The previous /action/ ID-only count was 142.",
+    "built_packet_readback_scope": "Final completed local website build at dist/decks/site/packet; not yet an HTTP readback of the next Pages deployment.",
+    "built_packet_manifest_sha256": "0fadc9e7fd656f9849c794f05304dcd4a065d155cf6f904ddb460d1d1faf649a"
+  },
+  "current_source_clean_directory_render": {
+    "scope": "Final current website notebook source copied to a separate folder; only initial cell rendering via marimo export. No exercise controls selected.",
+    "provider_environment_variables_removed": true,
+    "checkout_on_pythonpath": false,
+    "wandb_mode": "offline",
+    "system_certificates": true,
+    "saved_cloud_login_still_present": true,
+    "results": [
+      {
+        "file": "pending_inc.py",
+        "source_sha256": "cef043baf1916572fa73eab0456965c579fa193be9de3eaedd02a188bfb2dd1e",
+        "returncode": 0,
+        "elapsed_seconds": 6.51,
+        "html_bytes": 560389,
+        "workshop_journal_created": false,
+        "traceback_in_log": false,
+        "log_sha256": "322d14a058b46e6fc510f132348486806c1bb68906477510fde9b50080c65e93",
+        "matches_final_generated_source": true,
+        "render_sha256": "2764f000edabbe6be2478f48df8a8cdd9d6268c5d182e8930e2b5f8d0a0130dd",
+        "error_marker_count": 0
+      },
+      {
+        "file": "solar_autoresearch.py",
+        "source_sha256": "aaf621f8e4d734d78caddd13e964c1f5df22f0a41a8c0adf1b8464bb1713efc2",
+        "returncode": 0,
+        "elapsed_seconds": 19.36,
+        "html_bytes": 717423,
+        "workshop_journal_created": false,
+        "traceback_in_log": false,
+        "log_sha256": "9471ab9bd4d4e4d591697adf3aeb7d75ac7a1873cc526f4adabb0305f18e7e62",
+        "matches_final_generated_source": true,
+        "render_sha256": "4781b5e036e251e623c05f0efe41042779e8d9876c24ecf94e57df8b60476b08",
+        "error_marker_count": 0
+      },
+      {
+        "file": "request_routing.py",
+        "source_sha256": "24db9e0948a3aab6f2e584b86319e3d4650ae999ffd366c2a04fe8aceda2b366",
+        "returncode": 0,
+        "elapsed_seconds": 7.31,
+        "html_bytes": 586601,
+        "workshop_journal_created": false,
+        "traceback_in_log": false,
+        "log_sha256": "65e1e8d782f861acc72c46a8cbe7c43ae68981857f4769de187ac31238dd1ca1",
+        "matches_final_generated_source": true,
+        "render_sha256": "cbc355dd6c1b6f671529dae4f8acce17d0c2808beffefc721f84709c3881e65c",
+        "error_marker_count": 0
+      },
+      {
+        "file": "visual_inspection.py",
+        "source_sha256": "44a38ee94ace142da34f871de52b2d01a9645c4d3dab5ceab17e353c93e9973b",
+        "returncode": 0,
+        "elapsed_seconds": 9.89,
+        "html_bytes": 671713,
+        "workshop_journal_created": false,
+        "traceback_in_log": false,
+        "log_sha256": "6fe63d3b6dec9500c9ede77a2ccdf66522dcc1f42ae6177292285b287722a9c5",
+        "matches_final_generated_source": true,
+        "render_sha256": "ac5013764bd9d3786327b26a7d172ce2d7cca3d16ee6c1ff0cb4401b886bb3e5",
+        "error_marker_count": 0
+      },
+      {
+        "file": "transit_factory.py",
+        "source_sha256": "337ae4191bd020edca2f672ec62e8ae6c2931e11cdf31fa4fa976f0eb83c0c7f",
+        "returncode": 0,
+        "elapsed_seconds": 5.06,
+        "html_bytes": 486781,
+        "workshop_journal_created": false,
+        "traceback_in_log": false,
+        "log_sha256": "e709328d5f25320160a98381d22aad175f9cf3048dd984b347fe6512005f3c66",
+        "matches_final_generated_source": true,
+        "render_sha256": "a53639c69b708a2485b8b137057c162898d76989b78b720590617de5347d04c1",
+        "error_marker_count": 0
+      },
+      {
+        "file": "airline_monitoring.py",
+        "source_sha256": "32c947ae130f43cffd6135e31700be7f37d2b361df529115e5151e869f5f30c5",
+        "returncode": 0,
+        "elapsed_seconds": 5.18,
+        "html_bytes": 639809,
+        "workshop_journal_created": false,
+        "traceback_in_log": false,
+        "log_sha256": "cfaebebb81e5082014e4ec70d8034fd317ec41f89a12e8996c4432aaaf0c4fb7",
+        "matches_final_generated_source": true,
+        "render_sha256": "d75169e210d52b490ed1662de19662f317a6e575baed93cacbd82b585fbbe55b",
+        "error_marker_count": 0
+      }
+    ],
+    "status": "six_initial_exports_passed",
+    "system": "Darwin arm64",
+    "uv": "0.11.27",
+    "marimo": "0.25.2",
+    "pinned_workshop_runtime": "0.12.0",
+    "timing_scope": "Warm package caches on this workstation. These are initial-render durations, not installation or full-workshop timing qualification."
+  }
+}

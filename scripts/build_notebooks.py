@@ -126,7 +126,7 @@ from coreweave.forge.agentlens import tracing
 )
 add(
     """
-mo.md("# My workshop\\nCopy this notebook to your project, then replace the square calculation below with your own exercise. The tracing scopes show how to send its arguments and result to Agent Lens.")
+mo.md("# My workshop\\nOpen this notebook locally and connect it to your own Forge project, then replace the square calculation below with your own exercise. The tracing scopes show how to send its arguments and result to Agent Lens.")
 _context=setup.project_context()
 project=mo.ui.text(value=_context["project"],label="entity/project",disabled=_context["hosted"] and _context["detected"])
 connect=mo.ui.run_button(label="Check project access")

@@ -6,7 +6,7 @@ Use the current Transit notebook and companion deck. This is one six-hour sessio
 
 ## Before the room arrives
 
-- Open an attendee-style copy in a project you can write to. Check project access separately from inference access.
+- Follow the [Transit start page](https://ash0ts.github.io/forge-workshop-kit/packet/start/transit.html) in a fresh local folder. Enter a project you can write to, then check project access separately from inference access.
 - Read the data receipt: this is the November 2024 MBTA schedule, not live arrivals. Find trip 63926435 at stop 70076, with ThanksgivingDay service and departure 24:08:00.
 - Confirm the fixed model, adjustable allowance and explicit run controls. Opening the notebook must not start work.
 - Run the free local checks. Open a verified Agent Lens trace and native comparison. Have the recorded results available with their rehearsal labels.

@@ -2,9 +2,9 @@
 
 Six hands-on Python workshops that follow a customer or engineering problem through code, a result, and a tested change. Handle a refund, forecast solar observations, route a support request, inspect a circuit board, coordinate coding agents, or investigate a booking agent.
 
-The exercises teach the work behind improving an AI application: run it, observe what happened, curate examples worth investigating, change the implementation, and evaluate the result. Each workshop includes an illustrated Report, an editable notebook, a deck, free code checks, and recorded outcomes. The examples include improvements, ties, and regressions.
+Getting a first output is the beginning of the exercise. Participants then inspect a mistake or unexpected result, change the relevant code, and test it on the same cases. Each workshop includes an illustrated Report, an editable notebook, a deck, free code checks, and recorded outcomes you can inspect before running anything.
 
-Participants copy a notebook into their own project and use their own credentials. The facilitator can read published progress and help requests. There is no workshop gateway or shared account.
+Participants run an editable notebook and save results to their own Forge project. The facilitator can read published progress and help requests. There is no workshop gateway or shared account.
 
 **These are technical previews.** The notebooks and decks are published, but external-account checks and participant rehearsals are still outstanding. See [current status and next steps](next-up.md) before scheduling a class.
 
@@ -29,26 +29,25 @@ The durations include coding, discussion, and breaks. Participants should be com
 
 The [deck library](https://ash0ts.github.io/forge-workshop-kit/) includes PDFs and editable slide sources. For a short demonstration rather than a full class, use the [demo guide](docs/current-demo-guide.md).
 
-Each workshop also has a [one-page poster](https://ash0ts.github.io/forge-workshop-kit/) and step-by-step diagrams shared by its notebook and deck. The [visual guide gallery](https://ash0ts.github.io/forge-workshop-kit/visual-language/) shows the six reusable compositions. To use them in another project, install the standalone [teenage-engineering-visualizations skill](docs/technical-visuals.md). It includes its own fonts, renderer, examples, and export checks.
+Each workshop also has a [one-page poster](https://ash0ts.github.io/forge-workshop-kit/) and step-by-step diagrams shared by its notebook and deck. The [visual guide gallery](https://ash0ts.github.io/forge-workshop-kit/visual-language/) contains 36 step-by-step explanations from the six workshops. To use them in another project, install the standalone [teenage-engineering-visualizations skill](docs/technical-visuals.md). It includes its own fonts, renderer, examples, and export checks.
 
 ## Follow the work through Forge
 
-The notebook contains the code participants change. Agent Lens shows the requests, tool calls, errors, and handoffs produced by that code. Runs and Sweeps compare training settings; Artifacts save the exact data, code, weights, and outputs. Weave and EvalTables align matching cases, and the final Report explains what the comparison supports.
+In Pending, open the refund's tool call in Agent Lens and check which payment it changed. In Solar, compare a forecast with the observed value, then open the training run and recover its code and weights from an Artifact. In Inspection, use EvalTables to see which board a changed detector now catches and which one it still misses.
 
-Each product appears beside a question: which payment was refunded, which learning rate ran, which board was missed, or which worker supplied a patch? The [workflow guide](docs/use-the-workshops.md#follow-the-ai-work-through-forge) maps those investigations to the shared run → observe → curate → improve → evaluate sequence.
+The notebook gives you the code to change and a check to run. The linked Forge record helps you explain what happened. The [workshop guide](docs/use-the-workshops.md#follow-the-ai-work-through-forge) suggests a specific investigation for each session.
 
-## Start in Forge
+## Start a workshop
 
-**Current delivery:** v0.12.0 is available as downloadable notebooks and a local package. Hosted templates remain at v0.11.1 because Forge currently rejects notebook management for the publishing account. If a template redirects to Home, use the start page's source download and laptop instructions. The new direct ARIA controls are in v0.12.0; they are not yet in the hosted templates.
+Open a workshop's start page from the table above. Download its current `.py` notebook into a folder you will keep, then follow the page's login and launch commands. You need [uv](https://docs.astral.sh/uv/getting-started/installation/); the launch command installs the notebook's pinned dependencies and opens an editable local notebook.
 
-1. Sign in to [Forge](https://forge.coreweave.com) and create a teaching project where you have write access. Use a public project if the facilitator should read progress without an invitation. Only publish the supplied public or fictional data there.
-2. Open a notebook above, choose **Copy to project**, and open your editable copy.
-3. Use marimo’s **Run all stale cells** once to create the controls. It does not press the exercise Run buttons or start training or inference. Inspect the opening example, then follow the notebook’s access check and first tracing exercise.
-4. Confirm the displayed project is yours. Share its link with the facilitator if you want progress monitoring. They do not need your API key.
+Sign in to [Forge](https://forge.coreweave.com) and create a project where you can write. Initialize the notebook’s controls with **Run all stale cells**, enter that `entity/project`, and inspect the opening example. Follow the access check and first tracing exercise. Training and model calls have their own explicit run buttons.
 
-You need project write access, notebook compute, and inference access for the model-call exercises. A successful project check does not establish all three. The [setup guide](docs/setup.md) covers import alternatives, access checks, and recovery.
+Your notebook runs locally and publishes results to that Forge project. Share the project link with the facilitator if you want progress monitoring; they do not need your API key. Use the supplied workshop data in public projects. See [setup and recovery](docs/setup.md) for the exact commands and access checks.
 
-## Start on your laptop
+**Hosted templates:** the optional Forge copies remain on v0.11.1 while notebook-management access blocks their update. Use the website downloads for the revised exercises and direct ARIA controls; they retain the v0.12.0 runtime pins.
+
+## Work from the repository
 
 Install Git and [uv](https://docs.astral.sh/uv/getting-started/installation/). For Solar:
 
@@ -56,11 +55,11 @@ Install Git and [uv](https://docs.astral.sh/uv/getting-started/installation/). F
 git clone https://github.com/ash0ts/forge-workshop-kit.git
 cd forge-workshop-kit
 uv sync --frozen --extra solar
-uv run --extra solar wandb login
+uv run --extra solar wandb login --host https://api.wandb.ai --verify
 uv run --extra solar marimo edit notebooks/solar_autoresearch.py
 ```
 
-Enter your writable `entity/project` in the notebook. Use the [local setup table](docs/setup.md#work-locally) for the other workshops. Tools and training run in the notebook’s Python runtime; inference and publication use your Forge account. You do not need Docker or a local service.
+Enter your writable `entity/project` in the notebook. Use the [dependency table](docs/setup.md#work-from-the-repository) for the other workshops. Tools and training run in the notebook’s Python runtime; inference and publication use your Forge account. You do not need Docker or a local service.
 
 ## While you work
 
@@ -68,9 +67,9 @@ Each step puts the task, editable code, local check, run control, result, and Fo
 
 Drafts and completed results save locally. Uploaded W&B checkpoint artifacts let you restore them after replacing a runtime. Keep `.workshop/` on a laptop and confirm the checkpoint upload before discarding a hosted runtime. [Resume and recovery instructions](docs/setup.md#resume-or-recover) explain how to retry an upload without repeating an experiment.
 
-The default **$8 inference allowance** is adjustable per workspace. It is not an account-wide billing limit. Notebook compute, ARIA, and native Agent Lens tag judging have separate billing. In Airline, disable **Apply with AI** when you finish; closing the notebook does not disable the tag.
+The default **$8 inference allowance** is adjustable per workspace. It is not an account-wide billing limit. Local training uses your laptop CPU. ARIA, native Agent Lens tag judging, and any hosted notebook compute have separate billing. In Airline, disable **Apply with AI** when you finish; closing the notebook does not disable the tag.
 
-Each workshop has two [ARIA investigations](docs/aria-investigations.md). Participants explain a result, click **Start ARIA investigation**, and open the returned conversation to continue with ARIA. The notebook sends the selected run or conversation references and saves the request so reopening does not repeat it. Participants check a citation before accepting a claim. Live access needs a supported team project and Smart features; the bundled recordings support the same exercise without it.
+Each workshop pauses twice to [investigate a result with ARIA](docs/aria-investigations.md). Write what you think happened, click **Start ARIA investigation**, and open the returned conversation. Ask ARIA to check your explanation against the selected records, then open one citation yourself. For example, did the extra tool call improve the account outcome, or did both versions already finish correctly? Live access needs a supported team project and Smart features; use the bundled recorded investigation if those aren't available.
 
 ## What happened in the recorded rehearsal
 
@@ -82,8 +81,8 @@ Weave-backed native EvalTables comparisons are available. Airline’s last AI Al
 
 Start with [Run a Forge workshop](docs/facilitator-start.md) to prepare the materials, set up the progress monitor, and handle access or publication failures. Each deck has a short running guide: [Pending](docs/run-pending.md), [Solar](docs/run-solar.md), [Routing](docs/run-routing.md), [Inspection](docs/run-inspection.md), [Transit](docs/run-transit.md), and [Airline](docs/run-airline_monitoring.md).
 
-The [facilitator notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzM=/view) reads the project links you supply. Missing updates mean “unknown,” not “failed.” The [documentation index](docs/README.md) links each workshop’s schedule and evidence.
+The [facilitator notebook](notebooks/facilitator.py) reads the project links you supply; follow the [monitor setup instructions](docs/setup.md#read-participant-progress) to run it locally. Missing updates mean “unknown,” not “failed.” The [documentation index](docs/README.md) links each workshop’s schedule and evidence.
 
 For changes to the kit, start with [CONTRIBUTING.md](CONTRIBUTING.md). The [technical specification](techspec.md) explains how notebooks, saving, accounting, tracing, and publication fit together. [Next steps](next-up.md) separates completed work from what still needs qualification.
 
-To add a workshop, use the [starter notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzI=/view), [authoring guide](docs/authoring.md), and repository-local [forge-workshops skill](.agents/skills/forge-workshops/SKILL.md). Participants do not need the skill. Earlier releases and gateway-era materials are preserved in the [archive](docs/archive.md).
+To add a workshop, use the [starter notebook](notebooks/starter.py), [authoring guide](docs/authoring.md), and repository-local [forge-workshops skill](.agents/skills/forge-workshops/SKILL.md). Participants do not need the skill. Earlier releases and gateway-era materials are preserved in the [archive](docs/archive.md).

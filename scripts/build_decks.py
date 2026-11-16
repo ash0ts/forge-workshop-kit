@@ -181,6 +181,7 @@ def write_library_index(directory, available):
     shutil.copytree(ROOT / "skills/teenage-engineering-visualizations/assets/fonts", directory / "fonts", dirs_exist_ok=True)
     tokens = json.loads((ROOT / "skills/teenage-engineering-visualizations/assets/tokens.json").read_text(encoding="utf-8"))["colors"]
     write_walkthrough_page(directory, tokens)
+    video_release = "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0"
     links = []
     for row in available:
         slug = row["slug"]
@@ -199,7 +200,7 @@ def write_library_index(directory, available):
         poster = json.loads((ROOT / "visual-guides" / slug / "poster.json").read_text(encoding="utf-8"))["poster"]
         poster_png = next((directory / "posters" / slug / "digital").glob("*.png"), None)
         links.append(f'<article id="{html.escape(slug)}"><a class="preview" href="posters/{slug}/digital/index.html">'
-                     f'<img loading="lazy" src="posters/{slug}/digital/final.svg" alt="Overview poster: {html.escape(row["title"], quote=True)}"></a>'
+                     f'<img loading="lazy" width="1200" height="1500" src="posters/{slug}/digital/final.svg" alt="Overview poster: {html.escape(row["title"], quote=True)}"></a>'
                      f'<div><p class="number">{len(links)+1:02d} / {html.escape(poster["duration"])}</p>'
                      f'<h2>{html.escape(row["title"])}</h2><p>{html.escape(poster["situation"])}</p>'
                      f'<p>{actions}</p><p>{deck_downloads}</p><p><a href="posters/{slug}/digital/index.html">View poster</a> · '
@@ -219,34 +220,44 @@ def write_library_index(directory, available):
         'margin:3rem auto;padding:0 1.5rem;color:var(--ink);background:var(--paper)}'
         'h1{font-size:clamp(36px,6vw,68px);font-weight:500;line-height:1.05;letter-spacing:-.04em}'
         'h2{font-size:28px;line-height:1.15;font-weight:500}a{color:inherit;text-underline-offset:4px}'
-        'a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}'
+        'a:focus-visible,video:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:4px}'
         'article{display:grid;grid-template-columns:minmax(240px,1fr) 1fr;gap:40px;padding:36px 0;border-top:1px solid var(--line);scroll-margin-top:24px}'
-        'article img{width:100%;display:block}.number{font:14px "IBM Plex Mono",monospace;letter-spacing:.04em}'
-        'header{max-width:850px;margin-bottom:48px}footer{border-top:1px solid var(--line);padding-top:24px}'
+        'article img{width:100%;height:auto;display:block}.number{font:14px "IBM Plex Mono",monospace;letter-spacing:.04em}'
+        'header{margin-bottom:36px}header>p{max-width:880px}.tour{margin:28px 0 20px}'
+        'video{width:100%;height:auto;aspect-ratio:16/9;display:block;background:#202220}'
+        'figcaption{font-size:16px;margin-top:10px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}'
+        'details{font-size:17px;padding:14px 0}summary{cursor:pointer}'
+        'footer{border-top:1px solid var(--line);padding-top:24px}'
         '@media(max-width:650px){article{grid-template-columns:1fr;gap:8px}body{margin:2rem auto}}'
         '</style><header><p class="number">FORGE / WORKSHOP KIT</p>'
-        '<h1>Forge Workshop Kit</h1><p>Learn to investigate and improve AI systems through six Python workshops: '
-        'an office agent, solar forecasting, a support router, circuit-board inspection, '
-        'a team of coding agents, and airline-service monitoring.</p>'
-        '<p>Each starts with a problem you can inspect. Follow the request or observation through its code and '
-        'Forge records, test a change, and compare what happened. Read the worked example, then copy its '
-        'notebook into your own project to try it.</p>'
-        '<p>These are technical previews. You can read the recorded results without running an experiment. '
-        'Notebook execution uses your own project access and billing.</p>'
-        '<p><a href="walkthrough/">'
-        'Watch the ten-minute captioned tour</a>: six customer problems, their code, and the saved Forge records.</p>'
-        '<p>Current downloads are v0.12.0. Hosted templates remain v0.11.1 while the publisher’s notebook-management '
-        'access is blocked. Use the source download and laptop instructions for the new direct ARIA controls.</p>'
+        '<h1>Forge Workshop Kit</h1><p>Six Python workshops follow an agent or model through a concrete job: '
+        'handling a refund, forecasting solar activity, routing a support request, finding a defective board, '
+        'building a departure app, or changing a booking. Each pairs editable code with the Forge records used to check its result.</p>'
+        '<p>Read a worked example, try a short demo, or teach a full session.</p>'
+        '<figure class="tour"><video controls playsinline preload="metadata" '
+        f'poster="{video_release}/poster.png" aria-label="Ten-minute captioned tour of all six workshops">'
+        f'<source src="{video_release}/forge-workshops-captioned.mp4" type="video/mp4">'
+        '<a href="walkthrough/">Watch or download the workshop tour</a></video>'
+        '<figcaption><span>10 minutes · Captioned · No audio</span>'
+        '<a href="walkthrough/">Full tour, downloads, and transcript</a></figcaption></figure>'
         '<p><a href="packet/docs/setup.html">Set up your notebook</a> · '
         '<a href="packet/workshop-materials.zip" download>Download all workshop materials</a> · '
         '<a href="packet/docs/recorded-results.html">Read the recorded results</a></p>'
         '<p><a href="packet/docs/facilitator-start.html">Facilitate a workshop</a> · '
-        '<a href="packet/docs/use-the-workshops.html">Choose a workshop for your team</a></p></header>'
+        '<a href="packet/docs/use-the-workshops.html">Choose a workshop for your team</a> · '
+        '<a href="visual-language/">Explore the workshop diagrams</a></p>'
+        '<details><summary>Notebook options and session readiness</summary>'
+        '<p>Get the current notebook from its start page and run it locally with your own Forge project. '
+        'The older hosted copies require Forge notebook access and do not yet include the direct ARIA controls. '
+        'Read-only examples are free to browse; running exercises uses your own inference and compute access.</p>'
+        '<p>The full sessions remain technical previews while external-account and participant rehearsals are completed. '
+        '<a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/next-up.md">Read the current checks and limitations</a>.</p>'
+        '</details></header>'
         f'<main>{"".join(links)}</main>'
         '<footer><a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md">Setup instructions</a> · '
         '<a href="https://github.com/ash0ts/forge-workshop-kit">Source and contributor guide</a> · '
         '<a href="share/">Share a workshop</a> · '
-        '<a href="visual-language/">Reusable visual guides</a></footer></html>',
+        '<a href="visual-language/">Workshop diagrams</a></footer></html>',
         encoding="utf-8",
     )
 
@@ -272,7 +283,7 @@ def write_walkthrough_page(directory, tokens):
         '<p class="number"><a href="../">FORGE / WORKSHOP KIT</a></p><h1>Watch the workshop tour</h1>'
         '<p>A ten-minute tour of six customer problems, the exercises, and their saved Forge records. '
         'The video is silent, with captions. It shows recorded work and controlled teaching examples.</p>'
-        f'<video controls playsinline preload="metadata" aria-label="Captioned workshop tour">'
+        f'<video controls playsinline preload="metadata" poster="{release}/poster.png" aria-label="Captioned workshop tour">'
         f'<source src="{release}/forge-workshops-captioned.mp4" type="video/mp4">'
         f'Your browser cannot play this video. <a href="{release}/forge-workshops-captioned.mp4">Download the captioned MP4</a>.'
         '</video><p>If playback is unavailable, download the MP4 or read the script below.</p>'

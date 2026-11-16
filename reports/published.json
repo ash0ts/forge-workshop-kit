@@ -4,56 +4,62 @@
     "pending": {
       "title": "Build an agent you can inspect, then test changes to its harness",
       "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ==",
-      "notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view",
+      "notebook_url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/pending.html",
       "deck_url": "https://ash0ts.github.io/forge-workshop-kit/pending/",
       "source": "reports/pending.md",
-      "source_sha256": "3451abe3de34f63e5e5cd960da4511a6e4d0408199a950786a414bbe5ef150b1",
-      "anonymous_readback": true
+      "source_sha256": "234a9436aa2c9935baae528e2e6bf53db87ec1ec817ebb718bd924429a945eec",
+      "anonymous_readback": true,
+      "hosted_notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view"
     },
     "solar": {
       "title": "Test research-agent changes against real solar observations",
       "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg==",
-      "notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view",
+      "notebook_url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/solar.html",
       "deck_url": "https://ash0ts.github.io/forge-workshop-kit/solar/",
       "source": "reports/solar.md",
-      "source_sha256": "540b7ecb88272f74ab891df5be3beefd6b379e4a8db179fc3bc24f83b67a0348",
-      "anonymous_readback": true
+      "source_sha256": "c28d6ee3ee00c64551e5e19a2201658c8a2dff0280be5f920b1b6acdb806aa1e",
+      "anonymous_readback": true,
+      "hosted_notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view"
     },
     "routing": {
       "title": "Train a support router, then check what you released",
       "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw==",
-      "notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view",
+      "notebook_url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/routing.html",
       "deck_url": "https://ash0ts.github.io/forge-workshop-kit/routing/",
       "source": "reports/routing.md",
-      "source_sha256": "3b216a8449c3a7df42d5b0743e3c41f9f5c1afaecf60fd7ece2112fb078a4a89",
-      "anonymous_readback": true
+      "source_sha256": "e0d03569ee0631fea174f199899d4ddda02fb88ad8447ec81871137595de6835",
+      "anonymous_readback": true,
+      "hosted_notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view"
     },
     "inspection": {
       "title": "Find a missed defect, then test the change",
       "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA==",
-      "notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view",
+      "notebook_url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/inspection.html",
       "deck_url": "https://ash0ts.github.io/forge-workshop-kit/inspection/",
       "source": "reports/inspection.md",
-      "source_sha256": "c2fd15c59fb7fc899a1a0d35cf97fb21160f4d6ed9492928c493dccb29411f92",
-      "anonymous_readback": true
+      "source_sha256": "32f4bf7a1de0315814373b095139ffe295900ebbb4f92eb4c236a5dca4fc0a39",
+      "anonymous_readback": true,
+      "hosted_notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view"
     },
     "transit": {
       "title": "Coordinate coding agents, then test the app they built",
       "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ==",
-      "notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view",
+      "notebook_url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/transit.html",
       "deck_url": "https://ash0ts.github.io/forge-workshop-kit/transit/",
       "source": "reports/transit.md",
-      "source_sha256": "f9e4b96509f8d9155d3ac82114f704aef048ab3c2f9458edde0d29af538b8049",
-      "anonymous_readback": true
+      "source_sha256": "18f828ffde8f7f5f7e51bf7023461295df990446c9ff8b386523019f554810f2",
+      "anonymous_readback": true,
+      "hosted_notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view"
     },
     "airline": {
       "title": "Turn an airline agent's behavior into monitoring rules and regression tests",
       "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA==",
-      "notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view",
+      "notebook_url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/airline_monitoring.html",
       "deck_url": "https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/",
       "source": "reports/airline.md",
-      "source_sha256": "ac4f6a7b86ef065410fbba5c390b5fa8aa9a0166febea5daf137dd81760713aa",
-      "anonymous_readback": true
+      "source_sha256": "28012960d331e1e0d8bce8ccfb4c3ed08cb439208423efd692c0bb75e4244443",
+      "anonymous_readback": true,
+      "hosted_notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view"
     }
   }
 }

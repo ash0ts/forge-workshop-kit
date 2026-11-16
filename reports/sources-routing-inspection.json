@@ -5,7 +5,7 @@
   "reports": {
     "routing": {
       "file": "reports/routing.md",
-      "notebook": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view",
+      "notebook": "https://ash0ts.github.io/forge-workshop-kit/packet/start/routing.html",
       "claims": [
         {
           "id": "routing-data",
@@ -46,7 +46,7 @@
             {
               "path": "scripts/routing_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/routing_cells.py",
-              "sha256": "7c7df1c1aef0e6ab83c808961e39b4e91dd6750a1f9781dc92428ec5be573cc3"
+              "sha256": "73a834abf34c57a43ff67f0135cbe6e7ba8c1a7961c53f7a7aff6a143bcb4d94"
             }
           ]
         },
@@ -137,12 +137,12 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "ab9c5cfbdf0a3e3a6a804f5724ba6aad20dda7edfc4b5cf821cf708409375ccb"
+              "sha256": "14a17d2aa982ca8ec4346c3e4ef6d1d861b3b7922f1f1d2d24c83580fba44eaa"
             },
             {
               "path": "docs/setup.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md",
-              "sha256": "44f081f5ea3a9529dde79861f4ddc741576cf4440349871cb41244d4f33736d0"
+              "sha256": "197d8b69fdb185f118e15ceb9b20808de1fb6d471cd9fff5d05bb360091b394e"
             },
             {
               "path": "docs/routing-workshop.md",
@@ -172,7 +172,7 @@
             {
               "path": "scripts/routing_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/routing_cells.py",
-              "sha256": "7c7df1c1aef0e6ab83c808961e39b4e91dd6750a1f9781dc92428ec5be573cc3"
+              "sha256": "73a834abf34c57a43ff67f0135cbe6e7ba8c1a7961c53f7a7aff6a143bcb4d94"
             },
             {
               "path": "docs/aria-investigations.md",
@@ -192,7 +192,7 @@
           ]
         },
         {
-          "claim": "The v0.12.0 downloads include direct ARIA controls. Hosted templates remain at their verified v0.11.1 revision because Forge notebook-management access blocked the update; current downloads have import and laptop paths.",
+          "claim": "Current website notebooks include revised explanations and direct ARIA controls, using the v0.12.0 runtime. The immutable release files remain available. Hosted templates retain v0.11.1 because native notebook-management access blocks their update.",
           "sources": [
             {
               "path": "docs/release-publication-v0120.json",
@@ -203,6 +203,11 @@
               "path": "docs/aria-direct-qualification.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-direct-qualification.md",
               "sha256": "53bf1eb7151d556cc217ba76d570f2110ac930d68746219b216ad4bb88325848"
+            },
+            {
+              "path": "docs/notebook-download-check-v0120.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/notebook-download-check-v0120.json",
+              "sha256": "377599a9a641d0ba1054af21a4f5415a58155831b0e23d323640086f381e84c8"
             }
           ],
           "id": "routing-release-access"
@@ -306,11 +311,11 @@
           "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/mechanism-release.png"
         }
       ],
-      "article_sha256": "3b216a8449c3a7df42d5b0743e3c41f9f5c1afaecf60fd7ece2112fb078a4a89"
+      "article_sha256": "e0d03569ee0631fea174f199899d4ddda02fb88ad8447ec81871137595de6835"
     },
     "inspection": {
       "file": "reports/inspection.md",
-      "notebook": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view",
+      "notebook": "https://ash0ts.github.io/forge-workshop-kit/packet/start/inspection.html",
       "claims": [
         {
           "id": "inspection-data",
@@ -319,7 +324,7 @@
             {
               "path": "docs/inspection-workshop.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md",
-              "sha256": "d16d186120dbd8517339091fe14a55f3b841da3f2fc7a3ac2744b4f5d7ed5c0e"
+              "sha256": "881d6abdc350d758dc3e040aeabc5c0454c0ed843fade54ef4351cac93e8506a"
             },
             {
               "path": "src/forge_workshop_kit/inspection.py",
@@ -337,7 +342,7 @@
             {
               "path": "docs/inspection-workshop.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md",
-              "sha256": "d16d186120dbd8517339091fe14a55f3b841da3f2fc7a3ac2744b4f5d7ed5c0e"
+              "sha256": "881d6abdc350d758dc3e040aeabc5c0454c0ed843fade54ef4351cac93e8506a"
             },
             {
               "path": "src/forge_workshop_kit/inspection.py",
@@ -388,7 +393,7 @@
             {
               "path": "docs/inspection-workshop.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md",
-              "sha256": "d16d186120dbd8517339091fe14a55f3b841da3f2fc7a3ac2744b4f5d7ed5c0e"
+              "sha256": "881d6abdc350d758dc3e040aeabc5c0454c0ed843fade54ef4351cac93e8506a"
             }
           ]
         },
@@ -404,7 +409,7 @@
             {
               "path": "docs/inspection-workshop.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md",
-              "sha256": "d16d186120dbd8517339091fe14a55f3b841da3f2fc7a3ac2744b4f5d7ed5c0e"
+              "sha256": "881d6abdc350d758dc3e040aeabc5c0454c0ed843fade54ef4351cac93e8506a"
             }
           ],
           "limitations": [
@@ -419,7 +424,7 @@
             {
               "path": "docs/inspection-workshop.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md",
-              "sha256": "d16d186120dbd8517339091fe14a55f3b841da3f2fc7a3ac2744b4f5d7ed5c0e"
+              "sha256": "881d6abdc350d758dc3e040aeabc5c0454c0ed843fade54ef4351cac93e8506a"
             },
             {
               "path": "decks/inspection/public/recorded-retest.json",
@@ -445,12 +450,12 @@
             {
               "path": "docs/inspection-workshop.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md",
-              "sha256": "d16d186120dbd8517339091fe14a55f3b841da3f2fc7a3ac2744b4f5d7ed5c0e"
+              "sha256": "881d6abdc350d758dc3e040aeabc5c0454c0ed843fade54ef4351cac93e8506a"
             },
             {
               "path": "scripts/inspection_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/inspection_cells.py",
-              "sha256": "0c5ddfc53713aea7cd2c632e6bf910cc48dc65f07002658c6b81bc1653fb15ac"
+              "sha256": "3a996dd33c37f33402a0ecc1f625a1ecf81923bdacdb5d4aa5a38297ff26db1a"
             },
             {
               "path": "src/forge_workshop_kit/inspection_teaching.py",
@@ -471,7 +476,7 @@
             {
               "path": "docs/inspection-workshop.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md",
-              "sha256": "d16d186120dbd8517339091fe14a55f3b841da3f2fc7a3ac2744b4f5d7ed5c0e"
+              "sha256": "881d6abdc350d758dc3e040aeabc5c0454c0ed843fade54ef4351cac93e8506a"
             }
           ],
           "native": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=h43oxpf30iu"
@@ -483,17 +488,17 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "ab9c5cfbdf0a3e3a6a804f5724ba6aad20dda7edfc4b5cf821cf708409375ccb"
+              "sha256": "14a17d2aa982ca8ec4346c3e4ef6d1d861b3b7922f1f1d2d24c83580fba44eaa"
             },
             {
               "path": "docs/setup.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md",
-              "sha256": "44f081f5ea3a9529dde79861f4ddc741576cf4440349871cb41244d4f33736d0"
+              "sha256": "197d8b69fdb185f118e15ceb9b20808de1fb6d471cd9fff5d05bb360091b394e"
             },
             {
               "path": "docs/inspection-workshop.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md",
-              "sha256": "d16d186120dbd8517339091fe14a55f3b841da3f2fc7a3ac2744b4f5d7ed5c0e"
+              "sha256": "881d6abdc350d758dc3e040aeabc5c0454c0ed843fade54ef4351cac93e8506a"
             }
           ]
         },
@@ -504,7 +509,7 @@
             {
               "path": "scripts/inspection_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/inspection_cells.py",
-              "sha256": "0c5ddfc53713aea7cd2c632e6bf910cc48dc65f07002658c6b81bc1653fb15ac"
+              "sha256": "3a996dd33c37f33402a0ecc1f625a1ecf81923bdacdb5d4aa5a38297ff26db1a"
             },
             {
               "path": "docs/aria-investigations.md",
@@ -524,7 +529,7 @@
           ]
         },
         {
-          "claim": "The v0.12.0 downloads include direct ARIA controls. Hosted templates remain at their verified v0.11.1 revision because Forge notebook-management access blocked the update; current downloads have import and laptop paths.",
+          "claim": "Current website notebooks include revised explanations and direct ARIA controls, using the v0.12.0 runtime. The immutable release files remain available. Hosted templates retain v0.11.1 because native notebook-management access blocks their update.",
           "sources": [
             {
               "path": "docs/release-publication-v0120.json",
@@ -535,6 +540,11 @@
               "path": "docs/aria-direct-qualification.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-direct-qualification.md",
               "sha256": "53bf1eb7151d556cc217ba76d570f2110ac930d68746219b216ad4bb88325848"
+            },
+            {
+              "path": "docs/notebook-download-check-v0120.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/notebook-download-check-v0120.json",
+              "sha256": "377599a9a641d0ba1054af21a4f5415a58155831b0e23d323640086f381e84c8"
             }
           ],
           "id": "inspection-release-access"
@@ -639,7 +649,7 @@
           "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/mechanism-patch-distance.png"
         }
       ],
-      "article_sha256": "c2fd15c59fb7fc899a1a0d35cf97fb21160f4d6ed9492928c493dccb29411f92"
+      "article_sha256": "32f4bf7a1de0315814373b095139ffe295900ebbb4f92eb4c236a5dca4fc0a39"
     }
   },
   "validation": {

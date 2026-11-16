@@ -4,7 +4,7 @@
 
 An office agent must refund a duplicate charge and grant account access after a write times out. Participants implement the tools and observation handoff, then compare manual and agent-written procedures. The customer accounts are fictional; the recorded executions are real runs of the simulator.
 
-[Open deck](https://ash0ts.github.io/forge-workshop-kit/pending/) · [Copy notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) · [Full runbook](pending-facilitator.md) · [Facilitator setup](facilitator-start.md)
+[Open deck](https://ash0ts.github.io/forge-workshop-kit/pending/) · [Start notebook](https://ash0ts.github.io/forge-workshop-kit/packet/start/pending.html) · [Full runbook](pending-facilitator.md) · [Facilitator setup](facilitator-start.md)
 
 ## Before presenting
 
@@ -14,7 +14,7 @@ Open the invoice preview and the recorded timeout conversation. For a hands-on p
 
 | Elapsed | Lead the room through |
 | --- | --- |
-| 0:00–0:40 | Predict the required account changes, copy the notebook, and publish a first trace. |
+| 0:00–0:40 | Predict the required account changes, open the saved notebook, and publish a first trace. |
 | 0:40–1:10 | Implement invoice lookup, dispatch, and observation handoff; inspect the next model request. |
 | 1:10–1:20 | Break. |
 | 1:20–2:15 | Repair the timeout retry, implement checks, inspect a skill read, and test a manual procedure. Use the first ARIA investigation after development evaluation. |

@@ -4,9 +4,9 @@ Our research lab is preparing two solar forecasts: X-ray flux 30 minutes ahead a
 
 We built Solar Autoresearch to make that reconstruction part of the experiment. You prepare a forecast, save the code and outputs that produced it, inspect its mistakes, and test a change. Then you give a research agent the same job. Its proposals become Python diffs and training runs that we can review, rather than another explanation of why its idea should work.
 
-The lab is fictional. Its satellite observations are real, and the recorded experiments include a neural forecast that failed badly, a repair, and an image change that helped two seeds and hurt a third. You can [copy the notebook into your Forge project](https://ash0ts.github.io/forge-workshop-kit/packet/start/solar.html) and run the small experiments on CPU.
+The lab is fictional. Its satellite observations are real, and the recorded experiments include a neural forecast that failed badly, a repair, and an image change that helped two seeds and hurt a third. You can [open the notebook and use your Forge project](https://ash0ts.github.io/forge-workshop-kit/packet/start/solar.html) and run the small experiments on CPU.
 
-Forge connects the evidence we need for that review. Runs and Sweeps retain the settings and learning curves; Artifacts retain the data, source, weights, and predictions. Agent Lens records the research agent's requests and edits. We select changes using validation, then compare frozen forecasts on matching observations in EvalTables. That makes agent-assisted research an experiment we can question, including when it fails to improve the forecast.
+We'll begin with a forecast that was much worse than copying the latest observation. Open its training run to see the settings and loss history, then recover the source and predictions from its Artifacts. Later, when the research agent proposes a code change, we'll read the diff and compare its forecasts with the previous version on the same observations. The lab review needs both the error measurement and an explanation of what changed.
 
 ## Define the forecast before training a model
 
@@ -150,14 +150,16 @@ The comparison contains 199 overlapping windows from two days. Changing the seed
 
 ## Run the experiments in your project
 
-For the direct ARIA controls described below, use the [v0.12.0 notebook download](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/solar_autoresearch.py). Hosted templates remain on v0.11.1 while Forge notebook-management access blocks their update. The start page includes import and laptop instructions for the current download.
+Download the current [Solar Autoresearch notebook](https://ash0ts.github.io/forge-workshop-kit/packet/notebooks/solar_autoresearch.py) into a folder you will keep. Follow its [start page](https://ash0ts.github.io/forge-workshop-kit/packet/start/solar.html) to log in and launch the saved file. The command installs its pinned dependencies and opens an editable local notebook; your results are published to your own Forge project.
 
-The start page offers notebook copy, import, and laptop setup. You can also open the [Forge template directly](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view). If the hosted link sends you back to Home, use the import or local option on that page; your saved work does not need to be rerun.
+The optional [hosted template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view) remains on v0.11.1 while notebook-management access blocks its update. Use the current download for the revised exercises and direct ARIA controls. The [original v0.12.0 file](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/solar_autoresearch.py) remains available for reproducing that release.
 
-[Open Solar Autoresearch and choose **Copy to project**](https://ash0ts.github.io/forge-workshop-kit/packet/start/solar.html). Open your editable copy, use **Run all stale cells** to create the controls, and check the project shown in setup. Start with the observation window and persistence function. Training and inference require explicit run controls.
+Use **Run all stale cells** to create the controls, then enter your writable Forge project. Start with the observation window and persistence function. Training and inference have their own run buttons.
 
 The [six-hour deck](https://ash0ts.github.io/forge-workshop-kit/solar/) explains the calculations beside the exercises. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) covers credentials, saved-work recovery, and the laptop path using `uv sync --frozen --extra solar`. You use your own project, compute, and inference access; the adjustable $8 inference allowance excludes notebook compute and ARIA. Remote Sandboxes aren't required.
 
-Two ARIA activities ask you to explain a development result and check your frozen conclusion against a cited record. At the stop, click **Start ARIA investigation** to send your explanation and the selected records. **Open ARIA conversation** takes you to that same conversation in Forge; **Check ARIA response** brings its answer back into the notebook. Live ARIA is optional; recorded investigations are included. ARIA's diagnosis is a hypothesis to check, not a forecast score or permission to change the frozen experiment. Publication failures can be retried from saved outputs without training again.
+After inspecting your GOES forecast, write down why you think it performed as it did. Click **Start ARIA investigation** to ask about the selected validation results, settings, and loss history. **Open ARIA conversation** lets you continue the discussion; **Check ARIA response** brings the answer back into the notebook. Check one explanation against the run it cites. For example, does the saved loss history support the claim that the model needed more training, or would that still need an experiment? Use the recorded investigation if live ARIA is unavailable.
+
+At the closing stop, review the measurement and image results separately. Explain which version reduced error, which did not, and what you would test next. You can retry an upload from saved outputs without training again.
 
 The [Solar packet](https://utm.io/uuH97) collects this Report, the deck, notebook, visual guides, and running instructions. Use a recorded forecast for a short demonstration or work through the experiments in your own project. The materials remain a technical preview while external-account and participant rehearsals are outstanding.

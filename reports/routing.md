@@ -8,11 +8,11 @@ Our first classifier made that prediction. A second classifier, trained on sente
 
 *Recorded validation request `official-train/00035`. The second classifier changes the proposed destination. It does not automatically route this particular request.*
 
-We built this workshop to follow those decisions through training, review, evaluation, and release. The support desk is fictional; the messages come from [Banking77](https://github.com/PolyAI-LDN/task-specific-datasets/tree/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data), a public collection from Casanueva and colleagues at PolyAI, released under CC BY 4.0. Its 77 intent labels describe different support workflows. Nothing here accesses a bank account or takes a financial action.
+We built this workshop to follow those decisions through training, review, evaluation, and release. The support desk is fictional; the messages come from [Banking77](https://github.com/PolyAI-LDN/task-specific-datasets/tree/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data), a public collection from Casanueva and colleagues at PolyAI, released under CC BY 4.0. Its 77 intent labels distinguish requests such as a card that has not arrived, a card that does not work, and a transaction the customer does not recognize.
 
-You can [copy the notebook into your Forge project](https://ash0ts.github.io/forge-workshop-kit/packet/start/routing.html) and build the same comparison. The examples below are saved instructor results, so you can investigate them before running your own version.
+You can [open the notebook and use your Forge project](https://ash0ts.github.io/forge-workshop-kit/packet/start/routing.html) and build the same comparison. The examples below are saved instructor results, so you can investigate them before running your own version.
 
-In Forge, we follow a message from a training run into an aligned evaluation, review the mistakes, and preserve the selected model and preprocessing as an exact Artifact version. Agent Lens records the separate prompted-router and judge calls, then the batch operations used in the release drill. The release target is a notebook batch predictor. It lets us practice reproducing a version, detecting a loading bug, and rolling back without claiming we deployed a production banking service.
+We'll compare the same message across classifiers in EvalTables and inspect the probability assigned to each proposed destination. Then we'll load the selected model from an Artifact and run a batch of requests in the notebook. A controlled loading bug changes the intent mapping while leaving those probabilities untouched. Finding and repairing that bug is the second part of the workshop: a good classifier can still send a request to the wrong queue if we load it incorrectly.
 
 ## Change what the classifier can see
 
@@ -127,14 +127,16 @@ In [the recorded release comparison](https://forge.coreweave.com/wandb/wandb/for
 
 ## Run the workshop yourself
 
-For the direct ARIA controls described below, use the [v0.12.0 notebook download](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/request_routing.py). Hosted templates remain on v0.11.1 while Forge notebook-management access blocks their update. The start page includes import and laptop instructions for the current download.
+Download the current [Customer request routing notebook](https://ash0ts.github.io/forge-workshop-kit/packet/notebooks/request_routing.py) into a folder you will keep. Follow its [start page](https://ash0ts.github.io/forge-workshop-kit/packet/start/routing.html) to log in and launch the saved file. The command installs its pinned dependencies and opens an editable local notebook; your results are published to your own Forge project.
 
-The start page offers notebook copy, import, and laptop setup. You can also open the [Forge template directly](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view). If the hosted link sends you back to Home, use the import or local option on that page; your saved work does not need to be rerun.
+The optional [hosted template](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view) remains on v0.11.1 while notebook-management access blocks its update. Use the current download for the revised exercises and direct ARIA controls. The [original v0.12.0 file](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/request_routing.py) remains available for reproducing that release.
 
-Open the [Customer request routing notebook](https://ash0ts.github.io/forge-workshop-kit/packet/start/routing.html), choose **Copy to project**, and select a project where you have write access. Use **Run all stale cells** once to create the controls, confirm the displayed destination, and inspect the bundled request. Training and model calls have separate, explicit run buttons.
+Use **Run all stale cells** to create the controls, enter your writable Forge project, and inspect the bundled request. Training and model calls have separate run buttons.
 
 The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) includes the laptop path and recovery instructions. The [companion deck](https://ash0ts.github.io/forge-workshop-kit/routing/) follows the same exercises. Allow five and a half hours and bring basic Python familiarity. The adjustable $8 inference allowance covers the notebook's model calls; compute and optional ARIA usage are separate.
 
-Two ARIA activities examine a validation prediction and the release conclusion. At the stop, click **Start ARIA investigation** to send your explanation and the selected records. **Open ARIA conversation** takes you to that same conversation in Forge; **Check ARIA response** brings its answer back into the notebook. You check its explanation against a cited request, probability column, or release record; it does not approve a label or release the repair. Recorded investigations are included when live ARIA is unavailable.
+At the first ARIA stop, explain why you think TF–IDF chose its destination for a validation request. Click **Start ARIA investigation**, then **Open ARIA conversation** to ask about the selected prediction and model. **Check ARIA response** brings the answer back into the notebook. Check its explanation against the request and classifier scores before deciding what a different representation might help with. A recorded investigation is included if live ARIA is unavailable.
+
+The closing investigation returns to the release drill. Check that the repaired loader restores the original intent mapping, then identify the requests the classifier still gets wrong. Those remaining errors need a different intervention from the loading repair.
 
 The [Routing packet](https://utm.io/uuH98) collects this Report, the deck, notebook, visual guides, and running instructions for a short demonstration or the full session. These remain technical-preview materials; external-account checks and participant rehearsals are outstanding. Your copy saves your edits and results, including the remaining classifier errors after the loading bug is repaired.

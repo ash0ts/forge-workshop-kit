@@ -75,7 +75,7 @@ li { margin:12px 0; } @media(max-width:600px) { main {padding:16px;} h1 {font-si
 <p class="label">Recorded guide from saved rehearsal screens</p>
 <h1>Monitor an airline service agent and build better evaluations</h1>
 <p>Follow the request, its trace, the monitoring rule, and the matching evaluation. These are saved diagrams and actual Forge captures, not a recording of live clicks. No model calls or publication run when you open this guide.</p>
-<p><a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view">Open the hosted notebook and copy into your project</a> · <a href="https://github.com/ash0ts/forge-workshop-kit">Source and laptop setup</a></p>
+<p><a href="https://ash0ts.github.io/forge-workshop-kit/packet/start/airline_monitoring.html">Download and start the current notebook</a> · <a href="https://github.com/ash0ts/forge-workshop-kit">Source and laptop setup</a></p>
 <p class="status"><strong>Technical preview.</strong> Native Alignment returned no completed judge results, and prepared Insights had no completed cluster. The recorded agent comparison was a tie.</p>
 <nav aria-label="Guide chapters"><button id="back">Back</button><select id="chapters" aria-label="Select chapter"></select><button id="next">Next</button></nav>
 <figure><img id="screen" alt=""><figcaption id="caption" aria-live="polite"></figcaption></figure>

@@ -4,7 +4,7 @@
 
 A software team is building a departure board for people leaving an evening event. Participants implement the Python that assigns work to coding agents, reviews their patches, and checks the combined app. The frozen MBTA schedule is historical, not a source of live arrivals.
 
-[Open deck](https://ash0ts.github.io/forge-workshop-kit/transit/) · [Copy notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view) · [Full runbook](transit-facilitator.md) · [Facilitator setup](facilitator-start.md)
+[Open deck](https://ash0ts.github.io/forge-workshop-kit/transit/) · [Start notebook](https://ash0ts.github.io/forge-workshop-kit/packet/start/transit.html) · [Full runbook](transit-facilitator.md) · [Facilitator setup](facilitator-start.md)
 
 ## Before presenting
 

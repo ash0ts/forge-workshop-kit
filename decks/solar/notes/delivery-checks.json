@@ -1,5 +1,5 @@
 {
-  "source_sha256": "8b64151d23d2db2f2d3c77dadab79ad553f53c5540e3fcae1cf321b7dfe35be7",
+  "source_sha256": "d32db3974e4efad443c1bed697d8feffd5e18d0bc9d0456b10702b5de7602582",
   "preflight_only": false,
   "slides_checked": 131,
   "expected_slides": 131,
@@ -37,17 +37,17 @@
     {
       "number": 7,
       "key": "copy",
-      "title": "Open the materials and copy the notebook"
+      "title": "Open the materials and download the notebook"
     },
     {
       "number": 8,
       "key": "setup-screen",
-      "title": "Copy the notebook into the project you will use"
+      "title": "Check where your runs will be saved"
     },
     {
       "number": 9,
       "key": "local",
-      "title": "Run the same notebook on your laptop"
+      "title": "Open the notebook you downloaded"
     },
     {
       "number": 10,

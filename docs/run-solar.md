@@ -4,7 +4,7 @@
 
 A research lab needs a forecast someone else can reproduce before its weekly review. Participants start with persistence, train small models, then test an agent's proposed code changes. GOES-15 measurements and AIA 171 Å images are real satellite observations from February 2014; the lab is fictional.
 
-[Open deck](https://ash0ts.github.io/forge-workshop-kit/solar/) · [Copy notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view) · [Full runbook](facilitator.md) · [Facilitator setup](facilitator-start.md)
+[Open deck](https://ash0ts.github.io/forge-workshop-kit/solar/) · [Start notebook](https://ash0ts.github.io/forge-workshop-kit/packet/start/solar.html) · [Full runbook](facilitator.md) · [Facilitator setup](facilitator-start.md)
 
 ## Before presenting
 

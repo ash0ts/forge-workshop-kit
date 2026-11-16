@@ -7,7 +7,7 @@
       "file": "reports/transit.md",
       "title": "Coordinate coding agents, then test the app they built",
       "workshop": "transit",
-      "notebook": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view",
+      "notebook": "https://ash0ts.github.io/forge-workshop-kit/packet/start/transit.html",
       "deck": "https://ash0ts.github.io/forge-workshop-kit/transit/",
       "claims": [
         {
@@ -31,7 +31,7 @@
             {
               "path": "scripts/transit_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/transit_cells.py",
-              "sha256": "899a4b962e22eab8fae86cc3b371e139324f2463bba1b4261bb209c3ac5de23c"
+              "sha256": "f54d4aa89b82e88b65c34b26e608191cf6d2518c2a134b2db109bb2f29e19824"
             },
             {
               "path": "src/forge_workshop_kit/factory.py",
@@ -51,7 +51,7 @@
             {
               "path": "docs/transit-workshop.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-workshop.md",
-              "sha256": "86b575bce60d3e496244ea58293287f9d4812ed20deba81a50c08b9f6071768e"
+              "sha256": "fa217d37bdcabebb7887b5347b242c77eba37fb19eae1a0604bc41dee8512b74"
             },
             {
               "path": "evidence/transit-v060-rehearsal-summary.json",
@@ -67,7 +67,7 @@
             {
               "path": "docs/transit-workshop.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-workshop.md",
-              "sha256": "86b575bce60d3e496244ea58293287f9d4812ed20deba81a50c08b9f6071768e"
+              "sha256": "fa217d37bdcabebb7887b5347b242c77eba37fb19eae1a0604bc41dee8512b74"
             }
           ],
           "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=dg2ogm6wp3z"
@@ -78,7 +78,7 @@
             {
               "path": "docs/transit-workshop.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-workshop.md",
-              "sha256": "86b575bce60d3e496244ea58293287f9d4812ed20deba81a50c08b9f6071768e"
+              "sha256": "fa217d37bdcabebb7887b5347b242c77eba37fb19eae1a0604bc41dee8512b74"
             },
             {
               "path": "evidence/transit-v060-rehearsal-summary.json",
@@ -89,22 +89,22 @@
           "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit?nw=f9jpm0yjsxy"
         },
         {
-          "claim": "Copy into own project; editable notebook, adjustable $8 inference allowance, separate compute/ARIA; technical preview external-account and human rehearsals outstanding.",
+          "claim": "Run a downloaded editable notebook locally and publish to the participant’s Forge project. The adjustable $8 inference allowance excludes ARIA and any hosted compute. External-account and human rehearsals remain outstanding.",
           "sources": [
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "ab9c5cfbdf0a3e3a6a804f5724ba6aad20dda7edfc4b5cf821cf708409375ccb"
+              "sha256": "14a17d2aa982ca8ec4346c3e4ef6d1d861b3b7922f1f1d2d24c83580fba44eaa"
             },
             {
               "path": "docs/setup.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md",
-              "sha256": "44f081f5ea3a9529dde79861f4ddc741576cf4440349871cb41244d4f33736d0"
+              "sha256": "197d8b69fdb185f118e15ceb9b20808de1fb6d471cd9fff5d05bb360091b394e"
             },
             {
               "path": "docs/transit-facilitator.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-facilitator.md",
-              "sha256": "3f2532dfe6dc44420bfaf67fe15a36ae0a8238a060e6ce3ab782fc8e8713cbd5"
+              "sha256": "376cc6324651a81b42458064856253b74c80b8eee55b0a09d93f73970ab43a0d"
             }
           ]
         },
@@ -115,7 +115,7 @@
             {
               "path": "scripts/transit_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/transit_cells.py",
-              "sha256": "899a4b962e22eab8fae86cc3b371e139324f2463bba1b4261bb209c3ac5de23c"
+              "sha256": "f54d4aa89b82e88b65c34b26e608191cf6d2518c2a134b2db109bb2f29e19824"
             },
             {
               "path": "docs/aria-investigations.md",
@@ -135,7 +135,7 @@
           ]
         },
         {
-          "claim": "The v0.12.0 downloads include direct ARIA controls. Hosted templates remain at their verified v0.11.1 revision because Forge notebook-management access blocked the update; current downloads have import and laptop paths.",
+          "claim": "Current website notebooks include revised explanations and direct ARIA controls, using the v0.12.0 runtime. The immutable release files remain available. Hosted templates retain v0.11.1 because native notebook-management access blocks their update.",
           "sources": [
             {
               "path": "docs/release-publication-v0120.json",
@@ -146,6 +146,11 @@
               "path": "docs/aria-direct-qualification.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-direct-qualification.md",
               "sha256": "53bf1eb7151d556cc217ba76d570f2110ac930d68746219b216ad4bb88325848"
+            },
+            {
+              "path": "docs/notebook-download-check-v0120.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/notebook-download-check-v0120.json",
+              "sha256": "377599a9a641d0ba1054af21a4f5415a58155831b0e23d323640086f381e84c8"
             }
           ]
         }
@@ -251,13 +256,13 @@
         "Reference app is separately authored.",
         "External-account access and participant rehearsal outstanding."
       ],
-      "source_sha256": "f9e4b96509f8d9155d3ac82114f704aef048ab3c2f9458edde0d29af538b8049"
+      "source_sha256": "18f828ffde8f7f5f7e51bf7023461295df990446c9ff8b386523019f554810f2"
     },
     "airline": {
       "file": "reports/airline.md",
       "title": "Turn an airline agent's behavior into monitoring rules and regression tests",
       "workshop": "airline_monitoring",
-      "notebook": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view",
+      "notebook": "https://ash0ts.github.io/forge-workshop-kit/packet/start/airline_monitoring.html",
       "deck": "https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/",
       "claims": [
         {
@@ -353,7 +358,7 @@
             {
               "path": "docs/airline_monitoring-runbook.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/airline_monitoring-runbook.md",
-              "sha256": "02cda8f78edd10e92cf7e062cdd33e75fa962732cf5c14813ee44d6f55a3e814"
+              "sha256": "dff97e7cdb861610fa651c5e3f84261ef961213245521b78201f8690b3040a2e"
             }
           ]
         },
@@ -383,12 +388,12 @@
             {
               "path": "scripts/airline_monitoring_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/airline_monitoring_cells.py",
-              "sha256": "6835639da0a59e7e75f752764fe5ddc4de3c2baaf30935afd8203e0b8b904c6f"
+              "sha256": "12f62104026dbff44f315c41429528adb844b56ad7a07721c00d00d302e26bda"
             },
             {
               "path": "docs/airline_monitoring-runbook.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/airline_monitoring-runbook.md",
-              "sha256": "02cda8f78edd10e92cf7e062cdd33e75fa962732cf5c14813ee44d6f55a3e814"
+              "sha256": "dff97e7cdb861610fa651c5e3f84261ef961213245521b78201f8690b3040a2e"
             }
           ]
         },
@@ -398,12 +403,12 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "ab9c5cfbdf0a3e3a6a804f5724ba6aad20dda7edfc4b5cf821cf708409375ccb"
+              "sha256": "14a17d2aa982ca8ec4346c3e4ef6d1d861b3b7922f1f1d2d24c83580fba44eaa"
             },
             {
               "path": "docs/setup.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md",
-              "sha256": "44f081f5ea3a9529dde79861f4ddc741576cf4440349871cb41244d4f33736d0"
+              "sha256": "197d8b69fdb185f118e15ceb9b20808de1fb6d471cd9fff5d05bb360091b394e"
             },
             {
               "path": "docs/airline-monitoring-qualification.md",
@@ -419,7 +424,7 @@
             {
               "path": "scripts/airline_monitoring_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/airline_monitoring_cells.py",
-              "sha256": "6835639da0a59e7e75f752764fe5ddc4de3c2baaf30935afd8203e0b8b904c6f"
+              "sha256": "12f62104026dbff44f315c41429528adb844b56ad7a07721c00d00d302e26bda"
             },
             {
               "path": "docs/aria-investigations.md",
@@ -439,7 +444,7 @@
           ]
         },
         {
-          "claim": "The v0.12.0 downloads include direct ARIA controls. Hosted templates remain at their verified v0.11.1 revision because Forge notebook-management access blocked the update; current downloads have import and laptop paths.",
+          "claim": "Current website notebooks include revised explanations and direct ARIA controls, using the v0.12.0 runtime. The immutable release files remain available. Hosted templates retain v0.11.1 because native notebook-management access blocks their update.",
           "sources": [
             {
               "path": "docs/release-publication-v0120.json",
@@ -450,6 +455,11 @@
               "path": "docs/aria-direct-qualification.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-direct-qualification.md",
               "sha256": "53bf1eb7151d556cc217ba76d570f2110ac930d68746219b216ad4bb88325848"
+            },
+            {
+              "path": "docs/notebook-download-check-v0120.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/notebook-download-check-v0120.json",
+              "sha256": "377599a9a641d0ba1054af21a4f5415a58155831b0e23d323640086f381e84c8"
             }
           ]
         }
@@ -576,7 +586,7 @@
         "External-account, complete current browser path, and human rehearsal outstanding.",
         "Recorded runtime later received tracing error-handling changes; original 40 executions remain tied to their original source."
       ],
-      "source_sha256": "ac4f6a7b86ef065410fbba5c390b5fa8aa9a0166febea5daf137dd81760713aa"
+      "source_sha256": "28012960d331e1e0d8bce8ccfb4c3ed08cb439208423efd692c0bb75e4244443"
     }
   }
 }

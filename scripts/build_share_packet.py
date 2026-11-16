@@ -26,6 +26,75 @@ def page(title, body, *, prefix=""):
     )
 
 
+def notebook_start_body(row, report):
+    """Use a persistent downloaded file while hosted notebook access is unavailable."""
+    deck = row["authoring"]["deck"]
+    slug = deck["directory"]
+    notebook = Path(row["authoring"]["notebook"])
+    hosted_url = report.get("hosted_notebook_url")
+    if hosted_url is not None and (not isinstance(hosted_url, str)
+                                  or not hosted_url.startswith("https://forge.coreweave.com/notebooks/")):
+        raise ValueError(f"{slug}: hosted template must name an actual Forge notebook")
+    hosted_help = (
+        '<details><summary>Optional: use the older hosted template in Forge (v0.11.1)</summary>'
+        '<p>These hosted templates have not received the v0.12.0 update because notebook-management access '
+        'for the publishing account is blocked. They do not include the new direct ARIA controls.</p>'
+        '<p><a href="' + html.escape(hosted_url, quote=True) + '">Open the v0.11.1 Forge template</a></p>'
+        '<p>If your account supports notebooks, choose <strong>Copy to project</strong>, select your writable project, '
+        'and open the copy in Edit. If the link redirects to Home or Notebooks is unavailable, use the current '
+        'download above. A template link cannot grant product or compute access.</p>'
+        '<p>If your project supports notebook import, you can import the current downloaded <code>.py</code> file instead.</p></details>'
+    ) if hosted_url else (
+        '<p>If your Forge project supports notebook import, you can import the downloaded '
+        '<code>.py</code> file. The local path above works without hosted notebook access.</p>'
+    )
+    extras = " ".join(f"--extra {extra}" for extra in row.get("extras", []))
+    launch = ("uvx --from wandb==0.31.0 wandb login --host https://api.wandb.ai --verify\n"
+              f"uvx --from marimo==0.25.2 marimo edit --sandbox {notebook.name}")
+    checkout = ("git clone https://github.com/ash0ts/forge-workshop-kit.git\n"
+                "cd forge-workshop-kit\n"
+                f"uv sync --frozen {extras}\n"
+                f"uv run {extras} wandb login --host https://api.wandb.ai --verify\n"
+                f"uv run {extras} marimo edit {notebook}")
+    return (
+        '<nav><a href="../index.html">All workshop materials</a></nav>'
+        f'<h1>Start {html.escape(deck["title"])}</h1>'
+        '<p>Read the example before running anything. The notebook is editable Python; '
+        'your executions and saved results belong to your own project.</p>'
+        '<p><strong>Current notebook: v0.12.0.</strong> Download the file and open it on your laptop. '
+        'This version includes the direct ARIA controls and uses your Forge project for saved records. '
+        'It does not require hosted notebook or remote Sandbox access.</p>'
+        f'<div class="actions"><a href="../notebooks/{notebook.name}" download>Download the current notebook (.py)</a>'
+        '<a href="' + html.escape(report["url"], quote=True) + '">Read the worked example</a></div>'
+        '<h2>Open the downloaded notebook</h2><ol>'
+        '<li>Install <a href="https://docs.astral.sh/uv/getting-started/installation/">uv</a>. '
+        'Save the downloaded notebook in a folder you will keep, then open a terminal in that folder.</li>'
+        '<li>Sign in to W&amp;B with your own credentials, then open the file with these commands:</li></ol>'
+        f'<pre class="setup-commands"><code>{html.escape(launch)}</code></pre>'
+        '<p>The first launch installs the notebook’s pinned Python dependencies. Here, '
+        '<code>--sandbox</code> means a local dependency environment; it does not create a remote Forge Sandbox.</p>'
+        '<p>Click <strong>Run all</strong> once to load the workshop controls. Then use the buttons in each exercise. '
+        'This initialization starts no training or model request.</p>'
+        '<p>Keep the downloaded <code>.py</code> file and its <code>.workshop/</code> folder. '
+        'Reopen the same file with the second command to return to your edits and completed work.</p>'
+        '<details><summary>A managed laptop reports an UnknownIssuer certificate error</summary>'
+        '<p>Tell uv to use your operating system’s trusted certificates, then rerun the same launch command. '
+        'On macOS or Linux:</p><pre><code>export UV_SYSTEM_CERTS=true</code></pre>'
+        '<p>In PowerShell:</p><pre><code>$env:UV_SYSTEM_CERTS = "true"</code></pre>'
+        '<p>This uses the certificates already trusted by your computer; it keeps HTTPS verification enabled.</p></details>'
+        '<h2>Connect your project</h2><p>Create a project you can write to in '
+        '<a href="https://forge.coreweave.com">Forge</a>, then enter its <code>entity/project</code> in the notebook setup. '
+        'Opening the notebook starts no training or model request; each execution has an explicit run button.</p>'
+        '<p>The default $8 inference allowance is adjustable. Compute, ARIA, and native tag judging are separate.</p>'
+        + hosted_help +
+        '<details><summary>Contributors: run from the complete source checkout</summary>'
+        '<p>Install Git, uv, and Python 3.11–3.13, then run:</p>'
+        f'<pre class="setup-commands"><code>{html.escape(checkout)}</code></pre></details>'
+        '<p><a href="../docs/setup.html">Setup and saved-work recovery</a> · '
+        f'<a href="../docs/run-{slug}.html">Facilitator instructions</a></p>'
+    )
+
+
 def build(site, *, pdf=False):
     site = Path(site).resolve()
     target = site / "packet"
@@ -106,39 +175,7 @@ def build(site, *, pdf=False):
         notebook_path = Path(row["authoring"]["notebook"])
         copy(ROOT / notebook_path, "notebooks/" + notebook_path.name)
         start_link = f"start/{slug}.html"
-        extras = " ".join(f"--extra {extra}" for extra in row.get("extras", []))
-        commands = ("git clone https://github.com/ash0ts/forge-workshop-kit.git\n"
-                    "cd forge-workshop-kit\n"
-                    f"uv sync --frozen {extras}\n"
-                    f"uv run {extras} wandb login\n"
-                    f"uv run {extras} marimo edit {notebook_path}")
-        start_body = (
-            '<nav><a href="../index.html">All workshop materials</a></nav>'
-            f'<h1>Start {html.escape(deck["title"])}</h1>'
-            '<p>Read the example before running anything. The notebook is editable Python; '
-            'your executions and saved results belong to your own project.</p>'
-            '<p><strong>Current version:</strong> the download below is v0.12.0, including the direct ARIA controls. '
-            'The hosted template is still v0.11.1 while notebook-management access for the publishing account is blocked. '
-            'Use the download locally, or import it if your Forge project supports notebook import.</p>'
-            '<div class="actions"><a href="' + html.escape(report["url"], quote=True) + '">Read the worked example</a>'
-            '<a href="' + html.escape(report["notebook_url"], quote=True) + '">Open the Forge template</a>'
-            f'<a href="../notebooks/{notebook_path.name}" download>Download the notebook (.py)</a></div>'
-            '<h2>Copy into Forge</h2><ol><li>Sign in to Forge and open the template.</li>'
-            '<li>Choose <strong>Copy to project</strong>, select a project you can write to, and open the copy in Edit.</li>'
-            '<li>Run all stale cells once to initialize the controls, then follow the first exercise. This does not press the Run buttons.</li></ol>'
-            '<details><summary>The notebook link redirects or does not open</summary>'
-            '<p>Reopen the template after signing in. If Forge still sends you to Home or does not show Notebooks, '
-            'the hosted notebook route is unavailable for your current session or account. The link cannot grant compute or product access.</p>'
-            '<p>If your project has notebook import, use the downloaded .py file. Otherwise use the laptop commands below. '
-            'The Report, visual guides, and deck remain readable without notebook compute.</p></details>'
-            '<h2>Run on your laptop</h2><p>Install Git, Python 3.11–3.13, and '
-            '<a href="https://docs.astral.sh/uv/getting-started/installation/">uv</a>, then run:</p>'
-            f'<pre><code>{html.escape(commands)}</code></pre>'
-            '<p>Choose your writable <code>entity/project</code> in the setup step. The default $8 inference allowance is adjustable. '
-            'Compute, ARIA, and native tag judging are separate. Opening the notebook starts no training or model request.</p>'
-            '<p><a href="../docs/setup.html">Setup and saved-work recovery</a> · '
-            f'<a href="../docs/run-{slug}.html">Facilitator instructions</a></p>'
-        )
+        start_body = notebook_start_body(row, report)
         write(start_link, page(f"Start {deck['title']}", start_body, prefix="../"))
         catalog.append({"workshop": row["slug"], "deck": slug, "title": deck["title"],
                         "duration": poster["duration"], "report": report["url"],
@@ -201,7 +238,7 @@ def build(site, *, pdf=False):
     write("README.txt",
         "Open index.html to choose a workshop. Open brief.html for the workshop overview; PDF builds also include brief.pdf.\n"
         f"The decks/ folder contains {pdf_count} presentation PDFs, including reveal states. Missing PDFs link to the public website.\n"
-        "docs/ contains setup, runbooks, results, and current readiness. start/ has notebook copy/import/local instructions; notebooks/ has the editable Python files.\n"
+        "docs/ contains setup, runbooks, results, and current readiness. start/ explains how to save and open the current notebook files; notebooks/ has the editable Python files.\n"
         "No setup or credentials are needed to read these saved files. External links need an internet connection; Forge links require their usual access.\n"
         "These remain technical previews; the packet is for recorded demonstrations and pilot preparation.\n"
     )

@@ -5,7 +5,7 @@
     {
       "slug": "pending",
       "source": "reports/pending.md",
-      "notebook": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view",
+      "notebook": "https://ash0ts.github.io/forge-workshop-kit/packet/start/pending.html",
       "claims": [
         {
           "claim": "Fictional billing and access tasks, learner-authored invoice/dispatch/observation/scorer functions, read_skill requirement, two improvement rounds and twelve final evaluations.",
@@ -96,14 +96,16 @@
           ]
         },
         {
-          "claim": "The v0.12.0 downloads include direct ARIA controls. Hosted templates remain at their verified v0.11.1 revision because Forge notebook-management access blocked the update; current downloads have import and laptop paths.",
+          "claim": "Current website notebooks include revised explanations and direct ARIA controls, using the v0.12.0 runtime. The immutable release files remain available. Hosted templates retain v0.11.1 because native notebook-management access blocks their update.",
           "files": [
             "docs/release-publication-v0120.json",
-            "docs/aria-direct-qualification.md"
+            "docs/aria-direct-qualification.md",
+            "docs/notebook-download-check-v0120.json"
           ],
           "source_urls": [
             "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/release-publication-v0120.json",
-            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-direct-qualification.md"
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-direct-qualification.md",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/notebook-download-check-v0120.json"
           ]
         }
       ],
@@ -212,12 +214,12 @@
         "One scripted rehearsal with four final cases does not establish general equivalence.",
         "External-account and participant rehearsals remain outstanding."
       ],
-      "source_sha256": "3451abe3de34f63e5e5cd960da4511a6e4d0408199a950786a414bbe5ef150b1"
+      "source_sha256": "234a9436aa2c9935baae528e2e6bf53db87ec1ec817ebb718bd924429a945eec"
     },
     {
       "slug": "solar",
       "source": "reports/solar.md",
-      "notebook": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view",
+      "notebook": "https://ash0ts.github.io/forge-workshop-kit/packet/start/solar.html",
       "claims": [
         {
           "claim": "Real February 1–14 2014 GOES-15 and AIA 171 observations; 60-minute GOES history and +30-minute target; two images and +60-minute target; train/validation/final date partitioning and train-only scaling.",
@@ -311,14 +313,16 @@
           ]
         },
         {
-          "claim": "The v0.12.0 downloads include direct ARIA controls. Hosted templates remain at their verified v0.11.1 revision because Forge notebook-management access blocked the update; current downloads have import and laptop paths.",
+          "claim": "Current website notebooks include revised explanations and direct ARIA controls, using the v0.12.0 runtime. The immutable release files remain available. Hosted templates retain v0.11.1 because native notebook-management access blocks their update.",
           "files": [
             "docs/release-publication-v0120.json",
-            "docs/aria-direct-qualification.md"
+            "docs/aria-direct-qualification.md",
+            "docs/notebook-download-check-v0120.json"
           ],
           "source_urls": [
             "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/release-publication-v0120.json",
-            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-direct-qualification.md"
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-direct-qualification.md",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/notebook-download-check-v0120.json"
           ]
         }
       ],
@@ -436,7 +440,7 @@
         "All claimed gains belong to exact saved runs; image all-seed reliability gate failed.",
         "External-account and participant rehearsals remain outstanding."
       ],
-      "source_sha256": "540b7ecb88272f74ab891df5be3beefd6b379e4a8db179fc3bc24f83b67a0348"
+      "source_sha256": "c28d6ee3ee00c64551e5e19a2201658c8a2dff0280be5f920b1b6acdb806aa1e"
     }
   ]
 }

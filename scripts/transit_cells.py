@@ -49,7 +49,7 @@ add('''
 _s=current_session()
 _revision=get_revision()
 step_navigation=ui.navigation(mo,teaching.STEPS,get_step(),go_to,completed=teaching.complete_steps(_s),label="Build and release")
-mo.vstack([mo.Html(ui.STYLE + technical_guides.theme_style()),step_navigation,mo.Html(ui.context(_s)) if _s else mo.md("Copy this notebook into your Forge project. You will write the code that gives agents work and checks what they produce.")])
+mo.vstack([mo.Html(ui.STYLE + technical_guides.theme_style()),step_navigation,mo.Html(ui.context(_s)) if _s else mo.md("Connect this notebook to your own Forge project. You will write the code that gives agents work and checks what they produce.")])
 ''', True)
 add('''
 technical_guide_view = technical_guides.panel(mo, 'transit_factory', get_step(), get_technical_guide_view(), technical_guide_controls)
@@ -57,7 +57,7 @@ technical_guide_view
 ''', True, cell_id='transit_factory/visual_guide')
 add('''
 mo.stop(get_step()!="setup")
-mo.vstack([mo.md("**6-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/transit/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Build a transit app with a team of coding agents","People leaving an evening event need the next departures and the last service home. Your team is building the departure board. You'll give two coding agents separate tasks, test their combined work, and decide what the next builders should remember.",theme="neutral",eyebrow="Six-hour software factory workshop")),mo.md("The schedule is real: a frozen MBTA GTFS feed for **November 28 to December 4, 2024**. GTFS joins routes, trips, stops, service calendars, and stop times. You'll inspect those records before asking agents to change code. The app displays historical scheduled departures, not live arrival predictions."),mo.md("**Your output:** a departure board you can run, the coordinator you wrote, and a release linked to its tests and Agent Lens conversations. The first work order adds next departures. The second adds the last departure tonight and an itinerary download."),mo.md("A software factory connects a request to assignments, code, integration tests, and a release decision. The builder agents write the app's query and display modules. You write the task selection, handoffs, memory retrieval, and checks around them."),mo.md("[GTFS source and terms](https://github.com/mbta/gtfs-documentation) · [Software-factory background](https://factory.strongdm.ai/) · [Workshop source](https://github.com/ash0ts/forge-workshop-kit/blob/main/notebooks/transit_factory.py)")])
+mo.vstack([mo.md("**6-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/transit/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Build a transit app with a team of coding agents","People leaving an evening event need the next departures and the last service home. Your team is building the departure board. You'll give two coding agents separate tasks, test their combined work, and decide what the next builders should remember.",theme="neutral",eyebrow="Six-hour software factory workshop")),mo.md("The schedule is real: a frozen MBTA GTFS feed for **November 28 to December 4, 2024**. GTFS joins routes, trips, stops, service calendars, and stop times. You'll inspect those records before asking agents to change code. The app displays historical scheduled departures, not live arrival predictions."),mo.md("**Your output:** a departure board you can run, the coordinator you wrote, and a release linked to its tests and Agent Lens conversations. The first work order adds next departures. The second adds the last departure tonight and an itinerary download."),mo.md("The builders write the query and display modules. You write the code that assigns their tasks, passes on tested patches, and retrieves lessons for the next feature. Follow each worker's file reads and tests in Agent Lens, then try the combined board. A worker's passing test is useful; we still need to check whether the two modules agree on the departure time."),mo.md("[GTFS source and terms](https://github.com/mbta/gtfs-documentation) · [Software-factory background](https://factory.strongdm.ai/) · [Workshop source](https://github.com/ash0ts/forge-workshop-kit/blob/main/notebooks/transit_factory.py)")])
 ''',True)
 add('''
 mo.stop(get_step() != 'setup')
@@ -117,7 +117,7 @@ _env=setup.project_context()
 project=mo.ui.text(value=_env["project"],label="Your Forge project",disabled=_env["hosted"] and _env["detected"],full_width=True)
 allowance=mo.ui.number(value=8,start=.01,stop=1000,label="Inference allowance in USD; notebook compute is separate")
 connect=mo.ui.run_button(label="Connect and restore my work")
-mo.vstack([project,allowance,connect,mo.md("On your laptop: `uv sync --frozen`, `uv run wandb login`, then `uv run marimo edit notebooks/transit_factory.py`. In Forge, copy the template into a project you can write to. Setup and the local checks make no model calls.")]) if get_step()=="setup" else mo.md("")
+mo.vstack([project,allowance,connect,mo.md("Keep this notebook in its saved folder and enter a Forge project you can write to. If you have not signed in, use the login command from the start page. Setup and the local checks make no model calls.")]) if get_step()=="setup" else mo.md("")
 ''',True)
 add('''
 mo.stop(not connect.value)
@@ -304,7 +304,7 @@ mo.stop(get_step()!="memory")
 _s=current_session()
 _revision=get_revision()
 transit_aria_investigate=aria.investigation(mo,_s,"investigate",workshop="transit-factory")
-mo.vstack([mo.md("Before asking a builder to draft a lesson, explain one observation from the integrated app's development checks. The final reserved scenarios stay out of this investigation."),transit_aria_investigate])
+mo.vstack([mo.md("Before asking a builder to draft a lesson, explain one result from the combined app's development checks. Ask ARIA to trace it to the worker's patch or test, then open that record. Decide what the next builder could use from this result. Keep the reserved scenarios for final evaluation."),transit_aria_investigate])
 ''', True, cell_id='transit_factory/aria/investigate')
 add('''
 aria.response(mo,transit_aria_investigate)

@@ -4,7 +4,7 @@
 
 A manufacturing team needs to flag defective circuit boards without sending every board for review. Participants compare whole-image and patch features on real VisA PCB1 photographs, inspect missed defects, and reproduce a frozen detector. Supplied masks help examine defects; they are not classifier inputs.
 
-[Open deck](https://ash0ts.github.io/forge-workshop-kit/inspection/) · [Copy notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view) · [Full runbook](inspection-workshop.md) · [Facilitator setup](facilitator-start.md)
+[Open deck](https://ash0ts.github.io/forge-workshop-kit/inspection/) · [Start notebook](https://ash0ts.github.io/forge-workshop-kit/packet/start/inspection.html) · [Full runbook](inspection-workshop.md) · [Facilitator setup](facilitator-start.md)
 
 ## Before presenting
 

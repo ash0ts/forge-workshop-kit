@@ -4,7 +4,7 @@
 
 A support team must distinguish a card that has not arrived from one that does not work. Participants train a router on public Banking77 requests, investigate its mistakes, then reproduce the selected model and repair a deliberately faulty release loader.
 
-[Open deck](https://ash0ts.github.io/forge-workshop-kit/routing/) · [Copy notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view) · [Full runbook](routing-workshop.md) · [Facilitator setup](facilitator-start.md)
+[Open deck](https://ash0ts.github.io/forge-workshop-kit/routing/) · [Start notebook](https://ash0ts.github.io/forge-workshop-kit/packet/start/routing.html) · [Full runbook](routing-workshop.md) · [Facilitator setup](facilitator-start.md)
 
 ## Before presenting
 
