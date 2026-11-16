@@ -34,12 +34,29 @@ Validation covers the full browser decks, Next/Back, original reveal ordering, w
 
 The current browser decks and downloads are in the workshop library. The separately named [illustrated deck update](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.11.1/workshop-decks-2026-11-16-illustrated.zip) preserves the original v0.11.1 assets. This update changes presentation only; the readiness limits above still apply.
 
-## Meeting packet · November 16, 2026
+## Initial meeting packet · November 16, 2026
 
-The [meeting packet](https://ash0ts.github.io/forge-workshop-kit/packet/) collects a two-page brief, Slack copy, short demo routes, six deck PDFs, setup instructions, facilitator notes, and links to the public Reports and editable notebooks. The library now exposes PDF, offline-deck, and source downloads directly. Local setup instructions distinguish the dependency extra from the notebook path.
+The first meeting packet collected a two-page brief, Slack copy, short demo routes, six deck PDFs, setup instructions, facilitator notes, and links to the public Reports and editable notebooks. The library also exposed PDF, offline-deck, and source downloads directly. Local setup instructions distinguished the dependency extra from the notebook path. The documentation update below supersedes this initial packet; its validation record remains here for comparison.
 
 All 30 primary deck, PDF, source, Report, and notebook URLs returned HTTP 200; the notebook URLs lead anonymous visitors to Forge sign-in. All six public Reports matched their authored content on anonymous readback. This is a link check, not a fresh-account execution rehearsal.
 
 Packet checks resolved 110 local link targets and 20 anchors across 15 HTML pages. The archive's 49 payloads matched its manifest, and the six deck PDFs matched the already-validated site PDFs byte-for-byte. A temporary rebuild excluded unrelated and stale files. The two-page brief has ten public PDF links and no text outside the page bounds. Desktop and 390-pixel layouts, the Slack-section link, and offline document links were inspected. Related publication, visual, and packaging checks passed 34 tests.
 
 Use this material for recorded demonstrations and pilot invitations. The full-class readiness limits above remain unchanged. No workshop execution, credentials, participant state, or existing release asset was changed.
+
+## Documentation and Report update · November 16, 2026
+
+The README, contributor guidance, facilitator instructions, sharing copy, and six public learning Reports now explain the customer problem, the work participants do, and the relevant Forge records consistently. All six Reports were updated at their existing URLs. Anonymous readback matched the authored blocks, and each Report's updated copy, notebook link, and representative figure were inspected in Forge.
+
+The current [meeting packet](https://ash0ts.github.io/forge-workshop-kit/packet/) includes a three-page brief and a [ten-minute Loom script](loom-walkthrough.md). The script is ready to record; it is not a completed video. Separate registered Slack and Loom links identify the referral source. Workshop links still identify the workshop across its deck, poster, and other placements. Clicks do not establish attendance or notebook completion; the facilitator's progress records remain separate.
+
+Validation for source revision `55fb582` covered:
+
+- Six Report sources and 150 source-ledger hashes, with no mismatches; all 53 Report images and six linked visual guides were reachable.
+- Eight registered redirects matched their declared destinations, and all eight QR images decoded to the correct short URLs. The six workshop QR codes retained their existing destinations.
+- 571 relative file and anchor references across 57 active Markdown documents, plus 292 local packet links and anchors, with no broken references.
+- All 73 packet payloads matched the archive manifest. The release downloads matched the uploaded files byte-for-byte. All three brief pages were rendered and visually inspected.
+- Sixteen focused Report and sharing tests passed. All nine Linux, macOS, and Windows jobs passed in the [cross-platform check](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43824643701).
+- The [full deck render, validation, and Pages deployment](https://github.com/ash0ts/forge-workshop-kit/actions/runs/43824643700) passed. Public readback verified the library, packet, Loom script, sharing page, tracking guide, and all 73 files in the deployed packet. The packet-to-script-to-sharing navigation was also exercised in the browser.
+
+The [revised packet ZIP](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.11.1/workshop-meeting-packet-2026-11-16-workflow-guide.zip), [brief PDF](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.11.1/workshop-meeting-brief-2026-11-16-workflow-guide.pdf), and [validation receipt](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.11.1/workshop-docs-reports-validation-2026-11-16.json) are separately named release assets. Earlier downloads, attendee copies, experiment records, and budgets are unchanged. No new inference or training was required. The external-account, native-feature, and human-rehearsal limits in [next-up.md](../next-up.md) still apply.
