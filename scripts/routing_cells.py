@@ -10,7 +10,7 @@ from pathlib import Path
 import joblib
 import marimo as mo
 from forge_workshop_kit import WorkshopSession, setup, ui, routing, routing_teaching as teaching
-from forge_workshop_kit import aria
+from forge_workshop_kit import aria, technical_guides
 from forge_workshop_kit import routing_release as release_lab
 from forge_workshop_kit.review import save_review, reviewed_dataset
 from forge_workshop_kit.provider import validated_json, Provider
@@ -18,6 +18,8 @@ from forge_workshop_kit.session import digest
 from forge_workshop_kit.traces import event, export_trace, saved_trace_inputs
 from forge_workshop_kit.publication import publish_comparison, publish_report
 get_context, set_context = mo.state({})
+get_technical_guide_view, set_technical_guide_view = mo.state({}, allow_self_loops=True)
+technical_guide_controls = technical_guides.controls(mo, 'request_routing', set_technical_guide_view)
 get_step, set_step = mo.state("setup", allow_self_loops=True)
 get_output, set_output = mo.state({})
 get_revision, set_revision = mo.state(0)
@@ -90,8 +92,12 @@ add('''
 _s=get_context().get("session")
 _revision=get_revision()
 routing_navigation=ui.navigation(mo,teaching.STEPS,get_step(),go_to,completed=teaching.completed_steps(_s),label="Workshop steps")
-mo.vstack([mo.Html(ui.STYLE),routing_navigation,mo.Html(ui.context(_s)) if _s else mo.md("Copy this notebook to your own Forge project. Opening it does not send model requests or train a classifier.")])
+mo.vstack([mo.Html(ui.STYLE + technical_guides.theme_style()),routing_navigation,mo.Html(ui.context(_s)) if _s else mo.md("Copy this notebook to your own Forge project. Opening it does not send model requests or train a classifier.")])
 ''',True)
+add('''
+technical_guide_view = technical_guides.panel(mo, 'request_routing', get_step(), get_technical_guide_view(), technical_guide_controls)
+technical_guide_view
+''', True, cell_id='request_routing/visual_guide')
 add('''
 _s = get_context().get("session")
 _revision = get_revision()

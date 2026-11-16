@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "id": "overview",
+  "title": "Build a reproducible solar forecast",
+  "eyebrow": "02 / Solar Autoresearch",
+  "question": "What will you build, and how will you know it works?",
+  "summary": "The lab has a promising score. Before the weekly review, find the observations, code, and weights behind it. Then test whether a research agent can improve the experiment.",
+  "kind": "overview",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/solar/candidate.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "observations",
+      "title": "Inspect the observations",
+      "body": "Use dated GOES measurements and AIA images.",
+      "symbol": "image"
+    },
+    {
+      "id": "baseline",
+      "title": "Establish persistence",
+      "body": "Predict the latest observation again.",
+      "symbol": "series"
+    },
+    {
+      "id": "experiment",
+      "title": "Train and save",
+      "body": "Compare models and retain their files.",
+      "symbol": "processor"
+    },
+    {
+      "id": "research",
+      "title": "Review agent edits",
+      "body": "Test proposed changes before selecting one.",
+      "symbol": "branch"
+    }
+  ],
+  "states": [
+    {
+      "id": "observations",
+      "label": "Observations",
+      "visible": [
+        "observations"
+      ],
+      "focus": [
+        "observations"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "baseline",
+      "label": "Baseline",
+      "visible": [
+        "observations",
+        "baseline"
+      ],
+      "focus": [
+        "baseline"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "experiment",
+      "label": "Experiment",
+      "visible": [
+        "observations",
+        "baseline",
+        "experiment"
+      ],
+      "focus": [
+        "experiment"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "research",
+      "label": "Research",
+      "visible": [
+        "observations",
+        "baseline",
+        "experiment",
+        "research"
+      ],
+      "focus": [
+        "research"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "observations",
+        "baseline",
+        "experiment",
+        "research"
+      ],
+      "focus": [],
+      "caption": "What will you build, and how will you know it works?"
+    }
+  ],
+  "hero": "hero.svg"
+}

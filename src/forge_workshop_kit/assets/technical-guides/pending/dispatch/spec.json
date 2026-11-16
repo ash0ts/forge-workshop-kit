@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "id": "dispatch",
+  "title": "Pass the tool result into the next request",
+  "eyebrow": "01 / Pending, Inc.",
+  "question": "Where do the returned payments become information the model can use?",
+  "summary": "Open the next model request in Agent Lens and find the payments returned by the lookup.",
+  "kind": "sequence",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "action",
+      "title": "Select lookup_invoice",
+      "body": "The action names the requested account and invoice.",
+      "input": "account_id=\"acme\"; invoice_id=\"inv-1\"",
+      "output": "lookup_invoice",
+      "symbol": "record"
+    },
+    {
+      "id": "call",
+      "title": "Dispatch to Python",
+      "body": "Route this action to the learner’s invoice function; delegate other names to their registered tools.",
+      "code": "if name == \"lookup_invoice\":\n    return world, invoice_tool(\n        world, **arguments)",
+      "output": "world, result",
+      "symbol": "tool",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "observe",
+      "title": "Append the observation",
+      "body": "Append the action and actual result to a new message list. Keep the previous request unchanged.",
+      "input": "Selected action + returned payments",
+      "output": "Next request contains the observation",
+      "symbol": "message"
+    }
+  ],
+  "states": [
+    {
+      "id": "action",
+      "label": "Action",
+      "visible": [
+        "action"
+      ],
+      "focus": [
+        "action"
+      ],
+      "caption": "Where do the returned payments become information the model can use?"
+    },
+    {
+      "id": "call",
+      "label": "Call",
+      "visible": [
+        "action",
+        "call"
+      ],
+      "focus": [
+        "call"
+      ],
+      "caption": "Where do the returned payments become information the model can use?"
+    },
+    {
+      "id": "observe",
+      "label": "Observe",
+      "visible": [
+        "action",
+        "call",
+        "observe"
+      ],
+      "focus": [
+        "observe"
+      ],
+      "caption": "Where do the returned payments become information the model can use?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "action",
+        "call",
+        "observe"
+      ],
+      "focus": [],
+      "caption": "Where do the returned payments become information the model can use?"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "labels",
+  "kind": "sequence",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "95aee0caaf038df6f8718445aa36118f56a69ebeb3e61a8c03f0620cd1fbb1e3",
+  "states": [
+    {
+      "id": "proposal",
+      "label": "Proposal",
+      "svg": "01-proposal.svg",
+      "caption": "Whose label is being used, and why was it accepted?"
+    },
+    {
+      "id": "review",
+      "label": "Review",
+      "svg": "02-review.svg",
+      "caption": "Whose label is being used, and why was it accepted?"
+    },
+    {
+      "id": "dataset",
+      "label": "Dataset",
+      "svg": "03-dataset.svg",
+      "caption": "Whose label is being used, and why was it accepted?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "Whose label is being used, and why was it accepted?"
+    }
+  ],
+  "html": "index.html"
+}

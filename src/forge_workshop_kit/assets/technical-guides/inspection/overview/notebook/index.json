@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "overview",
+  "kind": "overview",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "64bc5942c0990f20731f5bc74b1a90201402d616d8ae7335d4c850781a510f10",
+  "states": [
+    {
+      "id": "board",
+      "label": "Board",
+      "svg": "01-board.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "features",
+      "label": "Features",
+      "svg": "02-features.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "decision",
+      "label": "Decision",
+      "svg": "03-decision.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "recover",
+      "label": "Recover",
+      "svg": "04-recover.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "05-complete.svg",
+      "caption": "What will you build, and how will you know it works?"
+    }
+  ],
+  "html": "index.html"
+}

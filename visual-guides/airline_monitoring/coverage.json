@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "id": "coverage",
+  "title": "Count what the monitor has actually processed",
+  "eyebrow": "06 / Airline monitoring",
+  "question": "What is the denominator of each monitoring number?",
+  "summary": "Fewer alerts can mean better agent behavior, weaker criteria, or incomplete processing. Inspect those separately.",
+  "kind": "sequence",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA=="
+    },
+    {
+      "label": "Code for this operation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+    }
+  ],
+  "steps": [
+    {
+      "id": "incoming",
+      "title": "Start with all eligible turns",
+      "body": "Keep total, processed, and unavailable counts visible. A missing judgment is not an unflagged turn.",
+      "output": "Total turns and processing status",
+      "symbol": "rows",
+      "input": "Eligible monitoring rows"
+    },
+    {
+      "id": "coverage",
+      "title": "Calculate coverage",
+      "body": "Divide completed boolean judgments by all eligible turns. Empty inputs produce an unavailable rate.",
+      "input": "Completed judgments + eligible turns",
+      "output": "Processing coverage",
+      "symbol": "fraction",
+      "code": "len(completed) / len(rows) if rows else None",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "agreement",
+      "title": "Compare with reviewed labels",
+      "body": "Calculate precision and recall only where a reviewed human label is available. Show the number of reviewed turns.",
+      "input": "Completed judgments + reviewed labels",
+      "output": "Monitor agreement + denominators",
+      "symbol": "tally"
+    }
+  ],
+  "states": [
+    {
+      "id": "incoming",
+      "label": "Incoming",
+      "visible": [
+        "incoming"
+      ],
+      "focus": [
+        "incoming"
+      ],
+      "caption": "What is the denominator of each monitoring number?"
+    },
+    {
+      "id": "coverage",
+      "label": "Coverage",
+      "visible": [
+        "incoming",
+        "coverage"
+      ],
+      "focus": [
+        "coverage"
+      ],
+      "caption": "What is the denominator of each monitoring number?"
+    },
+    {
+      "id": "agreement",
+      "label": "Agreement",
+      "visible": [
+        "incoming",
+        "coverage",
+        "agreement"
+      ],
+      "focus": [
+        "agreement"
+      ],
+      "caption": "What is the denominator of each monitoring number?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "incoming",
+        "coverage",
+        "agreement"
+      ],
+      "focus": [],
+      "caption": "What is the denominator of each monitoring number?"
+    }
+  ]
+}

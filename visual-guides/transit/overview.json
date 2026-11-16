@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "id": "overview",
+  "title": "Build a departure board with two coding agents",
+  "eyebrow": "05 / Transit software factory",
+  "question": "What will you build, and how will you know it works?",
+  "summary": "People leaving an evening event need the last service home. Two builders can work in parallel, but their components must agree about which service day includes a departure after midnight.",
+  "kind": "overview",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory_teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "schedule",
+      "title": "Inspect the schedule",
+      "body": "Understand after-midnight service.",
+      "symbol": "clock"
+    },
+    {
+      "id": "build",
+      "title": "Coordinate builders",
+      "body": "Assign owned work and return tool results.",
+      "symbol": "branch"
+    },
+    {
+      "id": "integrate",
+      "title": "Test the application",
+      "body": "Check the combined departure board.",
+      "symbol": "application"
+    },
+    {
+      "id": "lesson",
+      "title": "Carry a verified lesson",
+      "body": "Test the next build with and without it.",
+      "symbol": "file"
+    }
+  ],
+  "states": [
+    {
+      "id": "schedule",
+      "label": "Schedule",
+      "visible": [
+        "schedule"
+      ],
+      "focus": [
+        "schedule"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "build",
+      "label": "Build",
+      "visible": [
+        "schedule",
+        "build"
+      ],
+      "focus": [
+        "build"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "integrate",
+      "label": "Integrate",
+      "visible": [
+        "schedule",
+        "build",
+        "integrate"
+      ],
+      "focus": [
+        "integrate"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "lesson",
+      "label": "Lesson",
+      "visible": [
+        "schedule",
+        "build",
+        "integrate",
+        "lesson"
+      ],
+      "focus": [
+        "lesson"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "schedule",
+        "build",
+        "integrate",
+        "lesson"
+      ],
+      "focus": [],
+      "caption": "What will you build, and how will you know it works?"
+    }
+  ],
+  "hero": "hero.svg"
+}

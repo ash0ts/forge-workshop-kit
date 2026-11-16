@@ -1,0 +1,139 @@
+{
+  "schema_version": 1,
+  "id": "judge",
+  "title": "Check the automated reviewer against people",
+  "eyebrow": "03 / Customer request routing",
+  "question": "Is the answer well-formed, and is its judgment supported?",
+  "summary": "Passing a JSON validator establishes response shape, not judgment accuracy.",
+  "kind": "comparison",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "route",
+      "title": "Route the request",
+      "body": "The prompted router chooses an intent. Its bounded eight-request demonstration is separate from full classifier evaluation.",
+      "output": "Intent + explanation",
+      "symbol": "message"
+    },
+    {
+      "id": "validate",
+      "title": "Validate the judge’s response",
+      "body": "Require a boolean failed field and a nonempty reason. The string \"false\" is not a boolean.",
+      "code": "type(value[\"failed\"]) is bool",
+      "output": "Valid structure or validation error",
+      "symbol": "check",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "agreement",
+      "title": "Compare reviewed decisions",
+      "body": "Compare the judge with accepted human labels. Preserve disagreement and missing judgment as different states.",
+      "output": "Agreement, disagreement, unavailable",
+      "symbol": "comparison"
+    }
+  ],
+  "states": [
+    {
+      "id": "route",
+      "label": "Route",
+      "visible": [
+        "route"
+      ],
+      "focus": [
+        "route"
+      ],
+      "caption": "Is the answer well-formed, and is its judgment supported?"
+    },
+    {
+      "id": "validate",
+      "label": "Validate",
+      "visible": [
+        "route",
+        "validate"
+      ],
+      "focus": [
+        "validate"
+      ],
+      "caption": "Is the answer well-formed, and is its judgment supported?"
+    },
+    {
+      "id": "agreement",
+      "label": "Agreement",
+      "visible": [
+        "route",
+        "validate",
+        "agreement"
+      ],
+      "focus": [
+        "agreement"
+      ],
+      "caption": "Is the answer well-formed, and is its judgment supported?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "route",
+        "validate",
+        "agreement"
+      ],
+      "focus": [],
+      "caption": "Is the answer well-formed, and is its judgment supported?"
+    }
+  ],
+  "native_capture": {
+    "media": "../media/routing-forge-annotated.svg",
+    "original": "../media/routing-forge-original.png",
+    "title": "A structured judgment still needs review",
+    "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f5427dc7f06703d62c00561b6bd27a01",
+    "investigation": "Compare the request and proposed intent with the judge response. The dataset reference is card_linking.",
+    "capture_date": null,
+    "capture_date_note": "Existing recorded capture; capture timestamp not recorded in source asset.",
+    "annotations": [
+      {
+        "number": 1,
+        "label": "Request and route",
+        "field": "The proposed intent is activate_my_card.",
+        "source_bounds": [
+          503,
+          291,
+          590,
+          91
+        ]
+      },
+      {
+        "number": 2,
+        "label": "Judge result",
+        "field": "failed is false; a reason is present.",
+        "source_bounds": [
+          503,
+          490,
+          590,
+          90
+        ]
+      }
+    ]
+  },
+  "annotations": [
+    {
+      "number": 1,
+      "target": "route",
+      "label": "Request and chosen intent"
+    },
+    {
+      "number": 2,
+      "target": "validate",
+      "label": "Boolean and reason"
+    }
+  ]
+}

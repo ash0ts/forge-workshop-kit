@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "overview",
+  "kind": "overview",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "4dd38b0d53595c37078f1d0107ac255a2b3a10cf96c82ee01fc24aebafaff794",
+  "states": [
+    {
+      "id": "ticket",
+      "label": "Ticket",
+      "svg": "01-ticket.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "agent",
+      "label": "Agent",
+      "svg": "02-agent.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "account",
+      "label": "Account",
+      "svg": "03-account.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "change",
+      "label": "Change",
+      "svg": "04-change.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "05-complete.svg",
+      "caption": "What will you build, and how will you know it works?"
+    }
+  ],
+  "html": "index.html"
+}

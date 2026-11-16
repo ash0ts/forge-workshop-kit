@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "id": "research",
+  "title": "Test the research agent’s code changes",
+  "eyebrow": "02 / Solar Autoresearch",
+  "question": "Which proposal improved the validation experiment, and what remains uncertain?",
+  "summary": "Round two compares two edits to the adopted L1 model. The later qualification includes a seed that regressed.",
+  "kind": "branches",
+  "provenance": "recorded",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/solar/candidate.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg=="
+    },
+    {
+      "label": "Recorded proposals and probes",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/solar/public/recorded-study.json"
+    },
+    {
+      "label": "Qualification outcomes",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md"
+    }
+  ],
+  "steps": [
+    {
+      "id": "parent",
+      "title": "Adopted L1 model",
+      "body": "Round one selected masked absolute-error training. Round two keeps the data, 40 training steps, and seed 17 fixed.",
+      "output": "Validation error: 0.120553",
+      "symbol": "file",
+      "status": "Completed parent"
+    },
+    {
+      "id": "candidate-a",
+      "title": "A: zero-initialize the head",
+      "body": "Initialize the final convolution to zero. The residual model starts by copying the current image and then learns a correction.",
+      "code": "nn.init.zeros_(self.net[-1].weight)\nnn.init.zeros_(self.net[-1].bias)",
+      "excerpt_label": "Recorded edit; residual architecture only.",
+      "output": "Validation error: 0.110916",
+      "symbol": "component",
+      "status": "Completed; selected"
+    },
+    {
+      "id": "candidate-b",
+      "title": "B: change sample order",
+      "body": "Sample a permutation without replacement instead of drawing each batch independently. Keep the inherited model and loss.",
+      "output": "Validation error: 0.120557",
+      "symbol": "component",
+      "status": "Completed; rejected"
+    },
+    {
+      "id": "decision",
+      "title": "Adopt Candidate A",
+      "body": "The recorded decision selects A and tests that source. A combined A+B version was not tested and is not claimed as an improvement.",
+      "output": "Selected source: zero-init + L1",
+      "symbol": "decision",
+      "status": "Recorded CHANGE"
+    }
+  ],
+  "states": [
+    {
+      "id": "parent",
+      "label": "Adopted L1 model",
+      "visible": [
+        "parent"
+      ],
+      "focus": [
+        "parent"
+      ],
+      "caption": "Round one selected masked absolute-error training. Round two keeps the data, 40 training steps, and seed 17 fixed."
+    },
+    {
+      "id": "candidate-a",
+      "label": "A: zero-initialize the head",
+      "visible": [
+        "parent",
+        "candidate-a"
+      ],
+      "focus": [
+        "candidate-a"
+      ],
+      "caption": "Initialize the final convolution to zero. The residual model starts by copying the current image and then learns a correction."
+    },
+    {
+      "id": "candidate-b",
+      "label": "B: change sample order",
+      "visible": [
+        "parent",
+        "candidate-a",
+        "candidate-b"
+      ],
+      "focus": [
+        "candidate-b"
+      ],
+      "caption": "Sample a permutation without replacement instead of drawing each batch independently. Keep the inherited model and loss."
+    },
+    {
+      "id": "decision",
+      "label": "Adopt Candidate A",
+      "visible": [
+        "parent",
+        "candidate-a",
+        "candidate-b",
+        "decision"
+      ],
+      "focus": [
+        "decision"
+      ],
+      "caption": "The recorded decision selects A and tests that source. A combined A+B version was not tested and is not claimed as an improvement."
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "parent",
+        "candidate-a",
+        "candidate-b",
+        "decision"
+      ],
+      "focus": [],
+      "caption": "Later image qualification: error reductions of 10.15%, 6.87%, and −0.21% against the manual model. One seed regressed."
+    }
+  ]
+}

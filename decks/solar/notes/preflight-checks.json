@@ -1,0 +1,170 @@
+{
+  "source_sha256": "5a355ee9bfbafd78b07aa7eaf02caf28488445d7b016b192b7f67984a34ebede",
+  "preflight_only": true,
+  "slides_checked": 6,
+  "expected_slides": 130,
+  "titles": [
+    {
+      "number": 1,
+      "key": "cover",
+      "title": "Solar forecasting with agent-assisted experiments"
+    },
+    {
+      "number": 2,
+      "key": "technical-overview",
+      "title": "What you will build and inspect"
+    },
+    {
+      "number": 3,
+      "key": "arrival",
+      "title": "The lab needs a forecast for its weekly review"
+    },
+    {
+      "number": 11,
+      "key": "trace-scopes",
+      "title": "Wrap one operation, then inspect what you recorded"
+    },
+    {
+      "number": 12,
+      "key": "setup-turn",
+      "title": "Connect and inspect your first tool call"
+    },
+    {
+      "number": 21,
+      "key": "data-turn",
+      "title": "Inspect the observations before training"
+    }
+  ],
+  "click_states": [
+    {
+      "slide": 1,
+      "click": 0
+    },
+    {
+      "slide": 2,
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/solar/overview/slide/01-observations.svg",
+        "alt": "Observations: What will you build, and how will you know it works?",
+        "frameId": "observations",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/solar/overview/slide/02-baseline.svg",
+        "alt": "Baseline: What will you build, and how will you know it works?",
+        "frameId": "baseline",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/solar/overview/slide/03-experiment.svg",
+        "alt": "Experiment: What will you build, and how will you know it works?",
+        "frameId": "experiment",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/solar/overview/slide/04-research.svg",
+        "alt": "Research: What will you build, and how will you know it works?",
+        "frameId": "research",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/solar/overview/slide/05-complete.svg",
+        "alt": "Complete view: What will you build, and how will you know it works?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 3,
+      "click": 0
+    },
+    {
+      "slide": 11,
+      "click": 0
+    },
+    {
+      "slide": 11,
+      "click": 1
+    },
+    {
+      "slide": 11,
+      "click": 2
+    },
+    {
+      "slide": 11,
+      "click": 3
+    },
+    {
+      "slide": 12,
+      "click": 0
+    },
+    {
+      "slide": 21,
+      "click": 0
+    }
+  ],
+  "issues": [],
+  "console_errors": [],
+  "failed_responses": [],
+  "answers": [
+    {
+      "slide": 12,
+      "destination": "/115",
+      "keyboardReturn": true
+    }
+  ],
+  "routes_checked": 523,
+  "recording_links_checked": 0,
+  "presenter_notes": true
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "poster",
+  "title": "Train a support router and check its release",
+  "eyebrow": "03 / Customer request routing",
+  "question": "What will you learn?",
+  "summary": "A customer asks about a replacement card. Which support queue should receive it? Train a classifier, inspect its mistakes, and check that the released version preserves its label mapping.",
+  "kind": "poster",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw=="
+    }
+  ],
+  "steps": [],
+  "states": [
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [],
+      "focus": [],
+      "caption": "What will you learn?"
+    }
+  ],
+  "poster": {
+    "situation": "A customer asks about a replacement card. Which support queue should receive it? Train a classifier, inspect its mistakes, and check that the released version preserves its label mapping.",
+    "outcomes": [
+      "Compare word and sentence features on the same requests.",
+      "Review mistakes and separate routing from human review.",
+      "Reproduce, repair, and roll back a batch predictor."
+    ],
+    "duration": "5½ hours",
+    "prerequisites": "Read basic Python; use your own Forge project.",
+    "dataset": "Banking77 customer requests, 77 support intents",
+    "forge": [
+      {
+        "name": "Runs",
+        "action": "Compare classifier metrics and preprocessing settings."
+      },
+      {
+        "name": "EvalTables",
+        "action": "Inspect the same request across model and release versions."
+      },
+      {
+        "name": "Artifacts",
+        "action": "Reload the model with its original intent ordering."
+      }
+    ],
+    "cta": {
+      "label": "Read the example, then copy the notebook",
+      "url": "https://ash0ts.github.io/forge-workshop-kit/#routing"
+    },
+    "hero": "hero.svg"
+  }
+}

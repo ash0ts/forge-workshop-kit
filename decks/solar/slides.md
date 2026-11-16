@@ -35,6 +35,25 @@ Source notes and recorded evidence: notes/sources.md.
 -->
 
 ---
+class: technical-manual
+clicks: 4
+name: technical-overview
+---
+
+<div class="kicker">0:00–0:25</div>
+
+# What you will build and inspect
+
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;observations&quot;, &quot;label&quot;: &quot;Observations&quot;, &quot;svg&quot;: &quot;01-observations.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/solar/overview/slide/01-observations.svg&quot;}, {&quot;id&quot;: &quot;baseline&quot;, &quot;label&quot;: &quot;Baseline&quot;, &quot;svg&quot;: &quot;02-baseline.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/solar/overview/slide/02-baseline.svg&quot;}, {&quot;id&quot;: &quot;experiment&quot;, &quot;label&quot;: &quot;Experiment&quot;, &quot;svg&quot;: &quot;03-experiment.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/solar/overview/slide/03-experiment.svg&quot;}, {&quot;id&quot;: &quot;research&quot;, &quot;label&quot;: &quot;Research&quot;, &quot;svg&quot;: &quot;04-research.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/solar/overview/slide/04-research.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;05-complete.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/solar/overview/slide/05-complete.svg&quot;}]" :step="$clicks" />
+
+
+<!--
+Introduce the real task, the data available, and the outcome participants will check. Point to each Forge product at the operation it helps investigate.
+Visual guide: solar/overview. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
 name: arrival
 ---
 
@@ -203,7 +222,7 @@ name: setup-turn
 
 <div class="kicker">0:00–0:25 · YOUR TURN</div>
 
-<a class="answer-link" href="/114">Worked answer → 114</a>
+<a class="answer-link" href="/115">Worked answer → 115</a>
 
 # Connect and inspect your first tool call
 
@@ -232,19 +251,21 @@ Source notes and recorded evidence: notes/sources.md.
 -->
 
 ---
-clicks: 2
+class: technical-manual
+clicks: 3
 name: goes-window
 ---
 
 <div class="kicker">0:25–1:05</div>
 
-# Predict X-ray flux 30 minutes ahead
+# Construct one forecast window
 
-<SolarConcept mode="window" :reveal="Math.min($clicks + 1, 3)" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;history&quot;, &quot;label&quot;: &quot;History&quot;, &quot;svg&quot;: &quot;01-history.svg&quot;, &quot;caption&quot;: &quot;Which values are observations, and which one is the future target?&quot;, &quot;src&quot;: &quot;/guides/solar/window/slide/01-history.svg&quot;}, {&quot;id&quot;: &quot;target&quot;, &quot;label&quot;: &quot;Target&quot;, &quot;svg&quot;: &quot;02-target.svg&quot;, &quot;caption&quot;: &quot;Which values are observations, and which one is the future target?&quot;, &quot;src&quot;: &quot;/guides/solar/window/slide/02-target.svg&quot;}, {&quot;id&quot;: &quot;scale&quot;, &quot;label&quot;: &quot;Scale&quot;, &quot;svg&quot;: &quot;03-scale.svg&quot;, &quot;caption&quot;: &quot;Which values are observations, and which one is the future target?&quot;, &quot;src&quot;: &quot;/guides/solar/window/slide/03-scale.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;Which values are observations, and which one is the future target?&quot;, &quot;src&quot;: &quot;/guides/solar/window/slide/04-complete.svg&quot;}]" :step="$clicks" />
 
 
 <!--
 Set the clock to 01:00 UTC on February 1. Reveal the 01:30 target, then persistence. All numerical values are from the immutable teaching dataset, extracted without training. Ask which number a forecasting program is allowed to use at 01:00. The answer is the observation, not the later target. Session block: Read observations and implement persistence (minutes 25–65).
+Visual guide: solar/window. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -459,7 +480,7 @@ name: persistence-turn
 
 <div class="kicker">0:25–1:05 · YOUR TURN</div>
 
-<a class="answer-link" href="/115">Worked answer → 115</a>
+<a class="answer-link" href="/116">Worked answer → 116</a>
 
 # Write and test persistence
 
@@ -536,44 +557,40 @@ Source notes and recorded evidence: notes/sources.md.
 -->
 
 ---
+class: technical-manual
+clicks: 4
 name: stage
 ---
 
 <div class="kicker">1:05–1:35</div>
 
-# Save code and outputs with each training run
+# Keep the experiment and its outputs together
 
-```python {1-3|4-5|6|all}
-with session.stage(name, config=config,
-    sources={"candidate.py": source},
-    inputs={"dataset": dataset_version}) as stage:
-    if stage.needs_run:
-        result, predictions = training.train(...)
-        stage.record(result, files=output_files)
-```
-
-<div class="bottom-note">Shortened from run_training. The saved files include source, weights, predictions and losses.</div>
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;inputs&quot;, &quot;label&quot;: &quot;Inputs&quot;, &quot;svg&quot;: &quot;01-inputs.svg&quot;, &quot;caption&quot;: &quot;Could someone reproduce this prediction from the saved run?&quot;, &quot;src&quot;: &quot;/guides/solar/run-record/slide/01-inputs.svg&quot;}, {&quot;id&quot;: &quot;execution&quot;, &quot;label&quot;: &quot;Execution&quot;, &quot;svg&quot;: &quot;02-execution.svg&quot;, &quot;caption&quot;: &quot;Could someone reproduce this prediction from the saved run?&quot;, &quot;src&quot;: &quot;/guides/solar/run-record/slide/02-execution.svg&quot;}, {&quot;id&quot;: &quot;publish&quot;, &quot;label&quot;: &quot;Publish&quot;, &quot;svg&quot;: &quot;03-publish.svg&quot;, &quot;caption&quot;: &quot;Could someone reproduce this prediction from the saved run?&quot;, &quot;src&quot;: &quot;/guides/solar/run-record/slide/03-publish.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;Could someone reproduce this prediction from the saved run?&quot;, &quot;src&quot;: &quot;/guides/solar/run-record/slide/04-complete.svg&quot;}, {&quot;id&quot;: &quot;native-capture&quot;, &quot;label&quot;: &quot;Files from one recorded training execution&quot;, &quot;svg&quot;: &quot;05-native-capture.svg&quot;, &quot;caption&quot;: &quot;Find candidate.py, predictions.npy, and weights.pt in the same artifact version.&quot;, &quot;src&quot;: &quot;/guides/solar/run-record/slide/05-native-capture.svg&quot;}]" :step="$clicks" />
 
 
 <!--
 Find the full editable run_training function in the notebook. The stage identifies a request to train specific source with specific settings and data. Its completed result is reused only for that matching request. training.train runs the program and returns predictions. stage.record stores its result and output files. Publication follows execution; an upload failure does not erase training or require training again. The ellipsis abbreviates arguments in this teaching excerpt; it is not a paste-ready function. Session block: Explain training and saved experiment files (minutes 65–95).
+Visual guide: solar/run-record. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
 ---
-clicks: 3
+class: technical-manual
+clicks: 4
 name: training-step
 ---
 
 <div class="kicker">1:05–1:35</div>
 
-# What changes during one training step
+# Turn a prediction error into a weight update
 
-<SolarComputation mode="training" :reveal="Math.min($clicks + 1, 4)" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;loss&quot;, &quot;label&quot;: &quot;Loss&quot;, &quot;svg&quot;: &quot;01-loss.svg&quot;, &quot;caption&quot;: &quot;Which operation changes forecasting weights?&quot;, &quot;src&quot;: &quot;/guides/solar/learning/slide/01-loss.svg&quot;}, {&quot;id&quot;: &quot;update&quot;, &quot;label&quot;: &quot;Update&quot;, &quot;svg&quot;: &quot;02-update.svg&quot;, &quot;caption&quot;: &quot;Which operation changes forecasting weights?&quot;, &quot;src&quot;: &quot;/guides/solar/learning/slide/02-update.svg&quot;}, {&quot;id&quot;: &quot;validation&quot;, &quot;label&quot;: &quot;Validation&quot;, &quot;svg&quot;: &quot;03-validation.svg&quot;, &quot;caption&quot;: &quot;Which operation changes forecasting weights?&quot;, &quot;src&quot;: &quot;/guides/solar/learning/slide/03-validation.svg&quot;}, {&quot;id&quot;: &quot;failure&quot;, &quot;label&quot;: &quot;Failure&quot;, &quot;svg&quot;: &quot;04-failure.svg&quot;, &quot;caption&quot;: &quot;Which operation changes forecasting weights?&quot;, &quot;src&quot;: &quot;/guides/solar/learning/slide/04-failure.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;05-complete.svg&quot;, &quot;caption&quot;: &quot;Which operation changes forecasting weights?&quot;, &quot;src&quot;: &quot;/guides/solar/learning/slide/05-complete.svg&quot;}]" :step="$clicks" />
 
 
 <!--
 In fit, the GOES model predicts a batch and computes squared error against training targets. The shared loss function has an all-ones mask for GOES; the image exercise later uses the mask to select disk pixels. loss.backward computes gradients. Adam updates the forecasting model weights. The training targets participate in these updates. Validation inputs are predicted without gradients, and validation targets are scored by the parent process outside candidate code. Reveal one operation at a time. Ask what changed before advancing. Back restores the previous state. Session block: Explain training and saved experiment files (minutes 65–95).
+Visual guide: solar/learning. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -692,19 +709,21 @@ Source notes and recorded evidence: notes/sources.md.
 -->
 
 ---
-clicks: 2
+class: technical-manual
+clicks: 3
 name: batch-shapes
 ---
 
 <div class="kicker">1:50–2:35</div>
 
-# Read the batch, channel and time axes
+# Follow the tensor through the model
 
-<SolarConcept mode="batch" :reveal="Math.min($clicks + 1, 3)" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;input&quot;, &quot;label&quot;: &quot;Input&quot;, &quot;svg&quot;: &quot;01-input.svg&quot;, &quot;caption&quot;: &quot;What becomes one forecast, and what does the model learn?&quot;, &quot;src&quot;: &quot;/guides/solar/model-shapes/slide/01-input.svg&quot;}, {&quot;id&quot;: &quot;mlp&quot;, &quot;label&quot;: &quot;Mlp&quot;, &quot;svg&quot;: &quot;02-mlp.svg&quot;, &quot;caption&quot;: &quot;What becomes one forecast, and what does the model learn?&quot;, &quot;src&quot;: &quot;/guides/solar/model-shapes/slide/02-mlp.svg&quot;}, {&quot;id&quot;: &quot;cnn&quot;, &quot;label&quot;: &quot;Cnn&quot;, &quot;svg&quot;: &quot;03-cnn.svg&quot;, &quot;caption&quot;: &quot;What becomes one forecast, and what does the model learn?&quot;, &quot;src&quot;: &quot;/guides/solar/model-shapes/slide/03-cnn.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;What becomes one forecast, and what does the model learn?&quot;, &quot;src&quot;: &quot;/guides/solar/model-shapes/slide/04-complete.svg&quot;}]" :step="$clicks" />
 
 
 <!--
 B counts windows processed together. Each window has two instrument channels and sixty time positions. The target has one value per window. The training configuration uses batch size thirty-two. The notebook free shape demonstration uses batch size two and width four so learners can inspect a small forward pass; it does not train and does not change later random state. Ask learners to explain x[0,1,-1] before revealing the output shape. Session block: Inspect model shapes and compare configurations (minutes 110–155).
+Visual guide: solar/model-shapes. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -832,7 +851,7 @@ name: tracking-turn
 
 <div class="kicker">1:50–2:35 · YOUR TURN</div>
 
-<a class="answer-link" href="/116">Worked answer → 116</a>
+<a class="answer-link" href="/117">Worked answer → 117</a>
 
 # Write the loss and metric
 
@@ -932,7 +951,7 @@ name: search-turn
 
 <div class="kicker">1:50–2:35 · YOUR TURN</div>
 
-<a class="answer-link" href="/117">Worked answer → 117</a>
+<a class="answer-link" href="/118">Worked answer → 118</a>
 
 # Inspect one trial before running the rest
 
@@ -951,7 +970,7 @@ name: goes-repair-turn
 
 <div class="kicker">1:50–2:35 · YOUR TURN</div>
 
-<a class="answer-link" href="/118">Worked answer → 118</a>
+<a class="answer-link" href="/119">Worked answer → 119</a>
 
 # Diagnose the forecast before opening the repair
 
@@ -1102,6 +1121,8 @@ Source notes and recorded evidence: notes/sources.md.
 -->
 
 ---
+class: technical-manual
+clicks: 3
 name: residual
 ---
 
@@ -1109,11 +1130,12 @@ name: residual
 
 # Predict a correction to the current image
 
-<SolarMechanism mode="residual" :reveal="2" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;input&quot;, &quot;label&quot;: &quot;Input&quot;, &quot;svg&quot;: &quot;01-input.svg&quot;, &quot;caption&quot;: &quot;How does a residual prediction differ from a direct prediction?&quot;, &quot;src&quot;: &quot;/guides/solar/images/slide/01-input.svg&quot;}, {&quot;id&quot;: &quot;residual&quot;, &quot;label&quot;: &quot;Residual&quot;, &quot;svg&quot;: &quot;02-residual.svg&quot;, &quot;caption&quot;: &quot;How does a residual prediction differ from a direct prediction?&quot;, &quot;src&quot;: &quot;/guides/solar/images/slide/02-residual.svg&quot;}, {&quot;id&quot;: &quot;mask&quot;, &quot;label&quot;: &quot;Mask&quot;, &quot;svg&quot;: &quot;03-mask.svg&quot;, &quot;caption&quot;: &quot;How does a residual prediction differ from a direct prediction?&quot;, &quot;src&quot;: &quot;/guides/solar/images/slide/03-mask.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;How does a residual prediction differ from a direct prediction?&quot;, &quot;src&quot;: &quot;/guides/solar/images/slide/04-complete.svg&quot;}]" :step="$clicks" />
 
 
 <!--
 Much of the current image may remain similar one hour later. We can copy that image and ask the network to predict the correction. Add the network output to x[:, 1:2], the current-image channel. The slice preserves the channel dimension. If the correction is zero, the model returns persistence exactly. The local check will test that behavior. Session block: Implement image prediction and scoring (minutes 155–200).
+Visual guide: solar/images. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1253,7 +1275,7 @@ name: image-turn
 
 <div class="kicker">2:35–3:20 · YOUR TURN</div>
 
-<a class="answer-link" href="/119">Worked answer → 119</a>
+<a class="answer-link" href="/120">Worked answer → 120</a>
 
 # Implement and compare the image predictors
 
@@ -1426,7 +1448,7 @@ name: evidence-turn
 
 <div class="kicker">3:50–4:20 · YOUR TURN</div>
 
-<a class="answer-link" href="/121">Worked answer → 121</a>
+<a class="answer-link" href="/122">Worked answer → 122</a>
 
 # Choose the evidence for the research agent
 
@@ -1519,18 +1541,21 @@ Source notes and recorded evidence: notes/sources.md.
 -->
 
 ---
+class: technical-manual
+clicks: 4
 name: compose
 ---
 
 <div class="kicker">4:20–5:10</div>
 
-# Choose or combine changes using the probe results
+# Test the research agent’s code changes
 
-<ResearchBranches :level="3" /><div class="bottom-note">The agent can keep A, keep B, combine changes, or retain the starting code.</div>
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;parent&quot;, &quot;label&quot;: &quot;Adopted L1 model&quot;, &quot;svg&quot;: &quot;01-parent.svg&quot;, &quot;caption&quot;: &quot;Round one selected masked absolute-error training. Round two keeps the data, 40 training steps, and seed 17 fixed.&quot;, &quot;src&quot;: &quot;/guides/solar/research/slide/01-parent.svg&quot;}, {&quot;id&quot;: &quot;candidate-a&quot;, &quot;label&quot;: &quot;A: zero-initialize the head&quot;, &quot;svg&quot;: &quot;02-candidate-a.svg&quot;, &quot;caption&quot;: &quot;Initialize the final convolution to zero. The residual model starts by copying the current image and then learns a correction.&quot;, &quot;src&quot;: &quot;/guides/solar/research/slide/02-candidate-a.svg&quot;}, {&quot;id&quot;: &quot;candidate-b&quot;, &quot;label&quot;: &quot;B: change sample order&quot;, &quot;svg&quot;: &quot;03-candidate-b.svg&quot;, &quot;caption&quot;: &quot;Sample a permutation without replacement instead of drawing each batch independently. Keep the inherited model and loss.&quot;, &quot;src&quot;: &quot;/guides/solar/research/slide/03-candidate-b.svg&quot;}, {&quot;id&quot;: &quot;decision&quot;, &quot;label&quot;: &quot;Adopt Candidate A&quot;, &quot;svg&quot;: &quot;04-decision.svg&quot;, &quot;caption&quot;: &quot;The recorded decision selects A and tests that source. A combined A+B version was not tested and is not claimed as an improvement.&quot;, &quot;src&quot;: &quot;/guides/solar/research/slide/04-decision.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;05-complete.svg&quot;, &quot;caption&quot;: &quot;Later image qualification: error reductions of 10.15%, 6.87%, and −0.21% against the manual model. One seed regressed.&quot;, &quot;src&quot;: &quot;/guides/solar/research/slide/05-complete.svg&quot;}]" :step="$clicks" />
 
 
 <!--
 After both probes, the agent receives their code and validation results. It can keep one candidate, combine changes, or retain the starting source. Two suggestions do not obligate the lab to accept two changes. Read its rationale beside the scores. The dashed lines show which results it reviewed; they do not mean both candidates were merged into the selected code. Session block: Review and test two rounds of changes (minutes 260–310).
+Visual guide: solar/research. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -1706,7 +1731,7 @@ name: round2-turn
 
 <div class="kicker">4:20–5:10 · YOUR TURN</div>
 
-<a class="answer-link" href="/122">Worked answer → 122</a>
+<a class="answer-link" href="/123">Worked answer → 123</a>
 
 # Test the selected code, then begin round two
 
@@ -1814,7 +1839,7 @@ name: final-turn
 
 <div class="kicker">5:20–5:45 · YOUR TURN</div>
 
-<a class="answer-link" href="/123">Worked answer → 123</a>
+<a class="answer-link" href="/124">Worked answer → 124</a>
 
 # Test the selected models on reserved dates
 
@@ -2098,7 +2123,7 @@ def instrument_tool(observation):
 ```
 
 
-<div class="source-link"><a href="/11">Return to Connect and inspect your first tool call →</a></div>
+<div class="source-link"><a href="/12">Return to Connect and inspect your first tool call →</a></div>
 
 <!--
 The attribute is attached inside the Tool scope. The complete notebook function also supplies its call identity and outer conversation. Use the operation’s timestamps so Agent Lens shows when the work happened, not when it was uploaded.
@@ -2120,7 +2145,7 @@ def persistence_forecast(split):
 ```
 
 <p>The copy lets you work with the predictions without changing the dataset.</p>
-<div class="source-link"><a href="/24">Return to Write and test persistence →</a></div>
+<div class="source-link"><a href="/25">Return to Write and test persistence →</a></div>
 
 <!--
 The prepared split includes the last observed reading for each forecast window. Return a copy so later changes to the prediction array cannot alter the dataset.
@@ -2148,7 +2173,7 @@ assert my_flux_mae(np.zeros(3), np.zeros(3)) == 0.0
 ```
 
 <p class="aside">Training uses squared error. Evaluation reports mean absolute error.</p>
-<div class="source-link"><a href="/44">Return to Write the loss and metric →</a></div>
+<div class="source-link"><a href="/45">Return to Write the loss and metric →</a></div>
 
 <!--
 Subtract prediction and target, take absolute values, and average. A prediction of one against a target of zero gives one. These are log10 flux units. The training loss above it is separate and uses squared error.
@@ -2164,7 +2189,7 @@ name: answer-search
 # Compare the settings and loss curves
 
 <p class="big">Open two runs from the Sweep. Compare their model, width, learning rate, and training steps.</p><p>Then open the loss curves. A lower validation error is easier to interpret when you can see how each model trained.</p><div class="bottom-note">If a run failed, inspect its error. A missing score cannot rank that model.</div>
-<div class="source-link"><a href="/49">Return to Inspect one trial before running the rest →</a></div>
+<div class="source-link"><a href="/50">Return to Inspect one trial before running the rest →</a></div>
 
 <!--
 Open the configuration and curve for two runs. Find the settings they share and the value that differs. If training failed, inspect the error rather than assigning a score to a forecast that does not exist.
@@ -2191,7 +2216,7 @@ def forward(self, x):
 ```
 
 <div class="bottom-note">The repair also uses absolute loss and 1,200 updates. These choices are tested together.</div>
-<div class="source-link"><a href="/50">Return to Diagnose the forecast before opening the repair →</a></div>
+<div class="source-link"><a href="/51">Return to Diagnose the forecast before opening the repair →</a></div>
 
 <!--
 The latest XRS-B input is standardized. Add a learned correction, then convert it back with the same training-fitted center and scale. A zero-initialized final layer begins exactly at persistence. The fit function divides the prediction and target error by the same scale. We changed several parts of the recipe together, so the measured result cannot tell us which individual change caused the gain. Ask participants to point to the addition and unit conversion in their editable code. Advance the code highlights one step at a time; use Back to revisit the previous statement.
@@ -2216,7 +2241,7 @@ def my_image_mae(prediction, target, disk_mask):
 ```
 
 <p>Test zero error, constant +1 error, and an error only outside the mask.</p>
-<div class="source-link"><a href="/67">Return to Implement and compare the image predictors →</a></div>
+<div class="source-link"><a href="/68">Return to Implement and compare the image predictors →</a></div>
 
 <!--
 The mask selects the solar disk. Compute the sum and count per image, then average across images. Check identical arrays, a constant one-unit difference, and a difference only outside the mask.
@@ -2266,7 +2291,7 @@ def select_validation_evidence(record):
 ```
 
 <div class="bottom-note">The agent also receives the current source. Keep final predictions and scores out of this request.</div>
-<div class="source-link"><a href="/77">Return to Choose the evidence for the research agent →</a></div>
+<div class="source-link"><a href="/78">Return to Choose the evidence for the research agent →</a></div>
 
 <!--
 First check that the record belongs to validation. Then return only the listed evidence fields. The current source is supplied separately. The final-test example should raise an error before the agent sees it.
@@ -2291,7 +2316,7 @@ probe = run_training(
 ```
 
 <div class="bottom-note">Use the candidate’s source here. Passing the parent would train the old program again.</div>
-<div class="source-link"><a href="/92">Return to Test the selected code, then begin round two →</a></div>
+<div class="source-link"><a href="/93">Return to Test the selected code, then begin round two →</a></div>
 
 <!--
 Pass candidate['source'] to training, along with the shared configuration. Passing the parent source here would train the old program while the interface appeared to test a new proposal. Open the saved candidate.py if the result looks suspicious.
@@ -2307,7 +2332,7 @@ name: answer-final
 # Use the saved model without training it again
 
 <p class="big">Load each selected model’s saved weights and predict the reserved dates.</p><p>Compare the three image forecasts at one timestamp. The input images and observed future should match across all three rows.</p><div class="bottom-note">Persistence copies the current image and needs no trained weights.</div>
-<div class="source-link"><a href="/98">Return to Test the selected models on reserved dates →</a></div>
+<div class="source-link"><a href="/99">Return to Test the selected models on reserved dates →</a></div>
 
 <!--
 The selected weights are already trained. Load them and predict the final inputs. Compare the same target timestamps across all versions; persistence uses the current image directly.

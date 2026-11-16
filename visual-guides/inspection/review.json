@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "id": "review",
+  "title": "Compare equal labeling budgets",
+  "eyebrow": "04 / Circuit-board inspection",
+  "question": "Did the selection policy help, or did more labeled data help?",
+  "summary": "A gain from adding labels does not by itself show that active selection outperformed random selection.",
+  "kind": "comparison",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "active",
+      "title": "Select near the cutoff",
+      "body": "Rank eligible review boards by distance from the frozen threshold. Do not read their labels while selecting.",
+      "code": "np.abs(scores - threshold)",
+      "output": "24 active selections",
+      "symbol": "threshold",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "random",
+      "title": "Select a matched random cohort",
+      "body": "Use the same number of review examples for the random policy.",
+      "output": "24 random selections",
+      "symbol": "sample"
+    },
+    {
+      "id": "compare",
+      "title": "Retrain and compare",
+      "body": "Keep fitting data, scorer, and evaluation cases aligned. Record the selected case IDs and their reviewed labels.",
+      "output": "Equal budget, different selection rule",
+      "symbol": "comparison"
+    }
+  ],
+  "states": [
+    {
+      "id": "active",
+      "label": "Active",
+      "visible": [
+        "active"
+      ],
+      "focus": [
+        "active"
+      ],
+      "caption": "Did the selection policy help, or did more labeled data help?"
+    },
+    {
+      "id": "random",
+      "label": "Random",
+      "visible": [
+        "active",
+        "random"
+      ],
+      "focus": [
+        "random"
+      ],
+      "caption": "Did the selection policy help, or did more labeled data help?"
+    },
+    {
+      "id": "compare",
+      "label": "Compare",
+      "visible": [
+        "active",
+        "random",
+        "compare"
+      ],
+      "focus": [
+        "compare"
+      ],
+      "caption": "Did the selection policy help, or did more labeled data help?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "active",
+        "random",
+        "compare"
+      ],
+      "focus": [],
+      "caption": "Did the selection policy help, or did more labeled data help?"
+    }
+  ]
+}

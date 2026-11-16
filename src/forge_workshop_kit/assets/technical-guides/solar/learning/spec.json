@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "id": "learning",
+  "title": "Turn a prediction error into a weight update",
+  "eyebrow": "02 / Solar Autoresearch",
+  "question": "Which operation changes forecasting weights?",
+  "summary": "Later residual-recipe results are teaching retests; previously inspected final dates are not newly unseen evidence.",
+  "kind": "sequence",
+  "provenance": "recorded",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/solar/candidate.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "loss",
+      "title": "Calculate training loss",
+      "body": "Subtract the target, square the error, apply the valid mask, and average.",
+      "code": "((prediction-target).square()*mask).sum()\n# Divide by mask.sum() in training_loss.",
+      "input": "Prediction and target in matching units",
+      "output": "One scalar loss",
+      "symbol": "loss",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "update",
+      "title": "Update the forecasting model",
+      "body": "Backpropagation computes gradients. The optimizer changes forecasting weights.",
+      "code": "optimizer.zero_grad()\nloss.backward()\noptimizer.step()",
+      "output": "Updated forecasting weights",
+      "symbol": "gradient",
+      "excerpt_label": "Abbreviated code; full function in notebook.",
+      "input": "Scalar loss + model parameters"
+    },
+    {
+      "id": "validation",
+      "title": "Measure without training",
+      "body": "Use validation predictions to compare settings. The fixed research agent has separate weights that this training loop never updates.",
+      "output": "Validation error, unchanged model state",
+      "symbol": "check",
+      "input": "Updated model + validation examples"
+    },
+    {
+      "id": "failure",
+      "title": "A falling loss can mislead",
+      "body": "The original selected GOES run scored 2.468975 versus persistence at 0.192706. Its falling training loss did not establish a useful forecast.",
+      "output": "Persistence has lower recorded error",
+      "status": "Original recording",
+      "symbol": "chart",
+      "input": "Saved GOES forecast + persistence"
+    }
+  ],
+  "states": [
+    {
+      "id": "loss",
+      "label": "Loss",
+      "visible": [
+        "loss"
+      ],
+      "focus": [
+        "loss"
+      ],
+      "caption": "Which operation changes forecasting weights?"
+    },
+    {
+      "id": "update",
+      "label": "Update",
+      "visible": [
+        "loss",
+        "update"
+      ],
+      "focus": [
+        "update"
+      ],
+      "caption": "Which operation changes forecasting weights?"
+    },
+    {
+      "id": "validation",
+      "label": "Validation",
+      "visible": [
+        "loss",
+        "update",
+        "validation"
+      ],
+      "focus": [
+        "validation"
+      ],
+      "caption": "Which operation changes forecasting weights?"
+    },
+    {
+      "id": "failure",
+      "label": "Failure",
+      "visible": [
+        "loss",
+        "update",
+        "validation",
+        "failure"
+      ],
+      "focus": [
+        "failure"
+      ],
+      "caption": "Which operation changes forecasting weights?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "loss",
+        "update",
+        "validation",
+        "failure"
+      ],
+      "focus": [],
+      "caption": "Which operation changes forecasting weights?"
+    }
+  ]
+}

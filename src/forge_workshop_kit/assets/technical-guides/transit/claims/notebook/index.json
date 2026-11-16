@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "claims",
+  "kind": "comparison",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "ff1aec3c8b07958f4dd6e2d5635deefd430ef1335742758eea5425bded2bf082",
+  "states": [
+    {
+      "id": "race",
+      "label": "Race",
+      "svg": "01-race.svg",
+      "caption": "What stops two ready workers from editing the same component?"
+    },
+    {
+      "id": "atomic",
+      "label": "Atomic",
+      "svg": "02-atomic.svg",
+      "caption": "What stops two ready workers from editing the same component?"
+    },
+    {
+      "id": "dependency",
+      "label": "Dependency",
+      "svg": "03-dependency.svg",
+      "caption": "What stops two ready workers from editing the same component?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "What stops two ready workers from editing the same component?"
+    }
+  ],
+  "html": "index.html"
+}

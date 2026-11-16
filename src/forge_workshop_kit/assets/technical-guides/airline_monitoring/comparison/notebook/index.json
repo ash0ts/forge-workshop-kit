@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "comparison",
+  "kind": "comparison",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "839e1f89030458ccca63039319ad57e1c3166710bab35ef01fe8a78b3c764439",
+  "states": [
+    {
+      "id": "freeze",
+      "label": "Freeze",
+      "svg": "01-freeze.svg",
+      "caption": "Did the repair improve bookings, monitoring, or both?"
+    },
+    {
+      "id": "matched",
+      "label": "Matched",
+      "svg": "02-matched.svg",
+      "caption": "Did the repair improve bookings, monitoring, or both?"
+    },
+    {
+      "id": "traffic",
+      "label": "Traffic",
+      "svg": "03-traffic.svg",
+      "caption": "Did the repair improve bookings, monitoring, or both?"
+    },
+    {
+      "id": "recorded",
+      "label": "Recorded",
+      "svg": "04-recorded.svg",
+      "caption": "Did the repair improve bookings, monitoring, or both?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "05-complete.svg",
+      "caption": "Did the repair improve bookings, monitoring, or both?"
+    }
+  ],
+  "html": "index.html"
+}

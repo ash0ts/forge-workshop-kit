@@ -30,6 +30,20 @@ We will implement an agent that can inspect an account, refund a duplicate charg
 -->
 
 ---
+class: technical-manual
+clicks: 4
+---
+
+# What you will build and inspect
+
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;ticket&quot;, &quot;label&quot;: &quot;Ticket&quot;, &quot;svg&quot;: &quot;01-ticket.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/pending/overview/slide/01-ticket.svg&quot;}, {&quot;id&quot;: &quot;agent&quot;, &quot;label&quot;: &quot;Agent&quot;, &quot;svg&quot;: &quot;02-agent.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/pending/overview/slide/02-agent.svg&quot;}, {&quot;id&quot;: &quot;account&quot;, &quot;label&quot;: &quot;Account&quot;, &quot;svg&quot;: &quot;03-account.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/pending/overview/slide/03-account.svg&quot;}, {&quot;id&quot;: &quot;change&quot;, &quot;label&quot;: &quot;Change&quot;, &quot;svg&quot;: &quot;04-change.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/pending/overview/slide/04-change.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;05-complete.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/pending/overview/slide/05-complete.svg&quot;}]" :step="$clicks" />
+
+<!--
+Introduce the real task, the data available, and the outcome participants will check. Point to each Forge product at the operation it helps investigate.
+Visual guide: pending/overview. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
+-->
+
+---
 class: opening-story
 ---
 
@@ -98,14 +112,17 @@ One four-hour session. The schedule includes two ten-minute breaks and hands-on 
 -->
 
 ---
+class: technical-manual
+clicks: 3
 ---
 
-# The harness builds the request the model receives.
+# What controls the employee?
 
-<HarnessParts :level="1" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;model&quot;, &quot;label&quot;: &quot;Model&quot;, &quot;svg&quot;: &quot;01-model.svg&quot;, &quot;caption&quot;: &quot;Which part would you change to make the next action different?&quot;, &quot;src&quot;: &quot;/guides/pending/harness/slide/01-model.svg&quot;}, {&quot;id&quot;: &quot;tools&quot;, &quot;label&quot;: &quot;Tools&quot;, &quot;svg&quot;: &quot;02-tools.svg&quot;, &quot;caption&quot;: &quot;Which part would you change to make the next action different?&quot;, &quot;src&quot;: &quot;/guides/pending/harness/slide/02-tools.svg&quot;}, {&quot;id&quot;: &quot;skill&quot;, &quot;label&quot;: &quot;Skill&quot;, &quot;svg&quot;: &quot;03-skill.svg&quot;, &quot;caption&quot;: &quot;Which part would you change to make the next action different?&quot;, &quot;src&quot;: &quot;/guides/pending/harness/slide/03-skill.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;Which part would you change to make the next action different?&quot;, &quot;src&quot;: &quot;/guides/pending/harness/slide/04-complete.svg&quot;}]" :step="$clicks" />
 
 <!--
 Point to the system text, tool guide, installed skill names and customer ticket. Ask which item would change if the participant edited instructions. A skill name advertises a procedure; its contents have not yet entered the request.
+Visual guide: pending/harness. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 -->
 
 ---
@@ -286,7 +303,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my invoice lookup<br><strong>Check:</strong> The requested invoice, missing invoice, and other-account checks pass. Account state stays unchanged.</div>
 
-<a class="answer-link" href="/96">Worked answer →</a>
+<a class="answer-link" href="/97">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my invoice lookup.
@@ -326,14 +343,17 @@ Same objects and positions across these five frames. Show the actual action/resu
 -->
 
 ---
+class: technical-manual
+clicks: 3
 ---
 
-# Your dispatcher calls the Python function.
+# Pass the tool result into the next request
 
-<ToolLoop :level="3" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;action&quot;, &quot;label&quot;: &quot;Action&quot;, &quot;svg&quot;: &quot;01-action.svg&quot;, &quot;caption&quot;: &quot;Where do the returned payments become information the model can use?&quot;, &quot;src&quot;: &quot;/guides/pending/dispatch/slide/01-action.svg&quot;}, {&quot;id&quot;: &quot;call&quot;, &quot;label&quot;: &quot;Call&quot;, &quot;svg&quot;: &quot;02-call.svg&quot;, &quot;caption&quot;: &quot;Where do the returned payments become information the model can use?&quot;, &quot;src&quot;: &quot;/guides/pending/dispatch/slide/02-call.svg&quot;}, {&quot;id&quot;: &quot;observe&quot;, &quot;label&quot;: &quot;Observe&quot;, &quot;svg&quot;: &quot;03-observe.svg&quot;, &quot;caption&quot;: &quot;Where do the returned payments become information the model can use?&quot;, &quot;src&quot;: &quot;/guides/pending/dispatch/slide/03-observe.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;Where do the returned payments become information the model can use?&quot;, &quot;src&quot;: &quot;/guides/pending/dispatch/slide/04-complete.svg&quot;}]" :step="$clicks" />
 
 <!--
 Same objects and positions across these five frames. Show the actual action/result connection. This is an explanatory diagram based on the public fixture, not a claimed replay of every recorded run.
+Visual guide: pending/dispatch. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 -->
 
 ---
@@ -389,7 +409,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my tool-to-model handoff<br><strong>Check:</strong> Open the four handoff tabs. Match the action, Python arguments, returned payments, and two appended messages.</div>
 
-<a class="answer-link" href="/97">Worked answer →</a>
+<a class="answer-link" href="/98">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my tool-to-model handoff.
@@ -584,14 +604,17 @@ Explanatory sequence for the committed-write timeout fixture. Use the recorded n
 -->
 
 ---
+class: technical-manual
+clicks: 4
 ---
 
-# A stable operation_id prevents a repeated write.
+# A timed-out write may already have worked
 
-<RetryIdentity />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;write&quot;, &quot;label&quot;: &quot;Write&quot;, &quot;svg&quot;: &quot;01-write.svg&quot;, &quot;caption&quot;: &quot;Should the retry keep or change operation_id?&quot;, &quot;src&quot;: &quot;/guides/pending/retry/slide/01-write.svg&quot;}, {&quot;id&quot;: &quot;new&quot;, &quot;label&quot;: &quot;New&quot;, &quot;svg&quot;: &quot;02-new.svg&quot;, &quot;caption&quot;: &quot;Should the retry keep or change operation_id?&quot;, &quot;src&quot;: &quot;/guides/pending/retry/slide/02-new.svg&quot;}, {&quot;id&quot;: &quot;same&quot;, &quot;label&quot;: &quot;Same&quot;, &quot;svg&quot;: &quot;03-same.svg&quot;, &quot;caption&quot;: &quot;Should the retry keep or change operation_id?&quot;, &quot;src&quot;: &quot;/guides/pending/retry/slide/03-same.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;Should the retry keep or change operation_id?&quot;, &quot;src&quot;: &quot;/guides/pending/retry/slide/04-complete.svg&quot;}, {&quot;id&quot;: &quot;native-capture&quot;, &quot;label&quot;: &quot;onboarding_status after recovery&quot;, &quot;svg&quot;: &quot;05-native-capture.svg&quot;, &quot;caption&quot;: &quot;Find account_id, then count the returned members. Follow the earlier timeout before judging the whole conversation.&quot;, &quot;src&quot;: &quot;/guides/pending/retry/slide/05-native-capture.svg&quot;}]" :step="$clicks" />
 
 <!--
 In notebook step 3, use the free local timeout practice. Predict the member count, trigger the timeout, and compare reading status with same-ID and new-ID retries. Reset between alternatives. This uses Python only, changes no saved employee run, and makes no model request. Illustration of simulator.execute after a committed provisioning request. The same operation_id and identical arguments return the stored receipt with replayed=true. A new operation_id is a new mutation and can add a duplicate membership. Reusing an ID with different arguments is rejected. The recorded onboarding recovery read status instead of retrying, so this diagram explains tool behavior rather than claiming this branch occurred in that run.
+Visual guide: pending/retry. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 -->
 
 ---
@@ -645,14 +668,17 @@ Crop x580,y423,w690,h280 from the unchanged1280x720 native capture. Follow its c
 -->
 
 ---
+class: technical-manual
+clicks: 4
 ---
 
-# Check the account and the explanation separately.
+# Four checks answer different questions
 
-<ScoringPaths />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;agent&quot;, &quot;label&quot;: &quot;Agent&quot;, &quot;svg&quot;: &quot;01-agent.svg&quot;, &quot;caption&quot;: &quot;Which check can establish that the account is correct?&quot;, &quot;src&quot;: &quot;/guides/pending/checks/slide/01-agent.svg&quot;}, {&quot;id&quot;: &quot;learner&quot;, &quot;label&quot;: &quot;Learner&quot;, &quot;svg&quot;: &quot;02-learner.svg&quot;, &quot;caption&quot;: &quot;Which check can establish that the account is correct?&quot;, &quot;src&quot;: &quot;/guides/pending/checks/slide/02-learner.svg&quot;}, {&quot;id&quot;: &quot;independent&quot;, &quot;label&quot;: &quot;Independent&quot;, &quot;svg&quot;: &quot;03-independent.svg&quot;, &quot;caption&quot;: &quot;Which check can establish that the account is correct?&quot;, &quot;src&quot;: &quot;/guides/pending/checks/slide/03-independent.svg&quot;}, {&quot;id&quot;: &quot;judge&quot;, &quot;label&quot;: &quot;Judge&quot;, &quot;svg&quot;: &quot;04-judge.svg&quot;, &quot;caption&quot;: &quot;Which check can establish that the account is correct?&quot;, &quot;src&quot;: &quot;/guides/pending/checks/slide/04-judge.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;05-complete.svg&quot;, &quot;caption&quot;: &quot;Which check can establish that the account is correct?&quot;, &quot;src&quot;: &quot;/guides/pending/checks/slide/05-complete.svg&quot;}]" :step="$clicks" />
 
 <!--
 The state scorer reads the account after execution and checks facts such as payment identity, refund amount, and duplicate effects. The LLM judge reads the request, actions, and final reply to assess whether the explanation is supported. These can disagree: an agent may do the right work and describe it incorrectly. An unavailable judge response stays missing.
+Visual guide: pending/checks. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 -->
 
 ---
@@ -678,7 +704,7 @@ class: exercise
 
 <div class="done"><strong>Run:</strong> Test my scorer against four known examples<br><strong>Check:</strong> Full refund passes. Partial refund, no refund, and duplicate refund fail, despite the same confident reply.</div>
 
-<a class="answer-link" href="/98">Worked answer →</a>
+<a class="answer-link" href="/99">Worked answer →</a>
 
 <!--
 Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my scorer against four known examples.
@@ -746,14 +772,17 @@ The public check_work result can influence the employee. The participant-written
 -->
 
 ---
+class: technical-manual
+clicks: 3
 ---
 
-# An installed skill must be read before it can guide the model.
+# Check whether the skill was read
 
-<SkillRead />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;saved&quot;, &quot;label&quot;: &quot;Saved&quot;, &quot;svg&quot;: &quot;01-saved.svg&quot;, &quot;caption&quot;: &quot;Did this run use the procedure you edited?&quot;, &quot;src&quot;: &quot;/guides/pending/skills/slide/01-saved.svg&quot;}, {&quot;id&quot;: &quot;read&quot;, &quot;label&quot;: &quot;Read&quot;, &quot;svg&quot;: &quot;02-read.svg&quot;, &quot;caption&quot;: &quot;Did this run use the procedure you edited?&quot;, &quot;src&quot;: &quot;/guides/pending/skills/slide/02-read.svg&quot;}, {&quot;id&quot;: &quot;request&quot;, &quot;label&quot;: &quot;Request&quot;, &quot;svg&quot;: &quot;03-request.svg&quot;, &quot;caption&quot;: &quot;Did this run use the procedure you edited?&quot;, &quot;src&quot;: &quot;/guides/pending/skills/slide/03-request.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;Did this run use the procedure you edited?&quot;, &quot;src&quot;: &quot;/guides/pending/skills/slide/04-complete.svg&quot;}]" :step="$clicks" />
 
 <!--
 build_messages lists installed skill names. read_skill returns the file contents, and my_observation appends that result to the next request. Before editing, the notebook shows skill reads from the starting tickets. If there is no read, say so. The optional free example demonstrates the named file, returned text, and next request without pretending that a model chose it. After editing, compare the actual read event and later saved request. No read means we cannot claim the skill influenced this execution. Loading it still does not prove the agent followed it; inspect the subsequent tools.
+Visual guide: pending/skills. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 -->
 
 ---
@@ -858,15 +887,17 @@ If candidate A has already issued a refund, B must not inherit that refunded acc
 -->
 
 ---
+class: technical-manual
+clicks: 4
 ---
 
-# Compare the probe results before selecting a harness.
+# Test a changed procedure on the same ticket
 
-<ImprovementBranches :level="3" />
-<div class="bottom-note">The dashed paths carry test records to Compose, which can select, combine, or retain the parent.</div>
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;parent&quot;, &quot;label&quot;: &quot;Starting harness&quot;, &quot;svg&quot;: &quot;01-parent.svg&quot;, &quot;caption&quot;: &quot;Save the instructions, skills, and original case state. Both proposals start here.&quot;, &quot;src&quot;: &quot;/guides/pending/changes/slide/01-parent.svg&quot;}, {&quot;id&quot;: &quot;candidate-a&quot;, &quot;label&quot;: &quot;Candidate A&quot;, &quot;svg&quot;: &quot;02-candidate-a.svg&quot;, &quot;caption&quot;: &quot;Review the first proposed diff, then run it on a fresh copy of the original case.&quot;, &quot;src&quot;: &quot;/guides/pending/changes/slide/02-candidate-a.svg&quot;}, {&quot;id&quot;: &quot;candidate-b&quot;, &quot;label&quot;: &quot;Candidate B&quot;, &quot;svg&quot;: &quot;03-candidate-b.svg&quot;, &quot;caption&quot;: &quot;Review the second diff and test it independently. A planned or rejected change has no assumed result.&quot;, &quot;src&quot;: &quot;/guides/pending/changes/slide/03-candidate-b.svg&quot;}, {&quot;id&quot;: &quot;decision&quot;, &quot;label&quot;: &quot;Select, combine, or retain&quot;, &quot;svg&quot;: &quot;04-decision.svg&quot;, &quot;caption&quot;: &quot;Compare the probe records. Test any new combination before adopting it. Retaining the parent leaves its source unchanged.&quot;, &quot;src&quot;: &quot;/guides/pending/changes/slide/04-decision.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;05-complete.svg&quot;, &quot;caption&quot;: &quot;Recorded final comparison: starting 4/4, manual 4/4, agent-selected 4/4. Changed behavior did not raise account correctness.&quot;, &quot;src&quot;: &quot;/guides/pending/changes/slide/05-complete.svg&quot;}]" :step="$clicks" />
 
 <!--
 Compose receives the proposed configurations and both execution records. It can choose A or B, combine parts of them, or retain the parent. Its rationale explains that choice, but the choice still needs an execution. The solid paths show versions; colors identify alternatives rather than scores.
+Visual guide: pending/changes. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 -->
 
 ---
@@ -1302,7 +1333,7 @@ def my_invoice_tool(state, account_id, invoice_id):
 
 Select the account first. Filter its payments. The returned value does not mutate state.
 
-<span class="source-link"><a href="/20">Return to the exercise →</a></span>
+<span class="source-link"><a href="/21">Return to the exercise →</a></span>
 
 <!--
 Exact semantics of teaching.ANSWERS tool. Keep optional so participants attempt the gap first.
@@ -1328,7 +1359,7 @@ def my_observation(messages, action, result):
     ]
 ```
 
-<span class="source-link"><a href="/28">Return to the exercise →</a></span>
+<span class="source-link"><a href="/29">Return to the exercise →</a></span>
 
 <!--
 Exact answer contract from teaching.py. Both dispatch paths return state/result. Handoff creates a new list.
@@ -1349,7 +1380,7 @@ if run["case_id"] == "double-charge":
 
 This development check distinguishes the four public examples. The trusted final scorer also checks the target payment and unrelated account state.
 
-<span class="source-link"><a href="/99">Continue to judge validation →</a></span> · <span class="source-link"><a href="/49">Return to exercise →</a></span>
+<span class="source-link"><a href="/100">Continue to judge validation →</a></span> · <span class="source-link"><a href="/50">Return to exercise →</a></span>
 
 <!--
 The learner check is deliberately limited. Do not describe it as the full final scorer.
@@ -1374,7 +1405,7 @@ def my_judge_validation(answer):
 
 Valid JSON can still contain an incorrect judgment. Compare the reason with the recorded work.
 
-<span class="source-link"><a href="/49">Return to the exercise →</a></span>
+<span class="source-link"><a href="/50">Return to the exercise →</a></span>
 
 <!--
 Exact semantics of teaching.ANSWERS scorer validation. Boolean strings are invalid. Empty reasons are invalid. Missing judgments stay unavailable.

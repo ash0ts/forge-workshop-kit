@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "id": "decision",
+  "title": "Choose a route, then decide whether to review it",
+  "eyebrow": "03 / Customer request routing",
+  "question": "How does the winning intent differ from the decision to defer?",
+  "summary": "A deferred request is unresolved by the automatic router, not automatically a proven routing failure.",
+  "kind": "sequence",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "scores",
+      "title": "Keep the probability columns",
+      "body": "Each probability column belongs to one class in the fitted model’s order.",
+      "input": "predict_proba output + classes_",
+      "output": "Top intent and runner-up",
+      "symbol": "columns"
+    },
+    {
+      "id": "confidence",
+      "title": "Apply the routing threshold",
+      "body": "Low top probability sends a request to a person. The threshold changes coverage; it does not retrain the classifier.",
+      "code": "return confidence < threshold",
+      "output": "Automatic route or human review",
+      "symbol": "threshold",
+      "excerpt_label": "Abbreviated code; full function in notebook.",
+      "input": "Top probability + review threshold"
+    },
+    {
+      "id": "margin",
+      "title": "Inspect the top-two margin",
+      "body": "The difference between the two largest probabilities describes ambiguity between alternatives. It is not the same as top probability.",
+      "input": "Top two class probabilities",
+      "output": "Margin for review analysis",
+      "symbol": "difference"
+    }
+  ],
+  "states": [
+    {
+      "id": "scores",
+      "label": "Scores",
+      "visible": [
+        "scores"
+      ],
+      "focus": [
+        "scores"
+      ],
+      "caption": "How does the winning intent differ from the decision to defer?"
+    },
+    {
+      "id": "confidence",
+      "label": "Confidence",
+      "visible": [
+        "scores",
+        "confidence"
+      ],
+      "focus": [
+        "confidence"
+      ],
+      "caption": "How does the winning intent differ from the decision to defer?"
+    },
+    {
+      "id": "margin",
+      "label": "Margin",
+      "visible": [
+        "scores",
+        "confidence",
+        "margin"
+      ],
+      "focus": [
+        "margin"
+      ],
+      "caption": "How does the winning intent differ from the decision to defer?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "scores",
+        "confidence",
+        "margin"
+      ],
+      "focus": [],
+      "caption": "How does the winning intent differ from the decision to defer?"
+    }
+  ]
+}

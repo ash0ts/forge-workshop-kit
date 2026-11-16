@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "id": "representations",
+  "title": "Compare whole-image and patch features",
+  "eyebrow": "04 / Circuit-board inspection",
+  "question": "Which features are shared, and what does the patch branch add?",
+  "summary": "The same board image produces a 512-value whole-image vector and a 14 × 14 × 64 patch array. The baseline uses the whole-image vector. The enriched model appends 196 log1p patch distances to those same 512 values. Masks support inspection and never enter either feature vector.",
+  "kind": "overview",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA=="
+    },
+    {
+      "label": "Frozen encoder",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection_encoder.py"
+    },
+    {
+      "label": "VisA data and license",
+      "url": "https://github.com/amazon-science/spot-diff"
+    }
+  ],
+  "steps": [
+    {
+      "id": "photo",
+      "title": "Start from one photograph",
+      "body": "The same PCB1 anomaly 048 photograph enters the frozen encoder. It returns whole-image and patch features. Supplied defect masks are for inspection only.",
+      "input": "VisA PCB1 anomaly 048 photograph",
+      "symbol": "image",
+      "media": "../media/pcb1-anomaly-048.jpg",
+      "output": "One image; two feature arrays"
+    },
+    {
+      "id": "whole",
+      "title": "Keep the whole-image baseline",
+      "body": "The encoder returns a 512-value whole-image vector. The baseline uses this vector directly. The enriched model retains these same values in the same board order.",
+      "output": "Baseline: 512 whole-image values",
+      "symbol": "vector",
+      "input": "Same board image through the frozen encoder"
+    },
+    {
+      "id": "local",
+      "title": "Measure local differences",
+      "body": "A separate encoder output has 14 × 14 locations with 64 channels each. Compare these patch features with normal fitting references, then apply log1p to the 196 distances.",
+      "output": "196 transformed patch distances",
+      "symbol": "grid",
+      "input": "14 × 14 × 64 patch array + normal fitting bank"
+    },
+    {
+      "id": "join",
+      "title": "Append the local values",
+      "body": "Keep the original 512 whole-image values. Append the 196 transformed patch distances for each matching board. The enriched classifier receives 708 values per board.",
+      "code": "local = np.log1p(error_maps).reshape(\n    len(rows), -1)\nnp.concatenate([whole, local], axis=1)",
+      "output": "Enriched: 512 + 196 = 708 values",
+      "symbol": "matrix",
+      "excerpt_label": "Abbreviated code; full function in notebook.",
+      "input": "512 whole-image values + 196 transformed distances"
+    }
+  ],
+  "states": [
+    {
+      "id": "photo",
+      "label": "Photo",
+      "visible": [
+        "photo"
+      ],
+      "focus": [
+        "photo"
+      ],
+      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs."
+    },
+    {
+      "id": "whole",
+      "label": "Whole",
+      "visible": [
+        "photo",
+        "whole"
+      ],
+      "focus": [
+        "whole"
+      ],
+      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs."
+    },
+    {
+      "id": "local",
+      "label": "Local",
+      "visible": [
+        "photo",
+        "whole",
+        "local"
+      ],
+      "focus": [
+        "local"
+      ],
+      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs."
+    },
+    {
+      "id": "join",
+      "label": "Join",
+      "visible": [
+        "photo",
+        "whole",
+        "local",
+        "join"
+      ],
+      "focus": [
+        "join"
+      ],
+      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs."
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "photo",
+        "whole",
+        "local",
+        "join"
+      ],
+      "focus": [],
+      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs."
+    }
+  ],
+  "hero": "representations-flow.svg"
+}

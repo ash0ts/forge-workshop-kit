@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "id": "checks",
+  "title": "Four checks answer different questions",
+  "eyebrow": "01 / Pending, Inc.",
+  "question": "Which check can establish that the account is correct?",
+  "summary": "Read account correctness and explanation accuracy separately.",
+  "kind": "comparison",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "agent",
+      "title": "Agent checking tool",
+      "body": "check_work is an action the employee can choose. Inspect whether it ran and how the agent used it.",
+      "output": "Observation available to the employee",
+      "symbol": "tool"
+    },
+    {
+      "id": "learner",
+      "title": "Development scorer",
+      "body": "Your state function checks the delivered account. A fluent completion message cannot satisfy a missing refund.",
+      "code": "len(refunds) == 1 and (\n    refunds[0][\"amount_cents\"] == 4900)",
+      "output": "State-based development result",
+      "symbol": "account",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "independent",
+      "title": "Independent final grader",
+      "body": "The final comparison uses the supplied grader on fresh tickets. It remains outside editable harness files.",
+      "output": "Separate final-state checks",
+      "symbol": "check"
+    },
+    {
+      "id": "judge",
+      "title": "Explanation judge",
+      "body": "The judge checks whether the message matches recorded work. Valid JSON does not establish a correct judgment.",
+      "output": "Judgment, reason, or unavailable",
+      "symbol": "message"
+    }
+  ],
+  "states": [
+    {
+      "id": "agent",
+      "label": "Agent",
+      "visible": [
+        "agent"
+      ],
+      "focus": [
+        "agent"
+      ],
+      "caption": "Which check can establish that the account is correct?"
+    },
+    {
+      "id": "learner",
+      "label": "Learner",
+      "visible": [
+        "agent",
+        "learner"
+      ],
+      "focus": [
+        "learner"
+      ],
+      "caption": "Which check can establish that the account is correct?"
+    },
+    {
+      "id": "independent",
+      "label": "Independent",
+      "visible": [
+        "agent",
+        "learner",
+        "independent"
+      ],
+      "focus": [
+        "independent"
+      ],
+      "caption": "Which check can establish that the account is correct?"
+    },
+    {
+      "id": "judge",
+      "label": "Judge",
+      "visible": [
+        "agent",
+        "learner",
+        "independent",
+        "judge"
+      ],
+      "focus": [
+        "judge"
+      ],
+      "caption": "Which check can establish that the account is correct?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "agent",
+        "learner",
+        "independent",
+        "judge"
+      ],
+      "focus": [],
+      "caption": "Which check can establish that the account is correct?"
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "id": "reproduce",
+  "title": "Recover every component of the detector",
+  "eyebrow": "04 / Circuit-board inspection",
+  "question": "What must be loaded to reproduce a board’s decision?",
+  "summary": "The classifier file alone cannot reproduce a detector that also depends on preprocessing and a normal reference bank.",
+  "kind": "overview",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA=="
+    },
+    {
+      "label": "Code for this operation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py"
+    }
+  ],
+  "steps": [
+    {
+      "id": "encoder",
+      "title": "Frozen image encoder",
+      "body": "Use the exact encoder implementation and weights, plus the recorded input preprocessing.",
+      "output": "Same image features",
+      "symbol": "processor"
+    },
+    {
+      "id": "bank",
+      "title": "Normal reference bank",
+      "body": "Restore the bank and its case identities, scaling, and patch-feature implementation.",
+      "output": "Same local distances",
+      "symbol": "dataset",
+      "code": "reference = {\n    \"bank\": data[\"patches\"][normal_rows],\n    \"case_ids\": normal_case_ids,\n}",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "classifier",
+      "title": "Classifier and cutoff",
+      "body": "Restore fitted classifier weights and the frozen threshold. Match their predictions to the saved board IDs.",
+      "output": "Same score and decision",
+      "symbol": "check"
+    }
+  ],
+  "states": [
+    {
+      "id": "encoder",
+      "label": "Encoder",
+      "visible": [
+        "encoder"
+      ],
+      "focus": [
+        "encoder"
+      ],
+      "caption": "What must be loaded to reproduce a board’s decision?"
+    },
+    {
+      "id": "bank",
+      "label": "Bank",
+      "visible": [
+        "encoder",
+        "bank"
+      ],
+      "focus": [
+        "bank"
+      ],
+      "caption": "What must be loaded to reproduce a board’s decision?"
+    },
+    {
+      "id": "classifier",
+      "label": "Classifier",
+      "visible": [
+        "encoder",
+        "bank",
+        "classifier"
+      ],
+      "focus": [
+        "classifier"
+      ],
+      "caption": "What must be loaded to reproduce a board’s decision?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "encoder",
+        "bank",
+        "classifier"
+      ],
+      "focus": [],
+      "caption": "What must be loaded to reproduce a board’s decision?"
+    }
+  ],
+  "native_capture": {
+    "media": "../media/inspection-forge-annotated.svg",
+    "original": "../media/inspection-forge-original.png",
+    "title": "The training call and returned classifier",
+    "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ff65c2eaa1cc5c5cf8adb6cb706f5f52",
+    "investigation": "Match nearest-patch, fitting count, and C to this returned classifier. These metrics use validation boards.",
+    "capture_date": null,
+    "capture_date_note": "Existing recorded capture; capture timestamp not recorded in source asset.",
+    "annotations": [
+      {
+        "number": 1,
+        "label": "Actual training inputs",
+        "field": "nearest-patch; 397 boards; C = 0.03.",
+        "source_bounds": [
+          554,
+          318,
+          550,
+          107
+        ]
+      },
+      {
+        "number": 2,
+        "label": "Saved classifier",
+        "field": "model_file and model_sha256 identify it.",
+        "source_bounds": [
+          554,
+          467,
+          550,
+          70
+        ]
+      },
+      {
+        "number": 3,
+        "label": "Validation outputs",
+        "field": "Keep misses and false alarms separate.",
+        "source_bounds": [
+          554,
+          538,
+          550,
+          170
+        ]
+      }
+    ]
+  },
+  "annotations": [
+    {
+      "number": 1,
+      "target": "bank",
+      "label": "Feature method and fitting inputs"
+    },
+    {
+      "number": 2,
+      "target": "classifier",
+      "label": "Classifier file and checksum"
+    },
+    {
+      "number": 3,
+      "target": "classifier",
+      "label": "Validation outcomes"
+    }
+  ]
+}

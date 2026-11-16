@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "coverage",
+  "kind": "sequence",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "a7a063ed319f454708670423ae3c1a73a5665aab93a9a7fdf70570c37df4d3c9",
+  "states": [
+    {
+      "id": "incoming",
+      "label": "Incoming",
+      "svg": "01-incoming.svg",
+      "caption": "What is the denominator of each monitoring number?"
+    },
+    {
+      "id": "coverage",
+      "label": "Coverage",
+      "svg": "02-coverage.svg",
+      "caption": "What is the denominator of each monitoring number?"
+    },
+    {
+      "id": "agreement",
+      "label": "Agreement",
+      "svg": "03-agreement.svg",
+      "caption": "What is the denominator of each monitoring number?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "What is the denominator of each monitoring number?"
+    }
+  ],
+  "html": "index.html"
+}

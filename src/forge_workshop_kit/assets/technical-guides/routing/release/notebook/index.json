@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "release",
+  "kind": "comparison",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "e230e1aa50160dd932d61a3a8e0389c60646ddf3eb15594a530b749760ac66e2",
+  "states": [
+    {
+      "id": "healthy",
+      "label": "Healthy",
+      "svg": "01-healthy.svg",
+      "caption": "Can the release reproduce the healthy predictor’s destinations?"
+    },
+    {
+      "id": "faulty",
+      "label": "Faulty",
+      "svg": "02-faulty.svg",
+      "caption": "Can the release reproduce the healthy predictor’s destinations?"
+    },
+    {
+      "id": "repair",
+      "label": "Repair",
+      "svg": "03-repair.svg",
+      "caption": "Can the release reproduce the healthy predictor’s destinations?"
+    },
+    {
+      "id": "result",
+      "label": "Result",
+      "svg": "04-result.svg",
+      "caption": "Can the release reproduce the healthy predictor’s destinations?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "05-complete.svg",
+      "caption": "Can the release reproduce the healthy predictor’s destinations?"
+    }
+  ],
+  "html": "index.html"
+}

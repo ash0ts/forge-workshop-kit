@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "case-changes",
+  "kind": "comparison",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "84b06152351534010753353d89e4c64c2b8a8e0cba9b50da3a71d63fb4b49b9c",
+  "states": [
+    {
+      "id": "miss",
+      "label": "Miss",
+      "svg": "01-miss.svg",
+      "caption": "Did the change help this board, and what happened elsewhere?"
+    },
+    {
+      "id": "recover",
+      "label": "Recover",
+      "svg": "02-recover.svg",
+      "caption": "Did the change help this board, and what happened elsewhere?"
+    },
+    {
+      "id": "regression",
+      "label": "Regression",
+      "svg": "03-regression.svg",
+      "caption": "Did the change help this board, and what happened elsewhere?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "Did the change help this board, and what happened elsewhere?"
+    }
+  ],
+  "html": "index.html"
+}

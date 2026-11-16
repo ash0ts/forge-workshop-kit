@@ -15,13 +15,15 @@ import json
 import time
 import marimo as mo
 from forge_workshop_kit import WorkshopSession, setup, ui, airline, airline_teaching as teaching
-from forge_workshop_kit import aria
+from forge_workshop_kit import aria, technical_guides
 from forge_workshop_kit import agent_lens, airline_calibration, airline_regression
 from forge_workshop_kit.manifest import get_workshop
 from forge_workshop_kit.session import digest
 from forge_workshop_kit.traces import event, export_trace, saved_trace_inputs
 from forge_workshop_kit.publication import publish_comparison, publish_report as write_report
 get_context, set_context = mo.state({})
+get_technical_guide_view, set_technical_guide_view = mo.state({}, allow_self_loops=True)
+technical_guide_controls = technical_guides.controls(mo, 'airline_monitoring', set_technical_guide_view)
 get_step, set_step = mo.state("setup", allow_self_loops=True)
 get_revision, set_revision = mo.state(0)
 get_output, set_output = mo.state({})
@@ -132,8 +134,12 @@ _s = get_context().get("session")
 _revision = get_revision()
 _done = teaching.completed_steps(_s)
 airline_navigation = ui.navigation(mo, STEPS, get_step(), go_to, completed=_done, label="Your monitoring shift")
-mo.vstack([mo.Html(ui.STYLE), airline_navigation, mo.Html(ui.context(_s)) if _s else mo.md("Copy this notebook into a project you can write to. Your traces and results will belong to that project.")])
+mo.vstack([mo.Html(ui.STYLE + technical_guides.theme_style()), airline_navigation, mo.Html(ui.context(_s)) if _s else mo.md("Copy this notebook into a project you can write to. Your traces and results will belong to that project.")])
 ''')
+add('''
+technical_guide_view = technical_guides.panel(mo, 'airline_monitoring', get_step(), get_technical_guide_view(), technical_guide_controls)
+technical_guide_view
+''', True, cell_id='airline_monitoring/visual_guide')
 
 add('''
 _s = get_context().get("session")

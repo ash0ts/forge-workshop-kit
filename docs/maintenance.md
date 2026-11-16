@@ -22,7 +22,7 @@ Build all templates:
 uv run --all-extras python scripts/build_release.py
 ```
 
-The command generates and checks notebooks, exports previews with credentials removed, and writes the wheel, source archive, ARIA recording bundle, and `release-manifest.json` to `dist/v<VERSION>/`. It runs no workshop exercises and publishes nothing. The manifest records file hashes and workflow identities.
+The command generates the shared visual guides, checks notebooks, exports previews with credentials removed, and writes the wheel, source archive, ARIA recording bundle, visual source bundles, and `release-manifest.json` to `dist/v<VERSION>/`. It runs no workshop exercises and publishes nothing. The manifest records file hashes and workflow identities. The poster QR encoder uses the skill's pinned Node dependencies; install them with `npm ci --prefix skills/teenage-engineering-visualizations` before a full build.
 
 For one template, use `--only request_routing`. For a scratch build that should not replace your local release directory, use `--output PATH`. Inspect the package allowlist in `pyproject.toml` whenever adding files that source archives need. Keep local journals, credentials, deployment receipts, downloaded training outputs, and operator backups out of distribution files.
 
@@ -38,7 +38,7 @@ python scripts/build_decks.py --install --pdf --validate
 
 Use `--only routing` while editing one deck. Set `CHROME_PATH` to an installed Chrome executable, or run `npx playwright install chromium` from `decks/`. The PDF checker installs its pinned maintenance dependencies through uv; those dependencies are not added to participant notebooks.
 
-Output goes to `dist/decks/site/` for the hosted site and `dist/decks/downloads/` for PDFs, offline browser decks, and editable source archives. `--output PATH` selects another root. Without `--pdf --validate`, the command builds browser copies and source archives only.
+Output goes to `dist/decks/site/` for the hosted site and `dist/decks/downloads/` for PDFs, offline browser decks, and editable source archives. The same build adds the poster gallery, standalone skill download, and shared notebook/deck figures. `--output PATH` selects another root. Without `--pdf --validate`, the command builds browser copies and source archives only. [Technical visuals](technical-visuals.md) covers individual figure builds.
 
 Validation checks slide and reveal states, Back navigation, worked-answer return links, image loading, and rendered PDF pages. Inspect the changed screens yourself as well: container bounds alone do not establish readable text or useful annotations. The [deck guide](deck-guide.md) covers presentation and the [teaching sequence](teaching-sequence.md#use-consistent-visual-conventions) defines the shared diagram conventions.
 

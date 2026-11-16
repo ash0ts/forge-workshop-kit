@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "id": "overview",
+  "title": "Find defects and measure what gets missed",
+  "eyebrow": "04 / Circuit-board inspection",
+  "question": "What will you build, and how will you know it works?",
+  "summary": "A circuit board passes inspection even though a small defect is visible. Test whether local image features recover it, and inspect the new mistakes that change introduces.",
+  "kind": "overview",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "board",
+      "title": "Inspect a board",
+      "body": "Look at a real PCB photograph.",
+      "symbol": "image"
+    },
+    {
+      "id": "features",
+      "title": "Build features",
+      "body": "Compare whole-image and patch information.",
+      "symbol": "grid"
+    },
+    {
+      "id": "decision",
+      "title": "Choose a cutoff",
+      "body": "Count misses and false alarms together.",
+      "symbol": "threshold"
+    },
+    {
+      "id": "recover",
+      "title": "Reproduce the detector",
+      "body": "Load its exact saved components.",
+      "symbol": "files"
+    }
+  ],
+  "states": [
+    {
+      "id": "board",
+      "label": "Board",
+      "visible": [
+        "board"
+      ],
+      "focus": [
+        "board"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "features",
+      "label": "Features",
+      "visible": [
+        "board",
+        "features"
+      ],
+      "focus": [
+        "features"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "decision",
+      "label": "Decision",
+      "visible": [
+        "board",
+        "features",
+        "decision"
+      ],
+      "focus": [
+        "decision"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "recover",
+      "label": "Recover",
+      "visible": [
+        "board",
+        "features",
+        "decision",
+        "recover"
+      ],
+      "focus": [
+        "recover"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "board",
+        "features",
+        "decision",
+        "recover"
+      ],
+      "focus": [],
+      "caption": "What will you build, and how will you know it works?"
+    }
+  ],
+  "hero": "hero.svg"
+}

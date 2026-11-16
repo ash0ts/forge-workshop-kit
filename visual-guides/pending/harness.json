@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "id": "harness",
+  "title": "What controls the employee?",
+  "eyebrow": "01 / Pending, Inc.",
+  "question": "Which part would you change to make the next action different?",
+  "summary": "An instruction, a schema, a Python function, and a message history affect different parts of execution.",
+  "kind": "overview",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "model",
+      "title": "Model and instructions",
+      "body": "The model stays fixed. The system instructions describe the task and rules.",
+      "input": "Customer request + system instructions",
+      "output": "Selected action",
+      "symbol": "processor"
+    },
+    {
+      "id": "tools",
+      "title": "Schema and implementation",
+      "body": "The schema makes an action available. Your Python function determines what it does.",
+      "code": "account = state[\"accounts\"][account_id]",
+      "input": "account_id, invoice_id",
+      "output": "Requested account’s records",
+      "symbol": "tool",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "skill",
+      "title": "Skills and messages",
+      "body": "Saving a skill does not put it in context. An actual read must add its text to a later request.",
+      "input": "Available skill name",
+      "output": "Loaded text, only if read",
+      "symbol": "file"
+    }
+  ],
+  "states": [
+    {
+      "id": "model",
+      "label": "Model",
+      "visible": [
+        "model"
+      ],
+      "focus": [
+        "model"
+      ],
+      "caption": "Which part would you change to make the next action different?"
+    },
+    {
+      "id": "tools",
+      "label": "Tools",
+      "visible": [
+        "model",
+        "tools"
+      ],
+      "focus": [
+        "tools"
+      ],
+      "caption": "Which part would you change to make the next action different?"
+    },
+    {
+      "id": "skill",
+      "label": "Skill",
+      "visible": [
+        "model",
+        "tools",
+        "skill"
+      ],
+      "focus": [
+        "skill"
+      ],
+      "caption": "Which part would you change to make the next action different?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "model",
+        "tools",
+        "skill"
+      ],
+      "focus": [],
+      "caption": "Which part would you change to make the next action different?"
+    }
+  ]
+}

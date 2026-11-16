@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "overview",
+  "kind": "overview",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "e70c545f13b67b295d4935893c9d2ae963c4973eabbe4361023611587c8f35c9",
+  "states": [
+    {
+      "id": "schedule",
+      "label": "Schedule",
+      "svg": "01-schedule.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "build",
+      "label": "Build",
+      "svg": "02-build.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "integrate",
+      "label": "Integrate",
+      "svg": "03-integrate.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "lesson",
+      "label": "Lesson",
+      "svg": "04-lesson.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "05-complete.svg",
+      "caption": "What will you build, and how will you know it works?"
+    }
+  ],
+  "html": "index.html"
+}

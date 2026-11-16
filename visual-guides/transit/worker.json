@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "id": "worker",
+  "title": "Return a tool result to the coding worker",
+  "eyebrow": "05 / Transit software factory",
+  "question": "How does an agent know what happened after it edits a file?",
+  "summary": "Open one worker’s Agent Lens trace and match its selected operation to the returned observation.",
+  "kind": "sequence",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory_teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "request",
+      "title": "Give it assigned work",
+      "body": "Build the request from the approved task, interface contract, current files, and selected lessons.",
+      "output": "Explicit worker context",
+      "symbol": "message"
+    },
+    {
+      "id": "operation",
+      "title": "Dispatch one allowed operation",
+      "body": "Read the returned action name, reject unknown operations, and call exactly the selected tool.",
+      "code": "name = action[\"action\"]\nreturn tools[name](action)",
+      "output": "Actual read, edit, or test observation",
+      "symbol": "tool",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "next",
+      "title": "Let the result affect the next request",
+      "body": "A failing test is an observation to investigate. Preserve it alongside the patch and actual worker identity.",
+      "output": "Next request includes the result",
+      "symbol": "message"
+    },
+    {
+      "id": "submit",
+      "title": "Review the patch",
+      "body": "Submitted work has not yet passed combined application checks. Review and integrate it separately.",
+      "output": "Submitted patch, not yet integrated",
+      "symbol": "patch"
+    }
+  ],
+  "states": [
+    {
+      "id": "request",
+      "label": "Request",
+      "visible": [
+        "request"
+      ],
+      "focus": [
+        "request"
+      ],
+      "caption": "How does an agent know what happened after it edits a file?"
+    },
+    {
+      "id": "operation",
+      "label": "Operation",
+      "visible": [
+        "request",
+        "operation"
+      ],
+      "focus": [
+        "operation"
+      ],
+      "caption": "How does an agent know what happened after it edits a file?"
+    },
+    {
+      "id": "next",
+      "label": "Next",
+      "visible": [
+        "request",
+        "operation",
+        "next"
+      ],
+      "focus": [
+        "next"
+      ],
+      "caption": "How does an agent know what happened after it edits a file?"
+    },
+    {
+      "id": "submit",
+      "label": "Submit",
+      "visible": [
+        "request",
+        "operation",
+        "next",
+        "submit"
+      ],
+      "focus": [
+        "submit"
+      ],
+      "caption": "How does an agent know what happened after it edits a file?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "request",
+        "operation",
+        "next",
+        "submit"
+      ],
+      "focus": [],
+      "caption": "How does an agent know what happened after it edits a file?"
+    }
+  ]
+}

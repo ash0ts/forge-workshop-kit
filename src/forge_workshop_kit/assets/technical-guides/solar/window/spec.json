@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "id": "window",
+  "title": "Construct one forecast window",
+  "eyebrow": "02 / Solar Autoresearch",
+  "question": "Which values are observations, and which one is the future target?",
+  "summary": "The selected timestamp must identify the same history, target, and prediction in every panel.",
+  "kind": "sequence",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/solar/candidate.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg=="
+    },
+    {
+      "label": "Data acquisition and partitions",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-contract.md"
+    },
+    {
+      "label": "GOES window construction and scaling",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/solar.py"
+    }
+  ],
+  "steps": [
+    {
+      "id": "history",
+      "title": "Previous hour",
+      "body": "The GOES input contains the observed history. A gap invalidates a window rather than becoming an invented reading.",
+      "input": "60 observed samples",
+      "output": "History through time t",
+      "symbol": "series",
+      "media": "../media/solar-forecast-window.png"
+    },
+    {
+      "id": "target",
+      "title": "Separate target and baseline",
+      "body": "The observed target is XRS-B at t + 30 minutes. Persistence copies the latest observation as its prediction. The future reading stays outside the input.",
+      "code": "return split[\"persistence\"].copy()",
+      "input": "Latest observed reading",
+      "output": "Prediction for t + 30 minutes",
+      "symbol": "timeline",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "scale",
+      "title": "Normalize the input history",
+      "body": "Use log10 flux and fit input mean and scale on training dates. Validation and final histories reuse them. Targets and persistence remain in log10 flux units.",
+      "input": "History + training mean and scale",
+      "output": "Standardized model input",
+      "symbol": "transform"
+    }
+  ],
+  "states": [
+    {
+      "id": "history",
+      "label": "History",
+      "visible": [
+        "history"
+      ],
+      "focus": [
+        "history"
+      ],
+      "caption": "Which values are observations, and which one is the future target?"
+    },
+    {
+      "id": "target",
+      "label": "Target",
+      "visible": [
+        "history",
+        "target"
+      ],
+      "focus": [
+        "target"
+      ],
+      "caption": "Which values are observations, and which one is the future target?"
+    },
+    {
+      "id": "scale",
+      "label": "Scale",
+      "visible": [
+        "history",
+        "target",
+        "scale"
+      ],
+      "focus": [
+        "scale"
+      ],
+      "caption": "Which values are observations, and which one is the future target?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "history",
+        "target",
+        "scale"
+      ],
+      "focus": [],
+      "caption": "Which values are observations, and which one is the future target?"
+    }
+  ]
+}

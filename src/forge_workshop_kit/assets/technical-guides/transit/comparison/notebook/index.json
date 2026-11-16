@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "id": "comparison",
+  "kind": "comparison",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "58767b68da536a0327f869b8824109ba3de2044ebf51e04ad8fe6a3ba8499b35",
+  "states": [
+    {
+      "id": "match",
+      "label": "Match",
+      "svg": "01-match.svg",
+      "caption": "Which outcome supports the claim that the team or lesson helped?"
+    },
+    {
+      "id": "initial",
+      "label": "Initial",
+      "svg": "02-initial.svg",
+      "caption": "Which outcome supports the claim that the team or lesson helped?"
+    },
+    {
+      "id": "memory",
+      "label": "Memory",
+      "svg": "03-memory.svg",
+      "caption": "Which outcome supports the claim that the team or lesson helped?"
+    },
+    {
+      "id": "release",
+      "label": "Release",
+      "svg": "04-release.svg",
+      "caption": "Which outcome supports the claim that the team or lesson helped?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "05-complete.svg",
+      "caption": "Which outcome supports the claim that the team or lesson helped?"
+    },
+    {
+      "id": "native-capture",
+      "label": "The exact solo release and its files",
+      "svg": "06-native-capture.svg",
+      "caption": "Find sources, source_fingerprint, and checksums. Download the artifact because long source lines are truncated in this view."
+    }
+  ],
+  "html": "index.html"
+}

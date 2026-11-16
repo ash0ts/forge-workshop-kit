@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "service-time",
+  "kind": "transformation",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "fb88511f395184c5c518c7ad0649d9452972446024c74ab43015d7970848bab1",
+  "states": [
+    {
+      "id": "join",
+      "label": "Join",
+      "svg": "01-join.svg",
+      "caption": "Which date belongs to this departure?"
+    },
+    {
+      "id": "gtfs",
+      "label": "Gtfs",
+      "svg": "02-gtfs.svg",
+      "caption": "Which date belongs to this departure?"
+    },
+    {
+      "id": "civil",
+      "label": "Civil",
+      "svg": "03-civil.svg",
+      "caption": "Which date belongs to this departure?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "Which date belongs to this departure?"
+    }
+  ],
+  "html": "index.html"
+}

@@ -1,7 +1,8 @@
 {
-  "source_sha256": "02efa396a12f6c4e45b2ee31356dd0be88e469fe61fc3c2dee01c24ad75f6eaf",
-  "slides_checked": 129,
-  "expected_slides": 129,
+  "source_sha256": "5a355ee9bfbafd78b07aa7eaf02caf28488445d7b016b192b7f67984a34ebede",
+  "preflight_only": false,
+  "slides_checked": 130,
+  "expected_slides": 130,
   "titles": [
     {
       "number": 1,
@@ -10,641 +11,646 @@
     },
     {
       "number": 2,
+      "key": "technical-overview",
+      "title": "What you will build and inspect"
+    },
+    {
+      "number": 3,
       "key": "arrival",
       "title": "The lab needs a forecast for its weekly review"
     },
     {
-      "number": 3,
+      "number": 4,
       "key": "assignment",
       "title": "What the satellites recorded"
     },
     {
-      "number": 4,
+      "number": 5,
       "key": "path",
       "title": "What one forecast example contains"
     },
     {
-      "number": 5,
+      "number": 6,
       "key": "research-question",
       "title": "Bring a comparison your colleagues can repeat"
     },
     {
-      "number": 6,
+      "number": 7,
       "key": "copy",
       "title": "Copy the notebook into your Forge project"
     },
     {
-      "number": 7,
+      "number": 8,
       "key": "setup-screen",
       "title": "Copy the notebook into the project you will use"
     },
     {
-      "number": 8,
+      "number": 9,
       "key": "local",
       "title": "Run the same notebook on your laptop"
     },
     {
-      "number": 9,
+      "number": 10,
       "key": "settings",
       "title": "Check the compute and inference settings"
     },
     {
-      "number": 10,
+      "number": 11,
       "key": "trace-scopes",
       "title": "Wrap one operation, then inspect what you recorded"
     },
     {
-      "number": 11,
+      "number": 12,
       "key": "setup-turn",
       "title": "Connect and inspect your first tool call"
     },
     {
-      "number": 12,
+      "number": 13,
       "key": "instrumentation-screen",
       "title": "Find the field your code added to the span"
     },
     {
-      "number": 13,
+      "number": 14,
       "key": "goes-window",
-      "title": "Predict X-ray flux 30 minutes ahead"
+      "title": "Construct one forecast window"
     },
     {
-      "number": 14,
+      "number": 15,
       "key": "goes-actual-window",
       "title": "Read the arrays for that same forecast"
     },
     {
-      "number": 15,
+      "number": 16,
       "key": "chronology",
       "title": "Use different dates to fit, choose, and evaluate"
     },
     {
-      "number": 16,
+      "number": 17,
       "key": "window-validity",
       "title": "Keep the whole example inside one date split"
     },
     {
-      "number": 17,
+      "number": 18,
       "key": "goes-normalization",
       "title": "Normalize the inputs without changing the target units"
     },
     {
-      "number": 18,
+      "number": 19,
       "key": "normalization-values",
       "title": "Calculate the value the model receives"
     },
     {
-      "number": 19,
+      "number": 20,
       "key": "sunpy",
       "title": "Inspect a solar observation with SunPy"
     },
     {
-      "number": 20,
+      "number": 21,
       "key": "data-turn",
       "title": "Inspect the observations before training"
     },
     {
-      "number": 21,
+      "number": 22,
       "key": "persistence",
       "title": "Start by copying the latest reading"
     },
     {
-      "number": 22,
+      "number": 23,
       "key": "metric",
       "title": "Measure how far the prediction missed"
     },
     {
-      "number": 23,
+      "number": 24,
       "key": "actual-baseline-error",
       "title": "Score the forecast we just made"
     },
     {
-      "number": 24,
+      "number": 25,
       "key": "persistence-turn",
       "title": "Write and test persistence"
     },
     {
-      "number": 25,
+      "number": 26,
       "key": "number",
       "title": "Save what changed between runs"
     },
     {
-      "number": 26,
+      "number": 27,
       "key": "run-inspector",
       "title": "Which setting changed between these runs?"
     },
     {
-      "number": 27,
+      "number": 28,
       "key": "run-inspector-reveal",
       "title": "These runs used different learning rates"
     },
     {
-      "number": 28,
+      "number": 29,
       "key": "independent",
       "title": "Use the same scoring rule for every model"
     },
     {
-      "number": 29,
-      "key": "stage",
-      "title": "Save code and outputs with each training run"
-    },
-    {
       "number": 30,
-      "key": "training-step",
-      "title": "What changes during one training step"
+      "key": "stage",
+      "title": "Keep the experiment and its outputs together"
     },
     {
       "number": 31,
+      "key": "training-step",
+      "title": "Turn a prediction error into a weight update"
+    },
+    {
+      "number": 32,
       "key": "gradient-arithmetic",
       "title": "Use the error to decide which way a weight should move"
     },
     {
-      "number": 32,
+      "number": 33,
       "key": "optimizer-code",
       "title": "Separate prediction, gradients and the optimizer step"
     },
     {
-      "number": 33,
+      "number": 34,
       "key": "validation-code",
       "title": "Validation measures the current weights without fitting them"
     },
     {
-      "number": 34,
+      "number": 35,
       "key": "artifacts",
       "title": "Restore a completed run after a restart"
     },
     {
-      "number": 35,
+      "number": 36,
       "key": "break-one",
       "title": "Take a fifteen-minute break"
     },
     {
-      "number": 36,
+      "number": 37,
       "key": "search-levels",
       "title": "Changing settings, choosing models, and editing code"
     },
     {
-      "number": 37,
+      "number": 38,
       "key": "batch-shapes",
-      "title": "Read the batch, channel and time axes"
+      "title": "Follow the tensor through the model"
     },
     {
-      "number": 38,
+      "number": 39,
       "key": "batch-indexing",
       "title": "Keep each prediction paired with its own target"
     },
     {
-      "number": 39,
+      "number": 40,
       "key": "goes-mlp",
       "title": "How the MLP uses an hour of measurements"
     },
     {
-      "number": 40,
+      "number": 41,
       "key": "one-neuron",
       "title": "Calculate one hidden unit before adding the whole layer"
     },
     {
-      "number": 41,
+      "number": 42,
       "key": "goes-cnn",
       "title": "How the temporal CNN uses the same measurements"
     },
     {
-      "number": 42,
+      "number": 43,
       "key": "convolution-weights",
       "title": "Reuse one filter at each time position"
     },
     {
-      "number": 43,
+      "number": 44,
       "key": "parameter-code",
       "title": "Choose settings separately from the weights being learned"
     },
     {
-      "number": 44,
+      "number": 45,
       "key": "tracking-turn",
       "title": "Write the loss and metric"
     },
     {
-      "number": 45,
+      "number": 46,
       "key": "configs",
       "title": "Compare six model configurations"
     },
     {
-      "number": 46,
+      "number": 47,
       "key": "sweep",
       "title": "Run the configurations through W&B Sweeps"
     },
     {
-      "number": 47,
+      "number": 48,
       "key": "native-sweep",
       "title": "Compare the six configurations in Forge"
     },
     {
-      "number": 48,
+      "number": 49,
       "key": "learning-curve",
       "title": "Check whether the model has finished learning"
     },
     {
-      "number": 49,
+      "number": 50,
       "key": "search-turn",
       "title": "Inspect one trial before running the rest"
     },
     {
-      "number": 50,
+      "number": 51,
       "key": "goes-repair-turn",
       "title": "Diagnose the forecast before opening the repair"
     },
     {
-      "number": 51,
+      "number": 52,
       "key": "aria-investigate",
       "title": "Investigate this result"
     },
     {
-      "number": 52,
+      "number": 53,
       "key": "aria-investigate-response",
       "title": "Read one claim in the recorded response"
     },
     {
-      "number": 53,
+      "number": 54,
       "key": "aria-investigate-verify",
       "title": "Open the source and check that claim"
     },
     {
-      "number": 54,
+      "number": 55,
       "key": "images-window",
       "title": "Predict the solar image one hour ahead"
     },
     {
-      "number": 55,
+      "number": 56,
       "key": "persistence-image",
       "title": "See exactly which images become input and target"
     },
     {
-      "number": 56,
+      "number": 57,
       "key": "image-units",
       "title": "Put image inputs and targets in the same units"
     },
     {
-      "number": 57,
+      "number": 58,
       "key": "image-batch",
       "title": "Keep the two image times in separate channels"
     },
     {
-      "number": 58,
+      "number": 59,
       "key": "conv",
       "title": "Predicting the future image with a small CNN"
     },
     {
-      "number": 59,
+      "number": 60,
       "key": "residual",
       "title": "Predict a correction to the current image"
     },
     {
-      "number": 60,
+      "number": 61,
       "key": "residual-code",
       "title": "Implement the residual predictor’s forward pass"
     },
     {
-      "number": 61,
+      "number": 62,
       "key": "residual-observed",
       "title": "Inspect the correction produced by the saved model"
     },
     {
-      "number": 62,
+      "number": 63,
       "key": "image-score",
       "title": "Measure prediction error inside the solar disk"
     },
     {
-      "number": 63,
+      "number": 64,
       "key": "image-score-code",
       "title": "Check the image scorer on three known errors"
     },
     {
-      "number": 64,
+      "number": 65,
       "key": "equal-image-average",
       "title": "Give each forecast image one score"
     },
     {
-      "number": 65,
+      "number": 66,
       "key": "loss",
       "title": "Training loss and evaluation error have different jobs"
     },
     {
-      "number": 66,
+      "number": 67,
       "key": "image-code-screen",
       "title": "Compare forecasts for the same validation case"
     },
     {
-      "number": 67,
+      "number": 68,
       "key": "image-turn",
       "title": "Implement and compare the image predictors"
     },
     {
-      "number": 68,
+      "number": 69,
       "key": "meal-break",
       "title": "Pause for thirty minutes before the research-agent exercise"
     },
     {
-      "number": 69,
+      "number": 70,
       "key": "agent-need",
       "title": "Use the experiment to test agent-written changes"
     },
     {
-      "number": 70,
+      "number": 71,
       "key": "weights",
       "title": "Which model is being trained?"
     },
     {
-      "number": 71,
+      "number": 72,
       "key": "boundaries",
       "title": "Limit edits to the model and training code"
     },
     {
-      "number": 72,
+      "number": 73,
       "key": "agent-context",
       "title": "Give each program only the data it needs"
     },
     {
-      "number": 73,
+      "number": 74,
       "key": "research-tool-result",
       "title": "Gather validation evidence before requesting a proposal"
     },
     {
-      "number": 74,
+      "number": 75,
       "key": "evidence",
       "title": "Give the agent the inputs needed to explain a run"
     },
     {
-      "number": 75,
+      "number": 76,
       "key": "agent-span",
       "title": "Follow the agent’s work in Agent Lens"
     },
     {
-      "number": 76,
+      "number": 77,
       "key": "native-lens",
       "title": "Read the evidence that went into the proposal"
     },
     {
-      "number": 77,
+      "number": 78,
       "key": "evidence-turn",
       "title": "Choose the evidence for the research agent"
     },
     {
-      "number": 78,
+      "number": 79,
       "key": "propose",
       "title": "Ask for two changes to the same starting code"
     },
     {
-      "number": 79,
+      "number": 80,
       "key": "native-diff",
       "title": "The first proposal changes one loss operation"
     },
     {
-      "number": 80,
+      "number": 81,
       "key": "loss-change-effect",
       "title": "The loss edit changes which errors receive larger gradients"
     },
     {
-      "number": 81,
+      "number": 82,
       "key": "probe",
       "title": "Train and score each candidate"
     },
     {
-      "number": 82,
+      "number": 83,
       "key": "compose",
-      "title": "Choose or combine changes using the probe results"
+      "title": "Test the research agent’s code changes"
     },
     {
-      "number": 83,
+      "number": 84,
       "key": "test-composed",
       "title": "Train the composed version before adopting it"
     },
     {
-      "number": 84,
+      "number": 85,
       "key": "composition-versus-adoption",
       "title": "Test the recommendation before carrying it forward"
     },
     {
-      "number": 85,
+      "number": 86,
       "key": "adoption-rule",
       "title": "Adopt the tested code only if validation error is lower"
     },
     {
-      "number": 86,
+      "number": 87,
       "key": "native-training",
       "title": "Open the training call behind the chosen version"
     },
     {
-      "number": 87,
+      "number": 88,
       "key": "recorded-code",
       "title": "Round 2: start the correction at zero"
     },
     {
-      "number": 88,
+      "number": 89,
       "key": "zero-head",
       "title": "Zero initialization applies only to the output layer"
     },
     {
-      "number": 89,
+      "number": 90,
       "key": "zero-head-gradients",
       "title": "Zeroing the last layer still allows learning"
     },
     {
-      "number": 90,
+      "number": 91,
       "key": "repeat",
       "title": "Use the selected code and results in round two"
     },
     {
-      "number": 91,
+      "number": 92,
       "key": "round1-turn",
       "title": "Propose and test two changes"
     },
     {
-      "number": 92,
+      "number": 93,
       "key": "round2-turn",
       "title": "Test the selected code, then begin round two"
     },
     {
-      "number": 93,
+      "number": 94,
       "key": "branch-inspect",
       "title": "Follow one proposal through the branch diagram"
     },
     {
-      "number": 94,
+      "number": 95,
       "key": "break-two",
       "title": "Take ten minutes before opening the final dates"
     },
     {
-      "number": 95,
+      "number": 96,
       "key": "freeze",
       "title": "Keep the selected code and weights fixed for final evaluation"
     },
     {
-      "number": 96,
+      "number": 97,
       "key": "frozen-code",
       "title": "Load the saved weights to make final predictions"
     },
     {
-      "number": 97,
+      "number": 98,
       "key": "aligned",
       "title": "Match each prediction to the same observation times"
     },
     {
-      "number": 98,
+      "number": 99,
       "key": "final-turn",
       "title": "Test the selected models on reserved dates"
     },
     {
-      "number": 99,
+      "number": 100,
       "key": "recorded-final",
       "title": "In this rehearsal, image error fell 10.15%"
     },
     {
-      "number": 100,
+      "number": 101,
       "key": "recorded-image",
       "title": "Compare the two models on one reserved-date image"
     },
     {
-      "number": 101,
+      "number": 102,
       "key": "qualified-images",
       "title": "The image edits helped two seeds and slightly hurt one"
     },
     {
-      "number": 102,
+      "number": 103,
       "key": "repeatability",
       "title": "The same image edit helped two seeds and hurt one"
     },
     {
-      "number": 103,
+      "number": 104,
       "key": "recorded-goes",
       "title": "The GOES model performed worse than persistence"
     },
     {
-      "number": 104,
+      "number": 105,
       "key": "qualified-goes",
       "title": "The measurement repair passed its three-seed check"
     },
     {
-      "number": 105,
+      "number": 106,
       "key": "result-meaning",
       "title": "Compare forecasts for the same timestamp"
     },
     {
-      "number": 106,
+      "number": 107,
       "key": "native-forecast",
       "title": "Compare errors for one observed future image"
     },
     {
-      "number": 107,
+      "number": 108,
       "key": "reproduce",
       "title": "Check that the saved source contains both selected edits"
     },
     {
-      "number": 108,
+      "number": 109,
       "key": "aria-conclusion",
       "title": "Check our conclusion"
     },
     {
-      "number": 109,
+      "number": 110,
       "key": "aria-conclusion-response",
       "title": "Read one claim in the recorded response"
     },
     {
-      "number": 110,
+      "number": 111,
       "key": "aria-conclusion-verify",
       "title": "Open the source and check that claim"
     },
     {
-      "number": 111,
+      "number": 112,
       "key": "conclusion-turn",
       "title": "Write down what changed and whether it helped"
     },
     {
-      "number": 112,
+      "number": 113,
       "key": "close",
       "title": "Bring the results to the lab review"
     },
     {
-      "number": 113,
+      "number": 114,
       "key": "reference",
       "title": "Reference and worked answers"
     },
     {
-      "number": 114,
+      "number": 115,
       "key": "answer-trace",
       "title": "Put the attribute inside the tool scope"
     },
     {
-      "number": 115,
+      "number": 116,
       "key": "answer-persistence",
       "title": "Return a copy of the latest observation"
     },
     {
-      "number": 116,
+      "number": 117,
       "key": "answer-flux",
       "title": "Implement the training loss and forecast metric"
     },
     {
-      "number": 117,
+      "number": 118,
       "key": "answer-search",
       "title": "Compare the settings and loss curves"
     },
     {
-      "number": 118,
+      "number": 119,
       "key": "goes-repair-code",
       "title": "Let the model learn a correction to persistence"
     },
     {
-      "number": 119,
+      "number": 120,
       "key": "answer-images",
       "title": "Average the error inside the disk mask"
     },
     {
-      "number": 120,
+      "number": 121,
       "key": "answer-residual",
       "title": "Add the correction to input channel 1"
     },
     {
-      "number": 121,
+      "number": 122,
       "key": "answer-evidence",
       "title": "Return validation evidence only"
     },
     {
-      "number": 122,
+      "number": 123,
       "key": "answer-controller",
       "title": "Pass the candidate’s code to training"
     },
     {
-      "number": 123,
+      "number": 124,
       "key": "answer-final",
       "title": "Use the saved model without training it again"
     },
     {
-      "number": 124,
+      "number": 125,
       "key": "recorded-edit",
       "title": "Round 1: absolute loss versus the unchanged model"
     },
     {
-      "number": 125,
+      "number": 126,
       "key": "recorded-keep",
       "title": "Round 2: sampling without replacement did not reduce error"
     },
     {
-      "number": 126,
+      "number": 127,
       "key": "recorded-lens",
       "title": "Open the recorded research conversation"
     },
     {
-      "number": 127,
+      "number": 128,
       "key": "recovery",
       "title": "When a service is unavailable"
     },
     {
-      "number": 128,
+      "number": 129,
       "key": "schedule",
       "title": "Six-hour session with three breaks"
     },
     {
-      "number": 129,
+      "number": 130,
       "key": "links",
       "title": "Keep working in your own project"
     }
@@ -656,7 +662,88 @@
     },
     {
       "slide": 2,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/overview/slide/01-observations.svg",
+        "alt": "Observations: What will you build, and how will you know it works?",
+        "frameId": "observations",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/overview/slide/02-baseline.svg",
+        "alt": "Baseline: What will you build, and how will you know it works?",
+        "frameId": "baseline",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/overview/slide/03-experiment.svg",
+        "alt": "Experiment: What will you build, and how will you know it works?",
+        "frameId": "experiment",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/overview/slide/04-research.svg",
+        "alt": "Research: What will you build, and how will you know it works?",
+        "frameId": "research",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/overview/slide/05-complete.svg",
+        "alt": "Complete view: What will you build, and how will you know it works?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 3,
@@ -691,94 +778,138 @@
       "click": 0
     },
     {
-      "slide": 10,
-      "click": 1
-    },
-    {
-      "slide": 10,
-      "click": 2
-    },
-    {
-      "slide": 10,
-      "click": 3
-    },
-    {
       "slide": 11,
       "click": 0
     },
     {
-      "slide": 12,
-      "click": 0
-    },
-    {
-      "slide": 12,
+      "slide": 11,
       "click": 1
     },
     {
-      "slide": 12,
+      "slide": 11,
       "click": 2
     },
     {
-      "slide": 13,
-      "click": 0
-    },
-    {
-      "slide": 13,
-      "click": 1
-    },
-    {
-      "slide": 13,
-      "click": 2
-    },
-    {
-      "slide": 14,
-      "click": 0
-    },
-    {
-      "slide": 14,
-      "click": 1
-    },
-    {
-      "slide": 14,
-      "click": 2
-    },
-    {
-      "slide": 14,
+      "slide": 11,
       "click": 3
+    },
+    {
+      "slide": 12,
+      "click": 0
+    },
+    {
+      "slide": 13,
+      "click": 0
+    },
+    {
+      "slide": 13,
+      "click": 1
+    },
+    {
+      "slide": 13,
+      "click": 2
+    },
+    {
+      "slide": 14,
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/window/slide/01-history.svg",
+        "alt": "History: Which values are observations, and which one is the future target?",
+        "frameId": "history",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 14,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/window/slide/02-target.svg",
+        "alt": "Target: Which values are observations, and which one is the future target?",
+        "frameId": "target",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 14,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/window/slide/03-scale.svg",
+        "alt": "Scale: Which values are observations, and which one is the future target?",
+        "frameId": "scale",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 14,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/window/slide/04-complete.svg",
+        "alt": "Complete view: Which values are observations, and which one is the future target?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 15,
       "click": 0
     },
     {
-      "slide": 16,
-      "click": 0
-    },
-    {
-      "slide": 16,
+      "slide": 15,
       "click": 1
     },
     {
-      "slide": 16,
+      "slide": 15,
       "click": 2
     },
     {
-      "slide": 17,
-      "click": 0
-    },
-    {
-      "slide": 17,
-      "click": 1
-    },
-    {
-      "slide": 17,
-      "click": 2
-    },
-    {
-      "slide": 17,
+      "slide": 15,
       "click": 3
     },
     {
+      "slide": 16,
+      "click": 0
+    },
+    {
+      "slide": 17,
+      "click": 0
+    },
+    {
+      "slide": 17,
+      "click": 1
+    },
+    {
+      "slide": 17,
+      "click": 2
+    },
+    {
       "slide": 18,
       "click": 0
     },
@@ -789,10 +920,22 @@
     {
       "slide": 18,
       "click": 2
+    },
+    {
+      "slide": 18,
+      "click": 3
     },
     {
       "slide": 19,
       "click": 0
+    },
+    {
+      "slide": 19,
+      "click": 1
+    },
+    {
+      "slide": 19,
+      "click": 2
     },
     {
       "slide": 20,
@@ -811,16 +954,16 @@
       "click": 0
     },
     {
-      "slide": 23,
-      "click": 1
-    },
-    {
-      "slide": 23,
-      "click": 2
+      "slide": 24,
+      "click": 0
     },
     {
       "slide": 24,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 24,
+      "click": 2
     },
     {
       "slide": 25,
@@ -843,44 +986,174 @@
       "click": 0
     },
     {
-      "slide": 29,
-      "click": 1
-    },
-    {
-      "slide": 29,
-      "click": 2
-    },
-    {
-      "slide": 29,
-      "click": 3
+      "slide": 30,
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/run-record/slide/01-inputs.svg",
+        "alt": "Inputs: Could someone reproduce this prediction from the saved run?",
+        "frameId": "inputs",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
     },
     {
       "slide": 30,
-      "click": 0
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/run-record/slide/02-execution.svg",
+        "alt": "Execution: Could someone reproduce this prediction from the saved run?",
+        "frameId": "execution",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
     },
     {
       "slide": 30,
-      "click": 1
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/run-record/slide/03-publish.svg",
+        "alt": "Publish: Could someone reproduce this prediction from the saved run?",
+        "frameId": "publish",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
     },
     {
       "slide": 30,
-      "click": 2
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/run-record/slide/04-complete.svg",
+        "alt": "Complete view: Could someone reproduce this prediction from the saved run?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
     },
     {
       "slide": 30,
-      "click": 3
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/run-record/slide/05-native-capture.svg",
+        "alt": "Files from one recorded training execution: Find candidate.py, predictions.npy, and weights.pt in the same artifact version.",
+        "frameId": "native-capture",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 31,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/learning/slide/01-loss.svg",
+        "alt": "Loss: Which operation changes forecasting weights?",
+        "frameId": "loss",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
     },
     {
       "slide": 31,
-      "click": 1
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/learning/slide/02-update.svg",
+        "alt": "Update: Which operation changes forecasting weights?",
+        "frameId": "update",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
     },
     {
       "slide": 31,
-      "click": 2
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/learning/slide/03-validation.svg",
+        "alt": "Validation: Which operation changes forecasting weights?",
+        "frameId": "validation",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 31,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/learning/slide/04-failure.svg",
+        "alt": "Failure: Which operation changes forecasting weights?",
+        "frameId": "failure",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 31,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/learning/slide/05-complete.svg",
+        "alt": "Complete view: Which operation changes forecasting weights?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 32,
@@ -895,28 +1168,36 @@
       "click": 2
     },
     {
-      "slide": 32,
+      "slide": 33,
+      "click": 0
+    },
+    {
+      "slide": 33,
+      "click": 1
+    },
+    {
+      "slide": 33,
+      "click": 2
+    },
+    {
+      "slide": 33,
       "click": 3
     },
     {
-      "slide": 32,
+      "slide": 33,
       "click": 4
-    },
-    {
-      "slide": 33,
-      "click": 0
-    },
-    {
-      "slide": 33,
-      "click": 1
-    },
-    {
-      "slide": 33,
-      "click": 2
     },
     {
       "slide": 34,
       "click": 0
+    },
+    {
+      "slide": 34,
+      "click": 1
+    },
+    {
+      "slide": 34,
+      "click": 2
     },
     {
       "slide": 35,
@@ -931,40 +1212,84 @@
       "click": 0
     },
     {
-      "slide": 37,
-      "click": 1
-    },
-    {
-      "slide": 37,
-      "click": 2
+      "slide": 38,
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/model-shapes/slide/01-input.svg",
+        "alt": "Input: What becomes one forecast, and what does the model learn?",
+        "frameId": "input",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
     },
     {
       "slide": 38,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/model-shapes/slide/02-mlp.svg",
+        "alt": "Mlp: What becomes one forecast, and what does the model learn?",
+        "frameId": "mlp",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 38,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/model-shapes/slide/03-cnn.svg",
+        "alt": "Cnn: What becomes one forecast, and what does the model learn?",
+        "frameId": "cnn",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 38,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/model-shapes/slide/04-complete.svg",
+        "alt": "Complete view: What becomes one forecast, and what does the model learn?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 39,
       "click": 0
     },
     {
-      "slide": 38,
-      "click": 1
-    },
-    {
-      "slide": 38,
-      "click": 2
-    },
-    {
-      "slide": 39,
-      "click": 0
-    },
-    {
       "slide": 39,
       "click": 1
     },
     {
       "slide": 39,
       "click": 2
-    },
-    {
-      "slide": 39,
-      "click": 3
     },
     {
       "slide": 40,
@@ -979,22 +1304,22 @@
       "click": 2
     },
     {
-      "slide": 41,
-      "click": 0
-    },
-    {
-      "slide": 41,
-      "click": 1
-    },
-    {
-      "slide": 41,
-      "click": 2
-    },
-    {
-      "slide": 41,
+      "slide": 40,
       "click": 3
     },
     {
+      "slide": 41,
+      "click": 0
+    },
+    {
+      "slide": 41,
+      "click": 1
+    },
+    {
+      "slide": 41,
+      "click": 2
+    },
+    {
       "slide": 42,
       "click": 0
     },
@@ -1007,40 +1332,52 @@
       "click": 2
     },
     {
-      "slide": 43,
-      "click": 0
-    },
-    {
-      "slide": 43,
-      "click": 1
-    },
-    {
-      "slide": 43,
-      "click": 2
-    },
-    {
-      "slide": 43,
+      "slide": 42,
       "click": 3
+    },
+    {
+      "slide": 43,
+      "click": 0
+    },
+    {
+      "slide": 43,
+      "click": 1
+    },
+    {
+      "slide": 43,
+      "click": 2
     },
     {
       "slide": 44,
       "click": 0
     },
     {
-      "slide": 45,
-      "click": 0
-    },
-    {
-      "slide": 45,
+      "slide": 44,
       "click": 1
     },
     {
-      "slide": 45,
+      "slide": 44,
       "click": 2
+    },
+    {
+      "slide": 44,
+      "click": 3
+    },
+    {
+      "slide": 45,
+      "click": 0
     },
     {
       "slide": 46,
       "click": 0
+    },
+    {
+      "slide": 46,
+      "click": 1
+    },
+    {
+      "slide": 46,
+      "click": 2
     },
     {
       "slide": 47,
@@ -1083,18 +1420,6 @@
       "click": 0
     },
     {
-      "slide": 56,
-      "click": 1
-    },
-    {
-      "slide": 56,
-      "click": 2
-    },
-    {
-      "slide": 56,
-      "click": 3
-    },
-    {
       "slide": 57,
       "click": 0
     },
@@ -1105,10 +1430,22 @@
     {
       "slide": 57,
       "click": 2
+    },
+    {
+      "slide": 57,
+      "click": 3
     },
     {
       "slide": 58,
       "click": 0
+    },
+    {
+      "slide": 58,
+      "click": 1
+    },
+    {
+      "slide": 58,
+      "click": 2
     },
     {
       "slide": 59,
@@ -1116,41 +1453,93 @@
     },
     {
       "slide": 60,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/images/slide/01-input.svg",
+        "alt": "Input: How does a residual prediction differ from a direct prediction?",
+        "frameId": "input",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
     },
     {
       "slide": 60,
-      "click": 1
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/images/slide/02-residual.svg",
+        "alt": "Residual: How does a residual prediction differ from a direct prediction?",
+        "frameId": "residual",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
     },
     {
       "slide": 60,
-      "click": 2
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/images/slide/03-mask.svg",
+        "alt": "Mask: How does a residual prediction differ from a direct prediction?",
+        "frameId": "mask",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
     },
     {
       "slide": 60,
-      "click": 3
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/images/slide/04-complete.svg",
+        "alt": "Complete view: How does a residual prediction differ from a direct prediction?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 61,
       "click": 0
     },
     {
-      "slide": 62,
-      "click": 0
-    },
-    {
-      "slide": 62,
+      "slide": 61,
       "click": 1
     },
     {
-      "slide": 62,
+      "slide": 61,
       "click": 2
     },
     {
-      "slide": 62,
+      "slide": 61,
       "click": 3
     },
     {
+      "slide": 62,
+      "click": 0
+    },
+    {
       "slide": 63,
       "click": 0
     },
@@ -1177,6 +1566,10 @@
     {
       "slide": 64,
       "click": 2
+    },
+    {
+      "slide": 64,
+      "click": 3
     },
     {
       "slide": 65,
@@ -1193,6 +1586,14 @@
     {
       "slide": 66,
       "click": 0
+    },
+    {
+      "slide": 66,
+      "click": 1
+    },
+    {
+      "slide": 66,
+      "click": 2
     },
     {
       "slide": 67,
@@ -1219,14 +1620,6 @@
       "click": 0
     },
     {
-      "slide": 72,
-      "click": 1
-    },
-    {
-      "slide": 72,
-      "click": 2
-    },
-    {
       "slide": 73,
       "click": 0
     },
@@ -1237,14 +1630,22 @@
     {
       "slide": 73,
       "click": 2
-    },
-    {
-      "slide": 73,
-      "click": 3
     },
     {
       "slide": 74,
       "click": 0
+    },
+    {
+      "slide": 74,
+      "click": 1
+    },
+    {
+      "slide": 74,
+      "click": 2
+    },
+    {
+      "slide": 74,
+      "click": 3
     },
     {
       "slide": 75,
@@ -1255,16 +1656,16 @@
       "click": 0
     },
     {
-      "slide": 76,
-      "click": 1
-    },
-    {
-      "slide": 76,
-      "click": 2
+      "slide": 77,
+      "click": 0
     },
     {
       "slide": 77,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 77,
+      "click": 2
     },
     {
       "slide": 78,
@@ -1279,16 +1680,16 @@
       "click": 0
     },
     {
-      "slide": 80,
-      "click": 1
-    },
-    {
-      "slide": 80,
-      "click": 2
+      "slide": 81,
+      "click": 0
     },
     {
       "slide": 81,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 81,
+      "click": 2
     },
     {
       "slide": 82,
@@ -1296,39 +1697,120 @@
     },
     {
       "slide": 83,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/research/slide/01-parent.svg",
+        "alt": "Adopted L1 model: Round one selected masked absolute-error training. Round two keeps the data, 40 training steps, and seed 17 fixed.",
+        "frameId": "parent",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 83,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/research/slide/02-candidate-a.svg",
+        "alt": "A: zero-initialize the head: Initialize the final convolution to zero. The residual model starts by copying the current image and then learns a correction.",
+        "frameId": "candidate-a",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 83,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/research/slide/03-candidate-b.svg",
+        "alt": "B: change sample order: Sample a permutation without replacement instead of drawing each batch independently. Keep the inherited model and loss.",
+        "frameId": "candidate-b",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 83,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/research/slide/04-decision.svg",
+        "alt": "Adopt Candidate A: The recorded decision selects A and tests that source. A combined A+B version was not tested and is not claimed as an improvement.",
+        "frameId": "decision",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 83,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/solar/guides/solar/research/slide/05-complete.svg",
+        "alt": "Complete view: Later image qualification: error reductions of 10.15%, 6.87%, and −0.21% against the manual model. One seed regressed.",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 84,
       "click": 0
-    },
-    {
-      "slide": 84,
-      "click": 1
-    },
-    {
-      "slide": 84,
-      "click": 2
     },
     {
       "slide": 85,
       "click": 0
     },
     {
-      "slide": 86,
-      "click": 0
-    },
-    {
-      "slide": 86,
+      "slide": 85,
       "click": 1
     },
     {
-      "slide": 86,
+      "slide": 85,
       "click": 2
+    },
+    {
+      "slide": 86,
+      "click": 0
     },
     {
       "slide": 87,
       "click": 0
+    },
+    {
+      "slide": 87,
+      "click": 1
+    },
+    {
+      "slide": 87,
+      "click": 2
     },
     {
       "slide": 88,
@@ -1339,16 +1821,16 @@
       "click": 0
     },
     {
-      "slide": 89,
-      "click": 1
-    },
-    {
-      "slide": 89,
-      "click": 2
+      "slide": 90,
+      "click": 0
     },
     {
       "slide": 90,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 90,
+      "click": 2
     },
     {
       "slide": 91,
@@ -1371,20 +1853,20 @@
       "click": 0
     },
     {
-      "slide": 95,
-      "click": 1
-    },
-    {
-      "slide": 95,
-      "click": 2
-    },
-    {
-      "slide": 95,
-      "click": 3
+      "slide": 96,
+      "click": 0
     },
     {
       "slide": 96,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 96,
+      "click": 2
+    },
+    {
+      "slide": 96,
+      "click": 3
     },
     {
       "slide": 97,
@@ -1411,16 +1893,16 @@
       "click": 0
     },
     {
-      "slide": 102,
-      "click": 1
-    },
-    {
-      "slide": 102,
-      "click": 2
+      "slide": 103,
+      "click": 0
     },
     {
       "slide": 103,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 103,
+      "click": 2
     },
     {
       "slide": 104,
@@ -1483,20 +1965,20 @@
       "click": 0
     },
     {
-      "slide": 118,
-      "click": 1
-    },
-    {
-      "slide": 118,
-      "click": 2
-    },
-    {
-      "slide": 118,
-      "click": 3
+      "slide": 119,
+      "click": 0
     },
     {
       "slide": 119,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 119,
+      "click": 2
+    },
+    {
+      "slide": 119,
+      "click": 3
     },
     {
       "slide": 120,
@@ -1537,6 +2019,10 @@
     {
       "slide": 129,
       "click": 0
+    },
+    {
+      "slide": 130,
+      "click": 0
     }
   ],
   "issues": [],
@@ -1544,22 +2030,17 @@
   "failed_responses": [],
   "answers": [
     {
-      "slide": 11,
-      "destination": "/forge-workshop-kit/solar/114",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 24,
+      "slide": 12,
       "destination": "/forge-workshop-kit/solar/115",
       "keyboardReturn": true
     },
     {
-      "slide": 44,
+      "slide": 25,
       "destination": "/forge-workshop-kit/solar/116",
       "keyboardReturn": true
     },
     {
-      "slide": 49,
+      "slide": 45,
       "destination": "/forge-workshop-kit/solar/117",
       "keyboardReturn": true
     },
@@ -1569,27 +2050,32 @@
       "keyboardReturn": true
     },
     {
-      "slide": 67,
+      "slide": 51,
       "destination": "/forge-workshop-kit/solar/119",
       "keyboardReturn": true
     },
     {
-      "slide": 77,
-      "destination": "/forge-workshop-kit/solar/121",
+      "slide": 68,
+      "destination": "/forge-workshop-kit/solar/120",
       "keyboardReturn": true
     },
     {
-      "slide": 92,
+      "slide": 78,
       "destination": "/forge-workshop-kit/solar/122",
       "keyboardReturn": true
     },
     {
-      "slide": 98,
+      "slide": 93,
       "destination": "/forge-workshop-kit/solar/123",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 99,
+      "destination": "/forge-workshop-kit/solar/124",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 519,
+  "routes_checked": 523,
   "recording_links_checked": 8,
   "presenter_notes": true
 }

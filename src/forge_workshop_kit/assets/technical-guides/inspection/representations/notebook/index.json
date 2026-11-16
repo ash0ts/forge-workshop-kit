@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "representations",
+  "kind": "overview",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "d3bdfc6c7144b5317bd1c24be8cf383a31b9f3cd7f3bdfd13e0eb8709505365d",
+  "states": [
+    {
+      "id": "photo",
+      "label": "Photo",
+      "svg": "01-photo.svg",
+      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs."
+    },
+    {
+      "id": "whole",
+      "label": "Whole",
+      "svg": "02-whole.svg",
+      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs."
+    },
+    {
+      "id": "local",
+      "label": "Local",
+      "svg": "03-local.svg",
+      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs."
+    },
+    {
+      "id": "join",
+      "label": "Join",
+      "svg": "04-join.svg",
+      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs."
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "05-complete.svg",
+      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs."
+    }
+  ],
+  "html": "index.html"
+}

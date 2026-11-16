@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "overview",
+  "kind": "overview",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "55de50489c57209bfb90484b1fbf24efb9a3fb9eb090a9b3b4bb4de914573533",
+  "states": [
+    {
+      "id": "booking",
+      "label": "Booking",
+      "svg": "01-booking.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "observe",
+      "label": "Observe",
+      "svg": "02-observe.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "monitor",
+      "label": "Monitor",
+      "svg": "03-monitor.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "test",
+      "label": "Test",
+      "svg": "04-test.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "05-complete.svg",
+      "caption": "What will you build, and how will you know it works?"
+    }
+  ],
+  "html": "index.html"
+}

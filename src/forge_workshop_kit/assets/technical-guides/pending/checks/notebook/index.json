@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "checks",
+  "kind": "comparison",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "06c565c6f3c01cda6aba2e5a9e70ea21e3386d35c9afe7a1ebd1507b5eedf531",
+  "states": [
+    {
+      "id": "agent",
+      "label": "Agent",
+      "svg": "01-agent.svg",
+      "caption": "Which check can establish that the account is correct?"
+    },
+    {
+      "id": "learner",
+      "label": "Learner",
+      "svg": "02-learner.svg",
+      "caption": "Which check can establish that the account is correct?"
+    },
+    {
+      "id": "independent",
+      "label": "Independent",
+      "svg": "03-independent.svg",
+      "caption": "Which check can establish that the account is correct?"
+    },
+    {
+      "id": "judge",
+      "label": "Judge",
+      "svg": "04-judge.svg",
+      "caption": "Which check can establish that the account is correct?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "05-complete.svg",
+      "caption": "Which check can establish that the account is correct?"
+    }
+  ],
+  "html": "index.html"
+}

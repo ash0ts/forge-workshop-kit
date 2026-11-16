@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "overview",
+  "kind": "overview",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "cf7b157b95a68c5cf371e9eb479bde30d1f73497f1cd09df27b643ee37c31e2e",
+  "states": [
+    {
+      "id": "observations",
+      "label": "Observations",
+      "svg": "01-observations.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "baseline",
+      "label": "Baseline",
+      "svg": "02-baseline.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "experiment",
+      "label": "Experiment",
+      "svg": "03-experiment.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "research",
+      "label": "Research",
+      "svg": "04-research.svg",
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "05-complete.svg",
+      "caption": "What will you build, and how will you know it works?"
+    }
+  ],
+  "html": "index.html"
+}

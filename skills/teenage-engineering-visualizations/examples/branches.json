@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "id": "example-branches",
+  "title": "Review two proposed changes",
+  "eyebrow": "Technical guide / branches",
+  "question": "Which version has evidence supporting adoption?",
+  "summary": "Which version has evidence supporting adoption?",
+  "kind": "branches",
+  "provenance": "illustrative",
+  "source_links": [],
+  "steps": [
+    {
+      "id": "parent",
+      "title": "Current implementation",
+      "body": "The starting source is unchanged.",
+      "symbol": "file"
+    },
+    {
+      "id": "candidate-a",
+      "title": "Candidate A",
+      "body": "Cache parsed dates; test invalid dates as well.",
+      "symbol": "component",
+      "status": "proposed"
+    },
+    {
+      "id": "candidate-b",
+      "title": "Candidate B",
+      "body": "Change the parser; this proposal is not tested.",
+      "symbol": "component",
+      "status": "not run"
+    },
+    {
+      "id": "decision",
+      "title": "Retain this version",
+      "body": "No candidate result supports a release yet.",
+      "symbol": "record"
+    }
+  ],
+  "states": [
+    {
+      "id": "step-1",
+      "label": "1 / 4",
+      "visible": [
+        "parent"
+      ],
+      "focus": [
+        "parent"
+      ],
+      "caption": "The starting source is unchanged."
+    },
+    {
+      "id": "step-2",
+      "label": "2 / 4",
+      "visible": [
+        "parent",
+        "candidate-a"
+      ],
+      "focus": [
+        "candidate-a"
+      ],
+      "caption": "Cache parsed dates; test invalid dates as well."
+    },
+    {
+      "id": "step-3",
+      "label": "3 / 4",
+      "visible": [
+        "parent",
+        "candidate-a",
+        "candidate-b"
+      ],
+      "focus": [
+        "candidate-b"
+      ],
+      "caption": "Change the parser; this proposal is not tested."
+    },
+    {
+      "id": "step-4",
+      "label": "4 / 4",
+      "visible": [
+        "parent",
+        "candidate-a",
+        "candidate-b",
+        "decision"
+      ],
+      "focus": [
+        "decision"
+      ],
+      "caption": "No candidate result supports a release yet."
+    }
+  ]
+}

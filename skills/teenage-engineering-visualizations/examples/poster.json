@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "id": "example-poster",
+  "title": "Build a dependable community seed library",
+  "eyebrow": "Technical guide / poster",
+  "question": "A neighborhood library needs to track packets without losing their growing instructions.",
+  "summary": "A neighborhood library needs to track packets without losing their growing instructions.",
+  "kind": "poster",
+  "provenance": "illustrative",
+  "source_links": [],
+  "steps": [
+    {
+      "id": "catalog",
+      "title": "Catalog the packets",
+      "body": "Record the plant, source and growing instructions.",
+      "symbol": "record"
+    },
+    {
+      "id": "loan",
+      "title": "Track an exchange",
+      "body": "Preserve the packet identity through a transaction.",
+      "symbol": "state"
+    },
+    {
+      "id": "review",
+      "title": "Check the records",
+      "body": "Find missing instructions and update the catalog.",
+      "symbol": "observation"
+    }
+  ],
+  "states": [
+    {
+      "id": "complete",
+      "label": "Workshop overview",
+      "visible": [
+        "catalog",
+        "loan",
+        "review"
+      ],
+      "focus": [],
+      "caption": "Illustrative non-Forge workshop"
+    }
+  ],
+  "poster": {
+    "situation": "A neighborhood library needs to track packets without losing their growing instructions.",
+    "outcomes": [
+      "Create a usable catalog with growing instructions.",
+      "Implement a transaction that preserves packet identity.",
+      "Check missing records before the next exchange."
+    ],
+    "duration": "2 hours",
+    "prerequisites": "Basic spreadsheet knowledge",
+    "dataset": "Illustrative community seed records",
+    "cta": {
+      "label": "Read the example and adapt the workflow.",
+      "url": "https://example.com/seed-library",
+      "display_url": "example.com/seed-library (illustrative)"
+    },
+    "roles": [
+      {
+        "name": "Catalog",
+        "action": "Record the packets and their instructions."
+      },
+      {
+        "name": "Exchange log",
+        "action": "See which packet moved and when."
+      },
+      {
+        "name": "Review sheet",
+        "action": "Find missing information before sharing."
+      }
+    ]
+  }
+}

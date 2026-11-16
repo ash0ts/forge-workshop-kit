@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "skills",
+  "kind": "sequence",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "1030354e5cd53a1f43753a81f7ccb6ba23a217fda4ec2d0ea6140a9db387095e",
+  "states": [
+    {
+      "id": "saved",
+      "label": "Saved",
+      "svg": "01-saved.svg",
+      "caption": "Did this run use the procedure you edited?"
+    },
+    {
+      "id": "read",
+      "label": "Read",
+      "svg": "02-read.svg",
+      "caption": "Did this run use the procedure you edited?"
+    },
+    {
+      "id": "request",
+      "label": "Request",
+      "svg": "03-request.svg",
+      "caption": "Did this run use the procedure you edited?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "Did this run use the procedure you edited?"
+    }
+  ],
+  "html": "index.html"
+}

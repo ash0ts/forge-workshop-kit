@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "retry",
+  "kind": "comparison",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "406fed94e610144cea0e66f453022c77e40eaee1d21403f4961c1e43c4bde02e",
+  "states": [
+    {
+      "id": "write",
+      "label": "Write",
+      "svg": "01-write.svg",
+      "caption": "Should the retry keep or change operation_id?"
+    },
+    {
+      "id": "new",
+      "label": "New",
+      "svg": "02-new.svg",
+      "caption": "Should the retry keep or change operation_id?"
+    },
+    {
+      "id": "same",
+      "label": "Same",
+      "svg": "03-same.svg",
+      "caption": "Should the retry keep or change operation_id?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "Should the retry keep or change operation_id?"
+    },
+    {
+      "id": "native-capture",
+      "label": "onboarding_status after recovery",
+      "svg": "05-native-capture.svg",
+      "caption": "Find account_id, then count the returned members. Follow the earlier timeout before judging the whole conversation."
+    }
+  ],
+  "html": "index.html"
+}

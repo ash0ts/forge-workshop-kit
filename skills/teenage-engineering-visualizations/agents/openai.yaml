@@ -1,0 +1,6 @@
+interface:
+  display_name: "Teenage Engineering Visualizations"
+  short_description: "Technical guides with consistent diagrams and reveals"
+  default_prompt: "Use $teenage-engineering-visualizations to explain this system through its parts, operations, and visible results."
+policy:
+  allow_implicit_invocation: true

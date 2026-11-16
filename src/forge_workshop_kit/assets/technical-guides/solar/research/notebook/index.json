@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "research",
+  "kind": "branches",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "14a672d1ac8f6a5582dcc1b2c08673a99c3a8d8edfc519d36545805ca1287f89",
+  "states": [
+    {
+      "id": "parent",
+      "label": "Adopted L1 model",
+      "svg": "01-parent.svg",
+      "caption": "Round one selected masked absolute-error training. Round two keeps the data, 40 training steps, and seed 17 fixed."
+    },
+    {
+      "id": "candidate-a",
+      "label": "A: zero-initialize the head",
+      "svg": "02-candidate-a.svg",
+      "caption": "Initialize the final convolution to zero. The residual model starts by copying the current image and then learns a correction."
+    },
+    {
+      "id": "candidate-b",
+      "label": "B: change sample order",
+      "svg": "03-candidate-b.svg",
+      "caption": "Sample a permutation without replacement instead of drawing each batch independently. Keep the inherited model and loss."
+    },
+    {
+      "id": "decision",
+      "label": "Adopt Candidate A",
+      "svg": "04-decision.svg",
+      "caption": "The recorded decision selects A and tests that source. A combined A+B version was not tested and is not claimed as an improvement."
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "05-complete.svg",
+      "caption": "Later image qualification: error reductions of 10.15%, 6.87%, and −0.21% against the manual model. One seed regressed."
+    }
+  ],
+  "html": "index.html"
+}

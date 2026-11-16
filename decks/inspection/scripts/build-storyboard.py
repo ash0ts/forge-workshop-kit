@@ -85,13 +85,14 @@ slides=extend(slides)
 # Shared ARIA context, response and citation-check frames.
 import runpy as _aria_runpy
 _aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/aria_storyboard.py'))['enrich'](slides, ROOT, 'inspection')
+_aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/technical_guide_storyboard.py'))['enrich'](slides, ROOT, 'inspection')
 
 main_count=sum(s['start_minute'] is not None for s in slides)
 indices={s['key']:i+1 for i,s in enumerate(slides)}
 front='''---\ntheme: default\ntitle: Find defective parts before they ship\nauthor: Anish Shah\nclass: cover\nlayout: default\naspectRatio: 16/9\ncanvasWidth: 1280\ncolorSchema: light\ntransition: fade\nwakeLock: false\nfonts:\n  sans: IBM Plex Sans\n  mono: IBM Plex Mono\n  provider: none\nmdc: true\nhighlighter: shiki\ndrawings:\n  enabled: false\ndownload: false\nexportFilename: visual-inspection\n---\n\n'''
 parts=[]
 for i,s in enumerate(slides):
-    fm='' if i==0 else ('\n---\nclass: '+s['kind']+'\n---\n\n' if s['kind'] else '\n---\n\n')
+    fm='' if i==0 else '\n---\n'+('class: '+s['kind']+'\n' if s['kind'] else '')+('clicks: '+str(s['clicks'])+'\n' if s.get('clicks') else '')+'---\n\n'
     answer=f'<a class="answer-link" href="{BASE}{indices[s["answer"]]}">Worked answer →</a>\n\n' if s['answer'] else ''
     back=''.join(f'<div class="source-link"><a href="{BASE}{indices[x["key"]]}">Return to {x["title"]}</a></div>' for x in slides if x['answer']==s['key'])
     parts.append(fm+f'<div class="kicker">{s["time"]}</div>\n\n'+answer+'# '+s['title']+'\n\n'+s['body']+'\n'+back+'\n\n<!--\n'+s['notes']+'\nSource: notes/sources.md.\n-->\n')

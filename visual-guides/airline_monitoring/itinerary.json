@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "id": "itinerary",
+  "title": "Replace the requested flights and keep the rest",
+  "eyebrow": "06 / Airline monitoring",
+  "question": "What must the booking update contain?",
+  "summary": "These are simulated bookings. The omission exercise is a controlled drill, not a claimed spontaneous agent failure.",
+  "kind": "transformation",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "before",
+      "title": "Read the full booking",
+      "body": "Identify the passenger’s requested segment range and the flights that must remain untouched.",
+      "input": "Outbound + return itinerary",
+      "output": "Requested change + preserved segments",
+      "symbol": "itinerary"
+    },
+    {
+      "id": "replace",
+      "title": "Build the complete replacement",
+      "body": "The API replaces the whole flight list. Include unchanged prefixes and suffixes around the new flights.",
+      "code": "(current_flights[:replace_start]\n + replacement_flights\n + current_flights[replace_stop:])",
+      "output": "Complete itinerary payload",
+      "symbol": "splice",
+      "excerpt_label": "Abbreviated code; full function in notebook.",
+      "input": "Current flights + requested replacement"
+    },
+    {
+      "id": "after",
+      "title": "Read the returned booking",
+      "body": "Verify untouched flights, confirmation, and requested changes. A successful API response alone cannot establish these.",
+      "output": "Delivered booking checked against request",
+      "symbol": "check",
+      "input": "Returned booking + passenger request"
+    }
+  ],
+  "states": [
+    {
+      "id": "before",
+      "label": "Before",
+      "visible": [
+        "before"
+      ],
+      "focus": [
+        "before"
+      ],
+      "caption": "What must the booking update contain?"
+    },
+    {
+      "id": "replace",
+      "label": "Replace",
+      "visible": [
+        "before",
+        "replace"
+      ],
+      "focus": [
+        "replace"
+      ],
+      "caption": "What must the booking update contain?"
+    },
+    {
+      "id": "after",
+      "label": "After",
+      "visible": [
+        "before",
+        "replace",
+        "after"
+      ],
+      "focus": [
+        "after"
+      ],
+      "caption": "What must the booking update contain?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "before",
+        "replace",
+        "after"
+      ],
+      "focus": [],
+      "caption": "What must the booking update contain?"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "id": "patch-distance",
+  "title": "Calculate one location’s distance",
+  "eyebrow": "04 / Circuit-board inspection",
+  "question": "Which normal patch is the closest reference for this location?",
+  "summary": "The nearest reference is selected independently at each location; this is not a comparison with a supplied defect mask.",
+  "kind": "transformation",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "query",
+      "title": "Select a location",
+      "body": "Take one query feature vector and the corresponding location in normal fitting boards.",
+      "input": "64 channels at one of 196 locations",
+      "output": "Query + normal reference vectors",
+      "symbol": "grid"
+    },
+    {
+      "id": "scale",
+      "title": "Scale the channels",
+      "body": "Divide reference and query channels by the normal-bank standard deviation, floored at 0.1.",
+      "code": "scale = np.maximum(bank.std(axis=0), .1)\nbank, query = bank / scale, query / scale",
+      "output": "Scaled query + reference vectors",
+      "symbol": "transform",
+      "excerpt_label": "Abbreviated code; full function in notebook.",
+      "input": "Query + normal reference vectors"
+    },
+    {
+      "id": "distance",
+      "title": "Find the nearest normal reference",
+      "body": "Compute squared distances, average over channels, and keep the smallest. Exclude a board’s own bank entry when present.",
+      "input": "Scaled query + scaled normal bank",
+      "output": "One nonnegative location value",
+      "symbol": "distance"
+    },
+    {
+      "id": "map",
+      "title": "Repeat over the grid",
+      "body": "Place each value back at its original location. Preserve spatial order when building the feature vector.",
+      "output": "14 × 14 distance map",
+      "symbol": "grid",
+      "input": "Distances from all 196 locations"
+    }
+  ],
+  "states": [
+    {
+      "id": "query",
+      "label": "Query",
+      "visible": [
+        "query"
+      ],
+      "focus": [
+        "query"
+      ],
+      "caption": "Which normal patch is the closest reference for this location?"
+    },
+    {
+      "id": "scale",
+      "label": "Scale",
+      "visible": [
+        "query",
+        "scale"
+      ],
+      "focus": [
+        "scale"
+      ],
+      "caption": "Which normal patch is the closest reference for this location?"
+    },
+    {
+      "id": "distance",
+      "label": "Distance",
+      "visible": [
+        "query",
+        "scale",
+        "distance"
+      ],
+      "focus": [
+        "distance"
+      ],
+      "caption": "Which normal patch is the closest reference for this location?"
+    },
+    {
+      "id": "map",
+      "label": "Map",
+      "visible": [
+        "query",
+        "scale",
+        "distance",
+        "map"
+      ],
+      "focus": [
+        "map"
+      ],
+      "caption": "Which normal patch is the closest reference for this location?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "query",
+        "scale",
+        "distance",
+        "map"
+      ],
+      "focus": [],
+      "caption": "Which normal patch is the closest reference for this location?"
+    }
+  ]
+}

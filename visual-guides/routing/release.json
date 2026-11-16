@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "id": "release",
+  "title": "Preserve the mapping between scores and intents",
+  "eyebrow": "03 / Customer request routing",
+  "question": "Can the release reproduce the healthy predictor’s destinations?",
+  "summary": "A repaired release preserves the classifier’s behavior; it does not fix the classifier’s remaining mistakes.",
+  "kind": "comparison",
+  "provenance": "recorded",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw=="
+    },
+    {
+      "label": "Release loader and checks",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing_release.py"
+    }
+  ],
+  "steps": [
+    {
+      "id": "healthy",
+      "title": "Load the original order",
+      "body": "Probability column i belongs to model_classes[i]. Keep the ordered list with the model artifact.",
+      "code": "return list(model_classes)",
+      "output": "Healthy label mapping",
+      "symbol": "columns",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "faulty",
+      "title": "Run the controlled defect",
+      "body": "The drill rotates labels while keeping scores fixed. Confidence is unchanged, but destinations become wrong.",
+      "code": "return labels[1:] + labels[:1]",
+      "output": "Same scores, wrong labels",
+      "status": "Controlled release drill",
+      "symbol": "rotate",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "repair",
+      "title": "Check order and reproduce",
+      "body": "Check both label membership and order. Repair the loader, then reload the previous version to verify rollback.",
+      "output": "Repaired and rollback match healthy",
+      "symbol": "check"
+    },
+    {
+      "id": "result",
+      "title": "Keep the classifier’s errors visible",
+      "body": "The recorded review-pool cohort scored 71/77 healthy, 0/77 faulty, and 71/77 repaired. Six classifier errors remain.",
+      "output": "This is a regression cohort, not a new test set",
+      "status": "Recorded drill",
+      "symbol": "comparison"
+    }
+  ],
+  "states": [
+    {
+      "id": "healthy",
+      "label": "Healthy",
+      "visible": [
+        "healthy"
+      ],
+      "focus": [
+        "healthy"
+      ],
+      "caption": "Can the release reproduce the healthy predictor’s destinations?"
+    },
+    {
+      "id": "faulty",
+      "label": "Faulty",
+      "visible": [
+        "healthy",
+        "faulty"
+      ],
+      "focus": [
+        "faulty"
+      ],
+      "caption": "Can the release reproduce the healthy predictor’s destinations?"
+    },
+    {
+      "id": "repair",
+      "label": "Repair",
+      "visible": [
+        "healthy",
+        "faulty",
+        "repair"
+      ],
+      "focus": [
+        "repair"
+      ],
+      "caption": "Can the release reproduce the healthy predictor’s destinations?"
+    },
+    {
+      "id": "result",
+      "label": "Result",
+      "visible": [
+        "healthy",
+        "faulty",
+        "repair",
+        "result"
+      ],
+      "focus": [
+        "result"
+      ],
+      "caption": "Can the release reproduce the healthy predictor’s destinations?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "healthy",
+        "faulty",
+        "repair",
+        "result"
+      ],
+      "focus": [],
+      "caption": "Can the release reproduce the healthy predictor’s destinations?"
+    }
+  ]
+}

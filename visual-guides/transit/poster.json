@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "poster",
+  "title": "Build a departure board with two coding agents",
+  "eyebrow": "05 / Transit software factory",
+  "question": "What will you learn?",
+  "summary": "People leaving an evening event need the last service home. Two builders can work in parallel, but their components must agree about which service day includes a departure after midnight.",
+  "kind": "poster",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory_teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ=="
+    }
+  ],
+  "steps": [],
+  "states": [
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [],
+      "focus": [],
+      "caption": "What will you learn?"
+    }
+  ],
+  "poster": {
+    "situation": "People leaving an evening event need the last service home. Two builders can work in parallel, but their components must agree about which service day includes a departure after midnight.",
+    "outcomes": [
+      "Implement a worker’s read, edit, and test loop.",
+      "Coordinate task ownership and test integrated patches.",
+      "Check whether a verified lesson helps the next build."
+    ],
+    "duration": "6 hours",
+    "prerequisites": "Read basic Python; use your own Forge project.",
+    "dataset": "Frozen historical MBTA GTFS schedules; not live arrivals",
+    "forge": [
+      {
+        "name": "Agent Lens",
+        "action": "Follow worker assignments, tool calls, and handoffs."
+      },
+      {
+        "name": "EvalTables",
+        "action": "Compare matching acceptance scenarios across builds."
+      },
+      {
+        "name": "Artifacts",
+        "action": "Recover released code, contracts, data, and lessons."
+      }
+    ],
+    "cta": {
+      "label": "Read the example, then copy the notebook",
+      "url": "https://ash0ts.github.io/forge-workshop-kit/#transit"
+    },
+    "hero": "hero.svg"
+  }
+}

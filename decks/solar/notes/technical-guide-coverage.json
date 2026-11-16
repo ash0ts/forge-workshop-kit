@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "workshop": "solar",
+  "overview": "technical-overview",
+  "sequences": [
+    {
+      "sequence": "window",
+      "slide_key": "goes-window",
+      "notebook_step": "baseline",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "model-shapes",
+      "slide_key": "batch-shapes",
+      "notebook_step": "search",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "learning",
+      "slide_key": "training-step",
+      "notebook_step": "search",
+      "reveal_count": 5
+    },
+    {
+      "sequence": "images",
+      "slide_key": "residual",
+      "notebook_step": "images",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "run-record",
+      "slide_key": "stage",
+      "notebook_step": "search",
+      "reveal_count": 5
+    },
+    {
+      "sequence": "research",
+      "slide_key": "compose",
+      "notebook_step": "research",
+      "reveal_count": 5
+    }
+  ],
+  "source": "visual-guides/index.json",
+  "runtime_changes": false
+}

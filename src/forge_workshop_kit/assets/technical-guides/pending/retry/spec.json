@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "id": "retry",
+  "title": "A timed-out write may already have worked",
+  "eyebrow": "01 / Pending, Inc.",
+  "question": "Should the retry keep or change operation_id?",
+  "summary": "This is a deterministic repair exercise, separate from the later live harness comparison.",
+  "kind": "comparison",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ=="
+    },
+    {
+      "label": "Retry fixture and worked answer",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/recovery.py"
+    }
+  ],
+  "steps": [
+    {
+      "id": "write",
+      "title": "The first write commits",
+      "body": "The public practice incident adds Alex, then returns a timeout. The response leaves the caller uncertain.",
+      "input": "operation_id=\"join-alex\"",
+      "output": "One membership; timeout response",
+      "symbol": "account"
+    },
+    {
+      "id": "new",
+      "title": "New ID creates another write",
+      "body": "The starter adds a suffix. The simulator treats it as a different operation.",
+      "code": "retry = dict(arguments,\n    operation_id=arguments[\"operation_id\"]\n    + \"-retry\")",
+      "output": "Duplicate memberships",
+      "status": "Controlled practice",
+      "symbol": "retry",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "same",
+      "title": "Reuse and verify",
+      "body": "Reuse the original identity, then read onboarding_status to confirm the account.",
+      "code": "receipt = call_tool(\n    \"provision_member\", dict(arguments))",
+      "output": "One membership + verification read",
+      "symbol": "check",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    }
+  ],
+  "states": [
+    {
+      "id": "write",
+      "label": "Write",
+      "visible": [
+        "write"
+      ],
+      "focus": [
+        "write"
+      ],
+      "caption": "Should the retry keep or change operation_id?"
+    },
+    {
+      "id": "new",
+      "label": "New",
+      "visible": [
+        "write",
+        "new"
+      ],
+      "focus": [
+        "new"
+      ],
+      "caption": "Should the retry keep or change operation_id?"
+    },
+    {
+      "id": "same",
+      "label": "Same",
+      "visible": [
+        "write",
+        "new",
+        "same"
+      ],
+      "focus": [
+        "same"
+      ],
+      "caption": "Should the retry keep or change operation_id?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "write",
+        "new",
+        "same"
+      ],
+      "focus": [],
+      "caption": "Should the retry keep or change operation_id?"
+    }
+  ],
+  "native_capture": {
+    "media": "../media/pending-forge-annotated.svg",
+    "original": "../media/pending-forge-original.png",
+    "title": "onboarding_status after recovery",
+    "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/481ae944f1062c5381870a00319f65a3/spans/turns/796dff8c92e7bf0c7fff2e8941a340df/spans/e62596437e485145",
+    "investigation": "Find account_id, then count the returned members. Follow the earlier timeout before judging the whole conversation.",
+    "capture_date": null,
+    "capture_date_note": "Existing recorded capture; capture timestamp not recorded in source asset.",
+    "annotations": [
+      {
+        "number": 1,
+        "label": "Account argument",
+        "field": "The request reads account fern.",
+        "source_bounds": [
+          587,
+          346,
+          670,
+          69
+        ]
+      },
+      {
+        "number": 2,
+        "label": "Returned account",
+        "field": "The members list contains Alex once.",
+        "source_bounds": [
+          587,
+          464,
+          670,
+          241
+        ]
+      },
+      {
+        "number": 3,
+        "label": "Earlier tool error",
+        "field": "provision_member has an error badge.",
+        "source_bounds": [
+          300,
+          584,
+          262,
+          52
+        ]
+      }
+    ]
+  },
+  "annotations": [
+    {
+      "number": 1,
+      "target": "same",
+      "label": "Read account fern"
+    },
+    {
+      "number": 2,
+      "target": "same",
+      "label": "Verify one membership"
+    },
+    {
+      "number": 3,
+      "target": "write",
+      "label": "Earlier write timeout"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.10.0/forge_workshop_kit-0.10.0-py3-none-any.whl",
+#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.11.0/forge_workshop_kit-0.11.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -105,18 +105,20 @@ def _():
     import time
     import marimo as mo
     from forge_workshop_kit import WorkshopSession, setup, ui, airline, airline_teaching as teaching
-    from forge_workshop_kit import aria
+    from forge_workshop_kit import aria, technical_guides
     from forge_workshop_kit import agent_lens, airline_calibration, airline_regression
     from forge_workshop_kit.manifest import get_workshop
     from forge_workshop_kit.session import digest
     from forge_workshop_kit.traces import event, export_trace, saved_trace_inputs
     from forge_workshop_kit.publication import publish_comparison, publish_report as write_report
     get_context, set_context = mo.state({})
+    get_technical_guide_view, set_technical_guide_view = mo.state({}, allow_self_loops=True)
+    technical_guide_controls = technical_guides.controls(mo, 'airline_monitoring', set_technical_guide_view)
     get_step, set_step = mo.state("setup", allow_self_loops=True)
     get_revision, set_revision = mo.state(0)
     get_output, set_output = mo.state({})
     STEPS = tuple(tuple(row) for row in get_workshop("airline-monitoring")["steps"])
-    return (STEPS, WorkshopSession, agent_lens, airline, airline_calibration, airline_regression, aria, digest, event, export_trace, get_context, get_output, get_revision, get_step, get_workshop, json, mo, publish_comparison, saved_trace_inputs, set_context, set_output, set_revision, set_step, setup, teaching, time, ui, write_report,)
+    return (STEPS, WorkshopSession, agent_lens, airline, airline_calibration, airline_regression, aria, digest, event, export_trace, get_context, get_output, get_revision, get_step, get_technical_guide_view, get_workshop, json, mo, publish_comparison, saved_trace_inputs, set_context, set_output, set_revision, set_step, set_technical_guide_view, setup, teaching, technical_guide_controls, technical_guides, time, ui, write_report,)
 
 
 # workshop-cell: airline_monitoring/helpers
@@ -223,16 +225,24 @@ def _(airline, digest, get_context, set_output, set_revision, set_step, teaching
 
 # workshop-cell: airline_monitoring/definitions/airline_navigation
 @app.cell(hide_code=True)
-def _(STEPS, get_context, get_revision, get_step, go_to, mo, teaching, ui):
+def _(STEPS, get_context, get_revision, get_step, go_to, mo, teaching, technical_guides, ui):
     _s = get_context().get("session")
     _revision = get_revision()
     _done = teaching.completed_steps(_s)
     airline_navigation = ui.navigation(mo, STEPS, get_step(), go_to, completed=_done, label="Your monitoring shift")
-    mo.vstack([mo.Html(ui.STYLE), airline_navigation, mo.Html(ui.context(_s)) if _s else mo.md("Copy this notebook into a project you can write to. Your traces and results will belong to that project.")])
+    mo.vstack([mo.Html(ui.STYLE + technical_guides.theme_style()), airline_navigation, mo.Html(ui.context(_s)) if _s else mo.md("Copy this notebook into a project you can write to. Your traces and results will belong to that project.")])
     return (airline_navigation,)
 
 
-# workshop-cell: airline_monitoring/display/4
+# workshop-cell: airline_monitoring/visual_guide
+@app.cell(hide_code=True)
+def _(get_step, get_technical_guide_view, mo, technical_guide_controls, technical_guides):
+    technical_guide_view = technical_guides.panel(mo, 'airline_monitoring', get_step(), get_technical_guide_view(), technical_guide_controls)
+    technical_guide_view
+    return (technical_guide_view,)
+
+
+# workshop-cell: airline_monitoring/display/5
 @app.cell(hide_code=True)
 def _(checked, get_context, get_step, go_to, mo, review_for, runs_for, saved, teaching, ui):
     _s = get_context().get("session")
@@ -267,7 +277,7 @@ def _(checked, get_context, get_step, go_to, mo, review_for, runs_for, saved, te
     return (missing_prerequisite,)
 
 
-# workshop-cell: airline_monitoring/display/5
+# workshop-cell: airline_monitoring/display/6
 @app.cell(hide_code=True)
 def _(get_revision, get_step, mo, ui):
     _revision = get_revision()
@@ -296,7 +306,7 @@ def _(mo, opening_itinerary, show, teaching, try_booking):
     return
 
 
-# workshop-cell: airline_monitoring/display/8
+# workshop-cell: airline_monitoring/display/9
 @app.cell(hide_code=True)
 def _(get_output, get_revision, get_step, mo):
     _revision = get_revision()
@@ -392,7 +402,7 @@ def _(airline, get_context, get_revision, get_step, mo, ui):
     return (booking_picker,)
 
 
-# workshop-cell: airline_monitoring/display/15
+# workshop-cell: airline_monitoring/display/16
 @app.cell(hide_code=True)
 def _(airline, booking_picker, get_revision, get_step, mo):
     _revision = get_revision()
@@ -461,7 +471,7 @@ def _(batch, get_context, mo, refresh, run_discovery, show):
     return
 
 
-# workshop-cell: airline_monitoring/display/21
+# workshop-cell: airline_monitoring/display/22
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, ui):
     _revision = get_revision()
@@ -1123,7 +1133,7 @@ def _(get_context, get_revision, get_step, mo, runs_for):
     return (run_picker,)
 
 
-# workshop-cell: airline_monitoring/display/69
+# workshop-cell: airline_monitoring/display/70
 @app.cell(hide_code=True)
 def _(get_context, get_revision, mo, run_picker, runs_for, ui):
     _revision = get_revision()
@@ -1139,7 +1149,7 @@ def _(get_context, get_revision, mo, run_picker, runs_for, ui):
     return
 
 
-# workshop-cell: airline_monitoring/display/70
+# workshop-cell: airline_monitoring/display/71
 @app.cell(hide_code=True)
 def _(get_context, get_output, get_revision, get_step, mo, saved, ui):
     _revision = get_revision()
@@ -1221,7 +1231,7 @@ def _(export_trace, get_context, hooks, mo, native_scope, publish_saved_comparis
     return
 
 
-# workshop-cell: airline_monitoring/display/74
+# workshop-cell: airline_monitoring/display/75
 @app.cell(hide_code=True)
 def _(get_output, mo, ui):
     _recovery = get_output().get("recovery")

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "harness",
+  "kind": "overview",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "da7e30f08babec9cdc854e0db90d635ea813d8cec84348dd96876c6be2d35440",
+  "states": [
+    {
+      "id": "model",
+      "label": "Model",
+      "svg": "01-model.svg",
+      "caption": "Which part would you change to make the next action different?"
+    },
+    {
+      "id": "tools",
+      "label": "Tools",
+      "svg": "02-tools.svg",
+      "caption": "Which part would you change to make the next action different?"
+    },
+    {
+      "id": "skill",
+      "label": "Skill",
+      "svg": "03-skill.svg",
+      "caption": "Which part would you change to make the next action different?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "Which part would you change to make the next action different?"
+    }
+  ],
+  "html": "index.html"
+}

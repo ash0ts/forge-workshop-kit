@@ -2,6 +2,14 @@
 
 Use [release checks](release-checks.md) for verification evidence and [next-up.md](../next-up.md) for unfinished work. These entries describe changes when each version shipped.
 
+## 0.11.0 technical preview
+
+The six workshops now share numbered technical diagrams, progressive explanations, annotated product captures, and overview posters. Each notebook and deck uses the same authored figures, so labels, code excerpts, and example values stay aligned. Notebook Next/Back controls change only the explanation.
+
+The portable `teenage-engineering-visualizations` skill works outside Workshop Kit. It includes six compositions, bundled fonts and licenses, editable specifications, and SVG/HTML/PNG/PDF rendering. Each workshop has a 1200 × 1500 digital poster and an A2 vector PDF/SVG with a link and QR code to its public entry point.
+
+Datasets, execution identities, learner drafts, schedules, budgets, and recorded results are unchanged. The release adds no experiments. External-account and human-rehearsal requirements remain open. See [release checks](release-checks.md) and [technical visuals](technical-visuals.md).
+
 ## 0.10.0 technical preview
 
 Each of the six workshops now has two ARIA investigations: examine a development result before changing the implementation, then question the frozen comparison before publishing the Report. Participants give their own explanation first and verify one cited claim. Twelve recorded investigations preserve actual responses, context limits, source records, and citation checks for the no-access path.

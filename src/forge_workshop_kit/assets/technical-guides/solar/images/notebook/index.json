@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "images",
+  "kind": "transformation",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "b6cc8cdee98dc2f0b9e8a3dfff4cc0d7dee13effc69f4cd96ea58ebc64c0b354",
+  "states": [
+    {
+      "id": "input",
+      "label": "Input",
+      "svg": "01-input.svg",
+      "caption": "How does a residual prediction differ from a direct prediction?"
+    },
+    {
+      "id": "residual",
+      "label": "Residual",
+      "svg": "02-residual.svg",
+      "caption": "How does a residual prediction differ from a direct prediction?"
+    },
+    {
+      "id": "mask",
+      "label": "Mask",
+      "svg": "03-mask.svg",
+      "caption": "How does a residual prediction differ from a direct prediction?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "How does a residual prediction differ from a direct prediction?"
+    }
+  ],
+  "html": "index.html"
+}

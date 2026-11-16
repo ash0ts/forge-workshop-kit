@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "regression",
+  "kind": "transformation",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "01c94c8167485d71e6bd3898a64e9349700ceba8e14bbdc11ec86ff4dcaa18c6",
+  "states": [
+    {
+      "id": "source",
+      "label": "Source",
+      "svg": "01-source.svg",
+      "caption": "What must be saved to replay the same situation?"
+    },
+    {
+      "id": "case",
+      "label": "Case",
+      "svg": "02-case.svg",
+      "caption": "What must be saved to replay the same situation?"
+    },
+    {
+      "id": "checks",
+      "label": "Checks",
+      "svg": "03-checks.svg",
+      "caption": "What must be saved to replay the same situation?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "What must be saved to replay the same situation?"
+    }
+  ],
+  "html": "index.html"
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "memory",
+  "kind": "transformation",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "d0969e3518772775a2d0359e23ccb84a867a7792c254b983535ba78d83ed336a",
+  "states": [
+    {
+      "id": "collections",
+      "label": "Collections",
+      "svg": "01-collections.svg",
+      "caption": "Should this note enter the next worker’s request?"
+    },
+    {
+      "id": "filter",
+      "label": "Filter",
+      "svg": "02-filter.svg",
+      "caption": "Should this note enter the next worker’s request?"
+    },
+    {
+      "id": "context",
+      "label": "Context",
+      "svg": "03-context.svg",
+      "caption": "Should this note enter the next worker’s request?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "Should this note enter the next worker’s request?"
+    }
+  ],
+  "html": "index.html"
+}

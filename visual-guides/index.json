@@ -1,0 +1,1761 @@
+{
+  "schema_version": 1,
+  "style": "teenage-engineering-visualizations",
+  "workshops": [
+    {
+      "slug": "pending",
+      "deck_slug": "pending",
+      "title": "Build and evaluate an operations agent",
+      "overview": "pending/overview.json",
+      "poster": "pending/poster.json",
+      "sequences": [
+        {
+          "id": "harness",
+          "title": "What controls the employee?",
+          "spec": "pending/harness.json",
+          "notebook_step": "tools",
+          "exercise_ids": [
+            "tool"
+          ],
+          "deck_concepts": [
+            "What controls the employee?"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/teaching.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "tool",
+              "cell_id": "pending_inc/action/check_pending_tool",
+              "function": "my_invoice_tool",
+              "check_control": "check_pending_tool",
+              "run_control": "check_pending_tool",
+              "expected_output": "The requested invoice, missing invoice, and other-account checks pass without mutating account state.",
+              "forge_investigation": "Find the exact account_id and invoice_id arguments and the returned payments in the lookup span.",
+              "function_source": "src/forge_workshop_kit/pending/teaching.py"
+            }
+          ],
+          "deck_keys": [
+            "harness-inputs"
+          ]
+        },
+        {
+          "id": "dispatch",
+          "title": "Pass the tool result into the next request",
+          "spec": "pending/dispatch.json",
+          "notebook_step": "loop",
+          "exercise_ids": [
+            "loop",
+            "observation"
+          ],
+          "deck_concepts": [
+            "Pass the tool result into the next request"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/teaching.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "loop",
+              "cell_id": "pending_inc/action/run_pending",
+              "function": "my_dispatch",
+              "check_control": "check_pending_loop",
+              "run_control": "run_pending",
+              "expected_output": "The selected tool runs once with its arguments; unrelated tools remain available.",
+              "forge_investigation": "Follow lookup_invoice from the selected action to its Python arguments and returned payments.",
+              "function_source": "src/forge_workshop_kit/pending/teaching.py",
+              "run_label": "Freeze this executor and run the two starting tickets"
+            },
+            {
+              "id": "observation",
+              "cell_id": "pending_inc/action/run_pending",
+              "function": "my_observation",
+              "check_control": "check_pending_loop",
+              "run_control": "run_pending",
+              "expected_output": "The next request contains the assistant action and returned tool observation.",
+              "forge_investigation": "Open the model request after an invoice lookup and find the same payments that the tool returned.",
+              "function_source": "src/forge_workshop_kit/pending/teaching.py",
+              "run_label": "Freeze this executor and run the two starting tickets"
+            }
+          ],
+          "deck_keys": [
+            "loop-3"
+          ]
+        },
+        {
+          "id": "skills",
+          "title": "Check whether the skill was read",
+          "spec": "pending/skills.json",
+          "notebook_step": "manual",
+          "exercise_ids": [
+            "manual-skill"
+          ],
+          "deck_concepts": [
+            "Check whether the skill was read"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/teaching.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ=="
+            },
+            {
+              "label": "Agent loop",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/loop.py"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "manual-skill",
+              "cell_id": "pending_inc/action/manual_pending",
+              "function": null,
+              "check_control": null,
+              "run_control": "manual_pending",
+              "expected_output": "A saved skill diff and two runs from the same initial account records; no assumed quality gain.",
+              "forge_investigation": "Look for a successful read_skill call, its text in the next request, and any changed tool sequence."
+            }
+          ],
+          "deck_keys": [
+            "manual-interpret"
+          ]
+        },
+        {
+          "id": "retry",
+          "title": "A timed-out write may already have worked",
+          "spec": "pending/retry.json",
+          "notebook_step": "loop",
+          "exercise_ids": [
+            "retry"
+          ],
+          "deck_concepts": [
+            "A timed-out write may already have worked"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/teaching.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ=="
+            },
+            {
+              "label": "Retry fixture and worked answer",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/recovery.py"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "retry",
+              "cell_id": "pending_inc/action/check_recovery",
+              "function": "recover_access",
+              "check_control": "check_recovery",
+              "run_control": "check_recovery",
+              "expected_output": "The new-ID retry adds duplicate memberships; the repaired procedure leaves one membership and records an account read.",
+              "forge_investigation": "Compare the committed-write timeout, retry arguments, and subsequent status check in the two recovery traces.",
+              "function_source": "src/forge_workshop_kit/pending/recovery.py"
+            }
+          ],
+          "deck_keys": [
+            "retry-identity"
+          ]
+        },
+        {
+          "id": "checks",
+          "title": "Four checks answer different questions",
+          "spec": "pending/checks.json",
+          "notebook_step": "evals",
+          "exercise_ids": [
+            "state-scorer",
+            "judge-validator"
+          ],
+          "deck_concepts": [
+            "Four checks answer different questions"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/teaching.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "state-scorer",
+              "cell_id": "pending_inc/action/pending_judge",
+              "function": "my_state_check",
+              "check_control": "check_pending_scorer",
+              "run_control": "pending_judge",
+              "expected_output": "Full refund passes; partial, absent, and duplicate refunds fail despite identical completion claims.",
+              "forge_investigation": "Compare the account check and explanation judgment for the same starting ticket in the development evaluation.",
+              "function_source": "src/forge_workshop_kit/pending/teaching.py"
+            },
+            {
+              "id": "judge-validator",
+              "cell_id": "pending_inc/action/pending_judge",
+              "function": "my_judge_validation",
+              "check_control": "check_pending_scorer",
+              "run_control": "pending_judge",
+              "expected_output": "Valid answers pass the local check; string booleans and empty reasons fail. Unavailable judgments remain missing.",
+              "forge_investigation": "Open the saved judge request and reason. Check whether a structurally valid answer agrees with the recorded actions.",
+              "function_source": "src/forge_workshop_kit/pending/teaching.py"
+            }
+          ],
+          "deck_keys": [
+            "checks"
+          ]
+        },
+        {
+          "id": "changes",
+          "title": "Test a changed procedure on the same ticket",
+          "spec": "pending/changes.json",
+          "notebook_step": "improve",
+          "exercise_ids": [
+            "improvement-controller"
+          ],
+          "deck_concepts": [
+            "Test a changed procedure on the same ticket"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/teaching.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "improvement-controller",
+              "cell_id": "pending_inc/action/improve_pending",
+              "function": null,
+              "check_control": null,
+              "run_control": "improve_pending",
+              "expected_output": "Two rounds of proposals, probes, tested composition, and saved lessons, including unchanged versions when retained.",
+              "forge_investigation": "Select a branch and match its changed files, proposal rationale, executed harness, and Agent Lens conversation.",
+              "run_label": "Round 1 · Ask for two competing changes; then follow the current phase"
+            }
+          ],
+          "deck_keys": [
+            "branch-3"
+          ]
+        }
+      ],
+      "notebook_slug": "pending_inc"
+    },
+    {
+      "slug": "solar",
+      "deck_slug": "solar",
+      "title": "Build a reproducible solar forecast",
+      "overview": "solar/overview.json",
+      "poster": "solar/poster.json",
+      "sequences": [
+        {
+          "id": "window",
+          "title": "Construct one forecast window",
+          "spec": "solar/window.json",
+          "notebook_step": "baseline",
+          "exercise_ids": [
+            "persistence"
+          ],
+          "deck_concepts": [
+            "Construct one forecast window"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/solar/candidate.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg=="
+            },
+            {
+              "label": "Data acquisition and partitions",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-contract.md"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "persistence",
+              "cell_id": "solar_autoresearch/action/baseline_button",
+              "function": "persistence_forecast",
+              "check_control": "check_persistence",
+              "run_control": "baseline_button",
+              "expected_output": "One prediction per window and the validation MAE for copying the latest reading.",
+              "forge_investigation": "Find the baseline’s dataset identity, date split, saved predictions, and error.",
+              "function_source": "src/forge_workshop_kit/solar_teaching.py"
+            }
+          ],
+          "deck_keys": [
+            "goes-window"
+          ]
+        },
+        {
+          "id": "model-shapes",
+          "title": "Follow the tensor through the model",
+          "spec": "solar/model-shapes.json",
+          "notebook_step": "search",
+          "exercise_ids": [
+            "measurement-model"
+          ],
+          "deck_concepts": [
+            "Follow the tensor through the model"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/solar/candidate.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "measurement-model",
+              "cell_id": "solar_autoresearch/action/inspect_shapes",
+              "function": "build_model",
+              "check_control": "inspect_shapes",
+              "run_control": "inspect_shapes",
+              "expected_output": "A small forward pass returns one forecast per example without training or inference calls.",
+              "forge_investigation": "After the search, compare architecture, width, and source in the MLP and CNN runs.",
+              "function_source": "examples/solar/candidate.py"
+            }
+          ],
+          "deck_keys": [
+            "batch-shapes"
+          ]
+        },
+        {
+          "id": "learning",
+          "title": "Turn a prediction error into a weight update",
+          "spec": "solar/learning.json",
+          "notebook_step": "search",
+          "exercise_ids": [
+            "measurement-loss",
+            "flux-metric"
+          ],
+          "deck_concepts": [
+            "Turn a prediction error into a weight update"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/solar/candidate.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "measurement-loss",
+              "cell_id": "solar_autoresearch/action/run_first_trial",
+              "function": "training_loss",
+              "check_control": "check_measurement",
+              "run_control": "run_first_trial",
+              "expected_output": "The free loss check passes; the first Sweep trial uses this source. The remaining trials reuse the same code and fixed data partitions.",
+              "forge_investigation": "Compare candidate.py and losses.json with the source and learning curves in the selected Sweep run.",
+              "function_source": "examples/solar/candidate.py",
+              "run_label": "Run one tracked Sweep trial"
+            },
+            {
+              "id": "flux-metric",
+              "cell_id": "solar_autoresearch/action/run_first_trial",
+              "function": "my_flux_mae",
+              "check_control": "check_measurement",
+              "run_control": "run_first_trial",
+              "expected_output": "Identical arrays score 0 and a constant one-unit error scores 1; the learner metric agrees with the fixed scorer.",
+              "forge_investigation": "Find learner_metric and the independent validation error in the same training result.",
+              "function_source": "src/forge_workshop_kit/solar_teaching.py",
+              "run_label": "Run one tracked Sweep trial"
+            }
+          ],
+          "deck_keys": [
+            "training-step"
+          ]
+        },
+        {
+          "id": "images",
+          "title": "Predict a correction to the current image",
+          "spec": "solar/images.json",
+          "notebook_step": "images",
+          "exercise_ids": [
+            "image-model",
+            "image-loss",
+            "image-score"
+          ],
+          "deck_concepts": [
+            "Predict a correction to the current image"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/solar/candidate.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "image-model",
+              "cell_id": "solar_autoresearch/action/run_images",
+              "function": "forward",
+              "check_control": "check_images",
+              "run_control": "run_images",
+              "expected_output": "Both architectures return a future image of the expected shape and train on identical image windows.",
+              "forge_investigation": "Compare the direct and residual runs’ source, predictions, and validation errors.",
+              "function_source": "examples/solar/candidate.py"
+            },
+            {
+              "id": "image-loss",
+              "cell_id": "solar_autoresearch/action/run_images",
+              "function": "training_loss",
+              "check_control": "check_images",
+              "run_control": "run_images",
+              "expected_output": "The local image checks pass; both manual models use the same authored training loss.",
+              "forge_investigation": "Open each manual image model’s candidate.py and loss history before comparing its validation forecast.",
+              "function_source": "examples/solar/candidate.py"
+            },
+            {
+              "id": "image-score",
+              "cell_id": "solar_autoresearch/action/try_scorer",
+              "function": "my_image_mae",
+              "check_control": "check_images",
+              "run_control": "try_scorer",
+              "expected_output": "A +1 error over the disk scores 1; changing only off-disk pixels scores 0.",
+              "forge_investigation": "After training, compare learner_metric with the fixed masked image error in the same run.",
+              "function_source": "src/forge_workshop_kit/solar_teaching.py"
+            }
+          ],
+          "deck_keys": [
+            "residual"
+          ]
+        },
+        {
+          "id": "run-record",
+          "title": "Keep the experiment and its outputs together",
+          "spec": "solar/run-record.json",
+          "notebook_step": "search",
+          "exercise_ids": [
+            "training-record",
+            "remaining-sweep"
+          ],
+          "deck_concepts": [
+            "Keep the experiment and its outputs together"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/solar/candidate.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "training-record",
+              "cell_id": "solar_autoresearch/action/run_first_trial",
+              "function": "run_training",
+              "check_control": "check_measurement",
+              "run_control": "run_first_trial",
+              "expected_output": "One tracked trial saves its source, weights, predictions, losses, and validation score. Continue the same Sweep to complete all six configurations.",
+              "forge_investigation": "Open one Sweep run and its Artifact. Match candidate.py, weights.pt, predictions.npy, configuration, and validation score.",
+              "run_label": "Run one tracked Sweep trial"
+            },
+            {
+              "id": "remaining-sweep",
+              "cell_id": "solar_autoresearch/action/run_search",
+              "function": "run_measurement_sweep",
+              "check_control": "check_measurement",
+              "run_control": "run_search",
+              "run_label": "Run the remaining Sweep trials",
+              "expected_output": "All six distinct configurations have matching completed training records. Previously completed trials are reused.",
+              "forge_investigation": "Compare architecture, width, learning rate, and loss curves across the six runs in the same native Sweep."
+            }
+          ],
+          "deck_keys": [
+            "stage"
+          ]
+        },
+        {
+          "id": "research",
+          "title": "Test the research agent’s code changes",
+          "spec": "solar/research.json",
+          "notebook_step": "research",
+          "exercise_ids": [
+            "evidence",
+            "research-controller",
+            "adoption-rule"
+          ],
+          "deck_concepts": [
+            "Test the research agent’s code changes"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/solar/candidate.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg=="
+            },
+            {
+              "label": "Recorded proposals and probes",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/solar/public/recorded-study.json"
+            },
+            {
+              "label": "Qualification outcomes",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "evidence",
+              "cell_id": "solar_autoresearch/action/research_button",
+              "function": "select_validation_evidence",
+              "check_control": "check_evidence",
+              "run_control": "research_button",
+              "expected_output": "The free check rejects test records and preserves the evidence actually sent with each proposal.",
+              "forge_investigation": "Open the evidence-read span and proposal request; match them to the selected parent training run.",
+              "function_source": "src/forge_workshop_kit/solar_teaching.py",
+              "run_label": "Round 1: Propose two code changes"
+            },
+            {
+              "id": "research-controller",
+              "cell_id": "solar_autoresearch/action/research_button",
+              "function": "next_research_action",
+              "check_control": null,
+              "run_control": "research_button",
+              "expected_output": "Two proposals per round are reviewed and tested; composition is tested before selection.",
+              "forge_investigation": "Follow a branch from the code diff to the training result and the next research-agent request.",
+              "run_label": "Round 1: current action; then Round 2: current action"
+            },
+            {
+              "id": "adoption-rule",
+              "cell_id": "solar_autoresearch/action/research_button",
+              "function": "choose_adoption",
+              "check_control": null,
+              "run_control": "research_button",
+              "expected_output": "The adopted record names the tested candidate only when its validation error is strictly lower; otherwise the parent remains.",
+              "forge_investigation": "Compare the adoption record, tested composition, and retained lesson in the branch view.",
+              "run_label": "Round 1: Save the adopted version and lesson; repeat in Round 2"
+            }
+          ],
+          "deck_keys": [
+            "compose"
+          ]
+        }
+      ],
+      "notebook_slug": "solar_autoresearch"
+    },
+    {
+      "slug": "routing",
+      "deck_slug": "routing",
+      "title": "Train a support router and check its release",
+      "overview": "routing/overview.json",
+      "poster": "routing/poster.json",
+      "sequences": [
+        {
+          "id": "features",
+          "title": "Turn one message into classifier input",
+          "spec": "routing/features.json",
+          "notebook_step": "baseline",
+          "exercise_ids": [
+            "classifier",
+            "embedding-classifier"
+          ],
+          "deck_concepts": [
+            "Turn one message into classifier input"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "classifier",
+              "cell_id": "request_routing/action/train_classifiers",
+              "function": "make_classifier",
+              "function_source": "src/forge_workshop_kit/routing_teaching.py",
+              "check_control": "check_classifier",
+              "run_control": "train_classifiers",
+              "expected_output": "One fitted TF–IDF classifier with validation predictions.",
+              "forge_investigation": "Find a mistaken route and its feature settings in the saved TF–IDF run."
+            },
+            {
+              "id": "embedding-classifier",
+              "cell_id": "request_routing/action/train_embedding",
+              "function": "make_classifier",
+              "function_source": "src/forge_workshop_kit/routing_teaching.py",
+              "check_control": "check_classifier",
+              "run_control": "train_embedding",
+              "expected_output": "Matched TF–IDF and sentence-feature validation predictions; the comparison completes only when both are saved.",
+              "forge_investigation": "Compare the two runs on the same validation requests; inspect one corrected route and one remaining error."
+            }
+          ],
+          "deck_keys": [
+            "word-vector"
+          ]
+        },
+        {
+          "id": "decision",
+          "title": "Choose a route, then decide whether to review it",
+          "spec": "routing/decision.json",
+          "notebook_step": "review",
+          "exercise_ids": [
+            "review"
+          ],
+          "deck_concepts": [
+            "Choose a route, then decide whether to review it"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "review",
+              "cell_id": "request_routing/action/save_label",
+              "function": "needs_review",
+              "function_source": "src/forge_workshop_kit/routing_teaching.py",
+              "check_control": "check_policy",
+              "run_control": "save_label",
+              "expected_output": "A reviewed label with its supporting request.",
+              "forge_investigation": "Open the versioned review record and its original prediction."
+            }
+          ],
+          "deck_keys": [
+            "threshold-policy"
+          ]
+        },
+        {
+          "id": "labels",
+          "title": "Turn a reviewed mistake into a training example",
+          "spec": "routing/labels.json",
+          "notebook_step": "review",
+          "exercise_ids": [
+            "review"
+          ],
+          "deck_concepts": [
+            "Turn a reviewed mistake into a training example"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "review",
+              "cell_id": "request_routing/action/save_label",
+              "function": "needs_review",
+              "function_source": "src/forge_workshop_kit/routing_teaching.py",
+              "check_control": "check_policy",
+              "run_control": "save_label",
+              "expected_output": "A reviewed label with its supporting request.",
+              "forge_investigation": "Open the versioned review record and its original prediction."
+            }
+          ],
+          "deck_keys": [
+            "review-provenance"
+          ]
+        },
+        {
+          "id": "metrics",
+          "title": "Calculate F1 for each intent before averaging",
+          "spec": "routing/metrics.json",
+          "notebook_step": "final",
+          "exercise_ids": [
+            "classifier"
+          ],
+          "deck_concepts": [
+            "Calculate F1 for each intent before averaging"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw=="
+            },
+            {
+              "label": "Classification metric implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "classifier",
+              "cell_id": "request_routing/action/train_classifiers",
+              "function": "make_classifier",
+              "function_source": "src/forge_workshop_kit/routing_teaching.py",
+              "check_control": "check_classifier",
+              "run_control": "train_classifiers",
+              "expected_output": "One fitted TF–IDF classifier with validation predictions.",
+              "forge_investigation": "Find a mistaken route and its feature settings in the saved TF–IDF run."
+            }
+          ],
+          "deck_keys": [
+            "intent-counts"
+          ]
+        },
+        {
+          "id": "judge",
+          "title": "Check the automated reviewer against people",
+          "spec": "routing/judge.json",
+          "notebook_step": "judge",
+          "exercise_ids": [
+            "prompted-routing",
+            "judge"
+          ],
+          "deck_concepts": [
+            "Check the automated reviewer against people"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "prompted-routing",
+              "cell_id": "request_routing/action/run_prompted",
+              "function": null,
+              "check_control": null,
+              "run_control": "run_prompted",
+              "expected_output": "Eight saved development routes, separate from full classifier evaluation.",
+              "forge_investigation": "Open one routing conversation and compare the message, chosen intent, and explanation."
+            },
+            {
+              "id": "judge",
+              "cell_id": "request_routing/action/run_judge",
+              "function": "validate_judge",
+              "function_source": "src/forge_workshop_kit/routing_teaching.py",
+              "check_control": "check_judge",
+              "run_control": "run_judge",
+              "expected_output": "Available judgments remain separate from invalid or unavailable results.",
+              "forge_investigation": "Compare the judge with the accepted human labels."
+            }
+          ],
+          "deck_keys": [
+            "judge-purpose"
+          ]
+        },
+        {
+          "id": "release",
+          "title": "Preserve the mapping between scores and intents",
+          "spec": "routing/release.json",
+          "notebook_step": "release",
+          "exercise_ids": [
+            "release-loader",
+            "release-repair"
+          ],
+          "deck_concepts": [
+            "Preserve the mapping between scores and intents"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw=="
+            },
+            {
+              "label": "Release loader and checks",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing_release.py"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "release-loader",
+              "cell_id": "routing.release.repair",
+              "function": "label_names",
+              "function_source": "src/forge_workshop_kit/routing_release.py",
+              "check_control": "release_check",
+              "run_control": "release_repair",
+              "expected_output": "The repaired loader maps each probability column back to its original intent and reproduces healthy predictions on the fixed review-pool cases.",
+              "forge_investigation": "Compare one wrong route with the healthy and repaired rows; find the unchanged probabilities and changed intent ordering."
+            },
+            {
+              "id": "release-repair",
+              "cell_id": "routing.release.repair",
+              "function": "check_release",
+              "function_source": "src/forge_workshop_kit/routing_release.py",
+              "check_control": "release_check",
+              "run_control": "release_repair",
+              "expected_output": "Healthy, faulty, and repaired predictions on the same requests, with label-order checks.",
+              "forge_investigation": "Follow a changed route through its trace, saved wrapper, and aligned evaluation row."
+            }
+          ],
+          "deck_keys": [
+            "release-columns"
+          ]
+        }
+      ],
+      "notebook_slug": "request_routing"
+    },
+    {
+      "slug": "inspection",
+      "deck_slug": "inspection",
+      "title": "Find defects and measure what gets missed",
+      "overview": "inspection/overview.json",
+      "poster": "inspection/poster.json",
+      "sequences": [
+        {
+          "id": "representations",
+          "title": "Compare whole-image and patch features",
+          "spec": "inspection/representations.json",
+          "notebook_step": "features",
+          "exercise_ids": [
+            "features"
+          ],
+          "deck_concepts": [
+            "Compare whole-image and patch features"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA=="
+            },
+            {
+              "label": "Frozen encoder",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection_encoder.py"
+            },
+            {
+              "label": "VisA data and license",
+              "url": "https://github.com/amazon-science/spot-diff"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "features",
+              "cell_id": "visual_inspection/action/train_inspection",
+              "function": "build_features",
+              "function_source": "src/forge_workshop_kit/inspection_teaching.py",
+              "check_control": "check_inspection_features",
+              "run_control": "train_inspection",
+              "expected_output": "Patch-feature predictions aligned to the saved whole-image baseline; comparison complete only when both exist.",
+              "forge_investigation": "Compare the models and their saved feature implementations."
+            }
+          ],
+          "deck_keys": [
+            "patch-grid"
+          ]
+        },
+        {
+          "id": "patch-distance",
+          "title": "Calculate one location’s distance",
+          "spec": "inspection/patch-distance.json",
+          "notebook_step": "features",
+          "exercise_ids": [
+            "features"
+          ],
+          "deck_concepts": [
+            "Calculate one location’s distance"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "features",
+              "cell_id": "visual_inspection/action/train_inspection",
+              "function": "build_features",
+              "function_source": "src/forge_workshop_kit/inspection_teaching.py",
+              "check_control": "check_inspection_features",
+              "run_control": "train_inspection",
+              "expected_output": "Patch-feature predictions aligned to the saved whole-image baseline; comparison complete only when both exist.",
+              "forge_investigation": "Compare the models and their saved feature implementations."
+            }
+          ],
+          "deck_keys": [
+            "one-patch-distance"
+          ]
+        },
+        {
+          "id": "threshold",
+          "title": "Choose a threshold from validation data",
+          "spec": "inspection/threshold.json",
+          "notebook_step": "baseline",
+          "exercise_ids": [
+            "threshold"
+          ],
+          "deck_concepts": [
+            "Choose a threshold from validation data"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "threshold",
+              "cell_id": "visual_inspection/action/train_whole",
+              "function": "choose_threshold",
+              "function_source": "src/forge_workshop_kit/inspection_teaching.py",
+              "check_control": "check_inspection_threshold",
+              "run_control": "train_whole",
+              "expected_output": "The whole-image classifier, validation predictions, and a threshold selected from validation data.",
+              "forge_investigation": "Find misses, false alarms, and review volume separately."
+            }
+          ],
+          "deck_keys": [
+            "threshold"
+          ]
+        },
+        {
+          "id": "review",
+          "title": "Compare equal labeling budgets",
+          "spec": "inspection/review.json",
+          "notebook_step": "review",
+          "exercise_ids": [
+            "review"
+          ],
+          "deck_concepts": [
+            "Compare equal labeling budgets"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "review",
+              "cell_id": "visual_inspection/action/select_inspection_review",
+              "function": "choose_review",
+              "function_source": "src/forge_workshop_kit/inspection_teaching.py",
+              "check_control": "check_inspection_review",
+              "run_control": "select_inspection_review",
+              "expected_output": "Two review selections of exactly 24 boards.",
+              "forge_investigation": "Compare active and random selections under the same budget."
+            }
+          ],
+          "deck_keys": [
+            "active-selection"
+          ]
+        },
+        {
+          "id": "case-changes",
+          "title": "Inspect a recovered defect and a new miss",
+          "spec": "inspection/case-changes.json",
+          "notebook_step": "evaluate",
+          "exercise_ids": [
+            "features"
+          ],
+          "deck_concepts": [
+            "Inspect a recovered defect and a new miss"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "features",
+              "cell_id": "visual_inspection/action/train_inspection",
+              "function": "build_features",
+              "function_source": "src/forge_workshop_kit/inspection_teaching.py",
+              "check_control": "check_inspection_features",
+              "run_control": "train_inspection",
+              "expected_output": "Patch-feature predictions aligned to the saved whole-image baseline; comparison complete only when both exist.",
+              "forge_investigation": "Compare the models and their saved feature implementations."
+            }
+          ],
+          "deck_keys": [
+            "improved-case"
+          ]
+        },
+        {
+          "id": "reproduce",
+          "title": "Recover every component of the detector",
+          "spec": "inspection/reproduce.json",
+          "notebook_step": "reproduce",
+          "exercise_ids": [
+            "features",
+            "threshold"
+          ],
+          "deck_concepts": [
+            "Recover every component of the detector"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "features",
+              "cell_id": "visual_inspection/action/train_inspection",
+              "function": "build_features",
+              "function_source": "src/forge_workshop_kit/inspection_teaching.py",
+              "check_control": "check_inspection_features",
+              "run_control": "train_inspection",
+              "expected_output": "Patch-feature predictions aligned to the saved whole-image baseline; comparison complete only when both exist.",
+              "forge_investigation": "Compare the models and their saved feature implementations."
+            },
+            {
+              "id": "threshold",
+              "cell_id": "visual_inspection/action/train_whole",
+              "function": "choose_threshold",
+              "function_source": "src/forge_workshop_kit/inspection_teaching.py",
+              "check_control": "check_inspection_threshold",
+              "run_control": "train_whole",
+              "expected_output": "The whole-image classifier, validation predictions, and a threshold selected from validation data.",
+              "forge_investigation": "Find misses, false alarms, and review volume separately."
+            }
+          ],
+          "deck_keys": [
+            "reload-detector"
+          ]
+        }
+      ],
+      "notebook_slug": "visual_inspection"
+    },
+    {
+      "slug": "transit",
+      "deck_slug": "transit",
+      "title": "Build a departure board with two coding agents",
+      "overview": "transit/overview.json",
+      "poster": "transit/poster.json",
+      "sequences": [
+        {
+          "id": "service-time",
+          "title": "Keep the GTFS service day after midnight",
+          "spec": "transit/service-time.json",
+          "notebook_step": "setup",
+          "exercise_ids": [
+            "opening-timetable",
+            "acceptance"
+          ],
+          "deck_concepts": [
+            "Keep the GTFS service day after midnight"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory_teaching.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ=="
+            },
+            {
+              "label": "GTFS conversion",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/transit.py"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "opening-timetable",
+              "cell_id": "transit_factory/action/try_departure",
+              "function": null,
+              "check_control": null,
+              "run_control": "try_departure",
+              "run_label": "Show departures from the saved timetable",
+              "expected_output": "Historical departures are shown locally without a session, agent call, or publication.",
+              "forge_investigation": "After building the app, compare the same service-time conversion with its acceptance result."
+            },
+            {
+              "id": "acceptance",
+              "cell_id": "transit_factory/action/acceptance_check",
+              "function": "check_departures",
+              "check_control": "acceptance_check",
+              "run_control": "acceptance_check",
+              "expected_output": "The real after-midnight departure passes; removing it or changing its service day fails.",
+              "forge_investigation": "After integration, find this same acceptance result beside the exact GTFS and source versions.",
+              "function_source": "src/forge_workshop_kit/factory_teaching.py"
+            }
+          ],
+          "deck_keys": [
+            "the-last-train-can-belong-to-yesterday-s-service"
+          ]
+        },
+        {
+          "id": "worker",
+          "title": "Return a tool result to the coding worker",
+          "spec": "transit/worker.json",
+          "notebook_step": "worker",
+          "exercise_ids": [
+            "worker",
+            "dispatch",
+            "solo-integration"
+          ],
+          "deck_concepts": [
+            "Return a tool result to the coding worker"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory_teaching.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "worker",
+              "cell_id": "transit_factory/action/run_solo",
+              "function": "build_worker_request",
+              "check_control": "worker_check",
+              "run_control": "run_solo",
+              "expected_output": "The free check retains task, source, and lesson content; the explicit run starts one worker with that request.",
+              "forge_investigation": "Open the initial model request and find the assigned files, task, and supplied lessons.",
+              "function_source": "src/forge_workshop_kit/factory_teaching.py"
+            },
+            {
+              "id": "dispatch",
+              "cell_id": "transit_factory/action/run_solo",
+              "function": "dispatch_action",
+              "check_control": "worker_check",
+              "run_control": "run_solo",
+              "expected_output": "A selected read/edit/test operation returns the actual observation to the worker’s next request.",
+              "forge_investigation": "Follow one chosen operation through its arguments, tool result, and following model request.",
+              "function_source": "src/forge_workshop_kit/factory_teaching.py"
+            },
+            {
+              "id": "solo-integration",
+              "cell_id": "transit_factory/action/integrate_solo",
+              "function": null,
+              "check_control": null,
+              "run_control": "integrate_solo",
+              "run_label": "Review and test the one-builder app",
+              "expected_output": "The solo integration and app preview are available. The later memory comparison starting release is not selected yet.",
+              "forge_investigation": "Follow one integrated patch to its builder trace and combined acceptance checks."
+            }
+          ],
+          "deck_keys": [
+            "one-worker-still-needs-a-complete-loop"
+          ]
+        },
+        {
+          "id": "claims",
+          "title": "Claim each task once",
+          "spec": "transit/claims.json",
+          "notebook_step": "tasks",
+          "exercise_ids": [
+            "claims",
+            "atomic-claim"
+          ],
+          "deck_concepts": [
+            "Claim each task once"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory_teaching.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "claims",
+              "cell_id": "transit_factory/action/run_team",
+              "function": "ready_tasks",
+              "check_control": "tasks_check",
+              "run_control": "run_team",
+              "expected_output": "The local dependency check blocks unfinished prerequisites and admits integrated ones.",
+              "forge_investigation": "Compare claim and integration events in the task board with the worker conversations.",
+              "function_source": "src/forge_workshop_kit/factory_teaching.py"
+            },
+            {
+              "id": "atomic-claim",
+              "cell_id": "transit_factory/action/run_team",
+              "function": "claim_task",
+              "check_control": "tasks_check",
+              "run_control": "run_team",
+              "expected_output": "Two simultaneous attempts produce exactly one owner for a task.",
+              "forge_investigation": "Find the accepted ownership claim before the worker’s first edit and follow that task through integration.",
+              "function_source": "src/forge_workshop_kit/factory_teaching.py"
+            }
+          ],
+          "deck_keys": [
+            "both-workers-can-see-a-pending-task"
+          ]
+        },
+        {
+          "id": "integration",
+          "title": "Test the combined application",
+          "spec": "transit/integration.json",
+          "notebook_step": "integrate",
+          "exercise_ids": [
+            "solo-integration",
+            "scorer"
+          ],
+          "deck_concepts": [
+            "Test the combined application"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory_teaching.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "solo-integration",
+              "cell_id": "transit_factory/action/integrate_solo",
+              "function": null,
+              "check_control": null,
+              "run_control": "integrate_solo",
+              "run_label": "Review and test the one-builder app",
+              "expected_output": "The solo integration and app preview are available. The later memory comparison starting release is not selected yet.",
+              "forge_investigation": "Follow one integrated patch to its builder trace and combined acceptance checks."
+            },
+            {
+              "id": "scorer",
+              "cell_id": "transit_factory/action/run_evaluation",
+              "function": "score_scenario",
+              "check_control": "evaluate_check",
+              "run_control": "run_evaluation",
+              "expected_output": "Exact lists pass; missing or reordered departures fail. The independent reserved-scenario scorer remains separate.",
+              "forge_investigation": "Open a matched case in EvalTables and trace its delivered departure list back to the tested source.",
+              "function_source": "src/forge_workshop_kit/factory_teaching.py"
+            }
+          ],
+          "deck_keys": [
+            "integration-checks-the-patches-against-their-base"
+          ]
+        },
+        {
+          "id": "memory",
+          "title": "Retrieve a lesson with evidence and scope",
+          "spec": "transit/memory.json",
+          "notebook_step": "memory",
+          "exercise_ids": [
+            "memory"
+          ],
+          "deck_concepts": [
+            "Retrieve a lesson with evidence and scope"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory_teaching.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "memory",
+              "cell_id": "transit_factory/action/run_followup",
+              "function": "select_memories",
+              "check_control": "memory_check",
+              "run_control": "run_followup",
+              "expected_output": "The free check returns only the supported current lesson; matched follow-up workers differ only in their accepted-lesson input.",
+              "forge_investigation": "Open read_memory and the next model request. Identify the exact lesson returned and the subsequent code it may have influenced.",
+              "function_source": "src/forge_workshop_kit/factory_teaching.py"
+            }
+          ],
+          "deck_keys": [
+            "a-saved-note-is-not-automatically-accepted"
+          ]
+        },
+        {
+          "id": "comparison",
+          "title": "Measure delivery, coordination, and memory separately",
+          "spec": "transit/comparison.json",
+          "notebook_step": "evaluate",
+          "exercise_ids": [
+            "scorer",
+            "release"
+          ],
+          "deck_concepts": [
+            "Measure delivery, coordination, and memory separately"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory_teaching.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ=="
+            },
+            {
+              "label": "Recorded outcomes",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/transit.md"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "scorer",
+              "cell_id": "transit_factory/action/run_evaluation",
+              "function": "score_scenario",
+              "check_control": "evaluate_check",
+              "run_control": "run_evaluation",
+              "expected_output": "Exact lists pass; missing or reordered departures fail. The independent reserved-scenario scorer remains separate.",
+              "forge_investigation": "Open a matched case in EvalTables and trace its delivered departure list back to the tested source.",
+              "function_source": "src/forge_workshop_kit/factory_teaching.py"
+            },
+            {
+              "id": "release",
+              "cell_id": "transit_factory/action/release_button",
+              "function": "release_decision",
+              "check_control": "release_check",
+              "run_control": "release_button",
+              "expected_output": "The local release check rejects empty, false, and unavailable results; publication records the selected source and decision.",
+              "forge_investigation": "Open the released Artifact and its evaluation. Verify source, dataset, contracts, lessons, and test results before reproducing the app.",
+              "function_source": "src/forge_workshop_kit/factory_teaching.py"
+            }
+          ],
+          "deck_keys": [
+            "evaluate-the-product-and-the-process-separately"
+          ]
+        }
+      ],
+      "notebook_slug": "transit_factory"
+    },
+    {
+      "slug": "airline_monitoring",
+      "deck_slug": "airline_monitoring",
+      "title": "Monitor an airline agent and improve its tests",
+      "overview": "airline_monitoring/overview.json",
+      "poster": "airline_monitoring/poster.json",
+      "sequences": [
+        {
+          "id": "itinerary",
+          "title": "Replace the requested flights and keep the rest",
+          "spec": "airline_monitoring/itinerary.json",
+          "notebook_step": "booking",
+          "exercise_ids": [
+            "opening-booking",
+            "booking",
+            "repair"
+          ],
+          "deck_concepts": [
+            "Replace the requested flights and keep the rest"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "opening-booking",
+              "cell_id": "airline_monitoring/action/try_booking",
+              "function": null,
+              "check_control": null,
+              "run_control": "try_booking",
+              "expected_output": "The original and resulting simulated booking show which untouched flights were preserved or lost. No model call or account is required.",
+              "forge_investigation": "Later, locate the actual itinerary arguments in your own discovery conversation."
+            },
+            {
+              "id": "booking",
+              "cell_id": "airline_monitoring/action/save_booking",
+              "function": null,
+              "check_control": null,
+              "run_control": "save_booking",
+              "expected_output": "A request-specific statement of the flights to change and the flights to preserve.",
+              "forge_investigation": "Compare this expectation with the first saved booking read after running discovery traffic."
+            },
+            {
+              "id": "repair",
+              "cell_id": "airline_monitoring/action/run_development",
+              "function": "my_itinerary_builder",
+              "check_control": "check_repair",
+              "run_control": "run_development",
+              "expected_output": "Eight matched executions on four development bookings, including the full resulting itinerary.",
+              "forge_investigation": "Compare the executed repair, tool arguments, booking state, and trace on the same request.",
+              "function_source": "src/forge_workshop_kit/airline_teaching.py"
+            }
+          ],
+          "deck_keys": [
+            "replace-semantics"
+          ]
+        },
+        {
+          "id": "traces",
+          "title": "Follow the passenger’s request through the write",
+          "spec": "airline_monitoring/traces.json",
+          "notebook_step": "discovery",
+          "exercise_ids": [
+            "instrument",
+            "discover"
+          ],
+          "deck_concepts": [
+            "Follow the passenger’s request through the write"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "instrument",
+              "cell_id": "airline_monitoring/action/first_trace",
+              "function": "my_tool_span",
+              "check_control": "check_instrumentation",
+              "run_control": "first_trace",
+              "expected_output": "A stored setup trace with the argument, result, actual timing, and your attribute.",
+              "forge_investigation": "Open the tool span and find the attribute you added.",
+              "function_source": "src/forge_workshop_kit/airline_teaching.py"
+            },
+            {
+              "id": "discover",
+              "cell_id": "airline_monitoring/action/run_first_discovery",
+              "function": "my_model_span",
+              "check_control": "check_instrumentation",
+              "run_control": "run_first_discovery",
+              "expected_output": "One saved discovery conversation with the original booking, tool arguments, returned booking, and final response.",
+              "forge_investigation": "Follow one booking update from the passenger request through the tool arguments to its returned booking.",
+              "function_source": "src/forge_workshop_kit/airline_teaching.py",
+              "run_label": "Run the first discovery request"
+            }
+          ],
+          "deck_keys": [
+            "trace-shape"
+          ]
+        },
+        {
+          "id": "alignment",
+          "title": "Test the monitoring rule against reviewed turns",
+          "spec": "airline_monitoring/alignment.json",
+          "notebook_step": "align",
+          "exercise_ids": [
+            "review",
+            "align",
+            "native-test"
+          ],
+          "deck_concepts": [
+            "Test the monitoring rule against reviewed turns"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA=="
+            },
+            {
+              "label": "Native qualification status",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/airline-monitoring-qualification.md"
+            }
+          ],
+          "exercises": [
+            {
+              "id": "review",
+              "cell_id": "airline_monitoring/action/save_review",
+              "function": null,
+              "check_control": null,
+              "run_control": "save_review",
+              "expected_output": "A reviewed turn is saved with its stage and trace identities; monitoring is not marked complete.",
+              "forge_investigation": "Use the same reviewed turn in native Alignment and inspect disagreements with the automated judge."
+            },
+            {
+              "id": "align",
+              "cell_id": "airline_monitoring/action/read_native_tag",
+              "function": null,
+              "check_control": null,
+              "run_control": "read_native_tag",
+              "expected_output": "Native criteria, scope, and alignment readback; unavailable features remain explicit.",
+              "forge_investigation": "Label turns, test criteria in Alignment, then save chosen criteria before enabling the tag."
+            },
+            {
+              "id": "native-test",
+              "cell_id": "airline_monitoring/action/run_alignment_test",
+              "function": null,
+              "check_control": null,
+              "run_control": "run_alignment_test",
+              "expected_output": "A completed native test gives an explicit match or no-match result; unavailable tests stay missing.",
+              "forge_investigation": "Compare the returned judge reason with the same turn and your human label."
+            }
+          ],
+          "deck_keys": [
+            "tag-lifecycle"
+          ]
+        },
+        {
+          "id": "coverage",
+          "title": "Count what the monitor has actually processed",
+          "spec": "airline_monitoring/coverage.json",
+          "notebook_step": "monitor",
+          "exercise_ids": [
+            "monitor",
+            "agreement"
+          ],
+          "deck_concepts": [
+            "Count what the monitor has actually processed"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "monitor",
+              "cell_id": "airline_monitoring/action/run_monitoring",
+              "function": "my_monitor",
+              "check_control": "check_monitor",
+              "run_control": "run_monitoring",
+              "expected_output": "Four new executions and precision, recall, coverage, and unavailable-result counts from reviewed labels.",
+              "forge_investigation": "Inspect tagged and unflagged turns; check the selected time range and pending processing.",
+              "function_source": "src/forge_workshop_kit/airline_teaching.py"
+            },
+            {
+              "id": "agreement",
+              "cell_id": "airline_monitoring/action/calculate_monitor",
+              "function": "my_monitor",
+              "function_source": "src/forge_workshop_kit/airline_teaching.py",
+              "check_control": "check_monitor",
+              "run_control": "calculate_monitor",
+              "expected_output": "Precision and recall on reviewed explicit native tests, with judging and review coverage reported separately.",
+              "forge_investigation": "Open the native Alignment example supporting one disagreement."
+            }
+          ],
+          "deck_keys": [
+            "coverage"
+          ]
+        },
+        {
+          "id": "regression",
+          "title": "Reconstruct an incident as an executable test",
+          "spec": "airline_monitoring/regression.json",
+          "notebook_step": "curate",
+          "exercise_ids": [
+            "curate",
+            "score",
+            "judge",
+            "regression"
+          ],
+          "deck_concepts": [
+            "Reconstruct an incident as an executable test"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "curate",
+              "cell_id": "airline_monitoring/action/save_regression",
+              "function": "case_from_reviewed_turn",
+              "check_control": "check_curation",
+              "run_control": "save_regression",
+              "expected_output": "Reviewed development cases containing the original booking, request, policy, expected behavior, and source links.",
+              "forge_investigation": "Open the source turn for a curated case and verify that its starting booking matches.",
+              "function_source": "src/forge_workshop_kit/airline_teaching.py"
+            },
+            {
+              "id": "score",
+              "cell_id": "airline_monitoring/action/save_evaluation_code",
+              "function": "my_state_scorer",
+              "check_control": "check_state_scorer",
+              "run_control": "save_evaluation_code",
+              "expected_output": "Checks that reject an unrequested itinerary change and a missing requested change.",
+              "forge_investigation": "Compare booking-state checks with the agent’s final completion message.",
+              "function_source": "src/forge_workshop_kit/airline_teaching.py"
+            },
+            {
+              "id": "judge",
+              "cell_id": "airline_monitoring/action/save_evaluation_code",
+              "function": "my_judge_validation",
+              "check_control": "check_judge_validation",
+              "run_control": "save_evaluation_code",
+              "expected_output": "A validated explanation rubric; malformed and unavailable judgments are distinct.",
+              "forge_investigation": "Read the evidence available to the explanation judge before accepting its reason.",
+              "function_source": "src/forge_workshop_kit/airline_teaching.py"
+            },
+            {
+              "id": "regression",
+              "cell_id": "airline_monitoring/action/run_regression",
+              "function": "my_itinerary_builder",
+              "function_source": "src/forge_workshop_kit/airline_teaching.py",
+              "check_control": "check_repair",
+              "run_control": "run_regression",
+              "expected_output": "A free paired adapter test uses the actual curated requests and starting bookings; every repaired case must pass before live development comparisons.",
+              "forge_investigation": "Open each regression case’s source turn and distinguish the controlled adapter drill from live agent executions."
+            }
+          ],
+          "deck_keys": [
+            "case-fields"
+          ]
+        },
+        {
+          "id": "comparison",
+          "title": "Compare the agent and monitor on matching requests",
+          "spec": "airline_monitoring/comparison.json",
+          "notebook_step": "final",
+          "exercise_ids": [
+            "freeze",
+            "final",
+            "traffic"
+          ],
+          "deck_concepts": [
+            "Compare the agent and monitor on matching requests"
+          ],
+          "source_links": [
+            {
+              "label": "Implementation",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+            },
+            {
+              "label": "Worked example and recorded outcomes",
+              "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA=="
+            }
+          ],
+          "exercises": [
+            {
+              "id": "freeze",
+              "cell_id": "airline_monitoring/action/freeze_version",
+              "function": null,
+              "check_control": null,
+              "run_control": "freeze_version",
+              "expected_output": "The tested itinerary code and monitoring criteria are fixed for comparison.",
+              "forge_investigation": "Open the exact source and criteria snapshot attached to the frozen version."
+            },
+            {
+              "id": "final",
+              "cell_id": "airline_monitoring/action/run_final",
+              "function": null,
+              "check_control": null,
+              "run_control": "run_final",
+              "expected_output": "Twelve executions: starting and repaired agents on six reserved bookings.",
+              "forge_investigation": "In EvalTables, align the same case and inspect preserved flights, completion, time, cost, and missing judgments."
+            },
+            {
+              "id": "traffic",
+              "cell_id": "airline_monitoring/action/run_subsequent",
+              "function": null,
+              "check_control": null,
+              "run_control": "run_subsequent",
+              "expected_output": "Eight executions: two versions on four subsequent requests, with the frozen monitoring criteria.",
+              "forge_investigation": "Check whether the same tag detects remaining issues on both versions."
+            }
+          ],
+          "deck_keys": [
+            "aligned-comparison"
+          ]
+        }
+      ],
+      "notebook_slug": "airline_monitoring"
+    }
+  ]
+}

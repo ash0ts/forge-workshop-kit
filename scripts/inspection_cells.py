@@ -10,13 +10,15 @@ from pathlib import Path
 import numpy as np
 import marimo as mo
 from forge_workshop_kit import WorkshopSession, setup, ui, inspection
-from forge_workshop_kit import aria
+from forge_workshop_kit import aria, technical_guides
 from forge_workshop_kit import inspection_teaching as teaching
 from forge_workshop_kit.session import digest
 from forge_workshop_kit.traces import event, export_trace
 from forge_workshop_kit.review import save_review
 from forge_workshop_kit.publication import publish_comparison, publish_report
 get_lab, set_lab = mo.state({})
+get_technical_guide_view, set_technical_guide_view = mo.state({}, allow_self_loops=True)
+technical_guide_controls = technical_guides.controls(mo, 'visual_inspection', set_technical_guide_view)
 get_step, set_step = mo.state("setup", allow_self_loops=True)
 get_feedback, set_feedback = mo.state({})
 ''', True)
@@ -35,8 +37,12 @@ def refresh_inspection():
 add('''
 _s = get_lab().get("session")
 inspection_nav = ui.navigation(mo, teaching.STEPS, get_step(), go_to, completed=teaching.completed_steps(_s), label="Workshop steps")
-mo.vstack([mo.Html(ui.STYLE), inspection_nav, mo.Html(ui.context(_s)) if _s else mo.md("Inspect the opening board, then connect. Looking at images and editing code does not train or publish.")])
+mo.vstack([mo.Html(ui.STYLE + technical_guides.theme_style()), inspection_nav, mo.Html(ui.context(_s)) if _s else mo.md("Inspect the opening board, then connect. Looking at images and editing code does not train or publish.")])
 ''', True)
+add('''
+technical_guide_view = technical_guides.panel(mo, 'visual_inspection', get_step(), get_technical_guide_view(), technical_guide_controls)
+technical_guide_view
+''', True, cell_id='visual_inspection/visual_guide')
 add('''
 mo.stop(get_step() != "setup")
 mo.vstack([mo.md("**4-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/inspection/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Find defective parts before they ship", "You’re joining a fictional circuit-board inspection team. A missed defect can leave the factory; a false alarm sends a usable board for another inspection. Your job is to compare both outcomes before choosing a detector.", theme="inspection")),

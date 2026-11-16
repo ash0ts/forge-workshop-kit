@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "id": "memory",
+  "title": "Retrieve a lesson with evidence and scope",
+  "eyebrow": "05 / Transit software factory",
+  "question": "Should this note enter the next worker’s request?",
+  "summary": "Exclude proposed, stale, and unrelated lessons. A useful-sounding sentence is not automatically accepted experience.",
+  "kind": "transformation",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory_teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "collections",
+      "title": "Keep different records separate",
+      "body": "The task board tracks ownership. Contracts specify interfaces. Lessons record checked experience.",
+      "output": "Tasks · contracts · lessons",
+      "symbol": "files",
+      "input": "Task, contract and lesson records"
+    },
+    {
+      "id": "filter",
+      "title": "Filter the lesson",
+      "body": "Require accepted status, matching scope and revision, and at least one task tag.",
+      "code": "entry[\"status\"] == \"accepted\"\nentry[\"scope\"] == scope\nentry[\"version\"] == revision",
+      "output": "Matching accepted lessons",
+      "symbol": "filter",
+      "excerpt_label": "Abbreviated code; full function in notebook.",
+      "input": "Lessons + scope + revision + task tags"
+    },
+    {
+      "id": "context",
+      "title": "Inspect what the worker read",
+      "body": "The next request must contain the selected lesson. Retrieval proves access to the note; delivery determines whether it helped.",
+      "output": "Saved memory read + resulting patch",
+      "symbol": "message",
+      "input": "Selected lesson + worker request"
+    }
+  ],
+  "states": [
+    {
+      "id": "collections",
+      "label": "Collections",
+      "visible": [
+        "collections"
+      ],
+      "focus": [
+        "collections"
+      ],
+      "caption": "Should this note enter the next worker’s request?"
+    },
+    {
+      "id": "filter",
+      "label": "Filter",
+      "visible": [
+        "collections",
+        "filter"
+      ],
+      "focus": [
+        "filter"
+      ],
+      "caption": "Should this note enter the next worker’s request?"
+    },
+    {
+      "id": "context",
+      "label": "Context",
+      "visible": [
+        "collections",
+        "filter",
+        "context"
+      ],
+      "focus": [
+        "context"
+      ],
+      "caption": "Should this note enter the next worker’s request?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "collections",
+        "filter",
+        "context"
+      ],
+      "focus": [],
+      "caption": "Should this note enter the next worker’s request?"
+    }
+  ]
+}

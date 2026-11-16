@@ -23,6 +23,8 @@ The durations include coding, discussion, and breaks. Participants should be com
 
 The [deck library](https://ash0ts.github.io/forge-workshop-kit/) includes PDFs and editable slide sources. For a short demonstration rather than a full class, use the [demo guide](docs/current-demo-guide.md).
 
+Each workshop also has a [one-page poster](https://ash0ts.github.io/forge-workshop-kit/) and step-by-step diagrams shared by its notebook and deck. The [visual guide gallery](https://ash0ts.github.io/forge-workshop-kit/visual-language/) shows the six reusable compositions. To use them in another project, install the standalone [teenage-engineering-visualizations skill](docs/technical-visuals.md). It includes its own fonts, renderer, examples, and export checks.
+
 ## Start in Forge
 
 1. Sign in to [Forge](https://forge.coreweave.com) and create a teaching project where you have write access. Use a public project if the facilitator should read progress without an invitation. Only publish the supplied public or fictional data there.

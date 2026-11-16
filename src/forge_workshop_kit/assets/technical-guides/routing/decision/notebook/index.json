@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "decision",
+  "kind": "sequence",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "79f928278f9428d734b500adefb7c23640d096f7475e8329abd7a1eca8b4122d",
+  "states": [
+    {
+      "id": "scores",
+      "label": "Scores",
+      "svg": "01-scores.svg",
+      "caption": "How does the winning intent differ from the decision to defer?"
+    },
+    {
+      "id": "confidence",
+      "label": "Confidence",
+      "svg": "02-confidence.svg",
+      "caption": "How does the winning intent differ from the decision to defer?"
+    },
+    {
+      "id": "margin",
+      "label": "Margin",
+      "svg": "03-margin.svg",
+      "caption": "How does the winning intent differ from the decision to defer?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "How does the winning intent differ from the decision to defer?"
+    }
+  ],
+  "html": "index.html"
+}

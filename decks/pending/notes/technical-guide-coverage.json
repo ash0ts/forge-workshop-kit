@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "workshop": "pending",
+  "overview": "technical-overview",
+  "sequences": [
+    {
+      "sequence": "harness",
+      "slide_key": "harness-inputs",
+      "notebook_step": "tools",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "dispatch",
+      "slide_key": "loop-3",
+      "notebook_step": "loop",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "skills",
+      "slide_key": "manual-interpret",
+      "notebook_step": "manual",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "retry",
+      "slide_key": "retry-identity",
+      "notebook_step": "loop",
+      "reveal_count": 5
+    },
+    {
+      "sequence": "checks",
+      "slide_key": "checks",
+      "notebook_step": "evals",
+      "reveal_count": 5
+    },
+    {
+      "sequence": "changes",
+      "slide_key": "branch-3",
+      "notebook_step": "improve",
+      "reveal_count": 5
+    }
+  ],
+  "source": "visual-guides/index.json",
+  "runtime_changes": false
+}

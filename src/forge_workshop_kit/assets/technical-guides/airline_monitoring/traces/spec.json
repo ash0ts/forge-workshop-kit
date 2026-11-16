@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "id": "traces",
+  "title": "Follow the passenger’s request through the write",
+  "eyebrow": "06 / Airline monitoring",
+  "question": "Where can you see what the tool actually changed?",
+  "summary": "The recorded live batch had recoverable tool errors and passing final booking checks. An error span is not automatically a failed booking.",
+  "kind": "sequence",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA=="
+    },
+    {
+      "label": "Code for this operation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+    }
+  ],
+  "steps": [
+    {
+      "id": "request",
+      "title": "Conversation and version",
+      "body": "Record the actual request, agent version, traffic batch, and turn grouping.",
+      "output": "Request linked to one execution",
+      "symbol": "message"
+    },
+    {
+      "id": "tool",
+      "title": "Tool arguments and result",
+      "body": "Record the booking arguments, returned observation, actual times, and error when present.",
+      "input": "Tool scope: arguments + result + timing",
+      "output": "Native span with operation evidence",
+      "symbol": "tool",
+      "code": "span.set_attributes({\n    \"workshop.request_id\": record[\"id\"]})",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "state",
+      "title": "Booking and final response",
+      "body": "Follow recovery and later writes before judging success. Compare the resulting booking with the passenger’s request.",
+      "output": "Independent state check + response",
+      "symbol": "itinerary"
+    }
+  ],
+  "states": [
+    {
+      "id": "request",
+      "label": "Request",
+      "visible": [
+        "request"
+      ],
+      "focus": [
+        "request"
+      ],
+      "caption": "Where can you see what the tool actually changed?"
+    },
+    {
+      "id": "tool",
+      "label": "Tool",
+      "visible": [
+        "request",
+        "tool"
+      ],
+      "focus": [
+        "tool"
+      ],
+      "caption": "Where can you see what the tool actually changed?"
+    },
+    {
+      "id": "state",
+      "label": "State",
+      "visible": [
+        "request",
+        "tool",
+        "state"
+      ],
+      "focus": [
+        "state"
+      ],
+      "caption": "Where can you see what the tool actually changed?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "request",
+        "tool",
+        "state"
+      ],
+      "focus": [],
+      "caption": "Where can you see what the tool actually changed?"
+    }
+  ]
+}

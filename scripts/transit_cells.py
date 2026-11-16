@@ -8,12 +8,14 @@ import json
 from pathlib import Path
 import marimo as mo
 from forge_workshop_kit import WorkshopSession, setup, ui
-from forge_workshop_kit import aria
+from forge_workshop_kit import aria, technical_guides
 from forge_workshop_kit import factory, transit, factory_teaching as teaching
 from forge_workshop_kit import transit_workshop as lab
 from forge_workshop_kit.traces import event, export_trace, saved_trace_inputs
 from forge_workshop_kit.session import digest
 get_context, set_context = mo.state({})
+get_technical_guide_view, set_technical_guide_view = mo.state({}, allow_self_loops=True)
+technical_guide_controls = technical_guides.controls(mo, 'transit_factory', set_technical_guide_view)
 get_step, set_step = mo.state("setup", allow_self_loops=True)
 get_revision, set_revision = mo.state(0)
 get_output, set_output = mo.state({})
@@ -47,8 +49,12 @@ add('''
 _s=current_session()
 _revision=get_revision()
 step_navigation=ui.navigation(mo,teaching.STEPS,get_step(),go_to,completed=teaching.complete_steps(_s),label="Build and release")
-mo.vstack([mo.Html(ui.STYLE),step_navigation,mo.Html(ui.context(_s)) if _s else mo.md("Copy this notebook into your Forge project. You will write the code that gives agents work and checks what they produce.")])
+mo.vstack([mo.Html(ui.STYLE + technical_guides.theme_style()),step_navigation,mo.Html(ui.context(_s)) if _s else mo.md("Copy this notebook into your Forge project. You will write the code that gives agents work and checks what they produce.")])
 ''', True)
+add('''
+technical_guide_view = technical_guides.panel(mo, 'transit_factory', get_step(), get_technical_guide_view(), technical_guide_controls)
+technical_guide_view
+''', True, cell_id='transit_factory/visual_guide')
 add('''
 mo.stop(get_step()!="setup")
 mo.vstack([mo.md("**6-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/transit/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Build a transit app with a team of coding agents","People leaving an evening event need the next departures and the last service home. Your team is building the departure board. You'll give two coding agents separate tasks, test their combined work, and decide what the next builders should remember.",theme="neutral",eyebrow="Six-hour software factory workshop")),mo.md("The schedule is real: a frozen MBTA GTFS feed for **November 28 to December 4, 2024**. GTFS joins routes, trips, stops, service calendars, and stop times. You'll inspect those records before asking agents to change code. The app displays historical scheduled departures, not live arrival predictions."),mo.md("**Your output:** a departure board you can run, the coordinator you wrote, and a release linked to its tests and Agent Lens conversations. The first work order adds next departures. The second adds the last departure tonight and an itinerary download."),mo.md("A software factory connects a request to assignments, code, integration tests, and a release decision. The builder agents write the app's query and display modules. You write the task selection, handoffs, memory retrieval, and checks around them."),mo.md("[GTFS source and terms](https://github.com/mbta/gtfs-documentation) · [Software-factory background](https://factory.strongdm.ai/) · [Workshop source](https://github.com/ash0ts/forge-workshop-kit/blob/main/notebooks/transit_factory.py)")])

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "judge",
+  "kind": "comparison",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "42a39c5c78c76451cce856a23cffb4a3b582d8b2ec7f775f691c53347e521793",
+  "states": [
+    {
+      "id": "route",
+      "label": "Route",
+      "svg": "01-route.svg",
+      "caption": "Is the answer well-formed, and is its judgment supported?"
+    },
+    {
+      "id": "validate",
+      "label": "Validate",
+      "svg": "02-validate.svg",
+      "caption": "Is the answer well-formed, and is its judgment supported?"
+    },
+    {
+      "id": "agreement",
+      "label": "Agreement",
+      "svg": "03-agreement.svg",
+      "caption": "Is the answer well-formed, and is its judgment supported?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "Is the answer well-formed, and is its judgment supported?"
+    },
+    {
+      "id": "native-capture",
+      "label": "A structured judgment still needs review",
+      "svg": "05-native-capture.svg",
+      "caption": "Compare the request and proposed intent with the judge response. The dataset reference is card_linking."
+    }
+  ],
+  "html": "index.html"
+}

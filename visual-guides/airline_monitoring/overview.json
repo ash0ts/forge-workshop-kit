@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "id": "overview",
+  "title": "Monitor an airline agent and improve its tests",
+  "eyebrow": "06 / Airline monitoring",
+  "question": "What will you build, and how will you know it works?",
+  "summary": "A passenger changes the outbound flight. The booking API replaces the whole itinerary, so a successful call can still erase the return journey. Investigate the behavior before writing a monitoring rule.",
+  "kind": "overview",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "booking",
+      "title": "Read the booking",
+      "body": "Identify what changes and what stays.",
+      "symbol": "itinerary"
+    },
+    {
+      "id": "observe",
+      "title": "Inspect the conversation",
+      "body": "Follow actual tool arguments and results.",
+      "symbol": "tool"
+    },
+    {
+      "id": "monitor",
+      "title": "Review a monitoring rule",
+      "body": "Compare its judgments with reviewed turns.",
+      "symbol": "review"
+    },
+    {
+      "id": "test",
+      "title": "Build regression cases",
+      "body": "Replay incidents and test a repair.",
+      "symbol": "dataset"
+    }
+  ],
+  "states": [
+    {
+      "id": "booking",
+      "label": "Booking",
+      "visible": [
+        "booking"
+      ],
+      "focus": [
+        "booking"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "observe",
+      "label": "Observe",
+      "visible": [
+        "booking",
+        "observe"
+      ],
+      "focus": [
+        "observe"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "monitor",
+      "label": "Monitor",
+      "visible": [
+        "booking",
+        "observe",
+        "monitor"
+      ],
+      "focus": [
+        "monitor"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "test",
+      "label": "Test",
+      "visible": [
+        "booking",
+        "observe",
+        "monitor",
+        "test"
+      ],
+      "focus": [
+        "test"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "booking",
+        "observe",
+        "monitor",
+        "test"
+      ],
+      "focus": [],
+      "caption": "What will you build, and how will you know it works?"
+    }
+  ],
+  "hero": "hero.svg"
+}

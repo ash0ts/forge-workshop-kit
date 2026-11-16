@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "id": "alignment",
+  "title": "Test the monitoring rule against reviewed turns",
+  "eyebrow": "06 / Airline monitoring",
+  "question": "Would the rule distinguish an omission from a valid itinerary change?",
+  "summary": "Enable bounded judging only after saving the chosen criteria; disable it at the end of the activity.",
+  "kind": "comparison",
+  "provenance": "recorded",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA=="
+    },
+    {
+      "label": "Native qualification status",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/airline-monitoring-qualification.md"
+    },
+    {
+      "label": "Code for this operation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+    }
+  ],
+  "steps": [
+    {
+      "id": "review",
+      "title": "Save your judgment first",
+      "body": "Review the request, before-and-after itinerary, and recovery. Record insufficient evidence separately from a negative finding.",
+      "output": "Human label + supporting turn",
+      "symbol": "review",
+      "code": "saved_case = {\"review\": copy.deepcopy(review)}",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "criteria",
+      "title": "Write behavior-specific criteria",
+      "body": "Flag unrequested changes to preserved flights. Fewer flights alone is insufficient: a passenger may request a nonstop or one-way trip.",
+      "output": "Unrequested itinerary change criteria",
+      "symbol": "file"
+    },
+    {
+      "id": "alignment",
+      "title": "Examine disagreements in Alignment",
+      "body": "Inspect the judge reason and turn context. A test experiment does not change the live criteria until saved.",
+      "output": "False positives, misses, unavailable",
+      "symbol": "comparison"
+    },
+    {
+      "id": "status",
+      "title": "Keep native availability explicit",
+      "body": "Six recorded native tests returned HTTP 500. Their model judgments remain unavailable; the local calibration examples remain usable.",
+      "output": "Unavailable is not a negative label",
+      "status": "Native unavailable",
+      "symbol": "status"
+    }
+  ],
+  "states": [
+    {
+      "id": "review",
+      "label": "Review",
+      "visible": [
+        "review"
+      ],
+      "focus": [
+        "review"
+      ],
+      "caption": "Would the rule distinguish an omission from a valid itinerary change?"
+    },
+    {
+      "id": "criteria",
+      "label": "Criteria",
+      "visible": [
+        "review",
+        "criteria"
+      ],
+      "focus": [
+        "criteria"
+      ],
+      "caption": "Would the rule distinguish an omission from a valid itinerary change?"
+    },
+    {
+      "id": "alignment",
+      "label": "Alignment",
+      "visible": [
+        "review",
+        "criteria",
+        "alignment"
+      ],
+      "focus": [
+        "alignment"
+      ],
+      "caption": "Would the rule distinguish an omission from a valid itinerary change?"
+    },
+    {
+      "id": "status",
+      "label": "Status",
+      "visible": [
+        "review",
+        "criteria",
+        "alignment",
+        "status"
+      ],
+      "focus": [
+        "status"
+      ],
+      "caption": "Would the rule distinguish an omission from a valid itinerary change?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "review",
+        "criteria",
+        "alignment",
+        "status"
+      ],
+      "focus": [],
+      "caption": "Would the rule distinguish an omission from a valid itinerary change?"
+    }
+  ],
+  "native_capture": {
+    "media": "../media/airline_monitoring-forge-annotated.svg",
+    "original": "../media/airline_monitoring-forge-original.png",
+    "title": "Tag criteria and judging",
+    "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/edit",
+    "investigation": "Read the criteria, automatic-judging switch, and agent filter. This recorded tag was disabled after qualification.",
+    "capture_date": null,
+    "capture_date_note": "Existing recorded capture; capture timestamp not recorded in source asset.",
+    "annotations": [
+      {
+        "number": 1,
+        "label": "Automatic judging",
+        "field": "Apply with AI governs new-turn judging.",
+        "source_bounds": [
+          407,
+          216,
+          673,
+          59
+        ]
+      },
+      {
+        "number": 2,
+        "label": "Saved criteria",
+        "field": "The rule names changes the passenger did not request.",
+        "source_bounds": [
+          419,
+          336,
+          650,
+          177
+        ]
+      },
+      {
+        "number": 3,
+        "label": "Agent scope",
+        "field": "Filter by agent name limits the rule’s traffic.",
+        "source_bounds": [
+          419,
+          563,
+          650,
+          33
+        ]
+      }
+    ]
+  },
+  "annotations": [
+    {
+      "number": 1,
+      "target": "status",
+      "label": "Automatic judging switch"
+    },
+    {
+      "number": 2,
+      "target": "criteria",
+      "label": "Saved criteria"
+    },
+    {
+      "number": 3,
+      "target": "criteria",
+      "label": "Selected agent scope"
+    }
+  ]
+}

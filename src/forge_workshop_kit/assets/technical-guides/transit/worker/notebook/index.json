@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "worker",
+  "kind": "sequence",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "c2ed496627593e6939b66f8e522b3b2f8d60fe16359c6df1916a529ad60f53a4",
+  "states": [
+    {
+      "id": "request",
+      "label": "Request",
+      "svg": "01-request.svg",
+      "caption": "How does an agent know what happened after it edits a file?"
+    },
+    {
+      "id": "operation",
+      "label": "Operation",
+      "svg": "02-operation.svg",
+      "caption": "How does an agent know what happened after it edits a file?"
+    },
+    {
+      "id": "next",
+      "label": "Next",
+      "svg": "03-next.svg",
+      "caption": "How does an agent know what happened after it edits a file?"
+    },
+    {
+      "id": "submit",
+      "label": "Submit",
+      "svg": "04-submit.svg",
+      "caption": "How does an agent know what happened after it edits a file?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "05-complete.svg",
+      "caption": "How does an agent know what happened after it edits a file?"
+    }
+  ],
+  "html": "index.html"
+}

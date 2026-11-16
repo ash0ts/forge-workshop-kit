@@ -1,7 +1,7 @@
 {
   "session_minutes": 360,
-  "main_slides": 111,
-  "total_slides": 129,
+  "main_slides": 112,
+  "total_slides": 130,
   "slides": [
     {
       "number": 1,
@@ -34,6 +34,37 @@
     },
     {
       "number": 2,
+      "key": "technical-overview",
+      "title": "What you will build and inspect",
+      "body": "<TechnicalGuide :frames=\"[{&quot;id&quot;: &quot;observations&quot;, &quot;label&quot;: &quot;Observations&quot;, &quot;svg&quot;: &quot;01-observations.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/solar/overview/slide/01-observations.svg&quot;}, {&quot;id&quot;: &quot;baseline&quot;, &quot;label&quot;: &quot;Baseline&quot;, &quot;svg&quot;: &quot;02-baseline.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/solar/overview/slide/02-baseline.svg&quot;}, {&quot;id&quot;: &quot;experiment&quot;, &quot;label&quot;: &quot;Experiment&quot;, &quot;svg&quot;: &quot;03-experiment.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/solar/overview/slide/03-experiment.svg&quot;}, {&quot;id&quot;: &quot;research&quot;, &quot;label&quot;: &quot;Research&quot;, &quot;svg&quot;: &quot;04-research.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/solar/overview/slide/04-research.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;05-complete.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/solar/overview/slide/05-complete.svg&quot;}]\" :step=\"$clicks\" />",
+      "notes": "Introduce the real task, the data available, and the outcome participants will check. Point to each Forge product at the operation it helps investigate.\nVisual guide: solar/overview. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
+      "kind": "technical-manual",
+      "time": "0:00\u20130:25",
+      "answer": null,
+      "timing": {
+        "section": "setup",
+        "section_title": "Connect and trace an operation",
+        "start_minute": 1.47,
+        "duration_minutes": 1.47,
+        "section_start": 0,
+        "section_end": 25
+      },
+      "concept": "The lab needs a forecast for its weekly review",
+      "source": [
+        "scripts/solar_cells.py",
+        "src/forge_workshop_kit/solar.py"
+      ],
+      "evidence": {
+        "type": "explanation",
+        "records": []
+      },
+      "exercise": null,
+      "clicks": 4,
+      "name": "technical-overview",
+      "technical_guide": "solar/overview"
+    },
+    {
+      "number": 3,
       "key": "arrival",
       "title": "The lab needs a forecast for its weekly review",
       "body": "<div class=\"lab-assignment\"><div class=\"lab-dialogue\"><div class=\"scene-label\">Fictional lab \u00b7 the principal investigator</div><p>\u201cDoes the model predict anything better than assuming the Sun stays as it is?\u201d</p></div><div class=\"lab-task\"><h2>Your assignment</h2><p>Use observations from February 1\u201314, 2014 to test that question. Bring a forecast, its errors, and the code a colleague needs to repeat it.</p><p class=\"aside\">The lab is fictional. The satellite observations are real.</p></div></div>",
@@ -62,7 +93,7 @@
       "clicks": 0
     },
     {
-      "number": 3,
+      "number": 4,
       "key": "assignment",
       "title": "What the satellites recorded",
       "body": "<div class=\"opening-observations\"><div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/v030-observations.png\" alt=\"A GOES-15 XRS-B time series and an AIA 171 \u00c5 solar image from February 1, 2014\"><div class=\"image-caption\">Actual archive observations. NOAA GOES-15 and NASA/SDO AIA; false-color image.</div></div><div class=\"observation-tasks\"><p><strong>GOES-15:</strong> two whole-Sun X-ray readings each minute, measured in watts per square metre.</p><p><strong>AIA 171 \u00c5:</strong> an extreme-ultraviolet view of the Sun\u2019s outer atmosphere, reduced to 64 \u00d7 64 pixels.</p></div></div>",
@@ -91,7 +122,7 @@
       "clicks": 0
     },
     {
-      "number": 4,
+      "number": 5,
       "key": "path",
       "title": "What one forecast example contains",
       "body": "<ForecastExample /><div class=\"bottom-note\">Persistence predicts no change. A trained model must beat it on the same future observations.</div>",
@@ -120,7 +151,7 @@
       "clicks": 0
     },
     {
-      "number": 5,
+      "number": 6,
       "key": "research-question",
       "title": "Bring a comparison your colleagues can repeat",
       "body": "<div class=\"lab-files\"><div class=\"lab-folder\"><div class=\"scene-label\">Fictional lab shared folder</div><code>forecast_final.py</code><code>forecast_final_v2.py</code><code>forecast_final_final.py</code><code>forecast_final_USE_THIS.py</code><p>Last week\u2019s score came from one of these.</p></div><div><h2>Show the comparison.</h2><p>Predictions and errors on the same dates, including persistence and the cases the model got wrong.</p><h2>Save what produced it.</h2><p>Data version, source, settings, trained weights, and outputs, together in one run.</p></div></div><div class=\"bottom-note\">Later, an agent will edit the image-model code. We\u2019ll test its changes using this same comparison.</div>",
@@ -149,7 +180,7 @@
       "clicks": 0
     },
     {
-      "number": 6,
+      "number": 7,
       "key": "copy",
       "title": "Copy the notebook into your Forge project",
       "body": "<div class=\"copy-layout\"><div class=\"template-qr\"><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view\"><img src=\"/images/solar-template-qr.svg\" alt=\"QR code opening the Solar workshop template\"></a><p><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view\">Open the Solar template \u2197</a></p></div><ol><li>Open the template.</li><li>Choose <strong>Copy to project</strong> and select your writable project.</li><li>Open the copy in <strong>Edit</strong>. Choose <strong>Run all stale cells</strong> once.</li><li>In <strong>Connect</strong>, check your project. Exercise run buttons stay unpressed.</li></ol></div><div class=\"bottom-note\">Hosted Forge supplies authentication. Your account supplies notebook compute and inference access.</div>",
@@ -178,7 +209,7 @@
       "clicks": 0
     },
     {
-      "number": 7,
+      "number": 8,
       "key": "setup-screen",
       "title": "Copy the notebook into the project you will use",
       "body": "<div class=\"copy-native\"><a class=\"copy-dialog\" href=\"/images/visual-v030-solar-setup.png\" target=\"_blank\"><img src=\"/images/visual-v030-solar-setup.png\" alt=\"Native Forge Copy to project dialog\"></a><div><h2>Choose your destination.</h2><p>Select a project you can write to. Open the copy in Edit.</p><h2>Check it in the notebook.</h2><p>Hosted Forge detects the copied notebook\u2019s project. Laptop users enter it in Connect.</p><p class=\"aside\">After copying, check the project name in Connect. Your runs and traces should land there.</p></div></div>",
@@ -207,7 +238,7 @@
       "clicks": 0
     },
     {
-      "number": 8,
+      "number": 9,
       "key": "local",
       "title": "Run the same notebook on your laptop",
       "body": "```sh\ngit clone https://github.com/ash0ts/forge-workshop-kit.git\ncd forge-workshop-kit\nuv sync --frozen --extra solar\nuv run --extra solar wandb login --verify\nuv run --extra solar marimo edit notebooks/solar_autoresearch.py\n```\n\n<p class=\"aside\">In Connect, enter <code>your-entity/your-project</code>. Keep the terminal open.</p><div class=\"bottom-note\">Install Git and uv first. Hosted participants skip these commands.</div>",
@@ -236,7 +267,7 @@
       "clicks": 0
     },
     {
-      "number": 9,
+      "number": 10,
       "key": "settings",
       "title": "Check the compute and inference settings",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Setting</th><th>This workshop</th></tr><tr><td>Project and credentials</td><td>Your own Forge project and account</td></tr><tr><td>Training compute</td><td>Notebook CPU; billed separately if hosted</td></tr><tr><td>Research agent</td><td><code>zai-org/GLM-5.3-Flash</code>, fixed</td></tr><tr><td>Inference allowance</td><td>$8 by default; adjustable in Connect</td></tr><tr><td>Execution</td><td>Explicit run buttons; saved work restores</td></tr></tbody></table><div class=\"bottom-note\">A higher allowance permits more calls. It does not grant account access or include compute.</div>",
@@ -265,7 +296,7 @@
       "clicks": 0
     },
     {
-      "number": 10,
+      "number": 11,
       "key": "trace-scopes",
       "title": "Wrap one operation, then inspect what you recorded",
       "body": "```python {1-2|3-6|7|all}\nwith tracing.Conversation(conversation_id=execution_id):\n    with tracing.Turn(agent_name=\"researcher\", messages=mission):\n        with tracing.Tool(\n            name=\"inspect_training_environment\",\n            arguments={}, result={\"numpy\": np.__version__},\n        ) as tool:\n            tool.set_attributes({\"workshop.exercise\": \"solar-research\"})\n```\n\n<div class=\"code-contract\"><span><strong>Input:</strong> one operation and its observed result</span><span><strong>Output:</strong> a tool span inside a conversation</span></div>",
@@ -294,7 +325,7 @@
       "clicks": 0
     },
     {
-      "number": 11,
+      "number": 12,
       "key": "setup-turn",
       "title": "Connect and inspect your first tool call",
       "body": "<div class=\"task\">Open <strong>1 \u00b7 Connect</strong>.</div><ol class=\"exercise-controls\"><li>Click <strong>Connect and restore my work</strong>. Check that the project is yours.</li><li>In <code>instrument_tool</code>, add the <code>workshop.exercise</code> attribute with value <code>solar-research</code>. Click <strong>Check my tracing code</strong>.</li><li>Click <strong>Send my first Agent Lens trace</strong>. Open the tool call in Agent Lens and find the attribute you added.</li></ol><div class=\"done\">Check your work: Find your attribute beside the tool\u2019s arguments and result.</div>",
@@ -328,7 +359,7 @@
       "clicks": 0
     },
     {
-      "number": 12,
+      "number": 13,
       "key": "instrumentation-screen",
       "title": "Find the field your code added to the span",
       "body": "<div class=\"native-product-evidence\"><a class=\"product-screen visual-v030-solar-trace\" href=\"/images/visual-v030-solar-trace.png\" target=\"_blank\" aria-label=\"Open full-size capture\"><img src=\"/images/visual-v030-solar-trace.png\" alt=\"Native Agent Lens setup tool span from the current Solar rehearsal\"><span v-click=\"1\" class=\"capture-mark\" style=\"left:430px;top:195px;width:676px;height:74px\" aria-label=\"Annotation 1: Tool arguments\"><b>1</b></span><span v-click=\"2\" class=\"capture-mark\" style=\"left:430px;top:278px;width:676px;height:115px\" aria-label=\"Annotation 2: Returned observation\"><b>2</b></span></a><div class=\"product-caption\"><span>Read the returned NumPy version. Open Raw to find workshop.exercise.</span><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/4ca0a7e5c9d1fe30d24079ea5b98b750\">Open the setup trace \u2197</a></div><div class=\"image-caption\">Recorded v0.3.0 environment check. No language-model call was needed.</div></div>",
@@ -357,15 +388,15 @@
       "clicks": 0
     },
     {
-      "number": 13,
+      "number": 14,
       "key": "goes-window",
-      "title": "Predict X-ray flux 30 minutes ahead",
-      "body": "<SolarConcept mode=\"window\" :reveal=\"Math.min($clicks + 1, 3)\" />",
-      "notes": "Set the clock to 01:00 UTC on February 1. Reveal the 01:30 target, then persistence. All numerical values are from the immutable teaching dataset, extracted without training. Ask which number a forecasting program is allowed to use at 01:00. The answer is the observation, not the later target. Session block: Read observations and implement persistence (minutes 25\u201365).",
-      "kind": "",
+      "title": "Construct one forecast window",
+      "body": "<TechnicalGuide :frames=\"[{&quot;id&quot;: &quot;history&quot;, &quot;label&quot;: &quot;History&quot;, &quot;svg&quot;: &quot;01-history.svg&quot;, &quot;caption&quot;: &quot;Which values are observations, and which one is the future target?&quot;, &quot;src&quot;: &quot;/guides/solar/window/slide/01-history.svg&quot;}, {&quot;id&quot;: &quot;target&quot;, &quot;label&quot;: &quot;Target&quot;, &quot;svg&quot;: &quot;02-target.svg&quot;, &quot;caption&quot;: &quot;Which values are observations, and which one is the future target?&quot;, &quot;src&quot;: &quot;/guides/solar/window/slide/02-target.svg&quot;}, {&quot;id&quot;: &quot;scale&quot;, &quot;label&quot;: &quot;Scale&quot;, &quot;svg&quot;: &quot;03-scale.svg&quot;, &quot;caption&quot;: &quot;Which values are observations, and which one is the future target?&quot;, &quot;src&quot;: &quot;/guides/solar/window/slide/03-scale.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;Which values are observations, and which one is the future target?&quot;, &quot;src&quot;: &quot;/guides/solar/window/slide/04-complete.svg&quot;}]\" :step=\"$clicks\" />",
+      "notes": "Set the clock to 01:00 UTC on February 1. Reveal the 01:30 target, then persistence. All numerical values are from the immutable teaching dataset, extracted without training. Ask which number a forecasting program is allowed to use at 01:00. The answer is the observation, not the later target. Session block: Read observations and implement persistence (minutes 25\u201365).\nVisual guide: solar/window. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
+      "kind": "technical-manual",
       "time": "0:25\u20131:05",
       "answer": null,
-      "clicks": 2,
+      "clicks": 3,
       "timing": {
         "section": "data",
         "section_title": "Read observations and implement persistence",
@@ -383,10 +414,11 @@
         "type": "explanation",
         "records": []
       },
-      "exercise": null
+      "exercise": null,
+      "technical_guide": "solar/window"
     },
     {
-      "number": 14,
+      "number": 15,
       "key": "goes-actual-window",
       "title": "Read the arrays for that same forecast",
       "body": "```python {1-2|3|4-5|all}\nexample = splits[\"train\"]\ni = 1  # Forecast origin: 2014-02-01T01:00 UTC\nx = example[\"x\"][i]          # shape (2, 60)\ny = example[\"y\"][i]          # shape (1,)\nlatest = example[\"persistence\"][i]  # shape (1,)\n```\n\n<div class=\"bottom-note\">The dictionary keeps the inputs, target, timestamp and persistence forecast aligned.</div>",
@@ -415,7 +447,7 @@
       "clicks": 0
     },
     {
-      "number": 15,
+      "number": 16,
       "key": "chronology",
       "title": "Use different dates to fit, choose, and evaluate",
       "body": "<ForecastWindow :split=\"true\" /><div class=\"bottom-note\">February 2014, UTC. Each example\u2019s inputs and target stay inside one date partition.</div>",
@@ -444,7 +476,7 @@
       "clicks": 0
     },
     {
-      "number": 16,
+      "number": 17,
       "key": "window-validity",
       "title": "Keep the whole example inside one date split",
       "body": "<SolarConcept mode=\"validity\" :reveal=\"Math.min($clicks + 1, 3)\" />",
@@ -472,7 +504,7 @@
       "exercise": null
     },
     {
-      "number": 17,
+      "number": 18,
       "key": "goes-normalization",
       "title": "Normalize the inputs without changing the target units",
       "body": "<SolarComputation mode=\"normalization\" :reveal=\"Math.min($clicks + 1, 4)\" /><div class=\"bottom-note\">Notebook: choose a window, then toggle standardized inputs. The target does not change.</div>",
@@ -501,7 +533,7 @@
       "exercise": null
     },
     {
-      "number": 18,
+      "number": 19,
       "key": "normalization-values",
       "title": "Calculate the value the model receives",
       "body": "<SolarWorked mode=\"normalize\" :reveal=\"Math.min($clicks + 1, 3)\" />\n\n```python {all}\nlogged = np.log10(raw_flux)\nmodel_input = (logged - training_mean) / training_std\n```\n\n<div class=\"bottom-note\">The target and persistence prediction stay in log-flux units.</div>",
@@ -531,7 +563,7 @@
       "exercise": null
     },
     {
-      "number": 19,
+      "number": 20,
       "key": "sunpy",
       "title": "Inspect a solar observation with SunPy",
       "body": "```python\nfrom sunpy.map import Map\n\nobservation = Map(dataset_path / \"sample-aia.fits\")\nprint(observation.date)\nprint(observation.wavelength)\nprint(observation.unit)\n```\n\n<div class=\"bottom-note\">Inspect the FITS metadata here; use the prepared arrays for training.</div><div class=\"code-contract compact-contract\"><span><strong>Input:</strong> A representative FITS file</span><span><strong>Output:</strong> Observation time, wavelength, and units</span></div>",
@@ -560,7 +592,7 @@
       "clicks": 0
     },
     {
-      "number": 20,
+      "number": 21,
       "key": "data-turn",
       "title": "Inspect the observations before training",
       "body": "<div class=\"task\">Open <strong>2 \u00b7 Solar data</strong>.</div><ol class=\"exercise-controls\"><li>Click <strong>Load the solar dataset</strong>.</li><li>In the data preview, find an observation time, the image wavelength, and the train/validation/test dates.</li><li>Use the date diagram to explain why a window with inputs on February 10 and a target on February 11 would be excluded.</li></ol><div class=\"done\">Check your work: You can say what the model receives and which future observation it must predict.</div>",
@@ -594,7 +626,7 @@
       "clicks": 0
     },
     {
-      "number": 21,
+      "number": 22,
       "key": "persistence",
       "title": "Start by copying the latest reading",
       "body": "```python\ndef persistence_forecast(split):\n    # Latest observed value becomes the future prediction.\n    ...\n```\n\n<p class=\"big\">Predict flux 30 minutes ahead by copying the latest reading.</p><div class=\"bottom-note\">This uses only a reading we already have. It does not look at the future target.</div><div class=\"code-contract compact-contract\"><span><strong>Input:</strong> The latest observed reading in each window</span><span><strong>Output:</strong> One 30-minute-ahead prediction per window</span></div>",
@@ -623,7 +655,7 @@
       "clicks": 0
     },
     {
-      "number": 22,
+      "number": 23,
       "key": "metric",
       "title": "Measure how far the prediction missed",
       "body": "<SolarComputation mode=\"error\" />",
@@ -652,7 +684,7 @@
       "clicks": 0
     },
     {
-      "number": 23,
+      "number": 24,
       "key": "actual-baseline-error",
       "title": "Score the forecast we just made",
       "body": "<SolarWorked mode=\"error\" :reveal=\"Math.min($clicks + 1, 3)\" />\n\n```python {all}\nprediction = split[\"persistence\"]\nabsolute_errors = np.abs(prediction - split[\"y\"])\n```\n\n<div class=\"bottom-note\">This is one real window. Average all accepted windows to report MAE.</div>",
@@ -682,7 +714,7 @@
       "exercise": null
     },
     {
-      "number": 24,
+      "number": 25,
       "key": "persistence-turn",
       "title": "Write and test persistence",
       "body": "<div class=\"task\">Open <strong>3 \u00b7 Persistence</strong>.</div><ol class=\"exercise-controls\"><li>Implement <code>persistence_forecast(split)</code>.</li><li>Click <strong>Check my persistence function</strong>, then <strong>Run my persistence baseline</strong>.</li><li>Inspect the observed and predicted curves. Identify one interval where copying the present misses the future.</li></ol><div class=\"done\">Check your work: The plot shows your persistence forecast beside the observed flux. Point to one miss.</div>",
@@ -716,7 +748,7 @@
       "clicks": 0
     },
     {
-      "number": 25,
+      "number": 26,
       "key": "number",
       "title": "Save what changed between runs",
       "body": "<p class=\"big\">Suppose a second run has a lower validation error. What changed?</p><div class=\"step-path\"><div><h2>Code</h2><p>You changed the loss function.</p></div><div><h2>Data</h2><p>You excluded an incomplete window.</p></div><div><h2>Settings</h2><p>You trained for more steps.</p></div></div><div class=\"bottom-note\">Save these differences so someone else can repeat the comparison.</div>",
@@ -745,7 +777,7 @@
       "clicks": 0
     },
     {
-      "number": 26,
+      "number": 27,
       "key": "run-inspector",
       "title": "Which setting changed between these runs?",
       "body": "<RunInspector />",
@@ -774,7 +806,7 @@
       "clicks": 0
     },
     {
-      "number": 27,
+      "number": 28,
       "key": "run-inspector-reveal",
       "title": "These runs used different learning rates",
       "body": "<RunInspector :revealed=\"true\" />",
@@ -803,7 +835,7 @@
       "clicks": 0
     },
     {
-      "number": 28,
+      "number": 29,
       "key": "independent",
       "title": "Use the same scoring rule for every model",
       "body": "<ResearchMap :level=\"2\" /><div class=\"bottom-note\">The model can change. The target, partition, and primary scoring rule stay fixed.</div>",
@@ -832,12 +864,12 @@
       "clicks": 0
     },
     {
-      "number": 29,
+      "number": 30,
       "key": "stage",
-      "title": "Save code and outputs with each training run",
-      "body": "```python {1-3|4-5|6|all}\nwith session.stage(name, config=config,\n    sources={\"candidate.py\": source},\n    inputs={\"dataset\": dataset_version}) as stage:\n    if stage.needs_run:\n        result, predictions = training.train(...)\n        stage.record(result, files=output_files)\n```\n\n<div class=\"bottom-note\">Shortened from run_training. The saved files include source, weights, predictions and losses.</div>",
-      "notes": "Find the full editable run_training function in the notebook. The stage identifies a request to train specific source with specific settings and data. Its completed result is reused only for that matching request. training.train runs the program and returns predictions. stage.record stores its result and output files. Publication follows execution; an upload failure does not erase training or require training again. The ellipsis abbreviates arguments in this teaching excerpt; it is not a paste-ready function. Session block: Explain training and saved experiment files (minutes 65\u201395).",
-      "kind": "",
+      "title": "Keep the experiment and its outputs together",
+      "body": "<TechnicalGuide :frames=\"[{&quot;id&quot;: &quot;inputs&quot;, &quot;label&quot;: &quot;Inputs&quot;, &quot;svg&quot;: &quot;01-inputs.svg&quot;, &quot;caption&quot;: &quot;Could someone reproduce this prediction from the saved run?&quot;, &quot;src&quot;: &quot;/guides/solar/run-record/slide/01-inputs.svg&quot;}, {&quot;id&quot;: &quot;execution&quot;, &quot;label&quot;: &quot;Execution&quot;, &quot;svg&quot;: &quot;02-execution.svg&quot;, &quot;caption&quot;: &quot;Could someone reproduce this prediction from the saved run?&quot;, &quot;src&quot;: &quot;/guides/solar/run-record/slide/02-execution.svg&quot;}, {&quot;id&quot;: &quot;publish&quot;, &quot;label&quot;: &quot;Publish&quot;, &quot;svg&quot;: &quot;03-publish.svg&quot;, &quot;caption&quot;: &quot;Could someone reproduce this prediction from the saved run?&quot;, &quot;src&quot;: &quot;/guides/solar/run-record/slide/03-publish.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;Could someone reproduce this prediction from the saved run?&quot;, &quot;src&quot;: &quot;/guides/solar/run-record/slide/04-complete.svg&quot;}, {&quot;id&quot;: &quot;native-capture&quot;, &quot;label&quot;: &quot;Files from one recorded training execution&quot;, &quot;svg&quot;: &quot;05-native-capture.svg&quot;, &quot;caption&quot;: &quot;Find candidate.py, predictions.npy, and weights.pt in the same artifact version.&quot;, &quot;src&quot;: &quot;/guides/solar/run-record/slide/05-native-capture.svg&quot;}]\" :step=\"$clicks\" />",
+      "notes": "Find the full editable run_training function in the notebook. The stage identifies a request to train specific source with specific settings and data. Its completed result is reused only for that matching request. training.train runs the program and returns predictions. stage.record stores its result and output files. Publication follows execution; an upload failure does not erase training or require training again. The ellipsis abbreviates arguments in this teaching excerpt; it is not a paste-ready function. Session block: Explain training and saved experiment files (minutes 65\u201395).\nVisual guide: solar/run-record. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
+      "kind": "technical-manual",
       "time": "1:05\u20131:35",
       "answer": null,
       "timing": {
@@ -858,18 +890,19 @@
         "records": []
       },
       "exercise": null,
-      "clicks": 0
+      "clicks": 4,
+      "technical_guide": "solar/run-record"
     },
     {
-      "number": 30,
+      "number": 31,
       "key": "training-step",
-      "title": "What changes during one training step",
-      "body": "<SolarComputation mode=\"training\" :reveal=\"Math.min($clicks + 1, 4)\" />",
-      "notes": "In fit, the GOES model predicts a batch and computes squared error against training targets. The shared loss function has an all-ones mask for GOES; the image exercise later uses the mask to select disk pixels. loss.backward computes gradients. Adam updates the forecasting model weights. The training targets participate in these updates. Validation inputs are predicted without gradients, and validation targets are scored by the parent process outside candidate code. Reveal one operation at a time. Ask what changed before advancing. Back restores the previous state. Session block: Explain training and saved experiment files (minutes 65\u201395).",
-      "kind": "",
+      "title": "Turn a prediction error into a weight update",
+      "body": "<TechnicalGuide :frames=\"[{&quot;id&quot;: &quot;loss&quot;, &quot;label&quot;: &quot;Loss&quot;, &quot;svg&quot;: &quot;01-loss.svg&quot;, &quot;caption&quot;: &quot;Which operation changes forecasting weights?&quot;, &quot;src&quot;: &quot;/guides/solar/learning/slide/01-loss.svg&quot;}, {&quot;id&quot;: &quot;update&quot;, &quot;label&quot;: &quot;Update&quot;, &quot;svg&quot;: &quot;02-update.svg&quot;, &quot;caption&quot;: &quot;Which operation changes forecasting weights?&quot;, &quot;src&quot;: &quot;/guides/solar/learning/slide/02-update.svg&quot;}, {&quot;id&quot;: &quot;validation&quot;, &quot;label&quot;: &quot;Validation&quot;, &quot;svg&quot;: &quot;03-validation.svg&quot;, &quot;caption&quot;: &quot;Which operation changes forecasting weights?&quot;, &quot;src&quot;: &quot;/guides/solar/learning/slide/03-validation.svg&quot;}, {&quot;id&quot;: &quot;failure&quot;, &quot;label&quot;: &quot;Failure&quot;, &quot;svg&quot;: &quot;04-failure.svg&quot;, &quot;caption&quot;: &quot;Which operation changes forecasting weights?&quot;, &quot;src&quot;: &quot;/guides/solar/learning/slide/04-failure.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;05-complete.svg&quot;, &quot;caption&quot;: &quot;Which operation changes forecasting weights?&quot;, &quot;src&quot;: &quot;/guides/solar/learning/slide/05-complete.svg&quot;}]\" :step=\"$clicks\" />",
+      "notes": "In fit, the GOES model predicts a batch and computes squared error against training targets. The shared loss function has an all-ones mask for GOES; the image exercise later uses the mask to select disk pixels. loss.backward computes gradients. Adam updates the forecasting model weights. The training targets participate in these updates. Validation inputs are predicted without gradients, and validation targets are scored by the parent process outside candidate code. Reveal one operation at a time. Ask what changed before advancing. Back restores the previous state. Session block: Explain training and saved experiment files (minutes 65\u201395).\nVisual guide: solar/learning. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
+      "kind": "technical-manual",
       "time": "1:05\u20131:35",
       "answer": null,
-      "clicks": 3,
+      "clicks": 4,
       "timing": {
         "section": "tracking",
         "section_title": "Explain training and saved experiment files",
@@ -887,10 +920,11 @@
         "type": "explanation",
         "records": []
       },
-      "exercise": null
+      "exercise": null,
+      "technical_guide": "solar/learning"
     },
     {
-      "number": 31,
+      "number": 32,
       "key": "gradient-arithmetic",
       "title": "Use the error to decide which way a weight should move",
       "body": "<SolarConcept mode=\"gradient\" :reveal=\"Math.min($clicks + 1, 3)\" />",
@@ -919,7 +953,7 @@
       "exercise": null
     },
     {
-      "number": 32,
+      "number": 33,
       "key": "optimizer-code",
       "title": "Separate prediction, gradients and the optimizer step",
       "body": "```python {1-2|3|4|5|all}\nprediction = model(batch_x)\nloss = training_loss(prediction, batch_y, mask)\noptimizer.zero_grad()\nloss.backward()\noptimizer.step()\n```\n\n<div class=\"bottom-note\">A forward pass returns predictions. Only the optimizer step changes model parameters.</div>",
@@ -947,7 +981,7 @@
       "exercise": null
     },
     {
-      "number": 33,
+      "number": 34,
       "key": "validation-code",
       "title": "Validation measures the current weights without fitting them",
       "body": "<SolarWorked mode=\"validation\" :reveal=\"Math.min($clicks + 1, 3)\" />\n\n```python {all}\nmodel.eval()\nwith torch.no_grad(): prediction = model(validation_x)\n```\n\n<div class=\"bottom-note\">No optimizer step. Validation measures the weights produced by training.</div>",
@@ -976,7 +1010,7 @@
       "exercise": null
     },
     {
-      "number": 34,
+      "number": 35,
       "key": "artifacts",
       "title": "Restore a completed run after a restart",
       "body": "<SolarComputation mode=\"checkpoint\" />",
@@ -1005,7 +1039,7 @@
       "clicks": 0
     },
     {
-      "number": 35,
+      "number": 36,
       "key": "break-one",
       "title": "Take a fifteen-minute break",
       "body": "<p>Your persistence result should be saved. Check that it remains visible after navigating away and back.</p><p>After the break, we\u2019ll follow a batch through the models, write the loss and metric, and train one tracked trial.</p>",
@@ -1033,7 +1067,7 @@
       "exercise": null
     },
     {
-      "number": 36,
+      "number": 37,
       "key": "search-levels",
       "title": "Changing settings, choosing models, and editing code",
       "body": "<SolarMechanism mode=\"search\" />",
@@ -1062,16 +1096,16 @@
       "clicks": 0
     },
     {
-      "number": 37,
+      "number": 38,
       "key": "batch-shapes",
-      "title": "Read the batch, channel and time axes",
-      "body": "<SolarConcept mode=\"batch\" :reveal=\"Math.min($clicks + 1, 3)\" />",
-      "notes": "B counts windows processed together. Each window has two instrument channels and sixty time positions. The target has one value per window. The training configuration uses batch size thirty-two. The notebook free shape demonstration uses batch size two and width four so learners can inspect a small forward pass; it does not train and does not change later random state. Ask learners to explain x[0,1,-1] before revealing the output shape. Session block: Inspect model shapes and compare configurations (minutes 110\u2013155).",
-      "kind": "",
+      "title": "Follow the tensor through the model",
+      "body": "<TechnicalGuide :frames=\"[{&quot;id&quot;: &quot;input&quot;, &quot;label&quot;: &quot;Input&quot;, &quot;svg&quot;: &quot;01-input.svg&quot;, &quot;caption&quot;: &quot;What becomes one forecast, and what does the model learn?&quot;, &quot;src&quot;: &quot;/guides/solar/model-shapes/slide/01-input.svg&quot;}, {&quot;id&quot;: &quot;mlp&quot;, &quot;label&quot;: &quot;Mlp&quot;, &quot;svg&quot;: &quot;02-mlp.svg&quot;, &quot;caption&quot;: &quot;What becomes one forecast, and what does the model learn?&quot;, &quot;src&quot;: &quot;/guides/solar/model-shapes/slide/02-mlp.svg&quot;}, {&quot;id&quot;: &quot;cnn&quot;, &quot;label&quot;: &quot;Cnn&quot;, &quot;svg&quot;: &quot;03-cnn.svg&quot;, &quot;caption&quot;: &quot;What becomes one forecast, and what does the model learn?&quot;, &quot;src&quot;: &quot;/guides/solar/model-shapes/slide/03-cnn.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;What becomes one forecast, and what does the model learn?&quot;, &quot;src&quot;: &quot;/guides/solar/model-shapes/slide/04-complete.svg&quot;}]\" :step=\"$clicks\" />",
+      "notes": "B counts windows processed together. Each window has two instrument channels and sixty time positions. The target has one value per window. The training configuration uses batch size thirty-two. The notebook free shape demonstration uses batch size two and width four so learners can inspect a small forward pass; it does not train and does not change later random state. Ask learners to explain x[0,1,-1] before revealing the output shape. Session block: Inspect model shapes and compare configurations (minutes 110\u2013155).\nVisual guide: solar/model-shapes. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
+      "kind": "technical-manual",
       "time": "1:50\u20132:35",
       "answer": null,
       "concept": "NumPy/PyTorch tensor axes and batch semantics",
-      "clicks": 2,
+      "clicks": 3,
       "source": [
         "src/forge_workshop_kit/solar.py:load_goes",
         "src/forge_workshop_kit/solar_views.py:forward_shapes"
@@ -1088,10 +1122,11 @@
         "section_start": 110,
         "section_end": 155
       },
-      "exercise": null
+      "exercise": null,
+      "technical_guide": "solar/model-shapes"
     },
     {
-      "number": 38,
+      "number": 39,
       "key": "batch-indexing",
       "title": "Keep each prediction paired with its own target",
       "body": "<SolarWorked mode=\"alignment\" :reveal=\"Math.min($clicks + 1, 3)\" />\n\n```python {all}\nassert prediction.shape == target.shape == (batch_size, 1)\nabsolute_errors = np.abs(prediction - target)\n```\n\n<div class=\"bottom-note\">Illustrative values. Preserve the last axis with x[:, 1, -1:].</div>",
@@ -1121,7 +1156,7 @@
       "exercise": null
     },
     {
-      "number": 39,
+      "number": 40,
       "key": "goes-mlp",
       "title": "How the MLP uses an hour of measurements",
       "body": "<SolarComputation mode=\"mlp\" :reveal=\"Math.min($clicks + 1, 4)\" /><div class=\"bottom-note\">Notebook: Run one forward pass and show tensor shapes. This does not train weights.</div>",
@@ -1150,7 +1185,7 @@
       "exercise": null
     },
     {
-      "number": 40,
+      "number": 41,
       "key": "one-neuron",
       "title": "Calculate one hidden unit before adding the whole layer",
       "body": "<SolarConcept mode=\"neuron\" :reveal=\"Math.min($clicks + 1, 3)\" />",
@@ -1178,7 +1213,7 @@
       "exercise": null
     },
     {
-      "number": 41,
+      "number": 42,
       "key": "goes-cnn",
       "title": "How the temporal CNN uses the same measurements",
       "body": "<SolarComputation mode=\"cnn\" :reveal=\"Math.min($clicks + 1, 4)\" /><div class=\"bottom-note\">Choose Temporal CNN in the same check. Compare its output shapes with the MLP.</div>",
@@ -1207,7 +1242,7 @@
       "exercise": null
     },
     {
-      "number": 42,
+      "number": 43,
       "key": "convolution-weights",
       "title": "Reuse one filter at each time position",
       "body": "<SolarConcept mode=\"filter\" :reveal=\"Math.min($clicks + 1, 3)\" />",
@@ -1235,7 +1270,7 @@
       "exercise": null
     },
     {
-      "number": 43,
+      "number": 44,
       "key": "parameter-code",
       "title": "Choose settings separately from the weights being learned",
       "body": "```python {1-2|3|4-5|all}\nconfig = {\"architecture\": \"cnn\", \"width\": 16,\n          \"learning_rate\": 0.001, \"steps\": 60, \"seed\": 17}\nmodel = build_model((2, 60), config)\noptimizer = torch.optim.Adam(model.parameters(),\n                             lr=config[\"learning_rate\"])\n```\n\n<div class=\"bottom-note\">Width and learning rate are settings. The weights and biases inside model.parameters() are trained.</div>",
@@ -1264,7 +1299,7 @@
       "exercise": null
     },
     {
-      "number": 44,
+      "number": 45,
       "key": "tracking-turn",
       "title": "Write the loss and metric",
       "body": "<div class=\"task\">Open <strong>4 \u00b7 Track and search</strong>.</div><ol class=\"exercise-controls\"><li>Implement <code>training_loss</code> and <code>my_flux_mae</code>.</li><li>Click <strong>Check my measurement code</strong>. Test identical arrays and a constant one-unit error.</li><li>In <code>run_training</code>, find where it saves source, settings, weights, and predictions. The next exercise will produce those files.</li></ol><div class=\"done\">Check your work: Your checks pass, and you can point to where run_training saves its files.</div>",
@@ -1298,7 +1333,7 @@
       "clicks": 0
     },
     {
-      "number": 45,
+      "number": 46,
       "key": "configs",
       "title": "Compare six model configurations",
       "body": "<SolarWorked mode=\"search\" :reveal=\"Math.min($clicks + 1, 3)\" />\n\n<div class=\"bottom-note\">The 60-update comparison is a short teaching run, not a claim about the best architecture.</div>",
@@ -1326,7 +1361,7 @@
       "exercise": null
     },
     {
-      "number": 46,
+      "number": 47,
       "key": "sweep",
       "title": "Run the configurations through W&B Sweeps",
       "body": "```python\nsweep_id = wandb.sweep(sweep_config, entity=entity, project=project)\n\ndef trial():\n    with wandb.init() as run:\n        result = run_training(config_for(run.config.trial))\n        run.log(result[\"metrics\"])\n\nwandb.agent(sweep_id, function=trial, count=1)\n# Inspect that run before scheduling the remaining five.\nwandb.agent(sweep_id, function=trial, count=5)\n```\n\n<div class=\"bottom-note\">The notebook contains the full implementation and reuses already-completed runs.</div><div class=\"code-contract compact-contract\"><span><strong>Input:</strong> Six predefined configurations</span><span><strong>Output:</strong> Six tracked training runs with matching metrics</span></div>",
@@ -1355,7 +1390,7 @@
       "clicks": 0
     },
     {
-      "number": 47,
+      "number": 48,
       "key": "native-sweep",
       "title": "Compare the six configurations in Forge",
       "body": "<div class=\"native-product-evidence\"><a class=\"product-screen visual-v030-solar-sweep\" href=\"/images/visual-v030-solar-sweep.png\" target=\"_blank\" aria-label=\"Open full-size capture\"><img src=\"/images/visual-v030-solar-sweep.png\" alt=\"Native six-run W&amp;B Sweep from the v0.3.0 Solar rehearsal\"></a><div class=\"product-caption\"><span>Find two MLP runs with the same width and different learning rates.</span><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/sweeps/pzigourv\">Open the Sweep \u2197</a></div><div class=\"image-caption\">All six validation forecasts were worse than persistence. A smaller error among them is still a failed baseline comparison.</div></div>",
@@ -1384,7 +1419,7 @@
       "clicks": 0
     },
     {
-      "number": 48,
+      "number": 49,
       "key": "learning-curve",
       "title": "Check whether the model has finished learning",
       "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/v030-goes-loss.png\" alt=\"Saved GOES model loss curve over 60 training steps\"><div class=\"image-caption\">Selected MLP: width 16, learning rate .003, seed 17. Saved v0.3.0 training losses.</div></div><div class=\"bottom-note\">Historical 60-step run. A later worked repair tests scaling, residual prediction, and a longer budget together.</div>",
@@ -1413,7 +1448,7 @@
       "clicks": 0
     },
     {
-      "number": 49,
+      "number": 50,
       "key": "search-turn",
       "title": "Inspect one trial before running the rest",
       "body": "<div class=\"task\">Stay in <strong>4 \u00b7 Track and search</strong>.</div><ol class=\"exercise-controls\"><li>Click <strong>Run one tracked Sweep trial</strong>. Open its configuration, source, weights, loss curve and forecast.</li><li>Click <strong>Run the remaining Sweep trials</strong>. Compare two configurations in the same Sweep.</li><li>In the notebook, choose <strong>Inspect a saved measurement run</strong>. Compare its loss, forecast, and persistence. Follow its Forge links to the saved source.</li></ol><div class=\"done\">Check your work: Explain one comparison using the settings, curve, and forecast.</div>",
@@ -1447,7 +1482,7 @@
       "clicks": 0
     },
     {
-      "number": 50,
+      "number": 51,
       "key": "goes-repair-turn",
       "title": "Diagnose the forecast before opening the repair",
       "body": "<div class=\"task\">Stay in <strong>4 \u00b7 Track and search</strong>, below the saved forecasts.</div><ol class=\"exercise-controls\"><li>Compare the saved forecast, target units, and loss curve. Under <strong>What would you check before changing this model?</strong>, name one possible cause and a check that could disprove it. Saving a note is optional.</li><li>After your diagnosis, select <strong>Show the worked GOES repair and its recorded results</strong>. Inspect <code>forward</code> and <code>fit</code>; the linked worked answer explains the correction.</li><li>Click <strong>Check the GOES repair code</strong>, then <strong>Train the worked GOES repair</strong>. Compare its validation error with persistence and open its weights Artifact.</li></ol><div class=\"done\">Check your work: Explain the initial forecast, the output units, and whether your validation error fell.</div>",
@@ -1481,7 +1516,7 @@
       "clicks": 0
     },
     {
-      "number": 51,
+      "number": 52,
       "key": "aria-investigate",
       "title": "Investigate this result",
       "body": "<div class=\"aria-sequence-wrap\"><svg class=\"aria-sequence\" viewBox=\"0 0 1110 154\" role=\"img\" aria-label=\"Explain your interpretation, read ARIA\u2019s answer, and check its cited source.\"><g><rect x=\"0\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#d9e9e1\" stroke=\"#48675d\"/><text x=\"18\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Your interpretation</text><text x=\"18\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Forecast timestamp and units</text></g><path d=\"M345 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M360 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"370\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"388\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">ARIA response</text><text x=\"388\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Selected validation run</text></g><path d=\"M715 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M730 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"740\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"758\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Checked source record</text><text x=\"758\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Loss curve, settings, persistence</text></g></svg></div><div class=\"aria-question\">Check your explanation of one GOES validation forecast against persistence, units, normalization, settings, and its loss history. Which explanation needs another experiment?</div><div class=\"aria-two\"><div><b>Start with your explanation</b><p>What do you think happened? Which observation supports it?</p><p>Copy the notebook\u2019s prompt and add native context in Forge.</p></div><div><b>Selected instructor records</b><ul class=\"aria-records\"><li><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ff57eba2f9e3704d9bee074e4b4c9bea\" target=\"_blank\" rel=\"noopener\">goes/search-2 \u2197</a></li><li><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/34be79df856314de9497c9715ad8da99\" target=\"_blank\" rel=\"noopener\">goes/persistence \u2197</a></li></ul></div></div><p class=\"aria-foot\">Use only the selected development or validation records. Check ARIA\u2019s selected project. Use exact record URLs; add native context where this surface offers it.</p>",
@@ -1522,7 +1557,7 @@
       }
     },
     {
-      "number": 52,
+      "number": 53,
       "key": "aria-investigate-response",
       "title": "Read one claim in the recorded response",
       "body": "<div class=\"aria-sequence-wrap\"><svg class=\"aria-sequence\" viewBox=\"0 0 1110 154\" role=\"img\" aria-label=\"Explain your interpretation, read ARIA\u2019s answer, and check its cited source.\"><g><rect x=\"0\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"18\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Your interpretation</text><text x=\"18\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Forecast timestamp and units</text></g><path d=\"M345 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M360 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"370\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#d9e9e1\" stroke=\"#48675d\"/><text x=\"388\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">ARIA response</text><text x=\"388\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Selected validation run</text></g><path d=\"M715 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M730 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"740\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"758\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Checked source record</text><text x=\"758\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Loss curve, settings, persistence</text></g></svg></div><div class=\"aria-response\"><figure class=\"aria-screen\"><a href=\"/aria/investigate/investigate-response.png\" target=\"_blank\"><img src=\"/aria/investigate/investigate-response.png\" alt=\"Actual ARIA response. Check its distinction between retrieved native records and supplied evidence excerpts.\"></a></figure><div><b>Recorded instructor investigation</b><blockquote>approximately <strong>15.21\u00d7 larger</strong></blockquote><p>Does this statement follow from the records, or is it a possible explanation?</p><p><a href=\"/aria/investigate/investigate-transcript.html\" target=\"_blank\">Read the full transcript without sign-in \u2197</a></p><a href=\"https://forge.coreweave.com/aria/threads/01a1e063-4902-7a53-99b7-7e73f1e8cef9\" target=\"_blank\" rel=\"noopener\">Open the recorded conversation \u2197</a></div></div><p class=\"aria-foot\">The recording uses instructor results. It does not describe your unexecuted edits.</p>",
@@ -1563,7 +1598,7 @@
       }
     },
     {
-      "number": 53,
+      "number": 54,
       "key": "aria-investigate-verify",
       "title": "Open the source and check that claim",
       "body": "<div class=\"aria-sequence-wrap\"><svg class=\"aria-sequence\" viewBox=\"0 0 1110 154\" role=\"img\" aria-label=\"Explain your interpretation, read ARIA\u2019s answer, and check its cited source.\"><g><rect x=\"0\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"18\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Your interpretation</text><text x=\"18\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Forecast timestamp and units</text></g><path d=\"M345 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M360 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"370\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"388\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">ARIA response</text><text x=\"388\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Selected validation run</text></g><path d=\"M715 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M730 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"740\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#d9e9e1\" stroke=\"#48675d\"/><text x=\"758\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Checked source record</text><text x=\"758\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Loss curve, settings, persistence</text></g></svg></div><div class=\"aria-response\"><figure class=\"aria-screen\"><a href=\"/aria/investigate/investigate-verification.png\" target=\"_blank\"><img src=\"/aria/investigate/investigate-verification.png\" alt=\"Native training-run summary: selected GOES validation error, persistence error, and final training loss. The validation run is separate from the final-date comparison.\"></a></figure><div><b>Citation check: supported</b><p>The saved goes/search-2 metrics contain validation_error=2.71215 and examples=2779. Saved goes/persistence has error=0.178267 and examples=2779. These match the native summary values quoted by ARIA. A scaling explanation remains a hypothesis; no training change was run.</p><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ff57eba2f9e3704d9bee074e4b4c9bea\" target=\"_blank\" rel=\"noopener\">Open the checked source \u2197</a><p><a href=\"/aria/investigate/investigate-source-records.html\" target=\"_blank\">Check the supplied source values offline \u2197</a></p></div></div><p class=\"aria-foot\">Save your own citation check. ARIA\u2019s answer does not become a label, score, approved lesson, or release decision.</p>",
@@ -1604,7 +1639,7 @@
       }
     },
     {
-      "number": 54,
+      "number": 55,
       "key": "images-window",
       "title": "Predict the solar image one hour ahead",
       "body": "<ForecastWindow mode=\"images\" /><div class=\"bottom-note\">AIA 171 \u00c5. Prepared 64 \u00d7 64 arrays. One-hour forecasting.</div>",
@@ -1633,7 +1668,7 @@
       "clicks": 0
     },
     {
-      "number": 55,
+      "number": 56,
       "key": "persistence-image",
       "title": "See exactly which images become input and target",
       "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/v030-image-window.png\" alt=\"Earlier and current AIA observations beside the future target\"><div class=\"image-caption\">First accepted training window. All three images share the same intensity scale.</div></div><div class=\"bottom-note\">The target is hidden from the model during prediction. It is used afterward to measure the miss.</div>",
@@ -1662,7 +1697,7 @@
       "clicks": 0
     },
     {
-      "number": 56,
+      "number": 57,
       "key": "image-units",
       "title": "Put image inputs and targets in the same units",
       "body": "```python {1|2|3|all}\nlogged = np.log1p(pixel_rate)\nnormalized = (logged - training_center) / training_scale\n# Apply the same transform to inputs and future targets.\n```\n\n<p>AIA arrays use exposure-normalized intensity. The loader fits its center and scale using training pixels inside the disk.</p><div class=\"bottom-note\">GOES targets stayed in log-flux units. Image targets are standardized along with image inputs.</div>",
@@ -1691,7 +1726,7 @@
       "exercise": null
     },
     {
-      "number": 57,
+      "number": 58,
       "key": "image-batch",
       "title": "Keep the two image times in separate channels",
       "body": "<SolarConcept mode=\"image\" :reveal=\"Math.min($clicks + 1, 3)\" />",
@@ -1719,7 +1754,7 @@
       "exercise": null
     },
     {
-      "number": 58,
+      "number": 59,
       "key": "conv",
       "title": "Predicting the future image with a small CNN",
       "body": "<SolarMechanism mode=\"residual\" :reveal=\"1\" />",
@@ -1748,12 +1783,12 @@
       "clicks": 0
     },
     {
-      "number": 59,
+      "number": 60,
       "key": "residual",
       "title": "Predict a correction to the current image",
-      "body": "<SolarMechanism mode=\"residual\" :reveal=\"2\" />",
-      "notes": "Much of the current image may remain similar one hour later. We can copy that image and ask the network to predict the correction. Add the network output to x[:, 1:2], the current-image channel. The slice preserves the channel dimension. If the correction is zero, the model returns persistence exactly. The local check will test that behavior. Session block: Implement image prediction and scoring (minutes 155\u2013200).",
-      "kind": "",
+      "body": "<TechnicalGuide :frames=\"[{&quot;id&quot;: &quot;input&quot;, &quot;label&quot;: &quot;Input&quot;, &quot;svg&quot;: &quot;01-input.svg&quot;, &quot;caption&quot;: &quot;How does a residual prediction differ from a direct prediction?&quot;, &quot;src&quot;: &quot;/guides/solar/images/slide/01-input.svg&quot;}, {&quot;id&quot;: &quot;residual&quot;, &quot;label&quot;: &quot;Residual&quot;, &quot;svg&quot;: &quot;02-residual.svg&quot;, &quot;caption&quot;: &quot;How does a residual prediction differ from a direct prediction?&quot;, &quot;src&quot;: &quot;/guides/solar/images/slide/02-residual.svg&quot;}, {&quot;id&quot;: &quot;mask&quot;, &quot;label&quot;: &quot;Mask&quot;, &quot;svg&quot;: &quot;03-mask.svg&quot;, &quot;caption&quot;: &quot;How does a residual prediction differ from a direct prediction?&quot;, &quot;src&quot;: &quot;/guides/solar/images/slide/03-mask.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;How does a residual prediction differ from a direct prediction?&quot;, &quot;src&quot;: &quot;/guides/solar/images/slide/04-complete.svg&quot;}]\" :step=\"$clicks\" />",
+      "notes": "Much of the current image may remain similar one hour later. We can copy that image and ask the network to predict the correction. Add the network output to x[:, 1:2], the current-image channel. The slice preserves the channel dimension. If the correction is zero, the model returns persistence exactly. The local check will test that behavior. Session block: Implement image prediction and scoring (minutes 155\u2013200).\nVisual guide: solar/images. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
+      "kind": "technical-manual",
       "time": "2:35\u20133:20",
       "answer": null,
       "timing": {
@@ -1774,10 +1809,11 @@
         "records": []
       },
       "exercise": null,
-      "clicks": 0
+      "clicks": 3,
+      "technical_guide": "solar/images"
     },
     {
-      "number": 60,
+      "number": 61,
       "key": "residual-code",
       "title": "Implement the residual predictor\u2019s forward pass",
       "body": "```python {2|3|4|all}\ndef forward(self, x):\n    correction = self.net(x)       # [batch, 1, 64, 64]\n    current_image = x[:, 1:2]      # keep the channel axis\n    return current_image + correction\n```\n\n<div class=\"code-contract\"><span><strong>Input:</strong> earlier image + current image</span><span><strong>Output:</strong> one future image per example</span></div><p class=\"aside\">Check: if <code>correction</code> is zero, the forecast equals the current image.</p>",
@@ -1806,7 +1842,7 @@
       "clicks": 0
     },
     {
-      "number": 61,
+      "number": 62,
       "key": "residual-observed",
       "title": "Inspect the correction produced by the saved model",
       "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/v031-residual-correction.png\" alt=\"Current AIA image plus the saved residual model correction equals its forecast\"><div class=\"image-caption\">First validation case. Current image and forecast use the same intensity scale; the middle panel shows a signed correction.</div></div>",
@@ -1835,7 +1871,7 @@
       "clicks": 0
     },
     {
-      "number": 62,
+      "number": 63,
       "key": "image-score",
       "title": "Measure prediction error inside the solar disk",
       "body": "<SolarMechanism mode=\"mask\" :reveal=\"Math.min($clicks + 1, 4)\" />",
@@ -1864,7 +1900,7 @@
       "exercise": null
     },
     {
-      "number": 63,
+      "number": 64,
       "key": "image-score-code",
       "title": "Check the image scorer on three known errors",
       "body": "```python {1|2-3|4|all}\nabsolute_error = np.abs(prediction - target)\nper_image = (absolute_error * disk_mask).sum(axis=(1, 2, 3))\nper_image /= disk_mask.sum(axis=(1, 2, 3))\nreturn float(per_image.mean())\n```\n\n<div class=\"code-contract\"><span><strong>Identical arrays:</strong> score 0</span><span><strong>Every disk pixel +1:</strong> score 1</span><span><strong>Only off-disk pixels +1:</strong> score 0</span></div>",
@@ -1893,7 +1929,7 @@
       "clicks": 0
     },
     {
-      "number": 64,
+      "number": 65,
       "key": "equal-image-average",
       "title": "Give each forecast image one score",
       "body": "<SolarConcept mode=\"averaging\" :reveal=\"Math.min($clicks + 1, 3)\" />",
@@ -1922,7 +1958,7 @@
       "exercise": null
     },
     {
-      "number": 65,
+      "number": 66,
       "key": "loss",
       "title": "Training loss and evaluation error have different jobs",
       "body": "<SolarComputation mode=\"loss\" :reveal=\"Math.min($clicks + 1, 3)\" />",
@@ -1951,7 +1987,7 @@
       "exercise": null
     },
     {
-      "number": 66,
+      "number": 67,
       "key": "image-code-screen",
       "title": "Compare forecasts for the same validation case",
       "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/v030-validation-predictions.png\" alt=\"Matched convolutional and residual predictions beside the same observed future\"><div class=\"image-caption\">Recorded v0.3.0 forecasts. First accepted validation case; common intensity and error scales.</div></div><div class=\"bottom-note\">Notebook: select one forecast timestamp. Compare persistence and both models on common scales.</div>",
@@ -1980,7 +2016,7 @@
       "clicks": 0
     },
     {
-      "number": 67,
+      "number": 68,
       "key": "image-turn",
       "title": "Implement and compare the image predictors",
       "body": "<div class=\"task\">Open <strong>5 \u00b7 Solar images</strong>.</div><ol class=\"exercise-controls\"><li>Edit <code>ImagePredictor.forward</code>, <code>training_loss</code>, and <code>my_image_mae</code>.</li><li>Click <strong>Check my image code</strong>. A +1 error should score 1; an off-disk change should score 0.</li><li>Click <strong>Compare convolutional and residual predictors</strong>. Inspect both forecasts.</li></ol><div class=\"done\">Check your work: Show which model validation selected, then point to a region where its forecast missed.</div>",
@@ -2014,7 +2050,7 @@
       "clicks": 0
     },
     {
-      "number": 68,
+      "number": 69,
       "key": "meal-break",
       "title": "Pause for thirty minutes before the research-agent exercise",
       "body": "<p>Keep the image comparison open at one timestamp. Save the draft you trained and the observation you want the agent to investigate.</p><p>After the break, we\u2019ll give the agent the code and validation evidence behind that result.</p>",
@@ -2042,7 +2078,7 @@
       "exercise": null
     },
     {
-      "number": 69,
+      "number": 70,
       "key": "agent-need",
       "title": "Use the experiment to test agent-written changes",
       "body": "<SolarComputation mode=\"evidence\" /><div class=\"bottom-note\">The lab has recruited an AI research assistant. We still review and test its work.</div>",
@@ -2071,7 +2107,7 @@
       "clicks": 0
     },
     {
-      "number": 70,
+      "number": 71,
       "key": "weights",
       "title": "Which model is being trained?",
       "body": "<SolarMechanism mode=\"weights\" />",
@@ -2100,7 +2136,7 @@
       "clicks": 0
     },
     {
-      "number": 71,
+      "number": 72,
       "key": "boundaries",
       "title": "Limit edits to the model and training code",
       "body": "<div class=\"two-col\"><div><h2>The assistant may edit</h2><p>Model layers<br>Feature computation<br>Training loss<br>Training procedure</p></div><div><h2>The experiment keeps fixed</h2><p>Training and validation dates<br>What we predict<br>How we score predictions<br>The reserved final-test dates</p></div></div><div class=\"bottom-note\">Candidate Python runs in this notebook\u2019s environment after your review.</div>",
@@ -2129,7 +2165,7 @@
       "clicks": 0
     },
     {
-      "number": 72,
+      "number": 73,
       "key": "agent-context",
       "title": "Give each program only the data it needs",
       "body": "<SolarConcept mode=\"context\" :reveal=\"Math.min($clicks + 1, 3)\" />",
@@ -2159,7 +2195,7 @@
       "exercise": null
     },
     {
-      "number": 73,
+      "number": 74,
       "key": "research-tool-result",
       "title": "Gather validation evidence before requesting a proposal",
       "body": "```python {1-3|4-5|6|all}\n_, observed = event(\"read_validation_evidence\",\n                    {\"execution\": evidence[\"stage_id\"]},\n                    read_validation)\nprompt = {\"mission\": \"Propose two competing code changes...\",\n          \"source\": source, \"evidence\": allowed}\n# validated_json sends this prompt in the model request.\n```\n\n<div class=\"bottom-note\">Shortened from research.propose(). The notebook chooses and runs the evidence-read operation.</div>",
@@ -2188,7 +2224,7 @@
       "exercise": null
     },
     {
-      "number": 74,
+      "number": 75,
       "key": "evidence",
       "title": "Give the agent the inputs needed to explain a run",
       "body": "<div class=\"step-path\"><div><h2>Exact source</h2><p>The files that produced the parent result.</p></div><div><h2>Active settings</h2><p>Architecture, steps, width, optimizer values.</p></div><div><h2>Validation evidence</h2><p>Loss history, validation metrics, and recorded errors.</p></div></div><div class=\"bottom-note\">A default in source may not be the value the run used.</div>",
@@ -2217,7 +2253,7 @@
       "clicks": 0
     },
     {
-      "number": 75,
+      "number": 76,
       "key": "agent-span",
       "title": "Follow the agent\u2019s work in Agent Lens",
       "body": "<div class=\"step-path\"><div><h2>Open the request</h2><p>Read what we asked the agent to change.</p></div><div><h2>Inspect notebook operations</h2><p>Find the saved evidence read before the request.</p></div><div><h2>Follow the test</h2><p>Open the training call and look at its result or error.</p></div></div><div class=\"bottom-note\">Compare the agent\u2019s stated reason with what happened when its code ran.</div>",
@@ -2246,7 +2282,7 @@
       "clicks": 0
     },
     {
-      "number": 76,
+      "number": 77,
       "key": "native-lens",
       "title": "Read the evidence that went into the proposal",
       "body": "<div class=\"native-product-evidence\"><a class=\"product-screen visual-v030-solar-evidence\" href=\"/images/visual-v030-solar-evidence.png\" target=\"_blank\" aria-label=\"Open full-size capture\"><img src=\"/images/visual-v030-solar-evidence.png\" alt=\"Native read_validation_evidence span from the current Solar proposal\"><span v-click=\"1\" class=\"capture-mark\" style=\"left:70px;top:3px;width:800px;height:190px\" aria-label=\"Annotation 1: Parent settings\"><b>1</b></span><span v-click=\"2\" class=\"capture-mark\" style=\"left:70px;top:210px;width:800px;height:184px\" aria-label=\"Annotation 2: Validation evidence\"><b>2</b></span></a><div class=\"product-caption\"><span>Find the parent configuration and validation error before reading its proposal.</span><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/23f4a8510534f241b9c6ccacb0ef3cb7/spans\">Open the proposal \u2197</a></div><div class=\"image-caption\">Recorded v0.3.0 round 1. The agent receives validation evidence, never the reserved-date score.</div></div>",
@@ -2278,7 +2314,7 @@
       "clicks": 0
     },
     {
-      "number": 77,
+      "number": 78,
       "key": "evidence-turn",
       "title": "Choose the evidence for the research agent",
       "body": "<div class=\"task\">Open <strong>6. Test agent-written changes to the image model</strong>.</div><ol class=\"exercise-controls\"><li>In <code>select_validation_evidence(record)</code>, keep the active settings and validation results. Click <strong>Check my evidence selection</strong>.</li><li>Read the check result. Confirm that the final-test example is rejected.</li><li>Name the validation fields your function will send to the agent. What can it learn from them?</li></ol><div class=\"done\">Check your work: You can name the code and validation results the agent will receive.</div>",
@@ -2312,7 +2348,7 @@
       "clicks": 0
     },
     {
-      "number": 78,
+      "number": 79,
       "key": "propose",
       "title": "Ask for two changes to the same starting code",
       "body": "<ResearchBranches :level=\"1\" /><div class=\"bottom-note\"><a href=\"https://github.com/google-research/harness2/tree/1cfe254e8d25b15f37048c3730134686abe60335\">Harness\u00b2-inspired</a>: our probes train forecasting weights and include validation scores.</div>",
@@ -2341,7 +2377,7 @@
       "clicks": 0
     },
     {
-      "number": 79,
+      "number": 80,
       "key": "native-diff",
       "title": "The first proposal changes one loss operation",
       "body": "```python\ndef training_loss(prediction, target, mask):\n    # Before: square each miss.\n    # After: take its absolute size.\n    return ((prediction - target).abs() * mask).sum() / mask.sum()\n```\n\n<div class=\"diff\"><div class=\"del\">\u2212 (prediction - target).square()</div><div class=\"add\">+ (prediction - target).abs()</div></div><p class=\"aside\">Agent\u2019s hypothesis: training on absolute error may help the fixed absolute-error score. The probe tests that claim.</p>",
@@ -2373,7 +2409,7 @@
       "clicks": 0
     },
     {
-      "number": 80,
+      "number": 81,
       "key": "loss-change-effect",
       "title": "The loss edit changes which errors receive larger gradients",
       "body": "<SolarWorked mode=\"loss\" :reveal=\"Math.min($clicks + 1, 3)\" />\n\n```python {all}\nsquared_loss = ((prediction - target).square() * mask).sum() / mask.sum()\nabsolute_loss = ((prediction - target).abs() * mask).sum() / mask.sum()\n```\n\n<div class=\"bottom-note\">The recorded edit changes the masked training objective; the fixed scorer does not change.</div>",
@@ -2402,7 +2438,7 @@
       "exercise": null
     },
     {
-      "number": 81,
+      "number": 82,
       "key": "probe",
       "title": "Train and score each candidate",
       "body": "<ResearchBranches :level=\"2\" /><div class=\"bottom-note\">Use the same training and validation data. Keep failed runs visible.</div>",
@@ -2431,12 +2467,12 @@
       "clicks": 0
     },
     {
-      "number": 82,
+      "number": 83,
       "key": "compose",
-      "title": "Choose or combine changes using the probe results",
-      "body": "<ResearchBranches :level=\"3\" /><div class=\"bottom-note\">The agent can keep A, keep B, combine changes, or retain the starting code.</div>",
-      "notes": "After both probes, the agent receives their code and validation results. It can keep one candidate, combine changes, or retain the starting source. Two suggestions do not obligate the lab to accept two changes. Read its rationale beside the scores. The dashed lines show which results it reviewed; they do not mean both candidates were merged into the selected code. Session block: Review and test two rounds of changes (minutes 260\u2013310).",
-      "kind": "",
+      "title": "Test the research agent\u2019s code changes",
+      "body": "<TechnicalGuide :frames=\"[{&quot;id&quot;: &quot;parent&quot;, &quot;label&quot;: &quot;Adopted L1 model&quot;, &quot;svg&quot;: &quot;01-parent.svg&quot;, &quot;caption&quot;: &quot;Round one selected masked absolute-error training. Round two keeps the data, 40 training steps, and seed 17 fixed.&quot;, &quot;src&quot;: &quot;/guides/solar/research/slide/01-parent.svg&quot;}, {&quot;id&quot;: &quot;candidate-a&quot;, &quot;label&quot;: &quot;A: zero-initialize the head&quot;, &quot;svg&quot;: &quot;02-candidate-a.svg&quot;, &quot;caption&quot;: &quot;Initialize the final convolution to zero. The residual model starts by copying the current image and then learns a correction.&quot;, &quot;src&quot;: &quot;/guides/solar/research/slide/02-candidate-a.svg&quot;}, {&quot;id&quot;: &quot;candidate-b&quot;, &quot;label&quot;: &quot;B: change sample order&quot;, &quot;svg&quot;: &quot;03-candidate-b.svg&quot;, &quot;caption&quot;: &quot;Sample a permutation without replacement instead of drawing each batch independently. Keep the inherited model and loss.&quot;, &quot;src&quot;: &quot;/guides/solar/research/slide/03-candidate-b.svg&quot;}, {&quot;id&quot;: &quot;decision&quot;, &quot;label&quot;: &quot;Adopt Candidate A&quot;, &quot;svg&quot;: &quot;04-decision.svg&quot;, &quot;caption&quot;: &quot;The recorded decision selects A and tests that source. A combined A+B version was not tested and is not claimed as an improvement.&quot;, &quot;src&quot;: &quot;/guides/solar/research/slide/04-decision.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;05-complete.svg&quot;, &quot;caption&quot;: &quot;Later image qualification: error reductions of 10.15%, 6.87%, and \u22120.21% against the manual model. One seed regressed.&quot;, &quot;src&quot;: &quot;/guides/solar/research/slide/05-complete.svg&quot;}]\" :step=\"$clicks\" />",
+      "notes": "After both probes, the agent receives their code and validation results. It can keep one candidate, combine changes, or retain the starting source. Two suggestions do not obligate the lab to accept two changes. Read its rationale beside the scores. The dashed lines show which results it reviewed; they do not mean both candidates were merged into the selected code. Session block: Review and test two rounds of changes (minutes 260\u2013310).\nVisual guide: solar/research. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
+      "kind": "technical-manual",
       "time": "4:20\u20135:10",
       "answer": null,
       "timing": {
@@ -2457,10 +2493,11 @@
         "records": []
       },
       "exercise": null,
-      "clicks": 0
+      "clicks": 4,
+      "technical_guide": "solar/research"
     },
     {
-      "number": 83,
+      "number": 84,
       "key": "test-composed",
       "title": "Train the composed version before adopting it",
       "body": "<ResearchBranches :level=\"4\" /><div class=\"bottom-note\">Run the selected code on the same training and validation dates.</div>",
@@ -2489,7 +2526,7 @@
       "clicks": 0
     },
     {
-      "number": 84,
+      "number": 85,
       "key": "composition-versus-adoption",
       "title": "Test the recommendation before carrying it forward",
       "body": "<SolarConcept mode=\"selection\" :reveal=\"Math.min($clicks + 1, 3)\" />",
@@ -2517,7 +2554,7 @@
       "exercise": null
     },
     {
-      "number": 85,
+      "number": 86,
       "key": "adoption-rule",
       "title": "Adopt the tested code only if validation error is lower",
       "body": "<SolarDataRules mode=\"adoption\" />",
@@ -2546,7 +2583,7 @@
       "clicks": 0
     },
     {
-      "number": 86,
+      "number": 87,
       "key": "native-training",
       "title": "Open the training call behind the chosen version",
       "body": "<div class=\"native-product-evidence\"><a class=\"product-screen visual-v030-solar-training\" href=\"/images/visual-v030-solar-training.png\" target=\"_blank\" aria-label=\"Open full-size capture\"><img src=\"/images/visual-v030-solar-training.png\" alt=\"Native train_and_validate tool span with actual source settings and returned metrics\"><span v-click=\"1\" class=\"capture-mark\" style=\"left:14px;top:45px;width:880px;height:160px\" aria-label=\"Annotation 1: Training settings\"><b>1</b></span><span v-click=\"2\" class=\"capture-mark\" style=\"left:14px;top:245px;width:880px;height:145px\" aria-label=\"Annotation 2: Measured output\"><b>2</b></span></a><div class=\"product-caption\"><span>Check the configuration, then find validation_error in the returned result.</span><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f7550caa1639e8366efbf9d84a782289\">Open the selected training call \u2197</a></div><div class=\"image-caption\">Recorded v0.3.0 round 2 composition test. \u201cerror\u201d is forecast error here, not an exception.</div></div>",
@@ -2578,7 +2615,7 @@
       "clicks": 0
     },
     {
-      "number": 87,
+      "number": 88,
       "key": "recorded-code",
       "title": "Round 2: start the correction at zero",
       "body": "```python\nif architecture == 'residual':\n    nn.init.zeros_(self.net[-1].weight)\n    nn.init.zeros_(self.net[-1].bias)\n\n# The residual forward pass remains:\nreturn prediction + x[:, 1:2]\n```\n\n<div class=\"bottom-note\">The round-one absolute loss stays. Zero initial correction makes the initial forecast persistence.</div>",
@@ -2610,7 +2647,7 @@
       "clicks": 0
     },
     {
-      "number": 88,
+      "number": 89,
       "key": "zero-head",
       "title": "Zero initialization applies only to the output layer",
       "body": "<SolarDataRules mode=\"zero-head\" />",
@@ -2642,7 +2679,7 @@
       "clicks": 0
     },
     {
-      "number": 89,
+      "number": 90,
       "key": "zero-head-gradients",
       "title": "Zeroing the last layer still allows learning",
       "body": "<SolarWorked mode=\"zero\" :reveal=\"Math.min($clicks + 1, 3)\" />\n\n```python {all}\nnn.init.zeros_(self.net[-1].weight)\nnn.init.zeros_(self.net[-1].bias)\n```\n\n<div class=\"bottom-note\">The earlier layers keep their normal initialization. Do not zero the entire network.</div>",
@@ -2671,7 +2708,7 @@
       "exercise": null
     },
     {
-      "number": 90,
+      "number": 91,
       "key": "repeat",
       "title": "Use the selected code and results in round two",
       "body": "<ResearchBranches :level=\"5\" /><div class=\"bottom-note\">Use the selected code and what the first tests showed to plan the next changes.</div>",
@@ -2700,7 +2737,7 @@
       "clicks": 0
     },
     {
-      "number": 91,
+      "number": 92,
       "key": "round1-turn",
       "title": "Propose and test two changes",
       "body": "<div class=\"task\">Inspect <code>next_research_action</code> in <strong>6. Test agent-written changes to the image model</strong>.</div><ol class=\"exercise-controls\"><li><strong>Propose two code changes</strong>. Read both diffs.</li><li>Confirm review of Candidate A \u2192 <strong>Test Candidate A</strong>. Confirm review of Candidate B \u2192 <strong>Test Candidate B</strong>.</li><li><strong>Record my comparison</strong>, then <strong>Request a composition</strong>.</li></ol><div class=\"done\">Check your work: Each candidate\u2019s proposal diff and training result are linked in Agent Lens.</div>",
@@ -2734,7 +2771,7 @@
       "clicks": 0
     },
     {
-      "number": 92,
+      "number": 93,
       "key": "round2-turn",
       "title": "Test the selected code, then begin round two",
       "body": "<div class=\"task\">Continue the same workbench.</div><ol class=\"exercise-controls\"><li>Confirm review of composition, then <strong>Test the composition</strong>.</li><li>Click <strong>Save the adopted version and lesson</strong>. Check whether the parent was retained.</li><li>Repeat the process in round two using the previous outcome.</li></ol><div class=\"done\">Check your work: Open the selected version from each round and explain why it was kept.</div>",
@@ -2768,7 +2805,7 @@
       "clicks": 0
     },
     {
-      "number": 93,
+      "number": 94,
       "key": "branch-inspect",
       "title": "Follow one proposal through the branch diagram",
       "body": "<ResearchBranches :level=\"5\" :interactive=\"true\" :recorded=\"true\" />",
@@ -2797,7 +2834,7 @@
       "clicks": 0
     },
     {
-      "number": 94,
+      "number": 95,
       "key": "break-two",
       "title": "Take ten minutes before opening the final dates",
       "body": "<p>Finish the current action and save the selected version. Do not make another code choice from the final comparison.</p><p>We\u2019ll load the saved weights when we return.</p>",
@@ -2825,7 +2862,7 @@
       "exercise": null
     },
     {
-      "number": 95,
+      "number": 96,
       "key": "freeze",
       "title": "Keep the selected code and weights fixed for final evaluation",
       "body": "<SolarComputation mode=\"inference\" :reveal=\"Math.min($clicks + 1, 4)\" />",
@@ -2854,7 +2891,7 @@
       "exercise": null
     },
     {
-      "number": 96,
+      "number": 97,
       "key": "frozen-code",
       "title": "Load the saved weights to make final predictions",
       "body": "```python\nmodel = build_model(input_shape, frozen_config)\nmodel.load_state_dict(saved_weights)\nmodel.eval()\nwith torch.no_grad():\n    prediction = model(final_inputs)\n```\n\n<div class=\"bottom-note\">There is no optimizer step in this stage.</div>",
@@ -2883,7 +2920,7 @@
       "clicks": 0
     },
     {
-      "number": 97,
+      "number": 98,
       "key": "aligned",
       "title": "Match each prediction to the same observation times",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Case identity</th><th>Persistence</th><th>Manual</th><th>Agent-selected</th></tr><tr><td>Same input timestamps</td><td>Prediction + error</td><td>Prediction + error</td><td>Prediction + error</td></tr><tr><td>Same target timestamp</td><td>Saved output</td><td>Executed source</td><td>Executed source</td></tr></tbody></table><div class=\"bottom-note\">Use each case ID to find the same input and target times in Weave or EvalTables.</div>",
@@ -2912,7 +2949,7 @@
       "clicks": 0
     },
     {
-      "number": 98,
+      "number": 99,
       "key": "final-turn",
       "title": "Test the selected models on reserved dates",
       "body": "<div class=\"task\">Open <strong>7. Evaluate the selected models on reserved dates</strong>.</div><ol class=\"exercise-controls\"><li>Click <strong>Freeze versions and evaluate reserved dates</strong>.</li><li>Choose one timestamp. Compare each image forecast with the same observed future.</li><li>Open one result\u2019s training record and Agent Lens call. Compare the image scores separately from the GOES scores.</li></ol><div class=\"done\">Check your work: Explain a difference between two forecasts using their images and scores.</div>",
@@ -2946,7 +2983,7 @@
       "clicks": 0
     },
     {
-      "number": 99,
+      "number": 100,
       "key": "recorded-final",
       "title": "In this rehearsal, image error fell 10.15%",
       "body": "<div class=\"measured-grid\"><div><div class=\"measured-gain\">10.15%</div><p>less error than the manually selected model</p><p class=\"aside\">Agent edits: use absolute training loss, then zero-initialize the residual head.</p></div><table class=\"clean-table\"><tbody><tr><th>Frozen version</th><th>Masked MAE \u2193</th></tr><tr><td>Persistence</td><td>0.125762</td></tr><tr><td>Manual residual model</td><td>0.122442</td></tr><tr><td>Agent-selected code</td><td>0.110011</td></tr></tbody></table></div><p class=\"aside\">Actual AIA 171 \u00c5 observations. 199 overlapping windows; February 13\u201314, 2014; one seed. <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==\">Open the recorded comparison \u2197</a></p><div class=\"bottom-note\">A measured result from this rehearsal, not a promised outcome for your edits.</div>",
@@ -2978,7 +3015,7 @@
       "clicks": 0
     },
     {
-      "number": 100,
+      "number": 101,
       "key": "recorded-image",
       "title": "Compare the two models on one reserved-date image",
       "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/v030-final-predictions.png\" alt=\"Manual and agent-selected forecasts for the same first accepted final case\"><div class=\"image-caption\">Forecast origin 2014-02-13T02:48 UTC. Same inputs, target, intensity scale, and error scale.</div></div><div class=\"bottom-note\">The first accepted case is shown, not the case with the largest improvement.</div>",
@@ -3010,7 +3047,7 @@
       "clicks": 0
     },
     {
-      "number": 101,
+      "number": 102,
       "key": "qualified-images",
       "title": "The image edits helped two seeds and slightly hurt one",
       "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/images-seeds-deck.png\" alt=\"Combined image edits lower error for seed 17 from 0.122442 to 0.110011 and seed 29 from 0.117650 to 0.109566, but raise seed 43 from 0.110168 to 0.110397\"><div class=\"image-caption\">Same saved sources, 40 updates per run, three predeclared training seeds. Final dates were already known.</div></div><div class=\"bottom-note\">Mean error falls 5.79%. The predeclared requirement to improve every seed fails.</div>",
@@ -3042,7 +3079,7 @@
       "clicks": 0
     },
     {
-      "number": 102,
+      "number": 103,
       "key": "repeatability",
       "title": "The same image edit helped two seeds and hurt one",
       "body": "<SolarWorked mode=\"repetition\" :reveal=\"Math.min($clicks + 1, 3)\" />\n\n<div class=\"bottom-note\">199 overlapping windows on the same two dates; three seeds repeat fixed recipes, not agent discovery.</div>",
@@ -3072,7 +3109,7 @@
       "exercise": null
     },
     {
-      "number": 103,
+      "number": 104,
       "key": "recorded-goes",
       "title": "The GOES model performed worse than persistence",
       "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/v030-goes-final.png\" alt=\"Observed GOES flux, persistence forecast, and selected model prediction on reserved dates\"><div class=\"image-caption\">Final log-flux MAE: selected model 2.469; persistence 0.193. 2,694 accepted windows.</div></div><div class=\"bottom-note\">Compare the forecast with its loss curve. <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=dtm5k18fpo4\">Compare these forecasts in EvalTables \u2197</a></div>",
@@ -3104,7 +3141,7 @@
       "clicks": 0
     },
     {
-      "number": 104,
+      "number": 105,
       "key": "qualified-goes",
       "title": "The measurement repair passed its three-seed check",
       "body": "<div class=\"scientific-figure\"><img class=\"solar-photo\" src=\"/images/goes-seeds-deck.png\" alt=\"GOES persistence MAE is 0.192706; the repaired recipe scores 0.162878, 0.163880 and 0.163760 for seeds 17, 29 and 43\"><div class=\"image-caption\">Recorded qualification: selected on validation dates, then evaluated with frozen weights on known final dates.</div></div><div class=\"bottom-note\"><a href=\"https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-qualification.md\">All configurations, seeds, sources, and reproduction instructions \u2197</a></div>",
@@ -3136,7 +3173,7 @@
       "clicks": 0
     },
     {
-      "number": 105,
+      "number": 106,
       "key": "result-meaning",
       "title": "Compare forecasts for the same timestamp",
       "body": "<div class=\"eval-native\"><div class=\"eval-native-image\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=91ypk2or045\"><img src=\"/images/evaltables-native.png\" alt=\"Native Forge Evaluation Tables Preview showing saved workshop results\"></a><span class=\"eval-native-pin\" style=\"left:6%;top:39%\" aria-hidden=\"true\">1</span><span class=\"eval-native-pin\" style=\"left:6%;top:77%\" aria-hidden=\"true\">2</span><span class=\"eval-native-pin\" style=\"left:6%;top:53%\" aria-hidden=\"true\">3</span></div><div class=\"eval-native-notes\"><p><b>1 \u00b7 Choose image versions</b><br>Persistence, manual, and agent-selected use the same cases.</p><p><b>2 \u00b7 Match forecast times</b><br>Input and target times must match across versions.</p><p><b>3 \u00b7 Read masked error</b><br>Lower is better for this image task.</p></div></div><p class=\"eval-native-caption\">Recorded results in Forge \u00b7 Evaluation Tables (Preview) \u00b7 <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=91ypk2or045\">Open this comparison \u2197</a></p>",
@@ -3165,7 +3202,7 @@
       "clicks": 0
     },
     {
-      "number": 106,
+      "number": 107,
       "key": "native-forecast",
       "title": "Compare errors for one observed future image",
       "body": "<div class=\"eval-native\"><div class=\"eval-native-image\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=91ypk2or045\"><img src=\"/images/evaltables-native-detail.png\" alt=\"Native Forge Evaluation Tables Preview showing saved workshop results\"></a><span class=\"eval-native-pin\" style=\"left:11%;top:80%\" aria-hidden=\"true\">1</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:45%\" aria-hidden=\"true\">2</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:97%\" aria-hidden=\"true\">3</span></div><div class=\"eval-native-notes\"><p><b>1 \u00b7 Match the case</b><br>Use the same case ID in all three columns.</p><p><b>2 \u00b7 Read the target</b><br>Every forecast is checked against this observed image.</p><p><b>3 \u00b7 Compare the errors</b><br>The agent-selected version has lower masked error on this case.</p></div></div><p class=\"eval-native-caption\">Recorded results in Forge \u00b7 Evaluation Tables (Preview) \u00b7 <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=91ypk2or045\">Open this comparison \u2197</a></p>",
@@ -3197,7 +3234,7 @@
       "clicks": 0
     },
     {
-      "number": 107,
+      "number": 108,
       "key": "reproduce",
       "title": "Check that the saved source contains both selected edits",
       "body": "<div class=\"native-product-evidence\"><a class=\"product-screen visual-v030-solar-artifact\" href=\"/images/visual-v030-solar-artifact.png\" target=\"_blank\" aria-label=\"Open full-size capture\"><img src=\"/images/visual-v030-solar-artifact.png\" alt=\"Native W&amp;B Artifact code view showing the selected candidate.py\"></a><div class=\"product-caption\"><span>Find the zero-initialized output layer and the absolute training loss.</span><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f7550caa1639e8366efbf9d84a782289/v0\">Open the Artifact \u2197</a></div><div class=\"image-caption\">The same Artifact also holds <code>losses.json</code>, <code>weights.pt</code>, and <code>predictions.npy</code> from this training run.</div></div>",
@@ -3226,7 +3263,7 @@
       "clicks": 0
     },
     {
-      "number": 108,
+      "number": 109,
       "key": "aria-conclusion",
       "title": "Check our conclusion",
       "body": "<div class=\"aria-sequence-wrap\"><svg class=\"aria-sequence\" viewBox=\"0 0 1110 154\" role=\"img\" aria-label=\"Explain your interpretation, read ARIA\u2019s answer, and check its cited source.\"><g><rect x=\"0\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#d9e9e1\" stroke=\"#48675d\"/><text x=\"18\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Your interpretation</text><text x=\"18\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Matching forecast timestamps</text></g><path d=\"M345 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M360 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"370\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"388\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">ARIA response</text><text x=\"388\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Frozen source and weights</text></g><path d=\"M715 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M730 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"740\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"758\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Checked source record</text><text x=\"758\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Separate GOES and AIA errors</text></g></svg></div><div class=\"aria-question\">Check the conclusion separately for measurements and images. Distinguish the measured gain from an untested explanation and preserve the unsuccessful GOES result.</div><div class=\"aria-two\"><div><b>Start with your explanation</b><p>What do you think happened? Which observation supports it?</p><p>Copy the notebook\u2019s prompt and add native context in Forge.</p></div><div><b>Selected instructor records</b><ul class=\"aria-records\"><li><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/4d1bfd4e02dcf10bc59b2236a9219f4c\" target=\"_blank\" rel=\"noopener\">images/final-comparison \u2197</a></li><li><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/f0fefa942fc5ab6f5ed7da1efb577219\" target=\"_blank\" rel=\"noopener\">goes/final-comparison \u2197</a></li></ul></div></div><p class=\"aria-foot\">Keep the compared versions frozen. Suggest a future experiment without running it. Check ARIA\u2019s selected project. Use exact record URLs; add native context where this surface offers it.</p>",
@@ -3267,7 +3304,7 @@
       }
     },
     {
-      "number": 109,
+      "number": 110,
       "key": "aria-conclusion-response",
       "title": "Read one claim in the recorded response",
       "body": "<div class=\"aria-sequence-wrap\"><svg class=\"aria-sequence\" viewBox=\"0 0 1110 154\" role=\"img\" aria-label=\"Explain your interpretation, read ARIA\u2019s answer, and check its cited source.\"><g><rect x=\"0\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"18\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Your interpretation</text><text x=\"18\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Matching forecast timestamps</text></g><path d=\"M345 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M360 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"370\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#d9e9e1\" stroke=\"#48675d\"/><text x=\"388\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">ARIA response</text><text x=\"388\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Frozen source and weights</text></g><path d=\"M715 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M730 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"740\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"758\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Checked source record</text><text x=\"758\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Separate GOES and AIA errors</text></g></svg></div><div class=\"aria-response\"><figure class=\"aria-screen\"><a href=\"/aria/conclusion/conclusion-response.png\" target=\"_blank\"><img src=\"/aria/conclusion/conclusion-response.png\" alt=\"Actual ARIA response. Check its distinction between retrieved native records and supplied evidence excerpts.\"></a></figure><div><b>Recorded instructor investigation</b><blockquote>12.52% lower recorded error than persistence</blockquote><p>Does this statement follow from the records, or is it a possible explanation?</p><p><a href=\"/aria/conclusion/conclusion-transcript.html\" target=\"_blank\">Read the full transcript without sign-in \u2197</a></p><a href=\"https://forge.coreweave.com/aria/threads/01a1e064-664e-7791-bf87-1f64ebc526ed\" target=\"_blank\" rel=\"noopener\">Open the recorded conversation \u2197</a></div></div><p class=\"aria-foot\">The recording uses instructor results. It does not describe your unexecuted edits.</p>",
@@ -3308,7 +3345,7 @@
       }
     },
     {
-      "number": 110,
+      "number": 111,
       "key": "aria-conclusion-verify",
       "title": "Open the source and check that claim",
       "body": "<div class=\"aria-sequence-wrap\"><svg class=\"aria-sequence\" viewBox=\"0 0 1110 154\" role=\"img\" aria-label=\"Explain your interpretation, read ARIA\u2019s answer, and check its cited source.\"><g><rect x=\"0\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"18\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Your interpretation</text><text x=\"18\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Matching forecast timestamps</text></g><path d=\"M345 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M360 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"370\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"388\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">ARIA response</text><text x=\"388\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Frozen source and weights</text></g><path d=\"M715 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M730 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"740\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#d9e9e1\" stroke=\"#48675d\"/><text x=\"758\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Checked source record</text><text x=\"758\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Separate GOES and AIA errors</text></g></svg></div><div class=\"aria-response\"><figure class=\"aria-screen\"><a href=\"/aria/conclusion/conclusion-verification.png\" target=\"_blank\"><img src=\"/aria/conclusion/conclusion-verification.png\" alt=\"Native EvalTables shows the same 2014-02-14T13:36 image target across three versions, with per-case errors 0.1264, 0.123, and 0.113. This is one forecast, not the aggregate means quoted by ARIA.\"></a></figure><div><b>Citation check: supported</b><p>Saved images/final-comparison metrics show agent error 0.110011 versus persistence 0.125762 across 199 examples, giving 12.5245% lower error. Saved goes/final-comparison shows selected-model error 2.46897 versus persistence 0.192706 across 2694 examples, a ratio of 12.8121. These match the artifact values ARIA reports retrieving. They do not establish broad forecasting reliability or identify why a change helped.</p><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/4d1bfd4e02dcf10bc59b2236a9219f4c\" target=\"_blank\" rel=\"noopener\">Open the checked source \u2197</a><p><a href=\"/aria/conclusion/conclusion-source-records.html\" target=\"_blank\">Check the supplied source values offline \u2197</a></p></div></div><p class=\"aria-foot\">Save your own citation check. ARIA\u2019s answer does not become a label, score, approved lesson, or release decision.</p>",
@@ -3349,7 +3386,7 @@
       }
     },
     {
-      "number": 111,
+      "number": 112,
       "key": "conclusion-turn",
       "title": "Write down what changed and whether it helped",
       "body": "<div class=\"task\">Use your own comparison.</div><ol class=\"exercise-controls\"><li>Name one code change and report its error on the reserved dates.</li><li>Include a forecast that still missed. Say what you would try next.</li><li>Click <strong>Publish my conclusion</strong>. Follow a link in your Report back to the saved code or prediction.</li></ol><div class=\"done\">Check your work: Your conclusion names the change, the measured result, and a remaining problem.</div>",
@@ -3383,7 +3420,7 @@
       "clicks": 0
     },
     {
-      "number": 112,
+      "number": 113,
       "key": "close",
       "title": "Bring the results to the lab review",
       "body": "<div class=\"native-product-evidence\"><a class=\"product-screen visual-v030-solar-report\" href=\"/images/visual-v030-solar-report.png\" target=\"_blank\" aria-label=\"Open full-size capture\"><img src=\"/images/visual-v030-solar-report.png\" alt=\"Native Report excerpt summarizing the latest Solar technical rehearsal\"></a><div class=\"product-caption\"><span>Bring one result, its saved source, and the next experiment you would try.</span><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==\">Open the Report \u2197</a></div><div class=\"image-caption\">Recorded technical rehearsal. Use your own completed runs when writing your Report.</div></div>",
@@ -3412,7 +3449,7 @@
       "clicks": 0
     },
     {
-      "number": 113,
+      "number": 114,
       "key": "reference",
       "title": "Reference and worked answers",
       "body": "<p class=\"big\">Use these after an attempt, or when live access is unavailable.</p><p>Recorded examples belong to the November 13 technical rehearsal. They are not results from your unexecuted changes.</p><div class=\"bottom-note\">Use the return links to continue the workshop.</div>",
@@ -3438,7 +3475,7 @@
       "clicks": 0
     },
     {
-      "number": 114,
+      "number": 115,
       "key": "answer-trace",
       "title": "Put the attribute inside the tool scope",
       "body": "```python\ndef instrument_tool(observation):\n    with tracing.Tool(\n        name=observation[\"name\"],\n        arguments=observation[\"arguments\"],\n        result=observation[\"result\"],\n        started_at=stamp(observation[\"started_at\"]),\n        ended_at=stamp(observation[\"ended_at\"]),\n    ) as tool:\n        tool.set_attributes({\"workshop.exercise\": \"solar-research\"})\n        if observation.get(\"error\"):\n            tool.record_error(RuntimeError(observation[\"error\"]))\n```\n\n",
@@ -3464,7 +3501,7 @@
       "clicks": 0
     },
     {
-      "number": 115,
+      "number": 116,
       "key": "answer-persistence",
       "title": "Return a copy of the latest observation",
       "body": "```python\ndef persistence_forecast(split):\n    return split[\"persistence\"].copy()\n```\n\n<p>The copy lets you work with the predictions without changing the dataset.</p>",
@@ -3490,7 +3527,7 @@
       "clicks": 0
     },
     {
-      "number": 116,
+      "number": 117,
       "key": "answer-flux",
       "title": "Implement the training loss and forecast metric",
       "body": "```python\ndef training_loss(prediction, target, mask):\n    return ((prediction - target).square() * mask).sum() / mask.sum()\n\ndef my_flux_mae(prediction, target):\n    return float(np.abs(prediction - target).mean())\n\nassert my_flux_mae(np.ones(3), np.zeros(3)) == 1.0\nassert my_flux_mae(np.zeros(3), np.zeros(3)) == 0.0\n```\n\n<p class=\"aside\">Training uses squared error. Evaluation reports mean absolute error.</p>",
@@ -3516,7 +3553,7 @@
       "clicks": 0
     },
     {
-      "number": 117,
+      "number": 118,
       "key": "answer-search",
       "title": "Compare the settings and loss curves",
       "body": "<p class=\"big\">Open two runs from the Sweep. Compare their model, width, learning rate, and training steps.</p><p>Then open the loss curves. A lower validation error is easier to interpret when you can see how each model trained.</p><div class=\"bottom-note\">If a run failed, inspect its error. A missing score cannot rank that model.</div>",
@@ -3542,7 +3579,7 @@
       "clicks": 0
     },
     {
-      "number": 118,
+      "number": 119,
       "key": "goes-repair-code",
       "title": "Let the model learn a correction to persistence",
       "body": "```python {2|3|4|all}\ndef forward(self, x):\n    correction = self.net(x)\n    standardized = x[:, 1, -1:] + correction\n    return standardized * self.scale + self.center\n\n# Zero-initialize the correction head before training.\n# Fit scaling on training dates; score in log-flux units.\n```\n\n<div class=\"bottom-note\">The repair also uses absolute loss and 1,200 updates. These choices are tested together.</div>",
@@ -3568,7 +3605,7 @@
       "clicks": 0
     },
     {
-      "number": 119,
+      "number": 120,
       "key": "answer-images",
       "title": "Average the error inside the disk mask",
       "body": "```python\ndef my_image_mae(prediction, target, disk_mask):\n    errors = np.abs(prediction - target) * disk_mask\n    per_image = errors.sum(axis=(1, 2, 3))\n    per_image /= disk_mask.sum(axis=(1, 2, 3))\n    return float(per_image.mean())\n```\n\n<p>Test zero error, constant +1 error, and an error only outside the mask.</p>",
@@ -3594,7 +3631,7 @@
       "clicks": 0
     },
     {
-      "number": 120,
+      "number": 121,
       "key": "answer-residual",
       "title": "Add the correction to input channel 1",
       "body": "```python\ndef forward(self, x):\n    correction = self.net(x)\n    if architecture == \"residual\":\n        return x[:, 1:2] + correction\n    return correction\n```\n\n<div class=\"bottom-note\">The current image is input channel 1. The return has one channel.</div>",
@@ -3620,7 +3657,7 @@
       "clicks": 0
     },
     {
-      "number": 121,
+      "number": 122,
       "key": "answer-evidence",
       "title": "Return validation evidence only",
       "body": "```python\ndef select_validation_evidence(record):\n    if record.get(\"split\") != \"validation\":\n        raise ValueError(\"Only validation evidence is allowed.\")\n    fields = (\"split\", \"config\", \"metrics\", \"losses\",\n              \"errors\", \"trace\", \"stage_id\", \"lessons\")\n    return {name: record[name] for name in fields if name in record}\n```\n\n<div class=\"bottom-note\">The agent also receives the current source. Keep final predictions and scores out of this request.</div>",
@@ -3646,7 +3683,7 @@
       "clicks": 0
     },
     {
-      "number": 122,
+      "number": 123,
       "key": "answer-controller",
       "title": "Pass the candidate\u2019s code to training",
       "body": "```python\ncandidate = proposal[\"candidates\"][candidate_index]\nprobe = run_training(\n    session, stage_name, candidate[\"source\"],\n    image_splits, parent[\"config\"], dataset_version, metric_source,\n)\n```\n\n<div class=\"bottom-note\">Use the candidate\u2019s source here. Passing the parent would train the old program again.</div>",
@@ -3672,7 +3709,7 @@
       "clicks": 0
     },
     {
-      "number": 123,
+      "number": 124,
       "key": "answer-final",
       "title": "Use the saved model without training it again",
       "body": "<p class=\"big\">Load each selected model\u2019s saved weights and predict the reserved dates.</p><p>Compare the three image forecasts at one timestamp. The input images and observed future should match across all three rows.</p><div class=\"bottom-note\">Persistence copies the current image and needs no trained weights.</div>",
@@ -3698,7 +3735,7 @@
       "clicks": 0
     },
     {
-      "number": 124,
+      "number": 125,
       "key": "recorded-edit",
       "title": "Round 1: absolute loss versus the unchanged model",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Tested source</th><th>Validation error \u2193</th></tr><tr><td>Starting residual model</td><td>0.122116</td></tr><tr><td>A \u00b7 use absolute training loss</td><td>0.120553</td></tr><tr><td>B \u00b7 retain squared training loss</td><td>0.122116</td></tr></tbody></table><p>The composition selected A. Its separate test reproduced 0.120553.</p><div class=\"bottom-note\">Recorded v0.3.0: one seed, 142 validation windows, the same forty-step budget.</div>",
@@ -3727,7 +3764,7 @@
       "clicks": 0
     },
     {
-      "number": 125,
+      "number": 126,
       "key": "recorded-keep",
       "title": "Round 2: sampling without replacement did not reduce error",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Tested source</th><th>Validation error \u2193</th></tr><tr><td>Starting absolute-loss model</td><td>0.120553</td></tr><tr><td>A \u00b7 zero-initialize the residual head</td><td>0.110916</td></tr><tr><td>B \u00b7 sample without replacement</td><td>0.120557</td></tr></tbody></table><p>The composition selected A. It did not combine the unhelpful sampling change.</p><div class=\"bottom-note\">Keep the tested sampling result alongside the selected version for comparison.</div>",
@@ -3756,7 +3793,7 @@
       "clicks": 0
     },
     {
-      "number": 126,
+      "number": 127,
       "key": "recorded-lens",
       "title": "Open the recorded research conversation",
       "body": "<p class=\"big\"><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/23f4a8510534f241b9c6ccacb0ef3cb7\">Open the proposal and recorded notebook operations \u2197</a></p><p>Find the active configuration, the requested edit, and the returned candidate code. Compare the proposal with the tested source.</p><p class=\"aside\"><a href=\"https://ash0ts.github.io/forge-workshop-kit/solar/recorded-study.json\">Download the recorded source, decisions, scores, and evidence links \u2197</a></p><div class=\"bottom-note\">Agent Lens may require sign-in. The source and saved decisions are also in the downloadable evidence.</div>",
@@ -3785,7 +3822,7 @@
       "clicks": 0
     },
     {
-      "number": 127,
+      "number": 128,
       "key": "recovery",
       "title": "When a service is unavailable",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Failure</th><th>Next action</th></tr><tr><td>Project authentication or permission</td><td>Fix access, then retry the check</td></tr><tr><td>Training or inference failed</td><td>Inspect the saved error before retrying work</td></tr><tr><td>Trace or artifact upload failed</td><td>Retry export of the saved execution</td></tr><tr><td>Evaluation comparison upload failed</td><td>Use saved notebook results and retry publication</td></tr></tbody></table>",
@@ -3811,7 +3848,7 @@
       "clicks": 0
     },
     {
-      "number": 128,
+      "number": 129,
       "key": "schedule",
       "title": "Six-hour session with three breaks",
       "body": "<table class=\"clean-table schedule\"><tbody><tr><th>Minutes</th><th>Work</th></tr><tr><td>0\u201325</td><td>Connect and trace an operation</td></tr><tr><td>25\u201365</td><td>Read observations and implement persistence</td></tr><tr><td>65\u201395</td><td>Explain training and saved experiment files</td></tr><tr><td>95\u2013110</td><td>Break</td></tr><tr><td>110\u2013155</td><td>Inspect model shapes and compare configurations</td></tr><tr><td>155\u2013200</td><td>Implement image prediction and scoring</td></tr><tr><td>200\u2013230</td><td>Meal break</td></tr><tr><td>230\u2013260</td><td>Build the research-agent request</td></tr><tr><td>260\u2013310</td><td>Review and test two rounds of changes</td></tr><tr><td>310\u2013320</td><td>Break</td></tr><tr><td>320\u2013345</td><td>Freeze and compare on reserved dates</td></tr><tr><td>345\u2013360</td><td>Reproduce and explain the result</td></tr></tbody></table>",
@@ -3837,7 +3874,7 @@
       "clicks": 0
     },
     {
-      "number": 129,
+      "number": 130,
       "key": "links",
       "title": "Keep working in your own project",
       "body": "<p class=\"big\"><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view\">Copy the Solar notebook \u2197</a></p><p><a href=\"https://github.com/ash0ts/forge-workshop-kit\">Source, setup, dataset, and facilitator guide \u2197</a></p><p><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==\">Recorded rehearsal Report \u2197</a></p><p class=\"aside\"><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view\">For an office-agent example, open Pending, Inc. \u2197</a></p><div class=\"bottom-note\">Keep your notebook, code edits, and checkpoints. The facilitator needs no control over your runtime.</div>",

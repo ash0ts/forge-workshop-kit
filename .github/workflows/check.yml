@@ -20,6 +20,7 @@ jobs:
           version: ${{ steps.build-uv.outputs.version }}
       - run: uv sync --frozen --all-extras
       - run: uv run --all-extras pytest -q
+      - run: python -m unittest discover -s skills/teenage-engineering-visualizations/scripts -p test_renderer.py
       - run: uv run --all-extras python scripts/build_notebooks.py
       - run: git diff --exit-code -- notebooks
       - run: uv run --all-extras marimo check notebooks/starter.py notebooks/facilitator.py notebooks/solar_autoresearch.py notebooks/pending_inc.py notebooks/request_routing.py notebooks/visual_inspection.py notebooks/transit_factory.py notebooks/airline_monitoring.py

@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "id": "example-overview",
+  "title": "How a document becomes a search result",
+  "eyebrow": "Technical guide / overview",
+  "question": "Follow one document through the index and retrieval path.",
+  "summary": "Follow one document through the index and retrieval path.",
+  "kind": "overview",
+  "provenance": "illustrative",
+  "source_links": [],
+  "steps": [
+    {
+      "id": "document",
+      "title": "Read the file",
+      "body": "Load text and record where it came from.",
+      "symbol": "file"
+    },
+    {
+      "id": "index",
+      "title": "Build the index",
+      "body": "Store chunks with their source location.",
+      "symbol": "record"
+    },
+    {
+      "id": "query",
+      "title": "Search the index",
+      "body": "Select matching chunks for the question.",
+      "symbol": "component"
+    },
+    {
+      "id": "result",
+      "title": "Return the sources",
+      "body": "Show the answer with inspectable citations.",
+      "symbol": "output"
+    }
+  ],
+  "states": [
+    {
+      "id": "step-1",
+      "label": "1 / 4",
+      "visible": [
+        "document"
+      ],
+      "focus": [
+        "document"
+      ],
+      "caption": "Load text and record where it came from."
+    },
+    {
+      "id": "step-2",
+      "label": "2 / 4",
+      "visible": [
+        "document",
+        "index"
+      ],
+      "focus": [
+        "index"
+      ],
+      "caption": "Store chunks with their source location."
+    },
+    {
+      "id": "step-3",
+      "label": "3 / 4",
+      "visible": [
+        "document",
+        "index",
+        "query"
+      ],
+      "focus": [
+        "query"
+      ],
+      "caption": "Select matching chunks for the question."
+    },
+    {
+      "id": "step-4",
+      "label": "4 / 4",
+      "visible": [
+        "document",
+        "index",
+        "query",
+        "result"
+      ],
+      "focus": [
+        "result"
+      ],
+      "caption": "Show the answer with inspectable citations."
+    }
+  ]
+}

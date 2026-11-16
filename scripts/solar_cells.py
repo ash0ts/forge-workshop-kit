@@ -17,7 +17,7 @@ from pathlib import Path
 import numpy as np
 import marimo as mo
 from forge_workshop_kit import WorkshopSession, setup
-from forge_workshop_kit import aria
+from forge_workshop_kit import aria, technical_guides
 from forge_workshop_kit import solar, training, research, ui, plots, solar_teaching as teaching
 from forge_workshop_kit import solar_views as views
 from forge_workshop_kit.session import digest
@@ -27,6 +27,8 @@ from forge_workshop_kit.traces import export_trace, event, stamp, saved_trace_in
 get_lab, set_lab = mo.state({})
 get_feedback, set_feedback = mo.state({})
 get_tracing_check, set_tracing_check = mo.state({})
+get_technical_guide_view, set_technical_guide_view = mo.state({}, allow_self_loops=True)
+technical_guide_controls = technical_guides.controls(mo, 'solar_autoresearch', set_technical_guide_view)
 get_step, set_step = mo.state("setup", allow_self_loops=True)
 get_recovery_revision, set_recovery_revision = mo.state(0)
 ''', True)
@@ -77,8 +79,12 @@ def checked(name, action):
 add('''
 _s = get_lab().get("session")
 solar_navigation = ui.navigation(mo, teaching.STEPS, get_step(), go_to, completed=teaching.completed_steps(_s) if _s else (), label="Workshop steps")
-mo.vstack([mo.Html(ui.STYLE), solar_navigation, mo.Html(ui.context(_s)) if _s else mo.md("**Start at Connect.** Your code and results stay in your project. Training and model calls run only when you click their Run buttons.")])
+mo.vstack([mo.Html(ui.STYLE + technical_guides.theme_style()), solar_navigation, mo.Html(ui.context(_s)) if _s else mo.md("**Start at Connect.** Your code and results stay in your project. Training and model calls run only when you click their Run buttons.")])
 ''', True)
+add('''
+technical_guide_view = technical_guides.panel(mo, 'solar_autoresearch', get_step(), get_technical_guide_view(), technical_guide_controls)
+technical_guide_view
+''', True, cell_id='solar_autoresearch/visual_guide')
 add('''
 _s = get_lab().get("session")
 _revision = get_recovery_revision()

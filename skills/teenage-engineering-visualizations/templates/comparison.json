@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "example-comparison",
+  "title": "Compare two retry procedures",
+  "eyebrow": "Technical guide / comparison",
+  "question": "Does retrying the same logical write create another record?",
+  "summary": "Does retrying the same logical write create another record?",
+  "kind": "comparison",
+  "provenance": "illustrative",
+  "source_links": [],
+  "steps": [
+    {
+      "id": "new",
+      "title": "New operation ID",
+      "body": "A new ID describes another operation.",
+      "symbol": "state",
+      "code": "write(id=\"second\")",
+      "output": "Two records after the retry",
+      "status": "illustrative outcome"
+    },
+    {
+      "id": "reuse",
+      "title": "Reused operation ID",
+      "body": "The original ID identifies the same operation.",
+      "symbol": "state",
+      "code": "write(id=\"original\")",
+      "output": "One record after the retry",
+      "status": "illustrative outcome"
+    }
+  ],
+  "states": [
+    {
+      "id": "step-1",
+      "label": "1 / 2",
+      "visible": [
+        "new"
+      ],
+      "focus": [
+        "new"
+      ],
+      "caption": "A new ID describes another operation."
+    },
+    {
+      "id": "step-2",
+      "label": "2 / 2",
+      "visible": [
+        "new",
+        "reuse"
+      ],
+      "focus": [
+        "reuse"
+      ],
+      "caption": "The original ID identifies the same operation."
+    }
+  ]
+}

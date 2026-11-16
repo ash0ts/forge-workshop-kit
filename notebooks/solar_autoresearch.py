@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[solar] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.10.0/forge_workshop_kit-0.10.0-py3-none-any.whl",
+#   "forge-workshop-kit[solar] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.11.0/forge_workshop_kit-0.11.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "aioftp==0.28.3",
 #   "aiohappyeyeballs==2.7.1",
@@ -161,7 +161,7 @@ __generated_with = "0.25.2"
 app = marimo.App(width="medium", app_title='Solar forecasting with agent-assisted experiments')
 
 
-# workshop-cell: solar_autoresearch/display/1
+# workshop-cell: solar_autoresearch/definitions/technical_guide_controls
 @app.cell(hide_code=True)
 def _():
     import os
@@ -171,7 +171,7 @@ def _():
     import numpy as np
     import marimo as mo
     from forge_workshop_kit import WorkshopSession, setup
-    from forge_workshop_kit import aria
+    from forge_workshop_kit import aria, technical_guides
     from forge_workshop_kit import solar, training, research, ui, plots, solar_teaching as teaching
     from forge_workshop_kit import solar_views as views
     from forge_workshop_kit.session import digest
@@ -181,9 +181,11 @@ def _():
     get_lab, set_lab = mo.state({})
     get_feedback, set_feedback = mo.state({})
     get_tracing_check, set_tracing_check = mo.state({})
+    get_technical_guide_view, set_technical_guide_view = mo.state({}, allow_self_loops=True)
+    technical_guide_controls = technical_guides.controls(mo, 'solar_autoresearch', set_technical_guide_view)
     get_step, set_step = mo.state("setup", allow_self_loops=True)
     get_recovery_revision, set_recovery_revision = mo.state(0)
-    return (Path, WorkshopSession, aria, dataset, digest, event, export_trace, get_feedback, get_lab, get_recovery_revision, get_step, get_tracing_check, json, mo, np, os, plots, publish_comparison, publish_report, research, saved_trace_inputs, set_feedback, set_lab, set_recovery_revision, set_step, set_tracing_check, setup, solar, stamp, teaching, time, training, ui, views,)
+    return (Path, WorkshopSession, aria, dataset, digest, event, export_trace, get_feedback, get_lab, get_recovery_revision, get_step, get_technical_guide_view, get_tracing_check, json, mo, np, os, plots, publish_comparison, publish_report, research, saved_trace_inputs, set_feedback, set_lab, set_recovery_revision, set_step, set_technical_guide_view, set_tracing_check, setup, solar, stamp, teaching, technical_guide_controls, technical_guides, time, training, ui, views,)
 
 
 # workshop-cell: solar_autoresearch/display/2
@@ -256,11 +258,19 @@ def _(set_feedback):
 
 # workshop-cell: solar_autoresearch/definitions/solar_navigation
 @app.cell(hide_code=True)
-def _(get_lab, get_step, go_to, mo, teaching, ui):
+def _(get_lab, get_step, go_to, mo, teaching, technical_guides, ui):
     _s = get_lab().get("session")
     solar_navigation = ui.navigation(mo, teaching.STEPS, get_step(), go_to, completed=teaching.completed_steps(_s) if _s else (), label="Workshop steps")
-    mo.vstack([mo.Html(ui.STYLE), solar_navigation, mo.Html(ui.context(_s)) if _s else mo.md("**Start at Connect.** Your code and results stay in your project. Training and model calls run only when you click their Run buttons.")])
+    mo.vstack([mo.Html(ui.STYLE + technical_guides.theme_style()), solar_navigation, mo.Html(ui.context(_s)) if _s else mo.md("**Start at Connect.** Your code and results stay in your project. Training and model calls run only when you click their Run buttons.")])
     return (solar_navigation,)
+
+
+# workshop-cell: solar_autoresearch/visual_guide
+@app.cell(hide_code=True)
+def _(get_step, get_technical_guide_view, mo, technical_guide_controls, technical_guides):
+    technical_guide_view = technical_guides.panel(mo, 'solar_autoresearch', get_step(), get_technical_guide_view(), technical_guide_controls)
+    technical_guide_view
+    return (technical_guide_view,)
 
 
 # workshop-cell: solar_autoresearch/definitions/solar_recovery_refresh
@@ -305,7 +315,7 @@ def _(get_lab, mo, refresh_saved, set_feedback, set_recovery_revision, solar_rec
     return
 
 
-# workshop-cell: solar_autoresearch/display/12
+# workshop-cell: solar_autoresearch/display/13
 @app.cell(hide_code=True)
 def _(get_feedback, mo):
     _message = get_feedback().get("recovery")
@@ -428,7 +438,7 @@ def _(event, export_trace, first_trace, get_lab, instrument_tool, instrumentatio
     return
 
 
-# workshop-cell: solar_autoresearch/display/22
+# workshop-cell: solar_autoresearch/display/23
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() != "setup")
@@ -502,7 +512,7 @@ def _(get_lab, mo, window_split):
     return (window_index, window_standardized,)
 
 
-# workshop-cell: solar_autoresearch/display/28
+# workshop-cell: solar_autoresearch/display/29
 @app.cell(hide_code=True)
 def _(get_lab, mo, views, window_index, window_split, window_standardized):
     _values = views.window_values(get_lab()["goes"][window_split.value], get_lab()["goes_normalization"], window_index.value, standardized=window_standardized.value)
@@ -568,7 +578,7 @@ def _(get_feedback, get_lab, get_step, go_to, mo, persistence_editor, teaching, 
     return (solar_next_step_7,)
 
 
-# workshop-cell: solar_autoresearch/display/33
+# workshop-cell: solar_autoresearch/display/34
 @app.cell(hide_code=True)
 def _():
     DEFAULT_SOURCE = '"""Editable research code. The data split and final scorer live elsewhere."""\nimport torch\nfrom torch import nn\n\n\ndef build_model(input_shape, config):\n    width=config.get(\'width\',16)\n    architecture=config.get(\'architecture\',\'mlp\')\n    if len(input_shape)==2:\n        if architecture==\'mlp\':\n            return nn.Sequential(nn.Flatten(),nn.Linear(input_shape[0]*input_shape[1],width),\n                                 nn.ReLU(),nn.Linear(width,1))\n        return nn.Sequential(nn.Conv1d(input_shape[0],width,5,padding=2),nn.ReLU(),\n                             nn.AdaptiveAvgPool1d(1),nn.Flatten(),nn.Linear(width,1))\n    class ImagePredictor(nn.Module):\n        def __init__(self):\n            super().__init__()\n            self.net=nn.Sequential(nn.Conv2d(2,width,3,padding=1),nn.ReLU(),\n                                   nn.Conv2d(width,width,3,padding=1),nn.ReLU(),\n                                   nn.Conv2d(width,1,3,padding=1))\n        def forward(self,x):\n            prediction=self.net(x)\n            return prediction+x[:,1:2] if architecture==\'residual\' else prediction\n    return ImagePredictor()\n\n\ndef training_loss(prediction,target,mask):\n    return ((prediction-target).square()*mask).sum()/mask.sum()\n\n\ndef fit(model,x,y,mask,config):\n    optimizer=torch.optim.Adam(model.parameters(),lr=config.get(\'learning_rate\',.001))\n    generator=torch.Generator().manual_seed(config.get(\'seed\',17))\n    losses=[]\n    model.train()\n    for step in range(config.get(\'steps\',40)):\n        indices=torch.randint(len(x),(min(config.get(\'batch_size\',16),len(x)),),generator=generator)\n        prediction=model(x[indices])\n        loss=training_loss(prediction,y[indices],mask[indices])\n        optimizer.zero_grad()\n        loss.backward()\n        optimizer.step()\n        losses.append(float(loss.detach()))\n    return losses\n'
@@ -620,7 +630,7 @@ def _(checked, digest, inspect_shapes, measurement_editor, mo, shape_architectur
     return
 
 
-# workshop-cell: solar_autoresearch/display/38
+# workshop-cell: solar_autoresearch/display/39
 @app.cell(hide_code=True)
 def _(digest, get_feedback, get_step, measurement_editor, mo):
     mo.stop(get_step() != "search")
@@ -629,7 +639,7 @@ def _(digest, get_feedback, get_step, measurement_editor, mo):
     return
 
 
-# workshop-cell: solar_autoresearch/display/39
+# workshop-cell: solar_autoresearch/display/40
 @app.cell(hide_code=True)
 def _(check_measurement, flux_metric_editor, get_step, mo, teaching):
     mo.stop(get_step() != "search")
@@ -637,7 +647,7 @@ def _(check_measurement, flux_metric_editor, get_step, mo, teaching):
     return
 
 
-# workshop-cell: solar_autoresearch/display/40
+# workshop-cell: solar_autoresearch/display/41
 @app.cell(hide_code=True)
 def _(get_step, mo):
     mo.stop(get_step() != "search")
@@ -796,7 +806,7 @@ def _(get_lab, mo, refresh_saved, restore_search_code, teaching):
     return
 
 
-# workshop-cell: solar_autoresearch/display/47
+# workshop-cell: solar_autoresearch/display/48
 @app.cell(hide_code=True)
 def _(get_feedback, get_step, mo, ui):
     mo.stop(get_step() != "search")
@@ -805,7 +815,7 @@ def _(get_feedback, get_step, mo, ui):
     return
 
 
-# workshop-cell: solar_autoresearch/display/48
+# workshop-cell: solar_autoresearch/display/49
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, measurement_editor, mo, teaching, ui):
     mo.stop(get_step() != "search")
@@ -817,7 +827,7 @@ def _(get_feedback, get_lab, get_step, measurement_editor, mo, teaching, ui):
     return
 
 
-# workshop-cell: solar_autoresearch/display/49
+# workshop-cell: solar_autoresearch/display/50
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo, teaching):
     mo.stop(get_step() != "search")
@@ -830,7 +840,7 @@ def _(get_lab, get_step, mo, teaching):
     return (inspect_goes_run,)
 
 
-# workshop-cell: solar_autoresearch/display/50
+# workshop-cell: solar_autoresearch/display/51
 @app.cell(hide_code=True)
 def _(get_lab, inspect_goes_run, mo, np, ui, views):
     mo.stop(inspect_goes_run is None)
@@ -953,7 +963,7 @@ def _(get_step, mo):
     return (fixture_error, fixture_inside, try_scorer,)
 
 
-# workshop-cell: solar_autoresearch/display/60
+# workshop-cell: solar_autoresearch/display/61
 @app.cell(hide_code=True)
 def _(fixture_error, fixture_inside, mo, views):
     _fixture = views.scorer_fixture(fixture_error.value, inside=fixture_inside.value)
@@ -977,7 +987,7 @@ def _(checked, digest, fixture_error, fixture_inside, image_metric_editor, mo, n
     return
 
 
-# workshop-cell: solar_autoresearch/display/62
+# workshop-cell: solar_autoresearch/display/63
 @app.cell(hide_code=True)
 def _(digest, fixture_error, fixture_inside, get_feedback, get_step, image_metric_editor, mo, ui):
     mo.stop(get_step() != "images")
@@ -1036,7 +1046,7 @@ def _(get_lab, get_step, mo, teaching):
     return (comparison_timestamp,)
 
 
-# workshop-cell: solar_autoresearch/display/66
+# workshop-cell: solar_autoresearch/display/67
 @app.cell(hide_code=True)
 def _(comparison_timestamp, get_lab, get_step, mo, teaching, ui, views):
     _s = get_lab()["session"]
@@ -1052,7 +1062,7 @@ def _(comparison_timestamp, get_lab, get_step, mo, teaching, ui, views):
     return
 
 
-# workshop-cell: solar_autoresearch/display/67
+# workshop-cell: solar_autoresearch/display/68
 @app.cell(hide_code=True)
 def _(get_step, mo, ui):
     mo.stop(get_step() not in ("images", "research"))
@@ -1356,7 +1366,7 @@ def _(export_trace, get_lab, instrument_tool, mo, publish_comparison, refresh_sa
     return
 
 
-# workshop-cell: solar_autoresearch/display/77
+# workshop-cell: solar_autoresearch/display/78
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() != "final")
@@ -1381,7 +1391,7 @@ def _(get_lab, get_step, mo, teaching, ui):
     return
 
 
-# workshop-cell: solar_autoresearch/display/78
+# workshop-cell: solar_autoresearch/display/79
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo, np, teaching, ui, views):
     mo.stop(get_step() != "final")

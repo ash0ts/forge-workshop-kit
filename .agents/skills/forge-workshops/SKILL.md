@@ -17,7 +17,7 @@ Load only the material needed for the requested change:
 | Change runtime behavior, saving, accounting, or recovery | [Technical specification](../../../techspec.md) |
 | Add a workshop, bind exercises, or rehearse action cells | [Authoring](../../../docs/authoring.md) |
 | Change lesson order or explanations | [Teaching sequence](../../../docs/teaching-sequence.md) |
-| Revise diagrams, slide reveals, or product captures | [Visual conventions](../../../docs/teaching-sequence.md#use-consistent-visual-conventions) and the affected deck's storyboard |
+| Revise diagrams, slide reveals, posters, or product captures | [Technical visuals](../../../docs/technical-visuals.md), the standalone [teenage-engineering-visualizations skill](../../../skills/teenage-engineering-visualizations/SKILL.md), and the affected storyboard |
 | Change ARIA context, citation notes, or recordings | [ARIA investigations](../../../docs/aria-investigations.md) |
 | Change evaluation rows or publication | [Evaluation publication](../../../docs/evaluations.md) |
 | Build or publish a release | [Maintenance](../../../docs/maintenance.md) and [release checks](../../../docs/release-checks.md) |

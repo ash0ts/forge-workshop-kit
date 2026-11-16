@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "id": "images",
+  "title": "Predict a correction to the current image",
+  "eyebrow": "02 / Solar Autoresearch",
+  "question": "How does a residual prediction differ from a direct prediction?",
+  "summary": "Keep target and error scales aligned across persistence, manual, and agent-selected forecasts.",
+  "kind": "transformation",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/solar/candidate.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "input",
+      "title": "Two observed images",
+      "body": "Use AIA 171 Å images from one hour ago and now. The separate future target has shape batch × 1 × 64 × 64.",
+      "input": "batch × 2 × 64 × 64",
+      "output": "Two observed images per example",
+      "symbol": "image"
+    },
+    {
+      "id": "residual",
+      "title": "Add the predicted correction",
+      "body": "The network predicts a correction. Add it to the current image rather than learning the whole image from scratch.",
+      "code": "prediction = self.net(x)\nreturn prediction + x[:, 1:2]",
+      "output": "Predicted future image",
+      "symbol": "image",
+      "media": "../media/solar-residual-correction.png",
+      "excerpt_label": "Abbreviated code; full function in notebook.",
+      "input": "Observed image pair"
+    },
+    {
+      "id": "mask",
+      "title": "Score only disk pixels",
+      "body": "Compute absolute error at each pixel, ignore off-disk pixels, average within each image, then average the images.",
+      "code": "errors = np.abs(prediction-target)\nerrors = errors * disk_mask",
+      "output": "Disk-masked image MAE",
+      "symbol": "mask",
+      "excerpt_label": "Abbreviated code; full function in notebook.",
+      "input": "Prediction + target + disk mask"
+    }
+  ],
+  "states": [
+    {
+      "id": "input",
+      "label": "Input",
+      "visible": [
+        "input"
+      ],
+      "focus": [
+        "input"
+      ],
+      "caption": "How does a residual prediction differ from a direct prediction?"
+    },
+    {
+      "id": "residual",
+      "label": "Residual",
+      "visible": [
+        "input",
+        "residual"
+      ],
+      "focus": [
+        "residual"
+      ],
+      "caption": "How does a residual prediction differ from a direct prediction?"
+    },
+    {
+      "id": "mask",
+      "label": "Mask",
+      "visible": [
+        "input",
+        "residual",
+        "mask"
+      ],
+      "focus": [
+        "mask"
+      ],
+      "caption": "How does a residual prediction differ from a direct prediction?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "input",
+        "residual",
+        "mask"
+      ],
+      "focus": [],
+      "caption": "How does a residual prediction differ from a direct prediction?"
+    }
+  ]
+}

@@ -1,7 +1,8 @@
 {
-  "source_sha256": "be882aadf7c2d8c19555885efdcf5b7986abbd028ff619982ce9b1dc15733b35",
-  "slides_checked": 100,
-  "expected_slides": 100,
+  "source_sha256": "29b37aa7cf988bc1c7bdf89345b9d7fb84095d54a12f90a56dda4398aa9a2470",
+  "preflight_only": false,
+  "slides_checked": 101,
+  "expected_slides": 101,
   "titles": [
     {
       "number": 1,
@@ -10,496 +11,501 @@
     },
     {
       "number": 2,
+      "key": "technical-overview",
+      "title": "What you will build and inspect"
+    },
+    {
+      "number": 3,
       "key": "arrival",
       "title": "You’re adding an agent to the support team."
     },
     {
-      "number": 3,
+      "number": 4,
       "key": "ticket",
       "title": "Acme wants a duplicate $49 charge refunded."
     },
     {
-      "number": 4,
+      "number": 5,
       "key": "success",
       "title": "Check the account after the agent says it has finished."
     },
     {
-      "number": 5,
+      "number": 6,
       "key": "access-ticket",
       "title": "Fern needs Alex added to its account."
     },
     {
-      "number": 6,
+      "number": 7,
       "key": "request",
       "title": "Our dataset is six tickets with resettable account records."
     },
     {
-      "number": 7,
+      "number": 8,
       "key": "schedule",
       "title": "Implement the agent, evaluate it, then test harness changes."
     },
     {
-      "number": 8,
+      "number": 9,
       "key": "harness-inputs",
-      "title": "The harness builds the request the model receives."
+      "title": "What controls the employee?"
     },
     {
-      "number": 9,
+      "number": 10,
       "key": "harness-execution",
       "title": "Python executes the action and returns its result."
     },
     {
-      "number": 10,
+      "number": 11,
       "key": "harness-edit-boundary",
       "title": "Different edits change different parts of the agent."
     },
     {
-      "number": 11,
+      "number": 12,
       "key": "copy",
       "title": "Copy the notebook into your own project."
     },
     {
-      "number": 12,
+      "number": 13,
       "key": "local",
       "title": "The same notebook runs on a laptop."
     },
     {
-      "number": 13,
+      "number": 14,
       "key": "access",
       "title": "Check where your work will be saved."
     },
     {
-      "number": 14,
+      "number": 15,
       "key": "record",
       "title": "Save an operation’s inputs, output, and timing."
     },
     {
-      "number": 15,
+      "number": 16,
       "key": "tool-scope",
       "title": "Export the saved operation as an Agent Lens span."
     },
     {
-      "number": 16,
+      "number": 17,
       "key": "trace",
       "title": "Add an environment field and inspect it in Agent Lens."
     },
     {
-      "number": 17,
+      "number": 18,
       "key": "trace-screen",
       "title": "Inspect the account requested by this tool call."
     },
     {
-      "number": 18,
+      "number": 19,
       "key": "trace-detail",
       "title": "Check which account records the model received."
     },
     {
-      "number": 19,
+      "number": 20,
       "key": "invoice",
       "title": "The tool reads one invoice from one account."
     },
     {
-      "number": 20,
+      "number": 21,
       "key": "tool",
       "title": "Write the invoice lookup."
     },
     {
-      "number": 21,
+      "number": 22,
       "key": "tool-schema",
       "title": "Connect the action schema to your Python function."
     },
     {
-      "number": 22,
+      "number": 23,
       "key": "loop-1",
       "title": "Start with the customer’s request."
     },
     {
-      "number": 23,
+      "number": 24,
       "key": "loop-2",
       "title": "The model chooses an action and its arguments."
     },
     {
-      "number": 24,
+      "number": 25,
       "key": "loop-3",
-      "title": "Your dispatcher calls the Python function."
+      "title": "Pass the tool result into the next request"
     },
     {
-      "number": 25,
+      "number": 26,
       "key": "loop-4",
       "title": "The function returns the account records."
     },
     {
-      "number": 26,
+      "number": 27,
       "key": "loop-5",
       "title": "Put those records into the next request."
     },
     {
-      "number": 27,
+      "number": 28,
       "key": "dispatch",
       "title": "Dispatch lookup_invoice to your function."
     },
     {
-      "number": 28,
+      "number": 29,
       "key": "handoff",
       "title": "Append the action and its result to the next request."
     },
     {
-      "number": 29,
+      "number": 30,
       "key": "messages",
       "title": "Include the tool observation in the conversation history."
     },
     {
-      "number": 30,
+      "number": 31,
       "key": "history-not-training",
       "title": "A tool result changes the next request, not the weights."
     },
     {
-      "number": 31,
+      "number": 32,
       "key": "starting",
       "title": "Test the starting harness on billing and onboarding."
     },
     {
-      "number": 32,
+      "number": 33,
       "key": "break-one",
       "title": "Take ten minutes before investigating the timeout."
     },
     {
-      "number": 33,
+      "number": 34,
       "key": "model-span",
       "title": "Record each model request and its response."
     },
     {
-      "number": 34,
+      "number": 35,
       "key": "mcp-initialize",
       "title": "The executor starts a local MCP session."
     },
     {
-      "number": 35,
+      "number": 36,
       "key": "mcp-discover",
       "title": "Discovery returns tool names and input schemas."
     },
     {
-      "number": 36,
+      "number": 37,
       "key": "mcp-invoke",
       "title": "Call the discovered tool with the selected arguments."
     },
     {
-      "number": 37,
+      "number": 38,
       "key": "mcp-return",
       "title": "Read the returned observation before deciding what to do next."
     },
     {
-      "number": 38,
+      "number": 39,
       "key": "mcp-code",
       "title": "Discovery and execution are separate client calls."
     },
     {
-      "number": 39,
+      "number": 40,
       "key": "timeout-1",
       "title": "An access request is sent."
     },
     {
-      "number": 40,
+      "number": 41,
       "key": "timeout-2",
       "title": "Provisioning commits before its response times out."
     },
     {
-      "number": 41,
+      "number": 42,
       "key": "timeout-3",
       "title": "Read account access before retrying the write."
     },
     {
-      "number": 42,
+      "number": 43,
       "key": "retry-identity",
-      "title": "A stable operation_id prevents a repeated write."
+      "title": "A timed-out write may already have worked"
     },
     {
-      "number": 43,
+      "number": 44,
       "key": "repair-retry",
       "title": "Repair the retry in Python."
     },
     {
-      "number": 44,
+      "number": 45,
       "key": "repair-result",
       "title": "One retry policy changes the account twice."
     },
     {
-      "number": 45,
+      "number": 46,
       "key": "timeout-screen",
       "title": "Inspect the timeout and the following status check."
     },
     {
-      "number": 46,
+      "number": 47,
       "key": "timeout-detail",
       "title": "The tool says the write may have committed."
     },
     {
-      "number": 47,
+      "number": 48,
       "key": "checks",
-      "title": "Check the account and the explanation separately."
+      "title": "Four checks answer different questions"
     },
     {
-      "number": 48,
+      "number": 49,
       "key": "scorer-cases",
       "title": "The same confident reply can accompany four account states."
     },
     {
-      "number": 49,
+      "number": 50,
       "key": "scorer",
       "title": "Write checks for full, partial, missing, and duplicate refunds."
     },
     {
-      "number": 50,
+      "number": 51,
       "key": "judge-state",
       "title": "The account can contradict a confident reply."
     },
     {
-      "number": 51,
+      "number": 52,
       "key": "judge-validity",
       "title": "A valid judge response can still contain a wrong judgment."
     },
     {
-      "number": 52,
+      "number": 53,
       "key": "judge",
       "title": "Ask the judge to compare the reply with recorded actions."
     },
     {
-      "number": 53,
+      "number": 54,
       "key": "publish-dev",
       "title": "Publish development results with both kinds of score."
     },
     {
-      "number": 54,
+      "number": 55,
       "key": "compare-fields",
       "title": "Know which check produced the score."
     },
     {
-      "number": 55,
+      "number": 56,
       "key": "manual-interpret",
-      "title": "An installed skill must be read before it can guide the model."
+      "title": "Check whether the skill was read"
     },
     {
-      "number": 56,
+      "number": 57,
       "key": "aria-investigate",
       "title": "Investigate this result"
     },
     {
-      "number": 57,
+      "number": 58,
       "key": "aria-investigate-response",
       "title": "Read one claim in the recorded response"
     },
     {
-      "number": 58,
+      "number": 59,
       "key": "aria-investigate-verify",
       "title": "Open the source and check that claim"
     },
     {
-      "number": 59,
+      "number": 60,
       "key": "manual",
       "title": "Revise the verification skill and rerun both tickets."
     },
     {
-      "number": 60,
+      "number": 61,
       "key": "break",
       "title": "Take a ten-minute break after saving your progress."
     },
     {
-      "number": 61,
+      "number": 62,
       "key": "editor",
       "title": "Management would like to automate management."
     },
     {
-      "number": 62,
+      "number": 63,
       "key": "branch-1",
       "title": "Propose two edits to the same starting harness."
     },
     {
-      "number": 63,
+      "number": 64,
       "key": "branch-2",
       "title": "Run each candidate from the original account state."
     },
     {
-      "number": 64,
+      "number": 65,
       "key": "branch-3",
-      "title": "Compare the probe results before selecting a harness."
+      "title": "Test a changed procedure on the same ticket"
     },
     {
-      "number": 65,
+      "number": 66,
       "key": "branch-4",
       "title": "Execute the harness returned by the composition decision."
     },
     {
-      "number": 66,
+      "number": 67,
       "key": "branch-5",
       "title": "Save the selected harness and a lesson for onboarding."
     },
     {
-      "number": 67,
+      "number": 68,
       "key": "propose-code",
       "title": "Give the editor the starting execution and harness."
     },
     {
-      "number": 68,
+      "number": 69,
       "key": "propose",
       "title": "Review the proposed instruction and workflow changes."
     },
     {
-      "number": 69,
+      "number": 70,
       "key": "probe-code",
       "title": "Construct and execute the proposed harness."
     },
     {
-      "number": 70,
+      "number": 71,
       "key": "probes",
       "title": "Run both candidates and inspect their tool sequences."
     },
     {
-      "number": 71,
+      "number": 72,
       "key": "completion-guard",
       "title": "Require a passing check of the current state before finish."
     },
     {
-      "number": 72,
+      "number": 73,
       "key": "gate-screen",
       "title": "This candidate required a check before completion."
     },
     {
-      "number": 73,
+      "number": 74,
       "key": "gate-detail",
       "title": "The completion gate required a check_work call."
     },
     {
-      "number": 74,
+      "number": 75,
       "key": "probe-comparison",
       "title": "Compare the added checks with the resulting account state."
     },
     {
-      "number": 75,
+      "number": 76,
       "key": "keep",
       "title": "The editor retained the parent after comparing the probes."
     },
     {
-      "number": 76,
+      "number": 77,
       "key": "compose",
       "title": "Test the selected harness before carrying it forward."
     },
     {
-      "number": 77,
+      "number": 78,
       "key": "reflection",
       "title": "Save the lesson with the run that supports it."
     },
     {
-      "number": 78,
+      "number": 79,
       "key": "between-rounds",
       "title": "The next task gets the selected procedure and a checked lesson."
     },
     {
-      "number": 79,
+      "number": 80,
       "key": "compose-not-test",
       "title": "Choosing a combination does not test it."
     },
     {
-      "number": 80,
+      "number": 81,
       "key": "round-two",
       "title": "Use the selected harness to start the onboarding round."
     },
     {
-      "number": 81,
+      "number": 82,
       "key": "round-two-result",
       "title": "The second round changed the verification skill."
     },
     {
-      "number": 82,
+      "number": 83,
       "key": "skill-diff",
       "title": "The skill makes the final check more specific."
     },
     {
-      "number": 83,
+      "number": 84,
       "key": "rsi",
       "title": "The next round tests changes to the previous selection."
     },
     {
-      "number": 84,
+      "number": 85,
       "key": "freeze",
       "title": "Freeze three harnesses for the fresh-case comparison."
     },
     {
-      "number": 85,
+      "number": 86,
       "key": "final",
       "title": "Compare all three versions on fresh tickets."
     },
     {
-      "number": 86,
+      "number": 87,
       "key": "native-results",
       "title": "Compare the same ticket in Forge."
     },
     {
-      "number": 87,
+      "number": 88,
       "key": "native-case",
       "title": "Inspect a request that needs clarification."
     },
     {
-      "number": 88,
+      "number": 89,
       "key": "final-screen",
       "title": "Link the Report’s conclusion to its runs and traces."
     },
     {
-      "number": 89,
+      "number": 90,
       "key": "final-result",
       "title": "All three harnesses passed the four final cases."
     },
     {
-      "number": 90,
+      "number": 91,
       "key": "files",
       "title": "Save the case, harness, execution, and scoring records."
     },
     {
-      "number": 91,
+      "number": 92,
       "key": "aria-conclusion",
       "title": "Check our conclusion"
     },
     {
-      "number": 92,
+      "number": 93,
       "key": "aria-conclusion-response",
       "title": "Read one claim in the recorded response"
     },
     {
-      "number": 93,
+      "number": 94,
       "key": "aria-conclusion-verify",
       "title": "Open the source and check that claim"
     },
     {
-      "number": 94,
+      "number": 95,
       "key": "report",
       "title": "Write down what changed and whether it helped."
     },
     {
-      "number": 95,
+      "number": 96,
       "key": "end",
       "title": "Choose a workflow with an observable result to test."
     },
     {
-      "number": 96,
+      "number": 97,
       "key": "answer-tool",
       "title": "Worked answer · invoice lookup"
     },
     {
-      "number": 97,
+      "number": 98,
       "key": "answer-loop",
       "title": "Worked answer · observation handoff"
     },
     {
-      "number": 98,
+      "number": 99,
       "key": "answer-scorer",
       "title": "Worked answer · inspect the refund"
     },
     {
-      "number": 99,
+      "number": 100,
       "key": "answer-judge",
       "title": "Worked answer · validate the judge response"
     },
     {
-      "number": 100,
+      "number": 101,
       "key": "sources",
       "title": "Source, notebook, and recorded example"
     }
@@ -511,7 +517,88 @@
     },
     {
       "slide": 2,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/overview/slide/01-ticket.svg",
+        "alt": "Ticket: What will you build, and how will you know it works?",
+        "frameId": "ticket",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/overview/slide/02-agent.svg",
+        "alt": "Agent: What will you build, and how will you know it works?",
+        "frameId": "agent",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/overview/slide/03-account.svg",
+        "alt": "Account: What will you build, and how will you know it works?",
+        "frameId": "account",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/overview/slide/04-change.svg",
+        "alt": "Change: What will you build, and how will you know it works?",
+        "frameId": "change",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/overview/slide/05-complete.svg",
+        "alt": "Complete view: What will you build, and how will you know it works?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 3,
@@ -539,7 +626,71 @@
     },
     {
       "slide": 9,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/harness/slide/01-model.svg",
+        "alt": "Model: Which part would you change to make the next action different?",
+        "frameId": "model",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 9,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/harness/slide/02-tools.svg",
+        "alt": "Tools: Which part would you change to make the next action different?",
+        "frameId": "tools",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 9,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/harness/slide/03-skill.svg",
+        "alt": "Skill: Which part would you change to make the next action different?",
+        "frameId": "skill",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 9,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/harness/slide/04-complete.svg",
+        "alt": "Complete view: Which part would you change to make the next action different?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 10,
@@ -566,20 +717,20 @@
       "click": 0
     },
     {
-      "slide": 15,
-      "click": 1
-    },
-    {
-      "slide": 15,
-      "click": 2
-    },
-    {
-      "slide": 15,
-      "click": 3
+      "slide": 16,
+      "click": 0
     },
     {
       "slide": 16,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 16,
+      "click": 2
+    },
+    {
+      "slide": 16,
+      "click": 3
     },
     {
       "slide": 17,
@@ -615,7 +766,71 @@
     },
     {
       "slide": 25,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/dispatch/slide/01-action.svg",
+        "alt": "Action: Where do the returned payments become information the model can use?",
+        "frameId": "action",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 25,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/dispatch/slide/02-call.svg",
+        "alt": "Call: Where do the returned payments become information the model can use?",
+        "frameId": "call",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 25,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/dispatch/slide/03-observe.svg",
+        "alt": "Observe: Where do the returned payments become information the model can use?",
+        "frameId": "observe",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 25,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/dispatch/slide/04-complete.svg",
+        "alt": "Complete view: Where do the returned payments become information the model can use?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 26,
@@ -626,32 +841,32 @@
       "click": 0
     },
     {
-      "slide": 27,
-      "click": 1
-    },
-    {
-      "slide": 27,
-      "click": 2
-    },
-    {
       "slide": 28,
       "click": 0
     },
     {
-      "slide": 29,
-      "click": 0
-    },
-    {
-      "slide": 29,
+      "slide": 28,
       "click": 1
     },
     {
-      "slide": 29,
+      "slide": 28,
       "click": 2
+    },
+    {
+      "slide": 29,
+      "click": 0
     },
     {
       "slide": 30,
       "click": 0
+    },
+    {
+      "slide": 30,
+      "click": 1
+    },
+    {
+      "slide": 30,
+      "click": 2
     },
     {
       "slide": 31,
@@ -666,20 +881,20 @@
       "click": 0
     },
     {
-      "slide": 33,
-      "click": 1
-    },
-    {
-      "slide": 33,
-      "click": 2
-    },
-    {
-      "slide": 33,
-      "click": 3
+      "slide": 34,
+      "click": 0
     },
     {
       "slide": 34,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 34,
+      "click": 2
+    },
+    {
+      "slide": 34,
+      "click": 3
     },
     {
       "slide": 35,
@@ -698,20 +913,20 @@
       "click": 0
     },
     {
-      "slide": 38,
-      "click": 1
-    },
-    {
-      "slide": 38,
-      "click": 2
-    },
-    {
-      "slide": 38,
-      "click": 3
+      "slide": 39,
+      "click": 0
     },
     {
       "slide": 39,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 39,
+      "click": 2
+    },
+    {
+      "slide": 39,
+      "click": 3
     },
     {
       "slide": 40,
@@ -727,7 +942,88 @@
     },
     {
       "slide": 43,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/retry/slide/01-write.svg",
+        "alt": "Write: Should the retry keep or change operation_id?",
+        "frameId": "write",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 43,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/retry/slide/02-new.svg",
+        "alt": "New: Should the retry keep or change operation_id?",
+        "frameId": "new",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 43,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/retry/slide/03-same.svg",
+        "alt": "Same: Should the retry keep or change operation_id?",
+        "frameId": "same",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 43,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/retry/slide/04-complete.svg",
+        "alt": "Complete view: Should the retry keep or change operation_id?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 43,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/retry/slide/05-native-capture.svg",
+        "alt": "onboarding_status after recovery: Find account_id, then count the returned members. Follow the earlier timeout before judging the whole conversation.",
+        "frameId": "native-capture",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 44,
@@ -747,7 +1043,88 @@
     },
     {
       "slide": 48,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/checks/slide/01-agent.svg",
+        "alt": "Agent: Which check can establish that the account is correct?",
+        "frameId": "agent",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 48,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/checks/slide/02-learner.svg",
+        "alt": "Learner: Which check can establish that the account is correct?",
+        "frameId": "learner",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 48,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/checks/slide/03-independent.svg",
+        "alt": "Independent: Which check can establish that the account is correct?",
+        "frameId": "independent",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 48,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/checks/slide/04-judge.svg",
+        "alt": "Judge: Which check can establish that the account is correct?",
+        "frameId": "judge",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 48,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/checks/slide/05-complete.svg",
+        "alt": "Complete view: Which check can establish that the account is correct?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 49,
@@ -779,7 +1156,71 @@
     },
     {
       "slide": 56,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/skills/slide/01-saved.svg",
+        "alt": "Saved: Did this run use the procedure you edited?",
+        "frameId": "saved",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 56,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/skills/slide/02-read.svg",
+        "alt": "Read: Did this run use the procedure you edited?",
+        "frameId": "read",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 56,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/skills/slide/03-request.svg",
+        "alt": "Request: Did this run use the procedure you edited?",
+        "frameId": "request",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 56,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/skills/slide/04-complete.svg",
+        "alt": "Complete view: Did this run use the procedure you edited?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 57,
@@ -815,7 +1256,88 @@
     },
     {
       "slide": 65,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/changes/slide/01-parent.svg",
+        "alt": "Starting harness: Save the instructions, skills, and original case state. Both proposals start here.",
+        "frameId": "parent",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 65,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/changes/slide/02-candidate-a.svg",
+        "alt": "Candidate A: Review the first proposed diff, then run it on a fresh copy of the original case.",
+        "frameId": "candidate-a",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 65,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/changes/slide/03-candidate-b.svg",
+        "alt": "Candidate B: Review the second diff and test it independently. A planned or rejected change has no assumed result.",
+        "frameId": "candidate-b",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 65,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/changes/slide/04-decision.svg",
+        "alt": "Select, combine, or retain: Compare the probe records. Test any new combination before adopting it. Retaining the parent leaves its source unchanged.",
+        "frameId": "decision",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 65,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/pending/guides/pending/changes/slide/05-complete.svg",
+        "alt": "Complete view: Recorded final comparison: starting 4/4, manual 4/4, agent-selected 4/4. Changed behavior did not raise account correctness.",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 66,
@@ -826,32 +1348,32 @@
       "click": 0
     },
     {
-      "slide": 67,
-      "click": 1
-    },
-    {
-      "slide": 67,
-      "click": 2
-    },
-    {
       "slide": 68,
       "click": 0
     },
     {
-      "slide": 69,
-      "click": 0
-    },
-    {
-      "slide": 69,
+      "slide": 68,
       "click": 1
     },
     {
-      "slide": 69,
+      "slide": 68,
       "click": 2
+    },
+    {
+      "slide": 69,
+      "click": 0
     },
     {
       "slide": 70,
       "click": 0
+    },
+    {
+      "slide": 70,
+      "click": 1
+    },
+    {
+      "slide": 70,
+      "click": 2
     },
     {
       "slide": 71,
@@ -882,16 +1404,16 @@
       "click": 0
     },
     {
-      "slide": 77,
-      "click": 1
-    },
-    {
-      "slide": 77,
-      "click": 2
+      "slide": 78,
+      "click": 0
     },
     {
       "slide": 78,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 78,
+      "click": 2
     },
     {
       "slide": 79,
@@ -980,6 +1502,10 @@
     {
       "slide": 100,
       "click": 0
+    },
+    {
+      "slide": 101,
+      "click": 0
     }
   ],
   "issues": [],
@@ -987,22 +1513,22 @@
   "failed_responses": [],
   "answers": [
     {
-      "slide": 20,
-      "destination": "/forge-workshop-kit/pending/96",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 28,
+      "slide": 21,
       "destination": "/forge-workshop-kit/pending/97",
       "keyboardReturn": true
     },
     {
-      "slide": 49,
+      "slide": 29,
       "destination": "/forge-workshop-kit/pending/98",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 50,
+      "destination": "/forge-workshop-kit/pending/99",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 403,
+  "routes_checked": 407,
   "recording_links_checked": 8,
   "presenter_notes": true
 }

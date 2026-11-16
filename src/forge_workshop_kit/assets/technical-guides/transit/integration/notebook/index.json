@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "integration",
+  "kind": "sequence",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "7d06a104a5a4be7730064dd155281b41091f408ee3958f6b2dfcc95e694f8676",
+  "states": [
+    {
+      "id": "copies",
+      "label": "Copies",
+      "svg": "01-copies.svg",
+      "caption": "Do the two components use the same interfaces and time conventions?"
+    },
+    {
+      "id": "patches",
+      "label": "Patches",
+      "svg": "02-patches.svg",
+      "caption": "Do the two components use the same interfaces and time conventions?"
+    },
+    {
+      "id": "combined",
+      "label": "Combined",
+      "svg": "03-combined.svg",
+      "caption": "Do the two components use the same interfaces and time conventions?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "Do the two components use the same interfaces and time conventions?"
+    }
+  ],
+  "html": "index.html"
+}

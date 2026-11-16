@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "traces",
+  "kind": "sequence",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "71b60d37f94269901266e758af962e40e9929629f7745f13f0c7c9b46b6ee0be",
+  "states": [
+    {
+      "id": "request",
+      "label": "Request",
+      "svg": "01-request.svg",
+      "caption": "Where can you see what the tool actually changed?"
+    },
+    {
+      "id": "tool",
+      "label": "Tool",
+      "svg": "02-tool.svg",
+      "caption": "Where can you see what the tool actually changed?"
+    },
+    {
+      "id": "state",
+      "label": "State",
+      "svg": "03-state.svg",
+      "caption": "Where can you see what the tool actually changed?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "Where can you see what the tool actually changed?"
+    }
+  ],
+  "html": "index.html"
+}

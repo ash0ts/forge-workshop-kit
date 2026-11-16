@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "id": "alignment",
+  "kind": "comparison",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "8bdb5937dc3ecf2db737cc04b249b41357991438c69b642dd1b6377ecaee3990",
+  "states": [
+    {
+      "id": "review",
+      "label": "Review",
+      "svg": "01-review.svg",
+      "caption": "Would the rule distinguish an omission from a valid itinerary change?"
+    },
+    {
+      "id": "criteria",
+      "label": "Criteria",
+      "svg": "02-criteria.svg",
+      "caption": "Would the rule distinguish an omission from a valid itinerary change?"
+    },
+    {
+      "id": "alignment",
+      "label": "Alignment",
+      "svg": "03-alignment.svg",
+      "caption": "Would the rule distinguish an omission from a valid itinerary change?"
+    },
+    {
+      "id": "status",
+      "label": "Status",
+      "svg": "04-status.svg",
+      "caption": "Would the rule distinguish an omission from a valid itinerary change?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "05-complete.svg",
+      "caption": "Would the rule distinguish an omission from a valid itinerary change?"
+    },
+    {
+      "id": "native-capture",
+      "label": "Tag criteria and judging",
+      "svg": "06-native-capture.svg",
+      "caption": "Read the criteria, automatic-judging switch, and agent filter. This recorded tag was disabled after qualification."
+    }
+  ],
+  "html": "index.html"
+}

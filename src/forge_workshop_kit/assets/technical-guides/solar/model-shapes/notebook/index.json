@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "model-shapes",
+  "kind": "comparison",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "876df6d612e87ea6dc3b4adc4edb8a2146287863ec932b9e6f614341bd40da8b",
+  "states": [
+    {
+      "id": "input",
+      "label": "Input",
+      "svg": "01-input.svg",
+      "caption": "What becomes one forecast, and what does the model learn?"
+    },
+    {
+      "id": "mlp",
+      "label": "Mlp",
+      "svg": "02-mlp.svg",
+      "caption": "What becomes one forecast, and what does the model learn?"
+    },
+    {
+      "id": "cnn",
+      "label": "Cnn",
+      "svg": "03-cnn.svg",
+      "caption": "What becomes one forecast, and what does the model learn?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "What becomes one forecast, and what does the model learn?"
+    }
+  ],
+  "html": "index.html"
+}

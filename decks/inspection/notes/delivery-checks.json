@@ -1,7 +1,8 @@
 {
-  "source_sha256": "650de7fb0597967eeaedfe547efb7e61ee4ae049c98828ead1eb6dc97880a65d",
-  "slides_checked": 59,
-  "expected_slides": 59,
+  "source_sha256": "c66e638920166c7885f04f4927a370a1bfde692a771d1cf52b6374a23cce76fe",
+  "preflight_only": false,
+  "slides_checked": 60,
+  "expected_slides": 60,
   "titles": [
     {
       "number": 1,
@@ -10,291 +11,296 @@
     },
     {
       "number": 2,
+      "key": "technical-overview",
+      "title": "What you will build and inspect"
+    },
+    {
+      "number": 3,
       "key": "assignment",
       "title": "The factory has two ways to waste a good morning"
     },
     {
-      "number": 3,
+      "number": 4,
       "key": "real-data",
       "title": "Start with the boards, not the score"
     },
     {
-      "number": 4,
+      "number": 5,
       "key": "board-target",
       "title": "Predict a label for the whole board"
     },
     {
-      "number": 5,
+      "number": 6,
       "key": "mask-boundary",
       "title": "Use the mask to investigate the decision"
     },
     {
-      "number": 6,
+      "number": 7,
       "key": "dataset",
       "title": "What is in the teaching set?"
     },
     {
-      "number": 7,
+      "number": 8,
       "key": "partitions",
       "title": "Separate the data before choosing a model"
     },
     {
-      "number": 8,
+      "number": 9,
       "key": "connect",
       "title": "Connect to your own experiment"
     },
     {
-      "number": 9,
+      "number": 10,
       "key": "trace-code",
       "title": "The trace describes a call that actually ran"
     },
     {
-      "number": 10,
+      "number": 11,
       "key": "inspect",
       "title": "Inspect one board before revealing its label"
     },
     {
-      "number": 11,
+      "number": 12,
       "key": "encoder",
       "title": "Reuse a fixed image encoder"
     },
     {
-      "number": 12,
+      "number": 13,
       "key": "classifier",
       "title": "Fit a first detector on whole-image features"
     },
     {
-      "number": 13,
+      "number": 14,
       "key": "fit-operation",
       "title": "Fit on training boards; measure on validation boards"
     },
     {
-      "number": 14,
+      "number": 15,
       "key": "threshold",
-      "title": "A detector score still needs an operating rule"
+      "title": "Choose a threshold from validation data"
     },
     {
-      "number": 15,
+      "number": 16,
       "key": "validation-cutoff",
       "title": "Require 11 of the 12 validation defects to be caught"
     },
     {
-      "number": 16,
+      "number": 17,
       "key": "threshold-exercise",
       "title": "Implement the validation threshold"
     },
     {
-      "number": 17,
+      "number": 18,
       "key": "baseline-observation",
       "title": "Inspect a baseline miss or false alarm"
     },
     {
-      "number": 18,
+      "number": 19,
       "key": "aria-investigate",
       "title": "Investigate this result"
     },
     {
-      "number": 19,
+      "number": 20,
       "key": "aria-investigate-response",
       "title": "Read one claim in the recorded response"
     },
     {
-      "number": 20,
+      "number": 21,
       "key": "aria-investigate-verify",
       "title": "Open the source and check that claim"
     },
     {
-      "number": 21,
+      "number": 22,
       "key": "patch-grid",
-      "title": "Keep local information as well as the whole image"
+      "title": "Compare whole-image and patch features"
     },
     {
-      "number": 22,
+      "number": 23,
       "key": "patches",
       "title": "Compare local features at the same board position"
     },
     {
-      "number": 23,
+      "number": 24,
       "key": "one-patch-distance",
-      "title": "Calculate the distance at one image position"
+      "title": "Calculate one location’s distance"
     },
     {
-      "number": 24,
+      "number": 25,
       "key": "append-patches",
       "title": "Append 196 distances to the 512 whole-image values"
     },
     {
-      "number": 25,
+      "number": 26,
       "key": "features",
       "title": "Add local information to the classifier"
     },
     {
-      "number": 26,
+      "number": 27,
       "key": "cache",
       "title": "Check the feature cache without rebuilding everything"
     },
     {
-      "number": 27,
+      "number": 28,
       "key": "patch-experiment",
       "title": "Test patches against the saved baseline"
     },
     {
-      "number": 28,
+      "number": 29,
       "key": "metrics",
       "title": "Keep ranking quality and operating errors separate"
     },
     {
-      "number": 29,
+      "number": 30,
       "key": "ranking-ap",
       "title": "Calculate ranking quality before choosing one cutoff"
     },
     {
-      "number": 30,
+      "number": 31,
       "key": "operating-errors",
       "title": "Count operating errors at the chosen cutoff"
     },
     {
-      "number": 31,
+      "number": 32,
       "key": "forge",
       "title": "Follow one trained classifier through Forge"
     },
     {
-      "number": 32,
+      "number": 33,
       "key": "forge-training",
       "title": "Read the recorded training call"
     },
     {
-      "number": 33,
+      "number": 34,
       "key": "training-evidence",
       "title": "Match the tool call to the saved validation result"
     },
     {
-      "number": 34,
+      "number": 35,
       "key": "break",
       "title": "Take ten minutes. Return at 2:20."
     },
     {
-      "number": 35,
+      "number": 36,
       "key": "active-selection",
-      "title": "Choose uncertain boards before opening their labels"
+      "title": "Compare equal labeling budgets"
     },
     {
-      "number": 36,
+      "number": 37,
       "key": "random-control",
       "title": "Give random selection the same labeling budget"
     },
     {
-      "number": 37,
+      "number": 38,
       "key": "review",
       "title": "Choose where the review time goes"
     },
     {
-      "number": 38,
+      "number": 39,
       "key": "human",
       "title": "Save what the reviewer actually decided"
     },
     {
-      "number": 39,
+      "number": 40,
       "key": "review-fit",
       "title": "Train with the additional labels"
     },
     {
-      "number": 40,
+      "number": 41,
       "key": "freeze",
       "title": "Choose before opening the final results"
     },
     {
-      "number": 41,
+      "number": 42,
       "key": "detector-bundle",
       "title": "Freeze the preprocessing and reference bank too"
     },
     {
-      "number": 42,
+      "number": 43,
       "key": "break-two",
       "title": "Take ten minutes. Return at 3:30."
     },
     {
-      "number": 43,
+      "number": 44,
       "key": "final",
       "title": "Evaluate the same 442 boards"
     },
     {
-      "number": 44,
+      "number": 45,
       "key": "native-comparison",
       "title": "Compare four detectors on the same boards"
     },
     {
-      "number": 45,
+      "number": 46,
       "key": "native-board",
       "title": "Inspect the board behind a prediction"
     },
     {
-      "number": 46,
+      "number": 47,
       "key": "failure",
       "title": "The first worked recipe did not pass its gate"
     },
     {
-      "number": 47,
+      "number": 48,
       "key": "retest",
       "title": "The bounded follow-up improved this teaching retest"
     },
     {
-      "number": 48,
+      "number": 49,
       "key": "improved-case",
-      "title": "Inspect a corrected miss"
+      "title": "Inspect a recovered defect and a new miss"
     },
     {
-      "number": 49,
+      "number": 50,
       "key": "regression",
       "title": "Inspect a new miss too"
     },
     {
-      "number": 50,
+      "number": 51,
       "key": "aria-conclusion",
       "title": "Check our conclusion"
     },
     {
-      "number": 51,
+      "number": 52,
       "key": "aria-conclusion-response",
       "title": "Read one claim in the recorded response"
     },
     {
-      "number": 52,
+      "number": 53,
       "key": "aria-conclusion-verify",
       "title": "Open the source and check that claim"
     },
     {
-      "number": 53,
+      "number": 54,
       "key": "reproduce",
       "title": "Reload the version you chose"
     },
     {
-      "number": 54,
+      "number": 55,
       "key": "reload-detector",
-      "title": "Reproduce one score from the saved detector"
+      "title": "Recover every component of the detector"
     },
     {
-      "number": 55,
+      "number": 56,
       "key": "release",
       "title": "A tested artifact can become the next release"
     },
     {
-      "number": 56,
+      "number": 57,
       "key": "conclusion",
       "title": "Write down the decision you would make"
     },
     {
-      "number": 57,
+      "number": 58,
       "key": "answer-features",
       "title": "Worked answer: assemble the local features"
     },
     {
-      "number": 58,
+      "number": 59,
       "key": "answer-threshold",
       "title": "Worked answer: meet the validation recall target"
     },
     {
-      "number": 59,
+      "number": 60,
       "key": "answer-review",
       "title": "Worked answer: choose uncertain cases"
     }
@@ -306,7 +312,88 @@
     },
     {
       "slide": 2,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/overview/slide/01-board.svg",
+        "alt": "Board: What will you build, and how will you know it works?",
+        "frameId": "board",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/overview/slide/02-features.svg",
+        "alt": "Features: What will you build, and how will you know it works?",
+        "frameId": "features",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/overview/slide/03-decision.svg",
+        "alt": "Decision: What will you build, and how will you know it works?",
+        "frameId": "decision",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/overview/slide/04-recover.svg",
+        "alt": "Recover: What will you build, and how will you know it works?",
+        "frameId": "recover",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/overview/slide/05-complete.svg",
+        "alt": "Complete view: What will you build, and how will you know it works?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 3,
@@ -337,20 +424,20 @@
       "click": 0
     },
     {
-      "slide": 9,
-      "click": 1
-    },
-    {
-      "slide": 9,
-      "click": 2
-    },
-    {
-      "slide": 9,
-      "click": 3
+      "slide": 10,
+      "click": 0
     },
     {
       "slide": 10,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 10,
+      "click": 2
+    },
+    {
+      "slide": 10,
+      "click": 3
     },
     {
       "slide": 11,
@@ -361,16 +448,16 @@
       "click": 0
     },
     {
-      "slide": 12,
-      "click": 1
-    },
-    {
-      "slide": 12,
-      "click": 2
+      "slide": 13,
+      "click": 0
     },
     {
       "slide": 13,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 13,
+      "click": 2
     },
     {
       "slide": 14,
@@ -378,7 +465,71 @@
     },
     {
       "slide": 15,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/threshold/slide/01-score.svg",
+        "alt": "Score: Which tradeoff changes when the cutoff moves?",
+        "frameId": "score",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 15,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/threshold/slide/02-choose.svg",
+        "alt": "Choose: Which tradeoff changes when the cutoff moves?",
+        "frameId": "choose",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 15,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/threshold/slide/03-count.svg",
+        "alt": "Count: Which tradeoff changes when the cutoff moves?",
+        "frameId": "count",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 15,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/threshold/slide/04-complete.svg",
+        "alt": "Complete view: Which tradeoff changes when the cutoff moves?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 16,
@@ -406,7 +557,88 @@
     },
     {
       "slide": 22,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/representations/slide/01-photo.svg",
+        "alt": "Photo: Shared image and aligned board rows; whole and patch arrays are separate encoder outputs.",
+        "frameId": "photo",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 22,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/representations/slide/02-whole.svg",
+        "alt": "Whole: Shared image and aligned board rows; whole and patch arrays are separate encoder outputs.",
+        "frameId": "whole",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 22,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/representations/slide/03-local.svg",
+        "alt": "Local: Shared image and aligned board rows; whole and patch arrays are separate encoder outputs.",
+        "frameId": "local",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 22,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/representations/slide/04-join.svg",
+        "alt": "Join: Shared image and aligned board rows; whole and patch arrays are separate encoder outputs.",
+        "frameId": "join",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 22,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/representations/slide/05-complete.svg",
+        "alt": "Complete view: Shared image and aligned board rows; whole and patch arrays are separate encoder outputs.",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 23,
@@ -414,7 +646,88 @@
     },
     {
       "slide": 24,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/patch-distance/slide/01-query.svg",
+        "alt": "Query: Which normal patch is the closest reference for this location?",
+        "frameId": "query",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 24,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/patch-distance/slide/02-scale.svg",
+        "alt": "Scale: Which normal patch is the closest reference for this location?",
+        "frameId": "scale",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 24,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/patch-distance/slide/03-distance.svg",
+        "alt": "Distance: Which normal patch is the closest reference for this location?",
+        "frameId": "distance",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 24,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/patch-distance/slide/04-map.svg",
+        "alt": "Map: Which normal patch is the closest reference for this location?",
+        "frameId": "map",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 24,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/patch-distance/slide/05-complete.svg",
+        "alt": "Complete view: Which normal patch is the closest reference for this location?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 25,
@@ -462,7 +775,71 @@
     },
     {
       "slide": 36,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/review/slide/01-active.svg",
+        "alt": "Active: Did the selection policy help, or did more labeled data help?",
+        "frameId": "active",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 36,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/review/slide/02-random.svg",
+        "alt": "Random: Did the selection policy help, or did more labeled data help?",
+        "frameId": "random",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 36,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/review/slide/03-compare.svg",
+        "alt": "Compare: Did the selection policy help, or did more labeled data help?",
+        "frameId": "compare",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 36,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/review/slide/04-complete.svg",
+        "alt": "Complete view: Did the selection policy help, or did more labeled data help?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 37,
@@ -501,12 +878,12 @@
       "click": 0
     },
     {
-      "slide": 45,
-      "click": 1
+      "slide": 46,
+      "click": 0
     },
     {
       "slide": 46,
-      "click": 0
+      "click": 1
     },
     {
       "slide": 47,
@@ -518,7 +895,71 @@
     },
     {
       "slide": 49,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/case-changes/slide/01-miss.svg",
+        "alt": "Miss: Did the change help this board, and what happened elsewhere?",
+        "frameId": "miss",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 49,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/case-changes/slide/02-recover.svg",
+        "alt": "Recover: Did the change help this board, and what happened elsewhere?",
+        "frameId": "recover",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 49,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/case-changes/slide/03-regression.svg",
+        "alt": "Regression: Did the change help this board, and what happened elsewhere?",
+        "frameId": "regression",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 49,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/case-changes/slide/04-complete.svg",
+        "alt": "Complete view: Did the change help this board, and what happened elsewhere?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 50,
@@ -542,7 +983,88 @@
     },
     {
       "slide": 55,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/reproduce/slide/01-encoder.svg",
+        "alt": "Encoder: What must be loaded to reproduce a board’s decision?",
+        "frameId": "encoder",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 55,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/reproduce/slide/02-bank.svg",
+        "alt": "Bank: What must be loaded to reproduce a board’s decision?",
+        "frameId": "bank",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 55,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/reproduce/slide/03-classifier.svg",
+        "alt": "Classifier: What must be loaded to reproduce a board’s decision?",
+        "frameId": "classifier",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 55,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/reproduce/slide/04-complete.svg",
+        "alt": "Complete view: What must be loaded to reproduce a board’s decision?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 55,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/inspection/guides/inspection/reproduce/slide/05-native-capture.svg",
+        "alt": "The training call and returned classifier: Match nearest-patch, fitting count, and C to this returned classifier. These metrics use validation boards.",
+        "frameId": "native-capture",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 56,
@@ -559,6 +1081,10 @@
     {
       "slide": 59,
       "click": 0
+    },
+    {
+      "slide": 60,
+      "click": 0
     }
   ],
   "issues": [],
@@ -566,22 +1092,22 @@
   "failed_responses": [],
   "answers": [
     {
-      "slide": 16,
+      "slide": 17,
+      "destination": "/forge-workshop-kit/inspection/59",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 26,
       "destination": "/forge-workshop-kit/inspection/58",
       "keyboardReturn": true
     },
     {
-      "slide": 25,
-      "destination": "/forge-workshop-kit/inspection/57",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 37,
-      "destination": "/forge-workshop-kit/inspection/59",
+      "slide": 38,
+      "destination": "/forge-workshop-kit/inspection/60",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 239,
+  "routes_checked": 243,
   "recording_links_checked": 8,
   "presenter_notes": true
 }

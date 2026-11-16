@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "id": "labels",
+  "title": "Turn a reviewed mistake into a training example",
+  "eyebrow": "03 / Customer request routing",
+  "question": "Whose label is being used, and why was it accepted?",
+  "summary": "A saved filter or an agent explanation does not by itself create a verified label.",
+  "kind": "sequence",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw=="
+    },
+    {
+      "label": "Code for this operation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/review.py"
+    }
+  ],
+  "steps": [
+    {
+      "id": "proposal",
+      "title": "Save the proposed route",
+      "body": "Keep the original request, predicted intent, and model version before changing a label.",
+      "output": "Prediction linked to its request",
+      "symbol": "record"
+    },
+    {
+      "id": "review",
+      "title": "Read and label the request",
+      "body": "A person accepts a label and records the reason. A teacher-generated suggestion remains a suggestion until reviewed.",
+      "output": "Reviewer + accepted label + rationale",
+      "symbol": "review",
+      "code": "label_source = (\"human_review\" if verified\n                else \"unverified_suggestion\")",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "dataset",
+      "title": "Version the accepted example",
+      "body": "Record the dataset version and source prediction. Use only eligible development examples for the revised classifier.",
+      "output": "Reviewed training example",
+      "symbol": "dataset"
+    }
+  ],
+  "states": [
+    {
+      "id": "proposal",
+      "label": "Proposal",
+      "visible": [
+        "proposal"
+      ],
+      "focus": [
+        "proposal"
+      ],
+      "caption": "Whose label is being used, and why was it accepted?"
+    },
+    {
+      "id": "review",
+      "label": "Review",
+      "visible": [
+        "proposal",
+        "review"
+      ],
+      "focus": [
+        "review"
+      ],
+      "caption": "Whose label is being used, and why was it accepted?"
+    },
+    {
+      "id": "dataset",
+      "label": "Dataset",
+      "visible": [
+        "proposal",
+        "review",
+        "dataset"
+      ],
+      "focus": [
+        "dataset"
+      ],
+      "caption": "Whose label is being used, and why was it accepted?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "proposal",
+        "review",
+        "dataset"
+      ],
+      "focus": [],
+      "caption": "Whose label is being used, and why was it accepted?"
+    }
+  ]
+}

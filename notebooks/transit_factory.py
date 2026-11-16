@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.10.0/forge_workshop_kit-0.10.0-py3-none-any.whl",
+#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.11.0/forge_workshop_kit-0.11.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -98,24 +98,26 @@ __generated_with = "0.25.2"
 app = marimo.App(width="medium", app_title='Build a transit app with a team of coding agents')
 
 
-# workshop-cell: transit_factory/display/1
+# workshop-cell: transit_factory/definitions/technical_guide_controls
 @app.cell(hide_code=True)
 def _():
     import json
     from pathlib import Path
     import marimo as mo
     from forge_workshop_kit import WorkshopSession, setup, ui
-    from forge_workshop_kit import aria
+    from forge_workshop_kit import aria, technical_guides
     from forge_workshop_kit import factory, transit, factory_teaching as teaching
     from forge_workshop_kit import transit_workshop as lab
     from forge_workshop_kit.traces import event, export_trace, saved_trace_inputs
     from forge_workshop_kit.session import digest
     get_context, set_context = mo.state({})
+    get_technical_guide_view, set_technical_guide_view = mo.state({}, allow_self_loops=True)
+    technical_guide_controls = technical_guides.controls(mo, 'transit_factory', set_technical_guide_view)
     get_step, set_step = mo.state("setup", allow_self_loops=True)
     get_revision, set_revision = mo.state(0)
     get_output, set_output = mo.state({})
     draft_cache = {}
-    return (Path, WorkshopSession, aria, digest, draft_cache, event, export_trace, factory, get_context, get_output, get_revision, get_step, json, lab, mo, saved_trace_inputs, set_context, set_output, set_revision, set_step, setup, teaching, transit, ui,)
+    return (Path, WorkshopSession, aria, digest, draft_cache, event, export_trace, factory, get_context, get_output, get_revision, get_step, get_technical_guide_view, json, lab, mo, saved_trace_inputs, set_context, set_output, set_revision, set_step, set_technical_guide_view, setup, teaching, technical_guide_controls, technical_guides, transit, ui,)
 
 
 # workshop-cell: transit_factory/definitions/refresh
@@ -148,15 +150,23 @@ def _(draft_cache, get_context, instrument_tool, lab, set_output, set_revision, 
 
 # workshop-cell: transit_factory/definitions/step_navigation
 @app.cell(hide_code=True)
-def _(current_session, get_revision, get_step, go_to, mo, teaching, ui):
+def _(current_session, get_revision, get_step, go_to, mo, teaching, technical_guides, ui):
     _s=current_session()
     _revision=get_revision()
     step_navigation=ui.navigation(mo,teaching.STEPS,get_step(),go_to,completed=teaching.complete_steps(_s),label="Build and release")
-    mo.vstack([mo.Html(ui.STYLE),step_navigation,mo.Html(ui.context(_s)) if _s else mo.md("Copy this notebook into your Forge project. You will write the code that gives agents work and checks what they produce.")])
+    mo.vstack([mo.Html(ui.STYLE + technical_guides.theme_style()),step_navigation,mo.Html(ui.context(_s)) if _s else mo.md("Copy this notebook into your Forge project. You will write the code that gives agents work and checks what they produce.")])
     return (step_navigation,)
 
 
-# workshop-cell: transit_factory/display/4
+# workshop-cell: transit_factory/visual_guide
+@app.cell(hide_code=True)
+def _(get_step, get_technical_guide_view, mo, technical_guide_controls, technical_guides):
+    technical_guide_view = technical_guides.panel(mo, 'transit_factory', get_step(), get_technical_guide_view(), technical_guide_controls)
+    technical_guide_view
+    return (technical_guide_view,)
+
+
+# workshop-cell: transit_factory/display/5
 @app.cell(hide_code=True)
 def _(get_step, mo, ui):
     mo.stop(get_step()!="setup")
@@ -164,7 +174,7 @@ def _(get_step, mo, ui):
     return
 
 
-# workshop-cell: transit_factory/display/5
+# workshop-cell: transit_factory/display/6
 @app.cell(hide_code=True)
 def _(get_step, lab, mo):
     mo.stop(get_step()!="setup")
@@ -192,7 +202,7 @@ def _(mo, opening_clock, show, transit, try_departure):
     return
 
 
-# workshop-cell: transit_factory/display/8
+# workshop-cell: transit_factory/display/9
 @app.cell(hide_code=True)
 def _(get_output, get_step, mo):
     mo.stop(get_step()!="setup")
@@ -229,7 +239,7 @@ def _(acceptance_check, acceptance_code, current_session, lab, mo, refresh, save
     return
 
 
-# workshop-cell: transit_factory/display/11
+# workshop-cell: transit_factory/display/12
 @app.cell(hide_code=True)
 def _(acceptance_code, current_session, digest, get_output, get_step, mo):
     mo.stop(get_step()!="setup")
@@ -347,7 +357,7 @@ def _(current_session, lab, mo, refresh, save_draft, show, teaching, worker_chec
     return
 
 
-# workshop-cell: transit_factory/display/19
+# workshop-cell: transit_factory/display/20
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_step, mo):
     mo.stop(get_step()!='worker')
@@ -386,7 +396,7 @@ def _(current_session, lab, mo, refresh, save_draft, show, tasks_check, tasks_co
     return
 
 
-# workshop-cell: transit_factory/display/22
+# workshop-cell: transit_factory/display/23
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_step, mo):
     mo.stop(get_step()!='tasks')
@@ -425,7 +435,7 @@ def _(current_session, lab, memory_check, memory_code, mo, refresh, save_draft, 
     return
 
 
-# workshop-cell: transit_factory/display/25
+# workshop-cell: transit_factory/display/26
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_step, mo):
     mo.stop(get_step()!='memory')
@@ -464,7 +474,7 @@ def _(current_session, evaluate_check, evaluate_code, lab, mo, refresh, save_dra
     return
 
 
-# workshop-cell: transit_factory/display/28
+# workshop-cell: transit_factory/display/29
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_step, mo):
     mo.stop(get_step()!='evaluate')
@@ -503,7 +513,7 @@ def _(current_session, lab, mo, refresh, release_check, release_code, save_draft
     return
 
 
-# workshop-cell: transit_factory/display/31
+# workshop-cell: transit_factory/display/32
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_step, mo):
     mo.stop(get_step()!='release')
@@ -560,7 +570,7 @@ def _(current_session, export_saved_traces, integrate_solo, lab, mo, refresh, re
     return
 
 
-# workshop-cell: transit_factory/display/36
+# workshop-cell: transit_factory/display/37
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_step, lab, mo, teaching):
     mo.stop(get_step()!="tasks")
@@ -823,7 +833,7 @@ def _(conclusion, current_session, lab, mo, refresh, release_button, release_cod
     return
 
 
-# workshop-cell: transit_factory/display/59
+# workshop-cell: transit_factory/display/60
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_revision, get_step, lab, mo):
     _s=current_session()
@@ -834,7 +844,7 @@ def _(current_session, get_output, get_revision, get_step, lab, mo):
     return
 
 
-# workshop-cell: transit_factory/display/60
+# workshop-cell: transit_factory/display/61
 @app.cell(hide_code=True)
 def _(get_step, go_to, mo, teaching, ui):
     _index=next(i for i,step in enumerate(teaching.STEPS) if step[0]==get_step())
@@ -844,7 +854,7 @@ def _(get_step, go_to, mo, teaching, ui):
     return (next_step_control,)
 
 
-# workshop-cell: transit_factory/display/61
+# workshop-cell: transit_factory/display/62
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, lab, mo, teaching, ui):
     _s=current_session()
@@ -865,7 +875,7 @@ def _(current_session, get_revision, mo):
     return (help_form,)
 
 
-# workshop-cell: transit_factory/display/63
+# workshop-cell: transit_factory/display/64
 @app.cell(hide_code=True)
 def _(current_session, help_form, mo):
     mo.stop(help_form.value is None or not current_session())

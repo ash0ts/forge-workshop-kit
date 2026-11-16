@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "id": "overview",
+  "title": "Build and evaluate an operations agent",
+  "eyebrow": "01 / Pending, Inc.",
+  "question": "What will you build, and how will you know it works?",
+  "summary": "The employee says the refund is complete. Check the account before telling the customer. Then change the instructions and find out whether they helped.",
+  "kind": "overview",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "ticket",
+      "title": "Read the ticket",
+      "body": "Identify the requested account change.",
+      "symbol": "message"
+    },
+    {
+      "id": "agent",
+      "title": "Build the employee",
+      "body": "Write the tool, loop, instructions, and trace scopes.",
+      "symbol": "processor"
+    },
+    {
+      "id": "account",
+      "title": "Check the account",
+      "body": "Compare the delivered state with the request.",
+      "symbol": "account"
+    },
+    {
+      "id": "change",
+      "title": "Test a change",
+      "body": "Edit the harness and compare matching cases.",
+      "symbol": "branch"
+    }
+  ],
+  "states": [
+    {
+      "id": "ticket",
+      "label": "Ticket",
+      "visible": [
+        "ticket"
+      ],
+      "focus": [
+        "ticket"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "agent",
+      "label": "Agent",
+      "visible": [
+        "ticket",
+        "agent"
+      ],
+      "focus": [
+        "agent"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "account",
+      "label": "Account",
+      "visible": [
+        "ticket",
+        "agent",
+        "account"
+      ],
+      "focus": [
+        "account"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "change",
+      "label": "Change",
+      "visible": [
+        "ticket",
+        "agent",
+        "account",
+        "change"
+      ],
+      "focus": [
+        "change"
+      ],
+      "caption": "What will you build, and how will you know it works?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "ticket",
+        "agent",
+        "account",
+        "change"
+      ],
+      "focus": [],
+      "caption": "What will you build, and how will you know it works?"
+    }
+  ],
+  "hero": "hero.svg"
+}

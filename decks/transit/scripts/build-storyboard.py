@@ -76,6 +76,7 @@ runpy.run_path(str(ROOT / 'scripts/pedagogy-sequence.py'))['reorder'](slides)
 # Shared ARIA context, response and citation-check frames.
 import runpy as _aria_runpy
 _aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/aria_storyboard.py'))['enrich'](slides, ROOT, 'transit')
+_aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/technical_guide_storyboard.py'))['enrich'](slides, ROOT, 'transit')
 
 
 # Stable aliases keep worked-answer links aligned when slides are inserted.
@@ -127,7 +128,7 @@ text = re.sub(r'href="/(\d+)"', lambda m: 'href="' + base + m.group(1) + '"', te
               'title':s['title'], 'kind':s['kind'], 'name':s['name'], 'notes':s['notes'], 'answer':s.get('answer'),
               'concept':s['concept'], 'exercise':s['exercise'], 'source':s['source'], 'evidence':s['evidence'],
               'timing':{'elapsed':s['time'] or None,'minutes':s['elapsed_minutes']},
-              'clicks':s['clicks']}
+              'clicks':s['clicks'], 'technical_guide':s.get('technical_guide')}
              for i,s in enumerate(slides)]}, indent=2)+'\n', encoding='utf-8')
 (ROOT/'notes/presenter.md').write_text('\n\n'.join(f'## {i+1}. {s["title"].replace("<br>", " ")}\n\n{s["time"]}\n\n{s["notes"]}' for i,s in enumerate(slides))+'\n', encoding='utf-8')
 print(f'Generated {len(slides)} transit slides.')

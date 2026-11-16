@@ -21,3 +21,11 @@ node_modules
 
 # Generated render validation captures; selected teaching captures are in public/.
 .screenshots/
+
+# Generated from visual-guides/ and the portable visual skill.
+decks/*/public/guides/
+src/forge_workshop_kit/assets/technical-guides/**/slide/
+src/forge_workshop_kit/assets/technical-guides/**/index.html
+src/forge_workshop_kit/assets/technical-guides/**/final.svg
+src/forge_workshop_kit/assets/technical-guides/**/text-bounds.json
+src/forge_workshop_kit/assets/technical-guides/**/browser-validation.json

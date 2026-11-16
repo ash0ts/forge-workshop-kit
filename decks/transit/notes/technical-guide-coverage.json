@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "workshop": "transit",
+  "overview": "technical-overview",
+  "sequences": [
+    {
+      "sequence": "service-time",
+      "slide_key": "the-last-train-can-belong-to-yesterday-s-service",
+      "notebook_step": "setup",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "worker",
+      "slide_key": "one-worker-still-needs-a-complete-loop",
+      "notebook_step": "worker",
+      "reveal_count": 5
+    },
+    {
+      "sequence": "claims",
+      "slide_key": "both-workers-can-see-a-pending-task",
+      "notebook_step": "tasks",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "integration",
+      "slide_key": "integration-checks-the-patches-against-their-base",
+      "notebook_step": "integrate",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "memory",
+      "slide_key": "a-saved-note-is-not-automatically-accepted",
+      "notebook_step": "memory",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "comparison",
+      "slide_key": "evaluate-the-product-and-the-process-separately",
+      "notebook_step": "evaluate",
+      "reveal_count": 6
+    }
+  ],
+  "source": "visual-guides/index.json",
+  "runtime_changes": false
+}

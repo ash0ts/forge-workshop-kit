@@ -134,6 +134,8 @@ def main():
     output = (args.output or ROOT / "dist" / f"v{version}").resolve()
     output.mkdir(parents=True, exist_ok=True)
     selected = [row for row in templates() if not args.only or row["slug"] in args.only]
+    from build_visual_guides import build as build_guides
+    build_guides(exports=True)
     # Generation uses the same lockfile for copied and local notebooks.
     for row in selected:
         run([sys.executable, "scripts/build_notebooks.py", "--only", row["slug"]])
@@ -150,6 +152,12 @@ def main():
         "templates": {},
     }
     manifest["aria_investigations"] = build_aria_bundle(output, version)
+    visual_downloads = ROOT / "dist/visual-guides/downloads"
+    manifest["visual_materials"] = []
+    for source in sorted(visual_downloads.glob("*.zip")):
+        destination = output / source.name
+        shutil.copyfile(source, destination)
+        manifest["visual_materials"].append({"file": destination.name, "sha256": checksum(destination), "bytes": destination.stat().st_size})
     for row in selected:
         source = ROOT / "notebooks" / (row["slug"] + ".py")
         destination = output / source.name

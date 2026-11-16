@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "id": "case-changes",
+  "title": "Inspect a recovered defect and a new miss",
+  "eyebrow": "04 / Circuit-board inspection",
+  "question": "Did the change help this board, and what happened elsewhere?",
+  "summary": "These are recorded final examples. Use validation boards when choosing a change or cutoff.",
+  "kind": "comparison",
+  "provenance": "recorded",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA=="
+    },
+    {
+      "label": "Code for this operation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py"
+    }
+  ],
+  "steps": [
+    {
+      "id": "miss",
+      "title": "Board 048: baseline miss",
+      "body": "The whole-image score is −1.006, below its −0.499 cutoff.",
+      "output": "Missed defect",
+      "status": "Recorded final case",
+      "symbol": "image",
+      "media": "../media/pcb1-anomaly-048.jpg"
+    },
+    {
+      "id": "recover",
+      "title": "Board 048: patch-model flag",
+      "body": "The patch score is −0.887, above its −1.114 cutoff. Raw scores require their own cutoffs.",
+      "output": "Defect flagged",
+      "symbol": "threshold",
+      "code": "prediction = scores >= threshold",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "regression",
+      "title": "Board 015: new miss",
+      "body": "The whole-image model flagged this defect; the patch model missed it. Keep it next to the recovered case.",
+      "output": "Regression remains visible",
+      "status": "Recorded final case",
+      "symbol": "image",
+      "media": "../media/pcb1-anomaly-015.jpg"
+    }
+  ],
+  "states": [
+    {
+      "id": "miss",
+      "label": "Miss",
+      "visible": [
+        "miss"
+      ],
+      "focus": [
+        "miss"
+      ],
+      "caption": "Did the change help this board, and what happened elsewhere?"
+    },
+    {
+      "id": "recover",
+      "label": "Recover",
+      "visible": [
+        "miss",
+        "recover"
+      ],
+      "focus": [
+        "recover"
+      ],
+      "caption": "Did the change help this board, and what happened elsewhere?"
+    },
+    {
+      "id": "regression",
+      "label": "Regression",
+      "visible": [
+        "miss",
+        "recover",
+        "regression"
+      ],
+      "focus": [
+        "regression"
+      ],
+      "caption": "Did the change help this board, and what happened elsewhere?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "miss",
+        "recover",
+        "regression"
+      ],
+      "focus": [],
+      "caption": "Did the change help this board, and what happened elsewhere?"
+    }
+  ]
+}

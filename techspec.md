@@ -56,6 +56,8 @@ flowchart TD
 
 The decks share [`decks/package.json`](decks/package.json), styles, and the visual definitions in [`assets/visuals.json`](src/forge_workshop_kit/assets/visuals.json). Storyboards generate slides and notes. The build exports browser copies, PDFs, and editable archives; validation inspects reveals, links, images, and rendered text. Build and publication commands are documented in [maintenance](docs/maintenance.md).
 
+The technical-manual diagrams have a separate, portable source: [`skills/teenage-engineering-visualizations`](skills/teenage-engineering-visualizations/SKILL.md). Its tokens, original symbols, bundled fonts, and six compositions render the authored figure specifications in [`visual-guides`](visual-guides/index.json). The build packages notebook frames and copies the same figures into Slidev. Notebook selectors and Next/Back controls only select local images; they do not use a session, provider, or publication API. Posters and the reference gallery use the same renderer. [Technical visuals](docs/technical-visuals.md) describes installation, exports, and their canonical sources.
+
 ## Project and workspace identity
 
 [`setup.py`](src/forge_workshop_kit/setup.py) detects the copied notebook's project from `WANDB_ENTITY` and `WANDB_PROJECT`. In a hosted notebook, those values take precedence over a local `WORKSHOP_PROJECT` default. Local users can supply their project explicitly.

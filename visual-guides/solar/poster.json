@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "poster",
+  "title": "Build a reproducible solar forecast",
+  "eyebrow": "02 / Solar Autoresearch",
+  "question": "What will you learn?",
+  "summary": "The lab has a promising score. Before the weekly review, find the observations, code, and weights behind it. Then test whether a research agent can improve the experiment.",
+  "kind": "poster",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/solar/candidate.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg=="
+    }
+  ],
+  "steps": [],
+  "states": [
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [],
+      "focus": [],
+      "caption": "What will you learn?"
+    }
+  ],
+  "poster": {
+    "situation": "The lab has a promising score. Before the weekly review, find the observations, code, and weights behind it. Then test whether a research agent can improve the experiment.",
+    "outcomes": [
+      "Build a forecast from real satellite observations.",
+      "Track models, settings, weights, and predictions together.",
+      "Review and test a research agent’s code changes."
+    ],
+    "duration": "6 hours",
+    "prerequisites": "Read basic Python; use your own Forge project.",
+    "dataset": "GOES-15 measurements and AIA 171 Å images, February 2014",
+    "forge": [
+      {
+        "name": "Runs and Sweeps",
+        "action": "Compare learning curves, settings, and validation errors."
+      },
+      {
+        "name": "Artifacts",
+        "action": "Recover the data, source, weights, and predictions."
+      },
+      {
+        "name": "Agent Lens",
+        "action": "Inspect the research agent’s edits and training calls."
+      }
+    ],
+    "cta": {
+      "label": "Read the example, then copy the notebook",
+      "url": "https://ash0ts.github.io/forge-workshop-kit/#solar"
+    },
+    "hero": "hero.svg"
+  }
+}

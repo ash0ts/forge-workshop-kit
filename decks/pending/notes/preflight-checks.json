@@ -1,0 +1,152 @@
+{
+  "source_sha256": "29b37aa7cf988bc1c7bdf89345b9d7fb84095d54a12f90a56dda4398aa9a2470",
+  "preflight_only": true,
+  "slides_checked": 6,
+  "expected_slides": 101,
+  "titles": [
+    {
+      "number": 1,
+      "key": "cover",
+      "title": "Please improve yourself."
+    },
+    {
+      "number": 2,
+      "key": "technical-overview",
+      "title": "What you will build and inspect"
+    },
+    {
+      "number": 3,
+      "key": "arrival",
+      "title": "You’re adding an agent to the support team."
+    },
+    {
+      "number": 14,
+      "key": "access",
+      "title": "Check where your work will be saved."
+    },
+    {
+      "number": 15,
+      "key": "record",
+      "title": "Save an operation’s inputs, output, and timing."
+    },
+    {
+      "number": 17,
+      "key": "trace",
+      "title": "Add an environment field and inspect it in Agent Lens."
+    }
+  ],
+  "click_states": [
+    {
+      "slide": 1,
+      "click": 0
+    },
+    {
+      "slide": 2,
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/pending/overview/slide/01-ticket.svg",
+        "alt": "Ticket: What will you build, and how will you know it works?",
+        "frameId": "ticket",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/pending/overview/slide/02-agent.svg",
+        "alt": "Agent: What will you build, and how will you know it works?",
+        "frameId": "agent",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/pending/overview/slide/03-account.svg",
+        "alt": "Account: What will you build, and how will you know it works?",
+        "frameId": "account",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/pending/overview/slide/04-change.svg",
+        "alt": "Change: What will you build, and how will you know it works?",
+        "frameId": "change",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/pending/overview/slide/05-complete.svg",
+        "alt": "Complete view: What will you build, and how will you know it works?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 3,
+      "click": 0
+    },
+    {
+      "slide": 14,
+      "click": 0
+    },
+    {
+      "slide": 15,
+      "click": 0
+    },
+    {
+      "slide": 17,
+      "click": 0
+    }
+  ],
+  "issues": [],
+  "console_errors": [],
+  "failed_responses": [],
+  "answers": [],
+  "routes_checked": 407,
+  "recording_links_checked": 0,
+  "presenter_notes": true
+}

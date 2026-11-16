@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "id": "comparison",
+  "title": "Compare the agent and monitor on matching requests",
+  "eyebrow": "06 / Airline monitoring",
+  "question": "Did the repair improve bookings, monitoring, or both?",
+  "summary": "Native tag judging and notebook compute have separate charges from the notebook’s inference allowance.",
+  "kind": "comparison",
+  "provenance": "recorded",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA=="
+    },
+    {
+      "label": "Code for this operation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+    }
+  ],
+  "steps": [
+    {
+      "id": "freeze",
+      "title": "Freeze code and criteria",
+      "body": "Keep monitoring criteria fixed while comparing original and repaired agents. Preserve reserved request assignments.",
+      "output": "Named agent versions + one monitor version",
+      "symbol": "file"
+    },
+    {
+      "id": "matched",
+      "title": "Compare delivered bookings",
+      "body": "Run each version from isolated copies of the same original bookings. Compare requested changes and preserved flights.",
+      "output": "Aligned booking-state results",
+      "symbol": "comparison",
+      "code": "before = run[\"initial_state\"][\n    \"reservation\"][\"flights\"]\nafter = run[\"world\"][\"reservation\"][\"flights\"]",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "traffic",
+      "title": "Inspect subsequent monitoring",
+      "body": "Use the same rule on the subsequent batch. Keep processing coverage and unavailable judgments alongside agreement.",
+      "output": "Agent correctness and monitor quality",
+      "symbol": "rows"
+    },
+    {
+      "id": "recorded",
+      "title": "Preserve the successful rehearsal",
+      "body": "All 40 recorded live conversations passed booking checks. Use the controlled omission drill to study the failure mechanism.",
+      "output": "No invented live failure",
+      "status": "Recorded qualification",
+      "symbol": "check"
+    }
+  ],
+  "states": [
+    {
+      "id": "freeze",
+      "label": "Freeze",
+      "visible": [
+        "freeze"
+      ],
+      "focus": [
+        "freeze"
+      ],
+      "caption": "Did the repair improve bookings, monitoring, or both?"
+    },
+    {
+      "id": "matched",
+      "label": "Matched",
+      "visible": [
+        "freeze",
+        "matched"
+      ],
+      "focus": [
+        "matched"
+      ],
+      "caption": "Did the repair improve bookings, monitoring, or both?"
+    },
+    {
+      "id": "traffic",
+      "label": "Traffic",
+      "visible": [
+        "freeze",
+        "matched",
+        "traffic"
+      ],
+      "focus": [
+        "traffic"
+      ],
+      "caption": "Did the repair improve bookings, monitoring, or both?"
+    },
+    {
+      "id": "recorded",
+      "label": "Recorded",
+      "visible": [
+        "freeze",
+        "matched",
+        "traffic",
+        "recorded"
+      ],
+      "focus": [
+        "recorded"
+      ],
+      "caption": "Did the repair improve bookings, monitoring, or both?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "freeze",
+        "matched",
+        "traffic",
+        "recorded"
+      ],
+      "focus": [],
+      "caption": "Did the repair improve bookings, monitoring, or both?"
+    }
+  ]
+}

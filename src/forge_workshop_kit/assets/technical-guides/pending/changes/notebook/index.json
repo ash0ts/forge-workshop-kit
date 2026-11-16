@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "changes",
+  "kind": "branches",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "dd9039e049c86c93c833edab8213efccb6690bb65a72b8ed67965f13d73364d0",
+  "states": [
+    {
+      "id": "parent",
+      "label": "Starting harness",
+      "svg": "01-parent.svg",
+      "caption": "Save the instructions, skills, and original case state. Both proposals start here."
+    },
+    {
+      "id": "candidate-a",
+      "label": "Candidate A",
+      "svg": "02-candidate-a.svg",
+      "caption": "Review the first proposed diff, then run it on a fresh copy of the original case."
+    },
+    {
+      "id": "candidate-b",
+      "label": "Candidate B",
+      "svg": "03-candidate-b.svg",
+      "caption": "Review the second diff and test it independently. A planned or rejected change has no assumed result."
+    },
+    {
+      "id": "decision",
+      "label": "Select, combine, or retain",
+      "svg": "04-decision.svg",
+      "caption": "Compare the probe records. Test any new combination before adopting it. Retaining the parent leaves its source unchanged."
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "05-complete.svg",
+      "caption": "Recorded final comparison: starting 4/4, manual 4/4, agent-selected 4/4. Changed behavior did not raise account correctness."
+    }
+  ],
+  "html": "index.html"
+}

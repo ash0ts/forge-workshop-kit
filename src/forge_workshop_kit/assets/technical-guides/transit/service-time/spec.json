@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "id": "service-time",
+  "title": "Keep the GTFS service day after midnight",
+  "eyebrow": "05 / Transit software factory",
+  "question": "Which date belongs to this departure?",
+  "summary": "This application shows a frozen historical timetable, not live arrival predictions.",
+  "kind": "transformation",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory_teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ=="
+    },
+    {
+      "label": "GTFS conversion",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/transit.py"
+    },
+    {
+      "label": "Code for this operation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/transit.py"
+    }
+  ],
+  "steps": [
+    {
+      "id": "join",
+      "title": "Join schedule records",
+      "body": "Follow a stop time through its trip, route, and service calendar. Calendar exceptions determine whether that trip runs.",
+      "input": "stop_times → trips → calendar",
+      "output": "An active trip at the selected stop",
+      "symbol": "records"
+    },
+    {
+      "id": "gtfs",
+      "title": "Read 24:08:00 as elapsed time",
+      "body": "The scheduled time is measured from its service day. Hours greater than 23 are valid.",
+      "input": "Service day: 2024-11-28",
+      "output": "24:08:00 after service-day midnight",
+      "symbol": "clock",
+      "code": "h, m, s = map(int, gtfs_time.split(\":\"))\ndeparture = midnight + timedelta(\n    hours=h, minutes=m, seconds=s)",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "civil",
+      "title": "Produce the civil timestamp",
+      "body": "The public Park Street example becomes 00:08 on November 29, while its service date stays November 28.",
+      "input": "trip_id 63926435",
+      "output": "2024-11-29T00:08:00-05:00",
+      "symbol": "calendar"
+    }
+  ],
+  "states": [
+    {
+      "id": "join",
+      "label": "Join",
+      "visible": [
+        "join"
+      ],
+      "focus": [
+        "join"
+      ],
+      "caption": "Which date belongs to this departure?"
+    },
+    {
+      "id": "gtfs",
+      "label": "Gtfs",
+      "visible": [
+        "join",
+        "gtfs"
+      ],
+      "focus": [
+        "gtfs"
+      ],
+      "caption": "Which date belongs to this departure?"
+    },
+    {
+      "id": "civil",
+      "label": "Civil",
+      "visible": [
+        "join",
+        "gtfs",
+        "civil"
+      ],
+      "focus": [
+        "civil"
+      ],
+      "caption": "Which date belongs to this departure?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "join",
+        "gtfs",
+        "civil"
+      ],
+      "focus": [],
+      "caption": "Which date belongs to this departure?"
+    }
+  ]
+}

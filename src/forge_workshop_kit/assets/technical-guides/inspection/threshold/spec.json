@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "id": "threshold",
+  "title": "Choose a threshold from validation data",
+  "eyebrow": "04 / Circuit-board inspection",
+  "question": "Which tradeoff changes when the cutoff moves?",
+  "summary": "Moving the cutoff changes decisions without retraining. Keep final-board labels out of threshold selection.",
+  "kind": "sequence",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "score",
+      "title": "Keep model scores fixed",
+      "body": "The detector’s decision score is not an image label. Compare it with that detector’s cutoff.",
+      "input": "Validation score per board",
+      "output": "Unchanged decision scores",
+      "symbol": "axis"
+    },
+    {
+      "id": "choose",
+      "title": "Meet the recall target",
+      "body": "Sort known validation-defect scores and select the cutoff required for the requested recall.",
+      "code": "positives = np.sort(\n    scores[target == 1])[::-1]",
+      "output": "Validation-selected threshold",
+      "symbol": "threshold",
+      "excerpt_label": "Abbreviated code; full function in notebook.",
+      "input": "Validation scores + labels + recall target"
+    },
+    {
+      "id": "count",
+      "title": "Count both error types",
+      "body": "A missed defect falls below the cutoff. A normal board above the cutoff is a false alarm.",
+      "output": "Misses + false alarms + review volume",
+      "symbol": "tally",
+      "input": "Scores + chosen cutoff + labels"
+    }
+  ],
+  "states": [
+    {
+      "id": "score",
+      "label": "Score",
+      "visible": [
+        "score"
+      ],
+      "focus": [
+        "score"
+      ],
+      "caption": "Which tradeoff changes when the cutoff moves?"
+    },
+    {
+      "id": "choose",
+      "label": "Choose",
+      "visible": [
+        "score",
+        "choose"
+      ],
+      "focus": [
+        "choose"
+      ],
+      "caption": "Which tradeoff changes when the cutoff moves?"
+    },
+    {
+      "id": "count",
+      "label": "Count",
+      "visible": [
+        "score",
+        "choose",
+        "count"
+      ],
+      "focus": [
+        "count"
+      ],
+      "caption": "Which tradeoff changes when the cutoff moves?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "score",
+        "choose",
+        "count"
+      ],
+      "focus": [],
+      "caption": "Which tradeoff changes when the cutoff moves?"
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "id": "run-record",
+  "title": "Keep the experiment and its outputs together",
+  "eyebrow": "02 / Solar Autoresearch",
+  "question": "Could someone reproduce this prediction from the saved run?",
+  "summary": "Publication can be retried from saved output without training the model again.",
+  "kind": "overview",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/solar/candidate.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg=="
+    },
+    {
+      "label": "Code for this operation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/solar_cells.py"
+    }
+  ],
+  "steps": [
+    {
+      "id": "inputs",
+      "title": "Record source and inputs",
+      "body": "The source file, configuration, dataset version, and split identify what the training process received.",
+      "output": "candidate.py + config + data identity",
+      "symbol": "file",
+      "code": "sources={\n    \"candidate.py\": source,\n    \"development_metric.py\": metric_source,\n}",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "execution",
+      "title": "Save produced files",
+      "body": "Save weights, predictions, and loss history from that execution, not from a later notebook variable.",
+      "output": "weights.pt + predictions.npy + losses.json",
+      "symbol": "files"
+    },
+    {
+      "id": "publish",
+      "title": "Open the run and its artifact",
+      "body": "Use the run to compare settings and curves. Use its artifact to recover the exact files.",
+      "output": "One execution, linked measurements and files",
+      "symbol": "record"
+    }
+  ],
+  "states": [
+    {
+      "id": "inputs",
+      "label": "Inputs",
+      "visible": [
+        "inputs"
+      ],
+      "focus": [
+        "inputs"
+      ],
+      "caption": "Could someone reproduce this prediction from the saved run?"
+    },
+    {
+      "id": "execution",
+      "label": "Execution",
+      "visible": [
+        "inputs",
+        "execution"
+      ],
+      "focus": [
+        "execution"
+      ],
+      "caption": "Could someone reproduce this prediction from the saved run?"
+    },
+    {
+      "id": "publish",
+      "label": "Publish",
+      "visible": [
+        "inputs",
+        "execution",
+        "publish"
+      ],
+      "focus": [
+        "publish"
+      ],
+      "caption": "Could someone reproduce this prediction from the saved run?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "inputs",
+        "execution",
+        "publish"
+      ],
+      "focus": [],
+      "caption": "Could someone reproduce this prediction from the saved run?"
+    }
+  ],
+  "native_capture": {
+    "media": "../media/solar-forge-annotated.svg",
+    "original": "../media/solar-forge-original.png",
+    "title": "Files from one recorded training execution",
+    "source_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f5e5d198bc9479f78d9a4b1c8c8979e3/v0",
+    "investigation": "Find candidate.py, predictions.npy, and weights.pt in the same artifact version.",
+    "capture_date": null,
+    "capture_date_note": "Existing recorded capture; capture timestamp not recorded in source asset.",
+    "annotations": [
+      {
+        "number": 1,
+        "label": "Source",
+        "field": "candidate.py identifies the executed model.",
+        "source_bounds": [
+          351,
+          250,
+          1233,
+          59
+        ]
+      },
+      {
+        "number": 2,
+        "label": "Predictions",
+        "field": "predictions.npy preserves forecast values.",
+        "source_bounds": [
+          351,
+          429,
+          1233,
+          60
+        ]
+      },
+      {
+        "number": 3,
+        "label": "Weights",
+        "field": "weights.pt preserves the trained model.",
+        "source_bounds": [
+          351,
+          609,
+          1233,
+          61
+        ]
+      }
+    ]
+  },
+  "annotations": [
+    {
+      "number": 1,
+      "target": "inputs",
+      "label": "candidate.py"
+    },
+    {
+      "number": 2,
+      "target": "execution",
+      "label": "predictions.npy"
+    },
+    {
+      "number": 3,
+      "target": "execution",
+      "label": "weights.pt"
+    }
+  ]
+}

@@ -68,13 +68,15 @@ slides=release_extend(slides)
 # Shared ARIA context, response and citation-check frames.
 import runpy as _aria_runpy
 _aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/aria_storyboard.py'))['enrich'](slides, ROOT, 'routing')
+_aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/technical_guide_storyboard.py'))['enrich'](slides, ROOT, 'routing')
 
 header='''---\ntheme: default\ntitle: Route customer requests and learn from mistakes\nauthor: Anish Shah\nclass: cover\nlayout: default\naspectRatio: 16/9\ncanvasWidth: 1280\ncolorSchema: light\ntransition: fade\nwakeLock: false\nfonts:\n  sans: IBM Plex Sans\n  mono: IBM Plex Mono\n  provider: none\nmdc: true\nhighlighter: shiki\ndrawings:\n  enabled: false\ndownload: false\n---\n'''
 chunks=[]
 for i,s in enumerate(slides):
     if i:
         front='\n---\n'+(f'class: {s["kind"]}\n' if s['kind'] else '')+(f'name: {s["name"]}\n' if s['name'] else '')
-        front+='---\n' if s['kind'] or s['name'] else ''
+        front+=(f'clicks: {s["clicks"]}\n' if s.get('clicks') else '')
+        front+='---\n' if s['kind'] or s['name'] or s.get('clicks') else ''
     else:front=''
     chunks.append(front+f'\n<div class="kicker">{s["time"] or "Reference"}</div>\n\n# {s["title"]}\n\n'+s['body'].replace('```<', '```\n\n<')+'\n\n<!--\n'+s['notes']+'\n-->\n')
 text=header+''.join(chunks)

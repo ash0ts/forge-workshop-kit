@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "window",
+  "kind": "sequence",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "b6dffdb90819cc58d378eacc4e0976db733e8cb2d539159a2b198d5c977b6547",
+  "states": [
+    {
+      "id": "history",
+      "label": "History",
+      "svg": "01-history.svg",
+      "caption": "Which values are observations, and which one is the future target?"
+    },
+    {
+      "id": "target",
+      "label": "Target",
+      "svg": "02-target.svg",
+      "caption": "Which values are observations, and which one is the future target?"
+    },
+    {
+      "id": "scale",
+      "label": "Scale",
+      "svg": "03-scale.svg",
+      "caption": "Which values are observations, and which one is the future target?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "Which values are observations, and which one is the future target?"
+    }
+  ],
+  "html": "index.html"
+}

@@ -1,7 +1,8 @@
 {
-  "source_sha256": "4f9a03cd5b6e522593df0bf5281c0865cb8b9366ea0a9906ca0ce4c42d9db1d7",
-  "slides_checked": 101,
-  "expected_slides": 101,
+  "source_sha256": "40788e2b86fe679a89b32312394f189619b3603df9d45ff6822c76f612f3c58c",
+  "preflight_only": false,
+  "slides_checked": 102,
+  "expected_slides": 102,
   "titles": [
     {
       "number": 1,
@@ -10,501 +11,506 @@
     },
     {
       "number": 2,
+      "key": "technical-overview",
+      "title": "What you will build and inspect"
+    },
+    {
+      "number": 3,
       "key": "your-team-needs-a-departures-board",
       "title": "Your team needs a departures board"
     },
     {
-      "number": 3,
+      "number": 4,
       "key": "here-is-the-application-we-want-to-deliver",
       "title": "Here is the application we want to deliver"
     },
     {
-      "number": 4,
+      "number": 5,
       "key": "the-inputs-are-public-transit-records",
       "title": "The inputs are public transit records"
     },
     {
-      "number": 5,
+      "number": 6,
       "key": "start-with-the-row-for-the-platform",
       "title": "Start with the row for the platform"
     },
     {
-      "number": 6,
+      "number": 7,
       "key": "join-the-trip-to-its-service-calendar",
       "title": "Join the trip to its service calendar"
     },
     {
-      "number": 7,
+      "number": 8,
       "key": "keep-the-service-date-and-boarding-date",
       "title": "Keep the service date and boarding date"
     },
     {
-      "number": 8,
-      "key": "the-last-train-can-belong-to-yesterday-s-service",
-      "title": "The last train can belong to yesterday’s service"
+      "number": 9,
+      "key": "keep-the-gtfs-service-day-after-midnight",
+      "title": "Keep the GTFS service day after midnight"
     },
     {
-      "number": 9,
+      "number": 10,
       "key": "convert-elapsed-service-time-into-a-timestamp",
       "title": "Convert elapsed service time into a timestamp"
     },
     {
-      "number": 10,
+      "number": 11,
       "key": "check-the-joined-behavior-not-just-the-parser",
       "title": "Check the joined behavior, not just the parser"
     },
     {
-      "number": 11,
+      "number": 12,
       "key": "turn-the-brief-into-checks",
       "title": "Turn the brief into checks"
     },
     {
-      "number": 12,
+      "number": 13,
       "key": "a-software-factory-needs-a-way-to-finish-work",
       "title": "A software factory needs a way to finish work"
     },
     {
-      "number": 13,
+      "number": 14,
       "key": "two-workers-means-two-contexts-around-the-same-model",
       "title": "Two workers means two contexts around the same model"
     },
     {
-      "number": 14,
+      "number": 15,
       "key": "acceptance-exercise",
       "title": "Write the after-midnight acceptance check"
     },
     {
-      "number": 15,
+      "number": 16,
       "key": "your-project-contains-the-experiment",
       "title": "Your project contains the experiment"
     },
     {
-      "number": 16,
+      "number": 17,
       "key": "connect-and-inspect-the-source-data",
       "title": "Connect and inspect the source data"
     },
     {
-      "number": 17,
+      "number": 18,
       "key": "record-the-operation-that-you-just-ran",
       "title": "Record the operation that you just ran"
     },
     {
-      "number": 18,
-      "key": "one-worker-still-needs-a-complete-loop",
-      "title": "One worker still needs a complete loop"
+      "number": 19,
+      "key": "return-a-tool-result-to-the-coding-worker",
+      "title": "Return a tool result to the coding worker"
     },
     {
-      "number": 19,
+      "number": 20,
       "key": "give-the-worker-the-task-it-is-allowed-to-solve",
       "title": "Give the worker the task it is allowed to solve"
     },
     {
-      "number": 20,
+      "number": 21,
       "key": "the-first-action-reads-the-assigned-file",
       "title": "The first action reads the assigned file"
     },
     {
-      "number": 21,
+      "number": 22,
       "key": "the-edit-includes-the-version-it-was-based-on",
       "title": "The edit includes the version it was based on"
     },
     {
-      "number": 22,
+      "number": 23,
       "key": "run-the-checks-against-the-changed-files",
       "title": "Run the checks against the changed files"
     },
     {
-      "number": 23,
+      "number": 24,
       "key": "return-the-tool-result-to-the-worker",
       "title": "Return the tool result to the worker"
     },
     {
-      "number": 24,
+      "number": 25,
       "key": "append-the-actual-observation-to-the-next-request",
       "title": "Append the actual observation to the next request"
     },
     {
-      "number": 25,
+      "number": 26,
       "key": "finish-submits-a-patch-for-review",
       "title": "Finish submits a patch for review"
     },
     {
-      "number": 26,
+      "number": 27,
       "key": "worker-exercise",
       "title": "Run one worker before adding a team"
     },
     {
-      "number": 27,
+      "number": 28,
       "key": "a-trace-should-answer-what-changed-and-why",
       "title": "A trace should answer what changed and why"
     },
     {
-      "number": 28,
+      "number": 29,
       "key": "inspect-the-worker-s-test-in-agent-lens",
       "title": "Inspect the worker’s test in Agent Lens"
     },
     {
-      "number": 29,
+      "number": 30,
       "key": "solo-integration-exercise",
       "title": "Review and run the one-builder app"
     },
     {
-      "number": 30,
+      "number": 31,
       "key": "the-request-has-a-size-limit-even-when-files-are-saved",
       "title": "The request has a size limit even when files are saved"
     },
     {
-      "number": 31,
+      "number": 32,
       "key": "use-the-local-preview-to-follow-a-returned-row",
       "title": "Use the local preview to follow a returned row"
     },
     {
-      "number": 32,
+      "number": 33,
       "key": "break-until-1-45",
       "title": "Break until 1:45"
     },
     {
-      "number": 33,
+      "number": 34,
       "key": "add-the-task-board-and-two-workers",
       "title": "Add the task board and two workers"
     },
     {
-      "number": 34,
+      "number": 35,
       "key": "choose-work-that-can-happen-independently",
       "title": "Choose work that can happen independently"
     },
     {
-      "number": 35,
+      "number": 36,
       "key": "ready-means-its-prerequisites-passed",
       "title": "Ready means its prerequisites passed"
     },
     {
-      "number": 36,
-      "key": "both-workers-can-see-a-pending-task",
-      "title": "Both workers can see a pending task"
+      "number": 37,
+      "key": "claim-each-task-once",
+      "title": "Claim each task once"
     },
     {
-      "number": 37,
+      "number": 38,
       "key": "a-separate-check-and-write-permits-two-owners",
       "title": "A separate check and write permits two owners"
     },
     {
-      "number": 38,
+      "number": 39,
       "key": "one-short-transaction-assigns-one-owner",
       "title": "One short transaction assigns one owner"
     },
     {
-      "number": 39,
+      "number": 40,
       "key": "keep-the-model-call-outside-the-claim-transaction",
       "title": "Keep the model call outside the claim transaction"
     },
     {
-      "number": 40,
+      "number": 41,
       "key": "tasks-exercise",
       "title": "Make dependencies control the workers"
     },
     {
-      "number": 41,
+      "number": 42,
       "key": "separate-working-copies-protect-unfinished-changes",
       "title": "Separate working copies protect unfinished changes"
     },
     {
-      "number": 42,
+      "number": 43,
       "key": "each-worker-starts-from-the-same-source",
       "title": "Each worker starts from the same source"
     },
     {
-      "number": 43,
+      "number": 44,
       "key": "each-task-can-edit-only-its-assigned-module",
       "title": "Each task can edit only its assigned module"
     },
     {
-      "number": 44,
-      "key": "integration-checks-the-patches-against-their-base",
-      "title": "Integration checks the patches against their base"
+      "number": 45,
+      "key": "test-the-combined-application",
+      "title": "Test the combined application"
     },
     {
-      "number": 45,
+      "number": 46,
       "key": "run-the-ready-tasks-with-two-workers",
       "title": "Run the ready tasks with two workers"
     },
     {
-      "number": 46,
+      "number": 47,
       "key": "read-the-timeline-as-work-and-waiting",
       "title": "Read the timeline as work and waiting"
     },
     {
-      "number": 47,
+      "number": 48,
       "key": "find-both-submitted-patches-before-integration",
       "title": "Find both submitted patches before integration"
     },
     {
-      "number": 48,
+      "number": 49,
       "key": "review-a-patch-before-it-enters-the-product",
       "title": "Review a patch before it enters the product"
     },
     {
-      "number": 49,
+      "number": 50,
       "key": "test-the-combined-departures-board",
       "title": "Test the combined departures board"
     },
     {
-      "number": 50,
+      "number": 51,
       "key": "an-integration-error-can-cross-a-correct-boundary",
       "title": "An integration error can cross a correct boundary"
     },
     {
-      "number": 51,
+      "number": 52,
       "key": "break-until-3-20",
       "title": "Break until 3:20"
     },
     {
-      "number": 52,
+      "number": 53,
       "key": "aria-investigate",
       "title": "Investigate this result"
     },
     {
-      "number": 53,
+      "number": 54,
       "key": "aria-investigate-response",
       "title": "Read one claim in the recorded response"
     },
     {
-      "number": 54,
+      "number": 55,
       "key": "aria-investigate-verify",
       "title": "Open the source and check that claim"
     },
     {
-      "number": 55,
+      "number": 56,
       "key": "shared-memory-needs-something-worth-sharing",
       "title": "Shared memory needs something worth sharing"
     },
     {
-      "number": 56,
+      "number": 57,
       "key": "check-the-lesson-before-another-agent-relies-on-it",
       "title": "Check the lesson before another agent relies on it"
     },
     {
-      "number": 57,
+      "number": 58,
       "key": "write-a-rule-with-a-test-attached",
       "title": "Write a rule with a test attached"
     },
     {
-      "number": 58,
-      "key": "a-saved-note-is-not-automatically-accepted",
-      "title": "A saved note is not automatically accepted"
+      "number": 59,
+      "key": "retrieve-a-lesson-with-evidence-and-scope",
+      "title": "Retrieve a lesson with evidence and scope"
     },
     {
-      "number": 59,
+      "number": 60,
       "key": "first-exclude-the-unchecked-interpretation",
       "title": "First exclude the unchecked interpretation"
     },
     {
-      "number": 60,
+      "number": 61,
       "key": "then-check-the-applicable-contract-version",
       "title": "Then check the applicable contract version"
     },
     {
-      "number": 61,
+      "number": 62,
       "key": "finally-match-the-task-s-scope-and-tags",
       "title": "Finally match the task’s scope and tags"
     },
     {
-      "number": 62,
+      "number": 63,
       "key": "memory-exercise",
       "title": "Save a lesson supported by an execution"
     },
     {
-      "number": 63,
+      "number": 64,
       "key": "inspect-the-memory-read-then-its-effect",
       "title": "Inspect the memory read, then its effect"
     },
     {
-      "number": 64,
+      "number": 65,
       "key": "find-the-last-direct-train-between-two-stops",
       "title": "Find the last direct train between two stops"
     },
     {
-      "number": 65,
+      "number": 66,
       "key": "start-both-follow-ups-from-the-same-release",
       "title": "Start both follow-ups from the same release"
     },
     {
-      "number": 66,
+      "number": 67,
       "key": "keep-both-sets-of-patches-and-checks",
       "title": "Keep both sets of patches and checks"
     },
     {
-      "number": 67,
+      "number": 68,
       "key": "the-follow-up-returns-a-journey-not-a-list-of-guesses",
       "title": "The follow-up returns a journey, not a list of guesses"
     },
     {
-      "number": 68,
+      "number": 69,
       "key": "run-both-versions-of-the-follow-up-feature",
       "title": "Run both versions of the follow-up feature"
     },
     {
-      "number": 69,
+      "number": 70,
       "key": "the-factory-has-two-kinds-of-state",
       "title": "The factory has two kinds of state"
     },
     {
-      "number": 70,
+      "number": 71,
       "key": "find-where-the-lesson-entered-the-request",
       "title": "Find where the lesson entered the request"
     },
     {
-      "number": 71,
+      "number": 72,
       "key": "keep-a-stopped-worker-s-files-and-error",
       "title": "Keep a stopped worker’s files and error"
     },
     {
-      "number": 72,
+      "number": 73,
       "key": "break-until-4-55",
       "title": "Break until 4:55"
     },
     {
-      "number": 73,
-      "key": "evaluate-the-product-and-the-process-separately",
-      "title": "Evaluate the product and the process separately"
+      "number": 74,
+      "key": "measure-delivery-coordination-and-memory-separately",
+      "title": "Measure delivery, coordination, and memory separately"
     },
     {
-      "number": 74,
+      "number": 75,
       "key": "a-scenario-is-an-input-and-an-expected-behavior",
       "title": "A scenario is an input and an expected behavior"
     },
     {
-      "number": 75,
+      "number": 76,
       "key": "evaluate-exercise",
       "title": "Compare the frozen builds on matching cases"
     },
     {
-      "number": 76,
+      "number": 77,
       "key": "read-one-comparison-row-before-the-average",
       "title": "Read one comparison row before the average"
     },
     {
-      "number": 77,
+      "number": 78,
       "key": "compare-the-same-departures-in-forge",
       "title": "Compare the same departures in Forge"
     },
     {
-      "number": 78,
+      "number": 79,
       "key": "the-faster-build-missed-two-final-cases",
       "title": "The faster build missed two final cases"
     },
     {
-      "number": 79,
+      "number": 80,
       "key": "open-the-two-failing-rows-in-the-final-comparison",
       "title": "Open the two failing rows in the final comparison"
     },
     {
-      "number": 80,
+      "number": 81,
       "key": "a-timezone-assumption-selected-the-wrong-train",
       "title": "A timezone assumption selected the wrong train"
     },
     {
-      "number": 81,
+      "number": 82,
       "key": "interpret-the-request-as-one-instant",
       "title": "Interpret the request as one instant"
     },
     {
-      "number": 82,
+      "number": 83,
       "key": "the-team-used-the-caller-s-clock-for-service-time",
       "title": "The team used the caller’s clock for service time"
     },
     {
-      "number": 83,
+      "number": 84,
       "key": "the-renderer-carried-the-same-wrong-trip-into-the-board",
       "title": "The renderer carried the same wrong trip into the board"
     },
     {
-      "number": 84,
+      "number": 85,
       "key": "neither-follow-up-completed-the-query-change",
       "title": "Neither follow-up completed the query change"
     },
     {
-      "number": 85,
+      "number": 86,
       "key": "more-workers-can-still-produce-more-waiting",
       "title": "More workers can still produce more waiting"
     },
     {
-      "number": 86,
+      "number": 87,
       "key": "choose-a-release-using-the-saved-checks",
       "title": "Choose a release using the saved checks"
     },
     {
-      "number": 87,
+      "number": 88,
       "key": "aria-conclusion",
       "title": "Check our conclusion"
     },
     {
-      "number": 88,
+      "number": 89,
       "key": "aria-conclusion-response",
       "title": "Read one claim in the recorded response"
     },
     {
-      "number": 89,
+      "number": 90,
       "key": "aria-conclusion-verify",
       "title": "Open the source and check that claim"
     },
     {
-      "number": 90,
+      "number": 91,
       "key": "release-exercise",
       "title": "Publish the version you can reproduce"
     },
     {
-      "number": 91,
+      "number": 92,
       "key": "reload-the-selected-app-and-repeat-one-case",
       "title": "Reload the selected app and repeat one case"
     },
     {
-      "number": 92,
+      "number": 93,
       "key": "explain-one-result-to-another-participant",
       "title": "Explain one result to another participant"
     },
     {
-      "number": 93,
+      "number": 94,
       "key": "take-the-coordination-code-to-your-own-project",
       "title": "Take the coordination code to your own project"
     },
     {
-      "number": 94,
+      "number": 95,
       "key": "tasks-answer",
       "title": "Worked answer: select ready tasks"
     },
     {
-      "number": 95,
+      "number": 96,
       "key": "memory-answer",
       "title": "Worked answer: retrieve a checked lesson"
     },
     {
-      "number": 96,
+      "number": 97,
       "key": "release-answer",
       "title": "Worked answer: block an unverified release"
     },
     {
-      "number": 97,
+      "number": 98,
       "key": "workflow-sources",
       "title": "Sources for the workflow"
     },
     {
-      "number": 98,
+      "number": 99,
       "key": "sources-for-the-data-and-evaluation",
       "title": "Sources for the data and evaluation"
     },
     {
-      "number": 99,
+      "number": 100,
       "key": "acceptance-answer",
       "title": "Worked answer: check the after-midnight departure"
     },
     {
-      "number": 100,
+      "number": 101,
       "key": "worker-answer",
       "title": "Worked answer: dispatch one allowed tool"
     },
     {
-      "number": 101,
+      "number": 102,
       "key": "evaluate-answer",
       "title": "Worked answer: check the departure order"
     }
@@ -516,7 +522,88 @@
     },
     {
       "slide": 2,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/overview/slide/01-schedule.svg",
+        "alt": "Schedule: What will you build, and how will you know it works?",
+        "frameId": "schedule",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/overview/slide/02-build.svg",
+        "alt": "Build: What will you build, and how will you know it works?",
+        "frameId": "build",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/overview/slide/03-integrate.svg",
+        "alt": "Integrate: What will you build, and how will you know it works?",
+        "frameId": "integrate",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/overview/slide/04-lesson.svg",
+        "alt": "Lesson: What will you build, and how will you know it works?",
+        "frameId": "lesson",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/overview/slide/05-complete.svg",
+        "alt": "Complete view: What will you build, and how will you know it works?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 3,
@@ -527,16 +614,16 @@
       "click": 0
     },
     {
-      "slide": 4,
-      "click": 1
-    },
-    {
-      "slide": 4,
-      "click": 2
+      "slide": 5,
+      "click": 0
     },
     {
       "slide": 5,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 5,
+      "click": 2
     },
     {
       "slide": 6,
@@ -552,7 +639,71 @@
     },
     {
       "slide": 9,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/service-time/slide/01-join.svg",
+        "alt": "Join: Which date belongs to this departure?",
+        "frameId": "join",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 9,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/service-time/slide/02-gtfs.svg",
+        "alt": "Gtfs: Which date belongs to this departure?",
+        "frameId": "gtfs",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 9,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/service-time/slide/03-civil.svg",
+        "alt": "Civil: Which date belongs to this departure?",
+        "frameId": "civil",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 9,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/service-time/slide/04-complete.svg",
+        "alt": "Complete view: Which date belongs to this departure?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 10,
@@ -591,32 +742,101 @@
       "click": 0
     },
     {
-      "slide": 18,
-      "click": 1
-    },
-    {
-      "slide": 18,
-      "click": 2
-    },
-    {
-      "slide": 18,
-      "click": 3
+      "slide": 19,
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/worker/slide/01-request.svg",
+        "alt": "Request: How does an agent know what happened after it edits a file?",
+        "frameId": "request",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
     },
     {
       "slide": 19,
-      "click": 0
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/worker/slide/02-operation.svg",
+        "alt": "Operation: How does an agent know what happened after it edits a file?",
+        "frameId": "operation",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
     },
     {
       "slide": 19,
-      "click": 1
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/worker/slide/03-next.svg",
+        "alt": "Next: How does an agent know what happened after it edits a file?",
+        "frameId": "next",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
     },
     {
       "slide": 19,
-      "click": 2
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/worker/slide/04-submit.svg",
+        "alt": "Submit: How does an agent know what happened after it edits a file?",
+        "frameId": "submit",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 19,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/worker/slide/05-complete.svg",
+        "alt": "Complete view: How does an agent know what happened after it edits a file?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 20,
       "click": 0
+    },
+    {
+      "slide": 20,
+      "click": 1
+    },
+    {
+      "slide": 20,
+      "click": 2
     },
     {
       "slide": 21,
@@ -631,16 +851,16 @@
       "click": 0
     },
     {
-      "slide": 23,
-      "click": 1
-    },
-    {
-      "slide": 23,
-      "click": 2
+      "slide": 24,
+      "click": 0
     },
     {
       "slide": 24,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 24,
+      "click": 2
     },
     {
       "slide": 25,
@@ -679,44 +899,108 @@
       "click": 0
     },
     {
-      "slide": 33,
+      "slide": 34,
+      "click": 0
+    },
+    {
+      "slide": 34,
       "click": 1
     },
     {
-      "slide": 33,
+      "slide": 34,
       "click": 2
     },
     {
-      "slide": 33,
+      "slide": 34,
       "click": 3
     },
     {
-      "slide": 34,
-      "click": 0
-    },
-    {
-      "slide": 34,
-      "click": 1
-    },
-    {
       "slide": 35,
       "click": 0
     },
     {
       "slide": 35,
       "click": 1
-    },
-    {
-      "slide": 35,
-      "click": 2
     },
     {
       "slide": 36,
       "click": 0
     },
     {
+      "slide": 36,
+      "click": 1
+    },
+    {
+      "slide": 36,
+      "click": 2
+    },
+    {
       "slide": 37,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/claims/slide/01-race.svg",
+        "alt": "Race: What stops two ready workers from editing the same component?",
+        "frameId": "race",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 37,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/claims/slide/02-atomic.svg",
+        "alt": "Atomic: What stops two ready workers from editing the same component?",
+        "frameId": "atomic",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 37,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/claims/slide/03-dependency.svg",
+        "alt": "Dependency: What stops two ready workers from editing the same component?",
+        "frameId": "dependency",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 37,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/claims/slide/04-complete.svg",
+        "alt": "Complete view: What stops two ready workers from editing the same component?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 38,
@@ -735,16 +1019,16 @@
       "click": 0
     },
     {
-      "slide": 41,
-      "click": 1
-    },
-    {
-      "slide": 41,
-      "click": 2
+      "slide": 42,
+      "click": 0
     },
     {
       "slide": 42,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 42,
+      "click": 2
     },
     {
       "slide": 43,
@@ -756,7 +1040,71 @@
     },
     {
       "slide": 45,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/integration/slide/01-copies.svg",
+        "alt": "Copies: Do the two components use the same interfaces and time conventions?",
+        "frameId": "copies",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 45,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/integration/slide/02-patches.svg",
+        "alt": "Patches: Do the two components use the same interfaces and time conventions?",
+        "frameId": "patches",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 45,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/integration/slide/03-combined.svg",
+        "alt": "Combined: Do the two components use the same interfaces and time conventions?",
+        "frameId": "combined",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 45,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/integration/slide/04-complete.svg",
+        "alt": "Complete view: Do the two components use the same interfaces and time conventions?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 46,
@@ -803,16 +1151,16 @@
       "click": 0
     },
     {
-      "slide": 56,
-      "click": 1
-    },
-    {
-      "slide": 56,
-      "click": 2
+      "slide": 57,
+      "click": 0
     },
     {
       "slide": 57,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 57,
+      "click": 2
     },
     {
       "slide": 58,
@@ -820,7 +1168,71 @@
     },
     {
       "slide": 59,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/memory/slide/01-collections.svg",
+        "alt": "Collections: Should this note enter the next worker’s request?",
+        "frameId": "collections",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 59,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/memory/slide/02-filter.svg",
+        "alt": "Filter: Should this note enter the next worker’s request?",
+        "frameId": "filter",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 59,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/memory/slide/03-context.svg",
+        "alt": "Context: Should this note enter the next worker’s request?",
+        "frameId": "context",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 59,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/memory/slide/04-complete.svg",
+        "alt": "Complete view: Should this note enter the next worker’s request?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 60,
@@ -880,19 +1292,117 @@
     },
     {
       "slide": 74,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/comparison/slide/01-match.svg",
+        "alt": "Match: Which outcome supports the claim that the team or lesson helped?",
+        "frameId": "match",
+        "frameIndex": 0,
+        "frameCount": 6
+      }
     },
     {
       "slide": 74,
-      "click": 1
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/comparison/slide/02-initial.svg",
+        "alt": "Initial: Which outcome supports the claim that the team or lesson helped?",
+        "frameId": "initial",
+        "frameIndex": 1,
+        "frameCount": 6
+      }
     },
     {
       "slide": 74,
-      "click": 2
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/comparison/slide/03-memory.svg",
+        "alt": "Memory: Which outcome supports the claim that the team or lesson helped?",
+        "frameId": "memory",
+        "frameIndex": 2,
+        "frameCount": 6
+      }
+    },
+    {
+      "slide": 74,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/comparison/slide/04-release.svg",
+        "alt": "Release: Which outcome supports the claim that the team or lesson helped?",
+        "frameId": "release",
+        "frameIndex": 3,
+        "frameCount": 6
+      }
+    },
+    {
+      "slide": 74,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/comparison/slide/05-complete.svg",
+        "alt": "Complete view: Which outcome supports the claim that the team or lesson helped?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 6
+      }
+    },
+    {
+      "slide": 74,
+      "click": 5,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/transit/guides/transit/comparison/slide/06-native-capture.svg",
+        "alt": "The exact solo release and its files: Find sources, source_fingerprint, and checksums. Download the artifact because long source lines are truncated in this view.",
+        "frameId": "native-capture",
+        "frameIndex": 5,
+        "frameCount": 6
+      }
     },
     {
       "slide": 75,
       "click": 0
+    },
+    {
+      "slide": 75,
+      "click": 1
+    },
+    {
+      "slide": 75,
+      "click": 2
     },
     {
       "slide": 76,
@@ -915,16 +1425,16 @@
       "click": 0
     },
     {
-      "slide": 80,
-      "click": 1
-    },
-    {
-      "slide": 80,
-      "click": 2
+      "slide": 81,
+      "click": 0
     },
     {
       "slide": 81,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 81,
+      "click": 2
     },
     {
       "slide": 82,
@@ -1005,6 +1515,10 @@
     {
       "slide": 101,
       "click": 0
+    },
+    {
+      "slide": 102,
+      "click": 0
     }
   ],
   "issues": [],
@@ -1012,37 +1526,37 @@
   "failed_responses": [],
   "answers": [
     {
-      "slide": 14,
-      "destination": "/forge-workshop-kit/transit/99",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 26,
+      "slide": 15,
       "destination": "/forge-workshop-kit/transit/100",
       "keyboardReturn": true
     },
     {
-      "slide": 40,
-      "destination": "/forge-workshop-kit/transit/94",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 62,
-      "destination": "/forge-workshop-kit/transit/95",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 75,
+      "slide": 27,
       "destination": "/forge-workshop-kit/transit/101",
       "keyboardReturn": true
     },
     {
-      "slide": 90,
+      "slide": 41,
+      "destination": "/forge-workshop-kit/transit/95",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 63,
       "destination": "/forge-workshop-kit/transit/96",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 76,
+      "destination": "/forge-workshop-kit/transit/102",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 91,
+      "destination": "/forge-workshop-kit/transit/97",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 407,
+  "routes_checked": 411,
   "recording_links_checked": 8,
   "presenter_notes": true
 }

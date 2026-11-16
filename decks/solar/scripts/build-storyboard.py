@@ -277,6 +277,7 @@ slides, main_count = expand(slides, ROOT)
 # Shared ARIA context, response and citation-check frames.
 import runpy as _aria_runpy
 _aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/aria_storyboard.py'))['enrich'](slides, ROOT, 'solar')
+_aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/technical_guide_storyboard.py'))['enrich'](slides, ROOT, 'solar')
 
 
 main_count=sum(not str(s.get('kind','')).startswith('answer') and s.get('time') not in {'REFERENCE','WORKED ANSWER','RECORDED REHEARSAL'} for s in slides)

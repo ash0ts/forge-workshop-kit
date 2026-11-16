@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "workshop": "routing",
+  "overview": "technical-overview",
+  "sequences": [
+    {
+      "sequence": "features",
+      "slide_key": "word-vector",
+      "notebook_step": "baseline",
+      "reveal_count": 5
+    },
+    {
+      "sequence": "decision",
+      "slide_key": "threshold-policy",
+      "notebook_step": "review",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "labels",
+      "slide_key": "review-provenance",
+      "notebook_step": "review",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "metrics",
+      "slide_key": "intent-counts",
+      "notebook_step": "final",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "judge",
+      "slide_key": "judge-purpose",
+      "notebook_step": "judge",
+      "reveal_count": 5
+    },
+    {
+      "sequence": "release",
+      "slide_key": "release-columns",
+      "notebook_step": "release",
+      "reveal_count": 5
+    }
+  ],
+  "source": "visual-guides/index.json",
+  "runtime_changes": false
+}

@@ -13,7 +13,7 @@ from dataclasses import asdict
 import copy
 import marimo as mo
 from forge_workshop_kit import WorkshopSession, ui, setup
-from forge_workshop_kit import aria
+from forge_workshop_kit import aria, technical_guides
 from forge_workshop_kit.pending import teaching, recovery, visuals as pending_visuals
 from forge_workshop_kit.pending.cases import CASES
 from forge_workshop_kit.pending.harness import Harness, harness_diff
@@ -22,6 +22,8 @@ from forge_workshop_kit.traces import event, export_trace, saved_trace_inputs
 from forge_workshop_kit.publication import publish_comparison, publish_report
 get_pending,set_pending=mo.state({})
 get_display,set_display=mo.state({})
+get_technical_guide_view, set_technical_guide_view = mo.state({}, allow_self_loops=True)
+technical_guide_controls = technical_guides.controls(mo, 'pending_inc', set_technical_guide_view)
 get_step,set_step=mo.state("setup",allow_self_loops=True)
 get_recovery_revision,set_recovery_revision=mo.state(0)
 get_timeout_practice,set_timeout_practice=mo.state(pending_visuals.new_timeout_practice(),allow_self_loops=True)
@@ -74,8 +76,12 @@ def pending_publish(session,name,rows):
         return {}
 
 _s=get_pending().get("session")
-mo.vstack([mo.Html(ui.STYLE),ui.navigation(mo,teaching.STEPS,get_step(),move_pending,completed=_s.read()["progress"].get("completed",[]) if _s else ()),mo.Html(ui.context(_s)) if _s else mo.md("Start by connecting your own Forge project. Your code, traces and results will be saved there."),mo.Html(ui.result("Some results have not uploaded",{"Issue":get_display()["publication_error"],"Next":"Your run is saved. Use Retry publication in the final comparison to upload it again."},status="unavailable")) if get_display().get("publication_error") else mo.md("")])
+mo.vstack([mo.Html(ui.STYLE + technical_guides.theme_style()),ui.navigation(mo,teaching.STEPS,get_step(),move_pending,completed=_s.read()["progress"].get("completed",[]) if _s else ()),mo.Html(ui.context(_s)) if _s else mo.md("Start by connecting your own Forge project. Your code, traces and results will be saved there."),mo.Html(ui.result("Some results have not uploaded",{"Issue":get_display()["publication_error"],"Next":"Your run is saved. Use Retry publication in the final comparison to upload it again."},status="unavailable")) if get_display().get("publication_error") else mo.md("")])
 ''',True)
+add('''
+technical_guide_view = technical_guides.panel(mo, 'pending_inc', get_step(), get_technical_guide_view(), technical_guide_controls)
+technical_guide_view
+''', True, cell_id='pending_inc/visual_guide')
 add('''
 _s = get_pending().get("session")
 _revision = get_recovery_revision()

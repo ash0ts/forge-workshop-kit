@@ -35,6 +35,25 @@ Source: notes/sources.md.
 -->
 
 ---
+class: technical-manual
+clicks: 4
+---
+
+<div class="kicker">0:02</div>
+
+# What you will build and inspect
+
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;board&quot;, &quot;label&quot;: &quot;Board&quot;, &quot;svg&quot;: &quot;01-board.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/inspection/overview/slide/01-board.svg&quot;}, {&quot;id&quot;: &quot;features&quot;, &quot;label&quot;: &quot;Features&quot;, &quot;svg&quot;: &quot;02-features.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/inspection/overview/slide/02-features.svg&quot;}, {&quot;id&quot;: &quot;decision&quot;, &quot;label&quot;: &quot;Decision&quot;, &quot;svg&quot;: &quot;03-decision.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/inspection/overview/slide/03-decision.svg&quot;}, {&quot;id&quot;: &quot;recover&quot;, &quot;label&quot;: &quot;Recover&quot;, &quot;svg&quot;: &quot;04-recover.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/inspection/overview/slide/04-recover.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;05-complete.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/inspection/overview/slide/05-complete.svg&quot;}]" :step="$clicks" />
+
+
+<!--
+Introduce the real task, the data available, and the outcome participants will check. Point to each Forge product at the operation it helps investigate.
+Visual guide: inspection/overview. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
+Source: notes/sources.md.
+-->
+
+---
+---
 
 <div class="kicker">0:02</div>
 
@@ -49,6 +68,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">0:04</div>
@@ -65,6 +85,7 @@ Source: notes/sources.md.
 -->
 
 ---
+---
 
 <div class="kicker">0:06</div>
 
@@ -79,6 +100,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">0:08</div>
@@ -95,6 +117,7 @@ Source: notes/sources.md.
 -->
 
 ---
+---
 
 <div class="kicker">0:10</div>
 
@@ -109,6 +132,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">0:13</div>
@@ -141,6 +165,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">0:23</div>
@@ -184,6 +209,7 @@ Source: notes/sources.md.
 -->
 
 ---
+---
 
 <div class="kicker">0:32</div>
 
@@ -198,6 +224,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">0:37</div>
@@ -225,6 +252,7 @@ Source: notes/sources.md.
 -->
 
 ---
+---
 
 <div class="kicker">0:40</div>
 
@@ -240,20 +268,25 @@ Source: notes/sources.md.
 -->
 
 ---
+class: technical-manual
+clicks: 3
+---
 
 <div class="kicker">0:44</div>
 
-# A detector score still needs an operating rule
+# Choose a threshold from validation data
 
-<InspectionMechanism kind="threshold" :step="1" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;score&quot;, &quot;label&quot;: &quot;Score&quot;, &quot;svg&quot;: &quot;01-score.svg&quot;, &quot;caption&quot;: &quot;Which tradeoff changes when the cutoff moves?&quot;, &quot;src&quot;: &quot;/guides/inspection/threshold/slide/01-score.svg&quot;}, {&quot;id&quot;: &quot;choose&quot;, &quot;label&quot;: &quot;Choose&quot;, &quot;svg&quot;: &quot;02-choose.svg&quot;, &quot;caption&quot;: &quot;Which tradeoff changes when the cutoff moves?&quot;, &quot;src&quot;: &quot;/guides/inspection/threshold/slide/02-choose.svg&quot;}, {&quot;id&quot;: &quot;count&quot;, &quot;label&quot;: &quot;Count&quot;, &quot;svg&quot;: &quot;03-count.svg&quot;, &quot;caption&quot;: &quot;Which tradeoff changes when the cutoff moves?&quot;, &quot;src&quot;: &quot;/guides/inspection/threshold/slide/03-count.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;Which tradeoff changes when the cutoff moves?&quot;, &quot;src&quot;: &quot;/guides/inspection/threshold/slide/04-complete.svg&quot;}]" :step="$clicks" />
 
 
 <!--
 Scores are decision values, not calibrated defect probabilities. The optional review margin is in score units. A valid threshold function does not make the policy safe.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Visual guide: inspection/threshold. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">0:48</div>
@@ -275,7 +308,7 @@ class: exercise
 
 <div class="kicker">0:53</div>
 
-<a class="answer-link" href="/58">Worked answer →</a>
+<a class="answer-link" href="/59">Worked answer →</a>
 
 # Implement the validation threshold
 
@@ -354,20 +387,25 @@ Source: notes/sources.md.
 -->
 
 ---
+class: technical-manual
+clicks: 4
+---
 
 <div class="kicker">1:12</div>
 
-# Keep local information as well as the whole image
+# Compare whole-image and patch features
 
-<InspectionMechanism kind="encoder" :step="2" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;photo&quot;, &quot;label&quot;: &quot;Photo&quot;, &quot;svg&quot;: &quot;01-photo.svg&quot;, &quot;caption&quot;: &quot;Shared image and aligned board rows; whole and patch arrays are separate encoder outputs.&quot;, &quot;src&quot;: &quot;/guides/inspection/representations/slide/01-photo.svg&quot;}, {&quot;id&quot;: &quot;whole&quot;, &quot;label&quot;: &quot;Whole&quot;, &quot;svg&quot;: &quot;02-whole.svg&quot;, &quot;caption&quot;: &quot;Shared image and aligned board rows; whole and patch arrays are separate encoder outputs.&quot;, &quot;src&quot;: &quot;/guides/inspection/representations/slide/02-whole.svg&quot;}, {&quot;id&quot;: &quot;local&quot;, &quot;label&quot;: &quot;Local&quot;, &quot;svg&quot;: &quot;03-local.svg&quot;, &quot;caption&quot;: &quot;Shared image and aligned board rows; whole and patch arrays are separate encoder outputs.&quot;, &quot;src&quot;: &quot;/guides/inspection/representations/slide/03-local.svg&quot;}, {&quot;id&quot;: &quot;join&quot;, &quot;label&quot;: &quot;Join&quot;, &quot;svg&quot;: &quot;04-join.svg&quot;, &quot;caption&quot;: &quot;Shared image and aligned board rows; whole and patch arrays are separate encoder outputs.&quot;, &quot;src&quot;: &quot;/guides/inspection/representations/slide/04-join.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;05-complete.svg&quot;, &quot;caption&quot;: &quot;Shared image and aligned board rows; whole and patch arrays are separate encoder outputs.&quot;, &quot;src&quot;: &quot;/guides/inspection/representations/slide/05-complete.svg&quot;}]" :step="$clicks" />
 
 
 <!--
 Read the shapes out loud: N boards, 14 rows, 14 columns, 64 feature channels. The overlay shows feature positions schematically, not exact independent image crops. The whole-image representation has 512 values; the grid retains spatial differences.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Visual guide: inspection/representations. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">1:16</div>
@@ -384,22 +422,25 @@ Source: notes/sources.md.
 -->
 
 ---
-class: exercise
+class: technical-manual
+clicks: 4
 ---
 
 <div class="kicker">1:22</div>
 
-# Calculate the distance at one image position
+# Calculate one location’s distance
 
-<div class="task">Notebook: Compute image features</div><p>Click <strong>Calculate one patch distance</strong>. Read the visible calculation at row 7, column 7 of fitting board pcb1-anomaly-005.</p><ol class="exercise-controls"><li>Scale each channel using normal fitting boards.</li><li>Compare the query vector with each normal vector at that position.</li><li>Take the smallest mean squared difference, then log1p.</li></ol><p class="done"><b>Check:</b> Your displayed minimum agrees with nearest_patch_errors.</p>
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;query&quot;, &quot;label&quot;: &quot;Query&quot;, &quot;svg&quot;: &quot;01-query.svg&quot;, &quot;caption&quot;: &quot;Which normal patch is the closest reference for this location?&quot;, &quot;src&quot;: &quot;/guides/inspection/patch-distance/slide/01-query.svg&quot;}, {&quot;id&quot;: &quot;scale&quot;, &quot;label&quot;: &quot;Scale&quot;, &quot;svg&quot;: &quot;02-scale.svg&quot;, &quot;caption&quot;: &quot;Which normal patch is the closest reference for this location?&quot;, &quot;src&quot;: &quot;/guides/inspection/patch-distance/slide/02-scale.svg&quot;}, {&quot;id&quot;: &quot;distance&quot;, &quot;label&quot;: &quot;Distance&quot;, &quot;svg&quot;: &quot;03-distance.svg&quot;, &quot;caption&quot;: &quot;Which normal patch is the closest reference for this location?&quot;, &quot;src&quot;: &quot;/guides/inspection/patch-distance/slide/03-distance.svg&quot;}, {&quot;id&quot;: &quot;map&quot;, &quot;label&quot;: &quot;Map&quot;, &quot;svg&quot;: &quot;04-map.svg&quot;, &quot;caption&quot;: &quot;Which normal patch is the closest reference for this location?&quot;, &quot;src&quot;: &quot;/guides/inspection/patch-distance/slide/04-map.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;05-complete.svg&quot;, &quot;caption&quot;: &quot;Which normal patch is the closest reference for this location?&quot;, &quot;src&quot;: &quot;/guides/inspection/patch-distance/slide/05-complete.svg&quot;}]" :step="$clicks" />
 
 
 <!--
 These values come from the real prepared feature cache, not the five-board threshold fixture. Only fitting boards form the reference bank. The free calculation does not fit a classifier.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/inspection_cells.py.
+Visual guide: inspection/patch-distance. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">1:27</div>
@@ -421,7 +462,7 @@ class: exercise
 
 <div class="kicker">1:32</div>
 
-<a class="answer-link" href="/57">Worked answer →</a>
+<a class="answer-link" href="/58">Worked answer →</a>
 
 # Add local information to the classifier
 
@@ -434,6 +475,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">1:41</div>
@@ -472,6 +514,7 @@ Source: notes/sources.md.
 -->
 
 ---
+---
 
 <div class="kicker">1:52</div>
 
@@ -486,6 +529,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">1:54</div>
@@ -502,6 +546,7 @@ Source: notes/sources.md.
 -->
 
 ---
+---
 
 <div class="kicker">1:57</div>
 
@@ -516,6 +561,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">1:59</div>
@@ -532,6 +578,7 @@ Source: notes/sources.md.
 -->
 
 ---
+---
 
 <div class="kicker">2:02</div>
 
@@ -546,6 +593,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">2:06</div>
@@ -562,6 +610,7 @@ Source: notes/sources.md.
 -->
 
 ---
+---
 
 <div class="kicker">2:10</div>
 
@@ -577,20 +626,25 @@ Source: notes/sources.md.
 -->
 
 ---
+class: technical-manual
+clicks: 3
+---
 
 <div class="kicker">2:20</div>
 
-# Choose uncertain boards before opening their labels
+# Compare equal labeling budgets
 
-<InspectionMechanism kind="review" :step="1" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;active&quot;, &quot;label&quot;: &quot;Active&quot;, &quot;svg&quot;: &quot;01-active.svg&quot;, &quot;caption&quot;: &quot;Did the selection policy help, or did more labeled data help?&quot;, &quot;src&quot;: &quot;/guides/inspection/review/slide/01-active.svg&quot;}, {&quot;id&quot;: &quot;random&quot;, &quot;label&quot;: &quot;Random&quot;, &quot;svg&quot;: &quot;02-random.svg&quot;, &quot;caption&quot;: &quot;Did the selection policy help, or did more labeled data help?&quot;, &quot;src&quot;: &quot;/guides/inspection/review/slide/02-random.svg&quot;}, {&quot;id&quot;: &quot;compare&quot;, &quot;label&quot;: &quot;Compare&quot;, &quot;svg&quot;: &quot;03-compare.svg&quot;, &quot;caption&quot;: &quot;Did the selection policy help, or did more labeled data help?&quot;, &quot;src&quot;: &quot;/guides/inspection/review/slide/03-compare.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;Did the selection policy help, or did more labeled data help?&quot;, &quot;src&quot;: &quot;/guides/inspection/review/slide/04-complete.svg&quot;}]" :step="$clicks" />
 
 
 <!--
 Predict which scores the selector will choose. The public fixture uses row IDs 10,20,30,40 with scores .8,-.1,.01,-.9. At threshold 0, the two closest rows are 20 and 30. The function receives no labels.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Visual guide: inspection/review. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">2:26</div>
@@ -612,7 +666,7 @@ class: exercise
 
 <div class="kicker">2:31</div>
 
-<a class="answer-link" href="/59">Worked answer →</a>
+<a class="answer-link" href="/60">Worked answer →</a>
 
 # Choose where the review time goes
 
@@ -625,6 +679,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">2:42</div>
@@ -675,6 +730,7 @@ Source: notes/sources.md.
 -->
 
 ---
+---
 
 <div class="kicker">3:14</div>
 
@@ -689,6 +745,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">3:20</div>
@@ -722,6 +779,7 @@ Source: notes/sources.md.
 -->
 
 ---
+---
 
 <div class="kicker">3:39</div>
 
@@ -736,6 +794,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">3:42</div>
@@ -752,6 +811,7 @@ Source: notes/sources.md.
 -->
 
 ---
+---
 
 <div class="kicker">3:45</div>
 
@@ -766,6 +826,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">3:47</div>
@@ -782,20 +843,25 @@ Source: notes/sources.md.
 -->
 
 ---
+class: technical-manual
+clicks: 3
+---
 
 <div class="kicker">3:49</div>
 
-# Inspect a corrected miss
+# Inspect a recovered defect and a new miss
 
-<InspectionMechanism kind="outcomes" case-id="pcb1-anomaly-048" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;miss&quot;, &quot;label&quot;: &quot;Miss&quot;, &quot;svg&quot;: &quot;01-miss.svg&quot;, &quot;caption&quot;: &quot;Did the change help this board, and what happened elsewhere?&quot;, &quot;src&quot;: &quot;/guides/inspection/case-changes/slide/01-miss.svg&quot;}, {&quot;id&quot;: &quot;recover&quot;, &quot;label&quot;: &quot;Recover&quot;, &quot;svg&quot;: &quot;02-recover.svg&quot;, &quot;caption&quot;: &quot;Did the change help this board, and what happened elsewhere?&quot;, &quot;src&quot;: &quot;/guides/inspection/case-changes/slide/02-recover.svg&quot;}, {&quot;id&quot;: &quot;regression&quot;, &quot;label&quot;: &quot;Regression&quot;, &quot;svg&quot;: &quot;03-regression.svg&quot;, &quot;caption&quot;: &quot;Did the change help this board, and what happened elsewhere?&quot;, &quot;src&quot;: &quot;/guides/inspection/case-changes/slide/03-regression.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;Did the change help this board, and what happened elsewhere?&quot;, &quot;src&quot;: &quot;/guides/inspection/case-changes/slide/04-complete.svg&quot;}]" :step="$clicks" />
 
 
 <!--
 Point to the missing or damaged header-pin area marked by the dataset. The heatmap also responds to background; do not claim it identifies the causal feature or performs accurate segmentation.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Visual guide: inspection/case-changes. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">3:49</div>
@@ -877,20 +943,25 @@ Source: notes/sources.md.
 -->
 
 ---
+class: technical-manual
+clicks: 4
+---
 
 <div class="kicker">3:58</div>
 
-# Reproduce one score from the saved detector
+# Recover every component of the detector
 
-<InspectionMechanism kind="freeze" :step="2" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;encoder&quot;, &quot;label&quot;: &quot;Encoder&quot;, &quot;svg&quot;: &quot;01-encoder.svg&quot;, &quot;caption&quot;: &quot;What must be loaded to reproduce a board’s decision?&quot;, &quot;src&quot;: &quot;/guides/inspection/reproduce/slide/01-encoder.svg&quot;}, {&quot;id&quot;: &quot;bank&quot;, &quot;label&quot;: &quot;Bank&quot;, &quot;svg&quot;: &quot;02-bank.svg&quot;, &quot;caption&quot;: &quot;What must be loaded to reproduce a board’s decision?&quot;, &quot;src&quot;: &quot;/guides/inspection/reproduce/slide/02-bank.svg&quot;}, {&quot;id&quot;: &quot;classifier&quot;, &quot;label&quot;: &quot;Classifier&quot;, &quot;svg&quot;: &quot;03-classifier.svg&quot;, &quot;caption&quot;: &quot;What must be loaded to reproduce a board’s decision?&quot;, &quot;src&quot;: &quot;/guides/inspection/reproduce/slide/03-classifier.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;What must be loaded to reproduce a board’s decision?&quot;, &quot;src&quot;: &quot;/guides/inspection/reproduce/slide/04-complete.svg&quot;}, {&quot;id&quot;: &quot;native-capture&quot;, &quot;label&quot;: &quot;The training call and returned classifier&quot;, &quot;svg&quot;: &quot;05-native-capture.svg&quot;, &quot;caption&quot;: &quot;Match nearest-patch, fitting count, and C to this returned classifier. These metrics use validation boards.&quot;, &quot;src&quot;: &quot;/guides/inspection/reproduce/slide/05-native-capture.svg&quot;}]" :step="$clicks" />
 
 
 <!--
 The reload operation uses the frozen feature source rather than the current editor draft. Compare its output with the previously saved score for the same case. An artifact makes that complete version addressable; Registry is an optional release extension.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Visual guide: inspection/reproduce. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">3:58</div>
@@ -907,6 +978,7 @@ Source: notes/sources.md.
 -->
 
 ---
+---
 
 <div class="kicker">3:59</div>
 
@@ -921,6 +993,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">Optional answer</div>
@@ -939,7 +1012,7 @@ local = np.log1p(errors).reshape(len(rows), -1)
 return np.concatenate([whole, local], axis=1)
 ```
 <div class="bottom-note">Both branches are exercised by the free check. The live comparison uses nearest-patch.</div>
-<div class="source-link"><a href="/25">Return to Add local information to the classifier</a></div>
+<div class="source-link"><a href="/26">Return to Add local information to the classifier</a></div>
 
 <!--
 The complete function signature is in the notebook. This body includes the historical mean-patch branch required by the free fixture. Each row remains one board; concatenation extends its feature columns.
@@ -947,6 +1020,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">Optional answer</div>
@@ -959,7 +1033,7 @@ position = int(np.ceil(recall * len(positives))) - 1
 return float(positives[position])
 ```
 <div class="bottom-note">At 12 validation defects and recall .90, keep the top 11 above the threshold.</div>
-<div class="source-link"><a href="/16">Return to Implement the validation threshold</a></div>
+<div class="source-link"><a href="/17">Return to Implement the validation threshold</a></div>
 
 <!--
 The retained cutoff depends on validation examples. It does not guarantee the same recall on final boards.
@@ -967,6 +1041,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 Source: notes/sources.md.
 -->
 
+---
 ---
 
 <div class="kicker">Optional answer</div>
@@ -982,7 +1057,7 @@ order = order[np.argsort(
 return np.asarray(rows)[order[:budget]]
 ```
 <div class="bottom-note">The permutation only breaks equal-distance ties. Do not pass labels to this function.</div>
-<div class="source-link"><a href="/37">Return to Choose where the review time goes</a></div>
+<div class="source-link"><a href="/38">Return to Choose where the review time goes</a></div>
 
 <!--
 Active selection here is uncertainty sampling. It is one policy to test, not a proven universal choice.

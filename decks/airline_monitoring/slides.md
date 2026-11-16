@@ -31,6 +31,23 @@ Set the situation before introducing products. Participants operate a simulated 
 -->
 
 ---
+class: technical-manual
+name: technical-overview
+clicks: 4
+---
+
+<div class="kicker">0:03 · Airline service monitoring</div>
+
+# What you will build and inspect
+
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;booking&quot;, &quot;label&quot;: &quot;Booking&quot;, &quot;svg&quot;: &quot;01-booking.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/overview/slide/01-booking.svg&quot;}, {&quot;id&quot;: &quot;observe&quot;, &quot;label&quot;: &quot;Observe&quot;, &quot;svg&quot;: &quot;02-observe.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/overview/slide/02-observe.svg&quot;}, {&quot;id&quot;: &quot;monitor&quot;, &quot;label&quot;: &quot;Monitor&quot;, &quot;svg&quot;: &quot;03-monitor.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/overview/slide/03-monitor.svg&quot;}, {&quot;id&quot;: &quot;test&quot;, &quot;label&quot;: &quot;Test&quot;, &quot;svg&quot;: &quot;04-test.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/overview/slide/04-test.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;05-complete.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/overview/slide/05-complete.svg&quot;}]" :step="$clicks" />
+
+<!--
+Introduce the real task, the data available, and the outcome participants will check. Point to each Forge product at the operation it helps investigate.
+Visual guide: airline_monitoring/overview. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
+-->
+
+---
 name: passenger-request
 ---
 
@@ -59,20 +76,22 @@ The requested change is HAT007 to HAT061. HAT174 stays. The agent must also chec
 -->
 
 ---
+class: technical-manual
 name: replace-semantics
-clicks: 2
+clicks: 3
 ---
 
 <div class="kicker">0:09 · Airline service monitoring</div>
 
-# The API replaces the complete flight list
+# Replace the requested flights and keep the rest
 
-<AirlineMechanism mode="replacement" :reveal="$clicks + 1" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;before&quot;, &quot;label&quot;: &quot;Before&quot;, &quot;svg&quot;: &quot;01-before.svg&quot;, &quot;caption&quot;: &quot;What must the booking update contain?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/itinerary/slide/01-before.svg&quot;}, {&quot;id&quot;: &quot;replace&quot;, &quot;label&quot;: &quot;Replace&quot;, &quot;svg&quot;: &quot;02-replace.svg&quot;, &quot;caption&quot;: &quot;What must the booking update contain?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/itinerary/slide/02-replace.svg&quot;}, {&quot;id&quot;: &quot;after&quot;, &quot;label&quot;: &quot;After&quot;, &quot;svg&quot;: &quot;03-after.svg&quot;, &quot;caption&quot;: &quot;What must the booking update contain?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/itinerary/slide/03-after.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;What must the booking update contain?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/itinerary/slide/04-complete.svg&quot;}]" :step="$clicks" />
 
 <!--
 A successful write says the replacement was accepted. It does not establish that the proposed replacement respected the passenger’s request. Read the upstream implementation and the workshop adapter together.
 
 Visual sequence: Trace HAT174 through both candidate API inputs. The assignment replaces the list, so the missing-return branch cannot preserve a flight it did not receive. This is an illustrative failure mechanism; the live qualification handled its bookings correctly.
+Visual guide: airline_monitoring/itinerary. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 -->
 
 ---
@@ -150,20 +169,22 @@ Give participants time to make the change themselves. Have one person point to t
 -->
 
 ---
+class: technical-manual
 name: trace-shape
-clicks: 2
+clicks: 3
 ---
 
 <div class="kicker">0:29 · Airline service monitoring</div>
 
-# Record a conversation around the passenger’s request
+# Follow the passenger’s request through the write
 
-<AirlineMechanism mode="spans" :reveal="$clicks + 1" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;request&quot;, &quot;label&quot;: &quot;Request&quot;, &quot;svg&quot;: &quot;01-request.svg&quot;, &quot;caption&quot;: &quot;Where can you see what the tool actually changed?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/traces/slide/01-request.svg&quot;}, {&quot;id&quot;: &quot;tool&quot;, &quot;label&quot;: &quot;Tool&quot;, &quot;svg&quot;: &quot;02-tool.svg&quot;, &quot;caption&quot;: &quot;Where can you see what the tool actually changed?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/traces/slide/02-tool.svg&quot;}, {&quot;id&quot;: &quot;state&quot;, &quot;label&quot;: &quot;State&quot;, &quot;svg&quot;: &quot;03-state.svg&quot;, &quot;caption&quot;: &quot;Where can you see what the tool actually changed?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/traces/slide/03-state.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;Where can you see what the tool actually changed?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/traces/slide/04-complete.svg&quot;}]" :step="$clicks" />
 
 <!--
 A conversation may contain several turns. Do not collapse unrelated requests into a single conversation. The passenger’s clarification and confirmation belong with the relevant turn evidence. Use native session and span identities from execution.
 
 Visual sequence: Read the parent tree alongside operation order. Both model calls and both tool attempts remain children of their turn. Bar width is schematic, not measured latency. Ask participants which event needs the error and which needs the returned reservation; then map them to my_model_span and my_tool_span.
+Visual guide: airline_monitoring/traces. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 -->
 
 ---
@@ -470,20 +491,22 @@ Human review comes before this optional calibration pack. Create six controlled 
 -->
 
 ---
+class: technical-manual
 name: tag-lifecycle
-clicks: 2
+clicks: 5
 ---
 
 <div class="kicker">2:05 · Airline service monitoring</div>
 
-# A native tag has criteria, labels, and a live state
+# Test the monitoring rule against reviewed turns
 
-<AirlineMechanism mode="criteria" :reveal="$clicks + 1" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;review&quot;, &quot;label&quot;: &quot;Review&quot;, &quot;svg&quot;: &quot;01-review.svg&quot;, &quot;caption&quot;: &quot;Would the rule distinguish an omission from a valid itinerary change?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/alignment/slide/01-review.svg&quot;}, {&quot;id&quot;: &quot;criteria&quot;, &quot;label&quot;: &quot;Criteria&quot;, &quot;svg&quot;: &quot;02-criteria.svg&quot;, &quot;caption&quot;: &quot;Would the rule distinguish an omission from a valid itinerary change?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/alignment/slide/02-criteria.svg&quot;}, {&quot;id&quot;: &quot;alignment&quot;, &quot;label&quot;: &quot;Alignment&quot;, &quot;svg&quot;: &quot;03-alignment.svg&quot;, &quot;caption&quot;: &quot;Would the rule distinguish an omission from a valid itinerary change?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/alignment/slide/03-alignment.svg&quot;}, {&quot;id&quot;: &quot;status&quot;, &quot;label&quot;: &quot;Status&quot;, &quot;svg&quot;: &quot;04-status.svg&quot;, &quot;caption&quot;: &quot;Would the rule distinguish an omission from a valid itinerary change?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/alignment/slide/04-status.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;05-complete.svg&quot;, &quot;caption&quot;: &quot;Would the rule distinguish an omission from a valid itinerary change?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/alignment/slide/05-complete.svg&quot;}, {&quot;id&quot;: &quot;native-capture&quot;, &quot;label&quot;: &quot;Tag criteria and judging&quot;, &quot;svg&quot;: &quot;06-native-capture.svg&quot;, &quot;caption&quot;: &quot;Read the criteria, automatic-judging switch, and agent filter. This recorded tag was disabled after qualification.&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/alignment/slide/06-native-capture.svg&quot;}]" :step="$clicks" />
 
 <!--
 Walk through native Tags and Alignment. Creating or editing a notebook rubric is not the same action as saving native tag criteria. Use the native identities in the readback record.
 
 Visual sequence: Keep the right-hand saved criterion in place while the Alignment draft is tested. Only the final explicit-save arrow changes live criteria. A failed Alignment test produces no judgment; it does not silently disable, update, or validate the saved live rule.
+Visual guide: airline_monitoring/alignment. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 -->
 
 ---
@@ -636,20 +659,22 @@ Visual sequence: The outlined column is the denominator: all four reviewed failu
 -->
 
 ---
+class: technical-manual
 name: coverage
-clicks: 2
+clicks: 3
 ---
 
 <div class="kicker">2:45 · Airline service monitoring</div>
 
-# Coverage tells us which turns were judged
+# Count what the monitor has actually processed
 
-<AirlineMechanism mode="coverage" :reveal="$clicks + 1" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;incoming&quot;, &quot;label&quot;: &quot;Incoming&quot;, &quot;svg&quot;: &quot;01-incoming.svg&quot;, &quot;caption&quot;: &quot;What is the denominator of each monitoring number?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/coverage/slide/01-incoming.svg&quot;}, {&quot;id&quot;: &quot;coverage&quot;, &quot;label&quot;: &quot;Coverage&quot;, &quot;svg&quot;: &quot;02-coverage.svg&quot;, &quot;caption&quot;: &quot;What is the denominator of each monitoring number?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/coverage/slide/02-coverage.svg&quot;}, {&quot;id&quot;: &quot;agreement&quot;, &quot;label&quot;: &quot;Agreement&quot;, &quot;svg&quot;: &quot;03-agreement.svg&quot;, &quot;caption&quot;: &quot;What is the denominator of each monitoring number?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/coverage/slide/03-agreement.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;What is the denominator of each monitoring number?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/coverage/slide/04-complete.svg&quot;}]" :step="$clicks" />
 
 <!--
 A missing tag is not enough to identify a completed negative judgment. Read processing status and identities. Keep pending, failed, insufficient-context, and scored states separate as supported by the recorded events.
 
 Visual sequence: Count the eight completed predictions, then divide by all ten eligible turns. Only after that do we join completed predictions to human reviews for the agreement matrix. The two question marks remain unknown. Positive live assignments by themselves cannot establish this denominator.
+Visual guide: airline_monitoring/coverage. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 -->
 
 ---
@@ -661,7 +686,7 @@ name: monitor
 
 # Calculate monitor quality and send new traffic
 
-<a class="answer-link" href="/77">Worked answer ↗</a>
+<a class="answer-link" href="/78">Worked answer ↗</a>
 
 <p class="where">Notebook → Check monitoring on new requests</p><div class="task-target">Edit my_monitor</div><ol><li>Compute precision and recall using reviewed, processed turns.</li><li>Compute coverage over eligible turns, retaining missing judgments.</li><li>Enable the saved tag for this workspace’s agent and run the monitor-check batch.</li></ol><div class="done"><b>Run:</b> Check my monitoring calculations → Run four new requests → Read tag results → Calculate agreement with my reviews<br><b>Finished when:</b> You can explain every denominator and name any turns still awaiting judgment.</div>
 
@@ -718,17 +743,20 @@ Visual sequence: The arrow into the regression case comes from before the write.
 -->
 
 ---
+class: technical-manual
 name: case-fields
+clicks: 3
 ---
 
 <div class="kicker">3:15 · Airline service monitoring</div>
 
-# Keep enough information to replay the request
+# Reconstruct an incident as an executable test
 
-<div class="bundle-list"><div>Initial booking<small>All flights before the agent acted</small></div><div>Passenger request<small>Change, constraints, and confirmation rules</small></div><div>Policy version<small>The rule in force for that execution</small></div><div>Expected behavior<small>Requested replacement and preserved segments</small></div><div>Reviewed label<small>Reviewer, rationale, and unresolved questions</small></div><div>Source identities<small>Conversation, turn, span, execution, code</small></div></div>
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;source&quot;, &quot;label&quot;: &quot;Source&quot;, &quot;svg&quot;: &quot;01-source.svg&quot;, &quot;caption&quot;: &quot;What must be saved to replay the same situation?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/regression/slide/01-source.svg&quot;}, {&quot;id&quot;: &quot;case&quot;, &quot;label&quot;: &quot;Case&quot;, &quot;svg&quot;: &quot;02-case.svg&quot;, &quot;caption&quot;: &quot;What must be saved to replay the same situation?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/regression/slide/02-case.svg&quot;}, {&quot;id&quot;: &quot;checks&quot;, &quot;label&quot;: &quot;Checks&quot;, &quot;svg&quot;: &quot;03-checks.svg&quot;, &quot;caption&quot;: &quot;What must be saved to replay the same situation?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/regression/slide/03-checks.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;What must be saved to replay the same situation?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/regression/slide/04-complete.svg&quot;}]" :step="$clicks" />
 
 <!--
 Ask what happens if someone saves only the final reply. They cannot reconstruct the original itinerary or determine what was unrequested. These records are public simulated examples; the same technique with real passengers needs an appropriate privacy review.
+Visual guide: airline_monitoring/regression. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 -->
 
 ---
@@ -740,7 +768,7 @@ name: curate
 
 # Build a regression case from the reviewed turn
 
-<a class="answer-link" href="/78">Worked answer ↗</a>
+<a class="answer-link" href="/79">Worked answer ↗</a>
 
 <p class="where">Notebook → Curate regression cases</p><div class="task-target">Edit case_from_reviewed_turn</div><ol><li>Copy the initial booking, request, policy, and approved scope.</li><li>Preserve the reviewer’s decision and the exact source identities.</li><li>Add an unflagged control alongside the reported failure.</li></ol><div class="done"><b>Run:</b> Check my regression-case builder → Save reviewed regression cases<br><b>Finished when:</b> Rerunning the case starts from the original booking, not its mutated state.</div>
 
@@ -785,7 +813,7 @@ name: state-check
 
 # Add the booking check the old evaluation missed
 
-<a class="answer-link" href="/79">Worked answer ↗</a>
+<a class="answer-link" href="/80">Worked answer ↗</a>
 
 <p class="where">Notebook → Curate regression cases</p><div class="task-target">Edit my_state_scorer and my_judge_validation</div><ol><li>Implement preservation and confirmation checks; inspect the independent task-success score beside them.</li><li>Try the correct booking, missing return, and unconfirmed-write fixtures.</li><li>Keep the explanation judgment separate from those state checks.</li></ol><div class="done"><b>Run:</b> Check my booking scorer → Check my judge-response validator → Save my development evaluation code<br><b>Finished when:</b> Your scorer rejects the missing return and an unapproved write.</div>
 
@@ -885,7 +913,7 @@ name: repair
 
 # Test the repair on matched development bookings
 
-<a class="answer-link" href="/80">Worked answer ↗</a>
+<a class="answer-link" href="/81">Worked answer ↗</a>
 
 <p class="where">Notebook → Repair itinerary handling</p><div class="task-target">Edit my_itinerary_builder</div><ol><li>Implement the range replacement and validate its bounds.</li><li>Test a one-way case, connecting itinerary, and full replacement.</li><li>Run the curated regression cases, then compare both versions on the development bookings.</li></ol><div class="done"><b>Run:</b> Check my itinerary repair → Run my curated regression cases → Compare on four development bookings<br><b>Finished when:</b> Each pair starts from the same state and records the exact builder that ran.</div>
 
@@ -930,7 +958,7 @@ name: judge-execution
 
 # Judge one saved explanation against its evidence
 
-<a class="answer-link" href="/76">Worked answer ↗</a>
+<a class="answer-link" href="/77">Worked answer ↗</a>
 
 <p class="where">Notebook → Build regression cases</p><div class="task-target">Edit my_judge_validation and the explanation rubric</div><ol><li>Choose a saved development execution.</li><li>Read the booking result and the final response together.</li><li>Run one explicit judgment and inspect its cited event IDs.</li></ol><div class="done"><b>Run:</b> Judge this saved explanation<br><b>Finished when:</b> The response validates, and its cited events support or contradict its reason.</div>
 
@@ -968,20 +996,22 @@ Give participants time to make the change themselves. Have one person point to t
 -->
 
 ---
+class: technical-manual
 name: aligned-comparison
-clicks: 2
+clicks: 4
 ---
 
 <div class="kicker">4:54 · Airline service monitoring</div>
 
-# Read the same request across the two versions
+# Compare the agent and monitor on matching requests
 
-<AirlineMechanism mode="matched" :reveal="$clicks + 1" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;freeze&quot;, &quot;label&quot;: &quot;Freeze&quot;, &quot;svg&quot;: &quot;01-freeze.svg&quot;, &quot;caption&quot;: &quot;Did the repair improve bookings, monitoring, or both?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/comparison/slide/01-freeze.svg&quot;}, {&quot;id&quot;: &quot;matched&quot;, &quot;label&quot;: &quot;Matched&quot;, &quot;svg&quot;: &quot;02-matched.svg&quot;, &quot;caption&quot;: &quot;Did the repair improve bookings, monitoring, or both?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/comparison/slide/02-matched.svg&quot;}, {&quot;id&quot;: &quot;traffic&quot;, &quot;label&quot;: &quot;Traffic&quot;, &quot;svg&quot;: &quot;03-traffic.svg&quot;, &quot;caption&quot;: &quot;Did the repair improve bookings, monitoring, or both?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/comparison/slide/03-traffic.svg&quot;}, {&quot;id&quot;: &quot;recorded&quot;, &quot;label&quot;: &quot;Recorded&quot;, &quot;svg&quot;: &quot;04-recorded.svg&quot;, &quot;caption&quot;: &quot;Did the repair improve bookings, monitoring, or both?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/comparison/slide/04-recorded.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;05-complete.svg&quot;, &quot;caption&quot;: &quot;Did the repair improve bookings, monitoring, or both?&quot;, &quot;src&quot;: &quot;/guides/airline_monitoring/comparison/slide/05-complete.svg&quot;}]" :step="$clicks" />
 
 <!--
 Teach the alignment before opening EvalTables. Compare the complete booking state; do not substitute a tag result for deterministic correctness. Match source IDs and execution fingerprints.
 
 Visual sequence: The same case forks into two isolated initial bookings. Each uses its own recorded source and trace. The dashed link means aligned comparison, not shared mutable state or a handoff. Keep booking-state checks, explanation judgments, and monitor outcomes in separate fields.
+Visual guide: airline_monitoring/comparison. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 -->
 
 ---
@@ -1195,7 +1225,7 @@ def my_judge_validation(answer):
         raise ValueError("Cite event identities as a list of strings")
     return answer
 ```
-<p class="source-link"><a href="/59">Return to the explanation-judge exercise ↗</a></p>
+<p class="source-link"><a href="/60">Return to the explanation-judge exercise ↗</a></p>
 
 <!--
 This is the notebook’s actual validator. It checks shape and types, not the truth of the judgment.
@@ -1224,7 +1254,7 @@ def my_monitor(rows):
         "recall": tp / (tp + fn) if tp + fn else None,
         "unavailable": len(rows) - len(completed)}
 ```
-<p class="source-link"><a href="/42">Return to monitoring calculations ↗</a></p>
+<p class="source-link"><a href="/43">Return to monitoring calculations ↗</a></p>
 
 <!--
 This is the notebook’s actual my_monitor implementation. Review unflagged cases too; an alerts-only sample cannot establish recall across traffic.
@@ -1239,7 +1269,7 @@ name: answer-case
 
 # Worked answer: preserve the original case inputs
 
-<div class="bundle-list"><div>Copy the initial booking<small>A deep copy prevents later mutations changing the test</small></div><div>Keep request and policy<small>Preserve the rules used by this execution</small></div><div>Attach the reviewed expectation<small>Include scope, result, reviewer, and rationale</small></div><div>Retain native identities<small>Link back to the conversation and supporting span</small></div></div><p class="source-link"><a href="/47">Return to the curation exercise ↗</a></p>
+<div class="bundle-list"><div>Copy the initial booking<small>A deep copy prevents later mutations changing the test</small></div><div>Keep request and policy<small>Preserve the rules used by this execution</small></div><div>Attach the reviewed expectation<small>Include scope, result, reviewer, and rationale</small></div><div>Retain native identities<small>Link back to the conversation and supporting span</small></div></div><p class="source-link"><a href="/48">Return to the curation exercise ↗</a></p>
 
 <!--
 Use the actual case_from_reviewed_turn signature in the notebook. Do not synthesize a nonexistent native turn or treat a listing of spans as proof that a specific diagnostic was read.
@@ -1260,7 +1290,7 @@ untouched_prefix = actual[:start] == original[:start]
 untouched_suffix = actual[start + len(replacement):] == original[stop:]
 booking_correct = requested_change and untouched_prefix and untouched_suffix
 ```
-<p>Compare flight identities and relevant fields, not only list length. Keep confirmation and policy checks alongside these state checks.</p><p class="source-link"><a href="/50">Return to the state scorer exercise ↗</a></p>
+<p>Compare flight identities and relevant fields, not only list length. Keep confirmation and policy checks alongside these state checks.</p><p class="source-link"><a href="/51">Return to the state scorer exercise ↗</a></p>
 
 <!--
 Illustrative list-based scorer excerpt. The actual evaluator must use the recorded approved scope and final state, not values inferred from the agent’s final response.
@@ -1288,7 +1318,7 @@ def my_itinerary_builder(
         + current_flights[replace_stop:]
     )
 ```
-<p class="source-link"><a href="/56">Return to the repair exercise ↗</a></p>
+<p class="source-link"><a href="/57">Return to the repair exercise ↗</a></p>
 
 <!--
 This is the notebook’s actual itinerary builder. The deep copy prevents the result from mutating the original booking. The agent must still select the correct range and obtain confirmation.

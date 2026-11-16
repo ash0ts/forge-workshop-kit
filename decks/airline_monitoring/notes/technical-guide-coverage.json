@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "workshop": "airline_monitoring",
+  "overview": "technical-overview",
+  "sequences": [
+    {
+      "sequence": "itinerary",
+      "slide_key": "replace-semantics",
+      "notebook_step": "booking",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "traces",
+      "slide_key": "trace-shape",
+      "notebook_step": "discovery",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "alignment",
+      "slide_key": "tag-lifecycle",
+      "notebook_step": "align",
+      "reveal_count": 6
+    },
+    {
+      "sequence": "coverage",
+      "slide_key": "coverage",
+      "notebook_step": "monitor",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "regression",
+      "slide_key": "case-fields",
+      "notebook_step": "curate",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "comparison",
+      "slide_key": "aligned-comparison",
+      "notebook_step": "final",
+      "reveal_count": 5
+    }
+  ],
+  "source": "visual-guides/index.json",
+  "runtime_changes": false
+}

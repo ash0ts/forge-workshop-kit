@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "id": "metrics",
+  "title": "Calculate F1 for each intent before averaging",
+  "eyebrow": "03 / Customer request routing",
+  "question": "Which mistakes contribute to this intent’s F1?",
+  "summary": "These small arithmetic values explain the metric. Full results come from the saved evaluation.",
+  "kind": "transformation",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw=="
+    },
+    {
+      "label": "Classification metric implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py"
+    },
+    {
+      "label": "Code for this operation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py"
+    }
+  ],
+  "steps": [
+    {
+      "id": "counts",
+      "title": "Count one intent’s outcomes",
+      "body": "Treat the chosen intent as positive. Count correct routes, wrong incoming routes, and missed true requests.",
+      "input": "True + predicted intent labels",
+      "output": "TP=8, FP=2, FN=2 (illustrative)",
+      "symbol": "tally"
+    },
+    {
+      "id": "f1",
+      "title": "Combine precision and recall",
+      "body": "F1 is 2TP divided by 2TP + FP + FN. With these illustrative counts, it is 16/20.",
+      "input": "16 ÷ (16 + 2 + 2)",
+      "output": "0.8 for this intent",
+      "symbol": "fraction"
+    },
+    {
+      "id": "macro",
+      "title": "Average intent scores equally",
+      "body": "Calculate F1 for each of the 77 intents, then average. Report review coverage separately.",
+      "output": "Macro-F1; separate coverage",
+      "symbol": "chart",
+      "code": "f1_score(targets, predictions,\n         labels=labels, average=\"macro\",\n         zero_division=0)",
+      "excerpt_label": "Abbreviated code; full function in notebook.",
+      "input": "One F1 score per intent"
+    }
+  ],
+  "states": [
+    {
+      "id": "counts",
+      "label": "Counts",
+      "visible": [
+        "counts"
+      ],
+      "focus": [
+        "counts"
+      ],
+      "caption": "Which mistakes contribute to this intent’s F1?"
+    },
+    {
+      "id": "f1",
+      "label": "F1",
+      "visible": [
+        "counts",
+        "f1"
+      ],
+      "focus": [
+        "f1"
+      ],
+      "caption": "Which mistakes contribute to this intent’s F1?"
+    },
+    {
+      "id": "macro",
+      "label": "Macro",
+      "visible": [
+        "counts",
+        "f1",
+        "macro"
+      ],
+      "focus": [
+        "macro"
+      ],
+      "caption": "Which mistakes contribute to this intent’s F1?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "counts",
+        "f1",
+        "macro"
+      ],
+      "focus": [],
+      "caption": "Which mistakes contribute to this intent’s F1?"
+    }
+  ]
+}

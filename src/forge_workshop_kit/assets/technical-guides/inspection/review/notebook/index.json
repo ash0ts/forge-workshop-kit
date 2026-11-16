@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "review",
+  "kind": "comparison",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "f5bf3936631e1bdb2810d72504cdacf205a45f63bdb10f54bfb98d932c458158",
+  "states": [
+    {
+      "id": "active",
+      "label": "Active",
+      "svg": "01-active.svg",
+      "caption": "Did the selection policy help, or did more labeled data help?"
+    },
+    {
+      "id": "random",
+      "label": "Random",
+      "svg": "02-random.svg",
+      "caption": "Did the selection policy help, or did more labeled data help?"
+    },
+    {
+      "id": "compare",
+      "label": "Compare",
+      "svg": "03-compare.svg",
+      "caption": "Did the selection policy help, or did more labeled data help?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "Did the selection policy help, or did more labeled data help?"
+    }
+  ],
+  "html": "index.html"
+}

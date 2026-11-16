@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[inspection] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.10.0/forge_workshop_kit-0.10.0-py3-none-any.whl",
+#   "forge-workshop-kit[inspection] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.11.0/forge_workshop_kit-0.11.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -126,7 +126,7 @@ __generated_with = "0.25.2"
 app = marimo.App(width="medium", app_title='Find defective parts before they ship')
 
 
-# workshop-cell: visual_inspection/display/1
+# workshop-cell: visual_inspection/definitions/technical_guide_controls
 @app.cell(hide_code=True)
 def _():
     import json
@@ -134,16 +134,18 @@ def _():
     import numpy as np
     import marimo as mo
     from forge_workshop_kit import WorkshopSession, setup, ui, inspection
-    from forge_workshop_kit import aria
+    from forge_workshop_kit import aria, technical_guides
     from forge_workshop_kit import inspection_teaching as teaching
     from forge_workshop_kit.session import digest
     from forge_workshop_kit.traces import event, export_trace
     from forge_workshop_kit.review import save_review
     from forge_workshop_kit.publication import publish_comparison, publish_report
     get_lab, set_lab = mo.state({})
+    get_technical_guide_view, set_technical_guide_view = mo.state({}, allow_self_loops=True)
+    technical_guide_controls = technical_guides.controls(mo, 'visual_inspection', set_technical_guide_view)
     get_step, set_step = mo.state("setup", allow_self_loops=True)
     get_feedback, set_feedback = mo.state({})
-    return (Path, WorkshopSession, aria, digest, event, export_trace, get_feedback, get_lab, get_step, inspection, json, mo, np, publish_comparison, publish_report, save_review, set_feedback, set_lab, set_step, setup, teaching, ui,)
+    return (Path, WorkshopSession, aria, digest, event, export_trace, get_feedback, get_lab, get_step, get_technical_guide_view, inspection, json, mo, np, publish_comparison, publish_report, save_review, set_feedback, set_lab, set_step, set_technical_guide_view, setup, teaching, technical_guide_controls, technical_guides, ui,)
 
 
 # workshop-cell: visual_inspection/definitions/go_to
@@ -164,14 +166,22 @@ def _(get_lab, set_feedback, set_lab, set_step):
 
 # workshop-cell: visual_inspection/definitions/inspection_nav
 @app.cell(hide_code=True)
-def _(get_lab, get_step, go_to, mo, teaching, ui):
+def _(get_lab, get_step, go_to, mo, teaching, technical_guides, ui):
     _s = get_lab().get("session")
     inspection_nav = ui.navigation(mo, teaching.STEPS, get_step(), go_to, completed=teaching.completed_steps(_s), label="Workshop steps")
-    mo.vstack([mo.Html(ui.STYLE), inspection_nav, mo.Html(ui.context(_s)) if _s else mo.md("Inspect the opening board, then connect. Looking at images and editing code does not train or publish.")])
+    mo.vstack([mo.Html(ui.STYLE + technical_guides.theme_style()), inspection_nav, mo.Html(ui.context(_s)) if _s else mo.md("Inspect the opening board, then connect. Looking at images and editing code does not train or publish.")])
     return (inspection_nav,)
 
 
-# workshop-cell: visual_inspection/display/4
+# workshop-cell: visual_inspection/visual_guide
+@app.cell(hide_code=True)
+def _(get_step, get_technical_guide_view, mo, technical_guide_controls, technical_guides):
+    technical_guide_view = technical_guides.panel(mo, 'visual_inspection', get_step(), get_technical_guide_view(), technical_guide_controls)
+    technical_guide_view
+    return (technical_guide_view,)
+
+
+# workshop-cell: visual_inspection/display/5
 @app.cell(hide_code=True)
 def _(get_step, mo, ui):
     mo.stop(get_step() != "setup")
@@ -279,7 +289,7 @@ def _(event, export_trace, feedback, first_inspection_trace, get_lab, instrument
     return
 
 
-# workshop-cell: visual_inspection/display/12
+# workshop-cell: visual_inspection/display/13
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() != "setup")
@@ -321,7 +331,7 @@ def _(get_lab, get_step, go_to, mo, ui):
     return (board_choice, continue_inspection_baseline, show_board_label,)
 
 
-# workshop-cell: visual_inspection/display/16
+# workshop-cell: visual_inspection/display/17
 @app.cell(hide_code=True)
 def _(board_choice, get_lab, get_step, inspection, mo, show_board_label):
     mo.stop(get_step() != "data" or not get_lab().get("data"))
@@ -461,7 +471,7 @@ def _(get_lab, inspection_baseline_note, mo, refresh_inspection, save_inspection
     return
 
 
-# workshop-cell: visual_inspection/display/27
+# workshop-cell: visual_inspection/display/28
 @app.cell(hide_code=True)
 def _(get_feedback, get_step, mo, ui):
     mo.stop(get_step() != "features")
@@ -558,7 +568,7 @@ def _(build_features, choose_threshold, event, export_trace, feature_editor, fee
     return
 
 
-# workshop-cell: visual_inspection/display/32
+# workshop-cell: visual_inspection/display/33
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() not in ("baseline", "compare"))
@@ -638,7 +648,7 @@ def _(get_feedback, get_lab, get_step, go_to, mo, teaching, ui):
     return (continue_inspection_freeze, reveal_review, review_board, review_guess, save_inspection_review, train_reviewed,)
 
 
-# workshop-cell: visual_inspection/display/37
+# workshop-cell: visual_inspection/display/38
 @app.cell(hide_code=True)
 def _(get_lab, get_step, inspection, mo, reveal_review, review_board, teaching):
     mo.stop(get_step() != "review" or review_board.value is None or not get_lab().get("data"))
@@ -696,7 +706,7 @@ def _(build_features, choose_threshold, event, export_trace, feature_editor, fee
     return
 
 
-# workshop-cell: visual_inspection/display/40
+# workshop-cell: visual_inspection/display/41
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() != "review")
@@ -819,7 +829,7 @@ def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     return (final_board,)
 
 
-# workshop-cell: visual_inspection/display/47
+# workshop-cell: visual_inspection/display/48
 @app.cell(hide_code=True)
 def _(final_board, get_lab, get_step, inspection, mo, teaching):
     mo.stop(get_step() != "evaluate" or final_board.value is None or not get_lab().get("data"))
@@ -894,7 +904,7 @@ def _(feedback, get_lab, inspection_conclusion, mo, publish_report, refresh_insp
     return
 
 
-# workshop-cell: visual_inspection/display/52
+# workshop-cell: visual_inspection/display/53
 @app.cell(hide_code=True)
 def _(get_feedback, get_step, mo, ui):
     mo.stop(get_step() != "reproduce")
@@ -930,7 +940,7 @@ def _(Path, event, export_trace, feedback, get_lab, instrument_inspection_tool, 
     return
 
 
-# workshop-cell: visual_inspection/display/55
+# workshop-cell: visual_inspection/display/56
 @app.cell(hide_code=True)
 def _(get_feedback, get_step, mo, ui):
     mo.stop(get_step() != "features")

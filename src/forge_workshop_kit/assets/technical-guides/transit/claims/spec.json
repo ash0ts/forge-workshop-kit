@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "id": "claims",
+  "title": "Claim each task once",
+  "eyebrow": "05 / Transit software factory",
+  "question": "What stops two ready workers from editing the same component?",
+  "summary": "The free exercise qualifies an ownership repair; it does not establish that two model workers outperform one.",
+  "kind": "comparison",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory_teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "race",
+      "title": "Read-then-write can race",
+      "body": "In the deterministic practice case, both workers see an unclaimed task before either writes ownership.",
+      "output": "Duplicate claim attempt",
+      "status": "Controlled drill",
+      "symbol": "race"
+    },
+    {
+      "id": "atomic",
+      "title": "Claim inside one atomic operation",
+      "body": "Let the board perform the short ownership update. A second worker cannot also acquire the same claim.",
+      "code": "return board.claim(task_id, worker_id)",
+      "output": "One owner",
+      "symbol": "lock",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "dependency",
+      "title": "Wait for integrated dependencies",
+      "body": "A dependency becomes ready after its result is integrated, not merely submitted.",
+      "code": "tasks[parent][\"status\"] == \"integrated\"",
+      "output": "Ready task IDs",
+      "symbol": "dependency",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    }
+  ],
+  "states": [
+    {
+      "id": "race",
+      "label": "Race",
+      "visible": [
+        "race"
+      ],
+      "focus": [
+        "race"
+      ],
+      "caption": "What stops two ready workers from editing the same component?"
+    },
+    {
+      "id": "atomic",
+      "label": "Atomic",
+      "visible": [
+        "race",
+        "atomic"
+      ],
+      "focus": [
+        "atomic"
+      ],
+      "caption": "What stops two ready workers from editing the same component?"
+    },
+    {
+      "id": "dependency",
+      "label": "Dependency",
+      "visible": [
+        "race",
+        "atomic",
+        "dependency"
+      ],
+      "focus": [
+        "dependency"
+      ],
+      "caption": "What stops two ready workers from editing the same component?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "race",
+        "atomic",
+        "dependency"
+      ],
+      "focus": [],
+      "caption": "What stops two ready workers from editing the same component?"
+    }
+  ]
+}

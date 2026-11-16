@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "itinerary",
+  "kind": "transformation",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "26ec863e66d4808caa4217ac6a8babe5d2e9b540d99146639d739c7883d47f8d",
+  "states": [
+    {
+      "id": "before",
+      "label": "Before",
+      "svg": "01-before.svg",
+      "caption": "What must the booking update contain?"
+    },
+    {
+      "id": "replace",
+      "label": "Replace",
+      "svg": "02-replace.svg",
+      "caption": "What must the booking update contain?"
+    },
+    {
+      "id": "after",
+      "label": "After",
+      "svg": "03-after.svg",
+      "caption": "What must the booking update contain?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "What must the booking update contain?"
+    }
+  ],
+  "html": "index.html"
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "workshop": "inspection",
+  "overview": "technical-overview",
+  "sequences": [
+    {
+      "sequence": "representations",
+      "slide_key": "patch-grid",
+      "notebook_step": "features",
+      "reveal_count": 5
+    },
+    {
+      "sequence": "patch-distance",
+      "slide_key": "one-patch-distance",
+      "notebook_step": "features",
+      "reveal_count": 5
+    },
+    {
+      "sequence": "threshold",
+      "slide_key": "threshold",
+      "notebook_step": "baseline",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "review",
+      "slide_key": "active-selection",
+      "notebook_step": "review",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "case-changes",
+      "slide_key": "improved-case",
+      "notebook_step": "evaluate",
+      "reveal_count": 4
+    },
+    {
+      "sequence": "reproduce",
+      "slide_key": "reload-detector",
+      "notebook_step": "reproduce",
+      "reveal_count": 5
+    }
+  ],
+  "source": "visual-guides/index.json",
+  "runtime_changes": false
+}

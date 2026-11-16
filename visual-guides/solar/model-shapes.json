@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "id": "model-shapes",
+  "title": "Follow the tensor through the model",
+  "eyebrow": "02 / Solar Autoresearch",
+  "question": "What becomes one forecast, and what does the model learn?",
+  "summary": "The free forward pass checks shapes without training any weights.",
+  "kind": "comparison",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/solar/candidate.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "input",
+      "title": "Measurement input",
+      "body": "The batch contains channels and time samples. Keep the same window while comparing implementations.",
+      "input": "batch × channels × 60",
+      "symbol": "series"
+    },
+    {
+      "id": "mlp",
+      "title": "Flatten for the MLP",
+      "body": "Flatten channels and time, then apply learned linear layers. The output has one value per example.",
+      "code": "nn.Flatten()\nnn.Linear(input_shape[0]*input_shape[1],\n          width)",
+      "output": "batch × 1",
+      "symbol": "matrix",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "cnn",
+      "title": "Convolve over time",
+      "body": "A width-five convolution reuses its kernel across time. Pooling reduces time positions before the final linear layer.",
+      "code": "nn.Conv1d(input_shape[0], width,\n          5, padding=2)\nnn.AdaptiveAvgPool1d(1)",
+      "output": "batch × width × 60 → batch × 1",
+      "symbol": "convolution",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    }
+  ],
+  "states": [
+    {
+      "id": "input",
+      "label": "Input",
+      "visible": [
+        "input"
+      ],
+      "focus": [
+        "input"
+      ],
+      "caption": "What becomes one forecast, and what does the model learn?"
+    },
+    {
+      "id": "mlp",
+      "label": "Mlp",
+      "visible": [
+        "input",
+        "mlp"
+      ],
+      "focus": [
+        "mlp"
+      ],
+      "caption": "What becomes one forecast, and what does the model learn?"
+    },
+    {
+      "id": "cnn",
+      "label": "Cnn",
+      "visible": [
+        "input",
+        "mlp",
+        "cnn"
+      ],
+      "focus": [
+        "cnn"
+      ],
+      "caption": "What becomes one forecast, and what does the model learn?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "input",
+        "mlp",
+        "cnn"
+      ],
+      "focus": [],
+      "caption": "What becomes one forecast, and what does the model learn?"
+    }
+  ]
+}

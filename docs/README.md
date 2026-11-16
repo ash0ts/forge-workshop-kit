@@ -40,6 +40,7 @@ The [facilitator setup](setup.md#read-participant-progress) explains the saved r
 | [Authoring](authoring.md) | Scaffolding, manifests, exercise references, and rehearsal adapters |
 | [Teaching sequence](teaching-sequence.md) | How to explain a concept, show its effect, and ask participants to investigate it |
 | [Deck sources](../decks/README.md) | Shared Slidev installation and local presentation commands |
+| [Technical visuals](technical-visuals.md) | Standalone skill, shared diagram sources, posters, and export commands |
 | [Maintenance](maintenance.md) | Packaging, destination-verified publication, and release recovery |
 | [AGENTS.md](../AGENTS.md) | Repository instructions for coding agents |
 | [forge-workshops skill](../.agents/skills/forge-workshops/SKILL.md) | How an assistant should use these guides when authoring or rehearsing |

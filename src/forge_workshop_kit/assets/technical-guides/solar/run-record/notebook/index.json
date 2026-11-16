@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "run-record",
+  "kind": "overview",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "bc5e7596b48da5bd339d51f79bb52d2cbf64ba2072a4ed0dbbe81e63e742d21e",
+  "states": [
+    {
+      "id": "inputs",
+      "label": "Inputs",
+      "svg": "01-inputs.svg",
+      "caption": "Could someone reproduce this prediction from the saved run?"
+    },
+    {
+      "id": "execution",
+      "label": "Execution",
+      "svg": "02-execution.svg",
+      "caption": "Could someone reproduce this prediction from the saved run?"
+    },
+    {
+      "id": "publish",
+      "label": "Publish",
+      "svg": "03-publish.svg",
+      "caption": "Could someone reproduce this prediction from the saved run?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "Could someone reproduce this prediction from the saved run?"
+    },
+    {
+      "id": "native-capture",
+      "label": "Files from one recorded training execution",
+      "svg": "05-native-capture.svg",
+      "caption": "Find candidate.py, predictions.npy, and weights.pt in the same artifact version."
+    }
+  ],
+  "html": "index.html"
+}

@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "id": "changes",
+  "title": "Test a changed procedure on the same ticket",
+  "eyebrow": "01 / Pending, Inc.",
+  "question": "What changed in behavior, and did account correctness change?",
+  "summary": "These branches explain the comparison procedure. In the separate recorded final evaluation, all three harness versions passed 4/4 cases.",
+  "kind": "branches",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ=="
+    },
+    {
+      "label": "Code for this operation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/teaching.py"
+    }
+  ],
+  "steps": [
+    {
+      "id": "parent",
+      "title": "Starting harness",
+      "body": "Save the instructions, skills, and original case state. Both proposals start here.",
+      "output": "Same ticket and account state",
+      "symbol": "file",
+      "status": "Starting version"
+    },
+    {
+      "id": "candidate-a",
+      "title": "Candidate A",
+      "body": "Review the first proposed diff, then run it on a fresh copy of the original case.",
+      "code": "candidates = saved(\n    session, prefix + \"propose\")[\"candidates\"]\nreturn candidates[0]",
+      "excerpt_label": "Abbreviated code; full function in notebook.",
+      "output": "A: changed files + probe record",
+      "symbol": "component",
+      "status": "Illustrative branch"
+    },
+    {
+      "id": "candidate-b",
+      "title": "Candidate B",
+      "body": "Review the second diff and test it independently. A planned or rejected change has no assumed result.",
+      "code": "candidates = saved(\n    session, prefix + \"propose\")[\"candidates\"]\nreturn candidates[1]",
+      "excerpt_label": "Abbreviated code; full function in notebook.",
+      "output": "B: changed files + probe record",
+      "symbol": "component",
+      "status": "Illustrative branch"
+    },
+    {
+      "id": "decision",
+      "title": "Select, combine, or retain",
+      "body": "Compare the probe records. Test any new combination before adopting it. Retaining the parent leaves its source unchanged.",
+      "output": "Decision + tested source",
+      "symbol": "decision",
+      "status": "Decision, not an execution"
+    }
+  ],
+  "states": [
+    {
+      "id": "parent",
+      "label": "Starting harness",
+      "visible": [
+        "parent"
+      ],
+      "focus": [
+        "parent"
+      ],
+      "caption": "Save the instructions, skills, and original case state. Both proposals start here."
+    },
+    {
+      "id": "candidate-a",
+      "label": "Candidate A",
+      "visible": [
+        "parent",
+        "candidate-a"
+      ],
+      "focus": [
+        "candidate-a"
+      ],
+      "caption": "Review the first proposed diff, then run it on a fresh copy of the original case."
+    },
+    {
+      "id": "candidate-b",
+      "label": "Candidate B",
+      "visible": [
+        "parent",
+        "candidate-a",
+        "candidate-b"
+      ],
+      "focus": [
+        "candidate-b"
+      ],
+      "caption": "Review the second diff and test it independently. A planned or rejected change has no assumed result."
+    },
+    {
+      "id": "decision",
+      "label": "Select, combine, or retain",
+      "visible": [
+        "parent",
+        "candidate-a",
+        "candidate-b",
+        "decision"
+      ],
+      "focus": [
+        "decision"
+      ],
+      "caption": "Compare the probe records. Test any new combination before adopting it. Retaining the parent leaves its source unchanged."
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "parent",
+        "candidate-a",
+        "candidate-b",
+        "decision"
+      ],
+      "focus": [],
+      "caption": "Recorded final comparison: starting 4/4, manual 4/4, agent-selected 4/4. Changed behavior did not raise account correctness."
+    }
+  ]
+}

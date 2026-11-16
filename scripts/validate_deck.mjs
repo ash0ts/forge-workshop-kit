@@ -6,14 +6,19 @@ import {existsSync} from 'node:fs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
-const [deckArg, siteArg, prefix] = process.argv.slice(2);
+const [deckArg, siteArg, prefix, selectedArg] = process.argv.slice(2);
 if (!prefix) throw new Error('Usage: node scripts/validate_deck.mjs DECK SITE /deployment/prefix/');
+if (selectedArg && !/^--slides=\d+(,\d+)*$/.test(selectedArg)) throw new Error('Optional preflight selection: --slides=1,2,7');
+const selectedSlides = selectedArg ? new Set(selectedArg.slice('--slides='.length).split(',').map(Number)) : null;
 const deck = path.resolve(deckArg), site = path.resolve(siteArg);
 const require = createRequire(path.join(deck, 'package.json'));
 const {chromium} = require('playwright');
 const chrome = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const executablePath = process.env.CHROME_PATH || (existsSync(chrome) ? chrome : undefined);
 const layout = JSON.parse(await fs.readFile(path.join(deck, 'notes/slide-map.json'), 'utf8'));
+const guideCoveragePath = path.join(deck, 'notes/technical-guide-coverage.json');
+const guideCoverage = existsSync(guideCoveragePath) ? JSON.parse(await fs.readFile(guideCoveragePath, 'utf8')) : null;
+const guideKeys = new Set(guideCoverage ? [guideCoverage.overview, ...guideCoverage.sequences.map(sequence => sequence.slide_key)] : []);
 const sourceSha256 = createHash('sha256').update(await fs.readFile(path.join(deck, 'slides.md'))).digest('hex');
 const output = path.join(deck, '.screenshots');
 await fs.mkdir(output, {recursive: true});
@@ -46,6 +51,7 @@ try {
     if ((await fetch(base + route)).status !== 200) issues.push({route, error:'Known route did not return HTTP 200'});
   }
   for (const slide of layout.slides) {
+    if (selectedSlides && !selectedSlides.has(slide.number)) continue;
     await page.goto(base + slide.number, {waitUntil:'networkidle'});
     await page.evaluate(() => document.fonts.ready);
     await page.waitForFunction(title => {
@@ -74,6 +80,27 @@ try {
         return true;
       };
       const box = root.getBoundingClientRect(), overflow = [];
+      // A missing component can leave only the footer and still pass every
+      // overflow/image check. Require the guide itself on each reveal.
+      let technicalGuide = null;
+      if (root.classList.contains('technical-manual')) {
+        const figure = root.querySelector('.te-guide-frame');
+        const image = figure?.querySelector('img');
+        const bounds = image?.getBoundingClientRect();
+        technicalGuide = {
+          present: Boolean(figure && image),
+          visible: Boolean(figure && image && visible(figure) && visible(image)),
+          loaded: Boolean(image?.complete && image?.naturalWidth > 0),
+          width: bounds?.width || 0,
+          height: bounds?.height || 0,
+          inside: Boolean(bounds && bounds.left >= box.left - 2 && bounds.right <= box.right + 2 && bounds.top >= box.top - 2 && bounds.bottom <= box.bottom - 20),
+          src: image?.getAttribute('src') || '',
+          alt: image?.getAttribute('alt') || '',
+          frameId: figure?.getAttribute('data-frame-id') || '',
+          frameIndex: Number(figure?.getAttribute('data-frame-index') ?? -1),
+          frameCount: Number(figure?.getAttribute('data-frame-count') ?? 0),
+        };
+      }
       for (const element of root.querySelectorAll('h1,h2,p,pre,table,.task,.done,.quote,.source-link,.bottom-note,.exercise-controls,.image-caption')) {
         const rect = element.getBoundingClientRect();
         if (visible(element) && rect.width && rect.height && (rect.bottom > box.bottom - 20 || rect.right > box.right + 1 || rect.left < box.left - 1)) overflow.push({tag:element.tagName, text:element.textContent.slice(0,100), x:rect.x, y:rect.y, width:rect.width, height:rect.height});
@@ -98,14 +125,37 @@ try {
         const description = svg.getAttribute('aria-label') || svg.querySelector('title,desc')?.textContent || '';
         return {description, clippedLabels, overlappingLabels};
       });
-      const textProblems = [], textOverflow = [], walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      const textProblems = [], textOverflow = [], contrastProblems = [], walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      const rgba = value => (value.match(/[\d.]+/g) || []).map(Number);
+      const blend = (foreground, background) => foreground.slice(0,3).map((channel,index) => channel * (foreground[3] ?? 1) + background[index] * (1 - (foreground[3] ?? 1)));
+      const luminance = color => color.slice(0,3).map(channel => {const c = channel / 255; return c <= .04045 ? c / 12.92 : ((c + .055) / 1.055) ** 2.4;}).reduce((sum,channel,index) => sum + channel * [.2126,.7152,.0722][index],0);
       while (walker.nextNode()) {
         const node = walker.currentNode, parent = node.parentElement;
-        if (!parent || !visible(parent) || parent.closest('script,style,pre,code')) continue;
+        if (!parent || !visible(parent) || parent.closest('script,style')) continue;
         const range = document.createRange(); range.selectNodeContents(node);
         const lines = [...range.getClientRects()].filter(rect => rect.width && rect.height);
         if (!lines.length) continue;
         const text = node.textContent.trim();
+        if (text && !parent.closest('svg')) {
+          const ancestors = []; let opacity = 1;
+          for (let ancestor = parent; ancestor; ancestor = ancestor.parentElement) {ancestors.push(ancestor); opacity *= Number(getComputedStyle(ancestor).opacity);}
+          // Slidev deliberately dims nonselected code lines during a reveal.
+          // Check every fully revealed line, rather than treating hidden context
+          // as the active teaching text.
+          if (opacity >= .9 || !parent.closest('pre,code')) {
+            let background = [255,255,255];
+            for (const ancestor of ancestors.reverse()) background = blend(rgba(getComputedStyle(ancestor).backgroundColor), background);
+            const style = getComputedStyle(parent), textColor = rgba(style.color);
+            textColor[3] = (textColor[3] ?? 1) * opacity;
+            const foreground = blend(textColor, background);
+            const lighter = Math.max(luminance(foreground), luminance(background)), darker = Math.min(luminance(foreground), luminance(background));
+            const ratio = (lighter + .05) / (darker + .05);
+            const size = Number.parseFloat(style.fontSize), weight = Number.parseFloat(style.fontWeight);
+            const minimum = size >= 24 || (size >= 18.66 && weight >= 700) ? 3 : 4.5;
+            if (ratio + .01 < minimum) contrastProblems.push({text:text.slice(0,120),foreground:style.color,background:background.map(Math.round),ratio:Number(ratio.toFixed(2)),minimum});
+          }
+        }
+        if (parent.closest('pre,code')) continue;
         // Element bounds can fit while an unwrapped text line extends beyond them.
         // SVG label bounds are checked above; code has its own scroll checks.
         if (text && !parent.closest('svg')) {
@@ -132,11 +182,18 @@ try {
         }
       }
       const clippedCode = [...root.querySelectorAll('pre')].filter(visible).filter(element => element.scrollWidth > element.clientWidth + 2 || element.scrollHeight > element.clientHeight + 2).map(element => element.textContent.slice(0,200));
-      return {title:expected, overflow, diagrams, textProblems, textOverflow, clippedCode, missingImages:[...root.querySelectorAll('img')].filter(image => !image.complete || !image.naturalWidth).map(image => image.src)};
+      return {title:expected, overflow, diagrams, technicalGuide, textProblems, textOverflow, contrastProblems, clippedCode, missingImages:[...root.querySelectorAll('img')].filter(image => !image.complete || !image.naturalWidth).map(image => image.src)};
     }, slide.title);
     if (currentClick === 0) titles.push({number:slide.number, key:slide.key, title:result.title});
-    clickStates.push({slide:slide.number, click:currentClick});
-    if (result.overflow.length || result.missingImages.length || result.textProblems.length || result.textOverflow.length || result.clippedCode.length || result.diagrams.some(diagram => !diagram.description || diagram.clippedLabels.length || diagram.overlappingLabels.length)) issues.push({slide:slide.number, click:currentClick, ...result});
+    clickStates.push({slide:slide.number, click:currentClick, ...(result.technicalGuide ? {technical_guide:result.technicalGuide} : {})});
+    if (guideKeys.has(slide.key || slide.name) && !result.technicalGuide) issues.push({slide:slide.number,click:currentClick,error:'Expected technical guide slide is missing its presentation class and rendered guide'});
+    if (result.technicalGuide) {
+      const guide = result.technicalGuide;
+      if (!guide.present || !guide.visible || !guide.loaded || !guide.inside || guide.width < 500 || guide.height < 250 || !guide.alt || !guide.frameId || !guide.src.includes('/guides/') || guide.frameIndex !== currentClick || guide.frameCount <= currentClick) {
+        issues.push({slide:slide.number, click:currentClick, error:'Technical guide is absent, blank, clipped, or on the wrong reveal', technicalGuide:guide});
+      }
+    }
+    if (result.overflow.length || result.missingImages.length || result.textProblems.length || result.textOverflow.length || result.contrastProblems.length || result.clippedCode.length || result.diagrams.some(diagram => !diagram.description || diagram.clippedLabels.length || diagram.overlappingLabels.length)) issues.push({slide:slide.number, click:currentClick, ...result});
     const suffix = currentClick ? `-click-${currentClick}` : '';
     await page.screenshot({path:path.join(output, `${String(slide.number).padStart(3,'0')}${suffix}.png`)});
     await page.keyboard.press('ArrowRight');
@@ -151,9 +208,21 @@ try {
     await page.keyboard.press('ArrowLeft');
     await page.waitForTimeout(120);
     if (Number(new URL(page.url()).searchParams.get('clicks') || 0) !== currentClick) issues.push({slide:slide.number,error:'Back did not restore the previous reveal'});
+    if (result.technicalGuide) {
+      const restored = await page.locator('.slidev-layout.technical-manual .te-guide-frame:visible').evaluateAll(figures => figures.map(figure => ({id:figure.getAttribute('data-frame-id'),src:figure.querySelector('img')?.getAttribute('src')})));
+      if (!restored.some(frame => frame.id === result.technicalGuide.frameId && frame.src === result.technicalGuide.src)) issues.push({slide:slide.number,click:currentClick,error:'Back did not restore the previous technical-guide image'});
+    }
     await page.keyboard.press('ArrowRight');
     await page.waitForTimeout(120);
     currentClick = nextClick;
+    }
+    const guideStates = clickStates.filter(state => state.slide === slide.number && state.technical_guide);
+    if (guideStates.length) {
+      const count = guideStates[0].technical_guide.frameCount;
+      const indices = guideStates.map(state => state.technical_guide.frameIndex);
+      if (count <= 0 || indices.length !== count || indices.some((index, position) => index !== position) || guideStates.some(state => state.technical_guide.frameCount !== count)) {
+        issues.push({slide:slide.number,error:'Technical guide did not expose every declared reveal',expectedFrameCount:count,visitedIndices:indices});
+      }
     }
     await page.goto(base + slide.number, {waitUntil:'networkidle'});
     if (slide.answer) {
@@ -175,8 +244,8 @@ try {
   if (!presenter) issues.push({error:'Presenter notes missing'});
   const currentSourceSha256 = createHash('sha256').update(await fs.readFile(path.join(deck,'slides.md'))).digest('hex');
   if (currentSourceSha256 !== sourceSha256) issues.push({error:'Slide source changed during validation; rebuild before publishing'});
-  const result = {source_sha256:sourceSha256, slides_checked:titles.length, expected_slides:layout.total_slides, titles, click_states:clickStates, issues, console_errors:pageErrors, failed_responses:networkErrors, answers, routes_checked:routes.length, recording_links_checked:assetLinks.size, presenter_notes:presenter};
-  await fs.writeFile(path.join(deck, 'notes/delivery-checks.json'), JSON.stringify(result,null,2) + '\n');
+  const result = {source_sha256:sourceSha256, preflight_only:Boolean(selectedSlides), slides_checked:titles.length, expected_slides:layout.total_slides, titles, click_states:clickStates, issues, console_errors:pageErrors, failed_responses:networkErrors, answers, routes_checked:routes.length, recording_links_checked:assetLinks.size, presenter_notes:presenter};
+  await fs.writeFile(path.join(deck, selectedSlides ? 'notes/preflight-checks.json' : 'notes/delivery-checks.json'), JSON.stringify(result,null,2) + '\n');
   console.log(JSON.stringify({slides_checked:titles.length, click_states_checked:clickStates.length, issues, console_errors:pageErrors, failed_responses:networkErrors, answers:answers.length},null,2));
   if (issues.length || pageErrors.length || networkErrors.length) process.exitCode = 1;
 } finally {await browser.close(); server.close();}

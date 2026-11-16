@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "poster",
+  "title": "Find defects and measure what gets missed",
+  "eyebrow": "04 / Circuit-board inspection",
+  "question": "What will you learn?",
+  "summary": "A circuit board passes inspection even though a small defect is visible. Test whether local image features recover it, and inspect the new mistakes that change introduces.",
+  "kind": "poster",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA=="
+    }
+  ],
+  "steps": [],
+  "states": [
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [],
+      "focus": [],
+      "caption": "What will you learn?"
+    }
+  ],
+  "poster": {
+    "situation": "A circuit board passes inspection even though a small defect is visible. Test whether local image features recover it, and inspect the new mistakes that change introduces.",
+    "outcomes": [
+      "Compare whole-image and local patch features.",
+      "Choose thresholds and count misses alongside false alarms.",
+      "Reproduce a detector from its saved components."
+    ],
+    "duration": "4 hours",
+    "prerequisites": "Read basic Python; use your own Forge project.",
+    "dataset": "VisA PCB1 photographs, labels, and inspection masks",
+    "forge": [
+      {
+        "name": "Runs",
+        "action": "Compare detector settings, misses, and false alarms."
+      },
+      {
+        "name": "EvalTables",
+        "action": "Inspect matching board photographs and predictions."
+      },
+      {
+        "name": "Artifacts",
+        "action": "Recover the feature bank, classifier, and threshold."
+      }
+    ],
+    "cta": {
+      "label": "Read the example, then copy the notebook",
+      "url": "https://ash0ts.github.io/forge-workshop-kit/#inspection"
+    },
+    "hero": "hero.svg"
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "id": "regression",
+  "title": "Reconstruct an incident as an executable test",
+  "eyebrow": "06 / Airline monitoring",
+  "question": "What must be saved to replay the same situation?",
+  "summary": "A filter or cluster is a lead for review. Curation creates the complete replayable case and preserves its provenance.",
+  "kind": "transformation",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "source",
+      "title": "Select an accepted review",
+      "body": "Require the reviewer, expected behavior, and a supporting event from that same conversation.",
+      "output": "Reviewed incident with source identity",
+      "symbol": "review",
+      "input": "Incident + reviewer + supporting event"
+    },
+    {
+      "id": "case",
+      "title": "Preserve the original inputs",
+      "body": "Save the request, original booking, policy, and expected behavior. The final booking is not the replay’s starting state.",
+      "code": "saved_case = {\n    \"initial_state\": copy.deepcopy(\n        run[\"initial_state\"]),\n}",
+      "output": "Versioned regression case",
+      "symbol": "dataset",
+      "excerpt_label": "Abbreviated code; full function in notebook.",
+      "input": "Accepted review + original run inputs"
+    },
+    {
+      "id": "checks",
+      "title": "Use independent checks",
+      "body": "Check untouched flights and approved writes. Assess explanation accuracy separately and retain unavailable judgments.",
+      "output": "State checks + explanation judgment",
+      "symbol": "check",
+      "input": "Replay result + expected behavior"
+    }
+  ],
+  "states": [
+    {
+      "id": "source",
+      "label": "Source",
+      "visible": [
+        "source"
+      ],
+      "focus": [
+        "source"
+      ],
+      "caption": "What must be saved to replay the same situation?"
+    },
+    {
+      "id": "case",
+      "label": "Case",
+      "visible": [
+        "source",
+        "case"
+      ],
+      "focus": [
+        "case"
+      ],
+      "caption": "What must be saved to replay the same situation?"
+    },
+    {
+      "id": "checks",
+      "label": "Checks",
+      "visible": [
+        "source",
+        "case",
+        "checks"
+      ],
+      "focus": [
+        "checks"
+      ],
+      "caption": "What must be saved to replay the same situation?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "source",
+        "case",
+        "checks"
+      ],
+      "focus": [],
+      "caption": "What must be saved to replay the same situation?"
+    }
+  ]
+}

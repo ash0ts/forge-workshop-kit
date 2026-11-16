@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "id": "features",
+  "title": "Compare two representations of the same request",
+  "eyebrow": "03 / Customer request routing",
+  "question": "Does the same request route differently with word features or sentence features?",
+  "summary": "The same message enters two independent pipelines. Each classifier is fitted separately; compare predictions on matching validation requests.",
+  "kind": "branches",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw=="
+    }
+  ],
+  "steps": [
+    {
+      "id": "request",
+      "title": "Same request: official-train/00021",
+      "body": "“What is the status of my card’s delivery?” is a bundled review example labeled card_arrival.",
+      "input": "What is the status of my card’s delivery?",
+      "output": "Reference intent: card_arrival",
+      "symbol": "message"
+    },
+    {
+      "id": "words",
+      "title": "TF–IDF + classifier",
+      "body": "Fit a vocabulary and word weights on training text. Fit the classifier on those sparse vectors. Creating the estimator alone does not train it.",
+      "code": "model = make_pipeline(\n  TfidfVectorizer(ngram_range=(1, 2),\n                  sublinear_tf=True), head)\nmodel.fit(texts, labels)",
+      "output": "Word-based predicted intent",
+      "symbol": "matrix",
+      "excerpt_label": "Abbreviated code; full function in notebook.",
+      "input": "The same message text",
+      "status": "Sparse word vector → 77 scores"
+    },
+    {
+      "id": "embedding",
+      "title": "Frozen MiniLM + classifier",
+      "body": "Encode the same message into 384 values. The encoder stays frozen; fit a separate classifier on the training vectors. TF–IDF is not an input to this path.",
+      "output": "Sentence-based predicted intent",
+      "symbol": "vector",
+      "input": "The same message text",
+      "status": "384-value vector → 77 scores",
+      "code": "model = head.fit(features, labels)\n# features: (n_requests, 384)",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    },
+    {
+      "id": "fit",
+      "title": "Compare matching validation requests",
+      "body": "Both pipelines use the same training assignment and validation request IDs. Compare their predicted intents and remaining mistakes; neither representation feeds the other.",
+      "code": "a = predict(\n    word_model, data, \"validation\")\nb = predict(\n    sentence_model, data, \"validation\")",
+      "output": "Same case IDs; two predicted intents",
+      "symbol": "processor",
+      "excerpt_label": "Abbreviated code; full function in notebook.",
+      "input": "Word and sentence-model predictions"
+    }
+  ],
+  "states": [
+    {
+      "id": "request",
+      "label": "Same request",
+      "visible": [
+        "request"
+      ],
+      "focus": [
+        "request"
+      ],
+      "caption": "Does the same request route differently with word features or sentence features?"
+    },
+    {
+      "id": "words",
+      "label": "Word features",
+      "visible": [
+        "request",
+        "words"
+      ],
+      "focus": [
+        "words"
+      ],
+      "caption": "Does the same request route differently with word features or sentence features?"
+    },
+    {
+      "id": "embedding",
+      "label": "Sentence features",
+      "visible": [
+        "request",
+        "words",
+        "embedding"
+      ],
+      "focus": [
+        "embedding"
+      ],
+      "caption": "Does the same request route differently with word features or sentence features?"
+    },
+    {
+      "id": "fit",
+      "label": "Matched predictions",
+      "visible": [
+        "request",
+        "words",
+        "embedding",
+        "fit"
+      ],
+      "focus": [
+        "fit"
+      ],
+      "caption": "Does the same request route differently with word features or sentence features?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "request",
+        "words",
+        "embedding",
+        "fit"
+      ],
+      "focus": [],
+      "caption": "Does the same request route differently with word features or sentence features?"
+    }
+  ]
+}

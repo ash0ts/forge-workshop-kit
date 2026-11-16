@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "dispatch",
+  "kind": "sequence",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "804f4b21f511c63508374bdc93dc8881481c2188049ee1b62af95c112705f6e1",
+  "states": [
+    {
+      "id": "action",
+      "label": "Action",
+      "svg": "01-action.svg",
+      "caption": "Where do the returned payments become information the model can use?"
+    },
+    {
+      "id": "call",
+      "label": "Call",
+      "svg": "02-call.svg",
+      "caption": "Where do the returned payments become information the model can use?"
+    },
+    {
+      "id": "observe",
+      "label": "Observe",
+      "svg": "03-observe.svg",
+      "caption": "Where do the returned payments become information the model can use?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "Where do the returned payments become information the model can use?"
+    }
+  ],
+  "html": "index.html"
+}

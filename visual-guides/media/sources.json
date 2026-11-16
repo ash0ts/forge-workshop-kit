@@ -1,0 +1,106 @@
+{
+  "assets": [
+    {
+      "file": "media/pcb1-anomaly-048.jpg",
+      "source": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/inspection/public/images/case-corrected-image.jpg",
+      "sha256": "f76a54f00cc371d7d0525078907dbd49243e979bee7898b52a65e33a7b0de20a"
+    },
+    {
+      "file": "media/pcb1-anomaly-015.jpg",
+      "source": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/inspection/public/images/case-regression-image.jpg",
+      "sha256": "e75f7192baa166a1182761877d0c39be434649da36d0c647ed881c26fa41774b"
+    },
+    {
+      "file": "media/solar-residual-correction.png",
+      "source": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/solar/public/images/v031-residual-correction.png",
+      "sha256": "b0f84cc8bf703b1ba4dbdd0687e1b4fe41340c6f29e30a4fda8d1143412f71bb"
+    },
+    {
+      "file": "media/solar-forecast-window.png",
+      "source": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/solar/public/images/v031-goes-window.png",
+      "sha256": "4924b4e158edd6d382115694aa6b352b004485efeede4741eb26da296b9629be"
+    },
+    {
+      "file": "media/pending-forge-original.png",
+      "source": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/pending/recovery-members.png",
+      "native_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/481ae944f1062c5381870a00319f65a3/spans/turns/796dff8c92e7bf0c7fff2e8941a340df/spans/e62596437e485145",
+      "sha256": "74aecaa4a264d0f0992eec20f560b6443f0ce7c180007b627afd4f73fcaf44f5",
+      "capture_date": null
+    },
+    {
+      "file": "media/pending-forge-annotated.svg",
+      "derived_from": "media/pending-forge-original.png",
+      "source": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/481ae944f1062c5381870a00319f65a3/spans/turns/796dff8c92e7bf0c7fff2e8941a340df/spans/e62596437e485145",
+      "sha256": "02f268fe112edbdf720dfc81e915e518e3d9b7e2e14d868e27dd283a63b4360e"
+    },
+    {
+      "file": "media/solar-forge-original.png",
+      "source": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/solar/public/images/ux-v023-solar-artifact.png",
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f5e5d198bc9479f78d9a4b1c8c8979e3/v0",
+      "sha256": "3afa47eedd0196b0b26a3bfe790eca7440a10c1bdc9633650054c36626144758",
+      "capture_date": null
+    },
+    {
+      "file": "media/solar-forge-annotated.svg",
+      "derived_from": "media/solar-forge-original.png",
+      "source": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-f5e5d198bc9479f78d9a4b1c8c8979e3/v0",
+      "sha256": "e22121f172e45662584d12cfb4f3a134b7bbb337d40042d0aacfdedbc5db5ebb"
+    },
+    {
+      "file": "media/routing-forge-original.png",
+      "source": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/routing/public/images/agent-lens-judge-original.png",
+      "native_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f5427dc7f06703d62c00561b6bd27a01",
+      "sha256": "ea26246213de9b70565b435274bc54730357ac242d8945e0fb670ca78f3d4bbb",
+      "capture_date": null
+    },
+    {
+      "file": "media/routing-forge-annotated.svg",
+      "derived_from": "media/routing-forge-original.png",
+      "source": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/f5427dc7f06703d62c00561b6bd27a01",
+      "sha256": "9c0764c7e08b02932fa86421abe0c56e1ede670e4cde46d26640076bcf387c0b"
+    },
+    {
+      "file": "media/inspection-forge-original.png",
+      "source": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/inspection/public/images/agent-lens-training-original.png",
+      "native_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ff65c2eaa1cc5c5cf8adb6cb706f5f52",
+      "sha256": "1c5378d6bde79e03184f63d4cd6b0afdc3914d473d9a9e003876f455e53e1cac",
+      "capture_date": null
+    },
+    {
+      "file": "media/inspection-forge-annotated.svg",
+      "derived_from": "media/inspection-forge-original.png",
+      "source": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ff65c2eaa1cc5c5cf8adb6cb706f5f52",
+      "sha256": "3dc87833cc45a706d310a5bba8840595c1dd8dcbe05031cb54aab918c04d5eae"
+    },
+    {
+      "file": "media/transit-forge-original.png",
+      "source": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/transit/r5-release-artifact.png",
+      "native_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-b239ffe686c17968a0a79bce5d11699c/v0/files/files/1/release.json",
+      "sha256": "c745b88713e650c2de91c0f124006754fb40d60acd42e5ed551798df6722fb11",
+      "capture_date": null
+    },
+    {
+      "file": "media/transit-forge-annotated.svg",
+      "derived_from": "media/transit-forge-original.png",
+      "source": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-b239ffe686c17968a0a79bce5d11699c/v0/files/files/1/release.json",
+      "sha256": "d3820cff95117da3b67c8d5baff12788370f5b8ef501674df684917f1b584dae"
+    },
+    {
+      "file": "media/airline_monitoring-forge-original.png",
+      "source": "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/airline_monitoring/public/captures/native-tag-configuration.png",
+      "native_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/edit",
+      "sha256": "2b1fa9f410a772b7d2eb5d641cedb69a3a092c2d9f3ce33d73f1b7400e3eb5c1",
+      "capture_date": null
+    },
+    {
+      "file": "media/airline_monitoring-forge-annotated.svg",
+      "derived_from": "media/airline_monitoring-forge-original.png",
+      "source": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/tags/01a1dbfc-34e0-7540-a690-0fb598377ae6/edit",
+      "sha256": "97f73e819172c724a497bcc4e338acb39e6480ce247b5bc7d3993c95e14a8fe7"
+    }
+  ],
+  "licenses": {
+    "VisA photographs": "CC BY 4.0; Amazon Science, VisA PCB1. https://github.com/amazon-science/spot-diff",
+    "Solar diagrams": "Workshop-created diagrams derived from the cited real GOES and AIA observations. See docs/solar-contract.md."
+  }
+}

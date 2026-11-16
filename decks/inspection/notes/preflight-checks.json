@@ -1,0 +1,170 @@
+{
+  "source_sha256": "90c7204716275346f3a3f3c3084c01542849a4615ca7fe7990ca0f28fe85aef8",
+  "preflight_only": true,
+  "slides_checked": 6,
+  "expected_slides": 60,
+  "titles": [
+    {
+      "number": 1,
+      "key": "opening",
+      "title": "Find defective parts before they ship"
+    },
+    {
+      "number": 2,
+      "key": "technical-overview",
+      "title": "What you will build and inspect"
+    },
+    {
+      "number": 3,
+      "key": "assignment",
+      "title": "The factory has two ways to waste a good morning"
+    },
+    {
+      "number": 9,
+      "key": "connect",
+      "title": "Connect to your own experiment"
+    },
+    {
+      "number": 10,
+      "key": "trace-code",
+      "title": "The trace describes a call that actually ran"
+    },
+    {
+      "number": 17,
+      "key": "threshold-exercise",
+      "title": "Implement the validation threshold"
+    }
+  ],
+  "click_states": [
+    {
+      "slide": 1,
+      "click": 0
+    },
+    {
+      "slide": 2,
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/inspection/overview/slide/01-board.svg",
+        "alt": "Board: What will you build, and how will you know it works?",
+        "frameId": "board",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/inspection/overview/slide/02-features.svg",
+        "alt": "Features: What will you build, and how will you know it works?",
+        "frameId": "features",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/inspection/overview/slide/03-decision.svg",
+        "alt": "Decision: What will you build, and how will you know it works?",
+        "frameId": "decision",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/inspection/overview/slide/04-recover.svg",
+        "alt": "Recover: What will you build, and how will you know it works?",
+        "frameId": "recover",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/inspection/overview/slide/05-complete.svg",
+        "alt": "Complete view: What will you build, and how will you know it works?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 3,
+      "click": 0
+    },
+    {
+      "slide": 9,
+      "click": 0
+    },
+    {
+      "slide": 10,
+      "click": 0
+    },
+    {
+      "slide": 10,
+      "click": 1
+    },
+    {
+      "slide": 10,
+      "click": 2
+    },
+    {
+      "slide": 10,
+      "click": 3
+    },
+    {
+      "slide": 17,
+      "click": 0
+    }
+  ],
+  "issues": [],
+  "console_errors": [],
+  "failed_responses": [],
+  "answers": [
+    {
+      "slide": 17,
+      "destination": "/59",
+      "keyboardReturn": true
+    }
+  ],
+  "routes_checked": 243,
+  "recording_links_checked": 0,
+  "presenter_notes": true
+}

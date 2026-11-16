@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "reproduce",
+  "kind": "overview",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "cadf92ce09493db11a26b3deea8a15f02e0f9045efbbe40bfc7033d2ac4908db",
+  "states": [
+    {
+      "id": "encoder",
+      "label": "Encoder",
+      "svg": "01-encoder.svg",
+      "caption": "What must be loaded to reproduce a board’s decision?"
+    },
+    {
+      "id": "bank",
+      "label": "Bank",
+      "svg": "02-bank.svg",
+      "caption": "What must be loaded to reproduce a board’s decision?"
+    },
+    {
+      "id": "classifier",
+      "label": "Classifier",
+      "svg": "03-classifier.svg",
+      "caption": "What must be loaded to reproduce a board’s decision?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "What must be loaded to reproduce a board’s decision?"
+    },
+    {
+      "id": "native-capture",
+      "label": "The training call and returned classifier",
+      "svg": "05-native-capture.svg",
+      "caption": "Match nearest-patch, fitting count, and C to this returned classifier. These metrics use validation boards."
+    }
+  ],
+  "html": "index.html"
+}

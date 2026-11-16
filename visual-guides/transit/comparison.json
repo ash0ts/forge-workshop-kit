@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "id": "comparison",
+  "title": "Measure delivery, coordination, and memory separately",
+  "eyebrow": "05 / Transit software factory",
+  "question": "Which outcome supports the claim that the team or lesson helped?",
+  "summary": "Classroom comparisons illustrate tradeoffs. They do not establish that swarms or memory generally improve performance.",
+  "kind": "comparison",
+  "provenance": "recorded",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory_teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ=="
+    },
+    {
+      "label": "Recorded outcomes",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/transit.md"
+    }
+  ],
+  "steps": [
+    {
+      "id": "match",
+      "title": "Match starting conditions",
+      "body": "Use the same work order, data, model, cases, and total request allowance. Count planning, integration, and retries.",
+      "output": "Comparable build records",
+      "symbol": "comparison"
+    },
+    {
+      "id": "initial",
+      "title": "Read the solo/team outcome",
+      "body": "In the recorded build, solo passed 10/10 scenarios and the team passed 8/10. One UTC defect caused two failing checks.",
+      "output": "Two checks, one underlying defect",
+      "status": "Recorded build",
+      "symbol": "check"
+    },
+    {
+      "id": "memory",
+      "title": "Read the memory outcome",
+      "body": "The recorded follow-up builds each passed 12/18 scenarios. The selected lesson did not improve that score.",
+      "output": "Without memory 12/18; with memory 12/18",
+      "status": "Recorded comparison",
+      "symbol": "comparison"
+    },
+    {
+      "id": "release",
+      "title": "Keep incomplete releases blocked",
+      "body": "A release decision requires available passing outcomes. Missing results are not passes.",
+      "code": "bool(rows) and all(\n    row.get(\"passed\") is True for row in rows)",
+      "output": "Release or retain with a reason",
+      "symbol": "decision",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    }
+  ],
+  "states": [
+    {
+      "id": "match",
+      "label": "Match",
+      "visible": [
+        "match"
+      ],
+      "focus": [
+        "match"
+      ],
+      "caption": "Which outcome supports the claim that the team or lesson helped?"
+    },
+    {
+      "id": "initial",
+      "label": "Initial",
+      "visible": [
+        "match",
+        "initial"
+      ],
+      "focus": [
+        "initial"
+      ],
+      "caption": "Which outcome supports the claim that the team or lesson helped?"
+    },
+    {
+      "id": "memory",
+      "label": "Memory",
+      "visible": [
+        "match",
+        "initial",
+        "memory"
+      ],
+      "focus": [
+        "memory"
+      ],
+      "caption": "Which outcome supports the claim that the team or lesson helped?"
+    },
+    {
+      "id": "release",
+      "label": "Release",
+      "visible": [
+        "match",
+        "initial",
+        "memory",
+        "release"
+      ],
+      "focus": [
+        "release"
+      ],
+      "caption": "Which outcome supports the claim that the team or lesson helped?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "match",
+        "initial",
+        "memory",
+        "release"
+      ],
+      "focus": [],
+      "caption": "Which outcome supports the claim that the team or lesson helped?"
+    }
+  ],
+  "native_capture": {
+    "media": "../media/transit-forge-annotated.svg",
+    "original": "../media/transit-forge-original.png",
+    "title": "The exact solo release and its files",
+    "source_url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-b239ffe686c17968a0a79bce5d11699c/v0/files/files/1/release.json",
+    "investigation": "Find sources, source_fingerprint, and checksums. Download the artifact because long source lines are truncated in this view.",
+    "capture_date": null,
+    "capture_date_note": "Existing recorded capture; capture timestamp not recorded in source asset.",
+    "annotations": [
+      {
+        "number": 1,
+        "label": "Released files",
+        "field": "Query, presentation, contract, and sample.",
+        "source_bounds": [
+          355,
+          363,
+          907,
+          133
+        ]
+      },
+      {
+        "number": 2,
+        "label": "Source identity",
+        "field": "The aggregate source_fingerprint is saved.",
+        "source_bounds": [
+          355,
+          508,
+          907,
+          29
+        ]
+      },
+      {
+        "number": 3,
+        "label": "Per-file identities",
+        "field": "Checksums support exact reproduction.",
+        "source_bounds": [
+          355,
+          538,
+          907,
+          139
+        ]
+      }
+    ]
+  },
+  "annotations": [
+    {
+      "number": 1,
+      "target": "release",
+      "label": "Source files"
+    },
+    {
+      "number": 2,
+      "target": "release",
+      "label": "Source identity"
+    },
+    {
+      "number": 3,
+      "target": "release",
+      "label": "Per-file checksums"
+    }
+  ]
+}

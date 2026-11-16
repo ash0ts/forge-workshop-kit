@@ -1,0 +1,159 @@
+{
+  "source_sha256": "53b79ceb199b0b7ed0871a060ce74ba703ae81b4f089650ace8c2b15e4f3e79a",
+  "preflight_only": true,
+  "slides_checked": 6,
+  "expected_slides": 82,
+  "titles": [
+    {
+      "number": 1,
+      "title": "Monitor an airline service agent and build better evaluations"
+    },
+    {
+      "number": 2,
+      "key": "technical-overview",
+      "title": "What you will build and inspect"
+    },
+    {
+      "number": 3,
+      "title": "The passenger wants a different outward flight"
+    },
+    {
+      "number": 10,
+      "title": "Try the replacement API, then connect your project"
+    },
+    {
+      "number": 12,
+      "title": "The tracing code records the actual tool result"
+    },
+    {
+      "number": 13,
+      "title": "Connect each model request to its response"
+    }
+  ],
+  "click_states": [
+    {
+      "slide": 1,
+      "click": 0
+    },
+    {
+      "slide": 2,
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/airline_monitoring/overview/slide/01-booking.svg",
+        "alt": "Booking: What will you build, and how will you know it works?",
+        "frameId": "booking",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/airline_monitoring/overview/slide/02-observe.svg",
+        "alt": "Observe: What will you build, and how will you know it works?",
+        "frameId": "observe",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/airline_monitoring/overview/slide/03-monitor.svg",
+        "alt": "Monitor: What will you build, and how will you know it works?",
+        "frameId": "monitor",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/airline_monitoring/overview/slide/04-test.svg",
+        "alt": "Test: What will you build, and how will you know it works?",
+        "frameId": "test",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/guides/airline_monitoring/overview/slide/05-complete.svg",
+        "alt": "Complete view: What will you build, and how will you know it works?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 3,
+      "click": 0
+    },
+    {
+      "slide": 10,
+      "click": 0
+    },
+    {
+      "slide": 12,
+      "click": 0
+    },
+    {
+      "slide": 12,
+      "click": 1
+    },
+    {
+      "slide": 12,
+      "click": 2
+    },
+    {
+      "slide": 12,
+      "click": 3
+    },
+    {
+      "slide": 13,
+      "click": 0
+    }
+  ],
+  "issues": [],
+  "console_errors": [],
+  "failed_responses": [],
+  "answers": [],
+  "routes_checked": 331,
+  "recording_links_checked": 0,
+  "presenter_notes": true
+}

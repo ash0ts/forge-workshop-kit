@@ -55,10 +55,17 @@ def source_archive(path, deck, slug):
             for file in sorted(item.rglob("*") if item.is_dir() else [item]):
                 if file.is_file() and "__pycache__" not in file.parts:
                     bundle.write(file, Path("decks") / slug / file.relative_to(deck))
-        for name in ("build_decks.py", "validate_deck.mjs", "check_deck_pdf.py", "serve_deck.py", "aria_storyboard.py"):
+        for name in ("build_decks.py", "build_visual_guides.py", "technical_guide_storyboard.py", "validate_deck.mjs", "check_deck_pdf.py", "serve_deck.py", "aria_storyboard.py"):
             bundle.write(ROOT / "scripts" / name, Path("scripts") / name)
-        for name in ("README.md", "package.json", "package-lock.json", "scripts/deck.mjs", "aria.css"):
+        for name in ("README.md", "package.json", "package-lock.json", "scripts/deck.mjs", "aria.css", "technical-manual.css", "technical-manual-tokens.css", "components/TechnicalGuide.vue"):
             bundle.write(ROOT / "decks" / name, Path("decks") / name)
+        for directory in (ROOT / "skills", ROOT / "visual-guides" / slug, ROOT / "visual-guides/media"):
+            for file in sorted(directory.rglob("*")):
+                if file.is_file() and not {"node_modules", "__pycache__", ".DS_Store"}.intersection(file.parts):
+                    bundle.write(file, file.relative_to(ROOT))
+        guides = json.loads((ROOT / "visual-guides/index.json").read_text(encoding="utf-8"))
+        guides["workshops"] = [row for row in guides["workshops"] if row["slug"] == slug]
+        bundle.writestr("visual-guides/index.json", json.dumps(guides, indent=2) + "\n")
         manifest = json.loads(MANIFEST.read_text(encoding='utf-8'))
         manifest["templates"] = [
             row for row in manifest["templates"]
@@ -124,6 +131,8 @@ def install_toolchain():
 def write_library_index(directory, available):
     catalog_path = ROOT / "reports/published.json"
     reports = json.loads(catalog_path.read_text(encoding="utf-8"))["reports"] if catalog_path.exists() else {}
+    shutil.copytree(ROOT / "skills/teenage-engineering-visualizations/assets/fonts", directory / "fonts", dirs_exist_ok=True)
+    tokens = json.loads((ROOT / "skills/teenage-engineering-visualizations/assets/tokens.json").read_text(encoding="utf-8"))["colors"]
     links = []
     for row in available:
         slug = row["slug"]
@@ -132,20 +141,46 @@ def write_library_index(directory, available):
         if report:
             actions = (f'<a href="{html.escape(report["url"], quote=True)}">Read the learning Report</a> · '
                        + actions + f' · <a href="{html.escape(report["notebook_url"], quote=True)}">Copy the notebook</a>')
-        links.append(f'<li><strong>{html.escape(row["title"])}</strong><br>{actions}</li>')
+        poster = json.loads((ROOT / "visual-guides" / slug / "poster.json").read_text(encoding="utf-8"))["poster"]
+        poster_png = next((directory / "posters" / slug / "digital").glob("*.png"), None)
+        links.append(f'<article id="{html.escape(slug)}"><a class="preview" href="posters/{slug}/digital/index.html">'
+                     f'<img loading="lazy" src="posters/{slug}/digital/final.svg" alt="Overview poster: {html.escape(row["title"], quote=True)}"></a>'
+                     f'<div><p class="number">{len(links)+1:02d} / {html.escape(poster["duration"])}</p>'
+                     f'<h2>{html.escape(row["title"])}</h2><p>{html.escape(poster["situation"])}</p>'
+                     f'<p>{actions}</p><p><a href="posters/{slug}/digital/index.html">View poster</a> · '
+                     f'<a href="posters/{slug}/print/final.svg" download>A2 SVG</a>'
+                     + (f' · <a href="posters/{slug}/digital/{poster_png.name}" download>Digital PNG</a>' if poster_png else '')
+                     + (f' · <a href="posters/{slug}/print/print.pdf">A2 PDF</a>' if (directory / "posters" / slug / "print/print.pdf").exists() else '')
+                     + '</p></div></article>')
     (directory / "index.html").write_text(
         '<!doctype html><html lang="en"><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
-        '<title>Forge Workshop Kit</title><style>body{font:20px/1.5 system-ui;max-width:52rem;'
-        'margin:4rem auto;padding:0 1.5rem;color:#163c43;background:#faf7ee}li{margin:1.5rem 0}'
-        'a{color:#146965}a:focus-visible{outline:3px solid #146965;outline-offset:4px}</style>'
-        '<h1>Forge Workshop Kit</h1><p>Start with a worked example in the Report, '
+        '<title>Forge Workshop Kit</title><style>'
+        '@font-face{font-family:"IBM Plex Sans";src:url("fonts/ibm-plex-sans-latin-400-normal.woff2");font-weight:400}'
+        '@font-face{font-family:"IBM Plex Sans";src:url("fonts/ibm-plex-sans-latin-600-normal.woff2");font-weight:600}'
+        '@font-face{font-family:"IBM Plex Mono";src:url("fonts/ibm-plex-mono-latin-400-normal.woff2");font-weight:400}'
+        f':root{{--paper:{tokens["paper"]};--ink:{tokens["ink"]};--line:{tokens["line"]};--accent:{tokens["accent"]}}}'
+        'body{font:19px/1.5 "IBM Plex Sans",system-ui;max-width:1120px;'
+        'margin:3rem auto;padding:0 1.5rem;color:var(--ink);background:var(--paper)}'
+        'h1{font-size:clamp(36px,6vw,68px);font-weight:500;line-height:1.05;letter-spacing:-.04em}'
+        'h2{font-size:28px;line-height:1.15;font-weight:500}a{color:inherit;text-underline-offset:4px}'
+        'a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}'
+        'article{display:grid;grid-template-columns:minmax(240px,1fr) 1fr;gap:40px;padding:36px 0;border-top:1px solid var(--line);scroll-margin-top:24px}'
+        'article img{width:100%;display:block}.number{font:14px "IBM Plex Mono",monospace;letter-spacing:.04em}'
+        'header{max-width:850px;margin-bottom:48px}footer{border-top:1px solid var(--line);padding-top:24px}'
+        '@media(max-width:650px){article{grid-template-columns:1fr;gap:8px}body{margin:2rem auto}}'
+        '</style><header><p class="number">FORGE / WORKSHOP KIT</p>'
+        '<h1>Forge Workshop Kit</h1><p>Six Python workshops for building and testing agents, models, and software. '
+        'Start with a worked example in the Report, '
         'then copy its notebook into your own Forge project to change the code and run the exercises.</p>'
         '<p>These are technical previews. You can read the recorded results without running an experiment. '
         'Notebook execution uses your own project access and billing.</p>'
-        f'<ul>{"".join(links)}</ul>'
-        '<p><a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md">Setup instructions</a> · '
-        '<a href="https://github.com/ash0ts/forge-workshop-kit">Source and contributor guide</a></p></html>',
+        '<p><a href="visual-language/">Explore the visual guide templates</a> · '
+        '<a href="downloads/workshop-posters.zip">Download all six posters</a></p></header>'
+        f'<main>{"".join(links)}</main>'
+        '<footer><a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md">Setup instructions</a> · '
+        '<a href="https://github.com/ash0ts/forge-workshop-kit">Source and contributor guide</a> · '
+        '<a href="downloads/teenage-engineering-visualizations.zip">Standalone visualization skill</a></footer></html>',
         encoding="utf-8",
     )
 
@@ -248,6 +283,11 @@ def main():
     output = args.output.resolve()
     if args.install:
         install_toolchain()
+        # Every poster includes a real QR code, including SVG-only builds.
+        run(["npm", "ci"], ROOT / "skills/teenage-engineering-visualizations",
+            {**os.environ, "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"})
+    from build_visual_guides import build as build_guides
+    build_guides(only=args.only or (), exports=args.pdf, site=output / "site")
     rows = [
         build(slug, output, pdf=args.pdf, validate=args.validate)
         for slug in (args.only or DECKS)

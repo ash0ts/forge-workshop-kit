@@ -32,6 +32,23 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 -->
 
 ---
+class: technical-manual
+name: technical-overview
+clicks: 4
+---
+
+<div class="kicker">0:02</div>
+
+# What you will build and inspect
+
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;request&quot;, &quot;label&quot;: &quot;Request&quot;, &quot;svg&quot;: &quot;01-request.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/routing/overview/slide/01-request.svg&quot;}, {&quot;id&quot;: &quot;model&quot;, &quot;label&quot;: &quot;Model&quot;, &quot;svg&quot;: &quot;02-model.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/routing/overview/slide/02-model.svg&quot;}, {&quot;id&quot;: &quot;review&quot;, &quot;label&quot;: &quot;Review&quot;, &quot;svg&quot;: &quot;03-review.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/routing/overview/slide/03-review.svg&quot;}, {&quot;id&quot;: &quot;release&quot;, &quot;label&quot;: &quot;Release&quot;, &quot;svg&quot;: &quot;04-release.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/routing/overview/slide/04-release.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;05-complete.svg&quot;, &quot;caption&quot;: &quot;What will you build, and how will you know it works?&quot;, &quot;src&quot;: &quot;/guides/routing/overview/slide/05-complete.svg&quot;}]" :step="$clicks" />
+
+<!--
+Introduce the real task, the data available, and the outcome participants will check. Point to each Forge product at the operation it helps investigate.
+Visual guide: routing/overview. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
+-->
+
+---
 name: queue
 ---
 
@@ -169,18 +186,21 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 -->
 
 ---
+class: technical-manual
 name: word-vector
+clicks: 4
 ---
 
 <div class="kicker">0:35</div>
 
-# Measure the words and phrases in one request
+# Turn one message into classifier input
 
-<RoutingMechanism kind="vocabulary" :step="1" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;request&quot;, &quot;label&quot;: &quot;Same request&quot;, &quot;svg&quot;: &quot;01-request.svg&quot;, &quot;caption&quot;: &quot;Does the same request route differently with word features or sentence features?&quot;, &quot;src&quot;: &quot;/guides/routing/features/slide/01-request.svg&quot;}, {&quot;id&quot;: &quot;words&quot;, &quot;label&quot;: &quot;Word features&quot;, &quot;svg&quot;: &quot;02-words.svg&quot;, &quot;caption&quot;: &quot;Does the same request route differently with word features or sentence features?&quot;, &quot;src&quot;: &quot;/guides/routing/features/slide/02-words.svg&quot;}, {&quot;id&quot;: &quot;embedding&quot;, &quot;label&quot;: &quot;Sentence features&quot;, &quot;svg&quot;: &quot;03-embedding.svg&quot;, &quot;caption&quot;: &quot;Does the same request route differently with word features or sentence features?&quot;, &quot;src&quot;: &quot;/guides/routing/features/slide/03-embedding.svg&quot;}, {&quot;id&quot;: &quot;fit&quot;, &quot;label&quot;: &quot;Matched predictions&quot;, &quot;svg&quot;: &quot;04-fit.svg&quot;, &quot;caption&quot;: &quot;Does the same request route differently with word features or sentence features?&quot;, &quot;src&quot;: &quot;/guides/routing/features/slide/04-fit.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;05-complete.svg&quot;, &quot;caption&quot;: &quot;Does the same request route differently with word features or sentence features?&quot;, &quot;src&quot;: &quot;/guides/routing/features/slide/05-complete.svg&quot;}]" :step="$clicks" />
 
 <!--
 Read the real review-pool message aloud. The default tokenizer produces my, card, isn, here, yet; single-letter t is omitted. The nine nonzero TF–IDF weights are recalculated from the frozen 8,463 training messages and shown against the actual 21,527-column vocabulary. IDF and the vocabulary use training text only.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
+Visual guide: routing/features. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 -->
 
 ---
@@ -192,7 +212,7 @@ name: classifier-exercise
 
 # Implement the classifier head
 
-<a class="answer-link" href="/74">Worked answer ↗</a>
+<a class="answer-link" href="/75">Worked answer ↗</a>
 
 <p class="where">Notebook → Train the word classifier</p><ol><li>Complete <code>make_classifier</code> with <code>LogisticRegression(C=10, max_iter=1000, random_state=17)</code>.</li><li>Click <strong>Check my classifier code</strong>, then <strong>Fit and predict four practice points</strong>.</li><li>Fit the word-feature baseline first. We will change representations after inspecting its errors.</li></ol><div class="done"><strong>Run:</strong> Train the word-feature baseline<br><strong>Check:</strong> Open one validation request and the saved classifier source in Forge.</div>
 
@@ -369,18 +389,21 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 -->
 
 ---
+class: technical-manual
 name: intent-counts
+clicks: 3
 ---
 
 <div class="kicker">1:18</div>
 
-# Count the errors for one intent
+# Calculate F1 for each intent before averaging
 
-<RoutingMechanism kind="metrics" :step="1" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;counts&quot;, &quot;label&quot;: &quot;Counts&quot;, &quot;svg&quot;: &quot;01-counts.svg&quot;, &quot;caption&quot;: &quot;Which mistakes contribute to this intent’s F1?&quot;, &quot;src&quot;: &quot;/guides/routing/metrics/slide/01-counts.svg&quot;}, {&quot;id&quot;: &quot;f1&quot;, &quot;label&quot;: &quot;F1&quot;, &quot;svg&quot;: &quot;02-f1.svg&quot;, &quot;caption&quot;: &quot;Which mistakes contribute to this intent’s F1?&quot;, &quot;src&quot;: &quot;/guides/routing/metrics/slide/02-f1.svg&quot;}, {&quot;id&quot;: &quot;macro&quot;, &quot;label&quot;: &quot;Macro&quot;, &quot;svg&quot;: &quot;03-macro.svg&quot;, &quot;caption&quot;: &quot;Which mistakes contribute to this intent’s F1?&quot;, &quot;src&quot;: &quot;/guides/routing/metrics/slide/03-macro.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;Which mistakes contribute to this intent’s F1?&quot;, &quot;src&quot;: &quot;/guides/routing/metrics/slide/04-complete.svg&quot;}]" :step="$clicks" />
 
 <!--
 These are the recorded embedding model’s official-test card_arrival predictions: 34 true positives, 3 false positives, 6 false negatives. Trace a misroute to the appropriate count. This example explains the metric; do not select a new model using these final examples.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
+Visual guide: routing/metrics. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 -->
 
 ---
@@ -429,18 +452,21 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 -->
 
 ---
+class: technical-manual
 name: threshold-policy
+clicks: 3
 ---
 
 <div class="kicker">1:38</div>
 
-# Move the threshold without retraining
+# Choose a route, then decide whether to review it
 
-<RoutingMechanism kind="policy" :step="1" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;scores&quot;, &quot;label&quot;: &quot;Scores&quot;, &quot;svg&quot;: &quot;01-scores.svg&quot;, &quot;caption&quot;: &quot;How does the winning intent differ from the decision to defer?&quot;, &quot;src&quot;: &quot;/guides/routing/decision/slide/01-scores.svg&quot;}, {&quot;id&quot;: &quot;confidence&quot;, &quot;label&quot;: &quot;Confidence&quot;, &quot;svg&quot;: &quot;02-confidence.svg&quot;, &quot;caption&quot;: &quot;How does the winning intent differ from the decision to defer?&quot;, &quot;src&quot;: &quot;/guides/routing/decision/slide/02-confidence.svg&quot;}, {&quot;id&quot;: &quot;margin&quot;, &quot;label&quot;: &quot;Margin&quot;, &quot;svg&quot;: &quot;03-margin.svg&quot;, &quot;caption&quot;: &quot;How does the winning intent differ from the decision to defer?&quot;, &quot;src&quot;: &quot;/guides/routing/decision/slide/03-margin.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;How does the winning intent differ from the decision to defer?&quot;, &quot;src&quot;: &quot;/guides/routing/decision/slide/04-complete.svg&quot;}]" :step="$clicks" />
 
 <!--
 Use the keyboard on the slider. The request and classifier probabilities stay unchanged. Coverage and selective accuracy recompute from the 770 saved validation predictions. At zero accepted cases, show unavailable rather than claiming perfect accuracy.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
+Visual guide: routing/decision. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 -->
 
 ---
@@ -467,7 +493,7 @@ name: policy-exercise
 
 # Write the rule that sends a request to review
 
-<a class="answer-link" href="/75">Worked answer ↗</a>
+<a class="answer-link" href="/76">Worked answer ↗</a>
 
 <p class="where">Notebook → Review requests</p><ol><li>Complete <code>needs_review(confidence, threshold)</code>.</li><li>Move the threshold and compare coverage with selective accuracy.</li><li>Pick a small-margin request and read both proposed intents.</li></ol><div class="done"><strong>Run:</strong> Check my review rule<br><strong>Check:</strong> Explain why a confidence of 0.2 at threshold 0.5 should go to a person.</div>
 
@@ -510,18 +536,21 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 -->
 
 ---
+class: technical-manual
 name: review-provenance
+clicks: 3
 ---
 
 <div class="kicker">2:06</div>
 
-# Keep the proposal and accepted label separate
+# Turn a reviewed mistake into a training example
 
-<RoutingMechanism kind="review" :step="1" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;proposal&quot;, &quot;label&quot;: &quot;Proposal&quot;, &quot;svg&quot;: &quot;01-proposal.svg&quot;, &quot;caption&quot;: &quot;Whose label is being used, and why was it accepted?&quot;, &quot;src&quot;: &quot;/guides/routing/labels/slide/01-proposal.svg&quot;}, {&quot;id&quot;: &quot;review&quot;, &quot;label&quot;: &quot;Review&quot;, &quot;svg&quot;: &quot;02-review.svg&quot;, &quot;caption&quot;: &quot;Whose label is being used, and why was it accepted?&quot;, &quot;src&quot;: &quot;/guides/routing/labels/slide/02-review.svg&quot;}, {&quot;id&quot;: &quot;dataset&quot;, &quot;label&quot;: &quot;Dataset&quot;, &quot;svg&quot;: &quot;03-dataset.svg&quot;, &quot;caption&quot;: &quot;Whose label is being used, and why was it accepted?&quot;, &quot;src&quot;: &quot;/guides/routing/labels/slide/03-dataset.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;Whose label is being used, and why was it accepted?&quot;, &quot;src&quot;: &quot;/guides/routing/labels/slide/04-complete.svg&quot;}]" :step="$clicks" />
 
 <!--
 Ask the participant to find all three labels for a case: model proposal, dataset reference, personal accepted label. Do not overwrite the proposal when accepting a correction. The record must preserve who made the decision and which data it belongs to.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
+Visual guide: routing/labels. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 -->
 
 ---
@@ -596,18 +625,21 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 -->
 
 ---
+class: technical-manual
 name: judge-purpose
+clicks: 4
 ---
 
 <div class="kicker">2:40</div>
 
-# Check the model-based judge against your reviews
+# Check the automated reviewer against people
 
-<div class="flow"><div>Request + route<small>What happened</small></div><b class="arrow">→</b><div>Judge rubric<small>Was this the wrong workflow?</small></div><b class="arrow">→</b><div>Compare with a person<small>False alarms and missed failures</small></div></div><p>A successful API call can return the wrong intent. A valid judgment can also disagree with your review.</p>
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;route&quot;, &quot;label&quot;: &quot;Route&quot;, &quot;svg&quot;: &quot;01-route.svg&quot;, &quot;caption&quot;: &quot;Is the answer well-formed, and is its judgment supported?&quot;, &quot;src&quot;: &quot;/guides/routing/judge/slide/01-route.svg&quot;}, {&quot;id&quot;: &quot;validate&quot;, &quot;label&quot;: &quot;Validate&quot;, &quot;svg&quot;: &quot;02-validate.svg&quot;, &quot;caption&quot;: &quot;Is the answer well-formed, and is its judgment supported?&quot;, &quot;src&quot;: &quot;/guides/routing/judge/slide/02-validate.svg&quot;}, {&quot;id&quot;: &quot;agreement&quot;, &quot;label&quot;: &quot;Agreement&quot;, &quot;svg&quot;: &quot;03-agreement.svg&quot;, &quot;caption&quot;: &quot;Is the answer well-formed, and is its judgment supported?&quot;, &quot;src&quot;: &quot;/guides/routing/judge/slide/03-agreement.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;Is the answer well-formed, and is its judgment supported?&quot;, &quot;src&quot;: &quot;/guides/routing/judge/slide/04-complete.svg&quot;}, {&quot;id&quot;: &quot;native-capture&quot;, &quot;label&quot;: &quot;A structured judgment still needs review&quot;, &quot;svg&quot;: &quot;05-native-capture.svg&quot;, &quot;caption&quot;: &quot;Compare the request and proposed intent with the judge response. The dataset reference is card_linking.&quot;, &quot;src&quot;: &quot;/guides/routing/judge/slide/05-native-capture.svg&quot;}]" :step="$clicks" />
 
 <!--
 The notebook uses a model-based judge exercise. It is not silently creating native Agent Lens tags or pretending to generate Insights. Native tag alignment is an optional access-qualified extension. Prepared Insights require an independently verified cohort, not waiting live for new clusters.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
+Visual guide: routing/judge. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 -->
 
 ---
@@ -634,7 +666,7 @@ name: validator-exercise
 
 # Implement the judge response check
 
-<a class="answer-link" href="/76">Worked answer ↗</a>
+<a class="answer-link" href="/77">Worked answer ↗</a>
 
 <p class="where">Notebook → Check the automated reviewer</p><ol><li>Complete <code>validate_judge</code>. Reject a string such as <code>"false"</code>.</li><li>Read your saved human reviews, then the failure-tag instructions. Define what counts as unresolved rather than wrong.</li><li>Run the judge on up to eight reviewed cases.</li></ol><div class="done"><strong>Run:</strong> Check my judge validator → Compare the judge with up to eight of my reviews<br><strong>Check:</strong> Click Compare in EvalTables beside the judge result. Read the judge reason and your accepted review together; unavailable judgments stay blank.</div>
 
@@ -888,17 +920,20 @@ The cohort is selected and saved before predictions, using the lexical first rev
 -->
 
 ---
+class: technical-manual
 name: release-columns
+clicks: 4
 ---
 
 <div class="kicker">4:20</div>
 
-# A probability belongs to a specific intent
+# Preserve the mapping between scores and intents
 
-<ReleaseWalk kind="mapping" :step="1" />
+<TechnicalGuide :frames="[{&quot;id&quot;: &quot;healthy&quot;, &quot;label&quot;: &quot;Healthy&quot;, &quot;svg&quot;: &quot;01-healthy.svg&quot;, &quot;caption&quot;: &quot;Can the release reproduce the healthy predictor’s destinations?&quot;, &quot;src&quot;: &quot;/guides/routing/release/slide/01-healthy.svg&quot;}, {&quot;id&quot;: &quot;faulty&quot;, &quot;label&quot;: &quot;Faulty&quot;, &quot;svg&quot;: &quot;02-faulty.svg&quot;, &quot;caption&quot;: &quot;Can the release reproduce the healthy predictor’s destinations?&quot;, &quot;src&quot;: &quot;/guides/routing/release/slide/02-faulty.svg&quot;}, {&quot;id&quot;: &quot;repair&quot;, &quot;label&quot;: &quot;Repair&quot;, &quot;svg&quot;: &quot;03-repair.svg&quot;, &quot;caption&quot;: &quot;Can the release reproduce the healthy predictor’s destinations?&quot;, &quot;src&quot;: &quot;/guides/routing/release/slide/03-repair.svg&quot;}, {&quot;id&quot;: &quot;result&quot;, &quot;label&quot;: &quot;Result&quot;, &quot;svg&quot;: &quot;04-result.svg&quot;, &quot;caption&quot;: &quot;Can the release reproduce the healthy predictor’s destinations?&quot;, &quot;src&quot;: &quot;/guides/routing/release/slide/04-result.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;05-complete.svg&quot;, &quot;caption&quot;: &quot;Can the release reproduce the healthy predictor’s destinations?&quot;, &quot;src&quot;: &quot;/guides/routing/release/slide/05-complete.svg&quot;}]" :step="$clicks" />
 
 <!--
 Illustrative three-column values; the real model has 77 intent columns. Trace column 1 from 0.84 to card_not_working using model.classes_. The message and probabilities are explanatory, not a recorded participant output.
+Visual guide: routing/release. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.
 -->
 
 ---
@@ -969,7 +1004,7 @@ name: release-repair-exercise
 
 # Repair the loader and write its regression check
 
-<a class="answer-link" href="/77">Worked answer ↗</a>
+<a class="answer-link" href="/78">Worked answer ↗</a>
 
 <p class="where">Notebook → Release and recover</p><ol><li>Complete <code>label_names(model_classes)</code> by preserving the supplied order.</li><li>Complete <code>check_release(model_classes, loaded_labels)</code>. Check the label set and exact order.</li><li>Run the free check, then execute your repaired loader on the same 77 requests.</li></ol><div class="done"><strong>Run:</strong> Check my release and repair code → Run my repaired loader on the same requests<br><strong>Check:</strong> Order and prediction parity pass. Existing classifier mistakes may remain.</div>
 
@@ -1175,7 +1210,7 @@ def make_classifier():
     )
 ```
 
-<p>This function constructs the head for both feature representations. The fit call trains it. It does not load or fine-tune the sentence encoder.</p><p class="answer-nav source-link"><a href="/11">Return to the classifier exercise ↩</a></p>
+<p>This function constructs the head for both feature representations. The fit call trains it. It does not load or fine-tune the sentence encoder.</p><p class="answer-nav source-link"><a href="/12">Return to the classifier exercise ↩</a></p>
 
 <!--
 Offer the answer only after an attempt or a hint request. Learners must still run the free check and both actual training calls.
@@ -1196,7 +1231,7 @@ def needs_review(confidence, threshold):
     return confidence < threshold
 ```
 
-<p>At 0.5, a 0.2 prediction is deferred. A 0.9 prediction is routed. Choosing a threshold remains a policy decision that should be checked on validation cases.</p><p class="answer-nav source-link"><a href="/29">Return to the review exercise ↩</a></p>
+<p>At 0.5, a 0.2 prediction is deferred. A 0.9 prediction is routed. Choosing a threshold remains a policy decision that should be checked on validation cases.</p><p class="answer-nav source-link"><a href="/30">Return to the review exercise ↩</a></p>
 
 <!--
 The function should return a boolean. Exactly the threshold is routed in this specified policy. It is not a proof that the predicted probability is calibrated.
@@ -1223,7 +1258,7 @@ def validate_judge(value):
     return value
 ```
 
-<p class="answer-nav source-link"><a href="/39">Return to the judge exercise ↩</a></p>
+<p class="answer-nav source-link"><a href="/40">Return to the judge exercise ↩</a></p>
 
 <!--
 This uses the same type guard as the notebook. Valid JSON is only a response contract; it does not establish agreement with a reviewer.
@@ -1252,7 +1287,7 @@ def check_release(model_classes, loaded_labels):
     }
 ```
 
-<p class="answer-nav source-link"><a href="/61">Return to the release repair exercise ↩</a></p>
+<p class="answer-nav source-link"><a href="/62">Return to the release repair exercise ↩</a></p>
 
 <!--
 This checks the metadata contract; the subsequent saved batch checks prediction parity independently. Passing both checks does not prove every route is correct. Give the worked answer after an attempt or explicit request.

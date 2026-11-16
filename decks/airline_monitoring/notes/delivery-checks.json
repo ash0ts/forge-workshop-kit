@@ -1,7 +1,8 @@
 {
-  "source_sha256": "4afd7754dcb7a1b09749f017d370ea5b42fd1e7268a446537ec0435723dc4182",
-  "slides_checked": 81,
-  "expected_slides": 81,
+  "source_sha256": "53b79ceb199b0b7ed0871a060ce74ba703ae81b4f089650ace8c2b15e4f3e79a",
+  "preflight_only": false,
+  "slides_checked": 82,
+  "expected_slides": 82,
   "titles": [
     {
       "number": 1,
@@ -9,328 +10,333 @@
     },
     {
       "number": 2,
-      "title": "The passenger wants a different outward flight"
+      "key": "technical-overview",
+      "title": "What you will build and inspect"
     },
     {
       "number": 3,
-      "title": "A correct change preserves the return flight"
+      "title": "The passenger wants a different outward flight"
     },
     {
       "number": 4,
-      "title": "The API replaces the complete flight list"
+      "title": "A correct change preserves the return flight"
     },
     {
       "number": 5,
-      "title": "A successful write can leave the wrong booking"
+      "title": "Replace the requested flights and keep the rest"
     },
     {
       "number": 6,
-      "title": "The data contains bookings, policy, and passenger requests"
+      "title": "A successful write can leave the wrong booking"
     },
     {
       "number": 7,
-      "title": "Keep related bookings in the same data group"
+      "title": "The data contains bookings, policy, and passenger requests"
     },
     {
       "number": 8,
-      "title": "Your copy owns the runs and saved work"
+      "title": "Keep related bookings in the same data group"
     },
     {
       "number": 9,
-      "title": "Try the replacement API, then connect your project"
+      "title": "Your copy owns the runs and saved work"
     },
     {
       "number": 10,
-      "title": "Record a conversation around the passenger’s request"
+      "title": "Try the replacement API, then connect your project"
     },
     {
       "number": 11,
-      "title": "The tracing code records the actual tool result"
+      "title": "Follow the passenger’s request through the write"
     },
     {
       "number": 12,
-      "title": "Connect each model request to its response"
+      "title": "The tracing code records the actual tool result"
     },
     {
       "number": 13,
-      "title": "Instrument the agent and inspect one request"
+      "title": "Connect each model request to its response"
     },
     {
       "number": 14,
-      "title": "Read the booking returned by the tool"
+      "title": "Instrument the agent and inspect one request"
     },
     {
       "number": 15,
-      "title": "The reservation read timed out before any change"
+      "title": "Read the booking returned by the tool"
     },
     {
       "number": 16,
-      "title": "Follow the agent after the error"
+      "title": "The reservation read timed out before any change"
     },
     {
       "number": 17,
-      "title": "Continue with the other seven requests"
+      "title": "Follow the agent after the error"
     },
     {
       "number": 18,
-      "title": "Keep three questions separate"
+      "title": "Continue with the other seven requests"
     },
     {
       "number": 19,
-      "title": "Use Overview for context, then open Conversations"
+      "title": "Keep three questions separate"
     },
     {
       "number": 20,
-      "title": "Insights suggests a pattern worth investigating"
+      "title": "Use Overview for context, then open Conversations"
     },
     {
       "number": 21,
-      "title": "An error is not always an unresolved failure"
+      "title": "Insights suggests a pattern worth investigating"
     },
     {
       "number": 22,
-      "title": "Save one claim with the turn that supports it"
+      "title": "An error is not always an unresolved failure"
     },
     {
       "number": 23,
-      "title": "Review the booking before asking a tag to judge it"
+      "title": "Save one claim with the turn that supports it"
     },
     {
       "number": 24,
-      "title": "Break until 1:50"
+      "title": "Review the booking before asking a tag to judge it"
     },
     {
       "number": 25,
+      "title": "Break until 1:50"
+    },
+    {
+      "number": 26,
       "key": "aria-investigate",
       "title": "Investigate this result"
     },
     {
-      "number": 26,
+      "number": 27,
       "key": "aria-investigate-response",
       "title": "Read one claim in the recorded response"
     },
     {
-      "number": 27,
+      "number": 28,
       "key": "aria-investigate-verify",
       "title": "Open the source and check that claim"
     },
     {
-      "number": 28,
+      "number": 29,
       "title": "Define a behavior that a reviewer can check"
     },
     {
-      "number": 29,
+      "number": 30,
       "title": "Fewer flights can be the correct result"
     },
     {
-      "number": 30,
+      "number": 31,
       "title": "Add counterexamples before trusting the rule"
     },
     {
-      "number": 31,
-      "title": "A native tag has criteria, labels, and a live state"
-    },
-    {
       "number": 32,
-      "title": "Save the criteria and check the tag’s scope"
+      "title": "Test the monitoring rule against reviewed turns"
     },
     {
       "number": 33,
-      "title": "Turn context limits what the judge can know"
+      "title": "Save the criteria and check the tag’s scope"
     },
     {
       "number": 34,
-      "title": "Test your tag against reviewed turns"
+      "title": "Turn context limits what the judge can know"
     },
     {
       "number": 35,
-      "title": "Test one reviewed turn in native Alignment"
+      "title": "Test your tag against reviewed turns"
     },
     {
       "number": 36,
-      "title": "A saved review is not a completed judge result"
+      "title": "Test one reviewed turn in native Alignment"
     },
     {
       "number": 37,
-      "title": "A valid response can contain a wrong judgment"
+      "title": "A saved review is not a completed judge result"
     },
     {
       "number": 38,
-      "title": "Measure the monitor on reviewed cases"
+      "title": "A valid response can contain a wrong judgment"
     },
     {
       "number": 39,
-      "title": "Precision asks whether an alert deserves review"
+      "title": "Measure the monitor on reviewed cases"
     },
     {
       "number": 40,
-      "title": "Recall asks which failures the monitor missed"
+      "title": "Precision asks whether an alert deserves review"
     },
     {
       "number": 41,
-      "title": "Coverage tells us which turns were judged"
+      "title": "Recall asks which failures the monitor missed"
     },
     {
       "number": 42,
-      "title": "Calculate monitor quality and send new traffic"
+      "title": "Count what the monitor has actually processed"
     },
     {
       "number": 43,
-      "title": "A missing live tag does not establish a negative judgment"
+      "title": "Calculate monitor quality and send new traffic"
     },
     {
       "number": 44,
-      "title": "Freeze the rule before comparing agent versions"
+      "title": "A missing live tag does not establish a negative judgment"
     },
     {
       "number": 45,
-      "title": "A reviewed turn becomes a regression case"
+      "title": "Freeze the rule before comparing agent versions"
     },
     {
       "number": 46,
-      "title": "Keep enough information to replay the request"
+      "title": "A reviewed turn becomes a regression case"
     },
     {
       "number": 47,
-      "title": "Build a regression case from the reviewed turn"
+      "title": "Reconstruct an incident as an executable test"
     },
     {
       "number": 48,
-      "title": "Score the change and the preserved flights separately"
+      "title": "Build a regression case from the reviewed turn"
     },
     {
       "number": 49,
-      "title": "The explanation judge answers a different question"
+      "title": "Score the change and the preserved flights separately"
     },
     {
       "number": 50,
-      "title": "Add the booking check the old evaluation missed"
+      "title": "The explanation judge answers a different question"
     },
     {
       "number": 51,
-      "title": "Save the case and its checks with the checkpoint"
+      "title": "Add the booking check the old evaluation missed"
     },
     {
       "number": 52,
-      "title": "Break until 4:00"
+      "title": "Save the case and its checks with the checkpoint"
     },
     {
       "number": 53,
-      "title": "Repair the list operation, then compare the behavior"
+      "title": "Break until 4:00"
     },
     {
       "number": 54,
-      "title": "Replace a range without dropping its neighbors"
+      "title": "Repair the list operation, then compare the behavior"
     },
     {
       "number": 55,
-      "title": "Walk through the values before running the model"
+      "title": "Replace a range without dropping its neighbors"
     },
     {
       "number": 56,
-      "title": "Test the repair on matched development bookings"
+      "title": "Walk through the values before running the model"
     },
     {
       "number": 57,
-      "title": "The passenger must approve the proposed change"
+      "title": "Test the repair on matched development bookings"
     },
     {
       "number": 58,
-      "title": "Explain a passing repair without overstating it"
+      "title": "The passenger must approve the proposed change"
     },
     {
       "number": 59,
-      "title": "Judge one saved explanation against its evidence"
+      "title": "Explain a passing repair without overstating it"
     },
     {
       "number": 60,
-      "title": "Freeze code before opening the reserved requests"
+      "title": "Judge one saved explanation against its evidence"
     },
     {
       "number": 61,
-      "title": "Compare six reserved bookings across both versions"
+      "title": "Freeze code before opening the reserved requests"
     },
     {
       "number": 62,
-      "title": "Read the same request across the two versions"
+      "title": "Compare six reserved bookings across both versions"
     },
     {
       "number": 63,
-      "title": "Set the starting agent as the comparison reference"
+      "title": "Compare the agent and monitor on matching requests"
     },
     {
       "number": 64,
-      "title": "Read both outputs for the same request"
+      "title": "Set the starting agent as the comparison reference"
     },
     {
       "number": 65,
-      "title": "The recorded agent comparison was a tie"
+      "title": "Read both outputs for the same request"
     },
     {
       "number": 66,
-      "title": "Report denominators and unresolved work"
+      "title": "The recorded agent comparison was a tie"
     },
     {
       "number": 67,
-      "title": "Use later traffic to check the frozen monitor"
+      "title": "Report denominators and unresolved work"
     },
     {
       "number": 68,
-      "title": "Check what the monitor catches after the repair"
+      "title": "Use later traffic to check the frozen monitor"
     },
     {
       "number": 69,
-      "title": "A falling alert count has several explanations"
+      "title": "Check what the monitor catches after the repair"
     },
     {
       "number": 70,
+      "title": "A falling alert count has several explanations"
+    },
+    {
+      "number": 71,
       "key": "aria-conclusion",
       "title": "Check our conclusion"
     },
     {
-      "number": 71,
+      "number": 72,
       "key": "aria-conclusion-response",
       "title": "Read one claim in the recorded response"
     },
     {
-      "number": 72,
+      "number": 73,
       "key": "aria-conclusion-verify",
       "title": "Open the source and check that claim"
     },
     {
-      "number": 73,
+      "number": 74,
       "title": "Write down what changed and whether it helped"
     },
     {
-      "number": 74,
+      "number": 75,
       "title": "Publish the comparison and stop automatic judging"
     },
     {
-      "number": 75,
+      "number": 76,
       "title": "The next release has a check the first release lacked"
     },
     {
-      "number": 76,
+      "number": 77,
       "title": "Worked answer: validate a judge response"
     },
     {
-      "number": 77,
+      "number": 78,
       "title": "Worked answer: keep unknown judgments out of the matrix"
     },
     {
-      "number": 78,
+      "number": 79,
       "title": "Worked answer: preserve the original case inputs"
     },
     {
-      "number": 79,
+      "number": 80,
       "title": "Worked answer: check both change and preservation"
     },
     {
-      "number": 80,
+      "number": 81,
       "title": "Worked answer: build the complete replacement list"
     },
     {
-      "number": 81,
+      "number": 82,
       "title": "Sources and saved evidence"
     }
   ],
@@ -341,7 +347,88 @@
     },
     {
       "slide": 2,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/overview/slide/01-booking.svg",
+        "alt": "Booking: What will you build, and how will you know it works?",
+        "frameId": "booking",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/overview/slide/02-observe.svg",
+        "alt": "Observe: What will you build, and how will you know it works?",
+        "frameId": "observe",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/overview/slide/03-monitor.svg",
+        "alt": "Monitor: What will you build, and how will you know it works?",
+        "frameId": "monitor",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/overview/slide/04-test.svg",
+        "alt": "Test: What will you build, and how will you know it works?",
+        "frameId": "test",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/overview/slide/05-complete.svg",
+        "alt": "Complete view: What will you build, and how will you know it works?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 3,
@@ -352,28 +439,76 @@
       "click": 0
     },
     {
-      "slide": 4,
-      "click": 1
-    },
-    {
-      "slide": 4,
-      "click": 2
+      "slide": 5,
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/itinerary/slide/01-before.svg",
+        "alt": "Before: What must the booking update contain?",
+        "frameId": "before",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
     },
     {
       "slide": 5,
-      "click": 0
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/itinerary/slide/02-replace.svg",
+        "alt": "Replace: What must the booking update contain?",
+        "frameId": "replace",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 5,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/itinerary/slide/03-after.svg",
+        "alt": "After: What must the booking update contain?",
+        "frameId": "after",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 5,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/itinerary/slide/04-complete.svg",
+        "alt": "Complete view: What must the booking update contain?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 6,
       "click": 0
-    },
-    {
-      "slide": 6,
-      "click": 1
-    },
-    {
-      "slide": 6,
-      "click": 2
     },
     {
       "slide": 7,
@@ -398,46 +533,110 @@
     {
       "slide": 8,
       "click": 2
-    },
-    {
-      "slide": 8,
-      "click": 3
     },
     {
       "slide": 9,
       "click": 0
     },
     {
-      "slide": 10,
-      "click": 0
-    },
-    {
-      "slide": 10,
+      "slide": 9,
       "click": 1
     },
     {
-      "slide": 10,
+      "slide": 9,
       "click": 2
     },
     {
-      "slide": 11,
-      "click": 0
-    },
-    {
-      "slide": 11,
-      "click": 1
-    },
-    {
-      "slide": 11,
-      "click": 2
-    },
-    {
-      "slide": 11,
+      "slide": 9,
       "click": 3
+    },
+    {
+      "slide": 10,
+      "click": 0
+    },
+    {
+      "slide": 11,
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/traces/slide/01-request.svg",
+        "alt": "Request: Where can you see what the tool actually changed?",
+        "frameId": "request",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 11,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/traces/slide/02-tool.svg",
+        "alt": "Tool: Where can you see what the tool actually changed?",
+        "frameId": "tool",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 11,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/traces/slide/03-state.svg",
+        "alt": "State: Where can you see what the tool actually changed?",
+        "frameId": "state",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 11,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/traces/slide/04-complete.svg",
+        "alt": "Complete view: Where can you see what the tool actually changed?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 12,
       "click": 0
+    },
+    {
+      "slide": 12,
+      "click": 1
+    },
+    {
+      "slide": 12,
+      "click": 2
+    },
+    {
+      "slide": 12,
+      "click": 3
     },
     {
       "slide": 13,
@@ -448,20 +647,20 @@
       "click": 0
     },
     {
-      "slide": 14,
-      "click": 1
-    },
-    {
-      "slide": 14,
-      "click": 2
-    },
-    {
-      "slide": 14,
-      "click": 3
+      "slide": 15,
+      "click": 0
     },
     {
       "slide": 15,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 15,
+      "click": 2
+    },
+    {
+      "slide": 15,
+      "click": 3
     },
     {
       "slide": 16,
@@ -484,20 +683,20 @@
       "click": 0
     },
     {
-      "slide": 20,
-      "click": 1
-    },
-    {
-      "slide": 20,
-      "click": 2
-    },
-    {
-      "slide": 20,
-      "click": 3
+      "slide": 21,
+      "click": 0
     },
     {
       "slide": 21,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 21,
+      "click": 2
+    },
+    {
+      "slide": 21,
+      "click": 3
     },
     {
       "slide": 22,
@@ -532,48 +731,138 @@
       "click": 0
     },
     {
-      "slide": 29,
-      "click": 1
-    },
-    {
-      "slide": 29,
-      "click": 2
-    },
-    {
       "slide": 30,
       "click": 0
     },
     {
-      "slide": 31,
-      "click": 0
-    },
-    {
-      "slide": 31,
+      "slide": 30,
       "click": 1
     },
     {
-      "slide": 31,
+      "slide": 30,
       "click": 2
+    },
+    {
+      "slide": 31,
+      "click": 0
     },
     {
       "slide": 32,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/alignment/slide/01-review.svg",
+        "alt": "Review: Would the rule distinguish an omission from a valid itinerary change?",
+        "frameId": "review",
+        "frameIndex": 0,
+        "frameCount": 6
+      }
+    },
+    {
+      "slide": 32,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/alignment/slide/02-criteria.svg",
+        "alt": "Criteria: Would the rule distinguish an omission from a valid itinerary change?",
+        "frameId": "criteria",
+        "frameIndex": 1,
+        "frameCount": 6
+      }
+    },
+    {
+      "slide": 32,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/alignment/slide/03-alignment.svg",
+        "alt": "Alignment: Would the rule distinguish an omission from a valid itinerary change?",
+        "frameId": "alignment",
+        "frameIndex": 2,
+        "frameCount": 6
+      }
+    },
+    {
+      "slide": 32,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/alignment/slide/04-status.svg",
+        "alt": "Status: Would the rule distinguish an omission from a valid itinerary change?",
+        "frameId": "status",
+        "frameIndex": 3,
+        "frameCount": 6
+      }
+    },
+    {
+      "slide": 32,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/alignment/slide/05-complete.svg",
+        "alt": "Complete view: Would the rule distinguish an omission from a valid itinerary change?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 6
+      }
+    },
+    {
+      "slide": 32,
+      "click": 5,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/alignment/slide/06-native-capture.svg",
+        "alt": "Tag criteria and judging: Read the criteria, automatic-judging switch, and agent filter. This recorded tag was disabled after qualification.",
+        "frameId": "native-capture",
+        "frameIndex": 5,
+        "frameCount": 6
+      }
     },
     {
       "slide": 33,
       "click": 0
-    },
-    {
-      "slide": 33,
-      "click": 1
-    },
-    {
-      "slide": 33,
-      "click": 2
     },
     {
       "slide": 34,
       "click": 0
+    },
+    {
+      "slide": 34,
+      "click": 1
+    },
+    {
+      "slide": 34,
+      "click": 2
     },
     {
       "slide": 35,
@@ -588,14 +877,6 @@
       "click": 0
     },
     {
-      "slide": 37,
-      "click": 1
-    },
-    {
-      "slide": 37,
-      "click": 2
-    },
-    {
       "slide": 38,
       "click": 0
     },
@@ -616,40 +897,96 @@
       "click": 1
     },
     {
-      "slide": 40,
-      "click": 0
-    },
-    {
-      "slide": 40,
-      "click": 1
-    },
-    {
-      "slide": 41,
-      "click": 0
-    },
-    {
-      "slide": 41,
-      "click": 1
-    },
-    {
-      "slide": 41,
+      "slide": 39,
       "click": 2
+    },
+    {
+      "slide": 40,
+      "click": 0
+    },
+    {
+      "slide": 40,
+      "click": 1
+    },
+    {
+      "slide": 41,
+      "click": 0
+    },
+    {
+      "slide": 41,
+      "click": 1
     },
     {
       "slide": 42,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/coverage/slide/01-incoming.svg",
+        "alt": "Incoming: What is the denominator of each monitoring number?",
+        "frameId": "incoming",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 42,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/coverage/slide/02-coverage.svg",
+        "alt": "Coverage: What is the denominator of each monitoring number?",
+        "frameId": "coverage",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 42,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/coverage/slide/03-agreement.svg",
+        "alt": "Agreement: What is the denominator of each monitoring number?",
+        "frameId": "agreement",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 42,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/coverage/slide/04-complete.svg",
+        "alt": "Complete view: What is the denominator of each monitoring number?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 43,
       "click": 0
-    },
-    {
-      "slide": 43,
-      "click": 1
-    },
-    {
-      "slide": 43,
-      "click": 2
     },
     {
       "slide": 44,
@@ -680,8 +1017,80 @@
       "click": 0
     },
     {
+      "slide": 46,
+      "click": 1
+    },
+    {
+      "slide": 46,
+      "click": 2
+    },
+    {
       "slide": 47,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/regression/slide/01-source.svg",
+        "alt": "Source: What must be saved to replay the same situation?",
+        "frameId": "source",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 47,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/regression/slide/02-case.svg",
+        "alt": "Case: What must be saved to replay the same situation?",
+        "frameId": "case",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 47,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/regression/slide/03-checks.svg",
+        "alt": "Checks: What must be saved to replay the same situation?",
+        "frameId": "checks",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 47,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/regression/slide/04-complete.svg",
+        "alt": "Complete view: What must be saved to replay the same situation?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 48,
@@ -700,16 +1109,16 @@
       "click": 0
     },
     {
-      "slide": 51,
-      "click": 1
-    },
-    {
-      "slide": 51,
-      "click": 2
+      "slide": 52,
+      "click": 0
     },
     {
       "slide": 52,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 52,
+      "click": 2
     },
     {
       "slide": 53,
@@ -720,22 +1129,6 @@
       "click": 0
     },
     {
-      "slide": 54,
-      "click": 1
-    },
-    {
-      "slide": 54,
-      "click": 2
-    },
-    {
-      "slide": 54,
-      "click": 3
-    },
-    {
-      "slide": 54,
-      "click": 4
-    },
-    {
       "slide": 55,
       "click": 0
     },
@@ -746,30 +1139,46 @@
     {
       "slide": 55,
       "click": 2
+    },
+    {
+      "slide": 55,
+      "click": 3
+    },
+    {
+      "slide": 55,
+      "click": 4
     },
     {
       "slide": 56,
       "click": 0
     },
     {
-      "slide": 57,
-      "click": 0
-    },
-    {
-      "slide": 57,
+      "slide": 56,
       "click": 1
     },
     {
-      "slide": 57,
+      "slide": 56,
       "click": 2
     },
     {
       "slide": 57,
-      "click": 3
+      "click": 0
     },
     {
       "slide": 58,
       "click": 0
+    },
+    {
+      "slide": 58,
+      "click": 1
+    },
+    {
+      "slide": 58,
+      "click": 2
+    },
+    {
+      "slide": 58,
+      "click": 3
     },
     {
       "slide": 59,
@@ -780,36 +1189,109 @@
       "click": 0
     },
     {
-      "slide": 60,
-      "click": 1
-    },
-    {
-      "slide": 60,
-      "click": 2
-    },
-    {
-      "slide": 60,
-      "click": 3
-    },
-    {
       "slide": 61,
       "click": 0
     },
     {
-      "slide": 62,
-      "click": 0
-    },
-    {
-      "slide": 62,
+      "slide": 61,
       "click": 1
     },
     {
-      "slide": 62,
+      "slide": 61,
       "click": 2
     },
     {
-      "slide": 63,
+      "slide": 61,
+      "click": 3
+    },
+    {
+      "slide": 62,
       "click": 0
+    },
+    {
+      "slide": 63,
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/comparison/slide/01-freeze.svg",
+        "alt": "Freeze: Did the repair improve bookings, monitoring, or both?",
+        "frameId": "freeze",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 63,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/comparison/slide/02-matched.svg",
+        "alt": "Matched: Did the repair improve bookings, monitoring, or both?",
+        "frameId": "matched",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 63,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/comparison/slide/03-traffic.svg",
+        "alt": "Traffic: Did the repair improve bookings, monitoring, or both?",
+        "frameId": "traffic",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 63,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/comparison/slide/04-recorded.svg",
+        "alt": "Recorded: Did the repair improve bookings, monitoring, or both?",
+        "frameId": "recorded",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 63,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/airline_monitoring/guides/airline_monitoring/comparison/slide/05-complete.svg",
+        "alt": "Complete view: Did the repair improve bookings, monitoring, or both?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 64,
@@ -820,36 +1302,36 @@
       "click": 0
     },
     {
-      "slide": 65,
-      "click": 1
-    },
-    {
-      "slide": 65,
-      "click": 2
-    },
-    {
       "slide": 66,
       "click": 0
     },
     {
-      "slide": 67,
-      "click": 0
-    },
-    {
-      "slide": 67,
+      "slide": 66,
       "click": 1
     },
     {
-      "slide": 67,
+      "slide": 66,
       "click": 2
     },
     {
       "slide": 67,
-      "click": 3
+      "click": 0
     },
     {
       "slide": 68,
       "click": 0
+    },
+    {
+      "slide": 68,
+      "click": 1
+    },
+    {
+      "slide": 68,
+      "click": 2
+    },
+    {
+      "slide": 68,
+      "click": 3
     },
     {
       "slide": 69,
@@ -902,6 +1384,10 @@
     {
       "slide": 81,
       "click": 0
+    },
+    {
+      "slide": 82,
+      "click": 0
     }
   ],
   "issues": [],
@@ -909,32 +1395,32 @@
   "failed_responses": [],
   "answers": [
     {
-      "slide": 42,
-      "destination": "/forge-workshop-kit/airline_monitoring/77",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 47,
+      "slide": 43,
       "destination": "/forge-workshop-kit/airline_monitoring/78",
       "keyboardReturn": true
     },
     {
-      "slide": 50,
+      "slide": 48,
       "destination": "/forge-workshop-kit/airline_monitoring/79",
       "keyboardReturn": true
     },
     {
-      "slide": 56,
+      "slide": 51,
       "destination": "/forge-workshop-kit/airline_monitoring/80",
       "keyboardReturn": true
     },
     {
-      "slide": 59,
-      "destination": "/forge-workshop-kit/airline_monitoring/76",
+      "slide": 57,
+      "destination": "/forge-workshop-kit/airline_monitoring/81",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 60,
+      "destination": "/forge-workshop-kit/airline_monitoring/77",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 327,
+  "routes_checked": 331,
   "recording_links_checked": 8,
   "presenter_notes": true
 }

@@ -31,6 +31,8 @@ Use Agent Lens to locate an operation, runs and Sweeps to compare experiments, A
 
 ## Use consistent visual conventions
 
+Use the [technical-manual skill and figure sources](technical-visuals.md) for the shared diagrams and posters. Their templates define the type, spacing, lines, and reveal geometry. Keep real photographs, scientific scales, and native captures in their original colors.
+
 Keep the same case and values in stable positions across reveals. Label inputs, outputs, units, and tensor shapes beside the corresponding code. A screenshot annotation should point to an actual field without hiding its value; retain the original capture and its source link. Next/Back and case selectors only change what is displayed, never execute the experiment.
 
 For candidate branches, use gray for the parent, blue for Candidate A, and orange for Candidate B. Composition uses a neutral decision card. Solid arrows show code or execution flow; dashed arrows show reviewed evidence. Color never indicates quality. Label the selection and status in text.

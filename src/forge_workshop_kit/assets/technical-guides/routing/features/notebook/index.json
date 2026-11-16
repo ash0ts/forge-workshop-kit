@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "features",
+  "kind": "branches",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "7f2f5afd01a8d0b47075f8eb619d2698113b46a2f038b8c7e67162a666666fd1",
+  "states": [
+    {
+      "id": "request",
+      "label": "Same request",
+      "svg": "01-request.svg",
+      "caption": "Does the same request route differently with word features or sentence features?"
+    },
+    {
+      "id": "words",
+      "label": "Word features",
+      "svg": "02-words.svg",
+      "caption": "Does the same request route differently with word features or sentence features?"
+    },
+    {
+      "id": "embedding",
+      "label": "Sentence features",
+      "svg": "03-embedding.svg",
+      "caption": "Does the same request route differently with word features or sentence features?"
+    },
+    {
+      "id": "fit",
+      "label": "Matched predictions",
+      "svg": "04-fit.svg",
+      "caption": "Does the same request route differently with word features or sentence features?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "05-complete.svg",
+      "caption": "Does the same request route differently with word features or sentence features?"
+    }
+  ],
+  "html": "index.html"
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "learning",
+  "kind": "sequence",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "9c10876d64b1614b30daa275f295b5d075fc1da43f91068fb819d88739c4a56a",
+  "states": [
+    {
+      "id": "loss",
+      "label": "Loss",
+      "svg": "01-loss.svg",
+      "caption": "Which operation changes forecasting weights?"
+    },
+    {
+      "id": "update",
+      "label": "Update",
+      "svg": "02-update.svg",
+      "caption": "Which operation changes forecasting weights?"
+    },
+    {
+      "id": "validation",
+      "label": "Validation",
+      "svg": "03-validation.svg",
+      "caption": "Which operation changes forecasting weights?"
+    },
+    {
+      "id": "failure",
+      "label": "Failure",
+      "svg": "04-failure.svg",
+      "caption": "Which operation changes forecasting weights?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "05-complete.svg",
+      "caption": "Which operation changes forecasting weights?"
+    }
+  ],
+  "html": "index.html"
+}

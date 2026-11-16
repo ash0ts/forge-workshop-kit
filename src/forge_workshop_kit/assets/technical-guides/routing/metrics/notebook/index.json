@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "metrics",
+  "kind": "transformation",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "ee01b9ace5e5098139d936e5fc741c8fc1cb7cc12275c459e0adbc75a6fcf86e",
+  "states": [
+    {
+      "id": "counts",
+      "label": "Counts",
+      "svg": "01-counts.svg",
+      "caption": "Which mistakes contribute to this intent’s F1?"
+    },
+    {
+      "id": "f1",
+      "label": "F1",
+      "svg": "02-f1.svg",
+      "caption": "Which mistakes contribute to this intent’s F1?"
+    },
+    {
+      "id": "macro",
+      "label": "Macro",
+      "svg": "03-macro.svg",
+      "caption": "Which mistakes contribute to this intent’s F1?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "Which mistakes contribute to this intent’s F1?"
+    }
+  ],
+  "html": "index.html"
+}

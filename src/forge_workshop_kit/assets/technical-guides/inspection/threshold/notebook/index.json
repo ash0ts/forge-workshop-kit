@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "threshold",
+  "kind": "sequence",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "941743e712d65ac1e678a3fbd1bb98de9141d555332b3f74c625a2f0070ad2a3",
+  "states": [
+    {
+      "id": "score",
+      "label": "Score",
+      "svg": "01-score.svg",
+      "caption": "Which tradeoff changes when the cutoff moves?"
+    },
+    {
+      "id": "choose",
+      "label": "Choose",
+      "svg": "02-choose.svg",
+      "caption": "Which tradeoff changes when the cutoff moves?"
+    },
+    {
+      "id": "count",
+      "label": "Count",
+      "svg": "03-count.svg",
+      "caption": "Which tradeoff changes when the cutoff moves?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "04-complete.svg",
+      "caption": "Which tradeoff changes when the cutoff moves?"
+    }
+  ],
+  "html": "index.html"
+}

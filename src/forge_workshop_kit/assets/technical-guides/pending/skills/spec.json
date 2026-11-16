@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "id": "skills",
+  "title": "Check whether the skill was read",
+  "eyebrow": "01 / Pending, Inc.",
+  "question": "Did this run use the procedure you edited?",
+  "summary": "If no successful read occurred, display “Not read in this run.”",
+  "kind": "sequence",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ=="
+    },
+    {
+      "label": "Agent loop",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/loop.py"
+    },
+    {
+      "label": "Code for this operation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/loop.py"
+    }
+  ],
+  "steps": [
+    {
+      "id": "saved",
+      "title": "Save the procedure",
+      "body": "The harness holds an editable skill file. A saved file alone has not affected a request.",
+      "input": "Edited skill file",
+      "output": "Available skill",
+      "symbol": "file"
+    },
+    {
+      "id": "read",
+      "title": "Find read_skill",
+      "body": "Inspect the actual action name, skill argument, and returned text. A missing read is a result to explain.",
+      "input": "read_skill action",
+      "output": "Text or recorded read error",
+      "symbol": "tool"
+    },
+    {
+      "id": "request",
+      "title": "Inspect the next request",
+      "body": "Find the returned text in the next request before attributing behavior to your edit.",
+      "input": "Tool observation",
+      "output": "Skill text in model context",
+      "symbol": "message",
+      "code": "messages = append(messages, action, result)",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    }
+  ],
+  "states": [
+    {
+      "id": "saved",
+      "label": "Saved",
+      "visible": [
+        "saved"
+      ],
+      "focus": [
+        "saved"
+      ],
+      "caption": "Did this run use the procedure you edited?"
+    },
+    {
+      "id": "read",
+      "label": "Read",
+      "visible": [
+        "saved",
+        "read"
+      ],
+      "focus": [
+        "read"
+      ],
+      "caption": "Did this run use the procedure you edited?"
+    },
+    {
+      "id": "request",
+      "label": "Request",
+      "visible": [
+        "saved",
+        "read",
+        "request"
+      ],
+      "focus": [
+        "request"
+      ],
+      "caption": "Did this run use the procedure you edited?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "saved",
+        "read",
+        "request"
+      ],
+      "focus": [],
+      "caption": "Did this run use the procedure you edited?"
+    }
+  ]
+}

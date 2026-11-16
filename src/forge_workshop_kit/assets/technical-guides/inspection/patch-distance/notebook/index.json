@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "patch-distance",
+  "kind": "transformation",
+  "layout": "notebook",
+  "width": 960,
+  "height": 780,
+  "source_sha256": "5239fdaf6cbb3d948070583e8286bbb9428bd7e7bf7bb1813b3ca9eec2cdcaf3",
+  "states": [
+    {
+      "id": "query",
+      "label": "Query",
+      "svg": "01-query.svg",
+      "caption": "Which normal patch is the closest reference for this location?"
+    },
+    {
+      "id": "scale",
+      "label": "Scale",
+      "svg": "02-scale.svg",
+      "caption": "Which normal patch is the closest reference for this location?"
+    },
+    {
+      "id": "distance",
+      "label": "Distance",
+      "svg": "03-distance.svg",
+      "caption": "Which normal patch is the closest reference for this location?"
+    },
+    {
+      "id": "map",
+      "label": "Map",
+      "svg": "04-map.svg",
+      "caption": "Which normal patch is the closest reference for this location?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "svg": "05-complete.svg",
+      "caption": "Which normal patch is the closest reference for this location?"
+    }
+  ],
+  "html": "index.html"
+}

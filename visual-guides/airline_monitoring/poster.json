@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "poster",
+  "title": "Monitor an airline agent and improve its tests",
+  "eyebrow": "06 / Airline monitoring",
+  "question": "What will you learn?",
+  "summary": "A passenger changes the outbound flight. The booking API replaces the whole itinerary, so a successful call can still erase the return journey. Investigate the behavior before writing a monitoring rule.",
+  "kind": "poster",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA=="
+    }
+  ],
+  "steps": [],
+  "states": [
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [],
+      "focus": [],
+      "caption": "What will you learn?"
+    }
+  ],
+  "poster": {
+    "situation": "A passenger changes the outbound flight. The booking API replaces the whole itinerary, so a successful call can still erase the return journey. Investigate the behavior before writing a monitoring rule.",
+    "outcomes": [
+      "Trace a passenger request through its booking changes.",
+      "Check monitoring criteria against reviewed conversations.",
+      "Turn incidents into regression tests and compare repairs."
+    ],
+    "duration": "6 hours",
+    "prerequisites": "Read basic Python; use your own Forge project.",
+    "dataset": "Simulated bookings adapted from the MIT-licensed τ-bench airline environment",
+    "forge": [
+      {
+        "name": "Agent Lens",
+        "action": "Investigate conversations, Insights, tags, and Alignment."
+      },
+      {
+        "name": "EvalTables",
+        "action": "Compare booking outcomes on the same requests."
+      },
+      {
+        "name": "Artifacts",
+        "action": "Preserve reviewed cases, criteria, code, and results."
+      }
+    ],
+    "cta": {
+      "label": "Read the example, then copy the notebook",
+      "url": "https://ash0ts.github.io/forge-workshop-kit/#airline_monitoring"
+    },
+    "hero": "hero.svg"
+  }
+}

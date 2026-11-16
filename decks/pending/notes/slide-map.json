@@ -1,7 +1,7 @@
 {
   "duration_minutes": 240,
-  "total_slides": 100,
-  "main_slides": 95,
+  "total_slides": 101,
+  "main_slides": 96,
   "sections": [
     {
       "anchor": "cover",
@@ -83,6 +83,8 @@
       "title": "Please improve<br>yourself.",
       "kind": "cover",
       "notes": "We will implement an agent that can inspect an account, refund a duplicate charge, and provision access. Then we will instrument and evaluate its work before asking an editor agent to revise its instructions. Pending, Inc. and its accounts are fictional; the Python tools, model requests, traces, and evaluations run in your own project.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Please improve yourself",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
@@ -101,10 +103,34 @@
     },
     {
       "number": 2,
+      "key": "technical-overview",
+      "title": "What you will build and inspect",
+      "kind": "technical-manual",
+      "notes": "Introduce the real task, the data available, and the outcome participants will check. Point to each Forge product at the operation it helps investigate.\nVisual guide: pending/overview. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
+      "clicks": 4,
+      "technical_guide": "pending/overview",
+      "concept": "You\u2019re adding an agent to the support team",
+      "exercise": null,
+      "source": [
+        "scripts/pending_cells.py",
+        "src/forge_workshop_kit/pending/harness.py"
+      ],
+      "evidence": [],
+      "timing": {
+        "section": "Understand the task and harness",
+        "start_minute": 0,
+        "duration_minutes": 20
+      },
+      "answer": null
+    },
+    {
+      "number": 3,
       "key": "arrival",
       "title": "You\u2019re adding an agent to the support team.",
       "kind": "opening-story",
       "notes": "Set the context before naming the harness. We are building a support agent that can change account state, so a plausible reply is not enough. The company and customer accounts are fictional. The Python operations, model requests, traces, and checks are real workshop code. The one-page handbook is an opening illustration, not the measured starting harness. Participants will build and test the starting version before comparing changes.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "You\u2019re adding an agent to the support team",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
@@ -122,11 +148,13 @@
       "answer": null
     },
     {
-      "number": 3,
+      "number": 4,
       "key": "ticket",
       "title": "Acme wants a duplicate $49 charge refunded.",
       "kind": "opening-story",
       "notes": "Source: cases.py, double-charge. Its mission explicitly says to keep pay-1 and refund the duplicate. Both pay-1 and pay-2 are captured 4900-cent payments for inv-1, and refunds starts empty. Ask what must be read before changing anything: the account identity, invoice identity, payment identity and existing refunds. Another account also has inv-1, so searching by invoice alone is insufficient. No real payment service is connected.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Acme wants a duplicate $49 charge refunded",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
@@ -144,11 +172,13 @@
       "answer": null
     },
     {
-      "number": 4,
+      "number": 5,
       "key": "success",
       "title": "Check the account after the agent says it has finished.",
       "kind": "explanation",
       "notes": "Read the desired outcome from left to right. The tool appends one full 4900-cent refund for pay-2. Both captured payment records remain; there is no modeled account balance or payment deletion. The independent scorer compares the whole resulting account with the expected account and checks that the requested work was completed. A separate LLM judge compares the employee\u2019s explanation with its recorded actions. A reply saying the refund is complete cannot create a missing refund or excuse a duplicate. These are expected fixture states, not recorded performance results.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Check the account after the agent says it has finished",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
@@ -166,11 +196,13 @@
       "answer": null
     },
     {
-      "number": 5,
+      "number": 6,
       "key": "access-ticket",
       "title": "Fern needs Alex added to its account.",
       "kind": "explanation",
       "notes": "Source: cases.py, missing-seat, and simulator.py, provision_timeout_after_commit. Fern starts active and paid, with members empty. The requested email is alex@example.test and the requested role is member. The first provisioning write commits before the injected timeout is returned. From the timeout alone, the agent cannot establish whether access exists; onboarding_status can read the account. The expected final state contains exactly one matching membership, with unrelated state unchanged. This is a separate development case from Acme, not the same account continued into another task. The later MCP and timeout exercises show the implementation and recovery choices.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Fern needs Alex added to its account",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
@@ -188,11 +220,13 @@
       "answer": null
     },
     {
-      "number": 6,
+      "number": 7,
       "key": "request",
       "title": "Our dataset is six tickets with resettable account records.",
       "kind": "explanation",
       "notes": "The dataset is executable teaching fixtures in cases.py, not a collection of historical customer chats. The two development cases let us explain and test the mechanics. The four final cases vary the billing or access situation; their expected outcomes and grader output stay outside improvement prompts. Source files are public, so learners can inspect them, but the final comparison is only informative if we stop choosing edits before running it. Every candidate starts with the same initial account state; one candidate\u2019s refund cannot carry into another candidate\u2019s test. We will first write an instruction change ourselves, then ask an editor agent to propose and test alternatives. The research question in this small workshop is whether those changes affect correct work on fresh tickets. Six cases do not establish production reliability.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Our dataset is six tickets with resettable account records",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
@@ -210,11 +244,13 @@
       "answer": null
     },
     {
-      "number": 7,
+      "number": 8,
       "key": "schedule",
       "title": "Implement the agent, evaluate it, then test harness changes.",
       "kind": "explanation",
       "notes": "One four-hour session. The schedule includes two ten-minute breaks and hands-on coding. Foundations precede implementation; worked answers are linked for help, not additional required work. Allow final comparisons to finish from saved stages if provider latency is high. Never call a replay the attendee's execution.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Implement the agent, evaluate it, then test harness changes",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
@@ -232,11 +268,13 @@
       "answer": null
     },
     {
-      "number": 8,
+      "number": 9,
       "key": "harness-inputs",
-      "title": "The harness builds the request the model receives.",
-      "kind": "explanation",
-      "notes": "Point to the system text, tool guide, installed skill names and customer ticket. Ask which item would change if the participant edited instructions. A skill name advertises a procedure; its contents have not yet entered the request.",
+      "title": "What controls the employee?",
+      "kind": "technical-manual",
+      "notes": "Point to the system text, tool guide, installed skill names and customer ticket. Ask which item would change if the participant edited instructions. A skill name advertises a procedure; its contents have not yet entered the request.\nVisual guide: pending/harness. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
+      "clicks": 3,
+      "technical_guide": "pending/harness",
       "concept": "The harness builds the request the model receives",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
@@ -254,11 +292,13 @@
       "answer": null
     },
     {
-      "number": 9,
+      "number": 10,
       "key": "harness-execution",
       "title": "Python executes the action and returns its result.",
       "kind": "explanation",
       "notes": "Keep the request in place. Reveal the selected action and the Python dispatcher. The model produces JSON; the runtime decides which function to call. Follow the returning arrow to my_observation. This is the mechanism we will implement, not a provider-native function-calling example.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Python executes the action and returns its result",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
@@ -276,11 +316,13 @@
       "answer": null
     },
     {
-      "number": 10,
+      "number": 11,
       "key": "harness-edit-boundary",
       "title": "Different edits change different parts of the agent.",
       "kind": "explanation",
       "notes": "Use the table to distinguish behavior changes. The model is fixed; it is not retrained when instructions change. The learner develops tools and the loop before the baseline. The later editor cannot rewrite those frozen functions. Ask whether editing an unused skill can explain a changed outcome.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Different edits change different parts of the agent",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
@@ -298,11 +340,13 @@
       "answer": null
     },
     {
-      "number": 11,
+      "number": 12,
       "key": "copy",
       "title": "Copy the notebook into your own project.",
       "kind": "explanation",
       "notes": "Use the current template, never the historical November 12 gateway notebook. An external account requires its own project, notebook compute access and inference access. Setup does not issue a model request.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Copy the notebook into your own project",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
@@ -322,11 +366,13 @@
       "answer": null
     },
     {
-      "number": 12,
+      "number": 13,
       "key": "local",
       "title": "The same notebook runs on a laptop.",
       "kind": "explanation",
       "notes": "These commands correspond to the kit README and locked pending extra. Do not send participants to old start.py or office_notebook.py. Inference uses their own access and billing. Windows supports the same uv commands.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "The same notebook runs on a laptop",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
@@ -346,11 +392,13 @@
       "answer": null
     },
     {
-      "number": 13,
+      "number": 14,
       "key": "access",
       "title": "Check where your work will be saved.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Check my project and restore saved work.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Check where your work will be saved",
       "exercise": {
         "step": "1 \u00b7 Connect and trace",
@@ -373,11 +421,13 @@
       "answer": null
     },
     {
-      "number": 14,
+      "number": 15,
       "key": "record",
       "title": "Save an operation\u2019s inputs, output, and timing.",
       "kind": "explanation",
       "notes": "The event helper runs the supplied function and returns two objects. result is what the caller needs; record describes the operation with its arguments, output, timing, and any error. We save that record before exporting a trace. If export fails, we can send the saved record again without repeating a refund or another model request.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Save an operation\u2019s inputs, output, and timing",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
@@ -397,11 +447,13 @@
       "answer": null
     },
     {
-      "number": 15,
+      "number": 16,
       "key": "tool-scope",
       "title": "Export the saved operation as an Agent Lens span.",
       "kind": "explanation",
       "notes": "Map each field to the record from the previous slide. Tool creates a span with the operation name, inputs, output, and timestamps; record_error attaches the recorded failure. This function exports an event that already happened. The full notebook function returns its span identity so the execution can link back to Agent Lens.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Export the saved operation as an Agent Lens span",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
@@ -421,11 +473,13 @@
       "answer": null
     },
     {
-      "number": 16,
+      "number": 17,
       "key": "trace",
       "title": "Add an environment field and inspect it in Agent Lens.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Run this check and verify my Agent Lens trace.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Add an environment field and inspect it in Agent Lens",
       "exercise": {
         "step": "1 \u00b7 Connect and trace",
@@ -448,11 +502,13 @@
       "answer": null
     },
     {
-      "number": 17,
+      "number": 18,
       "key": "trace-screen",
       "title": "Inspect the account requested by this tool call.",
       "kind": "explanation",
       "notes": "Verified v0.3.0 baseline billing tool span get_account. The model chose get_account in this run; do not claim it chose the learner-authored lookup_invoice. Local checks exercise that authored tool separately. This early screenshot teaches the native inspection surface; participants should open their own setup trace.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Inspect the account requested by this tool call",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
@@ -472,11 +528,13 @@
       "answer": null
     },
     {
-      "number": 18,
+      "number": 19,
       "key": "trace-detail",
       "title": "Check which account records the model received.",
       "kind": "explanation",
       "notes": "Enlarged native crop x580,y245,w690,h445. Saved get_account, not lookup_invoice. Do not infer that the model called the authored lookup tool; this example teaches the same span fields participants instrumented.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Check which account records the model received",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
@@ -496,11 +554,13 @@
       "answer": null
     },
     {
-      "number": 19,
+      "number": 20,
       "key": "invoice",
       "title": "The tool reads one invoice from one account.",
       "kind": "explanation",
       "notes": "The case is simulated but the logic is ordinary application code. Another account also has inv-1, so filtering payments without selecting the account is a real mistake the checks can catch.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "The tool reads one invoice from one account",
       "exercise": {
         "step": "2\u20133 \u00b7 Tools and observations"
@@ -518,11 +578,13 @@
       "answer": null
     },
     {
-      "number": 20,
+      "number": 21,
       "key": "tool",
       "title": "Write the invoice lookup.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my invoice lookup.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Write the invoice lookup",
       "exercise": {
         "step": "2 \u00b7 Build an invoice tool",
@@ -540,14 +602,16 @@
         "start_minute": 40,
         "duration_minutes": 30
       },
-      "answer": 96
+      "answer": 97
     },
     {
-      "number": 21,
+      "number": 22,
       "key": "tool-schema",
       "title": "Connect the action schema to your Python function.",
       "kind": "explanation",
       "notes": "The model sees an action schema that names lookup_invoice and its account_id and invoice_id arguments. That schema alone cannot read an account. Your dispatch function connects the selected name to the Python implementation. This workshop uses local Python for the tool and real local MCP for onboarding.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Connect the action schema to your Python function",
       "exercise": {
         "step": "2\u20133 \u00b7 Tools and observations"
@@ -565,11 +629,13 @@
       "answer": null
     },
     {
-      "number": 22,
+      "number": 23,
       "key": "loop-1",
       "title": "Start with the customer\u2019s request.",
       "kind": "explanation",
       "notes": "Same objects and positions across these five frames. Show the actual action/result connection. This is an explanatory diagram based on the public fixture, not a claimed replay of every recorded run.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Start with the customer\u2019s request",
       "exercise": {
         "step": "2\u20133 \u00b7 Tools and observations"
@@ -587,11 +653,13 @@
       "answer": null
     },
     {
-      "number": 23,
+      "number": 24,
       "key": "loop-2",
       "title": "The model chooses an action and its arguments.",
       "kind": "explanation",
       "notes": "Same objects and positions across these five frames. Show the actual action/result connection. This is an explanatory diagram based on the public fixture, not a claimed replay of every recorded run.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "The model chooses an action and its arguments",
       "exercise": {
         "step": "2\u20133 \u00b7 Tools and observations"
@@ -609,11 +677,13 @@
       "answer": null
     },
     {
-      "number": 24,
+      "number": 25,
       "key": "loop-3",
-      "title": "Your dispatcher calls the Python function.",
-      "kind": "explanation",
-      "notes": "Same objects and positions across these five frames. Show the actual action/result connection. This is an explanatory diagram based on the public fixture, not a claimed replay of every recorded run.",
+      "title": "Pass the tool result into the next request",
+      "kind": "technical-manual",
+      "notes": "Same objects and positions across these five frames. Show the actual action/result connection. This is an explanatory diagram based on the public fixture, not a claimed replay of every recorded run.\nVisual guide: pending/dispatch. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
+      "clicks": 3,
+      "technical_guide": "pending/dispatch",
       "concept": "Your dispatcher calls the Python function",
       "exercise": {
         "step": "2\u20133 \u00b7 Tools and observations"
@@ -631,11 +701,13 @@
       "answer": null
     },
     {
-      "number": 25,
+      "number": 26,
       "key": "loop-4",
       "title": "The function returns the account records.",
       "kind": "explanation",
       "notes": "Same objects and positions across these five frames. Show the actual action/result connection. This is an explanatory diagram based on the public fixture, not a claimed replay of every recorded run.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "The function returns the account records",
       "exercise": {
         "step": "2\u20133 \u00b7 Tools and observations"
@@ -653,11 +725,13 @@
       "answer": null
     },
     {
-      "number": 26,
+      "number": 27,
       "key": "loop-5",
       "title": "Put those records into the next request.",
       "kind": "explanation",
       "notes": "Same objects and positions across these five frames. Show the actual action/result connection. This is an explanatory diagram based on the public fixture, not a claimed replay of every recorded run.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Put those records into the next request",
       "exercise": {
         "step": "2\u20133 \u00b7 Tools and observations"
@@ -675,11 +749,13 @@
       "answer": null
     },
     {
-      "number": 27,
+      "number": 28,
       "key": "dispatch",
       "title": "Dispatch lookup_invoice to your function.",
       "kind": "explanation",
       "notes": "Trace two inputs through this function. lookup_invoice calls the participant function and returns the same world with its lookup result. get_account takes the existing call_tool path. Both return a pair of account state and observation, so the caller can append the observation consistently. A write tool may return changed state.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Dispatch lookup_invoice to your function",
       "exercise": {
         "step": "2\u20133 \u00b7 Tools and observations"
@@ -697,11 +773,13 @@
       "answer": null
     },
     {
-      "number": 28,
+      "number": 29,
       "key": "handoff",
       "title": "Append the action and its result to the next request.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my tool-to-model handoff.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Append the action and its result to the next request",
       "exercise": {
         "step": "3 \u00b7 Pass observations to the agent",
@@ -719,14 +797,16 @@
         "start_minute": 40,
         "duration_minutes": 30
       },
-      "answer": 97
+      "answer": 98
     },
     {
-      "number": 29,
+      "number": 30,
       "key": "messages",
       "title": "Include the tool observation in the conversation history.",
       "kind": "explanation",
       "notes": "The model cannot see a Python return value unless the executor includes it in a later request. Append the chosen action and its result to a new list so the previous request stays available for inspection. This executor uses JSON actions and a user message containing the observation; it is not using the OpenAI tool-message protocol.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Include the tool observation in the conversation history",
       "exercise": {
         "step": "2\u20133 \u00b7 Tools and observations"
@@ -744,11 +824,13 @@
       "answer": null
     },
     {
-      "number": 30,
+      "number": 31,
       "key": "history-not-training",
       "title": "A tool result changes the next request, not the weights.",
       "kind": "explanation",
       "notes": "Ask a participant to locate the returned payments in the saved next request. This is in-context information available to the next model call. No optimizer or weight update occurs. Reuse this distinction when we introduce the editor.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "A tool result changes the next request, not the weights",
       "exercise": {
         "step": "2\u20133 \u00b7 Tools and observations"
@@ -766,11 +848,13 @@
       "answer": null
     },
     {
-      "number": 31,
+      "number": 32,
       "key": "starting",
       "title": "Test the starting harness on billing and onboarding.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Freeze this executor and run the two starting tickets.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Test the starting harness on billing and onboarding",
       "exercise": {
         "step": "3 \u00b7 Pass observations to the agent",
@@ -791,11 +875,13 @@
       "answer": null
     },
     {
-      "number": 32,
+      "number": 33,
       "key": "break-one",
       "title": "Take ten minutes before investigating the timeout.",
       "kind": "explanation",
       "notes": "Save at 70 minutes. The first break occurs after the two starting cases. Leave the project and next step visible. Reopening the notebook does not execute either case again.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Take ten minutes before investigating the timeout",
       "exercise": {
         "step": ""
@@ -812,11 +898,13 @@
       "answer": null
     },
     {
-      "number": 33,
+      "number": 34,
       "key": "model-span",
       "title": "Record each model request and its response.",
       "kind": "explanation",
       "notes": "The LLM span records the requested and returned model identities, input and output messages, timing, settings, and available usage. Entering the span context creates and closes the recorded span; constructing the object alone is insufficient. Open my_model_span for the full message mapping and usage handling; this slide abbreviates the comprehensions. Add usage only when the provider returned it. In Agent Lens, find the request after an account lookup and verify that its input contains the returned payments.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Record each model request and its response",
       "exercise": {
         "step": "3 \u00b7 Pass observations to the agent"
@@ -836,11 +924,13 @@
       "answer": null
     },
     {
-      "number": 34,
+      "number": 35,
       "key": "mcp-initialize",
       "title": "The executor starts a local MCP session.",
       "kind": "explanation",
       "notes": "MCP is the interface between this Python client and the onboarding service. Here the service is a local subprocess communicating over stdio. There is no gateway or remote Sandbox requirement. A new action starts a session against the saved office state.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "The executor starts a local MCP session",
       "exercise": {
         "step": "3 \u00b7 Pass observations to the agent"
@@ -860,11 +950,13 @@
       "answer": null
     },
     {
-      "number": 35,
+      "number": 36,
       "key": "mcp-discover",
       "title": "Discovery returns tool names and input schemas.",
       "kind": "explanation",
       "notes": "list_tools returns the actual schema for onboarding_status and provision_member. The discover_onboarding action exposes those records to the model. A schema describes accepted arguments; it does not grant access or execute a write.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Discovery returns tool names and input schemas",
       "exercise": {
         "step": "3 \u00b7 Pass observations to the agent"
@@ -884,11 +976,13 @@
       "answer": null
     },
     {
-      "number": 36,
+      "number": 37,
       "key": "mcp-invoke",
       "title": "Call the discovered tool with the selected arguments.",
       "kind": "explanation",
       "notes": "The call supplies account_id, email, role and operation_id. The MCP server calls the same office simulator used in our checks. The simulated write can commit before a timeout result comes back.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Call the discovered tool with the selected arguments",
       "exercise": {
         "step": "3 \u00b7 Pass observations to the agent"
@@ -908,11 +1002,13 @@
       "answer": null
     },
     {
-      "number": 37,
+      "number": 38,
       "key": "mcp-return",
       "title": "Read the returned observation before deciding what to do next.",
       "kind": "explanation",
       "notes": "The server returns JSON and saves office.json. The executor reloads that state and my_observation adds the result to the conversation. A timed-out result and unchanged client expectations cannot establish that the server did nothing.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Read the returned observation before deciding what to do next",
       "exercise": {
         "step": "3 \u00b7 Pass observations to the agent"
@@ -932,11 +1028,13 @@
       "answer": null
     },
     {
-      "number": 38,
+      "number": 39,
       "key": "mcp-code",
       "title": "Discovery and execution are separate client calls.",
       "kind": "explanation",
       "notes": "This is the exact client control flow inside mcp_action, with the surrounding context managers omitted. Ask which branch can discover tools without invoking a mutation, and which branch parses a tool response. This is explanatory code, not an additional exercise or model call.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Discovery and execution are separate client calls",
       "exercise": {
         "step": "3 \u00b7 Pass observations to the agent"
@@ -956,11 +1054,13 @@
       "answer": null
     },
     {
-      "number": 39,
+      "number": 40,
       "key": "timeout-1",
       "title": "An access request is sent.",
       "kind": "explanation",
       "notes": "Explanatory sequence for the committed-write timeout fixture. Use the recorded native trace next to verify the actual recovery. The actual onboarding_status tool reads account_id. A repeated mutation must reuse its operation_id.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "An access request is sent",
       "exercise": {
         "step": "3 \u00b7 Pass observations to the agent"
@@ -980,11 +1080,13 @@
       "answer": null
     },
     {
-      "number": 40,
+      "number": 41,
       "key": "timeout-2",
       "title": "Provisioning commits before its response times out.",
       "kind": "explanation",
       "notes": "Explanatory sequence for the committed-write timeout fixture. Use the recorded native trace next to verify the actual recovery. The actual onboarding_status tool reads account_id. A repeated mutation must reuse its operation_id.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Provisioning commits before its response times out",
       "exercise": {
         "step": "3 \u00b7 Pass observations to the agent"
@@ -1004,11 +1106,13 @@
       "answer": null
     },
     {
-      "number": 41,
+      "number": 42,
       "key": "timeout-3",
       "title": "Read account access before retrying the write.",
       "kind": "explanation",
       "notes": "Explanatory sequence for the committed-write timeout fixture. Use the recorded native trace next to verify the actual recovery. The actual onboarding_status tool reads account_id. A repeated mutation must reuse its operation_id.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Read account access before retrying the write",
       "exercise": {
         "step": "3 \u00b7 Pass observations to the agent"
@@ -1028,11 +1132,13 @@
       "answer": null
     },
     {
-      "number": 42,
+      "number": 43,
       "key": "retry-identity",
-      "title": "A stable operation_id prevents a repeated write.",
-      "kind": "explanation",
-      "notes": "In notebook step 3, use the free local timeout practice. Predict the member count, trigger the timeout, and compare reading status with same-ID and new-ID retries. Reset between alternatives. This uses Python only, changes no saved employee run, and makes no model request. Illustration of simulator.execute after a committed provisioning request. The same operation_id and identical arguments return the stored receipt with replayed=true. A new operation_id is a new mutation and can add a duplicate membership. Reusing an ID with different arguments is rejected. The recorded onboarding recovery read status instead of retrying, so this diagram explains tool behavior rather than claiming this branch occurred in that run.",
+      "title": "A timed-out write may already have worked",
+      "kind": "technical-manual",
+      "notes": "In notebook step 3, use the free local timeout practice. Predict the member count, trigger the timeout, and compare reading status with same-ID and new-ID retries. Reset between alternatives. This uses Python only, changes no saved employee run, and makes no model request. Illustration of simulator.execute after a committed provisioning request. The same operation_id and identical arguments return the stored receipt with replayed=true. A new operation_id is a new mutation and can add a duplicate membership. Reusing an ID with different arguments is rejected. The recorded onboarding recovery read status instead of retrying, so this diagram explains tool behavior rather than claiming this branch occurred in that run.\nVisual guide: pending/retry. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
+      "clicks": 4,
+      "technical_guide": "pending/retry",
       "concept": "A stable operation_id prevents a repeated write",
       "exercise": {
         "step": "3 \u00b7 Pass observations to the agent"
@@ -1052,11 +1158,13 @@
       "answer": null
     },
     {
-      "number": 43,
+      "number": 44,
       "key": "repair-retry",
       "title": "Repair the retry in Python.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Compare the two retry procedures.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Repair the retry in Python",
       "exercise": {
         "step": "3 \u00b7 Pass observations to the agent",
@@ -1079,11 +1187,13 @@
       "answer": null
     },
     {
-      "number": 44,
+      "number": 45,
       "key": "repair-result",
       "title": "One retry policy changes the account twice.",
       "kind": "explanation",
       "notes": "Source evidence/pending-retry-repair.json. Both execute the same committed-write timeout from fresh state. Distinguish this participant-written Python repair from the later instructions-only comparison. Ask participants to open their recovery trace and find the repeated operation ID.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "One retry policy changes the account twice",
       "exercise": {
         "step": "3 \u00b7 Pass observations to the agent"
@@ -1103,11 +1213,13 @@
       "answer": null
     },
     {
-      "number": 45,
+      "number": 46,
       "key": "timeout-screen",
       "title": "Inspect the timeout and the following status check.",
       "kind": "explanation",
       "notes": "v0.3.0 skill-loaded onboarding: timeout span 5ddd78b1e9faa2d3; recovery status span e62596437e485145. Ask a learner to find evidence that access exists. Do not infer failure from a red span alone.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Inspect the timeout and the following status check",
       "exercise": {
         "step": "3 \u00b7 Pass observations to the agent"
@@ -1127,11 +1239,13 @@
       "answer": null
     },
     {
-      "number": 46,
+      "number": 47,
       "key": "timeout-detail",
       "title": "The tool says the write may have committed.",
       "kind": "explanation",
       "notes": "Crop x580,y423,w690,h280 from the unchanged1280x720 native capture. Follow its conversation link on the preceding slide. The next operation in the saved trace is onboarding_status.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "The tool says the write may have committed",
       "exercise": {
         "step": "3 \u00b7 Pass observations to the agent"
@@ -1151,11 +1265,13 @@
       "answer": null
     },
     {
-      "number": 47,
+      "number": 48,
       "key": "checks",
-      "title": "Check the account and the explanation separately.",
-      "kind": "explanation",
-      "notes": "The state scorer reads the account after execution and checks facts such as payment identity, refund amount, and duplicate effects. The LLM judge reads the request, actions, and final reply to assess whether the explanation is supported. These can disagree: an agent may do the right work and describe it incorrectly. An unavailable judge response stays missing.",
+      "title": "Four checks answer different questions",
+      "kind": "technical-manual",
+      "notes": "The state scorer reads the account after execution and checks facts such as payment identity, refund amount, and duplicate effects. The LLM judge reads the request, actions, and final reply to assess whether the explanation is supported. These can disagree: an agent may do the right work and describe it incorrectly. An unavailable judge response stays missing.\nVisual guide: pending/checks. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
+      "clicks": 4,
+      "technical_guide": "pending/checks",
       "concept": "Check the account and the explanation separately",
       "exercise": {
         "step": "4\u20135 \u00b7 Check and edit"
@@ -1175,11 +1291,13 @@
       "answer": null
     },
     {
-      "number": 48,
+      "number": 49,
       "key": "scorer-cases",
       "title": "The same confident reply can accompany four account states.",
       "kind": "explanation",
       "notes": "These are the four free development fixtures from teaching.check_scorer: one 4900-cent refund, a 100-cent refund, no refund, and two 4900-cent refunds. They share the reply Everything is resolved. The displayed PASS/FAIL values are the required deterministic checks, not inferred LLM judgments. Ask which fields my_state_check must read before participants implement it.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "The same confident reply can accompany four account states",
       "exercise": {
         "step": "4\u20135 \u00b7 Check and edit"
@@ -1199,11 +1317,13 @@
       "answer": null
     },
     {
-      "number": 49,
+      "number": 50,
       "key": "scorer",
       "title": "Write checks for full, partial, missing, and duplicate refunds.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Test my scorer against four known examples.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Write checks for full, partial, missing, and duplicate refunds",
       "exercise": {
         "step": "4 \u00b7 Check the work",
@@ -1223,14 +1343,16 @@
         "start_minute": 105,
         "duration_minutes": 30
       },
-      "answer": 98
+      "answer": 99
     },
     {
-      "number": 50,
+      "number": 51,
       "key": "judge-state",
       "title": "The account can contradict a confident reply.",
       "kind": "explanation",
       "notes": "The public partial-refund fixture contains one 100-cent refund, compared with the required 4900 cents. The model's explanation cannot change that state. Read the actual integer comparison before introducing the judge.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "The account can contradict a confident reply",
       "exercise": {
         "step": "4\u20135 \u00b7 Check and edit"
@@ -1250,11 +1372,13 @@
       "answer": null
     },
     {
-      "number": 51,
+      "number": 52,
       "key": "judge-validity",
       "title": "A valid judge response can still contain a wrong judgment.",
       "kind": "explanation",
       "notes": "Work through availability, schema and correctness separately. The validator can reject strings in boolean fields. It cannot prove complete:true is right. For this illustrative partial-refund example it would be wrong. The live judge's actual reason remains the evidence to inspect.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "A valid judge response can still contain a wrong judgment",
       "exercise": {
         "step": "4\u20135 \u00b7 Check and edit"
@@ -1274,11 +1398,13 @@
       "answer": null
     },
     {
-      "number": 52,
+      "number": 53,
       "key": "judge",
       "title": "Ask the judge to compare the reply with recorded actions.",
       "kind": "explanation",
       "notes": "Rubric from current pending_cells.py. Explain why the judge receives task, recorded actions and explanation. Have participants inspect one reason against a real span. Separate grammatical JSON validation from judging quality.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Ask the judge to compare the reply with recorded actions",
       "exercise": {
         "step": "4\u20135 \u00b7 Check and edit"
@@ -1298,11 +1424,13 @@
       "answer": null
     },
     {
-      "number": 53,
+      "number": 54,
       "key": "publish-dev",
       "title": "Publish development results with both kinds of score.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Judge and publish the starting development comparison.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Publish development results with both kinds of score",
       "exercise": {
         "step": "4 \u00b7 Check the work",
@@ -1325,11 +1453,13 @@
       "answer": null
     },
     {
-      "number": 54,
+      "number": 55,
       "key": "compare-fields",
       "title": "Know which check produced the score.",
       "kind": "explanation",
       "notes": "The public check_work result can influence the employee. The participant-written scorer teaches a bounded account check. The independent final grader checks complete expected state and the resolution. The explanation judge compares the reply with recorded actions. Its validator checks structure, not correctness. Ask a participant which check an improver is allowed to see.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Know which check produced the score",
       "exercise": {
         "step": "4\u20135 \u00b7 Check and edit"
@@ -1349,11 +1479,13 @@
       "answer": null
     },
     {
-      "number": 55,
+      "number": 56,
       "key": "manual-interpret",
-      "title": "An installed skill must be read before it can guide the model.",
-      "kind": "explanation",
-      "notes": "build_messages lists installed skill names. read_skill returns the file contents, and my_observation appends that result to the next request. Before editing, the notebook shows skill reads from the starting tickets. If there is no read, say so. The optional free example demonstrates the named file, returned text, and next request without pretending that a model chose it. After editing, compare the actual read event and later saved request. No read means we cannot claim the skill influenced this execution. Loading it still does not prove the agent followed it; inspect the subsequent tools.",
+      "title": "Check whether the skill was read",
+      "kind": "technical-manual",
+      "notes": "build_messages lists installed skill names. read_skill returns the file contents, and my_observation appends that result to the next request. Before editing, the notebook shows skill reads from the starting tickets. If there is no read, say so. The optional free example demonstrates the named file, returned text, and next request without pretending that a model chose it. After editing, compare the actual read event and later saved request. No read means we cannot claim the skill influenced this execution. Loading it still does not prove the agent followed it; inspect the subsequent tools.\nVisual guide: pending/skills. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
+      "clicks": 3,
+      "technical_guide": "pending/skills",
       "concept": "An installed skill must be read before it can guide the model",
       "exercise": {
         "step": "4\u20135 \u00b7 Check and edit"
@@ -1373,38 +1505,13 @@
       "answer": null
     },
     {
-      "number": 56,
+      "number": 57,
       "key": "aria-investigate",
       "title": "Investigate this result",
       "kind": "aria-investigation",
       "notes": "Allocate 8 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
-      "concept": "Check one billing ticket: what changed in the account, what did the employee claim, and did read_skill occur before the procedure was used?",
-      "exercise": {
-        "step": "evals",
-        "function": null,
-        "check": "Check one cited record",
-        "run": "Copy investigation prompt"
-      },
-      "source": [
-        "scripts/aria_storyboard.py",
-        "src/forge_workshop_kit/assets/aria/pending_inc/investigate.json"
-      ],
-      "evidence": [
-        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c2458ce8b6bb52274d29b5c5a691424b"
-      ],
-      "timing": {
-        "section": "Investigate this result",
-        "start_minute": 117,
-        "duration_minutes": 8
-      },
-      "answer": null
-    },
-    {
-      "number": 57,
-      "key": "aria-investigate-response",
-      "title": "Read one claim in the recorded response",
-      "kind": "aria-investigation",
-      "notes": "Allocate 8 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "clicks": null,
+      "technical_guide": null,
       "concept": "Check one billing ticket: what changed in the account, what did the employee claim, and did read_skill occur before the procedure was used?",
       "exercise": {
         "step": "evals",
@@ -1428,10 +1535,12 @@
     },
     {
       "number": 58,
-      "key": "aria-investigate-verify",
-      "title": "Open the source and check that claim",
+      "key": "aria-investigate-response",
+      "title": "Read one claim in the recorded response",
       "kind": "aria-investigation",
       "notes": "Allocate 8 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "clicks": null,
+      "technical_guide": null,
       "concept": "Check one billing ticket: what changed in the account, what did the employee claim, and did read_skill occur before the procedure was used?",
       "exercise": {
         "step": "evals",
@@ -1455,10 +1564,41 @@
     },
     {
       "number": 59,
+      "key": "aria-investigate-verify",
+      "title": "Open the source and check that claim",
+      "kind": "aria-investigation",
+      "notes": "Allocate 8 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/investigate.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "clicks": null,
+      "technical_guide": null,
+      "concept": "Check one billing ticket: what changed in the account, what did the employee claim, and did read_skill occur before the procedure was used?",
+      "exercise": {
+        "step": "evals",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/pending_inc/investigate.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c2458ce8b6bb52274d29b5c5a691424b"
+      ],
+      "timing": {
+        "section": "Investigate this result",
+        "start_minute": 117,
+        "duration_minutes": 8
+      },
+      "answer": null
+    },
+    {
+      "number": 60,
       "key": "manual",
       "title": "Revise the verification skill and rerun both tickets.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Save this procedure and rerun both development tickets.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Revise the verification skill and rerun both tickets",
       "exercise": {
         "step": "5 \u00b7 Edit one procedure",
@@ -1481,11 +1621,13 @@
       "answer": null
     },
     {
-      "number": 60,
+      "number": 61,
       "key": "break",
       "title": "Take a ten-minute break after saving your progress.",
       "kind": "explanation",
       "notes": "Second break: 135\u2013145 minutes. Save the manual comparison and return to step 6. Do not start automatic work during the break.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Take a ten-minute break after saving your progress",
       "exercise": {
         "step": ""
@@ -1502,11 +1644,13 @@
       "answer": null
     },
     {
-      "number": 61,
+      "number": 62,
       "key": "editor",
       "title": "Management would like to automate management.",
       "kind": "explanation",
       "notes": "The editor uses the same fixed model, but its request is to revise the harness rather than resolve a customer ticket. We supply the current configuration and a saved execution. The permitted edits are instructions, the verification skill, and bounded workflow rules. Tools and scoring stay fixed so any measured difference concerns the harness we changed.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Management would like to automate management",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -1526,11 +1670,13 @@
       "answer": null
     },
     {
-      "number": 62,
+      "number": 63,
       "key": "branch-1",
       "title": "Propose two edits to the same starting harness.",
       "kind": "explanation",
       "notes": "Propose asks the editor for two competing changes, such as clearer verification instructions or a mandatory completion check. A and B start from the same parent. Neither receives the other candidate\u2019s test result at this point. We review their saved configurations before allowing the probes.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Propose two edits to the same starting harness",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -1550,11 +1696,13 @@
       "answer": null
     },
     {
-      "number": 63,
+      "number": 64,
       "key": "branch-2",
       "title": "Run each candidate from the original account state.",
       "kind": "explanation",
       "notes": "If candidate A has already issued a refund, B must not inherit that refunded account. The controller resets the case before each probe. Compare the actions and returned state of both runs; a successful tool response alone does not tell us the ticket was handled correctly.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Run each candidate from the original account state",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -1574,11 +1722,13 @@
       "answer": null
     },
     {
-      "number": 64,
+      "number": 65,
       "key": "branch-3",
-      "title": "Compare the probe results before selecting a harness.",
-      "kind": "explanation",
-      "notes": "Compose receives the proposed configurations and both execution records. It can choose A or B, combine parts of them, or retain the parent. Its rationale explains that choice, but the choice still needs an execution. The solid paths show versions; colors identify alternatives rather than scores.",
+      "title": "Test a changed procedure on the same ticket",
+      "kind": "technical-manual",
+      "notes": "Compose receives the proposed configurations and both execution records. It can choose A or B, combine parts of them, or retain the parent. Its rationale explains that choice, but the choice still needs an execution. The solid paths show versions; colors identify alternatives rather than scores.\nVisual guide: pending/changes. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
+      "clicks": 4,
+      "technical_guide": "pending/changes",
       "concept": "Compare the probe results before selecting a harness",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -1598,11 +1748,13 @@
       "answer": null
     },
     {
-      "number": 65,
+      "number": 66,
       "key": "branch-4",
       "title": "Execute the harness returned by the composition decision.",
       "kind": "explanation",
       "notes": "A combination may differ from both tested candidates, so we run the returned configuration as its own probe. A Retain decision also runs through this step without inventing a new executable version. We can then inspect the specific execution associated with the decision.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Execute the harness returned by the composition decision",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -1622,11 +1774,13 @@
       "answer": null
     },
     {
-      "number": 66,
+      "number": 67,
       "key": "branch-5",
       "title": "Save the selected harness and a lesson for onboarding.",
       "kind": "explanation",
       "notes": "Reflect asks the editor what it learned from the selected run and where that conclusion may not apply. We keep the lesson with that run, then execute the selected harness on onboarding before proposing more changes. This carried-harness teaching protocol differs from the full upstream Harness\u00b2 cross-task procedure.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Save the selected harness and a lesson for onboarding",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -1646,11 +1800,13 @@
       "answer": null
     },
     {
-      "number": 67,
+      "number": 68,
       "key": "propose-code",
       "title": "Give the editor the starting execution and harness.",
       "kind": "explanation",
       "notes": "Conceptual variable names match the visible controller; actual notebook uses _s,_case,_parent,_prefix,_f. It passes prior_experience from round1 into round2. Ask which input would be inappropriate: final-test scores.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Give the editor the starting execution and harness",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -1670,11 +1826,13 @@
       "answer": null
     },
     {
-      "number": 68,
+      "number": 69,
       "key": "propose",
       "title": "Review the proposed instruction and workflow changes.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Round 1 \u00b7 Ask for two competing changes.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Review the proposed instruction and workflow changes",
       "exercise": {
         "step": "6 \u00b7 Improve twice",
@@ -1697,11 +1855,13 @@
       "answer": null
     },
     {
-      "number": 69,
+      "number": 70,
       "key": "probe-code",
       "title": "Construct and execute the proposed harness.",
       "kind": "explanation",
       "notes": "The editor returns a structured harness in its decision. The controller constructs that harness, executes it on a reset case, and checks the recorded content fingerprint against the decision. That comparison catches running the wrong version. It says nothing about whether the selected instructions are good; the account scorer answers that separately.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Construct and execute the proposed harness",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -1721,11 +1881,13 @@
       "answer": null
     },
     {
-      "number": 70,
+      "number": 71,
       "key": "probes",
       "title": "Run both candidates and inspect their tool sequences.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Round 1 \u00b7 Review and test candidate A; then candidate B.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Run both candidates and inspect their tool sequences",
       "exercise": {
         "step": "6 \u00b7 Improve twice",
@@ -1748,11 +1910,13 @@
       "answer": null
     },
     {
-      "number": 71,
+      "number": 72,
       "key": "completion-guard",
       "title": "Require a passing check of the current state before finish.",
       "kind": "explanation",
       "notes": "The loop stores last_check with passed and the digest of world. With verify_before_finish true, finish is rejected if that check is absent, failed, or no longer matches the current state. This is a runtime completion rule. check_work gives public development feedback; the independent final scorer separately checks entire expected accounts and the required resolution.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Require a passing check of the current state before finish",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -1772,11 +1936,13 @@
       "answer": null
     },
     {
-      "number": 72,
+      "number": 73,
       "key": "gate-screen",
       "title": "This candidate required a check before completion.",
       "kind": "explanation",
       "notes": "Recorded candidate B changed verify_before_finish from false to true. It produced the explicit check sequence. Spans: rejected finish 9ed1e7824138ec0e, check_work 2d49d1d8d3ddeb5d, accepted finish 3e19e007d013d4d2. This is a behavior change, not yet evidence of better quality.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "This candidate required a check before completion",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -1796,11 +1962,13 @@
       "answer": null
     },
     {
-      "number": 73,
+      "number": 74,
       "key": "gate-detail",
       "title": "The completion gate required a check_work call.",
       "kind": "explanation",
       "notes": "Crop x580,y251,w690,h185 from the unchanged1280x720 native capture. Gate behavior is confirmed by the subsequent check_work and accepted finish spans, not inferred from the proposal title.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "The completion gate required a check_work call",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -1820,11 +1988,13 @@
       "answer": null
     },
     {
-      "number": 74,
+      "number": 75,
       "key": "probe-comparison",
       "title": "Compare the added checks with the resulting account state.",
       "kind": "explanation",
       "notes": "Recorded first-round probe A used the parent harness: get_account, refund_payment, get_account, finish. Probe B used verify_before_finish=true: the same first three calls, a rejected finish, check_work, and an accepted finish. Both independent account checks passed. Tool-call counts are four and six for these development probes, distinct from the later final-evaluation totals. Source: the v0.3.0 rehearsal journal pending/round-1/probe-a and probe-b, linked through the native conversations on the preceding slides.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Compare the added checks with the resulting account state",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -1844,11 +2014,13 @@
       "answer": null
     },
     {
-      "number": 75,
+      "number": 76,
       "key": "keep",
       "title": "The editor retained the parent after comparing the probes.",
       "kind": "explanation",
       "notes": "Ask learners for their optional A/B/retain reasoning before showing this composition. Their notebook notes are not provided to the editor. Open this saved composition if time allows. The editor\u2019s rationale was that the mandatory gate added work while the parent already produced a correct billing outcome. It retained the parent. The controller still runs the selected configuration because every composition receives a confirming execution, including KEEP. The executable content remains unchanged.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "The editor retained the parent after comparing the probes",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -1868,11 +2040,13 @@
       "answer": null
     },
     {
-      "number": 76,
+      "number": 77,
       "key": "compose",
       "title": "Test the selected harness before carrying it forward.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Compare probes and request a composition \u2192 Review and test the composition \u2192 Save the tested version and its lesson.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Test the selected harness before carrying it forward",
       "exercise": {
         "step": "6 \u00b7 Improve twice",
@@ -1895,11 +2069,13 @@
       "answer": null
     },
     {
-      "number": 77,
+      "number": 78,
       "key": "reflection",
       "title": "Save the lesson with the run that supports it.",
       "kind": "explanation",
       "notes": "Explanatory excerpt, not a drop-in full function. The actual controller falls back to the parent if the chosen execution does not complete. The lesson is agent-authored interpretation backed by a saved run.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Save the lesson with the run that supports it",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -1919,11 +2095,13 @@
       "answer": null
     },
     {
-      "number": 78,
+      "number": 79,
       "key": "between-rounds",
       "title": "The next task gets the selected procedure and a checked lesson.",
       "kind": "explanation",
       "notes": "A lesson is an agent-written interpretation with a supporting run and limits. It is not a model weight update. We carry the selected harness and lesson into onboarding, while constructing a fresh account state and conversation for that case. The next execution tests whether the lesson transfers.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "The next task gets the selected procedure and a checked lesson",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -1943,11 +2121,13 @@
       "answer": null
     },
     {
-      "number": 79,
+      "number": 80,
       "key": "compose-not-test",
       "title": "Choosing a combination does not test it.",
       "kind": "explanation",
       "notes": "Do not infer that a composition inherits the scores of its ingredients. The combined behavior can differ, so the controller runs it before adoption. The recorded round-one decision retained the parent instead; the previous slides show its reason and execution.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Choosing a combination does not test it",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -1967,11 +2147,13 @@
       "answer": null
     },
     {
-      "number": 80,
+      "number": 81,
       "key": "round-two",
       "title": "Use the selected harness to start the onboarding round.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Round 2 \u00b7 Ask for two competing changes; follow the current action.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Use the selected harness to start the onboarding round",
       "exercise": {
         "step": "6 \u00b7 Improve twice",
@@ -1994,11 +2176,13 @@
       "answer": null
     },
     {
-      "number": 81,
+      "number": 82,
       "key": "round-two-result",
       "title": "The second round changed the verification skill.",
       "kind": "explanation",
       "notes": "In the recorded onboarding round, the editor selected a more specific verification skill while leaving verify_before_finish off. Open the decision to read its rationale, then the chosen execution to inspect how the agent used those files. The next slide shows the exact changed sentence.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "The second round changed the verification skill",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -2018,11 +2202,13 @@
       "answer": null
     },
     {
-      "number": 82,
+      "number": 83,
       "key": "skill-diff",
       "title": "The skill makes the final check more specific.",
       "kind": "explanation",
       "notes": "Source .workshop/v030-pending/journal.json, pending/round-1/compose and pending/round-2/compose verification_skill. Display is an exact excerpt of the changed sentence. Round2 selected that skill with verify_before_finish=false. Link to preceding decision and execution; no attribution of final-quality gain.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "The skill makes the final check more specific",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -2042,11 +2228,13 @@
       "answer": null
     },
     {
-      "number": 83,
+      "number": 84,
       "key": "rsi",
       "title": "The next round tests changes to the previous selection.",
       "kind": "explanation",
       "notes": "Recursive self-improvement here means that an agent evaluates executions of a harness, proposes revisions, and later examines work done under the selected revision. The retained lesson supplies context for the next attempt. The language model\u2019s weights never change. Our workshop carries a selected harness between two tasks; the upstream Harness\u00b2 procedure has a broader recursion and experience-library design.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "The next round tests changes to the previous selection",
       "exercise": {
         "step": "6 \u00b7 Improve twice"
@@ -2066,11 +2254,13 @@
       "answer": null
     },
     {
-      "number": 84,
+      "number": 85,
       "key": "freeze",
       "title": "Freeze three harnesses for the fresh-case comparison.",
       "kind": "explanation",
       "notes": "Final cases: already-refunded, two-invoices, onboarding-recovery, clarify-access. Their files are public for teaching but are excluded from improvement context. The starting version is the configured tested employee, not the deliberately blank opening illustration.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Freeze three harnesses for the fresh-case comparison",
       "exercise": {
         "step": "7 \u00b7 Compare fresh tickets"
@@ -2090,11 +2280,13 @@
       "answer": null
     },
     {
-      "number": 85,
+      "number": 86,
       "key": "final",
       "title": "Compare all three versions on fresh tickets.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Freeze versions and run 12 evaluations.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Compare all three versions on fresh tickets",
       "exercise": {
         "step": "7 \u00b7 Compare fresh tickets",
@@ -2117,11 +2309,13 @@
       "answer": null
     },
     {
-      "number": 86,
+      "number": 87,
       "key": "native-results",
       "title": "Compare the same ticket in Forge.",
       "kind": "explanation",
       "notes": "Click Compare in EvalTables beside the notebook result. This opens the native Weave-backed Evaluation Tables Preview in the W&B workspace. The separate CES EvalTables v2 service can still be unavailable; its status does not erase this working comparison. These are saved rehearsal executions, not new model calls.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Compare the same ticket in Forge",
       "exercise": {
         "step": "7 \u00b7 Compare fresh tickets"
@@ -2141,11 +2335,13 @@
       "answer": null
     },
     {
-      "number": 87,
+      "number": 88,
       "key": "native-case",
       "title": "Inspect a request that needs clarification.",
       "kind": "explanation",
       "notes": "Select the same case across versions. A tie is a result: more verification calls can leave account quality unchanged. Blank judgment cells remain missing. Use the Agent Lens URL saved in that row, rather than an unrelated trace.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Inspect a request that needs clarification",
       "exercise": {
         "step": "7 \u00b7 Compare fresh tickets"
@@ -2165,11 +2361,13 @@
       "answer": null
     },
     {
-      "number": 88,
+      "number": 89,
       "key": "final-screen",
       "title": "Link the Report\u2019s conclusion to its runs and traces.",
       "kind": "explanation",
       "notes": "Use fresh v030 final table: all12 account checks and explanation judgments are available and pass. The Report screenshot is the actual W&B/Weave/Report surface. The preceding slides show the repaired native Evaluation Tables Preview comparison.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Link the Report\u2019s conclusion to its runs and traces",
       "exercise": {
         "step": "7 \u00b7 Compare fresh tickets"
@@ -2189,11 +2387,13 @@
       "answer": null
     },
     {
-      "number": 89,
+      "number": 90,
       "key": "final-result",
       "title": "All three harnesses passed the four final cases.",
       "kind": "explanation",
       "notes": "Read the account and explanation columns before the tool-call totals. All versions passed all four cases in this scripted rehearsal, so neither revision increased the measured pass rate. Each revised version made one additional tool call overall. These four cases do not establish repeatability or performance on other workflows. The source is evidence/v030-pending-rehearsal.json.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "All three harnesses passed the four final cases",
       "exercise": {
         "step": "7 \u00b7 Compare fresh tickets"
@@ -2213,11 +2413,13 @@
       "answer": null
     },
     {
-      "number": 90,
+      "number": 91,
       "key": "files",
       "title": "Save the case, harness, execution, and scoring records.",
       "kind": "explanation",
       "notes": "Artifacts are versioned file bundles. Trace export, result publication and execution have separate statuses. A publication retry uses saved work and must not make another model request.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Save the case, harness, execution, and scoring records",
       "exercise": {
         "step": "7 \u00b7 Compare fresh tickets"
@@ -2237,41 +2439,13 @@
       "answer": null
     },
     {
-      "number": 91,
+      "number": 92,
       "key": "aria-conclusion",
       "title": "Check our conclusion",
       "kind": "aria-investigation",
       "notes": "Allocate 7 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
-      "concept": "Compare the starting, manual, and agent-selected harnesses on the same tickets. Did account correctness change, or only tool use and checking?",
-      "exercise": {
-        "step": "final",
-        "function": null,
-        "check": "Check one cited record",
-        "run": "Copy investigation prompt"
-      },
-      "source": [
-        "scripts/aria_storyboard.py",
-        "src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json"
-      ],
-      "evidence": [
-        "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/fdcf3eb3fbcae1cf6b7b765e7654c36b",
-        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/25cf9e219e38e8f6c445e3e38b16749b",
-        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/20db682821e9f8633eb809db08ad981a",
-        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/8d05c61780b324b33edc1c1d8a47db9a"
-      ],
-      "timing": {
-        "section": "Check our conclusion",
-        "start_minute": 230,
-        "duration_minutes": 7
-      },
-      "answer": null
-    },
-    {
-      "number": 92,
-      "key": "aria-conclusion-response",
-      "title": "Read one claim in the recorded response",
-      "kind": "aria-investigation",
-      "notes": "Allocate 7 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "clicks": null,
+      "technical_guide": null,
       "concept": "Compare the starting, manual, and agent-selected harnesses on the same tickets. Did account correctness change, or only tool use and checking?",
       "exercise": {
         "step": "final",
@@ -2298,10 +2472,12 @@
     },
     {
       "number": 93,
-      "key": "aria-conclusion-verify",
-      "title": "Open the source and check that claim",
+      "key": "aria-conclusion-response",
+      "title": "Read one claim in the recorded response",
       "kind": "aria-investigation",
       "notes": "Allocate 7 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "clicks": null,
+      "technical_guide": null,
       "concept": "Compare the starting, manual, and agent-selected harnesses on the same tickets. Did account correctness change, or only tool use and checking?",
       "exercise": {
         "step": "final",
@@ -2328,10 +2504,44 @@
     },
     {
       "number": 94,
+      "key": "aria-conclusion-verify",
+      "title": "Open the source and check that claim",
+      "kind": "aria-investigation",
+      "notes": "Allocate 7 minutes within the existing discussion time. Ask for the participant\u2019s interpretation before showing the response. The notebook agent still produces the measured changes. ARIA only investigates saved records. Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook\u2019s $8 allowance. If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. If ARIA brings reserved results into a development answer, exclude that answer from development decisions and explain why. Recording: src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json. Native context guidance: https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation. Do not confuse plausible causes with observed evidence, tool success with task success, or fewer alerts with better monitoring.",
+      "clicks": null,
+      "technical_guide": null,
+      "concept": "Compare the starting, manual, and agent-selected harnesses on the same tickets. Did account correctness change, or only tool use and checking?",
+      "exercise": {
+        "step": "final",
+        "function": null,
+        "check": "Check one cited record",
+        "run": "Copy investigation prompt"
+      },
+      "source": [
+        "scripts/aria_storyboard.py",
+        "src/forge_workshop_kit/assets/aria/pending_inc/conclusion.json"
+      ],
+      "evidence": [
+        "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/fdcf3eb3fbcae1cf6b7b765e7654c36b",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/25cf9e219e38e8f6c445e3e38b16749b",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/20db682821e9f8633eb809db08ad981a",
+        "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/8d05c61780b324b33edc1c1d8a47db9a"
+      ],
+      "timing": {
+        "section": "Check our conclusion",
+        "start_minute": 230,
+        "duration_minutes": 7
+      },
+      "answer": null
+    },
+    {
+      "number": 95,
       "key": "report",
       "title": "Write down what changed and whether it helped.",
       "kind": "exercise",
       "notes": "Leave this slide up during the exercise. Ask someone to show the result and explain the change. Do not click a model-run control for them. The exact current control is: Publish my conclusion with the comparison and evidence.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Write down what changed and whether it helped",
       "exercise": {
         "step": "8 \u00b7 Explain the result",
@@ -2354,11 +2564,13 @@
       "answer": null
     },
     {
-      "number": 95,
+      "number": 96,
       "key": "end",
       "title": "Choose a workflow with an observable result to test.",
       "kind": "explanation",
       "notes": "Ask participants to name one workflow in their product with observable output and a check they can run independently of the agent. Have them specify a development case, a likely failure, and a fresh case for testing transfer. They can reuse the instrumentation and improvement controller, but must define what correct work means for that workflow.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Choose a workflow with an observable result to test",
       "exercise": {
         "step": "8 \u00b7 Explain the result"
@@ -2378,11 +2590,13 @@
       "answer": null
     },
     {
-      "number": 96,
+      "number": 97,
       "key": "answer-tool",
       "title": "Worked answer \u00b7 invoice lookup",
       "kind": "answer",
       "notes": "Exact semantics of teaching.ANSWERS tool. Keep optional so participants attempt the gap first.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Worked answer \u00b7 invoice lookup",
       "exercise": {
         "step": "Reference"
@@ -2400,11 +2614,13 @@
       "answer": null
     },
     {
-      "number": 97,
+      "number": 98,
       "key": "answer-loop",
       "title": "Worked answer \u00b7 observation handoff",
       "kind": "answer",
       "notes": "Exact answer contract from teaching.py. Both dispatch paths return state/result. Handoff creates a new list.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Worked answer \u00b7 observation handoff",
       "exercise": {
         "step": "Reference"
@@ -2422,11 +2638,13 @@
       "answer": null
     },
     {
-      "number": 98,
+      "number": 99,
       "key": "answer-scorer",
       "title": "Worked answer \u00b7 inspect the refund",
       "kind": "answer",
       "notes": "The learner check is deliberately limited. Do not describe it as the full final scorer.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Worked answer \u00b7 inspect the refund",
       "exercise": {
         "step": "Reference"
@@ -2444,11 +2662,13 @@
       "answer": null
     },
     {
-      "number": 99,
+      "number": 100,
       "key": "answer-judge",
       "title": "Worked answer \u00b7 validate the judge response",
       "kind": "answer",
       "notes": "Exact semantics of teaching.ANSWERS scorer validation. Boolean strings are invalid. Empty reasons are invalid. Missing judgments stay unavailable.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Worked answer \u00b7 validate the judge response",
       "exercise": {
         "step": "Reference"
@@ -2466,11 +2686,13 @@
       "answer": null
     },
     {
-      "number": 100,
+      "number": 101,
       "key": "sources",
       "title": "Source, notebook, and recorded example",
       "kind": "explanation",
       "notes": "The product evidence in this deck uses the v030 rehearsal. The current native comparison uses Weave-backed Evaluation Tables Preview. The separate CES v2 service still returns HTTP500; its unavailable status remains in publication details. Current authored notebook source scripts/pending_cells.py. Historical deck preserved outside current attendee path.",
+      "clicks": 0,
+      "technical_guide": null,
       "concept": "Source, notebook, and recorded example",
       "exercise": {
         "step": "Reference"

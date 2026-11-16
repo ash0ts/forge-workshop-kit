@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <symbol id="file" viewBox="0 0 64 64"><path d="M15 6h25l11 11v41H15zM40 6v13h11M23 30h20M23 38h20M23 46h13"/></symbol>
+    <symbol id="record" viewBox="0 0 64 64"><rect x="8" y="10" width="48" height="44"/><path d="M8 23h48M24 23v31M8 35h48M8 44h48"/></symbol>
+    <symbol id="component" viewBox="0 0 64 64"><rect x="15" y="15" width="34" height="34"/><path d="M24 5v10M40 5v10M24 49v10M40 49v10M5 24h10M5 40h10M49 24h10M49 40h10"/></symbol>
+    <symbol id="input" viewBox="0 0 64 64"><path d="M8 32h39M34 19l13 13-13 13M46 8h10v48H46"/></symbol>
+    <symbol id="output" viewBox="0 0 64 64"><path d="M17 32h39M43 19l13 13-13 13M18 8H8v48h10"/></symbol>
+    <symbol id="observation" viewBox="0 0 64 64"><path d="M4 32Q32 2 60 32Q32 62 4 32z"/><circle cx="32" cy="32" r="10"/></symbol>
+    <symbol id="state" viewBox="0 0 64 64"><rect x="8" y="10" width="48" height="44"/><path d="M16 41h9V28h10v-9h13M16 48h32"/></symbol>
+  </defs>
+</svg>

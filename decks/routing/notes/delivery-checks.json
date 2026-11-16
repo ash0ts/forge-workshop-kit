@@ -1,7 +1,8 @@
 {
-  "source_sha256": "d6baa3350726f7f5a78953d85af90e0cb0b70a3df0a6de7d2b9aca42756a38da",
-  "slides_checked": 78,
-  "expected_slides": 78,
+  "source_sha256": "49347025b2179d20ee795ec0fd4e22c5c5edf8f9895f91e5cd3c31e4feb419ea",
+  "preflight_only": false,
+  "slides_checked": 79,
+  "expected_slides": 79,
   "titles": [
     {
       "number": 1,
@@ -10,386 +11,391 @@
     },
     {
       "number": 2,
+      "key": "technical-overview",
+      "title": "What you will build and inspect"
+    },
+    {
+      "number": 3,
       "key": "queue",
       "title": "The support queue needs a destination"
     },
     {
-      "number": 3,
+      "number": 4,
       "key": "manager",
       "title": "A manager has offered to automate forwarding"
     },
     {
-      "number": 4,
+      "number": 5,
       "key": "read-request",
       "title": "Read a request before revealing its label"
     },
     {
-      "number": 5,
+      "number": 6,
       "key": "dataset",
       "title": "The dataset contains 77 banking intents"
     },
     {
-      "number": 6,
+      "number": 7,
       "key": "partitions",
       "title": "Give each partition one job"
     },
     {
-      "number": 7,
+      "number": 8,
       "key": "connect",
       "title": "Open your copy and add your first trace"
     },
     {
-      "number": 8,
+      "number": 9,
       "key": "trace",
       "title": "The span should explain the operation"
     },
     {
-      "number": 9,
+      "number": 10,
       "key": "words",
       "title": "Start with a word-based classifier"
     },
     {
-      "number": 10,
+      "number": 11,
       "key": "word-vector",
-      "title": "Measure the words and phrases in one request"
+      "title": "Turn one message into classifier input"
     },
     {
-      "number": 11,
+      "number": 12,
       "key": "classifier-exercise",
       "title": "Implement the classifier head"
     },
     {
-      "number": 12,
+      "number": 13,
       "key": "baseline-observation",
       "title": "Read one prediction before comparing models"
     },
     {
-      "number": 13,
+      "number": 14,
       "key": "aria-investigate",
       "title": "Investigate this result"
     },
     {
-      "number": 14,
+      "number": 15,
       "key": "aria-investigate-response",
       "title": "Read one claim in the recorded response"
     },
     {
-      "number": 15,
+      "number": 16,
       "key": "aria-investigate-verify",
       "title": "Open the source and check that claim"
     },
     {
-      "number": 16,
+      "number": 17,
       "key": "embeddings",
       "title": "Then change the representation"
     },
     {
-      "number": 17,
+      "number": 18,
       "key": "sentence-vector",
       "title": "Keep one vector for each request"
     },
     {
-      "number": 18,
+      "number": 19,
       "key": "construct-head",
       "title": "Construct the estimator before fitting it"
     },
     {
-      "number": 19,
+      "number": 20,
       "key": "fit-head",
       "title": "Fit the head on the labeled training rows"
     },
     {
-      "number": 20,
+      "number": 21,
       "key": "predict-probabilities",
       "title": "A fitted classifier returns 77 probabilities"
     },
     {
-      "number": 21,
+      "number": 22,
       "key": "alternative-exercise",
       "title": "Test the sentence-feature alternative"
     },
     {
-      "number": 22,
+      "number": 23,
       "key": "macro-f1",
       "title": "Macro-F1 gives each intent equal weight"
     },
     {
-      "number": 23,
+      "number": 24,
       "key": "intent-counts",
-      "title": "Count the errors for one intent"
+      "title": "Calculate F1 for each intent before averaging"
     },
     {
-      "number": 24,
+      "number": 25,
       "key": "intent-average",
       "title": "Calculate F1, then average across intents"
     },
     {
-      "number": 25,
+      "number": 26,
       "key": "recorded-gain",
       "title": "The worked comparison reduced routing mistakes"
     },
     {
-      "number": 26,
+      "number": 27,
       "key": "deferral",
       "title": "A router can also ask a person"
     },
     {
-      "number": 27,
+      "number": 28,
       "key": "threshold-policy",
-      "title": "Move the threshold without retraining"
+      "title": "Choose a route, then decide whether to review it"
     },
     {
-      "number": 28,
+      "number": 29,
       "key": "review-margin",
       "title": "Choose labeling candidates by their top-two margin"
     },
     {
-      "number": 29,
+      "number": 30,
       "key": "policy-exercise",
       "title": "Write the rule that sends a request to review"
     },
     {
-      "number": 30,
+      "number": 31,
       "key": "review-case",
       "title": "Read the disagreement before declaring failure"
     },
     {
-      "number": 31,
+      "number": 32,
       "key": "review-exercise",
       "title": "Save labels someone can trace back to a decision"
     },
     {
-      "number": 32,
+      "number": 33,
       "key": "review-provenance",
-      "title": "Keep the proposal and accepted label separate"
+      "title": "Turn a reviewed mistake into a training example"
     },
     {
-      "number": 33,
+      "number": 34,
       "key": "break-one",
       "title": "Take ten minutes. Return at 2:20."
     },
     {
-      "number": 34,
+      "number": 35,
       "key": "typed-route",
       "title": "A prompted model returns a typed decision"
     },
     {
-      "number": 35,
+      "number": 36,
       "key": "two-model-tasks",
       "title": "The judge reviews a route in a separate call"
     },
     {
-      "number": 36,
+      "number": 37,
       "key": "prompted-exercise",
       "title": "Inspect eight actual model routes"
     },
     {
-      "number": 37,
+      "number": 38,
       "key": "judge-purpose",
-      "title": "Check the model-based judge against your reviews"
+      "title": "Check the automated reviewer against people"
     },
     {
-      "number": 38,
+      "number": 39,
       "key": "judge-evidence",
       "title": "Keep the accepted label out of the judge prompt"
     },
     {
-      "number": 39,
+      "number": 40,
       "key": "validator-exercise",
       "title": "Implement the judge response check"
     },
     {
-      "number": 40,
+      "number": 41,
       "key": "recorded-judge",
       "title": "The judge disagreed with the dataset label"
     },
     {
-      "number": 41,
+      "number": 42,
       "key": "review-dataset",
       "title": "Use reviewed data to run a new experiment"
     },
     {
-      "number": 42,
+      "number": 43,
       "key": "accepted-training",
       "title": "Refit the head with your accepted labels"
     },
     {
-      "number": 43,
+      "number": 44,
       "key": "retrain-exercise",
       "title": "Train with your accepted labels"
     },
     {
-      "number": 44,
+      "number": 45,
       "key": "break-two",
       "title": "Take ten minutes. Return at 3:40."
     },
     {
-      "number": 45,
+      "number": 46,
       "key": "freeze",
       "title": "Freeze what the final comparison will use"
     },
     {
-      "number": 46,
+      "number": 47,
       "key": "freeze-files",
       "title": "Save the transformations with the weights"
     },
     {
-      "number": 47,
+      "number": 48,
       "key": "final-exercise",
       "title": "Evaluate all matching test requests"
     },
     {
-      "number": 48,
+      "number": 49,
       "key": "aligned-requests",
       "title": "Compare matching requests, then the operating policy"
     },
     {
-      "number": 49,
+      "number": 50,
       "key": "native-comparison",
       "title": "Compare the same requests in Forge"
     },
     {
-      "number": 50,
+      "number": 51,
       "key": "native-row",
       "title": "Read one routing decision"
     },
     {
-      "number": 51,
+      "number": 52,
       "key": "release-break",
       "title": "Take ten minutes. Return at 4:05."
     },
     {
-      "number": 52,
+      "number": 53,
       "key": "release-request",
       "title": "The classifier works. Can another process use it?"
     },
     {
-      "number": 53,
+      "number": 54,
       "key": "release-bundle",
       "title": "Save what the predictor needs, then reload it"
     },
     {
-      "number": 54,
+      "number": 55,
       "key": "release-prepare-exercise",
       "title": "Load your selected version from its artifact"
     },
     {
-      "number": 55,
+      "number": 56,
       "key": "release-cohort",
       "title": "Choose the regression cases before predicting"
     },
     {
-      "number": 56,
+      "number": 57,
       "key": "release-columns",
-      "title": "A probability belongs to a specific intent"
+      "title": "Preserve the mapping between scores and intents"
     },
     {
-      "number": 57,
+      "number": 58,
       "key": "release-fault",
       "title": "Rotated labels send column 1 to another queue"
     },
     {
-      "number": 58,
+      "number": 59,
       "key": "release-incident-exercise",
       "title": "Find one request sent to the wrong queue"
     },
     {
-      "number": 59,
+      "number": 60,
       "key": "release-set-check",
       "title": "Checking the label set misses this defect"
     },
     {
-      "number": 60,
+      "number": 61,
       "key": "release-order-check",
       "title": "Check order before accepting the loaded model"
     },
     {
-      "number": 61,
+      "number": 62,
       "key": "release-repair-exercise",
       "title": "Repair the loader and write its regression check"
     },
     {
-      "number": 62,
+      "number": 63,
       "key": "release-parity",
       "title": "A repaired loader should reproduce the intact release"
     },
     {
-      "number": 63,
+      "number": 64,
       "key": "release-investigate",
       "title": "Compare three versions of the same request"
     },
     {
-      "number": 64,
+      "number": 65,
       "key": "release-decision-exercise",
       "title": "Decide whether this release passes its checks"
     },
     {
-      "number": 65,
+      "number": 66,
       "key": "release-rollback",
       "title": "Rollback reloads a version; it does not undo training"
     },
     {
-      "number": 66,
+      "number": 67,
       "key": "release-rollback-exercise",
       "title": "Restore the previous version and verify it"
     },
     {
-      "number": 67,
+      "number": 68,
       "key": "release-conclusion",
       "title": "Separate the model gain from the release repair"
     },
     {
-      "number": 68,
+      "number": 69,
       "key": "aria-conclusion",
       "title": "Check our conclusion"
     },
     {
-      "number": 69,
+      "number": 70,
       "key": "aria-conclusion-response",
       "title": "Read one claim in the recorded response"
     },
     {
-      "number": 70,
+      "number": 71,
       "key": "aria-conclusion-verify",
       "title": "Open the source and check that claim"
     },
     {
-      "number": 71,
+      "number": 72,
       "key": "report-exercise",
       "title": "Write the decision you would make"
     },
     {
-      "number": 72,
+      "number": 73,
       "key": "release",
       "title": "Optional: organize approved versions in Registry"
     },
     {
-      "number": 73,
+      "number": 74,
       "key": "close",
       "title": "What to take back to your team"
     },
     {
-      "number": 74,
+      "number": 75,
       "key": "classifier-answer",
       "title": "Worked answer: classifier head"
     },
     {
-      "number": 75,
+      "number": 76,
       "key": "policy-answer",
       "title": "Worked answer: review policy"
     },
     {
-      "number": 76,
+      "number": 77,
       "key": "validator-answer",
       "title": "Worked answer: judge validator"
     },
     {
-      "number": 77,
+      "number": 78,
       "key": "release-repair-answer",
       "title": "Worked answer: preserve the probability-column order"
     },
     {
-      "number": 78,
+      "number": 79,
       "key": "sources",
       "title": "Sources and recorded evidence"
     }
@@ -401,15 +407,96 @@
     },
     {
       "slide": 2,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/overview/slide/01-request.svg",
+        "alt": "Request: What will you build, and how will you know it works?",
+        "frameId": "request",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
     },
     {
       "slide": 2,
-      "click": 1
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/overview/slide/02-model.svg",
+        "alt": "Model: What will you build, and how will you know it works?",
+        "frameId": "model",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/overview/slide/03-review.svg",
+        "alt": "Review: What will you build, and how will you know it works?",
+        "frameId": "review",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/overview/slide/04-release.svg",
+        "alt": "Release: What will you build, and how will you know it works?",
+        "frameId": "release",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 2,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/overview/slide/05-complete.svg",
+        "alt": "Complete view: What will you build, and how will you know it works?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 3,
       "click": 0
+    },
+    {
+      "slide": 3,
+      "click": 1
     },
     {
       "slide": 4,
@@ -432,16 +519,16 @@
       "click": 0
     },
     {
-      "slide": 8,
-      "click": 1
-    },
-    {
-      "slide": 8,
-      "click": 2
+      "slide": 9,
+      "click": 0
     },
     {
       "slide": 9,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 9,
+      "click": 2
     },
     {
       "slide": 10,
@@ -449,7 +536,88 @@
     },
     {
       "slide": 11,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/features/slide/01-request.svg",
+        "alt": "Same request: Does the same request route differently with word features or sentence features?",
+        "frameId": "request",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 11,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/features/slide/02-words.svg",
+        "alt": "Word features: Does the same request route differently with word features or sentence features?",
+        "frameId": "words",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 11,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/features/slide/03-embedding.svg",
+        "alt": "Sentence features: Does the same request route differently with word features or sentence features?",
+        "frameId": "embedding",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 11,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/features/slide/04-fit.svg",
+        "alt": "Matched predictions: Does the same request route differently with word features or sentence features?",
+        "frameId": "fit",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 11,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/features/slide/05-complete.svg",
+        "alt": "Complete view: Does the same request route differently with word features or sentence features?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 12,
@@ -501,7 +669,71 @@
     },
     {
       "slide": 24,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/metrics/slide/01-counts.svg",
+        "alt": "Counts: Which mistakes contribute to this intent’s F1?",
+        "frameId": "counts",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 24,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/metrics/slide/02-f1.svg",
+        "alt": "F1: Which mistakes contribute to this intent’s F1?",
+        "frameId": "f1",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 24,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/metrics/slide/03-macro.svg",
+        "alt": "Macro: Which mistakes contribute to this intent’s F1?",
+        "frameId": "macro",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 24,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/metrics/slide/04-complete.svg",
+        "alt": "Complete view: Which mistakes contribute to this intent’s F1?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 25,
@@ -517,7 +749,71 @@
     },
     {
       "slide": 28,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/decision/slide/01-scores.svg",
+        "alt": "Scores: How does the winning intent differ from the decision to defer?",
+        "frameId": "scores",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 28,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/decision/slide/02-confidence.svg",
+        "alt": "Confidence: How does the winning intent differ from the decision to defer?",
+        "frameId": "confidence",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 28,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/decision/slide/03-margin.svg",
+        "alt": "Margin: How does the winning intent differ from the decision to defer?",
+        "frameId": "margin",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 28,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/decision/slide/04-complete.svg",
+        "alt": "Complete view: How does the winning intent differ from the decision to defer?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 29,
@@ -537,7 +833,71 @@
     },
     {
       "slide": 33,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/labels/slide/01-proposal.svg",
+        "alt": "Proposal: Whose label is being used, and why was it accepted?",
+        "frameId": "proposal",
+        "frameIndex": 0,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 33,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/labels/slide/02-review.svg",
+        "alt": "Review: Whose label is being used, and why was it accepted?",
+        "frameId": "review",
+        "frameIndex": 1,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 33,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/labels/slide/03-dataset.svg",
+        "alt": "Dataset: Whose label is being used, and why was it accepted?",
+        "frameId": "dataset",
+        "frameIndex": 2,
+        "frameCount": 4
+      }
+    },
+    {
+      "slide": 33,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/labels/slide/04-complete.svg",
+        "alt": "Complete view: Whose label is being used, and why was it accepted?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 4
+      }
     },
     {
       "slide": 34,
@@ -557,7 +917,88 @@
     },
     {
       "slide": 38,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/judge/slide/01-route.svg",
+        "alt": "Route: Is the answer well-formed, and is its judgment supported?",
+        "frameId": "route",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 38,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/judge/slide/02-validate.svg",
+        "alt": "Validate: Is the answer well-formed, and is its judgment supported?",
+        "frameId": "validate",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 38,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/judge/slide/03-agreement.svg",
+        "alt": "Agreement: Is the answer well-formed, and is its judgment supported?",
+        "frameId": "agreement",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 38,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/judge/slide/04-complete.svg",
+        "alt": "Complete view: Is the answer well-formed, and is its judgment supported?",
+        "frameId": "complete",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 38,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/judge/slide/05-native-capture.svg",
+        "alt": "A structured judgment still needs review: Compare the request and proposed intent with the judge response. The dataset reference is card_linking.",
+        "frameId": "native-capture",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 39,
@@ -633,7 +1074,88 @@
     },
     {
       "slide": 57,
-      "click": 0
+      "click": 0,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/release/slide/01-healthy.svg",
+        "alt": "Healthy: Can the release reproduce the healthy predictor’s destinations?",
+        "frameId": "healthy",
+        "frameIndex": 0,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 57,
+      "click": 1,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/release/slide/02-faulty.svg",
+        "alt": "Faulty: Can the release reproduce the healthy predictor’s destinations?",
+        "frameId": "faulty",
+        "frameIndex": 1,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 57,
+      "click": 2,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/release/slide/03-repair.svg",
+        "alt": "Repair: Can the release reproduce the healthy predictor’s destinations?",
+        "frameId": "repair",
+        "frameIndex": 2,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 57,
+      "click": 3,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/release/slide/04-result.svg",
+        "alt": "Result: Can the release reproduce the healthy predictor’s destinations?",
+        "frameId": "result",
+        "frameIndex": 3,
+        "frameCount": 5
+      }
+    },
+    {
+      "slide": 57,
+      "click": 4,
+      "technical_guide": {
+        "present": true,
+        "visible": true,
+        "loaded": true,
+        "width": 1240,
+        "height": 636,
+        "inside": true,
+        "src": "/forge-workshop-kit/routing/guides/routing/release/slide/05-complete.svg",
+        "alt": "Complete view: Can the release reproduce the healthy predictor’s destinations?",
+        "frameId": "complete",
+        "frameIndex": 4,
+        "frameCount": 5
+      }
     },
     {
       "slide": 58,
@@ -718,6 +1240,10 @@
     {
       "slide": 78,
       "click": 0
+    },
+    {
+      "slide": 79,
+      "click": 0
     }
   ],
   "issues": [],
@@ -725,27 +1251,27 @@
   "failed_responses": [],
   "answers": [
     {
-      "slide": 11,
-      "destination": "/forge-workshop-kit/routing/74",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 29,
+      "slide": 12,
       "destination": "/forge-workshop-kit/routing/75",
       "keyboardReturn": true
     },
     {
-      "slide": 39,
+      "slide": 30,
       "destination": "/forge-workshop-kit/routing/76",
       "keyboardReturn": true
     },
     {
-      "slide": 61,
+      "slide": 40,
       "destination": "/forge-workshop-kit/routing/77",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 62,
+      "destination": "/forge-workshop-kit/routing/78",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 315,
+  "routes_checked": 319,
   "recording_links_checked": 8,
   "presenter_notes": true
 }

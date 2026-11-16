@@ -1,5 +1,5 @@
 {
-  "total_slides": 101,
+  "total_slides": 102,
   "duration_minutes": 360,
   "schedule": [
     {
@@ -80,10 +80,30 @@
         "elapsed": "0:00",
         "minutes": 0
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
       "number": 2,
+      "key": "technical-overview",
+      "title": "What you will build and inspect",
+      "kind": "technical-manual",
+      "name": "technical-overview",
+      "notes": "Introduce the real task, the data available, and the outcome participants will check. Point to each Forge product at the operation it helps investigate.\nVisual guide: transit/overview. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
+      "answer": null,
+      "concept": "Your team needs a departures board",
+      "exercise": null,
+      "source": "scripts/transit_cells.py",
+      "evidence": [],
+      "timing": {
+        "elapsed": "0:02",
+        "minutes": 2
+      },
+      "clicks": 4,
+      "technical_guide": "transit/overview"
+    },
+    {
+      "number": 3,
       "key": "your-team-needs-a-departures-board",
       "title": "Your team needs a departures board",
       "kind": "",
@@ -98,10 +118,11 @@
         "elapsed": "0:02",
         "minutes": 2
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 3,
+      "number": 4,
       "key": "here-is-the-application-we-want-to-deliver",
       "title": "Here is the application we want to deliver",
       "kind": "",
@@ -116,10 +137,11 @@
         "elapsed": "0:05",
         "minutes": 5
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 4,
+      "number": 5,
       "key": "the-inputs-are-public-transit-records",
       "title": "The inputs are public transit records",
       "kind": "",
@@ -134,10 +156,11 @@
         "elapsed": "0:08",
         "minutes": 8
       },
-      "clicks": 2
+      "clicks": 2,
+      "technical_guide": null
     },
     {
-      "number": 5,
+      "number": 6,
       "key": "start-with-the-row-for-the-platform",
       "title": "Start with the row for the platform",
       "kind": "",
@@ -154,10 +177,11 @@
         "elapsed": "0:10",
         "minutes": 10
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 6,
+      "number": 7,
       "key": "join-the-trip-to-its-service-calendar",
       "title": "Join the trip to its service calendar",
       "kind": "",
@@ -174,10 +198,11 @@
         "elapsed": "0:13",
         "minutes": 13
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 7,
+      "number": 8,
       "key": "keep-the-service-date-and-boarding-date",
       "title": "Keep the service date and boarding date",
       "kind": "",
@@ -194,15 +219,16 @@
         "elapsed": "0:15",
         "minutes": 15
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 8,
-      "key": "the-last-train-can-belong-to-yesterday-s-service",
-      "title": "The last train can belong to yesterday\u2019s service",
-      "kind": "",
+      "number": 9,
+      "key": "keep-the-gtfs-service-day-after-midnight",
+      "title": "Keep the GTFS service day after midnight",
+      "kind": "technical-manual",
       "name": "",
-      "notes": "This is an actual retained row: trip 63926435, stop 70076, departure_time 24:08:00, stop_sequence 150, ThanksgivingDay service, headsign Alewife. The civil timestamp is 2024-11-29T00:08:00-05:00. Ask what a parser restricted to 0..23 hours would do. The rule must survive between components. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.",
+      "notes": "This is an actual retained row: trip 63926435, stop 70076, departure_time 24:08:00, stop_sequence 150, ThanksgivingDay service, headsign Alewife. The civil timestamp is 2024-11-29T00:08:00-05:00. Ask what a parser restricted to 0..23 hours would do. The rule must survive between components. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.\nVisual guide: transit/service-time. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
       "answer": null,
       "concept": "The last train can belong to yesterday\u2019s service",
       "exercise": null,
@@ -212,10 +238,11 @@
         "elapsed": "0:17",
         "minutes": 17
       },
-      "clicks": null
+      "clicks": 3,
+      "technical_guide": "transit/service-time"
     },
     {
-      "number": 9,
+      "number": 10,
       "key": "convert-elapsed-service-time-into-a-timestamp",
       "title": "Convert elapsed service time into a timestamp",
       "kind": "",
@@ -230,10 +257,11 @@
         "elapsed": "0:20",
         "minutes": 20
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 10,
+      "number": 11,
       "key": "check-the-joined-behavior-not-just-the-parser",
       "title": "Check the joined behavior, not just the parser",
       "kind": "",
@@ -248,10 +276,11 @@
         "elapsed": "0:23",
         "minutes": 23
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 11,
+      "number": 12,
       "key": "turn-the-brief-into-checks",
       "title": "Turn the brief into checks",
       "kind": "",
@@ -266,10 +295,11 @@
         "elapsed": "0:24",
         "minutes": 24
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 12,
+      "number": 13,
       "key": "a-software-factory-needs-a-way-to-finish-work",
       "title": "A software factory needs a way to finish work",
       "kind": "",
@@ -284,10 +314,11 @@
         "elapsed": "0:26",
         "minutes": 26
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 13,
+      "number": 14,
       "key": "two-workers-means-two-contexts-around-the-same-model",
       "title": "Two workers means two contexts around the same model",
       "kind": "",
@@ -302,10 +333,11 @@
         "elapsed": "0:29",
         "minutes": 29
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 14,
+      "number": 15,
       "key": "acceptance-exercise",
       "title": "Write the after-midnight acceptance check",
       "kind": "exercise",
@@ -329,10 +361,11 @@
         "elapsed": "0:22",
         "minutes": 22
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 15,
+      "number": 16,
       "key": "your-project-contains-the-experiment",
       "title": "Your project contains the experiment",
       "kind": "",
@@ -347,10 +380,11 @@
         "elapsed": "0:30",
         "minutes": 30
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 16,
+      "number": 17,
       "key": "connect-and-inspect-the-source-data",
       "title": "Connect and inspect the source data",
       "kind": "exercise",
@@ -375,10 +409,11 @@
         "elapsed": "0:33",
         "minutes": 33
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 17,
+      "number": 18,
       "key": "record-the-operation-that-you-just-ran",
       "title": "Record the operation that you just ran",
       "kind": "",
@@ -393,15 +428,16 @@
         "elapsed": "0:38",
         "minutes": 38
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 18,
-      "key": "one-worker-still-needs-a-complete-loop",
-      "title": "One worker still needs a complete loop",
-      "kind": "",
+      "number": 19,
+      "key": "return-a-tool-result-to-the-coding-worker",
+      "title": "Return a tool result to the coding worker",
+      "kind": "technical-manual",
       "name": "",
-      "notes": "Start with the familiar single-agent harness. Multiple agents do not remove the need for correct tool observation handling, explicit stopping and independent checks. Model settings stay fixed in the comparisons. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.",
+      "notes": "Start with the familiar single-agent harness. Multiple agents do not remove the need for correct tool observation handling, explicit stopping and independent checks. Model settings stay fixed in the comparisons. Visual revision: follow the same named record across the reveal; all illustrative source edits are labeled. Read the caption before opening the matching notebook exercise.\nVisual guide: transit/worker. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
       "answer": null,
       "concept": "One worker still needs a complete loop",
       "exercise": null,
@@ -411,10 +447,11 @@
         "elapsed": "0:50",
         "minutes": 50
       },
-      "clicks": 3
+      "clicks": 4,
+      "technical_guide": "transit/worker"
     },
     {
-      "number": 19,
+      "number": 20,
       "key": "give-the-worker-the-task-it-is-allowed-to-solve",
       "title": "Give the worker the task it is allowed to solve",
       "kind": "",
@@ -429,10 +466,11 @@
         "elapsed": "0:53",
         "minutes": 53
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 20,
+      "number": 21,
       "key": "the-first-action-reads-the-assigned-file",
       "title": "The first action reads the assigned file",
       "kind": "",
@@ -447,10 +485,11 @@
         "elapsed": "0:56",
         "minutes": 56
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 21,
+      "number": 22,
       "key": "the-edit-includes-the-version-it-was-based-on",
       "title": "The edit includes the version it was based on",
       "kind": "",
@@ -465,10 +504,11 @@
         "elapsed": "0:59",
         "minutes": 59
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 22,
+      "number": 23,
       "key": "run-the-checks-against-the-changed-files",
       "title": "Run the checks against the changed files",
       "kind": "",
@@ -483,10 +523,11 @@
         "elapsed": "1:02",
         "minutes": 62
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 23,
+      "number": 24,
       "key": "return-the-tool-result-to-the-worker",
       "title": "Return the tool result to the worker",
       "kind": "",
@@ -501,10 +542,11 @@
         "elapsed": "1:05",
         "minutes": 65
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 24,
+      "number": 25,
       "key": "append-the-actual-observation-to-the-next-request",
       "title": "Append the actual observation to the next request",
       "kind": "",
@@ -519,10 +561,11 @@
         "elapsed": "1:07",
         "minutes": 67
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 25,
+      "number": 26,
       "key": "finish-submits-a-patch-for-review",
       "title": "Finish submits a patch for review",
       "kind": "",
@@ -537,10 +580,11 @@
         "elapsed": "1:09",
         "minutes": 69
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 26,
+      "number": 27,
       "key": "worker-exercise",
       "title": "Run one worker before adding a team",
       "kind": "exercise",
@@ -566,10 +610,11 @@
         "elapsed": "1:13",
         "minutes": 73
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 27,
+      "number": 28,
       "key": "a-trace-should-answer-what-changed-and-why",
       "title": "A trace should answer what changed and why",
       "kind": "",
@@ -584,10 +629,11 @@
         "elapsed": "1:23",
         "minutes": 83
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 28,
+      "number": 29,
       "key": "inspect-the-worker-s-test-in-agent-lens",
       "title": "Inspect the worker\u2019s test in Agent Lens",
       "kind": "",
@@ -602,10 +648,11 @@
         "elapsed": "1:27",
         "minutes": 87
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 29,
+      "number": 30,
       "key": "solo-integration-exercise",
       "title": "Review and run the one-builder app",
       "kind": "exercise",
@@ -631,10 +678,11 @@
         "elapsed": "1:28",
         "minutes": 88
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 30,
+      "number": 31,
       "key": "the-request-has-a-size-limit-even-when-files-are-saved",
       "title": "The request has a size limit even when files are saved",
       "kind": "",
@@ -649,10 +697,11 @@
         "elapsed": "1:31",
         "minutes": 91
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 31,
+      "number": 32,
       "key": "use-the-local-preview-to-follow-a-returned-row",
       "title": "Use the local preview to follow a returned row",
       "kind": "",
@@ -676,10 +725,11 @@
         "elapsed": "1:32",
         "minutes": 92
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 32,
+      "number": 33,
       "key": "break-until-1-45",
       "title": "Break until 1:45",
       "kind": "break",
@@ -694,10 +744,11 @@
         "elapsed": "1:35",
         "minutes": 95
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 33,
+      "number": 34,
       "key": "add-the-task-board-and-two-workers",
       "title": "Add the task board and two workers",
       "kind": "",
@@ -712,10 +763,11 @@
         "elapsed": "1:45",
         "minutes": 105
       },
-      "clicks": 3
+      "clicks": 3,
+      "technical_guide": null
     },
     {
-      "number": 34,
+      "number": 35,
       "key": "choose-work-that-can-happen-independently",
       "title": "Choose work that can happen independently",
       "kind": "",
@@ -730,10 +782,11 @@
         "elapsed": "1:45",
         "minutes": 105
       },
-      "clicks": 1
+      "clicks": 1,
+      "technical_guide": null
     },
     {
-      "number": 35,
+      "number": 36,
       "key": "ready-means-its-prerequisites-passed",
       "title": "Ready means its prerequisites passed",
       "kind": "",
@@ -748,15 +801,16 @@
         "elapsed": "1:50",
         "minutes": 110
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 36,
-      "key": "both-workers-can-see-a-pending-task",
-      "title": "Both workers can see a pending task",
-      "kind": "",
+      "number": 37,
+      "key": "claim-each-task-once",
+      "title": "Claim each task once",
+      "kind": "technical-manual",
       "name": "",
-      "notes": "Use the local two-thread fixture, not a theoretical timing claim. Ask learners what changes if both read at the same time. A polite prompt does not make two Python operations atomic.",
+      "notes": "Use the local two-thread fixture, not a theoretical timing claim. Ask learners what changes if both read at the same time. A polite prompt does not make two Python operations atomic.\nVisual guide: transit/claims. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
       "answer": null,
       "concept": "Both workers can see a pending task",
       "exercise": null,
@@ -766,10 +820,11 @@
         "elapsed": "1:53",
         "minutes": 113
       },
-      "clicks": null
+      "clicks": 3,
+      "technical_guide": "transit/claims"
     },
     {
-      "number": 37,
+      "number": 38,
       "key": "a-separate-check-and-write-permits-two-owners",
       "title": "A separate check and write permits two owners",
       "kind": "",
@@ -784,10 +839,11 @@
         "elapsed": "1:56",
         "minutes": 116
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 38,
+      "number": 39,
       "key": "one-short-transaction-assigns-one-owner",
       "title": "One short transaction assigns one owner",
       "kind": "",
@@ -802,10 +858,11 @@
         "elapsed": "2:00",
         "minutes": 120
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 39,
+      "number": 40,
       "key": "keep-the-model-call-outside-the-claim-transaction",
       "title": "Keep the model call outside the claim transaction",
       "kind": "",
@@ -820,10 +877,11 @@
         "elapsed": "2:03",
         "minutes": 123
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 40,
+      "number": 41,
       "key": "tasks-exercise",
       "title": "Make dependencies control the workers",
       "kind": "exercise",
@@ -848,10 +906,11 @@
         "elapsed": "2:05",
         "minutes": 125
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 41,
+      "number": 42,
       "key": "separate-working-copies-protect-unfinished-changes",
       "title": "Separate working copies protect unfinished changes",
       "kind": "",
@@ -866,10 +925,11 @@
         "elapsed": "2:15",
         "minutes": 135
       },
-      "clicks": 2
+      "clicks": 2,
+      "technical_guide": null
     },
     {
-      "number": 42,
+      "number": 43,
       "key": "each-worker-starts-from-the-same-source",
       "title": "Each worker starts from the same source",
       "kind": "",
@@ -884,10 +944,11 @@
         "elapsed": "2:16",
         "minutes": 136
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 43,
+      "number": 44,
       "key": "each-task-can-edit-only-its-assigned-module",
       "title": "Each task can edit only its assigned module",
       "kind": "",
@@ -902,15 +963,16 @@
         "elapsed": "2:19",
         "minutes": 139
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 44,
-      "key": "integration-checks-the-patches-against-their-base",
-      "title": "Integration checks the patches against their base",
-      "kind": "",
+      "number": 45,
+      "key": "test-the-combined-application",
+      "title": "Test the combined application",
+      "kind": "technical-manual",
       "name": "",
-      "notes": "Explain why different files still need a combined test: both modules can disagree about a field or timezone. The hash guards against stale file replacement; it does not prove the interface is correct.",
+      "notes": "Explain why different files still need a combined test: both modules can disagree about a field or timezone. The hash guards against stale file replacement; it does not prove the interface is correct.\nVisual guide: transit/integration. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
       "answer": null,
       "concept": "Integration checks the patches against their base",
       "exercise": null,
@@ -920,10 +982,11 @@
         "elapsed": "2:22",
         "minutes": 142
       },
-      "clicks": null
+      "clicks": 3,
+      "technical_guide": "transit/integration"
     },
     {
-      "number": 45,
+      "number": 46,
       "key": "run-the-ready-tasks-with-two-workers",
       "title": "Run the ready tasks with two workers",
       "kind": "exercise",
@@ -950,10 +1013,11 @@
         "elapsed": "2:25",
         "minutes": 145
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 46,
+      "number": 47,
       "key": "read-the-timeline-as-work-and-waiting",
       "title": "Read the timeline as work and waiting",
       "kind": "",
@@ -968,10 +1032,11 @@
         "elapsed": "2:35",
         "minutes": 155
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 47,
+      "number": 48,
       "key": "find-both-submitted-patches-before-integration",
       "title": "Find both submitted patches before integration",
       "kind": "",
@@ -986,10 +1051,11 @@
         "elapsed": "2:40",
         "minutes": 160
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 48,
+      "number": 49,
       "key": "review-a-patch-before-it-enters-the-product",
       "title": "Review a patch before it enters the product",
       "kind": "",
@@ -1004,10 +1070,11 @@
         "elapsed": "2:42",
         "minutes": 162
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 49,
+      "number": 50,
       "key": "test-the-combined-departures-board",
       "title": "Test the combined departures board",
       "kind": "exercise",
@@ -1034,10 +1101,11 @@
         "elapsed": "2:45",
         "minutes": 165
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 50,
+      "number": 51,
       "key": "an-integration-error-can-cross-a-correct-boundary",
       "title": "An integration error can cross a correct boundary",
       "kind": "",
@@ -1052,10 +1120,11 @@
         "elapsed": "2:53",
         "minutes": 173
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 51,
+      "number": 52,
       "key": "break-until-3-20",
       "title": "Break until 3:20",
       "kind": "break",
@@ -1070,10 +1139,11 @@
         "elapsed": "3:00",
         "minutes": 180
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 52,
+      "number": 53,
       "key": "aria-investigate",
       "title": "Investigate this result",
       "kind": "aria-investigation",
@@ -1099,10 +1169,11 @@
         "elapsed": "3:20 \u00b7 8 minutes across these three frames",
         "minutes": 200
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 53,
+      "number": 54,
       "key": "aria-investigate-response",
       "title": "Read one claim in the recorded response",
       "kind": "aria-investigation",
@@ -1128,10 +1199,11 @@
         "elapsed": "3:20 \u00b7 8 minutes across these three frames",
         "minutes": 200
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 54,
+      "number": 55,
       "key": "aria-investigate-verify",
       "title": "Open the source and check that claim",
       "kind": "aria-investigation",
@@ -1157,10 +1229,11 @@
         "elapsed": "3:20 \u00b7 8 minutes across these three frames",
         "minutes": 200
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 55,
+      "number": 56,
       "key": "shared-memory-needs-something-worth-sharing",
       "title": "Shared memory needs something worth sharing",
       "kind": "",
@@ -1175,10 +1248,11 @@
         "elapsed": "3:28",
         "minutes": 208
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 56,
+      "number": 57,
       "key": "check-the-lesson-before-another-agent-relies-on-it",
       "title": "Check the lesson before another agent relies on it",
       "kind": "",
@@ -1193,10 +1267,11 @@
         "elapsed": "3:29",
         "minutes": 209
       },
-      "clicks": 2
+      "clicks": 2,
+      "technical_guide": null
     },
     {
-      "number": 57,
+      "number": 58,
       "key": "write-a-rule-with-a-test-attached",
       "title": "Write a rule with a test attached",
       "kind": "",
@@ -1211,15 +1286,16 @@
         "elapsed": "3:30",
         "minutes": 210
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 58,
-      "key": "a-saved-note-is-not-automatically-accepted",
-      "title": "A saved note is not automatically accepted",
-      "kind": "",
+      "number": 59,
+      "key": "retrieve-a-lesson-with-evidence-and-scope",
+      "title": "Retrieve a lesson with evidence and scope",
+      "kind": "technical-manual",
       "name": "",
-      "notes": "The examples are illustrative records matching the retrieval schema, not four observations from R5. Ask which one a fresh worker should receive and which fields justify that choice.",
+      "notes": "The examples are illustrative records matching the retrieval schema, not four observations from R5. Ask which one a fresh worker should receive and which fields justify that choice.\nVisual guide: transit/memory. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
       "answer": null,
       "concept": "A saved note is not automatically accepted",
       "exercise": null,
@@ -1229,10 +1305,11 @@
         "elapsed": "3:31",
         "minutes": 211
       },
-      "clicks": null
+      "clicks": 3,
+      "technical_guide": "transit/memory"
     },
     {
-      "number": 59,
+      "number": 60,
       "key": "first-exclude-the-unchecked-interpretation",
       "title": "First exclude the unchecked interpretation",
       "kind": "",
@@ -1247,10 +1324,11 @@
         "elapsed": "3:32",
         "minutes": 212
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 60,
+      "number": 61,
       "key": "then-check-the-applicable-contract-version",
       "title": "Then check the applicable contract version",
       "kind": "",
@@ -1265,10 +1343,11 @@
         "elapsed": "3:33",
         "minutes": 213
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 61,
+      "number": 62,
       "key": "finally-match-the-task-s-scope-and-tags",
       "title": "Finally match the task\u2019s scope and tags",
       "kind": "",
@@ -1283,10 +1362,11 @@
         "elapsed": "3:35",
         "minutes": 215
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 62,
+      "number": 63,
       "key": "memory-exercise",
       "title": "Save a lesson supported by an execution",
       "kind": "exercise",
@@ -1312,10 +1392,11 @@
         "elapsed": "3:40",
         "minutes": 220
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 63,
+      "number": 64,
       "key": "inspect-the-memory-read-then-its-effect",
       "title": "Inspect the memory read, then its effect",
       "kind": "",
@@ -1330,10 +1411,11 @@
         "elapsed": "3:50",
         "minutes": 230
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 64,
+      "number": 65,
       "key": "find-the-last-direct-train-between-two-stops",
       "title": "Find the last direct train between two stops",
       "kind": "",
@@ -1348,10 +1430,11 @@
         "elapsed": "4:00",
         "minutes": 240
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 65,
+      "number": 66,
       "key": "start-both-follow-ups-from-the-same-release",
       "title": "Start both follow-ups from the same release",
       "kind": "",
@@ -1366,10 +1449,11 @@
         "elapsed": "4:02",
         "minutes": 242
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 66,
+      "number": 67,
       "key": "keep-both-sets-of-patches-and-checks",
       "title": "Keep both sets of patches and checks",
       "kind": "",
@@ -1384,10 +1468,11 @@
         "elapsed": "4:05",
         "minutes": 245
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 67,
+      "number": 68,
       "key": "the-follow-up-returns-a-journey-not-a-list-of-guesses",
       "title": "The follow-up returns a journey, not a list of guesses",
       "kind": "",
@@ -1402,10 +1487,11 @@
         "elapsed": "4:07",
         "minutes": 247
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 68,
+      "number": 69,
       "key": "run-both-versions-of-the-follow-up-feature",
       "title": "Run both versions of the follow-up feature",
       "kind": "exercise",
@@ -1437,10 +1523,11 @@
         "elapsed": "4:10",
         "minutes": 250
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 69,
+      "number": 70,
       "key": "the-factory-has-two-kinds-of-state",
       "title": "The factory has two kinds of state",
       "kind": "",
@@ -1455,10 +1542,11 @@
         "elapsed": "4:27",
         "minutes": 267
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 70,
+      "number": 71,
       "key": "find-where-the-lesson-entered-the-request",
       "title": "Find where the lesson entered the request",
       "kind": "",
@@ -1473,10 +1561,11 @@
         "elapsed": "4:32",
         "minutes": 272
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 71,
+      "number": 72,
       "key": "keep-a-stopped-worker-s-files-and-error",
       "title": "Keep a stopped worker\u2019s files and error",
       "kind": "",
@@ -1491,10 +1580,11 @@
         "elapsed": "4:38",
         "minutes": 278
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 72,
+      "number": 73,
       "key": "break-until-4-55",
       "title": "Break until 4:55",
       "kind": "break",
@@ -1509,15 +1599,16 @@
         "elapsed": "4:45",
         "minutes": 285
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 73,
-      "key": "evaluate-the-product-and-the-process-separately",
-      "title": "Evaluate the product and the process separately",
-      "kind": "",
+      "number": 74,
+      "key": "measure-delivery-coordination-and-memory-separately",
+      "title": "Measure delivery, coordination, and memory separately",
+      "kind": "technical-manual",
       "name": "",
-      "notes": "Avoid a composite score that conceals these tradeoffs. The saved product rows are matched across versions. Missing builds or evaluations remain missing, not silently dropped or converted to ordinary task failures. Repeated task claims include explicit recovery; overlapping reasoning and semantically duplicated code are not measured. Coverage is separate from passed-case rate.",
+      "notes": "Avoid a composite score that conceals these tradeoffs. The saved product rows are matched across versions. Missing builds or evaluations remain missing, not silently dropped or converted to ordinary task failures. Repeated task claims include explicit recovery; overlapping reasoning and semantically duplicated code are not measured. Coverage is separate from passed-case rate.\nVisual guide: transit/comparison. Advance one state at a time; Back restores the preceding state. The notebook uses the same source figure beside its exercise. Follow the intermediate value to the matching code. These are explanatory frames; they do not execute an experiment or imply a learner result.",
       "answer": null,
       "concept": "Evaluate the product and the process separately",
       "exercise": null,
@@ -1527,10 +1618,11 @@
         "elapsed": "4:55",
         "minutes": 295
       },
-      "clicks": null
+      "clicks": 5,
+      "technical_guide": "transit/comparison"
     },
     {
-      "number": 74,
+      "number": 75,
       "key": "a-scenario-is-an-input-and-an-expected-behavior",
       "title": "A scenario is an input and an expected behavior",
       "kind": "",
@@ -1545,10 +1637,11 @@
         "elapsed": "4:58",
         "minutes": 298
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 75,
+      "number": 76,
       "key": "evaluate-exercise",
       "title": "Compare the frozen builds on matching cases",
       "kind": "exercise",
@@ -1574,10 +1667,11 @@
         "elapsed": "5:03",
         "minutes": 303
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 76,
+      "number": 77,
       "key": "read-one-comparison-row-before-the-average",
       "title": "Read one comparison row before the average",
       "kind": "",
@@ -1592,10 +1686,11 @@
         "elapsed": "5:08",
         "minutes": 308
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 77,
+      "number": 78,
       "key": "compare-the-same-departures-in-forge",
       "title": "Compare the same departures in Forge",
       "kind": "",
@@ -1612,10 +1707,11 @@
         "elapsed": "5:10",
         "minutes": 310
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 78,
+      "number": 79,
       "key": "the-faster-build-missed-two-final-cases",
       "title": "The faster build missed two final cases",
       "kind": "",
@@ -1633,10 +1729,11 @@
         "elapsed": "5:13",
         "minutes": 313
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 79,
+      "number": 80,
       "key": "open-the-two-failing-rows-in-the-final-comparison",
       "title": "Open the two failing rows in the final comparison",
       "kind": "",
@@ -1653,10 +1750,11 @@
         "elapsed": "5:15",
         "minutes": 315
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 80,
+      "number": 81,
       "key": "a-timezone-assumption-selected-the-wrong-train",
       "title": "A timezone assumption selected the wrong train",
       "kind": "",
@@ -1673,10 +1771,11 @@
         "elapsed": "5:16",
         "minutes": 316
       },
-      "clicks": 2
+      "clicks": 2,
+      "technical_guide": null
     },
     {
-      "number": 81,
+      "number": 82,
       "key": "interpret-the-request-as-one-instant",
       "title": "Interpret the request as one instant",
       "kind": "",
@@ -1693,10 +1792,11 @@
         "elapsed": "5:18",
         "minutes": 318
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 82,
+      "number": 83,
       "key": "the-team-used-the-caller-s-clock-for-service-time",
       "title": "The team used the caller\u2019s clock for service time",
       "kind": "",
@@ -1713,10 +1813,11 @@
         "elapsed": "5:20",
         "minutes": 320
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 83,
+      "number": 84,
       "key": "the-renderer-carried-the-same-wrong-trip-into-the-board",
       "title": "The renderer carried the same wrong trip into the board",
       "kind": "",
@@ -1733,10 +1834,11 @@
         "elapsed": "5:22",
         "minutes": 322
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 84,
+      "number": 85,
       "key": "neither-follow-up-completed-the-query-change",
       "title": "Neither follow-up completed the query change",
       "kind": "",
@@ -1753,10 +1855,11 @@
         "elapsed": "5:24",
         "minutes": 324
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 85,
+      "number": 86,
       "key": "more-workers-can-still-produce-more-waiting",
       "title": "More workers can still produce more waiting",
       "kind": "",
@@ -1771,10 +1874,11 @@
         "elapsed": "5:25",
         "minutes": 325
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 86,
+      "number": 87,
       "key": "choose-a-release-using-the-saved-checks",
       "title": "Choose a release using the saved checks",
       "kind": "",
@@ -1789,10 +1893,11 @@
         "elapsed": "5:30",
         "minutes": 330
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 87,
+      "number": 88,
       "key": "aria-conclusion",
       "title": "Check our conclusion",
       "kind": "aria-investigation",
@@ -1820,10 +1925,11 @@
         "elapsed": "5:35 \u00b7 7 minutes across these three frames",
         "minutes": 335
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 88,
+      "number": 89,
       "key": "aria-conclusion-response",
       "title": "Read one claim in the recorded response",
       "kind": "aria-investigation",
@@ -1851,10 +1957,11 @@
         "elapsed": "5:35 \u00b7 7 minutes across these three frames",
         "minutes": 335
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 89,
+      "number": 90,
       "key": "aria-conclusion-verify",
       "title": "Open the source and check that claim",
       "kind": "aria-investigation",
@@ -1882,10 +1989,11 @@
         "elapsed": "5:35 \u00b7 7 minutes across these three frames",
         "minutes": 335
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 90,
+      "number": 91,
       "key": "release-exercise",
       "title": "Publish the version you can reproduce",
       "kind": "exercise",
@@ -1911,10 +2019,11 @@
         "elapsed": "5:42",
         "minutes": 342
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 91,
+      "number": 92,
       "key": "reload-the-selected-app-and-repeat-one-case",
       "title": "Reload the selected app and repeat one case",
       "kind": "",
@@ -1929,10 +2038,11 @@
         "elapsed": "5:44",
         "minutes": 344
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 92,
+      "number": 93,
       "key": "explain-one-result-to-another-participant",
       "title": "Explain one result to another participant",
       "kind": "",
@@ -1947,10 +2057,11 @@
         "elapsed": "5:48",
         "minutes": 348
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 93,
+      "number": 94,
       "key": "take-the-coordination-code-to-your-own-project",
       "title": "Take the coordination code to your own project",
       "kind": "",
@@ -1965,10 +2076,11 @@
         "elapsed": "5:58",
         "minutes": 358
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 94,
+      "number": 95,
       "key": "tasks-answer",
       "title": "Worked answer: select ready tasks",
       "kind": "answer",
@@ -1983,10 +2095,11 @@
         "elapsed": null,
         "minutes": null
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 95,
+      "number": 96,
       "key": "memory-answer",
       "title": "Worked answer: retrieve a checked lesson",
       "kind": "answer",
@@ -2001,10 +2114,11 @@
         "elapsed": null,
         "minutes": null
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 96,
+      "number": 97,
       "key": "release-answer",
       "title": "Worked answer: block an unverified release",
       "kind": "answer",
@@ -2019,10 +2133,11 @@
         "elapsed": null,
         "minutes": null
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 97,
+      "number": 98,
       "key": "workflow-sources",
       "title": "Sources for the workflow",
       "kind": "",
@@ -2037,10 +2152,11 @@
         "elapsed": null,
         "minutes": null
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 98,
+      "number": 99,
       "key": "sources-for-the-data-and-evaluation",
       "title": "Sources for the data and evaluation",
       "kind": "",
@@ -2055,10 +2171,11 @@
         "elapsed": null,
         "minutes": null
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 99,
+      "number": 100,
       "key": "acceptance-answer",
       "title": "Worked answer: check the after-midnight departure",
       "kind": "answer",
@@ -2073,10 +2190,11 @@
         "elapsed": null,
         "minutes": null
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 100,
+      "number": 101,
       "key": "worker-answer",
       "title": "Worked answer: dispatch one allowed tool",
       "kind": "answer",
@@ -2091,10 +2209,11 @@
         "elapsed": null,
         "minutes": null
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     },
     {
-      "number": 101,
+      "number": 102,
       "key": "evaluate-answer",
       "title": "Worked answer: check the departure order",
       "kind": "answer",
@@ -2109,7 +2228,8 @@
         "elapsed": null,
         "minutes": null
       },
-      "clicks": null
+      "clicks": null,
+      "technical_guide": null
     }
   ]
 }

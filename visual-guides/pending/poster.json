@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "poster",
+  "title": "Build and evaluate an operations agent",
+  "eyebrow": "01 / Pending, Inc.",
+  "question": "What will you learn?",
+  "summary": "The employee says the refund is complete. Check the account before telling the customer. Then change the instructions and find out whether they helped.",
+  "kind": "poster",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ=="
+    }
+  ],
+  "steps": [],
+  "states": [
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [],
+      "focus": [],
+      "caption": "What will you learn?"
+    }
+  ],
+  "poster": {
+    "situation": "The employee says the refund is complete. Check the account before telling the customer. Then change the instructions and find out whether they helped.",
+    "outcomes": [
+      "Connect instructions, skills, and Python tools to an agent.",
+      "Find a retry error in the trace and repair it.",
+      "Compare manual and agent-written changes on matching tickets."
+    ],
+    "duration": "4 hours",
+    "prerequisites": "Read basic Python; use your own Forge project.",
+    "dataset": "Fictional billing and onboarding records",
+    "forge": [
+      {
+        "name": "Agent Lens",
+        "action": "Follow the request, tool result, and next action."
+      },
+      {
+        "name": "EvalTables",
+        "action": "Compare account correctness across harness versions."
+      },
+      {
+        "name": "Artifacts",
+        "action": "Recover the instructions and code that actually ran."
+      }
+    ],
+    "cta": {
+      "label": "Read the example, then copy the notebook",
+      "url": "https://ash0ts.github.io/forge-workshop-kit/#pending"
+    },
+    "hero": "hero.svg"
+  }
+}

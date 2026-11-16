@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "id": "integration",
+  "title": "Test the combined application",
+  "eyebrow": "05 / Transit software factory",
+  "question": "Do the two components use the same interfaces and time conventions?",
+  "summary": "A worker’s passing component test does not establish that the whole app meets the request.",
+  "kind": "sequence",
+  "provenance": "illustrative",
+  "source_links": [
+    {
+      "label": "Implementation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory_teaching.py"
+    },
+    {
+      "label": "Worked example and recorded outcomes",
+      "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ=="
+    },
+    {
+      "label": "Code for this operation",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory.py"
+    }
+  ],
+  "steps": [
+    {
+      "id": "copies",
+      "title": "Work in separate copies",
+      "body": "Each worker receives owned paths and the same approved contract. One worker cannot silently edit the other’s copy.",
+      "output": "Two owned source trees",
+      "symbol": "branch"
+    },
+    {
+      "id": "patches",
+      "title": "Compare returned patches",
+      "body": "A patch conflict is an integration problem to resolve. Keep the submitted version and its tests visible.",
+      "output": "Submitted patches + test records",
+      "symbol": "patch"
+    },
+    {
+      "id": "combined",
+      "title": "Run application checks",
+      "body": "Test the merged source against application scenarios. Separate submitted, tested, and integrated states.",
+      "output": "Integrated code + scenario outcomes",
+      "symbol": "application",
+      "code": "row.update(\n    status=\"integrated\", reviewer=reviewer,\n    reviewed_patch=expected_patch_digest,\n)",
+      "excerpt_label": "Abbreviated code; full function in notebook."
+    }
+  ],
+  "states": [
+    {
+      "id": "copies",
+      "label": "Copies",
+      "visible": [
+        "copies"
+      ],
+      "focus": [
+        "copies"
+      ],
+      "caption": "Do the two components use the same interfaces and time conventions?"
+    },
+    {
+      "id": "patches",
+      "label": "Patches",
+      "visible": [
+        "copies",
+        "patches"
+      ],
+      "focus": [
+        "patches"
+      ],
+      "caption": "Do the two components use the same interfaces and time conventions?"
+    },
+    {
+      "id": "combined",
+      "label": "Combined",
+      "visible": [
+        "copies",
+        "patches",
+        "combined"
+      ],
+      "focus": [
+        "combined"
+      ],
+      "caption": "Do the two components use the same interfaces and time conventions?"
+    },
+    {
+      "id": "complete",
+      "label": "Complete view",
+      "visible": [
+        "copies",
+        "patches",
+        "combined"
+      ],
+      "focus": [],
+      "caption": "Do the two components use the same interfaces and time conventions?"
+    }
+  ]
+}
