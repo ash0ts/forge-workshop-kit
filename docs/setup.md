@@ -16,6 +16,8 @@ The default inference allowance is $8 for this workspace. Change it during setup
 
 ## Use ARIA during the investigations
 
+The direct ARIA controls below require the [v0.12.0 notebook downloads](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.12.0); hosted templates remain at v0.11.1 while the publisher's notebook-management access is blocked.
+
 Each workshop pauses twice to ask ARIA about selected saved results and check a citation. Click **Start ARIA investigation**, then **Open ARIA conversation** to continue in Forge. **Check ARIA response** retrieves the saved answer without starting another request. Live access requires a supported team project with Smart features; personal-project participants use the bundled recorded investigation. A successful project check does not prove ARIA access. ARIA usage is separate from the notebook’s $8 inference allowance. Follow the [investigation instructions](aria-investigations.md) for native attachments, billing, and the no-access path. No ARIA activity blocks the coding exercises.
 
 ## Work locally
