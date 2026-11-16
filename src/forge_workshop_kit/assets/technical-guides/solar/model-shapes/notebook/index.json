@@ -3,9 +3,9 @@
   "id": "model-shapes",
   "kind": "comparison",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "876df6d612e87ea6dc3b4adc4edb8a2146287863ec932b9e6f614341bd40da8b",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "e2518644e4d672b1208ce62bf9eab2cd2ef948bb453ee447af34f97965d7fbe2",
   "states": [
     {
       "id": "input",

@@ -55,7 +55,8 @@
       "focus": [
         "source"
       ],
-      "caption": "What must be saved to replay the same situation?"
+      "caption": "What must be saved to replay the same situation?",
+      "artwork": "art/regression/source.svg"
     },
     {
       "id": "case",
@@ -67,7 +68,8 @@
       "focus": [
         "case"
       ],
-      "caption": "What must be saved to replay the same situation?"
+      "caption": "What must be saved to replay the same situation?",
+      "artwork": "art/regression/case.svg"
     },
     {
       "id": "checks",
@@ -80,7 +82,8 @@
       "focus": [
         "checks"
       ],
-      "caption": "What must be saved to replay the same situation?"
+      "caption": "What must be saved to replay the same situation?",
+      "artwork": "art/regression/checks.svg"
     },
     {
       "id": "complete",
@@ -91,7 +94,8 @@
         "checks"
       ],
       "focus": [],
-      "caption": "What must be saved to replay the same situation?"
+      "caption": "What must be saved to replay the same situation?",
+      "artwork": "art/regression/complete.svg"
     }
   ]
 }

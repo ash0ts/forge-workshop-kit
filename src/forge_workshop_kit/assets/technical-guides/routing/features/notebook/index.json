@@ -3,9 +3,9 @@
   "id": "features",
   "kind": "branches",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "7f2f5afd01a8d0b47075f8eb619d2698113b46a2f038b8c7e67162a666666fd1",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "c324d0940642d8601471d24ac0e057cd844e093dc061e186de88512dd4955067",
   "states": [
     {
       "id": "request",

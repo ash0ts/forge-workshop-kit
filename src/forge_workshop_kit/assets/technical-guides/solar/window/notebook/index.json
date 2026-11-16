@@ -3,9 +3,9 @@
   "id": "window",
   "kind": "sequence",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "b6dffdb90819cc58d378eacc4e0976db733e8cb2d539159a2b198d5c977b6547",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "77477966c00e0671cc1af7f4fa053eed770c957ff2266830090d34caab671386",
   "states": [
     {
       "id": "history",

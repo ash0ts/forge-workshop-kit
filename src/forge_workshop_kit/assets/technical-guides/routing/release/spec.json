@@ -67,7 +67,8 @@
       "focus": [
         "healthy"
       ],
-      "caption": "Can the release reproduce the healthy predictor’s destinations?"
+      "caption": "Can the release reproduce the healthy predictor’s destinations?",
+      "artwork": "art/release/healthy.svg"
     },
     {
       "id": "faulty",
@@ -79,7 +80,8 @@
       "focus": [
         "faulty"
       ],
-      "caption": "Can the release reproduce the healthy predictor’s destinations?"
+      "caption": "Can the release reproduce the healthy predictor’s destinations?",
+      "artwork": "art/release/faulty.svg"
     },
     {
       "id": "repair",
@@ -92,7 +94,8 @@
       "focus": [
         "repair"
       ],
-      "caption": "Can the release reproduce the healthy predictor’s destinations?"
+      "caption": "Can the release reproduce the healthy predictor’s destinations?",
+      "artwork": "art/release/repair.svg"
     },
     {
       "id": "result",
@@ -106,7 +109,8 @@
       "focus": [
         "result"
       ],
-      "caption": "Can the release reproduce the healthy predictor’s destinations?"
+      "caption": "Can the release reproduce the healthy predictor’s destinations?",
+      "artwork": "art/release/result.svg"
     },
     {
       "id": "complete",
@@ -118,7 +122,8 @@
         "result"
       ],
       "focus": [],
-      "caption": "Can the release reproduce the healthy predictor’s destinations?"
+      "caption": "Can the release reproduce the healthy predictor’s destinations?",
+      "artwork": "art/release/complete.svg"
     }
   ]
 }

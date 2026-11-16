@@ -3,9 +3,9 @@
   "id": "integration",
   "kind": "sequence",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "7d06a104a5a4be7730064dd155281b41091f408ee3958f6b2dfcc95e694f8676",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "c452617d8ff01c5e8c604219bf7167f93d67a6cff6fecb5c1dc57dfaef05714d",
   "states": [
     {
       "id": "copies",

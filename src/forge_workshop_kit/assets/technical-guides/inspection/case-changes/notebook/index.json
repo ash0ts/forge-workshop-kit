@@ -3,9 +3,9 @@
   "id": "case-changes",
   "kind": "comparison",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "84b06152351534010753353d89e4c64c2b8a8e0cba9b50da3a71d63fb4b49b9c",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "4cf4f3b18b68f6c361e041f34660ea459ee5613f3469ca55399cbf6135104872",
   "states": [
     {
       "id": "miss",

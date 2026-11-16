@@ -59,7 +59,8 @@
       "focus": [
         "agent"
       ],
-      "caption": "Which check can establish that the account is correct?"
+      "caption": "Which check can establish that the account is correct?",
+      "artwork": "art/checks/agent.svg"
     },
     {
       "id": "learner",
@@ -71,7 +72,8 @@
       "focus": [
         "learner"
       ],
-      "caption": "Which check can establish that the account is correct?"
+      "caption": "Which check can establish that the account is correct?",
+      "artwork": "art/checks/learner.svg"
     },
     {
       "id": "independent",
@@ -84,7 +86,8 @@
       "focus": [
         "independent"
       ],
-      "caption": "Which check can establish that the account is correct?"
+      "caption": "Which check can establish that the account is correct?",
+      "artwork": "art/checks/independent.svg"
     },
     {
       "id": "judge",
@@ -98,7 +101,8 @@
       "focus": [
         "judge"
       ],
-      "caption": "Which check can establish that the account is correct?"
+      "caption": "Which check can establish that the account is correct?",
+      "artwork": "art/checks/judge.svg"
     },
     {
       "id": "complete",
@@ -110,7 +114,8 @@
         "judge"
       ],
       "focus": [],
-      "caption": "Which check can establish that the account is correct?"
+      "caption": "Which check can establish that the account is correct?",
+      "artwork": "art/checks/complete.svg"
     }
   ]
 }

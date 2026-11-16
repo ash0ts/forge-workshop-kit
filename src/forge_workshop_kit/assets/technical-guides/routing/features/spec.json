@@ -69,7 +69,8 @@
       "focus": [
         "request"
       ],
-      "caption": "Does the same request route differently with word features or sentence features?"
+      "caption": "Does the same request route differently with word features or sentence features?",
+      "artwork": "art/features/request.svg"
     },
     {
       "id": "words",
@@ -81,7 +82,8 @@
       "focus": [
         "words"
       ],
-      "caption": "Does the same request route differently with word features or sentence features?"
+      "caption": "Does the same request route differently with word features or sentence features?",
+      "artwork": "art/features/words.svg"
     },
     {
       "id": "embedding",
@@ -94,7 +96,8 @@
       "focus": [
         "embedding"
       ],
-      "caption": "Does the same request route differently with word features or sentence features?"
+      "caption": "Does the same request route differently with word features or sentence features?",
+      "artwork": "art/features/embedding.svg"
     },
     {
       "id": "fit",
@@ -108,7 +111,8 @@
       "focus": [
         "fit"
       ],
-      "caption": "Does the same request route differently with word features or sentence features?"
+      "caption": "Does the same request route differently with word features or sentence features?",
+      "artwork": "art/features/fit.svg"
     },
     {
       "id": "complete",
@@ -120,7 +124,8 @@
         "fit"
       ],
       "focus": [],
-      "caption": "Does the same request route differently with word features or sentence features?"
+      "caption": "Does the same request route differently with word features or sentence features?",
+      "artwork": "art/features/complete.svg"
     }
   ]
 }

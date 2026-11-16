@@ -3,9 +3,9 @@
   "id": "changes",
   "kind": "branches",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "dd9039e049c86c93c833edab8213efccb6690bb65a72b8ed67965f13d73364d0",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "399fc11ef5dcb2b9828cfa6e0f1c22d191dacb4aee40dfadbd4ecd55b9db7f07",
   "states": [
     {
       "id": "parent",

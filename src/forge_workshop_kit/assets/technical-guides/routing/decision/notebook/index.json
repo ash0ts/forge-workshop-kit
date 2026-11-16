@@ -3,9 +3,9 @@
   "id": "decision",
   "kind": "sequence",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "79f928278f9428d734b500adefb7c23640d096f7475e8329abd7a1eca8b4122d",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "5c9a50fb4ee85e06c8725ca5b25e22b1149fd3a3ef16d3c3806a43b2c5cfd716",
   "states": [
     {
       "id": "scores",

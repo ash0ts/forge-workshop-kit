@@ -54,7 +54,8 @@
       "focus": [
         "action"
       ],
-      "caption": "Where do the returned payments become information the model can use?"
+      "caption": "Where do the returned payments become information the model can use?",
+      "artwork": "art/dispatch/action.svg"
     },
     {
       "id": "call",
@@ -66,7 +67,8 @@
       "focus": [
         "call"
       ],
-      "caption": "Where do the returned payments become information the model can use?"
+      "caption": "Where do the returned payments become information the model can use?",
+      "artwork": "art/dispatch/call.svg"
     },
     {
       "id": "observe",
@@ -79,7 +81,8 @@
       "focus": [
         "observe"
       ],
-      "caption": "Where do the returned payments become information the model can use?"
+      "caption": "Where do the returned payments become information the model can use?",
+      "artwork": "art/dispatch/observe.svg"
     },
     {
       "id": "complete",
@@ -90,7 +93,8 @@
         "observe"
       ],
       "focus": [],
-      "caption": "Where do the returned payments become information the model can use?"
+      "caption": "Where do the returned payments become information the model can use?",
+      "artwork": "art/dispatch/complete.svg"
     }
   ]
 }

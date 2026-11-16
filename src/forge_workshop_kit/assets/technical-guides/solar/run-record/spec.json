@@ -56,7 +56,8 @@
       "focus": [
         "inputs"
       ],
-      "caption": "Could someone reproduce this prediction from the saved run?"
+      "caption": "Could someone reproduce this prediction from the saved run?",
+      "artwork": "art/run-record/inputs.svg"
     },
     {
       "id": "execution",
@@ -68,7 +69,8 @@
       "focus": [
         "execution"
       ],
-      "caption": "Could someone reproduce this prediction from the saved run?"
+      "caption": "Could someone reproduce this prediction from the saved run?",
+      "artwork": "art/run-record/execution.svg"
     },
     {
       "id": "publish",
@@ -81,7 +83,8 @@
       "focus": [
         "publish"
       ],
-      "caption": "Could someone reproduce this prediction from the saved run?"
+      "caption": "Could someone reproduce this prediction from the saved run?",
+      "artwork": "art/run-record/publish.svg"
     },
     {
       "id": "complete",
@@ -92,7 +95,8 @@
         "publish"
       ],
       "focus": [],
-      "caption": "Could someone reproduce this prediction from the saved run?"
+      "caption": "Could someone reproduce this prediction from the saved run?",
+      "artwork": "art/run-record/complete.svg"
     }
   ],
   "native_capture": {

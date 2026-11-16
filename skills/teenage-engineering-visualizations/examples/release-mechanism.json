@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "id": "release-mechanism",
+  "kind": "sequence",
+  "title": "Load an exact release, then roll it back",
+  "provenance": "illustrative",
+  "summary": "Illustrative local file layout. Hashes are shortened placeholders, not measured artifact identifiers.",
+  "steps": [
+    {
+      "id": "package",
+      "title": "Save the files",
+      "body": "Package model weights, ordered labels, and prediction code together."
+    },
+    {
+      "id": "check",
+      "title": "Verify contents",
+      "body": "Compare each file hash with the saved manifest before loading."
+    },
+    {
+      "id": "select",
+      "title": "Select version four",
+      "body": "Change the current-version pointer after release checks pass."
+    },
+    {
+      "id": "rollback",
+      "title": "Restore version three",
+      "body": "Restore the previous exact package without retraining."
+    }
+  ],
+  "states": [
+    {
+      "id": "package",
+      "label": "Saved package",
+      "visible": [
+        "package"
+      ],
+      "focus": [
+        "package"
+      ],
+      "artwork": "release-mechanism/package.svg",
+      "caption": "Illustrative local release; abbreviated hash values."
+    },
+    {
+      "id": "check",
+      "label": "Content check",
+      "visible": [
+        "package",
+        "check"
+      ],
+      "focus": [
+        "check"
+      ],
+      "artwork": "release-mechanism/check.svg",
+      "caption": "Illustrative local release; abbreviated hash values."
+    },
+    {
+      "id": "select",
+      "label": "Select v4",
+      "visible": [
+        "package",
+        "check",
+        "select"
+      ],
+      "focus": [
+        "select"
+      ],
+      "artwork": "release-mechanism/select.svg",
+      "caption": "Illustrative local release; abbreviated hash values."
+    },
+    {
+      "id": "rollback",
+      "label": "Rollback to v3",
+      "visible": [
+        "package",
+        "check",
+        "select",
+        "rollback"
+      ],
+      "focus": [
+        "rollback"
+      ],
+      "artwork": "release-mechanism/rollback.svg",
+      "caption": "Illustrative local release; abbreviated hash values."
+    }
+  ],
+  "source_links": []
+}

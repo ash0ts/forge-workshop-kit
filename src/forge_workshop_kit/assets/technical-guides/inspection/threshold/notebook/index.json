@@ -3,9 +3,9 @@
   "id": "threshold",
   "kind": "sequence",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "941743e712d65ac1e678a3fbd1bb98de9141d555332b3f74c625a2f0070ad2a3",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "bf179ae98097f46d0047da400390450ece7e542a34271fd2a62b7276bad84029",
   "states": [
     {
       "id": "score",

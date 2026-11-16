@@ -2,6 +2,14 @@
 
 Use [release checks](release-checks.md) for verification evidence and [next-up.md](../next-up.md) for unfinished work. These entries describe changes when each version shipped.
 
+## 0.11.1 technical preview
+
+The technical guides now use original drawings of the objects and operations being taught. The invoice tool connects to an account ledger and appended conversation turns; a solar forecast follows actual observations through its input window; a selected PCB patch connects to its feature vector and normal reference. Routing, Transit, and Airline receive the same treatment, including label-column repair, atomic task claims, and whole-itinerary replacement.
+
+All 42 figures and six poster drawings were revised. The shared renderer preserves their geometry across notebooks and slides. Narrow notebook layouts retain a scrollable drawing and a text alternative. The standalone visual skill now includes a concrete release-mechanism example and checks that reject a diagram which only restates the prose in boxes.
+
+This revision changes presentation, not workshop execution. Existing results, stage identities, datasets, budgets, drafts, and attendee copies are preserved. It adds no training or inference. Native-access and human-rehearsal limitations remain unchanged.
+
 ## 0.11.0 technical preview
 
 The six workshops now share numbered technical diagrams, progressive explanations, annotated product captures, and overview posters. Each notebook and deck uses the same authored figures, so labels, code excerpts, and example values stay aligned. Notebook Next/Back controls change only the explanation.

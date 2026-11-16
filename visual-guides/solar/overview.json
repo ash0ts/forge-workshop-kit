@@ -53,7 +53,8 @@
       "focus": [
         "observations"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/observations.svg"
     },
     {
       "id": "baseline",
@@ -65,7 +66,8 @@
       "focus": [
         "baseline"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/baseline.svg"
     },
     {
       "id": "experiment",
@@ -78,7 +80,8 @@
       "focus": [
         "experiment"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/experiment.svg"
     },
     {
       "id": "research",
@@ -92,7 +95,8 @@
       "focus": [
         "research"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/research.svg"
     },
     {
       "id": "complete",
@@ -104,7 +108,8 @@
         "research"
       ],
       "focus": [],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/complete.svg"
     }
   ],
   "hero": "hero.svg"

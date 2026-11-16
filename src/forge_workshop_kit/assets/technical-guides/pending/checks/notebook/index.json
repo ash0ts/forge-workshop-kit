@@ -3,9 +3,9 @@
   "id": "checks",
   "kind": "comparison",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "06c565c6f3c01cda6aba2e5a9e70ea21e3386d35c9afe7a1ebd1507b5eedf531",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "02ebce6dd095a3be08a288c1184df522b10b2b406cb581a007eafb3f3920dfd4",
   "states": [
     {
       "id": "agent",

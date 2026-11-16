@@ -55,7 +55,8 @@
       "focus": [
         "model"
       ],
-      "caption": "Which part would you change to make the next action different?"
+      "caption": "Which part would you change to make the next action different?",
+      "artwork": "art/harness/model.svg"
     },
     {
       "id": "tools",
@@ -67,7 +68,8 @@
       "focus": [
         "tools"
       ],
-      "caption": "Which part would you change to make the next action different?"
+      "caption": "Which part would you change to make the next action different?",
+      "artwork": "art/harness/tools.svg"
     },
     {
       "id": "skill",
@@ -80,7 +82,8 @@
       "focus": [
         "skill"
       ],
-      "caption": "Which part would you change to make the next action different?"
+      "caption": "Which part would you change to make the next action different?",
+      "artwork": "art/harness/skill.svg"
     },
     {
       "id": "complete",
@@ -91,7 +94,8 @@
         "skill"
       ],
       "focus": [],
-      "caption": "Which part would you change to make the next action different?"
+      "caption": "Which part would you change to make the next action different?",
+      "artwork": "art/harness/complete.svg"
     }
   ]
 }

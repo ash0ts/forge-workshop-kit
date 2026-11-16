@@ -3,9 +3,9 @@
   "id": "overview",
   "kind": "overview",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "55de50489c57209bfb90484b1fbf24efb9a3fb9eb090a9b3b4bb4de914573533",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "a071ac45c664680e59dec3bd3d8481f69f906a33de899bd804c1c894dcb69011",
   "states": [
     {
       "id": "booking",

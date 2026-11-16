@@ -55,7 +55,8 @@
       "focus": [
         "scores"
       ],
-      "caption": "How does the winning intent differ from the decision to defer?"
+      "caption": "How does the winning intent differ from the decision to defer?",
+      "artwork": "art/decision/scores.svg"
     },
     {
       "id": "confidence",
@@ -67,7 +68,8 @@
       "focus": [
         "confidence"
       ],
-      "caption": "How does the winning intent differ from the decision to defer?"
+      "caption": "How does the winning intent differ from the decision to defer?",
+      "artwork": "art/decision/confidence.svg"
     },
     {
       "id": "margin",
@@ -80,7 +82,8 @@
       "focus": [
         "margin"
       ],
-      "caption": "How does the winning intent differ from the decision to defer?"
+      "caption": "How does the winning intent differ from the decision to defer?",
+      "artwork": "art/decision/margin.svg"
     },
     {
       "id": "complete",
@@ -91,7 +94,8 @@
         "margin"
       ],
       "focus": [],
-      "caption": "How does the winning intent differ from the decision to defer?"
+      "caption": "How does the winning intent differ from the decision to defer?",
+      "artwork": "art/decision/complete.svg"
     }
   ]
 }

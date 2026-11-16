@@ -2,7 +2,7 @@ name: Workshop decks
 on:
   push:
     branches: [main]
-    paths: ['decks/**', 'skills/**', 'visual-guides/**', 'reports/published.json', 'src/forge_workshop_kit/assets/visuals.json', 'src/forge_workshop_kit/assets/aria/**', 'src/forge_workshop_kit/workshops.json', 'scripts/aria_storyboard.py', 'scripts/build_aria_recordings.py', 'scripts/build_decks.py', 'scripts/build_visual_guides.py', 'scripts/technical_guide_storyboard.py', 'scripts/validate_deck.mjs', 'scripts/check_deck_pdf.py', 'scripts/serve_deck.py', '.github/workflows/deck.yml']
+    paths: ['decks/**', 'skills/**', 'visual-guides/**', 'reports/published.json', 'src/forge_workshop_kit/assets/visuals.json', 'src/forge_workshop_kit/assets/aria/**', 'src/forge_workshop_kit/workshops.json', 'scripts/aria_storyboard.py', 'scripts/build_aria_recordings.py', 'scripts/build_decks.py', 'scripts/build_visual_guides.py', 'scripts/illustrate_*.py', 'scripts/technical_guide_storyboard.py', 'scripts/validate_deck.mjs', 'scripts/check_deck_pdf.py', 'scripts/serve_deck.py', '.github/workflows/deck.yml']
   workflow_dispatch:
 
 permissions:

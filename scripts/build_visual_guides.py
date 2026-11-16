@@ -16,12 +16,20 @@ SKILL = ROOT / "skills/teenage-engineering-visualizations"
 SOURCE = ROOT / "visual-guides"
 BUNDLED = ROOT / "src/forge_workshop_kit/assets/technical-guides"
 EXCLUDED = {"node_modules", "__pycache__", ".DS_Store", ".git", ".venv", "dist"}
+ILLUSTRATORS = {"pending": "pending", "solar": "solar", "routing": "routing",
+                "inspection": "inspection", "transit": "transit", "airline_monitoring": "airline"}
 
 
 def archive(destination, folders):
     destination.parent.mkdir(parents=True, exist_ok=True)
     with zipfile.ZipFile(destination, "w", compression=zipfile.ZIP_DEFLATED) as bundle:
         for folder, prefix in folders:
+            if folder.is_file():
+                entry = zipfile.ZipInfo(str(prefix), date_time=(2026, 1, 1, 0, 0, 0))
+                entry.compress_type = zipfile.ZIP_DEFLATED
+                entry.external_attr = 0o644 << 16
+                bundle.writestr(entry, folder.read_bytes())
+                continue
             for path in sorted(folder.rglob("*")):
                 relative = path.relative_to(folder)
                 if path.is_file() and not EXCLUDED.intersection(relative.parts) and path.suffix != ".pyc":
@@ -52,6 +60,9 @@ def build(*, only=(), exports=False, output=None, site=None):
     receipts = []
     for workshop in selected:
         slug = workshop["slug"]
+        # Illustrators consume checked-in observations and fixtures only. They
+        # author SVG geometry; no workshop runtime or provider is imported.
+        subprocess.run([sys.executable, str(ROOT / "scripts" / f"illustrate_{ILLUSTRATORS[slug]}.py")], check=True)
         for relative in [workshop["overview"], *[s["spec"] for s in workshop["sequences"]]]:
             spec = SOURCE / relative
             record = json.loads(spec.read_text(encoding="utf-8"))
@@ -111,13 +122,16 @@ def build(*, only=(), exports=False, output=None, site=None):
         'max-width:1100px;margin:3rem auto;padding:0 1rem}ul{list-style:none;padding:0;'
         'display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}img{width:100%}'
         'a{color:inherit}a:focus-visible{outline:3px solid #d65321}</style>'
-        '<h1>Technical visual language</h1><p>Six reusable compositions. These examples are illustrative; '
-        'they are not workshop experiment results.</p><ul>' + cards + '</ul>'
+        '<h1>Technical visual language</h1><p>Start with the release mechanism to see an authored drawing. '
+        'The six simple compositions explain the renderer contract. These are illustrative examples, '
+        'not workshop experiment results.</p><ul>' + cards + '</ul>'
         '<p><a href="../downloads/teenage-engineering-visualizations.zip">Download the standalone skill</a> · '
         '<a href="../">Workshop library</a></p></html>', encoding="utf-8")
     downloads = output / "downloads"
     archive(downloads / "teenage-engineering-visualizations.zip", [(SKILL, SKILL.name)])
-    archive(downloads / "workshop-visual-source.zip", [(SOURCE, "visual-guides"), (SKILL, "skill")])
+    archive(downloads / "workshop-visual-source.zip", [(SOURCE, "visual-guides"),
+        (SKILL, "skills/teenage-engineering-visualizations"),
+        *[(path, Path("scripts") / path.name) for path in sorted((ROOT / "scripts").glob("illustrate_*.py"))]])
     archive(downloads / "workshop-posters.zip", [(output / "posters", "posters")])
     shutil.copytree(downloads, site / "downloads", dirs_exist_ok=True)
     receipt = {"schema_version": 1, "figures": receipts, "exports_requested": exports,

@@ -18,3 +18,5 @@ a { color:inherit; text-underline-offset:3px; }
 .status { font-family:"IBM Plex Mono",monospace; font-size:.8rem; }
 @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto!important; } }
 @media print { nav,.description,.caption { display:none; } main { width:100%; } .frame { display:block!important; break-after:page; } .frame:last-child { break-after:auto; } }
+
+@media screen and (max-width:900px){.technical-illustration{overflow-x:auto}.technical-illustration>svg{min-width:960px}.technical-illustration:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}}

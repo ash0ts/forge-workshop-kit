@@ -1,6 +1,6 @@
 # Current state and next steps
 
-Status as of November 15, 2026, for the v0.11.0 visual revision. This page tracks unfinished work. The [technical specification](techspec.md) describes implemented behavior; [release checks](docs/release-checks.md) record what was verified.
+Status as of November 15, 2026, for the v0.11.1 illustration revision. This page tracks unfinished work. The [technical specification](techspec.md) describes implemented behavior; [release checks](docs/release-checks.md) record what was verified.
 
 ## What is available
 

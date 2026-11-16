@@ -3,9 +3,9 @@
   "id": "regression",
   "kind": "transformation",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "01c94c8167485d71e6bd3898a64e9349700ceba8e14bbdc11ec86ff4dcaa18c6",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "4858983e21fdc3717b9c1033ce0b9739dc35355d21c41e5d92668d259bd02da8",
   "states": [
     {
       "id": "source",

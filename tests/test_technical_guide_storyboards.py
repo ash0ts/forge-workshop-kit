@@ -44,10 +44,10 @@ def test_enrichment_replaces_explanations_without_changing_exercises(tmp_path, m
 
 def test_every_storyboard_calls_shared_enrichment_and_keeps_click_metadata():
     for deck in ("pending", "solar", "routing", "inspection", "transit", "airline_monitoring"):
-        source = (ROOT / "decks" / deck / "scripts/build-storyboard.py").read_text()
+        source = (ROOT / "decks" / deck / "scripts/build-storyboard.py").read_text(encoding="utf-8")
         assert "technical_guide_storyboard.py" in source
         assert "clicks:" in source
-        wrapper = (ROOT / "decks" / deck / "components/TechnicalGuide.vue").read_text()
+        wrapper = (ROOT / "decks" / deck / "components/TechnicalGuide.vue").read_text(encoding="utf-8")
         assert wrapper.count("../../components/TechnicalGuide.vue") == 1
         # Slidev injects setup into each SFC. A re-export-only wrapper gets an
         # empty render function, overriding the shared component's setup.

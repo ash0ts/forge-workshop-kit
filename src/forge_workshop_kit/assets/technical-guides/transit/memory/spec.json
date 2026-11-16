@@ -55,7 +55,8 @@
       "focus": [
         "collections"
       ],
-      "caption": "Should this note enter the next worker’s request?"
+      "caption": "Should this note enter the next worker’s request?",
+      "artwork": "art/memory/collections.svg"
     },
     {
       "id": "filter",
@@ -67,7 +68,8 @@
       "focus": [
         "filter"
       ],
-      "caption": "Should this note enter the next worker’s request?"
+      "caption": "Should this note enter the next worker’s request?",
+      "artwork": "art/memory/filter.svg"
     },
     {
       "id": "context",
@@ -80,7 +82,8 @@
       "focus": [
         "context"
       ],
-      "caption": "Should this note enter the next worker’s request?"
+      "caption": "Should this note enter the next worker’s request?",
+      "artwork": "art/memory/context.svg"
     },
     {
       "id": "complete",
@@ -91,7 +94,8 @@
         "context"
       ],
       "focus": [],
-      "caption": "Should this note enter the next worker’s request?"
+      "caption": "Should this note enter the next worker’s request?",
+      "artwork": "art/memory/complete.svg"
     }
   ]
 }

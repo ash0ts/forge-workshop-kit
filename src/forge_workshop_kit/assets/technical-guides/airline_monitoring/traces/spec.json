@@ -57,7 +57,8 @@
       "focus": [
         "request"
       ],
-      "caption": "Where can you see what the tool actually changed?"
+      "caption": "Where can you see what the tool actually changed?",
+      "artwork": "art/traces/request.svg"
     },
     {
       "id": "tool",
@@ -69,7 +70,8 @@
       "focus": [
         "tool"
       ],
-      "caption": "Where can you see what the tool actually changed?"
+      "caption": "Where can you see what the tool actually changed?",
+      "artwork": "art/traces/tool.svg"
     },
     {
       "id": "state",
@@ -82,7 +84,8 @@
       "focus": [
         "state"
       ],
-      "caption": "Where can you see what the tool actually changed?"
+      "caption": "Where can you see what the tool actually changed?",
+      "artwork": "art/traces/state.svg"
     },
     {
       "id": "complete",
@@ -93,7 +96,8 @@
         "state"
       ],
       "focus": [],
-      "caption": "Where can you see what the tool actually changed?"
+      "caption": "Where can you see what the tool actually changed?",
+      "artwork": "art/traces/complete.svg"
     }
   ]
 }

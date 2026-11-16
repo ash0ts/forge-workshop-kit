@@ -65,7 +65,8 @@
       "focus": [
         "match"
       ],
-      "caption": "Which outcome supports the claim that the team or lesson helped?"
+      "caption": "Which outcome supports the claim that the team or lesson helped?",
+      "artwork": "art/comparison/match.svg"
     },
     {
       "id": "initial",
@@ -77,7 +78,8 @@
       "focus": [
         "initial"
       ],
-      "caption": "Which outcome supports the claim that the team or lesson helped?"
+      "caption": "Which outcome supports the claim that the team or lesson helped?",
+      "artwork": "art/comparison/initial.svg"
     },
     {
       "id": "memory",
@@ -90,7 +92,8 @@
       "focus": [
         "memory"
       ],
-      "caption": "Which outcome supports the claim that the team or lesson helped?"
+      "caption": "Which outcome supports the claim that the team or lesson helped?",
+      "artwork": "art/comparison/memory.svg"
     },
     {
       "id": "release",
@@ -104,7 +107,8 @@
       "focus": [
         "release"
       ],
-      "caption": "Which outcome supports the claim that the team or lesson helped?"
+      "caption": "Which outcome supports the claim that the team or lesson helped?",
+      "artwork": "art/comparison/release.svg"
     },
     {
       "id": "complete",
@@ -116,7 +120,8 @@
         "release"
       ],
       "focus": [],
-      "caption": "Which outcome supports the claim that the team or lesson helped?"
+      "caption": "Which outcome supports the claim that the team or lesson helped?",
+      "artwork": "art/comparison/complete.svg"
     }
   ],
   "native_capture": {

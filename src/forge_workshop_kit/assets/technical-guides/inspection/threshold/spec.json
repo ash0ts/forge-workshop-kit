@@ -55,7 +55,8 @@
       "focus": [
         "score"
       ],
-      "caption": "Which tradeoff changes when the cutoff moves?"
+      "caption": "Which tradeoff changes when the cutoff moves?",
+      "artwork": "art/threshold/score.svg"
     },
     {
       "id": "choose",
@@ -67,7 +68,8 @@
       "focus": [
         "choose"
       ],
-      "caption": "Which tradeoff changes when the cutoff moves?"
+      "caption": "Which tradeoff changes when the cutoff moves?",
+      "artwork": "art/threshold/choose.svg"
     },
     {
       "id": "count",
@@ -80,7 +82,8 @@
       "focus": [
         "count"
       ],
-      "caption": "Which tradeoff changes when the cutoff moves?"
+      "caption": "Which tradeoff changes when the cutoff moves?",
+      "artwork": "art/threshold/count.svg"
     },
     {
       "id": "complete",
@@ -91,7 +94,8 @@
         "count"
       ],
       "focus": [],
-      "caption": "Which tradeoff changes when the cutoff moves?"
+      "caption": "Which tradeoff changes when the cutoff moves?",
+      "artwork": "art/threshold/complete.svg"
     }
   ]
 }

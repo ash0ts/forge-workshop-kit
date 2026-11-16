@@ -18,7 +18,9 @@ The installed skill does not import Workshop Kit. Its examples, fonts, original 
 
 ## Author a workshop figure
 
-Edit the specifications and original drawings in [visual-guides](../visual-guides/). Its index maps figures to notebook steps and deck concepts. The portable skill holds generic templates; domain-specific examples and Forge URLs stay in the workshop repository.
+Edit the specifications and original drawings in [visual-guides](../visual-guides/). Its index maps figures to notebook steps and deck concepts. The `scripts/illustrate_*.py` files author the workshop drawings; each specification points to a complete SVG for each reveal. These show the object, the part being changed, and the consequence. A row of labeled cards is not the target for a finished teaching figure.
+
+The portable skill supplies tokens, fonts, geometry helpers, rendering, and a local release example. Workshop objects, recorded values, and Forge URLs stay in this repository. Illustration generators read versioned snapshots and do not train, run inference, or fetch live results.
 
 ```sh
 python scripts/build_visual_guides.py
@@ -27,12 +29,12 @@ python scripts/build_visual_guides.py --exports
 
 The first command generates packaged notebook frames and deck assets. The second also renders digital and print posters, the reference gallery, and downloadable sources. It does not execute a workshop or publish anything.
 
-Notebook views read bundled frames and use native display controls. The slide adapter reveals those same diagrams beside their source excerpts. Display state is independent of experiment records, so changing a frame or reopening a guide cannot execute or invalidate an experiment.
+Notebook views read bundled frames and use native display controls. The slide adapter reveals the same drawings and code excerpts. On a narrow notebook screen, the drawing remains available in a scrollable region with a text explanation below. Display state is independent of experiment records, so changing a frame or reopening a guide cannot execute or invalidate an experiment.
 
 Posters have two layouts: a digital overview and an A2 print version. The library links the Report, notebook, deck, and poster for each workshop. QR destinations use stable library anchors rather than expiring execution URLs.
 
 ## Check and release
 
-Inspect the renderer's validation receipts and rendered output. Check actual text lines, units, code, callout targets, comparisons, and source references. Test keyboard Next/Back, the static alternative, narrow notebook layouts, links, and poster QR destinations.
+Inspect the renderer's validation receipts and rendered output. Check actual text lines, units, code, callout targets, comparisons, and source references. Cover the paragraphs and check whether the drawing still shows the input, operation, and changed state. Validate one representative illustration before repeating it across the other lessons. Test keyboard Next/Back, the static alternative, narrow notebook layouts, links, and poster QR destinations. Bounds checks establish legibility, not teaching quality.
 
 Build notebooks and decks through the existing [release commands](maintenance.md). Technical previews retain that status; a new visual treatment does not qualify missing native access or replace a participant rehearsal.

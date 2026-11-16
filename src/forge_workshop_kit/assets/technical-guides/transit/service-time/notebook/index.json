@@ -3,9 +3,9 @@
   "id": "service-time",
   "kind": "transformation",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "fb88511f395184c5c518c7ad0649d9452972446024c74ab43015d7970848bab1",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "d9a91790b2cf8903e3ca6862939715c6770e0c00b783ef3628d20983689fbad7",
   "states": [
     {
       "id": "join",

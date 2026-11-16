@@ -3,9 +3,9 @@
   "id": "images",
   "kind": "transformation",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "b6cc8cdee98dc2f0b9e8a3dfff4cc0d7dee13effc69f4cd96ea58ebc64c0b354",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "8713d64f05510258195a302097dd03627d23d1af2ceae637b9727b32fd7ebb32",
   "states": [
     {
       "id": "input",

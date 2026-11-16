@@ -3,9 +3,9 @@
   "id": "overview",
   "kind": "overview",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "e70c545f13b67b295d4935893c9d2ae963c4973eabbe4361023611587c8f35c9",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "5be88a5c6bb02c0446dcfb3c065429eeed4f08fd540b31c1ddeafbffdcffda94",
   "states": [
     {
       "id": "schedule",

@@ -69,7 +69,8 @@
       "focus": [
         "parent"
       ],
-      "caption": "Save the instructions, skills, and original case state. Both proposals start here."
+      "caption": "Save the instructions, skills, and original case state. Both proposals start here.",
+      "artwork": "art/changes/parent.svg"
     },
     {
       "id": "candidate-a",
@@ -81,7 +82,8 @@
       "focus": [
         "candidate-a"
       ],
-      "caption": "Review the first proposed diff, then run it on a fresh copy of the original case."
+      "caption": "Review the first proposed diff, then run it on a fresh copy of the original case.",
+      "artwork": "art/changes/candidate-a.svg"
     },
     {
       "id": "candidate-b",
@@ -94,7 +96,8 @@
       "focus": [
         "candidate-b"
       ],
-      "caption": "Review the second diff and test it independently. A planned or rejected change has no assumed result."
+      "caption": "Review the second diff and test it independently. A planned or rejected change has no assumed result.",
+      "artwork": "art/changes/candidate-b.svg"
     },
     {
       "id": "decision",
@@ -108,7 +111,8 @@
       "focus": [
         "decision"
       ],
-      "caption": "Compare the probe records. Test any new combination before adopting it. Retaining the parent leaves its source unchanged."
+      "caption": "Compare the probe records. Test any new combination before adopting it. Retaining the parent leaves its source unchanged.",
+      "artwork": "art/changes/decision.svg"
     },
     {
       "id": "complete",
@@ -120,7 +124,8 @@
         "decision"
       ],
       "focus": [],
-      "caption": "Recorded final comparison: starting 4/4, manual 4/4, agent-selected 4/4. Changed behavior did not raise account correctness."
+      "caption": "Recorded final comparison: starting 4/4, manual 4/4, agent-selected 4/4. Changed behavior did not raise account correctness.",
+      "artwork": "art/changes/complete.svg"
     }
   ]
 }

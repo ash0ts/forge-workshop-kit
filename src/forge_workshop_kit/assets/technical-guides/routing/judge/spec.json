@@ -52,7 +52,8 @@
       "focus": [
         "route"
       ],
-      "caption": "Is the answer well-formed, and is its judgment supported?"
+      "caption": "Is the answer well-formed, and is its judgment supported?",
+      "artwork": "art/judge/route.svg"
     },
     {
       "id": "validate",
@@ -64,7 +65,8 @@
       "focus": [
         "validate"
       ],
-      "caption": "Is the answer well-formed, and is its judgment supported?"
+      "caption": "Is the answer well-formed, and is its judgment supported?",
+      "artwork": "art/judge/validate.svg"
     },
     {
       "id": "agreement",
@@ -77,7 +79,8 @@
       "focus": [
         "agreement"
       ],
-      "caption": "Is the answer well-formed, and is its judgment supported?"
+      "caption": "Is the answer well-formed, and is its judgment supported?",
+      "artwork": "art/judge/agreement.svg"
     },
     {
       "id": "complete",
@@ -88,7 +91,8 @@
         "agreement"
       ],
       "focus": [],
-      "caption": "Is the answer well-formed, and is its judgment supported?"
+      "caption": "Is the answer well-formed, and is its judgment supported?",
+      "artwork": "art/judge/complete.svg"
     }
   ],
   "native_capture": {

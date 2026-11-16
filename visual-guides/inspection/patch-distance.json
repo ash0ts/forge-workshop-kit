@@ -63,7 +63,8 @@
       "focus": [
         "query"
       ],
-      "caption": "Which normal patch is the closest reference for this location?"
+      "caption": "Which normal patch is the closest reference for this location?",
+      "artwork": "art/patch-distance/query.svg"
     },
     {
       "id": "scale",
@@ -75,7 +76,8 @@
       "focus": [
         "scale"
       ],
-      "caption": "Which normal patch is the closest reference for this location?"
+      "caption": "Which normal patch is the closest reference for this location?",
+      "artwork": "art/patch-distance/scale.svg"
     },
     {
       "id": "distance",
@@ -88,7 +90,8 @@
       "focus": [
         "distance"
       ],
-      "caption": "Which normal patch is the closest reference for this location?"
+      "caption": "Which normal patch is the closest reference for this location?",
+      "artwork": "art/patch-distance/distance.svg"
     },
     {
       "id": "map",
@@ -102,7 +105,8 @@
       "focus": [
         "map"
       ],
-      "caption": "Which normal patch is the closest reference for this location?"
+      "caption": "Which normal patch is the closest reference for this location?",
+      "artwork": "art/patch-distance/map.svg"
     },
     {
       "id": "complete",
@@ -114,7 +118,8 @@
         "map"
       ],
       "focus": [],
-      "caption": "Which normal patch is the closest reference for this location?"
+      "caption": "Which normal patch is the closest reference for this location?",
+      "artwork": "art/patch-distance/complete.svg"
     }
   ]
 }

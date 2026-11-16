@@ -735,196 +735,196 @@
       "page": 2,
       "slide": 2,
       "click": 0,
-      "drawing_coverage": 0.1441
+      "drawing_coverage": 0.0644
     },
     {
       "page": 3,
       "slide": 2,
       "click": 1,
-      "drawing_coverage": 0.1461
+      "drawing_coverage": 0.0767
     },
     {
       "page": 4,
       "slide": 2,
       "click": 2,
-      "drawing_coverage": 0.1453
+      "drawing_coverage": 0.1118
     },
     {
       "page": 5,
       "slide": 2,
       "click": 3,
-      "drawing_coverage": 0.1445
+      "drawing_coverage": 0.1267
     },
     {
       "page": 6,
       "slide": 2,
       "click": 4,
-      "drawing_coverage": 0.1445
+      "drawing_coverage": 0.1267
     },
     {
       "page": 13,
       "slide": 9,
       "click": 0,
-      "drawing_coverage": 0.12
+      "drawing_coverage": 0.0956
     },
     {
       "page": 14,
       "slide": 9,
       "click": 1,
-      "drawing_coverage": 0.1325
+      "drawing_coverage": 0.1352
     },
     {
       "page": 15,
       "slide": 9,
       "click": 2,
-      "drawing_coverage": 0.1347
+      "drawing_coverage": 0.1597
     },
     {
       "page": 16,
       "slide": 9,
       "click": 3,
-      "drawing_coverage": 0.1348
+      "drawing_coverage": 0.1597
     },
     {
       "page": 35,
       "slide": 25,
       "click": 0,
-      "drawing_coverage": 0.1226
+      "drawing_coverage": 0.0597
     },
     {
       "page": 36,
       "slide": 25,
       "click": 1,
-      "drawing_coverage": 0.1373
+      "drawing_coverage": 0.1283
     },
     {
       "page": 37,
       "slide": 25,
       "click": 2,
-      "drawing_coverage": 0.1461
+      "drawing_coverage": 0.1567
     },
     {
       "page": 38,
       "slide": 25,
       "click": 3,
-      "drawing_coverage": 0.1461
+      "drawing_coverage": 0.1567
     },
     {
       "page": 66,
       "slide": 43,
       "click": 0,
-      "drawing_coverage": 0.1331
+      "drawing_coverage": 0.0683
     },
     {
       "page": 67,
       "slide": 43,
       "click": 1,
-      "drawing_coverage": 0.1472
+      "drawing_coverage": 0.09
     },
     {
       "page": 68,
       "slide": 43,
       "click": 2,
-      "drawing_coverage": 0.1608
+      "drawing_coverage": 0.1106
     },
     {
       "page": 69,
       "slide": 43,
       "click": 3,
-      "drawing_coverage": 0.1608
+      "drawing_coverage": 0.1106
     },
     {
       "page": 70,
       "slide": 43,
       "click": 4,
-      "drawing_coverage": 0.3612
+      "drawing_coverage": 0.3606
     },
     {
       "page": 75,
       "slide": 48,
       "click": 0,
-      "drawing_coverage": 0.1265
+      "drawing_coverage": 0.0702
     },
     {
       "page": 76,
       "slide": 48,
       "click": 1,
-      "drawing_coverage": 0.1452
+      "drawing_coverage": 0.0767
     },
     {
       "page": 77,
       "slide": 48,
       "click": 2,
-      "drawing_coverage": 0.1488
+      "drawing_coverage": 0.0834
     },
     {
       "page": 78,
       "slide": 48,
       "click": 3,
-      "drawing_coverage": 0.161
+      "drawing_coverage": 0.1034
     },
     {
       "page": 79,
       "slide": 48,
       "click": 4,
-      "drawing_coverage": 0.161
+      "drawing_coverage": 0.1034
     },
     {
       "page": 87,
       "slide": 56,
       "click": 0,
-      "drawing_coverage": 0.1147
+      "drawing_coverage": 0.0608
     },
     {
       "page": 88,
       "slide": 56,
       "click": 1,
-      "drawing_coverage": 0.1229
+      "drawing_coverage": 0.0694
     },
     {
       "page": 89,
       "slide": 56,
       "click": 2,
-      "drawing_coverage": 0.1323
+      "drawing_coverage": 0.1136
     },
     {
       "page": 90,
       "slide": 56,
       "click": 3,
-      "drawing_coverage": 0.1323
+      "drawing_coverage": 0.1086
     },
     {
       "page": 99,
       "slide": 65,
       "click": 0,
-      "drawing_coverage": 0.1225
+      "drawing_coverage": 0.0508
     },
     {
       "page": 100,
       "slide": 65,
       "click": 1,
-      "drawing_coverage": 0.1467
+      "drawing_coverage": 0.0755
     },
     {
       "page": 101,
       "slide": 65,
       "click": 2,
-      "drawing_coverage": 0.1643
+      "drawing_coverage": 0.0974
     },
     {
       "page": 102,
       "slide": 65,
       "click": 3,
-      "drawing_coverage": 0.1606
+      "drawing_coverage": 0.1058
     },
     {
       "page": 103,
       "slide": 65,
       "click": 4,
-      "drawing_coverage": 0.1606
+      "drawing_coverage": 0.1063
     }
   ],
   "converted_links": 16,
   "source_sha256": "29b37aa7cf988bc1c7bdf89345b9d7fb84095d54a12f90a56dda4398aa9a2470",
-  "pdf_sha256": "1b57ef9e83570c14fa59c1648cb485aca7d1d95d2715c41e4c34439737643790"
+  "pdf_sha256": "2a11cdc9166ef77d9bcb32b016693ba6fcc6414adddfd0bd8e1e658977f622cb"
 }

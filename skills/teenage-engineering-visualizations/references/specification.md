@@ -1,6 +1,29 @@
 # Figure specification and exports
 
-Author one UTF-8 JSON file per explanation. Start from a file in `templates/` and inspect the corresponding example in `examples/`. The renderer is intentionally small: it lays out these six compositions, rather than positioning arbitrary user-supplied HTML.
+Author one UTF-8 JSON file per explanation. Start from a file in `templates/`. Use authored SVG artwork for a finished mechanism drawing; the six automatic layouts remain available for simple explanations. Neither path executes the illustrated operation.
+
+## Authored mechanism illustrations
+
+Reference an original SVG in each state's `artwork` field:
+
+```json
+{
+  "id": "append-observation",
+  "label": "Append the returned record",
+  "visible": ["request", "tool", "observation"],
+  "focus": ["observation"],
+  "artwork": "art/dispatch/observation.svg",
+  "caption": "The next request includes the selected action and actual result."
+}
+```
+
+Artwork uses `viewBox="0 0 1200 675"`, with its title, drawing, labels, and code. It is inlined into the exported SVG, so the bundled fonts apply and the browser can measure every text line. Keep source paths relative to the specification. Use `IBM Plex Sans` and `IBM Plex Mono`; embed photographs as data URIs. Scripts, external images, event handlers, and HTML foreign objects are rejected.
+
+Put `data-box="x y width height"` on text where its allocated area is known. The validator checks actual glyph bounds against that area and checks every text element against the visible canvas. These checks find clipping; they cannot establish whether the drawing explains the concept.
+
+Notebook and slide artwork use the same coordinate system. On narrow notebook screens the drawing can scroll horizontally, with a text alternative below. Poster artwork uses its own larger composition. `scripts/illustration.py` supplies optional geometry helpers; it does not choose a layout. `scripts/draw_release_example.py` demonstrates anatomy and state changes without workshop dependencies.
+
+Keep `steps`, sources, provenance, and captions in the specification for accessible text and evidence links. Existing specifications without `artwork` remain supported.
 
 ## Fields
 

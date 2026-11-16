@@ -3,9 +3,9 @@
   "id": "judge",
   "kind": "comparison",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "42a39c5c78c76451cce856a23cffb4a3b582d8b2ec7f775f691c53347e521793",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "fac1c10321428fdb29895f3c86f1ae1934acd05866cec416b24bbc314c7ad3f2",
   "states": [
     {
       "id": "route",

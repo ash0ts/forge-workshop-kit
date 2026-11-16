@@ -53,7 +53,8 @@
       "focus": [
         "board"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/board.svg"
     },
     {
       "id": "features",
@@ -65,7 +66,8 @@
       "focus": [
         "features"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/features.svg"
     },
     {
       "id": "decision",
@@ -78,7 +80,8 @@
       "focus": [
         "decision"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/decision.svg"
     },
     {
       "id": "recover",
@@ -92,7 +95,8 @@
       "focus": [
         "recover"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/recover.svg"
     },
     {
       "id": "complete",
@@ -104,7 +108,8 @@
         "recover"
       ],
       "focus": [],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/complete.svg"
     }
   ],
   "hero": "hero.svg"

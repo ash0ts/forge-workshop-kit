@@ -68,7 +68,8 @@
       "focus": [
         "review"
       ],
-      "caption": "Would the rule distinguish an omission from a valid itinerary change?"
+      "caption": "Would the rule distinguish an omission from a valid itinerary change?",
+      "artwork": "art/alignment/review.svg"
     },
     {
       "id": "criteria",
@@ -80,7 +81,8 @@
       "focus": [
         "criteria"
       ],
-      "caption": "Would the rule distinguish an omission from a valid itinerary change?"
+      "caption": "Would the rule distinguish an omission from a valid itinerary change?",
+      "artwork": "art/alignment/criteria.svg"
     },
     {
       "id": "alignment",
@@ -93,7 +95,8 @@
       "focus": [
         "alignment"
       ],
-      "caption": "Would the rule distinguish an omission from a valid itinerary change?"
+      "caption": "Would the rule distinguish an omission from a valid itinerary change?",
+      "artwork": "art/alignment/alignment.svg"
     },
     {
       "id": "status",
@@ -107,7 +110,8 @@
       "focus": [
         "status"
       ],
-      "caption": "Would the rule distinguish an omission from a valid itinerary change?"
+      "caption": "Would the rule distinguish an omission from a valid itinerary change?",
+      "artwork": "art/alignment/status.svg"
     },
     {
       "id": "complete",
@@ -119,7 +123,8 @@
         "status"
       ],
       "focus": [],
-      "caption": "Would the rule distinguish an omission from a valid itinerary change?"
+      "caption": "Would the rule distinguish an omission from a valid itinerary change?",
+      "artwork": "art/alignment/complete.svg"
     }
   ],
   "native_capture": {

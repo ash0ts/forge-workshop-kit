@@ -53,7 +53,8 @@
       "focus": [
         "booking"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/booking.svg"
     },
     {
       "id": "observe",
@@ -65,7 +66,8 @@
       "focus": [
         "observe"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/observe.svg"
     },
     {
       "id": "monitor",
@@ -78,7 +80,8 @@
       "focus": [
         "monitor"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/monitor.svg"
     },
     {
       "id": "test",
@@ -92,7 +95,8 @@
       "focus": [
         "test"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/test.svg"
     },
     {
       "id": "complete",
@@ -104,7 +108,8 @@
         "test"
       ],
       "focus": [],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/complete.svg"
     }
   ],
   "hero": "hero.svg"

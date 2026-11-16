@@ -59,7 +59,8 @@
       "focus": [
         "request"
       ],
-      "caption": "How does an agent know what happened after it edits a file?"
+      "caption": "How does an agent know what happened after it edits a file?",
+      "artwork": "art/worker/request.svg"
     },
     {
       "id": "operation",
@@ -71,7 +72,8 @@
       "focus": [
         "operation"
       ],
-      "caption": "How does an agent know what happened after it edits a file?"
+      "caption": "How does an agent know what happened after it edits a file?",
+      "artwork": "art/worker/operation.svg"
     },
     {
       "id": "next",
@@ -84,7 +86,8 @@
       "focus": [
         "next"
       ],
-      "caption": "How does an agent know what happened after it edits a file?"
+      "caption": "How does an agent know what happened after it edits a file?",
+      "artwork": "art/worker/next.svg"
     },
     {
       "id": "submit",
@@ -98,7 +101,8 @@
       "focus": [
         "submit"
       ],
-      "caption": "How does an agent know what happened after it edits a file?"
+      "caption": "How does an agent know what happened after it edits a file?",
+      "artwork": "art/worker/submit.svg"
     },
     {
       "id": "complete",
@@ -110,7 +114,8 @@
         "submit"
       ],
       "focus": [],
-      "caption": "How does an agent know what happened after it edits a file?"
+      "caption": "How does an agent know what happened after it edits a file?",
+      "artwork": "art/worker/complete.svg"
     }
   ]
 }

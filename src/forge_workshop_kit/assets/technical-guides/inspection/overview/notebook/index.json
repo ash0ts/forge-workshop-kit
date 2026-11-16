@@ -3,9 +3,9 @@
   "id": "overview",
   "kind": "overview",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "64bc5942c0990f20731f5bc74b1a90201402d616d8ae7335d4c850781a510f10",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "8ca9b0c3f18137b75b28985009cfc43ea2779da7b0fbd5778c66d783e46524af",
   "states": [
     {
       "id": "board",

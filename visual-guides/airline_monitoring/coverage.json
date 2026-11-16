@@ -59,7 +59,8 @@
       "focus": [
         "incoming"
       ],
-      "caption": "What is the denominator of each monitoring number?"
+      "caption": "What is the denominator of each monitoring number?",
+      "artwork": "art/coverage/incoming.svg"
     },
     {
       "id": "coverage",
@@ -71,7 +72,8 @@
       "focus": [
         "coverage"
       ],
-      "caption": "What is the denominator of each monitoring number?"
+      "caption": "What is the denominator of each monitoring number?",
+      "artwork": "art/coverage/coverage.svg"
     },
     {
       "id": "agreement",
@@ -84,7 +86,8 @@
       "focus": [
         "agreement"
       ],
-      "caption": "What is the denominator of each monitoring number?"
+      "caption": "What is the denominator of each monitoring number?",
+      "artwork": "art/coverage/agreement.svg"
     },
     {
       "id": "complete",
@@ -95,7 +98,8 @@
         "agreement"
       ],
       "focus": [],
-      "caption": "What is the denominator of each monitoring number?"
+      "caption": "What is the denominator of each monitoring number?",
+      "artwork": "art/coverage/complete.svg"
     }
   ]
 }

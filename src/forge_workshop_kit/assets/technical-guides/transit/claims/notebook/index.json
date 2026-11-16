@@ -3,9 +3,9 @@
   "id": "claims",
   "kind": "comparison",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "ff1aec3c8b07958f4dd6e2d5635deefd430ef1335742758eea5425bded2bf082",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "c2f0173c1c7d2b4ee1579fb8379da67e43b032c1325ebd72b9cc3834e2377877",
   "states": [
     {
       "id": "race",

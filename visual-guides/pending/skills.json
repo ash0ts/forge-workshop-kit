@@ -63,7 +63,8 @@
       "focus": [
         "saved"
       ],
-      "caption": "Did this run use the procedure you edited?"
+      "caption": "Did this run use the procedure you edited?",
+      "artwork": "art/skills/saved.svg"
     },
     {
       "id": "read",
@@ -75,7 +76,8 @@
       "focus": [
         "read"
       ],
-      "caption": "Did this run use the procedure you edited?"
+      "caption": "Did this run use the procedure you edited?",
+      "artwork": "art/skills/read.svg"
     },
     {
       "id": "request",
@@ -88,7 +90,8 @@
       "focus": [
         "request"
       ],
-      "caption": "Did this run use the procedure you edited?"
+      "caption": "Did this run use the procedure you edited?",
+      "artwork": "art/skills/request.svg"
     },
     {
       "id": "complete",
@@ -99,7 +102,8 @@
         "request"
       ],
       "focus": [],
-      "caption": "Did this run use the procedure you edited?"
+      "caption": "Did this run use the procedure you edited?",
+      "artwork": "art/skills/complete.svg"
     }
   ]
 }

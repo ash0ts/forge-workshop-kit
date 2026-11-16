@@ -58,7 +58,8 @@
       "focus": [
         "input"
       ],
-      "caption": "How does a residual prediction differ from a direct prediction?"
+      "caption": "How does a residual prediction differ from a direct prediction?",
+      "artwork": "art/images/input.svg"
     },
     {
       "id": "residual",
@@ -70,7 +71,8 @@
       "focus": [
         "residual"
       ],
-      "caption": "How does a residual prediction differ from a direct prediction?"
+      "caption": "How does a residual prediction differ from a direct prediction?",
+      "artwork": "art/images/residual.svg"
     },
     {
       "id": "mask",
@@ -83,7 +85,8 @@
       "focus": [
         "mask"
       ],
-      "caption": "How does a residual prediction differ from a direct prediction?"
+      "caption": "How does a residual prediction differ from a direct prediction?",
+      "artwork": "art/images/mask.svg"
     },
     {
       "id": "complete",
@@ -94,7 +97,8 @@
         "mask"
       ],
       "focus": [],
-      "caption": "How does a residual prediction differ from a direct prediction?"
+      "caption": "How does a residual prediction differ from a direct prediction?",
+      "artwork": "art/images/complete.svg"
     }
   ]
 }

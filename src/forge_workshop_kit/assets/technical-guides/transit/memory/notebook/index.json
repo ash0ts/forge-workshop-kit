@@ -3,9 +3,9 @@
   "id": "memory",
   "kind": "transformation",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "d0969e3518772775a2d0359e23ccb84a867a7792c254b983535ba78d83ed336a",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "90d942e440926d6cea1263fb370994cbe1be4b35bc2a300cc0f530ef4d1ec3b1",
   "states": [
     {
       "id": "collections",

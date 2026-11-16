@@ -53,7 +53,8 @@
       "focus": [
         "schedule"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/schedule.svg"
     },
     {
       "id": "build",
@@ -65,7 +66,8 @@
       "focus": [
         "build"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/build.svg"
     },
     {
       "id": "integrate",
@@ -78,7 +80,8 @@
       "focus": [
         "integrate"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/integrate.svg"
     },
     {
       "id": "lesson",
@@ -92,7 +95,8 @@
       "focus": [
         "lesson"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/lesson.svg"
     },
     {
       "id": "complete",
@@ -104,7 +108,8 @@
         "lesson"
       ],
       "focus": [],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/complete.svg"
     }
   ],
   "hero": "hero.svg"

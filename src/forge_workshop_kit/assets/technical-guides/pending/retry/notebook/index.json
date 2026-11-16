@@ -3,9 +3,9 @@
   "id": "retry",
   "kind": "comparison",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "406fed94e610144cea0e66f453022c77e40eaee1d21403f4961c1e43c4bde02e",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "02119329d6a5700efa527f410217af6fb65fa0845950b5b49805ba9e7f5d33c6",
   "states": [
     {
       "id": "write",

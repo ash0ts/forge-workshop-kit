@@ -86,6 +86,10 @@ class Drawing:
         self.spec, self.source, self.layout, self.state = spec, source, layout, state
         dimensions = TOKENS["layouts"][layout]
         self.w, self.h = dimensions["width"], dimensions["height"]
+        # Authored illustrations keep one drawing coordinate system on slides
+        # and in notebooks. Do not stretch the anatomy to fill a taller panel.
+        if spec.get("kind") != "poster" and any(s.get("artwork") for s in spec.get("states", [])):
+            self.w, self.h = 1200, 675
         self.items = []
         self.text_records = []
         self.warnings = []
@@ -141,6 +145,12 @@ class Drawing:
         if not path.is_file():
             raise ValueError(f"Missing local media: {path}")
         mime = mimetypes.guess_type(path)[0] or "application/octet-stream"
+        if mime == "image/svg+xml":
+            tree = self.read_svg(path)
+            tree.attrib.update({"x": str(x), "y": str(y), "width": str(w), "height": str(h),
+                                "preserveAspectRatio": "xMidYMid meet"})
+            self.items.append(ET.tostring(tree, encoding="unicode"))
+            return True
         data = base64.b64encode(path.read_bytes()).decode()
         self.items.append(f'<image x="{x:g}" y="{y:g}" width="{w:g}" height="{h:g}" preserveAspectRatio="xMidYMid meet" href="data:{mime};base64,{data}"/>')
         return True
@@ -362,6 +372,8 @@ class Drawing:
         self.items.append(f'<rect width="{self.w}" height="{self.h}" fill="{COLORS["paper"]}"/>')
         if self.spec["kind"] == "poster":
             self.poster()
+        elif self.state.get("artwork"):
+            self.artwork(self.state["artwork"])
         else:
             self.header()
             if self.state.get("capture"):
@@ -377,7 +389,71 @@ class Drawing:
         prefix = slug(self.spec["id"]) + "-" + slug(self.state["id"]) + "-"
         svg = re.sub(r'id="([^"]+)"', lambda m: 'id="' + prefix + m[1] + '"', svg)
         svg = svg.replace('href="#', 'href="#' + prefix).replace('url(#', 'url(#' + prefix)
-        return svg.replace('aria-labelledby="figure-title figure-description"', f'aria-labelledby="{prefix}figure-title {prefix}figure-description"')
+        return re.sub(r'(aria-labelledby|aria-describedby)="([^"]+)"',
+                      lambda m: m[1] + '="' + ' '.join(prefix + item for item in m[2].split()) + '"', svg)
+
+    def artwork(self, relative):
+        """Inline an original, locally authored mechanism drawing.
+
+        Text stays in the document for glyph-bound checks and accessibility.
+        A rasterized picture inside a generic template would hide both.
+        """
+        if re.match(r"^[a-zA-Z]+:", str(relative)):
+            raise ValueError("Artwork must be a local SVG")
+        path = (self.source.parent / relative).resolve()
+        root = self.read_svg(path)
+        viewbox = root.attrib.get("viewBox", "").split()
+        if viewbox != ["0", "0", "1200", "675"]:
+            raise ValueError("Mechanism artwork uses viewBox='0 0 1200 675'")
+        root.attrib.update({"x": "0", "y": "0", "width": str(self.w), "height": str(self.h),
+                            "font-family": "IBM Plex Sans", "fill": COLORS["ink"],
+                            "data-authored-artwork": "true"})
+        self.items.append(ET.tostring(root, encoding="unicode"))
+
+    def read_svg(self, path):
+        root = ET.fromstring(path.read_text(encoding="utf-8"))
+        if root.tag.split("}")[-1] != "svg":
+            raise ValueError("Artwork must have an SVG root")
+        for node in root.iter():
+            tag = node.tag.split("}")[-1]
+            if tag in {"script", "foreignObject"} or any(key.lower().startswith("on") for key in node.attrib):
+                raise ValueError("Artwork must be a passive drawing")
+            for name in ("href", "{http://www.w3.org/1999/xlink}href"):
+                target = node.attrib.get(name, "")
+                if tag in {"image", "use"} and target and not target.startswith(("data:", "#")):
+                    raise ValueError("Artwork images and symbols must be bundled locally")
+            if tag == "style" and re.search(r'@import|url\([\s\"\']*(?:https?:|//)', node.text or "", re.I):
+                raise ValueError("Artwork styles must use local assets")
+        ET.register_namespace("", "http://www.w3.org/2000/svg")
+        # Isolate local clip paths and arrow markers from the wrapper and other
+        # drawings in the same frame. Frame identities are prefixed later.
+        prefix = f"art-{len(self.items)}-"
+        scope = slug(self.spec["id"]) + "-" + slug(self.state["id"]) + "-" + prefix
+        root.attrib["data-art-scope"] = scope
+        ids = {node.attrib["id"] for node in root.iter() if "id" in node.attrib}
+        for node in root.iter():
+            if "id" in node.attrib:
+                node.attrib["id"] = prefix + node.attrib["id"]
+            for key, value in list(node.attrib.items()):
+                if key in {"href", "{http://www.w3.org/1999/xlink}href"} and value.startswith("#"):
+                    node.attrib[key] = "#" + prefix + value[1:]
+                elif key in {"aria-labelledby", "aria-describedby"}:
+                    node.attrib[key] = " ".join(prefix + item if item in ids else item for item in value.split())
+                else:
+                    node.attrib[key] = value.replace("url(#", "url(#" + prefix)
+            if node.tag.split("}")[-1] == "style" and node.text:
+                node.text = node.text.replace("url(#", "url(#" + prefix)
+                # Nested SVG style sheets otherwise recolor the containing
+                # poster's headings and callouts. Scope ordinary selectors to
+                # this drawing; font-face declarations remain shared.
+                def scoped_rule(match):
+                    selectors, body = match.groups()
+                    if selectors.strip().startswith("@"):
+                        return match[0]
+                    return ','.join(f'[data-art-scope="{scope}"] ' + part.strip()
+                                    for part in selectors.split(',')) + '{' + body + '}'
+                node.text = re.sub(r'([^{}]+)\{([^{}]*)\}', scoped_rule, node.text)
+        return root
 
 
 def check_spec(spec):
@@ -417,7 +493,8 @@ def check_spec(spec):
 def html_document(spec, frames):
     body = []
     for i, (state, svg) in enumerate(frames):
-        body.append(f'<figure class="frame" data-state="{escaped(state["id"])}" aria-hidden="{str(i != 0).lower()}">{svg}</figure>')
+        diagram = ' technical-illustration' if spec["kind"] != "poster" else ''
+        body.append(f'<figure class="frame{diagram}" tabindex="0" role="region" aria-label="Illustration; scroll horizontally on a narrow screen" data-state="{escaped(state["id"])}" aria-hidden="{str(i != 0).lower()}">{svg}</figure>')
     options = "".join(f'<option value="{i}">{i+1}. {escaped(s["label"])}</option>' for i, (s, _) in enumerate(frames))
     details = "".join(f'<li><strong>{escaped(s["title"])}</strong>: {escaped(s.get("body", ""))}{"<pre>"+escaped(s["code"])+"</pre>" if s.get("code") else ""}</li>' for s in spec["steps"])
     explanation = f'<details><summary>Read the complete explanation</summary><ol>{details}</ol></details>' if details else ''
@@ -442,7 +519,7 @@ def html_document(spec, frames):
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escaped(spec["title"])}</title><style>{FONT_CSS}{styles}</style></head><body><main>
 {"".join(body)}<p class="caption" aria-live="polite"></p><nav aria-label="Explanation steps"><button id="back" type="button">← Back</button><label for="state">View</label><select id="state">{options}</select><button id="next" type="button">Next →</button><span class="status">{escaped(spec["provenance"])} example · display controls only</span></nav>
 <section class="description"><h1>{escaped(spec["title"])}</h1><p>{escaped(spec.get("summary", ""))}</p>{explanation}<h2>Sources and related records</h2><ul>{sources}</ul></section></main>
-<script>const captions={captions};const provenances={provenances};const frames=[...document.querySelectorAll('.frame')];const selector=document.querySelector('#state');let current=0;function show(n){{current=Math.max(0,Math.min(frames.length-1,n));frames.forEach((f,i)=>f.setAttribute('aria-hidden',String(i!==current)));selector.value=String(current);document.querySelector('#back').disabled=current===0;document.querySelector('#next').disabled=current===frames.length-1;document.querySelector('.caption').textContent=captions[current];document.querySelector('.status').textContent=provenances[current]+' example · display controls only';}}document.querySelector('#back').onclick=()=>show(current-1);document.querySelector('#next').onclick=()=>show(current+1);selector.onchange=()=>show(Number(selector.value));document.addEventListener('keydown',e=>{{if(e.target.matches('input,textarea,select'))return;if(e.key==='ArrowRight'){{show(current+1);e.preventDefault();}}if(e.key==='ArrowLeft'){{show(current-1);e.preventDefault();}}}});show(0);</script></body></html>'''
+<script>const captions={captions};const provenances={provenances};const frames=[...document.querySelectorAll('.frame')];const selector=document.querySelector('#state');let current=0;function show(n){{current=Math.max(0,Math.min(frames.length-1,n));frames.forEach((f,i)=>f.setAttribute('aria-hidden',String(i!==current)));selector.value=String(current);document.querySelector('#back').disabled=current===0;document.querySelector('#next').disabled=current===frames.length-1;document.querySelector('.caption').textContent=captions[current];document.querySelector('.status').textContent=provenances[current]+' example · display controls only';}}document.querySelector('#back').onclick=()=>show(current-1);document.querySelector('#next').onclick=()=>show(current+1);selector.onchange=()=>show(Number(selector.value));document.addEventListener('keydown',e=>{{if(e.target.matches('input,textarea,select,.frame'))return;if(e.key==='ArrowRight'){{show(current+1);e.preventDefault();}}if(e.key==='ArrowLeft'){{show(current-1);e.preventDefault();}}}});show(0);</script></body></html>'''
 
 
 def main():
@@ -465,6 +542,7 @@ def main():
     for i, state in enumerate(states):
         drawing = Drawing(spec, args.spec.resolve(), args.layout, {**state, "position": f"{i+1:02d}/{len(states):02d}"})
         svg = drawing.render()
+        manifest["width"], manifest["height"] = drawing.w, drawing.h
         ET.fromstring(svg)
         filename = f'{i+1:02d}-{slug(state["id"])}.svg'
         (args.output / filename).write_text(svg, encoding="utf-8")

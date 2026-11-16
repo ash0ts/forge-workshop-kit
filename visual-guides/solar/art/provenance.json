@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "generator": "scripts/illustrate_solar.py",
+  "snapshot": "art/evidence.json",
+  "snapshot_sha256": "c0a93b661b1347fa776cecf3c9043a112616c048666dcb946007f04ec62e6b94",
+  "regeneration": "Python 3.11+, standard library only; versioned snapshot and canonical skill tokens. No training, network, local rehearsal directory, or external dataset required.",
+  "artwork": "Original passive SVG; original photographs embedded unchanged. Reveals preserve geometry.",
+  "specification": "Existing IDs, ordered states, citations, provenance and experiment values preserved. Only state.artwork paths were added.",
+  "sources": {
+    "GOES": {
+      "sha256": "142c98f565d4ae37154c1f18605528362da752a8e3cc82469e27df5e2c7b13f7",
+      "origin": "2014-02-01 01:00:00",
+      "target": "2014-02-01 01:30:00",
+      "history": 60,
+      "horizon_minutes": 30
+    },
+    "AIA": {
+      "sha256": "93173d444da9fc05c52d8247efa794edb7e0fef20d7eaffb514bb10f9fef4870",
+      "timestamps": [
+        "2014-02-01 00:00:00",
+        "2014-02-01 01:00:00",
+        "2014-02-01 02:00:00"
+      ],
+      "array_shape": [
+        64,
+        64
+      ],
+      "display": {
+        "transform": "log1p, shared linear intensity range; origin lower",
+        "min": 0.038796503096818924,
+        "max": 7.570675849914551
+      }
+    },
+    "weights": {
+      "execution": "c7ed512fc5040ae575e11afc3a5c16da",
+      "sha256": "98e0aef35654da743784a1e8993d51b1710ee76df71796f3628ff25c5171cc93",
+      "source_fingerprint": "528a22180e0fdc7fdc31183a2f911e498b75f0033bae257e9cff29cdad7373b8",
+      "config": {
+        "architecture": "mlp",
+        "width": 16,
+        "learning_rate": 0.003,
+        "steps": 60,
+        "seed": 17,
+        "batch_size": 32
+      }
+    },
+    "training_loss": {
+      "execution": "47ddd7011c95e41834ae35b38ecdda5d",
+      "sha256": "7af1af03d75f9b6decd82b9bbad759dd281cdd29347ff2dc00c8091b113685f0",
+      "training_final_weights_identical": true
+    },
+    "qualification": {
+      "identity": "solar-fixed-recipes-2026-11-14",
+      "seeds": [
+        17,
+        29,
+        43
+      ]
+    }
+  },
+  "final_failure": {
+    "error": 2.468974582071028,
+    "persistence_error": 0.19270602844340234,
+    "skill_vs_persistence": -11.812129449267148,
+    "examples": 2694,
+    "final_error": 2.468974582071028,
+    "seconds": 0.6854488849639893
+  },
+  "symbolic_figures": [
+    "CNN shows a width-five kernel over 20 of 60 positions.",
+    "Research batch slots show an explicitly illustrative order; recorded candidate errors and qualification seed outcomes are unchanged."
+  ]
+}

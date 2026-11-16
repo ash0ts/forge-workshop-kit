@@ -3,9 +3,9 @@
   "id": "metrics",
   "kind": "transformation",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "ee01b9ace5e5098139d936e5fc741c8fc1cb7cc12275c459e0adbc75a6fcf86e",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "6677bb1b270cde5321bd198bedd3a3d0e3aba08ed57872cb285cd43a19f94d86",
   "states": [
     {
       "id": "counts",

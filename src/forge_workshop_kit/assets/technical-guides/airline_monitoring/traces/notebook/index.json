@@ -3,9 +3,9 @@
   "id": "traces",
   "kind": "sequence",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "71b60d37f94269901266e758af962e40e9929629f7745f13f0c7c9b46b6ee0be",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "3aec4c75948d4b7e68bccf90fad3d7f76ce7f4d80433df30f8958d57e792e253",
   "states": [
     {
       "id": "request",

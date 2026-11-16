@@ -52,7 +52,8 @@
       "focus": [
         "active"
       ],
-      "caption": "Did the selection policy help, or did more labeled data help?"
+      "caption": "Did the selection policy help, or did more labeled data help?",
+      "artwork": "art/review/active.svg"
     },
     {
       "id": "random",
@@ -64,7 +65,8 @@
       "focus": [
         "random"
       ],
-      "caption": "Did the selection policy help, or did more labeled data help?"
+      "caption": "Did the selection policy help, or did more labeled data help?",
+      "artwork": "art/review/random.svg"
     },
     {
       "id": "compare",
@@ -77,7 +79,8 @@
       "focus": [
         "compare"
       ],
-      "caption": "Did the selection policy help, or did more labeled data help?"
+      "caption": "Did the selection policy help, or did more labeled data help?",
+      "artwork": "art/review/compare.svg"
     },
     {
       "id": "complete",
@@ -88,7 +91,8 @@
         "compare"
       ],
       "focus": [],
-      "caption": "Did the selection policy help, or did more labeled data help?"
+      "caption": "Did the selection policy help, or did more labeled data help?",
+      "artwork": "art/review/complete.svg"
     }
   ]
 }

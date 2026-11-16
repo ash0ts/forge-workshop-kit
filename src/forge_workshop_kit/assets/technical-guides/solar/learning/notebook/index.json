@@ -3,9 +3,9 @@
   "id": "learning",
   "kind": "sequence",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "9c10876d64b1614b30daa275f295b5d075fc1da43f91068fb819d88739c4a56a",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "f141e4767f32988abfab63b0535d20f7ae250eb978cadbdd565bc79ec48e4d4a",
   "states": [
     {
       "id": "loss",

@@ -38,3 +38,5 @@ The current [teaching sequence](teaching-sequence.md) owns shared visual convent
 Existing attendee copies, saved work, and pinned release assets are preserved. Current screenshots, data provenance, and recorded examples remain beside the workshops that use them.
 
 - [v0.10.0 release checks](archive/release-checks-v0100.md): ARIA investigations, recordings, and access limits before the shared visual revision.
+
+- [v0.11.0 visual release checks](archive/release-checks-v0110.md).

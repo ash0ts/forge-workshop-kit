@@ -3,9 +3,9 @@
   "id": "harness",
   "kind": "overview",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "da7e30f08babec9cdc854e0db90d635ea813d8cec84348dd96876c6be2d35440",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "c15d2c908fd3574614dbd10f4f49407e8e84af2e00c1a62c69d5e4a548418bf0",
   "states": [
     {
       "id": "model",

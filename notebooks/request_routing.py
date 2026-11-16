@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[routing] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.11.0/forge_workshop_kit-0.11.0-py3-none-any.whl",
+#   "forge-workshop-kit[routing] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.11.1/forge_workshop_kit-0.11.1-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",

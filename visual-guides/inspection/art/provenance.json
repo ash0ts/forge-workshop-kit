@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "generator": "scripts/illustrate_inspection.py",
+  "snapshot": "art/evidence.json",
+  "snapshot_sha256": "99a25e490956d9b0df1caceacf1a11bf0d7ccda0bf479315a85c2f1ef38205a7",
+  "regeneration": "Python 3.11+, standard library only; versioned snapshot and canonical skill tokens. No training, network, local rehearsal directory, or external dataset required.",
+  "artwork": "Original passive SVG; original photographs embedded unchanged. Reveals preserve geometry.",
+  "specification": "Existing IDs, ordered states, citations, provenance and experiment values preserved. Only state.artwork paths were added.",
+  "sources": {
+    "features": {
+      "identity": "data/inspection-v1/features.npz",
+      "sha256": "b70ccd0cfe3755feb4dc1149986315f30308a8b7e82fbc2ab7b859be848178e3",
+      "array_shapes": {
+        "whole": [
+          1104,
+          512
+        ],
+        "patches": [
+          1104,
+          14,
+          14,
+          64
+        ]
+      }
+    },
+    "classifier": {
+      "record": "inspection-v2 nearest-patch classifier",
+      "sha256": "ddc371b87c976885990a14e825bb47a5ef2248beb5f07f5ba8629fcf8a63fc09"
+    },
+    "photographs": [
+      "VisA PCB1 anomaly 048",
+      "VisA PCB1 anomaly 015",
+      "VisA pcb1-normal-0704"
+    ]
+  },
+  "patch_derivation": {
+    "position_zero_based": [
+      10,
+      7
+    ],
+    "query": "pcb1-anomaly-048",
+    "normal_fitting_count": 361,
+    "nearest_reference": "pcb1-normal-0704",
+    "mean_squared_standardized_distance": 1.2091598510742188,
+    "recomputed_from_snapshot_vectors": 1.2091587034729683,
+    "tolerance": 1e-05,
+    "matches": true,
+    "reference_selection": "Actual inspection.load_data converts stored features to float32; inspection.nearest_patch_errors computes the map. The selected cell is an instructional close-up; masks do not enter the calculation."
+  },
+  "symbolic_figures": [
+    "Threshold uses explicitly illustrative 10-defect score positions.",
+    "Review shows the specified 24 selections per arm; layout is illustrative, not recorded selection identities."
+  ]
+}

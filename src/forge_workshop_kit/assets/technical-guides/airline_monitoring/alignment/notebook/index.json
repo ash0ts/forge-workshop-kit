@@ -3,9 +3,9 @@
   "id": "alignment",
   "kind": "comparison",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "8bdb5937dc3ecf2db737cc04b249b41357991438c69b642dd1b6377ecaee3990",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "186f577dd4f939c072d7f9dea0c2df6a9abb31a18df7d7e9800d333e67a1e63a",
   "states": [
     {
       "id": "review",

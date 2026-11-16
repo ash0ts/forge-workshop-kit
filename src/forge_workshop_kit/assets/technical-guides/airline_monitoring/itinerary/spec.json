@@ -55,7 +55,8 @@
       "focus": [
         "before"
       ],
-      "caption": "What must the booking update contain?"
+      "caption": "What must the booking update contain?",
+      "artwork": "art/itinerary/before.svg"
     },
     {
       "id": "replace",
@@ -67,7 +68,8 @@
       "focus": [
         "replace"
       ],
-      "caption": "What must the booking update contain?"
+      "caption": "What must the booking update contain?",
+      "artwork": "art/itinerary/replace.svg"
     },
     {
       "id": "after",
@@ -80,7 +82,8 @@
       "focus": [
         "after"
       ],
-      "caption": "What must the booking update contain?"
+      "caption": "What must the booking update contain?",
+      "artwork": "art/itinerary/after.svg"
     },
     {
       "id": "complete",
@@ -91,7 +94,8 @@
         "after"
       ],
       "focus": [],
-      "caption": "What must the booking update contain?"
+      "caption": "What must the booking update contain?",
+      "artwork": "art/itinerary/complete.svg"
     }
   ]
 }

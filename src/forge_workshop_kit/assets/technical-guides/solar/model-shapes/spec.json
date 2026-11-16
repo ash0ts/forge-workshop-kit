@@ -54,7 +54,8 @@
       "focus": [
         "input"
       ],
-      "caption": "What becomes one forecast, and what does the model learn?"
+      "caption": "What becomes one forecast, and what does the model learn?",
+      "artwork": "art/model-shapes/input.svg"
     },
     {
       "id": "mlp",
@@ -66,7 +67,8 @@
       "focus": [
         "mlp"
       ],
-      "caption": "What becomes one forecast, and what does the model learn?"
+      "caption": "What becomes one forecast, and what does the model learn?",
+      "artwork": "art/model-shapes/mlp.svg"
     },
     {
       "id": "cnn",
@@ -79,7 +81,8 @@
       "focus": [
         "cnn"
       ],
-      "caption": "What becomes one forecast, and what does the model learn?"
+      "caption": "What becomes one forecast, and what does the model learn?",
+      "artwork": "art/model-shapes/cnn.svg"
     },
     {
       "id": "complete",
@@ -90,7 +93,8 @@
         "cnn"
       ],
       "focus": [],
-      "caption": "What becomes one forecast, and what does the model learn?"
+      "caption": "What becomes one forecast, and what does the model learn?",
+      "artwork": "art/model-shapes/complete.svg"
     }
   ]
 }

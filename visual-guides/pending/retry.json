@@ -60,7 +60,8 @@
       "focus": [
         "write"
       ],
-      "caption": "Should the retry keep or change operation_id?"
+      "caption": "Should the retry keep or change operation_id?",
+      "artwork": "art/retry/write.svg"
     },
     {
       "id": "new",
@@ -72,7 +73,8 @@
       "focus": [
         "new"
       ],
-      "caption": "Should the retry keep or change operation_id?"
+      "caption": "Should the retry keep or change operation_id?",
+      "artwork": "art/retry/new.svg"
     },
     {
       "id": "same",
@@ -85,7 +87,8 @@
       "focus": [
         "same"
       ],
-      "caption": "Should the retry keep or change operation_id?"
+      "caption": "Should the retry keep or change operation_id?",
+      "artwork": "art/retry/same.svg"
     },
     {
       "id": "complete",
@@ -96,7 +99,8 @@
         "same"
       ],
       "focus": [],
-      "caption": "Should the retry keep or change operation_id?"
+      "caption": "Should the retry keep or change operation_id?",
+      "artwork": "art/retry/complete.svg"
     }
   ],
   "native_capture": {

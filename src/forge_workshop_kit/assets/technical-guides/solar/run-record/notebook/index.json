@@ -3,9 +3,9 @@
   "id": "run-record",
   "kind": "overview",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "bc5e7596b48da5bd339d51f79bb52d2cbf64ba2072a4ed0dbbe81e63e742d21e",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "42829b2da7ee2d6266645d2de5a3c1696fa75b2061d90fec604776ccc51f002e",
   "states": [
     {
       "id": "inputs",

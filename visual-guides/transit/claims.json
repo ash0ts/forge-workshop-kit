@@ -55,7 +55,8 @@
       "focus": [
         "race"
       ],
-      "caption": "What stops two ready workers from editing the same component?"
+      "caption": "What stops two ready workers from editing the same component?",
+      "artwork": "art/claims/race.svg"
     },
     {
       "id": "atomic",
@@ -67,7 +68,8 @@
       "focus": [
         "atomic"
       ],
-      "caption": "What stops two ready workers from editing the same component?"
+      "caption": "What stops two ready workers from editing the same component?",
+      "artwork": "art/claims/atomic.svg"
     },
     {
       "id": "dependency",
@@ -80,7 +82,8 @@
       "focus": [
         "dependency"
       ],
-      "caption": "What stops two ready workers from editing the same component?"
+      "caption": "What stops two ready workers from editing the same component?",
+      "artwork": "art/claims/dependency.svg"
     },
     {
       "id": "complete",
@@ -91,7 +94,8 @@
         "dependency"
       ],
       "focus": [],
-      "caption": "What stops two ready workers from editing the same component?"
+      "caption": "What stops two ready workers from editing the same component?",
+      "artwork": "art/claims/complete.svg"
     }
   ]
 }

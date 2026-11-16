@@ -29,6 +29,16 @@ try {
         if (b.x < x-1 || b.y < y-3 || b.x+b.width > x+w+1 || b.y+b.height > y+h+3)
           failures.push({text:node.textContent,expected:[x,y,w,h],actual:[b.x,b.y,b.width,b.height]});
       }
+      // Authored drawings are inlined, so check every actual text line, including
+      // labels without an assigned box. CSS containers alone miss clipped prose.
+      const svg = document.querySelector('.frame[aria-hidden="false"] > svg');
+      const canvas = svg.getBoundingClientRect();
+      for (const node of svg.querySelectorAll('text')) {
+        if (node.closest('[aria-hidden="true"]')) continue;
+        const b = node.getBoundingClientRect();
+        if (b.width && b.height && (b.left < canvas.left - 1 || b.top < canvas.top - 1 || b.right > canvas.right + 1 || b.bottom > canvas.bottom + 1))
+          failures.push({text:node.textContent,kind:'canvas',expected:[canvas.x,canvas.y,canvas.width,canvas.height],actual:[b.x,b.y,b.width,b.height]});
+      }
       return {failures, textCount:document.querySelectorAll('.frame[aria-hidden="false"] text').length, fonts:[...document.fonts].map(f=>({family:f.family,status:f.status}))};
     });
     receipts.push({state:state.id,...bounds});

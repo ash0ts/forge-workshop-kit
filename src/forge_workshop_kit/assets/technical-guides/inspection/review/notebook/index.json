@@ -3,9 +3,9 @@
   "id": "review",
   "kind": "comparison",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "f5bf3936631e1bdb2810d72504cdacf205a45f63bdb10f54bfb98d932c458158",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "f518657ac5227db8438dd98159ad8cb9f3bfd83da01509672559bcdf71d26e97",
   "states": [
     {
       "id": "active",

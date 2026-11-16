@@ -3,9 +3,9 @@
   "id": "comparison",
   "kind": "comparison",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "839e1f89030458ccca63039319ad57e1c3166710bab35ef01fe8a78b3c764439",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "2d366fd76cfcd4af30990f25dcbd0fd90c94e72d58d15950db396ec05f6dc601",
   "states": [
     {
       "id": "freeze",

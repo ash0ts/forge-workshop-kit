@@ -3,9 +3,9 @@
   "id": "coverage",
   "kind": "sequence",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "a7a063ed319f454708670423ae3c1a73a5665aab93a9a7fdf70570c37df4d3c9",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "db3f5278378ac146395ce9b356d6bb87d681b6f1edfd92653e78a3946d093761",
   "states": [
     {
       "id": "incoming",

@@ -64,7 +64,8 @@
       "focus": [
         "freeze"
       ],
-      "caption": "Did the repair improve bookings, monitoring, or both?"
+      "caption": "Did the repair improve bookings, monitoring, or both?",
+      "artwork": "art/comparison/freeze.svg"
     },
     {
       "id": "matched",
@@ -76,7 +77,8 @@
       "focus": [
         "matched"
       ],
-      "caption": "Did the repair improve bookings, monitoring, or both?"
+      "caption": "Did the repair improve bookings, monitoring, or both?",
+      "artwork": "art/comparison/matched.svg"
     },
     {
       "id": "traffic",
@@ -89,7 +91,8 @@
       "focus": [
         "traffic"
       ],
-      "caption": "Did the repair improve bookings, monitoring, or both?"
+      "caption": "Did the repair improve bookings, monitoring, or both?",
+      "artwork": "art/comparison/traffic.svg"
     },
     {
       "id": "recorded",
@@ -103,7 +106,8 @@
       "focus": [
         "recorded"
       ],
-      "caption": "Did the repair improve bookings, monitoring, or both?"
+      "caption": "Did the repair improve bookings, monitoring, or both?",
+      "artwork": "art/comparison/recorded.svg"
     },
     {
       "id": "complete",
@@ -115,7 +119,8 @@
         "recorded"
       ],
       "focus": [],
-      "caption": "Did the repair improve bookings, monitoring, or both?"
+      "caption": "Did the repair improve bookings, monitoring, or both?",
+      "artwork": "art/comparison/complete.svg"
     }
   ]
 }

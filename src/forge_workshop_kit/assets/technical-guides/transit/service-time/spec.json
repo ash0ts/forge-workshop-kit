@@ -63,7 +63,8 @@
       "focus": [
         "join"
       ],
-      "caption": "Which date belongs to this departure?"
+      "caption": "Which date belongs to this departure?",
+      "artwork": "art/service-time/join.svg"
     },
     {
       "id": "gtfs",
@@ -75,7 +76,8 @@
       "focus": [
         "gtfs"
       ],
-      "caption": "Which date belongs to this departure?"
+      "caption": "Which date belongs to this departure?",
+      "artwork": "art/service-time/gtfs.svg"
     },
     {
       "id": "civil",
@@ -88,7 +90,8 @@
       "focus": [
         "civil"
       ],
-      "caption": "Which date belongs to this departure?"
+      "caption": "Which date belongs to this departure?",
+      "artwork": "art/service-time/civil.svg"
     },
     {
       "id": "complete",
@@ -99,7 +102,8 @@
         "civil"
       ],
       "focus": [],
-      "caption": "Which date belongs to this departure?"
+      "caption": "Which date belongs to this departure?",
+      "artwork": "art/service-time/complete.svg"
     }
   ]
 }

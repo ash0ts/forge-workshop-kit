@@ -71,7 +71,8 @@
       "focus": [
         "parent"
       ],
-      "caption": "Round one selected masked absolute-error training. Round two keeps the data, 40 training steps, and seed 17 fixed."
+      "caption": "Round one selected masked absolute-error training. Round two keeps the data, 40 training steps, and seed 17 fixed.",
+      "artwork": "art/research/parent.svg"
     },
     {
       "id": "candidate-a",
@@ -83,7 +84,8 @@
       "focus": [
         "candidate-a"
       ],
-      "caption": "Initialize the final convolution to zero. The residual model starts by copying the current image and then learns a correction."
+      "caption": "Initialize the final convolution to zero. The residual model starts by copying the current image and then learns a correction.",
+      "artwork": "art/research/candidate-a.svg"
     },
     {
       "id": "candidate-b",
@@ -96,7 +98,8 @@
       "focus": [
         "candidate-b"
       ],
-      "caption": "Sample a permutation without replacement instead of drawing each batch independently. Keep the inherited model and loss."
+      "caption": "Sample a permutation without replacement instead of drawing each batch independently. Keep the inherited model and loss.",
+      "artwork": "art/research/candidate-b.svg"
     },
     {
       "id": "decision",
@@ -110,7 +113,8 @@
       "focus": [
         "decision"
       ],
-      "caption": "The recorded decision selects A and tests that source. A combined A+B version was not tested and is not claimed as an improvement."
+      "caption": "The recorded decision selects A and tests that source. A combined A+B version was not tested and is not claimed as an improvement.",
+      "artwork": "art/research/decision.svg"
     },
     {
       "id": "complete",
@@ -122,7 +126,8 @@
         "decision"
       ],
       "focus": [],
-      "caption": "Later image qualification: error reductions of 10.15%, 6.87%, and −0.21% against the manual model. One seed regressed."
+      "caption": "Later image qualification: error reductions of 10.15%, 6.87%, and −0.21% against the manual model. One seed regressed.",
+      "artwork": "art/research/complete.svg"
     }
   ]
 }

@@ -4,6 +4,7 @@ import copy
 import json
 from pathlib import Path
 import unittest
+import tempfile
 from unittest.mock import patch
 import xml.etree.ElementTree as ET
 
@@ -108,6 +109,41 @@ class RenderingContracts(unittest.TestCase):
             check_spec(spec)
             kinds.add(spec["kind"])
         self.assertEqual(kinds, {"overview","sequence","transformation","comparison","branches","poster"})
+
+    def test_authored_drawing_keeps_geometry_text_and_local_marker_identity(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "scene.json"
+            (path.parent / "scene.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675"><defs><marker id="arrow"/></defs><path d="M10 10L20 20" marker-end="url(#arrow)"/><text x="20" y="50">Actual field value</text></svg>', encoding="utf-8")
+            state = {**check_spec(self.spec)[0], "artwork": "scene.svg"}
+            spec = {**self.spec, "states": [state]}
+            drawing = Drawing(spec, path, "notebook", state)
+            tree = ET.fromstring(drawing.render())
+            self.assertEqual((drawing.w, drawing.h), (1200, 675))
+            self.assertIn("Actual field value", "".join(tree.itertext()))
+            ids = [node.attrib["id"] for node in tree.iter() if "id" in node.attrib]
+            self.assertEqual(len(ids), len(set(ids)))
+            targets = [node.attrib["marker-end"][5:-1] for node in tree.iter() if "marker-end" in node.attrib]
+            self.assertTrue(all(target in ids for target in targets))
+
+    def test_artwork_cannot_load_remote_media_or_execute_scripts(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "scene.json"
+            for content in ('<script>run()</script>', '<image href="https://example.com/image.png"/>'):
+                (path.parent / "scene.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675">'+content+'</svg>', encoding="utf-8")
+                state = {**check_spec(self.spec)[0], "artwork": "scene.svg"}
+                with self.assertRaises(ValueError):
+                    Drawing({**self.spec, "states": [state]}, path, "slide", state).render()
+
+    def test_inlined_artwork_styles_do_not_recolor_poster_text(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "scene.json"
+            (path.parent / "scene.svg").write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675"><style>text{fill:black}.mono{font-family:monospace}</style><text>Field</text></svg>', encoding="utf-8")
+            state = {**check_spec(self.spec)[0], "artwork": "scene.svg"}
+            svg = Drawing({**self.spec, "states": [state]}, path, "slide", state).render()
+            tree = ET.fromstring(svg)
+            styles = ''.join(node.text or '' for node in tree.iter('{http://www.w3.org/2000/svg}style'))
+            self.assertIn('] text{fill:black}', styles)
+            self.assertNotIn('<style>text{fill:black}', svg)
 
 
 if __name__ == "__main__":

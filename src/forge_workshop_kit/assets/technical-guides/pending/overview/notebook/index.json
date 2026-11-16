@@ -3,9 +3,9 @@
   "id": "overview",
   "kind": "overview",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "4dd38b0d53595c37078f1d0107ac255a2b3a10cf96c82ee01fc24aebafaff794",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "5a70d371e8a0611f81c89643d7ffdd5a9f51145269914c5e8670724599f5fbac",
   "states": [
     {
       "id": "ticket",

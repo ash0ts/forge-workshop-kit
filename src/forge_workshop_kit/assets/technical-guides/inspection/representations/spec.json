@@ -72,7 +72,8 @@
       "focus": [
         "photo"
       ],
-      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs."
+      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs.",
+      "artwork": "art/representations/photo.svg"
     },
     {
       "id": "whole",
@@ -84,7 +85,8 @@
       "focus": [
         "whole"
       ],
-      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs."
+      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs.",
+      "artwork": "art/representations/whole.svg"
     },
     {
       "id": "local",
@@ -97,7 +99,8 @@
       "focus": [
         "local"
       ],
-      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs."
+      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs.",
+      "artwork": "art/representations/local.svg"
     },
     {
       "id": "join",
@@ -111,7 +114,8 @@
       "focus": [
         "join"
       ],
-      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs."
+      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs.",
+      "artwork": "art/representations/join.svg"
     },
     {
       "id": "complete",
@@ -123,7 +127,8 @@
         "join"
       ],
       "focus": [],
-      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs."
+      "caption": "Shared image and aligned board rows; whole and patch arrays are separate encoder outputs.",
+      "artwork": "art/representations/complete.svg"
     }
   ],
   "hero": "representations-flow.svg"

@@ -3,9 +3,9 @@
   "id": "dispatch",
   "kind": "sequence",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "804f4b21f511c63508374bdc93dc8881481c2188049ee1b62af95c112705f6e1",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "ecdccf404aaf5d7be98d1bc54e5ae1091811b17aaf26dbefdcadab814f9a165c",
   "states": [
     {
       "id": "action",

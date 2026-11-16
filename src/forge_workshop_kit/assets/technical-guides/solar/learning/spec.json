@@ -66,7 +66,8 @@
       "focus": [
         "loss"
       ],
-      "caption": "Which operation changes forecasting weights?"
+      "caption": "Which operation changes forecasting weights?",
+      "artwork": "art/learning/loss.svg"
     },
     {
       "id": "update",
@@ -78,7 +79,8 @@
       "focus": [
         "update"
       ],
-      "caption": "Which operation changes forecasting weights?"
+      "caption": "Which operation changes forecasting weights?",
+      "artwork": "art/learning/update.svg"
     },
     {
       "id": "validation",
@@ -91,7 +93,8 @@
       "focus": [
         "validation"
       ],
-      "caption": "Which operation changes forecasting weights?"
+      "caption": "Which operation changes forecasting weights?",
+      "artwork": "art/learning/validation.svg"
     },
     {
       "id": "failure",
@@ -105,7 +108,8 @@
       "focus": [
         "failure"
       ],
-      "caption": "Which operation changes forecasting weights?"
+      "caption": "Which operation changes forecasting weights?",
+      "artwork": "art/learning/failure.svg"
     },
     {
       "id": "complete",
@@ -117,7 +121,8 @@
         "failure"
       ],
       "focus": [],
-      "caption": "Which operation changes forecasting weights?"
+      "caption": "Which operation changes forecasting weights?",
+      "artwork": "art/learning/complete.svg"
     }
   ]
 }

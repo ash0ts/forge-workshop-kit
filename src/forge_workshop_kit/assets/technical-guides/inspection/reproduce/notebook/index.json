@@ -3,9 +3,9 @@
   "id": "reproduce",
   "kind": "overview",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "cadf92ce09493db11a26b3deea8a15f02e0f9045efbbe40bfc7033d2ac4908db",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "4d2513e40571f8004b105d31e57946cf33993dfa9bbc8829b86ced5bfe7417a5",
   "states": [
     {
       "id": "encoder",

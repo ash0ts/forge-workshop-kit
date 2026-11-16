@@ -63,7 +63,8 @@
       "focus": [
         "counts"
       ],
-      "caption": "Which mistakes contribute to this intent’s F1?"
+      "caption": "Which mistakes contribute to this intent’s F1?",
+      "artwork": "art/metrics/counts.svg"
     },
     {
       "id": "f1",
@@ -75,7 +76,8 @@
       "focus": [
         "f1"
       ],
-      "caption": "Which mistakes contribute to this intent’s F1?"
+      "caption": "Which mistakes contribute to this intent’s F1?",
+      "artwork": "art/metrics/f1.svg"
     },
     {
       "id": "macro",
@@ -88,7 +90,8 @@
       "focus": [
         "macro"
       ],
-      "caption": "Which mistakes contribute to this intent’s F1?"
+      "caption": "Which mistakes contribute to this intent’s F1?",
+      "artwork": "art/metrics/macro.svg"
     },
     {
       "id": "complete",
@@ -99,7 +102,8 @@
         "macro"
       ],
       "focus": [],
-      "caption": "Which mistakes contribute to this intent’s F1?"
+      "caption": "Which mistakes contribute to this intent’s F1?",
+      "artwork": "art/metrics/complete.svg"
     }
   ]
 }

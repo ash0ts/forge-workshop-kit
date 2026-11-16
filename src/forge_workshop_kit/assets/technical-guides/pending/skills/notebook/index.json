@@ -3,9 +3,9 @@
   "id": "skills",
   "kind": "sequence",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "1030354e5cd53a1f43753a81f7ccb6ba23a217fda4ec2d0ea6140a9db387095e",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "557ac32d5dced1cfef0d6243d00824d6b8858c7e25b25dc8917f3660a0bc3c80",
   "states": [
     {
       "id": "saved",

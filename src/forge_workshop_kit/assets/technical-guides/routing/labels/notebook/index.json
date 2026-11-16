@@ -3,9 +3,9 @@
   "id": "labels",
   "kind": "sequence",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "95aee0caaf038df6f8718445aa36118f56a69ebeb3e61a8c03f0620cd1fbb1e3",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "655df32b87cfd8665d3df229d6419d77a4a69afb4f82885b1bb3dd85b7efd212",
   "states": [
     {
       "id": "proposal",

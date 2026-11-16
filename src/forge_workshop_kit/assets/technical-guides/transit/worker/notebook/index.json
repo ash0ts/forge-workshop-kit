@@ -3,9 +3,9 @@
   "id": "worker",
   "kind": "sequence",
   "layout": "notebook",
-  "width": 960,
-  "height": 780,
-  "source_sha256": "c2ed496627593e6939b66f8e522b3b2f8d60fe16359c6df1916a529ad60f53a4",
+  "width": 1200,
+  "height": 675,
+  "source_sha256": "3cfc1439bf045717c86bda437101c072f9aedbef02fed38a3cc28976c7e2d4a2",
   "states": [
     {
       "id": "request",

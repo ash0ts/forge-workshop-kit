@@ -53,7 +53,8 @@
       "focus": [
         "ticket"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/ticket.svg"
     },
     {
       "id": "agent",
@@ -65,7 +66,8 @@
       "focus": [
         "agent"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/agent.svg"
     },
     {
       "id": "account",
@@ -78,7 +80,8 @@
       "focus": [
         "account"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/account.svg"
     },
     {
       "id": "change",
@@ -92,7 +95,8 @@
       "focus": [
         "change"
       ],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/change.svg"
     },
     {
       "id": "complete",
@@ -104,7 +108,8 @@
         "change"
       ],
       "focus": [],
-      "caption": "What will you build, and how will you know it works?"
+      "caption": "What will you build, and how will you know it works?",
+      "artwork": "art/overview/complete.svg"
     }
   ],
   "hero": "hero.svg"
