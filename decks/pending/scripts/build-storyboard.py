@@ -62,7 +62,7 @@ for n,title,caption,narration in [
      'A saved skill has no effect until the executor supplies it to the model. Here the agent can call read_skill; the returned procedure enters the same conversation as other tool results. Agent Lens lets us check whether the skill was read and what the model did afterward.'),
 ]:
     slide('harness-'+str(n),title,f'<HarnessMap :level="{n}" />\n<div class="bottom-note">{caption}</div>',narration)
-slide('copy','Copy the notebook into your own project.','<div class="copy-layout"><a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view"><img style="width:210px" src="/images/pending-template-qr.svg" alt="QR code for the current Pending template"></a><ol><li>Open <a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view">Pending, Inc. in Forge</a>.</li><li>Choose <strong>Copy to project</strong> and select a project you can write to.</li><li>Open the copy in <strong>Edit</strong>. The notebook detects its destination. Run all stale cells once to initialize the controls.</li></ol></div>\n<div class="bottom-note">Runs and traces are published to the copied notebook’s project using your Forge account.</div>','Use the current template, never the historical November 12 gateway notebook. An external account requires its own project, notebook compute access and inference access. Setup does not issue a model request.')
+slide('copy','Copy the notebook into your own project.','<p>Open this workshop’s materials, then copy its notebook into a writable project.</p>','The shared QR panel is populated from docs/share-links.json by share_storyboard.py.')
 slide('local','The same notebook runs on a laptop.','```sh\ngit clone https://github.com/ash0ts/forge-workshop-kit.git\ncd forge-workshop-kit\nuv sync --frozen --extra pending\nuv run --extra pending wandb login --verify\nuv run --extra pending marimo edit notebooks/pending_inc.py\n```\n\nEnter `YOUR_ENTITY/YOUR_PROJECT` in the notebook.\n\n<div class="bottom-note">Local Python and local MCP run the office tools. You do not need Docker or remote Sandboxes.</div>','These commands correspond to the kit README and locked pending extra. Do not send participants to old start.py or office_notebook.py. Inference uses their own access and billing. Windows supports the same uv commands.')
 exercise('access','Check where your work will be saved.','1 · Connect and trace','Check the detected project. Choose your inference allowance, which defaults to $8. Notebook compute is billed separately.','Check my project and restore saved work','Your project is correct. Read the separate access, tracing, and publication statuses.')
 slide('record','Save an operation’s inputs, output, and timing.',code('''result, record = event(
@@ -233,6 +233,7 @@ SECTIONS = enrich(S, code)
 import runpy as _aria_runpy
 _aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/aria_storyboard.py'))['enrich'](S, ROOT, 'pending')
 _aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/technical_guide_storyboard.py'))['enrich'](S, ROOT, 'pending')
+_aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/share_storyboard.py'))['enrich'](S, ROOT, 'pending')
 
 
 header='''---

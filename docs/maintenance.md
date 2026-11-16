@@ -38,7 +38,7 @@ python scripts/build_decks.py --install --pdf --validate
 
 Use `--only routing` while editing one deck. Set `CHROME_PATH` to an installed Chrome executable, or run `npx playwright install chromium` from `decks/`. The PDF checker installs its pinned maintenance dependencies through uv; those dependencies are not added to participant notebooks.
 
-Output goes to `dist/decks/site/` for the hosted site and `dist/decks/downloads/` for PDFs, offline browser decks, and editable source archives. The same build adds the poster gallery, standalone skill download, and shared notebook/deck figures. `--output PATH` selects another root. Without `--pdf --validate`, the command builds browser copies and source archives only. [Technical visuals](technical-visuals.md) covers individual figure builds.
+Output goes to `dist/decks/site/` for the hosted site and `dist/decks/downloads/` for PDFs, offline browser decks, and editable source archives. The build regenerates the [managed sharing links and QR codes](share-links.md) before rendering decks and posters. It also adds the poster gallery, standalone skill download, and shared notebook/deck figures. `--output PATH` selects another root. Without `--pdf --validate`, the command builds browser copies and source archives only. [Technical visuals](technical-visuals.md) covers individual figure builds.
 
 Validation checks slide and reveal states, Back navigation, worked-answer return links, image loading, and rendered PDF pages. Inspect the changed screens yourself as well: container bounds alone do not establish readable text or useful annotations. The [deck guide](deck-guide.md) covers presentation and the [teaching sequence](teaching-sequence.md#use-consistent-visual-conventions) defines the shared diagram conventions.
 
@@ -46,7 +46,7 @@ The [Workshop decks workflow](../.github/workflows/deck.yml) publishes validated
 
 ### Build the meeting packet
 
-The complete deck build also creates `dist/decks/site/packet/`: a briefing page and PDF, six deck PDFs, setup and demo instructions, facilitator notes, and a downloadable ZIP. The authored brief and Slack copy live in [sharing.md](sharing.md); workshop links come from the existing manifest and Report catalog.
+The complete deck build also creates `dist/decks/site/packet/`: a briefing page and PDF, six deck PDFs, setup and demo instructions, a facilitator start guide, a short running guide for each deck, detailed facilitator notes, and a downloadable ZIP. The authored brief and Slack copy live in [sharing.md](sharing.md); workshop links come from the existing manifest and Report catalog.
 
 To rebuild only this packet from previously built decks:
 

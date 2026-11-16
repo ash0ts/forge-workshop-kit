@@ -53,8 +53,11 @@ def build(site, *, pdf=False):
     templates = json.loads((ROOT / "src/forge_workshop_kit/workshops.json").read_text())["templates"]
     templates = [row for row in templates if row.get("authoring", {}).get("deck")]
     reports = json.loads((ROOT / "reports/published.json").read_text())["reports"]
+    sharing = json.loads((ROOT / "docs/share-links.json").read_text())["links"]
     documents = ["docs/sharing.md", "docs/use-the-workshops.md", "docs/setup.md",
                  "docs/current-demo-guide.md", "docs/deck-guide.md", "docs/recorded-results.md",
+                 "docs/facilitator-start.md", "docs/share-links.md",
+                 *[f'docs/run-{row["authoring"]["deck"]["directory"]}.md' for row in templates],
                  "next-up.md", *[row["authoring"]["runbook"] for row in templates]]
     documents = list(dict.fromkeys(documents))
     bundled = {path: "docs/" + Path(path).stem + ".html" for path in documents}
@@ -69,8 +72,9 @@ def build(site, *, pdf=False):
         body = bodies[path]
         filename = Path(path).stem
         copy(ROOT / path, f"docs/{filename}.md")
+        title = (ROOT / path).read_text().splitlines()[0].removeprefix("# ")
         write(f"docs/{filename}.html", page(
-            filename.replace("-", " "), '<nav><a href="../index.html">Workshop packet</a></nav>' + body,
+            title, '<nav><a href="../index.html">Workshop packet</a></nav>' + body,
             prefix="../",
         ))
 
@@ -83,6 +87,7 @@ def build(site, *, pdf=False):
         poster = json.loads((ROOT / "visual-guides" / slug / "poster.json").read_text())["poster"]
         image = ROOT / "visual-guides/scenes" / slug / "start.svg"
         copy(image, f"assets/{slug}.svg")
+        copy(ROOT / "decks" / slug / "public/images/workshop-qr.svg", f"assets/{slug}-qr.svg")
         pdf_source = site / slug / f"{stem}.pdf"
         pdf_link = f"{PUBLIC}/{slug}/{stem}.pdf"
         if pdf_source.exists():
@@ -92,15 +97,19 @@ def build(site, *, pdf=False):
         elif pdf:
             raise FileNotFoundError(f"Build the deck PDF first: {pdf_source}")
         runbook = "docs/" + Path(row["authoring"]["runbook"]).stem + ".html"
+        quick_guide = f"docs/run-{slug}.html"
+        share_url = sharing[slug]["short_url"]
         catalog.append({"workshop": row["slug"], "deck": slug, "title": deck["title"],
                         "duration": poster["duration"], "report": report["url"],
                         "notebook": report["notebook_url"], "pdf": pdf_link,
                         "deck_url": report["deck_url"], "runbook": runbook,
+                        "quick_guide": quick_guide, "share_url": share_url,
                         "readiness": "technical preview"})
         links = [
             (report["url"], "Read the example"), (report["deck_url"], "Present the deck"),
             (pdf_link, "Deck PDF"), (report["notebook_url"], "Notebook · Forge sign-in"),
-            (runbook, "Facilitator notes"), (f"{PUBLIC}/{slug}/{stem}-source.zip", "Editable deck source"),
+            (quick_guide, "How to run this workshop"), (runbook, "Detailed facilitator notes"),
+            (f"{PUBLIC}/{slug}/{stem}-source.zip", "Editable deck source"),
         ]
         actions = "".join(f'<a href="{html.escape(url, quote=True)}">{html.escape(label)}</a>' for url, label in links)
         cards.append(
@@ -109,7 +118,11 @@ def build(site, *, pdf=False):
             f'<div class="card-body"><p class="eyebrow">{html.escape(poster["duration"])} · BASIC PYTHON</p>'
             f'<h3>{html.escape(deck["title"])}</h3><p>{html.escape(poster["situation"])}</p>'
             f'<p class="data">Data: {html.escape(poster["dataset"])}</p>'
-            f'<div class="actions">{actions}</div></div></article>'
+            f'<div class="actions">{actions}</div>'
+            f'<div class="share-code"><a href="{share_url}"><img src="assets/{slug}-qr.svg" '
+            f'width="144" height="144" alt="QR code for this workshop’s materials"></a>'
+            f'<p>Share this workshop<br><a href="{share_url}">{share_url.removeprefix("https://")}</a></p>'
+            '</div></div></article>'
         )
     brief = '<p class="eyebrow">FORGE WORKSHOP KIT · MEETING BRIEF</p>' + bodies["brief"]
     write("brief.html", page("Workshop meeting brief", brief))
@@ -123,7 +136,9 @@ def build(site, *, pdf=False):
         '<div class="actions primary"><a href="brief.pdf">Meeting brief PDF</a>'
         f'<a href="{PUBLIC}/packet/workshop-meeting-packet.zip">Download the packet</a>'
         '<a href="docs/sharing.html#slack-message">Slack message</a>'
-        '<a href="docs/current-demo-guide.html">Short demo routes</a></div></header>'
+        '<a href="docs/current-demo-guide.html">Short demo routes</a>'
+        '<a href="docs/facilitator-start.html">Run a workshop</a>'
+        f'<a href="{PUBLIC}/share/">QR codes and sharing links</a></div></header>'
         '<section class="start"><h2>Start with one example</h2>'
         '<p>Open its Report before asking anyone to sign in. In a meeting, show the input, '
         'the changed code, and one recorded outcome. The deck and PDF supply a fallback '

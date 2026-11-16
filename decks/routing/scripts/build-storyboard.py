@@ -69,6 +69,7 @@ slides=release_extend(slides)
 import runpy as _aria_runpy
 _aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/aria_storyboard.py'))['enrich'](slides, ROOT, 'routing')
 _aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/technical_guide_storyboard.py'))['enrich'](slides, ROOT, 'routing')
+_aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/share_storyboard.py'))['enrich'](slides, ROOT, 'routing')
 
 header='''---\ntheme: default\ntitle: Route customer requests and learn from mistakes\nauthor: Anish Shah\nclass: cover workshop-setting-slide\nclicks: 1\nlayout: default\naspectRatio: 16/9\ncanvasWidth: 1280\ncolorSchema: light\ntransition: fade\nwakeLock: false\nfonts:\n  sans: IBM Plex Sans\n  mono: IBM Plex Mono\n  provider: none\nmdc: true\nhighlighter: shiki\ndrawings:\n  enabled: false\ndownload: false\n---\n'''
 chunks=[]

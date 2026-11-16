@@ -1,0 +1,35 @@
+{
+  "campaign": "2026-q4_global_forge-workshop-kit",
+  "managed_in": "UTM.io / Weights and Biases",
+  "created_on": "2026-11-16",
+  "links": {
+    "pending": {
+      "short_url": "https://utm.io/uuH96",
+      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=pending-start#pending"
+    },
+    "solar": {
+      "short_url": "https://utm.io/uuH97",
+      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=solar-start#solar"
+    },
+    "routing": {
+      "short_url": "https://utm.io/uuH98",
+      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=routing-start#routing"
+    },
+    "inspection": {
+      "short_url": "https://utm.io/uuH99",
+      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=inspection-start#inspection"
+    },
+    "transit": {
+      "short_url": "https://utm.io/uuIaa",
+      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=transit-start#transit"
+    },
+    "airline_monitoring": {
+      "short_url": "https://utm.io/uuIab",
+      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=airline_monitoring-start#airline_monitoring"
+    },
+    "packet": {
+      "short_url": "https://utm.io/uuIac",
+      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=social&utm_source=slack&utm_content=meeting-packet"
+    }
+  }
+}

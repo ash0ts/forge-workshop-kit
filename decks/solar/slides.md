@@ -125,18 +125,19 @@ Source notes and recorded evidence: notes/sources.md.
 -->
 
 ---
+class: workshop-sharing
 name: copy
 ---
 
 <div class="kicker">0:00–0:25</div>
 
-# Copy the notebook into your Forge project
+# Open the materials and copy the notebook
 
-<div class="copy-layout"><div class="template-qr"><a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view"><img src="/images/solar-template-qr.svg" alt="QR code opening the Solar workshop template"></a><p><a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view">Open the Solar template ↗</a></p></div><ol><li>Open the template.</li><li>Choose <strong>Copy to project</strong> and select your writable project.</li><li>Open the copy in <strong>Edit</strong>. Choose <strong>Run all stale cells</strong> once.</li><li>In <strong>Connect</strong>, check your project. Exercise run buttons stay unpressed.</li></ol></div><div class="bottom-note">Hosted Forge supplies authentication. Your account supplies notebook compute and inference access.</div>
+<div class="workshop-share-layout"><div class="workshop-share-instructions"><ol><li><strong>Open this workshop’s page.</strong> Scan the code or type the short link.</li><li><strong>Choose the notebook.</strong> Sign in to Forge, then choose <strong>Copy to project</strong>.</li><li><strong>Open your copy in Edit.</strong> Run all stale cells once to initialize the controls.</li><li><strong>Check the destination.</strong> Use your own writable project and account.</li></ol></div><div class="workshop-share-code"><a href="https://utm.io/uuH97" aria-label="Open this workshop’s materials"><img src="/images/workshop-qr.svg" width="280" height="280" alt="QR code opening this workshop’s notebook, deck, Report, and run guide"></a><a class="workshop-share-url" href="https://utm.io/uuH97">utm.io/uuH97</a><p>Notebook · Report · Deck · Run guide</p></div></div><p class="workshop-share-footer">The $8 adjustable allowance covers notebook inference. Notebook compute is billed separately.</p>
 
 
 <!--
-Allow participants to get their own copy open before continuing. Run all stale cells creates the controls; it does not press the exercise run buttons. Hosted Forge supplies authentication, but attendees still need their own project and account access. Use fictional or public teaching data in a public project. Session block: Connect and trace an operation (minutes 0–25).
+Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
 Source notes and recorded evidence: notes/sources.md.
 -->
 
@@ -229,7 +230,7 @@ name: setup-turn
 
 <div class="kicker">0:00–0:25 · YOUR TURN</div>
 
-<a class="answer-link" href="/115">Worked answer → 115</a>
+<a class="answer-link" href="/116">Worked answer → 116</a>
 
 # Connect and inspect your first tool call
 
@@ -487,7 +488,7 @@ name: persistence-turn
 
 <div class="kicker">0:25–1:05 · YOUR TURN</div>
 
-<a class="answer-link" href="/116">Worked answer → 116</a>
+<a class="answer-link" href="/117">Worked answer → 117</a>
 
 # Write and test persistence
 
@@ -858,7 +859,7 @@ name: tracking-turn
 
 <div class="kicker">1:50–2:35 · YOUR TURN</div>
 
-<a class="answer-link" href="/117">Worked answer → 117</a>
+<a class="answer-link" href="/118">Worked answer → 118</a>
 
 # Write the loss and metric
 
@@ -958,7 +959,7 @@ name: search-turn
 
 <div class="kicker">1:50–2:35 · YOUR TURN</div>
 
-<a class="answer-link" href="/118">Worked answer → 118</a>
+<a class="answer-link" href="/119">Worked answer → 119</a>
 
 # Inspect one trial before running the rest
 
@@ -977,7 +978,7 @@ name: goes-repair-turn
 
 <div class="kicker">1:50–2:35 · YOUR TURN</div>
 
-<a class="answer-link" href="/119">Worked answer → 119</a>
+<a class="answer-link" href="/120">Worked answer → 120</a>
 
 # Diagnose the forecast before opening the repair
 
@@ -1282,7 +1283,7 @@ name: image-turn
 
 <div class="kicker">2:35–3:20 · YOUR TURN</div>
 
-<a class="answer-link" href="/120">Worked answer → 120</a>
+<a class="answer-link" href="/121">Worked answer → 121</a>
 
 # Implement and compare the image predictors
 
@@ -1459,7 +1460,7 @@ name: evidence-turn
 
 <div class="kicker">3:50–4:20 · YOUR TURN</div>
 
-<a class="answer-link" href="/122">Worked answer → 122</a>
+<a class="answer-link" href="/123">Worked answer → 123</a>
 
 # Choose the evidence for the research agent
 
@@ -1742,7 +1743,7 @@ name: round2-turn
 
 <div class="kicker">4:20–5:10 · YOUR TURN</div>
 
-<a class="answer-link" href="/123">Worked answer → 123</a>
+<a class="answer-link" href="/124">Worked answer → 124</a>
 
 # Test the selected code, then begin round two
 
@@ -1853,7 +1854,7 @@ name: final-turn
 
 <div class="kicker">5:20–5:45 · YOUR TURN</div>
 
-<a class="answer-link" href="/124">Worked answer → 124</a>
+<a class="answer-link" href="/125">Worked answer → 125</a>
 
 # Test the selected models on reserved dates
 
@@ -2098,6 +2099,23 @@ name: close
 <!--
 Return to the weekly lab review. Ask participants to open their Report and follow one result to its source and saved prediction. In the recorded rehearsal, the selected image model reduced error, while the GOES model still lost to persistence. Both belong in the review. The image result uses one seed and two test days; it needs testing on other dates. The later qualification found that a repaired GOES recipe beat persistence on all three seeds. The saved image edits helped two seeds and slightly hurt one. Bring both facts to the review; neither replaces the original evidence. Ask each participant to propose a next test grounded in their own forecast. Session block: Reproduce and explain the result (minutes 345–360).
 Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
+Source notes and recorded evidence: notes/sources.md.
+-->
+
+---
+class: workshop-sharing
+name: workshop-take-home
+---
+
+<div class="kicker">5:45–6:00</div>
+
+# Keep the notebook and workshop materials
+
+<div class="workshop-share-layout"><div class="workshop-share-instructions"><p>Return to your saved notebook copy to continue your work.</p><ol><li><strong>Revisit the example.</strong> The Report links its claims to recorded results.</li><li><strong>Keep the materials.</strong> Open the deck, download the PDF, or get the source.</li><li><strong>Run a session.</strong> Use the short run guide and facilitator notes.</li></ol></div><div class="workshop-share-code"><a href="https://utm.io/uuH97" aria-label="Open this workshop’s materials"><img src="/images/workshop-qr.svg" width="280" height="280" alt="QR code opening this workshop’s notebook, deck, Report, and run guide"></a><a class="workshop-share-url" href="https://utm.io/uuH97">utm.io/uuH97</a><p>Notebook · Report · Deck · Run guide</p></div></div><p class="workshop-share-footer">The shared page has the template and references. Your executions remain in your own project.</p>
+
+
+<!--
+Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
 Source notes and recorded evidence: notes/sources.md.
 -->
 

@@ -8,7 +8,7 @@ These examples teach how to change an agent or model and check what that change 
 | --- | --- | --- |
 | **Explain a workflow** | One public Report from the table below. It includes diagrams, code, actual results, and a notebook link. | Ask the reader which change affected the outcome and what they would test next. |
 | **Show a short demo** | The matching deck and [6–10 minute walkthrough](current-demo-guide.md). Use its saved traces, comparisons, and recorded fallback. | Show one input, the change, and the resulting behavior. Open the Forge record that establishes it. |
-| **Run a hands-on pilot** | The participant notebook, [setup guide](setup.md), and [facilitator runbook](README.md#workshop-runbooks-and-evidence). | Copy into a writable project, complete the first exercise, and check its saved result before running the full session. |
+| **Run a hands-on pilot** | The participant notebook, [setup guide](setup.md), and [facilitator start guide](facilitator-start.md). | Use its per-deck running guide, copy into a writable project, and check the first saved result before running the full session. |
 | **Adapt the kit** | The [starter notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzI=/view), [authoring guide](authoring.md), and [workshop skill](../.agents/skills/forge-workshops/SKILL.md). | Define one task, an intervention, and a comparison. Keep the code learners change visible; reuse saving, tracing, publication, and progress. |
 
 The Reports can be read independently. Live exercises use the participant's own project, credentials, and product access. The facilitator reads progress from the supplied project roster; there is no workshop gateway.

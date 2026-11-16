@@ -1,7 +1,7 @@
 {
   "session_minutes": 360,
-  "main_slides": 76,
-  "total_slides": 82,
+  "main_slides": 77,
+  "total_slides": 83,
   "slides": [
     {
       "number": 1,
@@ -128,16 +128,16 @@
     },
     {
       "number": 9,
-      "title": "Your copy owns the runs and saved work",
-      "body": "<div class=\"pipeline\"><div class=\"\"><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view\">Open the template \u2197</a><small>Copy into your Forge project</small></div><b v-click=\"1\">\u2192</b><div v-click=\"1\" class=\"\">Check access<small>Use your own credentials</small></div><b v-click=\"2\">\u2192</b><div v-click=\"2\" class=\"\">Edit and run<small>Explicit controls only</small></div><b v-click=\"3\">\u2192</b><div v-click=\"3\" class=\"\">Return later<small>Restore saved executions</small></div></div><p>The $8 adjustable allowance covers notebook inference. Native tag judging and notebook compute have separate charges.</p><p class=\"caption\">No gateway, shared token, or remote Sandbox requirement. <a href=\"https://github.com/ash0ts/forge-workshop-kit\">Source and laptop setup \u2197</a></p>",
-      "notes": "Open the hosted template and show copying into the participant\u2019s project. Confirm the detected destination before publishing a trace. Opening, browsing, or checking code does not run a model. An unavailable native service is separate from an agent task failure. Server-side tag costs cannot be stopped by the notebook\u2019s local allowance.",
+      "title": "Open the materials and copy the notebook",
+      "body": "<div class=\"workshop-share-layout\"><div class=\"workshop-share-instructions\"><ol><li><strong>Open this workshop\u2019s page.</strong> Scan the code or type the short link.</li><li><strong>Choose the notebook.</strong> Sign in to Forge, then choose <strong>Copy to project</strong>.</li><li><strong>Open your copy in Edit.</strong> Run all stale cells once to initialize the controls.</li><li><strong>Check the destination.</strong> Use your own writable project and account.</li></ol></div><div class=\"workshop-share-code\"><a href=\"https://utm.io/uuIab\" aria-label=\"Open this workshop\u2019s materials\"><img src=\"/images/workshop-qr.svg\" width=\"280\" height=\"280\" alt=\"QR code opening this workshop\u2019s notebook, deck, Report, and run guide\"></a><a class=\"workshop-share-url\" href=\"https://utm.io/uuIab\">utm.io/uuIab</a><p>Notebook \u00b7 Report \u00b7 Deck \u00b7 Run guide</p></div></div><p class=\"workshop-share-footer\">The $8 adjustable allowance covers notebook inference. Notebook compute is billed separately. Native tag judging has separate charges.</p>",
+      "notes": "Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.",
       "start_minute": 21,
       "time": "0:21",
       "name": "setup",
-      "kind": "",
+      "kind": "workshop-sharing",
       "concept": "setup",
       "exercise_id": null,
-      "source": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view"
+      "source": "https://utm.io/uuIab"
     },
     {
       "number": 10,
@@ -1484,6 +1484,23 @@
     },
     {
       "number": 77,
+      "title": "Keep the notebook and workshop materials",
+      "body": "<div class=\"workshop-share-layout\"><div class=\"workshop-share-instructions\"><p>Return to your saved notebook copy to continue your work.</p><ol><li><strong>Revisit the example.</strong> The Report links its claims to recorded results.</li><li><strong>Keep the materials.</strong> Open the deck, download the PDF, or get the source.</li><li><strong>Run a session.</strong> Use the short run guide and facilitator notes.</li></ol></div><div class=\"workshop-share-code\"><a href=\"https://utm.io/uuIab\" aria-label=\"Open this workshop\u2019s materials\"><img src=\"/images/workshop-qr.svg\" width=\"280\" height=\"280\" alt=\"QR code opening this workshop\u2019s notebook, deck, Report, and run guide\"></a><a class=\"workshop-share-url\" href=\"https://utm.io/uuIab\">utm.io/uuIab</a><p>Notebook \u00b7 Report \u00b7 Deck \u00b7 Run guide</p></div></div><p class=\"workshop-share-footer\">The shared page has the template and references. Your executions remain in your own project.</p>",
+      "notes": "Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.",
+      "start_minute": 358,
+      "time": "5:58",
+      "name": "workshop-take-home",
+      "kind": "workshop-sharing",
+      "concept": "workshop-take-home",
+      "exercise_id": null,
+      "source": "https://utm.io/uuIab",
+      "clicks": 0,
+      "key": "workshop-take-home",
+      "answer": null,
+      "exercise": null
+    },
+    {
+      "number": 78,
       "title": "Worked answer: validate a judge response",
       "body": "```python {all}\ndef my_judge_validation(answer):\n    if any(type(answer.get(k)) is not bool for k in (\"supported\", \"unresolved\")):\n        raise ValueError(\"supported and unresolved must be booleans\")\n    if not isinstance(answer.get(\"reason\"), str) or not answer[\"reason\"].strip():\n        raise ValueError(\"Explain the judgment\")\n    if not isinstance(answer.get(\"event_ids\"), list) or any(\n        not isinstance(x, str) for x in answer[\"event_ids\"]\n    ):\n        raise ValueError(\"Cite event identities as a list of strings\")\n    return answer\n```\n<p class=\"source-link\"><a href=\"/judge-execution\">Return to the explanation-judge exercise \u2197</a></p>",
       "notes": "This is the notebook\u2019s actual validator. It checks shape and types, not the truth of the judgment.",
@@ -1496,7 +1513,7 @@
       "source": null
     },
     {
-      "number": 78,
+      "number": 79,
       "title": "Worked answer: keep unknown judgments out of the matrix",
       "body": "```python {all}\ndef my_monitor(rows):\n    completed = [r for r in rows if r.get(\"status\") == \"complete\"\n        and type(r.get(\"prediction\")) is bool]\n    known = [r for r in completed if type(r.get(\"human_label\")) is bool]\n    tp = sum(r[\"prediction\"] and r[\"human_label\"] for r in known)\n    fp = sum(r[\"prediction\"] and not r[\"human_label\"] for r in known)\n    fn = sum(not r[\"prediction\"] and r[\"human_label\"] for r in known)\n    return {\"total\": len(rows), \"judged\": len(completed), \"reviewed\": len(known),\n        \"coverage\": len(completed) / len(rows) if rows else None,\n        \"precision\": tp / (tp + fp) if tp + fp else None,\n        \"recall\": tp / (tp + fn) if tp + fn else None,\n        \"unavailable\": len(rows) - len(completed)}\n```\n<p class=\"source-link\"><a href=\"/monitor\">Return to monitoring calculations \u2197</a></p>",
       "notes": "This is the notebook\u2019s actual my_monitor implementation. Review unflagged cases too; an alerts-only sample cannot establish recall across traffic.",
@@ -1509,7 +1526,7 @@
       "source": null
     },
     {
-      "number": 79,
+      "number": 80,
       "title": "Worked answer: preserve the original case inputs",
       "body": "<div class=\"bundle-list\"><div>Copy the initial booking<small>A deep copy prevents later mutations changing the test</small></div><div>Keep request and policy<small>Preserve the rules used by this execution</small></div><div>Attach the reviewed expectation<small>Include scope, result, reviewer, and rationale</small></div><div>Retain native identities<small>Link back to the conversation and supporting span</small></div></div><p class=\"source-link\"><a href=\"/curate\">Return to the curation exercise \u2197</a></p>",
       "notes": "Use the actual case_from_reviewed_turn signature in the notebook. Do not synthesize a nonexistent native turn or treat a listing of spans as proof that a specific diagnostic was read.",
@@ -1522,7 +1539,7 @@
       "source": null
     },
     {
-      "number": 80,
+      "number": 81,
       "title": "Worked answer: check both change and preservation",
       "body": "```python {all}\nrequested_change = actual[start:start + len(replacement)] == replacement\nuntouched_prefix = actual[:start] == original[:start]\nuntouched_suffix = actual[start + len(replacement):] == original[stop:]\nbooking_correct = requested_change and untouched_prefix and untouched_suffix\n```\n<p>Compare flight identities and relevant fields, not only list length. Keep confirmation and policy checks alongside these state checks.</p><p class=\"source-link\"><a href=\"/state-check\">Return to the state scorer exercise \u2197</a></p>",
       "notes": "Illustrative list-based scorer excerpt. The actual evaluator must use the recorded approved scope and final state, not values inferred from the agent\u2019s final response.",
@@ -1535,7 +1552,7 @@
       "source": null
     },
     {
-      "number": 81,
+      "number": 82,
       "title": "Worked answer: build the complete replacement list",
       "body": "```python {all}\ndef my_itinerary_builder(\n    current_flights, replace_start, replace_stop, replacement_flights\n):\n    if type(replace_start) is not int or type(replace_stop) is not int:\n        raise ValueError(\"Flight indices must be integers\")\n    if not 0 <= replace_start < replace_stop <= len(current_flights) or not replacement_flights:\n        raise ValueError(\"Choose an existing range and a nonempty replacement\")\n    return copy.deepcopy(\n        current_flights[:replace_start] + replacement_flights\n        + current_flights[replace_stop:]\n    )\n```\n<p class=\"source-link\"><a href=\"/repair\">Return to the repair exercise \u2197</a></p>",
       "notes": "This is the notebook\u2019s actual itinerary builder. The deep copy prevents the result from mutating the original booking. The agent must still select the correct range and obtain confirmation.",
@@ -1548,7 +1565,7 @@
       "source": null
     },
     {
-      "number": 82,
+      "number": 83,
       "title": "Sources and saved evidence",
       "body": "<ul class=\"reference-list\"><li><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view\">Hosted notebook template \u2014 copy into your project</a></li><li><a href=\"https://github.com/sierra-research/tau2-bench/blob/989d3285ae669e49503324bdb9981bf14fccedeb/src/tau2/domains/airline/tools.py\">Pinned airline API implementation</a></li><li><a href=\"https://github.com/sierra-research/tau2-bench/blob/989d3285ae669e49503324bdb9981bf14fccedeb/data/tau2/domains/airline/\">Source airline data and policy</a></li><li><a href=\"https://docs.coreweave.com/products/agent-lens/tags/create-tag\">Native Agent Lens tags and judging criteria</a></li><li><a href=\"https://github.com/ash0ts/forge-workshop-kit\">Source, data provenance, local checks, and release status</a></li></ul><p class=\"caption\">Recorded captures have their original image, source URL, selected record, and annotations in this deck\u2019s source package. No paid work runs when this deck opens.</p>",
       "notes": "Consult the release evidence for actual validation coverage. External-account access and human rehearsal are not established by a successful deck build.",

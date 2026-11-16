@@ -143,17 +143,18 @@ Visual sequence: Start with the family bracket, not the batch counts. The connec
 -->
 
 ---
+class: workshop-sharing
 name: setup
 ---
 
 <div class="kicker">0:21 · Airline service monitoring</div>
 
-# Your copy owns the runs and saved work
+# Open the materials and copy the notebook
 
-<div class="pipeline"><div class=""><a href="https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view">Open the template ↗</a><small>Copy into your Forge project</small></div><b v-click="1">→</b><div v-click="1" class="">Check access<small>Use your own credentials</small></div><b v-click="2">→</b><div v-click="2" class="">Edit and run<small>Explicit controls only</small></div><b v-click="3">→</b><div v-click="3" class="">Return later<small>Restore saved executions</small></div></div><p>The $8 adjustable allowance covers notebook inference. Native tag judging and notebook compute have separate charges.</p><p class="caption">No gateway, shared token, or remote Sandbox requirement. <a href="https://github.com/ash0ts/forge-workshop-kit">Source and laptop setup ↗</a></p>
+<div class="workshop-share-layout"><div class="workshop-share-instructions"><ol><li><strong>Open this workshop’s page.</strong> Scan the code or type the short link.</li><li><strong>Choose the notebook.</strong> Sign in to Forge, then choose <strong>Copy to project</strong>.</li><li><strong>Open your copy in Edit.</strong> Run all stale cells once to initialize the controls.</li><li><strong>Check the destination.</strong> Use your own writable project and account.</li></ol></div><div class="workshop-share-code"><a href="https://utm.io/uuIab" aria-label="Open this workshop’s materials"><img src="/images/workshop-qr.svg" width="280" height="280" alt="QR code opening this workshop’s notebook, deck, Report, and run guide"></a><a class="workshop-share-url" href="https://utm.io/uuIab">utm.io/uuIab</a><p>Notebook · Report · Deck · Run guide</p></div></div><p class="workshop-share-footer">The $8 adjustable allowance covers notebook inference. Notebook compute is billed separately. Native tag judging has separate charges.</p>
 
 <!--
-Open the hosted template and show copying into the participant’s project. Confirm the detected destination before publishing a trace. Opening, browsing, or checking code does not run a model. An unavailable native service is separate from an agent task failure. Server-side tag costs cannot be stopped by the notebook’s local allowance.
+Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
 -->
 
 ---
@@ -693,7 +694,7 @@ name: monitor
 
 # Calculate monitor quality and send new traffic
 
-<a class="answer-link" href="/78">Worked answer ↗</a>
+<a class="answer-link" href="/79">Worked answer ↗</a>
 
 <p class="where">Notebook → Check monitoring on new requests</p><div class="task-target">Edit my_monitor</div><ol><li>Compute precision and recall using reviewed, processed turns.</li><li>Compute coverage over eligible turns, retaining missing judgments.</li><li>Enable the saved tag for this workspace’s agent and run the monitor-check batch.</li></ol><div class="done"><b>Run:</b> Check my monitoring calculations → Run four new requests → Read tag results → Calculate agreement with my reviews<br><b>Finished when:</b> You can explain every denominator and name any turns still awaiting judgment.</div>
 
@@ -778,7 +779,7 @@ name: curate
 
 # Build a regression case from the reviewed turn
 
-<a class="answer-link" href="/79">Worked answer ↗</a>
+<a class="answer-link" href="/80">Worked answer ↗</a>
 
 <p class="where">Notebook → Curate regression cases</p><div class="task-target">Edit case_from_reviewed_turn</div><ol><li>Copy the initial booking, request, policy, and approved scope.</li><li>Preserve the reviewer’s decision and the exact source identities.</li><li>Add an unflagged control alongside the reported failure.</li></ol><div class="done"><b>Run:</b> Check my regression-case builder → Save reviewed regression cases<br><b>Finished when:</b> Rerunning the case starts from the original booking, not its mutated state.</div>
 
@@ -823,7 +824,7 @@ name: state-check
 
 # Add the booking check the old evaluation missed
 
-<a class="answer-link" href="/80">Worked answer ↗</a>
+<a class="answer-link" href="/81">Worked answer ↗</a>
 
 <p class="where">Notebook → Curate regression cases</p><div class="task-target">Edit my_state_scorer and my_judge_validation</div><ol><li>Implement preservation and confirmation checks; inspect the independent task-success score beside them.</li><li>Try the correct booking, missing return, and unconfirmed-write fixtures.</li><li>Keep the explanation judgment separate from those state checks.</li></ol><div class="done"><b>Run:</b> Check my booking scorer → Check my judge-response validator → Save my development evaluation code<br><b>Finished when:</b> Your scorer rejects the missing return and an unapproved write.</div>
 
@@ -923,7 +924,7 @@ name: repair
 
 # Test the repair on matched development bookings
 
-<a class="answer-link" href="/81">Worked answer ↗</a>
+<a class="answer-link" href="/82">Worked answer ↗</a>
 
 <p class="where">Notebook → Repair itinerary handling</p><div class="task-target">Edit my_itinerary_builder</div><ol><li>Implement the range replacement and validate its bounds.</li><li>Test a one-way case, connecting itinerary, and full replacement.</li><li>Run the curated regression cases, then compare both versions on the development bookings.</li></ol><div class="done"><b>Run:</b> Check my itinerary repair → Run my curated regression cases → Compare on four development bookings<br><b>Finished when:</b> Each pair starts from the same state and records the exact builder that ran.</div>
 
@@ -968,7 +969,7 @@ name: judge-execution
 
 # Judge one saved explanation against its evidence
 
-<a class="answer-link" href="/77">Worked answer ↗</a>
+<a class="answer-link" href="/78">Worked answer ↗</a>
 
 <p class="where">Notebook → Build regression cases</p><div class="task-target">Edit my_judge_validation and the explanation rubric</div><ol><li>Choose a saved development execution.</li><li>Read the booking result and the final response together.</li><li>Run one explicit judgment and inspect its cited event IDs.</li></ol><div class="done"><b>Run:</b> Judge this saved explanation<br><b>Finished when:</b> The response validates, and its cited events support or contradict its reason.</div>
 
@@ -1220,6 +1221,21 @@ clicks: 1
 <!--
 End by asking someone to reproduce a case from its saved initial state. Do not conclude with a promise of autonomous improvement. Monitoring, human review, and offline evaluation each answered a different question.
 Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
+-->
+
+---
+class: workshop-sharing
+name: workshop-take-home
+---
+
+<div class="kicker">5:58 · Airline service monitoring</div>
+
+# Keep the notebook and workshop materials
+
+<div class="workshop-share-layout"><div class="workshop-share-instructions"><p>Return to your saved notebook copy to continue your work.</p><ol><li><strong>Revisit the example.</strong> The Report links its claims to recorded results.</li><li><strong>Keep the materials.</strong> Open the deck, download the PDF, or get the source.</li><li><strong>Run a session.</strong> Use the short run guide and facilitator notes.</li></ol></div><div class="workshop-share-code"><a href="https://utm.io/uuIab" aria-label="Open this workshop’s materials"><img src="/images/workshop-qr.svg" width="280" height="280" alt="QR code opening this workshop’s notebook, deck, Report, and run guide"></a><a class="workshop-share-url" href="https://utm.io/uuIab">utm.io/uuIab</a><p>Notebook · Report · Deck · Run guide</p></div></div><p class="workshop-share-footer">The shared page has the template and references. Your executions remain in your own project.</p>
+
+<!--
+Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
 -->
 
 ---

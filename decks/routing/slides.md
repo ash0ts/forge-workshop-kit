@@ -134,6 +134,21 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 -->
 
 ---
+class: workshop-sharing
+name: workshop-start
+---
+
+<div class="kicker">0:16</div>
+
+# Open the materials and copy the notebook
+
+<div class="workshop-share-layout"><div class="workshop-share-instructions"><ol><li><strong>Open this workshop’s page.</strong> Scan the code or type the short link.</li><li><strong>Choose the notebook.</strong> Sign in to Forge, then choose <strong>Copy to project</strong>.</li><li><strong>Open your copy in Edit.</strong> Run all stale cells once to initialize the controls.</li><li><strong>Check the destination.</strong> Use your own writable project and account.</li></ol></div><div class="workshop-share-code"><a href="https://utm.io/uuH98" aria-label="Open this workshop’s materials"><img src="/images/workshop-qr.svg" width="280" height="280" alt="QR code opening this workshop’s notebook, deck, Report, and run guide"></a><a class="workshop-share-url" href="https://utm.io/uuH98">utm.io/uuH98</a><p>Notebook · Report · Deck · Run guide</p></div></div><p class="workshop-share-footer">The $8 adjustable allowance covers notebook inference. Notebook compute is billed separately.</p>
+
+<!--
+Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
+-->
+
+---
 class: exercise
 name: connect
 ---
@@ -219,7 +234,7 @@ name: classifier-exercise
 
 # Implement the classifier head
 
-<a class="answer-link" href="/75">Worked answer ↗</a>
+<a class="answer-link" href="/77">Worked answer ↗</a>
 
 <p class="where">Notebook → Train the word classifier</p><ol><li>Complete <code>make_classifier</code> with <code>LogisticRegression(C=10, max_iter=1000, random_state=17)</code>.</li><li>Click <strong>Check my classifier code</strong>, then <strong>Fit and predict four practice points</strong>.</li><li>Fit the word-feature baseline first. We will change representations after inspecting its errors.</li></ol><div class="done"><strong>Run:</strong> Train the word-feature baseline<br><strong>Check:</strong> Open one validation request and the saved classifier source in Forge.</div>
 
@@ -500,7 +515,7 @@ name: policy-exercise
 
 # Write the rule that sends a request to review
 
-<a class="answer-link" href="/76">Worked answer ↗</a>
+<a class="answer-link" href="/78">Worked answer ↗</a>
 
 <p class="where">Notebook → Review requests</p><ol><li>Complete <code>needs_review(confidence, threshold)</code>.</li><li>Move the threshold and compare coverage with selective accuracy.</li><li>Pick a small-margin request and read both proposed intents.</li></ol><div class="done"><strong>Run:</strong> Check my review rule<br><strong>Check:</strong> Explain why a confidence of 0.2 at threshold 0.5 should go to a person.</div>
 
@@ -673,7 +688,7 @@ name: validator-exercise
 
 # Implement the judge response check
 
-<a class="answer-link" href="/77">Worked answer ↗</a>
+<a class="answer-link" href="/79">Worked answer ↗</a>
 
 <p class="where">Notebook → Check the automated reviewer</p><ol><li>Complete <code>validate_judge</code>. Reject a string such as <code>"false"</code>.</li><li>Read your saved human reviews, then the failure-tag instructions. Define what counts as unresolved rather than wrong.</li><li>Run the judge on up to eight reviewed cases.</li></ol><div class="done"><strong>Run:</strong> Check my judge validator → Compare the judge with up to eight of my reviews<br><strong>Check:</strong> Click Compare in EvalTables beside the judge result. Read the judge reason and your accepted review together; unavailable judgments stay blank.</div>
 
@@ -1019,7 +1034,7 @@ name: release-repair-exercise
 
 # Repair the loader and write its regression check
 
-<a class="answer-link" href="/78">Worked answer ↗</a>
+<a class="answer-link" href="/80">Worked answer ↗</a>
 
 <p class="where">Notebook → Release and recover</p><ol><li>Complete <code>label_names(model_classes)</code> by preserving the supplied order.</li><li>Complete <code>check_release(model_classes, loaded_labels)</code>. Check the label set and exact order.</li><li>Run the free check, then execute your repaired loader on the same 77 requests.</li></ol><div class="done"><strong>Run:</strong> Check my release and repair code → Run my repaired loader on the same requests<br><strong>Check:</strong> Order and prediction parity pass. Existing classifier mistakes may remain.</div>
 
@@ -1213,6 +1228,21 @@ Setting frame: point to the active work object, then advance to the complete exp
 -->
 
 ---
+class: workshop-sharing
+name: workshop-take-home
+---
+
+<div class="kicker">5:29</div>
+
+# Keep the notebook and workshop materials
+
+<div class="workshop-share-layout"><div class="workshop-share-instructions"><p>Return to your saved notebook copy to continue your work.</p><ol><li><strong>Revisit the example.</strong> The Report links its claims to recorded results.</li><li><strong>Keep the materials.</strong> Open the deck, download the PDF, or get the source.</li><li><strong>Run a session.</strong> Use the short run guide and facilitator notes.</li></ol></div><div class="workshop-share-code"><a href="https://utm.io/uuH98" aria-label="Open this workshop’s materials"><img src="/images/workshop-qr.svg" width="280" height="280" alt="QR code opening this workshop’s notebook, deck, Report, and run guide"></a><a class="workshop-share-url" href="https://utm.io/uuH98">utm.io/uuH98</a><p>Notebook · Report · Deck · Run guide</p></div></div><p class="workshop-share-footer">The shared page has the template and references. Your executions remain in your own project.</p>
+
+<!--
+Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
+-->
+
+---
 class: answer
 name: classifier-answer
 ---
@@ -1229,7 +1259,7 @@ def make_classifier():
     )
 ```
 
-<p>This function constructs the head for both feature representations. The fit call trains it. It does not load or fine-tune the sentence encoder.</p><p class="answer-nav source-link"><a href="/12">Return to the classifier exercise ↩</a></p>
+<p>This function constructs the head for both feature representations. The fit call trains it. It does not load or fine-tune the sentence encoder.</p><p class="answer-nav source-link"><a href="/13">Return to the classifier exercise ↩</a></p>
 
 <!--
 Offer the answer only after an attempt or a hint request. Learners must still run the free check and both actual training calls.
@@ -1250,7 +1280,7 @@ def needs_review(confidence, threshold):
     return confidence < threshold
 ```
 
-<p>At 0.5, a 0.2 prediction is deferred. A 0.9 prediction is routed. Choosing a threshold remains a policy decision that should be checked on validation cases.</p><p class="answer-nav source-link"><a href="/30">Return to the review exercise ↩</a></p>
+<p>At 0.5, a 0.2 prediction is deferred. A 0.9 prediction is routed. Choosing a threshold remains a policy decision that should be checked on validation cases.</p><p class="answer-nav source-link"><a href="/31">Return to the review exercise ↩</a></p>
 
 <!--
 The function should return a boolean. Exactly the threshold is routed in this specified policy. It is not a proof that the predicted probability is calibrated.
@@ -1277,7 +1307,7 @@ def validate_judge(value):
     return value
 ```
 
-<p class="answer-nav source-link"><a href="/40">Return to the judge exercise ↩</a></p>
+<p class="answer-nav source-link"><a href="/41">Return to the judge exercise ↩</a></p>
 
 <!--
 This uses the same type guard as the notebook. Valid JSON is only a response contract; it does not establish agreement with a reviewer.
@@ -1306,7 +1336,7 @@ def check_release(model_classes, loaded_labels):
     }
 ```
 
-<p class="answer-nav source-link"><a href="/62">Return to the release repair exercise ↩</a></p>
+<p class="answer-nav source-link"><a href="/63">Return to the release repair exercise ↩</a></p>
 
 <!--
 This checks the metadata contract; the subsequent saved batch checks prediction parity independently. Passing both checks does not prove every route is correct. Give the worked answer after an attempt or explicit request.

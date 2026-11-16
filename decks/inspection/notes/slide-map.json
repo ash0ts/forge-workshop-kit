@@ -1,7 +1,7 @@
 {
   "session_minutes": 240,
-  "main_slides": 57,
-  "total_slides": 60,
+  "main_slides": 59,
+  "total_slides": 62,
   "slides": [
     {
       "number": 1,
@@ -216,6 +216,29 @@
     },
     {
       "number": 9,
+      "key": "workshop-start",
+      "title": "Open the materials and copy the notebook",
+      "body": "<div class=\"workshop-share-layout\"><div class=\"workshop-share-instructions\"><ol><li><strong>Open this workshop\u2019s page.</strong> Scan the code or type the short link.</li><li><strong>Choose the notebook.</strong> Sign in to Forge, then choose <strong>Copy to project</strong>.</li><li><strong>Open your copy in Edit.</strong> Run all stale cells once to initialize the controls.</li><li><strong>Check the destination.</strong> Use your own writable project and account.</li></ol></div><div class=\"workshop-share-code\"><a href=\"https://utm.io/uuH99\" aria-label=\"Open this workshop\u2019s materials\"><img src=\"/images/workshop-qr.svg\" width=\"280\" height=\"280\" alt=\"QR code opening this workshop\u2019s notebook, deck, Report, and run guide\"></a><a class=\"workshop-share-url\" href=\"https://utm.io/uuH99\">utm.io/uuH99</a><p>Notebook \u00b7 Report \u00b7 Deck \u00b7 Run guide</p></div></div><p class=\"workshop-share-footer\">The first exercise follows. Opening the copy does not start training or inference.</p>",
+      "notes": "Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.",
+      "time": "0:17",
+      "kind": "workshop-sharing",
+      "answer": null,
+      "name": "workshop-start",
+      "start_minute": 17,
+      "concept": "workshop-start",
+      "source": "https://utm.io/uuH99",
+      "evidence": [],
+      "exercise": null,
+      "timing": {
+        "section": "setup",
+        "start": 17,
+        "duration": 6
+      },
+      "exercise_id": null,
+      "clicks": 0
+    },
+    {
+      "number": 10,
       "key": "connect",
       "title": "Connect to your own experiment",
       "body": "<div class=\"task\">Open the Visual Inspection notebook and copy it into your Forge project.</div><ol class=\"exercise-controls\"><li>Confirm <strong>Your Forge entity/project</strong>.</li><li>Click <strong>Connect and restore my inspection work</strong>.</li><li>Edit the attribute in <code>instrument_inspection_tool</code>, then click <strong>Send my first inspection trace</strong>.</li></ol><div class=\"done\">Check: Find your attribute and the returned NumPy version in Agent Lens.</div>",
@@ -248,7 +271,7 @@
       }
     },
     {
-      "number": 10,
+      "number": 11,
       "key": "trace-code",
       "title": "The trace describes a call that actually ran",
       "body": "```python {1-4|5-6|7-8|all}\nwith tracing.Tool(\n    name=observation[\"name\"],\n    arguments=observation[\"arguments\"],\n    result=observation[\"result\"],\n    started_at=stamp(observation[\"started_at\"]),\n    ended_at=stamp(observation[\"ended_at\"]),\n) as tool:\n    tool.set_attributes({\"workshop.exercise\": \"pcb-inspection\"})\n```\n<div class=\"bottom-note\">Open the same call in Agent Lens. Match its arguments, result and timing to these fields.</div>",
@@ -272,7 +295,7 @@
       }
     },
     {
-      "number": 11,
+      "number": 12,
       "key": "inspect",
       "title": "Inspect one board before revealing its label",
       "body": "<div class=\"task\">Notebook step: Inspect the boards.</div><ol class=\"exercise-controls\"><li>Click <strong>Download and verify the PCB1 teaching data</strong>.</li><li>Choose a training board. Explain what would make you inspect it.</li><li>Turn on <strong>Reveal the published defect label and mask</strong>.</li></ol><div class=\"done\">Check: Describe the annotated region without treating the mask as an input to your detector.</div>",
@@ -304,7 +327,7 @@
       }
     },
     {
-      "number": 12,
+      "number": 13,
       "key": "encoder",
       "title": "Reuse a fixed image encoder",
       "body": "<InspectionMechanism kind=\"encoder\" :step=\"1\" />",
@@ -331,7 +354,7 @@
       }
     },
     {
-      "number": 13,
+      "number": 14,
       "key": "classifier",
       "title": "Fit a first detector on whole-image features",
       "body": "```python {1-4|6|all}\nmodel = inspection.fit_classifier(\n    data, fit_rows, method,\n    build_features=build_features,\n    C=0.03,\n)\nvalidation_scores = inspection.score(\n    data, validation_rows, model,\n    build_features=build_features,\n)\n```\n<div class=\"bottom-note\">C controls regularization. This worked recipe fixes C before your run; labels and training cases are the same.</div>",
@@ -355,7 +378,7 @@
       }
     },
     {
-      "number": 14,
+      "number": 15,
       "key": "fit-operation",
       "name": "fit-operation",
       "title": "Fit on training boards; measure on validation boards",
@@ -380,7 +403,7 @@
       }
     },
     {
-      "number": 15,
+      "number": 16,
       "key": "threshold",
       "title": "Choose a threshold from validation data",
       "body": "<TechnicalGuide :frames=\"[{&quot;id&quot;: &quot;score&quot;, &quot;label&quot;: &quot;Score&quot;, &quot;svg&quot;: &quot;01-score.svg&quot;, &quot;caption&quot;: &quot;Which tradeoff changes when the cutoff moves?&quot;, &quot;src&quot;: &quot;/guides/inspection/threshold/slide/01-score.svg&quot;}, {&quot;id&quot;: &quot;choose&quot;, &quot;label&quot;: &quot;Choose&quot;, &quot;svg&quot;: &quot;02-choose.svg&quot;, &quot;caption&quot;: &quot;Which tradeoff changes when the cutoff moves?&quot;, &quot;src&quot;: &quot;/guides/inspection/threshold/slide/02-choose.svg&quot;}, {&quot;id&quot;: &quot;count&quot;, &quot;label&quot;: &quot;Count&quot;, &quot;svg&quot;: &quot;03-count.svg&quot;, &quot;caption&quot;: &quot;Which tradeoff changes when the cutoff moves?&quot;, &quot;src&quot;: &quot;/guides/inspection/threshold/slide/03-count.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;Which tradeoff changes when the cutoff moves?&quot;, &quot;src&quot;: &quot;/guides/inspection/threshold/slide/04-complete.svg&quot;}]\" :step=\"$clicks\" />",
@@ -406,7 +429,7 @@
       "technical_guide": "inspection/threshold"
     },
     {
-      "number": 16,
+      "number": 17,
       "key": "validation-cutoff",
       "name": "validation-cutoff",
       "title": "Require 11 of the 12 validation defects to be caught",
@@ -434,7 +457,7 @@
       }
     },
     {
-      "number": 17,
+      "number": 18,
       "key": "threshold-exercise",
       "title": "Implement the validation threshold",
       "body": "<div class=\"task\">Notebook step: Train the whole-image baseline.</div><ol class=\"exercise-controls\"><li>In <code>choose_threshold</code>, sort the scores of known validation defects.</li><li>Choose the largest cutoff that still catches at least 90% of them.</li><li>Click <strong>Check my threshold function</strong>, then <strong>Train the whole-image baseline</strong>.</li></ol><div class=\"done\">Check: Open one validation miss or false alarm before adding patch features.</div>",
@@ -463,7 +486,7 @@
       }
     },
     {
-      "number": 18,
+      "number": 19,
       "name": "baseline-observation",
       "key": "baseline-observation",
       "title": "Inspect a baseline miss or false alarm",
@@ -491,7 +514,7 @@
       }
     },
     {
-      "number": 19,
+      "number": 20,
       "key": "aria-investigate",
       "name": "aria-investigate",
       "title": "Investigate this result",
@@ -531,7 +554,7 @@
       }
     },
     {
-      "number": 20,
+      "number": 21,
       "key": "aria-investigate-response",
       "name": "aria-investigate-response",
       "title": "Read one claim in the recorded response",
@@ -571,7 +594,7 @@
       }
     },
     {
-      "number": 21,
+      "number": 22,
       "key": "aria-investigate-verify",
       "name": "aria-investigate-verify",
       "title": "Open the source and check that claim",
@@ -611,7 +634,7 @@
       }
     },
     {
-      "number": 22,
+      "number": 23,
       "key": "patch-grid",
       "name": "patch-grid",
       "title": "Compare whole-image and patch features",
@@ -640,7 +663,7 @@
       "technical_guide": "inspection/representations"
     },
     {
-      "number": 23,
+      "number": 24,
       "key": "patches",
       "title": "Compare local features at the same board position",
       "body": "<InspectionMechanism kind=\"patch\" :step=\"1\" />",
@@ -667,7 +690,7 @@
       }
     },
     {
-      "number": 24,
+      "number": 25,
       "name": "one-patch-distance",
       "key": "one-patch-distance",
       "title": "Calculate one location\u2019s distance",
@@ -697,7 +720,7 @@
       "technical_guide": "inspection/patch-distance"
     },
     {
-      "number": 25,
+      "number": 26,
       "key": "append-patches",
       "name": "append-patches",
       "title": "Append 196 distances to the 512 whole-image values",
@@ -722,7 +745,7 @@
       }
     },
     {
-      "number": 26,
+      "number": 27,
       "key": "features",
       "title": "Add local information to the classifier",
       "body": "<div class=\"task\">Notebook step: Compute image features.</div><ol class=\"exercise-controls\"><li>Complete <code>build_features</code>: calculate patch errors, apply <code>np.log1p</code>, and flatten one row per board.</li><li>Append the patch values to the whole-image vector along axis 1.</li><li>Click <strong>Check my patch-feature function</strong>.</li></ol><div class=\"done\">Check: The check preserves board order and verifies both whole-image and nearest-patch behavior.</div>",
@@ -751,7 +774,7 @@
       }
     },
     {
-      "number": 27,
+      "number": 28,
       "key": "cache",
       "title": "Check the feature cache without rebuilding everything",
       "body": "```python\nweights = teaching.fetch_weights(weights_path)\nresult = teaching.recompute_batch(data_root, weights)\nassert result[\"matching_cached_features\"]\n```\n<div class=\"bottom-note\">Optional button: Recompute four cached board features. Downloads pinned weights; no model-provider call.</div>",
@@ -775,7 +798,7 @@
       }
     },
     {
-      "number": 28,
+      "number": 29,
       "name": "patch-experiment",
       "key": "patch-experiment",
       "title": "Test patches against the saved baseline",
@@ -803,7 +826,7 @@
       }
     },
     {
-      "number": 29,
+      "number": 30,
       "key": "metrics",
       "title": "Keep ranking quality and operating errors separate",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Measure</th><th>Question it answers</th></tr><tr><td>Average precision</td><td>Are defective boards ranked ahead of normal boards?</td></tr><tr><td>Misses and false alarms</td><td>What happens at the frozen threshold?</td></tr><tr><td>Review volume</td><td>How many decisions are handed to a person?</td></tr></tbody></table>",
@@ -827,7 +850,7 @@
       }
     },
     {
-      "number": 30,
+      "number": 31,
       "key": "ranking-ap",
       "name": "ranking-ap",
       "title": "Calculate ranking quality before choosing one cutoff",
@@ -854,7 +877,7 @@
       }
     },
     {
-      "number": 31,
+      "number": 32,
       "key": "operating-errors",
       "name": "operating-errors",
       "title": "Count operating errors at the chosen cutoff",
@@ -879,7 +902,7 @@
       }
     },
     {
-      "number": 32,
+      "number": 33,
       "key": "forge",
       "title": "Follow one trained classifier through Forge",
       "body": "<div class=\"flow\"><div class=\"box\">Agent Lens<br><small>training operation</small></div><span>\u2192</span><div class=\"box\">W&B run<br><small>settings + metrics</small></div><span>\u2192</span><div class=\"box\">Artifact<br><small>classifier + source</small></div></div><div class=\"bottom-note\">Open your own links. Find C, the representation, the validation errors, and the saved classifier file.</div>",
@@ -903,7 +926,7 @@
       }
     },
     {
-      "number": 33,
+      "number": 34,
       "key": "forge-training",
       "title": "Read the recorded training call",
       "body": "<div class=\"native-pair\"><div class=\"native-crop\"><img src=\"/images/agent-lens-training-original.png\" alt=\"Native Agent Lens tool input and validation output for the nearest-patch classifier\"><span class=\"pin one\">1</span><span class=\"pin two\">2</span></div><div class=\"native-notes\"><h2>1 \u00b7 What ran</h2><p>397 fitting boards.<br>Nearest-patch features.<br>C = 0.03.</p><h2>2 \u00b7 What it returned</h2><p>On <strong>132 validation boards</strong>: AP 0.883923, one missed defect, four false alarms.</p><p class=\"small\">These are validation results. Final-test AP is reported later.</p></div></div><div class=\"bottom-note\"><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/ff65c2eaa1cc5c5cf8adb6cb706f5f52\">Open this recorded call in Agent Lens \u2197</a> \u00b7 Cropped for legibility; the source capture is included.</div>",
@@ -929,7 +952,7 @@
       }
     },
     {
-      "number": 34,
+      "number": 35,
       "key": "training-evidence",
       "name": "training-evidence",
       "title": "Match the tool call to the saved validation result",
@@ -954,7 +977,7 @@
       }
     },
     {
-      "number": 35,
+      "number": 36,
       "key": "break",
       "title": "Take ten minutes. Return at 2:20.",
       "body": "<div class=\"sub\">Before you leave, check that both trained versions are saved. The notebook will wait; it has not developed an independent work ethic.</div>",
@@ -978,7 +1001,7 @@
       }
     },
     {
-      "number": 36,
+      "number": 37,
       "key": "active-selection",
       "name": "active-selection",
       "title": "Compare equal labeling budgets",
@@ -1007,7 +1030,7 @@
       "technical_guide": "inspection/review"
     },
     {
-      "number": 37,
+      "number": 38,
       "key": "random-control",
       "name": "random-control",
       "title": "Give random selection the same labeling budget",
@@ -1032,7 +1055,7 @@
       }
     },
     {
-      "number": 38,
+      "number": 39,
       "key": "review",
       "title": "Choose where the review time goes",
       "body": "<div class=\"task\">Notebook step: Choose examples to review.</div><ol class=\"exercise-controls\"><li>Complete <code>choose_review</code> using distance from the current threshold. Do not read labels.</li><li>Click <strong>Check my review selector</strong>.</li><li>Click <strong>Select 24 boards for each review method</strong>.</li></ol><div class=\"done\">Check: The active and random methods select 24 cases each from the same pool.</div>",
@@ -1061,7 +1084,7 @@
       }
     },
     {
-      "number": 39,
+      "number": 40,
       "key": "human",
       "title": "Save what the reviewer actually decided",
       "body": "<figure v-if=\"$clicks === 0\" class=\"workshop-setting-frame\" data-workshop-scene=\"inspection/build\"><img :src=\"&quot;/scenes/inspection/build.svg&quot;\" alt=\"Circuit-board inspection: Save the reviewer\u2019s decision before revealing the supplied label. Illustrative setting.\" /><figcaption><span>Next \u2192 explanation and evidence</span></figcaption></figure>\n<div v-else class=\"workshop-setting-detail\"><div class=\"two-col\"><div class=\"box\"><h2>Your assessment</h2><p>Choose normal, defective, or needs another reviewer before revealing the annotation.</p><p>Save your assessment and whether the annotation was visible.</p></div><div class=\"box\"><h2>Batch acquisition</h2><p>Reveal the authors\u2019 supplied labels for the selected 24 boards.</p><p>Label this a simulation of acquiring annotations.</p></div></div></div>",
@@ -1087,7 +1110,7 @@
       "workshop_scene": "inspection/build"
     },
     {
-      "number": 40,
+      "number": 41,
       "key": "review-fit",
       "title": "Train with the additional labels",
       "body": "<div class=\"task\">Use both review selections, not just the one you prefer.</div><ol class=\"exercise-controls\"><li>Inspect selected board photos and masks. Save at least one assessment.</li><li>Click <strong>Reveal batch labels and train the two reviewed classifiers</strong>.</li><li>Compare validation AP, misses and false alarms with the initial detector.</li></ol><div class=\"done\">Check: Both new models use 397 initial boards plus 24 revealed cases.</div>",
@@ -1118,7 +1141,7 @@
       }
     },
     {
-      "number": 41,
+      "number": 42,
       "key": "freeze",
       "title": "Choose before opening the final results",
       "body": "<div class=\"task\">Notebook step: Freeze the detector.</div><ol class=\"exercise-controls\"><li>Compare the four validation rows.</li><li>Choose a version and explain the tradeoff you accept.</li><li>Click <strong>Freeze models and thresholds before testing</strong>.</li></ol><div class=\"done\">Check: The freeze contains the classifier, exact feature source, threshold and selection reason.</div>",
@@ -1149,7 +1172,7 @@
       }
     },
     {
-      "number": 42,
+      "number": 43,
       "key": "detector-bundle",
       "name": "detector-bundle",
       "title": "Freeze the preprocessing and reference bank too",
@@ -1174,7 +1197,7 @@
       }
     },
     {
-      "number": 43,
+      "number": 44,
       "key": "break-two",
       "name": "break-two",
       "title": "Take ten minutes. Return at 3:30.",
@@ -1197,7 +1220,7 @@
       }
     },
     {
-      "number": 44,
+      "number": 45,
       "key": "final",
       "title": "Evaluate the same 442 boards",
       "body": "<div class=\"task\">Notebook step: Inspect untouched boards.</div><ol class=\"exercise-controls\"><li>Click <strong>Evaluate all four frozen detectors on 442 test boards</strong>.</li><li>Choose a test board and compare predictions against its photo and mask.</li><li>Click <strong>Publish saved comparisons to Forge</strong>.</li></ol><div class=\"done\">Check: Every version has a row for the same board; unavailable publication is shown separately.</div>",
@@ -1229,7 +1252,7 @@
       }
     },
     {
-      "number": 45,
+      "number": 46,
       "key": "native-comparison",
       "title": "Compare four detectors on the same boards",
       "body": "<div class=\"eval-native\"><div class=\"eval-native-image\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\"><img src=\"/images/evaltables-native.png\" alt=\"Native Forge Evaluation Tables Preview showing saved workshop results\"></a><span class=\"eval-native-pin\" style=\"left:6%;top:39%\" aria-hidden=\"true\">1</span><span class=\"eval-native-pin\" style=\"left:6%;top:79%\" aria-hidden=\"true\">2</span><span class=\"eval-native-pin\" style=\"left:6%;top:60%\" aria-hidden=\"true\">3</span></div><div class=\"eval-native-notes\"><p><b>1 \u00b7 Set the reference</b><br>Use the whole-image detector first.</p><p><b>2 \u00b7 Align the board</b><br>Open one case to compare the same photograph.</p><p><b>3 \u00b7 Read checked outcomes</b><br>Correct and error score the frozen decisions. Review policy is separate.</p></div></div><p class=\"eval-native-caption\">Recorded results in Forge \u00b7 Evaluation Tables (Preview) \u00b7 <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\">Open this comparison \u2197</a></p>",
@@ -1255,7 +1278,7 @@
       }
     },
     {
-      "number": 46,
+      "number": 47,
       "key": "native-board",
       "title": "Inspect the board behind a prediction",
       "body": "<div class=\"eval-native-states\"><div><div class=\"eval-native\"><div class=\"eval-native-image\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\"><img src=\"/images/evaltables-native-detail.png\" alt=\"Native Forge Evaluation Tables Preview showing saved workshop results\"></a><span class=\"eval-native-pin\" style=\"left:28.3%;top:25%\" aria-hidden=\"true\">1</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:85.5%\" aria-hidden=\"true\">2</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:95%\" aria-hidden=\"true\">3</span></div><div class=\"eval-native-notes\"><p><b>1 \u00b7 Look at the board</b><br>This is the actual PCB1 test photograph.</p><p><b>2 \u00b7 Compare predictions</b><br>All four flag this board as defective.</p><p><b>3 \u00b7 Check the threshold</b><br>Read each score against that detector\u2019s frozen cutoff.</p></div></div><p class=\"eval-native-caption\">Recorded results in Forge \u00b7 Evaluation Tables (Preview) \u00b7 <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\">Open this comparison \u2197</a></p></div><div v-click=\"1\" class=\"eval-native-overlay\"><div class=\"eval-native\"><div class=\"eval-native-image\"><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\"><img src=\"/images/evaltables-native-mask.png\" alt=\"Native Forge Evaluation Tables Preview showing saved workshop results\"></a><span class=\"eval-native-pin\" style=\"left:28.3%;top:40%\" aria-hidden=\"true\">1</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:22%\" aria-hidden=\"true\">2</span><span class=\"eval-native-pin\" style=\"left:28.3%;top:88%\" aria-hidden=\"true\">3</span></div><div class=\"eval-native-notes\"><p><b>1 \u00b7 Read the annotation</b><br>White pixels mark the dataset\u2019s reference defects.</p><p><b>2 \u00b7 Compare decisions</b><br>All four detectors flag this same board.</p><p><b>3 \u00b7 Check the result</b><br>Every prediction matches the defective label on this case.</p></div></div><p class=\"eval-native-caption\">Reference defect mask: white marks annotated defects, not model localization. \u00b7 <a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/panel/workshop-evaluation?nw=h43oxpf30iu\">Open this comparison \u2197</a></p></div></div>",
@@ -1281,7 +1304,7 @@
       }
     },
     {
-      "number": 47,
+      "number": 48,
       "key": "failure",
       "title": "The first worked recipe did not pass its gate",
       "body": "<table class=\"clean-table\"><tbody><tr><th>First frozen recipe</th><th>Average precision</th><th>Misses</th><th>False alarms</th></tr><tr><td>Whole image</td><td>0.861762</td><td>4</td><td>36</td></tr><tr><td>Mean-patch + whole image</td><td>0.855382</td><td>2</td><td>33</td></tr></tbody></table><div class=\"bottom-note\">Its declared primary measure was average precision. Fewer operating errors did not turn the AP loss into a pass.</div>",
@@ -1307,7 +1330,7 @@
       }
     },
     {
-      "number": 48,
+      "number": 49,
       "key": "retest",
       "title": "The bounded follow-up improved this teaching retest",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Frozen follow-up</th><th>Average precision</th><th>Misses / 40</th><th>False alarms / 402</th></tr><tr><td>Whole image</td><td>0.872900</td><td>4</td><td>23</td></tr><tr><td>Nearest-patch + whole image</td><td>0.885742</td><td>3</td><td>18</td></tr></tbody></table><div class=\"bottom-note\">One predeclared validation grid; already-inspected final images. AP gain: 1.284 points. This is a teaching retest, not fresh benchmark evidence.</div>",
@@ -1334,7 +1357,7 @@
       }
     },
     {
-      "number": 49,
+      "number": 50,
       "key": "improved-case",
       "title": "Inspect a recovered defect and a new miss",
       "body": "<TechnicalGuide :frames=\"[{&quot;id&quot;: &quot;miss&quot;, &quot;label&quot;: &quot;Miss&quot;, &quot;svg&quot;: &quot;01-miss.svg&quot;, &quot;caption&quot;: &quot;Did the change help this board, and what happened elsewhere?&quot;, &quot;src&quot;: &quot;/guides/inspection/case-changes/slide/01-miss.svg&quot;}, {&quot;id&quot;: &quot;recover&quot;, &quot;label&quot;: &quot;Recover&quot;, &quot;svg&quot;: &quot;02-recover.svg&quot;, &quot;caption&quot;: &quot;Did the change help this board, and what happened elsewhere?&quot;, &quot;src&quot;: &quot;/guides/inspection/case-changes/slide/02-recover.svg&quot;}, {&quot;id&quot;: &quot;regression&quot;, &quot;label&quot;: &quot;Regression&quot;, &quot;svg&quot;: &quot;03-regression.svg&quot;, &quot;caption&quot;: &quot;Did the change help this board, and what happened elsewhere?&quot;, &quot;src&quot;: &quot;/guides/inspection/case-changes/slide/03-regression.svg&quot;}, {&quot;id&quot;: &quot;complete&quot;, &quot;label&quot;: &quot;Complete view&quot;, &quot;svg&quot;: &quot;04-complete.svg&quot;, &quot;caption&quot;: &quot;Did the change help this board, and what happened elsewhere?&quot;, &quot;src&quot;: &quot;/guides/inspection/case-changes/slide/04-complete.svg&quot;}]\" :step=\"$clicks\" />",
@@ -1363,7 +1386,7 @@
       "technical_guide": "inspection/case-changes"
     },
     {
-      "number": 50,
+      "number": 51,
       "key": "regression",
       "title": "Inspect a new miss too",
       "body": "<figure v-if=\"$clicks === 0\" class=\"workshop-setting-frame\" data-workshop-scene=\"inspection/compare\"><img :src=\"&quot;/scenes/inspection/compare.svg&quot;\" alt=\"Circuit-board inspection: Recorded retest: 048 is recovered; 015 becomes a new miss. Illustrative setting.\" /><figcaption><span>Next \u2192 explanation and evidence</span></figcaption></figure>\n<div v-else class=\"workshop-setting-detail\"><InspectionMechanism kind=\"outcomes\" case-id=\"pcb1-anomaly-015\" /></div>",
@@ -1393,7 +1416,7 @@
       "workshop_scene": "inspection/compare"
     },
     {
-      "number": 51,
+      "number": 52,
       "key": "aria-conclusion",
       "title": "Check our conclusion",
       "body": "<div class=\"aria-sequence-wrap\"><svg class=\"aria-sequence\" viewBox=\"0 0 1110 154\" role=\"img\" aria-label=\"Explain your interpretation, read ARIA\u2019s answer, and check its cited source.\"><g><rect x=\"0\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#d9e9e1\" stroke=\"#48675d\"/><text x=\"18\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Your interpretation</text><text x=\"18\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Same final boards</text></g><path d=\"M345 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M360 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"370\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"388\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">ARIA response</text><text x=\"388\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Frozen detectors and cutoffs</text></g><path d=\"M715 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M730 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"740\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"758\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Checked source record</text><text x=\"758\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Misses, false alarms, review volume</text></g></svg></div><div class=\"aria-question\">Compare frozen detector results: recovered misses, new mistakes, false alarms, and the additional reviewed labels. Do not equate patch-distance images with causal explanations.</div><div class=\"aria-two\"><div><b>Start with your explanation</b><p>What do you think happened? Which observation supports it?</p><p>Copy the notebook\u2019s prompt and add native context in Forge.</p></div><div><b>Selected instructor records</b><ul class=\"aria-records\"><li><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/08c45f8ed417d216d026cf1abdc280b2\" target=\"_blank\" rel=\"noopener\">evaluate \u2197</a></li></ul></div></div><p class=\"aria-foot\">Keep the compared versions frozen. Suggest a future experiment without running it. Check ARIA\u2019s selected project. Use exact record URLs; add native context where this surface offers it.</p>",
@@ -1433,7 +1456,7 @@
       }
     },
     {
-      "number": 52,
+      "number": 53,
       "key": "aria-conclusion-response",
       "title": "Read one claim in the recorded response",
       "body": "<div class=\"aria-sequence-wrap\"><svg class=\"aria-sequence\" viewBox=\"0 0 1110 154\" role=\"img\" aria-label=\"Explain your interpretation, read ARIA\u2019s answer, and check its cited source.\"><g><rect x=\"0\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"18\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Your interpretation</text><text x=\"18\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Same final boards</text></g><path d=\"M345 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M360 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"370\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#d9e9e1\" stroke=\"#48675d\"/><text x=\"388\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">ARIA response</text><text x=\"388\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Frozen detectors and cutoffs</text></g><path d=\"M715 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M730 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"740\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"758\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Checked source record</text><text x=\"758\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Misses, false alarms, review volume</text></g></svg></div><div class=\"aria-response\"><figure class=\"aria-screen\"><a href=\"/aria/conclusion/conclusion-response.png\" target=\"_blank\"><img src=\"/aria/conclusion/conclusion-response.png\" alt=\"Actual ARIA response. Check its distinction between retrieved native records and supplied evidence excerpts.\"></a></figure><div><b>Recorded instructor investigation</b><blockquote>16 false alarms versus 12</blockquote><p>Does this statement follow from the records, or is it a possible explanation?</p><p><a href=\"/aria/conclusion/conclusion-transcript.html\" target=\"_blank\">Read the full transcript without sign-in \u2197</a></p><a href=\"https://forge.coreweave.com/aria/threads/01a1e06d-f15f-75e0-b27a-43e3063e6110\" target=\"_blank\" rel=\"noopener\">Open the recorded conversation \u2197</a></div></div><p class=\"aria-foot\">The recording uses instructor results. It does not describe your unexecuted edits.</p>",
@@ -1473,7 +1496,7 @@
       }
     },
     {
-      "number": 53,
+      "number": 54,
       "key": "aria-conclusion-verify",
       "title": "Open the source and check that claim",
       "body": "<div class=\"aria-sequence-wrap\"><svg class=\"aria-sequence\" viewBox=\"0 0 1110 154\" role=\"img\" aria-label=\"Explain your interpretation, read ARIA\u2019s answer, and check its cited source.\"><g><rect x=\"0\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"18\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Your interpretation</text><text x=\"18\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Same final boards</text></g><path d=\"M345 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M360 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"370\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#f0eee4\" stroke=\"#48675d\"/><text x=\"388\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">ARIA response</text><text x=\"388\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Frozen detectors and cutoffs</text></g><path d=\"M715 75h20\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><path d=\"M730 70l5 5-5 5\" fill=\"none\" stroke=\"#48675d\" stroke-width=\"2\"/><g><rect x=\"740\" y=\"18\" width=\"340\" height=\"116\" rx=\"8\" fill=\"#d9e9e1\" stroke=\"#48675d\"/><text x=\"758\" y=\"54\" fill=\"#183b31\" style=\"font-size:23px\">Checked source record</text><text x=\"758\" y=\"91\" fill=\"#42584f\" style=\"font-size:17px\">Misses, false alarms, review volume</text></g></svg></div><div class=\"aria-response\"><figure class=\"aria-screen\"><a href=\"/aria/conclusion/conclusion-verification.png\" target=\"_blank\"><img src=\"/aria/conclusion/conclusion-verification.png\" alt=\"Native final comparison aligns 442 boards across whole-image, patch, active-review, and random-review versions.\"><svg viewBox=\"0 0 1280 720\" preserveAspectRatio=\"none\" aria-hidden=\"true\"><rect x=\"97.0\" y=\"398.0\" width=\"275.0\" height=\"137.0\" rx=\"5\" fill=\"none\" stroke=\"#f7bd59\" stroke-width=\"3\"/><circle cx=\"83.0\" cy=\"411.0\" r=\"12\" fill=\"#f7bd59\" stroke=\"#182820\" stroke-width=\"1.5\"/><text x=\"83.0\" y=\"415.0\" fill=\"#182820\" text-anchor=\"middle\" style=\"font-size:14px;font-weight:600\">1</text><rect x=\"1090.0\" y=\"672.0\" width=\"160.0\" height=\"30.0\" rx=\"5\" fill=\"none\" stroke=\"#f7bd59\" stroke-width=\"3\"/><circle cx=\"1076.0\" cy=\"685.0\" r=\"12\" fill=\"#f7bd59\" stroke=\"#182820\" stroke-width=\"1.5\"/><text x=\"1076.0\" y=\"689.0\" fill=\"#182820\" text-anchor=\"middle\" style=\"font-size:14px;font-weight:600\">2</text></svg></a><figcaption><span><b>1</b> Correctness, not miss count</span><span><b>2</b> 442 aligned cases</span></figcaption></figure><div><b>Citation check: supported</b><p>The saved evaluate result has selected=review/random. Among the same 442 boards, review/active has misses=1 and false_alarms=16, while review/random has misses=5 and false_alarms=12. These match the artifact values ARIA reports reading. The native screenshot shows rounded correctness, not those separate counts. This check does not independently establish the time of selection or a causal advantage of active sampling.</p><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/runs/08c45f8ed417d216d026cf1abdc280b2\" target=\"_blank\" rel=\"noopener\">Open the checked source \u2197</a><p><a href=\"/aria/conclusion/conclusion-source-records.html\" target=\"_blank\">Check the supplied source values offline \u2197</a></p></div></div><p class=\"aria-foot\">Save your own citation check. ARIA\u2019s answer does not become a label, score, approved lesson, or release decision.</p>",
@@ -1513,7 +1536,7 @@
       }
     },
     {
-      "number": 54,
+      "number": 55,
       "key": "reproduce",
       "title": "Reload the version you chose",
       "body": "<div class=\"task\">Notebook step: Reproduce the selected version.</div><ol class=\"exercise-controls\"><li>Click <strong>Reload the selected classifier and reproduce one prediction</strong>.</li><li>Compare the reloaded score with the saved value.</li><li>Explain what improved, what did not, and what data you would collect next.</li></ol><div class=\"done\">Check: The exact file and source reproduce the saved result; your conclusion links to its evidence.</div>",
@@ -1545,7 +1568,7 @@
       "elapsed_minutes": 237
     },
     {
-      "number": 55,
+      "number": 56,
       "key": "reload-detector",
       "name": "reload-detector",
       "title": "Recover every component of the detector",
@@ -1573,7 +1596,7 @@
       "technical_guide": "inspection/reproduce"
     },
     {
-      "number": 56,
+      "number": 57,
       "key": "release",
       "title": "A tested artifact can become the next release",
       "body": "<div class=\"flow\"><div class=\"box\">Evaluation<br><small>result + decision</small></div><span>\u2192</span><div class=\"box\">Registry<br><small>exact artifact</small></div><span>\u2192</span><div class=\"box\">Batch predictor<br><small>load that version</small></div></div><div class=\"bottom-note\">Optional: fail a release check, then restore the previous artifact. Registry does not deploy an arbitrary Python classifier.</div>",
@@ -1598,7 +1621,7 @@
       "elapsed_minutes": 238
     },
     {
-      "number": 57,
+      "number": 58,
       "key": "conclusion",
       "title": "Write down the decision you would make",
       "body": "<figure v-if=\"$clicks === 0\" class=\"workshop-setting-frame\" data-workshop-scene=\"inspection/release\"><img :src=\"&quot;/scenes/inspection/release.svg&quot;\" alt=\"Circuit-board inspection: Preserve the encoder, normal bank, and classifier. Illustrative setting.\" /><figcaption><span>Next \u2192 explanation and evidence</span></figcaption></figure>\n<div v-else class=\"workshop-setting-detail\"><div class=\"box\"><p>\u201cWe changed ____. On the same boards, ____ improved and ____ got worse. We selected ____ because ____. Before releasing it, we would test ____.\u201d</p></div><div class=\"bottom-note\">Publish my inspection Report \u00b7 include actual comparisons, saved artifacts, and the next question.</div></div>",
@@ -1624,7 +1647,30 @@
       "workshop_scene": "inspection/release"
     },
     {
-      "number": 58,
+      "number": 59,
+      "key": "workshop-take-home",
+      "title": "Keep the notebook and workshop materials",
+      "body": "<div class=\"workshop-share-layout\"><div class=\"workshop-share-instructions\"><p>Return to your saved notebook copy to continue your work.</p><ol><li><strong>Revisit the example.</strong> The Report links its claims to recorded results.</li><li><strong>Keep the materials.</strong> Open the deck, download the PDF, or get the source.</li><li><strong>Run a session.</strong> Use the short run guide and facilitator notes.</li></ol></div><div class=\"workshop-share-code\"><a href=\"https://utm.io/uuH99\" aria-label=\"Open this workshop\u2019s materials\"><img src=\"/images/workshop-qr.svg\" width=\"280\" height=\"280\" alt=\"QR code opening this workshop\u2019s notebook, deck, Report, and run guide\"></a><a class=\"workshop-share-url\" href=\"https://utm.io/uuH99\">utm.io/uuH99</a><p>Notebook \u00b7 Report \u00b7 Deck \u00b7 Run guide</p></div></div><p class=\"workshop-share-footer\">The shared page has the template and references. Your executions remain in your own project.</p>",
+      "notes": "Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.",
+      "time": "3:59",
+      "kind": "workshop-sharing",
+      "answer": null,
+      "name": "workshop-take-home",
+      "start_minute": 239,
+      "concept": "workshop-take-home",
+      "source": "https://utm.io/uuH99",
+      "evidence": [],
+      "exercise": null,
+      "timing": {
+        "section": "reproduce",
+        "start": 239,
+        "duration": 1
+      },
+      "clicks": 0,
+      "exercise_id": null
+    },
+    {
+      "number": 60,
       "key": "answer-features",
       "title": "Worked answer: assemble the local features",
       "body": "```python\nwhole = data[\"whole\"][rows]\nif method == \"whole\":\n    return whole\nif method == \"nearest-patch\":\n    errors = inspection.nearest_patch_errors(data, rows, reference)\nelse:\n    errors = inspection.patch_errors(data[\"patches\"][rows], reference)\nlocal = np.log1p(errors).reshape(len(rows), -1)\nreturn np.concatenate([whole, local], axis=1)\n```\n<div class=\"bottom-note\">Both branches are exercised by the free check. The live comparison uses nearest-patch.</div>",
@@ -1648,7 +1694,7 @@
       }
     },
     {
-      "number": 59,
+      "number": 61,
       "key": "answer-threshold",
       "title": "Worked answer: meet the validation recall target",
       "body": "```python\npositives = np.sort(scores[target == 1])[::-1]\nposition = int(np.ceil(recall * len(positives))) - 1\nreturn float(positives[position])\n```\n<div class=\"bottom-note\">At 12 validation defects and recall .90, keep the top 11 above the threshold.</div>",
@@ -1672,7 +1718,7 @@
       }
     },
     {
-      "number": 60,
+      "number": 62,
       "key": "answer-review",
       "title": "Worked answer: choose uncertain cases",
       "body": "```python\nrng = np.random.default_rng(seed)\norder = rng.permutation(len(rows))\norder = order[np.argsort(\n    np.abs(scores[order] - threshold), kind=\"stable\"\n)]\nreturn np.asarray(rows)[order[:budget]]\n```\n<div class=\"bottom-note\">The permutation only breaks equal-distance ties. Do not pass labels to this function.</div>",

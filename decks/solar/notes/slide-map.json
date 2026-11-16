@@ -1,7 +1,7 @@
 {
   "session_minutes": 360,
-  "main_slides": 112,
-  "total_slides": 130,
+  "main_slides": 113,
+  "total_slides": 131,
   "slides": [
     {
       "number": 1,
@@ -184,10 +184,10 @@
     {
       "number": 7,
       "key": "copy",
-      "title": "Copy the notebook into your Forge project",
-      "body": "<div class=\"copy-layout\"><div class=\"template-qr\"><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view\"><img src=\"/images/solar-template-qr.svg\" alt=\"QR code opening the Solar workshop template\"></a><p><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view\">Open the Solar template \u2197</a></p></div><ol><li>Open the template.</li><li>Choose <strong>Copy to project</strong> and select your writable project.</li><li>Open the copy in <strong>Edit</strong>. Choose <strong>Run all stale cells</strong> once.</li><li>In <strong>Connect</strong>, check your project. Exercise run buttons stay unpressed.</li></ol></div><div class=\"bottom-note\">Hosted Forge supplies authentication. Your account supplies notebook compute and inference access.</div>",
-      "notes": "Allow participants to get their own copy open before continuing. Run all stale cells creates the controls; it does not press the exercise run buttons. Hosted Forge supplies authentication, but attendees still need their own project and account access. Use fictional or public teaching data in a public project. Session block: Connect and trace an operation (minutes 0\u201325).",
-      "kind": "",
+      "title": "Open the materials and copy the notebook",
+      "body": "<div class=\"workshop-share-layout\"><div class=\"workshop-share-instructions\"><ol><li><strong>Open this workshop\u2019s page.</strong> Scan the code or type the short link.</li><li><strong>Choose the notebook.</strong> Sign in to Forge, then choose <strong>Copy to project</strong>.</li><li><strong>Open your copy in Edit.</strong> Run all stale cells once to initialize the controls.</li><li><strong>Check the destination.</strong> Use your own writable project and account.</li></ol></div><div class=\"workshop-share-code\"><a href=\"https://utm.io/uuH97\" aria-label=\"Open this workshop\u2019s materials\"><img src=\"/images/workshop-qr.svg\" width=\"280\" height=\"280\" alt=\"QR code opening this workshop\u2019s notebook, deck, Report, and run guide\"></a><a class=\"workshop-share-url\" href=\"https://utm.io/uuH97\">utm.io/uuH97</a><p>Notebook \u00b7 Report \u00b7 Deck \u00b7 Run guide</p></div></div><p class=\"workshop-share-footer\">The $8 adjustable allowance covers notebook inference. Notebook compute is billed separately.</p>",
+      "notes": "Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.",
+      "kind": "workshop-sharing",
       "time": "0:00\u20130:25",
       "answer": null,
       "timing": {
@@ -199,10 +199,7 @@
         "section_end": 25
       },
       "concept": "Copy the notebook into your Forge project",
-      "source": [
-        "scripts/solar_cells.py",
-        "src/forge_workshop_kit/solar.py"
-      ],
+      "source": "https://utm.io/uuH97",
       "evidence": {
         "type": "explanation",
         "records": []
@@ -3455,6 +3452,34 @@
     },
     {
       "number": 114,
+      "key": "workshop-take-home",
+      "title": "Keep the notebook and workshop materials",
+      "body": "<div class=\"workshop-share-layout\"><div class=\"workshop-share-instructions\"><p>Return to your saved notebook copy to continue your work.</p><ol><li><strong>Revisit the example.</strong> The Report links its claims to recorded results.</li><li><strong>Keep the materials.</strong> Open the deck, download the PDF, or get the source.</li><li><strong>Run a session.</strong> Use the short run guide and facilitator notes.</li></ol></div><div class=\"workshop-share-code\"><a href=\"https://utm.io/uuH97\" aria-label=\"Open this workshop\u2019s materials\"><img src=\"/images/workshop-qr.svg\" width=\"280\" height=\"280\" alt=\"QR code opening this workshop\u2019s notebook, deck, Report, and run guide\"></a><a class=\"workshop-share-url\" href=\"https://utm.io/uuH97\">utm.io/uuH97</a><p>Notebook \u00b7 Report \u00b7 Deck \u00b7 Run guide</p></div></div><p class=\"workshop-share-footer\">The shared page has the template and references. Your executions remain in your own project.</p>",
+      "notes": "Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.",
+      "kind": "workshop-sharing",
+      "time": "5:45\u20136:00",
+      "answer": null,
+      "timing": {
+        "section": "conclusion",
+        "section_title": "Reproduce and explain the result",
+        "start_minute": 358.12,
+        "duration_minutes": 1.88,
+        "section_start": 345,
+        "section_end": 360
+      },
+      "concept": "workshop-take-home",
+      "source": "https://utm.io/uuH97",
+      "evidence": {
+        "type": "explanation",
+        "records": []
+      },
+      "exercise": null,
+      "clicks": 0,
+      "name": "workshop-take-home",
+      "exercise_id": null
+    },
+    {
+      "number": 115,
       "key": "reference",
       "title": "Reference and worked answers",
       "body": "<p class=\"big\">Use these after an attempt, or when live access is unavailable.</p><p>Recorded examples belong to the November 13 technical rehearsal. They are not results from your unexecuted changes.</p><div class=\"bottom-note\">Use the return links to continue the workshop.</div>",
@@ -3480,7 +3505,7 @@
       "clicks": 0
     },
     {
-      "number": 115,
+      "number": 116,
       "key": "answer-trace",
       "title": "Put the attribute inside the tool scope",
       "body": "```python\ndef instrument_tool(observation):\n    with tracing.Tool(\n        name=observation[\"name\"],\n        arguments=observation[\"arguments\"],\n        result=observation[\"result\"],\n        started_at=stamp(observation[\"started_at\"]),\n        ended_at=stamp(observation[\"ended_at\"]),\n    ) as tool:\n        tool.set_attributes({\"workshop.exercise\": \"solar-research\"})\n        if observation.get(\"error\"):\n            tool.record_error(RuntimeError(observation[\"error\"]))\n```\n\n",
@@ -3506,7 +3531,7 @@
       "clicks": 0
     },
     {
-      "number": 116,
+      "number": 117,
       "key": "answer-persistence",
       "title": "Return a copy of the latest observation",
       "body": "```python\ndef persistence_forecast(split):\n    return split[\"persistence\"].copy()\n```\n\n<p>The copy lets you work with the predictions without changing the dataset.</p>",
@@ -3532,7 +3557,7 @@
       "clicks": 0
     },
     {
-      "number": 117,
+      "number": 118,
       "key": "answer-flux",
       "title": "Implement the training loss and forecast metric",
       "body": "```python\ndef training_loss(prediction, target, mask):\n    return ((prediction - target).square() * mask).sum() / mask.sum()\n\ndef my_flux_mae(prediction, target):\n    return float(np.abs(prediction - target).mean())\n\nassert my_flux_mae(np.ones(3), np.zeros(3)) == 1.0\nassert my_flux_mae(np.zeros(3), np.zeros(3)) == 0.0\n```\n\n<p class=\"aside\">Training uses squared error. Evaluation reports mean absolute error.</p>",
@@ -3558,7 +3583,7 @@
       "clicks": 0
     },
     {
-      "number": 118,
+      "number": 119,
       "key": "answer-search",
       "title": "Compare the settings and loss curves",
       "body": "<p class=\"big\">Open two runs from the Sweep. Compare their model, width, learning rate, and training steps.</p><p>Then open the loss curves. A lower validation error is easier to interpret when you can see how each model trained.</p><div class=\"bottom-note\">If a run failed, inspect its error. A missing score cannot rank that model.</div>",
@@ -3584,7 +3609,7 @@
       "clicks": 0
     },
     {
-      "number": 119,
+      "number": 120,
       "key": "goes-repair-code",
       "title": "Let the model learn a correction to persistence",
       "body": "```python {2|3|4|all}\ndef forward(self, x):\n    correction = self.net(x)\n    standardized = x[:, 1, -1:] + correction\n    return standardized * self.scale + self.center\n\n# Zero-initialize the correction head before training.\n# Fit scaling on training dates; score in log-flux units.\n```\n\n<div class=\"bottom-note\">The repair also uses absolute loss and 1,200 updates. These choices are tested together.</div>",
@@ -3610,7 +3635,7 @@
       "clicks": 0
     },
     {
-      "number": 120,
+      "number": 121,
       "key": "answer-images",
       "title": "Average the error inside the disk mask",
       "body": "```python\ndef my_image_mae(prediction, target, disk_mask):\n    errors = np.abs(prediction - target) * disk_mask\n    per_image = errors.sum(axis=(1, 2, 3))\n    per_image /= disk_mask.sum(axis=(1, 2, 3))\n    return float(per_image.mean())\n```\n\n<p>Test zero error, constant +1 error, and an error only outside the mask.</p>",
@@ -3636,7 +3661,7 @@
       "clicks": 0
     },
     {
-      "number": 121,
+      "number": 122,
       "key": "answer-residual",
       "title": "Add the correction to input channel 1",
       "body": "```python\ndef forward(self, x):\n    correction = self.net(x)\n    if architecture == \"residual\":\n        return x[:, 1:2] + correction\n    return correction\n```\n\n<div class=\"bottom-note\">The current image is input channel 1. The return has one channel.</div>",
@@ -3662,7 +3687,7 @@
       "clicks": 0
     },
     {
-      "number": 122,
+      "number": 123,
       "key": "answer-evidence",
       "title": "Return validation evidence only",
       "body": "```python\ndef select_validation_evidence(record):\n    if record.get(\"split\") != \"validation\":\n        raise ValueError(\"Only validation evidence is allowed.\")\n    fields = (\"split\", \"config\", \"metrics\", \"losses\",\n              \"errors\", \"trace\", \"stage_id\", \"lessons\")\n    return {name: record[name] for name in fields if name in record}\n```\n\n<div class=\"bottom-note\">The agent also receives the current source. Keep final predictions and scores out of this request.</div>",
@@ -3688,7 +3713,7 @@
       "clicks": 0
     },
     {
-      "number": 123,
+      "number": 124,
       "key": "answer-controller",
       "title": "Pass the candidate\u2019s code to training",
       "body": "```python\ncandidate = proposal[\"candidates\"][candidate_index]\nprobe = run_training(\n    session, stage_name, candidate[\"source\"],\n    image_splits, parent[\"config\"], dataset_version, metric_source,\n)\n```\n\n<div class=\"bottom-note\">Use the candidate\u2019s source here. Passing the parent would train the old program again.</div>",
@@ -3714,7 +3739,7 @@
       "clicks": 0
     },
     {
-      "number": 124,
+      "number": 125,
       "key": "answer-final",
       "title": "Use the saved model without training it again",
       "body": "<p class=\"big\">Load each selected model\u2019s saved weights and predict the reserved dates.</p><p>Compare the three image forecasts at one timestamp. The input images and observed future should match across all three rows.</p><div class=\"bottom-note\">Persistence copies the current image and needs no trained weights.</div>",
@@ -3740,7 +3765,7 @@
       "clicks": 0
     },
     {
-      "number": 125,
+      "number": 126,
       "key": "recorded-edit",
       "title": "Round 1: absolute loss versus the unchanged model",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Tested source</th><th>Validation error \u2193</th></tr><tr><td>Starting residual model</td><td>0.122116</td></tr><tr><td>A \u00b7 use absolute training loss</td><td>0.120553</td></tr><tr><td>B \u00b7 retain squared training loss</td><td>0.122116</td></tr></tbody></table><p>The composition selected A. Its separate test reproduced 0.120553.</p><div class=\"bottom-note\">Recorded v0.3.0: one seed, 142 validation windows, the same forty-step budget.</div>",
@@ -3769,7 +3794,7 @@
       "clicks": 0
     },
     {
-      "number": 126,
+      "number": 127,
       "key": "recorded-keep",
       "title": "Round 2: sampling without replacement did not reduce error",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Tested source</th><th>Validation error \u2193</th></tr><tr><td>Starting absolute-loss model</td><td>0.120553</td></tr><tr><td>A \u00b7 zero-initialize the residual head</td><td>0.110916</td></tr><tr><td>B \u00b7 sample without replacement</td><td>0.120557</td></tr></tbody></table><p>The composition selected A. It did not combine the unhelpful sampling change.</p><div class=\"bottom-note\">Keep the tested sampling result alongside the selected version for comparison.</div>",
@@ -3798,7 +3823,7 @@
       "clicks": 0
     },
     {
-      "number": 127,
+      "number": 128,
       "key": "recorded-lens",
       "title": "Open the recorded research conversation",
       "body": "<p class=\"big\"><a href=\"https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/23f4a8510534f241b9c6ccacb0ef3cb7\">Open the proposal and recorded notebook operations \u2197</a></p><p>Find the active configuration, the requested edit, and the returned candidate code. Compare the proposal with the tested source.</p><p class=\"aside\"><a href=\"https://ash0ts.github.io/forge-workshop-kit/solar/recorded-study.json\">Download the recorded source, decisions, scores, and evidence links \u2197</a></p><div class=\"bottom-note\">Agent Lens may require sign-in. The source and saved decisions are also in the downloadable evidence.</div>",
@@ -3827,7 +3852,7 @@
       "clicks": 0
     },
     {
-      "number": 128,
+      "number": 129,
       "key": "recovery",
       "title": "When a service is unavailable",
       "body": "<table class=\"clean-table\"><tbody><tr><th>Failure</th><th>Next action</th></tr><tr><td>Project authentication or permission</td><td>Fix access, then retry the check</td></tr><tr><td>Training or inference failed</td><td>Inspect the saved error before retrying work</td></tr><tr><td>Trace or artifact upload failed</td><td>Retry export of the saved execution</td></tr><tr><td>Evaluation comparison upload failed</td><td>Use saved notebook results and retry publication</td></tr></tbody></table>",
@@ -3853,7 +3878,7 @@
       "clicks": 0
     },
     {
-      "number": 129,
+      "number": 130,
       "key": "schedule",
       "title": "Six-hour session with three breaks",
       "body": "<table class=\"clean-table schedule\"><tbody><tr><th>Minutes</th><th>Work</th></tr><tr><td>0\u201325</td><td>Connect and trace an operation</td></tr><tr><td>25\u201365</td><td>Read observations and implement persistence</td></tr><tr><td>65\u201395</td><td>Explain training and saved experiment files</td></tr><tr><td>95\u2013110</td><td>Break</td></tr><tr><td>110\u2013155</td><td>Inspect model shapes and compare configurations</td></tr><tr><td>155\u2013200</td><td>Implement image prediction and scoring</td></tr><tr><td>200\u2013230</td><td>Meal break</td></tr><tr><td>230\u2013260</td><td>Build the research-agent request</td></tr><tr><td>260\u2013310</td><td>Review and test two rounds of changes</td></tr><tr><td>310\u2013320</td><td>Break</td></tr><tr><td>320\u2013345</td><td>Freeze and compare on reserved dates</td></tr><tr><td>345\u2013360</td><td>Reproduce and explain the result</td></tr></tbody></table>",
@@ -3879,7 +3904,7 @@
       "clicks": 0
     },
     {
-      "number": 130,
+      "number": 131,
       "key": "links",
       "title": "Keep working in your own project",
       "body": "<p class=\"big\"><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view\">Copy the Solar notebook \u2197</a></p><p><a href=\"https://github.com/ash0ts/forge-workshop-kit\">Source, setup, dataset, and facilitator guide \u2197</a></p><p><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==\">Recorded rehearsal Report \u2197</a></p><p class=\"aside\"><a href=\"https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view\">For an office-agent example, open Pending, Inc. \u2197</a></p><div class=\"bottom-note\">Keep your notebook, code edits, and checkpoints. The facilitator needs no control over your runtime.</div>",

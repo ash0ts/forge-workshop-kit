@@ -39,11 +39,11 @@ Both examples shown here exist in the prepared training data. Set the clock to 0
 At the review, a lower error is useful only if we know what produced it and what it was compared with. The four final files are our fictional lab’s previous filing system. We will use Forge and W&B to connect the code, configuration, data, weights, and predictions to each run. The measurement task teaches that stack with a scalar output; the image task reuses it for predictions we can inspect pixel by pixel. Only then do we add an AI research assistant. It will read the image code and validation results and propose edits to the model or training procedure. It will not alter the data, target, or final scoring rules. Session block: Connect and trace an operation (minutes 0–25).
 Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
-## 7. Copy the notebook into your Forge project
+## 7. Open the materials and copy the notebook
 
 0:00–0:25
 
-Allow participants to get their own copy open before continuing. Run all stale cells creates the controls; it does not press the exercise run buttons. Hosted Forge supplies authentication, but attendees still need their own project and account access. Use fictional or public teaching data in a public project. Session block: Connect and trace an operation (minutes 0–25).
+Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
 
 ## 8. Copy the notebook into the project you will use
 
@@ -690,103 +690,109 @@ Allow eight minutes. Ask participants to name a change, report what happened, an
 Return to the weekly lab review. Ask participants to open their Report and follow one result to its source and saved prediction. In the recorded rehearsal, the selected image model reduced error, while the GOES model still lost to persistence. Both belong in the review. The image result uses one seed and two test days; it needs testing on other dates. The later qualification found that a repaired GOES recipe beat persistence on all three seeds. The saved image edits helped two seeds and slightly hurt one. Bring both facts to the review; neither replaces the original evidence. Ask each participant to propose a next test grounded in their own forecast. Session block: Reproduce and explain the result (minutes 345–360).
 Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
-## 114. Reference and worked answers
+## 114. Keep the notebook and workshop materials
+
+5:45–6:00
+
+Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
+
+## 115. Reference and worked answers
 
 REFERENCE
 
 These pages are optional answers and recorded examples. Open an answer after participants have tried the exercise. Use the return link to get back to the teaching sequence.
 
-## 115. Put the attribute inside the tool scope
+## 116. Put the attribute inside the tool scope
 
 WORKED ANSWER
 
 The attribute is attached inside the Tool scope. The complete notebook function also supplies its call identity and outer conversation. Use the operation’s timestamps so Agent Lens shows when the work happened, not when it was uploaded.
 
-## 116. Return a copy of the latest observation
+## 117. Return a copy of the latest observation
 
 WORKED ANSWER
 
 The prepared split includes the last observed reading for each forecast window. Return a copy so later changes to the prediction array cannot alter the dataset.
 
-## 117. Implement the training loss and forecast metric
+## 118. Implement the training loss and forecast metric
 
 WORKED ANSWER
 
 Subtract prediction and target, take absolute values, and average. A prediction of one against a target of zero gives one. These are log10 flux units. The training loss above it is separate and uses squared error.
 
-## 118. Compare the settings and loss curves
+## 119. Compare the settings and loss curves
 
 WORKED ANSWER
 
 Open the configuration and curve for two runs. Find the settings they share and the value that differs. If training failed, inspect the error rather than assigning a score to a forecast that does not exist.
 
-## 119. Let the model learn a correction to persistence
+## 120. Let the model learn a correction to persistence
 
 WORKED ANSWER
 
 The latest XRS-B input is standardized. Add a learned correction, then convert it back with the same training-fitted center and scale. A zero-initialized final layer begins exactly at persistence. The fit function divides the prediction and target error by the same scale. We changed several parts of the recipe together, so the measured result cannot tell us which individual change caused the gain. Ask participants to point to the addition and unit conversion in their editable code. Advance the code highlights one step at a time; use Back to revisit the previous statement.
 
-## 120. Average the error inside the disk mask
+## 121. Average the error inside the disk mask
 
 WORKED ANSWER
 
 The mask selects the solar disk. Compute the sum and count per image, then average across images. Check identical arrays, a constant one-unit difference, and a difference only outside the mask.
 
-## 121. Add the correction to input channel 1
+## 122. Add the correction to input channel 1
 
 WORKED ANSWER
 
 Channel zero is the earlier image and channel one is the current image. Add the correction to channel one. With a zero correction, this function returns the current image exactly.
 
-## 122. Return validation evidence only
+## 123. Return validation evidence only
 
 WORKED ANSWER
 
 First check that the record belongs to validation. Then return only the listed evidence fields. The current source is supplied separately. The final-test example should raise an error before the agent sees it.
 
-## 123. Pass the candidate’s code to training
+## 124. Pass the candidate’s code to training
 
 WORKED ANSWER
 
 Pass candidate['source'] to training, along with the shared configuration. Passing the parent source here would train the old program while the interface appeared to test a new proposal. Open the saved candidate.py if the result looks suspicious.
 
-## 124. Use the saved model without training it again
+## 125. Use the saved model without training it again
 
 WORKED ANSWER
 
 The selected weights are already trained. Load them and predict the final inputs. Compare the same target timestamps across all versions; persistence uses the current image directly.
 
-## 125. Round 1: absolute loss versus the unchanged model
+## 126. Round 1: absolute loss versus the unchanged model
 
 RECORDED REHEARSAL
 
 The alternative is a real KEEP decision and it is still tested. Candidate A changes only the loss and lowers validation error in this run. The composition keeps A. This is one seed, not evidence of a repeatable effect.
 
-## 126. Round 2: sampling without replacement did not reduce error
+## 127. Round 2: sampling without replacement did not reduce error
 
 RECORDED REHEARSAL
 
 Candidate B changes the batch sampling to seeded permutations. Its validation error is essentially the same as the parent and slightly higher. The composition keeps zero initialization and rejects the sampling change. Do not attribute a benefit to an untested combination.
 
-## 127. Open the recorded research conversation
+## 128. Open the recorded research conversation
 
 RECORDED REHEARSAL
 
 Open the proposal conversation. The notebook’s evidence-read span identifies the saved parent execution. The model request contains source and allowed evidence; its response contains the proposed candidates. Compare those separate records before following a training call. The downloadable records contain the same decisions and scores if the native view requires sign-in.
 
-## 128. When a service is unavailable
+## 129. When a service is unavailable
 
 REFERENCE
 
 Start with the failed operation. An authentication problem needs corrected access. A failed training run needs its saved error inspected. An upload failure needs a publication retry. The separate CES v2 API remains unavailable. Native Evaluation Tables Preview uses verified Weave evaluation calls and is the workshop comparison path. If any upload fails, retain the notebook results and retry publication only.
 
-## 129. Six-hour session with three breaks
+## 130. Six-hour session with three breaks
 
 REFERENCE
 
 One six-hour session for a mixed room. The schedule includes fifty-five minutes of breaks. Keep introductory arithmetic beside implementation; experienced participants use the shape, broadcasting and metric checks to inspect assumptions. No extra training or paid research round has been added.
 
-## 130. Keep working in your own project
+## 131. Keep working in your own project
 
 REFERENCE
 

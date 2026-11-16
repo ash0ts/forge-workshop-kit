@@ -66,6 +66,8 @@ Weave-backed native EvalTables comparisons are available. Airline’s last AI Al
 
 ## Facilitate or contribute
 
+Start with [Run a Forge workshop](docs/facilitator-start.md) to prepare the materials, set up the progress monitor, and handle access or publication failures. Each deck has a short running guide: [Pending](docs/run-pending.md), [Solar](docs/run-solar.md), [Routing](docs/run-routing.md), [Inspection](docs/run-inspection.md), [Transit](docs/run-transit.md), and [Airline](docs/run-airline_monitoring.md).
+
 The [facilitator notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzM=/view) reads the project links you supply. Missing updates mean “unknown,” not “failed.” The [documentation index](docs/README.md) links each workshop’s schedule and evidence.
 
 For changes to the kit, start with [CONTRIBUTING.md](CONTRIBUTING.md). The [technical specification](techspec.md) explains how notebooks, saving, accounting, tracing, and publication fit together. [Next steps](next-up.md) separates completed work from what still needs qualification.

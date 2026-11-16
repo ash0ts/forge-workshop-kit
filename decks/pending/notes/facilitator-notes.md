@@ -72,11 +72,11 @@ Understand the task and harness · 0–20 minutes
 
 Use the table to distinguish behavior changes. The model is fixed; it is not retrained when instructions change. The learner develops tools and the loop before the baseline. The later editor cannot rewrite those frozen functions. Ask whether editing an unused skill can explain a changed outcome.
 
-## 12. Copy the notebook into your own project.
+## 12. Open the materials and copy the notebook
 
 Connect and instrument · 20–40 minutes
 
-Use the current template, never the historical November 12 gateway notebook. An external account requires its own project, notebook compute access and inference access. Setup does not issue a model request.
+Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
 
 ## 13. The same notebook runs on a laptop.
 
@@ -590,31 +590,37 @@ Explain the result · 230–240 minutes
 Ask participants to name one workflow in their product with observable output and a check they can run independently of the agent. Have them specify a development case, a likely failure, and a fresh case for testing transfer. They can reuse the instrumentation and improvement controller, but must define what correct work means for that workflow.
 Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
-## 97. Worked answer · invoice lookup
+## 97. Keep the notebook and workshop materials
+
+Explain the result · 230–240 minutes
+
+Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
+
+## 98. Worked answer · invoice lookup
 
 Worked answers · 240–240 minutes
 
 Exact semantics of teaching.ANSWERS tool. Keep optional so participants attempt the gap first.
 
-## 98. Worked answer · observation handoff
+## 99. Worked answer · observation handoff
 
 Worked answers · 240–240 minutes
 
 Exact answer contract from teaching.py. Both dispatch paths return state/result. Handoff creates a new list.
 
-## 99. Worked answer · inspect the refund
+## 100. Worked answer · inspect the refund
 
 Worked answers · 240–240 minutes
 
 The learner check is deliberately limited. Do not describe it as the full final scorer.
 
-## 100. Worked answer · validate the judge response
+## 101. Worked answer · validate the judge response
 
 Worked answers · 240–240 minutes
 
 Exact semantics of teaching.ANSWERS scorer validation. Boolean strings are invalid. Empty reasons are invalid. Missing judgments stay unavailable.
 
-## 101. Source, notebook, and recorded example
+## 102. Source, notebook, and recorded example
 
 Worked answers · 240–240 minutes
 

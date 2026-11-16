@@ -291,6 +291,7 @@ ROOT.joinpath('notes/visual-coverage.json').write_text(json.dumps({
 import runpy as _aria_runpy
 _aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/aria_storyboard.py'))['enrich'](slides, ROOT, 'airline_monitoring')
 _aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/technical_guide_storyboard.py'))['enrich'](slides, ROOT, 'airline_monitoring')
+_aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/share_storyboard.py'))['enrich'](slides, ROOT, 'airline_monitoring')
 
 chunks=[]
 for i,s in enumerate(slides):

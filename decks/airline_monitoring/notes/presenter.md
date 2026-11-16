@@ -53,11 +53,11 @@ These are the approved execution counts, totalling 40 conversations. Development
 
 Visual sequence: Start with the family bracket, not the batch counts. The connected dots stand for related records, not three named passengers. Reveal the assigned groups, then show why putting a related task in final evaluation leaks the family across partitions. The counts are the actual frozen plan.
 
-## 9. Your copy owns the runs and saved work
+## 9. Open the materials and copy the notebook
 
 0:21
 
-Open the hosted template and show copying into the participant’s project. Confirm the detected destination before publishing a trace. Opening, browsing, or checking code does not run a model. An unavailable native service is separate from an agent task failure. Server-side tag costs cannot be stopped by the notebook’s local allowance.
+Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
 
 ## 10. Try the replacement API, then connect your project
 
@@ -498,37 +498,43 @@ Give participants time to make the change themselves. Have one person point to t
 End by asking someone to reproduce a case from its saved initial state. Do not conclude with a promise of autonomous improvement. Monitoring, human review, and offline evaluation each answered a different question.
 Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
-## 77. Worked answer: validate a judge response
+## 77. Keep the notebook and workshop materials
+
+5:58
+
+Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
+
+## 78. Worked answer: validate a judge response
 
 Reference
 
 This is the notebook’s actual validator. It checks shape and types, not the truth of the judgment.
 
-## 78. Worked answer: keep unknown judgments out of the matrix
+## 79. Worked answer: keep unknown judgments out of the matrix
 
 Reference
 
 This is the notebook’s actual my_monitor implementation. Review unflagged cases too; an alerts-only sample cannot establish recall across traffic.
 
-## 79. Worked answer: preserve the original case inputs
+## 80. Worked answer: preserve the original case inputs
 
 Reference
 
 Use the actual case_from_reviewed_turn signature in the notebook. Do not synthesize a nonexistent native turn or treat a listing of spans as proof that a specific diagnostic was read.
 
-## 80. Worked answer: check both change and preservation
+## 81. Worked answer: check both change and preservation
 
 Reference
 
 Illustrative list-based scorer excerpt. The actual evaluator must use the recorded approved scope and final state, not values inferred from the agent’s final response.
 
-## 81. Worked answer: build the complete replacement list
+## 82. Worked answer: build the complete replacement list
 
 Reference
 
 This is the notebook’s actual itinerary builder. The deep copy prevents the result from mutating the original booking. The agent must still select the correct range and obtain confirmation.
 
-## 82. Sources and saved evidence
+## 83. Sources and saved evidence
 
 Reference
 

@@ -7,6 +7,7 @@ Start with the [repository README](../README.md) to choose a workshop. Use this 
 | Need | Read |
 | --- | --- |
 | Introduce the work in a meeting or share a Slack message | [Meeting and sharing packet](sharing.md) |
+| Prepare and lead a session | [Facilitator start guide](facilitator-start.md), with a short running guide for each deck |
 | Choose materials for a reader, demo, hands-on pilot, or new workshop | [Use the workshop materials](use-the-workshops.md) |
 | Learn from a worked example before opening the notebook | [Public learning Reports](../reports/README.md) |
 | Copy a template, run locally, or recover saved work | [Setup](setup.md) |
@@ -23,12 +24,12 @@ The [facilitator setup](setup.md#read-participant-progress) explains the saved r
 
 | Workshop | Schedule and teaching guidance | Data, design, and recorded evidence |
 | --- | --- | --- |
-| Pending, Inc. | [Four-hour runbook](pending-facilitator.md) | [Exercise reference and recorded tie](deck-guide.md#pending-inc), [simulator source](../src/forge_workshop_kit/pending) |
-| Solar Autoresearch | [Six-hour runbook](facilitator.md) | [Experiment contract](solar-contract.md), [data and first rehearsal](solar-evidence.md), [qualification across seeds](solar-qualification.md) |
-| Customer request routing | [Five-and-a-half-hour workshop](routing-workshop.md) | Same guide covers Banking77, classifier results, and the release/rollback drill. |
-| Circuit-board inspection | [Four-hour workshop](inspection-workshop.md) | Same guide covers VisA PCB1, feature preparation, and both qualification recipes. |
-| Transit software factory | [Six-hour runbook](transit-facilitator.md) | [Data, coordinator, and build results](transit-workshop.md) |
-| Airline monitoring | [Six-hour runbook](airline_monitoring-runbook.md) | [Qualification and native monitoring limitations](airline-monitoring-qualification.md), [data provenance](../src/forge_workshop_kit/assets/airline/provenance.json) |
+| Pending, Inc. | [Quick start](run-pending.md) · [Four-hour runbook](pending-facilitator.md) | [Exercise reference and recorded tie](deck-guide.md#pending-inc), [simulator source](../src/forge_workshop_kit/pending) |
+| Solar Autoresearch | [Quick start](run-solar.md) · [Six-hour runbook](facilitator.md) | [Experiment contract](solar-contract.md), [data and first rehearsal](solar-evidence.md), [qualification across seeds](solar-qualification.md) |
+| Customer request routing | [Quick start](run-routing.md) · [Five-and-a-half-hour workshop](routing-workshop.md) | Same guide covers Banking77, classifier results, and the release/rollback drill. |
+| Circuit-board inspection | [Quick start](run-inspection.md) · [Four-hour workshop](inspection-workshop.md) | Same guide covers VisA PCB1, feature preparation, and both qualification recipes. |
+| Transit software factory | [Quick start](run-transit.md) · [Six-hour runbook](transit-facilitator.md) | [Data, coordinator, and build results](transit-workshop.md) |
+| Airline monitoring | [Quick start](run-airline_monitoring.md) · [Six-hour runbook](airline_monitoring-runbook.md) | [Qualification and native monitoring limitations](airline-monitoring-qualification.md), [data provenance](../src/forge_workshop_kit/assets/airline/provenance.json) |
 
 [Data preparation](../data/README.md) links acquisition tools and immutable teaching bundles. [Advanced modules](advanced/README.md) cover optional training, release, and remote execution; their access checks are separate from the core workshops.
 

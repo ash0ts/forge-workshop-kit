@@ -86,6 +86,7 @@ slides=extend(slides)
 import runpy as _aria_runpy
 _aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/aria_storyboard.py'))['enrich'](slides, ROOT, 'inspection')
 _aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/technical_guide_storyboard.py'))['enrich'](slides, ROOT, 'inspection')
+_aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/share_storyboard.py'))['enrich'](slides, ROOT, 'inspection')
 
 main_count=sum(s['start_minute'] is not None for s in slides)
 indices={s['key']:i+1 for i,s in enumerate(slides)}

@@ -1,7 +1,7 @@
 {
   "duration_minutes": 240,
-  "total_slides": 101,
-  "main_slides": 96,
+  "total_slides": 102,
+  "main_slides": 97,
   "sections": [
     {
       "anchor": "cover",
@@ -342,19 +342,16 @@
     {
       "number": 12,
       "key": "copy",
-      "title": "Copy the notebook into your own project.",
-      "kind": "explanation",
-      "notes": "Use the current template, never the historical November 12 gateway notebook. An external account requires its own project, notebook compute access and inference access. Setup does not issue a model request.",
+      "title": "Open the materials and copy the notebook",
+      "kind": "workshop-sharing",
+      "notes": "Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.",
       "clicks": 0,
       "technical_guide": null,
       "concept": "Copy the notebook into your own project",
       "exercise": {
         "step": "1 \u00b7 Connect and trace"
       },
-      "source": [
-        "scripts/pending_cells.py",
-        "src/forge_workshop_kit/pending/teaching.py"
-      ],
+      "source": "https://utm.io/uuH96",
       "evidence": [
         "visual-v030-pending-lookup.png"
       ],
@@ -602,7 +599,7 @@
         "start_minute": 40,
         "duration_minutes": 30
       },
-      "answer": 97
+      "answer": 98
     },
     {
       "number": 22,
@@ -797,7 +794,7 @@
         "start_minute": 40,
         "duration_minutes": 30
       },
-      "answer": 98
+      "answer": 99
     },
     {
       "number": 30,
@@ -1343,7 +1340,7 @@
         "start_minute": 105,
         "duration_minutes": 30
       },
-      "answer": 99
+      "answer": 100
     },
     {
       "number": 51,
@@ -2591,6 +2588,27 @@
     },
     {
       "number": 97,
+      "key": "workshop-take-home",
+      "title": "Keep the notebook and workshop materials",
+      "kind": "workshop-sharing",
+      "notes": "Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.",
+      "clicks": 0,
+      "technical_guide": null,
+      "concept": "workshop-take-home",
+      "exercise": null,
+      "source": "https://utm.io/uuH96",
+      "evidence": [
+        "evidence/v030-pending-rehearsal.json"
+      ],
+      "timing": {
+        "section": "Explain the result",
+        "start_minute": 230,
+        "duration_minutes": 10
+      },
+      "answer": null
+    },
+    {
+      "number": 98,
       "key": "answer-tool",
       "title": "Worked answer \u00b7 invoice lookup",
       "kind": "answer",
@@ -2614,7 +2632,7 @@
       "answer": null
     },
     {
-      "number": 98,
+      "number": 99,
       "key": "answer-loop",
       "title": "Worked answer \u00b7 observation handoff",
       "kind": "answer",
@@ -2638,7 +2656,7 @@
       "answer": null
     },
     {
-      "number": 99,
+      "number": 100,
       "key": "answer-scorer",
       "title": "Worked answer \u00b7 inspect the refund",
       "kind": "answer",
@@ -2662,7 +2680,7 @@
       "answer": null
     },
     {
-      "number": 100,
+      "number": 101,
       "key": "answer-judge",
       "title": "Worked answer \u00b7 validate the judge response",
       "kind": "answer",
@@ -2686,7 +2704,7 @@
       "answer": null
     },
     {
-      "number": 101,
+      "number": 102,
       "key": "sources",
       "title": "Source, notebook, and recorded example",
       "kind": "explanation",

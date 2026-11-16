@@ -77,6 +77,7 @@ runpy.run_path(str(ROOT / 'scripts/pedagogy-sequence.py'))['reorder'](slides)
 import runpy as _aria_runpy
 _aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/aria_storyboard.py'))['enrich'](slides, ROOT, 'transit')
 _aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/technical_guide_storyboard.py'))['enrich'](slides, ROOT, 'transit')
+_aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/share_storyboard.py'))['enrich'](slides, ROOT, 'transit')
 
 
 # Stable aliases keep worked-answer links aligned when slides are inserted.

@@ -32,7 +32,7 @@ Use the PDFs if a live page is unavailable. Keep product captures labeled as rec
 
 I've been putting together six hands-on Python workshops for engineers learning Forge. You work on a concrete project, change the code, and check what happened: an agent handling refunds, a model forecasting solar observations, or two coding agents building a departure board, for example.
 
-Each has an illustrated walkthrough, a presentation deck, recorded results, and a notebook you can copy into your own project. I've packaged them with short demo routes and setup instructions here: https://ash0ts.github.io/forge-workshop-kit/packet/
+Each has an illustrated walkthrough, a presentation deck, recorded results, and a notebook you can copy into your own project. I've packaged them with short demo routes and setup instructions here: https://utm.io/uuIac
 
 They're technical previews. I'd like a few people to try one exercise and tell me where the explanation or setup breaks, or which example would fit a session with their team.
 

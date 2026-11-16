@@ -156,6 +156,22 @@ Source: notes/sources.md.
 -->
 
 ---
+class: workshop-sharing
+---
+
+<div class="kicker">0:17</div>
+
+# Open the materials and copy the notebook
+
+<div class="workshop-share-layout"><div class="workshop-share-instructions"><ol><li><strong>Open this workshop’s page.</strong> Scan the code or type the short link.</li><li><strong>Choose the notebook.</strong> Sign in to Forge, then choose <strong>Copy to project</strong>.</li><li><strong>Open your copy in Edit.</strong> Run all stale cells once to initialize the controls.</li><li><strong>Check the destination.</strong> Use your own writable project and account.</li></ol></div><div class="workshop-share-code"><a href="https://utm.io/uuH99" aria-label="Open this workshop’s materials"><img src="/images/workshop-qr.svg" width="280" height="280" alt="QR code opening this workshop’s notebook, deck, Report, and run guide"></a><a class="workshop-share-url" href="https://utm.io/uuH99">utm.io/uuH99</a><p>Notebook · Report · Deck · Run guide</p></div></div><p class="workshop-share-footer">The first exercise follows. Opening the copy does not start training or inference.</p>
+
+
+<!--
+Leave this QR code visible while participants open the workshop page. It links the current notebook, Report, deck, and run guide. Choose Notebook, sign in, then copy into a writable project. Continue to the existing setup exercise. The short link is managed in docs/share-links.json; do not reuse a historical event QR.
+Source: notes/sources.md.
+-->
+
+---
 class: exercise
 ---
 
@@ -315,7 +331,7 @@ class: exercise
 
 <div class="kicker">0:53</div>
 
-<a class="answer-link" href="/59">Worked answer →</a>
+<a class="answer-link" href="/61">Worked answer →</a>
 
 # Implement the validation threshold
 
@@ -469,7 +485,7 @@ class: exercise
 
 <div class="kicker">1:32</div>
 
-<a class="answer-link" href="/58">Worked answer →</a>
+<a class="answer-link" href="/60">Worked answer →</a>
 
 # Add local information to the classifier
 
@@ -673,7 +689,7 @@ class: exercise
 
 <div class="kicker">2:31</div>
 
-<a class="answer-link" href="/60">Worked answer →</a>
+<a class="answer-link" href="/62">Worked answer →</a>
 
 # Choose where the review time goes
 
@@ -1013,6 +1029,22 @@ Source: notes/sources.md.
 -->
 
 ---
+class: workshop-sharing
+---
+
+<div class="kicker">3:59</div>
+
+# Keep the notebook and workshop materials
+
+<div class="workshop-share-layout"><div class="workshop-share-instructions"><p>Return to your saved notebook copy to continue your work.</p><ol><li><strong>Revisit the example.</strong> The Report links its claims to recorded results.</li><li><strong>Keep the materials.</strong> Open the deck, download the PDF, or get the source.</li><li><strong>Run a session.</strong> Use the short run guide and facilitator notes.</li></ol></div><div class="workshop-share-code"><a href="https://utm.io/uuH99" aria-label="Open this workshop’s materials"><img src="/images/workshop-qr.svg" width="280" height="280" alt="QR code opening this workshop’s notebook, deck, Report, and run guide"></a><a class="workshop-share-url" href="https://utm.io/uuH99">utm.io/uuH99</a><p>Notebook · Report · Deck · Run guide</p></div></div><p class="workshop-share-footer">The shared page has the template and references. Your executions remain in your own project.</p>
+
+
+<!--
+Keep this slide up during questions. Participants resume their saved notebook copy. The QR page provides the template, Report, downloads, and short facilitator run guide. Use recorded examples for a demo; check the current readiness notes before scheduling live delivery.
+Source: notes/sources.md.
+-->
+
+---
 ---
 
 <div class="kicker">Optional answer</div>
@@ -1031,7 +1063,7 @@ local = np.log1p(errors).reshape(len(rows), -1)
 return np.concatenate([whole, local], axis=1)
 ```
 <div class="bottom-note">Both branches are exercised by the free check. The live comparison uses nearest-patch.</div>
-<div class="source-link"><a href="/26">Return to Add local information to the classifier</a></div>
+<div class="source-link"><a href="/27">Return to Add local information to the classifier</a></div>
 
 <!--
 The complete function signature is in the notebook. This body includes the historical mean-patch branch required by the free fixture. Each row remains one board; concatenation extends its feature columns.
@@ -1052,7 +1084,7 @@ position = int(np.ceil(recall * len(positives))) - 1
 return float(positives[position])
 ```
 <div class="bottom-note">At 12 validation defects and recall .90, keep the top 11 above the threshold.</div>
-<div class="source-link"><a href="/17">Return to Implement the validation threshold</a></div>
+<div class="source-link"><a href="/18">Return to Implement the validation threshold</a></div>
 
 <!--
 The retained cutoff depends on validation examples. It does not guarantee the same recall on final boards.
@@ -1076,7 +1108,7 @@ order = order[np.argsort(
 return np.asarray(rows)[order[:budget]]
 ```
 <div class="bottom-note">The permutation only breaks equal-distance ties. Do not pass labels to this function.</div>
-<div class="source-link"><a href="/38">Return to Choose where the review time goes</a></div>
+<div class="source-link"><a href="/39">Return to Choose where the review time goes</a></div>
 
 <!--
 Active selection here is uncertainty sampling. It is one policy to test, not a proven universal choice.

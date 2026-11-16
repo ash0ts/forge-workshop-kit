@@ -49,7 +49,7 @@
   },
   {
     "slide": 9,
-    "title": "Your copy owns the runs and saved work",
+    "title": "Open the materials and copy the notebook",
     "name": "setup",
     "time": "0:21"
   },
@@ -457,36 +457,42 @@
   },
   {
     "slide": 77,
+    "title": "Keep the notebook and workshop materials",
+    "name": "workshop-take-home",
+    "time": "5:58"
+  },
+  {
+    "slide": 78,
     "title": "Worked answer: validate a judge response",
     "name": "answer-judge",
     "time": "Reference"
   },
   {
-    "slide": 78,
+    "slide": 79,
     "title": "Worked answer: keep unknown judgments out of the matrix",
     "name": "answer-monitor",
     "time": "Reference"
   },
   {
-    "slide": 79,
+    "slide": 80,
     "title": "Worked answer: preserve the original case inputs",
     "name": "answer-case",
     "time": "Reference"
   },
   {
-    "slide": 80,
+    "slide": 81,
     "title": "Worked answer: check both change and preservation",
     "name": "answer-state",
     "time": "Reference"
   },
   {
-    "slide": 81,
+    "slide": 82,
     "title": "Worked answer: build the complete replacement list",
     "name": "answer-builder",
     "time": "Reference"
   },
   {
-    "slide": 82,
+    "slide": 83,
     "title": "Sources and saved evidence",
     "name": "sources",
     "time": "Reference"

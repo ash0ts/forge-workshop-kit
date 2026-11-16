@@ -55,12 +55,13 @@ def source_archive(path, deck, slug):
             for file in sorted(item.rglob("*") if item.is_dir() else [item]):
                 if file.is_file() and "__pycache__" not in file.parts:
                     bundle.write(file, Path("decks") / slug / file.relative_to(deck))
-        for name in ("build_decks.py", "build_visual_guides.py", "technical_guide_storyboard.py", "scene_storyboard.py", "validate_deck.mjs", "check_deck_pdf.py", "serve_deck.py", "aria_storyboard.py"):
+        for name in ("build_decks.py", "build_visual_guides.py", "technical_guide_storyboard.py", "scene_storyboard.py", "share_storyboard.py", "build_share_links.py", "render_share_qr.mjs", "validate_deck.mjs", "check_deck_pdf.py", "serve_deck.py", "aria_storyboard.py"):
             bundle.write(ROOT / "scripts" / name, Path("scripts") / name)
         for path in sorted((ROOT / "scripts").glob("illustrate_*.py")):
             bundle.write(path, Path("scripts") / path.name)
-        for name in ("README.md", "package.json", "package-lock.json", "scripts/deck.mjs", "aria.css", "technical-manual.css", "technical-manual-tokens.css", "workshop-scenes.css", "components/TechnicalGuide.vue"):
+        for name in ("README.md", "package.json", "package-lock.json", "scripts/deck.mjs", "aria.css", "technical-manual.css", "technical-manual-tokens.css", "workshop-scenes.css", "workshop-sharing.css", "share-packet.css", "components/TechnicalGuide.vue"):
             bundle.write(ROOT / "decks" / name, Path("decks") / name)
+        bundle.write(ROOT / "docs/share-links.json", "docs/share-links.json")
         for directory in (ROOT / "skills", ROOT / "visual-guides" / slug, ROOT / "visual-guides/media", ROOT / "visual-guides/scenes"):
             for file in sorted(directory.rglob("*")):
                 if file.is_file() and not {"node_modules", "__pycache__", ".DS_Store"}.intersection(file.parts):
@@ -140,6 +141,7 @@ def write_library_index(directory, available):
         slug = row["slug"]
         report = reports.get("airline" if slug == "airline_monitoring" else slug)
         actions = f'<a href="{html.escape(slug)}/">Deck</a>'
+        actions += f' · <a href="https://ash0ts.github.io/forge-workshop-kit/packet/docs/run-{slug}.html">How to run this workshop</a>'
         if report:
             actions = (f'<a href="{html.escape(report["url"], quote=True)}">Read the learning Report</a> · '
                        + actions + f' · <a href="{html.escape(report["notebook_url"], quote=True)}">Notebook · Forge sign-in</a>')
@@ -185,6 +187,8 @@ def write_library_index(directory, available):
         'Notebook execution uses your own project access and billing.</p>'
         '<p><a href="https://ash0ts.github.io/forge-workshop-kit/packet/">Meeting packet, demo routes, and Slack copy</a> · '
         '<a href="https://ash0ts.github.io/forge-workshop-kit/packet/workshop-meeting-packet.zip">Download the packet</a></p>'
+        '<p><a href="https://ash0ts.github.io/forge-workshop-kit/packet/docs/facilitator-start.html">Facilitator start guide</a> · '
+        '<a href="https://ash0ts.github.io/forge-workshop-kit/share/">QR codes and tracked sharing links</a></p>'
         '<p><a href="visual-language/">Explore the visual guide templates</a> · '
         '<a href="downloads/workshop-posters.zip">Download all six posters</a></p></header>'
         f'<main>{"".join(links)}</main>'
@@ -296,6 +300,8 @@ def main():
         # Every poster includes a real QR code, including SVG-only builds.
         run(["npm", "ci"], ROOT / "skills/teenage-engineering-visualizations",
             {**os.environ, "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"})
+    from build_share_links import build as build_sharing
+    build_sharing(site=output / "site")
     from build_visual_guides import build as build_guides
     build_guides(only=args.only or (), exports=args.pdf, site=output / "site")
     rows = [
