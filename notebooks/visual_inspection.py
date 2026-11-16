@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[inspection] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.11.1/forge_workshop_kit-0.11.1-py3-none-any.whl",
+#   "forge-workshop-kit[inspection] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge_workshop_kit-0.12.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -350,6 +350,14 @@ def _(get_lab, get_step, go_to, mo, teaching, ui):
     return (check_inspection_features, continue_inspection_compare, feature_editor,)
 
 
+# workshop-cell: visual_inspection/explanation/patch_distance
+@app.cell(hide_code=True)
+def _(get_step, mo):
+    mo.stop(get_step() != 'features')
+    mo.md('### A distance for one board position\nThe query and every normal reference use the same spatial position and 64 encoder channels. The following excerpt matches the free calculation below.\n```python\n# Stop a nearly constant channel from dominating after division.\nscale = np.maximum(normal_vectors.std(axis=0), 0.1)\n# Broadcasting compares one query with every normal reference.\nsquared_difference = ((query_vector - normal_vectors) / scale) ** 2\n# Average channels, then retain the closest actual normal board.\ndistance = squared_difference.mean(axis=1).min()\n# Compress large distances before appending them as features.\nfeature = np.log1p(distance)\n```\nRepeat at all 14 × 14 positions to obtain 196 values. Append these to 512 whole-image values along the feature axis: one row per board, 708 columns. A distance is not a probability or proof of what caused a defect.')
+    return
+
+
 # workshop-cell: visual_inspection/controls/patch_distance
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo):
@@ -367,10 +375,14 @@ def _(get_lab, inspection, mo, np, patch_distance_check, refresh_inspection):
     _fit=inspection.indices(_data,"fit")
     _normals=_fit[inspection.labels(_data,_fit)==0]
     _reference={"bank":_data["patches"][_normals],"case_ids":[_data["records"][int(i)]["case_id"] for i in _normals]}
+    # Keep the same spatial position across all normal fitting boards.
     _bank=_reference["bank"][:,7,7,:]
     _query_vector=_data["patches"][_query,7,7,:]
+    # One scale per feature channel; the floor prevents near-zero division.
     _scale=np.maximum(_bank.std(axis=0),.1)
+    # Mean over 64 channels gives one distance per reference board.
     _distances=np.mean((_query_vector/_scale-_bank/_scale)**2,axis=1)
+    # Select the nearest normal example, rather than averaging different boards.
     _closest=int(np.argmin(_distances))
     _expected=float(inspection.nearest_patch_errors(_data,np.array([_query]),_reference)[0,7,7])
     assert np.isclose(_distances[_closest],_expected,atol=1e-5)
@@ -456,8 +468,15 @@ def _(aria, get_lab, get_step, go_to, inspection_baseline_note, mo, teaching, ui
     _selected_case=get_lab()["data"]["records"][validation_board.value]["case_id"] if get_lab().get("data") and validation_board.value is not None else None
     inspection_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=[_baseline["id"]] if _baseline else [],case_ids=[_selected_case] if _selected_case else [],interpretation=inspection_baseline_note.value,workshop="visual-inspection")
     inspection_after_aria=ui.next_step(mo,"Next: add patch features","features",go_to)
-    mo.vstack([inspection_aria_investigate,inspection_after_aria])
+    inspection_aria_investigate
     return (inspection_after_aria, inspection_aria_investigate,)
+
+
+# workshop-cell: visual_inspection/aria_response/investigate
+@app.cell(hide_code=True)
+def _(aria, inspection_after_aria, inspection_aria_investigate, mo):
+    mo.vstack([aria.response(mo,inspection_aria_investigate),inspection_after_aria])
+    return
 
 
 # workshop-cell: visual_inspection/action/baseline_observation
@@ -471,7 +490,7 @@ def _(get_lab, inspection_baseline_note, mo, refresh_inspection, save_inspection
     return
 
 
-# workshop-cell: visual_inspection/display/28
+# workshop-cell: visual_inspection/display/30
 @app.cell(hide_code=True)
 def _(get_feedback, get_step, mo, ui):
     mo.stop(get_step() != "features")
@@ -568,7 +587,7 @@ def _(build_features, choose_threshold, event, export_trace, feature_editor, fee
     return
 
 
-# workshop-cell: visual_inspection/display/33
+# workshop-cell: visual_inspection/display/35
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() not in ("baseline", "compare"))
@@ -648,7 +667,7 @@ def _(get_feedback, get_lab, get_step, go_to, mo, teaching, ui):
     return (continue_inspection_freeze, reveal_review, review_board, review_guess, save_inspection_review, train_reviewed,)
 
 
-# workshop-cell: visual_inspection/display/38
+# workshop-cell: visual_inspection/display/40
 @app.cell(hide_code=True)
 def _(get_lab, get_step, inspection, mo, reveal_review, review_board, teaching):
     mo.stop(get_step() != "review" or review_board.value is None or not get_lab().get("data"))
@@ -706,7 +725,7 @@ def _(build_features, choose_threshold, event, export_trace, feature_editor, fee
     return
 
 
-# workshop-cell: visual_inspection/display/41
+# workshop-cell: visual_inspection/display/43
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() != "review")
@@ -829,7 +848,7 @@ def _(get_feedback, get_lab, get_step, mo, teaching, ui):
     return (final_board,)
 
 
-# workshop-cell: visual_inspection/display/48
+# workshop-cell: visual_inspection/display/50
 @app.cell(hide_code=True)
 def _(final_board, get_lab, get_step, inspection, mo, teaching):
     mo.stop(get_step() != "evaluate" or final_board.value is None or not get_lab().get("data"))
@@ -855,12 +874,19 @@ def _(get_lab, get_step, mo, teaching):
 
 # workshop-cell: visual_inspection/aria/conclusion
 @app.cell(hide_code=True)
-def _(aria, get_lab, get_step, inspection_conclusion, mo, report_inspection):
+def _(aria, get_lab, get_step, inspection_conclusion, mo):
     mo.stop(get_step()!="reproduce")
     _s=get_lab().get("session")
     inspection_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=inspection_conclusion.value,workshop="visual-inspection")
-    mo.vstack([inspection_aria_conclusion,report_inspection])
+    inspection_aria_conclusion
     return (inspection_aria_conclusion,)
+
+
+# workshop-cell: visual_inspection/aria_response/conclusion
+@app.cell(hide_code=True)
+def _(aria, inspection_aria_conclusion, mo, report_inspection):
+    mo.vstack([aria.response(mo,inspection_aria_conclusion),report_inspection])
+    return
 
 
 # workshop-cell: visual_inspection/action/reproduce_inspection
@@ -904,7 +930,7 @@ def _(feedback, get_lab, inspection_conclusion, mo, publish_report, refresh_insp
     return
 
 
-# workshop-cell: visual_inspection/display/53
+# workshop-cell: visual_inspection/display/56
 @app.cell(hide_code=True)
 def _(get_feedback, get_step, mo, ui):
     mo.stop(get_step() != "reproduce")
@@ -940,7 +966,7 @@ def _(Path, event, export_trace, feedback, get_lab, instrument_inspection_tool, 
     return
 
 
-# workshop-cell: visual_inspection/display/56
+# workshop-cell: visual_inspection/display/59
 @app.cell(hide_code=True)
 def _(get_feedback, get_step, mo, ui):
     mo.stop(get_step() != "features")

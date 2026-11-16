@@ -8,7 +8,7 @@ The intended Forge workflow connects online observation with offline evaluation.
 
 The bookings are simulated records adapted from a pinned, MIT-licensed [τ-bench airline environment](https://github.com/sierra-research/tau2-bench/tree/989d3285ae669e49503324bdb9981bf14fccedeb). We use its data and complete-itinerary update behavior; this is a workshop adaptation, not customer traffic or a benchmark replication. The live qualification completed all 40 conversations with passing booking checks. A separate controlled omission exercise provides a failure we can reproduce without pretending the agent made it spontaneously.
 
-You can follow the records here without an account, then copy the [six-hour notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view) into your project. The [deck](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/) supplies the code walkthrough. Native Alignment judging, a relevant Insights example, fresh-account access, and a participant rehearsal remain unqualified; the current workshop is a technical preview.
+You can follow the records here without an account, then copy the [six-hour notebook](https://ash0ts.github.io/forge-workshop-kit/packet/start/airline_monitoring.html) into your project. The [deck](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/) supplies the code walkthrough. Native Alignment judging, a relevant Insights example, fresh-account access, and a participant rehearsal remain unqualified; the current workshop is a technical preview.
 
 ## Keep the return flight in the write
 
@@ -69,16 +69,20 @@ An empty tag column can mean that the rule found no issue. It can also mean that
 The worked `my_monitor()` selects completed boolean predictions, then finds which of them also have a human label:
 
 ```python
+
+# A missing result is not a negative finding.
 completed = [r for r in rows
              if r.get("status") == "complete"
              and type(r.get("prediction")) is bool]
+
+# Agreement requires an explicit human label as well.
 known = [r for r in completed
          if type(r.get("human_label")) is bool]
 ```
 
 Coverage uses all eligible turns as its denominator. Precision asks how many flagged issues were supported by the reviewed labels. Recall asks how many reviewed issues were found. We keep unflagged controls in the review because inspecting only alerts would hide the missed issues.
 
-![Eligible turns divide into completed predictions and unprocessed or unavailable turns. Coverage uses all eligible turns; precision and recall use completed predictions with human labels.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/monitor-denominators.png)
+![Illustrative monitoring arithmetic: six completed judgments among eight eligible turns give 75 percent coverage. Pending and unavailable turns remain visible and do not become negative judgments.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/mechanism-coverage.png)
 
 *These are metric definitions, not measured native-monitor results. Precision and recall remain unavailable for the recorded Airline qualification because the native test predictions were unavailable. An empty denominator stays missing.*
 
@@ -92,9 +96,9 @@ For this API, the helper must construct a whole itinerary. The main expression i
 
 ```python
 return copy.deepcopy(
-    current_flights[:replace_start]
-    + replacement_flights
-    + current_flights[replace_stop:]
+    current_flights[:replace_start]  # Keep flights before the change.
+    + replacement_flights           # Replace only the approved interval.
+    + current_flights[replace_stop:] # Keep the return or later connections.
 )
 ```
 
@@ -122,10 +126,12 @@ All 40 recorded conversations cost $0.02330616 in direct model inference. A sepa
 
 ## Run the workflow in your project
 
-[Open the Airline notebook and choose **Copy to project**](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view). Confirm your own writable destination and inspect the local booking example before the access check. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) covers the hosted and laptop paths. You don't need a workshop gateway or facilitator credentials.
+The start page offers notebook copy, import, and laptop setup. You can also open the [Forge template directly](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view). If the hosted link sends you back to Home, use the import or local option on that page; your saved work does not need to be rerun.
+
+[Open the Airline notebook and choose **Copy to project**](https://ash0ts.github.io/forge-workshop-kit/packet/start/airline_monitoring.html). Confirm your own writable destination and inspect the local booking example before the access check. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) covers the hosted and laptop paths. You don't need a workshop gateway or facilitator credentials.
 
 The adjustable $8 notebook allowance covers its own model calls. Native tag judging, compute, and optional ARIA usage follow their separate account settings. Explicit run controls start inference; publication retries reuse saved executions. Disable the workshop tag's automatic judging when you're finished. Closing the notebook does not disable it.
 
-Two ARIA activities challenge a reviewed turn and the final conclusion. Check its answer against the passenger request, booking, and processing status. It does not become a human label, a tag criterion, or an evaluation score. Use the recorded investigation if live ARIA is unavailable.
+Two ARIA activities challenge a reviewed turn and the final conclusion. At the stop, click **Start ARIA investigation** to send your explanation and the selected records. **Open ARIA conversation** takes you to that same conversation in Forge; **Check ARIA response** brings its answer back into the notebook. Check its answer against the passenger request, booking, and processing status. It does not become a human label, a tag criterion, or an evaluation score. Use the recorded investigation if live ARIA is unavailable.
 
 The [Airline packet](https://utm.io/uuIab) collects this Report, the deck, notebook, visual guides, and running instructions. Use the recorded booking and local regression drill for a demonstration; check current native-feature access before scheduling a live monitoring session. If the live agent succeeds, keep that success and use the labeled controlled incident to examine the failure condition.

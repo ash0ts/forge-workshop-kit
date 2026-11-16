@@ -39,7 +39,7 @@ I've been building six hands-on workshops for engineers who want to use Forge to
 - **Transit:** two coding agents build a departure board. Inspect ownership, patches, integration tests, and whether a shared lesson helps the next build.
 - **Airline:** a booking agent must preserve the passenger's return flight. Connect traced behavior to reviewed monitoring rules and regression tests.
 
-The packet has illustrated Reports, decks, recorded results, and notebooks you can copy into your own project: https://utm.io/uuIac
+The packet has illustrated Reports, decks, recorded results, and notebooks you can copy into your own project: https://ash0ts.github.io/forge-workshop-kit/
 
 Recorded demos are available now; the full sessions are technical previews. I'd like a few people to try one exercise, flag confusing setup or instructions, and suggest where it would fit a customer conversation or team session.
 
@@ -49,7 +49,7 @@ Pick the project closest to your work and open its notebook from the packet. Cop
 
 Please send the workshop name, step, expected result, and what happened. Leave keys and tokens out. The [setup guide](setup.md) explains access, local execution, and recovery. The $8 notebook inference allowance is adjustable; notebook compute, ARIA, and native tag judging are billed separately.
 
-Use the [registered collection link](https://utm.io/uuIac) for the Slack message, the [video link](https://utm.io/uuIan) for the Loom description, and a workshop-specific link for an invitation to one session. The [sharing guide](share-links.md#how-tracking-works) explains which placements the links identify and why visits are separate from notebook progress.
+Use the [untracked library link](https://ash0ts.github.io/forge-workshop-kit/) for coworker Slack messages, the [video link](https://utm.io/uuIan) for the Loom description, and a workshop-specific link for an invitation to one session. The [sharing guide](share-links.md#how-tracking-works) explains which placements the links identify and why visits are separate from notebook progress.
 
 ## What is ready to show
 
@@ -59,4 +59,8 @@ Before scheduling a hands-on class, finish the external-account and human checks
 
 Keep claims tied to the [recorded outcomes](recorded-results.md). Pending's harness comparison tied, Solar includes a failed measurement recipe and an image-seed regression, Transit did not establish a team or memory advantage, and both live Airline versions passed. The controlled repair exercises are separate from those comparisons.
 
-The packet includes a briefing PDF, all six deck PDFs, this message copy, the Loom script, setup and demo instructions, and links to Reports, notebooks, and editable sources. Previous releases and attendee copies remain unchanged.
+The participant download includes a workshop guide, all six deck PDFs, editable notebooks, and setup and facilitator instructions. These message drafts and the recording script stay in Git; they are not part of the participant website. Previous releases and attendee copies remain unchanged.
+
+## Public distribution
+
+Internal reviews use the untracked library URL above. When sharing with prospective participants in an external Slack community, use [the public community link](https://utm.io/uuIaS). Its UTM campaign measures incoming visits, not coworker enablement, copied notebooks, or completion. See [tracking conventions](share-links.md).

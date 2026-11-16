@@ -8,7 +8,7 @@ This workshop makes the coordination code part of the lesson. We build a worker'
 
 This is a small software-factory exercise: agents produce patches from a work order, while participants define interfaces, review the changes, run acceptance checks, and decide what can ship. Forge keeps the assignments and tool calls visible in Agent Lens, the build measurements in runs, the source in Artifacts, and matching scenarios in EvalTables. We can test coordination and shared lessons against the application they produce.
 
-You can read the examples here without an account. The [six-hour editable notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view) and [visual deck](https://ash0ts.github.io/forge-workshop-kit/transit/) contain the exercises. They're a technical preview; fresh-account access and a participant rehearsal remain outstanding.
+You can read the examples here without an account. The [six-hour editable notebook](https://ash0ts.github.io/forge-workshop-kit/packet/start/transit.html) and [visual deck](https://ash0ts.github.io/forge-workshop-kit/transit/) contain the exercises. They're a technical preview; fresh-account access and a participant rehearsal remain outstanding.
 
 ## Start with a departure someone should be able to catch
 
@@ -16,7 +16,7 @@ The evening-event setting is fictional. The records come from the MBTA's public 
 
 One retained trip, `63926435`, leaves Park Street toward Alewife at `24:08:00` under the November 28 service calendar. GTFS allows hours above 23 because a service day can continue after midnight. This departure occurs at 00:08 Eastern on November 29. A passenger checking at 00:05 should see it.
 
-![A real Park Street record maps November 28 service time 24:08 to November 29 at 00:08 Eastern. A query at 00:05 should include the departure.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/service-day.png)
+![A real Park Street record maps November 28 service time 24:08 to November 29 at 00:08 Eastern. A query at 00:05 should include the departure.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/mechanism-service-time.png)
 
 *The conversion keeps the service date and the passenger's clock date separate. Rejecting an hour above 23, or checking only the new day's service, can drop this train. [Inspect the retained records](https://github.com/ash0ts/forge-workshop-kit/tree/main/examples/transit).*
 
@@ -56,6 +56,7 @@ We also need to decide when work is ready. The kit's selection rule is deliberat
 
 ```python
 def ready_tasks(tasks):
+    # Unblock a task only after every required patch is integrated.
     return [key for key, row in tasks.items()
             if row['status'] == 'pending'
             and all(tasks[dep]['status'] == 'integrated'
@@ -110,10 +111,12 @@ A next experiment could change the task breakdown or allowed context, but it wou
 
 ## Run the workshop in your project
 
-[Open the Transit notebook and choose **Copy to project**](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view). Confirm your own writable project, then try the timetable example and its free check. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) covers the hosted and laptop paths; the [deck](https://ash0ts.github.io/forge-workshop-kit/transit/) walks through the code and intermediate states.
+The start page offers notebook copy, import, and laptop setup. You can also open the [Forge template directly](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view). If the hosted link sends you back to Home, use the import or local option on that page; your saved work does not need to be rerun.
+
+[Open the Transit notebook and choose **Copy to project**](https://ash0ts.github.io/forge-workshop-kit/packet/start/transit.html). Confirm your own writable project, then try the timetable example and its free check. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) covers the hosted and laptop paths; the [deck](https://ash0ts.github.io/forge-workshop-kit/transit/) walks through the code and intermediate states.
 
 The notebook uses your credentials and an adjustable $8 inference allowance. Compute and optional ARIA use are separate. Explicit run controls start builders. Saved responses and patches survive restart; retrying publication does not repeat a completed build.
 
-Two ARIA activities examine development failures and the frozen comparison. Verify its explanation against the worker event, integrated source, and application check. It does not accept a shared lesson or approve a release for you; recorded investigations are available without live ARIA access.
+Two ARIA activities examine development failures and the frozen comparison. At the stop, click **Start ARIA investigation** to send your explanation and the selected records. **Open ARIA conversation** takes you to that same conversation in Forge; **Check ARIA response** brings its answer back into the notebook. Verify its explanation against the worker event, integrated source, and application check. It does not accept a shared lesson or approve a release for you; recorded investigations are available without live ARIA access.
 
 Use the [Transit packet](https://utm.io/uuIaa) for this Report, the deck, notebook, visual guides, and running instructions. A short demonstration can follow one departure through the reference app and the recorded timezone failure. In the full session, finish by reproducing a released version or explaining why a build remains blocked, with the actual scenario and patch responsible.

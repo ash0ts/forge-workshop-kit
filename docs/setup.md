@@ -6,13 +6,17 @@
 4. Check the displayed project. An editable hosted copy reads its project and credentials from Forge. Click **Connect and restore my work** in Solar, routing, or transit, **Check my project and restore saved work** in Pending, or **Connect and restore my inspection work** in inspection. Airline's setup step also checks the project before you instrument and send its first trace.
 5. Complete the first tracing exercise and open its Agent Lens conversation. Send the facilitator your project link if you want them to see progress and help requests. They do not need your credentials.
 
+If a template link sends you to Forge Home, sign in and reopen the link. If the Notebooks application also redirects or is unavailable, use the workshop's start page in the [public library](https://ash0ts.github.io/forge-workshop-kit/). It provides a direct `.py` download and laptop commands. Import the file if your project offers notebook import; otherwise follow **Work locally** below. A template link does not grant product or compute access. Reading the Report, deck, and recorded example needs no notebook runtime.
+
+The November 16 browser check reproduced a redirect from the Solar template and from Forge's own Notebooks launcher. The fallback is available, but this check does not establish that hosted copying works for a fresh attendee account.
+
 The setup table separates project writes, stored traces, inference, Weave evaluations, and native EvalTables. A successful project check does not establish access to all five. The check makes no model calls. Your first explicit model run checks inference access and billing; your first evaluation publication checks the evaluation services.
 
 The default inference allowance is $8 for this workspace. Change it during setup if needed. It counts retries and reserves a maximum for requests whose usage is unknown. Notebook compute is billed separately. No workshop gateway, host token, or remote Sandbox entitlement is required.
 
 ## Use ARIA during the investigations
 
-Each workshop pauses twice to ask ARIA about selected saved results and check a citation. Live access requires a supported team project with Smart features; personal-project participants use the bundled recorded investigation. A successful project check does not prove ARIA access. ARIA usage is separate from the notebook’s $8 inference allowance. Follow the [investigation instructions](aria-investigations.md) for native attachments, billing, and the no-access path. No ARIA activity blocks the coding exercises.
+Each workshop pauses twice to ask ARIA about selected saved results and check a citation. Click **Start ARIA investigation**, then **Open ARIA conversation** to continue in Forge. **Check ARIA response** retrieves the saved answer without starting another request. Live access requires a supported team project with Smart features; personal-project participants use the bundled recorded investigation. A successful project check does not prove ARIA access. ARIA usage is separate from the notebook’s $8 inference allowance. Follow the [investigation instructions](aria-investigations.md) for native attachments, billing, and the no-access path. No ARIA activity blocks the coding exercises.
 
 ## Work locally
 

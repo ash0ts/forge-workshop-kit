@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[routing] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.11.1/forge_workshop_kit-0.11.1-py3-none-any.whl",
+#   "forge-workshop-kit[routing] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge_workshop_kit-0.12.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -441,6 +441,14 @@ def _(get_data, get_step, mo, request_picker, reveal_label, routing):
     return
 
 
+# workshop-cell: request_routing/explanation/fit_predict
+@app.cell(hide_code=True)
+def _(get_step, mo):
+    mo.stop(get_step() != 'baseline')
+    mo.md("### Construct, fit, then predict\nThe estimator returned by `make_classifier()` has no learned coefficients yet. The fit uses known labels; prediction receives features without labels.\n```python\n# Learn the coefficients that connect feature columns to intent labels.\nmodel.fit(training_features, training_labels)\n# Each output column still follows the order in model.classes_.\nprobabilities = model.predict_proba(validation_features)\n# Choose the largest column, then look up that column's intent.\nintent = model.classes_[probabilities[0].argmax()]\n```\nThe release drill will deliberately break the last mapping. A large probability can still go to the wrong queue if its label moves.")
+    return
+
+
 # workshop-cell: request_routing/controls/check_classifier
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, teaching, ui):
@@ -577,6 +585,13 @@ def _(aria, baseline_case, baseline_observation, get_context, get_revision, get_
     return (routing_aria_investigate,)
 
 
+# workshop-cell: request_routing/aria_response/investigate
+@app.cell(hide_code=True)
+def _(aria, mo, routing_aria_investigate):
+    aria.response(mo,routing_aria_investigate)
+    return
+
+
 # workshop-cell: request_routing/action/baseline_observation
 @app.cell(hide_code=True)
 def _(baseline_case, baseline_observation, get_context, mo, refresh, save_baseline_observation):
@@ -628,7 +643,7 @@ def _(check_policy, mo, policy_editor, show_result, teaching):
     return
 
 
-# workshop-cell: request_routing/display/36
+# workshop-cell: request_routing/display/38
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, policy_editor, review_threshold, routing, teaching, ui):
     mo.stop(get_step()!="review")
@@ -644,7 +659,7 @@ def _(get_context, get_revision, get_step, mo, policy_editor, review_threshold, 
     return
 
 
-# workshop-cell: request_routing/display/37
+# workshop-cell: request_routing/display/39
 @app.cell(hide_code=True)
 def _(get_context, get_step, mo, review_picker, teaching, ui):
     mo.stop(get_step()!="review" or not review_picker.value)
@@ -894,7 +909,7 @@ def _(get_context, get_revision, get_step, mo, teaching):
     return (final_picker,)
 
 
-# workshop-cell: request_routing/display/52
+# workshop-cell: request_routing/display/54
 @app.cell(hide_code=True)
 def _(final_picker, get_context, get_step, mo, teaching, ui):
     mo.stop(get_step()!="final" or not final_picker.value)
@@ -1106,13 +1121,20 @@ def _(get_context, get_revision, get_step, mo, teaching, ui):
 
 # workshop-cell: request_routing/aria/conclusion
 @app.cell(hide_code=True)
-def _(aria, conclusion, get_context, get_revision, get_step, mo, publish):
+def _(aria, conclusion, get_context, get_revision, get_step, mo):
     mo.stop(get_step()!="report")
     _s=get_context().get("session")
     _revision=get_revision()
     routing_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=conclusion.value,workshop="banking-routing")
-    mo.vstack([routing_aria_conclusion,publish])
+    routing_aria_conclusion
     return (routing_aria_conclusion,)
+
+
+# workshop-cell: request_routing/aria_response/conclusion
+@app.cell(hide_code=True)
+def _(aria, mo, publish, routing_aria_conclusion):
+    mo.vstack([aria.response(mo,routing_aria_conclusion),publish])
+    return
 
 
 # workshop-cell: request_routing/action/retry_exports
@@ -1153,7 +1175,7 @@ def _(conclusion, get_context, mo, publish, publish_report, publish_routing_resu
     return
 
 
-# workshop-cell: request_routing/display/69
+# workshop-cell: request_routing/display/72
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, teaching, ui):
     mo.stop(get_step()!="report")
@@ -1165,7 +1187,7 @@ def _(get_context, get_revision, get_step, mo, teaching, ui):
     return
 
 
-# workshop-cell: request_routing/display/70
+# workshop-cell: request_routing/display/73
 @app.cell(hide_code=True)
 def _(get_output, get_step, mo, ui):
     _outputs=get_output()

@@ -107,15 +107,6 @@
           "source_url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/figures-pending-solar.json"
         },
         {
-          "file": "reports/assets/pending/tool-handoff.png",
-          "public_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/tool-handoff.png",
-          "meaning": "A chosen lookup_invoice action passes Acme and inv-1 to my_dispatch, receives the payment records, and appends them to the next model request through my_observation.",
-          "sha256": "5dcbac2fa385aa8d8ed36bac623e961d14941ae258688dff1b80f2e2514a905b",
-          "visually_inspected": true,
-          "provenance": "reports/figures-pending-solar.json",
-          "source_url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/figures-pending-solar.json"
-        },
-        {
           "file": "decks/pending/public/images/visual-v030-pending-lookup.png",
           "public_url": "https://ash0ts.github.io/forge-workshop-kit/pending/images/visual-v030-pending-lookup.png",
           "source_url": "https://forge.coreweave.com/agent-lens/wandb/forge-workshop-kit/conversations/c2458ce8b6bb52274d29b5c5a691424b/spans",
@@ -190,6 +181,42 @@
           "provenance": "evidence/v051-pendingfinal-evaltables.json",
           "sha256": "3130bd491645bf0c1946c99c3006a2959053387081d7e4f01e4dba1f7a5b9d65",
           "visually_inspected": true
+        },
+        {
+          "sha256": "47623d7b25cd368635f5e67335f0acacbb0a2b07e3fe150585f96a23ae97259e",
+          "visually_inspected": true,
+          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/pending/dispatch/index.html",
+          "provenance": "reports/figures-guide-layout.json",
+          "state": "complete",
+          "editable_source": "reports/assets/pending/mechanism-dispatch.svg",
+          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result.",
+          "file": "reports/assets/pending/mechanism-dispatch.png",
+          "public_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/mechanism-dispatch.png",
+          "meaning": "The same acme/inv-1 lookup appears in the action, dispatcher, returned record, and appended observation. The next model request includes that observation."
+        },
+        {
+          "sha256": "47623d7b25cd368635f5e67335f0acacbb0a2b07e3fe150585f96a23ae97259e",
+          "visually_inspected": true,
+          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/pending/dispatch/index.html",
+          "provenance": "reports/figures-guide-layout.json",
+          "state": "complete",
+          "editable_source": "reports/assets/pending/mechanism-dispatch.svg",
+          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result.",
+          "file": "reports/assets/pending/mechanism-dispatch.png",
+          "public_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/mechanism-dispatch.png",
+          "meaning": "The same acme/inv-1 lookup appears in the action, dispatcher, returned record, and appended observation. The next model request includes that observation."
+        },
+        {
+          "sha256": "47623d7b25cd368635f5e67335f0acacbb0a2b07e3fe150585f96a23ae97259e",
+          "visually_inspected": true,
+          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/pending/dispatch/index.html",
+          "provenance": "reports/figures-guide-layout.json",
+          "state": "complete",
+          "editable_source": "reports/assets/pending/mechanism-dispatch.svg",
+          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result.",
+          "file": "reports/assets/pending/mechanism-dispatch.png",
+          "public_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/mechanism-dispatch.png",
+          "meaning": "The same acme/inv-1 lookup appears in the action, dispatcher, returned record, and appended observation. The next model request includes that observation."
         }
       ],
       "limits": [
@@ -198,7 +225,7 @@
         "One scripted rehearsal with four final cases does not establish general equivalence.",
         "External-account and participant rehearsals remain outstanding."
       ],
-      "source_sha256": "3e62cd97cf23601878b382bbf03a274adf81b39205e8555906940a5a9606d8cc"
+      "source_sha256": "d4535c8806234f48974dcdc276c45ee77167c30c0467be484fa0b98de0d431f5"
     },
     {
       "slug": "solar",
@@ -206,7 +233,7 @@
       "notebook": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view",
       "claims": [
         {
-          "claim": "Real February 1\u201314 2014 GOES-15 and AIA 171 observations; 60-minute GOES history and +30-minute target; two images and +60-minute target; train/validation/final date partitioning and train-only scaling.",
+          "claim": "Real February 1–14 2014 GOES-15 and AIA 171 observations; 60-minute GOES history and +30-minute target; two images and +60-minute target; train/validation/final date partitioning and train-only scaling.",
           "files": [
             "docs/solar-contract.md",
             "src/forge_workshop_kit/solar.py",
@@ -273,7 +300,7 @@
           ]
         },
         {
-          "claim": "Round1 L1 selection validation errors0.122116\u21920.120553. Round2 zero-init candidate0.110916 versus permutation sampling0.120557. Fixed142 validation examples,seed17,40 updates.",
+          "claim": "Round1 L1 selection validation errors0.122116→0.120553. Round2 zero-init candidate0.110916 versus permutation sampling0.120557. Fixed142 validation examples,seed17,40 updates.",
           "files": [
             "decks/solar/public/recorded-study.json"
           ],
@@ -389,6 +416,42 @@
           "provenance": "evidence/solar-fixed-recipes-2026-11-14/summary.json",
           "sha256": "7abef933b5aafa5c5f1cf47a6509c58a77a7881037c0fde58e8ebd37945777cf",
           "visually_inspected": true
+        },
+        {
+          "sha256": "3a3b3bbedbbf9ec6ce434ff4627b81ccc9915b1253c2d0f264fcca8d522b09bc",
+          "visually_inspected": true,
+          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/solar/model-shapes/index.html",
+          "provenance": "reports/figures-guide-layout.json",
+          "state": "complete",
+          "editable_source": "reports/assets/solar/mechanism-model-shapes.svg",
+          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result.",
+          "file": "reports/assets/solar/mechanism-model-shapes.png",
+          "public_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/solar/mechanism-model-shapes.png",
+          "meaning": "The same two-channel, sixty-minute observation window feeds two alternative implementations. Flattening gives the MLP 120 inputs; temporal convolution reuses a five-sample filter, then pools over time."
+        },
+        {
+          "sha256": "3a3b3bbedbbf9ec6ce434ff4627b81ccc9915b1253c2d0f264fcca8d522b09bc",
+          "visually_inspected": true,
+          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/solar/model-shapes/index.html",
+          "provenance": "reports/figures-guide-layout.json",
+          "state": "complete",
+          "editable_source": "reports/assets/solar/mechanism-model-shapes.svg",
+          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result.",
+          "file": "reports/assets/solar/mechanism-model-shapes.png",
+          "public_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/solar/mechanism-model-shapes.png",
+          "meaning": "The same two-channel, sixty-minute observation window feeds two alternative implementations. Flattening gives the MLP 120 inputs; temporal convolution reuses a five-sample filter, then pools over time."
+        },
+        {
+          "sha256": "3a3b3bbedbbf9ec6ce434ff4627b81ccc9915b1253c2d0f264fcca8d522b09bc",
+          "visually_inspected": true,
+          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/solar/model-shapes/index.html",
+          "provenance": "reports/figures-guide-layout.json",
+          "state": "complete",
+          "editable_source": "reports/assets/solar/mechanism-model-shapes.svg",
+          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result.",
+          "file": "reports/assets/solar/mechanism-model-shapes.png",
+          "public_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/solar/mechanism-model-shapes.png",
+          "meaning": "The same two-channel, sixty-minute observation window feeds two alternative implementations. Flattening gives the MLP 120 inputs; temporal convolution reuses a five-sample filter, then pools over time."
         }
       ],
       "limits": [
@@ -399,7 +462,7 @@
         "All claimed gains belong to exact saved runs; image all-seed reliability gate failed.",
         "External-account and participant rehearsals remain outstanding."
       ],
-      "source_sha256": "d11c807e17a2c559ee928018e30ef5ca2446b08192fb6ca1c4d2d13b619a88f1"
+      "source_sha256": "268bfbd6d705becdf9ef2cb9a6215faeb81b4dae74770b525240a6a040c40c8e"
     }
   ]
 }

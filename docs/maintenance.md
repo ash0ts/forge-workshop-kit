@@ -56,9 +56,11 @@ The recovery workflow checks that the source is a completed `deck.yml` run on th
 
 Pages artifacts expire after one day. If the artifact is missing or expired, rerun the ordinary deck workflow. Check the deployed site and its downloads after either path succeeds.
 
-### Build the meeting packet
+### Build participant materials
 
-The complete deck build also creates `dist/decks/site/packet/`: a briefing page and PDF, six deck PDFs, setup and demo instructions, a facilitator start guide, a short running guide for each deck, detailed facilitator notes, the [ten-minute Loom script](loom-walkthrough.md), and a downloadable ZIP. The authored brief and Slack copy live in [sharing.md](sharing.md); workshop links come from the existing manifest and Report catalog. The script is a recording guide, not evidence that a video has been recorded.
+The complete deck build also creates `dist/decks/site/packet/`: a workshop overview and PDF, six deck PDFs, six downloadable notebook files and start pages, setup instructions, a facilitator start guide, short running guides, and detailed facilitator notes. The participant archive is `workshop-materials.zip`; the older `workshop-meeting-packet.zip` URL remains an alias. Its authored overview is [workshop-overview.md](workshop-overview.md). Workshop links come from the existing manifest and Report catalog.
+
+The [sharing draft](sharing.md) and [recording script](loom-walkthrough.md) remain contributor documents in Git. They are not part of the public site's navigation or participant archive. The builder removes their older generated HTML and Markdown copies from the site output. Do not add personal communication drafts to the attendee document allowlist.
 
 To rebuild only this packet from previously built decks:
 
@@ -66,7 +68,7 @@ To rebuild only this packet from previously built decks:
 python scripts/build_share_packet.py --site dist/decks/site --pdf
 ```
 
-This requires the shared deck toolchain and Chrome. It makes no workshop or provider calls. Check the brief's PDF pages, the HTML on a narrow screen, and the links before sharing. The package contains only its explicit source documents, public illustrations, and built PDFs. It excludes participant journals and credentials. The manifest records hashes and whether its source checkout had uncommitted changes.
+This requires the shared deck toolchain and Chrome. It makes no workshop or provider calls. Check the guide's PDF pages, the HTML on a narrow screen, and the links before sharing. The package contains only its explicit source documents, notebook files, public illustrations, and built PDFs. It excludes participant journals and credentials. The manifest records hashes and whether its source checkout had uncommitted changes.
 
 For a coordinated documentation update, revise the README, affected learning Reports, and packet instructions together. Publish the Reports and verify their readback before committing the updated catalog. Build the site from that commit, then check the public packet and managed redirects. Register a separate placement link when attribution needs to distinguish a video from Slack; see [sharing and tracking](share-links.md). Do not use link clicks as a count of workshop completions.
 

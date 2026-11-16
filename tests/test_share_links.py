@@ -28,12 +28,12 @@ def test_rejects_unregistered_link_shapes_and_tracking_changes(tmp_path, field, 
         sharing.load_links(path)
 
 
-def test_rejects_correct_tracking_with_wrong_workshop_fragment(tmp_path):
+def test_rejects_correct_tracking_with_wrong_workshop_destination(tmp_path):
     manifest = json.loads((ROOT / "docs/share-links.json").read_text())
-    manifest["links"]["solar"]["url"] = manifest["links"]["solar"]["url"].replace("#solar", "#pending")
+    manifest["links"]["solar"]["url"] = manifest["links"]["solar"]["url"].replace("solar.html", "pending.html")
     path = tmp_path / "links.json"
     path.write_text(json.dumps(manifest))
-    with pytest.raises(ValueError, match="own workshop card"):
+    with pytest.raises(ValueError, match="notebook start page"):
         sharing.load_links(path)
 
 
@@ -95,8 +95,9 @@ def test_partial_bundle_keeps_qr_and_poster_associated_with_included_workshop(tm
     page = (tmp_path / "site/share/index.html").read_text()
     assert 'id="solar"' in page and 'id="packet"' in page
     assert 'id="loom"' in page
-    assert "All six workshops · Slack" in page
+    assert "All six workshops · Community Slack" in page
     assert "All six workshops · Loom" in page
     assert 'id="pending"' not in page
     assert manifest["links"]["solar"]["short_url"] in page
     assert manifest["links"]["loom"]["short_url"] in page
+    assert manifest["legacy_links"]["internal_packet"]["short_url"] not in page

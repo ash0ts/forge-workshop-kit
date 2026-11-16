@@ -46,7 +46,7 @@
             {
               "path": "scripts/routing_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/routing_cells.py",
-              "sha256": "28b2a590f15228579adcf8ca43aefb1dae84b5d9ec14e4ff2dbe7b9cce90ad64"
+              "sha256": "7c7df1c1aef0e6ab83c808961e39b4e91dd6750a1f9781dc92428ec5be573cc3"
             }
           ]
         },
@@ -73,7 +73,7 @@
         },
         {
           "id": "routing-f1",
-          "claim": "Recorded card_arrival has 34 TP, 3 FP, 6 FN; illustrative arithmetic 2TP/(2TP+FP+FN)=68/77\u2248.883 describes one intent.",
+          "claim": "Recorded card_arrival has 34 TP, 3 FP, 6 FN; illustrative arithmetic 2TP/(2TP+FP+FN)=68/77≈.883 describes one intent.",
           "sources": [
             {
               "path": "docs/routing-workshop.md",
@@ -137,12 +137,12 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "9f4991b8cae22021c593ddd05f8f53084e5c4f79f8e23d2fec0451660e5d3ad0"
+              "sha256": "1b0d985f7185fc381b95c1891eb14bee6a626c9bcbf31028286970c22f8cd21b"
             },
             {
               "path": "docs/setup.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md",
-              "sha256": "9255e0947e295f5ce816190d8457614641d76130ae64e85e4b0b180244a28f1f"
+              "sha256": "f4b03c17be58453ace71f7fc63d47a380fa52d70dd3f36c52d6febe6bcb981f3"
             },
             {
               "path": "docs/routing-workshop.md",
@@ -172,12 +172,12 @@
             {
               "path": "scripts/routing_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/routing_cells.py",
-              "sha256": "28b2a590f15228579adcf8ca43aefb1dae84b5d9ec14e4ff2dbe7b9cce90ad64"
+              "sha256": "7c7df1c1aef0e6ab83c808961e39b4e91dd6750a1f9781dc92428ec5be573cc3"
             },
             {
               "path": "docs/aria-investigations.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-investigations.md",
-              "sha256": "e771280cfda15dd69a3f6449280e5df55cca42914f737dfbe197637aa2c99dcb"
+              "sha256": "bef79f4186b531871d9af8815a6f7ce92572f40244e6406e381b89bd11ad8b7c"
             },
             {
               "path": "visual-guides/index.json",
@@ -187,7 +187,7 @@
             {
               "path": "docs/share-links.json",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/share-links.json",
-              "sha256": "ab24b50d81853518525235d3f70a938c6c21d30057ae5188205fb2583f6a08ab"
+              "sha256": "f5d12d98b296d509f8e6c025ca9905a2a5c325cbf36267205a6153fb371e193e"
             }
           ]
         }
@@ -278,21 +278,43 @@
           "visually_inspected": true
         },
         {
-          "path": "reports/assets/routing/label-mapping.png",
-          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/label-mapping.png",
-          "sha256": "abe5731f6bff32427d62ac044dc10694a1c835d5da8d058c2167fbe20ec67521",
-          "question": "How can an unchanged probability route to the wrong queue?",
-          "caption_scope": "The labels come from the free-check fixture. This is an explanatory drill, not a captured production prediction.",
-          "origin": [
-            "src/forge_workshop_kit/routing_release.py"
-          ],
-          "license": "Original Workshop Kit diagram derived from cited public source and saved records.",
+          "path": "reports/assets/routing/mechanism-release.png",
+          "sha256": "97199224bd3d8387fbbd65faf0f5be71164395951091d018b61fbdce7b6c07ce",
+          "alt": "An illustrative three-column mapping keeps probabilities fixed while moving intent labels. Follow column zero: the faulty loader changes its destination from card_arrival to card_linking.",
           "visually_inspected": true,
-          "editable_source": "reports/assets/routing/label-mapping.svg",
-          "generator": "scripts/build_report_routing_inspection_visuals.py"
+          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/routing/release/index.html",
+          "provenance": "reports/figures-guide-layout.json",
+          "state": "faulty",
+          "editable_source": "reports/assets/routing/mechanism-release.svg",
+          "caption_boundary": "recorded mechanism view; no new experiment or inferred result.",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/mechanism-release.png"
+        },
+        {
+          "path": "reports/assets/routing/mechanism-release.png",
+          "sha256": "97199224bd3d8387fbbd65faf0f5be71164395951091d018b61fbdce7b6c07ce",
+          "alt": "An illustrative three-column mapping keeps probabilities fixed while moving intent labels. Follow column zero: the faulty loader changes its destination from card_arrival to card_linking.",
+          "visually_inspected": true,
+          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/routing/release/index.html",
+          "provenance": "reports/figures-guide-layout.json",
+          "state": "faulty",
+          "editable_source": "reports/assets/routing/mechanism-release.svg",
+          "caption_boundary": "recorded mechanism view; no new experiment or inferred result.",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/mechanism-release.png"
+        },
+        {
+          "path": "reports/assets/routing/mechanism-release.png",
+          "sha256": "97199224bd3d8387fbbd65faf0f5be71164395951091d018b61fbdce7b6c07ce",
+          "alt": "An illustrative three-column mapping keeps probabilities fixed while moving intent labels. Follow column zero: the faulty loader changes its destination from card_arrival to card_linking.",
+          "visually_inspected": true,
+          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/routing/release/index.html",
+          "provenance": "reports/figures-guide-layout.json",
+          "state": "faulty",
+          "editable_source": "reports/assets/routing/mechanism-release.svg",
+          "caption_boundary": "recorded mechanism view; no new experiment or inferred result.",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/mechanism-release.png"
         }
       ],
-      "article_sha256": "ef9fc403bb31f51d49747045447f4d4b94e654a3ed5dae1796f87f51aca97252"
+      "article_sha256": "2fe300b7579761e91495a9e75847c3d49edb69fc5ecc231414f8e1ced10a3b10"
     },
     "inspection": {
       "file": "reports/inspection.md",
@@ -400,7 +422,7 @@
         },
         {
           "id": "inspection-case-changes",
-          "claim": "Anomaly048 whole\u2248-1.006 missed / patch\u2248-.887 flagged; anomaly015 whole\u2248.121 flagged / patch\u2248-1.439 missed; thresholds whole\u2248-.499, patch\u2248-1.114.",
+          "claim": "Anomaly048 whole≈-1.006 missed / patch≈-.887 flagged; anomaly015 whole≈.121 flagged / patch≈-1.439 missed; thresholds whole≈-.499, patch≈-1.114.",
           "sources": [
             {
               "path": "docs/inspection-workshop.md",
@@ -436,7 +458,7 @@
             {
               "path": "scripts/inspection_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/inspection_cells.py",
-              "sha256": "29090ef2a8985cbebc3665836860eed174fe700e7af3e3eddbc764a4469f79b0"
+              "sha256": "0c5ddfc53713aea7cd2c632e6bf910cc48dc65f07002658c6b81bc1653fb15ac"
             },
             {
               "path": "src/forge_workshop_kit/inspection_teaching.py",
@@ -469,12 +491,12 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "9f4991b8cae22021c593ddd05f8f53084e5c4f79f8e23d2fec0451660e5d3ad0"
+              "sha256": "1b0d985f7185fc381b95c1891eb14bee6a626c9bcbf31028286970c22f8cd21b"
             },
             {
               "path": "docs/setup.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md",
-              "sha256": "9255e0947e295f5ce816190d8457614641d76130ae64e85e4b0b180244a28f1f"
+              "sha256": "f4b03c17be58453ace71f7fc63d47a380fa52d70dd3f36c52d6febe6bcb981f3"
             },
             {
               "path": "docs/inspection-workshop.md",
@@ -490,12 +512,12 @@
             {
               "path": "scripts/inspection_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/inspection_cells.py",
-              "sha256": "29090ef2a8985cbebc3665836860eed174fe700e7af3e3eddbc764a4469f79b0"
+              "sha256": "0c5ddfc53713aea7cd2c632e6bf910cc48dc65f07002658c6b81bc1653fb15ac"
             },
             {
               "path": "docs/aria-investigations.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-investigations.md",
-              "sha256": "e771280cfda15dd69a3f6449280e5df55cca42914f737dfbe197637aa2c99dcb"
+              "sha256": "bef79f4186b531871d9af8815a6f7ce92572f40244e6406e381b89bd11ad8b7c"
             },
             {
               "path": "visual-guides/index.json",
@@ -505,7 +527,7 @@
             {
               "path": "docs/share-links.json",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/share-links.json",
-              "sha256": "ab24b50d81853518525235d3f70a938c6c21d30057ae5188205fb2583f6a08ab"
+              "sha256": "f5d12d98b296d509f8e6c025ca9905a2a5c325cbf36267205a6153fb371e193e"
             }
           ]
         }
@@ -558,20 +580,6 @@
           "generator": "scripts/build_report_routing_inspection_visuals.py"
         },
         {
-          "path": "reports/assets/inspection/patch-distance.png",
-          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/patch-distance.png",
-          "sha256": "7ee5bd2a4d6a62d553134428de90956fdbdbf2e766811a926692e8a09b478cc9",
-          "question": "What does one bright cell in the distance map measure?",
-          "caption_scope": "The diagram does not invent patch distances or imply localization is causal. Self matches are excluded.",
-          "origin": [
-            "src/forge_workshop_kit/inspection.py"
-          ],
-          "license": "Original Workshop Kit diagram derived from cited public source and saved records.",
-          "visually_inspected": true,
-          "editable_source": "reports/assets/inspection/patch-distance.svg",
-          "generator": "scripts/build_report_routing_inspection_visuals.py"
-        },
-        {
           "path": "decks/inspection/public/images/agent-lens-training-original.png",
           "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/inspection/public/images/agent-lens-training-original.png",
           "sha256": "1c5378d6bde79e03184f63d4cd6b0afdc3914d473d9a9e003876f455e53e1cac",
@@ -609,9 +617,45 @@
           "visually_inspected": true,
           "editable_source": "reports/assets/inspection/detector-results.svg",
           "generator": "scripts/build_report_routing_inspection_visuals.py"
+        },
+        {
+          "path": "reports/assets/inspection/mechanism-patch-distance.png",
+          "sha256": "17c9892a3d3e3f6dc23d89b1769fc12d16b06166684ffc190c4ca261c6d0035a",
+          "alt": "PCB1 anomaly 048 at position (10, 7) is compared with the same position on normal fitting boards. The nearest scaled distance becomes one of 196 spatial features.",
+          "visually_inspected": true,
+          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/inspection/patch-distance/index.html",
+          "provenance": "reports/figures-guide-layout.json",
+          "state": "complete",
+          "editable_source": "reports/assets/inspection/mechanism-patch-distance.svg",
+          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result.",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/mechanism-patch-distance.png"
+        },
+        {
+          "path": "reports/assets/inspection/mechanism-patch-distance.png",
+          "sha256": "17c9892a3d3e3f6dc23d89b1769fc12d16b06166684ffc190c4ca261c6d0035a",
+          "alt": "PCB1 anomaly 048 at position (10, 7) is compared with the same position on normal fitting boards. The nearest scaled distance becomes one of 196 spatial features.",
+          "visually_inspected": true,
+          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/inspection/patch-distance/index.html",
+          "provenance": "reports/figures-guide-layout.json",
+          "state": "complete",
+          "editable_source": "reports/assets/inspection/mechanism-patch-distance.svg",
+          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result.",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/mechanism-patch-distance.png"
+        },
+        {
+          "path": "reports/assets/inspection/mechanism-patch-distance.png",
+          "sha256": "17c9892a3d3e3f6dc23d89b1769fc12d16b06166684ffc190c4ca261c6d0035a",
+          "alt": "PCB1 anomaly 048 at position (10, 7) is compared with the same position on normal fitting boards. The nearest scaled distance becomes one of 196 spatial features.",
+          "visually_inspected": true,
+          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/inspection/patch-distance/index.html",
+          "provenance": "reports/figures-guide-layout.json",
+          "state": "complete",
+          "editable_source": "reports/assets/inspection/mechanism-patch-distance.svg",
+          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result.",
+          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/mechanism-patch-distance.png"
         }
       ],
-      "article_sha256": "1b202854423a7bcc9ba2a6c1c0f6622c94b2cb5ddc6dd3b8dee30e7022fa9695"
+      "article_sha256": "317b603408170bad83a0df67d06af0834ec1a1f44086392a44a9f84aab08ffaa"
     }
   },
   "validation": {

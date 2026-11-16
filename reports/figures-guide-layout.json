@@ -1,0 +1,172 @@
+{
+  "renderer": "scripts/build_report_guide_figures.py",
+  "layout": "Shared 1200 by 675 mechanism drawings; original photographs and captures retain their ratio.",
+  "figures": [
+    {
+      "report": "pending",
+      "guide": "dispatch",
+      "state": "complete",
+      "width": 1200,
+      "height": 675,
+      "provenance": "illustrative",
+      "specification": "visual-guides/pending/dispatch.json",
+      "specification_sha256": "ecdccf404aaf5d7be98d1bc54e5ae1091811b17aaf26dbefdcadab814f9a165c",
+      "artwork": "visual-guides/pending/art/dispatch/complete.svg",
+      "png": "reports/assets/pending/mechanism-dispatch.png",
+      "svg": "reports/assets/pending/mechanism-dispatch.svg",
+      "guide_url": "https://ash0ts.github.io/forge-workshop-kit/guides/pending/dispatch/index.html",
+      "source_links": [
+        {
+          "label": "Implementation",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/pending/teaching.py"
+        },
+        {
+          "label": "Worked example and recorded outcomes",
+          "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ=="
+        }
+      ],
+      "all_reveals_checked": true
+    },
+    {
+      "report": "solar",
+      "guide": "model-shapes",
+      "state": "complete",
+      "width": 1200,
+      "height": 675,
+      "provenance": "illustrative",
+      "specification": "visual-guides/solar/model-shapes.json",
+      "specification_sha256": "e2518644e4d672b1208ce62bf9eab2cd2ef948bb453ee447af34f97965d7fbe2",
+      "artwork": "visual-guides/solar/art/model-shapes/complete.svg",
+      "png": "reports/assets/solar/mechanism-model-shapes.png",
+      "svg": "reports/assets/solar/mechanism-model-shapes.svg",
+      "guide_url": "https://ash0ts.github.io/forge-workshop-kit/guides/solar/model-shapes/index.html",
+      "source_links": [
+        {
+          "label": "Implementation",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/examples/solar/candidate.py"
+        },
+        {
+          "label": "Worked example and recorded outcomes",
+          "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg=="
+        }
+      ],
+      "all_reveals_checked": true
+    },
+    {
+      "report": "routing",
+      "guide": "release",
+      "state": "faulty",
+      "width": 1200,
+      "height": 675,
+      "provenance": "recorded",
+      "specification": "visual-guides/routing/release.json",
+      "specification_sha256": "4d2e4d8a185f9353597d2b99f27226b2b87dda3ae8af4a3a634b296905407cbf",
+      "artwork": "visual-guides/routing/art/release/faulty.svg",
+      "png": "reports/assets/routing/mechanism-release.png",
+      "svg": "reports/assets/routing/mechanism-release.svg",
+      "guide_url": "https://ash0ts.github.io/forge-workshop-kit/guides/routing/release/index.html",
+      "source_links": [
+        {
+          "label": "Implementation",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py"
+        },
+        {
+          "label": "Worked example and recorded outcomes",
+          "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw=="
+        },
+        {
+          "label": "Release loader and checks",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing_release.py"
+        }
+      ],
+      "all_reveals_checked": true
+    },
+    {
+      "report": "inspection",
+      "guide": "patch-distance",
+      "state": "complete",
+      "width": 1200,
+      "height": 675,
+      "provenance": "illustrative",
+      "specification": "visual-guides/inspection/patch-distance.json",
+      "specification_sha256": "190f681fb52b6dcdca0646607cc84fbc09e49d28920aecfb778f50b0e76bd985",
+      "artwork": "visual-guides/inspection/art/patch-distance/complete.svg",
+      "png": "reports/assets/inspection/mechanism-patch-distance.png",
+      "svg": "reports/assets/inspection/mechanism-patch-distance.svg",
+      "guide_url": "https://ash0ts.github.io/forge-workshop-kit/guides/inspection/patch-distance/index.html",
+      "source_links": [
+        {
+          "label": "Implementation",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py"
+        },
+        {
+          "label": "Worked example and recorded outcomes",
+          "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA=="
+        }
+      ],
+      "all_reveals_checked": true
+    },
+    {
+      "report": "transit",
+      "guide": "service-time",
+      "state": "complete",
+      "width": 1200,
+      "height": 675,
+      "provenance": "illustrative",
+      "specification": "visual-guides/transit/service-time.json",
+      "specification_sha256": "d9a91790b2cf8903e3ca6862939715c6770e0c00b783ef3628d20983689fbad7",
+      "artwork": "visual-guides/transit/art/service-time/complete.svg",
+      "png": "reports/assets/transit/mechanism-service-time.png",
+      "svg": "reports/assets/transit/mechanism-service-time.svg",
+      "guide_url": "https://ash0ts.github.io/forge-workshop-kit/guides/transit/service-time/index.html",
+      "source_links": [
+        {
+          "label": "Implementation",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/factory_teaching.py"
+        },
+        {
+          "label": "Worked example and recorded outcomes",
+          "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ=="
+        },
+        {
+          "label": "GTFS conversion",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/transit.py"
+        },
+        {
+          "label": "Code for this operation",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/transit.py"
+        }
+      ],
+      "all_reveals_checked": true
+    },
+    {
+      "report": "airline",
+      "guide": "coverage",
+      "state": "complete",
+      "width": 1200,
+      "height": 675,
+      "provenance": "illustrative",
+      "specification": "visual-guides/airline_monitoring/coverage.json",
+      "specification_sha256": "db3f5278378ac146395ce9b356d6bb87d681b6f1edfd92653e78a3946d093761",
+      "artwork": "visual-guides/airline_monitoring/art/coverage/complete.svg",
+      "png": "reports/assets/airline/mechanism-coverage.png",
+      "svg": "reports/assets/airline/mechanism-coverage.svg",
+      "guide_url": "https://ash0ts.github.io/forge-workshop-kit/guides/airline_monitoring/coverage/index.html",
+      "source_links": [
+        {
+          "label": "Implementation",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+        },
+        {
+          "label": "Worked example and recorded outcomes",
+          "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA=="
+        },
+        {
+          "label": "Code for this operation",
+          "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/airline_teaching.py"
+        }
+      ],
+      "all_reveals_checked": true
+    }
+  ]
+}

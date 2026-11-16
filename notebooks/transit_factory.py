@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.11.1/forge_workshop_kit-0.11.1-py3-none-any.whl",
+#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge_workshop_kit-0.12.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -174,7 +174,15 @@ def _(get_step, mo, ui):
     return
 
 
-# workshop-cell: transit_factory/display/6
+# workshop-cell: transit_factory/explanation/service_day
+@app.cell(hide_code=True)
+def _(get_step, mo):
+    mo.stop(get_step() != 'setup')
+    mo.md('### Convert elapsed service time, not a clock-only time\nGTFS permits hours above 23. `24:08:00` means 24 hours and eight minutes after the service day\'s start.\n```python\nhours, minutes, seconds = map(int, departure_time.split(":"))\n# Keep the extra day: 24:08:00 becomes 86,880 elapsed seconds.\nelapsed = 3600 * hours + 60 * minutes + seconds\n# Add to the feed\'s local service-day origin, not today\'s date.\ndeparture = service_day_start + timedelta(seconds=elapsed)\n```\nThis excerpt explains the workshop\'s November dates. Preserve the agency timezone when comparing civil timestamps. Using `hours % 24` alone loses which day the train belongs to.')
+    return
+
+
+# workshop-cell: transit_factory/display/7
 @app.cell(hide_code=True)
 def _(get_step, lab, mo):
     mo.stop(get_step()!="setup")
@@ -202,7 +210,7 @@ def _(mo, opening_clock, show, transit, try_departure):
     return
 
 
-# workshop-cell: transit_factory/display/9
+# workshop-cell: transit_factory/display/10
 @app.cell(hide_code=True)
 def _(get_output, get_step, mo):
     mo.stop(get_step()!="setup")
@@ -239,7 +247,7 @@ def _(acceptance_check, acceptance_code, current_session, lab, mo, refresh, save
     return
 
 
-# workshop-cell: transit_factory/display/12
+# workshop-cell: transit_factory/display/13
 @app.cell(hide_code=True)
 def _(acceptance_code, current_session, digest, get_output, get_step, mo):
     mo.stop(get_step()!="setup")
@@ -357,7 +365,7 @@ def _(current_session, lab, mo, refresh, save_draft, show, teaching, worker_chec
     return
 
 
-# workshop-cell: transit_factory/display/20
+# workshop-cell: transit_factory/display/21
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_step, mo):
     mo.stop(get_step()!='worker')
@@ -396,7 +404,7 @@ def _(current_session, lab, mo, refresh, save_draft, show, tasks_check, tasks_co
     return
 
 
-# workshop-cell: transit_factory/display/23
+# workshop-cell: transit_factory/display/24
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_step, mo):
     mo.stop(get_step()!='tasks')
@@ -435,7 +443,7 @@ def _(current_session, lab, memory_check, memory_code, mo, refresh, save_draft, 
     return
 
 
-# workshop-cell: transit_factory/display/26
+# workshop-cell: transit_factory/display/27
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_step, mo):
     mo.stop(get_step()!='memory')
@@ -474,7 +482,7 @@ def _(current_session, evaluate_check, evaluate_code, lab, mo, refresh, save_dra
     return
 
 
-# workshop-cell: transit_factory/display/29
+# workshop-cell: transit_factory/display/30
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_step, mo):
     mo.stop(get_step()!='evaluate')
@@ -513,7 +521,7 @@ def _(current_session, lab, mo, refresh, release_check, release_code, save_draft
     return
 
 
-# workshop-cell: transit_factory/display/32
+# workshop-cell: transit_factory/display/33
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_step, mo):
     mo.stop(get_step()!='release')
@@ -570,7 +578,7 @@ def _(current_session, export_saved_traces, integrate_solo, lab, mo, refresh, re
     return
 
 
-# workshop-cell: transit_factory/display/37
+# workshop-cell: transit_factory/display/38
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_step, lab, mo, teaching):
     mo.stop(get_step()!="tasks")
@@ -683,6 +691,13 @@ def _(aria, current_session, get_revision, get_step, mo):
     transit_aria_investigate=aria.investigation(mo,_s,"investigate",workshop="transit-factory")
     mo.vstack([mo.md("Before asking a builder to draft a lesson, explain one observation from the integrated app's development checks. The final reserved scenarios stay out of this investigation."),transit_aria_investigate])
     return (transit_aria_investigate,)
+
+
+# workshop-cell: transit_factory/aria_response/investigate
+@app.cell(hide_code=True)
+def _(aria, mo, transit_aria_investigate):
+    aria.response(mo,transit_aria_investigate)
+    return
 
 
 # workshop-cell: transit_factory/controls/propose_lesson
@@ -812,13 +827,20 @@ def _(current_session, get_revision, get_step, lab, mo):
 
 # workshop-cell: transit_factory/aria/conclusion
 @app.cell(hide_code=True)
-def _(aria, conclusion, current_session, get_revision, get_step, mo, release_button):
+def _(aria, conclusion, current_session, get_revision, get_step, mo):
     mo.stop(get_step()!="release")
     _s=current_session()
     _revision=get_revision()
     transit_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=conclusion.value,workshop="transit-factory")
-    mo.vstack([transit_aria_conclusion,release_button])
+    transit_aria_conclusion
     return (transit_aria_conclusion,)
+
+
+# workshop-cell: transit_factory/aria_response/conclusion
+@app.cell(hide_code=True)
+def _(aria, mo, release_button, transit_aria_conclusion):
+    mo.vstack([aria.response(mo,transit_aria_conclusion),release_button])
+    return
 
 
 # workshop-cell: transit_factory/action/release_button
@@ -833,7 +855,7 @@ def _(conclusion, current_session, lab, mo, refresh, release_button, release_cod
     return
 
 
-# workshop-cell: transit_factory/display/60
+# workshop-cell: transit_factory/display/63
 @app.cell(hide_code=True)
 def _(current_session, get_output, get_revision, get_step, lab, mo):
     _s=current_session()
@@ -844,7 +866,7 @@ def _(current_session, get_output, get_revision, get_step, lab, mo):
     return
 
 
-# workshop-cell: transit_factory/display/61
+# workshop-cell: transit_factory/display/64
 @app.cell(hide_code=True)
 def _(get_step, go_to, mo, teaching, ui):
     _index=next(i for i,step in enumerate(teaching.STEPS) if step[0]==get_step())
@@ -854,7 +876,7 @@ def _(get_step, go_to, mo, teaching, ui):
     return (next_step_control,)
 
 
-# workshop-cell: transit_factory/display/62
+# workshop-cell: transit_factory/display/65
 @app.cell(hide_code=True)
 def _(current_session, get_revision, get_step, lab, mo, teaching, ui):
     _s=current_session()
@@ -875,7 +897,7 @@ def _(current_session, get_revision, mo):
     return (help_form,)
 
 
-# workshop-cell: transit_factory/display/64
+# workshop-cell: transit_factory/display/67
 @app.cell(hide_code=True)
 def _(current_session, help_form, mo):
     mo.stop(help_form.value is None or not current_session())

@@ -239,6 +239,10 @@ _row=next(row for row in routing.partition(get_data(),"validation")[0] if row["i
 mo.md("Published intent: **"+_row["label"]+"**") if reveal_label.value else mo.md("Explain which workflow this request needs before checking its label.")
 ''',True)
 add('''
+mo.stop(get_step() != 'baseline')
+mo.md("### Construct, fit, then predict\\nThe estimator returned by `make_classifier()` has no learned coefficients yet. The fit uses known labels; prediction receives features without labels.\\n```python\\n# Learn the coefficients that connect feature columns to intent labels.\\nmodel.fit(training_features, training_labels)\\n# Each output column still follows the order in model.classes_.\\nprobabilities = model.predict_proba(validation_features)\\n# Choose the largest column, then look up that column's intent.\\nintent = model.classes_[probabilities[0].argmax()]\\n```\\nThe release drill will deliberately break the last mapping. A large probability can still go to the wrong queue if its label moves.")
+''', True, cell_id='request_routing/explanation/fit_predict')
+add('''
 _s=get_context().get("session")
 _revision=get_revision()
 classifier_editor=mo.ui.code_editor(value=_s.get_draft("routing/classifier",teaching.CLASSIFIER_STARTER) if _s else teaching.CLASSIFIER_STARTER,language="python",on_change=lambda source:_s.save_draft("routing/classifier",source) if _s else None,debounce=False)
@@ -342,6 +346,9 @@ _baseline=teaching.saved(_s,"routing/baseline/tfidf") if _s else None
 routing_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=[_baseline["id"]] if _baseline else [],case_ids=[baseline_case.value] if baseline_case.value else [],interpretation=baseline_observation.value,workshop="banking-routing")
 mo.vstack([mo.md("Keep the selected validation request in view while checking the explanation. The sentence-feature comparison has not run yet."),routing_aria_investigate])
 ''', True, cell_id='request_routing/aria/investigate')
+add('''
+aria.response(mo,routing_aria_investigate)
+''', True, cell_id='request_routing/aria_response/investigate')
 add('''
 mo.stop(not save_baseline_observation.value)
 mo.stop(not baseline_observation.value.strip(),mo.md("Write a note to save it, or continue without one."))
@@ -739,8 +746,11 @@ mo.stop(get_step()!="report")
 _s=get_context().get("session")
 _revision=get_revision()
 routing_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=conclusion.value,workshop="banking-routing")
-mo.vstack([routing_aria_conclusion,publish])
+routing_aria_conclusion
 ''', True, cell_id='request_routing/aria/conclusion')
+add('''
+mo.vstack([aria.response(mo,routing_aria_conclusion),publish])
+''', True, cell_id='request_routing/aria_response/conclusion')
 add('''
 mo.stop(not retry_exports.value)
 _s=get_context()["session"]

@@ -8,7 +8,7 @@ Look at the right-hand pin on the board below. The dataset marks that region as 
 
 We built this workshop around a fictional manufacturing team deciding which circuit boards to hold for inspection. The photographs are real observations from [VisA's PCB1 collection](https://github.com/amazon-science/spot-diff/tree/2a692ab575001cbde74d402d897a7286086c6199): 1,004 normal boards and 100 anomalous ones. A detector that misses defects creates one kind of problem. A detector that flags every board creates another queue for the team to work through.
 
-The [copyable notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view) lets you build the feature and decision code, investigate mistakes, and compare the same photographs across versions. The board above belongs to the recorded teaching retest. Your notebook starts with development examples before opening its final comparison.
+The [copyable notebook](https://ash0ts.github.io/forge-workshop-kit/packet/start/inspection.html) lets you build the feature and decision code, investigate mistakes, and compare the same photographs across versions. The board above belongs to the recorded teaching retest. Your notebook starts with development examples before opening its final comparison.
 
 We use Forge to compare training runs, inspect the same board across detector versions in EvalTables, and recover the features, reference bank, and classifier from Artifacts. The practical decisions are which representation to use, where to set the inspection cutoff, and which additional labels to acquire. Those decisions affect missed defects and the workload passed to human inspectors, so we keep both visible.
 
@@ -36,7 +36,7 @@ Our first recipe compared each patch with the average normal patch at its positi
 
 The follow-up compares the query with actual normal patches and retains the closest match. Channel scaling uses variation in the normal reference bank, with a floor to prevent division by a very small value. During fitting, a board cannot select itself as its nearest neighbor.
 
-![A query patch is compared with the same spatial position on normal fitting boards, then the smallest scaled squared distance is retained.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/patch-distance.png)
+![PCB1 anomaly 048 at position (10, 7) is compared with the same position on normal fitting boards. The nearest scaled distance becomes one of 196 spatial features.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/mechanism-patch-distance.png)
 
 *One distance is calculated for each of the 196 positions. A bright cell means the encoder representation differs from the normal references. It does not establish which pixels caused the classifier's decision.*
 
@@ -48,7 +48,9 @@ def build_features(data, rows, method, reference=None):
     if method == "whole":
         return whole
     errors = inspection.nearest_patch_errors(data, rows, reference)
+    # Compress large distances, keeping one row per board.
     local = np.log1p(errors).reshape(len(rows), -1)
+    # Add 196 spatial values to 512 global values: 708 features.
     return np.concatenate([whole, local], axis=1)
 ```
 
@@ -104,10 +106,12 @@ Open [the native EvalTables comparison](https://forge.coreweave.com/wandb/wandb/
 
 ## Run the workshop yourself
 
-Open the [Circuit-board inspection notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view), choose **Copy to project**, and select a writable project of your own. Use **Run all stale cells** once to create the controls, inspect the bundled development board, and follow the access check. Each training operation has an explicit run button.
+The start page offers notebook copy, import, and laptop setup. You can also open the [Forge template directly](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view). If the hosted link sends you back to Home, use the import or local option on that page; your saved work does not need to be rerun.
+
+Open the [Circuit-board inspection notebook](https://ash0ts.github.io/forge-workshop-kit/packet/start/inspection.html), choose **Copy to project**, and select a writable project of your own. Use **Run all stale cells** once to create the controls, inspect the bundled development board, and follow the access check. Each training operation has an explicit run button.
 
 The full workshop takes four hours and assumes basic Python. The core exercises use CPU and make no inference API calls; notebook compute is billed separately. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) includes the laptop path, and the [companion deck](https://ash0ts.github.io/forge-workshop-kit/inspection/) follows the same calculations. Optional ARIA investigations have separate access and usage requirements, with recorded investigations available.
 
-ARIA's two activities examine a validation decision and the final comparison. Check its claims against the photograph, score, threshold, and reference label. Its explanation does not replace those checks or become a new defect label.
+ARIA's two activities examine a validation decision and the final comparison. At the stop, click **Start ARIA investigation** to send your explanation and the selected records. **Open ARIA conversation** takes you to that same conversation in Forge; **Check ARIA response** brings its answer back into the notebook. Check its claims against the photograph, score, threshold, and reference label. Its explanation does not replace those checks or become a new defect label.
 
 The [Inspection packet](https://utm.io/uuH99) brings together this Report, the deck, notebook, visual guides, and running instructions. Use the recorded board comparison for a short demonstration or fit the detectors in your own project. The materials remain technical previews pending external-account checks and participant rehearsals.

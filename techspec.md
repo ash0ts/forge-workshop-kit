@@ -13,10 +13,10 @@ flowchart LR
     Inference --> Local
     Local -->|Explicit publication| Forge[Participant Forge project]
     Forge --> Monitor[Facilitator reads progress]
-    Local -. selected saved evidence .-> ARIA[Participant asks ARIA]
+    Local -. selected saved evidence .-> ARIA[Explicit ARIA investigation]
 ```
 
-Solid arrows show execution or data movement. Dashed arrows show evidence supplied for an investigation. The ARIA card assembles context locally; sending a native ARIA question remains a participant action.
+Solid arrows show execution or data movement. Dashed arrows show evidence supplied for an investigation. The ARIA card assembles context locally. An explicit Start action sends the selected context and saves the returned conversation.
 
 Three boundaries matter when contributing:
 
@@ -226,7 +226,11 @@ The notebook's measured agents propose edits, route requests, operate tools, or 
 
 [`aria.py`](src/forge_workshop_kit/aria.py) resolves explicit saved stage IDs from the current workspace. Early stops use manifest allowlists for development or validation stages and reject nested reserved-result declarations. The context includes source and evidence fingerprints, bounded saved observations, file names, and available native links. It does not read an entire journal into a prompt or manufacture an attachment from a filename.
 
-Opening the card, selecting evidence, copying a prompt, reading a recording, and saving a citation note are local actions. Participants open Forge and send the question themselves. Native attachments are UI actions, not an effect of pasting `@run-name` text.
+Opening the card, selecting evidence, copying a prompt, reading a recording, and saving a citation note are local actions. **Start ARIA investigation** calls [`aria_client.py`](src/forge_workshop_kit/aria_client.py) explicitly. It resolves the participant’s cloud login, posts the question with typed run and Agent Lens conversation references to the fixed ARIA origin, and saves the returned turn and thread. Exact artifact-version links remain in the question. The native conversation opens with the same attachments and offers follow-up interaction.
+
+The client saves `submitting` before the POST and never automatically retries it. An ambiguous outcome stays unresolved until the participant inspects ARIA history. A known rejected request can be retried explicitly after access is repaired. **Check ARIA response** reads the saved turn; rendering and restoration only read the local receipt. Responses, project identity, and handles are checked before saving. Cloud credentials are resolved for the cloud host, redirects are disabled, and authentication details never enter a receipt. ARIA’s organization usage is separate from the notebook allowance.
+
+The [direct-call qualification](docs/aria-direct-qualification.md) verifies one Routing investigation, its native run and conversation attachments, restored answer, and same-conversation handoff. It does not establish access for another account or all twelve activities.
 
 Saved notes include the stop, live or recorded mode, selected evidence identity, interpretation, checked claim, citation, and supported/disputed/unresolved assessment. A note stays bound to its original evidence when the selected case changes. It is not a score, training label, release approval, experiment prerequisite, or automatic input to the editor. Missing notes remain compatible with old journals.
 

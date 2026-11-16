@@ -60,6 +60,10 @@ mo.stop(get_step()!="setup")
 mo.vstack([mo.md("**6-hour workshop, including breaks and exercises.** [Open the companion deck](https://ash0ts.github.io/forge-workshop-kit/transit/). Its worked examples explain the code you will edit below."),mo.Html(ui.heading("Build a transit app with a team of coding agents","People leaving an evening event need the next departures and the last service home. Your team is building the departure board. You'll give two coding agents separate tasks, test their combined work, and decide what the next builders should remember.",theme="neutral",eyebrow="Six-hour software factory workshop")),mo.md("The schedule is real: a frozen MBTA GTFS feed for **November 28 to December 4, 2024**. GTFS joins routes, trips, stops, service calendars, and stop times. You'll inspect those records before asking agents to change code. The app displays historical scheduled departures, not live arrival predictions."),mo.md("**Your output:** a departure board you can run, the coordinator you wrote, and a release linked to its tests and Agent Lens conversations. The first work order adds next departures. The second adds the last departure tonight and an itinerary download."),mo.md("A software factory connects a request to assignments, code, integration tests, and a release decision. The builder agents write the app's query and display modules. You write the task selection, handoffs, memory retrieval, and checks around them."),mo.md("[GTFS source and terms](https://github.com/mbta/gtfs-documentation) · [Software-factory background](https://factory.strongdm.ai/) · [Workshop source](https://github.com/ash0ts/forge-workshop-kit/blob/main/notebooks/transit_factory.py)")])
 ''',True)
 add('''
+mo.stop(get_step() != 'setup')
+mo.md('### Convert elapsed service time, not a clock-only time\\nGTFS permits hours above 23. `24:08:00` means 24 hours and eight minutes after the service day\\'s start.\\n```python\\nhours, minutes, seconds = map(int, departure_time.split(":"))\\n# Keep the extra day: 24:08:00 becomes 86,880 elapsed seconds.\\nelapsed = 3600 * hours + 60 * minutes + seconds\\n# Add to the feed\\'s local service-day origin, not today\\'s date.\\ndeparture = service_day_start + timedelta(seconds=elapsed)\\n```\\nThis excerpt explains the workshop\\'s November dates. Preserve the agency timezone when comparing civil timestamps. Using `hours % 24` alone loses which day the train belongs to.')
+''', True, cell_id='transit_factory/explanation/service_day')
+add('''
 mo.stop(get_step()!="setup")
 _data=lab.data_preview()
 mo.vstack([mo.md("### Read one departure before writing code\\nA trip references a service calendar. Its stop times belong to that service day. After-midnight values can exceed 24:00:00. The feed date is part of the input, not the computer's current date."),mo.ui.table([{"Trip":row["trip_id"],"Platform":row["stop_id"],"GTFS departure":row["departure_time"],"Service calendar":row["service_id"]} for row in _data["departures"]],selection=None),mo.accordion({"Source, checksum, and extraction":mo.json(_data["manifest"])}),mo.md("Trip **63926435** has a **24:08:00** departure at Park Street on Thanksgiving's service calendar. That means **00:08 on November 29**, with **November 28** retained as its service date. At 00:05, a useful board must still include it. Write that requirement below before building the app.")])
@@ -303,6 +307,9 @@ transit_aria_investigate=aria.investigation(mo,_s,"investigate",workshop="transi
 mo.vstack([mo.md("Before asking a builder to draft a lesson, explain one observation from the integrated app's development checks. The final reserved scenarios stay out of this investigation."),transit_aria_investigate])
 ''', True, cell_id='transit_factory/aria/investigate')
 add('''
+aria.response(mo,transit_aria_investigate)
+''', True, cell_id='transit_factory/aria_response/investigate')
+add('''
 _s=current_session()
 _revision=get_revision()
 lesson_text=mo.ui.text_area(value=_s.get_draft("factory/lesson-text","") if _s else "",label="The rule you checked and where it applies",full_width=True,on_change=lambda text:_s.save_draft("factory/lesson-text",text) if _s else None)
@@ -388,8 +395,11 @@ mo.stop(get_step()!="release")
 _s=current_session()
 _revision=get_revision()
 transit_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=conclusion.value,workshop="transit-factory")
-mo.vstack([transit_aria_conclusion,release_button])
+transit_aria_conclusion
 ''', True, cell_id='transit_factory/aria/conclusion')
+add('''
+mo.vstack([aria.response(mo,transit_aria_conclusion),release_button])
+''', True, cell_id='transit_factory/aria_response/conclusion')
 add('''
 mo.stop(not release_button.value)
 teaching.check_exercise("release",release_code.value)

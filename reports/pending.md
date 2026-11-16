@@ -4,7 +4,7 @@ Pending, Inc. has hired an AI employee to handle refunds and account access. Man
 
 We built this workshop around the work that paragraph leaves out. The agent needs to read an account, choose a tool, receive its result, and check that it changed the right thing. We call those instructions, tools, skills, and orchestration code the agent's harness. Later, another agent gets the job of improving it. We can follow its edits into the next execution and ask whether they helped.
 
-The office and customers are fictional. The Python, model requests, traces, and evaluations run. You can [copy the notebook into your own Forge project](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) and implement the same steps. This article follows the recorded instructor run, including a proposed improvement we rejected.
+The office and customers are fictional. The Python, model requests, traces, and evaluations run. You can [copy the notebook into your own Forge project](https://ash0ts.github.io/forge-workshop-kit/packet/start/pending.html) and implement the same steps. This article follows the recorded instructor run, including a proposed improvement we rejected.
 
 We use Forge to run a ticket, inspect the tool calls and resulting account, choose a development example, revise the harness, and evaluate the frozen versions on matching tickets. This is the work behind an agent that can take actions in a customer account: a fluent reply is only one output to check. Agent Lens exposes what it did; the account checks and aligned evaluation show whether it delivered the requested change.
 
@@ -20,6 +20,7 @@ First, give the employee a way to read the invoice. The notebook asks you to com
 
 ```python
 def my_invoice_tool(state, account_id, invoice_id):
+    # Scope the lookup to this customer before filtering its invoice.
     account = state["accounts"][account_id]
     return {
         "payments": [
@@ -37,17 +38,19 @@ Calling the function is only half the connection. The next model request also ne
 ```python
 def my_dispatch(name, arguments, world, invoice_tool, call_tool):
     if name == "lookup_invoice":
+        # A lookup returns data without changing the account.
         return world, invoice_tool(world, **arguments)
     return call_tool(world, name, arguments)
 
 def my_observation(messages, action, result):
+    # Record what was asked and what happened before the next request.
     return messages + [
         {"role": "assistant", "content": json.dumps(action)},
         {"role": "user", "content": "Tool observation: " + json.dumps(result)},
     ]
 ```
 
-![A chosen lookup_invoice action passes Acme and inv-1 to my_dispatch, receives the payment records, and appends them to the next model request through my_observation.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/tool-handoff.png)
+![The same acme/inv-1 lookup appears in the action, dispatcher, returned record, and appended observation. The next model request includes that observation.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/mechanism-dispatch.png)
 
 *This is the notebook's worked handoff, including its serialized action and observation messages. If `my_observation` discards the result, the model won't see the records your Python function returned. The free check exercises this connection without calling a model.*
 
@@ -156,10 +159,12 @@ The deterministic retry repair improved the implementation. The agent-written ha
 
 ## Build your own employee
 
-[Open Pending, Inc. and choose **Copy to project**](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view). Open the editable copy, use **Run all stale cells** to create its controls, and check that the destination is your project. Start with the invoice function and its free check; explicit exercise buttons run the employee and editor.
+The start page offers notebook copy, import, and laptop setup. You can also open the [Forge template directly](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view). If the hosted link sends you back to Home, use the import or local option on that page; your saved work does not need to be rerun.
+
+[Open Pending, Inc. and choose **Copy to project**](https://ash0ts.github.io/forge-workshop-kit/packet/start/pending.html). Open the editable copy, use **Run all stale cells** to create its controls, and check that the destination is your project. Start with the invoice function and its free check; explicit exercise buttons run the employee and editor.
 
 The [four-hour deck](https://ash0ts.github.io/forge-workshop-kit/pending/) accompanies the notebook. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) covers laptop use, credentials, and returning to saved work. You'll need basic Python, project write access, notebook compute, and inference access. The adjustable $8 notebook inference allowance excludes compute and ARIA. No workshop gateway or remote Sandbox entitlement is required.
 
-Two ARIA activities let you question your development diagnosis and final conclusion, then verify a cited record. Use the recorded investigations when live ARIA isn't available. Its explanation does not become an account check or an automatic harness edit.
+Two ARIA activities let you question your development diagnosis and final conclusion, then verify a cited record. At the stop, click **Start ARIA investigation** to send your explanation and the selected records. **Open ARIA conversation** takes you to that same conversation in Forge; **Check ARIA response** brings its answer back into the notebook. Use the recorded investigations when live ARIA isn't available. Its explanation does not become an account check or an automatic harness edit.
 
 For a short demonstration or a facilitated session, [open the Pending packet](https://utm.io/uuH96). It brings together this Report, the deck, notebook, visual guides, and running instructions. The materials remain a technical preview while external-account checks and participant rehearsals are outstanding. Your run may produce a different branch; keep the files, actions, and checks needed to explain it.

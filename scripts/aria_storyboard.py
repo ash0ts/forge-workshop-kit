@@ -99,15 +99,9 @@ def _assets(deck_root, pack, pack_path, stop):
     return captures
 
 def _graphic(deck, stop, phase):
-    # This is an instructional diagram. It makes no assertion about an actual result.
-    labels=RECORDS[deck][0 if stop=='investigate' else 1]
-    words=['Your interpretation','ARIA response','Checked source record']
-    cards=[]
-    for index,(word,detail) in enumerate(zip(words,labels)):
-        fill='#d9e9e1' if index==phase else '#f0eee4'
-        cards.append(f'<g><rect x="{index*370}" y="18" width="340" height="116" rx="8" fill="{fill}" stroke="#48675d"/><text x="{index*370+18}" y="54" fill="#183b31" style="font-size:23px">{escape(word)}</text><text x="{index*370+18}" y="91" fill="#42584f" style="font-size:17px">{escape(detail)}</text></g>')
-        if index<2: cards.append(f'<path d="M{index*370+345} 75h20" fill="none" stroke="#48675d" stroke-width="2"/><path d="M{index*370+360} 70l5 5-5 5" fill="none" stroke="#48675d" stroke-width="2"/>')
-    return '<div class="aria-sequence-wrap"><svg class="aria-sequence" viewBox="0 0 1110 154" role="img" aria-label="Explain your interpretation, read ARIA’s answer, and check its cited source.">'+''.join(cards)+'</svg></div>'
+    from forge_workshop_kit.aria_visual import handoff
+    return '<div class="aria-sequence-wrap">' + handoff(phase) + '</div>'
+
 
 def _capture(shot):
     """Outline observed fields without changing or covering the original image."""
@@ -130,15 +124,17 @@ def _capture(shot):
             +('<figcaption>'+''.join(labels)+'</figcaption>' if labels else '')+'</figure>')
 
 def _frame(deck,stop,phase,pack,captures):
-    graphic=_graphic(deck,stop,phase)
-    question=_definition(deck,stop)['question']
+    # Explain the handoff once; the next frames need room for the actual
+    # response and cited source at a readable scale.
+    graphic=_graphic(deck,stop,2) if phase==0 else ''
+    question=QUESTIONS[deck][0 if stop=='investigate' else 1]
     recorded=pack.get('status')=='recorded' and isinstance(pack.get('response'),str) and bool(pack['response'].strip())
     if phase==0:
         scope='Use only the selected development or validation records.' if stop=='investigate' else 'Keep the compared versions frozen. Suggest a future experiment without running it.'
         records=pack.get('records',[])[:3]
         links=''.join('<li>'+_record_link(r.get('url',''),r.get('label',r.get('identity','Selected record')))+'</li>' for r in records)
         selected=('<ul class="aria-records">'+links+'</ul>') if links else '<p>Select the saved records shown beside your notebook result.</p>'
-        return graphic+f'<div class="aria-question">{escape(question)}</div><div class="aria-two"><div><b>Start with your explanation</b><p>What do you think happened? Which observation supports it?</p><p>Copy the notebook’s prompt and add native context in Forge.</p></div><div><b>Selected instructor records</b>{selected}</div></div><p class="aria-foot">{scope} Check ARIA’s selected project. Use exact record URLs; add native context where this surface offers it.</p>'
+        return graphic+f'<div class="aria-question">{escape(question)}</div><div class="aria-two"><div><b>Start with your explanation</b><p>What do you think happened? Which observation supports it?</p><p>Click Start ARIA investigation in the notebook, then Open ARIA conversation.</p></div><div><b>Selected instructor records</b>{selected}</div></div><p class="aria-foot">{scope} The saved request carries this project and selected native references. Open its conversation while ARIA works.</p>'
     if phase==1:
         if not recorded:
             return graphic+'<div class="aria-unavailable"><b>No usable recorded ARIA response is available for this stop.</b><p>Keep the original question. Inspect its selected records directly and record what you can establish. Do not present an invented answer as ARIA output.</p></div>'
@@ -195,7 +191,7 @@ def enrich(slides, deck_root, deck):
         purpose=definition['title']
         notes=(f'Allocate {duration} minutes within the existing discussion time. Ask for the participant’s interpretation before showing the response. '
                'The notebook agent still produces the measured changes. ARIA only investigates saved records. '
-               'Use Copy investigation prompt and Open the selected Forge record. Verify the project selected inside ARIA; expanding to a full-page chat can reset it. Use exact record URLs. Add native attachments when this surface offers them. Typing @ did not open a run picker in this release check. Pasting an @ name or a URL does not prove that ARIA read a record. Excerpt-only analysis must stay labeled. '
+               'Use Start ARIA investigation, then Open ARIA conversation. The explicit click sends one question with native run and Agent Lens conversation references. ARIA works asynchronously while the participant inspects the selected result. Check ARIA response reads that saved turn; opening and restoration never resend it. Verify the source ARIA actually read. Exact artifact-version URLs remain in the question; excerpt-only analysis must stay labeled. '
                'ARIA requires a team project with Smart features; a successful write check does not establish that access. ARIA usage is outside the notebook’s $8 allowance. '
                'If unavailable or slow, choose Use the recorded investigation. Check one cited event, value, prediction, or code line, then Save citation check. '
                'Do not launch work, modify criteria, accept a label, or reopen the frozen comparison from this activity. '
@@ -211,7 +207,7 @@ def enrich(slides, deck_root, deck):
                        body=_frame(deck,stop,phase,pack,captures),notes=notes,kind='aria-investigation',cls='aria-investigation',answer=None,
                        concept=definition['question'],
                        source=['scripts/aria_storyboard.py',str(path.relative_to(KIT))],evidence=[r.get('url') for r in pack.get('records',[]) if r.get('url')],
-                       exercise={'step':definition['step'],'function':None,'check':'Check one cited record','run':'Copy investigation prompt'},
+                       exercise={'step':definition['step'],'function':None,'check':'Check one cited record','run':'Start ARIA investigation'},
                        time=f'{minute//60}:{minute%60:02d} · {duration} minutes across these three frames',
                        start_minute=minute,elapsed_minutes=minute,clicks=None,
                        aria={'stop_id':stop,'phase':label,'duration_minutes':duration,'recorded_status':pack.get('status','unavailable')})

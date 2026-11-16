@@ -5,35 +5,42 @@
   "links": {
     "pending": {
       "short_url": "https://utm.io/uuH96",
-      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=pending-start#pending"
+      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/pending.html?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=pending-start"
     },
     "solar": {
       "short_url": "https://utm.io/uuH97",
-      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=solar-start#solar"
+      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/solar.html?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=solar-start"
     },
     "routing": {
       "short_url": "https://utm.io/uuH98",
-      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=routing-start#routing"
+      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/routing.html?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=routing-start"
     },
     "inspection": {
       "short_url": "https://utm.io/uuH99",
-      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=inspection-start#inspection"
+      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/inspection.html?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=inspection-start"
     },
     "transit": {
       "short_url": "https://utm.io/uuIaa",
-      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=transit-start#transit"
+      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/transit.html?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=transit-start"
     },
     "airline_monitoring": {
       "short_url": "https://utm.io/uuIab",
-      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=airline_monitoring-start#airline_monitoring"
+      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/airline_monitoring.html?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=airline_monitoring-start"
     },
     "packet": {
-      "short_url": "https://utm.io/uuIac",
-      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=social&utm_source=slack&utm_content=meeting-packet"
+      "short_url": "https://utm.io/uuIaS",
+      "url": "https://ash0ts.github.io/forge-workshop-kit/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=social&utm_source=slack&utm_content=workshop-library"
     },
     "loom": {
       "short_url": "https://utm.io/uuIan",
-      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=video&utm_source=loom&utm_content=kit-walkthrough"
+      "url": "https://ash0ts.github.io/forge-workshop-kit/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=video&utm_source=loom&utm_content=kit-walkthrough"
+    }
+  },
+  "legacy_links": {
+    "internal_packet": {
+      "short_url": "https://utm.io/uuIac",
+      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=social&utm_source=slack&utm_content=meeting-packet",
+      "purpose": "Legacy internal sharing. Historical clicks include coworker and validation traffic; exclude from external acquisition reporting."
     }
   }
 }

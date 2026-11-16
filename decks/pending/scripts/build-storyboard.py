@@ -208,6 +208,7 @@ slide('answer-loop','Worked answer · observation handoff',code('''def my_dispat
     return call_tool(world, name, arguments)
 
 def my_observation(messages, action, result):
+    # Keep history; append the chosen action and the actual returned data.
     return messages + [
         {"role": "assistant", "content": json.dumps(action)},
         {"role": "user", "content": "Tool observation: " + json.dumps(result)},

@@ -223,6 +223,10 @@ _error=get_display().get("tool",{}).get("error")
 mo.vstack([mo.ui.table(_result.get("rows",[]),selection=None),mo.Html(ui.result("Invoice checks",{"Status":_result["state"],"Issue":_error or ""},status="failed" if _error else "complete" if _result["passed"] else "not started")),ui.evidence(mo,_s,[teaching.latest(_s,"pending/check-tool")["id"]],question="Open one lookup_invoice call. Check which account and invoice you requested, then look at the returned payments. Later, the employee can choose this tool or another registered account-reading tool.") if _s and teaching.latest(_s,"pending/check-tool") else mo.md(""),pending_next_step_2])
 ''',True)
 add('''
+mo.stop(get_step() != 'loop')
+mo.md('### Keep the action and its result together\\nDispatch changes the outside world or reads it. The observation handoff changes what the model knows about that operation.\\n```python\\n# Execute the named tool with the arguments selected by the model.\\nresult = my_dispatch(action["action"], action["arguments"], ...)\\n# Preserve the action, then append the actual return value to history.\\nmessages = my_observation(messages, action, result)\\n# The next request receives that longer history.\\n```\\nThis is an abbreviated call-site sketch; the editable functions below have the full signatures. A refund can happen even if the model never receives its result. Retrying before checking the account can therefore change an already-changed account.')
+''', True, cell_id='pending_inc/explanation/handoff')
+add('''
 mo.stop(get_step()!="loop")
 _s=get_pending().get("session")
 loop_editor=mo.ui.code_editor(value=_s.get_draft("pending/loop",teaching.STARTERS["loop"]) if _s else teaching.STARTERS["loop"],language="python",min_height=230,max_height=450,label="Dispatch an action and append its observation",on_change=lambda value:_s.save_draft("pending/loop",value) if _s else None)
@@ -411,8 +415,11 @@ _s=get_pending().get("session")
 _evaluation=teaching.latest(_s,"pending/development-evaluation") if _s else None
 _ids=([_evaluation["id"]]+[r["stage_id"] for r in _evaluation["result"].get("runs",[])]) if _evaluation else []
 pending_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=_ids,workshop="pending-direct-teaching")
-mo.vstack([pending_aria_investigate,pending_next_step_4])
+pending_aria_investigate
 ''', True, cell_id='pending_inc/aria/investigate')
+add('''
+mo.vstack([aria.response(mo,pending_aria_investigate),pending_next_step_4])
+''', True, cell_id='pending_inc/aria_response/investigate')
 add('''
 mo.stop(get_step()!="manual")
 _s=get_pending().get("session")
@@ -656,8 +663,11 @@ add('''
 mo.stop(get_step()!="report")
 _s=get_pending().get("session")
 pending_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=pending_conclusion.value,workshop="pending-direct-teaching")
-mo.vstack([pending_aria_conclusion,pending_report])
+pending_aria_conclusion
 ''', True, cell_id='pending_inc/aria/conclusion')
+add('''
+mo.vstack([aria.response(mo,pending_aria_conclusion),pending_report])
+''', True, cell_id='pending_inc/aria_response/conclusion')
 add('''
 mo.stop(not pending_report.value)
 _s=get_pending()["session"]

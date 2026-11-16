@@ -25,7 +25,7 @@ Use [setup and recovery](docs/setup.md), the [workshop runbooks](docs/README.md#
 
 ## Product access still to qualify
 
-- **ARIA attachments:** exact links and supplied excerpts were exercised; Inspection also used an actual image attachment. Native run and Weave attachment controls need their own successful rehearsal. A pasted URL does not establish that ARIA read the record, and supplying an EvalTables URL does not prove panel interpretation. Follow the [ARIA activity contract](docs/aria-investigations.md).
+- **ARIA access and attachments:** the direct notebook path successfully submitted one Routing investigation with native run and Agent Lens conversation references, restored its answer, and opened the same native conversation. Inspection’s earlier recording also used an actual image attachment. External-account use, all twelve direct activities, and Weave/evaluation attachment controls still need qualification. An EvalTables URL does not prove panel interpretation. See the [direct-call receipt](docs/aria-direct-qualification.md) and [activity contract](docs/aria-investigations.md).
 - **Evaluation services:** the kit uses the verified Weave-backed native EvalTables path. The separate CES backend’s last recorded HTTP 500 remains a limitation. Keep the working path and unavailable service distinct in the UI and documentation. See [evaluation publication and recovery](docs/evaluations.md).
 - **Advanced modules:** SFT, Registry release exercises, and remote research need their own access, cost, timing, and reproduction checks before being taught as demonstrated extensions. They are optional and must not become prerequisites for the six core workshops. See [advanced module status](docs/advanced/README.md).
 

@@ -15,11 +15,11 @@ Pick one workshop for the audience, then choose a recorded demonstration or a ha
 | Transit | Do separately built components work together, and did a saved lesson help? | 6 hours | [Run Transit](run-transit.md) |
 | Airline | Does the monitoring rule catch the booking mistakes we care about? | 6 hours | [Run Airline](run-airline_monitoring.md) |
 
-All assume basic Python. The durations include explanations, coding, and breaks. For a short meeting, choose the guide’s recorded demo and use the [sharing packet](sharing.md). To introduce the whole collection, use the [ten-minute Loom walkthrough](loom-walkthrough.md).
+All assume basic Python. The durations include explanations, coding, and breaks. For a short meeting, choose the guide’s recorded demo. The [workshop overview](workshop-overview.md) introduces the collection and its product connections.
 
 ## Prepare the room
 
-1. Open the chosen guide, browser deck, PDF, and notebook. Keep the PDF and the recorded example available if a service is slow. The [deck guide](deck-guide.md) explains presentation controls and worked answers.
+1. Open the chosen guide, browser deck, PDF, and notebook start page. Keep the PDF and the recorded example available if a service is slow. For offline interaction, extract the browser ZIP and run `python3 serve.py --open` (Windows: `py serve.py --open`). The PDF opens directly. The [deck guide](deck-guide.md) explains presentation controls and worked answers.
 2. For a hands-on session, rehearse an attendee-style copy using the intended account type. Check notebook compute, project writes, tracing, inference, and evaluation publication separately. Use the [participant setup guide](setup.md); laptop instructions are included.
 3. Send the workshop’s [registered sharing link or QR](share-links.md), setup guide, and duration before the session. Its public packet card includes the notebook link. Participants use their own project and credentials. Ask for their project link only if they want you to read progress. Public teaching projects must contain only the supplied public or fictional data.
 4. Copy the [facilitator monitor](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzM=/view) into your project. Add the project roster, select the workshop, then use **Save roster and filters** and **Refresh progress**. [Monitor setup](setup.md#read-participant-progress) covers filtering and saved rosters.

@@ -4,6 +4,10 @@ Use the deck to explain the next code change, then leave its exercise instructio
 
 Browser decks reveal one operation at a time. PDFs preserve meaningful reveal states. Worked answers live after the main sequence and link back to their exercise. Give participants time to try, but let them open an answer earlier if they need it. Identify recorded results before showing them; a participant’s unexecuted edit did not produce the capture.
 
+For an offline presentation, download the workshop's **Offline deck** ZIP and extract the whole folder. Run `python3 serve.py --open` in that folder (Windows: `py serve.py --open`), or use its platform launcher. The server chooses an available local port. Keep the terminal open while presenting; Ctrl-C stops it. The deck includes its fonts, diagrams, captures, and scripts. No Node installation or network connection is needed. Product and source links still require internet.
+
+The interactive deck cannot run by double-clicking `index.html`, because browsers restrict local JavaScript modules. That page displays launch instructions. Open the included `deck.pdf` for a presentation that needs no server. If you downloaded a browser-only development build, obtain the separate PDF from the public library.
+
 Use the [workshop runbook index](README.md#workshop-runbooks-and-evidence) for schedules, and each deck’s generated presenter notes for slide-specific questions. The [deck source guide](../decks/README.md) covers local presentation; [maintenance](maintenance.md#build-the-decks) covers builds and publication.
 
 ## Pending, Inc.

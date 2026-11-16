@@ -1,4 +1,4 @@
-"""Package existing workshop materials for meetings. No execution or publication."""
+"""Package participant and facilitator materials. No execution or publication."""
 
 import argparse
 import hashlib
@@ -30,8 +30,12 @@ def build(site, *, pdf=False):
     site = Path(site).resolve()
     target = site / "packet"
     target.mkdir(parents=True, exist_ok=True)
-    for name in ("assets", "decks", "docs", "fonts"):
+    for name in ("assets", "decks", "docs", "fonts", "notebooks", "start"):
         (target / name).mkdir(exist_ok=True)
+    # These communication drafts remain in Git, outside the participant website.
+    for name in ("sharing", "loom-walkthrough"):
+        for suffix in ("html", "md"):
+            (target / "docs" / f"{name}.{suffix}").unlink(missing_ok=True)
     payloads = set()
 
     def copy(source, relative):
@@ -54,9 +58,9 @@ def build(site, *, pdf=False):
     templates = [row for row in templates if row.get("authoring", {}).get("deck")]
     reports = json.loads((ROOT / "reports/published.json").read_text())["reports"]
     sharing = json.loads((ROOT / "docs/share-links.json").read_text())["links"]
-    documents = ["docs/sharing.md", "docs/use-the-workshops.md", "docs/setup.md",
+    documents = ["docs/workshop-overview.md", "docs/use-the-workshops.md", "docs/setup.md",
                  "docs/current-demo-guide.md", "docs/deck-guide.md", "docs/recorded-results.md",
-                 "docs/facilitator-start.md", "docs/share-links.md", "docs/loom-walkthrough.md",
+                 "docs/facilitator-start.md", "docs/share-links.md",
                  *[f'docs/run-{row["authoring"]["deck"]["directory"]}.md' for row in templates],
                  "next-up.md", *[row["authoring"]["runbook"] for row in templates]]
     documents = list(dict.fromkeys(documents))
@@ -99,15 +103,49 @@ def build(site, *, pdf=False):
         runbook = "docs/" + Path(row["authoring"]["runbook"]).stem + ".html"
         quick_guide = f"docs/run-{slug}.html"
         share_url = sharing[slug]["short_url"]
+        notebook_path = Path(row["authoring"]["notebook"])
+        copy(ROOT / notebook_path, "notebooks/" + notebook_path.name)
+        start_link = f"start/{slug}.html"
+        extras = " ".join(f"--extra {extra}" for extra in row.get("extras", []))
+        commands = ("git clone https://github.com/ash0ts/forge-workshop-kit.git\n"
+                    "cd forge-workshop-kit\n"
+                    f"uv sync --frozen {extras}\n"
+                    f"uv run {extras} wandb login\n"
+                    f"uv run {extras} marimo edit {notebook_path}")
+        start_body = (
+            '<nav><a href="../index.html">All workshop materials</a></nav>'
+            f'<h1>Start {html.escape(deck["title"])}</h1>'
+            '<p>Read the example before running anything. The notebook is editable Python; '
+            'your executions and saved results belong to your own project.</p>'
+            '<div class="actions"><a href="' + html.escape(report["url"], quote=True) + '">Read the worked example</a>'
+            '<a href="' + html.escape(report["notebook_url"], quote=True) + '">Open the Forge template</a>'
+            f'<a href="../notebooks/{notebook_path.name}" download>Download the notebook (.py)</a></div>'
+            '<h2>Copy into Forge</h2><ol><li>Sign in to Forge and open the template.</li>'
+            '<li>Choose <strong>Copy to project</strong>, select a project you can write to, and open the copy in Edit.</li>'
+            '<li>Run all stale cells once to initialize the controls, then follow the first exercise. This does not press the Run buttons.</li></ol>'
+            '<details><summary>The notebook link redirects or does not open</summary>'
+            '<p>Reopen the template after signing in. If Forge still sends you to Home or does not show Notebooks, '
+            'the hosted notebook route is unavailable for your current session or account. The link cannot grant compute or product access.</p>'
+            '<p>If your project has notebook import, use the downloaded .py file. Otherwise use the laptop commands below. '
+            'The Report, visual guides, and deck remain readable without notebook compute.</p></details>'
+            '<h2>Run on your laptop</h2><p>Install Git, Python 3.11–3.13, and '
+            '<a href="https://docs.astral.sh/uv/getting-started/installation/">uv</a>, then run:</p>'
+            f'<pre><code>{html.escape(commands)}</code></pre>'
+            '<p>Choose your writable <code>entity/project</code> in the setup step. The default $8 inference allowance is adjustable. '
+            'Compute, ARIA, and native tag judging are separate. Opening the notebook starts no training or model request.</p>'
+            '<p><a href="../docs/setup.html">Setup and saved-work recovery</a> · '
+            f'<a href="../docs/run-{slug}.html">Facilitator instructions</a></p>'
+        )
+        write(start_link, page(f"Start {deck['title']}", start_body, prefix="../"))
         catalog.append({"workshop": row["slug"], "deck": slug, "title": deck["title"],
                         "duration": poster["duration"], "report": report["url"],
-                        "notebook": report["notebook_url"], "pdf": pdf_link,
+                        "notebook": report["notebook_url"], "start": start_link, "pdf": pdf_link,
                         "deck_url": report["deck_url"], "runbook": runbook,
                         "quick_guide": quick_guide, "share_url": share_url,
                         "readiness": "technical preview"})
         links = [
             (report["url"], "Read the example"), (report["deck_url"], "Present the deck"),
-            (pdf_link, "Deck PDF"), (report["notebook_url"], "Notebook · Forge sign-in"),
+            (pdf_link, "Deck PDF"), (start_link, "Start the notebook"),
             (quick_guide, "How to run this workshop"), (runbook, "Detailed facilitator notes"),
             (f"{PUBLIC}/{slug}/{stem}-source.zip", "Editable deck source"),
         ]
@@ -124,27 +162,23 @@ def build(site, *, pdf=False):
             f'<p>Share this workshop<br><a href="{share_url}">{share_url.removeprefix("https://")}</a></p>'
             '</div></div></article>'
         )
-    brief = '<p class="eyebrow">FORGE WORKSHOP KIT · MEETING BRIEF</p>' + bodies["brief"]
-    write("brief.html", page("Workshop meeting brief", brief))
+    brief = '<p class="eyebrow">FORGE WORKSHOP KIT · WORKSHOP GUIDE</p>' + bodies["brief"]
+    write("brief.html", page("Forge workshop guide", brief))
     body = (
-        '<header><p class="eyebrow">FORGE WORKSHOP KIT · SHARE AND PRESENT</p>'
+        '<header><p class="eyebrow">FORGE WORKSHOP KIT · LEARN AND BUILD</p>'
         '<h1>See what an AI system did, then test a change</h1>'
         '<p>A support request reaches the wrong queue. An agent changes the wrong part of a booking. '
         'Two coding agents finish their tasks, but the app still fails a check. These six Python '
         'workshops follow problems like these through their code, saved records, and tested changes in Forge.</p>'
-        '<p>Choose one example for a meeting, or copy its notebook into your own project to try the exercises.</p>'
+        '<p>Choose a problem to work on. Read its example, inspect the diagrams, and run the notebook in your own project or on your laptop.</p>'
         '<p class="status"><strong>Published technical previews.</strong> Recorded demonstrations and reading material '
         'are available now. Fresh-account and participant rehearsals remain open before full classes.</p>'
-        '<div class="actions primary"><a href="brief.pdf">Meeting brief PDF</a>'
-        f'<a href="{PUBLIC}/packet/workshop-meeting-packet.zip">Download the packet</a>'
-        '<a href="docs/sharing.html#slack-message">Slack message</a>'
-        '<a href="docs/loom-walkthrough.html">Ten-minute Loom script</a>'
-        '<a href="docs/current-demo-guide.html">Short demo routes</a>'
-        '<a href="docs/facilitator-start.html">Run a workshop</a>'
-        f'<a href="{PUBLIC}/share/">QR codes and sharing links</a></div></header>'
+        '<div class="actions primary"><a href="docs/setup.html">Setup instructions</a>'
+        '<a href="workshop-materials.zip" download>Download the materials</a>'
+        '<a href="brief.pdf">Workshop guide PDF</a>'
+        '<a href="docs/facilitator-start.html">Facilitate a session</a></div></header>'
         '<section class="start"><h2>Start with one example</h2>'
-        '<p>Open its Report before asking anyone to sign in. In a meeting, show the input, '
-        'the changed code, and one recorded outcome. The deck and PDF supply a fallback '
+        '<p>Open its Report to see the input, the changed code, and one recorded outcome. The deck and PDF supply a fallback '
         'when a live product page needs access.</p><p>Live exercises use the participant’s own Forge project '
         'and credentials. The $8 notebook inference allowance is adjustable. Compute, ARIA, and native '
         'tag judging have separate billing. <a href="docs/setup.html">Read the setup instructions</a>.</p></section>'
@@ -153,18 +187,18 @@ def build(site, *, pdf=False):
         'Use its recorded demonstration and keep missing judgments visible. '
         '<a href="docs/next-up.html">Current readiness</a> · '
         '<a href="docs/recorded-results.html">Results and limitations</a></p>'
-        f'<p>The download includes the briefing, {pdf_count} deck PDFs, setup, demo routes, and facilitator notes. '
+        f'<p>The download includes the guide, {pdf_count} deck PDFs, editable notebook files, setup, and facilitator notes. '
         'The saved pages and PDFs open offline; Forge records require their usual access. '
         '<a href="https://github.com/ash0ts/forge-workshop-kit">Repository and contribution guide</a>.</p></footer>'
     )
     if not pdf:
-        body = body.replace('<a href="brief.pdf">Meeting brief PDF</a>', '<a href="brief.html">Meeting brief</a>')
-    write("index.html", page("Forge workshop meeting packet", body))
+        body = body.replace('<a href="brief.pdf">Workshop guide PDF</a>', '<a href="brief.html">Workshop guide</a>')
+    write("index.html", page("Forge workshop materials", body))
     write("catalog.json", json.dumps(catalog, indent=2) + "\n")
     write("README.txt",
-        "Open index.html to choose a workshop. Open brief.html for the meeting script and Slack copy; PDF builds also include brief.pdf.\n"
+        "Open index.html to choose a workshop. Open brief.html for the workshop overview; PDF builds also include brief.pdf.\n"
         f"The decks/ folder contains {pdf_count} presentation PDFs, including reveal states. Missing PDFs link to the public website.\n"
-        "docs/ contains setup, the ten-minute Loom script, short demo routes, runbooks, tracking instructions, and current readiness.\n"
+        "docs/ contains setup, runbooks, results, and current readiness. start/ has notebook copy/import/local instructions; notebooks/ has the editable Python files.\n"
         "No setup or credentials are needed to read these saved files. External links need an internet connection; Forge links require their usual access.\n"
         "These remain technical previews; the packet is for recorded demonstrations and pilot preparation.\n"
     )
@@ -175,13 +209,15 @@ def build(site, *, pdf=False):
     # or unrelated file in the output folder must not become a shared attachment.
     payloads = sorted(payloads)
     manifest = {"source_commit": subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip(),
-                "source_has_uncommitted_changes": bool(subprocess.run(["git", "status", "--porcelain", "--", "docs", "next-up.md", "scripts/build_share_packet.py", "scripts/render_share_packet.mjs", "decks/share-packet.css", "reports/published.json", "src/forge_workshop_kit/workshops.json", "visual-guides", "skills/teenage-engineering-visualizations/assets/fonts"], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()),
+                "source_has_uncommitted_changes": bool(subprocess.run(["git", "status", "--porcelain", "--", "docs", "notebooks", "next-up.md", "scripts/build_share_packet.py", "scripts/render_share_packet.mjs", "decks/share-packet.css", "reports/published.json", "src/forge_workshop_kit/workshops.json", "visual-guides", "skills/teenage-engineering-visualizations/assets/fonts"], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()),
                 "workshops": catalog, "files": [{"file": str(p.relative_to(target)), "bytes": p.stat().st_size,
                 "sha256": hashlib.sha256(p.read_bytes()).hexdigest()} for p in payloads]}
     (target / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
-    with zipfile.ZipFile(target / "workshop-meeting-packet.zip", "w", compression=zipfile.ZIP_DEFLATED) as archive:
+    with zipfile.ZipFile(target / "workshop-materials.zip", "w", compression=zipfile.ZIP_DEFLATED) as archive:
         for path in [*payloads, target / "manifest.json"]:
             archive.write(path, path.relative_to(target))
+    # Existing distributed links keep working; both names contain attendee materials.
+    shutil.copyfile(target / "workshop-materials.zip", target / "workshop-meeting-packet.zip")
     return target
 
 

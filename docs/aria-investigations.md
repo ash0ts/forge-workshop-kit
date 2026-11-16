@@ -7,16 +7,36 @@ The first investigation takes eight minutes and uses development or validation r
 ## Use the investigation card
 
 1. Select the case and versions beside the result. Keep your interpretation brief: what happened, and which observation supports it?
-2. Under **Copy investigation prompt**, use the copy icon. Choose **Open the selected Forge record**, then open **Ask ARIA** in Forge.
-3. Check the project selected inside ARIA. Expanding a drawer into a full-page conversation can change that selection. Use the exact record URLs already in the prompt. If this Forge surface offers a run picker, workspace-panel action, or trace/evaluation attachment, select the same records there. Pasting `@run-name` text is not an attachment. Review the selected project and context before sending.
-4. Read the answer and open one cited record. Find the exact event, value, prediction, or changed line. Does it support the claim, contradict it, or leave the question unresolved?
-5. Enter the claim and checked source, then click **Save citation check**. Include the conversation link only if you want to. The notebook saves your note locally and includes it in the next normal checkpoint.
+2. Write **My explanation before asking ARIA**, then click **Start ARIA investigation**. The notebook sends one question using your Forge login and the selected project. Run and Agent Lens conversation references are attached as native context. Exact artifact-version links and a bounded saved excerpt remain in the question.
+3. Click **Open ARIA conversation** in the receipt. This opens the same conversation in Forge, with its selected context, progress, and follow-up composer. ARIA keeps working after the notebook action returns, so you can inspect the evidence while waiting. The conversation can be returned to the Forge drawer using its native control.
+4. Use **Check ARIA response** to read the saved turn back into the notebook. Partial text stays labeled partial until the service reports completion. If ARIA asks a question or requests permission, respond in the native conversation.
+5. Read the answer and open one cited record. Find the exact event, value, prediction, or changed line. Does it support the claim, contradict it, or leave the question unresolved?
+6. Enter the claim and checked source, then click **Save citation check**. The direct request's exact prompt and conversation link join the note. It saves locally and enters the next normal checkpoint.
 
-During this release’s native check, typing an `@` name did not produce a run picker in the full-page chat. Exact record URLs are the supported fallback for this exercise. A pasted URL still does not prove that ARIA read its contents: inspect the answer’s cited records and tool activity, and keep excerpt-only analysis labeled as such.
+A second Start click for the same selected evidence reuses the saved request. Change the question by continuing its native conversation. Opening, navigating, editing, restoring, and saving a note never send a message. There is no automatic preload on notebook startup. The explicit Start action begins asynchronous preparation while participants continue inspecting their result.
 
-Copying a prompt does not send a message or attach context. Selecting evidence and saving a note do not run an experiment. The notebook's agent still proposes or executes the changes being measured. ARIA's answer is not an accepted label, score, approved lesson, or release decision.
+**Copy investigation prompt for the manual path** remains available when direct access is unavailable. Open Ask ARIA in Forge, select the right project, and send the question yourself. Native run and conversation attachments are different from pasted `@run-name` text. A reference or pasted URL does not prove that ARIA read its contents: inspect its answer, cited records, and tool activity.
 
-[Native context instructions](https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation)
+The notebook's agent still proposes or executes the changes being measured. ARIA's answer is not an accepted label, score, approved lesson, or release decision. [Native context instructions](https://docs.coreweave.com/products/aria/chat#add-context-to-a-conversation)
+
+## Request and recovery contract
+
+The small [direct client](../src/forge_workshop_kit/aria_client.py) uses the public ARIA turn API. Its request shape was checked against [W&B's MCP client at revision 7a1f9f6](https://github.com/wandb/wandb-mcp-server/blob/7a1f9f629d4977d41d31b7b84a1227bc9da2cb90/src/wandb_mcp_server/mcp_tools/aria.py) and the [published OpenAPI schema](https://wb-agent.wandb.ai/openapi.json). Participants do not install an MCP server.
+
+Before sending, the client verifies the existing evidence allowlist and saves the question, project, workspace, selected records, and a submission receipt locally. The returned turn and conversation identities are saved immediately. Checks use GET on that turn; they never create another turn. Naming the conversation is a separate operation after the handle is saved, so a naming failure cannot discard a successful request.
+
+The receipt lives in the existing draft store and travels with later checkpoints. It does not alter stage inputs, execution fingerprints, the notebook inference ledger, or completed-work status. ARIA charges follow the organization's account settings and are not included in that inference ledger.
+
+| Saved state | Next action |
+| --- | --- |
+| Queued or in progress | Open the same conversation or click Check ARIA response. |
+| Completed | Check one claim; continue questions in the same native conversation. |
+| Authentication or access rejected | Fix access, then explicitly click Start again, or use the recording. |
+| Check failed after a handle was saved | Retry Check. The request and handle remain saved. |
+| Submission outcome unknown or interrupted | Inspect ARIA history. Do not blindly resend; the notebook blocks a duplicate submission. |
+| ARIA errored or cancelled | Inspect its native conversation and use the recorded activity if needed. |
+
+Requests use bounded timeouts and response sizes, do not follow redirects with credentials, and never save authentication headers or raw transport exceptions. Native attachments are context selection, not a security boundary. The question asks for analysis only; it does not grant new permissions or change the account's existing ARIA capabilities.
 
 ## Keep the question tied to the current decision
 
@@ -45,8 +65,10 @@ Shared ARIA conversations are organization-scoped and still require access to th
 
 ## Facilitate the two stops
 
-For the eight-minute development stop, allow two minutes to inspect and explain, two to attach context and ask, and four to check one claim. For the seven-minute closing stop, use one minute for the draft conclusion, two for ARIA, and four for verification and the next question. Switch to the recording when needed rather than extending the session.
+For the eight-minute development stop, allow two minutes to inspect and explain, two to start ARIA and open the conversation, and four to check one claim. For the seven-minute closing stop, use one minute for the draft conclusion, two for ARIA, and four for verification and the next question. Switch to the recording when needed rather than extending the session.
 
 Ask what ARIA added to the participant's interpretation. It may identify a useful event, challenge an assumption, or fail to answer. An answer that sounds plausible does not establish causation. A successful tool call does not establish task correctness, and fewer alerts do not establish a better monitor.
 
 The facilitator sees whether the activity used live ARIA or the recording, whether a citation was checked, and whether help was requested. Missing notes mean not recorded. The monitor does not grade agreement with ARIA or retrieve private chat contents. The Report can include a short participant-written account of what they accepted or disputed and the checked evidence link.
+
+The [direct-call qualification](aria-direct-qualification.md) records the native attachment and same-conversation check, including what remains unverified.

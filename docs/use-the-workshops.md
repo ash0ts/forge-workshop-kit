@@ -9,7 +9,7 @@ Choose the problem closest to the audience’s work. The six examples cover agen
 | Use | What to send or open | What to do next |
 | --- | --- | --- |
 | **Explain a workflow** | One public Report from the table below. It includes diagrams, code, actual results, and a notebook link. | Ask the reader which change affected the outcome and what they would test next. |
-| **Introduce the full collection** | The [ten-minute Loom script](loom-walkthrough.md) and [meeting packet](sharing.md). | Show the customer problem and one Forge investigation for each workshop, then invite viewers to try one exercise. |
+| **Introduce the full collection** | The [workshop overview](workshop-overview.md) and [public library](https://ash0ts.github.io/forge-workshop-kit/). | Show the customer problem and one Forge investigation for each workshop, then invite viewers to try one exercise. |
 | **Show a short demo** | The matching deck and [6–10 minute walkthrough](current-demo-guide.md). Use its saved traces, comparisons, and recorded fallback. | Show one input, the change, and the resulting behavior. Open the Forge record that establishes it. |
 | **Run a hands-on pilot** | The participant notebook, [setup guide](setup.md), and [facilitator start guide](facilitator-start.md). | Use its per-deck running guide, copy into a writable project, and check the first saved result before running the full session. |
 | **Adapt the kit** | The [starter notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzI=/view), [authoring guide](authoring.md), and [workshop skill](../.agents/skills/forge-workshops/SKILL.md). | Define one task, an intervention, and a comparison. Keep the code learners change visible; reuse saving, tracing, publication, and progress. |

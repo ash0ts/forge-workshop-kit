@@ -30,7 +30,7 @@ def recording_checkout(root):
     (root / 'src/forge_workshop_kit/workshops.json').write_text(json.dumps({'templates':[
         {'slug':'example','id':'example-workshop','aria_investigations':stops},
         {'slug':'facilitator','id':'facilitator','aria_investigations':[]}]}))
-    for name in ('LICENSE','src/forge_workshop_kit/aria.py','scripts/build_aria_recordings.py','docs/aria-investigations.md'):
+    for name in ('LICENSE','src/forge_workshop_kit/aria.py','src/forge_workshop_kit/aria_client.py','src/forge_workshop_kit/aria_visual.py','scripts/build_aria_recordings.py','docs/aria-investigations.md'):
         target = root / name
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text('Public kit source or documentation')
@@ -48,6 +48,8 @@ def test_standalone_recording_archive_is_complete_and_reproducible(tmp_path):
         assert len(bundle.namelist()) == result['files']
         assert 'LICENSE' in bundle.namelist()
         assert 'src/forge_workshop_kit/aria.py' in bundle.namelist()
+        assert 'src/forge_workshop_kit/aria_client.py' in bundle.namelist()
+        assert 'src/forge_workshop_kit/aria_visual.py' in bundle.namelist()
         assert '.env' not in bundle.namelist()
         assert 'aria/example/investigate-transcript.html' in bundle.namelist()
         assert b'No login is needed' in bundle.read('README.md')

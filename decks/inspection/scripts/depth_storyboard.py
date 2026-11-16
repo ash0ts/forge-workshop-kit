@@ -46,7 +46,9 @@ if method == "nearest-patch":
     errors = inspection.nearest_patch_errors(data, rows, reference)
 else:
     errors = inspection.patch_errors(data["patches"][rows], reference)
+# Compress distances, then preserve one row per board.
 local = np.log1p(errors).reshape(len(rows), -1)
+# Feature axis: 512 whole-image values + 196 patch values.
 return np.concatenate([whole, local], axis=1)
 ```
 <div class="bottom-note">Both branches are exercised by the free check. The live comparison uses nearest-patch.</div>'''

@@ -1,4 +1,18 @@
-# Release checks · 0.11.1 technical preview
+# Release checks · 0.12.0 technical preview
+
+This revision adds an explicit ARIA request in the notebook, improves Report figures and code explanations, and repairs browser and offline delivery. It preserves workshop execution identities, datasets, budgets, and saved results. Publication is pending while the coordinated build finishes.
+
+## Current validation
+
+- **Direct ARIA:** one saved Routing validation result was sent with native run and Agent Lens conversation attachments. The returned conversation completed, its answer was restored locally, and the native follow-up composer opened in the same thread. The [qualification record](aria-direct-qualification.md) links the actual conversation and a safe receipt. No workshop training or model execution was repeated.
+- **Request recovery:** 67 targeted ARIA client, context, and notebook tests passed. They cover duplicate clicks, restored responses, repaired authentication, stale evidence, ambiguous requests, response polling, and separate result controls. An uncertain send cannot trigger an automatic second request. Credentials are sent only to the fixed ARIA service using the cloud login.
+- **Package:** the wheel, source distribution, eight notebook sources and HTML previews, twelve recorded investigations, and visual bundles build locally. The final package hashes are refreshed after the remaining documentation and rendering checks; a local build is not a public-release check.
+- **Changed slides:** 59 focused frames across all six decks passed their text-bound, console, and asset checks. Full Pending validation covers 102 slides and 151 reveal states, with a 151-page PDF. Full Solar validation covers 131 slides and 244 reveal states, with a 244-page PDF. Both have no reported text-bound, console, or asset failures. Canonical receipts: [Pending browser](../decks/pending/notes/delivery-checks.json), [Pending PDF](../decks/pending/notes/pdf-checks.json), [Solar browser](../decks/solar/notes/delivery-checks.json), and [Solar PDF](../decks/solar/notes/pdf-checks.json).
+- **Remaining delivery:** full Routing, Inspection, Transit, and Airline rendering is still running. Public template readback, final downloadable asset hashes, and deployment checks must be recorded after publication.
+
+All six workshops remain technical previews. This ARIA check used the maintainer's enabled team account and one development investigation. External-account access, all twelve live ARIA stops, and participant rehearsal remain unverified. ARIA organization usage was not returned by this request and remains outside the notebook's inference allowance. Native Alignment, Insights, and other existing limitations remain listed in [next-up.md](../next-up.md).
+
+## Previous release · 0.11.1
 
 This revision replaces the generic card diagrams with drawings of the objects and operations being taught. The figures show record fields, invoice rows, conversation turns, measured forecast windows, image patches, probability columns, source ownership, and flight segments. Each workshop uses the same drawings in its notebook, deck, and poster.
 
@@ -48,7 +62,7 @@ Use this material for recorded demonstrations and pilot invitations. The full-cl
 
 The README, contributor guidance, facilitator instructions, sharing copy, and six public learning Reports now explain the customer problem, the work participants do, and the relevant Forge records consistently. All six Reports were updated at their existing URLs. Anonymous readback matched the authored blocks, and each Report's updated copy, notebook link, and representative figure were inspected in Forge.
 
-The current [meeting packet](https://ash0ts.github.io/forge-workshop-kit/packet/) includes a three-page brief and a [ten-minute Loom script](loom-walkthrough.md). The script is ready to record; it is not a completed video. Separate registered Slack and Loom links identify the referral source. Workshop links still identify the workshop across its deck, poster, and other placements. Clicks do not establish attendance or notebook completion; the facilitator's progress records remain separate.
+The current [participant materials](https://ash0ts.github.io/forge-workshop-kit/packet/) include an overview, notebook downloads, and setup and facilitator guides. The [recording script](loom-walkthrough.md) remains a contributor document in Git. Separate registered community Slack and video links identify external referral sources; coworker reviews use the untracked library address. Workshop links still identify the workshop across its deck, poster, and other placements. Clicks do not establish attendance or notebook completion; the facilitator's progress records remain separate.
 
 Validation for source revision `55fb582` covered:
 

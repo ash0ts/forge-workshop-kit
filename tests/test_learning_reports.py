@@ -23,6 +23,33 @@ def test_articles_build_without_authentication():
         assert model.spec.blocks
 
 
+def test_every_native_figure_keeps_its_caption_and_full_size_link():
+    for slug in reports.SLUGS:
+        report, plan = reports.build_report(slug, "example/teaching")
+        blocks = report._to_model().spec.model_dump(mode="json", by_alias=True, exclude_none=True)["blocks"]
+        figures = [block for block in blocks if block["type"] == "image"]
+        assert len(figures) == len(plan["images"])
+        for figure in figures:
+            assert figure["hasCaption"]
+            assert figure["children"][0]["text"].strip()
+            links = [child for child in figure["children"] if child.get("type") == "link"]
+            assert links and links[0]["url"] == figure["url"]
+        assert plan["render_sha256"] == reports.digest(json.dumps(blocks, sort_keys=True))
+
+
+def test_report_mechanisms_share_the_notebook_and_deck_canvas():
+    from xml.etree import ElementTree
+
+    layout = json.loads((ROOT / "reports/figures-guide-layout.json").read_text())
+    assert {row["report"] for row in layout["figures"]} == set(reports.SLUGS)
+    for row in layout["figures"]:
+        assert (row["width"], row["height"]) == (1200, 675)
+        assert row["all_reveals_checked"]
+        svg = ElementTree.parse(ROOT / row["svg"]).getroot()
+        assert svg.attrib["viewBox"] == "0 0 1200 675"
+        assert row["png"].split("/", 1)[1] in (ROOT / "reports" / f"{row['report']}.md").read_text()
+
+
 def test_interrupted_creation_never_creates_another_report(tmp_path):
     receipts = {"pending": {"project": "example/teaching", "status": "creating"}}
     report, plan = reports.build_report("pending", "example/teaching")

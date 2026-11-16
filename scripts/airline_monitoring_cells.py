@@ -379,6 +379,9 @@ airline_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=_ids,
 mo.vstack([mo.md("Save your own turn review above before checking it with ARIA. Its explanation does not replace your label or become tag criteria.") if not _review else mo.md("Compare ARIA's explanation with the review you saved. If it uses a different turn or unavailable context, leave the finding unresolved."),airline_aria_investigate])
 ''', True, cell_id='airline_monitoring/aria/investigate')
 add('''
+aria.response(mo,airline_aria_investigate)
+''', True, cell_id='airline_monitoring/aria_response/investigate')
+add('''
 run_calibration = mo.ui.run_button(label="Create six controlled calibration traces", disabled=not teaching.review_complete(get_context().get("session")))
 mo.vstack([mo.md("### If the live agent made no relevant mistake"), mo.md("Create six local simulator incidents for tag calibration: an omitted return flight, a valid one-way trip, a connection-to-nonstop change, an explicitly requested whole-itinerary change, recovery, and a request awaiting confirmation. These are controlled tool-only drills with no model calls. Their labels are teaching examples, not measured agent failures."), run_calibration]) if get_step() == "align" else mo.md("")
 ''')
@@ -413,6 +416,10 @@ except Exception as _error:
 refresh()
 ''', cell_id="airline_monitoring/action/read_native_tag")
 
+add('''
+mo.stop(get_step() != 'monitor')
+mo.md('### Name the population before dividing\\nThe monitoring fixture distinguishes completed boolean judgments from pending and unavailable rows. The same distinction must survive in your calculation.\\n```python\\n# Coverage includes every eligible turn, even if judging has not finished.\\ncoverage = len(completed) / len(eligible) if eligible else None\\n# Only judged turns with a human review can establish agreement.\\nprecision = tp / (tp + fp) if tp + fp else None\\nrecall = tp / (tp + fn) if tp + fn else None\\n```\\nIn an illustrative batch of eight eligible turns with six completed judgments, coverage is 75%. Two real issues among three flagged turns give precision 2/3. A missing native tag assignment does not tell us whether the turn was processed, so it cannot be counted as a completed negative.')
+''', True, cell_id='airline_monitoring/explanation/denominators')
 add('''
 _s = get_context().get("session")
 monitor_editor = mo.ui.code_editor(value=source_for("monitor"), language="python", on_change=lambda text: save_source("monitor", text), debounce=False)
@@ -695,8 +702,11 @@ mo.stop(get_step() != "report")
 _s=get_context().get("session")
 _revision=get_revision()
 airline_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=conclusion.value,workshop="airline-monitoring")
-mo.vstack([airline_aria_conclusion,publish_report,mo.md("**Stop automatic judging:** open your native tag, disable Apply with AI, save it, then click the verification button. Closing the notebook does not disable the tag."),confirm_tag_off])
+airline_aria_conclusion
 ''', True, cell_id='airline_monitoring/aria/conclusion')
+add('''
+mo.vstack([aria.response(mo,airline_aria_conclusion),publish_report,mo.md("**Stop automatic judging:** open your native tag, disable Apply with AI, save it, then click the verification button. Closing the notebook does not disable the tag."),confirm_tag_off])
+''', True, cell_id='airline_monitoring/aria_response/conclusion')
 add('''
 mo.stop(not publish_results.value)
 show("publication", publish_saved_comparisons())

@@ -153,6 +153,10 @@ check_inspection_features = mo.ui.run_button(label="Check my patch-feature funct
 mo.vstack([mo.md("### Keep the local information\\nThe fixed ImageNet encoder gives us a 512-value whole-image vector and a 14 × 14 grid of patch vectors. In `build_features`, turn the patch-error map into a row and append it to the whole-image features. The trained classifier will actually use your function."), feature_editor, check_inspection_features, mo.accordion({"Hint": mo.md("Use `inspection.nearest_patch_errors(data, rows, reference)` for nearest-patch. Apply np.log1p, reshape to `(len(rows), -1)`, then concatenate along axis 1."), "Worked answer": mo.md("```python\\n" + teaching.FEATURE_SOLUTION + "\\n```"), "What is cached?": mo.md("ResNet-18’s ImageNet weights stay fixed. We resize each board to 224 × 224, normalize channels, and extract whole-image and local features. The prepared cache preserves exact source and weight hashes. Fitting a classifier changes its weights, not the image encoder.")}), ui.next_step(mo, "Next: train and compare", "compare", go_to)]) if get_step() == "features" else mo.md("")
 ''', True)
 add('''
+mo.stop(get_step() != 'features')
+mo.md('### A distance for one board position\\nThe query and every normal reference use the same spatial position and 64 encoder channels. The following excerpt matches the free calculation below.\\n```python\\n# Stop a nearly constant channel from dominating after division.\\nscale = np.maximum(normal_vectors.std(axis=0), 0.1)\\n# Broadcasting compares one query with every normal reference.\\nsquared_difference = ((query_vector - normal_vectors) / scale) ** 2\\n# Average channels, then retain the closest actual normal board.\\ndistance = squared_difference.mean(axis=1).min()\\n# Compress large distances before appending them as features.\\nfeature = np.log1p(distance)\\n```\\nRepeat at all 14 × 14 positions to obtain 196 values. Append these to 512 whole-image values along the feature axis: one row per board, 708 columns. A distance is not a probability or proof of what caused a defect.')
+''', True, cell_id='visual_inspection/explanation/patch_distance')
+add('''
 patch_distance_check = mo.ui.run_button(label="Calculate one patch distance",disabled=not bool(get_lab().get("data")))
 mo.vstack([mo.md("### Work through one position before flattening the map"),mo.md("The calculation below uses position (7, 7) of fitting board pcb1-anomaly-005 and normal fitting boards only. Find the smallest distance, then compare it with nearest_patch_errors."),patch_distance_check]) if get_step()=="features" else mo.md("")
 ''', True, cell_id='visual_inspection/controls/patch_distance')
@@ -163,10 +167,14 @@ _query=next(i for i,row in enumerate(_data["records"]) if row["case_id"]=="pcb1-
 _fit=inspection.indices(_data,"fit")
 _normals=_fit[inspection.labels(_data,_fit)==0]
 _reference={"bank":_data["patches"][_normals],"case_ids":[_data["records"][int(i)]["case_id"] for i in _normals]}
+# Keep the same spatial position across all normal fitting boards.
 _bank=_reference["bank"][:,7,7,:]
 _query_vector=_data["patches"][_query,7,7,:]
+# One scale per feature channel; the floor prevents near-zero division.
 _scale=np.maximum(_bank.std(axis=0),.1)
+# Mean over 64 channels gives one distance per reference board.
 _distances=np.mean((_query_vector/_scale-_bank/_scale)**2,axis=1)
+# Select the nearest normal example, rather than averaging different boards.
 _closest=int(np.argmin(_distances))
 _expected=float(inspection.nearest_patch_errors(_data,np.array([_query]),_reference)[0,7,7])
 assert np.isclose(_distances[_closest],_expected,atol=1e-5)
@@ -226,8 +234,11 @@ _baseline=teaching.saved(_s,"compare/whole") if _s else None
 _selected_case=get_lab()["data"]["records"][validation_board.value]["case_id"] if get_lab().get("data") and validation_board.value is not None else None
 inspection_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=[_baseline["id"]] if _baseline else [],case_ids=[_selected_case] if _selected_case else [],interpretation=inspection_baseline_note.value,workshop="visual-inspection")
 inspection_after_aria=ui.next_step(mo,"Next: add patch features","features",go_to)
-mo.vstack([inspection_aria_investigate,inspection_after_aria])
+inspection_aria_investigate
 ''', True, cell_id='visual_inspection/aria/investigate')
+add('''
+mo.vstack([aria.response(mo,inspection_aria_investigate),inspection_after_aria])
+''', True, cell_id='visual_inspection/aria_response/investigate')
 add('''
 mo.stop(not save_inspection_observation.value)
 mo.stop(not inspection_baseline_note.value.strip(),mo.md("Write a note to save it, or continue without one."))
@@ -519,8 +530,11 @@ add('''
 mo.stop(get_step()!="reproduce")
 _s=get_lab().get("session")
 inspection_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=inspection_conclusion.value,workshop="visual-inspection")
-mo.vstack([inspection_aria_conclusion,report_inspection])
+inspection_aria_conclusion
 ''', True, cell_id='visual_inspection/aria/conclusion')
+add('''
+mo.vstack([aria.response(mo,inspection_aria_conclusion),report_inspection])
+''', True, cell_id='visual_inspection/aria_response/conclusion')
 add('''
 mo.stop(not reproduce_inspection.value)
 _s, _data = get_lab()["session"], get_lab()["data"]

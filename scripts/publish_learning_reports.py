@@ -70,7 +70,12 @@ def build_report(slug, project):
         elif match := re.fullmatch(r"!\[([^\]]*)\]\((https://[^\s)]+)\)", line):
             flush()
             images.append(match[2])
-            blocks.append(wr.Image(url=match[2], caption=match[1]))
+            # Native Report images retain their aspect ratio and use the text
+            # column. Keep the explanation with the figure, with a usable route
+            # to tiny screenshot fields instead of enlarging or cropping them.
+            blocks.append(wr.Image(url=match[2], caption=[
+                match[1] + " ", wr.Link(text="Open full-size figure", url=match[2]),
+            ]))
         else:
             pending.append(line)
         index += 1
@@ -93,6 +98,12 @@ def build_report(slug, project):
         "notebook_url": next(link for link in links if "forge.coreweave.com/notebooks/" in link),
         "deck_url": "https://ash0ts.github.io/forge-workshop-kit/" + ("airline_monitoring" if slug == "airline" else slug) + "/",
     }
+    # A rendering-only revision (for example linked figure captions) must still
+    # update the native Report even when its Markdown has not changed.
+    plan["render_sha256"] = digest(json.dumps(
+        report._to_model().spec.model_dump(mode="json", by_alias=True, exclude_none=True)["blocks"],
+        sort_keys=True,
+    ))
     return report, plan
 
 
@@ -181,7 +192,9 @@ def publish(report, plan, receipts, receipt_path):
         if existing.entity + "/" + existing.project != project:
             raise ValueError("Existing Report belongs to another project")
         report.id = existing.id
-        if saved.get("source_sha256") == plan["source_sha256"] and saved.get("status") == "published":
+        if (saved.get("source_sha256") == plan["source_sha256"]
+                and saved.get("render_sha256") == plan["render_sha256"]
+                and saved.get("status") == "published"):
             verified = public_readback(report, project)
             return {**saved, **plan, **verified}
         if saved.get("content_sha256"):

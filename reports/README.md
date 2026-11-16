@@ -2,7 +2,7 @@
 
 These six articles follow a practical problem through the code, a recorded execution, and the decision that followed. You can inspect a refund, forecast, routing mistake, defective board, departure query, or changed booking before opening a notebook. Each article explains which Forge record supports its conclusion and links to the editable exercise.
 
-Start with a Report for the technical explanation. Its packet contains the deck, visual guides, copyable notebook, and instructions for a short demonstration or a facilitated session. To try the code, open the notebook and choose **Copy to project**. Your copy uses your credentials and saves work in your project; the facilitator only reads published progress.
+Start with a Report for the technical explanation. Its packet contains the deck, visual guides, copyable notebook, and instructions for a short demonstration or a facilitated session. To try the code, open the workshop start page and choose the Forge copy, import, or laptop path. In Forge, choose **Copy to project**. Your copy uses your credentials and saves work in your project; the facilitator only reads published progress.
 
 | Workshop | Learning Report | Materials and running instructions |
 | --- | --- | --- |
@@ -23,14 +23,19 @@ Edit the six Markdown sources here. The `sources-*.json` ledgers link claims and
 
 Figures follow one example through its inputs, code, and result. `figures-*.json` records their source data, interpretation, and limits. Generated PNGs and editable SVGs live in `assets/`; native Forge screenshots keep their original pixels and a link to the captured record. Use the caption to tell readers which field to inspect.
 
+The mechanism drawings use the same 1200 × 675 artwork as the notebook and deck. Their labels, example values, and geometry stay aligned across those surfaces; `figures-guide-layout.json` identifies the exact guide state. Keep scientific plots and native captures at their original aspect ratio. Never stretch a screenshot to match a diagram. The publisher places figures in the Report text column and adds a full-size link to each caption so a reader can inspect small native fields.
+
 Regenerate the explanatory figures with the matching script:
 
 ```sh
 uv run --extra routing python scripts/build_report_pending_solar_visuals.py
 uv run --extra routing python scripts/build_report_routing_inspection_visuals.py
 uv run --extra routing python scripts/build_report_transit_airline_visuals.py
+uv run python scripts/build_report_guide_figures.py
 ```
 
 These commands read saved evidence and render figures; they do not train models or call services. Publish new image files to the public repository before updating a Report that references them. Inspect the rendered figures and native Report page, including full-size image links and the notebook invitation.
+
+When revising code excerpts, explain the operation at the line where it happens: which axis is averaged, which records remain in the denominator, or which label belongs to a probability column. A teaching excerpt may omit setup, but must say so. Keep measured source files and participant drafts unchanged when only the explanation changes.
 
 [Build and publication instructions](../docs/maintenance.md#publish-learning-reports) explain the preview, destination checks, anonymous readback, and recovery after an interrupted save. Publication creates no experiment runs. Existing rehearsal Reports and participant conclusions remain separate.

@@ -333,6 +333,10 @@ _check = get_feedback().get("forward-shapes", {})
 mo.vstack([mo.ui.table(_check.get("layers", []), selection=None, pagination=False), mo.md("MLP flattens two channels × 60 samples into 120 numbers. CNN slides five-sample filters across those channels, then averages the time positions. Both return one prediction per input."), mo.md("This shape check used an earlier draft. Click the forward-pass button again to inspect your current code.") if _check.get("source") and _check["source"] != digest(measurement_editor.value) else mo.md("")]) if _check.get("status") == "complete" else mo.md(_check.get("message", "Run the forward pass to see its intermediate shapes."))
 ''', True)
 add('''
+mo.stop(get_step() != 'search')
+mo.md("### Read the calculation before filling the gap\\nThe subtraction measures each miss. Squaring makes large misses count more during training; absolute error keeps the reported score in the target's units. This excerpt explains the existing loss, not a new training recipe.\\n```python\\n# One predicted value is compared with its matching target.\\nerror = prediction - target\\n# Keep only scored entries. GOES uses an all-ones mask.\\nweighted_error = error.square() * mask\\n# Divide by the number of included entries, not the tensor's size.\\nloss = weighted_error.sum() / mask.sum()\\n```\\nFor an illustrative miss of −0.5, squared loss is 0.25 and absolute error is 0.5. Opposite-signed misses cannot cancel in either calculation. Training updates forecasting weights; validation only measures them.")
+''', True, cell_id='solar_autoresearch/explanation/loss')
+add('''
 mo.stop(get_step() != "search")
 mo.vstack([mo.md("### Write the loss and the reported metric"), mo.md("Complete `training_loss` in the model source above, then implement `my_flux_mae` below. The loss trains the model; MAE measures its forecast error. A negative miss must not cancel a positive one."), flux_metric_editor, check_measurement, mo.accordion({"Hint": mo.md("Square the prediction error, multiply by the mask, sum, and divide by the mask sum for training_loss. Average absolute errors for my_flux_mae."), "Worked answers": mo.md("```python\\ndef training_loss(prediction, target, mask):\\n    return ((prediction - target).square() * mask).sum() / mask.sum()\\n\\n" + teaching.FLUX_SOLUTION + "\\n```"), "The six settings": mo.md("Three width/learning-rate pairs for each architecture. All six use seed 17, 60 updates, and batch size 32. The first trial and remaining trials belong to this same Sweep.")})])
 ''', True)
@@ -516,8 +520,11 @@ _s=get_lab().get("session")
 _baseline=teaching.saved(_s,"goes/persistence") if _s else None
 _ids=([inspect_goes_run.value] if inspect_goes_run is not None and inspect_goes_run.value else [])+([_baseline["id"]] if _baseline else [])
 solar_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=_ids,interpretation=goes_diagnosis.value,workshop="solar-autoresearch")
-mo.vstack([solar_aria_investigate,show_goes_repair])
+solar_aria_investigate
 ''', True, cell_id='solar_autoresearch/aria/investigate')
+add('''
+mo.vstack([aria.response(mo,solar_aria_investigate),show_goes_repair])
+''', True, cell_id='solar_autoresearch/aria_response/investigate')
 add('''
 mo.stop(get_step() != "search" or not show_goes_repair.value)
 _s = get_lab()["session"]
@@ -952,5 +959,8 @@ add('''
 mo.stop(get_step() != "final")
 _s=get_lab().get("session")
 solar_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=conclusion.value,workshop="solar-autoresearch")
-mo.vstack([mo.md("### Write your interpretation before asking ARIA"),conclusion,solar_aria_conclusion,report_button])
+mo.vstack([mo.md("### Write your interpretation before asking ARIA"),conclusion,solar_aria_conclusion])
 ''', True, cell_id='solar_autoresearch/aria/conclusion')
+add('''
+mo.vstack([aria.response(mo,solar_aria_conclusion),report_button])
+''', True, cell_id='solar_autoresearch/aria_response/conclusion')

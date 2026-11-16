@@ -1,7 +1,7 @@
-"""ARIA investigation prompts and notes, built only from already saved evidence.
+"""ARIA investigation cards built from already saved evidence.
 
-This module never calls ARIA, publishes records, or runs an experiment. Native
-context attachment and sending the question remain explicit actions in Forge.
+Rendering, selection and notes stay local. The Start action delegates one
+asynchronous request to aria_client; checking a saved handle never resends it.
 """
 from __future__ import annotations
 
@@ -325,7 +325,8 @@ def _capture_html(recorded, workshop, stop_id):
 
 def investigation(mo, session, stop_id, record_ids=None, interpretation='', *, workshop=None, case_ids=None):
     """Return one composite UI. Bind the result to a notebook global for callbacks."""
-    from . import ui
+    from . import aria_client, ui
+    from .aria_visual import handoff
     workshop = session.workshop if session is not None else workshop
     if not workshop:
         raise ValueError('Supply workshop when rendering the recording without a session.')
@@ -336,6 +337,7 @@ def investigation(mo, session, stop_id, record_ids=None, interpretation='', *, w
         'records': [], 'question': stop['question']}
     saved = session.get_draft('aria/note/' + stop_id + '/' + context['id'], {}) if session else {}
     interpretation = interpretation or saved.get('interpretation', '')
+    live_receipt = aria_client.saved_investigation(session, context)
     prompt = saved.get('prompt') if saved and interpretation == saved.get('interpretation', '') else None
     prompt = prompt or investigation_prompt(context, interpretation)
     recorded = recorded_investigation(workshop, stop_id)
@@ -350,15 +352,41 @@ def investigation(mo, session, stop_id, record_ids=None, interpretation='', *, w
         'assessment': mo.ui.dropdown({'Supported by this record': 'supported', 'Disputed by this record': 'disputed', 'Unresolved or missing evidence': 'unresolved'},
             value={'supported':'Supported by this record','disputed':'Disputed by this record'}.get(saved.get('assessment'),'Unresolved or missing evidence'), label='My assessment', full_width=True),
         'reason': mo.ui.text_area(value=saved.get('reason', ''), label='What I accepted, disputed, or still need to check', rows=2, full_width=True),
-        'conversation_url': mo.ui.text(value=saved.get('conversation_url', ''), label='ARIA conversation link, optional', full_width=True),
+        'conversation_url': mo.ui.text(value=saved.get('conversation_url', '') or live_receipt.get('conversation_url', ''), label='ARIA conversation link, optional', full_width=True),
         'include_in_report': mo.ui.checkbox(value=saved.get('include_in_report', False), label='Include this citation check in my Report'),
         'help_requested': mo.ui.checkbox(value=saved.get('help_requested', False), label='I would like help with this investigation'),
     }
-    form_layout = '<div style="display:grid;grid-template-columns:minmax(0,1fr);gap:12px;min-width:0;max-width:100%">{mode}<p>Edit the My interpretation line in the prompt before you copy it. The saved note keeps exactly the prompt you used.</p><details><summary>Copy investigation prompt</summary><div style="min-width:0;max-width:100%;overflow:hidden">{prompt}</div></details>{claim}{record_url}{assessment}{reason}<details><summary>Report, conversation link, and help</summary>{conversation_url}{include_in_report}{help_requested}</details></div>'
+    form_layout = '<div style="display:grid;grid-template-columns:minmax(0,1fr);gap:12px;min-width:0;max-width:100%">{mode}<details><summary>Copy investigation prompt for the manual path</summary><p>If you send the question manually, edit My interpretation before copying it.</p><div style="min-width:0;max-width:100%;overflow:hidden">{prompt}</div></details>{claim}{record_url}{assessment}{reason}<details><summary>Report, conversation link, and help</summary>{conversation_url}{include_in_report}{help_requested}</details></div>'
+    def save_citation(value):
+        if not value or not session:
+            return None
+        value = dict(value)
+        direct = aria_client.saved_investigation(session, context)
+        if value['mode'] == 'live' and direct.get('turn_id'):
+            value['prompt'] = direct['prompt']
+            value['conversation_url'] = value['conversation_url'] or direct.get('conversation_url', '')
+        return save_note(session, context, interpretation=_interpretation_from_prompt(value['prompt']), **value)
     form = mo.Html(form_layout).batch(**elements).form(submit_button_label='Save citation check',
         submit_button_disabled=session is None,
-        on_change=lambda value: save_note(session, context, interpretation=_interpretation_from_prompt(value['prompt']), **value) if value and session else None,
+        on_change=save_citation,
         validate=lambda value: None if value is None or value.get('claim', '').strip() else 'Name the claim you checked, or explain what remains unresolved.')
+    def show_action(operation):
+        try:
+            receipt = operation()
+            card._aria_error = None
+            return receipt
+        except (ValueError, PermissionError, aria_client.AriaError) as error:
+            card._aria_error = str(error)
+            return {'error': str(error)}
+
+    start_form = mo.ui.text_area(value=live_receipt.get('interpretation', interpretation),
+        label='My explanation before asking ARIA', rows=2, full_width=True).form(
+        submit_button_label='Start ARIA investigation',
+        submit_button_disabled=session is None or not context['records'],
+        on_change=lambda value: show_action(lambda: aria_client.start_investigation(session, context,
+            interpretation=value)) if value is not None and session else None)
+    check_button = mo.ui.button(label='Check ARIA response', disabled=session is None,
+        on_click=lambda _: show_action(lambda: aria_client.check_investigation(session, context)))
     links = {row['label'] + ' · ' + link['label']: link['url'] for row in context['records'] for link in row['links']}
     evidence = ''.join('<li>' + escape(row['label']) + ' · <code>' + row['identity'][:12] + '</code> · ' + escape(row['publication_status']) + '</li>' for row in context['records'])
     if recorded.get('status') == 'recorded':
@@ -381,13 +409,63 @@ def investigation(mo, session, stop_id, record_ids=None, interpretation='', *, w
         + ('<ul>' + evidence + '</ul>' if evidence else '<p>No completed participant evidence is selected. You can read the instructor investigation below.</p>')
         + ''.join('<p>' + escape(case_id) + ': ' + escape(status) + '.</p>' for case_id, status in context.get('case_status', {}).items())
         + '<h4>Open the selected Forge record</h4>' + (ui.links(links) if links else '<p>Native links are not available yet. Retry publication from the saved result; do not rerun the experiment for a link.</p>')
-        + '<p>In Forge, open Ask ARIA and check the selected project. Add the selected records through native controls when available, or paste their exact links.</p>'
+        + '<h4>Ask ARIA about these records</h4><p>Write your explanation, then start the investigation. The notebook sends this question and its selected run or conversation references using your Forge login. ARIA works in the background after the click; you can keep inspecting the result.</p>{start}<p>Open the returned ARIA conversation to read its progress and ask follow-up questions. Use Check ARIA response to bring the saved answer back here.</p>{check}'
+        + '<details><summary>How the notebook hands off to ARIA</summary><div style="overflow-x:auto"><div style="min-width:850px">' + handoff() + '</div></div><p>The question and selected native references travel together. The saved turn identifies the request; opening its conversation continues the same investigation. This drawing explains the connection, not a recorded result.</p></details>'
         + ('<p>For this validation board, use ARIA’s <strong>Add images</strong> control to attach the actual photograph. Supplied defect masks are inspection aids, not classifier inputs.</p>' if get_workshop(workshop)['slug'] == 'visual_inspection' and stop_id == 'investigate' else '')
-        + '<details><summary>Context, access, and experiment boundaries</summary><p>Copying a prompt does not attach context. A pasted URL does not prove ARIA read its contents. Check what it could inspect, especially if expanding the chat changes the selected project. Your notebook agent, scorers, and release decisions retain their existing roles.</p><p>ARIA access is unverified here. Live ARIA requires a supported team project and Smart features; personal projects can use the recording. ARIA charges follow your organization settings and are outside the notebook’s $8 inference allowance.</p><p>Do not accept reserved evaluation evidence during development. If ARIA uses it, mark the claim unresolved and exclude its advice from the repair. No action here launches ARIA or changes measured prompts.</p><a href="https://docs.coreweave.com/products/aria/chat">ARIA context and access instructions</a></details>'
+        + '<details><summary>Context, access, and experiment boundaries</summary><p>Start sends one analysis request. Run and conversation links become native context references; exact artifact links and saved excerpts stay in the question. Attaching a record does not prove ARIA read it. Check its answer and cited source. Your notebook agent, scorers, and release decisions retain their existing roles.</p><p>ARIA access is unverified until a request succeeds. Live ARIA requires a supported team project and Smart features; personal projects can use the recording. ARIA charges follow your organization settings and are outside the notebook’s $8 inference allowance.</p><p>Opening, selecting, restoring, and saving notes never send a message. Checking a response reads the saved turn. Do not accept reserved evaluation evidence during development. If ARIA uses it, mark the claim unresolved and exclude its advice from the repair.</p><a href="https://docs.coreweave.com/products/aria/chat">ARIA context and access instructions</a></details>'
         + '<details><summary>Use the recorded investigation</summary><div style="overflow-wrap:anywhere;max-height:520px;overflow:auto">' + recording_html + '</div></details>'
         + ('<p>Saved citation check for this exact selection. Edit it below if needed.</p>' if saved else '')
-        + '<p>If ARIA is unavailable or takes longer than this activity, use the recording. Save your citation check locally below.</p>{form}</section>')
-    prefix, suffix = body.rsplit('{form}', 1)
+        + '<p>If ARIA is unavailable or takes longer than this activity, use the recording.</p><details><summary>Save your citation check</summary>{form}</details></section>')
     # Batch uses str.format; recorded JSON and code must remain literal text.
-    template = prefix.replace('{', '{{').replace('}', '}}') + '{form}' + suffix
-    return mo.Html(template).batch(form=form)
+    template = body.replace('{', '{{').replace('}', '}}')
+    for name in ('form', 'start', 'check'):
+        template = template.replace('{{' + name + '}}', '{' + name + '}')
+    card = mo.Html(template).batch(form=form, start=start_form, check=check_button)
+    card._aria_session = session
+    card._aria_context = context
+    card._aria_error = None
+    return card
+
+
+def response(mo, card):
+    """Read-only reactive output cell. It never sends or polls a request.
+
+    The separate cell preserves nearby Next and Report controls when a button
+    updates. The card's value is read to register marimo's UI dependency.
+    """
+    from .aria_client import saved_investigation
+    _ = card.value
+    if card._aria_error:
+        return mo.callout(card._aria_error, kind='warn')
+    return live_status(mo, saved_investigation(card._aria_session, card._aria_context))
+
+
+def live_status(mo, receipt):
+    """Render a receipt without polling or treating partial text as completion."""
+    if not receipt:
+        return mo.md('No ARIA request has been sent for this selection.')
+    status = receipt.get('status', 'not sent')
+    descriptions = {
+        'queued': 'ARIA accepted the question and is waiting to start.',
+        'in_progress': 'ARIA is working. A visible answer may still be partial.',
+        'completed': 'ARIA finished this turn. Open the conversation to continue it.',
+        'errored': 'ARIA stopped with an error. Open the conversation or use the recording.',
+        'cancelled': 'This ARIA turn was cancelled. Inspect the conversation before starting another.',
+        'submitting': 'Submission was interrupted before its handle was saved. Check ARIA history; this notebook will not send it again.',
+        'outcome_unknown': 'ARIA may have accepted the question. Check ARIA history; this notebook will not send it again.',
+        'rejected': 'ARIA did not accept this question. Repair access, then explicitly press Start again.',
+    }
+    link = receipt.get('conversation_url')
+    body = '<section class="workshop-result" aria-live="polite"><h4>ARIA: ' + escape(status.replace('_', ' ')) + '</h4><p>' + escape(descriptions.get(status, status)) + '</p>'
+    if link:
+        body += '<p><a href="' + escape(link, quote=True) + '" target="_blank" rel="noopener">Open ARIA conversation ↗</a></p>'
+    if receipt.get('needs_attention'):
+        body += '<p>ARIA has a question or permission request. Respond inside the conversation.</p>'
+    error = receipt.get('last_check_error') or receipt.get('error')
+    if error:
+        body += '<p>' + escape(error) + '</p>'
+    if receipt.get('latest_response'):
+        label = 'Saved ARIA answer' if status == 'completed' else 'Partial response'
+        body += '<details open><summary>' + label + '</summary><pre style="white-space:pre-wrap;overflow-wrap:anywhere;max-height:360px;overflow:auto">' + escape(receipt['latest_response']) + '</pre></details>'
+    body += '<p>ARIA usage is separate from your notebook inference allowance. Check one cited record before accepting a claim.</p></section>'
+    return mo.Html(body)

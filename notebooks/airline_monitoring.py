@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.11.1/forge_workshop_kit-0.11.1-py3-none-any.whl",
+#   "forge-workshop-kit @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge_workshop_kit-0.12.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "annotated-types==0.8.0",
 #   "anyio==4.16.0",
@@ -601,6 +601,13 @@ def _(aria, get_context, get_revision, get_step, mo, review_case, review_for):
     return (airline_aria_investigate,)
 
 
+# workshop-cell: airline_monitoring/aria_response/investigate
+@app.cell(hide_code=True)
+def _(airline_aria_investigate, aria, mo):
+    aria.response(mo,airline_aria_investigate)
+    return
+
+
 # workshop-cell: airline_monitoring/controls/run_calibration
 @app.cell(hide_code=True)
 def _(get_context, get_revision, get_step, mo, teaching):
@@ -651,6 +658,14 @@ def _(agent_lens, get_context, mo, native_scope, read_native_tag, refresh, save_
     except Exception as _error:
         show("align", {"status": "Native readback unavailable", "error": str(_error), "next": "Check tag scope, saved criteria, enabled status, and project permissions. Do not substitute a missing label with false."})
     refresh()
+    return
+
+
+# workshop-cell: airline_monitoring/explanation/denominators
+@app.cell(hide_code=True)
+def _(get_step, mo):
+    mo.stop(get_step() != 'monitor')
+    mo.md('### Name the population before dividing\nThe monitoring fixture distinguishes completed boolean judgments from pending and unavailable rows. The same distinction must survive in your calculation.\n```python\n# Coverage includes every eligible turn, even if judging has not finished.\ncoverage = len(completed) / len(eligible) if eligible else None\n# Only judged turns with a human review can establish agreement.\nprecision = tp / (tp + fp) if tp + fp else None\nrecall = tp / (tp + fn) if tp + fn else None\n```\nIn an illustrative batch of eight eligible turns with six completed judgments, coverage is 75%. Two real issues among three flagged turns give precision 2/3. A missing native tag assignment does not tell us whether the turn was processed, so it cannot be counted as a completed negative.')
     return
 
 
@@ -1065,13 +1080,22 @@ def _(get_context, get_revision, get_step, mo, runs_for, saved, ui):
 
 # workshop-cell: airline_monitoring/aria/conclusion
 @app.cell(hide_code=True)
-def _(aria, conclusion, confirm_tag_off, get_context, get_revision, get_step, mo, publish_report):
+def _(aria, conclusion, get_context, get_revision, get_step, mo):
     mo.stop(get_step() != "report")
     _s=get_context().get("session")
     _revision=get_revision()
     airline_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=conclusion.value,workshop="airline-monitoring")
-    mo.vstack([airline_aria_conclusion,publish_report,mo.md("**Stop automatic judging:** open your native tag, disable Apply with AI, save it, then click the verification button. Closing the notebook does not disable the tag."),confirm_tag_off])
+    airline_aria_conclusion
     return (airline_aria_conclusion,)
+
+
+# workshop-cell: airline_monitoring/aria_response/conclusion
+@app.cell(hide_code=True)
+def _(airline_aria_conclusion, aria, confirm_tag_off, get_revision, mo, publish_report):
+    _revision = get_revision()
+
+    mo.vstack([aria.response(mo,airline_aria_conclusion),publish_report,mo.md("**Stop automatic judging:** open your native tag, disable Apply with AI, save it, then click the verification button. Closing the notebook does not disable the tag."),confirm_tag_off])
+    return
 
 
 # workshop-cell: airline_monitoring/action/publish_results
@@ -1133,7 +1157,7 @@ def _(get_context, get_revision, get_step, mo, runs_for):
     return (run_picker,)
 
 
-# workshop-cell: airline_monitoring/display/70
+# workshop-cell: airline_monitoring/display/73
 @app.cell(hide_code=True)
 def _(get_context, get_revision, mo, run_picker, runs_for, ui):
     _revision = get_revision()
@@ -1149,7 +1173,7 @@ def _(get_context, get_revision, mo, run_picker, runs_for, ui):
     return
 
 
-# workshop-cell: airline_monitoring/display/71
+# workshop-cell: airline_monitoring/display/74
 @app.cell(hide_code=True)
 def _(get_context, get_output, get_revision, get_step, mo, saved, ui):
     _revision = get_revision()
@@ -1231,7 +1255,7 @@ def _(export_trace, get_context, hooks, mo, native_scope, publish_saved_comparis
     return
 
 
-# workshop-cell: airline_monitoring/display/75
+# workshop-cell: airline_monitoring/display/78
 @app.cell(hide_code=True)
 def _(get_output, mo, ui):
     _recovery = get_output().get("recovery")

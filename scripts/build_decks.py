@@ -5,6 +5,7 @@ import hashlib
 import html
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -55,7 +56,7 @@ def source_archive(path, deck, slug):
             for file in sorted(item.rglob("*") if item.is_dir() else [item]):
                 if file.is_file() and "__pycache__" not in file.parts:
                     bundle.write(file, Path("decks") / slug / file.relative_to(deck))
-        for name in ("build_decks.py", "build_visual_guides.py", "technical_guide_storyboard.py", "scene_storyboard.py", "share_storyboard.py", "build_share_links.py", "render_share_qr.mjs", "validate_deck.mjs", "check_deck_pdf.py", "serve_deck.py", "aria_storyboard.py"):
+        for name in ("build_decks.py", "build_visual_guides.py", "technical_guide_storyboard.py", "scene_storyboard.py", "share_storyboard.py", "build_share_links.py", "render_share_qr.mjs", "validate_deck.mjs", "check_deck_pdf.py", "check_deck_assets.py", "serve_deck.py", "aria_storyboard.py"):
             bundle.write(ROOT / "scripts" / name, Path("scripts") / name)
         for path in sorted((ROOT / "scripts").glob("illustrate_*.py")):
             bundle.write(path, Path("scripts") / path.name)
@@ -131,6 +132,46 @@ def install_toolchain():
     run(["npm", "ci"], ROOT / "decks", {**os.environ, "PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD": "1"})
 
 
+def prepare_browser_files(directory, title, *, offline=False, pdf=None):
+    """Keep the display self-contained and make double-click failures actionable."""
+    favicon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23183334'/%3E%3Cpath d='M8 9h16M8 16h11M8 23h16' stroke='%23faf5df' stroke-width='3'/%3E%3C/svg%3E"
+    for index in directory.rglob("index.html"):
+        source = index.read_text(encoding="utf-8")
+        source = re.sub(r'<link rel="icon" href="[^"]+">', f'<link rel="icon" href="{favicon}">', source)
+        if offline and '<div id="app">' in source and 'id="offline-help"' not in source:
+            pdf_path = os.path.relpath(directory / "deck.pdf", index.parent)
+            pdf_link = f'<p><a href="{pdf_path}">Open the complete PDF now</a>. No server or internet is needed.</p>' if pdf else ''
+            help_panel = (
+                '<aside id="offline-help" hidden style="font:18px/1.6 system-ui;max-width:760px;margin:64px auto;padding:24px;color:#172d2d;background:#f4f3ed">'
+                f'<h1>{html.escape(title)}</h1><h2>Start the downloaded deck</h2>'
+                '<p>This interactive presentation needs a local HTTP address. Double-clicking index.html cannot load its modules.</p>'
+                '<ol><li>Extract the complete ZIP.</li><li>Open a terminal in the extracted folder.</li>'
+                '<li>Run <code>python3 serve.py --open</code> (Windows: <code>py serve.py --open</code>).</li></ol>'
+                '<p>No Node installation, package download, or Forge login is needed to present. Keep the terminal open.</p>'
+                + pdf_link + '</aside><script>if(location.protocol==="file:")document.getElementById("offline-help").hidden=false;</script>'
+            )
+            source = source.replace('<div id="app"></div>', '<div id="app"></div>' + help_panel)
+        index.write_text(source, encoding="utf-8")
+    if offline:
+        if pdf:
+            shutil.copyfile(pdf, directory / "deck.pdf")
+        shutil.copyfile(ROOT / "scripts/serve_deck.py", directory / "serve.py")
+        launcher = directory / "start.command"
+        launcher.write_text('#!/bin/sh\ncd "$(dirname "$0")" || exit 1\npython3 serve.py --open\n', encoding="utf-8")
+        launcher.chmod(0o755)
+        (directory / "start.cmd").write_text('@echo off\r\ncd /d "%~dp0"\r\npy serve.py --open\r\npause\r\n', encoding="utf-8")
+        (directory / "README.txt").write_text(
+            f"{title}\n\nExtract the complete ZIP first.\n"
+            "Interactive deck: python3 serve.py --open (Windows: py serve.py --open).\n"
+            "The server chooses a free port, binds only to this laptop, and opens slide 1.\n"
+            "Keep the terminal open; Ctrl-C stops it. No Node or network connection is required.\n"
+            "You can also run start.command on macOS or start.cmd on Windows.\n"
+            + ("For a file-only presentation, open deck.pdf.\n" if pdf else "This build has no PDF. Download the separate deck PDF for file-only presentation.\n")
+            + "Arrow keys change slides and reveals. Press P for presenter view.\n"
+            "External Forge/source links need internet and the viewer's usual access.\n"
+            "Opening the deck starts no inference or training.\n", encoding="utf-8")
+
+
 def write_library_index(directory, available):
     catalog_path = ROOT / "reports/published.json"
     reports = json.loads(catalog_path.read_text(encoding="utf-8"))["reports"] if catalog_path.exists() else {}
@@ -144,7 +185,7 @@ def write_library_index(directory, available):
         actions += f' · <a href="https://ash0ts.github.io/forge-workshop-kit/packet/docs/run-{slug}.html">How to run this workshop</a>'
         if report:
             actions = (f'<a href="{html.escape(report["url"], quote=True)}">Read the learning Report</a> · '
-                       + actions + f' · <a href="{html.escape(report["notebook_url"], quote=True)}">Notebook · Forge sign-in</a>')
+                       + actions + f' · <a href="packet/start/{slug}.html">Start the notebook</a>')
         stem = DECKS[slug]["filename"]
         downloads = [(f'{stem}.pdf', 'Deck PDF'), (f'{stem}-browser.zip', 'Offline deck'), (f'{stem}-source.zip', 'Editable source')]
         deck_downloads = ' · '.join(
@@ -188,18 +229,16 @@ def write_library_index(directory, available):
         'notebook into your own project to try it.</p>'
         '<p>These are technical previews. You can read the recorded results without running an experiment. '
         'Notebook execution uses your own project access and billing.</p>'
-        '<p><a href="https://ash0ts.github.io/forge-workshop-kit/packet/">Meeting packet, demo routes, and Slack copy</a> · '
-        '<a href="https://ash0ts.github.io/forge-workshop-kit/packet/workshop-meeting-packet.zip">Download the packet</a></p>'
-        '<p><a href="https://ash0ts.github.io/forge-workshop-kit/packet/docs/loom-walkthrough.html">Ten-minute Loom script</a> · '
-        '<a href="https://ash0ts.github.io/forge-workshop-kit/packet/docs/use-the-workshops.html">Choose a workflow for your audience</a></p>'
-        '<p><a href="https://ash0ts.github.io/forge-workshop-kit/packet/docs/facilitator-start.html">Facilitator start guide</a> · '
-        '<a href="https://ash0ts.github.io/forge-workshop-kit/share/">QR codes and tracked sharing links</a></p>'
-        '<p><a href="visual-language/">Explore the visual guide templates</a> · '
-        '<a href="downloads/workshop-posters.zip">Download all six posters</a></p></header>'
+        '<p><a href="packet/docs/setup.html">Set up your notebook</a> · '
+        '<a href="packet/workshop-materials.zip" download>Download all workshop materials</a> · '
+        '<a href="packet/docs/recorded-results.html">Read the recorded results</a></p>'
+        '<p><a href="packet/docs/facilitator-start.html">Facilitate a workshop</a> · '
+        '<a href="packet/docs/use-the-workshops.html">Choose a workshop for your team</a></p></header>'
         f'<main>{"".join(links)}</main>'
         '<footer><a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md">Setup instructions</a> · '
         '<a href="https://github.com/ash0ts/forge-workshop-kit">Source and contributor guide</a> · '
-        '<a href="downloads/teenage-engineering-visualizations.zip">Standalone visualization skill</a></footer></html>',
+        '<a href="share/">Share a workshop</a> · '
+        '<a href="visual-language/">Reusable visual guides</a></footer></html>',
         encoding="utf-8",
     )
 
@@ -231,13 +270,7 @@ def build(slug, output, *, install=False, pdf=False, validate=False):
         run([sys.executable, str(generator)], deck, {**os.environ, "DECK_BASE": ""})
     run(["node", str(cli), "build", "--out", str(local)], deck)
     write_routes(local, layout, "/")
-    shutil.copyfile(ROOT / "scripts/serve_deck.py", local / "serve.py")
-    (local / "README.txt").write_text(
-        f"{settings['title']}\n\nRun python3 serve.py (Windows: py serve.py).\n"
-        "Open the local address printed by the server. Presenter notes: /presenter/1.\n"
-        "Arrow keys change slides. Worked-answer links return to the exercise.\n\n"
-        "Opening this deck sends no inference or training requests. Forge links use your account.\n", encoding='utf-8'
-    )
+    prepare_browser_files(site, settings["title"])
     if validate:
         run(["node", str(ROOT / "scripts/validate_deck.mjs"), str(deck), str(site), base], ROOT)
     if pdf:
@@ -273,6 +306,13 @@ def build(slug, output, *, install=False, pdf=False, validate=False):
             ROOT,
         )
         shutil.copyfile(target, site / target.name)
+    prepare_browser_files(local, settings["title"], offline=True, pdf=target if pdf else None)
+    from check_deck_assets import check as check_assets
+    for directory, prefix in ((site, base), (local, "/")):
+        receipt = check_assets(deck, directory, prefix)
+        (directory / "asset-check.json").write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
+        if receipt["missing"] or receipt["remote_render_dependencies"]:
+            raise RuntimeError(f"Deck assets are not self-contained: {receipt}")
     archive(downloads / f"{settings['filename']}-browser.zip", local, [local])
     source_archive(downloads / f"{settings['filename']}-source.zip", deck, slug)
     for file in downloads.glob(f"{settings['filename']}-*.zip"):

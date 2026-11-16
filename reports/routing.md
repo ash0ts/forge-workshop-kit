@@ -10,7 +10,7 @@ Our first classifier made that prediction. A second classifier, trained on sente
 
 We built this workshop to follow those decisions through training, review, evaluation, and release. The support desk is fictional; the messages come from [Banking77](https://github.com/PolyAI-LDN/task-specific-datasets/tree/57ec275d8078af65b7731c2a98be812d844a6d6b/banking_data), a public collection from Casanueva and colleagues at PolyAI, released under CC BY 4.0. Its 77 intent labels describe different support workflows. Nothing here accesses a bank account or takes a financial action.
 
-You can [copy the notebook into your Forge project](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view) and build the same comparison. The examples below are saved instructor results, so you can investigate them before running your own version.
+You can [copy the notebook into your Forge project](https://ash0ts.github.io/forge-workshop-kit/packet/start/routing.html) and build the same comparison. The examples below are saved instructor results, so you can investigate them before running your own version.
 
 In Forge, we follow a message from a training run into an aligned evaluation, review the mistakes, and preserve the selected model and preprocessing as an exact Artifact version. Agent Lens records the separate prompted-router and judge calls, then the batch operations used in the release drill. The release target is a notebook batch predictor. It lets us practice reproducing a version, detecting a loading bug, and rolling back without claiming we deployed a production banking service.
 
@@ -44,6 +44,7 @@ The notebook's routing policy compares the largest probability with a cutoff:
 
 ```python
 def needs_review(confidence, threshold):
+    # Below the cutoff means send to human review.
     return confidence < threshold
 ```
 
@@ -97,7 +98,7 @@ loaded_labels = labels[1:] + labels[:1]
 
 The confidence looks exactly as reassuring as before. It now belongs to the wrong queue. This is an unglamorous release bug, which is why we wanted it in a workshop that could otherwise finish at a good-looking model score.
 
-![A three-label free-check fixture shows unchanged probability columns p0, p1 and p2 mapped to healthy, rotated and repaired label orders.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/label-mapping.png)
+![An illustrative three-column mapping keeps probabilities fixed while moving intent labels. Follow column zero: the faulty loader changes its destination from card_arrival to card_linking.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/mechanism-release.png)
 
 *This diagram uses the notebook's three-label free check. Its probabilities are symbols. The real drill rotates all 77 intent names; checking that the same names are present will not detect the permutation.*
 
@@ -105,11 +106,13 @@ Participants write both the repair and the check:
 
 ```python
 def label_names(model_classes):
+    # Probability column i must keep its corresponding class name.
     return list(model_classes)
 
 def check_release(model_classes, loaded_labels):
     return {
         "label_set": set(model_classes) == set(loaded_labels),
+        # Membership can pass even when probability columns have wrong names.
         "label_order": list(model_classes) == list(loaded_labels),
     }
 ```
@@ -124,10 +127,12 @@ In [the recorded release comparison](https://forge.coreweave.com/wandb/wandb/for
 
 ## Run the workshop yourself
 
-Open the [Customer request routing notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view), choose **Copy to project**, and select a project where you have write access. Use **Run all stale cells** once to create the controls, confirm the displayed destination, and inspect the bundled request. Training and model calls have separate, explicit run buttons.
+The start page offers notebook copy, import, and laptop setup. You can also open the [Forge template directly](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view). If the hosted link sends you back to Home, use the import or local option on that page; your saved work does not need to be rerun.
+
+Open the [Customer request routing notebook](https://ash0ts.github.io/forge-workshop-kit/packet/start/routing.html), choose **Copy to project**, and select a project where you have write access. Use **Run all stale cells** once to create the controls, confirm the displayed destination, and inspect the bundled request. Training and model calls have separate, explicit run buttons.
 
 The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) includes the laptop path and recovery instructions. The [companion deck](https://ash0ts.github.io/forge-workshop-kit/routing/) follows the same exercises. Allow five and a half hours and bring basic Python familiarity. The adjustable $8 inference allowance covers the notebook's model calls; compute and optional ARIA usage are separate.
 
-Two ARIA activities examine a validation prediction and the release conclusion. You check its explanation against a cited request, probability column, or release record; it does not approve a label or release the repair. Recorded investigations are included when live ARIA is unavailable.
+Two ARIA activities examine a validation prediction and the release conclusion. At the stop, click **Start ARIA investigation** to send your explanation and the selected records. **Open ARIA conversation** takes you to that same conversation in Forge; **Check ARIA response** brings its answer back into the notebook. You check its explanation against a cited request, probability column, or release record; it does not approve a label or release the repair. Recorded investigations are included when live ARIA is unavailable.
 
 The [Routing packet](https://utm.io/uuH98) collects this Report, the deck, notebook, visual guides, and running instructions for a short demonstration or the full session. These remain technical-preview materials; external-account checks and participant rehearsals are outstanding. Your copy saves your edits and results, including the remaining classifier errors after the loading bug is repaired.

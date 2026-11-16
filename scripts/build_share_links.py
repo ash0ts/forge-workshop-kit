@@ -13,9 +13,9 @@ PUBLIC = "https://ash0ts.github.io/forge-workshop-kit"
 MANIFEST = ROOT / "docs/share-links.json"
 WORKSHOPS = ("pending", "solar", "routing", "inspection", "transit", "airline_monitoring")
 COLLECTION_LINKS = {
-    "packet": {"source": "slack", "medium": "social", "content": "meeting-packet",
-               "title": "All six workshops · Slack",
-               "placement": "Use in a Slack message introducing the collection."},
+    "packet": {"source": "slack", "medium": "social", "content": "workshop-library",
+               "title": "All six workshops · Community Slack",
+               "placement": "Use when sharing with prospective participants in an external Slack community. For coworkers, use the untracked library address."},
     "loom": {"source": "loom", "medium": "video", "content": "kit-walkthrough",
              "title": "All six workshops · Loom",
              "placement": "Use in the Loom description and closing screen."},
@@ -42,11 +42,12 @@ def load_links(path=MANIFEST):
             raise ValueError(f"{slug}: each resource needs its own registered short URL")
         short_urls.add(row["short_url"])
         destination = urlsplit(row["url"])
-        if (destination.scheme, destination.netloc, destination.path) != (
-            "https", "ash0ts.github.io", "/forge-workshop-kit/packet/"
-        ):
-            raise ValueError(f"{slug}: destination must be the public workshop packet")
         collection = COLLECTION_LINKS.get(slug)
+        expected_path = "/forge-workshop-kit/" if collection else f"/forge-workshop-kit/packet/start/{slug}.html"
+        if (destination.scheme, destination.netloc, destination.path) != (
+            "https", "ash0ts.github.io", expected_path
+        ):
+            raise ValueError(f"{slug}: destination must be its public library or notebook start page")
         parameters = {
             "utm_source": [collection["source"] if collection else "forge-workshop-kit"],
             "utm_medium": [collection["medium"] if collection else "workshop"],
@@ -55,8 +56,8 @@ def load_links(path=MANIFEST):
         }
         if parse_qs(destination.query, keep_blank_values=True) != parameters:
             raise ValueError(f"{slug}: UTM values differ from the sharing convention")
-        if destination.fragment != ("" if collection else slug):
-            raise ValueError(f"{slug}: destination must open its own workshop card")
+        if destination.fragment:
+            raise ValueError(f"{slug}: start pages do not use workshop fragments")
     return manifest
 
 
@@ -119,13 +120,14 @@ def write_page(target, manifest, titles):
         '<style>.qr{width:240px;max-width:100%;height:auto;margin:20px 0;border:0}'
         '.card-body h2{font-size:26px;margin:0}</style></head><body>'
         '<a class="skip" href="#main">Skip to content</a><main id="main">'
-        '<nav><a href="../packet/">Workshop packet</a> · '
+        '<nav><a href="../">Workshop library</a> · '
         '<a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/share-links.md">Sharing instructions</a></nav>'
         '<header><p class="eyebrow">FORGE WORKSHOP KIT · SHARING LINKS</p>'
         '<h1>Choose a workshop and share its link</h1>'
-        '<p>Choose the Slack or Loom link for an introduction to the collection. '
+        '<p>Choose the community Slack or video link for an introduction to the collection. '
         'Use a workshop link when inviting people to a specific session. Each opens its '
-        'public introduction, deck, setup instructions, and notebook link.</p>'
+        'public introduction, deck, setup instructions, and notebook start page. '
+        'For internal discussions, use the <a href="../">untracked library address</a>.</p>'
         '<p>Download the PNG for a message or the SVG for a slide or printed handout. '
         'Keep the white border around the QR code and include the written link.</p></header>'
         f'<section class="catalog" aria-label="Workshop sharing codes">{"".join(cards)}</section>'

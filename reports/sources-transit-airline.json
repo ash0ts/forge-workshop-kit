@@ -31,7 +31,7 @@
             {
               "path": "scripts/transit_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/transit_cells.py",
-              "sha256": "5b704aa36774625acb4fdd52dedcc2b78335f21b5d28c6197d17846c454d5348"
+              "sha256": "899a4b962e22eab8fae86cc3b371e139324f2463bba1b4261bb209c3ac5de23c"
             },
             {
               "path": "src/forge_workshop_kit/factory.py",
@@ -94,12 +94,12 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "9f4991b8cae22021c593ddd05f8f53084e5c4f79f8e23d2fec0451660e5d3ad0"
+              "sha256": "1b0d985f7185fc381b95c1891eb14bee6a626c9bcbf31028286970c22f8cd21b"
             },
             {
               "path": "docs/setup.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md",
-              "sha256": "9255e0947e295f5ce816190d8457614641d76130ae64e85e4b0b180244a28f1f"
+              "sha256": "f4b03c17be58453ace71f7fc63d47a380fa52d70dd3f36c52d6febe6bcb981f3"
             },
             {
               "path": "docs/transit-facilitator.md",
@@ -115,12 +115,12 @@
             {
               "path": "scripts/transit_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/transit_cells.py",
-              "sha256": "5b704aa36774625acb4fdd52dedcc2b78335f21b5d28c6197d17846c454d5348"
+              "sha256": "899a4b962e22eab8fae86cc3b371e139324f2463bba1b4261bb209c3ac5de23c"
             },
             {
               "path": "docs/aria-investigations.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-investigations.md",
-              "sha256": "e771280cfda15dd69a3f6449280e5df55cca42914f737dfbe197637aa2c99dcb"
+              "sha256": "bef79f4186b531871d9af8815a6f7ce92572f40244e6406e381b89bd11ad8b7c"
             },
             {
               "path": "visual-guides/index.json",
@@ -130,7 +130,7 @@
             {
               "path": "docs/share-links.json",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/share-links.json",
-              "sha256": "ab24b50d81853518525235d3f70a938c6c21d30057ae5188205fb2583f6a08ab"
+              "sha256": "f5d12d98b296d509f8e6c025ca9905a2a5c325cbf36267205a6153fb371e193e"
             }
           ]
         }
@@ -147,16 +147,6 @@
         }
       ],
       "images": [
-        {
-          "path": "reports/assets/transit/service-day.png",
-          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/service-day.png",
-          "sha256": "48047d75bdb7a4aa77a72b86fe88cfca2281551f949422bd8d54f9fad2490d19",
-          "alt": "A real Park Street record maps November 28 service time 24:08 to November 29 at 00:08 Eastern. A query at 00:05 should include the departure.",
-          "visually_inspected": true,
-          "identity": "transit/service-day",
-          "source_url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/figures-transit-airline.json",
-          "caption_boundary": "Real retained MBTA example; no live travel claim."
-        },
         {
           "path": "decks/transit/public/images/reference-departures.png",
           "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/transit/public/images/reference-departures.png",
@@ -227,6 +217,42 @@
           "captured": "2026-11-15",
           "caption_boundary": "Actual release file with source identity and checksums. Native preview truncates long lines, so complete code requires download. Not a deployment claim.",
           "visually_inspected": true
+        },
+        {
+          "path": "reports/assets/transit/mechanism-service-time.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/mechanism-service-time.png",
+          "sha256": "319c7ba0d597dcdba556546f0758aa3e995f4394d92c8a9f04ee5f21c3afd2e4",
+          "alt": "A real Park Street record maps November 28 service time 24:08 to November 29 at 00:08 Eastern. A query at 00:05 should include the departure.",
+          "visually_inspected": true,
+          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/transit/service-time/index.html",
+          "provenance": "reports/figures-guide-layout.json",
+          "state": "complete",
+          "editable_source": "reports/assets/transit/mechanism-service-time.svg",
+          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result."
+        },
+        {
+          "path": "reports/assets/transit/mechanism-service-time.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/mechanism-service-time.png",
+          "sha256": "319c7ba0d597dcdba556546f0758aa3e995f4394d92c8a9f04ee5f21c3afd2e4",
+          "alt": "A real Park Street record maps November 28 service time 24:08 to November 29 at 00:08 Eastern. A query at 00:05 should include the departure.",
+          "visually_inspected": true,
+          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/transit/service-time/index.html",
+          "provenance": "reports/figures-guide-layout.json",
+          "state": "complete",
+          "editable_source": "reports/assets/transit/mechanism-service-time.svg",
+          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result."
+        },
+        {
+          "path": "reports/assets/transit/mechanism-service-time.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/mechanism-service-time.png",
+          "sha256": "319c7ba0d597dcdba556546f0758aa3e995f4394d92c8a9f04ee5f21c3afd2e4",
+          "alt": "A real Park Street record maps November 28 service time 24:08 to November 29 at 00:08 Eastern. A query at 00:05 should include the departure.",
+          "visually_inspected": true,
+          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/transit/service-time/index.html",
+          "provenance": "reports/figures-guide-layout.json",
+          "state": "complete",
+          "editable_source": "reports/assets/transit/mechanism-service-time.svg",
+          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result."
         }
       ],
       "limitations": [
@@ -234,7 +260,7 @@
         "Reference app is separately authored.",
         "External-account access and participant rehearsal outstanding."
       ],
-      "source_sha256": "89b391c668245b2bd1a355b11b529c17006caeeeb95244ee0e4305aca8659b32"
+      "source_sha256": "373073975d66001ecc25e4edc4b7a2ea138f8536501b1a2b33bfe3778c9e5df1"
     },
     "airline": {
       "file": "reports/airline.md",
@@ -265,7 +291,7 @@
           "upstream": "https://github.com/sierra-research/tau2-bench/tree/989d3285ae669e49503324bdb9981bf14fccedeb"
         },
         {
-          "claim": "59XX6W requested HAT007\u2192HAT061 on May 19 with HAT174 on May 29 preserved. Same recorded discovery request encounters read timeout then recovers.",
+          "claim": "59XX6W requested HAT007→HAT061 on May 19 with HAT174 on May 29 preserved. Same recorded discovery request encounters read timeout then recovers.",
           "sources": [
             {
               "path": "src/forge_workshop_kit/assets/airline/cases.json",
@@ -366,7 +392,7 @@
             {
               "path": "scripts/airline_monitoring_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/airline_monitoring_cells.py",
-              "sha256": "043e58b8a6ab98277d2e6d07805d0f64dd994e47ed605cacc2e9364131726dc5"
+              "sha256": "6835639da0a59e7e75f752764fe5ddc4de3c2baaf30935afd8203e0b8b904c6f"
             },
             {
               "path": "docs/airline_monitoring-runbook.md",
@@ -381,12 +407,12 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "9f4991b8cae22021c593ddd05f8f53084e5c4f79f8e23d2fec0451660e5d3ad0"
+              "sha256": "1b0d985f7185fc381b95c1891eb14bee6a626c9bcbf31028286970c22f8cd21b"
             },
             {
               "path": "docs/setup.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md",
-              "sha256": "9255e0947e295f5ce816190d8457614641d76130ae64e85e4b0b180244a28f1f"
+              "sha256": "f4b03c17be58453ace71f7fc63d47a380fa52d70dd3f36c52d6febe6bcb981f3"
             },
             {
               "path": "docs/airline-monitoring-qualification.md",
@@ -402,12 +428,12 @@
             {
               "path": "scripts/airline_monitoring_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/airline_monitoring_cells.py",
-              "sha256": "043e58b8a6ab98277d2e6d07805d0f64dd994e47ed605cacc2e9364131726dc5"
+              "sha256": "6835639da0a59e7e75f752764fe5ddc4de3c2baaf30935afd8203e0b8b904c6f"
             },
             {
               "path": "docs/aria-investigations.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-investigations.md",
-              "sha256": "e771280cfda15dd69a3f6449280e5df55cca42914f737dfbe197637aa2c99dcb"
+              "sha256": "bef79f4186b531871d9af8815a6f7ce92572f40244e6406e381b89bd11ad8b7c"
             },
             {
               "path": "visual-guides/index.json",
@@ -417,7 +443,7 @@
             {
               "path": "docs/share-links.json",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/share-links.json",
-              "sha256": "ab24b50d81853518525235d3f70a938c6c21d30057ae5188205fb2583f6a08ab"
+              "sha256": "f5d12d98b296d509f8e6c025ca9905a2a5c325cbf36267205a6153fb371e193e"
             }
           ]
         }
@@ -506,16 +532,6 @@
           "alt": "Native Alignment displays a human expected result, selected turn context, and unscored turns without a completed model test result."
         },
         {
-          "path": "reports/assets/airline/monitor-denominators.png",
-          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/monitor-denominators.png",
-          "sha256": "c3e9a5d41b6aa492419d7d9b5ddc71e8998369a121cd599c05fc779a5d0cb8e9",
-          "alt": "Eligible turns divide into completed predictions and unprocessed or unavailable turns. Coverage uses all eligible turns; precision and recall use completed predictions with human labels.",
-          "visually_inspected": true,
-          "identity": "airline/monitor-denominators",
-          "source_url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/figures-transit-airline.json",
-          "caption_boundary": "Definition diagram; no measured native monitor precision/recall claimed."
-        },
-        {
           "path": "reports/assets/airline/regression-replay.png",
           "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/regression-replay.png",
           "sha256": "d1a5ad95f109b566bc133a768a16a53a0caabb4b77b1d3570ab400b7f260b3ea",
@@ -534,6 +550,42 @@
           "caption_boundary": "Four matched development requests per version, both 100% task success. Distinct from six-case final comparison.",
           "visually_inspected": true,
           "alt": "Native EvalTables shows the starting version as Reference and four matched development requests per version, both with 100 percent task success."
+        },
+        {
+          "path": "reports/assets/airline/mechanism-coverage.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/mechanism-coverage.png",
+          "sha256": "8e64db5e583479d34291751d7f925108404ff576e9a9f81cd910dbaa70f42a9d",
+          "alt": "Illustrative monitoring arithmetic: six completed judgments among eight eligible turns give 75 percent coverage. Pending and unavailable turns remain visible and do not become negative judgments.",
+          "visually_inspected": true,
+          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/airline_monitoring/coverage/index.html",
+          "provenance": "reports/figures-guide-layout.json",
+          "state": "complete",
+          "editable_source": "reports/assets/airline/mechanism-coverage.svg",
+          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result."
+        },
+        {
+          "path": "reports/assets/airline/mechanism-coverage.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/mechanism-coverage.png",
+          "sha256": "8e64db5e583479d34291751d7f925108404ff576e9a9f81cd910dbaa70f42a9d",
+          "alt": "Illustrative monitoring arithmetic: six completed judgments among eight eligible turns give 75 percent coverage. Pending and unavailable turns remain visible and do not become negative judgments.",
+          "visually_inspected": true,
+          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/airline_monitoring/coverage/index.html",
+          "provenance": "reports/figures-guide-layout.json",
+          "state": "complete",
+          "editable_source": "reports/assets/airline/mechanism-coverage.svg",
+          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result."
+        },
+        {
+          "path": "reports/assets/airline/mechanism-coverage.png",
+          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/mechanism-coverage.png",
+          "sha256": "8e64db5e583479d34291751d7f925108404ff576e9a9f81cd910dbaa70f42a9d",
+          "alt": "Illustrative monitoring arithmetic: six completed judgments among eight eligible turns give 75 percent coverage. Pending and unavailable turns remain visible and do not become negative judgments.",
+          "visually_inspected": true,
+          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/airline_monitoring/coverage/index.html",
+          "provenance": "reports/figures-guide-layout.json",
+          "state": "complete",
+          "editable_source": "reports/assets/airline/mechanism-coverage.svg",
+          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result."
         }
       ],
       "limitations": [
@@ -542,7 +594,7 @@
         "External-account, complete current browser path, and human rehearsal outstanding.",
         "Recorded runtime later received tracing error-handling changes; original 40 executions remain tied to their original source."
       ],
-      "source_sha256": "7f17a1b197923493c74660661f09a3a38f563151bed56ea05cc49e40ccde9454"
+      "source_sha256": "dc77d205521e952cbebee9d5c1bad3a46f873549ebcc97416ca417fbe4be9e5c"
     }
   }
 }

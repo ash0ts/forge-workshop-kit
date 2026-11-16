@@ -1,7 +1,7 @@
 # /// script
 # requires-python = ">=3.11,<3.14"
 # dependencies = [
-#   "forge-workshop-kit[solar] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.11.1/forge_workshop_kit-0.11.1-py3-none-any.whl",
+#   "forge-workshop-kit[solar] @ https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge_workshop_kit-0.12.0-py3-none-any.whl",
 #   "abnf==2.2.0",
 #   "aioftp==0.28.3",
 #   "aiohappyeyeballs==2.7.1",
@@ -639,7 +639,15 @@ def _(digest, get_feedback, get_step, measurement_editor, mo):
     return
 
 
-# workshop-cell: solar_autoresearch/display/40
+# workshop-cell: solar_autoresearch/explanation/loss
+@app.cell(hide_code=True)
+def _(get_step, mo):
+    mo.stop(get_step() != 'search')
+    mo.md("### Read the calculation before filling the gap\nThe subtraction measures each miss. Squaring makes large misses count more during training; absolute error keeps the reported score in the target's units. This excerpt explains the existing loss, not a new training recipe.\n```python\n# One predicted value is compared with its matching target.\nerror = prediction - target\n# Keep only scored entries. GOES uses an all-ones mask.\nweighted_error = error.square() * mask\n# Divide by the number of included entries, not the tensor's size.\nloss = weighted_error.sum() / mask.sum()\n```\nFor an illustrative miss of −0.5, squared loss is 0.25 and absolute error is 0.5. Opposite-signed misses cannot cancel in either calculation. Training updates forecasting weights; validation only measures them.")
+    return
+
+
+# workshop-cell: solar_autoresearch/display/41
 @app.cell(hide_code=True)
 def _(check_measurement, flux_metric_editor, get_step, mo, teaching):
     mo.stop(get_step() != "search")
@@ -647,7 +655,7 @@ def _(check_measurement, flux_metric_editor, get_step, mo, teaching):
     return
 
 
-# workshop-cell: solar_autoresearch/display/41
+# workshop-cell: solar_autoresearch/display/42
 @app.cell(hide_code=True)
 def _(get_step, mo):
     mo.stop(get_step() != "search")
@@ -806,7 +814,7 @@ def _(get_lab, mo, refresh_saved, restore_search_code, teaching):
     return
 
 
-# workshop-cell: solar_autoresearch/display/48
+# workshop-cell: solar_autoresearch/display/49
 @app.cell(hide_code=True)
 def _(get_feedback, get_step, mo, ui):
     mo.stop(get_step() != "search")
@@ -815,7 +823,7 @@ def _(get_feedback, get_step, mo, ui):
     return
 
 
-# workshop-cell: solar_autoresearch/display/49
+# workshop-cell: solar_autoresearch/display/50
 @app.cell(hide_code=True)
 def _(get_feedback, get_lab, get_step, measurement_editor, mo, teaching, ui):
     mo.stop(get_step() != "search")
@@ -827,7 +835,7 @@ def _(get_feedback, get_lab, get_step, measurement_editor, mo, teaching, ui):
     return
 
 
-# workshop-cell: solar_autoresearch/display/50
+# workshop-cell: solar_autoresearch/display/51
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo, teaching):
     mo.stop(get_step() != "search")
@@ -840,7 +848,7 @@ def _(get_lab, get_step, mo, teaching):
     return (inspect_goes_run,)
 
 
-# workshop-cell: solar_autoresearch/display/51
+# workshop-cell: solar_autoresearch/display/52
 @app.cell(hide_code=True)
 def _(get_lab, inspect_goes_run, mo, np, ui, views):
     mo.stop(inspect_goes_run is None)
@@ -869,14 +877,21 @@ def _(get_lab, get_step, mo):
 
 # workshop-cell: solar_autoresearch/aria/investigate
 @app.cell(hide_code=True)
-def _(aria, get_lab, get_step, goes_diagnosis, inspect_goes_run, mo, show_goes_repair, teaching):
+def _(aria, get_lab, get_step, goes_diagnosis, inspect_goes_run, mo, teaching):
     mo.stop(get_step() != "search")
     _s=get_lab().get("session")
     _baseline=teaching.saved(_s,"goes/persistence") if _s else None
     _ids=([inspect_goes_run.value] if inspect_goes_run is not None and inspect_goes_run.value else [])+([_baseline["id"]] if _baseline else [])
     solar_aria_investigate=aria.investigation(mo,_s,"investigate",record_ids=_ids,interpretation=goes_diagnosis.value,workshop="solar-autoresearch")
-    mo.vstack([solar_aria_investigate,show_goes_repair])
+    solar_aria_investigate
     return (solar_aria_investigate,)
+
+
+# workshop-cell: solar_autoresearch/aria_response/investigate
+@app.cell(hide_code=True)
+def _(aria, mo, show_goes_repair, solar_aria_investigate):
+    mo.vstack([aria.response(mo,solar_aria_investigate),show_goes_repair])
+    return
 
 
 # workshop-cell: solar_autoresearch/controls/check_measurement_repair
@@ -963,7 +978,7 @@ def _(get_step, mo):
     return (fixture_error, fixture_inside, try_scorer,)
 
 
-# workshop-cell: solar_autoresearch/display/61
+# workshop-cell: solar_autoresearch/display/63
 @app.cell(hide_code=True)
 def _(fixture_error, fixture_inside, mo, views):
     _fixture = views.scorer_fixture(fixture_error.value, inside=fixture_inside.value)
@@ -987,7 +1002,7 @@ def _(checked, digest, fixture_error, fixture_inside, image_metric_editor, mo, n
     return
 
 
-# workshop-cell: solar_autoresearch/display/63
+# workshop-cell: solar_autoresearch/display/65
 @app.cell(hide_code=True)
 def _(digest, fixture_error, fixture_inside, get_feedback, get_step, image_metric_editor, mo, ui):
     mo.stop(get_step() != "images")
@@ -1046,7 +1061,7 @@ def _(get_lab, get_step, mo, teaching):
     return (comparison_timestamp,)
 
 
-# workshop-cell: solar_autoresearch/display/67
+# workshop-cell: solar_autoresearch/display/69
 @app.cell(hide_code=True)
 def _(comparison_timestamp, get_lab, get_step, mo, teaching, ui, views):
     _s = get_lab()["session"]
@@ -1062,7 +1077,7 @@ def _(comparison_timestamp, get_lab, get_step, mo, teaching, ui, views):
     return
 
 
-# workshop-cell: solar_autoresearch/display/68
+# workshop-cell: solar_autoresearch/display/70
 @app.cell(hide_code=True)
 def _(get_step, mo, ui):
     mo.stop(get_step() not in ("images", "research"))
@@ -1366,7 +1381,7 @@ def _(export_trace, get_lab, instrument_tool, mo, publish_comparison, refresh_sa
     return
 
 
-# workshop-cell: solar_autoresearch/display/78
+# workshop-cell: solar_autoresearch/display/80
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo, teaching, ui):
     mo.stop(get_step() != "final")
@@ -1391,7 +1406,7 @@ def _(get_lab, get_step, mo, teaching, ui):
     return
 
 
-# workshop-cell: solar_autoresearch/display/79
+# workshop-cell: solar_autoresearch/display/81
 @app.cell(hide_code=True)
 def _(get_lab, get_step, mo, np, teaching, ui, views):
     mo.stop(get_step() != "final")
@@ -1410,12 +1425,19 @@ def _(get_lab, get_step, mo, np, teaching, ui, views):
 
 # workshop-cell: solar_autoresearch/aria/conclusion
 @app.cell(hide_code=True)
-def _(aria, conclusion, get_lab, get_step, mo, report_button):
+def _(aria, conclusion, get_lab, get_step, mo):
     mo.stop(get_step() != "final")
     _s=get_lab().get("session")
     solar_aria_conclusion=aria.investigation(mo,_s,"conclusion",interpretation=conclusion.value,workshop="solar-autoresearch")
-    mo.vstack([mo.md("### Write your interpretation before asking ARIA"),conclusion,solar_aria_conclusion,report_button])
+    mo.vstack([mo.md("### Write your interpretation before asking ARIA"),conclusion,solar_aria_conclusion])
     return (solar_aria_conclusion,)
+
+
+# workshop-cell: solar_autoresearch/aria_response/conclusion
+@app.cell(hide_code=True)
+def _(aria, mo, report_button, solar_aria_conclusion):
+    mo.vstack([aria.response(mo,solar_aria_conclusion),report_button])
+    return
 
 if __name__ == "__main__":
     app.run()

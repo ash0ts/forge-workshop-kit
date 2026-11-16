@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-16",
+  "workshop": "banking-routing",
+  "project": "wandb/forge-workshop-kit",
+  "record": "ec8f27e3cbac834c7cfefece929fd468",
+  "case": "official-train/00035",
+  "post_requests": 1,
+  "status": "completed",
+  "thread_id": "01a1e362-20ec-7b43-8473-cbf67b034ef2",
+  "url": "https://forge.coreweave.com/aria/threads/01a1e362-20ec-7b43-8473-cbf67b034ef2",
+  "response_chars": 1270,
+  "native_context_types": [
+    "wandb_run",
+    "wandb_conversation"
+  ],
+  "checks": [
+    "native run attachment visible",
+    "native Agent Lens conversation attachment visible",
+    "same returned conversation has follow-up composer",
+    "saved response restored locally",
+    "Check ARIA response preserves next action",
+    "repeated Start reuses saved handle",
+    "diagram reviewed in browser"
+  ],
+  "not_run": [
+    "external participant account",
+    "all twelve live conversations",
+    "human rehearsal",
+    "new workshop model calls or training"
+  ],
+  "upstream_revision": "7a1f9f629d4977d41d31b7b84a1227bc9da2cb90",
+  "actual_response": "**Your subset-routing interpretation is supported; a vocabulary limitation remains a hypothesis.** Saved validation coverage is **73.38%**, not all requests.\n\nOne checkable observation: in the [saved execution artifact](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/artifacts/workshop-execution/execution-ec8f27e3cbac834c7cfefece929fd468/v0), `execution.json \u2192 result.validation[case_id=\"official-train/00035\"]` records \u201cCan I get an update on my replacement card?\u201d with target `card_arrival`, prediction `compromised_card`, confidence **0.05337**, and `abstained=true`. That supports an uncertain, incorrect top prediction **withheld from automatic routing**, not a proven vocabulary failure.\n\nThe recorded `sources[\"classifier.py\"]` constructs logistic regression (`C=10`, seed 17); it does not expose TF\u2013IDF preprocessing, vocabulary, or feature contributions. Sentence-level semantic features **could** better capture \u201cupdate on \u2026 replacement card\u201d as an arrival/status request, but improvement is untested.\n\nNo access failures occurred. I inspected only this execution\u2019s source, metrics, and requested validation row\u2014not other result rows or the serialized model. The next diagnostic would be this request\u2019s vectorized features and class contributions.",
+  "native_context": [
+    {
+      "type": "wandb_run",
+      "entity_name": "wandb",
+      "project_name": "forge-workshop-kit",
+      "run_name": "ec8f27e3cbac834c7cfefece929fd468"
+    },
+    {
+      "type": "wandb_conversation",
+      "entity_name": "wandb",
+      "project_name": "forge-workshop-kit",
+      "conversation_id": "ec8f27e3cbac834c7cfefece929fd468"
+    }
+  ]
+}

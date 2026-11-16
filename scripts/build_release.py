@@ -115,7 +115,7 @@ def build_aria_bundle(output, version, *, root=ROOT):
                     if source.is_symlink() or not source.resolve().is_relative_to(assets.resolve()):
                         raise ValueError(f"Unexpected link in ARIA assets: {source}")
                     add(Path("aria") / source.relative_to(assets), source.read_bytes())
-            for name in ("LICENSE", "src/forge_workshop_kit/aria.py", "scripts/build_aria_recordings.py", "docs/aria-investigations.md"):
+            for name in ("LICENSE", "src/forge_workshop_kit/aria.py", "src/forge_workshop_kit/aria_client.py", "src/forge_workshop_kit/aria_visual.py", "scripts/build_aria_recordings.py", "docs/aria-investigations.md"):
                 add(name, (root / name).read_bytes())
             file_count = len(bundle.namelist())
         temporary_path.replace(destination)
