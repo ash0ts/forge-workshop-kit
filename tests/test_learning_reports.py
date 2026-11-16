@@ -40,14 +40,14 @@ def test_every_native_figure_keeps_its_caption_and_full_size_link():
 def test_report_mechanisms_share_the_notebook_and_deck_canvas():
     from xml.etree import ElementTree
 
-    layout = json.loads((ROOT / "reports/figures-guide-layout.json").read_text())
+    layout = json.loads((ROOT / "reports/figures-guide-layout.json").read_text(encoding="utf-8"))
     assert {row["report"] for row in layout["figures"]} == set(reports.SLUGS)
     for row in layout["figures"]:
         assert (row["width"], row["height"]) == (1200, 675)
         assert row["all_reveals_checked"]
         svg = ElementTree.parse(ROOT / row["svg"]).getroot()
         assert svg.attrib["viewBox"] == "0 0 1200 675"
-        assert row["png"].split("/", 1)[1] in (ROOT / "reports" / f"{row['report']}.md").read_text()
+        assert row["png"].split("/", 1)[1] in (ROOT / "reports" / f"{row['report']}.md").read_text(encoding="utf-8")
 
 
 def test_interrupted_creation_never_creates_another_report(tmp_path):

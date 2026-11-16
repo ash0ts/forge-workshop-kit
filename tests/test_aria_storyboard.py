@@ -2,6 +2,8 @@
 import importlib.util
 import json
 from pathlib import Path
+import subprocess
+import sys
 
 import pytest
 
@@ -9,6 +11,18 @@ ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('aria_storyboard',ROOT/'scripts/aria_storyboard.py')
 storyboard=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(storyboard)
+
+
+def test_handoff_renders_without_installed_participant_dependencies(tmp_path):
+    # Match the deck CI job: no site-packages, editable installation, or cwd import.
+    code = (
+        "import runpy\n"
+        f"storyboard = runpy.run_path({str(ROOT / 'scripts/aria_storyboard.py')!r})\n"
+        "drawing = storyboard['_graphic']('pending', 'investigate', 2)\n"
+        "assert '<svg' in drawing and 'Start ARIA investigation' in drawing\n"
+    )
+    subprocess.run([sys.executable, '-I', '-S', '-c', code], cwd=tmp_path,
+                   check=True, capture_output=True, text=True)
 
 
 def rows_for(deck):

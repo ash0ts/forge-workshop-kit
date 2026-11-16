@@ -84,6 +84,9 @@ def source_archive(path, deck, slug):
                     bundle.write(file, file.relative_to(ROOT))
         definitions = Path("src/forge_workshop_kit/assets/visuals.json")
         bundle.write(ROOT / definitions, definitions)
+        # Storyboards load this stdlib-only renderer without installing the kit.
+        aria_visual = Path("src/forge_workshop_kit/aria_visual.py")
+        bundle.write(ROOT / aria_visual, aria_visual)
         bundle.writestr(
             "README.md",
             f"# {DECKS[slug]['title']}\n\n"
@@ -229,6 +232,10 @@ def write_library_index(directory, available):
         'notebook into your own project to try it.</p>'
         '<p>These are technical previews. You can read the recorded results without running an experiment. '
         'Notebook execution uses your own project access and billing.</p>'
+        '<p><a href="https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge-workshops-captioned.mp4">'
+        'Watch the ten-minute captioned tour</a>: six customer problems, their code, and the saved Forge records.</p>'
+        '<p>Current downloads are v0.12.0. Hosted templates remain v0.11.1 while the publisher’s notebook-management '
+        'access is blocked. Use the source download and laptop instructions for the new direct ARIA controls.</p>'
         '<p><a href="packet/docs/setup.html">Set up your notebook</a> · '
         '<a href="packet/workshop-materials.zip" download>Download all workshop materials</a> · '
         '<a href="packet/docs/recorded-results.html">Read the recorded results</a></p>'

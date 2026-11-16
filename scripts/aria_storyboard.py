@@ -11,9 +11,13 @@ import json
 import os
 from pathlib import Path
 import re
+import runpy
 import shutil
 
 KIT = Path(__file__).resolve().parents[1]
+# Deck generation runs with plain Python in CI. Load this stdlib-only drawing
+# directly so rendering does not require the participant package or its SDKs.
+_handoff = runpy.run_path(str(KIT / 'src/forge_workshop_kit/aria_visual.py'))['handoff']
 SLUGS = {'pending':'pending_inc','solar':'solar_autoresearch','routing':'request_routing',
          'inspection':'visual_inspection','transit':'transit_factory','airline_monitoring':'airline_monitoring'}
 PLACEMENTS = {
@@ -99,8 +103,7 @@ def _assets(deck_root, pack, pack_path, stop):
     return captures
 
 def _graphic(deck, stop, phase):
-    from forge_workshop_kit.aria_visual import handoff
-    return '<div class="aria-sequence-wrap">' + handoff(phase) + '</div>'
+    return '<div class="aria-sequence-wrap">' + _handoff(phase) + '</div>'
 
 
 def _capture(shot):
