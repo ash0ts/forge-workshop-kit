@@ -181,7 +181,7 @@ def write_library_index(directory, available):
     shutil.copytree(ROOT / "skills/teenage-engineering-visualizations/assets/fonts", directory / "fonts", dirs_exist_ok=True)
     tokens = json.loads((ROOT / "skills/teenage-engineering-visualizations/assets/tokens.json").read_text(encoding="utf-8"))["colors"]
     write_walkthrough_page(directory, tokens)
-    video_release = "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0"
+    video_release = "walkthrough/media"
     links = []
     for row in available:
         slug = row["slug"]
@@ -191,6 +191,9 @@ def write_library_index(directory, available):
         if report:
             actions = (f'<a href="{html.escape(report["url"], quote=True)}">Read the learning Report</a> · '
                        + actions + f' · <a href="packet/start/{slug}.html">Start the notebook</a>')
+            if hosted_url := report.get("hosted_notebook_url"):
+                actions += (f' · <a href="{html.escape(hosted_url, quote=True)}">Forge template</a>'
+                            f' (<a href="packet/start/{slug}.html#forge-copy">copy instructions and access status</a>)')
         stem = DECKS[slug]["filename"]
         downloads = [(f'{stem}.pdf', 'Deck PDF'), (f'{stem}-browser.zip', 'Offline deck'), (f'{stem}-source.zip', 'Editable source')]
         deck_downloads = ' · '.join(
@@ -236,9 +239,9 @@ def write_library_index(directory, available):
         '<p>Read a worked example, try a short demo, or teach a full session.</p>'
         '<figure class="tour"><video controls playsinline preload="metadata" '
         f'poster="{video_release}/poster.png" aria-label="Ten-minute captioned tour of all six workshops">'
-        f'<source src="{video_release}/forge-workshops-captioned.mp4" type="video/mp4">'
+        f'<source src="{video_release}/forge-workshops-narrated-captioned.mp4" type="video/mp4">'
         '<a href="walkthrough/">Watch or download the workshop tour</a></video>'
-        '<figcaption><span>10 minutes · Captioned · No audio</span>'
+        '<figcaption><span>10 minutes · Narrated · Captioned</span>'
         '<a href="walkthrough/">Full tour, downloads, and transcript</a></figcaption></figure>'
         '<p><a href="packet/docs/setup.html">Set up your notebook</a> · '
         '<a href="packet/workshop-materials.zip" download>Download all workshop materials</a> · '
@@ -248,7 +251,9 @@ def write_library_index(directory, available):
         '<a href="visual-language/">Explore the workshop diagrams</a></p>'
         '<details><summary>Notebook options and session readiness</summary>'
         '<p>Get the current notebook from its start page and run it locally with your own Forge project. '
-        'The older hosted copies require Forge notebook access and do not yet include the direct ARIA controls. '
+        'Each workshop also links its Forge template. Those templates remain on v0.11.1; '
+        'the latest access check was blocked, so hosted copying is not yet verified. '
+        'The start page explains Copy to project and provides the current download with direct ARIA controls. '
         'Read-only examples are free to browse; running exercises uses your own inference and compute access.</p>'
         '<p>The full sessions remain technical previews while external-account and participant rehearsals are completed. '
         '<a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/next-up.md">Read the current checks and limitations</a>.</p>'
@@ -263,10 +268,16 @@ def write_library_index(directory, available):
 
 
 def write_walkthrough_page(directory, tokens):
-    """Keep playback on the public site; release assets remain the download source."""
+    """Show the finished edit, its transcript, and reusable production instructions."""
     destination = directory / "walkthrough"
     destination.mkdir(parents=True, exist_ok=True)
-    release = "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0"
+    edit = json.loads((ROOT / "media/walkthrough/edit.json").read_text(encoding="utf-8"))
+    chapters, at = [], 0
+    for chapter in edit["chapters"]:
+        paragraphs = "".join(f'<p>{html.escape(text)}</p>' for shot in chapter["shots"] for text in shot["narration"])
+        chapters.append(f'<section id="{html.escape(chapter["id"], quote=True)}"><h2><button type="button" data-time="{at}" aria-label="Play {html.escape(chapter["title"], quote=True)}">'
+                        f'{at // 60}:{at % 60:02} · {html.escape(chapter["title"])}</button></h2>{paragraphs}</section>')
+        at += chapter["duration"]
     (destination / "index.html").write_text(
         '<!doctype html><html lang="en"><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
@@ -276,25 +287,39 @@ def write_walkthrough_page(directory, tokens):
         f':root{{--paper:{tokens["paper"]};--ink:{tokens["ink"]};--line:{tokens["line"]};--accent:{tokens["accent"]}}}'
         'body{font:19px/1.5 "IBM Plex Sans",system-ui;max-width:1120px;margin:3rem auto;padding:0 1.5rem;'
         'color:var(--ink);background:var(--paper)}h1{font-size:clamp(32px,5vw,58px);line-height:1.1;font-weight:500}'
-        'a{color:inherit;text-underline-offset:4px}a:focus-visible,video:focus-visible{outline:3px solid var(--accent);outline-offset:4px}'
+        'a{color:inherit;text-underline-offset:4px}a:focus-visible,video:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}'
         '.number{font:14px "IBM Plex Mono",monospace}video{width:100%;height:auto;aspect-ratio:16/9;background:#202220;display:block}'
-        '.downloads{border-top:1px solid var(--line);padding-top:20px}p{max-width:850px}'
+        '.downloads,section{border-top:1px solid var(--line);padding-top:20px}p{max-width:850px}'
+        'button{font:inherit;text-align:left;color:inherit;border:0;background:none;text-decoration:underline;cursor:pointer;padding:0}'
+        'h2{font-size:26px;font-weight:500}.note{font-size:16px}'
         '@media(max-width:650px){body{margin:2rem auto}}</style>'
         '<p class="number"><a href="../">FORGE / WORKSHOP KIT</a></p><h1>Watch the workshop tour</h1>'
-        '<p>A ten-minute tour of six customer problems, the exercises, and their saved Forge records. '
-        'The video is silent, with captions. It shows recorded work and controlled teaching examples.</p>'
-        f'<video controls playsinline preload="metadata" poster="{release}/poster.png" aria-label="Captioned workshop tour">'
-        f'<source src="{release}/forge-workshops-captioned.mp4" type="video/mp4">'
-        f'Your browser cannot play this video. <a href="{release}/forge-workshops-captioned.mp4">Download the captioned MP4</a>.'
-        '</video><p>If playback is unavailable, download the MP4 or read the script below.</p>'
+        '<p>Follow six practical problems through the participant code, the result, and the Forge record used to check it. '
+        'The ten-minute tour shows saved executions and controlled teaching examples.</p>'
+        '<video controls playsinline preload="metadata" poster="media/poster.png" aria-label="Narrated and captioned workshop tour">'
+        '<source src="media/forge-workshops-narrated-captioned.mp4" type="video/mp4">'
+        'Your browser cannot play this video. <a href="media/forge-workshops-narrated-captioned.mp4">Download the MP4</a>.'
+        '</video><p class="note">AI narration: Adam – Articulate Engineering Professor, generated with ElevenLabs. '
+        'Captions follow the spoken words. The original silent edit remains available.</p>'
         '<p class="downloads">'
-        f'<a href="{release}/forge-workshops-captioned.mp4" download>Captioned MP4</a> · '
-        f'<a href="{release}/forge-workshops-clean.mp4" download>Video for voice-over</a> · '
-        f'<a href="{release}/forge-workshops.srt" download>Timed captions (SRT)</a> · '
-        '<a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/media/walkthrough/narration.md">Read the script</a>'
-        '</p><p><a href="../">Choose a workshop</a> · <a href="../packet/docs/facilitator-start.html">Run a session</a></p></html>',
-        encoding="utf-8",
-    )
+        '<a href="media/forge-workshops-narrated-captioned.mp4" download>Download narrated video</a> · '
+        '<a href="media/forge-workshops-narrated-clean.mp4" download>Video without burned-in captions</a> · '
+        '<a href="media/forge-workshops-narrated.srt" download>Timed captions (SRT)</a> · '
+        '<a href="media/forge-workshops-narrated.vtt" download>Web captions (VTT)</a> · '
+        '<a href="media/forge-workshops-audio-assets.zip" download>Reusable narration and sounds</a> · '
+        '<a href="media/forge-workshops-video-edit.zip" download>Editable video package</a> · '
+        '<a href="https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge-workshops-captioned.mp4">Original silent video</a> · '
+        '<a href="#transcript">Read the transcript</a></p>'
+        '<p>Running a session? Start with the <a href="../packet/docs/facilitator-start.html">facilitator guide</a>. '
+        'To record another workshop, follow the <a href="../packet/docs/video-production.html">video and narration workflow</a>. '
+        'It covers screen capture, timed voice-over, captions, sound levels, and publishing.</p>'
+        '<h2 id="transcript">Transcript and chapters</h2><p>Choose a chapter heading to play from that point.</p>'
+        + "".join(chapters) +
+        '<p><a href="../">Choose a workshop</a></p><script>'
+        'document.querySelectorAll("button[data-time]").forEach(button=>button.addEventListener("click",()=>{'
+        'const video=document.querySelector("video");video.currentTime=Number(button.dataset.time);'
+        'video.play().catch(()=>{});video.scrollIntoView({block:"center",behavior:"auto"});}));'
+        '</script></html>', encoding="utf-8")
 
 
 def build(slug, output, *, install=False, pdf=False, validate=False):

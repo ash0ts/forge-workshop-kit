@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "title": "Forge Workshop Kit: six practical workflows",
+  "media_revision": "2026-11-16-narrated",
+  "source_release": "v0.12.0",
+  "duration_seconds": 600,
+  "canvas": [
+    1920,
+    1080
+  ],
+  "source_edit_sha256": "9494a14c72ed172529d9ec47f34a9d66212dc6102dcc5567b243d0febbdbb355",
+  "mix_receipt_sha256": "8971116ce7aa51b11f91c449577f72e333511f6d391bd9b204abcbaa9040c95b",
+  "narration": {
+    "provider": "ElevenLabs",
+    "voice_id": "QIhD5ivPGEoYZQDocuHI",
+    "voice_name": "Adam \u2014 Articulate Engineering Professor",
+    "model_id": "eleven_multilingual_v2",
+    "synthetic": true,
+    "selected_speech_takes": 26,
+    "selected_sound_effects": 2
+  },
+  "qualification": {
+    "local_audio_and_visual_checks": "passed",
+    "human_listening_review": "not_performed",
+    "public_player_check": "pending"
+  },
+  "assets": [
+    {
+      "filename": "forge-workshops-narrated-captioned.mp4",
+      "release_filename": "forge-workshops-narrated-captioned-20261116.mp4",
+      "role": "captioned_video",
+      "content_type": "video/mp4",
+      "bytes": 25518371,
+      "sha256": "419d0bb7f646dc42bce4993136826d735cf89f4f08fa1f89a95ed6e9d53ea845",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge-workshops-narrated-captioned-20261116.mp4"
+    },
+    {
+      "filename": "forge-workshops-narrated-clean.mp4",
+      "release_filename": "forge-workshops-narrated-clean-20261116.mp4",
+      "role": "clean_video",
+      "content_type": "video/mp4",
+      "bytes": 24307682,
+      "sha256": "40eac44d6cc5e4eafe387d8e5e1e0b7b0abb691c1607392b18fbbcce91bdb60c",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge-workshops-narrated-clean-20261116.mp4"
+    },
+    {
+      "filename": "forge-workshops-narrated.srt",
+      "release_filename": "forge-workshops-narrated-20261116.srt",
+      "role": "subtitles",
+      "content_type": "application/x-subrip",
+      "bytes": 11941,
+      "sha256": "0b7845bb88e857097e1b6516472a46f4bde14471dfe45b851ba7262a6ea125e1",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge-workshops-narrated-20261116.srt"
+    },
+    {
+      "filename": "forge-workshops-narrated.vtt",
+      "release_filename": "forge-workshops-narrated-20261116.vtt",
+      "role": "captions",
+      "content_type": "text/vtt",
+      "bytes": 11489,
+      "sha256": "883daefa273dc5fe17a602dbf78c2d0a69aab11697bd7c09e6021911620611a6",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge-workshops-narrated-20261116.vtt"
+    },
+    {
+      "filename": "poster.png",
+      "release_filename": "poster-20261116.png",
+      "role": "poster",
+      "content_type": "image/png",
+      "bytes": 575108,
+      "sha256": "0fa8c0cee46a6cf379200af7e06ad8e54f97d9582bc342fb3682d7f19c30cd30",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/poster-20261116.png"
+    },
+    {
+      "filename": "forge-workshops-audio-assets.zip",
+      "release_filename": "forge-workshops-audio-assets-20261116.zip",
+      "role": "selected_audio_sources",
+      "content_type": "application/zip",
+      "bytes": 9475049,
+      "sha256": "bc937a73d07483da624471c4e0ffc04acb8caf233af0139fa4d45cf0193cfbff",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge-workshops-audio-assets-20261116.zip"
+    },
+    {
+      "filename": "forge-workshops-video-edit.zip",
+      "release_filename": "forge-workshops-video-edit-20261116.zip",
+      "role": "editable_video_sources",
+      "content_type": "application/zip",
+      "bytes": 36258116,
+      "sha256": "449d5a18940f378a6f6ed04fc61f1114a3bb819ab10311b14cc20f52fcaa58d0",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge-workshops-video-edit-20261116.zip"
+    }
+  ]
+}

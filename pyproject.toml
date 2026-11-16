@@ -53,7 +53,7 @@ include = [
   "/src", "/scripts", "/notebooks", "/tests", "/examples", "/docs", "/reports",
   "/README.md", "/CONTRIBUTING.md", "/AGENTS.md", "/techspec.md", "/next-up.md",
   "/LICENSE", "/pyproject.toml", "/uv.lock", "/data/README.md",
-  "/.agents/skills/forge-workshops", "/skills", "/visual-guides",
+  "/.agents/skills/forge-workshops", "/skills", "/visual-guides", "/media/walkthrough",
 ]
 
 [tool.pytest.ini_options]

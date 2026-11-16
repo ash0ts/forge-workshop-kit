@@ -123,4 +123,6 @@ Before accepting a shared lesson, explain a result from the initial builds and i
 
 At the closing stop, compare what the workers delivered as well as how quickly they finished. Check whether the accepted lesson prevented the same mistake in the later feature, and include its preparation and retrieval costs in your conclusion.
 
+Watch the [coding-team walkthrough](https://ash0ts.github.io/forge-workshop-kit/walkthrough/#transit) for the task-claim repair and the recorded solo-versus-team results.
+
 Use the [Transit packet](https://utm.io/uuIaa) for this Report, the deck, notebook, visual guides, and running instructions. A short demonstration can follow one departure through the reference app and the recorded timezone failure. In the full session, finish by reproducing a released version or explaining why a build remains blocked, with the actual scenario and patch responsible.

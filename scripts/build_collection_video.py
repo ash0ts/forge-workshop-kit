@@ -241,7 +241,7 @@ def make_stills(manifest, output, ffmpeg):
         poster.paste(image,(x,y))
         draw.rectangle((x,y,x+548,y+308),outline=C["line"],width=1)
         draw.text((x,y+314),path.stem.split('-',1)[1].capitalize(),font=font(output,600,22),fill=C["ink"])
-    draw.text((100,1020),"Saved experiments · Real product screens · No new training or model calls",font=font(output,400,24),fill=C["muted"])
+    draw.text((100,1020),"Saved workshop executions · Real product screens · A narrated technical tour",font=font(output,400,24),fill=C["muted"])
     poster.save(output/"poster.png")
 
 

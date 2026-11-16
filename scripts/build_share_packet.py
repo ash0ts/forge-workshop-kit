@@ -36,14 +36,21 @@ def notebook_start_body(row, report):
                                   or not hosted_url.startswith("https://forge.coreweave.com/notebooks/")):
         raise ValueError(f"{slug}: hosted template must name an actual Forge notebook")
     hosted_help = (
-        '<details><summary>Optional: use the older hosted template in Forge (v0.11.1)</summary>'
+        '<section id="forge-copy"><h2>Open in Forge</h2>'
+        '<p><a href="' + html.escape(hosted_url, quote=True) + '">Open this workshop in Forge</a> '
+        '(hosted template: v0.11.1).</p>'
+        '<p>Hosted copying requires Notebook access. The current v0.12.0 download is below.</p>'
+        '<details><summary>Copy instructions and access status</summary>'
         '<p>These hosted templates have not received the v0.12.0 update because notebook-management access '
-        'for the publishing account is blocked. They do not include the new direct ARIA controls.</p>'
-        '<p><a href="' + html.escape(hosted_url, quote=True) + '">Open the v0.11.1 Forge template</a></p>'
-        '<p>If your account supports notebooks, choose <strong>Copy to project</strong>, select your writable project, '
-        'and open the copy in Edit. If the link redirects to Home or Notebooks is unavailable, use the current '
-        'download above. A template link cannot grant product or compute access.</p>'
-        '<p>If your project supports notebook import, you can import the current downloaded <code>.py</code> file instead.</p></details>'
+        'for the publishing account is blocked. They do not include the new direct ARIA controls. '
+        'The latest signed-in and anonymous checks could not open them. '
+        '<a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/notebook-copy-check-v0120.json">View the access check</a>.</p>'
+        '<ol><li>Sign in to your Forge account and open the template.</li>'
+        '<li>Choose <strong>Copy to project</strong>, select a project you can write to, then click <strong>Copy</strong>.</li>'
+        '<li>Check that the new notebook belongs to your project before running the exercises.</li></ol>'
+        '<p>If the link redirects to Home or has no Copy control, your account needs notebook access. '
+        'Changing the link or creating a new project does not supply that access. '
+        'Use the current download below while that is resolved.</p></details></section>'
     ) if hosted_url else (
         '<p>If your Forge project supports notebook import, you can import the downloaded '
         '<code>.py</code> file. The local path above works without hosted notebook access.</p>'
@@ -61,6 +68,8 @@ def notebook_start_body(row, report):
         f'<h1>Start {html.escape(deck["title"])}</h1>'
         '<p>Read the example before running anything. The notebook is editable Python; '
         'your executions and saved results belong to your own project.</p>'
+        + hosted_help +
+        '<h2>Run the current notebook locally</h2>'
         '<p><strong>Current notebook: v0.12.0.</strong> Download the file and open it on your laptop. '
         'This version includes the direct ARIA controls and uses your Forge project for saved records. '
         'It does not require hosted notebook or remote Sandbox access.</p>'
@@ -86,7 +95,6 @@ def notebook_start_body(row, report):
         '<a href="https://forge.coreweave.com">Forge</a>, then enter its <code>entity/project</code> in the notebook setup. '
         'Opening the notebook starts no training or model request; each execution has an explicit run button.</p>'
         '<p>The default $8 inference allowance is adjustable. Compute, ARIA, and native tag judging are separate.</p>'
-        + hosted_help +
         '<details><summary>Contributors: run from the complete source checkout</summary>'
         '<p>Install Git, uv, and Python 3.11–3.13, then run:</p>'
         f'<pre class="setup-commands"><code>{html.escape(checkout)}</code></pre></details>'
@@ -129,7 +137,7 @@ def build(site, *, pdf=False):
     sharing = json.loads((ROOT / "docs/share-links.json").read_text())["links"]
     documents = ["docs/workshop-overview.md", "docs/use-the-workshops.md", "docs/setup.md",
                  "docs/current-demo-guide.md", "docs/deck-guide.md", "docs/recorded-results.md",
-                 "docs/facilitator-start.md", "docs/share-links.md",
+                 "docs/facilitator-start.md", "docs/share-links.md", "docs/video-production.md",
                  *[f'docs/run-{row["authoring"]["deck"]["directory"]}.md' for row in templates],
                  "next-up.md", *[row["authoring"]["runbook"] for row in templates]]
     documents = list(dict.fromkeys(documents))

@@ -138,4 +138,6 @@ At the first ARIA stop, save your own review of a turn, then click **Start ARIA 
 
 At the closing stop, ask whether your conclusion accounts for the booking checks, reviewed tag agreement, and turns still waiting for a judgment. Fewer alerts could mean fewer problems, or simply fewer processed turns. Check the counts before deciding what the monitoring result tells you.
 
+The narrated [booking and monitoring walkthrough](https://ash0ts.github.io/forge-workshop-kit/walkthrough/#airline) connects the itinerary example to a recorded conversation and the regression-testing exercise.
+
 The [Airline packet](https://utm.io/uuIab) collects this Report, the deck, notebook, visual guides, and running instructions. Use the recorded booking and local regression drill for a demonstration; check current native-feature access before scheduling a live monitoring session. If the live agent succeeds, keep that success and use the labeled controlled incident to examine the failure condition.

@@ -211,6 +211,19 @@
             }
           ],
           "id": "routing-release-access"
+        },
+        {
+          "id": "routing-narrated-walkthrough",
+          "claim": "The narrated Routing chapter shows the controlled intent-mapping defect and saved aligned request comparison.",
+          "sources": [
+            {
+              "path": "media/walkthrough/edit.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/media/walkthrough/edit.json",
+              "sha256": "9494a14c72ed172529d9ec47f34a9d66212dc6102dcc5567b243d0febbdbb355"
+            }
+          ],
+          "chapter_url": "https://ash0ts.github.io/forge-workshop-kit/walkthrough/#routing",
+          "boundary": "Recorded overview and teaching graphics; not a new workshop execution or a hosted-copy verification."
         }
       ],
       "visuals": [
@@ -311,7 +324,7 @@
           "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/mechanism-release.png"
         }
       ],
-      "article_sha256": "e0d03569ee0631fea174f199899d4ddda02fb88ad8447ec81871137595de6835"
+      "article_sha256": "d91fda7fd9b058fe58f7da873caf8fbbc970af57ee050223e5fa6180629d68e4"
     },
     "inspection": {
       "file": "reports/inspection.md",
@@ -548,6 +561,19 @@
             }
           ],
           "id": "inspection-release-access"
+        },
+        {
+          "id": "inspection-narrated-walkthrough",
+          "claim": "The narrated Inspection chapter follows a patch-distance calculation and saved board predictions.",
+          "sources": [
+            {
+              "path": "media/walkthrough/edit.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/media/walkthrough/edit.json",
+              "sha256": "9494a14c72ed172529d9ec47f34a9d66212dc6102dcc5567b243d0febbdbb355"
+            }
+          ],
+          "chapter_url": "https://ash0ts.github.io/forge-workshop-kit/walkthrough/#inspection",
+          "boundary": "Recorded overview and teaching graphics; not a new workshop execution or a hosted-copy verification."
         }
       ],
       "visuals": [
@@ -649,7 +675,7 @@
           "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/mechanism-patch-distance.png"
         }
       ],
-      "article_sha256": "32f4bf7a1de0315814373b095139ffe295900ebbb4f92eb4c236a5dca4fc0a39"
+      "article_sha256": "b0ebcc992e15a33871fe5fc3da5f21ad0d176672cf933c38f385abacaa49091b"
     }
   },
   "validation": {

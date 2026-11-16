@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "collection": "Forge Workshop Kit / Collection walkthrough / 2026-11",
+  "voice_id": "QIhD5ivPGEoYZQDocuHI",
+  "voice_source": "https://elevenlabs.io/voices/QIhD5ivPGEoYZQDocuHI",
+  "model_id": "eleven_multilingual_v2",
+  "output_format": "mp3_44100_128",
+  "voice_settings": {
+    "stability": 0.65,
+    "similarity_boost": 0.75,
+    "style": 0.0,
+    "use_speaker_boost": true,
+    "speed": 1.0
+  },
+  "timing": {
+    "lead_seconds": 0.65,
+    "tail_seconds": 0.3,
+    "maximum_tempo": 1.08
+  },
+  "mix": {
+    "voice_lufs": -18,
+    "effect_lufs": -32
+  },
+  "sound_effects": [
+    {
+      "id": "chapter-tick",
+      "name": "Chapter transition / soft interface tick",
+      "prompt": "One short, soft tactile interface click with a warm muted electronic tick. Dry, close, understated. No melody, no voice, no ambience, no repeated beats, no bright alert tone. A quiet chapter transition for a technical tutorial.",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.5,
+      "model_id": "eleven_text_to_sound_v2"
+    },
+    {
+      "id": "closing-tick",
+      "name": "Closing transition / soft descending tick",
+      "prompt": "One very short soft descending interface tick, gently rounded and dry. A restrained end-of-tutorial cue. No music, no voice, no ambience, no repeated beats, no celebratory flourish.",
+      "duration_seconds": 0.5,
+      "prompt_influence": 0.5,
+      "model_id": "eleven_text_to_sound_v2"
+    }
+  ],
+  "effect_placements": [
+    {
+      "effect": "chapter-tick",
+      "chapter": "materials",
+      "offset_seconds": 0.05
+    },
+    {
+      "effect": "chapter-tick",
+      "chapter": "pending",
+      "offset_seconds": 0.05
+    },
+    {
+      "effect": "chapter-tick",
+      "chapter": "solar",
+      "offset_seconds": 0.05
+    },
+    {
+      "effect": "chapter-tick",
+      "chapter": "routing",
+      "offset_seconds": 0.05
+    },
+    {
+      "effect": "chapter-tick",
+      "chapter": "inspection",
+      "offset_seconds": 0.05
+    },
+    {
+      "effect": "chapter-tick",
+      "chapter": "transit",
+      "offset_seconds": 0.05
+    },
+    {
+      "effect": "chapter-tick",
+      "chapter": "airline",
+      "offset_seconds": 0.05
+    },
+    {
+      "effect": "chapter-tick",
+      "chapter": "aria",
+      "offset_seconds": 0.05
+    },
+    {
+      "effect": "closing-tick",
+      "chapter": "next",
+      "offset_seconds": 0.05
+    }
+  ],
+  "references": [
+    "https://elevenlabs.io/docs/api-reference/text-to-speech/convert-with-timestamps",
+    "https://elevenlabs.io/docs/api-reference/text-to-sound-effects/convert",
+    "https://elevenlabs.io/docs/api-reference/history/list",
+    "https://elevenlabs.io/docs/overview/models"
+  ]
+}

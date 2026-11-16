@@ -1,6 +1,6 @@
 # Ten-minute workshop walkthrough
 
-The walkthrough follows six practical problems through participant code and saved Forge records. It assumes the viewer has not heard about the workshops. The recording is silent so you can add your own voice-over.
+The walkthrough follows six practical problems through participant code and saved Forge records. It assumes the viewer has not heard about the workshops. The narrated version uses the selected ElevenLabs voice and speech-aligned captions. The original silent edit remains available for dubbing; see the production guide for both exports.
 
 Use the [timed narration script](../media/walkthrough/narration.md) when dubbing. The [production guide](../media/walkthrough/README.md) explains the clean and captioned MP4s, subtitles, source captures, and editing instructions. [edit.json](../media/walkthrough/edit.json) is the source of truth for narration and timing.
 
@@ -30,4 +30,4 @@ For external video viewers, use **https://utm.io/uuIan**. For external community
 
 The [tracking guide](share-links.md) owns the tags and placement rules. Visits identify entry paths; they do not prove that someone copied a notebook or finished an exercise. Keep [current readiness](../next-up.md) available beside the recording.
 
-After adding a voice-over, check caption timing and public viewing permissions before replacing the local recording link with a hosted Loom URL.
+After producing or editing the voice-over, check caption timing and public playback before updating the site. Keep the silent edit available for another presenter to dub.

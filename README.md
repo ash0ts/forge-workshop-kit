@@ -8,7 +8,7 @@ Participants run an editable notebook and save results to their own Forge projec
 
 **These are technical previews.** The notebooks and decks are published, but external-account checks and participant rehearsals are still outstanding. See [current status and next steps](next-up.md) before scheduling a class.
 
-The [ten-minute captioned tour](https://ash0ts.github.io/forge-workshop-kit/walkthrough/) follows all six problems through their diagrams and saved Forge records. A [clean video, subtitles, and narration](media/walkthrough/README.md) are available for presenting or recording your own explanation.
+The [ten-minute narrated tour](https://ash0ts.github.io/forge-workshop-kit/walkthrough/) follows all six problems through their diagrams and saved Forge records, with captions and a chapter transcript. The [media sources](media/walkthrough/README.md) include the silent edit, selected audio, subtitles, and narration script. To make another workshop video, follow [video production](docs/video-production.md); it covers the selected ElevenLabs voice, aligned captions, sound cues, and publication checks.
 
 Start with the [workshop overview](docs/workshop-overview.md), then choose a [package for reading, demonstrating, running, or adapting a workshop](docs/use-the-workshops.md). The [public library](https://ash0ts.github.io/forge-workshop-kit/) links each example, notebook start page, deck, and download.
 
@@ -45,7 +45,7 @@ Sign in to [Forge](https://forge.coreweave.com) and create a project where you c
 
 Your notebook runs locally and publishes results to that Forge project. Share the project link with the facilitator if you want progress monitoring; they do not need your API key. Use the supplied workshop data in public projects. See [setup and recovery](docs/setup.md) for the exact commands and access checks.
 
-**Hosted templates:** the optional Forge copies remain on v0.11.1 while notebook-management access blocks their update. Use the website downloads for the revised exercises and direct ARIA controls; they retain the v0.12.0 runtime pins.
+**Hosted templates:** each start page also links its Forge notebook and explains **Copy to project**. The hosted templates retain their last verified v0.11.1 source. Current signed-in and anonymous access checks returned “Marimo notebook management is not enabled,” so copying has not been verified. Use the website downloads for the revised exercises and direct ARIA controls; they retain the v0.12.0 runtime pins. [See the access check](docs/notebook-copy-check-v0120.json).
 
 ## Work from the repository
 

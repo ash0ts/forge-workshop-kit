@@ -23,6 +23,7 @@ Load only the material needed for the requested change:
 | Build or publish a release | [Maintenance](../../../docs/maintenance.md) and [release checks](../../../docs/release-checks.md) |
 | Write or update public learning Reports | [Report sources](../../../reports/README.md) and [Report publication](../../../docs/maintenance.md#publish-learning-reports) |
 | Prepare a customer demo, facilitator handoff, or recording | [Choose a workshop package](../../../docs/use-the-workshops.md), [facilitator start](../../../docs/facilitator-start.md), [Loom walkthrough](../../../docs/loom-walkthrough.md), and [tracked sharing links](../../../docs/share-links.md) |
+| Produce or revise narrated workshop video and sound cues | [Video production](../../../docs/video-production.md); edit `edit.json` and `audio.json`, then use the existing generation, alignment, mixing, and asset-organization scripts |
 
 ## Establish the work
 
@@ -35,6 +36,8 @@ Edit authored sources and manifest references together, then regenerate their ou
 ## Stance
 
 Reading source, editing local materials, running free checks, and building are ordinary contributor work. Live rehearsals and publication use the task's existing authorization, explicit run controls, project, and allowance. If the request only asks for local changes, return the checked local result without publishing it.
+
+Narration generation is an explicit paid production action under the user's authorization. Planning, timing checks, and mixing saved audio make no generation requests. Reuse recorded takes by request hash; an uncertain generation or upload must not be retried blindly. Keep synthetic narration labeled, organize only the selected workshop media, and preserve the silent release.
 
 When credentials or a native feature are unavailable, preserve completed work and report the affected check. Use an existing recorded exercise where the workshop supports one. Do not fabricate a recording, introduce shared credentials, or rerun an experiment to replace a failed upload.
 

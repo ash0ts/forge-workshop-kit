@@ -1,0 +1,529 @@
+{
+  "checked_at": "2026-11-16T11:05:55.952730+00:00",
+  "release": "0.12.0",
+  "project": "wandb/forge-workshop-kit",
+  "scope": "Read-only checks of the six linked hosted templates. No template changes, copies, runtime launches, or experiment calls.",
+  "credential_refresh": {
+    "status": "valid",
+    "viewer": "ashah1",
+    "source": "User-replaced local workshop credential; value omitted"
+  },
+  "api_host": "https://api.wandb.ai",
+  "templates": {
+    "pending": {
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view",
+      "last_verified_hosted_release": "0.11.1",
+      "current_download": "https://ash0ts.github.io/forge-workshop-kit/packet/notebooks/pending_inc.py",
+      "current_source_sha256": "cef043baf1916572fa73eab0456965c579fa193be9de3eaedd02a188bfb2dd1e"
+    },
+    "solar": {
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view",
+      "last_verified_hosted_release": "0.11.1",
+      "current_download": "https://ash0ts.github.io/forge-workshop-kit/packet/notebooks/solar_autoresearch.py",
+      "current_source_sha256": "aaf621f8e4d734d78caddd13e964c1f5df22f0a41a8c0adf1b8464bb1713efc2"
+    },
+    "routing": {
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view",
+      "last_verified_hosted_release": "0.11.1",
+      "current_download": "https://ash0ts.github.io/forge-workshop-kit/packet/notebooks/request_routing.py",
+      "current_source_sha256": "24db9e0948a3aab6f2e584b86319e3d4650ae999ffd366c2a04fe8aceda2b366"
+    },
+    "inspection": {
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view",
+      "last_verified_hosted_release": "0.11.1",
+      "current_download": "https://ash0ts.github.io/forge-workshop-kit/packet/notebooks/visual_inspection.py",
+      "current_source_sha256": "44a38ee94ace142da34f871de52b2d01a9645c4d3dab5ceab17e353c93e9973b"
+    },
+    "transit": {
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view",
+      "last_verified_hosted_release": "0.11.1",
+      "current_download": "https://ash0ts.github.io/forge-workshop-kit/packet/notebooks/transit_factory.py",
+      "current_source_sha256": "337ae4191bd020edca2f672ec62e8ae6c2931e11cdf31fa4fa976f0eb83c0c7f"
+    },
+    "airline": {
+      "url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view",
+      "last_verified_hosted_release": "0.11.1",
+      "current_download": "https://ash0ts.github.io/forge-workshop-kit/packet/notebooks/airline_monitoring.py",
+      "current_source_sha256": "32c947ae130f43cffd6135e31700be7f37d2b361df529115e5151e869f5f30c5"
+    }
+  },
+  "checks": [
+    {
+      "mode": "signed_in",
+      "http_status": 403,
+      "results": {
+        "pending": {
+          "available": false,
+          "error": "Marimo notebook management is not enabled"
+        },
+        "solar": {
+          "available": false,
+          "error": "Marimo notebook management is not enabled"
+        },
+        "routing": {
+          "available": false,
+          "error": "Marimo notebook management is not enabled"
+        },
+        "inspection": {
+          "available": false,
+          "error": "Marimo notebook management is not enabled"
+        },
+        "transit": {
+          "available": false,
+          "error": "Marimo notebook management is not enabled"
+        },
+        "airline": {
+          "available": false,
+          "error": "Marimo notebook management is not enabled"
+        }
+      }
+    },
+    {
+      "mode": "anonymous",
+      "http_status": 403,
+      "results": {
+        "pending": {
+          "available": false,
+          "error": "Marimo notebook management is not enabled"
+        },
+        "solar": {
+          "available": false,
+          "error": "Marimo notebook management is not enabled"
+        },
+        "routing": {
+          "available": false,
+          "error": "Marimo notebook management is not enabled"
+        },
+        "inspection": {
+          "available": false,
+          "error": "Marimo notebook management is not enabled"
+        },
+        "transit": {
+          "available": false,
+          "error": "Marimo notebook management is not enabled"
+        },
+        "airline": {
+          "available": false,
+          "error": "Marimo notebook management is not enabled"
+        }
+      }
+    }
+  ],
+  "browser": {
+    "requested_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view",
+    "observed_url": "https://forge.coreweave.com/wandb/home",
+    "result": "Redirected to Home; no notebook preview or Copy to project control appeared."
+  },
+  "status": "blocked_by_notebook_access",
+  "next_action": "Enable Notebook access for the publishing account through the normal product access process, then resume the existing destination-verified publisher and verify Copy to project using a participant account.",
+  "not_established": [
+    "Current hosted template source/preview readback",
+    "Successful Copy to project",
+    "External attendee notebook access"
+  ],
+  "latest_signed_in_recheck": {
+    "checked_at": "2026-11-16T11:15:05.307333+00:00",
+    "viewer": "ashah1",
+    "credential_source": "Fresh read of the user-replaced local workshop credential; value omitted",
+    "viewer_http_status": 200,
+    "notebook_http_status": 403,
+    "templates_checked": [
+      "pending",
+      "solar",
+      "routing",
+      "inspection",
+      "transit",
+      "airline"
+    ],
+    "error": "Marimo notebook management is not enabled",
+    "changes_attempted": false
+  },
+  "latest_browser_recheck": {
+    "checked_at": "2026-11-16T11:17:53.159455+00:00",
+    "browser": "ChatGPT in-app browser",
+    "viewer_display": "Anish Shah / wandb",
+    "observed_by": "Coordinating agent in the same task",
+    "checks": [
+      {
+        "requested_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view",
+        "observed_destination": "Forge Home",
+        "result": "Redirected to Home; no Copy to project control appeared."
+      },
+      {
+        "action": "Open Notebooks using the native launcher",
+        "observed_destination": "Forge root",
+        "result": "Notebook launcher did not open a notebook view."
+      }
+    ],
+    "copy_attempted": false,
+    "runtime_started": false,
+    "interpretation": "Hosted access remains blocked; local validation does not establish a working hosted copy."
+  },
+  "local_verification": {
+    "checked_at": "2026-11-16T11:17:53.159685+00:00",
+    "scope": "Current authored source and generated notebook static checks; registered free exercises; selected Airline authored cells with test doubles; read-only saved-journal replay.",
+    "network_and_execution": "No model calls, training, publication, or ARIA requests. No saved journal or identity file changed.",
+    "workshops": {
+      "pending_inc": {
+        "source_check": {
+          "command": "forge-workshop check pending_inc",
+          "exit_code": 0,
+          "status": "passed",
+          "exercise_references": 11,
+          "registered_fixture_output": ".                                                                        [100%]\n1 passed in 0.06s\n",
+          "coverage": {
+            "free_checks": "source, compilation, cell dependencies, exercise references; local exercise fixtures passed",
+            "authored_notebook_execution": "not run",
+            "browser": "not run",
+            "external_account": "unknown",
+            "human_rehearsal": "unknown"
+          }
+        },
+        "generated_notebook_check": {
+          "command": "marimo check notebooks/pending_inc.py",
+          "exit_code": 0,
+          "source_sha256": "cef043baf1916572fa73eab0456965c579fa193be9de3eaedd02a188bfb2dd1e",
+          "output": ""
+        },
+        "saved_replay": {
+          "command": "forge-workshop rehearse pending_inc --mode replay --state SAVED_WORKSPACE",
+          "exit_code": 0,
+          "state_files_unchanged": true,
+          "state_file_sha256": {
+            "journal.json": "f7c8d9b19f92d24e0dfaa05ef524d7db804583c44ce0031ad21f39fe7566ec00",
+            "identity.json": "ea48adc7665d8dcf0e80930cd239d0134fa62112cbca048c3c35086a7e0f1678"
+          },
+          "stage_count": 60,
+          "stage_statuses": {
+            "complete": 60
+          },
+          "results_available": 60,
+          "requests": {
+            "complete": 114
+          },
+          "coverage": {
+            "free_checks": "not run",
+            "authored_notebook_execution": "not run",
+            "browser": "not run",
+            "external_account": "unknown",
+            "human_rehearsal": "unknown",
+            "saved_evidence": "read only; no execution or publication"
+          }
+        }
+      },
+      "visual_inspection": {
+        "source_check": {
+          "command": "forge-workshop check visual_inspection",
+          "exit_code": 0,
+          "status": "passed",
+          "exercise_references": 4,
+          "registered_fixture_output": ".                                                                        [100%]\n1 passed in 0.04s\n",
+          "coverage": {
+            "free_checks": "source, compilation, cell dependencies, exercise references; local exercise fixtures passed",
+            "authored_notebook_execution": "not run",
+            "browser": "not run",
+            "external_account": "unknown",
+            "human_rehearsal": "unknown"
+          }
+        },
+        "generated_notebook_check": {
+          "command": "marimo check notebooks/visual_inspection.py",
+          "exit_code": 0,
+          "source_sha256": "44a38ee94ace142da34f871de52b2d01a9645c4d3dab5ceab17e353c93e9973b",
+          "output": ""
+        },
+        "saved_replay": {
+          "command": "forge-workshop rehearse visual_inspection --mode replay --state SAVED_WORKSPACE",
+          "exit_code": 0,
+          "state_files_unchanged": true,
+          "state_file_sha256": {
+            "journal.json": "4c677c8f71c83e6592ab8eb371a479a692a499a4245981b493fab46fda4c91f8",
+            "identity.json": "d3262d8a0a55cbafd0740c00669a9c1a98e2e827e98bebef4622f20944c23129"
+          },
+          "stage_count": 6,
+          "stage_statuses": {
+            "complete": 6
+          },
+          "results_available": 6,
+          "requests": {},
+          "coverage": {
+            "free_checks": "not run",
+            "authored_notebook_execution": "not run",
+            "browser": "not run",
+            "external_account": "unknown",
+            "human_rehearsal": "unknown",
+            "saved_evidence": "read only; no execution or publication"
+          }
+        }
+      },
+      "solar_autoresearch": {
+        "source_check": {
+          "command": "forge-workshop check solar_autoresearch",
+          "exit_code": 0,
+          "status": "passed",
+          "exercise_references": 15,
+          "registered_fixture_output": "..                                                                       [100%]\n2 passed in 0.83s\n",
+          "coverage": {
+            "free_checks": "source, compilation, cell dependencies, exercise references; local exercise fixtures passed",
+            "authored_notebook_execution": "not run",
+            "browser": "not run",
+            "external_account": "unknown",
+            "human_rehearsal": "unknown"
+          }
+        },
+        "generated_notebook_check": {
+          "command": "marimo check notebooks/solar_autoresearch.py",
+          "exit_code": 0,
+          "source_sha256": "aaf621f8e4d734d78caddd13e964c1f5df22f0a41a8c0adf1b8464bb1713efc2",
+          "output": ""
+        },
+        "saved_replay": {
+          "command": "forge-workshop rehearse solar_autoresearch --mode replay --state SAVED_WORKSPACE",
+          "exit_code": 0,
+          "state_files_unchanged": true,
+          "state_file_sha256": {
+            "journal.json": "0776a92cea041efc512d3086ca6fa819065dc69a5058a913a3587e4a60d3be60",
+            "identity.json": "2d58460cf13e945edd5334f4db557a4d25ba9e25f1831ad32dbb4d4d043cf780"
+          },
+          "stage_count": 44,
+          "stage_statuses": {
+            "complete": 44
+          },
+          "results_available": 44,
+          "requests": {
+            "complete": 5
+          },
+          "coverage": {
+            "free_checks": "not run",
+            "authored_notebook_execution": "not run",
+            "browser": "not run",
+            "external_account": "unknown",
+            "human_rehearsal": "unknown",
+            "saved_evidence": "read only; no execution or publication"
+          }
+        }
+      },
+      "airline_monitoring": {
+        "source_check": {
+          "command": "forge-workshop check airline_monitoring",
+          "exit_code": 0,
+          "status": "passed",
+          "exercise_references": 23,
+          "registered_fixture_output": "No registered fixture tests; see supplemental Airline checks.",
+          "coverage": {
+            "free_checks": "source, compilation, cell dependencies, exercise references",
+            "authored_notebook_execution": "not run",
+            "browser": "not run",
+            "external_account": "unknown",
+            "human_rehearsal": "unknown"
+          }
+        },
+        "generated_notebook_check": {
+          "command": "marimo check notebooks/airline_monitoring.py",
+          "exit_code": 0,
+          "source_sha256": "32c947ae130f43cffd6135e31700be7f37d2b361df529115e5151e869f5f30c5",
+          "output": ""
+        },
+        "saved_replay": {
+          "command": "forge-workshop rehearse airline_monitoring --mode replay --state SAVED_WORKSPACE",
+          "exit_code": 0,
+          "state_files_unchanged": true,
+          "state_file_sha256": {
+            "journal.json": "51ff7a1d2b5c86b6eea77735e62fa14003ee784b8096aa1b643c05b6b3c2818e",
+            "identity.json": "d1b3b34c4a304f354bf2ab8477237c003c14f1288225ea4427fc25476bc44f86"
+          },
+          "stage_count": 3,
+          "stage_statuses": {
+            "complete": 3
+          },
+          "results_available": 3,
+          "requests": {},
+          "coverage": {
+            "free_checks": "not run",
+            "authored_notebook_execution": "not run",
+            "browser": "not run",
+            "external_account": "unknown",
+            "human_rehearsal": "unknown",
+            "saved_evidence": "read only; no execution or publication"
+          }
+        }
+      },
+      "transit_factory": {
+        "source_check": {
+          "command": "forge-workshop check transit_factory",
+          "exit_code": 0,
+          "status": "passed",
+          "exercise_references": 11,
+          "registered_fixture_output": "..                                                                       [100%]\n2 passed in 0.19s\n",
+          "coverage": {
+            "free_checks": "source, compilation, cell dependencies, exercise references; local exercise fixtures passed",
+            "authored_notebook_execution": "not run",
+            "browser": "not run",
+            "external_account": "unknown",
+            "human_rehearsal": "unknown"
+          }
+        },
+        "generated_notebook_check": {
+          "command": "marimo check notebooks/transit_factory.py",
+          "exit_code": 0,
+          "source_sha256": "337ae4191bd020edca2f672ec62e8ae6c2931e11cdf31fa4fa976f0eb83c0c7f",
+          "output": ""
+        },
+        "saved_replay": {
+          "command": "forge-workshop rehearse transit_factory --mode replay --state SAVED_WORKSPACE",
+          "exit_code": 0,
+          "state_files_unchanged": true,
+          "state_file_sha256": {
+            "journal.json": "576c82a0ed0b55b7742f3842333fa6d102089f4d6a7a3bdde3aa1309d7318d22",
+            "identity.json": "232821ffa79dc73eb4719253e993134c002fcb90f7e02e385a8031249266f1e8"
+          },
+          "stage_count": 25,
+          "stage_statuses": {
+            "complete": 22,
+            "failed": 3
+          },
+          "results_available": 22,
+          "requests": {
+            "complete": 28
+          },
+          "coverage": {
+            "free_checks": "not run",
+            "authored_notebook_execution": "not run",
+            "browser": "not run",
+            "external_account": "unknown",
+            "human_rehearsal": "unknown",
+            "saved_evidence": "read only; no execution or publication"
+          }
+        }
+      },
+      "request_routing": {
+        "source_check": {
+          "command": "forge-workshop check request_routing",
+          "exit_code": 0,
+          "status": "passed",
+          "exercise_references": 8,
+          "registered_fixture_output": ".                                                                        [100%]\n1 passed in 1.90s\n",
+          "coverage": {
+            "free_checks": "source, compilation, cell dependencies, exercise references; local exercise fixtures passed",
+            "authored_notebook_execution": "not run",
+            "browser": "not run",
+            "external_account": "unknown",
+            "human_rehearsal": "unknown"
+          }
+        },
+        "generated_notebook_check": {
+          "command": "marimo check notebooks/request_routing.py",
+          "exit_code": 0,
+          "source_sha256": "24db9e0948a3aab6f2e584b86319e3d4650ae999ffd366c2a04fe8aceda2b366",
+          "output": ""
+        },
+        "saved_replay": {
+          "command": "forge-workshop rehearse request_routing --mode replay --state SAVED_WORKSPACE",
+          "exit_code": 0,
+          "state_files_unchanged": true,
+          "state_file_sha256": {
+            "journal.json": "3e61737b36ef148909dfed462ac5a770fb86f9c5fe981aabb0d4bb139a3242f1",
+            "identity.json": "0a164ddfe7fef6fb980fa3c6c159ac042d998aae19fdd10e3947348dc6872b4b"
+          },
+          "stage_count": 12,
+          "stage_statuses": {
+            "complete": 12
+          },
+          "results_available": 12,
+          "requests": {
+            "complete": 12
+          },
+          "coverage": {
+            "free_checks": "not run",
+            "authored_notebook_execution": "not run",
+            "browser": "not run",
+            "external_account": "unknown",
+            "human_rehearsal": "unknown",
+            "saved_evidence": "read only; no execution or publication"
+          }
+        }
+      }
+    },
+    "supplemental_checks": {
+      "checked_at": "2026-11-16T11:17:10.833009+00:00",
+      "command": ".venv/bin/python -m pytest -q tests/test_airline.py::test_free_checks_and_unsolved_starters tests/test_airline_notebook.py tests/test_authoring_cli.py::test_replay_reads_only_and_rejects_other_identity",
+      "exit_code": 0,
+      "elapsed_seconds": 4.8,
+      "output": "................                                                         [100%]\n16 passed in 4.42s\n"
+    },
+    "coverage_limits": [
+      "The check command validates source, compilation, cell dependencies, manifest references, and registered fixtures; it does not run every authored action.",
+      "Airline has no registered free-check tests in its manifest. Its existing free-check and authored-notebook tests were run separately.",
+      "Replay reads saved stage metadata; it does not reproduce training or validate remote service access.",
+      "The Airline replay uses a three-stage workspace with the current airline-monitoring identity. The larger historical qualification workspace uses airline_monitoring and was not modified.",
+      "No complete live workshop, hosted participant copy, external-account test, or human usability rehearsal was performed in this check."
+    ]
+  },
+  "copy_documentation_review": {
+    "checked_at": "2026-11-16T11:24:55.850185+00:00",
+    "result": "Current materials distinguish the six linked hosted v0.11.1 templates from v0.12.0 runtime downloads and do not claim a successful hosted copy.",
+    "reviewed_files": [
+      {
+        "path": "README.md",
+        "sha256": "1117964878b2dedb296f78582190a106dcac7b7740dc48c6f8340c7556f1479c"
+      },
+      {
+        "path": "docs/setup.md",
+        "sha256": "197d8b69fdb185f118e15ceb9b20808de1fb6d471cd9fff5d05bb360091b394e"
+      },
+      {
+        "path": "next-up.md",
+        "sha256": "bd0be3f66c9699b9c57c2885f9525f65202e1190dcd2a88e7229a4856d7fe3e4"
+      },
+      {
+        "path": "reports/README.md",
+        "sha256": "e772940ede5e6a6c7ed226c8e5960d0562e542fbe89d122a8cc19c30fb07d749"
+      },
+      {
+        "path": "scripts/build_share_packet.py",
+        "sha256": "5a81dfa3740067a15f287aaf03a12c8ef52ab1544dc6ff44f0bfc671034fd2d7"
+      },
+      {
+        "path": "scripts/build_decks.py",
+        "sha256": "0cce732b84ccf36240d455808df3ba8a0652ee7db2842db0ada14701e98b5873"
+      },
+      {
+        "path": "reports/pending.md",
+        "sha256": "03c262ccc5067abc3bd5909102cf076c899043718cb59ee859e855aca4d4a0ad"
+      },
+      {
+        "path": "reports/solar.md",
+        "sha256": "a760d2dbd5a549e9c72fe0d8a3678235b456d7b4b9803197da7fd2cafbbaa055"
+      },
+      {
+        "path": "reports/routing.md",
+        "sha256": "d91fda7fd9b058fe58f7da873caf8fbbc970af57ee050223e5fa6180629d68e4"
+      },
+      {
+        "path": "reports/inspection.md",
+        "sha256": "b0ebcc992e15a33871fe5fc3da5f21ad0d176672cf933c38f385abacaa49091b"
+      },
+      {
+        "path": "reports/transit.md",
+        "sha256": "71212176dec9bd75e126654878c502e39dd6faff888b64098389ffefa366bd60"
+      },
+      {
+        "path": "reports/airline.md",
+        "sha256": "2c1b6f98d8608a1ab3890a9372e588aab3d353547a4e409d23eb485a9dfe0dd4"
+      }
+    ],
+    "verified_statements": [
+      "Canonical Forge links remain visible on the library and each notebook start page.",
+      "Copy instructions describe the ordinary Copy to project control and state the Notebook-access prerequisite.",
+      "The latest valid-key read returned an access error; the browser redirected to Home instead of showing a copy control.",
+      "The local download path is presented separately and does not require hosted Notebook access.",
+      "Updated learning Reports retain the existing native-access limitation."
+    ],
+    "not_established": [
+      "Copy control availability",
+      "Creation or startup of a new hosted participant copy",
+      "Current hosted source readback",
+      "External-account access"
+    ]
+  }
+}

@@ -77,7 +77,7 @@ def test_library_tour_is_visible_without_opening_another_page(tmp_path):
     assert "autoplay" not in videos[0]
     assert videos[0].get("poster")
     sources = page.attributes("source")
-    assert any(row.get("src", "").endswith("/forge-workshops-captioned.mp4") for row in sources)
+    assert any(row.get("src", "").endswith("/forge-workshops-narrated-captioned.mp4") for row in sources)
     assert any(row.get("href") == "walkthrough/" for row in page.attributes("a"))
     assert (tmp_path / "walkthrough/index.html").is_file()
     # Reserve poster height before lazy loading so QR anchor targets do not move.
@@ -125,16 +125,18 @@ def test_current_notebook_start_pages_use_saved_files_and_version_the_hosted_opt
         assert f'marimo edit --sandbox {notebook.name}' in source
         assert 'marimo edit --sandbox https://' not in source
         assert 'wandb login --host https://api.wandb.ai --verify' in source
-        primary = source.split('<details>', 1)[0]
-        assert f'href="../notebooks/{notebook.name}" download' in primary
-        assert report["hosted_notebook_url"] not in primary
-        assert 'v0.12.0' in primary
-        assert 'v0.11.1' in source.split('<details>', 1)[1]
-        assert report["hosted_notebook_url"] in source
+        visible_intro = source.split('<details>', 1)[0]
+        assert f'href="../notebooks/{notebook.name}" download' in source
+        assert report["hosted_notebook_url"] in visible_intro
+        assert 'v0.12.0' in source
+        assert 'v0.11.1' in visible_intro
+        assert 'id="forge-copy"' in source
+        assert 'Copy to project' in source
+        assert 'latest signed-in and anonymous checks could not open them' in source
         assert report["hosted_notebook_url"].startswith('https://forge.coreweave.com/notebooks/')
         assert report["notebook_url"] not in source
         assert '.workshop/' in source
-        assert '<strong>Run all</strong>' in primary
+        assert '<strong>Run all</strong>' in source
 
 
 def test_partial_guide_index_does_not_advertise_unavailable_workshops(tmp_path):

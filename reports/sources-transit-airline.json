@@ -153,6 +153,19 @@
               "sha256": "377599a9a641d0ba1054af21a4f5415a58155831b0e23d323640086f381e84c8"
             }
           ]
+        },
+        {
+          "id": "transit-narrated-walkthrough",
+          "claim": "The narrated Transit chapter shows the atomic task-claim exercise and saved solo-versus-team comparison.",
+          "sources": [
+            {
+              "path": "media/walkthrough/edit.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/media/walkthrough/edit.json",
+              "sha256": "9494a14c72ed172529d9ec47f34a9d66212dc6102dcc5567b243d0febbdbb355"
+            }
+          ],
+          "chapter_url": "https://ash0ts.github.io/forge-workshop-kit/walkthrough/#transit",
+          "boundary": "Recorded overview and teaching graphics; not a new workshop execution or a hosted-copy verification."
         }
       ],
       "code": [
@@ -256,7 +269,7 @@
         "Reference app is separately authored.",
         "External-account access and participant rehearsal outstanding."
       ],
-      "source_sha256": "18f828ffde8f7f5f7e51bf7023461295df990446c9ff8b386523019f554810f2"
+      "source_sha256": "71212176dec9bd75e126654878c502e39dd6faff888b64098389ffefa366bd60"
     },
     "airline": {
       "file": "reports/airline.md",
@@ -462,6 +475,19 @@
               "sha256": "377599a9a641d0ba1054af21a4f5415a58155831b0e23d323640086f381e84c8"
             }
           ]
+        },
+        {
+          "id": "airline-narrated-walkthrough",
+          "claim": "The narrated Airline chapter follows the complete-itinerary requirement, a recorded recoverable tool timeout, and the monitoring-to-regression workflow.",
+          "sources": [
+            {
+              "path": "media/walkthrough/edit.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/media/walkthrough/edit.json",
+              "sha256": "9494a14c72ed172529d9ec47f34a9d66212dc6102dcc5567b243d0febbdbb355"
+            }
+          ],
+          "chapter_url": "https://ash0ts.github.io/forge-workshop-kit/walkthrough/#airline",
+          "boundary": "Recorded overview and teaching graphics; not a new workshop execution or a hosted-copy verification."
         }
       ],
       "code": [
@@ -586,7 +612,7 @@
         "External-account, complete current browser path, and human rehearsal outstanding.",
         "Recorded runtime later received tracing error-handling changes; original 40 executions remain tied to their original source."
       ],
-      "source_sha256": "28012960d331e1e0d8bce8ccfb4c3ed08cb439208423efd692c0bb75e4244443"
+      "source_sha256": "2c1b6f98d8608a1ab3890a9372e588aab3d353547a4e409d23eb485a9dfe0dd4"
     }
   }
 }

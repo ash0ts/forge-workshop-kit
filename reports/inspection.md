@@ -118,4 +118,6 @@ At the first ARIA stop, explain a missed validation board. Is the score close to
 
 At the closing stop, compare the recovered misses with the new mistakes and false alarms. Include the results of the equal-budget labeling comparison before deciding which detector you would use. Recorded investigations are available if live ARIA is unavailable.
 
+The narrated [board inspection walkthrough](https://ash0ts.github.io/forge-workshop-kit/walkthrough/#inspection) connects one patch-distance calculation to the saved board predictions.
+
 The [Inspection packet](https://utm.io/uuH99) brings together this Report, the deck, notebook, visual guides, and running instructions. Use the recorded board comparison for a short demonstration or fit the detectors in your own project. The materials remain technical previews pending external-account checks and participant rehearsals.

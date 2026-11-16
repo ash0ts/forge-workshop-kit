@@ -107,6 +107,19 @@
             "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-direct-qualification.md",
             "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/notebook-download-check-v0120.json"
           ]
+        },
+        {
+          "id": "pending-narrated-walkthrough",
+          "claim": "The narrated Pending chapter follows invoice dispatch, returned observations, retry identity, and the recorded harness comparison.",
+          "sources": [
+            {
+              "path": "media/walkthrough/edit.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/media/walkthrough/edit.json",
+              "sha256": "9494a14c72ed172529d9ec47f34a9d66212dc6102dcc5567b243d0febbdbb355"
+            }
+          ],
+          "chapter_url": "https://ash0ts.github.io/forge-workshop-kit/walkthrough/#pending",
+          "boundary": "Recorded overview and teaching graphics; not a new workshop execution or a hosted-copy verification."
         }
       ],
       "visuals": [
@@ -214,7 +227,7 @@
         "One scripted rehearsal with four final cases does not establish general equivalence.",
         "External-account and participant rehearsals remain outstanding."
       ],
-      "source_sha256": "234a9436aa2c9935baae528e2e6bf53db87ec1ec817ebb718bd924429a945eec"
+      "source_sha256": "03c262ccc5067abc3bd5909102cf076c899043718cb59ee859e855aca4d4a0ad"
     },
     {
       "slug": "solar",
@@ -324,6 +337,19 @@
             "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-direct-qualification.md",
             "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/notebook-download-check-v0120.json"
           ]
+        },
+        {
+          "id": "solar-narrated-walkthrough",
+          "claim": "The narrated Solar chapter follows a forecast window, saved training run, and selected source artifact.",
+          "sources": [
+            {
+              "path": "media/walkthrough/edit.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/media/walkthrough/edit.json",
+              "sha256": "9494a14c72ed172529d9ec47f34a9d66212dc6102dcc5567b243d0febbdbb355"
+            }
+          ],
+          "chapter_url": "https://ash0ts.github.io/forge-workshop-kit/walkthrough/#solar",
+          "boundary": "Recorded overview and teaching graphics; not a new workshop execution or a hosted-copy verification."
         }
       ],
       "visuals": [
@@ -440,7 +466,7 @@
         "All claimed gains belong to exact saved runs; image all-seed reliability gate failed.",
         "External-account and participant rehearsals remain outstanding."
       ],
-      "source_sha256": "c28d6ee3ee00c64551e5e19a2201658c8a2dff0280be5f920b1b6acdb806aa1e"
+      "source_sha256": "a760d2dbd5a549e9c72fe0d8a3678235b456d7b4b9803197da7fd2cafbbaa055"
     }
   ]
 }

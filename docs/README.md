@@ -49,6 +49,7 @@ The [facilitator setup](setup.md#read-participant-progress) explains the saved r
 | [AGENTS.md](../AGENTS.md) | Repository instructions for coding agents |
 | [forge-workshops skill](../.agents/skills/forge-workshops/SKILL.md) | How an assistant should use these guides when authoring or rehearsing |
 | [Sharing draft](sharing.md) and [recording script](loom-walkthrough.md) | Contributor communication drafts; excluded from participant downloads and site navigation |
-| [Video source and dubbing files](../media/walkthrough/README.md) | Captioned and clean exports, subtitles, narration, and the editable capture timeline |
+| [Video production](video-production.md) | Narration, aligned captions, sound cues, asset organization, and public playback checks |
+| [Collection media sources](../media/walkthrough/README.md) | Capture inventory, concrete exports, and current production records |
 
 Keep implementation contracts in these guides and unfinished work in [next-up.md](../next-up.md). [Release notes](release-notes.md) describe changes between versions; the [archive](archive.md) preserves earlier checks and workshop releases. Historical evidence is not current setup guidance.

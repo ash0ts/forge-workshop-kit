@@ -162,4 +162,6 @@ After inspecting your GOES forecast, write down why you think it performed as it
 
 At the closing stop, review the measurement and image results separately. Explain which version reduced error, which did not, and what you would test next. You can retry an upload from saved outputs without training again.
 
+The narrated [solar experiment walkthrough](https://ash0ts.github.io/forge-workshop-kit/walkthrough/#solar) follows a forecast window into its training run and saved source.
+
 The [Solar packet](https://utm.io/uuH97) collects this Report, the deck, notebook, visual guides, and running instructions. Use a recorded forecast for a short demonstration or work through the experiments in your own project. The materials remain a technical preview while external-account and participant rehearsals are outstanding.

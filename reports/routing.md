@@ -139,4 +139,6 @@ At the first ARIA stop, explain why you think TF–IDF chose its destination for
 
 The closing investigation returns to the release drill. Check that the repaired loader restores the original intent mapping, then identify the requests the classifier still gets wrong. Those remaining errors need a different intervention from the loading repair.
 
+Watch the [routing and release walkthrough](https://ash0ts.github.io/forge-workshop-kit/walkthrough/#routing) to follow a probability column through the mapping defect and aligned request comparison.
+
 The [Routing packet](https://utm.io/uuH98) collects this Report, the deck, notebook, visual guides, and running instructions for a short demonstration or the full session. These remain technical-preview materials; external-account checks and participant rehearsals are outstanding. Your copy saves your edits and results, including the remaining classifier errors after the loading bug is repaired.

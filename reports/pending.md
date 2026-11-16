@@ -171,4 +171,6 @@ At the first ARIA stop, explain what you think happened on a development ticket.
 
 Return to that distinction at the closing stop: did a harness change improve the account outcome, or did the versions complete the same work with different tool calls? Use the checked result to write your conclusion, including a tie if that is what your runs show.
 
+Watch the [invoice and retry walkthrough](https://ash0ts.github.io/forge-workshop-kit/walkthrough/#pending) for a narrated preview of the code and its Agent Lens record.
+
 For a short demonstration or a facilitated session, [open the Pending packet](https://utm.io/uuH96). It brings together this Report, the deck, notebook, visual guides, and running instructions. The materials remain a technical preview while external-account checks and participant rehearsals are outstanding. Your run may produce a different branch; keep the files, actions, and checks needed to explain it.
