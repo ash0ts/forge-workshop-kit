@@ -1,0 +1,614 @@
+{
+  "checked_at": "2026-11-16",
+  "source_commit": "073bbedeae05a019d4cf212f538d79f5689261f8",
+  "media_manifest": "media/walkthrough/published.json",
+  "duration_seconds": 600,
+  "release_assets": {
+    "count": 7,
+    "downloaded_hashes": "matched"
+  },
+  "automated_checks": {
+    "passed": 66
+  },
+  "local_player": {
+    "server": "Vite preview with HTTP byte ranges",
+    "chapters": [
+      {
+        "name": "Play Why these workshops exist",
+        "expected": 0,
+        "currentTime": 0.146837,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play How someone starts",
+        "expected": 50,
+        "currentTime": 50.009708,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play Pending: inspect and change an agent",
+        "expected": 90,
+        "currentTime": 90.008532,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play Solar: test a research change",
+        "expected": 145,
+        "currentTime": 145.019913,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play Routing: train, release and recover",
+        "expected": 205,
+        "currentTime": 205.117326,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play Inspection: investigate a missed defect",
+        "expected": 260,
+        "currentTime": 260.007247,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play Transit: coordinate two coding workers",
+        "expected": 315,
+        "currentTime": 315.007016,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play Airline: connect monitoring to evaluations",
+        "expected": 370,
+        "currentTime": 370.01816,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play ARIA: investigate a result, then verify a claim",
+        "expected": 430,
+        "currentTime": 430,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play Use the material and measure the entry path",
+        "expected": 480,
+        "currentTime": 480.010182,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play Choose one example to try",
+        "expected": 560,
+        "currentTime": 560.020967,
+        "error": null,
+        "paused": false,
+        "passed": true
+      }
+    ]
+  },
+  "public_player": {
+    "status": "passed",
+    "checked_at": "2026-11-16T12:06:25.787Z",
+    "url": "https://ash0ts.github.io/forge-workshop-kit/walkthrough/",
+    "initial": {
+      "duration": 600,
+      "error": null,
+      "paused": true,
+      "readyState": 4,
+      "seekable": [
+        [
+          0,
+          600
+        ]
+      ],
+      "src": "https://ash0ts.github.io/forge-workshop-kit/walkthrough/media/forge-workshops-narrated-captioned.mp4"
+    },
+    "chapters": [
+      {
+        "name": "Play Why these workshops exist",
+        "expected": 0,
+        "currentTime": 0.020753,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play How someone starts",
+        "expected": 50,
+        "currentTime": 50,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play Pending: inspect and change an agent",
+        "expected": 90,
+        "currentTime": 90,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play Solar: test a research change",
+        "expected": 145,
+        "currentTime": 145,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play Routing: train, release and recover",
+        "expected": 205,
+        "currentTime": 205,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play Inspection: investigate a missed defect",
+        "expected": 260,
+        "currentTime": 260.009341,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play Transit: coordinate two coding workers",
+        "expected": 315,
+        "currentTime": 315.027709,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play Airline: connect monitoring to evaluations",
+        "expected": 370,
+        "currentTime": 370.029817,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play ARIA: investigate a result, then verify a claim",
+        "expected": 430,
+        "currentTime": 430.076088,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play Use the material and measure the entry path",
+        "expected": 480,
+        "currentTime": 480.005572,
+        "error": null,
+        "paused": false,
+        "passed": true
+      },
+      {
+        "name": "Play Choose one example to try",
+        "expected": 560,
+        "currentTime": 560.127592,
+        "error": null,
+        "paused": false,
+        "passed": true
+      }
+    ],
+    "desktop_visual": "passed",
+    "human_listening_review": "not_performed",
+    "downloads": [
+      {
+        "filename": "forge-workshops-narrated-captioned.mp4",
+        "bytes": 25518371,
+        "accept_ranges": "bytes",
+        "status": "passed"
+      },
+      {
+        "filename": "forge-workshops-narrated-clean.mp4",
+        "bytes": 24307682,
+        "accept_ranges": "bytes",
+        "status": "passed"
+      },
+      {
+        "filename": "forge-workshops-narrated.srt",
+        "bytes": 11941,
+        "accept_ranges": "bytes",
+        "status": "passed"
+      },
+      {
+        "filename": "forge-workshops-narrated.vtt",
+        "bytes": 11489,
+        "accept_ranges": "bytes",
+        "status": "passed"
+      },
+      {
+        "filename": "poster.png",
+        "bytes": 575108,
+        "accept_ranges": "bytes",
+        "status": "passed"
+      },
+      {
+        "filename": "forge-workshops-audio-assets.zip",
+        "bytes": 9475049,
+        "accept_ranges": "bytes",
+        "status": "passed"
+      },
+      {
+        "filename": "forge-workshops-video-edit.zip",
+        "bytes": 36258116,
+        "accept_ranges": "bytes",
+        "status": "passed"
+      }
+    ],
+    "deployment": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43860019529"
+  },
+  "reports": {
+    "project": "wandb/forge-workshop-kit",
+    "count": 6,
+    "anonymous_readback": "matched authored blocks",
+    "native_views": [
+      {
+        "images": [
+          {
+            "loaded": true,
+            "ratioError": 1.0494418281270512e-05,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/request-comparison.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 5.40736374787798e-06,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/representations.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 7.262612433667215e-07,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/classifier-results.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/routing/public/images/evaltables-native.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/routing/public/images/evaltables-native-detail.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/routing/public/images/agent-lens-judge-detail.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/mechanism-release.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/evidence/captures/v070/routing-release-evaltables.png"
+          }
+        ],
+        "title": "Train a support router, then check what you released",
+        "tourLinks": [
+          {
+            "text": "routing and release walkthrough",
+            "url": "https://ash0ts.github.io/forge-workshop-kit/walkthrough/#routing"
+          }
+        ],
+        "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw=="
+      },
+      {
+        "images": [
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/inspection/public/images/pcb1-anomaly-048.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/feature-path.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/mechanism-patch-distance.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/inspection/public/images/agent-lens-training-original.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 7.262612433667215e-07,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/case-decisions.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/inspection/public/images/pcb1-anomaly-015.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 5.40736374787798e-06,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/detector-results.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/inspection/public/images/evaltables-native-detail.png"
+          }
+        ],
+        "tourLinks": [
+          {
+            "text": "board inspection walkthrough",
+            "url": "https://ash0ts.github.io/forge-workshop-kit/walkthrough/#inspection"
+          }
+        ],
+        "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA=="
+      },
+      {
+        "images": [
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/mechanism-service-time.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/transit/public/images/reference-departures.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/r5-worker-test.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 9.901893813335503e-06,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/worker-integration.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/build-comparison.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 8.615808777978629e-06,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/transit/public/images/native-comparison-r5-detail.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/r5-release-artifact.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 4.312315109666898e-06,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/memory-comparison.png"
+          }
+        ],
+        "tourLinks": [
+          {
+            "text": "download and run it locally",
+            "url": "https://ash0ts.github.io/forge-workshop-kit/transit/walkthrough/transit-reference-app.zip"
+          },
+          {
+            "text": "coding-team walkthrough",
+            "url": "https://ash0ts.github.io/forge-workshop-kit/walkthrough/#transit"
+          }
+        ],
+        "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ=="
+      },
+      {
+        "images": [
+          {
+            "loaded": true,
+            "ratioError": 5.465854804986847e-06,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/itinerary-change.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 6.195108755102652e-06,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/different-checks.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-saved-view.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-conversation-error.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-tag-configuration.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-alignment-unavailable.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/mechanism-coverage.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 7.436525536252958e-06,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/regression-replay.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/decks/airline_monitoring/public/captures/native-evaltables.png"
+          }
+        ],
+        "tourLinks": [
+          {
+            "text": "booking and monitoring walkthrough",
+            "url": "https://ash0ts.github.io/forge-workshop-kit/walkthrough/#airline"
+          }
+        ],
+        "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA=="
+      },
+      {
+        "images": [
+          {
+            "loaded": true,
+            "ratioError": 1.3566557531152768e-05,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/billing-state.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/mechanism-dispatch.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://ash0ts.github.io/forge-workshop-kit/pending/images/visual-v030-pending-lookup.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://ash0ts.github.io/forge-workshop-kit/pending/aria/investigate/investigate-verification.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://ash0ts.github.io/forge-workshop-kit/pending/images/visual-v030-pending-timeout.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/timeout-repair.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/recovery-members.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://ash0ts.github.io/forge-workshop-kit/pending/images/visual-v030-pending-verification.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/recorded-first-round.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://ash0ts.github.io/forge-workshop-kit/pending/images/evaltables-native-detail.png"
+          }
+        ],
+        "tourLinks": [
+          {
+            "text": "invoice and retry walkthrough",
+            "url": "https://ash0ts.github.io/forge-workshop-kit/walkthrough/#pending"
+          }
+        ],
+        "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ=="
+      },
+      {
+        "images": [
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://ash0ts.github.io/forge-workshop-kit/solar/images/v031-goes-window.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/solar/mechanism-model-shapes.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 6.818619272541682e-06,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/solar/goes-training-and-forecast.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 7.87966180482158e-06,
+            "src": "https://ash0ts.github.io/forge-workshop-kit/solar/images/v030-image-window.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 1.6093215734258592e-05,
+            "src": "https://ash0ts.github.io/forge-workshop-kit/solar/images/v031-residual-correction.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://ash0ts.github.io/forge-workshop-kit/solar/images/visual-v030-solar-evidence.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 9.034443817057536e-06,
+            "src": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/solar/recorded-code-branches.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://ash0ts.github.io/forge-workshop-kit/solar/images/visual-v030-solar-artifact.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 1.2518209435263827e-05,
+            "src": "https://ash0ts.github.io/forge-workshop-kit/solar/images/v030-final-predictions.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 0,
+            "src": "https://ash0ts.github.io/forge-workshop-kit/solar/images/evaltables-native-detail.png"
+          },
+          {
+            "loaded": true,
+            "ratioError": 3.1940799645191476e-06,
+            "src": "https://ash0ts.github.io/forge-workshop-kit/solar/images/images-seeds-deck.png"
+          }
+        ],
+        "tourLinks": [
+          {
+            "text": "solar experiment walkthrough",
+            "url": "https://ash0ts.github.io/forge-workshop-kit/walkthrough/#solar"
+          }
+        ],
+        "url": "https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg=="
+      }
+    ]
+  },
+  "human_listening_review": "not_performed",
+  "hosted_notebook_copy": "blocked_by_notebook_management_access",
+  "elevenlabs_asset_filing": "folder_created; no uploads verified",
+  "new_workshop_training_or_inference": false,
+  "slack_messages": "drafted, not sent"
+}

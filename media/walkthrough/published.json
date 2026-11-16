@@ -22,7 +22,7 @@
   "qualification": {
     "local_audio_and_visual_checks": "passed",
     "human_listening_review": "not_performed",
-    "public_player_check": "pending"
+    "public_player_check": "passed"
   },
   "assets": [
     {

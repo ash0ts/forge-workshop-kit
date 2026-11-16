@@ -7,7 +7,7 @@
       "notebook_url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/pending.html",
       "deck_url": "https://ash0ts.github.io/forge-workshop-kit/pending/",
       "source": "reports/pending.md",
-      "source_sha256": "234a9436aa2c9935baae528e2e6bf53db87ec1ec817ebb718bd924429a945eec",
+      "source_sha256": "03c262ccc5067abc3bd5909102cf076c899043718cb59ee859e855aca4d4a0ad",
       "anonymous_readback": true,
       "hosted_notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view"
     },
@@ -17,7 +17,7 @@
       "notebook_url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/solar.html",
       "deck_url": "https://ash0ts.github.io/forge-workshop-kit/solar/",
       "source": "reports/solar.md",
-      "source_sha256": "c28d6ee3ee00c64551e5e19a2201658c8a2dff0280be5f920b1b6acdb806aa1e",
+      "source_sha256": "a760d2dbd5a549e9c72fe0d8a3678235b456d7b4b9803197da7fd2cafbbaa055",
       "anonymous_readback": true,
       "hosted_notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view"
     },
@@ -27,7 +27,7 @@
       "notebook_url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/routing.html",
       "deck_url": "https://ash0ts.github.io/forge-workshop-kit/routing/",
       "source": "reports/routing.md",
-      "source_sha256": "e0d03569ee0631fea174f199899d4ddda02fb88ad8447ec81871137595de6835",
+      "source_sha256": "d91fda7fd9b058fe58f7da873caf8fbbc970af57ee050223e5fa6180629d68e4",
       "anonymous_readback": true,
       "hosted_notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view"
     },
@@ -37,7 +37,7 @@
       "notebook_url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/inspection.html",
       "deck_url": "https://ash0ts.github.io/forge-workshop-kit/inspection/",
       "source": "reports/inspection.md",
-      "source_sha256": "32f4bf7a1de0315814373b095139ffe295900ebbb4f92eb4c236a5dca4fc0a39",
+      "source_sha256": "b0ebcc992e15a33871fe5fc3da5f21ad0d176672cf933c38f385abacaa49091b",
       "anonymous_readback": true,
       "hosted_notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view"
     },
@@ -47,7 +47,7 @@
       "notebook_url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/transit.html",
       "deck_url": "https://ash0ts.github.io/forge-workshop-kit/transit/",
       "source": "reports/transit.md",
-      "source_sha256": "18f828ffde8f7f5f7e51bf7023461295df990446c9ff8b386523019f554810f2",
+      "source_sha256": "71212176dec9bd75e126654878c502e39dd6faff888b64098389ffefa366bd60",
       "anonymous_readback": true,
       "hosted_notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view"
     },
@@ -57,7 +57,7 @@
       "notebook_url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/airline_monitoring.html",
       "deck_url": "https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/",
       "source": "reports/airline.md",
-      "source_sha256": "28012960d331e1e0d8bce8ccfb4c3ed08cb439208423efd692c0bb75e4244443",
+      "source_sha256": "2c1b6f98d8608a1ab3890a9372e588aab3d353547a4e409d23eb485a9dfe0dd4",
       "anonymous_readback": true,
       "hosted_notebook_url": "https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view"
     }
