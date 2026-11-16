@@ -126,6 +126,8 @@ All 40 recorded conversations cost $0.02330616 in direct model inference. A sepa
 
 ## Run the workflow in your project
 
+For the direct ARIA controls described below, use the [v0.12.0 notebook download](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/airline_monitoring.py). Hosted templates remain on v0.11.1 while Forge notebook-management access blocks their update. The start page includes import and laptop instructions for the current download.
+
 The start page offers notebook copy, import, and laptop setup. You can also open the [Forge template directly](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view). If the hosted link sends you back to Home, use the import or local option on that page; your saved work does not need to be rerun.
 
 [Open the Airline notebook and choose **Copy to project**](https://ash0ts.github.io/forge-workshop-kit/packet/start/airline_monitoring.html). Confirm your own writable destination and inspect the local booking example before the access check. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) covers the hosted and laptop paths. You don't need a workshop gateway or facilitator credentials.

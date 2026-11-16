@@ -1,0 +1,68 @@
+{
+  "release": "v0.12.0",
+  "verification": "GitHub asset SHA-256 and size matched local exports",
+  "duration_seconds": 600,
+  "dimensions": [
+    1920,
+    1080
+  ],
+  "audio": "none",
+  "capture": "Actual CUA browser frames; native account headers cropped from exports",
+  "training_or_inference_during_capture": false,
+  "assets": [
+    {
+      "name": "contact-sheet.png",
+      "bytes": 1164979,
+      "sha256": "e2f0e8c78c89474dd12a0048d6e57dc89b97f8900026ffe61ae4dca5abca8d70",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/contact-sheet.png"
+    },
+    {
+      "name": "forge-workshops-captioned.mp4",
+      "bytes": 12291885,
+      "sha256": "c59ad7e1ad78a19c7b898ac5070c10b4d6fbfb32580b9dee27abfee4937b80cc",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge-workshops-captioned.mp4"
+    },
+    {
+      "name": "forge-workshops-clean.mp4",
+      "bytes": 10132762,
+      "sha256": "f612bef97121e2588d8073bfc67567cebf22e50bab34062f8b365b3d9fbb6c02",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge-workshops-clean.mp4"
+    },
+    {
+      "name": "forge-workshops-video-edit.zip",
+      "bytes": 36249465,
+      "sha256": "dc6883f09d2f87b2810854bfb5a71087c5e13292a55caf017dca64dbca456f3f",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge-workshops-video-edit.zip"
+    },
+    {
+      "name": "forge-workshops.srt",
+      "bytes": 11350,
+      "sha256": "7fc9b272ac028e51c178dc6e6344a461c5ed43f805c0b16233bfa6e09e3b49e8",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge-workshops.srt"
+    },
+    {
+      "name": "forge-workshops.vtt",
+      "bytes": 11169,
+      "sha256": "5e06f48ed452a3346002ea8aed258bf1aa4f03310aa0838b178543a01f3f4866",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge-workshops.vtt"
+    },
+    {
+      "name": "narration.md",
+      "bytes": 12355,
+      "sha256": "a5f3b4561998c84855b21adc7d5cb2c88b8e4409d7a322a1e2551ad05fdd0f84",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/narration.md"
+    },
+    {
+      "name": "poster.png",
+      "bytes": 575347,
+      "sha256": "29f263d57d2a863f8f4cfd2e0f7eebbd865471835d4ea3e49e153694dd6e45d9",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/poster.png"
+    },
+    {
+      "name": "production-receipt.json",
+      "bytes": 23760,
+      "sha256": "1f960b65d1f254f9120581564adda63e8856a8860f434dbc79db06ff7196c77e",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/production-receipt.json"
+    }
+  ]
+}

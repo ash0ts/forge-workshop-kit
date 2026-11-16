@@ -150,6 +150,8 @@ The comparison contains 199 overlapping windows from two days. Changing the seed
 
 ## Run the experiments in your project
 
+For the direct ARIA controls described below, use the [v0.12.0 notebook download](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/solar_autoresearch.py). Hosted templates remain on v0.11.1 while Forge notebook-management access blocks their update. The start page includes import and laptop instructions for the current download.
+
 The start page offers notebook copy, import, and laptop setup. You can also open the [Forge template directly](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view). If the hosted link sends you back to Home, use the import or local option on that page; your saved work does not need to be rerun.
 
 [Open Solar Autoresearch and choose **Copy to project**](https://ash0ts.github.io/forge-workshop-kit/packet/start/solar.html). Open your editable copy, use **Run all stale cells** to create the controls, and check the project shown in setup. Start with the observation window and persistence function. Training and inference require explicit run controls.

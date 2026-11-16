@@ -94,7 +94,7 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "1b0d985f7185fc381b95c1891eb14bee6a626c9bcbf31028286970c22f8cd21b"
+              "sha256": "ab9c5cfbdf0a3e3a6a804f5724ba6aad20dda7edfc4b5cf821cf708409375ccb"
             },
             {
               "path": "docs/setup.md",
@@ -131,6 +131,21 @@
               "path": "docs/share-links.json",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/share-links.json",
               "sha256": "f5d12d98b296d509f8e6c025ca9905a2a5c325cbf36267205a6153fb371e193e"
+            }
+          ]
+        },
+        {
+          "claim": "The v0.12.0 downloads include direct ARIA controls. Hosted templates remain at their verified v0.11.1 revision because Forge notebook-management access blocked the update; current downloads have import and laptop paths.",
+          "sources": [
+            {
+              "path": "docs/release-publication-v0120.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/release-publication-v0120.json",
+              "sha256": "d0e16f5d37c1b32f92685913c2a098d2f17e7aef7f57d170359a84d703b8c253"
+            },
+            {
+              "path": "docs/aria-direct-qualification.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-direct-qualification.md",
+              "sha256": "53bf1eb7151d556cc217ba76d570f2110ac930d68746219b216ad4bb88325848"
             }
           ]
         }
@@ -229,30 +244,6 @@
           "state": "complete",
           "editable_source": "reports/assets/transit/mechanism-service-time.svg",
           "caption_boundary": "illustrative mechanism view; no new experiment or inferred result."
-        },
-        {
-          "path": "reports/assets/transit/mechanism-service-time.png",
-          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/mechanism-service-time.png",
-          "sha256": "319c7ba0d597dcdba556546f0758aa3e995f4394d92c8a9f04ee5f21c3afd2e4",
-          "alt": "A real Park Street record maps November 28 service time 24:08 to November 29 at 00:08 Eastern. A query at 00:05 should include the departure.",
-          "visually_inspected": true,
-          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/transit/service-time/index.html",
-          "provenance": "reports/figures-guide-layout.json",
-          "state": "complete",
-          "editable_source": "reports/assets/transit/mechanism-service-time.svg",
-          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result."
-        },
-        {
-          "path": "reports/assets/transit/mechanism-service-time.png",
-          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/mechanism-service-time.png",
-          "sha256": "319c7ba0d597dcdba556546f0758aa3e995f4394d92c8a9f04ee5f21c3afd2e4",
-          "alt": "A real Park Street record maps November 28 service time 24:08 to November 29 at 00:08 Eastern. A query at 00:05 should include the departure.",
-          "visually_inspected": true,
-          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/transit/service-time/index.html",
-          "provenance": "reports/figures-guide-layout.json",
-          "state": "complete",
-          "editable_source": "reports/assets/transit/mechanism-service-time.svg",
-          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result."
         }
       ],
       "limitations": [
@@ -260,7 +251,7 @@
         "Reference app is separately authored.",
         "External-account access and participant rehearsal outstanding."
       ],
-      "source_sha256": "373073975d66001ecc25e4edc4b7a2ea138f8536501b1a2b33bfe3778c9e5df1"
+      "source_sha256": "f9e4b96509f8d9155d3ac82114f704aef048ab3c2f9458edde0d29af538b8049"
     },
     "airline": {
       "file": "reports/airline.md",
@@ -407,7 +398,7 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "1b0d985f7185fc381b95c1891eb14bee6a626c9bcbf31028286970c22f8cd21b"
+              "sha256": "ab9c5cfbdf0a3e3a6a804f5724ba6aad20dda7edfc4b5cf821cf708409375ccb"
             },
             {
               "path": "docs/setup.md",
@@ -444,6 +435,21 @@
               "path": "docs/share-links.json",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/share-links.json",
               "sha256": "f5d12d98b296d509f8e6c025ca9905a2a5c325cbf36267205a6153fb371e193e"
+            }
+          ]
+        },
+        {
+          "claim": "The v0.12.0 downloads include direct ARIA controls. Hosted templates remain at their verified v0.11.1 revision because Forge notebook-management access blocked the update; current downloads have import and laptop paths.",
+          "sources": [
+            {
+              "path": "docs/release-publication-v0120.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/release-publication-v0120.json",
+              "sha256": "d0e16f5d37c1b32f92685913c2a098d2f17e7aef7f57d170359a84d703b8c253"
+            },
+            {
+              "path": "docs/aria-direct-qualification.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-direct-qualification.md",
+              "sha256": "53bf1eb7151d556cc217ba76d570f2110ac930d68746219b216ad4bb88325848"
             }
           ]
         }
@@ -562,30 +568,6 @@
           "state": "complete",
           "editable_source": "reports/assets/airline/mechanism-coverage.svg",
           "caption_boundary": "illustrative mechanism view; no new experiment or inferred result."
-        },
-        {
-          "path": "reports/assets/airline/mechanism-coverage.png",
-          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/mechanism-coverage.png",
-          "sha256": "8e64db5e583479d34291751d7f925108404ff576e9a9f81cd910dbaa70f42a9d",
-          "alt": "Illustrative monitoring arithmetic: six completed judgments among eight eligible turns give 75 percent coverage. Pending and unavailable turns remain visible and do not become negative judgments.",
-          "visually_inspected": true,
-          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/airline_monitoring/coverage/index.html",
-          "provenance": "reports/figures-guide-layout.json",
-          "state": "complete",
-          "editable_source": "reports/assets/airline/mechanism-coverage.svg",
-          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result."
-        },
-        {
-          "path": "reports/assets/airline/mechanism-coverage.png",
-          "image_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/mechanism-coverage.png",
-          "sha256": "8e64db5e583479d34291751d7f925108404ff576e9a9f81cd910dbaa70f42a9d",
-          "alt": "Illustrative monitoring arithmetic: six completed judgments among eight eligible turns give 75 percent coverage. Pending and unavailable turns remain visible and do not become negative judgments.",
-          "visually_inspected": true,
-          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/airline_monitoring/coverage/index.html",
-          "provenance": "reports/figures-guide-layout.json",
-          "state": "complete",
-          "editable_source": "reports/assets/airline/mechanism-coverage.svg",
-          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result."
         }
       ],
       "limitations": [
@@ -594,7 +576,7 @@
         "External-account, complete current browser path, and human rehearsal outstanding.",
         "Recorded runtime later received tracing error-handling changes; original 40 executions remain tied to their original source."
       ],
-      "source_sha256": "dc77d205521e952cbebee9d5c1bad3a46f873549ebcc97416ca417fbe4be9e5c"
+      "source_sha256": "ac4f6a7b86ef065410fbba5c390b5fa8aa9a0166febea5daf137dd81760713aa"
     }
   }
 }

@@ -1,162 +1,107 @@
 {
-  "source_sha256": "48c788170be6cbd27775b4c9b1d329e34d3289bcfa64efcc3e05c98ef0face74",
+  "source_sha256": "9dc408b48c6872a9f92682f95232a03c054065cd8eb06a54bb5e68fdc4d1937e",
   "preflight_only": true,
-  "slides_checked": 6,
-  "expected_slides": 79,
+  "slides_checked": 10,
+  "expected_slides": 81,
   "titles": [
     {
-      "number": 1,
-      "key": "cover",
-      "title": "Route customer requests and learn from mistakes"
+      "number": 15,
+      "key": "aria-investigate",
+      "title": "Investigate this result"
     },
     {
-      "number": 2,
-      "key": "technical-overview",
-      "title": "What you will build and inspect"
+      "number": 16,
+      "key": "aria-investigate-response",
+      "title": "Read one claim in the recorded response"
     },
     {
-      "number": 3,
-      "key": "queue",
-      "title": "The support queue needs a destination"
+      "number": 17,
+      "key": "aria-investigate-verify",
+      "title": "Open the source and check that claim"
     },
     {
-      "number": 5,
-      "key": "read-request",
-      "title": "Read a request before revealing its label"
+      "number": 70,
+      "key": "aria-conclusion",
+      "title": "Check our conclusion"
     },
     {
-      "number": 12,
-      "key": "classifier-exercise",
-      "title": "Implement the classifier head"
+      "number": 71,
+      "key": "aria-conclusion-response",
+      "title": "Read one claim in the recorded response"
     },
     {
-      "number": 19,
-      "key": "construct-head",
-      "title": "Construct the estimator before fitting it"
+      "number": 72,
+      "key": "aria-conclusion-verify",
+      "title": "Open the source and check that claim"
+    },
+    {
+      "number": 77,
+      "key": "classifier-answer",
+      "title": "Worked answer: classifier head"
+    },
+    {
+      "number": 78,
+      "key": "policy-answer",
+      "title": "Worked answer: review policy"
+    },
+    {
+      "number": 79,
+      "key": "validator-answer",
+      "title": "Worked answer: judge validator"
+    },
+    {
+      "number": 80,
+      "key": "release-repair-answer",
+      "title": "Worked answer: preserve the probability-column order"
     }
   ],
   "click_states": [
     {
-      "slide": 1,
+      "slide": 15,
       "click": 0
     },
     {
-      "slide": 2,
-      "click": 0,
-      "technical_guide": {
-        "present": true,
-        "visible": true,
-        "loaded": true,
-        "width": 1240,
-        "height": 636,
-        "inside": true,
-        "src": "/guides/routing/overview/slide/01-request.svg",
-        "alt": "Request: What will you build, and how will you know it works?",
-        "frameId": "request",
-        "frameIndex": 0,
-        "frameCount": 5
-      }
-    },
-    {
-      "slide": 2,
-      "click": 1,
-      "technical_guide": {
-        "present": true,
-        "visible": true,
-        "loaded": true,
-        "width": 1240,
-        "height": 636,
-        "inside": true,
-        "src": "/guides/routing/overview/slide/02-model.svg",
-        "alt": "Model: What will you build, and how will you know it works?",
-        "frameId": "model",
-        "frameIndex": 1,
-        "frameCount": 5
-      }
-    },
-    {
-      "slide": 2,
-      "click": 2,
-      "technical_guide": {
-        "present": true,
-        "visible": true,
-        "loaded": true,
-        "width": 1240,
-        "height": 636,
-        "inside": true,
-        "src": "/guides/routing/overview/slide/03-review.svg",
-        "alt": "Review: What will you build, and how will you know it works?",
-        "frameId": "review",
-        "frameIndex": 2,
-        "frameCount": 5
-      }
-    },
-    {
-      "slide": 2,
-      "click": 3,
-      "technical_guide": {
-        "present": true,
-        "visible": true,
-        "loaded": true,
-        "width": 1240,
-        "height": 636,
-        "inside": true,
-        "src": "/guides/routing/overview/slide/04-release.svg",
-        "alt": "Release: What will you build, and how will you know it works?",
-        "frameId": "release",
-        "frameIndex": 3,
-        "frameCount": 5
-      }
-    },
-    {
-      "slide": 2,
-      "click": 4,
-      "technical_guide": {
-        "present": true,
-        "visible": true,
-        "loaded": true,
-        "width": 1240,
-        "height": 636,
-        "inside": true,
-        "src": "/guides/routing/overview/slide/05-complete.svg",
-        "alt": "Complete view: What will you build, and how will you know it works?",
-        "frameId": "complete",
-        "frameIndex": 4,
-        "frameCount": 5
-      }
-    },
-    {
-      "slide": 3,
+      "slide": 16,
       "click": 0
     },
     {
-      "slide": 3,
-      "click": 1
-    },
-    {
-      "slide": 5,
+      "slide": 17,
       "click": 0
     },
     {
-      "slide": 12,
+      "slide": 70,
       "click": 0
     },
     {
-      "slide": 19,
+      "slide": 71,
+      "click": 0
+    },
+    {
+      "slide": 72,
+      "click": 0
+    },
+    {
+      "slide": 77,
+      "click": 0
+    },
+    {
+      "slide": 78,
+      "click": 0
+    },
+    {
+      "slide": 79,
+      "click": 0
+    },
+    {
+      "slide": 80,
       "click": 0
     }
   ],
   "issues": [],
   "console_errors": [],
   "failed_responses": [],
-  "answers": [
-    {
-      "slide": 12,
-      "destination": "/75",
-      "keyboardReturn": true
-    }
-  ],
-  "routes_checked": 319,
-  "recording_links_checked": 0,
+  "answers": [],
+  "routes_checked": 327,
+  "recording_links_checked": 8,
   "presenter_notes": true
 }

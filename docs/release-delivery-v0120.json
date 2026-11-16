@@ -1,0 +1,179 @@
+{
+  "release": "https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.12.0",
+  "verified_at": "2026-11-16T08:41:08.593922+00:00",
+  "operation": "add-only; no clobber",
+  "new_assets": 20,
+  "existing_assets_preserved": 24,
+  "assets": [
+    {
+      "name": "pending-inc.pdf",
+      "bytes": 1847565,
+      "sha256": "079bf1b7f659d09575060e0714423f77438d52bf07d11a44a25ad6566cb61c42",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/pending-inc.pdf",
+      "github_digest": "sha256:079bf1b7f659d09575060e0714423f77438d52bf07d11a44a25ad6566cb61c42",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "pending-inc-browser.zip",
+      "bytes": 10347496,
+      "sha256": "e63ae4073592e24ce2b43eb46c664ad17e1d47406e3add4d6c634a52d21dae49",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/pending-inc-browser.zip",
+      "github_digest": "sha256:e63ae4073592e24ce2b43eb46c664ad17e1d47406e3add4d6c634a52d21dae49",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "pending-inc-source.zip",
+      "bytes": 10613096,
+      "sha256": "fb561138d8dbd6bd311d397001d5e68628bc9b36fd3eb5526e0599d70a9d43a3",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/pending-inc-source.zip",
+      "github_digest": "sha256:fb561138d8dbd6bd311d397001d5e68628bc9b36fd3eb5526e0599d70a9d43a3",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "solar-autoresearch.pdf",
+      "bytes": 2955093,
+      "sha256": "2b666e83a15d7dd942d28418970322e03c3578113848ff4c5a4132c73e753aec",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/solar-autoresearch.pdf",
+      "github_digest": "sha256:2b666e83a15d7dd942d28418970322e03c3578113848ff4c5a4132c73e753aec",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "solar-autoresearch-browser.zip",
+      "bytes": 15534748,
+      "sha256": "54ae2054f6ccd83dbf63ba5dff3cb0ffd9bc5a258d5b40565488890a4717c5ca",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/solar-autoresearch-browser.zip",
+      "github_digest": "sha256:54ae2054f6ccd83dbf63ba5dff3cb0ffd9bc5a258d5b40565488890a4717c5ca",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "solar-autoresearch-source.zip",
+      "bytes": 15833181,
+      "sha256": "6b77ecdb533a533d9577df0edd36490aeb2e864b5d0ae76fd9c18dd9cc011d5a",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/solar-autoresearch-source.zip",
+      "github_digest": "sha256:6b77ecdb533a533d9577df0edd36490aeb2e864b5d0ae76fd9c18dd9cc011d5a",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "request-routing.pdf",
+      "bytes": 1474711,
+      "sha256": "9b8dd7fb7088627003ed10678ae1679f6abe48945d9cfc3dd37e227e14282184",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/request-routing.pdf",
+      "github_digest": "sha256:9b8dd7fb7088627003ed10678ae1679f6abe48945d9cfc3dd37e227e14282184",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "request-routing-browser.zip",
+      "bytes": 8651942,
+      "sha256": "0ed7f7cf0964646f168f7d66fa7871f3670ee297457a4934d823c4fd706155fd",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/request-routing-browser.zip",
+      "github_digest": "sha256:0ed7f7cf0964646f168f7d66fa7871f3670ee297457a4934d823c4fd706155fd",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "request-routing-source.zip",
+      "bytes": 10258724,
+      "sha256": "a99913e6f643826289a9327bcedbfcea1a6a8a4fd7a7257d9c56dfbd84e98069",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/request-routing-source.zip",
+      "github_digest": "sha256:a99913e6f643826289a9327bcedbfcea1a6a8a4fd7a7257d9c56dfbd84e98069",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "visual-inspection.pdf",
+      "bytes": 1634117,
+      "sha256": "c2d55be9804e27b6b003d32a60c5c21fba7d0882a6509674e868c51d386cc7cd",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/visual-inspection.pdf",
+      "github_digest": "sha256:c2d55be9804e27b6b003d32a60c5c21fba7d0882a6509674e868c51d386cc7cd",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "visual-inspection-browser.zip",
+      "bytes": 11970316,
+      "sha256": "a0d7be8b30f5684d75d1f47fdf8942e95f6bef46f67ce7fd51495c1319fae923",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/visual-inspection-browser.zip",
+      "github_digest": "sha256:a0d7be8b30f5684d75d1f47fdf8942e95f6bef46f67ce7fd51495c1319fae923",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "visual-inspection-source.zip",
+      "bytes": 14764641,
+      "sha256": "f3d873cfa0a8c51c31a847445f477ea99d3bbbc88190eebb0a6018160c1232fa",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/visual-inspection-source.zip",
+      "github_digest": "sha256:f3d873cfa0a8c51c31a847445f477ea99d3bbbc88190eebb0a6018160c1232fa",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "transit-factory.pdf",
+      "bytes": 1504130,
+      "sha256": "ee418b6fb9e52341ebc00b7017559e6c48e0bc794d314021a4bc852bd306b87c",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/transit-factory.pdf",
+      "github_digest": "sha256:ee418b6fb9e52341ebc00b7017559e6c48e0bc794d314021a4bc852bd306b87c",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "transit-factory-browser.zip",
+      "bytes": 13706302,
+      "sha256": "50921a04f0a10efb12de3ec86989825db252e9c200ca9f6dc17ec0f8a32838e6",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/transit-factory-browser.zip",
+      "github_digest": "sha256:50921a04f0a10efb12de3ec86989825db252e9c200ca9f6dc17ec0f8a32838e6",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "transit-factory-source.zip",
+      "bytes": 14164874,
+      "sha256": "6b0b0cf93da3f0683200e579f835f843e5691b013cfc8884a2ca6ee67245d00b",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/transit-factory-source.zip",
+      "github_digest": "sha256:6b0b0cf93da3f0683200e579f835f843e5691b013cfc8884a2ca6ee67245d00b",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "airline-monitoring.pdf",
+      "bytes": 1877919,
+      "sha256": "dedb1a66241386f7d85e8df853cac55daa6d023030ecaf892a88fda969c6c793",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/airline-monitoring.pdf",
+      "github_digest": "sha256:dedb1a66241386f7d85e8df853cac55daa6d023030ecaf892a88fda969c6c793",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "airline-monitoring-browser.zip",
+      "bytes": 12788046,
+      "sha256": "e1feaa18789c5e0ca75b2637d99091de2aa8b29336375fdb82f4b3f70a38769b",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/airline-monitoring-browser.zip",
+      "github_digest": "sha256:e1feaa18789c5e0ca75b2637d99091de2aa8b29336375fdb82f4b3f70a38769b",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "airline-monitoring-source.zip",
+      "bytes": 13962732,
+      "sha256": "06004c3b76a4f41e48a888a614952d796867a64fa2025a7b0362bd152ba3daea",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/airline-monitoring-source.zip",
+      "github_digest": "sha256:06004c3b76a4f41e48a888a614952d796867a64fa2025a7b0362bd152ba3daea",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "workshop-materials.zip",
+      "bytes": 10097217,
+      "sha256": "1ad2bca7828bdc094c32a9f386b93b7ca0168ab4f0229b5041b754ce86a31c17",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/workshop-materials.zip",
+      "github_digest": "sha256:1ad2bca7828bdc094c32a9f386b93b7ca0168ab4f0229b5041b754ce86a31c17",
+      "size_and_sha256_verified": true
+    },
+    {
+      "name": "workshop-guide.pdf",
+      "bytes": 44511,
+      "sha256": "c79525e55e3ad0fadd4c0b2da522719b81762306d78cdfdedf4b66c96925c0c0",
+      "url": "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/workshop-guide.pdf",
+      "github_digest": "sha256:c79525e55e3ad0fadd4c0b2da522719b81762306d78cdfdedf4b66c96925c0c0",
+      "size_and_sha256_verified": true
+    }
+  ],
+  "validation": {
+    "slides": 563,
+    "meaningful_reveal_and_pdf_pages": 922,
+    "layout_console_network_issues": 0,
+    "source": "decks/*/notes/delivery-checks.json and pdf-checks.json"
+  },
+  "limitations": [
+    "Hosted Forge notebook access remains blocked; current downloaded notebooks have the direct ARIA controls.",
+    "External-account and human rehearsal are not established by these delivery checks."
+  ]
+}

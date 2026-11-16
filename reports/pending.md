@@ -159,6 +159,8 @@ The deterministic retry repair improved the implementation. The agent-written ha
 
 ## Build your own employee
 
+For the direct ARIA controls described below, use the [v0.12.0 notebook download](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/pending_inc.py). Hosted templates remain on v0.11.1 while Forge notebook-management access blocks their update. The start page includes import and laptop instructions for the current download.
+
 The start page offers notebook copy, import, and laptop setup. You can also open the [Forge template directly](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view). If the hosted link sends you back to Home, use the import or local option on that page; your saved work does not need to be rerun.
 
 [Open Pending, Inc. and choose **Copy to project**](https://ash0ts.github.io/forge-workshop-kit/packet/start/pending.html). Open the editable copy, use **Run all stale cells** to create its controls, and check that the destination is your project. Start with the invoice function and its free check; explicit exercise buttons run the employee and editor.

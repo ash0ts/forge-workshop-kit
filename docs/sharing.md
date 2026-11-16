@@ -2,7 +2,7 @@
 
 Use the packet to introduce the work, show one recorded example, or invite someone to try an exercise. Each workshop connects a customer or engineering problem to code, a measured outcome, and a specific investigation in Forge. The full sessions remain technical previews; external-account checks and participant rehearsals are still open.
 
-[Open the workshop packet](https://ash0ts.github.io/forge-workshop-kit/packet/) · [Choose a workflow](use-the-workshops.md#choose-the-workflow) · [Record the ten-minute tour](loom-walkthrough.md) · [Sharing links and tracking](share-links.md)
+[Open the workshop materials](https://ash0ts.github.io/forge-workshop-kit/packet/) · [Choose a workflow](use-the-workshops.md#choose-the-workflow) · [Watch the ten-minute tour](https://ash0ts.github.io/forge-workshop-kit/walkthrough/) · [Dubbing script](loom-walkthrough.md) · [Sharing links and tracking](share-links.md)
 
 ## A one-minute introduction
 
@@ -41,6 +41,8 @@ I've been building six hands-on workshops for engineers who want to use Forge to
 
 The packet has illustrated Reports, decks, recorded results, and notebooks you can copy into your own project: https://ash0ts.github.io/forge-workshop-kit/
 
+Here's a ten-minute tour of the exercises and their Forge records: https://ash0ts.github.io/forge-workshop-kit/walkthrough/
+
 Recorded demos are available now; the full sessions are technical previews. I'd like a few people to try one exercise, flag confusing setup or instructions, and suggest where it would fit a customer conversation or team session.
 
 ## Follow-up for a technical pilot
@@ -54,6 +56,8 @@ Use the [untracked library link](https://ash0ts.github.io/forge-workshop-kit/) f
 ## What is ready to show
 
 The decks, PDFs, diagrams, public learning Reports, and recorded examples are available for reading and recorded demonstrations. Local checks and maintainer rehearsals cover implementation behavior. They do not establish that every new account can complete a full class.
+
+Use the v0.12.0 download for the new direct ARIA controls. The hosted templates remain v0.11.1 while Forge notebook-management access blocks their update. The notebook start pages explain copy, import, and laptop alternatives; do not present the hosted refresh as complete.
 
 Before scheduling a hands-on class, finish the external-account and human checks in [current status](../next-up.md). Airline's AI Alignment and prepared Insights activities remain unqualified. ARIA recordings support the investigation when live access is unavailable. In Airline, disable **Apply with AI** when a live tagging activity ends; closing the notebook does not turn off automatic judging.
 

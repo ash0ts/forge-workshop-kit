@@ -106,6 +106,8 @@ Open [the native EvalTables comparison](https://forge.coreweave.com/wandb/wandb/
 
 ## Run the workshop yourself
 
+For the direct ARIA controls described below, use the [v0.12.0 notebook download](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/visual_inspection.py). Hosted templates remain on v0.11.1 while Forge notebook-management access blocks their update. The start page includes import and laptop instructions for the current download.
+
 The start page offers notebook copy, import, and laptop setup. You can also open the [Forge template directly](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view). If the hosted link sends you back to Home, use the import or local option on that page; your saved work does not need to be rerun.
 
 Open the [Circuit-board inspection notebook](https://ash0ts.github.io/forge-workshop-kit/packet/start/inspection.html), choose **Copy to project**, and select a writable project of your own. Use **Run all stale cells** once to create the controls, inspect the bundled development board, and follow the access check. Each training operation has an explicit run button.

@@ -4,6 +4,8 @@ An agent can return a convincing answer after changing the wrong booking. A clas
 
 These six Python workshops follow problems like these from the input to the code, result, and evidence. Each includes a worked example, editable notebook, illustrated deck, saved results, and a facilitator guide. Begin with the example, predict what should happen, implement a small change, and compare the result with that prediction.
 
+Watch the [ten-minute captioned tour](https://ash0ts.github.io/forge-workshop-kit/walkthrough/) to see the exercises and their saved Forge records before choosing one.
+
 ## Choose a problem
 
 | Workshop | What you build and examine | Duration |
@@ -26,6 +28,8 @@ ARIA investigations ask you to check an interpretation against selected saved re
 ## Start with the example
 
 Choose a workshop in the [public library](https://ash0ts.github.io/forge-workshop-kit/). Its start page links the Forge template and a downloadable notebook, with copy, import, and laptop instructions. No account is needed to read the saved example or deck. Live work uses your own project, credentials, and billing.
+
+Current downloads are v0.12.0. Hosted templates are still v0.11.1 while the publisher's Forge notebook-management access is blocked. Use the downloaded notebook locally for the new direct ARIA controls. A redirect to Forge Home is an access issue; the start page includes an alternative path.
 
 The default notebook inference allowance is $8 and can be adjusted. Compute, ARIA, and native tag judging are billed separately. Opening a notebook does not begin training or send a model request. [Setup and recovery](setup.md) explains access checks and saved progress.
 

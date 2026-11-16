@@ -1,170 +1,98 @@
 {
-  "source_sha256": "5a355ee9bfbafd78b07aa7eaf02caf28488445d7b016b192b7f67984a34ebede",
+  "source_sha256": "8b64151d23d2db2f2d3c77dadab79ad553f53c5540e3fcae1cf321b7dfe35be7",
   "preflight_only": true,
-  "slides_checked": 6,
-  "expected_slides": 130,
+  "slides_checked": 9,
+  "expected_slides": 131,
   "titles": [
     {
-      "number": 1,
-      "key": "cover",
-      "title": "Solar forecasting with agent-assisted experiments"
+      "number": 52,
+      "key": "aria-investigate",
+      "title": "Investigate this result"
     },
     {
-      "number": 2,
-      "key": "technical-overview",
-      "title": "What you will build and inspect"
+      "number": 53,
+      "key": "aria-investigate-response",
+      "title": "Read one claim in the recorded response"
     },
     {
-      "number": 3,
-      "key": "arrival",
-      "title": "The lab needs a forecast for its weekly review"
+      "number": 54,
+      "key": "aria-investigate-verify",
+      "title": "Open the source and check that claim"
     },
     {
-      "number": 11,
-      "key": "trace-scopes",
-      "title": "Wrap one operation, then inspect what you recorded"
+      "number": 109,
+      "key": "aria-conclusion",
+      "title": "Check our conclusion"
     },
     {
-      "number": 12,
-      "key": "setup-turn",
-      "title": "Connect and inspect your first tool call"
+      "number": 110,
+      "key": "aria-conclusion-response",
+      "title": "Read one claim in the recorded response"
     },
     {
-      "number": 21,
-      "key": "data-turn",
-      "title": "Inspect the observations before training"
+      "number": 111,
+      "key": "aria-conclusion-verify",
+      "title": "Open the source and check that claim"
+    },
+    {
+      "number": 118,
+      "key": "answer-flux",
+      "title": "Implement the training loss and forecast metric"
+    },
+    {
+      "number": 121,
+      "key": "answer-images",
+      "title": "Average the error inside the disk mask"
+    },
+    {
+      "number": 122,
+      "key": "answer-residual",
+      "title": "Add the correction to input channel 1"
     }
   ],
   "click_states": [
     {
-      "slide": 1,
+      "slide": 52,
       "click": 0
     },
     {
-      "slide": 2,
-      "click": 0,
-      "technical_guide": {
-        "present": true,
-        "visible": true,
-        "loaded": true,
-        "width": 1240,
-        "height": 636,
-        "inside": true,
-        "src": "/guides/solar/overview/slide/01-observations.svg",
-        "alt": "Observations: What will you build, and how will you know it works?",
-        "frameId": "observations",
-        "frameIndex": 0,
-        "frameCount": 5
-      }
-    },
-    {
-      "slide": 2,
-      "click": 1,
-      "technical_guide": {
-        "present": true,
-        "visible": true,
-        "loaded": true,
-        "width": 1240,
-        "height": 636,
-        "inside": true,
-        "src": "/guides/solar/overview/slide/02-baseline.svg",
-        "alt": "Baseline: What will you build, and how will you know it works?",
-        "frameId": "baseline",
-        "frameIndex": 1,
-        "frameCount": 5
-      }
-    },
-    {
-      "slide": 2,
-      "click": 2,
-      "technical_guide": {
-        "present": true,
-        "visible": true,
-        "loaded": true,
-        "width": 1240,
-        "height": 636,
-        "inside": true,
-        "src": "/guides/solar/overview/slide/03-experiment.svg",
-        "alt": "Experiment: What will you build, and how will you know it works?",
-        "frameId": "experiment",
-        "frameIndex": 2,
-        "frameCount": 5
-      }
-    },
-    {
-      "slide": 2,
-      "click": 3,
-      "technical_guide": {
-        "present": true,
-        "visible": true,
-        "loaded": true,
-        "width": 1240,
-        "height": 636,
-        "inside": true,
-        "src": "/guides/solar/overview/slide/04-research.svg",
-        "alt": "Research: What will you build, and how will you know it works?",
-        "frameId": "research",
-        "frameIndex": 3,
-        "frameCount": 5
-      }
-    },
-    {
-      "slide": 2,
-      "click": 4,
-      "technical_guide": {
-        "present": true,
-        "visible": true,
-        "loaded": true,
-        "width": 1240,
-        "height": 636,
-        "inside": true,
-        "src": "/guides/solar/overview/slide/05-complete.svg",
-        "alt": "Complete view: What will you build, and how will you know it works?",
-        "frameId": "complete",
-        "frameIndex": 4,
-        "frameCount": 5
-      }
-    },
-    {
-      "slide": 3,
+      "slide": 53,
       "click": 0
     },
     {
-      "slide": 11,
+      "slide": 54,
       "click": 0
     },
     {
-      "slide": 11,
-      "click": 1
-    },
-    {
-      "slide": 11,
-      "click": 2
-    },
-    {
-      "slide": 11,
-      "click": 3
-    },
-    {
-      "slide": 12,
+      "slide": 109,
       "click": 0
     },
     {
-      "slide": 21,
+      "slide": 110,
+      "click": 0
+    },
+    {
+      "slide": 111,
+      "click": 0
+    },
+    {
+      "slide": 118,
+      "click": 0
+    },
+    {
+      "slide": 121,
+      "click": 0
+    },
+    {
+      "slide": 122,
       "click": 0
     }
   ],
   "issues": [],
   "console_errors": [],
   "failed_responses": [],
-  "answers": [
-    {
-      "slide": 12,
-      "destination": "/115",
-      "keyboardReturn": true
-    }
-  ],
-  "routes_checked": 523,
-  "recording_links_checked": 0,
+  "answers": [],
+  "routes_checked": 527,
+  "recording_links_checked": 8,
   "presenter_notes": true
 }

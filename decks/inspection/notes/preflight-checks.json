@@ -1,170 +1,89 @@
 {
-  "source_sha256": "90c7204716275346f3a3f3c3084c01542849a4615ca7fe7990ca0f28fe85aef8",
+  "source_sha256": "5d80893a11f84380fff2a57b79ac55db7374919ef61800372b66635c28e5a43a",
   "preflight_only": true,
-  "slides_checked": 6,
-  "expected_slides": 60,
+  "slides_checked": 8,
+  "expected_slides": 62,
   "titles": [
     {
-      "number": 1,
-      "key": "opening",
-      "title": "Find defective parts before they ship"
+      "number": 20,
+      "key": "aria-investigate",
+      "title": "Investigate this result"
     },
     {
-      "number": 2,
-      "key": "technical-overview",
-      "title": "What you will build and inspect"
+      "number": 21,
+      "key": "aria-investigate-response",
+      "title": "Read one claim in the recorded response"
     },
     {
-      "number": 3,
-      "key": "assignment",
-      "title": "The factory has two ways to waste a good morning"
+      "number": 22,
+      "key": "aria-investigate-verify",
+      "title": "Open the source and check that claim"
     },
     {
-      "number": 9,
-      "key": "connect",
-      "title": "Connect to your own experiment"
+      "number": 52,
+      "key": "aria-conclusion",
+      "title": "Check our conclusion"
     },
     {
-      "number": 10,
-      "key": "trace-code",
-      "title": "The trace describes a call that actually ran"
+      "number": 53,
+      "key": "aria-conclusion-response",
+      "title": "Read one claim in the recorded response"
     },
     {
-      "number": 17,
-      "key": "threshold-exercise",
-      "title": "Implement the validation threshold"
+      "number": 54,
+      "key": "aria-conclusion-verify",
+      "title": "Open the source and check that claim"
+    },
+    {
+      "number": 60,
+      "key": "answer-features",
+      "title": "Worked answer: assemble the local features"
+    },
+    {
+      "number": 61,
+      "key": "answer-threshold",
+      "title": "Worked answer: meet the validation recall target"
     }
   ],
   "click_states": [
     {
-      "slide": 1,
+      "slide": 20,
       "click": 0
     },
     {
-      "slide": 2,
-      "click": 0,
-      "technical_guide": {
-        "present": true,
-        "visible": true,
-        "loaded": true,
-        "width": 1240,
-        "height": 636,
-        "inside": true,
-        "src": "/guides/inspection/overview/slide/01-board.svg",
-        "alt": "Board: What will you build, and how will you know it works?",
-        "frameId": "board",
-        "frameIndex": 0,
-        "frameCount": 5
-      }
-    },
-    {
-      "slide": 2,
-      "click": 1,
-      "technical_guide": {
-        "present": true,
-        "visible": true,
-        "loaded": true,
-        "width": 1240,
-        "height": 636,
-        "inside": true,
-        "src": "/guides/inspection/overview/slide/02-features.svg",
-        "alt": "Features: What will you build, and how will you know it works?",
-        "frameId": "features",
-        "frameIndex": 1,
-        "frameCount": 5
-      }
-    },
-    {
-      "slide": 2,
-      "click": 2,
-      "technical_guide": {
-        "present": true,
-        "visible": true,
-        "loaded": true,
-        "width": 1240,
-        "height": 636,
-        "inside": true,
-        "src": "/guides/inspection/overview/slide/03-decision.svg",
-        "alt": "Decision: What will you build, and how will you know it works?",
-        "frameId": "decision",
-        "frameIndex": 2,
-        "frameCount": 5
-      }
-    },
-    {
-      "slide": 2,
-      "click": 3,
-      "technical_guide": {
-        "present": true,
-        "visible": true,
-        "loaded": true,
-        "width": 1240,
-        "height": 636,
-        "inside": true,
-        "src": "/guides/inspection/overview/slide/04-recover.svg",
-        "alt": "Recover: What will you build, and how will you know it works?",
-        "frameId": "recover",
-        "frameIndex": 3,
-        "frameCount": 5
-      }
-    },
-    {
-      "slide": 2,
-      "click": 4,
-      "technical_guide": {
-        "present": true,
-        "visible": true,
-        "loaded": true,
-        "width": 1240,
-        "height": 636,
-        "inside": true,
-        "src": "/guides/inspection/overview/slide/05-complete.svg",
-        "alt": "Complete view: What will you build, and how will you know it works?",
-        "frameId": "complete",
-        "frameIndex": 4,
-        "frameCount": 5
-      }
-    },
-    {
-      "slide": 3,
+      "slide": 21,
       "click": 0
     },
     {
-      "slide": 9,
+      "slide": 22,
       "click": 0
     },
     {
-      "slide": 10,
+      "slide": 52,
       "click": 0
     },
     {
-      "slide": 10,
-      "click": 1
+      "slide": 53,
+      "click": 0
     },
     {
-      "slide": 10,
-      "click": 2
+      "slide": 54,
+      "click": 0
     },
     {
-      "slide": 10,
-      "click": 3
+      "slide": 60,
+      "click": 0
     },
     {
-      "slide": 17,
+      "slide": 61,
       "click": 0
     }
   ],
   "issues": [],
   "console_errors": [],
   "failed_responses": [],
-  "answers": [
-    {
-      "slide": 17,
-      "destination": "/59",
-      "keyboardReturn": true
-    }
-  ],
-  "routes_checked": 243,
-  "recording_links_checked": 0,
+  "answers": [],
+  "routes_checked": 251,
+  "recording_links_checked": 8,
   "presenter_notes": true
 }

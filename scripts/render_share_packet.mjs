@@ -49,6 +49,6 @@ if (mode === 'markdown') {
     await page.pdf({path: path.resolve(process.argv[4]), format:'Letter', printBackground:true,
       margin:{top:'0.65in', bottom:'0.65in', left:'0.65in', right:'0.65in'},
       displayHeaderFooter:true, headerTemplate:'<span></span>',
-      footerTemplate:'<div style="font:9px sans-serif;width:100%;text-align:center;color:#60625d">Forge Workshop Kit · Meeting packet · <span class="pageNumber"></span></div>'})
+      footerTemplate:'<div style="font:9px sans-serif;width:100%;text-align:center;color:#60625d">Forge Workshop Kit · Workshop guide · <span class="pageNumber"></span></div>'})
   } finally { await browser.close(); await fs.rm(printSource, {force:true}) }
 } else { throw new Error('Use markdown or pdf mode') }

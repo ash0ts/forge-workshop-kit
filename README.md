@@ -8,6 +8,8 @@ Participants copy a notebook into their own project and use their own credential
 
 **These are technical previews.** The notebooks and decks are published, but external-account checks and participant rehearsals are still outstanding. See [current status and next steps](next-up.md) before scheduling a class.
 
+The [ten-minute captioned tour](https://ash0ts.github.io/forge-workshop-kit/walkthrough/) follows all six problems through their diagrams and saved Forge records. A [clean video, subtitles, and narration](media/walkthrough/README.md) are available for presenting or recording your own explanation.
+
 Start with the [workshop overview](docs/workshop-overview.md), then choose a [package for reading, demonstrating, running, or adapting a workshop](docs/use-the-workshops.md). The [public library](https://ash0ts.github.io/forge-workshop-kit/) links each example, notebook start page, deck, and download.
 
 Download the [QR codes and tracked sharing links](https://ash0ts.github.io/forge-workshop-kit/share/) for invitations, slides, and handouts. The [sharing guide](docs/share-links.md) explains placement and tracking.
@@ -36,6 +38,8 @@ The notebook contains the code participants change. Agent Lens shows the request
 Each product appears beside a question: which payment was refunded, which learning rate ran, which board was missed, or which worker supplied a patch? The [workflow guide](docs/use-the-workshops.md#follow-the-ai-work-through-forge) maps those investigations to the shared run → observe → curate → improve → evaluate sequence.
 
 ## Start in Forge
+
+**Current delivery:** v0.12.0 is available as downloadable notebooks and a local package. Hosted templates remain at v0.11.1 because Forge currently rejects notebook management for the publishing account. If a template redirects to Home, use the start page's source download and laptop instructions. The new direct ARIA controls are in v0.12.0; they are not yet in the hosted templates.
 
 1. Sign in to [Forge](https://forge.coreweave.com) and create a teaching project where you have write access. Use a public project if the facilitator should read progress without an invitation. Only publish the supplied public or fictional data there.
 2. Open a notebook above, choose **Copy to project**, and open your editable copy.

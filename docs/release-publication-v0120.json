@@ -1,0 +1,148 @@
+{
+  "date": "2026-11-16",
+  "release": "0.12.0",
+  "source_commit": "1c6f0ef929aef328acf4f68449f6f0a8a32e9191",
+  "release_url": "https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.12.0",
+  "release_assets": {
+    "status": "verified",
+    "method": "GitHub upload digest and size; public wheel independently downloaded and hashed",
+    "files": [
+      {
+        "file": "airline_monitoring.html",
+        "bytes": 338231,
+        "sha256": "90f1f7d8b3c073bab45b2b5fb7c5642a09c0df00fe6e133383d9f2d2d0082a70"
+      },
+      {
+        "file": "airline_monitoring.py",
+        "bytes": 92216,
+        "sha256": "fbdd18c3f2b22faf7bb9bf938e2cd2b4129d0a7b5bba283fe195d5a55fc5ebaf"
+      },
+      {
+        "file": "aria-investigations-v0.12.0.zip",
+        "bytes": 2159430,
+        "sha256": "0d7ad0a041fba0da3b18f10cc309a0f71321caf6e7f10261f871584c8ae5fa84"
+      },
+      {
+        "file": "facilitator.html",
+        "bytes": 43258,
+        "sha256": "b93e82a99c9ffd512c9160d4d54c924f555bdecb6f559906549249774dd6855b"
+      },
+      {
+        "file": "facilitator.py",
+        "bytes": 8743,
+        "sha256": "40bef6d9faf44098d97adf6327205ce8512fd5a0e6054758d0f0521f36a0d8ad"
+      },
+      {
+        "file": "forge_workshop_kit-0.12.0-py3-none-any.whl",
+        "bytes": 16947593,
+        "sha256": "8cc16ac0269ec1eee22de74872b60c053f30615e726dfc3ff2e0ab4362cb9243"
+      },
+      {
+        "file": "forge_workshop_kit-0.12.0.tar.gz",
+        "bytes": 27200363,
+        "sha256": "a409f96c519776966360dad7e61b6d3548ba1e5bb71aad21cba2ffa0a575a25b"
+      },
+      {
+        "file": "pending_inc.html",
+        "bytes": 313483,
+        "sha256": "5e011e07c3f3cce16362e5dd66eb9bce766260b17028270742ad98d710cdb163"
+      },
+      {
+        "file": "pending_inc.py",
+        "bytes": 76390,
+        "sha256": "c6750d61ff88c8dbe4ff371c1a6e9cba8a331dc4b21e78927f5f631ba0e8289f"
+      },
+      {
+        "file": "release-manifest.json",
+        "bytes": 7519,
+        "sha256": "d79d5d7de066af79d1598ff561ffabc04b66686bd16b8df62cdcee780db96329"
+      },
+      {
+        "file": "request_routing.html",
+        "bytes": 323256,
+        "sha256": "812d10e3d6556b380f7f78cb1b4d8bb2491579d8276749c380cbc24d6e6aa9eb"
+      },
+      {
+        "file": "request_routing.py",
+        "bytes": 81198,
+        "sha256": "734adbcdba8b0cddb8c23cf504d1479366cf2b0b22c29c5b250c2e43c06e94d8"
+      },
+      {
+        "file": "solar_autoresearch.html",
+        "bytes": 341920,
+        "sha256": "9234244820cebee562cc445ccc6f32f334f461e8b1a3478fc0abeec9c95860cf"
+      },
+      {
+        "file": "solar_autoresearch.py",
+        "bytes": 114343,
+        "sha256": "1a8336ae0b08d1588b4012428d980ae5aeb28bcb009f1b63d147eb01b2890ef5"
+      },
+      {
+        "file": "starter.html",
+        "bytes": 36231,
+        "sha256": "2e9612f37a9828860dea26a25bf9711c4db3930522a7a892cff6473654f1b963"
+      },
+      {
+        "file": "starter.py",
+        "bytes": 5953,
+        "sha256": "e663689932d7ddcd71e9fc174f2c7b8019b398f4a5fd46716aa788038e034c25"
+      },
+      {
+        "file": "teenage-engineering-visualizations.zip",
+        "bytes": 128732,
+        "sha256": "adc26d1d2151c8135304c6b2a0573e60bbcb60a399511e933dfe0f54098a9fd9"
+      },
+      {
+        "file": "transit_factory.html",
+        "bytes": 320498,
+        "sha256": "e33c063c1308d49eb2e8c9c35bc1cdda7935a51591fa3829ee559e072b04c611"
+      },
+      {
+        "file": "transit_factory.py",
+        "bytes": 53701,
+        "sha256": "43bf45b041049b02c2c84cad5d45b66b5f2ea2c01e01b04f9a594e83ceb97a27"
+      },
+      {
+        "file": "visual_inspection.html",
+        "bytes": 456363,
+        "sha256": "5d43cd67949e1554220f7b416f21e55d0fe3468e73d9fe1b3ecfb1ceb0df826b"
+      },
+      {
+        "file": "visual_inspection.py",
+        "bytes": 67544,
+        "sha256": "2ae7ee1c787c2616cdf9c51c0a0d11bb45c54b49570e188521303cc6db33ade2"
+      },
+      {
+        "file": "workshop-posters.zip",
+        "bytes": 6903139,
+        "sha256": "1ba64b99da07c1f17e4ac1664c204648a13ce4fd3d2028741dd51f385aca0db9"
+      },
+      {
+        "file": "workshop-visual-source.zip",
+        "bytes": 5265878,
+        "sha256": "0c6ed8dff79effb86c5bb392c578aba8c1f66df865f08b389cd4341223e57487"
+      }
+    ]
+  },
+  "template_publication": {
+    "status": "blocked_before_mutation",
+    "project": "wandb/forge-workshop-kit",
+    "api_host": "https://api.wandb.ai",
+    "viewer": "ashah1",
+    "operation": "destination read before rename or upload",
+    "message": "Marimo notebook management is not enabled",
+    "new_template_uploads": 0,
+    "next_action": "Restore native notebook management access, then rerun the destination-verified publisher using the existing receipt.",
+    "prior_verified_releases": {
+      "starter": "0.11.1",
+      "facilitator": "0.11.1",
+      "pending_inc": "0.11.1",
+      "solar_autoresearch": "0.11.1",
+      "request_routing": "0.11.1",
+      "visual_inspection": "0.11.1",
+      "transit_factory": "0.11.1",
+      "airline_monitoring": "0.11.1"
+    }
+  },
+  "scope": "Core package and templates only. Deck assets and video have separate delivery receipts."
+}

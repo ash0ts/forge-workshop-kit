@@ -13,6 +13,8 @@ Start with a Report for the technical explanation. Its packet contains the deck,
 | Transit software factory | [Coordinate coding agents, then test the app they built](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ==) | [Transit packet](https://utm.io/uuIaa) |
 | Airline monitoring | [Turn an airline agent's behavior into monitoring rules and regression tests](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA==) | [Airline packet](https://utm.io/uuIab) |
 
+The direct ARIA controls are in the [v0.12.0 downloads](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.12.0). Hosted templates remain on v0.11.1 while Forge notebook-management access blocks their update. Each Report links the current notebook download and its import or laptop instructions.
+
 Use the [setup guide](../docs/setup.md) for account requirements, local installation, and recovery. The [recorded-results guide](../docs/recorded-results.md) explains the measured gains, ties, regressions, and teaching retests. These remain technical previews: native access and participant rehearsals must be checked for the intended class. See [current status](../next-up.md) before describing a complete live workshop as ready.
 
 The packet links are managed in [the sharing-link registry](../docs/share-links.json). They identify the workshop; they do not identify an attendee or prove notebook completion. Follow [the tracking guide](../docs/share-links.md) when creating a separate link for a channel or event.

@@ -94,6 +94,17 @@
             "https://github.com/ash0ts/forge-workshop-kit/blob/main/visual-guides/index.json",
             "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/share-links.json"
           ]
+        },
+        {
+          "claim": "The v0.12.0 downloads include direct ARIA controls. Hosted templates remain at their verified v0.11.1 revision because Forge notebook-management access blocked the update; current downloads have import and laptop paths.",
+          "files": [
+            "docs/release-publication-v0120.json",
+            "docs/aria-direct-qualification.md"
+          ],
+          "source_urls": [
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/release-publication-v0120.json",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-direct-qualification.md"
+          ]
         }
       ],
       "visuals": [
@@ -193,30 +204,6 @@
           "file": "reports/assets/pending/mechanism-dispatch.png",
           "public_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/mechanism-dispatch.png",
           "meaning": "The same acme/inv-1 lookup appears in the action, dispatcher, returned record, and appended observation. The next model request includes that observation."
-        },
-        {
-          "sha256": "47623d7b25cd368635f5e67335f0acacbb0a2b07e3fe150585f96a23ae97259e",
-          "visually_inspected": true,
-          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/pending/dispatch/index.html",
-          "provenance": "reports/figures-guide-layout.json",
-          "state": "complete",
-          "editable_source": "reports/assets/pending/mechanism-dispatch.svg",
-          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result.",
-          "file": "reports/assets/pending/mechanism-dispatch.png",
-          "public_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/mechanism-dispatch.png",
-          "meaning": "The same acme/inv-1 lookup appears in the action, dispatcher, returned record, and appended observation. The next model request includes that observation."
-        },
-        {
-          "sha256": "47623d7b25cd368635f5e67335f0acacbb0a2b07e3fe150585f96a23ae97259e",
-          "visually_inspected": true,
-          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/pending/dispatch/index.html",
-          "provenance": "reports/figures-guide-layout.json",
-          "state": "complete",
-          "editable_source": "reports/assets/pending/mechanism-dispatch.svg",
-          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result.",
-          "file": "reports/assets/pending/mechanism-dispatch.png",
-          "public_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/mechanism-dispatch.png",
-          "meaning": "The same acme/inv-1 lookup appears in the action, dispatcher, returned record, and appended observation. The next model request includes that observation."
         }
       ],
       "limits": [
@@ -225,7 +212,7 @@
         "One scripted rehearsal with four final cases does not establish general equivalence.",
         "External-account and participant rehearsals remain outstanding."
       ],
-      "source_sha256": "d4535c8806234f48974dcdc276c45ee77167c30c0467be484fa0b98de0d431f5"
+      "source_sha256": "3451abe3de34f63e5e5cd960da4511a6e4d0408199a950786a414bbe5ef150b1"
     },
     {
       "slug": "solar",
@@ -321,6 +308,17 @@
             "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-investigations.md",
             "https://github.com/ash0ts/forge-workshop-kit/blob/main/visual-guides/index.json",
             "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/share-links.json"
+          ]
+        },
+        {
+          "claim": "The v0.12.0 downloads include direct ARIA controls. Hosted templates remain at their verified v0.11.1 revision because Forge notebook-management access blocked the update; current downloads have import and laptop paths.",
+          "files": [
+            "docs/release-publication-v0120.json",
+            "docs/aria-direct-qualification.md"
+          ],
+          "source_urls": [
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/release-publication-v0120.json",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-direct-qualification.md"
           ]
         }
       ],
@@ -428,30 +426,6 @@
           "file": "reports/assets/solar/mechanism-model-shapes.png",
           "public_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/solar/mechanism-model-shapes.png",
           "meaning": "The same two-channel, sixty-minute observation window feeds two alternative implementations. Flattening gives the MLP 120 inputs; temporal convolution reuses a five-sample filter, then pools over time."
-        },
-        {
-          "sha256": "3a3b3bbedbbf9ec6ce434ff4627b81ccc9915b1253c2d0f264fcca8d522b09bc",
-          "visually_inspected": true,
-          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/solar/model-shapes/index.html",
-          "provenance": "reports/figures-guide-layout.json",
-          "state": "complete",
-          "editable_source": "reports/assets/solar/mechanism-model-shapes.svg",
-          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result.",
-          "file": "reports/assets/solar/mechanism-model-shapes.png",
-          "public_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/solar/mechanism-model-shapes.png",
-          "meaning": "The same two-channel, sixty-minute observation window feeds two alternative implementations. Flattening gives the MLP 120 inputs; temporal convolution reuses a five-sample filter, then pools over time."
-        },
-        {
-          "sha256": "3a3b3bbedbbf9ec6ce434ff4627b81ccc9915b1253c2d0f264fcca8d522b09bc",
-          "visually_inspected": true,
-          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/solar/model-shapes/index.html",
-          "provenance": "reports/figures-guide-layout.json",
-          "state": "complete",
-          "editable_source": "reports/assets/solar/mechanism-model-shapes.svg",
-          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result.",
-          "file": "reports/assets/solar/mechanism-model-shapes.png",
-          "public_url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/solar/mechanism-model-shapes.png",
-          "meaning": "The same two-channel, sixty-minute observation window feeds two alternative implementations. Flattening gives the MLP 120 inputs; temporal convolution reuses a five-sample filter, then pools over time."
         }
       ],
       "limits": [
@@ -462,7 +436,7 @@
         "All claimed gains belong to exact saved runs; image all-seed reliability gate failed.",
         "External-account and participant rehearsals remain outstanding."
       ],
-      "source_sha256": "268bfbd6d705becdf9ef2cb9a6215faeb81b4dae74770b525240a6a040c40c8e"
+      "source_sha256": "540b7ecb88272f74ab891df5be3beefd6b379e4a8db179fc3bc24f83b67a0348"
     }
   ]
 }

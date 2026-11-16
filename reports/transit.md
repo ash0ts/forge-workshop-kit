@@ -111,6 +111,8 @@ A next experiment could change the task breakdown or allowed context, but it wou
 
 ## Run the workshop in your project
 
+For the direct ARIA controls described below, use the [v0.12.0 notebook download](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/transit_factory.py). Hosted templates remain on v0.11.1 while Forge notebook-management access blocks their update. The start page includes import and laptop instructions for the current download.
+
 The start page offers notebook copy, import, and laptop setup. You can also open the [Forge template directly](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view). If the hosted link sends you back to Home, use the import or local option on that page; your saved work does not need to be rerun.
 
 [Open the Transit notebook and choose **Copy to project**](https://ash0ts.github.io/forge-workshop-kit/packet/start/transit.html). Confirm your own writable project, then try the timetable example and its free check. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) covers the hosted and laptop paths; the [deck](https://ash0ts.github.io/forge-workshop-kit/transit/) walks through the code and intermediate states.

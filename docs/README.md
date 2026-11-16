@@ -7,6 +7,7 @@ Start with the [repository README](../README.md) to choose a workshop. Use this 
 | Need | Read |
 | --- | --- |
 | Understand the six workshops and choose one | [Workshop overview](workshop-overview.md) |
+| Watch the examples and Forge investigations | [Ten-minute captioned tour](https://ash0ts.github.io/forge-workshop-kit/walkthrough/) |
 | Download a QR code or use a tracked workshop link | [Sharing links and placement](share-links.md) |
 | Prepare and lead a session | [Facilitator start guide](facilitator-start.md), with a short running guide for each deck |
 | Choose materials for a reader, demo, hands-on pilot, or new workshop | [Use the workshop materials](use-the-workshops.md) |
@@ -48,5 +49,6 @@ The [facilitator setup](setup.md#read-participant-progress) explains the saved r
 | [AGENTS.md](../AGENTS.md) | Repository instructions for coding agents |
 | [forge-workshops skill](../.agents/skills/forge-workshops/SKILL.md) | How an assistant should use these guides when authoring or rehearsing |
 | [Sharing draft](sharing.md) and [recording script](loom-walkthrough.md) | Contributor communication drafts; excluded from participant downloads and site navigation |
+| [Video source and dubbing files](../media/walkthrough/README.md) | Captioned and clean exports, subtitles, narration, and the editable capture timeline |
 
 Keep implementation contracts in these guides and unfinished work in [next-up.md](../next-up.md). [Release notes](release-notes.md) describe changes between versions; the [archive](archive.md) preserves earlier checks and workshop releases. Historical evidence is not current setup guidance.

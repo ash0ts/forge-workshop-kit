@@ -137,7 +137,7 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "1b0d985f7185fc381b95c1891eb14bee6a626c9bcbf31028286970c22f8cd21b"
+              "sha256": "ab9c5cfbdf0a3e3a6a804f5724ba6aad20dda7edfc4b5cf821cf708409375ccb"
             },
             {
               "path": "docs/setup.md",
@@ -190,6 +190,22 @@
               "sha256": "f5d12d98b296d509f8e6c025ca9905a2a5c325cbf36267205a6153fb371e193e"
             }
           ]
+        },
+        {
+          "claim": "The v0.12.0 downloads include direct ARIA controls. Hosted templates remain at their verified v0.11.1 revision because Forge notebook-management access blocked the update; current downloads have import and laptop paths.",
+          "sources": [
+            {
+              "path": "docs/release-publication-v0120.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/release-publication-v0120.json",
+              "sha256": "d0e16f5d37c1b32f92685913c2a098d2f17e7aef7f57d170359a84d703b8c253"
+            },
+            {
+              "path": "docs/aria-direct-qualification.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-direct-qualification.md",
+              "sha256": "53bf1eb7151d556cc217ba76d570f2110ac930d68746219b216ad4bb88325848"
+            }
+          ],
+          "id": "routing-release-access"
         }
       ],
       "visuals": [
@@ -288,33 +304,9 @@
           "editable_source": "reports/assets/routing/mechanism-release.svg",
           "caption_boundary": "recorded mechanism view; no new experiment or inferred result.",
           "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/mechanism-release.png"
-        },
-        {
-          "path": "reports/assets/routing/mechanism-release.png",
-          "sha256": "97199224bd3d8387fbbd65faf0f5be71164395951091d018b61fbdce7b6c07ce",
-          "alt": "An illustrative three-column mapping keeps probabilities fixed while moving intent labels. Follow column zero: the faulty loader changes its destination from card_arrival to card_linking.",
-          "visually_inspected": true,
-          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/routing/release/index.html",
-          "provenance": "reports/figures-guide-layout.json",
-          "state": "faulty",
-          "editable_source": "reports/assets/routing/mechanism-release.svg",
-          "caption_boundary": "recorded mechanism view; no new experiment or inferred result.",
-          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/mechanism-release.png"
-        },
-        {
-          "path": "reports/assets/routing/mechanism-release.png",
-          "sha256": "97199224bd3d8387fbbd65faf0f5be71164395951091d018b61fbdce7b6c07ce",
-          "alt": "An illustrative three-column mapping keeps probabilities fixed while moving intent labels. Follow column zero: the faulty loader changes its destination from card_arrival to card_linking.",
-          "visually_inspected": true,
-          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/routing/release/index.html",
-          "provenance": "reports/figures-guide-layout.json",
-          "state": "faulty",
-          "editable_source": "reports/assets/routing/mechanism-release.svg",
-          "caption_boundary": "recorded mechanism view; no new experiment or inferred result.",
-          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/mechanism-release.png"
         }
       ],
-      "article_sha256": "2fe300b7579761e91495a9e75847c3d49edb69fc5ecc231414f8e1ced10a3b10"
+      "article_sha256": "3b216a8449c3a7df42d5b0743e3c41f9f5c1afaecf60fd7ece2112fb078a4a89"
     },
     "inspection": {
       "file": "reports/inspection.md",
@@ -491,7 +483,7 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "1b0d985f7185fc381b95c1891eb14bee6a626c9bcbf31028286970c22f8cd21b"
+              "sha256": "ab9c5cfbdf0a3e3a6a804f5724ba6aad20dda7edfc4b5cf821cf708409375ccb"
             },
             {
               "path": "docs/setup.md",
@@ -530,6 +522,22 @@
               "sha256": "f5d12d98b296d509f8e6c025ca9905a2a5c325cbf36267205a6153fb371e193e"
             }
           ]
+        },
+        {
+          "claim": "The v0.12.0 downloads include direct ARIA controls. Hosted templates remain at their verified v0.11.1 revision because Forge notebook-management access blocked the update; current downloads have import and laptop paths.",
+          "sources": [
+            {
+              "path": "docs/release-publication-v0120.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/release-publication-v0120.json",
+              "sha256": "d0e16f5d37c1b32f92685913c2a098d2f17e7aef7f57d170359a84d703b8c253"
+            },
+            {
+              "path": "docs/aria-direct-qualification.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-direct-qualification.md",
+              "sha256": "53bf1eb7151d556cc217ba76d570f2110ac930d68746219b216ad4bb88325848"
+            }
+          ],
+          "id": "inspection-release-access"
         }
       ],
       "visuals": [
@@ -629,33 +637,9 @@
           "editable_source": "reports/assets/inspection/mechanism-patch-distance.svg",
           "caption_boundary": "illustrative mechanism view; no new experiment or inferred result.",
           "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/mechanism-patch-distance.png"
-        },
-        {
-          "path": "reports/assets/inspection/mechanism-patch-distance.png",
-          "sha256": "17c9892a3d3e3f6dc23d89b1769fc12d16b06166684ffc190c4ca261c6d0035a",
-          "alt": "PCB1 anomaly 048 at position (10, 7) is compared with the same position on normal fitting boards. The nearest scaled distance becomes one of 196 spatial features.",
-          "visually_inspected": true,
-          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/inspection/patch-distance/index.html",
-          "provenance": "reports/figures-guide-layout.json",
-          "state": "complete",
-          "editable_source": "reports/assets/inspection/mechanism-patch-distance.svg",
-          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result.",
-          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/mechanism-patch-distance.png"
-        },
-        {
-          "path": "reports/assets/inspection/mechanism-patch-distance.png",
-          "sha256": "17c9892a3d3e3f6dc23d89b1769fc12d16b06166684ffc190c4ca261c6d0035a",
-          "alt": "PCB1 anomaly 048 at position (10, 7) is compared with the same position on normal fitting boards. The nearest scaled distance becomes one of 196 spatial features.",
-          "visually_inspected": true,
-          "source_url": "https://ash0ts.github.io/forge-workshop-kit/guides/inspection/patch-distance/index.html",
-          "provenance": "reports/figures-guide-layout.json",
-          "state": "complete",
-          "editable_source": "reports/assets/inspection/mechanism-patch-distance.svg",
-          "caption_boundary": "illustrative mechanism view; no new experiment or inferred result.",
-          "url": "https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/mechanism-patch-distance.png"
         }
       ],
-      "article_sha256": "317b603408170bad83a0df67d06af0834ec1a1f44086392a44a9f84aab08ffaa"
+      "article_sha256": "c2fd15c59fb7fc899a1a0d35cf97fb21160f4d6ed9492928c493dccb29411f92"
     }
   },
   "validation": {

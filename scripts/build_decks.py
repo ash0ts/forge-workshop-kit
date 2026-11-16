@@ -180,6 +180,7 @@ def write_library_index(directory, available):
     reports = json.loads(catalog_path.read_text(encoding="utf-8"))["reports"] if catalog_path.exists() else {}
     shutil.copytree(ROOT / "skills/teenage-engineering-visualizations/assets/fonts", directory / "fonts", dirs_exist_ok=True)
     tokens = json.loads((ROOT / "skills/teenage-engineering-visualizations/assets/tokens.json").read_text(encoding="utf-8"))["colors"]
+    write_walkthrough_page(directory, tokens)
     links = []
     for row in available:
         slug = row["slug"]
@@ -232,7 +233,7 @@ def write_library_index(directory, available):
         'notebook into your own project to try it.</p>'
         '<p>These are technical previews. You can read the recorded results without running an experiment. '
         'Notebook execution uses your own project access and billing.</p>'
-        '<p><a href="https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0/forge-workshops-captioned.mp4">'
+        '<p><a href="walkthrough/">'
         'Watch the ten-minute captioned tour</a>: six customer problems, their code, and the saved Forge records.</p>'
         '<p>Current downloads are v0.12.0. Hosted templates remain v0.11.1 while the publisher’s notebook-management '
         'access is blocked. Use the source download and laptop instructions for the new direct ARIA controls.</p>'
@@ -246,6 +247,41 @@ def write_library_index(directory, available):
         '<a href="https://github.com/ash0ts/forge-workshop-kit">Source and contributor guide</a> · '
         '<a href="share/">Share a workshop</a> · '
         '<a href="visual-language/">Reusable visual guides</a></footer></html>',
+        encoding="utf-8",
+    )
+
+
+def write_walkthrough_page(directory, tokens):
+    """Keep playback on the public site; release assets remain the download source."""
+    destination = directory / "walkthrough"
+    destination.mkdir(parents=True, exist_ok=True)
+    release = "https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.12.0"
+    (destination / "index.html").write_text(
+        '<!doctype html><html lang="en"><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width,initial-scale=1">'
+        '<title>Watch the workshop tour · Forge Workshop Kit</title><style>'
+        '@font-face{font-family:"IBM Plex Sans";src:url("../fonts/ibm-plex-sans-latin-400-normal.woff2");font-weight:400}'
+        '@font-face{font-family:"IBM Plex Mono";src:url("../fonts/ibm-plex-mono-latin-400-normal.woff2");font-weight:400}'
+        f':root{{--paper:{tokens["paper"]};--ink:{tokens["ink"]};--line:{tokens["line"]};--accent:{tokens["accent"]}}}'
+        'body{font:19px/1.5 "IBM Plex Sans",system-ui;max-width:1120px;margin:3rem auto;padding:0 1.5rem;'
+        'color:var(--ink);background:var(--paper)}h1{font-size:clamp(32px,5vw,58px);line-height:1.1;font-weight:500}'
+        'a{color:inherit;text-underline-offset:4px}a:focus-visible,video:focus-visible{outline:3px solid var(--accent);outline-offset:4px}'
+        '.number{font:14px "IBM Plex Mono",monospace}video{width:100%;height:auto;aspect-ratio:16/9;background:#202220;display:block}'
+        '.downloads{border-top:1px solid var(--line);padding-top:20px}p{max-width:850px}'
+        '@media(max-width:650px){body{margin:2rem auto}}</style>'
+        '<p class="number"><a href="../">FORGE / WORKSHOP KIT</a></p><h1>Watch the workshop tour</h1>'
+        '<p>A ten-minute tour of six customer problems, the exercises, and their saved Forge records. '
+        'The video is silent, with captions. It shows recorded work and controlled teaching examples.</p>'
+        f'<video controls playsinline preload="metadata" aria-label="Captioned workshop tour">'
+        f'<source src="{release}/forge-workshops-captioned.mp4" type="video/mp4">'
+        f'Your browser cannot play this video. <a href="{release}/forge-workshops-captioned.mp4">Download the captioned MP4</a>.'
+        '</video><p>If playback is unavailable, download the MP4 or read the script below.</p>'
+        '<p class="downloads">'
+        f'<a href="{release}/forge-workshops-captioned.mp4" download>Captioned MP4</a> · '
+        f'<a href="{release}/forge-workshops-clean.mp4" download>Video for voice-over</a> · '
+        f'<a href="{release}/forge-workshops.srt" download>Timed captions (SRT)</a> · '
+        '<a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/media/walkthrough/narration.md">Read the script</a>'
+        '</p><p><a href="../">Choose a workshop</a> · <a href="../packet/docs/facilitator-start.html">Run a session</a></p></html>',
         encoding="utf-8",
     )
 
