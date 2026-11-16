@@ -30,7 +30,7 @@ if (mode === 'markdown') {
       tokens[idx].attrSet('id', content.toLowerCase().replace(/[^\p{L}\p{N}\s-]/gu, '').replace(/\s+/g, '-'))
       return self.renderToken(tokens, idx, opts)
     }
-    result[doc.id || doc.path] = md.render(doc.text)
+    result[doc.id || doc.path] = md.render(doc.text).replaceAll('<pre>', '<pre tabindex="0" aria-label="Code example">').replaceAll('<table>', '<table tabindex="0">')
   }
   process.stdout.write(JSON.stringify(result))
 } else if (mode === 'pdf') {
