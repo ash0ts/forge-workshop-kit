@@ -1,8 +1,8 @@
 {
-  "source_sha256": "76e1e66ea121081582f10e6e84a784746891062e907f981f3ea5d8134df181b8",
+  "source_sha256": "0033169ff95185e8d49ff1d21afea1177b94d2d648aa4a00188bc4d9824fff3d",
   "preflight_only": false,
-  "slides_checked": 101,
-  "expected_slides": 101,
+  "slides_checked": 102,
+  "expected_slides": 102,
   "titles": [
     {
       "number": 1,
@@ -62,7 +62,7 @@
     {
       "number": 12,
       "key": "copy",
-      "title": "Copy the notebook into your own project."
+      "title": "Open the materials and copy the notebook"
     },
     {
       "number": 13,
@@ -486,26 +486,31 @@
     },
     {
       "number": 97,
+      "key": "workshop-take-home",
+      "title": "Keep the notebook and workshop materials"
+    },
+    {
+      "number": 98,
       "key": "answer-tool",
       "title": "Worked answer · invoice lookup"
     },
     {
-      "number": 98,
+      "number": 99,
       "key": "answer-loop",
       "title": "Worked answer · observation handoff"
     },
     {
-      "number": 99,
+      "number": 100,
       "key": "answer-scorer",
       "title": "Worked answer · inspect the refund"
     },
     {
-      "number": 100,
+      "number": 101,
       "key": "answer-judge",
       "title": "Worked answer · validate the judge response"
     },
     {
-      "number": 101,
+      "number": 102,
       "key": "sources",
       "title": "Source, notebook, and recorded example"
     }
@@ -1581,6 +1586,10 @@
     {
       "slide": 101,
       "click": 0
+    },
+    {
+      "slide": 102,
+      "click": 0
     }
   ],
   "issues": [],
@@ -1589,21 +1598,21 @@
   "answers": [
     {
       "slide": 21,
-      "destination": "/forge-workshop-kit/pending/97",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 29,
       "destination": "/forge-workshop-kit/pending/98",
       "keyboardReturn": true
     },
     {
-      "slide": 50,
+      "slide": 29,
       "destination": "/forge-workshop-kit/pending/99",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 50,
+      "destination": "/forge-workshop-kit/pending/100",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 407,
+  "routes_checked": 411,
   "recording_links_checked": 8,
   "presenter_notes": true
 }

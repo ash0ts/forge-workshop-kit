@@ -31,7 +31,7 @@ The first command generates packaged notebook frames and deck assets. The second
 
 Notebook views read bundled frames and use native display controls. The slide adapter reveals the same drawings and code excerpts. On a narrow notebook screen, the drawing remains available in a scrollable region with a text explanation below. Display state is independent of experiment records, so changing a frame or reopening a guide cannot execute or invalidate an experiment.
 
-Posters have two layouts: a digital overview and an A2 print version. The library links the Report, notebook, deck, and poster for each workshop. QR destinations use stable library anchors rather than expiring execution URLs.
+Posters have two layouts: a digital overview and an A2 print version. The library links the Report, notebook, deck, and poster for each workshop. QR codes use the [managed sharing links](share-links.md), which open the corresponding workshop card in the public packet.
 
 ## Recurring workshop settings
 

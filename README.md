@@ -8,6 +8,8 @@ Participants copy a notebook into their own project and use their own credential
 
 For a meeting or Slack thread, use the [briefing packet and message copy](docs/sharing.md). Choose a [package for reading, demonstrating, running, or adapting a workshop](docs/use-the-workshops.md) for the relevant Report, deck, notebook, and next action.
 
+Download the [QR codes and tracked sharing links](https://ash0ts.github.io/forge-workshop-kit/share/) for invitations, slides, and handouts. The [sharing guide](docs/share-links.md) explains placement and tracking.
+
 ## Choose your workshop
 
 The durations include coding, discussion, and breaks. Participants should be comfortable reading basic Python.

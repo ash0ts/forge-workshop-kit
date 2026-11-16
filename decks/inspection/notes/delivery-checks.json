@@ -1,8 +1,8 @@
 {
-  "source_sha256": "4a7329f643b49e556f507f01b74e4b9384ad42effa3253f8004e1f137d28b2e4",
+  "source_sha256": "845fdd1648031b9ea551b054f261c78bd2e16d9a12b1c9bec9288007e27f58f7",
   "preflight_only": false,
-  "slides_checked": 60,
-  "expected_slides": 60,
+  "slides_checked": 62,
+  "expected_slides": 62,
   "titles": [
     {
       "number": 1,
@@ -46,261 +46,271 @@
     },
     {
       "number": 9,
+      "key": "workshop-start",
+      "title": "Open the materials and copy the notebook"
+    },
+    {
+      "number": 10,
       "key": "connect",
       "title": "Connect to your own experiment"
     },
     {
-      "number": 10,
+      "number": 11,
       "key": "trace-code",
       "title": "The trace describes a call that actually ran"
     },
     {
-      "number": 11,
+      "number": 12,
       "key": "inspect",
       "title": "Inspect one board before revealing its label"
     },
     {
-      "number": 12,
+      "number": 13,
       "key": "encoder",
       "title": "Reuse a fixed image encoder"
     },
     {
-      "number": 13,
+      "number": 14,
       "key": "classifier",
       "title": "Fit a first detector on whole-image features"
     },
     {
-      "number": 14,
+      "number": 15,
       "key": "fit-operation",
       "title": "Fit on training boards; measure on validation boards"
     },
     {
-      "number": 15,
+      "number": 16,
       "key": "threshold",
       "title": "Choose a threshold from validation data"
     },
     {
-      "number": 16,
+      "number": 17,
       "key": "validation-cutoff",
       "title": "Require 11 of the 12 validation defects to be caught"
     },
     {
-      "number": 17,
+      "number": 18,
       "key": "threshold-exercise",
       "title": "Implement the validation threshold"
     },
     {
-      "number": 18,
+      "number": 19,
       "key": "baseline-observation",
       "title": "Inspect a baseline miss or false alarm"
     },
     {
-      "number": 19,
+      "number": 20,
       "key": "aria-investigate",
       "title": "Investigate this result"
     },
     {
-      "number": 20,
+      "number": 21,
       "key": "aria-investigate-response",
       "title": "Read one claim in the recorded response"
     },
     {
-      "number": 21,
+      "number": 22,
       "key": "aria-investigate-verify",
       "title": "Open the source and check that claim"
     },
     {
-      "number": 22,
+      "number": 23,
       "key": "patch-grid",
       "title": "Compare whole-image and patch features"
     },
     {
-      "number": 23,
+      "number": 24,
       "key": "patches",
       "title": "Compare local features at the same board position"
     },
     {
-      "number": 24,
+      "number": 25,
       "key": "one-patch-distance",
       "title": "Calculate one location’s distance"
     },
     {
-      "number": 25,
+      "number": 26,
       "key": "append-patches",
       "title": "Append 196 distances to the 512 whole-image values"
     },
     {
-      "number": 26,
+      "number": 27,
       "key": "features",
       "title": "Add local information to the classifier"
     },
     {
-      "number": 27,
+      "number": 28,
       "key": "cache",
       "title": "Check the feature cache without rebuilding everything"
     },
     {
-      "number": 28,
+      "number": 29,
       "key": "patch-experiment",
       "title": "Test patches against the saved baseline"
     },
     {
-      "number": 29,
+      "number": 30,
       "key": "metrics",
       "title": "Keep ranking quality and operating errors separate"
     },
     {
-      "number": 30,
+      "number": 31,
       "key": "ranking-ap",
       "title": "Calculate ranking quality before choosing one cutoff"
     },
     {
-      "number": 31,
+      "number": 32,
       "key": "operating-errors",
       "title": "Count operating errors at the chosen cutoff"
     },
     {
-      "number": 32,
+      "number": 33,
       "key": "forge",
       "title": "Follow one trained classifier through Forge"
     },
     {
-      "number": 33,
+      "number": 34,
       "key": "forge-training",
       "title": "Read the recorded training call"
     },
     {
-      "number": 34,
+      "number": 35,
       "key": "training-evidence",
       "title": "Match the tool call to the saved validation result"
     },
     {
-      "number": 35,
+      "number": 36,
       "key": "break",
       "title": "Take ten minutes. Return at 2:20."
     },
     {
-      "number": 36,
+      "number": 37,
       "key": "active-selection",
       "title": "Compare equal labeling budgets"
     },
     {
-      "number": 37,
+      "number": 38,
       "key": "random-control",
       "title": "Give random selection the same labeling budget"
     },
     {
-      "number": 38,
+      "number": 39,
       "key": "review",
       "title": "Choose where the review time goes"
     },
     {
-      "number": 39,
+      "number": 40,
       "key": "human",
       "title": "Save what the reviewer actually decided"
     },
     {
-      "number": 40,
+      "number": 41,
       "key": "review-fit",
       "title": "Train with the additional labels"
     },
     {
-      "number": 41,
+      "number": 42,
       "key": "freeze",
       "title": "Choose before opening the final results"
     },
     {
-      "number": 42,
+      "number": 43,
       "key": "detector-bundle",
       "title": "Freeze the preprocessing and reference bank too"
     },
     {
-      "number": 43,
+      "number": 44,
       "key": "break-two",
       "title": "Take ten minutes. Return at 3:30."
     },
     {
-      "number": 44,
+      "number": 45,
       "key": "final",
       "title": "Evaluate the same 442 boards"
     },
     {
-      "number": 45,
+      "number": 46,
       "key": "native-comparison",
       "title": "Compare four detectors on the same boards"
     },
     {
-      "number": 46,
+      "number": 47,
       "key": "native-board",
       "title": "Inspect the board behind a prediction"
     },
     {
-      "number": 47,
+      "number": 48,
       "key": "failure",
       "title": "The first worked recipe did not pass its gate"
     },
     {
-      "number": 48,
+      "number": 49,
       "key": "retest",
       "title": "The bounded follow-up improved this teaching retest"
     },
     {
-      "number": 49,
+      "number": 50,
       "key": "improved-case",
       "title": "Inspect a recovered defect and a new miss"
     },
     {
-      "number": 50,
+      "number": 51,
       "key": "regression",
       "title": "Inspect a new miss too"
     },
     {
-      "number": 51,
+      "number": 52,
       "key": "aria-conclusion",
       "title": "Check our conclusion"
     },
     {
-      "number": 52,
+      "number": 53,
       "key": "aria-conclusion-response",
       "title": "Read one claim in the recorded response"
     },
     {
-      "number": 53,
+      "number": 54,
       "key": "aria-conclusion-verify",
       "title": "Open the source and check that claim"
     },
     {
-      "number": 54,
+      "number": 55,
       "key": "reproduce",
       "title": "Reload the version you chose"
     },
     {
-      "number": 55,
+      "number": 56,
       "key": "reload-detector",
       "title": "Recover every component of the detector"
     },
     {
-      "number": 56,
+      "number": 57,
       "key": "release",
       "title": "A tested artifact can become the next release"
     },
     {
-      "number": 57,
+      "number": 58,
       "key": "conclusion",
       "title": "Write down the decision you would make"
     },
     {
-      "number": 58,
+      "number": 59,
+      "key": "workshop-take-home",
+      "title": "Keep the notebook and workshop materials"
+    },
+    {
+      "number": 60,
       "key": "answer-features",
       "title": "Worked answer: assemble the local features"
     },
     {
-      "number": 59,
+      "number": 61,
       "key": "answer-threshold",
       "title": "Worked answer: meet the validation recall target"
     },
     {
-      "number": 60,
+      "number": 62,
       "key": "answer-review",
       "title": "Worked answer: choose uncertain cases"
     }
@@ -458,20 +468,20 @@
       "click": 0
     },
     {
-      "slide": 10,
-      "click": 1
-    },
-    {
-      "slide": 10,
-      "click": 2
-    },
-    {
-      "slide": 10,
-      "click": 3
+      "slide": 11,
+      "click": 0
     },
     {
       "slide": 11,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 11,
+      "click": 2
+    },
+    {
+      "slide": 11,
+      "click": 3
     },
     {
       "slide": 12,
@@ -482,19 +492,23 @@
       "click": 0
     },
     {
-      "slide": 13,
-      "click": 1
-    },
-    {
-      "slide": 13,
-      "click": 2
-    },
-    {
       "slide": 14,
       "click": 0
     },
     {
+      "slide": 14,
+      "click": 1
+    },
+    {
+      "slide": 14,
+      "click": 2
+    },
+    {
       "slide": 15,
+      "click": 0
+    },
+    {
+      "slide": 16,
       "click": 0,
       "technical_guide": {
         "present": true,
@@ -511,7 +525,7 @@
       }
     },
     {
-      "slide": 15,
+      "slide": 16,
       "click": 1,
       "technical_guide": {
         "present": true,
@@ -528,7 +542,7 @@
       }
     },
     {
-      "slide": 15,
+      "slide": 16,
       "click": 2,
       "technical_guide": {
         "present": true,
@@ -545,7 +559,7 @@
       }
     },
     {
-      "slide": 15,
+      "slide": 16,
       "click": 3,
       "technical_guide": {
         "present": true,
@@ -560,10 +574,6 @@
         "frameIndex": 3,
         "frameCount": 4
       }
-    },
-    {
-      "slide": 16,
-      "click": 0
     },
     {
       "slide": 17,
@@ -587,6 +597,10 @@
     },
     {
       "slide": 22,
+      "click": 0
+    },
+    {
+      "slide": 23,
       "click": 0,
       "technical_guide": {
         "present": true,
@@ -603,7 +617,7 @@
       }
     },
     {
-      "slide": 22,
+      "slide": 23,
       "click": 1,
       "technical_guide": {
         "present": true,
@@ -620,7 +634,7 @@
       }
     },
     {
-      "slide": 22,
+      "slide": 23,
       "click": 2,
       "technical_guide": {
         "present": true,
@@ -637,7 +651,7 @@
       }
     },
     {
-      "slide": 22,
+      "slide": 23,
       "click": 3,
       "technical_guide": {
         "present": true,
@@ -654,7 +668,7 @@
       }
     },
     {
-      "slide": 22,
+      "slide": 23,
       "click": 4,
       "technical_guide": {
         "present": true,
@@ -671,11 +685,11 @@
       }
     },
     {
-      "slide": 23,
+      "slide": 24,
       "click": 0
     },
     {
-      "slide": 24,
+      "slide": 25,
       "click": 0,
       "technical_guide": {
         "present": true,
@@ -692,7 +706,7 @@
       }
     },
     {
-      "slide": 24,
+      "slide": 25,
       "click": 1,
       "technical_guide": {
         "present": true,
@@ -709,7 +723,7 @@
       }
     },
     {
-      "slide": 24,
+      "slide": 25,
       "click": 2,
       "technical_guide": {
         "present": true,
@@ -726,7 +740,7 @@
       }
     },
     {
-      "slide": 24,
+      "slide": 25,
       "click": 3,
       "technical_guide": {
         "present": true,
@@ -743,7 +757,7 @@
       }
     },
     {
-      "slide": 24,
+      "slide": 25,
       "click": 4,
       "technical_guide": {
         "present": true,
@@ -758,10 +772,6 @@
         "frameIndex": 4,
         "frameCount": 5
       }
-    },
-    {
-      "slide": 25,
-      "click": 0
     },
     {
       "slide": 26,
@@ -805,6 +815,10 @@
     },
     {
       "slide": 36,
+      "click": 0
+    },
+    {
+      "slide": 37,
       "click": 0,
       "technical_guide": {
         "present": true,
@@ -821,7 +835,7 @@
       }
     },
     {
-      "slide": 36,
+      "slide": 37,
       "click": 1,
       "technical_guide": {
         "present": true,
@@ -838,7 +852,7 @@
       }
     },
     {
-      "slide": 36,
+      "slide": 37,
       "click": 2,
       "technical_guide": {
         "present": true,
@@ -855,7 +869,7 @@
       }
     },
     {
-      "slide": 36,
+      "slide": 37,
       "click": 3,
       "technical_guide": {
         "present": true,
@@ -872,15 +886,15 @@
       }
     },
     {
-      "slide": 37,
-      "click": 0
-    },
-    {
       "slide": 38,
       "click": 0
     },
     {
       "slide": 39,
+      "click": 0
+    },
+    {
+      "slide": 40,
       "click": 0,
       "workshop_scene": {
         "id": "inspection/build",
@@ -895,12 +909,8 @@
       }
     },
     {
-      "slide": 39,
-      "click": 1
-    },
-    {
       "slide": 40,
-      "click": 0
+      "click": 1
     },
     {
       "slide": 41,
@@ -927,12 +937,12 @@
       "click": 0
     },
     {
-      "slide": 46,
-      "click": 1
+      "slide": 47,
+      "click": 0
     },
     {
       "slide": 47,
-      "click": 0
+      "click": 1
     },
     {
       "slide": 48,
@@ -940,6 +950,10 @@
     },
     {
       "slide": 49,
+      "click": 0
+    },
+    {
+      "slide": 50,
       "click": 0,
       "technical_guide": {
         "present": true,
@@ -956,7 +970,7 @@
       }
     },
     {
-      "slide": 49,
+      "slide": 50,
       "click": 1,
       "technical_guide": {
         "present": true,
@@ -973,7 +987,7 @@
       }
     },
     {
-      "slide": 49,
+      "slide": 50,
       "click": 2,
       "technical_guide": {
         "present": true,
@@ -990,7 +1004,7 @@
       }
     },
     {
-      "slide": 49,
+      "slide": 50,
       "click": 3,
       "technical_guide": {
         "present": true,
@@ -1007,7 +1021,7 @@
       }
     },
     {
-      "slide": 50,
+      "slide": 51,
       "click": 0,
       "workshop_scene": {
         "id": "inspection/compare",
@@ -1022,12 +1036,8 @@
       }
     },
     {
-      "slide": 50,
-      "click": 1
-    },
-    {
       "slide": 51,
-      "click": 0
+      "click": 1
     },
     {
       "slide": 52,
@@ -1043,6 +1053,10 @@
     },
     {
       "slide": 55,
+      "click": 0
+    },
+    {
+      "slide": 56,
       "click": 0,
       "technical_guide": {
         "present": true,
@@ -1059,7 +1073,7 @@
       }
     },
     {
-      "slide": 55,
+      "slide": 56,
       "click": 1,
       "technical_guide": {
         "present": true,
@@ -1076,7 +1090,7 @@
       }
     },
     {
-      "slide": 55,
+      "slide": 56,
       "click": 2,
       "technical_guide": {
         "present": true,
@@ -1093,7 +1107,7 @@
       }
     },
     {
-      "slide": 55,
+      "slide": 56,
       "click": 3,
       "technical_guide": {
         "present": true,
@@ -1110,7 +1124,7 @@
       }
     },
     {
-      "slide": 55,
+      "slide": 56,
       "click": 4,
       "technical_guide": {
         "present": true,
@@ -1127,11 +1141,11 @@
       }
     },
     {
-      "slide": 56,
+      "slide": 57,
       "click": 0
     },
     {
-      "slide": 57,
+      "slide": 58,
       "click": 0,
       "workshop_scene": {
         "id": "inspection/release",
@@ -1146,12 +1160,8 @@
       }
     },
     {
-      "slide": 57,
-      "click": 1
-    },
-    {
       "slide": 58,
-      "click": 0
+      "click": 1
     },
     {
       "slide": 59,
@@ -1160,6 +1170,14 @@
     {
       "slide": 60,
       "click": 0
+    },
+    {
+      "slide": 61,
+      "click": 0
+    },
+    {
+      "slide": 62,
+      "click": 0
     }
   ],
   "issues": [],
@@ -1167,22 +1185,22 @@
   "failed_responses": [],
   "answers": [
     {
-      "slide": 17,
-      "destination": "/forge-workshop-kit/inspection/59",
+      "slide": 18,
+      "destination": "/forge-workshop-kit/inspection/61",
       "keyboardReturn": true
     },
     {
-      "slide": 26,
-      "destination": "/forge-workshop-kit/inspection/58",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 38,
+      "slide": 27,
       "destination": "/forge-workshop-kit/inspection/60",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 39,
+      "destination": "/forge-workshop-kit/inspection/62",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 243,
+  "routes_checked": 251,
   "recording_links_checked": 8,
   "presenter_notes": true
 }

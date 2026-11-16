@@ -7,6 +7,7 @@ Start with the [repository README](../README.md) to choose a workshop. Use this 
 | Need | Read |
 | --- | --- |
 | Introduce the work in a meeting or share a Slack message | [Meeting and sharing packet](sharing.md) |
+| Download a QR code or use a tracked workshop link | [Sharing links and placement](share-links.md) |
 | Prepare and lead a session | [Facilitator start guide](facilitator-start.md), with a short running guide for each deck |
 | Choose materials for a reader, demo, hands-on pilot, or new workshop | [Use the workshop materials](use-the-workshops.md) |
 | Learn from a worked example before opening the notebook | [Public learning Reports](../reports/README.md) |

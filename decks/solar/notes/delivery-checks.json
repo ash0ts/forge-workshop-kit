@@ -1,8 +1,8 @@
 {
-  "source_sha256": "925bf5d69da919479ecfb6e8d3c649eb955820ee743ed312fd3edc410659daf6",
+  "source_sha256": "6e16f51a0650f8ae22bc6e6a767067cc1be9f3d9993339032cd15a096218f013",
   "preflight_only": false,
-  "slides_checked": 130,
-  "expected_slides": 130,
+  "slides_checked": 131,
+  "expected_slides": 131,
   "titles": [
     {
       "number": 1,
@@ -37,7 +37,7 @@
     {
       "number": 7,
       "key": "copy",
-      "title": "Copy the notebook into your Forge project"
+      "title": "Open the materials and copy the notebook"
     },
     {
       "number": 8,
@@ -571,86 +571,91 @@
     },
     {
       "number": 114,
+      "key": "workshop-take-home",
+      "title": "Keep the notebook and workshop materials"
+    },
+    {
+      "number": 115,
       "key": "reference",
       "title": "Reference and worked answers"
     },
     {
-      "number": 115,
+      "number": 116,
       "key": "answer-trace",
       "title": "Put the attribute inside the tool scope"
     },
     {
-      "number": 116,
+      "number": 117,
       "key": "answer-persistence",
       "title": "Return a copy of the latest observation"
     },
     {
-      "number": 117,
+      "number": 118,
       "key": "answer-flux",
       "title": "Implement the training loss and forecast metric"
     },
     {
-      "number": 118,
+      "number": 119,
       "key": "answer-search",
       "title": "Compare the settings and loss curves"
     },
     {
-      "number": 119,
+      "number": 120,
       "key": "goes-repair-code",
       "title": "Let the model learn a correction to persistence"
     },
     {
-      "number": 120,
+      "number": 121,
       "key": "answer-images",
       "title": "Average the error inside the disk mask"
     },
     {
-      "number": 121,
+      "number": 122,
       "key": "answer-residual",
       "title": "Add the correction to input channel 1"
     },
     {
-      "number": 122,
+      "number": 123,
       "key": "answer-evidence",
       "title": "Return validation evidence only"
     },
     {
-      "number": 123,
+      "number": 124,
       "key": "answer-controller",
       "title": "Pass the candidate’s code to training"
     },
     {
-      "number": 124,
+      "number": 125,
       "key": "answer-final",
       "title": "Use the saved model without training it again"
     },
     {
-      "number": 125,
+      "number": 126,
       "key": "recorded-edit",
       "title": "Round 1: absolute loss versus the unchanged model"
     },
     {
-      "number": 126,
+      "number": 127,
       "key": "recorded-keep",
       "title": "Round 2: sampling without replacement did not reduce error"
     },
     {
-      "number": 127,
+      "number": 128,
       "key": "recorded-lens",
       "title": "Open the recorded research conversation"
     },
     {
-      "number": 128,
+      "number": 129,
       "key": "recovery",
       "title": "When a service is unavailable"
     },
     {
-      "number": 129,
+      "number": 130,
       "key": "schedule",
       "title": "Six-hour session with three breaks"
     },
     {
-      "number": 130,
+      "number": 131,
       "key": "links",
       "title": "Keep working in your own project"
     }
@@ -2044,20 +2049,20 @@
       "click": 0
     },
     {
-      "slide": 119,
-      "click": 1
-    },
-    {
-      "slide": 119,
-      "click": 2
-    },
-    {
-      "slide": 119,
-      "click": 3
+      "slide": 120,
+      "click": 0
     },
     {
       "slide": 120,
-      "click": 0
+      "click": 1
+    },
+    {
+      "slide": 120,
+      "click": 2
+    },
+    {
+      "slide": 120,
+      "click": 3
     },
     {
       "slide": 121,
@@ -2098,6 +2103,10 @@
     {
       "slide": 130,
       "click": 0
+    },
+    {
+      "slide": 131,
+      "click": 0
     }
   ],
   "issues": [],
@@ -2106,51 +2115,51 @@
   "answers": [
     {
       "slide": 12,
-      "destination": "/forge-workshop-kit/solar/115",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 25,
       "destination": "/forge-workshop-kit/solar/116",
       "keyboardReturn": true
     },
     {
-      "slide": 45,
+      "slide": 25,
       "destination": "/forge-workshop-kit/solar/117",
       "keyboardReturn": true
     },
     {
-      "slide": 50,
+      "slide": 45,
       "destination": "/forge-workshop-kit/solar/118",
       "keyboardReturn": true
     },
     {
-      "slide": 51,
+      "slide": 50,
       "destination": "/forge-workshop-kit/solar/119",
       "keyboardReturn": true
     },
     {
-      "slide": 68,
+      "slide": 51,
       "destination": "/forge-workshop-kit/solar/120",
       "keyboardReturn": true
     },
     {
-      "slide": 78,
-      "destination": "/forge-workshop-kit/solar/122",
+      "slide": 68,
+      "destination": "/forge-workshop-kit/solar/121",
       "keyboardReturn": true
     },
     {
-      "slide": 93,
+      "slide": 78,
       "destination": "/forge-workshop-kit/solar/123",
       "keyboardReturn": true
     },
     {
-      "slide": 99,
+      "slide": 93,
       "destination": "/forge-workshop-kit/solar/124",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 99,
+      "destination": "/forge-workshop-kit/solar/125",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 523,
+  "routes_checked": 527,
   "recording_links_checked": 8,
   "presenter_notes": true
 }

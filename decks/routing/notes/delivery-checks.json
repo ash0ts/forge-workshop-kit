@@ -1,8 +1,8 @@
 {
-  "source_sha256": "1afe61bd4a33dad2089cc40734764fbf91be8febd365d463ede1b3262f3aab26",
+  "source_sha256": "5dc4de8dadefcc507b6445c00f4ce49d37a460f937e6e7d1c58811e05fb0fd9f",
   "preflight_only": false,
-  "slides_checked": 79,
-  "expected_slides": 79,
+  "slides_checked": 81,
+  "expected_slides": 81,
   "titles": [
     {
       "number": 1,
@@ -41,361 +41,371 @@
     },
     {
       "number": 8,
+      "key": "workshop-start",
+      "title": "Open the materials and copy the notebook"
+    },
+    {
+      "number": 9,
       "key": "connect",
       "title": "Open your copy and add your first trace"
     },
     {
-      "number": 9,
+      "number": 10,
       "key": "trace",
       "title": "The span should explain the operation"
     },
     {
-      "number": 10,
+      "number": 11,
       "key": "words",
       "title": "Start with a word-based classifier"
     },
     {
-      "number": 11,
+      "number": 12,
       "key": "word-vector",
       "title": "Turn one message into classifier input"
     },
     {
-      "number": 12,
+      "number": 13,
       "key": "classifier-exercise",
       "title": "Implement the classifier head"
     },
     {
-      "number": 13,
+      "number": 14,
       "key": "baseline-observation",
       "title": "Read one prediction before comparing models"
     },
     {
-      "number": 14,
+      "number": 15,
       "key": "aria-investigate",
       "title": "Investigate this result"
     },
     {
-      "number": 15,
+      "number": 16,
       "key": "aria-investigate-response",
       "title": "Read one claim in the recorded response"
     },
     {
-      "number": 16,
+      "number": 17,
       "key": "aria-investigate-verify",
       "title": "Open the source and check that claim"
     },
     {
-      "number": 17,
+      "number": 18,
       "key": "embeddings",
       "title": "Then change the representation"
     },
     {
-      "number": 18,
+      "number": 19,
       "key": "sentence-vector",
       "title": "Keep one vector for each request"
     },
     {
-      "number": 19,
+      "number": 20,
       "key": "construct-head",
       "title": "Construct the estimator before fitting it"
     },
     {
-      "number": 20,
+      "number": 21,
       "key": "fit-head",
       "title": "Fit the head on the labeled training rows"
     },
     {
-      "number": 21,
+      "number": 22,
       "key": "predict-probabilities",
       "title": "A fitted classifier returns 77 probabilities"
     },
     {
-      "number": 22,
+      "number": 23,
       "key": "alternative-exercise",
       "title": "Test the sentence-feature alternative"
     },
     {
-      "number": 23,
+      "number": 24,
       "key": "macro-f1",
       "title": "Macro-F1 gives each intent equal weight"
     },
     {
-      "number": 24,
+      "number": 25,
       "key": "intent-counts",
       "title": "Calculate F1 for each intent before averaging"
     },
     {
-      "number": 25,
+      "number": 26,
       "key": "intent-average",
       "title": "Calculate F1, then average across intents"
     },
     {
-      "number": 26,
+      "number": 27,
       "key": "recorded-gain",
       "title": "The worked comparison reduced routing mistakes"
     },
     {
-      "number": 27,
+      "number": 28,
       "key": "deferral",
       "title": "A router can also ask a person"
     },
     {
-      "number": 28,
+      "number": 29,
       "key": "threshold-policy",
       "title": "Choose a route, then decide whether to review it"
     },
     {
-      "number": 29,
+      "number": 30,
       "key": "review-margin",
       "title": "Choose labeling candidates by their top-two margin"
     },
     {
-      "number": 30,
+      "number": 31,
       "key": "policy-exercise",
       "title": "Write the rule that sends a request to review"
     },
     {
-      "number": 31,
+      "number": 32,
       "key": "review-case",
       "title": "Read the disagreement before declaring failure"
     },
     {
-      "number": 32,
+      "number": 33,
       "key": "review-exercise",
       "title": "Save labels someone can trace back to a decision"
     },
     {
-      "number": 33,
+      "number": 34,
       "key": "review-provenance",
       "title": "Turn a reviewed mistake into a training example"
     },
     {
-      "number": 34,
+      "number": 35,
       "key": "break-one",
       "title": "Take ten minutes. Return at 2:20."
     },
     {
-      "number": 35,
+      "number": 36,
       "key": "typed-route",
       "title": "A prompted model returns a typed decision"
     },
     {
-      "number": 36,
+      "number": 37,
       "key": "two-model-tasks",
       "title": "The judge reviews a route in a separate call"
     },
     {
-      "number": 37,
+      "number": 38,
       "key": "prompted-exercise",
       "title": "Inspect eight actual model routes"
     },
     {
-      "number": 38,
+      "number": 39,
       "key": "judge-purpose",
       "title": "Check the automated reviewer against people"
     },
     {
-      "number": 39,
+      "number": 40,
       "key": "judge-evidence",
       "title": "Keep the accepted label out of the judge prompt"
     },
     {
-      "number": 40,
+      "number": 41,
       "key": "validator-exercise",
       "title": "Implement the judge response check"
     },
     {
-      "number": 41,
+      "number": 42,
       "key": "recorded-judge",
       "title": "The judge disagreed with the dataset label"
     },
     {
-      "number": 42,
+      "number": 43,
       "key": "review-dataset",
       "title": "Use reviewed data to run a new experiment"
     },
     {
-      "number": 43,
+      "number": 44,
       "key": "accepted-training",
       "title": "Refit the head with your accepted labels"
     },
     {
-      "number": 44,
+      "number": 45,
       "key": "retrain-exercise",
       "title": "Train with your accepted labels"
     },
     {
-      "number": 45,
+      "number": 46,
       "key": "break-two",
       "title": "Take ten minutes. Return at 3:40."
     },
     {
-      "number": 46,
+      "number": 47,
       "key": "freeze",
       "title": "Freeze what the final comparison will use"
     },
     {
-      "number": 47,
+      "number": 48,
       "key": "freeze-files",
       "title": "Save the transformations with the weights"
     },
     {
-      "number": 48,
+      "number": 49,
       "key": "final-exercise",
       "title": "Evaluate all matching test requests"
     },
     {
-      "number": 49,
+      "number": 50,
       "key": "aligned-requests",
       "title": "Compare matching requests, then the operating policy"
     },
     {
-      "number": 50,
+      "number": 51,
       "key": "native-comparison",
       "title": "Compare the same requests in Forge"
     },
     {
-      "number": 51,
+      "number": 52,
       "key": "native-row",
       "title": "Read one routing decision"
     },
     {
-      "number": 52,
+      "number": 53,
       "key": "release-break",
       "title": "Take ten minutes. Return at 4:05."
     },
     {
-      "number": 53,
+      "number": 54,
       "key": "release-request",
       "title": "The classifier works. Can another process use it?"
     },
     {
-      "number": 54,
+      "number": 55,
       "key": "release-bundle",
       "title": "Save what the predictor needs, then reload it"
     },
     {
-      "number": 55,
+      "number": 56,
       "key": "release-prepare-exercise",
       "title": "Load your selected version from its artifact"
     },
     {
-      "number": 56,
+      "number": 57,
       "key": "release-cohort",
       "title": "Choose the regression cases before predicting"
     },
     {
-      "number": 57,
+      "number": 58,
       "key": "release-columns",
       "title": "Preserve the mapping between scores and intents"
     },
     {
-      "number": 58,
+      "number": 59,
       "key": "release-fault",
       "title": "Rotated labels send column 1 to another queue"
     },
     {
-      "number": 59,
+      "number": 60,
       "key": "release-incident-exercise",
       "title": "Find one request sent to the wrong queue"
     },
     {
-      "number": 60,
+      "number": 61,
       "key": "release-set-check",
       "title": "Checking the label set misses this defect"
     },
     {
-      "number": 61,
+      "number": 62,
       "key": "release-order-check",
       "title": "Check order before accepting the loaded model"
     },
     {
-      "number": 62,
+      "number": 63,
       "key": "release-repair-exercise",
       "title": "Repair the loader and write its regression check"
     },
     {
-      "number": 63,
+      "number": 64,
       "key": "release-parity",
       "title": "A repaired loader should reproduce the intact release"
     },
     {
-      "number": 64,
+      "number": 65,
       "key": "release-investigate",
       "title": "Compare three versions of the same request"
     },
     {
-      "number": 65,
+      "number": 66,
       "key": "release-decision-exercise",
       "title": "Decide whether this release passes its checks"
     },
     {
-      "number": 66,
+      "number": 67,
       "key": "release-rollback",
       "title": "Rollback reloads a version; it does not undo training"
     },
     {
-      "number": 67,
+      "number": 68,
       "key": "release-rollback-exercise",
       "title": "Restore the previous version and verify it"
     },
     {
-      "number": 68,
+      "number": 69,
       "key": "release-conclusion",
       "title": "Separate the model gain from the release repair"
     },
     {
-      "number": 69,
+      "number": 70,
       "key": "aria-conclusion",
       "title": "Check our conclusion"
     },
     {
-      "number": 70,
+      "number": 71,
       "key": "aria-conclusion-response",
       "title": "Read one claim in the recorded response"
     },
     {
-      "number": 71,
+      "number": 72,
       "key": "aria-conclusion-verify",
       "title": "Open the source and check that claim"
     },
     {
-      "number": 72,
+      "number": 73,
       "key": "report-exercise",
       "title": "Write the decision you would make"
     },
     {
-      "number": 73,
+      "number": 74,
       "key": "release",
       "title": "Optional: organize approved versions in Registry"
     },
     {
-      "number": 74,
+      "number": 75,
       "key": "close",
       "title": "What to take back to your team"
     },
     {
-      "number": 75,
+      "number": 76,
+      "key": "workshop-take-home",
+      "title": "Keep the notebook and workshop materials"
+    },
+    {
+      "number": 77,
       "key": "classifier-answer",
       "title": "Worked answer: classifier head"
     },
     {
-      "number": 76,
+      "number": 78,
       "key": "policy-answer",
       "title": "Worked answer: review policy"
     },
     {
-      "number": 77,
+      "number": 79,
       "key": "validator-answer",
       "title": "Worked answer: judge validator"
     },
     {
-      "number": 78,
+      "number": 80,
       "key": "release-repair-answer",
       "title": "Worked answer: preserve the probability-column order"
     },
     {
-      "number": 79,
+      "number": 81,
       "key": "sources",
       "title": "Sources and recorded evidence"
     }
@@ -553,19 +563,23 @@
       "click": 0
     },
     {
-      "slide": 9,
-      "click": 1
-    },
-    {
-      "slide": 9,
-      "click": 2
-    },
-    {
       "slide": 10,
       "click": 0
     },
     {
+      "slide": 10,
+      "click": 1
+    },
+    {
+      "slide": 10,
+      "click": 2
+    },
+    {
       "slide": 11,
+      "click": 0
+    },
+    {
+      "slide": 12,
       "click": 0,
       "technical_guide": {
         "present": true,
@@ -582,7 +596,7 @@
       }
     },
     {
-      "slide": 11,
+      "slide": 12,
       "click": 1,
       "technical_guide": {
         "present": true,
@@ -599,7 +613,7 @@
       }
     },
     {
-      "slide": 11,
+      "slide": 12,
       "click": 2,
       "technical_guide": {
         "present": true,
@@ -616,7 +630,7 @@
       }
     },
     {
-      "slide": 11,
+      "slide": 12,
       "click": 3,
       "technical_guide": {
         "present": true,
@@ -633,7 +647,7 @@
       }
     },
     {
-      "slide": 11,
+      "slide": 12,
       "click": 4,
       "technical_guide": {
         "present": true,
@@ -648,10 +662,6 @@
         "frameIndex": 4,
         "frameCount": 5
       }
-    },
-    {
-      "slide": 12,
-      "click": 0
     },
     {
       "slide": 13,
@@ -699,6 +709,10 @@
     },
     {
       "slide": 24,
+      "click": 0
+    },
+    {
+      "slide": 25,
       "click": 0,
       "technical_guide": {
         "present": true,
@@ -715,7 +729,7 @@
       }
     },
     {
-      "slide": 24,
+      "slide": 25,
       "click": 1,
       "technical_guide": {
         "present": true,
@@ -732,7 +746,7 @@
       }
     },
     {
-      "slide": 24,
+      "slide": 25,
       "click": 2,
       "technical_guide": {
         "present": true,
@@ -749,7 +763,7 @@
       }
     },
     {
-      "slide": 24,
+      "slide": 25,
       "click": 3,
       "technical_guide": {
         "present": true,
@@ -766,10 +780,6 @@
       }
     },
     {
-      "slide": 25,
-      "click": 0
-    },
-    {
       "slide": 26,
       "click": 0
     },
@@ -779,6 +789,10 @@
     },
     {
       "slide": 28,
+      "click": 0
+    },
+    {
+      "slide": 29,
       "click": 0,
       "technical_guide": {
         "present": true,
@@ -795,7 +809,7 @@
       }
     },
     {
-      "slide": 28,
+      "slide": 29,
       "click": 1,
       "technical_guide": {
         "present": true,
@@ -812,7 +826,7 @@
       }
     },
     {
-      "slide": 28,
+      "slide": 29,
       "click": 2,
       "technical_guide": {
         "present": true,
@@ -829,7 +843,7 @@
       }
     },
     {
-      "slide": 28,
+      "slide": 29,
       "click": 3,
       "technical_guide": {
         "present": true,
@@ -846,10 +860,6 @@
       }
     },
     {
-      "slide": 29,
-      "click": 0
-    },
-    {
       "slide": 30,
       "click": 0
     },
@@ -863,6 +873,10 @@
     },
     {
       "slide": 33,
+      "click": 0
+    },
+    {
+      "slide": 34,
       "click": 0,
       "technical_guide": {
         "present": true,
@@ -879,7 +893,7 @@
       }
     },
     {
-      "slide": 33,
+      "slide": 34,
       "click": 1,
       "technical_guide": {
         "present": true,
@@ -896,7 +910,7 @@
       }
     },
     {
-      "slide": 33,
+      "slide": 34,
       "click": 2,
       "technical_guide": {
         "present": true,
@@ -913,7 +927,7 @@
       }
     },
     {
-      "slide": 33,
+      "slide": 34,
       "click": 3,
       "technical_guide": {
         "present": true,
@@ -930,10 +944,6 @@
       }
     },
     {
-      "slide": 34,
-      "click": 0
-    },
-    {
       "slide": 35,
       "click": 0
     },
@@ -947,6 +957,10 @@
     },
     {
       "slide": 38,
+      "click": 0
+    },
+    {
+      "slide": 39,
       "click": 0,
       "technical_guide": {
         "present": true,
@@ -963,7 +977,7 @@
       }
     },
     {
-      "slide": 38,
+      "slide": 39,
       "click": 1,
       "technical_guide": {
         "present": true,
@@ -980,7 +994,7 @@
       }
     },
     {
-      "slide": 38,
+      "slide": 39,
       "click": 2,
       "technical_guide": {
         "present": true,
@@ -997,7 +1011,7 @@
       }
     },
     {
-      "slide": 38,
+      "slide": 39,
       "click": 3,
       "technical_guide": {
         "present": true,
@@ -1014,7 +1028,7 @@
       }
     },
     {
-      "slide": 38,
+      "slide": 39,
       "click": 4,
       "technical_guide": {
         "present": true,
@@ -1031,10 +1045,6 @@
       }
     },
     {
-      "slide": 39,
-      "click": 0
-    },
-    {
       "slide": 40,
       "click": 0
     },
@@ -1044,6 +1054,10 @@
     },
     {
       "slide": 42,
+      "click": 0
+    },
+    {
+      "slide": 43,
       "click": 0,
       "workshop_scene": {
         "id": "routing/build",
@@ -1058,12 +1072,8 @@
       }
     },
     {
-      "slide": 42,
-      "click": 1
-    },
-    {
       "slide": 43,
-      "click": 0
+      "click": 1
     },
     {
       "slide": 44,
@@ -1075,6 +1085,10 @@
     },
     {
       "slide": 46,
+      "click": 0
+    },
+    {
+      "slide": 47,
       "click": 0,
       "workshop_scene": {
         "id": "routing/compare",
@@ -1089,12 +1103,8 @@
       }
     },
     {
-      "slide": 46,
-      "click": 1
-    },
-    {
       "slide": 47,
-      "click": 0
+      "click": 1
     },
     {
       "slide": 48,
@@ -1134,6 +1144,10 @@
     },
     {
       "slide": 57,
+      "click": 0
+    },
+    {
+      "slide": 58,
       "click": 0,
       "technical_guide": {
         "present": true,
@@ -1150,7 +1164,7 @@
       }
     },
     {
-      "slide": 57,
+      "slide": 58,
       "click": 1,
       "technical_guide": {
         "present": true,
@@ -1167,7 +1181,7 @@
       }
     },
     {
-      "slide": 57,
+      "slide": 58,
       "click": 2,
       "technical_guide": {
         "present": true,
@@ -1184,7 +1198,7 @@
       }
     },
     {
-      "slide": 57,
+      "slide": 58,
       "click": 3,
       "technical_guide": {
         "present": true,
@@ -1201,7 +1215,7 @@
       }
     },
     {
-      "slide": 57,
+      "slide": 58,
       "click": 4,
       "technical_guide": {
         "present": true,
@@ -1216,10 +1230,6 @@
         "frameIndex": 4,
         "frameCount": 5
       }
-    },
-    {
-      "slide": 58,
-      "click": 0
     },
     {
       "slide": 59,
@@ -1283,6 +1293,10 @@
     },
     {
       "slide": 74,
+      "click": 0
+    },
+    {
+      "slide": 75,
       "click": 0,
       "workshop_scene": {
         "id": "routing/release",
@@ -1297,12 +1311,8 @@
       }
     },
     {
-      "slide": 74,
-      "click": 1
-    },
-    {
       "slide": 75,
-      "click": 0
+      "click": 1
     },
     {
       "slide": 76,
@@ -1319,6 +1329,14 @@
     {
       "slide": 79,
       "click": 0
+    },
+    {
+      "slide": 80,
+      "click": 0
+    },
+    {
+      "slide": 81,
+      "click": 0
     }
   ],
   "issues": [],
@@ -1326,27 +1344,27 @@
   "failed_responses": [],
   "answers": [
     {
-      "slide": 12,
-      "destination": "/forge-workshop-kit/routing/75",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 30,
-      "destination": "/forge-workshop-kit/routing/76",
-      "keyboardReturn": true
-    },
-    {
-      "slide": 40,
+      "slide": 13,
       "destination": "/forge-workshop-kit/routing/77",
       "keyboardReturn": true
     },
     {
-      "slide": 62,
+      "slide": 31,
       "destination": "/forge-workshop-kit/routing/78",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 41,
+      "destination": "/forge-workshop-kit/routing/79",
+      "keyboardReturn": true
+    },
+    {
+      "slide": 63,
+      "destination": "/forge-workshop-kit/routing/80",
       "keyboardReturn": true
     }
   ],
-  "routes_checked": 319,
+  "routes_checked": 327,
   "recording_links_checked": 8,
   "presenter_notes": true
 }
