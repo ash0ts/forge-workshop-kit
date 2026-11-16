@@ -2,7 +2,8 @@
 theme: default
 title: Find defective parts before they ship
 author: Anish Shah
-class: cover
+class: cover workshop-setting-slide
+clicks: 1
 layout: default
 aspectRatio: 16/9
 canvasWidth: 1280
@@ -25,12 +26,14 @@ exportFilename: visual-inspection
 
 # Find defective parts<br>before they ship
 
-<div class="sub">Use real circuit-board photos to compare detectors, review their mistakes, and save a version another engineer can reproduce.</div><div class="bottom-note">Four hours · CPU classifiers · your own Forge project</div>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="inspection/start"><img :src="&quot;/scenes/inspection/start.svg&quot;" alt="Circuit-board inspection: Follow one board from the bench into inspection. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><div class="sub">Use real circuit-board photos to compare detectors, review their mistakes, and save a version another engineer can reproduce.</div><div class="bottom-note">Four hours · CPU classifiers · your own Forge project</div></div>
 
 
 <!--
 The inspection team is fictional. The VisA PCB1 images, masks and recorded comparisons are real. Do not promise that every participant run improves.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 Source: notes/sources.md.
 -->
 
@@ -53,18 +56,22 @@ Source: notes/sources.md.
 -->
 
 ---
+class: workshop-setting-slide
+clicks: 1
 ---
 
 <div class="kicker">0:02</div>
 
 # The factory has two ways to waste a good morning
 
-<div class="two-col"><div class="box"><h2>A defect gets through</h2><p>A board with a missing or damaged component passes inspection.</p></div><div class="box"><h2>A good board gets held</h2><p>An inspector spends time checking a normal board that the detector rejected.</p></div></div><div class="bottom-note">Management has requested fewer of both. It has not supplied a third category called “probably fine.”</div>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="inspection/inspect"><img :src="&quot;/scenes/inspection/inspect.svg&quot;" alt="Circuit-board inspection: Catch defects without sending every normal board for review. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><div class="two-col"><div class="box"><h2>A defect gets through</h2><p>A board with a missing or damaged component passes inspection.</p></div><div class="box"><h2>A good board gets held</h2><p>An inspector spends time checking a normal board that the detector rejected.</p></div></div><div class="bottom-note">Management has requested fewer of both. It has not supplied a third category called “probably fine.”</div></div>
 
 
 <!--
 Ask participants which cost matters in their own work. We will count both errors. The joke does not define the release threshold.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 Source: notes/sources.md.
 -->
 
@@ -680,18 +687,22 @@ Source: notes/sources.md.
 -->
 
 ---
+class: workshop-setting-slide
+clicks: 1
 ---
 
 <div class="kicker">2:42</div>
 
 # Save what the reviewer actually decided
 
-<div class="two-col"><div class="box"><h2>Your assessment</h2><p>Choose normal, defective, or needs another reviewer before revealing the annotation.</p><p>Save your assessment and whether the annotation was visible.</p></div><div class="box"><h2>Batch acquisition</h2><p>Reveal the authors’ supplied labels for the selected 24 boards.</p><p>Label this a simulation of acquiring annotations.</p></div></div>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="inspection/build"><img :src="&quot;/scenes/inspection/build.svg&quot;" alt="Circuit-board inspection: Save the reviewer’s decision before revealing the supplied label. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><div class="two-col"><div class="box"><h2>Your assessment</h2><p>Choose normal, defective, or needs another reviewer before revealing the annotation.</p><p>Save your assessment and whether the annotation was visible.</p></div><div class="box"><h2>Batch acquisition</h2><p>Reveal the authors’ supplied labels for the selected 24 boards.</p><p>Label this a simulation of acquiring annotations.</p></div></div></div>
 
 
 <!--
 Do not call all 24 labels human-verified because a participant pressed one button. Individual saved assessments and the supplied dataset labels are separate records.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 Source: notes/sources.md.
 -->
 
@@ -862,18 +873,22 @@ Source: notes/sources.md.
 -->
 
 ---
+class: workshop-setting-slide
+clicks: 1
 ---
 
 <div class="kicker">3:49</div>
 
 # Inspect a new miss too
 
-<InspectionMechanism kind="outcomes" case-id="pcb1-anomaly-015" />
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="inspection/compare"><img :src="&quot;/scenes/inspection/compare.svg&quot;" alt="Circuit-board inspection: Recorded retest: 048 is recovered; 015 becomes a new miss. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><InspectionMechanism kind="outcomes" case-id="pcb1-anomaly-015" /></div>
 
 
 <!--
 Show the contrast without hiding the final summary. This is a narrower, more honest explanation than saying patch features found all small defects.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 Source: notes/sources.md.
 -->
 
@@ -978,18 +993,22 @@ Source: notes/sources.md.
 -->
 
 ---
+class: workshop-setting-slide
+clicks: 1
 ---
 
 <div class="kicker">3:59</div>
 
 # Write down the decision you would make
 
-<div class="box"><p>“We changed ____. On the same boards, ____ improved and ____ got worse. We selected ____ because ____. Before releasing it, we would test ____.”</p></div><div class="bottom-note">Publish my inspection Report · include actual comparisons, saved artifacts, and the next question.</div>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="inspection/release"><img :src="&quot;/scenes/inspection/release.svg&quot;" alt="Circuit-board inspection: Preserve the encoder, normal bank, and classifier. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><div class="box"><p>“We changed ____. On the same boards, ____ improved and ____ got worse. We selected ____ because ____. Before releasing it, we would test ____.”</p></div><div class="bottom-note">Publish my inspection Report · include actual comparisons, saved artifacts, and the next question.</div></div>
 
 
 <!--
 Have participants explain the result to someone else before publishing. A reasonable decision can be to retain the previous detector.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 Source: notes/sources.md.
 -->
 

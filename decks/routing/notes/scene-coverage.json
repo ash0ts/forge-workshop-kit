@@ -1,0 +1,47 @@
+{
+  "workshop": "routing",
+  "placements": [
+    {
+      "stage": "start",
+      "slide_key": "cover",
+      "title": "Route customer requests and learn from mistakes",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/routing/start.svg"
+    },
+    {
+      "stage": "inspect",
+      "slide_key": "manager",
+      "title": "A manager has offered to automate forwarding",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/routing/inspect.svg"
+    },
+    {
+      "stage": "build",
+      "slide_key": "review-dataset",
+      "title": "Use reviewed data to run a new experiment",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/routing/build.svg"
+    },
+    {
+      "stage": "compare",
+      "slide_key": "freeze",
+      "title": "Freeze what the final comparison will use",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/routing/compare.svg"
+    },
+    {
+      "stage": "release",
+      "slide_key": "close",
+      "title": "What to take back to your team",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/routing/release.svg"
+    }
+  ],
+  "new_slides": 0,
+  "source": "scripts/illustrate_workshop_scenes.py"
+}

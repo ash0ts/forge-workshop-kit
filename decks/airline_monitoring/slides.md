@@ -2,7 +2,8 @@
 theme: default
 title: Monitor an airline service agent and build better evaluations
 author: Anish Shah
-class: cover
+class: cover workshop-setting-slide
+clicks: 1
 layout: default
 aspectRatio: 16/9
 canvasWidth: 1280
@@ -24,10 +25,12 @@ download: false
 
 # Monitor an airline service agent<br>and build better evaluations
 
-<div class="sub">Investigate booking mistakes, test a monitoring rule, and turn reviewed incidents into checks for the next version.</div><div class="bottom-note">Six hours · Basic Python · Simulated airline data · Your own Forge project<br>Technical preview: native Alignment judging and prepared Insights remain unqualified.</div>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="airline_monitoring/start"><img :src="&quot;/scenes/airline_monitoring/start.svg&quot;" alt="Airline booking operations: Keep both journeys visible while changing the booking. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><div class="sub">Investigate booking mistakes, test a monitoring rule, and turn reviewed incidents into checks for the next version.</div><div class="bottom-note">Six hours · Basic Python · Simulated airline data · Your own Forge project<br>Technical preview: native Alignment judging and prepared Insights remain unqualified.</div></div>
 
 <!--
 Set the situation before introducing products. Participants operate a simulated airline customer-service agent. They will distinguish a request completing, a booking being correct, and a monitor detecting a problem. Those are three separate observations.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---
@@ -301,17 +304,21 @@ Give participants time to make the change themselves. Have one person point to t
 -->
 
 ---
+class: workshop-setting-slide
 name: three-questions
+clicks: 1
 ---
 
 <div class="kicker">0:58 · Airline service monitoring</div>
 
 # Keep three questions separate
 
-<table class="monitor-table "><thead><tr><th>Question</th><th>Evidence</th><th>Possible outcome</th></tr></thead><tbody><tr><td>Did the tool execute?</td><td>Tool result, error, duration</td><td>Returned normally</td></tr><tr><td>Did it do the requested work?</td><td>Original and final booking</td><td>Return flight was removed</td></tr><tr><td>Did the monitor detect that?</td><td>Reviewed tag result</td><td>Missed, found, or not processed</td></tr></tbody></table>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="airline_monitoring/inspect"><img :src="&quot;/scenes/airline_monitoring/inspect.svg&quot;" alt="Airline booking operations: Tool execution, booking quality, and monitor detection differ. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><table class="monitor-table "><thead><tr><th>Question</th><th>Evidence</th><th>Possible outcome</th></tr></thead><tbody><tr><td>Did the tool execute?</td><td>Tool result, error, duration</td><td>Returned normally</td></tr><tr><td>Did it do the requested work?</td><td>Original and final booking</td><td>Return flight was removed</td></tr><tr><td>Did the monitor detect that?</td><td>Reviewed tag result</td><td>Missed, found, or not processed</td></tr></tbody></table></div>
 
 <!--
 Use the same example across all three questions. A lower tool-error rate does not prove higher booking quality. A high tag count may mean more failures, broader criteria, or a different processing denominator.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---
@@ -726,20 +733,23 @@ The native rule needs the same workspace scope for both versions but enough attr
 -->
 
 ---
+class: workshop-setting-slide
 name: curation
-clicks: 2
+clicks: 3
 ---
 
 <div class="kicker">3:10 · Airline service monitoring</div>
 
 # A reviewed turn becomes a regression case
 
-<AirlineMechanism mode="curation" :reveal="$clicks + 1" />
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="airline_monitoring/build"><img :src="&quot;/scenes/airline_monitoring/build.svg&quot;" alt="Airline booking operations: Keep the initial booking, request, policy, and reviewed expectation. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><AirlineMechanism mode="curation" :reveal="(Math.max(0, $clicks - 1)) + 1" /></div>
 
 <!--
 Make curation an explicit code exercise. The case contains the original booking, not the already-mutated booking that caused the complaint. Keep the exact request and constraints with it.
 
 Visual sequence: The arrow into the regression case comes from before the write. The crossed arrow from the mutated booking explains a common reconstruction error. Keep the request, policy, approved scope, human review, and source identities with the initial state. This omission incident is a labeled illustration, not an invented live failure.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---
@@ -1060,17 +1070,21 @@ Visual sequence: Reveal the starting row first, then the repair row. All six cas
 -->
 
 ---
+class: workshop-setting-slide
 name: report-measures
+clicks: 1
 ---
 
 <div class="kicker">5:08 · Airline service monitoring</div>
 
 # Report denominators and unresolved work
 
-<table class="monitor-table "><thead><tr><th>Measure</th><th>Report together</th></tr></thead><tbody><tr><td>Requested changes completed</td><td>Passed cases / scored cases; unavailable cases</td></tr><tr><td>Unrequested changes</td><td>Count and the affected segment</td></tr><tr><td>Monitoring accuracy</td><td>Reviewed precision, recall, and coverage</td></tr><tr><td>Explanation quality</td><td>Judged rows and missing judgments</td></tr><tr><td>Operational cost</td><td>Known cost, bounded unknown usage, native tag cost status</td></tr></tbody></table>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="airline_monitoring/compare"><img :src="&quot;/scenes/airline_monitoring/compare.svg&quot;" alt="Airline booking operations: Report denominators and missing judgments beside each measure. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><table class="monitor-table "><thead><tr><th>Measure</th><th>Report together</th></tr></thead><tbody><tr><td>Requested changes completed</td><td>Passed cases / scored cases; unavailable cases</td></tr><tr><td>Unrequested changes</td><td>Count and the affected segment</td></tr><tr><td>Monitoring accuracy</td><td>Reviewed precision, recall, and coverage</td></tr><tr><td>Explanation quality</td><td>Judged rows and missing judgments</td></tr><tr><td>Operational cost</td><td>Known cost, bounded unknown usage, native tag cost status</td></tr></tbody></table></div>
 
 <!--
 A six-case comparison has limited reach. Show each failure and avoid a general claim that monitoring improves all agents. If all cases tie, inspect whether behavior or cost changed while correctness stayed equal.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---
@@ -1191,17 +1205,21 @@ Give participants time to make the change themselves. Have one person point to t
 -->
 
 ---
+class: workshop-setting-slide
 name: end
+clicks: 1
 ---
 
 <div class="kicker">5:58 · Airline service monitoring</div>
 
 # The next release has a check the first release lacked
 
-<p class="principle">You can point to a passenger request, the booking change, the monitoring decision, and the regression check that tests it again.</p><p>The final comparison tells you whether this repair is worth keeping. The next incident may need a different rule.</p>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="airline_monitoring/release"><img :src="&quot;/scenes/airline_monitoring/release.svg&quot;" alt="Airline booking operations: Save reviewed incidents so a repair can be tested again. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><p class="principle">You can point to a passenger request, the booking change, the monitoring decision, and the regression check that tests it again.</p><p>The final comparison tells you whether this repair is worth keeping. The next incident may need a different rule.</p></div>
 
 <!--
 End by asking someone to reproduce a case from its saved initial state. Do not conclude with a promise of autonomous improvement. Monitoring, human review, and offline evaluation each answered a different question.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---

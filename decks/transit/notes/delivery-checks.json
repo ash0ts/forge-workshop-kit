@@ -1,5 +1,5 @@
 {
-  "source_sha256": "40788e2b86fe679a89b32312394f189619b3603df9d45ff6822c76f612f3c58c",
+  "source_sha256": "90c1122ac07a71b10d3919b0121667d8ef17345df69797c96e0b00917126ceed",
   "preflight_only": false,
   "slides_checked": 102,
   "expected_slides": 102,
@@ -518,7 +518,22 @@
   "click_states": [
     {
       "slide": 1,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "transit/start",
+        "loaded": true,
+        "alt": "Transit build room: Two builders share one departure-board problem. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/transit/scenes/transit/start.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 1,
+      "click": 1
     },
     {
       "slide": 2,
@@ -607,7 +622,22 @@
     },
     {
       "slide": 3,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "transit/inspect",
+        "loaded": true,
+        "alt": "Transit build room: The departure board must handle trips after midnight. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/transit/scenes/transit/inspect.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 3,
+      "click": 1
     },
     {
       "slide": 4,
@@ -900,7 +930,18 @@
     },
     {
       "slide": 34,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "transit/build",
+        "loaded": true,
+        "alt": "Transit build room: Two builders need clear ownership and a shared test contract. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/transit/scenes/transit/build.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
     },
     {
       "slide": 34,
@@ -913,6 +954,10 @@
     {
       "slide": 34,
       "click": 3
+    },
+    {
+      "slide": 34,
+      "click": 4
     },
     {
       "slide": 35,
@@ -1454,7 +1499,22 @@
     },
     {
       "slide": 86,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "transit/compare",
+        "loaded": true,
+        "alt": "Transit build room: Extra workers can wait on the same shared resource. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/transit/scenes/transit/compare.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 86,
+      "click": 1
     },
     {
       "slide": 87,
@@ -1486,7 +1546,22 @@
     },
     {
       "slide": 94,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "transit/release",
+        "loaded": true,
+        "alt": "Transit build room: Carry a lesson forward only after checking its effect. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/transit/scenes/transit/release.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 94,
+      "click": 1
     },
     {
       "slide": 95,

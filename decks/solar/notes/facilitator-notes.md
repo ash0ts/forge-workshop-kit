@@ -5,6 +5,7 @@
 0:00–0:25
 
 You are joining a fictional research lab preparing for its weekly forecast review. We will use real February 2014 satellite observations to predict X-ray flux thirty minutes ahead and solar images one hour ahead. First we will compare small trained models with copying the latest observation. Then we will ask an agent to edit the image experiment’s code and test those changes with the same comparison. This is a CPU teaching experiment, not an operational solar forecast. Session block: Connect and trace an operation (minutes 0–25).
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 2. What you will build and inspect
 
@@ -36,6 +37,7 @@ Both examples shown here exist in the prepared training data. Set the clock to 0
 0:00–0:25
 
 At the review, a lower error is useful only if we know what produced it and what it was compared with. The four final files are our fictional lab’s previous filing system. We will use Forge and W&B to connect the code, configuration, data, weights, and predictions to each run. The measurement task teaches that stack with a scalar output; the image task reuses it for predictions we can inspect pixel by pixel. Only then do we add an AI research assistant. It will read the image code and validation results and propose edits to the model or training procedure. It will not alter the data, target, or final scoring rules. Session block: Connect and trace an operation (minutes 0–25).
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 7. Copy the notebook into your Forge project
 
@@ -425,6 +427,7 @@ Use minutes 200 through 230 for the meal break. Completed work should already be
 3:50–4:20
 
 The lab now has code, saved experiments, and a comparison we can inspect. The PI suggests bringing in an AI research assistant to propose the next changes. It reads the current source, active settings, validation errors, and any failures. We still review its diffs and run them through the training and scoring functions we built. The new colleague gets no exemption from testing. Session block: Build the research-agent request (minutes 230–260).
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 71. Which model is being trained?
 
@@ -582,6 +585,7 @@ Use minutes 310 through 320. If a run is still incomplete, keep its status visib
 5:20–5:45
 
 We have used validation dates to choose the version we will bring to the review. Save that source and its trained weights together before looking at February thirteenth and fourteenth. Final evaluation loads those weights and predicts the reserved inputs without training or selecting again. If we edit after inspecting these results, we need new reserved dates to test the next claim. Reveal one operation at a time. Ask what changed before advancing. Back restores the previous state. Session block: Freeze and compare on reserved dates (minutes 320–345).
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 97. Load the saved weights to make final predictions
 
@@ -684,6 +688,7 @@ Allow eight minutes. Ask participants to name a change, report what happened, an
 5:45–6:00
 
 Return to the weekly lab review. Ask participants to open their Report and follow one result to its source and saved prediction. In the recorded rehearsal, the selected image model reduced error, while the GOES model still lost to persistence. Both belong in the review. The image result uses one seed and two test days; it needs testing on other dates. The later qualification found that a repaired GOES recipe beat persistence on all three seeds. The saved image edits helped two seeds and slightly hurt one. Bring both facts to the review; neither replaces the original evidence. Ask each participant to propose a next test grounded in their own forecast. Session block: Reproduce and explain the result (minutes 345–360).
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 114. Reference and worked answers
 

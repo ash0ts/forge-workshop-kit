@@ -68,9 +68,9 @@
       "number": 1,
       "key": "build-a-transit-app-with-a-team-of-coding-agents",
       "title": "Build a transit app<br>with a team of coding agents",
-      "kind": "cover",
+      "kind": "cover workshop-setting-slide",
       "name": "",
-      "notes": "The department and deadline are fictional. The schedule records are real public MBTA data. Participants build a bounded software factory; we do not claim to reproduce an unattended production engineering organization. The single session includes three breaks. The extra time is for tracing one concrete input through the implementation, writing the coordinator and explaining the recorded failures.",
+      "notes": "The department and deadline are fictional. The schedule records are real public MBTA data. Participants build a bounded software factory; we do not claim to reproduce an unattended production engineering organization. The single session includes three breaks. The extra time is for tracing one concrete input through the implementation, writing the coordinator and explaining the recorded failures.\nSetting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.",
       "answer": null,
       "concept": "Build a transit app with a team of coding agents",
       "exercise": null,
@@ -80,7 +80,7 @@
         "elapsed": "0:00",
         "minutes": 0
       },
-      "clicks": null,
+      "clicks": 1,
       "technical_guide": null
     },
     {
@@ -106,9 +106,9 @@
       "number": 3,
       "key": "your-team-needs-a-departures-board",
       "title": "Your team needs a departures board",
-      "kind": "",
+      "kind": "workshop-setting-slide",
       "name": "",
-      "notes": "Start with the person using the software. Ask what could make a plausible-looking board wrong. Listen for wrong date, wrong stop, missing departures and misleading times. No model or agent count appears before the product is clear.",
+      "notes": "Start with the person using the software. Ask what could make a plausible-looking board wrong. Listen for wrong date, wrong stop, missing departures and misleading times. No model or agent count appears before the product is clear.\nSetting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.",
       "answer": null,
       "concept": "Your team needs a departures board",
       "exercise": null,
@@ -118,7 +118,7 @@
         "elapsed": "0:02",
         "minutes": 2
       },
-      "clicks": null,
+      "clicks": 1,
       "technical_guide": null
     },
     {
@@ -751,9 +751,9 @@
       "number": 34,
       "key": "add-the-task-board-and-two-workers",
       "title": "Add the task board and two workers",
-      "kind": "",
+      "kind": "workshop-setting-slide",
       "name": "",
-      "notes": "Click once to reveal workers, once to reveal integration, once to reveal the checked lesson. Solid arrows show code or execution flow. The dashed arrow identifies reviewed evidence. The diagram is explanatory, not a recorded run.",
+      "notes": "Click once to reveal workers, once to reveal integration, once to reveal the checked lesson. Solid arrows show code or execution flow. The dashed arrow identifies reviewed evidence. The diagram is explanatory, not a recorded run.\nSetting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.",
       "answer": null,
       "concept": "Add the task board and two workers",
       "exercise": null,
@@ -763,7 +763,7 @@
         "elapsed": "1:45",
         "minutes": 105
       },
-      "clicks": 3,
+      "clicks": 4,
       "technical_guide": null
     },
     {
@@ -1862,9 +1862,9 @@
       "number": 86,
       "key": "more-workers-can-still-produce-more-waiting",
       "title": "More workers can still produce more waiting",
-      "kind": "",
+      "kind": "workshop-setting-slide",
       "name": "",
-      "notes": "Primary sources: Claude Code agent-team docs, Google Research scaling-agent-systems study and Anthropic compiler report. Do not import their performance numbers as a forecast for this model or task.",
+      "notes": "Primary sources: Claude Code agent-team docs, Google Research scaling-agent-systems study and Anthropic compiler report. Do not import their performance numbers as a forecast for this model or task.\nSetting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.",
       "answer": null,
       "concept": "More workers can still produce more waiting",
       "exercise": null,
@@ -1874,7 +1874,7 @@
         "elapsed": "5:25",
         "minutes": 325
       },
-      "clicks": null,
+      "clicks": 1,
       "technical_guide": null
     },
     {
@@ -2064,9 +2064,9 @@
       "number": 94,
       "key": "take-the-coordination-code-to-your-own-project",
       "title": "Take the coordination code to your own project",
-      "kind": "",
+      "kind": "workshop-setting-slide",
       "name": "",
-      "notes": "Ask each person for one suitable feature, one prerequisite, one acceptance check and one durable project rule from their own team. ARIA is outside the measured comparison and may require additional access.",
+      "notes": "Ask each person for one suitable feature, one prerequisite, one acceptance check and one durable project rule from their own team. ARIA is outside the measured comparison and may require additional access.\nSetting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.",
       "answer": null,
       "concept": "Take the coordination code to your own project",
       "exercise": null,
@@ -2076,7 +2076,7 @@
         "elapsed": "5:58",
         "minutes": 358
       },
-      "clicks": null,
+      "clicks": 1,
       "technical_guide": null
     },
     {

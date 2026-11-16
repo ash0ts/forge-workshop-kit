@@ -1,5 +1,5 @@
 {
-  "source_sha256": "29b37aa7cf988bc1c7bdf89345b9d7fb84095d54a12f90a56dda4398aa9a2470",
+  "source_sha256": "76e1e66ea121081582f10e6e84a784746891062e907f981f3ea5d8134df181b8",
   "preflight_only": false,
   "slides_checked": 101,
   "expected_slides": 101,
@@ -513,7 +513,22 @@
   "click_states": [
     {
       "slide": 1,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "pending/start",
+        "loaded": true,
+        "alt": "Pending, Inc.: Follow one customer request into the office. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/pending/scenes/pending/start.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 1,
+      "click": 1
     },
     {
       "slide": 2,
@@ -602,7 +617,22 @@
     },
     {
       "slide": 3,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "pending/inspect",
+        "loaded": true,
+        "alt": "Pending, Inc.: Find the rule that should guide the employee. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/pending/scenes/pending/inspect.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 3,
+      "click": 1
     },
     {
       "slide": 4,
@@ -1244,7 +1274,22 @@
     },
     {
       "slide": 62,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "pending/build",
+        "loaded": true,
+        "alt": "Pending, Inc.: The editor proposes handbook changes for review. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/pending/scenes/pending/build.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 62,
+      "click": 1
     },
     {
       "slide": 63,
@@ -1441,7 +1486,22 @@
     },
     {
       "slide": 85,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "pending/compare",
+        "loaded": true,
+        "alt": "Pending, Inc.: Compare Base, Manual, and Agent harnesses on the same frozen cases. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/pending/scenes/pending/compare.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 85,
+      "click": 1
     },
     {
       "slide": 86,
@@ -1485,7 +1545,22 @@
     },
     {
       "slide": 96,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "pending/release",
+        "loaded": true,
+        "alt": "Pending, Inc.: Keep the handbook and the traces that support it. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/pending/scenes/pending/release.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 96,
+      "click": 1
     },
     {
       "slide": 97,

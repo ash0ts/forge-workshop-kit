@@ -1,5 +1,5 @@
 {
-  "source_sha256": "53b79ceb199b0b7ed0871a060ce74ba703ae81b4f089650ace8c2b15e4f3e79a",
+  "source_sha256": "01646e505d104ee2e021b4376b0b0863c21e2ee2748da1fab2957a1fd0c53eee",
   "preflight_only": false,
   "slides_checked": 82,
   "expected_slides": 82,
@@ -343,7 +343,22 @@
   "click_states": [
     {
       "slide": 1,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "airline_monitoring/start",
+        "loaded": true,
+        "alt": "Airline booking operations: Keep both journeys visible while changing the booking. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/airline_monitoring/scenes/airline_monitoring/start.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 1,
+      "click": 1
     },
     {
       "slide": 2,
@@ -676,7 +691,22 @@
     },
     {
       "slide": 19,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "airline_monitoring/inspect",
+        "loaded": true,
+        "alt": "Airline booking operations: Tool execution, booking quality, and monitor detection differ. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/airline_monitoring/scenes/airline_monitoring/inspect.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 19,
+      "click": 1
     },
     {
       "slide": 20,
@@ -1014,7 +1044,18 @@
     },
     {
       "slide": 46,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "airline_monitoring/build",
+        "loaded": true,
+        "alt": "Airline booking operations: Keep the initial booking, request, policy, and reviewed expectation. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/airline_monitoring/scenes/airline_monitoring/build.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
     },
     {
       "slide": 46,
@@ -1023,6 +1064,10 @@
     {
       "slide": 46,
       "click": 2
+    },
+    {
+      "slide": 46,
+      "click": 3
     },
     {
       "slide": 47,
@@ -1315,7 +1360,22 @@
     },
     {
       "slide": 67,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "airline_monitoring/compare",
+        "loaded": true,
+        "alt": "Airline booking operations: Report denominators and missing judgments beside each measure. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/airline_monitoring/scenes/airline_monitoring/compare.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 67,
+      "click": 1
     },
     {
       "slide": 68,
@@ -1363,7 +1423,22 @@
     },
     {
       "slide": 76,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "airline_monitoring/release",
+        "loaded": true,
+        "alt": "Airline booking operations: Save reviewed incidents so a repair can be tested again. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/airline_monitoring/scenes/airline_monitoring/release.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 76,
+      "click": 1
     },
     {
       "slide": 77,

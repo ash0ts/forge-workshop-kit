@@ -11,6 +11,7 @@ import json
 import os
 from pathlib import Path
 import re
+import runpy
 
 KIT = Path(__file__).resolve().parents[1]
 ASSETS = KIT / "src/forge_workshop_kit/assets/technical-guides"
@@ -91,4 +92,5 @@ def enrich(slides, deck_root, deck):
         "schema_version": 1, "workshop": workshop["slug"], "overview": "technical-overview",
         "sequences": coverage, "source": "visual-guides/index.json", "runtime_changes": False,
     }, indent=2) + "\n", encoding="utf-8")
+    runpy.run_path(str(KIT / "scripts/scene_storyboard.py"))["enrich"](slides, deck_root, deck)
     return slides

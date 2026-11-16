@@ -57,6 +57,7 @@ def build(*, only=(), exports=False, output=None, site=None):
     BUNDLED.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(SOURCE / "index.json", BUNDLED / "index.json")
     shutil.copyfile(SKILL / "assets/tokens.json", BUNDLED / "tokens.json")
+    subprocess.run([sys.executable, str(ROOT / "scripts/illustrate_workshop_scenes.py")], check=True)
     receipts = []
     for workshop in selected:
         slug = workshop["slug"]

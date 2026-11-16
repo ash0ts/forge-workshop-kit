@@ -3,6 +3,7 @@
 0:00
 
 The department and deadline are fictional. The schedule records are real public MBTA data. Participants build a bounded software factory; we do not claim to reproduce an unattended production engineering organization. The single session includes three breaks. The extra time is for tracing one concrete input through the implementation, writing the coordinator and explaining the recorded failures.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 2. What you will build and inspect
 
@@ -16,6 +17,7 @@ Visual guide: transit/overview. Advance one state at a time; Back restores the p
 0:02
 
 Start with the person using the software. Ask what could make a plausible-looking board wrong. Listen for wrong date, wrong stop, missing departures and misleading times. No model or agent count appears before the product is clear.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 4. Here is the application we want to deliver
 
@@ -204,6 +206,7 @@ Ten-minute break, 1:35–1:45. Use the read-only monitor to find participants wh
 1:45
 
 Click once to reveal workers, once to reveal integration, once to reveal the checked lesson. Solid arrows show code or execution flow. The dashed arrow identifies reviewed evidence. The diagram is explanatory, not a recorded run.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 35. Choose work that can happen independently
 
@@ -520,6 +523,7 @@ Without memory: oversized input after a saved write. With memory: output allowan
 5:25
 
 Primary sources: Claude Code agent-team docs, Google Research scaling-agent-systems study and Anthropic compiler report. Do not import their performance numbers as a forecast for this model or task.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 87. Choose a release using the saved checks
 
@@ -568,6 +572,7 @@ Give participants two minutes each. The person explaining should control the not
 5:58
 
 Ask each person for one suitable feature, one prerequisite, one acceptance check and one durable project rule from their own team. ARIA is outside the measured comparison and may require additional access.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 95. Worked answer: select ready tasks
 

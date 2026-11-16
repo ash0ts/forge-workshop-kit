@@ -1,5 +1,5 @@
 {
-  "source_sha256": "c66e638920166c7885f04f4927a370a1bfde692a771d1cf52b6374a23cce76fe",
+  "source_sha256": "4a7329f643b49e556f507f01b74e4b9384ad42effa3253f8004e1f137d28b2e4",
   "preflight_only": false,
   "slides_checked": 60,
   "expected_slides": 60,
@@ -308,7 +308,22 @@
   "click_states": [
     {
       "slide": 1,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "inspection/start",
+        "loaded": true,
+        "alt": "Circuit-board inspection: Follow one board from the bench into inspection. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/inspection/scenes/inspection/start.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 1,
+      "click": 1
     },
     {
       "slide": 2,
@@ -397,7 +412,22 @@
     },
     {
       "slide": 3,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "inspection/inspect",
+        "loaded": true,
+        "alt": "Circuit-board inspection: Catch defects without sending every normal board for review. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/inspection/scenes/inspection/inspect.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 3,
+      "click": 1
     },
     {
       "slide": 4,
@@ -851,7 +881,22 @@
     },
     {
       "slide": 39,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "inspection/build",
+        "loaded": true,
+        "alt": "Circuit-board inspection: Save the reviewer’s decision before revealing the supplied label. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/inspection/scenes/inspection/build.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 39,
+      "click": 1
     },
     {
       "slide": 40,
@@ -963,7 +1008,22 @@
     },
     {
       "slide": 50,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "inspection/compare",
+        "loaded": true,
+        "alt": "Circuit-board inspection: Recorded retest: 048 is recovered; 015 becomes a new miss. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/inspection/scenes/inspection/compare.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 50,
+      "click": 1
     },
     {
       "slide": 51,
@@ -1072,7 +1132,22 @@
     },
     {
       "slide": 57,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "inspection/release",
+        "loaded": true,
+        "alt": "Circuit-board inspection: Preserve the encoder, normal bank, and classifier. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/inspection/scenes/inspection/release.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 57,
+      "click": 1
     },
     {
       "slide": 58,

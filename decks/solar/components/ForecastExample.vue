@@ -33,7 +33,7 @@
 <style scoped>
 svg{width:100%;height:400px;display:block}
 text{font:27px 'IBM Plex Sans';fill:#163c43}
-.heading{font:15px 'IBM Plex Mono';fill:#61746e}
+.heading{font:16px 'IBM Plex Mono';fill:#61746e}
 .name{font-weight:600;fill:#237a6c}
 .detail{font-size:20px;fill:#526b63}
 .date{font-size:19px;fill:#61746e}

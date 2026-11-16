@@ -32,6 +32,7 @@ The local doctor does not contact a provider. Credentials are needed for live pr
 | Starter and facilitator notebooks | [scripts/build_notebooks.py](scripts/build_notebooks.py) | `notebooks/starter.py`, `notebooks/facilitator.py` |
 | Titles, exercise references, metrics, compatibility, and ARIA stop definitions | [workshops.json](src/forge_workshop_kit/workshops.json) | Navigation, reference tables, publication labels |
 | Slide order, explanations, and presenter notes | Each deck's `scripts/build-storyboard.py` | `slides.md` and slide maps in the same deck |
+| Technical diagrams and recurring setting illustrations | [visual guide sources and generators](docs/technical-visuals.md) | SVG frames, notebook/deck guides, and posters |
 | Public learning Reports | [reports/](reports/README.md) Markdown and source ledgers | Native Forge Reports; stable links in `reports/published.json` |
 | Shared saving, accounting, tracing, publication, or presentation | [src/forge_workshop_kit](src/forge_workshop_kit) | Package and notebook behavior |
 | Recorded ARIA investigations | [assets/aria](src/forge_workshop_kit/assets/aria) | Offline transcripts and shared deck frames |

@@ -1,10 +1,10 @@
 # Current state and next steps
 
-Status as of November 15, 2026, for the v0.11.1 illustration revision. This page tracks unfinished work. The [technical specification](techspec.md) describes implemented behavior; [release checks](docs/release-checks.md) record what was verified.
+Status as of November 16, 2026, for v0.11.1 and its deck illustration update. This page tracks unfinished work. The [technical specification](techspec.md) describes implemented behavior; [release checks](docs/release-checks.md) record what was verified.
 
 ## What is available
 
-Six participant notebooks, a starter, and a read-only facilitator monitor are published in Forge. Each workshop has a browser deck, PDF, source, exercises, and recorded evidence. The current materials include two ARIA investigations per workshop, twelve recorded responses, and shared technical diagrams across notebooks and decks. Six overview posters introduce the work and link to each notebook. The visual skill can also be used in other projects. Six [public learning Reports](reports/README.md) now explain the examples and link readers directly to the notebooks they can copy.
+Six participant notebooks, a starter, and a read-only facilitator monitor are published in Forge. Each workshop has a browser deck, PDF, source, exercises, and recorded evidence. The current materials include two ARIA investigations per workshop, twelve recorded responses, and shared technical diagrams across notebooks and decks. Six overview posters introduce the work and link to each notebook. Each deck carries its workshop setting through the opening, implementation, comparison, and conclusion, alongside the technical diagrams. The visual skill can also be used in other projects. Six [public learning Reports](reports/README.md) now explain the examples and link readers directly to the notebooks they can copy.
 
 The current setup is participant-owned: copy into your project, use your credentials, and save results locally and as checkpoint artifacts. No gateway is needed. Existing copies and pinned releases remain unchanged. The learning Reports reuse recorded evidence; they do not change notebook code, results, or package version.
 

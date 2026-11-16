@@ -7,6 +7,7 @@ One four-hour session, including breaks at 1:10–1:20 and 2:15–2:25.
 Understand the task and harness · 0–20 minutes
 
 We will implement an agent that can inspect an account, refund a duplicate charge, and provision access. Then we will instrument and evaluate its work before asking an editor agent to revise its instructions. Pending, Inc. and its accounts are fictional; the Python tools, model requests, traces, and evaluations run in your own project.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 2. What you will build and inspect
 
@@ -20,6 +21,7 @@ Visual guide: pending/overview. Advance one state at a time; Back restores the p
 Understand the task and harness · 0–20 minutes
 
 Set the context before naming the harness. We are building a support agent that can change account state, so a plausible reply is not enough. The company and customer accounts are fictional. The Python operations, model requests, traces, and checks are real workshop code. The one-page handbook is an opening illustration, not the measured starting harness. Participants will build and test the starting version before comparing changes.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 4. Acme wants a duplicate $49 charge refunded.
 
@@ -379,6 +381,7 @@ Second break: 135–145 minutes. Save the manual comparison and return to step 6
 Propose, probe and compose · 145–185 minutes
 
 The editor uses the same fixed model, but its request is to revise the harness rather than resolve a customer ticket. We supply the current configuration and a saved execution. The permitted edits are instructions, the verification skill, and bounded workflow rules. Tools and scoring stay fixed so any measured difference concerns the harness we changed.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 63. Propose two edits to the same starting harness.
 
@@ -518,6 +521,7 @@ Recursive self-improvement here means that an agent evaluates executions of a ha
 Evaluate frozen harnesses · 210–230 minutes
 
 Final cases: already-refunded, two-invoices, onboarding-recovery, clarify-access. Their files are public for teaching but are excluded from improvement context. The starting version is the configured tested employee, not the deliberately blank opening illustration.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 86. Compare all three versions on fresh tickets.
 
@@ -584,6 +588,7 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 Explain the result · 230–240 minutes
 
 Ask participants to name one workflow in their product with observable output and a check they can run independently of the agent. Have them specify a development case, a likely failure, and a fresh case for testing transfer. They can reuse the instrumentation and improvement controller, but must define what correct work means for that workflow.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 97. Worked answer · invoice lookup
 

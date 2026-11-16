@@ -48,13 +48,13 @@ const notes = [
 <template v-else-if="mode==='service-day'">
   <text x="18" y="25" class="eyebrow">TRIP 63926435 · PARK STREET · ACTUAL TIMESTAMPS</text>
   <text x="18" y="76" class="big">24:08:00</text><text x="295" y="64" class="title">24 hours + 8 minutes</text><text x="295" y="96" class="small">elapsed from the service-day origin</text>
-  <path d="M65 182H1060" class="axis"/>
+  <path d="M65 182H980M1024 182H1060" class="axis"/><path d="M987 172l8 20 8-20 8 20" class="axis"/>
   <g v-for="n in [0,6,12,18,24]" :key="n"><path :d="`M${65+n*37.5} 174v16`" class="rule"/><text :x="65+n*37.5" y="219" text-anchor="middle" class="small">{{n}} h</text></g>
   <circle cx="65" cy="182" r="8" class="parent-fill"/><text x="18" y="143" class="title">Nov 28 · 00:00</text>
   <g v-if="stage>=1"><path d="M65 182H965" class="elapsed"/><text x="380" y="157" class="title">One whole service day</text><path d="M965 126V236" class="dashed"/><text x="860" y="110" class="title">Nov 29 · 00:00</text></g>
-  <g v-if="stage>=2"><circle cx="1015" cy="182" r="9" class="orange-fill"/><path d="M965 182H1015" class="late"/><text x="905" y="261" class="title">00:08 boarding</text><text x="570" y="316" class="code">boarding: Nov 29 00:08 -05:00</text></g>
+  <g v-if="stage>=2"><circle cx="1055" cy="182" r="9" class="orange-fill"/><path d="M965 182H980M1024 182H1055" class="late"/><text x="905" y="261" class="title">00:08 boarding</text><text x="570" y="316" class="code">boarding: Nov 29 00:08 -05:00</text></g>
   <text x="18" y="316" class="code">service_date: 2024-11-28</text>
-  <text x="18" y="357" class="small">Hours preserve duration. Keep the original service date in the returned record. Last 8 minutes enlarged.</text>
+  <text x="18" y="357" class="small">Hours preserve duration. Keep the original service date in the returned record. Axis break: final 8 minutes enlarged.</text>
 </template>
 <template v-else-if="mode==='worker'">
   <text x="18" y="24" class="eyebrow">ILLUSTRATIVE EDIT · ACTUAL WORKER TOOL CONTRACT</text>
@@ -161,5 +161,5 @@ const notes = [
 </svg>
 </template>
 <style scoped>
-.transit-mechanism{width:100%;height:375px;margin:4px 0}.paper{fill:#eceee3;stroke:#a9b7a8}.blue{fill:#d6e7ee;stroke:#4382a6}.orange{fill:#f0dfce;stroke:#c17b40}.gold{fill:#f5e4ab;stroke:#b99d46}.title{font:500 22px 'IBM Plex Sans';fill:#163c43}.big{font:500 46px 'IBM Plex Mono';fill:#163c43}.small{font:19px 'IBM Plex Sans';fill:#365d55}.code{font:18px 'IBM Plex Mono';fill:#163c43}.eyebrow{font:14px 'IBM Plex Mono';fill:#61746e;letter-spacing:.45px}.rule,.outline-edge{fill:none;stroke:#61746e;stroke-width:1.7}.axis,.lane{fill:none;stroke:#a9b7a8;stroke-width:2}.arrow{fill:none;stroke:#61746e;stroke-width:2.5;marker-end:var(--tip)}.dashed{fill:none;stroke:#61746e;stroke-width:2;stroke-dasharray:6 6}.elapsed{fill:none;stroke:#4382a6;stroke-width:5}.late{stroke:#c17b40;stroke-width:6}.blue-fill{fill:#4382a6}.orange-fill{fill:#c17b40}.parent-fill{fill:#61746e}.cross{stroke:#9b6339;stroke-width:3}
+.transit-mechanism{width:100%;height:375px;margin:4px 0}.paper{fill:#eceee3;stroke:#a9b7a8}.blue{fill:#d6e7ee;stroke:#4382a6}.orange{fill:#f0dfce;stroke:#c17b40}.gold{fill:#f5e4ab;stroke:#b99d46}.title{font:500 22px 'IBM Plex Sans';fill:#163c43}.big{font:500 46px 'IBM Plex Mono';fill:#163c43}.small{font:19px 'IBM Plex Sans';fill:#365d55}.code{font:18px 'IBM Plex Mono';fill:#163c43}.eyebrow{font:16px 'IBM Plex Mono';fill:#61746e;letter-spacing:.45px}.rule,.outline-edge{fill:none;stroke:#61746e;stroke-width:1.7}.axis,.lane{fill:none;stroke:#a9b7a8;stroke-width:2}.arrow{fill:none;stroke:#61746e;stroke-width:2.5;marker-end:var(--tip)}.dashed{fill:none;stroke:#61746e;stroke-width:2;stroke-dasharray:6 6}.elapsed{fill:none;stroke:#4382a6;stroke-width:5}.late{stroke:#c17b40;stroke-width:6}.blue-fill{fill:#4382a6}.orange-fill{fill:#c17b40}.parent-fill{fill:#61746e}.cross{stroke:#9b6339;stroke-width:3}
 </style>

@@ -1,5 +1,5 @@
 {
-  "source_sha256": "5a355ee9bfbafd78b07aa7eaf02caf28488445d7b016b192b7f67984a34ebede",
+  "source_sha256": "925bf5d69da919479ecfb6e8d3c649eb955820ee743ed312fd3edc410659daf6",
   "preflight_only": false,
   "slides_checked": 130,
   "expected_slides": 130,
@@ -658,7 +658,22 @@
   "click_states": [
     {
       "slide": 1,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "solar/start",
+        "loaded": true,
+        "alt": "Solar forecasting lab: Start with dated observations, not a forecast result. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/solar/scenes/solar/start.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 1,
+      "click": 1
     },
     {
       "slide": 2,
@@ -759,7 +774,22 @@
     },
     {
       "slide": 6,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "solar/inspect",
+        "loaded": true,
+        "alt": "Solar forecasting lab: Can a source change improve this fixed forecasting task? Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/solar/scenes/solar/inspect.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 6,
+      "click": 1
     },
     {
       "slide": 7,
@@ -1609,7 +1639,22 @@
     },
     {
       "slide": 70,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "solar/build",
+        "loaded": true,
+        "alt": "Solar forecasting lab: The research agent edits source, runs experiments, and reads evidence. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/solar/scenes/solar/build.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 70,
+      "click": 1
     },
     {
       "slide": 71,
@@ -1854,7 +1899,18 @@
     },
     {
       "slide": 96,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "solar/compare",
+        "loaded": true,
+        "alt": "Solar forecasting lab: Keep the data split and evaluation rules fixed for comparison. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/solar/scenes/solar/compare.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
     },
     {
       "slide": 96,
@@ -1867,6 +1923,10 @@
     {
       "slide": 96,
       "click": 3
+    },
+    {
+      "slide": 96,
+      "click": 4
     },
     {
       "slide": 97,
@@ -1942,7 +2002,22 @@
     },
     {
       "slide": 113,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "solar/release",
+        "loaded": true,
+        "alt": "Solar forecasting lab: Keep observations, source, weights, and predictions linked. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/solar/scenes/solar/release.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 113,
+      "click": 1
     },
     {
       "slide": 114,

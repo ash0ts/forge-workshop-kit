@@ -38,7 +38,7 @@ const code={vocabulary:['tokens = vectorizer.build_analyzer()(text)','row = vect
  <text x="12" y="28" class="heading">One input row</text><text x="12" y="59" class="small">384 values</text>
  <g v-for="i in 12" :key="i"><rect x="20" :y="78+i*15" width="70" height="11" :class="i%3?'teal':'pale'"/></g>
  <path d="M110 179H155" class="arrow"/><text x="190" y="58" class="heading">Classifier weights</text>
- <g v-for="i in 96" :key="i"><rect :x="178+i%12*17" :y="86+Math.floor(i/12)*22" width="14" height="18" :class="step>=2?(i%3?'teal':'gold'):'pale'"/></g>
+ <g v-for="i in 96" :key="i"><rect :x="178+(i-1)%12*17" :y="86+Math.floor((i-1)/12)*22" width="14" height="18" :class="step>=2?(i%3?'teal':'gold'):'pale'"/></g>
  <text x="178" y="293" class="small">77 × 384 + 77 intercepts</text>
  <path d="M402 179H455" class="arrow"/>
  <g :opacity="step===3?1:.25"><text x="476" y="59" class="heading">Probabilities</text><rect v-for="(v,i) in [.71,.16,.08,.05]" :key="i" x="480" :y="96+i*47" :width="v*210" height="25" class="blue"/><text x="480" y="293" class="small">77 values sum to 1</text></g>

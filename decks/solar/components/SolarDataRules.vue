@@ -25,4 +25,4 @@ const descriptions={gaps:'Schematic timeline: a complete input and target interv
  <path d="M730 100H812" class="arrow"/><text x="835" y="107">Correction = 0</text>
  <text x="25" y="305" class="mono">forecast = current_image + 0</text><text x="25" y="350">Before training, this returns persistence. Training then updates the weights.</text>
 </g>
-</svg></template><style scoped>svg{display:block;width:100%;height:390px;margin-top:12px}text{font:23px 'IBM Plex Sans',Arial;fill:#163c43}.small{font-size:19px}.mono{font:20px 'IBM Plex Mono',monospace}.label{font:14px 'IBM Plex Mono',monospace;letter-spacing:1px;fill:#52776d}.arrow,.line{fill:none;stroke:#52776d;stroke-width:2}.arrow{marker-end:var(--arrow)}</style>
+</svg></template><style scoped>svg{display:block;width:100%;height:390px;margin-top:12px}text{font:23px 'IBM Plex Sans',Arial;fill:#163c43}.small{font-size:19px}.mono{font:20px 'IBM Plex Mono',monospace}.label{font:16px 'IBM Plex Mono',monospace;letter-spacing:1px;fill:#52776d}.arrow,.line{fill:none;stroke:#52776d;stroke-width:2}.arrow{marker-end:var(--arrow)}</style>

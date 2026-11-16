@@ -6,6 +6,7 @@
 
 The inspection team is fictional. The VisA PCB1 images, masks and recorded comparisons are real. Do not promise that every participant run improves.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 2. What you will build and inspect
 
@@ -20,6 +21,7 @@ Visual guide: inspection/overview. Advance one state at a time; Back restores th
 
 Ask participants which cost matters in their own work. We will count both errors. The joke does not define the release threshold.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 4. Start with the boards, not the score
 
@@ -273,6 +275,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 
 Do not call all 24 labels human-verified because a participant pressed one button. Individual saved assessments and the supplied dataset labels are separate records.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 40. Train with the additional labels
 
@@ -351,6 +354,7 @@ Visual guide: inspection/case-changes. Advance one state at a time; Back restore
 
 Show the contrast without hiding the final summary. This is a narrower, more honest explanation than saying patch features found all small defects.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 51. Check our conclusion
 
@@ -398,6 +402,7 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 
 Have participants explain the result to someone else before publishing. A reasonable decision can be to retain the previous detector.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/inspection.py.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 58. Worked answer: assemble the local features
 

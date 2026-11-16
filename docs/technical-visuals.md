@@ -33,6 +33,14 @@ Notebook views read bundled frames and use native display controls. The slide ad
 
 Posters have two layouts: a digital overview and an A2 print version. The library links the Report, notebook, deck, and poster for each workshop. QR destinations use stable library anchors rather than expiring execution URLs.
 
+## Recurring workshop settings
+
+Each deck also uses an original setting illustration at five transitions: the opening, inspection, implementation, comparison, and conclusion. The office, research lab, support desk, PCB station, transit team, and airline operations desk use recognizable objects from their exercises. The illustrated setting introduces the task; the following reveal retains the full authored explanation, code, or recorded result.
+
+Edit [illustrate_workshop_scenes.py](../scripts/illustrate_workshop_scenes.py) for the drawings and [scene_storyboard.py](../scripts/scene_storyboard.py) for their placement. The generator writes thirty editable SVGs and an object/callout index under [visual-guides/scenes](../visual-guides/scenes/). Fonts are embedded. Each scene has a text alternative and identifies its illustrative status. Scenes do not represent participant executions.
+
+The shared slide stylesheet gives the drawing a full frame and preserves its aspect ratio. Existing diagrams keep their own reveals after the scene. The deck validator checks scene loading, frame bounds, minimum displayed size, and forward/back navigation. The generated `notes/scene-coverage.json` records placements for each deck. These assets are included in the deck source archives; rebuilding them requires no service access.
+
 ## Check and release
 
 Inspect the renderer's validation receipts and rendered output. Check actual text lines, units, code, callout targets, comparisons, and source references. Cover the paragraphs and check whether the drawing still shows the input, operation, and changed state. Validate one representative illustration before repeating it across the other lessons. Test keyboard Next/Back, the static alternative, narrow notebook layouts, links, and poster QR destinations. Bounds checks establish legibility, not teaching quality.

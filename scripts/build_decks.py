@@ -55,13 +55,13 @@ def source_archive(path, deck, slug):
             for file in sorted(item.rglob("*") if item.is_dir() else [item]):
                 if file.is_file() and "__pycache__" not in file.parts:
                     bundle.write(file, Path("decks") / slug / file.relative_to(deck))
-        for name in ("build_decks.py", "build_visual_guides.py", "technical_guide_storyboard.py", "validate_deck.mjs", "check_deck_pdf.py", "serve_deck.py", "aria_storyboard.py"):
+        for name in ("build_decks.py", "build_visual_guides.py", "technical_guide_storyboard.py", "scene_storyboard.py", "validate_deck.mjs", "check_deck_pdf.py", "serve_deck.py", "aria_storyboard.py"):
             bundle.write(ROOT / "scripts" / name, Path("scripts") / name)
         for path in sorted((ROOT / "scripts").glob("illustrate_*.py")):
             bundle.write(path, Path("scripts") / path.name)
-        for name in ("README.md", "package.json", "package-lock.json", "scripts/deck.mjs", "aria.css", "technical-manual.css", "technical-manual-tokens.css", "components/TechnicalGuide.vue"):
+        for name in ("README.md", "package.json", "package-lock.json", "scripts/deck.mjs", "aria.css", "technical-manual.css", "technical-manual-tokens.css", "workshop-scenes.css", "components/TechnicalGuide.vue"):
             bundle.write(ROOT / "decks" / name, Path("decks") / name)
-        for directory in (ROOT / "skills", ROOT / "visual-guides" / slug, ROOT / "visual-guides/media"):
+        for directory in (ROOT / "skills", ROOT / "visual-guides" / slug, ROOT / "visual-guides/media", ROOT / "visual-guides/scenes"):
             for file in sorted(directory.rglob("*")):
                 if file.is_file() and not {"node_modules", "__pycache__", ".DS_Store"}.intersection(file.parts):
                     bundle.write(file, file.relative_to(ROOT))

@@ -285,7 +285,7 @@ for slide in slides:
     slide['body']=slide['body'].replace('href="/images/', 'href="'+BASE+'images/')
     slide['body']=re.sub(r'(<table[^>]*>)', r'\1<tbody>', slide['body']).replace('</table>', '</tbody></table>')
 indices={s['key']:i+1 for i,s in enumerate(slides)}
-front='''---\ntheme: default\ntitle: Solar forecasting with agent-assisted experiments\nauthor: Anish Shah\ninfo: Solar Forecasting Lab\nclass: cover\nlayout: default\naspectRatio: 16/9\ncanvasWidth: 1280\ncolorSchema: light\ntransition: fade\nwakeLock: false\nfonts:\n  sans: IBM Plex Sans\n  mono: IBM Plex Mono\n  provider: none\nmdc: true\nhighlighter: shiki\ndrawings:\n  enabled: false\ndownload: false\nexportFilename: solar-autoresearch\n---\n\n'''
+front='''---\ntheme: default\ntitle: Solar forecasting with agent-assisted experiments\nauthor: Anish Shah\ninfo: Solar Forecasting Lab\nclass: cover workshop-setting-slide\nclicks: 1\nlayout: default\naspectRatio: 16/9\ncanvasWidth: 1280\ncolorSchema: light\ntransition: fade\nwakeLock: false\nfonts:\n  sans: IBM Plex Sans\n  mono: IBM Plex Mono\n  provider: none\nmdc: true\nhighlighter: shiki\ndrawings:\n  enabled: false\ndownload: false\nexportFilename: solar-autoresearch\n---\n\n'''
 parts=[]
 for i,s in enumerate(slides):
     fields = (["class: " + s['kind']] if s['kind'] else []) + (["clicks: " + str(s['clicks'])] if s.get('clicks') else []) + ["name: " + s['key']]

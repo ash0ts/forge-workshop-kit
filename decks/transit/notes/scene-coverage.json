@@ -1,0 +1,47 @@
+{
+  "workshop": "transit",
+  "placements": [
+    {
+      "stage": "start",
+      "slide_key": "build-a-transit-app-with-a-team-of-coding-agents",
+      "title": "Build a transit app with a team of coding agents",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/transit/start.svg"
+    },
+    {
+      "stage": "inspect",
+      "slide_key": "your-team-needs-a-departures-board",
+      "title": "Your team needs a departures board",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/transit/inspect.svg"
+    },
+    {
+      "stage": "build",
+      "slide_key": "add-the-task-board-and-two-workers",
+      "title": "Add the task board and two workers",
+      "original_reveals": 4,
+      "content_preserved": true,
+      "asset": "scenes/transit/build.svg"
+    },
+    {
+      "stage": "compare",
+      "slide_key": "more-workers-can-still-produce-more-waiting",
+      "title": "More workers can still produce more waiting",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/transit/compare.svg"
+    },
+    {
+      "stage": "release",
+      "slide_key": "take-the-coordination-code-to-your-own-project",
+      "title": "Take the coordination code to your own project",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/transit/release.svg"
+    }
+  ],
+  "new_slides": 0,
+  "source": "scripts/illustrate_workshop_scenes.py"
+}

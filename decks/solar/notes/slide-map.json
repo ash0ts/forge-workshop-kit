@@ -7,9 +7,9 @@
       "number": 1,
       "key": "cover",
       "title": "Solar forecasting<br>with agent-assisted<br>experiments",
-      "body": "<div class=\"sub\">Use satellite observations to compare forecasting models and test agent-written code changes.</div><LabScene /><div class=\"bottom-note\">A six-hour Python workshop using real archived observations.</div>",
-      "notes": "You are joining a fictional research lab preparing for its weekly forecast review. We will use real February 2014 satellite observations to predict X-ray flux thirty minutes ahead and solar images one hour ahead. First we will compare small trained models with copying the latest observation. Then we will ask an agent to edit the image experiment\u2019s code and test those changes with the same comparison. This is a CPU teaching experiment, not an operational solar forecast. Session block: Connect and trace an operation (minutes 0\u201325).",
-      "kind": "cover",
+      "body": "<figure v-if=\"$clicks === 0\" class=\"workshop-setting-frame\" data-workshop-scene=\"solar/start\"><img :src=\"&quot;/scenes/solar/start.svg&quot;\" alt=\"Solar forecasting lab: Start with dated observations, not a forecast result. Illustrative setting.\" /><figcaption><span>Next \u2192 explanation and evidence</span></figcaption></figure>\n<div v-else class=\"workshop-setting-detail\"><div class=\"sub\">Use satellite observations to compare forecasting models and test agent-written code changes.</div><LabScene /><div class=\"bottom-note\">A six-hour Python workshop using real archived observations.</div></div>",
+      "notes": "You are joining a fictional research lab preparing for its weekly forecast review. We will use real February 2014 satellite observations to predict X-ray flux thirty minutes ahead and solar images one hour ahead. First we will compare small trained models with copying the latest observation. Then we will ask an agent to edit the image experiment\u2019s code and test those changes with the same comparison. This is a CPU teaching experiment, not an operational solar forecast. Session block: Connect and trace an operation (minutes 0\u201325).\nSetting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.",
+      "kind": "cover workshop-setting-slide",
       "time": "0:00\u20130:25",
       "answer": null,
       "timing": {
@@ -30,7 +30,8 @@
         "records": []
       },
       "exercise": null,
-      "clicks": 0
+      "clicks": 1,
+      "workshop_scene": "solar/start"
     },
     {
       "number": 2,
@@ -154,9 +155,9 @@
       "number": 6,
       "key": "research-question",
       "title": "Bring a comparison your colleagues can repeat",
-      "body": "<div class=\"lab-files\"><div class=\"lab-folder\"><div class=\"scene-label\">Fictional lab shared folder</div><code>forecast_final.py</code><code>forecast_final_v2.py</code><code>forecast_final_final.py</code><code>forecast_final_USE_THIS.py</code><p>Last week\u2019s score came from one of these.</p></div><div><h2>Show the comparison.</h2><p>Predictions and errors on the same dates, including persistence and the cases the model got wrong.</p><h2>Save what produced it.</h2><p>Data version, source, settings, trained weights, and outputs, together in one run.</p></div></div><div class=\"bottom-note\">Later, an agent will edit the image-model code. We\u2019ll test its changes using this same comparison.</div>",
-      "notes": "At the review, a lower error is useful only if we know what produced it and what it was compared with. The four final files are our fictional lab\u2019s previous filing system. We will use Forge and W&B to connect the code, configuration, data, weights, and predictions to each run. The measurement task teaches that stack with a scalar output; the image task reuses it for predictions we can inspect pixel by pixel. Only then do we add an AI research assistant. It will read the image code and validation results and propose edits to the model or training procedure. It will not alter the data, target, or final scoring rules. Session block: Connect and trace an operation (minutes 0\u201325).",
-      "kind": "",
+      "body": "<figure v-if=\"$clicks === 0\" class=\"workshop-setting-frame\" data-workshop-scene=\"solar/inspect\"><img :src=\"&quot;/scenes/solar/inspect.svg&quot;\" alt=\"Solar forecasting lab: Can a source change improve this fixed forecasting task? Illustrative setting.\" /><figcaption><span>Next \u2192 explanation and evidence</span></figcaption></figure>\n<div v-else class=\"workshop-setting-detail\"><div class=\"lab-files\"><div class=\"lab-folder\"><div class=\"scene-label\">Fictional lab shared folder</div><code>forecast_final.py</code><code>forecast_final_v2.py</code><code>forecast_final_final.py</code><code>forecast_final_USE_THIS.py</code><p>Last week\u2019s score came from one of these.</p></div><div><h2>Show the comparison.</h2><p>Predictions and errors on the same dates, including persistence and the cases the model got wrong.</p><h2>Save what produced it.</h2><p>Data version, source, settings, trained weights, and outputs, together in one run.</p></div></div><div class=\"bottom-note\">Later, an agent will edit the image-model code. We\u2019ll test its changes using this same comparison.</div></div>",
+      "notes": "At the review, a lower error is useful only if we know what produced it and what it was compared with. The four final files are our fictional lab\u2019s previous filing system. We will use Forge and W&B to connect the code, configuration, data, weights, and predictions to each run. The measurement task teaches that stack with a scalar output; the image task reuses it for predictions we can inspect pixel by pixel. Only then do we add an AI research assistant. It will read the image code and validation results and propose edits to the model or training procedure. It will not alter the data, target, or final scoring rules. Session block: Connect and trace an operation (minutes 0\u201325).\nSetting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.",
+      "kind": "workshop-setting-slide",
       "time": "0:00\u20130:25",
       "answer": null,
       "timing": {
@@ -177,7 +178,8 @@
         "records": []
       },
       "exercise": null,
-      "clicks": 0
+      "clicks": 1,
+      "workshop_scene": "solar/inspect"
     },
     {
       "number": 7,
@@ -2081,9 +2083,9 @@
       "number": 70,
       "key": "agent-need",
       "title": "Use the experiment to test agent-written changes",
-      "body": "<SolarComputation mode=\"evidence\" /><div class=\"bottom-note\">The lab has recruited an AI research assistant. We still review and test its work.</div>",
-      "notes": "The lab now has code, saved experiments, and a comparison we can inspect. The PI suggests bringing in an AI research assistant to propose the next changes. It reads the current source, active settings, validation errors, and any failures. We still review its diffs and run them through the training and scoring functions we built. The new colleague gets no exemption from testing. Session block: Build the research-agent request (minutes 230\u2013260).",
-      "kind": "",
+      "body": "<figure v-if=\"$clicks === 0\" class=\"workshop-setting-frame\" data-workshop-scene=\"solar/build\"><img :src=\"&quot;/scenes/solar/build.svg&quot;\" alt=\"Solar forecasting lab: The research agent edits source, runs experiments, and reads evidence. Illustrative setting.\" /><figcaption><span>Next \u2192 explanation and evidence</span></figcaption></figure>\n<div v-else class=\"workshop-setting-detail\"><SolarComputation mode=\"evidence\" /><div class=\"bottom-note\">The lab has recruited an AI research assistant. We still review and test its work.</div></div>",
+      "notes": "The lab now has code, saved experiments, and a comparison we can inspect. The PI suggests bringing in an AI research assistant to propose the next changes. It reads the current source, active settings, validation errors, and any failures. We still review its diffs and run them through the training and scoring functions we built. The new colleague gets no exemption from testing. Session block: Build the research-agent request (minutes 230\u2013260).\nSetting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.",
+      "kind": "workshop-setting-slide",
       "time": "3:50\u20134:20",
       "answer": null,
       "timing": {
@@ -2104,7 +2106,8 @@
         "records": []
       },
       "exercise": null,
-      "clicks": 0
+      "clicks": 1,
+      "workshop_scene": "solar/build"
     },
     {
       "number": 71,
@@ -2865,12 +2868,12 @@
       "number": 96,
       "key": "freeze",
       "title": "Keep the selected code and weights fixed for final evaluation",
-      "body": "<SolarComputation mode=\"inference\" :reveal=\"Math.min($clicks + 1, 4)\" />",
-      "notes": "We have used validation dates to choose the version we will bring to the review. Save that source and its trained weights together before looking at February thirteenth and fourteenth. Final evaluation loads those weights and predicts the reserved inputs without training or selecting again. If we edit after inspecting these results, we need new reserved dates to test the next claim. Reveal one operation at a time. Ask what changed before advancing. Back restores the previous state. Session block: Freeze and compare on reserved dates (minutes 320\u2013345).",
-      "kind": "",
+      "body": "<figure v-if=\"$clicks === 0\" class=\"workshop-setting-frame\" data-workshop-scene=\"solar/compare\"><img :src=\"&quot;/scenes/solar/compare.svg&quot;\" alt=\"Solar forecasting lab: Keep the data split and evaluation rules fixed for comparison. Illustrative setting.\" /><figcaption><span>Next \u2192 explanation and evidence</span></figcaption></figure>\n<div v-else class=\"workshop-setting-detail\"><SolarComputation mode=\"inference\" :reveal=\"Math.min((Math.max(0, $clicks - 1)) + 1, 4)\" /></div>",
+      "notes": "We have used validation dates to choose the version we will bring to the review. Save that source and its trained weights together before looking at February thirteenth and fourteenth. Final evaluation loads those weights and predicts the reserved inputs without training or selecting again. If we edit after inspecting these results, we need new reserved dates to test the next claim. Reveal one operation at a time. Ask what changed before advancing. Back restores the previous state. Session block: Freeze and compare on reserved dates (minutes 320\u2013345).\nSetting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.",
+      "kind": "workshop-setting-slide",
       "time": "5:20\u20135:45",
       "answer": null,
-      "clicks": 3,
+      "clicks": 4,
       "timing": {
         "section": "evaluation",
         "section_title": "Freeze and compare on reserved dates",
@@ -2888,7 +2891,8 @@
         "type": "explanation",
         "records": []
       },
-      "exercise": null
+      "exercise": null,
+      "workshop_scene": "solar/compare"
     },
     {
       "number": 97,
@@ -3423,9 +3427,9 @@
       "number": 113,
       "key": "close",
       "title": "Bring the results to the lab review",
-      "body": "<div class=\"native-product-evidence\"><a class=\"product-screen visual-v030-solar-report\" href=\"/images/visual-v030-solar-report.png\" target=\"_blank\" aria-label=\"Open full-size capture\"><img src=\"/images/visual-v030-solar-report.png\" alt=\"Native Report excerpt summarizing the latest Solar technical rehearsal\"></a><div class=\"product-caption\"><span>Bring one result, its saved source, and the next experiment you would try.</span><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==\">Open the Report \u2197</a></div><div class=\"image-caption\">Recorded technical rehearsal. Use your own completed runs when writing your Report.</div></div>",
-      "notes": "Return to the weekly lab review. Ask participants to open their Report and follow one result to its source and saved prediction. In the recorded rehearsal, the selected image model reduced error, while the GOES model still lost to persistence. Both belong in the review. The image result uses one seed and two test days; it needs testing on other dates. The later qualification found that a repaired GOES recipe beat persistence on all three seeds. The saved image edits helped two seeds and slightly hurt one. Bring both facts to the review; neither replaces the original evidence. Ask each participant to propose a next test grounded in their own forecast. Session block: Reproduce and explain the result (minutes 345\u2013360).",
-      "kind": "",
+      "body": "<figure v-if=\"$clicks === 0\" class=\"workshop-setting-frame\" data-workshop-scene=\"solar/release\"><img :src=\"&quot;/scenes/solar/release.svg&quot;\" alt=\"Solar forecasting lab: Keep observations, source, weights, and predictions linked. Illustrative setting.\" /><figcaption><span>Next \u2192 explanation and evidence</span></figcaption></figure>\n<div v-else class=\"workshop-setting-detail\"><div class=\"native-product-evidence\"><a class=\"product-screen visual-v030-solar-report\" href=\"/images/visual-v030-solar-report.png\" target=\"_blank\" aria-label=\"Open full-size capture\"><img src=\"/images/visual-v030-solar-report.png\" alt=\"Native Report excerpt summarizing the latest Solar technical rehearsal\"></a><div class=\"product-caption\"><span>Bring one result, its saved source, and the next experiment you would try.</span><a href=\"https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-a-research-loop,-then-give-it-an-agent:-6e768bbe--VmlldzoxODMwMzU3Nw==\">Open the Report \u2197</a></div><div class=\"image-caption\">Recorded technical rehearsal. Use your own completed runs when writing your Report.</div></div></div>",
+      "notes": "Return to the weekly lab review. Ask participants to open their Report and follow one result to its source and saved prediction. In the recorded rehearsal, the selected image model reduced error, while the GOES model still lost to persistence. Both belong in the review. The image result uses one seed and two test days; it needs testing on other dates. The later qualification found that a repaired GOES recipe beat persistence on all three seeds. The saved image edits helped two seeds and slightly hurt one. Bring both facts to the review; neither replaces the original evidence. Ask each participant to propose a next test grounded in their own forecast. Session block: Reproduce and explain the result (minutes 345\u2013360).\nSetting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.",
+      "kind": "workshop-setting-slide",
       "time": "5:45\u20136:00",
       "answer": null,
       "timing": {
@@ -3446,7 +3450,8 @@
         "records": []
       },
       "exercise": null,
-      "clicks": 0
+      "clicks": 1,
+      "workshop_scene": "solar/release"
     },
     {
       "number": 114,

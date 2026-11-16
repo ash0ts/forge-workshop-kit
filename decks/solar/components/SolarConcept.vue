@@ -97,5 +97,5 @@ const descriptions={
 </svg>
 </template>
 <style scoped>
-.solar-concept{width:100%;height:385px;display:block;margin-top:12px}text{font:24px 'IBM Plex Sans',sans-serif;fill:#163c43}.small{font-size:19px}.mono{font:23px 'IBM Plex Mono',monospace}.shape{font:32px 'IBM Plex Mono',monospace}.label{font:14px 'IBM Plex Mono',monospace;fill:#52776d;letter-spacing:.6px}.axis,.arrow{fill:none;stroke:#52776d;stroke-width:2.5}.arrow{marker-end:var(--arrow)}
+.solar-concept{width:100%;height:385px;display:block;margin-top:12px}text{font:24px 'IBM Plex Sans',sans-serif;fill:#163c43}.small{font-size:19px}.mono{font:23px 'IBM Plex Mono',monospace}.shape{font:32px 'IBM Plex Mono',monospace}.label{font:16px 'IBM Plex Mono',monospace;fill:#52776d;letter-spacing:.6px}.axis,.arrow{fill:none;stroke:#52776d;stroke-width:2.5}.arrow{marker-end:var(--arrow)}
 </style>

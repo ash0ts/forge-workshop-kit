@@ -24,6 +24,7 @@ node_modules
 
 # Generated from visual-guides/ and the portable visual skill.
 decks/*/public/guides/
+decks/*/public/scenes/
 src/forge_workshop_kit/assets/technical-guides/**/slide/
 src/forge_workshop_kit/assets/technical-guides/**/index.html
 src/forge_workshop_kit/assets/technical-guides/**/final.svg

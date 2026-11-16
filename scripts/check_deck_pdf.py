@@ -30,11 +30,13 @@ assert sorted(set(row["slide"] for row in page_map)) == list(range(1, layout["to
 assert [row["slide"] for row in page_map] == sorted(row["slide"] for row in page_map)
 checks_path = deck / "notes/delivery-checks.json"
 checked_guides = {}
+checked_scenes = {}
 if checks_path.exists():
     checked = json.loads(checks_path.read_text(encoding='utf-8'))
     source_hash = hashlib.sha256((deck / "slides.md").read_bytes()).hexdigest()
     if checked.get("source_sha256") == source_hash and checked.get("click_states"):
         assert [{"slide": row["slide"], "click": row["click"]} for row in page_map] == [{"slide": row["slide"], "click": row["click"]} for row in checked["click_states"]], "PDF builds differ from checked browser click states"
+        checked_scenes = {(row["slide"], row["click"]): row["workshop_scene"] for row in checked["click_states"] if row.get("workshop_scene")}
         checked_guides = {(row["slide"], row["click"]): row["technical_guide"] for row in checked["click_states"] if row.get("technical_guide")}
 first_page = {slide: next(row["page"] for row in page_map if row["slide"] == slide) for slide in range(1, layout["total_slides"] + 1)}
 converted = 0
@@ -75,6 +77,7 @@ if converted:
 screens = deck / ".screenshots"
 screens.mkdir(exist_ok=True)
 guide_pages = []
+scene_pages = []
 for number, page in enumerate(document, 1):
     assert not any(
         urlparse(link.get("uri", "")).hostname in ("localhost", "127.0.0.1")
@@ -86,7 +89,8 @@ for number, page in enumerate(document, 1):
     guide = checked_guides.get((row["slide"], row["click"]))
     slide_entry = layout["slides"][row["slide"] - 1]
     is_guide = guide or slide_entry.get("technical_guide") or slide_entry.get("key", slide_entry.get("name")) in guide_keys
-    if is_guide:
+    scene = checked_scenes.get((row["slide"], row["click"]))
+    if is_guide or scene:
         # Footers and a frame counter do not establish a rendered diagram.
         # Inspect the drawing area above both, independently of PDF text.
         crop = image.crop((int(image.width * .02), int(image.height * .03), int(image.width * .98), int(image.height * .84)))
@@ -97,7 +101,7 @@ for number, page in enumerate(document, 1):
         if guide:
             expected_counter = f"{guide['frameIndex'] + 1} / {guide['frameCount']}"
             assert expected_counter in page.get_text(), f"PDF page {number} is missing technical-guide reveal {expected_counter}"
-        guide_pages.append({"page": number, "slide": row["slide"], "click": row["click"], "drawing_coverage": round(ink, 4)})
+        (scene_pages if scene else guide_pages).append({"page": number, "slide": row["slide"], "click": row["click"], "drawing_coverage": round(ink, 4)})
     pixmap.save(screens / f"pdf-{number:03}.png")
 for offset in range(0, len(document), 12):
     sheet = Image.new("RGB", (1280, 795), "#f4efe5")
@@ -116,6 +120,7 @@ result = {
     "empty_pages": 0,
     "all_pages_rendered": True,
     "technical_guide_pages": guide_pages,
+    "workshop_scene_pages": scene_pages,
     "converted_links": converted,
     "source_sha256": hashlib.sha256((deck / "slides.md").read_bytes()).hexdigest(),
     "pdf_sha256": hashlib.sha256(target.read_bytes()).hexdigest(),

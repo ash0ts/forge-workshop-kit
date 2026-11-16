@@ -216,7 +216,7 @@ else:
     control_labels=set(json.loads(ROOT.joinpath('notes/exercise-controls.json').read_text(encoding='utf-8'))['labels'])
 ROOT.joinpath('notes/exercise-controls.json').write_text(json.dumps({'source':'scripts/airline_monitoring_cells.py','labels':sorted(control_labels),'references':[{'slide_name':item['name'],'exercise':item.get('exercise_reference')} for item in slides if item.get('exercise_reference')]},indent=2)+'\n', encoding='utf-8')
 
-header='''---\ntheme: default\ntitle: Monitor an airline service agent and build better evaluations\nauthor: Anish Shah\nclass: cover\nlayout: default\naspectRatio: 16/9\ncanvasWidth: 1280\ncolorSchema: light\ntransition: fade\nwakeLock: false\nfonts:\n  sans: IBM Plex Sans\n  mono: IBM Plex Mono\n  provider: none\nmdc: true\nhighlighter: shiki\ndrawings:\n  enabled: false\ndownload: false\n---\n'''
+header='''---\ntheme: default\ntitle: Monitor an airline service agent and build better evaluations\nauthor: Anish Shah\nclass: cover workshop-setting-slide\nclicks: 1\nlayout: default\naspectRatio: 16/9\ncanvasWidth: 1280\ncolorSchema: light\ntransition: fade\nwakeLock: false\nfonts:\n  sans: IBM Plex Sans\n  mono: IBM Plex Mono\n  provider: none\nmdc: true\nhighlighter: shiki\ndrawings:\n  enabled: false\ndownload: false\n---\n'''
 
 # Each mechanism keeps its geometry and concrete example across clicks. The
 # original exercise identities, timings, evidence, and controls stay unchanged.

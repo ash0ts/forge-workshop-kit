@@ -2,7 +2,8 @@
 theme: default
 title: Route customer requests and learn from mistakes
 author: Anish Shah
-class: cover
+class: cover workshop-setting-slide
+clicks: 1
 layout: default
 aspectRatio: 16/9
 canvasWidth: 1280
@@ -24,11 +25,13 @@ download: false
 
 # Route customer requests<br>and learn from mistakes
 
-<div class="sub">Train a support router, review its errors, and test a revised version, then release and recover it using public banking requests.</div><div class="bottom-note">5½ hours · CPU classifiers · Agent Lens · W&B · Weave and EvalTables</div>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="routing/start"><img :src="&quot;/scenes/routing/start.svg&quot;" alt="Support routing desk: Follow one support request toward its intended queue. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><div class="sub">Train a support router, review its errors, and test a revised version, then release and recover it using public banking requests.</div><div class="bottom-note">5½ hours · CPU classifiers · Agent Lens · W&B · Weave and EvalTables</div></div>
 
 <!--
 The support team is fictional. The messages are public Banking77 data. We will make a genuine measured classifier comparison, then let participants run an open-ended data review experiment. Do not promise that every personal review will improve the score.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---
@@ -64,18 +67,22 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 -->
 
 ---
+class: workshop-setting-slide
 name: manager
+clicks: 1
 ---
 
 <div class="kicker">0:04</div>
 
 # A manager has offered to automate forwarding
 
-<div class="quote">“If the system can write the whole email, surely it can pick a queue.”</div><div class="flow"><div>Message<small>What the customer wrote</small></div><b class="arrow">→</b><div>Routing decision<small>One intent, or human review</small></div><b class="arrow">→</b><div>Support workflow<small>Delivery, troubleshooting, disputed payment…</small></div></div>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="routing/inspect"><img :src="&quot;/scenes/routing/inspect.svg&quot;" alt="Support routing desk: The manager turns the support problem into a research task. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><div class="quote">“If the system can write the whole email, surely it can pick a queue.”</div><div class="flow"><div>Message<small>What the customer wrote</small></div><b class="arrow">→</b><div>Routing decision<small>One intent, or human review</small></div><b class="arrow">→</b><div>Support workflow<small>Delivery, troubleshooting, disputed payment…</small></div></div></div>
 
 <!--
 This is fictional dialogue. The engineering problem is a constrained label choice. A wrong label wastes time even if the message is polite and the JSON validates. Keep the humor in the manager line, and the task literal.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---
@@ -691,18 +698,22 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forg
 -->
 
 ---
+class: workshop-setting-slide
 name: review-dataset
+clicks: 1
 ---
 
 <div class="kicker">3:10</div>
 
 # Use reviewed data to run a new experiment
 
-<div class="flow"><div>Accepted review<small>Human label and provenance</small></div><b class="arrow">→</b><div>Training dataset version<small>Original training + reviewed cases</small></div><b class="arrow">→</b><div>Revised classifier<small>Same frozen encoder</small></div></div><p>The test set does not enter this path. Use validation to decide whether to keep the revised model.</p>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="routing/build"><img :src="&quot;/scenes/routing/build.svg&quot;" alt="Support routing desk: Read each request beside its assigned queue label. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><div class="flow"><div>Accepted review<small>Human label and provenance</small></div><b class="arrow">→</b><div>Training dataset version<small>Original training + reviewed cases</small></div><b class="arrow">→</b><div>Revised classifier<small>Same frozen encoder</small></div></div><p>The test set does not enter this path. Use validation to decide whether to keep the revised model.</p></div>
 
 <!--
 The request review changes training data. It does not alter the encoder or hide difficult test examples. A review can be wrong, redundant, or too small to matter. Live improvement is measured, not scripted.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---
@@ -754,18 +765,22 @@ Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/
 -->
 
 ---
+class: workshop-setting-slide
 name: freeze
+clicks: 1
 ---
 
 <div class="kicker">3:40</div>
 
 # Freeze what the final comparison will use
 
-<svg class="diagram" viewBox="0 0 1120 290" role="img" aria-label="Classifier weights, preprocessing, review threshold and source are frozen before final evaluation"><g fill="#e4e9dc" stroke="#96ad9e"><rect x="10" y="45" width="250" height="120"/><rect x="290" y="45" width="250" height="120"/><rect x="570" y="45" width="250" height="120"/><rect x="850" y="45" width="250" height="120"/></g><g style="font-size:26px"><text x="32" y="90">Classifier weights</text><text x="313" y="90">Preprocessing</text><text x="593" y="90">Review threshold</text><text x="873" y="90">Source + datasets</text></g><g style="font-size:19px"><text x="32" y="130">Exact saved file</text><text x="313" y="130">Vectorizer or encoder</text><text x="593" y="130">Your tested policy</text><text x="873" y="130">What produced them</text></g><path d="M10 205H1100" stroke="#237a6c" stroke-width="4"/><text x="360" y="250" style="font-size:26px">Then open the official test partition</text></svg>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="routing/compare"><img :src="&quot;/scenes/routing/compare.svg&quot;" alt="Support routing desk: Hold the cases and label meanings fixed across candidates. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><svg class="diagram" viewBox="0 0 1120 290" role="img" aria-label="Classifier weights, preprocessing, review threshold and source are frozen before final evaluation"><g fill="#e4e9dc" stroke="#96ad9e"><rect x="10" y="45" width="250" height="120"/><rect x="290" y="45" width="250" height="120"/><rect x="570" y="45" width="250" height="120"/><rect x="850" y="45" width="250" height="120"/></g><g style="font-size:26px"><text x="32" y="90">Classifier weights</text><text x="313" y="90">Preprocessing</text><text x="593" y="90">Review threshold</text><text x="873" y="90">Source + datasets</text></g><g style="font-size:19px"><text x="32" y="130">Exact saved file</text><text x="313" y="130">Vectorizer or encoder</text><text x="593" y="130">Your tested policy</text><text x="873" y="130">What produced them</text></g><path d="M10 205H1100" stroke="#237a6c" stroke-width="4"/><text x="360" y="250" style="font-size:26px">Then open the official test partition</text></svg></div>
 
 <!--
 The notebook records the selected training stage and model checksum. A policy is part of the release decision and must be fixed before seeing the final requests. After final evaluation, another choice is a separately labeled teaching retest.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---
@@ -1179,18 +1194,22 @@ Registry manages versions, not automatic deployment. The core capstone contains 
 -->
 
 ---
+class: workshop-setting-slide
 name: close
+clicks: 1
 ---
 
 <div class="kicker">5:29</div>
 
 # What to take back to your team
 
-<p>Pick a real routing decision with a small, clear label set. Save the requests you reviewed, explain what a wrong route means, and compare the next version on cases you did not edit against.</p><p>Keep the human review cost visible. Sending every difficult case to a person can improve the reported selective accuracy while leaving the support team with more work.</p>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="routing/release"><img :src="&quot;/scenes/routing/release.svg&quot;" alt="Support routing desk: Package the model with its ordered queue labels. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><p>Pick a real routing decision with a small, clear label set. Save the requests you reviewed, explain what a wrong route means, and compare the next version on cases you did not edit against.</p><p>Keep the human review cost visible. Sending every difficult case to a person can improve the reported selective accuracy while leaving the support team with more work.</p></div>
 
 <!--
 Close with a concrete transfer task. Ask each participant to name one queue, one failure, one measurable outcome, and one person who can review labels in their own workflow. No claims beyond the recorded Banking77 experiment.
 Teaching source: https://github.com/ash0ts/forge-workshop-kit/blob/main/src/forge_workshop_kit/routing.py.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---

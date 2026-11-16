@@ -240,7 +240,8 @@ theme: default
 title: Please improve yourself · Pending, Inc.
 author: Anish Shah
 info: Build, instrument, evaluate and improve an agent in your own Forge project.
-class: cover
+class: cover workshop-setting-slide
+clicks: 1
 aspectRatio: 16/9
 canvasWidth: 1280
 colorSchema: light

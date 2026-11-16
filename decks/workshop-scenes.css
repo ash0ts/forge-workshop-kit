@@ -1,0 +1,10 @@
+/* A setting introduces an operation. Advance to the unchanged lesson content. */
+.slidev-layout.slidev-layout.workshop-setting-slide:has(.workshop-setting-frame){padding:10px 20px 38px!important;background:#f5f4ef!important;color:#242623!important;display:block!important;height:100%}
+.slidev-layout.workshop-setting-slide:has(.workshop-setting-frame) :is(h1,.kicker){display:none!important}
+.workshop-setting-frame{position:absolute;inset:10px 20px 38px;height:auto;width:auto;display:grid;grid-template-rows:minmax(0,1fr) 22px;gap:2px;margin:0!important}
+.workshop-setting-frame img{width:100%;height:100%;min-height:0;display:block;object-fit:contain}
+.workshop-setting-frame figcaption{display:flex;justify-content:flex-end;padding:0 28px;font:13px 'IBM Plex Mono',monospace;color:#60625d}
+.workshop-setting-detail{display:contents}
+.slidev-layout.workshop-setting-slide:has(.workshop-setting-frame) .footer span{background:#f5f4ef;color:#60625d}
+@media print{.workshop-setting-frame figcaption span{display:none}}
+@media(prefers-reduced-motion:reduce){.workshop-setting-frame{transition:none;animation:none}}

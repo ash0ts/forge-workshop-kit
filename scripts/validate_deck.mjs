@@ -19,6 +19,10 @@ const layout = JSON.parse(await fs.readFile(path.join(deck, 'notes/slide-map.jso
 const guideCoveragePath = path.join(deck, 'notes/technical-guide-coverage.json');
 const guideCoverage = existsSync(guideCoveragePath) ? JSON.parse(await fs.readFile(guideCoveragePath, 'utf8')) : null;
 const guideKeys = new Set(guideCoverage ? [guideCoverage.overview, ...guideCoverage.sequences.map(sequence => sequence.slide_key)] : []);
+const sceneCoveragePath = path.join(deck, 'notes/scene-coverage.json');
+const sceneCoverage = existsSync(sceneCoveragePath) ? JSON.parse(await fs.readFile(sceneCoveragePath, 'utf8')) : null;
+const sceneByKey = new Map(sceneCoverage?.placements.map(scene => [scene.slide_key, scene]) || []);
+const sceneKeys = new Set(sceneByKey.keys());
 const sourceSha256 = createHash('sha256').update(await fs.readFile(path.join(deck, 'slides.md'))).digest('hex');
 const output = path.join(deck, '.screenshots');
 await fs.mkdir(output, {recursive: true});
@@ -56,8 +60,13 @@ try {
     await page.evaluate(() => document.fonts.ready);
     await page.waitForFunction(title => {
       const normalize = text => text.replace(/\s+/g, ' ').trim();
+      const headingText = root => {
+        const heading = root.querySelector('h1')?.cloneNode(true);
+        heading?.querySelectorAll('br').forEach(br => br.replaceWith(' '));
+        return normalize(heading?.textContent || '');
+      };
       const template = document.createElement('div'); template.innerHTML = title.replace(/<br\s*\/?\s*>/gi, ' ');
-      return [...document.querySelectorAll('.slidev-layout')].some(root => root.getBoundingClientRect().width > 0 && normalize(root.querySelector('h1')?.innerText || '') === normalize(template.textContent));
+      return [...document.querySelectorAll('.slidev-layout')].some(root => root.getBoundingClientRect().width > 0 && headingText(root) === normalize(template.textContent));
     }, slide.title);
     const localAssets = await page.locator('.slidev-layout a[href]').evaluateAll(links => links.map(link => new URL(link.getAttribute('href'), window.location.href).href).filter(url => url.startsWith(window.location.origin + '/') && new URL(url).pathname.includes('/aria/')));
     for (const url of localAssets) {
@@ -69,9 +78,14 @@ try {
     for (;;) {
     const result = await page.evaluate(title => {
       const normalize = text => text.replace(/\s+/g, ' ').trim();
+      const headingText = root => {
+        const heading = root.querySelector('h1')?.cloneNode(true);
+        heading?.querySelectorAll('br').forEach(br => br.replaceWith(' '));
+        return normalize(heading?.textContent || '');
+      };
       const template = document.createElement('div'); template.innerHTML = title.replace(/<br\s*\/?\s*>/gi, ' ');
       const expected = normalize(template.textContent);
-      const root = [...document.querySelectorAll('.slidev-layout')].find(element => element.getBoundingClientRect().width > 0 && normalize(element.querySelector('h1')?.innerText || '') === expected);
+      const root = [...document.querySelectorAll('.slidev-layout')].find(element => element.getBoundingClientRect().width > 0 && headingText(element) === expected);
       const visible = element => {
         for (let node = element; node && node !== root.parentElement; node = node.parentElement) {
           const style = getComputedStyle(node);
@@ -101,6 +115,22 @@ try {
           frameCount: Number(figure?.getAttribute('data-frame-count') ?? 0),
         };
       }
+      const settingFrame = root.querySelector('.workshop-setting-frame');
+      const settingImage = settingFrame?.querySelector('img');
+      const settingBounds = settingFrame?.getBoundingClientRect();
+      const workshopScene = settingFrame ? {
+        id: settingFrame.getAttribute('data-workshop-scene'),
+        loaded: Boolean(settingImage?.complete && settingImage?.naturalWidth > 0),
+        alt: settingImage?.alt || '',
+        width: settingBounds.width, height: settingBounds.height,
+        src: settingImage?.getAttribute('src') || '',
+        imageWidth: settingImage?.getBoundingClientRect().width || 0,
+        imageHeight: settingImage?.getBoundingClientRect().height || 0,
+        inside: settingBounds.left >= box.left - 2 && settingBounds.right <= box.right + 2 && settingBounds.top >= box.top - 2 && settingBounds.bottom <= box.bottom - 20,
+      } : null;
+      const detail = root.querySelector('.workshop-setting-detail');
+      const sceneDetailVisible = Boolean(detail && visible(detail) && detail.textContent.trim()
+        && [...detail.children].some(child => visible(child) && child.getBoundingClientRect().width));
       for (const element of root.querySelectorAll('h1,h2,p,pre,table,.task,.done,.quote,.source-link,.bottom-note,.exercise-controls,.image-caption')) {
         const rect = element.getBoundingClientRect();
         if (visible(element) && rect.width && rect.height && (rect.bottom > box.bottom - 20 || rect.right > box.right + 1 || rect.left < box.left - 1)) overflow.push({tag:element.tagName, text:element.textContent.slice(0,100), x:rect.x, y:rect.y, width:rect.width, height:rect.height});
@@ -182,11 +212,17 @@ try {
         }
       }
       const clippedCode = [...root.querySelectorAll('pre')].filter(visible).filter(element => element.scrollWidth > element.clientWidth + 2 || element.scrollHeight > element.clientHeight + 2).map(element => element.textContent.slice(0,200));
-      return {title:expected, overflow, diagrams, technicalGuide, textProblems, textOverflow, contrastProblems, clippedCode, missingImages:[...root.querySelectorAll('img')].filter(image => !image.complete || !image.naturalWidth).map(image => image.src)};
+      return {title:expected, overflow, diagrams, technicalGuide, workshopScene, sceneDetailVisible, textProblems, textOverflow, contrastProblems, clippedCode, missingImages:[...root.querySelectorAll('img')].filter(image => !image.complete || !image.naturalWidth).map(image => image.src)};
     }, slide.title);
     if (currentClick === 0) titles.push({number:slide.number, key:slide.key, title:result.title});
-    clickStates.push({slide:slide.number, click:currentClick, ...(result.technicalGuide ? {technical_guide:result.technicalGuide} : {})});
+    clickStates.push({slide:slide.number, click:currentClick, ...(result.workshopScene ? {workshop_scene:result.workshopScene} : {}), ...(result.technicalGuide ? {technical_guide:result.technicalGuide} : {})});
     if (guideKeys.has(slide.key || slide.name) && !result.technicalGuide) issues.push({slide:slide.number,click:currentClick,error:'Expected technical guide slide is missing its presentation class and rendered guide'});
+    if (sceneKeys.has(slide.key || slide.name) || result.workshopScene) {
+      const scene = result.workshopScene;
+      if ((currentClick === 0 && (!scene || !scene.loaded || !scene.inside || scene.width < 900 || scene.height < 550 || scene.imageWidth < 900 || scene.imageHeight < 500 || !scene.alt)) || (currentClick > 0 && (scene || !result.sceneDetailVisible))) {
+        issues.push({slide:slide.number,click:currentClick,error:'Setting illustration is missing, clipped, too small, or hiding the lesson',workshopScene:scene});
+      }
+    }
     if (result.technicalGuide) {
       const guide = result.technicalGuide;
       if (!guide.present || !guide.visible || !guide.loaded || !guide.inside || guide.width < 500 || guide.height < 250 || !guide.alt || !guide.frameId || !guide.src.includes('/guides/') || guide.frameIndex !== currentClick || guide.frameCount <= currentClick) {
@@ -208,6 +244,10 @@ try {
     await page.keyboard.press('ArrowLeft');
     await page.waitForTimeout(120);
     if (Number(new URL(page.url()).searchParams.get('clicks') || 0) !== currentClick) issues.push({slide:slide.number,error:'Back did not restore the previous reveal'});
+    if (result.workshopScene) {
+      const restored = await page.locator('.workshop-setting-frame:visible').evaluateAll(figures => figures.map(figure => ({id:figure.getAttribute('data-workshop-scene'),src:figure.querySelector('img')?.getAttribute('src')})));
+      if (!restored.some(frame => frame.id === result.workshopScene.id && frame.src === result.workshopScene.src)) issues.push({slide:slide.number,click:currentClick,error:'Back did not restore the setting illustration'});
+    }
     if (result.technicalGuide) {
       const restored = await page.locator('.slidev-layout.technical-manual .te-guide-frame:visible').evaluateAll(figures => figures.map(figure => ({id:figure.getAttribute('data-frame-id'),src:figure.querySelector('img')?.getAttribute('src')})));
       if (!restored.some(frame => frame.id === result.technicalGuide.frameId && frame.src === result.technicalGuide.src)) issues.push({slide:slide.number,click:currentClick,error:'Back did not restore the previous technical-guide image'});
@@ -215,6 +255,11 @@ try {
     await page.keyboard.press('ArrowRight');
     await page.waitForTimeout(120);
     currentClick = nextClick;
+    }
+    const scenePlacement = sceneByKey.get(slide.key || slide.name);
+    if (scenePlacement) {
+      const states = clickStates.filter(state => state.slide === slide.number);
+      if (states.length !== scenePlacement.original_reveals + 1) issues.push({slide:slide.number,error:'Scene sequence skipped an authored reveal',expected:scenePlacement.original_reveals + 1,actual:states.length});
     }
     const guideStates = clickStates.filter(state => state.slide === slide.number && state.technical_guide);
     if (guideStates.length) {

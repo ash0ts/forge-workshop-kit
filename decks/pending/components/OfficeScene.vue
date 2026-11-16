@@ -4,7 +4,7 @@ const floorId = useId().replace(/:/g, '')
 defineProps({ mode: {default: 'employee'} })
 </script>
 <template>
-<svg viewBox="0 0 680 450" role="img" aria-label="Illustration of the Pending Inc office. The employee has a handbook and a terminal; the editor sits at a separate desk." class="office-scene">
+<svg viewBox="0 0 680 450" role="img" :aria-label="mode === 'editor' ? 'Illustration of the Pending Inc office. An employee has a terminal and handbook; a process editor works at a separate desk.' : mode === 'blank' ? 'Illustration of the Pending Inc office. An employee has a terminal, with no handbook supplied.' : 'Illustration of the Pending Inc office. An employee has a terminal and handbook beside the desk.'" class="office-scene">
   <defs><pattern :id="floorId" width="28" height="28" patternUnits="userSpaceOnUse"><rect width="28" height="28" fill="#e7e0cf"/><path d="M28 0H0V28" fill="none" stroke="#cfc5b0"/></pattern></defs>
   <path d="M25 112H655V422H25Z" :fill="`url(#${floorId})`" stroke="#0d292e" stroke-width="8"/>
   <path d="M25 112V26H655V112" fill="#c2cdbd" stroke="#0d292e" stroke-width="8"/>

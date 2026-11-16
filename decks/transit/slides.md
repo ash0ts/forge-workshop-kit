@@ -2,7 +2,8 @@
 theme: default
 title: Build a transit app with a team of coding agents
 author: Anish Shah
-class: cover
+class: cover workshop-setting-slide
+clicks: 1
 layout: default
 aspectRatio: 16/9
 canvasWidth: 1280
@@ -24,11 +25,13 @@ download: false
 
 # Build a transit app<br>with a team of coding agents
 
-<div class="sub">Write the task coordinator, inspect the handoffs, and test whether shared lessons help the next feature.</div><div class="bottom-note">Six hours · Real MBTA schedule data · Your own Forge project</div>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="transit/start"><img :src="&quot;/scenes/transit/start.svg&quot;" alt="Transit build room: Two builders share one departure-board problem. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><div class="sub">Write the task coordinator, inspect the handoffs, and test whether shared lessons help the next feature.</div><div class="bottom-note">Six hours · Real MBTA schedule data · Your own Forge project</div></div>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>1 / 102</span></div>
 
 <!--
 The department and deadline are fictional. The schedule records are real public MBTA data. Participants build a bounded software factory; we do not claim to reproduce an unattended production engineering organization. The single session includes three breaks. The extra time is for tracing one concrete input through the implementation, writing the coordinator and explaining the recorded failures.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---
@@ -50,16 +53,21 @@ Visual guide: transit/overview. Advance one state at a time; Back restores the p
 -->
 
 ---
+class: workshop-setting-slide
+clicks: 1
+---
 
 <div class="kicker">0:02</div>
 
 # Your team needs a departures board
 
-<div class="quote">The demo is Friday. Someone has already promised a second feature.</div><p>A rider selects a stop and a service date. The app must show the right departures, in order, with the route and destination.</p><p class="caption">Fictional product brief. The app uses a saved historical schedule, so it does not predict live arrivals.</p>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="transit/inspect"><img :src="&quot;/scenes/transit/inspect.svg&quot;" alt="Transit build room: The departure board must handle trips after midnight. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><div class="quote">The demo is Friday. Someone has already promised a second feature.</div><p>A rider selects a stop and a service date. The app must show the right departures, in order, with the route and destination.</p><p class="caption">Fictional product brief. The app uses a saved historical schedule, so it does not predict live arrivals.</p></div>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>3 / 102</span></div>
 
 <!--
 Start with the person using the software. Ask what could make a plausible-looking board wrong. Listen for wrong date, wrong stop, missing departures and misleading times. No model or agent count appears before the product is clear.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---
@@ -532,18 +540,21 @@ Ten-minute break, 1:35–1:45. Use the read-only monitor to find participants wh
 -->
 
 ---
-clicks: 3
+class: workshop-setting-slide
+clicks: 4
 ---
 
 <div class="kicker">1:45</div>
 
 # Add the task board and two workers
 
-<FactoryFlow :stage="$clicks + 1"/><p class="caption">Workers have separate conversations and working copies. The shared records tell them what is ready and who owns it.</p>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="transit/build"><img :src="&quot;/scenes/transit/build.svg&quot;" alt="Transit build room: Two builders need clear ownership and a shared test contract. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><FactoryFlow :stage="(Math.max(0, $clicks - 1)) + 1"/><p class="caption">Workers have separate conversations and working copies. The shared records tell them what is ready and who owns it.</p></div>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>34 / 102</span></div>
 
 <!--
 Click once to reveal workers, once to reveal integration, once to reveal the checked lesson. Solid arrows show code or execution flow. The dashed arrow identifies reviewed evidence. The diagram is explanatory, not a recorded run.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---
@@ -1317,16 +1328,21 @@ Without memory: oversized input after a saved write. With memory: output allowan
 -->
 
 ---
+class: workshop-setting-slide
+clicks: 1
+---
 
 <div class="kicker">5:25</div>
 
 # More workers can still produce more waiting
 
-<p>Compare the actual time spent coding with time spent waiting, reviewing and repairing integration.</p><p>Then compare the cost of the completed product. A faster worker trace does not mean a cheaper or better delivered application.</p><p class="caption">Research and production reports find coordination gains depend on task structure. This workshop measures its own runs.</p>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="transit/compare"><img :src="&quot;/scenes/transit/compare.svg&quot;" alt="Transit build room: Extra workers can wait on the same shared resource. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><p>Compare the actual time spent coding with time spent waiting, reviewing and repairing integration.</p><p>Then compare the cost of the completed product. A faster worker trace does not mean a cheaper or better delivered application.</p><p class="caption">Research and production reports find coordination gains depend on task structure. This workshop measures its own runs.</p></div>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>86 / 102</span></div>
 
 <!--
 Primary sources: Claude Code agent-team docs, Google Research scaling-agent-systems study and Anthropic compiler report. Do not import their performance numbers as a forecast for this model or task.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---
@@ -1435,16 +1451,21 @@ Give participants two minutes each. The person explaining should control the not
 -->
 
 ---
+class: workshop-setting-slide
+clicks: 1
+---
 
 <div class="kicker">5:58</div>
 
 # Take the coordination code to your own project
 
-<p>Start with a feature whose acceptance behavior you can check. Split independent work, give each task an owner, and test the changes together.</p><p>Keep lessons that another task can use, with their evidence and limits. Then measure whether the team improves the work enough to justify its coordination cost.</p>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="transit/release"><img :src="&quot;/scenes/transit/release.svg&quot;" alt="Transit build room: Carry a lesson forward only after checking its effect. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><p>Start with a feature whose acceptance behavior you can check. Split independent work, give each task an owner, and test the changes together.</p><p>Keep lessons that another task can use, with their evidence and limits. Then measure whether the team improves the work enough to justify its coordination cost.</p></div>
 <div class="footer"><span>Forge Workshop Kit · Transit software factory</span><span>94 / 102</span></div>
 
 <!--
 Ask each person for one suitable feature, one prerequisite, one acceptance check and one durable project rule from their own team. ARIA is outside the measured comparison and may require additional access.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---

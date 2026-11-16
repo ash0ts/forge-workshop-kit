@@ -25,9 +25,9 @@ const code={data:['photo = record["image"]','label = record["label"]','mask = re
  <image :href="asset('fit-defect-image.jpg')" x="12" y="50" width="185" height="185"/>
  <text x="12" y="28" class="heading">224 × 224 × 3</text><path d="M208 144H252" class="arrow"/>
  <rect x="265" y="81" width="130" height="125" class="teal"/><text x="280" y="127" class="heading">ResNet-18</text><text x="282" y="159" class="small">frozen</text><path d="M407 144H447" class="arrow"/>
- <g v-for="i in 14" :key="i"><rect :x="466+i%7*24" :y="92+Math.floor(i/7)*43" width="17" height="35" class="blue"/></g><text x="455" y="235" class="small">512 whole-image values</text>
+ <g v-for="i in 14" :key="i"><rect :x="466+(i-1)%7*24" :y="92+Math.floor((i-1)/7)*43" width="17" height="35" class="blue"/></g><text x="455" y="235" class="small">512 whole-image values</text>
  <g v-if="step>1"><path d="M330 220V276H178" class="arrow"/>
- <rect v-for="i in 196" :key="i" :x="16+i%14*11" :y="268+Math.floor(i/14)*9" width="9" height="7" :class="i===105?'orange':'teal'"/>
+ <rect v-for="i in 196" :key="i" :x="16+(i-1)%14*11" :y="268+Math.floor((i-1)/14)*9" width="9" height="7" :class="i===106?'orange':'teal'"/>
  <text x="214" y="311" class="heading">14 × 14 × 64</text><text x="214" y="344" class="small">196 locations, each with a 64-value vector</text><text x="214" y="377" class="small">Keep spatial differences instead of pooling them away.</text></g>
  <text x="12" y="431" class="small">Schematic features; nearby locations have overlapping receptive fields.</text>
 </svg>
@@ -49,10 +49,10 @@ const code={data:['photo = record["image"]','label = record["label"]','mask = re
 </svg>
 <svg v-else-if="kind==='features'" viewBox="0 0 660 440" role="img" aria-label="The 14 by 14 nearest-patch distance grid is transformed by log1p, flattened into 196 numbers and appended to 512 whole-image features to create 708 columns for each board.">
  <text x="12" y="28" class="heading">Preserve one row per board</text>
- <g v-for="i in 196" :key="i"><rect :x="12+i%14*11" :y="68+Math.floor(i/14)*10" width="9" height="8" :class="i===105?'orange':'pale'"/></g>
+ <g v-for="i in 196" :key="i"><rect :x="12+(i-1)%14*11" :y="68+Math.floor((i-1)/14)*10" width="9" height="8" :class="i===106?'orange':'pale'"/></g>
  <path d="M176 140H220" class="arrow"/><text x="231" y="120" class="heading">log1p</text><text x="231" y="155" class="small">{{fact.closest_distance.toFixed(3)}} → {{fact.log1p_closest_distance.toFixed(3)}}</text>
  <path d="M384 140H430" class="arrow"/>
- <g v-for="i in 14" :key="i"><rect :x="446+i%7*24" :y="92+Math.floor(i/7)*36" width="20" height="27" :class="i===6?'orange':'teal'"/></g><text x="444" y="214" class="small">196 local values</text>
+ <g v-for="i in 14" :key="i"><rect :x="446+(i-1)%7*24" :y="92+Math.floor((i-1)/7)*36" width="20" height="27" :class="i===6?'orange':'teal'"/></g><text x="444" y="214" class="small">196 local values</text>
  <rect x="13" y="268" width="450" height="52" class="blue"/><rect x="463" y="268" width="173" height="52" class="teal"/><text x="28" y="300" class="small">512 whole-image values</text><text x="473" y="300" class="small">196 local</text>
  <path d="M12 337V354H636V337" class="arrow"/><text x="182" y="392" class="heading">708 classifier inputs</text>
  <text x="12" y="432" class="small">The grid is schematic; the highlighted calculation uses actual cached values.</text>
@@ -97,12 +97,12 @@ const code={data:['photo = record["image"]','label = record["label"]','mask = re
 </svg>
 <svg v-else-if="kind==='train'" viewBox="0 0 660 440" role="img" aria-label="397 training feature rows and their labels fit classifier weights. A separate 132-row validation matrix uses the fixed weights to produce scores. The same learner-authored feature function supplies both matrices.">
  <text x="12" y="28" class="heading">Training learns the classifier weights</text>
- <g v-for="i in 48" :key="i"><rect :x="12+i%8*18" :y="70+Math.floor(i/8)*15" width="14" height="11" :class="i%3?'blue':'pale'"/></g>
+ <g v-for="i in 48" :key="i"><rect :x="12+(i-1)%8*18" :y="70+Math.floor((i-1)/8)*15" width="14" height="11" :class="i%3?'blue':'pale'"/></g>
  <g v-for="i in 6" :key="i"><circle cx="174" :cy="75+(i-1)*15" r="6" :class="i%2?'teal':'orange'"/></g>
  <text x="12" y="190" class="small">397 feature rows + labels</text><path d="M204 116H278" class="arrow"/><text x="226" y="99" class="small">fit</text>
  <g v-for="i in 8" :key="i"><rect :x="301+(i-1)*27" y="86" width="20" :height="30+(i%3)*13" :class="i%2?'teal':'orange'"/></g><text x="300" y="190" class="small">Learned coefficients + intercept</text>
  <g :opacity="step>1?1:.25"><path d="M420 202V246" class="arrow"/><text x="445" y="231" class="small">weights stay fixed</text>
- <g v-for="i in 32" :key="i"><rect :x="12+i%8*18" :y="261+Math.floor(i/8)*15" width="14" height="11" class="pale"/></g>
+ <g v-for="i in 32" :key="i"><rect :x="12+(i-1)%8*18" :y="261+Math.floor((i-1)/8)*15" width="14" height="11" class="pale"/></g>
  <path d="M170 291H278" class="arrow"/><text x="183" y="272" class="small">score</text><rect x="300" y="260" width="245" height="64" class="paper"/><text x="321" y="300" class="heading">Apply saved classifier</text>
  <text x="12" y="353" class="small">132 validation rows</text><text x="301" y="353" class="small">132 scores → choose cutoff</text></g>
  <text x="12" y="400" class="small">Both matrices use your build_features function.</text><text x="12" y="430" class="small">Schematic cells and coefficients; recorded partition sizes.</text>

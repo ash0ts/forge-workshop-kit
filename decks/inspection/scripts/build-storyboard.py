@@ -89,7 +89,7 @@ _aria_runpy.run_path(str(ROOT.parents[1] / 'scripts/technical_guide_storyboard.p
 
 main_count=sum(s['start_minute'] is not None for s in slides)
 indices={s['key']:i+1 for i,s in enumerate(slides)}
-front='''---\ntheme: default\ntitle: Find defective parts before they ship\nauthor: Anish Shah\nclass: cover\nlayout: default\naspectRatio: 16/9\ncanvasWidth: 1280\ncolorSchema: light\ntransition: fade\nwakeLock: false\nfonts:\n  sans: IBM Plex Sans\n  mono: IBM Plex Mono\n  provider: none\nmdc: true\nhighlighter: shiki\ndrawings:\n  enabled: false\ndownload: false\nexportFilename: visual-inspection\n---\n\n'''
+front='''---\ntheme: default\ntitle: Find defective parts before they ship\nauthor: Anish Shah\nclass: cover workshop-setting-slide\nclicks: 1\nlayout: default\naspectRatio: 16/9\ncanvasWidth: 1280\ncolorSchema: light\ntransition: fade\nwakeLock: false\nfonts:\n  sans: IBM Plex Sans\n  mono: IBM Plex Mono\n  provider: none\nmdc: true\nhighlighter: shiki\ndrawings:\n  enabled: false\ndownload: false\nexportFilename: visual-inspection\n---\n\n'''
 parts=[]
 for i,s in enumerate(slides):
     fm='' if i==0 else '\n---\n'+('class: '+s['kind']+'\n' if s['kind'] else '')+('clicks: '+str(s['clicks'])+'\n' if s.get('clicks') else '')+'---\n\n'

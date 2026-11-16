@@ -1,0 +1,47 @@
+{
+  "workshop": "pending",
+  "placements": [
+    {
+      "stage": "start",
+      "slide_key": "cover",
+      "title": "Please improve yourself.",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/pending/start.svg"
+    },
+    {
+      "stage": "inspect",
+      "slide_key": "arrival",
+      "title": "You\u2019re adding an agent to the support team.",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/pending/inspect.svg"
+    },
+    {
+      "stage": "build",
+      "slide_key": "editor",
+      "title": "Management would like to automate management.",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/pending/build.svg"
+    },
+    {
+      "stage": "compare",
+      "slide_key": "freeze",
+      "title": "Freeze three harnesses for the fresh-case comparison.",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/pending/compare.svg"
+    },
+    {
+      "stage": "release",
+      "slide_key": "end",
+      "title": "Choose a workflow with an observable result to test.",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/pending/release.svg"
+    }
+  ],
+  "new_slides": 0,
+  "source": "scripts/illustrate_workshop_scenes.py"
+}

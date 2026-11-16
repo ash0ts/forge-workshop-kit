@@ -23,3 +23,13 @@ Native EvalTables retains its previously verified Weave-backed path. The separat
 ## Materials
 
 The [v0.11.1 release](https://github.com/ash0ts/forge-workshop-kit/releases/tag/v0.11.1) contains the package, templates, decks, PDFs, skill, visual sources, posters, and verification receipts. The [workshop library](https://ash0ts.github.io/forge-workshop-kit/) links the current materials. Previous releases and attendee copies are preserved.
+
+## Deck update · November 16, 2026
+
+All six decks now return to their workshop setting at five points in the lesson. The 30 original SVG illustrations show the work being discussed: an employee and editor in Pending, observations and source code in Solar, requests and labels in Routing, boards and reviewed cases in Inspection, builders and their shared application in Transit, and itineraries and monitoring in Airline. They introduce the existing explanations; no exercises or slides were removed.
+
+The diagram review also corrected Inspection's 14-by-14 patch grid and Routing's matrix layout, marked the enlarged portion of Transit's service-day axis, and distinguished source files, training executions, reviewed diffs, and selected versions in Solar. Larger labels and revised spacing keep those diagrams readable beside their code. Pending's comparison shows all three harnesses. Inspection's recovered and new misses appear beside the matching retest.
+
+Validation covers the full browser decks, Next/Back, original reveal ordering, worked-answer links, image loading, text bounds, and every exported PDF page. The 30 scene SVGs also passed standalone rendering, font-bound checks, and deterministic regeneration outside the checkout. Storyboard and packaging checks passed 39 tests. The download includes the per-deck receipts and the separate scene/component reviews.
+
+The current browser decks and downloads are in the workshop library. The separately named [illustrated deck update](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.11.1/workshop-decks-2026-11-16-illustrated.zip) preserves the original v0.11.1 assets. This update changes presentation only; the readiness limits above still apply.

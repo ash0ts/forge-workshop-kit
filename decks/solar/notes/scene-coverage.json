@@ -1,0 +1,47 @@
+{
+  "workshop": "solar",
+  "placements": [
+    {
+      "stage": "start",
+      "slide_key": "cover",
+      "title": "Solar forecasting with agent-assisted experiments",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/solar/start.svg"
+    },
+    {
+      "stage": "inspect",
+      "slide_key": "research-question",
+      "title": "Bring a comparison your colleagues can repeat",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/solar/inspect.svg"
+    },
+    {
+      "stage": "build",
+      "slide_key": "agent-need",
+      "title": "Use the experiment to test agent-written changes",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/solar/build.svg"
+    },
+    {
+      "stage": "compare",
+      "slide_key": "freeze",
+      "title": "Keep the selected code and weights fixed for final evaluation",
+      "original_reveals": 4,
+      "content_preserved": true,
+      "asset": "scenes/solar/compare.svg"
+    },
+    {
+      "stage": "release",
+      "slide_key": "close",
+      "title": "Bring the results to the lab review",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/solar/release.svg"
+    }
+  ],
+  "new_slides": 0,
+  "source": "scripts/illustrate_workshop_scenes.py"
+}

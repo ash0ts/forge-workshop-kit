@@ -3,6 +3,7 @@
 0:00
 
 Set the situation before introducing products. Participants operate a simulated airline customer-service agent. They will distinguish a request completing, a booking being correct, and a monitor detecting a problem. Those are three separate observations.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 2. What you will build and inspect
 
@@ -122,6 +123,7 @@ Give participants time to make the change themselves. Have one person point to t
 0:58
 
 Use the same example across all three questions. A lower tool-error rate does not prove higher booking quality. A high tag count may mean more failures, broader criteria, or a different processing denominator.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 20. Use Overview for context, then open Conversations
 
@@ -304,6 +306,7 @@ The native rule needs the same workspace scope for both versions but enough attr
 Make curation an explicit code exercise. The case contains the original booking, not the already-mutated booking that caused the complaint. Keep the exact request and constraints with it.
 
 Visual sequence: The arrow into the regression case comes from before the write. The crossed arrow from the mutated booking explains a common reconstruction error. Keep the request, policy, approved scope, human review, and source identities with the initial state. This omission incident is a labeled illustration, not an invented live failure.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 47. Reconstruct an incident as an executable test
 
@@ -438,6 +441,7 @@ Visual sequence: Reveal the starting row first, then the repair row. All six cas
 5:08
 
 A six-case comparison has limited reach. Show each failure and avoid a general claim that monitoring improves all agents. If all cases tie, inspect whether behavior or cost changed while correctness stayed equal.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 68. Use later traffic to check the frozen monitor
 
@@ -492,6 +496,7 @@ Give participants time to make the change themselves. Have one person point to t
 5:58
 
 End by asking someone to reproduce a case from its saved initial state. Do not conclude with a promise of autonomous improvement. Monitoring, human review, and offline evaluation each answered a different question.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 
 ## 77. Worked answer: validate a judge response
 

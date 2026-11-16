@@ -1,0 +1,47 @@
+{
+  "workshop": "inspection",
+  "placements": [
+    {
+      "stage": "start",
+      "slide_key": "opening",
+      "title": "Find defective parts before they ship",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/inspection/start.svg"
+    },
+    {
+      "stage": "inspect",
+      "slide_key": "assignment",
+      "title": "The factory has two ways to waste a good morning",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/inspection/inspect.svg"
+    },
+    {
+      "stage": "build",
+      "slide_key": "human",
+      "title": "Save what the reviewer actually decided",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/inspection/build.svg"
+    },
+    {
+      "stage": "compare",
+      "slide_key": "regression",
+      "title": "Inspect a new miss too",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/inspection/compare.svg"
+    },
+    {
+      "stage": "release",
+      "slide_key": "conclusion",
+      "title": "Write down the decision you would make",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/inspection/release.svg"
+    }
+  ],
+  "new_slides": 0,
+  "source": "scripts/illustrate_workshop_scenes.py"
+}

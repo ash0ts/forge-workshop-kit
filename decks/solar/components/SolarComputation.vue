@@ -121,5 +121,5 @@ const samples=Array.from({length:60},(_,i)=>i)
 </g>
 </svg></template>
 <style scoped>
-svg{display:block;width:100%;height:390px;margin-top:12px}text{font:23px 'IBM Plex Sans',Arial;fill:#163c43}.small{font-size:19px}.label{font:14px 'IBM Plex Mono',monospace;letter-spacing:1px;fill:#52776d}.mono{font:19px 'IBM Plex Mono',monospace}.white{fill:#f6f2e7}.line,.arrow{fill:none;stroke:#52776d;stroke-width:2}.arrow{marker-end:var(--arrow)}.divider{stroke:#bac7bd;stroke-width:1}.deletion{fill:#9c593c;font-size:16px}.addition{fill:#28715b;font-size:16px}
+svg{display:block;width:100%;height:390px;margin-top:12px}text{font:23px 'IBM Plex Sans',Arial;fill:#163c43}.small{font-size:19px}.label{font:16px 'IBM Plex Mono',monospace;letter-spacing:1px;fill:#52776d}.mono{font:19px 'IBM Plex Mono',monospace}.white{fill:#f6f2e7}.line,.arrow{fill:none;stroke:#52776d;stroke-width:2}.arrow{marker-end:var(--arrow)}.divider{stroke:#bac7bd;stroke-width:1}.deletion{fill:#9c593c;font-size:16px}.addition{fill:#28715b;font-size:16px}
 </style>

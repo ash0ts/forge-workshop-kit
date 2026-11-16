@@ -1,0 +1,1061 @@
+{
+  "schema_version": 1,
+  "generator": "scripts/illustrate_workshop_scenes.py",
+  "stage_order": [
+    "start",
+    "inspect",
+    "build",
+    "compare",
+    "release"
+  ],
+  "fonts_embedded": true,
+  "minimum_label_px": 24,
+  "scenes": [
+    {
+      "slug": "pending",
+      "title": "Pending, Inc.",
+      "viewBox": [
+        0,
+        0,
+        1200,
+        675
+      ],
+      "provenance": "illustrative",
+      "objects": [
+        {
+          "id": "task",
+          "bounds": [
+            366,
+            220,
+            138,
+            145
+          ],
+          "pin": [
+            435,
+            196
+          ]
+        },
+        {
+          "id": "handbook",
+          "bounds": [
+            640,
+            235,
+            232,
+            129
+          ],
+          "pin": [
+            756,
+            208
+          ]
+        },
+        {
+          "id": "employee-terminal",
+          "bounds": [
+            98,
+            203,
+            245,
+            137
+          ],
+          "pin": [
+            215,
+            179
+          ]
+        },
+        {
+          "id": "handbook-versions",
+          "bounds": [
+            512,
+            192,
+            118,
+            163
+          ],
+          "pin": [
+            571,
+            168
+          ]
+        },
+        {
+          "id": "saved-trace",
+          "bounds": [
+            908,
+            390,
+            176,
+            163
+          ],
+          "pin": [
+            996,
+            366
+          ]
+        }
+      ],
+      "stages": [
+        {
+          "id": "start",
+          "number": 1,
+          "label": "Read the task",
+          "active_object": "task",
+          "caption": "Follow one customer request into the office.",
+          "svg": "pending/start.svg",
+          "alt": "Pending, Inc.: Follow one customer request into the office. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 1,
+              "target": "task",
+              "label": "Read the task",
+              "caption": "Follow one customer request into the office."
+            }
+          ],
+          "sha256": "950587995dcb47f30664844af25b48bc4ad5376046985880db7065c480e8cf29"
+        },
+        {
+          "id": "inspect",
+          "number": 2,
+          "label": "Open the handbook",
+          "active_object": "handbook",
+          "caption": "Find the rule that should guide the employee.",
+          "svg": "pending/inspect.svg",
+          "alt": "Pending, Inc.: Find the rule that should guide the employee. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 2,
+              "target": "handbook",
+              "label": "Open the handbook",
+              "caption": "Find the rule that should guide the employee."
+            }
+          ],
+          "sha256": "230e8411c7e9f3eebcd923849cf17b88f20bae5a688c2775d764c4baf96856dd"
+        },
+        {
+          "id": "build",
+          "number": 3,
+          "label": "Propose a handbook edit",
+          "active_object": "handbook",
+          "caption": "The editor proposes handbook changes for review.",
+          "svg": "pending/build.svg",
+          "alt": "Pending, Inc.: The editor proposes handbook changes for review. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 3,
+              "target": "handbook",
+              "label": "Propose a handbook edit",
+              "caption": "The editor proposes handbook changes for review."
+            }
+          ],
+          "sha256": "0abc92f34582975e3d4aecbacd483c1c94b524cfe13e0313d00fc2e40b645b35"
+        },
+        {
+          "id": "compare",
+          "number": 4,
+          "label": "Freeze the comparison",
+          "active_object": "handbook-versions",
+          "caption": "Compare Base, Manual, and Agent harnesses on the same frozen cases.",
+          "svg": "pending/compare.svg",
+          "alt": "Pending, Inc.: Compare Base, Manual, and Agent harnesses on the same frozen cases. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 4,
+              "target": "handbook-versions",
+              "label": "Freeze the comparison",
+              "caption": "Compare Base, Manual, and Agent harnesses on the same frozen cases."
+            }
+          ],
+          "sha256": "5ac3d80b16b9fe8de6bcf9fbf0f1d0465cc1bbab6f8fe8d88ab914d3978e2461"
+        },
+        {
+          "id": "release",
+          "number": 5,
+          "label": "Keep the tested handbook",
+          "active_object": "saved-trace",
+          "caption": "Keep the handbook and the traces that support it.",
+          "svg": "pending/release.svg",
+          "alt": "Pending, Inc.: Keep the handbook and the traces that support it. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 5,
+              "target": "saved-trace",
+              "label": "Keep the tested handbook",
+              "caption": "Keep the handbook and the traces that support it."
+            }
+          ],
+          "sha256": "661a415b200780930060f05c156ec51b26b369eb8f0df9e89fb23859126d9b80"
+        }
+      ]
+    },
+    {
+      "slug": "solar",
+      "title": "Solar forecasting lab",
+      "viewBox": [
+        0,
+        0,
+        1200,
+        675
+      ],
+      "provenance": "illustrative",
+      "objects": [
+        {
+          "id": "observations",
+          "bounds": [
+            84,
+            201,
+            238,
+            181
+          ],
+          "pin": [
+            204,
+            177
+          ]
+        },
+        {
+          "id": "history-window",
+          "bounds": [
+            359,
+            207,
+            278,
+            175
+          ],
+          "pin": [
+            499,
+            183
+          ]
+        },
+        {
+          "id": "research-editor",
+          "bounds": [
+            678,
+            254,
+            166,
+            128
+          ],
+          "pin": [
+            761,
+            230
+          ]
+        },
+        {
+          "id": "experiment-comparison",
+          "bounds": [
+            899,
+            200,
+            225,
+            154
+          ],
+          "pin": [
+            1011,
+            176
+          ]
+        },
+        {
+          "id": "saved-experiment",
+          "bounds": [
+            907,
+            375,
+            208,
+            178
+          ],
+          "pin": [
+            1107,
+            351
+          ]
+        }
+      ],
+      "stages": [
+        {
+          "id": "start",
+          "number": 1,
+          "label": "Read the observations",
+          "active_object": "observations",
+          "caption": "Start with dated observations, not a forecast result.",
+          "svg": "solar/start.svg",
+          "alt": "Solar forecasting lab: Start with dated observations, not a forecast result. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 1,
+              "target": "observations",
+              "label": "Read the observations",
+              "caption": "Start with dated observations, not a forecast result."
+            }
+          ],
+          "sha256": "59fd8ec2561beab0b975d52c66e2a660ecf84b8ef34e4d4731865b1ebe0e2b42"
+        },
+        {
+          "id": "inspect",
+          "number": 2,
+          "label": "Ask the research question",
+          "active_object": "experiment-comparison",
+          "caption": "Can a source change improve this fixed forecasting task?",
+          "svg": "solar/inspect.svg",
+          "alt": "Solar forecasting lab: Can a source change improve this fixed forecasting task? Illustrative setting.",
+          "callouts": [
+            {
+              "number": 2,
+              "target": "experiment-comparison",
+              "label": "Ask the research question",
+              "caption": "Can a source change improve this fixed forecasting task?"
+            }
+          ],
+          "sha256": "2760c921309ffccc8d8b854d1d304dc1e74c78ce6ce9ffd2d36bcb1331356472"
+        },
+        {
+          "id": "build",
+          "number": 3,
+          "label": "Give the agent a workbench",
+          "active_object": "research-editor",
+          "caption": "The research agent edits source, runs experiments, and reads evidence.",
+          "svg": "solar/build.svg",
+          "alt": "Solar forecasting lab: The research agent edits source, runs experiments, and reads evidence. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 3,
+              "target": "research-editor",
+              "label": "Give the agent a workbench",
+              "caption": "The research agent edits source, runs experiments, and reads evidence."
+            }
+          ],
+          "sha256": "f5aad8badd51d2b76664aace3edcaf1ce3f02d0f1787fab92c7d0dc690098146"
+        },
+        {
+          "id": "compare",
+          "number": 4,
+          "label": "Freeze the experiment",
+          "active_object": "experiment-comparison",
+          "caption": "Keep the data split and evaluation rules fixed for comparison.",
+          "svg": "solar/compare.svg",
+          "alt": "Solar forecasting lab: Keep the data split and evaluation rules fixed for comparison. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 4,
+              "target": "experiment-comparison",
+              "label": "Freeze the experiment",
+              "caption": "Keep the data split and evaluation rules fixed for comparison."
+            }
+          ],
+          "sha256": "85f6ab99d22c5e15d90d0f352214c25ea44a0664b4780e7077b851ecc89e699c"
+        },
+        {
+          "id": "release",
+          "number": 5,
+          "label": "Save the experiment",
+          "active_object": "saved-experiment",
+          "caption": "Keep observations, source, weights, and predictions linked.",
+          "svg": "solar/release.svg",
+          "alt": "Solar forecasting lab: Keep observations, source, weights, and predictions linked. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 5,
+              "target": "saved-experiment",
+              "label": "Save the experiment",
+              "caption": "Keep observations, source, weights, and predictions linked."
+            }
+          ],
+          "sha256": "e73716118ae7fd43517fad7a44e71b9136cc75d1e0079a0e9c3e4045bf9f6030"
+        }
+      ]
+    },
+    {
+      "slug": "routing",
+      "title": "Support routing desk",
+      "viewBox": [
+        0,
+        0,
+        1200,
+        675
+      ],
+      "provenance": "illustrative",
+      "objects": [
+        {
+          "id": "incoming-request",
+          "bounds": [
+            107,
+            214,
+            261,
+            147
+          ],
+          "pin": [
+            237,
+            190
+          ]
+        },
+        {
+          "id": "request-text",
+          "bounds": [
+            399,
+            235,
+            183,
+            148
+          ],
+          "pin": [
+            490,
+            211
+          ]
+        },
+        {
+          "id": "manager-brief",
+          "bounds": [
+            313,
+            426,
+            144,
+            117
+          ],
+          "pin": [
+            385,
+            402
+          ]
+        },
+        {
+          "id": "router",
+          "bounds": [
+            610,
+            220,
+            189,
+            141
+          ],
+          "pin": [
+            704,
+            196
+          ]
+        },
+        {
+          "id": "reviewed-case",
+          "bounds": [
+            867,
+            232,
+            249,
+            132
+          ],
+          "pin": [
+            991,
+            208
+          ]
+        },
+        {
+          "id": "label-bundle",
+          "bounds": [
+            874,
+            397,
+            235,
+            156
+          ],
+          "pin": [
+            1100,
+            373
+          ]
+        }
+      ],
+      "stages": [
+        {
+          "id": "start",
+          "number": 1,
+          "label": "Read a request",
+          "active_object": "incoming-request",
+          "caption": "Follow one support request toward its intended queue.",
+          "svg": "routing/start.svg",
+          "alt": "Support routing desk: Follow one support request toward its intended queue. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 1,
+              "target": "incoming-request",
+              "label": "Read a request",
+              "caption": "Follow one support request toward its intended queue."
+            }
+          ],
+          "sha256": "e217d8f556555f357d92f92968b3c57de5e56a3d0dd0ebfb643cb4607594b940"
+        },
+        {
+          "id": "inspect",
+          "number": 2,
+          "label": "Meet the manager",
+          "active_object": "manager-brief",
+          "caption": "The manager turns the support problem into a research task.",
+          "svg": "routing/inspect.svg",
+          "alt": "Support routing desk: The manager turns the support problem into a research task. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 2,
+              "target": "manager-brief",
+              "label": "Meet the manager",
+              "caption": "The manager turns the support problem into a research task."
+            }
+          ],
+          "sha256": "7914f8c945566bdf99380d645cc2a24347fff54d5783f4eb3637b0e8e588c23a"
+        },
+        {
+          "id": "build",
+          "number": 3,
+          "label": "Review the dataset",
+          "active_object": "reviewed-case",
+          "caption": "Read each request beside its assigned queue label.",
+          "svg": "routing/build.svg",
+          "alt": "Support routing desk: Read each request beside its assigned queue label. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 3,
+              "target": "reviewed-case",
+              "label": "Review the dataset",
+              "caption": "Read each request beside its assigned queue label."
+            }
+          ],
+          "sha256": "0542f388b58f8842e571636b9db2292cd03af8eb6d7153454afe5ce477502f26"
+        },
+        {
+          "id": "compare",
+          "number": 4,
+          "label": "Freeze the comparison",
+          "active_object": "reviewed-case",
+          "caption": "Hold the cases and label meanings fixed across candidates.",
+          "svg": "routing/compare.svg",
+          "alt": "Support routing desk: Hold the cases and label meanings fixed across candidates. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 4,
+              "target": "reviewed-case",
+              "label": "Freeze the comparison",
+              "caption": "Hold the cases and label meanings fixed across candidates."
+            }
+          ],
+          "sha256": "ef2c3dca39c88f0fe99d5813ce34bd5f5e14ab089700f511389f25cf86434268"
+        },
+        {
+          "id": "release",
+          "number": 5,
+          "label": "Save the label map",
+          "active_object": "label-bundle",
+          "caption": "Package the model with its ordered queue labels.",
+          "svg": "routing/release.svg",
+          "alt": "Support routing desk: Package the model with its ordered queue labels. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 5,
+              "target": "label-bundle",
+              "label": "Save the label map",
+              "caption": "Package the model with its ordered queue labels."
+            }
+          ],
+          "sha256": "a7dd7abdad2dae53f18449ecf46a4b062ccd031f17e3c3e99cd2e1fe8f4e0a3a"
+        }
+      ]
+    },
+    {
+      "slug": "inspection",
+      "title": "Circuit-board inspection",
+      "viewBox": [
+        0,
+        0,
+        1200,
+        675
+      ],
+      "provenance": "illustrative",
+      "objects": [
+        {
+          "id": "circuit-board",
+          "bounds": [
+            120,
+            231,
+            258,
+            156
+          ],
+          "pin": [
+            244,
+            207
+          ]
+        },
+        {
+          "id": "magnified-component",
+          "bounds": [
+            323,
+            148,
+            116,
+            116
+          ],
+          "pin": [
+            381,
+            124
+          ]
+        },
+        {
+          "id": "patch-view",
+          "bounds": [
+            518,
+            222,
+            264,
+            148
+          ],
+          "pin": [
+            650,
+            198
+          ]
+        },
+        {
+          "id": "reviewer-assessment",
+          "bounds": [
+            731,
+            439,
+            222,
+            113
+          ],
+          "pin": [
+            840,
+            415
+          ]
+        },
+        {
+          "id": "aligned-cases",
+          "bounds": [
+            831,
+            235,
+            270,
+            148
+          ],
+          "pin": [
+            965,
+            211
+          ]
+        },
+        {
+          "id": "saved-detector",
+          "bounds": [
+            140,
+            428,
+            280,
+            121
+          ],
+          "pin": [
+            280,
+            404
+          ]
+        }
+      ],
+      "stages": [
+        {
+          "id": "start",
+          "number": 1,
+          "label": "Inspect the board",
+          "active_object": "circuit-board",
+          "caption": "Follow one board from the bench into inspection.",
+          "svg": "inspection/start.svg",
+          "alt": "Circuit-board inspection: Follow one board from the bench into inspection. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 1,
+              "target": "circuit-board",
+              "label": "Inspect the board",
+              "caption": "Follow one board from the bench into inspection."
+            }
+          ],
+          "sha256": "aee0274c916fb7f9338ddcae26ecccdf2ba817d0813248fa5b83a30f13704810"
+        },
+        {
+          "id": "inspect",
+          "number": 2,
+          "label": "Read the assignment",
+          "active_object": "magnified-component",
+          "caption": "Catch defects without sending every normal board for review.",
+          "svg": "inspection/inspect.svg",
+          "alt": "Circuit-board inspection: Catch defects without sending every normal board for review. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 2,
+              "target": "magnified-component",
+              "label": "Read the assignment",
+              "caption": "Catch defects without sending every normal board for review."
+            }
+          ],
+          "sha256": "b5e809a7c2c142209f6939c8382c0c545dc14796828d8d57df2ea71fdf518c02"
+        },
+        {
+          "id": "build",
+          "number": 3,
+          "label": "Record the human assessment",
+          "active_object": "reviewer-assessment",
+          "caption": "Save the reviewer’s decision before revealing the supplied label.",
+          "svg": "inspection/build.svg",
+          "alt": "Circuit-board inspection: Save the reviewer’s decision before revealing the supplied label. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 3,
+              "target": "reviewer-assessment",
+              "label": "Record the human assessment",
+              "caption": "Save the reviewer’s decision before revealing the supplied label."
+            }
+          ],
+          "sha256": "9bc6be317b7f80b4be10512c27c89f6f7ca006a698d4279d1159ab62329cc389"
+        },
+        {
+          "id": "compare",
+          "number": 4,
+          "label": "Keep the new failure visible",
+          "active_object": "aligned-cases",
+          "caption": "Recorded retest: 048 is recovered; 015 becomes a new miss.",
+          "svg": "inspection/compare.svg",
+          "alt": "Circuit-board inspection: Recorded retest: 048 is recovered; 015 becomes a new miss. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 4,
+              "target": "aligned-cases",
+              "label": "Keep the new failure visible",
+              "caption": "Recorded retest: 048 is recovered; 015 becomes a new miss."
+            }
+          ],
+          "sha256": "f2216e6cb000646db05e2d8b35ce9fa2d26097ab4157138065b3c6f1ff3910ae"
+        },
+        {
+          "id": "release",
+          "number": 5,
+          "label": "Save the detector",
+          "active_object": "saved-detector",
+          "caption": "Preserve the encoder, normal bank, and classifier.",
+          "svg": "inspection/release.svg",
+          "alt": "Circuit-board inspection: Preserve the encoder, normal bank, and classifier. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 5,
+              "target": "saved-detector",
+              "label": "Save the detector",
+              "caption": "Preserve the encoder, normal bank, and classifier."
+            }
+          ],
+          "sha256": "50e0ff5d8b2d171acb594c056ac9c9ac3247395389383e4012f11349064d9865"
+        }
+      ]
+    },
+    {
+      "slug": "transit",
+      "title": "Transit build room",
+      "viewBox": [
+        0,
+        0,
+        1200,
+        675
+      ],
+      "provenance": "illustrative",
+      "objects": [
+        {
+          "id": "service-day",
+          "bounds": [
+            498,
+            219,
+            198,
+            152
+          ],
+          "pin": [
+            598,
+            195
+          ]
+        },
+        {
+          "id": "midnight-boundary",
+          "bounds": [
+            511,
+            264,
+            171,
+            80
+          ],
+          "pin": [
+            598,
+            240
+          ]
+        },
+        {
+          "id": "owned-work",
+          "bounds": [
+            812,
+            220,
+            253,
+            129
+          ],
+          "pin": [
+            939,
+            196
+          ]
+        },
+        {
+          "id": "combined-board",
+          "bounds": [
+            499,
+            400,
+            198,
+            145
+          ],
+          "pin": [
+            598,
+            376
+          ]
+        },
+        {
+          "id": "verified-lesson",
+          "bounds": [
+            488,
+            526,
+            220,
+            35
+          ],
+          "pin": [
+            708,
+            502
+          ]
+        }
+      ],
+      "stages": [
+        {
+          "id": "start",
+          "number": 1,
+          "label": "Read the schedule",
+          "active_object": "service-day",
+          "caption": "Two builders share one departure-board problem.",
+          "svg": "transit/start.svg",
+          "alt": "Transit build room: Two builders share one departure-board problem. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 1,
+              "target": "service-day",
+              "label": "Read the schedule",
+              "caption": "Two builders share one departure-board problem."
+            }
+          ],
+          "sha256": "2dc936a952882daa318f3dbff7387acb0fd13f365db5d3ac731d72e8e5aca70a"
+        },
+        {
+          "id": "inspect",
+          "number": 2,
+          "label": "Read the request",
+          "active_object": "service-day",
+          "caption": "The departure board must handle trips after midnight.",
+          "svg": "transit/inspect.svg",
+          "alt": "Transit build room: The departure board must handle trips after midnight. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 2,
+              "target": "service-day",
+              "label": "Read the request",
+              "caption": "The departure board must handle trips after midnight."
+            }
+          ],
+          "sha256": "460b471a7a8d0c1e380074079e26851762ec0345a306802c5ad0c564523f104a"
+        },
+        {
+          "id": "build",
+          "number": 3,
+          "label": "Split work between two builders",
+          "active_object": "owned-work",
+          "caption": "Two builders need clear ownership and a shared test contract.",
+          "svg": "transit/build.svg",
+          "alt": "Transit build room: Two builders need clear ownership and a shared test contract. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 3,
+              "target": "owned-work",
+              "label": "Split work between two builders",
+              "caption": "Two builders need clear ownership and a shared test contract."
+            }
+          ],
+          "sha256": "d22bf2a8a7e0ecf9562754e630671c49c3bb4b43c9292df143fa2feb355fab5e"
+        },
+        {
+          "id": "compare",
+          "number": 4,
+          "label": "More workers can mean waiting",
+          "active_object": "combined-board",
+          "caption": "Extra workers can wait on the same shared resource.",
+          "svg": "transit/compare.svg",
+          "alt": "Transit build room: Extra workers can wait on the same shared resource. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 4,
+              "target": "combined-board",
+              "label": "More workers can mean waiting",
+              "caption": "Extra workers can wait on the same shared resource."
+            }
+          ],
+          "sha256": "3b16dc353c493685644357bdc22dc40fe0e4b5d43b3958c7a956bfd7ff01e4d3"
+        },
+        {
+          "id": "release",
+          "number": 5,
+          "label": "Save a tested lesson",
+          "active_object": "verified-lesson",
+          "caption": "Carry a lesson forward only after checking its effect.",
+          "svg": "transit/release.svg",
+          "alt": "Transit build room: Carry a lesson forward only after checking its effect. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 5,
+              "target": "verified-lesson",
+              "label": "Save a tested lesson",
+              "caption": "Carry a lesson forward only after checking its effect."
+            }
+          ],
+          "sha256": "e4c8267f72363e7148aadbb77a8cd43854a5e60b4207e138d5d6b44bdfd7e50e"
+        }
+      ]
+    },
+    {
+      "slug": "airline_monitoring",
+      "title": "Airline booking operations",
+      "viewBox": [
+        0,
+        0,
+        1200,
+        675
+      ],
+      "provenance": "illustrative",
+      "objects": [
+        {
+          "id": "booking",
+          "bounds": [
+            107,
+            218,
+            256,
+            149
+          ],
+          "pin": [
+            235,
+            194
+          ]
+        },
+        {
+          "id": "whole-itinerary",
+          "bounds": [
+            402,
+            235,
+            239,
+            148
+          ],
+          "pin": [
+            522,
+            211
+          ]
+        },
+        {
+          "id": "outbound-change",
+          "bounds": [
+            119,
+            265,
+            222,
+            37
+          ],
+          "pin": [
+            230,
+            241
+          ]
+        },
+        {
+          "id": "monitoring-rule",
+          "bounds": [
+            729,
+            283,
+            396,
+            135
+          ],
+          "pin": [
+            927,
+            259
+          ]
+        },
+        {
+          "id": "regression-cases",
+          "bounds": [
+            749,
+            435,
+            350,
+            111
+          ],
+          "pin": [
+            1098,
+            411
+          ]
+        }
+      ],
+      "stages": [
+        {
+          "id": "start",
+          "number": 1,
+          "label": "Read the booking",
+          "active_object": "booking",
+          "caption": "Keep both journeys visible while changing the booking.",
+          "svg": "airline_monitoring/start.svg",
+          "alt": "Airline booking operations: Keep both journeys visible while changing the booking. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 1,
+              "target": "booking",
+              "label": "Read the booking",
+              "caption": "Keep both journeys visible while changing the booking."
+            }
+          ],
+          "sha256": "9ca6ccd1e774bcc0b2081584e5ba9c09aceffe9e03c6c44345381bb4f5a02860"
+        },
+        {
+          "id": "inspect",
+          "number": 2,
+          "label": "Keep three questions separate",
+          "active_object": "monitoring-rule",
+          "caption": "Tool execution, booking quality, and monitor detection differ.",
+          "svg": "airline_monitoring/inspect.svg",
+          "alt": "Airline booking operations: Tool execution, booking quality, and monitor detection differ. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 2,
+              "target": "monitoring-rule",
+              "label": "Keep three questions separate",
+              "caption": "Tool execution, booking quality, and monitor detection differ."
+            }
+          ],
+          "sha256": "8bf7c2872ffddedd38a22d7fa9b7c02ed6487fcf300627375d8c3d3dd86cf819"
+        },
+        {
+          "id": "build",
+          "number": 3,
+          "label": "Curate a replayable case",
+          "active_object": "regression-cases",
+          "caption": "Keep the initial booking, request, policy, and reviewed expectation.",
+          "svg": "airline_monitoring/build.svg",
+          "alt": "Airline booking operations: Keep the initial booking, request, policy, and reviewed expectation. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 3,
+              "target": "regression-cases",
+              "label": "Curate a replayable case",
+              "caption": "Keep the initial booking, request, policy, and reviewed expectation."
+            }
+          ],
+          "sha256": "3801caeafd996ed90f8adf7d18ef44ce77d5d7cf155240f7bbf981ecef062655"
+        },
+        {
+          "id": "compare",
+          "number": 4,
+          "label": "Report each measure",
+          "active_object": "monitoring-rule",
+          "caption": "Report denominators and missing judgments beside each measure.",
+          "svg": "airline_monitoring/compare.svg",
+          "alt": "Airline booking operations: Report denominators and missing judgments beside each measure. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 4,
+              "target": "monitoring-rule",
+              "label": "Report each measure",
+              "caption": "Report denominators and missing judgments beside each measure."
+            }
+          ],
+          "sha256": "727827c46adf110c2e044f0f475800bbe7ee2fd45b689a678418f4b3b4c3b83e"
+        },
+        {
+          "id": "release",
+          "number": 5,
+          "label": "Keep regression cases",
+          "active_object": "regression-cases",
+          "caption": "Save reviewed incidents so a repair can be tested again.",
+          "svg": "airline_monitoring/release.svg",
+          "alt": "Airline booking operations: Save reviewed incidents so a repair can be tested again. Illustrative setting.",
+          "callouts": [
+            {
+              "number": 5,
+              "target": "regression-cases",
+              "label": "Keep regression cases",
+              "caption": "Save reviewed incidents so a repair can be tested again."
+            }
+          ],
+          "sha256": "0adac76b42c863bd0c486ef44616f1bba0e646fc0f5573f3768d566d1d9c3085"
+        }
+      ]
+    }
+  ]
+}

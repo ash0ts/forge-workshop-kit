@@ -1,0 +1,47 @@
+{
+  "workshop": "airline_monitoring",
+  "placements": [
+    {
+      "stage": "start",
+      "slide_key": "introduction",
+      "title": "Monitor an airline service agent and build better evaluations",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/airline_monitoring/start.svg"
+    },
+    {
+      "stage": "inspect",
+      "slide_key": "three-questions",
+      "title": "Keep three questions separate",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/airline_monitoring/inspect.svg"
+    },
+    {
+      "stage": "build",
+      "slide_key": "curation",
+      "title": "A reviewed turn becomes a regression case",
+      "original_reveals": 3,
+      "content_preserved": true,
+      "asset": "scenes/airline_monitoring/build.svg"
+    },
+    {
+      "stage": "compare",
+      "slide_key": "report-measures",
+      "title": "Report denominators and unresolved work",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/airline_monitoring/compare.svg"
+    },
+    {
+      "stage": "release",
+      "slide_key": "end",
+      "title": "The next release has a check the first release lacked",
+      "original_reveals": 1,
+      "content_preserved": true,
+      "asset": "scenes/airline_monitoring/release.svg"
+    }
+  ],
+  "new_slides": 0,
+  "source": "scripts/illustrate_workshop_scenes.py"
+}

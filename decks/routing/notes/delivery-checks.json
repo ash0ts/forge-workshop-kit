@@ -1,5 +1,5 @@
 {
-  "source_sha256": "49347025b2179d20ee795ec0fd4e22c5c5edf8f9895f91e5cd3c31e4feb419ea",
+  "source_sha256": "1afe61bd4a33dad2089cc40734764fbf91be8febd365d463ede1b3262f3aab26",
   "preflight_only": false,
   "slides_checked": 79,
   "expected_slides": 79,
@@ -403,7 +403,22 @@
   "click_states": [
     {
       "slide": 1,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "routing/start",
+        "loaded": true,
+        "alt": "Support routing desk: Follow one support request toward its intended queue. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/routing/scenes/routing/start.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 1,
+      "click": 1
     },
     {
       "slide": 2,
@@ -500,7 +515,22 @@
     },
     {
       "slide": 4,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "routing/inspect",
+        "loaded": true,
+        "alt": "Support routing desk: The manager turns the support problem into a research task. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/routing/scenes/routing/inspect.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 4,
+      "click": 1
     },
     {
       "slide": 5,
@@ -1014,7 +1044,22 @@
     },
     {
       "slide": 42,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "routing/build",
+        "loaded": true,
+        "alt": "Support routing desk: Read each request beside its assigned queue label. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/routing/scenes/routing/build.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 42,
+      "click": 1
     },
     {
       "slide": 43,
@@ -1030,7 +1075,22 @@
     },
     {
       "slide": 46,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "routing/compare",
+        "loaded": true,
+        "alt": "Support routing desk: Hold the cases and label meanings fixed across candidates. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/routing/scenes/routing/compare.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 46,
+      "click": 1
     },
     {
       "slide": 47,
@@ -1223,7 +1283,22 @@
     },
     {
       "slide": 74,
-      "click": 0
+      "click": 0,
+      "workshop_scene": {
+        "id": "routing/release",
+        "loaded": true,
+        "alt": "Support routing desk: Package the model with its ordered queue labels. Illustrative setting.",
+        "width": 1240,
+        "height": 672,
+        "src": "/forge-workshop-kit/routing/scenes/routing/release.svg",
+        "imageWidth": 1240,
+        "imageHeight": 648,
+        "inside": true
+      }
+    },
+    {
+      "slide": 74,
+      "click": 1
     },
     {
       "slide": 75,

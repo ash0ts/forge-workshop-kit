@@ -88,7 +88,8 @@ header = '''---
 theme: default
 title: Build a transit app with a team of coding agents
 author: Anish Shah
-class: cover
+class: cover workshop-setting-slide
+clicks: 1
 layout: default
 aspectRatio: 16/9
 canvasWidth: 1280

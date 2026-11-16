@@ -3,7 +3,8 @@ theme: default
 title: Please improve yourself · Pending, Inc.
 author: Anish Shah
 info: Build, instrument, evaluate and improve an agent in your own Forge project.
-class: cover
+class: cover workshop-setting-slide
+clicks: 1
 aspectRatio: 16/9
 canvasWidth: 1280
 colorSchema: light
@@ -21,12 +22,14 @@ exportFilename: pending-inc
 ---
 # Please improve<br>yourself.
 
-<div class="sub">Build an agent for billing and account access.<br>Inspect its work, then test changes to its instructions.</div>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="pending/start"><img :src="&quot;/scenes/pending/start.svg&quot;" alt="Pending, Inc.: Follow one customer request into the office. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><div class="sub">Build an agent for billing and account access.<br>Inspect its work, then test changes to its instructions.</div>
 <OfficeScene mode="employee" />
-<div class="bottom-note" style="color:#bbd4cb">A four-hour Python workshop at Pending, Inc.</div>
+<div class="bottom-note" style="color:#bbd4cb">A four-hour Python workshop at Pending, Inc.</div></div>
 
 <!--
 We will implement an agent that can inspect an account, refund a duplicate charge, and provision access. Then we will instrument and evaluate its work before asking an editor agent to revise its instructions. Pending, Inc. and its accounts are fictional; the Python tools, model requests, traces, and evaluations run in your own project.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---
@@ -44,15 +47,18 @@ Visual guide: pending/overview. Advance one state at a time; Back restores the p
 -->
 
 ---
-class: opening-story
+class: opening-story workshop-setting-slide
+clicks: 1
 ---
 
 # You’re adding an agent to the support team.
 
-<div class="arrival-scene"><div class="scene-prose"><p>Pending, Inc. is our fictional SaaS company. Customers pay for subscriptions, and their coworkers need access to their accounts.</p><p>Your team wants an agent to handle refunds and membership requests. A wrong action can refund the wrong payment or give someone the wrong access.</p><p class="scene-caption">Management has supplied the handbook on the right. We’ll have to implement the rest.</p></div><div class="scene-props"><OfficeScene mode="employee" /><div class="handbook-page"><span class="prop-label">EMPLOYEE HANDBOOK · PAGE 1 OF 1</span><p>Be helpful.<br>Use good judgment.</p></div></div></div>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="pending/inspect"><img :src="&quot;/scenes/pending/inspect.svg&quot;" alt="Pending, Inc.: Find the rule that should guide the employee. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><div class="arrival-scene"><div class="scene-prose"><p>Pending, Inc. is our fictional SaaS company. Customers pay for subscriptions, and their coworkers need access to their accounts.</p><p>Your team wants an agent to handle refunds and membership requests. A wrong action can refund the wrong payment or give someone the wrong access.</p><p class="scene-caption">Management has supplied the handbook on the right. We’ll have to implement the rest.</p></div><div class="scene-props"><OfficeScene mode="employee" /><div class="handbook-page"><span class="prop-label">EMPLOYEE HANDBOOK · PAGE 1 OF 1</span><p>Be helpful.<br>Use good judgment.</p></div></div></div></div>
 
 <!--
 Set the context before naming the harness. We are building a support agent that can change account state, so a plausible reply is not enough. The company and customer accounts are fictional. The Python operations, model requests, traces, and checks are real workshop code. The one-page handbook is an opening illustration, not the measured starting harness. Participants will build and test the starting version before comparing changes.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---
@@ -850,16 +856,20 @@ Second break: 135–145 minutes. Save the manual comparison and return to step 6
 -->
 
 ---
+class: workshop-setting-slide
+clicks: 1
 ---
 
 # Management would like to automate management.
 
-<p class="big">Give the editor the current instructions, verification skill, and execution record. It will propose two alternative harnesses for us to review and test.</p>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="pending/build"><img :src="&quot;/scenes/pending/build.svg&quot;" alt="Pending, Inc.: The editor proposes handbook changes for review. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><p class="big">Give the editor the current instructions, verification skill, and execution record. It will propose two alternative harnesses for us to review and test.</p>
 <div class="two-col"><div><h2>It may edit</h2><p>Instructions, skills, and bounded workflow rules.</p></div><div><h2>Keep fixed</h2><p>The model, tested tools, fixtures, grader, and budget controls.</p></div></div>
-<div class="bottom-note">The notebook controller runs the tests and records which harness the editor chose.</div>
+<div class="bottom-note">The notebook controller runs the tests and records which harness the editor chose.</div></div>
 
 <!--
 The editor uses the same fixed model, but its request is to revise the harness rather than resolve a customer ticket. We supply the current configuration and a saved execution. The permitted edits are instructions, the verification skill, and bounded workflow rules. Tools and scoring stay fixed so any measured difference concerns the harness we changed.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---
@@ -1166,14 +1176,18 @@ Recursive self-improvement here means that an agent evaluates executions of a ha
 -->
 
 ---
+class: workshop-setting-slide
+clicks: 1
 ---
 
 # Freeze three harnesses for the fresh-case comparison.
 
-<EvaluationMatrix />
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="pending/compare"><img :src="&quot;/scenes/pending/compare.svg&quot;" alt="Pending, Inc.: Compare Base, Manual, and Agent harnesses on the same frozen cases. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><EvaluationMatrix /></div>
 
 <!--
 Final cases: already-refunded, two-invoices, onboarding-recovery, clarify-access. Their files are public for teaching but are excluded from improvement context. The starting version is the configured tested employee, not the deliberately blank opening illustration.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---
@@ -1302,16 +1316,20 @@ Leave this slide up during the exercise. Ask someone to show the result and expl
 -->
 
 ---
+class: workshop-setting-slide
+clicks: 1
 ---
 
 # Choose a workflow with an observable result to test.
 
-<p class="big">Start with a task whose result you can inspect independently: an account update, an access change, or another completed operation.</p>
+<figure v-if="$clicks === 0" class="workshop-setting-frame" data-workshop-scene="pending/release"><img :src="&quot;/scenes/pending/release.svg&quot;" alt="Pending, Inc.: Keep the handbook and the traces that support it. Illustrative setting." /><figcaption><span>Next → explanation and evidence</span></figcaption></figure>
+<div v-else class="workshop-setting-detail"><p class="big">Start with a task whose result you can inspect independently: an account update, an access change, or another completed operation.</p>
 <p>Record the agent’s actions and define the success checks before asking it to revise its own procedures. Test the revised harness on the same cases, then on cases it has not seen.</p>
-<div class="bottom-note">Write down a development case and a different case to hold back for evaluation.</div>
+<div class="bottom-note">Write down a development case and a different case to hold back for evaluation.</div></div>
 
 <!--
 Ask participants to name one workflow in their product with observable output and a check they can run independently of the agent. Have them specify a development case, a likely failure, and a fresh case for testing transfer. They can reuse the instrumentation and improvement controller, but must define what correct work means for that workflow.
+Setting frame: point to the active work object, then advance to the complete explanation. This is an illustrated situation, not an execution screenshot. Back restores the scene; the following diagram reveals keep their original order.
 -->
 
 ---

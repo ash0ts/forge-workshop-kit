@@ -1,3 +1,4 @@
+@import './workshop-scenes.css';
 /* Generated visual tokens are supplied by the workshop figure build. */
 @import './technical-manual-tokens.css';
 :root:root{--paper:var(--te-paper);--ink:var(--te-ink);--muted:var(--te-muted);--teal:var(--te-ink);--gold:var(--te-accent);--blue:var(--te-candidate-a);--orange:var(--te-candidate-b)}
