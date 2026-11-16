@@ -142,14 +142,20 @@ def write_library_index(directory, available):
         actions = f'<a href="{html.escape(slug)}/">Deck</a>'
         if report:
             actions = (f'<a href="{html.escape(report["url"], quote=True)}">Read the learning Report</a> · '
-                       + actions + f' · <a href="{html.escape(report["notebook_url"], quote=True)}">Copy the notebook</a>')
+                       + actions + f' · <a href="{html.escape(report["notebook_url"], quote=True)}">Notebook · Forge sign-in</a>')
+        stem = DECKS[slug]["filename"]
+        downloads = [(f'{stem}.pdf', 'Deck PDF'), (f'{stem}-browser.zip', 'Offline deck'), (f'{stem}-source.zip', 'Editable source')]
+        deck_downloads = ' · '.join(
+            f'<a href="{html.escape(slug)}/{html.escape(filename)}">{label}</a>'
+            for filename, label in downloads if (directory / slug / filename).exists()
+        )
         poster = json.loads((ROOT / "visual-guides" / slug / "poster.json").read_text(encoding="utf-8"))["poster"]
         poster_png = next((directory / "posters" / slug / "digital").glob("*.png"), None)
         links.append(f'<article id="{html.escape(slug)}"><a class="preview" href="posters/{slug}/digital/index.html">'
                      f'<img loading="lazy" src="posters/{slug}/digital/final.svg" alt="Overview poster: {html.escape(row["title"], quote=True)}"></a>'
                      f'<div><p class="number">{len(links)+1:02d} / {html.escape(poster["duration"])}</p>'
                      f'<h2>{html.escape(row["title"])}</h2><p>{html.escape(poster["situation"])}</p>'
-                     f'<p>{actions}</p><p><a href="posters/{slug}/digital/index.html">View poster</a> · '
+                     f'<p>{actions}</p><p>{deck_downloads}</p><p><a href="posters/{slug}/digital/index.html">View poster</a> · '
                      f'<a href="posters/{slug}/print/final.svg" download>A2 SVG</a>'
                      + (f' · <a href="posters/{slug}/digital/{poster_png.name}" download>Digital PNG</a>' if poster_png else '')
                      + (f' · <a href="posters/{slug}/print/print.pdf">A2 PDF</a>' if (directory / "posters" / slug / "print/print.pdf").exists() else '')
@@ -177,6 +183,8 @@ def write_library_index(directory, available):
         'then copy its notebook into your own Forge project to change the code and run the exercises.</p>'
         '<p>These are technical previews. You can read the recorded results without running an experiment. '
         'Notebook execution uses your own project access and billing.</p>'
+        '<p><a href="https://ash0ts.github.io/forge-workshop-kit/packet/">Meeting packet, demo routes, and Slack copy</a> · '
+        '<a href="https://ash0ts.github.io/forge-workshop-kit/packet/workshop-meeting-packet.zip">Download the packet</a></p>'
         '<p><a href="visual-language/">Explore the visual guide templates</a> · '
         '<a href="downloads/workshop-posters.zip">Download all six posters</a></p></header>'
         f'<main>{"".join(links)}</main>'
@@ -300,6 +308,11 @@ def main():
         if (output / "site" / slug / "index.html").exists()
     ]
     write_library_index(output / "site", available)
+    # A one-deck source bundle remains self-contained and does not need the
+    # complete workshop catalog. The public all-deck build also emits the packet.
+    if not args.only:
+        from build_share_packet import build as build_packet
+        build_packet(output / "site", pdf=args.pdf)
     (output / "site/.nojekyll").touch()
     files = [
         {

@@ -33,3 +33,13 @@ The diagram review also corrected Inspection's 14-by-14 patch grid and Routing's
 Validation covers the full browser decks, Next/Back, original reveal ordering, worked-answer links, image loading, text bounds, and every exported PDF page. The 30 scene SVGs also passed standalone rendering, font-bound checks, and deterministic regeneration outside the checkout. Storyboard and packaging checks passed 39 tests. The download includes the per-deck receipts and the separate scene/component reviews.
 
 The current browser decks and downloads are in the workshop library. The separately named [illustrated deck update](https://github.com/ash0ts/forge-workshop-kit/releases/download/v0.11.1/workshop-decks-2026-11-16-illustrated.zip) preserves the original v0.11.1 assets. This update changes presentation only; the readiness limits above still apply.
+
+## Meeting packet · November 16, 2026
+
+The [meeting packet](https://ash0ts.github.io/forge-workshop-kit/packet/) collects a two-page brief, Slack copy, short demo routes, six deck PDFs, setup instructions, facilitator notes, and links to the public Reports and editable notebooks. The library now exposes PDF, offline-deck, and source downloads directly. Local setup instructions distinguish the dependency extra from the notebook path.
+
+All 30 primary deck, PDF, source, Report, and notebook URLs returned HTTP 200; the notebook URLs lead anonymous visitors to Forge sign-in. All six public Reports matched their authored content on anonymous readback. This is a link check, not a fresh-account execution rehearsal.
+
+Packet checks resolved 110 local link targets and 20 anchors across 15 HTML pages. The archive's 49 payloads matched its manifest, and the six deck PDFs matched the already-validated site PDFs byte-for-byte. A temporary rebuild excluded unrelated and stale files. The two-page brief has ten public PDF links and no text outside the page bounds. Desktop and 390-pixel layouts, the Slack-section link, and offline document links were inspected. Related publication, visual, and packaging checks passed 34 tests.
+
+Use this material for recorded demonstrations and pilot invitations. The full-class readiness limits above remain unchanged. No workshop execution, credentials, participant state, or existing release asset was changed.

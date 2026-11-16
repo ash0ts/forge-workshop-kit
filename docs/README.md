@@ -6,6 +6,7 @@ Start with the [repository README](../README.md) to choose a workshop. Use this 
 
 | Need | Read |
 | --- | --- |
+| Introduce the work in a meeting or share a Slack message | [Meeting and sharing packet](sharing.md) |
 | Choose materials for a reader, demo, hands-on pilot, or new workshop | [Use the workshop materials](use-the-workshops.md) |
 | Learn from a worked example before opening the notebook | [Public learning Reports](../reports/README.md) |
 | Copy a template, run locally, or recover saved work | [Setup](setup.md) |

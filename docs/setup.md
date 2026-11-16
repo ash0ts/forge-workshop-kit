@@ -26,7 +26,7 @@ uv run --extra pending wandb login
 uv run --extra pending marimo edit notebooks/pending_inc.py
 ```
 
-Choose the extra and notebook below. Replace `pending` in the three uv commands above; for “none,” omit `--extra pending` entirely.
+Choose the extra and notebook below. Replace the `pending` value after `--extra` in each uv command, and replace `notebooks/pending_inc.py` with your workshop's notebook path. For “none,” omit `--extra pending` entirely.
 
 | Workshop | Dependency extra | Notebook |
 | --- | --- | --- |

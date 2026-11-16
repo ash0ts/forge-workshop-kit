@@ -44,6 +44,18 @@ Validation checks slide and reveal states, Back navigation, worked-answer return
 
 The [Workshop decks workflow](../.github/workflows/deck.yml) publishes validated site output after matching changes reach `main`, or by explicit workflow dispatch. It does not upload assets to a GitHub release or publish Forge templates.
 
+### Build the meeting packet
+
+The complete deck build also creates `dist/decks/site/packet/`: a briefing page and PDF, six deck PDFs, setup and demo instructions, facilitator notes, and a downloadable ZIP. The authored brief and Slack copy live in [sharing.md](sharing.md); workshop links come from the existing manifest and Report catalog.
+
+To rebuild only this packet from previously built decks:
+
+```sh
+python scripts/build_share_packet.py --site dist/decks/site --pdf
+```
+
+This requires the shared deck toolchain and Chrome. It makes no workshop or provider calls. Check the brief's PDF pages, the HTML on a narrow screen, and the links before sharing. The package contains only its explicit source documents, public illustrations, and built PDFs. It excludes participant journals and credentials. The manifest records hashes and whether its source checkout had uncommitted changes.
+
 ## Publish Forge templates
 
 Upload the matching wheel to the versioned GitHub release first. The template publisher downloads that public wheel and verifies its hash against the build. Then publish to an explicit destination:
@@ -86,7 +98,7 @@ If creation is interrupted before the ID is saved, locate the Report in that pro
 
 A fresh contributor checkout has the public catalog but no private publication receipts. The publisher stops instead of creating duplicate Reports. For an existing destination, verify the Report linked in `reports/published.json`, then adopt its ID (the part after `--` in its URL). Use `--only` to update one Report. Publishing to a different project creates separate Reports there.
 
-Commit the sources and `reports/published.json` together. The deck-library build reads this catalog to place **Read the learning Report**, **Deck**, and **Copy the notebook** together. It does not publish Reports or run workshop code. Keep destination receipts and revision backups out of Git.
+Commit the sources and `reports/published.json` together. The deck-library build reads this catalog to place **Read the learning Report**, **Deck**, and **Notebook · Forge sign-in** together. It does not publish Reports or run workshop code. Keep destination receipts and revision backups out of Git.
 
 ## Record what shipped
 
