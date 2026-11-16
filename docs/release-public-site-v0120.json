@@ -1,0 +1,419 @@
+{
+  "verified_at": "2026-11-16T09:21:16.299917+00:00",
+  "source_commit": "d3efd9cc7b379014a65c27fd105b2e37d445d0ae",
+  "scope": "Final coordinated public deployment. Tests and read-only delivery checks; no training, inference, publication of participant executions, or ARIA request.",
+  "ci": {
+    "commit": "d3efd9cc7b379014a65c27fd105b2e37d445d0ae",
+    "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43834951903",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "check (windows-latest)",
+        "conclusion": "success"
+      },
+      {
+        "name": "base (ubuntu-latest, base)",
+        "conclusion": "success"
+      },
+      {
+        "name": "base (ubuntu-latest, pending)",
+        "conclusion": "success"
+      },
+      {
+        "name": "check (ubuntu-latest)",
+        "conclusion": "success"
+      },
+      {
+        "name": "base (windows-latest, base)",
+        "conclusion": "success"
+      },
+      {
+        "name": "check (macos-latest)",
+        "conclusion": "success"
+      },
+      {
+        "name": "base (macos-latest, base)",
+        "conclusion": "success"
+      },
+      {
+        "name": "base (windows-latest, pending)",
+        "conclusion": "success"
+      },
+      {
+        "name": "base (macos-latest, pending)",
+        "conclusion": "success"
+      }
+    ],
+    "pytest": {
+      "linux": {
+        "passed": 527,
+        "skipped": 0
+      },
+      "macos": {
+        "passed": 527,
+        "skipped": 0
+      },
+      "windows": {
+        "passed": 526,
+        "skipped": 1
+      }
+    },
+    "portable_visual_renderer_tests_per_os": 15,
+    "regeneration_and_marimo_checks": "passed on all three OSes",
+    "participant_execution": "none"
+  },
+  "pages_deployment": {
+    "url": "https://github.com/ash0ts/forge-workshop-kit/actions/runs/43834951680",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-16T08:53:36Z",
+    "updated_at": "2026-11-16T09:15:56Z",
+    "jobs": [
+      {
+        "name": "publish",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "decks": {
+    "pending": {
+      "slides": 102,
+      "pages": 151,
+      "empty_pages": 0,
+      "all_pages_rendered": true,
+      "source_sha256": "0438389bd6387972fa774b55fc0c378eb8b7b1de3b3fa961666ae355d63c21d5",
+      "slides_checked": 102,
+      "click_states_checked": 151,
+      "issues": [],
+      "console_errors": [],
+      "failed_responses": []
+    },
+    "solar": {
+      "slides": 131,
+      "pages": 244,
+      "empty_pages": 0,
+      "all_pages_rendered": true,
+      "source_sha256": "8b64151d23d2db2f2d3c77dadab79ad553f53c5540e3fcae1cf321b7dfe35be7",
+      "slides_checked": 131,
+      "click_states_checked": 244,
+      "issues": [],
+      "console_errors": [],
+      "failed_responses": []
+    },
+    "routing": {
+      "slides": 81,
+      "pages": 114,
+      "empty_pages": 0,
+      "all_pages_rendered": true,
+      "source_sha256": "9dc408b48c6872a9f92682f95232a03c054065cd8eb06a54bb5e68fdc4d1937e",
+      "slides_checked": 81,
+      "click_states_checked": 114,
+      "issues": [],
+      "console_errors": [],
+      "failed_responses": []
+    },
+    "inspection": {
+      "slides": 62,
+      "pages": 98,
+      "empty_pages": 0,
+      "all_pages_rendered": true,
+      "source_sha256": "5d80893a11f84380fff2a57b79ac55db7374919ef61800372b66635c28e5a43a",
+      "slides_checked": 62,
+      "click_states_checked": 98,
+      "issues": [],
+      "console_errors": [],
+      "failed_responses": []
+    },
+    "transit": {
+      "slides": 104,
+      "pages": 154,
+      "empty_pages": 0,
+      "all_pages_rendered": true,
+      "source_sha256": "6b7004ded4765eb40e176ba1c61f07805ff024fc97be8661125bd83b0d66ea3b",
+      "slides_checked": 104,
+      "click_states_checked": 154,
+      "issues": [],
+      "console_errors": [],
+      "failed_responses": []
+    },
+    "airline_monitoring": {
+      "slides": 83,
+      "pages": 161,
+      "empty_pages": 0,
+      "all_pages_rendered": true,
+      "source_sha256": "06d19bfcb0cbfd76268bd234b4b95664dd36a21840ead5c2933673220735d3ad",
+      "slides_checked": 83,
+      "click_states_checked": 161,
+      "issues": [],
+      "console_errors": [],
+      "failed_responses": []
+    }
+  },
+  "public_http": {
+    "verified_at": "2026-11-16T09:17:23.306511+00:00",
+    "source_commit": "d3efd9cc7b379014a65c27fd105b2e37d445d0ae",
+    "check_run": "43834951903",
+    "deployment_run": "43834951680",
+    "scope": "Read-only public HTTP and managed redirect checks. No participant execution. Validation requests are not acquisition traffic.",
+    "pages": [
+      {
+        "name": "library",
+        "url": "https://ash0ts.github.io/forge-workshop-kit/",
+        "status": 200,
+        "checks": {
+          "player_link": true
+        }
+      },
+      {
+        "name": "pending-deck",
+        "url": "https://ash0ts.github.io/forge-workshop-kit/pending/",
+        "status": 200,
+        "checks": {
+          "slide_app": true
+        }
+      },
+      {
+        "name": "solar-deck",
+        "url": "https://ash0ts.github.io/forge-workshop-kit/solar/",
+        "status": 200,
+        "checks": {
+          "slide_app": true
+        }
+      },
+      {
+        "name": "routing-deck",
+        "url": "https://ash0ts.github.io/forge-workshop-kit/routing/",
+        "status": 200,
+        "checks": {
+          "slide_app": true
+        }
+      },
+      {
+        "name": "inspection-deck",
+        "url": "https://ash0ts.github.io/forge-workshop-kit/inspection/",
+        "status": 200,
+        "checks": {
+          "slide_app": true
+        }
+      },
+      {
+        "name": "transit-deck",
+        "url": "https://ash0ts.github.io/forge-workshop-kit/transit/",
+        "status": 200,
+        "checks": {
+          "slide_app": true
+        }
+      },
+      {
+        "name": "airline_monitoring-deck",
+        "url": "https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/",
+        "status": 200,
+        "checks": {
+          "slide_app": true
+        }
+      },
+      {
+        "name": "pending-start",
+        "url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/pending.html",
+        "status": 200,
+        "checks": {
+          "current_version": true,
+          "hosted_version": true,
+          "local_option": true
+        }
+      },
+      {
+        "name": "solar-start",
+        "url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/solar.html",
+        "status": 200,
+        "checks": {
+          "current_version": true,
+          "hosted_version": true,
+          "local_option": true
+        }
+      },
+      {
+        "name": "routing-start",
+        "url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/routing.html",
+        "status": 200,
+        "checks": {
+          "current_version": true,
+          "hosted_version": true,
+          "local_option": true
+        }
+      },
+      {
+        "name": "inspection-start",
+        "url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/inspection.html",
+        "status": 200,
+        "checks": {
+          "current_version": true,
+          "hosted_version": true,
+          "local_option": true
+        }
+      },
+      {
+        "name": "transit-start",
+        "url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/transit.html",
+        "status": 200,
+        "checks": {
+          "current_version": true,
+          "hosted_version": true,
+          "local_option": true
+        }
+      },
+      {
+        "name": "airline_monitoring-start",
+        "url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/airline_monitoring.html",
+        "status": 200,
+        "checks": {
+          "current_version": true,
+          "hosted_version": true,
+          "local_option": true
+        }
+      },
+      {
+        "name": "walkthrough",
+        "url": "https://ash0ts.github.io/forge-workshop-kit/walkthrough/",
+        "status": 200,
+        "checks": {
+          "captioned": true,
+          "clean": true,
+          "video": true
+        }
+      }
+    ],
+    "redirects": [
+      {
+        "name": "pending",
+        "short_url": "https://utm.io/uuH96",
+        "destination": "https://ash0ts.github.io/forge-workshop-kit/packet/start/pending.html?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=pending-start",
+        "status": 200,
+        "matches_registry": true
+      },
+      {
+        "name": "solar",
+        "short_url": "https://utm.io/uuH97",
+        "destination": "https://ash0ts.github.io/forge-workshop-kit/packet/start/solar.html?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=solar-start",
+        "status": 200,
+        "matches_registry": true
+      },
+      {
+        "name": "routing",
+        "short_url": "https://utm.io/uuH98",
+        "destination": "https://ash0ts.github.io/forge-workshop-kit/packet/start/routing.html?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=routing-start",
+        "status": 200,
+        "matches_registry": true
+      },
+      {
+        "name": "inspection",
+        "short_url": "https://utm.io/uuH99",
+        "destination": "https://ash0ts.github.io/forge-workshop-kit/packet/start/inspection.html?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=inspection-start",
+        "status": 200,
+        "matches_registry": true
+      },
+      {
+        "name": "transit",
+        "short_url": "https://utm.io/uuIaa",
+        "destination": "https://ash0ts.github.io/forge-workshop-kit/packet/start/transit.html?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=transit-start",
+        "status": 200,
+        "matches_registry": true
+      },
+      {
+        "name": "airline_monitoring",
+        "short_url": "https://utm.io/uuIab",
+        "destination": "https://ash0ts.github.io/forge-workshop-kit/packet/start/airline_monitoring.html?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=workshop&utm_source=forge-workshop-kit&utm_content=airline_monitoring-start",
+        "status": 200,
+        "matches_registry": true
+      },
+      {
+        "name": "packet",
+        "short_url": "https://utm.io/uuIaS",
+        "destination": "https://ash0ts.github.io/forge-workshop-kit/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=social&utm_source=slack&utm_content=workshop-library",
+        "status": 200,
+        "matches_registry": true
+      },
+      {
+        "name": "loom",
+        "short_url": "https://utm.io/uuIan",
+        "destination": "https://ash0ts.github.io/forge-workshop-kit/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=video&utm_source=loom&utm_content=kit-walkthrough",
+        "status": 200,
+        "matches_registry": true
+      },
+      {
+        "name": "internal_packet",
+        "short_url": "https://utm.io/uuIac",
+        "destination": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=social&utm_source=slack&utm_content=meeting-packet",
+        "status": 200,
+        "matches_registry": true
+      }
+    ]
+  },
+  "native_browser_checks": {
+    "method": "Public pages exercised with native browser controls after deployment.",
+    "observations": [
+      {
+        "name": "player",
+        "url": "https://ash0ts.github.io/forge-workshop-kit/walkthrough/",
+        "passed": true,
+        "observations": {
+          "duration_seconds": 600,
+          "ready_state": 4,
+          "play_advanced_time": true,
+          "paused_during_play": false,
+          "pause_succeeded": true,
+          "seek_seconds": 481.784,
+          "seek_succeeded": true
+        },
+        "local_screenshot": "dist/walkthrough-production/public-proof/player.png",
+        "screenshot_sha256": "52a4f56cf85a5671933778bdff1d9ef9f08b96ffd70cf8889de6daf5fd2a1588"
+      },
+      {
+        "name": "library",
+        "url": "https://ash0ts.github.io/forge-workshop-kit/",
+        "passed": true,
+        "observations": {
+          "walkthrough_link_visible": true,
+          "current_version_notice_visible": true
+        },
+        "local_screenshot": "dist/walkthrough-production/public-proof/library.png",
+        "screenshot_sha256": "da518c0b14bc6c0a8f152f618d109e3a33b85f6f702a082a95b6f3be1406a0f8"
+      },
+      {
+        "name": "solar-start",
+        "url": "https://ash0ts.github.io/forge-workshop-kit/packet/start/solar.html",
+        "passed": true,
+        "observations": {
+          "opened_from_library_start_notebook": true,
+          "current_download_version": "v0.12.0",
+          "hosted_template_version": "v0.11.1",
+          "copy_and_laptop_instructions_visible": true,
+          "recovery_details_expanded": true
+        },
+        "local_screenshot": "dist/walkthrough-production/public-proof/solar-start.png",
+        "screenshot_sha256": "eaccbaac0ee3e8cf6386152a2dad37a4278ea6ee28f486f91223ca63356191cd"
+      },
+      {
+        "name": "routing-aria",
+        "url": "https://ash0ts.github.io/forge-workshop-kit/routing/15",
+        "passed": true,
+        "observations": {
+          "direct_aria_diagram_rendered": true,
+          "keyboard_right_to_slide": 16,
+          "keyboard_left_to_slide": 15
+        },
+        "local_screenshot": "dist/walkthrough-production/public-proof/routing-aria.png",
+        "screenshot_sha256": "f7acc0254fcdff855e2f49d6db37139db738b2b79a6d33433f8b2949dab07e0c"
+      }
+    ],
+    "limitations": [
+      "Representative public browser checks do not establish fresh-account notebook execution or participant usability."
+    ]
+  },
+  "limits": [
+    "All eight hosted notebook templates remain at their last verified v0.11.1 version because native notebook-management access blocked publication; v0.12.0 downloads contain the direct ARIA controls.",
+    "HTTP reachability and CI checks do not establish fresh-account access or participant usability.",
+    "Redirect validation requests are test traffic and must not be interpreted as external acquisition."
+  ]
+}
