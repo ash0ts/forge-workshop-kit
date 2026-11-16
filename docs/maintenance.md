@@ -58,7 +58,7 @@ Pages artifacts expire after one day. If the artifact is missing or expired, rer
 
 ### Build the meeting packet
 
-The complete deck build also creates `dist/decks/site/packet/`: a briefing page and PDF, six deck PDFs, setup and demo instructions, a facilitator start guide, a short running guide for each deck, detailed facilitator notes, and a downloadable ZIP. The authored brief and Slack copy live in [sharing.md](sharing.md); workshop links come from the existing manifest and Report catalog.
+The complete deck build also creates `dist/decks/site/packet/`: a briefing page and PDF, six deck PDFs, setup and demo instructions, a facilitator start guide, a short running guide for each deck, detailed facilitator notes, the [ten-minute Loom script](loom-walkthrough.md), and a downloadable ZIP. The authored brief and Slack copy live in [sharing.md](sharing.md); workshop links come from the existing manifest and Report catalog. The script is a recording guide, not evidence that a video has been recorded.
 
 To rebuild only this packet from previously built decks:
 
@@ -67,6 +67,8 @@ python scripts/build_share_packet.py --site dist/decks/site --pdf
 ```
 
 This requires the shared deck toolchain and Chrome. It makes no workshop or provider calls. Check the brief's PDF pages, the HTML on a narrow screen, and the links before sharing. The package contains only its explicit source documents, public illustrations, and built PDFs. It excludes participant journals and credentials. The manifest records hashes and whether its source checkout had uncommitted changes.
+
+For a coordinated documentation update, revise the README, affected learning Reports, and packet instructions together. Publish the Reports and verify their readback before committing the updated catalog. Build the site from that commit, then check the public packet and managed redirects. Register a separate placement link when attribution needs to distinguish a video from Slack; see [sharing and tracking](share-links.md). Do not use link clicks as a count of workshop completions.
 
 ## Publish Forge templates
 

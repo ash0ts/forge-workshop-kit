@@ -12,6 +12,8 @@ We built this workshop to follow those decisions through training, review, evalu
 
 You can [copy the notebook into your Forge project](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view) and build the same comparison. The examples below are saved instructor results, so you can investigate them before running your own version.
 
+In Forge, we follow a message from a training run into an aligned evaluation, review the mistakes, and preserve the selected model and preprocessing as an exact Artifact version. Agent Lens records the separate prompted-router and judge calls, then the batch operations used in the release drill. The release target is a notebook batch predictor. It lets us practice reproducing a version, detecting a loading bug, and rolling back without claiming we deployed a production banking service.
+
 ## Change what the classifier can see
 
 A classifier needs numbers as inputs. We start by turning words and adjacent word pairs into TF–IDF features. A term's value depends on its frequency in the request and how common it is across the training collection. For the request above, the feature vocabulary can include `replacement` and `replacement card`. These features preserve word occurrence; they do not directly encode the meaning of asking for a delivery update.
@@ -21,6 +23,8 @@ The alternative passes the message through a frozen sentence encoder and produce
 ![The same request follows either a TF–IDF word-feature path or a frozen 384-value sentence-feature path before fitting a logistic classifier with 77 probability columns.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/routing/representations.png)
 
 *We change the input representation while retaining the training messages and classifier settings. The displayed tokens are an illustrative subset, not an explanation of which feature caused the saved mistake.*
+
+The [request-to-features guide](https://ash0ts.github.io/forge-workshop-kit/guides/routing/features/index.html) follows the same message through the two representations and their probability columns. Keep the message fixed while comparing what changes.
 
 The first code change is small:
 
@@ -124,4 +128,6 @@ Open the [Customer request routing notebook](https://forge.coreweave.com/noteboo
 
 The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) includes the laptop path and recovery instructions. The [companion deck](https://ash0ts.github.io/forge-workshop-kit/routing/) follows the same exercises. Allow five and a half hours and bring basic Python familiarity. The adjustable $8 inference allowance covers the notebook's model calls; compute and optional ARIA usage are separate.
 
-These are technical-preview materials; external-account checks and participant rehearsals remain outstanding. Your copy saves your edits and results. Start with one request you can explain, then check that the predictor you release still sends it where you intended.
+Two ARIA activities examine a validation prediction and the release conclusion. You check its explanation against a cited request, probability column, or release record; it does not approve a label or release the repair. Recorded investigations are included when live ARIA is unavailable.
+
+The [Routing packet](https://utm.io/uuH98) collects this Report, the deck, notebook, visual guides, and running instructions for a short demonstration or the full session. These remain technical-preview materials; external-account checks and participant rehearsals are outstanding. Your copy saves your edits and results, including the remaining classifier errors after the loading bug is repaired.

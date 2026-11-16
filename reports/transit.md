@@ -6,6 +6,8 @@ The catch was in the timetable. A train listed at `24:08:00` belongs to the prev
 
 This workshop makes the coordination code part of the lesson. We build a worker's read–edit–test cycle, divide the work, check the combined app, and carry reviewed lessons into a later feature. The recorded team completed its build phase faster than one worker, but its app failed a timezone case. That gives us something concrete to investigate beyond whether the agents stayed busy.
 
+This is a small software-factory exercise: agents produce patches from a work order, while participants define interfaces, review the changes, run acceptance checks, and decide what can ship. Forge keeps the assignments and tool calls visible in Agent Lens, the build measurements in runs, the source in Artifacts, and matching scenarios in EvalTables. We can test coordination and shared lessons against the application they produce.
+
 You can read the examples here without an account. The [six-hour editable notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view) and [visual deck](https://ash0ts.github.io/forge-workshop-kit/transit/) contain the exercises. They're a technical preview; fresh-account access and a participant rehearsal remain outstanding.
 
 ## Start with a departure someone should be able to catch
@@ -47,6 +49,8 @@ For the team build, the query worker owns `query.py`, and the presentation worke
 ![Two workers receive the same starting files and contracts, edit separate owned files, and submit patches for participant review, integration, and combined application checks.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/transit/worker-integration.png)
 
 *Solid arrows follow code from the starting copy through each patch into the integrated app. A conflict stops integration for inspection. Submitted, integrated, and independently checked are different states.*
+
+The [patch-integration guide](https://ash0ts.github.io/forge-workshop-kit/guides/transit/integration/index.html) follows each owned file from its working copy into the combined app. Step backward when a failure appears to find which patch supplied the relevant code.
 
 We also need to decide when work is ready. The kit's selection rule is deliberately small:
 
@@ -110,4 +114,6 @@ A next experiment could change the task breakdown or allowed context, but it wou
 
 The notebook uses your credentials and an adjustable $8 inference allowance. Compute and optional ARIA use are separate. Explicit run controls start builders. Saved responses and patches survive restart; retrying publication does not repeat a completed build.
 
-You finish by reproducing a released version or explaining why a build remains blocked. Bring the actual app, the failed or passing scenario, and the patch responsible. That is enough to make a concrete case for keeping the team, changing its coordination, or going back to one worker.
+Two ARIA activities examine development failures and the frozen comparison. Verify its explanation against the worker event, integrated source, and application check. It does not accept a shared lesson or approve a release for you; recorded investigations are available without live ARIA access.
+
+Use the [Transit packet](https://utm.io/uuIaa) for this Report, the deck, notebook, visual guides, and running instructions. A short demonstration can follow one departure through the reference app and the recorded timezone failure. In the full session, finish by reproducing a released version or explaining why a build remains blocked, with the actual scenario and patch responsible.

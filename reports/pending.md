@@ -6,6 +6,8 @@ We built this workshop around the work that paragraph leaves out. The agent need
 
 The office and customers are fictional. The Python, model requests, traces, and evaluations run. You can [copy the notebook into your own Forge project](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) and implement the same steps. This article follows the recorded instructor run, including a proposed improvement we rejected.
 
+We use Forge to run a ticket, inspect the tool calls and resulting account, choose a development example, revise the harness, and evaluate the frozen versions on matching tickets. This is the work behind an agent that can take actions in a customer account: a fluent reply is only one output to check. Agent Lens exposes what it did; the account checks and aligned evaluation show whether it delivered the requested change.
+
 ## Refund the duplicate and leave the rest alone
 
 Acme has two captured payments of 4,900 cents against invoice `inv-1`. The request is to keep `pay-1` and refund the duplicate. We can inspect the complete simulated account, so we don't have to take the employee's final message as proof that it did the job.
@@ -48,6 +50,8 @@ def my_observation(messages, action, result):
 ![A chosen lookup_invoice action passes Acme and inv-1 to my_dispatch, receives the payment records, and appends them to the next model request through my_observation.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/pending/tool-handoff.png)
 
 *This is the notebook's worked handoff, including its serialized action and observation messages. If `my_observation` discards the result, the model won't see the records your Python function returned. The free check exercises this connection without calling a model.*
+
+The [interactive tool-handoff guide](https://ash0ts.github.io/forge-workshop-kit/guides/pending/dispatch/index.html) steps through the same action, arguments, return value, and next request. Use Back to check which function owns each handoff.
 
 ## Follow the request into Agent Lens
 
@@ -156,4 +160,6 @@ The deterministic retry repair improved the implementation. The agent-written ha
 
 The [four-hour deck](https://ash0ts.github.io/forge-workshop-kit/pending/) accompanies the notebook. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) covers laptop use, credentials, and returning to saved work. You'll need basic Python, project write access, notebook compute, and inference access. The adjustable $8 notebook inference allowance excludes compute and ARIA. No workshop gateway or remote Sandbox entitlement is required.
 
-Two optional ARIA stops let you question your development diagnosis and final conclusion, then verify a cited record. Recorded investigations are included when ARIA isn't available. The materials remain a technical preview while external-account checks and participant rehearsals are outstanding. Your run may produce a different branch; the notebook retains the files, actions, and checks needed to explain it.
+Two ARIA activities let you question your development diagnosis and final conclusion, then verify a cited record. Use the recorded investigations when live ARIA isn't available. Its explanation does not become an account check or an automatic harness edit.
+
+For a short demonstration or a facilitated session, [open the Pending packet](https://utm.io/uuH96). It brings together this Report, the deck, notebook, visual guides, and running instructions. The materials remain a technical preview while external-account checks and participant rehearsals are outstanding. Your run may produce a different branch; keep the files, actions, and checks needed to explain it.

@@ -1,6 +1,6 @@
 {
   "description": "Sources for public learning Reports. All numerical outcomes are saved instructor executions, not new experiments or participant results.",
-  "reviewed_at": "2026-11-15",
+  "reviewed_at": "2026-11-16",
   "reports": [
     {
       "slug": "pending",
@@ -78,6 +78,21 @@
           ],
           "source_urls": [
             "https://github.com/ash0ts/forge-workshop-kit/blob/main/reports/assets/pending/recorded-branches.json"
+          ]
+        },
+        {
+          "claim": "Forge workflow follows actual tool execution, development example selection, reviewed harness edits and frozen matched account checks; ARIA investigations never become account checks or automatic edits. The linked visual guide and tracked workshop packet use the current visual-guide index and managed sharing registry.",
+          "files": [
+            "scripts/pending_cells.py",
+            "docs/aria-investigations.md",
+            "visual-guides/index.json",
+            "docs/share-links.json"
+          ],
+          "source_urls": [
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/pending_cells.py",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-investigations.md",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/visual-guides/index.json",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/share-links.json"
           ]
         }
       ],
@@ -183,7 +198,7 @@
         "One scripted rehearsal with four final cases does not establish general equivalence.",
         "External-account and participant rehearsals remain outstanding."
       ],
-      "source_sha256": "8d6d4d85a110f87fb9a48cf14c5e565a0b82c7434efcdfa6c198f9204cdbc309"
+      "source_sha256": "3e62cd97cf23601878b382bbf03a274adf81b39205e8555906940a5a9606d8cc"
     },
     {
       "slug": "solar",
@@ -264,6 +279,21 @@
           ],
           "source_urls": [
             "https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/solar/public/recorded-study.json"
+          ]
+        },
+        {
+          "claim": "Runs/Sweeps preserve experiment settings and curves; Artifacts preserve source and outputs; Agent Lens records research-agent proposals; validation selects changes before frozen comparisons. ARIA does not score or alter the frozen experiment. The linked visual guide and tracked workshop packet use the current visual-guide index and managed sharing registry.",
+          "files": [
+            "scripts/solar_cells.py",
+            "docs/aria-investigations.md",
+            "visual-guides/index.json",
+            "docs/share-links.json"
+          ],
+          "source_urls": [
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/solar_cells.py",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-investigations.md",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/visual-guides/index.json",
+            "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/share-links.json"
           ]
         }
       ],
@@ -369,7 +399,7 @@
         "All claimed gains belong to exact saved runs; image all-seed reliability gate failed.",
         "External-account and participant rehearsals remain outstanding."
       ],
-      "source_sha256": "67f1a4f8a78d1919ad2506ae09041dfcfa19fcdf704acfe5fb565d7058dc737c"
+      "source_sha256": "d11c807e17a2c559ee928018e30ef5ca2446b08192fb6ca1c4d2d13b619a88f1"
     }
   ]
 }

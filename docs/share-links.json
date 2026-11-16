@@ -30,6 +30,10 @@
     "packet": {
       "short_url": "https://utm.io/uuIac",
       "url": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=social&utm_source=slack&utm_content=meeting-packet"
+    },
+    "loom": {
+      "short_url": "https://utm.io/uuIan",
+      "url": "https://ash0ts.github.io/forge-workshop-kit/packet/?utm_campaign=2026-q4_global_forge-workshop-kit&utm_medium=video&utm_source=loom&utm_content=kit-walkthrough"
     }
   }
 }

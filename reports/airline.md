@@ -4,6 +4,8 @@ A passenger wants to change the outward flight of a round trip. The agent has to
 
 We built this workshop to follow that request from the conversation to the booking, then into a monitoring rule and a regression test. The question is practical: when an agent says it changed a flight, what would let us check its work across many requests, find the exceptions, and test a repair before releasing it?
 
+The intended Forge workflow connects online observation with offline evaluation. Agent Lens retains conversations, version-specific views, and reviewed tag criteria. Participants turn selected incidents and unflagged controls into reproducible test cases, compare a repair in Weave and EvalTables, then examine subsequent requests using the same monitoring rule. The native access limitations below matter: successful booking checks do not establish that automatic tag judging works.
+
 The bookings are simulated records adapted from a pinned, MIT-licensed [τ-bench airline environment](https://github.com/sierra-research/tau2-bench/tree/989d3285ae669e49503324bdb9981bf14fccedeb). We use its data and complete-itinerary update behavior; this is a workshop adaptation, not customer traffic or a benchmark replication. The live qualification completed all 40 conversations with passing booking checks. A separate controlled omission exercise provides a failure we can reproduce without pretending the agent made it spontaneously.
 
 You can follow the records here without an account, then copy the [six-hour notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view) into your project. The [deck](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/) supplies the code walkthrough. Native Alignment judging, a relevant Insights example, fresh-account access, and a participant rehearsal remain unqualified; the current workshop is a technical preview.
@@ -15,6 +17,8 @@ Our worked round trip is reservation `59XX6W`. The passenger asks to replace `HA
 ![Simulated booking 59XX6W starts with HAT007 outward and HAT174 returning. The required itinerary replaces HAT007 with HAT061 while preserving HAT174.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/airline/itinerary-change.png)
 
 *The API takes the complete replacement itinerary. Sending `[HAT061]` supplies a one-flight booking; `[HAT061, HAT174]` preserves the journey home. These identifiers come from the [saved development request](https://github.com/ash0ts/forge-workshop-kit/blob/main/decks/airline_monitoring/data/representative-case.json).*
+
+The [itinerary guide](https://ash0ts.github.io/forge-workshop-kit/guides/airline_monitoring/itinerary/index.html) reveals the requested edit, submitted list, and resulting booking separately. Compare the unchanged return flight in each state before deciding whether the write is correct.
 
 A successful API response establishes that the operation returned. It does not establish that the supplied list matched the passenger's request. We therefore keep three kinds of checking visible: tool execution, independent booking-state checks, and a judge of the agent's explanation.
 
@@ -122,4 +126,6 @@ All 40 recorded conversations cost $0.02330616 in direct model inference. A sepa
 
 The adjustable $8 notebook allowance covers its own model calls. Native tag judging, compute, and optional ARIA usage follow their separate account settings. Explicit run controls start inference; publication retries reuse saved executions. Disable the workshop tag's automatic judging when you're finished. Closing the notebook does not disable it.
 
-Bring one reviewed request through the whole exercise: original booking, trace, human judgment, regression case, changed code, and final booking. Then state separately what you learned about the agent, the monitor, and the test suite. If the live agent succeeds, keep that success and use the labeled controlled incident to examine the failure condition.
+Two ARIA activities challenge a reviewed turn and the final conclusion. Check its answer against the passenger request, booking, and processing status. It does not become a human label, a tag criterion, or an evaluation score. Use the recorded investigation if live ARIA is unavailable.
+
+The [Airline packet](https://utm.io/uuIab) collects this Report, the deck, notebook, visual guides, and running instructions. Use the recorded booking and local regression drill for a demonstration; check current native-feature access before scheduling a live monitoring session. If the live agent succeeds, keep that success and use the labeled controlled incident to examine the failure condition.

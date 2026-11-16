@@ -1,12 +1,14 @@
 # Current state and next steps
 
-Status as of November 16, 2026, for v0.11.1 and its deck illustration update. This page tracks unfinished work. The [technical specification](techspec.md) describes implemented behavior; [release checks](docs/release-checks.md) record what was verified.
+Status as of November 16, 2026, for v0.11.1 and its current illustrations and sharing materials. This page tracks unfinished work. The [technical specification](techspec.md) describes implemented behavior; [release checks](docs/release-checks.md) record what was verified.
 
 ## What is available
 
 Six participant notebooks, a starter, and a read-only facilitator monitor are published in Forge. Each workshop has a browser deck, PDF, source, exercises, and recorded evidence. The current materials include two ARIA investigations per workshop, twelve recorded responses, and shared technical diagrams across notebooks and decks. Six overview posters introduce the work and link to each notebook. Each deck carries its workshop setting through the opening, implementation, comparison, and conclusion, alongside the technical diagrams. The visual skill can also be used in other projects. Six [public learning Reports](reports/README.md) now explain the examples and link readers directly to the notebooks they can copy.
 
 The current setup is participant-owned: copy into your project, use your credentials, and save results locally and as checkpoint artifacts. No gateway is needed. Existing copies and pinned releases remain unchanged. The learning Reports reuse recorded evidence; they do not change notebook code, results, or package version.
+
+For sharing, the [meeting packet](https://ash0ts.github.io/forge-workshop-kit/packet/) brings the Reports, decks, copy links, and facilitator instructions together. The [ten-minute walkthrough](docs/loom-walkthrough.md) explains each customer problem and its Forge investigation. It is a script ready to record; no collection-wide Loom recording is linked yet. [Tracking instructions](docs/share-links.md) distinguish Slack and Loom referrals, workshop QR clicks, and the separate participant progress records.
 
 **All six workshops remain technical previews.** Maintainer checks, successful uploads, and recorded executions do not establish that a new participant can complete the class. The priorities below are the remaining qualification work, not promises that the services already work for every account.
 

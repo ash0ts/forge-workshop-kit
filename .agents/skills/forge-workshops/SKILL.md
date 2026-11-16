@@ -22,6 +22,7 @@ Load only the material needed for the requested change:
 | Change evaluation rows or publication | [Evaluation publication](../../../docs/evaluations.md) |
 | Build or publish a release | [Maintenance](../../../docs/maintenance.md) and [release checks](../../../docs/release-checks.md) |
 | Write or update public learning Reports | [Report sources](../../../reports/README.md) and [Report publication](../../../docs/maintenance.md#publish-learning-reports) |
+| Prepare a customer demo, facilitator handoff, or recording | [Choose a workshop package](../../../docs/use-the-workshops.md), [facilitator start](../../../docs/facilitator-start.md), [Loom walkthrough](../../../docs/loom-walkthrough.md), and [tracked sharing links](../../../docs/share-links.md) |
 
 ## Establish the work
 
@@ -42,6 +43,7 @@ When credentials or a native feature are unavailable, preserve completed work an
 - The lesson identifies a concrete change, output, and record to inspect.
 - Notebook, deck, runbook, and manifest refer to the same functions and controls.
 - Results and captures match saved code, inputs, and outputs; unsuccessful and missing results remain visible.
+- Public introductions explain the customer's task before naming the workflow or product. Sharing links use the registered placement; clicks and published participant progress remain separate measurements.
 - Validation states which source, browser, native-access, and human checks actually ran.
 - Requested deliverables are complete, with publication status and remaining limitations stated.
 

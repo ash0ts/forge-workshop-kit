@@ -15,13 +15,13 @@ Pick one workshop for the audience, then choose a recorded demonstration or a ha
 | Transit | Do separately built components work together, and did a saved lesson help? | 6 hours | [Run Transit](run-transit.md) |
 | Airline | Does the monitoring rule catch the booking mistakes we care about? | 6 hours | [Run Airline](run-airline_monitoring.md) |
 
-All assume basic Python. The durations include explanations, coding, and breaks. For a short meeting, choose the guide's recorded demo and use the [sharing packet](sharing.md).
+All assume basic Python. The durations include explanations, coding, and breaks. For a short meeting, choose the guide’s recorded demo and use the [sharing packet](sharing.md). To introduce the whole collection, use the [ten-minute Loom walkthrough](loom-walkthrough.md).
 
 ## Prepare the room
 
 1. Open the chosen guide, browser deck, PDF, and notebook. Keep the PDF and the recorded example available if a service is slow. The [deck guide](deck-guide.md) explains presentation controls and worked answers.
 2. For a hands-on session, rehearse an attendee-style copy using the intended account type. Check notebook compute, project writes, tracing, inference, and evaluation publication separately. Use the [participant setup guide](setup.md); laptop instructions are included.
-3. Send the workshop's notebook link, setup guide, and duration before the session. Participants use their own project and credentials. Ask for their project link only if they want you to read progress. Public teaching projects must contain only the supplied public or fictional data.
+3. Send the workshop’s [registered sharing link or QR](share-links.md), setup guide, and duration before the session. Its public packet card includes the notebook link. Participants use their own project and credentials. Ask for their project link only if they want you to read progress. Public teaching projects must contain only the supplied public or fictional data.
 4. Copy the [facilitator monitor](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzM=/view) into your project. Add the project roster, select the workshop, then use **Save roster and filters** and **Refresh progress**. [Monitor setup](setup.md#read-participant-progress) covers filtering and saved rosters.
 5. Confirm the spending explanation: the default $8 notebook inference allowance is adjustable. Notebook compute, ARIA, and native tag judging are separate. A recorded demonstration requires none of those live calls.
 
@@ -31,7 +31,7 @@ Start with the bundled example before authentication. Ask what should change, th
 
 After execution, ask someone to explain one intermediate value and open the Forge record that supports it. The two scheduled ARIA stops check interpretations of saved work. Use their recorded investigations when live access is unavailable; ARIA is not required to continue coding.
 
-The monitor is read-only. Missing progress means unknown, so ask what the participant sees before diagnosing a failure.
+The monitor is read-only. Missing progress means unknown, so ask what the participant sees before diagnosing a failure. It reads progress from the participant projects in your roster. Sharing-link visits are a separate measure and do not establish that someone copied or completed a notebook.
 
 ## Recover and finish
 

@@ -1,6 +1,6 @@
 # Share a workshop
 
-Use the [sharing page](https://ash0ts.github.io/forge-workshop-kit/share/) to copy a tracked link or download a QR code. The collection link is for a Slack message or meeting about all six workshops. Each workshop also has its own link, which opens that workshop's card in the public packet.
+Use the [sharing page](https://ash0ts.github.io/forge-workshop-kit/share/) to copy a tracked link or download a QR code. Use the [Slack collection link](https://utm.io/uuIac) in a Slack message and the [Loom collection link](https://utm.io/uuIan) in the recording's description and closing screen. Both open the same packet, with different source attribution. Each workshop also has its own link, which opens that workshop's card in the packet.
 
 The destination includes the illustrated example, deck, facilitator instructions, and notebook. People can read the introduction before signing in. Running the notebook uses their own Forge project and credentials.
 
@@ -8,16 +8,24 @@ The destination includes the illustrated example, deck, facilitator instructions
 
 - Show the workshop QR when introducing the session and when wrapping up. Keep it visible while people open the page.
 - Use the same workshop QR on its poster or handout. Keep the white border, preserve its square shape, and include the written short link for people who cannot scan it.
-- Share the collection link with the meeting brief. Use a workshop link when the invitation names one session.
+- Share the Slack collection link with the meeting brief. Use the Loom link with the [ten-minute walkthrough](loom-walkthrough.md), and a workshop link when the invitation names one session.
 - Keep the direct notebook link beside the copy instructions. The sharing link leads to the public introduction; the notebook link opens Forge and may ask the participant to sign in.
 
 Download PNG for a message and SVG for a slide or print layout. Both encode the same registered short URL. Do not replace the destination with a local preview address or a facilitator's notebook copy.
 
 ## How tracking works
 
-[share-links.json](share-links.json) is the source for registered UTM.io short links and their full destinations. Workshop links use `utm_source=forge-workshop-kit`, `utm_medium=workshop`, and `utm_content=<workshop>-start`. The collection link uses `utm_source=slack`, `utm_medium=social`, and `utm_content=meeting-packet`. Their campaign comes from the manifest.
+[share-links.json](share-links.json) is the source for registered UTM.io short links and their full destinations. All use the campaign `2026-q4_global_forge-workshop-kit`.
+
+| Placement | `utm_source` | `utm_medium` | `utm_content` |
+| --- | --- | --- | --- |
+| Workshop deck, poster, or invitation | `forge-workshop-kit` | `workshop` | `<workshop>-start` |
+| Slack collection message | `slack` | `social` | `meeting-packet` |
+| Loom description and closing screen | `loom` | `video` | `kit-walkthrough` |
 
 A workshop uses one link across its deck and poster. These links therefore identify the workshop, not the particular surface that someone scanned. Verification clicks, repeat visits, and link previews are not attendee counts. UTM parameters describe the incoming link; they do not establish that someone copied or completed a notebook.
+
+Read UTM.io link activity separately from the facilitator's progress monitor. The monitor reads updates from projects on the facilitator's roster; it does not join those updates to anonymous link clicks. For an event or placement that needs separate attribution, register a new link instead of reusing the Slack or Loom link and calling those visits event traffic.
 
 ## Update a destination
 

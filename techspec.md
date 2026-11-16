@@ -218,6 +218,8 @@ If export is interrupted after the evaluation marker is saved, retry resumes rea
 
 `publish_report()` requires a participant-written conclusion, uses the current workspace's runs and metric definitions, and links the evidence supplied by the notebook. A saved receipt allows repeated publication of the same content to reuse the Report. Task-and-version labels keep image and measurement results distinct. A checked ARIA note can appear as the participant's assessment, with an optional conversation link.
 
+The public learning Reports have a separate source and publication path: [`reports/`](reports/README.md) contains the authored explanations and claim ledgers, while [`publish_learning_reports.py`](scripts/publish_learning_reports.py) builds and updates their native Report blocks. It verifies the destination and existing identity, backs up the prior version, detects independent edits, and checks the published content without authentication. [`reports/published.json`](reports/published.json) supplies verified links to the library and meeting packet. Updating a learning Report never changes a participant's conclusion or execution.
+
 ## Measured agents and ARIA investigations
 
 The notebook's measured agents propose edits, route requests, operate tools, or build code according to the workshop. Their requests, code, results, and cost enter the experiment. ARIA has a separate teaching role: discuss already saved evidence and challenge the participant's interpretation.
@@ -252,6 +254,8 @@ Solar candidate training and Transit application checks use bounded subprocesses
 [`monitoring.py`](src/forge_workshop_kit/monitoring.py) reads `workshop-progress` runs through the W&B API. The facilitator keeps a local roster of project links, workspace or notebook-copy filters, and optional last-update bounds. Reads across projects are bounded and concurrent. Monitoring does not import lesson runtimes, execute participant code, change participant settings, or rank model scores.
 
 The view distinguishes an absent update (`unknown`) from a failed read (`unavailable`) and an explicitly failed execution. It shows the saved step, completed checkpoints, help request, last published update, and evidence links. ARIA summaries contain activity mode and citation-check status, not private conversation contents. Missing or delayed progress cannot block participant work.
+
+Distribution tracking is separate. [`docs/share-links.json`](docs/share-links.json) records the registered UTM.io destinations used to generate QR codes and sharing links. Workshop links identify the workshop; Slack and Loom links identify those placements. Neither these parameters nor redirect counts establish notebook copies or completed exercises. The kit does not join anonymous link visits to the facilitator's roster. See [sharing and tracking](docs/share-links.md) for placement and interpretation.
 
 ## Build, publication, and validation boundaries
 

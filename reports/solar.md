@@ -1,10 +1,12 @@
 # Test research-agent changes against real solar observations
 
-At the lab's weekly forecast review, someone brings a lower error score. There are four notebooks named `final`, and none contains quite the code that produced it. Before deciding whether to keep the model, we have some reconstructing to do.
+Our research lab is preparing two solar forecasts: X-ray flux 30 minutes ahead and an image of the Sun one hour ahead. At the weekly review, someone brings a lower error score. There are four notebooks named `final`, and none contains quite the code that produced it. Before deciding whether to keep the model, we have some reconstructing to do.
 
 We built Solar Autoresearch to make that reconstruction part of the experiment. You prepare a forecast, save the code and outputs that produced it, inspect its mistakes, and test a change. Then you give a research agent the same job. Its proposals become Python diffs and training runs that we can review, rather than another explanation of why its idea should work.
 
 The lab is fictional. Its satellite observations are real, and the recorded experiments include a neural forecast that failed badly, a repair, and an image change that helped two seeds and hurt a third. You can [copy the notebook into your Forge project](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view) and run the small experiments on CPU.
+
+Forge connects the evidence we need for that review. Runs and Sweeps retain the settings and learning curves; Artifacts retain the data, source, weights, and predictions. Agent Lens records the research agent's requests and edits. We select changes using validation, then compare frozen forecasts on matching observations in EvalTables. That makes agent-assisted research an experiment we can question, including when it fails to improve the forecast.
 
 ## Define the forecast before training a model
 
@@ -15,6 +17,8 @@ The teaching data cover February 1–14, 2014. Days 1–10 train the models, 11�
 ![A real GOES window plots the sixty observed samples and a separate XRS-B target thirty minutes after the forecast origin.](https://ash0ts.github.io/forge-workshop-kit/solar/images/v031-goes-window.png)
 
 *At this forecast origin, the model receives the history to the left and must predict the orange point to the right. The graph undoes input standardization to show log10 flux. [Full-size window](https://ash0ts.github.io/forge-workshop-kit/solar/images/v031-goes-window.png) · [Data, units, preprocessing, and source credits](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/solar-contract.md).*
+
+Step through the [forecast-window guide](https://ash0ts.github.io/forge-workshop-kit/guides/solar/window/index.html) to separate the history, transformation, and future target before implementing the predictor.
 
 Before training, we ask how well the most recent reading predicts the future. Persistence simply carries that reading forward. The prepared data already retain it in target units:
 
@@ -142,4 +146,6 @@ The comparison contains 199 overlapping windows from two days. Changing the seed
 
 The [six-hour deck](https://ash0ts.github.io/forge-workshop-kit/solar/) explains the calculations beside the exercises. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) covers credentials, saved-work recovery, and the laptop path using `uv sync --frozen --extra solar`. You use your own project, compute, and inference access; the adjustable $8 inference allowance excludes notebook compute and ARIA. Remote Sandboxes aren't required.
 
-Optional ARIA stops ask you to explain a development result and check your frozen conclusion against a cited record. Publication failures can be retried from saved outputs without training again. The materials remain a technical preview while external-account and participant rehearsals are outstanding. You can inspect the observations and recorded results before making a paid request, then use your own validation run to choose the next experiment.
+Two ARIA activities ask you to explain a development result and check your frozen conclusion against a cited record. Live ARIA is optional; recorded investigations are included. ARIA's diagnosis is a hypothesis to check, not a forecast score or permission to change the frozen experiment. Publication failures can be retried from saved outputs without training again.
+
+The [Solar packet](https://utm.io/uuH97) collects this Report, the deck, notebook, visual guides, and running instructions. Use a recorded forecast for a short demonstration or work through the experiments in your own project. The materials remain a technical preview while external-account and participant rehearsals are outstanding.

@@ -1,12 +1,14 @@
 # Forge Workshop Kit
 
-Six Python workshops for people learning to build, evaluate, and improve agents and models in Forge. Each includes an editable notebook, a companion deck, exercises with local checks, and recorded results you can inspect when a live service is unavailable.
+Six hands-on Python workshops that follow a customer or engineering problem through code, a result, and a tested change. Handle a refund, forecast solar observations, route a support request, inspect a circuit board, coordinate coding agents, or investigate a booking agent.
+
+The exercises teach the work behind improving an AI application: run it, observe what happened, curate examples worth investigating, change the implementation, and evaluate the result. Each workshop includes an illustrated Report, an editable notebook, a deck, free code checks, and recorded outcomes. The examples include improvements, ties, and regressions.
 
 Participants copy a notebook into their own project and use their own credentials. The facilitator can read published progress and help requests. There is no workshop gateway or shared account.
 
 **These are technical previews.** The notebooks and decks are published, but external-account checks and participant rehearsals are still outstanding. See [current status and next steps](next-up.md) before scheduling a class.
 
-For a meeting or Slack thread, use the [briefing packet and message copy](docs/sharing.md). Choose a [package for reading, demonstrating, running, or adapting a workshop](docs/use-the-workshops.md) for the relevant Report, deck, notebook, and next action.
+For a meeting or Slack thread, use the [briefing packet and message copy](docs/sharing.md). The [ten-minute Loom script](docs/loom-walkthrough.md) tours the six workflows, their Forge records, and the sharing strategy. Choose a [package for reading, demonstrating, running, or adapting a workshop](docs/use-the-workshops.md) for the relevant Report, deck, notebook, and next action.
 
 Download the [QR codes and tracked sharing links](https://ash0ts.github.io/forge-workshop-kit/share/) for invitations, slides, and handouts. The [sharing guide](docs/share-links.md) explains placement and tracking.
 
@@ -14,18 +16,24 @@ Download the [QR codes and tracked sharing links](https://ash0ts.github.io/forge
 
 The durations include coding, discussion, and breaks. Participants should be comfortable reading basic Python.
 
-| Workshop | What you build and investigate | Time | Deck | Report |
+| Workshop | Problem and workflow | Time | Deck | Report |
 | --- | --- | --- | --- | --- |
-| [Pending, Inc.](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) | Give an office agent tools for refunds and account access, then test manual and agent-written changes to its harness. | 4 h | [Slides](https://ash0ts.github.io/forge-workshop-kit/pending/) | [Read](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ==) |
-| [Solar Autoresearch](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view) | Train forecasts on real satellite observations, compare experiments, and test a research agent’s code edits. | 6 h | [Slides](https://ash0ts.github.io/forge-workshop-kit/solar/) | [Read](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg==) |
-| [Customer request routing](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view) | Compare classifiers, review mistakes, then release the selected router and repair a controlled loading defect. | 5½ h | [Slides](https://ash0ts.github.io/forge-workshop-kit/routing/) | [Read](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw==) |
-| [Circuit-board inspection](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view) | Compare image features on real board photographs, choose what to label, and reproduce a detector. | 4 h | [Slides](https://ash0ts.github.io/forge-workshop-kit/inspection/) | [Read](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA==) |
-| [Transit software factory](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view) | Coordinate coding agents building a departure board, integrate their patches, and test whether a shared lesson helps the next build. | 6 h | [Slides](https://ash0ts.github.io/forge-workshop-kit/transit/) | [Read](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ==) |
-| [Airline monitoring](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view) | Inspect simulated booking changes, review a monitoring rule, curate regression cases, and test an itinerary repair. | 6 h | [Slides](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/) | [Read](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA==) |
+| [Pending, Inc.](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzQ=/view) | **Agent development:** give an office agent tools for refunds and account access; trace its actions and test changes to its harness. | 4 h | [Slides](https://ash0ts.github.io/forge-workshop-kit/pending/) | [Read](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Build-an-agent-you-can-inspect%2C-then-test-changes-to-its-harness--VmlldzoxODMxMzUzMQ==) |
+| [Solar Autoresearch](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU3NzU=/view) | **Agent-assisted research:** train on real satellite observations, compare experiments, and test a research agent’s code edits. | 6 h | [Slides](https://ash0ts.github.io/forge-workshop-kit/solar/) | [Read](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Test-research-agent-changes-against-real-solar-observations--VmlldzoxODMxMzUzMg==) |
+| [Customer request routing](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjg=/view) | **Model improvement and release:** route banking requests, review mistakes, then reproduce, repair, and roll back a batch predictor. | 5½ h | [Slides](https://ash0ts.github.io/forge-workshop-kit/routing/) | [Read](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Train-a-support-router%2C-then-check-what-you-released--VmlldzoxODMxMzUzNw==) |
+| [Circuit-board inspection](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view) | **Visual inspection and data selection:** compare features on real board photographs, choose what to label, and reproduce a detector. | 4 h | [Slides](https://ash0ts.github.io/forge-workshop-kit/inspection/) | [Read](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Find-a-missed-defect%2C-then-test-the-change--VmlldzoxODMxMzUzOA==) |
+| [Transit software factory](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzI=/view) | **Multi-agent software delivery:** coordinate builders of a departure board, integrate their patches, and test a shared lesson. | 6 h | [Slides](https://ash0ts.github.io/forge-workshop-kit/transit/) | [Read](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Coordinate-coding-agents%2C-then-test-the-app-they-built--VmlldzoxODMxMzUzOQ==) |
+| [Airline monitoring](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5MzU=/view) | **Monitoring and evaluation improvement:** inspect simulated booking changes, review a monitoring rule, curate regression cases, and test a repair. | 6 h | [Slides](https://ash0ts.github.io/forge-workshop-kit/airline_monitoring/) | [Read](https://forge.coreweave.com/wandb/wandb/forge-workshop-kit/reports/Turn-an-airline-agent%27s-behavior-into-monitoring-rules-and-regression-tests--VmlldzoxODMxMzU0MA==) |
 
 The [deck library](https://ash0ts.github.io/forge-workshop-kit/) includes PDFs and editable slide sources. For a short demonstration rather than a full class, use the [demo guide](docs/current-demo-guide.md).
 
 Each workshop also has a [one-page poster](https://ash0ts.github.io/forge-workshop-kit/) and step-by-step diagrams shared by its notebook and deck. The [visual guide gallery](https://ash0ts.github.io/forge-workshop-kit/visual-language/) shows the six reusable compositions. To use them in another project, install the standalone [teenage-engineering-visualizations skill](docs/technical-visuals.md). It includes its own fonts, renderer, examples, and export checks.
+
+## Follow the work through Forge
+
+The notebook contains the code participants change. Agent Lens shows the requests, tool calls, errors, and handoffs produced by that code. Runs and Sweeps compare training settings; Artifacts save the exact data, code, weights, and outputs. Weave and EvalTables align matching cases, and the final Report explains what the comparison supports.
+
+Each product appears beside a question: which payment was refunded, which learning rate ran, which board was missed, or which worker supplied a patch? The [workflow guide](docs/use-the-workshops.md#follow-the-ai-work-through-forge) maps those investigations to the shared run → observe → curate → improve → evaluate sequence.
 
 ## Start in Forge
 

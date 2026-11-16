@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "purpose": "Source ledger for public learning Reports, new sourced explanatory figures, and preserved native captures. No new experiments.",
-  "checked_at": "2026-11-15",
+  "checked_at": "2026-11-16",
   "reports": {
     "transit": {
       "file": "reports/transit.md",
@@ -31,7 +31,7 @@
             {
               "path": "scripts/transit_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/transit_cells.py",
-              "sha256": "88686a9541300625185b8a2e1858a8409f653506d0402212538508307dd5f64a"
+              "sha256": "5b704aa36774625acb4fdd52dedcc2b78335f21b5d28c6197d17846c454d5348"
             },
             {
               "path": "src/forge_workshop_kit/factory.py",
@@ -94,17 +94,43 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "18a178bd9d8ecf37c826e4cef9a4f0fddbee15927f25c0bb2259f8c0f90aada0"
+              "sha256": "9f4991b8cae22021c593ddd05f8f53084e5c4f79f8e23d2fec0451660e5d3ad0"
             },
             {
               "path": "docs/setup.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md",
-              "sha256": "203fb84ffc06c4ddd1dda4bc8eb8b851eea43099593c09b092f9019f72f0bdca"
+              "sha256": "9255e0947e295f5ce816190d8457614641d76130ae64e85e4b0b180244a28f1f"
             },
             {
               "path": "docs/transit-facilitator.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/transit-facilitator.md",
               "sha256": "3f2532dfe6dc44420bfaf67fe15a36ae0a8238a060e6ce3ab782fc8e8713cbd5"
+            }
+          ]
+        },
+        {
+          "id": "transit-workflow-and-sharing",
+          "claim": "The software-factory exercise includes participant contracts, patch review, integrated acceptance checks and release decisions; Agent Lens preserves worker identities. ARIA does not accept lessons or approve releases. The linked visual guide and tracked workshop packet use the current visual-guide index and managed sharing registry.",
+          "sources": [
+            {
+              "path": "scripts/transit_cells.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/transit_cells.py",
+              "sha256": "5b704aa36774625acb4fdd52dedcc2b78335f21b5d28c6197d17846c454d5348"
+            },
+            {
+              "path": "docs/aria-investigations.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-investigations.md",
+              "sha256": "e771280cfda15dd69a3f6449280e5df55cca42914f737dfbe197637aa2c99dcb"
+            },
+            {
+              "path": "visual-guides/index.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/visual-guides/index.json",
+              "sha256": "e4a89051b3ede6a3a7e32dacdebd45ab18217a144fa66d886c74c732a572ba9f"
+            },
+            {
+              "path": "docs/share-links.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/share-links.json",
+              "sha256": "ab24b50d81853518525235d3f70a938c6c21d30057ae5188205fb2583f6a08ab"
             }
           ]
         }
@@ -208,7 +234,7 @@
         "Reference app is separately authored.",
         "External-account access and participant rehearsal outstanding."
       ],
-      "source_sha256": "baa4955925df3084fe504db6f0bd82fdb15a512be899de2d39f79138ecb2921e"
+      "source_sha256": "89b391c668245b2bd1a355b11b529c17006caeeeb95244ee0e4305aca8659b32"
     },
     "airline": {
       "file": "reports/airline.md",
@@ -340,7 +366,7 @@
             {
               "path": "scripts/airline_monitoring_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/airline_monitoring_cells.py",
-              "sha256": "de7b49fdb698b4f2e81f0308e9e62d8d0cf6ef14e1b990689564da8c9e5064a3"
+              "sha256": "043e58b8a6ab98277d2e6d07805d0f64dd994e47ed605cacc2e9364131726dc5"
             },
             {
               "path": "docs/airline_monitoring-runbook.md",
@@ -355,17 +381,43 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "18a178bd9d8ecf37c826e4cef9a4f0fddbee15927f25c0bb2259f8c0f90aada0"
+              "sha256": "9f4991b8cae22021c593ddd05f8f53084e5c4f79f8e23d2fec0451660e5d3ad0"
             },
             {
               "path": "docs/setup.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md",
-              "sha256": "203fb84ffc06c4ddd1dda4bc8eb8b851eea43099593c09b092f9019f72f0bdca"
+              "sha256": "9255e0947e295f5ce816190d8457614641d76130ae64e85e4b0b180244a28f1f"
             },
             {
               "path": "docs/airline-monitoring-qualification.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/airline-monitoring-qualification.md",
               "sha256": "546e121a2eda3eb93dd3e8d8df39cd85d733fab47003325e8a02b4b2523f6d6a"
+            }
+          ]
+        },
+        {
+          "id": "airline-workflow-and-sharing",
+          "claim": "The intended workflow connects observed conversations and reviewed monitor criteria to regression cases, matched repairs and subsequent traffic. Native monitoring qualification is separate from booking checks. ARIA does not become a label, criterion or score. The linked visual guide and tracked workshop packet use the current visual-guide index and managed sharing registry.",
+          "sources": [
+            {
+              "path": "scripts/airline_monitoring_cells.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/airline_monitoring_cells.py",
+              "sha256": "043e58b8a6ab98277d2e6d07805d0f64dd994e47ed605cacc2e9364131726dc5"
+            },
+            {
+              "path": "docs/aria-investigations.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-investigations.md",
+              "sha256": "e771280cfda15dd69a3f6449280e5df55cca42914f737dfbe197637aa2c99dcb"
+            },
+            {
+              "path": "visual-guides/index.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/visual-guides/index.json",
+              "sha256": "e4a89051b3ede6a3a7e32dacdebd45ab18217a144fa66d886c74c732a572ba9f"
+            },
+            {
+              "path": "docs/share-links.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/share-links.json",
+              "sha256": "ab24b50d81853518525235d3f70a938c6c21d30057ae5188205fb2583f6a08ab"
             }
           ]
         }
@@ -490,7 +542,7 @@
         "External-account, complete current browser path, and human rehearsal outstanding.",
         "Recorded runtime later received tracing error-handling changes; original 40 executions remain tied to their original source."
       ],
-      "source_sha256": "63249e529519aa70551f5bffc38df422191da9c075ca34f72d669133c6bf5302"
+      "source_sha256": "7f17a1b197923493c74660661f09a3a38f563151bed56ea05cc49e40ccde9454"
     }
   }
 }

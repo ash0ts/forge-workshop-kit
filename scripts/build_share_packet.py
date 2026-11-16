@@ -56,7 +56,7 @@ def build(site, *, pdf=False):
     sharing = json.loads((ROOT / "docs/share-links.json").read_text())["links"]
     documents = ["docs/sharing.md", "docs/use-the-workshops.md", "docs/setup.md",
                  "docs/current-demo-guide.md", "docs/deck-guide.md", "docs/recorded-results.md",
-                 "docs/facilitator-start.md", "docs/share-links.md",
+                 "docs/facilitator-start.md", "docs/share-links.md", "docs/loom-walkthrough.md",
                  *[f'docs/run-{row["authoring"]["deck"]["directory"]}.md' for row in templates],
                  "next-up.md", *[row["authoring"]["runbook"] for row in templates]]
     documents = list(dict.fromkeys(documents))
@@ -128,14 +128,17 @@ def build(site, *, pdf=False):
     write("brief.html", page("Workshop meeting brief", brief))
     body = (
         '<header><p class="eyebrow">FORGE WORKSHOP KIT · SHARE AND PRESENT</p>'
-        '<h1>Workshops for building and testing agents and models</h1>'
-        '<p>Six hands-on Python workshops follow a concrete project through code, '
-        'execution, and comparison. Choose one example for your meeting, or use the notebook to try it yourself.</p>'
+        '<h1>See what an AI system did, then test a change</h1>'
+        '<p>A support request reaches the wrong queue. An agent changes the wrong part of a booking. '
+        'Two coding agents finish their tasks, but the app still fails a check. These six Python '
+        'workshops follow problems like these through their code, saved records, and tested changes in Forge.</p>'
+        '<p>Choose one example for a meeting, or copy its notebook into your own project to try the exercises.</p>'
         '<p class="status"><strong>Published technical previews.</strong> Recorded demonstrations and reading material '
         'are available now. Fresh-account and participant rehearsals remain open before full classes.</p>'
         '<div class="actions primary"><a href="brief.pdf">Meeting brief PDF</a>'
         f'<a href="{PUBLIC}/packet/workshop-meeting-packet.zip">Download the packet</a>'
         '<a href="docs/sharing.html#slack-message">Slack message</a>'
+        '<a href="docs/loom-walkthrough.html">Ten-minute Loom script</a>'
         '<a href="docs/current-demo-guide.html">Short demo routes</a>'
         '<a href="docs/facilitator-start.html">Run a workshop</a>'
         f'<a href="{PUBLIC}/share/">QR codes and sharing links</a></div></header>'
@@ -161,7 +164,7 @@ def build(site, *, pdf=False):
     write("README.txt",
         "Open index.html to choose a workshop. Open brief.html for the meeting script and Slack copy; PDF builds also include brief.pdf.\n"
         f"The decks/ folder contains {pdf_count} presentation PDFs, including reveal states. Missing PDFs link to the public website.\n"
-        "docs/ contains setup, short demo routes, runbooks, and current readiness.\n"
+        "docs/ contains setup, the ten-minute Loom script, short demo routes, runbooks, tracking instructions, and current readiness.\n"
         "No setup or credentials are needed to read these saved files. External links need an internet connection; Forge links require their usual access.\n"
         "These remain technical previews; the packet is for recorded demonstrations and pilot preparation.\n"
     )

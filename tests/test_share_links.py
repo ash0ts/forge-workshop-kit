@@ -37,6 +37,28 @@ def test_rejects_correct_tracking_with_wrong_workshop_fragment(tmp_path):
         sharing.load_links(path)
 
 
+@pytest.mark.parametrize("slug,source", [("packet", "loom"), ("loom", "slack")])
+def test_rejects_collection_links_with_wrong_source(tmp_path, slug, source):
+    manifest = json.loads((ROOT / "docs/share-links.json").read_text())
+    expected_source = sharing.COLLECTION_LINKS[slug]["source"]
+    manifest["links"][slug]["url"] = manifest["links"][slug]["url"].replace(
+        f"utm_source={expected_source}", f"utm_source={source}"
+    )
+    path = tmp_path / "links.json"
+    path.write_text(json.dumps(manifest))
+    with pytest.raises(ValueError, match="UTM values differ"):
+        sharing.load_links(path)
+
+
+def test_rejects_reusing_slack_short_url_for_loom(tmp_path):
+    manifest = json.loads((ROOT / "docs/share-links.json").read_text())
+    manifest["links"]["loom"]["short_url"] = manifest["links"]["packet"]["short_url"]
+    path = tmp_path / "links.json"
+    path.write_text(json.dumps(manifest))
+    with pytest.raises(ValueError, match="own registered short URL"):
+        sharing.load_links(path)
+
+
 def test_partial_bundle_keeps_qr_and_poster_associated_with_included_workshop(tmp_path, monkeypatch):
     # Source ZIPs contain one workshop, but retain the shared link registry.
     (tmp_path / "docs").mkdir()
@@ -63,12 +85,18 @@ def test_partial_bundle_keeps_qr_and_poster_associated_with_included_workshop(tm
     monkeypatch.setattr(sharing, "ROOT", tmp_path)
     monkeypatch.setattr(sharing.subprocess, "run", render)
     sharing.build(tmp_path / "site")
-    assert {Path(row["svg"]).name for row in requests} == {"workshop-qr.svg", "solar.svg", "packet.svg"}
+    assert {Path(row["svg"]).name for row in requests} == {"workshop-qr.svg", "solar.svg", "packet.svg", "loom.svg"}
     for row in requests:
-        slug = "packet" if Path(row["svg"]).name == "packet.svg" else "solar"
+        slug = Path(row["svg"]).stem
+        if slug == "workshop-qr":
+            slug = "solar"
         assert row["url"] == manifest["links"][slug]["short_url"]
     assert json.loads(poster.read_text())["poster"]["cta"]["url"] == manifest["links"]["solar"]["short_url"]
     page = (tmp_path / "site/share/index.html").read_text()
     assert 'id="solar"' in page and 'id="packet"' in page
+    assert 'id="loom"' in page
+    assert "All six workshops · Slack" in page
+    assert "All six workshops · Loom" in page
     assert 'id="pending"' not in page
     assert manifest["links"]["solar"]["short_url"] in page
+    assert manifest["links"]["loom"]["short_url"] in page

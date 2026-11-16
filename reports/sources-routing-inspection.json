@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "purpose": "Claim and visual provenance for public learning Reports. Instructor results do not describe unexecuted learner edits.",
-  "reviewed_on": "2026-11-15",
+  "reviewed_on": "2026-11-16",
   "reports": {
     "routing": {
       "file": "reports/routing.md",
@@ -46,7 +46,7 @@
             {
               "path": "scripts/routing_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/routing_cells.py",
-              "sha256": "d58fec9ec968e1b0529bcbdb0dac00ad885195aa29e9187ddc5a3061ba16d637"
+              "sha256": "28b2a590f15228579adcf8ca43aefb1dae84b5d9ec14e4ff2dbe7b9cce90ad64"
             }
           ]
         },
@@ -137,12 +137,12 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "18a178bd9d8ecf37c826e4cef9a4f0fddbee15927f25c0bb2259f8c0f90aada0"
+              "sha256": "9f4991b8cae22021c593ddd05f8f53084e5c4f79f8e23d2fec0451660e5d3ad0"
             },
             {
               "path": "docs/setup.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md",
-              "sha256": "203fb84ffc06c4ddd1dda4bc8eb8b851eea43099593c09b092f9019f72f0bdca"
+              "sha256": "9255e0947e295f5ce816190d8457614641d76130ae64e85e4b0b180244a28f1f"
             },
             {
               "path": "docs/routing-workshop.md",
@@ -162,6 +162,32 @@
             {
               "path": "evidence/routing-qualification-20261114/embedding-17.json",
               "sha256": "a366a6bf2b6ea494459eee1a02d32d0575e16ef71c1a5b53f5947df3d7b74f28"
+            }
+          ]
+        },
+        {
+          "id": "routing-workflow-and-sharing",
+          "claim": "Routing includes classifier training, reviewed labels, separate prompted-router/judge calls and a notebook batch-predictor release drill. It is not a deployed banking service. ARIA does not approve labels or releases. The linked visual guide and tracked workshop packet use the current visual-guide index and managed sharing registry.",
+          "sources": [
+            {
+              "path": "scripts/routing_cells.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/routing_cells.py",
+              "sha256": "28b2a590f15228579adcf8ca43aefb1dae84b5d9ec14e4ff2dbe7b9cce90ad64"
+            },
+            {
+              "path": "docs/aria-investigations.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-investigations.md",
+              "sha256": "e771280cfda15dd69a3f6449280e5df55cca42914f737dfbe197637aa2c99dcb"
+            },
+            {
+              "path": "visual-guides/index.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/visual-guides/index.json",
+              "sha256": "e4a89051b3ede6a3a7e32dacdebd45ab18217a144fa66d886c74c732a572ba9f"
+            },
+            {
+              "path": "docs/share-links.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/share-links.json",
+              "sha256": "ab24b50d81853518525235d3f70a938c6c21d30057ae5188205fb2583f6a08ab"
             }
           ]
         }
@@ -266,7 +292,7 @@
           "generator": "scripts/build_report_routing_inspection_visuals.py"
         }
       ],
-      "article_sha256": "741a17fe35b64cca9dcc8254b8f6fe5b52b260e90e169b3a40ee367067c36c54"
+      "article_sha256": "ef9fc403bb31f51d49747045447f4d4b94e654a3ed5dae1796f87f51aca97252"
     },
     "inspection": {
       "file": "reports/inspection.md",
@@ -410,7 +436,7 @@
             {
               "path": "scripts/inspection_cells.py",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/inspection_cells.py",
-              "sha256": "6749d5804a58306309e39804663b765872af3fd6893a6ae53055f9042a337067"
+              "sha256": "29090ef2a8985cbebc3665836860eed174fe700e7af3e3eddbc764a4469f79b0"
             },
             {
               "path": "src/forge_workshop_kit/inspection_teaching.py",
@@ -443,17 +469,43 @@
             {
               "path": "README.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/README.md",
-              "sha256": "18a178bd9d8ecf37c826e4cef9a4f0fddbee15927f25c0bb2259f8c0f90aada0"
+              "sha256": "9f4991b8cae22021c593ddd05f8f53084e5c4f79f8e23d2fec0451660e5d3ad0"
             },
             {
               "path": "docs/setup.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md",
-              "sha256": "203fb84ffc06c4ddd1dda4bc8eb8b851eea43099593c09b092f9019f72f0bdca"
+              "sha256": "9255e0947e295f5ce816190d8457614641d76130ae64e85e4b0b180244a28f1f"
             },
             {
               "path": "docs/inspection-workshop.md",
               "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/inspection-workshop.md",
               "sha256": "d16d186120dbd8517339091fe14a55f3b841da3f2fc7a3ac2744b4f5d7ed5c0e"
+            }
+          ]
+        },
+        {
+          "id": "inspection-workflow-and-sharing",
+          "claim": "Inspection compares feature representations, validation-selected thresholds and equal-budget label acquisition. Artifacts preserve the reference bank and classifier; ARIA explanations do not become defect labels. The linked visual guide and tracked workshop packet use the current visual-guide index and managed sharing registry.",
+          "sources": [
+            {
+              "path": "scripts/inspection_cells.py",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/scripts/inspection_cells.py",
+              "sha256": "29090ef2a8985cbebc3665836860eed174fe700e7af3e3eddbc764a4469f79b0"
+            },
+            {
+              "path": "docs/aria-investigations.md",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/aria-investigations.md",
+              "sha256": "e771280cfda15dd69a3f6449280e5df55cca42914f737dfbe197637aa2c99dcb"
+            },
+            {
+              "path": "visual-guides/index.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/visual-guides/index.json",
+              "sha256": "e4a89051b3ede6a3a7e32dacdebd45ab18217a144fa66d886c74c732a572ba9f"
+            },
+            {
+              "path": "docs/share-links.json",
+              "url": "https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/share-links.json",
+              "sha256": "ab24b50d81853518525235d3f70a938c6c21d30057ae5188205fb2583f6a08ab"
             }
           ]
         }
@@ -559,7 +611,7 @@
           "generator": "scripts/build_report_routing_inspection_visuals.py"
         }
       ],
-      "article_sha256": "86b12871c0739eef5723e6154bb330c0a7236d17abad2a1708fdbae6591a6845"
+      "article_sha256": "1b202854423a7bcc9ba2a6c1c0f6622c94b2cb5ddc6dd3b8dee30e7022fa9695"
     }
   },
   "validation": {

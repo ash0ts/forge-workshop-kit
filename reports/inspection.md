@@ -10,6 +10,8 @@ We built this workshop around a fictional manufacturing team deciding which circ
 
 The [copyable notebook](https://forge.coreweave.com/notebooks/Tm90ZWJvb2s6MTU5Mjk=/view) lets you build the feature and decision code, investigate mistakes, and compare the same photographs across versions. The board above belongs to the recorded teaching retest. Your notebook starts with development examples before opening its final comparison.
 
+We use Forge to compare training runs, inspect the same board across detector versions in EvalTables, and recover the features, reference bank, and classifier from Artifacts. The practical decisions are which representation to use, where to set the inspection cutoff, and which additional labels to acquire. Those decisions affect missed defects and the workload passed to human inspectors, so we keep both visible.
+
 ## Establish what the baseline receives
 
 Our baseline passes each photograph through a frozen ResNet-18 encoder. After resizing to 224 × 224 and applying the saved channel normalization, the encoder produces 512 whole-image values. A class-balanced logistic classifier learns to separate normal and defective boards using those values. Its coefficients change during fitting; the encoder's weights do not.
@@ -27,6 +29,8 @@ A small damaged region may be hard to distinguish after the whole photograph has
 ![The fixed image encoder produces a whole-image branch with 512 values and a patch branch with 14 by 14 positions. Appending one distance per position gives the classifier 708 features.](https://raw.githubusercontent.com/ash0ts/forge-workshop-kit/main/reports/assets/inspection/feature-path.png)
 
 *The encoder remains frozen. Participant-written `build_features` controls which values reach the classifier. The defect masks are outside both branches.*
+
+Use the [feature-construction guide](https://ash0ts.github.io/forge-workshop-kit/guides/inspection/representations/index.html) to follow one photograph into the whole-image vector and patch grid. The dimensions explain what the classifier receives before we inspect its score.
 
 Our first recipe compared each patch with the average normal patch at its position. It reduced average precision from 0.861762 to 0.855382. We retained [that failed comparison](https://github.com/ash0ts/forge-workshop-kit/blob/main/evidence/inspection-qualification-v1/results.json). Adding 196 numbers did not, by itself, improve the ranking.
 
@@ -104,4 +108,6 @@ Open the [Circuit-board inspection notebook](https://forge.coreweave.com/noteboo
 
 The full workshop takes four hours and assumes basic Python. The core exercises use CPU and make no inference API calls; notebook compute is billed separately. The [setup guide](https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/setup.md) includes the laptop path, and the [companion deck](https://ash0ts.github.io/forge-workshop-kit/inspection/) follows the same calculations. Optional ARIA investigations have separate access and usage requirements, with recorded investigations available.
 
-The materials remain technical previews pending external-account checks and participant rehearsals. Begin by explaining one board's decision. Finish by saving enough of the detector that another person can reproduce it and inspect the mistakes you chose to accept.
+ARIA's two activities examine a validation decision and the final comparison. Check its claims against the photograph, score, threshold, and reference label. Its explanation does not replace those checks or become a new defect label.
+
+The [Inspection packet](https://utm.io/uuH99) brings together this Report, the deck, notebook, visual guides, and running instructions. Use the recorded board comparison for a short demonstration or fit the detectors in your own project. The materials remain technical previews pending external-account checks and participant rehearsals.

@@ -12,6 +12,14 @@ ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = "https://ash0ts.github.io/forge-workshop-kit"
 MANIFEST = ROOT / "docs/share-links.json"
 WORKSHOPS = ("pending", "solar", "routing", "inspection", "transit", "airline_monitoring")
+COLLECTION_LINKS = {
+    "packet": {"source": "slack", "medium": "social", "content": "meeting-packet",
+               "title": "All six workshops · Slack",
+               "placement": "Use in a Slack message introducing the collection."},
+    "loom": {"source": "loom", "medium": "video", "content": "kit-walkthrough",
+             "title": "All six workshops · Loom",
+             "placement": "Use in the Loom description and closing screen."},
+}
 
 
 def load_links(path=MANIFEST):
@@ -21,7 +29,7 @@ def load_links(path=MANIFEST):
     if not isinstance(campaign, str) or not campaign.strip():
         raise ValueError("share-links.json must name the registered UTM.io campaign")
     links = manifest.get("links", {})
-    expected = {*WORKSHOPS, "packet"}
+    expected = {*WORKSHOPS, *COLLECTION_LINKS}
     if set(links) != expected:
         raise ValueError(f"Expected exactly these share links: {sorted(expected)}")
     short_urls = set()
@@ -38,15 +46,16 @@ def load_links(path=MANIFEST):
             "https", "ash0ts.github.io", "/forge-workshop-kit/packet/"
         ):
             raise ValueError(f"{slug}: destination must be the public workshop packet")
+        collection = COLLECTION_LINKS.get(slug)
         parameters = {
-            "utm_source": ["slack" if slug == "packet" else "forge-workshop-kit"],
-            "utm_medium": ["social" if slug == "packet" else "workshop"],
+            "utm_source": [collection["source"] if collection else "forge-workshop-kit"],
+            "utm_medium": [collection["medium"] if collection else "workshop"],
             "utm_campaign": [campaign],
-            "utm_content": ["meeting-packet" if slug == "packet" else f"{slug}-start"],
+            "utm_content": [collection["content"] if collection else f"{slug}-start"],
         }
         if parse_qs(destination.query, keep_blank_values=True) != parameters:
             raise ValueError(f"{slug}: UTM values differ from the sharing convention")
-        if destination.fragment != ("" if slug == "packet" else slug):
+        if destination.fragment != ("" if collection else slug):
             raise ValueError(f"{slug}: destination must open its own workshop card")
     return manifest
 
@@ -57,7 +66,7 @@ def build(site=None):
     templates = json.loads((ROOT / "src/forge_workshop_kit/workshops.json").read_text())["templates"]
     titles = {row["authoring"]["deck"]["directory"]: row["authoring"]["deck"]["title"]
               for row in templates if row.get("authoring", {}).get("deck")}
-    titles["packet"] = "All six workshops"
+    titles.update({slug: row["title"] for slug, row in COLLECTION_LINKS.items()})
     available = [slug for slug in WORKSHOPS if slug in titles]
     requests = []
     for slug in available:
@@ -65,7 +74,7 @@ def build(site=None):
                          "svg": str(ROOT / "decks" / slug / "public/images/workshop-qr.svg")})
     target = Path(site).resolve() / "share" if site else None
     if target:
-        for slug in (*available, "packet"):
+        for slug in (*available, *COLLECTION_LINKS):
             row = links[slug]
             requests.append({"url": row["short_url"], "title": f"Open {titles[slug]}",
                              "svg": str(target / f"{slug}.svg"), "png": str(target / f"{slug}.png")})
@@ -90,11 +99,13 @@ def write_page(target, manifest, titles):
         if source.is_file():
             shutil.copyfile(source, fonts / source.name)
     cards = []
-    for slug in ("packet", *[slug for slug in WORKSHOPS if slug in titles]):
+    for slug in (*COLLECTION_LINKS, *[slug for slug in WORKSHOPS if slug in titles]):
         row = manifest["links"][slug]
         short = html.escape(row["short_url"], quote=True)
+        placement = COLLECTION_LINKS.get(slug, {}).get("placement", "Use in this workshop’s deck, poster, or invitation.")
         cards.append(
             f'<article id="{slug}"><div class="card-body"><h2>{html.escape(titles[slug])}</h2>'
+            f'<p>{html.escape(placement)}</p>'
             f'<a href="{short}"><img class="qr" src="{slug}.svg" width="240" height="240" '
             f'alt="QR code opening {html.escape(titles[slug], quote=True)}"></a>'
             f'<p><a href="{short}">{short}</a></p><div class="actions">'
@@ -112,7 +123,7 @@ def write_page(target, manifest, titles):
         '<a href="https://github.com/ash0ts/forge-workshop-kit/blob/main/docs/share-links.md">Sharing instructions</a></nav>'
         '<header><p class="eyebrow">FORGE WORKSHOP KIT · SHARING LINKS</p>'
         '<h1>Choose a workshop and share its link</h1>'
-        '<p>Use the first link for a meeting or Slack message about the collection. '
+        '<p>Choose the Slack or Loom link for an introduction to the collection. '
         'Use a workshop link when inviting people to a specific session. Each opens its '
         'public introduction, deck, setup instructions, and notebook link.</p>'
         '<p>Download the PNG for a message or the SVG for a slide or printed handout. '
@@ -120,7 +131,8 @@ def write_page(target, manifest, titles):
         f'<section class="catalog" aria-label="Workshop sharing codes">{"".join(cards)}</section>'
         '<footer><p>These links are registered in UTM.io. A workshop uses the same link in '
         'its deck and poster, so the counts do not distinguish those surfaces. Verification '
-        'clicks and repeat visits are not attendee counts.</p>'
+        'clicks, link previews, and repeat visits are not attendee counts. UTM parameters '
+        'identify the incoming link; they do not record notebook copies or completed exercises.</p>'
         '<p>Opening the introduction needs no Forge account. Copying and running a notebook '
         'requires the participant’s own project and access. '
         '<a href="../packet/docs/next-up.html">Read the current readiness notes</a>.</p></footer>'
